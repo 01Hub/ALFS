@@ -28,19 +28,6 @@
 			<param>--enable-shared</param>
 		</configure>
 
-		<textdump mode="append">
-			<file>config.h</file>
-			<content>
-				=#define HAVE_SETLOCALE 1
-			</content>
-		</textdump>
-
-		<search_replace>
-		  	<file>libmisc/xmalloc.c</file>
-			<find>extern char *malloc ();</find>
-			<replace>/* extern char *malloc (); */</replace>
-		</search_replace>
-		
 		<make />
 
 		<make>

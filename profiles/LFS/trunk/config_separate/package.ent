@@ -91,11 +91,11 @@
 <!ENTITY gawk-package "gawk-&gawk-version;.tar.bz2">
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
-<!ENTITY gcc-version "3.4.2">
+<!ENTITY gcc-version "3.4.3">
 <!ENTITY gcc-cvs-tag "">
 <!ENTITY gcc-directory "gcc-&gcc-version;&gcc-cvs-tag;">
 
-<!ENTITY gcc-md5 "2fada3a3effd2fd791df09df1f1534b3">
+<!ENTITY gcc-md5 "e744b30c834360fccac41eb7269a3011">
 <!ENTITY gcc-package "gcc-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
 <!ENTITY gcc-core-md5 "">
@@ -107,22 +107,22 @@
 <!ENTITY gcc-testsuite-md5 "">
 <!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
-<!ENTITY gcc-linkonce-patch-md5 "6d0b7e6b38cfc3d059c9bcb370623db0">
+<!ENTITY gcc-linkonce-patch-md5 "6526a9d6fa236c4e1c211c995e2b5d9d">
 <!ENTITY gcc-linkonce-patch "gcc-&gcc-version;-linkonce-1.patch">
 
-<!ENTITY gcc-no-fixincludes-patch-md5 "0105c14285a5bfcdd893365ce32043a2">
+<!ENTITY gcc-no-fixincludes-patch-md5 "3b52559864cfa50ac0c5a5e21eb73b19">
 <!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no_fixincludes-1.patch">
 
-<!ENTITY gcc-specs-patch-md5 "c170a1b67daccaa4f2e15b8a1fd79bae">
-<!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-1.patch">
+<!ENTITY gcc-specs-patch-md5 "ee516e41515e2fcb2cabe90ba1380304">
+<!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-2.patch">
 
 <!ENTITY gettext-md5 "78f4b862510beb2e5d43223dd610e77d">
 <!ENTITY gettext-version "0.14.1">
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.gz">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
-<!ENTITY glibc-md5 "9a79721c5edf1684fcb0f24e8c7618c3">
-<!ENTITY glibc-version "20041011">
+<!ENTITY glibc-md5 "aa97ddbaa05d45ce096e9096953a4ee0">
+<!ENTITY glibc-version "20041108">
 <!ENTITY glibc-cvs-tag "">
 <!ENTITY glibc-package "glibc-&glibc-version;&glibc-cvs-tag;.tar.bz2">
 <!ENTITY glibc-directory "glibc-&glibc-version;&glibc-cvs-tag;">
