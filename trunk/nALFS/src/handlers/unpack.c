@@ -71,14 +71,49 @@ static INLINE char *alloc_basename(const char *archive)
 	return base_name;
 }
 
+static int unpack_archive(const char *archive)
+{
+	char *decompressor = NULL;
+	char *unpacker = NULL;
+	char *command = NULL;
+	int status = -1;
+
+	decompressor = alloc_decompress_command(get_compression_type(archive));
+	unpacker = alloc_unpack_command(get_archive_format(archive));
+
+	if (unpacker != NULL) {
+		if (decompressor != NULL) {
+			command = decompressor;
+			append_str(&command, " | ");
+		}
+		append_str(&command, unpacker);
+		Nprint_h("Unpacking %s...", archive);
+		status = execute_command(command, archive);
+	} else if (decompressor != NULL) {
+		/* Allocate basename (without the last extension). */
+		char *base_name = alloc_basename(archive);
+
+		Nprint_h("Decompressing %s...", archive);
+		command = decompressor;
+		append_str(&command, " > %s");
+		status = execute_command(command, archive, base_name);
+		xfree(base_name);
+	} else {
+		Nprint_h_err("Unknown archive (%s).", archive);
+	}
+
+	xfree(command);
+	xfree(decompressor);
+	xfree(unpacker);
+	return status;
+}
+
 
 static int unpack_main_ver2(element_s *el)
 {
 	int status = 0;
-	char *base_name;
 	char *archive, *destination;
 	struct stat file_stat;
-	extension_e extension = UNKNOWN;
 
 
 	if ((archive = El_unpack_archive(el)) == NULL) {
@@ -107,82 +142,12 @@ static int unpack_main_ver2(element_s *el)
 		return -1;
 	}
 
-	/* Watch for the order ! */
-	if (! (strncmp(archive + strlen(archive) - 7, ".tar.gz", 7)))
-		extension = TAR_GZ;
-	else if (! (strncmp(archive + strlen(archive) - 8, ".tar.bz2", 8)))
-		extension = TAR_BZ2;
-	else if (! (strncmp(archive + strlen(archive) - 6, ".tar.Z", 6)))
-		extension = TAR_Z;
-	else if (! (strncmp(archive + strlen(archive) - 2, ".Z", 2)))
-		extension = Z;
-	else if (! (strncmp(archive + strlen(archive) - 4, ".tgz", 4)))
-		extension = TGZ;
-	else if (! (strncmp(archive + strlen(archive) - 3, ".gz", 3)))
-		extension = GZ;
-	else if (! (strncmp(archive + strlen(archive) - 4, ".bz2", 4)))
-		extension = BZ2;
-	else if (! (strncmp(archive + strlen(archive) - 4, ".tar", 4)))
-		extension = TAR;
-	else if (! (strncmp(archive + strlen(archive) - 4, ".zip", 4)))
-		extension = ZIP;
-	else
-		extension = UNKNOWN;
-	
-	/* Allocate basename (without the last extension). */
-	base_name = alloc_basename(archive);
-
-	switch (extension) {
-		case GZ: 
-		case Z: 
-			Nprint_h("Unpacking %s...", archive);
-			status = execute_command("zcat %s > %s",
-				archive, base_name);
-			break;
-
-		case TGZ:
-		case TAR_GZ:
-		case TAR_Z:
-			Nprint_h("Unpacking %s...", archive);
-			status = execute_command("tar xzvf %s", archive);
-			break;
-
-		case BZ2:
-			Nprint_h("Unpacking %s...", archive);
-			status = execute_command("bzip2 -dc %s > %s",
-				archive, base_name);
-			break;
-
-		case TAR_BZ2:
-			Nprint_h("Unpacking %s...",
-				archive);
-			status = execute_command(
-				"tar --use-compress-prog=bunzip2 -xvf %s",
-				archive);
-			break;
-
-		case TAR:
-			Nprint_h("Unpacking %s...", archive);
-			status = execute_command("tar xvf %s", archive);
-			break;
-
-		case ZIP:
-			Nprint_h("Unpacking %s...", archive);
-			status = execute_command("unzip %s", archive);
-			break;
-
-		case UNKNOWN:
-			Nprint_h_err("Unknown archive (%s).", archive);
-			status = -1;
-	}
-
-	if (status) {
+	if (unpack_archive(archive)) {
 		Nprint_h_err("Unpacking %s failed.", archive);
 	} else {
 		Nprint_h("Done unpacking %s.", archive);
 	}
 
-	xfree(base_name);
 	xfree(archive);
 	
 	return status;
@@ -192,14 +157,11 @@ static int unpack_main_ver2(element_s *el)
 static int unpack_main_ver3(element_s *el)
 {
 	int status = -1;
-	char *base_name = NULL;
 	char *archive = NULL;
 	char *destination = NULL;
 	char *digest = NULL;
 	char *digest_type = NULL;
 	struct stat file_stat;
-	extension_e extension = UNKNOWN;
-	int command_status = -1;
 
 
 	if ((archive = El_unpack_archive(el)) == NULL) {
@@ -256,75 +218,7 @@ static int unpack_main_ver3(element_s *el)
 		goto free_all_and_return;
 	}
 
-	/* Watch for the order! */
-	if (! (strncmp(archive + strlen(archive) - 7, ".tar.gz", 7)))
-		extension = TAR_GZ;
-	else if (! (strncmp(archive + strlen(archive) - 8, ".tar.bz2", 8)))
-		extension = TAR_BZ2;
-	else if (! (strncmp(archive + strlen(archive) - 6, ".tar.Z", 6)))
-		extension = TAR_Z;
-	else if (! (strncmp(archive + strlen(archive) - 2, ".Z", 2)))
-		extension = Z;
-	else if (! (strncmp(archive + strlen(archive) - 4, ".tgz", 4)))
-		extension = TGZ;
-	else if (! (strncmp(archive + strlen(archive) - 3, ".gz", 3)))
-		extension = GZ;
-	else if (! (strncmp(archive + strlen(archive) - 4, ".bz2", 4)))
-		extension = BZ2;
-	else if (! (strncmp(archive + strlen(archive) - 4, ".tar", 4)))
-		extension = TAR;
-	else if (! (strncmp(archive + strlen(archive) - 4, ".zip", 4)))
-		extension = ZIP;
-	else
-		extension = UNKNOWN;
-	
-	/* Allocate basename (without the last extension). */
-	base_name = alloc_basename(archive);
-
-	switch (extension) {
-		case GZ: 
-		case Z: 
-			Nprint_h("Unpacking %s...", archive);
-			command_status = execute_command("zcat %s > %s",
-							 archive, base_name);
-			break;
-
-		case TGZ:
-		case TAR_GZ:
-		case TAR_Z:
-			Nprint_h("Unpacking %s...", archive);
-			command_status = execute_command("tar xzvf %s", archive);
-			break;
-
-		case BZ2:
-			Nprint_h("Unpacking %s...", archive);
-			command_status = execute_command("bzip2 -dc %s > %s",
-							 archive, base_name);
-			break;
-
-		case TAR_BZ2:
-			Nprint_h("Unpacking %s...", archive);
-			command_status = execute_command(
-				"tar --use-compress-prog=bunzip2 -xvf %s",
-				archive);
-			break;
-
-		case TAR:
-			Nprint_h("Unpacking %s...", archive);
-			command_status = execute_command("tar xvf %s", archive);
-			break;
-
-		case ZIP:
-			Nprint_h("Unpacking %s...", archive);
-			command_status = execute_command("unzip %s", archive);
-			break;
-
-		case UNKNOWN:
-			Nprint_h_err("Unknown archive (%s).", archive);
-			command_status = -1;
-	}
-
-	if (command_status) {
+	if (unpack_archive(archive)) {
 		Nprint_h_err("Unpacking %s failed.", archive);
 	} else {
 		Nprint_h("Done unpacking %s.", archive);
@@ -334,7 +228,6 @@ static int unpack_main_ver3(element_s *el)
  free_all_and_return:
 	xfree(digest_type);
 	xfree(digest);
-	xfree(base_name);
 	xfree(archive);
 	xfree(destination);
 	
