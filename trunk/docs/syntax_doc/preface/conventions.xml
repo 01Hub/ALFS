@@ -3,7 +3,7 @@
 <title>Conventions Used In This Book</title>
 
 <para>To make things easy to follow, there are a number of conventions used
-throughout the book.  Following are some examples:</para>
+throughout the book.  Following are some examples&nbsp;:</para>
 
 <screen><command>./configure --prefix=/usr</command></screen>
 
@@ -40,6 +40,11 @@ configuration files.  The first command (in bold) tells the system to create
 the file <filename>$LFS/etc/group</filename> from whatever is typed on the
 following lines until the sequence <acronym>EOF</acronym> is encountered.
 Therefore, this whole section is generally typed as seen.</para></blockquote>
+
+<note>Sample Note</note>
+
+<blockquote><para>This type of section is to define a notice of some kind.
+Mostly to alert you of something to take note of.</para></blockquote>
 
 </sect1>
 
