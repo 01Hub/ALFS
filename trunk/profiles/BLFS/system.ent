@@ -76,6 +76,7 @@
 <!ENTITY rep-gtk    SYSTEM "./chapter10/rep-gtk.xml">
 <!ENTITY compface   SYSTEM "./chapter10/compface.xml">
 <!ENTITY imagemagick SYSTEM "./chapter10/imagemagick.xml">
+<!ENTITY hd2u       SYSTEM "./chapter10/hd2u.xml">
 
 <!-- chapter 11 -->
 <!ENTITY gpm        SYSTEM "./chapter11/gpm.xml">
