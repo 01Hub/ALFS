@@ -6,7 +6,7 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT archive        (#PCDATA)>
+&lt;!ELEMENT archive        (#PCDATA)&gt;
 </synopsis>
 
 <para>This element occurs in the elements
@@ -27,15 +27,16 @@
 <title>Examples</title>
 
 <programlisting>
-&lt;unpack>
-    &lt;archive>/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive>
-    &lt;destination>/usr/src&lt;/destination>
-&lt;/unpack>
+&lt;unpack&gt;
+    &lt;archive&gt;/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive&gt;
+    &lt;destination&gt;/usr/src&lt;/destination&gt;
+&lt;/unpack&gt;
 </programlisting>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+<programlisting>
+echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
 cd /usr/src
 tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz
 </programlisting>

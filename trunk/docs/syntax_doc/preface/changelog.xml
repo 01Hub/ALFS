@@ -6,6 +6,9 @@
 
 <itemizedlist>
 
+<listitem><para>September 30th, 2003 [jwrober]: Added an alfs_dtd intro 
+page.</para></listitem>
+
 <listitem><para>September 26th, 2003 [jwrober]: Modified the header of each 
 page to conform with the DocBook rules that the LFS and BLFS books use (for 
 consistency).</para></listitem>

@@ -5,12 +5,13 @@
 <sect2>
 <title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT alfs           (configure|copy|download|execute|if|link|make|
+<synopsis>
+&lt;!ELEMENT alfs           (configure|copy|download|execute|if|link|make|
                           mkdir|move|ownership|package|patch|
                           permissions|remove|search_replace|
-                          stage|textdump|unpack)*>
+                          stage|textdump|unpack)*&gt;
 &lt;!ATTLIST alfs
-          version        CDATA   #FIXED "3.1">
+          version        CDATA   #FIXED "3.1"&gt;
 </synopsis>
 
 <para>See also :
@@ -57,17 +58,16 @@ ALFS profile syntax used; it should be <literal>"3.0"</literal>.</para>
 <programlisting>
 &lt;!DOCTYPE alfs SYSTEM "alfs.dtd" [
 
-&lt;!ENTITY % general_entities SYSTEM "entities/general">
+&lt;!ENTITY % general_entities SYSTEM "entities/general"&gt;
 
 %general_entities;
 
-]>
-&lt;alfs version="3.0">
+]&gt;
+&lt;alfs version="3.1"&gt;
 
  .....
 
-
-&lt;/alfs>
+&lt;/alfs&gt;
 </programlisting>
 
 </sect2>
