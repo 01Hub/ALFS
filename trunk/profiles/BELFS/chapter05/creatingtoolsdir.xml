@@ -62,6 +62,7 @@
       <source>&ed-package;</source>
       <source>&ed-mkstemp-patch;</source>
       <source>&expect-package;</source>
+      <source>&expect-spawn-patch;</source>
       <source>&file-package;</source>
       <source>&findutils-package;</source>
       <source>&flex-package;</source>

@@ -178,8 +178,8 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "586742a7676dceb4e02f36539c72df1a">
-<!ENTITY lfs-bootscripts-version "2.0.4-pre1">
+<!ENTITY lfs-bootscripts-md5 "4f33a7059b381d0ed02684e9bf64186a">
+<!ENTITY lfs-bootscripts-version "2.0.4">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
@@ -256,9 +256,9 @@
 <!ENTITY patch-package "patch-&patch-version;.tar.gz">
 <!ENTITY patch-directory "patch-&patch-version;">
 
-<!ENTITY perl-md5 "6d2b389f8c6424b7af303f417947714f">
-<!ENTITY perl-version "5.8.3">
-<!ENTITY perl-package "perl-&perl-version;.tar.gz">
+<!ENTITY perl-md5 "3eb135afd0114f4e1acdd4ad6b8fd947">
+<!ENTITY perl-version "5.8.4">
+<!ENTITY perl-package "perl-&perl-version;.tar.bz2">
 <!ENTITY perl-directory "perl-&perl-version;">
 
 <!ENTITY perl-libc-1-patch-md5 "f033161efa8b4b174ec6667e4e739efa">
