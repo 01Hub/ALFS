@@ -6,6 +6,10 @@
 
 <itemizedlist>
 
+<listitem><para>March, 30th, 2004 [jwrober]: Removed the note about digest
+and reference being deprecated in the DTD. Closes bug
+767.</para></listitem>
+
 <listitem><para>March, 30th, 2004 [jwrober]: Closed bug 765 about the
 parents option to mkdir.</para></listitem>
 
