@@ -9,7 +9,7 @@ the following libraries and programs already installed and configured.</para>
 <title>Ncurses</title>
 
 <para>Any recent version should work. If for some reason your system does not
-have <filename>ncurses</filename> installed, the <acronym>LFS</acronym> book
+have <filename>ncurses</filename> installed, the LFS book
 provides an excellent installation procedure at
 <ulink url="&http-root;/lfs/view/cvs/chapter06/ncurses.html">&http-root;/lfs/view/cvs/chapter06/ncurses.html</ulink>.
 </para>
@@ -22,7 +22,7 @@ provides an excellent installation procedure at
 <para>Any version greater than v2.5.1 should work.  One primary feature you
 are looking for is support for <command>XInclude</command>. If for some reason
 your system does not have <filename>libXML2</filename> installed or
-<command>XInclude</command> compiled in, the <acronym>BLFS</acronym> book
+<command>XInclude</command> compiled in, the BLFS book
 provides an excellent installation procedure at
 <ulink url="&http-root;/blfs/view/cvs/general/libxml2.html">&http-root;/blfs/view/cvs/general/libxml2.html</ulink>.
 </para>
@@ -36,7 +36,7 @@ provides an excellent installation procedure at
 
 <para>Any version greater than v7.10 should work. If for some reason your
 system does not have <filename>Curl</filename> installed, the
-<acronym>BLFS</acronym> book provides an excellent installation procedure at
+BLFS book provides an excellent installation procedure at
 <ulink url="&http-root;/blfs/view/cvs/basicnet/curl.html">&http-root;/blfs/view/cvs/basicnet/curl.html</ulink>.
 </para>
 
@@ -49,7 +49,7 @@ system does not have <filename>Curl</filename> installed, the
 
 <para>Any version greater than v0.9.7 should work. If for some reason your
 system does not have <filename>OpenSSL</filename> installed, the
-<acronym>BLFS</acronym> book provides an excellent installation procedure at
+BLFS book provides an excellent installation procedure at
 <ulink url="&http-root;/blfs/view/cvs/general/openssl.html">&http-root;/blfs/view/cvs/general/openssl.html</ulink>.
 </para>
 
@@ -58,9 +58,9 @@ system does not have <filename>OpenSSL</filename> installed, the
 <sect2>
 <title>Other</title>
 
-<para>Of course, any system needs to have the following packages installed for
-the <acronym>XML</acronym> handlers to work and to even get the package
-installed.  Links to install procedures are provided, just in case.</para>
+<para>Of course, any system needs to have the following packages installed
+for the XML handlers to work and to even get the package installed.  Links
+to install procedures are provided, just in case.</para>
 
 <itemizedlist>
 

@@ -7,8 +7,8 @@ throughout the book.  Following are some examples:</para>
 
 <screen><command>./configure --prefix=/usr</command></screen>
 
-<blockquote><para>This form of text is designed to be typed in exactly as seen
-unless otherwise noted in the surrounding text.</para></blockquote>
+<blockquote><para>This form of text is designed to be typed in exactly as
+seen unless otherwise noted in the surrounding text.</para></blockquote>
 
 <para><filename>install-info: unknown option
 `--dir-file=/mnt/lfs/usr/info/dir'</filename></para>
@@ -26,8 +26,8 @@ what to type.</para></blockquote>
 <para><ulink url="http://www.linuxfromscratch.org/alfs">http://www.linuxfromscratch.org/alfs</ulink></para>
 
 <blockquote><para>This form of text is used for hyperlinks, both within the
-book and to external pages such as HowTo's, download locations,
-websites, etc.</para></blockquote>
+book and to external pages such as HowTo's, download locations, websites,
+etc.</para></blockquote>
 
 <screen><command>cat &gt; $LFS/etc/group &lt;&lt; "EOF"</command>>
 	root:x:0:
@@ -36,10 +36,10 @@ websites, etc.</para></blockquote>
 <command>EOF</command></screen>
 
 <blockquote><para>This type of section is used mainly when creating
-configuration files.  The first command (in bold) tells the system to create
-the file <filename>$LFS/etc/group</filename> from whatever is typed on the
-following lines until the sequence <acronym>EOF</acronym> is encountered.
-Therefore, this whole section is generally typed as seen.</para></blockquote>
+configuration files.  The first command (in bold) tells the system to
+create the file <filename>$LFS/etc/group</filename> from whatever is typed
+on the following lines until the sequence EOF is encountered.  Therefore,
+this whole section is generally typed as seen.</para></blockquote>
 
 </sect1>
 
