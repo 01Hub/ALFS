@@ -30,7 +30,8 @@ or
    - the file grub.xml contains the commands for configuring the grub 
      bootloader although the steps to do this are commented out by 
      default
-   - the file keymap.xml is used to set up the default keymap
+   - the files keymap-ch6.xml and keymap-ch8.xml are used to set up
+     the default keymap
 
 3) execute sh ./runit as root. Please note that if you have installed 
    nALFS into a location other than /usr/local/bin you will need to edit
