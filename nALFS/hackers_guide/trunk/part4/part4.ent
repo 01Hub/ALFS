@@ -1,3 +1,9 @@
+<!--
+        Last Changed Date: $LastChangedDate$
+        Last Changed By:   $LastChangedBy$
+        Revision:          $LastChangedRevision$ 
+-->
+
 <!ENTITY part4                         SYSTEM "part4.xml">
 
 <!ENTITY profile_editor-profile_editor SYSTEM "profile_editor/profile_editor.xml">

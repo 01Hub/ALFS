@@ -8,6 +8,10 @@
 #
 # Author:      James Robertson
 #
+# Last Changed Date: $LastChangedDate$
+# Last Changed By:   $LastChangedBy$
+# Revision:          $LastChangedRevision$ 
+#
 ###############################################################################
 
 NAME=`basename "$0"`
