@@ -155,9 +155,9 @@
 <!ENTITY inetutils-no-man-pages-patch "inetutils-&inetutils-version;-no_server_man_pages-1.patch">
 <!ENTITY inetutils-kernel-headers-patch "inetutils-&inetutils-version;-kernel_headers-1.patch">
 
-<!ENTITY iproute2-md5 "ddae14f8390dd2ccd4c354f5355463ef">
+<!ENTITY iproute2-md5 "f455fce014fefefe26c05f9b9479440c">
 <!ENTITY iproute2-version "2.6.11">
-<!ENTITY iproute2-cvs-ver "050314">
+<!ENTITY iproute2-cvs-ver "050330">
 <!ENTITY iproute2-package "iproute2-&iproute2-version;-&iproute2-cvs-ver;.tar.bz2">
 <!ENTITY iproute2-directory "iproute2-&iproute2-version;">
 
@@ -173,8 +173,8 @@
 <!ENTITY less-package "less-&less-version;.tar.bz2">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "1e2fd3d726616213312f01b4b7055192">
-<!ENTITY lfs-bootscripts-version "3.1.0">
+<!ENTITY lfs-bootscripts-md5 "494e8eff00a4e83100e3bd13707756e0">
+<!ENTITY lfs-bootscripts-version "3.2.0">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
@@ -199,8 +199,8 @@
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
 <!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
 
-<!ENTITY m4-md5 "d09ad5eec0156be29c04f602c1c85512">
-<!ENTITY m4-version "1.4.2">
+<!ENTITY m4-md5 "1f7d7eba70a0525c44c2edc3998925c7">
+<!ENTITY m4-version "1.4.3">
 <!ENTITY m4-package "m4-&m4-version;.tar.bz2">
 <!ENTITY m4-directory "m4-&m4-version;">
 
