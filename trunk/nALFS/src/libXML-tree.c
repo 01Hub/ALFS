@@ -131,18 +131,20 @@ static const struct handler_attribute *find_handler_attribute(const handler_info
 	return NULL;
 }
 
-static const char *find_handler_parameter(const handler_info_s *handler,
-					  const char *name)
+static const struct handler_parameter *find_handler_parameter(const handler_info_s *handler,
+							      const char *name)
 {
 	int i;
-	const char *param;
+	const struct handler_parameter *param;
 
 	if (!handler->parameters)
 		return NULL;
 
-	for (i = 0; (param = handler->parameters[i]); ++i)
-		if (strcmp(param, name) == 0)
+	for (i = 0; (handler->parameters[i].name); ++i) {
+		param = &handler->parameters[i];
+		if (strcmp(param->name, name) == 0)
 			return param;
+	}
 
 	return NULL;
 }
@@ -168,7 +170,7 @@ static int parse_node_attributes(xmlNodePtr node, element_s *element)
 			continue;
 		}
 		
-		content = attr->children->content;
+		content = (const char *) attr->children->content;
 
 		if ((!handler_attr->content_optional) && (strlen(content) == 0)) {
 			Nprint_err("<%s>: \"%s\" attribute cannot be empty.", handler->name, handler_attr->name);
@@ -187,6 +189,8 @@ static int parse_node_parameters(xmlNodePtr node, element_s *element)
 {
 	handler_info_s *handler = element->handler;
 	xmlNodePtr child;
+	const struct handler_parameter *param;
+	const char *content;
 	int result;
 
 	/* Check all elements inside the node to see if they are
@@ -198,15 +202,22 @@ static int parse_node_parameters(xmlNodePtr node, element_s *element)
 		if (!USED_NODE(child))
 			continue;
 
-		if (find_handler_parameter(handler,
-					   (const char *) child->name)) {
-			result = handler->parse_parameter(element,
-							  (const char *) child->name,
-							  (const char *) child->children->content);
+		param = find_handler_parameter(handler,
+					       (const char *) child->name);
+
+		if (param) {
+			content = (const char *) child->children->content;
+
+			if ((!param->content_optional) && (strlen(content) == 0)) {
+				Nprint_err("<%s>: \"%s\" parameter cannot be empty.", handler->name, param->name);
+				return 1;
+			}
+
+			result = handler->parameter(element, param, content);
 			if (result)
 				return result;
 		} else if (!find_handler(child->name, syntax_version)) {
-			Nprint_warn("<%s>: <%s> parameter is not supported.", 
+			Nprint_warn("<%s>: <%s> not supported here.", 
 				    handler->name,
 				    (const char *) child->name);
 		}
@@ -233,15 +244,15 @@ static int make_handler_element(xmlNodePtr node, element_s *element)
 		/* If the handler cares about its content, pass it in
 		   and check the result. */
 
-		if (handler->parse_content) {
+		if (handler->content) {
 			xmlChar *content;
 
 			if (node->children
 			    && node->children->type == XML_TEXT_NODE
 			    && node->children->next == NULL) {
 				if ((content = xmlNodeGetContent(node))) {
-					result = handler->parse_content(element,
-									content);
+					result = handler->content(element,
+								  content);
 					xfree(content);
 					if (result)
 						return result;
@@ -326,7 +337,7 @@ static INLINE element_s *create_element(xmlNodePtr node, element_s *parent)
 		case XML_COMMENT_NODE:
 			el->name = xstrdup("comment");
 			el->type = TYPE_COMMENT;
-			el->handler = find_handler("__comment", "all")->info;
+			el->handler = find_handler("comment", syntax_version)->info;
 			if (make_handler_element(node, el)) {
 				free_element(el);
 				el = NULL;

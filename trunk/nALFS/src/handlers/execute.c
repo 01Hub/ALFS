@@ -46,8 +46,12 @@
 
 #if HANDLER_SYNTAX_2_0
 
-static const char *execute_parameters_ver2[] =
-{ "base", "command", "param", NULL };
+static const struct handler_parameter execute_parameters_ver2[] = {
+	{ .name = "base" },
+	{ .name = "command" },
+	{ .name = "param" },
+	{ .name = NULL }
+};
 
 static int execute_main_ver2(element_s * const el)
 {
@@ -96,8 +100,12 @@ static char *execute_data_ver2(const element_s * const el,
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
 
-static const char *execute_parameters_ver3[] =
-{ "param", "prefix", NULL };
+static const struct handler_parameter execute_parameters_ver3[] = {
+	{ .name = "prefix" },
+	{ .name = "param" },
+	{ .name = NULL }
+};
+
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
 
 static int execute_main_ver3(element_s * const el)
@@ -157,8 +165,13 @@ static char *execute_data_ver3(const element_s * const el,
 
 #ifdef HANDLER_SYNTAX_3_2
 
-static const char *execute_parameters_ver3_2[] =
-{ "param", "prefix", "content", NULL };
+static const struct handler_parameter execute_parameters_ver3_2[] = {
+	{ .name = "prefix" },
+	{ .name = "param" },
+	{ .name = "content" },
+	{ .name = NULL }
+};
+
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
 
 static int execute_main_ver3_2(element_s * const el)

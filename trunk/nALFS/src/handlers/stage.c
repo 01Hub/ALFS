@@ -346,10 +346,11 @@ static int stage_invalid_child(const element_s * const element,
 	}
 
 	return !(child->handler->type & (HTYPE_NORMAL |
-			 HTYPE_TEXTDUMP |
-			 HTYPE_PACKAGE |
-			 HTYPE_EXECUTE |
-			 HTYPE_STAGE));
+					 HTYPE_COMMENT |
+					 HTYPE_TEXTDUMP |
+					 HTYPE_PACKAGE |
+					 HTYPE_EXECUTE |
+					 HTYPE_STAGE));
 }
 
 static int stage_main(element_s * const element)
@@ -442,12 +443,29 @@ static int else_main(element_s * const el)
 
 /* <stageinfo> handler */
 
-static const char *stageinfo_parameters[] = { "base", "root", "user", NULL };
+enum stageinfo_parameter_types {
+	STAGEINFO_BASE,
+	STAGEINFO_ROOT,
+	STAGEINFO_USER,
+	STAGEINFO_SHELL,
+};
+
+static const struct handler_parameter stageinfo_parameters[] = {
+	{ .name = "base", .private = STAGEINFO_BASE },
+	{ .name = "root", .private = STAGEINFO_ROOT },
+	{ .name = "user", .private = STAGEINFO_USER },
+	{ .name = NULL }
+};
 
 #if HANDLER_SYNTAX_3_2
 
-static const char *stageinfo_parameters_3_2[] = { "base", "root", "user",
-						  "shell", NULL };
+static const struct handler_parameter stageinfo_parameters_3_2[] = {
+	{ .name = "base", .private = STAGEINFO_BASE },
+	{ .name = "root", .private = STAGEINFO_ROOT },
+	{ .name = "user", .private = STAGEINFO_USER },
+	{ .name = "shell", .private = STAGEINFO_SHELL },
+	{ .name = NULL }
+};
 
 #endif
 
@@ -486,32 +504,27 @@ static void stageinfo_free(const element_s * const element)
 }
 
 static int stageinfo_parameter(const element_s * const element,
-			       const char * const parameter,
+			       const struct handler_parameter * const param,
 			       const char * const value)
 {
 	struct stageinfo_data *data = (struct stageinfo_data *) element->handler_data;
 
-	if (strcmp(parameter, "base") == 0)
-		if ((data->base = parse_string_parameter(value,
-							 "<stageinfo>: \"base\" cannot be empty.")))
-			return 0;
-
-	if (strcmp(parameter, "user") == 0)
-		if ((data->user = parse_string_parameter(value,
-							 "<stageinfo>: \"user\" cannot be empty.")))
-			return 0;
-
-	if (strcmp(parameter, "root") == 0)
-		if ((data->root = parse_string_parameter(value,
-							 "<stageinfo>: \"root\" cannot be empty.")))
-			return 0;
-
-	if (strcmp(parameter, "shell") == 0)
-		if ((data->shell = parse_string_parameter(value,
-							  "<stageinfo>: \"shell\" cannot be empty.")))
-			return 0;
-
-	return 1;
+	switch (param->private) {
+	case STAGEINFO_BASE:
+		data->base = xstrdup(value);
+		return 0;
+	case STAGEINFO_USER:
+		data->user = xstrdup(value);
+		return 0;
+	case STAGEINFO_ROOT:
+		data->root = xstrdup(value);
+		return 0;
+	case STAGEINFO_SHELL:
+		data->shell = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
 }
 
 static int stageinfo_invalid_child(const element_s * const element,
@@ -759,7 +772,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = stageinfo_setup,
 		.free = stageinfo_free,
 		.parameters = stageinfo_parameters,
-		.parse_parameter = stageinfo_parameter,
+		.parameter = stageinfo_parameter,
 		.invalid_child = stageinfo_invalid_child,
 	},
 	{
@@ -780,7 +793,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = variable_free,
 		.attributes = variable_attributes,
 		.attribute = variable_attribute,
-		.parse_content = variable_content,
+		.content = variable_content,
 		.invalid_data = variable_invalid_data,
 		.invalid_child = variable_invalid_child,
 	},
@@ -838,7 +851,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = stageinfo_setup,
 		.free = stageinfo_free,
 		.parameters = stageinfo_parameters,
-		.parse_parameter = stageinfo_parameter,
+		.parameter = stageinfo_parameter,
 		.invalid_child = stageinfo_invalid_child,
 	},
 	{
@@ -859,7 +872,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = variable_free,
 		.attributes = variable_attributes,
 		.attribute = variable_attribute,
-		.parse_content = variable_content,
+		.content = variable_content,
 		.invalid_data = variable_invalid_data,
 		.invalid_child = variable_invalid_child,
 	},
@@ -917,7 +930,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stageinfo_free,
 		.alloc_data = stageinfo_data,
 		.parameters = stageinfo_parameters_3_2,
-		.parse_parameter = stageinfo_parameter,
+		.parameter = stageinfo_parameter,
 		.invalid_child = stageinfo_invalid_child,
 	},
 	{
@@ -938,7 +951,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = variable_free,
 		.attributes = variable_attributes,
 		.attribute = variable_attribute,
-		.parse_content = variable_content,
+		.content = variable_content,
 		.invalid_data = variable_invalid_data,
 		.invalid_child = variable_invalid_child,
 	},

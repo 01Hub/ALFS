@@ -31,6 +31,7 @@
 
 
 typedef enum handler_type_e {
+	HTYPE_COMMENT = (1 << 0),
 	HTYPE_NORMAL = (1 << 1),
 	HTYPE_PACKAGE = (1 << 2),
 	HTYPE_TEXTDUMP = (1 << 3),
@@ -57,6 +58,12 @@ struct handler_attribute {
 	const int content_optional;
 };
 
+struct handler_parameter {
+	const char * const name;
+	const int private;		/* Internal to handler. */
+	const int content_optional;
+};
+
 typedef char *(*handler_data_f)(const element_s * const element,
 				const handler_data_e data_requested);
 typedef int (*handler_f)(element_s * const element);
@@ -66,11 +73,11 @@ typedef void (*handler_free)(const element_s * const element);
 typedef int (*handler_attribute)(const element_s * const element,
 				 const struct handler_attribute * const attr,
 				 const char * const value);
-typedef int (*handler_parse)(const element_s * const element,
-			     const char * const name,
-			     const char * const value);
-typedef int (*handler_parse_content)(const element_s * const element,
-				     const char * const content);
+typedef int (*handler_parameter)(const element_s * const element,
+				 const struct handler_parameter * const param,
+				 const char * const value);
+typedef int (*handler_content)(const element_s * const element,
+			       const char * const content);
 typedef int (*handler_invalid_data)(const element_s * const element);
 typedef int (*handler_invalid_child)(const element_s * const element,
 				     const element_s * const child);
@@ -79,7 +86,7 @@ typedef struct handler_info_s {
 	const char *name;		/* Name of the element it handles. */
 	const char *description;	/* Short description. */
 	const char *syntax_version;	/* Syntax version string. */
-	const char **parameters;	/* Parameters allowed. */
+	const struct handler_parameter *parameters; /* Parameters allowed. */
 	const struct handler_attribute *attributes; /* Attributes allowed. */
 
 	handler_type_e type;
@@ -109,8 +116,8 @@ typedef struct handler_info_s {
 	handler_invalid_data invalid_data; /* Validate private data. */
 	handler_invalid_child invalid_child; /* Validate potential child. */
 	handler_attribute attribute;
-	handler_parse parse_parameter;
-	handler_parse_content parse_content;
+	handler_parameter parameter;
+	handler_content content;
 } handler_info_s;
 
 
@@ -144,8 +151,6 @@ void check_options(int total, int *opts, const char *string_, element_s *el);
 char *append_param_elements(char **string, element_s *el);
 char *append_prefix_elements(char **string, element_s *el);
 
-char *parse_string_parameter(const char * const value,
-			     const char * const message);
 char *parse_string_content(const char * const value,
 			   const char * const message);
 

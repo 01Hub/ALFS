@@ -42,8 +42,12 @@
 
 #if HANDLER_SYNTAX_2_0
 
-static const char *package_parameters_ver2[] =
-{ "name", "version", "base", NULL };
+static const struct handler_parameter package_parameters_ver2[] = {
+	{ .name = "name" },
+	{ .name = "version" },
+	{ .name = "base" },
+	{ .name = NULL }
+};
 
 static int package_main_ver2(element_s * const el)
 {
@@ -219,18 +223,19 @@ static int parse_packageinfo(element_s *packageinfo)
 }
 
 
-static const char *package_parameters_ver3[] = { 
-	"packageinfo",
-	"description",
-	"list",
-	"item",
-	"para",
-	"requires",
-	"utilizes",
-	"name",
-	"version",
-	NULL
+static const struct handler_parameter package_parameters_ver3[] = {
+	{ .name = "name" },
+	{ .name = "version" },
+	{ .name = "packageinfo" },
+	{ .name = "description" },
+	{ .name = "list" },
+	{ .name = "item" },
+	{ .name = "para" },
+	{ .name = "requires" },
+	{ .name = "utilizes" },
+	{ .name = NULL }
 };
+
 // char *HANDLER_SYMBOL(attributes)[] = { "name", "version", "logfile", NULL };
 
 static int package_main_ver3(element_s * const el)

@@ -113,8 +113,11 @@ static int unpack_archive(element_s *element, const char *archive)
 
 #if HANDLER_SYNTAX_2_0
 
-static const char *unpack_parameters_ver2[] =
-{ "archive", "destination", NULL };
+static const struct handler_parameter unpack_parameters_ver2[] = {
+	{ .name = "archive" },
+	{ .name = "destination" },
+	{ .name = NULL }
+};
 
 static int unpack_main_ver2(element_s * const el)
 {
@@ -165,8 +168,13 @@ static int unpack_main_ver2(element_s * const el)
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
 
-static const char *unpack_parameters_ver3[] =
-{ "digest", "reference", "archive", "destination", NULL };
+static const struct handler_parameter unpack_parameters_ver3[] = {
+	{ .name = "archive" },
+	{ .name = "destination" },
+	{ .name = "digest" },
+	{ .name = "reference" },
+	{ .name = NULL }
+};
 
 static int unpack_main_ver3(element_s * const el)
 {
@@ -252,8 +260,12 @@ static int unpack_main_ver3(element_s * const el)
 
 #if HANDLER_SYNTAX_3_2
 
-static const char *unpack_parameters_ver3_2[] =
-{ "digest", "reference", "archive", NULL };
+static const struct handler_parameter unpack_parameters_ver3_2[] = {
+	{ .name = "archive" },
+	{ .name = "digest" },
+	{ .name = "reference" },
+	{ .name = NULL }
+};
 
 static int unpack_main_ver3_2(element_s * const el)
 {
