@@ -1,0 +1,38 @@
+<package name="ash" version="&ash-version;">
+
+    <stage name="Unpacking a package.">
+	<unpack>
+		<archive>&packages_dir;/&ash-package;</archive>
+		<destination>&build_dir;</destination>
+	</unpack>
+
+	<copy>
+		<source>&packages_dir;/&ash-patch;</source>
+		<destination>&build_dir;</destination>
+	</copy>
+    </stage>
+
+    <stage name="Installing a package.">
+        <stageinfo>
+		<base>&build_dir;/&ash-directory;</base>
+	</stageinfo>
+
+	<patch>
+		<param>-N</param>
+		<param>-p1</param>
+		<param>-i ../&ash-patch;</param>
+	</patch>
+
+	<make />
+
+	<execute command="install -m 755 sh /bin/ash" />
+	<execute command="install -m 644 sh.1 /usr/share/man/man1/ash.1" />
+
+    </stage>
+
+    <stage name="Clean-up.">
+	<remove>&build_dir;/&ash-directory;</remove>
+	<remove>&build_dir;/&ash-patch;</remove>
+    </stage>
+
+</package>

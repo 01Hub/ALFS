@@ -1,5 +1,10 @@
 <package name="tk" version="&tk-version;">
 
+    <packageinfo>
+        <utilizes><name>xfree</name></utilizes>
+        <utilizes><name>tk</name></utilizes>
+    </packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&tk-package;</archive>
