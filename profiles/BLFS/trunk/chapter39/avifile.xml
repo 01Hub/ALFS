@@ -63,8 +63,14 @@
       <stageinfo>
         <base>&build_dir;/&avifile-directory;</base>
       </stageinfo>
-      <execute command="install -d /usr/lib/avifile-&avifile-base-version;/win32" />
-      <execute command="tar -xzvf &packages_dir;/&avifile-binaries-package; -C /usr/lib/avifile-&avifile-base-version;" />
+      <mkdir>
+        <option>parents</option>
+	<name>/usr/lib/avifile-&avifile-base-version;/win32</name>
+      </mkdir>
+      <unpack>
+        <archive>&packages_dir;/&avifile-binaries-package;</archive>
+        <destination>/usr/lib/avifile-&avifile-base-version;</destination>
+      </unpack>
       <configure>
         <param>--prefix=/usr</param>
         <param>--with-win32-path=/usr/lib/avifile-&avifile-base-version;/win32</param>
