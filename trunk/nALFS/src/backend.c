@@ -34,6 +34,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <libgen.h>
+#include <sys/poll.h>
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -51,9 +52,26 @@
 
 #include "backend.h"
 
-
 static volatile int pause_now = 0;
+static volatile int got_sigchld = 0;
 
+static int stdout_pipe[2];
+static int stderr_pipe[2];
+static FILE *stdout_stream;
+static FILE *stderr_stream;
+
+static void got_SIGCHLD(int sig)
+{
+	(void)sig;
+
+	/* Nprint("got SIGCHLD"); */
+
+	got_sigchld = 1;
+
+	if (signal(SIGCHLD, got_SIGCHLD) == SIG_ERR) {
+		Fatal_error("enabling SIGCHLD failed");
+	}
+}
 
 void fatal_backend_error(const char *format, ...)
 {
@@ -90,8 +108,6 @@ static INLINE void toggle_pause(void)
 
 static INLINE void stop_ourselves(void)
 {
-	Stop_receiving_sigio();
-
 	log_stopped_execution();
 
 	exit(EXIT_FAILURE); /* TODO: Return something like "-STOPPED". */
@@ -150,6 +166,10 @@ static void nprint_backend(msg_id_e mid, const char *format, ...)
 	char raw_msg[MAX_DATA_MSG_LEN - 5];
 
 
+	if (mid == T_SYS && !*opt_show_system_output) {
+		return;
+	}
+
 	while (pause_now && mid == T_SYS) {
 		napms(1);
 	}
@@ -157,10 +177,6 @@ static void nprint_backend(msg_id_e mid, const char *format, ...)
 	va_start(ap, format);
 	vsnprintf(raw_msg, sizeof raw_msg, format, ap);
 	va_end(ap);
-
-	if (mid == T_SYS && !*opt_show_system_output) {
-		return;
-	}
 
 	sprintf(message, "\n%c: %s", msg_character(mid), raw_msg);
 
@@ -170,46 +186,67 @@ static void nprint_backend(msg_id_e mid, const char *format, ...)
 	}
 }
 
-static void signal_io(int sig)
-{
-	(void)sig;
-
-	/* Nprint("GOT SIGIO!"); */
-
-	handle_ctrl_msg();
-}
-
-static INLINE void read_descriptor(int pfd)
+static INLINE void wait_for_child_completion(void)
 {
 	char buf[MAX_DATA_MSG_LEN - 4];
-	FILE *fp;
+	struct pollfd pfd[3];
+	int status;
+	int poll_timeout = -1;
 
+	pfd[0].fd = stdout_pipe[0];
+	pfd[0].events = POLLIN | POLLPRI;
 
-	if ((fp = fdopen(pfd, "r")) == NULL) {
-		fatal_backend_error("fdopen() failed: %s", strerror(errno));
-	}
+	pfd[1].fd = stderr_pipe[0];
+	pfd[1].events = POLLIN | POLLPRI;
 
-	/* Start reading. */
-	while (fgets(buf, (int) sizeof buf, fp) != NULL) {
-		remove_new_line(buf);
+	pfd[2].fd = comm_get_socket(BACKEND_CTRL_SOCK);
+	pfd[2].events = POLLIN | POLLPRI;
 
-		Nprint_sys("%s", buf);
-	}
-
-	if (fclose(fp) == EOF) {
-		fatal_backend_error("fclose() failed: %s", strerror(errno));
+	while (1) {
+		/* If SIGCHLD has arrived, set timeout to zero so any remaining input
+		   can be read and flushed
+		*/
+		if (got_sigchld && poll_timeout)
+			poll_timeout = 0;
+		pfd[0].revents = 0;
+		pfd[1].revents = 0;
+		pfd[2].revents = 0;
+		status = poll(pfd, 3, poll_timeout);
+		if (status == -1) {
+			if (errno == EINTR)
+				continue;
+			Nprint_err("poll error: %s", strerror(errno));
+			continue;
+		}
+		if (status == 0) {
+			/* will only get here if timeout is zero, and no input is ready */
+			break;
+		}
+		if (pfd[0].revents & (POLLIN | POLLPRI)) {
+			if (fgets(buf, (int) sizeof buf, stdout_stream) != NULL) {
+				remove_new_line(buf);
+				Nprint_sys("%s", buf);
+			}
+		}
+		if (pfd[1].revents & (POLLIN | POLLPRI)) {
+			if (fgets(buf, (int) sizeof buf, stderr_stream) != NULL) {
+				remove_new_line(buf);
+				Nprint_sys("%s", buf);
+			}
+		}
+		if (pfd[2].revents & (POLLIN | POLLPRI)) {
+			handle_ctrl_msg();
+		}
 	}
 }
 
 int execute_direct_command(const char *command, char *const argv[])
 {
-	int status, pfd[2];
+	int status;
 	pid_t got_pid, command_pid = 0;
 
 
-	if (pipe(pfd)) {
-		fatal_backend_error("pipe() failed: %s", strerror(errno));
-	}
+	got_sigchld = 0;
 
 	command_pid = fork();
 
@@ -217,31 +254,11 @@ int execute_direct_command(const char *command, char *const argv[])
 		fatal_backend_error("fork() failed: %s", strerror(errno));
 
 	} else if (command_pid == 0) { /* Child. */
-		if (close(pfd[0])) { /* Child won't read. */
-			fatal_backend_error("close() failed: %s",
-				strerror(errno));
-		}
+		if (dup2(stdout_pipe[1], STDOUT_FILENO) == -1)
+			fatal_backend_error("dup2() failed: %s", strerror(errno));
 
-		/* Make pfd[1] command's stdout. */
-		if (pfd[1] != STDOUT_FILENO) {
-			if (dup2(pfd[1], STDOUT_FILENO) == -1) {
-				fatal_backend_error("dup2() failed: %s",
-					strerror(errno));
-			}
-		}
-
-		/* Make pfd[1] command's stderr. */
-		if (pfd[1] != STDERR_FILENO) {
-			if (dup2(pfd[1], STDERR_FILENO) == -1) {
-				fatal_backend_error("dup2() failed: %s",
-					strerror(errno));
-			}
-		}
-
-		if (close(pfd[1])) {
-			fatal_backend_error("close() failed: %s",
-				strerror(errno));
-		}
+		if (dup2(stdout_pipe[1], STDERR_FILENO) == -1)
+			fatal_backend_error("dup2() failed: %s", strerror(errno));
 
 		execvp(command, argv);
 
@@ -254,14 +271,7 @@ int execute_direct_command(const char *command, char *const argv[])
 	}
 
 	/* Parent. */
-
-	/* Parent won't write. */
-	if (close(pfd[1])) {
-		fatal_backend_error("close() failed: %s", strerror(errno));
-	}
-
-	/* Read command's stdout and stderr and send it to the frontend. */
-	read_descriptor(pfd[0]);
+	wait_for_child_completion();
 
 	if ((got_pid = waitpid(command_pid, &status, 0)) == -1) {
 		fatal_backend_error("waitpid() for %ld failed: %s",
@@ -455,38 +465,40 @@ int execute_children_filtered(element_s *element, handler_type_e type_filter)
 	return 0;
 }
 
-void set_receive_sigio(int s, int receive_it)
-{
-	if (receive_it) {
-		/* Start handling SIGIO. */
-		if (signal(SIGIO, signal_io) == SIG_ERR) {
-			fatal_backend_error("signal() failed");
-		}
-
-		/* Make child receive SIGIO when control message comes. */
-		if (fcntl(s, F_SETFL, O_ASYNC) == -1) {
-			Fatal_error("fcntl() failed: %s", strerror(errno));
-		}
-		if (fcntl(s, F_SETOWN, getpid()) == -1) {
-			Fatal_error("fcntl() failed: %s", strerror(errno));
-		}
-
-		/* Check if we missed something. */
-		handle_ctrl_msg();
-
-	} else {
-		/* Stop handling SIGIO. */
-		if (signal(SIGIO, SIG_IGN) == SIG_ERR) {
-			fatal_backend_error("signal() failed");
-		}
-	}
-}
-
 void start_backend(element_s *first)
 {
+	int result;
+
 	nprint = nprint_backend;
 
-	Start_receiving_sigio();
+	if (signal(SIGCHLD, got_SIGCHLD) == SIG_ERR) {
+		Fatal_error("enabling SIGCHLD failed");
+	}
 
-	exit(execute_children(first));
+	if (pipe(stdout_pipe)) {
+		fatal_backend_error("pipe() for stdout failed: %s", strerror(errno));
+	}
+
+	if (pipe(stderr_pipe)) {
+		fatal_backend_error("pipe() for stderr failed: %s", strerror(errno));
+	}
+
+	if ((stdout_stream = fdopen(stdout_pipe[0], "r")) == NULL) {
+		fatal_backend_error("fdopen() for stdout failed: %s", strerror(errno));
+	}
+
+	if ((stderr_stream = fdopen(stderr_pipe[0], "r")) == NULL) {
+		fatal_backend_error("fdopen() for stdout failed: %s", strerror(errno));
+	}
+
+	result = execute_children(first);
+
+	(void) fclose(stderr_stream);
+	(void) fclose(stdout_stream);
+	(void) close(stdout_pipe[1]);
+	(void) close(stdout_pipe[0]);
+	(void) close(stderr_pipe[1]);
+	(void) close(stderr_pipe[0]);
+
+	exit(result);
 }
