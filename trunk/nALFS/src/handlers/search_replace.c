@@ -196,7 +196,7 @@ static int search_replace_main(const element_s * const element)
 	if (change_to_base_dir(element, data->base, 1))
 		return -1;
 
-	Nprint_h("Searching %s (%s)", data->file);
+	Nprint_h("Searching %s", data->file);
 	Nprint_h("    for \"%s\"", data->find);
 	Nprint_h("    and replacing with \"%s\".", data->replace ? data->replace : "");
 
@@ -287,7 +287,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.is_action = 1,
 		.setup = search_replace_setup,
 		.free = search_replace_free,
-		.attribute = search_replace_attribute,
 		.parameter = search_replace_parameter,
 		.valid_data = search_replace_valid_data,
 	},
