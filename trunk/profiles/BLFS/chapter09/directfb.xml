@@ -9,6 +9,9 @@
 		<utilizes><name>sdl</name></utilizes>
 		<utilizes><name>libmpeg</name></utilizes>
 		<utilizes><name>pkgconfig</name></utilizes>
+		<utilizes><name>imlib2</name></utilizes>
+		<utilizes><name>openquicktime</name></utilizes>
+		<utilizes><name>avifile</name></utilizes>
         </packageinfo>
 
 
@@ -16,6 +19,10 @@
         <stage name="Unpacking a package">
 		<unpack>
 			<archive>&packages_dir;/&directfb-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+		<unpack>
+			<archive>&packages_dir;/&directfb-extra-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
@@ -34,12 +41,32 @@
 		<make >
 			<param>install</param>
 		</make>
+	</stage>
 
+	<stage name="Installing a package">
+		<stageinfo>
+			<base>&build_dir;/&directfb-extra-directory;</base>
+		</stageinfo>
+
+<!-- DOES NOT WORK YET - NEEDS TO COMPILE AVI BEFORE 
+
+		<configure>
+		        <param>-     -prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make >
+			<param>install</param>
+		</make>
+
+-->
 
 	</stage>
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&directfb-directory;</remove>
+		<remove>&build_dir;/&directfb-extra-directory;</remove>
 	</stage>
 
 </package>

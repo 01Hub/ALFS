@@ -13,7 +13,6 @@
 		</stageinfo>
 
 		<configure>
-			<param>./configure</param>
 			<param>--enable-static</param>
 			<param>--enable-shared</param>
 			<param>--prefix=/usr</param>

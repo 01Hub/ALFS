@@ -1,5 +1,15 @@
 <package name="imlib2" version="&imlib2-version;">
 
+        <packageinfo>
+                <requires><name>freetype</name></requires>
+                <requires><name>libjpeg</name></requires>
+                <requires><name>libpng</name></requires>
+
+		<utilizes><name>xfree</name></utilizes>
+		<utilizes><name>libtiff</name></utilizes>
+		<utilizes><name>libungif</name></utilizes>
+        </packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&imlib2-package;</archive>
