@@ -17,11 +17,6 @@
 			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-		        <source>&packages_dir;/&libfam-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 
@@ -33,7 +28,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&libfam-patch;</param>
+			<param>-i &packages_dir;/&libfam-patch;</param>
 		</patch>
 
 		<execute command="autoreconf -f -i" />

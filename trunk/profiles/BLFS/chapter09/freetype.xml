@@ -5,10 +5,6 @@
 			<archive>&packages_dir;/&freetype-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-		<copy>
-		        <source>&packages_dir;/&freetype-bytecode-interpreter-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing">
@@ -19,7 +15,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&freetype-bytecode-interpreter-patch;</param>
+			<param>-i &packages_dir;/&freetype-bytecode-interpreter-patch;</param>
 		</patch>
 
 		<configure>

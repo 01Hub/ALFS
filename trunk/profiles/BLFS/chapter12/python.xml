@@ -15,10 +15,6 @@
 			<archive>&packages_dir;/&python-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-		<copy>
-		        <source>&packages_dir;/&python-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing">
@@ -30,7 +26,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&python-patch;</param>
+			<param>-i &packages_dir;/&python-patch;</param>
 		</patch>
 
 		<configure>

@@ -15,11 +15,6 @@
 		<mkdir>
 		        <name>&build_dir;/gcc-build</name>
 		</mkdir>
-
-		<copy>
-		        <source>&packages_dir;/&gcc-full-patch1;</source>
-		        <destination>&build_dir;</destination>
-		</copy>		
 	</stage>
 
 	<stage name="Installing">
@@ -36,7 +31,7 @@
 		<patch base="&build_dir;/&gcc-full-directory;">
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&gcc-full-patch1;</param>
+			<param>-i &packages_dir;/&gcc-full-patch1;</param>
 		</patch>
 
 		<search_replace base="&build_dir;/&gcc-full-directory;">

@@ -5,14 +5,6 @@
 			<archive>&packages_dir;/&gcc295-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-		        <source>&packages_dir;/&gcc295-patch1;</source>
-			<source>&packages_dir;/&gcc295-patch2;</source>
-			<source>&packages_dir;/&gcc295-patch3;</source>
-		        <destination>&build_dir;</destination>
-		</copy>
-
 		<mkdir>
 		        <name>&build_dir;/gcc-build</name>
 		</mkdir>
@@ -26,19 +18,19 @@
 		<patch base="&build_dir;/&gcc295-directory;">
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&gcc295-patch1;</param>
+			<param>-i &packages_dir;/&gcc295-patch1;</param>
 		</patch>
 
 		<patch base="&build_dir;/&gcc295-directory;">
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&gcc295-patch2;</param>
+			<param>-i &packages_dir;/&gcc295-patch2;</param>
 		</patch>
 
 		<patch base="&build_dir;/&gcc295-directory;">
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&gcc295-patch3;</param>
+			<param>-i &packages_dir;/&gcc295-patch3;</param>
 		</patch>
 
 		<configure command="../&gcc295-directory;/configure">
