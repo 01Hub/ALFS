@@ -2973,7 +2973,8 @@ static int write_element_info(
 	
 	Xwprintw(windows.main->name, "Element name  : %s\n\n", el->name);
 
-	/* Print attributes (if any). */
+/* TODO: get content from handler */
+	/* Print attributes (if any).
 	if (el->attr) {
 		for (i = 0; el->attr[i]; i += 2) {
 			Xwprintw(windows.main->name, "%s = %s\n",
@@ -2983,6 +2984,7 @@ static int write_element_info(
 	} else {
 		Xwaddstr(windows.main->name, "No attributes.\n");
         }
+	*/
 
 	Xwaddch(windows.main->name, '\n');
 
@@ -3507,6 +3509,7 @@ static int search_matches(element_s *el, const char *string)
 		}
 	}
 
+/* TODO: handle content from handler
 	if ((what & SEARCH_ATTRIBUTES) && el->attr) {
 		int i;
 
@@ -3516,6 +3519,7 @@ static int search_matches(element_s *el, const char *string)
 			}
 		}
 	}
+*/
 
 	if ((what & SEARCH_CONTENT) && el->content) {
 		if (xstrcasestr(el->content, string + offset)) {

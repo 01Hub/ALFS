@@ -308,7 +308,8 @@ static INLINE void save_changes(element_s *el, FIELD **fields)
 
 	xfree(value);
 
-
+/* TODO: figure out if this is even relevant */
+#if 0
 	/* Update attributes. */
 	for (i = 6; fields[i]; i += 2) {
 		attr = field_to_text(field_buffer(fields[i], 0));
@@ -343,6 +344,7 @@ static INLINE void save_changes(element_s *el, FIELD **fields)
 		xfree(value);
 		xfree(attr);
 	}
+#endif
 }
 
 typedef enum quit_type_e {
@@ -445,7 +447,9 @@ static INLINE FIELD **create_fields(element_s *el)
 
 	fields[num] = NULL;
 
+/* TODO: figure out if this is relevant */
 	/* Add fields for attributes (if any). */
+#if 0
 	if (el->attr) {
 		for (i = 0; el->attr[i]; i += 2) {
 			int row = (i/2 % windows.main->lines);
@@ -466,6 +470,7 @@ static INLINE FIELD **create_fields(element_s *el)
 			}
 		}
 	}
+#endif
 
 	return fields;
 }
