@@ -159,10 +159,8 @@ static int parse_node_parameters(xmlNodePtr node, element_s *element)
 			const char *content = NULL;
 			xmlNodePtr free_child;
 
-			if (child->children &&
-			    child->children->type == XML_TEXT_NODE &&
-			    child->children->next == NULL)
-				xml_content = xmlNodeGetContent(child);
+			if (child->children && xmlNodeIsText(child->children))
+				xml_content = xmlNodeGetContent(child->children);
 
 			if (xml_content) {
 				if (param->untrimmed) {
@@ -231,10 +229,9 @@ static int make_handler_element(xmlNodePtr node, element_s *element)
 
 			if (node->type == XML_COMMENT_NODE) {
 				content = xmlNodeGetContent(node);
-			} else if (node->children
-				   && node->children->type == XML_TEXT_NODE
-				   && node->children->next == NULL) {
-				content = xmlNodeGetContent(node);
+			} else if (node->children &&
+				   xmlNodeIsText(node->children)) {
+				content = xmlNodeGetContent(node->children);
 			}
 			if (content) {
 				result = handler->content(element,
