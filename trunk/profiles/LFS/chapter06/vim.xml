@@ -26,6 +26,12 @@
 
 		<make />
 
+<!--
+		<make>
+			<param>test</param>
+		</make>
+-->
+
 		<make>
 			<param>install</param>
 		</make>
