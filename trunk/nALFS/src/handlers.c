@@ -157,6 +157,14 @@ static INLINE void create_new_handler(handler_info_s *hi, lt_dlhandle handle)
 	handlers.list[handlers.cnt-1] = handler;
 }
 
+/* Replaces an existing handler with a new one. */
+static INLINE void replace_handler(handler_s *existing, handler_info_s *hi,
+				   lt_dlhandle handle)
+{
+	existing->info = hi;
+	existing->handle = handle;
+}
+
 static int load_handler(lt_dlhandle handle, lt_ptr data)
 {
 	int i;
@@ -173,24 +181,40 @@ static int load_handler(lt_dlhandle handle, lt_ptr data)
 	/* Go through handler_info[].  */
 	for (i = 0; (handler_info[i].name); ++i) {
 		handler_info_s *hi = &handler_info[i];
+		handler_s *found;
 
-		if (find_handler(hi->name, hi->syntax_version)) {
-			Nprint_warn("The handler already exists, "
-				"skipping it: %s (%s)",
-				hi->name, hi->syntax_version);
-			continue;
+		if (found = find_handler(hi->name, hi->syntax_version)) {
+			if (found->info->priority >= hi->priority) {
+				Nprint_warn("The handler already exists, "
+					    "skipping it: %s (%s)",
+					    hi->name, hi->syntax_version);
+			} else {
+				Nprint("Replacing handler %s (%s) "
+				       "priority %d",
+				       found->info->name,
+				       found->info->syntax_version,
+				       found->info->priority);
+				Nprint("with %s (%s) priority %d",
+				       hi->name,
+				       hi->syntax_version,
+				       hi->priority);
+				replace_handler(found, hi, handle);
+			}
 		}
-
-		create_new_handler(hi, handle);
-
-		/* Update parameters. TODO: This can be obtained through
-		 * el->handler->info->parameters.  Plus, it doesn't
-		 * know anything about syntax versions.
-		 */
-		add_new_parameters(hi->parameters);
+		else
+			create_new_handler(hi, handle);
 	}
 
 	return 0;
+}
+
+static INLINE void add_all_parameters(void)
+{
+	int i;
+
+	for (i = 0; i < handlers.cnt; ++i) {
+		add_new_parameters(handlers.list[i]->info->parameters);
+	}
 }
 
 static int foreachfile_callback(const char *filename, lt_ptr data)
@@ -228,6 +252,7 @@ int load_all_handlers(void)
 #endif
 
 	lt_dlforeach(&load_handler, NULL);
+	add_all_parameters();
 	Nprint("Total %d handlers loaded.", handlers.cnt);
 	Nprint("Total %d parameters found.", number_of_parameters());
 
