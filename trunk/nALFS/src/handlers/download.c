@@ -116,8 +116,8 @@ static int download_attribute(const element_s * const element,
 }
 
 static int download_parameter(const element_s * const element,
-			    const struct handler_parameter * const param,
-			    const char * const value)
+			      const struct handler_parameter * const param,
+			      const char * const value)
 {
 	struct download_data *data = (struct download_data *) element->handler_data;
 
@@ -150,24 +150,24 @@ static int download_parameter(const element_s * const element,
 	}
 }
 
-static int download_invalid_data(const element_s * const element)
+static int download_valid_data(const element_s * const element)
 {
 	struct download_data *data = (struct download_data *) element->handler_data;
 
 	if (!data->file) {
 		Nprint_err("<download>: \"file\" must be specified.");
-		return 1;
+		return 0;
 	}
 
 	if (!data->destination) {
 		Nprint_err("<download>: \"destination\" must be specified.");
-		return 1;
+		return 0;
 	}
 
-	return 0;
+	return 1;
 }
 
-static int download_invalid_child(const element_s * const element,
+static int download_valid_child(const element_s * const element,
 				const element_s * const child)
 {
 	struct download_data *data = (struct download_data *) element->handler_data;
@@ -175,14 +175,14 @@ static int download_invalid_child(const element_s * const element,
 	if (child->handler->type & HTYPE_DIGEST) {
 		if (data->digest) {
 			Nprint_err("<download>: only one <digest> allowed.");
-			return 1;
+			return 0;
 		}
 
 		data->digest = child;
-		return 0;
+		return 1;
 	}
 
-	return 1;
+	return 0;
 }
 
 static int download_common(const element_s * const element)
@@ -274,13 +274,13 @@ static const struct handler_attribute download_attributes_v3_2[] = {
 	{ .name = NULL }
 };
 
-static int download_invalid_data_v3_2(const element_s * const element)
+static int download_valid_data_v3_2(const element_s * const element)
 {
 	struct download_data *data = (struct download_data *) element->handler_data;
 
 	if (!data->file) {
 		Nprint_err("<download>: \"file\" must be specified.");
-		return 1;
+		return 0;
 	}
 
 	if (!data->base) {
@@ -288,13 +288,13 @@ static int download_invalid_data_v3_2(const element_s * const element)
 
 		if (!base) {
 			Nprint_err("<download>: \"base\" must be specified at or above this element.");
-			return 1;
+			return 0;
 		} else {
 			xfree(base);
 		}
 	}
 
-	return 0;
+	return 1;
 }
 
 static int download_main_v3_2(const element_s * const element)
@@ -327,8 +327,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = download_setup,
 		.free = download_free,
 		.parameter = download_parameter,
-		.invalid_child = download_invalid_child,
-		.invalid_data = download_invalid_data,
+		.valid_child = download_valid_child,
+		.valid_data = download_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -345,8 +345,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = download_setup,
 		.free = download_free,
 		.parameter = download_parameter,
-		.invalid_child = download_invalid_child,
-		.invalid_data = download_invalid_data_v3_2,
+		.valid_child = download_valid_child,
+		.valid_data = download_valid_data_v3_2,
 		.attribute = download_attribute,
 	},
 #endif

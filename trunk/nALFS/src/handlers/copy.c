@@ -194,21 +194,21 @@ static int copy_parameter(const element_s * const element,
 	}
 }
 
-static int copy_invalid_data(const element_s * const element)
+static int copy_valid_data(const element_s * const element)
 {
 	struct copy_data *data = (struct copy_data *) element->handler_data;
 
 	if (data->source_count == 0) {
 		Nprint_err("<copy>: <source> must be specified.");
-		return 1;
+		return 0;
 	}
 
 	if (!data->destination) {
 		Nprint_err("<copy>: <destination> must be specified.");
-		return 1;
+		return 0;
 	}
 
-	return 0;
+	return 1;
 }
 
 #if HANDLER_SYNTAX_2_0
@@ -362,7 +362,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = copy_setup,
 		.free = copy_free,
 		.parameter = copy_parameter,
-		.invalid_data = copy_invalid_data,
+		.valid_data = copy_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -379,7 +379,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = copy_free,
 		.parameter = copy_parameter,
 		.attribute = copy_attribute,
-		.invalid_data = copy_invalid_data,
+		.valid_data = copy_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -396,7 +396,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = copy_free,
 		.parameter = copy_parameter,
 		.attribute = copy_attribute,
-		.invalid_data = copy_invalid_data,
+		.valid_data = copy_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -414,7 +414,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = copy_free,
 		.parameter = copy_parameter,
 		.attribute = copy_attribute,
-		.invalid_data = copy_invalid_data,
+		.valid_data = copy_valid_data,
 	},
 #endif
 	{

@@ -334,26 +334,26 @@ static int stage_attribute(const element_s * const element,
 	}
 }
 
-static int stage_invalid_child(const element_s * const element,
-			       const element_s * const child)
+static int stage_valid_child(const element_s * const element,
+			     const element_s * const child)
 {
 	struct stage_data *data = (struct stage_data *) element->handler_data;
 
 	if (child->handler->type & HTYPE_STAGEINFO) {
 		if (data->stageinfo) {
 			Nprint_err("<stage>: only one <stageinfo> allowed.");
-			return 1;
+			return 0;
 		}
 
 		data->stageinfo = child;
-		return 0;
+		return 1;
 	}
 
-	return !(child->handler->type & (HTYPE_NORMAL |
-					 HTYPE_COMMENT |
-					 HTYPE_TEXTDUMP |
-					 HTYPE_PACKAGE |
-					 HTYPE_EXECUTE));
+	return child->handler->type & (HTYPE_NORMAL |
+				       HTYPE_COMMENT |
+				       HTYPE_TEXTDUMP |
+				       HTYPE_PACKAGE |
+				       HTYPE_EXECUTE);
 }
 
 static int stage_main(const element_s * const element)
@@ -546,16 +546,16 @@ static int stageinfo_parameter(const element_s * const element,
 	}
 }
 
-static int stageinfo_invalid_child(const element_s * const element,
-				   const element_s * const child)
+static int stageinfo_valid_child(const element_s * const element,
+				 const element_s * const child)
 {
 	(void) element;
 
 	if (child->handler->main != environment_main) {
-		return 1;
+		return 0;
 	}
 
-	return 0;
+	return 1;
 }
 
 static int stageinfo_main(const element_s * const element)
@@ -611,16 +611,16 @@ static char *stageinfo_data(const element_s * const element,
 
 /* <environment> handler */
 
-static int environment_invalid_child(const element_s * const element,
-				     const element_s * const child)
+static int environment_valid_child(const element_s * const element,
+				   const element_s * const child)
 {
 	(void) element;
 
 	if (child->handler->main != variable_main) {
-		return 1;
+		return 0;
 	}
 
-	return 0;
+	return 1;
 }
 
 static int environment_main(const element_s * const element)
@@ -722,31 +722,31 @@ static int variable_content(const element_s * const element,
 	return 0;
 }
 
-static int variable_invalid_data(const element_s * const element)
+static int variable_valid_data(const element_s * const element)
 {
 	struct variable_data *data = (struct variable_data *) element->handler_data;
 
 	if (!data->name) {
 		Nprint_err("<variable>: \"name\" must be specified.");
-		return 1;
+		return 0;
 	}
 
 	if (!data->value &&
 	    ((data->mode == VAR_APPEND) || (data->mode == VAR_PREPEND))) {
 		Nprint_err("<variable>: content cannot be empty if mode is prepend or append.");
-		return 1;
+		return 0;
 	}
 
-	return 0;
+	return 1;
 }
 
-static int variable_invalid_child(const element_s * const element,
-				  const element_s * const child)
+static int variable_valid_child(const element_s * const element,
+				const element_s * const child)
 {
 	(void) element;
 	(void) child;
 
-	return 1;
+	return 0;
 }
 
 static int variable_main(const element_s * const element)
@@ -787,7 +787,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stage_free,
 		.attributes = stage_attributes,
 		.attribute = stage_attribute,
-		.invalid_child = stage_invalid_child,
+		.valid_child = stage_valid_child,
 	},
 	{
 		.name = "stageinfo",
@@ -800,7 +800,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stageinfo_free,
 		.parameters = stageinfo_parameters,
 		.parameter = stageinfo_parameter,
-		.invalid_child = stageinfo_invalid_child,
+		.valid_child = stageinfo_valid_child,
 	},
 	{
 		.name = "environment",
@@ -808,7 +808,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.0",
 		.type = HTYPE_NORMAL,
 		.main = environment_main,
-		.invalid_child = environment_invalid_child,
+		.valid_child = environment_valid_child,
 	},
 	{
 		.name = "variable",
@@ -821,8 +821,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attributes = variable_attributes,
 		.attribute = variable_attribute,
 		.content = variable_content,
-		.invalid_data = variable_invalid_data,
-		.invalid_child = variable_invalid_child,
+		.valid_data = variable_valid_data,
+		.valid_child = variable_valid_child,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -838,7 +838,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stage_free,
 		.attributes = stage_attributes,
 		.attribute = stage_attribute,
-		.invalid_child = stage_invalid_child,
+		.valid_child = stage_valid_child,
 	},
 	{
 		.name = "then",
@@ -852,7 +852,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stage_free,
 		.attributes = stage_attributes,
 		.attribute = stage_attribute,
-		.invalid_child = stage_invalid_child,
+		.valid_child = stage_valid_child,
 	},
 	{
 		.name = "else",
@@ -866,7 +866,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stage_free,
 		.attributes = stage_attributes,
 		.attribute = stage_attribute,
-		.invalid_child = stage_invalid_child,
+		.valid_child = stage_valid_child,
 	},
 	{
 		.name = "stageinfo",
@@ -879,7 +879,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stageinfo_free,
 		.parameters = stageinfo_parameters,
 		.parameter = stageinfo_parameter,
-		.invalid_child = stageinfo_invalid_child,
+		.valid_child = stageinfo_valid_child,
 	},
 	{
 		.name = "environment",
@@ -887,7 +887,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.1",
 		.type = HTYPE_NORMAL,
 		.main = environment_main,
-		.invalid_child = environment_invalid_child,
+		.valid_child = environment_valid_child,
 	},
 	{
 		.name = "variable",
@@ -900,8 +900,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attributes = variable_attributes,
 		.attribute = variable_attribute,
 		.content = variable_content,
-		.invalid_data = variable_invalid_data,
-		.invalid_child = variable_invalid_child,
+		.valid_data = variable_valid_data,
+		.valid_child = variable_valid_child,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -917,7 +917,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stage_free,
 		.attributes = stage_attributes,
 		.attribute = stage_attribute,
-		.invalid_child = stage_invalid_child,
+		.valid_child = stage_valid_child,
 	},
 	{
 		.name = "then",
@@ -931,7 +931,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stage_free,
 		.attributes = stage_attributes,
 		.attribute = stage_attribute,
-		.invalid_child = stage_invalid_child,
+		.valid_child = stage_valid_child,
 	},
 	{
 		.name = "else",
@@ -945,7 +945,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stage_free,
 		.attributes = stage_attributes,
 		.attribute = stage_attribute,
-		.invalid_child = stage_invalid_child,
+		.valid_child = stage_valid_child,
 	},
 	{
 		.name = "stageinfo",
@@ -958,7 +958,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = stageinfo_data,
 		.parameters = stageinfo_parameters_3_2,
 		.parameter = stageinfo_parameter,
-		.invalid_child = stageinfo_invalid_child,
+		.valid_child = stageinfo_valid_child,
 	},
 	{
 		.name = "environment",
@@ -966,7 +966,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.2",
 		.type = HTYPE_NORMAL,
 		.main = environment_main,
-		.invalid_child = environment_invalid_child,
+		.valid_child = environment_valid_child,
 	},
 	{
 		.name = "variable",
@@ -979,8 +979,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attributes = variable_attributes,
 		.attribute = variable_attribute,
 		.content = variable_content,
-		.invalid_data = variable_invalid_data,
-		.invalid_child = variable_invalid_child,
+		.valid_data = variable_valid_data,
+		.valid_child = variable_valid_child,
 	},
 #endif
 	{
