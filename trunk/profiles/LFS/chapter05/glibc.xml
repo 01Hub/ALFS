@@ -44,7 +44,7 @@
 		</mkdir>
 
 		<execute command="touch">
-			<param>/tools/etc/&ld-config-file;</param>
+			<param>/tools/etc/ld.so.conf</param>
 		</execute>
 
 		<make>
