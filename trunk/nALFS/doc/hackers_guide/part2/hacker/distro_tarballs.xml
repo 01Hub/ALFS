@@ -17,7 +17,7 @@ that you want the distribution to be given (replace &quot;CVS&quot; with your de
 repository, as the CVS version should always report its version number as
 &quot;CVS&quot;.</para></listitem>
 
-<listitem><para>Run <command>sh ./bootstrap -d -p</command>. This command
+<listitem><para>Run <command>sh ./bootstrap -d CVS -g CVS -p 5.0</command>. This command
 will create the configure script and Makefile (as is normally done with a CVS
 checkout), but will also download, extract and rename the documentation files
 that will be included in the tarball. These files include the DTD (the current
@@ -25,7 +25,7 @@ CVS version), the syntax document describing the DTD, the user's guide and
 the hacker's guide. The latter three documents are currently downloaded from
 James Robertson's home directory on the LFS server, but see the URL_BASE
 variable in the bootstrap script to change the download source. In addition,
-the latest LFS profile will be downloaded so it can be included in the tarball.</para></listitem>
+the LFS-5.0 profile will be downloaded so it can be included in the tarball.</para></listitem>
 
 <listitem><para>Run <command>./configure</command> specifying any
 parameters your system needs to complete the configuration process.</para></listitem>
