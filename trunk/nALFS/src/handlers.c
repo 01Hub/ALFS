@@ -48,25 +48,25 @@ static struct handlers {
 	handler_s **list;
 } handlers = { 0, NULL };
 
-/* Embedded "handlers" for the root (profile) element and comment elements. */
+/* Embedded "handlers" for the profile and comment elements. */
 
-static int root_main(const element_s * const el)
+static int profile_main(const element_s * const el)
 {
 	(void) el;
 
 	return 0;
 }
 
-static int root_valid_child(const element_s * const element,
-			    const element_s * const child)
+static int profile_valid_child(const element_s * const element,
+			       const element_s * const child)
 {
 	(void) element;
 	(void) child;
 	return 1;
 }
 
-static char *root_data(const element_s * const element,
-		       const handler_data_e data_requested)
+static char *profile_data(const element_s * const element,
+			  const handler_data_e data_requested)
 {
 	(void) element;
 	switch (data_requested) {
@@ -80,6 +80,42 @@ static char *root_data(const element_s * const element,
 	return NULL;
 }
 
+struct comment_data {
+	char *content;
+};
+
+static int comment_setup(element_s * const element)
+{
+	struct comment_data *data;
+
+	if ((data = xmalloc(sizeof(struct comment_data))) == NULL)
+		return 1;
+
+	data->content = NULL;
+	element->handler_data = data;
+
+	return 0;
+}
+
+static void comment_free(const element_s * const element)
+{
+	struct comment_data *data = (struct comment_data *) element->handler_data;
+
+	xfree(data->content);
+	xfree(data);
+}
+
+static int comment_content(const element_s * const element,
+		       const char * const content)
+{
+	struct comment_data *data = (struct comment_data *) element->handler_data;
+
+	if (strlen(content))
+		data->content = xstrdup(content);
+
+	return 0;
+}
+
 static int comment_main(const element_s * const el)
 {
 	(void) el;
@@ -89,51 +125,25 @@ static int comment_main(const element_s * const el)
 
 static handler_info_s embedded_handlers_info[] = {
 	{
-		.name = "__root",
-		.description = "root element",
+		.name = "__profile",
+		.description = "profile",
 		.syntax_version = "all",
-		.main = root_main,
+		.main = profile_main,
 		.type = HTYPE_NORMAL,
-		.valid_child = root_valid_child,
+		.valid_child = profile_valid_child,
 		.data = HDATA_SYNTAX_VERSION,
-		.alloc_data = root_data,
+		.alloc_data = profile_data,
 	},
-#if HANDLER_SYNTAX_2_0
 	{
-		.name = "comment",
-		.description = "comment element",
-		.syntax_version = "2.0",
+		.name = "__comment",
+		.description = "comment",
+		.syntax_version = "all",
 		.main = comment_main,
 		.type = HTYPE_COMMENT,
+		.setup = comment_setup,
+		.free = comment_free,
+		.content = comment_content,
 	},
-#endif
-#if HANDLER_SYNTAX_3_0
-	{
-		.name = "comment",
-		.description = "comment element",
-		.syntax_version = "3.0",
-		.main = comment_main,
-		.type = HTYPE_COMMENT,
-	},
-#endif
-#if HANDLER_SYNTAX_3_1
-	{
-		.name = "comment",
-		.description = "comment element",
-		.syntax_version = "3.1",
-		.main = comment_main,
-		.type = HTYPE_COMMENT,
-	},
-#endif
-#if HANDLER_SYNTAX_3_2
-	{
-		.name = "comment",
-		.description = "comment element",
-		.syntax_version = "3.2",
-		.main = comment_main,
-		.type = HTYPE_COMMENT,
-	},
-#endif
 	{
 		.name = NULL
 	}
@@ -344,13 +354,13 @@ char *alloc_execute_command(element_s *el)
 	return el->handler->alloc_data(el, HDATA_COMMAND);
 }
 
-const char *find_parent_with_data(const element_s * const element,
-				  const handler_data_e data_requested)
+const char *find_handler_data(const element_s * const element,
+			      const handler_data_e data_requested)
 {
 	const element_s *s;
 	char *data;
 
-	for (s = element->parent; s; s = s->parent) {
+	for (s = element; s; s = s->parent) {
 		if (!s->handler)
 			continue;
 		if ((s->handler->data & data_requested) == 0)
@@ -366,7 +376,7 @@ const char *find_parent_with_data(const element_s * const element,
 
 const char *alloc_base_dir(const element_s * const element)
 {
-	return find_parent_with_data(element, HDATA_BASE);
+	return find_handler_data(element->parent, HDATA_BASE);
 }
 
 int change_to_base_dir(const element_s * const element,
@@ -396,7 +406,7 @@ const char *alloc_stage_shell(const element_s * const el)
 {
 	const char *dir;
 
-	dir = find_parent_with_data(el, HDATA_SHELL);
+	dir = find_handler_data(el->parent, HDATA_SHELL);
 
 	if (dir)
 		return dir;
@@ -416,4 +426,40 @@ int option_in_string(const char * const option, const char * const string)
 	}
 	xfree(tmp);
 	return tok ? 1 : 0;
+}
+
+const struct handler_attribute *find_handler_attribute(const handler_info_s *handler,
+						       const char *name)
+{
+	int i;
+	const struct handler_attribute *attr;
+
+	if (!handler->attributes)
+		return NULL;
+
+	for (i = 0; (handler->attributes[i].name); ++i) {
+		attr = &handler->attributes[i];
+		if (strcmp(attr->name, name) == 0)
+			return attr;
+	}
+
+	return NULL;
+}
+
+const struct handler_parameter *find_handler_parameter(const handler_info_s *handler,
+						       const char *name)
+{
+	int i;
+	const struct handler_parameter *param;
+
+	if (!handler->parameters)
+		return NULL;
+
+	for (i = 0; (handler->parameters[i].name); ++i) {
+		param = &handler->parameters[i];
+		if (strcmp(param->name, name) == 0)
+			return param;
+	}
+
+	return NULL;
 }

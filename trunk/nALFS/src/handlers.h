@@ -148,8 +148,8 @@ int package_has_name_and_version(element_s *el);
 char *alloc_textdump_file(element_s *el);
 char *alloc_execute_command(element_s *el);
 
-const char *find_parent_with_data(const element_s * const element,
-				  const handler_data_e data_requested);
+const char *find_handler_data(const element_s * const element,
+			      const handler_data_e data_requested);
 
 const char *alloc_base_dir(const element_s * const element);
 
@@ -158,5 +158,10 @@ int change_to_base_dir(const element_s * const element, const char * const local
 
 const char *alloc_stage_shell(const element_s * const el);
 int option_in_string(const char * const option, const char * const string);
+
+const struct handler_attribute *find_handler_attribute(const handler_info_s *handler,
+						       const char *name);
+const struct handler_parameter *find_handler_parameter(const handler_info_s *handler,
+						       const char *name);
 
 #endif /* H_HANDLER_ */
