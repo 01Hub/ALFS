@@ -24,7 +24,7 @@ http://distro.ibiblio.org/pub/linux/distributions/sorcerer/sources/file/4.07/fil
 ftp://ftp.cistron.nl/pub/people/miquels/sysvinit/sysvinit-2.85.tar.gz
 ftp://ftp.cistron.nl/pub/people/svm/procinfo-18.tar.gz
 ftp://ftp.gnu.org/pub/gnu/dejagnu/dejagnu-1.4.3.tar.gz
-ftp://ftp.gnu.org/pub/gnu/gettext/gettext-0.12.1.tar.gz
+ftp://ftp.gnu.org/pub/gnu/gettext/gettext-0.13.1.tar.gz
 ftp://ftp.gnu.org/pub/gnu/patch/patch-2.5.4.tar.gz
 ftp://ftp.kernel.org/pub/linux/docs/manpages/man-pages-1.64.tar.gz
 ftp://ftp.kernel.org/pub/linux/utils/kernel/modutils/v2.4/modutils-2.4.26.tar.bz2
