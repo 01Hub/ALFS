@@ -7,7 +7,8 @@
 <itemizedlist>
 
 <listitem><para>May 28th, 2004 [jwrober]: Cleaned up elem_copy,
-elem_description, elem_destination, elem_digest, elem_download
+elem_description, elem_destination, elem_digest, elem_download,
+elem_environment, elem_execute, elem_file, 
 </para></listitem>
 
 <listitem><para>April 2nd, 2004 [jwrober]: Cleaned up elem_alfs,
