@@ -43,6 +43,7 @@
 		</configure>
 
 		<make>
+			<param>&jlevel;</param>
 			<param>BOOT_LDFLAGS="-static"</param>
 			<param>bootstrap</param>
 		</make>

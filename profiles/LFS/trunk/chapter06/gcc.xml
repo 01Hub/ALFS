@@ -60,7 +60,9 @@
 			<param>--enable-languages=c,c++</param>
 		</configure>
 
-		<make />
+		<make>
+			<param>&jlevel;</param>	
+		</make>
 
 		<make>
 			<param>-k check</param>

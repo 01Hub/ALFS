@@ -40,7 +40,9 @@
 			<param>--prefix=/usr</param>
 		</configure>
 
-		<make />
+		<make>
+			<param>&jlevel;</param>	
+		</make>
 <!--
 		<textdump mode="append">
 			<file>/etc/group</file>

@@ -24,6 +24,7 @@
 		</stageinfo>
 
 		<make>
+			<param>&jlevel;</param>	
 		  	<param>udevdir=/dev</param>
 		</make>
 

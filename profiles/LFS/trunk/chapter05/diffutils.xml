@@ -27,7 +27,9 @@
 			<param>--prefix=/tools</param>
 		</configure>
 
-		<make />
+		<make>
+			<param>&jlevel;</param>
+		</make>
 
 		<make>
 			<param>install</param>

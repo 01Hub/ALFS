@@ -32,16 +32,19 @@
 		<configure />
 
 		<make>
+			<param>&jlevel;</param>
 			<param>-C lib</param>
 		</make>
 
 		<make>
+			<param>&jlevel;</param>
 			<param>-C mount</param>
 			<param>mount</param>
 			<param>umount</param>
 		</make>
 
 		<make>
+			<param>&jlevel;</param>
 			<param>-C text-utils</param>
 			<param>more</param>
 		</make>

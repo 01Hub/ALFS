@@ -29,7 +29,9 @@
 			<param>--disable-csharp</param>
 		</configure>
 
-		<make />
+		<make>
+			<param>&jlevel;</param>
+		</make>
 
 <!--
 		<make>

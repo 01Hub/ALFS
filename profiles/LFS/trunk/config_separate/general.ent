@@ -140,6 +140,13 @@ network.-->
     -->
 <!ENTITY gcc_optimizations "">
 
+<!-- parallel build level (make flag -j). Default is unset. For faster build times,
+	you might try setting this flag to 2-3 times the number of processors in
+	your machine. So, for example, a single processor machine, you might set this
+	entity to "-j3"
+     -->
+<!ENTITY jlevel "">
+
 <!-- gcc target triplet (used for adjusting the toolchain) -->
 <!ENTITY gcc_target "i686-pc-linux-gnu">
 

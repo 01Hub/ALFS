@@ -38,7 +38,9 @@
 			<param>--with-lib-path=/tools/lib</param>
 		</configure>
 
-		<make />
+		<make>
+			<param>&jlevel;</param>
+		</make>
 
 <!--
 		<make>

@@ -29,7 +29,9 @@
 			<param>--localstatedir=/var/lib/locate</param>
 		</configure>
 
-		<make />
+		<make>
+			<param>&jlevel;</param>	
+		</make>
 
 <!--
 		<make>

@@ -43,7 +43,9 @@
 			<param>--with-headers=/tools/include</param>
 		</configure>
 
-		<make />
+		<make>
+			<prefix>PARALLELMFLAGS=&jlevel;</prefix>
+		</make>
 
 		<make>
 			<param>check</param>

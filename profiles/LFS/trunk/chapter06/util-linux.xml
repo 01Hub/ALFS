@@ -37,6 +37,7 @@
 		<configure />
 
 		<make>
+			<param>&jlevel;</param>
 			<param>HAVE_KILL=yes</param>
 			<param>HAVE_SLN=yes</param>
 		</make>
