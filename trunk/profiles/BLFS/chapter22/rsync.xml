@@ -39,7 +39,7 @@
 		</make>
 		
 		<textdump base="/etc">
-        		<file>/etc/rsync.conf</file>
+        		<file>/etc/rsyncd.conf</file>
 			<content>
 			=# This is a basic rsync configuration file
 			=# It exports a single module without user authentification.
