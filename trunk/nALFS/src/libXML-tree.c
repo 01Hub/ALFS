@@ -238,6 +238,15 @@ static int make_handler_element(xmlNodePtr node, element_s *element)
 	handler_info_s *parent = element->parent->handler;
 	int result;
 
+	/* If the element's parent wants to validate its children */
+	if (parent->valid_child) {
+		result = parent->valid_child(element->parent, element);
+		if (!result) {
+			Nprint_warn("<%s>: <%s> not valid here.", parent->name, handler->name);
+			return -1;
+		}
+	}
+
 	if (handler->setup && ((result = handler->setup(element)) == 0)) {
 		result = parse_node_attributes(node, element);
 		if (result)
@@ -272,16 +281,6 @@ static int make_handler_element(xmlNodePtr node, element_s *element)
 			result = handler->valid_data(element);
 			if (!result)
 				return -1;
-		}
-
-	}
-
-	/* If the element's parent wants to validate its children */
-	if (parent->valid_child) {
-		result = parent->valid_child(element->parent, element);
-		if (!result) {
-			Nprint_warn("<%s>: <%s> not valid here.", parent->name, handler->name);
-			return -1;
 		}
 	}
 
