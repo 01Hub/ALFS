@@ -11,37 +11,33 @@
 		</unpack>
 	</stage>
 
-
-	<stage name="Installing.">
-		<stageinfo>
-			<base>&build_dir;/&courier-directory;</base>
-		</stageinfo>
-
-		<execute command="grep ^courier /etc/group">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| groupadd</param>
+	<stage name="Creating user and group">
+		<execute command="groupadd">
+			<param>-f</param>
 			<param>courier</param>
 		</execute>
 
-		<execute command="grep ^courier /etc/passwd">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| useradd</param>
-			<param>-c 'Courier Mail Server'</param>
+		<execute command="grep -q ^courier /etc/passwd || useradd">
+		        <param>-c courier</param>
 			<param>-d /dev/null</param>
-		        <param>-g courier</param>
+			<param>-g courier</param>
 			<param>-s /bin/false</param>
 			<param>courier</param>
 		</execute>
 
-		<execute command="grep ^bin /etc/passwd">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| useradd</param>
-			<param>-c 'bin'</param>
+		<execute command="grep -q ^bin /etc/passwd || useradd">
+		        <param>-c bin</param>
 			<param>-d /dev/null</param>
 			<param>-g bin</param>
 			<param>-u 1</param>
 			<param>bin</param>
 		</execute>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&courier-directory;</base>
+		</stageinfo>
 
 		<mkdir>
 			<option>parents</option>

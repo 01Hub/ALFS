@@ -19,6 +19,21 @@
 		</unpack>
 	</stage>
 
+	<stage name="Creating user and group">
+		<execute command="groupadd">
+			<param>-f</param>
+			<param>fcron</param>
+		</execute>
+
+		<execute command="grep -q ^fcron /etc/passwd || useradd">
+		        <param>-c fcron</param>
+			<param>-d /dev/null</param>
+			<param>-g fcron</param>
+			<param>-s /bin/false</param>
+			<param>fcron</param>
+		</execute>
+	</stage>
+
 	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&fcron-directory;</base>
@@ -36,9 +51,6 @@
 		</textdump>
 
 		<execute command="/etc/rc.d/init.d/sysklogd reload" />
-
-		<execute command="id -u fcron &amp;> /dev/null || groupadd fcron" />
-		<execute command="id -u fcron &amp;> /dev/null || useradd -d /dev/null -g fcron -s /bin/false fcron" />
 
 		<configure>
 			<param>--without-sendmail</param>

@@ -12,23 +12,22 @@
 		</unpack>
 	</stage>
 
+	<stage name="Creating user and group">
+		<execute command="groupadd">
+			<param>-f</param>
+			<param>news</param>
+		</execute>
+
+		<execute command="grep -q ^news /etc/passwd || useradd">
+			<param>-g news</param>
+			<param>news</param>
+		</execute>
+	</stage>
+
 	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&leafnode-directory;</base>
 		</stageinfo>
-
-		<execute command="grep ^news /etc/group">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| groupadd</param>
-		        <param>news</param>
-		</execute>
-		
-		<execute command="grep ^news /etc/passwd">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| useradd</param>
-			<param>-g news</param>
-			<param>news</param>
-		</execute>
 
 		<configure>
 			<param>--prefix=/usr</param>

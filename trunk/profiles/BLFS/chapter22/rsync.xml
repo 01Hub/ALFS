@@ -7,26 +7,25 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&rsync-directory;</base>
-		</stageinfo>
-
-		<execute command="grep ^rsyncd /etc/group">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| groupadd</param>
-		        <param>rsyncd</param>
+	<stage name="Creating user and group">
+		<execute command="groupadd">
+			<param>-f</param>
+			<param>rsyncd</param>
 		</execute>
-		
-		<execute command="grep ^rsyncd /etc/passwd">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| useradd</param>
+
+		<execute command="grep -q ^rsyncd /etc/passwd || useradd">
 			<param>-c rsyncd</param>
 			<param>-d /home/rsync</param>
 			<param>-g rsyncd</param>
 			<param>-s /bin/false</param>
 			<param>rsyncd</param>
 		</execute>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&rsync-directory;</base>
+		</stageinfo>
 
 		<configure>
 		        <param>--prefix=/usr</param>

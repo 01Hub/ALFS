@@ -25,26 +25,25 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&apache-directory;</base>
-		</stageinfo>
-
-		<execute command="grep ^apache /etc/group">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| groupadd</param>
+	<stage name="Creating user and group">
+		<execute command="groupadd">
+			<param>-f</param>
 			<param>apache</param>
 		</execute>
 
-		<execute command="grep ^apache /etc/passwd">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| useradd</param>
+		<execute command="grep -q ^apache /etc/passwd || useradd">
 			<param>-c apache</param>
 			<param>-d /dev/null</param>
 			<param>-g apache</param>
 			<param>-s /bin/false</param>
 			<param>apache</param>
 		</execute>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&apache-directory;</base>
+		</stageinfo>
 
 		<patch>
 			<param>-N</param>

@@ -16,33 +16,24 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&postfix-directory;</base>
-		</stageinfo>
-
-		<execute command="grep ^postfix /etc/group">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| groupadd</param>
+	<stage name="Creating user and group">
+		<execute command="groupadd">
+			<param>-f</param>
 			<param>postfix</param>
 		</execute>
-		
-		<execute command="grep ^postdrop /etc/group">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| groupadd</param>
+
+		<execute command="groupadd">
+			<param>-f</param>
 			<param>postdrop</param>
 		</execute>
-		
-		<execute command="grep ^nogroup /etc/group">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| groupadd</param>
-		        <param>-g 65534</param>
+
+		<execute command="groupadd">
+			<param>-f</param>
+			<param>-g 65534</param>
 			<param>nogroup</param>
 		</execute>
-		
-		<execute command="grep ^postfix /etc/passwd">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| useradd</param>
+
+		<execute command="grep -q ^postfix /etc/passwd || useradd">
 		        <param>-c postfix</param>
 			<param>-d /dev/null</param>
 			<param>-g postfix</param>
@@ -50,9 +41,7 @@
 			<param>postfix</param>
 		</execute>
 
-		<execute command="grep ^nobody /etc/passwd">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| useradd</param>
+		<execute command="grep -q ^nobody /etc/passwd || useradd">
 		        <param>-c nobody</param>
 			<param>-d /home</param>
 			<param>-g nogroup</param>
@@ -60,6 +49,12 @@
 			<param>-u 65534</param>
 			<param>nobody</param>
 		</execute>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&postfix-directory;</base>
+		</stageinfo>
 
 		<ownership user="postfix" group="postfix">
 		        <name>/var/mail</name>

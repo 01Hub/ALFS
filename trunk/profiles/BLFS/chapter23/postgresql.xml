@@ -12,6 +12,13 @@
 		</unpack>
 	</stage>
 
+	<stage name="Creating user">
+		<execute command="grep -q ^postgres /etc/passwd || useradd">
+			<param>-d /var/pgsql/data</param>
+			<param>postgres</param>
+		</execute>
+	</stage>
+
 	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&postgresql-directory;</base>
@@ -31,14 +38,6 @@
 		        <option>parents</option>
 			<name>/var/pgsql/data</name>
 		</mkdir>
-
-
-		<execute command="grep ^postgres /etc/passwd">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| useradd</param>
-			<param>-d /var/pgsql/data</param>
-			<param>postgres</param>
-		</execute>
 
 		<ownership user="postgres">
 		        <name>/var/pgsql/data</name>

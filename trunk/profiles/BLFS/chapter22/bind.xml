@@ -12,6 +12,21 @@
 		</unpack>
 	</stage>
 
+	<stage name="Creating user and group">
+		<execute command="groupadd">
+			<param>-f</param>
+			<param>named</param>
+		</execute>
+
+		<execute command="grep -q ^named /etc/passwd || useradd">
+			<param>-c named</param>
+			<param>-m</param>
+			<param>-g named</param>
+			<param>-s /bin/false</param>
+			<param>named</param>
+		</execute>
+	</stage>
+
 	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&bind-directory;</base>
@@ -27,21 +42,6 @@
 		<make>
 		        <param>install</param>
 		</make>
-
-		<execute command="grep ^named /etc/group">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| groupadd</param>
-			<param>named</param>
-		</execute>
-
-		<execute command="grep ^named /etc/passwd">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| useradd</param>
-			<param>-m</param>
-			<param>-g named</param>
-			<param>-s /bin/false</param>
-			<param>named</param>
-		</execute>
 
 		<mkdir base="/home/named">
 			<option>parents</option>

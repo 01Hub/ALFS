@@ -15,6 +15,21 @@
 		</unpack>
 	</stage>
 
+	<stage name="Creating user and group">
+		<execute command="groupadd">
+			<param>-f</param>
+			<param>games</param>
+		</execute>
+
+		<execute command="grep -q ^games /etc/passwd || useradd">
+			<param>-c games</param>
+			<param>-d /var/lib/games</param>
+			<param>-g games</param>
+			<param>-s /bin/false</param>
+			<param>games</param>
+		</execute>
+	</stage>
+
 	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&gnome-games-directory;</base>
@@ -23,17 +38,6 @@
 		<mkdir>
 			<name>/var/lib/games</name>
 		</mkdir>
-
-		<execute command="groupadd -f games" />
-
-		<execute command="grep -q ^games /etc/passwd">
-			<param>|| useradd</param>
-			<param>-c 'games'</param>
-			<param>-d /var/lib/games</param>
-			<param>-g games</param>
-			<param>-s /bin/false</param>
-			<param>games</param>
-		</execute>
 
 		<configure>
 			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>

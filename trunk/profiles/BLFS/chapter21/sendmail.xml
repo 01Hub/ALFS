@@ -17,31 +17,29 @@
 		</unpack>
 	</stage>
 
+	<stage name="Creating user and group">
+		<execute command="groupadd">
+			<param>-f</param>
+			<param>smmsp</param>
+		</execute>
+
+		<execute command="groupadd">
+			<param>-f</param>
+			<param>mail</param>
+		</execute>
+
+		<execute command="grep -q ^smmsp /etc/passwd || useradd">
+			<param>-g smmsp</param>
+			<param>-G mail</param>
+			<param>-s /bin/false</param>
+			<param>smmsp</param>
+		</execute>
+	</stage>
 
 	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&sendmail-directory;</base>
 		</stageinfo>
-
-		<execute command="grep ^smmsp /etc/group">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| groupadd</param>
-			<param>smmsp</param>
-		</execute>
-
-		<execute command="grep ^mail /etc/group">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| groupadd</param>
-			<param>mail</param>
-		</execute>
-
-		<execute command="grep ^smmsp /etc/passwd">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| useradd</param>
-		        <param>-g smmsp</param>
-			<param>-G mail</param>
-			<param>smmsp</param>
-		</execute>
 
 		<textdump>
 			<file>devtools/Site/site.config.m4</file>
