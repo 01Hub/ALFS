@@ -108,9 +108,11 @@
 
 <!ELEMENT param          (#PCDATA)>
 
-<!ELEMENT patch          ((param | prefix)*)>
+<!ELEMENT patch          (digest?, reference*, file, (param | prefix)*)>
 <!ATTLIST patch
-          base           CDATA #IMPLIED>
+          base           CDATA #IMPLIED
+          mode           CDATA #IMPLIED
+          path_strip     CDATA #IMPLIED>
 
 <!ELEMENT permissions    (option?, name*)>
 <!ATTLIST permissions
