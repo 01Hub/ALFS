@@ -1,0 +1,9 @@
+# Begin /etc/profile
+# Written for Linux From Scratch
+# by Alexander E. Patrakov 
+
+export LC_ALL=en_US
+export LANG=en_US
+export INPUTRC=/etc/inputrc 
+
+# End /etc/profile
