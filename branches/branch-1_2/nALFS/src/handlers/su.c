@@ -98,23 +98,18 @@ static INLINE int set_supplementary_groups(const char *user)
 static INLINE int change_to_user(const char *user)
 {
 	struct passwd *pw;
-	FILE *fp;
 
 
-	if ((fp = fopen("/etc/passwd", "r")) == NULL) {
-		Nprint_h_err("Unable to open /etc/passwd: %s",
-			strerror(errno));
-		return -1;
-	}
+	setpwent();
 
 	/* getpwnam() is failing in chroot() */
-	while ((pw = fgetpwent(fp))) {
+	while ((pw = getpwent())) {
 		if (strcmp(pw->pw_name, user) == 0) {
 			break;
 		}
 	}
 
-	fclose(fp);
+	endpwent();
 
 	if (pw == NULL) {
 		Nprint_h_err("User %s doesn't exist.", user);
