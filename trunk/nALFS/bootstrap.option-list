@@ -30,7 +30,6 @@ EOF
 grep -e "^STRING_OPTION" src/options.h | sed "s/STRING_OPTION(/\&real_opt_/" | sed "s/,.*$/,/"
 grep -e "^BOOL_OPTION" src/options.h | sed "s/BOOL_OPTION(/\&real_opt_/" | sed "s/,.*$/,/"
 grep -e "^NUMBER_OPTION" src/options.h | sed "s/NUMBER_OPTION(/\&real_opt_/" | sed "s/,.*$/,/"
-grep -e "^COMMAND_OPTION" src/options.h | sed "s/COMMAND_OPTION(/\&real_opt_/" | sed "s/,.*$/,/"
 
 cat <<"EOF"
 NULL
