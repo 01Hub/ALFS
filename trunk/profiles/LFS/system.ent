@@ -25,6 +25,7 @@
 <!ENTITY c5-perl               SYSTEM "chapter05/perl.xml">
 <!ENTITY c5-sed                SYSTEM "chapter05/sed.xml">
 <!ENTITY c5-settingenvironment SYSTEM "chapter05/settingenvironment.xml">
+<!ENTITY c5-strip 	       SYSTEM "chapter05/strip.xml">
 <!ENTITY c5-tar                SYSTEM "chapter05/tar.xml">
 <!ENTITY c5-tcl                SYSTEM "chapter05/tcl.xml">
 <!ENTITY c5-texinfo            SYSTEM "chapter05/texinfo.xml">
