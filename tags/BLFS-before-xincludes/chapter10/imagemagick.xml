@@ -1,0 +1,51 @@
+<package name="imagemagick" version="&imagemagick-version;">
+
+        <packageinfo>
+                <requires><name>xfree86</name></requires>
+                <requires><name>ghostscript</name></requires>
+
+		<utilizes><name>lcms</name></utilizes>
+		<utilizes><name>libjpeg</name></utilizes>
+		<utilizes><name>libpng</name></utilizes>
+		<utilizes><name>libtiff</name></utilizes>
+		<utilizes><name>libxml2</name></utilizes>
+		<utilizes><name>libwmf</name></utilizes>
+		<utilizes><name>libexif</name></utilizes>
+		<utilizes><name>flashpix</name></utilizes>
+		<utilizes><name>jbig</name></utilizes>
+		<utilizes><name>jasper</name></utilizes>
+		<utilizes><name>corefonts</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&imagemagick-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&imagemagick-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--enable-shared</param>
+			<param>--with-modules</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&imagemagick-directory;</remove>
+	</stage>
+
+</package>
+

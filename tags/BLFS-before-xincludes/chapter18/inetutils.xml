@@ -1,0 +1,45 @@
+<package name="inetutils" version="&inetutils-version;">
+
+        <packageinfo>
+                <utilizes><name>linuxpam</name></utilizes>
+                <utilizes><name>tcpwrappers</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&inetutils-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&inetutils-directory;</base>
+		</stageinfo>
+
+		<configure>
+		         <param>--prefix=/usr</param>
+			 <param>--disable-syslogd</param>
+			 <param>--libexecdir=/usr/sbin</param>
+			 <param>--infodir=/usr/share/info</param>
+			 <param>--sysconfdir=/etc</param>
+			 <param>--localstatedir=/var</param>
+			 <param>--mandir=/usr/share/man</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<move>
+		        <source>/usr/bin/ping</source>
+			<destination>/bin</destination>
+		</move>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&inetutils-directory;</remove>
+	</stage>
+</package>

@@ -1,0 +1,58 @@
+<package name="xinetd" version="&xinetd-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&xinetd-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&xinetd-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+		        <param>install</param>
+		</make>
+
+		<copy>
+			<source>xinetd/sample.conf</source>
+			<destination>/etc/xinetd.conf</destination>
+		</copy>
+
+		<search_replace>
+			<file>/etc/xinetd.conf</file>
+			<find>/etc</find>
+			<replace>/sbin</replace>
+		</search_replace>		
+
+	</stage>
+
+	<stage name="Installing bootscript and configuration">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-xinetd</param>
+		</make>
+	</stage>
+		
+	<stage name="Cleanup">
+		<remove>&build_dir;/&xinetd-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+
+</package>

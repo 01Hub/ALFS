@@ -1,0 +1,9 @@
+ftp://ftp.gnu.org/gnu/bc/bc-1.06.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/5.1/bc-1.06-flex_invocation-1.patch
+http://www.linuxfromscratch.org/patches/blfs/5.1/bc-1.06-readline-1.patch
+http://umn.dl.sourceforge.net/sourceforge/rep-gtk/rep-gtk-0.18.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/5.1/rep-gtk-0.18-gtk2.4.patch
+http://www.ibiblio.org/pub/Linux/apps/graphics/convert/compface-1.4.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/5.1/compface-1.4-errno-2.patch
+http://umn.dl.sourceforge.net/sourceforge/imagemagick/ImageMagick-5.5.7-16.tar.bz2
+http://www.megaloman.com/~hany/_data/hd2u/hd2u-0.9.0.tgz

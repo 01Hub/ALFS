@@ -1,0 +1,54 @@
+<package name="wvstreams" version="&wvstreams-version;">
+
+    <packageinfo>
+            <requires><name>openssl</name></requires>
+    </packageinfo>
+
+    <stage name="Unpacking">
+	<unpack>
+		<archive>&packages_dir;/&wvstreams-package;</archive>
+		<destination>&build_dir;</destination>
+	</unpack>
+    </stage>
+
+    <stage name="Patching">
+        <stageinfo>
+		<base>&build_dir;/&wvstreams-directory;</base>
+	</stageinfo>
+
+	<patch>
+		<param>-N</param>
+		<param>-p1</param>
+		<param>-i &packages_dir;/&wvstreams-wvcrypto-patch;</param>
+	</patch>
+
+	<patch>
+		<param>-N</param>
+		<param>-p1</param>
+		<param>-i &packages_dir;/&wvstreams-wvresolver-patch;</param>
+	</patch>
+    </stage>
+
+    <stage name="Installing">
+        <stageinfo>
+		<base>&build_dir;/&wvstreams-directory;</base>
+	</stageinfo>
+
+	<make>
+	        <param>PREFIX=/usr</param>
+	        <param>LDFLAGS="-lcrypt"</param>
+	</make>
+
+	<make>
+	        <param>PREFIX=/usr</param>
+		<param>install</param>
+	</make>
+
+	&ldconfig;
+    </stage>
+
+    <stage name="Cleanup">
+	<remove>&build_dir;/&wvstreams-directory;</remove>
+    </stage>
+
+</package>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<stage name="/etc/vimrc">
+
+	<textdump base="/etc">
+       		<file>vimrc</file>
+       	 	<content>
+            	=" Begin .vimrc
+            	=
+            	=set nocompatible
+            	=set bs=2
+            	=set columns=80
+            	=set background=dark
+            	=set tabstop=8
+            	=set wrapmargin=8
+            	=set nobk
+            	=syntax on
+            	=set ruler
+            	=set noexpandtab
+            	=
+            	=" End .vimrc
+        	</content>
+	</textdump>
+
+</stage>
+

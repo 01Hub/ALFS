@@ -1,0 +1,33 @@
+<package name="enscript" version="&enscript-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&enscript-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&enscript-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc/enscript</param>
+			<param>--localstatedir=/var</param>
+			<param>--with-media=Letter</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&enscript-directory;</remove>
+	</stage>
+
+</package>

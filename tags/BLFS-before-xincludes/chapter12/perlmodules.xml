@@ -1,0 +1,180 @@
+<stage name="Perl modules">
+
+<package name="Astro-FITS-Header" version="&Astro-FITS-Header-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&Astro-FITS-Header-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&Astro-FITS-Header-directory;</base>
+		</stageinfo>
+
+		<execute command="perl Makefile.PL" />
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>		
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&Astro-FITS-Header-directory;</remove>
+	</stage>
+</package>
+
+<package name="PDL" version="&PDL-version;">
+
+	<packageinfo>
+		<requires><name>Astro-FITS-Header</name></requires>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&PDL-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&PDL-directory;</base>
+		</stageinfo>
+
+		<execute command="perl Makefile.PL" />
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>		
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&PDL-directory;</remove>
+	</stage>
+</package>
+
+<package name="XML-Writer" version="&XML-Writer-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&XML-Writer-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&XML-Writer-directory;</base>
+		</stageinfo>
+
+		<execute command="perl Makefile.PL" />
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>		
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&XML-Writer-directory;</remove>
+	</stage>
+</package>
+
+<package name="XML-Parser" version="&XML-Parser-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&XML-Parser-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&XML-Parser-directory;</base>
+		</stageinfo>
+
+		<execute command="perl Makefile.PL" />
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>		
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&XML-Parser-directory;</remove>
+	</stage>
+</package>
+
+<package name="Gtk-Perl" version="&Gtk-Perl-version;">
+
+	<packageinfo>
+		<requires><name>XML-Writer</name></requires>
+		<requires><name>XML-Parser</name></requires>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&Gtk-Perl-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&Gtk-Perl-directory;</base>
+		</stageinfo>
+
+		<execute command="perl Makefile.PL --without-guessing" />
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>		
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&Gtk-Perl-directory;</remove>
+	</stage>
+</package>
+
+<package name="Parse-RecDescent" version="&Parse-RecDescent-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&Parse-RecDescent-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&Parse-RecDescent-directory;</base>
+		</stageinfo>
+
+		<execute command="perl Makefile.PL" />
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>		
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&Parse-RecDescent-directory;</remove>
+	</stage>
+</package>
+
+</stage>

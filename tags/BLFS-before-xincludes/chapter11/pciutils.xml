@@ -1,0 +1,34 @@
+<package name="pciutils" version="&pciutils-version;">
+
+        <packageinfo>
+                <requires><name>which</name></requires>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&pciutils-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&pciutils-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>PREFIX=/usr</param>
+		</make>
+
+		<make>
+			<param>PREFIX=/usr</param>
+			<param>install</param>
+		</make>
+		
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&pciutils-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,43 @@
+<package name="fontconfig" version="&fontconfig-version;">
+
+        <packageinfo>
+	        <requires><name>freetype</name></requires>
+	        <requires><name>expat</name></requires>
+
+		<utilizes><name>docbook-utils</name></utilizes>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&fontconfig-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&fontconfig-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="sed -i -e '/^&lt;\/fontconfig&gt;/i\
+			&lt;dir&gt;/usr/X11R6/lib/X11/fonts/TTF&lt;/dir&gt;\
+			&lt;dir&gt;usr/X11R6/lib/X11/fonts/Type1&lt;/dir&gt;\
+			&lt;dir&gt;/usr/X11R6/lib/X11/fonts/truetype&lt;/dir&gt;' /etc/fonts/local.conf" />
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&fontconfig-directory;</remove>
+	</stage>
+
+</package>

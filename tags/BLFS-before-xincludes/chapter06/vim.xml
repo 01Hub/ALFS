@@ -1,0 +1,60 @@
+<package name="vim" version="&vim-version;">
+
+    <packageinfo>
+        <utilizes>
+		<name>xfree86</name>
+	</utilizes>
+        <utilizes>
+		<name>gtk+2</name>
+	</utilizes>
+        <utilizes>
+		<name>lesstif</name>
+	</utilizes>
+        <utilizes>
+		<name>python</name>
+	</utilizes>
+        <utilizes>
+		<name>tcl</name>
+	</utilizes>
+        <utilizes>
+		<name>ruby</name>
+	</utilizes>
+    </packageinfo>
+
+    <stage name="Unpacking">
+	<unpack>
+		<archive>&packages_dir;/&vim-package;</archive>
+		<destination>&build_dir;</destination>
+	</unpack>
+    </stage>
+
+    <stage name="Installing">
+        <stageinfo>
+		<base>&build_dir;/&vim-directory;</base>
+	</stageinfo>
+
+	<textdump mode="append">
+	        <file>src/feature.h</file>
+		<content>
+                =#define SYS_VIMRC_FILE "/etc/vimrc"
+                =#define SYS_GVIMRC_FILE "/etc/gvimrc"
+		</content>
+	</textdump>
+
+	<configure>
+	        <param>--prefix=/usr</param>
+	        <param>--with-features=huge</param>
+	</configure>
+	
+	<make />
+
+	<make>
+		<param>install</param>
+	</make>
+    </stage>
+
+    <stage name="Cleanup">
+	<remove>&build_dir;/&vim-directory;</remove>
+    </stage>
+
+</package>

@@ -1,0 +1,36 @@
+<package name="gnat" version="&gnat-version;">
+	
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&gnat-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&gnat-directory;</base>
+		</stageinfo>
+
+		<textdump base="/tmp">
+		        <file>gnat_reply</file>
+
+			<content>
+			        =
+			        =3
+				=/opt/gnat
+				=
+			</content>
+		</textdump>
+
+		<execute command="./doconfig &lt; /tmp/gnat_reply" />
+
+		<execute command="./doinstall" />
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&gnat-directory;</remove>
+		<remove>/tmp/gnat_reply</remove>
+	</stage>
+</package>
+

@@ -1,0 +1,42 @@
+<package name="control-center" version="&control-center-version;">
+
+        <packageinfo>
+                <requires><name>libxklavier</name></requires>
+                <requires><name>nautilus</name></requires>
+		<requires><name>metacity</name></requires>
+		<utilizes><name>esound</name></utilizes>
+		<utilizes><name>alsa</name></utilizes>
+		<utilizes><name>gst-plugins</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&control-center-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&control-center-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+			<param>--localstatedir=/var/lib</param>
+			<param>--sysconfdir=/etc/gnome</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&control-center-directory;</remove>
+	</stage>
+
+</package>

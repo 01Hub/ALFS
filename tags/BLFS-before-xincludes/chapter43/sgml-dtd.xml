@@ -1,0 +1,87 @@
+<package name="sgml-dtd" version="&sgml-dtd-version;">
+
+        <packageinfo>
+                <requires><name>unzip</name></requires>
+        	<requires><name>sgml-common</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking">
+
+	        <mkdir>
+		        <name>&build_dir;/&sgml-dtd-directory;</name>
+		</mkdir>
+
+		<unpack>
+			<archive>&packages_dir;/&sgml-dtd-package;</archive>
+			<destination>&build_dir;/&sgml-dtd-directory;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&sgml-dtd-directory;</base>
+		</stageinfo>
+
+		<copy>
+		        <source>docbook.cat</source>
+			<destination>docbook.cat.orig</destination>
+		</copy>
+
+		<search_replace>
+			<file>docbook.cat</file>
+			<find>ISO 8879</find>
+			<replace></replace>
+		</search_replace>
+
+		<search_replace>
+			<file>docbook.cat</file>
+			<find>gml</find>
+			<replace></replace>
+		</search_replace>
+
+		<execute command="install -d /usr/share/sgml/docbook/sgml-dtd-&sgml-dtd-version;" />
+
+		<ownership user="root" group="root">
+		        <option>recursive</option>
+			<name>.</name>
+		</ownership>
+
+		<permissions mode="755">
+		        <option>recursive</option>
+			<name>.</name>
+		</permissions>
+
+		<execute command="install docbook.cat /usr/share/sgml/docbook/sgml-dtd-&sgml-dtd-version;/catalog" />
+
+		<copy>
+		        <option>archive</option>
+			<option>force</option>
+		        <source>*.dtd</source>
+			<source>*.mod</source>
+			<source>*.dcl</source>
+			<destination>/usr/share/sgml/docbook/sgml-dtd-&sgml-dtd-version;</destination>
+		</copy>
+
+		<execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-&sgml-dtd-version;.cat /usr/share/sgml/docbook/sgml-dtd-&sgml-dtd-version;/catalog" />
+
+		<execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-&sgml-dtd-version;.cat /etc/sgml/sgml-docbook.cat" />
+
+		<textdump mode="append">
+			<file>/usr/share/sgml/docbook/sgml-dtd-&sgml-dtd-version;/catalog</file>
+			<content>
+			=  -- Begin Single Major Version catalog changes --
+			=
+			=PUBLIC "-//OASIS//DTD DocBook V4.2//EN" "docbook.dtd"
+			=PUBLIC "-//OASIS//DTD DocBook V4.1//EN" "docbook.dtd"
+			=PUBLIC "-//OASIS//DTD DocBook V4.0//EN" "docbook.dtd"
+			=
+			=  -- End Single Major Version catalog changes --
+			</content>
+		</textdump>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&sgml-dtd-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,52 @@
+<package name="w3m" version="&w3m-version;">
+
+        <packageinfo>
+                <requires><name>gc</name></requires>
+                <utilizes><name>gpm</name></utilizes>
+                <utilizes><name>openssl</name></utilizes>
+                <utilizes><name>imlib</name></utilizes>
+                <utilizes><name>imlib2</name></utilizes>
+                <utilizes><name>gdk-pixbuf</name></utilizes>
+                <utilizes><name>compface</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&w3m-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&w3m-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--libexecdir=/usr/lib</param>
+			<param>--sysconfdir=/etc</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<copy base="&build_dir;/&w3m-directory;">
+			<source>doc/keymap.default</source>
+			<destination>/etc/w3m/keymap</destination>
+		</copy>
+
+		<copy base="&build_dir;/&w3m-directory;">
+			<source>doc/menu.default</source>
+			<destination>/etc/w3m/menu</destination>
+		</copy>
+
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&w3m-directory;</remove>
+	</stage>
+</package>

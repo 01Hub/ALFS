@@ -1,0 +1,39 @@
+<package name="libglade1" version="&libglade1-version;">
+
+        <packageinfo>
+                <requires><name>libxml</name></requires>
+        	<requires><name>gtk+</name></requires>
+		<utilizes><name>gnome-libs</name></utilizes>
+		<utilizes><name>python</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&libglade1-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&libglade1-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/opt/gnome</param>
+			<param>--enable-bonobo</param>
+			<param>--disable-gtk-doc</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&libglade1-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,52 @@
+<package name="openldap" version="&openldap-version;">
+
+        <packageinfo>
+	        <requires><name>db</name></requires>
+		<utilizes><name>openssl</name></utilizes>
+		<utilizes><name>gdbm</name></utilizes>
+		<utilizes><name>tcpwrappers</name></utilizes>
+		<utilizes><name>readline</name></utilizes>
+		<utilizes><name>heimdal</name></utilizes>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&openldap-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&openldap-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+			<param>--libexecdir=/usr/sbin</param>
+			<param>--sysconfdir=/etc</param>
+			<param>--localstatedir=/var/lib</param>
+			<param>--disable-debug</param>
+			<param>--enable-ldbm</param>
+		</configure>
+
+		<make>
+		        <param>depend</param>
+		</make>
+
+		<make />
+
+		<make>
+		        <param>test</param>
+		</make>
+
+		<make>
+		        <param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&openldap-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,41 @@
+<package name="nail" version="&nail-version;">
+
+        <packageinfo>
+	        <utilizes><name>openssl</name></utilizes>
+	</packageinfo>
+
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&nail-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&nail-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+		</configure>
+		
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<link>
+		        <option>force</option>
+			<target>nail</target>
+			<name>/usr/bin/mail</name>
+		</link>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&nail-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,38 @@
+<package name="libsoup" version="&libsoup-version;">
+
+	<packageinfo>
+		<requires><name>glib2</name></requires>
+		<utilizes><name>gtk-doc</name></utilizes>
+		<utilizes><name>openssl</name></utilizes>
+		<utilizes><name>gnutls</name></utilizes>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&libsoup-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&libsoup-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--libexecdir=/usr/sbin</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&libsoup-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,40 @@
+<package name="gnupg" version="&gnupg-version;">
+
+	<!--<packageinfo>
+		<utilizes><name>openldap</name></utilizes>
+	</packageinfo>-->
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&gnupg-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&gnupg-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+			<param>--libexecdir=/usr/sbin</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<permissions mode="4755">
+		         <name>/usr/bin/gpg</name>
+		</permissions>
+
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&gnupg-directory;</remove>
+	</stage>
+
+</package>

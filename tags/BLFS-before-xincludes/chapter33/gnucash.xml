@@ -1,0 +1,39 @@
+<package name="gnucash" version="&gnucash-version;">
+
+        <packageinfo>
+                <requires><name>db</name></requires>
+        	<requires><name>gal1</name></requires>
+        	<requires><name>gtkhtml1</name></requires>
+        	<requires><name>libghttp</name></requires>
+        	<requires><name>guppi</name></requires>
+        	<requires><name>g-wrap</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&gnucash-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&gnucash-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/opt/gnome</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&gnucash-directory;</remove>
+	</stage>
+
+</package>

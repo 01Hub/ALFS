@@ -1,0 +1,36 @@
+<package name="lame" version="&lame-version;">
+	
+	<packageinfo>
+		<utilizes><name>gtk+</name></utilizes>
+		<utilizes><name>nasm</name></utilizes>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&lame-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&lame-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--enable-mp3rtp</param>			
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&lame-directory;</remove>
+	</stage>
+
+</package>

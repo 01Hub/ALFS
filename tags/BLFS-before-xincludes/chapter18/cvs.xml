@@ -1,0 +1,29 @@
+<package name="cvs" version="&cvs-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&cvs-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&cvs-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&cvs-directory;</remove>
+	</stage>
+</package>

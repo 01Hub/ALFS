@@ -1,0 +1,32 @@
+<package name="cdparanoia" version="&cdparanoia-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&cdparanoia-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&cdparanoia-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		&ldconfig;
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&cdparanoia-directory;</remove>
+	</stage>
+
+</package>

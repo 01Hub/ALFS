@@ -1,0 +1,48 @@
+<package name="mutt" version="&mutt-version;">
+
+	<packageinfo>
+		<utilizes><name>gnupg</name></utilizes>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&mutt-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&mutt-directory;</base>
+		</stageinfo>
+
+		<!-- uncomment if no MTA is installed
+		
+		<execute command="groupadd">
+		        <param>mail</param>
+		</execute>
+		
+		<ownership group="mail">
+		        <name>/var/mail</name>
+		</ownership>
+		
+		 -->
+
+		<configure>
+		        <param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
+		</configure>
+		
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+		
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&mutt-directory;</remove>
+	</stage>
+
+</package>

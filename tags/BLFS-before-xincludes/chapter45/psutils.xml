@@ -1,0 +1,37 @@
+<package name="psutils" version="&psutils-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&psutils-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&psutils-directory;</base>
+		</stageinfo>
+
+		<copy>
+		        <source>Makefile.unix</source>
+			<destination>Makefile</destination>
+		</copy>
+
+		<search_replace>
+		        <file>Makefile</file>
+			<find>/usr/local</find>
+			<replace>/usr</replace>
+		</search_replace>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&psutils-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,60 @@
+<package name="sane" version="&sane-version;">
+
+        <packageinfo>
+                <utilizes><name>libusb</name></utilizes>
+        	<utilizes><name>xfree86</name></utilizes>
+        	<utilizes><name>gtk+2</name></utilizes>
+		<utilizes><name>gimp</name></utilizes>		
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&sane-frontend-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&sane-backend-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing backend">
+		<stageinfo>
+			<base>&build_dir;/&sane-backend-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Installing frontend">
+		<stageinfo>
+			<base>&build_dir;/&sane-frontend-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&sane-frontend-directory;</remove>
+		<remove>&build_dir;/&sane-backend-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,39 @@
+<package name="libungif" version="&libungif-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&libungif-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&libungif-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&libungif-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+
+	        <make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&libungif-directory;</remove>
+	</stage>
+
+</package>
+

@@ -1,0 +1,41 @@
+<package name="gdk-pixbuf" version="&gdk-pixbuf-version;">
+
+        <packageinfo>
+        	<requires><name>gtk+</name></requires>
+                <requires><name>libjpeg</name></requires>
+                <requires><name>libtiff</name></requires>
+		<utilizes><name>gnome-libs</name></utilizes>
+		<utilizes><name>gtk-doc</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&gdk-pixbuf-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&gdk-pixbuf-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/opt/gnome</param>
+			<param>--disable-gtk-doc</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		&ldconfig;
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&gdk-pixbuf-directory;</remove>
+	</stage>
+
+</package>

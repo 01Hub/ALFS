@@ -1,0 +1,43 @@
+<package name="sawfish" version="&sawfish-version;">
+
+	<packageinfo>
+        	<requires><name>xfree86</name></requires>
+                <requires><name>librep</name></requires>
+                <requires><name>rep-gtk</name></requires>
+                <requires><name>esound</name></requires>
+                <requires><name>gtk+2</name></requires>
+		<utilizes><name>libglade</name></utilizes>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&sawfish-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&sawfish-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--libexec=/usr/sbin</param>
+			<param>--infodir=/usr/share/info</param>
+			<param>--with-gnome-prefix=&gnome-prefix;</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&sawfish-directory;</remove>
+	</stage>
+
+</package>

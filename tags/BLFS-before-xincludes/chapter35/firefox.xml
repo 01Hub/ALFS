@@ -1,0 +1,85 @@
+<package name="firefox" version="&firefox-version;">
+
+        <packageinfo>
+        	<requires><name>zip</name></requires>
+        	<requires><name>gtk+2</name></requires>
+        	<requires><name>libidl</name></requires>
+        	<requires><name>libmng</name></requires>
+        	<requires><name>which</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&firefox-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>		
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<environment>
+			        <variable name="MOZILLA_OFFICIAL">1</variable>
+			        <variable name="BUILD_OFFICIAL">1</variable>
+				<variable name="MOZ_PHOENIX">1</variable>
+			</environment>
+			<base>&build_dir;/&firefox-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/opt/firefox-&firefox-version;</param>
+			<param>--enable-default-toolkit=gtk2</param>
+			<param>--with-x</param>
+			<param>--with-system-zlib</param>
+			<param>--with-system-jpeg </param>
+			<param>--with-system-png</param>
+			<param>--with-system-mng</param>
+			<param>--enable-xft</param>
+			<param>--enable-crypto</param>
+			<param>--disable-accessibility</param>
+			<param>--disable-tests</param>
+			<param>--disable-debug</param>
+			<param>--disable-logging</param>
+			<param>--enable-reorder</param>
+			<param>--enable-strip</param>
+			<param>--disable-pedantic</param>
+			<param>--enable-cpp-rtti</param>
+			<param>--enable-extensions=all</param>
+			<param>--disable-calendar</param>
+			<param>--disable-mailnews</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+		
+		<link>
+			<option>force</option>
+			<target>/opt/firefox-&firefox-version;/bin/firefox</target>
+			<name>/usr/bin/MozillaFirefox</name>
+		</link>
+
+		<stage name="Multi-User Operation Setup">
+		        <stageinfo>
+				<environment>
+					<variable name="LD_LIBRARY_PATH">
+						/opt/firefox-&firefox-version;/lib/mozilla-&firefox-moz-lib-version;</variable>
+					<variable name="MOZILLA_FIVE_HOME">
+						/opt/firefox-&firefox-version;/lib/mozilla-&firefox-moz-lib-version;</variable>
+				</environment>
+			        <base>/opt/firefox-&firefox-version;/lib/mozilla-&firefox-moz-lib-version;</base>
+			</stageinfo>
+
+			<execute command="./regxpcom" />
+			<execute command="./regchrome" />
+			<execute command="touch `find /opt/firefox-&firefox-version;/lib/mozilla-&firefox-moz-lib-version; -name *.rdf`" />
+
+		</stage>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&firefox-directory;</remove>
+	</stage>
+
+</package>

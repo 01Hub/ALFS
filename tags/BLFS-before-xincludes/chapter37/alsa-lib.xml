@@ -1,0 +1,36 @@
+<package name="alsa-lib" version="&alsa-lib-version;">
+
+	<packageinfo>
+		<requires><name>alsa-driver</name></requires>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&alsa-lib-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&alsa-lib-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--enable-static</param>
+		</configure>
+		
+		<make/>
+		
+		<make>
+			<param>install</param>
+		</make>
+
+		&ldconfig;
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&alsa-lib-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,34 @@
+<package name="cpio" version="&cpio-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&cpio-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&cpio-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--libexec=/tmp/cpio</param>
+			<param>--bindir=/bin</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+		
+		<remove>/tmp/cpio</remove>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&cpio-directory;</remove>
+	</stage>
+
+</package>

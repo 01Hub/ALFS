@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<stage name="The Bash Shell Startup Files">
+	
+	<copy>
+        	<source>&blfs-config;/etc/profile</source>
+		<destination>/etc/profile</destination>
+	</copy>
+
+	<mkdir>
+		<option>parents</option>
+		<name>/etc/profile.d</name>
+	</mkdir>
+
+	<ownership user="root" group="root">
+		<name>/etc/profile.d</name>
+	</ownership>
+
+	<permissions mode="0755">
+		<name>/etc/profile.d</name>
+	</permissions>
+
+	<copy>
+		<source>&blfs-config;/etc/profile.d/dircolors.sh</source>
+		<source>&blfs-config;/etc/profile.d/extrapaths.sh</source>
+		<source>&blfs-config;/etc/profile.d/readline.sh</source>
+		<source>&blfs-config;/etc/profile.d/tinker-term.sh</source>
+		<source>&blfs-config;/etc/profile.d/umask.sh</source>
+		<source>&blfs-config;/etc/profile.d/X.sh</source>
+		<source>&blfs-config;/etc/profile.d/xterm-titlebars.sh</source>
+		<destination>/etc/profile.d</destination>
+	</copy>	
+
+	<copy>
+        	<source>&blfs-config;/etc/bashrc</source>
+		<destination>/etc/bashrc</destination>
+	</copy>
+
+	<copy>
+        	<source>&blfs-config;/etc/skel/dot_bash_profile</source>
+		<destination>/root/.bash_profile</destination>
+	</copy>
+
+	<copy>
+        	<source>&blfs-config;/etc/skel/dot_bashrc</source>
+		<destination>/root/.bashrc</destination>
+	</copy>
+
+	<copy>
+      		<source>&blfs-config;/etc/skel/dot_bash_logout</source>
+		<destination>/root/.bash_logout</destination>
+	</copy>
+
+</stage>

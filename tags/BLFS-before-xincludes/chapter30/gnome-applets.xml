@@ -1,0 +1,44 @@
+<package name="gnome-applets" version="&gnome-applets-version;">
+
+        <packageinfo>
+                <requires><name>gail</name></requires>
+		<requires><name>gnome-panel</name></requires>
+		<requires><name>libxklavier</name></requires>
+                <utilizes><name>libgtop</name></utilizes>
+                <utilizes><name>gnome-panel</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&gnome-applets-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&gnome-applets-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+			<param>--localstatedir=/var/lib</param>
+			<param>--sysconfdir=/etc/gnome</param>
+		</configure>
+
+		<make>
+			<param>tooldir=`pkg-config --variable=prefix ORBit-2.0`/lib/gnome-applets</param>
+		</make>
+
+		<make>
+			<param>tooldir=`pkg-config --variable=prefix ORBit-2.0`/lib/gnome-applets</param>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&gnome-applets-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,31 @@
+<package name="liba52" version="&liba52-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&liba52-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&liba52-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+			<param>--enable-shared</param>
+		</configure>
+
+		<make />
+		
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&liba52-directory;</remove>
+	</stage>
+
+</package>

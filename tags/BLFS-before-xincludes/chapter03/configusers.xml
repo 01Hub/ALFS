@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<stage name="Configuring for adding users.">
+
+	<textdump base="/etc/default">
+       		<file>useradd</file>
+		<content>
+                	=# Begin /etc/default/useradd
+                	=
+                	=GROUP=100
+                	=HOME=/home
+                	=INACTIVE=-1
+                	=EXPIRE=
+                	=SHELL=/bin/bash
+                	=SKEL=/etc/skel
+                	=
+                	=# End /etc/default/useradd
+		</content>
+	</textdump>
+
+	<mkdir>
+        	<option>parents</option>
+		<name>/etc/skel</name>
+	</mkdir>
+
+	<copy>
+       		<source>&blfs-config;/etc/skel/dot_bash_profile</source>
+		<destination>/etc/skel/.bash_profile</destination>
+	</copy>
+
+	<copy>
+        	<source>&blfs-config;/etc/skel/dot_bash_logout</source>
+		<destination>/etc/skel/.bash_logout</destination>
+	</copy>
+
+	<copy>
+        	<source>&blfs-config;/etc/skel/dot_bashrc</source>
+		<destination>/etc/skel/.bashrc</destination>
+	</copy>
+</stage>
+
+

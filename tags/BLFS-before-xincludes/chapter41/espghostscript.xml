@@ -1,0 +1,65 @@
+<package name="espghostscript" version="&espghostscript-version;">
+	
+	<packageinfo>
+		<utilizes><name>cups</name></utilizes>
+		<utilizes><name>libjpeg</name></utilizes>
+		<utilizes><name>libpng</name></utilizes>
+		<utilizes><name>gtk+</name></utilizes>
+		<utilizes><name>xfree86</name></utilizes>
+		<utilizes><name>gimp-print</name></utilizes>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&espghostscript-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<mkdir>
+		        <option>parents</option>
+		        <name>/usr/share/ghostscript</name>
+		</mkdir>
+
+		<unpack>
+			<archive>&packages_dir;/&ghostscript-fonts1;</archive>
+			<destination>/usr/share/ghostscript</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&ghostscript-fonts2;</archive>
+			<destination>/usr/share/ghostscript</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&espghostscript-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--without-gimp-print</param>
+			<param>--without-omni</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<make>
+			<param>CFLAGS_SO='-fPIC $(ACDEFS)'</param>
+			<param>so</param>
+		</make>
+
+		<make>
+			<param>soinstall</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&espghostscript-directory;</remove>
+	</stage>
+
+</package>

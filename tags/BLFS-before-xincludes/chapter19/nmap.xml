@@ -1,0 +1,38 @@
+<package name="nmap" version="&nmap-version;">
+
+        <packageinfo>
+		<utilizes><name>openssl</name></utilizes>
+		<utilizes><name>pcre</name></utilizes>
+	        <utilizes><name>gtk+</name></utilizes>
+		<utilizes><name>libpcap</name></utilizes>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&nmap-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&nmap-directory;</base>
+		</stageinfo>
+		
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+		
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&nmap-directory;</remove>
+	</stage>
+
+</package>
