@@ -148,7 +148,7 @@ static INLINE int get_next_token(char **s, char *buffer)
 
 		} else if (ch == '\\') {
 			if (!quote) {
-				fprintf(stderr,
+				Nprint_warn(
 					"Escape character outside of quotes? "
 					"What for?\n");
 				return -1;
@@ -164,7 +164,7 @@ static INLINE int get_next_token(char **s, char *buffer)
 	buffer[pos] = '\0';
 
 	if (pos == 0) {
-		fprintf(stderr, "Empty token.\n");
+		Nprint_warn("Empty token.\n");
 		return -1;
 	}
 
@@ -506,7 +506,7 @@ void read_command_line_options(int *argc, char ***argv)
 
 	/* Check for specified profiles. */
 	if (optind >= *argc) {
-		fprintf(stderr, "No profiles specified.\n");
+		Nprint_err("No profiles specified.\n");
 		print_usage_and_exit();
 	}
 }
