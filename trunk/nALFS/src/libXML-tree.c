@@ -231,7 +231,7 @@ static int make_handler_element(xmlNodePtr node, element_s *element)
 	if (parent->invalid_child) {
 		result = parent->invalid_child(element->parent, element);
 		if (result) {
-			Nprint_warn("<%s>: <%s> is not supported.", element->parent->handler->name, handler->name);
+			Nprint_warn("<%s>: <%s> not valid here.", parent->name, handler->name);
 			return result;
 		}
 	}
