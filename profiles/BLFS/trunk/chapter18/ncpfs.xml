@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch18.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,74 +10,64 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="ncpfs" version="&ncpfs-version;">
-
-        <packageinfo>
-                <utilizes><name>linux-pam</name></utilizes>
-                <utilizes><name>php</name></utilizes>
-        </packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&ncpfs-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-
-		<unpack>
-			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&ncpfs-directory;</base>
-		</stageinfo>
-
-		<configure>
-			<param>--prefix=""</param>
-			<param>--includedir=/usr/include</param>
-			<param>--mandir=/usr/share/man</param>
-			<param>--datadir=/usr/share</param>
-		</configure>
-
-		<make/>
-
-		<make>
-		        <param>install</param>
-		</make>
-
-		<make>
-			<param>install-dev</param>
-		</make>
-	</stage>
-
-	<stage name="Installing bootscript and configuration">
-		<stageinfo>
-			<base>&build_dir;/&blfs-bootscripts-directory;</base>
-		</stageinfo>
-
-		<make>
-			<param>make install-service-ipx</param>
-		</make>
-
-		<textdump base="/etc/sysconfig/network-devices/">
-			<file>ifconfig.ipx0</file>
-			<content>
-			=ONBOOT=yes
-			=SERVICE=ipx
-			=IPXDEV=eth0
-			=FRAME=802.2
-			</content>
-		</textdump>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&ncpfs-directory;</remove>
-		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
-	</stage>
-
-</package>
+  <package name="ncpfs" version="&ncpfs-version;">
+    <packageinfo>
+      <utilizes>
+        <name>linux-pam</name>
+      </utilizes>
+      <utilizes>
+        <name>php</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&ncpfs-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&ncpfs-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=""</param>
+        <param>--includedir=/usr/include</param>
+        <param>--mandir=/usr/share/man</param>
+        <param>--datadir=/usr/share</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <make>
+        <param>install-dev</param>
+      </make>
+    </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>make install-service-ipx</param>
+      </make>
+      <textdump base="/etc/sysconfig/network-devices/">
+        <file>ifconfig.ipx0</file>
+        <content>
+	  =ONBOOT=yes
+	  =SERVICE=ipx
+	  =IPXDEV=eth0
+	  =FRAME=802.2
+	</content>
+      </textdump>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&ncpfs-directory;</remove>
+      <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+    </stage>
+  </package>
 </alfs>
