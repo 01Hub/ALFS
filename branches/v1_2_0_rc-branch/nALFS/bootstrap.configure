@@ -195,7 +195,18 @@ fi
 AC_CONFIG_FILES([Makefile doc/Makefile])
 EOF
 
-default_syntaxes=`echo ${all_syntaxes} | tr -s '[:blank:]' ',' | tr '_' '.'`
+for syntax in ${all_syntaxes}; do
+    case ${syntax} in
+	2_0)
+	    ;;
+	*)
+	    if test x"${default_syntaxes}" != x""; then
+		default_syntaxes=${default_syntaxes},
+	    fi
+	    default_syntaxes=${default_syntaxes}${syntax/_/.}
+	    ;;
+    esac
+done
 
 cat << EOF
 AC_ARG_ENABLE([syntax],
