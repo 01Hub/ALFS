@@ -108,7 +108,7 @@ int comm_read_to_file(socket_e sock, const char *file)
 			Debug_logging("Reading to a file...");
 		}
 	} else {
-		Nprint_warn("File is NULL, ignoring received file.");
+		Nprint_warn("Filename not specified, ignoring received data.");
 		status = 1;
 	}
 

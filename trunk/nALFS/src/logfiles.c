@@ -42,6 +42,9 @@
 #define EL_NAME_FOR_FILES_FIND_PRUNES	"find_prunes"
 #define EL_NAME_FOR_FILES_NAME		"filename"
 
+#define SUFFIX_FOR_LOGF			".log"
+#define SUFFIX_FOR_FLOG			".files"
+
 
 void logf_add_handler_action(xmlDocPtr xml_doc, const char *string)
 {
@@ -122,49 +125,6 @@ xmlDocPtr logf_new_run(const char *name, const char *version)
 	return doc;
 }
 
-
-
-xmlDocPtr logf_parse_logfile(const char *file)
-{
-	xmlDocPtr doc = NULL;
-
-	if ((doc = xmlParseFile(file)) != NULL) {
-		doc->children = xmlDocGetRootElement(doc);
-	}
-
-	return doc;
-}
-
-xmlDocPtr logf_new_logfile(void)
-{
-	xmlDocPtr doc = xmlNewDoc("1.0");
-
-	doc->children = xmlNewDocNode(doc, NULL, EL_NAME_FOR_ROOT, NULL);
-
-	return doc;
-}
-
-
-int logf_has_installed_files(xmlNodePtr node)
-{
-	xmlNodePtr n;
-
-	/* Check if the list will be send. */
-	for (n = node->children; n; n = n->next) {
-		if (n->type == XML_ELEMENT_NODE
-		&& strcmp((const char *)n->name, EL_NAME_FOR_FILES_ROOT) == 0) {
-			return 1;;
-		}
-	}
-
-	return 0;
-}
-
-void logf_add_installed_files(xmlNodePtr node, const char *f)
-{
-	xmlNewTextChild(node, NULL, EL_NAME_FOR_FILES_NAME, f);
-}
-
 /*
  * Implementation of logf interface.
  */
@@ -172,9 +132,12 @@ void logf_add_installed_files(xmlNodePtr node, const char *f)
 struct plogf {
 	char *dir;		/* Log's directory. */
 	char *name;		/* Log's filename. */
+	char *fullname;		/* Both -- makes life easier. */
 
-	char *installed;	/* Filename containing the list
+	char *installed;	/* File containing the list
 				 * of installed packages. */
+
+	xmlDocPtr doc;		/* We're using libxml2 internally. */
 };
 
 struct logf {
@@ -182,7 +145,57 @@ struct logf {
 	struct plogf **list;
 };
 
-struct logf *logf_init(const char *dir_name)
+
+void logf_free(struct logf *logf)
+{
+	int i;
+
+	for (i = 0; i < logf->cnt; ++i) {
+		struct plogf *plogf = logf->list[i];
+
+		xfree(plogf->dir);
+		xfree(plogf->name);
+		xfree(plogf->fullname);
+		xfree(plogf->installed);
+		if (plogf->doc != NULL) {
+			xmlFreeDoc(plogf->doc);
+		}
+
+		xfree(plogf);
+	}
+
+	xfree(logf);
+}
+
+/* TODO: Saves only the first log file (all we need, for now). */
+int logf_save(struct logf *logf)
+{
+	if (logf->cnt > 0) {
+		char *filename = logf->list[0]->fullname;
+		xmlDocPtr doc = logf->list[0]->doc;
+		
+		xmlSetDocCompressMode(doc, 0);
+
+		if (xmlSaveFormatFile(filename, doc, 1) == -1) {
+			return -1;
+		} else {
+			return 0;
+		}
+	}
+
+	return -1;
+}
+
+char *logf_get_package_fullname(struct logf *logf, int i)
+{
+	return logf->list[i]->fullname;
+}
+
+/*
+ * Multiple log files, initialized from directory.
+ */
+
+struct logf *logf_init_from_directory(const char *dir_name)
 {
 	DIR *dir;
 	struct dirent *next;
@@ -201,14 +214,19 @@ struct logf *logf_init(const char *dir_name)
 
 			/* Check for the right suffix. */
 			s = strrchr(next->d_name, '.');
-			if (s == NULL || (strcmp(s, LOG_FILE_SUFFIX) != 0)) {
+			if (s == NULL || (strcmp(s, SUFFIX_FOR_LOGF) != 0)) {
 				continue;
 			}
 
 			plogf = xmalloc(sizeof *plogf);
+
 			plogf->dir = xstrdup(dir_name);
 			plogf->name = xstrdup(next->d_name);
+			plogf->fullname = xstrdup(plogf->dir);
+			append_str(&plogf->fullname, "/");
+			append_str(&plogf->fullname, plogf->name);
 			plogf->installed = NULL;
+			plogf->doc = NULL;
 
 			++logf->cnt;
 
@@ -224,24 +242,6 @@ struct logf *logf_init(const char *dir_name)
 	return logf;
 }
 
-void logf_free(struct logf *logf)
-{
-	int i;
-
-	for (i = 0; i < logf->cnt; ++i) {
-		struct plogf *plogf = logf->list[i];
-
-		xfree(plogf->dir);
-		xfree(plogf->name);
-		xfree(plogf->installed);
-
-		xfree(plogf);
-	}
-
-	xfree(logf);
-}
-
-
 int logf_get_packages_cnt(struct logf *logf)
 {
 	return logf->cnt;
@@ -250,4 +250,133 @@ int logf_get_packages_cnt(struct logf *logf)
 char *logf_get_package_name(struct logf *logf, int i)
 {
 	return logf->list[i]->name;
+}
+
+/*
+ * A single log file, initialized from package's string.
+ */
+
+static xmlDocPtr logf_parse_or_create_plogf_doc(struct plogf *plogf)
+{
+	xmlDocPtr doc;
+
+	if (file_exists(plogf->fullname)) {
+		if ((doc = xmlParseFile(plogf->fullname)) != NULL) {
+			doc->children = xmlDocGetRootElement(doc);
+		}
+	} else {
+		doc = xmlNewDoc("1.0");
+		doc->children = xmlNewDocNode(doc, NULL, EL_NAME_FOR_ROOT, NULL);
+	}
+
+	return doc;
+}
+
+/* Parses xml file too. */
+struct logf *logf_init_from_package_string(
+	const char *pdir, const char *package_str)
+{
+	struct logf *logf;
+	struct plogf *plogf;
+
+
+	plogf = xmalloc(sizeof *plogf);
+
+	plogf->dir = xstrdup(pdir);
+	plogf->name = xstrdup(package_str);
+	append_str(&plogf->name, SUFFIX_FOR_LOGF);
+	plogf->fullname = xstrdup(plogf->dir);
+	append_str(&plogf->fullname, "/");
+	append_str(&plogf->fullname, plogf->name);
+	plogf->installed = NULL;
+	plogf->doc = logf_parse_or_create_plogf_doc(plogf);
+
+
+	logf = xmalloc(sizeof *logf);
+
+	logf->cnt = 1;
+	logf->list = xmalloc(sizeof *logf->list);
+	logf->list[0] = plogf;
+
+	return logf;
+}
+
+int logf_merge_log(struct logf *logf, const char *ptr, size_t size)
+{
+	xmlNodePtr new_node;
+	xmlDocPtr doc = logf->list[0]->doc;
+
+
+	/* Parse it and unlink its root element (new_node). */
+	doc = xmlParseMemory(ptr, size);
+	new_node = xmlDocGetRootElement(doc);
+	xmlUnlinkNode(new_node);
+	xmlFreeDoc(doc);
+
+	/* Do merge. */
+
+	if (xmlAddChild(logf->list[0]->doc->children, new_node) == NULL) {
+		return -1;
+	}
+
+	return 0;
+}
+
+static xmlNodePtr logf_get_flog_element(struct logf *logf)
+{
+	xmlNodePtr c;
+	xmlNodePtr n = xmlGetLastChild(logf->list[0]->doc->children);
+	/* n should be EL_NAME_FOR_A_RUN */
+
+	/* Find the last non-text child of n. */
+	for (c = n->children; c; c = c->next) {
+		if (c->type == XML_ELEMENT_NODE
+		&& strcmp((const char *)c->name, EL_NAME_FOR_FILES_ROOT) == 0) {
+			return c;
+		}
+	}
+
+	return NULL;
+}
+
+int logf_has_flog(struct logf *logf)
+{
+	return logf_get_flog_element(logf) ? 1 : 0;
+}
+
+char *logf_create_flog(struct logf *logf)
+{
+	char *tmp;
+	char *filename;
+
+
+	/* Just in case. */
+	xfree(logf->list[0]->installed);
+
+	filename = xstrdup(logf->list[0]->fullname);
+
+	tmp = strrchr(filename, '.');
+	*tmp = '\0';
+	
+	append_str(&filename, SUFFIX_FOR_FLOG);
+	append_str(&filename, ".XXXXXX");
+
+	if (create_temp_file(filename)) {
+		xfree(filename);
+		return NULL;
+	}
+
+	logf->list[0]->installed = filename;
+
+	return filename;
+}
+
+void logf_update_with_flog(struct logf *logf)
+{
+	xmlNodePtr c;
+
+	if ((c = logf_get_flog_element(logf))) {
+		xmlNewTextChild(
+		c, NULL, EL_NAME_FOR_FILES_NAME, logf->list[0]->installed);
+	}
 }
