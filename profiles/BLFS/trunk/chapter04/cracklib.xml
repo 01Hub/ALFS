@@ -64,6 +64,12 @@
       <make>
         <param>install</param>
       </make>
+      <remove>/lib/libcrack.so</remove>
+      <link>
+	<option>force</option>
+	<target>../../lib/libcrack.so.&cracklib-version;</target>
+	<name>/usr/lib/libcrack.so</name>
+      </link>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&cracklib-directory;</remove>

@@ -12,6 +12,11 @@
 ]>
 <alfs>
   <package name="gcc-3.3" version="&gcc-33-version;">
+    <packageinfo>
+      <utilizes>
+	<name>dejagnu</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&gcc-33-package;</archive>

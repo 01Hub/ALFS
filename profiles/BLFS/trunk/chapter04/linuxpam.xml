@@ -57,6 +57,9 @@
         <source>libpamc.a</source>
         <destination>/usr/lib</destination>
       </move>
+      <remove>/lib/libpam.so</remove>
+      <remove>/lib/libpamc.so</remove>
+      <remove>/lib/libpam_misc.so</remove>
       <link>
         <option>force</option>
         <target>../../lib/libpam.so.&linuxpam-version;</target>

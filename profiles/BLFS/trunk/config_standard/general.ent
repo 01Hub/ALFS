@@ -55,6 +55,6 @@
 
 <!ENTITY ldconfig "<execute command='/sbin/ldconfig' />">
 
-<!ENTITY blfs-bootscripts-version "20041203">
+<!ENTITY blfs-bootscripts-version "20041227">
 <!ENTITY blfs-bootscripts-package "blfs-bootscripts-&blfs-bootscripts-version;.tar.bz2">
 <!ENTITY blfs-bootscripts-directory "blfs-bootscripts-&blfs-bootscripts-version;">
