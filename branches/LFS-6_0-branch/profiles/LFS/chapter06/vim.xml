@@ -22,6 +22,7 @@
 
 		<configure>
 			<param>--prefix=/usr</param>
+			<param>--enable-multibyte</param>
 		</configure>
 
 		<make />
