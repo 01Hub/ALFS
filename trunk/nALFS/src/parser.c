@@ -37,12 +37,7 @@
 #include "handlers.h"
 #include "nalfs-core.h"
 #include "options.h"
-
-#ifdef PARSE_WITH_LIBXML_SAX
-#include "libXML-SAX.h"
-#else
 #include "libXML-tree.h"
-#endif
 #include "parser.h"
 
 
@@ -172,11 +167,7 @@ element_s *parse_profile(const char *filename)
 		Nprint("Parsing %s...", filename);
 	}
 
-#ifdef PARSE_WITH_LIBXML_SAX
-	profile = parse_with_libxml2_SAX(filename);
-#else
 	profile = parse_with_libxml2_tree(filename);
-#endif
 
 	print_unknown_elements(profile);
 
