@@ -6,9 +6,10 @@
 #include <repl.h>
 #include <util.h>
 
+role default_filter[4] = { NOEXECUTE, INTERACTIVE, TESTSUITE, 0 };
+
 int main (int argc, char **argv)
 {
-	//int i;
 	xmlNodePtr cur;
 	profile *prof;
 
@@ -18,6 +19,7 @@ int main (int argc, char **argv)
 		return 1;
 	}
 	
+	xmlSubstituteEntitiesDefault(1);
 	doc=xmlParseFile(argv[1]);
 	if (!doc)
 		return 2;
@@ -26,6 +28,7 @@ int main (int argc, char **argv)
 	resolve_entities(cur);
 	
 	prof=bookasprofile(cur);
+	set_filter(default_filter);
 	print_profile(*prof);
 	
 	xmlFreeDoc(doc);

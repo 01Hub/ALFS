@@ -9,7 +9,7 @@
 
 typedef enum
 {
-	NONE,
+	NONE = 1,
 	NOEXECUTE,
 	INTERACTIVE,
 	TESTSUITE,
@@ -59,6 +59,9 @@ void print_pkg (package pkg);
 void print_cmd (command cmd);
 void print_chapter (chapter ch);
 void print_profile (profile prof);
+void set_filter (role *role);
+void unset_filter ();
+bool filtered (role role);
 
 void resolve_entities (xmlNodePtr node);
 void foreach (xmlNodePtr node, char *str, xml_handler_t func, void *data);

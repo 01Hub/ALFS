@@ -42,7 +42,7 @@ void t_sect1 (xmlNodePtr node, void *data)
 		&prof->ch[i].pkg[j].n);
 	free(tmp);
 
-	if (!prof->ch[i].pkg[i].n)
+	if (!prof->ch[i].pkg[j].n)
 		prof->ch[i].n--;
 }
 
