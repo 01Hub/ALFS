@@ -52,7 +52,7 @@
 <!ENTITY diffutils-package "diffutils-&diffutils-version;.tar.bz2">
 <!ENTITY diffutils-directory "diffutils-&diffutils-version;">
 
-<!ENTITY e2fsprogs-md5 "8d25ffd60d405ef32d341704a2323807">
+<!ENTITY e2fsprogs-md5 "fc61cf48057d4c2beb0e0aa20351648f">
 <!ENTITY e2fsprogs-version "1.35">
 <!ENTITY e2fsprogs-package "e2fsprogs-&e2fsprogs-version;.tar.bz2">
 <!ENTITY e2fsprogs-directory "e2fsprogs-&e2fsprogs-version;">
