@@ -240,18 +240,17 @@ static void do_mark_element(element_s *el, int mark)
 {
 	element_s *child;
 
-
-	el->marked = mark;
+	if ((el->handler->type & HTYPE_NORMAL) != 0)
+		el->marked = mark;
 
 	for (child = el->children; child; child = child->next) {
-		do_mark_element(child, el->marked);
+		do_mark_element(child, mark);
 	}
 }
 
 static INLINE void mark_element(element_s *el)
 {
 	element_s *parent;
-
 
 	do_mark_element(el, el->marked ? 0 : 1);
 
@@ -372,14 +371,20 @@ run_status_e get_element_status(element_s *el)
 	run_status_e status = RUN_STATUS_NONE;
 
 	for (child = el->children; child; child = child->next) {
-		if ((child->handler->type & HTYPE_NORMAL) == 0)
-			continue;
-		child_normal++;
 		switch (child->run_status) {
 		case RUN_STATUS_RUNNING:
 			return child->run_status;
 		case RUN_STATUS_FAILED:
 			return child->run_status;
+		default:
+			break;
+		}
+
+		if ((child->handler->type & HTYPE_NORMAL) == 0)
+			continue;
+		child_normal++;
+
+		switch (child->run_status) {
 		case RUN_STATUS_NONE:
 			child_status_none++;
 			break;
@@ -388,6 +393,8 @@ run_status_e get_element_status(element_s *el)
 			break;
 		case RUN_STATUS_SOME_DONE:
 			child_status_some_done++;
+			break;
+		default:
 			break;
 		}
 	}

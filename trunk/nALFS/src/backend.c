@@ -356,7 +356,7 @@ static int do_execute_element(element_s *el)
 {
 	int i = 0;
 
-	if (!el->should_run) {
+	if (!el->should_run && ((el->handler->type & HTYPE_NORMAL) != 0)) {
 		return 0;
 	}
 
@@ -421,8 +421,7 @@ int do_execute_test_element(element_s *element, int *result)
 
 int execute_children(element_s *element)
 {
-	return execute_children_filtered(element,
-					 HTYPE_NORMAL | HTYPE_PACKAGE);
+	return execute_children_filtered(element, HTYPE_NORMAL);
 }
 
 int execute_children_filtered(element_s *element, handler_type_e type_filter)
