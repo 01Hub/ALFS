@@ -98,6 +98,7 @@
 			<source>&module-tools-package;</source>
 			<source>&ncurses-package;</source>
 			<source>&net-tools-package;</source>
+			<source>&net-tools-miitool-gcc33;</source>
 			<source>&net-tools-kernel-headers-patch;</source>
 			<source>&patch-package;</source>
 			<source>&perl-package;</source>
