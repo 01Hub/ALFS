@@ -10,6 +10,6 @@
 <!ENTITY tcsh-package   "tcsh-&tcsh-version;.00.tar.gz">
 <!ENTITY tcsh-directory "tcsh-&tcsh-version;.00">
 
-<!ENTITY zsh-version   "4.2.0">
+<!ENTITY zsh-version   "4.2.1">
 <!ENTITY zsh-package   "zsh-&zsh-version;.tar.bz2">
 <!ENTITY zsh-directory "zsh-&zsh-version;">
