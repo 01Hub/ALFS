@@ -104,14 +104,14 @@
 		</copy>
 
 		<textdump>
-			<file>/etc/ld.so.config</file>
+			<file>/etc/ld.so.conf</file>
 			<content>
-				=# Begin /etc/ld.so.config
+				=# Begin /etc/ld.so.conf
 				=
 				=/usr/local/lib
 				=/opt/lib
 				=
-				=# End /etc/ld.so.config
+				=# End /etc/ld.so.conf
 			</content>
 		</textdump>
 	</stage>
