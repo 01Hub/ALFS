@@ -4647,9 +4647,11 @@ int main(int argc, char **argv)
 
 	read_env_variables();
 
-	if (read_rc_file() != 0) {
-		Nprint_err("Reading RC file failed.\n");
-		return EXIT_FAILURE;
+	if (!have_command_line_rc_file(argc, argv)) {
+		if (read_system_rc_file() != 0)
+			return EXIT_FAILURE;
+		if (read_user_rc_file() != 0)
+			return EXIT_FAILURE;
 	}
 
 	read_command_line_options(&argc, &argv);
