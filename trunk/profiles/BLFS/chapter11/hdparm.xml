@@ -5,12 +5,23 @@
 			<archive>&packages_dir;/&hdparm-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
+
+		<copy>
+		        <source>&packages_dir;/&hdparm-patch1;</source>
+		        <destination>&build_dir;</destination>
+		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
 			<base>&build_dir;/&hdparm-directory;</base>
 		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&hdparm-patch1;</param>
+		</patch>
 
 		<make/>
 
@@ -22,6 +33,7 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&hdparm-directory;</remove>
+		<remove>&build_dir;/&hdparm-patch1;</remove>
 	</stage>
 
 </package>
