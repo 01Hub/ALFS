@@ -10,7 +10,10 @@ configurations the profile could be used to generate.
 
 To use the profile you should:
 
-- create a configuration directory by copying the config_sample directory;
+- create a configuration directory by copying either the config_seperate
+  (if your downloading the packages via the wget script) directory or
+  the config_tarball (if your using the lfs-packages tarball --
+  currently only applies to LFS-5.0) directory;
   should be named config_XXX where XXX is the name of the configuration
 
 - customize the files in the new configuration directory
@@ -23,12 +26,6 @@ To use the profile you should:
 
 - create a symbolic link named "config" to the configuration
   you want to use
-
-- if you downloaded the lfs-packages-5.0 tarball from the lfs website
-  then one change needs to be made to LFS-5.0.xml:
-	The line <!ENTITY % package_entities SYSTEM "package.ent">
-	needs to be changed to read
-	<!ENTITY % package_entities SYSTEM "package-5.0tb.ent">
 
 - execute sh ./runit as root. Please note that if you have installed nALFS
   into a non-standard location (/usr/local/bin) then you may need to edit
