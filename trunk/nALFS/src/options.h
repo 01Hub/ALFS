@@ -84,22 +84,22 @@ struct option_s {
 
 #ifndef STRING_OPTION
 #define STRING_OPTION(opt_name, opt_def_value) \
-		extern STRING *opt_##opt_name;
+		extern STRING * const opt_##opt_name;
 #endif /* STRING_OPTION */
 
 #ifndef BOOL_OPTION
 #define BOOL_OPTION(opt_name, opt_def_value) \
-		extern BOOL *opt_##opt_name;
+		extern BOOL * const opt_##opt_name;
 #endif /* BOOL_OPTION */
 
 #ifndef NUMBER_OPTION
 #define NUMBER_OPTION(opt_name, opt_def_value) \
-		extern NUMBER *opt_##opt_name;
+		extern NUMBER * const opt_##opt_name;
 #endif /* NUMBER_OPTION */
 
 #ifndef COMMAND_OPTION
 #define COMMAND_OPTION(opt_name, opt_def_value) \
-		extern const STRING *opt_##opt_name;
+		extern STRING * const opt_##opt_name;
 #endif /* COMMAND_OPTION */
 
 
@@ -151,7 +151,8 @@ COMMAND_OPTION(uncpio_command,"cpio -idv")
 COMMAND_OPTION(unzip_command,"unzip %s")
 
 
-void set_string_option(STRING *var, const STRING value);
+void set_string_option(STRING * const var, const STRING value);
+void append_string_option(STRING * const var, const STRING value);
 void set_options_to_defaults(void);
 
 char *alloc_real_status_logfile_name(void);

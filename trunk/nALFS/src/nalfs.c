@@ -2025,15 +2025,23 @@ static INLINE void toggle_alfs(void)
 
 static INLINE void change_find_options(void)
 {
+	char *tmp;
+
 	if (Backend_exists) {
 		Nprint_warn("Can't change find options while running.");
 		return;
 	}
 
-	get_string_from_bottom("Root directory:", opt_find_base);
+	tmp = xstrdup(*opt_find_base);
+	get_string_from_bottom("Root directory:", &tmp);
+	set_string_option(opt_find_base, tmp);
+	xfree(tmp);
 	Nprint("Root directory: %s", *opt_find_base ? *opt_find_base : "/");
 
-	get_string_from_bottom("Prune directories:", opt_find_prunes);
+	tmp = xstrdup(*opt_find_prunes);
+	get_string_from_bottom("Prune directories:", &tmp);
+	set_string_option(opt_find_prunes, tmp);
+	xfree(tmp);
 	if (*opt_find_prunes) {
 		Nprint("Prune directories: %s", *opt_find_prunes);
 	} else {
@@ -4500,7 +4508,7 @@ static INLINE void append_prune_dirs_from_file(void)
 		
 		fclose(fp);
 
-		set_string_option(opt_find_prunes, new_dirs);
+		append_string_option(opt_find_prunes, new_dirs);
 
 		xfree(new_dirs);
 	}

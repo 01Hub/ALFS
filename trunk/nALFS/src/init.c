@@ -472,7 +472,7 @@ void read_command_line_options(int *argc, char ***argv)
 				set_string_option(opt_find_base, optarg);
 				break;
 			case 'p':
-				set_string_option(opt_find_prunes, optarg);
+				append_string_option(opt_find_prunes, optarg);
 				break;
 
 			case 'v':
