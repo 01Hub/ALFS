@@ -1,5 +1,5 @@
 <!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN" [
-<!ENTITY docbook.dsl SYSTEM "docbook.dsl" CDATA dsssl>
+<!ENTITY docbook.dsl SYSTEM "/usr/share/sgml/docbook/dsssl-stylesheets-1.78/html/docbook.dsl" CDATA dsssl>
 ]>
 
 <style-sheet>
@@ -62,7 +62,7 @@
 </style-specification-body>
 </style-specification>
 
-<external-specification id="docbook" document="docbook.dsl">
+<external-specification id="docbook" document="/usr/share/sgml/docbook/dsssl-stylesheets-1.78/html/docbook.dsl">
 
 </style-sheet>
 
