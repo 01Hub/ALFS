@@ -380,47 +380,42 @@ ctrl_msg_s *comm_read_ctrl_message(socket_e s)
 int comm_send_ctrl_msg(
 	socket_e s, ctrl_msg_type_e t, const char *format, ...)
 {
-	size_t i;
 	ssize_t ret;
 	va_list ap;
 	char *full_message;
-	char *size, *type, raw_msg[MAX_CTRL_MSG_LEN + 1];
-
+	int result;
+	char *buf;
+	int buf_size = 1024;
 
 	/* Create raw message string. */
-	va_start(ap, format);
-	vsnprintf(raw_msg, sizeof raw_msg, format, ap); /* TODO: Check. */
-	va_end(ap);
+	if ((buf = xmalloc(buf_size)) == NULL) {
+		Nprint_err("xmalloc() failed: %s", strerror(errno));
+		return -1;
+	}
+	while (1) {
+		va_start(ap, format);
+		result = vsnprintf(buf, buf_size, format, ap);
+		va_end(ap);
+		if ((result < buf_size) && (result > -1))
+			break;
+		if (result > -1)
+			buf_size += 1;
+		else
+			buf_size *= 2;
+		if ((buf = xrealloc(buf, buf_size)) == NULL) {
+			Nprint_err("xrealloc() failed: %s", strerror(errno));
+			return -1;
+		}
+	}
 
-	/* Create type string. */
-	type = xmalloc(number_len(t) + 2);
-	sprintf(type, "%d|", (int)t);
-
-	i = strlen(type) + strlen(raw_msg);
-
-	/* Create size string. */
-	size = xmalloc(number_len(i) + 2);
-	sprintf(size, "%lu|", (unsigned long)i);
-
-
-	full_message = xmalloc(strlen(size) + i + 1);
-
-	strcpy(full_message, size);
-	strcat(full_message, type);
-	strcat(full_message, raw_msg);
-
-	xfree(size);
-	xfree(type);
-
+	full_message = xmalloc(result + 15);
+	sprintf(full_message, "%08d|%04d|%s", result + 6, t, buf);
 	ret = write(comm_get_socket(s), full_message, strlen(full_message));
-
 	xfree(full_message);
-
 	if (ret == -1) {
 		Nprint_err("write() failed: %s", strerror(errno));
 		return -1;
 	}
-
 	return 0;
 }
 
