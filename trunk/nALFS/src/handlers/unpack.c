@@ -72,7 +72,7 @@ static INLINE int get_reference(const char *reference, const char *archive)
 		Nprint_h_err("Getting reference failed:");
 		Nprint_h_err("    %s", reference);
 
-		/* TODO: Should we delete the broken archive here? */
+		unlink(archive);
 
 		return -1;
 	}
@@ -404,7 +404,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = 0,
 		.alloc_data = NULL,
 		.is_action = 1,
-		.proirity = 0
+		.priority = 0
 	}, {
 		.name = "unpack",
 		.description = "Unpack",
@@ -414,7 +414,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = 0,
 		.alloc_data = NULL,
 		.is_action = 1,
-		.proirity = 0
+		.priority = 0
 	}, {
 		.name = "unpack",
 		.description = "Unpack",
@@ -424,7 +424,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = 0,
 		.alloc_data = NULL,
 		.is_action = 1,
-		.proirity = 0
+		.priority = 0
 	}, {
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}

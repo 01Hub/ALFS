@@ -61,6 +61,12 @@ static INLINE int get_url(const char *urldir, const char *file)
 
 	/* TODO: We need to make sure that a directory for archive exists. */
 
+	/* check if the file exists and remove it, we can't be sure the
+	   chosen downloader will overwrite an existing file
+	*/
+	if (stat(file, &file_stat))
+		unlink(file);
+
 #ifdef HAVE_LIBCURL
 	status = load_url(file, url);
 #else
@@ -71,7 +77,7 @@ static INLINE int get_url(const char *urldir, const char *file)
 		Nprint_h_err("Getting url failed:");
 		Nprint_h_err("    %s", url);
 
-		/* TODO: Should we delete the broken archive here? */
+		unlink(file);
 
 		xfree(url);
 		return -1;
@@ -96,6 +102,7 @@ int download_main(element_s *el)
 	char *file;
 	char *destination;
 	char *digest;
+	char *digest_type;
 	struct stat file_stat;
 
 	/* <file> is mandatory */
@@ -118,6 +125,24 @@ int download_main(element_s *el)
 		return -1;
 	}
 
+	if ((digest = El_download_digest(el)) != NULL) {
+		element_s *el2 = first_param("digest", el);
+
+		digest_type = attr_value("type", el2);
+
+		if (digest_type != NULL) {
+			char *s;
+
+			for (s = digest_type; *s; s++) {
+				*s = tolower(*s);
+			}
+		}
+	  
+		if ((digest_type == NULL) || (*digest_type == 0)) {
+			digest_type = "md5";
+		}
+	}
+
 	/* Check if file exists. */
 	if ((stat(file, &file_stat))) {
 	        if (errno == ENOENT && first_param("url", el) != NULL) {
@@ -137,14 +162,24 @@ int download_main(element_s *el)
 
   			      if (! get_url(s, file)) {
 				found = 1;
-				break;
+			      }
+
+			      if (found && (digest != NULL)) {
+				      if (verify_digest(digest_type, digest, file)) {
+					      Nprint_h_err("Wrong %s digest of file: %s",
+							   digest_type, file);
+					      found = 0;
+				      }
 			      }
 
 			      xfree(s);
+
+			      if (found)
+				      break;
 			}
 
 			if (! found) {
-			  Nprint_h_err("Unable to download file %s.", file);			  
+			  Nprint_h_err("Unable to download file %s.", file);
 			  xfree(file);
 			  xfree(destination);
 			  return -1;
@@ -157,26 +192,10 @@ int download_main(element_s *el)
 			xfree(destination);
 			return -1;
 		}
-	}
-
-	if ((digest = El_download_digest(el)) != NULL) {
-		element_s *el2 = first_param("digest", el);
-		char *type = attr_value("type", el2);
-		char *s;
-
-		if (type != NULL) {
-			for (s = type; *s; s++) {
-				*s = tolower(*s);
-			}
-		}
-	  
-		if ((type == NULL) || (*type == 0)) {
-			type = "md5";
-		}
-
-		if (verify_digest(type, digest, file)) {
+	} else if (digest != NULL) {
+		if (verify_digest(digest_type, digest, file)) {
 			Nprint_h_err("Wrong %s digest of file: %s",
-				type, file);
+				digest_type, file);
 			xfree(file);
 			xfree(destination);
 			return -1;
@@ -206,7 +225,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = 0,
 		.alloc_data = NULL,
 		.is_action = 1,
-		.proirity = 0
+		.priority = 0
 	}, {
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}

@@ -282,7 +282,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_PACKAGE,
 		.alloc_data = package_data_ver2,
 		.is_action = 0,
-		.proirity = 0
+		.priority = 0
 	}, {
 		.name = "package",
 		.description = "Package",
@@ -292,7 +292,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_PACKAGE,
 		.alloc_data = package_data_ver3,
 		.is_action = 0,
-		.proirity = 0
+		.priority = 0
 	}, {
 		.name = "package",
 		.description = "Package",
@@ -302,7 +302,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_PACKAGE,
 		.alloc_data = package_data_ver3,
 		.is_action = 0,
-		.proirity = 0
+		.priority = 0
 	}, {
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}

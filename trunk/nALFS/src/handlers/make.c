@@ -121,7 +121,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = 0,
 		.alloc_data = NULL,
 		.is_action = 1,
-		.proirity = 0
+		.priority = 0
 	}, {
 		.name = "make",
 		.description = "Run make",
@@ -131,7 +131,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = 0,
 		.alloc_data = NULL,
 		.is_action = 1,
-		.proirity = 0
+		.priority = 0
 	}, {
 		.name = "make",
 		.description = "Run make",
@@ -141,7 +141,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = 0,
 		.alloc_data = NULL,
 		.is_action = 1,
-		.proirity = 0
+		.priority = 0
 	}, {
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}
