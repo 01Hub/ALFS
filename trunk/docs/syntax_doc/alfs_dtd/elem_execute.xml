@@ -57,19 +57,19 @@ command itself. See <xref linkend="elem_command"/>.</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>echo Executing 'umount'
-<command>umount</command></screen></userinput>
+<screen><userinput>echo Executing 'umount'
+<command>umount</command></userinput></screen>
 
 <para>The second example is an execute command with one parameter.</para>
 
-<userinput><screen>&lt;execute command="mount"&gt;
+<screen><userinput>&lt;execute command="mount"&gt;
 	&lt;param&gt;/mnfs/lfs&lt;/param&gt;
-&lt;/execute&gt;</screen></userinput>
+&lt;/execute&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>echo Executing 'mount'
-<command>mount /mnfs/lfs</command></screen></userinput>
+<screen><userinput>echo Executing 'mount'
+<command>mount /mnfs/lfs</command></userinput></screen>
 
 </sect2>
 

@@ -44,7 +44,7 @@ the package.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;package name=&quot;zlib&quot;
+<screen><userinput>&lt;package name=&quot;zlib&quot;
 version=&quot;1.1.4&quot;&gt;
 	&lt;stage name=&quot;Unpacking a package.&quot;&gt;
 		&lt;unpack&gt;
@@ -55,11 +55,11 @@ version=&quot;1.1.4&quot;&gt;
 
 	.....
 
-&lt;/package&gt;</screen></userinput>
+&lt;/package&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>echo Generating package zlib 1.1.4
+<screen><userinput>echo Generating package zlib 1.1.4
 
 #-----------------------------------------
 echo Stage "Unpacking a package."
@@ -76,7 +76,7 @@ echo Exiting stage "Unpacking a package."
 
 ...
 
-echo End of generating package zlib 1.1.4</screen></userinput>
+echo End of generating package zlib 1.1.4</userinput></screen>
 
 </sect2>
 

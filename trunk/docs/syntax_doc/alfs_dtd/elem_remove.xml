@@ -30,12 +30,12 @@ The content of the element contains the name of the file.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;remove&gt;/usr/src/mypackage&lt;/remove&gt;</screen></userinput>
+<screen><userinput>&lt;remove&gt;/usr/src/mypackage&lt;/remove&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>echo Removing /usr/src/mypackage
-<command>rm -rf /usr/src/mypackage</command></screen></userinput>
+<screen><userinput>echo Removing /usr/src/mypackage
+<command>rm -rf /usr/src/mypackage</command></userinput></screen>
 
 </sect2>
 

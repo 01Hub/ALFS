@@ -62,12 +62,12 @@ download is performed but the digest is checked if present.
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;download&gt;
+<screen><userinput>&lt;download&gt;
 	&lt;file&gt;kbd-1.08.tar.gz&lt;/file&gt;
 	&lt;url&gt;ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/&lt;/url&gt;
 	&lt;destination&gt;/tmp/&lt;/destination&gt;
 	&lt;digest&gt;924e6a05e52715dc0f96385b35f2f680&lt;/digest&gt;
-&lt;/download&gt;</screen></userinput>
+&lt;/download&gt;</userinput></screen>
 
 <para>There is no equivalent Bash script example for this element.</para>
 

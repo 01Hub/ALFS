@@ -30,7 +30,7 @@ a item within a list in a description.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen> &lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
+<screen><userinput>&lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
         &lt;packageinfo&gt;
 	        &lt;description&gt;
                     &lt;para&gt;The gimp package contains the GNU Image Manipulation Program.
@@ -57,7 +57,7 @@ a item within a list in a description.</para>
 
     &lt;/package>
 
-</screen></userinput>
+</userinput></screen>
 
 </sect2>
 

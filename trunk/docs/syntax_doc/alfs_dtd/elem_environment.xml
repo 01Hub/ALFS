@@ -39,7 +39,7 @@ value.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;stage&gt;
+<screen><userinput>&lt;stage&gt;
 	&lt;stageinfo&gt;
 		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
 	&lt;environment&gt;
@@ -56,11 +56,11 @@ value.</para>
 	&lt;make&gt;
 		&lt;param&gt;install&lt;/param&gt;
 	&lt;/make&gt;
-&lt;/stage&gt;</screen></userinput>
+&lt;/stage&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>echo Stage
+<screen><userinput>echo Stage
 
 export GCCFLAGS=-O2
 export PATH=/usr/src/gzip.1.2.4a:$PATH
@@ -78,7 +78,7 @@ echo Executing make
 cd /usr/src/gzip.1.2.4a
 <command>make install</command>
 
-echo Exiting stage</screen></userinput>
+echo Exiting stage</userinput></screen>
 
 </sect2>
 

@@ -37,7 +37,7 @@ because we might want to add a version in a future version.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
+<screen><userinput>&lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
 &lt;packageinfo&gt;
 	&lt;requires&gt;&lt;name&gt;gtk+&lt;/name&gt;&lt;/requires&gt;
 
@@ -52,7 +52,7 @@ because we might want to add a version in a future version.</para>
 
 	....
 
-&lt;/package&gt;</screen></userinput>
+&lt;/package&gt;</userinput></screen>
 
 </sect2>
 

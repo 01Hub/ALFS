@@ -50,12 +50,12 @@ different from 3.0beta.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;packageinfo&gt;
+<screen><userinput>&lt;packageinfo&gt;
 	&lt;requires&gt;
 		&lt;name&gt;guile&lt;/name&gt;
 		&lt;version condition="ge"&gt;1.5&lt;/version&gt;
 	&lt;/requires&gt;
-&lt;/packageinfo&gt;</screen></userinput>
+&lt;/packageinfo&gt;</userinput></screen>
 
 <para>This signifies that the package being build requires
 <filename>guile</filename> in its

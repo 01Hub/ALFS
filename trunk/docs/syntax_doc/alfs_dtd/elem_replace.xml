@@ -26,18 +26,18 @@ replacement string in a search and replace operation.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;search_replace base=&quot;/usr/src/mypackage&quot;&gt;
+<screen><userinput>&lt;search_replace base=&quot;/usr/src/mypackage&quot;&gt;
 	&lt;file&gt;runit.sh&lt;/file&gt;
 	&lt;find&gt;BINDIR&lt;/find&gt;
 	&lt;replace&gt;/bin&lt;/replace&gt;
-&lt;/search_replace&gt;</screen></userinput>
+&lt;/search_replace&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>echo Performing substitution in runit.sh
+<screen><userinput>echo Performing substitution in runit.sh
 cd /usr/src/mypackage
 cp runit.sh /tmp/foo.$$
-<command>sed -e 's/BINDIR/\/bin/' /tmp/foo.$$ &gt; runit.sh</command></screen></userinput>
+<command>sed -e 's/BINDIR/\/bin/' /tmp/foo.$$ &gt; runit.sh</command></userinput></screen>
 
 </sect2>
 

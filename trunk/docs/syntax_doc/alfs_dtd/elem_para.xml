@@ -26,7 +26,7 @@ documentary text.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
+<screen><userinput>&lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
 	&lt;packageinfo;&gt;
 		&lt;description;&gt;
 			&lt;para;&gt;The gimp package contains the GNU Image Manipulation Program.
@@ -47,7 +47,7 @@ documentary text.</para>
 
 	......
 
-&lt;/package;&gt;</screen></userinput>
+&lt;/package;&gt;</userinput></screen>
 
 </sect2>
 

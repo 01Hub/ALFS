@@ -42,14 +42,14 @@ used in the command chmod.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;permissions mode=&quot;755&quot;&gt;
+<screen><userinput>&lt;permissions mode=&quot;755&quot;&gt;
     &lt;name&gt;/usr/bin/lex&lt;/name&gt;
-&lt;/permissions&gt;</screen></userinput>
+&lt;/permissions&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>echo Changing permissions of /usr/bin/lex to 755
-<command>chmod 755 /usr/bin/lex</command></screen></userinput>
+<screen><userinput>echo Changing permissions of /usr/bin/lex to 755
+<command>chmod 755 /usr/bin/lex</command></userinput></screen>
 
 </sect2>
 

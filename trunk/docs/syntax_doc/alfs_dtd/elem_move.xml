@@ -59,15 +59,15 @@ performed. </para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;move&gt;
+<screen><userinput>&lt;move&gt;
 	&lt;source&gt;/usr/src/mypackage/config.txt&lt;/source&gt;
 	&lt;destination&gt;/opt/mypackage/config.txt&lt;/destination&gt;
-&lt;/move&gt;</screen></userinput>
+&lt;/move&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>echo Move ' /usr/src/mypackage/config.txt /opt/mypackage/config.txt'
-<command>mv /usr/src/mypackage/config.txt /opt/mypackage/config.txt</command></screen></userinput>
+<screen><userinput>echo Move ' /usr/src/mypackage/config.txt /opt/mypackage/config.txt'
+<command>mv /usr/src/mypackage/config.txt /opt/mypackage/config.txt</command></userinput></screen>
 
 </sect2>
 
