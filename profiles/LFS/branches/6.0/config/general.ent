@@ -2,7 +2,7 @@
      This file contains various entities that must be customized 
      for the build to work on your machine.
 
-     For the build to be successfull, you should :
+     For the build to be successfull, you should:
      - run nALFS as root
      - check that your umask is 022
 
@@ -22,7 +22,7 @@
      are before running the script. The content of this directory
      will be copied in a subdirectory of &LFS; at the beginning of
      the build.
-     IMPORTANT : be carefull about the original packages dir; if you 
+     IMPORTANT: be carefull about the original packages dir; if you 
                  enter the wrong directory, nALFS will try to download
                  all the packages in it !!!
      -->

@@ -30,7 +30,7 @@
 		</patch>
 
 		<execute command="touch">
-		  <param>doc/flex.1</param>
+			<param>doc/flex.1</param>
 		</execute>
 
 		<configure>

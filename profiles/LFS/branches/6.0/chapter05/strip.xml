@@ -2,7 +2,7 @@
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" []>
 
 <alfs>
-<!--	
+<!--
  ************************ 
  * OPTIONAL BUT USEFULL *
  ************************
@@ -21,7 +21,7 @@
 	</execute>
 
 	<remove>/tools/{doc,info,man}</remove>
-
 </stage>
 -->
+
 </alfs>
