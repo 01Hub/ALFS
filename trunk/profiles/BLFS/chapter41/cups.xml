@@ -7,7 +7,7 @@
 		<utilizes><name>openssl</name></utilizes>
 		<utilizes><name>linuxpam</name></utilizes>
 		<utilizes><name>php</name></utilizes>
-		<utilizes><name>python</name><utilizes>
+		<utilizes><name>python</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">

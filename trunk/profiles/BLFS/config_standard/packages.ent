@@ -1523,61 +1523,34 @@
 <!--************* packages for chapter 45 *************-->
 
 <!ENTITY a2ps-version   "4.13b">
-<!ENTITY a2ps-package   "a2ps-4.13b.tar.gz">
+<!ENTITY a2ps-package   "a2ps-&a2ps-version;.tar.gz">
 <!ENTITY a2ps-directory "a2ps-4.13">
 
 <!ENTITY enscript-version   "1.6.1">
-<!ENTITY enscript-package   "enscript-1.6.1.tar.gz">
-<!ENTITY enscript-directory "enscript-1.6.1">
-
-<!ENTITY gsview-version   "4.3">
-<!ENTITY gsview-package   "gsview-4.3.tar.gz">
-<!ENTITY gsview-directory "gsview-4.3">
+<!ENTITY enscript-package   "enscript-&enscript-version;.tar.gz">
+<!ENTITY enscript-directory "enscript-&enscript-version;">
 
 <!ENTITY psutils-version   "p17">
-<!ENTITY psutils-package   "psutils-p17.tar.gz">
+<!ENTITY psutils-package   "psutils-&psutils-version;.tar.gz">
 <!ENTITY psutils-directory "psutils">
 
-<!ENTITY xpdf-version   "2.02">
-<!ENTITY xpdf-package   "xpdf-2.02.tar.gz">
-<!ENTITY xpdf-directory "xpdf-2.02">
+<!ENTITY gsview-version   "4.6">
+<!ENTITY gsview-package   "gsview-&gsview-version;.tar.gz">
+<!ENTITY gsview-directory "gsview-&gsview-version;">
+<!ENTITY gsview-pstotext-patch "gsview-&gsview-version;-pstotext.patch">
+<!ENTITY gsview-lang-patch "gsview-&gsview-version;-lang.patch">
+
+<!ENTITY xpdf-version   "3.00">
+<!ENTITY xpdf-package   "xpdf-&xpdf-version;.tar.gz">
+<!ENTITY xpdf-directory "xpdf-&xpdf-version;">
+<!ENTITY xpdf-freetype-patch "xpdf-&xpdf-version;-freetype-2.1.7-hack.patch">
 
 <!--************* packages for chapter 46 *************-->
 
 <!ENTITY tex-version   "2.0.2">
-<!ENTITY tex-package   "tetex-src-2.0.2.tar.gz">
-<!ENTITY tex-directory "tetex-src-2.0.2">
-
-<!ENTITY tex-texmf-package     "tetex-texmf-2.0.2.tar.gz">
-<!ENTITY tex-texmfsrc-package  "tetex-texmfsrc-2.0.2.tar.gz">
-
-
-<!--************* packages for chapter 99 *************-->
-
-
-<!ENTITY t1lib-version   "1.3">
-<!ENTITY t1lib-package   "t1lib-1.3.tar.gz">
-<!ENTITY t1lib-directory "T1Lib-1.3">
-
-<!ENTITY bison175-version   "1.75">
-<!ENTITY bison175-package   "bison-1.75.tar.bz2">
-<!ENTITY bison175-directory "bison-1.75">
-
-<!ENTITY libole2-version   "0.2.4">
-<!ENTITY libole2-package   "libole2-0.2.4.tar.bz2">
-<!ENTITY libole2-directory "libole2-0.2.4">
-
-<!ENTITY mktemp-version   "1.5">
-<!ENTITY mktemp-package   "mktemp-1.5.tar.gz">
-<!ENTITY mktemp-directory "mktemp-1.5">
-
-<!ENTITY fribidi-version   "0.10.4">
-<!ENTITY fribidi-package   "fribidi-0.10.4.tar.gz">
-<!ENTITY fribidi-directory "fribidi-0.10.4">
- 
-<!ENTITY stlport-version   "4.5.3">
-<!ENTITY stlport-package   "STLport-4.5.3.tar.gz">
-<!ENTITY stlport-directory "STLport-4.5.3">
-
-<!ENTITY stlport-patch     "STLport-4.5.3-gcc3.patch">
+<!ENTITY tex-package   "tetex-src-&tex-version;.tar.gz">
+<!ENTITY tex-texmf-package     "tetex-texmf-&tex-version;.tar.gz">
+<!ENTITY tex-texmfsrc-package  "tetex-texmfsrc-&tex-version;.tar.gz">
+<!ENTITY tex-directory "tetex-src-&tex-version;">
+<!ENTITY tex-readlink-patch "tetex-src-&tex-version;-remove-readlink-1.patch">
 

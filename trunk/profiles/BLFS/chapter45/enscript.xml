@@ -1,23 +1,22 @@
-<package name="a2ps" version="&a2ps-version;">
+<package name="enscript" version="&enscript-version;">
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&a2ps-package;</archive>
+			<archive>&packages_dir;/&enscript-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&a2ps-directory;</base>
+			<base>&build_dir;/&enscript-directory;</base>
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=/usr</param>
-			<param>--libexecdir=/usr/lib/a2ps</param>
-			<param>--sysconfdir=/etc/a2ps</param>
+		        <param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc/enscript</param>
 			<param>--localstatedir=/var</param>
-			<param>--with-medium=a4</param>
+			<param>--with-media=Letter</param>
 		</configure>
 
 		<make />
@@ -28,7 +27,7 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&a2ps-directory;</remove>
+		<remove>&build_dir;/&enscript-directory;</remove>
 	</stage>
 
 </package>

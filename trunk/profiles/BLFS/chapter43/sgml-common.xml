@@ -15,7 +15,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i &packages_dir;/&sgml-common-manpage-1.patch</param>
+			<param>-i &packages_dir;/&sgml-common-manpage-patch;</param>
 		</patch>
 
 		<execute command="aclocal" />

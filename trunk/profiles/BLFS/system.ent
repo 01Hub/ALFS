@@ -408,15 +408,15 @@
 <!ENTITY xml-dtd     SYSTEM "./chapter44/xml-dtd.xml">
 <!ENTITY docbook-xsl SYSTEM "./chapter44/docbook-xsl.xml">
 
-<!-- chapter 50 -->
-<!ENTITY a2ps        SYSTEM "./chapter50/a2ps.xml">
-<!ENTITY enscript    SYSTEM "./chapter50/enscript.xml">
-<!ENTITY gsview      SYSTEM "./chapter50/gsview.xml">
-<!ENTITY psutils     SYSTEM "./chapter50/psutils.xml">
-<!ENTITY xpdf        SYSTEM "./chapter50/xpdf.xml">
+<!-- chapter 45 -->
+<!ENTITY a2ps        SYSTEM "./chapter45/a2ps.xml">
+<!ENTITY enscript    SYSTEM "./chapter45/enscript.xml">
+<!ENTITY gsview      SYSTEM "./chapter45/gsview.xml">
+<!ENTITY psutils     SYSTEM "./chapter45/psutils.xml">
+<!ENTITY xpdf        SYSTEM "./chapter45/xpdf.xml">
 
-<!-- chapter 51 -->
-<!ENTITY tex         SYSTEM "./chapter51/tex.xml">
+<!-- chapter 46 -->
+<!ENTITY tex         SYSTEM "./chapter46/tex.xml">
 
 <!-- chapter 99 -->
 <!ENTITY t1lib     SYSTEM "./chapter99/t1lib.xml">

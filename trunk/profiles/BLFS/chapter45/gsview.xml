@@ -1,7 +1,8 @@
 <package name="gsview" version="&gsview-version;">
 
         <packageinfo>
-                <requires><name>sgml-common</name></requires>
+                <requires><name>gtk+</name></requires>
+		<requires><name>ghostscript</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -16,18 +17,34 @@
 			<base>&build_dir;/&gsview-directory;</base>
 		</stageinfo>
 
-		<search_replace
-		    base = "&build_dir;/&gsview-directory;">
+		<search_replace>
 		        <file>srcunx/gvxreg.c</file>
 			<find>netscape</find>
 			<replace>mozilla</replace>
 		</search_replace>
 
-
 		<copy>
 		        <source>srcunx/unx.mak</source>
 			<destination>Makefile</destination>
 		</copy>
+
+		<search_replace>
+			<file>Makefile</file>
+			<find>GSVIEW_ROOT=/usr/local</find>
+			<replace>GSVIEW_ROOT=/usr</replace>
+		</search_replace>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&gsview-pstotext-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&gsview-lang-patch;</param>
+		</patch>
 
 		<make />
 

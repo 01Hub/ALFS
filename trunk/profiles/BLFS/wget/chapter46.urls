@@ -1,0 +1,4 @@
+ftp://tug.ctan.org/tex-archive/systems/unix/teTeX/current/distrib/tetex-src-2.0.2.tar.gz
+ftp://tug.ctan.org/tex-archive/systems/unix/teTeX/current/distrib/tetex-texmf-2.0.2.tar.gz
+ftp://tug.ctan.org/tex-archive/systems/unix/teTeX/current/distrib/tetex-texmfsrc-2.0.2.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/5.1/tetex-src-2.0.2-remove-readlink-1.patch

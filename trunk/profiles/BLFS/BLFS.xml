@@ -602,8 +602,8 @@
 
     &a2ps;
     &enscript;
-    &gsview;
     &psutils;
+    &gsview;
     &xpdf;
 
 </stage>
@@ -614,18 +614,6 @@
 
 </stage>
 
-<stage name="Chapter 99 (Supplements)">
-
-  <!-- these packages should be in BLFS but the corresponding
-       instructions have not been written yet.
-       -->
-
-   &t1lib;
-   &libole2;
-   &bison175;
-   &fribidi;
-
-</stage>
 
 </stage>
 
