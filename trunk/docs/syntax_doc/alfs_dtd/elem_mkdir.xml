@@ -63,9 +63,9 @@ directory in which the new directory will be created. See
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>cd /usr/local/lib
+<screen>cd /usr/local/lib
 echo Making directory X11
-<command>mkdir -p X11</command></userinput></screen>
+<command>mkdir -p X11</command></screen>
 
 </sect2>
 

@@ -56,13 +56,13 @@ existing value.</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Stage
+<screen>echo Stage
 
 export GCCFLAGS=-O2
 export PATH=/usr/src/gzip.1.2.4a:$PATH
 export LDFLAGS="$LDFLAGS -s"
 
-echo Exiting stage</userinput></screen>
+echo Exiting stage</screen>
 
 </sect2>
 

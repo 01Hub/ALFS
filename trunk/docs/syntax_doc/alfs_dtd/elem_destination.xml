@@ -39,9 +39,9 @@ occurs in.</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+<screen>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
 cd /usr/src
-<command>tar -xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></userinput></screen>
+<command>tar -xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></screen>
 
 </sect2>
 
@@ -58,9 +58,9 @@ cd /usr/src
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Copying 'config.txt into /opt/mypackage/config.txt'
+<screen>echo Copying 'config.txt into /opt/mypackage/config.txt'
 cd /usr/src/mypackage
-<command>cp -f  config.txt /opt/mypackage/config.txt</command></userinput></screen>
+<command>cp -f  config.txt /opt/mypackage/config.txt</command></screen>
 
 </sect2>
 

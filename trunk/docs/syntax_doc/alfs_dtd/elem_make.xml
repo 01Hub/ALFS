@@ -51,8 +51,8 @@ directory in which the make will be performed. See
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Executing make
-<command>make</command></userinput></screen>
+<screen>echo Executing make
+<command>make</command></screen>
 
 </sect2>
 
@@ -67,9 +67,9 @@ directory in which the make will be performed. See
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Executing make
+<screen>echo Executing make
 cd /usr/src/mypackage
-<command>make install</command></userinput></screen>
+<command>make install</command></screen>
 
 </sect2>
 

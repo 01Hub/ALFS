@@ -54,7 +54,7 @@ element.</para></note>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Generating file group
+<screen>echo Generating file group
 cd /etc
 <command>cat &gt; group &lt;&lt; 'EOF'</command>
 root:x:0:
@@ -69,7 +69,7 @@ disk:x:8:
 lp:x:9:
 dialout:x:10:
 audio:x:11:
-<command>EOF</command></userinput></screen>
+<command>EOF</command></screen>
 
 </sect2>
 

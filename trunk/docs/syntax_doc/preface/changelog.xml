@@ -6,6 +6,9 @@
 
 <itemizedlist>
 
+<listitem><para>May 28th, 2004 [jwrober]: Updated alfs.css the rest of the
+element files to support better formatting of examples.</para></listitem>
+
 <listitem><para>May 28th, 2004 [jwrober]: Cleaned up elem_archive,
 elem_configure, elem_copy, elem_description, elem_destination, elem_digest,
 elem_download, elem_environment, elem_execute, elem_file, elem_find,
