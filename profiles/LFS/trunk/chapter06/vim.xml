@@ -57,22 +57,10 @@
         <target>vim</target>
         <name>/usr/bin/vi</name>
       </link>
-      <textdump>
-        <file>/etc/vimrc</file>
-        <content>
-	=" Begin /etc/vimrc
-	=
-	=set nocompatible
-	=set backspace=2
-	=syntax on
-	=
-	=if (&real-amp;term == "iterm") || (&real-amp;term == "putty")
-	= set background=dark
-	=endif
-	=
-	=" End /etc/vimrc
-        </content>
-      </textdump>
+      <copy>
+        <source>&skeleton_dir;/etc/vimrc</source>
+        <destination>/etc</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&vim-directory;</remove>
