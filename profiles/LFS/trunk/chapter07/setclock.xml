@@ -7,15 +7,9 @@
 ]>
 <alfs>
   <stage name="Configuring the setclock Script">
-    <textdump>
-      <file>/etc/sysconfig/clock</file>
-      <content>
-      =# Begin /etc/sysconfig/clock
-      =
-      =UTC=&UTC;
-      =
-      =# End /etc/sysconfig/clock
-      </content>
-    </textdump>
+    <copy>
+      <source>&skeleton_dir;/etc/sysconfig/clock</source>
+      <destination>/etc/sysconfig</destination>
+    </copy>
   </stage>
 </alfs>
