@@ -16,7 +16,7 @@
 <!DOCTYPE alfs SYSTEM "ALFS.dtd" [
 
 <!ENTITY % general_entities SYSTEM "config/general.ent">
-<!ENTITY % package_entities SYSTEM "package.ent">
+<!ENTITY % package_entities SYSTEM "config/package.ent">
 <!ENTITY % system_entities SYSTEM "system.ent">
 
 %general_entities;
