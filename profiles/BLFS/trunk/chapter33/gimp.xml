@@ -23,6 +23,12 @@
         <name>gimp-print</name>
       </utilizes>
       <utilizes>
+	<name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+	<name>libtiff</name>
+      </utilizes>
+      <utilizes>
         <name>libmng</name>
       </utilizes>
       <utilizes>
@@ -32,16 +38,22 @@
         <name>aalib</name>
       </utilizes>
       <utilizes>
-        <name>python</name>
-      </utilizes>
-      <utilizes>
-        <name>gtk-doc</name>
+        <name>lcms</name>
       </utilizes>
       <utilizes>
         <name>libgtkhtml</name>
       </utilizes>
       <utilizes>
-        <name>lcms</name>
+        <name>python</name>
+      </utilizes>
+      <utilizes>
+	<name>XML-Parser</name>
+      </utilizes>
+      <utilizes>
+        <name>gtk-doc</name>
+      </utilizes>
+      <utilizes>
+	<name>&mta-impl;</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -58,6 +70,8 @@
         <param>--prefix=/usr</param>
         <param>--sysconfdir=/etc</param>
         <param>--disable-print</param>
+	<param>--without-libjpeg</param>
+	<param>--without-libtiff</param>
       </configure>
       <make />
       <make>

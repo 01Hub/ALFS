@@ -31,6 +31,9 @@
       <requires>
         <name>g-wrap</name>
       </requires>
+      <utilizes>
+	<name>doxygen</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -49,6 +52,10 @@
       <make>
         <param>install</param>
       </make>
+      <ownership user="root" group="root">
+	<option>recursive</option>
+	<name>/opt/gnome/share/gnucash/doc/html/html</name>
+      </ownership>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gnucash-directory;</remove>

@@ -1,10 +1,11 @@
 <!--************* packages for chapter 33 *************-->
 
-<!ENTITY abiword-version   "2.0.6">
+<!ENTITY abiword-major-minor "2.2">
+<!ENTITY abiword-version   "&abiword-major-minor;.0">
 <!ENTITY abiword-package   "abiword-&abiword-version;.tar.bz2">
 <!ENTITY abiword-directory "abiword-&abiword-version;">
 
-<!ENTITY gnumeric-version   "1.2.10">
+<!ENTITY gnumeric-version   "1.4.1">
 <!ENTITY gnumeric-package   "gnumeric-&gnumeric-version;.tar.bz2">
 <!ENTITY gnumeric-directory "gnumeric-&gnumeric-version;">
 
@@ -12,14 +13,11 @@
 <!ENTITY gnucash-package   "gnucash-&gnucash-version;.tar.gz">
 <!ENTITY gnucash-directory "gnucash-&gnucash-version;">
 
-<!ENTITY gimp-version   "2.0.0">
+<!ENTITY gimp-version   "2.0.6">
 <!ENTITY gimp-package   "gimp-&gimp-version;.tar.bz2">
 <!ENTITY gimp-directory "gimp-&gimp-version;">
 
-<!ENTITY evolution-version   "1.4.5">
+<!ENTITY evolution-version   "2.0.2">
 <!ENTITY evolution-package   "evolution-&evolution-version;.tar.bz2">
 <!ENTITY evolution-directory "evolution-&evolution-version;">
 
-<!ENTITY db3117-version   "3.1.17">
-<!ENTITY db3117-package   "db-&db3117-version;.tar.gz">
-<!ENTITY db3117-directory "db-&db3117-version;">

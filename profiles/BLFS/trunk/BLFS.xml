@@ -389,8 +389,8 @@
       <xi:include href="chapter32/guppi.xml" />
       <xi:include href="chapter32/libcapplet.xml" />
       <xi:include href="chapter32/soup.xml" />
-      <xi:include href="chapter32/gtkhtml.xml" />
       <xi:include href="chapter32/libghttp.xml" />
+      <xi:include href="chapter32/gtkhtml.xml" /> 
     </stage>
     <stage name="Chapter 33 (Individual Office Programs)">
       <xi:include href="chapter33/abiword.xml" />

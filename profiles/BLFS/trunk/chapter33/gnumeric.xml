@@ -19,6 +19,9 @@
       <requires>
         <name>libgsf</name>
       </requires>
+      <utilizes>
+	<name>python</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -31,15 +34,19 @@
         <base>&build_dir;/&gnumeric-directory;</base>
       </stageinfo>
       <configure>
-        <param>--prefix=/usr</param>
-        <param>--libexecdir=/usr/sbin</param>
+        <param>--prefix=&gnome-prefix;</param>
         <param>--localstatedir=/var/lib</param>
-        <param>--sysconfdir=/etc</param>
+        <param>--sysconfdir=/etc/gnome</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
+      <link>
+	<option>force</option>
+	<target>&gnome-prefix;/share/gnome/help/gnumeric</target>
+	<name>&gnome-prefix;/share/gnumeric/&gnumeric-version;/doc</name>
+      </link>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gnumeric-directory;</remove>
