@@ -1,9 +1,5 @@
 <!--************* packages for chapter 8 *************-->
 
-<!ENTITY openssl-version   "0.9.7e">
-<!ENTITY openssl-package   "openssl-&openssl-version;.tar.gz">
-<!ENTITY openssl-directory "openssl-&openssl-version;">
-
 <!ENTITY pcre-version   "5.0">
 <!ENTITY pcre-package   "pcre-&pcre-version;.tar.bz2">
 <!ENTITY pcre-directory "pcre-&pcre-version;">

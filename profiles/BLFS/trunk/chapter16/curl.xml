@@ -25,6 +25,24 @@
       <utilizes>
       	<name>&krb-impl;</name>
       </utilizes>
+      <utilizes>
+      	<name>krb4</name>
+      </utilizes>
+      <utilizes>
+      	<name>libidn</name>
+      </utilizes>
+      <utilizes>
+      	<name>spnego</name>
+      </utilizes>
+      <utilizes>
+      	<name>c-ares</name>
+      </utilizes>
+      <utilizes>
+      	<name>stunnel</name>
+      </utilizes>
+      <utilizes>
+      	<name>valgrind</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -43,6 +61,7 @@
       <make>
         <param>install</param>
       </make>
+
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&curl-directory;</remove>

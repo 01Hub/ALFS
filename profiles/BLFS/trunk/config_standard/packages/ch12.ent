@@ -1,10 +1,11 @@
 <!--************* packages for chapter 12 *************-->
 
-<!ENTITY python-version   "2.3.4">
+<!ENTITY python-version   "2.4">
 <!ENTITY python-package   "Python-&python-version;.tar.bz2">
 <!ENTITY python-directory "Python-&python-version;">
 
 <!ENTITY python-gdbm-patch "Python-&python-version;-gdbm-1.patch">
+<!ENTITY python-db43-patch "Python-&python-version;-db43-1.patch">
 
 <!-- Begin Perl Modules -->
 <!ENTITY Astro-FITS-Header-version   "2.8.1">
@@ -97,17 +98,17 @@
 <!ENTITY j2sdk-fixed-paths-patch  "j2sdk-&j2sdk-version;-remove_fixed_paths-1.patch">
 <!ENTITY j2sdk-static-cxx-patch   "j2sdk-&j2sdk-version;-static_cxx-1.patch">
 
-<!ENTITY ruby-version   "1.8.1">
+<!ENTITY ruby-version   "1.8.2">
 <!ENTITY ruby-package   "ruby-&ruby-version;.tar.gz">
 <!ENTITY ruby-directory "ruby-&ruby-version;">
 
 <!ENTITY tcl-major-minor "8.4">
-<!ENTITY tcl-version     "&tcl-major-minor;.7">
+<!ENTITY tcl-version     "&tcl-major-minor;.9">
 <!ENTITY tcl-package     "tcl&tcl-version;-src.tar.gz">
 <!ENTITY tcl-directory   "tcl&tcl-version;">
 
 <!ENTITY tk-major-minor "8.4">
-<!ENTITY tk-version     "&tk-major-minor;.7">
+<!ENTITY tk-version     "&tk-major-minor;.9">
 <!ENTITY tk-package     "tk&tk-version;-src.tar.gz">
 <!ENTITY tk-directory   "tk&tk-version;">
 

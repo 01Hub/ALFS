@@ -50,6 +50,7 @@
       <xi:include href="chapter03/netfs.xml" />
     </stage>
     <stage name="Chapter 4 (Security)">
+      <xi:include href="chapter04/openssl.xml" />
       <xi:include href="chapter04/cracklib.xml" />
       <xi:include href="chapter04/linuxpam.xml" />
       <xi:include href="chapter04/shadow.xml" />
@@ -78,7 +79,6 @@
       <xi:include href="chapter07/zsh.xml" />
     </stage>
     <stage name="Chapter 8 (General Libraries)">
-      <xi:include href="chapter08/openssl.xml" />
       <xi:include href="chapter08/pcre.xml" />
       <xi:include href="chapter08/popt.xml" />
       <xi:include href="chapter08/slang.xml" />

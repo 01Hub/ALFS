@@ -1,5 +1,9 @@
 <!--************* packages for chapter 4 *************-->
 
+<!ENTITY openssl-version   "0.9.7e">
+<!ENTITY openssl-package   "openssl-&openssl-version;.tar.gz">
+<!ENTITY openssl-directory "openssl-&openssl-version;">
+
 <!ENTITY cracklib-version   "2.7">
 <!ENTITY cracklib-package   "cracklib,&cracklib-version;.tar.gz">
 <!ENTITY cracklib-directory "cracklib,&cracklib-version;">
