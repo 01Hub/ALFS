@@ -30,7 +30,7 @@ book but mainly to emphasize important points.</para></blockquote>
 book and to external pages such as HowTo's, download locations,
 websites, etc.</para></blockquote>
 
-<screen><userinput><command>cat &gt; $LFS/etc/group &lt;&lt; "EOF"</command>>
+<screen><userinput><command>cat &gt; $LFS/etc/group &lt;&lt;&quot;EOF&quot;</command>
 	root:x:0:
 	bin:x:1:
 	......
