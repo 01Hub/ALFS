@@ -1,9 +1,9 @@
 <package name="tk" version="&tk-version;">
 
-    <packageinfo>
-        <utilizes><name>xfree</name></utilizes>
-        <utilizes><name>tk</name></utilizes>
-    </packageinfo>
+    	<packageinfo>
+        	<requires><name>xfree</name></requires>
+        	<requires><name>tcl</name></requires>
+    	</packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>

@@ -97,6 +97,7 @@
 <!ENTITY librep      SYSTEM "./chapter12/librep.xml">
 <!ENTITY j2sdk       SYSTEM "./chapter12/j2sdk.xml">
 <!ENTITY ruby        SYSTEM "./chapter12/ruby.xml">
+<!ENTITY gnat        SYSTEM "./chapter12/gnat.xml">
 <!ENTITY gcc-full    SYSTEM "./chapter12/gcc-full.xml">
 <!ENTITY tcl         SYSTEM "./chapter12/tcl.xml">
 <!ENTITY tk          SYSTEM "./chapter12/tk.xml">
@@ -108,7 +109,11 @@
 <!ENTITY wvdial     SYSTEM "./chapter13/wvdial.xml">
 
 <!-- chapter 14 -->
+<!ENTITY dhclient   SYSTEM "./chapter14/dhclient.xml">
 <!ENTITY dhcpcd     SYSTEM "./chapter14/dhcpcd.xml">
+
+<!-- chapter 15 -->
+<!ENTITY rp-pppoe   SYSTEM "./chapter15/rp-pppoe.xml">
 
 <!-- chapter 16 -->
 <!ENTITY curl       SYSTEM "./chapter16/curl.xml">

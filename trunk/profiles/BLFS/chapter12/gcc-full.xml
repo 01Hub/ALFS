@@ -5,38 +5,7 @@
                 <requires><name>gnat</name></requires>
         </packageinfo>
 
-	<stage name="Unpacking a package.">
-		<unpack>
-			<archive>&packages_dir;/&gnat-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing a package.">
-		<stageinfo>
-			<base>&build_dir;/&gnat-directory;</base>
-		</stageinfo>
-
-		<textdump base="/tmp">
-		        <file>gnat_reply</file>
-
-			<content>
-			        =
-			        =3
-				=/opt/gnat
-			</content>
-		</textdump>
-
-		<execute command="./doconfig &lt; /tmp/gnat_reply" />
-
-		<execute command="./doinstall" />
-	</stage>
-
-	<stage name="Clean-up.">
-		<remove>&build_dir;/&gnat-directory;</remove>
-		<remove>/tmp/gnat_reply</remove>
-	</stage>
-
+	
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&gcc-full-package;</archive>
@@ -50,22 +19,16 @@
 		<copy>
 		        <source>&packages_dir;/&gcc-full-patch1;</source>
 		        <destination>&build_dir;</destination>
-		</copy>
-
-		<copy>
-		        <source>&packages_dir;/&gcc-full-patch2;</source>
-		        <destination>&build_dir;</destination>
-		</copy>
+		</copy>		
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
 			<environment>
-			        <variable name="CC">cc</variable>
+			        <variable name="CC">/usr/bin/gcc</variable>
 			        <variable name="CFLAGS" />
 			        <variable name="CXXFLAGS" />
-			        <variable name="PATH">/usr/src/gnat/bin:/bin:/usr/bin:/usr/local/bin</variable>
-
+			        <variable name="PATH">/opt/gnat/bin:/bin:/usr/bin:/usr/local/bin</variable>
 			</environment>
 			<base>&build_dir;/gcc-build</base>
 		</stageinfo>
@@ -76,17 +39,16 @@
 			<param>-i ../&gcc-full-patch1;</param>
 		</patch>
 
-		<patch base="&build_dir;/&gcc-full-directory;">
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&gcc-full-patch2;</param>
-		</patch>
+		<search_replace base="&build_dir;/&gcc-full-directory;">
+			<file>libiberty/Makefile.in</file>
+			<find>install_to_$(INSTALL_DEST) </find>
+			<replace> </replace>
+		</search_replace>
 
 		<execute base="&build_dir;/&gcc-full-directory;/gcc/ada"
 		        command="touch treeprs.ads [es]info.h nmake.ad[bs]" />
 
-		<configure base="&build_dir;/gcc-build"
-		           command="CC=/usr/bin/gcc ../&gcc-full-directory;/configure">
+		<configure command="CC=/usr/bin/gcc ../&gcc-full-directory;/configure">
 		        <param>--prefix=/usr</param>
 			<param>--enable-shared</param>
 			<param>--enable-languages=c,c++,objc,f77,ada,java</param>
@@ -95,16 +57,16 @@
 			<param>--enable-clocale=gnu</param>
 		</configure>
 
-		<make base="&build_dir;/gcc-build">
+		<make>
 		        <param>bootstrap</param>
 		</make>
 
-		<make base="&build_dir;/gcc-build">
+		<make>
 		        <param>-C gcc</param>
 		        <param>gnatlib_and_tools</param>
 		</make>
 
-		<make base="&build_dir;/gcc-build">
+		<make>
 		        <param>install</param>
 		</make>
 
@@ -117,10 +79,8 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&gcc-full-directory;</remove>
-		<remove>&build_dir;/gnat</remove>
 		<remove>&build_dir;/gcc-build</remove>
 		<remove>&build_dir;/&gcc-full-patch1;</remove>
-		<remove>&build_dir;/&gcc-full-patch2;</remove>
 		<remove>/opt/gnat</remove>
 	</stage>
 
