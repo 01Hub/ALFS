@@ -4,8 +4,12 @@
 			"/usr/share/docbook/docbookx.dtd" [
 
 <!ENTITY version "20020507">
+<!ENTITY releasedate "May 7th, 2002">
 
-<!ENTITY bookinfo SYSTEM "bookinfo.xml">
+<!ENTITY legalnotice SYSTEM "legalnotice.xml">
+<!ENTITY acknowledgements SYSTEM "acknowledgements.xml">
+<!ENTITY changelog SYSTEM "changelog.xml">
+<!ENTITY contactinfo SYSTEM "contactinfo.xml">
 
 
 ]>
@@ -13,6 +17,36 @@
 
 <book>
 
-&bookinfo;
+    <bookinfo>
+	<title>Automated Linux From Scratch</title>
+	<subtitle>Version &version;</subtitle>
+
+	<authorgroup>
+	    <author>
+		<firstname>Jesse</firstname>
+		<surname>Tie-Ten-Quee</surname>
+	    </author>
+	</authorgroup>
+
+	<copyright id="copyright">
+	    <year>2001, 2002</year>
+	    <holder>Jesse Tie-Ten-Quee</holder>
+	</copyright>
+
+	&legalnotice;
+
+	<abstract>
+	    <para>Documentation and examples of the profiles syntax.</para>
+	</abstract>
+    </bookinfo>
+
+    <chapter id="ch01">
+	<title>Introduction</title>
+
+	&acknowledgements;
+	&changelog;
+	&contactinfo;
+
+    </chapter>
 
 </book>
