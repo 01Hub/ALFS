@@ -9,7 +9,7 @@
 &lt;!ELEMENT archive     (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the element
+<para>This element occurs in the&nbsp;
 <xref linkend="elem_unpack"/>.
 </para>
 
@@ -27,8 +27,8 @@ in an <filename>unpack</filename> operation.</para>
 <title>Examples</title>
 
 <screen><userinput>&lt;unpack&gt;
-    &lt;archive&gt;/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive&gt;
-    &lt;destination&gt;/usr/src&lt;/destination&gt;
+	&lt;archive&gt;/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive&gt;
+	&lt;destination&gt;/usr/src&lt;/destination&gt;
 &lt;/unpack&gt;</userinput></screen>
 
 <para>The equivalent bash script is :</para>
