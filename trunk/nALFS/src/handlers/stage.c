@@ -595,7 +595,7 @@ static int variable_content(const element_s * const element,
 	return 0;
 }
 
-static int variable_valid(const element_s * const element)
+static int variable_invalid_data(const element_s * const element)
 {
 	struct variable_data *data = (struct variable_data *) element->handler_data;
 
@@ -679,7 +679,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attributes = variable_attributes,
 		.parse_attribute = variable_attribute,
 		.parse_content = variable_content,
-		.valid = variable_valid,
+		.invalid_data = variable_invalid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -741,7 +741,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attributes = variable_attributes,
 		.parse_attribute = variable_attribute,
 		.parse_content = variable_content,
-		.valid = variable_valid,
+		.invalid_data = variable_invalid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -803,7 +803,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attributes = variable_attributes,
 		.parse_attribute = variable_attribute,
 		.parse_content = variable_content,
-		.valid = variable_valid,
+		.invalid_data = variable_invalid_data,
 	},
 #endif
 	{
