@@ -20,16 +20,10 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <unistd.h>
-#include <errno.h>
 #include <pwd.h>
-#include <sys/types.h>
 #include <sys/stat.h>
+#include <stdarg.h>
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -41,67 +35,45 @@
  * Program-specific part.
  */
 
-#include "win.h" /* For Nprint_err.*/
-#include "nalfs-core.h" /* For Fatal_error. */
-#include "options.h" /* for opt_run_interactive */
+#include "win.h"
+#include "nprint.h"
 
-#define PRINT_ERROR Nprint_err
-#define FATAL_ERROR Fatal_error
+/* Fatal error handlers */
 
-/*
- * End of program-specific part.
- */
-
-
-static const char pfile_location[] = "/tmp/pfile.output";
-
-
-/*
- * Memory allocation utilities.
- */
-
-void *xmalloc(size_t size)
+void fatal_error_normal(const char * const file, unsigned int line, const char *format, ...)
 {
-	void *value = malloc(size);
+	va_list ap;
 
+	va_start(ap, format);
+	vfprintf(stderr, format, ap);
+	va_end(ap);
 
-	if (value == NULL) {
-		FATAL_ERROR("malloc() failed");
-	}
-
-#ifdef DEBUG_MEMORY
-	pfile("more");
-#endif
-
-	return value;
+	fprintf(stderr, "\nError in %s, line %d. Program version is %s.\n",
+		file, line, VERSION);
+	exit(EXIT_FAILURE);
 }
 
-void *xrealloc(void *ptr, size_t size)
+/* TODO: set fatal_error global to point here when needed */
+
+void fatal_error_interactive(const char * const file, unsigned int line, const char *format, ...)
 {
-	void *value;
+	va_list ap;
 
-#ifdef DEBUG_MEMORY
-	if (ptr == NULL) {
-		pfile("more");
-	}
-#endif
+	clear();
+	refresh();
+	endwin();
 
-	if ((value = realloc(ptr, size)) == NULL) {
-		FATAL_ERROR("realloc() failed (ptr: %p, size %zd)", ptr, size);
-	}
+	va_start(ap, format);
+	vfprintf(stderr, format, ap);
+	va_end(ap);
 
-	return value;
+	fprintf(stderr, "\nError in %s, line %d. Program version is %s.\n",
+		file, line, VERSION);
+	exit(EXIT_FAILURE);
 }
 
-#ifdef DEBUG_MEMORY
-void xfree(void *ptr)
-{
-	if (ptr) {
-		pfile("less");
-	}
-	free(ptr);
-}
-#endif
+void (*fatal_error)(const char * const file, unsigned int line,
+		    const char *format, ...) = fatal_error_normal;
 
 /*
  * Strings' utilities.
@@ -113,12 +85,8 @@ char *xstrdup(const char *s)
 
 
 	if (new == NULL) {
-		FATAL_ERROR("strdup() failed");
+		Fatal_error("strdup() failed");
 	}
-#ifdef DEBUG_MEMORY
-	pfile("more");
-#endif
-
 	return new;
 }
 
@@ -306,9 +274,9 @@ int create_temp_file(char *templ)
 
 
 	if ((fd = mkstemp(templ)) == -1) {
-		PRINT_ERROR("Creating temporary file");
-		PRINT_ERROR("%s", templ);
-		PRINT_ERROR("failed: %s", strerror(errno));
+		Nprint_err("Creating temporary file");
+		Nprint_err("%s", templ);
+		Nprint_err("failed: %s", strerror(errno));
 		return -1;
 
 	} else {
@@ -364,12 +332,10 @@ struct dirent *xreaddir(DIR *dir, const char *dir_name, const char *suffix)
 int change_current_dir(const char * const dir)
 {
 	if (chdir(dir)) {
-		PRINT_ERROR("Changing current directory to %s failed:", dir);
-		PRINT_ERROR("    %s", strerror(errno));
-
+		Nprint_err("Changing current directory to %s failed:", dir);
+		Nprint_err("    %s", strerror(errno));
 		return -1;
 	}
-
 	return 0;
 }
 
@@ -392,35 +358,4 @@ char *get_home_directory()
 	}
 
 	return dir;
-}
-
-/* Useful when debugging. */
-void pfile(const char *format, ...)
-{
-	va_list ap;
-	FILE *fp;
-
-
-	if ((fp = fopen(pfile_location, "a")) == NULL) {
-		return;
-	}
-
-	va_start(ap, format);
-	vfprintf(fp, format, ap);
-	va_end(ap);
-
-	fputc('\n', fp);
-
-	fclose(fp);
-}
-
-unsigned number_len(unsigned num)
-{
-	unsigned i = 1;
-
-
-	while ((num /= 10))
-		++i;
-
-	return i;
 }

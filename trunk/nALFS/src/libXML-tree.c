@@ -29,11 +29,8 @@
  * for a while.
  */
 
-
 #include <stdio.h>
-#include <stdlib.h>
 #include <stdarg.h>
-#include <string.h>
 #include <limits.h>
 
 #ifdef HAVE_CONFIG_H

@@ -30,17 +30,6 @@
 
 #include "parser.h"
 
-#define Fatal_error(a, b...) do { \
-	if (opt_run_interactive) { \
-		clear(); refresh(); endwin(); \
-	} \
-	fprintf(stderr, a, ## b); \
-	fprintf(stderr, "\nError in %s, line %d. Program version is %s.\n", \
-		__FILE__, __LINE__, VERSION); \
-	exit(EXIT_FAILURE); \
-} while (0)
-
-
 #ifdef DEBUG_LOGGING
 #define Debug_logging(a, b...) Nprint("D_L: " a, ## b)
 #else
