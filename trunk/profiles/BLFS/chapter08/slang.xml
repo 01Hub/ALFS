@@ -21,6 +21,24 @@
 		<make>
 			<param>install</param>
 		</make>
+
+		<make>
+			<param>elf</param>
+		</make>
+
+		<make>
+			<param>install-elf</param>
+		</make>
+
+		<make>
+			<param>install-links</param>
+		</make>
+
+		<permissions mode="755">
+		        <name>/usr/lib/libslang.so.1.4.9</name>
+		</permissions>
+
+		<execute command="/sbin/ldconfig" />
 	</stage>
 
 	<stage name="Clean-up.">

@@ -5,12 +5,24 @@
 			<archive>&packages_dir;/&aspell-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
+
+	<copy>
+		<source>&packages_dir;/&aspell-patch;</source>
+		<destination>&build_dir;</destination>
+	</copy>
+
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
 			<base>&build_dir;/&aspell-directory;</base>
 		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&aspell-patch;</param>
+		</patch>
 
 		<configure>
 			<param>--prefix=/usr</param>
@@ -25,6 +37,7 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&aspell-directory;</remove>
+		<remove>&build_dir;/&aspell-patch;</remove>
 	</stage>
 
 </package>

@@ -20,11 +20,15 @@
 			<param>--prefix=/usr</param>
 		</configure>
 
-		<make />
+		<make>
+		        <param>SHLIB_LIBS=-lcurses</param>
+		</make>
 
 		<make>
 			<param>install</param>
 		</make>
+
+		<execute command="/sbin/ldconfig" />
 	</stage>
 
 	<stage name="Clean-up.">
