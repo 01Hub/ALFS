@@ -77,12 +77,15 @@
 		&c5-tar;
 		&c5-texinfo;
 		&c5-bash;
-		&c5-util-linux;
 		&c5-perl;
 	</stage>
 </stage>
 
 <stage name="Chapter 6 - Installing basic system software">
+	<stage name="Creating directories and mounting the proc and devpts file systems">
+		&c6-proc;
+	</stage>
+
 	<stage name="Chroot with /tools">
 		<stageinfo>
 			<root>&LFS;</root>
@@ -95,10 +98,9 @@
 				<variable name="CXXFLAGS">&gcc_optimizations;</variable>
 			</environment>
 		</stageinfo>
-	
+
 		&c6-changingowner;
 		&c6-creatingdirs;
-		&c6-proc;
 		&c6-createfiles;
 		&c6-pwdgroup;
 		&c6-makedev;

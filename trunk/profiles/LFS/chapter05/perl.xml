@@ -23,6 +23,12 @@
 			<param>-i ../&perl-libc-1-patch;</param>
 		</patch>
 
+		<execute command="echo &quot;uname -m&quot; &gt; /tools/bin/arch" />
+
+		<permissions mode="755">
+			<name>/tools/bin/arch</name>
+		</permissions>
+
 		<configure command="./configure.gnu">
 			<param>--prefix=/tools</param>
 			<param>-Dstatic_ext=&apos;IO Fcntl&apos;</param>
