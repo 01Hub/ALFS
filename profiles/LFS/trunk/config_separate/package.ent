@@ -88,11 +88,11 @@
 <!ENTITY gawk-package "gawk-&gawk-version;.tar.bz2">
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
-<!ENTITY gcc-version "3.4.1">
+<!ENTITY gcc-version "3.4.2">
 <!ENTITY gcc-cvs-tag "">
 <!ENTITY gcc-directory "gcc-&gcc-version;&gcc-cvs-tag;">
 
-<!ENTITY gcc-md5 "31b459062499f9f68d451db9cbf3205c">
+<!ENTITY gcc-md5 "2fada3a3effd2fd791df09df1f1534b3">
 <!ENTITY gcc-package "gcc-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
 <!ENTITY gcc-core-md5 "">
@@ -355,8 +355,8 @@
 <!ENTITY udev-permissions-version "2">
 <!ENTITY udev-permissions-file "udev-config-&udev-permissions-version;.permissions">
 
-<!ENTITY util-linux-md5 "2e96fd7efa1ff477502e91c31572d51b">
-<!ENTITY util-linux-version "2.12b">
+<!ENTITY util-linux-md5 "1a9cbcbfbd9bedfdd5c736239a7ba6e1">
+<!ENTITY util-linux-version "2.12c">
 <!ENTITY util-linux-package "util-linux-&util-linux-version;.tar.gz">
 <!ENTITY util-linux-directory "util-linux-&util-linux-version;">
 
