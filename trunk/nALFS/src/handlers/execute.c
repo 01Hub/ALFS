@@ -88,7 +88,7 @@ static char *execute_data_ver2(element_s *el, handler_data_e data)
 #endif /* HANDLER_SYNTAX_2_0 */
 
 
-#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
 static const char *execute_parameters_ver3[] =
 { "base", "command", "param", "prefix", NULL };
@@ -145,7 +145,7 @@ static char *execute_data_ver3(element_s *el, handler_data_e data)
 	return NULL;
 }
 
-#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
 
 
 /*
@@ -184,6 +184,19 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "execute",
 		.description = "Execute",
 		.syntax_version = "3.1",
+		.parameters = execute_parameters_ver3,
+		.main = execute_main_ver3,
+		.type = HTYPE_EXECUTE,
+		.alloc_data = execute_data_ver3,
+		.is_action = 1,
+		.priority = 0
+	},
+#endif
+#if HANDLER_SYNTAX_3_2
+	{
+		.name = "execute",
+		.description = "Execute",
+		.syntax_version = "3.2",
 		.parameters = execute_parameters_ver3,
 		.main = execute_main_ver3,
 		.type = HTYPE_EXECUTE,

@@ -37,7 +37,7 @@
 #include "backend.h"
 
 
-#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
 static const char *ownership_parameters[] = { "option", "name", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "user", "group", NULL };
@@ -161,7 +161,7 @@ static int ownership_main(element_s *el)
 	return status;
 }
 
-#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
 
 
 /*
@@ -187,6 +187,19 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "ownership",
 		.description = "Change ownership",
 		.syntax_version = "3.1",
+		.parameters = ownership_parameters,
+		.main = ownership_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.priority = 0
+	},
+#endif
+#if HANDLER_SYNTAX_3_2
+	{
+		.name = "ownership",
+		.description = "Change ownership",
+		.syntax_version = "3.2",
 		.parameters = ownership_parameters,
 		.main = ownership_main,
 		.type = 0,
