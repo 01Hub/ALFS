@@ -40,76 +40,198 @@
 #include "backend.h"
 
 
-#define El_copy_source(el) alloc_trimmed_param_value("source", el)
-#define El_copy_destination(el) alloc_trimmed_param_value("destination", el)
+enum copy_info_types {
+	COPY_OPTIONS,
+	COPY_BASE,
+	COPY_SOURCE,
+	COPY_DESTINATION,
+};
 
+struct copy_data {
+        int archive;
+	int force;
+	int recursive;
+	int no_dereference;
+	int preserve;
+	char *base;
+	int source_count;
+	char **sources;
+	char *destination;
+};
+
+static int copy_setup(element_s * const element)
+{
+	struct copy_data *data;
+
+	if ((data = xmalloc(sizeof(struct copy_data))) == NULL)
+		return 1;
+
+	data->archive = 0;
+	data->force = 0;
+	data->recursive = 0;
+	data->no_dereference = 0;
+	data->preserve = 0;
+	data->base = NULL;
+	data->destination = NULL;
+	data->source_count = 0;
+	data->sources = NULL;
+	element->handler_data = data;
+
+	return 0;
+};
+
+static void copy_free(const element_s * const element)
+{
+	struct copy_data *data = (struct copy_data *) element->handler_data;
+	int i;
+
+	xfree(data->base);
+	xfree(data->destination);
+	if (data->source_count > 0) {
+		for (i = 0; i < data->source_count; i++)
+			xfree(data->sources[i]);
+		xfree(data->sources);
+	}
+	xfree(data);
+}
+
+static int copy_attribute(const element_s * const element,
+			  const struct handler_attribute * const attr,
+			  const char * const value)
+{
+	struct copy_data *data = (struct copy_data *) element->handler_data;
+
+	switch (attr->private) {
+	case COPY_BASE:
+		if (data->base) {
+			Nprint_err("<copy>: cannot specify \"base\" more than once.");
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int copy_parameter(const element_s * const element,
+			  const struct handler_parameter * const param,
+			  const char * const value)
+{
+	struct copy_data *data = (struct copy_data *) element->handler_data;
+	int option_found = 0;
+
+	switch (param->private) {
+	case COPY_OPTIONS:
+		if (option_in_string("force", value)) {
+			data->force = 1;
+			option_found++;
+		}
+		if (option_in_string("archive", value)) {
+			data->archive = 1;
+			option_found++;
+		}
+		if (option_in_string("preserve", value)) {
+			data->preserve = 1;
+			option_found++;
+		}
+		if (option_in_string("recursive", value)) {
+			data->recursive = 1;
+			option_found++;
+		}
+		if (option_in_string("no-dereference", value)) {
+			data->no_dereference = 1;
+			option_found++;
+		}
+		if (!option_found) {
+			Nprint_err("<copy>: invalid option (%s) ignored", value);
+			return 1;
+		} else {
+			return 0;
+		}
+	case COPY_SOURCE:
+		data->source_count++;
+		if ((data->sources = xrealloc(data->sources,
+					      sizeof(data->sources[0]) * (data->source_count))) == NULL) {
+			Nprint_err("xrealloc() failed: %s", strerror(errno));
+			return -1;
+		}
+		data->sources[(data->source_count - 1)] = xstrdup(value);
+		return 0;
+	case COPY_DESTINATION:
+		if (data->destination) {
+			Nprint_err("<copy>: cannot specify <destination> more than once.");
+			return 1;
+		}
+		data->destination = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int copy_invalid_data(const element_s * const element)
+{
+	struct copy_data *data = (struct copy_data *) element->handler_data;
+
+	if (data->source_count == 0) {
+		Nprint_err("<copy>: <source> must be specified.");
+		return 1;
+	}
+
+	if (!data->destination) {
+		Nprint_err("<copy>: <destination> must be specified.");
+		return 1;
+	}
+
+	return 0;
+}
 
 #if HANDLER_SYNTAX_2_0
 
 static const struct handler_parameter copy_parameters_ver2[] = {
-	{ .name = "options" },
-	{ .name = "base" },
-	{ .name = "source" },
-	{ .name = "destination" },
+	{ .name = "options", .private = COPY_OPTIONS },
+	{ .name = "base", .private = COPY_BASE },
+	{ .name = "source", .private = COPY_SOURCE },
+	{ .name = "destination", .private = COPY_DESTINATION },
 	{ .name = NULL }
 };
 
 static int copy_main_ver2(const element_s * const el)
 {
+	struct copy_data *data = (struct copy_data *) el->handler_data;
 	int status = 0;
-	int archive = option_exists("archive",el);
-	int force = option_exists("force", el);
-	int no_dereference = option_exists("no-dereference", el);
-	int preserve = option_exists("preserve", el);
-	int recursive = option_exists("recursive", el);
 	char *tok;
-	char *base = NULL;
-	char *source = NULL;
-	char *destination = NULL;
+	char *tmp;
+	char *common_command;
 
-
-	if ((source = El_copy_source(el)) == NULL) {
-		Nprint_h_err("No source files specified.");
+	if (change_to_base_dir(el, data->base, 1))
 		return -1;
-	}
 
-	if ((destination = El_copy_destination(el)) == NULL) {
-		Nprint_h_err("No destination specified.");
-		xfree(source);
-		return -1;
-	}
+	common_command = xstrdup("cp");
 
-	base = alloc_base_dir(el);
+	/* Options. */
+	if (data->archive)
+		append_str(&common_command, " -a");
+	if (data->force)
+		append_str(&common_command, " -f");
+	if (data->no_dereference)
+		append_str(&common_command, " -d");
+	if (data->preserve)
+		append_str(&common_command, " -p");
+	if (data->recursive)
+		append_str(&common_command, " -R");
 
-	if (change_current_dir(base)) {
-		xfree(base);
-		xfree(source);
-		xfree(destination);
-		return -1;
-	}
-
-	for (tok = strtok(source, WHITE_SPACE); tok;
-	     tok = strtok(NULL, WHITE_SPACE)) {
-		char *command = xstrdup("cp");
-
-		/* Options. */
-		if (archive)
-			append_str(&command, " -a");
-		if (force)
-			append_str(&command, " -f");
-		if (no_dereference)
-			append_str(&command, " -d");
-		if (preserve)
-			append_str(&command, " -p");
-		if (recursive)
-			append_str(&command, " -R");
+	tmp = xstrdup(data->sources[0]);
+	for (tok = strtok(tmp, WHITE_SPACE); tok; tok = strtok(NULL, WHITE_SPACE)) {
+		char *command = xstrdup(common_command);
 
 		append_str(&command, " ");
 		append_str(&command, tok);
 		append_str(&command, " ");
-		append_str(&command, destination);
+		append_str(&command, data->destination);
 
-		Nprint_h("Executing in %s:", base);
+		Nprint_h("Executing:");
 		Nprint_h("    %s", command);
 
 		status = execute_command(el, "%s", command);
@@ -122,10 +244,8 @@ static int copy_main_ver2(const element_s * const el)
 		}
 	}
 
-	xfree(base);
-	xfree(source);
-	xfree(destination);
-	
+	xfree(tmp);
+	xfree(common_command);
 	return status;
 }
 
@@ -135,73 +255,51 @@ static int copy_main_ver2(const element_s * const el)
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
 static const struct handler_parameter copy_parameters_v3[] = {
-	{ .name = "option" },
-	{ .name = "source" },
-	{ .name = "destination" },
+	{ .name = "option", .private = COPY_OPTIONS },
+	{ .name = "source", .private = COPY_SOURCE },
+	{ .name = "destination", .private = COPY_DESTINATION },
 	{ .name = NULL }
 };
 
 static const struct handler_attribute copy_attributes_v3[] = {
-	{ .name = "base" },
+	{ .name = "base", .private = COPY_BASE },
 	{ .name = NULL }
 };
 
 static int copy_main_ver3(const element_s * const el)
 {
-	int options[5];
+	struct copy_data *data = (struct copy_data *) el->handler_data;
 	int status = 0;
+	int i;
 	char *common_command;
-	char *destination;
-	element_s *p;
 
-	if (change_to_base_dir(el, attr_value("base", el), 1))
+	if (change_to_base_dir(el, data->base, 1))
 		return -1;
-
-	if (first_param("source", el) == NULL) {
-		Nprint_h_err("No source files specified.");
-		return -1;
-	}
-
-	if ((destination = El_copy_destination(el)) == NULL) {
-		Nprint_h_err("No destination specified.");
-		return -1;
-	}
 
 	common_command = xstrdup("cp");
 
-	check_options(5, options,
-		"archive force no-dereference preserve recursive", el);
-	if (options[0]) {
+	/* Options. */
+	if (data->archive)
 		append_str(&common_command, " -a");
-	}
-	if (options[1]) {
+	if (data->force)
 		append_str(&common_command, " -f");
-	}
-	if (options[2]) {
+	if (data->no_dereference)
 		append_str(&common_command, " -d");
-	}
-	if (options[3]) {
+	if (data->preserve)
 		append_str(&common_command, " -p");
-	}
-	if (options[4]) {
+	if (data->recursive)
 		append_str(&common_command, " -R");
-	}
 
-	for (p = first_param("source", el); p; p = next_param(p)) {
-		char *s, *command;
-
-
-		if ((s = alloc_trimmed_str(p->content)) == NULL) {
-			Nprint_h_warn("Source empty.");
-			continue;
-		}
+	for (i = 0; i < data->source_count; i++) {
+		const char *source = data->sources[i];
+		char *command;
 
 		command = xstrdup(common_command);
 		
 		append_str(&command, " ");
-		append_str(&command, s);
+		append_str(&command, source);
 		append_str(&command, " ");
-		append_str(&command, destination);
+		append_str(&command, data->destination);
 
 		Nprint_h("Executing:");
 		Nprint_h("    %s", command);
@@ -209,7 +307,6 @@ static int copy_main_ver3(const element_s * const el)
 		status = execute_command(el, "%s", command);
 
 		xfree(command);
-		xfree(s);
 
 		if (status) {
 			Nprint_h_err("Copying failed.");
@@ -217,9 +314,7 @@ static int copy_main_ver3(const element_s * const el)
 		}
 	}
 
-	xfree(destination);
 	xfree(common_command);
-	
 	return status;
 }
 
@@ -236,10 +331,14 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "copy",
 		.description = "Copy",
 		.syntax_version = "2.0",
-		.parameters = copy_parameters_ver2,
 		.main = copy_main_ver2,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.parameters = copy_parameters_ver2,
+		.setup = copy_setup,
+		.free = copy_free,
+		.parameter = copy_parameter,
+		.invalid_data = copy_invalid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -252,6 +351,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = copy_main_ver3,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = copy_setup,
+		.free = copy_free,
+		.parameter = copy_parameter,
+		.attribute = copy_attribute,
+		.invalid_data = copy_invalid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -264,6 +368,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = copy_main_ver3,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = copy_setup,
+		.free = copy_free,
+		.parameter = copy_parameter,
+		.attribute = copy_attribute,
+		.invalid_data = copy_invalid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -277,6 +386,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
 		.alternate_shell = 1,
+		.setup = copy_setup,
+		.free = copy_free,
+		.parameter = copy_parameter,
+		.attribute = copy_attribute,
+		.invalid_data = copy_invalid_data,
 	},
 #endif
 	{

@@ -59,19 +59,47 @@ static INLINE element_s *find_package(const char *name)
 
 #if HANDLER_SYNTAX_3_0
 
+struct check_data {
+	char *content;
+};
 
-static int check_main(const element_s * const el)
+static int check_setup(element_s * const element)
 {
-	int status = 0;
-	char *package;
+	struct check_data *data;
 
-
-	if ((package = alloc_trimmed_str(el->content)) == NULL) {
-		Nprint_h_warn("Check content empty.");
+	if ((data = xmalloc(sizeof(struct check_data))) == NULL)
 		return 1;
-	}
 
-	status = check_stamp(package);
+	data->content = NULL;
+	element->handler_data = data;
+
+	return 0;
+};
+
+static void check_free(const element_s * const element)
+{
+	struct check_data *data = (struct check_data *) element->handler_data;
+
+	xfree(data->content);
+	xfree(data);
+}
+
+static int check_content(const element_s * const element, const char * const content)
+{
+	struct check_data *data = (struct check_data *) element->handler_data;
+
+	if (strlen(content))
+		data->content = xstrdup(content);
+
+	return 0;
+}
+
+static int check_main(const element_s * const element)
+{
+	struct check_data *data = (struct check_data *) element->handler_data;
+	int status;
+
+	status = check_stamp(data->content);
 #if 0
 	if (status && OPTION_BUILD_REQUIRED) {
 		/* Stamp file for the required package doesn't exist,
@@ -114,7 +142,6 @@ static int check_main(const element_s * const el)
 		}
 	}
 #endif
-	xfree(package);
 	
 	return status;
 }
@@ -135,6 +162,9 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = check_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = check_setup,
+		.free = check_free,
+		.content = check_content,
 	},
 #endif
 	{
