@@ -11,7 +11,7 @@
 		</unpack>
 
 		<copy>
-		        <source>&packages_dir;/&linuxpam-patch;</source>
+		        <source>&packages_dir;/&linuxpam-linkage-patch;</source>
 		        <destination>&build_dir;</destination>
 		</copy>
 	</stage>
@@ -24,7 +24,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&linuxpam-patch;</param>
+			<param>-i ../&linuxpam-linkage-patch;</param>
 		</patch>
 
 		<configure>
@@ -106,7 +106,7 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&linuxpam-directory;</remove>
-		<remove>&build_dir;/&linuxpam-patch;</remove>
+		<remove>&build_dir;/&linuxpam-linkage-patch;</remove>
 	</stage>
 
 </package>

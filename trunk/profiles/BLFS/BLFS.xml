@@ -11,10 +11,6 @@
 
 <!DOCTYPE alfs SYSTEM "nalfs.dtd" [
 
-<!-- Current directory -->
-<!ENTITY % files SYSTEM "files.ent">
-%files;
-
 <!ENTITY % general_entities SYSTEM "general.ent">
 <!ENTITY % package_entities SYSTEM "packages.ent">
 <!ENTITY % system_entities  SYSTEM "system.ent">
