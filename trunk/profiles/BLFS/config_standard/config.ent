@@ -20,12 +20,12 @@
 <!-- configuration for dhclient -->
 <!-- These two entities should be set to appropriate values to start and stop dhclient -->
 <!ENTITY dhclient-start-params "">
-<!ENTITY dhclient-stop-params "">
+<!ENTITY dhclient-stop-params "-r">
 
 <!-- configuration for dhcpcd -->
 <!-- These two entities should be set to appropriate values to start and stop dhcpcd -->
 <!ENTITY dhcpcd-start-params "">
-<!ENTITY dhcpcd-stop-params "">
+<!ENTITY dhcpcd-stop-params "-k">
 
 <!-- where to put kde -->
 <!ENTITY kde-prefix "/usr">

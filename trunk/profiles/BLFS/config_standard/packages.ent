@@ -410,10 +410,12 @@
 <!ENTITY gcc-full-patch1    "gcc-&gcc-full-version;-no_fixincludes-1.patch">
 
 <!ENTITY tcl-version   "8.4.6">
+<!ENTITY tcl-major-minor "8.4">
 <!ENTITY tcl-package   "tcl&tcl-version;-src.tar.gz">
 <!ENTITY tcl-directory "tcl&tcl-version;">
 
 <!ENTITY tk-version   "8.4.6">
+<!ENTITY tk-major-minor "8.4">
 <!ENTITY tk-package   "tk&tk-version;-src.tar.gz">
 <!ENTITY tk-directory "tk&tk-version;">
 
