@@ -1,0 +1,55 @@
+Proposed "official" syntax for ALFS:
+====================================
+
+This will have todo untill better docs can be written.
+
+In the mean time, we can at least build up a reference
+of the current plans for the syntax.
+
+
+Generic Tags:
+-------------
+
+unpack
+configure
+make
+execute
+remove
+copy
+move
+make
+link
+mkdir
+permissions
+setenv
+
+
+Generic Package:
+----------------
+
+<package>
+    <info>
+	<name>[package name]</name>
+	<version>[package version]</version>
+    </info>
+
+    ...
+
+</package>
+
+I've presently left out the prebuild/build/postbuild (setup/build/install)
+untill we pick the best way to deal this this.  Allthough it would problably
+be best to leave the use of them optional anyways. (ala target problably)
+
+Generic Profile:
+----------------
+
+<?xml version="1.0" encoding="iso-8859-1" ?>
+
+<alfs>
+
+    ... use of generic tags and packages ...
+
+</alfs>
+
+Entities are totally optional.  However they can be quite usefull.
