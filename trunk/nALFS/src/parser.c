@@ -316,3 +316,50 @@ element_s *get_prev_element(const element_s * const el)
 
 	return el->parent;
 }
+
+static int has_child_with_mark(const element_s * const el)
+{
+	element_s *child;
+
+	for (child = el->children; child; child = child->next)
+		if (child->marked &&
+		    ((child->handler->type & HTYPE_NORMAL) != 0))
+			return 1;
+
+	return 0;
+}
+
+void mark_element(element_s * const el, int recursive)
+{
+	element_s *child;
+
+	el->marked = 1;
+	if (el->parent && !el->parent->marked)
+		mark_element(el->parent, 0);
+
+	for (child = el->children; child; child = child->next) {
+		if (child->marked)
+			continue;
+		if (recursive ||
+		    ((child->handler->type & HTYPE_NORMAL) == 0))
+			mark_element(child, 1);
+	}
+}
+
+void unmark_element(element_s * const el, int recursive)
+{
+	element_s *child;
+
+	el->marked = 0;
+	if (el->parent && el->parent->marked &&
+	    !has_child_with_mark(el->parent))
+		unmark_element(el->parent, 0);
+
+	for (child = el->children; child; child = child->next) {
+		if (!child->marked)
+			continue;
+		if (recursive ||
+		    ((child->handler->type & HTYPE_NORMAL) == 0))
+			unmark_element(child, 1);
+	}
+}

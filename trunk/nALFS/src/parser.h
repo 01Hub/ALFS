@@ -93,4 +93,7 @@ element_s *get_profile_by_name(const char * const name);
 element_s *get_next_element(const element_s * const el);
 element_s *get_prev_element(const element_s * const el);
 
+void mark_element(element_s * const el, int recursive);
+void unmark_element(element_s * const el, int recursive);
+
 #endif /* H_PARSER_ */

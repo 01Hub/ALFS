@@ -222,41 +222,14 @@ static void fix_top_and_cursor(int *csr)
  * (Un)Marking elements.
  */
 
-static INLINE int has_child_with_mark(element_s *el)
+static INLINE void do_mark_element(element_s *el)
 {
-	element_s *child;
-
-
-	for (child = el->children; child; child = child->next) {
-		if (child->marked) {
-			return 1;
+	if ((el->handler->type & HTYPE_NORMAL) != 0) {
+		if (el->marked) {
+			unmark_element(el, 1);
+		} else {
+			mark_element(el, 1);
 		}
-	}
-
-	return 0;
-}
-
-static void do_mark_element(element_s *el, int mark)
-{
-	element_s *child;
-
-	if ((el->handler->type & HTYPE_NORMAL) != 0)
-		el->marked = mark;
-
-	for (child = el->children; child; child = child->next) {
-		do_mark_element(child, mark);
-	}
-}
-
-static INLINE void mark_element(element_s *el)
-{
-	element_s *parent;
-
-	do_mark_element(el, el->marked ? 0 : 1);
-
-	/* Mark/unmark all our parents, if needed. */
-	for (parent = el->parent; parent; parent = parent->parent) {
-		parent->marked = has_child_with_mark(parent);
 	}
 }
 
@@ -264,18 +237,20 @@ static void clear_marks(element_s *el, int all)
 {
 	element_s *child;
 
-
 	/*
 	 * FIXME: Elements with SOME_DONE should be unmarked too,
 	 *        if they don't contain any marked children.
 	 */
 
-	if (all || el->run_status == RUN_STATUS_DONE) {
-		el->marked = 0;
-	}
-
-	for (child = el->children; child; child = child->next) {
-		clear_marks(child, all);
+	if (all) {
+		unmark_element(el, 1);
+	} else {
+		if (el->run_status == RUN_STATUS_DONE) {
+			unmark_element(el, 0);
+		}
+		for (child = el->children; child; child = child->next) {
+			clear_marks(child, all);
+		}
 	}
 }
 
@@ -3643,7 +3618,7 @@ static int browse(void)
 
 		case '*': /* Mark current element. */
 		case KEY_IC:
-			mark_element(Current_element);
+			do_mark_element(Current_element);
 			++displayed.current;
 
 			rewrite_main();
