@@ -1,50 +1,42 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/package.ent">
 
 %general_entities;
 %package_entities;
 ]>
-
 <alfs>
-
-<package name="module-init-tools" version="&module-init-tools-version;">
-	<stage name="Unpacking">
-		<unpack>
-			<digest>&module-init-tools-md5;</digest>
-			<archive>&packages_dir;/&module-init-tools-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&module-init-tools-directory;</base>
-		</stageinfo>
-
-		<configure>
-		  	<param>--prefix=&quot;&quot;</param>
-			<param>--enable-zlib</param>
-		</configure>
-
-		<make>
-			<param>&jlevel;</param>
-			<param>DOCBOOKTOMAN=&quot;&quot;</param>
-		</make>
-
-		<make>
-  			<param>check</param>
-		</make>
-
-		<make>
-			<param>install</param>
-		</make>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&module-init-tools-directory;</remove>
-	</stage>
-</package>
-
+  <package name="module-init-tools" version="&module-init-tools-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&module-init-tools-md5;</digest>
+        <archive>&packages_dir;/&module-init-tools-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&module-init-tools-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=""</param>
+        <param>--enable-zlib</param>
+      </configure>
+      <make>
+        <param>&jlevel;</param>
+        <param>DOCBOOKTOMAN=""</param>
+      </make>
+      <make>
+        <param>check</param>
+      </make>
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&module-init-tools-directory;</remove>
+    </stage>
+  </package>
 </alfs>

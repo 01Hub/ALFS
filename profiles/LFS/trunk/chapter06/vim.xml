@@ -1,94 +1,81 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/package.ent">
 
 %general_entities;
 %package_entities;
 ]>
-
 <alfs>
-
-<package name="vim" version="&vim-version;">
-	<stage name="Unpacking">
-		<unpack>
-			<digest>&vim-md5;</digest>
-			<archive>&packages_dir;/&vim-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-		<unpack>
-			<digest>&vim-lang-md5;</digest>
-			<archive>&packages_dir;/&vim-lang-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&vim-directory;</base>
-		</stageinfo>
-
-		<textdump mode="append">
-			<file>src/feature.h</file>
-			<content>
-				=#define SYS_VIMRC_FILE "/etc/vimrc"
-				=#define SYS_GVIMRC_FILE "/etc/gvimrc"
-			</content>
-		</textdump>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&vim-security-patch;</param>
-		</patch>
-
-		<configure>
-			<param>--prefix=/usr</param>
-			<param>--enable-multibyte</param>
-		</configure>
-
-		<make>
-			<param>&jlevel;</param>
-		</make>
-
-<!--
-		<make>
-			<param>test</param>
-		</make>
--->
-
-		<make>
-			<param>install</param>
-		</make>
-
-		<link>
-			<option>force</option>
-			<target>vim</target>
-			<name>/usr/bin/vi</name>
-		</link>
-
-		<textdump>
-			<file>/etc/vimrc</file>
-			<content>
-				=" Begin /etc/vimrc
-				=
-				=set nocompatible
-				=set backspace=2
-				=syntax on
-				=
-				=if (&real-amp;term == "iterm") || (&real-amp;term == "putty")
-				=  set background=dark
-				=endif
-				=
-				=" End /etc/vimrc
-			</content>
-		</textdump>
-
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&vim-directory;</remove>
-	</stage>
-</package>
-
+  <package name="vim" version="&vim-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&vim-md5;</digest>
+        <archive>&packages_dir;/&vim-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <digest>&vim-lang-md5;</digest>
+        <archive>&packages_dir;/&vim-lang-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&vim-directory;</base>
+      </stageinfo>
+      <textdump mode="append">
+        <file>src/feature.h</file>
+        <content>
+	=#define SYS_VIMRC_FILE "/etc/vimrc"
+	=#define SYS_GVIMRC_FILE "/etc/gvimrc"
+	</content>
+      </textdump>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&vim-security-patch;</param>
+      </patch>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--enable-multibyte</param>
+      </configure>
+      <make>
+        <param>&jlevel;</param>
+      </make>
+      <!--
+      <make>
+        <param>test</param>
+      </make>
+      -->
+      <make>
+        <param>install</param>
+      </make>
+      <link>
+        <option>force</option>
+        <target>vim</target>
+        <name>/usr/bin/vi</name>
+      </link>
+      <textdump>
+        <file>/etc/vimrc</file>
+        <content>
+	=" Begin /etc/vimrc
+	=
+	=set nocompatible
+	=set backspace=2
+	=syntax on
+	=
+	=if (&real-amp;term == "iterm") || (&real-amp;term == "putty")
+	= set background=dark
+	=endif
+	=
+	=" End /etc/vimrc
+        </content>
+      </textdump>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&vim-directory;</remove>
+    </stage>
+  </package>
 </alfs>
