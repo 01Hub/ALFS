@@ -36,8 +36,8 @@
 <!ENTITY coreutils-package "coreutils-&coreutils-version;.tar.bz2">
 <!ENTITY coreutils-directory "coreutils-&coreutils-version;">
 
-<!ENTITY coreutils-dupes-patch-md5 "2aab9aa8d0f8c55fafff56fee64497e3">
-<!ENTITY coreutils-dupes-patch "coreutils-&coreutils-version;-suppress_hostname_uptime_kill_su-1.patch">
+<!ENTITY coreutils-dupes-patch-md5 "9867078057cde905a8d431cc7a42403a">
+<!ENTITY coreutils-dupes-patch "coreutils-&coreutils-version;-suppress_uptime_kill_su-1.patch">
 
 <!ENTITY coreutils-uname-patch-md5 "b7c081bac1b6a8e4629d5be9314d5184">
 <!ENTITY coreutils-uname-patch "coreutils-&coreutils-version;-uname-2.patch">
@@ -157,6 +157,15 @@
 <!ENTITY inetutils-kernel-headers-patch-md5 "de1f835265b7ed818d7c0fb8c0be334b">
 <!ENTITY inetutils-kernel-headers-patch "inetutils-&inetutils-version;-kernel_headers-1.patch">
 
+<!ENTITY iproute2-md5 "cecf5ee39e8d9033ad0a6f6af274cdab">
+<!ENTITY iproute2-version "2.6.X">
+<!ENTITY iproute2-cvs-ver "ss040702">
+<!ENTITY iproute2-package "iproute2-&iproute2-version;-&iproute2-cvs-ver;.tar.gz">
+<!ENTITY iproute2-directory "iproute2-2.6.8">
+
+<!ENTITY iproute2-remove-db-patch-md5 "b3964c194cda7a36979d245380b4556f">
+<!ENTITY iproute2-remove-db-patch "iproute2-&iproute2-version;_&iproute2-cvs-ver;-remove_db-1.patch">
+
 <!ENTITY kbd-md5 "7892c7010512a9bc6697a295c921da25">
 <!ENTITY kbd-version "1.12">
 <!ENTITY kbd-package "kbd-&kbd-version;.tar.gz">
@@ -238,14 +247,6 @@
 <!ENTITY ncurses-version "5.4">
 <!ENTITY ncurses-package "ncurses-&ncurses-version;.tar.gz">
 <!ENTITY ncurses-directory "ncurses-&ncurses-version;">
-
-<!ENTITY net-tools-md5 "888774accab40217dde927e21979c165">
-<!ENTITY net-tools-version "1.60">
-<!ENTITY net-tools-package "net-tools-&net-tools-version;.tar.bz2">
-<!ENTITY net-tools-directory "net-tools-&net-tools-version;">
-
-<!ENTITY net-tools-gcc34-patch-md5 "20697137d49bc0f6b7ba2b35cdb3e27d">
-<!ENTITY net-tools-gcc34-patch "net-tools-&net-tools-version;-gcc34-3.patch">
 
 <!ENTITY patch-md5 "ee5ae84d115f051d87fcaaef3b4ae782">
 <!ENTITY patch-version "2.5.4">
