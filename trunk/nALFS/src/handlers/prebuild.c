@@ -53,7 +53,7 @@ static int prebuild_main(element_s *el)
  * Handlers' information.
  */
 
-const char *prebuild_parameters[] = { NULL };
+static const char *prebuild_parameters[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

@@ -401,7 +401,7 @@ static int stage_main(element_s *el)
  * Handlers' information.
  */
 
-const char *stage_parameters[] =
+static const char *stage_parameters[] =
 { "stageinfo", "base", "root", "user", "environment", "variable", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = {
 // "name", "description", "logfile", "mode", NULL };

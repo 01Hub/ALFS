@@ -199,10 +199,10 @@ static int permissions_main_ver3(element_s *el)
  */
 
 
-const char *permissions_parameters_ver2[] =
+static const char *permissions_parameters_ver2[] =
 { "base", "options", "mode", "name", NULL };
 
-const char *permissions_parameters_ver3[] =
+static const char *permissions_parameters_ver3[] =
 { "option", "name", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "mode", NULL };
 
