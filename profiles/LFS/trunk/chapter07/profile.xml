@@ -9,7 +9,7 @@
   <stage name="The Bash Shell Startup Files">
     <copy>
       <source>&skeleton_dir;/etc/profile</source>
-      <destination>/etc/profile</destination>
+      <destination>/etc</destination>
     </copy>
   </stage>
 </alfs>
