@@ -41,30 +41,30 @@
 		static struct option_s real_opt_##opt_name = { \
 			.name = #opt_name, \
 			.type = O_STRING, \
-			.def_value.str_value = opt_def_value \
+			.val.str = { .def_value = opt_def_value } \
 		}; \
-		STRING * const opt_##opt_name = &real_opt_##opt_name .value.str_value;
+		STRING * const opt_##opt_name = &real_opt_##opt_name .val.str.value;
 #define BOOL_OPTION(opt_name, opt_def_value) \
 		static struct option_s real_opt_##opt_name = { \
 			.name = #opt_name, \
 			.type = O_BOOL, \
-			.def_value.bool_value = opt_def_value \
+			.val.bool = { .def_value = opt_def_value } \
 		}; \
-		BOOL * const opt_##opt_name = &real_opt_##opt_name .value.bool_value;
+		BOOL * const opt_##opt_name = &real_opt_##opt_name .val.bool.value;
 #define NUMBER_OPTION(opt_name, opt_def_value) \
 		static struct option_s real_opt_##opt_name = { \
 			.name = #opt_name, \
 			.type = O_NUMBER, \
-			.def_value.num_value = opt_def_value \
+			.val.num = { .def_value= opt_def_value } \
 		}; \
-		NUMBER * const opt_##opt_name = &real_opt_##opt_name .value.num_value;
+		NUMBER * const opt_##opt_name = &real_opt_##opt_name .val.num.value;
 #define COMMAND_OPTION(opt_name, opt_def_value) \
 		static struct option_s real_opt_##opt_name = { \
 			.name = #opt_name, \
 			.type = O_COMMAND, \
-			.def_value.str_value = opt_def_value \
+			.val.str = { .def_value = opt_def_value } \
 		}; \
-		STRING * const opt_##opt_name = &real_opt_##opt_name .value.str_value;
+		STRING * const opt_##opt_name = &real_opt_##opt_name .val.str.value;
 
 #include "options.h"
 #include "option-list.h"
@@ -104,18 +104,18 @@ static void set_option_to_default(struct option_s *option)
 {
 	switch (option->type) {
 	case O_BOOL:
-		option->value.bool_value = option->def_value.bool_value;
+		option->val.bool.value = option->val.bool.def_value;
 		break;
 		
 	case O_NUMBER:
-		option->value.num_value = option->def_value.num_value;
+		option->val.num.value = option->val.num.def_value;
 		break;
 		
 	case O_STRING:
 	case O_COMMAND:
-		if (option->value.str_value)
-			xfree(option->value.str_value);
-		option->value.str_value = xstrdup(option->def_value.str_value);
+		if (option->val.str.value)
+			xfree(option->val.str.value);
+		option->val.str.value = xstrdup(option->val.str.def_value);
 		break;
 	}
 }
@@ -240,11 +240,11 @@ set_opt_e set_yet_unknown_option(const char *opt, const char *val)
 		switch (options[i]->type) {
 			case O_BOOL:
 				if (strcmp(val, BOOL_TRUE_VALUE) == 0) {
-					options[i]->value.bool_value = 1;
+					options[i]->val.bool.value = 1;
 					return OPTION_SET;
 
 				} else if (strcmp(val, BOOL_FALSE_VALUE) == 0) {
-					options[i]->value.bool_value = 0;
+					options[i]->val.bool.value = 0;
 					return OPTION_SET;
 				}
 
@@ -259,12 +259,12 @@ set_opt_e set_yet_unknown_option(const char *opt, const char *val)
 				if (not_correct_number(options[i], num))
 					return OPTION_INVALID_VALUE;
 
-				options[i]->value.num_value = num;
+				options[i]->val.num.value = num;
 
 				return OPTION_SET;
 
 			case O_STRING:
-				set_string_option(&options[i]->value.str_value, val);
+				set_string_option(&options[i]->val.str.value, val);
 
 				return OPTION_SET;
 
@@ -272,7 +272,7 @@ set_opt_e set_yet_unknown_option(const char *opt, const char *val)
 				if (not_valid_command(val))
 					return OPTION_INVALID_VALUE;
 
-				set_string_option(&options[i]->value.str_value, val);
+				set_string_option(&options[i]->val.str.value, val);
 
 				return OPTION_SET;
 		}
