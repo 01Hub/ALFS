@@ -19,14 +19,6 @@ typedef enum
 
 typedef struct
 {
-	char *name;
-	mode_t mode;
-	bool append;
-	char *content;
-} file;
-
-typedef struct
-{
 	char *cmd;
 	char **arg;
 	int n;

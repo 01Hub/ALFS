@@ -198,7 +198,7 @@ void resolve_entities (xmlNodePtr node)
 	{
 		if (node->type==XML_ENTITY_REF_NODE)
 		{
-			// TODO: Resolve entities which are outside text nodes
+			// BUG: Does not resolve entities which are outside text nodes
 			if ((node->prev) && (node->prev->type==XML_TEXT_NODE) &&
 				(strcmp(node->prev->parent->name, "title")))
 			{

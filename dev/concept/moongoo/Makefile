@@ -11,7 +11,7 @@ OBJS=alfs.o book.o util.o repl.o
 
 BOOK=~/projects/alfs/book/index.xml
 
-.PHONY: all clean compile run memcheck debug todo upload
+.PHONY: all clean compile run memcheck debug todo upload bug
 
 all: run
 
@@ -37,6 +37,9 @@ upload: clean
 	@release_snap
 	@scp moongoo-*.tar.bz2 l14h.org:~/public_html/nALFS2/snap/
 	@rm -f moongoo-*.tar.bz2
+
+bug: 
+	@grep "BUG:" *.c *.h|cut -d" " -f3-|sort
 
 $(BIN): $(OBJS)
 alfs.o: alfs.h
