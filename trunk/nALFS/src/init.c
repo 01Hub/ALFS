@@ -245,7 +245,6 @@ static INLINE void parse_rc_file(const char *rcfile)
 /*
  * Read the "system" configuration file, /etc/nALFSrc.
  */
-
 void read_system_rc_file(void)
 {
 	char system_rc_file[] = "/etc/nALFSrc";
@@ -256,13 +255,13 @@ void read_system_rc_file(void)
 }
 
 /*
- * Constructs a full name of configuration file and calls a parser.
+ * Read the "user" configuration file, ~/.nALFSrc.
  */
 void read_user_rc_file(void)
 {
 	char *home_dir;
-	char *rcfile;
-
+	char *rcfile = NULL;
+	struct stat st;
 
 	home_dir = get_home_directory();
 
@@ -271,11 +270,10 @@ void read_user_rc_file(void)
 		return;
 	}
 
-	rcfile = xstrdup(home_dir);
-	append_str(&rcfile, "/");
-	append_str(&rcfile, RC_FILE_NAME);
+	append_str_format(&rcfile, "%s/%s", home_dir, RC_FILE_NAME);
 
-	parse_rc_file(rcfile);
+	if (!stat(rcfile, &st))
+		parse_rc_file(rcfile);
 
 	xfree(rcfile);
 }
