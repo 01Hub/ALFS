@@ -206,8 +206,8 @@
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.gz">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
-<!ENTITY linux-md5 "75dc85149b06ac9432106b8941eb9f7b">
-<!ENTITY linux-version "2.4.22">
+<!ENTITY linux-md5 "642af5ab5e1fc63685fde85e9ae601e4">
+<!ENTITY linux-version "2.4.23">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
@@ -241,8 +241,8 @@
 <!ENTITY man-pager-patch-md5 "767e17b3ba79043a617b27fa4b888dae">
 <!ENTITY man-pagerpatch "man-&man-version;-pager.patch">
 
-<!ENTITY man-pages-md5 "cdf174fa62a4620f4014e0e3ee3ab983">
-<!ENTITY man-pages-version "1.60">
+<!ENTITY man-pages-md5 "c2008b298e34008a1b84595415f09fce">
+<!ENTITY man-pages-version "1.64">
 <!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.gz">
 <!ENTITY man-pages-directory "man-pages-&man-pages-version;">
 
@@ -290,8 +290,8 @@
 <!ENTITY procps-package "procps-&procps-version;.tar.gz">
 <!ENTITY procps-directory "procps-&procps-version;">
 
-<!ENTITY psmisc-md5 "df5aef7438a00d4f41bc0c5e91e4ec7d">
-<!ENTITY psmisc-version "21.3">
+<!ENTITY psmisc-md5 "8449269fdc8ae5d7d494df745e1180d3">
+<!ENTITY psmisc-version "21.4">
 <!ENTITY psmisc-package "psmisc-&psmisc-version;.tar.gz">
 <!ENTITY psmisc-directory "psmisc-&psmisc-version;">
 
