@@ -7,10 +7,10 @@ fi
 if [ -d /usr/local/sbin -a $EUID -eq 0 ]; then
         pathprepend /usr/local/sbin
 fi
-for directory in $(find /opt/*/lib/pkgconfig -type d); do
+for directory in $(find /opt/*/lib/pkgconfig -type d 2> /dev/null); do
         pathappend $directory PKG_CONFIG_PATH
 done
-for directory in $(find /opt/*/bin -type d); do
+for directory in $(find /opt/*/bin -type d 2> /dev/null); do
         pathappend $directory
 done
 if [ -d ~/bin ]; then
