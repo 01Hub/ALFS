@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch26.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,47 +10,49 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="gtk+2" version="&gtkplus2-version;">
-
-        <packageinfo>
-		<requires><name>xfree86</name></requires>
-                <requires><name>pango</name></requires>
-                <requires><name>atk</name></requires>
-                <utilizes><name>libtiff</name></utilizes>
-                <utilizes><name>libjpeg</name></utilizes>
-		<utilizes><name>gtk-doc</name></utilizes>
-        </packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&gtkplus2-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&gtkplus2-directory;</base>
-		</stageinfo>
-
-		<configure>
-			<param>--prefix=/usr</param>
-			<param>--sysconfdir=/etc</param>
-		</configure>
-
-		<make/>
-
-		<make>
-			<param>install</param>
-		</make>
-
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&gtkplus2-directory;</remove>
-	</stage>
-
-</package>
+  <package name="gtk+2" version="&gtkplus2-version;">
+    <packageinfo>
+      <requires>
+        <name>xfree86</name>
+      </requires>
+      <requires>
+        <name>pango</name>
+      </requires>
+      <requires>
+        <name>atk</name>
+      </requires>
+      <utilizes>
+        <name>libtiff</name>
+      </utilizes>
+      <utilizes>
+        <name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+        <name>gtk-doc</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&gtkplus2-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&gtkplus2-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--sysconfdir=/etc</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gtkplus2-directory;</remove>
+    </stage>
+  </package>
 </alfs>
