@@ -37,10 +37,6 @@
 
 		<make />
 <!--
-		<make>
-			<param>install-root</param>
-		</make>
-
 		<textdump mode="append">
 			<file>/etc/group</file>
 			<content>
@@ -55,10 +51,11 @@
 		</textdump>
 
 		<make>
+			<param>NON_ROOT_USERNAME=dummy</param>
 			<param>check-root</param>
 		</make>
 
-		<execute command="su">
+		<execute command="src/su">
 			<param>dummy</param>
 			<param>-c "make RUN_EXPENSIVE_TESTS=yes check"</param>
 		</execute>
