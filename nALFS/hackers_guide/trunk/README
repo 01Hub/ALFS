@@ -33,11 +33,8 @@ website at http://linuxfromscratch.org/alfs.
 * lynx-2.8.5 or better
 	-- http://www.linuxfromscratch.org/blfs/view/cvs/basicnet/lynx.html
 
-* HTMLTidy
-  - http://tidy.sourceforge.net/
-
-  Installation of HTMLTidy is a simple `./configure --prefix=/usr && \
-  make && make install`
+* HTML Tidy 041005 or better
+ 	-- http://www.linuxfromscratch.org/blfs/view/svn/general/tidy.html
 
 2. Setting up the DTD
 ~~~~~~~~~~~~~~~~~~~~~

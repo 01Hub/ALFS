@@ -3,9 +3,9 @@
 		"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 
 <!--
-        Last Changed Date: $LastChangedDate$
-        Last Changed By:   $LastChangedBy$
-        Revision:          $LastChangedRevision$ 
+        $LastChangedDate$
+        $LastChangedBy$
+        $LastChangedRevision$ 
 -->
 
 <!ENTITY version "1.2-0.3">
