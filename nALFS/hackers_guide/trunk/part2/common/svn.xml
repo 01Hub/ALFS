@@ -1,0 +1,76 @@
+<!--
+        Last Changed Date: $LastChangedDate$
+        Last Changed By:   $LastChangedBy$
+        Revision:          $LastChangedRevision$ 
+-->
+
+<sect1 id="common-svn" xreflabel="SVN">
+<?dbhtml filename="svn.html" dir="common"?>
+<title>SVN</title>
+
+<sect2>
+<title>Check Out</title>
+
+<para>Bleading edge development of &book-product; occurs on the TRUNK of
+the LFS subversion (SVN) repository.</para>
+
+<para>To get a good feel for what all the repository contains, you can
+go to the SVN web at <ulink
+url="http://svn.linuxfromscratch.org/viewcvs.cgi/?root=ALFS">http://svn.linuxfromscratch.org/viewcvs.cgi/?root=ALFS</ulink></para>
+
+<para>You can do an anonymous TRUNK checkout of the &book-product;
+source code by issuing the following command&nbsp;:</para>
+
+<screen><command>svn co \
+svn://svn.linuxfromscratch.org/ALFS/nALFS/nALFS/trunk \
+ALFS/nALFS</command></screen>
+
+<note><para>SVN commands are very simple and similar to the Concurrent
+Version System (CVS).  When issuing an SVN &quot;co&quot; or
+&quot;update&quot; command, you should be in the top level of your local
+working &quot;sandbox&quot;.  The above command will place the trunk of
+the &book-product; source code into the <filename>ALFS/nALFS</filename>
+directory below the root of your local working &quot;sandbox&quot;
+directory.  This path is arbitrary, you do not have to use
+<filename>ALFS/nALFS</filename>.</para></note>
+
+<para>If you are planning on being able to check files back in, you need
+to ensure that you do a priviledged checkout.  To do a priviledged
+checkout, add a &quot;+ssh&quot; just after the second &quot;svn&quot;
+in the above command.  Here is an example&nbsp;:</para>
+
+<screen><command>svn co \ 
+svn+ssh://svn.linuxfromscratch.org/ALFS/nALFS/nALFS/trunk \
+ALFS/nALFS</command></screen>
+
+<para>The books are in different places in the repository than the
+&book-product; source code.  You can find them in the following
+locations&nbsp;:</para>
+
+<itemizedlist>
+
+<listitem><para><emphasis role="bold">&book-product; Hackers
+Guide</emphasis>&nbsp;: 
+<filename>/ALFS/nALFS/docs/hackers_guide/trunk</filename></para></listitem>
+
+<listitem><para><emphasis role="bold">&book-product; Users
+Guide</emphasis>&nbsp;:
+<filename>/ALFS/nALFS/docs/users_guide/trunk</filename></para></listitem>
+
+<listitem><para><emphasis role="bold">ALFS Syntax
+Document</emphasis>&nbsp;:
+<filename>/ALFS/docs/syntax_doc/trunk</filename></para></listitem>
+
+</itemizedlist>
+
+<para>The current stable version of the &book-product; source code is
+developed on the 1.2 branch in the repository.  You can do an anonymous
+checkout of this branch by issuing the following command&nbsp;:</para>
+
+<screen><command>svn co \
+svn://svn.linuxfromscratch.org/ALFS/nALFS/nALFS/branches/1.2 \
+ALFS/nALFS-1.2</command></screen>
+
+</sect2>
+
+</sect1>
