@@ -4,6 +4,7 @@
 #include <alfs.h>
 #include <util.h>
 
+bool colors = true;
 role *filter = NULL;
 
 void print_links (profile prof)
@@ -35,16 +36,65 @@ void print_cmd (command cmd)
 	printf("\n");
 }
 
+static void __print_deps (profile *prof, package pkg, int indent)
+{
+	int i;
+
+	printfi(indent, "%s\n", pkg.name);
+	
+	if (!pkg.dep)
+		return;
+
+	for (i=0;i<pkg.o;i++)
+	{
+		if (!pkg.dep[i].name)
+			continue;
+
+		if (pkg.dep[i].type==OPT)
+			continue;
+		
+		if (prof)
+		{
+			int j;
+			package *p = search_pkg(prof, lower_case(pkg.dep[i].name), NULL);
+				
+			for (j=0;j<indent;j++)
+				printf("\t");
+				
+			if (!p)
+				fprintf(stderr, "Dependency %s does not exist.\n", 
+					pkg.dep[i].name);
+			else
+				__print_deps(NULL, *p, indent+1);
+				//print_deptree(*prof, *p);
+		}
+		else
+			printfi(indent+1, "%s\n", pkg.dep[i].name);
+	}
+}
+
+void print_deps (package pkg)
+{
+	__print_deps(NULL, pkg, 0);
+}
+
+void print_deptree (profile prof, package pkg)
+{
+	__print_deps(&prof, pkg, 0);
+}
+
 void print_pkg (package pkg)
 {
 	int i;
 	
-	term_set(RESET, GREEN, BLACK);
+	if (colors)
+		term_set(RESET, GREEN, BLACK);
 	if (!pkg.vers)
 		printf("%s\n\n", pkg.name);
 	else
 		printf("%s\nVersion: %s\n\n", pkg.name, pkg.vers);
-	term_reset();
+	if (colors)
+		term_reset();
 	
 	for (i=0;i<pkg.n;i++)
 		print_cmd(pkg.build[i]);
@@ -58,9 +108,11 @@ void print_chapter (chapter ch)
 	if (!ch.n)
 		return;
 
-	term_set(RESET, RED, BLACK);
+	if (colors)
+		term_set(RESET, RED, BLACK);
 	printf("%s\n", ch.name);
-	term_reset();
+	if (colors)
+		term_reset();
 	for (i=0;i<ch.n;i++)
 		print_pkg(ch.pkg[i]);
 }
@@ -69,9 +121,11 @@ void print_profile (profile prof)
 {
 	int i;
 
-	term_set(RESET, BLUE, BLACK);
+	if (colors)
+		term_set(RESET, BLUE, BLACK);
 	printf("%s %s\n", prof.name, ((prof.vers) ? (prof.vers) : ""));
-	term_reset();
+	if (colors)
+		term_reset();
 	for (i=0;i<prof.n;i++)
 		print_chapter(prof.ch[i]);
 }

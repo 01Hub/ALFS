@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -414,4 +415,19 @@ char *extonly (char *url)
 		}
 		
 	return foo;
+}
+
+void printfi (int indent, const char *fmt, ...)
+{
+	va_list args;
+	int i;
+	char msg[512];
+
+	va_start(args, fmt);
+	vsnprintf(msg, 512, fmt, args);
+	va_end(args);
+
+	for (i=0;i<indent;i++)
+		printf("  ");
+	printf("%s", msg);
 }

@@ -294,6 +294,10 @@ void t_pkg2 (xmlNodePtr node, void *data)
 	prof->ch[i].pkg[j].vers = xmlGetProp(node, "version");
 	prof->ch[i].pkg[j].build = NULL;
 	prof->ch[i].pkg[j].n = 0;
+	prof->ch[i].pkg[j].dl = NULL;
+	prof->ch[i].pkg[j].m = 0;
+	prof->ch[i].pkg[j].dep = NULL;
+	prof->ch[i].pkg[j].o = 0;
 	
 	foreach(node->children, "stage", (xml_handler_t)t_stage2, NULL);
 }

@@ -8,6 +8,7 @@
 command *cmd;
 int num;
 profile *prof;
+replaceable *r;
 
 profile *bookasprofile (xmlNodePtr node, replaceable *r);
 
@@ -47,7 +48,7 @@ static void __t_userinput (xmlNodePtr node, void *data)
 {
 	char *line;
 
-	foreach(node->children, "replaceable", (xml_handler_t)t_repl, NULL);
+	foreach(node->children, "replaceable", (xml_handler_t)t_repl, r);
 	line = squeeze(xmlNodeGetContent(node));
 	line = strkill(line, "\\\n");
 
@@ -112,6 +113,11 @@ static void t_sect1 (xmlNodePtr node, void *data)
 	prof->ch[i].pkg[j].vers = tmp ? strcut(tmp, 1, strlen(tmp)) : NULL;
 	prof->ch[i].pkg[j].name = tmp ? strcut(title, 0, 
 		strlen(title)-strlen(tmp)) : title;
+	prof->ch[i].pkg[j].dl = NULL;
+	prof->ch[i].pkg[j].m = 0;
+	prof->ch[i].pkg[j].dep = NULL;
+	prof->ch[i].pkg[j].o = 0;
+	
 	prof->ch[i].pkg[j].build = t_userinput(node->children, 
 		&prof->ch[i].pkg[j].n);
 
@@ -129,7 +135,7 @@ static void t_chapter (xmlNodePtr node)
 	foreach(node->children, "sect1", (xml_handler_t)t_sect1, NULL);
 }
 
-profile *bookasprofile (xmlNodePtr node, replaceable *r)
+profile *bookasprofile (xmlNodePtr node, replaceable *_r)
 {
 	xmlNodePtr info = find_node(node, "bookinfo");
 
@@ -138,7 +144,8 @@ profile *bookasprofile (xmlNodePtr node, replaceable *r)
 		fprintf(stderr, "XML document is not a valid LFS book.\n");
 		return NULL;
 	}
-	
+
+	r = _r;
 	prof = (profile *)malloc(sizeof(profile));
 	prof->name = find_value(info, "title");
 	prof->vers = find_value(info, "subtitle");

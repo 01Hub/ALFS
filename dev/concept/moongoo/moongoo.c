@@ -36,7 +36,7 @@ int main (int argc, char **argv)
 		return 2;
 	}
 
-	while ((c = getopt(argc, argv, "s:qVhc:b")) != EOF)
+	while ((c = getopt(argc, argv, "s:qVhc:bC")) != EOF)
 	{
 		switch (c)
 		{
@@ -67,7 +67,8 @@ int main (int argc, char **argv)
 			case 'h':
 				printf("moongoo [OPTIONS] BOOK\n");
 				printf("\t-b\t\tBuild\n");
-				printf("\t-c CONF.XML\tXML configuration file.\n");
+				printf("\t-C\t\tNo colors in output\n");
+				printf("\t-c CONF.XML\tXML configuration file\n");
 				printf("\t-h\t\tPrint this fluff\n");
 				printf("\t-q\t\tNo output\n");
 				printf("\t-s SYNTAX\tChoose syntax (help shows them)\n");
@@ -81,6 +82,9 @@ int main (int argc, char **argv)
 				build = true;
 				quiet = true;
 				break;
+			case 'C':
+				colors = false;
+				break;
 		}
 	}
 
@@ -91,7 +95,7 @@ int main (int argc, char **argv)
 	xmlXIncludeProcessFlags(doc, XML_PARSE_NOENT);
 	cur = xmlDocGetRootElement(doc);
 
-	f = strdog(getenv("HOME"), MOO_XML);
+	f = strdog(getenv("HOME"), moo_xml);
 	if (access(f, R_OK))
 	{
 		if (access("moo.xml", R_OK))
@@ -100,9 +104,9 @@ int main (int argc, char **argv)
 			r = init_repl("moo.xml");
 	}
 	else
-		r = init_repl(strdog(getenv("HOME"), MOO_XML));
+		r = init_repl(f);
 	free(f);
-	
+
 	while (plugin[i].path)
 	{
 		if (!strcmp(syn, plugarg(plugin[i].path)))
@@ -125,12 +129,20 @@ int main (int argc, char **argv)
 	{
 		/*package *glibc = search_pkg(prof, "glibc", 
 			"chapter-building-system");*/
+		package *gtk2 = search_pkg(prof, "gtk+",
+			"x-lib");
+		
 		sed_paralell (prof, paralell_filter, popt_pkg, popt_cmd);
 		set_filter(default_filter);
 		
+		if (gtk2)
+		{
+			//print_pkg(*gtk2);
+			print_deptree(*prof, *gtk2);
+		}
 		/*if (glibc)
 			print_pkg(*glibc);*/
-		print_profile(*prof);
+		//print_profile(*prof);
 		//print_links(*prof);
 	}
 
