@@ -175,3 +175,9 @@ network.-->
 		powerpc = ld.so.1
 -->
 <!ENTITY glibc-loader "ld-linux.so.2">
+
+<!-- terminal type for your host system (found in the TERM
+     environment variable
+-->
+
+<!ENTITY TERM "linux">

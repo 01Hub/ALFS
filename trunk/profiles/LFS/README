@@ -25,6 +25,10 @@ or
   
 2) customize the files in the new configuration directory
    - the file general.ent contains a bunch of entity declarations
+     (Note: this file contains an entity called TERM that should be
+            set to the same value as the TERM environment variable on
+            your build system. It defaults to "linux", the most common
+            value for a GNU/Linux system.)
    - the file fstab.xml contains the command to generate the fstab file
    - the file kernel.xml contains the profile for building the kernel
    - the file grub.xml contains the commands for configuring the grub 
