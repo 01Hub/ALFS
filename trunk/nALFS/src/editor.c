@@ -27,10 +27,13 @@
 #include <form.h>
 #include <ctype.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "utility.h"
 #include "win.h"
-#include "nalfs.h"
-#include "config.h"
+#include "nalfs-core.h"
 
 #include "editor.h"
 

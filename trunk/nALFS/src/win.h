@@ -28,7 +28,6 @@
 #include <curses.h>
 
 #include "logging.h"
-#include "config.h"
 
 
 #define MOD_CTRL(x) ((x) & 31)
@@ -126,7 +125,7 @@ extern windows_s windows;
  * Printing macros.
  */
 
-void (*nprint)(msg_id_e mid, const char *format,...);
+extern void (*nprint)(msg_id_e mid, const char *format,...);
 
 /* Print macros. */
 #define Nprint(a, b...)		nprint(T_INF, a, ## b)

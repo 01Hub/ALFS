@@ -28,15 +28,18 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <dirent.h>
-#include <dlfcn.h>
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
 #include "parser.h"
 #include "utility.h"
 #include "win.h"
-#include "nalfs.h"
-#include "config.h"
+#include "nalfs-core.h"
 
 #include "handlers.h"
+#include "ltdl.h"
 
 
 typedef char *(*alloc_handler_function_f)(element_s *);
@@ -153,65 +156,48 @@ static INLINE int number_of_handlers(void)
 	return i;
 }
 
-static INLINE int load_handler(const char *filename)
+static INLINE lt_ptr lookup_symbol(lt_dlhandle handle, const char *symbol_name)
+{
+	lt_ptr result;
+
+	if ((result = lt_dlsym(handle, symbol_name)) == NULL)
+		Nprint_err("%s: %s", symbol_name, lt_dlerror());
+	return result;
+}
+
+static int load_handler(lt_dlhandle handle, lt_ptr data)
 {
 	int i, all_symbols_found = 1;
-	char *error, *version;
+	char *version;
 
 	char *name, **versions, *description;
 	int *action;
 	main_handler_function_f main_function;
 	char **params;
 
-	void *handle;
 	handler_s *handler;
 
-
-	if ((handle = dlopen(filename, RTLD_NOW)) == NULL) {
-		Nprint_err("%s", dlerror());
-		return -1;
-	}
-
-	name = dlsym(handle, "handler_name");
-	if ((error = dlerror()) != NULL)  {
-		Nprint_err("%s", error);
+	if ((name = (char *) lookup_symbol(handle, "handler_name")) == NULL)
 		all_symbols_found = 0;
-	}
 
-	versions = dlsym(handle, "handler_syntax_versions");
-	if ((error = dlerror()) != NULL)  {
-		Nprint_err("%s", error);
+	if ((versions = (char **) lookup_symbol(handle, "handler_syntax_versions")) == NULL)
 		all_symbols_found = 0;
-	}
 
-	description = dlsym(handle, "handler_description");
-	if ((error = dlerror()) != NULL)  {
-		Nprint_err("%s", error);
+	if ((description = (char *) lookup_symbol(handle, "handler_description")) == NULL)
 		all_symbols_found = 0;
-	}
 
-	action = dlsym(handle, "handler_action");
-	if ((error = dlerror()) != NULL)  {
-		Nprint_err("%s", error);
+	if ((action = (int *) lookup_symbol(handle, "handler_action")) == NULL)
 		all_symbols_found = 0;
-	}
 
-	main_function = (main_handler_function_f)dlsym(handle, "handler_main");
-	if ((error = dlerror()) != NULL)  {
-		Nprint_err("%s", error);
+	if ((main_function = (main_handler_function_f) lookup_symbol(handle, "handler_main")) == NULL)
 		all_symbols_found = 0;
-	}
 
-	params = dlsym(handle, "handler_parameters");
-	if ((error = dlerror()) != NULL)  {
-		Nprint_err("%s", error);
+	if ((params = (char **) lookup_symbol(handle, "handler_parameters")) == NULL)
 		all_symbols_found = 0;
-	}
 
 	/* Some symbols are missing. */
 	if (! all_symbols_found) {
-		dlclose(handle);
-		return -1;
+		return 0;
 	}
 
 	/* Create a handler for each syntax version. */
@@ -223,7 +209,6 @@ static INLINE int load_handler(const char *filename)
 		if (does_already_exist(name, version)) {
 			Nprint_warn("The handler already exists, "
 				"skipping it: %s (%s)", name, version);
-			dlclose(handle);
 			continue;
 		}
 
@@ -235,7 +220,6 @@ static INLINE int load_handler(const char *filename)
 		handler->action = *action;
 		handler->main_function = main_function;
 		handler->handle = handle;
-
 		n = number_of_handlers();
 
 		/* Add to handlers. */
@@ -250,50 +234,42 @@ static INLINE int load_handler(const char *filename)
 	return 0;
 }
 
+static int foreachfile_callback(const char *filename, lt_ptr data)
+{
+	lt_dlhandle handle;
+
+	if ((handle = lt_dlopenext(filename)) == NULL) {
+		Nprint_err("%s", lt_dlerror());
+	}
+	return 0;
+}
+
 int load_all_handlers(void)
 {
-	DIR *dir;
-	struct dirent *next;
-
-
 	handlers = xmalloc(sizeof *handlers);
 	handlers[0] = NULL;
 
 	parameters = xmalloc(sizeof *parameters);
 	parameters[0] = NULL;
 
-	if ((dir = opendir(HANDLERS_DIRECTORY)) == NULL) {
-		Nprint_err("Can't open handlers directory (%s):",
-			HANDLERS_DIRECTORY);
-		Nprint_err("%s", strerror(errno));
+#ifdef STATIC_BUILD
+	LTDL_SET_PRELOADED_SYMBOLS();
+#endif
+
+	if (lt_dlinit() != 0) {
+		Nprint_err("%s", lt_dlerror());
 		return -1;
 	}
 
-	while ((next = readdir(dir)) != NULL) {
-		char *filename = NULL;
-		struct stat file_stat;
-
-
-		append_str(&filename, HANDLERS_DIRECTORY);
-		append_str(&filename, next->d_name);
-
-		if (stat(filename, &file_stat) == 0) {
-			/* Only load it if it's not a directory. */
-			if (! S_ISDIR(file_stat.st_mode)) {
-				char *tmp = strrchr(filename, '.');
-				/* Only load .so files. */
-				if (tmp && strncmp(tmp, ".so", 3) == 0) {
-					load_handler(filename);
-				}
-			}
-		}
-
-		xfree(filename);
-	}
-
-	closedir(dir);
-
+#ifdef STATIC_BUILD
+	if (lt_dlopen_preloaded() != 0)
+		Nprint_err("unable to open all preloaded handlers");
+#else
 	Nprint("Loading handlers from %s.", HANDLERS_DIRECTORY);
+	lt_dlforeachfile(HANDLERS_DIRECTORY, &foreachfile_callback, NULL);
+#endif
+
+	lt_dlforeach(&load_handler, NULL);
 	Nprint("Total %d handlers loaded.", number_of_handlers());
 	Nprint("Total %d parameters found.", number_of_parameters());
 
@@ -308,7 +284,6 @@ int load_all_handlers(void)
 
 static int get_symbol(void **symbol, const char *string, element_s *el)
 {
-	char *error;
 
 
 	if (el == NULL) {
@@ -331,10 +306,7 @@ static int get_symbol(void **symbol, const char *string, element_s *el)
 		return -1;
 	}
 
-	*symbol = dlsym(el->handler->handle, string);
-
-	if ((error = dlerror()) != NULL)  {
-		Nprint_err("%s", error);
+	if ((*symbol = (void *) lookup_symbol(el->handler->handle, string)) == NULL) {
 		return -1;
 	}
 

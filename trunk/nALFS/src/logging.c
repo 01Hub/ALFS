@@ -34,16 +34,20 @@
 #include <libxml/tree.h>
 #include <libxml/parser.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include "bufsize.h"
 #include "find.h"
 #include "utility.h"
 #include "parser.h"
 #include "backend.h"
 #include "win.h"
-#include "nalfs.h"
+#include "nalfs-core.h"
 #include "comm.h"
 #include "handlers.h"
 #include "logfiles.h"
-#include "config.h"
 
 #include "logging.h"
 

@@ -31,10 +31,14 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include "bufsize.h"
 #include "options.h"
 #include "utility.h"
 #include "logging.h"
-#include "config.h"
 
 #include "init.h"
 
@@ -308,7 +312,7 @@ static void print_version(void)
 {
 	fprintf(stderr,
 "\n"
-PROGRAM_FULL_NAME ", " COPYRIGHT "\n"
+PACKAGE_STRING ", " COPYRIGHT "\n"
 "nALFS comes with ABSOLUTELY NO WARRANTY.\n"
 "This is free software, and you are welcome to redistribute it\n"
 "under certain conditions. See COPYING for more info.\n"
@@ -327,7 +331,7 @@ static INLINE void print_help_and_exit(const char *prog)
 	char *file = alloc_real_status_logfile_name();
 
 	if (prog == NULL) {
-		prog = PROGRAM_NAME;
+		prog = PACKAGE_NAME;
 	}
 
 	printf(

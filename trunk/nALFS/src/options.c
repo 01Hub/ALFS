@@ -23,13 +23,16 @@
 
 #include <string.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #define C_FILE
 #include "options.h"
 
-#include "nalfs.h"
+#include "nalfs-core.h"
 #include "logging.h"
 #include "utility.h"
-#include "config.h"
 
 
 static option_s options[] = {
