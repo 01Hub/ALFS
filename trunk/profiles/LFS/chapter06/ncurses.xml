@@ -55,13 +55,13 @@
 			<destination>/lib</destination>
 		</move>
 
-		<link type="symbolic">
+		<link>
 			<option>force</option>
 			<target>../../lib/libncurses.so.5</target>
 			<name>/usr/lib/libcurses.so</name>
 		</link>
 
-		<link type="symbolic">
+		<link>
 			<option>force</option>
 			<target>libncurses.so</target>
 			<name>/usr/lib/libcurses.so</name>

@@ -37,7 +37,8 @@
 			<destination>/lib</destination>
 		</copy>
 
-		<link type="symbolic">
+		<link>
+			<option>force</option>
 			<target>../../lib/libbz2.so.1.0</target>
 			<name>/usr/lib/libbz2.so</name>
 		</link>
@@ -53,12 +54,14 @@
 			<destination>/bin</destination>
 		</move>
 
-		<link type="symbolic">
-			<target>bzip2</target>
+		<link>
+			<option>force</option>
+ 			<target>bzip2</target>
 			<name>/bin/bunzip2</name>
 		</link>
 
-		<link type="symbolic">
+		<link>
+			<option>force</option>
 			<target>bzip2</target>
 			<name>/bin/bzcat</name>
 		</link>

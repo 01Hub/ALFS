@@ -1,5 +1,6 @@
 <stage name="Configuring system components">
-	<link type="symbolic">
+	<link>
+		<option>force</option>
 		<target>&keymap;</target>
 		<name>/usr/share/kbd/keymaps/defkeymap.map.gz</name>
 	</link>

@@ -6,7 +6,6 @@
 
 	<textdump base="/etc">
 		<file>group</file>
-
 		<content>
 			=root:x:0:
 			=bin:x:1:

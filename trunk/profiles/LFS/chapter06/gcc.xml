@@ -73,12 +73,14 @@
 			<param>install</param>
 		</make>
 
-		<link type="symbolic">
+		<link>
+			<option>force</option>
 			<target>../usr/bin/cpp</target>
 			<name>/lib</name>
 		</link>
 
-		<link type="symbolic">
+		<link>
+			<option>force</option>
 			<target>gcc</target>
 			<name>/usr/bin/cc</name>
 		</link>

@@ -24,6 +24,7 @@
 		</make>
 
 		<link>
+			<option>force</option>
 			<target>killall</target>
 			<name>/bin/pidof</name>
 		</link>

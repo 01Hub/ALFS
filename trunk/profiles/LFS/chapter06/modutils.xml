@@ -12,7 +12,7 @@
 			<base>&build_dir;/&modutils-directory;</base>
 		</stageinfo>
 
-		<configure/>
+		<configure />
 
 		<make />
 

@@ -36,17 +36,20 @@
 		<remove>/usr/bin/gunzip</remove>
 		<remove>/usr/bin/zcat</remove>
 
-		<link type="symbolic">
+		<link>
+			<option>force</option>
 			<target>gzip</target>
 			<name>/bin/gunzip</name>
 		</link>
 
-		<link type="symbolic">
+		<link>
+			<option>force</option>
 			<target>gzip</target>
 			<name>/bin/zcat</name>
 		</link>
 
-		<link type="symbolic">
+		<link>
+			<option>force</option>
 			<target>gunzip</target>
 			<name>/bin/uncompress</name>
 		</link>

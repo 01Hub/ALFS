@@ -74,7 +74,8 @@
 			<replace>MD5_CRYPT_ENAB	yes</replace>
 		</search_replace>
 
-		<link type="symbolic">
+		<link>
+			<option>force</option>
 			<target>vipw</target>
 			<name>/usr/sbin/vigr</name>
 		</link>
@@ -92,13 +93,13 @@
 			<destination>/lib</destination>
 		</move>
 
-		<link type="symbolic">
+		<link>
 			<option>force</option>
 			<target>../../lib/libshadow.so.0</target>
 			<name>/usr/lib/libshadow.so</name>
 		</link>
 
-		<link type="symbolic">
+		<link>
 			<option>force</option>
 			<target>../../lib/libmisc.so.0</target>
 			<name>/usr/lib/libmisc.so</name>

@@ -77,11 +77,11 @@
 		<execute command="localedef -i ja_JP -f EUC-JP ja_JP" />
 
 		<make>
-			<param>-C ../glibc-2.3.2/linuxthreads/man</param>
+			<param>-C ../&glibc-directory;/linuxthreads/man</param>
 		</make>
 
 		<make>
-			<param>-C ../glibc-2.3.2/linuxthreads/man</param>
+			<param>-C ../&glibc-directory;/linuxthreads/man</param>
 			<param>install</param>
 		</make>
 	</stage>

@@ -119,11 +119,13 @@
 		</move>
 
 		<link>
+			<option>force</option>
 			<target>test</target>
 			<name>/bin/[</name>
 		</link>
 
 		<link>
+			<option>force</option>
 			<target>../../bin/install</target>
 			<name>/usr/bin</name>
 		</link>
