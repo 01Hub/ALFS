@@ -28,6 +28,7 @@
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <libgen.h>
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -47,12 +48,20 @@ int get_url(const char *url, const char *destination, const char *digest,
 	int status = -1;
 	int command_status;
 	struct stat stat_buf;
+	char *dirname_buf;
 	char *temp_file_name;
 	    
 
 	/* Construct a temporary filename */
 
-	temp_file_name = xstrdup(".nALFS.XXXXXX");
+	/* have to make a writable copy of the destination path in case
+	   the dirname() function wants to modify it
+	*/
+	dirname_buf = xstrdup(destination);
+	temp_file_name = xstrdup(dirname(dirname_buf));
+	xfree(dirname_buf);
+	append_str(&temp_file_name, "/");
+	append_str(&temp_file_name, ".nALFS.XXXXXX");
 	if (create_temp_file(temp_file_name))
 		goto free_all_and_return;
 	/* There is a small risk that another user could create a symlink
