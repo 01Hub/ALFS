@@ -338,7 +338,7 @@
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
 
-<!ENTITY udev-config-patch-md5 "fb47429ab562e30df6784d9b996b4881">
+<!ENTITY udev-config-patch-md5 "a0216e4aa45847c06adb940857f10cb6">
 <!ENTITY udev-config-patch "udev-&udev-version;-config-1.patch">
 
 <!ENTITY util-linux-md5 "5fa39c3d8761b48732be137a06853c64">
