@@ -1,0 +1,119 @@
+List of items that should be done:
+==================================
+
+
+o  Do something about curl inside chroot.  Also try libxml2's nano*
+   functions.
+
+o  Allow changing more options from the program.
+
+o  Chrooting and using ALLOW_RELATIVE_DIRS usually doesn't work.
+   Try fixing it.
+
+o  Command for checking <unpack> elements of package under the cursor.
+   After 'P', where other package-related commands can be added as well
+   latter ('d' for displaying description for example).
+
+o  Profile: <description>, <digest>, common configure options
+   (for optimization and stuff).
+
+o  Use "logfile" from <package> if it is specified.
+
+o  Add logging for <stage>, consider renaming packages/ and maybe
+   remove "Entering stage:".
+
+o  If fetching file from <reference> fails, we should check for another
+   one.  Start using original package locations in the profile, when
+   this is implemented.
+
+o  Add <packageinfo> with all elements <stageinfo> has, plus
+   <description>.
+
+o  Add option for different .files outputs.
+
+o  Add umask support to <stage>.
+
+o  Allow using md5sum if ssl library is not found.
+
+o  Allow compiling the handlers in (--static-plugins, or something).
+
+o  Saving the profile back to a file.
+
+o  Displaying XML (as in the profile) of elements under the cursor in
+   the main window (for easier checking of specific profile's part).
+   Have to wait for the above (when element_t -> xmlNode is implemented).
+
+o  Adding/removing elements.  New command for choosing them from the list
+   of known elements (without the need to do much manual profile writing).
+
+o  Editing of entities.
+
+o  Hiding of "parameter elements" and adding them to element info.
+
+o  Command for showing (marking them somehow) elements that will run,
+   installed packages, not installed packages etc. (in the profile).
+
+o  Printing the list of all installed packages (and their files,
+   compile times, etc.).
+
+o  Clean or rewrite the logging of files.  Check out install-log
+   (http://install-log.sourceforge.net/) and what it can do,
+   that we can't.
+
+o  Logging of installed package sizes.
+
+o  Add small browser for adding new profiles.
+
+o  Improve <search_replace> to allow working with multiple lines.
+
+o  Use libxml2's _SAX_ parsing.
+
+o  Print libxml2's error output on _one_ line.
+
+o  Play with compressing large files, when sending them over the sockets
+   (like list of files).
+
+o  Make timer, profile name and option indicators' positions configurable.
+
+o  Add package time to timer.
+
+o  Pause the timer while collecting files.
+
+o  Add some progress indicator when downloading files.
+
+o  Consider allowing something like <!ENTITY path "$PATH"> and
+   the best way to do that.  Or not.
+
+o  New command for redirecting the output to the system command being
+   executed.  For allowing "make config" for example.
+
+o  Play with libxstl.
+
+
+o  Rewrite/improve apc, or add a command-line option in nALFS
+   (loading the profile afterward).
+
+o  Update flog so it can convert between different .files outputs
+   (simplifying the current, for example). Watch for -> in sym links.
+
+o  Update the documentation - logging files/times, external programs
+   needed in some cases, timer, configuration file etc.
+
+
+Discussion needed:
+------------------
+
+o  Give <undo> more thinking.
+
+o  $HOME/.nALFS/ doesn't make any sense.  This should be a single, global,
+   system-wide directory.  Like /var/log/ALFS, or something.  Format of
+   the files needs standardizing too.
+
+o  Play with dependency info inside <package> - format and all the things
+   needed (name of the required package, min/max version etc.).
+   Implement <requires> and <utilizes>, and maybe add some commands for
+   working with them.
+
+o  Check out LSB's changes.  "nofail" attribute for example - something
+   similar was already suggested on alfs-discuss, but was forgotten.
+   Same with <cond>.
