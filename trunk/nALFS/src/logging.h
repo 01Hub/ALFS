@@ -31,7 +31,6 @@
 
 
 #define STATE_IS_TIME_STAMP_MSG		"Using time stamp"
-#define STATE_IS_LIST_OF_FILES_MSG	"Using two finds"
 
 
 int stamp_package_installed(

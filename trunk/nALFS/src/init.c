@@ -350,7 +350,6 @@ static INLINE void print_help_and_exit(const char *prog)
 "    -L, --log-file <file>         Use <file> for logging (\"%s\").\n"
 "    -B, --log-backend             Log backend (files, handler actions) (%s).\n"
 "    -f, --log-newer-files         Log changed files using time stamps.\n"
-"    -F, --log-changed-files       Log changed files using two finds.\n"
 "    -h, --log-handler-actions     Toggle logging of handler actions (%s).\n"
 "    -i, --interactive             Toggle interactive mode (%s).\n"
 "    -s, --start                   Start parsing the profiles immediately.\n"
@@ -402,7 +401,6 @@ void read_command_line_options(int *argc, char ***argv)
 	{"log-status-window", no_argument, NULL, 'l'},
 	{"log-backend", no_argument, NULL, 'B'},
 	{"log-newer-files", no_argument, NULL, 'f'},
-	{"log-changed-files", no_argument, NULL, 'F'},
 	{"log-handler-actions", no_argument, NULL, 'h'},
 
 	{"interactive", no_argument, NULL, 'i'},
@@ -424,7 +422,7 @@ void read_command_line_options(int *argc, char ***argv)
 	};
 
 
-	while ((i = getopt_long(*argc, *argv, "lPfFhisBSL:b:p:v", long_opts, NULL)) != -1) {
+	while ((i = getopt_long(*argc, *argv, "lPfhisBSL:b:p:v", long_opts, NULL)) != -1) {
 		switch (i) {
 			case LONG_OPTION_DISPLAY_ALFS:
 				Toggle(opt_display_alfs);
@@ -454,9 +452,6 @@ void read_command_line_options(int *argc, char ***argv)
 				break;
 			case 'f':
 				opt_logging_method = LOG_USING_ONE_FIND;
-				break;
-			case 'F':
-				opt_logging_method = LOG_USING_TWO_FINDS;
 				break;
 			case 'h':
 				Toggle(opt_log_handlers);

@@ -515,10 +515,8 @@ static INLINE element_s *get_elements_package(element_s *el)
 static int is_corresponding_state(const char *file_name, element_s *el)
 {
 	int is_corresponding = 0;
-	int silofm_len = strlen(STATE_IS_LIST_OF_FILES_MSG);
 	int sitsm_len = strlen(STATE_IS_TIME_STAMP_MSG);
 	char line[MAX_STATE_FILE_LINE_LEN];
-	char *state_str = NULL;
 	char *package_str = NULL;
 	element_s *current_package;
 	FILE *fp;
@@ -551,17 +549,16 @@ static int is_corresponding_state(const char *file_name, element_s *el)
 	fclose(fp);
 
 	/* Get the package string from the state file. */
-	if (strncmp(line, STATE_IS_LIST_OF_FILES_MSG, silofm_len) == 0) {
-		state_str = xstrdup(line + silofm_len + 2);
-	} else if (strncmp(line, STATE_IS_TIME_STAMP_MSG, sitsm_len) == 0) {
-		state_str = xstrdup(line + sitsm_len + 2);
+	if (strncmp(line, STATE_IS_TIME_STAMP_MSG, sitsm_len) == 0) {
+		char *state_str = xstrdup(line + sitsm_len + 2);
+
+		if (strcmp(package_str, state_str) == 0) {
+			is_corresponding = 1;
+		}
+
+		xfree(state_str);
 	}
 
-	if (strcmp(package_str, state_str) == 0) {
-		is_corresponding = 1;
-	}
-
-	xfree(state_str);
 
 	return is_corresponding;
 }
@@ -606,6 +603,9 @@ static INLINE void receive_log_file(void)
 	comm_read_to_memory(FRONTEND_CTRL_SOCK, &ptr, &size);
 
 	/* Get package string for the current running element. */
+	/* TODO: Get it from the control message that is sent from
+	 *       the backend.
+	 */
 	ASSERT(current_running != NULL);
 	current_package = get_elements_package(current_running);
 	package_str = alloc_package_string(current_package);
@@ -1807,9 +1807,6 @@ static INLINE void toggle_logging_files(void)
 		case LOG_USING_ONE_FIND:
 			Nprint("Logging changed files using time stamps.");
 			break;
-		case LOG_USING_TWO_FINDS:
-			Nprint("Logging changed files using two finds.");
-			break;
 		case LOG_OFF:
 			Nprint("Logging changed files now off.");
 			break;
@@ -2063,9 +2060,6 @@ static void draw_options_indicators(void)
 		case LOG_USING_ONE_FIND:
 			Xmvaddch(row, col++, 'f');
 			break;
-		case LOG_USING_TWO_FINDS:
-			Xmvaddch(row, col++, 'F');
-			break;
 		case LOG_OFF:
 			Xmvaddch(row, col++, ' ');
 			break;
@@ -2119,10 +2113,6 @@ static int print_options(void)
 	switch (opt_logging_method) {
 		case LOG_USING_ONE_FIND:
 			strcpy(find, "Using one find()-like search");
-			break;
-
-		case LOG_USING_TWO_FINDS:
-			strcpy(find, "Using two find()-like searches");
 			break;
 
 		case LOG_OFF:

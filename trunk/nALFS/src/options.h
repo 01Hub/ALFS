@@ -46,10 +46,9 @@ typedef enum jump_location {
 typedef enum logging_method {
 	LOG_OFF = 0,
 	LOG_USING_ONE_FIND,
-	LOG_USING_TWO_FINDS
 } logging_method_t;
 
-#define LAST_LOGGING_METHOD LOG_USING_TWO_FINDS
+#define LAST_LOGGING_METHOD LOG_USING_ONE_FIND
 
 
 /*

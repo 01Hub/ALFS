@@ -30,8 +30,7 @@ typedef struct logs logs_t;
 
 void logs_add_handler_action(logs_t *logs, const char *string);
 
-void logs_add_installed_files_one_find(logs_t *logs);
-void logs_add_installed_files_two_finds(
+void logs_add_installed_files(
 	logs_t *logs, const char *find_base, const char *find_prunes);
 
 void logs_add_stopped_time(logs_t *logs, const char *time_str);

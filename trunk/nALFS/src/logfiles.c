@@ -71,18 +71,7 @@ void logs_add_handler_action(struct logs *logs, const char *string)
 		EL_NAME_FOR_ACTION, (const xmlChar *)string);
 }
 
-void logs_add_installed_files_one_find(struct logs *logs)
-{
-	xmlDocPtr doc = logs->list[0]->doc;
-	xmlNodePtr node;
-
-	node = xmlNewTextChild(
-		doc->children, NULL, EL_NAME_FOR_FILES_ROOT, NULL);
-
-	xmlSetProp(node, "method", "time stamp");
-}
-
-void logs_add_installed_files_two_finds(
+void logs_add_installed_files(
 	struct logs *logs,
 	const char *find_base,
 	const char *find_prunes)
@@ -96,7 +85,7 @@ void logs_add_installed_files_two_finds(
 	node = xmlNewTextChild(
 		doc->children, NULL, EL_NAME_FOR_FILES_ROOT, NULL);
 
-	xmlSetProp(node, "method", "two finds");
+	xmlSetProp(node, "method", "time stamp");
 
 	xmlNewTextChild(node, NULL,
 		EL_NAME_FOR_FILES_FIND_ROOT, (const xmlChar *)find_base);
@@ -343,13 +332,15 @@ char *logs_get_plog_installed(struct logs *logs, int i)
 
 static xmlDocPtr logs_parse_or_create_plogf_doc(struct plogf *plogf)
 {
-	xmlDocPtr doc;
+	xmlDocPtr doc = NULL;
 
 	if (file_exists(plogf->filename)) {
 		if ((doc = xmlParseFile(plogf->filename)) != NULL) {
 			doc->children = xmlDocGetRootElement(doc);
 		}
-	} else {
+	}
+
+ 	if (doc == NULL) {
 		doc = xmlNewDoc("1.0");
 		doc->children = xmlNewDocNode(doc, NULL, EL_NAME_FOR_ROOT, NULL);
 	}
