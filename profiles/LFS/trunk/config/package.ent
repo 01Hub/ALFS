@@ -3,7 +3,7 @@
 <!ENTITY autoconf-package "autoconf-&autoconf-version;.tar.bz2">
 <!ENTITY autoconf-directory "autoconf-&autoconf-version;">
 
-<!ENTITY automake-md5 "">
+<!ENTITY automake-md5 "3a534ad55d781861e1e92d3b8d898a9a">
 <!ENTITY automake-version "1.9.5">
 <!ENTITY automake-package "automake-&automake-version;.tar.bz2">
 <!ENTITY automake-directory "automake-&automake-version;">
@@ -49,19 +49,19 @@
 <!ENTITY diffutils-package "diffutils-&diffutils-version;.tar.bz2">
 <!ENTITY diffutils-directory "diffutils-&diffutils-version;">
 
-<!ENTITY e2fsprogs-md5 "">
+<!ENTITY e2fsprogs-md5 "bc73e9532f703321d1d95140fe09f19b">
 <!ENTITY e2fsprogs-version "1.36">
 <!ENTITY e2fsprogs-package "e2fsprogs-&e2fsprogs-version;.tar.bz2">
 <!ENTITY e2fsprogs-directory "e2fsprogs-&e2fsprogs-version;">
 
-<!ENTITY expect-md5 "">
+<!ENTITY expect-md5 "e6aaab98967f6410099b40f2b3ddebb4">
 <!ENTITY expect-version "5.43.0">
 <!ENTITY expect-package "expect-&expect-version;.tar.bz2">
 <!ENTITY expect-directory "expect-5.43">
 
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
 
-<!ENTITY file-md5 "">
+<!ENTITY file-md5 "a14dcb05c172206d92dce9e0ee776501">
 <!ENTITY file-version "4.13">
 <!ENTITY file-package "file-&file-version;.tar.bz2">
 <!ENTITY file-directory "file-&file-version;">
@@ -127,7 +127,7 @@
 <!ENTITY groff-package "groff-&groff-version;.tar.bz2">
 <!ENTITY groff-directory "groff-&groff-version;">
 
-<!ENTITY grub-md5 "">
+<!ENTITY grub-md5 "a4b9a62278747a95625b875455257983">
 <!ENTITY grub-version "0.96">
 <!ENTITY grub-package "grub-&grub-version;.tar.bz2">
 <!ENTITY grub-directory "grub-&grub-version;">
@@ -178,12 +178,12 @@
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
-<!ENTITY libol-md5 "">
+<!ENTITY libol-md5 "f8324292f85bb88d2c3c8675b8d1aee9">
 <!ENTITY libol-version "0.3.15">
 <!ENTITY libol-package "libol-&libol-version;.tar.bz2">
 <!ENTITY libol-directory "libol-&libol-version;">
 
-<!ENTITY libtool-md5 "">
+<!ENTITY libtool-md5 "ad8358d705d8943c88626f5b660879f1">
 <!ENTITY libtool-version "1.5.14">
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.bz2">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
@@ -287,7 +287,7 @@
 
 <!ENTITY shadow-lastlog-patch "shadow-&shadow-version;-fix_lastlog-1.patch">
 
-<!ENTITY syslog-ng-md5 "">
+<!ENTITY syslog-ng-md5 "88ff578e0455486f8079bce0f6c9a721">
 <!ENTITY syslog-ng-version "1.6.6">
 <!ENTITY syslog-ng-package "syslog-ng-&syslog-ng-version;.tar.bz2">
 <!ENTITY syslog-ng-directory "syslog-ng-&syslog-ng-version;">
