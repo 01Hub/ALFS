@@ -3,8 +3,6 @@
         <packageinfo>
                 <requires><name>pkgconfig</name></requires>
 		<utilizes><name>gtk-doc</name></utilizes>
-		<utilizes><name>xml-dtd</name></utilizes>
-		<utilizes><name>docbook-xsl</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">

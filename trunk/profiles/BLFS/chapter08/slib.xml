@@ -1,7 +1,7 @@
 <package name="slib" version="&slib-version;">
 
         <packageinfo>
-                <requires><name>readline</name></requires>
+                <requires><name>guile</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">

@@ -1,9 +1,9 @@
 <package name="libxml2" version="&libxml2-version;">
 
-    <packageinfo>
-        <utilizes><name>python</name></utilizes>
-	<utilizes><name>readline</name></utilizes>
-    </packageinfo>
+    	<packageinfo>
+       		<utilizes><name>python</name></utilizes>
+		<utilizes><name>readline</name></utilizes>
+    	</packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>

@@ -1,10 +1,10 @@
 <package name="gmp" version="&gmp-version;">
 
-    <packageinfo>
-        <utilizes>
-	    <name>readline</name>
-	</utilizes>
-    </packageinfo>
+    	<packageinfo>
+        	<utilizes>
+	    		<name>readline</name>
+		</utilizes>
+    	</packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
@@ -20,8 +20,6 @@
 
 		<configure>
 			<param>--prefix=/usr</param>
-			<param>--mandir=/usr/share/man</param>
-			<param>--infodir=/usr/share/info</param>
 		</configure>
 
 		<make />

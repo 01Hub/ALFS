@@ -14,8 +14,6 @@
 
 		<configure>
 		        <param>--prefix=/usr</param>
-			<param>--infodir=/usr/share/info</param>
-			<param>--mandir=/usr/share/man</param>
 		</configure>
 
 		<make />
