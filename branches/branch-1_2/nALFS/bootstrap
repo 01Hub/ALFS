@@ -52,24 +52,34 @@ while getopts hd:g:p: param; do
 	    get_dtd ALFS
 	    echo done.
 	    ;;
-	g)
+	s)
 	    mkdir -p download
 	    DOC_VERSION=${OPTARG}
-	    echo Getting ${DOC_VERSION} version of guides...
-	    DOC_URL_BASE=http://linuxfromscratch.org/~jwrober
-
+	    echo Getting ${DOC_VERSION} version of syntax doc...
+	    DOC_URL_BASE=http://www.linuxfromscratch.org/alfs/downloads/guides
 	    get_text_doc ALFS-SYNTAX-DOC syntax_doc
 	    get_html_doc ALFS-SYNTAX-DOC syntax_doc
 	    get_html_nohunks_doc ALFS-SYNTAX-DOC syntax_doc
-
+	    echo done.
+	    ;;
+	u)
+	    mkdir -p download
+	    DOC_VERSION=${OPTARG}
+	    echo Getting ${DOC_VERSION} version of user's guide...
+	    DOC_URL_BASE=http://www.linuxfromscratch.org/alfs/downloads/guides
 	    get_text_doc nALFS-USERS-GUIDE users_guide
 	    get_html_doc nALFS-USERS-GUIDE users_guide
 	    get_html_nohunks_doc nALFS-USERS-GUIDE users_guide
-
+	    echo done.
+	    ;;
+	h)
+	    mkdir -p download
+	    DOC_VERSION=${OPTARG}
+	    echo Getting ${DOC_VERSION} version of hacker's guide...
+	    DOC_URL_BASE=http://www.linuxfromscratch.org/alfs/downloads/guides
 	    get_text_doc nALFS-HACKERS-GUIDE hackers_guide
 	    get_html_doc nALFS-HACKERS-GUIDE hackers_guide
 	    get_html_nohunks_doc nALFS-HACKERS-GUIDE hackers_guide
-
 	    echo done.
 	    ;;
 	p)
@@ -85,7 +95,9 @@ while getopts hd:g:p: param; do
 	    cat 1>&2 <<"EOF"
 nALFS bootscript supports the following optional arguments:
     -d {version} downloads specified version of the DTD
-    -g {version} downloads specified version of the guides
+    -s {version} downloads specified version of the syntax doc
+    -u {version} downloads specified version of the user's guide
+    -h {version} downloads specified version of the hacker's guide
     -p {version} downloads specified version of the LFS profile
 EOF
 	    exit 1
