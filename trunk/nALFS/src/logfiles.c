@@ -43,7 +43,7 @@
 #define EL_NAME_FOR_FILES_FIND_PRUNES	"find_prunes"
 #define EL_NAME_FOR_FILES_NAME		"filename"
 
-#define SUFFIX_FOR_LOGF			".log"
+#define SUFFIX_FOR_LOGF			".xml"
 #define SUFFIX_FOR_FLOG			".files"
 
 

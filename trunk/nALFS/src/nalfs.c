@@ -1089,7 +1089,50 @@ static INLINE void display_help_page(void)
  * Packages.
  */
 
-static void pkg_remove_package(logs_t *logs, int idx)
+static int pkg_do_remove_package(logs_t *logs, int idx)
+{
+	char *command = NULL;
+	char *flog = logs_get_plog_installed(logs, idx);
+	char *plog = logs_get_plog_filename(logs, idx);
+
+
+	append_str(&command, "rm -fr `cat ");
+	append_str(&command, flog);
+	append_str(&command, "`");
+
+	system(command);
+
+	xfree(command);
+
+	Nprint("Done removing files.");
+
+	Nprint("Do you also want to remove the log files? (n/Y)");
+
+	if (get_key(windows.main->name) == 'Y') {
+		command = NULL;
+		append_str(&command, "rm -f ");
+		append_str(&command, flog);
+		append_str(&command, " ");
+		append_str(&command, plog);
+
+		system(command);
+
+		xfree(command);
+
+		Nprint("Log files removed:");
+		Nprint("%s", flog);
+		Nprint("%s", plog);
+
+		return 0;
+
+	} else {
+		Nprint("Log files not removed.");
+	}
+
+	return -1;
+}
+
+static int pkg_remove_package(logs_t *logs, int idx)
 {
 	int c;
 	char *flog;
@@ -1097,7 +1140,7 @@ static void pkg_remove_package(logs_t *logs, int idx)
 
 	if ((flog = logs_get_plog_installed(logs, idx)) == NULL) {
 		Nprint("List of installed files doesn't exist.");
-		return;
+		return -1;
 	}
 
 	Nprint("Edit the list of files to remove? (y/N)?");
@@ -1109,7 +1152,7 @@ static void pkg_remove_package(logs_t *logs, int idx)
 
 	} else if (c != 'N') {
 		Nprint("Removing package aborted.");
-		return;
+		return -1;
 	}
 
 	/* We're going to do "rm -fr", so be REALLY annoying. */
@@ -1118,34 +1161,34 @@ static void pkg_remove_package(logs_t *logs, int idx)
 
 	if ((get_key(windows.main->name)) != 'Y') {
 		Nprint("Removing package aborted.");
-		return;
+		return -1;
 	}
 
-	Nprint_warn("Typing yes now, will remove all files listed in:");
-	Nprint_warn("%s", flog);
-	Nprint_warn("Pressing anything else will abort this.");
+	Nprint_warn("You're about to remove some files by executing:");
+	Nprint_warn("rm -fr `cat %s`", flog);
+	Nprint_warn("If you know exactly what this means, type yes.");
+	Nprint_warn("If not, press anything else to abort.");
 
-	if (get_key(windows.main->name) == 'y'
-	&&  get_key(windows.main->name) == 'e'
-	&&  get_key(windows.main->name) == 's') {
-		Nprint("rm -fr `cat %s`", flog);
-		Nprint("goes here.", flog);
-
-	} else {
+	if (get_key(windows.main->name) != 'y'
+	||  get_key(windows.main->name) != 'e'
+	||  get_key(windows.main->name) != 's') {
 		Nprint("Removing package aborted.");
+		return -1;
+
 	}
+
+	return pkg_do_remove_package(logs, idx);
 }
 
 /*
  * TODO: Pressing enter should display package's information first.
  *       From that window, other commands for that package can be given.
  */
-static void pkg_process_command(logs_t *logs, int idx, int input)
+static int pkg_process_command(logs_t *logs, int idx, int input)
 {
 	switch (input) {
 		case 'R':
-			pkg_remove_package(logs, idx);
-			break;
+			return pkg_remove_package(logs, idx);
 
 		/*
 		 * A lot of useful commands can be added here.  Not
@@ -1158,6 +1201,8 @@ static void pkg_process_command(logs_t *logs, int idx, int input)
 			Nprint_warn("Unknown command.");
 			break;
 	}
+
+	return -1;
 }
 
 static void pkg_write_main_line(logs_t *logs, int idx)
@@ -1249,7 +1294,10 @@ static INLINE void pkg_main(void)
 		lines = pkg_print_installed_packages(logs);
 
 		while ((input = tmp_window_driver(lines, &top, &curr)) != -1) {
-			pkg_process_command(logs, curr-EXTRA_TOP_LINES, input);
+			if (pkg_process_command(
+				logs, curr-EXTRA_TOP_LINES, input) == 0) {
+				break;
+			}
 		}
 
 		windows.active = MAIN_WINDOW;
