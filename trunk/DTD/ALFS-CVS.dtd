@@ -4,7 +4,7 @@
        Version : CVS
        Author:   V. Dzuba
        Updates:  Kevin P. Fleming
-       Date:     February 5, 2004
+       Date:     March 5, 2004
 
        The current version of the DTD is available at:
              http://www.linuxfromscratch.org/alfs/downloads/stable
@@ -21,15 +21,17 @@
 <!ENTITY apos   "&#39;"> 
 <!ENTITY quot   "&#34;"> 
 
-<!ENTITY % ops "configure | copy | download | execute | if | link | make | mkdir | move | ownership | package | patch | permissions | remove | search_replace | stage | textdump | unpack">
+<!ENTITY % ops "configure | copy | download | execute | if | link | make | mkdir | move | ownership | patch | permissions | remove | search_replace | stage | textdump | unpack">
 <!ENTITY % tests "test | package-built | package-version | and | or | not">
 
-<!ELEMENT alfs           ((%ops;)*)>
+<!ELEMENT alfs           ((%ops; | include | package | packagegroup)+)>
 <!ATTLIST alfs
           base           CDATA #IMPLIED
-          version        CDATA #FIXED "3.2">
+          version        CDATA #FIXED "3.2"
+	  xml:base	 CDATA #IMPLIED
+	  xmlns:xi	 CDATA #IMPLIED>
 
-<!ELEMENT and            ((%tests;)*)>
+<!ELEMENT and            ((%tests;)+)>
 
 <!ELEMENT archive        (#PCDATA)>
 
@@ -58,7 +60,7 @@
 <!ATTLIST download
           base           CDATA #IMPLIED>
 
-<!ELEMENT else           (stageinfo?, (alfs | %ops;)*)>
+<!ELEMENT else           (stageinfo?, (%ops;)*)>
 
 <!ELEMENT execute        (((param | prefix)*) | content)>
 <!ATTLIST execute
@@ -74,6 +76,10 @@
 <!ELEMENT if		 ((%tests;)+, then?, else?)
 
 <!ELEMENT item           (#PCDATA)>
+
+<!ELEMENT include        EMPTY>
+<!ATTLIST include
+          href           CDATA #REQUIRED>
 
 <!ELEMENT link           (option?, target+, name)>
 <!ATTLIST link
@@ -102,7 +108,7 @@
 
 <!ELEMENT option         (#PCDATA)>
 
-<!ELEMENT or             ((%tests;)*)>
+<!ELEMENT or             ((%tests;)+)>
 
 <!ELEMENT ownership      (option?, name+)>
 <!ATTLIST ownership
@@ -116,6 +122,8 @@
           version        CDATA #REQUIRED>
 
 <!ELEMENT packageinfo    (description?, requires*, utilizes*)>
+
+<!ELEMENT packagegroup   (package+)>
 
 <!ELEMENT para           (#PCDATA)>
 
@@ -140,7 +148,6 @@
 <!ATTLIST remove
           base           CDATA #IMPLIED>
 
-
 <!ELEMENT replace        (#PCDATA)>
 
 <!ELEMENT requires       (name, version*)>
@@ -153,7 +160,7 @@
 
 <!ELEMENT shell          (#PCDATA)>
 
-<!ELEMENT stage          (stageinfo?, (alfs | %ops;)*)>
+<!ELEMENT stage          (stageinfo?, (%ops;)+)>
 <!ATTLIST stage
           name           CDATA #IMPLIED>
           
@@ -170,7 +177,7 @@
           base           CDATA #IMPLIED
 	  mode           (append | overwrite) "overwrite">
 
-<!ELEMENT then           (stageinfo?, (alfs | %ops;)*)>
+<!ELEMENT then           (stageinfo?, (%ops;)*)>
 
 <!ELEMENT unpack         (digest?, reference*, archive)>
 <!ATTLIST unpack
@@ -189,4 +196,4 @@
 
 <!ELEMENT version        (#PCDATA)>
 <!ATTLIST version
-          condition      (eq|ne|gt|ge|lt|le) #REQUIRED>
+          condition      (eq | ne | gt | ge | lt | le) #REQUIRED>
