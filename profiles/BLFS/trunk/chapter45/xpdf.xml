@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch45.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,82 +10,75 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="xpdf" version="&xpdf-version;">
-
-        <packageinfo>
-        	<requires><name>lesstif</name></requires>
-        	<utilizes><name>ghostscript</name></utilizes>
-        </packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&xpdf-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&xpdf-directory;</base>
-		</stageinfo>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&xpdf-freetype-patch;</param>
-		</patch>
-
-		<configure>
-			<param>--prefix=/usr</param>
-			<param>--sysconfdir=/etc</param>
-			<param>--with-freetype2-includes=/usr/include/freetype2</param>
-		</configure>
-
-		<make />
-
-		<make>
-			<param>install</param>
-		</make>
-
-		<textdump>
-		         <file>/etc/xpdfrc</file>
-			 <content>
-			 =# Example .xpdfrc
-			 =displayFontT1 Times-Roman               /usr/share/ghostscript/fonts/n021003l.pfb
-			 =displayFontT1 Times-Italic              /usr/share/ghostscript/fonts/n021023l.pfb
-			 =displayFontT1 Times-Bold                /usr/share/ghostscript/fonts/n021004l.pfb
-			 =displayFontT1 Times-BoldItalic          /usr/share/ghostscript/fonts/n021024l.pfb
-			 =displayFontT1 Helvetica                 /usr/share/ghostscript/fonts/n019003l.pfb
-			 =displayFontT1 Helvetica-Oblique         /usr/share/ghostscript/fonts/n019023l.pfb
-			 =displayFontT1 Helvetica-Bold            /usr/share/ghostscript/fonts/n019004l.pfb
-			 =displayFontT1 Helvetica-BoldOblique     /usr/share/ghostscript/fonts/n019024l.pfb
-			 =displayFontT1 Courier                   /usr/share/ghostscript/fonts/n022003l.pfb
-			 =displayFontT1 Courier-Oblique           /usr/share/ghostscript/fonts/n022023l.pfb
-			 =displayFontT1 Courier-Bold              /usr/share/ghostscript/fonts/n022004l.pfb
-			 =displayFontT1 Courier-BoldOblique       /usr/share/ghostscript/fonts/n022024l.pfb
-			 =displayFontT1 Symbol                    /usr/share/ghostscript/fonts/s050000l.pfb
-			 =displayFontT1 ZapfDingbats              /usr/share/ghostscript/fonts/d050000l.pfb
-			 =
-			 =fontDir                 /usr/X11R6/lib/X11/fonts/TTF
-			 =
-			 =psFile                  "|lpr"
-			 =psPaperSize             letter
-			 =textEOL                 unix
-			 =
-			 =enableT1lib             yes
-			 =enableFreeType          yes
-			 =antialias               yes
-			 =
-			 =urlCommand              "links -g %s"			 
-			</content>
-		</textdump>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&xpdf-directory;</remove>
-	</stage>
-
-</package>
+  <package name="xpdf" version="&xpdf-version;">
+    <packageinfo>
+      <requires>
+        <name>lesstif</name>
+      </requires>
+      <utilizes>
+        <name>ghostscript</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&xpdf-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&xpdf-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&xpdf-freetype-patch;</param>
+      </patch>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--sysconfdir=/etc</param>
+        <param>--with-freetype2-includes=/usr/include/freetype2</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <textdump>
+        <file>/etc/xpdfrc</file>
+        <content>
+	  =# Example .xpdfrc
+	  =displayFontT1 Times-Roman               /usr/share/ghostscript/fonts/n021003l.pfb
+	  =displayFontT1 Times-Italic              /usr/share/ghostscript/fonts/n021023l.pfb
+	  =displayFontT1 Times-Bold                /usr/share/ghostscript/fonts/n021004l.pfb
+	  =displayFontT1 Times-BoldItalic          /usr/share/ghostscript/fonts/n021024l.pfb
+	  =displayFontT1 Helvetica                 /usr/share/ghostscript/fonts/n019003l.pfb
+	  =displayFontT1 Helvetica-Oblique         /usr/share/ghostscript/fonts/n019023l.pfb
+	  =displayFontT1 Helvetica-Bold            /usr/share/ghostscript/fonts/n019004l.pfb
+	  =displayFontT1 Helvetica-BoldOblique     /usr/share/ghostscript/fonts/n019024l.pfb
+	  =displayFontT1 Courier                   /usr/share/ghostscript/fonts/n022003l.pfb
+	  =displayFontT1 Courier-Oblique           /usr/share/ghostscript/fonts/n022023l.pfb
+	  =displayFontT1 Courier-Bold              /usr/share/ghostscript/fonts/n022004l.pfb
+	  =displayFontT1 Courier-BoldOblique       /usr/share/ghostscript/fonts/n022024l.pfb
+	  =displayFontT1 Symbol                    /usr/share/ghostscript/fonts/s050000l.pfb
+	  =displayFontT1 ZapfDingbats              /usr/share/ghostscript/fonts/d050000l.pfb
+	  =
+	  =fontDir                 /usr/X11R6/lib/X11/fonts/TTF
+	  =
+	  =psFile                  "|lpr"
+	  =psPaperSize             letter
+	  =textEOL                 unix
+	  =
+	  =enableT1lib             yes
+	  =enableFreeType          yes
+	  =antialias               yes
+	  =
+	  =urlCommand              "links -g %s"
+	</content>
+      </textdump>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&xpdf-directory;</remove>
+    </stage>
+  </package>
 </alfs>
