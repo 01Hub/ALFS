@@ -4,6 +4,7 @@
  *  Copyright (C) 2002
  *
  *  Neven Has <haski@sezampro.yu>
+ *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -55,7 +56,15 @@ typedef enum logging_method {
  * Options themselves.
  */
 
-typedef unsigned char option_pointer;
+#define BOOL 	int
+#define NUMBER 	int
+#define STRING 	char *
+
+union option_value {
+	STRING str_value;
+	BOOL bool_value;
+	NUMBER num_value;
+};
 
 enum option_type {
 	O_BOOL,
@@ -64,95 +73,86 @@ enum option_type {
 	O_COMMAND
 };
 
-typedef struct option_s {
+struct option_s {
 	char *name;
 
 	enum option_type type;
 
-	option_pointer *var;
+	union option_value value;
+	union option_value def_value;
+};
 
-	option_pointer *def_value;
-} option_s;
+#ifndef STRING_OPTION
+#define STRING_OPTION(opt_name, opt_def_value) \
+		extern STRING *opt_##opt_name;
+#endif /* STRING_OPTION */
 
+#ifndef BOOL_OPTION
+#define BOOL_OPTION(opt_name, opt_def_value) \
+		extern BOOL *opt_##opt_name;
+#endif /* BOOL_OPTION */
 
+#ifndef NUMBER_OPTION
+#define NUMBER_OPTION(opt_name, opt_def_value) \
+		extern NUMBER *opt_##opt_name;
+#endif /* NUMBER_OPTION */
 
-
-#ifdef C_FILE_
-#define EXTERN
-#else
-#define EXTERN extern
-#endif
-
-
-#undef INIT
-#undef EXTERN
-
-#ifdef C_FILE
-# define INIT(x) x
-# define EXTERN
-#else
-# define INIT(x)
-# define EXTERN extern
-#endif
+#ifndef COMMAND_OPTION
+#define COMMAND_OPTION(opt_name, opt_def_value) \
+		extern const STRING *opt_##opt_name;
+#endif /* COMMAND_OPTION */
 
 
-#define BOOL 	int
-#define NUMBER 	int
-#define STRING 	char *
-
-EXTERN BOOL opt_start_immediately INIT(= 0);
-EXTERN STRING opt_alfs_directory INIT(= NULL);
-EXTERN STRING opt_packages_directory INIT(= NULL);
-EXTERN STRING opt_default_syntax INIT(= NULL);
-EXTERN STRING opt_cursor_string INIT(= NULL);
-EXTERN NUMBER opt_indentation_size INIT(= 0);
-EXTERN NUMBER opt_sleep_after_stamp INIT(= 0);
-EXTERN BOOL opt_beep_when_done INIT(= 0);
-EXTERN BOOL opt_display_profile INIT(= 0);
-EXTERN BOOL opt_display_options_line INIT(= 0);
-EXTERN BOOL opt_display_timer INIT(= 0);
-EXTERN BOOL opt_expand_profiles INIT(= 0);
-EXTERN BOOL opt_use_relative_dirs INIT(= 0);
-EXTERN BOOL opt_log_status_window INIT(= 0);
-EXTERN STRING opt_status_logfile INIT(= NULL);
-EXTERN BOOL opt_show_system_output INIT(= 0);
-EXTERN BOOL opt_be_verbose INIT(= 0);
-EXTERN BOOL opt_display_alfs INIT(= 0);
-EXTERN BOOL opt_display_doctype INIT(= 0);
-EXTERN BOOL opt_display_comments INIT(= 0);
-EXTERN BOOL opt_run_interactive INIT(= 0);
-EXTERN NUMBER opt_jumpto_element INIT(= 0);
-EXTERN NUMBER opt_logging_method INIT(= 0);
-EXTERN BOOL opt_log_handlers INIT(= 0);
-EXTERN BOOL opt_log_backend INIT(= 0);
-EXTERN BOOL opt_stamp_packages INIT(= 0);
-EXTERN STRING opt_stamp_directory INIT(= NULL);
-EXTERN BOOL opt_display_stage_header INIT(= 0);
-EXTERN STRING opt_find_base INIT(= NULL);
-EXTERN STRING opt_find_prunes INIT(= NULL);
-EXTERN STRING opt_find_prunes_file INIT(= NULL);
-EXTERN STRING opt_profiles_directory INIT(= NULL);
-EXTERN BOOL opt_warn_if_set INIT(= 0);
-EXTERN NUMBER opt_follow_running INIT(= 0);
-EXTERN STRING opt_warn_if_set_variables INIT(= NULL);
-EXTERN BOOL opt_print_startup_help INIT(= 0);
-EXTERN NUMBER opt_windows_relation INIT(= 0);
-EXTERN NUMBER opt_status_history INIT(= 0);
-EXTERN STRING opt_editor INIT(= NULL);
-EXTERN STRING opt_bunzip2_command INIT(= NULL);
-EXTERN STRING opt_gunzip_command INIT(= NULL);
-EXTERN STRING opt_uncompress_command INIT(= NULL);
-EXTERN STRING opt_untar_command INIT(= NULL);
-EXTERN STRING opt_unpax_command INIT(= NULL);
-EXTERN STRING opt_uncpio_command INIT(= NULL);
-EXTERN STRING opt_unzip_command INIT(= NULL);
+STRING_OPTION(alfs_directory,"")
+BOOL_OPTION(start_immediately,0)
+STRING_OPTION(packages_directory,"packages")
+STRING_OPTION(default_syntax,"3.0")
+STRING_OPTION(cursor,"->")
+NUMBER_OPTION(indentation_size,4)
+NUMBER_OPTION(sleep_after_stamp,1)
+BOOL_OPTION(beep_when_done,0)
+BOOL_OPTION(display_profile,1)
+BOOL_OPTION(display_options_line,1)
+NUMBER_OPTION(display_timer,TIMER_TOTAL)
+BOOL_OPTION(expand_profiles,0)
+BOOL_OPTION(use_relative_dirs,0)
+BOOL_OPTION(log_status_window,0)
+STRING_OPTION(status_logfile,"log_file")
+BOOL_OPTION(show_system_output,1)
+BOOL_OPTION(be_verbose,0)
+BOOL_OPTION(display_alfs,0)
+BOOL_OPTION(display_doctype,0)
+BOOL_OPTION(display_comments,0)
+BOOL_OPTION(run_interactive,1)
+NUMBER_OPTION(jumpto_element,JUMP_TO_RUNNING)
+NUMBER_OPTION(logging_method,LOG_OFF)
+BOOL_OPTION(log_handlers,1)
+BOOL_OPTION(log_backend,1)
+BOOL_OPTION(stamp_packages,0)
+STRING_OPTION(stamp_directory,"stamps")
+BOOL_OPTION(display_stage_header,0)
+STRING_OPTION(find_base,"/")
+STRING_OPTION(find_prunes,"")
+STRING_OPTION(find_prunes_file,"")
+STRING_OPTION(profiles_directory,"/")
+BOOL_OPTION(warn_if_set,0)
+BOOL_OPTION(follow_running,0)
+STRING_OPTION(warn_if_set_variables,"CPPFLAGS CXXFLAGS CFLAGS LDFLAGS")
+BOOL_OPTION(print_startup_help,1)
+NUMBER_OPTION(windows_relation,50)
+NUMBER_OPTION(status_history,500)
+STRING_OPTION(editor,"")
+COMMAND_OPTION(bunzip2_command,"bunzip2 -dc %s")
+COMMAND_OPTION(gunzip_command,"zcat %s")
+COMMAND_OPTION(uncompress_command,"zcat %s")
+COMMAND_OPTION(untar_command,"tar xv")
+COMMAND_OPTION(unpax_command,"pax -rv")
+COMMAND_OPTION(uncpio_command,"cpio -idv")
+COMMAND_OPTION(unzip_command,"unzip %s")
 
 
-void set_option(option_pointer **var_pointer, NUMBER number, char *string);
-#define Set_string_option(a,b) set_option((option_pointer **)&a, 0, b);
-
+void set_string_option(STRING *var, const STRING value);
 void set_options_to_defaults(void);
-void set_option_to_default(option_pointer **var_pointer);
 
 char *alloc_real_status_logfile_name(void);
 char *alloc_real_packages_directory_name(void);

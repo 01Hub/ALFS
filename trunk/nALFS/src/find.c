@@ -43,6 +43,7 @@
 #include "nalfs-core.h"
 #include "win.h"
 #include "logging.h"
+#include "options.h"
 
 #include "find.h"
 

@@ -91,7 +91,7 @@ void read_env_variables()
 {
 	char *dir = alloc_alfs_directory_name();
 
-	Set_string_option(opt_alfs_directory, dir);
+	set_string_option(opt_alfs_directory, dir);
 
 	xfree(dir);
 }
@@ -363,16 +363,16 @@ static INLINE void print_help_and_exit(const char *prog)
 "    --help                        Display this help.\n"
 "\n",
 	prog,
-	opt_display_alfs ? "on" : "off",
-	opt_display_doctype ? "on" : "off",
-	opt_display_comments ? "on" : "off",
-	opt_show_system_output ? "on" : "off",
-	opt_log_status_window ? "on" : "off",
+	*opt_display_alfs ? "on" : "off",
+	*opt_display_doctype ? "on" : "off",
+	*opt_display_comments ? "on" : "off",
+	*opt_show_system_output ? "on" : "off",
+	*opt_log_status_window ? "on" : "off",
 	file,
-	opt_log_backend ? "on" : "off",
-	opt_log_handlers ? "on" : "off",
-	opt_run_interactive ? "on" : "off",
-	opt_be_verbose ? "on" : "off");
+	*opt_log_backend ? "on" : "off",
+	*opt_log_handlers ? "on" : "off",
+	*opt_run_interactive ? "on" : "off",
+        *opt_be_verbose ? "on" : "off");
 
 	xfree(file);
 
@@ -425,58 +425,58 @@ void read_command_line_options(int *argc, char ***argv)
 	while ((i = getopt_long(*argc, *argv, "lPfhisBSL:b:p:v", long_opts, NULL)) != -1) {
 		switch (i) {
 			case LONG_OPTION_DISPLAY_ALFS:
-				Toggle(opt_display_alfs);
+				Toggle(*opt_display_alfs);
 				break;
 			case LONG_OPTION_DISPLAY_DOCTYPE:
-				Toggle(opt_display_doctype);
+				Toggle(*opt_display_doctype);
 				break;
 			case LONG_OPTION_DISPLAY_COMMENTS:
-				Toggle(opt_display_comments);
+				Toggle(*opt_display_comments);
 				break;
 			case LONG_OPTION_SYSTEM_OUTPUT:
-				Toggle(opt_show_system_output);
+				Toggle(*opt_show_system_output);
 				break;
 
 			case LONG_OPTION_TIMER_SHOWS_CURRENT:
-				opt_display_timer = TIMER_CURRENT;
+				*opt_display_timer = TIMER_CURRENT;
 				break;
 			case LONG_OPTION_TIMER_SHOWS_TOTAL:
-				opt_display_timer = TIMER_TOTAL;
+				*opt_display_timer = TIMER_TOTAL;
 				break;
 
 			case 'l':
-				Toggle(opt_log_status_window);
+				Toggle(*opt_log_status_window);
 				break;
 			case 'B':
-				Toggle(opt_log_backend);
+				Toggle(*opt_log_backend);
 				break;
 			case 'f':
-				opt_logging_method = LOG_USING_ONE_FIND;
+				*opt_logging_method = LOG_USING_ONE_FIND;
 				break;
 			case 'h':
-				Toggle(opt_log_handlers);
+				Toggle(*opt_log_handlers);
 				break;
 
 			case 'i':
-				Toggle(opt_run_interactive);
+				Toggle(*opt_run_interactive);
 				break;
 			case 's':
-				opt_start_immediately = 1;
+				*opt_start_immediately = 1;
 				break;
 
 			case 'L':
-				Set_string_option(opt_status_logfile, optarg);
+				set_string_option(opt_status_logfile, optarg);
 				break;
 
 			case 'b':
-				Set_string_option(opt_find_base, optarg);
+				set_string_option(opt_find_base, optarg);
 				break;
 			case 'p':
-				Set_string_option(opt_find_prunes, optarg);
+				set_string_option(opt_find_prunes, optarg);
 				break;
 
 			case 'v':
-				Toggle(opt_be_verbose);
+				Toggle(*opt_be_verbose);
 				break;
 
 			case LONG_OPTION_VERSION:
@@ -485,7 +485,7 @@ void read_command_line_options(int *argc, char ***argv)
 
 			case 'S':
 			case LONG_OPTION_GENERATE_STAMP:
-				Toggle(opt_stamp_packages);
+				Toggle(*opt_stamp_packages);
 				break;
 
 			case LONG_OPTION_HELP:
@@ -543,7 +543,7 @@ static INLINE void create_alfs_directory(void)
 
 	do {
 		printf("Do you want to create \"%s\" now (N/y) ? ",
-			opt_alfs_directory);
+			*opt_alfs_directory);
 		fflush(stdout);
 
 	} while (fgets(input, sizeof input, stdin) == NULL);
@@ -554,9 +554,9 @@ static INLINE void create_alfs_directory(void)
 	}
 
 	if (input[0] == 'y' || input[0] == 'Y') {
-		do_create_directory(opt_alfs_directory);
+		do_create_directory(*opt_alfs_directory);
 
-		printf("Directory \"%s\" created.\n\n", opt_alfs_directory);
+		printf("Directory \"%s\" created.\n\n", *opt_alfs_directory);
 		printf("Press enter to continue. ");
 
 		getchar();
@@ -610,7 +610,7 @@ void init_needed_directories(void)
 	char *pdir;
 
 
-	switch (check_directory(opt_alfs_directory)) {
+	switch (check_directory(*opt_alfs_directory)) {
 		case 0: /* Looking good. */
 			break;
 

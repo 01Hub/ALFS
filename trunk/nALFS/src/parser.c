@@ -36,6 +36,8 @@
 #include "win.h"
 #include "handlers.h"
 #include "nalfs-core.h"
+#include "options.h"
+
 #ifdef PARSE_WITH_LIBXML_SAX
 #include "libXML-SAX.h"
 #else

@@ -37,6 +37,7 @@
 #include "utility.h"
 #include "win.h"
 #include "nalfs-core.h"
+#include "options.h"
 
 #include "handlers.h"
 #include "ltdl/ltdl.h"

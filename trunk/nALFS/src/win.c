@@ -111,7 +111,7 @@ static int main_window_lines(void)
 	int lines_with_offset;
 
 
-	lines = (opt_windows_relation * (windows.max_lines - 3)) / 100;
+	lines = (*opt_windows_relation * (windows.max_lines - 3)) / 100;
 
 	lines_with_offset = lines + windows.middle_line_offset;
 
@@ -192,7 +192,7 @@ static INLINE window_s *create_status_window(void)
 
 	w->ref = refresh_status;
 	w->lines = windows.max_lines - 3 - main_lines;
-	w->name = newpad(opt_status_history + w->lines, windows.max_cols - 2);
+	w->name = newpad(*opt_status_history + w->lines, windows.max_cols - 2);
 
 	if (w->name == NULL) {
 		Fatal_error("newpad() failed");
@@ -200,7 +200,7 @@ static INLINE window_s *create_status_window(void)
 
 	set_default_window_options(w);
 
-	Xwmove(w->name, opt_status_history - 1, 0);
+	Xwmove(w->name, *opt_status_history - 1, 0);
 
 	return w;
 }
@@ -344,7 +344,7 @@ int tmp_window_driver(int lines, int *top, int *cursor)
 
 	if (cursor) {
 		move_cursor(top, cursor, lines, ' ');
-		Xmvwaddstr(windows.main->name, *cursor, 0, opt_cursor_string);
+		Xmvwaddstr(windows.main->name, *cursor, 0, *opt_cursor);
 	}
 
 	windows.main->ref(*top);
@@ -396,12 +396,12 @@ int tmp_window_driver(int lines, int *top, int *cursor)
 
 		if (cursor) {
 			size_t i;
-			for (i = 0; i < strlen(opt_cursor_string) + 1; ++i)
+			for (i = 0; i < strlen(*opt_cursor) + 1; ++i)
 				Xmvwaddch(
 				windows.main->name, old_cursor, i, ' ');
 
 			Xmvwaddstr(
-			windows.main->name, *cursor, 0, opt_cursor_string);
+			windows.main->name, *cursor, 0, *opt_cursor);
 		}
 
 		windows.main->ref(*top);

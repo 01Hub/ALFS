@@ -45,6 +45,7 @@
 #include "parser.h"
 #include "nalfs-core.h"
 #include "backend.h"
+#include "options.h"
 
 extern char **environ;
 
@@ -375,7 +376,7 @@ static int stage_main(element_s *el)
 	element_s *stageinfo;
        
 
-	if (opt_be_verbose) {
+	if (*opt_be_verbose) {
 		if (stage_name) {
 			Nprint_h("Entering new stage: %s", stage_name);
 		} else {
@@ -393,7 +394,7 @@ static int stage_main(element_s *el)
 
 	log_end_time(el, status);
 
-	if (opt_be_verbose) {
+	if (*opt_be_verbose) {
 		if (stage_name) {
 			Nprint_h("Exiting stage: %s", stage_name);
 		} else {
