@@ -26,6 +26,9 @@
         <param>--without-debug</param>
       </configure>
       <make>
+        <param>sources</param>
+      </make>
+      <make>
         <param>&jlevel;</param>
       </make>
       <make>
