@@ -43,7 +43,7 @@ get_dtd() {
     cp ../DTD/${1}-${DTD_VERSION}.dtd doc
 }
 
-while getopts hd:s:h:u:p: param; do
+while getopts ?d:s:h:u:p: param; do
     case $param in
 	d)
 	    mkdir -p download
@@ -65,7 +65,7 @@ while getopts hd:s:h:u:p: param; do
 	u)
 	    mkdir -p download
 	    DOC_VERSION=${OPTARG}
-	    echo Getting ${DOC_VERSION} version of user's guide...
+	    echo "Getting ${DOC_VERSION} version of user's guide..."
 	    DOC_URL_BASE=http://www.linuxfromscratch.org/alfs/downloads/guides
 	    get_text_doc nALFS-USERS-GUIDE users_guide
 	    get_html_doc nALFS-USERS-GUIDE users_guide
@@ -75,7 +75,7 @@ while getopts hd:s:h:u:p: param; do
 	h)
 	    mkdir -p download
 	    DOC_VERSION=${OPTARG}
-	    echo Getting ${DOC_VERSION} version of hacker's guide...
+	    echo "Getting ${DOC_VERSION} version of hacker's guide..."
 	    DOC_URL_BASE=http://www.linuxfromscratch.org/alfs/downloads/guides
 	    get_text_doc nALFS-HACKERS-GUIDE hackers_guide
 	    get_html_doc nALFS-HACKERS-GUIDE hackers_guide
