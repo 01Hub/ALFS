@@ -68,11 +68,11 @@
 
 <!ELEMENT find           (#PCDATA)>
 
-<!ELEMENT item           (#PCDATA)>
-
 <!ELEMENT include        EMPTY>
 <!ATTLIST include
           href           CDATA #REQUIRED>
+
+<!ELEMENT item           (#PCDATA)>
 
 <!ELEMENT link           (option?, target+, name)>
 <!ATTLIST link
