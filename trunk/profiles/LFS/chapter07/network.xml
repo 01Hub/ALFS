@@ -16,4 +16,15 @@
 			=BROADCAST=&broadcast;
 		</content>
 	</textdump>
+
+	<textdump>
+		<file>/etc/resolv.conf</file>
+		<content>
+			=# Begin /etc/resolv.conf
+			=
+			=nameserver &nameserver-ip;
+			=
+			=# End /etc/resolv.conf
+		</content>
+	</textdump>
 </stage>
