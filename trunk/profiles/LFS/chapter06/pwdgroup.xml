@@ -1,4 +1,4 @@
-<stage name="Creating the passwd and group files.">
+<stage name="Creating the passwd, group and log files.">
 	<textdump base="/etc">
 		<file>passwd</file>
 		<content>=root:x:0:0:root:/root:/bin/bash</content>
@@ -21,4 +21,17 @@
 			=audio:x:11:
 		</content>
 	</textdump>
+
+	<execute command="touch">
+		<param>/var/run/utmp</param>
+		<param>/var/log/{btmp,lastlog,wtmp}</param>
+	</execute>
+		
+	<permissions base="/var" mode="644">
+		<name>run/utmp</name>
+		<name>log/btmp</name>
+		<name>log/lastlog</name>
+		<name>log/wtmp</name>
+	</permissions>
+
 </stage>

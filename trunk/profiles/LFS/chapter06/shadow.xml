@@ -18,18 +18,6 @@
 		</stageinfo>
 
 		<execute command="touch">
-			<param>/var/run/utmp</param>
-			<param>/var/log/{btmp,lastlog,wtmp}</param>
-		</execute>
-		
-		<permissions base="/var" mode="644">
-			<name>run/utmp</name>
-			<name>log/btmp</name>
-			<name>log/lastlog</name>
-			<name>log/wtmp</name>
-		</permissions>
-
-		<execute command="touch">
 			<param>/usr/bin/passwd</param>
 		</execute>
 
