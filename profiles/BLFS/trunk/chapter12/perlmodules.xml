@@ -12,21 +12,31 @@
 ]>
 <alfs xmlns:xi="http://www.w3.org/2001/XInclude">
   <stage name="Perl modules">
-    <xi:include href="perlmods/Module-Info.xml" />
-    <xi:include href="perlmods/SGMLSpm.xml" />
+    <xi:include href="perlmods/Gtk-Perl.xml" />
     <xi:include href="perlmods/XML-Writer.xml" />
     <xi:include href="perlmods/XML-Parser.xml" />
-    <xi:include href="perlmods/Gtk-Perl.xml" />
+    <xi:include href="perlmods/SGMLSpm.xml" />
     <xi:include href="perlmods/Tk.xml" />
-    <xi:include href="perlmods/Digest-SHA1.xml" />
-    <xi:include href="perlmods/Digest-HMAC.xml" />
     <xi:include href="perlmods/Net-DNS.xml" />
-    <xi:include href="perlmods/Filter.xml" />
-    <xi:include href="perlmods/Parse-RecDescent.xml" />
-    <xi:include href="perlmods/Inline.xml" />
-    <xi:include href="perlmods/Term-Readline-Gnu.xml" />
-    <xi:include href="perlmods/ExtUtils-F77.xml" />
-    <xi:include href="perlmods/Astro-FITS-Header.xml" />
-    <xi:include href="perlmods/PDL.xml" />
+    <xi:include href="perlmods/Digest-HMAC.xml" />
+    <xi:include href="perlmods/Digest-SHA1.xml" />
+    <xi:include href="perlmods/libwww-perl.xml" />
+    <xi:include href="perlmods/URI.xml" />
+    <xi:include href="perlmods/Business-ISBN.xml" />
+    <xi:include href="perlmods/Business-ISBN-Data.xml" />
+    <xi:include href="perlmods/Test-Pod.xml" />
+    <xi:include href="perlmods/Pod-Simple.xml" />
+    <xi:include href="perlmods/Pod-Escapes.xml" />
+    <xi:include href="perlmods/Test-Builder-Tester.xml" />
+    <xi:include href="perlmods/Test-Prereq.xml" />
+    <xi:include href="perlmods/Module-Info.xml" />
+    <xi:include href="perlmods/Module-CoreList.xml" />
+    <xi:include href="perlmods/HTML-Parser.xml" />
+    <xi:include href="perlmods/HTML-Tagset.xml" />
+    <xi:include href="perlmods/Compress-Zlib.xml" />
+    <xi:include href="perlmods/Crypt-SSLeay.xml" />
+    <xi:include href="perlmods/DateManip.xml" />
+    <xi:include href="perlmods/Finance-Quote.xml" />
+    <xi:include href="perlmods/HTML-TableExtract.xml" />
   </stage>
 </alfs>

@@ -12,6 +12,14 @@
 ]>
 <alfs>
 <package name="Test-Prereq" version="&Test-Prereq-version;">
+  <packageinfo>
+    <requires>
+      <name>Module-Info</name>
+    </requires>
+    <requires>
+      <name>Module-CoreList</name>
+    </requires>
+  </packageinfo>
   <stage name="Unpacking.">
     <unpack>
       <archive>&packages_dir;/&Test-Prereq-package;</archive>

@@ -12,6 +12,11 @@
 ]>
 <alfs>
 <package name="HTML-Parser" version="&HTML-Parser-version;">
+  <packageinfo>
+    <requires>
+      <name>HTML-Tagset</name>
+    </requires>
+  </packageinfo>
   <stage name="Unpacking.">
     <unpack>
       <archive>&packages_dir;/&HTML-Parser-package;</archive>

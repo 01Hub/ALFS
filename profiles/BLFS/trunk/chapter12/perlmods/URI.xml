@@ -12,6 +12,11 @@
 ]>
 <alfs>
 <package name="URI" version="&URI-version;">
+  <packageinfo>
+    <requires>
+      <name>Business-ISBN</name>
+    </requires>
+  </packageinfo>
   <stage name="Unpacking.">
     <unpack>
       <archive>&packages_dir;/&URI-package;</archive>
