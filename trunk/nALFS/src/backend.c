@@ -49,10 +49,15 @@
 static volatile int pause_now = 0;
 static volatile int got_sigchld = 0;
 
-static int stdout_pipe[2];
-static int stderr_pipe[2];
-static FILE *stdout_stream;
-static FILE *stderr_stream;
+struct child_output {
+	int pipe[2];
+	char *buf;
+	size_t size;
+	size_t used;
+};
+
+struct child_output child_stdout;
+struct child_output child_stderr;
 
 static void got_SIGCHLD(int sig)
 {
@@ -180,17 +185,42 @@ static void nprint_backend(msg_id_e mid, const char *format, ...)
 	}
 }
 
-static INLINE void wait_for_child_completion(void)
+static void handle_child_output(struct child_output * const child)
 {
-	char buf[MAX_DATA_MSG_LEN - 4];
+	ssize_t input;
+	char *line_end;
+
+	input = read(child->pipe[0], &child->buf[child->used],
+		     child->size - child->used);
+
+	if (input < 0)
+		fatal_backend_error("read() from child failed: %s",
+				    strerror(errno));
+
+	if (input == 0)
+		return;
+
+	child->used += input;
+	while ((line_end = strchr(&child->buf[0], '\n')) != NULL) {
+		size_t line_length = (line_end - &child->buf[0]) + 1;
+
+		*line_end = '\0';
+		Nprint_sys("%s", &child->buf[0]);
+		memmove(&child->buf[0], ++line_end, child->used - line_length);
+		child->used -= line_length;
+	}
+}
+
+static void wait_for_child_completion(void)
+{
 	struct pollfd pfd[3];
 	int status;
 	int poll_timeout = -1;
 
-	pfd[0].fd = stdout_pipe[0];
+	pfd[0].fd = child_stdout.pipe[0];
 	pfd[0].events = POLLIN | POLLPRI;
 
-	pfd[1].fd = stderr_pipe[0];
+	pfd[1].fd = child_stderr.pipe[0];
 	pfd[1].events = POLLIN | POLLPRI;
 
 	pfd[2].fd = comm_get_socket(BACKEND_CTRL_SOCK);
@@ -216,21 +246,24 @@ static INLINE void wait_for_child_completion(void)
 			/* will only get here if timeout is zero, and no input is ready */
 			break;
 		}
-		if (pfd[0].revents & (POLLIN | POLLPRI)) {
-			if (fgets(buf, (int) sizeof buf, stdout_stream) != NULL) {
-				remove_new_line(buf);
-				Nprint_sys("%s", buf);
-			}
-		}
-		if (pfd[1].revents & (POLLIN | POLLPRI)) {
-			if (fgets(buf, (int) sizeof buf, stderr_stream) != NULL) {
-				remove_new_line(buf);
-				Nprint_sys("%s", buf);
-			}
-		}
+		if (pfd[0].revents & (POLLIN | POLLPRI))
+			handle_child_output(&child_stdout);
+
+		if (pfd[1].revents & (POLLIN | POLLPRI))
+			handle_child_output(&child_stderr);
+
 		if (pfd[2].revents & (POLLIN | POLLPRI)) {
 			handle_ctrl_msg();
 		}
+	}
+
+	if (child_stdout.used > 0) {
+		child_stdout.buf[child_stdout.used] = '\0';
+		Nprint_sys("%s", &child_stdout.buf[0]);
+	}
+	if (child_stderr.used > 0) {
+		child_stderr.buf[child_stderr.used] = '\0';
+		Nprint_sys("%s", &child_stderr.buf[0]);
 	}
 }
 
@@ -248,10 +281,10 @@ int execute_direct_command(const char *command, char *const argv[])
 		fatal_backend_error("fork() failed: %s", strerror(errno));
 
 	} else if (command_pid == 0) { /* Child. */
-		if (dup2(stdout_pipe[1], STDOUT_FILENO) == -1)
+		if (dup2(child_stdout.pipe[1], STDOUT_FILENO) == -1)
 			fatal_backend_error("dup2() failed: %s", strerror(errno));
 
-		if (dup2(stdout_pipe[1], STDERR_FILENO) == -1)
+		if (dup2(child_stdout.pipe[1], STDERR_FILENO) == -1)
 			fatal_backend_error("dup2() failed: %s", strerror(errno));
 
 		execvp(command, argv);
@@ -453,30 +486,28 @@ void start_backend(element_s *first)
 		Fatal_error("enabling SIGCHLD failed");
 	}
 
-	if (pipe(stdout_pipe)) {
+	if (pipe(&child_stdout.pipe[0])) {
 		fatal_backend_error("pipe() for stdout failed: %s", strerror(errno));
 	}
 
-	if (pipe(stderr_pipe)) {
+	child_stdout.buf = xmalloc(MAX_DATA_MSG_LEN - 4);
+	child_stdout.size = MAX_DATA_MSG_LEN - 4;
+	child_stdout.used = 0;
+
+	if (pipe(&child_stderr.pipe[0])) {
 		fatal_backend_error("pipe() for stderr failed: %s", strerror(errno));
 	}
 
-	if ((stdout_stream = fdopen(stdout_pipe[0], "r")) == NULL) {
-		fatal_backend_error("fdopen() for stdout failed: %s", strerror(errno));
-	}
-
-	if ((stderr_stream = fdopen(stderr_pipe[0], "r")) == NULL) {
-		fatal_backend_error("fdopen() for stdout failed: %s", strerror(errno));
-	}
+	child_stderr.buf = xmalloc(MAX_DATA_MSG_LEN - 4);
+	child_stderr.size = MAX_DATA_MSG_LEN - 4;
+	child_stderr.used = 0;
 
 	result = execute_children(first);
 
-	(void) fclose(stderr_stream);
-	(void) fclose(stdout_stream);
-	(void) close(stdout_pipe[1]);
-	(void) close(stdout_pipe[0]);
-	(void) close(stderr_pipe[1]);
-	(void) close(stderr_pipe[0]);
+	(void) close(child_stdout.pipe[1]);
+	(void) close(child_stdout.pipe[0]);
+	(void) close(child_stderr.pipe[1]);
+	(void) close(child_stderr.pipe[0]);
 
 	exit(result);
 }
