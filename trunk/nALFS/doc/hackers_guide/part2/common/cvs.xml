@@ -23,6 +23,31 @@ effect. Be warned though, that if you manually edit
 <filename>Makefile.am</filename> is not stored in the <acronym>CVS</acronym>
 repository.</para>
 
+<para>If you add any C source files to the tree, you will need to rerun the
+<filename>bootstrap</filename> script to get them included in your build. If
+you add header files, it is not necessary to rerun the
+<filename>bootstrap</filename> script unless you plan on using &quot;make
+dist&quot; from that same tree, in which case those added headers would not
+get included into the tarball.</para>
+
+<para>All other types of files fall into two categories:</para>
+
+<blockquote>those that should be present <emphasis>only</emphasis> in the CVS
+repository</blockquote>
+
+<para>Nothing needs to be done for these files, other than the relevant
+&quot;cvs add&quot; commands.</para>
+
+<blockquote>those that should be added to the distribution tarball</blockquote>
+
+<para>The <filename>bootstrap</filename> script will need to be edited,
+specifically the line that sets <filename>EXTRA_DIST</filename> near the
+beginning of the script. Add the path(s) to the new files to this line, or add
+an additional line starting with &quot;<filename>EXTRA_DIST
++=</filename>&quot; (standard <acronym>GNU</acronym> makefile syntax). If the
+files are not listed on this line, they will not be included in the tarball
+created by &quot;make dist&quot;.</para>
+
 </sect2>
 
 <sect2>
