@@ -47,3 +47,5 @@ or
 4) Execute sh ./runit as root. Please note that if you have installed
    nALFS into a location other than /usr/local/bin you will need to edit
    runit to point to your copy of nALFS.
+
+Testing.
