@@ -9,7 +9,7 @@
 ]>
 <alfs>
   <stage name="Making the LFS System Bootable">
-    <execute command="/sbin/grub --batch">
+    <execute command="grub --batch">
       <prefix>echo -e "root (&grub-root;)\nsetup (&grub-install-location;)\nquit" | </prefix>
       <param>1&gt;/dev/null</param>
       <param>2&gt;/dev/null</param>
