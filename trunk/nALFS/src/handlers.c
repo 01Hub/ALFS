@@ -39,7 +39,7 @@
 #include "nalfs-core.h"
 
 #include "handlers.h"
-#include "ltdl.h"
+#include "ltdl/ltdl.h"
 
 
 static struct handlers {

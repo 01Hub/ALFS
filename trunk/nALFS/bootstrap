@@ -57,12 +57,18 @@ endif
 
 AM_CPPFLAGS = -I\$(srcdir)/src/include -I\$(srcdir)/src
 AM_CFLAGS = -W -Wall -Wshadow -Winline
+
+noinst_LTLIBRARIES = src/ltdl/ltdl.la
+src_ltdl_ltdl_la_LDFLAGS = -module -avoid-version
+src_ltdl_ltdl_la_SOURCES = src/ltdl/ltdl.c src/ltdl/ltdl.h
+src_ltdl_ltdl_la_CFLAGS =
+
 bin_PROGRAMS = src/nALFS
 bin_SCRIPTS = @NALFS_CONFIG@
 src_nALFS_LDFLAGS = -dlopen self
 src_nALFS_CPPFLAGS = \$(XML2_INCLUDES) \$(AM_CPPFLAGS)
 src_nALFS_LDADD = \$(XML2_LIB) \$(CURL_LIB) \$(SSL_LIB) src/lib/libnALFS.la
-src_nALFS_LDADD += \$(LIBADD_DL) \$(MAIN_LIBS)
+src_nALFS_LDADD += \$(LIBADD_DL) \$(MAIN_LIBS) src/ltdl/ltdl.la
 if STATIC_BUILD
 src_nALFS_LDFLAGS += -all-static
 endif

@@ -26,7 +26,7 @@
 
 
 #include "parser.h"
-#include "ltdl.h"
+#include "ltdl/ltdl.h"
 
 
 typedef enum handler_type_e {
