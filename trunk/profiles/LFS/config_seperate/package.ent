@@ -321,8 +321,8 @@
 <!ENTITY sysvinit-package "sysvinit-&sysvinit-version;.tar.gz">
 <!ENTITY sysvinit-directory "sysvinit-&sysvinit-version;">
 
-<!ENTITY sysvinit-proclen-patch-md5 "5291e1eea513b59cdb66797638f7be31"
-<!ENTITY sysvinit-proclen-patch "sysvinit-&sysvinit-version;-proclen-1.patch"
+<!ENTITY sysvinit-proclen-patch-md5 "5291e1eea513b59cdb66797638f7be31">
+<!ENTITY sysvinit-proclen-patch "sysvinit-&sysvinit-version;-proclen-1.patch">
 
 <!ENTITY tar-md5 "f1932e0fbd4641885bfdcc75495c91b7">
 <!ENTITY tar-version "1.14">
