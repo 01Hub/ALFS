@@ -50,14 +50,19 @@ processing the commands of the stage.</para>
 <sect2>
 <title>Examples</title>
 
-<screen><userinput>&lt;stage&gt;
+<screen><userinput>&lt;stage name=&quot;Install gzip&quot;&gt;
 	&lt;stageinfo&gt;
+		&lt;root&gt;/mnt/lfs&lt;/root&gt;
+		&lt;user&gt;lfs&lt;/user&gt;
+		&lt;environment&gt;PATH=/bin:/sbin&lt;/environment&gt;
 		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
 	&lt;/stageinfo&gt;
 
-	&lt;configure /&gt;
+	&lt;configure&gt;
+	&lt;/configure&gt;
 
-	&lt;make /&gt;
+	&lt;make&gt;
+	&lt;/make&gt;
 
 	&lt;make&gt;
 		&lt;param&gt;install&lt;/param&gt;
@@ -67,14 +72,20 @@ processing the commands of the stage.</para>
 <para>The equivalent bash script is&nbsp;:</para>
 
 <screen><userinput>echo Executing configure
+su - lfs
+export PATH=/bin:/sbin
 cd /usr/src/gzip.1.2.4a
 <command>./configure</command>
 
 echo Executing make
+su - lfs
+export PATH=/bin:/sbin
 cd /usr/src/gzip.1.2.4a
 <command>make</command>
 
 echo Executing make
+su - lfs
+export PATH=/bin:/sbin
 cd /usr/src/gzip.1.2.4a
 <command>make install</command>
 

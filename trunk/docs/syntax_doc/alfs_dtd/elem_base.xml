@@ -13,15 +13,7 @@
 <xref linkend="elem_stageinfo"/>
 </para>
 
-</sect2>
-
-<sect2>
-<title>Description</title>
-
-<para>The element <filename>base</filename> is used to specify the base
-directory which will be used by all the commands in the stage (inherited),
-unless another base is specified at the level of the command as an attribute.
-See also&nbsp;:&nbsp;&nbsp;
+<para>This elements occurs as an attribute in the elements&nbsp;:&nbsp;&nbsp;
 <xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -40,10 +32,23 @@ See also&nbsp;:&nbsp;&nbsp;
 </sect2>
 
 <sect2>
+<title>Description</title>
+
+<para>The element <filename>base</filename> is used to specify the base
+directory which will be used by all the commands in the stage (inherited),
+unless another base is specified at the level of the command as an
+attribute.</para>
+
+</sect2>
+
+<sect2>
 <title>Examples</title>
 
-<screen><userinput>&lt;stage&gt;
+<screen><userinput>&lt;stage name=&quot;Install gzip&quot;&gt;
 	&lt;stageinfo&gt;
+		&lt;root&gt;/mnt/lfs&lt;/root&gt;
+		&lt;user&gt;lfs&lt;/user&gt;
+		&lt;environment&gt;PATH=/bin:/sbin&lt;/environment&gt;
 		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
 	&lt;/stageinfo&gt;
 
@@ -54,22 +59,28 @@ See also&nbsp;:&nbsp;&nbsp;
 	&lt;/make&gt;
 
 	&lt;make&gt;
-        	&lt;param&gt;install&lt;/param&gt;
+		&lt;param&gt;install&lt;/param&gt;
 	&lt;/make&gt;
 &lt;/stage&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Entering Stage
+<screen><userinput>echo Executing configure
+su - lfs
+export PATH=/bin:/sbin
 cd /usr/src/gzip.1.2.4a
-
-echo Executing configure
 <command>./configure</command>
 
 echo Executing make
+su - lfs
+export PATH=/bin:/sbin
+cd /usr/src/gzip.1.2.4a
 <command>make</command>
 
 echo Executing make
+su - lfs
+export PATH=/bin:/sbin
+cd /usr/src/gzip.1.2.4a
 <command>make install</command>
 
 echo Exiting stage</userinput></screen>

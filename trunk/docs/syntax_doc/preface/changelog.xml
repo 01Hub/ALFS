@@ -6,6 +6,9 @@
 
 <itemizedlist>
 
+<listitem><para>April 2nd, 2004 [jwrober]: Cleaned up elem_alfs, elem_base,
+and part of elem_stageinfo.</para></listitem>
+
 <listitem><para>April 2nd, 2004 [jwrober]: Added more formatting to the XML
 DTD intro page to match conventions.</para></listitem>
 
