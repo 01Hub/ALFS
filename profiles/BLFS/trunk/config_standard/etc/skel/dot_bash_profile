@@ -28,7 +28,7 @@ if [ -f "$HOME/.bashrc" ] ; then
 fi
 
 if [ -d "$HOME/bin" ] ; then
-  append $HOME/bin      
+  	append $HOME/bin      
 fi
 
 unset append
