@@ -290,6 +290,30 @@
 
 <!ENTITY python-patch     "Python-2.3.2-gdbm-2.patch">
 
+<!ENTITY perlmodules-pdl-version   "2.4.0">
+<!ENTITY perlmodules-pdl-package   "PDL-2.4.0.tar.gz">
+<!ENTITY perlmodules-pdl-directory "PDL-2.4.0">
+
+<!ENTITY perlmodules-astro-version   "2.7.1">
+<!ENTITY perlmodules-astro-package   "Astro-FITS-Header-2.7.1.tar.gz">
+<!ENTITY perlmodules-astro-directory "Astro-FITS-Header-2.7.1">
+
+<!ENTITY perlmodules-gtk-version   "0.7008">
+<!ENTITY perlmodules-gtk-package   "Gtk-Perl-0.7008.tar.gz">
+<!ENTITY perlmodules-gtk-directory "Gtk-Perl-0.7008">
+
+<!ENTITY perlmodules-xmlwriter-version   "0.4">
+<!ENTITY perlmodules-xmlwriter-package   "XML-Writer-0.4.tar.gz">
+<!ENTITY perlmodules-xmlwriter-directory "XML-Writer-0.4">
+
+<!ENTITY perlmodules-xmlparser-version   "2.31">
+<!ENTITY perlmodules-xmlparser-package   "XML-Parser-2.31.tar.gz">
+<!ENTITY perlmodules-xmlparser-directory "XML-Parser-2.31">
+
+<!ENTITY perlmodules-recdescent-version   "1.94">
+<!ENTITY perlmodules-recdescent-package   "Parse-RecDescent-1.94.tar.gz">
+<!ENTITY perlmodules-recdescent-directory "Parse-RecDescent-1.94">
+
 <!ENTITY librep-version   "0.16.2">
 <!ENTITY librep-package   "librep-0.16.2.tar.gz">
 <!ENTITY librep-directory "librep-0.16.2">
@@ -313,7 +337,8 @@
 <!ENTITY gcc-full-package   "gcc-3.3.1.tar.bz2">
 <!ENTITY gcc-full-directory "gcc-3.3.1">
 
-<!ENTITY gcc-full-patch     "gcc-3.3.1-no_fixincludes-2.patch">
+<!ENTITY gcc-full-patch1    "gcc-3.3.1-no_fixincludes-2.patch">
+<!ENTITY gcc-full-patch2    "gcc-3.3.1-suppress-libiberty.patch">
 
 <!ENTITY tcl-version   "8.4.4">
 <!ENTITY tcl-package   "tcl8.4.4-src.tar.gz">

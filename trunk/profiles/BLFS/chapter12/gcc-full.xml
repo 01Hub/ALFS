@@ -48,7 +48,12 @@
 		</mkdir>
 
 		<copy>
-		        <source>&packages_dir;/&gcc-full-patch;</source>
+		        <source>&packages_dir;/&gcc-full-patch1;</source>
+		        <destination>&build_dir;</destination>
+		</copy>
+
+		<copy>
+		        <source>&packages_dir;/&gcc-full-patch2;</source>
 		        <destination>&build_dir;</destination>
 		</copy>
 	</stage>
@@ -68,14 +73,20 @@
 		<patch base="&build_dir;/&gcc-full-directory;">
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&gcc-full-patch;</param>
+			<param>-i ../&gcc-full-patch1;</param>
+		</patch>
+
+		<patch base="&build_dir;/&gcc-full-directory;">
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&gcc-full-patch2;</param>
 		</patch>
 
 		<execute base="&build_dir;/&gcc-full-directory;/gcc/ada"
 		        command="touch treeprs.ads [es]info.h nmake.ad[bs]" />
 
 		<configure base="&build_dir;/gcc-build"
-		           command="../&gcc-full-directory;/configure">
+		           command="CC=/usr/bin/gcc ../&gcc-full-directory;/configure">
 		        <param>--prefix=/usr</param>
 			<param>--enable-shared</param>
 			<param>--enable-languages=c,c++,objc,f77,ada,java</param>
@@ -108,7 +119,9 @@
 		<remove>&build_dir;/&gcc-full-directory;</remove>
 		<remove>&build_dir;/gnat</remove>
 		<remove>&build_dir;/gcc-build</remove>
-		<remove>&build_dir;/&gcc-full-patch;</remove>
+		<remove>&build_dir;/&gcc-full-patch1;</remove>
+		<remove>&build_dir;/&gcc-full-patch2;</remove>
+		<remove>/opt/gnat</remove>
 	</stage>
 
 </package>

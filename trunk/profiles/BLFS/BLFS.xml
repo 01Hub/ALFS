@@ -159,6 +159,7 @@
 <stage name="Chapter 12 (programming tools)">
 
     &python;
+    &perlmodules;
     &librep;
     &j2sdk;
     &ruby;
