@@ -13,7 +13,7 @@
 int main (int argc, char **argv)
 {
 	char c, *syn = DEF_SYN, *moo_xml = MOO_XML, *plug_dir = PLUG_DIR, *f;
-	char *out = NULL;
+	char *out = NULL, *arch = NULL;
 	bool quiet = false, build = false;
 	int i = 0, ret = 0;
 	xmlDocPtr doc = NULL;
@@ -40,7 +40,7 @@ int main (int argc, char **argv)
 		goto cleanup;
 	}
 
-	while ((c = getopt(argc, argv, "s:qVhc:bCo:")) != EOF)
+	while ((c = getopt(argc, argv, "s:qVhc:bCo:a:")) != EOF)
 	{
 		switch (c)
 		{
@@ -93,6 +93,10 @@ int main (int argc, char **argv)
 				out = (char *)malloc(strlen(optarg)+1);
 				strcpy(out, optarg);
 				break;
+			case 'a':
+				arch = (char *)malloc(strlen(optarg)+1);
+				strcpy(arch, optarg);
+				break;
 		}
 	}
 
@@ -120,13 +124,17 @@ int main (int argc, char **argv)
 		r = init_repl(f);
 	free(f);
 
+	add_option(r, "arch", arch);
+
 	while (parsers[i].path)
 	{
 		if (!strcmp(syn, plugarg(parsers[i].path)))
 			prof = parsers[i].info->parse(cur, r);
 		i++;
 	}
-	
+
+	printf("Moo: %s\n", get_option(r, "arch"));
+
 	if (!prof)
 	{
 		fprintf(stderr, "Document was not parsed correctly.\n");

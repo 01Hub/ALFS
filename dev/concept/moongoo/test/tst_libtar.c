@@ -1,6 +1,7 @@
 #include <string.h>
 
 #include <libalfs.h>
+#include <nc_tar.h>
 #include <tst.h>
 
 int main (int argc, char **argv)

@@ -1,27 +1,28 @@
-CFLAGS=-I. -Ilibalfs
+CFLAGS=-Ilibalfs
 
 BIN=main
 OBJS=build.o main.o plugin.o url.o
 
 ifeq ($(OPTS),)
-OPTS=-s ass -o ass_out
-#OPTS+=~/projects/alfs/book/index.xml
-#OPTS+=~/projects/alfs/lfs-profile/LFS.xml
-OPTS+=~/projects/alfs/ass/index.xml
+OPTS=-q
+OPTS+=~/projects/alfs/books/multi-arch/index.xml
+#OPTS+=~/projects/alfs/books/book/index.xml
+#OPTS+=~/projects/alfs/books/lfs-profile/LFS.xml
+#OPTS+=~/projects/alfs/books/ass/index.xml
 #OPTS+=~/projects/hive/unstable/profile.xml
-#OPTS+=~/projects/alfs/blfs/index.xml
-#OPTS+=~/projects/alfs/hlfs/index.xml
-#OPTS+=~/projects/alfs/book-rng/index.xml
-#OPTS+=~/projects/alfs/refbuild/xml/x86-reference-build.xml
+#OPTS+=~/projects/alfs/books/blfs/index.xml
+#OPTS+=~/projects/alfs/books/hlfs/index.xml
+#OPTS+=~/projects/alfs/books/book-rng/index.xml
+#OPTS+=~/projects/alfs/books/refbuild/xml/x86-reference-build.xml
 endif
 
 SUBDIRS=libalfs syntax test output
 
-.PHONY: all
+.PHONY: all memcheck run
 
 all: all-subdirs run
 
-include inc.mak
+include libalfs/inc.mak
 
 $(BIN): $(OBJS) libalfs/libalfs.a
 

@@ -4,10 +4,10 @@
 #include <stdbool.h>
 #include <sys/types.h>
 
-#include <libxml/tree.h>
-#include <libxml/xinclude.h>
-
-#include <net.h>
+#include <nc_digest.h>
+#include <nc_net.h>
+#include <nc_util.h>
+#include <nc_xml.h>
 
 typedef enum
 {
@@ -18,13 +18,6 @@ typedef enum
 	INSTALL,
 	SPAWN
 } role;
-
-typedef enum
-{
-	ALGO_NONE = 1,
-	ALGO_MD5,
-	ALGO_SHA1
-} hash_algo;
 
 typedef enum
 {
@@ -84,9 +77,6 @@ typedef struct
 	char *orig, *repl;
 } replaceable;
 
-typedef void (*xml_handler_t) (xmlNodePtr node, void *data);
-typedef bool (*xml_match_t) (xmlNodePtr node, void *data);
-
 extern bool colors;
 
 void print_subtree (xmlNodePtr node);
@@ -103,15 +93,6 @@ void set_filter (role *role);
 void unset_filter ();
 bool filtered (role role);
 
-void foreach (xmlNodePtr node, char *str, xml_handler_t func, void *data);
-void foreach_multi (xmlNodePtr node, char **str, xml_handler_t func, void *data);
-xmlNodePtr find_node (xmlNodePtr root, char *str);
-xmlNodePtr find_node_match (xmlNodePtr node, xml_match_t func, void *data);
-char *find_value (xmlNodePtr node, char *str);
-char *find_values (xmlNodePtr node, char *str);
-char *find_values_repl (xmlNodePtr node, char *str, char **orig, char **repl);
-char *find_attr (xmlNodePtr node, char *str, char *attr);
-
 package *search_pkg (profile *prof, char *name, char *ch);
 char *role2str (role role);
 char *type2str (xmlElementType type);
@@ -119,6 +100,5 @@ char *algo2str (hash_algo algo);
 char *proto2str (protocol proto);
 role parse_role (xmlNodePtr node);
 protocol parse_proto (xmlNodePtr node);
-bool is_unpackable (char *url);
 	
 #endif

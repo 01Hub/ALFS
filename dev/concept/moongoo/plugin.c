@@ -5,7 +5,7 @@
 #include <errno.h>
 #include <libgen.h>
 
-#include <util.h>
+#include <libalfs.h>
 #include <plugin.h>
 
 /* The plugin code is based on hyperplayer by James Lee (jbit) */

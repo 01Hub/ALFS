@@ -4,6 +4,6 @@ LIBS=ass_out.so
 
 all: $(LIBS)
 
-include ../inc.mak
+include ../libalfs/inc.mak
 
 ass_out.so: ../libalfs/libalfs.a

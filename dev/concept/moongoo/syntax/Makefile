@@ -3,9 +3,11 @@ CFLAGS=-I../libalfs -I..
 LIBS=ass.so blfs.so book.so diyl.so nalfs.so syn.so
 #LIBS+=sample.so
 
+CLEANFILES=$(LIBS)
+
 all: $(LIBS)
 
-include ../inc.mak
+include ../libalfs/inc.mak
 
 ass.so: ../libalfs/libalfs.a
 blfs.so: ../libalfs/libalfs.a
