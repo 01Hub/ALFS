@@ -33,7 +33,7 @@ if STATIC_BUILD
 endif
 
 AM_CPPFLAGS = -I\$(srcdir)/src/include -I\$(srcdir)/src
-AM_CFLAGS = -Werror -Wall -Wno-unused-functions -fno-strict-aliasing
+AM_CFLAGS = -W -Wall -Wshadow -Winline
 bin_PROGRAMS = src/nALFS
 src_nALFS_LDFLAGS = -dlopen self
 src_nALFS_CPPFLAGS = \$(XML2_INCLUDES) \$(AM_CPPFLAGS)
