@@ -163,8 +163,8 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "4f33a7059b381d0ed02684e9bf64186a">
-<!ENTITY lfs-bootscripts-version "2.0.4">
+<!ENTITY lfs-bootscripts-md5 "a7a7c8353c3f07a78ee69c4a12ca78db">
+<!ENTITY lfs-bootscripts-version "2.1.0">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
