@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch23.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,78 +10,62 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="postgresql" version="&postgresql-version;">
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&postgresql-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-
-		<unpack>
-			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Creating user">
-		<execute command="grep -q ^postgres /etc/passwd || useradd">
-			<param>-d /var/pgsql/data</param>
-			<param>postgres</param>
-		</execute>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&postgresql-directory;</base>
-		</stageinfo>
-
-		<configure>
-                        <param>--prefix=/usr</param>
-		</configure>
-
-		<make/>
-
-		<make>
-			<param>install</param>
-		</make>
-
-		<mkdir>
-		        <option>parents</option>
-			<name>/var/pgsql/data</name>
-		</mkdir>
-
-		<ownership user="postgres">
-		        <name>/var/pgsql/data</name>
-		</ownership>
-	</stage>
-
-	<stage name="Initializing database">
-		<stageinfo>
-			<user>postgres</user>
-		</stageinfo>
-
-		<execute command="initdb">
-			<param>-D /var/pgsql/data</param>
-		</execute>
-	</stage>
-
-	<stage name="Installing bootscript and configuration">
-		<stageinfo>
-			<base>&build_dir;/&blfs-bootscripts-directory;</base>
-		</stageinfo>
-
-		<make>
-			<param>install-postgresql</param>
-		</make>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&postgresql-directory;</remove>
-		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
-	</stage>
-
-</package>
+  <package name="postgresql" version="&postgresql-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&postgresql-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Creating user">
+      <execute command="grep -q ^postgres /etc/passwd || useradd">
+        <param>-d /var/pgsql/data</param>
+        <param>postgres</param>
+      </execute>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&postgresql-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <mkdir>
+        <option>parents</option>
+        <name>/var/pgsql/data</name>
+      </mkdir>
+      <ownership user="postgres">
+        <name>/var/pgsql/data</name>
+      </ownership>
+    </stage>
+    <stage name="Initializing database">
+      <stageinfo>
+        <user>postgres</user>
+      </stageinfo>
+      <execute command="initdb">
+        <param>-D /var/pgsql/data</param>
+      </execute>
+    </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-postgresql</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&postgresql-directory;</remove>
+      <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+    </stage>
+  </package>
 </alfs>
