@@ -10,7 +10,7 @@
        Joachim Beckers <jbeckers@linuxfromscratch.org>
        Kevin P. Fleming <kpfleming@linuxfromscratch.org>
 
-       Last updated : 2004-07-03
+       Last updated : 2005-02-08
   -->
 <!DOCTYPE alfs SYSTEM "DTD/ALFS.dtd"
 [
@@ -235,7 +235,6 @@
     </stage>
     <stage name="Chapter 23 (Databases)">
       <xi:include href="chapter23/db.xml" />
-      <xi:include href="chapter23/db3.xml" />
       <xi:include href="chapter23/mysql.xml" />
       <xi:include href="chapter23/postgresql.xml" />
     </stage>
