@@ -18,7 +18,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>target</filename> describes a target of a link
+<para>The <command>target</command> element describes a target of a link
 operation.</para>
 
 </sect2>

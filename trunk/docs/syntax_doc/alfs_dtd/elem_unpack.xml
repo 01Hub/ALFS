@@ -27,18 +27,20 @@
 <title>Description</title>
 
 <para>The <command>unpack</command> element is one of the top-level
-operation elements.  It is used to unpack an archive into a destination
-directory</para>
+operation elements. It is used to unpack an archive into a destination
+directory.</para>
 
-<para>The <command>reference</command> sub-element gives the URL of the
-archive; it is only used if the archive file is not available locally.</para>
+<para>The <command>reference</command> child-element gives the URL of the
+archive; it is only used if the archive file is not available
+locally.</para>
 
-<para>The <command>digest</command> sub-element gives the digest of the
+<para>The <command>digest</command> child-element gives the digest of the
 archive, as computed by openssl, using the digest type specified in the
-attribute <command>type</command>. See <xref linkend="elem_digest"/>.</para>
+<command>type</command> attribute. See 
+<xref linkend="elem_digest"/>.</para>
 
-<para>The <command>archive</command> sub-element gives the name of the
-archive, and the sub-element <command>destination</command> gives the
+<para>The <command>archive</command> child-element gives the name of the
+archive, and the <command>destination</command> child-element gives the
 name of the directory in which the archive is unpacked.</para>
 
 </sect2>

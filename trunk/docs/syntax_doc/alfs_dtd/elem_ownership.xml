@@ -29,31 +29,30 @@
 <title>Description</title>
 
 <para>The <command>ownership</command> element is one of the top-level
-operation elements.  It is used to perform a group and/or user ownership
+operation elements. It is used to perform a group and/or user ownership
 change on a file or set of files</para>
 
-<para>The <command>option</command> sub-element provides a means to pass
+<para>The <command>option</command> child-element provides a means to pass
 an option to the <command>chown</command> command.</para>
 
-<note><para>Not all of the <command>chown</command> options are in every
-implementation.  Refer to the documentation for your implementation to
-determine what options are available.</para></note>
+<note><para>Not all of the <command>chown</command> command's options are
+in every implementation.  Refer to the documentation for your
+implementation to determine what options are available.</para></note>
 
-<para>The <command>name</command> sub-element contains the name of the file
-(or directory) whose ownership is to be changed. This sub-element can
-accept both names and group numbers.</para>
+<para>The <command>name</command> child-element contains the name of the
+file (or directory) whose ownership is to be changed. This child-element
+can accept both names and group numbers.</para>
 
-<para>The <command>base</command> attribute specifies the directory
-in which the command is performed. See
-<xref linkend="elem_base"/>.</para>
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
 
 <para>The <command>user</command> attribute specifies the name of the user
-which will own the file or directory. This sub-element can accept both
-names and user numbers. See
-<xref linkend="elem_user"/>.</para>
+which will own the file or directory. This child-element can accept both
+names and user numbers. See <xref linkend="elem_user"/>.</para>
 
-<para>The attribute <command>group</command> specifies the name of the group
-which will own the file or directory.</para>
+<para>The <command>group</command> attribute specifies the name of the
+group which will own the file or directory.</para>
 
 </sect2>
 

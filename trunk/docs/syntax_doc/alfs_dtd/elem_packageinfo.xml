@@ -24,17 +24,17 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>packageinfo</filename> groups elements
-containing information about the package, namely a description and some
-dependency relationship(s).</para>
+<para>The <command>packageinfo</command> element groups elements containing
+information about the package, namely a description and some dependency
+relationship(s).</para>
 
-<para>The <filename>description</filename> sub-element provides for a
+<para>The <command>description</command> child-element provides for a
 description of the packge.</para>
 
-<para>The <filename>requires</filename> sub-element provides for a
+<para>The <command>requires</command> child-element provides for a
 relationship (dependancy) to other defined packages in the profile.</para>
 
-<para>The <filename>utilizes</filename> sub-element provdes for a
+<para>The <command>utilizes</command> child-element provdes for a
 relationship (uses / optional) to other defined packages in the
 profile.</para>
 

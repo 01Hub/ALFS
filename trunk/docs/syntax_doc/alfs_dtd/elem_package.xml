@@ -27,16 +27,16 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>package</filename> is one of the top-level
-operation elements.  It describes the build process of a package. The
-actual build process is described by the <filename>stage</filename>
+<para>The <command>package</command> element is one of the top-level
+operation elements. It describes the build process of a package. The actual
+build process is described by the <command>stage</command>
 sub-elements.</para>
 
-<para>The attribute <filename>name</filename> contains the name of the
+<para>The <command>name</command> attribute contains the name of the
 package. See <xref linkend="elem_name"/>.</para>
 
-<para>The attribute <filename>version</filename> contains the version of
-the package. See <xref linkend="elem_version"/>.</para>
+<para>The <command>version</command> attribute contains the version of the
+package. See <xref linkend="elem_version"/>.</para>
 
 </sect2>
 

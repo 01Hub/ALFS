@@ -29,7 +29,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>name</filename> is used to specify a name for
+<para>The <command>name</command> element is used to specify a name for
 those commands that requires it.</para>
 
 </sect2>

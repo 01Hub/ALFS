@@ -31,27 +31,26 @@
 elements. It can be used to move one or more files and/or directories into
 a destination directory, or to rename a single file or directory.</para>
 
-<para>The <command>option</command> sub-element provides a means to pass
+<para>The <command>option</command> child-element provides a means to pass
 an option to the <command>mv</command> command.</para>
 
-<note><para>Not all of the <command>mv</command> options are in every
-implementation.  Refer to the documentation for your implementation to
-determine what options are available.</para></note>
+<note><para>Not all of the <command>mv</command> command's options are in
+every implementation.  Refer to the documentation for your implementation
+to determine what options are available.</para></note>
 
-<para>When processing this element, you move each source
-to the destination, using the specified option if present.</para>
+<para>When processing this element, you move each source to the
+destination, using the specified option if present.</para>
 
-<para>The <command>source</command> sub-element contains the name of
-the source file and its directory.</para>
+<para>The <command>source</command> child-element contains the name of the
+source file and its directory.</para>
 
-<para>The <command>destination</command> sub-element contains the name of
+<para>The <command>destination</command> child-element contains the name of
 the destination directory (and, optionally, the command) for the
 <command>mv</command> command.</para>
 
-<para>The <command>base</command> attribute supplies a directory for the
-move operations to be executed in; it will only affect relative source
-and/or destination paths (those that do not begin with a leading slash).
-See <xref linkend="elem_base"/>.</para>
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
 
 </sect2>
 

@@ -18,8 +18,8 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>archive</filename> is used to specify the
-archive file in an <filename>unpack</filename> operation.</para>
+<para>The <command>archive</command> element is used to specify the archive
+file in an <command>unpack</command> operation.</para>
 
 </sect2>
 

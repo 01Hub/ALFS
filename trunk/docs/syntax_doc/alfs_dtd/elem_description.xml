@@ -23,7 +23,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>description</filename> contains the description
+<para>The <command>description</command> element contains the description
 of a package. Its use is for documentation only.</para>
 
 </sect2>

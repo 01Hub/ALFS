@@ -18,8 +18,8 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>item</filename> contains
-an item within a list in a description element.</para>
+<para>The <command>item</command> element contains an item within a list in
+a description element.</para>
 
 </sect2>
 

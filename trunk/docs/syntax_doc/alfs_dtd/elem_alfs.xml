@@ -43,25 +43,26 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>alfs</filename> is the root element of an ALFS
-Profile document. This means that an ALFS profile should contain one and only
-one <filename>alfs</filename> element with all the other elements being
-embedded within this element.</para>
+<para>The <command>alfs</command> element is the root element of an ALFS
+profile document. This means that an ALFS profile should contain one and
+only one <command>alfs</command> element with all the other elements being
+embedded (used) within this element.</para>
 
-<para>When processing an <filename>alfs</filename> element, one processes
-all its embedded children in their order of occurrence.</para>
+<para>When processing an <command>alfs</command> element, you processes all
+its embedded children in their order of occurrence.</para>
 
-<para>The attribute <filename>base</filename> is used to specify the base
-directory which will be used by all the commands in the element
-<filename>alfs</filename>. See <xref linkend="elem_base"/>.</para>
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
 
-<para>The attribute <filename>version</filename> identifies the version of
+<para>The <command>version</command> attribute identifies the version of
 the ALFS profile syntax used; it should be
 <userinput>&quot;3.1&quot;</userinput>.</para>
 
-<para>The element <filename>include</filename> and the attributes
-<filename>xml:base</filename> and <filename>xmlns:xi</filename> allow you
-to use <filename>xi:include</filename> directives in your profiles.</para>
+<para>The <command>include</command> element and the
+<command>xml:base</command> and <command>xmlns:xi</command> attributes
+allow you to use <command>xi:include</command> directives in your
+profile(s).</para>
 
 </sect2>
 

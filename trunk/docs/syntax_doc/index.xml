@@ -3,8 +3,8 @@
 		"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 
 <!ENTITY alfs-dtd-version "3.1">
-<!ENTITY version "&alfs-dtd-version;-2004-06-07">
-<!ENTITY releasedate "Jube 7th, 2004">
+<!ENTITY version "&alfs-dtd-version;-2004-06-17">
+<!ENTITY releasedate "Jube 14th, 2004">
 
 <!ENTITY % book      SYSTEM "book/book.ent">
 <!ENTITY % preface   SYSTEM "preface/preface.ent">

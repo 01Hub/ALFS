@@ -19,13 +19,13 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>remove</filename> is one of the top-level
-operation elements.  It allows you to remove a file or directory.
-The content of the element contains the name of the file.</para>
+<para>The <command>remove</command> element is one of the top-level
+operation elements. It allows you to remove a file or directory. The
+content of the element contains the name of the file.</para>
 
-<note><para>Not all of the <command>rm</command> options are in every
-implementation.  Refer to the documentation for your implementation to
-determine what options are available.</para></note>
+<note><para>Not all of the <command>rm</command> command's options are in
+every implementation. Refer to the documentation for your implementation
+to determine what options are available.</para></note>
 
 </sect2>
 
