@@ -361,7 +361,7 @@
 <!ENTITY vim-directory "vim63">
 
 <!ENTITY vim-lang-md5 "5395c4dacbf1c5008b22c4b86794e8a7">
-<!ENTITY vim-lang-package "vim-&vim-version-lang.tar.gz">
+<!ENTITY vim-lang-package "vim-&vim-version;-lang.tar.gz">
 
 <!ENTITY zlib-md5 "8106069990476a3c5187301465bd7a60">
 <!ENTITY zlib-version "1.2.1">
