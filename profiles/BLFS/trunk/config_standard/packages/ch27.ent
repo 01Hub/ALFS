@@ -4,12 +4,11 @@
 <!ENTITY sawfish-package   "sawfish-&sawfish-version;.tar.gz">
 <!ENTITY sawfish-directory "sawfish-&sawfish-version;">
 
-<!ENTITY fluxbox-version   "0.1.14">
+<!ENTITY fluxbox-version   "0.9.10">
 <!ENTITY fluxbox-package   "fluxbox-&fluxbox-version;.tar.bz2">
 <!ENTITY fluxbox-directory "fluxbox-&fluxbox-version;">
-<!ENTITY fluxbox-gcc33-patch "fluxbox-&fluxbox-version;-gcc33.patch">
 
-<!ENTITY metacity-version   "2.8.0">
+<!ENTITY metacity-version   "2.8.6">
 <!ENTITY metacity-package   "metacity-&metacity-version;.tar.bz2">
 <!ENTITY metacity-directory "metacity-&metacity-version;">
 

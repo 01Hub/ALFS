@@ -17,13 +17,13 @@
         <name>intltool</name>
       </requires>
       <requires>
+        <name>gconf</name>
+      </requires>
+      <requires>
         <name>gtk+2</name>
       </requires>
       <utilizes>
         <name>startup-notification</name>
-      </utilizes>
-      <utilizes>
-        <name>gconf</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
