@@ -13,7 +13,8 @@
 <!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
 
 ]>
-<package name="cyrus-sasl" version="&cyrus-sasl-version;">
+<alfs>
+  <package name="cyrus-sasl" version="&cyrus-sasl-version;">
   <packageinfo>
     <utilizes>
       <name>linuxpam</name>
@@ -52,7 +53,7 @@
       <destination>&build_dir;</destination>
     </unpack>
   </stage>
-  &bootscripts-get;
+  &bootscripts-get; 
   <stage name="Installing.">
     <stageinfo>
       <base>&build_dir;/&cyrus-sasl-directory;</base>
@@ -104,8 +105,9 @@
       <param>install-cyrus-sasl</param>
     </make>
   </stage>
-  &bootscripts-clean;
+  &bootscripts-clean; 
   <stage name="Cleanup.">
     <remove>&build_dir;/&cyrus-sasl-directory;</remove>
   </stage>
-</package>
+  </package>
+</alfs>
