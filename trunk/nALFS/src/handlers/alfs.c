@@ -94,8 +94,7 @@ static int alfs_invalid_child(const element_s * const element,
 					 HTYPE_COMMENT |
 					 HTYPE_TEXTDUMP |
 					 HTYPE_PACKAGE |
-					 HTYPE_EXECUTE |
-					 HTYPE_STAGE));
+					 HTYPE_EXECUTE));
 }
 
 static int alfs_main(const element_s * const el)
