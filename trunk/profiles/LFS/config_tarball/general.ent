@@ -67,7 +67,6 @@
      /etc/sysconfig/network-devices/ifconfig.eth0
      -->
 <!ENTITY gateway    "172.16.1.1">
-<!ENTITY gateway_if "eth0">
 <!ENTITY on_boot    "yes">
 <!ENTITY IP         "172.16.1.22">
 <!ENTITY netmask    "255.255.255.0">
@@ -181,3 +180,11 @@ network.-->
 -->
 
 <!ENTITY TERM "linux">
+
+<!-- argument entities for /etc/sysconfig/console script -->
+<!ENTITY keymap-args "">
+<!ENTITY font-args "">
+
+<!-- locale setting for /etc/profile -->
+<!ENTITY locale-language "en">
+<!ENTITY locale-country "US">

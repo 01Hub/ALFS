@@ -36,6 +36,8 @@ or
      default
    - the files keymap-ch6.xml and keymap-ch8.xml are used to set up
      the default keymap
+   - the file console.xml is for setting up the default keymap with
+     support for i18n.	
 
 3) execute sh ./runit as root. Please note that if you have installed 
    nALFS into a location other than /usr/local/bin you will need to edit
