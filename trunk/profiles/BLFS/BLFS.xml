@@ -5,8 +5,7 @@
 
        by Vassili Dzuba - vdzuba@linuxfromscratch.org
 
-       Last updated : 20020917
-
+       Last updated : 20031103
       *** ALPHA VERSION ***
   -->
 
@@ -109,12 +108,10 @@
     &glib2;
     &expat;
     &libesmtp;
-    &aspell;
+    &ispell;
     &guile;
     &slib;
     &g-wrap;
-    &libsoup;
-    &stlport;
     &lzo;
 
 </stage>
@@ -190,6 +187,7 @@
     &curl;
     &wvstreams;
     &gnet;
+    &libsoup;
 
 </stage>
 

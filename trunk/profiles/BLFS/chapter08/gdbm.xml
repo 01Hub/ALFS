@@ -12,32 +12,25 @@
 			<base>&build_dir;/&gdbm-directory;</base>
 		</stageinfo>
 
-		<configure />
+		<configure>
+		        <param>--prefix=/usr</param>
+			<param>--infodir=/usr/share/info</param>
+			<param>--mandir=/usr/share/man</param>
+		</configure>
 
-
+		<make />
 
 		<make>
-                        <param>prefix=/usr</param>		       
-		</make>
-
-		<make>
-                        <param>prefix=/usr</param>
-			<param>man3dir=/usr/share/man/man3</param>
-                        <param>infodir=/usr/share/info</param>
                         <param>BINOWN=root</param>
 			<param>BINGRP=root</param>
 			<param>install</param>
 		</make>
 
 		<make>
-                        <param>prefix=/usr</param>
-                        <param>man3dir=/usr/share/man/man3</param>
-                        <param>infodir=/usr/share/info</param>
                         <param>BINOWN=root</param>
                         <param>BINGRP=root</param>
                         <param>install-compat</param>
 		</make>
-
 	</stage>
 
 	<stage name="Clean-up.">

@@ -2,9 +2,9 @@
 
         <packageinfo>
                 <requires><name>pkgconfig</name></requires>
-		<utilizes>gtk-doc</utilizes>
-		<utilizes>xml-dtd</utilizes>
-		<utilizes>docbook-xsl</utilizes>
+		<utilizes><name>gtk-doc</name></utilizes>
+		<utilizes><name>xml-dtd</name></utilizes>
+		<utilizes><name>docbook-xsl</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -21,7 +21,6 @@
 
 		<configure>
 			<param>--prefix=/usr</param>
-			<param>--enable-gtk-doc</param>
 		</configure>
 
 		<make />

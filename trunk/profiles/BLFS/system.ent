@@ -46,11 +46,10 @@
 <!ENTITY expat      SYSTEM "./chapter08/expat.xml">
 <!ENTITY libesmtp   SYSTEM "./chapter08/libesmtp.xml">
 <!ENTITY aspell     SYSTEM "./chapter08/aspell.xml">
+<!ENTITY ispell     SYSTEM "./chapter08/ispell.xml">
 <!ENTITY guile      SYSTEM "./chapter08/guile.xml">
 <!ENTITY slib       SYSTEM "./chapter08/slib.xml">
 <!ENTITY g-wrap     SYSTEM "./chapter08/g-wrap.xml">
-<!ENTITY libsoup    SYSTEM "./chapter08/libsoup.xml">
-<!ENTITY stlport    SYSTEM "./chapter08/stlport.xml">
 <!ENTITY lzo        SYSTEM "./chapter08/lzo.xml">
 
 <!-- chapter 9 -->
@@ -99,6 +98,7 @@
 <!ENTITY curl       SYSTEM "./chapter16/curl.xml">
 <!ENTITY wvstreams  SYSTEM "./chapter16/wvstreams.xml">
 <!ENTITY gnet       SYSTEM "./chapter16/gnet.xml">
+<!ENTITY libsoup    SYSTEM "./chapter16/libsoup.xml">
 
 <!-- chapter 17 -->
 <!ENTITY links      SYSTEM "./chapter17/links.xml">

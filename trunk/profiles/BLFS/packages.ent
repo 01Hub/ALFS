@@ -67,9 +67,11 @@
 
 <!--************* packages for chapter 8 *************-->
 
-<!ENTITY openssl-version   "0.9.7b">
-<!ENTITY openssl-package   "openssl-0.9.7b.tar.gz">
-<!ENTITY openssl-directory "openssl-0.9.7b">
+<!ENTITY openssl-version   "0.9.7c">
+<!ENTITY openssl-package   "openssl-0.9.7c.tar.gz">
+<!ENTITY openssl-directory "openssl-0.9.7c">
+
+<!ENTITY openssl-patch     "openssl-0.9.7c-manpages.patch">
 
 <!ENTITY pcre-version   "4.3">
 <!ENTITY pcre-package   "pcre-4.3.tar.bz2">
@@ -83,15 +85,11 @@
 <!ENTITY slang-package   "slang-1.4.9.tar.bz2">
 <!ENTITY slang-directory "slang-1.4.9">
 
-<!ENTITY libfam-version   "2.6.9">
-<!ENTITY libfam-package   "fam-2.6.9.tar.gz">
-<!ENTITY libfam-directory "fam-2.6.9">
+<!ENTITY libfam-version   "2.6.10">
+<!ENTITY libfam-package   "fam-2.6.10.tar.gz">
+<!ENTITY libfam-directory "fam-2.6.10">
 
-<!ENTITY libfam-ppatch1   "dnotify.patch.gz">
-<!ENTITY libfam-patch1    "dnotify.patch">
-
-<!ENTITY libfam-ppatch2   "libfam-gcc3.patch.gz">
-<!ENTITY libfam-patch2    "libfam-gcc3.patch">
+<!ENTITY libfam-patch     "fam-2.6.10-dnotify.patch">
 
 <!ENTITY libxml-version   "1.8.17">
 <!ENTITY libxml-package   "libxml-1.8.17.tar.gz">
@@ -129,7 +127,7 @@
 <!ENTITY expat-package   "expat-1.95.6.tar.gz">
 <!ENTITY expat-directory "expat-1.95.6">
 
-<!ENTITY expat-patch     "expat-1.95.6.patch">
+<!ENTITY expat-patch     "expat-1.95.6-fix-declaration-order.patch">
 
 <!ENTITY libesmtp-version   "1.0">
 <!ENTITY libesmtp-package   "libesmtp-1.0.tar.bz2">
@@ -139,6 +137,12 @@
 <!ENTITY aspell-package   "aspell-0.50.3.tar.gz">
 <!ENTITY aspell-directory "aspell-0.50.3">
 
+<!ENTITY aspell-patch     "aspell-0.50.3-gcc33-1.patch">
+
+<!ENTITY ispell-version   "3.2.06.epa6">
+<!ENTITY ispell-package   "ispell-3.2.06.epa6.tar.bz2">
+<!ENTITY ispell-directory "ispell-3.2.06.epa6">
+
 <!ENTITY guile-version   "1.6.4">
 <!ENTITY guile-package   "guile-1.6.4.tar.gz">
 <!ENTITY guile-directory "guile-1.6.4">
@@ -147,23 +151,18 @@
 <!ENTITY slib-package   "slib2d6.tar.gz">
 <!ENTITY slib-directory "slib">
 
-<!ENTITY g-wrap-version   "1.2.1">
-<!ENTITY g-wrap-package   "g-wrap-1.2.1.tar.bz2">
-<!ENTITY g-wrap-directory "g-wrap-1.2.1">
+<!ENTITY g-wrap-version   "1.3.4">
+<!ENTITY g-wrap-package   "g-wrap-1.3.4.tar.gz">
+<!ENTITY g-wrap-directory "g-wrap-1.3.4">
+
+<!ENTITY lzo-version       "1.08">
+<!ENTITY lzo-package       "lzo-1.08.tar.gz">
+<!ENTITY lzo-directory     "lzo-1.08">
 
 <!ENTITY libsoup-version   "1.99.23">
 <!ENTITY libsoup-package   "libsoup-1.99.23.tar.bz2">
 <!ENTITY libsoup-directory "libsoup-1.99.23">
 
-<!ENTITY stlport-version   "4.5.3">
-<!ENTITY stlport-package   "STLport-4.5.3.tar.gz">
-<!ENTITY stlport-directory "STLport-4.5.3">
-
-<!ENTITY stlport-patch     "STLport-4.5.3-gcc3.patch">
-
-<!ENTITY lzo-version       "1.08">
-<!ENTITY lzo-package       "lzo-1.08.tar.gz">
-<!ENTITY lzo-directory     "lzo-1.08">
 
 <!--************* packages for chapter 9 *************-->
 
@@ -1338,3 +1337,9 @@
 <!ENTITY fribidi-package   "fribidi-0.10.4.tar.gz">
 <!ENTITY fribidi-directory "fribidi-0.10.4">
  
+<!ENTITY stlport-version   "4.5.3">
+<!ENTITY stlport-package   "STLport-4.5.3.tar.gz">
+<!ENTITY stlport-directory "STLport-4.5.3">
+
+<!ENTITY stlport-patch     "STLport-4.5.3-gcc3.patch">
+

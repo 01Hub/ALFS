@@ -1,20 +1,21 @@
-<package name="g-wrap" version="&g-wrap-version;">
+<package name="libsoup" version="&libsoup-version;">
 
-        <packageinfo>
-                <requires><name>guile</name></requires>
-                <requires><name>slib</name></requires>
-        </packageinfo>
+    <packageinfo>
+        <utilizes>
+	    <name>openssl</name>
+	</utilizes>
+    </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&g-wrap-package;</archive>
+			<archive>&packages_dir;/&libsoup-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&g-wrap-directory;</base>
+			<base>&build_dir;/&libsoup-directory;</base>
 		</stageinfo>
 
 		<configure>
@@ -29,7 +30,7 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&g-wrap-directory;</remove>
+		<remove>&build_dir;/&libsoup-directory;</remove>
 	</stage>
 
 </package>
