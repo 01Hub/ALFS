@@ -217,6 +217,7 @@ static INLINE void add_all_parameters(void)
 	}
 }
 
+#ifndef STATIC_BUILD
 static int foreachfile_callback(const char *filename, lt_ptr data)
 {
 	lt_dlhandle handle;
@@ -228,6 +229,7 @@ static int foreachfile_callback(const char *filename, lt_ptr data)
 	}
 	return 0;
 }
+#endif
 
 int load_all_handlers(void)
 {
