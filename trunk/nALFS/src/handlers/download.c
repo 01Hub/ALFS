@@ -48,8 +48,7 @@
 #define El_download_file(el) alloc_trimmed_param_value("file", el)
 #define El_download_destination(el) alloc_trimmed_param_value("destination", el)
 
-
-#if HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
+#if HANDLER_SYNTAX_3_1 
 
 static const char *download_parameters[] =
 { "digest", "file", "url", "destination", NULL };
@@ -137,7 +136,102 @@ static int download_main(element_s *el)
 	return status;
 }
 
-#endif /* HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
+#endif /* HANDLER_SYNTAX_3_1 */
+
+#if HANDLER_SYNTAX_3_2
+
+static const char *download_parameters_3_2[] =
+{ "digest", "file", "url", NULL };
+
+static int download_main_3_2(element_s *el)
+{
+	/* status assumes failure until set otherwise */
+	int status = -1;
+	char *file = NULL;
+	char *base = NULL;
+	char *digest = NULL;
+	char *digest_type = NULL;
+	struct stat file_stat;
+
+	/* <file> is mandatory */
+	if ((file = El_download_file(el)) == NULL) {
+		Nprint_h_err("File name is missing.");
+		goto free_all_and_return;
+	}
+
+	/* <base> is mandatory, we don't want to download just anywhere! */
+	if ((base = alloc_base_dir_force(el)) == NULL) {
+		Nprint_h_err("<base> is missing.");
+		goto free_all_and_return;
+	}
+
+	/* changing to <base> directory */
+	if (change_current_dir(base))
+		goto free_all_and_return;
+
+	Nprint_h("downloading to %s", base);
+		
+    /* base is not needed anymore so free it */
+	xfree(base);	
+
+	alloc_element_digest(el, &digest, &digest_type);
+
+	/* Check if file exists. */
+	if ((stat(file, &file_stat))) {
+	        if (errno == ENOENT && first_param("url", el) != NULL) {
+		        int found = 0;
+			element_s *p;
+
+			Nprint_h_warn("File %s not found.", file);
+			Nprint_h("Trying to fetch it from <url>...");
+
+	                for (p = first_param("url", el); p; p = next_param(p)) {
+				char *s;
+
+				if ((s = alloc_trimmed_str(p->content)) == NULL) {
+					Nprint_h_warn("Source empty.");
+					continue;
+				}
+				
+				append_str(&s, file);
+				if (! get_url(s, file, digest, digest_type))
+					found = 1;
+				xfree(s);
+				if (found)
+					break;
+			}
+			
+			if (! found) {
+				Nprint_h_err("Unable to download file %s.", file);
+				goto free_all_and_return;
+			}
+
+		} else {
+			Nprint_h_err("Checking for %s failed:", file);
+			Nprint_h_err("    %s", strerror(errno));
+			goto free_all_and_return;
+		}
+	} else if (digest != NULL) {
+		if (verify_digest(digest_type, digest, file)) {
+			Nprint_h_err("Wrong %s digest of file: %s",
+				     digest_type, file);
+			goto free_all_and_return;
+		}
+	}
+
+	/* operation was successful, set status */
+	status = 0;
+
+ free_all_and_return:
+	xfree(digest_type);
+	xfree(digest);
+	xfree(file);
+	xfree(base);
+
+	return status;
+}
+
+#endif /* HANDLER_SYNTAX_3_2 */
 
 
 /*
@@ -163,8 +257,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "download",
 		.description = "Download",
 		.syntax_version = "3.2",
-		.parameters = download_parameters,
-		.main = download_main,
+		.parameters = download_parameters_3_2,
+		.main = download_main_3_2,
 		.type = 0,
 		.alloc_data = NULL,
 		.is_action = 1,
