@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+
+%general_entities;
+]>
+
+<alfs>
+
+<stage name="Creating the /etc/hosts File">
+	<textdump>
+		<file>/etc/hosts</file>
+		<content>
+			=# Begin /etc/hosts (network card version)
+			=
+			=127.0.0.1 localhost
+			=&IP; &hostname;.&domain; &hostname;
+			=
+			=# End /etc/hosts (network card version)
+		</content>
+	</textdump>
+</stage>
+
+</alfs>
