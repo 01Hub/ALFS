@@ -12,6 +12,11 @@
 ]>
 <alfs>
   <package name="aspell" version="&aspell-version;">
+    <packageinfo>
+      <requires>
+	<name>which</name>
+      </requires>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&aspell-package;</archive>

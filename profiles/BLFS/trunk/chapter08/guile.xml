@@ -30,7 +30,9 @@
       <configure>
         <param>--prefix=/usr</param>
       </configure>
-      <make />
+      <make>
+	<prefix>LD_LIBRARY_PATH="$PWD/libguile-ltdl/.libs"</prefix>
+      </make>
       <make>
         <param>install</param>
       </make>

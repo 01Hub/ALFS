@@ -1,9 +1,5 @@
 <!--************* packages for chapter 30 *************-->
 
-<!ENTITY libidl-version   "0.8.3">
-<!ENTITY libidl-package   "libIDL-&libidl-version;.tar.bz2">
-<!ENTITY libidl-directory "libIDL-&libidl-version;">
-
 <!ENTITY orbit2-version   "2.10.1">
 <!ENTITY orbit2-package   "ORBit2-&orbit2-version;.tar.bz2">
 <!ENTITY orbit2-directory "ORBit2-&orbit2-version;">
@@ -31,10 +27,6 @@
 <!ENTITY libart-lgpl-version   "2.3.16">
 <!ENTITY libart-lgpl-package   "libart_lgpl-&libart-lgpl-version;.tar.bz2">
 <!ENTITY libart-lgpl-directory "libart_lgpl-&libart-lgpl-version;">
-
-<!ENTITY libglade-version   "2.3.6">
-<!ENTITY libglade-package   "libglade-&libglade-version;.tar.bz2">
-<!ENTITY libglade-directory "libglade-&libglade-version;">
 
 <!ENTITY libgnomecanvas-version   "2.6.1.1">
 <!ENTITY libgnomecanvas-package   "libgnomecanvas-&libgnomecanvas-version;.tar.bz2">
@@ -111,14 +103,6 @@
 <!ENTITY gnome-applets-version   "2.6.0">
 <!ENTITY gnome-applets-package   "gnome-applets-&gnome-applets-version;.tar.bz2">
 <!ENTITY gnome-applets-directory "gnome-applets-&gnome-applets-version;">
-
-<!ENTITY libgsf-version    "1.8.2">
-<!ENTITY libgsf-package    "libgsf-&libgsf-version;.tar.bz2">
-<!ENTITY libgsf-directory  "libgsf-&libgsf-version;">
-
-<!ENTITY libcroco-version   "0.5.1">
-<!ENTITY libcroco-package   "libcroco-&libcroco-version;.tar.bz2">
-<!ENTITY libcroco-directory "libcroco-&libcroco-version;">
 
 <!ENTITY librsvg-version   "2.6.5">
 <!ENTITY librsvg-package   "librsvg-&librsvg-version;.tar.bz2">

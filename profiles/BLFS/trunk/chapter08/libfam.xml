@@ -36,6 +36,9 @@
         <param>-p1</param>
         <param>-i &packages_dir;/&libfam-patch;</param>
       </patch>
+      <permissions mode="755">
+	<name>configure</name>
+      </permissions>
       <execute command="autoreconf">
         <param>-f</param>
         <param>-i</param>

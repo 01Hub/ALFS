@@ -18,6 +18,16 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&glib-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&glib-gcc34-patch;</param>
+      </patch>
+    </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&glib-directory;</base>

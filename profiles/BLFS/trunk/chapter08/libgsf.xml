@@ -2,7 +2,7 @@
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
-<!ENTITY % package_entities SYSTEM "../config/packages/ch30.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch08.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
 
 %general_entities;
@@ -11,16 +11,16 @@
 
 ]>
 <alfs>
-  <package name="libglade" version="&libglade-version;">
+  <package name="libgsf" version="&libgsf-version;">
     <packageinfo>
+      <requires>
+        <name>glib2</name>
+      </requires>
       <requires>
         <name>libxml2</name>
       </requires>
-      <requires>
-        <name>gtk+</name>
-      </requires>
       <utilizes>
-        <name>python</name>
+        <name>gnome-vfs2</name>
       </utilizes>
       <utilizes>
         <name>gtk-doc</name>
@@ -28,23 +28,25 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libglade-package;</archive>
+        <archive>&packages_dir;/&libgsf-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
-    <stageinfo>
-      <base>&build_dir;/&libglade-directory;</base>
-    </stageinfo>
-    <configure>
-      <param>--prefix=/usr</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>&ldconfig;</stage>
+      <stageinfo>
+        <base>&build_dir;/&libgsf-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--disable-gtk-doc</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&libglade-directory;</remove>
+      <remove>&build_dir;/&libgsf-directory;</remove>
     </stage>
   </package>
 </alfs>

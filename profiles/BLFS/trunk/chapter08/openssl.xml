@@ -35,11 +35,6 @@
         <source>doc/crypto/threads.pod</source>
         <destination>doc/crypto/openssl_threads.pod</destination>
       </move>
-      <search_replace>
-        <file>Configure</file>
-        <find>-m486</find>
-        <replace>-march=i486</replace>
-      </search_replace>
       <configure command="./config">
         <param>--openssldir=/etc/ssl</param>
         <param>--prefix=/usr</param>

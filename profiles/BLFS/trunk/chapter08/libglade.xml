@@ -2,7 +2,7 @@
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
-<!ENTITY % package_entities SYSTEM "../config/packages/ch30.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch08.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
 
 %general_entities;
@@ -11,21 +11,30 @@
 
 ]>
 <alfs>
-  <package name="libidl" version="&libidl-version;">
+  <package name="libglade" version="&libglade-version;">
     <packageinfo>
       <requires>
-        <name>glib2</name>
+        <name>libxml2</name>
       </requires>
+      <requires>
+        <name>gtk+2</name>
+      </requires>
+      <utilizes>
+        <name>python</name>
+      </utilizes>
+      <utilizes>
+        <name>gtk-doc</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libidl-package;</archive>
+        <archive>&packages_dir;/&libglade-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
     <stageinfo>
-      <base>&build_dir;/&libidl-directory;</base>
+      <base>&build_dir;/&libglade-directory;</base>
     </stageinfo>
     <configure>
       <param>--prefix=/usr</param>
@@ -35,7 +44,7 @@
       <param>install</param>
     </make>&ldconfig;</stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&libidl-directory;</remove>
+      <remove>&build_dir;/&libglade-directory;</remove>
     </stage>
   </package>
 </alfs>
