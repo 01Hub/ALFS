@@ -77,14 +77,14 @@ struct option_s {
 			STRING const def_value;
 			int (*validate)(const struct option_s *option,
 					const STRING value);
-			int (*post_validate)(const struct option_s *option);
+			void (*post_validate)(const struct option_s *option);
 		} str;
 		struct {
 			BOOL value;
 			BOOL const def_value;
 			int (*validate)(const struct option_s *option,
 					const BOOL value);
-			int (*post_validate)(const struct option_s *option);
+			void (*post_validate)(const struct option_s *option);
 		} bool;
 		struct {
 			NUMBER value;
@@ -93,7 +93,7 @@ struct option_s {
 			NUMBER const max_value;
 			int (*validate)(const struct option_s *option,
 					const NUMBER value);
-			int (*post_validate)(const struct option_s *option);
+			void (*post_validate)(const struct option_s *option);
 		} num;
 	} val;
 };
@@ -116,7 +116,7 @@ struct option_s {
 void set_string_option(STRING * const var, const STRING value);
 void append_string_option(STRING * const var, const STRING value);
 void set_options_to_defaults(void);
-int post_validate_options(void);
+void post_validate_options(void);
 
 char *alloc_real_status_logfile_name(void);
 char *alloc_real_packages_directory_name(void);

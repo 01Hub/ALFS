@@ -33,10 +33,9 @@
 
 void read_env_variables(void);
 
-int read_system_rc_file(void);
-int read_user_rc_file(void);
+void read_system_rc_file(void);
+void read_user_rc_file(void);
 
-int have_command_line_rc_file(int argc, char **argv);
 void read_command_line_options(int *argc, char ***argv);
 
 void init_needed_directories(void);

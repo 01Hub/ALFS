@@ -372,28 +372,25 @@ set_opt_e set_yet_unknown_option(const char *opt, const char *val)
 /*
  * Executes all "post-validation" functions for options.
  */
-int post_validate_options(void)
+void post_validate_options(void)
 {
 	int i;
-	int all_ok = 1;
 
 	for (i = 0; options[i]; i++) {
 		switch (options[i]->type) {
 		case O_BOOL:
 			if (options[i]->val.bool.post_validate)
-				all_ok &= options[i]->val.bool.post_validate(options[i]);
+				options[i]->val.bool.post_validate(options[i]);
 			break;
 		case O_NUMBER:
 			if (options[i]->val.num.post_validate)
-				all_ok &= options[i]->val.num.post_validate(options[i]);
+				options[i]->val.num.post_validate(options[i]);
 			break;
 		case O_STRING:
 			if (options[i]->val.str.post_validate)
-				all_ok &= options[i]->val.str.post_validate(options[i]);
+				options[i]->val.str.post_validate(options[i]);
 			break;
 		}
 	}
-
-	return all_ok;
 }
 

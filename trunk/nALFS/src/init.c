@@ -208,9 +208,8 @@ static int parse_rc_line(char *line)
 	return -1;
 }
 
-static INLINE int parse_rc_file(const char *rcfile)
+static INLINE void parse_rc_file(const char *rcfile)
 {
-	int ret = 0;
 	int line_num = 0;
 	char line[MAX_RC_LINE_LEN];
 	FILE *fp;
@@ -225,7 +224,7 @@ static INLINE int parse_rc_file(const char *rcfile)
 			Nprint_err("Unable to open rc file (%s): %s",
 				   rcfile, strerror(errno));
 		}
-		return 0; /* Just don't read it then. */
+		return; /* Just don't read it then. */
 	}
 
 	while (fgets(line, sizeof line, fp)) {
@@ -242,38 +241,32 @@ static INLINE int parse_rc_file(const char *rcfile)
 		}
 
 		if (parse_rc_line(line) != 0) {
-			ret = 1;
 			Nprint_err("File %s, error at line %d: %s\n",
 				   rcfile, line_num, line);
 		}
 	}
 
 	fclose(fp);
-
-	return ret;
 }
 
 /*
  * Read the "system" configuration file, /etc/nALFSrc.
  */
 
-int read_system_rc_file(void)
+void read_system_rc_file(void)
 {
 	char system_rc_file[] = "/etc/nALFSrc";
 	struct stat st;
 
 	if (!stat(system_rc_file, &st))
-		return parse_rc_file("/etc/nALFSrc");
-	else
-		return 0;
+		parse_rc_file(system_rc_file);
 }
 
 /*
  * Constructs a full name of configuration file and calls a parser.
  */
-int read_user_rc_file(void)
+void read_user_rc_file(void)
 {
-	int ret;
 	char *home_dir;
 	char *rcfile;
 
@@ -281,19 +274,17 @@ int read_user_rc_file(void)
 	home_dir = get_home_directory();
 
 	if (Empty_string(home_dir)) {
-		fprintf(stderr, "Can't find your home directory.\n");
-		exit(EXIT_FAILURE);
+		Nprint_warn("Can't find your home directory.\n");
+		return;
 	}
 
 	rcfile = xstrdup(home_dir);
 	append_str(&rcfile, "/");
 	append_str(&rcfile, RC_FILE_NAME);
 
-	ret = parse_rc_file(rcfile);
+	parse_rc_file(rcfile);
 
 	xfree(rcfile);
-
-	return ret;
 }
 
 /*
@@ -396,15 +387,6 @@ static void print_usage_and_exit(void)
 		"Use --help for printing program's usage information.\n");
 
 	exit(EXIT_FAILURE);
-}
-
-int have_command_line_rc_file(int argc, char **argv)
-{
-	while(--argc) {
-		if (strcmp(argv[argc], "--rcfile") == 0)
-			return 1;
-	}
-	return 0;
 }
 
 void read_command_line_options(int *argc, char ***argv)
@@ -511,8 +493,7 @@ void read_command_line_options(int *argc, char ***argv)
 				break;
 
 			case LONG_OPTION_RCFILE:
-				if (parse_rc_file(optarg) != 0)
-					exit(EXIT_FAILURE);
+				parse_rc_file(optarg);
 				break;
 
 			case LONG_OPTION_HELP:
