@@ -1,16 +1,20 @@
 <package name="kdelibs" version="&kdelibs-version;">
 
         <packageinfo>
+                <requires><name>arts</name></requires>
+
                 <requires><name>openssl</name></requires>
-        	<requires><name>alsa-driver</name></requires>
-        	<requires><name>alsa-lib</name></requires>
         	<requires><name>pcre</name></requires>
         	<requires><name>libxml2</name></requires>
         	<requires><name>libxslt</name></requires>
-        	<requires><name>cups</name></requires>
+		<!--  fam not available yet
+        	<requires><name>fam</name></requires>
+		-->
+        	<requires><name>libart-lgpl</name></requires>
 
-		<utilizes><name>libfam</name></utilizes>
-		<utilizes><name>libtiff</name></utilizes>
+		<utilizes><name>cups</name></utilizes>
+		<utilizes><name>sane</name></utilizes>
+		<utilizes><name>openldap</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">

@@ -7,7 +7,7 @@
         	<requires><name>libvorbis</name></requires>
         	<requires><name>cups</name></requires>
 
-		<utilizes><name>lame</name></utilizes>
+		<requires><name>lame</name></requires>
 		<utilizes><name>linuxpam</name></utilizes>
         </packageinfo>
 
@@ -33,7 +33,9 @@
                         <param>--prefix=/opt/kde-&kde-version;</param>
                         <param>--disable-debug</param>
                         <param>--disable-dependency-tracking</param>
-                        <param>--disable-lametest</param>
+			<!-- add if lame is not installed
+                        <param>- -disable-lametest</param>
+			-->
                         <param>--with-shadow</param>
 		</configure>
 
