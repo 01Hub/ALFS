@@ -405,6 +405,60 @@ static int stage_main(element_s *el)
 	return status;
 }
 
+#if HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
+
+static int then_main(element_s *el)
+{
+	int status;
+	element_s *stageinfo;
+       
+
+	if (*opt_be_verbose)
+		Nprint_h("Executing <then> block.");
+
+	log_start_time(el);
+
+	if ((stageinfo = first_param("stageinfo", el))) {
+		status = parse_stageinfo_and_execute_children(el, stageinfo);
+	} else {
+		status = execute_children(el);
+	}
+
+	log_end_time(el, status);
+
+	if (*opt_be_verbose)
+		Nprint_h("<then> block complete.");
+
+	return status;
+}
+
+static int else_main(element_s *el)
+{
+	int status;
+	element_s *stageinfo;
+       
+
+	if (*opt_be_verbose)
+		Nprint_h("Executing <else> block.");
+
+	log_start_time(el);
+
+	if ((stageinfo = first_param("stageinfo", el))) {
+		status = parse_stageinfo_and_execute_children(el, stageinfo);
+	} else {
+		status = execute_children(el);
+	}
+
+	log_end_time(el, status);
+
+	if (*opt_be_verbose)
+		Nprint_h("<else> block complete.");
+
+	return status;
+}
+
+#endif /* HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
+
 #endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
 
 
@@ -420,7 +474,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.0",
 		.parameters = stage_parameters,
 		.main = stage_main,
-		.type = 0,
+		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 0,
 		.priority = 0
@@ -433,7 +487,29 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.1",
 		.parameters = stage_parameters,
 		.main = stage_main,
-		.type = 0,
+		.type = HTYPE_NORMAL,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.priority = 0
+	},
+	{
+		.name = "then",
+		.description = "then",
+		.syntax_version = "3.1",
+		.parameters = stage_parameters,
+		.main = then_main,
+		.type = HTYPE_TRUE_RESULT,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.priority = 0
+	},
+	{
+		.name = "else",
+		.description = "else",
+		.syntax_version = "3.1",
+		.parameters = stage_parameters,
+		.main = else_main,
+		.type = HTYPE_FALSE_RESULT,
 		.alloc_data = NULL,
 		.is_action = 0,
 		.priority = 0
@@ -446,13 +522,35 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.2",
 		.parameters = stage_parameters,
 		.main = stage_main,
-		.type = 0,
+		.type = HTYPE_NORMAL,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.priority = 0
+	},
+	{
+		.name = "then",
+		.description = "then",
+		.syntax_version = "3.2",
+		.parameters = stage_parameters,
+		.main = then_main,
+		.type = HTYPE_TRUE_RESULT,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.priority = 0
+	},
+	{
+		.name = "else",
+		.description = "else",
+		.syntax_version = "3.2",
+		.parameters = stage_parameters,
+		.main = else_main,
+		.type = HTYPE_FALSE_RESULT,
 		.alloc_data = NULL,
 		.is_action = 0,
 		.priority = 0
 	},
 #endif
 	{
-		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+		.name = NULL
 	}
 };

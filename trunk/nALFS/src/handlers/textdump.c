@@ -218,6 +218,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 	},
 #endif
 	{
-		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+		.name = NULL
 	}
 };

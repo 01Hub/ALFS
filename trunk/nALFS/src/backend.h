@@ -1,9 +1,10 @@
 /*
  *  backend.h - Backend.
  *
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001, 2002, 2004
  *
  *  Neven Has <haski@sezampro.yu>
+ *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -27,6 +28,7 @@
 
 #include "parser.h"
 #include "comm.h"
+#include "handlers.h"
 
 
 #define Start_receiving_sigio() \
@@ -42,7 +44,9 @@ void fatal_backend_error(const char *format, ...);
 
 int execute_command(const char *format, ...);
 
+int do_execute_test_element(element_s *element, int *result);
 int execute_children(element_s *element);
+int execute_children_filtered(element_s *element, handler_type_e type_filter);
 
 void start_backend(element_s *el);
 

@@ -138,7 +138,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "2.0",
 		.parameters = configure_parameters_ver2,
 		.main = configure_main_ver2,
-		.type = 0,
+		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
@@ -151,7 +151,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.0",
 		.parameters = configure_parameters_ver3,
 		.main = configure_main_ver3,
-		.type = 0,
+		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
@@ -164,7 +164,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.1",
 		.parameters = configure_parameters_ver3,
 		.main = configure_main_ver3,
-		.type = 0,
+		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
@@ -177,13 +177,13 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.2",
 		.parameters = configure_parameters_ver3,
 		.main = configure_main_ver3,
-		.type = 0,
+		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
 	},
 #endif
 	{
-		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+		.name = NULL
 	}
 };
