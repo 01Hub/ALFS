@@ -1,0 +1,37 @@
+<package name="wvdial" version="&wvdial-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&wvdial-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&wvdial-directory;</base>
+		</stageinfo>
+
+
+		<make>
+			<param>PREFIX=/usr</param>
+		</make>
+
+		<make>
+			<param>PREFIX=/usr</param>
+			<param>install</param>
+		</make>
+
+		<execute command="touch /etc/wvdial.conf" />
+		
+		<!-- uncomment this if you actually have a modem connected
+		     to your computer
+		<execute command="wvdialconf /etc/wvdial.conf" />
+		-->
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&wvdial-directory;</remove>
+	</stage>
+
+</package>
