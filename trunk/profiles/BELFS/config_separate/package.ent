@@ -299,6 +299,9 @@
 <!ENTITY sysklogd-package "sysklogd-&sysklogd-version;.tar.gz">
 <!ENTITY sysklogd-directory "sysklogd-&sysklogd-version;">
 
+<!ENTITY sysklogd-kernel-headers-patch-md5 "290ef10e5fe52676899da43cb8dd2914">
+<!ENTITY sysklogd-kernel-headers-patch "sysklogd-&sysklogd-version;-kernel-headers-1.patch">
+
 <!ENTITY sysvinit-md5 "8a2d8f1ed5a2909da04132fefa44905e">
 <!ENTITY sysvinit-version "2.85">
 <!ENTITY sysvinit-package "sysvinit-&sysvinit-version;.tar.gz">

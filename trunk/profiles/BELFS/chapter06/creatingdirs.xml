@@ -4,8 +4,7 @@
 	
 		<name>bin</name>
 		<name>boot</name>
-		<name>dev/pts</name>
-		<name>dev/shm</name>
+		<name>dev</name>
 		<name>etc/opt</name>
 		<name>home</name>
 		<name>lib</name>
@@ -13,6 +12,7 @@
 		<name>proc</name>
 		<name>root</name>
 		<name>sbin</name>
+		<name>sys</name>
 		<name>tmp</name>
 		<name>usr/local</name>
 		<name>var</name>

@@ -23,6 +23,5 @@
 			<source>include/linux</source>
 			<destination>/tools/include</destination>
 		</copy>
-
 	</stage>
 </package>

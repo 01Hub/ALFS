@@ -3,7 +3,7 @@
 	<mkdir base="&BELFS;">
 		<option>parents</option>
 		<name>proc</name>
-		<name>dev/pts</name>
+		<name>sys</name>
 	</mkdir>
 
 	<execute command="mount">
@@ -13,8 +13,8 @@
 	</execute>
 
 	<execute command="mount">
-		<param>devpts</param>
-		<param>&BELFS;/dev/pts</param>
-		<param>-t devpts</param>
+		<param>sysfs</param>
+		<param>&BELFS;/sys</param>
+		<param>-t sysfs</param>
 	</execute>
 </stage>

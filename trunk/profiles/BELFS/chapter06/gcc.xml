@@ -52,6 +52,7 @@
 
 		<configure command="../&gcc-directory;/configure">
 			<param>--prefix=/usr</param>
+			<param>--libexecdir=/usr/lib</param>
 			<param>--enable-shared</param>
 			<param>--enable-threads=posix</param>
 			<param>--enable-__cxa_atexit</param>

@@ -1,26 +1,71 @@
-<package name="make_devices" version="&make_devices-version;">
-	<stage name="Unpacking a package.">
-		<unpack>
-			<digest>&make_devices-md5;</digest>
-			<archive>&packages_dir;/&make_devices-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
+<stage name="Building initial /dev directory.">
+  <stage name="Create permanent /dev/console and /dev/null.">
+    <execute command="mknod">
+		  <param>-m 600</param>
+			<param>/dev/console</param>
+			<param>c 5 1</param>
+		</execute>
 
-	<stage name="Installing a package.">
-		<copy base="&build_dir;">
-			<source>&make_devices-file;</source>
-			<destination>/dev/make_devices</destination>
-		</copy>
+    <execute command="mknod">
+		  <param>-m 666</param>
+			<param>/dev/null</param>
+			<param>c 1 3</param>
+		</execute>
+  </stage>
 
-		<permissions base="/dev" mode="754">
-			<name>/dev/make_devices</name>
-		</permissions>
+  <stage name="Create dynamic /dev directory.">
+	  <execute command="mount">
+		  <param>-n</param>
+		  <param>-t ramfs</param>
+		  <param>none</param>
+		  <param>/dev</param>
+	  </execute>
 
-		<execute base="/dev" command="./make_devices" />
-	</stage>
+		<mkdir>
+		  <name>/dev/shm</name>
+		  <name>/dev/pts</name>
+		</mkdir>
 
-	<stage name="Clean-up.">
-		<remove>&build_dir;/&make_devices-file;</remove>
-	</stage>
-</package>
+	  <execute command="mount">
+		  <param>-n</param>
+		  <param>-t tmpfs</param>
+		  <param>none</param>
+		  <param>/dev/shm</param>
+	  </execute>
+
+	  <execute command="mount">
+		  <param>-n</param>
+		  <param>-t devpts</param>
+			<param>-o gid=4,mode=620</param>
+		  <param>none</param>
+		  <param>/dev/pts</param>
+	  </execute>
+
+		<link>
+		  <target>/proc/self/fd</target>
+			<name>/dev/fd</name>
+		</link>
+
+		<link>
+		  <target>/proc/self/fd/0</target>
+			<name>/dev/stdin</name>
+		</link>
+
+		<link>
+		  <target>/proc/self/fd/1</target>
+			<name>/dev/stdout</name>
+		</link>
+
+		<link>
+		  <target>/proc/self/fd/2</target>
+			<name>/dev/stderr</name>
+		</link>
+
+		<link>
+		  <target>/proc/kcore</target>
+			<name>/dev/core</name>
+		</link>
+
+		<execute command="/tools/sbin/udevstart" />
+  </stage>
+</stage>
