@@ -188,11 +188,11 @@ static int configure_main(const element_s * const element)
 	
 	Nprint_h("Executing system command");
 	Nprint_h("    %s %s %s", data->prefix,
-		 (data->command) ? data->command : "configure",
+		 (data->command) ? data->command : "./configure",
 		 data->param);
 
 	status = execute_command(element, "%s %s %s", data->prefix,
-				 (data->command) ? data->command : "configure",
+				 (data->command) ? data->command : "./configure",
 				 data->param);
 
 	return status;
