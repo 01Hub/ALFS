@@ -1,5 +1,9 @@
 <package name="nmap" version="&nmap-version;">
 
+        <packageinfo>
+	        <requires><name>gtk+</name></requires>
+	</packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&nmap-package;</archive>

@@ -12,11 +12,7 @@
 			<base>&build_dir;/&traceroute-directory;</base>
 		</stageinfo>
 		
-		<permissions mode="644">
-		        <name>Makefile.in</name>
-		</permissions>
-		
-                <search_replace>
+		<search_replace>
 		        <file>Makefile.in</file>
 		        <find>-o bin</find>
 		        <replace>-o root</replace>
