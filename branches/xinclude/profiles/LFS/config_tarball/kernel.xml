@@ -1,3 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../ALFS-3.1.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+
+<alfs>
+
 <package name="linux" version="&linux-version;">
 	<stage name="Unpacking.">
 		<unpack>
@@ -22,45 +33,21 @@
 		</make>
 
 		<copy>
-			<source>&kernel-config;</source>
+			<source>&packages_dir;/&kernel-config;</source>
 			<destination>.config</destination>
 		</copy>
 
-		&c8-keymap;
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../config/keymap-ch8.xml" />
 
 		<make>
 			<param>oldconfig</param>
 		</make>
 
-		<make>
-			<param>CC=/opt/gcc-2.95.3/bin/gcc</param>
-			<param>dep</param>
-		</make>
+		<make />
 
 		<make>
-			<param>CC=/opt/gcc-2.95.3/bin/gcc</param>
-			<param>bzImage</param>
-		</make>
-
-		<make>
-			<param>CC=/opt/gcc-2.95.3/bin/gcc</param>
-			<param>modules</param>
-		</make>
-
-		<make>
-			<param>CC=/opt/gcc-2.95.3/bin/gcc</param>
 			<param>modules_install</param>
 		</make>
-
-		<make>
-			<param>mandocs</param>
-		</make>
-
-		<copy>
-			<option>archive</option>
-			<source>Documentation/man</source>
-			<destination>/usr/share/man/man9</destination>
-		</copy>
 
 		<copy>
 			<source>arch/i386/boot/bzImage</source>
@@ -69,7 +56,7 @@
 
 		<copy>
 			<source>System.map</source>
-			<destination>/boot/System-&linux-version;.map</destination>
+			<destination>/boot/System.map-&linux-version;</destination>
 		</copy>
 
 		<copy>
@@ -83,3 +70,6 @@
 		</textdump>
 	</stage>
 </package>
+
+</alfs>
+
