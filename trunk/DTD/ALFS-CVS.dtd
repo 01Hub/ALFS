@@ -58,7 +58,7 @@
 
 <!ELEMENT else           (stageinfo?, (alfs | %ops;)*)>
 
-<!ELEMENT execute        ((param | prefix)*)>
+<!ELEMENT execute        (((param | prefix)*) | content)>
 <!ATTLIST execute
           base           CDATA #IMPLIED
           command        CDATA #REQUIRED>
