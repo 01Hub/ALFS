@@ -26,8 +26,6 @@
 	<make>
 		<param>install</param>
 	</make>
-
-	<execute command="/sbin/ldconfig" />
     </stage>
 
     <stage name="Clean-up.">

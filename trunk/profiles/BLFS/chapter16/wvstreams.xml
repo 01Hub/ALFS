@@ -47,13 +47,15 @@
 
 	<make>
 	        <param>PREFIX=/usr</param>
-	        <param>LDFLAGS=-lcrypt</param>
+	        <param>LDFLAGS="-lcrypt"</param>
 	</make>
 
 	<make>
 	        <param>PREFIX=/usr</param>
 		<param>install</param>
 	</make>
+
+	<execute command="/sbin/ldconfig" />
     </stage>
 
     <stage name="Clean-up.">
