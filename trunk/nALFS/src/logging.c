@@ -847,8 +847,6 @@ void start_logging_element(element_s *el)
 		return;
 	}
 
-	Stop_receiving_sigio();
-
 	if (Is_element_name(el, "package")) {
 		if (package_has_name_and_version(el)) {
 			logs = start_package_logging(el);
@@ -857,8 +855,6 @@ void start_logging_element(element_s *el)
 			Debug_logging("start_logging_element: no name/version");
 		}
 	}
-
-	Start_receiving_sigio();
 }
 
 void end_logging_element(element_s *el, int status)
@@ -868,12 +864,8 @@ void end_logging_element(element_s *el, int status)
 		return;
 	}
 
-	Stop_receiving_sigio();
-
 	if (Is_element_name(el, "package")) {
 		end_package_logging(status);
 
 	}
-
-	Start_receiving_sigio();
 }

@@ -250,8 +250,6 @@ static int process_stage(const element_s * const element)
 	pid = fork();
 
 	if (pid == 0) { /* Child. */
-		Start_receiving_sigio();
-
 		status = execute_children_filtered(element, HTYPE_STAGEINFO);
 
 		if (status)

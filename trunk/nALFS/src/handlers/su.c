@@ -159,8 +159,6 @@ static int su_main(const element_s * const el)
 	su_pid = fork();
 
 	if (su_pid == 0) { /* Child. */
-		Start_receiving_sigio();
-
 		if (change_to_user(user) == -1) {
 			exit(EXIT_FAILURE);
 		}
