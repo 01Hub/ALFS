@@ -33,7 +33,7 @@
      No attempt is done to access this partition during
      the build, except if it has been mounted on &LFS;
      -->
-<!ENTITY lfs_partition "/dev/hda2>
+<!ENTITY lfs_partition "/dev/hda2">
 
 <!-- Type of your LFS partition.
      This entity is used only to initialize the new fstab file.
