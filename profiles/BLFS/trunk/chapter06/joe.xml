@@ -23,8 +23,8 @@
         <base>&build_dir;/&joe-directory;</base>
       </stageinfo>
       <configure>
+	<param>--sysconfdir=/etc</param>
         <param>--prefix=/usr</param>
-        <param>--sysconfdir=/etc</param>
       </configure>
       <make />
       <make>

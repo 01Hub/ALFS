@@ -1,17 +1,24 @@
 <!--************* packages for chapter 6 *************-->
 
-<!ENTITY vim-version   "6.2">
+<!ENTITY vim-version   "6.3">
 <!ENTITY vim-package   "vim-&vim-version;.tar.bz2">
-<!ENTITY vim-directory "vim62">
+<!ENTITY vim-lang-package "vim-&vim-version;-lang.tar.gz">
+<!ENTITY vim-directory "vim63">
 
 <!ENTITY emacs-version   "21.3">
 <!ENTITY emacs-package   "emacs-&emacs-version;.tar.gz">
 <!ENTITY emacs-directory "emacs-&emacs-version;">
 
-<!ENTITY nano-version   "1.2.3">
+<!ENTITY nano-version   "1.2.4">
 <!ENTITY nano-package   "nano-&nano-version;.tar.gz">
 <!ENTITY nano-directory "nano-&nano-version;">
 
-<!ENTITY joe-version   "3.0">
+<!ENTITY joe-version   "3.1">
 <!ENTITY joe-package   "joe-&joe-version;.tar.gz">
 <!ENTITY joe-directory "joe-&joe-version;">
+
+<!ENTITY ed-version "0.2">
+<!ENTITY ed-package "ed-&ed-version;.tar.gz">
+<!ENTITY ed-directory "ed-&ed-version;">
+<!ENTITY ed-mkstemp-patch "ed-&ed-version;-mkstemp-1.patch">
+

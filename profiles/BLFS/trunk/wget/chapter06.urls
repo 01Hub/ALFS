@@ -1,7 +1,12 @@
-ftp://ftp.vim.org/pub/vim/unix/vim-6.2.tar.bz2
+ftp://ftp.vim.org/pub/vim/unix/vim-6.3.tar.bz2
+http://ftp.at.vim.org/pub/vim/extra/vim-6.3-lang.tar.gz
 
 ftp://ftp.gnu.org/pub/gnu/emacs/emacs-21.3.tar.gz
 
-http://www.nano-editor.org/dist/v1.2/nano-1.2.3.tar.gz
+http://www.nano-editor.org/dist/v1.2/nano-1.2.4.tar.gz
 
-http://umn.dl.sourceforge.net/sourceforge/joe-editor/joe-3.0.tar.gz
+http://umn.dl.sourceforge.net/sourceforge/joe-editor/joe-3.1.tar.gz
+
+ftp://ftp.gnu.org/pub/gnu/ed/ed-0.2.tar.gz
+http://www.linuxfromscratch.org/blfs/downloads/svn/ed-0.2-mkstemp-1.patch
+

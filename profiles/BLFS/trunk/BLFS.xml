@@ -69,6 +69,7 @@
       <xi:include href="chapter06/emacs.xml" />
       <xi:include href="chapter06/nano.xml" />
       <xi:include href="chapter06/joe.xml" />
+      <xi:include href="chapter06/ed.xml" />
     </stage>
     <stage name="Chapter 7 (Shells)">
       <xi:include href="chapter07/ash.xml" />
