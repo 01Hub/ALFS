@@ -21,9 +21,23 @@
 
 	<make />
 
-	<execute command="install -m 755 sh /bin/ash" />
-	<execute command="install -m 644 sh.1 /usr/share/man/man1/ash.1" />
+	<copy>
+		<source>sh</source>
+		<destination>/bin/ash</destination>
+	</copy>
 
+	<permissions mode="755">
+		<name>/bin/ash</name>
+	</permissions>
+
+	<copy>
+		<source>sh.1</source>
+		<destination>/usr/share/man/man1/ash.1</destination>
+	</copy>
+
+	<permissions mode="644">
+		<name>/usr/share/man/man1/ash.1</name>
+	</permissions>
     </stage>
 
     <stage name="Cleanup">
