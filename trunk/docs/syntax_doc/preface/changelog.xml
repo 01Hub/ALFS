@@ -6,6 +6,9 @@
 
 <itemizedlist>
 
+<listitem><para>November 5th, 2003 [jwrober]: Added
+elem_prefix.</para></listitem>
+
 <listitem><para>November 5th, 2003 [jwrober]: Updated elem_configure to match
 the DTD and standardized to the rest of the doc.</para></listitem>
 

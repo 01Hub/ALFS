@@ -31,6 +31,7 @@
 <!ENTITY elem_param          SYSTEM "elem_param.xml">
 <!ENTITY elem_patch          SYSTEM "elem_patch.xml">
 <!ENTITY elem_permissions    SYSTEM "elem_permissions.xml">
+<!ENTITY elem_prefix         SYSTEM "elem_prefix.xml">
 <!ENTITY elem_reference      SYSTEM "elem_reference.xml">
 <!ENTITY elem_remove         SYSTEM "elem_remove.xml">
 <!ENTITY elem_replace        SYSTEM "elem_replace.xml">
