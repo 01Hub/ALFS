@@ -17,7 +17,6 @@ execute
 remove
 copy
 move
-make
 link
 mkdir
 permissions
@@ -29,8 +28,8 @@ Generic Package:
 
 <package>
     <info>
-	<name>[package name]</name>
-	<version>[package version]</version>
+        <name>[package name]</name>
+        <version>[package version]</version>
     </info>
 
     ...
