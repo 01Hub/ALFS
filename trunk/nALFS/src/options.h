@@ -60,7 +60,8 @@ typedef unsigned char option_pointer;
 enum option_type {
 	O_BOOL,
 	O_NUMBER,
-	O_STRING
+	O_STRING,
+	O_COMMAND
 };
 
 typedef struct option_s {
