@@ -19,9 +19,10 @@ filenames such as <filename>/bin/grep</filename></para></blockquote>
 
 <para><emphasis>Emphasis</emphasis></para>
 
-<blockquote><para>This form of text is used for several purposes in the
-book but mainly to emphasize important points or to give examples as to
-what to type.</para></blockquote>
+<para><emphasis role="bold">Bold Emphasis</emphasis></para>
+
+<blockquote><para>These forms of text are used for several purposes in the
+book but mainly to emphasize important points.</para></blockquote>
 
 <para><ulink url="&alfs-root;">&alfs-root;</ulink></para>
 
