@@ -51,24 +51,21 @@
         <param>slx</param>
       </execute>
       <copy>
-        <source>doc/pine.1</source>
-        <source>doc/pico.1</source>
-        <source>doc/rpdump.1</source>
-        <source>doc/rpload.1</source>
+        <source>doc/*.1</source>
         <destination>/usr/share/man/man1</destination>
       </copy>
-      <execute command="install" base="&build_dir;/&pine-directory;/bin">
-        <param>pine</param>
-        <param>imapd</param>
-        <param>ipop2d</param>
-        <param>ipop3d</param>
-        <param>mailutil</param>
-        <param>mtest</param>
-        <param>pico</param>
-        <param>pilot</param>
-        <param>rpdump</param>
-        <param>rpload</param>
-        <param>/usr/bin</param>
+      <copy base="&build_dir;/&pine-directory;/bin">
+        <source>pine</source>
+        <source>imapd</source>
+        <source>ipop2d</source>
+        <source>ipop3d</source>
+        <source>mailutil</source>
+        <source>mtest</source>
+        <source>pico</source>
+        <source>pilot</source>
+        <source>rpdump</source>
+        <source>rpload</source>
+        <destination>/usr/bin</destination>
       </execute>
     </stage>
     <stage name="Cleanup">

@@ -22,13 +22,20 @@
 	<name>openssl</name>
       </utilizes>
       <utilizes>
-	<name>db</name>
+      	<name>net-tools</name>
       </utilizes>
+      <utilizes>
+	<name>Net-DNS</name>
+      </utilizes>
+      <utilizes>
       <utilizes>
 	<name>openjade</name>
       </utilizes>
       <utilizes>
 	<name>jadetex</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-dsssl</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -57,11 +64,59 @@
       <configure>
         <param>--prefix=/usr</param>
         <param>--sysconfdir=/etc</param>
+	<param>--enable-threads</param>
+	<param>--with-libtool</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
+      <permissions mode="755" base="/usr/lib">
+	<name>libbind9.so.*</name>
+	<name>libisc.so.*</name>
+	<name>libisccc.so.*</name>
+	<name>libisccfg.so.*</name>
+	<name>liblwres.so.*</name>
+	<name>libdns.so.20.0.0</name>
+      </permissions>
+      <move base="/usr/share/man">
+	<source>man8/named.conf</source>
+	<destination>man5</destination>
+      </move>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/bind-&bind-version;</name>
+      </mkdir>
+      <mkdir base="/usr/share/doc/bind-&bind-version;">
+	<option>parents</option>
+	<name>arm</name>
+	<name>draft</name>
+	<name>misc</name>
+	<name>rfc</name>
+      </mkdir>
+      <copy base="&build_dir;/&bind-directory;/doc">
+	<source>arm/*.html</source>
+	<destination>/usr/share/doc/bind-&bind-version;/arm</destination>
+      </copy>
+      <copy base="&build_dir;/&bind-directory;/doc">
+	<source>draft/*.txt</source>
+	<destination>/usr/share/doc/bind-&bind-version;/draft</destination>
+      </copy>
+      <copy base="&build_dir;/&bind-directory;/doc">
+	<source>rfc/*</source>
+	<destination>/usr/share/doc/bind-&bind-version;/rfc</destination>
+      </copy>
+      <copy base="&build_dir;/&bind-directory;/doc">
+	<source>misc/dnssec</source>
+	<source>misc/ipv6</source>
+	<source>misc/migrat*</source>
+	<source>misc/options</source>
+	<source>misc/rfc-compliance</source>
+	<source>misc/roadmap</source>
+	<source>misc/sdb</source>
+	<destination>/usr/share/doc/bind-&bind-version;/misc</destination>
+      </copy>
+
     </stage>
     <stage name="Configuring chroot environment">
       <stageinfo>

@@ -17,9 +17,6 @@
   <package name="ntp" version="&ntp-version;">
     <packageinfo>
       <utilizes>
-        <name>readline</name>
-      </utilizes>
-      <utilizes>
         <name>openssl</name>
       </utilizes>
     </packageinfo>

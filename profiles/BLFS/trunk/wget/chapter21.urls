@@ -2,7 +2,7 @@ ftp://ftp.porcupine.org/mirrors/postfix-release/official/postfix-2.1.5.tar.gz
 
 ftp://ftp.sendmail.org/pub/sendmail/sendmail.8.13.1.tar.gz
 
-http://mirror.etf.bg.ac.yu/freebsd/distfiles/exim/exim-4.24.tar.bz2
+ftp://ftp.exim.org/pub/exim/exim4/exim-4.43.tar.bz2
 
 ftp://ftp.qualcomm.com/eudora/servers/unix/popper/qpopper4.0.5.tar.gz
 

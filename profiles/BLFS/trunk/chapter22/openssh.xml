@@ -88,6 +88,12 @@
       <make>
         <param>install</param>
       </make>
+      <textdump mode="append">
+      	<file>/etc/ssh/sshd_config</file>
+	<content>
+	  =PermitRootLogin no
+	</content>
+      </textdump>
     </stage>
     <stage name="Installing bootscript and configuration">
       <stageinfo>

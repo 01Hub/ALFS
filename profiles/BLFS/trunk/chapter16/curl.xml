@@ -22,6 +22,9 @@
       <utilizes>
         <name>openldap</name>
       </utilizes>
+      <utilizes>
+      	<name>&krb-impl;</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

@@ -58,12 +58,12 @@
     </search_replace>
     <search_replace>
       <file>config.make</file>
-      <find>HAVE_IP_TOOLS=0</find>
+      <find># HAVE_IP_TOOLS=0</find>
       <replace>HAVE_IP_TOOLS=1</replace>
     </search_replace>
     <search_replace>
       <file>config.make</file>
-      <find>HAVE_MII=0</find>
+      <find># HAVE_MII=0</find>
       <replace>HAVE_MII=1</replace>
     </search_replace>   
     <make />

@@ -56,7 +56,7 @@
         <param>courier</param>
       </execute>
       <execute command="getent passwd courier &gt; /dev/null || useradd">
-        <param>-c courier</param>
+        <param>-c 'Courier Mail Server'</param>
         <param>-d /dev/null</param>
         <param>-g courier</param>
         <param>-s /bin/false</param>

@@ -13,6 +13,9 @@
 <alfs>
 <package name="ethereal" version="&ethereal-version;">
   <packageinfo>
+    <requires>
+      <name>glib2</name>
+    </requires>
     <utilizes>
       <name>libpcap</name>
     </utilizes>
@@ -21,9 +24,6 @@
     </utilizes>
     <utilizes>
       <name>gtk+2</name>
-    </utilizes>
-    <utilizes>
-      <name>glib2</name>
     </utilizes>
     <utilizes>
       <name>openssl</name>
