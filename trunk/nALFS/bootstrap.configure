@@ -47,15 +47,13 @@ AC_CHECK_LIB([form], [form_driver], [MAIN_LIBS="${MAIN_LIBS} -lform"])
 AC_CHECK_LIB([ncurses], [initscr], [MAIN_LIBS="${MAIN_LIBS} -lncurses"])
 AC_SUBST([MAIN_LIBS])
 AM_CONDITIONAL(STATIC_BUILD, test x${enable_static} = xyes)
-if test x${enable_static} = xyes; then
-   AC_DEFINE([STATIC_BUILD], [1], [Define if the application is being built as a static executable.])
-else
-   AC_DEFINE_DIR([HANDLERS_DIRECTORY], [libdir/nALFS], [Define to location where the handler shared plugin files are installed.])
-fi
+AS_IF([test x${enable_static} = xyes],
+      [AC_DEFINE([STATIC_BUILD], [1], [Define if the application is being built as a static executable.])],
+      [AC_DEFINE_DIR([HANDLERS_DIRECTORY], [libdir/nALFS], [Define to location where the handler shared plugin files are installed.])])
 
-AC_ARG_ENABLE([inline], AC_HELP_STRING([--enable-inline], [enable compiler inlining of most functions [[default=no]]]), [], [enableval=no])
+AC_ARG_ENABLE([inline], [AC_HELP_STRING([--enable-inline], [enable compiler inlining of most functions [[default=no]]])], [], [enable_inline=no])
 
-case ${enableval} in
+case ${enable_inline} in
      n|no)
          inline_val=
          ;;
@@ -64,16 +62,16 @@ case ${enableval} in
          ;;
      *)
          echo "***"
-         echo "*** Unknown --enable-inline value supplied: ${enableval}"
+         echo "*** Unknown --enable-inline value supplied: ${enable_inline}"
          exit 1
          ;;
 esac
 
-AC_DEFINE_UNQUOTED([INLINE], $inline_val, [Define to "inline" to tell the compiler to inline most functions.])
+AC_DEFINE_UNQUOTED([INLINE], [$inline_val], [Define to "inline" to tell the compiler to inline most functions.])
 
-AC_ARG_ENABLE([element-editor], AC_HELP_STRING([--enable-element-editor], [enable editing of elements [[default=yes]]]), [], [enableval=yes])
+AC_ARG_ENABLE([element-editor], [AC_HELP_STRING([--enable-element-editor], [enable editing of elements [[default=yes]]])], [], [enable_element_editor=yes])
 
-case ${enableval} in
+case ${enable_element_editor} in
      n|no)
          ;;
      y|ye|yes)
@@ -81,29 +79,29 @@ case ${enableval} in
          ;;
      *)
          echo "***"
-         echo "*** Unknown --enable-element-editor value supplied: ${enableval}"
+         echo "*** Unknown --enable-element-editor value supplied: ${enable_element_editor}"
          exit 1
          ;;
 esac
 
-AC_ARG_WITH([run-dir-variable], AC_HELP_STRING([--with-run-dir-variable=NAME], [use environment variable NAME for nALFS run dir [[default=ALFS_DIR]]]), [ALFS_VAR="${withval}"], [ALFS_VAR="ALFS_DIR"])
+AC_ARG_WITH([run-dir-variable], [AC_HELP_STRING([--with-run-dir-variable=NAME], [use environment variable NAME for nALFS run dir [[default=ALFS_DIR]]])], [ALFS_VAR="${with_run_dir_variable}"], [ALFS_VAR="ALFS_DIR"])
 
-AC_DEFINE_UNQUOTED([ALFS_VAR], "${ALFS_VAR}", [Define environment variable that can hold path to run dir.])
+AC_DEFINE_UNQUOTED([ALFS_VAR], ["${ALFS_VAR}"], [Define environment variable that can hold path to run dir.])
 
-AC_ARG_WITH([run-dir-name], AC_HELP_STRING([--with-run-dir-name=NAME], [name of directory to create in $HOME when no other run dir specified [[default=.nALFS]]]), [ALFS_DIRECTORY_NAME="${withval}"], [ALFS_DIRECTORY_NAME=".nALFS"])
+AC_ARG_WITH([run-dir-name], [AC_HELP_STRING([--with-run-dir-name=NAME], [name of directory to create in $HOME when no other run dir specified [[default=.nALFS]]])], [ALFS_DIRECTORY_NAME="${with_run_dir_name}"], [ALFS_DIRECTORY_NAME=".nALFS"])
 
-AC_DEFINE_UNQUOTED([ALFS_DIRECTORY_NAME], "${ALFS_DIRECTORY_NAME}", [Define name of run dir in $HOME when not otherwise specified.])
+AC_DEFINE_UNQUOTED([ALFS_DIRECTORY_NAME], ["${ALFS_DIRECTORY_NAME}"], [Define name of run dir in $HOME when not otherwise specified.])
 
-AC_ARG_WITH([dir-mode], AC_HELP_STRING([--with-dir-mode=MODE], [permissions to apply to created directories [[default=0700]]]), [DIRS_MODE="${withval}"], [DIRS_MODE="0700"])
+AC_ARG_WITH([dir-mode], [AC_HELP_STRING([--with-dir-mode=MODE], [permissions to apply to created directories [[default=0700]]])], [DIRS_MODE="${with_dir_mode}"], [DIRS_MODE="0700"])
 
-AC_DEFINE_UNQUOTED([DIRS_MODE], $DIRS_MODE, [Define to set permissions applied to created directories.])
+AC_DEFINE_UNQUOTED([DIRS_MODE], [$DIRS_MODE], [Define to set permissions applied to created directories.])
 
-AC_ARG_WITH([rcfile-name], AC_HELP_STRING([--with-rcfile-name=NAME], [name of configuration file in $HOME [[default=.nALFSrc]]]), [RC_FILE_NAME="${withval}"], [RC_FILE_NAME=".nALFSrc"])
+AC_ARG_WITH([rcfile-name], [AC_HELP_STRING([--with-rcfile-name=NAME], [name of configuration file in $HOME [[default=.nALFSrc]]])], [RC_FILE_NAME="${with_rcfile_name}"], [RC_FILE_NAME=".nALFSrc"])
 
-AC_DEFINE_UNQUOTED([RC_FILE_NAME], "${RC_FILE_NAME}", [Define to set name of configuration file in $HOME.])
+AC_DEFINE_UNQUOTED([RC_FILE_NAME], ["${RC_FILE_NAME}"], [Define to set name of configuration file in $HOME.])
 
-AC_ARG_WITH([libxml2], AC_HELP_STRING([--with-libxml2=PATH],[search for xml2-config in PATH/bin]), [
-case ${withval} in
+AC_ARG_WITH([libxml2], [AC_HELP_STRING([--with-libxml2=PATH],[search for xml2-config in PATH/bin])], [
+case ${with_libxml2} in
      n|no)
         echo "***"
         echo "*** You specified --without-libxml2."
@@ -114,7 +112,7 @@ case ${withval} in
         AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no])
         ;;
      *)
-        AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no], [${withval}/bin])
+        AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no], [${with_libxml2}/bin])
         ;;
 esac
 ], [
@@ -122,13 +120,13 @@ AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no])
 ])
 
 if test "${XML2_CONFIG}" != "no"; then
-   AC_CHECK_LIB(xml2, xmlParseFile, AC_DEFINE([HAVE_LIBXML2], [], [Must always be defined, libxml2 is required for building this package.]), [], `${XML2_CONFIG} --libs`)
+   AC_CHECK_LIB([xml2], [xmlParseFile], [AC_DEFINE([HAVE_LIBXML2], [], [Must always be defined, libxml2 is required for building this package.])], [], [`${XML2_CONFIG} --libs`])
    if test "${ac_cv_lib_xml2_xmlParseFile}" = "yes"; then
       XML2_LIB=`${XML2_CONFIG} --libs | sed -e 's/^-L\(.*\) -lxml2.*$/\1/'`/libxml2.la
       XML2_INCLUDES=`${XML2_CONFIG} --cflags`
       AC_SUBST([XML2_LIB])
       AC_SUBST([XML2_INCLUDES])
-      AC_CHECK_LIB(xml2, xmlXIncludeProcess, AC_DEFINE([HAVE_XINCLUDE], [], [Define to enable use of xi:include in profiles.]), [], `${XML2_CONFIG} --libs`)
+      AC_CHECK_LIB([xml2], [xmlXIncludeProcess], [AC_DEFINE([HAVE_XINCLUDE], [], [Define to enable use of xi:include in profiles.])], [], [`${XML2_CONFIG} --libs`])
    else
       echo "***"
       echo "*** The libxml2 installation on this system appears to be broken."
@@ -144,8 +142,8 @@ else
    exit 1
 fi
 
-AC_ARG_WITH([curl], AC_HELP_STRING([--with-curl=PATH],[search for curl-config in PATH/bin]), [
-case ${withval} in
+AC_ARG_WITH([curl], [AC_HELP_STRING([--with-curl=PATH],[search for curl-config in PATH/bin])], [
+case ${with_curl} in
      n|no)
         ;;
      y|ye|yes)
@@ -154,7 +152,7 @@ case ${withval} in
         ;;
      *)
         USE_CURL=yes
-        AC_PATH_PROG([CURL_CONFIG], [curl-config], [no], [${withval}/bin])
+        AC_PATH_PROG([CURL_CONFIG], [curl-config], [no], [${with_curl}/bin])
         ;;
 esac
 ], [
@@ -162,7 +160,7 @@ AC_PATH_PROG([CURL_CONFIG], [curl-config], [no])
 ])
 
 if test "${CURL_CONFIG}" != "no"; then
-   AC_CHECK_LIB(curl, curl_global_init, AC_DEFINE([HAVE_LIBCURL], [], [Define to use libcurl instead of wget for downloading.]), [], `${CURL_CONFIG} --libs`)
+   AC_CHECK_LIB([curl], [curl_global_init], [AC_DEFINE([HAVE_LIBCURL], [], [Define to use libcurl instead of wget for downloading.])], [], [`${CURL_CONFIG} --libs`])
    if test "${ac_cv_lib_curl_curl_global_init}" = "yes"; then
       CURL_LIB=`${CURL_CONFIG} --libs | sed -e 's/^-L\(.*\) -lcurl.*$/\1/'`/libcurl.la
       CURL_INCLUDES=`${CURL_CONFIG} --cflags`
@@ -182,8 +180,8 @@ elif test "${USE_CURL}" = "yes"; then
    exit 1
 fi
 
-AC_ARG_WITH([ssl], AC_HELP_STRING([--with-ssl=PATH],[use ssl files in PATH (ssl is needed for checking non-MD5 digests in <unpack> and <download> elements)]), [
-case ${withval} in
+AC_ARG_WITH([ssl], [AC_HELP_STRING([--with-ssl=PATH],[use ssl files in PATH (ssl is needed for checking non-MD5 digests in <unpack> and <download> elements)])], [
+case ${with_ssl} in
      n|no)
         ;;
      y|ye|yes)
@@ -191,13 +189,13 @@ case ${withval} in
         ;;
      *)
         USE_SSL=yes
-        SSL_DIR="${withval}"
+        SSL_DIR="${with_ssl}"
         ;;
 esac
 ])
 
 if test "${USE_SSL}" = "yes"; then
-   AC_CHECK_LIB([ssl], [OpenSSL_add_all_digests], AC_DEFINE([HAVE_LIBSSL], [], [Define to indicate the SSL libraries should be used for verifying non-MD5 digests.]), [], -L${SSL_DIR}/lib -lcrypto)
+   AC_CHECK_LIB([ssl], [OpenSSL_add_all_digests], [AC_DEFINE([HAVE_LIBSSL], [], [Define to indicate the SSL libraries should be used for verifying non-MD5 digests.])], [], [-L${SSL_DIR}/lib -lcrypto])
    if test "${ac_cv_lib_ssl_OpenSSL_add_all_digests}" = "yes"; then
       SSL_LIB="-lssl -lcrypto"
       if test "${SSL_DIR}" != ""; then
@@ -234,8 +232,8 @@ done
 cat << EOF
 AC_ARG_ENABLE([syntax],
         AC_HELP_STRING([--enable-syntax=VERSIONS], [enable only specific ALFS profile syntax versions to be built [[default=${default_syntaxes}]]]),
-        [SYNTAX_LIST=\${enableval}],
-        [SYNTAX_LIST=${default_syntaxes}])
+        [],
+        [enable_syntax=${default_syntaxes}])
 EOF
 
 for syntax in ${all_syntaxes}; do
@@ -244,7 +242,7 @@ done
 
 cat << "EOF"
 save_ifs="${IFS}"; IFS="${IFS}${PATH_SEPARATOR},"
-for syntax_ver in ${SYNTAX_LIST}; do
+for syntax_ver in ${enable_syntax}; do
     case ${syntax_ver} in
 EOF
 
@@ -269,17 +267,17 @@ EOF
 
 for syntax in ${all_syntaxes}; do
 	cat << EOF
-AC_DEFINE_UNQUOTED([HANDLER_SYNTAX_${syntax}], \${syntax_${syntax}}, [Define to 1 if ALFS ${syntax/_/.} profile syntax handlers should be built.])
+AC_DEFINE_UNQUOTED([HANDLER_SYNTAX_${syntax}], [\${syntax_${syntax}}], [Define to 1 if ALFS ${syntax/_/.} profile syntax handlers should be built.])
 EOF
 done
 
 for handler in ${all_handlers}; do
-    echo -n "AM_CONDITIONAL([HANDLER_$handler], test \$(("
+    echo -n "AM_CONDITIONAL([HANDLER_$handler], [test \$(("
     eval "syntax_list=\${${handler}_syntaxes}"
     for syntax in ${syntax_list}; do
 	echo -n "syntax_${syntax} + "
     done
-    echo "0)) -gt 0)"
+    echo "0)) -gt 0])"
 done
 
 echo AC_OUTPUT
