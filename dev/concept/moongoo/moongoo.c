@@ -3,6 +3,7 @@
 
 #include <alfs.h>
 #include <book.h>
+#include <syn.h>
 #include <repl.h>
 #include <util.h>
 
@@ -28,8 +29,13 @@ int main (int argc, char **argv)
 	resolve_entities(cur);
 	
 	prof=bookasprofile(cur);
-	set_filter(default_filter);
-	print_profile(*prof);
+	//prof=syn_profile(cur);
+	
+	if (prof)
+	{
+		set_filter(default_filter);
+		print_profile(*prof);
+	}
 	
 	xmlFreeDoc(doc);
 	return 0;
