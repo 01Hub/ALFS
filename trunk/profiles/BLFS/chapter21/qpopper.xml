@@ -49,7 +49,7 @@
 			</content>
 		</textdump>
 
-		<execute command="killall -HUP  syslogd" />
+		<execute command="/etc/rc.d/init.d/sysklogd restart" />
 
 		<textdump mode="append">
 		        <file>/etc/xinetd.conf</file>

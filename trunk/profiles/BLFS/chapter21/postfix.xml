@@ -95,13 +95,11 @@
 			</content>
 		</textdump>
 
-		<copy base="/etc/postfix">
-			<source>main.cf</source>
-			<destination>main.cf.bak</destination>
-		</copy>
-
-		<execute command="sed &quot;s/#myhostname = host.domain.tld/myhostname = &hostname;&quot; \ 
-			/etc/postfix/main.cf.bak > /etc/postfix/main.cf" />
+		<search_replace base="/etc/postfix">
+			<file>main.cf</file>
+			<find>#myhostname = host.domain.tld</find>
+			<replace>myhostname = &hostname;</replace>
+		</search_replace>
 
 		<execute command="/usr/bin/newaliases" />
 
