@@ -1,12 +1,16 @@
 
 
 <!-- chapter 3 -->
+<!ENTITY configusers SYSTEM "./chapter03/configusers.xml">
 <!ENTITY issue     SYSTEM "./chapter03/issue.xml">
 <!ENTITY bash_startup SYSTEM "./chapter03/bash_startup.xml">
 <!ENTITY inputrc   SYSTEM "./chapter03/inputrc.xml">
 <!ENTITY random    SYSTEM "./chapter03/random.xml">
 <!ENTITY vimrc     SYSTEM "./chapter03/vimrc.xml">
-<!ENTITY skel      SYSTEM "./chapter03/skel.xml">
+<!ENTITY shells    SYSTEM "./chapter03/shells.xml">
+<!ENTITY netfs     SYSTEM "./chapter03/netfs.xml">
+<!ENTITY compressman   SYSTEM "./chapter03/maninfo.xml">
+
 
 <!-- chapter 4 -->
 <!ENTITY shadow    SYSTEM "./chapter04/shadow.xml">

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<stage name="/etc/shells">
+
+	<textdump base="/etc">
+		<file>shells</file>
+		<content>
+		=# Begin /etc/shells
+		=
+		=/bin/sh
+		=/bin/bash
+		=
+		=# End /etc/shells
+		</content>
+	</textdump>
+
+</stage>

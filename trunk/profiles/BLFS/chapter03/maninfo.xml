@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<stage name="Compressing man and info pages">
+
+<!-- Note: this section does not execute the script that is installed here. Refer to the script
+itself and the installation page in the BLFS Book for instructions on how to use it. -->
+
+	<copy>
+		<source>&blfs-config;/scripts/compressdoc</source>
+		<destination>/usr/sbin</destination>
+	</copy>
+
+	<permissions mode="755">
+		<name>/usr/sbin/compressdoc</name>
+	</permissions>
+</stage>
+

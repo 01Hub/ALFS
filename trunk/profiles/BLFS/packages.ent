@@ -1,3 +1,7 @@
+<!ENTITY lfs-bootscripts-version "2.0.3">
+<!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
+<!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
+
 <!--************* packages for chapter 4 *************-->
 
 <!ENTITY linuxpam-version   "0.77">
