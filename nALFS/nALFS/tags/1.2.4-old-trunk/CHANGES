@@ -1,0 +1,1169 @@
+2003-11-16  Neven Has
+
+	* Version updated to 1.2.0-rc1.
+
+2003-11-11  tag v1_2_0_rc
+
+2003-11-07  Neven Has
+
+	* README: Moved some sections from "Quick start" to "Compiling and
+	  installing".
+
+2003-11-06  Kevin P. Fleming
+
+	* Add Neven's preferred list of gcc warning settings to
+	  Makefile.am, automatically used if --enable-maintainer-mode is
+	  specified when configure is run
+
+2003-11-06  Kevin P. Fleming
+
+	* Move Nprint-related definitions/macros from win.h to nprint.h.
+	  Add nprint_init function to nalfs.c, used during initialization
+	  (before any profile execution or interactive mode are begun)
+
+2003-11-04  Kevin P. Fleming
+
+	* Read /etc/nALFSrc (if it exists) before user's .nALFSrc, support
+	  --rcfile parameter (overrides default rc files)
+
+2003-11-04  Kevin P. Fleming
+
+	* Always report rcfile path for errors found during parsing
+          and report all failures found in an rcfile, not just the first one
+
+2003-11-03  Kevin P. Fleming
+
+	* Add validate_boolean_input and convert_to_boolean functions
+	  support all common boolean input (upper/lowercase,
+	  yes/no/y/n/true/false)
+
+2003-11-03  Kevin P. Fleming
+
+	* Implement support for per-option validation functions. Add
+	  validate_command function for validating all command options.
+	  Add validate_number_minmax function for validating numeric options
+	  with lower/upper bounds. Add error output to
+          validate_command/validate_number_minmax tell user what is wrong
+	  with their input
+
+2003-11-03  Kevin P. Fleming
+
+	* Restructure option structure again, to prepare for supporting
+	  per-option validation functions
+
+2003-11-03  Kevin P. Fleming
+
+	* src/handlers/stage.c:
+	  remove extraneous free of 'root'
+
+2003-11-03  Kevin P. Fleming
+
+	* Rework option handling to eliminate pointer-casting and
+	  inconsistent option definitions
+
+2003-11-03  Kevin P. Fleming
+
+	* Make <stageinfo> handling conform to DTD specification: process
+	  <root>, then <user>, then <environment>. Also clear environment
+	  after successful chroot() (again according to DTD specification)
+
+2003-11-02  Kevin P. Fleming
+
+	* Do some limited parsing of "command string" options: allow only
+	  %% and %s patterns, and only allow a single %s pattern
+
+2003-11-01  Neven Has
+
+	* Printing of warning added, when executing editor fails.
+
+2003-10-30  Neven Has
+
+	* Removing packages finalized. Log files' extension changed to
+	  .xml, to make things incompatible.
+
+2003-10-30  Kevin P. Fleming
+
+	* Add options to allow the user to control the commands used to
+	  uncompress and/or unpack files by the <unpack> element
+
+2003-10-30  Kevin P. Fleming
+
+	* Make patch handler display entire command to be executed
+
+2003-10-30  Kevin P. Fleming
+
+	* Added functions to nALFS.h and new file file_handling.c with
+	  functions to:
+	  - determine a file's compression type
+	  - determine a file's archive format
+          - return a command to decompress a particular compression type
+          - return a command to unpack a particular archive format
+
+2003-10-30  Kevin P. Fleming
+
+	* bugzilla entry #669: <execute> and <patch> elements now accept
+	  <prefix> elements
+
+2003-10-29  Neven Has
+
+	* Changed the format of installed files' list -- a simple,
+	  one-file-per-line is now used.
+
+2003-10-29  Neven Has
+
+	* Disallowed using 'P' while running, for now.
+
+2003-10-29  Neven Has
+
+	* Package's string sent by the backend is now used for constructing
+	  log's file name.
+
+2003-10-29  Neven Has
+
+	* "two-find()s" method of logging changed files removed.
+
+2003-10-29  Neven Has
+
+	* Changed a way logs_get_flog_element() gets <changed_files>,
+	  fixing a bug when the wrong element is found (and frontend
+	  starts receiving the file that's not being sent by backend).
+
+2003-10-29  Neven Has
+
+	* stat() -> lstat() when printing a warning about removing
+	  non-existent file (in <remove> handler, syntax version 2.0).
+
+2003-10-28  Kevin P. Fleming
+
+	* Remove libxml2-SAX option
+
+2003-10-28  Neven Has
+
+	* New utility function created (xreaddir()) and used in two places.
+
+2003-10-27  Neven Has
+
+	* Specifying a directory on command line, or after 'a', now loads
+          all .xml files from it (non-recursively).
+
+2003-10-27  Neven Has
+
+	* All occurrences of libxml2 use removed from logging.c,
+	  which now deals with log files using logs_* functions,
+	  through (logs_t *) handle.
+
+2003-10-27  Kevin P. Fleming
+
+	* Mmake bootstrap script determine syntax versions supported by each
+	  handler and construct Makefile appropriately
+
+2003-10-27  Kevin P. Fleming
+
+	* Add generation of nALFS-config script (installed into
+	  <prefix>/bin) so out-of-tree handler compilation can use
+	  standard method for finding nALFS include file and library
+
+2003-10-27  Kevin P. Fleming
+
+	* Extend --enable-syntax functionality so that
+	  single-syntax-version handlers are not compiled or installed when
+	  not needed (at the moment, the list of single-version handlers is
+	  hardcoded in bootstrap, but will be replaced by run-time
+	  determination)
+
+2003-10-25  Neven Has
+
+	* More improvements in removing installed packages code.
+
+2003-10-25  Kevin P. Fleming
+
+	* Change configure default from --disable-inline to
+	  --enable-inline (inline defaults off now)
+
+2003-10-25  Neven Has
+
+	* Helper function n_xmlGetLastElementByName() created in
+          libXML-tree.c.
+
+2003-10-24  Kevin P. Fleming
+
+	* Process handler_info.priority field, allowing custom/modified
+	  handlers to replace standard ones
+
+2003-10-24  Kevin P. Fleming
+
+	* Changes for bug #612 to support multiple <reference> in <unpack>
+
+2003-10-24  Neven Has
+
+	* Support for cursor added to tmp_window_driver(), now used in 'P'.
+
+2003-10-24  Neven Has
+
+	* New command ('P'ackages) added (for now just printing the list
+          of log files it found).
+	  Started to improve interface for log files.
+
+2003-10-23  Kevin P. Fleming
+
+	* Change get_url to check digest after successful rename of
+          temp file, and not remove file if digest check fails (failure
+	  will still be passed to caller)
+
+2003-10-23  Kevin P. Fleming
+
+	* Added --enable-syntax parameter to configure script
+
+2003-10-23  Kevin P. Fleming
+
+	* more complete fix for bugzilla bug #614
+	  - Added alloc_element_digest function to src/lib/digest.c,
+            removing common digest parsing code from download.c/unpack.c
+	  - Created src/lib/get_url.c, and created new common function to
+	    performa URL download and optionally check a digest against
+	    the result. The new function downloads into a temporary file
+	    (avoiding overwriting any existing file until the download was
+	    successful and the digest matches). It also does not leave any
+	    empty or partial-length files from failed downloads, nor does
+	    it leave files that did not match the supplied digest
+
+2003-10-23  Neven Has
+
+	* New function for scrolling TMP_WINDOW created in win.c,
+	  removing a lot of duplicated code from nalfs.c
+
+2003-10-23  Kevin P. Fleming
+
+	* fixes for bug #614:
+	  - unpack.c now removes any left-over file from a failed download
+	  - download.c now removes any left-over file from a failed
+	    download
+	  - download.c now checks digest (if supplied) immediately after
+	    download, and if digest check fails and more urls have been
+	    specified, tries other urls to find a successful download &
+	    digest match
+
+2003-10-22  Neven Has
+
+	* Structure containing the list of handlers and
+	  their count created, cleaning the code a bit and removing some
+	  functions not needed any more.
+
+2003-10-22  Neven Has
+
+	* New structure describing each handler created,
+	  allowing multiple handlers in a single file.	Merged handlers for
+	  different syntax versions, removing new_* files.
+
+2003-10-21  Kevin P. Fleming
+
+	* Added static build instructions and warning about libnss/libcurl
+	  usage
+
+2003-10-21  Kevin P. Fleming
+
+	* Convert to more fully use GNU autotools system (autoconf, automake
+          and libtool).
+
+2003-10-17  Neven Has
+
+	* Fixed a bug when logging installed files and using <stage>
+	  that forks.
+
+2003-10-17  Neven Has
+
+	* Code dealing with the format of XML log files of the packages
+	  moved to a separate source file.
+
+2003-09-22  tag v1_1_8
+
+2003-09-21  Kevin P. Fleming
+
+	* Duplicated curl code moved from handlers to src/lib/.
+
+2003-09-19  Neven Has
+
+	* <download> handler by Vassili added. Using digest.h code now.
+
+2003-09-19  Kevin P. Fleming
+
+	* MD5 computation code from Christophe Devine added
+	  and --without-ssl made default.
+
+Changes, before program was put under CVS
+=========================================
+
+ o  2003 Aug 15 18:52:59 +02:00
+    Patch adds prefix element support to configure and make elements;
+    prefix elements are put on the command line prior to the configure
+    or make commands themselves, by Kevin P. Fleming.
+
+ o  2003 Aug 15 18:41:54 +02:00
+    Support for mode="prepend" added to environment elements,
+    by Kevin P. Fleming.
+
+ o  2003 Aug 12 20:48:11 +02:00
+    The first patch allows nALFS to build in a seperate build directory
+    than the source directory.  The second patch allows nALFS to build
+    under gcc 3.3.x by changing varargs.h to stdarg.h.  By Marcus R. Brown.
+
+ o  2003 May 13 21:22:13 +02:00
+    --enable-static-link commented out for now.
+
+ o  2003 May 13 21:10:51 +02:00
+    Added printing of unknown elements and their locations
+    after parsing the profile.
+
+ o  2003 Apr 27 19:12:30 +02:00
+    A bug with the use of va_list fixed by Christopher Yeoh,
+    found by Marvin Heffler.
+
+ o  2003 Mar 09 18:56:00 +01:00
+    Removed check for file existance in <remove> to allow pattern matching. 
+
+ o  2003 Mar 04 13:09:05 +01:00
+    ctrl_msg_s typedef changed.
+
+ o  2003 Mar 02 14:13:59 +01:00
+    Communication functions improved, number_len() moved to utility.c.
+
+ o  2003 Mar 01 12:26:46 +01:00
+    Changed the method of following execution (backend now includes element's
+    information in control message).
+
+ o  2003 Feb 28 17:15:01 +01:00
+    get_main_profile() -> get_profile_by_element()
+
+
+==[ v1.1.7
+
+ o  2003 Feb 28 16:24:41 +01:00
+    "bzip2 -dc %s | tar xv" -> "tar --use-compress-prog=bunzip2 -xvf %s"
+
+ o  2003 Feb 25 17:48:06 +01:00
+    Jumping to current running element moved to a function.
+
+ o  2003 Feb 25 17:38:23 +01:00
+    Do not "rm -fr" is file doesn't exist.
+
+ o  2003 Feb 25 17:33:58 +01:00
+    Doing "mkdir -p" now, when creating directory for stamp files.
+    S_ISDIR check moved to the same function.
+
+ o  2003 Feb 24 21:36:14 +01:00
+    Initialization of directories moved to init.c.
+
+ o  2003 Feb 24 20:45:40 +01:00
+    Several bugs fixed - (L) -> (B) in options and missing arguments to Nprint.
+
+ o  2003 Feb 24 19:07:09 +01:00
+    Version updated.
+    inline -> INLINE.
+
+ o  2003 Feb 20 16:10:56 +01:00
+    Rules.mak.in added and Makefiles improved.
+
+ o  2003 Feb 14 18:09:54 +01:00
+    Check for an empty stamp file and removing the new line if present.
+    Using strtoul() now, when comparing versions.
+
+ o  2003 Feb 14 17:41:06 +01:00
+    Directory for stamps is now created automatically when needed.
+    Check for the existence of "condition" attribute added and a few more
+    fixes and improvements in <packageinfo>.
+
+ o  2003 Feb 13 23:39:41 +01:00
+    Printing usage information only when requested now (with --help).
+
+ o  2003 Feb 09 15:16:26 +01:00
+    Support for the element <version> in <utilizes> and <requires>
+    added by Vassili Dzuba.
+
+ o  2003 Feb 06 11:42:37 +01:00
+    The option "no-dereference" for the element <link> added by Vassili Dzuba.
+
+
+==[ v1.1.6
+
+ o  2003 Jan 27 16:58:16 +01:00
+    Version updated.
+
+ o  2003 Jan 24 00:15:34 +01:00
+    <packageinfo> with <description>, <requires> and <utilizes> added as
+    a new 3.1 syntax, by Vassili Dzuba.
+
+ o  2003 Jan 15 17:52:10 +01:00
+    3 grammar/spelling mistakes in the doc/nALFSrc file fixed by Jamie Bennett.
+
+ o  2003 Jan 14 16:32:57 +01:00
+    "editor" option added.
+
+
+==[ v1.1.5
+
+ o  2003 Jan 13 22:10:14 +01:00
+    Version updated and some smaller fixes.
+
+ o  2003 Jan 10 01:40:09 +01:00
+    Option for following the running element made changeable from the program.
+
+ o  2003 Jan 02 15:39:22 +01:00
+    'E' command added for starting the editor on the current profile.
+    Using xmlBuildURI() now when adding profiles from the program,
+    instead of our (broken) implementation.
+
+ o  2003 Jan 01 15:31:31 +01:00
+    top and cursor moved to displayed, and current removed (macro added).
+    Erasing the main window before recreating it added.
+    Some code-cleaning.
+
+ o  2002 Dec 31 19:05:39 +01:00
+    Option for following the current running element added.
+    WCOREDUMP macros moved to utility.h only.
+
+ o  2002 Dec 25 00:56:56 +01:00
+    Quick option change added ('o').
+
+ o  2002 Dec 24 22:25:40 +01:00
+    doc/ directory added. Example of .nALFSrc file and SYNTAX moved there.
+    Smaller timer improvements.
+
+ o  2002 Dec 23 19:36:08 +01:00
+    L -> B for logging backend (times/actions/changed files).
+    ALFS_DIRECTORY_NAME macro added.
+    Sockets moved to comm.c
+    Set_string_option() macro added, to make things easier.
+    New option - stamp_directory.
+
+ o  2002 Dec 23 03:12:38 +01:00
+    Support for .nALFSrc file introduced.
+    Bug when beep() is called in non-interactive (no ncurses) mode fixed.
+
+ o  2002 Dec 22 04:04:54 +01:00
+    Removed almost all defines from config.h. Using variables and
+    structure for options now (new file - options.c).
+    New file init.c for initializing options (handing command-line
+    moved there).
+    Environment variable NALFS renamed to ALFS_DIR.
+    Code for initializing directories improved.
+
+ o  2002 Dec 20 23:13:09 +01:00
+    utility.c split and made generic (comm.c added)
+    verify_digest() and load_url() moved to unpack handler.
+
+
+==[ v1.1.4
+
+ o  2002 Dec 20 16:57:16 +01:00
+    Version updated.
+    alfs-discuss mentioned in README.
+
+ o  2002 Dec 19 20:26:05 +01:00
+    Setting options ('o') moved to main window and some smaller
+    key re-bindings done.
+
+ o  2002 Dec 19 00:10:17 +01:00
+    Added missing redisplaying of main window, while entering search string.
+    (Can_do_rewrite macro added.)
+
+ o  2002 Dec 18 20:42:36 +01:00
+    Default directory for adding new profiles added (PROFILES_DIRECTORY).
+
+ o  2002 Dec 18 18:44:57 +01:00
+    'I' added again. ^n and ^p added for next/prev page.
+    Some unnecessary casts removed.
+
+ o  2002 Dec 18 14:34:59 +01:00
+    Jumping now opens all parents of the element, if it's a package.
+    Two options removed from options[] and are using enum types now.
+
+ o  2002 Dec 18 13:56:28 +01:00
+    New command (';') for jumping to the last jump-to element.
+    Different smaller code improvements.
+
+ o  2002 Dec 18 00:21:46 +01:00
+    "Enter stage: " removed by default (new macro in config.h).
+    Some macros made consts.
+
+ o  2002 Dec 17 19:06:42 +01:00
+    Changing find() search options moved to 'o' (under 'F').
+
+ o  2002 Dec 17 15:58:45 +01:00
+    ASSERT() macro added.
+
+ o  2002 Dec 17 15:41:00 +01:00
+    Commands for opening and closing all elements under the cursor added.
+    Some key bindings changed.
+    Help ('?') moved to main window.
+
+ o  2002 Dec 17 00:21:19 +01:00
+    Jumping ('j') much improved (code-wise). Added p option for jumping to
+    next (or previous) package.
+
+ o  2002 Dec 16 22:25:14 +01:00
+    ~p and ~P added to search command ('/'). README updated accordingly.
+
+
+==[ v1.1.3
+
+ o  2002 Dec 16 18:06:12 +01:00
+    Printing (in main window) of <check>ed package added.
+    Include guards renamed.
+    Version updated.
+
+ o  2002 Dec 13 19:17:56 +01:00
+    Some useful macros added.
+    Several smaller improvements, fixes, renamings and cleanups.
+    Check for package's name and version added again, needed for logging.
+    Curl output improved a bit.
+
+ o  2002 Dec 12 02:54:23 +01:00
+    "description" is now first searched in <stage> for displaying.
+    Some logging changes.
+
+ o  2002 Dec 12 00:04:42 +01:00
+    <setenv> enabled for syntax 3.0 too.
+    A lot of cleaning for gnu99.
+
+ o  2002 Dec 11 22:21:04 +01:00
+    <reference> added to profile.
+
+ o  2002 Dec 10 20:24:44 +01:00
+    Different code-cleaning, renaming and such.
+
+ o  2002 Nov 30 14:15:00 +01:00
+    Empty "version" attribute is now ignored.
+
+ o  2002 Nov 29 16:58:18 +01:00
+    Profile's linux-directory entity renamed to include kernel's
+    version number.
+
+ o  2002 Nov 29 15:50:35 +01:00
+    Replaced CURLOPT_WRITEDATA with CURLOPT_FILE. It was just an "alias"
+    for CURLOPT_FILE and some older curl versions don't understand it.
+
+ o  2002 Nov 29 05:09:13 +01:00
+    Empty "base" attribute now defaults to /.
+
+
+==[ v1.1.2
+
+ o  2002 Nov 04 14:44:03 +01:00
+    Version updated.
+    configure --help improved a bit.
+
+ o  2002 Nov 03 14:49:25 +01:00
+    Profile updated to 4.0.
+
+ o  2002 Nov 03 14:41:17 +01:00
+    Removed -B option for now, as it is not used yet.
+
+ o  2002 Nov 03 14:15:37 +01:00
+    $NALFS/PRUNE_LIST_FILE can be used now, for specifying the prune list
+    to be used, if the command-line option is not given.
+
+ o  2002 Oct 30 19:26:36 +01:00
+    Allowed specifying prefix for ssl library and
+    a few more configure improvements.
+
+ o  2002 Oct 29 19:25:17 +01:00
+    Support for fetching the URL from <reference> using libcurl added
+    by Vassili Dzuba.
+    Checking for curl added to configure.
+
+ o  2002 Oct 29 18:04:59 +01:00
+    <digest> added in <unpack> for checking the md5 digest of
+    the archive before unpacking, by Vassili Dzuba.
+    Checking for ssl library added in configure.
+
+ o  2002 Oct 16 19:53:44 +02:00
+    Added a warning if <remove>d file didn't exist.
+
+ o  2002 Oct 16 19:34:50 +02:00
+    "Over-resizing" of windows fixed.
+
+ o  2002 Oct 16 19:20:15 +02:00
+    Freeing of prune list after collecting files added (was a memory leak).
+
+ o  2002 Oct 16 18:51:49 +02:00
+    PREFIX/bin (from --prefix) added to xml2-config search path.
+
+ o  2002 Oct 12 09:04:08 +02:00
+    Fixed a bug when the prune list is empty.
+
+ o  2002 Oct 10 19:36:28 +02:00
+    Pruning files (when logging) now allowed.
+    Removed printing of directories specified in the prune list.
+
+ o  2002 Oct 09 22:03:57 +02:00
+    config.h option for sleeping after getting the time stamp added
+    (SLEEP_AFTER_TIME_STAMP).
+
+
+==[ v1.1.1
+
+ o  2002 Oct 07 22:56:00 +02:00
+    Version updated.
+
+ o  2002 Oct 05 04:09:58 +02:00
+    'W' -> '_' added, for easier resizing of windows (same as '-').
+    Some should_have_been_committed_previously files added.
+
+ o  2002 Oct 05 04:00:18 +02:00
+    Automatic downloading of missing archives (in <unpack>) added.
+    <stamp> (creating a stamp file for installed package)
+    and <check> (checking for installed package) added.
+    Started to add support for automatic building of required packages.
+    (All of the above done by Vassili Dzuba.)
+
+ o  2002 Sep 28 20:56:04 +02:00
+    User's group ID added to its list of supplementary group IDs.
+
+ o  2002 Sep 28 20:50:14 +02:00
+    Made the environment setting local to the stage.
+
+ o  2002 Jul 18 17:37:48 +02:00
+    New command ('W' -> '+'/'-'/'=') for resizing the windows added.
+
+ o  2002 Jul 17 18:41:26 +02:00
+    Print a warning about unknown element only once.
+
+ o  2002 Jul 17 18:20:28 +02:00
+    "windows" not a pointer any more.
+
+ o  2002 Jul 10 15:55:59 +02:00
+    handler.{c,h} renamed to handlers.{c,h}.
+
+ o  2002 Jul 10 15:44:14 +02:00
+    Support for multiple syntax versions in the handlers added.
+    Types of handler_parameters and handler_attributes changed.
+
+
+==[ v1.1.0
+
+ o  2002 Jul 10 10:14:07 +02:00
+    Various code improvements.
+
+ o  2002 Jul 08 16:45:31 +02:00
+    Added "id -u ... ||" before useradd in the profile.
+    Package name and version moved to attributes.
+    "Entering new stage" messages put under OPTION_VERBOSITY.
+    Version updated.
+
+ o  2002 Jul 08 14:56:42 +02:00
+    Print a warning when unknown element is encountered
+    while parsing a profile.
+
+ o  2002 Jul 08 14:51:09 +02:00
+    mode="append" implemented to <variable> (inside <environment>).
+
+ o  2002 Jul 08 14:31:15 +02:00
+    Logging of times around <stage> added and flog updated accordingly.
+
+ o  2002 Jul 08 12:07:31 +02:00
+    Changed the way <option>s are read.
+
+ o  2002 Jul 07 18:08:03 +02:00
+    Installing of handlers added to "make install".
+
+ o  2002 Jul 06 17:31:05 +02:00
+    Various minor code improvements.
+
+ o  2002 Jul 06 12:48:20 +02:00
+    New syntax implemented (new-*.c handlers, for now).
+    Moved all handler-specific functions to handler.c.
+    A lot of fixes and improvements in handlers using.
+
+ o  2002 Jun 27 20:12:25 +02:00
+    Fixed a keypad bug, after refreshing the screen.
+
+ o  2002 Jun 27 20:05:26 +02:00
+    Handlers made dynamic, shared libraries, loaded at start.
+
+ o  2002 Jun 25 15:51:23 +02:00
+    Creating of &LFS;&build_dir; added, just in case it doesn't exist.
+    Check for /bin/sh removed from chroot.
+
+ o  2002 Jun 24 14:09:58 +02:00
+    <name> in <link> made optional.
+
+ o  2002 Jun 24 13:59:02 +02:00
+    Added some default directories to search for xml2-config.
+
+ o  2002 Jun 23 13:34:39 +02:00
+    Fixed a bug when resizing a terminal in non-interactive mode.
+
+
+==[ v1.0.7
+
+ o  2002 Apr 30 13:03:05 +02:00
+    Chapter 4 (with creating LFS directory) added.
+    Several smaller fixes.
+
+ o  2002 Apr 25 19:29:32 +02:00
+    Version updated.
+    USE_EDITOR macro added.
+    A lot of editor fixing and cleaning.
+
+ o  2002 Apr 23 16:02:44 +02:00
+    Added check for XInclude (in libxml2) to configure.
+    libXML -> libxml2.
+
+ o  2002 Apr 23 00:28:49 +02:00
+    Parser doesn't remove element content's white space anymore. It's
+    done per-handler now. Some functions added/modified for that.
+    change_current_dir() function added.
+
+ o  2002 Apr 22 00:46:02 +02:00
+    Toggling of timer's time (current/total) added.
+    trim_space() receives a pointer to a pointer now.
+
+ o  2002 Apr 20 17:27:33 +02:00
+    configure recreated with GNU Autoconf 2.53.
+    Added DISPLAY_PROFILE_NAME (instead of  PRINT_PROFILE_NAME),
+    DISPLAY_OPTION_INDICATORS (instead of USE_OPTION_INDICATORS),
+    DISPLAY_TIMER and EXPAND_PROFILES (not defined by default) macros.
+
+ o  2002 Apr 20 16:22:48 +02:00
+    Autoconf configuration added.
+
+
+==[ v1.0.6
+
+ o  2002 Apr 19 13:11:39 +02:00
+    Version updated.
+
+ o  2002 Apr 19 13:06:18 +02:00
+    Fixed a bug in non-interactive mode
+    (backend status shouldn't/can't be updated).
+
+
+==[ v1.0.5
+
+ o  2002 Apr 17 15:08:28 +02:00
+    Option indicators added again and put under USE_OPTION_INDICATORS macro.
+    Timer moved to the bottom line.
+    Fixed a bug when execution is stopped outside of <package>.
+    INDENTATION_SPACE macro added.
+
+ o  2002 Apr 16 19:03:10 +02:00
+    Using DATE_FORMAT instead of time_t in a state file now.
+
+ o  2002 Apr 16 17:12:55 +02:00
+    Renamed "child" to "backend" where appropriate. Having XML element's
+    children is too many kids already.
+
+ o  2002 Apr 16 16:41:30 +02:00
+    backend_status added (BACKEND_{RUNNING,PAUSED,STOPPED}).
+    Paused (||) symbol added.
+    Renamed: Backend_running() -> Backend_exists()
+
+ o  2002 Apr 16 15:54:25 +02:00
+    Timer functions moved to nalfs.c.
+    Real timer implemented (only for _total_ executing time, for now).
+    Option indicators removed - timer and backend status placed there.
+    draw_static_border() now draws ALL static information on the screen.
+
+ o  2002 Apr 14 20:49:49 +02:00
+    Handler descriptions much improved by Maik Schreiber.
+    Moved creating of lfs user and directories to Chapter 5. Chapter 4
+    removed completely. (Thanks to Gerard Beekmans for pointing that out.)
+
+
+==[ v1.0.4
+
+ o  2002 Apr 14 18:14:14 +02:00
+    Version updated.
+    Several functions made inline.
+    Moved two short help lines to the first "page".
+
+ o  2002 Apr 14 17:22:22 +02:00
+    <owner> and <log> elements added. Also, <permissions> now has
+    <options>recursive</options>, all thanks to Maik Schreiber.
+    USE_NALFS_SYNTAX_EXTENSIONS macro added (and <log> put under it).
+    CREDITS updated, and made much simpler.
+
+ o  2002 Apr 14 11:32:42 +02:00
+    Removed has_write_perm(), using access(2) now.
+
+ o  2002 Apr 13 22:10:36 +02:00
+    create_temp_file() added.
+    read_to_file() can receive NULL as file, to ignore the receiving data.
+    Some functions made inline.
+    Added missing options to getopt_long (F and s).
+    create_installed_files_file() now receives the old, new and result
+    file names. check_and_store_state() now receives a state file name
+    and states for storing the info to.
+
+ o  2002 Apr 13 21:38:30 +02:00
+    Fixed a bug in LFS-3.3 profile (thanks to Maik Schreiber).
+
+ o  2002 Apr 10 13:39:32 +02:00
+    Added option for turning off package logging in general
+    (both installed files and package times).
+
+ o  2002 Apr 09 19:56:51 +02:00
+    Prune directories are now relative to the root directory.
+
+
+==[ v1.0.3
+
+ o  2002 Apr 09 15:46:36 +02:00
+    Version updated.
+
+ o  2002 Apr 09 15:25:14 +02:00
+    Not used DEBUG removed from Makefiles.
+
+ o  2002 Apr 09 12:22:05 +02:00
+    Profile updated to LFS-3.3.
+    Fixed updating of status marks when bottom window is active.
+    Extra newline printing in find.c removed.
+
+ o  2002 Apr 07 12:41:56 +02:00
+    Fixed a small printing_a_new_line bug.
+    Saving the time stamp in time_t format (for now).
+    Some code cleaning (in logging.c).
+    Renaming: *_curses() -> *_display().
+    -Winline added.
+
+ o  2002 Apr 06 14:00:33 +02:00
+    Package_has_name_and_version() macro added and
+    some fixes when no name or version exist for <package>.
+
+ o  2002 Apr 06 13:42:00 +02:00
+    handler moved to element_t structure.
+    MAX_LINE_LEN macro added.
+    State_changed(state, el) macro added.
+
+ o  2002 Apr 06 11:58:51 +02:00
+    Changed append_str() to accepts char** and returns nothing.
+
+ o  2002 Apr 06 11:46:19 +02:00
+    More changes in a way logging files works.
+    action added in handler_t.
+    alloc_package_string() added.
+
+ o  2002 Apr 04 16:26:51 +02:00
+    Support for the old syntax removed.
+
+ o  2002 Apr 04 16:00:36 +02:00
+    Option for using the time stamp when logging installed files added.
+    A lot of different files logging changes.
+
+ o  2002 Mar 30 13:02:18 +01:00
+    Checks for some ncurses functions added
+    (if CHECK_NCURSES_FUNCTIONS is defined in config.h).
+    parse_with_libXML() -> parse_with_libXML_tree().
+
+ o  2002 Mar 29 19:17:25 +01:00
+    Profile's name hasn't been displayed immediately after resizing xterm.
+    Fixed that.
+    Also, added -lm when doing "make static". libXML was complaining.
+
+
+==[ v1.0.2
+
+ o  2002 Mar 29 17:14:49 +01:00
+    Smaller fixes.
+
+ o  2002 Mar 29 17:03:58 +01:00
+    Version updated (using X.Y.Z from now on).
+    ALFS homepage updated (to automated.*) in README.
+
+ o  2002 Mar 28 19:29:22 +01:00
+    Printing a warning if some environment variables
+    (WARN_IF_SET in config.h) are set.
+
+ o  2002 Mar 28 17:15:26 +01:00
+    Added a single, general function for getting input from the bottom line.
+    A lot of code cleaning thanks to that.
+
+ o  2002 Mar 28 12:57:30 +01:00
+    Top window removed and the appearance of profile name and
+    program version changed.
+    draw_static_border() (rename from draw_border()) moved to nalfs.c.
+
+ o  2002 Mar 27 17:17:13 +01:00
+    Command-line option for starting to parse all profiles immediately added.
+
+ o  2002 Mar 27 16:55:24 +01:00
+    Window handling improved (especially when resizing xterm).
+    Using relative window sizes now (MAIN_WINDOW_LINES_PERCENT added).
+
+ o  2002 Mar 27 14:32:45 +01:00
+    Non-interactive mode described in README.
+    WHATIS file removed and its content moved to README.
+
+
+==[ v020326
+
+ o  2002 Mar 26 17:51:16 +01:00
+    Version updated.
+    Fixed "make static" (added -lz).
+
+ o  2002 Mar 26 17:04:32 +01:00
+    scripts/flog added.
+    (Un)Setting signal handler for SIGCHLD separately now.
+
+ o  2002 Mar 26 16:19:18 +01:00
+    Relative addressing inside elements added
+    (ALLOW_RELATIVE_DIRS, not defined by default).
+    Full profile's path is used as a name now.
+    Initializing nalfs directory before reading options.
+
+ o  2002 Mar 25 22:05:36 +01:00
+    Long command-line options added
+    (and parsing moved to a separate function).
+    More macro renaming.
+
+ o  2002 Mar 25 17:17:51 +01:00
+    Logging of handler actions added.
+    Some macros renamed.
+
+
+==[ v020325-fix1
+
+ o  2002 Mar 25 11:58:32 +01:00
+    Some missing includes added.
+    CFLAGS updated to include libxml2 directories.
+
+
+==[ v020325
+
+ o  2002 Mar 25 10:55:51 +01:00
+    Version updated.
+    Renamed main handler functions to "main_function".
+    Changed COL_* type.
+    Moved WCOREDUMP to files that use it.
+    Printing of libXML version added.
+
+ o  2002 Mar 22 20:28:21 +01:00
+    All El_*() macros used only in their handlers removed from utility.h.
+
+ o  2002 Mar 22 20:02:17 +01:00
+    jump_to moved to options[] (OPTION_JUMP_TO).
+
+ o  2002 Mar 22 17:29:19 +01:00
+    Sending a log file _before_ a list of changed files to the frontend.
+    merge_log_files() now reads a list of changed files itself and creates
+    a unique file to store it. That file name is added to package log.
+
+ o  2002 Mar 19 20:13:22 +01:00
+    read_to_file() accepts file name now, not open fp.
+    receive_state_or_files_file() split.
+
+ o  2002 Mar 19 13:34:51 +01:00
+    Frontend now merges the old log file with the one that came from
+    the backend.
+    More code cleaning.
+
+ o  2002 Mar 18 19:18:27 +01:00
+    CTRL_GOT_YOUR_STATE_FILE control message added to synchronize
+    deleting of frontend's state file.
+
+ o  2002 Mar 18 18:52:47 +01:00
+    Sending XML log directly from memory, instead of using a temporary file.
+    send_file() renamed to send_from_file() and send_from_memory() added.
+
+ o  2002 Mar 18 11:26:12 +01:00
+    All macros (function-like) renamed to Xxxxx (they look better,
+    and are still distinguishable from regular functions).
+    Some prototype fixes.
+
+ o  2002 Mar 17 13:49:54 +01:00
+    Debug_logging() macro added.
+    create_xml_doc() was called only once, but freed every time
+    the package ends. Fixed that.
+    (The function is only used in logging.c now.)
+
+ o  2002 Mar 17 11:50:22 +01:00
+    Frontend doesn't chdir() to nalfs_directory any more. Instead absolute
+    paths are used everywhere (it's much cleaner and also fixes reloading
+    of relative profiles).
+    status.log renamed to log_file.
+
+ o  2002 Mar 17 11:22:47 +01:00
+    Displaying comments by default turned off.
+    Fixed printing of elements (depth).
+
+ o  2002 Mar 17 00:38:42 +01:00
+    Expat completely removed. libXML is now used (tree parsing).
+
+ o  2002 Mar 17 00:28:57 +01:00
+    nalfs.c code cleaning.
+    displayed_t structure added (with total and element members).
+
+ o  2002 Mar 17 00:22:09 +01:00
+    Unmarking only successfully ended elements added ('u').
+    All marked elements can be unmarked with 'U' now.
+
+ o  2002 Mar 17 00:12:05 +01:00
+    _A_lot_ of improvements/code cleaning in logging functions.
+    Two log files are now created - one is the main log file for
+    the package (XML, using libXML) and the other is a list of
+    installed/changed files. Logging of times much simplified too.
+
+
+==[ v020310
+
+ o  2002 Mar 10 17:11:06 +01:00
+    Smaller fixes and version updated.
+
+ o  2002 Mar 09 19:58:40 +01:00
+    Searching improved (commands ~e, ~a and ~c added).
+
+ o  2002 Mar 09 13:03:36 +01:00
+    set_default_window_options() added.
+
+ o  2002 Mar 09 12:13:10 +01:00
+    Work-around for get*gid() functions which are failing in chroot.
+
+ o  2002 Mar 09 11:59:53 +01:00
+    Removed setting of signal handlers to default in child.
+
+ o  2002 Mar 09 11:28:38 +01:00
+    Some variables renamed.
+
+ o  2002 Mar 09 10:09:55 +01:00
+    Global (per package) <base> implemented.
+
+ o  2002 Mar 09 00:31:39 +01:00
+    "No handler for element" can't be reached. Explained that.
+
+ o  2002 Mar 08 23:27:28 +01:00
+    TODO reorganized.
+
+ o  2002 Mar 08 22:29:19 +01:00
+    Use of xstrcasestr() fixed (parameters order was wrong).
+
+ o  2002 Mar 08 22:23:05 +01:00
+    Case insensitivity and searching only parts of the string
+    (xstrcasestr() added).
+
+ o  2002 Mar 08 21:51:12 +01:00
+    latest.xml link recreated.
+
+ o  2002 Mar 08 21:45:44 +01:00
+    Attic (CVS) files removed.
+
+
+==[ v020308
+
+ o  Searching for elements implemented.
+
+ o  LFS profile updated to version 3.2.
+
+
+==[ v020302
+
+ o  New command ('I') added for printing verbose element info ('i' prints
+    only the very basic stuff now).
+
+ o  Updates for <su> element - "group" attribute removed, setting of
+    supplementary groups added, some bugs (mostly when used in chroot) fixed.
+
+
+==[ v020301
+
+ o  <link> creates a symbolic link by default now (type is optional).
+
+ o  New options for <copy> added: "no-dereference", "preserve" and
+    "recursive" (thanks to Peter van Kampen).
+
+ o  <su> element implemented (thanks to Peter again).
+
+ o  Some internal changes in logging of files (only one state file is used
+    now for example).
+
+ o  New files added: profiles/SYNTAX (empty for now) and CREDITS.
+
+
+==[ v020226
+
+ o  Removed <include> element and added simple XInclude implementation
+    instead.
+
+ o  Logging of installed files, compile times and handler actions.
+
+ o  Non-interactive mode of execution (as a command-line option).
+
+ o  Several new options (both command-line and run-time).
+
+ o  New attribute (mode="append") added to <setenv>, thanks to Fabien
+    Steinmetz.
+
+ o  Option for suppressing the system output added.
+
+ o  Work-around for Red Hat 7.2's ncurses bug, thanks to Charless Fowlkes.
+
+
+==[ v011120
+
+ o  Including the profiles from another one using external entities or new
+    <include> element added.
+
+ o  Different syntax updates (<link>'s type is an attribute now; <move>,
+    <link>, <copy> and <mkdir> don't use <param> any more, now they use
+    <options> with "force", "parents" and "archive" in it's content;
+    <textdump mode="append"> is added, overwriting file is default now).
+
+ o  Hiding <alfs> element and DTD making XML tree much more readable.
+
+ o  New command ('o') for changing the options added.
+
+ o  '+' and '-' commands added for reordering profiles within the program.
+
+ o  Simple "make install" and "make static" are added.
+
+ o  Run-status marks are in color now. :-)
+
+
+==[ v011023
+
+ o  New syntax for the profiles introduced.
+
+ o  Turning logging on/off from the program.
+
+ o  Some key bindings changed.
+
+
+==[ v010925
+
+ o  Resizing of xterm windows added.
+
+ o  Adding the profiles from the program implemented.
+
+ o  Jumping to elements added.
+
+ o  "-v" and "-h" options added.
+
+
+==[ v010903
+
+ o  Profile editor added.
+
+ o  Very simple timer added.
+
+ o  Screen refreshing.
+
+ o  Removing the profiles from the program.
+
+
+==[ v010816
+
+ o  Multiple profiles support.
+
+ o  Reloading the profile from the program.
+
+ o  Marking elements and executing only those marked.
+
+ o  Executing elements below the current, not only it's children.
+
+ o  'r' command now expects choosing one of the "run methods".
+
+ o  Hiding the comments.
+
+
+==[ v010808
+
+Initial release.
