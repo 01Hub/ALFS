@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch16.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,44 +10,43 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="libsoup" version="&libsoup-version;">
-
-	<packageinfo>
-		<requires><name>glib2</name></requires>
-		<utilizes><name>gtk-doc</name></utilizes>
-		<utilizes><name>openssl</name></utilizes>
-		<utilizes><name>gnutls</name></utilizes>
-	</packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&libsoup-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&libsoup-directory;</base>
-		</stageinfo>
-
-		<configure>
-			<param>--prefix=/usr</param>
-			<param>--libexecdir=/usr/sbin</param>
-		</configure>
-
-		<make />
-
-		<make>
-			<param>install</param>
-		</make>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&libsoup-directory;</remove>
-	</stage>
-
-</package>
+  <package name="libsoup" version="&libsoup-version;">
+    <packageinfo>
+      <requires>
+        <name>glib2</name>
+      </requires>
+      <utilizes>
+        <name>gtk-doc</name>
+      </utilizes>
+      <utilizes>
+        <name>openssl</name>
+      </utilizes>
+      <utilizes>
+        <name>gnutls</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&libsoup-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&libsoup-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--libexecdir=/usr/sbin</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&libsoup-directory;</remove>
+    </stage>
+  </package>
 </alfs>
