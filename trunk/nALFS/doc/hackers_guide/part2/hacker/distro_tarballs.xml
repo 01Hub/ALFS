@@ -7,13 +7,24 @@ few steps to follow:</para>
 
 <itemizedlist>
 
+<listitem><para>Check out a clean copy of the nALFS repository. Using an
+existing copy, especially one that has been configured and used as a build
+tree, can potentially cause errors in the <command>make dist</command> process.</para></listitem>
+
 <listitem><para>Edit <filename>bootstrap.configure</filename>, and modify the line
 starting with AC_INIT to reflect the version number
 that you want the distribution to be given (replace &quot;CVS&quot; with your desired version number). Do not commit this change to the CVS
 repository, as the CVS version should always report its version number as
 &quot;CVS&quot;.</para></listitem>
 
-<listitem><para>Run <command>sh ./bootstrap</command>.</para></listitem>
+<listitem><para>Run <command>sh ./bootstrap --get-docs</command>. This command
+will create the configure script and Makefile (as is normally done with a CVS
+checkout), but will also download, extract and rename the documentation files
+that will be included in the tarball. These files include the DTD (the current
+CVS version), the syntax document describing the DTD, the user's guide and
+the hacker's guide. The latter three documents are currently downloaded from
+James Robertson's home directory on the LFS server, but see the URL_BASE
+variable in the bootstrap script to change the download source.</para></listitem>
 
 <listitem><para>Run <command>./configure</command> specifying any
 parameters your system needs to complete the configuration process.</para></listitem>
