@@ -188,10 +188,11 @@ static int download_common(const element_s * const element)
 			Nprint_h("Trying to fetch it from <url>...");
 
 			for (i = 0; i < data->url_count; i++) {
-				char *tmp;
+				char *tmp = NULL;
 
-				tmp = xstrdup(data->urls[i]);
-				append_str(&tmp, data->file);
+				append_str_format(&tmp, "%s%s",
+						  data->urls[i],
+						  data->file);
 				if (!get_url(tmp, data->file, digest, digest_type))
 					found = 1;
 				xfree(tmp);

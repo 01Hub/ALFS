@@ -235,33 +235,26 @@ static int copy_main_ver2(const element_s * const el)
 	int status = 0;
 	char *tok;
 	char *tmp;
-	char *common_command;
+	char *common_command = NULL;
 
 	if (change_to_base_dir(el, data->base, 1))
 		return -1;
 
-	common_command = xstrdup("cp");
-
-	/* Options. */
-	if (data->archive)
-		append_str(&common_command, " -a");
-	if (data->force)
-		append_str(&common_command, " -f");
-	if (data->no_dereference)
-		append_str(&common_command, " -d");
-	if (data->preserve)
-		append_str(&common_command, " -p");
-	if (data->recursive)
-		append_str(&common_command, " -R");
+	append_str_format(&common_command, "cp %s%s%s%s%s",
+			  data->archive ? " -a" : "",
+			  data->force ? " -f" : "",
+			  data->no_dereference ? " -d" : "",
+			  data->preserve ? " -p" : "",
+			  data->recursive ? " -R" : "");
 
 	tmp = xstrdup(data->sources[0]);
 	for (tok = strtok(tmp, WHITE_SPACE); tok; tok = strtok(NULL, WHITE_SPACE)) {
-		char *command = xstrdup(common_command);
+		char *command = NULL;
 
-		append_str(&command, " ");
-		append_str(&command, tok);
-		append_str(&command, " ");
-		append_str(&command, data->destination);
+		append_str_format(&command, "%s %s %s",
+				  common_command,
+				  tok,
+				  data->destination);
 
 		Nprint_h("Executing:");
 		Nprint_h("    %s", command);
@@ -303,35 +296,25 @@ static int copy_main_ver3(const element_s * const el)
 	struct copy_data *data = (struct copy_data *) el->handler_data;
 	int status = 0;
 	int i;
-	char *common_command;
+	char *common_command = NULL;
 
 	if (change_to_base_dir(el, data->base, 1))
 		return -1;
 
-	common_command = xstrdup("cp");
-
-	/* Options. */
-	if (data->archive)
-		append_str(&common_command, " -a");
-	if (data->force)
-		append_str(&common_command, " -f");
-	if (data->no_dereference)
-		append_str(&common_command, " -d");
-	if (data->preserve)
-		append_str(&common_command, " -p");
-	if (data->recursive)
-		append_str(&common_command, " -R");
+	append_str_format(&common_command, "cp %s%s%s%s%s",
+			  data->archive ? " -a" : "",
+			  data->force ? " -f" : "",
+			  data->no_dereference ? " -d" : "",
+			  data->preserve ? " -p" : "",
+			  data->recursive ? " -R" : "");
 
 	for (i = 0; i < data->source_count; i++) {
-		const char *source = data->sources[i];
-		char *command;
+		char *command = NULL;
 
-		command = xstrdup(common_command);
-		
-		append_str(&command, " ");
-		append_str(&command, source);
-		append_str(&command, " ");
-		append_str(&command, data->destination);
+		append_str_format(&command, "%s %s %s",
+				  common_command,
+				  data->sources[i],
+				  data->destination);
 
 		Nprint_h("Executing:");
 		Nprint_h("    %s", command);

@@ -148,13 +148,11 @@ static int execute_parameter(const element_s * const element,
 		data->content = xstrdup(value);
 		return 0;
 	case EXECUTE_PREFIX:
-		append_str(&data->prefix, value);
-		append_str(&data->prefix, " ");
+		append_str_format(&data->prefix, "%s ", value);
 		data->prefix_seen = 1;
 		return 0;
 	case EXECUTE_PARAM:
-		append_str(&data->param, value);
-		append_str(&data->param, " ");
+		append_str_format(&data->param, "%s ", value);
 		data->param_seen = 1;
 		return 0;
 	default:
@@ -313,12 +311,11 @@ static int execute_main_ver3_2(const element_s * const element)
 	} else {
 		FILE *temp_script;
 		char *tok;
-		char *temp_file_name;
+		char *temp_file_name = NULL;
 		char *args[2];
 
-		temp_file_name = xstrdup(*opt_alfs_directory);
-		append_str(&temp_file_name, "/");
-		append_str(&temp_file_name, ".nALFS.XXXXXX");
+		append_str_format(&temp_file_name, "%s/.nALFS.XXXXXX",
+				  *opt_alfs_directory);
 		if (!create_temp_file(temp_file_name)) {
 			if ((temp_script = fopen(temp_file_name, "w"))) {
 				char *tmp = xstrdup(data->content);

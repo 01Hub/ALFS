@@ -153,12 +153,10 @@ static int patch_parameter(const element_s * const element,
 		data->base = xstrdup(value);
 		return 0;
 	case PATCH_PREFIX:
-		append_str(&data->prefix, value);
-		append_str(&data->prefix, " ");
+		append_str_format(&data->prefix, "%s ", value);
 		return 0;
 	case PATCH_PARAM:
-		append_str(&data->param, value);
-		append_str(&data->param, " ");
+		append_str_format(&data->param, "%s ", value);
 		data->param_seen = 1;
 		return 0;
 	case PATCH_FILE:
@@ -244,9 +242,7 @@ static int patch_main_ver3(const element_s * const element)
 	if (change_to_base_dir(element, data->base, 1))
 		return -1;
 	
-	append_str(&command, data->prefix);
-	append_str(&command, "patch");
-	append_str(&command, data->param);
+	append_str_format(&command, "%s patch %s", data->prefix, data->param);
 
 	Nprint_h("Patching");
 	Nprint_h("    %s", command);

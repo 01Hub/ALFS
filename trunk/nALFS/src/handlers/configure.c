@@ -130,13 +130,11 @@ static int configure_parameter(const element_s * const element,
 		data->base = xstrdup(value);
 		return 0;
 	case CONFIGURE_PREFIX:
-		append_str(&data->prefix, value);
-		append_str(&data->prefix, " ");
+		append_str_format(&data->prefix, "%s ", value);
 		data->prefix_seen = 1;
 		return 0;
 	case CONFIGURE_PARAM:
-		append_str(&data->param, value);
-		append_str(&data->param, " ");
+		append_str_format(&data->param, "%s ", value);
 		data->param_seen = 1;
 		return 0;
 	case CONFIGURE_COMMAND:
