@@ -188,8 +188,8 @@
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
-<!ENTITY lfs-utils-md5 "2ff5b542a1d3ab7cd7da22d6fe93e113">
-<!ENTITY lfs-utils-version "0.4.2">
+<!ENTITY lfs-utils-md5 "f46288aca54e9ed45767fe499af0c820">
+<!ENTITY lfs-utils-version "0.5">
 <!ENTITY lfs-utils-package "lfs-utils-&lfs-utils-version;.tar.bz2">
 <!ENTITY lfs-utils-directory "lfs-utils-&lfs-utils-version;">
 
@@ -268,8 +268,8 @@
 <!ENTITY procinfo-package "procinfo-&procinfo-version;.tar.gz">
 <!ENTITY procinfo-directory "procinfo-&procinfo-version;">
 
-<!ENTITY procps-md5 "496d9f87be5eaebcd1080bb5b9999da4">
-<!ENTITY procps-version "3.1.15">
+<!ENTITY procps-md5 "abaecc6774ee308f4911ea8e862030a9">
+<!ENTITY procps-version "3.2.0">
 <!ENTITY procps-package "procps-&procps-version;.tar.gz">
 <!ENTITY procps-directory "procps-&procps-version;">
 
