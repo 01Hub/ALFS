@@ -193,8 +193,8 @@
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
-<!ENTITY lfs-utils-md5 "0ce407ff714c7262f556bd7d850d6c06">
-<!ENTITY lfs-utils-version "0.3">
+<!ENTITY lfs-utils-md5 "2ff5b542a1d3ab7cd7da22d6fe93e113">
+<!ENTITY lfs-utils-version "0.4.2">
 <!ENTITY lfs-utils-package "lfs-utils-&lfs-utils-version;.tar.bz2">
 <!ENTITY lfs-utils-directory "lfs-utils-&lfs-utils-version;">
 
@@ -320,8 +320,8 @@
 <!ENTITY tar-package "tar-&tar-version;.tar.gz">
 <!ENTITY tar-directory "tar-&tar-version;">
 
-<!ENTITY tcl-md5 "e503db5f1d762c2a3bbe7cb02c630659">
-<!ENTITY tcl-version "8.4.4">
+<!ENTITY tcl-md5 "3fb354dba28166a1004f9103553a3974">
+<!ENTITY tcl-version "8.4.5">
 <!ENTITY tcl-package "tcl&tcl-version;-src.tar.gz">
 <!ENTITY tcl-directory "tcl&tcl-version;">
 
@@ -340,10 +340,7 @@
 <!ENTITY vim-package "vim-&vim-version;.tar.bz2">
 <!ENTITY vim-directory "vim62">
 
-<!ENTITY zlib-md5 "ea16358be41384870acbdc372f9db152">
-<!ENTITY zlib-version "1.1.4">
+<!ENTITY zlib-md5 "8106069990476a3c5187301465bd7a60">
+<!ENTITY zlib-version "1.2.1">
 <!ENTITY zlib-package "zlib-&zlib-version;.tar.bz2">
 <!ENTITY zlib-directory "zlib-&zlib-version;">
-
-<!ENTITY zlib-vsnprintf-patch-md5 "b617c580e5d099844215ca5829da9de0">
-<!ENTITY zlib-vsnprintf-patch "zlib-&zlib-version;-vsnprintf.patch">
