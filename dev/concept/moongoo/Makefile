@@ -1,7 +1,7 @@
 CFLAGS=-Ilibalfs
 
-BIN=main
-OBJS=build.o main.o plugin.o url.o
+BIN=alfs
+OBJS=build.o alfs.o plugin.o url.o
 
 ifeq ($(OPTS),)
 OPTS=-q
