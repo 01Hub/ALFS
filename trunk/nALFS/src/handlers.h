@@ -42,6 +42,7 @@ typedef enum handler_type_e {
 	HTYPE_STAGE = (1 << 8),      /* handler is a stage container */
 	HTYPE_STAGEINFO = (1 << 9),  /* handler provides stage information */
 	HTYPE_DIGEST = (1 << 10),    /* handler provides file digest information */
+	HTYPE_PACKAGEINFO = (1 << 11),  /* handler provides package information */
 } handler_type_e;
 
 typedef enum handler_data_e {
