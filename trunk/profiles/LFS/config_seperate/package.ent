@@ -178,8 +178,8 @@
 <!ENTITY kbd-more-programs-patch-md5 "dc70180a6bc0afa2b741cd38e3cc2e18">
 <!ENTITY kbd-more-programs-patch "kbd-&kbd-version;-more-programs-1.patch">
 
-<!ENTITY less-md5 "40c2dd4ac137b61b6a55a6478817daf4">
-<!ENTITY less-version "381">
+<!ENTITY less-md5 "103fe4aef6297b93f0f73f38cc3b1bd7">
+<!ENTITY less-version "382">
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
@@ -214,8 +214,8 @@
 <!ENTITY make-package "make-&make-version;.tar.bz2">
 <!ENTITY make-directory "make-&make-version;">
 
-<!ENTITY make_devices-md5 "412757ac3eeb2efe5adfb9d39e3eda27">
-<!ENTITY make_devices-version "1.1">
+<!ENTITY make_devices-md5 "2863fbe7f5953efb5a0d0a840e1e9d21">
+<!ENTITY make_devices-version "1.2">
 <!ENTITY make_devices-package "make_devices-&make_devices-version;.bz2">
 <!ENTITY make_devices-file "make_devices-&make_devices-version;">
  
@@ -237,13 +237,10 @@
 <!ENTITY modutils-package "modutils-&modutils-version;.tar.bz2">
 <!ENTITY modutils-directory "modutils-&modutils-version;">
 
-<!ENTITY ncurses-md5 "5dcc9faa93157eafa572494bffed131a">
-<!ENTITY ncurses-version "5.3">
+<!ENTITY ncurses-md5 "069c8880072060373290a4fefff43520">
+<!ENTITY ncurses-version "5.4">
 <!ENTITY ncurses-package "ncurses-&ncurses-version;.tar.gz">
 <!ENTITY ncurses-directory "ncurses-&ncurses-version;">
-
-<!ENTITY ncurses-etip-patch-md5 "f23e4804d186bf184b9829770f6b63cc">
-<!ENTITY ncurses-etip-patch "ncurses-&ncurses-version;-etip-2.patch">
 
 <!ENTITY net-tools-md5 "888774accab40217dde927e21979c165">
 <!ENTITY net-tools-version "1.60">
