@@ -23,9 +23,9 @@
         <base>&build_dir;/&libjpeg-directory;</base>
       </stageinfo>
       <configure>
+        <param>--prefix=/usr</param>
         <param>--enable-static</param>
         <param>--enable-shared</param>
-        <param>--prefix=/usr</param>
       </configure>
       <make />
       <make>

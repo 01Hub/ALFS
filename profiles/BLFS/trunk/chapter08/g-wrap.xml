@@ -22,6 +22,9 @@
       <utilizes>
 	<name>gtk+</name>
       </utilizes>
+      <utilizes>
+	<name>guile-gtk</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

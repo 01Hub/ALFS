@@ -12,6 +12,11 @@
 ]>
 <alfs>
   <package name="expat" version="&expat-version;">
+    <packageinfo>
+      <utilizes>
+	<name>check</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&expat-package;</archive>
