@@ -174,4 +174,4 @@ network.-->
 		x86 = ld-linux.so.2
 		powerpc = ld.so.1
 -->
-<!ENTITY ld-specs-file "ld-linux.so.2">
+<!ENTITY glibc-loader "ld-linux.so.2">
