@@ -272,7 +272,7 @@ element_s *parse_with_libxml2_tree(const char *filename)
 	}
 
 #ifdef HAVE_XINCLUDE
-	xmlXIncludeProcess(doc);
+	xmlXIncludeProcessFlags(doc, XML_PARSE_NOENT);
 #endif
 
 	profile = convert_doc(doc);
