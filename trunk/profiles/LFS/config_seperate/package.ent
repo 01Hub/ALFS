@@ -122,8 +122,8 @@
 <!ENTITY grep-package "grep-&grep-version;.tar.bz2">
 <!ENTITY grep-directory "grep-&grep-version;">
 
-<!ENTITY groff-md5 "c7a9e2944446f711eeade35a4d35f3df">
-<!ENTITY groff-version "1.19">
+<!ENTITY groff-md5 "57d155378640c12a80642664dfdfc892">
+<!ENTITY groff-version "1.19.1">
 <!ENTITY groff-package "groff-&groff-version;.tar.bz2">
 <!ENTITY groff-directory "groff-&groff-version;">
 
@@ -163,8 +163,8 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "a7a7c8353c3f07a78ee69c4a12ca78db">
-<!ENTITY lfs-bootscripts-version "2.1.0">
+<!ENTITY lfs-bootscripts-md5 "797b4a7918676f439ad6061c6d3c1752">
+<!ENTITY lfs-bootscripts-version "2.1.1-pre2">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
