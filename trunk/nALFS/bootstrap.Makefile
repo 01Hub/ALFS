@@ -5,6 +5,8 @@ EXTRA_DIST = CHANGES COPYING README CREDITS
 EXTRA_DIST += scripts/flog
 EXTRA_DIST += doc/nALFSrc
 EXTRA_SCRIPTS =
+MOSTLYCLEANFILES = src/.libs/nALFS src/.libs/nALFSS.o
+DISTCLEANFILES = nALFS-config.in
 # autoconf/automake do not currently offer a way to avoid installing
 # the static libraries produced when the user chooses --disable-shared
 # (or when the platform does not support shared libraries), so force
