@@ -68,7 +68,7 @@ archive_format_e get_archive_format(const char *filename)
 		return ARCHIVE_ZIP;
 	else if (! (strncmp(filename + strlen(filename) - 4, ".pax", 4)))
 		return ARCHIVE_PAX;
-	else if (! (strncmp(filename + strlen(filename) - 5, ".cpio", 4)))
+	else if (! (strncmp(filename + strlen(filename) - 5, ".cpio", 5)))
 		return ARCHIVE_CPIO;
 	else
 		return ARCHIVE_UNKNOWN;
