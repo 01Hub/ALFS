@@ -15,7 +15,6 @@
 		<configure>
 			<param>--prefix=/usr</param>
 			<param>--noninteractive</param>
-			<param>--with-GCOPTS="$CFLAGS"</param>
 			<param>--with-DIR_MAN=/usr/share/man</param>
 		</configure>
 
@@ -24,6 +23,8 @@
 		<make>
 			<param>install</param>
 		</make>
+
+		<execute command="/sbin/ldconfig" />
 	</stage>
 
 

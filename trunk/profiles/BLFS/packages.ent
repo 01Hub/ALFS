@@ -159,16 +159,11 @@
 <!ENTITY lzo-package       "lzo-1.08.tar.gz">
 <!ENTITY lzo-directory     "lzo-1.08">
 
-<!ENTITY libsoup-version   "1.99.23">
-<!ENTITY libsoup-package   "libsoup-1.99.23.tar.bz2">
-<!ENTITY libsoup-directory "libsoup-1.99.23">
-
-
 <!--************* packages for chapter 9 *************-->
 
-<!ENTITY lcms-version   "1.10">
-<!ENTITY lcms-package   "lcms-1.10.tar.gz">
-<!ENTITY lcms-directory "lcms-1.10">
+<!ENTITY lcms-version   "1.11">
+<!ENTITY lcms-package   "lcms-1.11.tar.gz">
+<!ENTITY lcms-directory "lcms-1.11">
 
 <!ENTITY libjpeg-version   "6b">
 <!ENTITY libjpeg-package   "jpegsrc.v6b.tar.gz">
@@ -178,13 +173,15 @@
 <!ENTITY libpng-package   "libpng-1.2.5.tar.gz">
 <!ENTITY libpng-directory "libpng-1.2.5">
 
-<!ENTITY libtiff-version   "3.5.7">
-<!ENTITY libtiff-package   "tiff-v3.5.7.tar.gz">
-<!ENTITY libtiff-directory "tiff-v3.5.7">
+<!ENTITY libtiff-version   "3.6.0">
+<!ENTITY libtiff-package   "tiff-v3.6.0.tar.gz">
+<!ENTITY libtiff-directory "tiff-v3.6.0">
 
 <!ENTITY libungif-version   "4.1.0b1">
 <!ENTITY libungif-package   "libungif-4.1.0b1.tar.gz">
 <!ENTITY libungif-directory "libungif-4.1.0b1">
+
+<!ENTITY libungif-patch     "libungif-4.1.0b1-va_start.patch">
 
 <!ENTITY libmng-version   "1.0.5">
 <!ENTITY libmng-package   "libmng-1.0.5.tar.gz">
@@ -202,11 +199,15 @@
 <!ENTITY svgalib-package   "svgalib-1.4.3.tar.gz">
 <!ENTITY svgalib-directory "svgalib-1.4.3">
 
-<!ENTITY svgalib-patch     "svgalib-1.4.3-vga.patch">
+<!ENTITY svgalib-patch     "svgalib-1.4.3-gcc3-1.patch">
 
 <!ENTITY directfb-version   "0.9.19">
 <!ENTITY directfb-package   "DirectFB-0.9.19.tar.gz">
 <!ENTITY directfb-directory "DirectFB-0.9.19">
+
+<!ENTITY directfb-extra-version   "0.9.16">
+<!ENTITY directfb-extra-package   "DirectFB-extra-0.9.16.tar.gz">
+<!ENTITY directfb-extra-directory "DirectFB-extra-0.9.16">
 
 <!ENTITY imlib2-version   "1.1.0">
 <!ENTITY imlib2-package   "imlib2-1.1.0.tar.gz">
@@ -339,6 +340,11 @@
 <!ENTITY gnet-version   "2.0.4">
 <!ENTITY gnet-package   "gnet-2.0.4.tar.gz">
 <!ENTITY gnet-directory "gnet-2.0.4">
+
+<!ENTITY libsoup-version   "1.99.23">
+<!ENTITY libsoup-package   "libsoup-1.99.23.tar.bz2">
+<!ENTITY libsoup-directory "libsoup-1.99.23">
+
 
 <!--************* packages for chapter 17 *************-->
 

@@ -31,6 +31,8 @@
 
 		<execute command="cd doc &amp;&amp; for dir in man?; do for file in $dir/*; do gunzip /usr/share/man/$file; done; done" />
 
+		<execute command="/sbin/ldconfig" />
+
 	</stage>
 
 	<stage name="Clean-up.">

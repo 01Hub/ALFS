@@ -106,6 +106,7 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&linuxpam-directory;</remove>
+		<remove>&build_dir;/&linuxpam-patch;</remove>
 	</stage>
 
 </package>

@@ -14,7 +14,6 @@
 
 		<make>
 		        <param>prefix=/usr</param>
-		        <param>CC="gcc $CFLAGS"</param>
 		        <param>ZLIBINC=/usr/include</param>
 		        <param>ZLIBLIB=/usr/lib</param>
 		        <param>-f scripts/makefile.linux</param>
@@ -25,6 +24,8 @@
 			<param>install</param>
 			<param>-f scripts/makefile.linux</param>
 		</make>
+
+		<execute command="/sbin/ldconfig" />
 	</stage>
 
 	<stage name="Clean-up.">

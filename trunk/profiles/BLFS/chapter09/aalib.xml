@@ -2,6 +2,7 @@
 
         <packageinfo>
                 <utilizes><name>xfree86</name></utilizes>
+                <utilizes><name>slang</name></utilizes>
         </packageinfo>
 
         <stage name="Unpacking a package">
