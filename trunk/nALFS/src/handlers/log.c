@@ -49,7 +49,7 @@ static int log_main(element_s *el)
 const char *log_parameters[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
-#ifdef HANDLER_SYNTAX_2_0
+#if HANDLER_SYNTAX_2_0
 	{
 		.name = "log",
 		.description = "Log",
@@ -62,7 +62,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.priority = 0
 	},
 #endif
-#ifdef HANDLER_SYNTAX_3_0
+#if HANDLER_SYNTAX_3_0
 	{
 		.name = "log",
 		.description = "Log",

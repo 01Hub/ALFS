@@ -48,7 +48,6 @@ static int postbuild_main(element_s *el)
 	return i;
 }
 
-
 /*
  * Handlers' information.
  */
@@ -56,7 +55,6 @@ static int postbuild_main(element_s *el)
 const char *postbuild_parameters[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
-#ifdef HANDLER_SYNTAX_2_0
 	{
 		.name = "postbuild",
 		.description = "Post building",
@@ -68,7 +66,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.is_action = 0,
 		.priority = 0
 	},
-#endif
 	{
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}
