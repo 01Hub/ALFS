@@ -252,7 +252,6 @@ static void update_plogf_after_parsing(struct plogf *plogf)
 struct logs *logs_init_from_directory(const char *dir_name)
 {
 	DIR *dir;
-	struct dirent *next;
 	struct logs *logs;
 
 
@@ -262,15 +261,10 @@ struct logs *logs_init_from_directory(const char *dir_name)
 	logs->list = NULL;
 
 	if ((dir = opendir(dir_name))) {
-		while ((next = readdir(dir)) != NULL) {
-			char *s;
-			struct plogf *plogf;
+		struct dirent *next;
 
-			/* Check for the right suffix. */
-			s = strrchr(next->d_name, '.');
-			if (s == NULL || (strcmp(s, SUFFIX_FOR_LOGF) != 0)) {
-				continue;
-			}
+		while ((next = xreaddir(dir, dir_name, SUFFIX_FOR_LOGF))) {
+			struct plogf *plogf;
 
 			plogf = xmalloc(sizeof *plogf);
 
