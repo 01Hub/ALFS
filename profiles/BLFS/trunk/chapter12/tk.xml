@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch12.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,104 +10,88 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="tk" version="&tk-version;">
-
-    	<packageinfo>
-        	<requires><name>xfree</name></requires>
-        	<requires><name>tcl</name></requires>
-    	</packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&tk-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<environment>
-			    <variable name="VERSION">&tk-version;</variable>
-			</environment>
-			<base>&build_dir;/&tk-directory;/unix</base>
-		</stageinfo>
-
-		<configure>
-			<param>--prefix=/usr</param>
-		</configure>
-
-		<make/>
-
-		<search_replace>
-		       <file>tkConfig.sh</file>
-		       <find>&build_dir;/&tk-directory;/unix</find>
-		       <replace>/usr/lib</replace>
-		</search_replace>
-
-		<search_replace>
-		       <file>tkConfig.sh</file>
-		       <find>&build_dir;/&tk-directory;</find>
-		       <replace>/usr/include/&tk-major-minor;</replace>
-		</search_replace>
-
-		<make>
-			<param>install</param>
-		</make>
-
-		<mkdir>
-			<option>parents</option>
-			<name>/usr/include/tk&tk-major-minor;/unix</name>
-		</mkdir>
-
-		<copy>
-			<source>*.h</source>
-			<destination>/usr/include/tk&tk-major-minor;/unix</destination>
-		</copy>
-
-		<mkdir>
-			<option>parents</option>
-			<name>/usr/include/tk&tk-major-minor;/generic</name>
-		</mkdir>
-
-		<copy>
-			<source>../generic/*.h</source>
-			<destination>/usr/include/tk&tk-major-minor;/generic</destination>
-		</copy>
-
-		<permissions mode="0644">
-			<name>/usr/include/tk&tk-major-minor;/unix/*.h</name>
-			<name>/usr/include/tk&tk-major-minor;/generic/*.h</name>
-		</permissions>
-
-		<remove>/usr/include/tk&tk-major-minor;/generic/tk.h</remove>
-		<remove>/usr/include/tk&tk-major-minor;/generic/tkDecls.h</remove>
-		<remove>/usr/include/tk&tk-major-minor;/generic/tkPlatDecls.h</remove>
-		
-		<link>
-		        <option>force</option>
-			<option>no-dereference</option>
-			<target>/usr/include/tk&tk-major-minor;</target>
-			<name>/usr/lib/tk&tk-major-minor;/include</name>
-		</link>
-
-		<link>
-		        <option>force</option>
-			<target>libtk&tk-major-minor;.so</target>
-			<name>/usr/lib/libtk.so</name>
-		</link>
-
-		<link>
-		        <option>force</option>
-			<target>wish&tk-major-minor;</target>
-			<name>/usr/bin/wish</name>
-		</link>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&tk-directory;</remove>
-	</stage>
-
-</package>
+  <package name="tk" version="&tk-version;">
+    <packageinfo>
+      <requires>
+        <name>xfree</name>
+      </requires>
+      <requires>
+        <name>tcl</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&tk-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <environment>
+          <variable name="VERSION">&tk-version;</variable>
+        </environment>
+        <base>&build_dir;/&tk-directory;/unix</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <search_replace>
+        <file>tkConfig.sh</file>
+        <find>&build_dir;/&tk-directory;/unix</find>
+        <replace>/usr/lib</replace>
+      </search_replace>
+      <search_replace>
+        <file>tkConfig.sh</file>
+        <find>&build_dir;/&tk-directory;</find>
+        <replace>/usr/include/&tk-major-minor;</replace>
+      </search_replace>
+      <make>
+        <param>install</param>
+      </make>
+      <mkdir>
+        <option>parents</option>
+        <name>/usr/include/tk&tk-major-minor;/unix</name>
+      </mkdir>
+      <copy>
+        <source>*.h</source>
+        <destination>/usr/include/tk&tk-major-minor;/unix</destination>
+      </copy>
+      <mkdir>
+        <option>parents</option>
+        <name>/usr/include/tk&tk-major-minor;/generic</name>
+      </mkdir>
+      <copy>
+        <source>../generic/*.h</source>
+        <destination>/usr/include/tk&tk-major-minor;/generic</destination>
+      </copy>
+      <permissions mode="0644">
+        <name>/usr/include/tk&tk-major-minor;/unix/*.h</name>
+        <name>/usr/include/tk&tk-major-minor;/generic/*.h</name>
+      </permissions>
+      <remove>/usr/include/tk&tk-major-minor;/generic/tk.h</remove>
+      <remove>/usr/include/tk&tk-major-minor;/generic/tkDecls.h</remove>
+      <remove>/usr/include/tk&tk-major-minor;/generic/tkPlatDecls.h</remove>
+      <link>
+        <option>force</option>
+        <option>no-dereference</option>
+        <target>/usr/include/tk&tk-major-minor;</target>
+        <name>/usr/lib/tk&tk-major-minor;/include</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>libtk&tk-major-minor;.so</target>
+        <name>/usr/lib/libtk.so</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>wish&tk-major-minor;</target>
+        <name>/usr/bin/wish</name>
+      </link>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&tk-directory;</remove>
+    </stage>
+  </package>
 </alfs>

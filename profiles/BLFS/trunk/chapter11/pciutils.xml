@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch11.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,40 +10,33 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="pciutils" version="&pciutils-version;">
-
-        <packageinfo>
-                <requires><name>which</name></requires>
-	</packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&pciutils-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&pciutils-directory;</base>
-		</stageinfo>
-
-		<make>
-			<param>PREFIX=/usr</param>
-		</make>
-
-		<make>
-			<param>PREFIX=/usr</param>
-			<param>install</param>
-		</make>
-		
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&pciutils-directory;</remove>
-	</stage>
-
-</package>
+  <package name="pciutils" version="&pciutils-version;">
+    <packageinfo>
+      <requires>
+        <name>which</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&pciutils-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&pciutils-directory;</base>
+      </stageinfo>
+      <make>
+        <param>PREFIX=/usr</param>
+      </make>
+      <make>
+        <param>PREFIX=/usr</param>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&pciutils-directory;</remove>
+    </stage>
+  </package>
 </alfs>
