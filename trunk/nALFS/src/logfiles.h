@@ -47,8 +47,6 @@ void logs_dump_to_memory(logs_t *logs, char **ptr, int *size);
 void logs_free(logs_t *logs);
 int logs_save(logs_t *logs);
 
-char *logs_get_package_fullname(logs_t *logs, int i);
-
 /*
  * Multiple log files, initialized from directory.
  */
@@ -56,8 +54,8 @@ char *logs_get_package_fullname(logs_t *logs, int i);
 logs_t *logs_init_from_directory(const char *pdir);
 
 int logs_get_packages_cnt(logs_t *logs);
-
 char *logs_get_plog_filename(logs_t *logs, int i);
+char *logs_get_plog_name(logs_t *logs, int i);
 char *logs_get_flog_filename(logs_t *logs, int i);
 
 /*
