@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch09.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,42 +10,37 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="imlib" version="&imlib-version;">
-
-        <packageinfo>
-                <requires><name>libungif</name></requires>
-                <requires><name>gtk+</name></requires>
-        </packageinfo>
-
-        <stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&imlib-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&imlib-directory;</base>
-		</stageinfo>
-
-		<configure>
-		        <param>--prefix=/usr</param>
-		        <param>--sysconfdir=/etc/imlib</param>
-		</configure>
-
-		<make />
-
-		<make>
-			<param>install</param>
-		</make>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&imlib-directory;</remove>
-	</stage>
-
-</package>
+  <package name="imlib" version="&imlib-version;">
+    <packageinfo>
+      <requires>
+        <name>libungif</name>
+      </requires>
+      <requires>
+        <name>gtk+</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&imlib-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&imlib-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--sysconfdir=/etc/imlib</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&imlib-directory;</remove>
+    </stage>
+  </package>
 </alfs>
