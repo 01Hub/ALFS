@@ -1,3 +1,9 @@
+<!--
+        Last Changed Date: $LastChangedDate$
+        Last Changed By:   $LastChangedBy$
+        Revision:          $LastChangedRevision$ 
+-->
+
 <sect1 id="elem_else" xreflabel="Element: &lt;else&gt;">
 <?dbhtml filename="elem_else.html" dir="alfs_dtd"?>
 <title>Element: &lt;else&gt;</title>
