@@ -4,7 +4,7 @@
        Version : CVS
        Author:   V. Dzuba
        Updates:  Kevin P. Fleming
-       Date:     March 5, 2004
+       Date:     July 3, 2004
 
        The current version of the DTD is available at:
              http://www.linuxfromscratch.org/alfs/downloads/stable
@@ -81,7 +81,7 @@
 <!ATTLIST include
           href           CDATA #REQUIRED>
 
-<!ELEMENT link           (option?, target+, name)>
+<!ELEMENT link           (option*, target+, name)>
 <!ATTLIST link
           base           CDATA #IMPLIED
 	  type           (hard | symbolic) "symbolic">
