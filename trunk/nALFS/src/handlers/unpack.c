@@ -163,7 +163,7 @@ static int unpack_main_ver2(element_s *el)
 #endif /* HANDLER_SYNTAX_2_0 */
 
 
-#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
 
 static const char *unpack_parameters_ver3[] =
 { "digest", "reference", "archive", "destination", NULL };
@@ -248,7 +248,99 @@ static int unpack_main_ver3(element_s *el)
 	return status;
 }
 
-#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+
+#if HANDLER_SYNTAX_3_2
+
+static const char *unpack_parameters_ver3_2[] =
+{ "digest", "reference", "archive", NULL };
+
+static int unpack_main_ver3_2(element_s *el)
+{
+	int status = -1;
+	char *archive = NULL;
+	char *base = NULL;
+	char *digest = NULL;
+	char *digest_type = NULL;
+	struct stat file_stat;
+
+
+	if ((archive = El_unpack_archive(el)) == NULL) {
+		Nprint_h_err("Archive name is missing.");
+		goto free_all_and_return;
+	}
+
+	/* <base> is mandatory, we don't want to unpack just anywhere! */
+	if ((base = alloc_base_dir_force(el)) == NULL) {
+		Nprint_h_err("<base> is missing.");
+		goto free_all_and_return;
+	}
+
+	/* changing to <base> directory */
+	if (change_current_dir(base))
+		goto free_all_and_return;
+
+	/* base is not needed anymore so free it */
+	xfree(base);	
+
+	alloc_element_digest(el, &digest, &digest_type);
+
+	/* Check if archive exists. */
+	if ((stat(archive, &file_stat))) {
+	        if (errno == ENOENT && first_param("reference", el) != NULL) {
+		        int found = 0;
+			element_s *p;
+
+			Nprint_h_warn("Archive %s not found.", archive);
+			Nprint_h("Trying to fetch it from <reference>...");
+
+	                for (p = first_param("reference", el); p; p = next_param(p)) {
+				char *s;
+
+				if ((s = alloc_trimmed_str(p->content)) == NULL) {
+					Nprint_h_warn("Source empty.");
+					continue;
+				}
+				
+				if (! get_url(s, archive, digest, digest_type))
+					found = 1;
+				xfree(s);
+				if (found)
+					break;
+			}
+			
+			if (! found) {
+				Nprint_h_err("Unable to download file %s.", archive);
+				goto free_all_and_return;
+			}
+		} else {
+			Nprint_h_err("Checking for %s failed:", archive);
+			Nprint_h_err("    %s", strerror(errno));
+			goto free_all_and_return;
+		}
+	} else if (digest && verify_digest(digest_type, digest, archive)) {
+		Nprint_h_err("Wrong %s digest of archive: %s",
+			     digest_type, archive);
+		goto free_all_and_return;
+	}
+
+	if (unpack_archive(archive)) {
+		Nprint_h_err("Unpacking %s failed.", archive);
+	} else {
+		Nprint_h("Done unpacking %s.", archive);
+		status = 0;
+	}
+
+ free_all_and_return:
+	xfree(digest_type);
+	xfree(digest);
+	xfree(archive);
+	xfree(base);
+	
+	return status;
+}
+
+#endif /* HANDLER_SYNTAX_3_2 */
 
 
 /*
@@ -300,8 +392,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "unpack",
 		.description = "Unpack",
 		.syntax_version = "3.2",
-		.parameters = unpack_parameters_ver3,
-		.main = unpack_main_ver3,
+		.parameters = unpack_parameters_ver3_2,
+		.main = unpack_main_ver3_2,
 		.type = 0,
 		.alloc_data = NULL,
 		.is_action = 1,
