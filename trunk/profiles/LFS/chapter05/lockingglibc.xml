@@ -15,8 +15,8 @@
 
 	<search_replace>
 		<file>/tools/lib/gcc-lib/&gcc_target;/&gcc-version;/specs</file>
-		<find> /lib/&ld-specs-file;</find>
-		<replace> /tools/lib/&ld-specs-file;</replace>
+		<find> /lib/&glibc-loader;</find>
+		<replace> /tools/lib/&glibc-loader;</replace>
 	</search_replace>
 
 	<remove>/tools/lib/gcc-lib/*/*/include/{pthread.h,bits/sigthread.h}</remove>
