@@ -1,10 +1,10 @@
-<!ENTITY autoconf-md5 "db3fa3069c6554b3505799c7e1022e2b">
-<!ENTITY autoconf-version "2.58">
+<!ENTITY autoconf-md5 "1ee40f7a676b3cfdc0e3f7cd81551b5f">
+<!ENTITY autoconf-version "2.59">
 <!ENTITY autoconf-package "autoconf-&autoconf-version;.tar.bz2">
 <!ENTITY autoconf-directory "autoconf-&autoconf-version;">
 
-<!ENTITY automake-md5 "571fd0b0598eb2a27dcf68adcfddfacb">
-<!ENTITY automake-version "1.7.9">
+<!ENTITY automake-md5 "0a83fd4a2a32dc966b83ca3be86f884b">
+<!ENTITY automake-version "1.8">
 <!ENTITY automake-package "automake-&automake-version;.tar.bz2">
 <!ENTITY automake-directory "automake-&automake-version;">
 
@@ -131,8 +131,8 @@
 <!ENTITY gcc-specs-patch-md5 "74cb9822f21774ae1c9a8ef1fa133f49">
 <!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-1.patch">
 
-<!ENTITY gettext-md5 "5d4bddd300072315e668247e5b7d5bdb">
-<!ENTITY gettext-version "0.12.1">
+<!ENTITY gettext-md5 "b3477289185e7781527345c14a4565de">
+<!ENTITY gettext-version "0.13.1">
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.gz">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
