@@ -28,6 +28,9 @@ AC_INIT(src/nalfs.c)
 AC_PROG_CC
 AC_PROG_INSTALL
 
+AC_CHECK_TOOL(AR, ar)
+AC_CHECK_TOOL(LD, ld)
+AC_CHECK_TOOL(RANLIB, ranlib, :)
 
 AC_CHECK_LIB(ncurses, initscr)
 AC_CHECK_LIB(form, form_driver)
@@ -66,22 +69,22 @@ dnl Check for ssl library.
 
 AC_ARG_WITH(ssl,
 [  --with-ssl=PREFIX       specify prefix for ssl files (ssl will be used
-                          for checking MD5 digest in <unpack>)],
+                          for checking non-MD5 digests in <unpack> elements)],
 [
 	case "$withval" in
 		n|no)
-			disable_ssl=yes
 			;;
 		y|ye|yes)
+			enable_ssl=yes
 			;;
-
 		*)
 			LIBS="$LIBS -L$withval/lib"
+			enable_ssl=yes
 			;;
 	esac
 ])
 
-if test "$disable_ssl" != "yes" ; then
+if test "$enable_ssl" == "yes" ; then
 	AC_CHECK_LIB(ssl, OpenSSL_add_all_digests, [
 		CPPFLAGS="$CPPFLAGS -DHAVE_LIBSSL"
 		LIBS="$LIBS -lcrypto -lssl"])
@@ -130,5 +133,6 @@ AC_OUTPUT([
 Rules.mak
 Makefile
 src/Makefile
+src/lib/Makefile
 src/handlers/Makefile
 ])

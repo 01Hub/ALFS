@@ -36,79 +36,18 @@
 #include "nalfs.h"
 #include "backend.h"
 #include "config.h"
+#include "digest.h"
 
 
 #define El_unpack_reference(el) alloc_trimmed_param_value("reference", el)
 #define El_unpack_archive(el) alloc_trimmed_param_value("archive", el)
 #define El_unpack_destination(el) alloc_trimmed_param_value("destination", el)
+#define El_unpack_digest(el) alloc_trimmed_param_value("digest", el)
 
 
 typedef enum extension_e {
 	GZ, TAR_GZ, TGZ, BZ2, TAR_BZ2, TAR, ZIP, TAR_Z, Z, UNKNOWN
 } extension_e;
-
-
-#ifdef HAVE_LIBSSL
-
-#define El_unpack_digest(el) alloc_trimmed_param_value("digest", el)
-
-#include <openssl/evp.h>
-
-int verify_digest(char* type, char* digest, char* file)
-{
-        EVP_MD_CTX ctx;
-	const EVP_MD *md;
-	char buffer[4094];
-	FILE *istream;
-	unsigned char md_value[EVP_MAX_MD_SIZE];
-	char md_value_hex[2*EVP_MAX_MD_SIZE + 1 ];
-	unsigned int md_len;
-	int i;
-	char *s;
-
-
-	OpenSSL_add_all_digests();
-
-	md = EVP_get_digestbyname(type);
-
-	EVP_DigestInit(&ctx, md);
-
-	istream = fopen(file, "r");
-	if (istream) {
-		size_t nbbytes;
-
-		while ((nbbytes = fread(&buffer[0], 1, sizeof(buffer), istream)) != 0) {
-		        EVP_DigestUpdate(&ctx, &buffer[0], nbbytes);
-		}
-
-		fclose(istream);
-
-		EVP_DigestFinal(&ctx, &md_value[0], &md_len);
-
-
-		for(i = 0, s = &md_value_hex[0]; i < (int)md_len; s += 2, ++i) {
-		        sprintf(s, "%02x", md_value[i]);
-                }
-		*s = 0;
-
-		if (! strcmp(digest, &md_value_hex[0])) {
-			Nprint("Digest ok.");
-		        return 0;
-		}
-
-		Nprint_err("Expected digest : %s", digest);
-		Nprint_err("Found digest    : %s", &md_value_hex[0]);
-
-	} else {
-		Nprint_err(
-		"Unable to open the archive when checking digest: %s", file);
-	}
-
-	return -1;
-}
-
-#endif
-
 
 #ifdef HAVE_LIBCURL
 
@@ -262,11 +201,7 @@ char handler_description[] = "Unpack";
 char *handler_syntax_versions[] = { "3.0", "3.1", NULL };
 // char *handler_attributes[] = { NULL };
 char *handler_parameters[] =
-#ifdef HAVE_LIBSSL
 	{ "digest", "reference", "archive", "destination", NULL };
-#else
-	{ "reference", "archive", "destination", NULL };
-#endif
 int handler_action = 1;
 
 
@@ -276,9 +211,7 @@ int handler_main(element_s *el)
 	char *base_name;
 	char *archive;
 	char *destination;
-#ifdef HAVE_LIBSSL
 	char *digest;
-#endif
 	struct stat file_stat;
 	extension_e extension = UNKNOWN;
 
@@ -326,7 +259,6 @@ int handler_main(element_s *el)
 		}
 	}
 
-#ifdef HAVE_LIBSSL
 	if ((digest = El_unpack_digest(el)) != NULL) {
 		element_s *el2 = first_param("digest", el);
 		char *type = attr_value("type", el2);
@@ -351,7 +283,6 @@ int handler_main(element_s *el)
 			return -1;
 		}
 	}
-#endif
 
 	/* Watch for the order! */
 	if (! (strncmp(archive + strlen(archive) - 7, ".tar.gz", 7)))

@@ -38,20 +38,23 @@ libdir      := @libdir@
 INSTALL     := @INSTALL@
 
 CC          := @CC@
+LD          := @LD@
+AR          := @AR@
+RANLIB      := @RANLIB@
 
 CPPFLAGS    := @CPPFLAGS@
 CFLAGS      := @CFLAGS@
 LDFLAGS     := @LDFLAGS@
 LDLIBS      := @LIBS@
 
+NALFS_LIB   := $(top_builddir)/src/lib/lib.a
 
 handlers_directory := $(libdir)/nALFS/
 
 CPPFLAGS += -DHANDLERS_DIRECTORY=\"$(handlers_directory)\"
-CPPFLAGS += -I$(abs_top_srcdir)/src/
+CPPFLAGS += -I$(abs_top_srcdir)/src/ -I$(abs_top_srcdir)/src/lib/
 
 CFLAGS   += -W -Wall -Wshadow -Winline
-
 
 C_FILES  := $(wildcard $(srcdir)/*.c)
 H_FILES  := $(wildcard $(srcdir)/*.h)
