@@ -48,8 +48,6 @@ static struct handlers {
 	handler_s **list;
 } handlers = { 0, NULL };
 
-static char **parameters;
-
 /* Embedded "handlers" for the root (profile) element and comment elements. */
 
 static int root_main(const element_s * const el)
@@ -144,67 +142,6 @@ handler_s *find_handler(const char *name, const char *syntax_version)
 	return NULL;
 }
 
-/*
- * Checks if name is a "parameter element".
- * TODO: Check the syntax version too.
- */
-int parameter_exists(const char *name)
-{
-	int i;
-
-
-	for (i = 0; parameters[i]; ++i) {
-		if (strcmp(parameters[i], name) == 0) {
-			return 1;
-		}
-	}
-
-	return 0;
-}
-
-
-
-static INLINE int add_new_parameters(const struct handler_parameter *params)
-{
-	int i, total = 0;
-	const struct handler_parameter *param;
-
-
-	for (i = 0; (params[i].name); ++i) {
-		param = &params[i];
-		int j, param_already_exists = 0;
-
-		/* Check if tok already exists in parameters. */
-		for (j = 0; parameters[j]; ++j) {
-			if (strcmp(param->name, parameters[j]) == 0) {
-				++param_already_exists;
-			}
-		}
-
-		if (! param_already_exists) {
-			++total;
-
-			parameters = xrealloc(
-				parameters,
-				(j+2) * sizeof *parameters);
-			parameters[j] = xstrdup(param->name);
-			parameters[j+1] = NULL;
-		}
-	}
-
-	return total;
-}
-
-static INLINE int number_of_parameters(void)
-{
-	int i;
-
-	for (i = 0; parameters[i]; ++i)
-		/* Count the number of parameters. */;
-
-	return i;
-}
-
 static INLINE lt_ptr lookup_symbol(lt_dlhandle handle, const char *symbol_name)
 {
 	lt_ptr result;
@@ -289,16 +226,6 @@ static int load_handler(lt_dlhandle handle, lt_ptr data)
 	return parse_handler_info(handler_info, handle);
 }
 
-static INLINE void add_all_parameters(void)
-{
-	int i;
-
-	for (i = 0; i < handlers.cnt; ++i) {
-		if (handlers.list[i]->info->parameters)
-			add_new_parameters(handlers.list[i]->info->parameters);
-	}
-}
-
 #ifndef STATIC_BUILD
 static int foreachfile_callback(const char *filename, lt_ptr data)
 {
@@ -315,9 +242,6 @@ static int foreachfile_callback(const char *filename, lt_ptr data)
 
 int load_all_handlers(void)
 {
-	parameters = xmalloc(sizeof *parameters);
-	parameters[0] = NULL;
-
 #ifdef STATIC_BUILD
 	LTDL_SET_PRELOADED_SYMBOLS();
 #endif
@@ -339,14 +263,10 @@ int load_all_handlers(void)
 	(void) parse_handler_info(embedded_handlers_info, NULL);
 
 	lt_dlforeach(&load_handler, NULL);
-	add_all_parameters();
 	Nprint("Total %d handlers loaded.", handlers.cnt);
-	Nprint("Total %d parameters found.", number_of_parameters());
 
 	return 0;
 }
-
-
 
 /*
  * Utility functions tied to handlers in some way.
@@ -407,42 +327,29 @@ char *alloc_execute_command(element_s *el)
 	return el->handler->alloc_data(el, HDATA_COMMAND);
 }
 
-/* Used by old syntax (2.0). */
-char *alloc_base_dir(element_s *el)
+static const element_s *find_parent_with_data(const element_s * const element,
+					      const handler_data_e data_requested)
 {
-	element_s *p;
-	char *dir;
-
-
-	if ((dir = alloc_trimmed_param_value("base", el))) {
-		return dir;
-	}
-
-	for (p = el->parent; p; p = p->parent) {
-		if (Is_element_name(p, "package")) {
-			if ((dir = alloc_trimmed_param_value("base", p))) {
-				return dir;
-			}
-
-			break; /* One <package> is enough. */
-		}
-	}
-
-	return xstrdup("/");
-}
-
-/* Used by syntax 3.0+ handlers. */
-const char *alloc_base_dir_new(const element_s * const element)
-{
-	const element_s *s;	
-	const char *dir;
+	const element_s *s;
 
 	for (s = element->parent; s; s = s->parent) {
 		if (!s->handler)
 			continue;
-		if ((s->handler->data & HDATA_BASE) == 0)
-			continue;
+		if ((s->handler->data & data_requested) == 0)
+			return s;
+	}
 
+	return NULL;
+}
+
+const char *alloc_base_dir(const element_s * const element)
+{
+	const element_s *s;	
+	const char *dir;
+
+	s = find_parent_with_data(element, HDATA_BASE);
+
+	if (s) {
 		dir  = s->handler->alloc_data(s, HDATA_BASE);
 		if (dir)
 			return dir;
@@ -461,7 +368,7 @@ int change_to_base_dir(const element_s * const element,
 	if (local_base)
 		return change_current_dir(local_base);
 
-	if ((dir = alloc_base_dir_new(element)) != NULL) {
+	if ((dir = alloc_base_dir(element)) != NULL) {
 		result = change_current_dir(dir);
 		xfree(dir);
 		return result;
@@ -474,17 +381,14 @@ int change_to_base_dir(const element_s * const element,
 	}
 }
 
-char *alloc_stage_shell(const element_s * const el)
+const char *alloc_stage_shell(const element_s * const el)
 {
 	const element_s *s;
 	char *shell;
 
-	for (s = el->parent; s; s = s->parent) {
-		if (!s->handler)
-			continue;
-		if ((s->handler->data & HDATA_SHELL) == 0)
-			continue;
+	s = find_parent_with_data(el, HDATA_SHELL);
 
+	if (s) {
 		shell = s->handler->alloc_data(s, HDATA_SHELL);
 		if (shell)
 			return shell;
@@ -506,120 +410,3 @@ int option_in_string(const char * const option, const char * const string)
 	xfree(tmp);
 	return tok ? 1 : 0;
 }
-
-/* Used by the old syntax (2.0). */
-int option_exists(const char *option, element_s *element)
-{
-	int exists = 0;
-	char *option_string = alloc_trimmed_param_value("options", element);
-
-
-	if (option_string && strstr(option_string, option)) {
-		exists = 1;
-	}
-
-	xfree(option_string);
-
-	return exists;
-}
-
-/* Used by new syntax (3.0). */
-void check_options(int total, int *opts, const char *string_, element_s *el)
-{
-	int i;
-	char *str, *string;
-	element_s *p;
-
-
-	for (i = 0; i < total; ++i) {
-		opts[i] = 0;
-	}
-
-	for (p = first_param("option", el); p; p = next_param(p)) {
-		int unknown_option = 1;
-		char *o;
-
-
-		if ((o = alloc_trimmed_str(p->content)) == NULL) {
-			Nprint_warn("Skipping empty option.");
-			continue;
-		}
-
-		string = xstrdup(string_);
-		for (str = strtok(string, WHITE_SPACE), i = 0;
-		     str;
-		     str = strtok(NULL, WHITE_SPACE), ++i) {
-			if (strcmp(o, str) == 0) {
-				unknown_option = 0;
-				opts[i] = 1;
-				break;
-			}
-		}
-		xfree(string);
-
-		if (unknown_option) {
-			Nprint_warn("Ignoring unknown option (%s).", o);
-		}
-
-		xfree(o);
-	}
-}
-
-/* Used by both syntaxes. */
-char *append_param_elements(char **string, element_s *el)
-{
-	element_s *tmp;
-
-
-	for (tmp = first_param("param", el); tmp; tmp = next_param(tmp)) {
-		char *content;
-
-		if ((content = alloc_trimmed_str(tmp->content))) {
-			if (*string) {
-				append_str(string, " ");
-			}
-			append_str(string, content);
-
-			xfree(content);
-
-		} else if (opt_be_verbose) {
-			Nprint_warn("Skipping empty parameter.");
-		}
-	}
-
-	return *string;
-}
-
-char *append_prefix_elements(char **string, element_s *el)
-{
-	element_s *tmp;
-
-
-	for (tmp = first_param("prefix", el); tmp; tmp = next_param(tmp)) {
-		char *content;
-
-		if ((content = alloc_trimmed_str(tmp->content))) {
-			append_str(string, content);
-			append_str(string, " ");
-
-			xfree(content);
-
-		} else if (opt_be_verbose) {
-			Nprint_warn("Skipping empty prefix.");
-		}
-	}
-
-	return *string;
-}
-
-char *parse_string_content(const char * const value,
-			   const char * const message)
-{
-	if (strlen(value)) {
-		return xstrdup(value);
-	} else {
-		Nprint_err(message);
-		return NULL;
-	}
-}
-

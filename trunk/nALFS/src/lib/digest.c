@@ -50,28 +50,6 @@
 #include "parser.h"
 #include "utility.h"
 
-#define El_unpack_digest(el) alloc_trimmed_param_value("digest", el)
-
-void alloc_element_digest(const element_s *el, char **digest, char **type)
-{
-	if ((*digest = El_unpack_digest(el)) != NULL) {
-		element_s *el2 = first_param("digest", el);
-		char *s;
-
-		*type = attr_value("type", el2);
-		if (! Empty_string(*type)) {
-			/* make a copy of the attribute value before
-			   modifying it */
-			*type = xstrdup(*type);
-			for (s = *type; *s; s++) {
-				*s = tolower(*s);
-			}
-		} else {
-			*type = xstrdup("md5");
-		}
-	}
-}
-
 int verify_digest(const char* type, const char* digest, const char* file)
 {
 	char buffer[4094];

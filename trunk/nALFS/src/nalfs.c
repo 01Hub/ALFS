@@ -1368,7 +1368,8 @@ static INLINE void add_element_specific_info(char **line, element_s *el)
 	} else if (Is_element_name(el, "stage")) {
 		char *s;
 
-		if ((s = attr_value("description", el))) {
+/* TODO: get description/name from handler */
+/*		if ((s = attr_value("description", el))) {
 			append_str(line, s);
 
 		} else {
@@ -1376,6 +1377,7 @@ static INLINE void add_element_specific_info(char **line, element_s *el)
 				append_str(line, s);
 			}
 		}
+*/
 
 	} else if (Is_element_name(el, "check")) {
 		char *s;
@@ -2820,9 +2822,6 @@ static void write_extra_element_info(element_s *el)
 		case TYPE_ELEMENT:
 			Xwaddstr(windows.main->name, "Element\n");
 			break;
-		case TYPE_PARAMETER:
-			Xwaddstr(windows.main->name, "Parameter\n");
-			break;
 		case TYPE_COMMENT:
 			Xwaddstr(windows.main->name, "Comment\n");
 			break;
@@ -2991,7 +2990,8 @@ static int write_element_info(
 	 * Print content (if any).
 	 */
 
-	if (Is_parameter_name(el, "description")
+/* TODO: get data from handler */
+/*	if (Is_parameter_name(el, "description")
 	&& el->parent && Is_parameter_name(el->parent, "packageinfo")) {
 		char *s = build_description(el);
 
@@ -3002,6 +3002,8 @@ static int write_element_info(
 		xfree(s);
 
 	} else if (el->content) {
+*/
+	if (el->content) {
 		Xwprintw(windows.main->name,
 			"Full content\n------------\n%s",
 			el->content);

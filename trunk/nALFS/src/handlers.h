@@ -145,21 +145,12 @@ int package_has_name_and_version(element_s *el);
 char *alloc_textdump_file(element_s *el);
 char *alloc_execute_command(element_s *el);
 
-char *alloc_base_dir(element_s *el);
-
-const char *alloc_base_dir_new(const element_s * const element);
+const char *alloc_base_dir(const element_s * const element);
 
 int change_to_base_dir(const element_s * const element, const char * const local_base, 
 		       const int default_root);
 
-char *alloc_stage_shell(const element_s * const el);
+const char *alloc_stage_shell(const element_s * const el);
 int option_in_string(const char * const option, const char * const string);
-int option_exists(const char *option, element_s *element);
-void check_options(int total, int *opts, const char *string_, element_s *el);
-char *append_param_elements(char **string, element_s *el);
-char *append_prefix_elements(char **string, element_s *el);
-
-char *parse_string_content(const char * const value,
-			   const char * const message);
 
 #endif /* H_HANDLER_ */

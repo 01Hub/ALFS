@@ -282,7 +282,7 @@ static int download_valid_data_v3_2(const element_s * const element)
 	}
 
 	if (!data->base) {
-		const char *base = alloc_base_dir_new(element);
+		const char *base = alloc_base_dir(element);
 
 		if (!base) {
 			Nprint_err("<download>: \"base\" must be specified at or above this element.");
