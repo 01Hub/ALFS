@@ -60,12 +60,6 @@ enum cpair {
 #define COL_WHITE	(COLOR_PAIR(COLP_WHITE))
 
 
-typedef struct msg_type_t {
-	msg_id_e id;		// Unique ID of the message type.
-	char character;		// Character to print before the message.
-	unsigned long attrs;	// Attributes for printing the above character.
-} msg_type_t;
-
 char msg_character(msg_id_e mid);
 unsigned long msg_attrs(msg_id_e mid);
 
