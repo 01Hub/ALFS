@@ -16,8 +16,8 @@
 <!ENTITY bash-patch-md5 "dfc7399bb57798e18fbb99f9edce4da0">
 <!ENTITY bash-patch "bash-&bash-version;-gnu-fixes-2.patch">
 
-<!ENTITY binutils-md5 "624e6b74983ac6b2960edaf2d522ca58">
-<!ENTITY binutils-version "2.15">
+<!ENTITY binutils-md5 "0d64d65d33a7f305e5ef8351086b9a3a">
+<!ENTITY binutils-version "2.15.91.0.1">
 <!ENTITY binutils-package "binutils-&binutils-version;.tar.bz2">
 <!ENTITY binutils-directory "binutils-&binutils-version;">
 
@@ -89,10 +89,10 @@
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
 <!ENTITY gcc-version "3.4.1">
-<!ENTITY gcc-cvs-tag "-20040517">
+<!ENTITY gcc-cvs-tag "-20040601">
 <!ENTITY gcc-directory "gcc-&gcc-version;&gcc-cvs-tag;">
 
-<!ENTITY gcc-md5 "a01b2065e50312d9a51b47d52b742711">
+<!ENTITY gcc-md5 "154ccd6c790aefb74b5542567df7e599">
 <!ENTITY gcc-package "gcc-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
 <!ENTITY gcc-core-md5 "6371ff0a37d5e1809f4f59d0045dcaa5">
@@ -115,9 +115,9 @@
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.gz">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
-<!ENTITY glibc-md5 "461a0e3918697865de347470577472f6">
+<!ENTITY glibc-md5 "23d24830bc82e4beb023c810c2267485">
 <!ENTITY glibc-version "2.3.4">
-<!ENTITY glibc-cvs-tag "-20040510">
+<!ENTITY glibc-cvs-tag "-20040529">
 <!ENTITY glibc-package "glibc-&glibc-version;&glibc-cvs-tag;.tar.bz2">
 <!ENTITY glibc-directory "glibc-&glibc-version;&glibc-cvs-tag;">
 
