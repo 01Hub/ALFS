@@ -13,8 +13,11 @@
 <alfs>
   <package name="linuxpam" version="&linuxpam-version;">
     <packageinfo>
-      <utilizes>
+      <requires>
         <name>cracklib</name>
+      </requires>
+      <utilizes>
+	<name>db</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

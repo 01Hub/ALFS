@@ -43,6 +43,9 @@
       <utilizes>
 	<name>libvorbis</name>
       </utilizes>
+      <utilizes>
+      	<name>doxygen</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -59,6 +62,7 @@
         <param>-p1</param>
         <param>-i &packages_dir;/&wvstreams-tcl-patch;</param>
       </patch>
+      <execute command="autoreconf -f" />
     </stage>
     <stage name="Installing">
     <stageinfo>
@@ -66,6 +70,8 @@
     </stageinfo>
     <configure>
       <param>--prefix=/usr</param>
+      <param>--sysconfdir=/etc</param>
+      <param>--localstatedir=/var</param>
     </configure>
     <make />
     <make>

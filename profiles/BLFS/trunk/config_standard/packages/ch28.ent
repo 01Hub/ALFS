@@ -10,6 +10,7 @@
 <!ENTITY kdelibs-directory "kdelibs-&kdelibs-version;">
 <!ENTITY kdelibs-htmlframes-patch "post-&kde-version;-kdelibs-htmlframes2.patch">
 <!ENTITY kdelibs-kio-patch "post-&kde-version;-kdelibs-kio.diff">
+<!ENTITY kdelibs-kioslave-patch "post-&kde-version;-kdelibs-kioslave.patch">
 
 <!ENTITY kdebase-version   "&kde-version;">
 <!ENTITY kdebase-package   "kdebase-&kdebase-version;.tar.bz2">

@@ -19,10 +19,13 @@
 <!ENTITY gsview-lang-patch "gsview-&gsview-version;-lang-1.patch">
 
 <!ENTITY xpdf-version   "3.00">
+<!ENTITY xpdf-plevel "pl3">
 <!ENTITY xpdf-package   "xpdf-&xpdf-version;.tar.gz">
 <!ENTITY xpdf-directory "xpdf-&xpdf-version;">
 <!ENTITY xpdf-pl1-patch "xpdf-&xpdf-version;pl1.patch">
-<!ENTITY xpdf-freetype-patch "xpdf-&xpdf-version;pl1-freetype_2.1.7_hack-2.patch">
+<!ENTITY xpdf-pl2-patch "xpdf-&xpdf-version;pl2.patch">
+<!ENTITY xpdf-pl3-patch "xpdf-&xpdf-version;pl3.patch">
+<!ENTITY xpdf-freetype-patch "xpdf-&xpdf-version;&xpdf-plevel;-freetype_2.1.7_hack-2.patch">
 
 <!ENTITY fop-version "0.20.5">
 <!ENTITY fop-package "fop-&fop-version;-src.tar.gz">

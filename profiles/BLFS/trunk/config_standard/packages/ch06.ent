@@ -5,7 +5,7 @@
 <!ENTITY vim-lang-package "vim-&vim-version;-lang.tar.gz">
 <!ENTITY vim-directory "vim63">
 
-<!ENTITY emacs-version   "21.3">
+<!ENTITY emacs-version   "21.4">
 <!ENTITY emacs-package   "emacs-&emacs-version;.tar.gz">
 <!ENTITY emacs-directory "emacs-&emacs-version;">
 

@@ -3,6 +3,8 @@ ftp://ftp.kde.org/pub/kde/stable/3.3.2/src/kdenetwork-3.3.2.tar.bz2
 ftp://ftp.kde.org/pub/kde/stable/3.3.2/src/kdepim-3.3.2.tar.bz2
 ftp://ftp.kde.org/pub/kde/stable/3.3.2/src/kdemultimedia-3.3.2.tar.bz2
 ftp://ftp.kde.org/pub/kde/stable/3.3.2/src/kdegraphics-3.3.2.tar.bz2
+ftp://ftp.kde.org/pub/kde/security_patches/post-3.3.2-kdegraphics.diff
+ftp://ftp.kde.org/pub/kde/security_patches/post-3.3.2-kdegraphics-3.diff
 ftp://ftp.kde.org/pub/kde/stable/3.3.2/src/kdeutils-3.3.2.tar.bz2
 ftp://ftp.kde.org/pub/kde/stable/3.3.2/src/kdeedu-3.3.2.tar.bz2
 ftp://ftp.kde.org/pub/kde/stable/3.3.2/src/kdesdk-3.3.2.tar.bz2

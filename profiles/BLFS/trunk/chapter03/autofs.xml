@@ -21,6 +21,51 @@
     </unpack>
   </stage>
   &bootscripts-get;
+  <stage name="Patching."> 
+    <stageinfo>
+      <base>&build_dir;/&autofs-directory;</base>
+    </stageinfo>
+    <patch>
+      <param>-N</param>
+      <param>-p1</param>
+      <param>-i &packages_dir;/&autofs-strict-patch;</param>
+    </patch>
+    <patch>
+      <param>-N</param>
+      <param>-p1</param>
+      <param>-i &packages_dir;/&autofs-bad-chdir-patch;</param>
+    </patch>
+    <patch>
+      <param>-N</param>
+      <param>-p1</param>
+      <param>-i &packages_dir;/&autofs-mtab-lock-patch;</param>
+    </patch>
+    <patch>
+      <param>-N</param>
+      <param>-p1</param>
+      <param>-i &packages_dir;/&autofs-non-block-ping-patch;</param>
+    </patch>
+    <patch>
+      <param>-N</param>
+      <param>-p1</param>
+      <param>-i &packages_dir;/&autofs-signal-race-fix-patch;</param>
+    </patch>
+    <patch>
+      <param>-N</param>
+      <param>-p1</param>
+      <param>-i &packages_dir;/&autofs-sock-leak-fix-patch;</param>
+    </patch>
+    <patch>
+      <param>-N</param>
+      <param>-p1</param>
+      <param>-i &packages_dir;/&autofs-replicated-server-select-patch;</param>
+    </patch>
+    <patch>
+      <param>-N</param>
+      <param>-p1</param>
+      <param>-i &packages_dir;/&autofs-multi-over-patch;</param>
+    </patch>
+  </stage>
   <stage name="Installing.">
     <stageinfo>
       <base>&build_dir;/&autofs-directory;</base>
