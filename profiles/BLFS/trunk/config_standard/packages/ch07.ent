@@ -2,13 +2,18 @@
 
 <!ENTITY ash-version   "0.4.0">
 <!ENTITY ash-package   "ash-&ash-version;.tar.bz2">
+<!ENTITY ash-md5       "482c008a16003bfbd5c451cfa535c7dc">
 <!ENTITY ash-directory "ash-&ash-version;">
+
 <!ENTITY ash-patch     "ash-&ash-version;-cumulative_fixes-1.patch">
+<!ENTITY ash-patch-md5 "7ed0d11c0ab8cd2b620ca13abf74ef20">
  
 <!ENTITY tcsh-version   "6.13">
 <!ENTITY tcsh-package   "tcsh-&tcsh-version;.00.tar.bz2">
+<!ENTITY tcsh-md5       "91de6fff50e3dbcf35c4a6c047db07b8">
 <!ENTITY tcsh-directory "tcsh-&tcsh-version;.00">
 
 <!ENTITY zsh-version   "4.2.4">
 <!ENTITY zsh-package   "zsh-&zsh-version;.tar.bz2">
+<!ENTITY zsh-md5       "5c37fa9eb659458fe4f7f80da17fb09c">
 <!ENTITY zsh-directory "zsh-&zsh-version;">

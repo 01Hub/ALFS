@@ -2,8 +2,10 @@
 
 <!ENTITY ppp-version   "2.4.3">
 <!ENTITY ppp-package   "ppp-&ppp-version;.tar.bz2">
+<!ENTITY ppp-md5       "724009dafcd39bc67ca443df3f486e15">
 <!ENTITY ppp-directory "ppp-&ppp-version;">
 
 <!ENTITY wvdial-version   "1.54.0">
 <!ENTITY wvdial-package   "wvdial-&wvdial-version;.tar.bz2">
+<!ENTITY wvdial-md5       "4fcfde779442c6780ace5b17accb3156">
 <!ENTITY wvdial-directory "wvdial-&wvdial-version;">
