@@ -25,6 +25,8 @@
 			<destination>.config</destination>
 		</copy>
 
+		&c8-keymap;
+
 		<make>
 			<param>oldconfig</param>
 		</make>

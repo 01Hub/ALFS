@@ -9,15 +9,3 @@
 		<name>/usr/share/kbd/keymaps/defkeymap.map.gz</name>
 	</link>
 -->
-
-<!-- uncomment the following section if you wish to have your default keymap
-compiled into the kernel -->
-
-<!--
-	<execute command="loadkeys">
-		<param>-m</param>
-		<param>/usr/share/kbd/keymaps/defkeymap.map.gz</param>
-		<param> > &linux-src-location;/&linux-directory;/drivers/char/defkeymap.c</param>
-	</execute>
--->
-
