@@ -44,6 +44,11 @@
 #define El_permissions_targets(el) alloc_trimmed_param_value("name", el)
 
 
+#if HANDLER_SYNTAX_2_0
+
+static const char *permissions_parameters_ver2[] =
+{ "base", "options", "mode", "name", NULL };
+
 static int permissions_main_ver2(element_s *el)
 {
 	int status = 0;
@@ -120,6 +125,14 @@ static int permissions_main_ver2(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_2_0 */
+
+
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+
+static const char *permissions_parameters_ver3[] =
+{ "option", "name", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", "mode", NULL };
 
 static int permissions_main_ver3(element_s *el)
 {
@@ -193,18 +206,12 @@ static int permissions_main_ver3(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+
 
 /*
  * Handlers' information.
  */
-
-
-static const char *permissions_parameters_ver2[] =
-{ "base", "options", "mode", "name", NULL };
-
-static const char *permissions_parameters_ver3[] =
-{ "option", "name", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "base", "mode", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

@@ -35,6 +35,8 @@
 #include "logging.h"
 
 
+#if HANDLER_SYNTAX_2_0
+
 static int prebuild_main(element_s *el)
 {
 	int i;
@@ -47,6 +49,8 @@ static int prebuild_main(element_s *el)
 
 	return i;
 }
+
+#endif /* HANDLER_SYNTAX_2_0 */
 
 
 /*

@@ -40,6 +40,11 @@
 #include "backend.h"
 
 
+#if HANDLER_SYNTAX_2_0
+
+static const char *configure_parameters_ver2[] =
+{ "base", "command", "param", NULL };
+
 static int configure_main_ver2(element_s *el)
 {
 	int status;
@@ -73,6 +78,14 @@ static int configure_main_ver2(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_2_0 */
+
+
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+
+static const char *configure_parameters_ver3[] =
+{ "param", "prefix", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
 
 static int configure_main_ver3(element_s *el)
 {
@@ -110,17 +123,12 @@ static int configure_main_ver3(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *configure_parameters_ver2[] =
-{ "base", "command", "param", NULL };
-
-static const char *configure_parameters_ver3[] =
-{ "param", "prefix", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

@@ -183,6 +183,11 @@ static int search_replace_main(element_s *el, const char *base_dir)
 }
 
 
+#if HANDLER_SYNTAX_2_0
+
+static const char *search_replace_parameters_ver2[] =
+{ "base", "find", "replace", "file", NULL };
+
 static int search_replace_main_ver2(element_s *el)
 {
 	int i;
@@ -195,6 +200,14 @@ static int search_replace_main_ver2(element_s *el)
 	return i;
 }
 
+#endif /* HANDLER_SYNTAX_2_0 */
+
+
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+
+static const char *search_replace_parameters_ver3[] =
+{ "find", "replace", "file", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
 static int search_replace_main_ver3(element_s *el)
 {
@@ -208,17 +221,12 @@ static int search_replace_main_ver3(element_s *el)
 	return i;
 }
 
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *search_replace_parameters_ver2[] =
-{ "base", "find", "replace", "file", NULL };
-
-static const char *search_replace_parameters_ver3[] =
-{ "find", "replace", "file", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

@@ -40,6 +40,11 @@
 #include "win.h"
 
 
+#if HANDLER_SYNTAX_2_0
+
+static const char *package_parameters_ver2[] =
+{ "name", "version", "base", NULL };
+
 static int package_main_ver2(element_s *el)
 {
 	int i;
@@ -68,9 +73,10 @@ static char *package_data_ver2(element_s *el, handler_data_e data)
 	return NULL;
 }
 
-/*
- * ver3
- */
+#endif /* HANDLER_SYNTAX_2_0 */
+
+
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
 
 static INLINE int check_utilizes(element_s *utilizes)
 {
@@ -210,6 +216,20 @@ static int parse_packageinfo(element_s *packageinfo)
 }
 
 
+static const char *package_parameters_ver3[] = { 
+	"packageinfo",
+	"description",
+	"list",
+	"item",
+	"para",
+	"requires",
+	"utilizes",
+	"name",
+	"version",
+	NULL
+};
+// char *HANDLER_SYMBOL(attributes)[] = { "name", "version", "logfile", NULL };
+
 static int package_main_ver3(element_s *el)
 {
 	int status = 0;
@@ -253,27 +273,12 @@ static char *package_data_ver3(element_s *el, handler_data_e data)
 	return NULL;
 }
 
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *package_parameters_ver2[] =
-{ "name", "version", "base", NULL };
-
-static const char *package_parameters_ver3[] = { 
-	"packageinfo",
-	"description",
-	"list",
-	"item",
-	"para",
-	"requires",
-	"utilizes",
-	"name",
-	"version",
-	NULL
-};
-// char *HANDLER_SYMBOL(attributes)[] = { "name", "version", "logfile", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

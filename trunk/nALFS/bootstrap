@@ -28,7 +28,7 @@ touch nALFS-config.in
 
 all_handlers=`ls src/handlers/*.c | sed 's~src/handlers/\(.*\)\.c~\1~'`
 for handler in ${all_handlers}; do
-    syntaxes=`grep HANDLER_SYNTAX src/handlers/${handler}.c | sed 's/^.*HANDLER_SYNTAX_\(.*\)$/\1/' | sort -u`
+    syntaxes=`egrep "#if HANDLER_SYNTAX_[^ ]+$" src/handlers/${handler}.c | sed 's/^.*HANDLER_SYNTAX_\(.*\)$/\1/' | sort -u`
     eval "${handler}_syntaxes=\"${syntaxes}\""
     all_syntaxes="${all_syntaxes} ${syntaxes}"
 done

@@ -40,6 +40,10 @@
 #include "backend.h"
 
 
+#if HANDLER_SYNTAX_2_0
+
+static const char *patch_parameters_ver2[] = { "base", "param", NULL };
+
 static int patch_main_ver2(element_s *el)
 {
 	int status;
@@ -73,6 +77,13 @@ static int patch_main_ver2(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_2_0 */
+
+
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+
+static const char *patch_parameters_ver3[] = { "param", "prefix", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
 static int patch_main_ver3(element_s *el)
 {
@@ -123,15 +134,12 @@ static int patch_main_ver3(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *patch_parameters_ver2[] = { "base", "param", NULL };
-
-static const char *patch_parameters_ver3[] = { "param", "prefix", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

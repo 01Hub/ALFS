@@ -35,6 +35,11 @@
 #include "backend.h"
 
 
+#if HANDLER_SYNTAX_2_0
+
+static const char *stamp_parameters[] = { NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "name", "version" };
+
 static int stamp_main(element_s *el)
 {
 	int status = 0;
@@ -56,13 +61,12 @@ static int stamp_main(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_2_0 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *stamp_parameters[] = { NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "name", "version" };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

@@ -44,6 +44,11 @@
 #define El_mkdir_perm(el) alloc_trimmed_param_value("permissions", el)
 
 
+#if HANDLER_SYNTAX_2_0
+
+static const char *mkdir_parameters_ver2[] =
+{ "options", "base", "dir", "permissions", NULL };
+
 static int mkdir_main_ver2(element_s *el)
 {
 	int status = 0;
@@ -108,6 +113,14 @@ static int mkdir_main_ver2(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_2_0 */
+
+
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+
+static const char *mkdir_parameters_ver3[] =
+{ "option", "name", "permissions", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
 static int mkdir_main_ver3(element_s *el)
 {
@@ -198,17 +211,12 @@ static int mkdir_main_ver3(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *mkdir_parameters_ver2[] =
-{ "options", "base", "dir", "permissions", NULL };
-
-static const char *mkdir_parameters_ver3[] =
-{ "option", "name", "permissions", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

@@ -39,6 +39,11 @@
 #include "backend.h"
 
 
+#if HANDLER_SYNTAX_2_0
+
+static const char *execute_parameters_ver2[] =
+{ "base", "command", "param", NULL };
+
 static int execute_main_ver2(element_s *el)
 {
 	int status;
@@ -80,6 +85,14 @@ static char *execute_data_ver2(element_s *el, handler_data_e data)
 	return alloc_trimmed_param_value("command", el);
 }
 
+#endif /* HANDLER_SYNTAX_2_0 */
+
+
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+
+static const char *execute_parameters_ver3[] =
+{ "base", "command", "param", "prefix", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
 
 static int execute_main_ver3(element_s *el)
 {
@@ -132,17 +145,12 @@ static char *execute_data_ver3(element_s *el, handler_data_e data)
 	return NULL;
 }
 
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *execute_parameters_ver2[] =
-{ "base", "command", "param", NULL };
-
-static const char *execute_parameters_ver3[] =
-{ "base", "command", "param", "prefix", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

@@ -49,6 +49,11 @@
 #define El_download_destination(el) alloc_trimmed_param_value("destination", el)
 
 
+#if HANDLER_SYNTAX_3_1
+
+static const char *download_parameters[] =
+{ "digest", "file", "url", "destination", NULL };
+
 static int download_main(element_s *el)
 {
 	/* status assumes failure until set otherwise */
@@ -132,13 +137,12 @@ static int download_main(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_3_1 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *download_parameters[] =
-{ "digest", "file", "url", "destination", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_3_1

@@ -57,6 +57,10 @@ static INLINE element_s *find_package(const char *name)
 #endif
 
 
+#if HANDLER_SYNTAX_3_0
+
+static const char *check_parameters[] = { NULL };
+
 static int check_main(element_s *el)
 {
 	int status = 0;
@@ -116,12 +120,12 @@ static int check_main(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_3_0 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *check_parameters[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_3_0

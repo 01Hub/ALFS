@@ -42,6 +42,11 @@
 #include "backend.h"
 
 
+static const char *remove_parameters_ver[] = { NULL };
+
+
+#if HANDLER_SYNTAX_2_0
+
 static INLINE void warn_if_doesnt_exist(const char *file)
 {
         struct stat file_stat;
@@ -88,6 +93,10 @@ static int remove_main_ver2(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_2_0 */
+
+
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
 
 static int remove_main_ver3(element_s *el)
 {
@@ -115,12 +124,12 @@ static int remove_main_ver3(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *remove_parameters_ver[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

@@ -44,6 +44,8 @@
 #define El_setenv_mode(el) attr_value("mode", el)
 
 
+#if HANDLER_SYNTAX_2_0 || HANDLER_SYNTAX_3_0
+
 static INLINE int set_variable(const char *variable, const char *value)
 {
 	Nprint_h("Setting environment variable %s:", variable);
@@ -106,6 +108,8 @@ static INLINE int do_setenv(
 }
 
 
+static const char *setenv_parameters[] = { "variable", "value", NULL };
+
 static int setenv_main(element_s *el)
 {
 	int i;
@@ -129,12 +133,12 @@ static int setenv_main(element_s *el)
 	return i;
 }
 
+#endif /* HANDLER_SYNTAX_2_0 || HANDLER_SYNTAX_3_0 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *setenv_parameters[] = { "variable", "value", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0
