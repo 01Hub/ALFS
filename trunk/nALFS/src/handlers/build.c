@@ -35,8 +35,10 @@
 #include "backend.h"
 #include "logging.h"
 
-static int build_setup(const element_s * element)
+static int build_setup(element_s * const element)
 {
+	(void) element;
+
 	return 0;
 }
 
