@@ -48,7 +48,7 @@
         <source>Thread.3</source>
         <destination>Tcl_Thread.3</destination>
       </move>
-      <search_replace base="&build_dir;/&tcl-directory;/doc">
+      <search_replace base="&build_dir;/&tcl-directory;/unix">
         <file>mkLinks</file>
         <find>Thread.3</find>
         <replace>Tcl_Thread.3</replace>

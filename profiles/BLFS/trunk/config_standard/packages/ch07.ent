@@ -4,7 +4,7 @@
 <!ENTITY ash-package    "ash-&ash-version;.tar.gz">
 <!ENTITY ash-directory  "ash-&ash-version;">
 
-<!ENTITY ash-patch      "ash-&ash-version;-cumulative-fixes-1.patch">
+<!ENTITY ash-patch      "ash-&ash-version;-cumulative_fixes-1.patch">
  
 <!ENTITY tcsh-version   "6.13">
 <!ENTITY tcsh-package   "tcsh-&tcsh-version;.00.tar.gz">

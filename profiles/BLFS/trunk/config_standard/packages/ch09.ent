@@ -5,7 +5,7 @@
 <!ENTITY libjpeg-directory "jpeg-&libjpeg-version;">
 
 <!ENTITY libpng-version   "1.2.5">
-<!ENTITY libpng-package   "libpng-&libpng-version;.tar.gz">
+<!ENTITY libpng-package   "libpng-&libpng-version;.tar.bz2">
 <!ENTITY libpng-directory "libpng-&libpng-version;">
 
 <!ENTITY libpng-link-to-proper-libs-patch     "libpng-&libpng-version;-link-to-proper-libs.patch">
