@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+
+%general_entities;
+]>
+
+<alfs>
+
+<stage name="Creating directories and mounting file systems">
+
+	<mkdir base="&LFS;">
+		<option>parents</option>
+		<name>proc</name>
+		<name>sys</name>
+	</mkdir>
+
+	<execute command="mount">
+		<param>-t proc</param>
+		<param>proc</param>
+		<param>&LFS;/proc</param>
+	</execute>
+
+	<execute command="mount">
+		<param>-t sysfs</param>
+		<param>sysfs</param>
+		<param>&LFS;/sys</param>
+	</execute>
+
+	<execute command="mount">
+		<param>-f</param>
+		<param>-t ramfs</param>
+		<param>ramfs</param>
+		<param>&LFS;/dev</param>
+	</execute>
+
+	<execute command="mount">
+		<param>-f</param>
+		<param>-t tmpfs</param>
+		<param>tmpfs</param>
+		<param>&LFS;/dev/shm</param>
+	</execute>
+
+	<execute command="mount">
+		<param>-f</param>
+		<param>-t devpts</param>
+		<param>-o gid=4,mode=620</param>
+		<param>devpts</param>
+		<param>&LFS;/dev/pts</param>
+	</execute>
+</stage>
+
+</alfs>
