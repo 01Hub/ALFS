@@ -26,9 +26,8 @@ int main (int argc, char **argv)
 	doc=xmlParseFile(argv[1]);
 	if (!doc)
 		return 2;
-	xmlXIncludeProcessFlags(doc, XML_PARSE_NONET);
+	xmlXIncludeProcessFlags(doc, XML_PARSE_NOENT);
 	cur=xmlDocGetRootElement(doc);
-	resolve_entities(cur);
 	
 	//prof=bookasprofile(cur);
 	//prof=syn_profile(cur);

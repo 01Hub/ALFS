@@ -14,7 +14,7 @@ BOOK=~/projects/alfs/lfs-profile/LFS.xml
 #BOOK=~/projects/alfs/ass/index.xml
 #BOOK=~/projects/hive/unstable/profile.xml
 
-.PHONY: all clean compile run memcheck debug todo upload bug
+.PHONY: all clean compile run memcheck debug todo
 
 all: run
 
@@ -35,14 +35,6 @@ debug: compile
 
 todo:
 	@grep "TODO:" *.c *.h|cut -d" " -f3-|sort
-
-upload: clean
-	@release_snap
-	@scp moongoo-*.tar.bz2 l14h.org:~/public_html/nALFS2/snap/
-	@rm -f moongoo-*.tar.bz2
-
-bug: 
-	@grep "BUG:" *.c *.h|cut -d" " -f3-|sort
 
 $(BIN): $(OBJS)
 alfs.o: alfs.h

@@ -129,6 +129,49 @@ char *find_values (xmlNodePtr node, char *str)
 	return ret;
 }			
 
+char *find_values_repl (xmlNodePtr node, char *str, char **orig, char **repl)
+{
+	char *ret;
+
+	if ((!node)||(!str))
+		return "";
+
+	if ((!orig)||(!repl))
+		return find_values(node, str);
+
+	ret = (char *)malloc(1);
+	strcpy(ret, "");
+
+	while (node)
+	{
+		if (!strcmp(node->name, str))
+		{
+			int i=0;
+			bool rep = false;
+			char *tmp = xmlNodeGetContent(node);
+			
+			while ((orig[i])&&(repl[i]))
+			{
+				if (!strcmp(tmp, orig[i]))
+				{
+					tmp = repl[i];
+					rep = true;
+					break;
+				}
+				i++;
+			}
+
+			if (!rep)
+				fprintf(stderr, "No replacement for '%s'.\n", tmp);
+
+			ret = strdog2(ret, tmp);
+		}
+		node = node->next;
+	}
+
+	return ret;
+}
+
 char *find_value (xmlNodePtr node, char *str)
 {
 	xmlNodePtr moo = find_node(node, str);
@@ -241,26 +284,6 @@ char *type2str (xmlElementType type)
 			return "docbook";
 		default:
 			return "unknown";
-	}
-}
-
-void resolve_entities (xmlNodePtr node)
-{
-	while (node)
-	{
-		if (node->type==XML_ENTITY_REF_NODE)
-		{
-			// BUG: Does not resolve entities which are outside text nodes
-			if ((node->prev) && (node->prev->type==XML_TEXT_NODE) &&
-				(strcmp(node->prev->parent->name, "title")))
-			{
-				char *text = entity_val((char *)node->name);
-				if (text)
-					xmlNodeAddContent(node->prev, text);
-			}
-		}
-		resolve_entities(node->children);
-		node=node->next;
 	}
 }
 
