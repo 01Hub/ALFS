@@ -77,6 +77,7 @@ char *xstrdup(const char *str);
 char *xstrcasestr(const char *haystack, const char *needle);
 char *alloc_trimmed_str(const char *s);
 int remove_new_line(char *buf);
+void append_str_format(char **ptr, const char *format, ...);
 void append_str(char **ptr, const char *str);
 
 /*

@@ -231,11 +231,9 @@ static char *textdump_data(const element_s * const element,
 	switch (data_requested) {
 	case HDATA_DISPLAY_NAME:
 	{
-		char *display;
+		char *display = NULL;
 
-		display = xstrdup("Dump text (");
-		append_str(&display, data->file);
-		append_str(&display, ")");
+		append_str_format(&display, "Dump text (%s)", data->file);
 
 		return display;
 	}

@@ -239,14 +239,10 @@ static char *execute_data(const element_s * const element,
 	switch (data_requested) {
 	case HDATA_DISPLAY_NAME:
 	{
-		char *display;
+		char *display = NULL;
 
-		display = xstrdup("Execute ");
-		if (data->command) {
-			append_str(&display, data->command);
-		} else if (data->content) {
-			append_str(&display, "script");
-		}
+		append_str_format(&display, "Execute %s",
+				  data->command ? data->command : "script");
 
 		return display;
 	}

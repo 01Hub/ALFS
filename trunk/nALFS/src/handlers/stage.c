@@ -397,11 +397,9 @@ static char *stage_data(const element_s * const element,
 	{
 		char *display = NULL;
 
-		if (*opt_display_stage_header)
-			append_str(&display, "Enter stage: ");
-
-		if (data->name)
-			append_str(&display, data->name);
+		append_str_format(&display, "%s%s",
+				  *opt_display_stage_header ? "Enter stage: " : "",
+				  data->name);
 
 		return display;
 	}
