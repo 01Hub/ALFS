@@ -24,7 +24,9 @@
 		</patch>
 
 		<configure>
-			<param>--prefix=/</param>
+			<param>--prefix=""</param>
+			<param>--prefix=/var/lib</param>
+			<param>--mandir=/usr/share/man</param>
 		</configure>
 
 		<make />
@@ -61,9 +63,9 @@
                         =
                         =source /etc/sysconfig/rc || exit
                         =source $rc_functions || exit
-                        =source $network_devices/ifconfig.eth0 || exit
+                        =source $network_devices/ifconfig.&network-interface; || exit
                         =
-                        =echo "Bringing up the eth0 interface..."
+                        =echo "Bringing up the &network-interface; interface..."
                         =modprobe &network-interface;
                         =loadproc $DHCP_PROG $DHCP_START
                     </content>
@@ -77,9 +79,9 @@
                         =
                         =source /etc/sysconfig/rc || exit
                         =source $rc_functions || exit
-                        =source $network_devices/ifconfig.eth0 || exit
+                        =source $network_devices/ifconfig.&network-interface; || exit
                         =
-                        =echo "Bringing down the eth0 interface..."
+                        =echo "Bringing down the &network-interface; interface..."
                         =$DHCP_PROG $DHCP_STOP
 			=evaluate_retval
                     </content>
