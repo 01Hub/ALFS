@@ -2,9 +2,8 @@
 
 #include <url.h>
 
-// TODO: No splitout GCC tarballs
-// TODO: Tcl URL is not yet found (tcl8.4.7-src.tar.gz)
-// TODO: Vim-lang will not be downloaded atm.
+// XXX: Tcl URL is not yet found (tcl8.4.7-src.tar.gz)
+// XXX: Vim-lang will not be downloaded atm.
 static void t_url (xmlNodePtr cur, void *data)
 {
 	profile *prof = (profile *)data;
@@ -34,10 +33,6 @@ static void t_url (xmlNodePtr cur, void *data)
 				
 		snprintf(base, 512, "%s%s%s-%s.tar", xmlNodeGetContent(cur), vurl,
 			lower_case(pkg->name), pkg->vers);
-
-		// TODO: Remove this when the shadow-site is more responsive again
-		if (!strcmp(pkg->name, "Shadow"))
-			return;
 
 		for (i=0;i<NUM_COMPR;i++)
 		{

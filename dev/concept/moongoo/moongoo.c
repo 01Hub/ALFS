@@ -129,14 +129,16 @@ int main (int argc, char **argv)
 
 	if (!quiet)
 	{
-		/*package *glibc = search_pkg(prof, "glibc", 
-			"chapter-building-system");*/
+		//package *glibc = search_pkg(prof, "glibc", "chapter-building-system");
 		//package *gtk = search_pkg(prof, "gtk+", "x-lib");
 		//package *glib = search_pkg(prof, "glib", "general-genlib");
+		//package *gcc = search_pkg(prof, "gcc", "phase 2");
 		
 		sed_paralell (prof, paralell_filter, popt_pkg, popt_cmd);
 		set_filter(default_filter);
 	
+		/*if (gcc)
+			print_urls(*gcc);*/
 		/*if (glib)
 			//print_pkg(*glib);
 			print_urls(*glib);*/

@@ -119,5 +119,6 @@ char *algo2str (hash_algo algo);
 char *proto2str (protocol proto);
 role parse_role (xmlNodePtr node);
 protocol parse_proto (xmlNodePtr node);
+bool is_unpackable (char *url);
 	
 #endif

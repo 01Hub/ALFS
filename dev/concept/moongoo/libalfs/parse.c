@@ -5,6 +5,16 @@
 #include <parse.h>
 #include <util.h>
 
+package *cur_pkg (profile *prof)
+{
+	int i, j;
+
+	i = prof->n-1;
+	j = prof->ch[i].n-1;
+
+	return &prof->ch[i].pkg[j];
+}
+
 chapter *next_chpt (profile *prof)
 {
 	chapter *ch;
@@ -154,6 +164,9 @@ static void __parse_cmdblock (profile *prof, xmlNodePtr node, char *str)
 	line = strkill(line, "\\\n");
 	line = strkill(line, "&&");
 
+	if (line[0]=='\n')
+		line++;
+
 	if (strcnt(line, "\n"))
 	{
 		char *tmp;
@@ -166,7 +179,8 @@ static void __parse_cmdblock (profile *prof, xmlNodePtr node, char *str)
 				
 				if (!t)
 				{
-					fprintf(stderr, "Unterminated cat command.\n");
+					fprintf(stderr, "Unterminated cat command in %s.\n",
+						cur_pkg(prof)->name);
 					parse_cmd(prof, line, node);
 				}
 				else
@@ -212,7 +226,7 @@ void parse_unpck (profile *prof, char *url, xmlNodePtr node)
 	
 	if (!ret)
 	{
-		// TODO: Add support for missing archive types
+		// XXX: Add support for missing archive types
 		//fprintf(stderr, "Archive extension '%s' is unknown.\n", ext);
 		return;
 	}

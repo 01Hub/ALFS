@@ -27,7 +27,7 @@ static void t_command (xmlNodePtr node, void *data)
 
 static void t_userinput (xmlNodePtr node, void *data)
 {
-	// TODO: Add all possible replaceables to moo.xml
+	// XXX: Add all possible replaceables to moo.xml
 	/*replaceable *r = (replaceable *)data;
 	foreach(node->children, "replaceable", (xml_handler_t)t_repl, r);*/
 	foreach(node->children, "command", (xml_handler_t)t_command, NULL);

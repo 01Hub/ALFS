@@ -2,6 +2,7 @@
 #include <unistd.h>
 
 #include <alfs.h>
+#include <gen.h>
 #include <util.h>
 
 bool colors = true;
@@ -490,4 +491,19 @@ xmlNodePtr find_node_match (xmlNodePtr node, xml_match_t func, void *data)
 	}
 	
 	return NULL;
+}
+
+bool is_unpackable (char *url)
+{
+	int i;
+	char *ext = extonly(url);
+
+	for (i=0;i<NUM_COMPR;i++)
+	{
+		char *tst = strdog(".tar", (char *)compr[i]);
+		if (!strcmp(tst, ext))
+			return true;
+	}
+
+	return false;
 }
