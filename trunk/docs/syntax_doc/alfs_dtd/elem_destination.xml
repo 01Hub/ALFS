@@ -9,7 +9,7 @@
 &lt;!ELEMENT destination    (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
 <xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_download"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_move"/>&nbsp;&nbsp;|&nbsp;&nbsp;

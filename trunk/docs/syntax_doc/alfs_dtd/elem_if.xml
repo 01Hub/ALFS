@@ -14,7 +14,7 @@
 	  version  CDATA #IMPLIED>
 </synopsis>
 
-<para>This element occurs in the elements
+<para>This element occurs in
 <xref linkend="elem_alfs"/>,
 <xref linkend="elem_else/">,
 <xref linkend="elem_stage"/>,

@@ -11,7 +11,7 @@
           type           (bullet | number) "bullet"&gt;
 </synopsis>
 
-<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
 <xref linkend="elem_description"/>
 </para>
 

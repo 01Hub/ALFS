@@ -9,7 +9,7 @@
 &lt;!ELEMENT param          (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the element&nbsp;:&nbsp;&nbsp;
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
 <xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_execute"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_make"/>&nbsp;&nbsp;|&nbsp;&nbsp;

@@ -12,7 +12,7 @@
                                        stage|textdump|unpack)*)>
 </synopsis>
 
-<para>This element occurs in the element
+<para>This element occurs in
 <xref xrefend="elem_if">if</xref>.
 </para>
 

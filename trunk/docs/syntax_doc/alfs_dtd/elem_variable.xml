@@ -12,7 +12,7 @@
           mode           CDATA #IMPLIED&gt;
 </synopsis>
 
-<para>This element occurs in the element&nbsp;:&nbsp;&nbsp;
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
 <xref linkend="elem_environment"/>
 </para>
 
