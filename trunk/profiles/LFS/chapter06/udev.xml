@@ -26,7 +26,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i &packages_dir;/&udev-config-patch;</param>
+			<param>-i &packages_dir;/&udev-permissions-patch;</param>
 		</patch>
 
 		<make>
@@ -38,11 +38,17 @@
 			<param>install</param>
 		</make>
 
-		<link>
-		  	<option>force</option>
-			<target>/sbin/udev</target>
-			<name>/etc/hotplug.d/default/udev.hotplug</name>
-		</link>
+		<copy base="&packages_dir;">
+        		<option>force</option>
+        		<source>udev-config-1.permissions</source>
+        		<destination>/etc/udev/permissions.d/00-lfs.permissions</destination>
+		</copy>
+
+		<copy base="&packages_dir;">
+        		<option>force</option>
+        		<source>udev-config-1.rules</source>
+        		<destination>/etc/udev/rules.d/00-lfs.rules</destination>
+		</copy>		
 	</stage>
 
 	<stage name="Cleanup">
