@@ -1,4 +1,4 @@
-OUTDIR=./output/render/
+OUTDIR=./output/
 XSLROOTDIR=/usr/share/docbook-xsl/
 
 clean:
@@ -6,37 +6,30 @@ clean:
 	  rm -rf $(OUTDIR); \
 	fi;
 
-chunks-html:
+dist-clean: clean
+	rm *.bz2
+
+common: clean
 	if [ ! -e $(OUTDIR) ]; then \
 	  mkdir -p $(OUTDIR); \
 	fi;
 
+chunks-html: common
 	if [ ! -e $(OUTDIR)stylesheets ]; then \
 	  mkdir -p $(OUTDIR)stylesheets; \
-	fi;
-
-	if [ ! -e $(OUTDIR)../stylesheets ]; then \
-	  mkdir -p $(OUTDIR)../stylesheets; \
 	fi;
 
 	if [ ! -e $(OUTDIR)images ]; then \
 	  mkdir -p $(OUTDIR)images; \
 	fi;
-
-	cp index.xml $(OUTDIR)..
-	cp -R --parents alfs_dtd/* $(OUTDIR)..
-	cp -R --parents book/* $(OUTDIR)..
-	cp -R --parents preface/* $(OUTDIR)..
-
-	bash stylesheets/entResolver $(OUTDIR)
 
 	sed -e "s@XSLROOTDIR@$(XSLROOTDIR)@" \
 	  stylesheets/alfs-chunked.xsl \
-	  > $(OUTDIR)../stylesheets/alfs-chunked.xsl
+	  > $(OUTDIR)stylesheets/alfs-chunked.xsl
 
 	xsltproc --nonet -stringparam base.dir $(OUTDIR) \
-	  $(OUTDIR)../stylesheets/alfs-chunked.xsl \
-	  $(OUTDIR)../index.xml
+	  $(OUTDIR)stylesheets/alfs-chunked.xsl \
+	  index.xml
 
 	cp stylesheets/alfs.css $(OUTDIR)stylesheets
 
@@ -69,49 +62,18 @@ chunks-html:
 
 	bash stylesheets/goTidy $(OUTDIR)
 	rm $(OUTDIR)tidy.conf
+	rm $(OUTDIR)stylesheets/alfs-chunked.xsl
 
-nochunks-html:
-	if [ ! -e $(OUTDIR) ]; then \
-	  mkdir -p $(OUTDIR); \
-	fi;
+	cd $(OUTDIR) && tar -cjvf ../nALFS-SYNTAX_DOC-CHUNKS-HTML.tar.bz2 *
 
-	if [ ! -e $(OUTDIR)stylesheets ]; then \
-	  mkdir -p $(OUTDIR)stylesheets; \
-	fi;
-
-	if [ ! -e $(OUTDIR)../stylesheets ]; then \
-	  mkdir -p $(OUTDIR)../stylesheets; \
-	fi;
-
-	if [ ! -e $(OUTDIR)images ]; then \
-	  mkdir -p $(OUTDIR)images; \
-	fi;
-
-	cp index.xml $(OUTDIR)..
-	cp -R --parents alfs_dtd/* $(OUTDIR)..
-	cp -R --parents book/* $(OUTDIR)..
-	cp -R --parents preface/* $(OUTDIR)..
-
-	bash stylesheets/entResolver $(OUTDIR)
-
+nochunks-html: common
 	sed -e "s@XSLROOTDIR@$(XSLROOTDIR)@" \
 	  stylesheets/alfs-onechunk.xsl \
-	  > $(OUTDIR)../stylesheets/alfs-onechunk.xsl
+	  > $(OUTDIR)alfs-onechunk.xsl
 
 	xsltproc --nonet -stringparam base.dir $(OUTDIR) \
-	  $(OUTDIR)../stylesheets/alfs-onechunk.xsl \
-	  $(OUTDIR)../index.xml
-
-	cp stylesheets/alfs.css $(OUTDIR)stylesheets
-
-	cp $(XSLROOTDIR)images/*.png \
-	  $(OUTDIR)images
-
-	sed -i -e "s@../stylesheets@stylesheets@" \
-	  $(OUTDIR)index.html
-
-	sed -i -e "s@../images@images@g" \
-	  $(OUTDIR)index.html
+	  $(OUTDIR)alfs-onechunk.xsl \
+	  index.xml
 
 	echo indent-spaces: 2 > $(OUTDIR)tidy.conf
 	echo wrap: 78 >> $(OUTDIR)tidy.conf
@@ -133,4 +95,12 @@ nochunks-html:
 
 	bash stylesheets/goTidy $(OUTDIR)
 	rm $(OUTDIR)tidy.conf
+	rm $(OUTDIR)alfs-onechunk.xsl
 
+	cd $(OUTDIR) && tar -cjvf ../nALFS-SYNTAX_DOC-NOCHUNKS-HTML.tar.bz2 *
+
+flat-text: nochunks-html
+	lynx -dump $(OUTDIR)index.html > $(OUTDIR)nALFS-SYNTAX_DOC.txt
+	cd $(OUTDIR) && tar -cjvf ../nALFS-SYNTAX_DOC-TXT.tar.bz2 nALFS-SYNTAX_DOC.txt
+
+.PHONY: clean dist-clean common chunks-html nochunks-html flat-text
