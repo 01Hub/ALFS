@@ -144,7 +144,7 @@
 <stage name="Chapter 11 (system utilities)">
 
     &gpm;
-    <!-- &fcron; -->
+    &fcron;
     &hdparm;
     &which;
     &unzip;
@@ -152,6 +152,7 @@
     &pciutils;
     &pkgconfig;
     &cpio;
+    &mc;
 
 </stage>
 

@@ -238,17 +238,16 @@
 <!ENTITY gpm-package   "gpm-1.20.1.tar.bz2">
 <!ENTITY gpm-directory "gpm-1.20.1">
 
-<!ENTITY gpm-patch1    "gpm-1.20.1-smooth-cursor.patch">
-<!ENTITY gpm-patch2    "gpm-1.20.1-segfault.patch">
-<!ENTITY gpm-patch3    "gpm-1.20.1-silent.patch">
+<!ENTITY gpm-patch1    "gpm-1.20.1-segfault.patch">
+<!ENTITY gpm-patch2    "gpm-1.20.1-silent.patch">
 
-<!ENTITY fcron-version   "">
-<!ENTITY fcron-package   "">
-<!ENTITY fcron-directory "">
+<!ENTITY fcron-version   "2.9.3">
+<!ENTITY fcron-package   "fcron-2.9.3.src.tar.gz">
+<!ENTITY fcron-directory "fcron-2.9.3">
 
-<!ENTITY hdparm-version   "5.3">
-<!ENTITY hdparm-package   "hdparm-5.3.tar.gz">
-<!ENTITY hdparm-directory "hdparm-5.3">
+<!ENTITY hdparm-version   "5.4">
+<!ENTITY hdparm-package   "hdparm-5.4.tar.gz">
+<!ENTITY hdparm-directory "hdparm-5.4">
 
 <!ENTITY which-version   "2.14">
 <!ENTITY which-package   "which-2.14.tar.gz">
@@ -257,6 +256,11 @@
 <!ENTITY unzip-version   "5.50">
 <!ENTITY unzip-package   "unzip550.tar.gz">
 <!ENTITY unzip-directory "unzip-5.50">
+
+<!ENTITY unzip-patch1    "unzip-5.50-fix-Makefile.patch">
+<!ENTITY unzip-patch2    "unzip-5.50-fix-libz.patch">
+<!ENTITY unzip-patch3    "unzip-5.50-dotdot.patch">
+<!ENTITY unzip-patch4    "unzip-5.50-dont-make-noise.patch">
 
 <!ENTITY zip-version   "2.3">
 <!ENTITY zip-package   "zip23.tar.gz">
@@ -274,11 +278,17 @@
 <!ENTITY cpio-package   "cpio-2.5.tar.gz">
 <!ENTITY cpio-directory "cpio-2.5">
 
+<!ENTITY mc-version   "4.6.0">
+<!ENTITY mc-package   "mc-4.6.0.tar.gz">
+<!ENTITY mc-directory "mc-4.6.0">
+
 <!--************* packages for chapter 12 *************-->
 
-<!ENTITY python-version   "2.3">
-<!ENTITY python-package   "Python-2.3.tgz">
-<!ENTITY python-directory "Python-2.3">
+<!ENTITY python-version   "2.3.2">
+<!ENTITY python-package   "Python-2.3.2.tgz">
+<!ENTITY python-directory "Python-2.3.2">
+
+<!ENTITY python-patch     "Python-2.3.2-gdbm-2.patch">
 
 <!ENTITY librep-version   "0.16.2">
 <!ENTITY librep-package   "librep-0.16.2.tar.gz">

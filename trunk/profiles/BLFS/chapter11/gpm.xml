@@ -15,24 +15,16 @@
 		        <source>&packages_dir;/&gpm-patch2;</source>
 		        <destination>&build_dir;</destination>
 		</copy>
-
-		<copy>
-		        <source>&packages_dir;/&gpm-patch3;</source>
-		        <destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
 			<base>&build_dir;/&gpm-directory;</base>
-			<environment>
-			        <variable name="LDFLAGS">-lm</variable>
-			</environment>
 		</stageinfo>
 
 		<patch>
 			<param>-N</param>
-			<param>-p0</param>
+			<param>-p1</param>
 			<param>-i ../&gpm-patch1;</param>
 		</patch>
 
@@ -41,13 +33,6 @@
 			<param>-p1</param>
 			<param>-i ../&gpm-patch2;</param>
 		</patch>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&gpm-patch3;</param>
-		</patch>
-
 
 		<configure command="LDFLAGS='-lm' ./configure">
 			<param>--prefix=/usr</param>
@@ -58,6 +43,8 @@
 		<make>
 			<param>install</param>
 		</make>
+
+		<execute command="ldconfig -n -l /usr/lib/libgpm.so.1.19.0" />
 		
 		<textdump>
 		    <file>/etc/rc.d/init.d/gpm</file>
@@ -174,6 +161,8 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&gpm-directory;</remove>
+		<remove>&build_dir;/&gpm-patch1;</remove>
+		<remove>&build_dir;/&gpm-patch2;</remove>
 	</stage>
 
 </package>
