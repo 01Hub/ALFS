@@ -1,0 +1,21 @@
+You can check who-did-what by grepping through the source code and
+CHANGES. Below is just a list of people, in alphabetical order, that
+had some involvement in nALFS code. If you think you should be listed
+here, please drop me a mail (Neven Has <haski@sezampro.yu>).
+
+------------------------------------------------------------------------------
+
+Vassili Dzuba <vassilidzuba@nerim.net>
+
+Charless Fowlkes <fowlkes@cs.berkeley.edu>
+
+Peter van Kampen <pterk@datatailors.com>
+
+Maik Schreiber <bZ@iq-computing.de>
+
+Fabien Steinmetz <fabien.st@netcourrier.com>
+
+------------------------------------------------------------------------------
+
+Also, thanks goes to a lot of other people for their suggestions,
+profile fixes and such.
