@@ -132,7 +132,7 @@ network.-->
 
 
 <!-- LFS book version -->
-<!ENTITY LFS-version "CVS-20040107">
+<!ENTITY LFS-version "CVS-20040109">
 
 
 <!-- THE FOLLOWING TWO ENTITIES DECLARATIONS SHOULDN'T BE MOFIFIED
