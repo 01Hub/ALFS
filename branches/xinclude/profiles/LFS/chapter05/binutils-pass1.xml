@@ -1,3 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../ALFS-3.1.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+
+<alfs>
+
 <package name="binutils-pass1" version="&binutils-version;">
 	<stage name="Unpacking.">
 		<unpack>
@@ -50,3 +61,5 @@
 		</make>
 	</stage>
 </package>
+
+</alfs>
