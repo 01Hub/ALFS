@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+<alfs>
+  <package name="texinfo" version="&texinfo-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&texinfo-md5;</digest>
+        <archive>&packages_dir;/&texinfo-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&texinfo-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make>
+        <param>&jlevel;</param>
+      </make>
+      <!--
+      <make>
+        <param>check</param>
+      </make>
+      -->
+      <make>
+        <param>install</param>
+      </make>
+      <make>
+        <param>TEXMF=/usr/share/texmf</param>
+        <param>install-tex</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&texinfo-directory;</remove>
+    </stage>
+  </package>
+</alfs>

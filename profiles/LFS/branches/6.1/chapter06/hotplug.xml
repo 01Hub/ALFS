@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+<alfs>
+  <package name="hotplug" version="&hotplug-version;">
+    <stage name="Unpacking.">
+      <unpack>
+        <digest>&hotplug-md5;</digest>
+        <archive>&packages_dir;/&hotplug-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing.">
+      <stageinfo>
+        <base>&build_dir;/&hotplug-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install</param>
+      </make>
+      <copy>
+        <source>etc/hotplug/pnp.distmap</source>
+        <destination>/etc/hotplug</destination>
+      </copy>
+      <remove>/etc/init.d</remove>
+      <remove>/etc/hotplug/net.agent</remove>
+      <mkdir>
+      	<option>parents</option>
+	<name>/var/log/hotplug</name>
+	<name>/lib/firmware</name>
+      </mkdir>
+      <execute command="touch /var/log/hotplug/events" />
+    </stage>
+    <stage name="Cleaning up.">
+      <remove>&build_dir;/&hotplug-directory;</remove>
+    </stage>
+  </package>
+</alfs>

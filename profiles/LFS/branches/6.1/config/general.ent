@@ -1,0 +1,128 @@
+<!--
+     This file contains various entities that must be customized 
+     for the build to work on your machine.
+
+     For the build to be successfull, you should :
+     - run nALFS as root
+     - check that your umask is 022
+
+     -->
+
+<!-- Directory in which LFS system will be installed.
+     The build process try to mkdir -p it if it doen't exist.
+     If you want to build LFS in its own partition (which
+     is normally the case), you should create the directory 
+     and mount the  partition before running nALFS.
+     -->
+<!ENTITY LFS "/mnt/lfs">
+
+<!-- Location of your LFS packages.
+     This is the directory in which all the packages downloaded
+     from ftp.linuxfromscratch.org (or their original servers)
+     are before running the script. The content of this directory
+     will be copied in a subdirectory of &LFS; at the beginning of
+     the build.
+     IMPORTANT : be carefull about the original packages dir; if you 
+                 enter the wrong directory, nALFS will try to download
+                 all the packages in it !!!
+     -->
+<!ENTITY orig_packages_dir "/your/LFS-SVN/packages">
+
+<!-- Timezone file
+     This entity will be used as the target of the link
+     /etc/localtime
+     -->
+<!ENTITY localtime "/usr/share/zoneinfo/America/Denver">
+
+<!-- Keymap file. 
+     This entity will be used as the target of the link
+     /usr/share/kbd/keymaps/defkeymap.map.gz
+     -->
+<!ENTITY keymap "i386/qwerty/us.map.gz">
+
+<!-- Temporary user name used for installing Chapter 5.
+     This is a user in the host distribution. It will not
+     be deleted at the end of the build.
+     If the user does not exist it will be created.
+     -->
+<!ENTITY lfs-user "lfs">
+
+<!-- Password of the temporary user name &lfs; 
+     You should change this value and keep the present file
+     secure this value has been changed or, better,
+     create yourself the user in the host distribution,
+     and give it a password.
+     If the user exists already, its password will not be changed.
+     -->
+<!ENTITY lfs-password "lf1nstl">
+
+<!-- Temporary user's home directory. -->
+<!ENTITY lfs-user-dir "/home/&lfs-user;">
+
+<!-- Root password. 
+     This is the password of root in the new LFS distribution.
+     Of course, you should change it as soon as you log into
+     your new LFS.
+     -->
+<!ENTITY password "r00tme">
+
+<!-- LFS book version -->
+<!ENTITY LFS-version "SVN-4836">
+
+<!-- THE FOLLOWING THREE ENTITY DECLARATIONS SHOULDN'T BE MODIFIED
+     UNLESS YOU KNOW WHAT YOU ARE DOING
+-->
+
+<!-- Directory (inside LFS) where all packages will be copied. -->
+<!ENTITY packages_dir "/tools/packages-&LFS-version;">
+
+<!-- Directory (inside LFS) where all packages will be compiled. -->
+<!ENTITY build_dir "/tools/build">
+
+<!-- Directory (inside LFS) where all skeleton config files will be copied. -->
+<!ENTITY skeleton_dir "/tools/skeleton-&LFS-version;">
+
+<!-- gcc optimizations flags (overridden in packages known
+     to behave badly with optimizations)
+     see http://www.linuxfromscratch.org/hints/downloads/files/optimization.txt
+     for more info
+     IF YOU DON'T KNOW WHAT THIS IS FOR, DON'T CHANGE IT
+-->
+<!ENTITY gcc_optimizations "">
+
+<!-- parallel build level (make flag -j). Default is unset. For faster build
+     times, you might try setting this flag to 2-3 times the number of
+     processors in your machine. So, for example, a single processor machine,
+     you might set this entity to "-j3"
+-->
+<!ENTITY jlevel "">
+
+<!-- gcc target triplet (used for adjusting the toolchain) -->
+<!ENTITY gcc_target "i686-pc-linux-gnu">
+
+<!-- grub settings (these need to be in grub's notation) -->
+<!ENTITY grub-root "hd0,0">
+<!ENTITY grub-install-location "hd0">
+
+<!-- dynamic linker in the gcc specs file that your system uses, 
+	e.g.
+		x86 = ld-linux.so.2
+		powerpc = ld.so.1
+-->
+<!ENTITY glibc-loader "ld-linux.so.2">
+
+<!-- terminal type for your host system (found in the TERM
+     environment variable
+-->
+
+<!ENTITY TERM "linux">
+
+<!--  Groff expects the environment variable PAGE to contain the default 
+	paper size.
+      For those in the United States, this would be 'letter'.
+      If you live elsewhere, it could also be 'A4'.
+      -->
+
+<!ENTITY paper_size "letter">
+
+<!ENTITY real-amp "&#38;#38;">
