@@ -14,22 +14,34 @@
   <package name="evolution" version="&evolution-version;">
     <packageinfo>
       <requires>
-        <name>openssl</name>
+	<name>gtkhtml</name>
       </requires>
       <requires>
-        <name>libsoup</name>
+	<name>libgtkhtml</name>
       </requires>
       <requires>
-        <name>gal</name>
-      </requires>
-      <requires>
-        <name>gtkhtml</name>
+	<name>evolution-data-server</name>
       </requires>
       <utilizes>
-        <name>openldap</name>
+	<name>mozilla</name>
       </utilizes>
       <utilizes>
-        <name>gtk-doc</name>
+	<name>openldap</name>
+      </utilizes>
+      <utilizes>
+	<name>&mta-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>kdebase</name>
+      </utilizes>
+      <utilizes>
+	<name>gtk-doc</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-utils</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking.">
@@ -37,41 +49,29 @@
         <archive>&packages_dir;/&evolution-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
-      <unpack>
-        <archive>&packages_dir;/&db3117-package;</archive>
-        <destination>&build_dir;</destination>
-      </unpack>
     </stage>
-    <stage name="Installing db-3.1.17.">
-      <stageinfo>
-        <base>&build_dir;/&db3117-directory;/build_unix</base>
-      </stageinfo>
-      <configure command="../dist/configure">
-        <param>--prefix=/opt/db-3.1.17</param>
-        <param>--enable-compat185</param>
-      </configure>
-      <make />
-      <make>
-        <param>install</param>
-      </make>
-    </stage>
-    <stage name="Installing evolution.">
+    <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&evolution-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-        <param>--with-db3=/opt/db-3.1.17</param>
-        <param>--enable-openssl</param>
+	<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/lib/libexec</param>
+	<param>--localstatedir=/var/lib</param>
+	<param>--sysconfdir=/etc/gnome</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
+      <link>
+	<option>force</option>
+	<target>evolution-2.0</target>
+	<name>&gnome-prefix;/bin/evolution</name>
+      </link>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&evolution-directory;</remove>
-      <remove>&build_dir;/&db3117-directory;</remove>
     </stage>
   </package>
 </alfs>
