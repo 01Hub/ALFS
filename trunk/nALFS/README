@@ -91,16 +91,20 @@ Mailing lists for ALFS:
 2. Quick start
 ==============
 
-To configure, compile, install and run nALFS, just type:
+To configure, compile and install nALFS, just type:
 
     ./configure
     make
     make install
-    nALFS profile/LFS-*/LFS-*.xml
+    
+To run nALFS with the latest stable LFS profile you first need to 
+make a symbolic link to the correct config directory. For more 
+information on doing this please see:
 
-This will start nALFS using the latest stable LFS profile, which is
-included in the nALFS distribution. When you enter the program, type
-'?' for a list of all available commands.
+    profile/LFS-*/README
+
+When you enter the program, type '?' for a list of all available 
+commands.
 
 Note: If you are upgrading from a version prior to 1.2.0, and you are
 installing into the same location as the previous version, you must
