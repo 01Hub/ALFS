@@ -4,9 +4,6 @@
 <!-- directory in which the packages will be compiled -->
 <!ENTITY build_dir  "/usr/src">
 
-<!-- the blfs configuration file -->
-<!ENTITY blfs-config "">
-
 <!-- kernel version -->
 <!ENTITY kernel-version "2.4.23">
 
