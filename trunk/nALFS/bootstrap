@@ -56,10 +56,6 @@ get_html_doc() {
 get_profile() {
     ${WGET} -P download ${PROFILE_URL_BASE}/profile-LFS-${PROFILE_VERSION}.tar.bz2
     bzcat download/profile-LFS-${PROFILE_VERSION}.tar.bz2 | tar --extract --directory=profile
-    rm profile/*/*.dtd
-    ln -sf ../../doc/ALFS.dtd profile/*
-    #temporary fix until official profile has proper DTD name
-    perl -pi -e 's/nalfs.dtd/ALFS.dtd/' profile/*/LFS-*.xml
 }
 
 get_dtd() {
