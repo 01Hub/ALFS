@@ -1,5 +1,10 @@
 <package name="pciutils" version="&pciutils-version;">
 
+        <packageinfo>
+                <requires><name>wget</name></requires>
+                <!--requires><name>lynx</name></requires-->
+	</packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&pciutils-package;</archive>
@@ -12,9 +17,12 @@
 			<base>&build_dir;/&pciutils-directory;</base>
 		</stageinfo>
 
-		<make/>
+		<make>
+			<param>PREFIX=/usr</param>
+		</make>
 
 		<make>
+			<param>PREFIX=/usr</param>
 			<param>install</param>
 		</make>
 		

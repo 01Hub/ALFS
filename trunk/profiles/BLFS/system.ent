@@ -72,6 +72,7 @@
 
 <!-- chapter 11 -->
 <!ENTITY gpm        SYSTEM "./chapter11/gpm.xml">
+<!ENTITY fcron      SYSTEM "./chapter11/fcron.xml">
 <!ENTITY hdparm     SYSTEM "./chapter11/hdparm.xml">
 <!ENTITY which      SYSTEM "./chapter11/which.xml">
 <!ENTITY unzip      SYSTEM "./chapter11/unzip.xml">
@@ -80,6 +81,7 @@
 <!ENTITY pciutils   SYSTEM "./chapter11/pciutils.xml">
 <!ENTITY pkgconfig  SYSTEM "./chapter11/pkgconfig.xml">
 <!ENTITY cpio       SYSTEM "./chapter11/cpio.xml">
+<!ENTITY mc         SYSTEM "./chapter11/mc.xml">
 
 <!-- chapter 12 -->
 <!ENTITY python     SYSTEM "./chapter12/python.xml">

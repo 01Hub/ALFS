@@ -5,12 +5,56 @@
 			<archive>&packages_dir;/&unzip-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
+
+		<copy>
+		        <source>&packages_dir;/&unzip-patch1;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+
+		<copy>
+		        <source>&packages_dir;/&unzip-patch2;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+
+		<copy>
+		        <source>&packages_dir;/&unzip-patch3;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+
+		<copy>
+		        <source>&packages_dir;/&unzip-patch4;</source>
+			<destination>&build_dir;</destination>
+		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
 			<base>&build_dir;/&unzip-directory;</base>
 		</stageinfo>
+
+		<patch>
+		        <param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&unzip-patch1;</param>
+		</patch>
+
+		<patch>
+		        <param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&unzip-patch2;</param>
+		</patch>
+
+		<patch>
+		        <param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&unzip-patch3;</param>
+		</patch>
+
+		<patch>
+		        <param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&unzip-patch4;</param>
+		</patch>
 
 		<copy>
 			<source>unix/Makefile</source>
@@ -24,14 +68,27 @@
 
 		<make>
 		        <param>prefix=/usr</param>
-		        <param>linux</param>
+		        <param>linux_shlibz</param>
+		</make>
+
+		<make>
+		        <param>prefix=/usr</param>
 			<param>install</param>
 		</make>
-		
+
+		<copy>
+		        <option>archive</option>
+			<source>libunzip.so*</source>
+			<destination>/usr/lib</destination>
+		</copy>
 	</stage>
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&unzip-directory;</remove>
+		<remove>&build_dir;/&unzip-patch1;</remove>
+		<remove>&build_dir;/&unzip-patch2;</remove>
+		<remove>&build_dir;/&unzip-patch3;</remove>
+		<remove>&build_dir;/&unzip-patch4;</remove>
 	</stage>
 
 </package>
