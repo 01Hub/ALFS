@@ -6,6 +6,13 @@
 
 <itemizedlist>
 
+<listitem><para>June 20th, 2004 [jwrober]: Modified version number standard
+to follow the &book-product;'s version number with a &quot;side&quot;
+version number.</para></listitem>
+
+<listitem><para>June 20th, 2004 [jwrober]: Added boilerplate files for
+part 4.</para></listitem>
+
 <listitem><para>June 18th, 2004 [jwrober]: Added boilerplate files for
 part 3.</para></listitem>
 
