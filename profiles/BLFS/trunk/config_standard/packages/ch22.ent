@@ -1,13 +1,13 @@
 <!--************* packages for chapter 22 *************-->
 
 <!ENTITY bind-version   "9.3.0">
-<!ENTITY bind-package   "bind-&bind-version;.tar.gz">
+<!ENTITY bind-package   "bind-&bind-version;.tar.bz2">
 <!ENTITY bind-directory "bind-&bind-version;">
-<!ENTITY bind-patch     "&bind-version;-patch1">
+<!ENTITY bind-patch     "bind-&bind-version;-patch1">
 
-<!ENTITY dhcp-version "3.0.2">
-<!ENTITY dhcp-package "dhcp-&dhcp-version;.tar.gz">
-<!ENTITY dhcp-directory "dhcp-&dhcp-version;">
+<!ENTITY dhcp-version        "3.0.2">
+<!ENTITY dhcp-package        "dhcp-&dhcp-version;.tar.bz2">
+<!ENTITY dhcp-directory      "dhcp-&dhcp-version;">
 <!ENTITY dhcp-iproute2-patch "dhcp-&dhcp-version;-iproute2-2.patch">
 
 <!ENTITY leafnode-version   "1.10.8">
@@ -15,13 +15,13 @@
 <!ENTITY leafnode-directory "leafnode-&leafnode-version;.rel">
 
 <!ENTITY openldap-version   "2.2.20">
-<!ENTITY openldap-package   "openldap-&openldap-version;.tgz">
+<!ENTITY openldap-package   "openldap-&openldap-version;.tar.bz2">
 <!ENTITY openldap-directory "openldap-&openldap-version;">
 
-<!ENTITY samba-version "3.0.11">
-<!ENTITY samba-package "samba-&samba-version;.tar.gz">
+<!ENTITY samba-version   "3.0.11">
+<!ENTITY samba-package   "samba-&samba-version;.tar.bz2">
 <!ENTITY samba-directory "samba-&samba-version;">
 
 <!ENTITY xinetd-version   "2.3.13">
-<!ENTITY xinetd-package   "xinetd-&xinetd-version;.tar.gz">
+<!ENTITY xinetd-package   "xinetd-&xinetd-version;.tar.bz2">
 <!ENTITY xinetd-directory "xinetd-&xinetd-version;">

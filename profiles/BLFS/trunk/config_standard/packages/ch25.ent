@@ -4,14 +4,13 @@
 <!ENTITY xorg-package "X11R&xorg-version;-src.tar.bz2">
 <!ENTITY xorg-directory "xc">
 
-<!ENTITY xfree86-version   "4.4.0">
-<!ENTITY xfree86-package1  "XFree86-&xfree86-version;-src-1.tgz">
-<!ENTITY xfree86-package2  "XFree86-&xfree86-version;-src-2.tgz">
-<!ENTITY xfree86-package3  "XFree86-&xfree86-version;-src-3.tgz">
-<!ENTITY xfree86-package4  "XFree86-&xfree86-version;-src-4.tgz">
-<!ENTITY xfree86-package5  "XFree86-&xfree86-version;-src-5.tgz">
-<!ENTITY xfree86-package6  "XFree86-&xfree86-version;-src-6.tgz">
-<!ENTITY xfree86-package7  "XFree86-&xfree86-version;-src-7.tgz">
-<!ENTITY xfree86-directory "xc">
-
+<!ENTITY xfree86-version        "4.4.0">
+<!ENTITY xfree86-package1       "XFree86-&xfree86-version;-src-1.tar.bz2">
+<!ENTITY xfree86-package2       "XFree86-&xfree86-version;-src-2.tar.bz2">
+<!ENTITY xfree86-package3       "XFree86-&xfree86-version;-src-3.tar.bz2">
+<!ENTITY xfree86-package4       "XFree86-&xfree86-version;-src-4.tar.bz2">
+<!ENTITY xfree86-package5       "XFree86-&xfree86-version;-src-5.tar.bz2">
+<!ENTITY xfree86-package6       "XFree86-&xfree86-version;-src-6.tar.bz2">
+<!ENTITY xfree86-package7       "XFree86-&xfree86-version;-src-7.tar.bz2">
+<!ENTITY xfree86-directory      "xc">
 <!ENTITY xfree86-security-patch "xorg-CAN-2004-0687-0688.patch">

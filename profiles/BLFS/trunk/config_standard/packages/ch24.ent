@@ -14,7 +14,6 @@
 <!ENTITY proftpd-package   "proftpd-&proftpd-version;.tar.bz2">
 <!ENTITY proftpd-directory "proftpd-&proftpd-version;">
 
-<!ENTITY vsftpd-version "2.0.1">
-<!ENTITY vsftpd-package "vsftpd-&vsftpd-version;.tar.gz">
+<!ENTITY vsftpd-version   "2.0.1">
+<!ENTITY vsftpd-package   "vsftpd-&vsftpd-version;.tar.bz2">
 <!ENTITY vsftpd-directory "vsftpd-&vsftpd-version;">
-

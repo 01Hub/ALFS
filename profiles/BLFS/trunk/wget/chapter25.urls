@@ -1,10 +1,10 @@
-http://ftp.gwdg.de/pub/x11/x.org/pub/X11R6.8.2/src-single/X11R6.8.2-src.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/Xorg/X11R6.8.2-src.tar.bz2
 
-ftp://ftp.xfree86.org/pub/XFree86/4.4.0/source/XFree86-4.4.0-src-1.tgz
-ftp://ftp.xfree86.org/pub/XFree86/4.4.0/source/XFree86-4.4.0-src-2.tgz
-ftp://ftp.xfree86.org/pub/XFree86/4.4.0/source/XFree86-4.4.0-src-3.tgz
-ftp://ftp.xfree86.org/pub/XFree86/4.4.0/source/XFree86-4.4.0-src-4.tgz
-ftp://ftp.xfree86.org/pub/XFree86/4.4.0/source/XFree86-4.4.0-src-5.tgz
-ftp://ftp.xfree86.org/pub/XFree86/4.4.0/source/XFree86-4.4.0-src-6.tgz
-ftp://ftp.xfree86.org/pub/XFree86/4.4.0/source/XFree86-4.4.0-src-7.tgz
-http://www.x.org/pub/X11R6.8.0/patches/xorg-CAN-2004-0687-0688.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/XFree86-4.4.0-src-1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/XFree86-4.4.0-src-2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/XFree86-4.4.0-src-3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/XFree86-4.4.0-src-4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/XFree86-4.4.0-src-5.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/XFree86-4.4.0-src-6.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/XFree86-4.4.0-src-7.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/xorg-CAN-2004-0687-0688.patch

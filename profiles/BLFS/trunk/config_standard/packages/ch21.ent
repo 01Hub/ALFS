@@ -1,22 +1,22 @@
 <!--************* packages for chapter 21 *************-->
 
 <!ENTITY postfix-version   "2.1.5">
-<!ENTITY postfix-package   "postfix-&postfix-version;.tar.gz">
+<!ENTITY postfix-package   "postfix-&postfix-version;.tar.bz2">
 <!ENTITY postfix-directory "postfix-&postfix-version;">
 
-<!ENTITY sendmail-version "8.13.3">
-<!ENTITY sendmail-package "sendmail.&sendmail-version;.tar.gz">
+<!ENTITY sendmail-version   "8.13.3">
+<!ENTITY sendmail-package   "sendmail.&sendmail-version;.tar.bz2">
 <!ENTITY sendmail-directory "sendmail-&sendmail-version;">
 
-<!ENTITY exim-version "4.43">
-<!ENTITY exim-package "exim-&exim-version;.tar.bz2">
-<!ENTITY exim-directory "exim-&exim-version;">
+<!ENTITY exim-version    "4.43">
+<!ENTITY exim-package    "exim-&exim-version;.tar.bz2">
+<!ENTITY exim-directory  "exim-&exim-version;">
 <!ENTITY exim-db43-patch "exim-&exim-version;-db43-1.patch">
 
 <!ENTITY qpopper-version   "4.0.5">
-<!ENTITY qpopper-package   "qpopper&qpopper-version;.tar.gz">
+<!ENTITY qpopper-package   "qpopper&qpopper-version;.tar.bz2">
 <!ENTITY qpopper-directory "qpopper&qpopper-version;">
 
-<!ENTITY courier-version "0.47">
-<!ENTITY courier-package "courier-&courier-version;.tar.bz2">
+<!ENTITY courier-version   "0.47">
+<!ENTITY courier-package   "courier-&courier-version;.tar.bz2">
 <!ENTITY courier-directory "courier-&courier-version;">
