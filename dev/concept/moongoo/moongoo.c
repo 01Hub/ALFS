@@ -95,6 +95,8 @@ int main (int argc, char **argv)
 	xmlXIncludeProcessFlags(doc, XML_PARSE_NOENT);
 	cur = xmlDocGetRootElement(doc);
 
+	//print_subtree(cur);
+
 	f = strdog(getenv("HOME"), moo_xml);
 	if (access(f, R_OK))
 	{
@@ -129,20 +131,21 @@ int main (int argc, char **argv)
 	{
 		/*package *glibc = search_pkg(prof, "glibc", 
 			"chapter-building-system");*/
-		/*package *gtk2 = search_pkg(prof, "gtk+",
-			"x-lib");*/
+		package *gtk2 = search_pkg(prof, "gtk+",
+			"x-lib");
 		
 		sed_paralell (prof, paralell_filter, popt_pkg, popt_cmd);
 		set_filter(default_filter);
 		
-		/*if (gtk2)
+		if (gtk2)
 		{
 			//print_pkg(*gtk2);
 			print_deptree(*prof, *gtk2);
-		}*/
+		}
 		/*if (glibc)
 			print_pkg(*glibc);*/
-		print_profile(*prof);
+		
+		//print_profile(*prof);
 		//print_links(*prof);
 	}
 
