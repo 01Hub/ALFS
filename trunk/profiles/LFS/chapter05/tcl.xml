@@ -19,7 +19,10 @@
 		<make />
 
 <!--
-		<execute command="TZ=UTC make test" />
+		<make>
+			<prefix>TZ=UTC</prefix>
+			<param>test</param>
+		</make>
 -->
 
 		<make>
