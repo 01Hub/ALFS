@@ -1,10 +1,12 @@
 <!--
 
-	LFS profile, version 5.0
+	LFS profile, version CVS
 	=================================
 	by Dave Wheeler (davewheeler69@hotmail.com)
 	updates by "Mark"
         updates by Kevin P. Fleming (kpfleming@linuxfromscratch.org)
+	updates by Jamie Bennett (jamie@linuxfromscratch.org)
+	updates by Thomas Pegg (thomasp@linuxfromscratch.org)
 	Adapted from a profile by Vassili Dzuba (vassilidzuba@nerim.net)
 	Adapted from a profile by Neven Has - haski@sezampro.yu
 
@@ -232,7 +234,7 @@
 	<remove>/tools</remove>
 
 	<textdump>
-		<file>/etc/lfs</file>
+		<file>/etc/lfs-release</file>
 		<content>=&LFS-version;</content>
 	</textdump>
 </stage>

@@ -131,7 +131,7 @@
 
 
 <!-- LFS book version -->
-<!ENTITY LFS-version "5.0">
+<!ENTITY LFS-version "CVS-20031217">
 
 
 <!-- THE FOLLOWING TWO ENTITIES DECLARATIONS SHOULDN'T BE MOFIFIED
