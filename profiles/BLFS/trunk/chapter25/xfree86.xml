@@ -117,16 +117,10 @@
 	<target>psaux</target>
 	<name>mouse</name>
       </link>
-      <textdump base="/root">
-	<file>.xinitrc</file>
-	<content>
-	  =# Begin .xinitrc file
-	  =xterm -g 80x40+0+0 &real-amp;
-	  =xclock -g 100x100-0+0 &real-amp;
-	  =twm
-	  =# End .xinitrc file
-	</content>
-      </textdump>
+      <copy base="&blfs-config;/root">
+	<source>dot_xinitrc</source>
+	<destination>/root/.xinitrc</destination>
+      </copy>
       <xi:include href="fonts.xml" />
     </stage>
     <stage name="Cleanup">

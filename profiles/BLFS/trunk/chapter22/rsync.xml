@@ -4,10 +4,12 @@
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch22.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
 
 %general_entities;
 %package_entities;
 %config_entities;
+%files;
 
 <!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
 <!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
@@ -45,24 +47,10 @@
       <make>
         <param>install</param>
       </make>
-      <textdump base="/etc">
-        <file>rsyncd.conf</file>
-        <content>
-	  =# This is a basic rsync configuration file
-	  =# It exports a single module without user authentication.
-	  =
-	  =motd file = /home/rsync/welcome.msg
-	  =use chroot = yes
-	  =
-	  =[localhost]
-	  =    path = /home/rsync
-	  =    comment = Default rsync module
-	  =    read only = yes
-	  =    list = yes
-	  =    uid = rsyncd
-	  =    gid = rsyncd
-	</content>
-      </textdump>
+      <copy base="&blfs-config;/etc">
+	<source>rsyncd.conf</source>
+	<destination>/etc</destination>
+      </copy>
     </stage>
     <stage name="Installing bootscript and configuration">
       <stageinfo>

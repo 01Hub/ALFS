@@ -4,10 +4,12 @@
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch34.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
 
 %general_entities;
 %package_entities;
 %config_entities;
+%files;
 
 ]>
 <alfs>
@@ -144,58 +146,97 @@
       </configure>
       <execute command="./bootstrap" />
       <execute command="bash -c &quot;source LinuxIntelEnv.Set.sh; dmake&quot;" />
-      <!-- the following is so an instance of X does not need to be running for the installer to function -->
-      <textdump>
-        <file>&build_dir;/install-oo.sh</file>
-        <content>
-	  =cd instsetoo/unxlngi4.pro/01/normal &real-amp;&real-amp;
-	  =sed -i &quot;s:^oo_home=.*.:oo_home=openoffice:&quot; install
-	  =# The following code was extracted from Tushar Teredesai's build
-	  =# scripts for openoffice at 
-	  =# http://www.linuxfromscratch.org/~tushar/openoffice
-	  =
-	  =DISPLAY_NUM=0
-	  =while true
-	  =do
-	  =echo "Checking if Display Number $DISPLAY_NUM is available..."
-	  =	# Check if there is a lock file
-	  =	if [ ! -f /tmp/.X$DISPLAY_NUM-lock ]
-	  =	then
-	  =		sleep 10s
-	  =		# Start a Xserver
-	  =		Xvfb :$DISPLAY_NUM >&real-amp; /dev/null &real-amp;
-	  =		sleep 10s
-	  =		# Check if server started properly
-	  =		if [ -f /tmp/.X$DISPLAY_NUM-lock ]
-	  =		then
-	  =			break
-	  =		fi
-	  =	fi
-	  =	DISPLAY_NUM=$(($DISPLAY_NUM+1))
-	  =done
-	  =echo "Using Display Number $DISPLAY_NUM..."
-	  =export DISPLAY=:$DISPLAY_NUM
-	  =./install --prefix=/opt &real-amp;&real-amp;
-	  =kill `cat /tmp/.X$DISPLAY_NUM-lock` >&real-amp; /dev/null
-	  =unset DISPLAY
-	  =for appl in sagenda scalc sdraw sfax simpress slabel sletter \
-	  = smaster smath smemo soffice spadmin svcard sweb swriter
-	  =do
-	  =ln -sf /opt/openoffice/program/$appl /usr/bin/$appl
-	  =done
-	  =install -d /usr/share/applications -m 755 &real-amp;&real-amp;
-	  =cp /opt/openoffice/share/gnome/net/ooo645*.desktop /usr/share/applications/ &real-amp;&real-amp;
-	  =rename ooo645 ooo /usr/share/applications/oo645*.desktop
-	</content>
-      </textdump>
-      <permissions mode="755">
-        <name>&build_dir;/install-oo.sh</name>
-      </permissions>
-      <execute command="&build_dir;/install-oo.sh" />
+      <execute command="sed" base="&build_dir;/OOo-build/instsetoo/unxlngi4.pro/01/normal">
+	<param>-i "s:^oo_home=.*.:oo_home=openoffice:" install</param>
+      </execute>
+      <execute command="&blfs-config;/scripts/install-oo.sh" />
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/sagenda</target>
+	<name>/usr/bin/sagenda</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/scalc</target>
+	<name>/usr/bin/scalc</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/sdraw</target>
+	<name>/usr/bin/sdraw</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/sfax</target>
+	<name>/usr/bin/sfax</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/simpress</target>
+	<name>/usr/bin/simpress</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/slabel</target>
+	<name>/usr/bin/slabel</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/sletter</target>
+	<name>/usr/bin/sletter</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/smaster</target>
+	<name>/usr/bin/smaster</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/smath</target>
+	<name>/usr/bin/smath</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/smemo</target>
+	<name>/usr/bin/smemo</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/soffice</target>
+	<name>/usr/bin/soffice</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/spadmin</target>
+	<name>/usr/bin/spadmin</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/svcard</target>
+	<name>/usr/bin/svcard</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/sweb</target>
+	<name>/usr/bin/sweb</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/swriter</target>
+	<name>/usr/bin/swriter</name>
+      </link>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/applications</name>
+      </mkdir>
+      <copy>
+	<source>/opt/openoffice/share/gnome/net/ooo645*.desktop</source>
+	<destination>/usr/share/applications</destination>
+      </copy>
+      <execute command="rename ooo645 ooo /usr/share/applications/ooo645*.desktop" />
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/OOo-build</remove>
-      <remove>&build_dir;/install-oo.sh</remove>
       <remove>/usr/g++-v3</remove>
     </stage>
   </package>

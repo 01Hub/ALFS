@@ -4,10 +4,12 @@
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch44.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
 
 %general_entities;
 %package_entities;
 %config_entities;
+%files;
 
 ]>
 <alfs>
@@ -62,19 +64,7 @@
         <destination>/usr/share/doc/xml</destination>
       </copy>
       <execute command="sh INSTALL" base="/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;" />
-      <textdump>
-        <file>&build_dir;/dircheck.sh</file>
-        <content>
-	  =if [ ! -e /etc/xml/catalog ]; then mkdir -p /etc/xml; xmlcatalog --noout \
-	  =--create /etc/xml/catalog; fi &real-amp;&real-amp;
-	  =if [ ! -e /etc/xml/docbook ]; then xmlcatalog --noout --create \
-	  =/etc/xml/docbook; fi
-	</content>
-      </textdump>
-      <permissions mode="755">
-        <name>&build_dir;/dircheck.sh</name>
-      </permissions>
-      <execute command="&build_dir;/dircheck.sh" />
+      <execute command="&blfs-config;/scripts/dircheck.sh" />
       <execute command="xmlcatalog">
         <param>--noout --add "rewriteSystem"</param>
         <param>"http://docbook.sourceforge.net/release/xsl/&docbook-xsl-version;"</param>

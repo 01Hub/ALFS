@@ -4,10 +4,12 @@
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch21.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM  "../config/files.ent">
 
 %general_entities;
 %package_entities;
 %config_entities;
+%files;
 
 <!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
 <!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
@@ -146,13 +148,10 @@
 	<destination>/usr/share/doc/sendmail/&sendmail-version;</destination>
       </copy>
       <execute command="echo `hostname` &gt; /etc/mail/local-host-names" />
-      <textdump>
-        <file>/etc/mail/aliases</file>
-        <content>
-	  =postmaster: root
-	  =MAILER-DAEMON: root
-	</content>
-      </textdump>
+      <copy>
+	<source>&blfs-config;/etc/mail/aliases</source>
+	<destination>/etc/mail</destination>
+      </copy>
       <execute command="newaliases -v" />
       <execute base="/etc/mail" command="m4 m4/cf.m4 sendmail.mc &gt; sendmail.cf" />
     </stage>

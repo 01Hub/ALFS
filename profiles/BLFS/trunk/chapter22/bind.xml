@@ -161,107 +161,29 @@
       </copy>
     </stage>
     <stage name="Configuring bind">
-      <textdump>
-        <file>/home/named/etc/named.conf</file>
-        <content>
-	  = options {
-	  =   directory "/etc/namedb";
-	  =   pid-file "/var/run/named.pid";
-	  =   statistics-file "/var/run/named.stats";
-	  =
-	  = };
-	  = controls {
-	  =   inet 127.0.0.1 allow { localhost; } keys { rndc_key; };
-	  = };
-	</content>
-      </textdump>
+      <copy base="&blfs-config;">
+	<source>home/named/etc/named.conf</source>
+	<destination>/home/named/etc</destination>
+      </copy>
+      <copy base="&blfs-config;">
+	<source>etc/rndc.conf</source>
+	<destination>/etc</destination>
+      </copy>
       <execute command="rndc-confgen">
 	<param>-a -b 512</param>
 	<param>-c key.tmp</param>
       </execute>
-      <execute command="cat">
-	<param>&gt;&gt; /home/named/etc/named.conf</param>
-	<param>&lt; key.tmp</param>
+      <execute command="sed">
+	<param>-i -s "s,@rndc-key@,$(cat key.tmp | grep -m 1 "secret" | cut -d '"' -f 2),"</param>
+	<param>/home/named/etc/named.conf</param>
+	<param>/etc/rndc.conf</param>
       </execute>
-      <textdump mode="append">
-	<file>/home/named/etc/named.conf</file>
-	<content>
-	  = zone "." {
-	  =   type hint;
-	  =   file "root.hints";
-	  = };
-	  = zone "0.0.127.in-addr.arpa" {
-	  =   type master;
-	  =   file "pz/127.0.0";
-	  = };
-	  =
-	  =// Bind 9 now logs by default through syslog (except debug).
-	  =// These are the default logging rules.
-	  =
-	  =logging {
-	  =     category default { default_syslog; default_debug; };
-	  =     category unmatched { null; };
-	  =
-	  =  channel default_syslog {
-	  =      syslog daemon;                      // send to syslog's daemon
-	  =                                          // facility
-	  =      severity info;                      // only send priority info
-	  =                                          // and higher
-	  =  };
-	  =
-	  =  channel default_debug {
-	  =      file "named.run";                   // write to named.run in
-	  =                                          // the working directory
-	  =                                          // Note: stderr is used instead
-	  =                                          // of "named.run"
-	  =                                          // if the server is started
-	  =                                          // with the '-f' option.
-	  =      severity dynamic;                   // log at the server's
-	  =                                          // current debug level
-	  =  };
-	  =
-	  =  channel default_stderr {
-	  =      stderr;                             // writes to stderr
-	  =      severity info;                      // only send priority info
-	  =                                          // and higher
-	  =  };
-	  =
-	  =  channel null {
-	  =     null;                                // toss anything sent to
-	  =                                          // this channel
-	  =  };
-	  =};
-	</content>
-      </textdump>
-      <execute command="cat">
-	<param>&gt;&gt; /etc/rndc.conf</param>
-	<param>&lt; key.tmp</param>
-      </execute>
-      <textdump mode="append">
-        <file>/etc/rndc.conf</file>
-        <content>
-	  =options {
-	  =    default-server localhost;
-	  =    default-key    rndc_key;
-	  =};
-	</content>
-      </textdump>
-      <textdump>
-        <file>/home/named/etc/namedb/pz/127.0.0</file>
-        <content>
-	  =$TTL 3D
-	  =@	  IN	  SOA	    ns.local.domain.	  hostmaster.local.domain. ( 
-	  =			      1	    ; Serial
-	  =			      8H    ; Refresh
-	  =			      2H    ; Retry
-	  =			      4W    ; Expire
-	  =			      1D)   ; Minimum TTL
-	  =		    NS	    ns.local.domain.
-	  =1		    PTR	    localhost.
-	</content>
-      </textdump>
-      <copy base="&blfs-config;/named">
-	<source>root.hints</source>
+      <copy base="&blfs-config;">
+	<source>home/named/etc/namedb/pz/127.0.0</source>
+	<destination>/home/named/etc/namedb/pz</destination>
+      </copy>
+      <copy base="&blfs-config;">
+	<source>home/named/etc/namedb/root.hints</source>
 	<destination>/home/named/etc/namedb</destination>
       </copy>
       <copy base="/etc">
