@@ -145,6 +145,8 @@ char *alloc_execute_command(element_s *el);
 
 char *alloc_base_dir(element_s *el);
 
+const char *alloc_base_dir_new(const element_s * const element);
+
 int change_to_base_dir(const element_s * const element, const char * const local_base, 
 		       const int default_root);
 

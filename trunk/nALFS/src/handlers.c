@@ -422,16 +422,11 @@ char *alloc_base_dir(element_s *el)
 	return xstrdup("/");
 }
 
-int change_to_base_dir(const element_s * const element,
-		       const char * const local_base,
-		       const int default_root)
+/* Used by syntax 3.0+ handlers. */
+const char *alloc_base_dir_new(const element_s * const element)
 {
-	const element_s *s;
-	char *dir;
-	int result;
-
-	if (local_base)
-		return change_current_dir(local_base);
+	const element_s *s;	
+	const char *dir;
 
 	for (s = element->parent; s; s = s->parent) {
 		if (!s->handler)
@@ -440,11 +435,27 @@ int change_to_base_dir(const element_s * const element,
 			continue;
 
 		dir  = s->handler->alloc_data(s, HDATA_BASE);
-		if (dir) {
-			result = change_current_dir(dir);
-			xfree(dir);
-			return result;
-		}
+		if (dir)
+			return dir;
+	}
+
+	return NULL;
+}
+
+int change_to_base_dir(const element_s * const element,
+		       const char * const local_base,
+		       const int default_root)
+{
+	const char *dir;
+	int result;
+
+	if (local_base)
+		return change_current_dir(local_base);
+
+	if ((dir = alloc_base_dir_new(element)) != NULL) {
+		result = change_current_dir(dir);
+		xfree(dir);
+		return result;
 	}
 
 	if (default_root) {
