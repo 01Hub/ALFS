@@ -3,7 +3,6 @@
         <packageinfo>
                 <requires><name>orbit2</name></requires>
         	<requires><name>gconf2</name></requires>
-        	<requires><name>bonobo-activation</name></requires>
         	<requires><name>gnome-mime-data</name></requires>
 		<utilizes><name>libfam</name></utilizes>
 		<utilizes><name>openssl</name></utilizes>

@@ -1,23 +1,24 @@
-<package name="gnome-themes" version="&gnome-themes-version;">
+<package name="libcroco" version="&libcroco-version;">
 
         <packageinfo>
-                <requires><name>gtk-engines</name></requires>
+                <requires><name>libxml2</name></requires>
+                <requires><name>pango</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&gnome-themes-package;</archive>
+			<archive>&packages_dir;/&libcroco-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&gnome-themes-directory;</base>
+			<base>&build_dir;/&libcroco-directory;</base>
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=/usr</param>
+			<param>--prefix=&gnome-prefix;</param>
 		</configure>
 
 		<make/>
@@ -28,7 +29,7 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&gnome-themes-directory;</remove>
+		<remove>&build_dir;/&libcroco-directory;</remove>
 	</stage>
 
 </package>

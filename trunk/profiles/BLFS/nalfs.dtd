@@ -73,7 +73,7 @@
 
 <!ELEMENT item           (#PCDATA)>
 
-<!ELEMENT link           (option?, target+, name)>
+<!ELEMENT link           (option*, target+, name)>
 <!ATTLIST link
           base           CDATA #IMPLIED
 	  type           CDATA #IMPLIED>

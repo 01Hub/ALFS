@@ -2,7 +2,6 @@
 
 	<packageinfo>
         	<requires><name>glib2</name></requires>
-        	<requires><name>linc</name></requires>
         	<requires><name>libidl</name></requires>
         	<requires><name>popt</name></requires>
 	</packageinfo>

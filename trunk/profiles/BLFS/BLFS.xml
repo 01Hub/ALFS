@@ -358,11 +358,9 @@
 
     &gnome-pre-installation;
     &gtk-doc;
-    &linc;
     &libidl;
     &orbit2;
     &intltool;
-    &bonobo-activation;
     &libbonobo;
     &gconf2;
     &gnome-mime-data;
@@ -374,23 +372,22 @@
     &libbonoboui;
     &gnome-icon-themes;
     &libgnomeui;
-    &libwnck;
     &gtk-engines;
-    &gtk-thinice-engine;
     &gnome-themes;
+    &libwnck;
     &scrollkeeper;
     &vte;
     &libgtop;
     &gail;
-    &at-spi;
-    &libgail-gnome;
+    &libgsf;
+    &libcroco;
     &librsvg;
     &eel;
     &libgtkhtml;
-    &libgsf;
-    &gal;
     &libgnomeprint;
     &libgnomeprintui;
+    &gtksourceview;
+    &gal;
     &gtkhtml;
 
 </stage>
@@ -400,25 +397,28 @@
     &gnome-desktop;
     &gnome-panel;
     &gnome-session;
+    &nautilus;
     &control-center;
-
+    &gnome-desktop;
 </stage>
 
 <stage name="Chapter 34 (GNOME additional packages)">
     
     &gnome-terminal;
-    &gnome-system-monitor;
     &gnome-applets;
-    &gnome-utils;
-    &gnome-games;
-    &nautilus;
     &yelp;
     &bug-buddy;
     &gedit;
     &eog;
+    &acme;
+    &ggv;
+    &gnome-utils;
+    &gnome-system-monitor;
     &gstreamer;
     &gst-plugins;
     &gnome-media;
+
+    &gnome-games;
     &nautilus-media;
     &gnome2-user-docs;
 

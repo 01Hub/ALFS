@@ -3,6 +3,7 @@
         <packageinfo>
                 <requires><name>libgnomeui</name></requires>
                 <requires><name>scrollkeeper</name></requires>
+                <requires><name>libwnck</name></requires>
 		<utilizes><name>gtk-doc</name></utilizes>
 		<utilizes><name>sgml-dtd31</name></utilizes>
         </packageinfo>
