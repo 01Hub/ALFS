@@ -35,6 +35,6 @@ directory prior to making any modifications to the files within it.
    your new LFS system to continue building other packages (via BLFS
    or other profiles).
 
-4) Execute sh ./runit as root. Please note that if you have installed
+4) Execute ./runit.sh as root. Please note that if you have installed
    nALFS into a location other than /usr/local/bin you will need to edit
-   runit to point to your copy of nALFS.
+   runit.sh to point to your copy of nALFS.
