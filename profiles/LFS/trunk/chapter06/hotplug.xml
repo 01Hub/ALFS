@@ -27,6 +27,11 @@
 			<param>install</param>
 		</make>
 
+		<copy>
+			<source>etc/hotplug/pnp.distmap</source>
+			<destination>/etc/hotplug</destination>
+		</copy>
+
 		<remove>/etc/init.d</remove>
 		<remove>/etc/hotplug/net.agent</remove>
 

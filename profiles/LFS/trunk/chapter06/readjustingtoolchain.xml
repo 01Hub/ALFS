@@ -33,7 +33,7 @@
     </search_replace>
 
     <execute command="perl">
-      <param>-pi -e &apos;s@\*startfile_prefix_spec:\n@$_/usr/lib/@g;&apos;</param>
+      <param>-pi -e &apos;s@\*startfile_prefix_spec:\n@$_/usr/lib/ @g;&apos;</param>
       <param>/tools/lib/gcc/&gcc_target;/&gcc-version;/specs</param>
     </execute>
   </stage>

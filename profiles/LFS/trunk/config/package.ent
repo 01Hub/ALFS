@@ -195,8 +195,8 @@
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
-<!ENTITY libol-md5 "4183c9fc4d92af1249d0a7cf8041acbe">
-<!ENTITY libol-version "0.3.14">
+<!ENTITY libol-md5 "f8324292f85bb88d2c3c8675b8d1aee9">
+<!ENTITY libol-version "0.3.15">
 <!ENTITY libol-package "libol-&libol-version;.tar.bz2">
 <!ENTITY libol-directory "libol-&libol-version;">
 
@@ -308,8 +308,8 @@
 <!ENTITY shadow-package "shadow-&shadow-version;.tar.bz2">
 <!ENTITY shadow-directory "shadow-&shadow-version;">
 
-<!ENTITY syslog-ng-md5 "ebd1e0630fccc34b860a3211b9980838">
-<!ENTITY syslog-ng-version "1.6.5">
+<!ENTITY syslog-ng-md5 "88ff578e0455486f8079bce0f6c9a721">
+<!ENTITY syslog-ng-version "1.6.6">
 <!ENTITY syslog-ng-package "syslog-ng-&syslog-ng-version;.tar.bz2">
 <!ENTITY syslog-ng-directory "syslog-ng-&syslog-ng-version;">
 
