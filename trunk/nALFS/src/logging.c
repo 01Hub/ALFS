@@ -31,9 +31,6 @@
 #include <sys/stat.h>
 #include <ctype.h>
 
-#include <libxml/tree.h>
-#include <libxml/parser.h>
-
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -83,7 +80,7 @@ static statefile_s *statefile_current;
 
 static element_s *current_package;
 
-static xmlDocPtr xml_doc;
+static logs_t *logs;
 
 
 static INLINE int get_stamp_directory_status(
@@ -446,8 +443,8 @@ void log_handler_action(const char *format, ...)
 		return;
 	}
 
-	if (xml_doc == NULL) { // No open XML file for logging.
-		Debug_logging("log_handler_action: xml_doc is NULL");
+	if (logs == NULL) { // No open file for logging.
+		Debug_logging("log_handler_action: logs is NULL");
 		return;
 	}
 
@@ -455,7 +452,7 @@ void log_handler_action(const char *format, ...)
 	vsnprintf(string, MAX_ACTION_MSG_LEN, format, ap);
 	va_end(ap);
 
-	logs_add_handler_action(xml_doc, string);
+	logs_add_handler_action(logs, string);
 }
 
 static void free_statefile(statefile_s **statefile)
@@ -535,15 +532,15 @@ static INLINE void create_installed_files_file(
 	const char *filename)
 {
 	if (opt_logging_method == LOG_USING_TWO_FINDS) {
-		logs_add_installed_files_two_finds(xml_doc,
-			opt_find_base, opt_find_prunes);
+		logs_add_installed_files_two_finds(
+			logs, opt_find_base, opt_find_prunes);
 
 		/* TODO: Ugly. */
 		execute_command("sort %s %s | uniq -u | sort -bk8 >> %s",
 			current, new, filename);
 
 	} else if (opt_logging_method == LOG_USING_ONE_FIND) {
-		logs_add_installed_files_one_find(xml_doc);
+		logs_add_installed_files_one_find(logs);
 
 		/* TODO: Ugly II. */
 		execute_command("cp -f %s %s", new, filename);
@@ -603,8 +600,8 @@ static INLINE void send_state(void)
 
 static void finish_logging(char *installed_files)
 {
-	size_t size;
-	xmlChar *ptr;
+	int size;
+	char *ptr;
 
 
 	Debug_logging("Finishing logging...");
@@ -613,16 +610,15 @@ static void finish_logging(char *installed_files)
 	 * Send package log file to the frontend.
 	 */
 
-	xmlDocDumpFormatMemory(xml_doc, &ptr, (int *)&size, 1);
-	xmlFreeDoc(xml_doc);
-	xml_doc = NULL;
+	logs_dump_to_memory(logs, &ptr, &size);
+
+	logs_free(logs);
+	logs = NULL;
+
 
 	Nprint("Sending the package log to the frontend... ");
 	comm_send_from_memory(
-		BACKEND_CTRL_SOCK,
-		CTRL_SENDING_LOG_FILE,
-		(const char *)ptr,
-		size);
+		BACKEND_CTRL_SOCK, CTRL_SENDING_LOG_FILE, ptr, (size_t)size);
 
 	xfree(ptr);
 
@@ -665,13 +661,13 @@ static INLINE void log_stopped_time(void)
 	t = time(NULL);
 	strftime(time_str, sizeof time_str, DATE_FORMAT, localtime(&t));
 
-	logs_add_stopped_time(xml_doc, time_str);
+	logs_add_stopped_time(logs, time_str);
 }
 
 void log_stopped_execution(void)
 {
-	if (xml_doc == NULL) { // No open XML file for logging.
-		Debug_logging("log_stopped_execution: xml_doc is NULL");
+	if (logs == NULL) { // No open file for logging.
+		Debug_logging("log_stopped_execution: logs is NULL");
 		return;
 	}
 
@@ -942,9 +938,9 @@ static INLINE void request_state(void)
 	}
 }
 
-static INLINE xmlDocPtr start_package_logging(element_s *el)
+static INLINE logs_t *start_package_logging(element_s *el)
 {
-	xmlDocPtr xmld;
+	logs_t *l;
 
 	char *name = alloc_package_name(el);
 	char *version = alloc_package_version(el);
@@ -952,7 +948,7 @@ static INLINE xmlDocPtr start_package_logging(element_s *el)
 
 	current_package = el;
 
-	xmld = logs_new_run(name, version);
+	l = logs_init_new_run(name, version);
 
 	xfree(name);
 	xfree(version);
@@ -966,7 +962,7 @@ static INLINE xmlDocPtr start_package_logging(element_s *el)
 		Debug_logging("Logging files is off, not entering stage one.");
 	}
 
-	return xmld;
+	return l;
 }
 
 
@@ -977,15 +973,15 @@ void log_end_time(element_s *el, int status)
 	time_t t;
 
 
-	if (xml_doc == NULL) { // No open XML file for logging.
-		Debug_logging("log_end_time: xml_doc is NULL");
+	if (logs == NULL) { // No open file for logging.
+		Debug_logging("log_end_time: logs is NULL");
 		return;
 	}
 
 	t = time(NULL);
 	strftime(time_str, sizeof time_str, DATE_FORMAT, localtime(&t));
 
-	logs_add_end_time(xml_doc, el->name, time_str, status);
+	logs_add_end_time(logs, el->name, time_str, status);
 }
 
 void log_start_time(element_s *el)
@@ -994,15 +990,15 @@ void log_start_time(element_s *el)
 	time_t t;
 
 
-	if (xml_doc == NULL) { // No open XML file for logging.
-		Debug_logging("log_start_time: xml_doc is NULL");
+	if (logs == NULL) { // No open file for logging.
+		Debug_logging("log_start_time: logs is NULL");
 		return;
 	}
 
 	t = time(NULL);
 	strftime(time_str, sizeof time_str, DATE_FORMAT, localtime(&t));
 
-	logs_add_start_time(xml_doc, el->name, time_str);
+	logs_add_start_time(logs, el->name, time_str);
 }
 
 
@@ -1018,7 +1014,7 @@ void start_logging_element(element_s *el)
 
 	if (Is_element_name(el, "package")) {
 		if (package_has_name_and_version(el)) {
-			xml_doc = start_package_logging(el);
+			logs = start_package_logging(el);
 
 		} else {
 			Debug_logging("start_logging_element: no name/version");
@@ -1030,8 +1026,8 @@ void start_logging_element(element_s *el)
 
 void end_logging_element(element_s *el, int status)
 {
-	if (xml_doc == NULL) { // No open XML file for logging.
-		Debug_logging("end_logging_element: xml_doc is NULL");
+	if (logs == NULL) { // No open file for logging.
+		Debug_logging("end_logging_element: logs is NULL");
 		return;
 	}
 

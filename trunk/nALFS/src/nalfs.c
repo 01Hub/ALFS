@@ -4449,7 +4449,7 @@ static void nprint_curses(msg_id_e mid, const char *format,...)
 		nprint_curses(T_WAR,
 			"Unable to open \"%s\" for logging (%s).",
 			file, strerror(errno));
-		nprint_curses(T_WAR, "nLogging will be disabled.");
+		nprint_curses(T_WAR, "Logging will be disabled.");
 	}
 
 	va_start(ap, format);
