@@ -48,6 +48,11 @@
 #include "backend.h"
 #include "options.h"
 
+/* Forward declarations for cross-handler references */
+static int environment_main(element_s * const element);
+static int variable_main(element_s * const element);
+
+
 extern char **environ;
 
 
@@ -209,18 +214,14 @@ static INLINE int set_variable(const char *variable, const char *value)
 	return 0;
 }
 
-static const element_s *find_stageinfo(const element_s *element)
-{
-	const element_s *child;
+/* <stage> handler */
 
-	for (child = element->children; child; child = child->next) {
-		if (child->handler->type & HTYPE_STAGEINFO) {
-			return child;
-		}
-	}
+static const char *stage_attributes[] = { "name", NULL};
 
-	return NULL;
-}
+struct stage_data {
+	char *name;
+	const element_s *stageinfo;
+};
 
 /* common function used by all stage-like handlers to actually execute
    the element's children
@@ -228,12 +229,13 @@ static const element_s *find_stageinfo(const element_s *element)
 
 static int process_stage(element_s *element)
 {
+	struct stage_data *data = (struct stage_data *) element->handler_data;
 	int status;
 	pid_t pid, got_pid;
 
 	/* if no <stageinfo> found, simply execute children */
 
-	if (!find_stageinfo(element))
+	if (!data->stageinfo)
 		return execute_children(element);
 
 	/* found <stageinfo>, assume that a fork() is necessary */
@@ -284,15 +286,6 @@ static int process_stage(element_s *element)
 	return status;
 }
 
-
-/* <stage> handler */
-
-static const char *stage_attributes[] = { "name", NULL};
-
-struct stage_data {
-	char *name;
-};
-
 static int stage_setup(element_s * const element)
 {
 	struct stage_data *data;
@@ -301,6 +294,7 @@ static int stage_setup(element_s * const element)
 		return 1;
 
 	data->name = NULL;
+	data->stageinfo = NULL;
 	element->handler_data = data;
 
 	return 0;
@@ -326,6 +320,28 @@ static int stage_attribute(const element_s * const element,
 			return 0;
 
 	return 1;
+}
+
+static int stage_invalid_child(const element_s * const element,
+			       const element_s * const child)
+{
+	struct stage_data *data = (struct stage_data *) element->handler_data;
+
+	if (child->handler->type & HTYPE_STAGEINFO) {
+		if (data->stageinfo) {
+			Nprint_err("<stage>: only one <stageinfo> allowed.");
+			return 1;
+		}
+
+		data->stageinfo = child;
+		return 0;
+	}
+
+	return !(child->handler->type & (HTYPE_NORMAL |
+			 HTYPE_TEXTDUMP |
+			 HTYPE_PACKAGE |
+			 HTYPE_EXECUTE |
+			 HTYPE_STAGE));
 }
 
 static int stage_main(element_s * const element)
@@ -361,17 +377,17 @@ static int stage_main(element_s * const element)
 static char *stage_data(const element_s * const element,
 			const handler_data_e data_requested)
 {
-	const element_s *stageinfo;
+	struct stage_data *data = (struct stage_data *) element->handler_data;
 
 	/* the only data elements currently supported by the <stage>
 	   element are HDATA_BASE and HDATA_SHELL, which actually
 	   are supplied by an HTYPE_STAGEINFO child, if it exists
 	*/
 
-	if (!(stageinfo = find_stageinfo(element)))
+	if (!data->stageinfo)
 		return NULL;
 	
-	return stageinfo->handler->alloc_data(stageinfo, data_requested);
+	return data->stageinfo->handler->alloc_data(data->stageinfo, data_requested);
 }
 
 #if HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
@@ -490,6 +506,18 @@ static int stageinfo_parameter(const element_s * const element,
 	return 1;
 }
 
+static int stageinfo_invalid_child(const element_s * const element,
+				   const element_s * const child)
+{
+	(void) element;
+
+	if (child->handler->main != environment_main) {
+		return 1;
+	}
+
+	return 0;
+}
+
 static int stageinfo_main(element_s * const element)
 {
 	struct stageinfo_data *data = (struct stageinfo_data *) element->handler_data;
@@ -540,7 +568,20 @@ static char *stageinfo_data(const element_s * const element,
 	return NULL;
 }
 
+
 /* <environment> handler */
+
+static int environment_invalid_child(const element_s * const element,
+				     const element_s * const child)
+{
+	(void) element;
+
+	if (child->handler->main != variable_main) {
+		return 1;
+	}
+
+	return 0;
+}
 
 static int environment_main(element_s * const element)
 {
@@ -641,6 +682,15 @@ static int variable_invalid_data(const element_s * const element)
 	return 0;
 }
 
+static int variable_invalid_child(const element_s * const element,
+				  const element_s * const child)
+{
+	(void) element;
+	(void) child;
+
+	return 1;
+}
+
 static int variable_main(element_s * const element)
 {
 	struct variable_data *data = (struct variable_data *) element->handler_data;
@@ -679,6 +729,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stage_free,
 		.attributes = stage_attributes,
 		.parse_attribute = stage_attribute,
+		.invalid_child = stage_invalid_child,
 	},
 	{
 		.name = "stageinfo",
@@ -691,6 +742,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stageinfo_free,
 		.parameters = stageinfo_parameters,
 		.parse_parameter = stageinfo_parameter,
+		.invalid_child = stageinfo_invalid_child,
 	},
 	{
 		.name = "environment",
@@ -698,6 +750,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.0",
 		.type = HTYPE_NORMAL,
 		.main = environment_main,
+		.invalid_child = environment_invalid_child,
 	},
 	{
 		.name = "variable",
@@ -711,6 +764,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parse_attribute = variable_attribute,
 		.parse_content = variable_content,
 		.invalid_data = variable_invalid_data,
+		.invalid_child = variable_invalid_child,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -726,6 +780,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stage_free,
 		.attributes = stage_attributes,
 		.parse_attribute = stage_attribute,
+		.invalid_child = stage_invalid_child,
 	},
 	{
 		.name = "then",
@@ -739,6 +794,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stage_free,
 		.attributes = stage_attributes,
 		.parse_attribute = stage_attribute,
+		.invalid_child = stage_invalid_child,
 	},
 	{
 		.name = "else",
@@ -752,6 +808,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stage_free,
 		.attributes = stage_attributes,
 		.parse_attribute = stage_attribute,
+		.invalid_child = stage_invalid_child,
 	},
 	{
 		.name = "stageinfo",
@@ -764,6 +821,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stageinfo_free,
 		.parameters = stageinfo_parameters,
 		.parse_parameter = stageinfo_parameter,
+		.invalid_child = stageinfo_invalid_child,
 	},
 	{
 		.name = "environment",
@@ -771,6 +829,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.1",
 		.type = HTYPE_NORMAL,
 		.main = environment_main,
+		.invalid_child = environment_invalid_child,
 	},
 	{
 		.name = "variable",
@@ -784,6 +843,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parse_attribute = variable_attribute,
 		.parse_content = variable_content,
 		.invalid_data = variable_invalid_data,
+		.invalid_child = variable_invalid_child,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -799,6 +859,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stage_free,
 		.attributes = stage_attributes,
 		.parse_attribute = stage_attribute,
+		.invalid_child = stage_invalid_child,
 	},
 	{
 		.name = "then",
@@ -812,6 +873,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stage_free,
 		.attributes = stage_attributes,
 		.parse_attribute = stage_attribute,
+		.invalid_child = stage_invalid_child,
 	},
 	{
 		.name = "else",
@@ -825,6 +887,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = stage_free,
 		.attributes = stage_attributes,
 		.parse_attribute = stage_attribute,
+		.invalid_child = stage_invalid_child,
 	},
 	{
 		.name = "stageinfo",
@@ -837,6 +900,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = stageinfo_data,
 		.parameters = stageinfo_parameters_3_2,
 		.parse_parameter = stageinfo_parameter,
+		.invalid_child = stageinfo_invalid_child,
 	},
 	{
 		.name = "environment",
@@ -844,6 +908,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.2",
 		.type = HTYPE_NORMAL,
 		.main = environment_main,
+		.invalid_child = environment_invalid_child,
 	},
 	{
 		.name = "variable",
@@ -857,6 +922,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parse_attribute = variable_attribute,
 		.parse_content = variable_content,
 		.invalid_data = variable_invalid_data,
+		.invalid_child = variable_invalid_child,
 	},
 #endif
 	{
