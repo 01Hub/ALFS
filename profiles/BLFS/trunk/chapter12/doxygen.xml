@@ -41,8 +41,8 @@
       </stageinfo>
       <remove>src/unistd.h</remove>
       <configure>
-        <param>--prefix=/usr</param>
-        <param>--docdir=/usr/share/doc</param>
+        <param>--prefix /usr</param>
+        <param>--docdir /usr/share/doc</param>
       </configure>
       <make />
       <make>

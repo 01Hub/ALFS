@@ -190,6 +190,10 @@
 <!ENTITY dejagnu-package   "dejagnu-&dejagnu-version;.tar.bz2">
 <!ENTITY dejagnu-directory "dejagnu-&dejagnu-version;">
 
+<!ENTITY gnat-version   "3.15p"> 	 
+<!ENTITY gnat-package   "gcc-&gcc-34-version;-gnat-&gnat-version;-i686-pc-redhat71-gnu-bin.tar.bz2"> 	 
+<!ENTITY gnat-directory "gnat-&gnat-version;-i686-pc-linux-gnu-bin">
+
 <!ENTITY gcc-34-version              "3.4.1">
 <!ENTITY gcc-34-package              "gcc-&gcc-34-version;.tar.bz2">
 <!ENTITY gcc-34-directory            "gcc-&gcc-34-version;">

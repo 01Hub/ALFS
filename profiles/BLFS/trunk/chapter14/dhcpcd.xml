@@ -58,10 +58,8 @@
     </stage>
     <stage name="Configuring dhcpcd">
     <copy>
-      <source>&blfs-config;/etc/sysconfig/network-devices/ifconfig.eth0/dhcpcd
-</source>
-      <destination>/etc/sysconfig/network-devices/ifconfig.eth0/dhcpcd
-</destination>
+      <source>&blfs-config;/etc/sysconfig/network-devices/ifconfig.eth0/dhcpcd</source>
+      <destination>/etc/sysconfig/network-devices/ifconfig.eth0/dhcpcd</destination>
     </copy>
     </stage>
     &bootscripts-clean;

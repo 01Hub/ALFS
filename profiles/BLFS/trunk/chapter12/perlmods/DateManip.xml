@@ -11,7 +11,7 @@
 
 ]>
 <alfs>
-<package name="DateManip" version="&-version;">
+<package name="DateManip" version="&DateManip-version;">
   <stage name="Unpacking.">
     <unpack>
       <archive>&packages_dir;/&DateManip-package;</archive>

@@ -107,26 +107,9 @@
         <destination>&build_dir;/java-build</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <environment>
-          <variable name="JAVA_HOME">/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;</variable>
-	  <variable name="PATH" mode="prepend">/opt/gcc-&gcc-33-version;/bin:</variable>
-          <variable name="PATH" mode="append">:/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;/bin</variable>
-          <variable name="ALT_BOOTDIR">/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;</variable>
-          <variable name="CLASSPATH" />
-          <variable name="CFLAGS" />
-          <variable name="CXXFLAGS" />
-          <variable name="LDFLAGS" />
-          <variable name="ALT_DEVTOOLS_PATH">"/usr/bin"</variable>
-          <variable name="BUILD_NUMBER">blfs-&blfs-version;</variable>
-          <variable name="DEV_ONLY">true</variable>
-          <variable name="ALT_MOZILLA_PATH">&build_dir;/java-build</variable>
-          <variable name="INSANE">true</variable>
-          <variable name="MAKE_VERBOSE">true</variable>
-          <variable name="ALT_CACERTS_FILE">/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;/jre/lib/security/cacerts</variable>
-        </environment>
-        <base>&build_dir;/java-build</base>
+	<base>&build_dir;/java-build</base>
       </stageinfo>
       <patch>
         <param>-N</param>
@@ -163,6 +146,28 @@
         <param>-p1</param>
         <param>-i &packages_dir;/&j2sdk-static-cxx-patch;</param>
       </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <environment>
+          <variable name="JAVA_HOME">/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;</variable>
+	  <variable name="PATH" mode="prepend">/opt/gcc-&gcc-33-version;/bin:</variable>
+          <variable name="PATH" mode="append">:/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;/bin</variable>
+          <variable name="ALT_BOOTDIR">/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;</variable>
+          <variable name="CLASSPATH" />
+          <variable name="CFLAGS" />
+          <variable name="CXXFLAGS" />
+          <variable name="LDFLAGS" />
+          <variable name="ALT_DEVTOOLS_PATH">"/usr/bin"</variable>
+          <variable name="BUILD_NUMBER">blfs-&blfs-version;</variable>
+          <variable name="DEV_ONLY">true</variable>
+          <variable name="ALT_MOZILLA_PATH">&build_dir;/java-build</variable>
+          <variable name="INSANE">true</variable>
+          <variable name="MAKE_VERBOSE">true</variable>
+          <variable name="ALT_CACERTS_FILE">/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;/jre/lib/security/cacerts</variable>
+        </environment>
+        <base>&build_dir;/java-build</base>
+      </stageinfo>
       <make base="&build_dir;/java-build/motif/lib/Xm" />
       <make base="&build_dir;/java-build/control/make" />
       <copy base="&build_dir;/java-build/control/build/linux-i586">

@@ -29,6 +29,26 @@
         <name>&build_dir;/gcc-build</name>
       </mkdir>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&gcc-34-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gcc-34-no-fixincludes-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gcc-34-linkonce-patch;</param>
+      </patch>
+      <search_replace>
+        <file>libiberty/Makefile.in</file>
+        <find>install_to_$(INSTALL_DEST)</find>
+        <replace></replace>
+      </search_replace>
+    </stage>
     <stage name="Installing">
       <stageinfo>
         <environment>
@@ -38,21 +58,6 @@
         </environment>
         <base>&build_dir;/gcc-build</base>
       </stageinfo>
-      <patch base="&build_dir;/&gcc-34-directory;">
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&gcc-34-no-fixincludes-patch;</param>
-      </patch>
-      <patch base="&build_dir;/&gcc-34-directory;">
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&gcc-34-linkonce-patch;</param>
-      </patch>
-      <search_replace base="&build_dir;/&gcc-34-directory;">
-        <file>libiberty/Makefile.in</file>
-        <find>install_to_$(INSTALL_DEST)</find>
-        <replace></replace>
-      </search_replace>
       <configure command="../&gcc-34-directory;/configure">
         <param>--prefix=/usr</param>
         <param>--libexecdir=/usr/lib</param>
@@ -96,7 +101,9 @@
       </link>
       <ownership user="root" group="root">
       	<option>recursive</option>
-	<name>/usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include</name>
+	<name>/usr/lib/gcc/i686-pc-linux-gnu/&gcc-34-version;/include</name>
+	<name>/usr/lib/gcc/i686-pc-linux-gnu/&gcc-34-version;/adalib</name>
+	<name>/usr/lib/gcc/i686-pc-linux-gnu/&gcc-34-version;/adainclude</name>
       </ownership>
     </stage>
     <stage name="Cleanup">
