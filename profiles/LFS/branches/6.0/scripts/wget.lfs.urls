@@ -57,6 +57,8 @@ ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/vim/vim-6.3.t
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/vim/vim-6.3-lang.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/zlib/zlib-1.2.1.tar.bz2
 
+http://downloads.linuxfromscratch.org/udev-config-2.permissions
+http://downloads.linuxfromscratch.org/udev-config-1.rules
 http://www.linuxfromscratch.org/patches/lfs/6.0/bash-3.0-display_wrap-1.patch
 http://www.linuxfromscratch.org/patches/lfs/6.0/coreutils-5.2.1-suppress_uptime_kill_su-1.patch
 http://www.linuxfromscratch.org/patches/lfs/6.0/coreutils-5.2.1-uname-2.patch
