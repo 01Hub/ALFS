@@ -26,12 +26,17 @@
 #include <unistd.h>
 #include <errno.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME owner
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
 #include "handlers.h"
 #include "backend.h"
-#include "config.h"
 
 
 #define El_owner_user(el) alloc_trimmed_param_value("user", el)
@@ -39,16 +44,16 @@
 #define El_owner_targets(el) alloc_trimmed_param_value("name", el)
 
 
-char handler_name[] = "owner";
-char handler_description[] = "Change ownership";
-char *handler_syntax_versions[] = { "2.0", NULL };
-// char *handler_attributes[] = { NULL };
-char *handler_parameters[] =
+char HANDLER_SYMBOL(name)[] = "owner";
+char HANDLER_SYMBOL(description)[] = "Change ownership";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { NULL };
+char *HANDLER_SYMBOL(parameters)[] =
 { "options", "base", "user", "group", "name", NULL };
-int handler_action = 1;
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status = 0;
 	int recursive = option_exists("recursive", el);

@@ -26,27 +26,32 @@
 #include <unistd.h>
 #include <errno.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME permissions
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
 #include "handlers.h"
 #include "backend.h"
-#include "config.h"
 
 
 #define El_permissions_mode(el) alloc_trimmed_param_value("mode", el)
 #define El_permissions_targets(el) alloc_trimmed_param_value("name", el)
 
 
-char handler_name[] = "permissions";
-char handler_description[] = "Change permissions";
-char *handler_syntax_versions[] = { "2.0", NULL };
-// char *handler_attributes[] = { NULL };
-char *handler_parameters[] = { "base", "options", "mode", "name", NULL };
-int handler_action = 1;
+char HANDLER_SYMBOL(name)[] = "permissions";
+char HANDLER_SYMBOL(description)[] = "Change permissions";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { NULL };
+char *HANDLER_SYMBOL(parameters)[] = { "base", "options", "mode", "name", NULL };
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status = 0;
 	int recursive = option_exists("recursive", el);

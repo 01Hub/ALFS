@@ -26,23 +26,28 @@
 #include <unistd.h>
 #include <errno.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME configure
+#include <nALFS.h>
 #include "utility.h"
 #include "parser.h"
 #include "win.h"
 #include "backend.h"
 #include "handlers.h"
-#include "config.h"
 
 
-char handler_name[] = "configure";
-char handler_description[] = "Configure";
-char *handler_syntax_versions[] = { "2.0", NULL };
-// char *handler_attributes[] = { NULL };
-char *handler_parameters[] = { "base", "command", "param", NULL };
-int handler_action = 1;
+char HANDLER_SYMBOL(name)[] = "configure";
+char HANDLER_SYMBOL(description)[] = "Configure";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { NULL };
+char *HANDLER_SYMBOL(parameters)[] = { "base", "command", "param", NULL };
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status;
 	char *c, *command = NULL;

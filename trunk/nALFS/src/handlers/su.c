@@ -33,12 +33,17 @@
 #include <grp.h>
 #include <dlfcn.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME su
+#include <nALFS.h>
 #include "parser.h"
 #include "win.h"
-#include "nalfs.h"
+#include "nalfs-core.h"
 #include "backend.h"
 #include "utility.h"
-#include "config.h"
 
 
 static INLINE int set_supplementary_groups(const char *user)
@@ -134,15 +139,15 @@ static INLINE int change_to_user(const char *user)
 }
 
 
-char handler_name[] = "su";
-char handler_description[] = "Change user ID";
-char *handler_syntax_versions[] = { "2.0", NULL };
-// char *handler_attributes[] = { "user", NULL };
-char *handler_parameters[] = { NULL };
-int handler_action = 0;
+char HANDLER_SYMBOL(name)[] = "su";
+char HANDLER_SYMBOL(description)[] = "Change user ID";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "user", NULL };
+char *HANDLER_SYMBOL(parameters)[] = { NULL };
+int HANDLER_SYMBOL(action) = 0;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status;
 	pid_t su_pid, got_pid;

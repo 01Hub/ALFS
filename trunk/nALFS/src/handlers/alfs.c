@@ -23,18 +23,24 @@
 
 #include <stdlib.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME alfs
+#include <nALFS.h>
 #include "backend.h"
 
 
-char handler_name[] = "alfs";
-char handler_description[] = "ALFS profile";
-char *handler_syntax_versions[] = { "2.0", NULL };
-// char *handler_attributes[] = { "version", NULL };
-char *handler_parameters[] = { NULL };
-int handler_action = 0;
+char HANDLER_SYMBOL(name)[] = "alfs";
+char HANDLER_SYMBOL(description)[] = "ALFS profile";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "version", NULL };
+char *HANDLER_SYMBOL(parameters)[] = { NULL };
+int HANDLER_SYMBOL(action) = 0;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	return execute_children(el);
 }

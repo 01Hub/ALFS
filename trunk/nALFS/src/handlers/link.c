@@ -25,27 +25,32 @@
 #include <string.h>
 #include <errno.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME link
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
 #include "handlers.h"
 #include "backend.h"
-#include "config.h"
 
 
 #define El_link_target(el) alloc_trimmed_param_value("target", el)
 #define El_link_name(el) alloc_trimmed_param_value("name", el)
 
 
-char handler_name[] = "link";
-char handler_description[] = "Link";
-char *handler_syntax_versions[] = { "2.0", NULL };
-// char *handler_attributes[] = { "type", NULL };
-char *handler_parameters[] = { "options", "base", "target", "name", NULL };
-int handler_action = 1;
+char HANDLER_SYMBOL(name)[] = "link";
+char HANDLER_SYMBOL(description)[] = "Link";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "type", NULL };
+char *HANDLER_SYMBOL(parameters)[] = { "options", "base", "target", "name", NULL };
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status;
 	int force = option_exists("force", el);

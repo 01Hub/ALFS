@@ -26,23 +26,28 @@
 #include <unistd.h>
 #include <errno.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME patch
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
 #include "handlers.h"
 #include "backend.h"
-#include "config.h"
 
 
-char handler_name[] = "patch";
-char handler_description[] = "Patch";
-char *handler_syntax_versions[] = { "2.0", NULL };
-// char *handler_attributes[] = { NULL };
-char *handler_parameters[] = { "base", "param", NULL };
-int handler_action = 1;
+char HANDLER_SYMBOL(name)[] = "patch";
+char HANDLER_SYMBOL(description)[] = "Patch";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { NULL };
+char *HANDLER_SYMBOL(parameters)[] = { "base", "param", NULL };
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status;
 	char *base;

@@ -28,11 +28,16 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME unpack
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
 #include "backend.h"
-#include "config.h"
 
 
 #define El_unpack_archive(el) alloc_trimmed_param_value("archive", el)
@@ -65,15 +70,15 @@ static INLINE char *alloc_basename(const char *archive)
 }
 
 
-char handler_name[] = "unpack";
-char handler_description[] = "Unpack";
-char *handler_syntax_versions[] = { "2.0", NULL };
-// char *handler_attributes[] = { NULL };
-char *handler_parameters[] = { "archive", "destination", NULL };
-int handler_action = 1;
+char HANDLER_SYMBOL(name)[] = "unpack";
+char HANDLER_SYMBOL(description)[] = "Unpack";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { NULL };
+char *HANDLER_SYMBOL(parameters)[] = { "archive", "destination", NULL };
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status = 0;
 	char *base_name;

@@ -23,19 +23,25 @@
 
 #include <stdlib.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME postbuild
+#include <nALFS.h>
 #include "backend.h"
 #include "logging.h"
 
 
-char handler_name[] = "postbuild";
-char handler_description[] = "Post building";
-char *handler_syntax_versions[] = { "2.0", NULL };
-// char *handler_attributes[] = { NULL };
-char *handler_parameters[] = { NULL };
-int handler_action = 0;
+char HANDLER_SYMBOL(name)[] = "postbuild";
+char HANDLER_SYMBOL(description)[] = "Post building";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { NULL };
+char *HANDLER_SYMBOL(parameters)[] = { NULL };
+int HANDLER_SYMBOL(action) = 0;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int i;
 

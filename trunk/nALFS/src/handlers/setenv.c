@@ -26,10 +26,15 @@
 #include <unistd.h>
 #include <errno.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME setenv
+#include <nALFS.h>
 #include "win.h"
 #include "parser.h"
 #include "utility.h"
-#include "config.h"
 
 
 #define El_setenv_value(el) raw_param_value("value", el)
@@ -99,15 +104,15 @@ static INLINE int do_setenv(
 }
 
 
-char handler_name[] = "setenv";
-char handler_description[] = "Set environment";
-char *handler_syntax_versions[] = { "2.0", "3.0", NULL };
-// char *handler_attributes[] = { "mode", NULL };
-char *handler_parameters[] = { "variable", "value", NULL };
-int handler_action = 1;
+char HANDLER_SYMBOL(name)[] = "setenv";
+char HANDLER_SYMBOL(description)[] = "Set environment";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", "3.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "mode", NULL };
+char *HANDLER_SYMBOL(parameters)[] = { "variable", "value", NULL };
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int i;
 	char *variable;
