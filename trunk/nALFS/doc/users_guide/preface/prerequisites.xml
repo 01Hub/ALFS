@@ -2,15 +2,80 @@
 <?dbhtml filename="prerequisites.html" dir="preface"?>
 <title>Prerequisites</title>
 
-<para>&book-product; requires a functioning Linux system with the following
-libraries already installed and configured:</para>
+<para>&book-product; v&nalfs-version; requires a functioning Linux system with
+the following libraries and programs already installed and configured.</para>
+
+<sect2>
+<title>Ncurses</title>
+
+<para>Any recent version should work. If for some reason your system does not
+have <filename>ncurses</filename> installed, the <acronym>LFS</acronym> book
+provides an excellent installation procedure at
+<ulink url="&http-root;/lfs/view/cvs/chapter06/ncurses.html">&http-root;/lfs/view/cvs/chapter06/ncurses.html</ulink>.
+</para>
+
+</sect2>
+
+<sect2>
+<title>libXML2</title>
+
+<para>Any version greater than v2.5.1 should work.  One primary feature you
+are looking for is support for <command>XInclude</command>. If for some reason
+your system does not have <filename>libXML2</filename> installed or
+<command>XInclude</command> compiled in, the <acronym>BLFS</acronym> book
+provides an excellent installation procedure at
+<ulink url="&http-root;/blfs/view/cvs/general/libxml2.html">&http-root;/blfs/view/cvs/general/libxml2.html</ulink>.
+</para>
+
+</sect2>
+
+<sect2>
+<title>Curl</title>
+
+<note><para>This package is optional.</para></note>
+
+<para>Any version greater than v7.10 should work. If for some reason your
+system does not have <filename>Curl</filename> installed, the
+<acronym>BLFS</acronym> book provides an excellent installation procedure at
+<ulink url="&http-root;/blfs/view/cvs/basicnet/curl.html">&http-root;/blfs/view/cvs/basicnet/curl.html</ulink>.
+</para>
+
+</sect2>
+
+<sect2>
+<title>OpenSSL</title>
+
+<note><para>This package is optional.</para></note>
+
+<para>Any version greater than v0.9.7 should work. If for some reason your
+system does not have <filename>OpenSSL</filename> installed, the
+<acronym>BLFS</acronym> book provides an excellent installation procedure at
+<ulink url="&http-root;/blfs/view/cvs/general/openssl.html">&http-root;/blfs/view/cvs/general/openssl.html</ulink>.
+</para>
+
+</sect2>
+
+<sect2>
+<title>Other</title>
+
+<para>Of course, any system needs to have the following packages installed for
+the <acronym>XML</acronym> handlers to work and to even get the package
+installed.  Links to install procedures are provided, just in case.</para>
 
 <itemizedlist>
 
-<listitem><para>libncurses</para></listitem>
-
-<listitem><para>libXML2</para></listitem>
+<listitem><filename>Bzip2</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/bzip2.html">&http-root;/lfs/view/cvs/chapter06/bzip2.html</ulink><listitem>
+<listitem><filename>Coreutils</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/coreutils.html">&http-root;/lfs/view/cvs/chapter06/coreutils.html</ulink><listitem>
+<listitem><filename>Findutils</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/findutils.html">&http-root;/lfs/view/cvs/chapter06/findutils.html</ulink><listitem>
+<listitem><filename>Vim</filename> or another editor &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/vim.html">&http-root;/lfs/view/cvs/chapter06/vim.html</ulink><listitem>
+<listitem><filename>Libtool</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/libtool.html">&http-root;/lfs/view/cvs/chapter06/libtool.html</ulink><listitem>
+<listitem><filename>Make</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/make.html">&http-root;/lfs/view/cvs/chapter06/make.html</ulink><listitem>
+<listitem><filename>Patch</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/patch.html">&http-root;/lfs/view/cvs/chapter06/patch.html</ulink><listitem>
+<listitem><filename>Tar</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/tar.html">&http-root;/lfs/view/cvs/chapter06/tar.html</ulink><listitem>
+<listitem><filename>Util-linux</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/util-linux.html">&http-root;/lfs/view/cvs/chapter06/util-linux.html</ulink><listitem>
 
 </itemizedlist>
+
+</sect2>
 
 </sect1>

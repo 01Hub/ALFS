@@ -2,9 +2,12 @@
 <?dbhtml filename="changelog.html" dir="chapter00"?>
 <title>ChangeLog</title>
 
-<para>&version; - &releasedate;</para>
+<para>&version; &emdash; &releasedate;</para>
 
 <itemizedlist>
+
+<listitem><para>October 9th, 2003 [jwrober]: Filled in the prerequisites
+page.</para></listitem>
 
 <listitem><para>October 7th, 2003 [jwrober]: Added a quick start page from the
 README and basic prerequisites.</para></listitem>
