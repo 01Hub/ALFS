@@ -17,6 +17,9 @@
         <name>db</name>
       </requires>
       <utilizes>
+	<name>cyrus-sasl</name>
+      </utilizes>
+      <utilizes>
         <name>openssl</name>
       </utilizes>
       <utilizes>
@@ -26,10 +29,7 @@
         <name>tcpwrappers</name>
       </utilizes>
       <utilizes>
-        <name>readline</name>
-      </utilizes>
-      <utilizes>
-        <name>heimdal</name>
+        <name>&krb-impl;</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -46,9 +46,9 @@
         <param>--prefix=/usr</param>
         <param>--libexecdir=/usr/sbin</param>
         <param>--sysconfdir=/etc</param>
-        <param>--localstatedir=/var/lib</param>
-        <param>--disable-debug</param>
+        <param>--localstatedir=/srv/ldap</param>
         <param>--enable-ldbm</param>
+        <param>--disable-debug</param>
       </configure>
       <make>
         <param>depend</param>
@@ -60,6 +60,9 @@
       <make>
         <param>install</param>
       </make>
+      <permissions mode="755">
+	<name>/usr/lib/libl*-2.2.so.7.0.10</name>
+      </permissions>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&openldap-directory;</remove>

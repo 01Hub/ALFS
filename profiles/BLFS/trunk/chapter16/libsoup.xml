@@ -16,14 +16,11 @@
       <requires>
         <name>glib2</name>
       </requires>
+      <requires>
+	<name>libxml2</name>
+      </requires>
       <utilizes>
         <name>gtk-doc</name>
-      </utilizes>
-      <utilizes>
-        <name>openssl</name>
-      </utilizes>
-      <utilizes>
-        <name>gnutls</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -38,7 +35,6 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
-        <param>--libexecdir=/usr/sbin</param>
       </configure>
       <make />
       <make>

@@ -19,6 +19,21 @@
       <requires>
         <name>db</name>
       </requires>
+      <utilizes>
+	<name>pcre</name>
+      </utilizes>
+      <utilizes>
+	<name>mysql</name>
+      </utilizes>
+      <utilizes>
+	<name>postgresql</name>
+      </utilizes>
+      <utilizes>
+	<name>openldap</name>
+      </utilizes>
+      <utilizes>
+	<name>cyrus-sasl</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -28,27 +43,24 @@
     </stage>
     &bootscripts-get;
     <stage name="Creating user and group">
-      <execute command="groupadd">
-        <param>-f</param>
+      <execute command="getent group postfix &gt; /dev/null || groupadd">
         <param>postfix</param>
       </execute>
-      <execute command="groupadd">
-        <param>-f</param>
+      <execute command="getent group postdrop &gt; /dev/null || groupadd">
         <param>postdrop</param>
       </execute>
-      <execute command="groupadd">
-        <param>-f</param>
+      <execute command="getent group nogroup &gt; /dev/null || groupadd">
         <param>-g 65534</param>
         <param>nogroup</param>
       </execute>
-      <execute command="grep -q ^postfix /etc/passwd || useradd">
+      <execute command="getent passwd postfix &gt; /dev/null || useradd">
         <param>-c postfix</param>
         <param>-d /dev/null</param>
         <param>-g postfix</param>
         <param>-s /bin/false</param>
         <param>postfix</param>
       </execute>
-      <execute command="grep -q ^nobody /etc/passwd || useradd">
+      <execute command="getent passwd nobody &gt; /dev/null || useradd">
         <param>-c nobody</param>
         <param>-d /home</param>
         <param>-g nogroup</param>

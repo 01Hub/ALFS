@@ -1,16 +1,20 @@
 <!--************* packages for chapter 24 **************-->
 
-<!ENTITY apache-version   "2.0.49">
-<!ENTITY apache-package   "httpd-&apache-version;.tar.gz">
+<!ENTITY apache-version   "2.0.52">
+<!ENTITY apache-package   "httpd-&apache-version;.tar.bz2">
 <!ENTITY apache-directory "httpd-&apache-version;">
 
-<!ENTITY apache-patch     "httpd-&apache-version;-config.patch">
+<!ENTITY apache-patch     "httpd-&apache-version;-config-1.patch">
 
-<!ENTITY php-version   "4.3.6">
+<!ENTITY php-version   "5.0.2">
 <!ENTITY php-package   "php-&php-version;.tar.bz2">
 <!ENTITY php-directory "php-&php-version;">
 
-<!ENTITY proftpd-version   "1.2.9">
+<!ENTITY proftpd-version   "1.2.10">
 <!ENTITY proftpd-package   "proftpd-&proftpd-version;.tar.bz2">
 <!ENTITY proftpd-directory "proftpd-&proftpd-version;">
+
+<!ENTITY vsftpd-version "2.0.1">
+<!ENTITY vsftpd-package "vsftpd-&vsftpd-version;.tar.gz">
+<!ENTITY vsftpd-directory "vsftpd-&vsftpd-version;">
 

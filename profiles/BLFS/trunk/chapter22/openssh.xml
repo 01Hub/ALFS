@@ -22,6 +22,21 @@
       <utilizes>
         <name>linuxpam</name>
       </utilizes>
+      <utilizes>
+	<name>tcpwrappers</name>
+      </utilizes>
+      <utilizes>
+	<name>&ximpl;</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>j2sdk</name>
+      </utilizes>
+      <utilizes>
+	<name>net-tools</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -31,11 +46,10 @@
     </stage>
     &bootscripts-get;
     <stage name="Creating user and group">
-      <execute command="groupadd">
-        <param>-f</param>
+      <execute command="getent group sshd &gt; /dev/null || groupadd">
         <param>sshd</param>
       </execute>
-      <execute command="grep -q ^sshd /etc/passwd || useradd">
+      <execute command="getent passwd sshd &gt; /dev/null || useradd">
         <param>-c sshd</param>
         <param>-d /var/empty</param>
         <param>-g sshd</param>

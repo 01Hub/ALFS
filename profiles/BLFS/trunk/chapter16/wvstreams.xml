@@ -16,6 +16,33 @@
       <requires>
         <name>openssl</name>
       </requires>
+      <utilizes>
+	<name>libfam</name>
+      </utilizes>
+      <utilizes>
+	<name>db</name>
+      </utilizes>
+      <utilizes>
+	<name>gdbm</name>
+      </utilizes>
+      <utilizes>
+	<name>libogg</name>
+      </utilizes>
+      <utilizes>
+	<name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+	<name>tcl</name>
+      </utilizes>
+      <utilizes>
+	<name>qt</name>
+      </utilizes>
+      <utilizes>
+	<name>speex</name>
+      </utilizes>
+      <utilizes>
+	<name>libvorbis</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -30,26 +57,22 @@
       <patch>
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&wvstreams-wvcrypto-patch;</param>
-      </patch>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&wvstreams-wvresolver-patch;</param>
+        <param>-i &packages_dir;/&wvstreams-tcl-patch;</param>
       </patch>
     </stage>
     <stage name="Installing">
     <stageinfo>
       <base>&build_dir;/&wvstreams-directory;</base>
     </stageinfo>
+    <configure>
+      <param>--prefix=/usr</param>
+    </configure>
+    <make />
     <make>
-      <param>PREFIX=/usr</param>
-      <param>LDFLAGS="-lcrypt"</param>
-    </make>
-    <make>
-      <param>PREFIX=/usr</param>
       <param>install</param>
-    </make>&ldconfig;</stage>
+    </make>
+    &ldconfig;
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&wvstreams-directory;</remove>
     </stage>

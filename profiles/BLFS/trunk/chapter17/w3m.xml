@@ -17,6 +17,9 @@
         <name>gc</name>
       </requires>
       <utilizes>
+	<name>pkgconfig</name>
+      </utilizes>
+      <utilizes>
         <name>gpm</name>
       </utilizes>
       <utilizes>

@@ -22,6 +22,11 @@
       <stageinfo>
         <base>&build_dir;/&whois-directory;</base>
       </stageinfo>
+      <search_replace>
+	<file>config.h</file>
+	<find>4.6.20</find>
+	<replace>4.6.21</replace>
+      </search_replace>
       <make />
       <make>
         <param>prefix=/usr</param>

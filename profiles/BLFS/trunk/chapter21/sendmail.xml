@@ -22,6 +22,24 @@
       <requires>
         <name>procmail</name>
       </requires>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>openldap</name>
+      </utilizes>
+      <utilizes>
+	<name>tcpwrappers</name>
+      </utilizes>
+      <utilizes>
+	<name>pcre</name>
+      </utilizes>
+      <utilizes>
+	<name>cyrus-sasl</name>
+      </utilizes>
+      <utilizes>
+	<name>&ghostscript-impl;</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking.">
       <unpack>
@@ -31,15 +49,13 @@
     </stage>
     &bootscripts-get;
     <stage name="Creating user and group">
-      <execute command="groupadd">
-        <param>-f</param>
+      <execute command="getent group smmsp &gt; /dev/null || groupadd">
         <param>smmsp</param>
       </execute>
-      <execute command="groupadd">
-        <param>-f</param>
+      <execute command="getent group mail &gt; /dev/null || groupadd">
         <param>mail</param>
       </execute>
-      <execute command="grep -q ^smmsp /etc/passwd || useradd">
+      <execute command="getent passwd smmsp &gt; /dev/null || useradd">
         <param>-g smmsp</param>
         <param>-G mail</param>
         <param>-s /bin/false</param>

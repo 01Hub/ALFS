@@ -185,6 +185,7 @@
     <stage name="Chapter 18 (Basic Networking Programs)">
       <xi:include href="chapter18/ncftp.xml" />
       <xi:include href="chapter18/cvs.xml" />
+      <xi:include href="chapter18/subversion.xml" />
       <xi:include href="chapter18/wget.xml" />
       <xi:include href="chapter18/tcpwrappers.xml" />
       <xi:include href="chapter18/portmap.xml" />
@@ -192,12 +193,14 @@
       <xi:include href="chapter18/nfs-utils.xml" />
       <xi:include href="chapter18/ncpfs.xml" />
       <xi:include href="chapter18/ntp.xml" />
+      <xi:include href="chapter18/net-tools.xml" />
     </stage>
     <stage name="Chapter 19 (Basic Networking Utilities)">
       <xi:include href="chapter19/traceroute.xml" />
       <xi:include href="chapter19/nmap.xml" />
       <xi:include href="chapter19/whois.xml" />
       <xi:include href="chapter19/bind-utils.xml" />
+      <xi:include href="chapter19/ethereal.xml" />
     </stage>
     <stage name="Chapter 20 (Mail/News Clients)">
       <xi:include href="chapter20/nail.xml" />
@@ -234,6 +237,7 @@
       <xi:include href="chapter24/apache.xml" />
       <xi:include href="chapter24/php.xml" />
       <xi:include href="chapter24/proftpd.xml" />
+      <xi:include href="chapter24/vsftpd.xml" />
     </stage>
     <stage name="Chapter 25 (X Window Environment)">
       <xi:include href="chapter25/xorg.xml" />

@@ -1,6 +1,8 @@
-http://archive.apache.org/dist/httpd/httpd-2.0.49.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/5.1/httpd-2.0.49-config.patch
+http://www.apache.org/dist/httpd/httpd-2.0.52.tar.bz2
+http://www.linuxfromscratch.org/blfs/downloads/svn/httpd-2.0.52-config-1.patch
 
-ftp://ftp.isu.edu.tw/pub/Unix/Web/PHP/distributions/php-4.3.6.tar.bz2
+http://us2.php.net/distributions/php-5.0.2.tar.bz2
 
-ftp://ftp.proftpd.org/distrib/source/proftpd-1.2.9.tar.bz2
+ftp://ftp.proftpd.org/distrib/source/proftpd-1.2.10.tar.bz2
+
+ftp://vsftpd.beasts.org/users/cevans/vsftpd-2.0.1.tar.gz

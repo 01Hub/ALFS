@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch18.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+<package name="subversion" version="&subversion-version;">
+  <packageinfo>
+    <requires>
+      <name>libxml2</name>
+    </requires>
+    <utilizes>
+      <name>expat</name>
+    </utilizes>
+    <utilizes>
+      <name>pkgconfig</name>
+    </utilizes>
+    <utilizes>
+      <name>db</name>
+    </utilizes>
+    <utilizes>
+      <name>gdbm</name>
+    </utilizes>
+    <utilizes>
+      <name>python</name>
+    </utilizes>
+    <utilizes>
+      <name>apache</name>
+    </utilizes>
+    <utilizes>
+      <name>j2sdk</name>
+    </utilizes>
+    <utilizes>
+      <name>openssl</name>
+    </utilizes>
+    <utilizes>
+      <name>openssh</name>
+    </utilizes>
+    <utilizes>
+      <name>&krb-impl;</name>
+    </utilizes>
+    <utilizes>
+      <name>xinetd</name>
+    </utilizes>
+  </packageinfo>
+  <stage name="Unpacking.">
+    <unpack>
+      <archive>&packages_dir;/&subversion-package;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+  </stage>
+  <stage name="Installing.">
+    <stageinfo>
+      <base>&build_dir;/&subversion-directory;</base>
+    </stageinfo>
+    <configure>
+      <param>--prefix=/usr</param>
+    </configure>
+    <make />
+    <make>
+      <param>install</param>
+    </make>
+  </stage>
+  <stage name="Cleanup.">
+    <remove>&build_dir;/&subversion-directory;</remove>
+  </stage>
+</package>
+</alfs>

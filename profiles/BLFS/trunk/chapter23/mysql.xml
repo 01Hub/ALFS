@@ -17,13 +17,22 @@
   <package name="mysql" version="&mysql-version;">
     <packageinfo>
       <utilizes>
-        <name>readline</name>
-      </utilizes>
-      <utilizes>
         <name>openssl</name>
       </utilizes>
       <utilizes>
         <name>tcpwrappers</name>
+      </utilizes>
+      <utilizes>
+	<name>which</name>
+      </utilizes>
+      <utilizes>
+	<name>orbit</name>
+      </utilizes>
+      <utilizes>
+	<name>doxygen</name>
+      </utilizes>
+      <utilizes>
+	<name>tex</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -34,11 +43,10 @@
     </stage>
     &bootscripts-get;
     <stage name="Creating user and group">
-      <execute command="groupadd">
-        <param>-f</param>
+      <execute command="getent group mysql &gt; /dev/null || groupadd">
         <param>mysql</param>
       </execute>
-      <execute command="grep -q ^mysql /etc/passwd || useradd">
+      <execute command="getent passwd mysql &gt; /dev/null || useradd">
         <param>-c mysql</param>
         <param>-d /dev/null</param>
         <param>-g mysql</param>
@@ -51,15 +59,19 @@
         <base>&build_dir;/&mysql-directory;</base>
       </stageinfo>
       <configure>
+	<prefix>CPPFLAGS="-D_GNU_SOURCE"</prefix>
         <param>--prefix=/usr</param>
         <param>--sysconfdir=/etc</param>
         <param>--libexecdir=/usr/sbin</param>
-        <param>--localstatedir=/var/lib/mysql</param>
+        <param>--localstatedir=/srv/mysql</param>
         <param>--enable-thread-safe-client</param>
+	<param>--enable-assembler</param>
         <param>--enable-local-infile</param>
-        <param>--enable-assembler</param>
+        <param>--with-named-thread-libs=-lpthread</param>
+	<param>--with-unix-socket-path=/var/run/mysql/mysql.sock</param>
         <param>--without-debug</param>
         <param>--without-bench</param>
+	<param>--without-readline</param>
       </configure>
       <make>
         <param>testdir=/usr/lib/mysql/mysql-test</param>
@@ -75,25 +87,26 @@
         <source>/usr/share/mysql/my-medium.cnf</source>
         <destination>/etc/my.cnf</destination>
       </copy>
-      <execute command="mysql_install_db" />
-      <ownership user="mysql" group="mysql">
-        <option>recursive</option>
-        <name>/var/lib/mysql</name>
-      </ownership>
-      <!--
-      <execute command="safe_mysqld 2>&real-amp;1 >/dev/null &real-amp;" />
-      <textdump>
-	<file>/tmp/mysql.script</file>
+      <execute command="mysql_install_db --user=mysql" />
+      <mkdir>
+	<name>/var/run/mysql</name>
+      </mkdir>
+      <ownership user="mysql">
+	<name>/var/run/mysql</name>
+     </ownership>
+<!--
+     <execute command="mysqld_safe 2>&real-amp;1 >/dev/null &real-amp;" />
+     <textdump>
+      <file>/tmp/mysql.script</file>
 	<content>
-	  =UPDATE user SET password=password(&mysql-password;) WHERE user='root';
+	  =UPDATE user SET password=password(&mysql-root-pass;) WHERE user='root';
 	  =FLUSH PRIVILEGES;
 	  =EXIT;
 	</content>
       </textdump>
       <execute command="mysql -uroot mysql &lt; /tmp/mysql.script" />
       <remove>/tmp/mysql.script</remove>
-      <execute command="kill `pidof -x safe_mysqld mysqld`" />
-      -->
+      <execute command="kill `pidof -x mysqld_safe mysqld`" />-->
     </stage>
     <stage name="Installing bootscript and configuration">
       <stageinfo>

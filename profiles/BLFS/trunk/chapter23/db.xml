@@ -12,6 +12,14 @@
 ]>
 <alfs>
   <package name="db" version="&db-version;">
+    <packageinfo>
+      <utilizes>
+	<name>tcl</name>
+      </utilizes>
+      <utilizes>
+	<name>j2sdk</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&db-package;</archive>

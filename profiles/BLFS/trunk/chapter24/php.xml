@@ -90,6 +90,7 @@
         <param>--with-iconv</param>
         <param>--with-mysql=/usr</param>
         <param>--with-ncurses</param>
+	<param>--with-readline</param>
       </configure>
       <make />
       <make>

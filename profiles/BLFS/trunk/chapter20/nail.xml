@@ -16,6 +16,9 @@
       <utilizes>
         <name>openssl</name>
       </utilizes>
+      <utilizes>
+	<name>&mta-impl;</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -27,11 +30,12 @@
       <stageinfo>
         <base>&build_dir;/&nail-directory;</base>
       </stageinfo>
-      <configure>
-        <param>--prefix=/usr</param>
-      </configure>
-      <make />
       <make>
+	<param>SENDMAIL=/usr/sbin/sendmail</param>
+      </make>
+      <make>
+	<param>PREFIX=/usr</param>
+	<param>UCBINSTALL=/usr/bin/install</param>
         <param>install</param>
       </make>
       <link>

@@ -9,6 +9,9 @@
 %package_entities;
 %config_entities;
 
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
 ]>
 <alfs>
   <package name="rsync" version="&rsync-version;">
@@ -18,12 +21,12 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    &bootscripts-get;
     <stage name="Creating user and group">
-      <execute command="groupadd">
-        <param>-f</param>
+      <execute command="getent group rsyncd &gt; /dev/null || groupadd">
         <param>rsyncd</param>
       </execute>
-      <execute command="grep -q ^rsyncd /etc/passwd || useradd">
+      <execute command="getent passwd rsyncd &gt; /dev/null || useradd">
         <param>-c rsyncd</param>
         <param>-d /home/rsync</param>
         <param>-g rsyncd</param>
@@ -43,7 +46,7 @@
         <param>install</param>
       </make>
       <textdump base="/etc">
-        <file>/etc/rsyncd.conf</file>
+        <file>rsyncd.conf</file>
         <content>
 	  =# This is a basic rsync configuration file
 	  =# It exports a single module without user authentication.
@@ -61,9 +64,17 @@
 	</content>
       </textdump>
     </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-rsyncd</param>
+      </make>
+    </stage>    
+    &bootscripts-clean;
     <stage name="Cleanup">
       <remove>&build_dir;/&rsync-directory;</remove>
-      <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
     </stage>
   </package>
 </alfs>

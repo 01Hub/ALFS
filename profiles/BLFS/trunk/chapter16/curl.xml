@@ -14,6 +14,9 @@
   <package name="curl" version="&curl-version;">
     <packageinfo>
       <utilizes>
+	<name>pkgconfig</name>
+      </utilizes>
+      <utilizes>
         <name>openssl</name>
       </utilizes>
       <utilizes>

@@ -1,6 +1,6 @@
 <!--************* packages for chapter 17 *************-->
 
-<!ENTITY links-version   "2.1pre14">
+<!ENTITY links-version   "2.1pre15">
 <!ENTITY links-package   "links-&links-version;.tar.bz2">
 <!ENTITY links-directory "links-&links-version;">
 
@@ -8,6 +8,6 @@
 <!ENTITY lynx-package   "lynx&lynx-version;.tar.bz2">
 <!ENTITY lynx-directory "lynx2-8-5">
 
-<!ENTITY w3m-version   "0.4.2">
+<!ENTITY w3m-version   "0.5.1">
 <!ENTITY w3m-package   "w3m-&w3m-version;.tar.gz">
 <!ENTITY w3m-directory "w3m-&w3m-version;">

@@ -23,15 +23,25 @@
     </stage>
     &bootscripts-get;
     <stage name="Creating user and group">
-      <execute command="groupadd">
-        <param>-f</param>
+      <execute command="getent group proftpd &gt; /dev/null || groupadd">
         <param>proftpd</param>
       </execute>
-      <execute command="grep -q ^proftpd /etc/passwd || useradd">
+      <link>
+	<option>force</option>
+	<target>false</target>
+	<name>/bin/proftpdonly</name>
+      </link>
+      <textdump mode="append">
+	<file>/etc/shells</file>
+	<content>
+	  =/bin/proftpdonly
+	</content>
+      </textdump>
+      <execute command="getent passwd proftpd &gt; /dev/null || useradd">
         <param>-c proftpd</param>
         <param>-d /home/ftp</param>
         <param>-g proftpd</param>
-        <param>-s /bin/false</param>
+        <param>-s /bin/proftpdonly</param>
         <param>proftpd</param>
       </execute>
     </stage>
@@ -44,7 +54,7 @@
         <prefix>install_group=proftpd</prefix>
         <param>--prefix=/usr</param>
         <param>--sysconfdir=/etc</param>
-        <param>--localstatedir=/var</param>
+        <param>--localstatedir=/var/run</param>
       </configure>
       <make />
       <make>
