@@ -218,6 +218,9 @@
 		<file>/etc/lfs-release</file>
 		<content>=&LFS-version;</content>
 	</textdump>
+
+	&c9-libxml2;
+	&c9-nALFS;
 </stage>
 
 <stage name="Finishing Up">
