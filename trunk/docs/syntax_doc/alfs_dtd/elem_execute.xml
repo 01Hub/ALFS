@@ -55,8 +55,8 @@ command itself.</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Executing 'umount'
-<command>umount</command></userinput></screen>
+<screen>echo Executing 'umount'
+<command>umount</command></screen>
 
 </sect2>
 
@@ -71,8 +71,8 @@ command itself.</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Executing 'mount'
-<command>mount /mount/lfs</command></userinput></screen>
+<screen>echo Executing 'mount'
+<command>mount /mount/lfs</command></screen>
 
 </sect2>
 

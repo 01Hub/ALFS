@@ -1,150 +1,151 @@
-DIV.navheader TABLE
+div.navheader table
 {
-    FONT-WEIGHT: normal;
-    FONT-SIZE: 8.5pt;
-    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
-    TEXT-ALIGN: left
+    font-weight: normal;
+    font-size: 8.5pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
 }
-DIV.navfooter TABLE
+div.navfooter table
 {
-    FONT-WEIGHT: normal;
-    FONT-SIZE: 8.5pt;
-    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
-    TEXT-ALIGN: left
+    font-weight: normal;
+    font-size: 8.5pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
 }
-DIV.navheader IMG
+div.navheader img
 {
-    BORDER-RIGHT: medium none;
-    BORDER-TOP: medium none;
-    BORDER-LEFT: medium none;
-    BORDER-BOTTOM: medium none
+    border-right: medium none;
+    border-top: medium none;
+    border-left: medium none;
+    border-bottom: medium none
 }
-DIV.navfooter IMG
+div.navfooter img
 {
-    BORDER-RIGHT: medium none;
-    BORDER-TOP: medium none;
-    BORDER-LEFT: medium none;
-    BORDER-BOTTOM: medium none
+    border-right: medium none;
+    border-top: medium none;
+    border-left: medium none;
+    border-bottom: medium none
 }
-DIV.book {
-    FONT-WEIGHT: normal;
-    FONT-SIZE: 10pt;
-    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
-    TEXT-ALIGN: left
+div.book {
+    font-weight: normal;
+    font-size: 10pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
 }
-DIV.book DIV.titlepage H3.author {
-    FONT-WEIGHT: normal;
-    FONT-SIZE: 14pt;
-    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
-    TEXT-ALIGN: left
+div.book div.titlepage h3.author {
+    font-weight: normal;
+    font-size: 14pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
 }
-DIV.book DIV.dedication DIV.titlepage H2.title {
-    FONT-WEIGHT: normal;
-    FONT-SIZE: 14pt;
-    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
-    TEXT-ALIGN: left
+div.book div.dedication div.titlepage h2.title {
+    font-weight: normal;
+    font-size: 14pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
 }
-DIV.book DIV.titlepage H1.title
+div.book div.titlepage h1.title
 {
-    FONT-WEIGHT: bold;
-    FONT-SIZE: 16pt;
-    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
-    TEXT-ALIGN: center
+    font-weight: bold;
+    font-size: 16pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: center
 }
-DIV.book DIV.titlepage H2.subtitle
+div.book div.titlepage h2.subtitle
 {
-    FONT-WEIGHT: bold;
-    FONT-SIZE: 14pt;
-    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
-    TEXT-ALIGN: center
+    font-weight: bold;
+    font-size: 14pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: center
 }
-DIV.preface DIV.titlepage H2.title
+div.preface div.titlepage h2.title
 {
-    FONT-WEIGHT: bold;
-    FONT-SIZE: 16pt;
-    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
-    TEXT-ALIGN: left
+    font-weight: bold;
+    font-size: 16pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
 }
-DIV.chapter DIV.titlepage H2.title
+div.chapter div.titlepage h2.title
 {
-    FONT-WEIGHT: bold;
-    FONT-SIZE: 16pt;
-    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
-    TEXT-ALIGN: left
+    font-weight: bold;
+    font-size: 16pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
 }
-DIV.sect1 DIV.titlepage H2.title
+div.sect1 div.titlepage h2.title
 {
-    FONT-WEIGHT: bold;
-    FONT-SIZE: 14pt;
-    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
-    TEXT-ALIGN: left
+    font-weight: bold;
+    font-size: 14pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
 }
-DIV.sect1
+div.sect1
 {
-    FONT-WEIGHT: normal;
-    FONT-SIZE: 10pt;
-    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
-    TEXT-ALIGN: left
+    font-weight: normal;
+    font-size: 10pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
 }
-TT
+tt
 {
-    FONT-FAMILY: courier, monospace
+    font-family: courier, monospace;
 }
-PRE.screen
+pre.screen
 {
-    COLOR: black;
-    BACKGROUND-COLOR: #dddddd
+    font-family: courier, monospace;
+    color: black;
+    background-color: #dddddd
 }
-PRE.synopsis
+pre.synopsis
 {
-    COLOR: black;
-    BACKGROUND-COLOR: #dddddd
+    color: black;
+    background-color: #dddddd
 }
-DIV.warning
+div.warning
 {
-    BORDER-RIGHT: 1px solid;
-    BORDER-TOP: 1px solid;
-    BORDER-LEFT: 1px solid;
-    BORDER-BOTTOM: 1px solid
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-bottom: 1px solid
 }
-DIV.note
+div.note
 {
-    BORDER-RIGHT: 1px solid;
-    BORDER-TOP: 1px solid;
-    BORDER-LEFT: 1px solid;
-    BORDER-BOTTOM: 1px solid
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-bottom: 1px solid
 }
-DIV.important
+div.important
 {
-    BORDER-RIGHT: 1px solid;
-    BORDER-TOP: 1px solid;
-    BORDER-LEFT: 1px solid;
-    BORDER-BOTTOM: 1px solid
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-bottom: 1px solid
 }
-DIV.caution
+div.caution
 {
-    BORDER-RIGHT: 1px solid;
-    BORDER-TOP: 1px solid;
-    BORDER-LEFT: 1px solid;
-    BORDER-BOTTOM: 1px solid
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-bottom: 1px solid
 }
-DIV.warning H3.title
+div.warning h3.title
 {
-    TEXT-ALIGN: center
+    text-align: center
 }
-DIV.warning P
+div.warning p
 {
-    PADDING-LEFT: 0.2in
+    padding-left: 0.2in
 }
-DIV.note
+div.note
 {
-    PADDING-LEFT: 0.2in
+    padding-left: 0.2in
 }
-DIV.important
+div.important
 {
-    PADDING-LEFT: 0.2in
+    padding-left: 0.2in
 }
-DIV.caution
+div.caution
 {
-    PADDING-LEFT: 0.2in
+    padding-left: 0.2in
 }

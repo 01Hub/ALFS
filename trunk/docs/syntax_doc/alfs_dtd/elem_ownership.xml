@@ -95,7 +95,7 @@ echo Changing owner of /etc/sysconfig into root
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Changing group of /etc/rc.d into 0
+<screen>echo Changing group of /etc/rc.d into 0
 <command>chgrp -R 0 /etc/rc.d</command>
 
 echo Changing owner of /etc/rc.d into 0
@@ -105,7 +105,7 @@ echo Changing group of /etc/sysconfig into 0
 <command>chgrp -R 0 /etc/sysconfig</command>
 
 echo Changing owner of /etc/sysconfig into 0
-<command>chown -R 0 /etc/sysconfig</command></userinput></screen>
+<command>chown -R 0 /etc/sysconfig</command></screen>
 
 </sect2>
 

@@ -59,9 +59,9 @@ parameters&nbsp;:</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Executing configure
+<screen>echo Executing configure
 cd /usr/src/mypackage/
-<command>./configure</command></userinput></screen>
+<command>./configure</command></screen>
 
 </sect2>
 
@@ -79,9 +79,9 @@ parameter&nbsp;: </para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Executing configure
+<screen>echo Executing configure
 cd /usr/src/mypackage/
-<command>./configure --prefix=/opt/mypackage</command></userinput></screen>
+<command>./configure --prefix=/opt/mypackage</command></screen>
 
 </sect2>
 
@@ -98,9 +98,9 @@ parameter and uses prefix&nbsp;:</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Executing configure
+<screen>echo Executing configure
 cd /usr/src/mypackage/
-<command>PATH=/usr/local/bin ./configure --prefix=/opt/mypackage</command></userinput></screen>
+<command>PATH=/usr/local/bin ./configure --prefix=/opt/mypackage</command></screen>
 
 </sect2>
 
@@ -116,9 +116,9 @@ parameter and an explicit command (same result as example #3)&nbsp;:</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Executing configure
+<screen>echo Executing configure
 cd /usr/src/mypackage/
-<command>PATH=/usr/local/bin ./configure --prefix=/opt/mypackage</command></userinput></screen>
+<command>PATH=/usr/local/bin ./configure --prefix=/opt/mypackage</command></screen>
 
 </sect2>
 

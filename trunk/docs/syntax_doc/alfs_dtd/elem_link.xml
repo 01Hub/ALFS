@@ -67,8 +67,8 @@ works.</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo 'Linking  share/man share/doc share/info into /usr/local'
-<command>ln -s  share/man share/doc share/info /usr/local</command></userinput></screen>
+<screen>echo 'Linking  share/man share/doc share/info into /usr/local'
+<command>ln -s  share/man share/doc share/info /usr/local</command></screen>
 
 </sect2>
 

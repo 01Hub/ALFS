@@ -45,15 +45,15 @@
 contain one and only one <filename>alfs</filename> element with all the other
 elements being embedded within this element.</para>
 
-<para>When processing an <filename>alfs</filename> element, one processes all its
-embedded children in their order of occurence.</para>
+<para>When processing an <filename>alfs</filename> element, one processes
+all its embedded children in their order of occurence.</para>
 
 <para>The attribute <filename>base</filename> is used to specify the base
 directory which will be used by all the commands in the element
 <filename>alfs</filename>. See <xref linkend="elem_base"/>.</para>
 
-<para>The attribute <filename>version</filename> identifies the version of the
-<acronym>ALFS</acronym> profile syntax used; it should be
+<para>The attribute <filename>version</filename> identifies the version of
+the <acronym>ALFS</acronym> profile syntax used; it should be
 <userinput>&quot;3.1&quot;</userinput>.</para>
 
 </sect2>

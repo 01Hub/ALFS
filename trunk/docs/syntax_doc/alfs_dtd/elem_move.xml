@@ -63,8 +63,8 @@ directory in which the new directory will be created. See
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Move ' /usr/src/mypackage/config.txt /opt/mypackage/config.txt'
-<command>mv /usr/src/mypackage/config.txt /opt/mypackage/config.txt</command></userinput></screen>
+<screen>echo Move ' /usr/src/mypackage/config.txt /opt/mypackage/config.txt'
+<command>mv /usr/src/mypackage/config.txt /opt/mypackage/config.txt</command></screen>
 
 </sect2>
 

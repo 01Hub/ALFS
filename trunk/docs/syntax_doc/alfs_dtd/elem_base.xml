@@ -69,7 +69,7 @@ attribute.</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Executing configure
+<screen>echo Executing configure
 su - lfs
 export PATH=/bin:/sbin
 cd /usr/src/gzip.1.2.4a
@@ -87,7 +87,7 @@ export PATH=/bin:/sbin
 cd /usr/src/gzip.1.2.4a
 <command>make install</command>
 
-echo Exiting stage</userinput></screen>
+echo Exiting stage</screen>
 
 </sect2>
 
