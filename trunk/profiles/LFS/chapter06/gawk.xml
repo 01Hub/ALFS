@@ -5,11 +5,6 @@
 			<archive>&packages_dir;/&gawk-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&gawk-libexecdir-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
@@ -17,15 +12,9 @@
 			<base>&build_dir;/&gawk-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&gawk-libexecdir-patch;</param>
-		</patch>
-
 		<configure>
 			<param>--prefix=/usr</param>
-			<param>--libexecdir=/usr/lib/gawk</param>
+			<param>--libexecdir=/usr/lib</param>
 		</configure>
 
 		<make />
@@ -43,6 +32,5 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&gawk-directory;</remove>
-		<remove>&build_dir;/&gawk-libexecdir-patch;</remove>
 	</stage>
 </package>
