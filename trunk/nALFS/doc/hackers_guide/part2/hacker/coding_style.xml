@@ -2,6 +2,313 @@
 <?dbhtml filename="coding-style.html" dir="chapter01"?>
 <title>Coding Style</title>
 
-<para>PAGE TO BE WRITTEN</para>
+<para>The development team would like to keep a clean and standardized coding
+style in the product's code. This will make it easier for everyone to read the
+code.</para>
+
+<para>Linux's creator Linus Torvalds has provided an excellent coding style
+for us to use. He even gives it to us in the Linux Kernel source distribution
+tarball. We have provided the version from Linux v2.4.22 in its entirety for
+your reference.</para>
+
+<sect2>
+<title>Linux kernel coding style</title>
+
+<para>This is a short document describing the preferred coding style for the linux
+kernel. Coding style is very personal, and I won't <emphasis>force</emphasis>
+my views on anybody, but this is what goes for anything that I have to be able
+to maintain, and I'd prefer it for most other things too. Please at least
+consider the points made here.</para>
+
+<para>First off, I'd suggest printing out a copy of the GNU coding standards, and
+NOT read it.  Burn them, it's a great symbolic gesture.</para>
+
+<para>Anyway, here goes:</para>
+
+</sect2>
+
+<sect2>
+<title>Chapter 1: Indentation</title>
+
+<para>Tabs are 8 characters, and thus indentations are also 8 characters.
+There are heretic movements that try to make indentations 4 (or even 2!)
+characters deep, and that is akin to trying to define the value of PI to be
+3.</para>
+
+<para>Rationale: The whole idea behind indentation is to clearly define where
+a block of control starts and ends.  Especially when you've been looking
+at your screen for 20 straight hours, you'll find it a lot easier to see
+how the indentation works if you have large indentations.</para>
+
+<para>Now, some people will claim that having 8-character indentations makes
+the code move too far to the right, and makes it hard to read on a
+80-character terminal screen.  The answer to that is that if you need
+more than 3 levels of indentation, you're screwed anyway, and should fix
+your program.</para>
+
+<para>In short, 8-char indents make things easier to read, and have the added
+benefit of warning you when you're nesting your functions too deep.
+Heed that warning.</para>
+
+</sect2>
+
+<sect2>
+<title>Chapter 2: Placing Braces</title>
+
+<para>The other issue that always comes up in C styling is the placement of
+braces. Unlike the indent size, there are few technical reasons to
+choose one placement strategy over the other, but the preferred way, as
+shown to us by the prophets Kernighan and Ritchie, is to put the opening
+brace last on the line, and put the closing brace first, thusly:</para>
+
+<screen><command>
+	if (x is true) {
+		we do y
+	}
+</command></screen>
+
+<para>However, there is one special case, namely functions: they have the
+opening brace at the beginning of the next line, thus:</para>
+
+<screen><command>
+	int function(int x)
+	{
+		body of function
+	}
+</command></screen>
+
+<para>Heretic people all over the world have claimed that this inconsistency
+is ... well ...  inconsistent, but all right-thinking people know that (a) K&amp;R
+are <emphasis>right</emphasis> and (b) K&amp;R are right. Besides, functions are
+special anyway (you can't nest them in C).</para>
+
+<para>Note that the closing brace is empty on a line of its own,
+<emphasis>except</emphasis> in the cases where it is followed by a
+continuation of the same statement, ie a "while" in a do-statement or an
+"else" in an if-statement, like this:</para>
+
+<screen><command>
+	do {
+		body of do-loop
+	} while (condition);
+</command></screen>
+
+<para>and</para>
+
+<screen><command>
+	if (x == y) {
+		..
+	} else if (x > y) {
+		...
+	} else {
+		....
+	}
+</command></screen>
+
+<para>Rationale: K&amp;R.</para>
+
+<para>Also, note that this brace-placement also minimizes the number of empty
+(or almost empty) lines, without any loss of readability.  Thus, as the supply
+of new-lines on your screen is not a renewable resource (think 25-line
+terminal screens here), you have more empty lines to put comments on.</para>
+
+</sect2>
+
+<sect2>
+<title>Chapter 3: Naming</title>
+
+<para>C is a Spartan language, and so should your naming be. Unlike Modula-2
+and Pascal programmers, C programmers do not use cute names like
+ThisVariableIsATemporaryCounter. A C programmer would call that variable
+<command>tmp</command>, which is much easier to write, and not the least more
+difficult to understand.</para>
+
+<para>HOWEVER, while mixed-case names are frowned upon, descriptive names for
+global variables are a must. To call a global function <command>foo</command>
+is a shooting offense.</para>
+
+<para>GLOBAL variables (to be used only if you <emphasis>really</emphasis>
+need them) need to have descriptive names, as do global functions. If you have
+a function that counts the number of active users, you should call that
+<command>count_active_users()</command> or similar, you should
+<emphasis>not</emphasis> call it <command>cntusr()</command>.</para>
+
+<para>Encoding the type of a function into the name (so-called Hungarian
+notation) is brain damaged &emdash; the compiler knows the types anyway and
+can check those, and it only confuses the programmer. No wonder MicroSoft
+makes buggy programs.</para>
+
+<para>LOCAL variable names should be short, and to the point. If you have some
+random integer loop counter, it should probably be called <command>i</command>.
+Calling it <command>loop_counter</command> is non-productive, if there is no
+chance of it being mis- understood.  Similarly, <command>tmp</command> can be
+just about any type of variable that is used to hold a temporary value.</para>
+
+<para>If you are afraid to mix up your local variable names, you have another
+problem, which is called the function-growth-hormone-imbalance syndrome. See
+next chapter.</para>
+
+</sect2>
+
+<sect2>
+<title>Chapter 4: Functions</title>
+
+<para>Functions should be short and sweet, and do just one thing.  They should
+fit on one or two screenfuls of text (the ISO/ANSI screen size is 80x24, as we
+all know), and do one thing and do that well.</para>
+
+<para>The maximum length of a function is inversely proportional to the
+complexity and indentation level of that function.  So, if you have a
+conceptually simple function that is just one long (but simple) case-
+statement, where you have to do lots of small things for a lot of different
+cases, it's OK to have a longer function.</para>
+
+<para>However, if you have a complex function, and you suspect that a less-
+than-gifted first-year high-school student might not even understand what the
+function is all about, you should adhere to the maximum limits all the more
+closely.  Use helper functions with descriptive names (you can ask the
+compiler to in-line them if you think it's performance-critical, and it will
+probably do a better job of it that you would have done).</para>
+
+<para>Another measure of the function is the number of local variables.  They
+shouldn't exceed 5-10, or you're doing something wrong.  Re-think the
+function, and split it into smaller pieces.  A human brain can generally
+easily keep track of about 7 different things, anything more and it gets
+confused.  You know you're brilliant, but maybe you'd like to understand what
+you did 2 weeks from now.</para>
+
+</sect2>
+
+<sect2>
+<title>Chapter 5: Commenting</title>
+
+<para>Comments are good, but there is also a danger of over-commenting.  NEVER
+try to explain HOW your code works in a comment: it's much better to write the
+code so that the <emphasis>working</emphasis> is obvious, and it's a waste of
+time to explain badly written code.</para>
+
+<para>Generally, you want your comments to tell WHAT your code does, not HOW.
+Also, try to avoid putting comments inside a function body: if the function is
+so complex that you need to separately comment parts of it, you should
+probably go back to chapter 4 for a while.  You can make small comments to
+note or warn about something particularly clever (or ugly), but try to avoid
+excess.  Instead, put the comments at the head of the function, telling people
+what it does, and possibly WHY it does it.</para>
+
+</sect2>
+
+<sect2>
+<title>Chapter 6: You've made a mess of it</title>
+
+<para>That's OK, we all do. You've probably been told by your long-time Unix
+user helper that GNU <filename>emacs</filename> automatically formats the C
+sources for you, and you've noticed that yes, it does do that, but the
+defaults it uses are less than desirable (in fact, they are worse than random
+typing &emdash; a infinite number of monkeys typing into GNU
+<filename>emacs</filename> would never make a good program).</para>
+
+<para>So, you can either get rid of GNU <filename>emacs</filename>, or change
+it to use saner values.  To do the latter, you can stick the following in your
+<filename>.emacs</filename> file:</para>
+
+<screen><command>
+(defun linux-c-mode ()
+  "C mode with adjusted defaults for use with the Linux kernel."
+  (interactive)
+  (c-mode)
+  (c-set-style "K&amp;R")
+  (setq c-basic-offset 8))
+</command></screen>
+
+<para>This will define the M-x linux-c-mode command. When hacking on a module,
+if you put the string -*- linux-c -*- somewhere on the first two lines, this
+mode will be automatically invoked. Also, you may want to add</para>
+
+<screen><command>
+(setq auto-mode-alist (cons '("/usr/src/linux.*/.*\\.[ch]$" . linux-c-mode)
+                       auto-mode-alist))
+</command></screen>
+
+<para>to your <filename>.emacs</filename> file if you want to have linux-c-
+mode switched on automagically when you edit source files under
+<filename>/usr/src/linux</filename>.</para>
+
+<para>But even if you fail in getting emacs to do sane formatting, not
+everything is lost: use <filename>indent</filename>.</para>
+
+<para>Now, again, GNU <filename>indent</filename> has the same brain dead
+settings that GNU <filename>emacs</filename> has, which is why you need to
+give it a few command line options. However, that's not too bad, because even
+the makers of GNU <filename>indent</filename> recognize the authority of K&amp;R
+(the GNU people aren't evil, they are just severely misguided in this matter),
+so you just give indent the options <command>-kr -i8</command> (stands for
+"K&amp;R, 8 character indents").</para>
+
+<para><filename>indent</filename> has a lot of options, and especially when it
+comes to comment re-formatting you may want to take a look at the manual page.
+But remember: <filename>indent</filename> is not a fix for bad programming.</para>
+
+</sect2>
+
+<sect2>
+<title>Chapter 7: Configuration-files</title>
+
+<para>For configuration options (<filename>arch/xxx/config.in</filename>, and
+all the <filename>Config.in</filename> files), somewhat different indentation
+is used.</para>
+
+<para>An indention level of 3 is used in the code, while the text in the config-
+options should have an indention-level of 2 to indicate dependencies. The
+latter only applies to bool/tristate options. For other options, just use
+common sense. An example:</para>
+
+<screen><command>
+if [ "$CONFIG_EXPERIMENTAL" = "y" ]; then
+   tristate 'Apply nitroglycerine inside the keyboard (DANGEROUS)' CONFIG_BOOM
+   if [ "$CONFIG_BOOM" != "n" ]; then
+      bool '  Output nice messages when you explode' CONFIG_CHEER
+   fi
+fi
+</command></screen>
+
+<para>Generally, CONFIG_EXPERIMENTAL should surround all options not considered
+stable. All options that are known to trash data (experimental write-
+support for file-systems, for instance) should be denoted (DANGEROUS), other
+Experimental options should be denoted (EXPERIMENTAL).</para>
+
+</sect2>
+
+<sect2>
+<title>Chapter 8: Data structures</title>
+
+<para>Data structures that have visibility outside the single-threaded
+environment they are created and destroyed in should always have reference
+counts. In the kernel, garbage collection doesn't exist (and outside the
+kernel garbage collection is slow and inefficient), which means that you
+absolutely <emphasis>have</emphasis> to reference count all your uses.</para>
+
+<para>Reference counting means that you can avoid locking, and allows multiple
+users to have access to the data structure in parallel &emdash; and not having
+to worry about the structure suddenly going away from under them just because
+they slept or did something else for a while.</para>
+
+<para>Note that locking is <emphasis>not</emphasis> a replacement for
+reference counting. Locking is used to keep data structures coherent, while
+reference counting is a memory management technique.  Usually both are needed,
+and they are not to be confused with each other.</para>
+
+<para>Many data structures can indeed have two levels of reference counting,
+when there are users of different "classes".  The subclass count counts the
+number of subclass users, and decrements the global count just once when the
+subclass count goes to zero.</para>
+
+<para>Examples of this kind of "multi-reference-counting" can be found in
+memory management ("struct mm_struct": mm_users and mm_count), and in
+filesystem code ("struct super_block": s_count and s_active).</para>
+
+<para>Remember: if another thread can find your data structure, and you don't
+have a reference count on it, you almost certainly have a bug.</para>
+
+</sect2>
 
 </sect1>
