@@ -49,7 +49,81 @@
 #include "utility.h"
 
 
-#if HANDLER_SYNTAX_2_0
+enum {
+	SU_USER,
+};
+
+static const struct handler_attribute su_attributes[] = {
+	{ .name = "user", .private = SU_USER },
+	{ .name = NULL }
+};
+
+struct su_data {
+	char *user;
+};
+
+static int su_setup(element_s * const element)
+{
+	struct su_data *data;
+
+	if ((data = xmalloc(sizeof(struct su_data))) == NULL)
+		return -1;
+
+	data->user = NULL;
+	element->handler_data = data;
+
+	return 0;
+}
+
+static void su_free(const element_s * const element)
+{
+	struct su_data *data = (struct su_data *) element->handler_data;
+
+	xfree(data->user);
+	xfree(data);
+}
+
+static int su_attribute(const element_s * const element,
+			const struct handler_attribute * const attr,
+			const char * const value)
+{
+	struct su_data *data = (struct su_data *) element->handler_data;
+
+	switch (attr->private) {
+	case SU_USER:
+		if (data->user) {
+			Nprint_err("<%s>: cannot specify \"user\" more than once.", element->handler->name);
+			return 1;
+		}
+		data->user = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int su_valid_data(const element_s * const element)
+{
+	struct su_data *data = (struct su_data *) element->handler_data;
+
+	if (!data->user) {
+		Nprint_err("<%s>: \"user\" must be specified.", element->handler->name);
+		return 0;
+	}
+
+	return 1;
+}
+
+static int su_valid_child(const element_s * const element, const element_s * const child)
+{
+	(void) element;
+
+	return child->handler->type & (HTYPE_NORMAL |
+				       HTYPE_COMMENT |
+				       HTYPE_TEXTDUMP |
+				       HTYPE_PACKAGE |
+				       HTYPE_EXECUTE);
+}
 
 static INLINE int set_supplementary_groups(const char *user)
 {
@@ -138,32 +212,20 @@ static INLINE int change_to_user(const char *user)
 	return 0;
 }
 
-
-static const struct handler_attribute su_attributes[] = {
-	{ .name = "user" },
-	{ .name = NULL }
-};
-
-static int su_main(const element_s * const el)
+static int su_main(const element_s * const element)
 {
+	struct su_data *data = (struct su_data *) element->handler_data;
 	int status;
 	pid_t su_pid, got_pid;
-        char *user = attr_value("user", el);
-
 	
-        if (user == NULL) {
-                Nprint_h_err("User not specified for su.");
-                return -1;
-	}
-
 	su_pid = fork();
 
 	if (su_pid == 0) { /* Child. */
-		if (change_to_user(user) == -1) {
+		if (change_to_user(data->user) == -1) {
 			exit(EXIT_FAILURE);
 		}
 
-		status = execute_children(el);
+		status = execute_children(element);
 
 		/* Nprint_h("Exited from su (%s).", pw->pw_name); */
 		
@@ -175,7 +237,7 @@ static int su_main(const element_s * const el)
 
 	if ((got_pid = waitpid(su_pid, &status, WUNTRACED)) == -1) {
 		fatal_backend_error("waitpid() for %ld in su failed.",
-			(long)su_pid);
+				    (long)su_pid);
 	}
 
 	if (WIFEXITED(status)) { /* Child exited normally. */
@@ -183,26 +245,23 @@ static int su_main(const element_s * const el)
 
 	} else if (WIFSIGNALED(status)) {
 		Nprint_h_err("Su child (%ld) killed by signal %d%s.",
-			(long)got_pid, WTERMSIG(status),
-			WCOREDUMP(status) ? " (core dumped)" : "");
+			     (long)got_pid, WTERMSIG(status),
+			     WCOREDUMP(status) ? " (core dumped)" : "");
 		status = -1;
 
 	} else if (WIFSTOPPED(status)) {
 		Nprint_h_err("Su child (%ld) stopped by signal %d.",
-			(long)got_pid, WSTOPSIG(status));
+			     (long)got_pid, WSTOPSIG(status));
 		status = -1;
 
 	} else {
 		Nprint_h_err("Su child (%ld) exited abnormaly.",
-			(long)got_pid);
+			     (long)got_pid);
 		status = -1;
 	}
 	
 	return status;
 }
-
-#endif /* HANDLER_SYNTAX_2_0 */
-
 
 /*
  * Handlers' information.
@@ -214,9 +273,14 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "su",
 		.description = "Change user ID",
 		.syntax_version = "2.0",
-		.main = su_main,
 		.type = HTYPE_NORMAL,
+		.main = su_main,
 		.attributes = su_attributes,
+		.setup = su_setup,
+		.free = su_free,
+		.attribute = su_attribute,
+		.valid_data = su_valid_data,
+		.valid_child = su_valid_child,
 	},
 #endif
 	{
