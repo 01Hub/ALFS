@@ -12,6 +12,11 @@
 ]>
 <alfs>
 <package name="Pod-Simple" version="&Pod-Simple-version;">
+  <packageinfo>
+    <requires>
+      <name>Pod-Escapes</name>
+    </requires>
+  </packageinfo>
   <stage name="Unpacking.">
     <unpack>
       <archive>&packages_dir;/&Pod-Simple-package;</archive>

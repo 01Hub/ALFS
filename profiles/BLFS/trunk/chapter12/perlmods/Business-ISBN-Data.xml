@@ -12,6 +12,14 @@
 ]>
 <alfs>
 <package name="Business-ISBN-Data" version="&Business-ISBN-Data-version;">
+  <packageinfo>
+    <requires>
+      <name>Test-Pod</name>
+    </requires>
+    <requires>
+      <name>Test-Prereq</name>
+    </requires>
+  </packageinfo>
   <stage name="Unpacking.">
     <unpack>
       <archive>&packages_dir;/&Business-ISBN-Data-package;</archive>

@@ -12,6 +12,11 @@
 ]>
 <alfs>
 <package name="Business-ISBN" version="&Business-ISBN-version;">
+  <packageinfo>
+    <requires>
+      <name>Business-ISBN-Data</name>
+    </requires>
+  </packageinfo>
   <stage name="Unpacking.">
     <unpack>
       <archive>&packages_dir;/&Business-ISBN-package;</archive>

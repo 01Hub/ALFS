@@ -12,6 +12,14 @@
 ]>
 <alfs>
 <package name="Test-Pod" version="&Test-Pod-version;">
+  <packageinfo>
+    <requires>
+      <name>Pod-Simple</name>
+    </requires>
+    <requires>
+      <name>Test-Builder-Tester</name>
+    </requires>
+  </packageinfo>
   <stage name="Unpacking.">
     <unpack>
       <archive>&packages_dir;/&Test-Pod-package;</archive>
