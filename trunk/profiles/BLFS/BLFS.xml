@@ -16,8 +16,8 @@
 %files;
 
 <!ENTITY % general_entities SYSTEM "general.ent">
-<!ENTITY % system_entities  SYSTEM "system.ent">
 <!ENTITY % package_entities SYSTEM "packages.ent">
+<!ENTITY % system_entities  SYSTEM "system.ent">
 
 %general_entities;
 %package_entities;
@@ -125,12 +125,12 @@
 
 <stage name="Chapter 9 (Graphics and Font Libraries)">
 
-    &lcms;
     &libjpeg;
     &libpng;
     &libtiff;
     &libungif;
     &libmng;
+    &lcms;
     &freetype;
     &fontconfig;
     &imlib;
