@@ -1,0 +1,9 @@
+#ifndef __LIBALFS_H__
+#define __LIBALFS_H__
+
+#include <alfs.h>
+#include <devel.h>
+#include <repl.h>
+#include <util.h>
+
+#endif

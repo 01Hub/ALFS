@@ -11,7 +11,7 @@
 profile *prof;
 char commando[BUF_LEN];
 
-profile *nalfs_profile (xmlNodePtr node);
+profile *nalfs_profile (xmlNodePtr node, replaceable *r);
 
 static t_plug nalfs_plugin =
 {
@@ -314,7 +314,7 @@ void t_stage (xmlNodePtr node, void *data)
 	foreach(node->children, "alfs", (xml_handler_t)t_alfs, NULL);
 }
 
-profile *nalfs_profile (xmlNodePtr node)
+profile *nalfs_profile (xmlNodePtr node, replaceable *r)
 {
 	node = find_node(node, "alfs");
 
@@ -326,7 +326,7 @@ profile *nalfs_profile (xmlNodePtr node)
 	
 	prof = (profile *)malloc(sizeof(profile));
 	prof->name = "nALFS legacy profile";
-	prof->vers = entity_val("LFS-version");
+	prof->vers = NULL;
 	prof->ch = NULL;
 	prof->n = 0;
 	foreach(node->children, "stage", (xml_handler_t)t_stage, NULL);

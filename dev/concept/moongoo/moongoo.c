@@ -1,16 +1,18 @@
-#include <stdio.h>
-#include <string.h>
 #include <getopt.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-#include <alfs.h>
-#include <repl.h>
-#include <util.h>
 #include <build.h>
+#include <libalfs.h>
 #include <plugin.h>
 
 #define DEF_SYN		"book"
+#define MOO_XML		"/.nALFS/answers.xml"
+#define PLUG_DIR	"syntax"
 #define	VERSION		"0.0.2"
 
+/* Some default settings, those should be configurable in the final tool */
 role default_filter[4] = { NOEXECUTE, INTERACTIVE, TESTSUITE, 0 };
 char *paralell_filter[4] = { "configure-host", "clean", "mrproper", NULL };
 char *popt_pkg[2] = { "Glibc-20041115", NULL };
@@ -18,9 +20,10 @@ char *popt_cmd[2] = { "PARALLELMFLAGS=-j", NULL };
 
 int main (int argc, char **argv)
 {
-	char c, *syn = NULL, *moo_xml = NULL;
-	bool quiet = false;
+	char c, *syn = DEF_SYN, *moo_xml = MOO_XML, *plug_dir = PLUG_DIR;
+	bool quiet = false, build = false;
 	int i = 0;
+	xmlDocPtr doc;
 	xmlNodePtr cur;
 	plug_info *plugin;
 	profile *prof = NULL;
@@ -31,8 +34,9 @@ int main (int argc, char **argv)
 		return 1;
 	}
 
-	// TODO: Make the plugin directory configurable
-	plugin = plugscan("syntax");
+	if (getenv("NALFS_PLUGIN_DIR"))
+		plug_dir = getenv("NALFS_PLUGIN_DIR");
+	plugin = plugscan(plug_dir);
 
 	if (!plugin)
 	{
@@ -40,7 +44,7 @@ int main (int argc, char **argv)
 		return 2;
 	}
 
-	while ((c = getopt(argc, argv, "s:qVhc:")) != EOF)
+	while ((c = getopt(argc, argv, "s:qVhc:b")) != EOF)
 	{
 		switch (c)
 		{
@@ -70,15 +74,20 @@ int main (int argc, char **argv)
 				return 0;
 			case 'h':
 				printf("moongoo [OPTIONS] BOOK\n");
-				printf("\t-s SYNTAX\tChoose syntax (help shows them)\n");
+				printf("\t-b\t\tBuild\n");
 				printf("\t-c CONF.XML\tXML configuration file.\n");
-				printf("\t-q\t\tNo output\n");
-				printf("\t-V\t\tVersion information\n");
 				printf("\t-h\t\tPrint this fluff\n");
+				printf("\t-q\t\tNo output\n");
+				printf("\t-s SYNTAX\tChoose syntax (help shows them)\n");
+				printf("\t-V\t\tVersion information\n");
 				return 0;
 			case 'c':
 				moo_xml = (char *)malloc(strlen(optarg)+1);
 				strcpy(moo_xml, optarg);
+				break;
+			case 'b':
+				build = true;
+				quiet = true;
 				break;
 		}
 	}
@@ -89,14 +98,19 @@ int main (int argc, char **argv)
 		return 2;
 	xmlXIncludeProcessFlags(doc, XML_PARSE_NOENT);
 	cur=xmlDocGetRootElement(doc);
-	
-	if (!syn)
-		syn = DEF_SYN;
+
+	r = init_repl(strdog(getenv("HOME"), MOO_XML));
+	if (!r)
+	{
+		r = init_repl("moo.xml");
+		if (!r)
+			fprintf(stderr, "Configuration file could not be opened.\n");
+	}
 	
 	while (plugin[i].path)
 	{
 		if (!strcmp(syn, plugarg(plugin[i].path)))
-			prof = plugin[i].info->parse(cur);
+			prof = plugin[i].info->parse(cur, r);
 		i++;
 	}
 	
@@ -108,16 +122,23 @@ int main (int argc, char **argv)
 		return 1;
 	}
 
+	if (build)
+	{
+		//print_profile(*prof);
+		build_pkg(prof->ch[0].pkg[0]);
+	}
+
 	if (!quiet)
 	{
-		/*package *glibc = search_pkg(prof, "Glibc-20041115", 
-			"chapter-building-system");*/
-		build_paralell (prof, paralell_filter, popt_pkg, popt_cmd);
+		package *glibc = search_pkg(prof, "Glibc-20041115", 
+			"chapter-building-system");
+		sed_paralell (prof, paralell_filter, popt_pkg, popt_cmd);
 		set_filter(default_filter);
 		
-		/*if (glibc)
-			print_pkg(*glibc);*/
-		print_profile(*prof);
+		if (glibc)
+			print_pkg(*glibc);
+		//print_profile(*prof);
+		//print_links(*prof);
 	}
 	
 	plugunload(plugin);

@@ -10,3 +10,8 @@ include ../inc.mak
 $(LIB): $(OBJS)
 	ar crv $@ $^
 	ranlib $@
+
+alfs.o: alfs.h
+devel.o: devel.h
+repl.o: repl.h
+util.o: util.h

@@ -1,12 +1,12 @@
+#include <libgen.h>
 #include <string.h>
 
-#include <alfs.h>
-#include <util.h>
+#include <libalfs.h>
 #include <plugin.h>
 
 profile *prof;
 
-profile *ass_profile (xmlNodePtr node);
+profile *ass_profile (xmlNodePtr node, replaceable *r);
 
 static t_plug ass_plugin =
 {
@@ -20,8 +20,8 @@ t_plug *getplug ()
 	return &ass_plugin;
 }
 
-// TODO: Support download/directory in the ASS parser
-void process_cmd3 (char *line, xmlNodePtr node)
+
+static void process_cmd (char *line)
 {
 	int i, j, k;
 
@@ -47,7 +47,7 @@ void process_cmd3 (char *line, xmlNodePtr node)
 	}
 }
 
-void t_shell2 (xmlNodePtr node, void *data)
+static  void t_shell (xmlNodePtr node, void *data)
 {
 	char *line = squeeze(xmlNodeGetContent(node));
 	line = strkill(line, "\\\n");
@@ -59,16 +59,75 @@ void t_shell2 (xmlNodePtr node, void *data)
 		while ((line) && (strlen(line)))
 		{
 			tmp = strsep(&line, "\n");
-			process_cmd3(tmp, node);
+			process_cmd(tmp);
 		}
 	}
 	else
-		process_cmd3(line, node);
+		process_cmd(line);
 }
 
-void t_page (xmlNodePtr node, void *data)
+static  void t_item (xmlNodePtr node, void *data)
+{
+	int i, j, k;
+	download *moo;
+
+	i = prof->n-1;
+	j = prof->ch[i].n-1;
+	prof->ch[i].pkg[j].dl = realloc(prof->ch[i].pkg[j].dl,
+		(++prof->ch[i].pkg[j].m)*sizeof(download));
+	k = prof->ch[i].pkg[j].m-1;
+	moo = &prof->ch[i].pkg[j].dl[k];
+
+	if (xmlGetProp(node, "sha1"))
+	{
+		moo->algo = SHA1;
+		moo->sum = xmlGetProp(node, "sha1");
+	}
+	else
+	if (xmlGetProp(node, "md5"))
+	{
+		moo->algo = MD5;
+		moo->sum = xmlGetProp(node, "md5");
+	}
+	else
+	{
+		moo->algo = ALGO_NONE;
+		moo->sum = NULL;
+	}
+	
+	moo->proto = parse_proto(node);
+	moo->url = xmlNodeGetContent(node);
+}
+
+static  void t_down (xmlNodePtr node, void *data)
+{
+	foreach(node->children, "item", (xml_handler_t)t_item, NULL);
+}
+
+static  void t_unpack (char *url)
+{
+	char *ext = extonly(url), *ret = NULL;
+
+	if (!strcmp(ext, ".tar.gz"))
+		ret = "tar xfz ";
+	if (!strcmp(ext, ".tar.bz2"))
+		ret = "tar xfj ";
+
+	if (!ret)
+	{
+		fprintf(stderr, "Archive extension '%s' is unknown.\n", ext);
+		return;
+	}
+
+	ret = strdog(ret, basename(url));
+	process_cmd(ret);
+	free(ret);
+}
+
+static  void t_page (xmlNodePtr node, void *data)
 {
 	int i, j;
+	xmlNodePtr dir = find_node(node->children, "directory");
 
 	i = prof->n-1;
 	prof->ch[i].pkg = realloc(prof->ch[i].pkg,
@@ -79,10 +138,16 @@ void t_page (xmlNodePtr node, void *data)
 	prof->ch[i].pkg[j].vers = find_value(node, "version");
 	prof->ch[i].pkg[j].build = NULL;
 	prof->ch[i].pkg[j].n = 0;
-	foreach(node->children, "shell", (xml_handler_t)t_shell2, NULL);
+	prof->ch[i].pkg[j].dl = NULL;
+	prof->ch[i].pkg[j].m = 0;
+
+	foreach(node->children, "download", (xml_handler_t)t_down, NULL);
+	t_unpack(prof->ch[i].pkg[j].dl[0].url);
+	process_cmd(strdog("__cd ", xmlNodeGetContent(dir)));
+	foreach(node->children, "shell", (xml_handler_t)t_shell, NULL);
 }
 
-void t_chapter2 (xmlNodePtr node, void *data)
+static  void t_chapter (xmlNodePtr node, void *data)
 {
 	prof->ch = realloc(prof->ch, (++prof->n)*sizeof(chapter));
 	prof->ch[prof->n-1].name = xmlGetProp(node, "name");
@@ -92,7 +157,7 @@ void t_chapter2 (xmlNodePtr node, void *data)
 	foreach(node->children, "page", (xml_handler_t)t_page, NULL);
 }
 
-profile *ass_profile (xmlNodePtr node)
+profile *ass_profile (xmlNodePtr node, replaceable *r)
 {
 	node = find_node(node, "ass");
 
@@ -107,6 +172,6 @@ profile *ass_profile (xmlNodePtr node)
 	prof->vers = find_value(node, "version");
 	prof->ch = NULL;
 	prof->n = 0;
-	foreach(node->children, "chapter", (xml_handler_t)t_chapter2, NULL);
+	foreach(node->children, "chapter", (xml_handler_t)t_chapter, NULL);
 	return prof;
 }

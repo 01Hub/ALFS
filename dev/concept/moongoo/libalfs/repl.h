@@ -3,11 +3,8 @@
 
 #include <alfs.h>
 
-// TODO: Make moo.xml configurable
-#define MOO_XML		"moo.xml"
-
 void t_repl (xmlNodePtr node, void *data);
 replaceable *init_repl (char *fname);
-char *get_option (char *key);
+char *get_option (replaceable *r, char *key);
 
 #endif

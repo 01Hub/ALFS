@@ -6,7 +6,7 @@
 
 profile *prof;
 
-profile *syn_profile (xmlNodePtr node);
+profile *syn_profile (xmlNodePtr node, replaceable *r);
 
 static t_plug syn_plugin =
 {
@@ -95,10 +95,10 @@ void t_section (xmlNodePtr node)
 	prof->ch[i].ref = prof->ch[i].name;
 	prof->ch[i].pkg = NULL;
 	prof->ch[i].n = 0;
-	foreach(node->children, "package", (xml_handler_t)t_pkg, NULL);
+	foreach(node->children, "page", (xml_handler_t)t_pkg, NULL);
 }
 
-profile *syn_profile (xmlNodePtr node)
+profile *syn_profile (xmlNodePtr node, replaceable *r)
 {
 	node = find_node(node, "hive");
 
@@ -119,7 +119,6 @@ profile *syn_profile (xmlNodePtr node)
 	{
 		if (!strcmp(node->name, "section"))
 		{
-			printf("%s\n", xmlGetProp(node, "title"));
 			prof->ch = realloc(prof->ch, (++prof->n)*sizeof(chapter));
 			t_section(node);
 		}

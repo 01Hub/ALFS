@@ -1,16 +1,16 @@
 #ifndef __PLUGIN_H__
 #define __PLUGIN_H__
 
-#include <alfs.h>
+#include <libalfs.h>
 
-#define PLUG_VER	2
+#define PLUG_VER	3
 #define PLUG_EXT	"so"
 
 typedef struct
 {
 	char *name;
 	int vers;
-	profile *(* parse) (xmlNodePtr node);
+	profile *(* parse) (xmlNodePtr node, replaceable *r);
 } t_plug;
 
 typedef struct

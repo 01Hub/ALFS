@@ -4,7 +4,7 @@ BIN=moongoo
 OBJS=moongoo.o build.o plugin.o
 
 ifeq ($(OPTS),)
-OPTS=-q
+OPTS=
 OPTS+=~/projects/alfs/book/index.xml
 #OPTS+=~/projects/alfs/lfs-profile/LFS.xml
 #OPTS+=~/projects/alfs/ass/index.xml
@@ -23,3 +23,6 @@ $(BIN): $(OBJS) libalfs/libalfs.a
 
 run: $(BIN)
 	./$(BIN) $(OPTS)
+
+build.o: build.h
+plugin.o: plugin.h

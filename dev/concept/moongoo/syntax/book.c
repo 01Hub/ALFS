@@ -1,22 +1,14 @@
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
-#include <alfs.h>
-#include <repl.h>
-#include <util.h>
+#include <libalfs.h>
 #include <plugin.h>
 
 command *cmd;
 int num;
 profile *prof;
-replaceable *__r;
 
-void t_sect1 (xmlNodePtr node, void *data);
-void process_cmd (char *line, xmlNodePtr node);
-void __t_userinput (xmlNodePtr node, void *data);
-command *t_userinput (xmlNodePtr node, int *n);
-void t_chapter (xmlNodePtr node);
-profile *bookasprofile (xmlNodePtr node);
+profile *bookasprofile (xmlNodePtr node, replaceable *r);
 
 static t_plug book_plugin =
 {
@@ -30,38 +22,8 @@ t_plug *getplug ()
 	return &book_plugin;
 }
 
-void t_sect1 (xmlNodePtr node, void *data)
-{
-	int i, j;
-	char *title, *tmp;
-		
-	title = find_value(node->children, "title");
 
-	if (!title)
-	{
-		fprintf(stderr, "%s: No title found.\n", node->name);
-		return;
-	}
-
-	i = prof->n-1;
-	prof->ch[i].pkg = realloc(prof->ch[i].pkg, 
-			(++prof->ch[i].n)*sizeof(package));
-	j = prof->ch[i].n-1;
-	
-	tmp = strdog(lower_case(title), "version");
-	// TODO: Name and version are not correctly separated
-	prof->ch[i].pkg[j].vers = entity_val(tmp);
-	prof->ch[i].pkg[j].name = strcut(title, 0, strlen(title)-
-		((prof->ch[i].pkg[j].vers) ? 1 : 0));
-	prof->ch[i].pkg[j].build = t_userinput(node->children, 
-		&prof->ch[i].pkg[j].n);
-	free(tmp);
-
-	if (!prof->ch[i].pkg[j].n)
-		prof->ch[i].n--;
-}
-
-void process_cmd (char *line, xmlNodePtr node)
+static void process_cmd (char *line, xmlNodePtr node)
 {
 	cmd = realloc(cmd, (++num)*sizeof(command));
 	cmd[num-1].role = parse_role(node);
@@ -80,11 +42,11 @@ void process_cmd (char *line, xmlNodePtr node)
 	}
 }
 
-void __t_userinput (xmlNodePtr node, void *data)
+static void __t_userinput (xmlNodePtr node, void *data)
 {
 	char *line;
 
-	foreach(node->children, "replaceable", (xml_handler_t)t_repl, __r);
+	foreach(node->children, "replaceable", (xml_handler_t)t_repl, NULL);
 	line = squeeze(xmlNodeGetContent(node));
 	line = strkill(line, "\\\n");
 
@@ -111,7 +73,7 @@ void __t_userinput (xmlNodePtr node, void *data)
 		process_cmd(line, node);
 }
 
-command *t_userinput (xmlNodePtr node, int *n)
+static command *t_userinput (xmlNodePtr node, int *n)
 {
 	cmd = NULL;
 	num = 0;
@@ -120,7 +82,38 @@ command *t_userinput (xmlNodePtr node, int *n)
 	return cmd;
 }
 
-void t_chapter (xmlNodePtr node)
+static void t_sect1 (xmlNodePtr node, void *data)
+{
+	int i, j;
+	char *title, *tmp;
+		
+	title = find_value(node->children, "title");
+
+	if (!title)
+	{
+		fprintf(stderr, "%s: No title found.\n", node->name);
+		return;
+	}
+
+	i = prof->n-1;
+	prof->ch[i].pkg = realloc(prof->ch[i].pkg, 
+			(++prof->ch[i].n)*sizeof(package));
+	j = prof->ch[i].n-1;
+	
+	tmp = strdog(lower_case(title), "version");
+	// TODO: Name and version are not correctly separated
+	prof->ch[i].pkg[j].vers = NULL;
+	prof->ch[i].pkg[j].name = strcut(title, 0, strlen(title)-
+		((prof->ch[i].pkg[j].vers) ? 1 : 0));
+	prof->ch[i].pkg[j].build = t_userinput(node->children, 
+		&prof->ch[i].pkg[j].n);
+	free(tmp);
+
+	if (!prof->ch[i].pkg[j].n)
+		prof->ch[i].n--;
+}
+
+static void t_chapter (xmlNodePtr node)
 {
 	int i = prof->n-1;
 	prof->ch[i].name = xmlGetProp(node, "xreflabel");
@@ -130,10 +123,9 @@ void t_chapter (xmlNodePtr node)
 	foreach(node->children, "sect1", (xml_handler_t)t_sect1, NULL);
 }
 
-profile *bookasprofile (xmlNodePtr node)
+profile *bookasprofile (xmlNodePtr node, replaceable *r)
 {
 	xmlNodePtr info = find_node(node, "bookinfo");
-	__r = init_repl(MOO_XML);
 
 	if (!info)
 	{

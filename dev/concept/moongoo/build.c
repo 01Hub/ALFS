@@ -1,10 +1,60 @@
+#include <errno.h>
 #include <string.h>
+#include <unistd.h>
 
 #include <build.h>
-#include <util.h>
-#include <repl.h>
+#include <libalfs.h>
 
-void build_paralell (profile *prof, char **filter, char **p1, char **p2)
+replaceable *r;
+
+static int core_exec (command build)
+{	
+	if (!strcmp(build.cmd, "cd"))
+		return chdir(build.arg[0]);
+
+	return -1;
+}
+
+int build_pkg (package pkg)
+{
+	int i;
+	
+	for (i=0;i<pkg.n;i++)
+	{
+		command *build = &pkg.build[i];
+		int j;
+		char *argv[3];
+
+		if (!strncmp(build->cmd, "__", 2))
+		{
+			build->cmd+=2;
+			if (core_exec(*build))
+			{
+				fprintf(stderr, "core_exec(): %s: %s\n", build->cmd, 
+					strerror(errno));
+				return -1;
+			}
+			continue;
+		}
+		
+		argv[0] = "sh";
+		argv[1] = "-c";
+		argv[2] = strcut(build->cmd, 0, strlen(build->cmd));
+		for (j=0;j<build->n;j++)
+			argv[2] = strdog2(argv[2], build->arg[j]);
+		
+		if (execvp(argv[0], argv))
+		{
+			perror("shell");
+			return -1;
+		}
+	}
+
+	return 0;
+}
+
+// TODO: Write shorter code for sed_paralell()
+void sed_paralell (profile *prof, char **filter, char **p1, char **p2)
 {
 	int i, j, k;
 	
@@ -12,7 +62,6 @@ void build_paralell (profile *prof, char **filter, char **p1, char **p2)
 		for (j=0;j<prof->ch[i].n;j++)
 			for (k=0;k<prof->ch[i].pkg[j].n;k++)
 			{
-				// TODO: Does not seem to work properly anymore.
 				int m = 0, o;
 				bool no = false;
 				package *pkg = &prof->ch[i].pkg[j];
@@ -44,7 +93,7 @@ void build_paralell (profile *prof, char **filter, char **p1, char **p2)
 							opt = p2[o];
 						o++;
 					}
-					new[0] = strdog(opt, get_option("PARALELL"));
+					new[0] = strdog(opt, get_option(r, "PARALELL"));
 					old = moo->arg;
 					moo->arg = new;
 					free(old);

@@ -4,9 +4,22 @@
 #include <alfs.h>
 #include <util.h>
 
-xmlDocPtr doc;
 role *filter = NULL;
 
+void print_links (profile prof)
+{
+	int i, j, k;
+
+	for (i=0;i<prof.n;i++)
+		for (j=0;j<prof.ch[i].n;j++)
+			for (k=0;k<prof.ch[i].pkg[j].m;k++)
+			{
+				download moo = prof.ch[i].pkg[j].dl[k];
+				printf("%s: %s\n", algo2str(moo.algo), moo.sum);
+				printf("%s://%s\n", proto2str(moo.proto), moo.url);
+			}
+}
+		
 void print_cmd (command cmd)
 {
 	int i=0;
@@ -30,7 +43,7 @@ void print_pkg (package pkg)
 	if (!pkg.vers)
 		printf("%s\n\n", pkg.name);
 	else
-		printf("%s-%s\n\n", pkg.name, pkg.vers);
+		printf("%s\nVersion: %s\n\n", pkg.name, pkg.vers);
 	term_reset();
 	
 	for (i=0;i<pkg.n;i++)
@@ -57,7 +70,7 @@ void print_profile (profile prof)
 	int i;
 
 	term_set(RESET, BLUE, BLACK);
-	printf("%s %s\n", prof.name, prof.vers);
+	printf("%s %s\n", prof.name, ((prof.vers) ? (prof.vers) : ""));
 	term_reset();
 	for (i=0;i<prof.n;i++)
 		print_chapter(prof.ch[i]);
@@ -180,19 +193,6 @@ char *find_value (xmlNodePtr node, char *str)
 	return xmlNodeGetContent(moo);
 }
 
-char *entity_val (char *name)
-{
-	xmlEntityPtr ent = xmlGetDocEntity(doc, name);
-	char *ret;
-	
-	if (!ent)
-		return NULL;
-	ret=(char *)malloc(ent->length+1);
-	strncpy(ret, ent->content, ent->length);
-	ret[ent->length]='\0';
-	return ret;
-}
-
 char *role2str (role role)
 {
 	switch (role)
@@ -232,8 +232,22 @@ role parse_role (xmlNodePtr node)
 		return SPAWN;
 
 	fprintf(stderr, "%s is an unknown role-attribute.\n", prop);
-	
 	return ROLE_NONE;
+}
+
+protocol parse_proto (xmlNodePtr node)
+{
+	char *prop = xmlGetProp(node, "type");
+
+	if (!prop)
+		return PROTO_NONE;
+	if (!strcmp(prop, "ftp"))
+		return FTP;
+	if (!strcmp(prop, "http"))
+		return HTTP;
+
+	fprintf(stderr, "%s is an unknown protocol.\n", prop);
+	return PROTO_NONE;
 }
 
 char *type2str (xmlElementType type)
@@ -328,4 +342,34 @@ package *search_pkg (profile *prof, char *name, char *ch)
 	}
 
 	return NULL;
+}
+
+char *algo2str (hash_algo algo)
+{
+	switch (algo)
+	{
+		case (ALGO_NONE):
+			return "none";
+		case (MD5):
+			return "md5";
+		case (SHA1):
+			return "sha1";
+		default:
+			return "unknown";
+	}
+}
+
+char *proto2str (protocol proto)
+{
+	switch (proto)
+	{
+		case (PROTO_NONE):
+			return "none";
+		case (HTTP):
+			return "http";
+		case (FTP):
+			return "ftp";
+		default:
+			return "unknown";
+	}
 }

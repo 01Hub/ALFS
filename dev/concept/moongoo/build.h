@@ -3,6 +3,9 @@
 
 #include <alfs.h>
 
-void build_paralell (profile *prof, char **filter, char **p1, char **p2);
+extern replaceable *r;
+
+int build_pkg (package pkg);
+void sed_paralell (profile *prof, char **filter, char **p1, char **p2);
 
 #endif
