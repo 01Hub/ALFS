@@ -22,6 +22,18 @@
       <utilizes>
 	<name>openssl</name>
       </utilizes>
+      <utilizes>
+      	<name>gnutls</name>
+      </utilizes>
+      <utilizes>
+	<name>uudeview</name>
+      </utilizes>
+      <utilizes>
+	<name>inn</name>
+      </utilizes>
+      <utilizes>
+	<name>libcanlock</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -39,9 +51,7 @@
         <param>--with-slrnpull</param>
 	<param>--enable-spool</param>
       </configure>
-      <make>
-        <param>LDFLAGS="-ldl"</param>
-      </make>
+      <make />
       <make>
         <param>install</param>
       </make>

@@ -34,6 +34,9 @@
 	<name>openldap</name>
       </utilizes>
       <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
 	<name>cyrus-sasl</name>
       </utilizes>
     </packageinfo>

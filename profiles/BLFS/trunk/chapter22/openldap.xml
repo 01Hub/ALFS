@@ -9,6 +9,9 @@
 %package_entities;
 %config_entities;
 
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
 ]>
 <alfs>
   <package name="openldap" version="&openldap-version;">
@@ -41,6 +44,7 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    &bootscripts-get;
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&openldap-directory;</base>
@@ -67,6 +71,15 @@
 	<name>/usr/lib/libl*-2.2.so.7.0.13</name>
       </permissions>
     </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-openldap1</param>
+      </make>
+    </stage>
+    &bootscripts-clean;
     <stage name="Cleanup">
       <remove>&build_dir;/&openldap-directory;</remove>
     </stage>

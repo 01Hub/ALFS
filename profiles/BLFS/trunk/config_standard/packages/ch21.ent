@@ -11,6 +11,7 @@
 <!ENTITY exim-version "4.43">
 <!ENTITY exim-package "exim-&exim-version;.tar.bz2">
 <!ENTITY exim-directory "exim-&exim-version;">
+<!ENTITY exim-db43-patch "exim-&exim-version;-db43-1.patch">
 
 <!ENTITY qpopper-version   "4.0.5">
 <!ENTITY qpopper-package   "qpopper&qpopper-version;.tar.gz">

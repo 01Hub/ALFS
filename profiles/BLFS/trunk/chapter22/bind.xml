@@ -28,7 +28,7 @@
       	<name>net-tools</name>
       </utilizes>
       <utilizes>
-	<name>net-dns</name>
+	<name>Net-DNS</name>
       </utilizes>
       <utilizes>
 	<name>openjade</name>
