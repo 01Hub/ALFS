@@ -202,8 +202,8 @@
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.bz2">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
-<!ENTITY libxml2-md5 "16c29665a0b1eaa03b85ee8d21dc539f">
-<!ENTITY libxml2-version "2.6.12">
+<!ENTITY libxml2-md5 "1ad0827b95e17e546265f2c4da001a6a">
+<!ENTITY libxml2-version "2.6.16">
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
