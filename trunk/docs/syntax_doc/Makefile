@@ -1,4 +1,4 @@
-BASEDIR=./
+BASEDIR=./render/
 XSLROOTDIR=/usr/share/docbook-xsl/
 
 clean:
