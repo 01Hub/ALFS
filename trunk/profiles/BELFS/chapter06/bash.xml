@@ -38,11 +38,9 @@
 
 		<make />
 
-<!--
 		<make>
 			<param>tests</param>
 		</make>
--->
 
 		<make>
 			<param>install</param>

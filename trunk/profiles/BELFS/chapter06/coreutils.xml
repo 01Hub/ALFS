@@ -40,7 +40,7 @@
 		<make>
 			<param>install-root</param>
 		</make>
-<!--
+
 		<textdump mode="append">
 			<file>/etc/group</file>
 			<content>
@@ -69,7 +69,6 @@
 			<param>/etc/passwd</param>
 			<param>/etc/group</param>
 		</execute>
--->
 
 		<make>
 			<param>install</param>
