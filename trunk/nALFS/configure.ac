@@ -1,7 +1,6 @@
-AC_INIT(nALFS,1.1.9-pre,[],nALFS)
+AC_INIT(nALFS,CVS,[],nALFS)
 AC_CONFIG_AUX_DIR([gnubuild])
 AM_INIT_AUTOMAKE([foreign dist-bzip2 subdir-objects])
-AC_REVISION([$Revision: 1.2 $])
 AM_MAINTAINER_MODE
 AC_CONFIG_SRCDIR([src/nalfs.c])
 AC_PROG_CC
