@@ -3,6 +3,8 @@
         <packageinfo>
 	        <requires><name>freetype</name></requires>
 	        <requires><name>expat</name></requires>
+
+		<utilizes><name>docbook-utils</name></utilizes>
 	</packageinfo>
 
 	<stage name="Unpacking a package.">

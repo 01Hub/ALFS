@@ -1,5 +1,3 @@
-
-
 <!-- chapter 3 -->
 <!ENTITY configusers SYSTEM "./chapter03/configusers.xml">
 <!ENTITY issue     SYSTEM "./chapter03/issue.xml">
@@ -10,7 +8,6 @@
 <!ENTITY shells    SYSTEM "./chapter03/shells.xml">
 <!ENTITY netfs     SYSTEM "./chapter03/netfs.xml">
 <!ENTITY compressman   SYSTEM "./chapter03/maninfo.xml">
-
 
 <!-- chapter 4 -->
 <!ENTITY cracklib  SYSTEM "./chapter04/cracklib.xml">
@@ -60,12 +57,12 @@
 <!ENTITY libpcap    SYSTEM "./chapter08/libpcap.xml">
 
 <!-- chapter 9 -->
-<!ENTITY lcms       SYSTEM "./chapter09/lcms.xml">
 <!ENTITY libjpeg    SYSTEM "./chapter09/libjpeg.xml">
 <!ENTITY libpng     SYSTEM "./chapter09/libpng.xml">
 <!ENTITY libtiff    SYSTEM "./chapter09/libtiff.xml">
 <!ENTITY libungif   SYSTEM "./chapter09/libungif.xml">
 <!ENTITY libmng     SYSTEM "./chapter09/libmng.xml">
+<!ENTITY lcms       SYSTEM "./chapter09/lcms.xml">
 <!ENTITY freetype   SYSTEM "./chapter09/freetype.xml">
 <!ENTITY fontconfig SYSTEM "./chapter09/fontconfig.xml">
 <!ENTITY imlib      SYSTEM "./chapter09/imlib.xml">

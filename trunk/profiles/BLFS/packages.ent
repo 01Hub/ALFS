@@ -184,10 +184,6 @@
 
 <!--************* packages for chapter 9 *************-->
 
-<!ENTITY lcms-version   "1.12">
-<!ENTITY lcms-package   "lcms-1.12.tar.gz">
-<!ENTITY lcms-directory "lcms-1.12">
-
 <!ENTITY libjpeg-version   "6b">
 <!ENTITY libjpeg-package   "jpegsrc.v6b.tar.gz">
 <!ENTITY libjpeg-directory "jpeg-6b">
@@ -195,6 +191,8 @@
 <!ENTITY libpng-version   "1.2.5">
 <!ENTITY libpng-package   "libpng-1.2.5.tar.gz">
 <!ENTITY libpng-directory "libpng-1.2.5">
+
+<!ENTITY libpng-patch     "libpng-1.2.5-link-to-proper-libs.patch">
 
 <!ENTITY libtiff-version   "3.6.1">
 <!ENTITY libtiff-package   "tiff-v3.6.1.tar.gz">
@@ -206,20 +204,23 @@
 
 <!ENTITY libungif-patch     "libungif-4.1.0b1-va_start.patch">
 
-<!ENTITY libmng-version   "1.0.6">
-<!ENTITY libmng-package   "libmng-1.0.6.tar.gz">
-<!ENTITY libmng-directory "libmng-1.0.6">
+<!ENTITY libmng-version   "1.0.7">
+<!ENTITY libmng-package   "libmng-1.0.7.tar.gz">
+<!ENTITY libmng-directory "libmng-1.0.7">
 
-<!ENTITY freetype-version   "2.1.5">
-<!ENTITY freetype-package   "freetype-2.1.5.tar.bz2">
-<!ENTITY freetype-directory "freetype-2.1.5">
+<!ENTITY lcms-version   "1.12">
+<!ENTITY lcms-package   "lcms-1.12.tar.gz">
+<!ENTITY lcms-directory "lcms-1.12">
 
-<!ENTITY freetype-patch1     "freetype-2.1.5-ahhint.patch">
-<!ENTITY freetype-patch2     "freetype-2.1.5-bytecode-interpreter.patch">
+<!ENTITY freetype-version   "2.1.7">
+<!ENTITY freetype-package   "freetype-2.1.7.tar.bz2">
+<!ENTITY freetype-directory "freetype-2.1.7">
 
-<!ENTITY fontconfig-version   "2.2.1">
-<!ENTITY fontconfig-package   "fontconfig-2.2.1.tar.gz">
-<!ENTITY fontconfig-directory "fontconfig-2.2.1">
+<!ENTITY freetype-patch     "freetype-2.1.5-bytecode-interpreter.patch">
+
+<!ENTITY fontconfig-version   "2.2.2">
+<!ENTITY fontconfig-package   "fontconfig-2.2.2.tar.gz">
+<!ENTITY fontconfig-directory "fontconfig-2.2.2">
 
 <!ENTITY imlib-version   "1.9.14">
 <!ENTITY imlib-package   "imlib-1.9.14.tar.gz">
@@ -235,9 +236,9 @@
 
 <!ENTITY svgalib-patch     "svgalib-1.4.3-gcc3-1.patch">
 
-<!ENTITY directfb-version   "0.9.19">
-<!ENTITY directfb-package   "DirectFB-0.9.19.tar.gz">
-<!ENTITY directfb-directory "DirectFB-0.9.19">
+<!ENTITY directfb-version   "0.9.20">
+<!ENTITY directfb-package   "DirectFB-0.9.20.tar.gz">
+<!ENTITY directfb-directory "DirectFB-0.9.20">
 
 <!ENTITY directfb-extra-version   "0.9.16">
 <!ENTITY directfb-extra-package   "DirectFB-extra-0.9.16.tar.gz">

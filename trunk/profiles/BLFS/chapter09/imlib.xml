@@ -1,12 +1,7 @@
 <package name="imlib" version="&imlib-version;">
 
         <packageinfo>
-                <requires><name>xfree86</name></requires>
-                <requires><name>libjpeg</name></requires>
-                <requires><name>libtiff</name></requires>
                 <requires><name>libungif</name></requires>
-                <requires><name>libpng</name></requires>
-                <requires><name>glib</name></requires>
                 <requires><name>gtk+</name></requires>
         </packageinfo>
 

@@ -5,12 +5,23 @@
 			<archive>&packages_dir;/&libpng-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
+		<copy>
+		        <source>&packages_dir;/&libpng-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
 			<base>&build_dir;/&libpng-directory;</base>
 		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&libpng-patch;</param>
+		</patch>
+
 
 		<make>
 		        <param>prefix=/usr</param>
@@ -30,6 +41,7 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&libpng-directory;</remove>
+		<remove>&build_dir;/&libpng-patch;</remove>
 	</stage>
 
 
