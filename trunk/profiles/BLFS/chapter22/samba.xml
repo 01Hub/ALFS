@@ -1,4 +1,4 @@
-<package name="samba" version="2.2.8a">
+<package name="samba" version="&samba-version;">
 
 	<stage name="Unpacking.">
 		<unpack>
@@ -18,9 +18,14 @@
 			<base>&build_dir;/&samba-directory;/source</base>
 		</stageinfo>
 
+		<patch base="&build_dir;/&samba-directory;">
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&samba-maintainer-patch;</param>
+		</patch>
+
 		<mkdir>
 			<option>parents</option>
-			<name>/etc/samba/private</name>
 			<name>/var/cache/samba</name>
 		</mkdir>
 
@@ -39,7 +44,24 @@
 			<param>install</param>
 		</make>
 
-		<remove>/usr/private</remove>
+		<execute command="install -m755 nsswitch/libnss_win{s,bind.so} /lib" />
+
+		<link base="/lib">
+			<option>force</option>
+			<target>libnss_winbind.so</target>
+			<name>libnss_winbind.so.2</name>
+		</link>
+
+		<link base="/lib">
+			<option>force</option>
+			<target>libnss_wins.so</target>
+			<name>libnss_wins.so.2</name>
+		</link>
+
+		<copy base="&build_dir;/&samba-directory;">
+			<source>examples/smb.conf.default</source>
+			<destination>/etc/samba</destination>
+		</copy>
 	
 		<textdump mode="append">
 			<file>/etc/services</file>
@@ -54,61 +76,19 @@
 			=swat stream tcp nowait.400 root /usr/sbin/swat swat
 			</content>
 		</textdump>
-	</stage>
 
-	<stage name="Configuring samba">
-		<mkdir>
-			<option>parents</option>
-			<name>/var/lib/samba</name>
-			<name>/var/lib/samba/netlogon</name>
-			<name>/var/lib/samba/ntprofile</name>
-			<name>/var/lib/samba/profiles</name>
-		</mkdir>
-
-		<permissions mode="1777">
-			<option>recursive</option>
-			<name>/var/lib/samba</name>
-		</permissions>
-
-		<textdump>
-			<file>/etc/samba/smb.conf</file>
+		<textdump mode="append">
+			<file>/etc/xinetd.conf</file>
 			<content>
-			=[global]
-			=    netbios name = SAMBABOX
-			=    workgroup = DOMAIN01
-			=    os level = 64
-			=    preferred master = yes
-			=    domain master = yes
-			=    local master = yes
-			=    security = user
-			=    encrypt passwords = yes
-			=    domain logons = yes
-			=    log file = /var/log/log.%m
-			=    log level = 1
-			=    logon path = \\%N\home\%u\windows
-			=    logon drive = H:
-			=    logon home = \\homeserver\%u\windows
-			=    logon script = logon.cmd
-			=[netlogon]
-			=      path = /var/lib/samba/netlogon
-			=      read only = yes
-			=      write list = ntadmin
-			=[profiles]
-			=      path = /var/lib/samba/ntprofile
-			=      read only = no
-			=      create mask = 0600
-			=      directory mask = 0700
-			=; World writable share for testing
-			=[tmp]
-			=comment = Temporary file space
-			=        path = /tmp
-			=        read only = no
-			=        public = yes
-			=[home]
-			=comment = Users' home directories
-			=        path = /home
-			=        read only = no
-			=        public = no
+			={
+			=    port            = 901
+			=    socket_type     = stream
+			=    wait            = no
+			=    only_from       = 127.0.0.1
+			=    user            = root
+			=    server          = /usr/sbin/swat
+			=    log_on_failure  += USERID
+			=}
 			</content>
 		</textdump>
 	</stage>
@@ -120,6 +100,16 @@
 
 		<make>
 			<param>install-samba</param>
+		</make>
+	</stage>
+
+	<stage name="Installing winbind bootscript">
+		<stageinfo>
+			<base>&build_dir;/&samba-directory;</base>	
+		</stageinfo>
+
+		<make>
+			<param>install-winbind</param>
 		</make>
 	</stage>
 

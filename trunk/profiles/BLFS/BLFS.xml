@@ -407,6 +407,7 @@
 <stage name="Chapter 31 (GNOME Additional Packages)">
     &libgnomeprint;
     &libgnomeprintui;
+    &gal;
     &gtkhtml;
     &libgtkhtml;
     &yelp;
@@ -418,7 +419,6 @@
     &file-roller;
     &gconf-editor;
     &gnome-utils;
-    &gal;
     &gnome-system-monitor;
     &gnome-media;
     &nautilus-media;

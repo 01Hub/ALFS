@@ -6,10 +6,11 @@ http://unc.dl.sourceforge.net/sourceforge/leafnode/leafnode-1.9.43.rel.tar.bz2
 
 ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-3.8.1p1.tar.gz
 
-ftp://gd.tuwien.ac.at/utils/admin-tools/rsync/rsync-2.6.0.tar.gz
+ftp://gd.tuwien.ac.at/utils/admin-tools/rsync/rsync-2.6.2.tar.gz
 
-ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.1.29.tgz
+ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.1.30.tgz
 
-http://us1.samba.org/samba/ftp/old-versions/samba-2.2.8a.tar.bz2
+ftp://ftp.samba.org/pub/samba/samba-3.0.4.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/5.1/samba-3.0.4-maintainer.patch
 
 ftp://gd.tuwien.ac.at/infosys/servers/xinetd/xinetd-2.3.13.tar.gz
