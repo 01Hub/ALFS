@@ -19,9 +19,11 @@
       <requires>
         <name>expat</name>
       </requires>
-      <utilizes>
+      <!-- The book lists docbook-utils as an optional dependency,
+           but the way we build fontconfig makes it a requirement. -->
+      <requires>
         <name>docbook-utils</name>
-      </utilizes>
+      </requires>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -37,14 +39,14 @@
         <param>--prefix=/usr</param>
         <param>--sysconfdir=/etc</param>
       </configure>
-      <make />
-      <make>
-        <param>install</param>
-      </make>
       <execute command="sed -i -e '/^&lt;\/fontconfig&gt;/i
                         &lt;dir&gt;/usr/X11R6/lib/X11/fonts/TTF&lt;/dir&gt;
                         &lt;dir&gt;usr/X11R6/lib/X11/fonts/Type1&lt;/dir&gt;
                               &lt;dir&gt;/usr/X11R6/lib/X11/fonts/truetype&lt;/dir&gt;' /etc/fonts/local.conf" />
+      <make />
+      <make>
+        <param>install</param>
+      </make>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&fontconfig-directory;</remove>

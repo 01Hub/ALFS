@@ -14,10 +14,13 @@
   <package name="imlib" version="&imlib-version;">
     <packageinfo>
       <requires>
+        <name>gtk+</name>
+      </requires>
+      <requires>
         <name>libungif</name>
       </requires>
       <requires>
-        <name>gtk+</name>
+        <name>giflib</name>
       </requires>
     </packageinfo>
     <stage name="Unpacking">

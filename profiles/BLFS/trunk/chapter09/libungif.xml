@@ -12,6 +12,11 @@
 ]>
 <alfs>
   <package name="libungif" version="&libungif-version;">
+    <packageinfo>
+      <requires>
+        <name>&ximpl;</name>
+      </requires>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&libungif-package;</archive>
@@ -22,11 +27,6 @@
       <stageinfo>
         <base>&build_dir;/&libungif-directory;</base>
       </stageinfo>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&libungif-patch;</param>
-      </patch>
       <configure>
         <param>--prefix=/usr</param>
       </configure>

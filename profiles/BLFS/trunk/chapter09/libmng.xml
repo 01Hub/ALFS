@@ -30,7 +30,7 @@
       <stageinfo>
         <base>&build_dir;/&libmng-directory;</base>
       </stageinfo>
-      <execute command="./autogen.sh" />
+      <execute command="sh autogen.sh" />
       <configure>
         <param>--prefix=/usr</param>
       </configure>

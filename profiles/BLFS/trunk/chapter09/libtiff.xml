@@ -27,17 +27,21 @@
     <stageinfo>
       <base>&build_dir;/&libtiff-directory;</base>
     </stageinfo>
+    <patch>
+      <param>-N</param>
+      <param>-p1</param>
+      <param>-i &packages_dir;/&libtiff-libtool_fix-patch;</param>
+    </patch>
     <configure>
       <param>--prefix=/usr</param>
-      <param>--noninteractive</param>
-      <param>--with-DIR_MAN=/usr/share/man</param>
-      <param>--with-ZIP=yes</param>
-      <param>--with-DIR_GZLIB=/usr/lib</param>
+      <param>--disable-jpeg</param>
     </configure>
     <make />
     <make>
       <param>install</param>
-    </make>&ldconfig;</stage>
+    </make>
+    &ldconfig;
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libtiff-directory;</remove>
     </stage>

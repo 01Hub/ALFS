@@ -25,6 +25,9 @@
       <utilizes>
         <name>libungif</name>
       </utilizes>
+      <utilizes>
+        <name>giflib</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
