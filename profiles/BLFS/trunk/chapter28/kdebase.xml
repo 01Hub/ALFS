@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch28.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,52 +10,62 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="kdebase" version="&kdebase-version;">
-
-        <packageinfo>
-		<requires><name>kdelibs</name></requires>
-                <utilizes><name>libxml2</name></utilizes>
-        	<utilizes><name>j2sdk</name></utilizes>
-        	<utilizes><name>openssl</name></utilizes>
-        	<utilizes><name>linuxpam</name></utilizes>
-        	<utilizes><name>libtiff</name></utilizes>
-		<utilizes><name>openldap</name></utilizes>
-		<utilizes><name>pkgconfig</name></utilizes>
-		<utilizes><name>libart-lgpl</name></utilizes>
-		<utilizes><name>samba</name></utilizes>
-        </packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&kdebase-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&kdebase-directory;</base>
-		</stageinfo>
-
-		<configure>
-                        <param>--prefix=&kde-prefix;</param>
-                        <param>--disable-debug</param>
-                        <param>--disable-dependency-tracking</param>
-		</configure>
-
-		<make />
-
-		<make>
-			<param>install</param>
-		</make>
-
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&kdebase-directory;</remove>
-	</stage>
-
-</package>
+  <package name="kdebase" version="&kdebase-version;">
+    <packageinfo>
+      <requires>
+        <name>kdelibs</name>
+      </requires>
+      <utilizes>
+        <name>libxml2</name>
+      </utilizes>
+      <utilizes>
+        <name>j2sdk</name>
+      </utilizes>
+      <utilizes>
+        <name>openssl</name>
+      </utilizes>
+      <utilizes>
+        <name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+        <name>libtiff</name>
+      </utilizes>
+      <utilizes>
+        <name>openldap</name>
+      </utilizes>
+      <utilizes>
+        <name>pkgconfig</name>
+      </utilizes>
+      <utilizes>
+        <name>libart-lgpl</name>
+      </utilizes>
+      <utilizes>
+        <name>samba</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&kdebase-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&kdebase-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=&kde-prefix;</param>
+        <param>--disable-debug</param>
+        <param>--disable-dependency-tracking</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&kdebase-directory;</remove>
+    </stage>
+  </package>
 </alfs>
