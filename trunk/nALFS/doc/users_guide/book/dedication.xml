@@ -3,4 +3,9 @@
 
 <para>This book is dedicated to the LFS and ALFS communities.</para>
 
+<warning><para>This version of the &book-product; Users Guide is under
+heavy development and is not ready for prime-time use.  Please direct your
+attention to the <filename>README</filename> in the root of the
+&book-product; tarball.</para></warning>
+
 </dedication>

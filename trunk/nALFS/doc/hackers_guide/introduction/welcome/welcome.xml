@@ -1,8 +1,12 @@
 <chapter id="intro-introduction" xreflabel="Welcome">
 <?dbhtml filename="welcome/welcome.html" dir="introduction"?>
-<title>Introduction</title>
+<title>Welcome to the &book-product; Hackers Guide</title>
+
+<sect1>
 
 <para>PAGE TO BE WRITTEN</para>
+
+</sect1>
 
 &intro-welcome-acknowledgements;
 &intro-welcome-conventions;
