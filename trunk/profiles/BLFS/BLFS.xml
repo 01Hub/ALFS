@@ -32,7 +32,7 @@
 
 ]>
 
-<alfs version="3.1">
+<alfs version="3.1" xmlns:xi="http://www.w3.org/2001/XInclude">
 
 <stage name="Beyond Linux From Scratch">
     <stageinfo>
@@ -53,15 +53,15 @@
 
 <stage name="Chapter 3 (After LFS Configuration Issues)">
 
-    &configusers;
-    &inputrc;
-    &bash_startup;
-    &vimrc;
-    &issue;
-    &shells;
-    &random;
-    &compressman;
-    &netfs;
+    <xi:include href="chapter03/configusers.xml" />
+    <xi:include href="chapter03/inputrc.xml" />
+    <xi:include href="chapter03/bash_startup.xml" />
+    <xi:include href="chapter03/vimrc.xml" />
+    <xi:include href="chapter03/issue.xml" />
+    <xi:include href="chapter03/shells.xml" />
+    <xi:include href="chapter03/random.xml" />
+    <xi:include href="chapter03/maninfo.xml" />
+    <xi:include href="chapter03/netfs.xml" />
 
 </stage>
 
