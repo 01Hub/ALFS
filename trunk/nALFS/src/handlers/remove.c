@@ -150,6 +150,8 @@ static int remove_content(const element_s * const element,
 	return 0;
 }
 
+#if HANDLER_SYNTAX_2_0 || HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+
 static int remove_valid_data(const element_s * const element)
 {
 	struct remove_data *data = (struct remove_data *) element->handler_data;
@@ -162,17 +164,7 @@ static int remove_valid_data(const element_s * const element)
 	return 1;
 }
 
-static int remove_valid_data_v3_2(const element_s * const element)
-{
-	struct remove_data *data = (struct remove_data *) element->handler_data;
-
-	if (!data->file_count) {
-		Nprint_err("<%s>: <file> must be specified.", element->handler->name);
-		return 0;
-	}
-
-	return 1;
-}
+#endif /* HANDLER_SYNTAX_2_0 || HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
 
 #if HANDLER_SYNTAX_2_0
 
@@ -255,6 +247,18 @@ static int remove_main_ver3_2(const element_s * const element)
     	}
 
 	return status;
+}
+
+static int remove_valid_data_v3_2(const element_s * const element)
+{
+	struct remove_data *data = (struct remove_data *) element->handler_data;
+
+	if (!data->file_count) {
+		Nprint_err("<%s>: <file> must be specified.", element->handler->name);
+		return 0;
+	}
+
+	return 1;
 }
 
 #endif
