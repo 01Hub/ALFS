@@ -120,7 +120,7 @@ build a static binary of nALFS, the libnss libraries from your build
 system will still be required on the system that you wish to run nALFS
 on. This will be addressed in a future release of nALFS.
 
-Warning: If you build a static nALFS binary and choose to include CURL
+Warning: If you build a static nALFS binary and choose to include curl
 (libcurl) support for downloading files in your profiles, you may
 experience problems due to libcurl's use of the resolver library provided
 by glibc.
@@ -131,6 +131,17 @@ by glibc.
 
 For actual parsing of XML profiles, nALFS uses libxml2 (a.k.a. gnome-xml)
 library. You can find it on its homepage, http://xmlsoft.org/.
+
+If you use <download> and/or <unpack> elements in your profiles, and wish
+to have the source file contents verified by computing digests, you can
+use MD5 digests without requiring any additional libraries while building
+nALFS. If you wish to use digests other than MD5 (i.e. SHA-1), nALFS can
+be built using the OpenSSL library from http://www.openssl.org/.
+
+If you use <download> elements in your profiles and wish to get better
+download performance (and more reliability) than using "wget" for the
+download processes, nALFS can be built using the curl libraries that are
+included in the curl distribution from http://curl.haxx.se/.
 
 
 4. Compiling and installing
