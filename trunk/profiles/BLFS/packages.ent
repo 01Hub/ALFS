@@ -219,9 +219,18 @@
 <!ENTITY bc-package   "bc-1.06.tar.gz">
 <!ENTITY bc-directory "bc-1.06">
 
+<!ENTITY bc-patch1    "bc-1.06-flex-invocation.patch">
+<!ENTITY bc-patch2    "bc-1.06-readline.patch">
+
 <!ENTITY rep-gtk-version   "0.18">
 <!ENTITY rep-gtk-package   "rep-gtk-0.18.tar.gz">
 <!ENTITY rep-gtk-directory "rep-gtk-0.18">
+
+<!ENTITY compface-version   "1.4">
+<!ENTITY compface-package   "compface-1.4.tar.gz">
+<!ENTITY compface-directory "compface-1.4">
+
+<!ENTITY compface-patch     "compface-1.4-errno-2.patch">
 
 <!--************* packages for chapter 11 *************-->
 

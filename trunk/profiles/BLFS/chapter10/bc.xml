@@ -1,10 +1,24 @@
 <package name="bc" version="&bc-version;">
 
+        <packageinfo>
+                <requires><name>readline</name></requires>
+	</packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&bc-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&bc-patch1;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+
+		<copy>
+		        <source>&packages_dir;/&bc-patch2;</source>
+			<destination>&build_dir;</destination>
+		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
@@ -12,8 +26,21 @@
 			<base>&build_dir;/&bc-directory;</base>
 		</stageinfo>
 
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&bc-patch1;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&bc-patch2;</param>
+		</patch>
+
 		<configure>
 			<param>--prefix=/usr</param>
+			<param>--with-readline</param>
 		</configure>
 
 		<make />
@@ -25,6 +52,8 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&bc-directory;</remove>
+		<remove>&build_dir;/&bc-patch1;</remove>
+		<remove>&build_dir;/&bc-patch2;</remove>
 	</stage>
 
 </package>

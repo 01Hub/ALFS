@@ -68,6 +68,7 @@
 <!-- chapter 10 -->
 <!ENTITY bc         SYSTEM "./chapter10/bc.xml">
 <!ENTITY rep-gtk    SYSTEM "./chapter10/rep-gtk.xml">
+<!ENTITY compface   SYSTEM "./chapter10/compface.xml">
 
 <!-- chapter 11 -->
 <!ENTITY gpm        SYSTEM "./chapter11/gpm.xml">

@@ -39,6 +39,7 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&libungif-directory;</remove>
+		<remove>&build_dir;/&libungif-patch;</remove>
 	</stage>
 
 </package>
