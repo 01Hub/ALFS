@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch22.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+%files;
+
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
+]>
+<alfs>
+  <package name="rsync" version="&rsync-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&rsync-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    &bootscripts-get;
+    <stage name="Creating user and group">
+      <execute command="getent group rsyncd &gt; /dev/null || groupadd">
+        <param>rsyncd</param>
+      </execute>
+      <execute command="getent passwd rsyncd &gt; /dev/null || useradd">
+        <param>-c rsyncd</param>
+        <param>-d /home/rsync</param>
+        <param>-g rsyncd</param>
+        <param>-s /bin/false</param>
+        <param>rsyncd</param>
+      </execute>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&rsync-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <copy base="&blfs-config;/etc">
+	<source>rsyncd.conf</source>
+	<destination>/etc</destination>
+      </copy>
+    </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-rsyncd</param>
+      </make>
+    </stage>    
+    &bootscripts-clean;
+    <stage name="Cleanup">
+      <remove>&build_dir;/&rsync-directory;</remove>
+    </stage>
+  </package>
+</alfs>

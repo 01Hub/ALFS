@@ -12,6 +12,11 @@
 ]>
 <alfs>
   <package name="bind-utils" version="&bind-utils-version;">
+    <packageinfo>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking.">
       <unpack>
         <archive>&packages_dir;/&bind-utils-package;</archive>

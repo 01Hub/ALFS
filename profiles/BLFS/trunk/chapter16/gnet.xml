@@ -34,6 +34,7 @@
       <make>
         <param>install</param>
       </make>
+      &ldconfig;
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gnet-directory;</remove>

@@ -40,6 +40,12 @@
     <utilizes>
       <name>doxygen</name>
     </utilizes>
+    <utilizes>
+      <name>net-snmp</name>
+    </utilizes>
+    <utilizes>
+      <name>adns</name>
+    </utilizes>
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>

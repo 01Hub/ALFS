@@ -17,6 +17,9 @@
         <name>openssl</name>
       </utilizes>
       <utilizes>
+	<name>gnutls</name>
+      </utilizes>
+      <utilizes>
         <name>&mta-impl;</name>
       </utilizes>
       <utilizes>
@@ -27,6 +30,12 @@
       </utilizes>
       <utilizes>
 	<name>slang</name>
+      </utilizes>
+      <utilizes>
+	<name>ncompress</name>
+      </utilizes>
+      <utilizes>
+	<name>sharutils</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
