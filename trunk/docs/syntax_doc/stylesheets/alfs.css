@@ -58,6 +58,13 @@ DIV.book DIV.titlepage H2.subtitle
     FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
     TEXT-ALIGN: center
 }
+DIV.preface DIV.titlepage H2.title
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 16pt;
+    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
+    TEXT-ALIGN: left
+}
 DIV.chapter DIV.titlepage H2.title
 {
     FONT-WEIGHT: bold;
