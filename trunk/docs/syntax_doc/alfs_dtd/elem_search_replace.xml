@@ -27,8 +27,8 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>search_replace</filename> is one of the many
-main operation elements.  It is used to perform a search and replace
+<para>The element <filename>search_replace</filename> is one of the
+top-level operation elements.  It is used to perform a search and replace
 operation of a file.</para>
 
 <para>The sub-element <filename>file</filename> contains the

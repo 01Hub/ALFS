@@ -27,7 +27,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>mkdir</filename> is one of the many main
+<para>The element <filename>mkdir</filename> is one of the top-level
 operation elements. It describes the creation of one (or several)
 directory(ies).</para>
 

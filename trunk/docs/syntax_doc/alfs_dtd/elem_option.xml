@@ -23,8 +23,8 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>option</filename> allows to specify an option
-of the englobing element.</para>
+<para>The element <filename>option</filename> allows you to specify an option
+of the parent element.</para>
 
 </sect2>
 

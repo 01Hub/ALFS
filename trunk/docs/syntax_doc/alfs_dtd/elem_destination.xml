@@ -22,8 +22,8 @@
 <title>Description</title>
 
 <para>The element <filename>destination</filename> is used to specify the
-name of the destination file or directory when processing an element it
-occurs in.</para> 
+name of the destination file or directory when processing an element in
+which it occurs</para>
 
 </sect2>
 

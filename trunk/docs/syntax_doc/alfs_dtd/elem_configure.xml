@@ -27,7 +27,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>configure</filename> is one of the many main
+<para>The element <filename>configure</filename> is one of the top-level
 operation elements. The element <filename>configure</filename> is used to
 describe the command <userinput>configure</userinput>.</para>
 

@@ -26,10 +26,10 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>download</filename> is one of the many main
+<para>The element <filename>download</filename> is one of the top-level
 operation elements. It is used to specify one or several URLs from which a
 file can be downloaded, and optionally a digest to check that the file
-being downloaded if the right one.</para>
+being downloaded is the right one.</para>
 
 <para>The sub-element <filename>file</filename> contains the name of the
 file to be downloaded.</para>

@@ -27,8 +27,9 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>textdump</filename> is one of the many main
-operation elements.</para>
+<para>The element <filename>textdump</filename> is one of the top-level
+operation elements. It allows you to create a text file containing
+specified text.</para>
 
 <para>The sub-element <filename>file</filename> contains the name of the
 file to be created.</para>
@@ -39,12 +40,12 @@ content of the file being created when processing a
 content of this element, one removes the leading blanks up to and including
 a '=' character.</para>
 
-<para>The attribute <filename>base</filename> allows to specify the
+<para>The attribute <filename>base</filename> allows you to specify the
 directory in which the file creation will be perforemd. See
 <xref linkend="elem_base"/>.</para>
 
-<para>The attribute <filename>mode</filename> allows to specify the append
-creation mode.</para>
+<para>The attribute <filename>mode</filename> allows you to specify the
+append creation mode.</para>
 
 </sect2>
 

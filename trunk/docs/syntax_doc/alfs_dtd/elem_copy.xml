@@ -27,7 +27,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>copy</filename> is one of the many main
+<para>The element <filename>copy</filename> is one of the top-level
 operation elements. It is used to copy a file and/or directory into a
 destination file or directory.</para>
 

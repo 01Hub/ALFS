@@ -18,7 +18,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>replace</filename> allows to specify the
+<para>The element <filename>replace</filename> allows you to specify the
 replacement string in a search and replace operation.</para>
 
 </sect2>

@@ -22,7 +22,7 @@
 <title>Description</title>
 
 <para>The element <filename>prefix</filename> provides a means to
-specify an environment variable or some other prefix to the englobing
+specify an environment variable or some other prefix to the parent
 element.</para>
 
 </sect2>

@@ -27,7 +27,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>package</filename> is one of the many main
+<para>The element <filename>package</filename> is one of the top-level
 operation elements.  It describes the build process of a package. The
 actual build process is described by the <filename>stage</filename>
 sub-elements.</para>
