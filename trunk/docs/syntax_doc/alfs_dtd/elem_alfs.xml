@@ -11,8 +11,8 @@
                      patch | permissions | remove | search_replace |
                      stage | textdump | unpack)*)&gt;
 &lt;!ATTLIST alfs
-          base        CDATA #IMPLIED
-          version     CDATA #FIXED &quot;3.1&quot;&gt;
+          base       CDATA #IMPLIED
+          version    CDATA #FIXED &quot;3.1&quot;&gt;
 </synopsis>
 
 <para>See also&nbsp;:&nbsp;&nbsp;
