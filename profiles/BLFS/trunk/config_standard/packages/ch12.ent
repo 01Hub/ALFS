@@ -80,9 +80,9 @@
 <!ENTITY Module-Info-package   "Module-Info-&Module-Info-version;.tar.bz2">
 <!ENTITY Module-Info-directory "Module-Info-&Module-Info-version;">
 
-<!ENTITY Module-Corelist-version   "0.1.97">
-<!ENTITY Module-Corelist-package   "Module-Corelist-&Module-Corelist-version;.tar.bz2">
-<!ENTITY Module-Corelist-directory "Module-Corelist-&Module-Corelist-version;">
+<!ENTITY Module-CoreList-version   "0.1.97">
+<!ENTITY Module-CoreList-package   "Module-CoreList-&Module-CoreList-version;.tar.bz2">
+<!ENTITY Module-CoreList-directory "Module-CoreList-&Module-CoreList-version;">
 
 <!ENTITY HTML-Parser-version   "3.44">
 <!ENTITY HTML-Parser-package   "HTML-Parser-&HTML-Parser-version;.tar.bz2">
