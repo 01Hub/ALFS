@@ -3,64 +3,6 @@
 <title>CVS</title>
 
 <sect2>
-<title>Editing source files</title>
-
-<para>The &book-product; build system, because it uses
-<filename>automake</filename>, has full dependency tracking on all files used
-to build the binaries. This will reduce your rebuilding time as you edit
-header files and source files, as the make system will know exactly what must
-be rebuilt.</para>
-
-<para>In addition, if you are going to make changes to
-<filename>bootstrap</filename>, you should add the
-<filename>&quot;--enable-maintainer-mode&quot;</filename> parameter to your
-<filename>configure</filename> command. With this done, each time you edit
-and re-run <filename>bootstrap</filename>, the <filename>Makefile</filename>
-will automatically re-run <filename>configure</filename> to make your changes
-take effect. Be warned though, that if you manually edit
-<filename>Makefile.am</filename> or <filename>configure.ac<filename>, you must 
-modify the <filename>bootstrap</filename> script to incorporate your changes, 
-because these files are not stored in the <acronym>CVS</acronym>
-repository.</para>
-
-<para>If you add any C source files to the tree, you will need to rerun the
-<filename>bootstrap</filename> script to get them included in your build. If
-you add header files, it is not necessary to rerun the
-<filename>bootstrap</filename> script unless you plan on using &quot;make
-dist&quot; from that same tree, in which case those added headers would not
-get included into the tarball.</para>
-
-<para>If you add or remove &quot;syntax versions&quot; in any of the handlers, 
-you must re-run <filename>bootstrap</filename> to get the version lists in
-<filename>Makefile.am</filename> and <filename>configure.ac</filename> to
-incorporate your changes, or you will experience unusual build behavior.</para>
-
-<para>If you add or remove any program options in <filename>src/options.h</filename>, 
-you must re-run <filename>bootstrap</filename> to regenerate src/option-list.h.
-Without that file being regenerated, you may experience compile errors or find
-that your newly added option does not work properly.</para>
-
-<para>All other types of files fall into two categories:</para>
-
-<blockquote><para>those that should be present <emphasis>only</emphasis> in the CVS
-repository</para></blockquote>
-
-<para>Nothing needs to be done for these files, other than the relevant
-&quot;cvs add&quot; commands.</para>
-
-<blockquote><para>those that should be added to the distribution tarball</para></blockquote>
-
-<para>The <filename>bootstrap.Makefile</filename> script will need to be edited,
-specifically the line that sets <filename>EXTRA_DIST</filename> near the
-beginning of the script. Add the path(s) to the new files to this line, or add
-an additional line starting with &quot;<filename>EXTRA_DIST
-+=</filename>&quot; (standard <acronym>GNU</acronym> makefile syntax). If the
-files are not listed on this line, they will not be included in the tarball
-created by &quot;make dist&quot;.</para>
-
-</sect2>
-
-<sect2>
 <title>Usage</title>
 
 <para>The <acronym>CVS</acronym> repository copy of &book-product; does not
@@ -117,6 +59,64 @@ necessary.</para>
 <para>Once <filename>bootstrap</filename> has been run, you can execute
 <filename>./configure</filename> like any other <acronym>GNU</acronym>
 autoconf-based package to configure &book-product; for your system.</para>
+
+</sect2>
+
+<sect2>
+<title>Editing source files</title>
+
+<para>The &book-product; build system, because it uses
+<filename>automake</filename>, has full dependency tracking on all files used
+to build the binaries. This will reduce your rebuilding time as you edit
+header files and source files, as the make system will know exactly what must
+be rebuilt.</para>
+
+<para>In addition, if you are going to make changes to
+<filename>bootstrap</filename>, you should add the
+<filename>&quot;--enable-maintainer-mode&quot;</filename> parameter to your
+<filename>configure</filename> command. With this done, each time you edit
+and re-run <filename>bootstrap</filename>, the <filename>Makefile</filename>
+will automatically re-run <filename>configure</filename> to make your changes
+take effect. Be warned though, that if you manually edit
+<filename>Makefile.am</filename> or <filename>configure.ac<filename>, you must 
+modify the <filename>bootstrap</filename> script to incorporate your changes, 
+because these files are not stored in the <acronym>CVS</acronym>
+repository.</para>
+
+<para>If you add any C source files to the tree, you will need to rerun the
+<filename>bootstrap</filename> script to get them included in your build. If
+you add header files, it is not necessary to rerun the
+<filename>bootstrap</filename> script unless you plan on using &quot;make
+dist&quot; from that same tree, in which case those added headers would not
+get included into the tarball.</para>
+
+<para>If you add or remove &quot;syntax versions&quot; in any of the handlers, 
+you must re-run <filename>bootstrap</filename> to get the version lists in
+<filename>Makefile.am</filename> and <filename>configure.ac</filename> to
+incorporate your changes, or you will experience unusual build behavior.</para>
+
+<para>If you add or remove any program options in <filename>src/options.h</filename>, 
+you must re-run <filename>bootstrap</filename> to regenerate src/option-list.h.
+Without that file being regenerated, you may experience compile errors or find
+that your newly added option does not work properly.</para>
+
+<para>All other types of files fall into two categories:</para>
+
+<blockquote><para>those that should be present <emphasis>only</emphasis> in the CVS
+repository</para></blockquote>
+
+<para>Nothing needs to be done for these files, other than the relevant
+&quot;cvs add&quot; commands.</para>
+
+<blockquote><para>those that should be added to the distribution tarball</para></blockquote>
+
+<para>The <filename>bootstrap.Makefile</filename> script will need to be edited,
+specifically the line that sets <filename>EXTRA_DIST</filename> near the
+beginning of the script. Add the path(s) to the new files to this line, or add
+an additional line starting with &quot;<filename>EXTRA_DIST
++=</filename>&quot; (standard <acronym>GNU</acronym> makefile syntax). If the
+files are not listed on this line, they will not be included in the tarball
+created by <command>make dist</command>.</para>
 
 </sect2>
 
