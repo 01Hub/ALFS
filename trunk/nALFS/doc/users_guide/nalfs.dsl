@@ -62,7 +62,7 @@
 </style-specification-body>
 </style-specification>
 
-<external-specification id="docbook" document="/usr/share/sgml/docbook/dsssl-stylesheets-1.78/html/docbook.dsl">
+<external-specification id="docbook" document="docbook.dsl">
 
 </style-sheet>
 
