@@ -41,77 +41,203 @@
 #include "parser.h"
 #include "backend.h"
 
+enum {
+	PERMISSIONS_MODE,
+	PERMISSIONS_NAME,
+	PERMISSIONS_NAMES,
+	PERMISSIONS_OPTION,
+	PERMISSIONS_BASE,
+};
 
-#define El_permissions_mode(el) alloc_trimmed_param_value("mode", el)
-#define El_permissions_targets(el) alloc_trimmed_param_value("name", el)
+struct permissions_data {
+	char *base;
+	int name_count;
+	char **names;
+	int recursive;
+	char *mode;
+};
 
+static int permissions_setup(element_s * const element)
+{
+	struct permissions_data *data;
+
+	if ((data = xmalloc(sizeof(struct permissions_data))) == NULL)
+		return 1;
+
+	data->recursive = 0;
+	data->base = NULL;
+	data->name_count = 0;
+	data->names = NULL;
+	data->mode = NULL;
+	element->handler_data = data;
+
+	return 0;
+};
+
+static void permissions_free(const element_s * const element)
+{
+	struct permissions_data *data = (struct permissions_data *) element->handler_data;
+	int i;
+
+	xfree(data->base);
+	xfree(data->mode);
+	if (data->name_count > 0) {
+		for (i = 0; i < data->name_count; i++)
+			xfree(data->names[i]);
+		xfree(data->names);
+	}
+	xfree(data);
+}
+
+static int permissions_attribute(const element_s * const element,
+				 const struct handler_attribute * const attr,
+				 const char * const value)
+{
+	struct permissions_data *data = (struct permissions_data *) element->handler_data;
+
+	switch (attr->private) {
+	case PERMISSIONS_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify \"base\" more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	case PERMISSIONS_MODE:
+		if (data->mode) {
+			Nprint_err("<%s>: cannot specify \"mode\" more than once.", element->handler->name);
+			return 1;
+		}
+		data->mode = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int permissions_parameter(const element_s * const element,
+				 const struct handler_parameter * const param,
+				 const char * const value)
+{
+	struct permissions_data *data = (struct permissions_data *) element->handler_data;
+	char *tmp;
+	char *tok;
+
+	switch (param->private) {
+	case PERMISSIONS_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify <base> more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	case PERMISSIONS_OPTION:
+		if (!strcmp("recursive", value)) {
+			data->recursive = 1;
+			return 0;
+		}
+		Nprint_err("<%s>: invalid option (%s) ignored", element->handler->name, value);
+		return 1;
+	case PERMISSIONS_NAME:
+		data->name_count++;
+		if ((data->names = xrealloc(data->names,
+					    sizeof(data->names[0]) * (data->name_count))) == NULL) {
+			Nprint_err("xrealloc() failed: %s", strerror(errno));
+			return -1;
+		}
+		data->names[(data->name_count - 1)] = xstrdup(value);
+		return 0;
+	case PERMISSIONS_NAMES:
+		tmp = xstrdup(value);
+		for (tok = strtok(tmp, WHITE_SPACE); tok; tok = strtok(NULL, WHITE_SPACE)) {
+			data->name_count++;
+			if ((data->names = xrealloc(data->names,
+						    sizeof(data->names[0]) * (data->name_count))) == NULL) {
+				Nprint_err("xrealloc() failed: %s", strerror(errno));
+				return -1;
+			}
+			data->names[(data->name_count - 1)] = xstrdup(value);
+		}
+		xfree(tmp);
+	default:
+		return 1;
+	}
+}
+
+static int permissions_valid_data(const element_s * const element)
+{
+	struct permissions_data *data = (struct permissions_data *) element->handler_data;
+
+	if (data->name_count == 0) {
+		Nprint_err("<%s>: <name> must be specified.", element->handler->name);
+		return 0;
+	}
+
+	if (!data->mode) {
+		Nprint_err("<%s>: \"mode\" must be specified.", element->handler->name);
+		return 0;
+	}
+
+	return 1;
+}
 
 #if HANDLER_SYNTAX_2_0
 
-static const struct handler_parameter permissions_parameters_ver2[] = {
-	{ .name = "base" },
-	{ .name = "options" },
-	{ .name = "mode" },
-	{ .name = "name" },
+static const struct handler_parameter permissions_parameters_v2[] = {
+	{ .name = "base", .private = PERMISSIONS_BASE },
+	{ .name = "options", .private = PERMISSIONS_OPTION },
+	{ .name = "mode", .private = PERMISSIONS_MODE },
+	{ .name = "name", .private = PERMISSIONS_NAMES },
 	{ .name = NULL }
 };
 
-static int permissions_main_ver2(const element_s * const el)
+#endif /* HANDLER_SYNTAX_2_0 */
+
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
+
+static const struct handler_parameter permissions_parameters_v3[] = {
+	{ .name = "option", .private = PERMISSIONS_OPTION },
+	{ .name = "name", .private = PERMISSIONS_NAME },
+	{ .name = NULL }
+};
+
+static const struct handler_attribute permissions_attributes_v3[] = {
+	{ .name = "base", .private = PERMISSIONS_BASE },
+	{ .name = "mode", .private = PERMISSIONS_MODE },
+	{ .name = NULL }
+};
+
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
+
+static int permissions_main(const element_s * const element)
 {
-	int status = 0;
-	int recursive = option_exists("recursive", el);
-	char *tok;
-	char *base;
-	char *mode;
-	char *targets;
-	char *command = NULL;
-	char *message = NULL;
+	struct permissions_data *data = (struct permissions_data *) element->handler_data;
+	int status;
+	char *command;
+	char *message;
+	int i;
 
-
-	if ((mode = El_permissions_mode(el)) == NULL) {
-		Nprint_h_err("No permission specified.");
+	if (change_to_base_dir(element, data->base, 1))
 		return -1;
-	}
 
-	if ((targets = El_permissions_targets(el)) == NULL) {
-		Nprint_h_err("No targets specified.");
-		xfree(mode);
-		return -1;
-	}
-
-	base = alloc_base_dir(el);
-
-	if (change_current_dir(base)) {
-		xfree(base);
-		xfree(targets);
-		xfree(mode);
-
-		return -1;
-	}
-
-	for (tok = strtok(targets, WHITE_SPACE); tok;
-	     tok = strtok(NULL, WHITE_SPACE)) {
-		append_str(&command, "chmod ");
-
-		append_str(&message, "Changing permissions to ");
-		append_str(&message, mode);
+	for (i = 0; i < data->name_count; i++) {
+		command = xstrdup("chmod ");
+		message = xstrdup("Changing permissions to ");
+		append_str(&message, data->mode);
 		append_str(&message, " ");
-		if (recursive) {
+		if (data->recursive) {
 			append_str(&command, "-R ");
 			append_str(&message, "(recursive) ");
 		}
-		append_str(&message, "in ");
-		append_str(&message, base);
 		append_str(&message, ": ");
-		append_str(&message, tok);
-
-		append_str(&command, mode);
+		append_str(&message, data->names[i]);
+		append_str(&command, data->mode);
 		append_str(&command, " ");
-		append_str(&command, tok);
+		append_str(&command, data->names[i]);
 
 		Nprint_h("%s", message);
 
-		if ((status = execute_command(el, command))) {
+		if ((status = execute_command(element, command))) {
 			Nprint_h_err("Changing permissions failed.");
 			break;
 		}
@@ -122,99 +248,8 @@ static int permissions_main_ver2(const element_s * const el)
 		message = NULL;
 	}
 
-	xfree(command);
-	xfree(message);
-
-	xfree(base);
-	xfree(targets);
-	xfree(mode);
-	
 	return status;
 }
-
-#endif /* HANDLER_SYNTAX_2_0 */
-
-
-#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
-
-static const struct handler_parameter permissions_parameters_v3[] = {
-	{ .name = "option" },
-	{ .name = "name" },
-	{ .name = NULL }
-};
-
-static const struct handler_attribute permissions_attributes_v3[] = {
-	{ .name = "base" },
-	{ .name = "mode" },
-	{ .name = NULL }
-};
-
-static int permissions_main_ver3(const element_s * const el)
-{
-	int options[1], recursive;
-	int status = 0;
-	char *mode;
-	element_s *p;
-
-
-	check_options(1, options, "recursive", el);
-	recursive = options[0];
-
-	if ((mode = attr_value("mode", el)) == NULL) {
-		Nprint_h_err("No permission specified.");
-		return -1;
-	}
-
-	if (change_to_base_dir(el, attr_value("base", el), 1))
-		return -1;
-
-	for (p = first_param("name", el); p; p = next_param(p)) {
-		char *name;
-		char *command = NULL;
-		char *message = NULL;
-
-
-		if ((name = alloc_trimmed_str(p->content)) == NULL) {
-			Nprint_h_warn("Name empty.");
-			continue;
-		}
-
-		append_str(&command, "chmod ");
-
-		append_str(&message, "Changing permissions to ");
-		append_str(&message, mode);
-
-		if (recursive) {
-			append_str(&command, "-R ");
-			append_str(&message, " (recursive)");
-
-		}
-		append_str(&message, ": ");
-		append_str(&message, name);
-
-		append_str(&command, mode);
-		append_str(&command, " ");
-		append_str(&command, name);
-
-		Nprint_h("%s", message);
-
-		if ((status = execute_command(el, command))) {
-			Nprint_h_err("Changing permissions failed.");
-		}
-
-		xfree(name);
-		xfree(command);
-		xfree(message);
-
-		if (status)
-			break;
-	}
-
-	return status;
-}
-
-#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
-
 
 /*
  * Handlers' information.
@@ -226,10 +261,14 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "permissions",
 		.description = "Change permissions",
 		.syntax_version = "2.0",
-		.parameters = permissions_parameters_ver2,
-		.main = permissions_main_ver2,
+		.parameters = permissions_parameters_v2,
+		.main = permissions_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = permissions_setup,
+		.free = permissions_free,
+		.parameter = permissions_parameter,
+		.valid_data = permissions_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -239,9 +278,14 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.0",
 		.parameters = permissions_parameters_v3,
 		.attributes = permissions_attributes_v3,
-		.main = permissions_main_ver3,
+		.main = permissions_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = permissions_setup,
+		.free = permissions_free,
+		.parameter = permissions_parameter,
+		.attribute = permissions_attribute,
+		.valid_data = permissions_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -251,9 +295,14 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.1",
 		.parameters = permissions_parameters_v3,
 		.attributes = permissions_attributes_v3,
-		.main = permissions_main_ver3,
+		.main = permissions_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = permissions_setup,
+		.free = permissions_free,
+		.parameter = permissions_parameter,
+		.attribute = permissions_attribute,
+		.valid_data = permissions_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -263,10 +312,15 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.2",
 		.parameters = permissions_parameters_v3,
 		.attributes = permissions_attributes_v3,
-		.main = permissions_main_ver3,
+		.main = permissions_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
 		.alternate_shell = 1,
+		.setup = permissions_setup,
+		.free = permissions_free,
+		.parameter = permissions_parameter,
+		.attribute = permissions_attribute,
+		.valid_data = permissions_valid_data,
 	},
 #endif
 	{
