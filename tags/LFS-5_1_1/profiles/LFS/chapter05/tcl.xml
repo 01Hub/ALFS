@@ -1,0 +1,38 @@
+<package name="tcl" version="&tcl-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&tcl-md5;</digest>
+			<archive>&packages_dir;/&tcl-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&tcl-directory;/unix</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/tools</param>
+		</configure>
+
+		<make />
+
+<!--
+		<make>
+			<prefix>TZ=UTC</prefix>
+			<param>test</param>
+		</make>
+-->
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<link>
+			<option>force</option>
+			<target>tclsh8.4</target>
+			<name>/tools/bin/tclsh</name>
+                </link>
+	</stage>
+</package>

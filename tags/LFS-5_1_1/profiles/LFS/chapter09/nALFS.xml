@@ -1,0 +1,34 @@
+<package name="nALFS" version="&nALFS-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&nALFS-md5;</digest>
+			<archive>&packages_dir;/&nALFS-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&nALFS-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<copy>
+			<source>doc/nALFSrc</source>
+			<destination>/etc/nALFSrc</destination>
+		</copy>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&nALFS-directory;</remove>
+	</stage>
+</package>
