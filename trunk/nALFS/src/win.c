@@ -270,3 +270,64 @@ void resize_all_windows(void)
 	windows.main->lines = main_lines;
 	windows.status->lines = status_lines;
 }
+
+int tmp_window_driver(int lines, int *top_line)
+{
+	int input;
+
+
+	windows.main->ref(*top_line);
+
+	while (1) {
+		input = get_key(windows.main->name);
+
+		switch (input) {
+			case KEY_UP:
+				--(*top_line);
+				break;
+
+			case '\n':
+			case KEY_DOWN:
+				++(*top_line);
+				break;
+
+			case MOD_CTRL('p'):
+			case KEY_PPAGE:
+				*top_line -= windows.main->lines / 2;
+				break;
+
+			case ' ':
+			case MOD_CTRL('n'):
+			case KEY_NPAGE:
+				*top_line += windows.main->lines / 2;
+				break;
+
+			case KEY_HOME:
+				*top_line = 0;
+				break;
+
+			case KEY_END:
+				*top_line = lines - windows.main->lines + 1;
+				break;
+
+			case 'q':
+			case KEY_LEFT:
+			case KEY_F(10):
+				return -1;
+		
+			default:
+				return input;
+		}
+
+		if (*top_line < 0) {
+			*top_line = 0;
+		}
+		if (*top_line > lines - windows.main->lines + 1) {
+			*top_line = lines - windows.main->lines + 1;
+		}
+
+		windows.main->ref(*top_line);
+	}
+
+	/* Never reached. */
+}
