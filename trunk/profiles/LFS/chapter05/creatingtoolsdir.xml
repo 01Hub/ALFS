@@ -92,7 +92,7 @@
 			<source>&hotplug-package;</source>
 			<source>&hotplug-bogus-deps-patch;</source>
 			<source>&hotplug-device-patch;</source>
-			<source>&hotplug-isapnp-patch;</source>
+<!--			<source>&hotplug-isapnp-patch;</source> -->
 			<source>&iana-etc-package;</source>
 			<source>&inetutils-package;</source>
 			<source>&inetutils-no-man-pages-patch;</source>
