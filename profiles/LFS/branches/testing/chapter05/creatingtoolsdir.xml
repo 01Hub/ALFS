@@ -131,13 +131,16 @@
 			<source>&tar-package;</source>
 			<source>&tcl-package;</source>
 			<source>&texinfo-package;</source>
+			<source>&texinfo-segfault-patch;</source>
 			<source>&udev-package;</source>
 			<source>&udev-permissions-file;</source>
 			<source>&udev-rules-file;</source>
 			<source>&util-linux-package;</source>
+			<source>&util-linux-sfdisk-patch;</source>
 			<source>&vim-package;</source>
 			<source>&vim-lang-package;</source>
 			<source>&zlib-package;</source>
+			<source>&zlib-security-patch;</source>
 			<destination>&LFS;&packages_dir;</destination>
 		</copy>
 	</stage>
