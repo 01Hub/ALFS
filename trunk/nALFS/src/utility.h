@@ -29,6 +29,8 @@
 #include <string.h>
 #include <ctype.h>
 #include <assert.h>
+#include <sys/types.h>
+#include <dirent.h>
 
 
 #ifdef DO_ASSERT
@@ -84,6 +86,9 @@ void append_str(char **ptr, const char *str);
 int file_exists(const char *file);
 int delete_file(const char *file);
 int create_temp_file(char *templ);
+
+/* Returns non-directories with specified suffix, unless suffix is NULL. */
+struct dirent *xreaddir(DIR *dir, const char *dir_name, const char *suffix);
 
 /*
  * Misc.

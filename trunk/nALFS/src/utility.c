@@ -289,6 +289,45 @@ int create_temp_file(char *templ)
 	return 0;
 }
 
+struct dirent *xreaddir(DIR *dir, const char *dir_name, const char *suffix)
+{
+	struct dirent *next;
+
+	while ((next = readdir(dir)) != NULL) {
+		char *fullname = NULL;
+		struct stat file_stat;
+
+
+		if (! Empty_string(suffix)) { /* Check the suffix. */
+			char *s;
+			size_t name_len = strlen(next->d_name);
+			size_t suffix_len = strlen(suffix);
+
+			if (name_len < suffix_len)
+				continue;
+			
+			s = next->d_name + (name_len - suffix_len);
+			if (strcmp(s, suffix) != 0) {
+				continue;
+			}
+		}
+
+		append_str(&fullname, dir_name);
+		append_str(&fullname, "/");
+		append_str(&fullname, next->d_name);
+
+		if (stat(fullname, &file_stat) == 0) {
+			if (! S_ISDIR(file_stat.st_mode)) {
+				break;
+			}
+		}
+
+		xfree(fullname);
+	}
+
+	return next;
+}
+
 /*
  * Misc.
  */

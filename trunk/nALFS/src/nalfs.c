@@ -3222,47 +3222,42 @@ static element_s *do_add_profile(const char *profile)
 }
 
 /*
- * If fullname is a file, adds that single profile.  If it's
+ * If name is a file, adds that single profile.  If it's
  * a directory, reads all .xml files in it, non-recursively.
  * Returns number of added profiles.
  */
-static int add_profile(const char *fullname)
+static int add_profile(const char *name)
 {
 	int num = 0;
 	struct stat file_stat;
 
-	if (stat(fullname, &file_stat) == 0) {
+	if (stat(name, &file_stat) == 0) {
 		if (S_ISDIR(file_stat.st_mode)) {
 			struct dirent *next;
-			DIR *dir = opendir(fullname);
+			DIR *dir = opendir(name);
 
 			if (dir != NULL) {
-				while ((next = readdir(dir)) != NULL) {
-					char *s;
-					/* Check for the right suffix. */
-					s = strrchr(next->d_name, '.');
-					if (s && strcmp(s, ".xml") == 0) {
-						char *f = xstrdup(fullname);
-						append_str(&f, "/");
-						append_str(&f, next->d_name);
+				while ((next = xreaddir(dir, name, ".xml"))) {
+					char *f = xstrdup(name);
+					append_str(&f, "/");
+					append_str(&f, next->d_name);
 
-						if (do_add_profile(f)) {
-							++num;
-						}
-
-						xfree(f);
+					if (do_add_profile(f)) {
+						++num;
 					}
+
+					xfree(f);
 				}
 
 				closedir(dir);
 			}
 
 		} else {
-			do_add_profile(fullname);
+			do_add_profile(name);
 		}
 
 	} else {
-		Nprint_err("Can't get information about %s:", fullname);
+		Nprint_err("Can't get information about %s:", name);
 		Nprint_err("%s", strerror(errno));
 	}
 
