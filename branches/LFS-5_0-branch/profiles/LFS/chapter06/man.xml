@@ -1,0 +1,58 @@
+<package name="man" version="&man-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&man-md5;</digest>
+			<archive>&packages_dir;/&man-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&man-manpath-patch;</source>
+			<source>&packages_dir;/&man-pagerpatch;</source>
+			<source>&packages_dir;/&man-80cols-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&man-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&man-manpath-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&man-pagerpatch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&man-80cols-patch;</param>
+		</patch>
+
+		<configure>
+			<param>-default</param>
+			<param>-confdir=/etc</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&man-directory;</remove>
+		<remove>&build_dir;/&man-manpath-patch;</remove>
+		<remove>&build_dir;/&man-pagerpatch;</remove>
+		<remove>&build_dir;/&man-80cols-patch;</remove>
+	</stage>
+</package>

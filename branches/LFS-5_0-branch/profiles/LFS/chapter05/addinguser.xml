@@ -1,0 +1,10 @@
+<stage name="Adding lfs user">
+	<execute command="id -u &lfs-user; &amp;> /dev/null || useradd -s /bin/bash -m &lfs-user;" />
+
+	<execute command="echo &lfs-user;:&lfs-password; | chpasswd" />
+
+	<ownership user="&lfs-user;">
+		<option>recursive</option>
+		<name>&LFS;/tools</name>
+	</ownership>
+</stage>

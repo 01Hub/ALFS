@@ -1,0 +1,59 @@
+<package name="binutils" version="&binutils-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&binutils-md5;</digest>
+			<archive>&packages_dir;/&binutils-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<mkdir base="&build_dir;">
+			<option>parents</option>
+			<name>binutils-build</name>
+		</mkdir>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<environment>
+				<variable name="CFLAGS" />
+				<variable name="CXXFLAGS" />
+			</environment>
+			<base>&build_dir;/binutils-build</base>
+		</stageinfo>
+
+<!-- Run the following command:  expect -c "spawn ls"
+If you receive the message:
+    The system has no more ptys.  Ask your system administrator to create more.
+Your chroot environment is not set up for proper PTY operation. In this case there is no point in running the test
+suites for Binutils and GCC until you are able to resolve the issue.
+-->
+
+		<configure command="../&binutils-directory;/configure">
+			<param>--prefix=/usr</param>
+			<param>--enable-shared</param>
+		</configure>
+
+		<make>
+			<param>tooldir=/usr</param>
+		</make>
+
+		<make>
+			<param>check</param>
+		</make>
+
+		<make>
+			<param>tooldir=/usr</param>
+			<param>install</param>
+		</make>
+
+		<copy>
+			<source>../&binutils-directory;/include/libiberty.h</source>
+			<destination>/usr/include</destination>
+		</copy>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&binutils-directory;</remove>
+		<remove>&build_dir;/binutils-build</remove>
+	</stage>
+</package>

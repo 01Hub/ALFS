@@ -1,0 +1,31 @@
+<package name="lfs-utils" version="&lfs-utils-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&lfs-utils-md5;</digest>
+			<archive>&packages_dir;/&lfs-utils-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&lfs-utils-directory;</base>
+		</stageinfo>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<copy>
+			<source>etc/services</source>
+			<source>etc/protocols</source>
+			<destination>/etc</destination>
+		</copy>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&lfs-utils-directory;</remove>
+	</stage>
+</package>
