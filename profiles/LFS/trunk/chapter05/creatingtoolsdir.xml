@@ -97,7 +97,6 @@
         <source>&kbd-package;</source>
         <source>&less-package;</source>
         <source>&lfs-bootscripts-package;</source>
-        <source>&libol-package;</source>
         <source>&libtool-package;</source>
         <source>&libxml2-package;</source>
         <source>&linux-package;</source>
@@ -121,7 +120,8 @@
         <source>&sed-package;</source>
         <source>&shadow-package;</source>
 	<source>&shadow-lastlog-patch;</source>
-        <source>&syslog-ng-package;</source>
+        <source>&sysklogd-package;</source>
+        <source>&sysklogd-fixes-patch;</source>		
         <source>&sysvinit-package;</source>
         <source>&tar-package;</source>
 	<source>&tar-sparse-fix-patch;</source>

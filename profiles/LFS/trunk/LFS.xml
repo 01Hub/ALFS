@@ -139,8 +139,7 @@
       <xi:include href="chapter06/procps.xml" />
       <xi:include href="chapter06/psmisc.xml" />
       <xi:include href="chapter06/shadow.xml" />
-      <xi:include href="chapter06/libol.xml" />
-      <xi:include href="chapter06/syslog-ng.xml" />
+      <xi:include href="chapter06/sysklogd.xml" />
       <xi:include href="chapter06/sysvinit.xml" />
       <xi:include href="chapter06/tar.xml" />
       <xi:include href="chapter06/udev.xml" />

@@ -49,8 +49,8 @@
 <!ENTITY diffutils-package "diffutils-&diffutils-version;.tar.bz2">
 <!ENTITY diffutils-directory "diffutils-&diffutils-version;">
 
-<!ENTITY e2fsprogs-md5 "bc73e9532f703321d1d95140fe09f19b">
-<!ENTITY e2fsprogs-version "1.36">
+<!ENTITY e2fsprogs-md5 "e7e2248f9baa76de3db8210298e0d79e ">
+<!ENTITY e2fsprogs-version "1.37">
 <!ENTITY e2fsprogs-package "e2fsprogs-&e2fsprogs-version;.tar.bz2">
 <!ENTITY e2fsprogs-directory "e2fsprogs-&e2fsprogs-version;">
 
@@ -178,11 +178,6 @@
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
-<!ENTITY libol-md5 "f8324292f85bb88d2c3c8675b8d1aee9">
-<!ENTITY libol-version "0.3.15">
-<!ENTITY libol-package "libol-&libol-version;.tar.bz2">
-<!ENTITY libol-directory "libol-&libol-version;">
-
 <!ENTITY libtool-md5 "ad8358d705d8943c88626f5b660879f1">
 <!ENTITY libtool-version "1.5.14">
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.bz2">
@@ -193,14 +188,14 @@
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
-<!ENTITY linux-md5 "94af162c2c5c264344f279c6946c4f59">
-<!ENTITY linux-version "2.6.11.5">
+<!ENTITY linux-md5 "91544ed14e672386bf2f76c94911afe6">
+<!ENTITY linux-version "2.6.11.6">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
 
-<!ENTITY linux-libc-headers-md5 "7dc73cdc8198f6f8ba25515aea799bbd">
-<!ENTITY linux-libc-headers-version "2.6.11.0">
+<!ENTITY linux-libc-headers-md5 "2d21d8e7ff641da74272b114c786464e">
+<!ENTITY linux-libc-headers-version "2.6.11.2">
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
 <!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
 
@@ -287,10 +282,12 @@
 
 <!ENTITY shadow-lastlog-patch "shadow-&shadow-version;-fix_lastlog-1.patch">
 
-<!ENTITY syslog-ng-md5 "88ff578e0455486f8079bce0f6c9a721">
-<!ENTITY syslog-ng-version "1.6.6">
-<!ENTITY syslog-ng-package "syslog-ng-&syslog-ng-version;.tar.bz2">
-<!ENTITY syslog-ng-directory "syslog-ng-&syslog-ng-version;">
+<!ENTITY sysklogd-md5 "ebd1e0630fccc34b860a3211b9980838">
+<!ENTITY sysklogd-version "1.4.1">
+<!ENTITY sysklogd-package "sysklogd-&sysklogd-version;.tar.bz2">
+<!ENTITY sysklogd-directory "sysklogd-&sysklogd-version;">
+
+<!ENTITY sysklogd-fixes-patch "sysklogd-&sysklogd-version;-fixes-1.patch">
 
 <!ENTITY sysvinit-md5 "5b1d05d637863b888d211d4fb19a9a21">
 <!ENTITY sysvinit-version "2.86">
@@ -343,4 +340,3 @@
 <!ENTITY zlib-version "1.2.2">
 <!ENTITY zlib-package "zlib-&zlib-version;.tar.bz2">
 <!ENTITY zlib-directory "zlib-&zlib-version;">
-
