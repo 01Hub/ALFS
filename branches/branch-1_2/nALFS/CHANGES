@@ -1,3 +1,11 @@
+2004-01-11  tag v1_2_1
+
+2004-01-11  Kevin P. Fleming
+
+        * Backport bug fixes for su and stage handlers from HEAD branch.
+        * Backport bug fix for get_url function from HEAD branch.
+        * Version updated to 1.2.1.
+
 2003-12-21  tag v1_2_0
 
 2003-12-21  Kevin P. Fleming
