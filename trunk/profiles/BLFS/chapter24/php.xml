@@ -62,7 +62,7 @@
 	</stage>
 
 
-	<stage name="Configuring a package.">
+	<stage name="Configuring">
 
 	<!-- remove line if already inserted -->
 		<search_replace base="/etc/apache">
