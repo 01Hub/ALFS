@@ -408,8 +408,10 @@ int logs_merge_log(struct logs *logs, const char *ptr, size_t size)
 
 static xmlNodePtr logs_get_flog_element(struct logs *logs)
 {
-	return n_xmlGetLastElementByName(
-		logs->list[0]->doc->children, EL_NAME_FOR_FILES_ROOT);
+	xmlNodePtr run = n_xmlGetLastElementByName(
+		logs->list[0]->doc->children, EL_NAME_FOR_A_RUN);
+
+	return n_xmlGetLastElementByName(run, EL_NAME_FOR_FILES_ROOT);
 }
 
 int logs_has_flog(struct logs *logs)

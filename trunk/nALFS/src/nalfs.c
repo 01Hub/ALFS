@@ -625,7 +625,12 @@ static INLINE void receive_log_file(void)
 	/*
 	 * Read the list of installed files (if any) from the backend,
 	 * store it in the file, and update the package log with its name.
+	 *
 	 * TODO: Put it in a separate function.
+	 *
+	 * TODO: There's no point relying on log file's content,
+	 *       this should be in handle_ctrl_msg(), waiting for
+	 *       CTRL_SENDING_FILES_FILE.
 	 */
 	if (logs_has_flog(logs)) {
 		ctrl_msg_s *message;
@@ -909,8 +914,7 @@ static int handle_ctrl_msg(void)
 
 
 			default:
-				Nprint_warn(
-					"Unknown control message: %s",
+				Nprint_warn("Unknown control message: %s",
 					content);
 		}
 
