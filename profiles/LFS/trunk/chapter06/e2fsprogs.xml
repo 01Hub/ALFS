@@ -34,7 +34,9 @@
 			<param>--disable-evms</param>
 		</configure>
 
-		<make />
+		<make>
+			<param>&jlevel;</param>	
+		</make>			
 
 <!--
 		<make>

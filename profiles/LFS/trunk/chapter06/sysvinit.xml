@@ -36,6 +36,7 @@
 		</search_replace>
 
 		<make>
+			<param>&jlevel;</param>	
 			<param>-C src</param>
 		</make>
 

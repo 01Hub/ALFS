@@ -41,7 +41,9 @@
 			<param>--libexecdir=/usr/lib/glibc</param>
 		</configure>
 
-		<make />
+		<make>
+			<prefix>PARALLELMFLAGS=&jlevel;</prefix>
+		</make>
 
 		<make>
 			<param>check</param>

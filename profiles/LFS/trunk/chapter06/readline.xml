@@ -34,6 +34,7 @@
 		</configure>
 
 		<make>
+			<param>&jlevel;</param>	
 			<param>SHLIB_XLDFLAGS=-lncurses</param>
 		</make>
 

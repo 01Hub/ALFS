@@ -41,7 +41,9 @@
 			<param>--enable-multibyte</param>
 		</configure>
 
-		<make />
+		<make>
+			<param>&jlevel;</param>
+		</make>
 
 <!--
 		<make>

@@ -29,6 +29,7 @@
 		</configure>
 
 		<make>
+			<param>&jlevel;</param>
 			<param>DOCBOOKTOMAN=&quot;&quot;</param>
 		</make>
 

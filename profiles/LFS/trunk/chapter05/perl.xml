@@ -35,6 +35,7 @@
 		</configure>
 
 		<make>
+			<param>&jlevel;</param>
 			<param>perl</param>
 			<param>utilities</param>
 		</make>

@@ -24,7 +24,9 @@
 			<base>&build_dir;/&procps-directory;</base>
 		</stageinfo>
 
-		<make />
+		<make>
+			<param>&jlevel;</param>	
+		</make>
 
 		<make>
 			<param>install</param>

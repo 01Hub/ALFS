@@ -29,7 +29,9 @@
 			<param>--libexecdir=/usr/sbin</param>
 		</configure>
 
-		<make />
+		<make>
+			<param>&jlevel;</param>	
+		</make>
 
 <!--
 		<make>
