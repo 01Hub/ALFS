@@ -3,8 +3,8 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
 			"/usr/share/docbook/docbookx.dtd" [
 
-<!ENTITY version     "3.1-20030918">
-<!ENTITY releasedate "September 18, 2003">
+<!ENTITY version     "3.1-20030922">
+<!ENTITY releasedate "September 22, 2003">
 
 <!ENTITY legalnotice      SYSTEM "legalnotice.xml">
 <!ENTITY acknowledgements SYSTEM "acknowledgements.xml">

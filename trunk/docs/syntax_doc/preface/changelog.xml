@@ -5,49 +5,41 @@
 
 <itemizedlist>
 
-<listitem>
-<para>May 7th, 2002 [highos]:  Initial structure.</para>
-</listitem>
+<listitem><para>September 22nd, 2003 [jwrober]: Various changes to file 
+locations and began standardizing document look and feel like the LFS and BLFS 
+Books.</para></listitem>
 
-<listitem>
-<para>Sept 5th, 2002 [vdzuba]:  Added chapter with syntax.</para>
-</listitem>
+<listitem><para>September 18th, 2003 [vdzuba]:  Reorganized the document, now 
+split into small chunks.</para> </listitem>
 
-<listitem>
-<para>Oct 13th, 2002 [vdzuba]:  Make attribute append of &lt;variable> optional.</para>
-</listitem>
+<listitem><para>February 20th, 2003 [vdzuba]:  Added the elements &lt;if&gt;, 
+&lt;then&gt; and &lt;else&gt;.</para></listitem>
 
-<listitem>
-<para>Oct 21th, 2002 [vdzuba]:  Add element &lt;digest>.</para>
-</listitem>
+<listitem><para>February 5th, 2003 [vdzuba]:  Added an option to &lt;link&gt; 
+and added element &lt;version&gt;.</para></listitem>
 
-<listitem>
-<para>Oct 22th, 2002 [vdzuba]:  Replaced "parent" by "parents" in mkdir.</para>
-</listitem>
+<listitem><para>January 19th, 2003 [vdzuba]:  Upgraded to version 3.1 of the 
+DTD.</para></listitem>
 
-<listitem>
-<para>Dec 5th, 2002 [vdzuba]:  added bash script equivalent to examples.</para>
-</listitem>
+<listitem><para>January 8th, 2003 [vdzuba]:  Replaced "option?" by "option*" 
+in copy.</para></listitem>
 
-<listitem>
-<para>Jan 8th, 2003 [vdzuba]:  Replaced "option?" by "option*" in copy.</para>
-</listitem>
+<listitem><para>December 5th, 2002 [vdzuba]:  Added bash script equivalent to 
+all examples.</para></listitem>
 
-<listitem>
-<para>Jan 19th, 2003 [vdzuba]:  Upgraded to version 3.1 of the DTD.</para>
-</listitem>
+<listitem><para>October 22nd, 2002 [vdzuba]:  Replaced "parent" with "parents" 
+in mkdir.</para></listitem>
 
-<listitem>
-<para>Feb 5th, 2003 [vdzuba]:  Added an option to &lt;link> and added element &lt;version>.</para>
-</listitem>
+<listitem><para>October 21st, 2002 [vdzuba]:  Added element 
+&lt;digest&gt;.</para></listitem>
 
-<listitem>
-<para>Feb 20th, 2003 [vdzuba]:  Added the elements &lt;if>, &lt;then> and &lt;else>.</para>
-</listitem>
+<listitem><para>October 13th, 2002 [vdzuba]:  Make attribute append of 
+&lt;variable&gt; optional.</para></listitem>
 
-<listitem>
-<para>Sep 18d, 2003 [vdzuba]:  Reorganized the document, now splitted into small chunks.</para>
-</listitem>
+<listitem><para>September 5th, 2002 [vdzuba]:  Added chapter with 
+syntax.</para></listitem>
+
+<listitem><para>May 7th, 2002 [highos]:  Initial structure.</para></listitem>
 
 </itemizedlist>
 

@@ -2,14 +2,17 @@
 <sect1 id="elem_environment">
 <title>environment</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT environment    (variable+)>
+<synopsis>
+&lt;!ELEMENT environment    (variable+)&gt;
+&lt;!ATTLIST environment
+    mode    CDATA #IMPLIED&gt;
 </synopsis>
 
 <para>This element occurs in the element
-<link linkend="elem_stageinfo">stageinfo</link>.
-</para>
+<link linkend="elem_stageinfo">stageinfo</link>.</para>
 
 <para>See also :
 <link linkend="elem_variable">variable</link>,
@@ -18,29 +21,34 @@
 </sect2>
 
 <sect2><title>Description</title>
-<para>The element <token>environment</token> allows to define 
-one or more environment variables to be added to the environment
+<para>The element <token>environment</token> allows you to define 
+one or more environment variables to be added to the system environment
 used when calling the commands of the stage to which it applies.</para>
+
+<para>The attribute <token>mode</token> allows you to specify the append 
+creation mode.</para>
+
 </sect2>
 
 <sect2><title>Examples</title>
 <programlisting>
-&lt;stage>
-    &lt;stageinfo>
-        &lt;base>/usr/src/gzip.1.2.4a&lt;/base>
-        &lt;environment>
-            &lt;variable name="GCCFLAGS">-O2&lt;/variable>
-        &lt;/environment>
-    &lt;/stageinfo>
+&lt;stage&gt;
+    &lt;stageinfo&gt;
+        &lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
+        &lt;environment&gt;
+            &lt;variable name="GCCFLAGS"&gt;-O2&lt;/variable&gt;
+            &lt;variable name="PATH" mode="prepend"&gt;/usr/src/gzip.1.2.4a:$PATH&lt;/variable&gt;
+        &lt;/environment&gt;
+    &lt;/stageinfo&gt;
    
-    &lt;configure />
+    &lt;configure /&gt;
 
-    &lt;make />
+    &lt;make /&gt;
 
-    &lt;make>
-        &lt;param>install&lt;/param>
-    &lt;/make>
-&lt;/stage>
+    &lt;make&gt;
+        &lt;param&gt;install&lt;/param&gt;
+    &lt;/make&gt;
+&lt;/stage&gt;
 </programlisting>
 
 <para>The equivalent bash script is :</para>
@@ -48,6 +56,7 @@ used when calling the commands of the stage to which it applies.</para>
 <programlisting>echo Stage
 
 export GCCFLAGS=-O2
+export PATH=/usr/src/gzip.1.2.4a:$PATH
 
 echo Executing configure
 cd /usr/src/gzip.1.2.4a
