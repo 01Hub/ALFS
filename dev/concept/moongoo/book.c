@@ -7,20 +7,13 @@
 
 command *cmd;
 profile *prof;
+replaceable *__r;
 int num;
 
 void t_sect1 (xmlNodePtr node, void *data);
 void process_cmd (char *line, xmlNodePtr node);
 void __t_userinput (xmlNodePtr node, void *data);
 command *t_userinput (xmlNodePtr node, int *n);
-
-// TODO: Parse 'cat > foo' commands
-file *parse_cat (char *str)
-{
-	//file *f = (file *)malloc(sizeof(file));
-	//printf("%s\n\n", str);
-	return NULL;
-}
 
 void t_sect1 (xmlNodePtr node, void *data)
 {
@@ -73,7 +66,7 @@ void __t_userinput (xmlNodePtr node, void *data)
 {
 	char *line;
 
-	foreach(node->children, "replaceable", (xml_handler_t)t_repl, NULL);
+	foreach(node->children, "replaceable", (xml_handler_t)t_repl, __r);
 	line = squeeze(xmlNodeGetContent(node));
 	line = strkill(line, "\\\n");
 
@@ -86,7 +79,7 @@ void __t_userinput (xmlNodePtr node, void *data)
 			if (!strncmp(line, "cat >", 5))
 			{
 				char *t = strnstr(line, "EOF", 2);
-				parse_cat(strcut(line, 0, t-line+3));
+				process_cmd(strcut(line, 0, t-line+3), node);
 				t+=2;
 				line=t;
 				continue;
@@ -111,7 +104,7 @@ command *t_userinput (xmlNodePtr node, int *n)
 
 profile *bookasprofile (xmlNodePtr node)
 {
-	init_repl();
+	__r = init_repl(MOO_XML);
 	prof = (profile *)malloc(sizeof(profile));
 	prof->pkg = NULL;
 	prof->n = 0;

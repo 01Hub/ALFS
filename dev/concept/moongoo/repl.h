@@ -3,11 +3,10 @@
 
 #include <alfs.h>
 
-#define REPLC	16
-
-extern replaceable r[REPLC];
+// TODO: Make moo.xml location configurable
+#define MOO_XML		"moo.xml"
 
 void t_repl (xmlNodePtr node, void *data);
-void init_repl ();
+replaceable *init_repl (char *fname);
 
 #endif

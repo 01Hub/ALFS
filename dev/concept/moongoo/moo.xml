@@ -1,0 +1,25 @@
+<answers>
+<!-- Install partition -->
+<answer name="[xxx]">discs/disc0/part5</answer>
+<answer name="[fff]">ext3</answer>
+<!-- /usr partition -->
+<answer name="[zzz]"></answer>
+<!-- Swap partition -->
+<answer name="[yyy]">discs/disc0/part10</answer>
+<!-- Paper size -->
+<answer name="[paper_size]">A4</answer>
+<!-- Network settings -->
+<answer name="[FQDN]">Lenin.Ass</answer>
+<answer name="[HOSTNAME]">Lenin</answer>
+<answer name="[192.168.1.1]">192.168.1.23</answer>
+<answer name="[Your Domain Name]">Ass</answer>
+<answer name="[IP address of your nameserver]">217.237.149.161</answer>
+<!-- Locales -->
+<answer name="[ll]">de</answer>
+<answer name="[CC]">DE@euro</answer>
+<answer name="[arguments for loadkeys]">de-latin1-nodeadkeys</answer>
+<answer name="[arguments for setfont]">lat9u-16</answer>
+<answer name="[/path/to/your/keymap]"></answer>
+<!-- Paths -->
+<answer name="[unpacked sources dir]">/usr/src</answer>
+</answers>

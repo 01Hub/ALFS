@@ -32,7 +32,8 @@ int main (int argc, char **argv)
 		
 		//if (!strcmp(pkg.name, "Module-Init-Tools"))
 		//if (!strcmp(pkg.name, "Creating a file system"))
-		if (!strcmp(pkg.name, "Linux"))
+		//if (!strcmp(pkg.name, "Linux"))
+		if (!strcmp(pkg.name, "Creating the /etc/fstab file"))
 			print_pkg(pkg);
 	}
 	
