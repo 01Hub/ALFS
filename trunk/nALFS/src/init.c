@@ -237,13 +237,13 @@ static INLINE int parse_rc_file(const char *rcfile)
 			while ((c = getc(fp)) != EOF && c != '\n')
 				/* Skip in circle. */;
 
-			Nprint_err("File %s, line %d too long, won't read it.",
+			Nprint_err("File %s, line %d too long, won't read it.\n",
 				   rcfile, line_num);
 		}
 
 		if (parse_rc_line(line) != 0) {
 			ret = 1;
-			Nprint_err("File %s, error at line %d: %s",
+			Nprint_err("File %s, error at line %d: %s\n",
 				   rcfile, line_num, line);
 		}
 	}
@@ -254,9 +254,24 @@ static INLINE int parse_rc_file(const char *rcfile)
 }
 
 /*
+ * Read the "system" configuration file, /etc/nALFSrc.
+ */
+
+int read_system_rc_file(void)
+{
+	char system_rc_file[] = "/etc/nALFSrc";
+	struct stat st;
+
+	if (!stat(system_rc_file, &st))
+		return parse_rc_file("/etc/nALFSrc");
+	else
+		return 0;
+}
+
+/*
  * Constructs a full name of configuration file and calls a parser.
  */
-int read_rc_file(void)
+int read_user_rc_file(void)
 {
 	int ret;
 	char *home_dir;
@@ -299,6 +314,7 @@ enum long_option {
 	LONG_OPTION_VERSION,
 	LONG_OPTION_HELP,
 	LONG_OPTION_GENERATE_STAMP,
+	LONG_OPTION_RCFILE,
 };
 
 
@@ -352,6 +368,7 @@ static INLINE void print_help_and_exit(const char *prog)
 "    -p, --prune <dirs>            Ignore <dirs> (separated with spaces) when\n"
 "                                  logging files.\n"
 "    -S, --generate-stamp          Toggle stamp mode.\n"
+"    --rcfile <file>               Use <file> as configuration file.\n"
 "    -v, --verbose                 Toggle verbosity (%s).\n"
 "    --version                     Display program's version.\n"
 "    --help                        Display this help.\n"
@@ -379,6 +396,15 @@ static void print_usage_and_exit(void)
 		"Use --help for printing program's usage information.\n");
 
 	exit(EXIT_FAILURE);
+}
+
+int have_command_line_rc_file(int argc, char **argv)
+{
+	while(--argc) {
+		if (strcmp(argv[argc], "--rcfile") == 0)
+			return 1;
+	}
+	return 0;
 }
 
 void read_command_line_options(int *argc, char ***argv)
@@ -410,6 +436,8 @@ void read_command_line_options(int *argc, char ***argv)
 	{"help", no_argument, NULL, LONG_OPTION_HELP},
 
 	{"generate-stamp", no_argument, NULL, LONG_OPTION_GENERATE_STAMP},
+
+	{"rcfile", required_argument, NULL, LONG_OPTION_RCFILE},
 
 	{NULL, no_argument, NULL, 0}
 
@@ -480,6 +508,11 @@ void read_command_line_options(int *argc, char ***argv)
 			case 'S':
 			case LONG_OPTION_GENERATE_STAMP:
 				Toggle(*opt_stamp_packages);
+				break;
+
+			case LONG_OPTION_RCFILE:
+				if (parse_rc_file(optarg) != 0)
+					exit(EXIT_FAILURE);
 				break;
 
 			case LONG_OPTION_HELP:
