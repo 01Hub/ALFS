@@ -53,12 +53,12 @@
 
 <!ELEMENT download       (file, url*, destination, digest?)>
 
+<!ELEMENT environment    (variable+)>
+
 <!ELEMENT execute        ((param | prefix)*)>
 <!ATTLIST execute
           base           CDATA #IMPLIED
           command        CDATA #REQUIRED>
-
-<!ELEMENT environment    (variable+)>
 
 <!ELEMENT file           (#PCDATA)>
 
@@ -69,11 +69,11 @@
 <!ELEMENT link           (option?, target+, name)>
 <!ATTLIST link
           base           CDATA #IMPLIED
-	  type           CDATA #IMPLIED>
+          type           CDATA #IMPLIED>
 
-<!ELEMENT list           (item|list)+>
+<!ELEMENT list           (item | list)+>
 <!ATTLIST list
-          type           (bullet|number) "bullet">
+          type           (bullet | number) "bullet">
 
 <!ELEMENT make           ((param | prefix)*)>
 <!ATTLIST make
@@ -95,7 +95,7 @@
 <!ATTLIST ownership
           base           CDATA #IMPLIED
           user           CDATA #IMPLIED
-	  group          CDATA #IMPLIED>
+          group          CDATA #IMPLIED>
           
 <!ELEMENT package        (packageinfo?, stage+)>
 <!ATTLIST package
@@ -133,11 +133,11 @@
 <!ATTLIST search_replace
           base           CDATA #IMPLIED>
 
+<!ELEMENT source         (#PCDATA)>
+
 <!ELEMENT stage          (stageinfo?, (alfs | %ops;)*)>
 <!ATTLIST stage
           name           CDATA #IMPLIED>
-          
-<!ELEMENT source         (#PCDATA)>
 
 <!ELEMENT stageinfo      (root?, user?, environment?, base?)>
 
@@ -146,7 +146,7 @@
 <!ELEMENT textdump       (file, content)>
 <!ATTLIST textdump
           base           CDATA #IMPLIED
-	  mode           CDATA #IMPLIED>
+          mode           CDATA #IMPLIED>
 
 <!ELEMENT unpack         (digest?, reference*, archive, destination)>
 
@@ -159,8 +159,8 @@
 <!ELEMENT variable       (#PCDATA)>
 <!ATTLIST variable
           name           CDATA #REQUIRED
-	  mode           CDATA #IMPLIED>
+          mode           CDATA #IMPLIED>
 
 <!ELEMENT version        (#PCDATA)>
 <!ATTLIST version
-          condition      (eq|ne|gt|ge|lt|le) #REQUIRED>
+          condition      (eq | ne | gt | ge | lt | le) #REQUIRED>
