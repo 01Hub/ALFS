@@ -196,8 +196,8 @@
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.gz">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
-<!ENTITY linux-md5 "5218790bc3db41e77a7422969639a9ad">
-<!ENTITY linux-version "2.6.6">
+<!ENTITY linux-md5 "a74671ea68b0e3c609e8785ed8497c14">
+<!ENTITY linux-version "2.6.7">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">

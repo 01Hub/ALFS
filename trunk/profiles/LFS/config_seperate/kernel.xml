@@ -7,7 +7,7 @@
 %package_entities;
 ]>
 
-<alfs>
+<alfs xmlns:xi="http://www.w3.org/2001/XInclude">
 
 <package name="linux" version="&linux-version;">
 	<stage name="Unpacking.">
@@ -32,18 +32,12 @@
 			<param>mrproper</param>
 		</make>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&linux-src-fpu-patch;</param>
-		</patch>
-
 		<copy>
 			<source>&packages_dir;/&kernel-config;</source>
 			<destination>.config</destination>
 		</copy>
 
-		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../config/keymap-ch8.xml" />
+		<xi:include href="../config/keymap-ch8.xml" />
 
 		<make>
 			<param>oldconfig</param>
