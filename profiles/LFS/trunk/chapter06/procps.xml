@@ -29,8 +29,6 @@
 		<make>
 			<param>install</param>
 		</make>
-
-		<remove>/lib/libproc.so</remove>
 	</stage>
 
 	<stage name="Cleaning up.">

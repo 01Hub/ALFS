@@ -34,6 +34,12 @@
 			<name>/var/lib/hwclock</name>
 		</mkdir>
 
+		<execute command="sed">
+			<param>-i</param>
+			<param>-e 's%^include ../MCONFIG%&amp;\n\nCFLAGS:=$(CFLAGS) -fno-unit-at-a-time%'</param>
+			<param>fdisk/Makefile</param>
+		</execute>
+
 		<configure />
 
 		<make>

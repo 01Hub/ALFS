@@ -35,10 +35,8 @@
 		<configure command="../&glibc-directory;/configure">
 			<param>--prefix=/usr</param>
 			<param>--disable-profile</param>
-			<param>--enable-add-ons=nptl</param>
-			<param>--with-tls</param>
-			<param>--with-__thread</param>
-			<param>--with-kernel=2.6.0</param>
+			<param>--enable-add-ons</param>
+			<param>--enable-kernel=2.6.0</param>
 			<param>--without-cvs</param>
 			<param>--libexecdir=/usr/lib/glibc</param>
 		</configure>

@@ -25,6 +25,8 @@
 
 		<make>
 			<param>install</param>
+			<param>install-hotplug</param>
+			<param>install-syslog-ng</param>
 		</make>
 	</stage>
 
