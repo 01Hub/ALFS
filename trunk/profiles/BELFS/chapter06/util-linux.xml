@@ -5,12 +5,23 @@
 			<archive>&packages_dir;/&util-linux-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&util-linux-kernel-headers-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
 			<base>&build_dir;/&util-linux-directory;</base>
 		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&util-linux-kernel-headers-patch;</param>
+		</patch>
 
 		<search_replace>
 			<file>hwclock/hwclock.c</file>
@@ -39,5 +50,6 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&util-linux-directory;</remove>
+		<remove>&build_dir;/&util-linux-kernel-headers-patch;</remove>
 	</stage>
 </package>
