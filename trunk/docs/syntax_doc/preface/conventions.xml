@@ -30,11 +30,11 @@ book but mainly to emphasize important points.</para></blockquote>
 book and to external pages such as HowTo's, download locations,
 websites, etc.</para></blockquote>
 
-<screen><userinput><command>cat &gt; $LFS/etc/group &lt;&lt;&quot;EOF&quot;</command>
+<screen><command>cat &gt; $LFS/etc/group &lt;&lt;&quot;EOF&quot;</command>
 	root:x:0:
 	bin:x:1:
 	......
-<command>EOF</command></userinput></screen>
+<command>EOF</command></screen>
 
 <blockquote><para>This type of section is used mainly when creating
 configuration files.  The first command (in bold) tells the system to create

@@ -8,13 +8,13 @@
 
 <!-- Generally used entities go below here -->
 
-<!ENTITY lt     "&#38;#60;">
+<!ENTITY lt     "&#60;">
 <!ENTITY gt     "&#62;">
-<!ENTITY amp    "&#38;#38;">
+<!ENTITY amp    "&#38;">
 <!ENTITY apos   "&#39;">
 <!ENTITY quot   "&#34;">
 <!ENTITY nbsp   "&#32;">
-<!ENTITY emdash "&#304;">
+<!ENTITY emdash "&#045;&#045;">
 
 <!ENTITY book-product "nALFS">
 

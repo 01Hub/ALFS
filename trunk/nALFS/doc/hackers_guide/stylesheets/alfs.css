@@ -38,6 +38,12 @@ div.part {
     font-family: veranda, tahoma, helvetica, arial, sans-serif;
     text-align: left
 }
+div.chapter {
+    font-weight: normal;
+    font-size: 10pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
+}
 div.book div.titlepage h3.author {
     font-weight: normal;
     font-size: 14pt;
