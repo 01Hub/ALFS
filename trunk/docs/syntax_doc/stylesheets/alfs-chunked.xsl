@@ -15,7 +15,8 @@
 <!-- Generate a clean legal notice link -->
   <xsl:param name="generate.legalnotice.link" select="1"/>
   <xsl:template match="legalnotice" mode="titlepage.mode">
-    <xsl:variable name="id"><xsl:call-template name="object.id"/></xsl:variable>
+    <xsl:variable name="id"><xsl:call-template name="object.id"/>
+    </xsl:variable>
     <xsl:choose>
       <xsl:when test="$generate.legalnotice.link != 0">
         <xsl:variable name="filename">
