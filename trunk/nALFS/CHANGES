@@ -1,3 +1,295 @@
+2003-11-16  Neven Has
+
+	* Version updated to 1.2.0-rc1.
+
+2003-11-11  tag v1_2_0_rc
+
+2003-11-07  Neven Has
+
+	* README: Moved some sections from "Quick start" to "Compiling and
+	  installing".
+
+2003-11-06  Kevin P. Fleming
+
+	* Add Neven's preferred list of gcc warning settings to
+	  Makefile.am, automatically used if --enable-maintainer-mode is
+	  specified when configure is run
+
+2003-11-06  Kevin P. Fleming
+
+	* Move Nprint-related definitions/macros from win.h to nprint.h.
+	  Add nprint_init function to nalfs.c, used during initialization
+	  (before any profile execution or interactive mode are begun)
+
+2003-11-04  Kevin P. Fleming
+
+	* Read /etc/nALFSrc (if it exists) before user's .nALFSrc, support
+	  --rcfile parameter (overrides default rc files)
+
+2003-11-04  Kevin P. Fleming
+
+	* Always report rcfile path for errors found during parsing
+          and report all failures found in an rcfile, not just the first one
+
+2003-11-03  Kevin P. Fleming
+
+	* Add validate_boolean_input and convert_to_boolean functions
+	  support all common boolean input (upper/lowercase,
+	  yes/no/y/n/true/false)
+
+2003-11-03  Kevin P. Fleming
+
+	* Implement support for per-option validation functions. Add
+	  validate_command function for validating all command options.
+	  Add validate_number_minmax function for validating numeric options
+	  with lower/upper bounds. Add error output to
+          validate_command/validate_number_minmax tell user what is wrong
+	  with their input
+
+2003-11-03  Kevin P. Fleming
+
+	* Restructure option structure again, to prepare for supporting
+	  per-option validation functions
+
+2003-11-03  Kevin P. Fleming
+
+	* src/handlers/stage.c:
+	  remove extraneous free of 'root'
+
+2003-11-03  Kevin P. Fleming
+
+	* Rework option handling to eliminate pointer-casting and
+	  inconsistent option definitions
+
+2003-11-03  Kevin P. Fleming
+
+	* Make <stageinfo> handling conform to DTD specification: process
+	  <root>, then <user>, then <environment>. Also clear environment
+	  after successful chroot() (again according to DTD specification)
+
+2003-11-02  Kevin P. Fleming
+
+	* Do some limited parsing of "command string" options: allow only
+	  %% and %s patterns, and only allow a single %s pattern
+
+2003-11-01  Neven Has
+
+	* Printing of warning added, when executing editor fails.
+
+2003-10-30  Neven Has
+
+	* Removing packages finalized. Log files' extension changed to
+	  .xml, to make things incompatible.
+
+2003-10-30  Kevin P. Fleming
+
+	* Add options to allow the user to control the commands used to
+	  uncompress and/or unpack files by the <unpack> element
+
+2003-10-30  Kevin P. Fleming
+
+	* Make patch handler display entire command to be executed
+
+2003-10-30  Kevin P. Fleming
+
+	* Added functions to nALFS.h and new file file_handling.c with
+	  functions to:
+	  - determine a file's compression type
+	  - determine a file's archive format
+          - return a command to decompress a particular compression type
+          - return a command to unpack a particular archive format
+
+2003-10-30  Kevin P. Fleming
+
+	* bugzilla entry #669: <execute> and <patch> elements now accept
+	  <prefix> elements
+
+2003-10-29  Neven Has
+
+	* Changed the format of installed files' list -- a simple,
+	  one-file-per-line is now used.
+
+2003-10-29  Neven Has
+
+	* Disallowed using 'P' while running, for now.
+
+2003-10-29  Neven Has
+
+	* Package's string sent by the backend is now used for constructing
+	  log's file name.
+
+2003-10-29  Neven Has
+
+	* "two-find()s" method of logging changed files removed.
+
+2003-10-29  Neven Has
+
+	* Changed a way logs_get_flog_element() gets <changed_files>,
+	  fixing a bug when the wrong element is found (and frontend
+	  starts receiving the file that's not being sent by backend).
+
+2003-10-29  Neven Has
+
+	* stat() -> lstat() when printing a warning about removing
+	  non-existent file (in <remove> handler, syntax version 2.0).
+
+2003-10-28  Kevin P. Fleming
+
+	* Remove libxml2-SAX option
+
+2003-10-28  Neven Has
+
+	* New utility function created (xreaddir()) and used in two places.
+
+2003-10-27  Neven Has
+
+	* Specifying a directory on command line, or after 'a', now loads
+          all .xml files from it (non-recursively).
+
+2003-10-27  Neven Has
+
+	* All occurrences of libxml2 use removed from logging.c,
+	  which now deals with log files using logs_* functions,
+	  through (logs_t *) handle.
+
+2003-10-27  Kevin P. Fleming
+
+	* Mmake bootstrap script determine syntax versions supported by each
+	  handler and construct Makefile appropriately
+
+2003-10-27  Kevin P. Fleming
+
+	* Add generation of nALFS-config script (installed into
+	  <prefix>/bin) so out-of-tree handler compilation can use
+	  standard method for finding nALFS include file and library
+
+2003-10-27  Kevin P. Fleming
+
+	* Extend --enable-syntax functionality so that
+	  single-syntax-version handlers are not compiled or installed when
+	  not needed (at the moment, the list of single-version handlers is
+	  hardcoded in bootstrap, but will be replaced by run-time
+	  determination)
+
+2003-10-25  Neven Has
+
+	* More improvements in removing installed packages code.
+
+2003-10-25  Kevin P. Fleming
+
+	* Change configure default from --disable-inline to
+	  --enable-inline (inline defaults off now)
+
+2003-10-25  Neven Has
+
+	* Helper function n_xmlGetLastElementByName() created in
+          libXML-tree.c.
+
+2003-10-24  Kevin P. Fleming
+
+	* Process handler_info.priority field, allowing custom/modified
+	  handlers to replace standard ones
+
+2003-10-24  Kevin P. Fleming
+
+	* Changes for bug #612 to support multiple <reference> in <unpack>
+
+2003-10-24  Neven Has
+
+	* Support for cursor added to tmp_window_driver(), now used in 'P'.
+
+2003-10-24  Neven Has
+
+	* New command ('P'ackages) added (for now just printing the list
+          of log files it found).
+	  Started to improve interface for log files.
+
+2003-10-23  Kevin P. Fleming
+
+	* Change get_url to check digest after successful rename of
+          temp file, and not remove file if digest check fails (failure
+	  will still be passed to caller)
+
+2003-10-23  Kevin P. Fleming
+
+	* Added --enable-syntax parameter to configure script
+
+2003-10-23  Kevin P. Fleming
+
+	* more complete fix for bugzilla bug #614
+	  - Added alloc_element_digest function to src/lib/digest.c,
+            removing common digest parsing code from download.c/unpack.c
+	  - Created src/lib/get_url.c, and created new common function to
+	    performa URL download and optionally check a digest against
+	    the result. The new function downloads into a temporary file
+	    (avoiding overwriting any existing file until the download was
+	    successful and the digest matches). It also does not leave any
+	    empty or partial-length files from failed downloads, nor does
+	    it leave files that did not match the supplied digest
+
+2003-10-23  Neven Has
+
+	* New function for scrolling TMP_WINDOW created in win.c,
+	  removing a lot of duplicated code from nalfs.c
+
+2003-10-23  Kevin P. Fleming
+
+	* fixes for bug #614:
+	  - unpack.c now removes any left-over file from a failed download
+	  - download.c now removes any left-over file from a failed
+	    download
+	  - download.c now checks digest (if supplied) immediately after
+	    download, and if digest check fails and more urls have been
+	    specified, tries other urls to find a successful download &
+	    digest match
+
+2003-10-22  Neven Has
+
+	* Structure containing the list of handlers and
+	  their count created, cleaning the code a bit and removing some
+	  functions not needed any more.
+
+2003-10-22  Neven Has
+
+	* New structure describing each handler created,
+	  allowing multiple handlers in a single file.	Merged handlers for
+	  different syntax versions, removing new_* files.
+
+2003-10-21  Kevin P. Fleming
+
+	* Added static build instructions and warning about libnss/libcurl
+	  usage
+
+2003-10-21  Kevin P. Fleming
+
+	* Convert to more fully use GNU autotools system (autoconf, automake
+          and libtool).
+
+2003-10-17  Neven Has
+
+	* Fixed a bug when logging installed files and using <stage>
+	  that forks.
+
+2003-10-17  Neven Has
+
+	* Code dealing with the format of XML log files of the packages
+	  moved to a separate source file.
+
+2003-09-22  tag v1_1_8
+
+2003-09-21  Kevin P. Fleming
+
+	* Duplicated curl code moved from handlers to src/lib/.
+
+2003-09-19  Neven Has
+
+	* <download> handler by Vassili added. Using digest.h code now.
+
+2003-09-19  Kevin P. Fleming
+
+	* MD5 computation code from Christophe Devine added
+	  and --without-ssl made default.
+
 Changes, before program was put under CVS
 =========================================
 
