@@ -9,6 +9,11 @@
 			<archive>&packages_dir;/&nfs-utils-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
@@ -44,5 +49,6 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&nfs-utils-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
 	</stage>
 </package>
