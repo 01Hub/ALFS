@@ -10,5 +10,10 @@ openssl		http://www.openssl.org/
 
 libtar can be installed by cmmi, all others are in BLFS.
 
+* Notes
+
+The libtar-based code does not work on x86_64 atm, because of a design issue
+in the library which requires int and void* to be of the same size.
+
 --
 Boris Buegling <boris@icculus.org>
