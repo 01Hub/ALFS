@@ -303,7 +303,7 @@
 <!ENTITY shadow-package "shadow-&shadow-version;.tar.bz2">
 <!ENTITY shadow-directory "shadow-&shadow-version;">
 
-<!ENTITY sysklogd-md5 "d214aa40beabf7bdb0c9b3c64432c774">
+<!ENTITY sysklogd-md5 "f587720988bc1670071f31d3694ca0fb">
 <!ENTITY sysklogd-version "1.4.1">
 <!ENTITY sysklogd-package "sysklogd-&sysklogd-version;.tar.bz2">
 <!ENTITY sysklogd-directory "sysklogd-&sysklogd-version;">
