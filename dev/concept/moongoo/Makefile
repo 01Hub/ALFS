@@ -4,8 +4,8 @@ BIN=moongoo
 OBJS=build.o moongoo.o plugin.o url.o
 
 ifeq ($(OPTS),)
-OPTS=-q #-s ass
-OPTS+=~/projects/alfs/book/index.xml
+OPTS=-o help
+#OPTS+=~/projects/alfs/book/index.xml
 #OPTS+=~/projects/alfs/lfs-profile/LFS.xml
 #OPTS+=~/projects/alfs/ass/index.xml
 #OPTS+=~/projects/hive/unstable/profile.xml
@@ -15,7 +15,7 @@ OPTS+=~/projects/alfs/book/index.xml
 #OPTS+=~/projects/alfs/refbuild/xml/x86-reference-build.xml
 endif
 
-SUBDIRS=libalfs syntax test
+SUBDIRS=libalfs syntax test output
 
 .PHONY: all
 

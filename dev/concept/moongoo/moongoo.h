@@ -3,7 +3,7 @@
 
 #define DEF_SYN		"book"
 #define MOO_XML		"/.nALFS/answers.xml"
-#define PLUG_DIR	"syntax"
+#define PLUG_DIR	"./"
 #define PKG_XML		"packages.xml"
 #define	VERSION		"0.0.3"
 

@@ -8,7 +8,8 @@ static t_plug diyl_plugin =
 {
 	name:	"DIY Linux",
 	vers:	PLUG_VER,
-	parse:	parse_diyl
+	parse:	parse_diyl,
+	write_prof: NULL
 };
 
 t_plug *getplug ()
