@@ -10,37 +10,39 @@
 %config_entities;
 
 ]>
-<package name="ed" version="&ed-version;">
-  <stage name="Unpacking.">
-    <unpack>
-      <archive>&packages_dir;/&ed-package;</archive>
-      <destination>&build_dir;</destination>
-    </unpack>
-  </stage>
-  <stage name="Patching">
-    <stageinfo>
-      <base>&build_dir;/&ed-directory;</base>
-    </stageinfo>
-    <patch>
-      <param>-N</param>
-      <param>-p1</param>
-      <param>-i &packages_dir;/&ed-mkstemp-patch;</param>
-    </patch>
-  </stage>
-  <stage name="Installing.">
-    <stageinfo>
-      <base>&build_dir;/&ed-directory;</base>
-    </stageinfo>
-    <configure>
-      <param>--prefix=/usr</param>
-      <param>--exec-prefix=""</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>
-  </stage>
-  <stage name="Cleanup.">
-    <remove>&build_dir;/&ed-directory;</remove>
-  </stage>
-</package>
+<alfs>
+  <package name="ed" version="&ed-version;">
+    <stage name="Unpacking.">
+      <unpack>
+        <archive>&packages_dir;/&ed-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+        <base>&build_dir;/&ed-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&ed-mkstemp-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing.">
+      <stageinfo>
+        <base>&build_dir;/&ed-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--exec-prefix=""</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup.">
+      <remove>&build_dir;/&ed-directory;</remove>
+    </stage>
+  </package>
+</alfs>
