@@ -2,6 +2,7 @@
 
 	<mkdir base="&LFS;">
 		<option>parents</option>
+		<name>dev</name>
 		<name>proc</name>
 		<name>sys</name>
 	</mkdir>
@@ -18,18 +19,24 @@
 		<param>&LFS;/sys</param>
 	</execute>
 
-	<execute command="mount">
-		<param>-f</param>
-		<param>-t ramfs</param>
-		<param>ramfs</param>
-		<param>&LFS;/dev</param>
-	</execute>
+	<stage name="Create permanent /dev/console and /dev/null.">
+   		<execute command="mknod">
+			<param>-m 600</param>
+			<param>/dev/console</param>
+			<param>c 5 1</param>
+		</execute>
+		
+		<execute command="mknod">
+			<param>-m 666</param>
+			<param>/dev/null</param>
+			<param>c 1 3</param>
+		</execute>
+	</stage>
 
 	<execute command="mount">
-		<param>-f</param>
-		<param>-t tmpfs</param>
-		<param>tmpfs</param>
-		<param>&LFS;/dev/shm</param>
+		<param>--bind</param>
+		<param>/dev</param>
+		<param>&LFS;/dev</param>
 	</execute>
 
 	<execute command="mount">
@@ -38,5 +45,12 @@
 		<param>-o gid=4,mode=620</param>
 		<param>devpts</param>
 		<param>&LFS;/dev/pts</param>
+	</execute>
+
+	<execute command="mount">
+		<param>-f</param>
+		<param>-t tmpfs</param>
+		<param>tmpfs</param>
+		<param>&LFS;/dev/shm</param>
 	</execute>
 </stage>

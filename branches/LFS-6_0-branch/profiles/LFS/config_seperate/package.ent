@@ -112,9 +112,9 @@
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.gz">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
-<!ENTITY glibc-md5 "8523411a05dba92977e51fe6addd6d1d">
+<!ENTITY glibc-md5 "461a0e3918697865de347470577472f6">
 <!ENTITY glibc-version "2.3.4">
-<!ENTITY glibc-cvs-version "-20040408">
+<!ENTITY glibc-cvs-version "-20040510">
 <!ENTITY glibc-package "glibc-&glibc-version;&glibc-cvs-version;.tar.bz2">
 <!ENTITY glibc-directory "glibc-&glibc-version;&glibc-cvs-version;">
 
@@ -164,8 +164,8 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "797b4a7918676f439ad6061c6d3c1752">
-<!ENTITY lfs-bootscripts-version "2.1.1-pre2">
+<!ENTITY lfs-bootscripts-md5 "24d0adf6ec94f47d5b7e895613f6441c">
+<!ENTITY lfs-bootscripts-version "2.1.1">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
@@ -316,8 +316,8 @@
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
 
-<!ENTITY udev-config-patch-md5 "dad32f5298f46da1099fa46af02d27db">
-<!ENTITY udev-config-patch "udev-&udev-version;-config-1.patch">
+<!ENTITY udev-config-patch-md5 "fb47429ab562e30df6784d9b996b4881">
+<!ENTITY udev-config-patch "udev-&udev-version;-config-2.patch">
 
 <!ENTITY util-linux-md5 "5fa39c3d8761b48732be137a06853c64">
 <!ENTITY util-linux-version "2.12a">
