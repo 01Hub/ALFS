@@ -107,7 +107,8 @@ void free_element(element_s *el)
 }
 
 /* Link new element. */
-void link_element(element_s *el, element_s *prev, element_s *parent)
+void link_element(element_s *el, element_s *prev, element_s *parent,
+		  element_s *profile)
 {
 	/* Parent<->Child */
 	if (parent) {
@@ -124,6 +125,8 @@ void link_element(element_s *el, element_s *prev, element_s *parent)
 
 		prev->next = el;
 	}
+
+	el->profile = profile;
 }
 
 static void append_el_parents(char **el_path, element_s *el)
@@ -257,15 +260,7 @@ element_s *first_param(const char *name, const element_s *element)
 
 element_s *get_profile_by_element(element_s *el)
 {
-	for (; el; el = el->parent) {
-		if (el->type == TYPE_PROFILE && !el->parent->parent) {
-			return el;
-		}
-	}
-
-	ASSERT(0); /* Shouldn't be reached. */
-
-	return NULL;
+	return el->profile;
 }
 
 element_s *get_profile_by_name(element_s *root, const char *name)
