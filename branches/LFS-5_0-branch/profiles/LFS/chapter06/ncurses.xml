@@ -58,7 +58,7 @@
 		<link>
 			<option>force</option>
 			<target>../../lib/libncurses.so.5</target>
-			<name>/usr/lib/libcurses.so</name>
+			<name>/usr/lib/libncurses.so</name>
 		</link>
 
 		<link>
