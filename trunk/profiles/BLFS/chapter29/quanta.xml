@@ -1,26 +1,23 @@
-<package name="kdegraphics" version="&kdegraphics-version;">
+<package name="quanta" version="&quanta-version;">
 
         <packageinfo>
                 <requires><name>kdebase</name></requires>
-		<utilizes><name>libxml2</name></utilizes>
-		<utilizes><name>sane</name></utilizes>
+		<utilizes><name>libjpeg</name></utilizes>
 		<utilizes><name>libtiff</name></utilizes>
-		<utilizes><name>xpdf</name></utilizes>
-		<utilizes><name>imlib</name></utilizes>
-		<utilizes><name>libart-lgpl</name></utilizes>
-		<utilizes><name>pkgconfig</name></utilizes>
+		<utilizes><name>libxml2</name></utilizes>
+		<utilizes><name>libxslt</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&kdegraphics-package;</archive>
+			<archive>&packages_dir;/&quanta-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&kdegraphics-directory;</base>
+			<base>&build_dir;/&quanta-directory;</base>
 		</stageinfo>
 
 		<configure>
@@ -38,7 +35,7 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&kdegraphics-directory;</remove>
+		<remove>&build_dir;/&quanta-directory;</remove>
 	</stage>
 
 </package>

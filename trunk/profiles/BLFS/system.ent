@@ -194,36 +194,34 @@
 <!ENTITY libxklavier SYSTEM "./chapter26/libxklavier.xml">
 
 
-<!-- chapter 28 -->
+<!-- chapter 27 -->
 <!ENTITY sawfish       SYSTEM "./chapter27/sawfish.xml">
 <!ENTITY fluxbox       SYSTEM "./chapter27/fluxbox.xml">
-<!ENTITY xfce          SYSTEM "./chapter27/xfce.xml">
 <!ENTITY metacity      SYSTEM "./chapter27/metacity.xml">
+<!ENTITY xfce          SYSTEM "./chapter27/xfce.xml">
 
-<!-- chapter 29 -->
+<!-- chapter 28 -->
 <!ENTITY arts      SYSTEM "./chapter28/arts.xml">
 <!ENTITY kdelibs   SYSTEM "./chapter28/kdelibs.xml">
 <!ENTITY kdebase   SYSTEM "./chapter28/kdebase.xml">
 
-<!-- chapter 30 -->
-<!ENTITY kdemultimedia SYSTEM "./chapter29/kdemultimedia.xml">
-<!ENTITY kdenetwork    SYSTEM "./chapter29/kdenetwork.xml">
-<!ENTITY kdegraphics   SYSTEM "./chapter29/kdegraphics.xml">
-<!ENTITY kdepim        SYSTEM "./chapter29/kdepim.xml">
+<!-- chapter 29 -->
 <!ENTITY kdeadmin      SYSTEM "./chapter29/kdeadmin.xml">
-<!ENTITY kdegames      SYSTEM "./chapter29/kdegames.xml">
+<!ENTITY kdenetwork    SYSTEM "./chapter29/kdenetwork.xml">
+<!ENTITY kdepim        SYSTEM "./chapter29/kdepim.xml">
+<!ENTITY kdemultimedia SYSTEM "./chapter29/kdemultimedia.xml">
+<!ENTITY kdegraphics   SYSTEM "./chapter29/kdegraphics.xml">
 <!ENTITY kdeutils      SYSTEM "./chapter29/kdeutils.xml">
 <!ENTITY kdeedu        SYSTEM "./chapter29/kdeedu.xml">
-<!ENTITY kdeartwork    SYSTEM "./chapter29/kdeartwork.xml">
+<!ENTITY kdesdk        SYSTEM "./chapter29/kdesdk.xml">
+<!ENTITY kdevelop      SYSTEM "./chapter29/kdevelop.xml">
+<!ENTITY quanta	       SYSTEM "./chapter29/quanta.xml">
+<!ENTITY kdebindings   SYSTEM "./chapter29/kdebindings.xml">
+<!ENTITY kdeaccessibility SYSTEM "./chapter29/kdeaccessibility.xml">
 <!ENTITY kdetoys       SYSTEM "./chapter29/kdetoys.xml">
+<!ENTITY kdegames      SYSTEM "./chapter29/kdegames.xml">
+<!ENTITY kdeartwork    SYSTEM "./chapter29/kdeartwork.xml">
 <!ENTITY kdeaddons     SYSTEM "./chapter29/kdeaddons.xml">
-
-<!-- chapter 31 -->
-
-<!ENTITY kdoc          SYSTEM "./chapter31/kdoc.xml">
-<!ENTITY kdebindings   SYSTEM "./chapter31/kdebindings.xml">
-<!ENTITY kdesdk        SYSTEM "./chapter31/kdesdk.xml">
-<!ENTITY kdevelop      SYSTEM "./chapter31/kdevelop.xml">
 
 <!-- chapter 30 -->
 <!ENTITY gnome-pre-installation SYSTEM "./chapter30/gnome-pre-installation.xml">

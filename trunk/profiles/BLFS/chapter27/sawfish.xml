@@ -2,7 +2,6 @@
 
 	<packageinfo>
         	<requires><name>xfree86</name></requires>
-                <requires><name>imlib</name></requires>
                 <requires><name>librep</name></requires>
                 <requires><name>rep-gtk</name></requires>
                 <requires><name>esound</name></requires>
@@ -26,9 +25,7 @@
 			<param>--prefix=/usr</param>
 			<param>--libexec=/usr/sbin</param>
 			<param>--infodir=/usr/share/info</param>
-			<param>--enable-capplet</param>
-			<param>--with-gdk-pixbuf</param>
-			<param>--with-gnome-prefix=/opt/&gnome-prefix;</param>
+			<param>--with-gnome-prefix=&gnome-prefix;</param>
 		</configure>
 
 		<make/>

@@ -2,6 +2,16 @@
 
         <packageinfo>
                 <requires><name>kdebase</name></requires>
+		<utilizes><name>alsa</name></utilizes>
+		<utilizes><name>cdparanoia</name></utilizes>
+		<utilizes><name>lame</name></utilizes>
+		<utilizes><name>audiofile</name></utilizes>
+		<utilizes><name>libogg</name></utilizes>
+		<utilizes><name>libvorbis</name></utilizes>
+		<utilizes><name>xine-lib</name></utilizes>
+		<utilizes><name>libtiff</name></utilizes>
+		<utilizes><name>libxml2</name></utilizes>
+		<utilizes><name>flac</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -17,12 +27,10 @@
 		</stageinfo>
 
 		<configure>
-                        <param>--prefix=/opt/kde-&kde-version;</param>
+                        <param>--prefix=&kde-prefix;</param>
                         <param>--disable-debug</param>
                         <param>--disable-dependency-tracking</param>
-                        <param>--with-arts-alsa</param>
 		</configure>
-
 
 		<make />
 

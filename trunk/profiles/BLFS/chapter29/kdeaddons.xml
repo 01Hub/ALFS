@@ -1,8 +1,11 @@
 <package name="kdeaddons" version="&kdeaddons-version;">
 
         <packageinfo>
-                <requires><name>kdemultimedia</name></requires>
-                <requires><name>kdenetwork</name></requires>
+                <requires><name>kdebase</name></requires>
+		<utilizes><name>libxml2</name></utilizes>
+		<utilizes><name>db</name></utilizes>
+		<utilizes><name>xmms</name></utilizes>
+		<utilizes><name>sdl</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -18,7 +21,7 @@
 		</stageinfo>
 
 		<configure>
-                        <param>--prefix=/opt/kde-&kde-version;</param>
+                        <param>--prefix=&kde-prefix;</param>
                         <param>--disable-debug</param>
                         <param>--disable-dependency-tracking</param>
 		</configure>

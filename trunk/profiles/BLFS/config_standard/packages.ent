@@ -711,103 +711,123 @@
 <!ENTITY libxklavier-package "libxklavier-&libxklavier-version;.tar.gz">
 <!ENTITY libxklavier-directory "libxklavier-&libxklavier-version;">
 
-<!--************* packages for chapter 28 *************-->
+<!--************* packages for chapter 27 *************-->
 
 <!ENTITY sawfish-version   "1.3">
-<!ENTITY sawfish-package   "sawfish-1.3.tar.gz">
-<!ENTITY sawfish-directory "sawfish-1.3">
+<!ENTITY sawfish-package   "sawfish-&sawfish-version;.tar.gz">
+<!ENTITY sawfish-directory "sawfish-&sawfish-version;">
 
-<!ENTITY fluxbox-version   "0.9.5">
-<!ENTITY fluxbox-package   "fluxbox-0.9.5.tar.bz2">
-<!ENTITY fluxbox-directory "fluxbox-0.9.5">
+<!ENTITY fluxbox-version   "0.1.14">
+<!ENTITY fluxbox-package   "fluxbox-&fluxbox-version;.tar.bz2">
+<!ENTITY fluxbox-directory "fluxbox-&fluxbox-version;">
+<!ENTITY fluxbox-gcc33-patch "fluxbox-&fluxbox-version;-gcc33.patch">
 
-<!ENTITY xfce-version   "3.8.18">
-<!ENTITY xfce-package   "xfce-3.8.18.tar.gz">
-<!ENTITY xfce-directory "xfce-3.8.18">
+<!ENTITY metacity-version   "2.8.0">
+<!ENTITY metacity-package   "metacity-&metacity-version;.tar.bz2">
+<!ENTITY metacity-directory "metacity-&metacity-version;">
 
-<!ENTITY metacity-version   "2.4.55">
-<!ENTITY metacity-package   "metacity-2.4.55.tar.bz2">
-<!ENTITY metacity-directory "metacity-2.4.55">
+<!ENTITY xfce-version   "4.0.4">
+<!ENTITY xfce-package   "xfce-&xfce-version;-src.tar.bz2">
+<!ENTITY xfce-directory "xfce-&xfce-version;">
+<!ENTITY xfce-libxfce4util-package "libxfce4util-&xfce-version;.tar.gz">
+<!ENTITY xfce-libxfce4util-directory "libxfce4util-&xfce-version;">
+<!ENTITY xfce-libxfcegui4-package "libxfcegui4-&xfce-version;.tar.gz">
+<!ENTITY xfce-libxfcegui4-directory "libxfcegui4-&xfce-version;">
+<!ENTITY xfce-libxfce4mcs-package "libxfce4mcs-&xfce-version;.tar.gz">
+<!ENTITY xfce-libxfce4mcs-directory "libxfce4mcs-&xfce-version;">
+<!ENTITY xfce-xfcemcsmanager-package "xfce-mcs-mananger-&xfce-version;.tar.gz">
+<!ENTITY xfce-xfcemcsmanager-directory "xfce-mcs-manager-&xfce-version;">
+<!ENTITY xfce-xfwm4-package "xfwm4-&xfce-version;.tar.gz">
+<!ENTITY xfce-xfwm4-directory "xfwm4-&xfce-version;">
+<!ENTITY xfce-xfdesktop-package "xfdesktop-&xfce-version;.tar.gz">
+<!ENTITY xfce-xfdesktop-directory "xfdesktop-&xfce-version;">
+<!ENTITY xfce-xfce4panel-package "xfce4-panel-&xfce-version;.tar.gz">
+<!ENTITY xfce-xfce4panel-directory "xfce4-panel-&xfce-version;">
+<!ENTITY xfce-xfceutils-package "xfce-utils-&xfce-version;.tar.gz">
+<!ENTITY xfce-xfceutils-directory "xfce-utils-&xfce-version;">
+
+<!--************* packages for chapter 28 *************-->
+<!ENTITY kde-version "3.2.2">
+
+<!ENTITY arts-version      "1.2.2">
+<!ENTITY arts-package      "arts-&arts-version;.tar.bz2">
+<!ENTITY arts-directory    "arts-&arts-version;">
+
+<!ENTITY kdelibs-version   "&kde-version;">
+<!ENTITY kdelibs-package   "kdelibs-&kdelibs-version;.tar.bz2">
+<!ENTITY kdelibs-directory "kdelibs-&kdelibs-version;">
+<!ENTITY kdelibs-kapplication-patch "post-&kde-version;-kdelibs-kapplication.patch">
+<!ENTITY kdelibs-ktelnetservice-patch "post-&kde-version;-kdelibs-ktelnetservice.patch">
+
+<!ENTITY kdebase-version   "&kde-version;">
+<!ENTITY kdebase-package   "kdebase-&kdebase-version;.tar.bz2">
+<!ENTITY kdebase-directory "kdebase-&kdebase-version;">
 
 <!--************* packages for chapter 29 *************-->
 
-<!ENTITY arts-version      "1.1.4">
-<!ENTITY arts-package      "arts-1.1.4.tar.bz2">
-<!ENTITY arts-directory    "arts-1.1.4">
+<!ENTITY kdeadmin-version   "&kde-version;">
+<!ENTITY kdeadmin-package   "kdeadmin-&kdeadmin-version;.tar.bz2">
+<!ENTITY kdeadmin-directory "kdeadmin-&kdeadmin-version;">
 
-<!ENTITY kde-version   "3.1.4">
+<!ENTITY kdenetwork-version   "&kde-version;">
+<!ENTITY kdenetwork-package   "kdenetwork-&kdenetwork-version;.tar.bz2">
+<!ENTITY kdenetwork-directory "kdenetwork-&kdenetwork-version;">
 
-<!ENTITY kdelibs-version   "3.1.4">
-<!ENTITY kdelibs-package   "kdelibs-3.1.4.tar.bz2">
-<!ENTITY kdelibs-directory "kdelibs-3.1.4">
+<!ENTITY kdepim-version   "&kde-version;">
+<!ENTITY kdepim-package   "kdepim-&kdepim-version;.tar.bz2">
+<!ENTITY kdepim-directory "kdepim-&kdepim-version;">
 
-<!ENTITY kdebase-version   "3.1.4">
-<!ENTITY kdebase-package   "kdebase-3.1.4.tar.bz2">
-<!ENTITY kdebase-directory "kdebase-3.1.4">
+<!ENTITY kdemultimedia-version   "&kde-version;">
+<!ENTITY kdemultimedia-package   "kdemultimedia-&kdemultimedia-version;.tar.bz2">
+<!ENTITY kdemultimedia-directory "kdemultimedia-&kdemultimedia-version;">
 
-<!--************* packages for chapter 30 *************-->
+<!ENTITY kdegraphics-version   "&kde-version;">
+<!ENTITY kdegraphics-package   "kdegraphics-&kdegraphics-version;.tar.bz2">
+<!ENTITY kdegraphics-directory "kdegraphics-&kdegraphics-version;">
 
-<!ENTITY kdemultimedia-version   "3.1.4">
-<!ENTITY kdemultimedia-package   "kdemultimedia-3.1.4.tar.bz2">
-<!ENTITY kdemultimedia-directory "kdemultimedia-3.1.4">
+<!ENTITY kdeutils-version   "&kde-version;">
+<!ENTITY kdeutils-package   "kdeutils-&kdeutils-version;.tar.bz2">
+<!ENTITY kdeutils-directory "kdeutils-&kdeutils-version;">
 
-<!ENTITY kdenetwork-version   "3.1.4">
-<!ENTITY kdenetwork-package   "kdenetwork-3.1.4.tar.bz2">
-<!ENTITY kdenetwork-directory "kdenetwork-3.1.4">
+<!ENTITY kdeedu-version   "&kde-version;">
+<!ENTITY kdeedu-package   "kdeedu-&kdeedu-version;.tar.bz2">
+<!ENTITY kdeedu-directory "kdeedu-&kdeedu-version;">
 
-<!ENTITY kdegraphics-version   "3.1.4">
-<!ENTITY kdegraphics-package   "kdegraphics-3.1.4.tar.bz2">
-<!ENTITY kdegraphics-directory "kdegraphics-3.1.4">
+<!ENTITY kdesdk-version   "&kde-version;">
+<!ENTITY kdesdk-package   "kdesdk-&kdesdk-version;.tar.bz2">
+<!ENTITY kdesdk-directory "kdesdk-&kdesdk-version;">
 
-<!ENTITY kdepim-version   "3.1.4">
-<!ENTITY kdepim-package   "kdepim-3.1.4.tar.bz2">
-<!ENTITY kdepim-directory "kdepim-3.1.4">
+<!ENTITY kdevelop-version   "3.0.3">
+<!ENTITY kdevelop-package   "kdevelop-&kdevelop-version;.tar.bz2">
+<!ENTITY kdevelop-directory "kdevelop-&kdevelop-version;">
 
-<!ENTITY kdeadmin-version   "3.1.4">
-<!ENTITY kdeadmin-package   "kdeadmin-3.1.4.tar.bz2">
-<!ENTITY kdeadmin-directory "kdeadmin-3.1.4">
+<!ENTITY quanta-version "&kde-version;">
+<!ENTITY quanta-package "quanta-&quanta-version;.tar.bz2">
+<!ENTITY quanta-directory "quanta-&quanta-version;">
 
-<!ENTITY kdegames-version   "3.1.4">
-<!ENTITY kdegames-package   "kdegames-3.1.4.tar.bz2">
-<!ENTITY kdegames-directory "kdegames-3.1.4">
+<!ENTITY kdebindings-version   "&kde-version;">
+<!ENTITY kdebindings-package   "kdebindings-&kdebindings-version;.tar.bz2">
+<!ENTITY kdebindings-directory "kdebindings-&kdebindings-version;">
 
-<!ENTITY kdeutils-version   "3.1.4">
-<!ENTITY kdeutils-package   "kdeutils-3.1.4.tar.bz2">
-<!ENTITY kdeutils-directory "kdeutils-3.1.4">
+<!ENTITY kdeaccessibility-version   "&kde-version;">
+<!ENTITY kdeaccessibility-package   "kdeaccessibility-&kdeaccessibility-version;.tar.bz2">
+<!ENTITY kdeaccessibility-directory "kdeaccessibility-&kdeaccessibility-version;">
 
-<!ENTITY kdeedu-version   "3.1.4">
-<!ENTITY kdeedu-package   "kdeedu-3.1.4.tar.bz2">
-<!ENTITY kdeedu-directory "kdeedu-3.1.4">
+<!ENTITY kdetoys-version   "&kde-version;">
+<!ENTITY kdetoys-package   "kdetoys-&kdetoys-version;.tar.bz2">
+<!ENTITY kdetoys-directory "kdetoys-&kdetoys-version;">
 
-<!ENTITY kdeartwork-version   "3.1.4">
-<!ENTITY kdeartwork-package   "kdeartwork-3.1.4.tar.bz2">
-<!ENTITY kdeartwork-directory "kdeartwork-3.1.4">
+<!ENTITY kdegames-version   "&kde-version;">
+<!ENTITY kdegames-package   "kdegames-&kdegames-version;.tar.bz2">
+<!ENTITY kdegames-directory "kdegames-&kdegames-version;">
 
-<!ENTITY kdetoys-version   "3.1.4">
-<!ENTITY kdetoys-package   "kdetoys-3.1.4.tar.bz2">
-<!ENTITY kdetoys-directory "kdetoys-3.1.4">
+<!ENTITY kdeartwork-version   "&kde-version;">
+<!ENTITY kdeartwork-package   "kdeartwork-&kdeartwork-version;.tar.bz2">
+<!ENTITY kdeartwork-directory "kdeartwork-&kdeartwork-version;">
 
-<!ENTITY kdeaddons-version   "3.1.4">
-<!ENTITY kdeaddons-package   "kdeaddons-3.1.4.tar.bz2">
-<!ENTITY kdeaddons-directory "kdeaddons-3.1.4">
-
-<!--************* packages for chapter 31 *************-->
-
-<!ENTITY kdoc-version   "snapshot">
-<!ENTITY kdoc-package   "kdoc-snapshot.tar.gz">
-<!ENTITY kdoc-directory "kdoc">
-
-<!ENTITY kdebindings-version   "3.0.5a">
-<!ENTITY kdebindings-package   "kdebindings-3.0.5a.tar.bz2">
-<!ENTITY kdebindings-directory "kdebindings-3.0.5a">
-
-<!ENTITY kdesdk-version   "3.0.5a">
-<!ENTITY kdesdk-package   "kdesdk-3.0.5a.tar.bz2">
-<!ENTITY kdesdk-directory "kdesdk-3.0.5a">
-
-<!ENTITY kdevelop-version   "2.1.4">
-<!ENTITY kdevelop-package   "kdevelop-2.1.4_for_KDE_3.0.tar.bz2">
-<!ENTITY kdevelop-directory "kdevelop-2.1.4_for_KDE_3.0">
+<!ENTITY kdeaddons-version   "&kde-version;">
+<!ENTITY kdeaddons-package   "kdeaddons-&kdeaddons-version;.tar.bz2">
+<!ENTITY kdeaddons-directory "kdeaddons-&kdeaddons-version;">
 
 <!--************* packages for chapter 30 *************-->
 
@@ -1177,11 +1197,11 @@
 <!ENTITY db3117-package   "db-&db3117-version;.tar.gz">
 <!ENTITY db3117-directory "db-&db3117-version;">
 
-<!--************* packages for chapter 39 *************-->
+<!--************* packages for chapter 34 *************-->
 
-<!ENTITY koffice-version   "1.2.93">
-<!ENTITY koffice-package   "koffice-1.2.93.tar.bz2">
-<!ENTITY koffice-directory "koffice-1.2.93">
+<!ENTITY koffice-version   "1.3.1">
+<!ENTITY koffice-package   "koffice-&koffice-version;.tar.bz2">
+<!ENTITY koffice-directory "koffice-&koffice-version;">
 
 <!ENTITY openoffice-version   "1.0.2">
 <!ENTITY openoffice-package   "OOo_1.0.2_source.tar.bz2">

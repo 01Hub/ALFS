@@ -2,19 +2,16 @@
 
         <packageinfo>
                 <requires><name>arts</name></requires>
-
-                <requires><name>openssl</name></requires>
-        	<requires><name>pcre</name></requires>
-        	<requires><name>libxml2</name></requires>
-        	<requires><name>libxslt</name></requires>
-		<!--  fam not available yet
-        	<requires><name>fam</name></requires>
-		-->
-        	<requires><name>libart-lgpl</name></requires>
-
+		<utilizes><name>libxml2</name></utilizes>
+        	<utilizes><name>libxslt</name></utilizes>
 		<utilizes><name>cups</name></utilizes>
-		<utilizes><name>sane</name></utilizes>
 		<utilizes><name>openldap</name></utilizes>
+		<utilizes><name>fam</name></utilizes>
+		<utilizes><name>pcre</name></utilizes>
+                <utilizes><name>openssl</name></utilizes>      	
+	       	<utilizes><name>libart-lgpl</name></utilizes>
+		<utilizes><name>alsa</name></utilizes>
+		<utilizes><name>libtiff</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -29,14 +26,25 @@
 			<base>&build_dir;/&kdelibs-directory;</base>
 		</stageinfo>
 
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&kdelibs-kapplication-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p0</param>
+			<param>-i &packages_dir;/&kdelibs-ktelnetservice-patch;</param>
+		</patch>
+
 		<configure>
-                        <param>--prefix=/opt/kde-&kde-version;</param>
+                        <param>--prefix=&kde-prefix;</param>
                         <param>--disable-debug</param>
                         <param>--disable-dependency-tracking</param>
-                        <param>--with-alsa</param>
                         <param>--enable-fast-malloc=full</param>
+			<param>--disable-pcre</param>
 		</configure>
-
 
 		<make />
 
@@ -44,6 +52,7 @@
 			<param>install</param>
 		</make>
 
+		&ldconfig;
 	</stage>
 
 	<stage name="Clean-up.">

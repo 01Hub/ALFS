@@ -1,7 +1,6 @@
 <package name="metacity" version="&metacity-version;">
 
 	<packageinfo>
-        	<requires><name>xfree86</name></requires>
         	<requires><name>intltool</name></requires>
         	<requires><name>gtk+2</name></requires>
 		<utilizes><name>startup-notification</name></utilizes>

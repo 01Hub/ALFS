@@ -1,14 +1,16 @@
 <package name="kdebase" version="&kdebase-version;">
 
         <packageinfo>
-                <requires><name>openssl</name></requires>
-        	<requires><name>lesstif</name></requires>
-        	<requires><name>cdparanoia</name></requires>
-        	<requires><name>libvorbis</name></requires>
-        	<requires><name>cups</name></requires>
-
-		<requires><name>lame</name></requires>
-		<utilizes><name>linuxpam</name></utilizes>
+		<requires><name>kdelibs</name></requires>
+                <utilizes><name>libxml2</name></utilizes>
+        	<utilizes><name>j2sdk</name></utilizes>
+        	<utilizes><name>openssl</name></utilizes>
+        	<utilizes><name>linuxpam</name></utilizes>
+        	<utilizes><name>libtiff</name></utilizes>
+		<utilizes><name>openldap</name></utilizes>
+		<utilizes><name>pkgconfig</name></utilizes>
+		<utilizes><name>libart-lgpl</name></utilizes>
+		<utilizes><name>samba</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -23,22 +25,11 @@
 			<base>&build_dir;/&kdebase-directory;</base>
 		</stageinfo>
 
-                <link>
-		        <option>force</option>
-			<target>/usr/lib/libmisc.la</target>
-			<name>/lib/libmisc.la</name>
-		</link>
-
 		<configure>
-                        <param>--prefix=/opt/kde-&kde-version;</param>
+                        <param>--prefix=&kde-prefix;</param>
                         <param>--disable-debug</param>
                         <param>--disable-dependency-tracking</param>
-			<!-- add if lame is not installed
-                        <param>- -disable-lametest</param>
-			-->
-                        <param>--with-shadow</param>
 		</configure>
-
 
 		<make />
 

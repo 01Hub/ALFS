@@ -1,15 +1,10 @@
 <package name="xfce" version="&xfce-version;">
 
 	<packageinfo>
-        	<requires><name>xfree86</name></requires>
-        	<requires><name>gtk+</name></requires>
-        	<requires><name>glib</name></requires>
-		<utilizes><name>gdk-pixbuf</name></utilizes>
-		<utilizes><name>imlib</name></utilizes>
-		<utilizes><name>libpng</name></utilizes>
-		<utilizes><name>libjpeg</name></utilizes>
-		<utilizes><name>libungif</name></utilizes>
-		<utilizes><name>libtiff</name></utilizes>
+               	<requires><name>gtk+2</name></requires>
+        	<requires><name>libxml2</name></requires>
+		<utilizes><name>libgtkhtml</name></utilizes>
+		<utilizes><name>startup-notification</name></utilizes>
 	</packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -17,16 +12,164 @@
 			<archive>&packages_dir;/&xfce-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
+
+		<unpack>
+			<archive>&build_dir;/&xfce-directory;/src/&xfce-libxfce4util-package;</archive>
+			<destination>&build_dir;/&xfce-directory;/src</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&build_dir;/&xfce-directory;/src/&xfce-libxfcegui4-package;</archive>
+			<destination>&build_dir;/&xfce-directory;/src</destination>
+		</unpack>
+		
+		<unpack>
+			<archive>&build_dir;/&xfce-directory;/src/&xfce-libxfce4mcs-package;</archive>
+			<destination>&build_dir;/&xfce-directory;/src</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&build_dir;/&xfce-directory;/src/&xfce-xfcemcsmanager-package;</archive>
+			<destination>&build_dir;/&xfce-directory;/src</destination>
+		</unpack>
+	
+		<unpack>
+			<archive>&build_dir;/&xfce-directory;/src/&xfce-xfwm4-package;</archive>
+			<destination>&build_dir;/&xfce-directory;/src</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&build_dir;/&xfce-directory;/src/&xfce-xfdesktop-package;</archive>
+			<destination>&build_dir;/&xfce-directory;/src</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&build_dir;/&xfce-directory;/src/&xfce-xfce4panel-package;</archive>
+			<destination>&build_dir;/&xfce-directory;/src</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&build_dir;/&xfce-directory;/src/&xfce-xfceutils-package;</archive>
+			<destination>&build_dir;/&xfce-directory;/src</destination>
+		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
-			<base>&build_dir;/&xfce-directory;</base>
+			<base>&build_dir;/&xfce-directory;/src/&xfce-libxfce4util-directory;</base>
 		</stageinfo>
 
 		<configure>
 			<param>--prefix=/usr</param>
-			<param>--datadir=/usr/share</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&xfce-directory;/src/&xfce-libxfcegui4-directory;</base>
+		</stageinfo>	
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&xfce-directory;/src/&xfce-libxfce4mcs-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&xfce-directory;/src/&xfce-xfcemcsmanager-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&xfce-directory;/src/&xfce-xfwm4-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&xfce-directory;/src/&xfce-xfdesktop-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&xfce-directory;/src/&xfce-xfce4panel-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&xfce-directory;/src/&xfce-xfceutils-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
 			<param>--sysconfdir=/etc</param>
 		</configure>
 
@@ -37,6 +180,7 @@
 		</make>
 
 	</stage>
+	
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&xfce-directory;</remove>

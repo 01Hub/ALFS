@@ -1,26 +1,22 @@
-<package name="kdegraphics" version="&kdegraphics-version;">
+<package name="kdesdk" version="&kdesdk-version;">
 
         <packageinfo>
                 <requires><name>kdebase</name></requires>
+		<utilizes><name>libjpeg</name></utilizes>
 		<utilizes><name>libxml2</name></utilizes>
-		<utilizes><name>sane</name></utilizes>
-		<utilizes><name>libtiff</name></utilizes>
-		<utilizes><name>xpdf</name></utilizes>
-		<utilizes><name>imlib</name></utilizes>
-		<utilizes><name>libart-lgpl</name></utilizes>
-		<utilizes><name>pkgconfig</name></utilizes>
+		<utilizes><name>db</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&kdegraphics-package;</archive>
+			<archive>&packages_dir;/&kdesdk-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&kdegraphics-directory;</base>
+			<base>&build_dir;/&kdesdk-directory;</base>
 		</stageinfo>
 
 		<configure>
@@ -28,6 +24,18 @@
                         <param>--disable-debug</param>
                         <param>--disable-dependency-tracking</param>
 		</configure>
+
+		<make>
+			<param>|| exit 0</param>
+		</make>
+
+		<execute command="sed -i 's/class istream;/#include &lt;istream.h&gt;/' kbabel/common/libgettext/pofiles.cc" />
+
+		<make>
+			<param>|| exit 0</param>
+		</make>
+
+		<execute command="sed -i 's/class istream;/#include &lt;istream.h&gt;/' umbrello/umbrello/classparser/tokenizer.c" />
 
 		<make />
 
@@ -38,7 +46,7 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&kdegraphics-directory;</remove>
+		<remove>&build_dir;/&kdesdk-directory;</remove>
 	</stage>
 
 </package>
