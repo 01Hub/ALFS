@@ -89,19 +89,19 @@
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
 <!ENTITY gcc-version "3.4.1">
-<!ENTITY gcc-cvs-tag "-20040601">
+<!ENTITY gcc-cvs-tag "">
 <!ENTITY gcc-directory "gcc-&gcc-version;&gcc-cvs-tag;">
 
-<!ENTITY gcc-md5 "154ccd6c790aefb74b5542567df7e599">
+<!ENTITY gcc-md5 "31b459062499f9f68d451db9cbf3205c">
 <!ENTITY gcc-package "gcc-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
-<!ENTITY gcc-core-md5 "6371ff0a37d5e1809f4f59d0045dcaa5">
+<!ENTITY gcc-core-md5 "">
 <!ENTITY gcc-core-package "gcc-core-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
-<!ENTITY gcc-gpp-md5 "4b66e4ce2e25d8c73b05ea97f27b2d8e">
+<!ENTITY gcc-gpp-md5 "">
 <!ENTITY gcc-gpp-package "gcc-g++-&gcc-version;&gcc-cvs-tag;.tar.bz2">
   
-<!ENTITY gcc-testsuite-md5 "dcc17608ae1c801eac934f5955b1820c">
+<!ENTITY gcc-testsuite-md5 "">
 <!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
 <!ENTITY gcc-no-fixincludes-patch-md5 "78fa00bc9f7173b9658eeb86ce9291c9">
@@ -181,7 +181,7 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "db81185de5ecb68960eeb68e95559013">
+<!ENTITY lfs-bootscripts-md5 "c30c3804bd057271ef3ac51810e64dc5">
 <!ENTITY lfs-bootscripts-version "2.1.2">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
@@ -191,8 +191,8 @@
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.gz">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
-<!ENTITY libxml2-md5 "41e9ccf94c1cacb8b1d127b01fba8c38">
-<!ENTITY libxml2-version "2.6.9">
+<!ENTITY libxml2-md5 "299da4545913212ec4d82429d74314b9">
+<!ENTITY libxml2-version "2.6.10">
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.gz">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
@@ -202,10 +202,8 @@
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
 
-<!ENTITY linux-src-fpu-patch "linux-&linux-version;-fpu-1.patch">
-
-<!ENTITY linux-libc-headers-md5 "7b73c05e9631d592746247dff1211e11">
-<!ENTITY linux-libc-headers-version "2.6.6.0">
+<!ENTITY linux-libc-headers-md5 "ac14861e5fa7e52d98a6174add34084d">
+<!ENTITY linux-libc-headers-version "2.6.7.0">
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
 <!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
 
@@ -245,8 +243,8 @@
 <!ENTITY module-tools-package "module-init-tools-&module-tools-version;.tar.bz2">
 <!ENTITY module-tools-directory "module-init-tools-&module-tools-version;">
 
-<!ENTITY nALFS-md5 "245cd1bc21a5d1b80ccfc693b03e6b6b">
-<!ENTITY nALFS-version "1.2.3">
+<!ENTITY nALFS-md5 "1e7bb2216cbddec8c97fc0a440216bf1">
+<!ENTITY nALFS-version "1.2.4">
 <!ENTITY nALFS-package "nALFS-&nALFS-version;.tar.bz2">
 <!ENTITY nALFS-directory "nALFS-&nALFS-version;">
 
@@ -260,8 +258,8 @@
 <!ENTITY net-tools-package "net-tools-&net-tools-version;.tar.bz2">
 <!ENTITY net-tools-directory "net-tools-&net-tools-version;">
 
-<!ENTITY net-tools-gcc34-patch-md5 "ba53635e2a17d6ea437cd81659d6bb6c">
-<!ENTITY net-tools-gcc34-patch "net-tools-&net-tools-version;-gcc34-2.patch">
+<!ENTITY net-tools-gcc34-patch-md5 "20697137d49bc0f6b7ba2b35cdb3e27d">
+<!ENTITY net-tools-gcc34-patch "net-tools-&net-tools-version;-gcc34-3.patch">
 
 <!ENTITY patch-md5 "ee5ae84d115f051d87fcaaef3b4ae782">
 <!ENTITY patch-version "2.5.4">
@@ -341,13 +339,18 @@
 <!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
-<!ENTITY udev-md5 "2c3eb9345d839013d560992cb6cf7222">
-<!ENTITY udev-version "027">
+<!ENTITY udev-md5 "ec35587f00cc688505eadedf2625a5e6">
+<!ENTITY udev-version "029">
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
 
-<!ENTITY udev-permissions-patch-md5 "a0216e4aa45847c06adb940857f10cb6">
-<!ENTITY udev-permissions-patch     "udev-&udev-version;-config-1.patch">
+<!ENTITY udev-rules-md5 "b60fa9f4b83cb5902f0686521278fc6d">
+<!ENTITY udev-rules-version "1">
+<!ENTITY udev-rules-file "udev-config-&udev-rules-version;.rules">
+
+<!ENTITY udev-permissions-md5 "ba5b6f77f96e779f8b1a3e37515a1d35">
+<!ENTITY udev-permissions-version "2">
+<!ENTITY udev-permissions-file "udev-config-&udev-permissions-version;.permissions">
 
 <!ENTITY util-linux-md5 "5fa39c3d8761b48732be137a06853c64">
 <!ENTITY util-linux-version "2.12a">

@@ -41,24 +41,20 @@
 		</make>
 
 		<make>
-		  	<param>udevdir=/dev</param>
-			<param>etc/udev/udev.conf</param>
-		</make>
-
-		<make>
 		  	<param>DESTDIR=/tools</param>
+			<param>udevdir=/dev</param>
 			<param>install</param>
 		</make>
 		
 		<copy base="&packages_dir;">
         		<option>force</option>
-        		<source>udev-config-1.permissions</source>
+        		<source>&udev-permissions-file;</source>
         		<destination>/tools/etc/udev/permissions.d/00-lfs.permissions</destination>
 		</copy>
 
 		<copy base="&packages_dir;">
         		<option>force</option>
-        		<source>udev-config-1.rules</source>
+        		<source>&udev-rules-file;</source>
         		<destination>/tools/etc/udev/rules.d/00-lfs.rules</destination>
 		</copy>				
 	</stage>
