@@ -188,16 +188,7 @@ static int download_invalid_child(const element_s * const element,
 	return 1;
 }
 
-#if HANDLER_SYNTAX_3_1 
-
-static const struct handler_parameter download_parameters[] = {
-	{ .name = "file", .private = DOWNLOAD_FILE },
-	{ .name = "url", .private = DOWNLOAD_URL },
-	{ .name = "destination", .private = DOWNLOAD_DESTINATION },
-	{ .name = NULL }
-};
-
-static int download_main(const element_s * const element)
+static int download_common(const element_s * const element)
 {
 	struct download_data *data = (struct download_data *) element->handler_data;
 	int status = -1;
@@ -252,6 +243,25 @@ static int download_main(const element_s * const element)
 	return status;
 }
 
+#if HANDLER_SYNTAX_3_1 
+
+static const struct handler_parameter download_parameters[] = {
+	{ .name = "file", .private = DOWNLOAD_FILE },
+	{ .name = "url", .private = DOWNLOAD_URL },
+	{ .name = "destination", .private = DOWNLOAD_DESTINATION },
+	{ .name = NULL }
+};
+
+static int download_main_v2(const element_s * const element)
+{
+	struct download_data *data = (struct download_data *) element->handler_data;
+
+	if (change_current_dir(data->destination))
+		return -1;
+
+	return download_common(element);
+}
+
 #endif /* HANDLER_SYNTAX_3_1 */
 
 #if HANDLER_SYNTAX_3_2
@@ -290,59 +300,14 @@ static int download_invalid_data_v3_2(const element_s * const element)
 	return 0;
 }
 
-static int download_main_3_2(const element_s * const element)
+static int download_main_v3_2(const element_s * const element)
 {
 	struct download_data *data = (struct download_data *) element->handler_data;
-	int status = -1;
-	struct stat file_stat;
-	char *digest, *digest_type;
 
 	if (change_to_base_dir(element, data->base, 0))
 		return -1;
 
-	if (data->digest) {
-		digest = data->digest->handler->alloc_data(data->digest, HDATA_COMMAND);
-		digest_type = data->digest->handler->alloc_data(data->digest, HDATA_VERSION);
-	}
-
-	/* Check if file exists. */
-	if ((stat(data->file, &file_stat))) {
-	        if ((errno == ENOENT) && (data->url_count > 0)) {
-			int i, found = 0;
-
-			Nprint_h_warn("File %s not found.", data->file);
-			Nprint_h("Trying to fetch it from <url>...");
-
-			for (i = 0; i < data->url_count; i++) {
-				char *tmp;
-
-				tmp = xstrdup(data->urls[i]);
-				append_str(&tmp, data->file);
-				if (!get_url(tmp, data->file, digest, digest_type))
-					found = 1;
-				xfree(tmp);
-				if (found)
-					break;
-			}
-
-			if (i < data->url_count) {
-				status = 0;
-			} else {
-				Nprint_h_err("Unable to download file %s.", data->file);
-			}
-		} else {
-			Nprint_h_err("Checking for %s failed:", data->file);
-			Nprint_h_err("    %s", strerror(errno));
-		}
-	} else if (digest && verify_digest(digest_type, digest, data->file)) {
-		Nprint_h_err("Wrong %s digest of file: %s", digest_type, data->file);
-	} else {
-		status = 0;
-	}
-
-	xfree(digest_type);
-	xfree(digest);
-	return status;
+	return download_common(element);
 }
 
 #endif /* HANDLER_SYNTAX_3_2 */
@@ -359,7 +324,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Download",
 		.syntax_version = "3.1",
 		.parameters = download_parameters,
-		.main = download_main,
+		.main = download_main_v2,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
 		.setup = download_setup,
@@ -376,7 +341,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.2",
 		.parameters = download_parameters_v3_2,
 		.attributes = download_attributes_v3_2,
-		.main = download_main_3_2,
+		.main = download_main_v3_2,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
 		.alternate_shell = 1,

@@ -281,25 +281,14 @@ static int unpack_main_ver2(const element_s * const element)
 
 #endif /* HANDLER_SYNTAX_2_0 */
 
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANLER_SYNTAX_3_2
 
-#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
-
-static const struct handler_parameter unpack_parameters_v3[] = {
-	{ .name = "archive", .private = UNPACK_ARCHIVE },
-	{ .name = "destination", .private = UNPACK_DESTINATION },
-	{ .name = "reference", .private = UNPACK_REFERENCE },
-	{ .name = NULL }
-};
-
-static int unpack_main_ver3(const element_s * const element)
+static int unpack_common_v3(const element_s * const element)
 {
 	struct unpack_data *data = (struct unpack_data *) element->handler_data;
 	int status = -1;
 	struct stat file_stat;
 	char *digest, *digest_type;
-
-	if (change_current_dir(data->destination))
-		return -1;
 
 	if (data->digest) {
 		digest = data->digest->handler->alloc_data(data->digest, HDATA_COMMAND);
@@ -349,6 +338,27 @@ static int unpack_main_ver3(const element_s * const element)
 	xfree(digest_type);
 	xfree(digest);
 	return status;
+}
+
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANLER_SYNTAX_3_2 */
+
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+
+static const struct handler_parameter unpack_parameters_v3[] = {
+	{ .name = "archive", .private = UNPACK_ARCHIVE },
+	{ .name = "destination", .private = UNPACK_DESTINATION },
+	{ .name = "reference", .private = UNPACK_REFERENCE },
+	{ .name = NULL }
+};
+
+static int unpack_main_ver3(const element_s * const element)
+{
+	struct unpack_data *data = (struct unpack_data *) element->handler_data;
+
+	if (change_current_dir(data->destination))
+		return -1;
+
+	return unpack_common_v3(element);
 }
 
 #endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
@@ -392,61 +402,11 @@ static int unpack_invalid_data_v3_2(const element_s * const element)
 static int unpack_main_ver3_2(const element_s * const element)
 {
 	struct unpack_data *data = (struct unpack_data *) element->handler_data;
-	int status = -1;
-	struct stat file_stat;
-	char *digest, *digest_type;
 
 	if (change_to_base_dir(element, data->base, 0))
 		return -1;
 
-	if (data->digest) {
-		digest = data->digest->handler->alloc_data(data->digest, HDATA_COMMAND);
-		digest_type = data->digest->handler->alloc_data(data->digest, HDATA_VERSION);
-	}
-
-	/* Check if archive exists. */
-	if ((stat(data->archive, &file_stat))) {
-	        if ((errno == ENOENT) && (data->reference_count > 0)) {
-			int i;
-
-			Nprint_h_warn("Archive %s not found.", data->archive);
-			Nprint_h("Trying to fetch it from <reference>...");
-
-			for (i = 0; i < data->reference_count; i++) {
-				if (!get_url(data->references[i],
-					     data->archive,
-					     digest,
-					     digest_type))
-					break;
-			}
-
-			if (i < data->reference_count) {
-				status = 0;
-			} else {
-				Nprint_h_err("Unable to download file %s.", data->archive);
-			}
-		} else {
-			Nprint_h_err("Checking for %s failed:", data->archive);
-			Nprint_h_err("    %s", strerror(errno));
-		}
-	} else if (digest && verify_digest(digest_type, digest, data->archive)) {
-		Nprint_h_err("Wrong %s digest of archive: %s", digest_type, data->archive);
-	} else {
-		status = 0;
-	}
-
-	if (status == 0) {
-		status = unpack_archive(element, data->archive);
-		if (status) {
-			Nprint_h_err("Unpacking %s failed.", data->archive);
-		} else {
-			Nprint_h("Done unpacking %s.", data->archive);
-		}
-	}
-
-	xfree(digest_type);
-	xfree(digest);
-	return status;
+	return unpack_common_v3(element);
 }
 
 #endif /* HANDLER_SYNTAX_3_2 */
