@@ -17,22 +17,25 @@
         <name>kdebase</name>
       </requires>
       <utilizes>
+	<name>libjpeg</name>
+      </utilizes>
+      <utilizes>
         <name>libxml2</name>
       </utilizes>
       <utilizes>
         <name>libxslt</name>
       </utilizes>
       <utilizes>
-        <name>ppp</name>
-      </utilizes>
-      <utilizes>
         <name>openssl</name>
       </utilizes>
       <utilizes>
-        <name>libtiff</name>
+        <name>ppp</name>
       </utilizes>
       <utilizes>
         <name>xmms</name>
+      </utilizes>
+      <utilizes>
+	<name>doxygen</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

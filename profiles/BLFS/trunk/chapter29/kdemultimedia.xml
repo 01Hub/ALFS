@@ -17,7 +17,16 @@
         <name>kdebase</name>
       </requires>
       <utilizes>
-        <name>alsa</name>
+        <name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+        <name>libxml2</name>
+      </utilizes>
+      <utilizes>
+        <name>alsa-lib</name>
+      </utilizes>
+      <utilizes>
+        <name>libmad</name>
       </utilizes>
       <utilizes>
         <name>cdparanoia</name>
@@ -38,13 +47,16 @@
         <name>xine-lib</name>
       </utilizes>
       <utilizes>
-        <name>libtiff</name>
+      	<name>flac</name>
       </utilizes>
       <utilizes>
-        <name>libxml2</name>
+	<name>speex</name>
       </utilizes>
       <utilizes>
-        <name>flac</name>
+	<name>SDL</name>
+      </utilizes>
+      <utilizes>
+	<name>gstreamer</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

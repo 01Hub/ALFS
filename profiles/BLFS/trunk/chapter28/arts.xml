@@ -26,13 +26,10 @@
         <name>libvorbis</name>
       </utilizes>
       <utilizes>
-        <name>alsa</name>
+        <name>alsa-lib</name>
       </utilizes>
       <utilizes>
         <name>audiofile</name>
-      </utilizes>
-      <utilizes>
-        <name>pkgconfig</name>
       </utilizes>
       <utilizes>
         <name>libmad</name>

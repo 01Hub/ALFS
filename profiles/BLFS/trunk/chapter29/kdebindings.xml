@@ -40,6 +40,9 @@
       <utilizes>
         <name>&j2sdk;</name>
       </utilizes>
+      <utilizes>
+	<name>mozilla</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

@@ -17,7 +17,22 @@
         <name>kdebase</name>
       </requires>
       <utilizes>
+	<name>libjpeg</name>
+      </utilizes>
+      <utilizes>
         <name>libxml2</name>
+      </utilizes>
+      <utilizes>
+	<name>kdenetwork</name>
+      </utilizes>
+      <utilizes>
+	<name>kdemultimedia</name>
+      </utilizes>
+      <utilizes>
+	<name>kdepim</name>
+      </utilizes>
+      <utilizes>
+	<name>kdegames</name>
       </utilizes>
       <utilizes>
         <name>db</name>
