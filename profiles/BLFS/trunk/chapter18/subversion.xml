@@ -47,6 +47,21 @@
       <name>&krb-impl;</name>
     </utilizes>
     <utilizes>
+      <name>swig</name>
+    </utilizes>
+    <utilizes>
+      <name>neon</name>
+    </utilizes>
+    <utilizes>
+      <name>junit</name>
+    </utilizes>
+    <utilizes>
+      <name>dante</name>
+    </utilizes>
+    <utilizes>
+      <name>jikes</name>
+    </utilizes>
+    <utilizes>
       <name>xinetd</name>
     </utilizes>
   </packageinfo>
@@ -67,6 +82,18 @@
     <make>
       <param>install</param>
     </make>
+    <mkdir>
+      <option>parents</option>
+      <name>/usr/share/doc/subversion-&subversion-version;</name>
+    </mkdir>
+    <permissions mode="0755">
+      <name>/usr/share/doc/subversion-&subversion-version;</name>
+    </permissions>
+    <copy>
+      <option>recursive</option>
+      <source>doc/*</source>
+      <destination>/usr/share/doc/subversion-&subversion-version;</destination>
+    </copy>
   </stage>
   <stage name="Cleanup.">
     <remove>&build_dir;/&subversion-directory;</remove>

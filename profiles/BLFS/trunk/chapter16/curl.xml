@@ -61,7 +61,7 @@
       <make>
         <param>install</param>
       </make>
-
+<!-- We still need to add something here. See bug 228.-->
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&curl-directory;</remove>

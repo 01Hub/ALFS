@@ -1,6 +1,6 @@
 <!--************* packages for chapter 20 *************-->
 
-<!ENTITY nail-version   "11.17">
+<!ENTITY nail-version   "11.20">
 <!ENTITY nail-package   "nail-&nail-version;.tar.bz2">
 <!ENTITY nail-directory "nail-&nail-version;">
 

@@ -1,9 +1,9 @@
 ftp://ftp.porcupine.org/mirrors/postfix-release/official/postfix-2.1.5.tar.gz
 
-ftp://ftp.sendmail.org/pub/sendmail/sendmail.8.13.1.tar.gz
+ftp://ftp.sendmail.org/pub/sendmail/sendmail.8.13.3.tar.gz
 
 ftp://ftp.exim.org/pub/exim/exim4/exim-4.43.tar.bz2
 
 ftp://ftp.qualcomm.com/eudora/servers/unix/popper/qpopper4.0.5.tar.gz
 
-http://umn.dl.sourceforge.net/sourceforge/courier/courier-0.45.5.tar.bz2
+http://unc.dl.sourceforge.net/sourceforge/courier/courier-0.47.tar.bz2

@@ -8,7 +8,7 @@
 <!ENTITY nmap-package   "nmap-&nmap-version;.tar.bz2">
 <!ENTITY nmap-directory "nmap-&nmap-version;">
 
-<!ENTITY whois-version   "4.6.25">
+<!ENTITY whois-version   "4.6.26">
 <!ENTITY whois-package   "whois_&whois-version;.tar.gz">
 <!ENTITY whois-directory "whois-&whois-version;">
 

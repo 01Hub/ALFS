@@ -20,6 +20,9 @@
 	<name>mysql</name>
       </utilizes>
       <utilizes>
+	<name>postresql</name>
+      </utilizes>
+      <utilizes>
 	<name>linuxpam</name>
       </utilizes>
       <utilizes>
@@ -38,10 +41,22 @@
 	<name>aspell</name>
       </utilizes>
       <utilizes>
+	<name>ispell</name>
+      </utilizes>
+      <utilizes>
 	<name>gnupg</name>
       </utilizes>
       <utilizes>
 	<name>expect</name>
+      </utilizes>
+      <utilizes>
+	<name>&ghostscript-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>netbpm</name>
+      </utilizes>
+      <utilizes>
+	<name>mgetty+sendfax</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking.">
@@ -80,6 +95,13 @@
       </mkdir>
       <ownership user="courier" group="courier">
         <name>/var/run/courier</name>
+      </ownership>
+      <mkdir>
+        <option>parents</option>
+        <name>/var/lock/subsys</name>
+      </mkdir>
+      <ownership user="root" group="root">
+        <name>/var/lock/subsys</name>
       </ownership>
       <configure>
         <param>--prefix=/usr</param>

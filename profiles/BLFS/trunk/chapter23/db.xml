@@ -26,21 +26,6 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Patching">
-      <stageinfo>
-        <base>&build_dir;/&db-directory;/build_unix</base>
-      </stageinfo>
-      <patch base="&build_dir;/&db-directory;">
-        <param>-N</param>
-        <param>-p0</param>
-        <param>-i &packages_dir;/&db-patch1;</param>
-      </patch>
-      <patch base="&build_dir;/&db-directory;">
-        <param>-N</param>
-        <param>-p0</param>
-        <param>-i &packages_dir;/&db-patch2;</param>
-      </patch>
-    </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&db-directory;/build_unix</base>

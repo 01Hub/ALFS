@@ -4,7 +4,7 @@
 <!ENTITY postfix-package   "postfix-&postfix-version;.tar.gz">
 <!ENTITY postfix-directory "postfix-&postfix-version;">
 
-<!ENTITY sendmail-version "8.13.1">
+<!ENTITY sendmail-version "8.13.3">
 <!ENTITY sendmail-package "sendmail.&sendmail-version;.tar.gz">
 <!ENTITY sendmail-directory "sendmail-&sendmail-version;">
 
@@ -16,6 +16,6 @@
 <!ENTITY qpopper-package   "qpopper&qpopper-version;.tar.gz">
 <!ENTITY qpopper-directory "qpopper&qpopper-version;">
 
-<!ENTITY courier-version "0.45.5">
+<!ENTITY courier-version "0.47">
 <!ENTITY courier-package "courier-&courier-version;.tar.bz2">
 <!ENTITY courier-directory "courier-&courier-version;">
