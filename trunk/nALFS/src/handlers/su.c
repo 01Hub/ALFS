@@ -138,7 +138,6 @@ static INLINE int change_to_user(const char *user)
 }
 
 
-static const char *su_parameters[] = { NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "user", NULL };
 
 static int su_main(element_s *el)
@@ -213,7 +212,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "su",
 		.description = "Change user ID",
 		.syntax_version = "2.0",
-		.parameters = su_parameters,
 		.main = su_main,
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,

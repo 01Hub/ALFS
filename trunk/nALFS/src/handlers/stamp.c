@@ -37,7 +37,6 @@
 
 #if HANDLER_SYNTAX_2_0
 
-static const char *stamp_parameters[] = { NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "name", "version" };
 
 static int stamp_main(element_s *el)
@@ -74,7 +73,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "stamp",
 		.description = "Produce a stamp",
 		.syntax_version = "3.0",
-		.parameters = stamp_parameters,
 		.main = stamp_main,
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,

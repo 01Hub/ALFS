@@ -112,6 +112,101 @@ static INLINE void set_attributes(element_s *el, xmlNodePtr node)
 	}
 }
 
+static const char *find_handler_attribute(const handler_info_s *handler,
+					  const char *name)
+{
+	int i;
+	const char *attr;
+
+	if (!handler->attributes)
+		return NULL;
+
+	for (i = 0; (attr = handler->attributes[i]); ++i)
+		if (strcmp(attr, name) == 0)
+			return attr;
+
+	return NULL;
+}
+
+static const char *find_handler_parameter(const handler_info_s *handler,
+					  const char *name)
+{
+	int i;
+	const char *param;
+
+	if (!handler->parameters)
+		return NULL;
+
+	for (i = 0; (param = handler->parameters[i]); ++i)
+		if (strcmp(param, name) == 0)
+			return param;
+
+	return NULL;
+}
+
+static int make_handler_element(xmlNodePtr node, element_s *element)
+{
+	handler_info_s *handler = element->handler;
+	int result = 1;
+
+	/* If the handler does not have a setup function, there is
+	   nothing to do. */
+	if (!handler->setup)
+		return 0;
+
+	if ((result  = handler->setup(element)) == 0) {
+		xmlAttrPtr attr;
+		xmlNodePtr child;
+
+		/* Pass any attributes present in the node to the
+		   handler so it can check their values and store
+		   any data associated with them.
+		*/
+
+		for (attr = node->properties; attr; attr = attr->next) {
+			if (!find_handler_attribute(handler,
+						    (const char *) attr->name)) {
+				Nprint_warn("<%s>: \"%s\" attribute is not supported.", handler->name, (const char *) attr->name);
+				continue;
+			}
+
+			result = handler->parse_attribute(element,
+							  (const char *) attr->name,
+							  (const char *) attr->children->content);
+			if (result)
+				return result;
+		}
+
+		/* Check all elements inside the node to see if they are
+		   either acceptable parameters for the handler or
+		   elements with known handlers.
+		*/
+
+		for (child = node->children; child; child = child->next)
+		{
+			if (!USED_NODE(child))
+				continue;
+
+			if (find_handler_parameter(handler,
+						   (const char *) child->name)) {
+				result = handler->parse_parameter(element,
+								  (const char *) child->name,
+								  (const char *) child->children->content);
+				if (result)
+					return result;
+			} else if (!find_handler(child->name, syntax_version)) {
+				Nprint_warn("<%s>: <%s> parameter is not supported.", 
+					   handler->name,
+					   (const char *) child->name);
+			}
+		}
+
+		result = handler->valid(element);
+	}
+
+	return result;
+}
+
 static INLINE element_s *create_element(xmlNodePtr node)
 {
 	xmlChar *c;
@@ -139,6 +234,7 @@ static INLINE element_s *create_element(xmlNodePtr node)
 			if ((handler = find_handler(el->name, syntax_version))) {
 				el->type = TYPE_ELEMENT;
 				el->handler = handler->info;
+				(void) make_handler_element(node, el);
 
 			} else if (parameter_exists(el->name)) {
 				el->type = TYPE_PARAMETER;

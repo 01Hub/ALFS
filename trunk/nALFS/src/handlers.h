@@ -48,12 +48,16 @@ typedef enum handler_data_e {
 typedef char *(*handler_data_f)(element_s *, handler_data_e data);
 typedef int (*handler_f)(element_s *);
 typedef int (*handler_test)(element_s *, int *);
+typedef int (*handler_parse)(element_s *, const char *, const char *);
+typedef int (*handler_setup)(element_s *);
+typedef int (*handler_valid)(element_s *);
 
 typedef struct handler_info_s {
 	const char *name;		/* Name of the element it handles. */
 	const char *description;	/* Short description. */
 	const char *syntax_version;	/* Syntax version string. */
 	const char **parameters;	/* Parameters allowed. */
+	const char **attributes;	/* Attributes allowed. */
 
 	handler_f main;
 
@@ -72,6 +76,15 @@ typedef struct handler_info_s {
 				   <shell> element if present in a containing
 				   stage
 				*/
+	/* The following four functions are used during profile parsing, to
+	   allow handler to store private data in the element_s structure,
+	   and to validate the provided parameters and attributes at
+	   profile parsing time.
+	*/
+	handler_setup setup;	/* Function to setup handler private data. */
+	handler_valid valid;	/* Function to validate private data. */
+	handler_parse parse_attribute;
+	handler_parse parse_parameter;
 } handler_info_s;
 
 

@@ -57,7 +57,6 @@ static int prebuild_main(element_s *el)
  * Handlers' information.
  */
 
-static const char *prebuild_parameters[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0
@@ -65,7 +64,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "prebuild",
 		.description = "Pre building",
 		.syntax_version = "2.0",
-		.parameters = prebuild_parameters,
 		.main = prebuild_main,
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,

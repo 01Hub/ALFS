@@ -57,15 +57,12 @@ static int postbuild_main(element_s *el)
  * Handlers' information.
  */
 
-static const char *postbuild_parameters[] = { NULL };
-
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0
 	{
 		.name = "postbuild",
 		.description = "Post building",
 		.syntax_version = "2.0",
-		.parameters = postbuild_parameters,
 		.main = postbuild_main,
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,

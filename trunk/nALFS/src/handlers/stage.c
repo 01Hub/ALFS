@@ -365,9 +365,62 @@ static int parse_stageinfo_and_execute_children(
 }
 
 static const char *stage_parameters[] =
-{ "stageinfo", "base", "root", "user", "environment", "variable", NULL };
+{ "stageinfo", "base", "root", "user", "environment", NULL };
+
+static const char *stage_attributes[] =
+{ "name", NULL};
+
+struct stage_data {
+	char *name;
+};
+
 // char *HANDLER_SYMBOL(attributes)[] = {
 // "name", "description", "logfile", "mode", NULL };
+
+static int stage_setup(element_s *element)
+{
+	struct stage_data *data;
+
+	if ((data = malloc(sizeof(struct stage_data))) == NULL)
+		return 1;
+
+	data->name = NULL;
+
+	element->handler_data = data;
+	return 0;
+}
+
+static int stage_valid(element_s *element)
+{
+	return 0;
+}
+
+static int stage_attribute(element_s *element, const char *attribute,
+			   const char *value)
+{
+	int result = 1;
+	struct stage_data *data = (struct stage_data *) element->handler_data;
+
+	if (strcmp(attribute, "name") == 0) {
+		if (strlen(value)) {
+			data->name = xstrdup(value);
+			result = 0;
+		} else {
+			Nprint_err("<stage>: \"name\" cannot be empty.");
+		}
+	}
+
+	return result;
+}
+
+static int stage_parameter(element_s *element, const char *parameter,
+			   const char *value)
+{
+	int result = 1;
+	struct stage_data *data = (struct stage_data *) element->handler_data;
+
+	return result;
+}
 
 static int stage_main(element_s *el)
 {
@@ -408,8 +461,7 @@ static int stage_main(element_s *el)
 #if HANDLER_SYNTAX_3_2
 
 static const char *stage_parameters_3_2[] =
-{ "stageinfo", "base", "root", "user", "environment", "variable",
-  "shell", NULL };
+{ "stageinfo", "base", "root", "user", "environment", "shell", NULL };
 
 #endif
 
@@ -529,7 +581,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Enter stage: ", // FIXME
 		.syntax_version = "3.2",
 		.parameters = stage_parameters_3_2,
+		.attributes = stage_attributes,
 		.main = stage_main,
+		.setup = stage_setup,
+		.valid = stage_valid,
+		.parse_attribute = stage_attribute,
+		.parse_parameter = stage_parameter,
 		.type = HTYPE_NORMAL | HTYPE_STAGE,
 		.alloc_data = NULL,
 		.is_action = 0,
