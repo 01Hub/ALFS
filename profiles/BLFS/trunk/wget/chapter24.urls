@@ -1,5 +1,5 @@
-ftp://ftp.tux.org/pub/net/apache/dist/httpd/httpd-2.0.49.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/cvs/httpd-2.0.49-config.patch
+http://archive.apache.org/dist/httpd/httpd-2.0.49.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/5.1/httpd-2.0.49-config.patch
 
 ftp://ftp.isu.edu.tw/pub/Unix/Web/PHP/distributions/php-4.3.6.tar.bz2
 

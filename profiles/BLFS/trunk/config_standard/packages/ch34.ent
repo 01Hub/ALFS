@@ -5,7 +5,7 @@
 <!ENTITY koffice-directory "koffice-&koffice-version;">
 
 <!ENTITY openoffice-version   "1.1.1">
-<!ENTITY openoffice-package   "OOo_&openoffice-version;p1_source.tar.bz2">
+<!ENTITY openoffice-package   "OOo_&openoffice-version;_source.tar.bz2">
 <!ENTITY openoffice-directory "oo_&openoffice-version;_src">
 
 <!ENTITY gpc-version   "231">
