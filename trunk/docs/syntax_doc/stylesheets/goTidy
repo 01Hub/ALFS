@@ -21,5 +21,7 @@ if [ -z "$1" ]; then
 fi
 
 for file in `find ./ -name "*.html"`; do 
-	tidy -config tidy.conf $file 2>/dev/null; 
+	tidy -config tidy.conf $file 2>/dev/null;
 done
+
+exit 0
