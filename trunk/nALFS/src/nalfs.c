@@ -821,6 +821,20 @@ static element_s *find_element_by_key(const char *str)
 	return element;
 }
 
+static INLINE void send_element_status(const char *key)
+{
+	int status;
+	element_s *el;
+
+	el = find_element_by_key(key);
+	ASSERT(el != NULL);
+
+	status = get_element_status(el);
+
+	comm_send_ctrl_msg(FRONTEND_CTRL_SOCK,
+		CTRL_REQUEST_EL_STATUS, "%d", status);
+}
+
 static INLINE void jump_to_current_running(void)
 {
 	int i = -1;
@@ -944,6 +958,11 @@ static int handle_ctrl_msg(void)
 			case CTRL_REQUESTING_STATE:
 				send_state();
 				break;
+
+			case CTRL_REQUEST_EL_STATUS:
+				send_element_status(content);
+				break;
+
 
 			default:
 				Nprint_warn(

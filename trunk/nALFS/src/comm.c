@@ -40,13 +40,6 @@
 #include "comm.h"
 
 
-struct ctrl_msg_s {
-	ctrl_msg_type_e type;
-
-	char *content;
-};
-
-
 static int ctrl_sock[2]; /* Sockets for control messages. */
 static int data_sock[2]; /* Sockets for backend Nprint() messages. */
 

@@ -358,6 +358,7 @@ static int do_execute_element(element_s *el)
 	}
 
 	if (i == 0) {
+		// TODO: Is there a point of setting these at all?
 		el->run_status = get_element_status(el);
 		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_ENDED,
 			"%s %s %d", profile->name, el->name, el->id);

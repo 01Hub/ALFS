@@ -64,12 +64,17 @@ typedef enum ctrl_msg_type_e {
 	CTRL_SENDING_STATE,
 	CTRL_DATA,
 	CTRL_DATA_SENT,
+	CTRL_REQUEST_EL_STATUS,
 
 	CTRL_UNKNOWN /* Has to be the last one (used for max number length). */
 } ctrl_msg_type_e;
 
 
-typedef struct ctrl_msg_s ctrl_msg_s;
+typedef struct ctrl_msg_s {
+	ctrl_msg_type_e type;
+
+	char *content;
+} ctrl_msg_s;
 
 
 int comm_get_socket(socket_e s);

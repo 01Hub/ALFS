@@ -677,10 +677,28 @@ void log_stopped_execution(void)
 }
 
 
+static INLINE int ask_about_element_status(element_s *el)
+{
+	ctrl_msg_s *message;
+	element_s *profile = get_profile_by_element(el);
+
+	comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_REQUEST_EL_STATUS,
+		"%s %s %d", profile->name, el->name, el->id);
+
+	while ((message = comm_read_ctrl_message(BACKEND_CTRL_SOCK)) == NULL)
+		/* Wait for the first control message. */ ;
+
+	/* RUN_STATUS_DONE is not 0 anyway, so atoi() will do. */
+	return atoi(message->content);
+	
+}
 
 static INLINE char *stage_two_of_logging_changed_files(void)
 {
-	if (get_element_status(current_package) != RUN_STATUS_DONE) {
+	/* We have to ask the frontend about element's run status,
+	 * as backend can't keep it with all the forking that goes around.
+	 */
+	if (ask_about_element_status(current_package) != RUN_STATUS_DONE) {
 		Debug_logging("Not doing stage two - "
 			"package status is not DONE.");
 		return NULL;
