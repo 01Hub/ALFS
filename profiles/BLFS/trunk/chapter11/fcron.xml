@@ -61,7 +61,7 @@
       <stageinfo>
         <base>&build_dir;/&fcron-directory;</base>
       </stageinfo>
-      <textdump>
+      <textdump mode="append">
         <file>/etc/syslog.conf</file>
         <content>
 	  =# Begin fcron addition to /etc/syslog.conf
