@@ -5,7 +5,7 @@
 <!ENTITY bind-directory "bind-&bind-version;">
 <!ENTITY bind-patch     "&bind-version;-patch1">
 
-<!ENTITY dhcp-version "3.0.1">
+<!ENTITY dhcp-version "3.0.2">
 <!ENTITY dhcp-package "dhcp-&dhcp-version;.tar.gz">
 <!ENTITY dhcp-directory "dhcp-&dhcp-version;">
 <!ENTITY dhcp-iproute2-patch "dhcp-&dhcp-version;-iproute2-1.patch">

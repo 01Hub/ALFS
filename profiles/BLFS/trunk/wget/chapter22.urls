@@ -1,8 +1,8 @@
 ftp://ftp.isc.org/isc/bind9/9.3.0/bind-9.3.0.tar.gz
 ftp://ftp.isc.org/isc/bind9/9.3.0/9.3.0-patch1
 
-ftp://ftp.isc.org/isc/dhcp/dhcp-3.0.1.tar.gz
-http://www.linuxfromscratch.org/blfs/downloads/svn/dhcp-3.0.1-iproute2-1.patch
+ftp://ftp.isc.org/isc/dhcp/dhcp-3.0.2.tar.gz
+http://www.linuxfromscratch.org/blfs/downloads/svn/dhcp-3.0.2-iproute2-1.patch
 
 http://unc.dl.sourceforge.net/sourceforge/leafnode/leafnode-1.10.8.rel.tar.bz2
 

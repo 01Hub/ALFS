@@ -162,7 +162,6 @@
       <xi:include href="chapter12/gnat.xml" />
       <xi:include href="chapter12/gcc-34.xml" />
       <xi:include href="chapter12/gcc-33.xml" />
-      <xi:include href="chapter12/gcc-295.xml" />
       <xi:include href="chapter12/nasm.xml" />
       <xi:include href="chapter12/doxygen.xml" />
     </stage>

@@ -1,6 +1,7 @@
 ftp://ftp.python.org/pub/python/2.4/Python-2.4.tar.bz2
 http://www.linuxfromscratch.org/blfs/downloads/svn/Python-2.4-gdbm-1.patch
 http://www.linuxfromscratch.org/blfs/downloads/svn/Python-2.4-db43-1.patch
+http://www.python.org/security/PSF-2005-001/patch.txt
 
 ftp://cpan.pair.com/authors/id/M/MB/MBARBON/Module-Info-0.26.tar.gz
 ftp://cpan.pair.com/authors/id/C/CS/CSOE/PDL-2.4.2.tar.gz
@@ -52,11 +53,6 @@ http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-3.4.1-linkonce-1.patch
 ftp://mirrors.rcn.net/pub/sourceware/gcc/releases/gcc-3.3.4/gcc-3.3.4.tar.bz2
 http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-3.3.4-no_fixincludes-1.patch
 http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-3.3.4-linkonce-1.patch
-
-ftp://ftp.gnu.org/gnu/gcc/gcc-2.95.3.tar.gz
-http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-2.95.3-2.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-2.95.3-no_fixinc-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-2.95.3-returntype_fix-1.patch
 
 http://unc.dl.sourceforge.net/sourceforge/nasm/nasm-0.98.38.tar.bz2
 
