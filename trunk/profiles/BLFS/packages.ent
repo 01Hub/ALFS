@@ -192,7 +192,7 @@
 <!ENTITY libpng-package   "libpng-&libpng-version;.tar.gz">
 <!ENTITY libpng-directory "libpng-&libpng-version;">
 
-<!ENTITY libpng-patch     "libpng-1.2.5-link-to-proper-libs.patch">
+<!ENTITY libpng-link-to-proper-libs-patch     "libpng-1.2.5-link-to-proper-libs.patch">
 
 <!ENTITY libtiff-version   "3.6.1">
 <!ENTITY libtiff-package   "tiff-v&libtiff-version;.tar.gz">
@@ -216,7 +216,7 @@
 <!ENTITY freetype-package   "freetype-&freetype-version;.tar.bz2">
 <!ENTITY freetype-directory "freetype-&freetype-version;">
 
-<!ENTITY freetype-patch     "freetype-2.1.5-bytecode-interpreter.patch">
+<!ENTITY freetype-bytecode-interpreter-patch     "freetype-2.1.5-bytecode-interpreter.patch">
 
 <!ENTITY fontconfig-version   "2.2.2">
 <!ENTITY fontconfig-package   "fontconfig-&fontconfig-version;.tar.gz">
@@ -234,7 +234,7 @@
 <!ENTITY svgalib-package   "svgalib-&svgalib-version;.tar.gz">
 <!ENTITY svgalib-directory "svgalib-&svgalib-version;">
 
-<!ENTITY svgalib-patch     "svgalib-1.4.3-gcc3-1.patch">
+<!ENTITY svgalib-gcc3-1-patch     "svgalib-1.4.3-gcc3-1.patch">
 
 <!ENTITY directfb-version   "0.9.20">
 <!ENTITY directfb-package   "DirectFB-&directfb-version;.tar.gz">

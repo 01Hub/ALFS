@@ -6,7 +6,7 @@
 			<destination>&build_dir;</destination>
 		</unpack>
 		<copy>
-		        <source>&packages_dir;/&libpng-patch;</source>
+		        <source>&packages_dir;/&libpng-link-to-proper-libs-patch;</source>
 			<destination>&build_dir;</destination>
 		</copy>
 	</stage>
@@ -19,7 +19,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&libpng-patch;</param>
+			<param>-i ../&libpng-link-to-proper-libs-patch;</param>
 		</patch>
 
 
@@ -41,7 +41,7 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&libpng-directory;</remove>
-		<remove>&build_dir;/&libpng-patch;</remove>
+		<remove>&build_dir;/&libpng-link-to-proper-libs-patch;</remove>
 	</stage>
 
 

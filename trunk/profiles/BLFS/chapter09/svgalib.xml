@@ -7,7 +7,7 @@
 		</unpack>
 
 		<copy>
-		        <source>&packages_dir;/&svgalib-patch;</source>
+		        <source>&packages_dir;/&svgalib-gcc3-1-patch;</source>
 		        <destination>&build_dir;</destination>
 		</copy>
 	</stage>
@@ -20,7 +20,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&svgalib-patch;</param>
+			<param>-i ../&svgalib-gcc3-1-patch;</param>
 		</patch>
 
 		<make>
@@ -37,7 +37,7 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&svgalib-directory;</remove>
-		<remove>&build_dir;/&svgalib-patch;</remove>
+		<remove>&build_dir;/&svgalib-gcc3-1-patch;</remove>
 	</stage>
 
 </package>
