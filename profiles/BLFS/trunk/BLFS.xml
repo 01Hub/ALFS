@@ -85,11 +85,14 @@
       <xi:include href="chapter08/libxml.xml" />
       <xi:include href="chapter08/libxml2.xml" />
       <xi:include href="chapter08/libxslt.xml" />
-      <xi:include href="chapter08/readline.xml" />
       <xi:include href="chapter08/gmp.xml" />
       <xi:include href="chapter08/gdbm.xml" />
       <xi:include href="chapter08/glib.xml" />
       <xi:include href="chapter08/glib2.xml" />
+      <xi:include href="chapter08/libidl.xml" />
+      <xi:include href="chapter08/libcroco.xml" />
+      <xi:include href="chapter08/libgsf.xml" />
+      <xi:include href="chapter08/libglade.xml" />
       <xi:include href="chapter08/expat.xml" />
       <xi:include href="chapter08/libesmtp.xml" />
       <xi:include href="chapter08/aspell.xml" />
@@ -285,14 +288,12 @@
         </environment>
       </stageinfo>
       <xi:include href="chapter30/gnome-pre-installation.xml" />
-      <xi:include href="chapter30/libidl.xml" />
       <xi:include href="chapter30/orbit2.xml" />
       <xi:include href="chapter30/libbonobo.xml" />
       <xi:include href="chapter30/gconf2.xml" />
       <xi:include href="chapter30/gnome-mime-data.xml" />
       <xi:include href="chapter30/gnome-vfs2.xml" />
       <xi:include href="chapter30/libgnome.xml" />
-      <xi:include href="chapter30/libglade.xml" />
       <xi:include href="chapter30/libgnomecanvas.xml" />
       <xi:include href="chapter30/libbonoboui.xml" />
       <xi:include href="chapter30/gnome-icon-themes.xml" />
@@ -312,8 +313,6 @@
       <xi:include href="chapter30/gstreamer.xml" />
       <xi:include href="chapter30/gst-plugins.xml" />
       <xi:include href="chapter30/gnome-applets.xml" />
-      <xi:include href="chapter30/libgsf.xml" />
-      <xi:include href="chapter30/libcroco.xml" />
       <xi:include href="chapter30/librsvg.xml" />
       <xi:include href="chapter30/eel.xml" />
       <xi:include href="chapter30/nautilus.xml" />

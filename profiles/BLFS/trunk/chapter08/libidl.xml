@@ -11,33 +11,31 @@
 
 ]>
 <alfs>
-  <package name="libxml2" version="&libxml2-version;">
+  <package name="libidl" version="&libidl-version;">
     <packageinfo>
-      <utilizes>
-        <name>python</name>
-      </utilizes>
+      <requires>
+        <name>glib2</name>
+      </requires>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libxml2-package;</archive>
+        <archive>&packages_dir;/&libidl-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
-      <stageinfo>
-        <base>&build_dir;/&libxml2-directory;</base>
-      </stageinfo>
-      <configure>
-        <param>--prefix=/usr</param>
-	<param>--with-history</param>
-      </configure>
-      <make />
-      <make>
-        <param>install</param>
-      </make>
-    </stage>
+    <stageinfo>
+      <base>&build_dir;/&libidl-directory;</base>
+    </stageinfo>
+    <configure>
+      <param>--prefix=/usr</param>
+    </configure>
+    <make />
+    <make>
+      <param>install</param>
+    </make>&ldconfig;</stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&libxml2-directory;</remove>
+      <remove>&build_dir;/&libidl-directory;</remove>
     </stage>
   </package>
 </alfs>

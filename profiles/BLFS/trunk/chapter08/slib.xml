@@ -23,12 +23,33 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&slib-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&slib-install-patch;</param>
+      </patch>
+    </stage>
     <stage name="Installing">
-      <copy base="&build_dir;">
-        <option>recursive</option>
-        <source>&slib-directory;</source>
-        <destination>/usr/share/guile</destination>
-      </copy>
+      <stageinfo>
+	<base>&build_dir;/&slib-directory;</base>
+      </stageinfo>
+      <make />
+      <make>
+	<param>prefix=/usr/</param>
+	<param>install</param>
+      </make>
+      <make>
+	<param>prefix=/usr/</param>
+	<param>catalogs</param>
+      </make>
+      <make>
+	<param>prefix=/usr/</param>
+	<param>installinfo</param>
+      </make>      
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&slib-directory;</remove>

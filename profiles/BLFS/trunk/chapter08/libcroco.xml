@@ -2,7 +2,7 @@
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
-<!ENTITY % package_entities SYSTEM "../config/packages/ch30.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch08.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
 
 %general_entities;
@@ -11,7 +11,7 @@
 
 ]>
 <alfs>
-  <package name="libgsf" version="&libgsf-version;">
+  <package name="libcroco" version="&libcroco-version;">
     <packageinfo>
       <requires>
         <name>glib2</name>
@@ -19,26 +19,19 @@
       <requires>
         <name>libxml2</name>
       </requires>
-      <utilizes>
-        <name>gnome-vfs2</name>
-      </utilizes>
-      <utilizes>
-        <name>gtk-doc</name>
-      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libgsf-package;</archive>
+        <archive>&packages_dir;/&libcroco-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&libgsf-directory;</base>
+        <base>&build_dir;/&libcroco-directory;</base>
       </stageinfo>
       <configure>
-        <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-        <param>--disable-gtk-doc</param>
+        <param>--prefix=/usr</param>
       </configure>
       <make />
       <make>
@@ -46,7 +39,7 @@
       </make>
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&libgsf-directory;</remove>
+      <remove>&build_dir;/&libcroco-directory;</remove>
     </stage>
   </package>
 </alfs>

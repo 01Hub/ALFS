@@ -12,11 +12,6 @@
 ]>
 <alfs>
   <package name="gmp" version="&gmp-version;">
-    <packageinfo>
-      <utilizes>
-        <name>readline</name>
-      </utilizes>
-    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&gmp-package;</archive>
