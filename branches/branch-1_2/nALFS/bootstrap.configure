@@ -99,13 +99,16 @@ AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no])
 ])
 
 if test "${XML2_CONFIG}" != "no"; then
-   AC_CHECK_LIB(xml2, xmlParseFile, AC_DEFINE([HAVE_LIBXML2], [], [Must always be defined, libxml2 is required for building this package.]), [], `${XML2_CONFIG} --libs`)
-   if test "${ac_cv_lib_xml2_xmlParseFile}" = "yes"; then
-      XML2_LIB=`${XML2_CONFIG} --libs | sed -e 's/^-L\(.*\) -lxml2.*$/\1/'`/libxml2.la
-      XML2_INCLUDES=`${XML2_CONFIG} --cflags`
-      AC_SUBST([XML2_LIB])
-      AC_SUBST([XML2_INCLUDES])
-      AC_CHECK_LIB(xml2, xmlXIncludeProcess, AC_DEFINE([HAVE_XINCLUDE], [], [Define to enable use of xi:include in profiles.]), [], `${XML2_CONFIG} --libs`)
+   AC_CHECK_LIB(xml2, xmlParseFile, [XML2_FOUND=yes], [], `${XML2_CONFIG} --libs`)
+   if test "${XML2_FOUND}" = "yes"; then
+      XML2_VERSION=`${XML2_CONFIG} --version`
+      AX_COMPARE_VERSION([${XML2_VERSION}], [ge], [2.6.0], [], [
+          echo "***"
+          echo "*** The libxml2 installation on this system is version ${XML2_VERSION}."
+          echo "*** Version 2.6.0 or above is required to build this package, so the problem"
+          echo "*** must be corrected before continuing."
+          exit 1
+      ])
    else
       echo "***"
       echo "*** The libxml2 installation on this system appears to be broken."
@@ -113,6 +116,12 @@ if test "${XML2_CONFIG}" != "no"; then
       echo "*** must be corrected before continuing."
       exit 1
    fi
+   AC_DEFINE([HAVE_LIBXML2], [], [Must always be defined, libxml2 is required for building this package.])
+   XML2_LIB=`${XML2_CONFIG} --libs | sed -e 's/^-L\(.*\) -lxml2.*$/\1/'`/libxml2.la
+   XML2_INCLUDES=`${XML2_CONFIG} --cflags`
+   AC_SUBST([XML2_LIB])
+   AC_SUBST([XML2_INCLUDES])
+   AC_CHECK_LIB(xml2, xmlXIncludeProcess, AC_DEFINE([HAVE_XINCLUDE], [], [Define to enable use of xi:include in profiles.]), [], `${XML2_CONFIG} --libs`)
 else
    echo "***"
    echo "*** Can't find xml2-config. Make sure this system has libxml2 installed."
