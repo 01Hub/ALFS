@@ -5,7 +5,8 @@
 #include <util.h>
 #include <plugin.h>
 
-#define BUF_LEN		4096	// Needs to be big enough to hold parsed cats
+// Needs to be big enough to hold parsed cats
+#define BUF_LEN		4096
 
 profile *prof;
 char commando[BUF_LEN];

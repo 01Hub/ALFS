@@ -25,7 +25,7 @@ t_plug *getplug ()
 
 static void t_userinput (xmlNodePtr node, void *data)
 {
-	// TODO: <replaceable> problems w/ the RNG book
+	// XXX: <replaceable> problems w/ the RNG book
 	foreach(node->children, "replaceable", (xml_handler_t)t_repl, r);
 	parse_cmdblock(prof, node); 
 }

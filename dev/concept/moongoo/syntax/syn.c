@@ -1,3 +1,5 @@
+#include <string.h>
+
 #include <libalfs.h>
 #include <plugin.h>
 
@@ -17,19 +19,66 @@ t_plug *getplug ()
 	return &syn_plugin;
 }
 
-// TODO: Complete syn support
-void t_shell (xmlNodePtr node, void *data)
+static void t_shell (xmlNodePtr node, void *data)
 {
 	parse_cmdblock(prof, node);
 }
 
+static void t_dl (xmlNodePtr node, void *data)
+{
+	download *dl = (download *)data;
+	
+	if (!strcmp(node->name, "http"))
+		dl->proto = HTTP;
+	else
+	if (!strcmp(node->name, "ftp"))
+		dl->proto = FTP;
+	else
+		fprintf(stderr, "Unknown protocol '%s'.\n", node->name);
+
+	dl->url = xmlNodeGetContent(node);
+
+	if (is_unpackable(dl->url))
+		parse_unpck(prof, dl->url, node);
+}
+
+static void t_item (xmlNodePtr node, void *data)
+{
+	download *dl = next_dl(prof);
+
+	dl->algo = SHA1;
+	dl->sum = xmlGetProp(node, "sha");
+	
+	foreach(node->children, "ftp", (xml_handler_t)t_dl, dl);
+	if (!dl->url)
+		foreach(node->children, "http", (xml_handler_t)t_dl, dl);
+}
+
+static void t_download (xmlNodePtr node, void *data)
+{
+	foreach(node->children, "item", (xml_handler_t)t_item, NULL);
+}
+
+static void t_dir (xmlNodePtr node, void *data)
+{
+	char *cwd = xmlGetProp(node, "cwd");
+
+	if ((cwd) && (!strcmp(cwd, "false")))
+		return;
+
+	parse_cmd(prof, strdog("__cd  ", xmlGetProp(node, "name")), NULL);
+}
+
 static void t_pkg (xmlNodePtr node, void *data)
 {
-	char *tmp = find_value(node, "title");
+	char *tmp = find_value(node->children, "title");
 	package *pkg = next_pkg(prof);
 
 	pkg->name = strcut(tmp, 0, whereis(tmp, ' '));
 	pkg->vers = find_value(node, "version");
+
+	foreach(node->children, "download", (xml_handler_t)t_download, NULL);
+	foreach(node->children, "directory", (xml_handler_t)t_dir, NULL);
 	foreach(node->children, "shell", (xml_handler_t)t_shell, NULL);
 
 	if (!pkg->n)

@@ -3,6 +3,8 @@
 
 #include <alfs.h>
 
+package *cur_pkg (profile *prof);
+
 chapter *next_chpt (profile *prof);
 command *next_cmd (profile *prof);
 dep *next_dep (profile *prof);
