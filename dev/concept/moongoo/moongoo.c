@@ -107,14 +107,16 @@ int main (int argc, char **argv)
 		xmlFreeDoc(doc);
 		return 1;
 	}
-	
+
 	if (!quiet)
 	{
+		/*package *glibc = search_pkg(prof, "Glibc-20041115", 
+			"chapter-building-system");*/
 		build_paralell (prof, paralell_filter, popt_pkg, popt_cmd);
 		set_filter(default_filter);
-		// TODO: Make print_pkg segfault resistant
-		/*print_pkg(*search_pkg(prof, "Glibc-20041115", 
-			"chapter-building-system"));*/
+		
+		/*if (glibc)
+			print_pkg(*glibc);*/
 		print_profile(*prof);
 	}
 	

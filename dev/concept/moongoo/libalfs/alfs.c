@@ -207,8 +207,8 @@ char *role2str (role role)
 			return "testsuite";
 		case (INSTALL):
 			return "install";
-		case (CHROOT):
-			return "chroot";
+		case (SPAWN):
+			return "spawn";
 		default:
 			return "unknown";
 	}
@@ -228,8 +228,8 @@ role parse_role (xmlNodePtr node)
 		return TESTSUITE;
 	if (!strcmp(prop, "install"))
 		return INSTALL;
-	if (!strcmp(prop, "chroot"))
-		return CHROOT;
+	if (!strcmp(prop, "spawn"))
+		return SPAWN;
 
 	fprintf(stderr, "%s is an unknown role-attribute.\n", prop);
 	
