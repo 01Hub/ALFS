@@ -25,7 +25,7 @@ hackers available at <xref linkend="hacker"/>.</para>
 <title>Part III &emdash; &book-product; Documentataion Editors</title>
 
 <para>This part contains information just for &book-product;'s documentation
-editors.</para>
+editors available at <xref linkend="editor"/>.</para>
 
 </sect2>
 
@@ -33,7 +33,7 @@ editors.</para>
 <title>Part IV &emdash; &book-product; Profile Editors</title>
 
 <para>This part contains information just for &book-product;'s profile
-editors.</para>
+editors available at <xref linkend="profile_editor"/>.</para>
 
 </sect2>
 
