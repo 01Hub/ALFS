@@ -18,22 +18,17 @@
 <!DOCTYPE alfs SYSTEM "ALFS-3.1.dtd" [
 
 <!ENTITY % general_entities SYSTEM "config/general.ent">
-<!ENTITY % package_entities SYSTEM "config/package.ent">
-<!ENTITY % system_entities SYSTEM "system.ent">
-
 %general_entities;
-%package_entities;
-%system_entities;
-
 ]>
 
 
 <alfs version="3.1">
 
 <stage name="Chapter 5 - Constructing a temporary system">
-	&c5-creatingtoolsdir;
-	&c5-addinguser;
-	&c5-settingenvironment;
+
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/creatingtoolsdir.xml" />
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/addinguser.xml" />
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/settingenvironment.xml" />
 
 	<stage name="Installing packages in /tools as &lfs-user;.">
 		<stageinfo>
@@ -52,45 +47,45 @@
 			</environment>
 		</stageinfo>
 
-		&c5-binutils-pass1;
-		&c5-gcc-pass1;
-		&c5-libc-headers;
-		&c5-kernel-headers;
-		&c5-glibc;
-		&c5-lockingglibc;
-		&c5-tcl;
-		&c5-expect;
-		&c5-dejagnu;
-		&c5-gcc-pass2;
-		&c5-binutils-pass2;
-		&c5-gawk;
-		&c5-coreutils;
-		&c5-bzip2;
-		&c5-gzip;
-		&c5-diffutils;
-		&c5-findutils;
-		&c5-make;
-		&c5-grep;
-		&c5-sed;
-		&c5-gettext;
-		&c5-ncurses;
-		&c5-patch;
-		&c5-tar;
-		&c5-texinfo;
-		&c5-bash;
-		&c5-m4;
-		&c5-bison;
-		&c5-flex;
-		&c5-util-linux;
-		&c5-perl;
-		&c5-udev;
-		&c5-strip;
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/binutils-pass1.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/gcc-pass1.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/libc-headers.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/kernel-headers.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/glibc.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/lockingglibc.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/tcl.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/expect.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/dejagnu.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/gcc-pass2.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/binutils-pass2.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/gawk.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/coreutils.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/bzip2.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/gzip.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/diffutils.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/findutils.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/make.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/grep.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/sed.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/gettext.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/ncurses.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/patch.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/tar.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/texinfo.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/bash.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/m4.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/bison.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/flex.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/util-linux.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/perl.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/strip.xml" />
 	</stage>
+
 </stage>
 
 <stage name="Chapter 6 - Installing basic system software">
 	<stage name="Creating directories and mounting the proc and sysfs file systems">
-		&c6-proc;
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/proc.xml" />
 	</stage>
 
 	<stage name="Chroot with /tools">
@@ -106,63 +101,63 @@
 			</environment>
 		</stageinfo>
 
-		&c6-changingowner;
-		&c6-creatingdirs;
-		&c6-createfiles;
-		&c6-pwdgroup;
-		&c6-basic-dev;
-		&c6-libc-headers;
-		&c6-man-pages;
-		&c6-glibc;
-		&c6-adjustingtoolchain;
-		&c6-binutils;
-		&c6-gcc;
-		&c6-coreutils;
-		&c6-zlib;
-		&c6-mktemp;
-		&c6-iana-etc;		
-		&c6-findutils;
-		&c6-gawk;
-		&c6-ncurses;
-		&c6-readline;
-		&c6-vim;
-		&c6-m4;
-		&c6-bison;
-		&c6-less;
-		&c6-groff;
-		&c6-sed;
-		&c6-flex;
-		&c6-gettext;
-		&c6-net-tools;
-		&c6-inetutils;
-		&c6-perl;
-		&c6-texinfo;
-		&c6-autoconf;
-		&c6-automake;
-		&c6-bash;
-		&c6-file;
-		&c6-libtool;
-		&c6-bzip2;
-		&c6-diffutils;
-		&c6-kbd;
-		&c6-e2fsprogs;
-		&c6-grep;
-		&c6-grub;
-		&c6-gzip;
-		&c6-hotplug;
-		&c6-man;
-		&c6-make;
-		&c6-module-tools;
-		&c6-patch;
-		&c6-procps;
-		&c6-psmisc;
-		&c6-shadow;
-		&c6-sysklogd;
-		&c6-sysvinit;
-		&c6-tar;
-		&c6-udev;
-		&c6-util-linux;
-		&c6-strip;
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/changingowner.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/creatingdirs.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/createfiles.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/pwdgroup.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/basic-dev.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/libc-headers.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/man-pages.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/glibc.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/adjustingtoolchain.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/binutils.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/gcc.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/coreutils.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/zlib.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/mktemp.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/iana-etc.xml" />		
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/findutils.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/gawk.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/ncurses.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/readline.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/vim.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/m4.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/bison.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/less.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/groff.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/sed.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/flex.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/gettext.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/net-tools.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/inetutils.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/perl.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/texinfo.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/autoconf.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/automake.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/bash.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/file.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/libtool.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/bzip2.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/diffutils.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/kbd.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/e2fsprogs.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/grep.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/grub.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/gzip.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/hotplug.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/man.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/make.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/module-tools.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/patch.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/procps.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/psmisc.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/shadow.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/sysklogd.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/sysvinit.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/tar.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/udev.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/util-linux.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/strip.xml" />
 	</stage>
 </stage>
 
@@ -179,14 +174,14 @@
 		</environment>
 	</stageinfo>
 
-	&c7-bootscripts;
-	&c7-setclock;
-	&c7-console;
-	&c7-inputrc;
-	&c7-bash_startup;
-	&c7-hostname;
-	&c7-hosts;
-	&c7-network;
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter07/bootscripts.xml" />
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter07/setclock.xml" />
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="config/console.xml" />
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter07/inputrc.xml" />
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter07/bash_startup.xml" />
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter07/hostname.xml" />
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter07/hosts.xml" />
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter07/network.xml" />
 </stage>
 
 <stage name="Chapter 8 - Making the LFS system bootable">
@@ -202,9 +197,10 @@
 		</environment>
 	</stageinfo>
 
-	&c8-fstab;
-	&c8-kernel;
-	&c8-grub;
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="config/fstab.xml" />
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="config/kernel.xml" />
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="config/grub.xml" />
+
 </stage>
 
 <stage name="Chapter 9 - The End">
@@ -220,8 +216,8 @@
                 </environment>
         </stageinfo>
 
-	&c9-libxml2;
-	&c9-nALFS;
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter09/libxml2.xml" />
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter09/nALFS.xml" />
 
 	<remove>/tools</remove>
 

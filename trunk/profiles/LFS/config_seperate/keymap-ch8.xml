@@ -1,3 +1,8 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../ALFS-3.1.dtd" []>
+
+<alfs>
+
 <!-- uncomment the following section if you wish to have your default keymap
 compiled into the kernel -->
 
@@ -9,3 +14,4 @@ compiled into the kernel -->
 	</execute>
 -->
 
+</alfs>

@@ -1,6 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../ALFS-3.1.dtd" []>
+
+<alfs>
+
 <stage name="Changing ownership of tools directory">
 	<ownership user="0" group="0">
 		<option>recursive</option>
 		<name>/tools</name>
 	</ownership>
 </stage>
+
+</alfs>

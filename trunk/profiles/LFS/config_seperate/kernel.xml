@@ -1,3 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../ALFS-3.1.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+
+<alfs>
+
 <package name="linux" version="&linux-version;">
 	<stage name="Unpacking.">
 		<unpack>
@@ -26,7 +37,7 @@
 			<destination>.config</destination>
 		</copy>
 
-		&c8-keymap;
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../config/keymap-ch8.xml" />
 
 		<make>
 			<param>oldconfig</param>
@@ -59,3 +70,5 @@
 		</textdump>
 	</stage>
 </package>
+
+</alfs>

@@ -1,3 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../ALFS-3.1.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+
+<alfs>
+
 <package name="shadow" version="&shadow-version;">
 	<stage name="Unpacking.">
 		<unpack>
@@ -102,15 +113,17 @@
 	<stage name="Configuring.">
 		<execute command="pwconv" />
 		<execute command="grpconv" />
-	</stage>
 
-	<execute command="echo">
-		<param>root:&password;</param>
-		<param>| chpasswd</param>
-	</execute>
+		<execute command="echo">
+			<param>root:&password;</param>
+			<param>| chpasswd</param>
+		</execute>
+	</stage>
 
 
 	<stage name="Cleaning up.">
 		<remove>&build_dir;/&shadow-directory;</remove>
 	</stage>
 </package>
+
+</alfs>
