@@ -42,7 +42,7 @@
         </content>
 </textdump>
 
-<execute command="/sbin/ldconfig" />
+&ldconfig;
 
 </stage>
 

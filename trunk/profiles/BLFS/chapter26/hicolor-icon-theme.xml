@@ -17,7 +17,7 @@
     <make>
       <param>install</param>
     </make>
-    <execute command="/sbin/ldconfig" />
+    &ldconfig;
   </stage>
   <stage name="Cleanup.">
     <remove>&build_dir;/&hicolor-icon-theme-directory;</remove>

@@ -25,7 +25,7 @@
     <make>
       <param>install</param>
     </make>
-    <execute command="/sbin/ldconfig" />
+    &ldconfig;
   </stage>
   <stage name="Cleanup.">
     <remove>&build_dir;/&shared-mime-info-directory;</remove>
