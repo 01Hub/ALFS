@@ -1,7 +1,7 @@
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/autoconf/autoconf-2.59.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/automake/automake-1.9.3.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/bash/bash-3.0.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/binutils/binutils-2.15.92.0.2.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/binutils/binutils-2.15.94.0.2.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/bison/bison-1.875a.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/bzip2/bzip2-1.0.2.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/coreutils/coreutils-5.2.1.tar.bz2
@@ -76,7 +76,7 @@ http://www.linuxfromscratch.org/patches/lfs/cvs/testing/iproute2-2.6.9_041019-re
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/man-1.5o1-80cols-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/mktemp-1.5-add_tempfile-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/perl-5.8.5-libc-1.patch
-http://www.linuxfromscratch.org/patches/lfs/cvs/testing/readline-5.0-fixes-1.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/testing/readline-5.0-display_wrap-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/sysvinit-2.85-proclen-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/texinfo-4.7-segfault-1.patch
 

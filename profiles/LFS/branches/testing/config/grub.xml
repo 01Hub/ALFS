@@ -21,7 +21,6 @@
 	-->
 
 	<!-- Sample grub configuration-->
-	<!--
 	<textdump>
 		<file>/boot/grub/menu.lst</file>
 		<content>
@@ -52,7 +51,17 @@
 			=#
 		</content>
 	</textdump>
-	-->
+
+	<mkdir>
+		<option>parents</option>
+		<name>/etc/grub</name>
+	</mkdir>
+
+	<link>
+		<option>force</option>
+		<target>/boot/grub/menu.lst</target>
+		<name>/etc/grub</name>
+	</link>
 </stage>
 
 </alfs>

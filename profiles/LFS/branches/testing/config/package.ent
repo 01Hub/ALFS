@@ -19,8 +19,8 @@
 <!ENTITY bash-wcontinued-patch-md5 "93eb380f4dd903ee25e47c7950894578">
 <!ENTITY bash-wcontinued-patch "bash-&bash-version;-avoid_WCONTINUED-1.patch">
 
-<!ENTITY binutils-md5 "702bc82d8b10914e112fb5c5d8b66498">
-<!ENTITY binutils-version "2.15.92.0.2">
+<!ENTITY binutils-md5 "a87269da4db684da403014b43ec0b89e">
+<!ENTITY binutils-version "2.15.94.0.2">
 <!ENTITY binutils-package "binutils-&binutils-version;.tar.bz2">
 <!ENTITY binutils-directory "binutils-&binutils-version;">
 
@@ -214,7 +214,7 @@
 <!ENTITY linux-src-location "/usr/src">
 
 <!ENTITY linux-libc-headers-md5 "d3507b2c0203a0760a677022badcf455">
-<!ENTITY linux-libc-headers-version "2.6.9.1">
+<!ENTITY linux-libc-headers-vefixes-rsion "2.6.9.1">
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
 <!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
 
@@ -292,8 +292,8 @@
 <!ENTITY readline-package "readline-&readline-version;.tar.bz2">
 <!ENTITY readline-directory "readline-&readline-version;">
 
-<!ENTITY readline-fixes-patch-md5 "6693bff25f522b2f7b42a6f48aafac3f">
-<!ENTITY readline-fixes-patch "readline-&readline-version;-fixes-1.patch">
+<!ENTITY readline-display-wrap-patch-md5 "5280d7b859bb8d80e7b8ca709f137970">
+<!ENTITY readline-display-wrap-patch "readline-&readline-version;-display_wrap-1.patch">
 
 <!ENTITY sed-md5 "537f96fa633ed949b0bf1dc9d1c678b4">
 <!ENTITY sed-version "4.1.2">
