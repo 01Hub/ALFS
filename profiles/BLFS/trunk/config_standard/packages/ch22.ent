@@ -8,7 +8,7 @@
 <!ENTITY dhcp-version "3.0.2">
 <!ENTITY dhcp-package "dhcp-&dhcp-version;.tar.gz">
 <!ENTITY dhcp-directory "dhcp-&dhcp-version;">
-<!ENTITY dhcp-iproute2-patch "dhcp-&dhcp-version;-iproute2-1.patch">
+<!ENTITY dhcp-iproute2-patch "dhcp-&dhcp-version;-iproute2-2.patch">
 
 <!ENTITY leafnode-version   "1.10.8">
 <!ENTITY leafnode-package   "leafnode-&leafnode-version;.rel.tar.bz2">

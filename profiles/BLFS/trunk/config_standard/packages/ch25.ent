@@ -1,6 +1,6 @@
 <!--************* packages for chapter 25 *************-->
 
-<!ENTITY xorg-version "6.8.1">
+<!ENTITY xorg-version "6.8.2">
 <!ENTITY xorg-package "X11R&xorg-version;-src.tar.bz2">
 <!ENTITY xorg-directory "xc">
 

@@ -19,6 +19,9 @@
         <name>cracklib</name>
       </requires>
       <utilizes>
+      	<name>sgmltools-lite</name>
+      </utilizes>
+      <utilizes>
 	<name>db</name>
       </utilizes>
     </packageinfo>
@@ -43,6 +46,11 @@
         <base>&build_dir;/&linuxpam-directory;</base>
       </stageinfo>
       <execute command="autoconf" />
+      <search_replace>
+	<file>modules/Simple.Rules</file>
+	<find>(mandir)</find>
+	<replace>(MANDIR)</replace>
+      </search_replace>
       <configure>
         <param>--enable-static-libpam</param>
         <param>--with-mailspool=/var/mail</param>

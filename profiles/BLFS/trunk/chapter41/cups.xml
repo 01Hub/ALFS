@@ -32,15 +32,6 @@
         <name>gnutls</name>
       </utilizes>
       <utilizes>
-        <name>libgpg-error</name>
-      </utilizes>
-      <utilizes>
-        <name>libgcrypt</name>
-      </utilizes>
-      <utilizes>
-        <name>opencdk</name>
-      </utilizes>
-      <utilizes>
         <name>linuxpam</name>
       </utilizes>
       <utilizes>
@@ -69,6 +60,15 @@
       </unpack>
     </stage>
     &bootscripts-get;
+    <stage name="Creating user">
+      <execute command="getent passwd lp &gt; /dev/null || useradd">
+	<param>-c "Print Service User"</param>
+	<param>-d /dev/null</param>
+	<param>-g lp</param>
+	<param>-s /bin/false</param>
+	<param>lp</param>
+      </execute>
+    </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&cups-directory;</base>

@@ -13,7 +13,7 @@ http://www.linuxfromscratch.org/blfs/downloads/svn/unzip-5.51-fix_Makefile-1.pat
 http://www.linuxfromscratch.org/blfs/downloads/svn/unzip-5.51-fix_libz-1.patch
 http://www.linuxfromscratch.org/blfs/downloads/svn/unzip-5.51-dont_make_noise-1.patch
 
-ftp://ftp.info-zip.org/pub/infozip/src/zip23.tar.gz
+ftp://ftp.info-zip.org/pub/infozip/src/zip231.tar.gz
 
 ftp://ftp.kernel.org/pub/software/utils/pciutils/pciutils-2.1.11.tar.bz2
 

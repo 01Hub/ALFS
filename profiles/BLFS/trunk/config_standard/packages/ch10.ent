@@ -16,7 +16,7 @@
 <!ENTITY compface-directory    "compface-&compface-version;">
 <!ENTITY compface-errno-patch "compface-&compface-version;-errno-2.patch">
 
-<!ENTITY imagemagick-version   "6.1.3-7">
+<!ENTITY imagemagick-version   "6.2.0-7">
 <!ENTITY imagemagick-package   "ImageMagick-&imagemagick-version;.tar.bz2">
 <!ENTITY imagemagick-directory "ImageMagick-&imagemagick-version;">
 
