@@ -227,8 +227,11 @@
 	<remove>/tools</remove>
 
 	<execute command="umount">
-		<param>&LFS;/proc</param>
 		<param>&LFS;/dev/pts</param>
+		<param>&LFS;/dev/shm</param>
+		<param>&LFS;/dev</param>
+		<param>&LFS;/proc</param>
+		<param>&LFS;/sys</param>
 	</execute>
 </stage>
 
