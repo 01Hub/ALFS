@@ -6,8 +6,11 @@
        Updates:  Kevin P. Fleming
        Date:     October 27, 2003
 
-       The current version of the DTD and its documentation are available at:
-             http://alfs.linuxfromscratch.org/view/dtd
+       The current version of the DTD is available at:
+             http://www.linuxfromscratch.org/alfs/downloads/stable
+
+       The current version of its documentation is available at:
+             http://www.linuxfromscratch.org/alfs/view/dtd
 
        This DTD is published under both BSD and GNU licenses.
 -->
