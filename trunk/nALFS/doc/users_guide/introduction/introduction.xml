@@ -3,7 +3,7 @@
 <title>Introduction</title>
 
 <para><acronym>LFS</acronym> stands for Linux From Scratch and it's a project, 
-led by <ulink url="gerard@linuxfromscratch.org">Gerard 
+led by <ulink url="mailto:gerard@linuxfromscratch.org">Gerard 
 Beekmans</ulink>&nbsp;&nbsp;&lt;gerard@linuxfromscratch.org&gt;, which helps 
 you build your own Linux system.</para>
 
@@ -34,11 +34,9 @@ program act upon them.</para>
 <para>For example, if you want to create a directory, all you have to do is
 to put:</para>
 
-<screen><command>
-	&lt;mkdir&gt;
-		&lt;name&gt;/some/directory&lt;/name&gt;
-	&lt;/mkdir&gt;
-</command></screen>
+<screen><command>&lt;mkdir&gt;
+	&lt;name&gt;/some/directory&lt;/name&gt;
+&lt;/mkdir&gt;</command></screen>
 
 <para>in the profile and leave the rest to the program. Of course, you are not 
 limited to just compiling packages for <acronym>LFS</acronym>. You can do just 
