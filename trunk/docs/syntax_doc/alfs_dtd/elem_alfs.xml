@@ -15,7 +15,7 @@
           version     CDATA #FIXED &quot;3.1&quot;&gt;
 </synopsis>
 
-<para>See also&nbsp;&nbsp;|&nbsp;&nbsp;
+<para>See also&nbsp;:&nbsp;&nbsp;
 <xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_download"/>&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -46,20 +46,21 @@ contain one and only one <filename>alfs</filename> element with all the other
 elements being embedded in this element.</para>
 
 <para>When processing an <filename>alfs</filename> element, one processes all its
-children in their order of occurence.</para>
+embedded children in their order of occurence.</para>
 
 <para>Notice that all the main operation elements
 (<filename>configure</filename> to <filename>unpack</filename>) are surrounded
 by parathensis [&nbsp;(&nbsp;)&nbsp;]and followed by an asterisk
 [&nbsp;*&nbsp;]. The asterisk signifies that each main operation element can
 be used optionally inside the <filename>alfs</filename> declaration in a
-profile and that if used, they can be used more than once.</para>
+profile and that, if used, they can be used more than once.</para>
 
-<para>The element <filename>base</filename> is used to specify the base directory
-which will be used by all the commands in the element <filename>alfs</filename>. The use of
-<userinput>#IMPLIED</userinput> denotes that this attribute is optional.  If
-not used, <filename>base</filename> will inherit its value from an earlier use
-in the profile. See <xref linkend="elem_base"/>.</para>
+<para>The attribute <filename>base</filename> is used to specify the base
+directory which will be used by all the commands in the element
+<filename>alfs</filename>. The use of <userinput>#IMPLIED</userinput> denotes
+that this attribute is optional.  If not used, <filename>base</filename> will
+inherit its value from an earlier use in the profile. See
+<xref linkend="elem_base"/>.</para>
 
 <para>The attribute <filename>version</filename> identifies the version of the
 ALFS profile syntax used; it should be
