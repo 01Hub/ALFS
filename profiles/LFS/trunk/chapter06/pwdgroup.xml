@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
-[]>
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+
+%general_entities;
+]>
 <alfs>
   <stage name="Creating the passwd, group, and log Files">
     <copy>
