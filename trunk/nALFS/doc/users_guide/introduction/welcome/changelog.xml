@@ -6,6 +6,10 @@
 
 <itemizedlist>
 
+<listitem><para>May 31st, 2004 [jwrober]: Updated to DocBook v4.3 and
+applied formatting similar to the ALFS Syntax Doc and nALFS Hackers Guide.
+</para></listitem>
+
 <listitem><para>October 9th, 2003 [jwrober]: Filled in the prerequisites
 page.</para></listitem>
 

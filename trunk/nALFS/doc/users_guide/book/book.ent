@@ -7,6 +7,13 @@
 <!ENTITY book-dedication       SYSTEM "dedication.xml">
 
 <!-- Generally used entities go below here -->
+<!ENTITY lt     "&#60;">
+<!ENTITY gt     "&#62;">
+<!ENTITY amp    "&#38;">
+<!ENTITY apos   "&#39;">
+<!ENTITY quot   "&#34;">
+<!ENTITY nbsp   "&#32;">
+<!ENTITY emdash "&#045;&#045;">
 
 <!ENTITY book-product "nALFS">
 
@@ -14,11 +21,11 @@
 <!ENTITY book-maintainer-firstname "James">
 <!ENTITY book-maintainer-address "jwrober@linuxfromscratch.org">
 
-<!ENTITY product-maintainer-fullname "Neven Has">
-<!ENTITY product-maintainer-firstname "Neven">
-<!ENTITY product-maintainer-address "neven@linuxfromscratch.org">
+<!ENTITY product-maintainer-fullname "Kevin Fleming">
+<!ENTITY product-maintainer-firstname "Kevin">
+<!ENTITY product-maintainer-address "kpfleming@linuxfromscratch.org">
 
-<!ENTITY nbsp " ">
-<!ENTITY emdash "--">
+<!ENTITY ftp-root "ftp://ftp.linuxfromscratch.org">
 <!ENTITY http-root "http://www.linuxfromscratch.org">
+<!ENTITY hints-root "http://www.linuxfromscratch.org/hints">
 <!ENTITY alfs-root "http://www.linuxfromscratch.org/alfs">
