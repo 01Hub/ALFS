@@ -333,6 +333,10 @@
 <!ENTITY flac         SYSTEM "./chapter42/flac.xml">
 <!ENTITY libdvdread   SYSTEM "./chapter42/libdvdread.xml">
 <!ENTITY libdvdcss    SYSTEM "./chapter42/libdvdcss.xml">
+<!ENTITY libdv        SYSTEM "./chapter42/libdv.xml">
+<!ENTITY liba52       SYSTEM "./chapter42/liba52.xml">
+<!ENTITY xvid         SYSTEM "./chapter42/xvid.xml">
+<!ENTITY xine-lib     SYSTEM "./chapter42/xine-lib.xml">
 
 <!-- chapter 43 -->
 <!ENTITY mpg123       SYSTEM "./chapter43/mpg123.xml">
@@ -342,11 +346,9 @@
 <!ENTITY cdparanoia   SYSTEM "./chapter43/cdparanoia.xml">
 
 <!-- chapter 44 -->
-<!ENTITY xvid      SYSTEM "./chapter44/xvid.xml">
 <!ENTITY avifile   SYSTEM "./chapter44/avifile.xml">
 <!ENTITY ffmpeg    SYSTEM "./chapter44/ffmpeg.xml">
 <!ENTITY mplayer   SYSTEM "./chapter44/mplayer.xml">
-<!ENTITY xine-lib  SYSTEM "./chapter44/xine-lib.xml">
 <!ENTITY xine-ui   SYSTEM "./chapter44/xine-ui.xml">
 <!ENTITY transcode SYSTEM "./chapter44/transcode.xml">
 

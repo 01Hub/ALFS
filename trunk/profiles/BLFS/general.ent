@@ -5,10 +5,10 @@
 <!ENTITY build_dir  "/usr/src">
 
 <!-- kernel version -->
-<!ENTITY kernel-version "2.4.20">
+<!ENTITY kernel-version "2.4.22">
 
 <!-- kernel directory -->
-<!ENTITY kernel-directory "/usr/src/linux-2.4.20">
+<!ENTITY kernel-directory "/var2/factory/linux-2.4.22">
 
 <!-- entities for configuring gpm -->
 <!ENTITY mouse_device "/dev/psaux">

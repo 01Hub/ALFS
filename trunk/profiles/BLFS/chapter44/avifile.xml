@@ -1,12 +1,13 @@
 <package name="avifile" version="&avifile-version;">
 
         <packageinfo>
-                <requires><name>xfree86</name></requires>
-                <requires><name>libjpeg</name></requires>
+                <requires><name>qt</name></requires>
                 <requires><name>sdl</name></requires>
 		<utilizes><name>ffmeg</name></utilizes>
-		<utilizes><name>opendivx</name></utilizes>
 		<utilizes><name>xvid</name></utilizes>
+		<utilizes><name>libmad</name></utilizes>
+		<utilizes><name>libvorbis</name></utilizes>
+		<utilizes><name>lame</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -29,21 +30,27 @@
 			</environment>
 		</stageinfo>
 
-		<execute command="install -d /usr/lib/win32" />
+		<execute command="install -d /usr/lib/avifile-0.7/win32" />
 
-		<execute command="tar -xzvf ../&avifile-binaries-package; -C /usr/lib" />
+		<execute command="tar -xzvf ../&avifile-binaries-package; -C /usr/lib/avifile-0.7" />
 
-		<search_replace>
-		        <file>configure</file>
-			<find>extern "C" void exit(int);</find>
-			<replace>extern "C" void exit(int) throw();</replace>
-		</search_replace>
+		<execute command="./autogen.sh" />
+
+		<configure/>
+
+		<make>
+		        <param>maintainer-clean</param>
+		</make>
+
+		<execute command="./autogen.sh" />
 
 		<configure>
-			<param>--prefix=/usr</param>
+		        <param>--prefix=/usr</param>
+			<param>--with-qt-prefix=/opt/qt</param>
+			<param>--with-win32-path=/usr/lib/avifile-0.7/win32</param>
 		</configure>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>install</param>

@@ -356,9 +356,9 @@
 <!ENTITY gcc295-patch2     "gcc-2.95.3-no-fixinc.patch">
 <!ENTITY gcc295-patch3     "gcc-2.95.3-returntype-fix.patch">
 
-<!ENTITY nasm-version   "0.98.37">
-<!ENTITY nasm-package   "nasm-0.98.37.tar.bz2">
-<!ENTITY nasm-directory "nasm-0.98.37">
+<!ENTITY nasm-version   "0.98.38">
+<!ENTITY nasm-package   "nasm-0.98.38.tar.bz2">
+<!ENTITY nasm-directory "nasm-0.98.38">
 
 <!--************* packages for chapter 13 *************-->
 
@@ -592,13 +592,15 @@
 <!ENTITY freetype-package   "freetype-2.1.5.tar.bz2">
 <!ENTITY freetype-directory "freetype-2.1.5">
 
+<!ENTITY freetype-patch     "freetype-2.1.5-ahhint.patch">
+
 <!ENTITY fontconfig-version   "2.2.1">
 <!ENTITY fontconfig-package   "fontconfig-2.2.1.tar.gz">
 <!ENTITY fontconfig-directory "fontconfig-2.2.1">
 
-<!ENTITY qt-version   "3.1.2">
-<!ENTITY qt-package   "qt-x11-free-3.1.2.tar.bz2">
-<!ENTITY qt-directory "qt-x11-free-3.1.2">
+<!ENTITY qt-version   "3.2.1">
+<!ENTITY qt-package   "qt-x11-free-3.2.1.tar.bz2">
+<!ENTITY qt-directory "qt-x11-free-3.2.1">
 
 <!ENTITY gtkplus-version   "1.2.10">
 <!ENTITY gtkplus-package   "gtk+-1.2.10.tar.gz">
@@ -644,9 +646,9 @@
 
 <!--************* packages for chapter 29 *************-->
 
-<!ENTITY arts-version      "1.1">
-<!ENTITY arts-package      "arts-1.1.tar.bz2">
-<!ENTITY arts-directory    "arts-1.1">
+<!ENTITY arts-version      "1.1.4">
+<!ENTITY arts-package      "arts-1.1.4.tar.bz2">
+<!ENTITY arts-directory    "arts-1.1.4">
 
 <!ENTITY kde-version   "3.1">
 
@@ -1113,25 +1115,25 @@
 
 <!--************* packages for chapter 42 *************-->
 
-<!ENTITY alsa-driver-version   "0.9.4">
-<!ENTITY alsa-driver-package   "alsa-driver-0.9.4.tar.bz2">
-<!ENTITY alsa-driver-directory "alsa-driver-0.9.4">
+<!ENTITY alsa-driver-version   "0.9.6">
+<!ENTITY alsa-driver-package   "alsa-driver-0.9.6.tar.bz2">
+<!ENTITY alsa-driver-directory "alsa-driver-0.9.6">
 
-<!ENTITY alsa-lib-version      "0.9.4">
-<!ENTITY alsa-lib-package      "alsa-lib-0.9.4.tar.bz2">
-<!ENTITY alsa-lib-directory    "alsa-lib-0.9.4">
+<!ENTITY alsa-lib-version      "0.9.6">
+<!ENTITY alsa-lib-package      "alsa-lib-0.9.6.tar.bz2">
+<!ENTITY alsa-lib-directory    "alsa-lib-0.9.6">
 
-<!ENTITY alsa-utils-version      "0.9.4">
-<!ENTITY alsa-utils-package      "alsa-utils-0.9.4.tar.bz2">
-<!ENTITY alsa-utils-directory    "alsa-utils-0.9.4">
+<!ENTITY alsa-utils-version      "0.9.6">
+<!ENTITY alsa-utils-package      "alsa-utils-0.9.6.tar.bz2">
+<!ENTITY alsa-utils-directory    "alsa-utils-0.9.6">
 
-<!ENTITY alsa-tools-version      "0.9.4">
-<!ENTITY alsa-tools-package      "alsa-tools-0.9.4.tar.bz2">
-<!ENTITY alsa-tools-directory    "alsa-tools-0.9.4">
+<!ENTITY alsa-tools-version      "0.9.6">
+<!ENTITY alsa-tools-package      "alsa-tools-0.9.6.tar.bz2">
+<!ENTITY alsa-tools-directory    "alsa-tools-0.9.6">
 
-<!ENTITY alsa-oss-version        "0.9.4">
-<!ENTITY alsa-oss-package        "alsa-oss-0.9.4.tar.bz2">
-<!ENTITY alsa-oss-directory      "alsa-oss-0.9.4">
+<!ENTITY alsa-oss-version        "0.9.6">
+<!ENTITY alsa-oss-package        "alsa-oss-0.9.6.tar.bz2">
+<!ENTITY alsa-oss-directory      "alsa-oss-0.9.6">
 
 <!ENTITY audiofile-version      "0.2.3">
 <!ENTITY audiofile-package      "audiofile-0.2.3.tar.gz">
@@ -1141,9 +1143,9 @@
 <!ENTITY esound-package      "esound-0.2.30.tar.bz2">
 <!ENTITY esound-directory    "esound-0.2.30">
 
-<!ENTITY sdl-version      "1.2.5">
-<!ENTITY sdl-package      "SDL-1.2.5.tar.gz">
-<!ENTITY sdl-directory    "SDL-1.2.5">
+<!ENTITY sdl-version      "1.2.6">
+<!ENTITY sdl-package      "SDL-1.2.6.tar.gz">
+<!ENTITY sdl-directory    "SDL-1.2.6">
 
 <!ENTITY libao-version      "0.8.3">
 <!ENTITY libao-package      "libao-0.8.3.tar.gz">
@@ -1199,6 +1201,22 @@
 <!ENTITY libdvdcss-package           "libdvdcss-1.2.8.tar.bz2">
 <!ENTITY libdvdcss-directory         "libdvdcss-1.2.8">
 
+<!ENTITY libdv-version               "0.99">
+<!ENTITY libdv-package               "libdv-0.99.tar.gz">
+<!ENTITY libdv-directory             "libdv-0.99">
+
+<!ENTITY liba52-version               "0.7.4">
+<!ENTITY liba52-package               "a52dec-0.7.4.tar.gz">
+<!ENTITY liba52-directory             "a52dec-0.7.4">
+
+<!ENTITY xvid-version      "0.9.2">
+<!ENTITY xvid-package      "xvidcore-0.9.2.tar.bz2">
+<!ENTITY xvid-directory    "xvidcore-0.9.2">
+
+<!ENTITY xine-lib-version      "1-rc0a">
+<!ENTITY xine-lib-package      "xine-lib-1-rc0a.tar.gz">
+<!ENTITY xine-lib-directory    "xine-lib-1-rc0a">
+
 <!--************* packages for chapter 43 *************-->
 
 <!ENTITY mpg123-version      "0.59r">
@@ -1223,45 +1241,37 @@
 
 <!--************* packages for chapter 44 *************-->
 
-<!ENTITY xvid-version      "0.9.2">
-<!ENTITY xvid-package      "xvidcore-0.9.2.tar.bz2">
-<!ENTITY xvid-directory    "xvidcore-0.9.2">
+<!ENTITY ffmpeg-version      "0.4.7">
+<!ENTITY ffmpeg-package      "ffmpeg-0.4.7.tar.gz">
+<!ENTITY ffmpeg-directory    "ffmpeg-0.4.7">
 
-<!ENTITY ffmpeg-version      "0.4.6">
-<!ENTITY ffmpeg-package      "ffmpeg-0.4.6.tar.gz">
-<!ENTITY ffmpeg-directory    "ffmpeg-0.4.6">
-
-<!ENTITY avifile-version      "0.7.22">
-<!ENTITY avifile-package      "avifile-0.7.34-20030319.tgz">
-<!ENTITY avifile-directory    "avifile0.7-0.7.34">
+<!ENTITY avifile-version      "0.7.38">
+<!ENTITY avifile-package      "avifile-0.7-0.7.38.tar.gz">
+<!ENTITY avifile-directory    "avifile-0.7-0.7.38">
 
 <!ENTITY avifile-binaries-package      "binaries-011002.tgz">
 
 <!ENTITY mplayer-version      "1.0pre1">
 <!ENTITY mplayer-package      "MPlayer-1.0pre1.tar.bz2">
-<!ENTITY mplayer-directory    "MPlayer-1.0pre1">
+<!ENTITY mplayer-directory    "mplayer-1.0pre1">
 
 <!ENTITY mplayer-codecs-package            "extralite.tar.bz2">
 <!ENTITY mplayer-arial-iso-8859-1-package  "font-arial-iso-8859-1.tar.bz2">
 <!ENTITY mplayer-skin-package              "default-1.7.tar.bz2">
 
-<!ENTITY xine-lib-version      "1-beta11">
-<!ENTITY xine-lib-package      "xine-lib-1-beta11.tar.gz">
-<!ENTITY xine-lib-directory    "xine-lib-1-beta11">
+<!ENTITY xine-ui-version      "0.9.21">
+<!ENTITY xine-ui-package      "xine-ui-0.9.21.tar.gz">
+<!ENTITY xine-ui-directory    "xine-ui-0.9.21">
 
-<!ENTITY xine-ui-version      "0.9.20">
-<!ENTITY xine-ui-package      "xine-ui-0.9.20.tar.gz">
-<!ENTITY xine-ui-directory    "xine-ui-0.9.20">
-
-<!ENTITY transcode-version      "0.6.3">
-<!ENTITY transcode-package      "transcode-0.6.3.tar.gz">
-<!ENTITY transcode-directory    "transcode-0.6.3">
+<!ENTITY transcode-version      "0.6.10">
+<!ENTITY transcode-package      "transcode-0.6.10.tar.gz">
+<!ENTITY transcode-directory    "transcode-0.6.10">
 
 <!--************* packages for chapter 45 *************-->
 
-<!ENTITY cdrtools-version   "2.0">
-<!ENTITY cdrtools-package   "cdrtools-2.0.tar.gz">
-<!ENTITY cdrtools-directory "cdrtools-2.0">
+<!ENTITY cdrtools-version   "2.00.3">
+<!ENTITY cdrtools-package   "cdrtools-2.00.3.tar.gz">
+<!ENTITY cdrtools-directory "cdrtools-2.00.3">
 
 <!ENTITY cdrdao-version     "1.1.7">
 <!ENTITY cdrdao-package     "cdrdao-1.1.7.src.tar.bz2">

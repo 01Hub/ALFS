@@ -20,6 +20,102 @@
 		<make>
 			<param>install</param>
 		</make>
+
+		<textdump base="/etc/rc.d/init.d">
+		        <file>alsa</file>
+			
+			<content>
+			        =#!/bin/sh
+				=# Begin $rc_base/init.d/alsa
+				=
+				=# Based on sysklogd script from LFS-3.1 and earlier.
+				=# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+				=# ALSA specific parts by Mark Hymers - markh@linuxfromscratch.org
+				=# Stores mixer settings in the default location: /etc/asound.state
+				=
+				=source /etc/sysconfig/rc
+				=source $rc_functions
+				=
+				=case "$1" in
+				=    start)
+				=        echo -n "Starting alsa...    Restoring volumes..."
+				=        loadproc /usr/sbin/alsactl restore
+				=        #echo -n "                    Loading MIDI font..."
+				=        #loadproc sfxload /path/to/soundfont
+				=        ;;
+				=
+				=    stop)
+				=        echo -n "Stopping alsa...    Saving volumes......"
+				=        loadproc /usr/sbin/alsactl store
+				=        #echo -n "            Removing MIDI font.........."
+				=        #loadproc sfxload -i
+				=        ;;
+				=
+				=    restart)
+				=        $0 stop
+				=        /usr/bin/sleep 1
+				=        $0 start
+				=        ;;
+				=
+				=    *)
+				=        echo "Usage: $0 {start|stop|restart}"
+				=        exit 1
+				=        ;;
+				=
+				=esac
+			</content>
+		</textdump>
+			
+		<permissions mode="755">
+		        <name>/etc/rc.d/init.d/alsa</name>
+		</permissions>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+		        <target>../init.d/alsa</target>
+			<name>../rc0.d/K35alsa</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+		        <target>../init.d/alsa</target>
+			<name>../rc1.d/K35alsa</name>
+		</link>
+
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+		        <target>../init.d/alsa</target>
+			<name>../rc2.d/S40alsa</name>
+		</link>
+
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+		        <target>../init.d/alsa</target>
+			<name>../rc3.d/S40alsa</name>
+		</link>
+
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+		        <target>../init.d/alsa</target>
+			<name>../rc4.d/S40alsa</name>
+		</link>
+
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+		        <target>../init.d/alsa</target>
+			<name>../rc5.d/S40alsa</name>
+		</link>
+
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+		        <target>../init.d/alsa</target>
+			<name>../rc6.d/K35alsa</name>
+		</link>
 	</stage>
 
 	<stage name="Clean-up.">

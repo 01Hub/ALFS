@@ -1,5 +1,10 @@
 <package name="fontconfig" version="&fontconfig-version;">
 
+        <packageinfo>
+	        <requires><name>freetype</name></requires>
+	        <requires><name>expat</name></requires>
+	</packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&fontconfig-package;</archive>
