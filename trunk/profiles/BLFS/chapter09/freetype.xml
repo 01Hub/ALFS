@@ -6,7 +6,7 @@
 			<destination>&build_dir;</destination>
 		</unpack>
 		<copy>
-		        <source>&packages_dir;/&freetype-patch;</source>
+		        <source>&packages_dir;/&freetype-bytecode-interpreter-patch;</source>
 			<destination>&build_dir;</destination>
 		</copy>
 	</stage>
@@ -19,7 +19,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&freetype-patch;</param>
+			<param>-i ../&freetype-bytecode-interpreter-patch;</param>
 		</patch>
 
 		<configure>
@@ -38,7 +38,7 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&freetype-directory;</remove>
-		<remove>&build_dir;/&freetype-patch;</remove>
+		<remove>&build_dir;/&freetype-bytecode-interpreter-patch;</remove>
 	</stage>
 
 </package>

@@ -21,6 +21,7 @@
 			<archive>&packages_dir;/&directfb-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
+
 		<unpack>
 			<archive>&packages_dir;/&directfb-extra-package;</archive>
 			<destination>&build_dir;</destination>
