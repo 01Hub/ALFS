@@ -1,3 +1,7 @@
+#!/bin/bash
+
+grep -q preserve_args gnubuild/ltmain.sh && exit 0
+
 # libtool supports a --silent argument, but does not pass it to
 # itself when it is reinvoked at the end of --mode=install processing
 # this patch corrects that behavior to keep the "noise" down

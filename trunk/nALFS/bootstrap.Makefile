@@ -1,5 +1,6 @@
 #!/bin/bash
 cat <<"EOF"
+SUBDIRS = doc
 ACLOCAL_FLAGS=-I m4
 EXTRA_DIST = CHANGES COPYING README CREDITS
 EXTRA_DIST += scripts/flog

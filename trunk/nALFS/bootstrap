@@ -38,6 +38,8 @@ all_syntaxes=`echo ${all_syntaxes} | ${SP2NL} | sort -u`
 
 . ./bootstrap.Makefile > Makefile.am
 
+. ./bootstrap.doc > doc/Makefile.am
+
 . ./bootstrap.configure > configure.ac
 
 autoreconf --install --force
