@@ -957,7 +957,7 @@ static void clear_done_run_status(element_s *el)
 
 static INLINE void run_editor(const char *filename)
 {
-	char *editor;
+	const char *editor;
 	char *command;
 
 
@@ -2796,7 +2796,7 @@ static void write_extra_element_info(element_s *el)
 
 static void build_description_aux(char **pcontent, element_s *node, int indent)
 {
-	static char *spaces = "            ";
+	static const char *spaces = "            ";
 
 	if (indent > 12) {
 		indent = 12;
@@ -4455,8 +4455,7 @@ static void nprint_curses(msg_id_e mid, const char *format,...)
 	wattrset(windows.status->name, msg_attrs(mid));
 
 	if (mid != T_RAW) {
-		Xwprintw(windows.status->name, "\n%c: ",
-			msg_character(mid));
+		Xwprintw(windows.status->name, "\n%c: ", msg_character(mid));
 
 		if (opt_log_status_window && fp) {
 			fprintf(fp, "\n%c: ", msg_character(mid));

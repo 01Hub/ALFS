@@ -269,9 +269,9 @@ static int is_read_available(int s, int sec)
  * Returns number of bytes read, or zero if there is nothing on
  * the socket for reading.  It reads maximum "top" bytes.  Socket must block.
  */
-static INLINE int socket_read_max(int s, char *buf, int max)
+static INLINE unsigned long socket_read_max(int s, char *buf, unsigned long max)
 {
-	int total_read = 0;
+	unsigned long total_read = 0;
 	ssize_t now_read;
 
 
@@ -279,14 +279,14 @@ static INLINE int socket_read_max(int s, char *buf, int max)
 		now_read = read(s, buf, max - total_read);
 
 		if (now_read < 0) {
-			return -1;
+			return 0;
 
 		} else if (now_read == 0) {
 			return total_read;
 
 		} else {
-			total_read += (int) now_read;
-			buf += (int) now_read;
+			total_read += now_read;
+			buf += now_read;
 		}
 	}
 
@@ -299,7 +299,7 @@ static INLINE int socket_read_max(int s, char *buf, int max)
  */
 static char *do_read_ctrl_message(int s)
 {
-	int total_read, size_len;
+	unsigned total_read, size_len;
 
 
 	if (! is_read_available(s, 0)) {
@@ -322,12 +322,12 @@ static char *do_read_ctrl_message(int s)
 		++total_read;
 
 		if (*pos == '|') {
-			int i;
+			unsigned long i, size;
 			char *message = NULL;
-			long size = strtol(size_buf, (char **)NULL, 10);
 
+			size = strtoul(size_buf, (char **)NULL, 10);
 
-			if (size == LONG_MIN || size == LONG_MAX || size == 0) {
+			if (size == ULONG_MAX || size == 0) {
 				Nprint_err("Can find out msg size from \"%s\".",
 					size_buf);
 				break;
@@ -396,13 +396,13 @@ int comm_send_ctrl_msg(
 	va_end(ap);
 
 	/* Create type string. */
-	type = xmalloc(number_len((int)t) + 2);
+	type = xmalloc(number_len(t) + 2);
 	sprintf(type, "%d|", (int)t);
 
 	i = strlen(type) + strlen(raw_msg);
 
 	/* Create size string. */
-	size = xmalloc(number_len((int)i) + 2);
+	size = xmalloc(number_len(i) + 2);
 	sprintf(size, "%lu|", (unsigned long)i);
 
 

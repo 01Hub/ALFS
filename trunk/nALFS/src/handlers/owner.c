@@ -174,7 +174,8 @@ static int owner_main(element_s *el)
  * Handlers' information.
  */
 
-char *owner_parameters[] = { "options", "base", "user", "group", "name", NULL };
+const char *owner_parameters[] =
+{ "options", "base", "user", "group", "name", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #ifdef HANDLER_SYNTAX_2_0

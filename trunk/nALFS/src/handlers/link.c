@@ -239,10 +239,12 @@ static int link_main_ver3(element_s *el)
  * Handlers' information.
  */
 
-char *link_parameters_ver2[] = { "options", "base", "target", "name", NULL };
+const char *link_parameters_ver2[] =
+{ "options", "base", "target", "name", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "type", NULL };
 
-char *link_parameters_ver3[] = { "option", "target", "name", NULL };
+const char *link_parameters_ver3[] =
+{ "option", "target", "name", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "type", "base", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {

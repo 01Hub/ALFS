@@ -106,9 +106,9 @@ static int make_main_ver3(element_s *el)
  * Handlers' information.
  */
 
-char *make_parameters_ver2[] = { "base", "param", NULL };
+const char *make_parameters_ver2[] = { "base", "param", NULL };
 
-char *make_parameters_ver3[] = { "param", "prefix", NULL };
+const char *make_parameters_ver3[] = { "param", "prefix", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {

@@ -44,7 +44,7 @@ static int alfs_main(element_s *el)
  * Handlers' information.
  */
 
-char *alfs_parameters[] = { NULL };
+const char *alfs_parameters[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #ifdef HANDLER_SYNTAX_2_0

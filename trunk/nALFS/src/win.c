@@ -271,7 +271,7 @@ void resize_all_windows(void)
 	windows.status->lines = status_lines;
 }
 
-void fix_cursor_and_top(int *cursor, int *top, int lines)
+static void fix_cursor_and_top(int *cursor, int *top, int lines)
 {
 	int window_lines = windows.main->lines;
 

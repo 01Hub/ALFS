@@ -44,10 +44,10 @@ typedef char *(*handler_data_f)(element_s *, handler_data_e data);
 typedef int (*handler_f)(element_s *);
 
 typedef struct handler_info_s {
-	char *name;			/* Name of the element it handles. */
-	char *description;		/* Short description. */
-	char *syntax_version;		/* Syntax version string. */
-	char **parameters;		/* Parameters allowed. */
+	const char *name;		/* Name of the element it handles. */
+	const char *description;	/* Short description. */
+	const char *syntax_version;	/* Syntax version string. */
+	const char **parameters;	/* Parameters allowed. */
 
 	handler_f main;
 

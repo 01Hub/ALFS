@@ -134,7 +134,7 @@ static int setenv_main(element_s *el)
  * Handlers' information.
  */
 
-char *setenv_parameters[] = { "variable", "value", NULL };
+const char *setenv_parameters[] = { "variable", "value", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #ifdef HANDLER_SYNTAX_2_0
