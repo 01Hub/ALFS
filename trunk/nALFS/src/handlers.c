@@ -52,14 +52,14 @@ static char **parameters;
 
 /* Embedded "handlers" for the root (profile) element and comment elements. */
 
-static int root_main(element_s * const el)
+static int root_main(const element_s * const el)
 {
 	(void) el;
 
 	return 0;
 }
 
-static int comment_main(element_s * const el)
+static int comment_main(const element_s * const el)
 {
 	(void) el;
 
@@ -422,31 +422,35 @@ char *alloc_base_dir(element_s *el)
 	return xstrdup("/");
 }
 
-/* Used by new syntax (3.0+). */
-char *alloc_base_dir_new(const element_s * const el, const int default_root)
+int change_to_base_dir(const element_s * const element,
+		       const char * const local_base,
+		       const int default_root)
 {
 	const element_s *s;
 	char *dir;
+	int result;
 
-	if ((dir = attr_value("base", el)) && strlen(dir)) {
-		return xstrdup(dir);
-	}
+	if (local_base)
+		return change_current_dir(local_base);
 
-	for (s = el->parent; s; s = s->parent) {
+	for (s = element->parent; s; s = s->parent) {
 		if (!s->handler)
 			continue;
 		if ((s->handler->data & HDATA_BASE) == 0)
 			continue;
 
 		dir  = s->handler->alloc_data(s, HDATA_BASE);
-		if (dir)
-			return dir;
+		if (dir) {
+			result = change_current_dir(dir);
+			xfree(dir);
+			return result;
+		}
 	}
 
 	if (default_root) {
-		return xstrdup("/");
+		return change_current_dir("/");
 	} else {
-		return NULL;
+		return -1;
 	}
 }
 

@@ -37,7 +37,7 @@
 
 #if HANDLER_SYNTAX_2_0
 
-static int postbuild_main(element_s * const el)
+static int postbuild_main(const element_s * const el)
 {
 	int i;
 

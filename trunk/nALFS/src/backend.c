@@ -291,7 +291,7 @@ int execute_direct_command(const char *command, char *const argv[])
 	return status;
 }
 
-int execute_command(element_s *element, const char *format, ...)
+int execute_command(const element_s * const element, const char *format, ...)
 {
 	va_list ap;
 	int status = 0;

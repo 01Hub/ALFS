@@ -52,13 +52,16 @@ static const struct handler_attribute ownership_attributes[] = {
 	{ .name = NULL }
 };
 
-static int ownership_main(element_s *const el)
+static int ownership_main(const element_s *const el)
 {
 	int status = 0;
 	int options[1], recursive;
-	char *base, *user, *group;
+	char *user, *group;
 	element_s *p;
 
+
+	if (change_to_base_dir(el, attr_value("base", el), 1))
+		return -1;
 
 	check_options(1, options, "recursive", el);
 	recursive = options[0];
@@ -68,12 +71,6 @@ static int ownership_main(element_s *const el)
 
 	if (user == NULL && group == NULL) {
 		Nprint_h_err("No user and/or group specified.");
-		return -1;
-	}
-
-	base = alloc_base_dir_new(el, 1);
-	if (change_current_dir(base)) {
-		xfree(base);
 		return -1;
 	}
 
@@ -101,8 +98,6 @@ static int ownership_main(element_s *const el)
 				append_str(&message, " (recursive)");
 			}
 
-			append_str(&message, " in ");
-			append_str(&message, base);
 			append_str(&message, ": ");
 			append_str(&message, s);
 
@@ -140,8 +135,6 @@ static int ownership_main(element_s *const el)
 				append_str(&message, "(recursive) ");
 			}
 
-			append_str(&message, "in ");
-			append_str(&message, base);
 			append_str(&message, ": ");
 			append_str(&message, s);
 
@@ -166,8 +159,6 @@ static int ownership_main(element_s *const el)
 		xfree(s);
 	}
 
-	xfree(base);
-	
 	return status;
 }
 

@@ -60,7 +60,7 @@ static INLINE element_s *find_package(const char *name)
 #if HANDLER_SYNTAX_3_0
 
 
-static int check_main(element_s * const el)
+static int check_main(const element_s * const el)
 {
 	int status = 0;
 	char *package;

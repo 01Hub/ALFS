@@ -55,7 +55,7 @@ static INLINE void warn_if_doesnt_exist(const char *file)
 }
 
 
-static int remove_main_ver2(element_s * const el)
+static int remove_main_ver2(const element_s * const el)
 {
 	int status = 0;
 	char *tok;
@@ -94,7 +94,7 @@ static int remove_main_ver2(element_s * const el)
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 
 
-static int remove_main_ver3(element_s * const el)
+static int remove_main_ver3(const element_s * const el)
 {
 	int status = 0;
 	char *name;
@@ -134,11 +134,10 @@ static const struct handler_attribute remove_attributes_v3_2[] = {
 	{ .name = NULL }
 };
 
-static int remove_main_ver3_2(element_s * const el)
+static int remove_main_ver3_2(const element_s * const el)
 {
 	int status   = 0;
 	char *name   = NULL;
-	char *base   = NULL;
 	element_s *p = NULL;
 
 	if ((first_param("file", el)) == NULL) {
@@ -146,14 +145,8 @@ static int remove_main_ver3_2(element_s * const el)
 		return -1;
 	}
 
-	base = alloc_base_dir_new(el, 1);
-
-	if (change_current_dir(base)) {
-		xfree(base);
+	if (change_to_base_dir(el, attr_value("base", el), 1))
 		return -1;
-	}
-
-	xfree(base);
 
 	for (p = first_param("file", el); p; p = next_param(p)) {
 

@@ -122,16 +122,14 @@ static const struct handler_attribute textdump_attributes_v2[] = {
 	{ .name = NULL }
 };
 
-static int textdump_main_ver2(element_s * const el)
+static int textdump_main_ver2(const element_s * const el)
 {
-	int i;
 	char *base = alloc_base_dir(el);
+	int result;
 
-	i = textdump_main(el, base);
-
+	result = textdump_main(el, base);
 	xfree(base);
-
-	return i;
+	return result;
 }
 
 #endif /* HANDLER_SYNTAX_2_0 */
@@ -151,16 +149,12 @@ static const struct handler_attribute textdump_attributes_v3[] = {
 	{ .name = NULL }
 };
 
-static int textdump_main_ver3(element_s * const el)
+static int textdump_main_ver3(const element_s * const el)
 {
-	int i;
-	char *base = alloc_base_dir_new(el, 1);
+	if (change_to_base_dir(el, attr_value("base", el), 1))
+		return -1;
 
-	i = textdump_main(el, base);
-
-	xfree(base);
-
-	return i;
+	return textdump_main(el, ".");
 }
 
 

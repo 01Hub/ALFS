@@ -43,7 +43,7 @@ static const struct handler_attribute stamp_attributes[] = {
 	{ .name = NULL }
 };
 
-static int stamp_main(element_s * const el)
+static int stamp_main(const element_s * const el)
 {
 	int status = 0;
 	char *name;

@@ -38,11 +38,15 @@
 
 
 #if HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
-static int do_shelltest(element_s *element, const char *test, int *result)
+static int do_shelltest(const element_s * const element, const char * const test,
+			int * const result)
 {
 	int status = 0;
 	long num_value;
 	char *temp;
+
+	if (change_to_base_dir(element, NULL, 1))
+		return -1;
 
 	num_value = strtol(test, &temp, 0);
 	if (*temp == '\0') {
@@ -92,7 +96,7 @@ static const struct handler_attribute if_attributes_v3_1[] = {
 	{ .name = NULL }
 };
 
-static int if_main_3_1(element_s * const element)
+static int if_main_3_1(const element_s * const element)
 {
 	char *shelltest;
 	char *packagetest;
@@ -146,7 +150,7 @@ static const struct handler_parameter boolean_parameters_3_2[] = {
 	{ .name = NULL }
 };
 
-static int if_main_3_2(element_s * const element)
+static int if_main_3_2(const element_s * const element)
 {
 	int i;
 	element_s *child;
@@ -171,7 +175,7 @@ static int if_main_3_2(element_s * const element)
 	return execute_children_filtered(element, result_handler_type);
 }
 
-static int and_test_3_2(element_s * const element, int * const result)
+static int and_test_3_2(const element_s * const element, int * const result)
 {
 	int i;
 	element_s *child;
@@ -192,7 +196,7 @@ static int and_test_3_2(element_s * const element, int * const result)
 	return 0;
 }
 
-static int or_test_3_2(element_s * const element, int * const result)
+static int or_test_3_2(const element_s * const element, int * const result)
 {
 	int i;
 	element_s *child;
@@ -213,7 +217,7 @@ static int or_test_3_2(element_s * const element, int * const result)
 	return 0;
 }
 
-static int not_test_3_2(element_s * const element, int * const result)
+static int not_test_3_2(const element_s * const element, int * const result)
 {
 	int i;
 	element_s *child;
@@ -238,7 +242,7 @@ static int not_test_3_2(element_s * const element, int * const result)
 	return 0;
 }
 
-static int shelltest_test_3_2(element_s * const element, int * const result)
+static int shelltest_test_3_2(const element_s * const element, int * const result)
 {
 	char *test;
 	int status = -1;
@@ -253,7 +257,7 @@ static int shelltest_test_3_2(element_s * const element, int * const result)
 	return status;
 }
 
-static int package_version_test_3_2(element_s * const element,
+static int package_version_test_3_2(const element_s * const element,
 				    int * const result)
 {
 	(void) element;
@@ -261,7 +265,7 @@ static int package_version_test_3_2(element_s * const element,
 	return 0;
 }
 
-static int package_built_test_3_2(element_s * const element,
+static int package_built_test_3_2(const element_s * const element,
 				  int * const result)
 {
 	(void) element;
