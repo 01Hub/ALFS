@@ -34,7 +34,7 @@ for handler in ${all_handlers}; do
 done
 all_syntaxes=`echo ${all_syntaxes} | ${SP2NL} | sort -u`
 
-. ./bootstrap.option-list > src/option-list.h
+. ./bootstrap.option-array > src/option-array.h
 
 . ./bootstrap.Makefile > Makefile.am
 
