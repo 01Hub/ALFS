@@ -16,9 +16,6 @@
     <requires>
       <name>Digest-HMAC</name>
     </requires>
-    <requires>
-      <name>Digest-SHA1</name>
-    </requires>
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
@@ -30,10 +27,7 @@
     <stageinfo>
       <base>&build_dir;/&Net-DNS-directory;</base>
     </stageinfo>
-    <execute command="echo">
-	<param>"&nameserver-tests;" |</param>
-	<param>perl Makefile.PL</param>
-    </execute>
+    <execute command="perl Makefile.PL" />
     <make />
     <make>
       <param>test</param>
