@@ -60,6 +60,7 @@
 		</copy>
 
 		<mkdir>
+		        <option>parents</option>
 			<name>/etc/mail</name>
 		</mkdir>
 
