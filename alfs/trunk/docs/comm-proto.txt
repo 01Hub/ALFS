@@ -1,0 +1,31 @@
+ALFS communications protocol
+****************************
+
+Initial handshake:
+
+1) Client binds to a free local port.
+2) Client generates a 128 byte random secret.
+3) Client runs 'alfsd $locahost $listenport $secret' via ssh on the machine
+	the daemon should run on.
+4) Client initializes an SSL connection.
+5) Daemon connects to the client via SSL and sends the random secret back.
+6) If the secret matches the one generated on the client the initialisation
+	was succesful.
+
+Communication:
+
+[TODO]
+
+End of communication:
+	
+1) comm_deinit() is called on the client.
+2) Client waits until he receives a single MANGO (as defined in libcomm.h)
+	from the daemon.
+3) comm_srv_deinit() sends the MANGO and the client shuts down.
+
+Performance:
+
+- Parsing and printing the base book
+	
+	alfscl    	0m0.752s
+	alfs		0m0.533s

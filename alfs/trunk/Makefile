@@ -1,19 +1,19 @@
-CFLAGS=-Ilibalfs -Ilibcomm -D_REENTRANT
+CFLAGS=-g3 -Ilibalfs -Ilibcomm -D_REENTRANT
 LDLIBS=-lpthread
 
 BIN1=test
 OBJS1=build.o test.o plugin.o url.o
 
 BIN2=alfscl
-OBJS2=alfscl.o
+OBJS2=alfscl.o plugin.o
 
 BIN3=alfsd
-OBJS3=alfsd.o
+OBJS3=alfsd.o plugin.o
 
-CLEANFILES=$(BIN1) $(BIN2) $(BIN3)
+CLEANFILES=$(BIN1) $(BIN2) $(BIN3) gdb.exe
 
 ifeq ($(OPTS),)
-OPTS=-q
+OPTS=-s book
 #OPTS+=~/stuff/LFS/SVN/lfs/index.xml
 #OPTS+=~/projects/alfs/books/multi-arch/index.xml
 OPTS+=~/projects/alfs/books/book/index.xml
@@ -38,7 +38,7 @@ $(BIN1): $(OBJS1) libalfs/libalfs.a
 
 LDLIBS+=-lnc_sock
 
-$(BIN2): $(OBJS2) libcomm/libcomm.a
+$(BIN2): $(OBJS2) libcomm/libcomm.a libalfs/libalfs.a
 $(BIN3): $(OBJS3) libcomm/libcomm.a
 
 memcheck: $(BIN1)
