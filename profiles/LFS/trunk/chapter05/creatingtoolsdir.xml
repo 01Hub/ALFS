@@ -137,7 +137,6 @@
 			<source>&udev-permissions-file;</source>
 			<source>&udev-rules-file;</source>
 			<source>&util-linux-package;</source>
-			<source>&util-linux-sfdisk-patch;</source>
 			<source>&vim-package;</source>
 			<source>&vim-lang-package;</source>
 			<source>&zlib-package;</source>

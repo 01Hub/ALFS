@@ -33,13 +33,7 @@
 			<option>parents</option>
 			<name>/var/lib/hwclock</name>
 		</mkdir>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&util-linux-sfdisk-patch;</param>
-		</patch>
-    
+ 
 		<configure />
 
 		<make>
