@@ -21,7 +21,11 @@
 			<base>&build_dir;/java-build</base>
 		</stageinfo>
 
-		<execute command="sed -i &quot;s:^PATH=.*::&quot; &j2sdk-binary-package;" />
+		<execute command="sed">
+			<param>-i</param>
+			<param>&quot;s:^PATH=.*::&quot;</param>
+			<param>&j2sdk-binary-package;</param>
+		</execute>
 
 		<permissions mode="711">
 		        <name>&j2sdk-binary-package;</name>
@@ -63,14 +67,18 @@
 <package name="j2sdk-src" version="&j2sdk-src-version;">
 
 	<stage name="Unpacking">
-		<stageinfo>
-			<base>&build_dir;/java-build</base>
-		</stageinfo>
-
-		<execute command="unzip &packages_dir;/&j2sdk-src-package;" />
-		<execute command="unzip &packages_dir;/&j2sdk-src-bin-package;" />
-		<execute command="unzip &packages_dir;/&j2sdk-src-mozilla-headers-package;" />
-
+		<unpack>
+			<archive>&packages_dir;/&j2sdk-src-package;</archive>
+			<destination>&build_dir;/java-build</destination>
+		</unpack>
+		<unpack>
+			<archive>&packages_dir;/&j2sdk-src-bin-package;</archive>
+			<destination>&build_dir;/java-build</destination>
+		</unpack>
+		<unpack>
+			<archive>&packages_dir;/&j2sdk-src-mozilla-headers-package;</archive>
+			<destination>&build_dir;/java-build</destination>
+		</unpack>
 	</stage>
 
 	<stage name="Installing">

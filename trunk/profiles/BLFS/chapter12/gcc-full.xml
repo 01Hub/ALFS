@@ -41,9 +41,14 @@
 		</search_replace>
 
 		<execute base="&build_dir;/&gcc-full-directory;/gcc/ada"
-		        command="touch treeprs.ads [es]info.h nmake.ad[bs]" />
+		        command="touch">
+			<param>treeprs.ads</param>
+			<param>[es]info.h</param>
+			<param>nmake.ad[bs]</param>
+		</execute>
 
-		<configure command="CC=/usr/bin/gcc ../&gcc-full-directory;/configure">
+		<configure command="../&gcc-full-directory;/configure">
+			<prefix>CC=/usr/bin/gcc</prefix>
 		        <param>--prefix=/usr</param>
 			<param>--enable-shared</param>
 			<param>--enable-languages=c,c++,objc,f77,ada,java</param>

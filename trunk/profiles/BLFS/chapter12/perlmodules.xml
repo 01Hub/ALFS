@@ -9,7 +9,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing package astro-FITS-Header">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&Astro-FITS-Header-directory;</base>
 		</stageinfo>
@@ -41,7 +41,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing package PDL">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&PDL-directory;</base>
 		</stageinfo>
@@ -69,7 +69,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing package XML-Writer">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&XML-Writer-directory;</base>
 		</stageinfo>
@@ -97,7 +97,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing package XML-Parser">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&XML-Parser-directory;</base>
 		</stageinfo>
@@ -130,7 +130,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing package Gtk-Perl">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&Gtk-Perl-directory;</base>
 		</stageinfo>
@@ -158,7 +158,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing package Parse-RecDescent">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&Parse-RecDescent-directory;</base>
 		</stageinfo>
