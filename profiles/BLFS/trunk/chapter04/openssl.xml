@@ -62,7 +62,6 @@
         <source>certs</source>
         <destination>/etc/ssl</destination>
       </copy>
-      <remove>/etc/ssl/lib</remove>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&openssl-directory;</remove>

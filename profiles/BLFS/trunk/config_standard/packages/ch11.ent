@@ -11,7 +11,7 @@
 <!ENTITY fcron-package   "fcron-&fcron-version;.src.tar.gz">
 <!ENTITY fcron-directory "fcron-&fcron-version;">
 
-<!ENTITY hdparm-version   "5.7">
+<!ENTITY hdparm-version   "5.8">
 <!ENTITY hdparm-package   "hdparm-&hdparm-version;.tar.gz">
 <!ENTITY hdparm-directory "hdparm-&hdparm-version;">
 

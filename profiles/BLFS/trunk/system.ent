@@ -10,6 +10,7 @@
 <!ENTITY compressman   SYSTEM "./chapter03/maninfo.xml">
 
 <!-- chapter 4 -->
+<!ENTITY openssl       SYSTEM "./chapter04/openssl.xml">
 <!ENTITY cracklib      SYSTEM "./chapter04/cracklib.xml">
 <!ENTITY shadow        SYSTEM "./chapter04/shadow.xml">
 <!ENTITY gnupg         SYSTEM "./chapter04/gnupg.xml">
@@ -35,7 +36,6 @@
 <!ENTITY zsh        SYSTEM "./chapter07/zsh.xml">
 
 <!-- chapter 8 -->
-<!ENTITY openssl    SYSTEM "./chapter08/openssl.xml">
 <!ENTITY pcre       SYSTEM "./chapter08/pcre.xml">
 <!ENTITY popt       SYSTEM "./chapter08/popt.xml">
 <!ENTITY slang      SYSTEM "./chapter08/slang.xml">

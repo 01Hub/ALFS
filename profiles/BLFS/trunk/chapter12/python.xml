@@ -17,9 +17,6 @@
         <name>openssl</name>
       </utilizes>
       <utilizes>
-        <name>expat</name>
-      </utilizes>
-      <utilizes>
         <name>tk</name>
       </utilizes>
       <utilizes>
@@ -27,13 +24,6 @@
       </utilizes>
       <utilizes>
         <name>db</name>
-      </utilizes>
-      <utilizes>
-        <name>gmp</name>
-      </utilizes>
-      <utilizes>
-        <name>pth</name>
-      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -45,6 +35,13 @@
       <stageinfo>
         <base>&build_dir;/&python-directory;</base>
       </stageinfo>
+<!-- This is only needed when db is installed. Maybe we could use conditional execution here...
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&python-db43-patch;</param>
+      </patch>
+-->
       <patch>
         <param>-N</param>
         <param>-p1</param>
