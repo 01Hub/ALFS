@@ -96,9 +96,6 @@
 <!ENTITY gawk-package "gawk-&gawk-version;.tar.bz2">
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
-<!ENTITY gawk-libexecdir-patch-md5 "af3f30cc056f7959cbbfd0341e7b0146">
-<!ENTITY gawk-libexecdir-patch "gawk-&gawk-version;-libexecdir.patch">
-
 <!ENTITY gcc-2953-md5 "f3ad4f32c2296fad758ed051b5ac8e28">
 <!ENTITY gcc-2953-version "2.95.3">
 <!ENTITY gcc-2953-package "gcc-&gcc-2953-version;.tar.gz">
