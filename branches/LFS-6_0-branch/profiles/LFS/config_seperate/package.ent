@@ -173,8 +173,8 @@
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.gz">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
-<!ENTITY linux-md5 "9a76bf64c1151369b250f967d83077aa">
-<!ENTITY linux-version "2.6.5">
+<!ENTITY linux-md5 "5218790bc3db41e77a7422969639a9ad">
+<!ENTITY linux-version "2.6.6">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
