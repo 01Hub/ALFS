@@ -213,27 +213,22 @@ static int permissions_main(const element_s * const element)
 {
 	struct permissions_data *data = (struct permissions_data *) element->handler_data;
 	int status = 0;
-	char *command;
-	char *message;
+	char *command = NULL;
+	char *message = NULL;
 	int i;
 
 	if (change_to_base_dir(element, data->base, 1))
 		return -1;
 
 	for (i = 0; i < data->name_count; i++) {
-		command = xstrdup("chmod ");
-		message = xstrdup("Changing permissions to ");
-		append_str(&message, data->mode);
-		append_str(&message, " ");
-		if (data->recursive) {
-			append_str(&command, "-R ");
-			append_str(&message, "(recursive) ");
-		}
-		append_str(&message, ": ");
-		append_str(&message, data->names[i]);
-		append_str(&command, data->mode);
-		append_str(&command, " ");
-		append_str(&command, data->names[i]);
+		append_str_format(&command, "chmod %s %s %s",
+				  data->recursive ? "-R" : "",
+				  data->mode,
+				  data->names[i]);
+		append_str_format(&message, "Changing permissions to %s%s: %s",
+				  data->mode,
+				  data->recursive ? " (recursive) " : " ",
+				  data->names[i]);
 
 		Nprint_h("%s", message);
 

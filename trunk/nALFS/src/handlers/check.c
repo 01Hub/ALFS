@@ -104,13 +104,11 @@ static char *check_data(const element_s * const element,
 	switch (data_requested) {
 	case HDATA_DISPLAY_NAME:
 	{
-		char *display;
+		char *display = NULL;
 
-		display = xstrdup("Check for installed package");
-		if (data->content) {
-			append_str(&display, ": ");
-			append_str(&display, data->content);
-		}
+		append_str_format(&display, "Check for installed package%s%s",
+				  data->content ? ": " : "",
+				  data->content ? data->content : "");
 
 		return display;
 	}

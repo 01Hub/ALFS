@@ -266,8 +266,7 @@ static int link_main_ver3(const element_s * const element)
 		return -1;
 
 	for (i = 0; i < data->target_count; i++) {
-		append_str(&targets, data->targets[i]);
-		append_str(&targets, " ");
+		append_str_format(&targets, "%s ", data->targets[i]);
 	}
 
 	if (data->name) {
