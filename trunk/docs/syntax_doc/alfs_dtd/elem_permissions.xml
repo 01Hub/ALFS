@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<sect1 id="elem_permissions">
+<title>permissions</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT permissions    (option?, name+)>
+&lt;!ATTLIST permissions
+          base           CDATA #IMPLIED
+          mode           CDATA #REQUIRED>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_alfs">alfs</link>,
+<link linkend="elem_alfs">else</link>,
+<link linkend="elem_stage">stage</link>.
+and <link linkend="elem_then">then</link>
+</para>
+
+<para>See also : 
+<link linkend="elem_option">option</link>,
+<link linkend="elem_name">name</link>,
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<para>This element allows to change the permissions of a (set of) file(s)
+or directory(ies).</para>
+
+<para>The sub-element(s) <token>name</token> contain the name(s) of the
+files whose permission is to be modified.</para>
+
+<para>The attribute <token>base</token> gives the name of the directory in which the
+command will be performed</para>
+
+<para>The attribute <token>mode</token> gives the new access mode, as
+used in the command chmod.</para>
+
+<para>The only option supported is "recursive"</para>
+
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;permissions mode="755">
+    &lt;name>/usr/bin/lex&lt;/name>
+&lt;/permissions>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Changing permissions of /usr/bin/lex to 755
+chmod 755 /usr/bin/lex
+</programlisting>
+
+</sect2>
+
+</sect1>

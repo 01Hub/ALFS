@@ -1,0 +1,54 @@
+<sect1 id="ch01-changelog">
+<title>ChangeLog</title>
+
+<para>&version; - &releasedate;</para>
+
+<itemizedlist>
+
+<listitem>
+<para>May 7th, 2002 [highos]:  Initial structure.</para>
+</listitem>
+
+<listitem>
+<para>Sept 5th, 2002 [vdzuba]:  Added chapter with syntax.</para>
+</listitem>
+
+<listitem>
+<para>Oct 13th, 2002 [vdzuba]:  Make attribute append of &lt;variable> optional.</para>
+</listitem>
+
+<listitem>
+<para>Oct 21th, 2002 [vdzuba]:  Add element &lt;digest>.</para>
+</listitem>
+
+<listitem>
+<para>Oct 22th, 2002 [vdzuba]:  Replaced "parent" by "parents" in mkdir.</para>
+</listitem>
+
+<listitem>
+<para>Dec 5th, 2002 [vdzuba]:  added bash script equivalent to examples.</para>
+</listitem>
+
+<listitem>
+<para>Jan 8th, 2003 [vdzuba]:  Replaced "option?" by "option*" in copy.</para>
+</listitem>
+
+<listitem>
+<para>Jan 19th, 2003 [vdzuba]:  Upgraded to version 3.1 of the DTD.</para>
+</listitem>
+
+<listitem>
+<para>Feb 5th, 2003 [vdzuba]:  Added an option to &lt;link> and added element &lt;version>.</para>
+</listitem>
+
+<listitem>
+<para>Feb 20th, 2003 [vdzuba]:  Added the elements &lt;if>, &lt;then> and &lt;else>.</para>
+</listitem>
+
+<listitem>
+<para>Sep 18d, 2003 [vdzuba]:  Reorganized the document, now splitted into small chunks.</para>
+</listitem>
+
+</itemizedlist>
+
+</sect1>

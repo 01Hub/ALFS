@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<sect1 id="elem_param">
+<title>param</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT param          (#PCDATA)>
+</synopsis>
+
+<para>This element occurs in the element
+<link linkend="elem_configure">configure</link>,
+<link linkend="elem_execute">execute</link>,
+<link linkend="elem_make">make</link>
+and <link linkend="elem_patch">patch</link>.
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+<para>This element is used to specify a parameter of the element
+to which it belongs.</para>
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;make>
+    &lt;param>install&lt;/param>
+&lt;/make>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Executing make
+make install
+</programlisting>
+
+</sect2>
+</sect1>

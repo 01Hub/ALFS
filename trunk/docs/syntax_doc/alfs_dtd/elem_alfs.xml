@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<sect1 id="elem_alfs">
+<title>alfs</title>
+
+<sect2><title>Syntax</title>
+<synopsis>&lt;!ELEMENT alfs           (configure|copy|download|execute|if|link|make|
+                          mkdir|move|ownership|package|patch|
+                          permissions|remove|search_replace|
+                          stage|textdump|unpack)*>
+&lt;!ATTLIST alfs
+          version        CDATA   #FIXED "3.1">
+</synopsis>
+
+<para>See also :
+<link linkend="elem_configure">configure</link>,
+<link linkend="elem_copy">copy</link>,
+<link linkend="elem_download">download</link>,
+<link linkend="elem_execute">execute</link>,
+<link linkend="elem_if">if</link>,
+<link linkend="elem_link">link</link>,
+<link linkend="elem_make">make</link>,
+<link linkend="elem_mkdir">mkdir</link>,
+<link linkend="elem_move">move</link>,
+<link linkend="elem_ownership">ownership</link>,
+<link linkend="elem_package">package</link>,
+<link linkend="elem_patch">patch</link>,
+<link linkend="elem_permissions">permissions</link>,
+<link linkend="elem_remove">remove</link>,
+<link linkend="elem_search_replace">search_replace</link>,
+<link linkend="elem_stage">search_stage</link>,
+<link linkend="elem_textdump">textdump</link>,
+<link linkend="elem_unpack">unpack</link>.
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<para>The element <token>alfs</token> is the root element 
+of the DTD, meaning that an ALFS profile should contain one and only
+one alfs element, all the other elements being embedded in this element</para>
+
+<para>When processing an <token>alfs</token> element, one processes all its
+children in their order of occurence.</para>
+
+<para>The attribute <token>version</token> identifies the version of the
+ALFS profile syntax used; it should be <literal>"3.0"</literal>.</para>
+
+</sect2>
+
+<sect2><title>Examples</title>
+
+<programlisting>
+&lt;!DOCTYPE alfs SYSTEM "alfs.dtd" [
+
+&lt;!ENTITY % general_entities SYSTEM "entities/general">
+
+%general_entities;
+
+]>
+&lt;alfs version="3.0">
+
+ .....
+
+
+&lt;/alfs>
+</programlisting>
+
+</sect2>
+</sect1>

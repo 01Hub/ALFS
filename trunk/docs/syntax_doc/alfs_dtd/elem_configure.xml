@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<sect1 id="elem_configure">
+<title>configure</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT configure      (param*)>
+&lt;!ATTLIST configure
+          base           CDATA #IMPLIED
+          command        CDATA #IMPLIED>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_alfs">alfs</link>,
+<link linkend="elem_alfs">else</link>,
+<link linkend="elem_stage">stage</link>.
+and <link linkend="elem_then">then</link>
+</para>
+
+<para>See also : 
+<link linkend="elem_param">param</link>
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<para>The element <token>configure</token> is used to describe a command
+configure.</para>
+
+<para>When processing the element, one executes the command ./configure 
+with the parameters specified.</para>
+
+<para>The attribute <token>base</token> allows to specify the directory 
+in which the command is executed.</para>
+
+<para>The attribute <token>command</token> allows to specify the command
+if one doesn't want to use the default "./configure".</para>
+
+</sect2>
+
+<sect2><title>Examples</title>
+
+<para>The first example is a call to configure without
+parameter :</para>
+
+<programlisting>
+&lt;configure base="/usr/src/mypackage/" />
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Executing configure
+cd /usr/src/mypackage/
+./configure
+</programlisting>
+
+
+<para>The second example is a call to configure with
+a parameter :</para>
+
+<programlisting>
+&lt;configure base="/usr/src/mypackage/">
+  &lt;param>--prefix=/opt/mypackage&lt;/param>
+&lt;/configure>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Executing configure
+cd /usr/src/mypackage/
+./configure --prefix=/opt/mypackage
+</programlisting>
+
+<para>The third example is a call to configure with
+a parameter and an explicit command :</para>
+
+<programlisting>
+&lt;configure base="/usr/src/mypackage/"
+    command="PATH=/usr/local/bin ./configure">
+  &lt;param>--prefix=/opt/mypackage&lt;/param>
+&lt;/configure>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Executing configure
+cd /usr/src/mypackage/
+PATH=/usr/local/bin ./configure --prefix=/opt/mypackage
+</programlisting>
+
+</sect2>
+</sect1>

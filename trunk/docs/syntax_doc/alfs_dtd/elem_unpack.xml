@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<sect1 id="elem_unpack">
+<title>unpack</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT unpack         (digest?,reference?,archive,destination)>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_alfs">alfs</link>,
+<link linkend="elem_alfs">else</link>,
+<link linkend="elem_stage">stage</link>.
+and <link linkend="elem_then">then</link>
+</para>
+
+<para>See also : 
+<link linkend="elem_archive">archive</link>,
+<link linkend="elem_destination">destination</link>,
+<link linkend="elem_digest">digest</link>,
+<link linkend="elem_reference">reference</link>,
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+<para>This element is used to unpack an archive into a destination directory</para>
+
+<para>The sub-element <token>reference</token> gives the URL of the archive, which
+is used if the archive file is not available locally.</para>
+
+<para>The sub-element <token>digest</token> gives the digest of the archive, as computed
+by openssl, using the digest type specified in the attribute <token>type</token>.</para>
+
+<para>The sub-element <token>archive</token> gives the name of the archive,
+and the sub-element <token>destination</token> given the name of the directory
+in which the archive is unpacked</para>
+
+<para>The choice of the program performing the unpacking is based on the
+extension of the archive file. The supported extensions are :
+<itemizedlist spacing="compact">
+<listitem><para>.tar.gz</para></listitem>
+<listitem><para>.tar.bz2</para></listitem>
+<listitem><para>.Z</para></listitem>
+<listitem><para>.tgz</para></listitem>
+<listitem><para>.gz</para></listitem>
+<listitem><para>.bz2</para></listitem>
+<listitem><para>.tar</para></listitem>
+<listitem><para>.zip</para></listitem>
+</itemizedlist>
+</para>
+
+<note>
+<para>The use of the sub-elements digest and reference is deprecated.
+You should use the element download instead.</para>
+</note>
+
+</sect2> 
+
+<sect2><title>Examples</title>
+
+<programlisting>
+&lt;unpack>
+    &lt;digest>cbe9f79450aeecfb06d5e856af16c2cf&lt;/digest>
+    &lt;reference>ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz&lt;/reference>
+    &lt;archive>/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive>
+    &lt;destination>/usr/src&lt;/destination>
+&lt;/unpack>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp; 
+  echo Retrieving  ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
+[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp; 
+  wget -O /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
+[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp; 
+  echo Archive does not exist &amp;&amp; exit 3
+
+cd /usr/src
+tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz
+</programlisting>
+
+</sect2>
+</sect1>

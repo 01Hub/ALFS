@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<sect1 id="elem_option">
+<title>option</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT option         (#PCDATA)>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_copy">copy</link>,
+<link linkend="elem_link">link</link>,
+<link linkend="elem_mkdir">mkdir</link>,
+<link linkend="elem_move">move</link>,
+<link linkend="elem_ownership">ownership</link>
+and <link linkend="elem_permissions">permissions</link>.
+.</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>option</token> allows to specify an option
+of the englobing element.</para>
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;mkdir base="/usr/local/lib">
+   &lt;option>parents&lt;/option>
+   &lt;name>X11&lt;/name>
+&lt;/mkdir>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>cd /usr/local/lib
+echo Making directory X11
+mkdir -p X11
+</programlisting>
+
+
+</sect2>
+</sect1>

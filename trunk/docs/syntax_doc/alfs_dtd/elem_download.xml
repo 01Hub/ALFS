@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<sect1 id="elem_download">
+<title>download</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT download    (file,url*,destination,digest?)>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_alfs">alfs</link>,
+<link linkend="elem_alfs">else</link>,
+<link linkend="elem_stage">stage</link>.
+and <link linkend="elem_then">then</link>
+</para>
+
+<para>See also : 
+<link linkend="elem_file">file</link>,
+<link linkend="elem_destination">destination</link>,
+<link linkend="elem_digest">digest</link>,
+<link linkend="elem_url">url</link>,
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>download</token> is used to specify
+one or several urls from which a file can be downloaded,
+and optionally a digest to check that the file being downloaded
+if the right one.
+</para>
+
+<para>The sub-element file contains the name of the file to be downloaded.</para>
+
+<para>The sub-element url contains the url of the directory from
+which the download is performed. It should be terminated by a slash ("/").
+More precisely, the actual url used for the download is the catenation of the content
+of the url element with the content of the file element.</para>
+
+<para>The sub-element destination contains the path of the directory
+into which the download should be performed.</para>
+
+<para>The sub-element digest contains the value with which the
+digest computed from the dowloaded file (e.g. computed using
+the md5 algorithm) will be compared.</para>
+
+<para>If the file is already present in the destination directory,
+no download is performed but the digest is checked if present.</para>
+
+</sect2>
+
+<sect2><title>Examples</title>
+
+<programlisting>&lt;download>
+    &lt;file>kbd-1.08.tar.gz&lt;/file>
+    &lt;url>ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/&lt;/url>
+    &lt;destination>/tmp/&lt;/destination>
+    &lt;digest>924e6a05e52715dc0f96385b35f2f680&lt;/digest>
+&lt;/download>
+</programlisting>
+
+<para>YAALFS does not process this element yet.</para>
+
+</sect2>
+
+</sect1>

@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<sect1 id="elem_link">
+<title>link</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT link           (option?, target+, name)>
+&lt;!ATTLIST link
+          base           CDATA #IMPLIED
+          type           CDATA #IMPLIED>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_alfs">alfs</link>,
+<link linkend="elem_alfs">else</link>,
+<link linkend="elem_stage">stage</link>.
+and <link linkend="elem_then">then</link>
+</para>
+
+<para>See also : 
+<link linkend="elem_option">option</link>,
+<link linkend="elem_target">target</link>,
+<link linkend="elem_name">name</link>.
+</para>
+
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<para>The element <token>link</token> allows to create a (hard or symbolic) link.</para>
+
+<para>The attribute <token>base</token> specify the directory  in which
+the link creation is performed.</para>
+
+<para>The attribute <token>type</token> specify if the link is symbolic (the attribute
+value is "symbolic" or not specified) or not (if the attribute value is "hard")</para>
+
+<para>The following two options are supported :</para>
+
+<itemizedlist>
+
+<listitem>
+<para>"force" means that the existing destination files
+are removed.</para>
+</listitem>
+
+<listitem>
+<para>"no_dereference" means that if the destination is a symlink to a directory
+it will be treated as if it were a normal file (and thus will replace it if the "force"
+option is specified).</para>
+</listitem>
+
+</itemizedlist>
+
+<para>The sub-element <token>target</token> gives the name(s) of the targets.</para>
+
+<para>The sub-element <token>name</token> gives the name of the link.
+When there are several targets, this must be the name of a directory, in which the links
+to the targets will be created.</para>
+
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;link>
+	&lt;target>share/man&lt;/target>
+	&lt;target>share/doc&lt;/target>
+	&lt;target>share/info&lt;/target>
+	&lt;name>/usr/local&lt;/name>
+&lt;/link>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo 'Linking  share/man share/doc share/info into /usr/local'
+ln -s  share/man share/doc share/info /usr/local
+</programlisting>
+
+
+
+<para></para>
+</sect2>
+</sect1>

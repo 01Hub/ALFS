@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<sect1 id="elem_destination">
+<title>destination</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT destination    (#PCDATA)>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_copy">copy</link>,
+<link linkend="elem_download">download</link>,
+<link linkend="elem_move">move</link>
+and <link linkend="elem_unpack">unpack</link>.
+.</para>
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>destination</token> is used to specify the name
+of the destination file or directory when processing 
+a <link linkend="elem_copy">copy</link>, 
+<link linkend="elem_move">move</link> or
+<link linkend="elem_unpack">unpack</link> element.
+</para>
+
+<para>It is also used to specify the path of the
+destination directory when processing a
+<link linkend="elem_download">download</link> element.</para>
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+</programlisting>
+
+<para>The first example is an unpack command.</para>
+
+<programlisting>&lt;unpack>
+    &lt;archive>/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive>
+    &lt;destination>/usr/src&lt;/destination>
+&lt;/unpack>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+cd /usr/src
+tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz
+</programlisting>
+
+<para>The second example is a copy command.</para>
+
+<programlisting>&lt;copy base="/usr/src/mypackage">
+   &lt;option>force&lt;/option>
+   &lt;source>config.txt&lt;/source>
+   &lt;destination>/opt/mypackage/config.txt&lt;/destination>
+&lt;/copy>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Copying 'config.txt into /opt/mypackage/config.txt'
+cd /usr/src/mypackage
+cp -f  config.txt /opt/mypackage/config.txt
+</programlisting>
+
+</sect2>
+</sect1>

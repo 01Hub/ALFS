@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<sect1 id="elem_else">
+<title>else</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT else        (stageinfo?,(configure|copy|download|execute|
+                                       if|link|make|mkdir|move|ownership|package|
+                                       patch|permissions|remove|search_replace|
+                                       stage|textdump|unpack)*)>
+</synopsis>
+
+<para>This element occurs in the element
+<link linkend="elem_if">if</link>.
+</para>
+
+<para>See also :
+<link linkend="elem_configure">configure</link>,
+<link linkend="elem_copy">copy</link>,
+<link linkend="elem_download">download</link>,
+<link linkend="elem_execute">execute</link>,
+<link linkend="elem_if">if</link>,
+<link linkend="elem_link">link</link>,
+<link linkend="elem_make">make</link>,
+<link linkend="elem_mkdir">mkdir</link>,
+<link linkend="elem_move">move</link>,
+<link linkend="elem_ownership">ownership</link>,
+<link linkend="elem_package">package</link>,
+<link linkend="elem_patch">patch</link>,
+<link linkend="elem_permissions">permissions</link>,
+<link linkend="elem_remove">remove</link>,
+<link linkend="elem_search_replace">search_replace</link>,
+<link linkend="elem_stageinfo">stageinfo</link>,
+<link linkend="elem_textdump">textdump</link>,
+<link linkend="elem_unpack">unpack</link>.
+</para>
+
+</sect2>
+
+
+<sect2><title>Description</title>
+
+<para>This element groups the elements that should be executed if
+the test performed when evaluating an <token>if</token> element isn't satisfied.
+</para>
+
+</sect2>
+
+</sect1>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<sect1 id="elem_mkdir">
+<title>mkdir</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT mkdir          (option?, name+)>
+&lt;!ATTLIST mkdir
+          base           CDATA #IMPLIED>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_alfs">alfs</link>,
+<link linkend="elem_alfs">else</link>,
+<link linkend="elem_stage">stage</link>.
+and <link linkend="elem_then">then</link>
+</para>
+
+<para>See also : 
+<link linkend="elem_option">option</link>,
+<link linkend="elem_name">name</link>,
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<para>The element <token>mkdir</token> describes the creation of one
+(or several) directory(ies).</para>
+
+<para>The sub-elements <token>name</token> contains the name(s) of the directory(ies)
+to be created.</para>
+
+<para>The attribute <token>base</token> gives the name of the directory
+in which the new directory will be created.</para>
+
+<para>The only option supported is "parents". When specified, the parents 
+directories are created as needed.</para>
+
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;mkdir base="/usr/local/lib">
+   &lt;option>parents&lt;/option>
+   &lt;name>X11&lt;/name>
+&lt;/mkdir>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>cd /usr/local/lib
+echo Making directory X11
+mkdir -p X11
+</programlisting>
+
+</sect2>
+</sect1>

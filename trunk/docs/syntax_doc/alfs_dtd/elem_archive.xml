@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<sect1 id="elem_archive">
+<title>archive</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT archive        (#PCDATA)>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_unpack">unpack</link>.
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>archive</token> is used to specify the archive in an
+ <token>unpack</token> operation.</para>
+<para></para>
+</sect2>
+
+<sect2><title>Examples</title>
+
+<programlisting>&lt;unpack>
+    &lt;archive>/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive>
+    &lt;destination>/usr/src&lt;/destination>
+&lt;/unpack>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+cd /usr/src
+tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz
+</programlisting>
+
+</sect2>
+</sect1>

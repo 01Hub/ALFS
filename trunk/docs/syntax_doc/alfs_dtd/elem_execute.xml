@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<sect1 id="elem_execute">
+<title>execute</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT execute        (param*)>
+&lt;!ATTLIST execute
+          base           CDATA #IMPLIED
+          command        CDATA #REQUIRED>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_alfs">alfs</link>,
+<link linkend="elem_alfs">else</link>,
+<link linkend="elem_stage">stage</link>.
+and <link linkend="elem_then">then</link>
+</para>
+
+<para>See also :
+<link linkend="elem_param">param</link>.
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>execute</token> is used to execute an arbitrary command.</para>
+
+<para>The attribute <token>base</token> allows to specify the directory 
+in which the command will be executed;</para>
+
+<para>The attribute <token>command</token> contains the text of the command itself.</para>
+
+<para>The subelements <token>param</token> contain parameters of the command.</para>
+
+</sect2>
+
+<sect2><title>Examples</title>
+
+<para>The first example is an execute command without parameter.</para>
+
+<programlisting>
+&lt;execute command="umount" />
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Executing 'umount'
+umount
+</programlisting>
+
+
+<para>The second example is an execute command without one parameter.</para>
+
+<programlisting>
+&lt;execute command="mount">
+    &lt;param>/mnfs/lfs&lt;/param>
+&lt;/execute>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Executing 'mount'
+mount /mnfs/lfs
+</programlisting>
+
+
+</sect2>
+</sect1>
