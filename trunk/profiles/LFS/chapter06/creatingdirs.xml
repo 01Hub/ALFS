@@ -42,12 +42,10 @@
 	<mkdir base="/usr/share">
 		<option>parents</option>
 
-		<name>dict</name>
 		<name>doc</name>
 		<name>info</name>
 		<name>locale</name>
 		<name>man</name>
-		<name>nls</name>
 		<name>misc</name>
 		<name>terminfo</name>
 		<name>zoneinfo</name>
