@@ -98,52 +98,6 @@ static INLINE struct group *xgetgrgid(gid_t gid)
 	return gr;
 }
 
-static INLINE void print_file(const char *filename, struct stat *statbuf)
-{
-	int i;
-	char time_string[13];
-	char linkname[PATH_MAX];
-	struct tm *tm;
-	struct passwd *p;
-	struct group *g;
-
-
-	tm = localtime(&statbuf->st_ctime);
-
-	if ((i = strftime(time_string, 13, "%b %e %H:%M", tm)) != 12) {
-		fatal_backend_error("strftime() failed");
-	}
-
-	/* Start printing */
-
-	fprintf(fp, "%7o", statbuf->st_mode);
-
-	/* getpwuid() is failing in chroot() */
-	if ((p = xgetpwuid(statbuf->st_uid)) != NULL) {
-		fprintf(fp, "%8s", p->pw_name);
-	} else {
-		fprintf(fp, "%8d", statbuf->st_uid);
-	}
-
-	/* getgrgid() is failing in chroot() */
-	if ((g = xgetgrgid(statbuf->st_gid)) != NULL) {
-		fprintf(fp, "%8s", g->gr_name);
-	} else {
-		fprintf(fp, "%8d", statbuf->st_gid);
-	}
-
-	fprintf(fp, "%12d %s %s", (int)statbuf->st_size, time_string, filename);
-
-	if (S_ISLNK(statbuf->st_mode)) {
-		if ((i = readlink(filename, linkname, PATH_MAX-1)) == -1) {
-			Nprint_warn("%s: %s", filename, strerror(errno));
-		} else {
-			linkname[i] = '\0';
-			fprintf(fp, " -> %s", linkname);
-		}
-	}
-}
-
 /* Returns:
  *  -1  Search interrupted (option turened off)
  *   1  File action failed.
@@ -178,8 +132,7 @@ static int recursive_action(const char *filename)
 
 	/* Not in the prune list, print it. */
 	if (time_stamp == -1 || statbuf.st_ctime > time_stamp) {
-		print_file(filename, &statbuf);
-		putc('\n', fp);
+		fprintf(fp, "%s\n",  filename);
 	}
 
 	if (! S_ISDIR(statbuf.st_mode)) {
