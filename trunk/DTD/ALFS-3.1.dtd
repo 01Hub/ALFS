@@ -4,7 +4,7 @@
        Version : 3.1
        Author:   V. Dzuba
        Updates:  Kevin P. Fleming
-       Date:     October 27, 2003
+       Date:     March 5, 2004
 
        The current version of the DTD is available at:
              http://www.linuxfromscratch.org/alfs/downloads/stable
@@ -23,10 +23,12 @@
 
 <!ENTITY % ops "configure | copy | download | execute | link | make | mkdir | move | ownership | package | patch | permissions | remove | search_replace | stage | textdump | unpack">
 
-<!ELEMENT alfs           ((%ops;)*)>
+<!ELEMENT alfs           ((%ops; | include)+)>
 <!ATTLIST alfs
           base           CDATA #IMPLIED
-          version        CDATA #FIXED "3.1">
+          version        CDATA #FIXED "3.1"
+	  xml:base	 CDATA #IMPLIED
+	  xmlns:xi	 CDATA #IMPLIED>
 
 <!ELEMENT archive        (#PCDATA)>
 
@@ -67,6 +69,10 @@
 <!ELEMENT find           (#PCDATA)>
 
 <!ELEMENT item           (#PCDATA)>
+
+<!ELEMENT include        EMPTY>
+<!ATTLIST include
+          href           CDATA #REQUIRED>
 
 <!ELEMENT link           (option?, target+, name)>
 <!ATTLIST link
@@ -110,7 +116,7 @@
 
 <!ELEMENT param          (#PCDATA)>
 
-<!ELEMENT patch          ((param | prefix)*)>
+<!ELEMENT patch          ((param | prefix)+)>
 <!ATTLIST patch
           base           CDATA #IMPLIED>
 
