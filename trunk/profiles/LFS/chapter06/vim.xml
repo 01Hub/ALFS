@@ -67,7 +67,7 @@
 				=set nocompatible
 				=set backspace=2
 				=syntax on
-				="set fileencodings=ucs-bom,utf-8,your-8-bit-charset
+				=
 				=if (&amp;term == "iterm") || (&amp;term == "putty")
 				=  set background=dark
 				=endif
