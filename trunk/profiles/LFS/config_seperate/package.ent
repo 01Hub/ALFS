@@ -131,13 +131,10 @@
 <!ENTITY groff-package "groff-&groff-version;.tar.bz2">
 <!ENTITY groff-directory "groff-&groff-version;">
 
-<!ENTITY grub-md5 "299672a99cf59656e653d8ffd7851b56">
-<!ENTITY grub-version "0.94">
+<!ENTITY grub-md5 "4ca8e4363d5f1980f2c63b7f5cdbe0d1">
+<!ENTITY grub-version "0.95">
 <!ENTITY grub-package "grub-&grub-version;.tar.gz">
 <!ENTITY grub-directory "grub-&grub-version;">
-
-<!ENTITY grub-gcc34-patch-md5 "b8932cf9a0b8de8418565a933754decb">
-<!ENTITY grub-gcc34-patch "grub-0.94-gcc34-1.patch">
 
 <!ENTITY gzip-md5 "d303f3530ad9b70022ff6fd58e5250f8">
 <!ENTITY gzip-version "1.3.5">
