@@ -19,17 +19,18 @@
 <!ENTITY bash-gcc34-patch "bash-&bash-version;-gcc34-1.patch">
 
 <!ENTITY binutils-md5 "24dfb3016306eae4eb10985b4ef01f42">
-<!ENTITY binutils-version "2.15.90-20040408">
-<!ENTITY binutils-package "binutils-&binutils-version;.tar.bz2">
-<!ENTITY binutils-directory "binutils-&binutils-version;">
+<!ENTITY binutils-version "2.15.90">
+<!ENTITY binutils-cvs-version "20040408">
+<!ENTITY binutils-package "binutils-&binutils-version;-&binutils-cvs-version;.tar.bz2">
+<!ENTITY binutils-directory "binutils-&binutils-version;-&binutils-cvs-version;">
+
+<!ENTITY binutils-gcc34-patch-md5 "be7ad7a97ee314d6906b763f7e4852f0">
+<!ENTITY binutils-gcc34-patch "binutils-&binutils-version;-gcc34-1.patch">
 
 <!ENTITY bison-md5 "ccbd5076dab6e319cc8ce1a7035cae92">
 <!ENTITY bison-version "1.875a">
 <!ENTITY bison-package "bison-&bison-version;.tar.bz2">
 <!ENTITY bison-directory "bison-&bison-version;">
-
-<!ENTITY bison-attribute-patch-md5 "7504d4e95d97b664dc9910615317a39c">
-<!ENTITY bison-attribute-patch "bison-&bison-version;-attribute.patch">
 
 <!ENTITY bzip2-md5 "ee76864958d568677f03db8afad92beb">
 <!ENTITY bzip2-version "1.0.2">
@@ -92,6 +93,9 @@
 <!ENTITY flex-version "2.5.31">
 <!ENTITY flex-package "flex-&flex-version;.tar.bz2">
 <!ENTITY flex-directory "flex-&flex-version;">
+
+<!ENTITY flex-debian-fixes-patch-md5 "bea8241afec0639333352dfcfd1809bf">
+<!ENTITY flex-debian-fixes-patch "flex-&flex-version;-debian-fixes-2.patch">
 
 <!ENTITY gawk-md5 "a116eec17e7ba085febb74c7758823bd">
 <!ENTITY gawk-version "3.1.3">
@@ -191,6 +195,11 @@
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
+
+<!ENTITY linux-libc-headers-md5 "8391f89504e7489f1b069949c9567560">
+<!ENTITY linux-libc-headers-version "2.6.4.0">
+<!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
+<!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
 
 <!ENTITY m4-md5 "9eb2dd07740b2d2f3c7adb3e8d299bda">
 <!ENTITY m4-version "1.4">
@@ -310,10 +319,21 @@
 <!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
+<!ENTITY udev-md5 "1e9a16f35814975d55c78258f3c4a498">
+<!ENTITY udev-version "024">
+<!ENTITY udev-package "udev-&udev-version;.tar.bz2">
+<!ENTITY udev-directory "udev-&udev-version;">
+
+<!ENTITY udev-config-patch-md5 "1637b88ee6fef6e432bd6b779a875319">
+<!ENTITY udev-config-patch "udev-&udev-version;-config-3.patch">
+
 <!ENTITY util-linux-md5 "5fa39c3d8761b48732be137a06853c64">
 <!ENTITY util-linux-version "2.12a">
 <!ENTITY util-linux-package "util-linux-&util-linux-version;.tar.gz">
 <!ENTITY util-linux-directory "util-linux-&util-linux-version;">
+
+<!ENTITY util-linux-kernel-headers-patch-md5 "9baf322f021ff4019407f7384732a4bf">
+<!ENTITY util-linux-kernel-headers-patch "util-linux-&util-linux-version;-kernel-headers-1.patch">
 
 <!ENTITY vim-md5 "c49d360bbd069d00e2a57804f2a123d9">
 <!ENTITY vim-version "6.2">

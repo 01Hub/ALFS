@@ -55,6 +55,7 @@
 
 		&c5-binutils-pass1;
 		&c5-gcc-pass1;
+		&c5-libc-headers;
 		&c5-kernel-headers;
 		&c5-glibc;
 		&c5-lockingglibc;
@@ -78,8 +79,12 @@
 		&c5-tar;
 		&c5-texinfo;
 		&c5-bash;
-		&c5-perl;
+		&c5-m4;
+		&c5-bison;
+		&c5-flex;
 		&c5-util-linux;
+		&c5-perl;
+		&c6-udev;
 		&c5-strip;
 	</stage>
 </stage>
