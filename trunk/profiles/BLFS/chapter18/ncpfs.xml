@@ -1,0 +1,62 @@
+<package name="ncpfs" version="&ncpfs-version;">
+
+        <packageinfo>
+                <utilizes><name>linux-pam</name></utilizes>
+                <utilizes><name>php</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&ncpfs-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&ncpfs-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=""</param>
+			<param>--includedir=/usr/include</param>
+			<param>--mandir=/usr/share/man</param>
+			<param>--datadir=/usr/share</param>
+		</configure>
+
+		<make/>
+
+		<make>
+		        <param>install</param>
+		</make>
+
+		<make>
+			<param>install-dev</param>
+		</make>
+	</stage>
+
+	<stage name="Installing bootscripts">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>make install-service-ipx</param>
+		</make>
+
+		<textdump base="/etc/sysconfig/network-devices/">
+			<file>ifconfig.ipx0</file>
+			<content>
+			=ONBOOT=yes
+			=SERVICE=ipx
+			=IPXDEV=eth0
+			=FRAME=802.2
+			</content>
+		</textdump>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&ncpfs-directory;</remove>
+	</stage>
+
+</package>
