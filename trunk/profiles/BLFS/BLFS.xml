@@ -48,12 +48,15 @@
 
 <stage name="Chapter 3 (After LFS Configuration Issues)">
 
-    &issue;
-    &bash_startup;
+    &configusers;
     &inputrc;
-    &random;
+    &bash_startup;
     &vimrc;
-    &skel;
+    &issue;
+    &shells;
+    &random;
+    &compressman;
+    &netfs;
 
 </stage>
 

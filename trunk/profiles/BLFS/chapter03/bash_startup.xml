@@ -1,35 +1,30 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
-<package name="bash_startup" version ="1.0">
+<stage name="The Bash Shell Startup Files">
+	
+	<copy>
+        	<source>&blfs-config;/etc/profile</source>
+		<destination>/etc/profile</destination>
+	</copy>
 
-<stage name="Building bash startup files.">
+	<copy>
+        	<source>&blfs-config;/etc/bashrc</source>
+		<destination>/etc/bashrc</destination>
+	</copy>
 
+	<copy>
+        	<source>&blfs-config;/etc/skel/dot_bash_profile</source>
+		<destination>/root/.bash_profile</destination>
+	</copy>
 
-<copy>
-        <source>&blfs-config;/etc/profile</source>
-	<destination>/etc/profile</destination>
-</copy>
+	<copy>
+        	<source>&blfs-config;/etc/skel/dot_bashrc</source>
+		<destination>/root/.bashrc</destination>
+	</copy>
 
-<copy>
-        <source>&blfs-config;/etc/bashrc</source>
-	<destination>/etc/bashrc</destination>
-</copy>
-
-<copy>
-        <source>&blfs-config;/root/.bash_profile</source>
-	<destination>/root/.bash_profile</destination>
-</copy>
-
-<copy>
-        <source>&blfs-config;/root/.bashrc</source>
-	<destination>/root/.bashrc</destination>
-</copy>
-
-<copy>
-        <source>&blfs-config;/root/.bash_logout</source>
-	<destination>/root/.bash_logout</destination>
-</copy>
+	<copy>
+      		<source>&blfs-config;/skel/dot_bash_logout</source>
+		<destination>/root/.bash_logout</destination>
+	</copy>
 
 </stage>
-
-</package>

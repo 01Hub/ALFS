@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -d /var/log/nALFS ]; then
-    mkdir /var/log/nALF
+    mkdir /var/log/nALFS
 fi
 export NALFS_STAMP_DIR=/var/log/nALFS
 

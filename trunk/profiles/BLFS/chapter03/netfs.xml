@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
-<stage name="Random Number Generation">
+<stage name="Configuring for Network Filesystems">
 
 	<stage name="Unpack lfs-bootscripts package">
 		<unpack>
@@ -15,7 +15,7 @@
 		</stageinfo>
 
 		<make>
-			<param>install-random</param>
+			<param>install-netfs</param>
 		</make>
 	</stage>
 
