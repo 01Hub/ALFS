@@ -48,19 +48,9 @@ elements being embedded within this element.</para>
 <para>When processing an <filename>alfs</filename> element, one processes all its
 embedded children in their order of occurence.</para>
 
-<para>Notice that all the main operation elements
-(<filename>configure</filename> to <filename>unpack</filename>) are surrounded
-by parathensis [&nbsp;(&nbsp;)&nbsp;] and followed by an asterisk
-[&nbsp;*&nbsp;]. The asterisk signifies that each main operation element can
-be used optionally inside the <filename>alfs</filename> declaration in a
-profile and that, if used, they can be used more than once.</para>
-
 <para>The attribute <filename>base</filename> is used to specify the base
 directory which will be used by all the commands in the element
-<filename>alfs</filename>. The use of <userinput>#IMPLIED</userinput> denotes
-that this attribute is optional.  If not used, <filename>base</filename> will
-inherit its value from an earlier use in the profile. See
-<xref linkend="elem_base"/>.</para>
+<filename>alfs</filename>. See <xref linkend="elem_base"/>.</para>
 
 <para>The attribute <filename>version</filename> identifies the version of the
 <acronym>ALFS</acronym> profile syntax used; it should be

@@ -26,16 +26,7 @@ in an <filename>unpack</filename> operation.</para>
 <sect2>
 <title>Examples</title>
 
-<screen><userinput>&lt;unpack&gt;
-	&lt;archive&gt;/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive&gt;
-	&lt;destination&gt;/usr/src&lt;/destination&gt;
-&lt;/unpack&gt;</userinput></screen>
-
-<para>The equivalent bash script is&nbsp;:</para>
-
-<screen><userinput>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
-cd /usr/src
-<command>tar -xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></userinput></screen>
+<para>See <xref linkend="elem_unpack"/> for example usage.</para>
 
 </sect2>
 
