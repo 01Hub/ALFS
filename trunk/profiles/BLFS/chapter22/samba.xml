@@ -93,22 +93,13 @@
 		</textdump>
 	</stage>
 
-	<stage name="Installing samba bootscript">
+	<stage name="Installing bootscript and configuration">
 		<stageinfo>
 			<base>&build_dir;/&samba-directory;</base>	
 		</stageinfo>
 
 		<make>
 			<param>install-samba</param>
-		</make>
-	</stage>
-
-	<stage name="Installing winbind bootscript">
-		<stageinfo>
-			<base>&build_dir;/&samba-directory;</base>	
-		</stageinfo>
-
-		<make>
 			<param>install-winbind</param>
 		</make>
 	</stage>

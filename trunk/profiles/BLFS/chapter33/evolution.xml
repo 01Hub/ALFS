@@ -56,7 +56,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&evolution-directory;</remove>
 		<remove>&build_dir;/&db3117-directory;</remove>
 	</stage>

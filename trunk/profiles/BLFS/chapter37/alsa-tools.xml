@@ -5,7 +5,7 @@
 		<utilizes><name>gtk+</name></utilizes>
         </packageinfo>
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&alsa-tools-package;</archive>
 			<destination>&build_dir;</destination>
@@ -93,7 +93,7 @@
 	</stage>
 
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&alsa-tools-directory;</remove>
 	</stage>
 

@@ -7,7 +7,7 @@
 		<utilizes><name>xfree86</name></utilizes>
 	</packageinfo>
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&afplghostscript-package;</archive>
 			<destination>&build_dir;</destination>
@@ -29,7 +29,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&afplghostscript-directory;</base>
 		</stageinfo>
@@ -53,7 +53,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&afplghostscript-directory;</remove>
 	</stage>
 

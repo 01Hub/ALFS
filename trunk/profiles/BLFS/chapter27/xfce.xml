@@ -7,7 +7,7 @@
 		<utilizes><name>startup-notification</name></utilizes>
 	</packageinfo>
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&xfce-package;</archive>
 			<destination>&build_dir;</destination>
@@ -182,7 +182,7 @@
 	</stage>
 	
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&xfce-directory;</remove>
 	</stage>
 

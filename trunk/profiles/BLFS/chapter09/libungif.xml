@@ -1,6 +1,6 @@
 <package name="libungif" version="&libungif-version;">
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&libungif-package;</archive>
 			<destination>&build_dir;</destination>
@@ -13,7 +13,7 @@
 
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&libungif-directory;</base>
 		</stageinfo>
@@ -37,7 +37,7 @@
 
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&libungif-directory;</remove>
 		<remove>&build_dir;/&libungif-patch;</remove>
 	</stage>

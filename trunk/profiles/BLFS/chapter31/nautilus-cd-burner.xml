@@ -4,14 +4,14 @@
                 <requires><name>nautilus</name></requires>
         </packageinfo>
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&nautilus-cd-burner-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&nautilus-cd-burner-directory;</base>
 		</stageinfo>
@@ -29,7 +29,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&nautilus-cd-burner-directory;</remove>
 	</stage>
 

@@ -8,14 +8,14 @@
         	<requires><name>which</name></requires>
         </packageinfo>
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&mozilla-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>		
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<environment>
 			        <variable name="MOZILLA_OFFICIAL">1</variable>
@@ -102,7 +102,7 @@
 		</stage>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&mozilla-directory;</remove>
 	</stage>
 

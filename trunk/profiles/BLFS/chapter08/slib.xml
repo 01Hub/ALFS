@@ -4,14 +4,14 @@
                 <requires><name>guile</name></requires>
         </packageinfo>
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&slib-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 
 		<copy base="&build_dir;">
 		         <option>recursive</option>
@@ -21,7 +21,7 @@
 
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&slib-directory;</remove>
 	</stage>
 

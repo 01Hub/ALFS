@@ -7,7 +7,7 @@
 		<requires><name>fontconfig</name></requires>
         </packageinfo>
 
-	<stage name="Unpacking and patching a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&xfree86-package1;</archive>
 			<destination>&build_dir;</destination>
@@ -44,7 +44,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&xfree86-directory;</base>
 		</stageinfo>
@@ -236,7 +236,7 @@
 
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&xfree86-directory;</remove>
 	</stage>
 

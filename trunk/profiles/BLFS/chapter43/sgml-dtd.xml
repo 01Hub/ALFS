@@ -5,7 +5,7 @@
         	<requires><name>sgml-common</name></requires>
         </packageinfo>
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 
 	        <mkdir>
 		        <name>&build_dir;/&sgml-dtd-directory;</name>
@@ -17,7 +17,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&sgml-dtd-directory;</base>
 		</stageinfo>
@@ -80,7 +80,7 @@
 		</textdump>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&sgml-dtd-directory;</remove>
 	</stage>
 

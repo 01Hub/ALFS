@@ -7,7 +7,7 @@
 	</packageinfo>
 
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&libfam-package;</archive>
 			<destination>&build_dir;</destination>
@@ -25,7 +25,7 @@
 	</stage>
 
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&libfam-directory;</base>
 		</stageinfo>
@@ -50,7 +50,7 @@
 		</make>
 	</stage>
 
-	<stage name="Install fam bootscript">
+	<stage name="Installing bootscript and configuration">
 		<stageinfo>
 			<base>&build_dir;/&blfs-bootscripts-directory;</base>
 		</stageinfo>
@@ -60,7 +60,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&libfam-directory;</remove>
 		<remove>&build_dir;/&libfam-patch;</remove>
 		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
