@@ -8,14 +8,19 @@
 <alfs>
 
 <stage name="Configuring the network script">
-	<textdump mode="append">
-		<file>/etc/sysconfig/network-devices/ifconfig.eth0</file>
+	<mkdir>
+		<option>parents</option>
+		<name>/etc/sysconfig/network-devices/ifconfig.eth0</name>
+	</mkdir>
+
+	<textdump>
+		<file>/etc/sysconfig/network-devices/ifconfig.eth0/ipv4</file>
 		<content>
 			=ONBOOT=&on_boot;
-			=SERVICE=static
+			=SERVICE=ipv4-static
 			=IP=&IP;
 			=GATEWAY=&gateway;
-			=NETMASK=&netmask;
+			=PREFIX=&prefix;
 			=BROADCAST=&broadcast;
 		</content>
 	</textdump>
