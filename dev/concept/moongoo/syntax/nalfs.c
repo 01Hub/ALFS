@@ -30,7 +30,7 @@ static void parse_unpack (xmlNodePtr node)
 {
 	char *archive = find_value(node->children, "archive");
 	node=node->children;
-	// TODO: squeeze() squeezes too much
+	// TODO: tokenize() problem
 	snprintf(commando, BUF_LEN, "tar -C %s %s\necho \"%s  %s\"|md5sum -c -\n", 
 		find_value(node, "destination"), archive, find_value(node, "digest"),
 		archive);

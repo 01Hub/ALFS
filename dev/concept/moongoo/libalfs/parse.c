@@ -15,6 +15,12 @@ package *cur_pkg (profile *prof)
 	return &prof->ch[i].pkg[j];
 }
 
+dep *cur_dep (profile *prof)
+{
+	package *pkg = cur_pkg(prof);
+	return &pkg->dep[pkg->o-1];
+}	
+
 chapter *next_chpt (profile *prof)
 {
 	chapter *ch;
@@ -50,6 +56,7 @@ command *next_cmd (profile *prof)
 	return cmd;
 }
 
+// TODO: Crashes when used in syntax/blfs.c, need to investigate further
 dep *next_dep (profile *prof)
 {
 	dep *dep;
@@ -57,10 +64,13 @@ dep *next_dep (profile *prof)
 	
 	i = prof->n-1;
 	j = prof->ch[i].n-1;
+
+	printf("%s\n", cur_pkg(prof)->name);
+
 	prof->ch[i].pkg[j].dep = realloc(prof->ch[i].pkg[j].dep,
 			(++prof->ch[i].pkg[j].o)*sizeof(dep));
 	k = prof->ch[i].pkg[j].o-1;
-
+	
 	dep = &prof->ch[i].pkg[j].dep[k];
 	dep->type = DEP_NONE;
 	dep->name = NULL;
@@ -226,7 +236,7 @@ void parse_unpck (profile *prof, char *url, xmlNodePtr node)
 	
 	if (!ret)
 	{
-		// XXX: Add support for missing archive types
+		// TODO: Add support for missing archive types
 		//fprintf(stderr, "Archive extension '%s' is unknown.\n", ext);
 		return;
 	}

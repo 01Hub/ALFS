@@ -4,17 +4,17 @@ BIN=moongoo
 OBJS=build.o moongoo.o plugin.o url.o
 
 ifeq ($(OPTS),)
-OPTS=-s syn
+OPTS=-q -s blfs
 #OPTS+=~/projects/alfs/book/index.xml
 #OPTS+=~/projects/alfs/lfs-profile/LFS.xml
 #OPTS+=~/projects/alfs/ass/index.xml
-OPTS+=~/projects/hive/unstable/profile.xml
-#OPTS+=~/projects/alfs/blfs/index.xml
+#OPTS+=~/projects/hive/unstable/profile.xml
+OPTS+=~/projects/alfs/blfs/index.xml
 #OPTS+=~/projects/alfs/hlfs/index.xml
 #OPTS+=~/projects/alfs/book-rng/index.xml
 endif
 
-SUBDIRS=libalfs syntax
+SUBDIRS=libalfs syntax test
 
 .PHONY: all
 
@@ -24,7 +24,7 @@ include inc.mak
 
 $(BIN): $(OBJS) libalfs/libalfs.a
 
-check: $(BIN)
+memcheck: $(BIN)
 	valgrind --tool=memcheck ./$(BIN) $(OPTS)
 
 run: $(BIN)

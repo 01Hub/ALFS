@@ -5,7 +5,6 @@
 
 profile *prof;
 
-// TODO: Removed a <command> block because of parsing problems (postlfs/config/bootdisk.xml)
 profile *parse_blfs (xmlNodePtr node, replaceable *r);
 
 static t_plug sample_plugin =
@@ -27,24 +26,24 @@ static void t_command (xmlNodePtr node, void *data)
 
 static void t_userinput (xmlNodePtr node, void *data)
 {
-	// XXX: Add all possible replaceables to moo.xml
-	/*replaceable *r = (replaceable *)data;
-	foreach(node->children, "replaceable", (xml_handler_t)t_repl, r);*/
+	// TODO: Add all possible replaceables to moo.xml
+	replaceable *r = (replaceable *)data;
+	foreach(node->children, "replaceable", (xml_handler_t)t_repl, r);
 	foreach(node->children, "command", (xml_handler_t)t_command, NULL);
 }
 
 static void t_xref (xmlNodePtr node, void *data)
 {
-	dtype *type = (dtype *)data;
 	char *role = xmlGetProp(node, "role");
-	dep *dep;
+	dtype *type = (dtype *)data;
+	package *pkg = cur_pkg(prof);
 
-	if ((role)&&(!strcmp(role, "no")))
+	if ((role) && (!strcmp(role, "no")))
 		return;
 
-	dep = next_dep(prof);
-	dep->name = xmlGetProp(node, "linkend");
-	dep->type = *type;
+	pkg->dep = realloc(pkg->dep, (++pkg->o)*sizeof(dep));
+	pkg->dep[pkg->o-1].name = xmlGetProp(node, "linkend");
+	pkg->dep[pkg->o-1].type = *type;
 }
 
 static void t_sect4 (xmlNodePtr node, void *data)
@@ -61,10 +60,7 @@ static void t_sect4 (xmlNodePtr node, void *data)
 	if (!strcmp(title, "Recommended"))
 		type = RECOM;
 	else
-	{
 		fprintf(stderr, "Unknown dependency type '%s'\n", title);
-		type = DEP_NONE;
-	}
 	
 	foreach(node->children, "xref", (xml_handler_t)t_xref, &type);
 }
@@ -72,9 +68,6 @@ static void t_sect4 (xmlNodePtr node, void *data)
 static void t_sect3 (xmlNodePtr node, void *data)
 {
 	char *title = strstr(find_value(node->children, "title"), " ");
-	
-	// TODO: Dependency parsing is broken
-	return;
 	
 	if ((title)&&(!strncmp(lower_case(title), " dependencies", 13)))
 		foreach(node->children, "sect4", (xml_handler_t)t_sect4, NULL);
