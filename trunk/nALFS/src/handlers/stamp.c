@@ -34,38 +34,94 @@
 #include "parser.h"
 #include "backend.h"
 
+enum {
+	STAMP_NAME,
+	STAMP_VERSION,
+};
 
-#if HANDLER_SYNTAX_2_0
+struct stamp_data {
+	char *name;
+	char *version;
+};
 
 static const struct handler_attribute stamp_attributes[] = {
-	{ .name = "name" },
-	{ .name = "version" },
+	{ .name = "name", .private = STAMP_NAME },
+	{ .name = "version", .private = STAMP_VERSION },
 	{ .name = NULL }
 };
 
-static int stamp_main(const element_s * const el)
+static int stamp_setup(element_s * const element)
 {
-	int status = 0;
-	char *name;
-	char *version;
+	struct stamp_data *data;
 
-	if ((name = attr_value("name", el)) == NULL) {
-		Nprint_h_err("No name specified.");
-		return -1;
-	}
+	if ((data = xmalloc(sizeof(struct stamp_data))) == NULL)
+		return 1;
 
-	if ((version = attr_value("version", el)) == NULL) {
-		Nprint_h_err("No version specified.");
-		return -1;
-	}
+	data->name = NULL;
+	data->version = NULL;
+	element->handler_data = data;
 
-	status = stamp_package_installed(1, name, version);
-
-	return status;
+	return 0;
 }
 
-#endif /* HANDLER_SYNTAX_2_0 */
+static void stamp_free(const element_s * const element)
+{
+	struct stamp_data *data = (struct stamp_data *) element->handler_data;
 
+	xfree(data->name);
+	xfree(data->version);
+	xfree(data);
+}
+
+static int stamp_attribute(const element_s * const element,
+			   const struct handler_attribute * const attr,
+			   const char * const value)
+{
+	struct stamp_data *data = (struct stamp_data *) element->handler_data;
+
+	switch (attr->private) {
+	case STAMP_NAME:
+		if (data->name) {
+			Nprint_err("<stamp>: cannot specify \"name\" more than once.");
+			return 1;
+		}
+		data->name = xstrdup(value);
+		return 0;
+	case STAMP_VERSION:
+		if (data->version) {
+			Nprint_err("<stamp>: cannot specify \"version\" more than once.");
+			return 1;
+		}
+		data->version = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int stamp_valid_data(const element_s * const element)
+{
+	struct stamp_data *data = (struct stamp_data *) element->handler_data;
+
+	if (!data->name) {
+		Nprint_err("<stamp>: \"name\" cannot be empty.");
+		return 0;
+	}
+
+	if (!data->version) {
+		Nprint_err("<stamp>: \"version\" cannot be empty.");
+		return 0;
+	}
+
+	return 1;
+}
+
+static int stamp_main(const element_s * const element)
+{
+	struct stamp_data *data = (struct stamp_data *) element->handler_data;
+
+	return stamp_package_installed(1, data->name, data->version);
+}
 
 /*
  * Handlers' information.
@@ -76,10 +132,14 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 	{
 		.name = "stamp",
 		.description = "Produce a stamp",
-		.syntax_version = "3.0",
+		.syntax_version = "2.0",
 		.main = stamp_main,
 		.type = HTYPE_NORMAL,
+		.setup = stamp_setup,
+		.free = stamp_free,
 		.attributes = stamp_attributes,
+		.attribute = stamp_attribute,
+		.valid_data = stamp_valid_data,
 	},
 #endif
 	{

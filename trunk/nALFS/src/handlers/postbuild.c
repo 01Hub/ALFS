@@ -34,8 +34,10 @@
 #include "backend.h"
 #include "logging.h"
 
-
-#if HANDLER_SYNTAX_2_0
+static int postbuild_setup(const element_s * element)
+{
+	return 0;
+}
 
 static int postbuild_main(const element_s * const el)
 {
@@ -50,9 +52,6 @@ static int postbuild_main(const element_s * const el)
 	return i;
 }
 
-#endif /* HANDLER_SYNTAX_2_0 */
-
-
 /*
  * Handlers' information.
  */
@@ -66,6 +65,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = postbuild_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 0,
+		.setup = postbuild_setup,
 	},
 #endif
 	{

@@ -32,20 +32,64 @@
 
 #include "handlers.h"
 #include "nprint.h"
+#include "utility.h"
 
+struct log_data {
+	char *content;
+};
 
-#if HANDLER_SYNTAX_2_0 || HANDLER_SYNTAX_3_0
-
-
-static int log_main(const element_s * const el)
+static int log_setup(element_s * const element)
 {
-	Nprint_h("%s", el->content ? el->content : "");
+	struct log_data *data;
+
+	if ((data = xmalloc(sizeof(struct log_data))) == NULL)
+		return 1;
+
+	data->content = NULL;
+	element->handler_data = data;
 
 	return 0;
 }
 
-#endif /* HANDLER_SYNTAX_2_0 || HANDLER_SYNTAX_3_0 */
+static void log_free(const element_s * const element)
+{
+	struct log_data *data = (struct log_data *) element->handler_data;
 
+	xfree(data->content);
+	xfree(data);
+}
+
+static int log_content(const element_s * const element,
+		       const char * const content)
+{
+	struct log_data *data = (struct log_data *) element->handler_data;
+
+	if (strlen(content))
+		data->content = xstrdup(content);
+
+	return 0;
+}
+
+static int log_valid_data(const element_s * const element)
+{
+	struct log_data *data = (struct log_data *) element->handler_data;
+
+	if (!data->content) {
+		Nprint_err("<log>: content cannot be empty.");
+		return 0;
+	}
+
+	return 1;
+}
+
+static int log_main(const element_s * const element)
+{
+	struct log_data *data = (struct log_data *) element->handler_data;
+
+	Nprint_h("%s", data->content);
+
+	return 0;
+}
 
 /*
  * Handlers' information.
@@ -61,7 +105,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 0,
-		.priority = 0
+		.priority = 0,
+		.setup = log_setup,
+		.free = log_free,
+		.content = log_content,
+		.valid_data = log_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -73,7 +121,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 0,
-		.priority = 0
+		.priority = 0,
+		.setup = log_setup,
+		.free = log_free,
+		.content = log_content,
+		.valid_data = log_valid_data,
 	},
 #endif
 	{
