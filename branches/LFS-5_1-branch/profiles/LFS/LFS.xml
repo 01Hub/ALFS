@@ -229,6 +229,8 @@
 	<execute command="umount">
 		<param>&LFS;/proc</param>
 		<param>&LFS;/dev/pts</param>
+		<!-- If you used a bind mount for your package dir, unmount it here. -->
+		<!-- <param>&LFS;&packages_dir;</param> -->
 	</execute>
 </stage>
 
