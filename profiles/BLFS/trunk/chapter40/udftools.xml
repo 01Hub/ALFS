@@ -41,6 +41,7 @@
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&udftools-directory;</remove>
+      <remove>&build_dir;/&udftools-patch;</remove>
     </stage>
   </package>
 </alfs>
