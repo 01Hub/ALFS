@@ -1,0 +1,176 @@
+div.navheader table
+{
+    font-weight: normal;
+    font-size: 8.5pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
+}
+div.navfooter table
+{
+    font-weight: normal;
+    font-size: 8.5pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
+}
+div.navheader img
+{
+    border-right: medium none;
+    border-top: medium none;
+    border-left: medium none;
+    border-bottom: medium none
+}
+div.navfooter img
+{
+    border-right: medium none;
+    border-top: medium none;
+    border-left: medium none;
+    border-bottom: medium none
+}
+div.book {
+    font-weight: normal;
+    font-size: 10pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
+}
+div.part {
+    font-weight: normal;
+    font-size: 10pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
+}
+div.chapter {
+    font-weight: normal;
+    font-size: 10pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
+}
+div.book div.titlepage h3.author {
+    font-weight: normal;
+    font-size: 14pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
+}
+div.book div.dedication div.titlepage h2.title {
+    font-weight: normal;
+    font-size: 14pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
+}
+div.book div.titlepage h1.title
+{
+    font-weight: bold;
+    font-size: 16pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: center
+}
+div.part div.titlepage h1.title
+{
+    font-weight: bold;
+    font-size: 16pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
+}
+div.book div.titlepage h2.subtitle
+{
+    font-weight: bold;
+    font-size: 14pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: center
+}
+div.legalnotice {
+    font-weight: bold;
+    font-size: 10pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
+}
+div.preface div.titlepage h2.title
+{
+    font-weight: bold;
+    font-size: 16pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
+}
+div.chapter div.titlepage h2.title
+{
+    font-weight: bold;
+    font-size: 16pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
+}
+div.sect1 div.titlepage h2.title
+{
+    font-weight: bold;
+    font-size: 14pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
+}
+div.sect1
+{
+    font-weight: normal;
+    font-size: 10pt;
+    font-family: veranda, tahoma, helvetica, arial, sans-serif;
+    text-align: left
+}
+tt
+{
+    font-family: courier, monospace;
+}
+pre.screen
+{
+    font-family: courier, monospace;
+    color: black;
+    background-color: #dddddd
+}
+pre.synopsis
+{
+    color: black;
+    background-color: #dddddd
+}
+div.warning
+{
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-bottom: 1px solid
+}
+div.note
+{
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-bottom: 1px solid
+}
+div.important
+{
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-bottom: 1px solid
+}
+div.caution
+{
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-bottom: 1px solid
+}
+div.warning h3.title
+{
+    text-align: center
+}
+div.warning p
+{
+    padding-left: 0.2in
+}
+div.note
+{
+    padding-left: 0.2in
+}
+div.important
+{
+    padding-left: 0.2in
+}
+div.caution
+{
+    padding-left: 0.2in
+}

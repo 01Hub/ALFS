@@ -1,0 +1,14 @@
+<sect1 id="preface-audience" xreflabel="Audience">
+<?dbhtml filename="audience.html" dir="preface"?>
+<title>Who Would Want To Read This Book</title>
+
+<para>If you are planning on writing code, updating profiles or the
+documentation for the nALFS implementation of the ALFS DTD, then this book
+is for you. If this is not what you want to do, then this book is not for
+you.  If all you want to do is to understand how to use nALFS, then please
+direct your attention to the <filename>README</filename> file in the root
+of the source tarball or the Users Guide in the <filename>doc</filename>
+directory. </para>
+
+</sect1>
+

@@ -1,0 +1,84 @@
+README for the ALFS syntax_doc module
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+0. Introduction
+~~~~~~~~~~~~~~~
+
+This is a quick readme file on setting up the tools necessary to parse the
+nALFS Hackers Guide XML source into other formats (e.g. HTML or TXT).  If
+you do not want to do that, then you do not need to read this file.  The
+XML source is generally available for viewing and download on the LFS
+website at http://linuxfromscratch.org/alfs.
+
+1. Requirements
+~~~~~~~~~~~~~~~
+
+* libxml2-2.6.10 or better
+	-- http://www.linuxfromscratch.org/blfs/view/cvs/general/libxml2.html
+
+* libxslt-1.1.6 or better
+	-- http://www.linuxfromscratch.org/blfs/view/cvs/general/libxslt.html
+
+* DocBook XML DTD-4.3
+	-- http://www.linuxfromscratch.org/blfs/view/cvs/pst/xml.html
+
+* DocBook XSL Stylesheets-1.65.1 or better 
+	-- http://www.linuxfromscratch.org/blfs/view/cvs/pst/docbook-xsl.html
+	-- additionally create a link from
+		/usr/share/xml/docbook/xsl-stylesheets-1.65.1 to
+		/usr/share/xml/docbook/xsl-stylesheets-current
+
+		cd /usr/share/xml/docbook/ &&
+		ln -s xsl-stylesheets-1.65.1 xsl-stylesheets-current
+
+* lynx-2.8.5 or better
+	-- http://www.linuxfromscratch.org/blfs/view/cvs/basicnet/lynx.html
+
+* HTMLTidy
+  - http://tidy.sourceforge.net/
+
+  Installation of HTMLTidy is a simple `./configure --prefix=/usr && \
+  make && make install`
+
+2. Setting up the DTD
+~~~~~~~~~~~~~~~~~~~~~
+
+Follow the steps in the BLFS book for all the packages listed above in the
+requirements section.  It is pretty simple.  The biggest thing is making
+sure that your /etc/xml/catalog and /etc/xml/docbook files are setup
+correctly.
+
+*** Note that the directory that the HTML files are output to
+can be altered by changing the OUTDIR variable at the top of the Makefile
+or by passing a new variable via the command line, ensuring that when you
+do so, you're new value has a trailing "/".  Also note that the directory
+that DocBook XSL is installed in can be altered by changing the XSLROOTDIR
+variable at the top of the Makefile.  This one is important as a sed later
+on won't work if you have this set wrong. ***
+
+3. Processing the sources
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By far the easiest way to process the source is by running 
+`make chunks-html`.  An explanation of the process follows:
+
+For the chunked HTML output, we run the top-level index.xml file through
+xsltproc in conjunction with the alfs-chunked.xsl stylesheet.  The
+index.xml file just has a bunch of entity instructions in it, which
+pulls in all the different chapters of the book.  The alfs-chunked
+stylesheet (in stylesheets/) is a customisation layer, on top of the
+docbook-xsl XHTML/chunked.xsl stylesheet.  It basically configures some
+layout related variables to tweak the output to the liking of the ALFS
+readership.  The majority of work is delegated to the docbook-xsl
+stylesheets.  HTML visual representation is provided by alfs.css also in
+the stylesheets/ directory.
+
+For the non-chunked HTML output, run `make nochunks-html`.  We do a lot of
+the same processing like the chunked version, except we use
+alfs-nochunks.xsl which like alfs-chunked.xsl is a customisation layer to
+onechunk.xsl provided by docbook-xsl.  The commnad for this one is `make
+nochunks-html`.
+
+For the flat text output, run `make flat-text`.  We run the nochunks-html
+target first and then pass the result through lynx. 
+
+
