@@ -6,6 +6,9 @@
 
 <itemizedlist>
 
+<listitem><para>February 23rd, 2004 [jwrober]: Fixed wierd character in
+acknowledgements page.  Closes bug 755.</para></listitem>
+
 <listitem><para>February 22nd, 2004 [jwrober]: Finished a first pass over
 the rest of the elements.</para></listitem>
 
