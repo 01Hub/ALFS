@@ -343,9 +343,6 @@ element_s *parse_with_libxml2_tree(const char *filename)
 	xmlDocPtr doc;
 	element_s *profile = NULL;
 
-	xmlSubstituteEntitiesDefault(1);
-	xmlSetGenericErrorFunc(NULL, handle_error);
-
 	if ((doc = xmlParseFile(filename)) == NULL) {
 		Nprint_err("Parsing \"%s\" failed.", filename);
 		return NULL;
@@ -360,6 +357,54 @@ element_s *parse_with_libxml2_tree(const char *filename)
 	xmlFreeDoc(doc);
 
 	return profile;
+}
+
+static const char *make_dotted_version(const char * const version)
+{
+	char *dotted_version = NULL;
+	int version_num = atoi(version);
+	int major, minor, patch;
+	
+	patch = version_num % 100;
+	minor = (version_num / 100) % 100;
+	major = (version_num / 10000) % 100;
+	append_str_format(&dotted_version, "%d.%d.%d", major, minor, patch);
+
+	return dotted_version;
+}
+
+static const char *get_libxml_version(void)
+{
+	if (strcmp(xmlParserVersion, LIBXML_VERSION_STRING) == 0) {
+		return make_dotted_version(xmlParserVersion);
+	} else {
+		const char *compiled;
+		const char *installed;
+		char *result = NULL;
+
+		compiled = make_dotted_version(LIBXML_VERSION_STRING);
+		installed = make_dotted_version(xmlParserVersion);
+		append_str_format(&result, "%s (compiled against %s)",
+				  installed, compiled);
+		xfree(compiled);
+		xfree(installed);
+		return result;
+	}
+}
+
+void init_libXML_tree(void)
+{
+	const char *xml_version;
+
+	xmlSetGenericErrorFunc(NULL, handle_error);
+
+	LIBXML_TEST_VERSION;
+
+	xmlSubstituteEntitiesDefault(1);
+
+	xml_version = get_libxml_version();
+	Nprint("Using libXML2, version %s.", xml_version);
+	xfree(xml_version);
 }
 
 /*

@@ -73,6 +73,8 @@ typedef struct element_s {
 
 element_s *root_element;
 
+void init_parser(void);
+
 void add_profile(element_s * const profile);
 void remove_profile(element_s * const profile);
 

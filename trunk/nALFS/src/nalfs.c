@@ -4466,7 +4466,6 @@ int main(int argc, char **argv)
 {
 	int i;
 
-
 	nprint = nprint_init;
 
 	/* Load all handlers (before options, so handlers can provide options). */
@@ -4511,8 +4510,9 @@ int main(int argc, char **argv)
 
 	/* Print some useful information. */
 	Nprint("Using \"%s\" directory.", *opt_alfs_directory);
-	Nprint("Using libxml2, version %s.", LIBXML_DOTTED_VERSION);
 	Nprint("Total %d handlers loaded.", get_handler_count());
+
+	init_parser();
 
 	/* Add profiles from command line. */
 	for (i = optind; i < argc; ++i) {
