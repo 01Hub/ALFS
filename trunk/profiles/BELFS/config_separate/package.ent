@@ -18,8 +18,8 @@
 <!ENTITY bash-gcc34-patch-md5 "8041adc7b2be710231edf9f04ee9e949">
 <!ENTITY bash-gcc34-patch "bash-&bash-version;-gcc34-1.patch">
 
-<!ENTITY binutils-md5 "1dc607d12be82ab73af35d9fd0522656">
-<!ENTITY binutils-version "2.15.90.0.2">
+<!ENTITY binutils-md5 "1c1af0064ebd3d7bd99905874656a21e">
+<!ENTITY binutils-version "2.15.90.0.3">
 <!ENTITY binutils-cvs-version "">
 <!ENTITY binutils-package "binutils-&binutils-version;&binutils-cvs-version;.tar.bz2">
 <!ENTITY binutils-directory "binutils-&binutils-version;&binutils-cvs-version;">
