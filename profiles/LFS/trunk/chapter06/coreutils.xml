@@ -1,133 +1,119 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/package.ent">
 
 %general_entities;
 %package_entities;
 ]>
-
 <alfs>
-
-<package name="coreutils" version="&coreutils-version;">
-	<stage name="Unpacking">
-		<unpack>
-			<digest>&coreutils-md5;</digest>
-			<archive>&packages_dir;/&coreutils-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&coreutils-directory;</base>
-		</stageinfo>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&coreutils-uname-patch;</param>
-		</patch>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&coreutils-dupes-patch;</param>
-		</patch>
-
-		<configure>
-			<prefix>DEFAULT_POSIX2_VERSION=199209</prefix>
-			<param>--prefix=/usr</param>
-		</configure>
-
-		<make>
-			<param>&jlevel;</param>	
-		</make>
-<!--
-		<textdump mode="append">
-			<file>/etc/group</file>
-			<content>
-				=dummy1:x:1000
-				=dummy2:x:1001:dummy
-			</content>
-		</textdump>
-
-		<textdump mode="append">
-			<file>/etc/passwd</file>
-			<content>=dummy:x:1000:1000:::/bin/bash</content>
-		</textdump>
-
-		<make>
-			<param>NON_ROOT_USERNAME=dummy</param>
-			<param>check-root</param>
-		</make>
-
-		<execute command="src/su">
-			<param>dummy</param>
-			<param>-c "make RUN_EXPENSIVE_TESTS=yes check"</param>
-		</execute>
-
-		<execute command="sed">
-			<param>-i.bak</param>
-			<param>'/dummy/d'</param>
-			<param>/etc/passwd</param>
-			<param>/etc/group</param>
-		</execute>
--->
-
-		<make>
-			<param>install</param>
-		</make>
-
-		<move base="/usr/bin">
-			<source>[</source>
-			<source>basename</source>
-			<source>cat</source>
-			<source>chgrp</source>
-			<source>chmod</source>
-			<source>chown</source>
-			<source>cp</source>
-			<source>dd</source>
-			<source>df</source>
-			<source>date</source>
-			<source>echo</source>
-			<source>false</source>
-			<source>head</source>
-			<source>hostname</source>
-			<source>install</source>
-			<source>ln</source>
-			<source>ls</source>
-			<source>mkdir</source>
-			<source>mknod</source>
-			<source>mv</source>
-			<source>pwd</source>
-			<source>rm</source>
-			<source>rmdir</source>
-			<source>sync</source>
-			<source>sleep</source>
-			<source>stty</source>
-			<source>test</source>
-			<source>touch</source>
-			<source>true</source>
-			<source>uname</source>
-			<destination>/bin</destination>
-		</move>
-
-		<move>
-			<source>/usr/bin/chroot</source>
-			<destination>/usr/sbin</destination>
-		</move>
-
-		<link>
-			<option>force</option>
-			<target>../../bin/install</target>
-			<name>/usr/bin</name>
-		</link>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&coreutils-directory;</remove>
-	</stage>
-</package>
-
+  <package name="coreutils" version="&coreutils-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&coreutils-md5;</digest>
+        <archive>&packages_dir;/&coreutils-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&coreutils-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&coreutils-uname-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&coreutils-dupes-patch;</param>
+      </patch>
+      <configure>
+        <prefix>DEFAULT_POSIX2_VERSION=199209</prefix>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make>
+        <param>&jlevel;</param>
+      </make>
+      <!--
+      <textdump mode="append">
+        <file>/etc/group</file>
+	<content>
+	=dummy1:x:1000
+	=dummy2:x:1001:dummy
+	</content>
+      </textdump>
+      <textdump mode="append">
+        <file>/etc/passwd</file>
+	<content>
+	=dummy:x:1000:1000:::/bin/bash
+	</content>
+      </textdump>
+      <make>
+        <param>NON_ROOT_USERNAME=dummy</param>
+	<param>check-root</param>
+      </make>
+      <execute command="src/su">
+	<param>dummy</param>
+	<param>-c "make RUN_EXPENSIVE_TESTS=yes check"</param>
+      </execute>
+      <execute command="sed">
+        <param>-i.bak</param>
+	<param>'/dummy/d'</param>
+	<param>/etc/passwd</param>
+	<param>/etc/group</param>
+      </execute>
+      -->
+      <make>
+        <param>install</param>
+      </make>
+      <move base="/usr/bin">
+        <source>[</source>
+        <source>basename</source>
+        <source>cat</source>
+        <source>chgrp</source>
+        <source>chmod</source>
+        <source>chown</source>
+        <source>cp</source>
+        <source>dd</source>
+        <source>df</source>
+        <source>date</source>
+        <source>echo</source>
+        <source>false</source>
+        <source>head</source>
+        <source>hostname</source>
+        <source>install</source>
+        <source>ln</source>
+        <source>ls</source>
+        <source>mkdir</source>
+        <source>mknod</source>
+        <source>mv</source>
+        <source>pwd</source>
+        <source>rm</source>
+        <source>rmdir</source>
+        <source>sync</source>
+        <source>sleep</source>
+        <source>stty</source>
+        <source>test</source>
+        <source>touch</source>
+        <source>true</source>
+        <source>uname</source>
+        <destination>/bin</destination>
+      </move>
+      <move>
+        <source>/usr/bin/chroot</source>
+        <destination>/usr/sbin</destination>
+      </move>
+      <link>
+        <option>force</option>
+        <target>../../bin/install</target>
+        <name>/usr/bin</name>
+      </link>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&coreutils-directory;</remove>
+    </stage>
+  </package>
 </alfs>

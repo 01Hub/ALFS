@@ -1,86 +1,71 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/package.ent">
 
 %general_entities;
 %package_entities;
 ]>
-
 <alfs>
-
-<package name="bzip2" version="&bzip2-version;">
-	<stage name="Unpacking">
-		<unpack>
-			<digest>&bzip2-md5;</digest>
-			<archive>&packages_dir;/&bzip2-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&bzip2-directory;</base>
-		</stageinfo>
-
-		<make>
-			<param>-f Makefile-libbz2_so</param>
-		</make>
-
-		<make>
-			<param>clean</param>
-		</make>
-
-		<make />
-
-		<make>
-			<param>install</param>
-		</make>
-
-		<copy>
-			<source>bzip2-shared</source>
-			<destination>/bin/bzip2</destination>
-		</copy>
-
-		<copy>
-			<option>archive</option>
-			<source>libbz2.so*</source>
-			<destination>/lib</destination>
-		</copy>
-
-		<link>
-			<option>force</option>
-			<target>../../lib/libbz2.so.1.0</target>
-			<name>/usr/lib/libbz2.so</name>
-		</link>
-
-		<remove>/usr/bin/bunzip2</remove>
-		<remove>/usr/bin/bzcat</remove>
-		<remove>/usr/bin/bzip2</remove>
-
-		<move base="/usr/bin">
-			<source>bzip2recover</source>
-			<source>bzless</source>
-			<source>bzmore</source>
-			<destination>/bin</destination>
-		</move>
-
-		<link>
-			<option>force</option>
- 			<target>bzip2</target>
-			<name>/bin/bunzip2</name>
-		</link>
-
-		<link>
-			<option>force</option>
-			<target>bzip2</target>
-			<name>/bin/bzcat</name>
-		</link>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&bzip2-directory;</remove>
-	</stage>
-</package>
-
+  <package name="bzip2" version="&bzip2-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&bzip2-md5;</digest>
+        <archive>&packages_dir;/&bzip2-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&bzip2-directory;</base>
+      </stageinfo>
+      <make>
+        <param>-f Makefile-libbz2_so</param>
+      </make>
+      <make>
+        <param>clean</param>
+      </make>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <copy>
+        <source>bzip2-shared</source>
+        <destination>/bin/bzip2</destination>
+      </copy>
+      <copy>
+        <option>archive</option>
+        <source>libbz2.so*</source>
+        <destination>/lib</destination>
+      </copy>
+      <link>
+        <option>force</option>
+        <target>../../lib/libbz2.so.1.0</target>
+        <name>/usr/lib/libbz2.so</name>
+      </link>
+      <remove>/usr/bin/bunzip2</remove>
+      <remove>/usr/bin/bzcat</remove>
+      <remove>/usr/bin/bzip2</remove>
+      <move base="/usr/bin">
+        <source>bzip2recover</source>
+        <source>bzless</source>
+        <source>bzmore</source>
+        <destination>/bin</destination>
+      </move>
+      <link>
+        <option>force</option>
+        <target>bzip2</target>
+        <name>/bin/bunzip2</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>bzip2</target>
+        <name>/bin/bzcat</name>
+      </link>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&bzip2-directory;</remove>
+    </stage>
+  </package>
 </alfs>
