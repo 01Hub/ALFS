@@ -44,6 +44,7 @@ profile.</para>
 <title>Examples</title>
 
 <screen><userinput>&lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
+
 	&lt;packageinfo&gt;
 
 		&lt;description&gt;

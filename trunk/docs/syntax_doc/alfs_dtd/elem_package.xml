@@ -44,11 +44,14 @@ the package. See <xref linkend="elem_version"/>.</para>
 <title>Examples</title>
 
 <screen><userinput>&lt;package name=&quot;zlib&quot; version=&quot;1.1.4&quot;&gt;
+
 	&lt;stage name=&quot;Unpacking a package.&quot;&gt;
+
 		&lt;unpack&gt;
 			&lt;archive&gt;/usr/src/lfs-packages/zlib.1.1.4.tar.gz&lt;/archive&gt;
 			&lt;destination&gt;/usr/src&lt;/destination&gt;
 		&lt;/unpack&gt;
+
 	&lt;/stage&gt;
 
 	.....

@@ -33,8 +33,9 @@ hash.</para>
 <sect2>
 <title>Examples</title>
 
-<para>Refer to <xref linkend="elem_reference"/> for an example. There is
-no equivalent Bash script example for this element.</para>
+<para>Refer to <xref linkend="elem_reference"/> for an example.</para>
+
+<para>There is no equivalent Bash script example for this element.</para>
 
 </sect2>
 
