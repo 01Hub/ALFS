@@ -31,6 +31,7 @@
 #include <nALFS.h>
 
 #include "handlers.h"
+#include "win.h"
 
 
 int log_main(element_s *el)
