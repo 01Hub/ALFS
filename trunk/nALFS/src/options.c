@@ -193,31 +193,31 @@ static option_s options[] = {
 		(option_pointer *)& opt_editor,
 		(option_pointer *)& ""
 	},{
-		"gunzip_command", O_STRING,
+		"gunzip_command", O_COMMAND,
 		(option_pointer *)& opt_gunzip_command,
 		(option_pointer *)& "zcat %s"
 	},{
-		"uncompress_command", O_STRING,
+		"uncompress_command", O_COMMAND,
 		(option_pointer *)& opt_uncompress_command,
 		(option_pointer *)& "zcat %s"
 	},{
-		"bunzip2_command", O_STRING,
+		"bunzip2_command", O_COMMAND,
 		(option_pointer *)& opt_bunzip2_command,
 		(option_pointer *)& "bunzip2 -dc %s"
 	},{
-		"untar_command", O_STRING,
+		"untar_command", O_COMMAND,
 		(option_pointer *)& opt_untar_command,
 		(option_pointer *)& "tar xv"
 	},{
-		"unpax_command", O_STRING,
+		"unpax_command", O_COMMAND,
 		(option_pointer *)& opt_unpax_command,
 		(option_pointer *)& "pax -rv"
 	},{
-		"uncpio_command", O_STRING,
+		"uncpio_command", O_COMMAND,
 		(option_pointer *)& opt_uncpio_command,
 		(option_pointer *)& "cpio -idv"
 	},{
-		"unzip_command", O_STRING,
+		"unzip_command", O_COMMAND,
 		(option_pointer *)& opt_unzip_command,
 		(option_pointer *)& "unzip %s"
 	},{
@@ -293,6 +293,7 @@ void set_option(option_pointer **var_pointer, NUMBER number, char *string)
 				break;
 
 			case O_STRING:
+			case O_COMMAND:
 				set_string_option(i, string);
 				break;
 		}
@@ -311,6 +312,7 @@ static void set_option_from_index(int idx, option_pointer *value)
 			break;
 
 		case O_STRING:
+		case O_COMMAND:
 			set_string_option(idx, (char *)value);
 			break;
 	}
@@ -412,6 +414,29 @@ static INLINE int not_correct_number(int idx, NUMBER num)
 	return 0;
 }
 
+static int not_valid_command(const char *command)
+{
+	const char *tmp;
+	int string_count = 0;
+
+	for (tmp = command; *tmp; ++tmp) {
+		if (*tmp == '%') {
+			switch (*(++tmp)) {
+			case '%':
+				break;
+			case 's':
+				if (string_count++)
+					return 1;
+				break;
+			default:
+				return 1;
+			}
+		}
+	}
+
+	return 0;
+}
+
 set_opt_e set_yet_unknown_option(const char *opt, const char *val)
 {
 	int i;
@@ -453,6 +478,16 @@ set_opt_e set_yet_unknown_option(const char *opt, const char *val)
 				return OPTION_SET;
 
 			case O_STRING:
+				set_string_option(i, val);
+
+				return OPTION_SET;
+
+			case O_COMMAND:
+
+				if (not_valid_command(val)) {
+					return OPTION_INVALID_VALUE;
+				}
+
 				set_string_option(i, val);
 
 				return OPTION_SET;
