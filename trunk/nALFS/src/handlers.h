@@ -138,6 +138,7 @@ handler_s *find_handler(const char *name, const char *version);
 int parameter_exists(const char *name);
 
 int load_all_handlers(void);
+unsigned int get_handler_count(void);
 
 /*
  * Handlers' utility functions.

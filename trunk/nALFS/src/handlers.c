@@ -369,9 +369,13 @@ int load_all_handlers(void)
 	(void) parse_handler_info(embedded_handlers_info, NULL);
 
 	lt_dlforeach(&load_handler, NULL);
-	Nprint("Total %d handlers loaded.", handlers.cnt);
 
 	return 0;
+}
+
+unsigned int get_handler_count(void)
+{
+	return handlers.cnt;
 }
 
 /*
