@@ -3,6 +3,23 @@
 <title>CVS</title>
 
 <sect2>
+<title>Check Out</title>
+
+<para>Bleading edge development of &book-product; occurs on HEAD in the LFS
+CVS repository. You can do an anonymous HEAD checkout by issuing the
+following command&nbsp;:</para>
+
+<screen><command>cvs -z9 -d :pserver:anonymous@cvs.linuxfromscratch.org:/home/cvsroot checkout ALFS/nALFS</command></screen>
+
+<para>The current stable version of &book-product; is developed on the 1.2
+branch (branch-1_2) in the LFS CVS repository. You can do an anonymous
+checkout of this branch by issuing the following command&nbsp;:</para>
+
+<screen><command>cvs -z9 -d :pserver:anonymous@cvs.linuxfromscratch.org:/home/cvsroot checkout -r branch-1_2 ALFS/nALFS</command></screen>
+
+</sect2>
+
+<sect2>
 <title>Usage</title>
 
 <para>The CVS repository copy of &book-product; does not include an
@@ -17,17 +34,17 @@ system was created using <filename>autoconf-2.57</filename>,
 <filename>automake-1.7.7</filename> and <filename>libtool-1.5</filename>.
 If you use older versions than those, you may experience warnings and/or
 outright failures (<filename>automake-1.6</filename> is known to be unable
-to handle the &book-product; <filename>Makefile.am</filename>).</para>
+to handle the &book-product; <filename>Makefile.am</filename>) file.</para>
 
-<para>When you checkout the nALFS source tree, you will need to
+<para>After you checkout the &book-product; source tree, you will need to
 execute:</para>
 
 <screen><command>sh ./bootstrap</command></screen>
 
-<para>in the &book-product; directory itself. This should result output
-similar to the following:</para>
+<para>in the &book-product; root directory itself. This should result
+output similar to the following:</para>
 
-<screen><userinput><command>	$ sh ./bootstrap</command>
+<screen><command>$ sh ./bootstrap</command>
 You should update your 'aclocal.m4' by running aclocal.
 Putting files in AC_CONFIG_AUX_DIR, `gnubuild'.
 configure.ac: installing 'gnubuild/install-sh'
@@ -38,17 +55,17 @@ Makefile.am: installing 'gnubuild/depcomp'
 patching file ltmain.sh
 Hunk #1 succeeded at 160 with fuzz 2 (offset -78 lines).
 Hunk #2 succeeded at 269 with fuzz 1.
-Hunk #3 succeeded at 4483 (offset -1172 lines).</userinput></screen>
+Hunk #3 succeeded at 4483 (offset -1172 lines).</screen>
 
 <para>This output comes from the <filename>autoreconf</filename> tool,
-which is part of <filename>autoconf</filename>, that automatically runs
-<filename>libtoolize</filename>, <filename>autoheader</filename>,
-<filename>aclocal</filename> and other parts of the
-<filename>autotools</filename> suite. The warning about &quot;update your
-'aclocal.m4'&quot; can be ignored, as <filename>aclocal</filename> is
-already executed later by <filename>autoreconf</filename>. The
-<filename>patch</filename> offset and/or fuzz messages about
-<filename>ltmain.sh</filename> are caused by the
+which is part of the <filename>autoconf</filename> package, that
+automatically runs <filename>libtoolize</filename>,
+<filename>autoheader</filename>, <filename>aclocal</filename> and other
+parts of the <filename>autotools</filename> suite. The warning about
+&quot;update your 'aclocal.m4'&quot; can be ignored, as
+<filename>aclocal</filename> is already executed later by
+<filename>autoreconf</filename>. The <filename>patch</filename> offset
+and/or fuzz messages about <filename>ltmain.sh</filename> are caused by the
 <filename>bootstrap</filename> script applying a patch created against
 <filename>libtool-1.5</filename>; if your <filename>libtool</filename>
 version is different, the patch should still work correctly, but you may
@@ -99,14 +116,16 @@ experience unusual build behavior.</para>
 
 <para>If you add or remove any program options in
 <filename>src/options.h</filename>, you must re-run
-<filename>bootstrap</filename> to regenerate src/option-list.h.  Without
-that file being regenerated, you may experience compile errors or find that
-your newly added option does not work properly.</para>
+<filename>bootstrap</filename> to regenerate
+<filename>src/option-list.h</filename>.  Without that file being
+regenerated, you may experience compile errors or find that your newly
+added option does not work properly.</para>
 
 <para>All other types of files fall into two categories:</para>
 
-<blockquote><para>those that should be present <emphasis>only</emphasis> in
-the CVS repository</para></blockquote>
+<blockquote><para>those that should be present 
+<emphasis role="bold">only</emphasis> in the CVS repository</para>
+</blockquote>
 
 <para>Nothing needs to be done for these files, other than the relevant
 &quot;cvs add&quot; commands.</para>

@@ -26,6 +26,10 @@
 <!ENTITY product-maintainer-firstname "Kevin">
 <!ENTITY product-maintainer-address "kpfleming@linuxfromscratch.org">
 
+<!ENTITY profile-maintainer-fullname "Thomas Pegg">
+<!ENTITY profile-maintainer-firstname "Thomas">
+<!ENTITY profile-maintainer-address "thomasp@linuxfromscratch.org">
+
 <!ENTITY ftp-root "ftp://ftp.linuxfromscratch.org">
 <!ENTITY http-root "http://www.linuxfromscratch.org">
 <!ENTITY hints-root "http://www.linuxfromscratch.org/hints">
