@@ -45,8 +45,10 @@ element is optional, but if used can be used more than once.</para>
 the directory into which the download should be performed.</para>
 
 <para>The sub-element <filename>digest</filename> contains the value with
-which the digest computed from the dowloaded file (e.g. computed using the
-md5 algorithm) will be compared. This sub-element is optional.</para>
+which the digest computed from the dowloaded file will be compared. This
+sub-element is optional. For more information see&nbsp;:
+<xref linkend="elem_digest"/>
+</para>
 
 <para>If the file is already present in the destination directory, no
 download is performed but the digest is checked if present.</para>
