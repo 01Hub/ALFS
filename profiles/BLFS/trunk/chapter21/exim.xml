@@ -64,10 +64,19 @@
       <stageinfo>
         <base>&build_dir;/&exim-directory;</base>
       </stageinfo>
-      <execute command="sed -e 's/^BIN_DIR.*$/BIN_DIRECTORY=\/usr\/sbin/' src/EDITME | 
-                        sed -e 's/^CONF.*$/CONFIGURE_FILE=\/etc\/exim.conf/' | 
-                        sed -e 's/^EXIM_USER.*$/EXIM_USER=exim/' | 
-                              sed -e 's/^EXIM_MONITOR/#EXIM_MONITOR/' &gt; Local/Makefile" />
+      <copy>
+        <source>src/EDITME</source>
+	<destination>Local/Makefile</destination>
+      </copy>
+      <textdump mode="append">
+        <file>Local/Makefile</file>
+	<content>
+	=BIN_DIRECTORY=/usr/sbin
+	=CONFIGURE_FILE=/etc/exim.conf
+	=EXIM_USER=exim
+	=EXIM_MONITOR=
+	</content>
+      </textdump>
       <make />
       <make>
         <param>install</param>
