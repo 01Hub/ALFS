@@ -37,6 +37,7 @@
 #include "parser.h"
 #include "backend.h"
 #include "utility.h"
+#include "win.h"
 
 
 int package_main_ver2(element_s *el)
