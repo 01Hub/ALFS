@@ -1,0 +1,36 @@
+<sect1 id="elem_include" xreflabel="Element: &lt;include&gt;">
+<?dbhtml filename="elem_include.html" dir="alfs_dtd"?>
+<title>Element: &lt;item&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT include        EMPTY&gt;
+&lt;!ATTLIST include
+          href           CDATA #REQUIRED&gt;
+</synopsis>
+
+<para>This element occurs in the element&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The element <filename>include</filename> contains data necessary to
+handle the <filename>xi:include</filename> directive in a
+<filename>alfs</filename> element.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<para>Refer to <xref linkend="elem_alfs"/> for an example.</para>
+
+</sect2>
+
+</sect1>
