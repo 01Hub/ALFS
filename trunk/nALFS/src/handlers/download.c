@@ -96,25 +96,6 @@ static void download_free(const element_s * const element)
 	xfree(data);
 }
 
-static int download_attribute(const element_s * const element,
-			      const struct handler_attribute * const attr,
-			      const char * const value)
-{
-	struct download_data *data = (struct download_data *) element->handler_data;
-
-	switch (attr->private) {
-	case DOWNLOAD_BASE:
-		if (data->base) {
-			Nprint_err("<download>: cannot specify \"base\" more than once.");
-			return 1;
-		}
-		data->base = xstrdup(value);
-		return 0;
-	default:
-		return 1;
-	}
-}
-
 static int download_parameter(const element_s * const element,
 			      const struct handler_parameter * const param,
 			      const char * const value)
@@ -191,9 +172,6 @@ static int download_common(const element_s * const element)
 	int status = -1;
 	struct stat file_stat;
 	char *digest, *digest_type;
-
-	if (change_current_dir(data->destination))
-		return -1;
 
 	if (data->digest) {
 		digest = data->digest->handler->alloc_data(data->digest, HDATA_COMMAND);
@@ -273,6 +251,25 @@ static const struct handler_attribute download_attributes_v3_2[] = {
 	{ .name = "base", .private = DOWNLOAD_BASE },
 	{ .name = NULL }
 };
+
+static int download_attribute(const element_s * const element,
+			      const struct handler_attribute * const attr,
+			      const char * const value)
+{
+	struct download_data *data = (struct download_data *) element->handler_data;
+
+	switch (attr->private) {
+	case DOWNLOAD_BASE:
+		if (data->base) {
+			Nprint_err("<download>: cannot specify \"base\" more than once.");
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
 
 static int download_valid_data_v3_2(const element_s * const element)
 {
