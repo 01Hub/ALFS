@@ -19,7 +19,7 @@ typedef enum
 
 typedef enum
 {
-	HASH_NONE = 1,
+	ALGO_NONE = 1,
 	MD5,
 	SHA1
 } hash_algo;
@@ -50,6 +50,8 @@ typedef struct
 	char *name, *vers;
 	command *build;
 	int n;
+	download *dl;
+	int m;
 } package;
 
 typedef struct
@@ -71,8 +73,6 @@ typedef struct
 	char *orig, *repl;
 } replaceable;
 
-extern xmlDocPtr doc;
-
 typedef void (*xml_handler_t) (xmlNodePtr node, void *data);
 
 void print_subtree (xmlNodePtr node);
@@ -80,6 +80,8 @@ void print_pkg (package pkg);
 void print_cmd (command cmd);
 void print_chapter (chapter ch);
 void print_profile (profile prof);
+void print_links (profile prof);
+
 void set_filter (role *role);
 void unset_filter ();
 bool filtered (role role);
@@ -89,11 +91,13 @@ xmlNodePtr find_node (xmlNodePtr root, char *str);
 char *find_value (xmlNodePtr node, char *str);
 char *find_values (xmlNodePtr node, char *str);
 char *find_values_repl (xmlNodePtr node, char *str, char **orig, char **repl);
-char *entity_val (char *name);
-package *search_pkg (profile *prof, char *name, char *ch);
 
+package *search_pkg (profile *prof, char *name, char *ch);
 char *role2str (role role);
 char *type2str (xmlElementType type);
+char *algo2str (hash_algo algo);
+char *proto2str (protocol proto);
 role parse_role (xmlNodePtr node);
+protocol parse_proto (xmlNodePtr node);
 	
 #endif

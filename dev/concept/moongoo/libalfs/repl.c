@@ -3,13 +3,15 @@
 #include <repl.h>
 #include <alfs.h>
 
-replaceable *r = NULL;
-
 void t_repl (xmlNodePtr node, void *data)
 {
+	replaceable *r = (replaceable *)data;
 	xmlNodePtr text = find_node(node->children, "text");
 	char *repl = xmlNodeGetContent(text);
-	char *opt = get_option(repl);
+	char *opt = get_option(r, repl);
+
+	if (!opt)
+		return;
 	
 	if (!strcmp(opt, ""))
 	{
@@ -20,7 +22,7 @@ void t_repl (xmlNodePtr node, void *data)
 	xmlNodeSetContent(node, opt);
 }
 
-char *get_option (char *key)
+char *get_option (replaceable *r, char *key)
 {
 	int i=0;
 	
@@ -39,10 +41,14 @@ char *get_option (char *key)
 
 replaceable *init_repl (char *fname)
 {
+	replaceable *r = NULL;
 	xmlDocPtr doc;
 	xmlNodePtr node;
 	int count=0;
 
+	if (!fname)
+		return NULL;
+	
 	doc=xmlParseFile(fname);
 	if (!doc)
 		return NULL;

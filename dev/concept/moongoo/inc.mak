@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS+=-std=c99 -D_BSD_SOURCE
+CFLAGS+=-std=c99 -D_BSD_SOURCE -D_GNU_SOURCE
 CFLAGS+=-Wall -Werror -g3
 
 CFLAGS+=`xml2-config --cflags`

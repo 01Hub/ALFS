@@ -372,3 +372,29 @@ char *cut_trail (char *str, char *delim)
 
 	return ret;
 }
+	
+char *extonly (char *url)
+{
+#define NUM_COMPR	2
+	
+	const char *compr[NUM_COMPR] = { ".bz2", ".gz" };
+	char *foo=strrchr(url, '.');
+	int i;
+
+	if (!foo)
+		return url;
+	
+	for (i=0;i<NUM_COMPR;i++)
+		if (!strcmp(foo, compr[i]))
+		{
+			char *tmp;
+			foo=strrchr(strcut(url, 0, strlen(url)-strlen(compr[i])), '.');
+			if (!foo)
+				return (char *)compr[i];
+			tmp=foo;
+			foo=(char *)malloc(strlen(tmp)+strlen(compr[i])+1);
+			sprintf(foo, "%s%s", tmp, compr[i]);
+		}
+		
+	return foo;
+}
