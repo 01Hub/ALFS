@@ -29,6 +29,11 @@
 #include <ctype.h>
 #include <sys/types.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+#include <nALFS.h>
+
 #ifdef HAVE_LIBSSL
 
 #include <openssl/evp.h>
@@ -43,7 +48,7 @@
 #include "win.h"
 #include "md5.h"
 
-int verify_digest(const char* type, char* digest, const char* file)
+int verify_digest(const char* type, const char* digest, const char* file)
 {
 	char buffer[4094];
 	FILE *istream;

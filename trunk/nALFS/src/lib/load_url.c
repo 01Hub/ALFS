@@ -30,6 +30,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+#include <nALFS.h>
+
 #include "win.h"
 
 #ifdef HAVE_LIBCURL
