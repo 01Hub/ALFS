@@ -176,8 +176,8 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "c30c3804bd057271ef3ac51810e64dc5">
-<!ENTITY lfs-bootscripts-version "2.1.2">
+<!ENTITY lfs-bootscripts-md5 "a45f3ea51b00808ee725c3f92c826aa1">
+<!ENTITY lfs-bootscripts-version "2.2.1">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
@@ -326,8 +326,8 @@
 <!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
-<!ENTITY udev-md5 "ec35587f00cc688505eadedf2625a5e6">
-<!ENTITY udev-version "029">
+<!ENTITY udev-md5 "8202bf86e9f2cb5483d473f9977eeafc">
+<!ENTITY udev-version "030">
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
 
