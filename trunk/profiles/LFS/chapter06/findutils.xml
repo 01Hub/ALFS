@@ -17,7 +17,7 @@
 			<param>--libexecdir=/usr/bin</param>
 		</configure>
 
-		<make/>
+		<make />
 
 <!--
 		<make>

@@ -53,7 +53,7 @@
 			<param>--without-gd</param>
 		</configure>
 
-		<make/>
+		<make />
 
 <!--
 		<make>

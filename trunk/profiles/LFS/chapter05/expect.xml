@@ -29,7 +29,7 @@
 			<param>--with-x=no</param>
 		</configure>
 
-		<make/>
+		<make />
 
 <!--
 		<make>

@@ -36,7 +36,7 @@
 			<param>--without-debug</param>
 		</configure>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>install</param>

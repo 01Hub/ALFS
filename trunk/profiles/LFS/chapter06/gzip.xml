@@ -22,7 +22,7 @@
 			<replace>/bin</replace>
 		</search_replace>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>install</param>

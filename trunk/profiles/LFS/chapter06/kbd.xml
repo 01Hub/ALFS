@@ -25,7 +25,7 @@
 
 		<configure/>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>install</param>

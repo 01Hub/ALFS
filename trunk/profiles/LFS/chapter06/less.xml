@@ -18,7 +18,7 @@
 			<param>--sysconfdir=/etc</param>
 		</configure>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>install</param>

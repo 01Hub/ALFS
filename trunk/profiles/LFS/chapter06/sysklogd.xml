@@ -12,7 +12,7 @@
 			<base>&build_dir;/&sysklogd-directory;</base>
 		</stageinfo>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>install</param>

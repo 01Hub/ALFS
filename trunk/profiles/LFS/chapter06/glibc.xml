@@ -50,7 +50,7 @@
 			<param>--with-headers=/usr/include</param>
 		</configure>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>check</param>

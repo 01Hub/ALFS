@@ -17,7 +17,7 @@
 			<param>--exec-prefix=/</param>
 		</configure>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>install</param>

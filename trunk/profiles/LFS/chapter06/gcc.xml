@@ -60,7 +60,7 @@
 			<param>--enable-languages=c,c++</param>
 		</configure>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>-k check</param>
