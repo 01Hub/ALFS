@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+
+<alfs>
+
+<package name="readline" version="&readline-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&readline-md5;</digest>
+			<archive>&packages_dir;/&readline-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&readline-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&readline-display-wrap-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make>
+			<param>SHLIB_XLDFLAGS=-lncurses</param>
+		</make>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<permissions mode="755">
+			<name>/usr/lib/*.&readline-version;</name>
+		</permissions>
+
+		<move>
+			<source>/usr/lib/libreadline.so.5*</source>
+			<source>/usr/lib/libhistory.so.5*</source>
+			<destination>/lib</destination>
+		</move>
+
+		<link>
+			<option>force</option>
+			<target>../../lib/libhistory.so.5</target>
+			<name>/usr/lib/libhistory.so</name>
+		</link>
+
+		<link>
+			<option>force</option>
+			<target>../../lib/libreadline.so.5</target>
+			<name>/usr/lib/libreadline.so</name>
+		</link>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&readline-directory;</remove>
+	</stage>
+</package>
+
+</alfs>
