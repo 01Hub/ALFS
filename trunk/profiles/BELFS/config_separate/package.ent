@@ -77,7 +77,7 @@
 <!ENTITY expect-directory "expect-5.40">
 
 <!ENTITY expect-spawn-patch-md5 "ef6d0d0221c571fb420afb7033b3bbba">
-<!ENTITY expect-spawn-patch "expect-&expect-version;-spawn.patch">
+<!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
 
 <!ENTITY file-md5 "46209022d57dbca7bb3cc07aa63bd008">
 <!ENTITY file-version "4.09">
