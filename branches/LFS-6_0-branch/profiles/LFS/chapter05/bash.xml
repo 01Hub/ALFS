@@ -5,11 +5,6 @@
 			<archive>&packages_dir;/&bash-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&bash-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing.">
@@ -20,7 +15,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&bash-patch;</param>
+			<param>-i &packages_dir;/&bash-patch;</param>
 		</patch>
 
 		<configure>
@@ -49,6 +44,5 @@
 
 	<stage name="Cleaning up.">
 		<remove>&build_dir;/&bash-directory;</remove>
-		<remove>&build_dir;/&bash-patch;</remove>
 	</stage>
 </package>
