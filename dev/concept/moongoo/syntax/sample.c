@@ -10,7 +10,7 @@
 
 #include <plugin.h>
 
-profile *parse_example (xmlNodePtr node);
+profile *parse_example (xmlNodePtr node, replaceable *r);
 
 static t_plug sample_plugin =
 {
@@ -24,7 +24,7 @@ t_plug *getplug ()
 	return &sample_plugin;
 }
 
-profile *parse_example (xmlNodePtr node)
+profile *parse_example (xmlNodePtr node, replaceable *r)
 {
 	return NULL;
 }

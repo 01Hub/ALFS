@@ -123,14 +123,14 @@ int main (int argc, char **argv)
 
 	if (!quiet)
 	{
-		package *glibc = search_pkg(prof, "glibc", 
-			"chapter-building-system");
+		/*package *glibc = search_pkg(prof, "glibc", 
+			"chapter-building-system");*/
 		sed_paralell (prof, paralell_filter, popt_pkg, popt_cmd);
 		set_filter(default_filter);
 		
-		if (glibc)
-			print_pkg(*glibc);
-		//print_profile(*prof);
+		/*if (glibc)
+			print_pkg(*glibc);*/
+		print_profile(*prof);
 		//print_links(*prof);
 	}
 

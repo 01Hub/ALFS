@@ -13,7 +13,7 @@ profile *bookasprofile (xmlNodePtr node, replaceable *r);
 
 static t_plug book_plugin =
 {
-	name:	"Book as profile",
+	name:	"LFS book as profile",
 	vers:	PLUG_VER,
 	parse:	bookasprofile
 };
