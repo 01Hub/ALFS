@@ -134,6 +134,8 @@ int textdump_main_ver3(element_s *el)
 
 char *textdump_data(element_s *el, handler_data_e data)
 {
+	(void) data;
+
 	return alloc_trimmed_param_value("file", el);
 }
 

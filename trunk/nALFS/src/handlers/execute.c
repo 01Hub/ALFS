@@ -75,6 +75,8 @@ int execute_main_ver2(element_s *el)
 
 char *execute_data_ver2(element_s *el, handler_data_e data)
 {
+	(void) data;
+
 	return alloc_trimmed_param_value("command", el);
 }
 
@@ -117,6 +119,7 @@ char *execute_data_ver3(element_s *el, handler_data_e data)
 {
 	char *command;
 
+	(void) data;
 
 	if ((command = attr_value("command", el))) {
 		return xstrdup(command);

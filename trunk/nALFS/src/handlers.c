@@ -45,7 +45,7 @@
 static struct handlers {
 	int cnt;
 	handler_s **list;
-} handlers = { 0 };
+} handlers = { 0, NULL };
 
 static char **parameters;
 
@@ -162,6 +162,7 @@ static int load_handler(lt_dlhandle handle, lt_ptr data)
 	int i;
 	handler_info_s *handler_info;
 
+	(void) data;
 
 	handler_info = (handler_info_s *)lookup_symbol(handle, "handler_info");
 
@@ -195,6 +196,8 @@ static int load_handler(lt_dlhandle handle, lt_ptr data)
 static int foreachfile_callback(const char *filename, lt_ptr data)
 {
 	lt_dlhandle handle;
+
+	(void) data;
 
 	if ((handle = lt_dlopenext(filename)) == NULL) {
 		Nprint_err("%s", lt_dlerror());
