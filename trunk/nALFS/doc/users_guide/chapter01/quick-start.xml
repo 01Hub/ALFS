@@ -7,12 +7,10 @@ go.</para>
 
 <para>To configure, compile, install and run &book-product;, just type:</para>
 
-<screen><command>
-./configure
+<screen><command>./configure
 make
 make install
-nALFS profiles/LFS/latest.xml
-</command></screen>
+nALFS profiles/LFS/latest.xml</command></screen>
 
 <para>When you enter the program, type &quot;?&quot; for a list of all
 available commands.</para>
