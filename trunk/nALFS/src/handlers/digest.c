@@ -37,7 +37,7 @@
 #include "utility.h"
 
 
-enum digest_attribute_types {
+enum {
 	DIGEST_TYPE
 };
 

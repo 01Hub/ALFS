@@ -36,7 +36,7 @@
 #include "utility.h"
 
 
-enum alfs_attribute_types {
+enum {
 	ALFS_VERSION
 };
 

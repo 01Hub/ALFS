@@ -101,14 +101,11 @@ static int unpack_archive(const element_s * const element, const char * const ar
 	return status;
 }
 
-enum unpack_parameter_types {
+enum {
 	UNPACK_ARCHIVE,
 	UNPACK_DESTINATION,
 	UNPACK_REFERENCE,
 	UNPACK_DIGEST,
-};
-
-enum unpack_attribute_types {
 	UNPACK_BASE,
 };
 

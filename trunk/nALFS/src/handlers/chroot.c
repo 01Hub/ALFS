@@ -46,7 +46,7 @@
 
 #if HANDLER_SYNTAX_2_0
 
-enum chroot_attribute_types {
+enum {
 	CHROOT_DIR,
 };
 
