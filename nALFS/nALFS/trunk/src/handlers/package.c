@@ -1,9 +1,10 @@
 /*
  *  package.c - Handler.
  * 
- *  Copyright (C) 2001-2003
+ *  Copyright (C) 2001-2003, 2005
  *  
  *  Neven Has <haski@sezampro.yu>
+ *  Jamie Bennett <jamie@linuxuk.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -151,6 +152,7 @@ static INLINE int check_requires(element_s *requires)
 	status = check_stamp(package);
 
 	if (status) {
+		Nprint_h_err("Required package missing: %s", package);
 		Nprint_h_err("Some required packages are missing; "
 			"build aborted.");
 		return -1;
