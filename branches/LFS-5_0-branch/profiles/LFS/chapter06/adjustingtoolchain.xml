@@ -16,7 +16,7 @@
 
 	<stage name="Amending GCC specs file.">
 		<search_replace>
-			<file>/tools/lib/gcc-lib/*/&gcc-version;/specs</file>
+			<file>/tools/lib/gcc-lib/&gcc_target;/&gcc-version;/specs</file>
 			<find> /tools/lib/ld-linux.so.2</find>
 			<replace> /lib/ld-linux.so.2</replace>
 		</search_replace>
