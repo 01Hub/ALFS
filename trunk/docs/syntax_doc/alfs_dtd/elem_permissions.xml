@@ -6,22 +6,15 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT permissions    (option?, name+)>
+&lt;!ELEMENT permissions    (option?, name+)&gt;
 &lt;!ATTLIST permissions
-          base           CDATA #IMPLIED
-          mode           CDATA #REQUIRED>
+             base           CDATA #IMPLIED
+             mode           CDATA #REQUIRED&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_alfs">alfs</link>,
-<link linkend="elem_alfs">else</link>,
-<link linkend="elem_stage">stage</link>.
-and <link linkend="elem_then">then</link>
-</para>
-
-<para>See also :
-<link linkend="elem_option">option</link>,
-<link linkend="elem_name">name</link>,
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_option"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_name"/>
 </para>
 
 </sect2>
@@ -29,16 +22,17 @@ and <link linkend="elem_then">then</link>
 <sect2>
 <title>Description</title>
 
-<para>This element allows to change the permissions of a (set of) file(s)
-or directory(ies).</para>
+<para>The element <filename>permissions</filename> is one of the many main
+operation elements.  It allows one to change the permissions of a (set of)
+file(s) or directory(ies).</para>
 
-<para>The sub-element(s) <token>name</token> contain the name(s) of the
-files whose permission is to be modified.</para>
+<para>The sub-element(s) <filename>name</filename> contain the name(s) of
+the files whose permission is to be modified.</para>
 
-<para>The attribute <token>base</token> gives the name of the directory in which the
-command will be performed</para>
+<para>The attribute <filename>base</filename> gives the name of the
+directory in which the command will be performed</para>
 
-<para>The attribute <token>mode</token> gives the new access mode, as
+<para>The attribute <filename>mode</filename> gives the new access mode, as
 used in the command chmod.</para>
 
 <para>The only option supported is "recursive"</para>
@@ -48,18 +42,14 @@ used in the command chmod.</para>
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;permissions mode="755">
-    &lt;name>/usr/bin/lex&lt;/name>
-&lt;/permissions>
-</programlisting>
+<userinput><screen>&lt;permissions mode=&quot;755&quot;&gt;
+    &lt;name&gt;/usr/bin/lex&lt;/name&gt;
+&lt;/permissions&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-echo Changing permissions of /usr/bin/lex to 755
-chmod 755 /usr/bin/lex
-</programlisting>
+<userinput><screen>echo Changing permissions of /usr/bin/lex to 755
+<command>chmod 755 /usr/bin/lex</command></screen></userinput>
 
 </sect2>
 

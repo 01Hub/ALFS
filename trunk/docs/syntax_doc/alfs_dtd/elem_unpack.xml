@@ -6,21 +6,19 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT unpack         (digest?,reference?,archive,destination)>
+&lt;!ELEMENT unpack         (digest?, reference*, archive, destination)&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_alfs">alfs</link>,
-<link linkend="elem_alfs">else</link>,
-<link linkend="elem_stage">stage</link>.
-and <link linkend="elem_then">then</link>
+<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
 </para>
 
-<para>See also :
-<link linkend="elem_archive">archive</link>,
-<link linkend="elem_destination">destination</link>,
-<link linkend="elem_digest">digest</link>,
-<link linkend="elem_reference">reference</link>,
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_archive"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_destination"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_digest"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_reference"/>
 </para>
 
 </sect2>
@@ -28,16 +26,17 @@ and <link linkend="elem_then">then</link>
 <sect2>
 <title>Description</title>
 
-<para>This element is used to unpack an archive into a destination directory</para>
+<para>The element <filename>unpack</filename> is one of the many main
+operation elements.  It is used to unpack an archive into a destination directory</para>
 
-<para>The sub-element <token>reference</token> gives the URL of the archive, which
+<para>The sub-element <filename>reference</filename> gives the URL of the archive, which
 is used if the archive file is not available locally.</para>
 
-<para>The sub-element <token>digest</token> gives the digest of the archive, as computed
-by openssl, using the digest type specified in the attribute <token>type</token>.</para>
+<para>The sub-element <filename>digest</filename> gives the digest of the archive, as computed
+by openssl, using the digest type specified in the attribute <filename>type</filename>.</para>
 
-<para>The sub-element <token>archive</token> gives the name of the archive,
-and the sub-element <token>destination</token> given the name of the directory
+<para>The sub-element <filename>archive</filename> gives the name of the archive,
+and the sub-element <filename>destination</filename> given the name of the directory
 in which the archive is unpacked</para>
 
 <para>The choice of the program performing the unpacking is based on the
@@ -62,18 +61,16 @@ You should use the element download instead.</para></note>
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;unpack>
-    &lt;digest>cbe9f79450aeecfb06d5e856af16c2cf&lt;/digest>
-    &lt;reference>ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz&lt;/reference>
-    &lt;archive>/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive>
-    &lt;destination>/usr/src&lt;/destination>
-&lt;/unpack>
-</programlisting>
+<userinput><screen>&lt;unpack&gt;
+    &lt;digest&gt;cbe9f79450aeecfb06d5e856af16c2cf&lt;/digest&gt;
+    &lt;reference&gt;ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz&lt;/reference&gt;
+    &lt;archive&gt;/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive&gt;
+    &lt;destination&gt;/usr/src&lt;/destination&gt;
+&lt;/unpack&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
+<userinput><screen>
 echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
 [[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
   echo Retrieving  ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
@@ -83,8 +80,7 @@ echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
   echo Archive does not exist &amp;&amp; exit 3
 
 cd /usr/src
-tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz
-</programlisting>
+<command>tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></screen></userinput>
 
 </sect2>
 

@@ -6,23 +6,20 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT search_replace (file, find, replace)>
-
+&lt;!ELEMENT search_replace (file, find, replace)&gt;
 &lt;!ATTLIST configure
-          base           CDATA #IMPLIED>
+             base           CDATA #IMPLIED&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_alfs">alfs</link>,
-<link linkend="elem_alfs">else</link>,
-<link linkend="elem_stage">stage</link>.
-and <link linkend="elem_then">then</link>
+<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
 </para>
 
-<para>See also :
-<link linkend="elem_file">file</link>,
-<link linkend="elem_find">find</link>,
-<link linkend="elem_replace">replace</link>.
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_file"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_find"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_replace"/>
 </para>
 
 </sect2>
@@ -30,37 +27,36 @@ and <link linkend="elem_then">then</link>
 <sect2>
 <title>Description</title>
 
-<para>The element <token>search_replace</token> is used to perform
-a search and replace operation of a file.</para>
+<para>The element <filename>search_replace</filename> is one of the many
+main operation elements.  It is used to perform a search and replace
+operation of a file.</para>
 
-<para>The sub-element <token>file</token> contains the filename</para>
+<para>The sub-element <filename>file</filename> contains the
+filename</para>
 
-<para>The sub-element <token>find</token> contains the string to be searched</para>
+<para>The sub-element <filename>find</filename> contains the string to be
+searched</para>
 
-<para>The sub-element <token>replace</token> contains the replacement string.</para>
+<para>The sub-element <filename>replace</filename> contains the replacement
+string.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;search_replace
-    base = "/usr/src/mypackage">
-    &lt;file>runit.sh&lt;/file>
-    &lt;find>BINDIR&lt;/find>
-    &lt;replace>/bin&lt;/replace>
-&lt;/search_replace>
-</programlisting>
+<userinput><screen>&lt;search_replace base=&quot;/usr/src/mypackage&quot;&gt;
+	&lt;file&gt;runit.sh&lt;/file&gt;
+	&lt;find&gt;BINDIR&lt;/find&gt;
+	&lt;replace&gt;/bin&lt;/replace&gt;
+&lt;/search_replace&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-echo Performing substitution in runit.sh
+<userinput><screen>echo Performing substitution in runit.sh
 cd /usr/src/mypackage
 cp runit.sh /tmp/foo.$$
-sed -e 's/BINDIR/\/bin/' /tmp/foo.$$ > runit.sh
-</programlisting>
+<command>sed -e 's/BINDIR/\/bin/' /tmp/foo.$$ > runit.sh</command></screen></userinput>
 
 </sect2>
 

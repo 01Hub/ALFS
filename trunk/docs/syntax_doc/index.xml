@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
-			"/usr/share/docbook/docbookx.dtd" [
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" 
+		"/usr/share/xml/docbook/xml-dtd-4.2/docbookx.dtd" [
 
 <!ENTITY alfs-dtd-version "3.1">
-<!ENTITY version "&alfs-dtd-version;-20031105">
-<!ENTITY releasedate "November 5th, 2003">
+<!ENTITY version "&alfs-dtd-version;-20040222">
+<!ENTITY releasedate "February 22, 2004">
 
 <!ENTITY % book      SYSTEM "book/book.ent">
 <!ENTITY % preface   SYSTEM "preface/preface.ent">

@@ -6,22 +6,20 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT package        (packageinfo?,stage+)>
+&lt;!ELEMENT package        (packageinfo?, stage+)&gt;
 &lt;!ATTLIST package
-          name           CDATA #REQUIRED
-          version        CDATA #REQUIRED>
+             name           CDATA #REQUIRED
+             version        CDATA #REQUIRED&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_alfs">alfs</link>,
-<link linkend="elem_alfs">else</link>,
-<link linkend="elem_stage">stage</link>.
-and <link linkend="elem_then">then</link>
+<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
 </para>
 
-<para>See also :
-<link linkend="elem_packageinfo">packageinfo</link>,
-<link linkend="elem_stage">stage</link>.
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_packageinfo"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
 </para>
 
 </sect2>
@@ -29,38 +27,39 @@ and <link linkend="elem_then">then</link>
 <sect2>
 <title>Description</title>
 
-<para>The element <token>package</token> describes the build process
-of a package.</para>
+<para>The element <filename>package</filename> is one of the many main
+operation elements.  It describes the build process of a package.</para>
 
-<para>The actual build process is described by the <token>stage</token> sub-elements.
-</para>
+<para>The actual build process is described by the
+<filename>stage</filename> sub-elements.</para>
 
-<para>The attribute <token>name</token> contains the name of the package.</para>
+<para>The attribute <filename>name</filename> contains the name of the
+package.</para>
 
-<para>The attribute <token>version</token> contains the version of the package.</para>
+<para>The attribute <filename>version</filename> contains the version of
+the package.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;package name="zlib" version="1.1.4">
-	&lt;stage name="Unpacking a package.">
-		&lt;unpack>
-			&lt;archive>/usr/src/lfs-packages/zlib.1.1.4.tar.gz&lt;/archive>
-			&lt;destination>/usr/src&lt;/destination>
-		&lt;/unpack>
-	&lt;/stage>
+<userinput><screen>&lt;package name=&quot;zlib&quot;
+version=&quot;1.1.4&quot;&gt;
+	&lt;stage name=&quot;Unpacking a package.&quot;&gt;
+		&lt;unpack&gt;
+			&lt;archive&gt;/usr/src/lfs-packages/zlib.1.1.4.tar.gz&lt;/archive&gt;
+			&lt;destination&gt;/usr/src&lt;/destination&gt;
+		&lt;/unpack&gt;
+	&lt;/stage&gt;
 
-        .....
-&lt;/package>
-</programlisting>
+	.....
 
-<para>The equivalent bash script is :</para>
+&lt;/package&gt;</screen></userinput>
 
-<programlisting>
-echo Generating package zlib 1.1.4
+<para>The equivalent bash script is&nbsp;:</para>
+
+<userinput><screen>echo Generating package zlib 1.1.4
 
 #-----------------------------------------
 echo Stage "Unpacking a package."
@@ -77,9 +76,7 @@ echo Exiting stage "Unpacking a package."
 
 ...
 
-echo End of generating package zlib 1.1.4
-
-</programlisting>
+echo End of generating package zlib 1.1.4</screen></userinput>
 
 </sect2>
 

@@ -6,11 +6,11 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT reference      (#PCDATA)>
+&lt;!ELEMENT reference      (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the element
-<link linkend="elem_unpack">unpack</link>.
+<para>This element occurs in the element&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_unpack"/>
 </para>
 
 </sect2>
@@ -18,26 +18,24 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>reference</token> is used to specify the URL of the reference
-archive to download if the local copy is not available.</para>
+<para>The element <filename>reference</filename> is used to specify the URL
+of the reference archive to download if the local copy is not
+available.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;unpack>
-    &lt;reference>ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz&lt;/reference>
-    &lt;archive>/usr/src/lfs-packages/gzip.1.2.4a&lt;/archive>
-    &lt;destination>/usr/src&lt;/destination>
-&lt;/unpack>
-</programlisting>
+<userinput><screen>&lt;unpack&gt;
+	&lt;reference&gt;ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz&lt;/reference&gt;
+	&lt;archive&gt;/usr/src/lfs-packages/gzip.1.2.4a&lt;/archive&gt;
+	&lt;destination&gt;/usr/src&lt;/destination&gt;
+&lt;/unpack&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-cho Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+<userinput><screen>cho Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
 [[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
   echo Retrieving  ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
 [[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
@@ -46,8 +44,7 @@ cho Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
   echo Archive does not exist &amp;&amp; exit 3
 
 cd /usr/src
-tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz
-</programlisting>
+<command>tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></screen></userinput>
 
 </sect2>
 

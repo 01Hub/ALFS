@@ -6,19 +6,17 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT copy     (option*, source+, destination)&gt;
+&lt;!ELEMENT copy           (option*, source+, destination)&gt;
 &lt;!ATTLIST copy
-          base      CDATA #IMPLIED&gt;
+          base           CDATA #IMPLIED&gt;
 </synopsis>
 
 <para>This element is an element of&nbsp;:&nbsp;&nbsp;
-
 <xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_stage"/>
 </para>
 
 <para>See also&nbsp;:&nbsp;&nbsp;
-
 <xref linkend="elem_option"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_source"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_destination"/>

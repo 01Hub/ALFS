@@ -6,11 +6,11 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT url            (#PCDATA)>
+&lt;!ELEMENT url            (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_download">download</link>.
+<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_download"/>
 </para>
 
 </sect2>
@@ -18,24 +18,21 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>url</token> allow to specify the URL
-of the directory containing the file to be downloaded when
-processing a <token>download</token> element.
-</para>
+<para>The element <filename>url</filename> allow to specify the URL of the
+directory containing the file to be downloaded when processing a
+<filename>download</filename> element.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;download>
-    &lt;file>kbd-1.08.tar.gz&lt;/file>
-    &lt;url>ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/&lt;/url>
-    &lt;destination>/tmp/&lt;/destination>
-    &lt;digest>924e6a05e52715dc0f96385b35f2f680&lt;/digest>
-&lt;/download>
-</programlisting>
+<userinput><screen>&lt;download&gt;
+	&lt;file&gt;kbd-1.08.tar.gz&lt;/file&gt;
+	&lt;url&gt;ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/&lt;/url&gt;
+	&lt;destination&gt;/tmp/&lt;/destination&gt;
+	&lt;digest&gt;924e6a05e52715dc0f96385b35f2f680&lt;/digest&gt;
+&lt;/download&gt;</screen></userinput>
 
 </sect2>
 

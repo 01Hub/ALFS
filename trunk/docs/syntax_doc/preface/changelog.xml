@@ -1,10 +1,13 @@
-<sect1 id="ch01-changelog" xreflabel="ChangeLog">
+<sect1 id="preface-changelog" xreflabel="ChangeLog">
 <?dbhtml filename="changelog.html" dir="preface"?>
 <title>ChangeLog</title>
 
 <para>&version; - &releasedate;</para>
 
 <itemizedlist>
+
+<listitem><para>February 22nd, 2004 [jwrober]: Finished a first pass over
+the rest of the elements.</para></listitem>
 
 <listitem><para>November 5th, 2003 [jwrober]: Added
 elem_prefix.</para></listitem>

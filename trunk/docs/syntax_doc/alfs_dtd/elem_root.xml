@@ -6,46 +6,44 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT root           (#PCDATA)>
+&lt;!ELEMENT root           (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the element
-<link linkend="elem_stageinfo">stageinfo</link>.
+<para>This element occurs in the element&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_stageinfo"/>
 </para>
 
 </sect2>
 
 <sect2><title>Description</title>
-<para>The element <token>root</token> allow to specify the
-name of a directory which will be the root directory
-for the commands of the stage.</para>
+
+<para>The element <filename>root</filename> allow to specify the name of a
+directory which will be the root directory for the commands of the
+stage.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;stage>
-    &lt;stageinfo>
-        &lt;root>/mnt/lfs&lt;/root>
-        &lt;base>/usr/src/gzip.1.2.4a&lt;/base>
-    &lt;/stageinfo>
+<userinput><screen>&lt;stage&gt;
+	&lt;stageinfo&gt;
+		&lt;root&gt;/mnt/lfs&lt;/root&gt;
+		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
+	&lt;/stageinfo&gt;
 
-    &lt;configure />
+	&lt;configure />
 
-    &lt;make />
+	&lt;make />
 
-    &lt;make>
-        &lt;param>install&lt;/param>
-    &lt;/make>
-&lt;/stage>
-</programlisting>
+	&lt;make&gt;
+		&lt;param&gt;install&lt;/param&gt;
+	&lt;/make&gt;
+&lt;/stage&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-echo Creating file /mnt/lfs/_nalfs_tmp.1...
+<userinput><screen>echo Creating file /mnt/lfs/_nalfs_tmp.1...
 cat > /mnt/lfs/_nalfs_tmp.1 &lt;&lt; 'EOF1'
 echo Executing configure
 cd /usr/src/gzip.1.2.4a
@@ -68,8 +66,7 @@ echo Executing in directory /mnt/lfs
     PATH='/bin:/usr/bin:/sbin:/usr/sbin:/static/bin' \
     HOME='/root' /static/bin/bash -c ./_nalfs_tmp.1
 
-echo Exiting stage
-</programlisting>
+echo Exiting stage</screen></userinput>
 
 </sect2>
 

@@ -1,5 +1,5 @@
 <chapter id="alfs_dtd" xreflabel="&book-product;">
-<?dbhtml filename="alfs_dtd.html" dir="alfs_dtd"?>
+<?dbhtml filename="alfs_dtd.html"?>
 <title>Description of the <acronym>ALFS</acronym> Profile Syntax</title>
 
 &alfs_dtd-intro;
@@ -13,12 +13,10 @@
 &elem_destination;
 &elem_digest;
 &elem_download;
-&elem_else;
 &elem_environment;
 &elem_execute;
 &elem_file;
 &elem_find;
-&elem_if;
 &elem_item;
 &elem_link;
 &elem_list;
@@ -46,7 +44,6 @@
 &elem_stageinfo;
 &elem_target;
 &elem_textdump;
-&elem_then;
 &elem_unpack;
 &elem_url;
 &elem_user;

@@ -6,22 +6,27 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT digest    (#PCDATA)>
-&lt;ATTLIST digest
-         type      CDATA  "md5">
+&lt;!ELEMENT digest         (#PCDATA)&gt;
+&lt;!ATTLIST digest
+          type           CDATA "md5"&gt;
 </synopsis>
 
-<para>This element occurs in the element
-<link linkend="elem_download">download</link> and
-<link linkend="elem_unpack">unpack</link>.
-.</para>
+<para>This element occurs in the elements&nbsp;;&nbsp;&nbsp;
+<xref linkend="elem_download"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_unpack"/>
+</para>
+
 </sect2>
 
 <sect2>
 <title>Description</title>
 
-<para>The element <token>unpack</token> is used to specify the
-digest of the archive file to be unpacked, or of the file to be downloaded.
+<para>The element <filename>unpack</filename> is used to specify the digest
+of the archive file to be unpacked, or of the file to be downloaded.
+</para>
+
+
+<para>The attribute <filename>type</filename> is preset as an MD5 hash.
 </para>
 
 </sect2>
@@ -29,16 +34,14 @@ digest of the archive file to be unpacked, or of the file to be downloaded.
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;download>
-    &lt;file>kbd-1.08.tar.gz&lt;/file>
-    &lt;url>ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/&lt;/url>
-    &lt;destination>/tmp/&lt;/destination>
-    &lt;digest>924e6a05e52715dc0f96385b35f2f680&lt;/digest>
-&lt;/download>
-</programlisting>
+<userinput><screen>&lt;download&gt;
+	&lt;file&gt;kbd-1.08.tar.gz&lt;/file&gt;
+	&lt;url&gt;ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/&lt;/url&gt;
+	&lt;destination&gt;/tmp/&lt;/destination&gt;
+	&lt;digest&gt;924e6a05e52715dc0f96385b35f2f680&lt;/digest&gt;
+&lt;/download&gt;</screen></userinput>
 
-<para>YAALFS does not process this element yet.</para>
+<para>There is no equivalent Bash script example for this element.</para>
 
 </sect2>
 

@@ -6,11 +6,11 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT target         (#PCDATA)>
+&lt;!ELEMENT target         (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the element
-<link linkend="elem_link">link</link>.
+<para>This element occurs in the element&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_link"/>
 </para>
 
 </sect2>
@@ -18,7 +18,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>target</token> describes a target of a link
+<para>The element <filename>target</filename> describes a target of a link
 operation.</para>
 
 </sect2>
@@ -26,21 +26,17 @@ operation.</para>
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;link>
-	&lt;target>share/man&lt;/target>
-	&lt;target>share/doc&lt;/target>
-	&lt;target>share/info&lt;/target>
-	&lt;name>/usr/local&lt;/name>
-&lt;/link>
-</programlisting>
+<userinput><screen>&lt;link&gt;
+	&lt;target&gt;share/man&lt;/target&gt;
+	&lt;target&gt;share/doc&lt;/target&gt;
+	&lt;target&gt;share/info&lt;/target&gt;
+	&lt;name&gt;/usr/local&lt;/name&gt;
+&lt;/link&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-echo 'Linking  share/man share/doc share/info into /usr/local'
-ln -s  share/man share/doc share/info /usr/local
-</programlisting>
+<userinput><screen>echo 'Linking  share/man share/doc share/info into /usr/local'
+<command>ln -s  share/man share/doc share/info /usr/local</command></screen></userinput>
 
 </sect2>
 

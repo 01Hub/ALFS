@@ -6,16 +6,14 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT description     (para | list)*&gt;
+&lt;!ELEMENT description    (para | list)*&gt;
 </synopsis>
 
-<para>This element occurs in the&nbsp;
-
+<para>This element occurs in the element&nbsp;:&nbsp;&nbsp;
 <xref linkend="elem_packageinfo"/>
 </para>
 
 <para>See also&nbsp;:&nbsp;&nbsp;
-
 <xref linkend="elem_para"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_list"/>
 </para>
@@ -25,15 +23,15 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>description</filename> contains the description of a
-package. Its use is for documentation only.</para>
+<para>The element <filename>description</filename> contains the description
+of a package. Its use is for documentation only.</para>
 
 <para>Notice that all the elements <filename>para</filename> and
-<filename>list</filename> are surrounded by parathensis [&nbsp;(&nbsp;)&nbsp;]
-and followed by an asterisk [&nbsp;*&nbsp;]. The asterisk signifies that each
-element can be used optionally inside the <filename>description</filename>
-declaration in a profile and that, if used, they can be used more than
-once.</para>
+<filename>list</filename> are surrounded by parathensis
+[&nbsp;(&nbsp;)&nbsp;] and followed by an asterisk [&nbsp;*&nbsp;]. The
+asterisk signifies that each element can be used optionally inside the
+<filename>description</filename> declaration in a profile and that, if
+used, they can be used more than once.</para>
 
 </sect2>
 
@@ -62,6 +60,8 @@ once.</para>
 	....
 
 &lt;/package&gt;</userinput></screen>
+
+<para>There is no equivalent Bash script example for this element.</para>
 
 </sect2>
 

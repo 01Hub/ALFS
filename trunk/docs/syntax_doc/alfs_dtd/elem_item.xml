@@ -6,11 +6,15 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT item    (#PCDATA)+>
+&lt;!ELEMENT item           (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the element
-<link linkend="elem_list">list</link>.
+<para>This element occurs in the element&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_list"/>
+</para>
+
+<para>See also&nbsp;:
+<xref linkend="elem_description"/>
 </para>
 
 </sect2>
@@ -18,7 +22,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>item</token> contains
+<para>The element <filename>item</filename> contains
 a item within a list in a description.</para>
 
 </sect2>
@@ -26,23 +30,21 @@ a item within a list in a description.</para>
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-    &lt;package name="gimp" version="1.2.3">
-        &lt;packageinfo>
-	        &lt;description>
-                    &lt;para>The gimp package contains the GNU Image
-		    Manipulation Program.
-		    This is useful for :&lt;/para>
-		    &lt;list>
-		    &lt;item>photo retouching,&lt;/item>
-		    &lt;item>image composition,&lt;/item>
-		    &lt;item>image authoring.&lt;/item>
-		    &lt;/list>
-		&lt;/description>
+<userinput><screen> &lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
+        &lt;packageinfo&gt;
+	        &lt;description&gt;
+                    &lt;para&gt;The gimp package contains the GNU Image Manipulation Program.
+		    This is useful for :&lt;/para&gt;
+		    &lt;list&gt;
+		    &lt;item&gt;photo retouching,&lt;/item&gt;
+		    &lt;item&gt;image composition,&lt;/item&gt;
+		    &lt;item&gt;image authoring.&lt;/item&gt;
+		    &lt;/list&gt;
+		&lt;/description&gt;
 
-                &lt;requires>&lt;name>gtk+&lt;/name>&lt;/requires>
+                &lt;requires&gt;&lt;name&gt;gtk+&lt;/name&gt;&lt;/requires&gt;
 
-		&lt;utilizes>&lt;name>libtiff&lt;/name>&lt;/utilizes>
+		&lt;utilizes&gt;&lt;name&gt;libtiff&lt;/name&gt;&lt;/utilizes&gt;
 		&lt;utilizes>&lt;name>libpng&lt;/name>&lt;/utilizes>
 		&lt;utilizes>&lt;name>libjpeg&lt;/name>&lt;/utilizes>
 		&lt;utilizes>&lt;name>aalib&lt;/name>&lt;/utilizes>
@@ -55,7 +57,7 @@ a item within a list in a description.</para>
 
     &lt;/package>
 
-</programlisting>
+</screen></userinput>
 
 </sect2>
 

@@ -6,21 +6,20 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT execute        (param*)>
+&lt;!ELEMENT execute        ((param | prefix)*)&gt;
 &lt;!ATTLIST execute
           base           CDATA #IMPLIED
-          command        CDATA #REQUIRED>
+          command        CDATA #REQUIRED&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_alfs">alfs</link>,
-<link linkend="elem_alfs">else</link>,
-<link linkend="elem_stage">stage</link>.
-and <link linkend="elem_then">then</link>
+<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
 </para>
 
-<para>See also :
-<link linkend="elem_param">param</link>.
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_param"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_prefix"/>
 </para>
 
 </sect2>
@@ -28,47 +27,49 @@ and <link linkend="elem_then">then</link>
 <sect2>
 <title>Description</title>
 
-<para>The element <token>execute</token> is used to execute an arbitrary command.</para>
+<para>The element <filename>execute</filename> is one of the many main
+operation elements. It is used to execute an arbitrary command.</para>
 
-<para>The attribute <token>base</token> allows to specify the directory
-in which the command will be executed;</para>
+<para>The sub-element <filename>param</filename> contains one or many
+optional parameters of the command.</para>
 
-<para>The attribute <token>command</token> contains the text of the command itself.</para>
+<para>The sub-element <filename>prefix</filename> contains any prefix data
+for the command to execute.</para>
 
-<para>The subelements <token>param</token> contain parameters of the command.</para>
+<para>Both sub-elements are optional, but if used can be used more than
+once.</para>
+
+<para>The attribute <filename>base</filename> allows you to specify the
+directory in which the command will be executed. See 
+<xref linkend="elem_base"/>.</para>
+
+<para>The attribute <filename>command</filename> contains the text of the
+command itself. See <xref linkend="elem_command"/>.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<para>The first example is an execute command without parameter.</para>
+<para>The first example is an execute command without a parameter.</para>
 
-<programlisting>
-&lt;execute command="umount" />
-</programlisting>
+<userinput><screen>&lt;execute command="umount" /&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-echo Executing 'umount'
-umount
-</programlisting>
+<userinput><screen>echo Executing 'umount'
+<command>umount</command></screen></userinput>
 
+<para>The second example is an execute command with one parameter.</para>
 
-<para>The second example is an execute command without one parameter.</para>
+<userinput><screen>&lt;execute command="mount"&gt;
+	&lt;param&gt;/mnfs/lfs&lt;/param&gt;
+&lt;/execute&gt;</screen></userinput>
 
-<programlisting>
-&lt;execute command="mount">
-    &lt;param>/mnfs/lfs&lt;/param>
-&lt;/execute>
-</programlisting>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<para>The equivalent bash script is :</para>
-
-<programlisting>echo Executing 'mount'
-mount /mnfs/lfs
-</programlisting>
+<userinput><screen>echo Executing 'mount'
+<command>mount /mnfs/lfs</command></screen></userinput>
 
 </sect2>
 

@@ -6,20 +6,19 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT patch          (param*)>
+&lt;!ELEMENT patch          ((param | prefix)*)&gt;
 &lt;!ATTLIST patch
-          base           CDATA #IMPLIED>
+             base           CDATA #IMPLIED&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_alfs">alfs</link>,
-<link linkend="elem_alfs">else</link>,
-<link linkend="elem_stage">stage</link>.
-and <link linkend="elem_then">then</link>
+<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
 </para>
 
-<para>See also :
-<link linkend="elem_param">param</link>,
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_param"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_prefix"/>
 </para>
 
 </sect2>
@@ -27,31 +26,30 @@ and <link linkend="elem_then">then</link>
 <sect2>
 <title>Description</title>
 
-<para>The element <token>patch</token> is used to execute the patch command.</para>
+<para>The element <filename>patch</filename> is one of the many main
+operation elements.  It is used to execute the patch command.</para>
 
-<para>The sub-elements <token>param</token> contain the parameters of the command.</para>
+<para>The sub-elements <filename>param</filename> contain the parameters of
+the command.</para>
 
-<para>The attribute <token>base</token> specified the directory in which
-the command will be performed.</para>
+<para>The attribute <filename>base</filename> specified the directory in
+which the command will be performed.</para>
+
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;patch>
-    &lt;param>-N&lt;/param>
-    &lt;param>-p1&lt;/param>
-    &lt;param>-i ../gawk-3.1.1.patch&lt;/param>
-&lt;/patch>
-</programlisting>
+<userinput><screen>&lt;patch&gt;
+	&lt;param&gt;-N&lt;/param&gt;
+	&lt;param&gt;-p1&lt;/param&gt;
+	&lt;param&gt;-i ../gawk-3.1.1.patch&lt;/param&gt;
+&lt;/patch&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-echo 'patch -N -p1 -i ../gawk-3.1.1.patch'
-patch -N -p1 -i ../gawk-3.1.1.patch
-</programlisting>
+<userinput><screen>echo 'patch -N -p1 -i ../gawk-3.1.1.patch'
+<command>patch -N -p1 -i ../gawk-3.1.1.patch</command></screen></userinput>
 
 </sect2>
 

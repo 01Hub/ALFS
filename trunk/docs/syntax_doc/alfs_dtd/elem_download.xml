@@ -6,21 +6,19 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT download    (file,url*,destination,digest?)>
+&lt;!ELEMENT download       (file, url*, destination, digest?)&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_alfs">alfs</link>,
-<link linkend="elem_alfs">else</link>,
-<link linkend="elem_stage">stage</link>.
-and <link linkend="elem_then">then</link>
+<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
 </para>
 
-<para>See also :
-<link linkend="elem_file">file</link>,
-<link linkend="elem_destination">destination</link>,
-<link linkend="elem_digest">digest</link>,
-<link linkend="elem_url">url</link>,
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_file"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_url"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_destination"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_digest"/>
 </para>
 
 </sect2>
@@ -28,44 +26,50 @@ and <link linkend="elem_then">then</link>
 <sect2>
 <title>Description</title>
 
-<para>The element <token>download</token> is used to specify
-one or several urls from which a file can be downloaded,
-and optionally a digest to check that the file being downloaded
-if the right one.
+<para>The element <filename>download</filename> is one of the many main
+operation elements. It is used to specify one or several urls from which a
+file can be downloaded, and optionally a digest to check that the file
+being downloaded if the right one.
 </para>
 
-<para>The sub-element file contains the name of the file to be downloaded.</para>
+<para>The sub-element <filename>file</filename> contains the name of the
+file to be downloaded.
+</para>
 
-<para>The sub-element url contains the url of the directory from
-which the download is performed. It should be terminated by a slash ("/").
-More precisely, the actual url used for the download is the catenation of the content
-of the url element with the content of the file element.</para>
+<para>The sub-element <filename>url</filename> contains the url of the
+directory from which the download is performed. It should be terminated by
+a slash [&nbsp;/&nbsp;]. More precisely, the actual url used for the
+download is the catenation of the content of the url element with the
+content of the file element. This element is optional, but if used can be
+used more than once.
+</para>
 
-<para>The sub-element destination contains the path of the directory
-into which the download should be performed.</para>
+<para>The sub-element <filename>destination</filename> contains the path of
+the directory into which the download should be performed.
+</para>
 
-<para>The sub-element digest contains the value with which the
-digest computed from the dowloaded file (e.g. computed using
-the md5 algorithm) will be compared.</para>
+<para>The sub-element <filename>digest</filename> contains the value with
+which the digest computed from the dowloaded file (e.g. computed using the
+md5 algorithm) will be compared. This sub-element is optional.
+</para>
 
-<para>If the file is already present in the destination directory,
-no download is performed but the digest is checked if present.</para>
+<para>If the file is already present in the destination directory, no
+download is performed but the digest is checked if present.
+</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;download>
-    &lt;file>kbd-1.08.tar.gz&lt;/file>
-    &lt;url>ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/&lt;/url>
-    &lt;destination>/tmp/&lt;/destination>
-    &lt;digest>924e6a05e52715dc0f96385b35f2f680&lt;/digest>
-&lt;/download>
-</programlisting>
+<userinput><screen>&lt;download&gt;
+	&lt;file&gt;kbd-1.08.tar.gz&lt;/file&gt;
+	&lt;url&gt;ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/&lt;/url&gt;
+	&lt;destination&gt;/tmp/&lt;/destination&gt;
+	&lt;digest&gt;924e6a05e52715dc0f96385b35f2f680&lt;/digest&gt;
+&lt;/download&gt;</screen></userinput>
 
-<para>YAALFS does not process this element yet.</para>
+<para>There is no equivalent Bash script example for this element.</para>
 
 </sect2>
 

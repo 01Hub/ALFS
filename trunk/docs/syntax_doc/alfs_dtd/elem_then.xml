@@ -7,34 +7,34 @@
 
 <synopsis>
 &lt;!ELEMENT then        (stageinfo?,(configure|copy|download|execute|
-                                       if|link|make|mkdir|move|ownership|package|
+                                       if|xref|make|mkdir|move|ownership|package|
                                        patch|permissions|remove|search_replace|
                                        stage|textdump|unpack)*)>
 </synopsis>
 
 <para>This element occurs in the element
-<link linkend="elem_if">if</link>.
+<xref xrefend="elem_if">if</xref>.
 </para>
 
 <para>See also :
-<link linkend="elem_configure">configure</link>,
-<link linkend="elem_download">copy</link>,
-<link linkend="elem_copy">copy</link>,
-<link linkend="elem_execute">execute</link>,
-<link linkend="elem_if">if</link>,
-<link linkend="elem_link">link</link>,
-<link linkend="elem_make">make</link>,
-<link linkend="elem_mkdir">mkdir</link>,
-<link linkend="elem_move">move</link>,
-<link linkend="elem_ownership">ownership</link>,
-<link linkend="elem_package">package</link>,
-<link linkend="elem_patch">patch</link>,
-<link linkend="elem_permissions">permissions</link>,
-<link linkend="elem_remove">remove</link>,
-<link linkend="elem_search_replace">search_replace</link>,
-<link linkend="elem_stageinfo">stageinfo</link>,
-<link linkend="elem_textdump">textdump</link>,
-<link linkend="elem_unpack">unpack</link>.
+<xref xrefend="elem_configure">configure</xref>,
+<xref xrefend="elem_download">copy</xref>,
+<xref xrefend="elem_copy">copy</xref>,
+<xref xrefend="elem_execute">execute</xref>,
+<xref xrefend="elem_if">if</xref>,
+<xref xrefend="elem_xref">xref</xref>,
+<xref xrefend="elem_make">make</xref>,
+<xref xrefend="elem_mkdir">mkdir</xref>,
+<xref xrefend="elem_move">move</xref>,
+<xref xrefend="elem_ownership">ownership</xref>,
+<xref xrefend="elem_package">package</xref>,
+<xref xrefend="elem_patch">patch</xref>,
+<xref xrefend="elem_permissions">permissions</xref>,
+<xref xrefend="elem_remove">remove</xref>,
+<xref xrefend="elem_search_replace">search_replace</xref>,
+<xref xrefend="elem_stageinfo">stageinfo</xref>,
+<xref xrefend="elem_textdump">textdump</xref>,
+<xref xrefend="elem_unpack">unpack</xref>.
 </para>
 
 </sect2>
@@ -43,7 +43,7 @@
 <title>Description</title>
 
 <para>This element groups the elements that should be executed if
-the test performed when evaluating an <token>if</token> element is satisfied.
+the test performed when evaluating an <filename>if</filename> element is satisfied.
 </para>
 
 </sect2>

@@ -6,14 +6,13 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT file           (#PCDATA)>
+&lt;!ELEMENT file           (#PCDATA)&gt;
 </synopsis>
 
-
-<para>This element occurs in the elements
-<link linkend="elem_search_replace">download</link>,
-<link linkend="elem_search_replace">search_replace</link>
-and <link linkend="elem_textdump">textdump</link>.
+<para>This element occurs in the elements&nbsp;;&nbsp;&nbsp;
+<xref linkend="elem_download"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_search_replace"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_textdump"/>.
 </para>
 
 </sect2>
@@ -21,10 +20,9 @@ and <link linkend="elem_textdump">textdump</link>.
 <sect2>
 <title>Description</title>
 
-<para>The element <token>file</token> is used to specify the
-file in a <token>download</token>, <token>search_replace</token>
-or <token>textdump</token>
-element.</para>
+<para>The element <filename>file</filename> is used to specify the file in
+a <filename>download</filename>, <filename>search_replace</filename> or
+<filename>textdump</filename> operation.</para>
 
 </sect2>
 
@@ -33,54 +31,47 @@ element.</para>
 
 <para>The first example is a search_replace.</para>
 
-<programlisting>
-&lt;search_replace
-    base = "/usr/src/mypackage">
-    &lt;file>runit.sh&lt;/file>
-    &lt;find>BINDIR&lt;/find>
-    &lt;replace>/bin&lt;/replace>
-&lt;/search_replace>
-</programlisting>
+<userinput><screen>&lt;search_replace
+	base = &quot;/usr/src/mypackage&quot;&gt;
+	&lt;file&gt;runit.sh&lt;/file&gt;
+	&lt;find&gt;BINDIR&lt;/find&gt;
+	&lt;replace&gt;/bin&lt;/replace&gt;
+&lt;/search_replace&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-echo Performing substitution in runit.sh
+<userinput><screen>echo Performing substitution in runit.sh
 cd /usr/src/mypackage
 cp runit.sh /tmp/foo.$$
-sed -e 's/BINDIR/\/bin/' /tmp/foo.$$ > runit.sh
-</programlisting>
+<command>sed -e 's/BINDIR/\/bin/' /tmp/foo.$$ > runit.sh</command></screen></userinput>
 
 <para>The second example is a textdump.</para>
 
-<programlisting>
-&lt;textdump base="/etc">
-        &lt;file>group&lt;/file>
+<userinput><screen>&lt;textdump base=&quot;/etc&quot;&gt;
+	&lt;file&gt;group&lt;/file&gt;
 
-        &lt;content>
-                =root:x:0:
-                =bin:x:1:
-                =sys:x:2:
-                =kmem:x:3:
-                =tty:x:4:
-                =tape:x:5:
-                =daemon:x:6:
-                =floppy:x:7:
-                =disk:x:8:
-                =lp:x:9:
-                =dialout:x:10:
-                =audio:x:11:
-        &lt;/content>
-&lt;/textdump>
-</programlisting>
+	&lt;content&gt;
+		=root:x:0:
+		=bin:x:1:
+		=sys:x:2:
+		=kmem:x:3:
+		=tty:x:4:
+		=tape:x:5:
+		=daemon:x:6:
+		=floppy:x:7:
+		=disk:x:8:
+		=lp:x:9:
+		=dialout:x:10:
+		=audio:x:11:
+	&lt;/content&gt;
+&lt;/textdump&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-echo Generating file group
+<userinput><screen>echo Generating file group
 cd /etc
 
-cat > group &lt;&lt; 'EOF'
+<command>cat &gt; group &lt;&lt; 'EOF'</command>
 root:x:0:
 bin:x:1:
 sys:x:2:
@@ -93,8 +84,7 @@ disk:x:8:
 lp:x:9:
 dialout:x:10:
 audio:x:11:
-EOF
-</programlisting>
+<command>EOF</command></screen></userinput>
 
 </sect2>
 

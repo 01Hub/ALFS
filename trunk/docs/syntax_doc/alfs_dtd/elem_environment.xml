@@ -8,15 +8,16 @@
 <synopsis>
 &lt;!ELEMENT environment    (variable+)&gt;
 &lt;!ATTLIST environment
-    mode    CDATA #IMPLIED&gt;
+          mode           ((append | prepend)?)&gt;
+
 </synopsis>
 
-<para>This element occurs in the element
-<link linkend="elem_stageinfo">stageinfo</link>.
+<para>This element occurs in the element&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_stageinfo"/>
 </para>
 
-<para>See also :
-<link linkend="elem_variable">variable</link>,
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_variable"/>
 </para>
 
 </sect2>
@@ -24,12 +25,12 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>environment</token> allows you to define
+<para>The element <filename>environment</filename> allows you to define
 one or more environment variables to be added to the system environment
 used when calling the commands of the stage to which it applies.</para>
 
 <para>By default, the supplied value replaces any existing value for the
-specified variable. The attribute <token>mode</token> allows you to specify
+specified variable. The attribute <filename>mode</filename> allows you to specify
 whether the supplied value should be prepended or appended to the existing
 value.</para>
 
@@ -38,31 +39,28 @@ value.</para>
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;stage&gt;
-    &lt;stageinfo&gt;
-        &lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
-        &lt;environment&gt;
-            &lt;variable name="GCCFLAGS"&gt;-O2&lt;/variable&gt;
-            &lt;variable name="PATH" mode="prepend"&gt;/usr/src/gzip.1.2.4a:&lt;/variable&gt;
-            &lt;variable name="LDFLAGS" mode="append"&gt; -s&lt;/variable&gt;
-	    &lt;/environment&gt;
-    &lt;/stageinfo&gt;
+<userinput><screen>&lt;stage&gt;
+	&lt;stageinfo&gt;
+		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
+	&lt;environment&gt;
+		&lt;variable name="GCCFLAGS"&gt;-O2&lt;/variable&gt;
+		&lt;variable name="PATH" mode="prepend"&gt;/usr/src/gzip.1.2.4a:&lt;/variable&gt;
+		&lt;variable name="LDFLAGS" mode="append"&gt; -s&lt;/variable&gt;
+		&lt;/environment&gt;
+	&lt;/stageinfo&gt;
 
-    &lt;configure /&gt;
+	&lt;configure /&gt;
 
-    &lt;make /&gt;
+	&lt;make /&gt;
 
-    &lt;make&gt;
-        &lt;param&gt;install&lt;/param&gt;
-    &lt;/make&gt;
-&lt;/stage&gt;
-</programlisting>
+	&lt;make&gt;
+		&lt;param&gt;install&lt;/param&gt;
+	&lt;/make&gt;
+&lt;/stage&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-echo Stage
+<userinput><screen>echo Stage
 
 export GCCFLAGS=-O2
 export PATH=/usr/src/gzip.1.2.4a:$PATH
@@ -70,19 +68,17 @@ export LDFLAGS="$LDFLAGS -s"
 
 echo Executing configure
 cd /usr/src/gzip.1.2.4a
-./configure
+<command>./configure</command>
 
 echo Executing make
 cd /usr/src/gzip.1.2.4a
-make
+<command>make</command>
 
 echo Executing make
 cd /usr/src/gzip.1.2.4a
-make install
+<command>make install</command>
 
-echo Exiting stage
-
-</programlisting>
+echo Exiting stage</screen></userinput>
 
 </sect2>
 

@@ -6,21 +6,20 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT mkdir          (option?, name+)>
+&lt;!ELEMENT mkdir          (option?, name+, permissions?)&gt;
 &lt;!ATTLIST mkdir
-          base           CDATA #IMPLIED>
+          base           CDATA #IMPLIED&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_alfs">alfs</link>,
-<link linkend="elem_alfs">else</link>,
-<link linkend="elem_stage">stage</link>.
-and <link linkend="elem_then">then</link>
+<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
 </para>
 
-<para>See also :
-<link linkend="elem_option">option</link>,
-<link linkend="elem_name">name</link>,
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_option"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_name"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_permissions"/>
 </para>
 
 </sect2>
@@ -28,16 +27,21 @@ and <link linkend="elem_then">then</link>
 <sect2>
 <title>Description</title>
 
-<para>The element <token>mkdir</token> describes the creation of one
-(or several) directory(ies).</para>
+<para>The element <filename>mkdir</filename> is one of the many main
+operation elements. It describes the creation of one (or several)
+directory(ies).</para>
 
-<para>The sub-elements <token>name</token> contains the name(s) of the directory(ies)
-to be created.</para>
+<para>The sub-element <filename>option</filename> FILL IN HERE.</para>
 
-<para>The attribute <token>base</token> gives the name of the directory
-in which the new directory will be created.</para>
+<para>The sub-elements <filename>name</filename> contains the name(s) of
+the directory(ies) to be created.</para>
 
-<para>The only option supported is "parents". When specified, the parents
+<para>The sub-element <filename>permissions</filename> FILL IN HERE.</para>
+
+<para>The attribute <filename>base</filename> gives the name of the
+directory in which the new directory will be created.</para>
+
+<para>The only option supported is &quot;parents&quot;. When specified, the parents
 directories are created as needed.</para>
 
 </sect2>
@@ -45,21 +49,17 @@ directories are created as needed.</para>
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;mkdir base="/usr/local/lib">
-   &lt;option>parents&lt;/option>
-   &lt;name>X11&lt;/name>
-&lt;/mkdir>
-</programlisting>
+<userinput><screen>&lt;mkdir base=&quot;/usr/local/lib&quot;&gt;
+	&lt;option&gt;parents&lt;/option&gt;
+	&lt;name&gt;X11&lt;/name&gt;
+&lt;/mkdir&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-cd /usr/local/lib
+<userinput><screen>cd /usr/local/lib
 echo Making directory X11
-mkdir -p X11
-</programlisting>
-
+<command>mkdir -p X11</command></screen></userinput>
 
 </sect2>
+
 </sect1>

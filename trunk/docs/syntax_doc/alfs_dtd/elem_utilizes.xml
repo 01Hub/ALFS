@@ -6,16 +6,16 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT utilizes          (name,version*)>
+&lt;!ELEMENT utilizes       (name, version*)&gt;
 </synopsis>
 
-<para>This element occurs in the element
-<link linkend="elem_packageinfo">packageinfo</link>
+<para>This element occurs in the element&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_packageinfo"/>
 </para>
 
-<para>See also :
-<link linkend="elem_name">name</link> and
-<link linkend="elem_version">version</link>,
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_name"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_version"/>
 </para>
 
 </sect2>
@@ -23,14 +23,13 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>utilizes</token> indicates that the package
-containg the <token>utilizes</token> element utilizes the package
-whose name is contained in the <token>name</token> sub-element,
-but does not depend on it,
-in which case the element <token>requires</token> is used.
-</para>
+<para>The element <filename>utilizes</filename> indicates that the package
+containg the <filename>utilizes</filename> element utilizes the package
+whose name is contained in the <filename>name</filename> sub-element, but
+does not depend on it, in which case the element
+<filename>requires</filename> is used.</para>
 
-<para>The actual name is put into a <token>name</token> element
+<para>The actual name is put into a <filename>name</filename> element
 because we might want to add a version in a future version.</para>
 
 </sect2>
@@ -38,24 +37,22 @@ because we might want to add a version in a future version.</para>
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-    &lt;package name="gimp" version="1.2.3">
-        &lt;packageinfo>
-                &lt;requires>&lt;name>gtk+&lt;/name>&lt;/requires>
+<userinput><screen>&lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
+&lt;packageinfo&gt;
+	&lt;requires&gt;&lt;name&gt;gtk+&lt;/name&gt;&lt;/requires&gt;
 
-		&lt;utilizes>&lt;name>libtiff&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>libpng&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>libjpeg&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>aalib&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>mpeg_lib&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>python&lt;/name>&lt;/utilizes>
+		&lt;utilizes&gt;&lt;name&gt;libtiff&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;libpng&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;libjpeg&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;aalib&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;mpeg_lib&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;python&lt;/name&gt;&lt;/utilizes&gt;
 
-        &lt;/packageinfo>
+	&lt;/packageinfo&gt;
 
 	....
 
-    &lt;/package>
-</programlisting>
+&lt;/package&gt;</screen></userinput>
 
 </sect2>
 
