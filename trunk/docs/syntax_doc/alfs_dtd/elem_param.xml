@@ -21,8 +21,8 @@
 <sect2>
 <title>Description</title>
 
-<para>This element is used to specify a parameter of the element to which
-it belongs.</para>
+<para>This element is used to specify a parameter of the englobing
+element.</para>
 
 </sect2>
 
