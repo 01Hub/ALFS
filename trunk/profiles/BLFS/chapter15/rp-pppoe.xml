@@ -1,3 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS-3.1.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch15.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+
+<alfs>
 <package name="rp-pppoe" version="&rp-pppoe-version;">
 
 	<packageinfo>
@@ -55,4 +68,4 @@
 		<remove>&build_dir;/&rp-pppoe-directory;</remove>
 	</stage>
 </package>
-
+</alfs>
