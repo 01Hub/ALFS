@@ -177,6 +177,19 @@ char *alloc_real_stamp_directory_name(void)
 	return s;
 }
 
+static void option_invalid(const struct option_s *option,
+			   const char *format, ...)
+{
+	va_list ap;
+
+	va_start(ap, format);
+	fprintf(stderr, "Option \"%s\" has an invalid value: ",
+		option->name);
+	vfprintf(stderr, format, ap);
+	fprintf(stderr, "\n");
+	va_end(ap);
+}
+
 static int validate_number_minmax(const struct option_s *option,
 				  const NUMBER value)
 {
@@ -186,11 +199,10 @@ static int validate_number_minmax(const struct option_s *option,
 		 value <= option->val.num.max_value);
 
 	if (!valid)
-		fprintf(stderr,
-			"Option \"%s\" outside valid range, must be between"
-			" %d and %d.\n", option->name,
-			option->val.num.min_value,
-			option->val.num.max_value);
+		option_invalid(option, "%d\n\tmust be between %d and %d",
+			       value,
+			       option->val.num.min_value,
+			       option->val.num.max_value);
 
 	return valid;
 }
@@ -201,25 +213,23 @@ static int validate_command(const struct option_s *option, const STRING value)
 	int string_count = 0;
 
 	for (tmp = value; *tmp; ++tmp) {
-		if (*tmp == '%') {
-			switch (*(++tmp)) {
-			case '%':
-				break;
-			case 's':
-				if (string_count++) {
-					fprintf(stderr, "Option \"%s\" contains"
-						" more than one string"
-						" substitution.\n",
-						option->name);
-					return 0;
-				}
-				break;
-			default:
-				fprintf(stderr, "Option \"%s\" contains an"
-					" invalid substitution specifier.\n",
-					option->name);
+		if (*tmp != '%')
+			continue;
+		switch (*(++tmp)) {
+		case '%':
+			break;
+		case 's':
+			if (string_count++) {
+				option_invalid(option,
+					       "%s\n\tonly one string substitution allowed", value);
 				return 0;
 			}
+			break;
+		default:
+			option_invalid(option,
+				       "%s\n\tinvalid substitution specified",
+				       value);
+			return 0;
 		}
 	}
 
@@ -252,9 +262,9 @@ static int validate_boolean_input(const struct option_s *option,
 	else if (!strcmp(tmp, "false"))
 		*val = 0;
 	else {
-		fprintf(stderr, "Option \"%s\" does not contain a valid"
-			" boolean value,\nchoices are yes/y/true and"
-			" no/n/false.\n", option->name);
+		option_invalid(option,
+			       "%s\n\tvalid choices are yes/y/true or no/n/false.",
+			       input);
 		status = 0;
 	}
 
