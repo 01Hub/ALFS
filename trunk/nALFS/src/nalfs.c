@@ -575,18 +575,31 @@ static INLINE void receive_state(void)
 	}
 }
 
-static INLINE int receive_changed_files(logs_t *logs)
+/*
+ * Reads the list of installed files from the backend, stores
+ * it in the file, and updates the package's log with its name.
+ */
+static INLINE void receive_changed_files(logs_t *logs)
 {
-	char *filename = logs_create_flog(logs);
+	ctrl_msg_s *message;
 
-	if (comm_read_to_file(FRONTEND_CTRL_SOCK, filename) == 0) {
-		if (filename) {
-			Nprint("Installed files stored in \"%s\".", filename);
-			return 0;
+	if ((message = comm_read_ctrl_message(FRONTEND_CTRL_SOCK))) {
+		ctrl_msg_type_e type = comm_msg_type(message);
+
+		if (type == CTRL_SENDING_FILES_FILE) {
+			char *f = logs_create_flog(logs);
+
+			if (comm_read_to_file(FRONTEND_CTRL_SOCK, f) == 0) {
+				if (f) {
+					logs_update_with_flog(logs);
+					Nprint("List of installed files stored in:");
+					Nprint("%s", f);
+				}
+			}
 		}
-	}
 
-	return -1;
+		comm_free_message(message);
+	}
 }
 
 static INLINE void receive_log_file(const char *package_str)
@@ -611,36 +624,15 @@ static INLINE void receive_log_file(const char *package_str)
 	xfree(pdir);
 	xfree(ptr);
 
-	/*
-	 * Read the list of installed files (if any) from the backend,
-	 * store it in the file, and update the package log with its name.
-	 *
-	 * TODO: Put it in a separate function.
-	 *
-	 * TODO: There's no point relying on log file's content,
-	 *       this should be in handle_ctrl_msg(), waiting for
-	 *       CTRL_SENDING_FILES_FILE.
-	 */
 	if (logs_has_flog(logs)) {
-		ctrl_msg_s *message;
-
-		if ((message = comm_read_ctrl_message(FRONTEND_CTRL_SOCK))) {
-			ctrl_msg_type_e type = comm_msg_type(message);
-
-			if (type == CTRL_SENDING_FILES_FILE) {
-				if (receive_changed_files(logs) == 0) {
-					logs_update_with_flog(logs);
-				}
-			}
-		}
-
-		comm_free_message(message);
+		receive_changed_files(logs);
 	}
 
 	s = logs_get_plog_filename(logs, 0);
 
 	if (logs_save(logs) == 0) {
-		Nprint("Log file stored in \"%s\".", s);
+		Nprint("Log file stored in:");
+		Nprint("%s", s);
 	} else {
 		Nprint_err("Unable to save log file to %s.", s);
 	}
