@@ -155,22 +155,6 @@
 		&c6-util-linux;
 		&c6-gcc-2953;
 	</stage>
-
-	<stage name="Revised chroot (no /tools).">
-		<stageinfo>
-			<root>&LFS;</root>
-			<environment>
-				<variable name="HOME">/root</variable>
-				<variable name="TERM">$TERM</variable>
-				<variable name="PS1">'\u:\w\$ '</variable>
-				<variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin</variable>
-				<variable name="CFLAGS">&gcc_optimizations;</variable>
-				<variable name="CXXFLAGS">&gcc_optimizations;</variable>
-			</environment>
-		</stageinfo>
-		
-		&c6-bootscripts;
-	</stage>
 </stage>
 
 <stage name="Chapter 7 - Setting up system boot scripts">
@@ -186,6 +170,7 @@
 		</environment>
 	</stageinfo>
 
+	&c7-bootscripts;
 	&c7-setclock;
 	&c7-hostname;
 	&c7-hosts;
