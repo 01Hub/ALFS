@@ -11,10 +11,9 @@
 
 <package name="m4" version="&m4-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&m4-md5;</digest>
 			<archive>&packages_dir;/&m4-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -41,7 +40,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&m4-directory;</remove>
+		<remove>
+			<file>&build_dir;/&m4-directory;</file>
+		</remove>
 	</stage>
 </package>
 

@@ -11,10 +11,9 @@
 
 <package name="iproute2" version="&iproute2-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&iproute2-md5;</digest>
 			<archive>&packages_dir;/&iproute2-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -23,10 +22,8 @@
 			<base>&build_dir;/&iproute2-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&iproute2-remove-db-patch;</param>
+		<patch path_strip="1">
+			<file>&packages_dir;/&iproute2-remove-db-patch;</file>
 		</patch>
 
 		<configure />
@@ -42,7 +39,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&iproute2-directory;</remove>
+		<remove>
+			<file>&build_dir;/&iproute2-directory;</file>
+		</remove>
 	</stage>
 </package>
 

@@ -11,10 +11,9 @@
 
 <package name="texinfo" version="&texinfo-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&texinfo-md5;</digest>
 			<archive>&packages_dir;/&texinfo-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -46,7 +45,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&texinfo-directory;</remove>
+		<remove>
+			<file>&build_dir;/&texinfo-directory;</file>
+		</remove>
 	</stage>
 </package>
 

@@ -11,10 +11,9 @@
 
 <package name="file" version="&file-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&file-md5;</digest>
 			<archive>&packages_dir;/&file-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -35,7 +34,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&file-directory;</remove>
+		<remove>
+			<file>&build_dir;/&file-directory;</file>
+		</remove>
 	</stage>
 </package>
 

@@ -11,10 +11,9 @@
 
 <package name="shadow" version="&shadow-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&shadow-md5;</digest>
 			<archive>&packages_dir;/&shadow-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -107,7 +106,9 @@
 			<name>/etc/default</name>
 		</mkdir>
 
-		<remove>/bin/groups</remove>
+		<remove>
+			<file>/bin/groups</file>
+		</remove>
 	</stage>
 
 	<stage name="Configuring.">
@@ -122,7 +123,9 @@
 
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&shadow-directory;</remove>
+		<remove>
+			<file>&build_dir;/&shadow-directory;</file>
+		</remove>
 	</stage>
 </package>
 

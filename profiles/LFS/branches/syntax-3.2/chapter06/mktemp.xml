@@ -11,10 +11,9 @@
 
 <package name="mktemp" version="&mktemp-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&mktemp-md5;</digest>
 			<archive>&packages_dir;/&mktemp-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -23,10 +22,8 @@
 			<base>&build_dir;/&mktemp-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&mktemp-tempfile-patch;</param>
+		<patch path_strip="1">
+			<file>&packages_dir;/&mktemp-tempfile-patch;</file>
 		</patch>
 
 		<configure>
@@ -46,7 +43,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&mktemp-directory;</remove>
+		<remove>
+			<file>&build_dir;/&mktemp-directory;</file>
+		</remove>
 	</stage>
 </package>
 

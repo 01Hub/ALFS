@@ -11,10 +11,9 @@
 
 <package name="tar" version="&tar-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&tar-md5;</digest>
 			<archive>&packages_dir;/&tar-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -43,7 +42,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&tar-directory;</remove>
+		<remove>
+			<file>&build_dir;/&tar-directory;</file>
+		</remove>
 	</stage>
 </package>
 

@@ -11,10 +11,9 @@
 
 <package name="perl" version="&perl-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&perl-md5;</digest>
 			<archive>&packages_dir;/&perl-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -47,7 +46,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&perl-directory;</remove>
+		<remove>
+			<file>&build_dir;/&perl-directory;</file>
+		</remove>
 	</stage>
 </package>
 

@@ -11,10 +11,9 @@
 
 <package name="binutils" version="&binutils-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&binutils-md5;</digest>
 			<archive>&packages_dir;/&binutils-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 
 		<mkdir base="&build_dir;">
@@ -65,8 +64,10 @@ suites for Binutils and GCC until you are able to resolve the issue.
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&binutils-directory;</remove>
-		<remove>&build_dir;/binutils-build</remove>
+		<remove>
+			<file>&build_dir;/&binutils-directory;</file>
+			<file>&build_dir;/binutils-build</file>
+		</remove>
 	</stage>
 </package>
 

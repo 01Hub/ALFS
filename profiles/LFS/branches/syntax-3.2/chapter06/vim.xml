@@ -11,15 +11,13 @@
 
 <package name="vim" version="&vim-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&vim-md5;</digest>
 			<archive>&packages_dir;/&vim-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&vim-lang-md5;</digest>
 			<archive>&packages_dir;/&vim-lang-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -79,7 +77,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&vim-directory;</remove>
+		<remove>
+			<file>&build_dir;/&vim-directory;</file>
+		</remove>
 	</stage>
 </package>
 

@@ -11,10 +11,9 @@
 
 <package name="e2fsprogs" version="&e2fsprogs-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&e2fsprogs-md5;</digest>
 			<archive>&packages_dir;/&e2fsprogs-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 
 		<mkdir base="&build_dir;">
@@ -52,8 +51,10 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&e2fsprogs-directory;</remove>
-		<remove>&build_dir;/e2fsprogs-build</remove>
+		<remove>
+			<file>&build_dir;/&e2fsprogs-directory;</file>
+			<file>&build_dir;/e2fsprogs-build</file>
+		</remove>
 	</stage>
 </package>
 
