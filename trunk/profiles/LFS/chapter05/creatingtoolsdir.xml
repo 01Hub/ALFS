@@ -117,7 +117,6 @@
 			<source>&nALFS-package;</source>
 			<source>&net-tools-package;</source>
 			<source>&net-tools-gcc34-patch;</source>
-			<source>&net-tools-kernel-headers-patch;</source>
 			<source>&patch-package;</source>
 			<source>&perl-package;</source>
 			<source>&perl-libc-1-patch;</source>
