@@ -67,12 +67,12 @@
 <!ENTITY svgalib    SYSTEM "./chapter09/svgalib.xml">
 <!ENTITY directfb   SYSTEM "./chapter09/directfb.xml">
 <!ENTITY imlib2     SYSTEM "./chapter09/imlib2.xml">
-<!ENTITY imagemagick SYSTEM "./chapter09/imagemagick.xml">
 
 <!-- chapter 10 -->
 <!ENTITY bc         SYSTEM "./chapter10/bc.xml">
 <!ENTITY rep-gtk    SYSTEM "./chapter10/rep-gtk.xml">
 <!ENTITY compface   SYSTEM "./chapter10/compface.xml">
+<!ENTITY imagemagick SYSTEM "./chapter10/imagemagick.xml">
 
 <!-- chapter 11 -->
 <!ENTITY gpm        SYSTEM "./chapter11/gpm.xml">
