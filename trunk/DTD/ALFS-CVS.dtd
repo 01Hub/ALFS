@@ -156,7 +156,9 @@
 
 <!ELEMENT search_replace (file, find, replace)>
 <!ATTLIST search_replace
-          base           CDATA #IMPLIED>
+          base           CDATA #IMPLIED
+          mode           (append | replace | prepend) "replace"
+          global         (yes | no) "yes">
 
 <!ELEMENT shell          (#PCDATA)>
 
