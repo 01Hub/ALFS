@@ -50,17 +50,5 @@ properly formatted profile, can be instructed to pause execution, start
 execution from selected element (by browsing a profile in a tree-like mode) 
 and much much more.</para>
 
-<!--Some links that might interest you:
-
-Linux From Scratch:
-    http://www.linuxfromscratch.org/
-
-Automated Linux From Scratch:
-    http://www.linuxfromscratch.org/alfs/
-
-Mailing lists for ALFS:
-    http://linuxfromscratch.org/mailman/listinfo/alfs-discuss
-    http://linuxfromscratch.org/mailman/listinfo/alfs-log-->
-
 </sect1>
 
