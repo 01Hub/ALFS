@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch32.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,49 +10,51 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="gnome-libs" version="&gnome-libs-version;">
-
-        <packageinfo>
-                <requires><name>orbit</name></requires>
-        	<requires><name>gtk+</name></requires>
-        	<requires><name>imlib</name></requires>
-                <requires><name>db</name></requires>
-		<utilizes><name>audiofile</name></utilizes>
-		<utilizes><name>esound</name></utilizes>
-		<utilizes><name>gtk-doc</name></utilizes>
-        </packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&gnome-libs-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&gnome-libs-directory;</base>
-		</stageinfo>
-
-		<configure>
-			<param>--prefix=/opt/gnome</param>
-			<param>--disable-gtk-doc</param>
-		</configure>
-
-		<make/>
-
-		<make>
-			<param>install</param>
-		</make>
-
-		&ldconfig;
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&gnome-libs-directory;</remove>
-	</stage>
-
-</package>
+  <package name="gnome-libs" version="&gnome-libs-version;">
+    <packageinfo>
+      <requires>
+        <name>orbit</name>
+      </requires>
+      <requires>
+        <name>gtk+</name>
+      </requires>
+      <requires>
+        <name>imlib</name>
+      </requires>
+      <requires>
+        <name>db</name>
+      </requires>
+      <utilizes>
+        <name>audiofile</name>
+      </utilizes>
+      <utilizes>
+        <name>esound</name>
+      </utilizes>
+      <utilizes>
+        <name>gtk-doc</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&gnome-libs-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+    <stageinfo>
+      <base>&build_dir;/&gnome-libs-directory;</base>
+    </stageinfo>
+    <configure>
+      <param>--prefix=/opt/gnome</param>
+      <param>--disable-gtk-doc</param>
+    </configure>
+    <make />
+    <make>
+      <param>install</param>
+    </make>&ldconfig;</stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gnome-libs-directory;</remove>
+    </stage>
+  </package>
 </alfs>

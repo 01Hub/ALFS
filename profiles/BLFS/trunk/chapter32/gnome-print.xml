@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch32.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,53 +10,43 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="gnome-print" version="&gnome-print-version;">
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&gnome-print-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&gnome-print-directory;</base>
-		</stageinfo>
-
-		<textdump>
-			<file>/opt/gnome/lib/xmlConf.sh</file>
-			<content>
-			=XML_LIBDIR="-L/usr/lib"
-			=XML_LIBS="-lxml"
-			=XML_INCLUDEDIR="-I/usr/include/gnome-xml"
-			=MODULE_VERSION=xml-1.8.17
-			</content>
-		</textdump>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&gnome-print-ft-patch;</param>
-		</patch>
-
-		<configure>
-			<param>--prefix=/opt/gnome</param>
-			<param>--with-zlib=/usr</param>
-		</configure>
-
-		<make/>
-
-		<make>
-			<param>install</param>
-		</make>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&gnome-print-directory;</remove>
-	</stage>
-
-</package>
+  <package name="gnome-print" version="&gnome-print-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&gnome-print-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&gnome-print-directory;</base>
+      </stageinfo>
+      <textdump>
+        <file>/opt/gnome/lib/xmlConf.sh</file>
+        <content>
+	  =XML_LIBDIR="-L/usr/lib"
+	  =XML_LIBS="-lxml"
+	  =XML_INCLUDEDIR="-I/usr/include/gnome-xml"
+	  =MODULE_VERSION=xml-1.8.17
+	</content>
+      </textdump>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gnome-print-ft-patch;</param>
+      </patch>
+      <configure>
+        <param>--prefix=/opt/gnome</param>
+        <param>--with-zlib=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gnome-print-directory;</remove>
+    </stage>
+  </package>
 </alfs>

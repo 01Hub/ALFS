@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch32.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,40 +10,32 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<stage name="GNOME 1 pre-installation.">
-	<textdump base="/root" mode="append">
-        	<file>.bash_profile</file>
-		<content>
-	        =export PATH=$PATH:/opt/gnome/bin
-		=export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/gnome/lib/pkgconfig
-        	</content>
-	</textdump>
-
-	<textdump base="/etc" mode="append">
-        	<file>ld.so.conf</file>
-	        <content>
-	        =# Begin Gnome 1.4 Libraries addition to /etc/ld.so.conf
-		=
-		=/opt/gnome/lib
-		=
-		=# End Gnome 1.4 Libraries addition
-        	</content>
-	</textdump>
-	
-	<textdump base="/etc" mode="append">
-        	<file>man.conf</file>
-	        <content>
-	        =# Begin Gnome 1.4 Libraries addition to man.conf
-		=
-		=MANPATH /opt/gnome/man
-		=
-		=# END Gnome 1.4 Libraries addition to man.conf
-        	</content>
-	</textdump>
-	
-	&ldconfig;
-
-</stage>
+  <stage name="GNOME 1 pre-installation.">
+  <textdump base="/root" mode="append">
+    <file>.bash_profile</file>
+    <content>
+      =export PATH=$PATH:/opt/gnome/bin
+      =export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/gnome/lib/pkgconfig
+    </content>
+  </textdump>
+  <textdump base="/etc" mode="append">
+    <file>ld.so.conf</file>
+    <content>
+      =# Begin Gnome 1.4 Libraries addition to /etc/ld.so.conf
+      =
+      =/opt/gnome/lib
+      =
+      =# End Gnome 1.4 Libraries addition
+    </content>
+  </textdump>
+  <textdump base="/etc" mode="append">
+    <file>man.conf</file>
+    <content>
+      =# Begin Gnome 1.4 Libraries addition to man.conf
+      =
+      =MANPATH /opt/gnome/man
+      =
+      =# End Gnome 1.4 Libraries addition to man.conf</content>
+  </textdump>&ldconfig;</stage>
 </alfs>
