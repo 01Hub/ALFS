@@ -22,7 +22,7 @@
 ]>
 
 
-<alfs version="3.1" xmlns:xi="http://www.w3.org/2001/XInclude">
+<alfs version="3.2" xmlns:xi="http://www.w3.org/2001/XInclude">
 
 <stage name="Chapter 5 - Constructing a temporary system">
 
@@ -79,7 +79,6 @@
 		<xi:include href="chapter05/udev.xml" />
 		<xi:include href="chapter05/strip.xml" />
 	</stage>
-
 </stage>
 
 <stage name="Chapter 6 - Installing basic system software">
@@ -217,7 +216,9 @@
 	<xi:include href="chapter09/libxml2.xml" />
 	<xi:include href="chapter09/nALFS.xml" />
 
-	<remove>/tools</remove>
+	<remove>
+		<file>/tools</file>
+	</remove>
 
 	<textdump>
 		<file>/etc/lfs-release</file>
@@ -225,8 +226,11 @@
 	</textdump>
 </stage>
 
+
 <stage name="Finishing Up">
-	<remove>/tools</remove>
+	<remove>
+		<file>/tools</file>
+	</remove>
 
 	<execute command="umount">
 		<param>&LFS;/dev/pts</param>

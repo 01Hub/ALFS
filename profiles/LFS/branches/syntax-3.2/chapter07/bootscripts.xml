@@ -11,10 +11,9 @@
 
 <package name="bootscripts" version="&lfs-bootscripts-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&lfs-bootscripts-md5;</digest>
 			<archive>&packages_dir;/&lfs-bootscripts-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -29,7 +28,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&lfs-bootscripts-directory;</remove>
+		<remove>
+			<file>&build_dir;/&lfs-bootscripts-directory;</file>
+		</remove>
 	</stage>
 </package>
 
