@@ -264,48 +264,48 @@
 
 <stage name="Chapter 21 (Mail Server Software)">
 
-    &postfix;
-    &sendmail;
-    &exim;
-    &qpopper;
-    &courier;
+    <xi:include href="chapter21/postfix.xml" />
+    <xi:include href="chapter21/sendmail.xml" />
+    <xi:include href="chapter21/exim.xml" />
+    <xi:include href="chapter21/qpopper.xml" />
+    <xi:include href="chapter21/courier.xml" />
 
 </stage>
 
 <stage name="Chapter 22 (Other Server Software)">
     
-    &bind;
-    &dhcp;
-    &leafnode;
-    &openssh;
-    &rsync;
-    &openldap;
-    &samba;
-    &xinetd;
+    <xi:include href="chapter22/bind.xml" />
+    <xi:include href="chapter22/dhcp.xml" />
+    <xi:include href="chapter22/leafnode.xml" />
+    <xi:include href="chapter22/openssh.xml" />
+    <xi:include href="chapter22/rsync.xml" />
+    <xi:include href="chapter22/openldap.xml" />
+    <xi:include href="chapter22/samba.xml" />
+    <xi:include href="chapter22/xinetd.xml" />
 
 </stage>
 
 <stage name="Chapter 23 (Databases)">
 
-    &db;
-    &db3;
-    &mysql;
-    &postgresql;
+    <xi:include href="chapter23/db.xml" />
+    <xi:include href="chapter23/db3.xml" />
+    <xi:include href="chapter23/mysql.xml" />
+    <xi:include href="chapter23/postgresql.xml" />
 
 </stage>
 
 <stage name="Chapter 24 (Web serving)">
 
-    &apache;
-    &php;
-    &proftpd;
+    <xi:include href="chapter24/apache.xml" />
+    <xi:include href="chapter24/php.xml" />
+    <xi:include href="chapter24/proftpd.xml" />
 
 </stage>
 
 <stage name="Chapter 25 (X Window Environment)">
 
-    &xorg;
-    &xfree86;
+    <xi:include href="chapter25/xorg.xml" />
+    <xi:include href="chapter25/xfree86.xml" />
 
 </stage>
 
