@@ -40,6 +40,15 @@
       <utilizes>  
 	<name>doxygen</name>
       </utilizes>
+      <utilizes>  
+	<name>libwv2</name>
+      </utilizes>
+      <utilizes>  
+	<name>libpaper</name>
+      </utilizes>
+      <utilizes>  
+	<name>graphviz</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

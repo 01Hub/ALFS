@@ -25,6 +25,15 @@
       <utilizes>
         <name>nasm</name>
       </utilizes>
+      <utilizes>
+        <name>docbook-utils</name>
+      </utilizes>
+      <utilizes>
+        <name>doxygen</name>
+      </utilizes>
+      <utilizes>
+        <name>valgrind</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -37,6 +46,7 @@
         <base>&build_dir;/&flac-directory;</base>
       </stageinfo>
       <configure>
+        <prefix>LIBS=-lm</prefix>
         <param>--prefix=/usr</param>
       </configure>
       <make />

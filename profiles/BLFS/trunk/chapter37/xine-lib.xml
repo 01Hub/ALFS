@@ -17,8 +17,14 @@
         <name>&ximpl;</name>
       </requires>
       <requires>
-        <name>esound</name>
+        <name>alsa-lib</name>
       </requires>
+      <utilizes>
+        <name>pkgconfig</name>
+      </utilizes>
+      <utilizes>
+        <name>ffmpeg</name>
+      </utilizes>
       <utilizes>
         <name>aalib</name>
       </utilizes>
@@ -26,13 +32,7 @@
         <name>libmng</name>
       </utilizes>
       <utilizes>
-        <name>gnome-vfs2</name>
-      </utilizes>
-      <utilizes>
         <name>sdl</name>
-      </utilizes>
-      <utilizes>
-        <name>directfb</name>
       </utilizes>
       <utilizes>
         <name>flac</name>
@@ -48,6 +48,42 @@
       </utilizes>
       <utilizes>
         <name>speex</name>
+      </utilizes>
+      <utilizes>
+        <name>freeglut</name>
+      </utilizes>
+      <utilizes>
+        <name>gnome-vfs</name>
+      </utilizes>
+      <utilizes>
+        <name>samba</name>
+      </utilizes>
+      <utilizes>
+        <name>directfb</name>
+      </utilizes>
+      <utilizes>
+        <name>theora</name>
+      </utilizes>
+      <utilizes>
+        <name>faad</name>
+      </utilizes>
+      <utilizes>
+        <name>libstk</name>
+      </utilizes>
+      <utilizes>
+        <name>polypaudio</name>
+      </utilizes>
+      <utilizes>
+        <name>libcaca</name>
+      </utilizes>
+      <utilizes>
+        <name>libdvdnav</name>
+      </utilizes>
+      <utilizes>
+        <name>sgmltools-lite</name>
+      </utilizes>
+      <utilizes>
+        <name>transfig</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

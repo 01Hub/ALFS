@@ -22,6 +22,9 @@
       <utilizes>
       	<name>&mta-impl;</name>
       </utilizes>
+      <utilizes>
+      	<name>docbook-to-man</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -35,7 +38,7 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
-        <param>--libexecdir=/usr/sbin</param>
+        <param>--libexecdir=/usr/lib</param>
       </configure>
       <make />
       <make>

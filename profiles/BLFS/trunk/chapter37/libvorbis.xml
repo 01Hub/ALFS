@@ -16,6 +16,12 @@
       <requires>
         <name>libogg</name>
       </requires>
+      <utilizes>
+        <name>libxslt</name>
+      </utilizes>
+      <utilizes>
+        <name>pkgconfig	</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -30,8 +36,7 @@
       <configure>
         <param>--prefix=/usr</param>
       </configure>
-      <!-- this is used to avoid a compiler error on some
-                     machines -->
+<!-- this is used to avoid a compiler error on some machines -->
       <search_replace>
         <file>lib/Makefile</file>
         <find>-mno-ieee-fp</find>

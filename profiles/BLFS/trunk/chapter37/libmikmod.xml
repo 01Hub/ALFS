@@ -27,6 +27,8 @@
       <stageinfo>
         <base>&build_dir;/&libmikmod-directory;/</base>
       </stageinfo>
+      <execute command="sed -i -e "s/VERSION=10/VERSION=11/" -e "s/sys_asoundlib/alsa_asoundlib/" -e "s/snd_cards/snd_card_load/g" -e "s|sys/asoundlib.h|alsa/asoundlib.h|g" configure.in &&" />
+      <execute command="autoconf" />
       <configure>
         <param>--prefix=/usr</param>
       </configure>
@@ -34,6 +36,9 @@
       <make>
         <param>install</param>
       </make>
+      <permissions mode="755">
+        <file>/usr/lib/libmikmod.so.2.0.4</file>
+      </permissions>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libmikmod-directory;</remove>

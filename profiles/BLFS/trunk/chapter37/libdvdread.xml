@@ -29,7 +29,6 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
-        <param>--with-libdvdcss</param>
       </configure>
       <make />
       <make>

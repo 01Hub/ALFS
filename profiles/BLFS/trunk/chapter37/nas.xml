@@ -23,6 +23,7 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    &bootscripts-get;
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&nas-directory;</base>
@@ -43,6 +44,15 @@
         <param>install.man</param>
       </make>
     </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-nas</param>
+      </make>
+    </stage>
+    &bootscripts-clean;
     <stage name="Cleanup">
       <remove>&build_dir;/&nas-directory;</remove>
     </stage>

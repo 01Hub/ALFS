@@ -22,9 +22,19 @@
       <stageinfo>
         <base>&build_dir;/&popt-directory;</base>
       </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&popt-patch;</param>
+      </patch>
       <configure>
         <param>--prefix=/usr</param>
       </configure>
+      <copy>
+        <source>configure.in</source>
+        <destination>configure.ac</destination>
+      </copy>
+      <execute command="touch configure.in configure.ac" />
       <make />
       <make>
         <param>install</param>
