@@ -12,6 +12,7 @@ void build_paralell (profile *prof, char **filter, char **p1, char **p2)
 		for (j=0;j<prof->ch[i].n;j++)
 			for (k=0;k<prof->ch[i].pkg[j].n;k++)
 			{
+				// TODO: Does not seem to work properly anymore.
 				int m = 0, o;
 				bool no = false;
 				package *pkg = &prof->ch[i].pkg[j];

@@ -14,7 +14,7 @@ typedef enum
 	INTERACTIVE,
 	TESTSUITE,
 	INSTALL,
-	CHROOT
+	SPAWN
 } role;
 
 typedef enum
