@@ -70,7 +70,7 @@ esac
 
 AC_DEFINE_UNQUOTED([INLINE], $inline_val, [Define to "inline" to tell the compiler to inline most functions.])
 
-AC_ARG_ENABLE([element-editor], AC_HELP_STRING([--enable-element-editor], [disable editing of elements [[default=yes]]]), [], [enableval=yes])
+AC_ARG_ENABLE([element-editor], AC_HELP_STRING([--enable-element-editor], [enable editing of elements [[default=yes]]]), [], [enableval=yes])
 
 case ${enableval} in
      n|no)
