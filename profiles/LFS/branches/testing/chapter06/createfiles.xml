@@ -3,7 +3,7 @@
 
 <alfs>
 
-<stage name="Creating essential symlinks.">
+<stage name="Creating Essential Symlinks">
 	<link>
 		<option>force</option>
 		<target>/tools/bin/bash</target>
@@ -21,6 +21,7 @@
 
 	<link>
 		<option>force</option>
+		<target>/tools/lib/libgcc_s.so</target>
 		<target>/tools/lib/libgcc_s.so.1</target>
 		<name>/usr/lib</name>
 	</link>

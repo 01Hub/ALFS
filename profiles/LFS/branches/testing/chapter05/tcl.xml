@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="tcl" version="&tcl-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&tcl-md5;</digest>
 			<archive>&packages_dir;/&tcl-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&tcl-directory;/unix</base>
 		</stageinfo>

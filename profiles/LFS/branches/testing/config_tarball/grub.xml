@@ -9,7 +9,7 @@
 
 <alfs>
 
-<stage name="Making the LFS system bootable">
+<stage name="Making the LFS System Bootable">
 	<!--
 	The following shell command sets up grub.  The batch param on the first line
 	has to have the space between the dashes removed for this to work.	

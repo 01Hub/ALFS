@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="glibc" version="&glibc-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&glibc-md5;</digest>
 			<archive>&packages_dir;/&glibc-package;</archive>
@@ -23,7 +23,7 @@
 		</mkdir>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<environment>
 				<variable name="CFLAGS" />
@@ -35,13 +35,10 @@
 		<configure command="../&glibc-directory;/configure">
 			<param>--prefix=/usr</param>
 			<param>--disable-profile</param>
-			<param>--enable-add-ons=nptl</param>
-			<param>--with-tls</param>
-			<param>--with-__thread</param>
+			<param>--enable-add-ons</param>
 			<param>--enable-kernel=2.6.0</param>
 			<param>--without-cvs</param>
 			<param>--libexecdir=/usr/lib/glibc</param>
-			<param>--with-headers=/tools/glibc-kernheaders</param>
 		</configure>
 
 		<make />
@@ -85,7 +82,7 @@
 		</make>
 	</stage>
 
-	<stage name="Configuring.">
+	<stage name="Configuring">
 		<textdump>
 			<file>/etc/nsswitch.conf</file>
 			<content>
@@ -127,7 +124,7 @@
 		</textdump>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&glibc-directory;</remove>
 		<remove>&build_dir;/glibc-build</remove>
 	</stage>

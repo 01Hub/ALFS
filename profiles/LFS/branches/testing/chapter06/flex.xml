@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="flex" version="&flex-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&flex-md5;</digest>
 			<archive>&packages_dir;/&flex-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&flex-directory;</base>
 		</stageinfo>
@@ -30,7 +30,7 @@
 		</patch>
 
 		<execute command="touch">
-			<param>doc/flex.1</param>
+			<param>doc/*.1</param>
 		</execute>
 
 		<configure>
@@ -72,7 +72,7 @@
 		</permissions>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&flex-directory;</remove>
 	</stage>
 </package>

@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="gcc-pass1" version="&gcc-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&gcc-core-md5;</digest>
 			<archive>&packages_dir;/&gcc-core-package;</archive>
@@ -29,7 +29,7 @@
 		</mkdir>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<environment>
 				<variable name="CFLAGS" />
@@ -39,6 +39,7 @@
 		</stageinfo>
 
 		<configure command="../&gcc-directory;/configure">
+			<prefix>CC="gcc -B/usr/bin"</prefix>
 			<param>--prefix=/tools</param>
 			<param>--libexecdir=/tools/lib</param>
 			<param>--with-local-prefix=/tools</param>
@@ -63,7 +64,7 @@
 		</link>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/gcc-build</remove>
 		<remove>&build_dir;/&gcc-directory;</remove>
 	</stage>

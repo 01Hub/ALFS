@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="patch" version="&patch-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&patch-md5;</digest>
 			<archive>&packages_dir;/&patch-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&patch-directory;</base>
 		</stageinfo>
@@ -35,7 +35,7 @@
 		</make>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&patch-directory;</remove>
 	</stage>
 </package>

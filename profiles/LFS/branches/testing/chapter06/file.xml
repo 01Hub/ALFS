@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="file" version="&file-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&file-md5;</digest>
 			<archive>&packages_dir;/&file-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&file-directory;</base>
 		</stageinfo>
@@ -34,7 +34,7 @@
 		</make>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&file-directory;</remove>
 	</stage>
 </package>

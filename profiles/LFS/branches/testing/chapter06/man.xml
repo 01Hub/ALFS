@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="man" version="&man-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&man-md5;</digest>
 			<archive>&packages_dir;/&man-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&man-directory;</base>
 		</stageinfo>
@@ -52,7 +52,7 @@
 		</make>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&man-directory;</remove>
 	</stage>
 </package>

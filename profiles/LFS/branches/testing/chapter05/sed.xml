@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="sed" version="&sed-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&sed-md5;</digest>
 			<archive>&packages_dir;/&sed-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&sed-directory;</base>
 		</stageinfo>
@@ -40,7 +40,7 @@
 		</make>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&sed-directory;</remove>
 	</stage>
 </package>

@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="shadow" version="&shadow-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&shadow-md5;</digest>
 			<archive>&packages_dir;/&shadow-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&shadow-directory;</base>
 		</stageinfo>
@@ -28,19 +28,6 @@
 			<param>--enable-shared</param>
 		</configure>
 
-		<textdump mode="append">
-			<file>config.h</file>
-			<content>
-				=#define HAVE_SETLOCALE 1
-			</content>
-		</textdump>
-
-		<search_replace>
-		  	<file>libmisc/xmalloc.c</file>
-			<find>extern char *malloc ();</find>
-			<replace>/* extern char *malloc (); */</replace>
-		</search_replace>
-		
 		<make />
 
 		<make>
@@ -71,23 +58,12 @@
 		</search_replace>
 
 		<move>
-			<source>/bin/sg</source>
-			<destination>/usr/bin</destination>
-		</move>
-
-		<move>
-			<source>/bin/vigr</source>
-			<destination>/usr/sbin</destination>
-		</move>
-
-		<move>
 			<source>/usr/bin/passwd</source>
 			<destination>/bin</destination>
 		</move>
 
 		<move base="/usr/lib">
 			<source>libshadow.so.0*</source>
-			<source>libmisc.so.0*</source>
 			<destination>/lib</destination>
 		</move>
 
@@ -97,12 +73,6 @@
 			<name>/usr/lib/libshadow.so</name>
 		</link>
 
-		<link>
-			<option>force</option>
-			<target>../../lib/libmisc.so.0</target>
-			<name>/usr/lib/libmisc.so</name>
-		</link>
-		
 		<mkdir>
 			<name>/etc/default</name>
 		</mkdir>
@@ -110,7 +80,7 @@
 		<remove>/bin/groups</remove>
 	</stage>
 
-	<stage name="Configuring.">
+	<stage name="Configuring">
 		<execute command="pwconv" />
 		<execute command="grpconv" />
 
@@ -121,7 +91,7 @@
 	</stage>
 
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&shadow-directory;</remove>
 	</stage>
 </package>

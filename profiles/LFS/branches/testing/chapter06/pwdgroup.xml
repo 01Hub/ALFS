@@ -3,7 +3,7 @@
 
 <alfs>
 
-<stage name="Creating the passwd, group and log files.">
+<stage name="Creating the passwd, group, and log Files">
 	<textdump base="/etc">
 		<file>passwd</file>
 		<content>=root:x:0:0:root:/root:/bin/bash</content>
@@ -44,7 +44,6 @@
 		<name>run/utmp</name>
 		<name>log/lastlog</name>
 	</permissions>
-
 </stage>
 
 </alfs>

@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="inetutils" version="&inetutils-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&inetutils-md5;</digest>
 			<archive>&packages_dir;/&inetutils-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&inetutils-directory;</base>
 		</stageinfo>
@@ -26,18 +26,18 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i &packages_dir;/&inetutils-kernel-headers-patch;</param>
+			<param>-i &packages_dir;/&inetutils-no-man-pages-patch;</param>
 		</patch>
 
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i &packages_dir;/&inetutils-no-man-pages-patch;</param>
+			<param>-i &packages_dir;/&inetutils-kernel-headers-patch;</param>
 		</patch>
 
 		<configure>
 			<param>--prefix=/usr</param>
-			<param>--libexecdir=/usr/sbin</param>
+			<param>--libexecdir=/usr/sbin</param>	
 			<param>--sysconfdir=/etc</param>
 			<param>--localstatedir=/var</param>
 			<param>--disable-logger</param>
@@ -58,7 +58,7 @@
 		</move>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&inetutils-directory;</remove>
 	</stage>
 </package>

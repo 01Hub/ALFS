@@ -28,7 +28,7 @@
 		</make>
 
 		<make>
-		  	<param>udevdir=/dev</param>
+			<param>udevdir=/dev</param>
 			<param>install</param>
 		</make>
 
@@ -42,7 +42,9 @@
         		<option>force</option>
         		<source>&udev-rules-file;</source>
         		<destination>/etc/udev/rules.d/25-lfs.rules</destination>
-		</copy>		
+		</copy>
+
+		<execute command="/sbin/udevstart" />	
 	</stage>
 
 	<stage name="Cleanup">
