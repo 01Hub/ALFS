@@ -11,9 +11,17 @@ clean:
 	fi;
 
 dist-clean: clean
-	rm *.bz2
-	rm *.html
-	rm *.txt
+	if [ -e *.bz2 ]; then \
+	  rm *.bz2; \
+	fi;
+
+	if [ -e *.html ]; then \
+	  rm *.html; \
+	fi;
+
+	if [ -e *.txt ]; then \
+	  rm *.txt; \
+	fi;
 
 common: clean
 	if [ ! -e $(OUTDIR) ]; then \
