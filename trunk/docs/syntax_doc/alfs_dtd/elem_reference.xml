@@ -27,15 +27,15 @@ available.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;unpack&gt;
+<screen><userinput>&lt;unpack&gt;
 	&lt;reference&gt;ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz&lt;/reference&gt;
 	&lt;archive&gt;/usr/src/lfs-packages/gzip.1.2.4a&lt;/archive&gt;
 	&lt;destination&gt;/usr/src&lt;/destination&gt;
-&lt;/unpack&gt;</screen></userinput>
+&lt;/unpack&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>cho Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+<screen><userinput>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
 [[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
   echo Retrieving  ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
 [[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
@@ -44,7 +44,7 @@ available.</para>
   echo Archive does not exist &amp;&amp; exit 3
 
 cd /usr/src
-<command>tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></screen></userinput>
+<command>tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></userinput></screen>
 
 </sect2>
 

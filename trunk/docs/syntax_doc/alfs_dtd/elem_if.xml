@@ -60,33 +60,33 @@ mutually exclusive.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>
+<screen><userinput>
 &lt;if test="0">
 &lt;then>&lt;execute command="echo this should be executed." />&lt;/then>
 &lt;else>&lt;execute command="echo this should not be executed." />&lt;/else>
 &lt;/if>
-</screen></userinput>
+</userinput></screen>
 
-<userinput><screen>
+<screen><userinput>
 &lt;execute command="touch /tmp/foo" />
 &lt;if test="[-r /tmp/foo">
 &lt;then>&lt;execute command="echo this should be executed." />&lt;/then>
 &lt;else>&lt;execute command="echo this should not be executed." />&lt;/else>
 &lt;/if>
-</screen></userinput>
+</userinput></screen>
 
-<userinput><screen>
+<screen><userinput>
 &lt;if package="bison">
 &lt;then>&lt;execute command="echo this should be executed if bison is build." />&lt;/then>
 &lt;else>&lt;execute command="echo this should not be executed if bison is build." />&lt;/else>
 &lt;/if>
-</screen></userinput>
+</userinput></screen>
 
-<userinput><screen>
+<screen><userinput>
 &lt;if package="bison" condition="ge" version="1.875">
 &lt;then>&lt;execute command="echo this should be executed if bison 1.875 or greater is build." />&lt;/then>
 &lt;/if>
-</screen></userinput>
+</userinput></screen>
 
 </sect2>
 

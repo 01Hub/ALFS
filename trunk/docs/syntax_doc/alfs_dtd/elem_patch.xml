@@ -40,16 +40,16 @@ which the command will be performed.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;patch&gt;
+<screen><userinput>&lt;patch&gt;
 	&lt;param&gt;-N&lt;/param&gt;
 	&lt;param&gt;-p1&lt;/param&gt;
 	&lt;param&gt;-i ../gawk-3.1.1.patch&lt;/param&gt;
-&lt;/patch&gt;</screen></userinput>
+&lt;/patch&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>echo 'patch -N -p1 -i ../gawk-3.1.1.patch'
-<command>patch -N -p1 -i ../gawk-3.1.1.patch</command></screen></userinput>
+<screen><userinput>echo 'patch -N -p1 -i ../gawk-3.1.1.patch'
+<command>patch -N -p1 -i ../gawk-3.1.1.patch</command></userinput></screen>
 
 </sect2>
 

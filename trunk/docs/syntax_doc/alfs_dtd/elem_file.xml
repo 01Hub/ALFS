@@ -47,7 +47,7 @@ cp runit.sh /tmp/foo.$$
 
 <para>The second example is a textdump.</para>
 
-<userinput><screen>&lt;textdump base=&quot;/etc&quot;&gt;
+<screen><userinput>&lt;textdump base=&quot;/etc&quot;&gt;
 	&lt;file&gt;group&lt;/file&gt;
 
 	&lt;content&gt;
@@ -64,11 +64,11 @@ cp runit.sh /tmp/foo.$$
 		=dialout:x:10:
 		=audio:x:11:
 	&lt;/content&gt;
-&lt;/textdump&gt;</screen></userinput>
+&lt;/textdump&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>echo Generating file group
+<screen><userinput>echo Generating file group
 cd /etc
 
 <command>cat &gt; group &lt;&lt; 'EOF'</command>
@@ -84,7 +84,7 @@ disk:x:8:
 lp:x:9:
 dialout:x:10:
 audio:x:11:
-<command>EOF</command></screen></userinput>
+<command>EOF</command></userinput></screen>
 
 </sect2>
 

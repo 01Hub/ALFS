@@ -31,7 +31,7 @@ which it applies.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;stage&gt;
+<screen><userinput>&lt;stage&gt;
 	&lt;stageinfo&gt;
 		&lt;base&gt;/usr/src/mypackage&lt;/base&gt;
 		&lt;user&gt;lfs&lt;/user&gt;
@@ -40,11 +40,11 @@ which it applies.</para>
 	&lt;make&gt;
 		&lt;param&gt;install&lt;/param&gt;
 	&lt;/make&gt;
-&lt;/stage&gt;</screen></userinput>
+&lt;/stage&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>echo Stage
+<screen><userinput>echo Stage
 
 echo Creating file ./_nalfs_tmp.1...
 cat > ./_nalfs_tmp.1 &lt;&lt; 'EOF1'
@@ -62,7 +62,7 @@ echo Executing as user lfs
 
 echo Finished execution as user lfs
 
-echo Exiting stage</screen></userinput>
+echo Exiting stage</userinput></screen>
 
 </sect2>
 

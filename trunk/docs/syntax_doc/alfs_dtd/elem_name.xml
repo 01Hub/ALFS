@@ -37,16 +37,16 @@ some commands that requires it.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;mkdir base=&quot;/usr/local/lib&quot;&gt;
+<screen><userinput>&lt;mkdir base=&quot;/usr/local/lib&quot;&gt;
 	&lt;option&gt;parents&lt;/option&gt;
 	&lt;name&gt;X11&lt;/name&gt;
-&lt;/mkdir&gt;</screen></userinput>
+&lt;/mkdir&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>cd /usr/local/lib
+<screen><userinput>cd /usr/local/lib
 echo Making directory X11
-<command>mkdir -p X11</command></screen></userinput>
+<command>mkdir -p X11</command></userinput></screen>
 
 </sect2>
 

@@ -44,7 +44,7 @@ relationship.</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>echo Generating package zlib 1.1.4
+<screen><userinput>echo Generating package zlib 1.1.4
 
 #-----------------------------------------
 echo Stage "Unpacking a package."
@@ -61,7 +61,7 @@ echo Exiting stage "Unpacking a package."
 
 ...
 
-echo End of generating package zlib 1.1.4</screen></userinput>
+echo End of generating package zlib 1.1.4</userinput></screen>
 
 </sect2>
 

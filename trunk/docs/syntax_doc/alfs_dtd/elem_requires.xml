@@ -36,7 +36,7 @@ because we might want to add a version in a future version.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;package name=&quot;librep&quot; version=&quot;0.16.1&quot;&gt;
+<screen><userinput>&lt;package name=&quot;librep&quot; version=&quot;0.16.1&quot;&gt;
 	&lt;packageinfo&gt;
 		&lt;requires&gt;&lt;name&gt;gmp&lt;/name&gt;&lt;/requires&gt;
 		&lt;requires&gt;&lt;name&gt;gdbm&lt;/name&gt;&lt;/requires&gt;
@@ -51,11 +51,11 @@ because we might want to add a version in a future version.</para>
 
 	......
 
-&lt;/package&gt;</screen></userinput>
+&lt;/package&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>#-----------------------------------------
+<screen><userinput>#-----------------------------------------
 # processing package librep 0.16.1
 
 echo Generating package librep 0.16.1
@@ -74,7 +74,7 @@ echo Exiting stage "Unpacking a package."
 
 ....
 
-echo End of generating package librep 0.16.1</screen></userinput>
+echo End of generating package librep 0.16.1</userinput></screen>
 
 </sect2>
 

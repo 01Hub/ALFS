@@ -48,7 +48,7 @@ creation mode.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;textdump base=&quot;/etc&quot;&gt;
+<screen><userinput>&lt;textdump base=&quot;/etc&quot;&gt;
 	&lt;file&gt;group&lt;/file&gt;
 
 	&lt;content&gt;
@@ -65,11 +65,11 @@ creation mode.</para>
 		=dialout:x:10:
 		=audio:x:11:
 	&lt;/content&gt;
-&lt;/textdump&gt;</screen></userinput>
+&lt;/textdump&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>cd /etc
+<screen><userinput>cd /etc
 cat > group &lt;&lt; 'EOF'
 root:x:0:
 bin:x:1:
@@ -83,23 +83,23 @@ disk:x:8:
 lp:x:9:
 dialout:x:10:
 audio:x:11:
-EOF</screen></userinput>
+EOF</userinput></screen>
 
-<userinput><screen>&lt;textdump mode=&quot;append&quot;&gt;
+<screen><userinput>&lt;textdump mode=&quot;append&quot;&gt;
         &lt;file&gt;/etc/sysconfig/network&lt;/file&gt;
         &lt;content&gt;
                 =GATEWAY=192.168.123.254
                 =GATEWAY_IF=eth0
         &lt;/content&gt;
-&lt;/textdump&gt;</screen></userinput>
+&lt;/textdump&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>echo Generating file /etc/sysconfig/network
+<screen><userinput>echo Generating file /etc/sysconfig/network
 cat >> /etc/sysconfig/network &lt;&lt; 'EOF'
 GATEWAY=192.168.123.254
 GATEWAY_IF=eth0
-EOF</screen></userinput>
+EOF</userinput></screen>
 
 </sect2>
 

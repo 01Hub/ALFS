@@ -29,14 +29,14 @@ it belongs.</para>
 <sect2>
 <title>Examples</title>
 
-<userinput><screen>&lt;make&gt;
+<screen><userinput>&lt;make&gt;
 	&lt;param&gt;install&lt;/param&gt;
-&lt;/make&gt;</screen></userinput>
+&lt;/make&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>echo Executing make
-<command>make install</command></screen></userinput>
+<screen><userinput>echo Executing make
+<command>make install</command></userinput></screen>
 
 </sect2>
 
