@@ -185,6 +185,7 @@
     &dhcpcd;
 
 </stage>
+
 <stage name="Chapter 15 (Networking - other)">
 
     <!-- &isdn; -->
@@ -218,6 +219,7 @@
     &tcpwrappers;
     &portmap;
     &inetutils;
+    &ntp;
 
 </stage>
 
