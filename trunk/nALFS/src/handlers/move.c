@@ -41,148 +41,199 @@
 #include "backend.h"
 
 
-#define El_move_source(el) alloc_trimmed_param_value("source", el)
-#define El_move_destination(el) alloc_trimmed_param_value("destination", el)
+enum {
+	MOVE_BASE,
+	MOVE_OPTION,
+	MOVE_SOURCES,
+	MOVE_SOURCE,
+	MOVE_DESTINATION,
+};
 
+struct move_data {
+	char *base;
+	int force;
+	char *destination;
+	int source_count;
+	char **sources;
+};
+
+static int move_setup(element_s * const element)
+{
+	struct move_data *data;
+
+	if ((data = xmalloc(sizeof(struct move_data))) == NULL)
+		return 1;
+
+	data->force = 0;
+	data->base = NULL;
+	data->source_count = 0;
+	data->sources = NULL;
+	data->destination = NULL;
+	element->handler_data = data;
+
+	return 0;
+};
+
+static void move_free(const element_s * const element)
+{
+	struct move_data *data = (struct move_data *) element->handler_data;
+	int i;
+
+	xfree(data->base);
+	xfree(data->destination);
+	if (data->source_count > 0) {
+		for (i = 0; i < data->source_count; i++)
+			xfree(data->sources[i]);
+		xfree(data->sources);
+	}
+	xfree(data);
+}
+
+static int move_attribute(const element_s * const element,
+			  const struct handler_attribute * const attr,
+			  const char * const value)
+{
+	struct move_data *data = (struct move_data *) element->handler_data;
+
+	switch (attr->private) {
+	case MOVE_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify \"base\" more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int move_parameter(const element_s * const element,
+			  const struct handler_parameter * const param,
+			  const char * const value)
+{
+	struct move_data *data = (struct move_data *) element->handler_data;
+	char *tmp;
+	char *tok;
+
+	switch (param->private) {
+	case MOVE_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify <base> more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	case MOVE_DESTINATION:
+		if (data->destination) {
+			Nprint_err("<%s>: cannot specify <destination> more than once.", element->handler->name);
+			return 1;
+		}
+		data->destination = xstrdup(value);
+		return 0;
+	case MOVE_OPTION:
+		if (!strcmp("force", value)) {
+			data->force = 1;
+			return 0;
+		}
+		Nprint_err("<%s>: invalid option (%s) ignored", element->handler->name, value);
+		return 1;
+	case MOVE_SOURCE:
+		data->source_count++;
+		if ((data->sources = xrealloc(data->sources,
+					      sizeof(data->sources[0]) * (data->source_count))) == NULL) {
+			Nprint_err("xrealloc() failed: %s", strerror(errno));
+			return -1;
+		}
+		data->sources[(data->source_count - 1)] = xstrdup(value);
+		return 0;
+	case MOVE_SOURCES:
+		tmp = xstrdup(value);
+		for (tok = strtok(tmp, WHITE_SPACE); tok; tok = strtok(NULL, WHITE_SPACE)) {
+			data->source_count++;
+			if ((data->sources = xrealloc(data->sources,
+						      sizeof(data->sources[0]) * (data->source_count))) == NULL) {
+				Nprint_err("xrealloc() failed: %s", strerror(errno));
+				return -1;
+			}
+			data->sources[(data->source_count - 1)] = xstrdup(value);
+		}
+		xfree(tmp);
+	default:
+		return 1;
+	}
+}
+
+static int move_valid_data(const element_s * const element)
+{
+	struct move_data *data = (struct move_data *) element->handler_data;
+
+	if (data->source_count == 0) {
+		Nprint_err("<%s>: <source> must be specified.", element->handler->name);
+		return 0;
+	}
+
+	if (!data->destination) {
+		Nprint_err("<%s>: <destination> must be specified.", element->handler->name);
+		return 0;
+	}
+
+	return 1;
+}
 
 #if HANDLER_SYNTAX_2_0
 
-static const struct handler_parameter move_parameters_ver2[] = {
-	{ .name = "base" },
-	{ .name = "options" },
-	{ .name = "source" },
-	{ .name = "destination" },
+static const struct handler_parameter move_parameters_v2[] = {
+	{ .name = "base", .private = MOVE_BASE },
+	{ .name = "options", .private = MOVE_OPTION },
+	{ .name = "source", .private = MOVE_SOURCES },
+	{ .name = "destination", .private = MOVE_DESTINATION },
 	{ .name = NULL }
 };
 
-static int move_main_ver2(const element_s * const el)
-{
-	int status = 0;
-	int force = option_exists("force", el);
-	char *tok;
-	char *base;
-	char *source;
-	char *destination;
-
-
-	if ((source = El_move_source(el))== NULL) {
-		Nprint_h_err("No source files specified.");
-		return -1;
-	}
-	
-	if ((destination = El_move_destination(el))== NULL) {
-		Nprint_h_err("No destination specified.");
-		xfree(source);
-		return -1;
-	}
-
-	base = alloc_base_dir(el);
-
-	if (change_current_dir(base)) {
-		xfree(base);
-		xfree(source);
-		xfree(destination);
-		return -1;
-	}
-
-	for (tok = strtok(source, WHITE_SPACE); tok;
-	     tok = strtok(NULL, WHITE_SPACE)) {
-		Nprint_h("Moving from %s to %s%s: %s",
-			base, destination, force ? " (force)" : "", tok);
-
-		if (force) {
-			status = execute_command(el, "mv -f %s %s", tok, destination);
-		} else {
-			status = execute_command(el, "mv %s %s", tok, destination);
-		}
-
-		if (status) {
-			Nprint_h_err("Moving failed.");
-			break;
-		}
-	}
-
-	xfree(base);
-	xfree(source);
-	xfree(destination);
-	
-	return status;
-}
-
 #endif /* HANDLER_SYNTAX_2_0 */
-
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
 static const struct handler_parameter move_parameters_v3[] = {
-	{ .name = "option" },
-	{ .name = "source" },
-	{ .name = "destination" },
+	{ .name = "option", .private = MOVE_OPTION },
+	{ .name = "source", .private = MOVE_SOURCE },
+	{ .name = "destination", .private = MOVE_DESTINATION },
 	{ .name = NULL }
 };
 
 static const struct handler_attribute move_attributes_v3[] = {
-	{ .name = "base" },
+	{ .name = "base", .private = MOVE_BASE },
 	{ .name = NULL }
 };
 
-static int move_main_ver3(const element_s * const el)
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
+
+static int move_main(const element_s * const element)
 {
-	int options[1], force;
+	struct move_data *data = (struct move_data *) element->handler_data;
 	int status = 0;
-	char *destination;
-	element_s *p;
+	int i;
 
-
-	if (change_to_base_dir(el, attr_value("base", el), 1))
+	if (change_to_base_dir(element, data->base, 1))
 		return -1;
 
-	check_options(1, options, "force", el);
-	force = options[0];
+	for (i = 0; i < data->source_count; i++) {
+		Nprint_h("Moving from %s to %s%s",
+			 data->sources[i], data->destination, data->force ? " (force)" : "");
 
-	if (first_param("source", el) == NULL) {
-		Nprint_h_err("No source files specified.");
-		return -1;
-	}
-
-	destination = alloc_trimmed_param_value("destination", el);
-	if (destination == NULL) {
-		Nprint_h_err("No destination specified.");
-		return -1;
-	}
-
-	for (p = first_param("source", el); p; p = next_param(p)) {
-		char *s;
-
-		if ((s = alloc_trimmed_str(p->content)) == NULL) {
-			Nprint_h_warn("Source empty.");
-			continue;
-		}
-
-		Nprint_h("Moving to %s%s: %s",
-			destination, force ? " (force)" : "", s);
-
-		if (force) {
-			status = execute_command(el, "mv -f %s %s", s, destination);
-		} else {
-			status = execute_command(el, "mv %s %s", s, destination);
-		}
-
-		xfree(s);
+		status = execute_command(element, "mv %s %s %s",
+					 data->force ? "-f" : "",
+					 data->sources[i], data->destination);
 
 		if (status) {
 			Nprint_h_err("Moving failed.");
 			break;
 		}
 	}
-
-	xfree(destination);
 	
 	return status;
 }
-
-#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
-
 
 /*
  * Handlers' information.
@@ -194,10 +245,14 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "move",
 		.description = "Move files",
 		.syntax_version = "2.0",
-		.parameters = move_parameters_ver2,
-		.main = move_main_ver2,
+		.parameters = move_parameters_v2,
+		.main = move_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = move_setup,
+		.free = move_free,
+		.valid_data = move_valid_data,
+		.parameter = move_parameter,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -207,9 +262,14 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.0",
 		.parameters = move_parameters_v3,
 		.attributes = move_attributes_v3,
-		.main = move_main_ver3,
+		.main = move_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = move_setup,
+		.free = move_free,
+		.valid_data = move_valid_data,
+		.parameter = move_parameter,
+		.attribute = move_attribute,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -219,9 +279,14 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.1",
 		.parameters = move_parameters_v3,
 		.attributes = move_attributes_v3,
-		.main = move_main_ver3,
+		.main = move_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = move_setup,
+		.free = move_free,
+		.valid_data = move_valid_data,
+		.attribute = move_attribute,
+		.parameter = move_parameter,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -231,10 +296,15 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.2",
 		.parameters = move_parameters_v3,
 		.attributes = move_attributes_v3,
-		.main = move_main_ver3,
+		.main = move_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
 		.alternate_shell = 1,
+		.setup = move_setup,
+		.free = move_free,
+		.valid_data = move_valid_data,
+		.parameter = move_parameter,
+		.attribute = move_attribute,
 	},
 #endif
 	{

@@ -24,6 +24,9 @@
 
 
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <errno.h>
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -38,133 +41,186 @@
 #include "parser.h"
 #include "backend.h"
 
+enum {
+	OWNERSHIP_OPTION,
+	OWNERSHIP_NAME,
+	OWNERSHIP_BASE,
+	OWNERSHIP_USER,
+	OWNERSHIP_GROUP,
+};
 
-#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
+struct ownership_data {
+	char *base;
+	char *user;
+	char *group;
+	int recursive;
+	int name_count;
+	char **names;
+};
 
 static const struct handler_parameter ownership_parameters[] = {
-	{ .name = "option" },
-	{ .name = "name" },
+	{ .name = "option", .private = OWNERSHIP_OPTION },
+	{ .name = "name", .private = OWNERSHIP_NAME },
 	{ .name = NULL }
 };
 
 static const struct handler_attribute ownership_attributes[] = {
-	{ .name = "base" },
-	{ .name = "user" },
-	{ .name = "group" },
+	{ .name = "base", .private = OWNERSHIP_BASE },
+	{ .name = "user", .private = OWNERSHIP_USER },
+	{ .name = "group", .private = OWNERSHIP_GROUP },
 	{ .name = NULL }
 };
 
-static int ownership_main(const element_s *const el)
+static int ownership_setup(element_s * const element)
 {
-	int status = 0;
-	int options[1], recursive;
-	char *user, *group;
-	element_s *p;
+	struct ownership_data *data;
 
+	if ((data = xmalloc(sizeof(struct ownership_data))) == NULL)
+		return 1;
 
-	if (change_to_base_dir(el, attr_value("base", el), 1))
-		return -1;
+	data->recursive = 0;
+	data->base = NULL;
+	data->name_count = 0;
+	data->names = NULL;
+	data->user = NULL;
+	data->group = NULL;
+	element->handler_data = data;
 
-	check_options(1, options, "recursive", el);
-	recursive = options[0];
+	return 0;
+};
 
-	user = attr_value("user", el);
-	group = attr_value("group", el);
+static void ownership_free(const element_s * const element)
+{
+	struct ownership_data *data = (struct ownership_data *) element->handler_data;
+	int i;
 
-	if (user == NULL && group == NULL) {
-		Nprint_h_err("No user and/or group specified.");
-		return -1;
+	xfree(data->base);
+	xfree(data->user);
+	xfree(data->group);
+	if (data->name_count > 0) {
+		for (i = 0; i < data->name_count; i++)
+			xfree(data->names[i]);
+		xfree(data->names);
 	}
-
-	for (p = first_param("name", el); p; p = next_param(p)) {
-		char *s;
-
-
-		if ((s = alloc_trimmed_str(p->content)) == NULL) {
-			Nprint_h_warn("Name empty.");
-			continue;
-		}
-
-		if (user) {
-			char *command = NULL;
-			char *message = NULL;
-
-
-			append_str(&command, "chown ");
-
-			append_str(&message, "Changing user ownership to ");
-			append_str(&message, user);
-
-			if (recursive) {
-				append_str(&command, "-R ");
-				append_str(&message, " (recursive)");
-			}
-
-			append_str(&message, ": ");
-			append_str(&message, s);
-
-			append_str(&command, user);
-			append_str(&command, " ");
-			append_str(&command, s);
-
-			Nprint_h("%s", message);
-
-			if ((status = execute_command(el, command))) {
-				Nprint_h_err("Changing ownership failed.");
-				xfree(s);
-				xfree(command);
-				xfree(message);
-				break;
-			}
-			
-			xfree(command);
-			xfree(message);
-		}
-
-		if (group) {
-			char *command = NULL;
-			char *message = NULL;
-
-
-			append_str(&command, "chgrp ");
-
-			append_str(&message, "Changing group ownership to ");
-			append_str(&message, group);
-			append_str(&message, " ");
-
-			if (recursive) {
-				append_str(&command, "-R ");
-				append_str(&message, "(recursive) ");
-			}
-
-			append_str(&message, ": ");
-			append_str(&message, s);
-
-			append_str(&command, group);
-			append_str(&command, " ");
-			append_str(&command, s);
-
-			Nprint_h("%s", message);
-
-			if ((status = execute_command(el, command))) {
-				Nprint_h_err("Changing ownership failed.");
-				xfree(s);
-				xfree(command);
-				xfree(message);
-				break;
-			}
-			
-			xfree(command);
-			xfree(message);
-		}
-
-		xfree(s);
-	}
-
-	return status;
+	xfree(data);
 }
 
-#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
+static int ownership_attribute(const element_s * const element,
+			       const struct handler_attribute * const attr,
+			       const char * const value)
+{
+	struct ownership_data *data = (struct ownership_data *) element->handler_data;
+
+	switch (attr->private) {
+	case OWNERSHIP_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify \"base\" more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	case OWNERSHIP_USER:
+		if (data->user) {
+			Nprint_err("<%s>: cannot specify \"user\" more than once.", element->handler->name);
+			return 1;
+		}
+		data->user = xstrdup(value);
+		return 0;
+	case OWNERSHIP_GROUP:
+		if (data->group) {
+			Nprint_err("<%s>: cannot specify \"group\" more than once.", element->handler->name);
+			return 1;
+		}
+		data->group = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int ownership_parameter(const element_s * const element,
+				 const struct handler_parameter * const param,
+				 const char * const value)
+{
+	struct ownership_data *data = (struct ownership_data *) element->handler_data;
+
+	switch (param->private) {
+	case OWNERSHIP_OPTION:
+		if (!strcmp("recursive", value)) {
+			data->recursive = 1;
+			return 0;
+		}
+		Nprint_err("<%s>: invalid option (%s) ignored", element->handler->name, value);
+		return 1;
+	case OWNERSHIP_NAME:
+		data->name_count++;
+		if ((data->names = xrealloc(data->names,
+					    sizeof(data->names[0]) * (data->name_count))) == NULL) {
+			Nprint_err("xrealloc() failed: %s", strerror(errno));
+			return -1;
+		}
+		data->names[(data->name_count - 1)] = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int ownership_valid_data(const element_s * const element)
+{
+	struct ownership_data *data = (struct ownership_data *) element->handler_data;
+
+	if (data->name_count == 0) {
+		Nprint_err("<%s>: <name> must be specified.", element->handler->name);
+		return 0;
+	}
+
+	if (!(data->user || data->group)) {
+		Nprint_err("<%s>: \"user\" or \"group\" must be specified.", element->handler->name);
+		return 0;
+	}
+
+	return 1;
+}
+
+static int ownership_main(const element_s *const element)
+{
+	struct ownership_data *data = (struct ownership_data *) element->handler_data;
+	int status = 0;
+	int i;
+
+	if (change_to_base_dir(element, data->base, 1))
+		return -1;
+
+	if (data->user) {
+		for (i = 0; i < data->name_count; i++) {
+			Nprint_h("Changing user ownership to %s%s: %s", data->user,
+				 data->recursive ? "(recursive)" : " ", data->names[i]);
+			status = execute_command(element, "chown %s %s %s",
+						 data->recursive ? "-R" : "",
+						 data->user, data->names[i]);
+			if (status) {
+				Nprint_h_err("Changing ownership failed.");
+				break;
+			}
+		}
+	}
+
+	if ((status == 0) && data->group) {
+		for (i = 0; i < data->name_count; i++) {
+			Nprint_h("Changing group ownership to %s%s: %s", data->group,
+				 data->recursive ? "(recursive)" : " ", data->names[i]);
+			status = execute_command(element, "chgrp %s %s %s",
+						 data->recursive ? "-R" : "",
+						 data->group, data->names[i]);
+			if (status) {
+				Nprint_h_err("Changing ownership failed.");
+				break;
+			}
+		}
+	}
+	return status;
+}
 
 
 /*
@@ -182,6 +238,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = ownership_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = ownership_setup,
+		.free = ownership_free,
+		.parameter = ownership_parameter,
+		.attribute = ownership_attribute,
+		.valid_data = ownership_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -194,6 +255,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = ownership_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = ownership_setup,
+		.free = ownership_free,
+		.parameter = ownership_parameter,
+		.attribute = ownership_attribute,
+		.valid_data = ownership_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -207,6 +273,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
 		.alternate_shell = 1,
+		.setup = ownership_setup,
+		.free = ownership_free,
+		.parameter = ownership_parameter,
+		.attribute = ownership_attribute,
+		.valid_data = ownership_valid_data,
 	},
 #endif
 	{
