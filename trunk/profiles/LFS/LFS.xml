@@ -78,6 +78,7 @@
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/flex.xml" />
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/util-linux.xml" />
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/perl.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/udev.xml" />
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/strip.xml" />
 	</stage>
 
