@@ -31,7 +31,11 @@
 operation elements. It describes the creation of one (or several)
 directory(ies).</para>
 
-<para>The sub-element <filename>option</filename> FILL IN HERE.</para>
+<para>The sub-element <filename>option</filename> allows you to pass
+certain options to the <filename>mkdir</filename> command. Certain
+implementations of the <acronym>DTD</acronym> support the option
+&quot;parents&quot;. When specified, the parents directories are created as
+needed.</para>
 
 <para>The sub-elements <filename>name</filename> contains the name(s) of
 the directory(ies) to be created.</para>
@@ -41,8 +45,7 @@ the directory(ies) to be created.</para>
 <para>The attribute <filename>base</filename> gives the name of the
 directory in which the new directory will be created.</para>
 
-<para>The only option supported is &quot;parents&quot;. When specified, the parents
-directories are created as needed.</para>
+<para></para>
 
 </sect2>
 
