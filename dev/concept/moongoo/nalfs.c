@@ -8,7 +8,9 @@ profile *prof;
 
 void parse_unpack (xmlNodePtr node)
 {
-	// TODO: Handle <unpack>
+	/*printf("tar -C %s %s\n", find_value(node->children, "destination"),
+		find_value(node->children, "archive"));*/
+	// find_value(node->children, "digest");
 }
 
 void parse_remove (xmlNodePtr node)
@@ -76,6 +78,10 @@ void parse_execute (xmlNodePtr node)
 
 void parse_mkdir (xmlNodePtr node)
 {
+	/*char *orig[2] = { "parents", NULL };
+	char *repl[2] = { "-p", NULL };
+	printf("mkdir %s %s\n", find_values_repl(node->children, "option", orig,
+		repl), find_value(node->children, "name"));*/
 }
 
 void parse_search_replace (xmlNodePtr node)
@@ -87,48 +93,40 @@ void parse_search_replace (xmlNodePtr node)
 
 void parse_permissions (xmlNodePtr node)
 {
+	/*char *orig[2] = { "recursive", NULL };
+	char *repl[2] = { "-R", NULL };
+	printf("chmod %s %s %s\n", find_values_repl(node->children, "option",
+		orig, repl), xmlGetProp(node, "mode"), 
+		find_value(node->children, "name"));*/
 }
 
 void parse_ownership (xmlNodePtr node)
 {
-	xmlNodePtr cur;
-	char *user, *group, *opts, *names;
-	
-	user = xmlGetProp(node, "user");
-	group = xmlGetProp(node, "group");
-
-	opts = (char *)malloc(2);
-	strcpy(opts, "");
-	names = (char *)malloc(2);
-	strcpy(names, "");
-	
-	cur = node->children;
-	while (cur)
-	{
-		if (!strcmp(cur->name, "option"))
-			if (!strcmp(xmlNodeGetContent(cur), "recursive"))
-				opts = strdog2(opts, "-R");	
-		
-		if (!strcmp(cur->name, "name"))
-			names = strdog2(names, xmlNodeGetContent(cur));
-
-		cur = cur->next;
-	}
-
-	/*ret = (char *)malloc(512);
-	snprintf(ret, 512, "chown %s %s:%s %s", opts, user, group, names);*/
+	/*char *orig[2] = { "recursive", NULL };
+	char *repl[2] = { "-R", NULL };
+	printf("chown %s %s:%s %s\n", find_values_repl(node->children, "option",
+		orig, repl), xmlGetProp(node, "user"), xmlGetProp(node, "group"),
+		find_value(node->children, "name"));*/
 }
 
 void parse_patch (xmlNodePtr node)
 {
+	//printf("patch %s\n", find_values(node->children, "param"));
 }
 
 void parse_move (xmlNodePtr node)
 {
+	/*printf("mv %s %s\n", find_value(node->children, "source"), 
+		find_value(node->children, "destination"));*/
 }
 
 void parse_link (xmlNodePtr node)
 {
+	/*char *orig[2] = { "force", NULL };
+	char *repl[2] = { "f", NULL };
+	printf("ln -s%s %s %s\n", find_values_repl(node->children, "option",
+		orig, repl), find_value(node->children, "target"),
+		find_value(node->children, "name"));*/
 }
 
 void t_stage2 (xmlNodePtr node, void *data)
