@@ -36,10 +36,55 @@ element.</para></listitem>
 <listitem><para>Attribute values must always be quoted. With XML, it is
 illegal to omit quotation marks around attribute values.</para></listitem>
 
-<listitem><para>With XML, white space is preserved.</para></listitem>
+<listitem><para>XML parsers preserve <emphasis role="bold">all</emphasis>
+whitespace in XML documents, even that which is considered
+non-significant.</para></listitem>
 
-<listitem><para>With XML, <filename>CR</filename> / <filename>LF</filename>
-is converted to <filename>LF</filename></para></listitem>
+<listitem><para>The use of the ampersand [&nbsp;&amp;&nbsp;] symbol is
+reserved.  XML uses this to define an entity reference.</para></listitem>
+
+</itemizedlist>
+
+</sect2>
+
+<sect2>
+<title>Standard Entities</title>
+
+<para>As mentioned in the last section, the ampersand symbol cannot be used
+by itself.  There are a set of standard entity references that every DTD
+file should contain.  There are mostly symbols that you would want to place
+inside the XML file.  You define them by using thier decimal value on the
+ASCII chart.  Here is a good list&nbsp;:</para>
+
+<itemizedlist>
+
+<listitem><para>Less-Than [&nbsp;&lt;&nbsp;]&nbsp;:&nbsp;
+&quot;<filename>&amp;#60;</filename>&quot;
+</para></listitem>
+
+<listitem><para>Greater-Than [&nbsp;&gt;&nbsp;]&nbsp;:&nbsp;
+&quot;<filename>&amp;#62;</filename>&quot;
+</para></listitem>
+
+<listitem><para>Ampersand [&nbsp;&amp;&nbsp;]&nbsp;:&nbsp;
+&quot;<filename>&amp;#38;</filename>&quot;
+</para></listitem>
+
+<listitem><para>Apostrophe [&nbsp;&apos;&nbsp;]&nbsp;:&nbsp;
+&quot;<filename>&amp;#39;</filename>&quot;
+</para></listitem>
+
+<listitem><para>Quote [&nbsp;&quot;&nbsp;]&nbsp;:&nbsp;
+&quot;<filename>&amp;#34;</filename>&quot;
+</para></listitem>
+
+<listitem><para>Non Breaking Space (a forced space)&nbsp;:&nbsp;
+&quot;<filename>&amp;#32;</filename>&quot;
+</para></listitem>
+
+<listitem><para>Emdash [&nbsp;&emdash;&nbsp;]&nbsp;:&nbsp;
+&quot;<filename>&amp;#045;&amp;#045;</filename>&quot;
+</para></listitem>
 
 </itemizedlist>
 
@@ -158,8 +203,10 @@ character data mixed with children.</para></listitem>
 </itemizedlist>
 
 <para>When an element is declared with children, it will also define how
-the children can be used inside an XML document.  There are four ways that
-children elements can be defined in a DTD file&nbsp;:</para>
+the children can be used inside an XML document and also in the <emphasis
+role="bold">order</emphasis> that they are allowed to appear in an XML
+document. There are four ways that children elements can be defined in a
+DTD file&nbsp;:</para>
 
 <itemizedlist>
 
@@ -270,6 +317,23 @@ Example&nbsp;:&nbsp;<xref linkend="elem_execute"/>.</para></listitem>
 option. Example&nbsp;:&nbsp;<xref linkend="elem_alfs"/>.</para></listitem>
 
 </itemizedlist>
+
+</sect2>
+
+<sect2>
+<title>DOCTYPE and SYSTEM Declarations</title>
+
+<para>The <emphasis role="bold">DOCTYPE</emphasis> declaration is used in
+an XML document to define to the XML parser what DTD should be referenced.
+This declaration is helpful when you have a seperate DTD file outside of
+the XML document. See <xref linkend="elem_alfs"/> for an example.</para>
+
+<para>The <emphasis role="bold">SYSTEM</emphasis> declaration is used in an
+XML document to give provide a way to split up a file into smaller chunks.
+Many XML files can be quite large and having all the information inside one
+file can be unwieldy.  The <emphasis role="bold">SYSTEM</emphasis>
+declaration works just like any <emphasis role="bold">ENTITY</emphasis>
+declaration. See <xref linkend="elem_alfs"/> for an example.</para>
 
 </sect2>
 

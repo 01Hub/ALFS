@@ -43,8 +43,8 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>alfs</filename> is the root element of the
-&book-product;. This means that an ALFS profile should contain one and only
+<para>The element <filename>alfs</filename> is the root element of an ALFS
+Profile document. This means that an ALFS profile should contain one and only
 one <filename>alfs</filename> element with all the other elements being
 embedded within this element.</para>
 
