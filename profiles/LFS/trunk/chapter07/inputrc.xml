@@ -7,7 +7,7 @@
 
 <alfs>
 
-<stage name="Creating /etc/inputrc">
+<stage name="Creating the /etc/inputrc File">
 	<textdump base="/etc">
         	<file>inputrc</file>
         	<content>

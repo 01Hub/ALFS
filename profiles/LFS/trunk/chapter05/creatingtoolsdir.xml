@@ -9,7 +9,7 @@
 
 <alfs>
 
-<stage name="Creating tools directory.">
+<stage name="Creating the $LFS/tools Directory">
 	<mkdir>
 		<option>parents</option>
 		<name>&LFS;/tools</name>
@@ -113,7 +113,7 @@
 			<source>&man-pages-package;</source>
 			<source>&mktemp-package;</source>
 			<source>&mktemp-tempfile-patch;</source>
-			<source>&module-tools-package;</source>
+			<source>&module-init-tools-package;</source>
 			<source>&ncurses-package;</source>
 			<source>&nALFS-package;</source>
 			<source>&patch-package;</source>

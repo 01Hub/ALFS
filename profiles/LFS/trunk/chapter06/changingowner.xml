@@ -3,7 +3,7 @@
 
 <alfs>
 
-<stage name="Changing ownership of tools directory">
+<stage name="Changing Ownership">
 	<ownership user="0" group="0">
 		<option>recursive</option>
 		<name>/tools</name>

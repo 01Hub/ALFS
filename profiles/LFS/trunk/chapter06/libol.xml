@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="libol" version="&libol-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&libol-md5;</digest>
 			<archive>&packages_dir;/&libol-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&libol-directory;</base>
 		</stageinfo>
@@ -35,7 +35,7 @@
 		</make>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&libol-directory;</remove>
 	</stage>
 </package>

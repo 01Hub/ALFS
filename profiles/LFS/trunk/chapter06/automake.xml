@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="automake" version="&automake-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&automake-md5;</digest>
 			<archive>&packages_dir;/&automake-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&automake-directory;</base>
 		</stageinfo>
@@ -41,7 +41,7 @@
 
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&automake-directory;</remove>
 	</stage>
 </package>

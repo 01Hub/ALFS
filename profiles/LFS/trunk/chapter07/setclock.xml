@@ -7,7 +7,7 @@
 
 <alfs>
 
-<stage name="Configuring the setclock script">
+<stage name="Configuring the setclock Script">
 	<textdump>
 		<file>/etc/sysconfig/clock</file>
 		<content>

@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="ncurses" version="&ncurses-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&ncurses-md5;</digest>
 			<archive>&packages_dir;/&ncurses-package;</archive>
@@ -19,7 +19,7 @@
 
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&ncurses-directory;</base>
 		</stageinfo>
@@ -62,7 +62,7 @@
 		</link>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&ncurses-directory;</remove>
 	</stage>
 </package>

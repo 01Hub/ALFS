@@ -7,7 +7,7 @@
 
 <alfs>
 
-<stage name="Creating directories and mounting file systems">
+<stage name="Mounting Virtual Kernel File Systems">
 
 	<mkdir base="&LFS;">
 		<option>parents</option>

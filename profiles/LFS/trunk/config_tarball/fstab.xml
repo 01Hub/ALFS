@@ -7,7 +7,7 @@
 
 <alfs>
 
-<stage name="Creating the /etc/fstab file">
+<stage name="Creating the /etc/fstab File">
 	<textdump>
 		<file>/etc/fstab</file>
 		<content>

@@ -24,13 +24,13 @@
 
 <alfs version="3.1" xmlns:xi="http://www.w3.org/2001/XInclude">
 
-<stage name="Chapter 5 - Constructing a temporary system">
+<stage name="Chapter 5 - Constructing a Temporary System">
 
 	<xi:include href="chapter05/creatingtoolsdir.xml" />
 	<xi:include href="chapter05/addinguser.xml" />
 	<xi:include href="chapter05/settingenvironment.xml" />
 
-	<stage name="Installing packages in /tools as &lfs-user;.">
+	<stage name="Installing packages in /tools as &lfs-user;">
 		<stageinfo>
 			<root>/</root>
 			<user>&lfs-user;</user>
@@ -49,7 +49,7 @@
 		<xi:include href="chapter05/gcc-pass1.xml" />
 		<xi:include href="chapter05/libc-headers.xml" />
 		<xi:include href="chapter05/glibc.xml" />
-		<xi:include href="chapter05/lockingglibc.xml" />
+		<xi:include href="chapter05/adjustingtoolchain.xml" />
 		<xi:include href="chapter05/tcl.xml" />
 		<xi:include href="chapter05/expect.xml" />
 		<xi:include href="chapter05/dejagnu.xml" />
@@ -78,12 +78,11 @@
 		<xi:include href="chapter05/udev.xml" />
 		<xi:include href="chapter05/strip.xml" />
 	</stage>
-
 </stage>
 
-<stage name="Chapter 6 - Installing basic system software">
-	<stage name="Creating directories and mounting the proc and sysfs file systems">
-		<xi:include href="chapter06/proc.xml" />
+<stage name="Chapter 6 - Installing Basic System Software">
+	<stage name="Creating Directories and Mounting Virtual Kernel File Systems">
+		<xi:include href="chapter06/kernfs.xml" />
 	</stage>
 
 	<stage name="Chroot with /tools">
@@ -107,7 +106,7 @@
 		<xi:include href="chapter06/libc-headers.xml" />
 		<xi:include href="chapter06/man-pages.xml" />
 		<xi:include href="chapter06/glibc.xml" />
-		<xi:include href="chapter06/adjustingtoolchain.xml" />
+		<xi:include href="chapter06/readjustingtoolchain.xml" />
 		<xi:include href="chapter06/binutils.xml" />
 		<xi:include href="chapter06/gcc.xml" />
 		<xi:include href="chapter06/coreutils.xml" />
@@ -145,7 +144,7 @@
 		<xi:include href="chapter06/hotplug.xml" />
 		<xi:include href="chapter06/man.xml" />
 		<xi:include href="chapter06/make.xml" />
-		<xi:include href="chapter06/module-tools.xml" />
+		<xi:include href="chapter06/module-init-tools.xml" />
 		<xi:include href="chapter06/patch.xml" />
 		<xi:include href="chapter06/procps.xml" />
 		<xi:include href="chapter06/psmisc.xml" />
@@ -160,7 +159,7 @@
 	</stage>
 </stage>
 
-<stage name="Chapter 7 - Setting up system boot scripts">
+<stage name="Chapter 7 - Setting Up System Bootscripts">
 	<stageinfo>
 		<root>&LFS;</root>
 		<environment>
@@ -177,13 +176,13 @@
 	<xi:include href="chapter07/setclock.xml" />
 	<xi:include href="config/console.xml" />
 	<xi:include href="chapter07/inputrc.xml" />
-	<xi:include href="chapter07/bash_startup.xml" />
+	<xi:include href="chapter07/profile.xml" />
 	<xi:include href="chapter07/hostname.xml" />
 	<xi:include href="chapter07/hosts.xml" />
 	<xi:include href="chapter07/network.xml" />
 </stage>
 
-<stage name="Chapter 8 - Making the LFS system bootable">
+<stage name="Chapter 8 - Making the LFS System Bootable">
 	<stageinfo>
 		<root>&LFS;</root>
 		<environment>
@@ -199,7 +198,6 @@
 	<xi:include href="config/fstab.xml" />
 	<xi:include href="config/kernel.xml" />
 	<xi:include href="config/grub.xml" />
-
 </stage>
 
 <stage name="Chapter 9 - The End">

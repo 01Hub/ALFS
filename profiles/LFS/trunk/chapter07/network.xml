@@ -7,7 +7,7 @@
 
 <alfs>
 
-<stage name="Configuring the network script">
+<stage name="Configuring the network Script">
 	<mkdir>
 		<option>parents</option>
 		<name>/etc/sysconfig/network-devices/ifconfig.eth0</name>
