@@ -95,24 +95,6 @@ static char *syntax_version = NULL;
 
 static unsigned int element_id;
 
-
-static INLINE void set_attributes(element_s *el, xmlNodePtr node)
-{
-	int i = 0;
-	xmlAttrPtr attr;
-
-
-	for (attr = node->properties; attr; attr = attr->next) {
-		el->attr = xrealloc(el->attr, (i + 3) * sizeof *el->attr);
-
-		el->attr[i] = xstrdup((const char *)attr->name);
-		el->attr[i+1] = xstrdup((const char *)attr->children->content);
-		el->attr[i+2] = NULL;
-
-		i += 2;
-	}
-}
-
 static const struct handler_attribute *find_handler_attribute(const handler_info_s *handler,
 							      const char *name)
 {
@@ -360,8 +342,6 @@ static INLINE element_s *create_element(xmlNodePtr node, element_s *parent)
 					xfree(c);
 				}
 			}
-
-			set_attributes(el, node);
 
 			break;
 		case XML_COMMENT_NODE:

@@ -68,7 +68,6 @@ typedef struct element_s {
 	void *handler_data;
 
 	char *name;
-	char **attr;
 	char *content;
 
 	struct element_s *parent;

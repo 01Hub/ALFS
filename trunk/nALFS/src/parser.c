@@ -51,7 +51,6 @@ element_s *init_new_element(void)
 	new->id = 0;
 
 	new->name = NULL;
-	new->attr = NULL;
 	new->content = NULL;
 
 	new->should_run = 0;
@@ -71,7 +70,6 @@ element_s *init_new_element(void)
 
 void free_element(element_s *el)
 {
-	int i;
 	element_s *tmp;
 	element_s *child = el->children;
 
@@ -89,17 +87,6 @@ void free_element(element_s *el)
 
 	xfree(el->name);
 	xfree(el->content);
-
-	if (el->attr) {
-		for (i = 0; el->attr[i]; i += 2) {
-			xfree(el->attr[i]);
-			xfree(el->attr[i+1]);
-		}
-		xfree(el->attr[i]);
-
-		xfree(el->attr);
-		el->attr = NULL;
-	}
 
 	xfree(el);
 }
