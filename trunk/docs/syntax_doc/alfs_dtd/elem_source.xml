@@ -19,8 +19,8 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>source</filename> is used to specify name of
-the source in the englobing element.</para>
+<para>The element <filename>source</filename> is used to specify the name
+of the source in the parent element.</para>
 
 </sect2>
 

@@ -28,7 +28,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>ownership</filename> is one of the many main
+<para>The element <filename>ownership</filename> is one of the top-level
 operation elements.  It is used to perform a group and/or user ownership
 change on a file or set of files</para>
 

@@ -22,8 +22,8 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>permissions</filename> is one of the many main
-operation elements.  It allows one to change the permissions of a (set of)
+<para>The element <filename>permissions</filename> is one of the top-level
+operation elements.  It allows you to change the permissions of a (set of)
 file(s) or directory(ies).</para>
 
 <para>The sub-element <filename>option</filename> provides a means to pass

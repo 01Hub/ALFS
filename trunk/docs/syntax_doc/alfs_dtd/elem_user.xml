@@ -22,9 +22,9 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>user</filename> allow to specify a user ID that
-will be the effective user ID when executing the commands of the stage to
-which it applies.</para>
+<para>The element <filename>user</filename> allows you to specify a user ID
+that will be the effective user ID when executing the commands of the stage
+to which it applies.</para>
 
 </sect2>
 

@@ -26,20 +26,20 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>unpack</filename> is one of the many main
+<para>The element <filename>unpack</filename> is one of the top-level
 operation elements.  It is used to unpack an archive into a destination
 directory</para>
 
 <para>The sub-element <filename>reference</filename> gives the URL of the
-archive, which is used if the archive file is not available locally.</para>
+archive; it is only used if the archive file is not available locally.</para>
 
 <para>The sub-element <filename>digest</filename> gives the digest of the
 archive, as computed by openssl, using the digest type specified in the
 attribute <filename>type</filename>.</para>
 
 <para>The sub-element <filename>archive</filename> gives the name of the
-archive, and the sub-element <filename>destination</filename> given the
-name of the directory in which the archive is unpacked</para>
+archive, and the sub-element <filename>destination</filename> gives the
+name of the directory in which the archive is unpacked.</para>
 
 </sect2>
 

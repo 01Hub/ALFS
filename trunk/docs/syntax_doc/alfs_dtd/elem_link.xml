@@ -28,11 +28,11 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>link</filename> is one of the many main
+<para>The element <filename>link</filename> is one of the top-level
 operation elements. It allows you to create a hard or symbolic link.</para>
 
 <para>The sub-element <filename>target</filename> gives the name(s) of the
-targets.</para>
+target.</para>
 
 <para>The sub-element <filename>option</filename> provides a means to pass
 an option to the <command>ln</command> command.</para>

@@ -26,7 +26,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>patch</filename> is one of the many main
+<para>The element <filename>patch</filename> is one of the top-level
 operation elements.  It is used to execute the <command>patch</command>
 command.</para>
 

@@ -27,7 +27,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>move</filename> is one of the many main
+<para>The element <filename>move</filename> is one of the top-level
 operation elements. It is used to move one or several source
 files and/or directories into a destination file or directory.</para>
 
@@ -42,10 +42,11 @@ determine what options are available.</para></note>
 to the destination, using the specified option if present.</para>
 
 <para>The sub-element <filename>source</filename> contains the name of
-the directory were the source file is.</para>
+the source file and its directory.</para>
 
 <para>The sub-element <filename>destination</filename> contains the name of
-the destination directory for the <command>mv</command> command.</para>
+the destination directory (and, optionally, the filename) for the
+<command>mv</command> command.</para>
 
 <para>The attribute <filename>base</filename> gives the name of the
 directory in which the new directory will be created. See

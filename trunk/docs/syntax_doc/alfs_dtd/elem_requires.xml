@@ -24,7 +24,7 @@
 <title>Description</title>
 
 <para>The element <filename>requires</filename> denotes a dependency
-between two packages. The package containg the
+between two packages. The package containing the
 <filename>requires</filename> element depends on the package whose name is
 contained in the <filename>name</filename> sub-element.</para>
 

@@ -24,15 +24,16 @@
 <title>Description</title>
 
 <para>The element <filename>utilizes</filename> indicates that the package
-containg the <filename>utilizes</filename> element utilizes the package
+containing the <filename>utilizes</filename> element utilizes the package
 whose name is contained in the <filename>name</filename> sub-element, but
-does not depend on it, in which case the element
-<filename>requires</filename> is used.</para>
+does not depend on it (in which case the element
+<filename>requires</filename> should be used).</para>
 
 <para>The actual name is put into a <filename>name</filename> element
-because we might want to add a version in a future version. To work
-properly, then element <filename>name</filename> must be defined in the
-same profile.</para>
+because we might want to add a version in a future version.</para>
+
+<note><para>To work properly, then element <filename>name</filename> must
+be defined in the same profile.</para></note>
 
 </sect2>
 

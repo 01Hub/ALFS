@@ -24,9 +24,9 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>packageinfo</filename> groups elements containg
-information about the package, namely a description and some dependency
-relationship(s).</para>
+<para>The element <filename>packageinfo</filename> groups elements
+containing information about the package, namely a description and some
+dependency relationship(s).</para>
 
 <para>The <filename>description</filename> sub-element provides for a
 description of the packge.</para>

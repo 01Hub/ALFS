@@ -17,8 +17,8 @@
 
 <sect2><title>Description</title>
 
-<para>The element <filename>root</filename> allow to specify the name of a
-directory which will be the root directory for the commands of the
+<para>The element <filename>root</filename> allow you to specify the name
+of a directory which will be the root directory for the commands of the
 stage.</para>
 
 </sect2>
