@@ -12,11 +12,32 @@
 ]>
 <alfs>
   <package name="gnome-print" version="&gnome-print-version;">
+    <packageinfo>
+      <requires>
+	<name>gdk-pixbuf</name>
+      </requires>
+      <requires>
+	<name>gnome-libs</name>
+      </requires>
+      <requires>
+	<name>libxml</name>
+      </requires>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&gnome-print-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&gnome-print-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gnome-print-ft-patch;</param>
+      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>
@@ -31,11 +52,7 @@
 	  =MODULE_VERSION=xml-1.8.17
 	</content>
       </textdump>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&gnome-print-ft-patch;</param>
-      </patch>
+      
       <configure>
         <param>--prefix=/opt/gnome</param>
         <param>--with-zlib=/usr</param>

@@ -16,6 +16,9 @@
       <requires>
         <name>gnome-libs</name>
       </requires>
+      <utilizes>
+	<name>pkgconfig</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

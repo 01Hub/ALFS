@@ -12,11 +12,50 @@
 ]>
 <alfs>
   <package name="soup" version="&soup-version;">
+    <packageinfo>
+      <requires>
+	<name>glib</name>
+      </requires>
+      <requires>
+	<name>libxml2</name>
+      </requires>
+      <requires>
+	<name>popt</name>
+      </requires>
+      <utilizes>
+	<name>apache</name>
+      </utilizes>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>mozilla</name>
+      </utilizes>
+      <utilizes>
+	<name>gnome-libs</name>
+      </utilizes>
+      <utilizes>
+	<name>gtk-doc</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-utils</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&soup-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&soup-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&soup-gcc34-patch;</param>
+      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>

@@ -17,9 +17,6 @@
         <name>oaf</name>
       </requires>
       <requires>
-        <name>gtk+</name>
-      </requires>
-      <requires>
         <name>gdk-pixbuf</name>
       </requires>
       <utilizes>
@@ -36,16 +33,18 @@
       </unpack>
     </stage>
     <stage name="Installing">
-    <stageinfo>
-      <base>&build_dir;/&gconf-directory;</base>
-    </stageinfo>
-    <configure>
-      <param>--prefix=/opt/gnome</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>&ldconfig;</stage>
+      <stageinfo>
+	<base>&build_dir;/&gconf-directory;</base>
+      </stageinfo>
+      <configure>
+	<param>--prefix=/opt/gnome</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+      &ldconfig;
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gconf-directory;</remove>
     </stage>
