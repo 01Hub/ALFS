@@ -405,6 +405,14 @@ static int stage_main(element_s *el)
 	return status;
 }
 
+#if HANDLER_SYNTAX_3_2
+
+static const char *stage_parameters_3_2[] =
+{ "stageinfo", "base", "root", "user", "environment", "variable",
+  "shell", NULL };
+
+#endif
+
 #if HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
 static int then_main(element_s *el)
@@ -520,7 +528,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "stage",
 		.description = "Enter stage: ", // FIXME
 		.syntax_version = "3.2",
-		.parameters = stage_parameters,
+		.parameters = stage_parameters_3_2,
 		.main = stage_main,
 		.type = HTYPE_NORMAL | HTYPE_STAGE,
 		.alloc_data = NULL,
@@ -531,7 +539,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "then",
 		.description = "then",
 		.syntax_version = "3.2",
-		.parameters = stage_parameters,
+		.parameters = stage_parameters_3_2,
 		.main = then_main,
 		.type = HTYPE_TRUE_RESULT | HTYPE_STAGE,
 		.alloc_data = NULL,
@@ -542,7 +550,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "else",
 		.description = "else",
 		.syntax_version = "3.2",
-		.parameters = stage_parameters,
+		.parameters = stage_parameters_3_2,
 		.main = else_main,
 		.type = HTYPE_FALSE_RESULT | HTYPE_STAGE,
 		.alloc_data = NULL,
