@@ -29,8 +29,7 @@
 
 <para>The element <filename>copy</filename> is one of the many main
 operation elements. It is used to copy a file and/or directory into a
-destination file or directory. <emphasis role="bold">The use of wildcards
-is not supported</emphasis>.</para>
+destination file or directory.</para>
 
 <para>The sub-element <filename>option</filename> provides a means to pass
 an option to the <command>cp</command> command.</para>

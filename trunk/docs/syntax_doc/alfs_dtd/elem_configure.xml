@@ -49,10 +49,9 @@ directory.  The packages <filename>gcc</filename> and
 </sect2>
 
 <sect2>
-<title>Examples</title>
+<title>Example #1</title>
 
-<para><emphasis role="bold">EXAMPLE #1</emphasis>&nbsp;:&nbsp;
-This example calls <filename>configure</filename> without any
+<para>This first example calls <filename>configure</filename> without any
 parameters&nbsp;:</para>
 
 <screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
@@ -64,9 +63,13 @@ parameters&nbsp;:</para>
 cd /usr/src/mypackage/
 <command>./configure</command></userinput></screen>
 
-<para><emphasis role="bold">EXAMPLE #2</emphasis>&nbsp;:&nbsp;
-This example calls <filename>configure</filename> with a parameter&nbsp;:
-</para>
+</sect2>
+
+<sect2>
+<title>Example #2</title>
+
+<para>This second example calls <filename>configure</filename> with a
+parameter&nbsp;: </para>
 
 <screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
 	&lt;prefix&gt;CFLAGS=&quot;...&quot;&lt;prefix&gt;
@@ -80,9 +83,13 @@ This example calls <filename>configure</filename> with a parameter&nbsp;:
 cd /usr/src/mypackage/
 <command>./configure --prefix=/opt/mypackage</command></userinput></screen>
 
-<para><emphasis role="bold">EXAMPLE #3</emphasis>&nbsp;:&nbsp;
-This example calls <filename>configure</filename> with a parameter and uses
-prefix&nbsp;:</para>
+</sect2>
+
+<sect2>
+<title>Example #3</title>
+
+<para>This third example calls <filename>configure</filename> with a
+parameter and uses prefix&nbsp;:</para>
 
 <screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
 	&lt;prefix&gt;PATH=/usr/local/bin&lt;/prefix&gt;
@@ -95,9 +102,13 @@ prefix&nbsp;:</para>
 cd /usr/src/mypackage/
 <command>PATH=/usr/local/bin ./configure --prefix=/opt/mypackage</command></userinput></screen>
 
-<para><emphasis role="bold">EXAMPLE #4</emphasis>&nbsp;:&nbsp;
-This example calls <filename>configure</filename> with a parameter and an
-explicit command (same result as example #3)&nbsp;:</para>
+</sect2>
+
+<sect2>
+<title>Example #4</title>
+
+<para>This fourth example calls <filename>configure</filename> with a
+parameter and an explicit command (same result as example #3)&nbsp;:</para>
 
 <screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot; command=&quot;PATH=/usr/local/bin ./configure&quot;&gt;
 	&lt;param&gt;--prefix=/opt/mypackage&lt;/param&gt;

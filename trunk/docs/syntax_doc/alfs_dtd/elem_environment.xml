@@ -41,12 +41,16 @@ existing value.</para>
 
 <screen><userinput>&lt;stage&gt;
 	&lt;stageinfo&gt;
+
 		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
+
 		&lt;environment&gt;
 			&lt;variable name="GCCFLAGS"&gt;-O2&lt;/variable&gt;
 			&lt;variable name="PATH" mode="prepend"&gt;/usr/src/gzip.1.2.4a:&lt;/variable&gt;
 			&lt;variable name="LDFLAGS" mode="append"&gt; -s&lt;/variable&gt;
+
 		&lt;/environment&gt;
+
 	&lt;/stageinfo&gt;
 
 &lt;/stage&gt;</userinput></screen>
