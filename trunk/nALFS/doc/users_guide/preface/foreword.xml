@@ -2,7 +2,7 @@
 <?dbhtml filename="foreword.html" dir="preface"?>
 <title>Foreword</title>
 
-<para><emphasis mode="strong">From the Editor</emphasis></para>
+<para><emphasis>From the Editor</emphasis></para>
 
 <para>Being a Systems Engineer by trade and having used Linux From Scratch 
 (<acronym>LFS</acronym>) for about a year, I was looking for a way to automate 

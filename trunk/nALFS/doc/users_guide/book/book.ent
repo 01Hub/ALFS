@@ -8,14 +8,18 @@
 
 <!-- Generally used entities go here -->
 
-<!ENTITY maintainer-fullname "James Robertson">
-<!ENTITY maintainer-firstname "James">
-<!ENTITY maintainer-address "jwrober@linuxfromscratch.org">
+<!ENTITY book-maintainer-fullname "James Robertson">
+<!ENTITY book-maintainer-firstname "James">
+<!ENTITY book-maintainer-address "jwrober@linuxfromscratch.org">
 <!ENTITY book-product "nALFS">
+
+<!ENTITY product-maintainer-fullname "Neven Has">
+<!ENTITY product-maintainer-firstname "Neven">
+<!ENTITY product-maintainer-address "neven@linuxfromscratch.org">
 
 <!ENTITY nbsp " ">
 <!ENTITY emdash "--">
 <!ENTITY ftp-root "ftp://ftp.linuxfromscratch.org">
-<!ENTITY http-root "http://ftp.linuxfromscratch.org">
+<!ENTITY http-root "http://www.linuxfromscratch.org">
 <!ENTITY hints-root "http://www.linuxfromscratch.org/hints">
 <!ENTITY alfs-root "http://www.linuxfromscratch.org/alfs">
