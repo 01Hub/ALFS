@@ -27,7 +27,6 @@
 
 #include <curses.h>
 
-#include "logging.h"
 #include "nprint.h"
 
 

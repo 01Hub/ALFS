@@ -34,7 +34,7 @@
 #include <nALFS.h>
 
 #include "handlers.h"
-#include "win.h"
+#include "nprint.h"
 #include "parser.h"
 #include "utility.h"
 

@@ -42,7 +42,7 @@
 
 #include "handlers.h"
 #include "parser.h"
-#include "win.h"
+#include "nprint.h"
 #include "nalfs-core.h"
 #include "backend.h"
 #include "utility.h"

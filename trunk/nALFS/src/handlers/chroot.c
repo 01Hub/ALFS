@@ -38,7 +38,7 @@
 
 #include "handlers.h"
 #include "parser.h"
-#include "win.h"
+#include "nprint.h"
 #include "utility.h"
 #include "nalfs-core.h"
 #include "backend.h"

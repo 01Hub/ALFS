@@ -24,6 +24,8 @@
 #ifndef H_NPRINT_
 #define H_NPRINT_
 
+#include "logging.h"
+
 
 /*
  * Types of messages.  They are also used as message_types[] indexes.
