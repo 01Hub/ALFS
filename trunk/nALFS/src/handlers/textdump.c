@@ -55,12 +55,9 @@ static INLINE FILE *open_for_overwrite(const char *file, const char *base)
 	return fopen(file, "w");
 }
 
-/* TODO: Only alloc_base_dir(_new) is different. */
-
-int textdump_main_ver2(element_s *el)
+int textdump_main(element_s *el, const char *base_dir)
 {
 	char *tok;
-	char *base = NULL;
 	char *file;
 	char *content;
 	char *mode = attr_value("mode", el);
@@ -78,25 +75,21 @@ int textdump_main_ver2(element_s *el)
 		return -1;
 	}
 
-	base = alloc_base_dir(el);
-
-	if (change_current_dir(base)) {
-		xfree(base);
+	if (change_current_dir(base_dir)) {
 		xfree(file);
 		xfree(content);
 		return -1;
 	}
 
 	if (mode && strcmp(mode, "append") == 0) {
-		fp = open_for_append(file, base);
+		fp = open_for_append(file, base_dir);
 	} else {
-		fp = open_for_overwrite(file, base);
+		fp = open_for_overwrite(file, base_dir);
 	}
 
 	if (fp == NULL) {
 		Nprint_h_err("Unable to open \"%s\":", file);
 		Nprint_h_err("    %s", strerror(errno));
-		xfree(base);
 		xfree(file);
 		xfree(content);
 		return -1;
@@ -108,67 +101,36 @@ int textdump_main_ver2(element_s *el)
 
 	fclose(fp);
 
-	xfree(base);
 	xfree(file);
 	xfree(content);
 	
 	return 0;
+}
+
+int textdump_main_ver2(element_s *el)
+{
+	int i;
+	char *base = alloc_base_dir(el);
+
+	i = textdump_main(el, base);
+
+	xfree(base);
+
+	return i;
 }
 
 int textdump_main_ver3(element_s *el)
 {
-	char *tok;
-	char *base = NULL;
-	char *file;
-	char *content;
-	char *mode = attr_value("mode", el);
-	FILE *fp;
+	int i;
+	char *base = alloc_base_dir_new(el);
 
-
-	if ((file = alloc_textdump_file(el))== NULL) {
-		Nprint_h_err("No file for textdump specified.");
-		return -1;
-	}
-
-	if ((content = El_textdump_content(el)) == NULL) {
-		Nprint_h_err("No content for textdump specified.");
-		xfree(file);
-		return -1;
-	}
-
-	base = alloc_base_dir_new(el);
-
-	if (change_current_dir(base)) {
-		xfree(base);
-		xfree(file);
-		xfree(content);
-		return -1;
-	}
-
-	fp = (mode && strcmp(mode, "append") == 0) ?
-		open_for_append(file, base) : open_for_overwrite(file, base);
-
-	if (fp == NULL) {
-		Nprint_h_err("Unable to open \"%s\": %s",
-			file, strerror(errno));
-		xfree(base);
-		xfree(file);
-		xfree(content);
-		return -1;
-	}
-
-	for (tok = strtok(content, "\n"); tok; tok = strtok(NULL, "\n")) {
-		fprintf(fp, "%s\n", ++tok);
-	}
-
-	fclose(fp);
+	i = textdump_main(el, base);
 
 	xfree(base);
-	xfree(file);
-	xfree(content);
-	
-	return 0;
+
+	return i;
 }
+	
 
 char *textdump_data(element_s *el, handler_data_e data)
 {
