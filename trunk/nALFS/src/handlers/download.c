@@ -1,10 +1,11 @@
 /*
  *  download.c - Handler.
  * 
- *  Copyright (C) 2003
+ *  Copyright (C) 2003, 2004
  *  
  *  Neven Has <haski@sezampro.yu>
  *  Vassili Dzuba <vdzuba@nerim.net>
+ *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -45,99 +46,209 @@
 #include "backend.h"
 
 
-#define El_download_file(el) alloc_trimmed_param_value("file", el)
-#define El_download_destination(el) alloc_trimmed_param_value("destination", el)
+enum download_parameter_types {
+	DOWNLOAD_FILE,
+	DOWNLOAD_URL,
+	DOWNLOAD_DESTINATION,
+};
+
+enum download_attribute_types {
+	DOWNLOAD_BASE,
+};
+
+struct download_data {
+	char *file;
+	char *destination;
+	int url_count;
+	char **urls;
+	char *base;
+	const element_s *digest;
+};
+
+static int download_setup(element_s * const element)
+{
+	struct download_data *data;
+
+	if ((data = xmalloc(sizeof(struct download_data))) == NULL)
+		return -1;
+
+	data->file = NULL;
+	data->destination = NULL;
+	data->url_count = 0;
+	data->urls = NULL;
+	data->digest = NULL;
+	data->base = NULL;
+	element->handler_data = data;
+
+	return 0;
+}
+
+static void download_free(const element_s * const element)
+{
+	struct download_data *data = (struct download_data *) element->handler_data;
+	int i;
+
+	xfree(data->base);
+	xfree(data->file);
+	xfree(data->destination);
+	if (data->url_count > 0) {
+		for (i = 0; i < data->url_count; i++)
+			xfree(data->urls[i]);
+		xfree(data->urls);
+	}
+	xfree(data);
+}
+
+static int download_attribute(const element_s * const element,
+			      const struct handler_attribute * const attr,
+			      const char * const value)
+{
+	struct download_data *data = (struct download_data *) element->handler_data;
+
+	switch (attr->private) {
+	case DOWNLOAD_BASE:
+		if (data->base) {
+			Nprint_err("<download>: cannot specify \"base\" more than once.");
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int download_parameter(const element_s * const element,
+			    const struct handler_parameter * const param,
+			    const char * const value)
+{
+	struct download_data *data = (struct download_data *) element->handler_data;
+
+	switch (param->private) {
+	case DOWNLOAD_FILE:
+		if (data->file) {
+			Nprint_err("<download>: cannot specify <file> more than once.");
+			return 1;
+		}
+		data->file = xstrdup(value);
+		return 0;
+	case DOWNLOAD_URL:
+		data->url_count++;
+		if ((data->urls = xrealloc(data->urls,
+					   sizeof(data->urls[0]) * (data->url_count))) == NULL) {
+			Nprint_err("xrealloc() failed: %s", strerror(errno));
+			return -1;
+		}
+		data->urls[(data->url_count - 1)] = xstrdup(value);
+		return 0;
+	case DOWNLOAD_DESTINATION:
+		if (data->destination) {
+			Nprint_err("<download>: cannot specify <destination> more than once.");
+			return 1;
+		}
+		data->destination = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int download_invalid_data(const element_s * const element)
+{
+	struct download_data *data = (struct download_data *) element->handler_data;
+
+	if (!data->file) {
+		Nprint_err("<download>: \"file\" must be specified.");
+		return 1;
+	}
+
+	if (!data->destination) {
+		Nprint_err("<download>: \"destination\" must be specified.");
+		return 1;
+	}
+
+	return 0;
+}
+
+static int download_invalid_child(const element_s * const element,
+				const element_s * const child)
+{
+	struct download_data *data = (struct download_data *) element->handler_data;
+
+	if (child->handler->type & HTYPE_DIGEST) {
+		if (data->digest) {
+			Nprint_err("<download>: only one <digest> allowed.");
+			return 1;
+		}
+
+		data->digest = child;
+		return 0;
+	}
+
+	return 1;
+}
 
 #if HANDLER_SYNTAX_3_1 
 
 static const struct handler_parameter download_parameters[] = {
-	{ .name = "digest" },
-	{ .name = "file" },
-	{ .name = "url" },
-	{ .name = "destination" },
+	{ .name = "file", .private = DOWNLOAD_FILE },
+	{ .name = "url", .private = DOWNLOAD_URL },
+	{ .name = "destination", .private = DOWNLOAD_DESTINATION },
 	{ .name = NULL }
 };
 
-static int download_main(const element_s * const el)
+static int download_main(const element_s * const element)
 {
-	/* status assumes failure until set otherwise */
+	struct download_data *data = (struct download_data *) element->handler_data;
 	int status = -1;
-	char *file = NULL;
-	char *destination = NULL;
-	char *digest = NULL;
-	char *digest_type = NULL;
 	struct stat file_stat;
+	char *digest, *digest_type;
 
-	/* <file> is mandatory */
-	if ((file = El_download_file(el)) == NULL) {
-		Nprint_h_err("File name is missing.");
-		goto free_all_and_return;
+	if (change_current_dir(data->destination))
+		return -1;
+
+	if (data->digest) {
+		digest = data->digest->handler->alloc_data(data->digest, HDATA_COMMAND);
+		digest_type = data->digest->handler->alloc_data(data->digest, HDATA_VERSION);
 	}
-
-	/* <destination> is mandatory */
-	if ((destination = El_download_destination(el)) == NULL) {
-		Nprint_h_err("Destination is missing.");
-		goto free_all_and_return;
-	}
-	
-	/* changing to <destination> directory */
-	if (change_current_dir(destination))
-		goto free_all_and_return;
-
-	alloc_element_digest(el, &digest, &digest_type);
 
 	/* Check if file exists. */
-	if ((stat(file, &file_stat))) {
-	        if (errno == ENOENT && first_param("url", el) != NULL) {
-		        int found = 0;
-			element_s *p;
+	if ((stat(data->file, &file_stat))) {
+	        if ((errno == ENOENT) && (data->url_count > 0)) {
+			int i, found = 0;
 
-			Nprint_h_warn("File %s not found.", file);
+			Nprint_h_warn("File %s not found.", data->file);
 			Nprint_h("Trying to fetch it from <url>...");
 
-	                for (p = first_param("url", el); p; p = next_param(p)) {
-				char *s;
+			for (i = 0; i < data->url_count; i++) {
+				char *tmp;
 
-				if ((s = alloc_trimmed_str(p->content)) == NULL) {
-					Nprint_h_warn("Source empty.");
-					continue;
-				}
-				
-				append_str(&s, file);
-				if (! get_url(s, file, digest, digest_type))
+				tmp = xstrdup(data->urls[i]);
+				append_str(&tmp, data->file);
+				if (!get_url(tmp, data->file, digest, digest_type))
 					found = 1;
-				xfree(s);
+				xfree(tmp);
 				if (found)
 					break;
 			}
-			
-			if (! found) {
-				Nprint_h_err("Unable to download file %s.", file);
-				goto free_all_and_return;
-			}
 
+			if (i < data->url_count) {
+				status = 0;
+			} else {
+				Nprint_h_err("Unable to download file %s.", data->file);
+			}
 		} else {
-			Nprint_h_err("Checking for %s failed:", file);
+			Nprint_h_err("Checking for %s failed:", data->file);
 			Nprint_h_err("    %s", strerror(errno));
-			goto free_all_and_return;
 		}
-	} else if (digest != NULL) {
-		if (verify_digest(digest_type, digest, file)) {
-			Nprint_h_err("Wrong %s digest of file: %s",
-				     digest_type, file);
-			goto free_all_and_return;
-		}
+	} else if (digest && verify_digest(digest_type, digest, data->file)) {
+		Nprint_h_err("Wrong %s digest of file: %s", digest_type, data->file);
+	} else {
+		status = 0;
 	}
 
-	/* operation was successful, set status */
-	status = 0;
-
- free_all_and_return:
 	xfree(digest_type);
 	xfree(digest);
-	xfree(file);
-	xfree(destination);
-
 	return status;
 }
 
@@ -146,88 +257,91 @@ static int download_main(const element_s * const el)
 #if HANDLER_SYNTAX_3_2
 
 static const struct handler_parameter download_parameters_v3_2[] = {
-	{ .name = "digest" },
-	{ .name = "file" },
-	{ .name = "url" },
+	{ .name = "file", .private = DOWNLOAD_FILE },
+	{ .name = "url", .private = DOWNLOAD_URL },
 	{ .name = NULL }
 };
 
 static const struct handler_attribute download_attributes_v3_2[] = {
-	{ .name = "base" },
+	{ .name = "base", .private = DOWNLOAD_BASE },
 	{ .name = NULL }
 };
 
-static int download_main_3_2(const element_s * const el)
+static int download_invalid_data_v3_2(const element_s * const element)
 {
-	/* status assumes failure until set otherwise */
-	int status = -1;
-	char *file = NULL;
-	char *digest = NULL;
-	char *digest_type = NULL;
-	struct stat file_stat;
+	struct download_data *data = (struct download_data *) element->handler_data;
 
-	/* <file> is mandatory */
-	if ((file = El_download_file(el)) == NULL) {
-		Nprint_h_err("File name is missing.");
-		goto free_all_and_return;
+	if (!data->file) {
+		Nprint_err("<download>: \"file\" must be specified.");
+		return 1;
 	}
 
-	if (change_to_base_dir(el, attr_value("base", el), 1))
-		goto free_all_and_return;
+	if (!data->base) {
+		const char *base = alloc_base_dir_new(element);
 
-	alloc_element_digest(el, &digest, &digest_type);
+		if (!base) {
+			Nprint_err("<download>: \"base\" must be specified at or above this element.");
+			return 1;
+		} else {
+			xfree(base);
+		}
+	}
+
+	return 0;
+}
+
+static int download_main_3_2(const element_s * const element)
+{
+	struct download_data *data = (struct download_data *) element->handler_data;
+	int status = -1;
+	struct stat file_stat;
+	char *digest, *digest_type;
+
+	if (change_to_base_dir(element, data->base, 0))
+		return -1;
+
+	if (data->digest) {
+		digest = data->digest->handler->alloc_data(data->digest, HDATA_COMMAND);
+		digest_type = data->digest->handler->alloc_data(data->digest, HDATA_VERSION);
+	}
 
 	/* Check if file exists. */
-	if ((stat(file, &file_stat))) {
-	        if (errno == ENOENT && first_param("url", el) != NULL) {
-		        int found = 0;
-			element_s *p;
+	if ((stat(data->file, &file_stat))) {
+	        if ((errno == ENOENT) && (data->url_count > 0)) {
+			int i, found = 0;
 
-			Nprint_h_warn("File %s not found.", file);
+			Nprint_h_warn("File %s not found.", data->file);
 			Nprint_h("Trying to fetch it from <url>...");
 
-	                for (p = first_param("url", el); p; p = next_param(p)) {
-				char *s;
+			for (i = 0; i < data->url_count; i++) {
+				char *tmp;
 
-				if ((s = alloc_trimmed_str(p->content)) == NULL) {
-					Nprint_h_warn("Source empty.");
-					continue;
-				}
-				
-				append_str(&s, file);
-				if (! get_url(s, file, digest, digest_type))
+				tmp = xstrdup(data->urls[i]);
+				append_str(&tmp, data->file);
+				if (!get_url(tmp, data->file, digest, digest_type))
 					found = 1;
-				xfree(s);
+				xfree(tmp);
 				if (found)
 					break;
 			}
-			
-			if (! found) {
-				Nprint_h_err("Unable to download file %s.", file);
-				goto free_all_and_return;
-			}
 
+			if (i < data->url_count) {
+				status = 0;
+			} else {
+				Nprint_h_err("Unable to download file %s.", data->file);
+			}
 		} else {
-			Nprint_h_err("Checking for %s failed:", file);
+			Nprint_h_err("Checking for %s failed:", data->file);
 			Nprint_h_err("    %s", strerror(errno));
-			goto free_all_and_return;
 		}
-	} else if (digest != NULL) {
-		if (verify_digest(digest_type, digest, file)) {
-			Nprint_h_err("Wrong %s digest of file: %s",
-				     digest_type, file);
-			goto free_all_and_return;
-		}
+	} else if (digest && verify_digest(digest_type, digest, data->file)) {
+		Nprint_h_err("Wrong %s digest of file: %s", digest_type, data->file);
+	} else {
+		status = 0;
 	}
 
-	/* operation was successful, set status */
-	status = 0;
-
- free_all_and_return:
 	xfree(digest_type);
 	xfree(digest);
-	xfree(file);
-
 	return status;
 }
 
@@ -248,6 +362,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = download_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = download_setup,
+		.free = download_free,
+		.parameter = download_parameter,
+		.invalid_child = download_invalid_child,
+		.invalid_data = download_invalid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -261,6 +380,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
 		.alternate_shell = 1,
+		.setup = download_setup,
+		.free = download_free,
+		.parameter = download_parameter,
+		.invalid_child = download_invalid_child,
+		.invalid_data = download_invalid_data_v3_2,
+		.attribute = download_attribute,
 	},
 #endif
 	{
