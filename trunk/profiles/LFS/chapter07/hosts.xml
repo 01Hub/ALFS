@@ -4,7 +4,7 @@
 		<content>
 			=# Begin /etc/hosts (network card version)
 			=
-			=127.0.0.1 localhost.localdomain localhost
+			=127.0.0.1 localhost
 			=&IP; &hostname;.&domain; &hostname;
 			=
 			=# End /etc/hosts (network card version)
