@@ -1,0 +1,37 @@
+<!ENTITY book                  SYSTEM "book.xml">
+<!ENTITY book-info             SYSTEM "bookinfo.xml">
+<!ENTITY book-info-authorgroup SYSTEM "authorgroup.xml">
+<!ENTITY book-info-copyright   SYSTEM "copyright.xml">
+<!ENTITY book-info-legalnotice SYSTEM "legalnotice.xml">
+<!ENTITY book-info-abstract    SYSTEM "abstract.xml">
+<!ENTITY book-dedication       SYSTEM "dedication.xml">
+
+<!-- Generally used entities go below here -->
+
+<!ENTITY lt     "&#60;">
+<!ENTITY gt     "&#62;">
+<!ENTITY amp    "&#38;">
+<!ENTITY apos   "&#39;">
+<!ENTITY quot   "&#34;">
+<!ENTITY nbsp   "&#32;">
+<!ENTITY emdash "&#045;&#045;">
+
+<!ENTITY book-product "nALFS">
+
+<!ENTITY book-maintainer-fullname "James Robertson">
+<!ENTITY book-maintainer-firstname "James">
+<!ENTITY book-maintainer-address "jwrober@linuxfromscratch.org">
+
+<!ENTITY product-maintainer-fullname "Kevin Fleming">
+<!ENTITY product-maintainer-firstname "Kevin">
+<!ENTITY product-maintainer-address "kpfleming@linuxfromscratch.org">
+
+<!ENTITY profile-maintainer-fullname "Thomas Pegg">
+<!ENTITY profile-maintainer-firstname "Thomas">
+<!ENTITY profile-maintainer-address "thomasp@linuxfromscratch.org">
+
+<!ENTITY ftp-root "ftp://ftp.linuxfromscratch.org">
+<!ENTITY http-root "http://www.linuxfromscratch.org">
+<!ENTITY hints-root "http://www.linuxfromscratch.org/hints">
+<!ENTITY alfs-root "http://www.linuxfromscratch.org/alfs">
+<!ENTITY bugzilla-root "http://bugs.linuxfromscratch.org">

@@ -1,0 +1,9 @@
+<sect1 id="preface-prerequisites" xreflabel="Prerequisites">
+<?dbhtml filename="prerequisites.html" dir="preface"?>
+<title>Prerequisites</title>
+
+<para>There not that many true prerequisites to be able to hack on the
+consituent nALFS components. See the other sections for details on
+specific prerequisites.</para>
+
+</sect1>

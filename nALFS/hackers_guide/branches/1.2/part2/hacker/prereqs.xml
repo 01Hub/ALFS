@@ -1,0 +1,33 @@
+<sect1 id="hacker-prereqs" xreflabel="Coding Prerequisites">
+<?dbhtml filename="prereqs.html" dir="hacker"?>
+<title>Coding Prerequisites</title>
+
+<para>To write code for &book-product; you should be familiar with the
+<command>C</command> programming language and the <command>XML</command>
+specification.</para>
+
+<para>Once you have those mastered, you will need to have the following on
+your linux computer:</para>
+
+<itemizedlist>
+
+<listitem><para>GNU autoconf-2.57 or newer.</para></listitem>
+
+<listitem><para>GNU automake-1.7.7 or newer.</para></listitem>
+
+<listitem><para>GNU libtool-1.5 or newer.</para></listitem>
+
+<listitem><para>GNU autoconf-2.57 or newer.</para></listitem>
+
+<listitem><para>GCC-3.3 or newer.</para></listitem>
+
+<listitem><para>CVS-1.11 or newer.</para></listitem>
+
+<listitem><para>OpenSSL-0.9.7c or newer.</para></listitem>
+
+<listitem><para>A good editor like <filename>Vim</filename> or
+<filename>Emacs</filename>.</para></listitem>
+
+</itemizedlist>
+
+</sect1>

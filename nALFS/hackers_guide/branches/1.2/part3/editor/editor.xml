@@ -1,0 +1,23 @@
+<chapter id="editor-editor" xreflabel="Editor">
+<?dbhtml filename="editor/editor.html" dir="part3"?>
+<title>Common Elements for all &book-product; Documentation Editors</title>
+
+<sect1>
+
+<para>Editing the guides for the &book-product; is not difficult at any
+stretch of the imagination. The biggest piece is have an understanding of
+the DocBook XML DTD. The DTD's <ulink url="http://docbook.org/">home
+page</ulink> has a lot of information on how to use it and <ulink
+url="http://docbook.org/tdg/en/html/docbook.html">a book</ulink> is also
+available.</para>
+
+<para>The books (or guides) each have their own unique design and layout.
+They all, however, share a lot of common pieces. As mentioned above, they
+are all written using the DocBook XML DTD v4.3. They all can be parsed into
+three formats: chunks-html, nochunks-html and flat-text.</para>
+
+
+</sect1>
+
+</chapter>
+

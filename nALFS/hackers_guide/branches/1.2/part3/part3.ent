@@ -1,0 +1,4 @@
+<!ENTITY part3                  SYSTEM "part3.xml">
+
+<!ENTITY editor-editor          SYSTEM "editor/editor.xml">
+
