@@ -16,6 +16,9 @@
       <requires>
         <name>libbonobo</name>
       </requires>
+      <utilizes>
+	<name>java-access-bridge</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

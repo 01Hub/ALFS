@@ -16,6 +16,9 @@
       <requires>
         <name>gnome-panel</name>
       </requires>
+      <utilizes>
+	<name>linuxpam</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

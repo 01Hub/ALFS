@@ -20,11 +20,14 @@
         <name>libwnck</name>
       </requires>
       <utilizes>
-        <name>gtk-doc</name>
-      </utilizes>
-      <utilizes>
         <name>startup-notification</name>
       </utilizes>
+      <utilizes>
+	<name>evolution-data-server</name>
+      </utilizes>
+      <utilizes>
+        <name>gtk-doc</name>
+      </utilizes>     
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -47,6 +50,11 @@
       <make>
         <param>install</param>
       </make>
+      <permissions mode="644">
+	<name>&gnome-prefix;/share/gnome/help/fish-applet-2/C/*.xml</name>
+	<name>&gnome-prefix;/share/gnome/help/window-list/C/*.xml</name>
+	<name>&gnome-prefix;/share/gnome/help/workspace-switcher/C/*.xml</name>
+      </permissions>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gnome-panel-directory;</remove>

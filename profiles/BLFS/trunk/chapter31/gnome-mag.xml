@@ -14,7 +14,7 @@
   <package name="gnome-mag" version="&gnome-mag-version;">
     <packageinfo>
       <requires>
-        <name>at-spi</name>
+        <name>libgail-gnome</name>
       </requires>
     </packageinfo>
     <stage name="Unpacking">

@@ -26,7 +26,13 @@
         <name>gst-plugins</name>
       </utilizes>
       <utilizes>
-        <name>esound</name>
+        <name>gail</name>
+      </utilizes>
+      <utilizes>
+	<name>&mta-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-utils</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

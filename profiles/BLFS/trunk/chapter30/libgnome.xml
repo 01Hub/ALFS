@@ -16,9 +16,9 @@
       <requires>
         <name>gnome-vfs2</name>
       </requires>
-      <utilizes>
+      <requires>
         <name>esound</name>
-      </utilizes>
+      </requires>
       <utilizes>
         <name>gtk-doc</name>
       </utilizes>
@@ -30,19 +30,22 @@
       </unpack>
     </stage>
     <stage name="Installing">
-    <stageinfo>
-      <base>&build_dir;/&libgnome-directory;</base>
-    </stageinfo>
-    <configure>
-      <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-      <param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
-      <param>--sysconfdir=/etc/gnome</param>
-      <param>--disable-gtk-doc</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>&ldconfig;</stage>
+      <stageinfo>
+	<base>&build_dir;/&libgnome-directory;</base>
+      </stageinfo>
+      <configure>
+	<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+	<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+	<param>--sysconfdir=/etc/gnome</param>
+	<param>--localstatedir=/var/lib</param>
+	<param>--disable-gtk-doc</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+      &ldconfig;
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libgnome-directory;</remove>
     </stage>

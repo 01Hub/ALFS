@@ -26,7 +26,10 @@
         <name>libgtop</name>
       </utilizes>
       <utilizes>
-        <name>gnome-panel</name>
+	<name>gst-plugins</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-utils</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -34,6 +37,16 @@
         <archive>&packages_dir;/&gnome-applets-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&gnome-applets-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&gnome-applets-gswitchit-patch;</param>
+      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>
@@ -52,6 +65,14 @@
         <param>tooldir=`pkg-config --variable=prefix ORBit-2.0`/lib/gnome-applets</param>
         <param>install</param>
       </make>
+      <make>
+	<param>-C man</param>
+	<param>install-man</param>
+      </make>
+      <permissions mode="644">
+	<name>&gnome-prefix;/share/gnome/help/wireless/C/*.xml</name>
+	<name>&gnome-prefix;/share/gnome/help/gtik2_applet2/C/*.xml</name>
+      </permissions>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gnome-applets-directory;</remove>

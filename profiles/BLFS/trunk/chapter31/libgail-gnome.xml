@@ -11,25 +11,27 @@
 
 ]>
 <alfs>
-  <package name="gnome2-user-docs" version="&gnome2-user-docs-version;">
+  <package name="libgail-gnome" version="&libgail-gnome-version;">
     <packageinfo>
       <requires>
-        <name>scrollkeeper</name>
+        <name>gnome-panel</name>
+      </requires>
+      <requires>
+        <name>at-spi</name>
       </requires>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnome2-user-docs-package;</archive>
+        <archive>&packages_dir;/&libgail-gnome-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&gnome2-user-docs-directory;</base>
+        <base>&build_dir;/&libgail-gnome-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-        <param>--localstatedir=/var/lib</param>
       </configure>
       <make />
       <make>
@@ -37,7 +39,7 @@
       </make>
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&gnome2-user-docs-directory;</remove>
+      <remove>&build_dir;/&libgail-gnome-directory;</remove>
     </stage>
   </package>
 </alfs>

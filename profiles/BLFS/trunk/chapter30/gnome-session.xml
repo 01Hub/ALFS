@@ -16,6 +16,9 @@
       <requires>
         <name>libgnomeui</name>
       </requires>
+      <utilizes>
+	<name>tcpwrappers</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

@@ -11,34 +11,41 @@
 
 ]>
 <alfs>
-  <package name="gst-plugins" version="&gst-plugins-version;">
+  <package name="gnome2-user-docs" version="&gnome2-user-docs-version;">
     <packageinfo>
       <requires>
-        <name>gstreamer</name>
+        <name>scrollkeeper</name>
       </requires>
+      <utilizes>
+	<name>docbook-utils</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gst-plugins-package;</archive>
+        <archive>&packages_dir;/&gnome2-user-docs-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&gst-plugins-directory;</base>
+        <base>&build_dir;/&gnome2-user-docs-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-        <param>--sysconfdir=/etc/gnome</param>
+        <param>--localstatedir=/var/lib</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
-      <execute command="gst-register" />
+      <permissions mode="644">
+	<name>&gnome-prefix;/share/gnome/help/gnome-access-guide/C/*.xml</name>
+	<name>&gnome-prefix;/share/gnome/help/system-admin-guide/C/*.xml</name>
+	<name>&gnome-prefix;/share/gnome/help/user-guide/C/*.xml</name>
+      </permissions>
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&gst-plugins-directory;</remove>
+      <remove>&build_dir;/&gnome2-user-docs-directory;</remove>
     </stage>
   </package>
 </alfs>

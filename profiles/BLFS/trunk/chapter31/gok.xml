@@ -26,8 +26,11 @@
         <name>at-spi</name>
       </requires>
       <requires>
-        <name>esound</name>
+        <name>gnome-speech</name>
       </requires>
+      <utilizes>
+	<name>gtk-doc</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -48,6 +51,9 @@
       <make>
         <param>install</param>
       </make>
+      <permissions mode="644">
+	<name>&gnome-prefix;/share/gnome/help/gok/C/*.xml</name>
+      </permissions>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gok-directory;</remove>

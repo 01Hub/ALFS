@@ -9,6 +9,8 @@
 %package_entities;
 %config_entities;
 
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
 ]>
 <alfs>
   <package name="gdm" version="&gdm-version;">
@@ -25,6 +27,9 @@
       <utilizes>
         <name>linuxpam</name>
       </utilizes>
+      <utilizes>
+	<name>tcpwrappers</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -32,13 +37,13 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    &bootscripts-get;
     <stage name="Creating user and group">
-      <execute command="groupadd">
-        <param>-f</param>
+      <execute command="getent group gdm &gt;/dev/null || groupadd">
         <param>gdm</param>
       </execute>
-      <execute command="grep -q ^gdm /etc/passwd || useradd">
-        <param>-c games</param>
+      <execute command="getent passwd gdm &gt;/dev/null || useradd">
+        <param>-c "GDM Daemon Owner"</param>
         <param>-d /dev/null</param>
         <param>-g gdm</param>
         <param>-s /bin/bash</param>
@@ -60,7 +65,37 @@
       <make>
         <param>install</param>
       </make>
+      <textdump base="/etc/pam.d">
+	<file>gdm</file>
+	<content>
+	  =auth        required    pam_unix.so
+	  =auth        required    pam_nologin.so
+	  =account     required    pam_unix.so
+	  =password    required    pam_unix.so
+	  =session     required    pam_unix.so
+	</content>
+      </textdump>
+      <textdump base="/etc/pam.d">
+	<file>gdm-autologin</file>
+	<content>
+	  =auth        required    pam_env.so
+	  =auth        required    pam_nologin.so
+	  =auth        required    pam_permit.so
+	  =account     required    pam_unix.so
+	  =password    required    pam_unix.so
+	  =session     required    pam_unix.so
+	</content>
+      </textdump>
     </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+	<base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+	<param>install-gdm</param>
+      </make>
+    </stage>
+    &bootscripts-clean;
     <stage name="Cleanup">
       <remove>&build_dir;/&gdm-directory;</remove>
     </stage>
