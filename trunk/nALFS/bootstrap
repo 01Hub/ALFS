@@ -71,7 +71,7 @@ get_profile() {
 }
 
 get_dtd() {
-    cp ../DTD/${1}-${DTD_VERSION}.dtd doc/${1}.dtd
+    cp ../DTD/${1}-${DTD_VERSION}.dtd doc
 }
 
 while getopts hd:g:p: param; do
