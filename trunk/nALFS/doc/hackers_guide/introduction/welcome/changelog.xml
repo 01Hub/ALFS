@@ -1,10 +1,13 @@
 <sect1 id="intro-welcome-changelog" xreflabel="ChangeLog">
-<?dbhtml filename="changelog.html" dir="introduction"?>
+<?dbhtml filename="changelog.html" dir="welcome"?>
 <title>ChangeLog</title>
 
 <para>&version; &emdash; &releasedate;</para>
 
 <itemizedlist>
+
+<listitem><para>May 29th, 2004 [jwrober]: Updated to DocBook v4.3 and
+applied formatting similar to the ALFS Syntax Doc.</para></listitem>
 
 <listitem><para>November 10th, 2003 [kpfleming]: Updated distribution instructions.</para></listitem>
 
