@@ -169,9 +169,9 @@ network.-->
 <!ENTITY grub-root "hd0,0">
 <!ENTITY grub-install-location "hd0">
 
-<!-- dynamic library file that your system uses, 
+<!-- dynamic linker in the gcc specs file that your system uses, 
 	e.g.
-		x86 = ld.so.conf
+		x86 = ld-linux.so.2
 		powerpc = ld.so.1
 -->
-<!ENTITY ld-config-file "ld.so.conf">
+<!ENTITY ld-specs-file "ld-linux.so.2">
