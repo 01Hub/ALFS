@@ -17,13 +17,13 @@ http://www.vorbis.com/files/1.0.1/unix/libogg-1.1.tar.gz
 http://www.vorbis.com/files/1.0.1/unix/libvorbis-1.0.1.tar.gz
 
 ftp://ftp.us.xemacs.org/pub/xemacs/aux/nas-1.6.src.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/5.1/nas-1.6-bison-fix.patch
 
 http://unc.dl.sourceforge.net/sourceforge/heroines/libmpeg3-1.5.4-src.tar.bz2
 
 ftp://ftp.mars.org/pub/mpeg/libmad-0.15.1b.tar.gz
 
-http://umn.dl.sourceforge.net/sourceforge/openquicktime/openquicktime-1.0-src.tgz
+http://internap.dl.sourceforge.net/sourceforge/openquicktime/openquicktime-1.0-src.tgz
+http://www.linuxfromscratch.org/blfs/downloads/svn/openquicktime-1.0-gcc34-1.patch
 
 http://umn.dl.sourceforge.net/sourceforge/fame/libfame-0.9.1.tar.gz
 
@@ -46,3 +46,7 @@ http://files.xvid.org/downloads/xvidcore-1.0.0-rc4.tar.bz2
 http://umn.dl.sourceforge.net/sourceforge/xine/xine-lib-1-rc3a.tar.gz
 
 http://www.ibiblio.org/pub/Linux/apps/sound/libs/libmikmod-3.1.10.tar.gz
+
+ftp://ftp.gnome.org/pub/GNOME/sources/gstreamer/0.8/gstreamer-0.8.7.tar.bz2
+
+ftp://ftp.gnome.org/pub/GNOME/sources/gst-plugins/0.8/gst-plugins-0.8.5.tar.bz2

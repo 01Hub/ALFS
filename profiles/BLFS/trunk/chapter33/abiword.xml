@@ -37,6 +37,15 @@
       <utilizes>
 	<name>imagemagick</name>
       </utilizes>
+      <utilizes>
+	<name>enchant</name>
+      </utilizes>
+      <utilizes>
+	<name>aspell</name>
+      </utilizes>
+      <utilizes>
+	<name>wv</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -55,7 +64,7 @@
       <make>
         <param>install</param>
       </make>
-      <copy>
+      <copy base="&build_dir;/&abiword-directory;/abiword-docs">
 	<option>recursive</option>
 	<option>force</option>
 	<source>docs</source>
@@ -70,7 +79,7 @@
 	<source>Manual/en/Abiword_Manual.abw</source>
 	<destination>/usr/share/AbiSuite-&abiword-major-minor;/AbiWord/docs</destination>
       </copy>
-      <copy base="&build_dir;/&abiword-directory;/abiword-docs">
+      <copy >
 	<option>recursive</option>
 	<option>force</option>
 	<source>help</source>

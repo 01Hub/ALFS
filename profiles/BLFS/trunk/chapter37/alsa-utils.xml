@@ -31,11 +31,6 @@
       <stageinfo>
         <base>&build_dir;/&alsa-utils-directory;</base>
       </stageinfo>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&alsa-utils-arecord-patch;</param>
-      </patch>
       <configure />
       <make />
       <make>

@@ -1,14 +1,18 @@
 http://sunsite.rediris.es/mirror/Qt/source/qt-x11-free-3.3.3.tar.bz2
 
 ftp://ftp.gtk.org/pub/gtk/v1.2/gtk+-1.2.10.tar.gz
-ftp://ftp.gnome.org/pub/GNOME/sources/pango/1.6/pango-1.6.0.tar.bz2
-ftp://ftp.gnome.org/pub/GNOME/sources/atk/1.8/atk-1.8.0.tar.bz2
-ftp://ftp.gtk.org/pub/gtk/v2.4/gtk+-2.4.13.tar.bz2
+ftp://ftp.gtk.org/pub/gtk/v2.6/gtk+-2.6.0.tar.bz2
+
+ftp://ftp.gnome.org/pub/GNOME/sources/pango/1.8/pango-1.8.0.tar.bz2
+
+ftp://ftp.gnome.org/pub/GNOME/sources/atk/1.9/atk-1.9.0.tar.bz2
 
 http://telia.dl.sourceforge.net/sourceforge/lesstif/lesstif-0.94.0.tar.bz2
 
 http://www.freedesktop.org/software/startup-notification/releases/startup-notification-0.8.tar.gz
+
 http://freedesktop.org/software/shared-mime-info/shared-mime-info-0.15.tar.gz
+
 http://freedesktop.org/software/icon-theme/releases/hicolor-icon-theme-0.5.tar.gz
 
 http://heanet.dl.sourceforge.net/sourceforge/gswitchit/libxklavier-1.11.tar.gz

@@ -27,11 +27,6 @@
       <stageinfo>
         <base>&build_dir;/&nas-directory;</base>
       </stageinfo>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&nas-patch;</param>
-      </patch>
       <execute command="xmkmf" />
       <make>
         <param>Makefiles</param>
