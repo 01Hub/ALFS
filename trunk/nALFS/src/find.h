@@ -32,4 +32,4 @@ int do_collect_files(
 	time_t t);
 
 
-#endif
+#endif /* H_FIND_ */

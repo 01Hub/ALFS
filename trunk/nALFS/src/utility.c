@@ -99,7 +99,7 @@ void xfree(void *ptr)
 #endif
 
 /*
- * Functions operating on strings in some way.
+ * Strings' utilities.
  */
 
 char *xstrdup(const char *s)
@@ -225,7 +225,7 @@ void append_str(char **ptr, const char *str)
 }
 
 /*
- * Misc.
+ * Files' utilities.
  */
 
 int file_exists(const char *file)
@@ -284,6 +284,10 @@ int create_temp_file(char *templ)
 	return 0;
 }
 
+/*
+ * Misc.
+ */
+
 int change_current_dir(const char *dir)
 {
 	if (chdir(dir)) {
@@ -335,4 +339,15 @@ void pfile(const char *format, ...)
 	fputc('\n', fp);
 
 	fclose(fp);
+}
+
+int number_len(int num)
+{
+	int i = 1;
+
+
+	while ((num /= 10))
+		++i;
+
+	return i;
 }

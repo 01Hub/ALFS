@@ -40,7 +40,7 @@
 #define EL_NAME_FOR_FILES_ROOT		"changed_files"
 #define EL_NAME_FOR_FILES_FIND_ROOT	"find_root"
 #define EL_NAME_FOR_FILES_FIND_PRUNES	"find_prunes"
-#define EL_NAME_FOR_FILES_FILENAME	"filename"
+#define EL_NAME_FOR_FILES_NAME		"filename"
 
 
 #define STATE_IS_TIME_STAMP_MSG		"Using time stamp"
@@ -64,4 +64,4 @@ void start_logging_element(element_s *el);
 void end_logging_element(element_s *el, int i);
 
 
-#endif
+#endif /* H_LOGGING_ */

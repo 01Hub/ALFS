@@ -167,4 +167,4 @@ typedef enum set_opt_e {
 set_opt_e set_yet_unknown_option(const char *opt, const char *val);
 
 
-#endif
+#endif /* H_OPTIONS_ */

@@ -35,7 +35,7 @@ char handler_name[] = "make";
 char handler_description[] = "Run make";
 char *handler_syntax_versions[] = { "3.0", "3.1", NULL };
 // char *handler_attributes[] = { "base", NULL };
-char *handler_parameters[] = { "param", NULL };
+char *handler_parameters[] = { "param", "prefix", NULL };
 int handler_action = 1;
 
 
@@ -53,7 +53,12 @@ int handler_main(element_s *el)
 		return -1;
 	}
 
-	command = xstrdup("make");
+	command = xstrdup("");
+
+	append_prefix_elements(&command, el);
+
+	append_str(&command, "make");
+
 	append_param_elements(&command, el);
 
 	Nprint_h("Executing in %s:", base);

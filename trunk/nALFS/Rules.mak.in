@@ -25,9 +25,10 @@
 # This file is included by all Makefiles.
 # Each individual Makefile must define the following variables:
 #
-# top_srcdir -- top-level source directory
+# srcdir -- current source directory
 #
 
+abs_top_srcdir := @abs_top_srcdir@
 
 prefix      := @prefix@
 exec_prefix := @exec_prefix@
@@ -47,14 +48,14 @@ LDLIBS      := @LIBS@
 handlers_directory := $(libdir)/nALFS/
 
 CPPFLAGS += -DHANDLERS_DIRECTORY=\"$(handlers_directory)\"
-CPPFLAGS += -I$(top_srcdir)/src/
+CPPFLAGS += -I$(abs_top_srcdir)/src/
 
 CFLAGS   += -W -Wall -Wshadow -Winline
 
 
-C_FILES  := $(wildcard *.c)
-H_FILES  := $(wildcard *.h)
-O_FILES  := $(patsubst %.c,%.o, $(C_FILES))
+C_FILES  := $(wildcard $(srcdir)/*.c)
+H_FILES  := $(wildcard $(srcdir)/*.h)
+O_FILES  := $(patsubst $(srcdir)/%.c,%.o, $(C_FILES))
 
 
 ifeq ($(shell echo $(HOME)), /home/neven)

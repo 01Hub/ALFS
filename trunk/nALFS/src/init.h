@@ -34,4 +34,4 @@ void read_command_line_options(int *argc, char ***argv);
 void init_needed_directories(void);
 
 
-#endif
+#endif /* H_INIT_ */

@@ -265,7 +265,7 @@ int load_all_handlers(void)
 	if ((dir = opendir(HANDLERS_DIRECTORY)) == NULL) {
 		Nprint_err("Can't open handlers directory (%s):",
 			HANDLERS_DIRECTORY);
-		Nprint_err("    %s", strerror(errno));
+		Nprint_err("%s", strerror(errno));
 		return -1;
 	}
 
@@ -350,7 +350,7 @@ char *alloc_package_name(element_s *el)
 		return NULL;
 	}
 
-	return (*s)(el);
+	return s(el);
 }
 
 char *alloc_package_version(element_s *el)
@@ -362,7 +362,7 @@ char *alloc_package_version(element_s *el)
 		return NULL;
 	}
 
-	return (*s)(el);
+	return s(el);
 }
 
 char *alloc_package_string(element_s *el)
@@ -409,7 +409,7 @@ char *alloc_textdump_file(element_s *el)
 		return NULL;
 	}
 
-	return (*s)(el);
+	return s(el);
 }
 
 char *alloc_execute_command(element_s *el)
@@ -421,7 +421,7 @@ char *alloc_execute_command(element_s *el)
 		return NULL;
 	}
 
-	return (*s)(el);
+	return s(el);
 }
 
 /* Used by old syntax (2.0). */
@@ -553,6 +553,28 @@ char *append_param_elements(char **string, element_s *el)
 
 		} else if (opt_be_verbose) {
 			Nprint_warn("Skipping empty parameter.");
+		}
+	}
+
+	return *string;
+}
+
+char *append_prefix_elements(char **string, element_s *el)
+{
+	element_s *tmp;
+
+
+	for (tmp = first_param("prefix", el); tmp; tmp = next_param(tmp)) {
+		char *content;
+
+		if ((content = alloc_trimmed_str(tmp->content))) {
+			append_str(string, content);
+			append_str(string, " ");
+
+			xfree(content);
+
+		} else if (opt_be_verbose) {
+			Nprint_warn("Skipping empty prefix.");
 		}
 	}
 

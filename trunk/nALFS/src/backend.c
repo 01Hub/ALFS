@@ -60,13 +60,14 @@ void fatal_backend_error(const char *format, ...)
 
 	sprintf(message, "\nE: %s", msg);
 
-	if (write(BACKEND_DATA_SOCKET, message, strlen(message)) == -1) {
-		/* We're already in trouble. */
-	}
+	write(comm_get_socket(BACKEND_DATA_SOCK), message, strlen(message));
+	/* Already in trouble, no need for error checking. */
 
 	raise(SIGKILL);
 
-	while(1) sleep(1);
+	while(1) {
+		sleep(1);
+	}
 }
 
 static INLINE void toggle_pause(void)
@@ -97,8 +98,8 @@ static void handle_ctrl_msg(void)
 	ctrl_msg_s *message;
 
 
-	while ((message = read_ctrl_message(BACKEND_CTRL_SOCKET))) {
-		switch (message->type) {
+	while ((message = comm_read_ctrl_message(BACKEND_CTRL_SOCK))) {
+		switch (comm_msg_type(message)) {
 			case CTRL_LOG_CHANGED_FILES:
 				if (++opt_logging_method > LAST_LOGGING_METHOD) {
 					opt_logging_method = 0;
@@ -126,12 +127,12 @@ static void handle_ctrl_msg(void)
 				break;
 
 			default:
-				Nprint_warn("Unknown control message: \"%s\"",
-					message->content);
+				Nprint_warn(
+					"Unknown control message: \"%s\"",
+					comm_msg_content(message));
 		}
 
-		xfree(message->content);
-		xfree(message);
+		comm_free_message(message);
 	}
 }
 
@@ -156,7 +157,7 @@ static void nprint_backend(msg_id_e mid, const char *format, ...)
 
 	sprintf(message, "\n%c: %s", msg_character(mid), raw_msg);
 
-	if (write(BACKEND_DATA_SOCKET, message, strlen(message)) == -1) {
+	if (write(comm_get_socket(BACKEND_DATA_SOCK), message, strlen(message)) == -1) {
 		fatal_backend_error("write() to parent failed: %s",
 			strerror(errno));
 	}
@@ -304,7 +305,7 @@ int execute_command(const char *format, ...)
 
 static INLINE void change_to_profiles_dir(element_s *el)
 {
-	element_s *profile = get_main_profile(el);
+	element_s *profile = get_profile_by_element(el);
 	char *path = xstrdup(profile->name);
 	char *tmp;
 
@@ -324,14 +325,15 @@ static INLINE void change_to_profiles_dir(element_s *el)
 static int do_execute_element(element_s *el)
 {
 	int i = 0;
+	element_s *profile = get_profile_by_element(el);
 
 
 	if (! (Can_run(el) && el->should_run)) {
 		return 0;
 	}
 
-	send_ctrl_msg(BACKEND_CTRL_SOCKET, CTRL_ELEMENT_STARTED,
-		"Element %s started.", el->name);
+	comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_STARTED,
+		"%s %s %d", profile->name, el->name, el->id);
 
 	if (el->type == TYPE_PROFILE) {
 		i = execute_children(el);
@@ -356,13 +358,13 @@ static int do_execute_element(element_s *el)
 	}
 
 	if (i == 0) {
-		el->run_status = find_element_status(el);
-		send_ctrl_msg(BACKEND_CTRL_SOCKET, CTRL_ELEMENT_ENDED,
-			"Element %s ended.", el->name);
+		el->run_status = get_element_status(el);
+		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_ENDED,
+			"%s %s %d", profile->name, el->name, el->id);
 	} else {
 		el->run_status = RUN_STATUS_FAILED;
-		send_ctrl_msg(BACKEND_CTRL_SOCKET, CTRL_ELEMENT_FAILED,
-			"Element %s failed.", el->name);
+		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_FAILED,
+			"%s %s %d", profile->name, el->name, el->id);
 	}
 
 	return i;

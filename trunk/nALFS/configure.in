@@ -121,9 +121,9 @@ fi
 
 dnl Link the program statically, or not.
 
-AC_ARG_ENABLE(static-link,
-	[  --enable-static-link    link the program statically],
-	[ LDFLAGS="$LDFLAGS -static" ])
+dnl AC_ARG_ENABLE(static-link,
+dnl 	[  --enable-static-link    link the program statically],
+dnl	[ LDFLAGS="$LDFLAGS -static" ])
 
 
 AC_OUTPUT([

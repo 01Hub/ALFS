@@ -87,66 +87,8 @@
 
 
 static char *syntax_version = NULL;
-static char **unknown_elements = NULL;
 
-
-static INLINE void add_to_unknown(const char *element)
-{
-	if (unknown_elements == NULL) {
-		unknown_elements = xmalloc(2 * sizeof *unknown_elements);
-
-		unknown_elements[0] = xstrdup(element);
-		unknown_elements[1] = NULL;
-
-	} else {
-		int i;
-		char *e;
-
-		for (i = 0;; ++i) {
-			if ((e = unknown_elements[i]) == NULL) {
-				break;
-			}
-
-			if (strcmp(e, element) == 0) {
-				break;
-			}
-		}
-
-		/* Does't exist, add it. */
-		if (e == NULL) {
-			unknown_elements = xrealloc(unknown_elements,
-				(i+2) * sizeof *unknown_elements);
-			unknown_elements[i] = xstrdup(element);
-			unknown_elements[i+1] = NULL;
-		}
-	}
-}
-
-static INLINE void print_unknown_elements(void)
-{
-	int i;
-
-
-	if (unknown_elements == NULL) {
-		return;
-	}
-
-	for (i = 0;; ++i) {
-		char *e;
-
-		if ((e = unknown_elements[i]) == NULL) {
-			break;
-		}
-
-		Nprint_warn("Unknown element: %s", e);
-
-		xfree(e);
-	}
-
-	xfree(unknown_elements);
-	unknown_elements = NULL;
-}
-
+static unsigned int element_id;
 
 
 static INLINE void set_attributes(element_s *el, xmlNodePtr node)
@@ -173,6 +115,8 @@ static INLINE element_s *create_element(xmlNodePtr node)
 	element_s *el = init_new_element();
 
 
+	el->id = element_id++;
+
 	switch (node->type) {
 		case XML_ELEMENT_NODE:
 			el->name = xstrdup((const char *)node->name);
@@ -195,8 +139,6 @@ static INLINE element_s *create_element(xmlNodePtr node)
 			} else if (parameter_exists(el->name)) {
 				el->type = TYPE_PARAMETER;
 
-			} else if (opt_be_verbose) {
-				add_to_unknown(el->name);
 			}
 
 			/* Add content, if any. */
@@ -261,6 +203,8 @@ static INLINE element_s *convert_doc(xmlDocPtr doc)
 	xmlNodePtr child;
 
 
+	element_id = 0;
+
 	profile = init_new_element();
 
 	if ((realpath((const char *)doc->URL, resolved_path))) {
@@ -270,6 +214,7 @@ static INLINE element_s *convert_doc(xmlDocPtr doc)
 	}
 
 	profile->type = TYPE_PROFILE;
+	profile->id = element_id++;
 
 	for (child = doc->children; child; child = child->next) {
 		if ((el = convert_nodes(child))) {
@@ -332,10 +277,6 @@ element_s *parse_with_libxml2_tree(const char *filename)
 
 	xfree(syntax_version);
 	syntax_version = NULL;
-
-	if (opt_be_verbose) {
-		print_unknown_elements();
-	}
 
 	return profile;
 }

@@ -85,11 +85,16 @@ int file_exists(const char *file);
 int delete_file(const char *file);
 int create_temp_file(char *templ);
 
+/*
+ * Misc.
+ */
 
 int change_current_dir(const char *dir);
 char *get_home_directory(void);
 
 void pfile(const char *format, ...);
 
+int number_len(int num);
 
-#endif
+
+#endif /* H_UTILITY_ */

@@ -27,17 +27,16 @@
 #include <unistd.h>
 #include <errno.h>
 #include <signal.h>
-#include <fcntl.h>
 #include <termios.h>
 #include <ctype.h>
 #include <time.h>
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/time.h>
-#include <sys/socket.h>
 #include <sys/stat.h>
+#include <limits.h>
 
-#include <varargs.h>
+#include <stdarg.h>
 
 #include <libxml/tree.h>
 #include <libxml/parser.h>
@@ -80,7 +79,6 @@ static char *search_string;		// Last entered string for searching.
 static volatile int got_sigchld;	// Signals backend termination.
 
 static element_s *current_running;	// Currently executing element.
-static element_s *current_finishing;	// Element that's supposed to end.
 
 static element_s *root_element;		// Parent of all profiles.
 
@@ -357,7 +355,7 @@ static INLINE void change_run_status_mark(element_s *el, run_status_e status)
 	}
 }
 
-static void change_run_status(element_s *el, run_status_e status)
+static void set_run_status(element_s *el, run_status_e status)
 {
 	if (!Can_run(el) || !opt_run_interactive) {
 		return;
@@ -368,18 +366,6 @@ static void change_run_status(element_s *el, run_status_e status)
 
 	/* Change run status mark. */
 	change_run_status_mark(el, status);
-}
-
-static void set_failed_run_status(element_s *el)
-{
-	element_s *parent;
-
-
-	change_run_status(el, RUN_STATUS_FAILED);
-
-	for (parent = el->parent; parent; parent = parent->parent) {
-		change_run_status(parent, RUN_STATUS_FAILED);
-	}
 }
 
 static int has_child_with_run_status(element_s *el, run_status_e status)
@@ -396,7 +382,7 @@ static int has_child_with_run_status(element_s *el, run_status_e status)
 	return 0;
 }
 
-run_status_e find_element_status(element_s *el)
+run_status_e get_element_status(element_s *el)
 {
 	run_status_e status;
 
@@ -430,11 +416,9 @@ static void do_change_run_status_marks(element_s *el, run_status_e status)
 	element_s *child;
 
 
-	if (! Can_run(el)) {
-		return;
+	if (Can_run(el)) {
+		el->run_status = status;
 	}
-
-	el->run_status = status;
 
 	for (child = el->children; child; child = child->next) {
 		do_change_run_status_marks(child, status);
@@ -448,8 +432,11 @@ static void change_run_status_marks(element_s *el, run_status_e status)
 
 	do_change_run_status_marks(el, status);
 
+	/* Update the marks of element's parents. */
 	for (parent = el->parent; parent; parent = parent->parent) {
-		parent->run_status = find_element_status(parent);
+		if (Can_run(parent)) {
+			parent->run_status = get_element_status(parent);
+		}
 	}
 }
 
@@ -579,9 +566,14 @@ static int is_corresponding_state(const char *file_name, element_s *el)
 
 static char *alloc_current_package_file(const char *extension)
 {
-	char *filename, *package_str;
-	element_s *current_package = get_elements_package(current_running);
+	char *filename;
+	char *package_str;
+	element_s *current_package;
 
+
+	ASSERT(current_running != NULL);
+
+	current_package = get_elements_package(current_running);
 
 	package_str = alloc_package_string(current_package);
 
@@ -597,7 +589,7 @@ static char *alloc_current_package_file(const char *extension)
 
 static INLINE void receive_state(void)
 {
-	if (read_to_file(FRONTEND_CTRL_SOCKET, state.filename) == 0) {
+	if (comm_read_to_file(FRONTEND_CTRL_SOCK, state.filename) == 0) {
 		Nprint("State stored in \"%s\".", state.filename);
 		state.exists = 1;
 
@@ -625,15 +617,40 @@ static INLINE char *receive_changed_files(void)
 		return NULL;
 	}
 
-	if (read_to_file(FRONTEND_CTRL_SOCKET, filename) == 0) {
+	if (comm_read_to_file(FRONTEND_CTRL_SOCK, filename) == 0) {
 		Nprint("Installed files stored in \"%s\".", filename);
 	}
 
 	return filename;
 }
 
+static inline void read_the_list(xmlNodePtr node)
+{
+	ctrl_msg_s *message;
+
+	if ((message = comm_read_ctrl_message(FRONTEND_CTRL_SOCK))) {
+		ctrl_msg_type_e type = comm_msg_type(message);
+
+		if (type == CTRL_SENDING_FILES_FILE) {
+			char *ffile = receive_changed_files();
+
+			if (ffile) {
+				xmlNewTextChild(
+					node,
+					NULL,
+					(const xmlChar *)EL_NAME_FOR_FILES_NAME,
+					(const xmlChar *)ffile);
+
+				xfree(ffile);
+			}
+		}
+
+		comm_free_message(message);
+	}
+}
+
 /* Adds new package log to the old one, or creates it if it doesn't exist. */
-static INLINE void merge_log_files(char *file, const char *ptr, int size)
+static INLINE void merge_log_files(char *file, const char *ptr, size_t size)
 {
 	xmlNodePtr new_state, node;
 	xmlDocPtr doc, new_doc;
@@ -658,7 +675,8 @@ static INLINE void merge_log_files(char *file, const char *ptr, int size)
 	xmlUnlinkNode(new_state);
 	xmlFreeDoc(new_doc);
 
-	/* Read the list of installed files (if any) from the backend,
+	/*
+	 * Read the list of installed files (if any) from the backend,
 	 * store it in the file, and update the package log with its name.
 	 */
 
@@ -670,19 +688,8 @@ static INLINE void merge_log_files(char *file, const char *ptr, int size)
 		}
 	}
 	if (node) { /* There is a list, read it. */
-		ctrl_msg_s *message = read_ctrl_message(FRONTEND_CTRL_SOCKET);
-
-		if (message && message->type == CTRL_SENDING_FILES_FILE) {
-			char *ffile = receive_changed_files();
-
-			if (ffile) {
-				xmlNewTextChild(node, NULL,
-				(const xmlChar *)EL_NAME_FOR_FILES_FILENAME,
-				(const xmlChar *)ffile);
-
-				xfree(ffile);
-			}
-		}
+		read_the_list(node);
+		
 	}
 
 	if (xmlAddChild(doc->children, new_state) == NULL) {
@@ -702,12 +709,12 @@ static INLINE void merge_log_files(char *file, const char *ptr, int size)
 
 static INLINE void receive_log_file(void)
 {
-	int size;
+	size_t size;
 	char *ptr;
 	char *filename;
 
 
-	read_to_memory(FRONTEND_CTRL_SOCKET, &ptr, &size);
+	comm_read_to_memory(FRONTEND_CTRL_SOCK, &ptr, &size);
 
 	filename = alloc_current_package_file(log_file_suffix);
 
@@ -724,13 +731,17 @@ static INLINE void receive_log_file(void)
 static INLINE void send_state(void)
 {
 	if (state.exists) {
+		ASSERT(current_running != NULL);
+
 		if (is_corresponding_state(state.filename, current_running)) {
 			Nprint("Sending the state to the backend...");
-			send_from_file(FRONTEND_CTRL_SOCKET,
-				state.filename, CTRL_SENDING_STATE);
+			comm_send_from_file(
+				FRONTEND_CTRL_SOCK,
+				CTRL_SENDING_STATE,
+				state.filename);
 		} else {
 			Debug_logging("State file for the wrong package.");
-			send_ctrl_msg(FRONTEND_CTRL_SOCKET, CTRL_NO_STATE, "");
+			comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_NO_STATE, "");
 		}
 
 		Debug_logging("Deleting state file...");
@@ -739,7 +750,7 @@ static INLINE void send_state(void)
 
 	} else {
 		Debug_logging("State file doesn't exist.");
-		send_ctrl_msg(FRONTEND_CTRL_SOCKET, CTRL_NO_STATE, "");
+		comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_NO_STATE, "");
 	}
 }
 
@@ -753,7 +764,7 @@ static int handle_data_msg(void)
 	char buf[MAX_DATA_MSG_LEN];
 
 
-	i = read(FRONTEND_DATA_SOCKET, buf, sizeof buf - 1);
+	i = read(comm_get_socket(FRONTEND_DATA_SOCK), buf, sizeof buf - 1);
 
 	if (i > 0) {
 		buf[i] = '\0';
@@ -775,7 +786,54 @@ static int handle_data_msg(void)
 	return 0;
 }
 
+static element_s *do_find_element_by_key(element_s *profile, unsigned int id)
+{
+	unsigned int i;
+	element_s *el;
 
+
+	for (i = 0, el = profile; el; el = get_next_element(el), ++i) {
+		if (i == id) {
+			return el;
+		}
+	}
+
+	return NULL;
+}
+
+/* str's format: "profile_name element_name element_id" */
+static element_s *find_element_by_key(const char *str)
+{
+	char *tok;
+	char *str_copy;
+	element_s *element = NULL;
+
+
+	str_copy = xstrdup(str);
+
+	if ((tok = strtok(str_copy, " "))) { /* Profile's name. */
+		element_s *profile = get_profile_by_name(root_element, tok);
+
+		ASSERT(profile != NULL);
+
+		if ((tok = strtok(NULL, " "))) { /* Element's name. */
+
+			if ((tok = strtok(NULL, " "))) { /* Element's ID. */
+				char *endptr;
+				unsigned int id = strtoul(tok, &endptr, 10);
+
+				if (*endptr == 0) {
+					element =
+					do_find_element_by_key(profile, id);
+				}
+			}
+		}
+	}
+
+	xfree(str_copy);
+
+	return element;
+}
 
 static INLINE void jump_to_current_running(void)
 {
@@ -804,7 +862,8 @@ static INLINE void jump_to_current_running(void)
 			print_cursor();
 
 			if (opt_display_profile) {
-				draw_profile_name(get_main_profile(Current_element));
+				draw_profile_name(
+				get_profile_by_element(Current_element));
 			}
 
 			windows.main->ref(displayed.top);
@@ -812,83 +871,55 @@ static INLINE void jump_to_current_running(void)
 	}
 }
 
-static INLINE void element_started(void)
+static INLINE void element_started(const char *msg_content)
 {
-	ASSERT(current_running != NULL);
-	if (current_running == NULL) {
-		Nprint_warn( "current_running is NULL");
-		return;
-	}
+	current_running = find_element_by_key(msg_content);
 
-	for (current_running = get_next_element(current_running);
-	     current_running;
-	     current_running = get_next_element(current_running)) {
-		if (Can_run(current_running) && current_running->should_run) {
-			break;
-		}
-	}
+	// Nprint("Started: %s (%s)", msg_content, current_running->name);
 
 	ASSERT(current_running != NULL);
-	if (current_running == NULL) {
-		Nprint_warn( "current_running is NULL");
-		return;
-	}
 
-	current_finishing = current_running;
-
-	change_run_status(current_running, RUN_STATUS_RUNNING);
+	set_run_status(current_running, RUN_STATUS_RUNNING);
 
 	/* Jump to this element. */
 	if (opt_follow_running && opt_run_interactive) {
 		jump_to_current_running();
 	}
-
-//	Nprint("GOT: Element started (%s).", current_running->name);
 }
 
 /* current_finishing element succeeded. */
-static INLINE void element_ended(void)
+static INLINE void element_ended(const char *msg_content)
 {
-	ASSERT(current_finishing != NULL);
-	if (current_finishing == NULL) {
-		Nprint_warn( "current_finishing is NULL");
-		return;
-	}
+	element_s *current_ended = find_element_by_key(msg_content);
 
-//	Nprint("GOT: Element ended (%s).", current_finishing->name);
+	// Nprint("Ended: %s (%s)", msg_content, current_ended->name);
 
+	ASSERT(current_ended != NULL);
 
-	if (State_changed(state, current_finishing)) {
+	if (State_changed(state, current_ended)) {
 		Debug_logging("Removing state file, state probably changed.");
 		delete_file(state.filename);
 		state.exists = 0;
 	}
 
-	change_run_status(current_finishing,
-		find_element_status(current_finishing));
-
-	current_finishing = current_finishing->parent;
+	set_run_status(current_ended, get_element_status(current_ended));
 }
 
-static INLINE void element_failed(void)
+static INLINE void element_failed(const char *msg_content)
 {
-	ASSERT(current_running != NULL);
-	if (current_running == NULL) {
-		Nprint_warn( "current_running is NULL");
-		return;
-	}
+	element_s *current_failed = find_element_by_key(msg_content);
 
-//	Nprint("GOT: Element failed (%s).", current_running->name);
+	// Nprint("Failed: %s (%s)", msg_content, current_failed->name);
 
-	if (State_changed(state, current_running)) {
+	ASSERT(current_failed != NULL);
+
+	if (State_changed(state, current_failed)) {
 		Debug_logging("Removing state file, state probably changed.");
 		delete_file(state.filename);
 		state.exists = 0;
 	}
 
-	change_run_status(current_running, RUN_STATUS_FAILED);
-
-	current_running = current_running->parent;
+	set_run_status(current_failed, RUN_STATUS_FAILED);
 }
 
 /*
@@ -900,16 +931,20 @@ static int handle_ctrl_msg(void)
 	ctrl_msg_s *message;
 
 
-	if ((message = read_ctrl_message(FRONTEND_CTRL_SOCKET)) != NULL) {
-		switch (message->type) {
+	if ((message = comm_read_ctrl_message(FRONTEND_CTRL_SOCK)) != NULL) {
+		char *content = comm_msg_content(message);
+
+		switch (comm_msg_type(message)) {
 			case CTRL_ELEMENT_STARTED:
-				element_started();
+				element_started(content);
 				break;
+
 			case CTRL_ELEMENT_ENDED:
-				element_ended();
+				element_ended(content);
 				break;
+
 			case CTRL_ELEMENT_FAILED:
-				element_failed();
+				element_failed(content);
 				break;
 
 			case CTRL_SENDING_LOG_FILE:
@@ -925,12 +960,12 @@ static int handle_ctrl_msg(void)
 				break;
 
 			default:
-				Nprint_warn("Unknown control message: %s",
-					message->content);
+				Nprint_warn(
+					"Unknown control message: %s",
+					content);
 		}
 
-		xfree(message->content);
-		xfree(message);
+		comm_free_message(message);
 
 		return 1;
 	}
@@ -1129,7 +1164,7 @@ static void display_help_page(void)
 }
 
 /*
- * Writing main window.
+ * Writing to main window.
  */
 
 /* Not really the good place for this. */
@@ -1614,7 +1649,7 @@ static INLINE void toggle_verbosity(void)
 static INLINE void toggle_backend_logging(void)
 {
 	if (Backend_exists) {
-		send_ctrl_msg(FRONTEND_CTRL_SOCKET, CTRL_LOG_BACKEND, "");
+		comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_LOG_BACKEND, "");
 	}
 
 	Toggle(opt_log_backend);
@@ -1654,7 +1689,7 @@ static INLINE void toggle_logging(void)
 static INLINE void toggle_logging_files(void)
 {
 	if (Backend_exists) {
-		send_ctrl_msg(FRONTEND_CTRL_SOCKET, CTRL_LOG_CHANGED_FILES, "");
+		comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_LOG_CHANGED_FILES, "");
 	}
 
 	if (++opt_logging_method > LAST_LOGGING_METHOD) {
@@ -1677,7 +1712,7 @@ static INLINE void toggle_logging_files(void)
 static INLINE void toggle_logging_actions(void)
 {
 	if (Backend_exists) {
-		send_ctrl_msg(FRONTEND_CTRL_SOCKET, CTRL_LOG_HANDLER_ACTIONS, "");
+		comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_LOG_HANDLER_ACTIONS, "");
 	}
 
 	if (opt_log_handlers) {
@@ -1693,7 +1728,7 @@ static INLINE void toggle_logging_actions(void)
 static INLINE void toggle_generate_stamp(void)
 {
 	if (Backend_exists) {
-		send_ctrl_msg(FRONTEND_CTRL_SOCKET, CTRL_GENERATE_STAMP, "");
+		comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_GENERATE_STAMP, "");
 	}
 
 	if (opt_stamp_packages) {
@@ -1709,7 +1744,7 @@ static INLINE void toggle_generate_stamp(void)
 static INLINE void toggle_system_output(void)
 {
 	if (Backend_exists) {
-		send_ctrl_msg(FRONTEND_CTRL_SOCKET, CTRL_SYSTEM_OUTPUT, "");
+		comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_SYSTEM_OUTPUT, "");
 	}
 
 	if (opt_show_system_output) {
@@ -2250,7 +2285,7 @@ static void redisplay_all(void)
 	draw_timer();
 
 	if (opt_display_profile) {
-		draw_profile_name(get_main_profile(Current_element));
+		draw_profile_name(get_profile_by_element(Current_element));
 	}
 	if (opt_display_options_line) {
 		draw_options_indicators();
@@ -2478,6 +2513,18 @@ static void read_all_messages(void)
 	}
 }
 
+static inline void change_run_status_to_failed(element_s *el)
+{
+	element_s *parent;
+
+
+	set_run_status(el, RUN_STATUS_FAILED);
+
+	for (parent = el->parent; parent; parent = parent->parent) {
+		set_run_status(parent, RUN_STATUS_FAILED);
+	}
+}
+
 static int wait_for_the_backend(void)
 {
 	int status;
@@ -2493,18 +2540,9 @@ static int wait_for_the_backend(void)
 		if (WEXITSTATUS(status)) {
 			Nprint_err("Execution failed (%d).",
 				WEXITSTATUS(status));
-
-			if (current_running == current_finishing) {
-				set_failed_run_status(current_running);
-			} else {
-				set_failed_run_status(current_finishing);
-			}
-
 			status = -1;
-
 		} else {
 			Nprint("Execution successfully done.");
-
 			status = 0;
 		}
 
@@ -2512,33 +2550,35 @@ static int wait_for_the_backend(void)
 		Nprint_err("Backend (%ld) killed by signal "
 			"%d%s.", (long)got_pid, WTERMSIG(status),
 			WCOREDUMP(status) ? " (core dumped)" : "");
-
-		set_failed_run_status(current_running);
 		status = -1;
 
 	} else if (WIFSTOPPED(status)) {
 		Nprint_err("Backend (%ld) stopped by signal "
 			"%d.", (long)got_pid, WSTOPSIG(status));
-
-		set_failed_run_status(current_running);
 		status = -1;
 
 	} else {
-		Nprint_err("Backend exited abnormaly "
+		Nprint_err("Backend exited abnormally "
 			"(crashed or got fatal error).");
-
-		set_failed_run_status(current_running);
 		status = -1;
 	}
 
 	backend_pid = 0;
-	current_running = NULL;
-	current_finishing = NULL;
 
 	timer_end(Backend_exists);
 
 	if (signal(SIGCHLD, SIG_DFL) == SIG_ERR) {
 		Fatal_error("signal() failed");
+	}
+
+	/*
+	 * When execution is stopped before ending normally,
+	 * "element failed" message is not received.  That's why
+	 * marking of the current running element (and its parents)
+	 * has to be performed here.
+	 */
+	if (status != 0) {
+		change_run_status_to_failed(current_running);
 	}
 
 	if (opt_beep_when_done) {
@@ -2716,7 +2756,7 @@ static void write_extra_element_info(element_s *el)
 		Yesno(el->hide_children));
 }
 
-void build_description_aux(char **pcontent, element_s *node, int indent)
+static void build_description_aux(char **pcontent, element_s *node, int indent)
 {
 	static char *spaces = "            ";
 
@@ -2787,7 +2827,7 @@ void build_description_aux(char **pcontent, element_s *node, int indent)
 	}
 }
 
-char* build_description(element_s *el)
+static char *build_description(element_s *el)
 {
 	/* append_str(char **ptr, const char *str) */
 
@@ -2803,9 +2843,6 @@ char* build_description(element_s *el)
 
 static void write_element_info(element_s *el)
 {
-	element_s *p;
-
-
 	Xwprintw(windows.main->name, "Element name  : %s\n\n", el->name);
 
 	/* Print attributes (if any). */
@@ -2829,8 +2866,7 @@ static void write_element_info(element_s *el)
 	 */
 
 	if (Is_parameter_name(el, "description")
-	&& (p = el->parent) != NULL
-	&& Is_parameter_name(p, "packageinfo")) {
+	&& el->parent && Is_parameter_name(el->parent, "packageinfo")) {
 		char *s = build_description(el);
 
 		Xwprintw(windows.main->name,
@@ -3058,26 +3094,11 @@ static void signal_chld(int sig)
 	got_sigchld = 1;
 }
 
-static INLINE void create_socket_pairs(void)
-{
-	if (socketpair(PF_UNIX, SOCK_STREAM, 0, data_sock) == -1) {
-		Fatal_error("socketpair() failed: %s", strerror(errno));
-	}
-	if (socketpair(PF_UNIX, SOCK_STREAM, 0, ctrl_sock) == -1) {
-		Fatal_error("socketpair() failed: %s", strerror(errno));
-	}
-}
-
 static void start_executing(void)
 {
 	current_running = root_element;
 
-	create_socket_pairs();
-
-	/* Non-blocking reading for our data socket. */
-	if (fcntl(FRONTEND_DATA_SOCKET, F_SETFL, O_NONBLOCK) == -1) {
-		Fatal_error("fcntl() failed: %s", strerror(errno));
-	}
+	comm_create_socket_pairs();
 
 	/* Start handling SIGCHLD. */
 	if (signal(SIGCHLD, signal_chld) == SIG_ERR) {
@@ -3624,7 +3645,7 @@ static INLINE void run_editor(void)
 		editor = "vi";
 	}
 
-       	profile = get_main_profile(Current_element);
+       	profile = get_profile_by_element(Current_element);
 
 	command = xstrdup(editor);
 	append_str(&command, " ");
@@ -3709,7 +3730,7 @@ static int browse(void)
 		print_cursor();
 
 		if (opt_display_profile) {
-			draw_profile_name(get_main_profile(Current_element));
+			draw_profile_name(get_profile_by_element(Current_element));
 		}
 
 		windows.main->ref(displayed.top);
@@ -3894,7 +3915,7 @@ static int browse(void)
 			}
 
 			/* Send the stop request to the backend. */
-			send_ctrl_msg(FRONTEND_CTRL_SOCKET, CTRL_STOP, "Stop");
+			comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_STOP, "");
 
 			break;
 
@@ -3904,7 +3925,7 @@ static int browse(void)
 				break;
 			}
 
-			send_ctrl_msg(FRONTEND_CTRL_SOCKET, CTRL_PAUSE, "Pause");
+			comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_PAUSE, "");
 
 			if (backend_status == BACKEND_PAUSED) {
 				backend_status = BACKEND_RUNNING;
@@ -3965,8 +3986,8 @@ static int browse(void)
 		case 'e': /* Edit current element. */
 #ifdef USE_EDITOR
 			if (Backend_exists
-			&& get_main_profile(current_running)
-			== get_main_profile(Current_element)) {
+			&& get_profile_by_element(current_running)
+			== get_profile_by_element(Current_element)) {
 				Nprint_warn("Can't edit running profile.");
 				break;
 			}
@@ -4037,23 +4058,26 @@ static int browse(void)
 				"(d)one, (f)ailed or (n)one ? ");
 
 			switch (get_key(windows.main->name)) {
-			case 'd':
-				change_run_status_marks(
-					Current_element, RUN_STATUS_DONE);
-				break;
+				case 'd':
+					change_run_status_marks(
+						Current_element,
+						RUN_STATUS_DONE);
+					break;
 
-			case 'f':
-				change_run_status_marks(
-					Current_element, RUN_STATUS_FAILED);
-				break;
+				case 'f':
+					change_run_status_marks(
+						Current_element,
+						RUN_STATUS_FAILED);
+					break;
 
-			case 'n':
-				change_run_status_marks(
-					Current_element, RUN_STATUS_NONE);
-				break;
+				case 'n':
+					change_run_status_marks(
+						Current_element,
+						RUN_STATUS_NONE);
+					break;
 
-			default:
-				Nprint_warn("No such option.");
+				default:
+					Nprint_warn("No such option.");
 			}
 
 			rewrite_main();
@@ -4096,7 +4120,7 @@ static int browse(void)
 		{
 			element_s *current = Current_element;
 
-			if (move_profile_up(get_main_profile(current))) {
+			if (move_profile_up(get_profile_by_element(current))) {
 				Nprint_warn("Already on top.");
 			} else {
 				rewrite_main();
@@ -4111,7 +4135,7 @@ static int browse(void)
 		{
 			element_s *current = Current_element;
 
-			if (move_profile_down(get_main_profile(current))) {
+			if (move_profile_down(get_profile_by_element(current))) {
 				Nprint_warn("Already at the bottom.");
 			} else {
 				rewrite_main();
@@ -4140,7 +4164,7 @@ static int browse(void)
 		case 'd': /* Remove the profile from the list. */
 		case KEY_DC:
 		{
-			element_s *el = get_main_profile(Current_element);
+			element_s *el = get_profile_by_element(Current_element);
 
 			if (el->should_run) {
 				Nprint_warn(
@@ -4186,10 +4210,10 @@ static int browse(void)
 
 		case 'r': /* Reload the profile. */
 		{
-			element_s *el = get_main_profile(Current_element);
+			element_s *el = get_profile_by_element(Current_element);
 
 			if (Backend_exists
-			&& get_main_profile(current_running) == el) {
+			&& get_profile_by_element(current_running) == el) {
 				Nprint_warn("Can't reload while running.");
 				break;
 			}
@@ -4445,7 +4469,7 @@ static void signal_term(int sig)
 	(void)sig;
 
 	/* First, stop the backend. */
-	send_ctrl_msg(FRONTEND_CTRL_SOCKET, CTRL_STOP, "Stop");
+	comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_STOP, "");
 
 	if (opt_run_interactive) {
 		end_display();
@@ -4556,7 +4580,7 @@ static void nprint_curses(msg_id_e mid, const char *format,...)
 	char *file = alloc_real_status_logfile_name();
 	FILE *fp = NULL;
 	va_list ap;
-
+        va_list ap2;
 
 	if (opt_log_status_window && (fp = fopen(file, "a")) == NULL) {
 		opt_log_status_window = 0;
@@ -4567,6 +4591,7 @@ static void nprint_curses(msg_id_e mid, const char *format,...)
 	}
 
 	va_start(ap, format);
+        __va_copy(ap2, ap);
 
 	wattrset(windows.status->name, msg_attrs(mid));
 
@@ -4584,12 +4609,13 @@ static void nprint_curses(msg_id_e mid, const char *format,...)
 	vwprintw(windows.status->name, (char *) format, ap);
 
 	if (opt_log_status_window && fp) {
-		vfprintf(fp, format, ap);
+		vfprintf(fp, format, ap2);
 	}
 
 	windows.status->ref(0);
 
 	va_end(ap);
+        va_end(ap2);
 
 	if (opt_log_status_window && fp) {
 		fclose(fp);
@@ -4604,7 +4630,7 @@ static void nprint_text(msg_id_e mid, const char *format,...)
 	char *file = alloc_real_status_logfile_name();
 	FILE *fp = NULL;
 	va_list ap;
-
+        va_list ap2;
 
 	if (opt_log_status_window && (fp = fopen(file, "a")) == NULL) {
 		opt_log_status_window = 0;
@@ -4614,6 +4640,7 @@ static void nprint_text(msg_id_e mid, const char *format,...)
 	}
 
 	va_start(ap, format);
+        __va_copy(ap2, ap);
 
 	if (mid != T_RAW) {
 		printf("\n%c: ", msg_character(mid));
@@ -4627,11 +4654,12 @@ static void nprint_text(msg_id_e mid, const char *format,...)
 	fflush(stdout);
 
 	if (opt_log_status_window && fp) {
-		vfprintf(fp, format, ap);
+		vfprintf(fp, format, ap2);
 	}
 
 	va_end(ap);
-
+        va_end(ap2);
+        
 	if (opt_log_status_window && fp) {
 		fclose(fp);
 	}

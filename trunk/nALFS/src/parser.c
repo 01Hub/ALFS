@@ -48,6 +48,8 @@ element_s *init_new_element(void)
 
 	new->type = TYPE_UNKNOWN;
 
+	new->id = 0;
+
 	new->name = NULL;
 	new->attr = NULL;
 	new->content = NULL;
@@ -119,17 +121,55 @@ void link_element(element_s *el, element_s *prev, element_s *parent)
 	}
 }
 
+static void append_el_parents(char **el_path, element_s *el)
+{
+	if (el->parent && el->parent->type != TYPE_PROFILE) {
+		append_el_parents(el_path, el->parent);
+		append_str(el_path, "->");
+	}
+
+	append_str(el_path, el->name);
+}
+
+static INLINE void print_unknown_elements(element_s *profile)
+{
+	element_s *el;
+
+
+	for (el = profile; el; el = get_next_element(el)) {
+		if (el->type == TYPE_UNKNOWN) {
+			/* Print the names of all element's parents and
+			 * the element itself.
+			 */
+			char *el_path = NULL;
+
+			append_el_parents(&el_path, el);
+
+			Nprint_warn("Unknown element: %s", el_path);
+
+			xfree(el_path);
+		}
+	}
+}
+
 element_s *parse_profile(const char *filename)
 {
+	element_s *profile;
+
+
 	if (opt_be_verbose) {
 		Nprint("Parsing %s...", filename);
 	}
 
 #ifdef PARSE_WITH_LIBXML_SAX
-	return parse_with_libxml2_SAX(filename);
+	profile = parse_with_libxml2_SAX(filename);
 #else
-	return parse_with_libxml2_tree(filename);
+	profile = parse_with_libxml2_tree(filename);
 #endif
+
+	print_unknown_elements(profile);
+
+	return profile;
 }
 
 
@@ -210,7 +250,7 @@ element_s *first_param(const char *name, element_s *element)
 	return NULL;
 }
 
-element_s *get_main_profile(element_s *el)
+element_s *get_profile_by_element(element_s *el)
 {
 	for (; el; el = el->parent) {
 		if (el->type == TYPE_PROFILE && !el->parent->parent) {
@@ -219,6 +259,19 @@ element_s *get_main_profile(element_s *el)
 	}
 
 	ASSERT(0); /* Shouldn't be reached. */
+
+	return NULL;
+}
+
+element_s *get_profile_by_name(element_s *root, const char *name)
+{
+	element_s *el;
+
+	for (el = root->children; el; el = el->next) {
+		if (strcmp(el->name, name) == 0) {
+			return el;
+		}
+	}
 
 	return NULL;
 }

@@ -29,8 +29,11 @@
 #include "comm.h"
 
 
-#define Start_receiving_sigio()	set_receive_sigio(BACKEND_CTRL_SOCKET, 1)
-#define Stop_receiving_sigio()	set_receive_sigio(BACKEND_CTRL_SOCKET, 0)
+#define Start_receiving_sigio() \
+	set_receive_sigio(comm_get_socket(BACKEND_CTRL_SOCK), 1)
+
+#define Stop_receiving_sigio() \
+	set_receive_sigio(comm_get_socket(BACKEND_CTRL_SOCK), 0)
 
 void set_receive_sigio(int s, int receive_it);
 
@@ -44,7 +47,4 @@ int execute_children(element_s *element);
 void start_backend(element_s *el);
 
 
-extern char *received_state_file;
-
-
-#endif
+#endif /* H_BACKEND_ */

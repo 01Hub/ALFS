@@ -52,8 +52,8 @@
 
 int get_key(WINDOW *win);
 
-run_status_e find_element_status(element_s *el);
+run_status_e get_element_status(element_s *el);
 
 /* void set_should_run_marks(element_s *el); */
 
-#endif
+#endif /* H_NALFS_ */

@@ -21,8 +21,8 @@
 #
 
 
-top_srcdir := @top_srcdir@
-include $(top_srcdir)/Rules.mak
+top_builddir := .
+include $(top_builddir)/Rules.mak
 
 
 SUBDIRS = src

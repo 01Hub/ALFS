@@ -21,20 +21,21 @@
 #
 
 
-top_srcdir := @top_srcdir@
-include $(top_srcdir)/Rules.mak
+srcdir       := @top_srcdir@/src/handlers
+top_builddir := @top_builddir@
+include $(top_builddir)/Rules.mak
 
 
 CFLAGS += -fPIC -shared
 
-SO_FILES = $(patsubst %.c,%.so, $(wildcard *.c))
+SO_FILES = $(patsubst $(srcdir)/%.c,%.so, $(C_FILES))
 
 
 .PHONY: all
 
 all: $(SO_FILES)
 
-$(SO_FILES): %.so: %.c
+$(SO_FILES): %.so: $(srcdir)/%.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 

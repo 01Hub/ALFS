@@ -50,6 +50,8 @@
 #define DATE_FORMAT		"%a, %d %b %Y %H:%M:%S %z"
 #define DATE_FORMAT_LEN		31
 
+#define MAX_PACKAGE_NAME_AND_VERSION_BUF_SIZE 128
+
 /* Some temporary files. */
 #define FILE_STATE_FILE_1	"/tmp/nALFS.state_file_1.XXXXXX"
 #define FILE_STATE_FILE_2	"/tmp/nALFS.state_file_2.XXXXXX"
@@ -69,13 +71,14 @@ typedef struct statefile_s {
 } statefile_s;
 
 
-static const int max_package_name_and_version_buffer_size = 128;
-
 static time_t time_stamp = -1;
-static statefile_s *statefile_new = NULL;
-static statefile_s *statefile_current = NULL;
-static element_s *current_package = NULL;
-static xmlDocPtr xml_doc = NULL;
+
+static statefile_s *statefile_new;
+static statefile_s *statefile_current;
+
+static element_s *current_package;
+
+static xmlDocPtr xml_doc;
 
 
 static INLINE int get_stamp_directory_status(
@@ -204,9 +207,9 @@ int check_stamp(const char *name)
 
 	if ((fp = fopen(filename, "r")) != NULL) {
 		char *s;
-		char fullpname[max_package_name_and_version_buffer_size];
+		char fullpname[MAX_PACKAGE_NAME_AND_VERSION_BUF_SIZE] = {0};
 
-		s = fgets(fullpname, max_package_name_and_version_buffer_size, fp);
+		s = fgets(fullpname, MAX_PACKAGE_NAME_AND_VERSION_BUF_SIZE, fp);
 
 		fclose(fp);
 
@@ -328,14 +331,13 @@ int check_stamp_version(const char *name, char *condition, char *version)
 
 	if ((fp = fopen(filename, "r")) != NULL) {
 		char *s;
-		char fullpname[max_package_name_and_version_buffer_size];
+		char fullpname[MAX_PACKAGE_NAME_AND_VERSION_BUF_SIZE] = {0};
 		char *pversion;
 		int len;
 		int cmpstatus;
 
-		memset(fullpname, 0, max_package_name_and_version_buffer_size);
 
-		s = fgets(fullpname, max_package_name_and_version_buffer_size, fp);
+		s = fgets(fullpname, MAX_PACKAGE_NAME_AND_VERSION_BUF_SIZE, fp);
 
 		fclose(fp);
 
@@ -348,7 +350,7 @@ int check_stamp_version(const char *name, char *condition, char *version)
 
 		/* check that stamp file content is correct */
 		len = strlen(name);
-		if (len >=  max_package_name_and_version_buffer_size) {
+		if (len >=  MAX_PACKAGE_NAME_AND_VERSION_BUF_SIZE) {
 			Nprint("Package name is too long", name);
 			return 1;
 		}
@@ -589,8 +591,12 @@ static INLINE void send_state(void)
 		xfree(package_string);
 
 		Debug_logging("Sending the time stamp to the frontend...");
-		send_from_memory(BACKEND_CTRL_SOCKET,
-			data, strlen(data), CTRL_SENDING_STATE);
+
+		comm_send_from_memory(
+			BACKEND_CTRL_SOCK,
+			CTRL_SENDING_STATE,
+			data,
+			strlen(data));
 
 		xfree(data);
 	}
@@ -601,8 +607,10 @@ static INLINE void send_state(void)
 	if (statefile_current && statefile_current->complete) {
 		Nprint("Sending the current state "
 			"file to the frontend...");
-		send_from_file(BACKEND_CTRL_SOCKET,
-			statefile_current->name, CTRL_SENDING_STATE);
+		comm_send_from_file(
+			BACKEND_CTRL_SOCK,
+			CTRL_SENDING_STATE,
+			statefile_current->name);
 	}
 }
 
@@ -623,8 +631,11 @@ static void finish_logging(char *installed_files)
 	xml_doc = NULL;
 
 	Nprint("Sending the package log to the frontend... ");
-	send_from_memory(BACKEND_CTRL_SOCKET,
-		(const char *)ptr, size, CTRL_SENDING_LOG_FILE);
+	comm_send_from_memory(
+		BACKEND_CTRL_SOCK,
+		CTRL_SENDING_LOG_FILE,
+		(const char *)ptr,
+		size);
 
 	xfree(ptr);
 
@@ -635,8 +646,10 @@ static void finish_logging(char *installed_files)
 	if (installed_files) {
 		Debug_logging("Sending a list of installed "
 			"files (%s)... ", installed_files);
-		send_from_file(BACKEND_CTRL_SOCKET,
-			installed_files, CTRL_SENDING_FILES_FILE);
+		comm_send_from_file(
+			BACKEND_CTRL_SOCK,
+			CTRL_SENDING_FILES_FILE,
+			installed_files);
 
 
 		Debug_logging("Deleting a list (%s)...", installed_files);
@@ -686,7 +699,7 @@ void log_stopped_execution(void)
 
 static INLINE char *stage_two_of_logging_changed_files(void)
 {
-	if (find_element_status(current_package) != RUN_STATUS_DONE) {
+	if (get_element_status(current_package) != RUN_STATUS_DONE) {
 		Debug_logging("Not doing stage two - "
 			"package status is not DONE.");
 		return NULL;
@@ -750,7 +763,7 @@ static INLINE void end_package_logging(int status)
 		/* FIXME:
 		 * When element inside the package is run alone,
 		 * the whole package won't be installed, but the status
-		 * can be 0. nalfs.c::find_element_status() has to be used.
+		 * can be 0. nalfs.c::get_element_status() has to be used.
 		 * Better when stamping is integrated with existing logging.
 		 */
 		stamp_package_installed(status == 0, name, version);
@@ -882,18 +895,21 @@ static INLINE void check_and_store_state(
 static INLINE void request_state(void)
 {
 	ctrl_msg_s *message;
+	ctrl_msg_type_e type;
 
 
-	send_ctrl_msg(BACKEND_CTRL_SOCKET, CTRL_REQUESTING_STATE, "");
+	comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_REQUESTING_STATE, "");
 
-	while ((message = read_ctrl_message(BACKEND_CTRL_SOCKET)) == NULL)
+	while ((message = comm_read_ctrl_message(BACKEND_CTRL_SOCK)) == NULL)
 		/* Wait for the first control message. */ ;
 
-	if (message->type == CTRL_NO_STATE) {
+	type = comm_msg_type(message);
+
+	if (type == CTRL_NO_STATE) {
 		Debug_logging("Frontend doesn't have a state file "
 			"to send us.");
 
-	} else if (message->type == CTRL_SENDING_STATE) {
+	} else if (type == CTRL_SENDING_STATE) {
 		char *f, filename[] = FILE_STATE_FILE_1;
 
 		if (create_temp_file(filename)) {
@@ -904,7 +920,7 @@ static INLINE void request_state(void)
 
 		Debug_logging("Receiving a state from the frontend...");
 
-		if (read_to_file(BACKEND_CTRL_SOCKET, f) != 0) {
+		if (comm_read_to_file(BACKEND_CTRL_SOCK, f) != 0) {
 			Nprint_warn("Receiving state file failed.");
 			return;
 		}
@@ -913,12 +929,13 @@ static INLINE void request_state(void)
 			return;
 		}
 
-		check_and_store_state(filename,
-			&statefile_current, &time_stamp);
+		check_and_store_state(
+			filename,
+			&statefile_current,
+			&time_stamp);
 
 	} else {
-		Nprint_warn("I didn't expect this control "
-			"message (%d).", message->type);
+		Nprint_warn("Unexpected control message (%d) received.", type);
 	}
 }
 

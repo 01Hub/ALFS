@@ -43,7 +43,7 @@ int handler_main(element_s *el)
 {
 	int status = 0;
 	int options[1], recursive;
-	char *base, *user,  *group;
+	char *base, *user, *group;
 	element_s *p;
 
 

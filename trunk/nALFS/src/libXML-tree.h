@@ -28,4 +28,4 @@
 element_s *parse_with_libxml2_tree(const char *filename);
 
 
-#endif
+#endif /* H_LIBXML_ */

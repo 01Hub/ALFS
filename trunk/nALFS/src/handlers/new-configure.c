@@ -35,7 +35,7 @@ char handler_name[] = "configure";
 char handler_description[] = "Configure";
 char *handler_syntax_versions[] = { "3.0", "3.1", NULL };
 // char *handler_attributes[] = { "base", "command", NULL };
-char *handler_parameters[] = { "param", NULL };
+char *handler_parameters[] = { "param", "prefix", NULL };
 int handler_action = 1;
 
 
@@ -52,6 +52,10 @@ int handler_main(element_s *el)
 		xfree(base);
 		return -1;
 	}
+
+	command = xstrdup("");
+
+	append_prefix_elements(&command, el);
 
 	if ((c = attr_value("command", el))) {
 		append_str(&command, c);

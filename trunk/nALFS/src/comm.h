@@ -1,7 +1,7 @@
 /*
  *  comm.h - Communication functions (mostly)
  *
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001-2003
  *
  *  Neven Has <haski@sezampro.yu>
  *
@@ -25,8 +25,21 @@
 #define H_COMM_
 
 
-/* Types of control messages between frontend and backend 
- * - for sending instructions, reporting statuses etc.
+/*
+ * Sockets for frontend<->backend communication.
+ */
+typedef enum socket_e {
+	FRONTEND_DATA_SOCK,
+	BACKEND_DATA_SOCK,
+
+	FRONTEND_CTRL_SOCK,
+	BACKEND_CTRL_SOCK
+} socket_e;
+
+
+/*
+ * Types of control messages between frontend and backend -- for sending
+ * instructions, reporting statuses etc.
  */
 typedef enum ctrl_msg_type_e {
 	/* frontend <- backend */
@@ -52,35 +65,30 @@ typedef enum ctrl_msg_type_e {
 	CTRL_DATA,
 	CTRL_DATA_SENT,
 
-	CTRL_UNKNOWN /* Has to be last (using it for maximum number length) */
+	CTRL_UNKNOWN /* Has to be the last one (used for max number length). */
 } ctrl_msg_type_e;
 
-typedef struct ctrl_msg_s {
-	ctrl_msg_type_e type;
-	char *content;
-} ctrl_msg_s;
 
-/*
- * Sockets for frontend<->backend communication.
- */
-
-extern int data_sock[2];
-#define FRONTEND_DATA_SOCKET (data_sock[0])
-#define BACKEND_DATA_SOCKET (data_sock[1])
-
-extern int ctrl_sock[2];
-#define FRONTEND_CTRL_SOCKET (ctrl_sock[0])
-#define BACKEND_CTRL_SOCKET (ctrl_sock[1])
+typedef struct ctrl_msg_s ctrl_msg_s;
 
 
-int send_ctrl_msg(int s, ctrl_msg_type_e t, const char *format, ...);
-ctrl_msg_s *read_ctrl_message(int sock);
+int comm_get_socket(socket_e s);
 
-int read_to_file(int sock, const char *file);
-void read_to_memory(int sock, char **ptr, int *size);
+ctrl_msg_type_e comm_msg_type(ctrl_msg_s *msg);
+char *comm_msg_content(ctrl_msg_s *msg);
 
-int send_from_file(int s, const char *file, ctrl_msg_type_e type);
-int send_from_memory(int s, const char *ptr, int size, ctrl_msg_type_e type);
+void comm_free_message(ctrl_msg_s *msg);
+
+int comm_read_to_file(socket_e s, const char *file);
+int comm_read_to_memory(socket_e s, char **ptr, size_t *size);
+
+int comm_send_from_file(socket_e s, ctrl_msg_type_e t, const char *file);
+int comm_send_from_memory(socket_e s, ctrl_msg_type_e t, const char *ptr, size_t size);
+
+ctrl_msg_s *comm_read_ctrl_message(socket_e s);
+int comm_send_ctrl_msg(socket_e s, ctrl_msg_type_e t, const char *f, ...);
+
+void comm_create_socket_pairs(void);
 
 
-#endif
+#endif /* H_COMM_ */

@@ -38,4 +38,4 @@ void edit_element(element_s *el);
 void get_string_from_bottom(const char *label_string, char **string);
 
 
-#endif
+#endif /* H_EDITOR_ */

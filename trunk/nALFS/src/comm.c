@@ -27,6 +27,7 @@
 #include <sys/time.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/socket.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <limits.h>
@@ -39,8 +40,207 @@
 #include "comm.h"
 
 
-int data_sock[2];	/* Sockets for backend Nprint() messages.	*/
-int ctrl_sock[2];	/* Sockets for control messages.		*/
+struct ctrl_msg_s {
+	ctrl_msg_type_e type;
+
+	char *content;
+};
+
+
+static int ctrl_sock[2]; /* Sockets for control messages. */
+static int data_sock[2]; /* Sockets for backend Nprint() messages. */
+
+
+int comm_get_socket(socket_e sock)
+{
+	switch (sock) {
+		case FRONTEND_DATA_SOCK:
+			return data_sock[0];
+
+		case BACKEND_DATA_SOCK:
+			return data_sock[1];
+
+		case FRONTEND_CTRL_SOCK:
+			return ctrl_sock[0];
+
+		case BACKEND_CTRL_SOCK:
+			return ctrl_sock[1];
+	}
+
+	return -1;
+}
+
+
+ctrl_msg_type_e comm_msg_type(ctrl_msg_s *msg)
+{
+	return msg->type;
+}
+
+char *comm_msg_content(ctrl_msg_s *msg)
+{
+	return msg->content;
+}
+
+
+void comm_free_message(ctrl_msg_s *msg)
+{
+	xfree(msg->content);
+	xfree(msg);
+}
+
+
+/*
+ * Reads from socket into specified file.  File can be NULL, in which
+ * case we only read all CTRL_DATA messages, without storing them.
+ */
+int comm_read_to_file(socket_e sock, const char *file)
+{
+	int status = 0;
+	FILE *fp = NULL;
+	ctrl_msg_s *message;
+
+
+	if (file) {
+		if ((fp = fopen(file, "w")) == NULL) {
+			Nprint_err("Can't open \"%s\" for writing:", file);
+			Nprint_err("%s. Receiving file will be ignored.",
+				strerror(errno));
+			status = 1;
+
+		} else {
+			Debug_logging("Reading to a file...");
+		}
+	} else {
+		Nprint_warn("File is NULL, ignoring received file.");
+		status = 1;
+	}
+
+	while (1) {
+		if ((message = comm_read_ctrl_message(sock)) == NULL) {
+			napms(1);
+			continue;
+		}
+
+		if (message->type == CTRL_DATA) {
+			if (fp) {
+				fprintf(fp, "%s", message->content);
+			}
+
+		} else if (message->type == CTRL_DATA_SENT) {
+			xfree(message);
+			break;
+
+		} else {
+			Nprint_warn("Got unexpected control "
+				"message while reading a file:");
+			Nprint_warn("\"%s\"", message->content);
+		}
+
+		xfree(message->content);
+		xfree(message);
+	}
+
+	if (fp) {
+		fclose(fp);
+	}
+
+	return status;
+}
+
+int comm_read_to_memory(socket_e sock, char **ptr, size_t *size)
+{
+	ctrl_msg_s *message;
+
+
+	Debug_logging("Reading from backend to memory...");
+
+	*ptr = NULL;
+	*size = 0;
+
+	while (1) {
+		if ((message = comm_read_ctrl_message(sock)) == NULL) {
+			napms(1);
+			continue;
+		}
+
+		if (message->type == CTRL_DATA) {
+			/* Write to memory here. */
+			append_str(ptr, message->content);
+			*size += strlen(message->content);
+
+		} else if (message->type == CTRL_DATA_SENT) {
+			xfree(message);
+			break;
+
+		} else {
+			Nprint_warn("Got unexpected control "
+				"message while reading a file:");
+			Nprint_warn("\"%s\"", message->content);
+		}
+
+		xfree(message->content);
+		xfree(message);
+	}
+
+	return 0;
+}
+
+
+int comm_send_from_file(socket_e s, ctrl_msg_type_e type, const char *file)
+{
+	int fd;
+	char buf[MAX_CTRL_MSG_LEN + 1];
+	ssize_t i;
+
+
+	if ((fd = open(file, O_RDONLY)) == -1) {
+		Nprint_err("Can't open %s for reading:", file);
+		Nprint_err("%s", strerror(errno));
+		return -1;
+	}
+
+	/* Notify the other side that we are going to start sending data. */
+	comm_send_ctrl_msg(s, type, "Sending data...");
+
+	while ((i = read(fd, buf, sizeof buf - 1)) > 0) {
+		buf[i] = '\0';
+		comm_send_ctrl_msg(s, CTRL_DATA, "%s", buf);
+	}
+
+	close(fd);
+
+	/* Tell the other side that we are done sending DATA. */
+	comm_send_ctrl_msg(s, CTRL_DATA_SENT, "Done sending DATA.");
+
+	return 0;
+}
+
+int comm_send_from_memory(
+	socket_e s, ctrl_msg_type_e type, const char *ptr, size_t size)
+{
+	char buf[MAX_CTRL_MSG_LEN + 1];
+	const char *current = ptr;
+
+
+	/* Notify the other side that we are going to start sending data. */
+	comm_send_ctrl_msg(s, type, "Sending data...");
+
+	while (current < ptr + size) {
+		size_t max = Min(MAX_CTRL_MSG_LEN, ptr + size - current);
+
+		strncpy(buf, current, max);
+		buf[max] = '\0';
+
+		comm_send_ctrl_msg(s, CTRL_DATA, "%s", buf);
+
+		current += max;
+	}
+
+	/* Tell the other side that we are done sending data. */
+	comm_send_ctrl_msg(s, CTRL_DATA_SENT, "Done sending data.");
+
+	return 0;
+}
 
 
 static int is_read_available(int s, int sec)
@@ -70,7 +270,7 @@ static int is_read_available(int s, int sec)
 
 /*
  * Returns number of bytes read, or zero if there is nothing on
- * the socket for reading. It reads maximum "top" bytes. Socket must block.
+ * the socket for reading.  It reads maximum "top" bytes.  Socket must block.
  */
 static INLINE int socket_read_max(int s, char *buf, int max)
 {
@@ -94,17 +294,6 @@ static INLINE int socket_read_max(int s, char *buf, int max)
 	}
 
 	return total_read;
-}
-
-static INLINE int number_len(int num)
-{
-	int i = 1;
-
-
-	while ((num /= 10))
-		++i;
-
-	return i;
 }
 
 /*
@@ -163,13 +352,13 @@ static char *do_read_ctrl_message(int s)
 	return NULL;
 }
 
-ctrl_msg_s *read_ctrl_message(int sock)
+ctrl_msg_s *comm_read_ctrl_message(socket_e s)
 {
 	char *tmp, *body;
 	ctrl_msg_s *message;
 
 
-	if ((body = do_read_ctrl_message(sock)) == NULL) {
+	if ((body = do_read_ctrl_message(comm_get_socket(s))) == NULL) {
 		return NULL;
 	}
 
@@ -194,7 +383,8 @@ ctrl_msg_s *read_ctrl_message(int sock)
 	return message;
 }
 
-int send_ctrl_msg(int s, ctrl_msg_type_e t, const char *format, ...)
+int comm_send_ctrl_msg(
+	socket_e s, ctrl_msg_type_e t, const char *format, ...)
 {
 	size_t i;
 	ssize_t ret;
@@ -228,7 +418,7 @@ int send_ctrl_msg(int s, ctrl_msg_type_e t, const char *format, ...)
 	xfree(size);
 	xfree(type);
 
-	ret = write(s, full_message, strlen(full_message));
+	ret = write(comm_get_socket(s), full_message, strlen(full_message));
 
 	xfree(full_message);
 
@@ -241,156 +431,17 @@ int send_ctrl_msg(int s, ctrl_msg_type_e t, const char *format, ...)
 }
 
 
-
-/*
- * Reads from socket into specified file. File can be NULL, in which
- * case we only read all CTRL_DATA messages, without storing them.
- */
-int read_to_file(int sock, const char *file)
+void comm_create_socket_pairs(void)
 {
-	int status = 0;
-	FILE *fp = NULL;
-	ctrl_msg_s *message;
-
-
-	if (file) {
-		if ((fp = fopen(file, "w")) == NULL) {
-			Nprint_err("Can't open \"%s\" for writing:", file);
-			Nprint_err("%s. Receiving file will be ignored.",
-				strerror(errno));
-			status = 1;
-
-		} else {
-			Debug_logging("Reading to a file...");
-		}
-	} else {
-		Nprint_warn("File is NULL, ignoring received file.");
-		status = 1;
+	if (socketpair(PF_UNIX, SOCK_STREAM, 0, data_sock) == -1) {
+		Fatal_error("socketpair() failed: %s", strerror(errno));
+	}
+	if (socketpair(PF_UNIX, SOCK_STREAM, 0, ctrl_sock) == -1) {
+		Fatal_error("socketpair() failed: %s", strerror(errno));
 	}
 
-	while (1) {
-		if ((message = read_ctrl_message(sock)) == NULL) {
-			napms(1);
-			continue;
-		}
-
-		if (message->type == CTRL_DATA) {
-			if (fp) {
-				fprintf(fp, "%s", message->content);
-			}
-
-		} else if (message->type == CTRL_DATA_SENT) {
-			xfree(message);
-			break;
-
-		} else {
-			Nprint_warn("Got unexpected control "
-				"message while reading a file:");
-			Nprint_warn("\"%s\"", message->content);
-		}
-
-		xfree(message->content);
-		xfree(message);
+	/* Non-blocking reading for our data socket. */
+	if (fcntl(comm_get_socket(FRONTEND_DATA_SOCK), F_SETFL, O_NONBLOCK) == -1) {
+		Fatal_error("fcntl() failed: %s", strerror(errno));
 	}
-
-	if (fp) {
-		fclose(fp);
-	}
-
-	return status;
-}
-
-void read_to_memory(int sock, char **ptr, int *size)
-{
-	ctrl_msg_s *message;
-
-
-	Debug_logging("Reading from backend to memory...");
-
-	*ptr = NULL;
-	*size = 0;
-
-	while (1) {
-		if ((message = read_ctrl_message(sock)) == NULL) {
-			napms(1);
-			continue;
-		}
-
-		if (message->type == CTRL_DATA) {
-			/* Write to memory here. */
-			append_str(ptr, message->content);
-			*size += strlen(message->content);
-
-		} else if (message->type == CTRL_DATA_SENT) {
-			xfree(message);
-			break;
-
-		} else {
-			Nprint_warn("Got unexpected control "
-				"message while reading a file:");
-			Nprint_warn("\"%s\"", message->content);
-		}
-
-		xfree(message->content);
-		xfree(message);
-	}
-}
-
-
-
-int send_from_file(int s, const char *file, ctrl_msg_type_e type)
-{
-	int fd;
-	char buf[MAX_CTRL_MSG_LEN + 1];
-	ssize_t i;
-
-
-	if ((fd = open(file, O_RDONLY)) == -1) {
-		Nprint_err("Can't open %s for reading:", file);
-		Nprint_err("%s", strerror(errno));
-		return -1;
-	}
-
-	/* Notify the other side that we are going to start sending data. */
-	send_ctrl_msg(s, type, "Sending data...");
-
-	while ((i = read(fd, buf, sizeof buf - 1)) > 0) {
-		buf[i] = '\0';
-		send_ctrl_msg(s, CTRL_DATA, "%s", buf);
-	}
-
-	close(fd);
-
-	/* Tell the other side that we are done sending DATA. */
-	send_ctrl_msg(s, CTRL_DATA_SENT, "Done sending DATA.");
-
-	return 0;
-}
-
-int send_from_memory(int s, const char *ptr, int size, ctrl_msg_type_e type)
-{
-	int max;
-	char buf[MAX_CTRL_MSG_LEN + 1];
-	const char *current = ptr;
-
-
-	/* Notify the other side that we are going to start sending data. */
-	send_ctrl_msg(s, type, "Sending data...");
-
-	while (current < ptr + size) {
-		max = Min(MAX_CTRL_MSG_LEN, ptr + size - current);
-
-		strncpy(buf, current, max);
-		buf[max] = '\0';
-
-		send_ctrl_msg(s, CTRL_DATA, "%s", buf);
-
-		current += max;
-	}
-
-
-	/* Tell the other side that we are done sending data. */
-	send_ctrl_msg(s, CTRL_DATA_SENT, "Done sending data.");
-
-	return 0;
 }

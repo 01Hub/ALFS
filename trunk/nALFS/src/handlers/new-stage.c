@@ -168,6 +168,31 @@ static INLINE int append_to_variable(const char *variable, const char *value)
 	return status;
 }
 
+static INLINE int prepend_to_variable(const char *variable, const char *value)
+{
+	int status = 0;
+	char *old_value, *full_value = NULL;
+       
+
+	append_str(&full_value, value);
+
+	if ((old_value = getenv(variable))) {
+	        append_str(&full_value, old_value);
+	}
+
+	Nprint_h("Prepending to environment variable %s:", variable);
+	Nprint_h("    %s", value);
+
+	if (setenv(variable, full_value, 1)) {
+		Nprint_h_err("Setting environment variable failed.");
+		status = -1;
+	}
+
+	xfree(full_value);
+
+	return status;
+}
+
 static INLINE int set_variable(const char *variable, const char *value)
 {
 	Nprint_h("Setting environment variable %s:", variable);
@@ -197,6 +222,8 @@ static INLINE int set_environment(element_s *environment)
 
 			if (mode && strcmp(mode, "append") == 0) {
 				append_to_variable(name, value);
+			} else if (mode && strcmp(mode, "prepend") == 0) {
+				prepend_to_variable(name, value);
 			} else {
 				set_variable(name, value);
 			}

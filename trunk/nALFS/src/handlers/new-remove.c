@@ -33,21 +33,6 @@
 #include "config.h"
 
 
-static INLINE int does_file_exist(const char *file)
-{
-        struct stat file_stat;
-
-        if (stat(file, &file_stat)) {
-		if (errno == ENOENT) {
-			Nprint_h_warn("File %s doesn't exist.", file);
-			return 0;
-		}
-	}
-
-	return 1;
-}
-
-
 char handler_name[] = "remove";
 char handler_description[] = "Remove files";
 char *handler_syntax_versions[] = { "3.0", "3.1", NULL };
@@ -73,10 +58,8 @@ int handler_main(element_s *el)
 
 	Nprint_h("Removing %s.", name);
 
-	if (does_file_exist(name)) {
-		if ((status = execute_command("rm -fr %s", name))) {
-			Nprint_h_err("Removing failed.");
-		}
+	if ((status = execute_command("rm -fr %s", name))) {
+		Nprint_h_err("Removing failed.");
 	}
 
 	xfree(name);

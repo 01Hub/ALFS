@@ -1,3 +1,47 @@
+Changes, before program was put under CVS
+=========================================
+
+ o  2003 Aug 15 18:52:59 +02:00
+    Patch adds prefix element support to configure and make elements;
+    prefix elements are put on the command line prior to the configure
+    or make commands themselves, by Kevin P. Fleming.
+
+ o  2003 Aug 15 18:41:54 +02:00
+    Support for mode="prepend" added to environment elements,
+    by Kevin P. Fleming.
+
+ o  2003 Aug 12 20:48:11 +02:00
+    The first patch allows nALFS to build in a seperate build directory
+    than the source directory.  The second patch allows nALFS to build
+    under gcc 3.3.x by changing varargs.h to stdarg.h.  By Marcus R. Brown.
+
+ o  2003 May 13 21:22:13 +02:00
+    --enable-static-link commented out for now.
+
+ o  2003 May 13 21:10:51 +02:00
+    Added printing of unknown elements and their locations
+    after parsing the profile.
+
+ o  2003 Apr 27 19:12:30 +02:00
+    A bug with the use of va_list fixed by Christopher Yeoh,
+    found by Marvin Heffler.
+
+ o  2003 Mar 09 18:56:00 +01:00
+    Removed check for file existance in <remove> to allow pattern matching. 
+
+ o  2003 Mar 04 13:09:05 +01:00
+    ctrl_msg_s typedef changed.
+
+ o  2003 Mar 02 14:13:59 +01:00
+    Communication functions improved, number_len() moved to utility.c.
+
+ o  2003 Mar 01 12:26:46 +01:00
+    Changed the method of following execution (backend now includes element's
+    information in control message).
+
+ o  2003 Feb 28 17:15:01 +01:00
+    get_main_profile() -> get_profile_by_element()
+
 
 ==[ v1.1.7
 

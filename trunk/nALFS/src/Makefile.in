@@ -21,8 +21,9 @@
 #
 
 
-top_srcdir := @top_srcdir@
-include $(top_srcdir)/Rules.mak
+srcdir       := @top_srcdir@/src
+top_builddir := @top_builddir@
+include $(top_builddir)/Rules.mak
 
 
 LDFLAGS += -Wl,-export-dynamic
@@ -38,8 +39,8 @@ handlers:
 nALFS: $(O_FILES)
 	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
-# Not really.
-$(O_FILES): $(H_FILES)
+$(O_FILES): %.o: $(srcdir)/%.c
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 
 .PHONY: clean distclean
