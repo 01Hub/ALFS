@@ -14,7 +14,7 @@
   <package name="libxklavier" version="&libxklavier-version;">
     <packageinfo>
       <requires>
-        <name>xfree86</name>
+        <name>&ximpl;</name>
       </requires>
       <requires>
         <name>pkgconfig</name>
