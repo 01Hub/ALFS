@@ -1,5 +1,5 @@
 #!/bin/bash
-cat <<EOF
+cat <<"EOF"
 ACLOCAL_FLAGS=-I m4
 EXTRA_DIST = CHANGES COPYING README CREDITS
 EXTRA_DIST += scripts/flog
@@ -12,30 +12,31 @@ EXTRA_SCRIPTS =
 # solution can be found; same is needed for include files
 install-exec-hook:
 if STATIC_BUILD
-	rm -rf \$(pkglibdir)
-	rm -f \$(libdir)/libnALFS.*
-	rm -f \$(bindir)/nALFS-config
+	rm -rf $(pkglibdir)
+	rm -f $(libdir)/libnALFS.*
+	rm -f $(bindir)/nALFS-config
 endif
 
 install-data-hook:
 if STATIC_BUILD
-	rm -f \$(includedir)/nALFS.h
+	rm -f $(includedir)/nALFS.h
 endif
 
-AM_CPPFLAGS = -I\$(srcdir)/src/include -I\$(srcdir)/src
+AM_CPPFLAGS = -I$(srcdir)/src/include -I$(srcdir)/src
 AM_CFLAGS = -W -Wall -Wshadow -Winline
 
 noinst_LTLIBRARIES = src/ltdl/ltdl.la
 src_ltdl_ltdl_la_LDFLAGS = -module -avoid-version
 src_ltdl_ltdl_la_SOURCES = src/ltdl/ltdl.c src/ltdl/ltdl.h
+src_ltdl_ltdl_la_LIBADD = $(LIBADD_DL) 
 src_ltdl_ltdl_la_CFLAGS =
 
 bin_PROGRAMS = src/nALFS
 bin_SCRIPTS = @NALFS_CONFIG@
 src_nALFS_LDFLAGS = -dlopen self
-src_nALFS_CPPFLAGS = \$(XML2_INCLUDES) \$(AM_CPPFLAGS)
-src_nALFS_LDADD = \$(XML2_LIB) \$(CURL_LIB) \$(SSL_LIB) src/lib/libnALFS.la
-src_nALFS_LDADD += \$(LIBADD_DL) \$(MAIN_LIBS) src/ltdl/ltdl.la
+src_nALFS_CPPFLAGS = $(XML2_INCLUDES) $(AM_CPPFLAGS)
+src_nALFS_LDADD = $(XML2_LIB) $(CURL_LIB) $(SSL_LIB) src/lib/libnALFS.la
+src_nALFS_LDADD += $(MAIN_LIBS) src/ltdl/ltdl.la
 if STATIC_BUILD
 src_nALFS_LDFLAGS += -all-static
 endif
@@ -56,11 +57,11 @@ cat  <<EOF
 include_HEADERS = src/include/nALFS.h
 EOF
 
-cat  <<EOF
+cat  <<"EOF"
 lib_LTLIBRARIES = src/lib/libnALFS.la
 src_lib_libnALFS_la_LDFLAGS = -avoid-version
-src_lib_libnALFS_la_CPPFLAGS = \$(SSL_INCLUDES) \$(CURL_INCLUDES) \$(AM_CPPFLAGS)
-src_lib_libnALFS_la_LIBADD = \$(CURL_LIB) \$(SSL_LIB)
+src_lib_libnALFS_la_CPPFLAGS = $(SSL_INCLUDES) $(CURL_INCLUDES) $(AM_CPPFLAGS)
+src_lib_libnALFS_la_LIBADD = $(CURL_LIB) $(SSL_LIB)
 src_lib_libnALFS_la_SOURCES =
 EOF
 
