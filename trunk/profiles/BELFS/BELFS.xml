@@ -90,7 +90,7 @@
 </stage>
 
 <stage name="Chapter 6 - Installing basic system software">
-	<stage name="Creating directories and mounting the proc and devpts file systems">
+	<stage name="Creating directories and mounting the proc and sysfs file systems">
 		&c6-proc;
 	</stage>
 
