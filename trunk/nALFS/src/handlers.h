@@ -31,24 +31,24 @@
 
 
 typedef enum handler_type_e {
-	HTYPE_NORMAL = 1,
-	HTYPE_PACKAGE = 2,
-	HTYPE_TEXTDUMP = 4,
-	HTYPE_TEST = 8,		/* handler provides a test result */
-	HTYPE_TRUE_RESULT = 16,	/* handler should be run for a true test */
-	HTYPE_FALSE_RESULT = 32,/* handler should be run for a false test */
-	HTYPE_EXECUTE = 64,
-	HTYPE_STAGE = 128,      /* handler is a stage container */
-	HTYPE_STAGEINFO = 256,  /* handler provides stage information */
+	HTYPE_NORMAL = (1 << 1),
+	HTYPE_PACKAGE = (1 << 2),
+	HTYPE_TEXTDUMP = (1 << 3),
+	HTYPE_TEST = (1 << 4),		/* handler provides a test result */
+	HTYPE_TRUE_RESULT = (1 << 5),	/* handler should be run for a true test */
+	HTYPE_FALSE_RESULT = (1 << 6),	/* handler should be run for a false test */
+	HTYPE_EXECUTE = (1 << 7),
+	HTYPE_STAGE = (1 << 8),      /* handler is a stage container */
+	HTYPE_STAGEINFO = (1 << 9),  /* handler provides stage information */
 } handler_type_e;
 
 typedef enum handler_data_e {
-	HDATA_COMMAND = 1,
-	HDATA_NAME = 2,
-	HDATA_VERSION = 4,
-	HDATA_FILE = 8,
-	HDATA_BASE = 16,
-	HDATA_SHELL = 32,
+	HDATA_COMMAND = (1 << 1),
+	HDATA_NAME = (1 << 2),
+	HDATA_VERSION = (1 << 3),
+	HDATA_FILE = (1 << 4),
+	HDATA_BASE = (1 << 5),
+	HDATA_SHELL = (1 << 6),
 } handler_data_e;
 
 typedef char *(*handler_data_f)(const element_s * const element,
