@@ -1,8 +1,9 @@
-<sect1 id="ch01-contactinfo">
+<sect1 id="preface-contactinfo">
 <title>Contact Information</title>
+<?dbhtml filename="contact.html" dir="preface"?>
 
-<para>Please direct your emails to the ALFS mailing list <ulink 
-url="mailto:alfs-discuss@linuxfromscratch.org">alfs-
-discuss@linuxfromscratch.org</ulink>.</para>
+<para>Please direct your emails to the ALFS mailing list
+<ulink url="mailto:alfs-discuss@linuxfromscratch.org">alfs-discuss@linuxfromscratch.org</ulink>.
+</para>
 
 </sect1>
