@@ -35,7 +35,7 @@ in an <filename>unpack</filename> operation.</para>
 
 <screen><userinput>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
 cd /usr/src
-tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</userinput></screen>
+<command>tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></userinput></screen>
 
 </sect2>
 
