@@ -168,3 +168,10 @@ network.-->
 	-->
 <!ENTITY grub-root "hd0,0">
 <!ENTITY grub-install-location "hd0">
+
+<!-- dynamic library file that your system uses, 
+	e.g.
+		x86 = ld.so.conf
+		powerpc = ld.so.1
+-->
+<!ENTITY ld-config-file "ld.so.conf">
