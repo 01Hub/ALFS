@@ -23,6 +23,8 @@
 			<base>&build_dir;/&bzip2-directory;</base>
 		</stageinfo>
 
+		<make />
+
 		<make>
 			<param>PREFIX=/tools</param>
 			<param>install</param>
