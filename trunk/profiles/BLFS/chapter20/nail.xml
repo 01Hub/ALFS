@@ -1,6 +1,6 @@
 <package name="nail" version="&nail-version;">
 
-         <packageinfo>
+        <packageinfo>
 	        <requires><name>openssl</name></requires>
 	</packageinfo>
 

@@ -63,6 +63,7 @@
 			=# end dhclient.conf
 			</content>
 		</textdump>
+	</stage>
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&dhclient-directory;</remove>

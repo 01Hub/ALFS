@@ -1,0 +1,114 @@
+<package name="sendmail" version="&sendmail-version;">
+
+	<packageinfo>
+		<requires><name>db</name></requires>
+		<requires><name>procmail</name></requires>
+	</packageinfo>
+
+	<stage name="Unpacking.">
+		<unpack>
+			<archive>&packages_dir;/&sendmail-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&sendmail-directory;</base>
+		</stageinfo>
+
+		<execute command="grep ^smmsp /etc/group">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| groupadd</param>
+			<param>smmsp</param>
+		</execute>
+
+		<execute command="grep ^mail /etc/group">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| groupadd</param>
+			<param>mail</param>
+		</execute>
+
+		<execute command="grep ^smmsp /etc/passwd">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| useradd</param>
+		        <param>-g smmsp</param>
+			<param>-G mail</param>
+			<param>smmsp</param>
+		</execute>
+
+		<textdump>
+			<file>devtools/Site/site.config.m4</file>
+			<content>
+			=define(`confMANGRP',`root')
+			=define(`confMANOWN',`root')
+			=define(`confSBINGRP',`root')
+			=define(`confUBINGRP',`root')
+			=define(`confUBINOWN',`root')
+			</content>
+		</textdump>
+
+		<execute base="&build_dir;/&sendmail-directory;/sendmail" command="sh Build" />
+
+		<copy base="&build_dir;/&sendmail-directory;/cf/cf">
+			<source>generic-linux.mc</source>
+			<destination>sendmail.mc</destination>
+		</copy>
+
+		<mkdir>
+			<name>/etc/mail</name>
+		</mkdir>
+
+		<execute base="&build_dir;/&sendmail-directory;/cf/cf" command="sh Build sendmail.mc" />
+		<execute base="&build_dir;/&sendmail-directory;/cf/cf" command="sh Build install-cf" />
+
+		<execute command="sh Build install" />
+
+		<execute command="echo `hostname` &gt; /etc/mail/local-host-names" />
+
+		<textdump>
+			<file>/etc/mail/aliases</file>
+			<content>
+			=postmaster: root
+			=MAILER-DAEMON: root
+			</content>
+		</textdump>
+
+		<copy>
+			<option>recursive</option>
+			<source>cf/*</source>
+			<destination>/etc/mail</destination>
+		</copy>
+
+		<copy>
+			<source>cf/cf/submit.mc</source>
+			<source>cf/cf/sendmail.mc</source>
+			<destination>/etc/mail</destination>
+		</copy>
+	
+		<execute command="newaliases -v" />
+
+	</stage>
+
+	<stage name="Install sendmail bootscript">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-sendmail</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup.">
+		<remove>&build_dir;/&sendmail-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+</package>
+
