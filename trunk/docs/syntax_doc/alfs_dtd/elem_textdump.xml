@@ -1,6 +1,6 @@
 <sect1 id="elem_textdump" xreflabel="Element: &lt;textdump&gt;">
 <?dbhtml filename="elem_textdump.html" dir="alfs_dtd"?>
-<title>textdump</title>
+<title>Element: &lt;textdump&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -19,7 +19,7 @@
 and <link linkend="elem_then">then</link>
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_file">file</link>,
 <link linkend="elem_content">content</link>,
 </para>

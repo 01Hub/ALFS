@@ -1,6 +1,6 @@
 <sect1 id="elem_download" xreflabel="Element: &lt;download&gt;">
 <?dbhtml filename="elem_download.html" dir="alfs_dtd"?>
-<title>download</title>
+<title>Element: &lt;download&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -16,7 +16,7 @@
 and <link linkend="elem_then">then</link>
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_file">file</link>,
 <link linkend="elem_destination">destination</link>,
 <link linkend="elem_digest">digest</link>,

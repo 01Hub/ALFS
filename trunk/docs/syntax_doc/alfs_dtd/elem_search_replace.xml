@@ -1,6 +1,6 @@
 <sect1 id="elem_search_replace" xreflabel="Element: &lt;search_replace&gt;">
 <?dbhtml filename="elem_search_replace.html" dir="alfs_dtd"?>
-<title>search_replace</title>
+<title>Element: &lt;search_replace&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -19,7 +19,7 @@
 and <link linkend="elem_then">then</link>
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_file">file</link>,
 <link linkend="elem_find">find</link>,
 <link linkend="elem_replace">replace</link>.

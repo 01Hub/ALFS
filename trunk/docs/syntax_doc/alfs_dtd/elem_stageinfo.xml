@@ -1,6 +1,6 @@
 <sect1 id="elem_stageinfo" xreflabel="Element: &lt;stageinfo&gt;">
 <?dbhtml filename="elem_stageinfo.html" dir="alfs_dtd"?>
-<title>stageinfo</title>
+<title>Element: &lt;stageinfo&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -36,12 +36,12 @@ the base locally.</para>
 <para>The <token>user</token> sub-element specify a user name that will be used as
 the effective user ID of the current process for all the commands of the stage</para>
 
-<para>The <token>root</token> sub-element specify a directory name 
+<para>The <token>root</token> sub-element specify a directory name
 in which the commands of the stage will be performed (using a chroot command).
 </para>
 
 <para>The <token>environment</token> sub-element allow to specify a environment variable
-that will be added to the current environment when processing 
+that will be added to the current environment when processing
 the commands of the stage.</para>
 
 </sect2>
@@ -54,7 +54,7 @@ the commands of the stage.</para>
     &lt;stageinfo>
         &lt;base>/usr/src/gzip.1.2.4a&lt;/base>
     &lt;/stageinfo>
-   
+
     &lt;configure />
 
     &lt;make />

@@ -1,6 +1,6 @@
 <sect1 id="elem_copy" xreflabel="Element: &lt;copy&gt;">
 <?dbhtml filename="elem_copy.html" dir="alfs_dtd"?>
-<title>copy</title>
+<title>Element: &lt;copy&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -18,7 +18,7 @@
 and <link linkend="elem_then">then</link>
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_option">option</link>,
 <link linkend="elem_source">source</link>,
 <link linkend="elem_destination">destination</link>.
@@ -45,7 +45,7 @@ files and/or directories  into a destination file or directory</para>
 <para>When processing this element, one copy each source
 to the destination, using the specified options.</para>
 
-<para>When the attribute <token>base</token> is specified, 
+<para>When the attribute <token>base</token> is specified,
 it should contain the name of the current directory
 from which the copy operation is performed.
 </para>

@@ -1,6 +1,6 @@
 <sect1 id="elem_reference" xreflabel="Element: &lt;reference&gt;">
 <?dbhtml filename="elem_reference.html" dir="alfs_dtd"?>
-<title>reference</title>
+<title>Element: &lt;reference&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -38,11 +38,11 @@ archive to download if the local copy is not available.</para>
 
 <programlisting>
 cho Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
-[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp; 
+[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
   echo Retrieving  ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
-[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp; 
+[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
   wget -O /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
-[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp; 
+[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
   echo Archive does not exist &amp;&amp; exit 3
 
 cd /usr/src

@@ -1,6 +1,6 @@
 <sect1 id="elem_ownership" xreflabel="Element: &lt;ownership&gt;">
 <?dbhtml filename="elem_ownership.html" dir="alfs_dtd"?>
-<title>ownership</title>
+<title>Element: &lt;ownership&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -20,7 +20,7 @@
 and <link linkend="elem_then">then</link>
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_option">option</link>,
 <link linkend="elem_name">name</link>.
 </para>

@@ -1,6 +1,6 @@
 <sect1 id="elem_destination" xreflabel="Element: &lt;destination&gt;">
 <?dbhtml filename="elem_destination.html" dir="alfs_dtd"?>
-<title>destination</title>
+<title>Element: &lt;destination&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -22,8 +22,8 @@ and <link linkend="elem_unpack">unpack</link>.
 <title>Description</title>
 
 <para>The element <token>destination</token> is used to specify the name
-of the destination file or directory when processing 
-a <link linkend="elem_copy">copy</link>, 
+of the destination file or directory when processing
+a <link linkend="elem_copy">copy</link>,
 <link linkend="elem_move">move</link> or
 <link linkend="elem_unpack">unpack</link> element.
 </para>

@@ -1,6 +1,6 @@
 <sect1 id="elem_base" xreflabel="Element: &lt;base&gt;">
 <?dbhtml filename="elem_base.html" dir="alfs_dtd"?>
-<title>base</title>
+<title>Element: &lt;base&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -32,7 +32,7 @@ base is specified at the level of the command.</para>
     &lt;stageinfo>
         &lt;base>/usr/src/gzip.1.2.4a&lt;/base>
     &lt;/stageinfo>
-   
+
     &lt;configure />
 
     &lt;make />

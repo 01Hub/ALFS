@@ -1,6 +1,6 @@
 <sect1 id="elem_move" xreflabel="Element: &lt;move&gt;">
 <?dbhtml filename="elem_move.html" dir="alfs_dtd"?>
-<title>move</title>
+<title>Element: &lt;move&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -18,7 +18,7 @@
 and <link linkend="elem_then">then</link>
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_option">option</link>,
 <link linkend="elem_source">source</link>,
 <link linkend="elem_destination">destination</link>.
@@ -41,7 +41,7 @@ files and/or directories  into a destination file or directory</para>
 <para>When processing this element, one moves each source
 to the destination, using the specified option if present.</para>
 
-<para>When the attribute <token>base</token> is specified, 
+<para>When the attribute <token>base</token> is specified,
 it should contain the name of the current directory
 from which the move operation is performed.
 </para>
@@ -54,7 +54,7 @@ from which the move operation is performed.
 <programlisting>
 &lt;move>
     &lt;source>/usr/src/mypackage/config.txt&lt;/source>
-    &lt;destination>/opt/mypackage/config.txt&lt;/destination>    
+    &lt;destination>/opt/mypackage/config.txt&lt;/destination>
 &lt;/move>
 </programlisting>
 

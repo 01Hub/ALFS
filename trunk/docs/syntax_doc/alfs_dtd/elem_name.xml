@@ -1,6 +1,6 @@
 <sect1 id="elem_name" xreflabel="Element: &lt;name&gt;">
 <?dbhtml filename="elem_name.html" dir="alfs_dtd"?>
-<title>name</title>
+<title>Element: &lt;name&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -23,7 +23,7 @@ and <link linkend="elem_utilizes">utilizes</link>.
 <sect2>
 <title>Description</title>
 
-<para>The element <token>name</token> is used to specify a name for 
+<para>The element <token>name</token> is used to specify a name for
 some commands that requires it.</para>
 
 </sect2>

@@ -1,6 +1,6 @@
 <sect1 id="elem_utilizes" xreflabel="Element: &lt;utilizes&gt;">
 <?dbhtml filename="elem_utilizes.html" dir="alfs_dtd"?>
-<title>utilizes</title>
+<title>Element: &lt;utilizes&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -13,7 +13,7 @@
 <link linkend="elem_packageinfo">packageinfo</link>
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_name">name</link> and
 <link linkend="elem_version">version</link>,
 </para>
@@ -23,8 +23,8 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>utilizes</token> indicates that the package 
-containg the <token>utilizes</token> element utilizes the package 
+<para>The element <token>utilizes</token> indicates that the package
+containg the <token>utilizes</token> element utilizes the package
 whose name is contained in the <token>name</token> sub-element,
 but does not depend on it,
 in which case the element <token>requires</token> is used.

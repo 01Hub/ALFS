@@ -1,6 +1,6 @@
 <sect1 id="elem_packageinfo" xreflabel="Element: &lt;packageinfo&gt;">
 <?dbhtml filename="elem_packageinfo.html" dir="alfs_dtd"?>
-<title>packageinfo</title>
+<title>Element: &lt;packageinfo&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -13,7 +13,7 @@
 <link linkend="elem_package">package</link>.
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_description">description</link>,
 <link linkend="elem_requires">requires</link>.
 <link linkend="elem_utilizes">utilizes</link>.
@@ -24,11 +24,11 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>packageinfo</token> groups 
+<para>The element <token>packageinfo</token> groups
 elements containg information about the package, namely
 a description and some deopendency relationship.</para>
 
-<para>The description of the packge is contained 
+<para>The description of the packge is contained
 in the <token>description</token> sub-element.
 </para>
 
@@ -49,9 +49,9 @@ by the <token>utilizes</token> sub-element.
     &lt;package name="gimp" version="1.2.3">
         &lt;packageinfo>
 	        &lt;description>
-                    &lt;para>The gimp package contains the GNU Image 
-		    Manipulation Program. 
-		    This is useful for photo retouching, image 
+                    &lt;para>The gimp package contains the GNU Image
+		    Manipulation Program.
+		    This is useful for photo retouching, image
 		    composition and image authoring.
 		    &lt;/para>
 		&lt;/description>

@@ -1,6 +1,6 @@
 <sect1 id="elem_stage" xreflabel="Element: &lt;stage&gt;">
 <?dbhtml filename="elem_stage.html" dir="alfs_dtd"?>
-<title>stage</title>
+<title>Element: &lt;stage&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -62,7 +62,7 @@ and optionally modify the execution context through the element
     &lt;stageinfo>
         &lt;base>/usr/src/gzip.1.2.4a&lt;/base>
     &lt;/stageinfo>
-   
+
     &lt;configure />
 
     &lt;make />
