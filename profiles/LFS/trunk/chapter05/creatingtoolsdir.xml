@@ -142,7 +142,7 @@
     <stage name="Copying skeleton configuration files">
       <copy>
         <option>recursive</option>
-        <source>&lfs-profile;/skeleton/*</source>
+        <source>&lfs-profile;/&skeleton;/*</source>
 	<destination>&LFS;&skeleton_dir;</destination>
       </copy>
     </stage>

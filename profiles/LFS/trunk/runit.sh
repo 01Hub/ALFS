@@ -12,5 +12,12 @@ fi
 CURRENTDIR=`pwd`
 echo "<!ENTITY lfs-profile '${CURRENTDIR}'>" > config/profile.ent
 
+if [ -z "${1}" ]; then
+  SKELETON=skeleton
+else
+  SKELETON=${1}
+fi
+echo "<!ENTITY skeleton '${SKELETON}'>" >> config/profile.ent
+
 umask 022
 /usr/local/bin/nALFS -l -L nalfs.log LFS.xml
