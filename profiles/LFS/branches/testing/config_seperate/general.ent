@@ -1,0 +1,178 @@
+<!--
+     This file contains various entities that must be customized 
+     for the build to work on your machine.
+
+     For the build to be successfull, you should :
+     - run nALFS as root
+     - check that your umask is 022
+
+     -->
+
+<!-- Directory in which LFS system will be installed.
+     The build process try to mkdir -p it if it doen't exist.
+     If you want to build LFS in its own partition (which
+     is normally the case), you should create the directory 
+     and mount the  partition before running nALFS.
+     -->
+<!ENTITY LFS "/mnt/lfs">
+
+<!-- Location of your LFS packages.
+     This is the directory in which all the packages downloaded
+     from ftp.linuxfromscratch.org (or their original servers)
+     are before running the script. The content of this directory
+     will be copied in a subdirectory of &LFS; at the beginning of
+     the build.
+     IMPORTANT : be carefull about the original packages dir; if you 
+                 enter the wrong directory, nALFS will try to download
+                 all the packages in it !!!
+     -->
+<!ENTITY orig_packages_dir "/your/LFS-CVS/packages">
+
+<!-- Partition of your new LFS system.
+     This entity is used only to initialize the new fstab file.
+     No attempt is done to access this partition during
+     the build, except if it has been mounted on &LFS;
+     -->
+<!ENTITY lfs_partition "/dev/hda2">
+
+<!-- Type of your LFS partition.
+     This entity is used only to initialize the new fstab file.
+     -->
+<!ENTITY fs_type "ext3">
+
+<!-- Swap partition.
+     This entity is used only to initialize the new fstab file
+     -->
+<!ENTITY swap_partition "/dev/hda3">
+
+<!-- Name of your machine.
+     This entity is used to create the files /etc/hosts
+     and /etc/sysconfig/network
+     -->
+<!ENTITY hostname "yourhost">
+
+<!-- Domain of your machine. 
+     This entity is used to create the files /etc/hosts
+     -->
+<!ENTITY domain "your.domain">
+
+<!-- Some networking entities.
+     These entities are used when creating the files
+     /etc/sysconfig/network and 
+     /etc/sysconfig/network-devices/ifconfig.eth0
+     -->
+<!ENTITY gateway    "172.16.1.1">
+<!ENTITY on_boot    "yes">
+<!ENTITY IP         "172.16.1.22">
+<!ENTITY netmask    "255.255.255.0">
+<!ENTITY broadcast  "172.16.1.255">
+
+<!-- In the entity below replace 127.0.0.1 with the IP address of the DNS server most appropriate for
+your setup. This will often be provided by your ISP or it may even be a router on your local
+network.-->
+<!ENTITY nameserver-ip "127.0.0.1">
+
+<!-- Set here the name of the module of your network card -->
+<!ENTITY network-card-module "sis900">
+<!ENTITY network-interface   "eth0">
+
+<!-- Timezone file
+     This entity will be used as the target of the link
+     /etc/localtime
+     -->
+<!ENTITY localtime "/usr/share/zoneinfo/America/Denver">
+
+<!-- Keymap file. 
+     This entity will be used as the target of the link
+     /usr/share/kbd/keymaps/defkeymap.map.gz
+     -->
+<!ENTITY keymap "i386/qwerty/us.map.gz">
+
+<!-- value of UTC variable 
+     This entity will be used to set the value of the variable UTC
+     in the file /etc/sysconfig/clock
+     -->
+<!ENTITY UTC "1">
+
+<!-- Temporary user name used for installing Chapter 5.
+     This is a user in the host distribution. It will not
+     be deleted at the end of the build.
+     If the user does not exist it will be created.
+     -->
+<!ENTITY lfs-user "lfs">
+
+<!-- Password of the temporary user name &lfs; 
+     You should change this value and keep the present file
+     secure this value has been changed or, better,
+     create yourself the user in the host distribution,
+     and give it a password.
+     If the user exists already, its password will not be changed.
+     -->
+<!ENTITY lfs-password "lf1nstl">
+
+<!-- Temporary user's home directory. -->
+<!ENTITY lfs-user-dir "/home/&lfs-user;">
+
+<!-- Root password. 
+     This is the password of root in the new LFS distribution.
+     Of course, you should change it as soon as you log into
+     your new LFS.
+     -->
+<!ENTITY password "r00tme">
+
+<!-- LFS book version -->
+<!ENTITY LFS-version "CVS-20040702">
+
+<!-- THE FOLLOWING TWO ENTITIES DECLARATIONS SHOULDN'T BE MOFIFIED
+     UNLESS YOU KNOW WHAT YOU ARE DOING
+      -->
+
+<!-- Directory (inside LFS) where all packages will be copied. -->
+<!ENTITY packages_dir "/tools/packages-&LFS-version;">
+
+<!-- Directory (inside LFS) where all packages will be compiled. -->
+<!ENTITY build_dir "/tools/build">
+
+<!-- gcc optimizations flags (overridden in packages known
+    to behave badly with optimizations 
+    see http://www.linuxfromscratch.org/hints/downloads/files/optimization.txt for more info
+    IF YOU DON'T KNOW WHAT THIS IS FOR, DON'T CHANGE IT
+    -->
+<!ENTITY gcc_optimizations "">
+
+<!-- gcc target triplet (used for adjusting the toolchain) -->
+<!ENTITY gcc_target "i686-pc-linux-gnu">
+
+<!-- Linux .config file to use
+	This file should be in a state that running `make oldconfig` will run straight through, as
+	that's what the profile in chapter 8 does with this entity.
+    -->
+<!ENTITY kernel-config "linux-config">
+
+<!-- grub settings (these need to be in grub's notation) 
+	NOTE:  The grub configuration profile is completely commented out.  You should edit
+	chapter08/grub.xml for your individual system if you want to automate this.
+	-->
+<!ENTITY grub-root "hd0,0">
+<!ENTITY grub-install-location "hd0">
+
+<!-- dynamic linker in the gcc specs file that your system uses, 
+	e.g.
+		x86 = ld-linux.so.2
+		powerpc = ld.so.1
+-->
+<!ENTITY glibc-loader "ld-linux.so.2">
+
+<!-- terminal type for your host system (found in the TERM
+     environment variable
+-->
+
+<!ENTITY TERM "linux">
+
+<!-- argument entities for /etc/sysconfig/console script -->
+<!ENTITY keymap-args "">
+<!ENTITY font-args "">
+
+<!-- locale setting for /etc/profile -->
+<!ENTITY locale-language "en">
+<!ENTITY locale-country "US">

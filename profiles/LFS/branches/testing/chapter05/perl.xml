@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS-3.1.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+
+<alfs>
+
+<package name="perl" version="&perl-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&perl-md5;</digest>
+			<archive>&packages_dir;/&perl-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&perl-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&perl-libc-1-patch;</param>
+		</patch>
+
+		<configure command="./configure.gnu">
+			<param>--prefix=/tools</param>
+			<param>-Dstatic_ext=&apos;IO Fcntl POSIX&apos;</param>
+		</configure>
+
+		<make>
+			<param>perl</param>
+			<param>utilities</param>
+		</make>
+
+		<copy>
+			<source>perl</source>
+			<source>pod/pod2man</source>
+			<destination>/tools/bin</destination>
+		</copy>
+
+		<mkdir>
+			<option>parents</option>
+			<name>/tools/lib/perl5/&perl-version;</name>
+		</mkdir>
+
+		<copy>
+			<option>recursive</option>
+			<source>lib/*</source>
+			<destination>/tools/lib/perl5/&perl-version;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&perl-directory;</remove>
+	</stage>
+</package>
+
+</alfs>

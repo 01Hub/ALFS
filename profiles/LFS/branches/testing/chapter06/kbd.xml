@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS-3.1.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+
+<alfs>
+
+<package name="kbd" version="&kbd-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&kbd-md5;</digest>
+			<archive>&packages_dir;/&kbd-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&kbd-directory;</base>
+		</stageinfo>
+
+		<configure />
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+		
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../config/keymap-ch6.xml" />
+
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&kbd-directory;</remove>
+	</stage>
+</package>
+
+</alfs>

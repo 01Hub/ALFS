@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS-3.1.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+
+<alfs>
+
+<package name="util-linux" version="&util-linux-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&util-linux-md5;</digest>
+			<archive>&packages_dir;/&util-linux-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&util-linux-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&util-linux-kernel-headers-patch;</param>
+		</patch>
+
+		<search_replace>
+			<file>configure</file>
+			<find>/usr/include</find>
+			<replace>/tools/include</replace>
+		</search_replace>
+
+		<configure />
+
+		<make>
+			<param>-C lib</param>
+		</make>
+
+		<make>
+			<param>-C mount</param>
+			<param>mount</param>
+			<param>umount</param>
+		</make>
+
+		<make>
+			<param>-C text-utils</param>
+			<param>more</param>
+		</make>
+
+		<copy>
+			<source>mount/{,u}mount</source>
+			<source>text-utils/more</source>
+			<destination>/tools/bin</destination>
+		</copy>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&util-linux-directory;</remove>
+	</stage>
+</package>
+
+</alfs>
