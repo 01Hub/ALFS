@@ -36,8 +36,8 @@
 		</make>
 
 		<make>
-			<param>install</param>
 			<param>SBINDIR=/sbin</param>
+			<param>install</param>
 		</make>
 	</stage>
 

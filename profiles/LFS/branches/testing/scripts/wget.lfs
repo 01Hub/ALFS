@@ -5,4 +5,4 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
-wget -b -nv -nc -P $1 -i wget.lfs.urls -o wget.lfs.log
+wget -b -nc -P $1 -i wget.lfs.urls -o wget.lfs.log
