@@ -155,6 +155,7 @@
 		&c6-tar;
 		&c6-util-linux;
 		&c6-gcc-2953;
+		&c6-strip;
 	</stage>
 </stage>
 
@@ -208,14 +209,6 @@
                         <variable name="CXXFLAGS">&gcc_optimizations;</variable>
                 </environment>
         </stageinfo>
-
-	<stage name="Stripping debug symbols">
-		<execute command="/tools/bin/find">
-			<param>/{,usr/,usr/local/}{bin,sbin,lib}</param>
-			<param>-type f</param>
-			<param>-exec /tools/bin/strip --strip-debug '{}' ';'</param>	
-		</execute>
-	</stage>
 
 	<remove>/tools</remove>
 
