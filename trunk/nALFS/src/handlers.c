@@ -50,6 +50,41 @@ static struct handlers {
 
 static char **parameters;
 
+/* Embedded "handlers" for the root (profile) element and comment elements. */
+
+static int root_main(element_s * const el)
+{
+	(void) el;
+
+	return 0;
+}
+
+static int comment_main(element_s * const el)
+{
+	(void) el;
+
+	return 0;
+}
+
+static handler_info_s embedded_handlers_info[] = {
+	{
+		.name = "__root",
+		.description = "root element",
+		.syntax_version = "all",
+		.main = root_main,
+		.type = HTYPE_NORMAL,
+	},
+	{
+		.name = "__comment",
+		.description = "comment element",
+		.syntax_version = "all",
+		.main = comment_main,
+		.type = HTYPE_NORMAL,
+	},
+	{
+		.name = NULL
+	}
+};
 
 /*
  * Returns a pointer to handler_s if element (name/version) has a handler,
@@ -166,20 +201,11 @@ static INLINE void replace_handler(handler_s *existing, handler_info_s *hi,
 	existing->handle = handle;
 }
 
-static int load_handler(lt_dlhandle handle, lt_ptr data)
+static int parse_handler_info(handler_info_s * handler_info,
+			      lt_dlhandle handle)
 {
 	int i;
-	handler_info_s *handler_info;
 
-	(void) data;
-
-	handler_info = (handler_info_s *)lookup_symbol(handle, "handler_info");
-
-	if (handler_info == NULL) {
-		return 0;
-	}
-
-	/* Go through handler_info[].  */
 	for (i = 0; (handler_info[i].name); ++i) {
 		handler_info_s *hi = &handler_info[i];
 		handler_s *found;
@@ -207,6 +233,21 @@ static int load_handler(lt_dlhandle handle, lt_ptr data)
 	}
 
 	return 0;
+}
+
+static int load_handler(lt_dlhandle handle, lt_ptr data)
+{
+	handler_info_s *handler_info;
+
+	(void) data;
+
+	handler_info = (handler_info_s *)lookup_symbol(handle, "handler_info");
+
+	if (handler_info == NULL) {
+		return 0;
+	}
+
+	return parse_handler_info(handler_info, handle);
 }
 
 static INLINE void add_all_parameters(void)
@@ -254,6 +295,9 @@ int load_all_handlers(void)
 	Nprint("Loading handlers from %s.", HANDLERS_DIRECTORY);
 	lt_dlforeachfile(HANDLERS_DIRECTORY, &foreachfile_callback, NULL);
 #endif
+
+	/* Load the embedded handlers first, then the loaded ones. */
+	(void) parse_handler_info(embedded_handlers_info, NULL);
 
 	lt_dlforeach(&load_handler, NULL);
 	add_all_parameters();
@@ -532,3 +576,4 @@ char *parse_string_content(const char * const value,
 		return NULL;
 	}
 }
+

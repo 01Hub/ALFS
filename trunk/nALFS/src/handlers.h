@@ -61,7 +61,9 @@ typedef int (*handler_parse)(const element_s * const element,
 			     const char * const value);
 typedef int (*handler_parse_content)(const element_s * const element,
 				     const char * const content);
-typedef int (*handler_valid)(const element_s * const element);
+typedef int (*handler_invalid_data)(const element_s * const element);
+typedef int (*handler_invalid_child)(const element_s * const element,
+				     const element_s * const child);
 
 typedef struct handler_info_s {
 	const char *name;		/* Name of the element it handles. */
@@ -91,7 +93,8 @@ typedef struct handler_info_s {
 	   and to validate the provided parameters, attributes and content.
 	*/
 	handler_setup setup;	/* Function to setup handler private data. */
-	handler_valid valid;	/* Function to validate private data. */
+	handler_invalid_data invalid_data; /* Validate private data. */
+	handler_invalid_child invalid_child; /* Validate potential child. */
 	handler_parse parse_attribute;
 	handler_parse parse_parameter;
 	handler_parse_content parse_content;

@@ -1,9 +1,10 @@
 /*
  *  libXML-tree.c - Parsing with libxml2 library (tree).
  *
- *  Copyright (C) 2002-2003
+ *  Copyright (C) 2002-2004
  *
  *  Neven Has <haski@sezampro.yu>
+ *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -147,14 +148,10 @@ static const char *find_handler_parameter(const handler_info_s *handler,
 static int make_handler_element(xmlNodePtr node, element_s *element)
 {
 	handler_info_s *handler = element->handler;
-	int result = 1;
+	handler_info_s *parent = element->parent->handler;
+	int result;
 
-	/* If the handler does not have a setup function, there is
-	   nothing to do. */
-	if (!handler->setup)
-		return 0;
-
-	if ((result  = handler->setup(element)) == 0) {
+	if (handler->setup && ((result = handler->setup(element)) == 0)) {
 		xmlAttrPtr attr;
 		xmlNodePtr child;
 
@@ -221,11 +218,25 @@ static int make_handler_element(xmlNodePtr node, element_s *element)
 
 		}
 
-		if (handler->valid)
-			result = handler->valid(element);
+		/* If the handler wants to validate its private data */
+		if (handler->invalid_data) {
+			result = handler->invalid_data(element);
+			if (result)
+				return result;
+		}
+
 	}
 
-	return result;
+	/* If the element's parent wants to validate its children */
+	if (parent->invalid_child) {
+		result = parent->invalid_child(element->parent, element);
+		if (result) {
+			Nprint_warn("<%s>: <%s> is not supported.", element->parent->handler->name, handler->name);
+			return result;
+		}
+	}
+
+	return 0;
 }
 
 static INLINE element_s *create_element(xmlNodePtr node, element_s *parent)
@@ -256,7 +267,11 @@ static INLINE element_s *create_element(xmlNodePtr node, element_s *parent)
 			if ((handler = find_handler(el->name, syntax_version))) {
 				el->type = TYPE_ELEMENT;
 				el->handler = handler->info;
-				(void) make_handler_element(node, el);
+				if (make_handler_element(node, el)) {
+					free_element(el);
+					el = NULL;
+					break;
+				}
 
 			} else if (parameter_exists(el->name)) {
 				el->type = TYPE_PARAMETER;
@@ -276,18 +291,17 @@ static INLINE element_s *create_element(xmlNodePtr node, element_s *parent)
 			set_attributes(el, node);
 
 			break;
-
 		case XML_COMMENT_NODE:
 			el->name = xstrdup("comment");
 			el->type = TYPE_COMMENT;
-
-			if ((c = xmlNodeGetContent(node))) {
-				el->content = xstrdup((const char *)c);
-				xfree(c);
+			el->handler = find_handler("__comment", "all")->info;
+			if (make_handler_element(node, el)) {
+				free_element(el);
+				el = NULL;
+				break;
 			}
 
 			break;
-
 		default:
 			break;
 	}
@@ -306,13 +320,12 @@ static element_s *convert_nodes(xmlNodePtr node, element_s *profile,
 		return NULL;
 	}
 
-	el = create_element(node, parent);
-
-	for (child = node->children; child; child = child->next) {
-		if ((c = convert_nodes(child, profile, el))) {
-			link_element(c, prev, el, profile);
-
-			prev = c;
+	if ((el = create_element(node, parent))) {
+		for (child = node->children; child; child = child->next) {
+			if ((c = convert_nodes(child, profile, el))) {
+				link_element(c, prev, el, profile);
+				prev = c;
+			}
 		}
 	}
 
@@ -339,6 +352,7 @@ static INLINE element_s *convert_doc(xmlDocPtr doc)
 	profile->type = TYPE_PROFILE;
 	profile->id = element_id++;
 	profile->profile = profile;
+	profile->handler = find_handler("__root", "all")->info;
 
 	for (child = doc->children; child; child = child->next) {
 		if ((el = convert_nodes(child, profile, profile))) {
