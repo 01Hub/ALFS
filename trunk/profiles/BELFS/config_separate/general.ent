@@ -9,36 +9,36 @@
      -->
 
 
-<!-- Directory in which LFS system will be installed.
+<!-- Directory in which BELFS system will be installed.
      The build process try to mkdir -p it if it doen't exist.
-     If you want to build LFS in its own partition (which
+     If you want to build BELFS in its own partition (which
      is normally the case), you should create the directory 
      and mount the  partition before running nALFS.
      -->
-<!ENTITY LFS "/mnt/lfs">
+<!ENTITY BELFS "/mnt/belfs">
 
 
-<!-- Location of your LFS packages.
+<!-- Location of your BELFS packages.
      This is the directory in which all the packages downloaded
      from ftp.linuxfromscratch.org (or their original servers)
      are before running the script. The content of this directory
-     will be copied in a subdirectory of &LFS; at the beginning of
+     will be copied in a subdirectory of &BELFS; at the beginning of
      the build.
      IMPORTANT : be carefull about the original packages dir; if you 
                  enter the wrong directory, nALFS will try to download
                  all the packages in it !!!
      -->
-<!ENTITY orig_packages_dir "/home/dwheeler/LFS-5.0/packages">
+<!ENTITY orig_packages_dir "~/BELFS-CVS/packages">
 
-<!-- Partition of your new LFS system.
+<!-- Partition of your new BELFS system.
      This entity is used only to initialize the new fstab file.
      No attempt is done to access this partition during
-     the build, except if it has been mounted on &LFS;
+     the build, except if it has been mounted on &BELFS;
      -->
 <!ENTITY lfs_partition "/dev/hdb10">
 
 
-<!-- Type of your LFS partition.
+<!-- Type of your BELFS partition.
      This entity is used only to initialize the new fstab file.
      -->
 <!ENTITY fs_type "ext3">
@@ -124,26 +124,26 @@ network.-->
 
 
 <!-- Root password. 
-     This is the password of root in the new LFS distribution.
+     This is the password of root in the new BELFS distribution.
      Of course, you should change it as soon as you log into
-     your new LFS.
+     your new BELFS.
      -->
 <!ENTITY password "r00tme">
 
 
-<!-- LFS book version -->
-<!ENTITY LFS-version "CVS-2004-03-28">
+<!-- BELFS book version -->
+<!ENTITY BELFS-version "CVS-2004-04-08">
 
 
 <!-- THE FOLLOWING TWO ENTITIES DECLARATIONS SHOULDN'T BE MOFIFIED
      UNLESS YOU KNOW WHAT YOU ARE DOING
       -->
 
-<!-- Directory (inside LFS) where all packages will be copied. -->
-<!ENTITY packages_dir "/tools/packages-&LFS-version;">
+<!-- Directory (inside BELFS) where all packages will be copied. -->
+<!ENTITY packages_dir "/tools/packages-&BELFS-version;">
 
 
-<!-- Directory (inside LFS) where all packages will be compiled. -->
+<!-- Directory (inside BELFS) where all packages will be compiled. -->
 <!ENTITY build_dir "/tools/build">
 
 <!-- gcc optimizations flags (overridden in packages known
