@@ -1,5 +1,5 @@
 /*
- *  new-stamp.c - Handler.
+ *  stamp.c - Handler.
  * 
  *  Copyright (C) 2002 by Vassili Dzuba <vassilidzuba@nerim.net>
  *
@@ -25,40 +25,57 @@
 #include <config.h>
 #endif
 
-#define MODULE_NAME new_stamp
+#define MODULE_NAME stamp
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
-#include "handlers.h"
 #include "backend.h"
 
 
-char HANDLER_SYMBOL(name)[] = "stamp";
-char HANDLER_SYMBOL(description)[] = "Produce a stamp";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "3.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "name", "version" };
-char *HANDLER_SYMBOL(parameters)[] = { NULL };
-int HANDLER_SYMBOL(action) = 1;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int stamp_main(element_s *el)
 {
 	int status = 0;
 	char *name;
 	char *version;
 
 	if ((name = attr_value("name", el)) == NULL) {
-	  Nprint_h_err("No name specified.");
-	  return -1;
+		Nprint_h_err("No name specified.");
+		return -1;
 	}
 
 	if ((version = attr_value("version", el)) == NULL) {
-	  Nprint_h_err("No version specified.");
-	  return -1;
+		Nprint_h_err("No version specified.");
+		return -1;
 	}
 
 	status = stamp_package_installed(1, name, version);
 
 	return status;
 }
+
+
+/*
+ * Handlers' information.
+ */
+
+char *stamp_parameters[] = { NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "name", "version" };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "stamp",
+		.description = "Produce a stamp",
+		.syntax_version = "3.0",
+		.parameters = stamp_parameters,
+		.main = stamp_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

@@ -29,19 +29,13 @@
 
 #define MODULE_NAME build
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "backend.h"
 #include "logging.h"
 
 
-char HANDLER_SYMBOL(name)[] = "build";
-char HANDLER_SYMBOL(description)[] = "Build";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { NULL };
-char *HANDLER_SYMBOL(parameters)[] = { NULL };
-int HANDLER_SYMBOL(action) = 0;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int build_main(element_s *el)
 {
 	int i;
 
@@ -53,3 +47,26 @@ int HANDLER_SYMBOL(main)(element_s *el)
 
 	return i;
 }
+
+
+/*
+ * Handlers' information.
+ */
+
+char *build_parameters[] = { NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "build",
+		.description = "Build",
+		.syntax_version = "2.0",
+		.parameters = build_parameters,
+		.main = build_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

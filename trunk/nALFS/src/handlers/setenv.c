@@ -32,6 +32,8 @@
 
 #define MODULE_NAME setenv
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "win.h"
 #include "parser.h"
 #include "utility.h"
@@ -104,15 +106,7 @@ static INLINE int do_setenv(
 }
 
 
-char HANDLER_SYMBOL(name)[] = "setenv";
-char HANDLER_SYMBOL(description)[] = "Set environment";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", "3.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "mode", NULL };
-char *HANDLER_SYMBOL(parameters)[] = { "variable", "value", NULL };
-int HANDLER_SYMBOL(action) = 1;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int setenv_main(element_s *el)
 {
 	int i;
 	char *variable;
@@ -134,3 +128,36 @@ int HANDLER_SYMBOL(main)(element_s *el)
 
 	return i;
 }
+
+
+/*
+ * Handlers' information.
+ */
+
+char *setenv_parameters[] = { "variable", "value", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "setenv",
+		.description = "Set environment",
+		.syntax_version = "2.0",
+		.parameters = setenv_parameters,
+		.main = setenv_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "setenv",
+		.description = "Set environment",
+		.syntax_version = "3.0",
+		.parameters = setenv_parameters,
+		.main = setenv_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

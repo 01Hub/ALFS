@@ -39,6 +39,8 @@
 
 #define MODULE_NAME su
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "parser.h"
 #include "win.h"
 #include "nalfs-core.h"
@@ -139,15 +141,7 @@ static INLINE int change_to_user(const char *user)
 }
 
 
-char HANDLER_SYMBOL(name)[] = "su";
-char HANDLER_SYMBOL(description)[] = "Change user ID";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "user", NULL };
-char *HANDLER_SYMBOL(parameters)[] = { NULL };
-int HANDLER_SYMBOL(action) = 0;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int su_main(element_s *el)
 {
 	int status;
 	pid_t su_pid, got_pid;
@@ -205,3 +199,27 @@ int HANDLER_SYMBOL(main)(element_s *el)
 	
 	return status;
 }
+
+
+/*
+ * Handlers' information.
+ */
+
+char *su_parameters[] = { NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "user", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "su",
+		.description = "Change user ID",
+		.syntax_version = "2.0",
+		.parameters = su_parameters,
+		.main = su_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

@@ -1,7 +1,7 @@
 /*
  *  remove.c - Handler.
  * 
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001-2003
  *  
  *  Neven Has <haski@sezampro.yu>
  *
@@ -34,6 +34,8 @@
 
 #define MODULE_NAME remove
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
@@ -52,15 +54,7 @@ static INLINE void warn_if_doesnt_exist(const char *file)
 }
 
 
-char HANDLER_SYMBOL(name)[] = "remove";
-char HANDLER_SYMBOL(description)[] = "Remove files";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { NULL };
-char *HANDLER_SYMBOL(parameters)[] = { NULL };
-int HANDLER_SYMBOL(action) = 1;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int remove_main_ver2(element_s *el)
 {
 	int status = 0;
 	char *tok;
@@ -93,3 +87,72 @@ int HANDLER_SYMBOL(main)(element_s *el)
 	
 	return status;
 }
+
+
+int remove_main_ver3(element_s *el)
+{
+	int status = 0;
+	char *name;
+       
+
+	if (change_current_dir("/")) {
+		return -1;
+	}
+
+	if ((name = alloc_trimmed_str(el->content)) == NULL) {
+		Nprint_h_err("No name specified.");
+		return -1;
+	}
+
+	Nprint_h("Removing %s.", name);
+
+	if ((status = execute_command("rm -fr %s", name))) {
+		Nprint_h_err("Removing failed.");
+	}
+
+	xfree(name);
+	
+	return status;
+}
+
+/*
+ * Handlers' information.
+ */
+
+char *remove_parameters_ver[] = { NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "remove",
+		.description = "Remove files",
+		.syntax_version = "2.0",
+		.parameters = remove_parameters_ver,
+		.main = remove_main_ver2,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "remove",
+		.description = "Remove files",
+		.syntax_version = "3.0",
+		.parameters = remove_parameters_ver,
+		.main = remove_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "remove",
+		.description = "Remove files",
+		.syntax_version = "3.1",
+		.parameters = remove_parameters_ver,
+		.main = remove_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

@@ -32,10 +32,11 @@
 
 #define MODULE_NAME owner
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
-#include "handlers.h"
 #include "backend.h"
 
 
@@ -44,16 +45,7 @@
 #define El_owner_targets(el) alloc_trimmed_param_value("name", el)
 
 
-char HANDLER_SYMBOL(name)[] = "owner";
-char HANDLER_SYMBOL(description)[] = "Change ownership";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { NULL };
-char *HANDLER_SYMBOL(parameters)[] =
-{ "options", "base", "user", "group", "name", NULL };
-int HANDLER_SYMBOL(action) = 1;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int owner_main(element_s *el)
 {
 	int status = 0;
 	int recursive = option_exists("recursive", el);
@@ -176,3 +168,26 @@ int HANDLER_SYMBOL(main)(element_s *el)
 	
 	return status;
 }
+
+
+/*
+ * Handlers' information.
+ */
+
+char *owner_parameters[] = { "options", "base", "user", "group", "name", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "owner",
+		.description = "Change ownership",
+		.syntax_version = "2.0",
+		.parameters = owner_parameters,
+		.main = owner_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

@@ -1,7 +1,7 @@
 /*
  *  execute.c - Handler.
  * 
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001-2003
  *  
  *  Neven Has <haski@sezampro.yu>
  *
@@ -31,22 +31,15 @@
 
 #define MODULE_NAME execute
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
-#include "handlers.h"
 #include "backend.h"
 
 
-char HANDLER_SYMBOL(name)[] = "execute";
-char HANDLER_SYMBOL(description)[] = "Execute";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { NULL };
-char *HANDLER_SYMBOL(parameters)[] = { "base", "command", "param", NULL };
-int HANDLER_SYMBOL(action) = 1;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int execute_main_ver2(element_s *el)
 {
 	int status;
 	char *base;
@@ -80,7 +73,100 @@ int HANDLER_SYMBOL(main)(element_s *el)
 	
 }
 
-char *HANDLER_SYMBOL(alloc_execute_command)(element_s *el)
+char *execute_data_ver2(element_s *el, handler_data_e data)
 {
 	return alloc_trimmed_param_value("command", el);
 }
+
+
+
+int execute_main_ver3(element_s *el)
+{
+	int status;
+	char *base;
+	char *c, *command;
+
+
+	if ((c = attr_value("command", el)) == NULL) {
+		Nprint_h_err("No command specified.");
+		return -1;
+	}
+
+	base = alloc_base_dir_new(el);
+
+	if (change_current_dir(base)) {
+		xfree(base);
+		return -1;
+	}
+
+	command = xstrdup(c);
+	append_param_elements(&command, el);
+
+	Nprint_h("Executing system command in %s:", base);
+	Nprint_h("    %s", command);
+
+	status = execute_command("%s", command);
+
+	xfree(base);
+	xfree(command);
+
+	return status;
+}
+
+char *execute_data_ver3(element_s *el, handler_data_e data)
+{
+	char *command;
+
+
+	if ((command = attr_value("command", el))) {
+		return xstrdup(command);
+	}
+
+	return NULL;
+}
+
+
+/*
+ * Handlers' information.
+ */
+
+char *execute_parameters_ver2[] = { "base", "command", "param", NULL };
+
+char *execute_parameters_ver3[] = { "base", "command", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "execute",
+		.description = "Execute",
+		.syntax_version = "2.0",
+		.parameters = execute_parameters_ver2,
+		.main = execute_main_ver2,
+		.type = HTYPE_EXECUTE,
+		.alloc_data = execute_data_ver2,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "execute",
+		.description = "Execute",
+		.syntax_version = "3.0",
+		.parameters = execute_parameters_ver3,
+		.main = execute_main_ver3,
+		.type = HTYPE_EXECUTE,
+		.alloc_data = execute_data_ver3,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "execute",
+		.description = "Execute",
+		.syntax_version = "3.1",
+		.parameters = execute_parameters_ver3,
+		.main = execute_main_ver3,
+		.type = HTYPE_EXECUTE,
+		.alloc_data = execute_data_ver3,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

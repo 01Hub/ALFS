@@ -1,7 +1,7 @@
 /*
  *  patch.c - Handler.
  * 
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001-2003
  *  
  *  Neven Has <haski@sezampro.yu>
  *
@@ -32,22 +32,15 @@
 
 #define MODULE_NAME patch
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
-#include "handlers.h"
 #include "backend.h"
 
 
-char HANDLER_SYMBOL(name)[] = "patch";
-char HANDLER_SYMBOL(description)[] = "Patch";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { NULL };
-char *HANDLER_SYMBOL(parameters)[] = { "base", "param", NULL };
-int HANDLER_SYMBOL(action) = 1;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int patch_main_ver2(element_s *el)
 {
 	int status;
 	char *base;
@@ -79,3 +72,82 @@ int HANDLER_SYMBOL(main)(element_s *el)
 
 	return status;
 }
+
+int patch_main_ver3(element_s *el)
+{
+	int status;
+	char *base;
+	char *parameters = NULL;
+
+
+	if (append_param_elements(&parameters, el) == NULL) {
+		Nprint_h_err("No patch parameters specified.");
+		return -1;
+	}
+
+	base = alloc_base_dir_new(el);
+
+	if (change_current_dir(base)) {
+		xfree(base);
+		xfree(parameters);
+		return -1;
+	}
+	
+	Nprint_h("Patching in %s", base);
+	Nprint_h("    patch %s", parameters);
+
+	if ((status = execute_command("patch %s", parameters))) {
+		Nprint_h_err("Patching failed.");
+	}
+	
+	xfree(base);
+	xfree(parameters);
+
+	return status;
+}
+
+
+/*
+ * Handlers' information.
+ */
+
+char *patch_parameters_ver2[] = { "base", "param", NULL };
+
+char *patch_parameters_ver3[] = { "param", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "patch",
+		.description = "Patch",
+		.syntax_version = "2.0",
+		.parameters = patch_parameters_ver2,
+		.main = patch_main_ver2,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "patch",
+		.description = "Patch",
+		.syntax_version = "3.0",
+		.parameters = patch_parameters_ver3,
+		.main = patch_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "patch",
+		.description = "Patch",
+		.syntax_version = "3.1",
+		.parameters = patch_parameters_ver3,
+		.main = patch_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

@@ -29,18 +29,55 @@
 
 #define MODULE_NAME alfs
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "backend.h"
 
 
-char HANDLER_SYMBOL(name)[] = "alfs";
-char HANDLER_SYMBOL(description)[] = "ALFS profile";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "version", NULL };
-char *HANDLER_SYMBOL(parameters)[] = { NULL };
-int HANDLER_SYMBOL(action) = 0;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int alfs_main(element_s *el)
 {
 	return execute_children(el);
 }
+
+
+/*
+ * Handlers' information.
+ */
+
+char *alfs_parameters[] = { NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "alfs",
+		.description = "ALFS profile",
+		.syntax_version = "2.0",
+		.parameters = alfs_parameters,
+		.main = alfs_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.proirity = 0
+	}, {
+		.name = "alfs",
+		.description = "ALFS profile",
+		.syntax_version = "3.0",
+		.parameters = alfs_parameters,
+		.main = alfs_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.proirity = 0
+	}, {
+		.name = "alfs",
+		.description = "ALFS profile",
+		.syntax_version = "3.1",
+		.parameters = alfs_parameters,
+		.main = alfs_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

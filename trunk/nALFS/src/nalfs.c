@@ -109,7 +109,7 @@ static struct state {
 #define State_changed(s, el) ( \
 	s.exists && ! is_corresponding_state(s.filename, el) && \
 	el->handler && \
-	el->handler->action)
+	el->handler->info->is_action)
 
 
 /* Currently displayed elements in the main window. */
@@ -1333,7 +1333,7 @@ static void write_main_line(element_s *el, int *depth)
 
 	if (el->handler) { /* Description and some element-specific info. */
 		if (! Is_element_name(el, "stage") || opt_display_stage_header) {
-			append_str(&line, el->handler->description);
+			append_str(&line, el->handler->info->description);
 		}
 
 		add_element_specific_info(&line, el);

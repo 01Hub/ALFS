@@ -1,7 +1,7 @@
 /*
  *  package.c - Handler.
  * 
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001-2003
  *  
  *  Neven Has <haski@sezampro.yu>
  *
@@ -31,23 +31,15 @@
 
 #define MODULE_NAME package
 #include <nALFS.h>
-#include "logging.h"
-#include "utility.h"
-#include "parser.h"
+
 #include "handlers.h"
-#include "win.h"
+#include "logging.h"
+#include "parser.h"
 #include "backend.h"
+#include "utility.h"
 
 
-char HANDLER_SYMBOL(name)[] = "package";
-char HANDLER_SYMBOL(description)[] = "Package";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { NULL };
-char *HANDLER_SYMBOL(parameters)[] = { "name", "version", "base", NULL };
-int HANDLER_SYMBOL(action) = 0;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int package_main_ver2(element_s *el)
 {
 	int i;
 
@@ -62,12 +54,256 @@ int HANDLER_SYMBOL(main)(element_s *el)
 	return i;
 }
 
-char *HANDLER_SYMBOL(alloc_package_name)(element_s *el)
+char *package_data_ver2(element_s *el, handler_data_e data)
 {
-	return alloc_trimmed_param_value("name", el);
+	if (data == HDATA_NAME) {
+		return alloc_trimmed_param_value("name", el);
+
+	} else if (data == HDATA_VERSION) {
+		return alloc_trimmed_param_value("version", el);
+
+	}
+
+	return NULL;
 }
 
-char *HANDLER_SYMBOL(alloc_package_version)(element_s *el)
+/*
+ * ver3
+ */
+
+static INLINE int check_utilizes(element_s *utilizes)
 {
-	return alloc_trimmed_param_value("version", el);
+	element_s *el;
+	char *package = NULL;
+
+
+	el = first_param("name", utilizes);
+
+	if (el == NULL) {
+		Nprint_h_warn("<utilizes> misses <name>, ignoring.");
+		return 1;
+	}
+
+	if ((package = alloc_trimmed_str(el->content)) == NULL) {
+		Nprint_h_warn("Utilizes name content empty, ignoring.");
+		return 1;
+	}
+
+	if (check_stamp(package) != 0) {
+		Nprint_warn("Utilized package missing: %s", package);
+	}
+
+	for (el = first_param("version", utilizes); el; el = next_param(el)) {
+		char *version = NULL;
+		char *condition = NULL;
+
+		if ((version = alloc_trimmed_str(el->content)) == NULL) {
+			Nprint_h_warn("Utilizes version content empty, ignoring.");
+			xfree(package);
+			return 1;
+		}
+
+		condition = attr_value("condition", el);
+
+		if (Empty_string(condition)) {
+			Nprint_h_warn("Utilizes condition missing, ignoring.");
+			xfree(package);
+			xfree(version);
+			return 1;
+		}
+		
+		check_stamp_version(package, condition, version);
+		/* Ignoring return value, just printing a warning. */			
+		xfree(version);
+	}
+
+	xfree(package);
+
+	return 0;
 }
+
+static INLINE int check_requires(element_s *requires)
+{
+	element_s *el;
+	char *package = NULL;
+	int status = 0;
+
+
+	el = first_param("name", requires);
+
+	if (el == NULL) {
+		Nprint_h_warn("<requires> misses <name>, ignoring.");
+		return 1;
+	}
+
+	if ((package = alloc_trimmed_str(el->content)) == NULL) {
+		Nprint_h_warn("Requires name content empty, ignoring.");
+		return 1;
+	}
+
+	status = check_stamp(package);
+
+	if (status) {
+		Nprint_h_err("Some required packages are missing; "
+			"build aborted.");
+		return -1;
+	}
+
+	for (el = first_param("version", requires); el; el = next_param(el)) {
+		char *version = NULL;
+		char *condition = NULL;
+
+		if ((version = alloc_trimmed_str(el->content)) == NULL) {
+			Nprint_h_warn("Requires version content empty, ignoring.");
+			xfree(package);
+			return 1;
+		}
+
+		condition = attr_value("condition", el);
+
+		if (Empty_string(condition)) {
+			Nprint_h_warn("Requires condition missing, ignoring.");
+			xfree(package);
+			xfree(version);
+			return 1;
+		}
+
+		status = check_stamp_version(package, condition, version);
+		/* Ignoring return value, just printing a warning. */			
+		xfree(version);
+
+		if (status) {
+			Nprint_h_err(
+				"Some required packages "
+				"don't have the required version; build aborted.");
+			xfree(package);
+			return -1;
+		} else {
+			Nprint_h("Required package version OK.");
+		}
+	}
+
+	xfree(package);
+
+	return 0;
+}
+
+static int parse_packageinfo(element_s *packageinfo)
+{
+	element_s *e;
+
+
+	for (e = first_param("utilizes", packageinfo); e; e = next_param(e)) {
+		if (check_utilizes(e) == -1) {
+			return -1;
+		}
+	}
+
+	for (e = first_param("requires", packageinfo); e; e = next_param(e)) {
+		if (check_requires(e) == -1) {
+			return -1;
+		}
+	}
+
+	return 0;
+}
+
+
+int package_main_ver3(element_s *el)
+{
+	int status = 0;
+	element_s *packageinfo;
+
+
+	start_logging_element(el);
+	log_start_time(el);
+
+	packageinfo = first_param("packageinfo", el);
+	if (packageinfo != NULL) {
+		status = parse_packageinfo(packageinfo);
+	}
+
+	if (status == 0) {
+		status = execute_children(el);
+	}
+
+	log_end_time(el, status);
+	end_logging_element(el, status);
+
+	return status;
+}
+
+char *package_data_ver3(element_s *el, handler_data_e data)
+{
+	char *s;
+
+	if (data == HDATA_NAME) {
+		if ((s = attr_value("name", el))) {
+			return xstrdup(s);
+		}
+
+	} else if (data == HDATA_VERSION) {
+		if ((s = attr_value("version", el))) {
+			return xstrdup(s);
+		}
+
+	}
+
+	return NULL;
+}
+
+/*
+ * Handlers' information.
+ */
+
+char *package_parameters_ver2[] = { "name", "version", "base", NULL };
+
+char *package_parameters_ver3[] = { 
+	"packageinfo",
+	"description",
+	"list",
+	"item",
+	"para",
+	"requires",
+	"utilizes",
+	"name",
+	"version",
+	NULL
+};
+// char *HANDLER_SYMBOL(attributes)[] = { "name", "version", "logfile", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "package",
+		.description = "Package",
+		.syntax_version = "2.0",
+		.parameters = package_parameters_ver2,
+		.main = package_main_ver2,
+		.type = HTYPE_PACKAGE,
+		.alloc_data = package_data_ver2,
+		.is_action = 0,
+		.proirity = 0
+	}, {
+		.name = "package",
+		.description = "Package",
+		.syntax_version = "3.0",
+		.parameters = package_parameters_ver3,
+		.main = package_main_ver3,
+		.type = HTYPE_PACKAGE,
+		.alloc_data = package_data_ver3,
+		.is_action = 0,
+		.proirity = 0
+	}, {
+		.name = "package",
+		.description = "Package",
+		.syntax_version = "3.1",
+		.parameters = package_parameters_ver3,
+		.main = package_main_ver3,
+		.type = HTYPE_PACKAGE,
+		.alloc_data = package_data_ver3,
+		.is_action = 0,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

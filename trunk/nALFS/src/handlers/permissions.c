@@ -1,9 +1,9 @@
 /*
  *  permissions.c - Handler.
  *
- *  Copyright (C) 2001, 2002 by Neven Has <haski@sezampro.yu>
+ *  Copyright (C) 2001-2003 by Neven Has <haski@sezampro.yu>
  *
- *  Parts Copyright (C) 2002 by Maik Schreiber <bZ@iq-computing.de>
+ *  Parts Copyright (C) 2002-2003 by Maik Schreiber <bZ@iq-computing.de>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -32,26 +32,18 @@
 
 #define MODULE_NAME permissions
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
-#include "handlers.h"
 #include "backend.h"
 
 
 #define El_permissions_mode(el) alloc_trimmed_param_value("mode", el)
 #define El_permissions_targets(el) alloc_trimmed_param_value("name", el)
 
-
-char HANDLER_SYMBOL(name)[] = "permissions";
-char HANDLER_SYMBOL(description)[] = "Change permissions";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { NULL };
-char *HANDLER_SYMBOL(parameters)[] = { "base", "options", "mode", "name", NULL };
-int HANDLER_SYMBOL(action) = 1;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int permissions_main_ver2(element_s *el)
 {
 	int status = 0;
 	int recursive = option_exists("recursive", el);
@@ -126,3 +118,123 @@ int HANDLER_SYMBOL(main)(element_s *el)
 	
 	return status;
 }
+
+int permissions_main_ver3(element_s *el)
+{
+	int options[1], recursive;
+	int status = 0;
+	char *base;
+	char *mode;
+	element_s *p;
+
+
+	check_options(1, options, "recursive", el);
+	recursive = options[0];
+
+	if ((mode = attr_value("mode", el)) == NULL) {
+		Nprint_h_err("No permission specified.");
+		return -1;
+	}
+
+	base = alloc_base_dir_new(el);
+	if (change_current_dir(base)) {
+		xfree(base);
+		return -1;
+	}
+
+	for (p = first_param("name", el); p; p = next_param(p)) {
+		char *name;
+		char *command = NULL;
+		char *message = NULL;
+
+
+		if ((name = alloc_trimmed_str(p->content)) == NULL) {
+			Nprint_h_warn("Name empty.");
+			continue;
+		}
+
+		append_str(&command, "chmod ");
+
+		append_str(&message, "Changing permissions to ");
+		append_str(&message, mode);
+
+		if (recursive) {
+			append_str(&command, "-R ");
+			append_str(&message, " (recursive)");
+
+		}
+		append_str(&message, " in ");
+		append_str(&message, base);
+		append_str(&message, ": ");
+		append_str(&message, name);
+
+		append_str(&command, mode);
+		append_str(&command, " ");
+		append_str(&command, name);
+
+		Nprint_h("%s", message);
+
+		if ((status = execute_command(command))) {
+			Nprint_h_err("Changing permissions failed.");
+		}
+
+		xfree(name);
+		xfree(command);
+		xfree(message);
+
+		if (status)
+			break;
+	}
+
+	xfree(base);
+	
+	return status;
+}
+
+/*
+ * Handlers' information.
+ */
+
+
+char *permissions_parameters_ver2[] =
+{ "base", "options", "mode", "name", NULL };
+
+char *permissions_parameters_ver3[] =
+{ "option", "name", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", "mode", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "permissions",
+		.description = "Change permissions",
+		.syntax_version = "2.0",
+		.parameters = permissions_parameters_ver2,
+		.main = permissions_main_ver2,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "permissions",
+		.description = "Change permissions",
+		.syntax_version = "3.0",
+		.parameters = permissions_parameters_ver3,
+		.main = permissions_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "permissions",
+		.description = "Change permissions",
+		.syntax_version = "3.1",
+		.parameters = permissions_parameters_ver3,
+		.main = permissions_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

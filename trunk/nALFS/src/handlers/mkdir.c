@@ -1,7 +1,7 @@
 /*
  *  mkdir.c - Handler.
  * 
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001-2003
  *  
  *  Neven Has <haski@sezampro.yu>
  *
@@ -32,26 +32,18 @@
 
 #define MODULE_NAME mkdir
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
-#include "handlers.h"
 #include "backend.h"
 
 
 #define El_mkdir_dirs(el) alloc_trimmed_param_value("dir", el)
 #define El_mkdir_perm(el) alloc_trimmed_param_value("permissions", el)
 
-
-char HANDLER_SYMBOL(name)[] = "mkdir";
-char HANDLER_SYMBOL(description)[] = "Make directories";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { NULL };
-char *HANDLER_SYMBOL(parameters)[] = { "options", "base", "dir", "permissions", NULL };
-int HANDLER_SYMBOL(action) = 1;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int mkdir_main_ver2(element_s *el)
 {
 	int status = 0;
 	int parents = option_exists("parents", el);
@@ -114,3 +106,140 @@ int HANDLER_SYMBOL(main)(element_s *el)
 	
 	return status;
 }
+
+int mkdir_main_ver3(element_s *el)
+{
+	int options[1], parents;
+	int status = 0;
+	char *base;
+	char *perm;
+	element_s *p;
+
+
+	check_options(1, options, "parents", el);
+	parents = options[0];
+
+	if ((first_param("name", el)) == NULL) {
+		Nprint_h_err("No directories specified.");
+		return -1;
+	}
+
+	base = alloc_base_dir_new(el);
+
+	if (change_current_dir(base)) {
+		xfree(base);
+		return -1;
+	}
+
+	perm = alloc_trimmed_param_value("permissions", el);
+
+	for (p = first_param("name", el); p; p = next_param(p)) {
+		char *dir;
+		char *command, *message;
+
+
+		if ((dir = alloc_trimmed_str(p->content)) == NULL) {
+			Nprint_h_warn("Directory name empty, ignoring.");
+			continue;
+		}
+
+		command = xstrdup("mkdir ");
+		message = xstrdup("Creating directory in ");
+		append_str(&message, base);
+
+		if (parents) {
+			append_str(&command, " -p ");
+			append_str(&message, " (parents)");
+		}
+
+		append_str(&command, dir);
+
+		append_str(&message, ": ");
+		append_str(&message, dir);
+
+		if (perm) {
+			append_str(&message, " (");
+			append_str(&message, perm);
+			append_str(&message, ")");
+		}
+		
+		Nprint_h("%s", message);
+
+		if ((status = execute_command("%s", command))) {
+			Nprint_h_err("Creating %s failed.", dir);
+			xfree(dir);
+			xfree(command);
+			xfree(message);
+			break;
+		}
+
+		if (perm) {
+			/* Change permissions. */
+			if ((status = execute_command("chmod %s %s",
+			perm, dir))) {
+				Nprint_h_err("Changing permissions failed.");
+				xfree(dir);
+				xfree(command);
+				xfree(message);
+				break;
+			}
+		}
+
+		xfree(dir);
+		xfree(command);
+		xfree(message);
+	}
+
+	xfree(base);
+	xfree(perm);
+	
+	return status;
+}
+
+
+/*
+ * Handlers' information.
+ */
+
+char *mkdir_parameters_ver2[] =
+{ "options", "base", "dir", "permissions", NULL };
+
+char *mkdir_parameters_ver3[] =
+{ "option", "name", "permissions", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "mkdir",
+		.description = "Make directories",
+		.syntax_version = "2.0",
+		.parameters = mkdir_parameters_ver2,
+		.main = mkdir_main_ver2,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "mkdir",
+		.description = "Make directories",
+		.syntax_version = "3.0",
+		.parameters = mkdir_parameters_ver3,
+		.main = mkdir_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "mkdir",
+		.description = "Make directories",
+		.syntax_version = "3.1",
+		.parameters = mkdir_parameters_ver3,
+		.main = mkdir_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

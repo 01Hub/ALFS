@@ -1,5 +1,5 @@
 /*
- *  new-ownership.c - Handler.
+ *  ownership.c - Handler.
  *
  *  Copyright (C) 2002 by Maik Schreiber <bZ@iq-computing.de>
  *
@@ -27,24 +27,17 @@
 #include <config.h>
 #endif
 
-#define MODULE_NAME new_ownership
+#define MODULE_NAME ownership
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
-#include "handlers.h"
 #include "backend.h"
 
 
-char HANDLER_SYMBOL(name)[] = "ownership";
-char HANDLER_SYMBOL(description)[] = "Change ownership";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "3.0", "3.1", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "base", "user", "group", NULL };
-char *HANDLER_SYMBOL(parameters)[] = { "option", "name", NULL };
-int HANDLER_SYMBOL(action) = 1;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int ownership_main(element_s *el)
 {
 	int status = 0;
 	int options[1], recursive;
@@ -162,3 +155,37 @@ int HANDLER_SYMBOL(main)(element_s *el)
 	
 	return status;
 }
+
+
+/*
+ * Handlers' information.
+ */
+
+char *ownership_parameters[] = { "option", "name", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", "user", "group", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "ownership",
+		.description = "Change ownership",
+		.syntax_version = "3.0",
+		.parameters = ownership_parameters,
+		.main = ownership_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "ownership",
+		.description = "Change ownership",
+		.syntax_version = "3.1",
+		.parameters = ownership_parameters,
+		.main = ownership_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

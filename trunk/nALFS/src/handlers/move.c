@@ -1,7 +1,7 @@
 /*
  *  move.c - Handler.
  * 
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001-2003
  *  
  *  Neven Has <haski@sezampro.yu>
  *
@@ -32,27 +32,18 @@
 
 #define MODULE_NAME move
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
-#include "handlers.h"
 #include "backend.h"
 
 
 #define El_move_source(el) alloc_trimmed_param_value("source", el)
 #define El_move_destination(el) alloc_trimmed_param_value("destination", el)
 
-
-char HANDLER_SYMBOL(name)[] = "move";
-char HANDLER_SYMBOL(description)[] = "Move files";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { NULL };
-char *HANDLER_SYMBOL(parameters)[] =
-{ "options", "base", "source", "destination", NULL };
-int HANDLER_SYMBOL(action) = 1;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int move_main_ver2(element_s *el)
 {
 	int status = 0;
 	int force = option_exists("force", el);
@@ -105,3 +96,113 @@ int HANDLER_SYMBOL(main)(element_s *el)
 	
 	return status;
 }
+
+int move_main_ver3(element_s *el)
+{
+	int options[1], force;
+	int status = 0;
+	char *base;
+	char *destination;
+	element_s *p;
+
+
+	check_options(1, options, "force", el);
+	force = options[0];
+
+	if (first_param("source", el) == NULL) {
+		Nprint_h_err("No source files specified.");
+		return -1;
+	}
+
+	destination = alloc_trimmed_param_value("destination", el);
+	if (destination == NULL) {
+		Nprint_h_err("No destination specified.");
+		return -1;
+	}
+
+	base = alloc_base_dir_new(el);
+
+	if (change_current_dir(base)) {
+		xfree(base);
+		xfree(destination);
+		return -1;
+	}
+
+	for (p = first_param("source", el); p; p = next_param(p)) {
+		char *s;
+
+		if ((s = alloc_trimmed_str(p->content)) == NULL) {
+			Nprint_h_warn("Source empty.");
+			continue;
+		}
+
+		Nprint_h("Moving from %s to %s%s: %s",
+			base, destination, force ? " (force)" : "", s);
+
+		if (force) {
+			status = execute_command("mv -f %s %s", s, destination);
+		} else {
+			status = execute_command("mv %s %s", s, destination);
+		}
+
+		xfree(s);
+
+		if (status) {
+			Nprint_h_err("Moving failed.");
+			break;
+		}
+	}
+
+	xfree(base);
+	xfree(destination);
+	
+	return status;
+}
+
+
+/*
+ * Handlers' information.
+ */
+
+char *move_parameters_ver2[] =
+{ "options", "base", "source", "destination", NULL };
+
+char *move_parameters_ver3[] =
+{ "option", "source", "destination", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "move",
+		.description = "Move files",
+		.syntax_version = "2.0",
+		.parameters = move_parameters_ver2,
+		.main = move_main_ver2,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "move",
+		.description = "Move files",
+		.syntax_version = "3.0",
+		.parameters = move_parameters_ver3,
+		.main = move_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "move",
+		.description = "Move files",
+		.syntax_version = "3.1",
+		.parameters = move_parameters_ver3,
+		.main = move_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};
