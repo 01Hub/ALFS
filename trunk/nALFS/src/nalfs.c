@@ -1064,7 +1064,8 @@ static INLINE void display_help_page(void)
 
 static INLINE int print_installed_packages(logf_t *logf)
 {
-	int i, j, lines_written;
+	size_t j;
+	int i, lines_written;
 	int packages_cnt = logf_get_packages_cnt(logf);
 
 
