@@ -1,6 +1,6 @@
 <!ENTITY introduction			SYSTEM "introduction.xml">
 
-<!ENTITY intro-welcome-welcome		SYSTEM "welcome/welcome.xml"
+<!ENTITY intro-welcome-welcome		SYSTEM "welcome/welcome.xml">
 <!ENTITY intro-welcome-acknowledgements SYSTEM "welcome/acknowledgements.xml">
 <!ENTITY intro-welcome-changelog        SYSTEM "welcome/changelog.xml">
 <!ENTITY intro-welcome-contactinfo      SYSTEM "welcome/contactinfo.xml">
