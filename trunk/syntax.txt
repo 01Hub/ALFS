@@ -4,9 +4,6 @@ Proposed official syntax for ALFS:
     o This will shortly be moved into Docbook XML for the ALFS 1.0 rleease,
       untill then, this will have todo ;)
 
-    o We could perhaps move <command /> to an attribute.
-      Not sure how much of a good idea that is however.
-
     o Using <parameter/> instead of <option /> for configure/make/execute.
       Needs more though.  Id prefer to <option /> stays with configure and
       friends then just moving over to copy and friends.  Perhaps we can find
@@ -24,8 +21,7 @@ Proposed official syntax for ALFS:
 Configure:
 ----------
 
-    <configure base="">
-	<command />
+    <configure base="" command="">
         <option />
     </configure>
 
@@ -53,15 +49,13 @@ eg;
 Execute:
 --------
 
-    <execute base="">
-	<command />
+    <execute base="" command="">
         <option />
     </execute>
 
 eg;
 
-    <execute base="/tmp">
-	<command>touch</command>
+    <execute base="/tmp" command="touch">
 	<option>foobar.txt</option>
     </execute>
 
