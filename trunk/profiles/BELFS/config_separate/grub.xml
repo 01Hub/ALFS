@@ -23,8 +23,8 @@
 			=# Use prettier colors
 			=color green/black light-green/black
 			=
-			=# Default Entry for LFS
-			=title LFS (&LFS-version; kernel &linux-version;)
+			=# Default Entry for BELFS
+			=title BELFS (&BELFS-version; kernel &linux-version;)
 			=root (&grub-root;)
 			=kernel - -no-mem-option /boot/lfskernel-&linux-version; root=&lfs_partition;
 			=
