@@ -17,6 +17,8 @@
 			<base>&build_dir;/&libmng-directory;</base>
 		</stageinfo>
 
+		<execute command="./autogen.sh" />
+
 		<configure>
 		    <param>--prefix=/usr</param>
 		    <param>--with-zlib</param>

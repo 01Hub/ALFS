@@ -73,9 +73,9 @@
 
 <!ENTITY openssl-patch     "openssl-0.9.7c-manpages.patch">
 
-<!ENTITY pcre-version   "4.3">
-<!ENTITY pcre-package   "pcre-4.3.tar.bz2">
-<!ENTITY pcre-directory "pcre-4.3">
+<!ENTITY pcre-version   "4.5">
+<!ENTITY pcre-package   "pcre-4.5.tar.bz2">
+<!ENTITY pcre-directory "pcre-4.5">
 
 <!ENTITY popt-version   "1.7">
 <!ENTITY popt-package   "popt-1.7.tar.gz">
@@ -95,13 +95,13 @@
 <!ENTITY libxml-package   "libxml-1.8.17.tar.gz">
 <!ENTITY libxml-directory "libxml-1.8.17">
 
-<!ENTITY libxml2-version   "2.5.11">
-<!ENTITY libxml2-package   "libxml2-2.5.11.tar.bz2">
-<!ENTITY libxml2-directory "libxml2-2.5.11">
+<!ENTITY libxml2-version   "2.6.3">
+<!ENTITY libxml2-package   "libxml2-2.6.3.tar.bz2">
+<!ENTITY libxml2-directory "libxml2-2.6.3">
 
-<!ENTITY libxslt-version   "1.0.33">
-<!ENTITY libxslt-package   "libxslt-1.0.33.tar.bz2">
-<!ENTITY libxslt-directory "libxslt-1.0.33">
+<!ENTITY libxslt-version   "1.1.1">
+<!ENTITY libxslt-package   "libxslt-1.1.1.tar.bz2">
+<!ENTITY libxslt-directory "libxslt-1.1.1">
 
 <!ENTITY readline-version   "4.3">
 <!ENTITY readline-package   "readline-4.3.tar.gz">
@@ -123,9 +123,9 @@
 <!ENTITY glib2-package   "glib-2.3.1.tar.bz2">
 <!ENTITY glib2-directory "glib-2.3.1">
 
-<!ENTITY expat-version   "1.95.6">
-<!ENTITY expat-package   "expat-1.95.6.tar.gz">
-<!ENTITY expat-directory "expat-1.95.6">
+<!ENTITY expat-version   "1.95.7">
+<!ENTITY expat-package   "expat-1.95.7.tar.gz">
+<!ENTITY expat-directory "expat-1.95.7">
 
 <!ENTITY expat-patch     "expat-1.95.6-fix-declaration-order.patch">
 
@@ -133,15 +133,13 @@
 <!ENTITY libesmtp-package   "libesmtp-1.0.tar.bz2">
 <!ENTITY libesmtp-directory "libesmtp-1.0">
 
-<!ENTITY aspell-version   "0.50.3">
-<!ENTITY aspell-package   "aspell-0.50.3.tar.gz">
-<!ENTITY aspell-directory "aspell-0.50.3">
+<!ENTITY aspell-version   "0.50.4.1">
+<!ENTITY aspell-package   "aspell-0.50.4.1.tar.gz">
+<!ENTITY aspell-directory "aspell-0.50.4.1">
 
-<!ENTITY aspell-patch     "aspell-0.50.3-gcc33-1.patch">
-
-<!ENTITY ispell-version   "3.2.06.epa6">
-<!ENTITY ispell-package   "ispell-3.2.06.epa6.tar.bz2">
-<!ENTITY ispell-directory "ispell-3.2.06.epa6">
+<!ENTITY ispell-version   "3.2.06.epa7">
+<!ENTITY ispell-package   "ispell-3.2.06.epa7.tar.bz2">
+<!ENTITY ispell-directory "ispell-3.2.06.epa7">
 
 <!ENTITY guile-version   "1.6.4">
 <!ENTITY guile-package   "guile-1.6.4.tar.gz">
@@ -183,9 +181,9 @@
 
 <!ENTITY libungif-patch     "libungif-4.1.0b1-va_start.patch">
 
-<!ENTITY libmng-version   "1.0.5">
-<!ENTITY libmng-package   "libmng-1.0.5.tar.gz">
-<!ENTITY libmng-directory "libmng-1.0.5">
+<!ENTITY libmng-version   "1.0.6">
+<!ENTITY libmng-package   "libmng-1.0.6.tar.gz">
+<!ENTITY libmng-directory "libmng-1.0.6">
 
 <!ENTITY imlib-version   "1.9.14">
 <!ENTITY imlib-package   "imlib-1.9.14.tar.gz">
@@ -212,6 +210,10 @@
 <!ENTITY imlib2-version   "1.1.0">
 <!ENTITY imlib2-package   "imlib2-1.1.0.tar.gz">
 <!ENTITY imlib2-directory "imlib2-1.1.0">
+
+<!ENTITY imagemagick-version   "5.5.7-15">
+<!ENTITY imagemagick-package   "ImageMagick-5.5.7-15.tar.bz2">
+<!ENTITY imagemagick-directory "ImageMagick-5.5.7">
 
 <!--************* packages for chapter 10 *************-->
 

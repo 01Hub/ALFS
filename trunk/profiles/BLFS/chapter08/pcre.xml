@@ -14,6 +14,7 @@
 
 		<configure>
 			<param>--prefix=/usr</param>
+			<param>--enable-utf8</param>
 		</configure>
 
 		<make />

@@ -64,6 +64,7 @@
 <!ENTITY svgalib    SYSTEM "./chapter09/svgalib.xml">
 <!ENTITY directfb   SYSTEM "./chapter09/directfb.xml">
 <!ENTITY imlib2     SYSTEM "./chapter09/imlib2.xml">
+<!ENTITY imagemagick SYSTEM "./chapter09/imagemagick.xml">
 
 <!-- chapter 10 -->
 <!ENTITY bc         SYSTEM "./chapter10/bc.xml">
