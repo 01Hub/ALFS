@@ -9,16 +9,6 @@
 			<archive>&packages_dir;/&bc-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&bc-flex-invocation-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
-
-		<copy>
-		        <source>&packages_dir;/&bc-readline-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing">
@@ -29,13 +19,13 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&bc-flex-invocation-patch;</param>
+			<param>-i &packages_dir;/&bc-flex-invocation-patch;</param>
 		</patch>
 
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&bc-readline-patch;</param>
+			<param>-i &packages_dir;/&bc-readline-patch;</param>
 		</patch>
 
 		<configure>

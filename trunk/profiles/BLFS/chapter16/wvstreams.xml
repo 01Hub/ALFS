@@ -9,17 +9,6 @@
 		<archive>&packages_dir;/&wvstreams-package;</archive>
 		<destination>&build_dir;</destination>
 	</unpack>
-
-	<copy>
-	        <source>&packages_dir;/&wvstreams-wvcrypto-patch;</source>
-		<destination>&build_dir;</destination>
-	</copy>
-
-	<copy>
-	        <source>&packages_dir;/&wvstreams-wvresolver-patch;</source>
-		<destination>&build_dir;</destination>
-	</copy>
-
     </stage>
 
     <stage name="Installing">
@@ -30,13 +19,13 @@
 	<patch>
 		<param>-N</param>
 		<param>-p1</param>
-		<param>-i ../&wvstreams-wvcrypto-patch;</param>
+		<param>-i &packages_dir;/&wvstreams-wvcrypto-patch;</param>
 	</patch>
 
 	<patch>
 		<param>-N</param>
 		<param>-p1</param>
-		<param>-i ../&wvstreams-wvresolver-patch;</param>
+		<param>-i &packages_dir;/&wvstreams-wvresolver-patch;</param>
 	</patch>
 
 	<make>

@@ -5,11 +5,6 @@
 			<archive>&packages_dir;/&tcpwrappers-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&tcpwrappers-shared-libs-plus-plus-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing">
@@ -20,7 +15,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&tcpwrappers-shared-libs-plus-plus-patch;</param>
+			<param>-i &packages_dir;/&tcpwrappers-shared-libs-plus-plus-patch;</param>
 		</patch>
 
 		<make>

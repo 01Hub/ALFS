@@ -14,16 +14,6 @@
 			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&portmap-compilation-fixes-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
-
-		<copy>
-			<source>&packages_dir;/&portmap-glibc-errno-fix-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing">
@@ -34,13 +24,13 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&portmap-compilation-fixes-patch;</param>
+			<param>-i &packages_dir;/&portmap-compilation-fixes-patch;</param>
 		</patch>
 
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&portmap-glibc-errno-fix-patch;</param>
+			<param>-i &packages_dir;/&portmap-glibc-errno-fix-patch;</param>
 		</patch>
 
 		<make/>

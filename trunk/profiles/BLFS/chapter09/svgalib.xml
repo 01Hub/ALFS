@@ -5,11 +5,6 @@
 			<archive>&packages_dir;/&svgalib-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-		        <source>&packages_dir;/&svgalib-gcc3-1-patch;</source>
-		        <destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing">
@@ -20,7 +15,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&svgalib-gcc3-1-patch;</param>
+			<param>-i &packages_dir;/&svgalib-gcc3-1-patch;</param>
 		</patch>
 
 		<make>

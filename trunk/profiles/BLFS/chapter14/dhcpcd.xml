@@ -10,11 +10,6 @@
 			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&dhcpcd-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing">
@@ -25,7 +20,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&dhcpcd-patch;</param>
+			<param>-i &packages_dir;/&dhcpcd-patch;</param>
 		</patch>
 
 		<configure>

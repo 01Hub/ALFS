@@ -7,7 +7,6 @@
 		</unpack>
 
 		<copy>
-			<source>&packages_dir;/&tripwire-gcc-patch;</source>
 			<source>&packages_dir;/&tripwire-policy-file;</source>
 			<destination>&build_dir;</destination>
 		</copy>
@@ -22,7 +21,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&tripwire-gcc-patch;</param>
+			<param>-i &packages_dir;/&tripwire-gcc-patch;</param>
 		</patch>
 
 		<make>

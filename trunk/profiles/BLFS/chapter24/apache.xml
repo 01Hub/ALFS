@@ -14,11 +14,6 @@
 			<destination>&build_dir;</destination>
 		</unpack>
 
-		<copy>
-			<source>&packages_dir;/&apache-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
-	
 		<unpack>
 			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
 			<destination>&build_dir;</destination>
@@ -48,7 +43,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&apache-patch;</param>
+			<param>-i &packages_dir;/&apache-patch;</param>
 		</patch>
 
 		<configure>
