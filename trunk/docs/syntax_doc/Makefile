@@ -39,8 +39,8 @@ chunks-html: common
 	sed -i -e "s@../stylesheets@stylesheets@" \
 	  $(OUTDIR)alfs_dtd.html $(OUTDIR)index.html $(OUTDIR)preface.html
 
-	sed -i -e "s@../images@images@g" \
-	  $(OUTDIR)alfs_dtd.html $(OUTDIR)index.html $(OUTDIR)preface.html
+	sed -i -e "s@images@../images@g" \
+	  $(OUTDIR)alfs_dtd/*.html $(OUTDIR)preface/*.html
 
 	echo indent-spaces: 2 > $(OUTDIR)tidy.conf
 	echo wrap: 78 >> $(OUTDIR)tidy.conf
