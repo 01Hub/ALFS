@@ -24,9 +24,6 @@
 <!ENTITY binutils-package "binutils-&binutils-version;-&binutils-cvs-version;.tar.bz2">
 <!ENTITY binutils-directory "binutils-&binutils-version;-&binutils-cvs-version;">
 
-<!ENTITY binutils-gcc34-patch-md5 "be7ad7a97ee314d6906b763f7e4852f0">
-<!ENTITY binutils-gcc34-patch "binutils-&binutils-version;-gcc34-1.patch">
-
 <!ENTITY bison-md5 "ccbd5076dab6e319cc8ce1a7035cae92">
 <!ENTITY bison-version "1.875a">
 <!ENTITY bison-package "bison-&bison-version;.tar.bz2">
