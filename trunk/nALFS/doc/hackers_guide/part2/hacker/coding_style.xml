@@ -64,16 +64,16 @@ shown to us by the prophets Kernighan and Ritchie, is to put the opening
 brace last on the line, and put the closing brace first, thusly:</para>
 
 <screen><command>if (x is true) {
-		we do y
-	}</command></screen>
+	we do y
+}</command></screen>
 
 <para>However, there is one special case, namely functions: they have the
 opening brace at the beginning of the next line, thus:</para>
 
 <screen><command>int function(int x)
-	{
-		body of function
-	}</command></screen>
+{
+	body of function
+}</command></screen>
 
 <para>Heretic people all over the world have claimed that this inconsistency
 is ... well ...  inconsistent, but all right-thinking people know that (a) K&amp;R
@@ -86,18 +86,18 @@ continuation of the same statement, ie a "while" in a do-statement or an
 "else" in an if-statement, like this:</para>
 
 <screen><command>do {
-		body of do-loop
-	} while (condition);</command></screen>
+	body of do-loop
+} while (condition);</command></screen>
 
 <para>and</para>
 
 <screen><command>if (x == y) {
-		..
-	} else if (x > y) {
-		...
-	} else {
-		....
-	}</command></screen>
+	..
+} else if (x > y) {
+	...
+} else {
+	....
+}</command></screen>
 
 <para>Rationale: K&amp;R.</para>
 
@@ -217,7 +217,7 @@ if you put the string -*- linux-c -*- somewhere on the first two lines, this
 mode will be automatically invoked. Also, you may want to add</para>
 
 <screen><command>(setq auto-mode-alist (cons '("/usr/src/linux.*/.*\\.[ch]$" . linux-c-mode)
-                       auto-mode-alist))</command></screen>
+      auto-mode-alist))</command></screen>
 
 <para>to your <filename>.emacs</filename> file if you want to have linux-c-
 mode switched on automagically when you edit source files under
