@@ -1,38 +1,143 @@
-<package name="j2sdk" version="&j2sdk-binary-version;">
+<package name="j2sdk-binary" version="&j2sdk-binary-version;">
 
 	<stage name="Unpacking a package.">
 		<stageinfo>
 			<base>&build_dir;</base>
 		</stageinfo>
 
+		<mkdir>
+			<name>java-build</name>
+		</mkdir>
+
 		<copy>
-			<source>&packages_dir;/&j2sdk-package;</source>
-			<destination>&build_dir;</destination>
+			<source>&packages_dir;/&j2sdk-binary-package;</source>
+			<destination>&build_dir;/java-build</destination>
 		</copy>
 
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/</base>
+			<base>&build_dir;/java-build</base>
 		</stageinfo>
 
+		<execute command="sed -i &quot;s:^PATH=.*::&quot; &j2sdk-binary-package;" />
+
 		<permissions mode="711">
-		        <name>&j2sdk-package;</name>
+		        <name>&j2sdk-binary-package;</name>
 		</permissions>
 
-		<execute command="yes | ./j2sdk*.bin" />
+		<mkdir>
+			<option>parents</option>
+			<name>bin</name>
+		</mkdir>
 
-		<move>
+		<link>
+			<option>force</option>
+			<target>/bin/true</target>
+			<name>bin/more</name>
+		</link>
+
+		<execute command="yes | PATH=$PWD/bin:$PATH ./&j2sdk-binary-package;" />
+
+		<mkdir>
+			<option>parents</option>
+			<name>/opt/j2sdk/j2sdk-precompiled-&j2sdk-binary-norev-version;</name>
+		</mkdir>
+
+		<move base="&build_dir;/java-build/&j2sdk-binary-directory;">
 		        <option>force</option>
-		        <source>&j2sdk-directory;</source>
-			<destination>/opt</destination>
+		        <source>*</source>
+			<destination>/opt/j2sdk/j2sdk-precompiled-&j2sdk-binary-norev-version;</destination>
 		</move>
 
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&j2sdk-package;</remove>
+		<remove>&build_dir;/java-build/&j2sdk-binary-package;</remove>
+		<remove>&build_dir;/java-build/&j2sdk-binary-directory;</remove>
 	</stage>
 
+</package>
+
+<package name="j2sdk-src" version="&j2sdk-src-version;">
+
+	<stage name="Unpacking">
+		<stageinfo>
+			<base>&build_dir;/java-build</base>
+		</stageinfo>
+
+		<execute command="unzip &packages_dir;/&j2sdk-src-package;" />
+		<execute command="unzip &packages_dir;/&j2sdk-src-bin-package;" />
+		<execute command="unzip &packages_dir;/&j2sdk-src-mozilla-headers-package;" />
+
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/java-build</base>
+			<environment>
+				<variable name="PATH" mode="append">:/opt/j2sdk/j2sdk-precompiled-&j2sdk-binary-norev-version;/bin</variable>
+				<variable name="ALT_BOOTDIR">/opt/j2sdk/j2sdk-precompiled-&j2sdk-binary-norev-version;</variable>
+				<variable name="CLASSPATH" />
+				<variable name="CFLAGS" />
+				<variable name="CXXFLAGS" />
+				<variable name="LDFLAGS" />
+				<variable name="ALT_DEVTOOLS_PATH">&quot;/usr/bin&quot;</variable>
+				<variable name="BUILD_NUMBER">blfs-5.1-nALFS</variable>
+				<variable name="DEV_ONLY">true</variable>
+				<variable name="ALT_MOZILLA_PATH">&build_dir;/java-build</variable>
+				<variable name="INSANE">true</variable>
+				<variable name="MAKE_VERBOSE">true</variable>
+				<variable name="ALT_CACERTS_FILE">/opt/j2sdk/j2sdk-precompiled-&j2sdk-binary-norev-version;/jre/lib/security/cacerts</variable>
+			</environment>
+		</stageinfo>
+
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&j2sdk-asm-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&j2sdk-gcc33-patch;</param>
+		</patch>
+		
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&j2sdk-motif-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&j2sdk-remove-debug-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&j2sdk-fixed-paths-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&j2sdk-static-cxx-patch;</param>
+		</patch>
+
+		<make base="&build_dir;/java-build/motif/lib/Xm" />
+
+		<make base="&build_dir;/java-build/control/make" />
+
+		<copy base="&build_dir;/java-build/control/build/linux-i586">
+			<option>archive</option>
+			<source>j2sdk-image</source>
+			<destination>/opt/j2sdk/j2sdk-&j2sdk-src-version;</destination>
+		</copy>
+	</stage>
 </package>

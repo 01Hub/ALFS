@@ -1,0 +1,144 @@
+<package name="openoffice" version="&openoffice-version;">
+
+        <!--<packageinfo>
+                <requires><name>xfree86</name></requires>
+        	<requires><name>j2sdk</name></requires>
+        	<requires><name>zip</name></requires>
+        	<requires><name>unzip</name></requires>
+        	<requires><name>tcsh</name></requires>
+        	<requires><name>which</name></requires>
+		<utilizes><name>linuxpam</name></utilizes>
+		<utilizes><name>libart-lgpl</name></utilizes>
+		<utilizes><name>startup-notification</name></utilizes>
+        	<utilizes><name>ant</name></utilizes>
+        </packageinfo>-->
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&openoffice-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&gpc-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<environment>
+				<variable name="JAVA_HOME">/opt/j2sdk/j2sdk</variable>
+				<variable name="PATH" mode="append">:/opt/j2sdk/j2sdk/bin</variable>
+				<variable name="LS_COLORS" />
+			</environment>
+			<base>&build_dir;/&openoffice-directory;</base>
+		</stageinfo>
+
+		<move>
+		        <option>force</option>
+		        <source>&build_dir;/&gpc-directory;/gpc.c</source>
+			<destination>&build_dir;/&openoffice-directory;/external/gpc</destination>
+		</move>
+
+		<move>
+		        <option>force</option>
+		        <source>&build_dir;/&gpc-directory;/gpc.h</source>
+			<destination>&build_dir;/&openoffice-directory;/external/gpc</destination>
+		</move>
+
+		<remove>../&gpc-directory;</remove>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&openoffice-test-bin-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&openoffice-no-pam-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&openoffice-jdk-patch;</param>
+		</patch>
+		
+		<search_replace base="&build_dir;/&openoffice-directory;/solenv/inc">
+		    <file>unxlngi4.mk</file>
+		    <find>-mcpu=pentiumpro</find>
+		    <replace></replace>
+		</search_replace>
+
+		<configure base="&build_dir;/&openoffice-directory;/config_office">
+			<param>--with-lang=ALL</param>
+			<param>--with-dict=ALL</param>
+			<param>--without-fonts</param>
+			<param>--enable-libsn</param>
+			<param>--with-system-zlib</param>
+		</configure>
+
+		<execute command="./bootstrap" />
+
+		<execute command="bash -c &quot;source LinuxIntelEnv.Set.sh; dmake&quot;" />
+
+		<!-- the following is so an instance of X does not need to be running for the installer to function -->
+		<textdump>
+			<file>&build_dir;/install-oo.sh</file>
+			<content>
+			=cd instsetoo/unxlngi4.pro/01/normal &amp;&amp;
+			=sed -i &quot;s:^oo_home=.*.:oo_home=openoffice:&quot; install &amp;&amp;
+			=# The following code was extracted from Tushar Teredesai's build
+			=# scripts for openoffice at 
+			=# http://www.linuxfromscratch.org/~tushar/openoffice
+			=
+			=DISPLAY_NUM=0
+			=while true
+			=do
+			=echo "Checking if Display Number $DISPLAY_NUM is available..."
+			=	# Check if there is a lock file
+			=	if [ ! -f /tmp/.X$DISPLAY_NUM-lock ]
+			=	then
+			=		sleep 10s
+			=		# Start a Xserver
+			=		Xvfb :$DISPLAY_NUM >&amp; /dev/null &amp;
+			=		sleep 10s
+			=		# Check if server started properly
+			=		if [ -f /tmp/.X$DISPLAY_NUM-lock ]
+			=		then
+			=			break
+			=		fi
+			=	fi
+			=	DISPLAY_NUM=$(($DISPLAY_NUM+1))
+			=done
+			=echo "Using Display Number $DISPLAY_NUM..."
+			=export DISPLAY=:$DISPLAY_NUM
+			=./install --prefix=/opt &amp;&amp;
+			=kill `cat /tmp/.X$DISPLAY_NUM-lock` >&amp; /dev/null
+			=unset DISPLAY
+			=for appl in swriter scalc sdraw simpress smath soffice
+			=do
+			=ln -sf /opt/openoffice/program/$appl /usr/bin/$appl
+			=done
+			</content>
+		</textdump>
+
+		<permissions mode="755">
+			<name>&build_dir;/install-oo.sh</name>
+		</permissions>
+
+		<execute command="&build_dir;/install-oo.sh" />
+
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&openoffice-directory;</remove>
+		<remove>&build_dir;/&gpc-directory;</remove>
+		<remove>&build_dir;/install-oo.sh</remove>
+	</stage>
+
+</package>

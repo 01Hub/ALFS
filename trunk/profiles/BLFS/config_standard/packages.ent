@@ -362,10 +362,24 @@
 <!ENTITY librep-package   "librep-&librep-version;.tar.gz">
 <!ENTITY librep-directory "librep-&librep-version;">
 
-<!ENTITY j2sdk-binary-version   "1.4.2_03">
+<!ENTITY j2sdk-binary-version   "1.4.2_04">
+<!ENTITY j2sdk-binary-norev-version "1.4.2">
+<!ENTITY j2sdk-binary-alt-version "1_4_2_04">
 <!ENTITY j2sdk-src-version "1.4.2">
-<!ENTITY j2sdk-package   "j2sdk-1_4_1_02-linux-i586.bin">
-<!ENTITY j2sdk-directory "j2sdk1.4.1_02">
+<!ENTITY j2sdk-src-alt-version "1_4_2">
+<!ENTITY j2sdk-binary-package   "j2sdk-&j2sdk-binary-alt-version;-linux-i586.bin">
+<!ENTITY j2sdk-binary-directory "j2sdk&j2sdk-binary-version;">
+<!-- http://wwws.sun.com/software/communitysource/j2se/java2/download.html -->
+<!ENTITY j2sdk-src-package "j2sdk-&j2sdk-src-alt-version;-src-scsl.zip">
+<!ENTITY j2sdk-src-bin-package "j2sdk-&j2sdk-src-alt-version;-bin-scsl.zip">
+<!ENTITY j2sdk-src-mozilla-headers-package "j2sdk-&j2sdk-src-alt-version;-mozilla_headers-unix.zip">
+
+<!ENTITY j2sdk-asm-patch "j2sdk-&j2sdk-src-version;-fix-inline-asm-1.patch">
+<!ENTITY j2sdk-gcc33-patch "j2sdk-&j2sdk-src-version;-gcc33-1.patch">
+<!ENTITY j2sdk-motif-patch "j2sdk-&j2sdk-src-version;-motif-mkmsgcat.patch">
+<!ENTITY j2sdk-remove-debug-patch "j2sdk-&j2sdk-src-version;-remove-debug-image.patch">
+<!ENTITY j2sdk-fixed-paths-patch "j2sdk-&j2sdk-src-version;-remove-fixed-paths-1.patch">
+<!ENTITY j2sdk-static-cxx-patch "j2sdk-&j2sdk-src-version;-static_cxx.patch">
 
 <!ENTITY ruby-version   "1.8.1">
 <!ENTITY ruby-package   "ruby-&ruby-version;.tar.gz">
@@ -1203,38 +1217,18 @@
 <!ENTITY koffice-package   "koffice-&koffice-version;.tar.bz2">
 <!ENTITY koffice-directory "koffice-&koffice-version;">
 
-<!ENTITY openoffice-version   "1.0.2">
-<!ENTITY openoffice-package   "OOo_1.0.2_source.tar.bz2">
-<!ENTITY openoffice-directory "oo_1.0.2_src">
+<!ENTITY openoffice-version   "1.1.1">
+<!ENTITY openoffice-package   "OOo_&openoffice-version;p1_source.tar.bz2">
+<!ENTITY openoffice-directory "oo_&openoffice-version;_src">
 
 <!ENTITY gpc-version   "231">
-<!ENTITY gpc-package   "gpc231.tar.Z">
-<!ENTITY gpc-directory "gpc231">
+<!ENTITY gpc-package   "gpc&gpc-version;.tar.Z">
+<!ENTITY gpc-directory "gpc&gpc-version;">
 
-<!ENTITY openoffice-01-patch   "openoffice-1.0.2-add-entry-for-kmail.patch">
-<!ENTITY openoffice-02-patch   "openoffice-1.0.2-linux-test-bin-location.patch">
-<!ENTITY openoffice-03-patch   "openoffice-1.0.2-add-pam-headers.patch">
-<!ENTITY openoffice-04-patch   "openoffice-1.0.2-main-retval.patch">
-<!ENTITY openoffice-05-patch   "openoffice-1.0.2-bison-fix.patch">
-<!ENTITY openoffice-06-patch   "openoffice-1.0.2-mdk-asm-fixes.patch">
-<!ENTITY openoffice-07-patch   "openoffice-1.0.2-cpputools-regcomp-makefile.patch">
-<!ENTITY openoffice-08-patch   "openoffice-1.0.2-new-mozilla-ab.patch">
-<!ENTITY openoffice-09-patch   "openoffice-1.0.2-debug-keepsetup.patch">
-<!ENTITY openoffice-10-patch   "openoffice-1.0.2-psprint-pdf-drivers.patch">
-<!ENTITY openoffice-11-patch   "openoffice-1.0.2-dmake-clean.patch">
-<!ENTITY openoffice-12-patch   "openoffice-1.0.2-sal-main-cmdline.patch">
-<!ENTITY openoffice-13-patch   "openoffice-1.0.2-dont-build-mozab.patch">
-<!ENTITY openoffice-14-patch   "openoffice-1.0.2-system-db-4.1.patch">
-<!ENTITY openoffice-15-patch   "openoffice-1.0.2-dont-catch-segv.patch">
-<!ENTITY openoffice-16-patch   "openoffice-1.0.2-system-freetype-2.1.patch">
-<!ENTITY openoffice-17-patch   "openoffice-1.0.2-dont-uglify-html.patch">
-<!ENTITY openoffice-18-patch   "openoffice-1.0.2-system-getopt.patch">
-<!ENTITY openoffice-19-patch   "openoffice-1.0.2-dont-unset-home.patch">
-<!ENTITY openoffice-20-patch   "openoffice-1.0.2-system-libXrender.patch">
-<!ENTITY openoffice-21-patch   "openoffice-1.0.2-honor-current-path.patch">
-<!ENTITY openoffice-22-patch   "openoffice-1.0.2-system-nas.patch">
-<!ENTITY openoffice-23-patch   "openoffice-1.0.2-jdk1.4-syntax-fix.patch">
-<!ENTITY openoffice-24-patch   "openoffice-1.0.2-user-fontpath.patch">
+<!ENTITY openoffice-test-bin-patch "openoffice-&openoffice-version;-test-bin-loc.patch">
+<!ENTITY openoffice-no-pam-patch "openoffice-&openoffice-version;-no-pam.patch">
+<!ENTITY openoffice-jdk-patch "openoffice-&openoffice-version;-jdk-1.4.2-fix.patch">
+
 
 <!--************* packages for chapter 40 *************-->
 
