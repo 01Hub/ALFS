@@ -1,6 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../ALFS-3.1.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+
+%general_entities;
+]>
+
+<alfs>
+
 <stage name="Configuring the localnet script">
 	<textdump>
 		<file>/etc/sysconfig/network</file>
 		<content>=HOSTNAME=&hostname;</content>
 	</textdump>
 </stage>
+
+</alfs>

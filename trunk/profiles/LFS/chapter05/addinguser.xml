@@ -1,3 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../ALFS-3.1.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+
+%general_entities;
+]>
+
+<alfs>
+
 <stage name="Adding lfs user">
 	<execute command="id -u &lfs-user; &amp;> /dev/null || useradd -s /bin/bash -m -k /dev/null &lfs-user;" />
 
@@ -8,3 +17,5 @@
 		<name>&LFS;&build_dir;</name>
 	</ownership>
 </stage>
+
+</alfs>
