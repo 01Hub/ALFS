@@ -10,7 +10,24 @@
     exit 1
 }
 
+# some 'macros' for processing filename lists
+SP2NL="tr '\040' '\012'"
+NL2SP="tr '\015\012' '\040\040'"
+
 [ -d gnubuild ] || mkdir gnubuild
+
+# build available handler lists
+# start with the list of all handlers present, then move known single-version
+# handlers into their own lists, so they can be skipped during the build
+# if the user chooses not to build that syntax version at all
+v2_0_only="build chroot owner prebuild postbuild su"
+v3_0_only="check stamp"
+v3_1_only="download"
+all_handlers=`ls src/handlers/*.c | sed 's~src/handlers/\(.*\)\.c~\1~'`
+v2_0_handlers=`echo ${all_handlers} ${v2_0_only} | ${SP2NL} | sort | uniq -d`
+v3_0_handlers=`echo ${all_handlers} ${v3_0_only} | ${SP2NL} | sort | uniq -d`
+v3_1_handlers=`echo ${all_handlers} ${v3_1_only} | ${SP2NL} | sort | uniq -d`
+multi_handlers=`echo ${all_handlers} ${v2_0_only} ${v3_0_only} ${v3_1_only} | ${SP2NL} | sort | uniq -u`
 
 cat > Makefile.am <<EOF
 EXTRA_DIST = CHANGES COPYING README CREDITS
@@ -51,9 +68,39 @@ for file in src/*.{c,h}; do
     echo src_nALFS_SOURCES += ${file} >> Makefile.am
 done
 
-for file in src/handlers/*.c; do
-cat >> Makefile.am <<EOF
-src_nALFS_LDFLAGS += -dlopen ${file%.c}.la
+if test "x${v2_0_handlers}" != "x"; then
+echo if HANDLERS_2_0 >> Makefile.am
+for file in ${v2_0_handlers}; do
+    cat >> Makefile.am <<EOF
+src_nALFS_LDFLAGS += -dlopen src/handlers/${file}.la
+EOF
+done
+echo endif >> Makefile.am
+fi
+
+if test "x${v3_0_handlers}" != "x"; then
+echo if HANDLERS_3_0 >> Makefile.am
+for file in ${v3_0_handlers}; do
+    cat >> Makefile.am <<EOF
+src_nALFS_LDFLAGS += -dlopen src/handlers/${file}.la
+EOF
+done
+echo endif >> Makefile.am
+fi
+
+if test "x${v3_1_handlers}" != "x"; then
+echo if HANDLERS_3_1 >> Makefile.am
+for file in ${v3_1_handlers}; do
+    cat >> Makefile.am <<EOF
+src_nALFS_LDFLAGS += -dlopen src/handlers/${file}.la
+EOF
+done
+echo endif >> Makefile.am
+fi
+
+for file in ${multi_handlers}; do
+    cat >> Makefile.am <<EOF
+src_nALFS_LDFLAGS += -dlopen src/handlers/${file}.la
 EOF
 done
 
@@ -77,13 +124,47 @@ cat >> Makefile.am <<EOF
 pkglib_LTLIBRARIES =
 EOF
 
-for file in src/handlers/*.c; do
-    am_file=${file%.c}
-    am_file=${am_file//\//_}
+if test "x${v2_0_handlers}" != "x"; then
+echo if HANDLERS_2_0 >> Makefile.am
+for file in ${v2_0_handlers}; do
     cat >> Makefile.am <<EOF
-pkglib_LTLIBRARIES += ${file%.c}.la
-${am_file}_la_SOURCES = ${file}
-${am_file}_la_LDFLAGS = -module -avoid-version
+pkglib_LTLIBRARIES += src/handlers/${file}.la
+src_handlers_${file}_la_SOURCES = src/handlers/${file}.c
+src_handlers_${file}_la_LDFLAGS = -module -avoid-version
+EOF
+done
+echo endif >> Makefile.am
+fi
+
+if test "x${v3_0_handlers}" != "x"; then
+echo if HANDLERS_3_0 >> Makefile.am
+for file in ${v3_0_handlers}; do
+    cat >> Makefile.am <<EOF
+pkglib_LTLIBRARIES += src/handlers/${file}.la
+src_handlers_${file}_la_SOURCES = src/handlers/${file}.c
+src_handlers_${file}_la_LDFLAGS = -module -avoid-version
+EOF
+done
+echo endif >> Makefile.am
+fi
+
+if test "x${v3_1_handlers}" != "x"; then
+echo if HANDLERS_3_1 >> Makefile.am
+for file in ${v3_1_handlers}; do
+    cat >> Makefile.am <<EOF
+pkglib_LTLIBRARIES += src/handlers/${file}.la
+src_handlers_${file}_la_SOURCES = src/handlers/${file}.c
+src_handlers_${file}_la_LDFLAGS = -module -avoid-version
+EOF
+done
+echo endif >> Makefile.am
+fi
+
+for file in ${multi_handlers}; do
+    cat >> Makefile.am <<EOF
+pkglib_LTLIBRARIES += src/handlers/${file}.la
+src_handlers_${file}_la_SOURCES = src/handlers/${file}.c
+src_handlers_${file}_la_LDFLAGS = -module -avoid-version
 EOF
 done
 
