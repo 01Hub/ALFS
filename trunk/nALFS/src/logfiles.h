@@ -1,6 +1,5 @@
 /*
- *  logfiles.h - Functions dealing with the format of XML log files
- *               of the packages.
+ *  logfiles.h - Functions dealing with packages' log files.
  *
  *  Copyright (C) 2003
  *
@@ -30,12 +29,16 @@
 #include <libxml/parser.h>
 
 
+/*
+ * Functions dealing with the format of XML log files.
+ * TODO: Hide libxml2 stuff completely, by using only logf_t pointer.
+ *       (Like the functions at the bottom do.)
+ */
+
 void logf_add_handler_action(xmlDocPtr xml_doc, const char *string);
 void logf_add_installed_files_one_find(xmlDocPtr xml_doc);
 void logf_add_installed_files_two_finds(
-	xmlDocPtr xml_doc,
-	const char *find_base,
-	const char *find_prunes);
+	xmlDocPtr xml_doc, const char *find_base, const char *find_prunes);
 void logf_add_stopped_time(xmlDocPtr xml_doc, const char *time_str);
 void logf_add_end_time(
 	xmlDocPtr xml_doc, const char *name, const char *time_str, int status);
@@ -47,6 +50,20 @@ xmlDocPtr logf_parse_logfile(const char *file);
 xmlDocPtr logf_new_logfile(void);
 int logf_has_installed_files(xmlNodePtr node);
 void logf_add_installed_files(xmlNodePtr node, const char *f);
+
+/*
+ * logf interface.
+ */
+
+#define LOG_FILE_SUFFIX ".log"
+
+typedef struct logf logf_t;
+
+logf_t *logf_init(const char *pdir);
+void logf_free(logf_t *logf);
+
+int logf_get_packages_cnt(logf_t *logf);
+char *logf_get_package_name(logf_t *logf, int i);
 
 
 #endif /* H_LOGFILES_ */

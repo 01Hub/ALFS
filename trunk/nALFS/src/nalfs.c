@@ -75,7 +75,6 @@ static const int min_pad_size_for_help = 64;
 static const int min_pad_size_for_options = 32;
 
 static const char state_file_name[] = "state_file";
-static const char log_file_suffix[] = ".log";
 static const char changed_files_suffix[] = ".files";
 
 
@@ -676,7 +675,7 @@ static INLINE void receive_log_file(void)
 	xmlFreeDoc(doc);
 	xfree(ptr);
 
-	filename = alloc_current_package_file(log_file_suffix);
+	filename = alloc_current_package_file(LOG_FILE_SUFFIX);
 
 	doc = merge_log_files(filename, new_node);
 
@@ -1118,6 +1117,74 @@ static INLINE void display_help_page(void)
 	tmp_window_driver(lines, &top);
 
 	windows.active = MAIN_WINDOW;
+}
+
+/*
+ * Installed packages.
+ */
+
+static INLINE int print_installed_packages(logf_t *logf)
+{
+	int i, lines_written;
+	int packages_cnt = logf_get_packages_cnt(logf);
+
+
+	Xwerase(windows.main->name);
+	Xwmove(windows.main->name, 0, 0);
+
+	for (i = 0; i < packages_cnt ; ++i) {
+		char *pname = logf_get_package_name(logf, i);
+
+		Xwprintw(windows.main->name, "Log file found: %s\n", pname);
+	}
+
+	Xwprintw(windows.main->name,
+		"\nFound %d packages' logs.", packages_cnt);
+
+	getyx(windows.main->name, lines_written, i);
+
+	return lines_written;
+}
+
+static INLINE void display_installed_packages(void)
+{
+	int input;
+	int lines, top = 0;
+	int min_pad_size;
+	char *pdir;
+	logf_t *logf;
+	
+
+	pdir = alloc_real_packages_directory_name();
+
+	Nprint("Reading log files from %s...", pdir);
+	logf = logf_init(pdir);
+
+	min_pad_size = logf_get_packages_cnt(logf);
+
+	if (min_pad_size > 0) {
+		windows.active = TMP_WINDOW;
+
+		/* Recreate main pad if it is too small. */
+		if (total_number_of_elements() < min_pad_size) {
+			recreate_main_window(min_pad_size);
+		}
+
+		lines = print_installed_packages(logf);
+
+		while ((input = tmp_window_driver(lines, &top)) != -1) {
+			Nprint("Acting on pressed %d.", input);
+		}
+
+		windows.active = MAIN_WINDOW;
+
+	} else {
+		Nprint("No packages' logs found in %s", pdir);
+	}
+
+	logf_free(logf);
+
+	xfree(pdir);
 }
 
 /*
@@ -4060,6 +4127,17 @@ static int browse(void)
 			resize_all_windows();
 			redisplay_all();
 
+			break;
+
+		case 'P': /* 'P'ackages. */
+
+			/* TODO: display_installed_packages(Current_element)
+			 *       So that we can immediately point the cursor
+			 *       to the package of selected profile.
+			 */
+			display_installed_packages();
+
+			rewrite_main();
 
 			break;
 
