@@ -1,6 +1,6 @@
 <!--************* packages for chapter 16 *************-->
 
-<!ENTITY curl-version   "7.13.0">
+<!ENTITY curl-version   "7.13.1">
 <!ENTITY curl-package   "curl-&curl-version;.tar.bz2">
 <!ENTITY curl-directory "curl-&curl-version;">
 

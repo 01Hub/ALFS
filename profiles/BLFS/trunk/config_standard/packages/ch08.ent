@@ -45,7 +45,7 @@
 <!ENTITY glib-directory "glib-&glib-version;">
 <!ENTITY glib-gcc34-patch "glib-&glib-version;-gcc34-1.patch">
 
-<!ENTITY glib2-version   "2.6.0">
+<!ENTITY glib2-version   "2.6.3">
 <!ENTITY glib2-package   "glib-&glib2-version;.tar.bz2">
 <!ENTITY glib2-directory "glib-&glib2-version;">
 
