@@ -5,12 +5,6 @@
 			<archive>&packages_dir;/&coreutils-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&coreutils-posixver-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
-
 	</stage>
 
 	<stage name="Installing a package.">
@@ -18,13 +12,8 @@
 			<base>&build_dir;/&coreutils-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&coreutils-posixver-patch;</param>
-		</patch>
-
 		<configure>
+			<prefix>DEFAULT_POSIX2_VERSION=199209</prefix>
 			<param>--prefix=/tools</param>
 		</configure>
 
@@ -44,6 +33,5 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&coreutils-directory;</remove>
-		<remove>&build_dir;/&coreutils-posixver-patch;</remove>
 	</stage>
 </package>

@@ -45,11 +45,5 @@
 			<source>include/linux</source>
 			<destination>/tools/include</destination>
 		</copy>
-
-		<execute command="touch /tools/include/linux/autoconf.h" />
-	</stage>
-
-	<stage name="Clean-up.">
-		<remove>&build_dir;/&linux-directory;</remove>
 	</stage>
 </package>
