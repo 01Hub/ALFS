@@ -83,6 +83,7 @@
 <!ENTITY c6-pwdgroup SYSTEM           "chapter06/pwdgroup.xml">
 <!ENTITY c6-sed SYSTEM                "chapter06/sed.xml">
 <!ENTITY c6-shadow SYSTEM             "chapter06/shadow.xml">
+<!ENTITY c6-strip SYSTEM	      "chapter06/strip.xml">
 <!ENTITY c6-sysklogd SYSTEM           "chapter06/sysklogd.xml">
 <!ENTITY c6-sysvinit SYSTEM           "chapter06/sysvinit.xml">
 <!ENTITY c6-tar SYSTEM                "chapter06/tar.xml">
