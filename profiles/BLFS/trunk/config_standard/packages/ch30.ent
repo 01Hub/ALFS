@@ -36,8 +36,8 @@
 <!ENTITY gnome-icon-theme-package   "gnome-icon-theme-&gnome-icon-theme-version;.tar.bz2">
 <!ENTITY gnome-icon-theme-directory "gnome-icon-theme-&gnome-icon-theme-version;">
 
-<!ENTITY gnome-keyring-version "0.4.0">
-<!ENTITY gnome-keyring-package "gnome-keyring-&gnome-keyring-version;.tar.bz2">
+<!ENTITY gnome-keyring-version   "0.4.0">
+<!ENTITY gnome-keyring-package   "gnome-keyring-&gnome-keyring-version;.tar.bz2">
 <!ENTITY gnome-keyring-directory "gnome-keyring-&gnome-keyring-version;">
 
 <!ENTITY libgnomeui-version   "2.8.0">
@@ -88,22 +88,23 @@
 <!ENTITY gail-package   "gail-&gail-version;.tar.bz2">
 <!ENTITY gail-directory "gail-&gail-version;">
 
-<!ENTITY gnome-applets-version   "2.8.1">
-<!ENTITY gnome-applets-package   "gnome-applets-&gnome-applets-version;.tar.bz2">
-<!ENTITY gnome-applets-directory "gnome-applets-&gnome-applets-version;">
+<!ENTITY gnome-applets-version         "2.8.1">
+<!ENTITY gnome-applets-package         "gnome-applets-&gnome-applets-version;.tar.bz2">
+<!ENTITY gnome-applets-directory       "gnome-applets-&gnome-applets-version;">
 <!ENTITY gnome-applets-gswitchit-patch "gnome-applets-&gnome-applets-version;-fix_gswitchit-1.patch">
 
 <!ENTITY eel-version   "2.8.2">
 <!ENTITY eel-package   "eel-&eel-version;.tar.bz2">
 <!ENTITY eel-directory "eel-&eel-version;">
 
-<!ENTITY nautilus-version   "2.8.2">
-<!ENTITY nautilus-package   "nautilus-&nautilus-version;.tar.bz2">
-<!ENTITY nautilus-directory "nautilus-&nautilus-version;">
+<!ENTITY nautilus-version           "2.8.2">
+<!ENTITY nautilus-package           "nautilus-&nautilus-version;.tar.bz2">
+<!ENTITY nautilus-directory         "nautilus-&nautilus-version;">
+<!ENTITY nautilus-libexif-fix-patch "nautilus-&nautilus-version;-libexif_fix-1.patch">
 
-<!ENTITY control-center-version   "2.8.1">
-<!ENTITY control-center-package   "control-center-&control-center-version;.tar.bz2">
-<!ENTITY control-center-directory "control-center-&control-center-version;">
+<!ENTITY control-center-version         "2.8.1">
+<!ENTITY control-center-package         "control-center-&control-center-version;.tar.bz2">
+<!ENTITY control-center-directory       "control-center-&control-center-version;">
 <!ENTITY control-center-gswitchit-patch "control-center-&control-center-version;-fix_gswitchit-1.patch">
 
 <!ENTITY gnome2-user-docs-version   "2.8.1">

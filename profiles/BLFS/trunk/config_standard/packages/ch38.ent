@@ -1,20 +1,20 @@
 <!--************* packages for chapter 38 *************-->
 
-<!ENTITY mpg123-version      "0.59r">
-<!ENTITY mpg123-package      "mpg123-&mpg123-version;.tar.gz">
-<!ENTITY mpg123-directory    "mpg123-&mpg123-version;">
+<!ENTITY mpg123-version   "0.59r">
+<!ENTITY mpg123-package   "mpg123-&mpg123-version;.tar.bz2">
+<!ENTITY mpg123-directory "mpg123-&mpg123-version;">
 
-<!ENTITY vorbis-tools-version      "1.0.1">
-<!ENTITY vorbis-tools-package      "vorbis-tools-&vorbis-tools-version;.tar.gz">
-<!ENTITY vorbis-tools-directory    "vorbis-tools-&vorbis-tools-version;">
+<!ENTITY vorbis-tools-version   "1.0.1">
+<!ENTITY vorbis-tools-package   "vorbis-tools-&vorbis-tools-version;.tar.bz2">
+<!ENTITY vorbis-tools-directory "vorbis-tools-&vorbis-tools-version;">
 
-<!ENTITY xmms-version      "1.2.10">
-<!ENTITY xmms-package      "xmms-&xmms-version;.tar.bz2">
-<!ENTITY xmms-directory    "xmms-&xmms-version;">
+<!ENTITY xmms-version   "1.2.10">
+<!ENTITY xmms-package   "xmms-&xmms-version;.tar.bz2">
+<!ENTITY xmms-directory "xmms-&xmms-version;">
 
-<!ENTITY lame-version      "3.96.1">
-<!ENTITY lame-package      "lame-&lame-version;.tar.gz">
-<!ENTITY lame-directory    "lame-&lame-version;">
+<!ENTITY lame-version   "3.96.1">
+<!ENTITY lame-package   "lame-&lame-version;.tar.bz2">
+<!ENTITY lame-directory "lame-&lame-version;">
 
 <!ENTITY cdparanoia-version        "III-alpha9.8">
 <!ENTITY cdparanoia-package        "cdparanoia-&cdparanoia-version;.src.tgz">

@@ -1,7 +1,9 @@
-ftp://ftp.kde.org/pub/kde/stable/3.3.2/src/arts-1.3.2.tar.bz2
-ftp://ftp.kde.org/pub/kde/stable/3.3.2/src/kdelibs-3.3.2.tar.bz2
-ftp://ftp.kde.org/pub/kde/security_patches/post-3.3.2-kdelibs-htmlframes2.patch
-ftp://ftp.kde.org/pub/kde/security_patches/post-3.3.2-kdelibs-kio.diff
-ftp://ftp.kde.org/pub/kde/security_patches/post-3.3.2-kdelibs-kioslave.patch
-ftp://ftp.kde.org/pub/kde/stable/3.3.2/src/kdebase-3.3.2.tar.bz2
-ftp://ftp.kde.org/pub/kde/security_patches/post-3.3.2-kdebase-htmlframes2.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/arts-1.3.2.tar.bz2
+
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/kdelibs-3.3.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/post-3.3.2-kdelibs-htmlframes2.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/post-3.3.2-kdelibs-kio.diff
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/post-3.3.2-kdelibs-kioslave.patch
+
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/kdebase-3.3.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/post-3.3.2-kdebase-htmlframes2.patch

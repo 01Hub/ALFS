@@ -23,7 +23,7 @@
 <!ENTITY alsa-oss-directory "alsa-oss-&alsa-oss-version;">
 
 <!ENTITY audiofile-version   "0.2.6">
-<!ENTITY audiofile-package   "audiofile-&audiofile-version;.tar.gz">
+<!ENTITY audiofile-package   "audiofile-&audiofile-version;.tar.bz2">
 <!ENTITY audiofile-directory "audiofile-&audiofile-version;">
 
 <!ENTITY esound-version   "0.2.35">
@@ -31,23 +31,23 @@
 <!ENTITY esound-directory "esound-&esound-version;">
 
 <!ENTITY sdl-version   "1.2.8">
-<!ENTITY sdl-package   "SDL-&sdl-version;.tar.gz">
+<!ENTITY sdl-package   "SDL-&sdl-version;.tar.bz2">
 <!ENTITY sdl-directory "SDL-&sdl-version;">
 
 <!ENTITY libao-version   "0.8.5">
-<!ENTITY libao-package   "libao-&libao-version;.tar.gz">
+<!ENTITY libao-package   "libao-&libao-version;.tar.bz2">
 <!ENTITY libao-directory "libao-&libao-version;">
 
 <!ENTITY libogg-version   "1.1.2">
-<!ENTITY libogg-package   "libogg-&libogg-version;.tar.gz">
+<!ENTITY libogg-package   "libogg-&libogg-version;.tar.bz2">
 <!ENTITY libogg-directory "libogg-&libogg-version;">
 
 <!ENTITY libvorbis-version   "1.1.0">
-<!ENTITY libvorbis-package   "libvorbis-&libvorbis-version;.tar.gz">
+<!ENTITY libvorbis-package   "libvorbis-&libvorbis-version;.tar.bz2">
 <!ENTITY libvorbis-directory "libvorbis-&libvorbis-version;">
 
 <!ENTITY nas-version   "1.6">
-<!ENTITY nas-package   "nas-&nas-version;.src.tar.gz">
+<!ENTITY nas-package   "nas-&nas-version;.src.tar.bz2">
 <!ENTITY nas-directory "nas-&nas-version;">
 
 <!ENTITY libmpeg3-version   "1.5.4">
@@ -56,7 +56,7 @@
 <!ENTITY libmpeg3-patch     "libmpeg3-&libmpeg3-version;-gcc43.patch">
 
 <!ENTITY libmad-version   "0.15.1b">
-<!ENTITY libmad-package   "libmad-&libmad-version;.tar.gz">
+<!ENTITY libmad-package   "libmad-&libmad-version;.tar.bz2">
 <!ENTITY libmad-directory "libmad-&libmad-version;">
 
 <!ENTITY openquicktime-version   "1.0">
@@ -65,20 +65,20 @@
 <!ENTITY openquicktime-patch     "openquicktime-&openquicktime-version;-gcc34-1.patch">
 
 <!ENTITY libfame-version   "0.9.1">
-<!ENTITY libfame-package   "libfame-&libfame-version;.tar.gz">
+<!ENTITY libfame-package   "libfame-&libfame-version;.tar.bz2">
 <!ENTITY libfame-directory "libfame-&libfame-version;">
 <!ENTITY libfame-patch     "libfame-&libfame-version;-gcc43-1.patch">
 
 <!ENTITY speex-version   "1.0.4">
-<!ENTITY speex-package   "speex-&speex-version;.tar.gz">
+<!ENTITY speex-package   "speex-&speex-version;.tar.bz2">
 <!ENTITY speex-directory "speex-&speex-version;">
 
 <!ENTITY id3lib-version   "3.8.3">
-<!ENTITY id3lib-package   "id3lib-&id3lib-version;.tar.gz">
+<!ENTITY id3lib-package   "id3lib-&id3lib-version;.tar.bz2">
 <!ENTITY id3lib-directory "id3lib-&id3lib-version;">
 
 <!ENTITY flac-version   "1.1.1">
-<!ENTITY flac-package   "flac-&flac-version;.tar.gz">
+<!ENTITY flac-package   "flac-&flac-version;.tar.bz2">
 <!ENTITY flac-directory "flac-&flac-version;">
 
 <!ENTITY libdvdcss-version   "1.2.8">
@@ -86,15 +86,15 @@
 <!ENTITY libdvdcss-directory "libdvdcss-&libdvdcss-version;">
 
 <!ENTITY libdvdread-version   "0.9.4">
-<!ENTITY libdvdread-package   "libdvdread-&libdvdread-version;.tar.gz">
+<!ENTITY libdvdread-package   "libdvdread-&libdvdread-version;.tar.bz2">
 <!ENTITY libdvdread-directory "libdvdread-&libdvdread-version;">
 
 <!ENTITY libdv-version   "0.103">
-<!ENTITY libdv-package   "libdv-&libdv-version;.tar.gz">
+<!ENTITY libdv-package   "libdv-&libdv-version;.tar.bz2">
 <!ENTITY libdv-directory "libdv-&libdv-version;">
 
 <!ENTITY liba52-version   "0.7.4">
-<!ENTITY liba52-package   "a52dec-&liba52-version;.tar.gz">
+<!ENTITY liba52-package   "a52dec-&liba52-version;.tar.bz2">
 <!ENTITY liba52-directory "a52dec-&liba52-version;">
 
 <!ENTITY xvid-version   "1.0.2">
@@ -102,11 +102,11 @@
 <!ENTITY xvid-directory "xvidcore-&xvid-version;">
 
 <!ENTITY xine-lib-version   "1.0">
-<!ENTITY xine-lib-package   "xine-lib-&xine-lib-version;.tar.gz">
+<!ENTITY xine-lib-package   "xine-lib-&xine-lib-version;.tar.bz2">
 <!ENTITY xine-lib-directory "xine-lib-&xine-lib-version;">
 
 <!ENTITY libmikmod-version   "3.1.11">
-<!ENTITY libmikmod-package   "libmikmod-&libmikmod-version;.tar.gz">
+<!ENTITY libmikmod-package   "libmikmod-&libmikmod-version;.tar.bz2">
 <!ENTITY libmikmod-directory "libmikmod-&libmikmod-version;">
 
 <!ENTITY gstreamer-version   "0.8.7">
@@ -116,4 +116,3 @@
 <!ENTITY gst-plugins-version   "0.8.5">
 <!ENTITY gst-plugins-package   "gst-plugins-&gst-plugins-version;.tar.bz2">
 <!ENTITY gst-plugins-directory "gst-plugins-&gst-plugins-version;">
-
