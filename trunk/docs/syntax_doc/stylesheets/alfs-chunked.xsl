@@ -12,6 +12,9 @@
 <!-- Define the encoding for tidy later -->
   <xsl:param name="chunker.output.encoding" select="'ISO-8859-1'"/>
 
+<!-- add the graphics in for note and important -->
+  <xsl:param name="admon.graphics" select="1"/>
+
 <!-- Generate a clean legal notice link -->
   <xsl:param name="generate.legalnotice.link" select="1"/>
   <xsl:template match="legalnotice" mode="titlepage.mode">
