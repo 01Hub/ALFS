@@ -2,6 +2,8 @@
 
 # Bootstrap script for nALFS, used to get a CVS checkout ready for use.
 
+set -e
+
 [ -r src/nalfs.c ] || {
     echo "***"
     echo "*** The bootstrap script must be run in the top directory"
@@ -10,12 +12,55 @@
     exit 1
 }
 
+# if requested, download the current ALFS/nALFS docs and prepare them
+# in the doc directory for distribution
+
+get_text_doc() {
+    wget -N -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}.txt
+    cp download/${1}-${DOC_VERSION}.txt doc/${2}.txt
+}
+
+get_html_nohunks_doc() {
+    wget -N -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}-NOHUNKS.html
+    cp download/${1}-${DOC_VERSION}-NOHUNKS.html doc/${2}.html
+}
+
+get_html_doc() {
+    wget -N -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}-html.tar.bz2
+    bzcat download/${1}-${DOC_VERSION}-html.tar.bz2 | tar --extract --directory=download
+    mkdir -p doc/${2}
+    cp -R download/${1}/* doc/${2}
+}
+
+get_dtd() {
+    wget -N -P download ${DTD_URL_BASE}/${1}-${DTD_VERSION}.dtd
+    cp download/${1}-${DTD_VERSION}.dtd doc/${1}.dtd
+}
+
+if test x$1 = x--get-docs; then
+    DOC_URL_BASE=http://www.linuxfromscratch.org/~jwrober
+    DOC_VERSION=CVS
+    DTD_URL_BASE=http://www.linuxfromscratch.org/alfs/downloads/cvs
+    DTD_VERSION=CVS
+    mkdir -p download
+    get_text_doc ALFS-SYNTAX-DOC syntax_doc
+    get_text_doc nALFS-USERS-GUIDE users_guide
+    get_text_doc nALFS-HACKERS-GUIDE hackers_guide
+    get_html_doc ALFS-SYNTAX-DOC syntax_doc
+    get_html_doc nALFS-USERS-GUIDE users_guide
+    get_html_doc nALFS-HACKERS-GUIDE hackers_guide
+    get_html_nohunks_doc ALFS-SYNTAX-DOC syntax_doc
+    get_html_nohunks_doc nALFS-USERS-GUIDE users_guide
+    get_html_nohunks_doc nALFS-HACKERS-GUIDE hackers_guide
+    get_dtd ALFS
+fi
+
 # some 'macros' for processing filename lists
 SP2NL="tr '\040' '\012'"
 NL2SP="tr '\015\012' '\040\040'"
 
 # create a directory for the GNU autotools to put their stuff into
-[ -d gnubuild ] || mkdir gnubuild
+mkdir -p gnubuild
 # create nALFS-config.in to quiet autoconf, which will overwrite it later
 touch nALFS-config.in
 
