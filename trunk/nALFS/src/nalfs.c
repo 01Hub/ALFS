@@ -2753,31 +2753,14 @@ static void build_description_aux(char **pcontent, element_s *node, int indent)
 #endif
 }
 
-static char *build_description(element_s *el)
-{
-	/* append_str(char **ptr, const char *str) */
-
-	char *content = NULL;
-	element_s *child;
-
-	for (child = el->children; child; child = child->next) {
-		build_description_aux(&content, child, 0);
-	}
-
-	return content;
-}
-
 enum print_info_amount {
 	PRINT_MORE_INFO,
 	PRINT_LESS_INFO
 };
 
-static int write_element_info(
-	element_s *el,
-	enum print_info_amount print_extra_info)
+static int write_element_info(element_s *el, enum print_info_amount print_extra_info)
 {
 	int lines, i;
-
 
 	Xwerase(windows.main->name);
 	Xwmove(windows.main->name, 0, 0);
@@ -2787,29 +2770,19 @@ static int write_element_info(
 		Xwaddch(windows.main->name, '\n');
 	}
 	
-	Xwprintw(windows.main->name, "Element name  : %s (syntax version %s)\n\n", el->handler->name, el->handler->syntax_version);
+	Xwprintw(windows.main->name, "Element name: %s (syntax version %s)\n\n",
+		 el->handler->name, el->handler->syntax_version);
 
-/* TODO: get content from handler */
-	/* Print attributes (if any).
-	if (el->attr) {
-		for (i = 0; el->attr[i]; i += 2) {
-			Xwprintw(windows.main->name, "%s = %s\n",
-				el->attr[i], el->attr[i+1]);
-		}
+	if (el->handler->data && HDATA_DISPLAY_DETAILS) {
+		char *details;
 
-	} else {
-		Xwaddstr(windows.main->name, "No attributes.\n");
-        }
-	*/
+		details = el->handler->alloc_data(el, HDATA_DISPLAY_DETAILS);
+		Xwaddstr(windows.main->name, details);
+		xfree(details);
+	}
 
-	Xwaddch(windows.main->name, '\n');
-
-	/*
-	 * Print content (if any).
-	 */
-
-/* TODO: get data from handler */
-/*	if (Is_parameter_name(el, "description")
+#if 0
+	if (Is_parameter_name(el, "description")
 	&& el->parent && Is_parameter_name(el->parent, "packageinfo")) {
 		char *s = build_description(el);
 
@@ -2818,29 +2791,17 @@ static int write_element_info(
 			Empty_string(s) ? el->content : s);
 
 		xfree(s);
-
-	} else if (el->content) {
-	if (el->content) {
-		Xwprintw(windows.main->name,
-			"Full content\n------------\n%s",
-			el->content);
-
-	} else {
-		Xwaddstr(windows.main->name, "No content.");
 	}
-*/
+#endif
 
 	getyx(windows.main->name, lines, i);
 
 	return lines;
 }
 
-static void display_element_info(
-	element_s *el,
-	enum print_info_amount print_extra_info)
+static void display_element_info(element_s *el, enum print_info_amount print_extra_info)
 {
 	int lines, top = 0;
-
 
 	windows.active = TMP_WINDOW;
 

@@ -609,6 +609,22 @@ static char *stageinfo_data(const element_s * const element,
 		if (data->base)
 			return xstrdup(data->base);
 		break;
+	case HDATA_DISPLAY_DETAILS:
+	{
+		char *display = NULL;
+
+		if (data->base)
+			append_str_format(&display, "Base directory: %s\n", data->base);
+		if (data->shell)
+			append_str_format(&display, "Shell to use for commands: %s\n",
+					  data->shell);
+		if (data->root)
+			append_str_format(&display, "Root directory: %s\n", data->root);
+		if (data->user)
+			append_str_format(&display, "User name: %s\n", data->user);
+
+		return display;
+	}
 	default:
 		break;
 	}
@@ -768,6 +784,51 @@ static int variable_main(const element_s * const element)
 	return 1;
 }
 
+static char *variable_data(const element_s * const element,
+			   const handler_data_e data_requested)
+{
+	struct variable_data *data = (struct variable_data *) element->handler_data;
+
+	switch (data_requested) {
+	case HDATA_DISPLAY_NAME:
+	{
+		char *display = NULL;
+
+		append_str_format(&display, "Variable: %s", data->name);
+
+		return display;
+	}
+	case HDATA_DISPLAY_DETAILS:
+	{
+		char *display = NULL;
+
+		append_str_format(&display, "Variable name: %s\n", data->name);
+		switch (data->mode) {
+		case VAR_SET:
+			if (data->value) {
+				append_str_format(&display, "New value: %s\n", data->value);
+			} else {
+				append_str(&display, "Variable will be cleared\n");
+			}
+			break;
+		case VAR_APPEND:
+			append_str_format(&display, "Prepend value: %s\n", data->value);
+			break;
+		case VAR_PREPEND:
+			append_str_format(&display, "Append value: %s\n", data->value);
+			break;
+		}
+
+		return display;
+	}
+	default:
+		break;
+	}
+
+	return NULL;
+}
+
+
 /*
  * Handlers' information.
  */
@@ -800,6 +861,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = stageinfo_parameters,
 		.parameter = stageinfo_parameter,
 		.valid_child = stageinfo_valid_child,
+		.data =  HDATA_DISPLAY_DETAILS,
 	},
 	{
 		.name = "environment",
@@ -821,6 +883,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attribute = variable_attribute,
 		.content = variable_content,
 		.valid_data = variable_valid_data,
+		.data = HDATA_DISPLAY_DETAILS | HDATA_DISPLAY_NAME,
+		.alloc_data = variable_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -878,6 +942,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = stageinfo_parameters,
 		.parameter = stageinfo_parameter,
 		.valid_child = stageinfo_valid_child,
+		.data =  HDATA_DISPLAY_DETAILS,
 	},
 	{
 		.name = "environment",
@@ -899,6 +964,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attribute = variable_attribute,
 		.content = variable_content,
 		.valid_data = variable_valid_data,
+		.data = HDATA_DISPLAY_DETAILS | HDATA_DISPLAY_NAME,
+		.alloc_data = variable_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -956,6 +1023,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = stageinfo_parameters_3_2,
 		.parameter = stageinfo_parameter,
 		.valid_child = stageinfo_valid_child,
+		.data =  HDATA_DISPLAY_DETAILS,
 	},
 	{
 		.name = "environment",
@@ -977,6 +1045,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attribute = variable_attribute,
 		.content = variable_content,
 		.valid_data = variable_valid_data,
+		.data = HDATA_DISPLAY_DETAILS | HDATA_DISPLAY_NAME,
+		.alloc_data = variable_data,
 	},
 #endif
 	{

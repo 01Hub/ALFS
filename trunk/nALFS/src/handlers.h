@@ -47,9 +47,6 @@ typedef enum handler_data_e {
 	HDATA_COMMAND = 1,
 	HDATA_VERSION = 4,
 	HDATA_NAME = 2,
-#if 0
-	HDATA_FILE = 8,
-#endif
 	HDATA_BASE = 16,
 	HDATA_SHELL = 32,
 	HDATA_SYNTAX_VERSION = 64,
