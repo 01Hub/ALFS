@@ -85,6 +85,8 @@ static int unpack_archive(const char *archive)
 		if (decompressor != NULL) {
 			command = xstrdup(decompressor);
 			append_str(&command, " | ");
+		} else {
+			command = xstrdup("cat %s | ");
 		}
 		append_str(&command, unpacker);
 		Nprint_h("Unpacking %s...", archive);
