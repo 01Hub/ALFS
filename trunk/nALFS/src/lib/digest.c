@@ -54,22 +54,19 @@
 
 void alloc_element_digest(const element_s *el, char **digest, char **type)
 {
-
 	if ((*digest = El_unpack_digest(el)) != NULL) {
 		element_s *el2 = first_param("digest", el);
 		char *s;
 
 		*type = attr_value("type", el2);
-		if (*type != NULL) {
+		if (! Empty_string(*type)) {
 			/* make a copy of the attribute value before
 			   modifying it */
 			*type = xstrdup(*type);
 			for (s = *type; *s; s++) {
 				*s = tolower(*s);
 			}
-		}
-	  
-		if ((*type == NULL) || (**type == 0)) {
+		} else {
 			*type = xstrdup("md5");
 		}
 	}
