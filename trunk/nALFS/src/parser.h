@@ -48,7 +48,6 @@ typedef enum el_type_e {
 	TYPE_ROOT,
 	TYPE_PROFILE,
 	TYPE_ELEMENT,
-	TYPE_PARAMETER,
 	TYPE_COMMENT,
 	TYPE_DOCTYPE,
 	TYPE_ENTITY,
@@ -86,18 +85,10 @@ void link_element(element_s *el, element_s *prev, element_s *parent,
 		  element_s *profile);
 element_s *parse_profile(const char *filename);
 
-char *attr_value(const char * const name, const element_s * const element);
-char *raw_param_value(const char * const name, const element_s * const element);
-char *alloc_trimmed_param_value(const char * const name,
-				const element_s * const element);
-element_s *next_param(const element_s * const param);
-element_s *first_param(const char * const name, const element_s * const element);
-
 element_s *get_profile_by_element(element_s *el);
 element_s *get_profile_by_name(element_s *root, const char *name);
 
 element_s *get_next_element(element_s *el);
 element_s *get_prev_element(element_s *el);
-
 
 #endif /* H_PARSER_ */

@@ -200,15 +200,18 @@ static int parse_node_parameters(xmlNodePtr node, element_s *element)
 	   elements with known handlers.
 	*/
 
-	for (child = node->children; child; child = child->next) {
-		if (!USED_NODE(child))
+	for (child = node->children; child; ) {
+		if (!USED_NODE(child)) {
+			child = child->next;
 			continue;
+		}
 
 		param = find_handler_parameter(handler,
 					       (const char *) child->name);
 
 		if (param) {
 			const char *content = NULL;
+			xmlNodePtr free_child;
 
 			if (child->children && child->children->content)
 				content = (const char *) child->children->content;
@@ -222,10 +225,19 @@ static int parse_node_parameters(xmlNodePtr node, element_s *element)
 			result = handler->parameter(element, param, content);
 			if (result)
 				return result;
+			/* remove the child node from the DOM tree and free it,
+			   it has been handled */
+			free_child = child;
+			child = child->next;
+			xmlUnlinkNode(free_child);
+			xmlFreeNode(free_child);
 		} else if (!find_handler(child->name, syntax_version)) {
 			Nprint_warn("<%s>: <%s> not supported here.", 
 				    handler->name,
 				    (const char *) child->name);
+			child = child->next;
+		} else {
+			child = child->next;
 		}
 	}
 
@@ -323,10 +335,6 @@ static INLINE element_s *create_element(xmlNodePtr node, element_s *parent)
 					el = NULL;
 					break;
 				}
-
-			} else if (parameter_exists(el->name)) {
-				el->type = TYPE_PARAMETER;
-
 			}
 
 			/* Add content, if any. */
