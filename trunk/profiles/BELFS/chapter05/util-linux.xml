@@ -1,5 +1,5 @@
 <package name="util-linux" version="&util-linux-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&util-linux-md5;</digest>
 			<archive>&packages_dir;/&util-linux-package;</archive>
@@ -12,7 +12,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&util-linux-directory;</base>
 		</stageinfo>
@@ -59,7 +59,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&util-linux-directory;</remove>
 		<remove>&build_dir;/&util-linux-kernel-headers-patch;</remove>
 	</stage>

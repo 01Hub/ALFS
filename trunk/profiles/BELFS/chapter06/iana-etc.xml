@@ -1,5 +1,5 @@
 <package name="iana-etc" version="&iana-etc-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&iana-etc-md5;</digest>
 			<archive>&packages_dir;/&iana-etc-package;</archive>
@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&iana-etc-directory;</base>
 		</stageinfo>
@@ -19,7 +19,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&iana-etc-directory;</remove>
 	</stage>
 </package>

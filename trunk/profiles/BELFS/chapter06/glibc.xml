@@ -1,5 +1,5 @@
 <package name="glibc" version="&glibc-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&glibc-md5;</digest>
 			<archive>&packages_dir;/&glibc-package;</archive>
@@ -12,7 +12,7 @@
 		</mkdir>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<environment>
 				<variable name="CFLAGS" />
@@ -119,7 +119,7 @@
 		</textdump>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&glibc-directory;</remove>
 		<remove>&build_dir;/glibc-build</remove>
 	</stage>

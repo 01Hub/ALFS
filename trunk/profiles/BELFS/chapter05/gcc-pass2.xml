@@ -1,5 +1,5 @@
 <package name="gcc-pass2" version="&gcc-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&gcc-core-md5;</digest>
 			<archive>&packages_dir;/&gcc-core-package;</archive>
@@ -30,7 +30,7 @@
 		</mkdir>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<environment>
 				<variable name="CFLAGS" />
@@ -82,7 +82,7 @@ suites for GCC and Binutils until you are able to resolve the issue.
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&gcc-directory;</remove>
 		<remove>&build_dir;/gcc-build</remove>
 		<remove>&build_dir;/&gcc-no-fixincludes-patch;</remove>

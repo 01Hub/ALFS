@@ -1,5 +1,5 @@
 <package name="gzip" version="&gzip-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&gzip-md5;</digest>
 			<archive>&packages_dir;/&gzip-package;</archive>
@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&gzip-directory;</base>
 		</stageinfo>
@@ -55,7 +55,7 @@
 		</link>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&gzip-directory;</remove>
 	</stage>
 </package>

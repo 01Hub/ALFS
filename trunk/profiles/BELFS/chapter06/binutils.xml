@@ -1,5 +1,5 @@
 <package name="binutils" version="&binutils-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&binutils-md5;</digest>
 			<archive>&packages_dir;/&binutils-package;</archive>
@@ -12,7 +12,7 @@
 		</mkdir>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<environment>
 				<variable name="CFLAGS" />
@@ -52,7 +52,7 @@ suites for Binutils and GCC until you are able to resolve the issue.
 		</copy>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&binutils-directory;</remove>
 		<remove>&build_dir;/binutils-build</remove>
 	</stage>
