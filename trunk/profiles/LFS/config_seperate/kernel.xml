@@ -37,6 +37,7 @@
 			<param>-p1</param>
 			<param>-i &packages_dir;/&linux-src-fpu-patch;</param>
 		</patch>
+
 		<copy>
 			<source>&packages_dir;/&kernel-config;</source>
 			<destination>.config</destination>
