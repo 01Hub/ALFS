@@ -38,6 +38,7 @@
 -->
 
 		<make>
+			<param>SCRIPTS=&quot;&quot;</param>
 			<param>install</param>
 		</make>
 	</stage>
