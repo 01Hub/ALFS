@@ -145,7 +145,6 @@
 		<xi:include href="chapter06/grep.xml" />
 		<xi:include href="chapter06/grub.xml" />
 		<xi:include href="chapter06/gzip.xml" />
-		<xi:include href="chapter06/hotplug.xml" />
 		<xi:include href="chapter06/man.xml" />
 		<xi:include href="chapter06/make.xml" />
 		<xi:include href="chapter06/module-tools.xml" />

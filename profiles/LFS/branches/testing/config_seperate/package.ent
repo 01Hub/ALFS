@@ -141,20 +141,6 @@
 <!ENTITY gzip-package "gzip-&gzip-version;.tar.bz2">
 <!ENTITY gzip-directory "gzip-&gzip-version;">
 
-<!ENTITY hotplug-md5 "527f0242481024c77255f3c1fa09e6ee">
-<!ENTITY hotplug-version "2004_04_01">
-<!ENTITY hotplug-package "hotplug-&hotplug-version;.tar.bz2">
-<!ENTITY hotplug-directory "hotplug-&hotplug-version;">
-
-<!ENTITY hotplug-bogus-deps-patch-md5 "7fda669c1dc9f0bebfcdece932fa37e3">
-<!ENTITY hotplug-bogus-deps-patch "hotplug-&hotplug-version;-bogus_deps-1.patch">
-
-<!ENTITY hotplug-device-patch-md5 "a1d22e7f5de1baf26817a9b26ed64ae7">
-<!ENTITY hotplug-device-patch "hotplug-&hotplug-version;-device-2.patch">
-
-<!ENTITY hotplug-isapnp-patch-md5 "66a8923888b6241a505c8edeedab54d8">
-<!ENTITY hotplug-isapnp-patch "hotplug-&hotplug-version;-isapnp-2.patch">
-
 <!ENTITY iana-etc-md5 "5fe38814596587ef3e18b74d045370fe">
 <!ENTITY iana-etc-version "1.00">
 <!ENTITY iana-etc-package "iana-etc-&iana-etc-version;.tar.bz2">
