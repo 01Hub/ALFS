@@ -1,0 +1,48 @@
+==============================================
+        LFS-5.1.1 PROFILE
+==============================================
+
+This profile must be used with nALFS 1.1.8 or later.
+
+To allow an easier customization of the configuration files,
+there is now a configuration directory for the different
+configurations the profile could be used to generate.
+
+To use the profile you should :-
+
+1) If you downloaded the LFS packages seperately you should copy 
+   the config_seperate directory to a directory named config :-
+
+  	cp -r config_seperate config
+	
+or
+
+   If you downloaded the lfs-package tarball you should copy the
+   config_tarball directory to a directory named config :-
+
+   	cp -r config_tarball config
+  
+2) Customize the files in the new configuration directory
+   - the file general.ent contains a bunch of entity declarations
+     (Note: this file contains an entity called TERM that should be
+            set to the same value as the TERM environment variable on
+            your build system. It defaults to "linux", the most common
+            value for a GNU/Linux system.)
+   - the file fstab.xml contains the commands to generate the fstab file
+   - the file kernel.xml contains the commands for building the kernel
+   - the file grub.xml contains the commands for configuring the grub 
+     bootloader although the steps to do this are commented out by 
+     default
+   - the files keymap-ch6.xml and keymap-ch8.xml are used to set up
+     the default keymap
+
+3) This profile contains two additional packages that are installed
+   during chapter 9, libxml2 and nALFS. This is done under the
+   assumption that you will want to use nALFS once you have booted
+   your new LFS system to continue building other packages (via BLFS
+   or other profiles).
+
+4) Execute sh ./runit as root. Please note that if you have installed 
+   nALFS into a location other than /usr/local/bin you will need to edit
+   runit to point to your copy of nALFS.
+
