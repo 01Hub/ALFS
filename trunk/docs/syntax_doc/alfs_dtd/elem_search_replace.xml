@@ -11,7 +11,7 @@
           base           CDATA #IMPLIED&gt;
 </synopsis>
 
-<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
 <xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_stage"/>
 </para>
