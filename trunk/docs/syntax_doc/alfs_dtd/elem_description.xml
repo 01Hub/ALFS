@@ -1,21 +1,23 @@
-<sect1 id="elem_description" xreflabel="Element: &lt;description&gt;">
+<sect1 id="elem_description" xreflabel="Element&nbsp;: &lt;description&gt;">
 <?dbhtml filename="elem_description.html" dir="alfs_dtd"?>
-<title>Element: &lt;description&gt;</title>
+<title>Element&nbsp;: &lt;description&gt;</title>
 
 <sect2>
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT description        (para|list)*>
+&lt;!ELEMENT description     (para | list)*&gt;
 </synopsis>
 
-<para>This element occurs in the element
-<link linkend="elem_packageinfo">packageinfo</link>.
+<para>This element occurs in the&nbsp;
+
+<xref linkend="elem_packageinfo"/>
 </para>
 
-<para>See also :
-<link linkend="elem_para">para</link>,
-<link linkend="elem_list">list</link>.
+<para>See also&nbsp;:&nbsp;&nbsp;
+
+<xreflinkend="elem_para"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_list"/>
 </para>
 
 </sect2>
@@ -23,37 +25,43 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>description</token> contains the description of a
+<para>The element <filename>description</filename> contains the description of a
 package. Its use is for documentation only.</para>
+
+<para>Notice that all the elements <filename>para</filename> and
+<filename>list</filename> are surrounded by parathensis [&nbsp;(&nbsp;)&nbsp;]
+and followed by an asterisk [&nbsp;*&nbsp;]. The asterisk signifies that each
+element can be used optionally inside the <filename>description</filename>
+declaration in a profile and that, if used, they can be used more than
+once.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;package name="gimp" version="1.2.3">
-	&lt;packageinfo>
-		&lt;description>
-			&lt;para>The gimp package contains the GNU Image Manipulation Program. This is
-			useful for photo retouching, image composition and image authoring.&lt;/para>
-		&lt;/description>
+<screen><userinput>&lt;package name="gimp" version="1.2.3"&gt;
+	&lt;packageinfo&gt;
+		&lt;description&gt;
+			&lt;para&gt;The gimp package contains the GNU Image Manipulation Program. This is
+			useful for photo retouching, image composition and image authoring.
+			&lt;/para&gt;
+		&lt;/description&gt;
 
-		&lt;requires>&lt;name>gtk+&lt;/name>&lt;/requires>
+		&lt;requires&gt;&lt;name&gt;gtk+&lt;/name&gt;&lt;/requires&gt;
 
-		&lt;utilizes>&lt;name>libtiff&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>libpng&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>libjpeg&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>aalib&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>mpeg_lib&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>python&lt;/name>&lt;/utilizes>
+			&lt;utilizes&gt;&lt;name&gt;libtiff&lt;/name&gt;&lt;/utilizes&gt;
+			&lt;utilizes&gt;&lt;name&gt;libpng&lt;/name&gt;&lt;/utilizes&gt;
+			&lt;utilizes&gt;&lt;name&gt;libjpeg&lt;/name&gt;&lt;/utilizes&gt;
+			&lt;utilizes&gt;&lt;name&gt;aalib&lt;/name&gt;&lt;/utilizes&gt;
+			&lt;utilizes&gt;&lt;name&gt;mpeg_lib&lt;/name&gt;&lt;/utilizes&gt;
+			&lt;utilizes&gt;&lt;name&gt;python&lt;/name&gt;&lt;/utilizes&gt;
 
-	&lt;/required>
+		&lt;/required&gt;
 
 	....
 
-&lt;/package>
-</programlisting>
+&lt;/package&gt;</userinput></screen>
 
 </sect2>
 
