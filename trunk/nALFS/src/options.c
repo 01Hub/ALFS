@@ -226,13 +226,14 @@ static int validate_command(const struct option_s *option, const STRING value)
 	return 1;
 }
 
-static int convert_to_boolean(const char *input, BOOL *val)
+static int validate_boolean_input(const struct option_s *option,
+				  const char *input, BOOL *val)
 {
 	char *p;
+	char *tmp;
 	int status = 1;
-	char *tmp = xstrdup(input);
 
-	p = tmp;
+	p = tmp = xstrdup(input);
 	while (*p) {
 		*p = tolower(*p);
 		++p;
@@ -250,26 +251,15 @@ static int convert_to_boolean(const char *input, BOOL *val)
 		*val = 0;
 	else if (!strcmp(tmp, "false"))
 		*val = 0;
-	else
-		status = 0;
-
-	xfree(tmp);
-	return status;
-}
-
-static int validate_boolean_input(const struct option_s *option,
-				  const char *input)
-{
-	BOOL val;
-
-	if (!convert_to_boolean(input, &val)) {
+	else {
 		fprintf(stderr, "Option \"%s\" does not contain a valid"
 			" boolean value,\nchoices are yes/y/true and"
 			" no/n/false.\n", option->name);
-		return 0;
+		status = 0;
 	}
-	else
-		return 1;
+
+	xfree(tmp);
+	return status;
 }
 
 set_opt_e set_yet_unknown_option(const char *opt, const char *val)
@@ -286,11 +276,9 @@ set_opt_e set_yet_unknown_option(const char *opt, const char *val)
 
 		switch (options[i]->type) {
 		case O_BOOL:
-			if (validate_boolean_input(options[i], val)) {
-				convert_to_boolean(val,
-						   &options[i]->val.bool.value);
+			if (validate_boolean_input(options[i], val,
+						   &options[i]->val.bool.value))
 				return OPTION_SET;
-			}
 			
 			return OPTION_INVALID_VALUE;
 			
