@@ -129,7 +129,7 @@ static int if_main_3_2(element_s *element)
 			Nprint_h_err("<%s> element not allowed inside <if>.", child->name);
 			return -1;
 		}
-		if ((child->handler->info->type & HTYPE_TEST) != 0) {
+		if ((child->handler->type & HTYPE_TEST) != 0) {
 			i = do_execute_test_element(child, &test_result);
 			if (i != 0)
 				return i;
@@ -150,7 +150,7 @@ static int and_test_3_2(element_s *element, int *result)
 	*result = 1;
 	for (child = element->children; *result && child; child = child->next) {
 		if (child->handler &&
-		    ((child->handler->info->type & HTYPE_TEST) != 0)) {
+		    ((child->handler->type & HTYPE_TEST) != 0)) {
 			i = do_execute_test_element(child, result);
 			if (i != 0)
 				return i;
@@ -171,7 +171,7 @@ static int or_test_3_2(element_s *element, int *result)
 	*result = 0;
 	for (child = element->children; !*result && child; child = child->next) {
 		if (child->handler &&
-		    ((child->handler->info->type & HTYPE_TEST) != 0)) {
+		    ((child->handler->type & HTYPE_TEST) != 0)) {
 			i = do_execute_test_element(child, result);
 			if (i != 0)
 				return i;
@@ -196,7 +196,7 @@ static int not_test_3_2(element_s *element, int *result)
 	}
 
 	if (child->handler &&
-	    ((child->handler->info->type & HTYPE_TEST) != 0)) {
+	    ((child->handler->type & HTYPE_TEST) != 0)) {
 		i = do_execute_test_element(child, result);
 		if (i != 0)
 			return i;

@@ -270,12 +270,12 @@ int load_all_handlers(void)
 
 char *alloc_package_name(element_s *el)
 {
-	return el->handler->info->alloc_data(el, HDATA_NAME);
+	return el->handler->alloc_data(el, HDATA_NAME);
 }
 
 char *alloc_package_version(element_s *el)
 {
-	return el->handler->info->alloc_data(el, HDATA_VERSION);
+	return el->handler->alloc_data(el, HDATA_VERSION);
 }
 
 char *alloc_package_string(element_s *el)
@@ -315,12 +315,12 @@ int package_has_name_and_version(element_s *el)
 
 char *alloc_textdump_file(element_s *el)
 {
-	return el->handler->info->alloc_data(el, HDATA_FILE);
+	return el->handler->alloc_data(el, HDATA_FILE);
 }
 
 char *alloc_execute_command(element_s *el)
 {
-	return el->handler->info->alloc_data(el, HDATA_COMMAND);
+	return el->handler->alloc_data(el, HDATA_COMMAND);
 }
 
 /* Used by old syntax (2.0). */
@@ -361,7 +361,7 @@ char *alloc_base_dir_new(element_s *el)
 	for (s = el->parent; s; s = s->parent) {
 		if (!s->handler) continue;
 
-		if (s->handler->info->type & HTYPE_STAGE) {
+		if (s->handler->type & HTYPE_STAGE) {
 			element_s *sinfo;
 
 			if ((sinfo = first_param("stageinfo", s)) == NULL) {
@@ -390,7 +390,7 @@ char *alloc_base_dir_force(element_s *el)
 	for (s = el->parent; s; s = s->parent) {
 		if (!s->handler) continue;
 
-		if (s->handler->info->type & HTYPE_STAGE) {
+		if (s->handler->type & HTYPE_STAGE) {
 			element_s *sinfo;
 
 			if ((sinfo = first_param("stageinfo", s)) == NULL) {
@@ -414,7 +414,7 @@ char *alloc_stage_shell(element_s *el)
 	for (s = el->parent; s; s = s->parent) {
 		if (!s->handler) continue;
 
-		if (s->handler->info->type & HTYPE_STAGE) {
+		if (s->handler->type & HTYPE_STAGE) {
 			element_s *sinfo;
 
 			if ((sinfo = first_param("stageinfo", s)) == NULL) {

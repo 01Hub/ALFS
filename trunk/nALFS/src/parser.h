@@ -65,7 +65,7 @@ typedef struct element_s {
 	int should_run;
 	int hide_children;
 
-	struct handler_s *handler;
+	struct handler_info_s *handler;
 
 	char *name;
 	char **attr;
