@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+
+<alfs>
+
+<package name="groff" version="&groff-version;">
+	<stage name="Unpacking">
+		<unpack>
+			<digest>&groff-md5;</digest>
+			<archive>&packages_dir;/&groff-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&groff-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<prefix>PAGE=&paper_size;</prefix>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<link>
+			<option>force</option>
+			<target>soelim</target>
+			<name>/usr/bin/zsoelim</name>
+		</link>
+
+		<link>
+			<option>force</option>
+			<target>eqn</target>
+			<name>/usr/bin/geqn</name>
+		</link>
+
+		<link>
+			<option>force</option>
+			<target>tbl</target>
+			<name>/usr/bin/gtbl</name>
+		</link>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&groff-directory;</remove>
+	</stage>
+</package>
+
+</alfs>
