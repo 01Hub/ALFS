@@ -1,4 +1,4 @@
-<sect1 id="ch0-contactinfo" xreflabel="Contact Information">
+<sect2 id="ch0-contactinfo" xreflabel="Contact Information">
 <?dbhtml filename="contactinfo.html" dir="chapter00"?>
 <title>Contact Information</title>
 
@@ -7,4 +7,4 @@
 alfs-discuss@linuxfromscratch.org</ulink>. This is an excellent place to post 
 questions and bug reports.</para>
 
-</sect1>
+</sect2>
