@@ -10,11 +10,13 @@
 
 <sect1>
 
-<para>Welcome to the &book-product; Hackers Guide.  This small book is designed to aid any
-person wishing to contribute to &book-product;. If you are not sure where to begin, take a
-look at the <xref linkend="intro-welcome-contactinfo"/> page.  This is the best place to see
-who is actively involved with the project and provides places to ask questions. If you know
-what you are after, then take a look at the section you are most interested in.</para>
+<para>Welcome to the &book-product; Hackers Guide.  This small book is
+designed to aid any person wishing to contribute to &book-product;. If
+you are not sure where to begin, take a look at the <xref
+linkend="intro-welcome-contactinfo"/> page.  This is the best place to
+see who is actively involved with the project and provides places to ask
+questions. If you know what you are after, then take a look at the
+section you are most interested in.</para>
 
 </sect1>
 

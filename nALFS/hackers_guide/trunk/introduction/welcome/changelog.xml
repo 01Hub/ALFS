@@ -12,6 +12,10 @@
 
 <itemizedlist>
 
+<listitem><para>October 12th, 2004 [jwrober]: Updated multiple pages to
+replect the change to SVN.  Also updated the distro_tarballs page to
+provide clearer instructions.</para></listitem>
+
 <listitem><para>June 20th, 2004 [jwrober]: Modified version number standard
 to follow the &book-product;'s version number with a &quot;side&quot;
 version number.</para></listitem>
