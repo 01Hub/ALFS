@@ -1,5 +1,13 @@
 <package name="mysql" version="&mysql-version;">
 
+        <packageinfo>
+	        <utilizes><name>readline</name></utilizes>
+	        <utilizes><name>openssl</name></utilizes>
+	        <utilizes><name>dbi</name></utilizes>
+	        <utilizes><name>dbd-mysql</name></utilizes>
+	        <utilizes><name>data-dumper</name></utilizes>
+	</packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&mysql-package;</archive>
