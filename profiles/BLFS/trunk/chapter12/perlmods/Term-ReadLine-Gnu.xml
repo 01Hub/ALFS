@@ -11,16 +11,16 @@
 
 ]>
 <alfs>
-<package name="Term-Readline-Gnu" version="&Term-Readline-Gnu-version;">
+<package name="Term-ReadLine-Gnu" version="&Term-ReadLine-Gnu-version;">
   <stage name="Unpacking.">
     <unpack>
-      <archive>&packages_dir;/&Term-Readline-Gnu-package;</archive>
+      <archive>&packages_dir;/&Term-ReadLine-Gnu-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>
   </stage>
   <stage name="Installing.">
     <stageinfo>
-      <base>&build_dir;/&Term-Readline-Gnu-directory;</base>
+      <base>&build_dir;/&Term-ReadLine-Gnu-directory;</base>
     </stageinfo>
     <execute command="perl Makefile.PL" />
     <make />
@@ -32,7 +32,7 @@
     </make>
   </stage>
   <stage name="Cleanup.">
-    <remove>&build_dir;/&Term-Readline-Gnu-directory;</remove>
+    <remove>&build_dir;/&Term-ReadLine-Gnu-directory;</remove>
   </stage>
 </package>
 </alfs>
