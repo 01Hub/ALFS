@@ -1,5 +1,5 @@
 <package name="modutils" version="&modutils-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&modutils-md5;</digest>
 			<archive>&packages_dir;/&modutils-package;</archive>
@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&modutils-directory;</base>
 		</stageinfo>
@@ -21,7 +21,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&modutils-directory;</remove>
 	</stage>
 </package>

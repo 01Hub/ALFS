@@ -1,5 +1,5 @@
 <package name="net-tools" version="&net-tools-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&net-tools-md5;</digest>
 			<archive>&packages_dir;/&net-tools-package;</archive>
@@ -12,7 +12,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&net-tools-directory;</base>
 		</stageinfo>
@@ -36,7 +36,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&net-tools-directory;</remove>
 		<remove>&build_dir;/&net-tools-miitool-gcc33;</remove>
 	</stage>
