@@ -738,15 +738,6 @@ static int variable_valid_data(const element_s * const element)
 	return 1;
 }
 
-static int variable_valid_child(const element_s * const element,
-				const element_s * const child)
-{
-	(void) element;
-	(void) child;
-
-	return 0;
-}
-
 static int variable_main(const element_s * const element)
 {
 	struct variable_data *data = (struct variable_data *) element->handler_data;
@@ -820,7 +811,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attribute = variable_attribute,
 		.content = variable_content,
 		.valid_data = variable_valid_data,
-		.valid_child = variable_valid_child,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -899,7 +889,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attribute = variable_attribute,
 		.content = variable_content,
 		.valid_data = variable_valid_data,
-		.valid_child = variable_valid_child,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -978,7 +967,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attribute = variable_attribute,
 		.content = variable_content,
 		.valid_data = variable_valid_data,
-		.valid_child = variable_valid_child,
 	},
 #endif
 	{
