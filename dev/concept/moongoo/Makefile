@@ -1,10 +1,10 @@
 CFLAGS=-I. -Ilibalfs
 
 BIN=moongoo
-OBJS=moongoo.o build.o plugin.o
+OBJS=build.o moongoo.o plugin.o url.o
 
 ifeq ($(OPTS),)
-OPTS=
+OPTS=-q
 OPTS+=~/projects/alfs/book/index.xml
 #OPTS+=~/projects/alfs/lfs-profile/LFS.xml
 #OPTS+=~/projects/alfs/ass/index.xml
@@ -25,4 +25,6 @@ run: $(BIN)
 	./$(BIN) $(OPTS)
 
 build.o: build.h
+moongoo.o: moongoo.h
 plugin.o: plugin.h
+url.o: url.h

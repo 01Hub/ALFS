@@ -333,11 +333,12 @@ package *search_pkg (profile *prof, char *name, char *ch)
 
 	for (i=0;i<prof->n;i++)
 	{
-		if (strcmp(ch, prof->ch[i].ref))
+		if ((ch) && (strcmp(lower_case(ch), lower_case(prof->ch[i].ref))))
 			continue;
 		
 		for (j=0;j<prof->ch[i].n;j++)
-			if (!strcmp(name, prof->ch[i].pkg[j].name))
+			if (!strcmp(lower_case(name), 
+				lower_case(prof->ch[i].pkg[j].name)))
 				return &prof->ch[i].pkg[j];
 	}
 
@@ -372,4 +373,24 @@ char *proto2str (protocol proto)
 		default:
 			return "unknown";
 	}
+}
+
+xmlNodePtr find_node_match (xmlNodePtr node, xml_match_t func, void *data)
+{
+	if (!func)
+		return NULL;
+
+	while (node)
+	{
+		xmlNodePtr tmp = NULL;;
+		
+		if (func(node, data))
+			return node;
+		tmp=find_node_match(node->children, func, data);
+		if (tmp)
+			return tmp;
+		node=node->next;
+	}
+	
+	return NULL;
 }

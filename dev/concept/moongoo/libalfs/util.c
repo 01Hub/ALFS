@@ -1,8 +1,9 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
+#include <gen.h>
 #include <util.h>
 
 char *lower_case (char *arg)
@@ -323,6 +324,25 @@ char *strnstr (char *haystack, char *needle, int n)
 	return ret;
 }	
 
+char *strnrchr (char *haystack, char needle, int n)
+{
+	int i;
+	char *moo = haystack;
+
+	if (!haystack)
+		return NULL;
+
+	for (i=0;i<n-1;i++)
+	{
+		char *tmp = strrchr(moo, needle);
+		if (!tmp)
+			return NULL;
+		moo = strcut(moo, 0, strlen(moo)-strlen(tmp));
+	}
+
+	return strrchr(moo, needle);
+}
+
 void term_set (int attr, int fg, int bg)
 {
 	char cmd[13];
@@ -375,9 +395,6 @@ char *cut_trail (char *str, char *delim)
 	
 char *extonly (char *url)
 {
-#define NUM_COMPR	2
-	
-	const char *compr[NUM_COMPR] = { ".bz2", ".gz" };
 	char *foo=strrchr(url, '.');
 	int i;
 

@@ -2,25 +2,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #include <build.h>
 #include <libalfs.h>
+#include <moongoo.h>
 #include <plugin.h>
-
-#define DEF_SYN		"book"
-#define MOO_XML		"/.nALFS/answers.xml"
-#define PLUG_DIR	"syntax"
-#define	VERSION		"0.0.2"
-
-/* Some default settings, those should be configurable in the final tool */
-role default_filter[4] = { NOEXECUTE, INTERACTIVE, TESTSUITE, 0 };
-char *paralell_filter[4] = { "configure-host", "clean", "mrproper", NULL };
-char *popt_pkg[2] = { "Glibc-20041115", NULL };
-char *popt_cmd[2] = { "PARALLELMFLAGS=-j", NULL };
+#include <url.h>
 
 int main (int argc, char **argv)
 {
-	char c, *syn = DEF_SYN, *moo_xml = MOO_XML, *plug_dir = PLUG_DIR;
+	char c, *syn = DEF_SYN, *moo_xml = MOO_XML, *plug_dir = PLUG_DIR, *f;
 	bool quiet = false, build = false;
 	int i = 0;
 	xmlDocPtr doc;
@@ -93,19 +85,23 @@ int main (int argc, char **argv)
 	}
 
 	xmlSubstituteEntitiesDefault(1);
-	doc=xmlParseFile(argv[argc-1]);
+	doc = xmlParseFile(argv[argc-1]);
 	if (!doc)
 		return 2;
 	xmlXIncludeProcessFlags(doc, XML_PARSE_NOENT);
-	cur=xmlDocGetRootElement(doc);
+	cur = xmlDocGetRootElement(doc);
 
-	r = init_repl(strdog(getenv("HOME"), MOO_XML));
-	if (!r)
+	f = strdog(getenv("HOME"), MOO_XML);
+	if (access(f, R_OK))
 	{
-		r = init_repl("moo.xml");
-		if (!r)
+		if (access("moo.xml", R_OK))
 			fprintf(stderr, "Configuration file could not be opened.\n");
+		else
+			r = init_repl("moo.xml");
 	}
+	else
+		r = init_repl(strdog(getenv("HOME"), MOO_XML));
+	free(f);
 	
 	while (plugin[i].path)
 	{
@@ -123,14 +119,11 @@ int main (int argc, char **argv)
 	}
 
 	if (build)
-	{
-		//print_profile(*prof);
 		build_pkg(prof->ch[0].pkg[0]);
-	}
 
 	if (!quiet)
 	{
-		package *glibc = search_pkg(prof, "Glibc-20041115", 
+		package *glibc = search_pkg(prof, "glibc", 
 			"chapter-building-system");
 		sed_paralell (prof, paralell_filter, popt_pkg, popt_cmd);
 		set_filter(default_filter);
@@ -140,7 +133,10 @@ int main (int argc, char **argv)
 		//print_profile(*prof);
 		//print_links(*prof);
 	}
-	
+
+	// Package URLs
+	//find_urls(PKG_XML, prof);
+
 	plugunload(plugin);
 	xmlFreeDoc(doc);
 	return 0;

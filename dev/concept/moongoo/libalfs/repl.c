@@ -1,7 +1,7 @@
 #include <string.h>
 
-#include <repl.h>
 #include <alfs.h>
+#include <repl.h>
 
 void t_repl (xmlNodePtr node, void *data)
 {

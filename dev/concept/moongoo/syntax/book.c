@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -100,14 +101,19 @@ static void t_sect1 (xmlNodePtr node, void *data)
 			(++prof->ch[i].n)*sizeof(package));
 	j = prof->ch[i].n-1;
 	
-	tmp = strdog(lower_case(title), "version");
-	// TODO: Name and version are not correctly separated
-	prof->ch[i].pkg[j].vers = NULL;
-	prof->ch[i].pkg[j].name = strcut(title, 0, strlen(title)-
-		((prof->ch[i].pkg[j].vers) ? 1 : 0));
+	tmp = strrchr(title, '-');
+	if (tmp)
+	{
+		char *t = strnrchr(title, '-', 2);
+		if ((t) && (isdigit(t[1])))
+			tmp = strdog(t, tmp); 
+	}
+	tmp = chrep(tmp, ' ', '\0');
+	prof->ch[i].pkg[j].vers = tmp ? strcut(tmp, 1, strlen(tmp)) : NULL;
+	prof->ch[i].pkg[j].name = tmp ? strcut(title, 0, 
+		strlen(title)-strlen(tmp)) : title;
 	prof->ch[i].pkg[j].build = t_userinput(node->children, 
 		&prof->ch[i].pkg[j].n);
-	free(tmp);
 
 	if (!prof->ch[i].pkg[j].n)
 		prof->ch[i].n--;

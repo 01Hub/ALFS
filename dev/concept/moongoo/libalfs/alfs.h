@@ -4,8 +4,10 @@
 #include <stdbool.h>
 #include <sys/types.h>
 
-#include <libxml/xinclude.h>
 #include <libxml/tree.h>
+#include <libxml/xinclude.h>
+
+#include <net.h>
 
 typedef enum
 {
@@ -23,13 +25,6 @@ typedef enum
 	MD5,
 	SHA1
 } hash_algo;
-
-typedef enum
-{
-	PROTO_NONE = 1,
-	HTTP,
-	FTP
-} protocol;
 
 typedef struct
 {
@@ -74,6 +69,7 @@ typedef struct
 } replaceable;
 
 typedef void (*xml_handler_t) (xmlNodePtr node, void *data);
+typedef bool (*xml_match_t) (xmlNodePtr node, void *data);
 
 void print_subtree (xmlNodePtr node);
 void print_pkg (package pkg);
@@ -88,6 +84,7 @@ bool filtered (role role);
 
 void foreach (xmlNodePtr node, char *str, xml_handler_t func, void *data);
 xmlNodePtr find_node (xmlNodePtr root, char *str);
+xmlNodePtr find_node_match (xmlNodePtr node, xml_match_t func, void *data);
 char *find_value (xmlNodePtr node, char *str);
 char *find_values (xmlNodePtr node, char *str);
 char *find_values_repl (xmlNodePtr node, char *str, char **orig, char **repl);
