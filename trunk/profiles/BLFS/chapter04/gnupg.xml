@@ -1,8 +1,8 @@
 <package name="gnupg" version="&gnupg-version;">
 
-	<packageinfo>
+	<!--<packageinfo>
 		<utilizes><name>openldap</name></utilizes>
-	</packageinfo>
+	</packageinfo>-->
 
 	<stage name="Unpacking a package.">
 		<unpack>

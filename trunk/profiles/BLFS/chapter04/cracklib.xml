@@ -5,12 +5,6 @@
 			<archive>&packages_dir;/&cracklib-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-		        <source>&packages_dir;/&cracklib-wordlist;</source>
-			<source>&packages_dir;/&cracklib-blfs-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
@@ -23,12 +17,12 @@
 			<name>/usr/share/dict</name>
 		</mkdir>
 
-		<permissions mode="0755">
+		<permissions mode="755">
 			<name>/usr/share/dict</name>
 		</permissions>
 
 		<copy>
-		        <source>&build_dir;/&cracklib-wordlist;</source>
+		        <source>&packages_dir;/&cracklib-wordlist;</source>
 			<destination>/usr/share/dict</destination>
 		</copy>
 
@@ -52,7 +46,19 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&cracklib-blfs-patch;</param>
+			<param>-i &packages_dir;/&cracklib-blfs-patch;</param>
+		</patch>
+
+		<copy>
+			<option>recursive</option>
+			<source>cracklib</source>
+			<destination>cracklib_krb5</destination>
+		</copy>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&cracklib-heimdal-patch;</param>
 		</patch>
 
 		<make>
@@ -64,8 +70,6 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&cracklib-directory;</remove>
-		<remove>&build_dir;/&cracklib-wordlist;</remove>
-		<remove>&build_dir;/&cracklib-blfs-patch;</remove>
 	</stage>
 
 </package>

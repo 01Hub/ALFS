@@ -7,6 +7,16 @@
 <!ENTITY tripwire-sitepassphrase "blahville">
 <!ENTITY tripwire-localpassphrase "blahville2">
 
+<!-- configuartion for heimdal -->
+<!ENTITY heimdal-domain "lfs.org">
+<!ENTITY heimdal-all-caps-domain "LFS.ORG">
+<!ENTITY heimdal-hostname "belgarath.lfs.org">
+
+<!-- configuartion for mitkrb -->
+<!ENTITY mitkrb-domain "lfs.org">
+<!ENTITY mitkrb-all-caps-domain "LFS.ORG">
+<!ENTITY mitkrb-hostname "belgarath.lfs.org">
+
 <!-- configuration for dhclient -->
 <!-- These two entities should be set to appropriate values to start and stop dhclient -->
 <!ENTITY dhclient-start-params "">

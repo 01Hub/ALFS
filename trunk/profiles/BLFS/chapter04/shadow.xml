@@ -1,19 +1,14 @@
 <package name="shadow" version="&shadow-version;">
 
-        <packageinfo>
+        <!--<packageinfo>
 	        <requires><name>linuxpam</name></requires>
-        </packageinfo>
+        </packageinfo>-->
 
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&shadow-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-		        <source>&packages_dir;/&shadow-pam-patch;</source>
-		        <destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
@@ -24,7 +19,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&shadow-pam-patch;</param>
+			<param>-i &packages_dir;/&shadow-pam-patch;</param>
 		</patch>
 
 		<configure>
@@ -258,6 +253,5 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&shadow-directory;</remove>
-		<remove>&build_dir;/&shadow-pam-patch;</remove>
 	</stage>
 </package>
