@@ -1,0 +1,37 @@
+<sect1 id="intro-welcome-changelog" xreflabel="ChangeLog">
+<?dbhtml filename="changelog.html" dir="introduction"?>
+<title>ChangeLog</title>
+
+<para>&version; &emdash; &releasedate;</para>
+
+<itemizedlist>
+
+<listitem><para>November 10th, 2003 [kpfleming]: Updated distribution instructions.</para></listitem>
+
+<listitem><para>November 9th, 2003 [kpfleming]: Updated distribution instructions.</para></listitem>
+
+<listitem><para>November 5th, 2003 [jwrober]: Updated most pages to help with
+presentation in the txt file version of the doc.</para></listitem>
+
+<listitem><para>November 4th, 2003 [kpfleming]: Distro Tarballs page was
+missing bootstrap command.</para></listitem>
+
+<listitem><para>November 4th, 2003 [kpfleming]: Updated the CVS and Distro
+Tarballs pages with new updated information.</para></listitem>
+
+<listitem><para>October 30th, 2003 [jwrober]: Updated the Coding Style page
+and added a first stab at CVS.</para></listitem>
+
+<listitem><para>October 29th, 2003 [jwrober]: Added a new chapter for
+Bugzilla, CVS, Coding Style and Distribution Tarballs.  Added an initial page
+for each and then a first stab at the Coding Style page.</para></listitem>
+
+<listitem><para>October 8th, 2003 [jwrober]: Added an Introduction
+section.</para></listitem>
+
+<listitem><para>October 7th, 2003 [jwrober]: Basic book skeleton
+created</para></listitem>
+
+</itemizedlist>
+
+</sect1>
