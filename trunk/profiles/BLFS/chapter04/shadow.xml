@@ -21,30 +21,15 @@
 			<base>&build_dir;/&shadow-directory;</base>
 		</stageinfo>
 
-		<!-- for first install -->
-		<search_replace base="/etc">
-		        <file>/etc/login.defs</file>
-			<find>#MD5_CRYPT_ENAB	no</find>
-			<replace>MD5_CRYPT_ENAB	yes</replace>
-		</search_replace>
-
-		<!-- for subsequent installs -->
-		<search_replace base="/etc">
-		        <file>/etc/login.defs</file>
-			<find>#MD5_CRYPT_ENAB</find>
-			<replace>MD5_CRYPT_ENAB</replace>
-		</search_replace>
-
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
 			<param>-i ../&shadow-patch;</param>
 		</patch>
 
-		<execute command="autoconf" />
-
-		<configure command='LDFLAGS="-lpam -lpam_misc" ./configure'>
+		<configure>
 			<param>--prefix=/usr</param>
+			<param>--libdir=/usr/lib</param>
 			<param>--enable-shared</param>
 			<param>--with-libpam</param>
 		</configure>
@@ -55,17 +40,22 @@
 			<param>install</param>
 		</make>
 
+		<link>
+		       <option>force</option>
+		       <target>vipw</target>
+		       <name>/usr/sbin/vigr</name>
+		</link>
+
 		<remove>/bin/vipw</remove>
-		<remove>/bin/sg</remove>
 
 		<move>
-		        <source>/lib/{libmisc.*a,libshadow.*a}</source>
-			<destination>/usr/lib</destination>
+		        <source>/bin/sg</source>
+			<destination>/usr/bin</destination>
 		</move>
 
 		<move>
-		        <source>/lib/{libmisc.so,libshadow.so}</source>
-			<destination>/usr/lib</destination>
+		        <source>/usr/lib/lib{misc,shadow}.so.0*</source>
+			<destination>/lib</destination>
 		</move>
 
 		<link>
@@ -178,6 +168,9 @@
 		       </content>
 		</textdump>
 
+<!--
+  uncomment after checking PAM for proper configuration
+
 		<textdump base="/etc/pam.d">
 		       <file>other</file>
 		       <content>
@@ -193,7 +186,7 @@
                            =# End /etc/pam.d/other
 		       </content>
 		</textdump>
-
+-->
 
 
 		<search_replace base="/etc">
@@ -267,7 +260,6 @@
 			<find>ENVIRON_FILE</find>
 			<replace>#ENVIRON_FILE</replace>
 		</search_replace>
-
 	</stage>
 
 	<stage name="Clean-up.">
