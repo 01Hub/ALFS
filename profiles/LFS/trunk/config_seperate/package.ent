@@ -155,8 +155,8 @@
 <!ENTITY hotplug-isapnp-patch-md5 "66a8923888b6241a505c8edeedab54d8">
 <!ENTITY hotplug-isapnp-patch "hotplug-&hotplug-version;-isapnp-2.patch">
 
-<!ENTITY iana-etc-md5 "5fe38814596587ef3e18b74d045370fe">
-<!ENTITY iana-etc-version "1.00">
+<!ENTITY iana-etc-md5 "b1461e457d6ad84ceba5a6c565af189f">
+<!ENTITY iana-etc-version "1.01">
 <!ENTITY iana-etc-package "iana-etc-&iana-etc-version;.tar.bz2">
 <!ENTITY iana-etc-directory "iana-etc-&iana-etc-version;">
 
@@ -200,8 +200,8 @@
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.gz">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
-<!ENTITY libxml2-md5 "299da4545913212ec4d82429d74314b9">
-<!ENTITY libxml2-version "2.6.10">
+<!ENTITY libxml2-md5 "c391173a26ec7c2ac702b54d06420fdb">
+<!ENTITY libxml2-version "2.6.11">
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.gz">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
@@ -275,8 +275,8 @@
 <!ENTITY perl-libc-1-patch-md5 "f033161efa8b4b174ec6667e4e739efa">
 <!ENTITY perl-libc-1-patch "perl-&perl-version;-libc-1.patch">
 
-<!ENTITY procps-md5 "2672014ec05deb20680713a7b750cb16">
-<!ENTITY procps-version "3.2.1">
+<!ENTITY procps-md5 "ef88b94da3f181f2be1f6963820b00ab">
+<!ENTITY procps-version "3.2.2">
 <!ENTITY procps-package "procps-&procps-version;.tar.gz">
 <!ENTITY procps-directory "procps-&procps-version;">
 
@@ -293,13 +293,10 @@
 <!ENTITY readline-gnu-fixes-patch-md5 "469994b522eeacaa7af2ebd29ea090cd">
 <!ENTITY readline-gnu-fixes-patch "readline-&readline-version;-gnu_fixes-1.patch">
 
-<!ENTITY sed-md5 "d8a08cc12fda1826deb2028dd729e189">
-<!ENTITY sed-version "4.1">
+<!ENTITY sed-md5 "570c0a53a64ec020d8fcbce51fb6d71a">
+<!ENTITY sed-version "4.1.1">
 <!ENTITY sed-package "sed-&sed-version;.tar.gz">
 <!ENTITY sed-directory "sed-&sed-version;">
-
-<!ENTITY sed-permissions-patch-md5 "2d505c61417e56d880267e54a97fa75a">
-<!ENTITY sed-permissions-patch "sed-&sed-version;-permissions-1.patch">
 
 <!ENTITY shadow-md5 "3a3d17d3d7c630b602baf66ae7434c61">
 <!ENTITY shadow-version "4.0.4.1">

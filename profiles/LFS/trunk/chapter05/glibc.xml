@@ -45,11 +45,9 @@
 
 		<make />
 
-<!--
 		<make>
 			<param>check</param>
 		</make>
--->
 
 		<mkdir>
 			<name>/tools/etc</name>
