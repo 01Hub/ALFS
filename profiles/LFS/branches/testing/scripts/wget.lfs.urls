@@ -42,9 +42,11 @@ ftp://sources.redhat.com/pub/bzip2/v102/bzip2-1.0.2.tar.gz
 http://developer.osdl.org/dev/iproute2/download/iproute2-2.6.X-ss040702.tar.gz
 http://distro.ibiblio.org/pub/linux/distributions/sorcerer/sources/grep/2.5.1/grep-2.5.1.tar.bz2
 http://distro.ibiblio.org/pub/linux/distributions/sorcerer/sources/groff/1.19.1/groff-1.19.1.tar.bz2
+http://downloads.linuxfromscratch.org/lfs-bootscripts-2.2.1.tar.bz2
+http://downloads.linuxfromscratch.org/udev-config-2.permissions
+http://downloads.linuxfromscratch.org/udev-config-1.rules 
 http://expect.nist.gov/old/expect-5.41.0.tar.gz
 http://ep09.pld-linux.org/~mmazur/linux-libc-headers/linux-libc-headers-2.6.7.0.tar.bz2
-http://freshmeat.net/redir/iana-etc/47080/url_bz2/iana-etc-1.00.tar.bz2
 http://freshmeat.net/redir/mktemp/20624/url_tgz/mktemp-1.5.tar.gz
 http://freshmeat.net/redir/util-linux/11029/url_tgz/util-linux-2.12a.tar.gz
 http://ftp.tuniv.szczecin.pl/pub/Linux/alpha-gnu/bison/bison-1.875a.tar.bz2
@@ -55,9 +57,6 @@ http://umn.dl.sourceforge.net/sourceforge/tcl/tcl8.4.7-src.tar.gz
 http://umn.dl.sourceforge.net/sourceforge/lex/flex-2.5.31.tar.bz2
 http://www.gzip.org/zlib/zlib-1.2.1.tar.bz2
 http://www.ibiblio.org/pub/Linux/system/daemons/sysklogd-1.4.1.tar.gz
-http://downloads.linuxfromscratch.org/lfs-bootscripts-2.2.1.tar.bz2
-http://downloads.linuxfromscratch.org/udev-config-2.permissions
-http://downloads.linuxfromscratch.org/udev-config-1.rules 
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/coreutils-5.2.1-suppress_uptime_kill_su-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/coreutils-5.2.1-uname-2.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/expect-5.41.0-spawn-1.patch
@@ -74,6 +73,7 @@ http://www.linuxfromscratch.org/patches/lfs/cvs/testing/sysklogd-1.4.1-kernel_he
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/sysklogd-1.4.1-signal-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/sysvinit-2.85-proclen-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/util-linux-2.12a-kernel_headers-1.patch
+http://www.sethwklein.net/projects/iana-etc/downloads/iana-etc-1.00.tar.bz2
 
 ftp://xmlsoft.org/libxml2-2.6.10.tar.gz
 http://lfs.securewebservices.co.uk/alfs/downloads/stable/nALFS-1.2.4.tar.bz2 
