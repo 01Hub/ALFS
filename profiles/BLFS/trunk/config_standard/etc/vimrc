@@ -1,7 +1,7 @@
-" Begin .vimrc
+" Begin /etc/vimrc
 
 set columns=80
 set wrapmargin=8
 set ruler
 
-" End .vimrc
+" End /etc/vimrc

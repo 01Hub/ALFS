@@ -3,5 +3,6 @@
 MAILER-DAEMON:    postmaster
 postmaster:       root
 
-root:             [insert non-root username here]
+root:             !insert non-root username here!
+
 # End /etc/aliases

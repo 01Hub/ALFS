@@ -1,4 +1,7 @@
 # Begin .xinitrc file
+
 xterm  -g 80x40+0+0   &
 xclock -g 100x100-0+0 &
 twm
+
+# End .xinitrc file

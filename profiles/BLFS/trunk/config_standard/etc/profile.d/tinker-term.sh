@@ -1,3 +1,5 @@
+# Begin /etc/profile.d/tinker-term.sh
+
 # This will tinker with the value of TERM in order to convince certain apps
 # that we can, indeed, display color in their window.
  
@@ -8,3 +10,5 @@ fi
 if [ "$TERM" = "xterm" ]; then
   export TERM=xterm-color
 fi
+
+# End /etc/profile.d/tinker-term.sh

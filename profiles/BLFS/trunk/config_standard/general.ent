@@ -14,11 +14,6 @@
 <!-- kernel directory -->
 <!ENTITY kernel-directory "/var2/factory/linux-2.4.23">
 
-<!-- entities for configuring gpm -->
-<!ENTITY mouse_device "/dev/psaux">
-<!ENTITY mouse_protocol "ps2">
-<!ENTITY mouse_options "">
-
 <!-- entities for configuring the network -->
 <!ENTITY network-interface "eth0">
 

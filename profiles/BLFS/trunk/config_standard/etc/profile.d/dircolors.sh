@@ -1,3 +1,5 @@
+# Begin /etc/profile.d/dircolors.sh
+
 # Setup for /bin/ls to support color, the alias is in /etc/bashrc.
 if [ -f "/etc/dircolors" ] ; then
         eval $(dircolors -b /etc/dircolors)
@@ -7,3 +9,5 @@ if [ -f "/etc/dircolors" ] ; then
         fi
 fi
 alias ls='ls --color=auto'
+
+# End /etc/profile.d/dircolors.sh
