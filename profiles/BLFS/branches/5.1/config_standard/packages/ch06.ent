@@ -1,0 +1,17 @@
+<!--************* packages for chapter 6 *************-->
+
+<!ENTITY vim-version   "6.2">
+<!ENTITY vim-package   "vim-&vim-version;.tar.bz2">
+<!ENTITY vim-directory "vim62">
+
+<!ENTITY emacs-version   "21.3">
+<!ENTITY emacs-package   "emacs-&emacs-version;.tar.gz">
+<!ENTITY emacs-directory "emacs-&emacs-version;">
+
+<!ENTITY nano-version   "1.2.3">
+<!ENTITY nano-package   "nano-&nano-version;.tar.gz">
+<!ENTITY nano-directory "nano-&nano-version;">
+
+<!ENTITY joe-version   "3.0">
+<!ENTITY joe-package   "joe-&joe-version;.tar.gz">
+<!ENTITY joe-directory "joe-&joe-version;">

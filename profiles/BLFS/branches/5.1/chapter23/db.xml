@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch23.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="db" version="&db-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&db-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+        <base>&build_dir;/&db-directory;/build_unix</base>
+      </stageinfo>
+      <patch base="&build_dir;/&db-directory;">
+        <param>-N</param>
+        <param>-p0</param>
+        <param>-i &packages_dir;/&db-patch1;</param>
+      </patch>
+      <patch base="&build_dir;/&db-directory;">
+        <param>-N</param>
+        <param>-p0</param>
+        <param>-i &packages_dir;/&db-patch2;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&db-directory;/build_unix</base>
+      </stageinfo>
+      <configure command="../dist/configure">
+        <param>--prefix=/usr</param>
+        <param>--enable-compat185</param>
+        <param>--enable-cxx</param>
+      </configure>
+      <make />
+      <make>
+        <param>docdir=/usr/share/doc/db-&db-version;</param>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&db-directory;</remove>
+    </stage>
+  </package>
+</alfs>

@@ -1,0 +1,15 @@
+<!--************* packages for chapter 36 *************-->
+
+<!ENTITY thunderbird-version "0.5">
+<!ENTITY thunderbird-moz-lib-version "1.6">
+<!ENTITY thunderbird-package "thunderbird-source-&thunderbird-version;.tar.gz">
+<!ENTITY thunderbird-thunderbird-package "thunderbird-&thunderbird-version;-source.tar.bz2">
+<!ENTITY thunderbird-directory "mozilla">
+
+<!ENTITY pan-version   "0.14.2">
+<!ENTITY pan-package   "pan-&pan-version;.tar.bz2">
+<!ENTITY pan-directory "pan-&pan-version;">
+
+<!ENTITY balsa-version   "2.0.15">
+<!ENTITY balsa-package   "balsa-&balsa-version;.tar.bz2">
+<!ENTITY balsa-directory "balsa-&balsa-version;">

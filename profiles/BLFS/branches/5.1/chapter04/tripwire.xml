@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch04.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="tripwire" version="&tripwire-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&tripwire-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&tripwire-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&tripwire-gcc-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&tripwire-directory;</base>
+      </stageinfo>
+      <make>
+        <param>-C</param>
+        <param>src</param>
+        <param>release</param>
+      </make>
+      <copy>
+        <source>install/install.{sh,cfg}</source>
+        <destination>.</destination>
+      </copy>
+      <!--The default configuration is to use a local MTA. If you don't have a MTA
+                installed and have no wish to install one, modify the install.cfg to use an SMTP server
+                instead.-->
+      <!-- the following commands are for automating the build of tripwire, these command are not in the book -->
+      <search_replace>
+        <file>install.cfg</file>
+        <find>TWMAILMETHOD=SENDMAIL</find>
+        <replace>#TWMAILMETHOD=SENDMAIL</replace>
+      </search_replace>
+      <search_replace>
+        <file>install.cfg</file>
+        <find>TWMAILPROGRAM</find>
+        <replace>#TWMAILPROGRAM</replace>
+      </search_replace>
+      <search_replace>
+        <file>install.cfg</file>
+        <find># TWMAILMETHOD=SMTP</find>
+        <replace>TWMAILMETHOD=SMTP</replace>
+      </search_replace>
+      <search_replace>
+        <file>install.cfg</file>
+        <find># TWSMTPHOST="mail.domain.com"</find>
+        <replace>TWSMTPHOST="&tripwire-mail-domain;"</replace>
+      </search_replace>
+      <search_replace>
+        <file>install.cfg</file>
+        <find># TWSMTPPORT=25</find>
+        <replace>TWSMTPPORT=&tripwire-smtp-port;</replace>
+      </search_replace>
+      <execute command="./install.sh">
+        <param>-n</param>
+        <param>-s "&tripwire-sitepassphrase;"</param>
+        <param>-l "&tripwire-localpassphrase;"</param>
+      </execute>
+      <copy>
+        <source>policy/*.txt</source>
+        <destination>/usr/share/doc/tripwire</destination>
+      </copy>
+    </stage>
+    <stage name="Configuring">
+      <stageinfo>
+        <base>&build_dir;/&tripwire-directory;</base>
+      </stageinfo>
+      <copy>
+        <source>/etc/tripwire/tw.cfg</source>
+        <destination>/usr/sbin</destination>
+      </copy>
+      <copy>
+        <source>&packages_dir;/&tripwire-policy-file;</source>
+        <destination>/etc/tripwire</destination>
+      </copy>
+      <execute command="twadmin">
+        <param>-m P</param>
+        <param>-Q &tripwire-sitepassphrase;</param>
+        <param>/etc/tripwire/&tripwire-policy-file;</param>
+      </execute>
+      <execute command="tripwire">
+        <param>-m i</param>
+        <param>-P &tripwire-localpassphrase;</param>
+      </execute>
+    </stage>
+    <stage name="Clean-Up">
+      <remove>&build_dir;/&tripwire-package;</remove>
+    </stage>
+  </package>
+</alfs>

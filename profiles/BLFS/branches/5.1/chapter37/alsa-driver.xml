@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch37.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="alsa-driver" version="&alsa-driver-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&alsa-driver-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&alsa-driver-directory;</base>
+      </stageinfo>
+      <configure>
+        <prefix>CC=/opt/gcc-2.95.3/bin/gcc</prefix>
+        <param>--with-moddir=/lib/modules/`uname -r`/kernel/drivers/sound/</param>
+        <param>--with-kernel=/lib/modules/`uname -r`/build</param>
+        <param>--with-sequencer=yes</param>
+        <param>--with-oss=yes</param>
+        <param>--with-isapnp=no</param>
+        <param>--with-cards=&sound-card;</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <execute command="./snddevices" />
+      <textdump base="/etc" mode="append">
+        <file>modules.conf</file>
+        <content>
+	  =alias char-major-14 soundcore
+	  =alias char-major-116 snd
+	  =
+	  =alias snd-card-0 snd-&sound-card;
+	  =
+	  =alias sound-slot-0 snd-card-0
+	  =
+	  =alias sound-service-0-0 snd-mixer-oss
+	  =alias sound-service-0-1 snd-seq-oss
+	  =alias sound-service-0-3 snd-pcm-oss
+	  =alias sound-service-0-8 snd-seq-midi
+	</content>
+      </textdump>
+      <execute command="/sbin/depmod" />
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&alsa-driver-directory;</remove>
+    </stage>
+  </package>
+</alfs>

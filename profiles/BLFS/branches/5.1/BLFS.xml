@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+       BLFS SVN profile
+
+       originally by Vassili Dzuba - vdzuba@linuxfromscratch.org
+
+       Maintained by:
+       Thomas Pegg <thomasp@linuxfromscratch.org>
+       Jamie Bennett <jamie@linuxfromscratch.org>
+       Joachim Beckers <jbeckers@linuxfromscratch.org>
+       Kevin P. Fleming <kpfleming@linuxfromscratch.org>
+
+       Last updated : 2004-07-03
+  -->
+<!DOCTYPE alfs SYSTEM "DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "config/general.ent">
+<!ENTITY % config_entities SYSTEM  "config/config.ent">
+
+%general_entities;
+%config_entities;
+
+<!ENTITY apos "'">
+
+]>
+<alfs version="3.1" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <stage name="Beyond Linux From Scratch v&blfs-version;">
+    <stageinfo>
+      <environment>
+        <variable name="PATH" mode="append">:/usr/X11R6/bin</variable>
+        <variable name="QTDIR">/opt/qt</variable>
+        <variable name="PATH" mode="append">:$QTDIR/bin</variable>
+        <variable name="GNOME_PREFIX">&gnome-prefix;</variable>
+        <variable name="PATH" mode="append">:&gnome-prefix;/bin</variable>
+        <variable name="PATH" mode="append">:/opt/gnome/bin</variable>
+        <variable name="GNOME_LIBCONFIG_PATH">/usr/lib</variable>
+        <variable name="PKG_CONFIG_PATH">/usr/X11R6/lib/pkgconfig:/usr/lib/pkgconfig:&gnome-prefix;/lib/pkgconfig:/opt/gnome/lib/pkgconfig</variable>
+      </environment>
+    </stageinfo>
+    <stage name="Chapter 3 (After LFS Configuration Issues)">
+      <xi:include href="chapter03/configusers.xml" />
+      <xi:include href="chapter03/inputrc.xml" />
+      <xi:include href="chapter03/bash_startup.xml" />
+      <xi:include href="chapter03/vimrc.xml" />
+      <xi:include href="chapter03/issue.xml" />
+      <xi:include href="chapter03/shells.xml" />
+      <xi:include href="chapter03/random.xml" />
+      <xi:include href="chapter03/maninfo.xml" />
+      <xi:include href="chapter03/netfs.xml" />
+    </stage>
+    <stage name="Chapter 4 (Security)">
+      <xi:include href="chapter04/cracklib.xml" />
+      <xi:include href="chapter04/linuxpam.xml" />
+      <xi:include href="chapter04/shadow.xml" />
+      <xi:include href="chapter04/iptables.xml" />
+      <xi:include href="chapter04/gnupg.xml" />
+      <xi:include href="chapter04/tripwire.xml" />
+      <xi:include href="chapter04/heimdal.xml" />
+      <xi:include href="chapter04/mitkrb.xml" />
+    </stage>
+    <stage name="Chapter 5 (Filesystems)">
+      <xi:include href="chapter05/reiserfsprogs.xml" />
+      <xi:include href="chapter05/xfsprogs.xml" />
+    </stage>
+    <stage name="Chapter 6 (Editors)">
+      <xi:include href="chapter06/vim.xml" />
+      <xi:include href="chapter06/emacs.xml" />
+      <xi:include href="chapter06/nano.xml" />
+      <xi:include href="chapter06/joe.xml" />
+    </stage>
+    <stage name="Chapter 7 (Shells)">
+      <xi:include href="chapter07/ash.xml" />
+      <xi:include href="chapter07/tcsh.xml" />
+      <xi:include href="chapter07/zsh.xml" />
+    </stage>
+    <stage name="Chapter 8 (General Libraries)">
+      <xi:include href="chapter08/openssl.xml" />
+      <xi:include href="chapter08/pcre.xml" />
+      <xi:include href="chapter08/popt.xml" />
+      <xi:include href="chapter08/slang.xml" />
+      <xi:include href="chapter08/libfam.xml" />
+      <xi:include href="chapter08/libxml.xml" />
+      <xi:include href="chapter08/libxml2.xml" />
+      <xi:include href="chapter08/libxslt.xml" />
+      <xi:include href="chapter08/readline.xml" />
+      <xi:include href="chapter08/gmp.xml" />
+      <xi:include href="chapter08/gdbm.xml" />
+      <xi:include href="chapter08/glib.xml" />
+      <xi:include href="chapter08/glib2.xml" />
+      <xi:include href="chapter08/expat.xml" />
+      <xi:include href="chapter08/libesmtp.xml" />
+      <xi:include href="chapter08/aspell.xml" />
+      <xi:include href="chapter08/ispell.xml" />
+      <xi:include href="chapter08/guile.xml" />
+      <xi:include href="chapter08/slib.xml" />
+      <xi:include href="chapter08/g-wrap.xml" />
+      <xi:include href="chapter08/lzo.xml" />
+      <xi:include href="chapter08/libpcap.xml" />
+      <xi:include href="chapter08/libusb.xml" />
+    </stage>
+    <stage name="Chapter 9 (Graphics and Font Libraries)">
+      <xi:include href="chapter09/libjpeg.xml" />
+      <xi:include href="chapter09/libpng.xml" />
+      <xi:include href="chapter09/libtiff.xml" />
+      <xi:include href="chapter09/libungif.xml" />
+      <xi:include href="chapter09/libmng.xml" />
+      <xi:include href="chapter09/lcms.xml" />
+      <xi:include href="chapter09/freetype.xml" />
+      <xi:include href="chapter09/fontconfig.xml" />
+      <xi:include href="chapter09/imlib.xml" />
+      <xi:include href="chapter09/aalib.xml" />
+      <xi:include href="chapter09/svgalib.xml" />
+      <xi:include href="chapter09/directfb.xml" />
+      <xi:include href="chapter09/imlib2.xml" />
+    </stage>
+    <stage name="Chapter 10 (General Utilities)">
+      <xi:include href="chapter10/bc.xml" />
+      <xi:include href="chapter10/rep-gtk.xml" />
+      <xi:include href="chapter10/compface.xml" />
+      <xi:include href="chapter10/imagemagick.xml" />
+      <xi:include href="chapter10/hd2u.xml" />
+    </stage>
+    <stage name="Chapter 11 (System Utilities)">
+      <xi:include href="chapter11/gpm.xml" />
+      <xi:include href="chapter11/fcron.xml" />
+      <xi:include href="chapter11/hdparm.xml" />
+      <xi:include href="chapter11/which.xml" />
+      <xi:include href="chapter11/unzip.xml" />
+      <xi:include href="chapter11/zip.xml" />
+      <xi:include href="chapter11/pciutils.xml" />
+      <xi:include href="chapter11/pkgconfig.xml" />
+      <xi:include href="chapter11/cpio.xml" />
+      <xi:include href="chapter11/mc.xml" />
+    </stage>
+    <stage name="Chapter 12 (Programming)">
+      <xi:include href="chapter12/python.xml" />
+      <xi:include href="chapter12/perlmodules.xml" />
+      <xi:include href="chapter12/librep.xml" />
+      <xi:include href="chapter12/j2sdk.xml" />
+      <xi:include href="chapter12/ruby.xml" />
+      <xi:include href="chapter12/gnat.xml" />
+      <xi:include href="chapter12/gcc-full.xml" />
+      <xi:include href="chapter12/tcl.xml" />
+      <xi:include href="chapter12/tk.xml" />
+      <xi:include href="chapter12/gcc295.xml" />
+      <xi:include href="chapter12/nasm.xml" />
+    </stage>
+    <stage name="Chapter 13 (Dial-up networking)">
+      <xi:include href="chapter13/ppp.xml" />
+      <xi:include href="chapter13/wvdial.xml" />
+    </stage>
+    <stage name="Chapter 14 (DHCP Clients)">
+      <xi:include href="chapter14/dhclient.xml" />
+      <xi:include href="chapter14/dhcpcd.xml" />
+    </stage>
+    <stage name="Chapter 15 (Other Connections)">
+      <xi:include href="chapter15/rp-pppoe.xml" />
+    </stage>
+    <stage name="Chapter 16 (Networking Libraries)">
+      <xi:include href="chapter16/curl.xml" />
+      <xi:include href="chapter16/wvstreams.xml" />
+      <xi:include href="chapter16/gnet.xml" />
+      <xi:include href="chapter16/libsoup.xml" />
+    </stage>
+    <stage name="Chapter 17 (Text Web Browsers)">
+      <xi:include href="chapter17/links.xml" />
+      <xi:include href="chapter17/lynx.xml" />
+      <xi:include href="chapter17/w3m.xml" />
+    </stage>
+    <stage name="Chapter 18 (Basic Networking Programs)">
+      <xi:include href="chapter18/ncftp.xml" />
+      <xi:include href="chapter18/cvs.xml" />
+      <xi:include href="chapter18/wget.xml" />
+      <xi:include href="chapter18/tcpwrappers.xml" />
+      <xi:include href="chapter18/portmap.xml" />
+      <xi:include href="chapter18/inetutils.xml" />
+      <xi:include href="chapter18/nfs-utils.xml" />
+      <xi:include href="chapter18/ncpfs.xml" />
+      <xi:include href="chapter18/ntp.xml" />
+    </stage>
+    <stage name="Chapter 19 (Basic Networking Utilities)">
+      <xi:include href="chapter19/traceroute.xml" />
+      <xi:include href="chapter19/nmap.xml" />
+      <xi:include href="chapter19/whois.xml" />
+      <xi:include href="chapter19/bind-utils.xml" />
+    </stage>
+    <stage name="Chapter 20 (Mail/News Clients)">
+      <xi:include href="chapter20/nail.xml" />
+      <xi:include href="chapter20/procmail.xml" />
+      <xi:include href="chapter20/fetchmail.xml" />
+      <xi:include href="chapter20/mutt.xml" />
+      <xi:include href="chapter20/pine.xml" />
+      <xi:include href="chapter20/slrn.xml" />
+    </stage>
+    <stage name="Chapter 21 (Mail Server Software)">
+      <xi:include href="chapter21/postfix.xml" />
+      <xi:include href="chapter21/sendmail.xml" />
+      <xi:include href="chapter21/exim.xml" />
+      <xi:include href="chapter21/qpopper.xml" />
+      <xi:include href="chapter21/courier.xml" />
+    </stage>
+    <stage name="Chapter 22 (Other Server Software)">
+      <xi:include href="chapter22/bind.xml" />
+      <xi:include href="chapter22/dhcp.xml" />
+      <xi:include href="chapter22/leafnode.xml" />
+      <xi:include href="chapter22/openssh.xml" />
+      <xi:include href="chapter22/rsync.xml" />
+      <xi:include href="chapter22/openldap.xml" />
+      <xi:include href="chapter22/samba.xml" />
+      <xi:include href="chapter22/xinetd.xml" />
+    </stage>
+    <stage name="Chapter 23 (Databases)">
+      <xi:include href="chapter23/db.xml" />
+      <xi:include href="chapter23/db3.xml" />
+      <xi:include href="chapter23/mysql.xml" />
+      <xi:include href="chapter23/postgresql.xml" />
+    </stage>
+    <stage name="Chapter 24 (Web serving)">
+      <xi:include href="chapter24/apache.xml" />
+      <xi:include href="chapter24/php.xml" />
+      <xi:include href="chapter24/proftpd.xml" />
+    </stage>
+    <stage name="Chapter 25 (X Window Environment)">
+      <xi:include href="chapter25/xorg.xml" />
+      <xi:include href="chapter25/xfree86.xml" />
+    </stage>
+    <stage name="Chapter 26 (X Libraries)">
+      <xi:include href="chapter26/qt.xml" />
+      <xi:include href="chapter26/gtk+.xml" />
+      <xi:include href="chapter26/pango.xml" />
+      <xi:include href="chapter26/atk.xml" />
+      <xi:include href="chapter26/gtk+2.xml" />
+      <xi:include href="chapter26/lesstif.xml" />
+      <xi:include href="chapter26/startup-notification.xml" />
+      <xi:include href="chapter26/shared-mime-info.xml" />
+      <xi:include href="chapter26/hicolor-icon-theme.xml" />
+      <xi:include href="chapter26/libxklavier.xml" />
+    </stage>
+    <stage name="Chapter 27 (Window Managers)">
+      <xi:include href="chapter27/sawfish.xml" />
+      <xi:include href="chapter27/fluxbox.xml" />
+      <xi:include href="chapter27/metacity.xml" />
+      <xi:include href="chapter27/xfce.xml" />
+    </stage>
+    <stage name="Chapter 28 (KDE Core Packages)">
+      <xi:include href="chapter28/arts.xml" />
+      <xi:include href="chapter28/kdelibs.xml" />
+      <xi:include href="chapter28/kdebase.xml" />
+    </stage>
+    <stage name="Chapter 29 (KDE Additional Packages)">
+      <xi:include href="chapter29/kdeadmin.xml" />
+      <xi:include href="chapter29/kdenetwork.xml" />
+      <xi:include href="chapter29/kdepim.xml" />
+      <xi:include href="chapter29/kdemultimedia.xml" />
+      <xi:include href="chapter29/kdegraphics.xml" />
+      <xi:include href="chapter29/kdeutils.xml" />
+      <xi:include href="chapter29/kdeedu.xml" />
+      <xi:include href="chapter29/kdesdk.xml" />
+      <xi:include href="chapter29/kdevelop.xml" />
+      <xi:include href="chapter29/quanta.xml" />
+      <xi:include href="chapter29/kdebindings.xml" />
+      <xi:include href="chapter29/kdeaccessibility.xml" />
+      <xi:include href="chapter29/kdetoys.xml" />
+      <xi:include href="chapter29/kdegames.xml" />
+      <xi:include href="chapter29/kdeartwork.xml" />
+      <xi:include href="chapter29/kdeaddons.xml" />
+    </stage>
+    <stage name="Chapter 30 (GNOME Core Packages)">
+      <stageinfo>
+        <environment>
+          <variable name="PKG_CONFIG_PATH">/usr/X11R6/lib/pkgconfig:&gnome-prefix;/lib/pkgconfig</variable>
+          <variable name="GNOME_PREFIX">&gnome-prefix;</variable>
+        </environment>
+      </stageinfo>
+      <xi:include href="chapter30/gnome-pre-installation.xml" />
+      <xi:include href="chapter30/gtk-doc.xml" />
+      <xi:include href="chapter30/libidl.xml" />
+      <xi:include href="chapter30/orbit2.xml" />
+      <xi:include href="chapter30/intltool.xml" />
+      <xi:include href="chapter30/libbonobo.xml" />
+      <xi:include href="chapter30/gconf2.xml" />
+      <xi:include href="chapter30/gnome-mime-data.xml" />
+      <xi:include href="chapter30/gnome-vfs2.xml" />
+      <xi:include href="chapter30/libgnome.xml" />
+      <xi:include href="chapter30/libart_lgpl.xml" />
+      <xi:include href="chapter30/libglade.xml" />
+      <xi:include href="chapter30/libgnomecanvas.xml" />
+      <xi:include href="chapter30/libbonoboui.xml" />
+      <xi:include href="chapter30/gnome-icon-themes.xml" />
+      <xi:include href="chapter30/gnome-keyring.xml" />
+      <xi:include href="chapter30/libgnomeui.xml" />
+      <xi:include href="chapter30/gtk-engines.xml" />
+      <xi:include href="chapter30/gnome-themes.xml" />
+      <xi:include href="chapter30/scrollkeeper.xml" />
+      <xi:include href="chapter30/gnome-desktop.xml" />
+      <xi:include href="chapter30/libwnck.xml" />
+      <xi:include href="chapter30/gnome-panel.xml" />
+      <xi:include href="chapter30/gnome-session.xml" />
+      <xi:include href="chapter30/vte.xml" />
+      <xi:include href="chapter30/gnome-terminal.xml" />
+      <xi:include href="chapter30/libgtop.xml" />
+      <xi:include href="chapter30/gail.xml" />
+      <xi:include href="chapter30/gstreamer.xml" />
+      <xi:include href="chapter30/gst-plugins.xml" />
+      <xi:include href="chapter30/gnome-applets.xml" />
+      <xi:include href="chapter30/libgsf.xml" />
+      <xi:include href="chapter30/libcroco.xml" />
+      <xi:include href="chapter30/librsvg.xml" />
+      <xi:include href="chapter30/eel.xml" />
+      <xi:include href="chapter30/nautilus.xml" />
+      <xi:include href="chapter30/control-center.xml" />
+    </stage>
+    <stage name="Chapter 31 (GNOME Additional Packages)">
+      <xi:include href="chapter31/libgnomeprint.xml" />
+      <xi:include href="chapter31/libgnomeprintui.xml" />
+      <xi:include href="chapter31/gal.xml" />
+      <xi:include href="chapter31/gtkhtml.xml" />
+      <xi:include href="chapter31/libgtkhtml.xml" />
+      <xi:include href="chapter31/yelp.xml" />
+      <xi:include href="chapter31/bug-buddy.xml" />
+      <xi:include href="chapter31/gtksourceview.xml" />
+      <xi:include href="chapter31/gedit.xml" />
+      <xi:include href="chapter31/eog.xml" />
+      <xi:include href="chapter31/ggv.xml" />
+      <xi:include href="chapter31/file-roller.xml" />
+      <xi:include href="chapter31/gconf-editor.xml" />
+      <xi:include href="chapter31/gnome-utils.xml" />
+      <xi:include href="chapter31/gnome-system-monitor.xml" />
+      <xi:include href="chapter31/gnome-media.xml" />
+      <xi:include href="chapter31/nautilus-media.xml" />
+      <xi:include href="chapter31/gnome-netstatus.xml" />
+      <xi:include href="chapter31/gcalctool.xml" />
+      <xi:include href="chapter31/gpdf.xml" />
+      <xi:include href="chapter31/gucharmap.xml" />
+      <xi:include href="chapter31/nautilus-cd-burner.xml" />
+      <xi:include href="chapter31/zenity.xml" />
+      <xi:include href="chapter31/gnome-speech.xml" />
+      <xi:include href="chapter31/at-spi.xml" />
+      <xi:include href="chapter31/gnome-mag.xml" />
+      <xi:include href="chapter31/gnopernicus.xml" />
+      <xi:include href="chapter31/gok.xml" />
+      <xi:include href="chapter31/epiphany.xml" />
+      <xi:include href="chapter31/gnomemeeting.xml" />
+      <xi:include href="chapter31/gnome-games.xml" />
+      <xi:include href="chapter31/gnome2-user-docs.xml" />
+      <xi:include href="chapter31/gdm.xml" />
+    </stage>
+    <stage name="Chapter 32 (GNOME 1.4 Libraries)">
+      <stageinfo>
+        <environment>
+          <variable name="PATH" mode="append">:/opt/gnome/bin</variable>
+          <variable name="GNOME_LIBCONFIG_PATH">/usr/lib</variable>
+        </environment>
+      </stageinfo>
+      <xi:include href="chapter32/gnome1-pre-installation.xml" />
+      <xi:include href="chapter32/orbit.xml" />
+      <xi:include href="chapter32/oaf.xml" />
+      <xi:include href="chapter32/gnome-libs.xml" />
+      <xi:include href="chapter32/gdk-pixbuf.xml" />
+      <xi:include href="chapter32/gnome-print.xml" />
+      <xi:include href="chapter32/bonobo.xml" />
+      <xi:include href="chapter32/gconf.xml" />
+      <xi:include href="chapter32/gnome-vfs.xml" />
+      <xi:include href="chapter32/libglade1.xml" />
+      <xi:include href="chapter32/gal.xml" />
+      <xi:include href="chapter32/guppi.xml" />
+      <xi:include href="chapter32/libcapplet.xml" />
+      <xi:include href="chapter32/soup.xml" />
+      <xi:include href="chapter32/gtkhtml.xml" />
+      <xi:include href="chapter32/libghttp.xml" />
+    </stage>
+    <stage name="Chapter 33 (Individual Office Programs)">
+      <xi:include href="chapter33/abiword.xml" />
+      <xi:include href="chapter33/gnumeric.xml" />
+      <xi:include href="chapter33/gnucash.xml" />
+      <xi:include href="chapter33/gimp.xml" />
+      <xi:include href="chapter33/evolution.xml" />
+    </stage>
+    <stage name="Chapter 34 (Office Suites)">
+      <xi:include href="chapter34/koffice.xml" />
+      <xi:include href="chapter34/openoffice.xml" />
+    </stage>
+    <stage name="Chapter 35 (Graphical Web Browsers)">
+      <xi:include href="chapter35/mozilla.xml" />
+      <xi:include href="chapter35/firefox.xml" />
+      <xi:include href="chapter35/galeon.xml" />
+      <xi:include href="chapter35/dillo.xml" />
+    </stage>
+    <stage name="Chapter 36 (Other X-based Internet Programs)">
+      <xi:include href="chapter36/thunderbird.xml" />
+      <xi:include href="chapter36/pan.xml" />
+      <xi:include href="chapter36/balsa.xml" />
+    </stage>
+    <stage name="Chapter 37 (Multimedia Libraries and Drivers)">
+      <xi:include href="chapter37/alsa-driver.xml" />
+      <xi:include href="chapter37/alsa-lib.xml" />
+      <xi:include href="chapter37/alsa-utils.xml" />
+      <xi:include href="chapter37/alsa-tools.xml" />
+      <xi:include href="chapter37/alsa-firmware.xml" />
+      <xi:include href="chapter37/alsa-oss.xml" />
+      <xi:include href="chapter37/audiofile.xml" />
+      <xi:include href="chapter37/esound.xml" />
+      <xi:include href="chapter37/sdl.xml" />
+      <xi:include href="chapter37/libao.xml" />
+      <xi:include href="chapter37/libogg.xml" />
+      <xi:include href="chapter37/libvorbis.xml" />
+      <xi:include href="chapter37/nas.xml" />
+      <xi:include href="chapter37/libmpeg3.xml" />
+      <xi:include href="chapter37/libmad.xml" />
+      <xi:include href="chapter37/openquicktime.xml" />
+      <xi:include href="chapter37/libfame.xml" />
+      <xi:include href="chapter37/speex.xml" />
+      <xi:include href="chapter37/id3lib.xml" />
+      <xi:include href="chapter37/flac.xml" />
+      <xi:include href="chapter37/libdvdcss.xml" />
+      <xi:include href="chapter37/libdvdread.xml" />
+      <xi:include href="chapter37/libdv.xml" />
+      <xi:include href="chapter37/liba52.xml" />
+      <xi:include href="chapter37/xvid.xml" />
+      <xi:include href="chapter37/xine-lib.xml" />
+      <xi:include href="chapter37/libmikmod.xml" />
+    </stage>
+    <stage name="Chapter 38 (Audio utilities)">
+      <xi:include href="chapter38/mpg123.xml" />
+      <xi:include href="chapter38/vorbis-tools.xml" />
+      <xi:include href="chapter38/xmms.xml" />
+      <xi:include href="chapter38/lame.xml" />
+      <xi:include href="chapter38/cdparanoia.xml" />
+    </stage>
+    <stage name="Chapter 39 (Video utilities)">
+      <xi:include href="chapter39/ffmpeg.xml" />
+      <xi:include href="chapter39/avifile.xml" />
+      <xi:include href="chapter39/mplayer.xml" />
+      <xi:include href="chapter39/xine-ui.xml" />
+      <xi:include href="chapter39/transcode.xml" />
+    </stage>
+    <stage name="Chapter 40 (CD-Writing utilities)">
+      <xi:include href="chapter40/cdrtools.xml" />
+      <xi:include href="chapter40/cdrdao.xml" />
+      <xi:include href="chapter40/udftools.xml" />
+    </stage>
+    <stage name="Chapter 41 (Printing)">
+      <xi:include href="chapter41/cups.xml" />
+      <xi:include href="chapter41/lprng.xml" />
+      <xi:include href="chapter41/afplghostscript.xml" />
+      <xi:include href="chapter41/espghostscript.xml" />
+      <xi:include href="chapter41/gimp-print.xml" />
+    </stage>
+    <stage name="Chapter 42 (Scanning)">
+      <xi:include href="chapter42/sane.xml" />
+      <xi:include href="chapter42/xsane.xml" />
+    </stage>
+    <stage name="Chapter 43 (Standard Generalized Markup Language - SGML)">
+      <xi:include href="chapter43/sgml-common.xml" />
+      <xi:include href="chapter43/sgml-dtd31.xml" />
+      <xi:include href="chapter43/sgml-dtd.xml" />
+      <xi:include href="chapter43/opensp.xml" />
+      <xi:include href="chapter43/openjade.xml" />
+      <xi:include href="chapter43/docbook-dsssl.xml" />
+    </stage>
+    <stage name="Chapter 44 (Extensible Markup Language - XML)">
+      <xi:include href="chapter44/xml-dtd.xml" />
+      <xi:include href="chapter44/docbook-xsl.xml" />
+    </stage>
+    <stage name="Chapter 45 (PostScript)">
+      <xi:include href="chapter45/a2ps.xml" />
+      <xi:include href="chapter45/enscript.xml" />
+      <xi:include href="chapter45/psutils.xml" />
+      <xi:include href="chapter45/gsview.xml" />
+      <xi:include href="chapter45/xpdf.xml" />
+    </stage>
+    <stage name="Chapter 46 (Typesetting)">
+      <xi:include href="chapter46/tex.xml" />
+    </stage>
+  </stage>
+</alfs>

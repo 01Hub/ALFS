@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch30.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="libgnome" version="&libgnome-version;">
+    <packageinfo>
+      <requires>
+        <name>gnome-vfs2</name>
+      </requires>
+      <utilizes>
+        <name>esound</name>
+      </utilizes>
+      <utilizes>
+        <name>gtk-doc</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&libgnome-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+    <stageinfo>
+      <base>&build_dir;/&libgnome-directory;</base>
+    </stageinfo>
+    <configure>
+      <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+      <param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+      <param>--sysconfdir=/etc/gnome</param>
+      <param>--disable-gtk-doc</param>
+    </configure>
+    <make />
+    <make>
+      <param>install</param>
+    </make>&ldconfig;</stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&libgnome-directory;</remove>
+    </stage>
+  </package>
+</alfs>

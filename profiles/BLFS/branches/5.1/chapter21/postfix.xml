@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch21.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="postfix" version="&postfix-version;">
+    <packageinfo>
+      <requires>
+        <name>db</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&postfix-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Creating user and group">
+      <execute command="groupadd">
+        <param>-f</param>
+        <param>postfix</param>
+      </execute>
+      <execute command="groupadd">
+        <param>-f</param>
+        <param>postdrop</param>
+      </execute>
+      <execute command="groupadd">
+        <param>-f</param>
+        <param>-g 65534</param>
+        <param>nogroup</param>
+      </execute>
+      <execute command="grep -q ^postfix /etc/passwd || useradd">
+        <param>-c postfix</param>
+        <param>-d /dev/null</param>
+        <param>-g postfix</param>
+        <param>-s /bin/false</param>
+        <param>postfix</param>
+      </execute>
+      <execute command="grep -q ^nobody /etc/passwd || useradd">
+        <param>-c nobody</param>
+        <param>-d /home</param>
+        <param>-g nogroup</param>
+        <param>-s /bin/bash</param>
+        <param>-u 65534</param>
+        <param>nobody</param>
+      </execute>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&postfix-directory;</base>
+      </stageinfo>
+      <ownership user="postfix" group="postfix">
+        <name>/var/mail</name>
+      </ownership>
+      <make />
+      <execute command="sh">
+        <param>postfix-install</param>
+        <param>daemon_directory=/usr/sbin</param>
+        <param>manpage_directory=/usr/share/man</param>
+        <param>sample_directory=/usr/share/doc/postfix</param>
+        <param>-non-interactive</param>
+      </execute>
+      <mkdir>
+        <option>parents</option>
+        <name>/usr/share/doc/postfix</name>
+      </mkdir>
+      <copy>
+        <option>recursive</option>
+        <option>force</option>
+        <source>html/*</source>
+        <destination>/usr/share/doc/postfix</destination>
+      </copy>
+      <textdump>
+        <file>/etc/aliases</file>
+        <content>
+	  =# Begin /etc/aliases
+	  =
+	  =MAILER-DAEMON: postmaster
+	  =postmaster: root
+	  =
+	  =root: &username;
+	  =# End /etc/aliases
+	</content>
+      </textdump>
+      <search_replace base="/etc/postfix">
+        <file>main.cf</file>
+        <find>#myhostname = host.domain.tld</find>
+        <replace>myhostname = &hostname;</replace>
+      </search_replace>
+      <execute command="/usr/bin/newaliases" />
+    </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-postfix</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&postfix-directory;</remove>
+      <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+    </stage>
+  </package>
+</alfs>

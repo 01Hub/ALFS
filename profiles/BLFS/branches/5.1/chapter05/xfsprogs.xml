@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch05.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="xfsprogs" version="&xfsprogs-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&xfsprogs-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <!-- If planning to use xfs filesystems, you should patch your kernel to support XFS prior to running
+        this profile -->
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&xfsprogs-directory;</base>
+      </stageinfo>
+      <search_replace>
+        <file>Makefile</file>
+        <find>autoconf</find>
+        <replace></replace>
+      </search_replace>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&xfsprogs-directory;</remove>
+    </stage>
+  </package>
+</alfs>

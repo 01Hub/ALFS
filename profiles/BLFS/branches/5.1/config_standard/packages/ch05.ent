@@ -1,0 +1,9 @@
+<!--************* packages for chapter 5 *************-->
+
+<!ENTITY reiserfsprogs-version   "3.6.14">
+<!ENTITY reiserfsprogs-package   "reiserfsprogs-&reiserfsprogs-version;.tar.bz2">
+<!ENTITY reiserfsprogs-directory "reiserfsprogs-&reiserfsprogs-version;">
+
+<!ENTITY xfsprogs-version   "2.6.13">
+<!ENTITY xfsprogs-package   "xfsprogs-&xfsprogs-version;.src.tar.gz">
+<!ENTITY xfsprogs-directory "xfsprogs-&xfsprogs-version;">

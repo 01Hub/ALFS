@@ -1,0 +1,44 @@
+<!--************* packages for chapter 4 *************-->
+
+<!ENTITY cracklib-version   "2.7">
+<!ENTITY cracklib-package   "cracklib,&cracklib-version;.tar.gz">
+<!ENTITY cracklib-directory "cracklib,&cracklib-version;">
+<!ENTITY cracklib-wordlist "allwords">
+<!ENTITY cracklib-blfs-patch "cracklib,&cracklib-version;-blfs-1.patch">
+<!ENTITY cracklib-heimdal-patch "cracklib,&cracklib-version;-heimdal-1.patch">
+
+<!ENTITY linuxpam-version   "0.77">
+<!ENTITY linuxpam-package   "Linux-PAM-&linuxpam-version;.tar.bz2">
+<!ENTITY linuxpam-directory "Linux-PAM-&linuxpam-version;">
+
+<!ENTITY linuxpam-linkage-patch "Linux-PAM-&linuxpam-version;-linkage-3.patch">
+
+<!ENTITY shadow-version   "4.0.4.1">
+<!ENTITY shadow-package   "shadow-&shadow-version;.tar.bz2">
+<!ENTITY shadow-directory "shadow-&shadow-version;">
+
+<!ENTITY shadow-pam-patch     "shadow-&shadow-version;-pam-1.patch">
+
+<!ENTITY iptables-version   "1.2.9">
+<!ENTITY iptables-package   "iptables-&iptables-version;.tar.bz2">
+<!ENTITY iptables-directory "iptables-&iptables-version;">
+
+<!ENTITY gnupg-version      "1.2.4">
+<!ENTITY gnupg-package      "gnupg-&gnupg-version;.tar.bz2">
+<!ENTITY gnupg-directory    "gnupg-&gnupg-version;">
+
+<!ENTITY tripwire-version "2.3.1-2">
+<!ENTITY tripwire-package "tripwire-&tripwire-version;.tar.gz">
+<!ENTITY tripwire-directory "tripwire-&tripwire-version;">
+<!ENTITY tripwire-gcc-patch "tripwire-&tripwire-version;-gcc3-build-fixes.patch">
+
+<!ENTITY heimdal-version "0.6.2">
+<!ENTITY heimdal-package "heimdal-&heimdal-version;.tar.gz">
+<!ENTITY heimdal-directory "heimdal-&heimdal-version;">
+<!ENTITY heimdal-fhs-patch "heimdal-&heimdal-version;-fhs-compliance-1.patch">
+<!ENTITY heimdal-cracklib-patch "heimdal-&heimdal-version;-cracklib-1.patch">
+
+<!ENTITY mitkrb-version "1.3.3">
+<!ENTITY mitkrb-package "krb5-&mitkrb-version;.tar">
+<!ENTITY mitkrb-krb5-package "krb5-&mitkrb-version;.tar.gz">
+<!ENTITY mitkrb-directory "krb5-&mitkrb-version;">

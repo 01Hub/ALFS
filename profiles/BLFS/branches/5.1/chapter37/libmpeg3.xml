@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch37.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="libmpeg3" version="&libmpeg3-version;">
+    <packageinfo>
+      <requires>
+        <name>nasm</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&libmpeg3-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&libmpeg3-directory;</base>
+      </stageinfo>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <copy>
+        <source>i686/libmpeg3.a</source>
+        <destination>/usr/lib</destination>
+      </copy>
+      <copy>
+        <source>libmpeg3.h</source>
+        <source>mpeg3private.h</source>
+        <source>mpeg3protos.h</source>
+        <destination>/usr/include</destination>
+      </copy>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&libmpeg3-directory;</remove>
+    </stage>
+  </package>
+</alfs>

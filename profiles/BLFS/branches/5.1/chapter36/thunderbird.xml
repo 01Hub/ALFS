@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch36.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="thunderbird" version="&thunderbird-version;">
+    <packageinfo>
+      <requires>
+        <name>zip</name>
+      </requires>
+      <requires>
+        <name>gtk+2</name>
+      </requires>
+      <requires>
+        <name>libidl</name>
+      </requires>
+      <requires>
+        <name>libmng</name>
+      </requires>
+      <requires>
+        <name>which</name>
+      </requires>
+      <requires>
+        <name>hd2u</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&thunderbird-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <archive>&build_dir;/mozilla-thunderbird/archives/&thunderbird-thunderbird-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <environment>
+          <variable name="MOZILLA_OFFICIAL">1</variable>
+          <variable name="BUILD_OFFICIAL">1</variable>
+          <variable name="MOZ_THUNDERBIRD">1</variable>
+        </environment>
+        <base>&build_dir;/&thunderbird-directory;</base>
+      </stageinfo>
+      <execute command="find -type f -print0 | xargs -0 dos2unix --d2u" />
+      <configure>
+        <param>--prefix=/opt/thunderbird-&thunderbird-version;</param>
+        <param>--enable-default-toolkit=gtk2</param>
+        <param>--with-x</param>
+        <param>--with-system-zlib</param>
+        <param>--with-system-jpeg</param>
+        <param>--with-system-png</param>
+        <param>--with-system-mng</param>
+        <param>--enable-xft</param>
+        <param>--enable-crypto</param>
+        <param>--disable-accessibility</param>
+        <param>--disable-tests</param>
+        <param>--disable-debug</param>
+        <param>--disable-logging</param>
+        <param>--enable-reorder</param>
+        <param>--enable-strip</param>
+        <param>--disable-pedantic</param>
+        <param>--enable-cpp-rtti</param>
+        <param>--enable-extensions=all</param>
+        <param>--disable-calendar</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <link>
+        <option>force</option>
+        <target>/opt/thunderbird-&thunderbird-version;/bin/thunderbird</target>
+        <name>/usr/bin/MozillaThunderbird</name>
+      </link>
+      <stage name="Multi-User Operation Setup">
+        <stageinfo>
+          <environment>
+            <variable name="LD_LIBRARY_PATH">/opt/thunderbird-&thunderbird-version;/lib/mozilla-&thunderbird-moz-lib-version;</variable>
+            <variable name="MOZILLA_FIVE_HOME">/opt/thunderbird-&thunderbird-version;/lib/mozilla-&thunderbird-moz-lib-version;</variable>
+          </environment>
+          <base>/opt/thunderbird-&thunderbird-version;/lib/mozilla-&thunderbird-moz-lib-version;</base>
+        </stageinfo>
+        <execute command="./regxpcom" />
+        <execute command="./regchrome" />
+        <execute command="touch `find /opt/thunderbird-&thunderbird-version;/lib/mozilla-&thunderbird-moz-lib-version; -name *.rdf`" />
+      </stage>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&thunderbird-directory;</remove>
+      <remove>&build_dir;/mozilla-thunderbird</remove>
+    </stage>
+  </package>
+</alfs>

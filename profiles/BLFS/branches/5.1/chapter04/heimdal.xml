@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch04.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+
+<alfs>
+<package name="heimdal" version="&heimdal-version;">
+  <packageinfo>
+    <requires>
+      <name>openssl</name>
+    </requires>
+    <requires>
+      <name>db</name>
+    </requires>
+    <utilizes>
+      <name>readline</name>
+    </utilizes>
+    <utilizes>
+      <name>linuxpam</name>
+    </utilizes>
+    <utilizes>
+      <name>openldap</name>
+    </utilizes>
+    <utilizes>
+      <name>xfree86</name>
+    </utilizes>
+    <utilizes>
+      <name>cracklib</name>
+    </utilizes>
+  </packageinfo>
+  <stage name="Unpacking.">
+    <unpack>
+      <archive>&packages_dir;/&heimdal-package;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+    <unpack>
+      <archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>	
+  </stage>
+  <stage name="Patching.">
+    <stageinfo>
+      <base>&build_dir;/&heimdal-directory;</base>
+    </stageinfo>
+    <patch>
+      <param>-N</param>
+      <param>-p1</param>
+      <param>-i &packages_dir;/&heimdal-fhs-patch;</param>
+    </patch>
+    <patch>
+      <param>-N</param>
+      <param>-p1</param>
+      <param>-i &packages_dir;/&heimdal-cracklib-patch;</param>
+    </patch>
+  </stage>
+  <stage name="Installing.">
+    <stageinfo>
+      <base>&build_dir;/&heimdal-directory;</base>
+    </stageinfo>
+    <move base="/usr/bin">
+      <source>ftp</source>
+      <destination>ftpn</destination>
+    </move>
+    <configure>
+      <param>--prefix=/usr</param>
+      <param>--sysconfdir=/etc/heimdal</param>
+      <param>--datadir=/var/lib/hemidal</param>
+      <param>--libexecdir=/usr/sbin</param>
+      <param>--sharedstatedir=/usr/share</param>
+      <param>--localstatedir=/var/lib/heimdal</param>
+      <param>--enable-shared</param>
+      <param>--with-openssl=/usr</param>
+    </configure>
+    <make />
+    <make>
+      <param>install</param>
+    </make>
+    <move base="/bin">
+      <source>login</source>
+      <destination>login.shadow</destination>
+    </move>
+    <move base="/bin">
+      <source>su</source>
+      <destination>su.coreutils</destination>
+    </move>
+    <move base="/usr/bin">
+      <source>login</source>
+      <source>su</source>
+      <destination>/bin</destination>
+    </move>
+    <link>
+      <option>force</option>
+      <target>../../bin/login</target>
+      <name>/usr/bin</name>
+    </link>
+    <move base="/usr/lib">
+      <source>libotp.so.0</source>
+      <source>libotp.so.0.1.4</source>
+      <source>libkafs.so.0</source>
+      <source>libkafs.so.0.4.0</source>
+      <source>libkrb5.so.17</source>
+      <source>libkrb5.so.17.3.0</source>
+      <source>libasn1.so.6</source>
+      <source>libasn1.so.6.0.2</source>
+      <source>libroken.so.16</source>
+      <source>libroken.so.16.0.3</source>
+      <source>libcrypto.so.0.9.7</source>
+      <source>libcom_err.so.2</source>
+      <source>libcom_err.so.2.1</source>
+      <source>libdb-4.2.so</source>
+      <destination>/lib</destination>
+    </move>
+    <link>
+      <option>force</option>
+      <target>../../lib/libotp.so.0</target>
+      <target>../../lib/libotp.so.0.1.4</target>
+      <target>../../lib/libkafs.so.0</target>
+      <target>../../lib/libkafs.so.0.4.0</target>
+      <target>../../lib/libkrb5.so.17</target>
+      <target>../../lib/libkrb5.so.17.3.0</target>
+      <target>../../lib/libasn1.so.6</target>
+      <target>../../lib/libasn1.so.6.0.2</target>
+      <target>../../lib/libroken.so.16</target>
+      <target>../../lib/libroken.so.16.0.3</target>
+      <target>../../lib/libcrypto.so.0.9.7</target>
+      <target>../../lib/libcom_err.so.2</target>
+      <target>../../lib/libcom_err.so.2.1</target>
+      <target>../../lib/libdb-4.2.so</target>
+      <name>/usr/lib</name>
+    </link>
+    &ldconfig;
+  </stage>
+  <stage name="Installing bootscript and configuration">
+    <stageinfo>
+      <base>&build_dir;/&blfs-bootscripts-directory;</base>
+    </stageinfo>
+    <make>
+      <param>install-heimdal</param>
+    </make>
+    <mkdir>
+      <option>parents</option>
+      <name>/etc/heimdal</name>
+    </mkdir>
+    <textdump base="/etc/heimdal">
+      <file>krb5.conf</file>
+      <content>
+	=# Begin /etc/heimdal/krb5.conf
+	=  
+	=[libdefaults]
+	=    default_realm = &heimdal-all-caps-domain;
+	=    encrypt = true
+	=
+	=[realms]
+	=    &heimdal-all-caps-domain; = {
+	=        kdc = &heimdal-hostname;
+	=        admin_server = &heimdal-hostname;
+	=        kpasswd_server = &heimdal-hostname;
+	=    }
+	=
+	=[domain_realm]
+	=    .&heimdal-domain; = &heimdal-all-caps-domain;
+	=
+	=[logging]
+	=    kdc = FILE:/var/log/kdc.log
+	=    admin_server = FILE:/var/log/kadmin.log
+	=    default = FILE:/var/log/krb.log
+	=
+	=# End /etc/heimdal/krb5.conf
+      </content>
+    </textdump>
+    <!-- all other configuration concerning heimdal must be done manually -->
+  </stage>
+  <stage name="Cleanup.">
+    <remove>&build_dir;/&heimdal-directory;</remove>
+    <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+  </stage>
+</package>
+</alfs>

@@ -1,0 +1,40 @@
+<!-- configuration for tripwire -->
+<!-- the content of the following entity should be the name of your policy file for tripwire -->
+<!ENTITY tripwire-policy-file "tripwire-policy.txt">
+<!-- these should be changed to usable values -->
+<!ENTITY tripwire-mail-domain "mail.domain.com">
+<!ENTITY tripwire-smtp-port "25">
+<!ENTITY tripwire-sitepassphrase "blahville">
+<!ENTITY tripwire-localpassphrase "blahville2">
+
+<!-- configuartion for heimdal -->
+<!ENTITY heimdal-domain "lfs.org">
+<!ENTITY heimdal-all-caps-domain "LFS.ORG">
+<!ENTITY heimdal-hostname "belgarath.lfs.org">
+
+<!-- configuartion for mitkrb -->
+<!ENTITY mitkrb-domain "lfs.org">
+<!ENTITY mitkrb-all-caps-domain "LFS.ORG">
+<!ENTITY mitkrb-hostname "belgarath.lfs.org">
+
+<!-- configuration for dhclient -->
+<!-- These two entities should be set to appropriate values to start and stop dhclient -->
+<!ENTITY dhclient-start-params "">
+<!ENTITY dhclient-stop-params "-r">
+
+<!-- configuration for dhcpcd -->
+<!-- These two entities should be set to appropriate values to start and stop dhcpcd -->
+<!ENTITY dhcpcd-start-params "">
+<!ENTITY dhcpcd-stop-params "-k">
+
+<!-- where to put kde -->
+<!ENTITY kde-prefix "/usr">
+
+<!-- where to put gnome -->
+<!ENTITY gnome-prefix "/usr">
+
+<!-- for ALSA driver -->
+<!ENTITY sound-card  "emu10k1">
+
+<!-- mplayer arial font size -->
+<!ENTITY mplayer-font-size "14">

@@ -1,0 +1,65 @@
+<!--************* packages for chapter 9 *************-->
+
+<!ENTITY libjpeg-version   "6b">
+<!ENTITY libjpeg-package   "jpegsrc.v&libjpeg-version;.tar.gz">
+<!ENTITY libjpeg-directory "jpeg-&libjpeg-version;">
+
+<!ENTITY libpng-version   "1.2.5">
+<!ENTITY libpng-package   "libpng-&libpng-version;.tar.bz2">
+<!ENTITY libpng-directory "libpng-&libpng-version;">
+
+<!ENTITY libpng-link-to-proper-libs-patch     "libpng-&libpng-version;-link-to-proper-libs.patch">
+
+<!ENTITY libtiff-version   "3.6.1">
+<!ENTITY libtiff-package   "tiff-v&libtiff-version;.tar.gz">
+<!ENTITY libtiff-directory "tiff-v&libtiff-version;">
+
+<!ENTITY libungif-version   "4.1.0b1">
+<!ENTITY libungif-package   "libungif-&libungif-version;.tar.gz">
+<!ENTITY libungif-directory "libungif-&libungif-version;">
+
+<!ENTITY libungif-patch     "libungif-&libungif-version;-va_start.patch">
+
+<!ENTITY libmng-version   "1.0.7">
+<!ENTITY libmng-package   "libmng-&libmng-version;.tar.gz">
+<!ENTITY libmng-directory "libmng-&libmng-version;">
+
+<!ENTITY lcms-version   "1.12">
+<!ENTITY lcms-package   "lcms-&lcms-version;.tar.gz">
+<!ENTITY lcms-directory "lcms-&lcms-version;">
+
+<!ENTITY freetype-version   "2.1.7">
+<!ENTITY freetype-package   "freetype-&freetype-version;.tar.bz2">
+<!ENTITY freetype-directory "freetype-&freetype-version;">
+
+<!ENTITY freetype-bytecode-interpreter-patch "freetype-&freetype-version;-bytecode-interpreter.patch">
+
+<!ENTITY fontconfig-version   "2.2.2">
+<!ENTITY fontconfig-package   "fontconfig-&fontconfig-version;.tar.gz">
+<!ENTITY fontconfig-directory "fontconfig-&fontconfig-version;">
+
+<!ENTITY imlib-version   "1.9.14">
+<!ENTITY imlib-package   "imlib-&imlib-version;.tar.gz">
+<!ENTITY imlib-directory "imlib-&imlib-version;">
+
+<!ENTITY aalib-version   "1.4rc5">
+<!ENTITY aalib-package   "aalib-&aalib-version;.tar.gz">
+<!ENTITY aalib-directory "aalib-&aalib-version;">
+
+<!ENTITY svgalib-version   "1.4.3">
+<!ENTITY svgalib-package   "svgalib-&svgalib-version;.tar.gz">
+<!ENTITY svgalib-directory "svgalib-&svgalib-version;">
+
+<!ENTITY svgalib-gcc3-1-patch     "svgalib-&svgalib-version;-gcc3-1.patch">
+
+<!ENTITY directfb-version   "0.9.20">
+<!ENTITY directfb-package   "DirectFB-&directfb-version;.tar.gz">
+<!ENTITY directfb-directory "DirectFB-&directfb-version;">
+
+<!ENTITY directfb-extra-version   "0.9.16">
+<!ENTITY directfb-extra-package   "DirectFB-extra-&directfb-extra-version;.tar.gz">
+<!ENTITY directfb-extra-directory "DirectFB-extra-&directfb-extra-version;">
+
+<!ENTITY imlib2-version   "1.1.0">
+<!ENTITY imlib2-package   "imlib2-&imlib2-version;.tar.gz">
+<!ENTITY imlib2-directory "imlib2-&imlib2-version;">

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[]>
+<alfs>
+  <stage name="/etc/shells">
+    <textdump base="/etc">
+      <file>shells</file>
+      <content>
+	=# Begin /etc/shells
+	=
+	=/bin/sh
+	=/bin/bash
+	=
+	=# End /etc/shells
+      </content>
+    </textdump>
+  </stage>
+</alfs>

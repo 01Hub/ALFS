@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch22.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="rsync" version="&rsync-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&rsync-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Creating user and group">
+      <execute command="groupadd">
+        <param>-f</param>
+        <param>rsyncd</param>
+      </execute>
+      <execute command="grep -q ^rsyncd /etc/passwd || useradd">
+        <param>-c rsyncd</param>
+        <param>-d /home/rsync</param>
+        <param>-g rsyncd</param>
+        <param>-s /bin/false</param>
+        <param>rsyncd</param>
+      </execute>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&rsync-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <textdump base="/etc">
+        <file>/etc/rsyncd.conf</file>
+        <content>
+	  =# This is a basic rsync configuration file
+	  =# It exports a single module without user authentication.
+	  =
+	  =motd file = /home/rsync/welcome.msg
+	  =use chroot = yes
+	  =
+	  =[localhost]
+	  =    path = /home/rsync
+	  =    comment = Default rsync module
+	  =    read only = yes
+	  =    list = yes
+	  =    uid = rsyncd
+	  =    gid = rsyncd
+	</content>
+      </textdump>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&rsync-directory;</remove>
+      <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+    </stage>
+  </package>
+</alfs>

@@ -1,0 +1,17 @@
+<!--************* packages for chapter 28 *************-->
+<!ENTITY kde-version "3.2.2">
+
+<!ENTITY arts-version      "1.2.2">
+<!ENTITY arts-package      "arts-&arts-version;.tar.bz2">
+<!ENTITY arts-directory    "arts-&arts-version;">
+
+<!ENTITY kdelibs-version   "&kde-version;">
+<!ENTITY kdelibs-package   "kdelibs-&kdelibs-version;.tar.bz2">
+<!ENTITY kdelibs-directory "kdelibs-&kdelibs-version;">
+<!ENTITY kdelibs-kapplication-patch "post-&kde-version;-kdelibs-kapplication.patch">
+<!ENTITY kdelibs-ktelnetservice-patch "post-&kde-version;-kdelibs-ktelnetservice.patch">
+
+<!ENTITY kdebase-version   "&kde-version;">
+<!ENTITY kdebase-package   "kdebase-&kdebase-version;.tar.bz2">
+<!ENTITY kdebase-directory "kdebase-&kdebase-version;">
+
