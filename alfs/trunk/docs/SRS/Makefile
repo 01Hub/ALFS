@@ -16,4 +16,3 @@ alfs-srs:
 
 validate:
 	xmllint --noout --nonet --xinclude --postvalid index.xml
-
