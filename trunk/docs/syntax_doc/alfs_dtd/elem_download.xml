@@ -38,16 +38,14 @@ file to be downloaded.</para>
 directory from which the download is performed. It should be terminated by
 a slash [&nbsp;/&nbsp;]. More precisely, the actual URL used for the
 download is the catenation of the content of the <filename>url</filename>
-element with the content of the <filename>file</filename> element. This
-element is optional, but if used can be used more than once.</para>
+element with the content of the <filename>file</filename> element.</para>
 
 <para>The sub-element <filename>destination</filename> contains the path of
 the directory into which the download should be performed.</para>
 
 <para>The sub-element <filename>digest</filename> contains the value with
-which the digest computed from the dowloaded file will be compared. This
-sub-element is optional. For more information see&nbsp;:
-<xref linkend="elem_digest"/>
+which the digest computed from the dowloaded file will be compared. For
+more information see&nbsp;:<xref linkend="elem_digest"/>
 </para>
 
 <para>If the file is already present in the destination directory, no
@@ -59,13 +57,16 @@ download is performed but the digest is checked if present.</para>
 <title>Examples</title>
 
 <screen><userinput>&lt;download&gt;
-	&lt;file&gt;kbd-1.08.tar.gz&lt;/file&gt;
-	&lt;url&gt;ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/&lt;/url&gt;
+	&lt;file&gt;libxml2-2.6.9.tar.gz&lt;/file&gt;
+	&lt;url&gt;ftp://xmlsoft.org/&lt;/url&gt;
 	&lt;destination&gt;/tmp/&lt;/destination&gt;
 	&lt;digest&gt;924e6a05e52715dc0f96385b35f2f680&lt;/digest&gt;
 &lt;/download&gt;</userinput></screen>
 
-<para>There is no equivalent Bash script example for this element.</para>
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen><userinput>echo Executing 'download'
+<command>wget -nc -O /tmp/libxml2-2.6.9.tar.gz ftp://xmlsoft.org/libxml2-2.6.9.tar.gz</command></userinput></screen>
 
 </sect2>
 

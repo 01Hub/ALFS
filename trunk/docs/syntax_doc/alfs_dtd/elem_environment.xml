@@ -8,7 +8,7 @@
 <synopsis>
 &lt;!ELEMENT environment    (variable+)&gt;
 &lt;!ATTLIST environment
-          mode           ((append | prepend)?)&gt;
+          mode           (append | prepend) #IMPLIED&gt;
 
 </synopsis>
 
@@ -30,9 +30,9 @@ one or more environment variables to be added to the system environment
 used when calling the commands of the stage to which it applies.</para>
 
 <para>By default, the supplied value replaces any existing value for the
-specified variable. The attribute <filename>mode</filename> allows you to specify
-whether the supplied value should be prepended or appended to the existing
-value.</para>
+specified variable. The attribute <filename>mode</filename> allows you to
+specify whether the supplied value should be prepended or appended to the
+existing value.</para>
 
 </sect2>
 
