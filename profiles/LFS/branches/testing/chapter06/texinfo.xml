@@ -23,7 +23,7 @@
 			<base>&build_dir;/&texinfo-directory;</base>
 		</stageinfo>
 
-		<patch base="&build_dir;/&texinfo-package;">
+		<patch base="&build_dir;/&texinfo-directory;">
 			<param>-N</param>
 			<param>-p1</param>
 			<param>-i &packages_dir;/&texinfo-segfault-patch;</param>
