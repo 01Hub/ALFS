@@ -102,8 +102,8 @@
 		<textdump>
 			<file>&build_dir;/install-oo.sh</file>
 			<content>
-			=cd instsetoo/unxlngi4.pro/01/normal &amp;&amp;
-			=sed -i &quot;s:^oo_home=.*.:oo_home=openoffice:&quot; install &amp;&amp;
+			=cd instsetoo/unxlngi4.pro/01/normal &real-amp;&real-amp;
+			=sed -i &quot;s:^oo_home=.*.:oo_home=openoffice:&quot; install &real-amp;&real-amp;
 			=# The following code was extracted from Tushar Teredesai's build
 			=# scripts for openoffice at 
 			=# http://www.linuxfromscratch.org/~tushar/openoffice
@@ -117,7 +117,7 @@
 			=	then
 			=		sleep 10s
 			=		# Start a Xserver
-			=		Xvfb :$DISPLAY_NUM >&amp; /dev/null &amp;
+			=		Xvfb :$DISPLAY_NUM >&real-amp; /dev/null &real-amp;
 			=		sleep 10s
 			=		# Check if server started properly
 			=		if [ -f /tmp/.X$DISPLAY_NUM-lock ]
@@ -129,8 +129,8 @@
 			=done
 			=echo "Using Display Number $DISPLAY_NUM..."
 			=export DISPLAY=:$DISPLAY_NUM
-			=./install --prefix=/opt &amp;&amp;
-			=kill `cat /tmp/.X$DISPLAY_NUM-lock` >&amp; /dev/null
+			=./install --prefix=/opt &real-amp;&real-amp;
+			=kill `cat /tmp/.X$DISPLAY_NUM-lock` >&real-amp; /dev/null
 			=unset DISPLAY
 			=for appl in swriter scalc sdraw simpress smath soffice
 			=do

@@ -40,7 +40,7 @@
 
 		<remove>/opt/db-3.3/lib/libdb.so</remove>
 
-		<execute command="cd /opt/db-3.3/lib/ &amp;&amp; for i in $(ls); do mv $i /usr/lib; ln -sf /usr/lib/$i; done" />
+		<execute command="cd /opt/db-3.3/lib/ &real-amp;&real-amp; for i in $(ls); do mv $i /usr/lib; ln -sf /usr/lib/$i; done" />
 		<execute command="sed 's/^DB185/DB/' /opt/db-3.3/include/db_185.h > /opt/db-3.3/include/db_185.h.new" />
 
 		<move>

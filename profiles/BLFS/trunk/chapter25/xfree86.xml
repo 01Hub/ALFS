@@ -240,8 +240,8 @@
 		    	<file>.xinitrc</file>
 		    	<content>
                         =# Begin .xinitrc file
-                        =xterm  -g 80x40+0+0   &amp;
-                        =xclock -g 100x100-0+0 &amp;
+                        =xterm  -g 80x40+0+0   &real-amp;
+                        =xclock -g 100x100-0+0 &real-amp;
                         =twm
                         =# End .xinitrc file
 		    	</content>

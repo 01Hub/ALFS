@@ -69,7 +69,7 @@
 			<file>&build_dir;/dircheck.sh</file>
 			<content>
 			=if [ ! -e /etc/xml/catalog ]; then mkdir -p /etc/xml; xmlcatalog --noout \
-			=--create /etc/xml/catalog; fi &amp;&amp;
+			=--create /etc/xml/catalog; fi &real-amp;&real-amp;
 			=if [ ! -e /etc/xml/docbook ]; then xmlcatalog --noout --create \
 			=/etc/xml/docbook; fi
 			</content>
