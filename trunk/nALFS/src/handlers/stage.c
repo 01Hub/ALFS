@@ -323,6 +323,10 @@ static int stage_attribute(const element_s * const element,
 
 	switch (attr->private) {
 	case STAGE_NAME:
+		if (data->name) {
+			Nprint_err("<stage>: cannot specify \"name\" more than once.");
+			return 1;
+		}
 		data->name = xstrdup(value);
 		return 0;
 	default:
@@ -510,15 +514,31 @@ static int stageinfo_parameter(const element_s * const element,
 
 	switch (param->private) {
 	case STAGEINFO_BASE:
+		if (data->base) {
+			Nprint_err("<stageinfo>: cannot specify <base> more than once.");
+			return 1;
+		}
 		data->base = xstrdup(value);
 		return 0;
 	case STAGEINFO_USER:
+		if (data->user) {
+			Nprint_err("<stageinfo>: cannot specify <user> more than once.");
+			return 1;
+		}
 		data->user = xstrdup(value);
 		return 0;
 	case STAGEINFO_ROOT:
+		if (data->root) {
+			Nprint_err("<stageinfo>: cannot specify <root> more than once.");
+			return 1;
+		}
 		data->root = xstrdup(value);
 		return 0;
 	case STAGEINFO_SHELL:
+		if (data->shell) {
+			Nprint_err("<stageinfo>: cannot specify <shell> more than once.");
+			return 1;
+		}
 		data->shell = xstrdup(value);
 		return 0;
 	default:
@@ -665,9 +685,17 @@ static int variable_attribute(const element_s * const element,
 
 	switch (attr->private) {
 	case VARIABLE_NAME:
+		if (data->name) {
+			Nprint_err("<variable>: cannot specify \"name\" more than once.");
+			return 1;
+		}
 		data->name = xstrdup(value);
 		return 0;
 	case VARIABLE_MODE:
+		if (data->mode != VAR_SET) {
+			Nprint_err("<variable>: cannot specify \"mode\" more than once.");
+			return 1;
+		}
 		if (strcmp(value, "append") == 0) {
 			data->mode = VAR_APPEND;
 			return 0;
