@@ -113,26 +113,23 @@
 <!ENTITY gcc-2953-returntype-fix-patch-md5 "f74207075f47b9b6adc875537aa98f3d">
 <!ENTITY gcc-2953-returntype-fix-patch "gcc-&gcc-2953-version;-returntype-fix.patch">
 
-<!ENTITY gcc-version "3.3.1">
+<!ENTITY gcc-version "3.3.2">
 <!ENTITY gcc-directory "gcc-&gcc-version;">
 
-<!ENTITY gcc-core-md5 "8c113f495402c5ab8bf35133268de561">
+<!ENTITY gcc-core-md5 "42d1314aaa11a40e4c7c9fcb0f49259a">
 <!ENTITY gcc-core-package "gcc-core-&gcc-version;.tar.bz2">
 
-<!ENTITY gcc-gpp-md5 "0e74dc443140e287f471cd1d607bb663">
+<!ENTITY gcc-gpp-md5 "b9ae980739e7f9299addc0a3576777e7">
 <!ENTITY gcc-gpp-package "gcc-g++-&gcc-version;.tar.bz2">
   
-<!ENTITY gcc-testsuite-md5 "46f17d58a070104999b84e70610bc563">
+<!ENTITY gcc-testsuite-md5 "d0d0b003be65c6b79c7655c5fd64b18f">
 <!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;.tar.bz2">
 
-<!ENTITY gcc-no-fixincludes-patch-md5 "4989c7d93bf429c9401ddd615f467844">
-<!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no_fixincludes-2.patch">
+<!ENTITY gcc-no-fixincludes-patch-md5 "5f764c74b3e9c36252fe4f9a14598ee4">
+<!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no_fixincludes-1.patch">
 
-<!ENTITY gcc-specs-patch-md5 "fed39c06f54e850ef0d594d29e3b4a62">
-<!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-2.patch">
-
-<!ENTITY gcc-suppress-libiberty-patch-md5 "e1c190d31e72d1ef4ddc1dc6a8beb021">
-<!ENTITY gcc-suppress-libiberty-patch "gcc-&gcc-version;-suppress-libiberty.patch">
+<!ENTITY gcc-specs-patch-md5 "74cb9822f21774ae1c9a8ef1fa133f49">
+<!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-1.patch">
 
 <!ENTITY gettext-md5 "5d4bddd300072315e668247e5b7d5bdb">
 <!ENTITY gettext-version "0.12.1">

@@ -20,7 +20,6 @@
 
 		<copy>
 			<source>&packages_dir;/&gcc-no-fixincludes-patch;</source>
-			<source>&packages_dir;/&gcc-suppress-libiberty-patch;</source>
 			<destination>&build_dir;</destination>
 		</copy>
 
@@ -45,11 +44,11 @@
 			<param>-i ../&gcc-no-fixincludes-patch;</param>
 		</patch>
 
-		<patch base="&build_dir;/&gcc-directory;">
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&gcc-suppress-libiberty-patch;</param>
-		</patch>
+		<search_replace base="&build_dir;/&gcc-directory;">
+			<file>libiberty/Makefile.in</file>
+			<find>install_to_$(INSTALL_DEST) </find>
+			<replace> </replace>
+		</search_replace>
 
 		<configure command="../&gcc-directory;/configure">
 			<param>--prefix=/usr</param>
@@ -90,6 +89,5 @@
 		<remove>&build_dir;/&gcc-directory;</remove>
 		<remove>&build_dir;/gcc-build</remove>
 		<remove>&build_dir;/&gcc-no-fixincludes-patch;</remove>
-		<remove>&build_dir;/&gcc-suppress-libiberty-patch;</remove>
 	</stage>
 </package>

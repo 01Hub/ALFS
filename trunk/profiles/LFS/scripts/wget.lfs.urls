@@ -9,9 +9,9 @@ ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/diffutils/diffutils-2.8.1.tar.
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/ed/ed-0.2.tar.gz
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gawk/gawk-3.1.3.tar.bz2
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gcc/gcc-2.95.3.tar.gz
-ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gcc/gcc-3.3.1/gcc-core-3.3.1.tar.bz2
-ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gcc/gcc-3.3.1/gcc-g++-3.3.1.tar.bz2
-ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gcc/gcc-3.3.1/gcc-testsuite-3.3.1.tar.bz2
+ftp://gnu.wwc.edu/pub/mirrors/ftp.gnu.org/gcc/gcc-3.3.2/gcc-core-3.3.2.tar.bz2
+ftp://gnu.wwc.edu/pub/mirrors/ftp.gnu.org/gcc/gcc-3.3.2/gcc-g++-3.3.2.tar.bz2
+ftp://gnu.wwc.edu/pub/mirrors/ftp.gnu.org/gcc/gcc-3.3.2/gcc-testsuite-3.3.2.tar.bz2
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/inetutils/inetutils-1.4.2.tar.gz
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/make/make-3.80.tar.bz2
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/ncurses/ncurses-5.3.tar.gz
@@ -46,9 +46,8 @@ http://www.linuxfromscratch.org/patches/lfs/5.0/gawk-3.1.3-libexecdir.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/gcc-2.95.3-2.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/gcc-2.95.3-no-fixinc.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/gcc-2.95.3-returntype-fix.patch
-http://www.linuxfromscratch.org/patches/lfs/5.0/gcc-3.3.1-no_fixincludes-2.patch
-http://www.linuxfromscratch.org/patches/lfs/5.0/gcc-3.3.1-specs-2.patch
-http://www.linuxfromscratch.org/patches/lfs/5.0/gcc-3.3.1-suppress-libiberty.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/gcc-3.3.2-no_fixincludes-1.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/gcc-3.3.2-specs-1.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/glibc-2.3.2-sscanf-1.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/grub-0.93-gcc33-1.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/kbd-1.08-more-programs.patch
