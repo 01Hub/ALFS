@@ -5,11 +5,6 @@
 			<archive>&packages_dir;/&udev-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-    		<copy>
-		  	<source>&packages_dir;/&udev-config-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing">
@@ -20,7 +15,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&udev-config-patch;</param>
+			<param>-i &packages_dir;/&udev-config-patch;</param>
 		</patch>
 
 		<make>
@@ -41,6 +36,5 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&udev-directory;</remove>
-		<remove>&build_dir;/&udev-config-patch;</remove>
 	</stage>
 </package>

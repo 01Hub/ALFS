@@ -6,13 +6,6 @@
 			<destination>&build_dir;</destination>
 		</unpack>
 
-		<copy>
-			<source>&packages_dir;/&gcc-2953-patch;</source>
-			<source>&packages_dir;/&gcc-2953-patch-no-fixinc;</source>
-			<source>&packages_dir;/&gcc-2953-returntype-fix-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
-
 		<mkdir>
 			<name>&build_dir;/gcc-2-build</name>
 		</mkdir>
@@ -30,19 +23,19 @@
 		<patch base="&build_dir;/&gcc-2953-directory;">
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&gcc-2953-patch;</param>
+			<param>-i &packages_dir;/&gcc-2953-patch;</param>
 		</patch>
 
 		<patch base="&build_dir;/&gcc-2953-directory;">
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&gcc-2953-patch-no-fixinc;</param>
+			<param>-i &packages_dir;/&gcc-2953-patch-no-fixinc;</param>
 		</patch>
 
 		<patch base="&build_dir;/&gcc-2953-directory;">
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&gcc-2953-returntype-fix-patch;</param>
+			<param>-i &packages_dir;/&gcc-2953-returntype-fix-patch;</param>
 		</patch>
 
 		<textdump base="&build_dir;/&gcc-2953-directory;">
@@ -68,9 +61,6 @@
 
 	<stage name="Cleaning up.">
 		<remove>&build_dir;/&gcc-2953-directory;</remove>
-		<remove>&build_dir;/&gcc-2953-patch;</remove>
-		<remove>&build_dir;/&gcc-2953-returntype-fix-patch;</remove>
-		<remove>&build_dir;/&gcc-2953-patch-no-fixinc;</remove>
 		<remove>&build_dir;/gcc-2-build</remove>
 	</stage>
 </package>

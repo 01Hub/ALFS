@@ -5,11 +5,6 @@
 			<archive>&packages_dir;/&man-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&man-80cols-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing.">
@@ -20,7 +15,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&man-80cols-patch;</param>
+			<param>-i &packages_dir;/&man-80cols-patch;</param>
 		</patch>
 
 		<search_replace base="&build_dir;/&man-directory;">
@@ -48,6 +43,5 @@
 
 	<stage name="Cleaning up.">
 		<remove>&build_dir;/&man-directory;</remove>
-		<remove>&build_dir;/&man-80cols-patch;</remove>
 	</stage>
 </package>
