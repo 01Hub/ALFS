@@ -1,0 +1,64 @@
+<package name="libfam" version="&libfam-version;">
+
+    <packageinfo>
+        <requires>
+	    <name>portmap</name>
+	</requires>
+    </packageinfo>
+
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&libfam-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+		        <archive>&packages_dir;/&libfam-ppatch1;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+		        <archive>&packages_dir;/&libfam-ppatch2;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&libfam-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&libfam-patch1;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&libfam-patch2;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&libfam-directory;</remove>
+		<remove>&build_dir;/&libfam-patch1;</remove>
+		<remove>&build_dir;/&libfam-patch2;</remove>
+	</stage>
+
+</package>

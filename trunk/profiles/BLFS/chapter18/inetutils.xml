@@ -1,0 +1,36 @@
+<package name="inetutils" version="&inetutils-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&inetutils-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&inetutils-directory;</base>
+		</stageinfo>
+
+		<configure>
+		         <param>--prefix=/usr</param>
+			 <param>--disable-syslogd</param>
+			 <param>--libexecdir=/usr/sbin</param>
+			 <param>--infodir=/usr/share/info</param>
+			 <param>--mandir=/usr/share/man</param>
+			 <param>--with-wrap</param>
+			 <param>--with-pam</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+		
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&inetutils-directory;</remove>
+	</stage>
+</package>

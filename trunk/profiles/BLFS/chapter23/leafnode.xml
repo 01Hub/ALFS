@@ -1,0 +1,78 @@
+<package name="leafnode" version="&leafnode-version;">
+
+        <packageinfo>
+                <requires><name>pcre</name></requires>
+                <requires><name>xinetd</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&leafnode-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&leafnode-directory;</base>
+		</stageinfo>
+
+		<execute command="grep news:  /etc/group  || groupadd">
+		        <param>news</param>
+		</execute>
+		
+		<execute command="id -u news || useradd">
+			<param>-g news</param>
+			<param>news</param>
+		</execute>
+
+		<configure>
+			<param>--localstatedir=/var</param>
+			<param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc/news</param>
+			<param>--with-lockfile=/var/lock/fetchnews.lck</param>
+		</configure>
+
+		<make />
+
+		<make>
+		        <param>install</param>
+		</make>
+
+		<execute command="/sbin/ldconfig" />
+
+		<make>
+		        <param>update</param>
+		</make>
+
+
+		<textdump mode="append" base="/etc">
+		<file>xinetd.conf</file>		
+		<content>
+		        =
+		        =service nntp
+			={
+			=    flags           = NAMEINARGS NOLIBWRAP
+			=    socket_type     = stream
+			=    protocol        = tcp
+			=    wait            = no
+			=    user            = news
+			=    server          = /usr/sbin/tcpd
+			=    server_args     = /usr/sbin/leafnode
+			=    instances       = 7
+			=    per_source      = 3
+			=}
+		</content>
+		</textdump>
+
+		<copy>
+		        <source>/etc/news/config.example</source>
+			<destination>/etc/news/config</destination>
+		</copy>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&leafnode-directory;</remove>
+	</stage>
+
+</package>

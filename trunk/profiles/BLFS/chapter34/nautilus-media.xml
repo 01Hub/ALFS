@@ -1,0 +1,38 @@
+<package name="nautilus-media" version="&nautilus-media-version;">
+
+        <packageinfo>
+                <requires><name>libgnomeui</name></requires>
+                <requires><name>gstreamer</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&nautilus-media-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&nautilus-media-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+			<param>--sysconfdir=/etc/gnome</param>
+			<param>--localstatedir=/var/lib</param>
+			<param>--libexecdir=&gnome-prefix;/sbin</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&nautilus-media-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,365 @@
+<package name="xfree86" version="&xfree86-version;">
+
+        <packageinfo>
+                <requires><name>expat</name></requires>
+                <requires><name>libpng</name></requires>
+                <requires><name>linuxpam</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking and patching a package.">
+		<unpack>
+			<archive>&packages_dir;/&xfree86-package1;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&xfree86-package2;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&xfree86-package3;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+
+		<unpack>
+			<archive>&packages_dir;/&xfree86-package4;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+
+		<unpack>
+			<archive>&packages_dir;/&xfree86-package5;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+
+		<unpack>
+			<archive>&packages_dir;/&xfree86-package6;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+
+		<unpack>
+			<archive>&packages_dir;/&xfree86-package7;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&xfree86-directory;</base>
+		</stageinfo>
+
+		<textdump
+		    base="&build_dir;/&xfree86-directory;/config/cf">
+		    <file>host.def</file>
+		    <content>
+                        =# Begin XFree86 hosts.def file
+                        =
+                        =/* System Related Information.  If you read and configure only one
+                        = * section then it should be this one.  The Intel architecture defaults are 
+                        = * set for a i686 and higher.  Apx is for the Alpha architecture and Ppc is  
+                        = * for the Power PC. *******************************************************/
+                        =
+                        =#define DefaultGcc2i386Opt  -O2 -fomit-frame-pointer -march=i686  
+                        =#define DefaultGcc2AxpOpt   -O2 -mcpu=ev6
+                        =#define DefaultGcc2PpcOpt   -O2 -mcpu=750
+                        =
+                        =/* The following definitions are normally set properly by XFree86's scripts.
+                        = * You can uncomment them if you want to make sure. ************************/
+                        = 
+                        =/* #define HasMTRRSupport      YES  */ /* Enabled in kernel see kernel docs */
+                        =/* #define HasMMXSupport        NO         */ /* Any i586 or above */
+                        =/* #define HasKatmaiSupport     NO  */ /* PIII SSE instuctions */
+                        =/* #define Has3DNowSupport      NO  */ /* AMD instructions */
+                        =
+                        =
+                        =/* This setting reduces compile time a little by omitting rarely used input 
+                        = * devices.  You can find the complete list in config/cf/xfree86.cf ********/
+                        = 
+                        =#define XInputDrivers                 mouse void
+                        =
+                        =/* VIDEO DRIVERS ***********************************************************/
+                        =
+                        =/* If you are sure you only want the drivers for one or a few video cards,
+                        = * you can delete the drivers you do not want. *****************************/ 
+                        =
+                        =#define XF86CardDrivers mga glint nv tga s3virge rendition \
+                        =                        cirrus vmware tseng chips apm \
+                        =                        fbdev i128 \
+                        =                        ati AgpGartDrivers DevelDrivers ark cyrix \
+                        =                        vesa vga XF86OSCardDrivers
+                        =
+                        =/* FONT SERVER AND LIBRARY SETTINGS ****************************************/
+                        =
+                        =
+                        =/* These setting should be set by default, but we are making sure. *********/
+                        =
+                        =#define BuildFontServer                YES  /* Need for GhostScript Print Server */
+                        =#define BuildFreetype2Library          YES  /* For using TrueType Fonts */
+                        =#define SharedLibFont                  YES  /* Needed for Truetype */
+                        =#define CompressAllFonts               YES
+                        =#define GzipFontCompression            YES
+                        =
+                        =/* The font path can be redefined in the XF86Config file *******************/
+                        =
+                        =#define DefaultFontPath                $(FONTDIR)/misc/,$(FONTDIR)/75dpi/,\
+                        =$(FONTDIR)/100dpi/,$(FONTDIR)/Type1,$(FONTDIR)/local,\
+                        =$(FONTDIR)/TrueType,$(FONTDIR)/CID,$(FONTDIR)/Speedo
+                        =
+                        =/* INTERNATIONAL FONTS.  Change to YES if you need any of them.  These  are
+                        = * the defaults. ***********************************************************/
+                        =
+			=/* VDZ: changed NO into YES for all fonts */
+			=
+                        =#define BuildCyrillicFonts            YES
+                        =#define BuildArabicFonts              YES
+                        =#define BuildISO8859_6Fonts           YES
+                        =#define BuildGreekFonts               YES
+                        =#define BuildISO8859_7Fonts           YES
+                        =#define BuildHebrewFonts              YES
+                        =#define BuildISO8859_8Fonts           YES
+                        =#define BuildKOI8_RFonts              YES
+                        =#define BuildJapaneseFonts            YES
+                        =#define BuildJISX0201Fonts            YES
+                        =#define BuildKoreanFonts              YES
+                        =#define BuildChineseFonts             YES
+                        =
+                        =/* DOCUMENTATION SETTINGS **************************************************/
+                        =
+                        =/* These setting are the defaults. *****************************************/
+                        =
+                        =#define BuildLinuxDocHtml             NO    /* X Docs in Html format */
+                        =#define BuildLinuxDocPS               NO    /* X Docs in PostScript format */
+                        =#define BuildAllSpecsDocs             NO    /* Various docs */
+                        =#define BuildHtmlManPages             NO
+                        =
+                        =/* Linux Distribution Information - Not essential that it is totally right.*/
+                        =
+                        =#define LinuxDistribution         LFS 
+                        =#define LinuxCLimbMajorVersion    3
+                        =#define LinuxCLimbMinorVersion    3        
+                        =#define LinuxCLimbTeenyVersion    0
+                        =
+                        =/* GENERAL SETTINGS: You generally want to leave these alone when
+                        = * building X on an LFS system *********************************************/
+                        =
+                        =#define GccWarningOptions         -pipe
+                        =#define TermcapLibrary            -lncurses
+                        =#define XprtServer                YES /* Needed by realplayer */
+                        =#define XnestServer               YES
+                        =#define XAppLoadDir               EtcX11Directory/app-defaults
+                        =#define VarLibDir                 /var/lib
+                        =#define XFree86Devel               NO
+                        =#define FSUseSyslog               YES
+                        =#define ThreadedX                 YES
+                        =#define HasZlib                   YES
+                        =#define HasNCurses                YES
+                        =#define HasPam                    NO        
+                        =#define SystemManDirectory        /usr/share/man
+                        =#define HasLibCrypt               YES
+                        =#define InstallXinitConfig        YES
+                        =#define InstallXdmConfig          YES
+                        =#define ForceNormalLib            YES
+                        =#define BuildSpecsDocs             NO
+                        =#define HasExpat                  YES
+                        =
+                        =# End XFree86 host.def file
+		    </content>
+		</textdump>
+
+		<make>
+		        <param>World</param>
+		</make>
+
+		<make>
+		        <param>install</param>
+		</make>
+
+		<make>
+		        <param>install.man</param>
+		</make>
+
+                <link>
+		        <option>force</option>
+		        <target>/usr/X11R6/bin</target>
+			<name>/usr/bin/X11</name>
+		</link>
+
+                <link>
+		        <option>force</option>
+		        <target>/usr/X11R6/lib/X11</target>
+			<name>/usr/lib/X11</name>
+		</link>
+
+                <link>
+		        <option>force</option>
+		        <target>/usr/X11R6/include/X11</target>
+			<name>/usr/include/X11</name>
+		</link>
+		
+		
+		<!-- update /etc/ld.so.conf -->
+
+		<search_replace
+		    base = "/etc">
+		    <file>ld.so.conf</file>
+		    <find>/usr/X11R6/lib</find>
+		    <replace></replace>
+                </search_replace>
+
+		<textdump
+		    mode="append"
+		    base="/etc">
+		    <file>ld.so.conf</file>
+		    <content>
+                        =/usr/X11R6/lib
+		    </content>
+		</textdump>
+		
+		<execute command="/sbin/ldconfig" />
+		
+		<!-- update ~/.bash_profile -->
+
+		<search_replace
+		    base = "/root">
+		    <file>.bash_profile</file>
+		    <find>PATH=$PATH:/usr/X11R6/bin</find>
+		    <replace></replace>
+                </search_replace>
+
+		<textdump
+		    mode="append"
+		    base="/root">
+		    <file>.bash_profile</file>
+		    <content>
+		        =PATH=$PATH:/usr/X11R6/bin
+			=export PATH
+		    </content>
+		</textdump>
+		
+		<link base="/dev">
+		    <option>force</option>
+		    <target>psaux</target>
+		    <name>mouse</name>
+		</link>
+		
+		<textdump
+		    base="/etc/X11">
+		    <file>XF86Config</file>
+		    <content>
+                        =Section "ServerLayout"
+                        =	Identifier     "XFree86 Configured"
+                        =	Screen      0  "Screen0" 0 0
+                        =	InputDevice    "Mouse0" "CorePointer"
+                        =	InputDevice    "Keyboard0" "CoreKeyboard"
+                        =EndSection
+                        =
+                        =Section "Files"
+                        =	RgbPath      "/usr/X11R6/lib/X11/rgb"
+                        =	ModulePath   "/usr/X11R6/lib/modules"
+                        =	FontPath     "/usr/X11R6/lib/X11/fonts/misc/"
+                        =	FontPath     "/usr/X11R6/lib/X11/fonts/TTF"
+                        =	FontPath     "/usr/X11R6/lib/X11/fonts/75dpi/"
+                        =	FontPath     "/usr/X11R6/lib/X11/fonts/100dpi/"
+                        =	FontPath     "/usr/X11R6/lib/X11/fonts/Type1"
+                        =	FontPath     "/usr/X11R6/lib/X11/fonts/local"
+                        =	FontPath     "/usr/X11R6/lib/X11/fonts/CID"
+                        =	FontPath     "/usr/X11R6/lib/X11/fonts/Speedo"
+                        =EndSection
+                        =
+                        =Section "Module"
+                        =	Load  "extmod"
+                        =	Load  "glx"
+                        =	Load  "dri"
+                        =	Load  "dbe"
+                        =	Load  "record"
+                        =	Load  "xtrap"
+                        =	Load  "speedo"
+                        =	Load  "type1"
+                        =	Load  "freetype"
+                        =EndSection
+                        =
+                        =Section "InputDevice"
+                        =	Identifier  "Keyboard0"
+                        =	Driver      "keyboard"
+                        =       Option      "XkbRules"   "xfree86"
+                        =       Option      "XkbModel"   "pc105"
+                        =       Option      "XkbLayout"  "fr"
+                        =EndSection
+                        =
+                        =Section "InputDevice"
+                        =	Identifier  "Mouse0"
+                        =	Driver      "mouse"
+                        =	Option	    "Protocol" "&mouseProtocol;"
+                        =	Option	    "Device" "/dev/mouse"
+			=	Option      "ZAxisMapping"  "4 5"
+			=	Option      "Buttons"   "3"
+                        =EndSection
+                        =
+                        =Section "Monitor"
+                        =	Identifier   "Monitor0"
+                        =	VendorName   "Monitor Vendor"
+                        =	ModelName    "Monitor Model"
+                        =	HorizSync    &HorizSync;
+                        =	VertRefresh  &VertRefresh;
+                        =	Modeline     &Modeline;
+                        =EndSection
+                        =			
+                        =Section "Device"
+                        =	Identifier  "Card0"
+                        =	Driver      "&Driver;"
+                        =	VendorName  "&VendorName;"
+                        =	BoardName   "&BoardName;"
+                        =	BusID       "&BusID;"
+                        =EndSection
+                        =
+                        =Section "Screen"
+                        =	Identifier "Screen0"
+                        =	Device     "Card0"
+                        =	Monitor    "Monitor0"
+                        =	DefaultColorDepth 24
+                        =
+                        =	SubSection "Display"
+                        =		Depth     1
+                        =	EndSubSection
+                        =	SubSection "Display"
+                        =		Depth     4
+                        =	EndSubSection
+                        =	SubSection "Display"
+                        =		Depth     8
+                        =	EndSubSection
+                        =	SubSection "Display"
+                        =		Depth     15
+                        =	EndSubSection
+                        =	SubSection "Display"
+                        =		Depth     16
+                        =	EndSubSection
+                        =	SubSection "Display"
+                        =		Depth     24
+                        =	EndSubSection
+                        =EndSection
+		    </content>
+		</textdump>
+
+		<textdump
+		    base="/root">
+		    <file>.xinitrc</file>
+		    <content>
+                        =# Begin .xinitrc file
+                        =xterm  -g 80x40+0+0   &amp;
+                        =xclock -g 100x100-0+0 &amp;
+                        =twm
+                        =# End .xinitrc file
+		    </content>
+		</textdump>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&xfree86-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,28 @@
+
+<package name="lcms" version="&lcms-version;">
+        <stage name="Unpacking a package">
+		<unpack>
+			<archive>&packages_dir;/&lcms-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package">
+		<stageinfo>
+			<base>&build_dir;/&lcms-directory;</base>
+		</stageinfo>
+
+		<make >
+			<param>CC="gcc $CFLAGS"</param>
+		</make>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&lcms-directory;</remove>
+	</stage>
+
+</package>

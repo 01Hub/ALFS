@@ -1,0 +1,35 @@
+<package name="koffice" version="&koffice-version;">
+
+        <packageinfo>
+                <requires><name>kdebase</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&koffice-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&koffice-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/opt/kde-&kde-version;</param>
+			<param>--disable-debug</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&koffice-directory;</remove>
+	</stage>
+
+</package>

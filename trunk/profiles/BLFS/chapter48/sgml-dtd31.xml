@@ -1,0 +1,75 @@
+<package name="sgml-dtd31" version="&sgml-dtd31-version;">
+
+        <packageinfo>
+                <requires><name>unzip</name></requires>
+        	<requires><name>sgml-common</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+
+	        <mkdir>
+		        <name>&build_dir;/&sgml-dtd31-directory;</name>
+		</mkdir>
+
+		<unpack>
+			<archive>&packages_dir;/&sgml-dtd31-package;</archive>
+			<destination>&build_dir;/&sgml-dtd31-directory;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&sgml-dtd31-directory;</base>
+		</stageinfo>
+
+		<copy>
+		        <source>docbook.cat</source>
+			<destination>docbook.cat.orig</destination>
+		</copy>
+		<execute command="sed -e '/ISO 8879/d' docbook.cat.orig > docbook.cat" />
+
+		<copy>
+		        <source>docbook.cat</source>
+			<destination>docbook.cat.orig</destination>
+		</copy>
+		<execute command="sed -e '/gml/d' docbook.cat.orig > docbook.cat" />
+		<copy>
+		        <source>docbook.cat</source>
+			<destination>docbook.cat.orig</destination>
+		</copy>
+		<execute command='sed -e &apos;s|DTDDECL "-//OASIS//DTD DocBook V3.1//EN"|SGMLDECL|g&apos; docbook.cat.orig > docbook.cat' />
+
+		<execute command="install -d /usr/share/sgml/docbook/sgml-dtd-3.1" />
+
+		<ownership user="root" group="root">
+		        <option>recursive</option>
+			<name>.</name>
+		</ownership>
+
+		<permissions mode="755">
+		        <option>recursive</option>
+			<name>.</name>
+		</permissions>
+
+		<execute command="install docbook.cat /usr/share/sgml/docbook/sgml-dtd-3.1/catalog" />
+
+		<copy>
+		        <option>archive</option>
+			<option>force</option>
+		        <source>*.dtd</source>
+			<source>*.mod</source>
+			<source>*.dcl</source>
+			<destination>/usr/share/sgml/docbook/sgml-dtd-3.1</destination>
+		</copy>
+
+		<execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-3.1.cat /usr/share/sgml/docbook/sgml-dtd-3.1/catalog" />
+
+		<execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-3.1.cat /etc/sgml/sgml-docbook.cat" />
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&sgml-dtd31-directory;</remove>
+	</stage>
+
+</package>

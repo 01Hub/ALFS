@@ -1,0 +1,53 @@
+<!-- directory containing the compressed packages -->
+<!ENTITY packages_dir  "/var2/packages-BLFS_CVS">
+
+<!-- directory in which the packages will be compiled -->
+<!ENTITY build_dir  "/usr/src">
+
+<!-- kernel version -->
+<!ENTITY kernel-version "2.4.20">
+
+<!-- kernel directory -->
+<!ENTITY kernel-directory "/usr/src/linux-2.4.20">
+
+<!-- entities for configuring gpm -->
+<!ENTITY mouse_device "/dev/psaux">
+<!ENTITY mouse_protocol "ps2">
+
+<!-- entities for configuring the network -->
+<!ENTITY network-interface "eth0">
+
+<!-- entities for configuring XFree86 -->
+
+<!ENTITY mouseProtocol   "IMPS/2">
+
+<!ENTITY XkbModel   "pc101">
+<!ENTITY XkbLayout  "fr">
+ 
+<!ENTITY HorizSync     "31.5-57.0">
+<!ENTITY VertRefresh   "50-92">
+<!ENTITY Modeline      '"1152x864"   92    1152 1208 1368 1474   864  865  875  895'>
+
+<!ENTITY Driver      "nv">
+<!ENTITY VendorName  "NVidia">
+<!ENTITY BoardName   "Riva TNT2 M64">
+<!ENTITY BusID       "PCI:1:0:0">
+
+<!-- for ALSA driver -->
+
+<!ENTITY sound-card  "cmipci">
+
+<!-- to place some configuration files 
+     (e.g. ~/xpdfrc)
+  -->
+<!ENTITY username  "vassili">
+
+<!-- the fully qualified host name, used by postfix -->
+<!ENTITY hostname  "vassilidzuba.net1.nerim.net">
+
+
+<!-- where to put gnome -->
+<!ENTITY gnome-prefix "/opt/gnome-2.2">
+
+<!-- initial root password for mysql -->
+<!ENTITY mysql-password "alpha">

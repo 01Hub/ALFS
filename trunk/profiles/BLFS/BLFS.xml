@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+
+       BLFS CVS profile (in book order)
+
+       by Vassili Dzuba - vdzuba@linuxfromscratch.org
+
+       Last updated : 20020917
+
+      *** ALPHA VERSION ***
+  -->
+
+<!DOCTYPE alfs SYSTEM "nalfs.dtd" [
+
+<!-- Current directory -->
+<!ENTITY % files SYSTEM "files.ent">
+%files;
+
+<!ENTITY % general_entities SYSTEM "general.ent">
+<!ENTITY % system_entities  SYSTEM "system.ent">
+<!ENTITY % package_entities SYSTEM "packages.ent">
+
+%general_entities;
+%package_entities;
+%system_entities;
+
+<!ENTITY apos "'">
+
+]>
+
+<alfs version="3.1">
+
+<stage name="Beyond Linux From Scratch">
+    <stageinfo>
+        <environment>
+	    <variable name="PATH" mode="append">:/usr/X11R6/bin</variable>
+
+	    <variable name="QTDIR">/opt/qt</variable>
+	    <variable name="PATH" mode="append">:$QTDIR/bin</variable>
+
+	    <variable name="GNOME_PREFIX">&gnome-prefix;</variable>
+	    <variable name="PATH" mode="append">:&gnome-prefix;/bin</variable>
+	    <variable name="PATH" mode="append">:/opt/gnome/bin</variable>
+	    <variable name="GNOME_LIBCONFIG_PATH">/usr/lib</variable>
+	    <variable name="PKG_CONFIG_PATH">/usr/X11R6/lib/pkgconfig:/usr/lib/pkgconfig:&gnome-prefix;/lib/pkgconfig:/opt/gnome/lib/pkgconfig</variable>
+
+        </environment>
+    </stageinfo>
+
+<stage name="chapter 3 (After LFS Configuration Issues)">
+
+    &issue;
+    &bash_startup;
+    &inputrc;
+    &random;
+    &vimrc;
+    &skel;
+
+</stage>
+
+<stage name="chapter 4 (security)">
+
+    &shadow;
+    &gnupg;
+    &iptables;
+    &linuxpam;
+
+</stage>
+
+<stage name="chapter 5 (filessytems)">
+
+    <!-- &ext3; -->
+    &reiserfsutils;
+    &xfsprogs;
+
+</stage>
+
+<stage name="chapter 6 (editors)">
+
+    &emacs;
+    &nano;
+    &joe;
+
+</stage>
+
+<stage name="chapter 7 (shells)">
+
+    &tcsh;
+    &zsh;
+
+</stage>
+
+<stage name="chapter 8 (general libraries)">
+
+    &openssl;
+    &pcre;
+    &popt;
+    &slang;
+    &libfam;
+    &libxml;
+    &libxml2;
+    &libxslt;
+    &readline;
+    &gmp;
+    &gdbm;
+    &glib;
+    &glib2;
+    &expat;
+    &libesmtp;
+    &aspell;
+    &guile;
+    &slib;
+    &g-wrap;
+    &libsoup;
+    &stlport;
+    &lzo;
+
+</stage>
+
+<stage name="Chapter 9 (graphic libraries)">
+
+    &lcms;
+    &libjpeg;
+    &libpng;
+    &libtiff;
+    &libungif;
+    &libmng;
+    &imlib;
+    &aalib;
+    &svgalib;
+    &directfb;
+    &imlib2;
+
+</stage>
+
+
+<stage name="Chapter 10 (general utilities)">
+
+    &bc;
+    &rep-gtk;
+
+</stage>
+
+<stage name="Chapter 11 (system utilities)">
+
+    &gpm;
+    <!-- &fcron; -->
+    &hdparm;
+    &which;
+    &unzip;
+    &zip;
+    &pciutils;
+    &pkgconfig;
+    &cpio;
+
+</stage>
+
+<stage name="Chapter 12 (programming tools)">
+
+    &python;
+    &librep;
+    &j2sdk;
+    &ruby;
+    &gcc-full;
+    &nasm;
+
+
+</stage>
+
+<stage name="Chapter 14 (DHCP clients)">
+
+    &dhcpcd;
+
+</stage>
+
+<stage name="Chapter 15 (Networking - other)">
+
+    <!-- &isdn; -->
+    <!-- &pppoe; -->
+
+</stage>
+
+<stage name="Chapter 16 (Networking libraries)">
+
+    &curl;
+    &wvstreams;
+    &gnet;
+
+</stage>
+
+<stage name="Chapter 17 (Text mode browsers)">
+
+    &links;
+    &lynx;
+    &w3m;
+
+</stage>
+
+
+<stage name="Chapter 18 (Basic networking programs)">
+
+    &ncftp;
+    &cvs;
+    &wget;
+    &tcpwrappers;
+    &portmap;
+    &inetutils;
+
+</stage>
+
+<stage name="Chapter 19 (Basic networking utilities)">
+
+    &traceroute;
+    &nmap;
+    &whois;
+
+</stage>
+
+<stage name="Chapter 20 (Basic networking programs)">
+
+    &procmail;
+    &fetchmail;
+    &mutt;
+    &pine;
+    &slrn;
+
+</stage>
+
+<stage name="Chapter 22 (Mail server software)">
+
+    &postfix;
+    &qpopper;
+
+</stage>
+
+<stage name="Chapter 21 (DJB's utilities)">
+
+    &daemontools;
+
+</stage>
+
+<stage name="Chapter 23 (Other Server Software)">
+
+    &openssh;
+    &rsync;
+    &openldap;
+    &bind;
+    &xinetd;
+    &leafnode;
+
+</stage>
+
+<stage name="Chapter 24 (Databases)">
+
+    &db;
+    &db3;
+    &mysql;
+    &postgresql;
+
+</stage>
+
+<stage name="Chapter 25 (Web serving)">
+
+    &apache;
+    &proftpd;
+
+</stage>
+
+<stage name="Chapter 26 (XFree)">
+
+    &xfree86;
+
+</stage>
+
+<stage name="Chapter 27 (X libraries)">
+
+    &freetype;
+    &fontconfig;
+    &qt;
+    &gtkplus;
+    &gtkplus2;
+    &atk;
+    &pango;
+    &lesstif;
+    &startup-notification;
+           
+</stage>
+
+<stage name="Chapter 28 (Window Managers)">
+
+    &sawfish;
+    &fluxbox;
+    &xfce;
+    &metacity;
+
+</stage>
+
+<stage name="Chapter 29 (KDE Core packages)">
+
+    &arts;
+    &kdelibs;
+    &kdebase;
+
+</stage>
+
+<stage name="Chapter 30 (KDE Additional packages)">
+
+    &kdemultimedia;
+    &kdenetwork;
+    &kdegraphics;
+    &kdepim;
+    &kdeadmin;
+    &kdegames;
+    &kdeutils;
+    &kdeedu;
+    &kdeartwork;
+    &kdetoys;
+    &kdeaddons;
+
+</stage>
+
+<stage name="Chapter 31 (Other KDE packages)">
+
+    &kdoc;
+    <!--
+    &kdebindings;
+    &kdesdk;
+    &kdevelop;
+    -->
+
+</stage>
+
+
+<stage name="Chapter 32 (GNOME libraries)">
+
+    <stageinfo>
+        <environment>
+	    <variable name="PKG_CONFIG_PATH">/usr/X11R6/lib/pkgconfig:/usr/lib/pkgconfig:&gnome-prefix;/lib/pkgconfig</variable>
+        </environment>
+    </stageinfo>
+
+    &gnome-pre-installation;
+    &gtk-doc;
+    &linc;
+    &libidl;
+    &orbit2;
+    &intltool;
+    &bonobo-activation;
+    &libbonobo;
+    &gconf2;
+    &gnome-mime-data;
+    &gnome-vfs2;
+    &libgnome;
+    &libart-lgpl;
+    &libglade;
+    &libgnomecanvas;
+    &libbonoboui;
+    &gnome-icon-themes;
+    &libgnomeui;
+    &libwnck;
+    &gtk-engines;
+    &gtk-thinice-engine;
+    &gnome-themes;
+    &scrollkeeper;
+    &vte;
+    &libgtop;
+    &gail;
+    &at-spi;
+    &libgail-gnome;
+    &librsvg;
+    &eel;
+    &libgtkhtml;
+    &libgsf;
+    &gal;
+    &libgnomeprint;
+    &libgnomeprintui;
+    &gtkhtml;
+
+</stage>
+
+<stage name="Chapter 33 (GNOME core)">
+    
+    &gnome-desktop;
+    &gnome-panel;
+    &gnome-session;
+    &control-center;
+
+</stage>
+
+<stage name="Chapter 34 (GNOME additional packages)">
+    
+    &gnome-terminal;
+    &gnome-system-monitor;
+    &gnome-applets;
+    &gnome-utils;
+    &gnome-games;
+    &nautilus;
+    &yelp;
+    &bug-buddy;
+    &gedit;
+    &eog;
+    &gstreamer;
+    &gst-plugins;
+    &gnome-media;
+    &nautilus-media;
+    &gnome2-user-docs;
+
+</stage>
+
+<stage name="Chapter 35 (Other Gnome packages)">
+    
+    &gconf-editor;
+    &gdm;
+
+</stage>
+
+<stage name="Chapter 37 (Additional gnome 1.4 libraries)">
+    
+    <stageinfo>
+        <environment>
+	    <variable name="PATH" mode="append">:/opt/gnome/bin</variable>
+	    <variable name="GNOME_LIBCONFIG_PATH">/usr/lib</variable>
+        </environment>
+    </stageinfo>
+
+    &gnome1-pre-installation;
+
+    &orbit;
+    &oaf;
+    &gnome-libs;
+    &gdk-pixbuf;
+    &gconf;
+    &gnome-vfs;
+    &gnome-print;
+    &libglade1;
+    &libcapplet;
+    &libghttp;
+    &bonobo;
+    &guppi;
+    &bonobo-conf;
+    &soup;
+    
+</stage>
+
+<stage name="Chapter 38 (Individual Office Programs)">
+    
+    &abiword;
+    &gnumeric;
+    &gnucash;
+    &gimp;
+    &evolution;
+
+</stage>
+
+<stage name="Chapter 39 (Office Suites)">
+
+    &koffice;    
+    &openoffice;
+
+</stage>
+
+<stage name="Chapter 40 (Graphical Web Browsers)">
+    
+    &mozilla;
+    &galeon;
+    &dillo;
+
+</stage>
+
+<stage name="Chapter 41 (Other X-based Internet Programs)">
+    
+    &pan;
+    &balsa;
+
+</stage>
+
+<stage name="Chapter 42 (Multimedia Libraries and Drivers)">
+
+    &alsa-driver;
+    &alsa-lib;
+    &alsa-utils;
+    &alsa-tools;
+    &alsa-oss;
+    &audiofile;
+    &esound;
+    &sdl;
+    &libao;
+    &libogg;
+    &libvorbis;
+    &nas;
+    &libmpeg3;
+    &libmad;
+    &openquicktime;
+    &libfame;
+    &speex;
+    &id3lib;
+    &flac;
+    &libdvdread;
+    &libdvdcss;
+
+</stage>
+
+<stage name="Chapter 43 (Multimedia utilities)">
+
+    &mpg123;
+    &vorbis-tools;
+    &xmms;
+    &lame;
+    &cdparanoia;
+
+</stage>
+
+<stage name="Chapter 44 (Video utilities)">
+
+    &xvid;
+    &ffmpeg;
+    &avifile;
+    &mplayer;
+    &xine-lib;
+    &xine-ui;
+    &transcode;
+
+</stage>
+
+<stage name="Chapter 45 (CD-Writing utilities)">
+
+    &cdrtools;
+    &cdrdao;
+
+</stage>
+
+<stage name="Chapter 46 (Printing)">
+
+    &cups;
+    &afplghostscript;
+    &espghostscript;
+    &lprng;
+
+</stage>
+
+<stage name="Chapter 47 (Scanning)">
+
+    &sane;
+    &xsane;
+
+</stage>
+
+
+<stage name="Chapter 48 (Standard Generalized Markup Language - SGML)">
+
+    &sgml-common;
+    &sgml-dtd31;
+    &sgml-dtd;
+    &opensp;
+    &openjade;
+    &docbook-dsssl;
+
+</stage>
+
+<stage name="Chapter 49 (Extensible Markup Language - XML)">
+
+    &xml-dtd;
+    &docbook-xsl;
+
+</stage>
+
+<stage name="Chapter 50 (Postscript)">
+
+    &a2ps;
+    &enscript;
+    &gsview;
+    &psutils;
+    &xpdf;
+
+</stage>
+
+<stage name="Chapter 51 (Typesetting)">
+
+    &tex;
+
+</stage>
+
+<stage name="Chapter 99 (Supplements)">
+
+  <!-- these packages should be in BLFS but the corresponding
+       instructions have not been written yet.
+       -->
+
+   &cracklib;
+   &t1lib;
+   &libole2;
+   &mktemp;
+   &bison175;
+   &fribidi;
+
+</stage>
+
+</stage>
+
+</alfs>

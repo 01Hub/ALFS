@@ -1,0 +1,32 @@
+<package name="libao" version="&libao-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&libao-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&libao-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+		</configure>
+
+		<make>
+		        <param>CC="gcc $CFLAGS"</param>
+		</make>
+		
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&libao-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,49 @@
+<package name="db3" version="&db3-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&db3-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<environment>
+			        <variable name="JAVA_HOME">/opt/&j2sdk-directory;</variable>
+			        <variable name="PATH" mode="append">:/opt/&j2sdk-directory;/bin</variable>
+			</environment>
+			<base>&build_dir;/&db3-directory;/build_unix</base>
+		</stageinfo>
+
+		<configure command="../dist/configure">
+			<param>--prefix=/opt/db-3.3</param>
+			<param>--enable-compat185</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>docdir=/opt/db-3.3/Berkeley-DB</param>
+			<param>install</param>
+		</make>
+
+
+		<remove>/opt/db-3.3/lib/libdb.so</remove>
+
+		<execute command="cd /opt/db-3.3/lib/ &amp;&amp; for i in $(ls); do mv $i /usr/lib; ln -sf /usr/lib/$i; done" />
+		<execute command="sed 's/^DB185/DB/' /opt/db-3.3/include/db_185.h > /opt/db-3.3/include/db_185.h.new" />
+
+		<move>
+		        <source>/opt/db-3.3/include/db_185.h.new</source>
+			<destination>/opt/db-3.3/include/db_185.h</destination>
+		</move>
+
+		<execute command = "ln -nsf /opt/db-3.3/include /usr/include/db3" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&db3-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,37 @@
+<package name="flac" version="&flac-version;">
+
+        <packageinfo>
+                <utilizes><name>libogg</name></utilizes>
+                <utilizes><name>xmms</name></utilizes>
+                <utilizes><name>id3lib</name></utilizes>
+                <utilizes><name>nasm</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&flac-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&flac-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+		
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&flac-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,38 @@
+<package name="libbonoboui" version="&libbonoboui-version;">
+
+        <packageinfo>
+                <requires><name>libgnome</name></requires>
+                <requires><name>libbonobo</name></requires>
+                <requires><name>libgnomecanvas</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&libbonoboui-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&libbonoboui-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="/sbin/ldconfig" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&libbonoboui-directory;</remove>
+	</stage>
+
+</package>

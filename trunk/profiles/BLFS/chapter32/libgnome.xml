@@ -1,0 +1,45 @@
+<package name="libgnome" version="&libgnome-version;">
+
+        <packageinfo>
+                <requires><name>esound</name></requires>
+                <requires><name>audiofile</name></requires>
+                <requires><name>orbit2</name></requires>
+                <requires><name>gconf2</name></requires>
+                <requires><name>bonobo-activation</name></requires>
+                <requires><name>gtk-doc</name></requires>
+                <requires><name>sgml-dtd31</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&libgnome-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&libgnome-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+			<param>--libexecdir=&gnome-prefix;/sbin</param>
+			<param>--sysconfdir=/etc/gnome</param>
+			<param>--disable-gtk-doc</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="/sbin/ldconfig" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&libgnome-directory;</remove>
+	</stage>
+
+</package>

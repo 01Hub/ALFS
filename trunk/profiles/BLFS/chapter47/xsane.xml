@@ -1,0 +1,37 @@
+<package name="xsane" version="&xsane-version;">
+
+	<packageinfo>
+        	<requires><name>sane</name></requires>
+        	<requires><name>libpng</name></requires>
+        	<requires><name>gtk+</name></requires>
+        	<requires><name>gimp</name></requires>
+	</packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&xsane-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing the frontend package.">
+		<stageinfo>
+			<base>&build_dir;/&xsane-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&xsane-directory;</remove>
+	</stage>
+
+</package>

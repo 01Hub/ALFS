@@ -1,0 +1,39 @@
+<package name="libgsf" version="&libgsf-version;">
+
+        <packageinfo>
+        	<requires><name>libbonobo</name></requires>
+        	<requires><name>gnome-vfs</name></requires>
+
+                <utilizes><name>gtk-doc</name></utilizes>
+        	<utilizes><name>sgml-dtd</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&libgsf-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&libgsf-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+			<param>--disable-gtk-doc</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&libgsf-directory;</remove>
+	</stage>
+
+</package>

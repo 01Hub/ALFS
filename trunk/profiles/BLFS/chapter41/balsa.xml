@@ -1,0 +1,43 @@
+<package name="balsa" version="&balsa-version;">
+
+        <packageinfo>
+                <requires><name>libgtkhtml</name></requires>
+                <requires><name>libgnome</name></requires>
+                <requires><name>openssl</name></requires>
+                <requires><name>aspell</name></requires>
+                <requires><name>libesmtp</name></requires>
+                <requires><name>libgnomeprintui</name></requires>
+		<utilizes><name>pcre</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&balsa-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&balsa-directory;</base>
+		</stageinfo>
+
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+			<param>--with-ssl</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&balsa-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,33 @@
+<package name="gnome-mime-data" version="&gnome-mime-data-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&gnome-mime-data-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&gnome-mime-data-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+			<param>--sysconfdir=/etc/gnome</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="/sbin/ldconfig" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&gnome-mime-data-directory;</remove>
+	</stage>
+
+</package>

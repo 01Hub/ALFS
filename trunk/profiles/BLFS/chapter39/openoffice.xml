@@ -1,0 +1,423 @@
+<package name="openoffice" version="&openoffice-version;">
+
+        <packageinfo>
+                <requires><name>xfree86</name></requires>
+                <requires><name>freetype</name></requires>
+        	<requires><name>j2sdk</name></requires>
+        	<requires><name>zip</name></requires>
+        	<requires><name>unzip</name></requires>
+        	<requires><name>tcsh</name></requires>
+        	<requires><name>db</name></requires>
+        	<requires><name>linuxpam</name></requires>
+        	<requires><name>stlport</name></requires>
+        	<requires><name>which</name></requires>
+        	<requires><name>mktemp</name></requires>
+        	<requires><name>bison175</name></requires>
+        	<utilizes><name>ant</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&openoffice-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&gpc-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&openoffice-01-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-02-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-03-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-04-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-05-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-06-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-07-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-08-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-09-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-10-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-11-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-12-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-13-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-14-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-15-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-16-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-17-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-18-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-19-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-20-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-21-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-22-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-23-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+
+		<copy>
+			<source>&packages_dir;/&openoffice-24-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>		
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<environment>
+			        <variable name="JAVA_HOME">/opt/&j2sdk-directory;</variable>
+			        <variable name="PATH">/opt/bison175/bin:/bin:/usr/bin:/usr/local/bin:/usr/X11R6/bin:/opt/gnome/bin:/opt/gnome2/bin:/opt/&j2sdk-directory;/bin</variable>
+				<variable name="LS_COLORS" />
+			</environment>
+			<base>&build_dir;/&openoffice-directory;</base>
+		</stageinfo>
+
+		<move>
+		        <option>force</option>
+		        <source>&build_dir;/&gpc-directory;/gpc.c</source>
+			<destination>&build_dir;/&openoffice-directory;/external/gpc</destination>
+		</move>
+
+		<move>
+		        <option>force</option>
+		        <source>&build_dir;/&gpc-directory;/gpc.h</source>
+			<destination>&build_dir;/&openoffice-directory;/external/gpc</destination>
+		</move>
+
+		<remove>../&gpc-directory;</remove>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-01-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-02-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-03-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-04-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-05-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-06-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-07-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-08-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-09-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-10-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-11-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-12-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-13-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-14-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-15-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-16-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-17-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-18-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-19-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-20-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-21-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-22-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-23-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&openoffice-24-patch;</param>
+		</patch>
+
+		
+		<search_replace base = "&build_dir;/&openoffice-directory;/solenv/inc">
+		    <file>unxlngi4.mk</file>
+		    <find>-mcpu=pentiumpro</find>
+		    <replace></replace>
+		</search_replace>
+
+		<configure base="&build_dir;/&openoffice-directory;/config_office">
+		        <param>--enable-gcc3</param>
+			<param>--with-jdk-home=${JAVA_HOME}</param>
+			<param>--with-lang=ENUS</param>
+			<param>--with-stlport4-home=/usr</param>
+		</configure>
+
+		<execute command="source LinuxIntelEnv.Set.sh; ./bootstrap" />
+
+		<execute command="source LinuxIntelEnv.Set.sh; dmake" />
+
+		<stage>
+		    <stageinfo>
+			<base>&build_dir;/&openoffice-directory;/instsetoo/unxlngi4.pro/01/normal</base>
+		    </stageinfo>
+
+
+		    <copy>
+		        <source>install</source>
+			<destination>install.orig</destination>
+		    </copy>
+
+		    <execute command='sed -e "s:^oo_home=.*:oo_home=openoffice:" install.orig > install' />
+		    
+		    <execute command='./install'>
+		        <param>--prefix=/opt</param>
+		    </execute>
+		</stage>
+
+
+		<link>
+		        <option>force</option>
+			<target>/opt/openoffice/program/swriter</target>
+			<name>/usr/bin/swriter</name>
+		</link>
+
+		<link>
+		        <option>force</option>
+			<target>/opt/openoffice/program/scalc</target>
+			<name>/usr/bin/scalc</name>
+		</link>
+
+		<link>
+		        <option>force</option>
+			<target>/opt/openoffice/program/sdraw</target>
+			<name>/usr/bin/sdraw</name>
+		</link>
+
+		<link>
+		        <option>force</option>
+			<target>/opt/openoffice/program/simpress</target>
+			<name>/usr/bin/simpress</name>
+		</link>
+
+		<link>
+		        <option>force</option>
+			<target>/opt/openoffice/program/smath</target>
+			<name>/usr/bin/smath</name>
+		</link>
+
+		<link>
+		        <option>force</option>
+			<target>/opt/openoffice/program/soffice</target>
+			<name>/usr/bin/soffice</name>
+		</link>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&openoffice-directory;</remove>
+		<remove>&build_dir;/&gpc-directory;</remove>
+		<remove>&build_dir;/&openoffice-01-patch;</remove>
+		<remove>&build_dir;/&openoffice-02-patch;</remove>
+		<remove>&build_dir;/&openoffice-03-patch;</remove>
+		<remove>&build_dir;/&openoffice-04-patch;</remove>
+		<remove>&build_dir;/&openoffice-05-patch;</remove>
+		<remove>&build_dir;/&openoffice-06-patch;</remove>
+		<remove>&build_dir;/&openoffice-07-patch;</remove>
+		<remove>&build_dir;/&openoffice-08-patch;</remove>
+		<remove>&build_dir;/&openoffice-09-patch;</remove>
+		<remove>&build_dir;/&openoffice-10-patch;</remove>
+		<remove>&build_dir;/&openoffice-11-patch;</remove>
+		<remove>&build_dir;/&openoffice-12-patch;</remove>
+		<remove>&build_dir;/&openoffice-13-patch;</remove>
+		<remove>&build_dir;/&openoffice-14-patch;</remove>
+		<remove>&build_dir;/&openoffice-15-patch;</remove>
+		<remove>&build_dir;/&openoffice-16-patch;</remove>
+		<remove>&build_dir;/&openoffice-17-patch;</remove>
+		<remove>&build_dir;/&openoffice-18-patch;</remove>
+		<remove>&build_dir;/&openoffice-19-patch;</remove>
+		<remove>&build_dir;/&openoffice-20-patch;</remove>
+		<remove>&build_dir;/&openoffice-21-patch;</remove>
+		<remove>&build_dir;/&openoffice-22-patch;</remove>
+		<remove>&build_dir;/&openoffice-23-patch;</remove>
+		<remove>&build_dir;/&openoffice-24-patch;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,37 @@
+<package name="libwnck" version="&libwnck-version;">
+
+        <packageinfo>
+                <requires><name>gtk+2</name></requires>
+                <requires><name>startup-notification</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&libwnck-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&libwnck-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="/sbin/ldconfig" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&libwnck-directory;</remove>
+	</stage>
+
+</package>

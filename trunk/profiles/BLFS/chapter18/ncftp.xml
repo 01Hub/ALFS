@@ -1,0 +1,39 @@
+<package name="ncftp" version="&ncftp-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&ncftp-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&ncftp-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make base ="&build_dir;/&ncftp-directory;/libncftp">
+		        <param>shared</param>
+		</make>
+
+		<make base ="&build_dir;/&ncftp-directory;/libncftp">
+		        <param>soinstall</param>
+		</make>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+		
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&ncftp-directory;</remove>
+	</stage>
+
+</package>

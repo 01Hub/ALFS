@@ -1,0 +1,65 @@
+<package name="stlport" version="&stlport-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&stlport-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+		        <source>&packages_dir;/&stlport-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<!-- warning : CXX_INCLUDE should be computed dynamically
+	               using :
+		       
+		       CXX_INCLUDE=`( g++ -v -E -xc++ /dev/null 2>&1 > /dev/null  ) \
+		          | sed -n 's~ \(/usr/include/c++/.*\)/backward~\1~p'` 
+
+		       but it is quite difficult to do this cleanly as
+                       the content of <variable> is not evaluated.
+
+		       one put instead the result.
+          -->
+
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&stlport-directory;</base>
+			<environment>
+			<variable name="CXX_INCLUDE">/usr/include/c++/3.2.1</variable>
+			</environment>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&stlport-patch;</param>
+		</patch>
+
+
+		<execute command="cp stlport/config/stl_gcc.h stlport/config/stl_gcc.h.orig" />
+
+		<execute command='sed "s~\.\./g++-v3~$CXX_INCLUDE~;s~\.\./include/g++-v3~$CXX_INCLUDE~" stlport/config/stl_gcc.h.orig > stlport/config/stl_gcc.h' />
+
+		<link base="&build_dir;/&stlport-directory;/src">
+		        <target>gcc-linux.mak</target>
+			<name>Makefile</name>
+		</link>
+
+		<make base="&build_dir;/&stlport-directory;/src" />
+
+		<make base="&build_dir;/&stlport-directory;/src">
+		        <param>INSTALLDIR=/usr</param>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&stlport-directory;</remove>
+		<remove>&build_dir;/&stlport-patch;</remove>
+	</stage>
+
+</package>

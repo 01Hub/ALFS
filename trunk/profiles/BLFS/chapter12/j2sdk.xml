@@ -1,0 +1,43 @@
+<package name="j2sdk" version="&j2sdk-version;">
+
+	<stage name="Unpacking a package.">
+		<stageinfo>
+			<base>&build_dir;</base>
+		</stageinfo>
+
+		<copy>
+			<source>&packages_dir;/&j2sdk-package;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/</base>
+		</stageinfo>
+
+		<permissions mode="711">
+		        <name>&j2sdk-package;</name>
+		</permissions>
+
+		<execute command="yes | ./j2sdk*.bin" />
+
+		<unpack>
+			<archive>&packages_dir;/&j2sdk-ppatch;</archive>
+			<destination>&build_dir;/&j2sdk-directory;/jre/lib/i386</destination>
+		</unpack>
+
+		<move>
+		        <option>force</option>
+		        <source>&j2sdk-directory;</source>
+			<destination>/opt</destination>
+		</move>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&j2sdk-package;</remove>
+	</stage>
+
+</package>

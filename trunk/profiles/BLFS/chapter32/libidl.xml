@@ -1,0 +1,37 @@
+<package name="libidl" version="&libidl-version;">
+
+	<packageinfo>
+        	<requires><name>glib2</name></requires>
+	</packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&libidl-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&libidl-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+			<param>--localstatedir=/var/spool</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="/sbin/ldconfig" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&libidl-directory;</remove>
+	</stage>
+
+</package>

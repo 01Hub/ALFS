@@ -1,0 +1,379 @@
+
+
+<!-- chapter 3 -->
+<!ENTITY issue     SYSTEM "./chapter03/issue.xml">
+<!ENTITY bash_startup SYSTEM "./chapter03/bash_startup.xml">
+<!ENTITY inputrc   SYSTEM "./chapter03/inputrc.xml">
+<!ENTITY random    SYSTEM "./chapter03/random.xml">
+<!ENTITY vimrc     SYSTEM "./chapter03/vimrc.xml">
+<!ENTITY skel      SYSTEM "./chapter03/skel.xml">
+
+<!-- chapter 4 -->
+<!ENTITY shadow    SYSTEM "./chapter04/shadow.xml">
+<!ENTITY gnupg     SYSTEM "./chapter04/gnupg.xml">
+<!ENTITY iptables  SYSTEM "./chapter04/iptables.xml">
+<!ENTITY linuxpam  SYSTEM "./chapter04/linuxpam.xml">
+
+<!-- chapter 5 -->
+<!ENTITY reiserfsutils SYSTEM "./chapter05/reiserfsutils.xml">
+<!ENTITY xfsprogs      SYSTEM "./chapter05/xfsprogs.xml">
+
+<!-- chapter 6 -->
+<!ENTITY emacs      SYSTEM "./chapter06/emacs.xml">
+<!ENTITY nano       SYSTEM "./chapter06/nano.xml">
+<!ENTITY joe        SYSTEM "./chapter06/joe.xml">
+
+<!-- chapter 7 -->
+<!ENTITY tcsh       SYSTEM "./chapter07/tcsh.xml">
+<!ENTITY zsh        SYSTEM "./chapter07/zsh.xml">
+
+<!-- chapter 8 -->
+<!ENTITY openssl    SYSTEM "./chapter08/openssl.xml">
+<!ENTITY pcre       SYSTEM "./chapter08/pcre.xml">
+<!ENTITY popt       SYSTEM "./chapter08/popt.xml">
+<!ENTITY slang      SYSTEM "./chapter08/slang.xml">
+<!ENTITY libfam     SYSTEM "./chapter08/libfam.xml">
+<!ENTITY libxml     SYSTEM "./chapter08/libxml.xml">
+<!ENTITY libxml2    SYSTEM "./chapter08/libxml2.xml">
+<!ENTITY libxslt    SYSTEM "./chapter08/libxslt.xml">
+<!ENTITY readline   SYSTEM "./chapter08/readline.xml">
+<!ENTITY gmp        SYSTEM "./chapter08/gmp.xml">
+<!ENTITY gdbm       SYSTEM "./chapter08/gdbm.xml">
+<!ENTITY glib       SYSTEM "./chapter08/glib.xml">
+<!ENTITY glib2      SYSTEM "./chapter08/glib2.xml">
+<!ENTITY expat      SYSTEM "./chapter08/expat.xml">
+<!ENTITY libesmtp   SYSTEM "./chapter08/libesmtp.xml">
+<!ENTITY aspell     SYSTEM "./chapter08/aspell.xml">
+<!ENTITY guile      SYSTEM "./chapter08/guile.xml">
+<!ENTITY slib       SYSTEM "./chapter08/slib.xml">
+<!ENTITY g-wrap     SYSTEM "./chapter08/g-wrap.xml">
+<!ENTITY libsoup    SYSTEM "./chapter08/libsoup.xml">
+<!ENTITY stlport    SYSTEM "./chapter08/stlport.xml">
+<!ENTITY lzo        SYSTEM "./chapter08/lzo.xml">
+
+<!-- chapter 9 -->
+<!ENTITY lcms       SYSTEM "./chapter09/lcms.xml">
+<!ENTITY libjpeg    SYSTEM "./chapter09/libjpeg.xml">
+<!ENTITY libpng     SYSTEM "./chapter09/libpng.xml">
+<!ENTITY libtiff    SYSTEM "./chapter09/libtiff.xml">
+<!ENTITY libungif   SYSTEM "./chapter09/libungif.xml">
+<!ENTITY libmng     SYSTEM "./chapter09/libmng.xml">
+<!ENTITY imlib      SYSTEM "./chapter09/imlib.xml">
+<!ENTITY aalib      SYSTEM "./chapter09/aalib.xml">
+<!ENTITY svgalib    SYSTEM "./chapter09/svgalib.xml">
+<!ENTITY directfb   SYSTEM "./chapter09/directfb.xml">
+<!ENTITY imlib2     SYSTEM "./chapter09/imlib2.xml">
+
+<!-- chapter 10 -->
+<!ENTITY bc         SYSTEM "./chapter10/bc.xml">
+<!ENTITY rep-gtk    SYSTEM "./chapter10/rep-gtk.xml">
+
+<!-- chapter 11 -->
+<!ENTITY gpm        SYSTEM "./chapter11/gpm.xml">
+<!ENTITY hdparm     SYSTEM "./chapter11/hdparm.xml">
+<!ENTITY which      SYSTEM "./chapter11/which.xml">
+<!ENTITY unzip      SYSTEM "./chapter11/unzip.xml">
+<!ENTITY zip        SYSTEM "./chapter11/zip.xml">
+<!ENTITY pccts      SYSTEM "./chapter11/pccts.xml">
+<!ENTITY pciutils   SYSTEM "./chapter11/pciutils.xml">
+<!ENTITY pkgconfig  SYSTEM "./chapter11/pkgconfig.xml">
+<!ENTITY cpio       SYSTEM "./chapter11/cpio.xml">
+
+<!-- chapter 12 -->
+<!ENTITY python     SYSTEM "./chapter12/python.xml">
+<!ENTITY librep     SYSTEM "./chapter12/librep.xml">
+<!ENTITY j2sdk      SYSTEM "./chapter12/j2sdk.xml">
+<!ENTITY ruby       SYSTEM "./chapter12/ruby.xml">
+<!ENTITY gcc-full   SYSTEM "./chapter12/gcc-full.xml">
+<!ENTITY nasm       SYSTEM "./chapter12/nasm.xml">
+
+<!-- chapter 14 -->
+<!ENTITY dhcpcd     SYSTEM "./chapter14/dhcpcd.xml">
+
+<!-- chapter 16 -->
+<!ENTITY curl       SYSTEM "./chapter16/curl.xml">
+<!ENTITY wvstreams  SYSTEM "./chapter16/wvstreams.xml">
+<!ENTITY gnet       SYSTEM "./chapter16/gnet.xml">
+
+<!-- chapter 17 -->
+<!ENTITY links      SYSTEM "./chapter17/links.xml">
+<!ENTITY lynx       SYSTEM "./chapter17/lynx.xml">
+<!ENTITY w3m        SYSTEM "./chapter17/w3m.xml">
+
+<!-- chapter 18 -->
+<!ENTITY ncftp      SYSTEM "./chapter18/ncftp.xml">
+<!ENTITY cvs        SYSTEM "./chapter18/cvs.xml">
+<!ENTITY wget       SYSTEM "./chapter18/wget.xml">
+<!ENTITY tcpwrappers SYSTEM "./chapter18/tcpwrappers.xml">
+<!ENTITY portmap    SYSTEM "./chapter18/portmap.xml">
+<!ENTITY inetutils  SYSTEM "./chapter18/inetutils.xml">
+
+<!-- chapter 19 -->
+<!ENTITY traceroute SYSTEM "./chapter19/traceroute.xml">
+<!ENTITY nmap       SYSTEM "./chapter19/nmap.xml">
+<!ENTITY whois      SYSTEM "./chapter19/whois.xml">
+
+<!-- chapter 20 -->
+<!ENTITY procmail   SYSTEM "./chapter20/procmail.xml">
+<!ENTITY fetchmail  SYSTEM "./chapter20/fetchmail.xml">
+<!ENTITY mutt       SYSTEM "./chapter20/mutt.xml">
+<!ENTITY pine       SYSTEM "./chapter20/pine.xml">
+<!ENTITY slrn       SYSTEM "./chapter20/slrn.xml">
+
+<!-- chapter 21 -->
+<!ENTITY daemontools SYSTEM "./chapter21/daemontools.xml">
+
+<!-- chapter 22 -->
+<!ENTITY postfix   SYSTEM "./chapter22/postfix.xml">
+<!ENTITY qpopper   SYSTEM "./chapter22/qpopper.xml">
+
+<!-- chapter 23 -->
+<!ENTITY openssh   SYSTEM "./chapter23/openssh.xml">
+<!ENTITY rsync     SYSTEM "./chapter23/rsync.xml">
+<!ENTITY openldap  SYSTEM "./chapter23/openldap.xml">
+<!ENTITY bind      SYSTEM "./chapter23/bind.xml">
+<!ENTITY xinetd    SYSTEM "./chapter23/xinetd.xml">
+<!ENTITY leafnode  SYSTEM "./chapter23/leafnode.xml">
+
+<!-- chapter 24 -->
+<!ENTITY db         SYSTEM "./chapter24/db.xml">
+<!ENTITY db3        SYSTEM "./chapter24/db3.xml">
+<!ENTITY mysql      SYSTEM "./chapter24/mysql.xml">
+<!ENTITY postgresql SYSTEM "./chapter24/postgresql.xml">
+
+<!-- chapter 25 -->
+<!ENTITY apache    SYSTEM "./chapter25/apache.xml">
+<!ENTITY proftpd   SYSTEM "./chapter25/proftpd.xml">
+
+<!-- chapter 26 -->
+<!ENTITY xfree86   SYSTEM "./chapter26/xfree86.xml">
+
+<!-- chapter 27 -->
+<!ENTITY freetype   SYSTEM "./chapter27/freetype.xml">
+<!ENTITY fontconfig SYSTEM "./chapter27/fontconfig.xml">
+<!ENTITY qt         SYSTEM "./chapter27/qt.xml">
+<!ENTITY gtkplus    SYSTEM "./chapter27/gtk+.xml">
+<!ENTITY gtkplus2   SYSTEM "./chapter27/gtk+2.xml">
+<!ENTITY atk        SYSTEM "./chapter27/atk.xml">
+<!ENTITY pango      SYSTEM "./chapter27/pango.xml">
+<!ENTITY lesstif    SYSTEM "./chapter27/lesstif.xml">
+<!ENTITY startup-notification  SYSTEM "./chapter27/startup-notification.xml">
+
+
+<!-- chapter 28 -->
+<!ENTITY sawfish       SYSTEM "./chapter28/sawfish.xml">
+<!ENTITY fluxbox       SYSTEM "./chapter28/fluxbox.xml">
+<!ENTITY xfce          SYSTEM "./chapter28/xfce.xml">
+<!ENTITY metacity      SYSTEM "./chapter28/metacity.xml">
+
+<!-- chapter 29 -->
+<!ENTITY arts      SYSTEM "./chapter29/arts.xml">
+<!ENTITY kdelibs   SYSTEM "./chapter29/kdelibs.xml">
+<!ENTITY kdebase   SYSTEM "./chapter29/kdebase.xml">
+
+<!-- chapter 30 -->
+<!ENTITY kdemultimedia SYSTEM "./chapter30/kdemultimedia.xml">
+<!ENTITY kdenetwork    SYSTEM "./chapter30/kdenetwork.xml">
+<!ENTITY kdegraphics   SYSTEM "./chapter30/kdegraphics.xml">
+<!ENTITY kdepim        SYSTEM "./chapter30/kdepim.xml">
+<!ENTITY kdeadmin      SYSTEM "./chapter30/kdeadmin.xml">
+<!ENTITY kdegames      SYSTEM "./chapter30/kdegames.xml">
+<!ENTITY kdeutils      SYSTEM "./chapter30/kdeutils.xml">
+<!ENTITY kdeedu        SYSTEM "./chapter30/kdeedu.xml">
+<!ENTITY kdeartwork    SYSTEM "./chapter30/kdeartwork.xml">
+<!ENTITY kdetoys       SYSTEM "./chapter30/kdetoys.xml">
+<!ENTITY kdeaddons     SYSTEM "./chapter30/kdeaddons.xml">
+
+<!-- chapter 31 -->
+
+<!ENTITY kdoc          SYSTEM "./chapter31/kdoc.xml">
+<!ENTITY kdebindings   SYSTEM "./chapter31/kdebindings.xml">
+<!ENTITY kdesdk        SYSTEM "./chapter31/kdesdk.xml">
+<!ENTITY kdevelop      SYSTEM "./chapter31/kdevelop.xml">
+
+<!-- chapter 32 -->
+<!ENTITY gnome-pre-installation SYSTEM "./chapter32/gnome-pre-installation.xml">
+<!ENTITY gtk-doc         SYSTEM "./chapter32/gtk-doc.xml">
+<!ENTITY linc            SYSTEM "./chapter32/linc.xml">
+<!ENTITY libidl          SYSTEM "./chapter32/libidl.xml">
+<!ENTITY intltool        SYSTEM "./chapter32/intltool.xml">
+<!ENTITY bonobo-activation SYSTEM "./chapter32/bonobo-activation.xml">
+<!ENTITY libbonobo       SYSTEM "./chapter32/libbonobo.xml">
+<!ENTITY gconf2          SYSTEM "./chapter32/gconf2.xml">
+<!ENTITY gnome-mime-data SYSTEM "./chapter32/gnome-mime-data.xml">
+<!ENTITY gnome-vfs2      SYSTEM "./chapter32/gnome-vfs2.xml">
+<!ENTITY libgnome        SYSTEM "./chapter32/libgnome.xml">
+<!ENTITY libart-lgpl     SYSTEM "./chapter32/libart_lgpl.xml">
+<!ENTITY libglade        SYSTEM "./chapter32/libglade.xml">
+<!ENTITY libgnomecanvas  SYSTEM "./chapter32/libgnomecanvas.xml">
+<!ENTITY libbonoboui     SYSTEM "./chapter32/libbonoboui.xml">
+<!ENTITY libgnomeui      SYSTEM "./chapter32/libgnomeui.xml">
+<!ENTITY gnome-icon-themes SYSTEM "./chapter32/gnome-icon-themes.xml">
+<!ENTITY libwnck         SYSTEM "./chapter32/libwnck.xml">
+<!ENTITY gtk-engines     SYSTEM "./chapter32/gtk-engines.xml">
+<!ENTITY gtk-thinice-engine SYSTEM "./chapter32/gtk-thinice-engine.xml">
+<!ENTITY gnome-themes    SYSTEM "./chapter32/gnome-themes.xml">
+<!ENTITY gtk-engines     SYSTEM "./chapter32/gtk-engines.xml">
+<!ENTITY scrollkeeper    SYSTEM "./chapter32/scrollkeeper.xml">
+<!ENTITY vte             SYSTEM "./chapter32/vte.xml">
+<!ENTITY libgtop         SYSTEM "./chapter32/libgtop.xml">
+<!ENTITY gail            SYSTEM "./chapter32/gail.xml">
+<!ENTITY at-spi          SYSTEM "./chapter32/at-spi.xml">
+<!ENTITY libgail-gnome   SYSTEM "./chapter32/libgail-gnome.xml">
+<!ENTITY orbit2          SYSTEM "./chapter32/orbit2.xml">
+<!ENTITY libgnomeprint   SYSTEM "./chapter32/libgnomeprint.xml">
+<!ENTITY libgnomeprintui SYSTEM "./chapter32/libgnomeprintui.xml">
+<!ENTITY librsvg         SYSTEM "./chapter32/librsvg.xml">
+<!ENTITY eel             SYSTEM "./chapter32/eel.xml">
+<!ENTITY libgtkhtml      SYSTEM "./chapter32/libgtkhtml.xml">
+<!ENTITY libgsf          SYSTEM "./chapter32/libgsf.xml">
+<!ENTITY gal             SYSTEM "./chapter32/gal.xml">
+<!ENTITY gtkhtml         SYSTEM "./chapter32/gtkhtml.xml">
+
+<!-- chapter 33 -->
+<!ENTITY gnome-desktop   SYSTEM "./chapter33/gnome-desktop.xml">
+<!ENTITY gnome-panel     SYSTEM "./chapter33/gnome-panel.xml">
+<!ENTITY gnome-session   SYSTEM "./chapter33/gnome-session.xml">
+<!ENTITY control-center  SYSTEM "./chapter33/control-center.xml">
+
+<!-- chapter 34 -->
+<!ENTITY gnome-terminal  SYSTEM "./chapter34/gnome-terminal.xml">
+<!ENTITY gnome-system-monitor SYSTEM "./chapter34/gnome-system-monitor.xml">
+<!ENTITY gnome-applets   SYSTEM "./chapter34/gnome-applets.xml">
+<!ENTITY gnome-utils     SYSTEM "./chapter34/gnome-utils.xml">
+<!ENTITY gnome-games     SYSTEM "./chapter34/gnome-games.xml">
+<!ENTITY nautilus        SYSTEM "./chapter34/nautilus.xml">
+<!ENTITY yelp            SYSTEM "./chapter34/yelp.xml">
+<!ENTITY bug-buddy       SYSTEM "./chapter34/bug-buddy.xml">
+<!ENTITY gedit           SYSTEM "./chapter34/gedit.xml">
+<!ENTITY eog             SYSTEM "./chapter34/eog.xml">
+<!ENTITY gstreamer       SYSTEM "./chapter34/gstreamer.xml">
+<!ENTITY gst-plugins     SYSTEM "./chapter34/gst-plugins.xml">
+<!ENTITY gnome-media     SYSTEM "./chapter34/gnome-media.xml">
+<!ENTITY nautilus-media  SYSTEM "./chapter34/nautilus-media.xml">
+<!ENTITY gnome2-user-docs SYSTEM "./chapter34/gnome2-user-docs.xml">
+
+<!-- chapter 35 -->
+<!ENTITY gconf-editor    SYSTEM "./chapter35/gconf-editor.xml">
+<!ENTITY gdm             SYSTEM "./chapter35/gdm.xml">
+
+<!-- chapter 37 -->
+<!ENTITY gnome1-pre-installation 
+                         SYSTEM "./chapter37/gnome1-pre-installation.xml">
+<!ENTITY orbit           SYSTEM "./chapter37/orbit.xml">
+<!ENTITY oaf             SYSTEM "./chapter37/oaf.xml">
+<!ENTITY gnome-libs      SYSTEM "./chapter37/gnome-libs.xml">
+<!ENTITY gdk-pixbuf      SYSTEM "./chapter37/gdk-pixbuf.xml">
+<!ENTITY gconf           SYSTEM "./chapter37/gconf.xml">
+<!ENTITY gnome-vfs       SYSTEM "./chapter37/gnome-vfs.xml">
+<!ENTITY gnome-print     SYSTEM "./chapter37/gnome-print.xml">
+<!ENTITY libglade1       SYSTEM "./chapter37/libglade1.xml">
+<!ENTITY libcapplet      SYSTEM "./chapter37/libcapplet.xml">
+<!ENTITY libghttp        SYSTEM "./chapter37/libghttp.xml">
+<!ENTITY bonobo          SYSTEM "./chapter37/bonobo.xml">
+<!ENTITY guppi           SYSTEM "./chapter37/guppi.xml">
+<!ENTITY bonobo-conf     SYSTEM "./chapter37/bonobo-conf.xml">
+<!ENTITY soup            SYSTEM "./chapter37/soup.xml">
+
+<!-- chapter 38 -->
+<!ENTITY abiword         SYSTEM "./chapter38/abiword.xml">
+<!ENTITY gnumeric        SYSTEM "./chapter38/gnumeric.xml">
+<!ENTITY gnucash         SYSTEM "./chapter38/gnucash.xml">
+<!ENTITY gimp            SYSTEM "./chapter38/gimp.xml">
+<!ENTITY evolution       SYSTEM "./chapter38/evolution.xml">
+
+<!-- chapter 39 -->
+<!ENTITY koffice         SYSTEM "./chapter39/koffice.xml">
+<!ENTITY openoffice      SYSTEM "./chapter39/openoffice.xml">
+
+<!-- chapter 40 -->
+<!ENTITY mozilla         SYSTEM "./chapter40/mozilla.xml">
+<!ENTITY galeon          SYSTEM "./chapter40/galeon.xml">
+<!ENTITY dillo           SYSTEM "./chapter40/dillo.xml">
+
+<!-- chapter 41 -->
+<!ENTITY pan             SYSTEM "./chapter41/pan.xml">
+<!ENTITY balsa           SYSTEM "./chapter41/balsa.xml">
+
+<!-- chapter 42 -->
+<!ENTITY alsa-driver  SYSTEM "./chapter42/alsa-driver.xml">
+<!ENTITY alsa-lib     SYSTEM "./chapter42/alsa-lib.xml">
+<!ENTITY alsa-utils   SYSTEM "./chapter42/alsa-utils.xml">
+<!ENTITY alsa-tools   SYSTEM "./chapter42/alsa-tools.xml">
+<!ENTITY alsa-oss     SYSTEM "./chapter42/alsa-oss.xml">
+<!ENTITY audiofile    SYSTEM "./chapter42/audiofile.xml">
+<!ENTITY esound       SYSTEM "./chapter42/esound.xml">
+<!ENTITY sdl          SYSTEM "./chapter42/sdl.xml">
+<!ENTITY libao        SYSTEM "./chapter42/libao.xml">
+<!ENTITY libogg       SYSTEM "./chapter42/libogg.xml">
+<!ENTITY libvorbis    SYSTEM "./chapter42/libvorbis.xml">
+<!ENTITY nas          SYSTEM "./chapter42/nas.xml">
+<!ENTITY libmpeg3     SYSTEM "./chapter42/libmpeg3.xml">
+<!ENTITY libmad       SYSTEM "./chapter42/libmad.xml">
+<!ENTITY openquicktime SYSTEM "./chapter42/openquicktime.xml">
+<!ENTITY libfame      SYSTEM "./chapter42/libfame.xml">
+<!ENTITY speex        SYSTEM "./chapter42/speex.xml">
+<!ENTITY id3lib       SYSTEM "./chapter42/id3lib.xml">
+<!ENTITY flac         SYSTEM "./chapter42/flac.xml">
+<!ENTITY libdvdread   SYSTEM "./chapter42/libdvdread.xml">
+<!ENTITY libdvdcss    SYSTEM "./chapter42/libdvdcss.xml">
+
+<!-- chapter 43 -->
+<!ENTITY mpg123       SYSTEM "./chapter43/mpg123.xml">
+<!ENTITY vorbis-tools SYSTEM "./chapter43/vorbis-tools.xml">
+<!ENTITY xmms         SYSTEM "./chapter43/xmms.xml">
+<!ENTITY lame         SYSTEM "./chapter43/lame.xml">
+<!ENTITY cdparanoia   SYSTEM "./chapter43/cdparanoia.xml">
+
+<!-- chapter 44 -->
+<!ENTITY xvid      SYSTEM "./chapter44/xvid.xml">
+<!ENTITY avifile   SYSTEM "./chapter44/avifile.xml">
+<!ENTITY ffmpeg    SYSTEM "./chapter44/ffmpeg.xml">
+<!ENTITY mplayer   SYSTEM "./chapter44/mplayer.xml">
+<!ENTITY xine-lib  SYSTEM "./chapter44/xine-lib.xml">
+<!ENTITY xine-ui   SYSTEM "./chapter44/xine-ui.xml">
+<!ENTITY transcode SYSTEM "./chapter44/transcode.xml">
+
+<!-- chapter 45 -->
+<!ENTITY cdrtools  SYSTEM "./chapter45/cdrtools.xml">
+<!ENTITY cdrdao    SYSTEM "./chapter45/cdrdao.xml">
+
+<!-- chapter 46 -->
+<!ENTITY cups            SYSTEM "./chapter46/cups.xml">
+<!ENTITY afplghostscript SYSTEM "./chapter46/afplghostscript.xml">
+<!ENTITY espghostscript  SYSTEM "./chapter46/espghostscript.xml">
+<!ENTITY lprng           SYSTEM "./chapter46/lprng.xml">
+
+<!-- chapter 47 -->
+<!ENTITY sane        SYSTEM "./chapter47/sane.xml">
+<!ENTITY xsane       SYSTEM "./chapter47/xsane.xml">
+
+<!-- chapter 48 -->
+<!ENTITY sgml-common   SYSTEM "./chapter48/sgml-common.xml">
+<!ENTITY sgml-dtd31    SYSTEM "./chapter48/sgml-dtd31.xml">
+<!ENTITY sgml-dtd      SYSTEM "./chapter48/sgml-dtd.xml">
+<!ENTITY opensp        SYSTEM "./chapter48/opensp.xml">
+<!ENTITY openjade      SYSTEM "./chapter48/openjade.xml">
+<!ENTITY docbook-dsssl SYSTEM "./chapter48/docbook-dsssl.xml">
+
+<!-- chapter 49 -->
+<!ENTITY xml-dtd     SYSTEM "./chapter49/xml-dtd.xml">
+<!ENTITY docbook-xsl SYSTEM "./chapter49/docbook-xsl.xml">
+
+<!-- chapter 50 -->
+<!ENTITY a2ps        SYSTEM "./chapter50/a2ps.xml">
+<!ENTITY enscript    SYSTEM "./chapter50/enscript.xml">
+<!ENTITY gsview      SYSTEM "./chapter50/gsview.xml">
+<!ENTITY psutils     SYSTEM "./chapter50/psutils.xml">
+<!ENTITY xpdf        SYSTEM "./chapter50/xpdf.xml">
+
+<!-- chapter 51 -->
+<!ENTITY tex         SYSTEM "./chapter51/tex.xml">
+
+<!-- chapter 99 -->
+<!ENTITY cracklib  SYSTEM "./chapter99/cracklib.xml">
+<!ENTITY t1lib     SYSTEM "./chapter99/t1lib.xml">
+<!ENTITY bison175  SYSTEM "./chapter99/bison175.xml">
+<!ENTITY libole2   SYSTEM "./chapter99/libole2.xml">
+<!ENTITY mktemp    SYSTEM "./chapter99/mktemp.xml">
+<!ENTITY fribidi   SYSTEM "./chapter99/fribidi.xml">

@@ -1,0 +1,44 @@
+<package name="libungif" version="&libungif-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&libungif-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&libungif-directory;</base>
+		</stageinfo>
+
+		<copy>
+		        <source>configure</source>
+		        <destination>configure.bak</destination>
+		</copy>
+
+		<execute command="sed">
+		        <param>'s/DEFS=-DHAVE_CONFIG_H/#DEFS=-DHAVE_CONFIG_H/'</param>
+		        <param>configure.bak</param>
+			<param>> configure</param>
+		</execute>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+
+	        <make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&libungif-directory;</remove>
+	</stage>
+
+</package>
+

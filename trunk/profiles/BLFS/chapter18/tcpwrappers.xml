@@ -1,0 +1,58 @@
+<package name="tcpwrappers" version="&tcpwrappers-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&tcpwrappers-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&tcpwrappers-ppatch;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&tcpwrappers-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&tcpwrappers-patch;</param>
+		</patch>
+
+		<make>
+		         <param>REAL_DAEMON_DIR=/usr/sbin</param>
+			 <param>linux</param>
+		</make>
+
+		<copy>
+                         <source>libwrap.a</source>
+			 <destination>/usr/lib</destination>
+		</copy>
+		
+		<copy>
+                         <source>tcpd.h</source>
+			 <destination>/usr/include</destination>
+		</copy>
+
+		<copy>
+                         <source>safe_finger</source>
+                         <source>tcpd</source>
+                         <source>tcpdchk</source>
+                         <source>tcpdmatch</source>
+                         <source>try-from</source>
+			 <destination>/usr/sbin</destination>
+		</copy>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&tcpwrappers-directory;</remove>
+		<remove>&build_dir;/&tcpwrappers-patch;</remove>
+	</stage>
+
+</package>

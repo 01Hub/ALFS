@@ -1,0 +1,69 @@
+<package name="docbook-xsl" version="&docbook-xsl-version;">
+
+        <packageinfo>
+                <requires><name>libxslt</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&docbook-xsl-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&docbook-xsl-directory;</base>
+		</stageinfo>
+
+		<!-- configuring docbook -->
+
+		<textdump base="/tmp">
+		      <file>build_docbook</file>
+		      <content>
+		      =install -d /usr/share/xml/docbook/xsl-stylesheets-1.60.1 &amp;&amp;
+		      =cp -af VERSION common extensions fo html htmlhelp images javahelp lib \
+		      =manpages params profiling template tools xhtml \
+		      =/usr/share/xml/docbook/xsl-stylesheets-1.60.1 &amp;&amp;
+		      =install -d /usr/share/doc/xml &amp;&amp;
+		      =cp -af doc/* /usr/share/doc/xml &amp;&amp;
+		      =if [ ! -f /etc/xml/catalog ]; then mkdir -p /etc/xml; xmlcatalog --noout \
+		      =--create /etc/xml/catalog; fi &amp;&amp;
+		      =if [ ! -e /etc/xml/docbook ]; then xmlcatalog --noout --create \
+		      =/etc/xml/docbook; fi &amp;&amp;
+		      =xmlcatalog --noout --add "rewriteSystem" \
+		      ="http://docbook.sourceforge.net/release/xsl/1.45" \
+		      ="/usr/share/xml/docbook/xsl-stylesheets-1.60.1" /etc/xml/catalog &amp;&amp;
+		      =xmlcatalog --noout --add "rewriteURI" \
+		      ="http://docbook.sourceforge.net/release/xsl/1.45" \
+		      ="/usr/share/xml/docbook/xsl-stylesheets-1.60.1" /etc/xml/catalog &amp;&amp;
+		      =xmlcatalog --noout --add "rewriteSystem" \
+		      ="http://docbook.sourceforge.net/release/xsl/current" \
+		      ="/usr/share/xml/docbook/xsl-stylesheets-1.60.1" /etc/xml/catalog &amp;&amp;
+		      =xmlcatalog --noout --add "rewriteURI" \
+		      ="http://docbook.sourceforge.net/release/xsl/current" \
+		      ="/usr/share/xml/docbook/xsl-stylesheets-1.60.1" /etc/xml/catalog &amp;&amp;
+		      =xmlcatalog --noout --add "delegateSystem" \
+		      ="http://docbook.sourceforge.net/release/xsl/" \
+		      ="file:///etc/xml/docbook" /etc/xml/catalog &amp;&amp;
+		      =xmlcatalog --noout --add "delegateURI" \
+		      ="http://docbook.sourceforge.net/release/xsl/" \
+		      ="file:///etc/xml/docbook" /etc/xml/catalog
+		      </content>
+		</textdump>
+
+		<permissions mode="755">
+		      <name>/tmp/build_docbook</name>
+		</permissions>
+
+		<execute command="/tmp/build_docbook" />
+
+		<remove>/tmp/build_docbook</remove>
+	</stage>
+
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&docbook-xsl-directory;</remove>
+	</stage>
+
+</package>

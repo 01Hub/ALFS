@@ -1,0 +1,40 @@
+<package name="tcsh" version="&tcsh-version;">
+
+    <stage name="Unpacking a package.">
+	<unpack>
+		<archive>&packages_dir;/&tcsh-package;</archive>
+		<destination>&build_dir;</destination>
+	</unpack>
+    </stage>
+
+    <stage name="Installing a package.">
+        <stageinfo>
+		<base>&build_dir;/&tcsh-directory;</base>
+	</stageinfo>
+
+	<configure>
+	        <param>--prefix=/usr</param>
+	</configure>
+	
+	<make />
+
+	<make>
+		<param>install</param>
+	</make>
+
+	<copy>
+	     <source>tcsh.man</source>
+	     <destination>/usr/share/man/man1/tcsh.1</destination>
+	</copy>
+
+	<link>
+	     <target>/usr/bin/tcsh</target>
+	     <name>/bin/csh</name>
+	</link>
+    </stage>
+
+    <stage name="Clean-up.">
+	<remove>&build_dir;/&tcsh-directory;</remove>
+    </stage>
+
+</package>

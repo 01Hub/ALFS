@@ -1,0 +1,142 @@
+<package name="postgresql" version="&postgresql-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&postgresql-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&postgresql-directory;</base>
+		</stageinfo>
+
+		<configure>
+                        <param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+
+		<mkdir>
+		        <option>parents</option>
+			<name>/var/pgsql/data</name>
+		</mkdir>
+
+
+		<execute command="id -u postgres || useradd">
+			<param>-d /var/pgsql/data</param>
+			<param>postgres</param>
+		</execute>
+
+		<ownership user="postgres">
+		        <name>/var/pgsql/data</name>
+		</ownership>
+
+		<execute command="su - postgres -c '/usr/bin/initdb -D /var/pgsql/data'" />
+
+
+		<textdump base="/etc/rc.d/init.d">
+		        <file>postgres</file>
+	        <content>
+		        =#!/bin/bash
+			=# Begin $rc_base/init.d/postgres
+			=
+			=# Based on sysklogd script from LFS-3.1 and earlier.
+			=# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+			=
+			=source /etc/sysconfig/rc
+			=source $rc_functions
+			=
+			=case "$1" in
+			=        start)
+			=                echo "Starting PostgreSQL daemon..."
+			=		su - postgres -c '/usr/bin/pg_ctl start -W -D /var/pgsql/data \
+			=                               -l /var/pgsql/data/logfile -o "-i" '
+			=                evaluate_retval
+			=                ;;
+			=
+			=        stop)
+			=                echo "Stopping PostgreSQL daemon..."
+			=                /usr/bin/pg_ctl stop -m smart -D /var/pgsql/data
+			=		evaluate_retval
+			=                ;;
+			=
+			=        restart)
+			=                $0 stop
+			=                sleep 1
+			=                $0 start
+			=                ;;
+			=
+			=        status)
+			=                /usr/bin/pg_ctl status -D /var/pgsql/data
+			=                ;;
+			=
+			=        *)
+			=                echo "Usage: $0 {start|stop|restart|status}"
+			=                exit 1
+			=                ;;
+			=esac
+			=
+			=# End $rc_base/init.d/
+	        </content>
+		</textdump>
+
+		<permissions mode="755">
+		        <name>/etc/rc.d/init.d/postgres</name>
+		</permissions>
+		
+		
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/postgres</target>
+			<name>../rc0.d/K26postgres</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/postgres</target>
+			<name>../rc1.d/K26postgres</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/postgres</target>
+			<name>../rc2.d/K26postgres</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/postgres</target>
+			<name>../rc3.d/S34postgres</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/postgres</target>
+			<name>../rc4.d/S34postgres</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/postgres</target>
+			<name>../rc5.d/S34postgres</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/postgres</target>
+			<name>../rc6.d/K26postgres</name>
+		</link>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&postgresql-directory;</remove>
+	</stage>
+
+</package>

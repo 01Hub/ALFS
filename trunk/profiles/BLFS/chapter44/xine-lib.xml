@@ -1,0 +1,46 @@
+<package name="xine-lib" version="&xine-lib-version;">
+
+        <packageinfo>
+                <requires><name>xfree86</name></requires>
+                <requires><name>esound</name></requires>
+
+		<utilizes><name>aalib</name></utilizes>
+		<utilizes><name>sdl</name></utilizes>
+		<utilizes><name>directfb</name></utilizes>
+		<utilizes><name>dxr3</name></utilizes>
+		<utilizes><name>libogg</name></utilizes>
+		<utilizes><name>libvorbis</name></utilizes>
+		<utilizes><name>ffmpeg</name></utilizes>
+		<utilizes><name>opendivx</name></utilizes>
+		<utilizes><name>xvid</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&xine-lib-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&xine-lib-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&xine-lib-directory;</remove>
+	</stage>
+
+</package>

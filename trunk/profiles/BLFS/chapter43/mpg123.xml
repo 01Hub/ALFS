@@ -1,0 +1,30 @@
+<package name="mpg123" version="&mpg123-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&mpg123-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&mpg123-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>PREFIX=/usr</param>
+			<param>linux</param>
+		</make>
+
+		<make>
+			<param>PREFIX=/usr</param>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&mpg123-directory;</remove>
+	</stage>
+
+</package>

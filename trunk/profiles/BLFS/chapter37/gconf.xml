@@ -1,0 +1,40 @@
+<package name="gconf" version="&gconf-version;">
+
+        <packageinfo>
+                <requires><name>oaf</name></requires>
+                <requires><name>gtk+</name></requires>
+                <requires><name>gdk-pixbuf</name></requires>
+		<utilizes><name>db</name></utilizes>
+		<utilizes><name>gtkdoc</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&gconf-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&gconf-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/opt/gnome</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+		
+		<execute command="/sbin/ldconfig" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&gconf-directory;</remove>
+	</stage>
+
+</package>

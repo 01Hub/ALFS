@@ -1,0 +1,41 @@
+<package name="orbit2" version="&orbit2-version;">
+
+	<packageinfo>
+        	<requires><name>glib2</name></requires>
+        	<requires><name>linc</name></requires>
+        	<requires><name>libidl</name></requires>
+        	<requires><name>popt</name></requires>
+	</packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&orbit2-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&orbit2-directory;</base>
+		</stageinfo>
+
+		<execute command="/sbin/ldconfig" />
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="/sbin/ldconfig" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&orbit2-directory;</remove>
+	</stage>
+
+</package>

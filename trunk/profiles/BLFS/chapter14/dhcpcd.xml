@@ -1,0 +1,100 @@
+<package name="dhcpcd" version="&dhcpcd-version;">
+
+	<stage name="Unpacking and patching a package.">
+		<unpack>
+			<archive>&packages_dir;/&dhcpcd-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&dhcpcd-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&dhcpcd-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&dhcpcd-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+
+		<search_replace
+		    base = "/etc/sysconfig">
+		    <file>network</file>
+		    <find>GATEWAY</find>
+		    <replace># GATEWAY</replace>
+		</search_replace>
+
+
+		<textdump
+		    base="/etc/sysconfig/network-devices">
+		    <file>ifconfig.eth0</file>
+		    <content>
+		        =ONBOOT=yes
+			=DHCP_PROG=/sbin/dhcpcd
+			=DHCP_START=&network-interface;
+		        =DHCP_STOP="-k &network-interface;"
+		    </content>
+		</textdump>
+
+		<textdump
+		    base="/etc/sysconfig/network-devices">
+		    <file>ifup-&network-interface;</file>
+		    <content>
+                        =#!/bin/sh
+                        =
+                        =source /etc/sysconfig/rc || exit
+                        =source $rc_functions || exit
+                        =source $network_devices/ifconfig.eth0 || exit
+                        =
+                        =echo "Bringing up the eth0 interface..."
+                        =modprobe &network-interface;
+                        =loadproc $DHCP_PROG $DHCP_START
+                    </content>
+		</textdump>
+
+		<textdump
+		    base="/etc/sysconfig/network-devices">
+		    <file>ifdown-&network-interface;</file>
+		    <content>
+                        =#!/bin/sh
+                        =
+                        =source /etc/sysconfig/rc || exit
+                        =source $rc_functions || exit
+                        =source $network_devices/ifconfig.eth0 || exit
+                        =
+                        =echo "Bringing down the eth0 interface..."
+                        =$DHCP_PROG $DHCP_STOP
+			=evaluate_retval
+                    </content>
+		</textdump>
+
+		<permissions mode="755" base="/etc/sysconfig/network-devices">
+		    <name>ifup-&network-interface;</name>
+		    <name>ifdown-&network-interface;</name>
+		</permissions>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&dhcpcd-directory;</remove>
+		<remove>&build_dir;/&dhcpcd-patch;</remove>
+	</stage>
+
+</package>

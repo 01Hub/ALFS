@@ -1,0 +1,34 @@
+<package name="soup" version="&soup-version;">
+
+        <packageinfo>
+                <requires><name>gnome-print</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&soup-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&soup-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/opt/gnome</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&soup-directory;</remove>
+	</stage>
+
+</package>

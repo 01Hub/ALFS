@@ -1,0 +1,60 @@
+# Begin /etc/profile
+# Written for Beyond Linux From Scratch
+# by James Robertson <jameswrobertson@earthlink.net>
+
+# System wide environment variables and startup programs.
+
+# System wide aliases and functions should go in /etc/bashrc.  Personal
+# environment variables and startup programs should go into
+# ~/.bash_profile.  Personal aliases and functions should go into
+# ~/.bashrc.
+
+# Function to help us manage paths
+pathman () {
+	if ! echo $PATH | /bin/egrep -q "(^|:)$1($|:)" ; then
+		if [ "$2" = "last" ] ; then
+			PATH=$PATH:$1
+		else
+			PATH=$1:$PATH
+		fi
+	fi
+}
+
+# Add to the standard path.
+if [ $(id -u) = 0 ] ; then
+	if [ -d "/usr/local/sbin" ] ; then
+		pathman /usr/local/sbin last
+	fi
+fi
+
+if [ $(id -u) != 0 ] ; then
+	if [ -d "/usr/local/bin" ] ; then
+		pathman /usr/local/bin last
+	fi
+fi
+
+if [ -d "/usr/X11R6/bin" ] ; then
+	pathman /usr/X11R6/bin last
+fi
+
+# Setup some environment variables.
+HISTSIZE=1000
+PS1="[\u@\h \w]\\$ "
+
+# Setup the INPUTRC environment variable.
+if [ -z "$INPUTRC" -a ! -f "$HOME/.inputrc" ] ; then
+	INPUTRC=/etc/inputrc
+fi
+
+# Setup for /bin/ls to support color, the alias is in /etc/bashrc.
+if [ -f "/etc/dircolors" ] ; then
+	eval $(dircolors -b /etc/dircolors)
+
+	if [ -f "$HOME/.dircolors" ] ; then
+		eval $(dircolors -b $HOME/.dircolors)
+	fi
+fi
+
+export PATH HISTSIZE PS1 LS_COLORS INPUTRC
+
+# End /etc/profile

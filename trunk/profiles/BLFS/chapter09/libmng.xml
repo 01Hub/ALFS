@@ -1,0 +1,52 @@
+<package name="libmng" version="&libmng-version;">
+
+        <packageinfo>
+                <requires><name>libjpeg</name></requires>
+                <requires><name>lcms</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&libmng-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&libmng-directory;</base>
+		</stageinfo>
+
+		<configure>
+		    <param>--prefix=/usr</param>
+		    <param>--with-zlib</param>
+		    <param>--with-jpeg</param>
+		    <param>--with-lcms</param>
+		</configure>
+
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<copy>
+		        <source>doc/man/*.3</source>
+			<destination>/usr/share/man/man3</destination>
+		</copy>
+
+		<copy>
+		        <source>doc/man/*.5</source>
+			<destination>/usr/share/man/man5</destination>
+		</copy>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&libmng-directory;</remove>
+	</stage>
+
+
+</package>
+

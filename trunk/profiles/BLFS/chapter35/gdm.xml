@@ -1,0 +1,50 @@
+<package name="gdm" version="&gdm-version;">
+
+        <packageinfo>
+                <requires><name>linuxpam</name></requires>
+                <requires><name>libgnome</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&gdm-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&gdm-directory;</base>
+		</stageinfo>
+
+		<execute command="grep gdm: /etc/group || /usr/sbin/groupadd">
+		        <param>gdm</param>
+		</execute>
+
+		<execute command="id -u gdm || /usr/sbin/useradd">
+		        <param>-c gdm</param>
+			<param>-d /dev/null</param>
+			<param>-g gdm</param>
+			<param>-s /bin/bash</param>
+			<param>gdm</param>
+		</execute>
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+			<param>--sysconfdir=/etc/gnome</param>
+			<param>--localstatedir=/var/lib</param>
+			<param>--with-pam-prefix=/etc</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&gdm-directory;</remove>
+	</stage>
+
+</package>

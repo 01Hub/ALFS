@@ -1,0 +1,186 @@
+<package name="mysql" version="&mysql-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&mysql-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&mysql-directory;</base>
+		</stageinfo>
+
+		<execute command="id -u mysql &amp;> /dev/null || /usr/sbin/groupadd">
+			<param>mysql</param>
+		</execute>
+		<execute command="id -u mysql &amp;> /dev/null || /usr/sbin/useradd">
+		        <param>-c mysql</param>
+			<param>-d /dev/null</param>
+			<param>-g mysql</param>
+			<param>-s /bin/false</param>
+			<param>mysql</param>
+		</execute>
+
+		<search_replace>
+		        <file>configure</file>
+			<find>mysql-test/Makefile</find>
+			<replace></replace>
+		</search_replace>
+		
+		<search_replace>
+		        <file>configure</file>
+			<find> mysql-test</find>
+			<replace></replace>
+		</search_replace>
+
+		<configure>
+                        <param>--prefix=/usr</param>
+                        <param>--sysconfdir=/etc</param>
+                        <param>--libexecdir=/usr/sbin</param>
+                        <param>--localstatedir=/var/lib/mysql</param>
+                        <param>--enable-thread-safe-client</param>
+			<param>--enable-local-infile</param>
+                        <param>--without-debug</param>
+                        <param>--without-bench</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<!-- CONFIGURATION -->
+
+		<copy>
+		        <source>/usr/share/mysql/my-medium.cnf</source>
+			<destination>/etc/my.cnf</destination>
+		</copy>
+
+		<execute command="mysql_install_db" />
+
+		<ownership user="mysql" group="mysql">
+		    <option>recursive</option>
+		    <name>/var/lib/mysql</name>
+		</ownership>
+
+		<!--
+
+		<execute command="safe_mysqld 2>&amp;1 >/dev/null &amp;" />
+
+		<textdump>
+		        <file>/tmp/mysql.script</file>
+			<content>
+			=UPDATE user SET password=password(&mysql-password;) WHERE user='root';
+			=FLUSH PRIVILEGES;
+			=EXIT;
+			</content>
+		</textdump>
+
+		<execute command="mysql -uroot mysql &lt; /tmp/mysql.script" />
+
+		<remove>/tmp/mysql.script</remove>
+
+		<execute command="kill `pidof -x safe_mysqld mysqld`" />
+		-->
+		
+		<textdump>
+		        <file>/etc/rc.d/init.d/mysql</file>
+			<content>
+			=#!/bin/bash
+			=# Begin $rc_base/init.d/
+			=
+			=# Based on sysklogd script from LFS-3.1 and earlier.
+			=# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+			=
+			=source /etc/sysconfig/rc
+			=source $rc_functions
+			=
+			=case "$1" in
+			=        start)
+			=                echo "Starting MySQL daemon..."
+			=                /usr/bin/safe_mysqld 2>&amp;1 >/dev/null &amp;
+			=                evaluate_retval
+			=                ;;
+			=
+			=        stop)
+			=                echo "Stopping MySQL daemon..."
+			=                killproc mysqld
+			=                ;;
+			=
+			=        restart)
+			=                $0 stop
+			=                sleep 1
+			=                $0 start
+			=                ;;
+			=
+			=        status)
+			=                statusproc /usr/sbin/mysqld
+			=                ;;
+			=
+			=        *)
+			=                echo "Usage: $0 {start|stop|restart|status}"
+			=                exit 1
+			=                ;;
+			=esac
+			=
+			=# End $rc_base/init.d/
+			</content>
+		</textdump>
+
+		<permissions mode="755">
+		        <name>/etc/rc.d/init.d/mysql</name>
+		</permissions>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/mysql</target>
+			<name>../rc0.d/K26mysql</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/mysql</target>
+			<name>../rc1.d/K26mysql</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/mysql</target>
+			<name>../rc2.d/K26mysql</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/mysql</target>
+			<name>../rc3.d/S34mysql</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/mysql</target>
+			<name>../rc4.d/S34mysql</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/mysql</target>
+			<name>../rc5.d/S34mysql</name>
+		</link>
+
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/mysql</target>
+			<name>../rc6.d/K26mysql</name>
+		</link>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&mysql-directory;</remove>
+	</stage>
+
+</package>

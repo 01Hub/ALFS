@@ -1,0 +1,134 @@
+<package name="qt" version="&qt-version;">
+
+        <packageinfo>
+                <requires><name>xfree86</name></requires>
+                <requires><name>libpng</name></requires>
+                <requires><name>libmng</name></requires>
+                <requires><name>libjpeg</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&qt-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<environment>
+			        <variable name="QTDIR">&build_dir;/&qt-directory;</variable>
+			</environment>
+			<base>&build_dir;/&qt-directory;</base>
+		</stageinfo>
+
+
+		<configure command="echo yes | ./configure">
+			<param>-prefix /opt/qt-&qt-version;</param>
+			<param>-qt-gif</param>
+			<param>-system-libpng</param>
+			<param>-system-libmng</param>
+			<param>-system-zlib</param>
+			<param>-system-libjpeg</param>
+			<param>-no-g++-exceptions</param>
+			<param>-thread</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="if test -L /opt/qt; then rm /opt/qt; fi" />
+
+		<link>
+		        <option>force</option>
+			<target>/opt/qt-&qt-version;</target>
+			<name>/opt/qt</name>
+		</link>
+
+		<link>
+		        <option>force</option>
+			<target>/opt/qt/lib/libqt-mt.so</target>
+			<name>/opt/qt/lib/libqt.so</name>
+		</link>
+
+		<copy>
+		        <option>recursive</option>
+			<source>doc/man</source>
+			<destination>/opt/qt/doc</destination>
+		</copy>
+		
+		
+		<copy>
+		        <option>recursive</option>
+			<source>examples</source>
+			<destination>/opt/qt/doc</destination>
+		</copy>
+		
+		
+		<!-- update /etc/ld.so.conf -->
+
+		<search_replace
+		    base = "/etc">
+		    <file>ld.so.conf</file>
+		    <find>/opt/qt/lib</find>
+		    <replace></replace>
+                </search_replace>
+
+		<textdump
+		    mode="append"
+		    base="/etc">
+		    <file>ld.so.conf</file>
+		    <content>
+                        =/opt/qt/lib
+		    </content>
+		</textdump>
+		
+		<execute command="/sbin/ldconfig" />
+
+		<!-- update ~/.bash_profile -->
+
+		<search_replace
+		    base = "/root">
+		    <file>.bash_profile</file>
+		    <find>PATH=$PATH:$QTDIR/bin</find>
+		    <replace></replace>
+                </search_replace>
+
+		<textdump
+		    mode="append"
+		    base="/root">
+		    <file>.bash_profile</file>
+		    <content>
+		        =export QTDIR=/opt/qt
+		        =PATH=$PATH:/$QTDIR/bin
+			=export PATH
+		    </content>
+		</textdump>
+
+
+		<!-- update /etc/man.conf -->
+
+		<textdump
+		    mode="append"
+		    base="/etc">
+		    <file>man.conf</file>
+		    <content>
+		            =# Begin qt addition to man.conf
+			    =
+			    =MANPATH /opt/qt/doc/man
+			    =
+			    =# End qt addition to man.conf
+		    </content>
+		</textdump>
+
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&qt-directory;</remove>
+	</stage>
+
+</package>

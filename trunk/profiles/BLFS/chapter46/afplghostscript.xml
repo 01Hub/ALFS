@@ -1,0 +1,64 @@
+<package name="ghostscript" version="&afplghostscript-version;">
+
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&afplghostscript-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<mkdir>
+		        <option>parents</option>
+		        <name>/usr/share/ghostscript</name>
+		</mkdir>
+
+		<unpack>
+			<archive>&packages_dir;/&afplghostscript-fonts1;</archive>
+			<destination>/usr/share/ghostscript</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&afplghostscript-fonts2;</archive>
+			<destination>/usr/share/ghostscript</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&afplghostscript-fonts3;</archive>
+			<destination>/usr/share/ghostscript</destination>
+		</unpack>
+
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&afplghostscript-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--libexecdir=/usr/lib/gs</param>
+			<param>--sysconfdir=/etc/gs</param>
+			<param>--enable-shared</param>
+			<param>--enable-static</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<make>
+			<param>so</param>
+		</make>
+
+		<make>
+			<param>soinstall</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&afplghostscript-directory;</remove>
+	</stage>
+
+</package>

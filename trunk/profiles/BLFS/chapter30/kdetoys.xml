@@ -1,0 +1,37 @@
+<package name="kdetoys" version="&kdetoys-version;">
+
+        <packageinfo>
+                <requires><name>kdebase</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&kdetoys-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&kdetoys-directory;</base>
+		</stageinfo>
+
+		<configure>
+                        <param>--prefix=/opt/kde-&kde-version;</param>
+                        <param>--disable-debug</param>
+                        <param>--disable-dependency-tracking</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&kdetoys-directory;</remove>
+	</stage>
+
+</package>

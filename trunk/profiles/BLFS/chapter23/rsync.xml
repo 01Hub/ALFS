@@ -1,0 +1,163 @@
+<package name="rsync" version="&rsync-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&rsync-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&rsync-directory;</base>
+		</stageinfo>
+
+		<execute command="grep rsyncd:  /etc/group  || groupadd">
+		        <param>rsyncd</param>
+		</execute>
+		
+		<execute command="id -u rsyncd || useradd">
+			<param>-c rsyncd</param>
+			<param>-d /home/rsync</param>
+			<param>-g rsyncd</param>
+			<param>-s /bin/false</param>
+			<param>rsyncd</param>
+		</execute>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+		        <param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Configuring a package.">
+
+      <textdump base="/etc">
+        <file>/etc/rsync.conf</file>
+	<content>
+	=# This is a basic rsync configuration file
+	=# It exports a single module without user authentification.
+	=
+	=motd file = /home/rsync/welcome.msg
+	=use chroot = yes
+	=
+	=[localhost]
+	=	path = /home/rsync
+	=	comment = Default rsync module
+	=	read only = yes
+	=	list = yes
+	=	uid = rsyncd
+	=	gid = rsyncd
+	=
+	</content>
+      </textdump>
+	
+
+
+      <textdump base="/etc/rc.d/init.d/">
+	<file>rsyncd</file>
+        <content>
+	=#!/bin/sh
+	=# Begin $rc_base/init.d/rsyncd
+	=
+	=# Based on sysklogd script from LFS-3.1 and earlier.
+	=# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+	=
+	=source /etc/sysconfig/rc
+	=source $rc_functions
+	=
+	=case "$1" in
+	=	start)
+	=		echo "Starting RSYNC Server..."
+	=		loadproc /usr/bin/rsync --daemon --compress
+	=		;;
+	=
+	=	stop)
+	=		echo "Stopping RSYNC Server..."
+	=		killproc /usr/bin/rsync
+	=		;;
+	=
+	=	reload)
+	=		echo "Reloading RSYNC Server..."
+	=		reloadproc /usr/bin/rsync
+	=		;;
+	=            
+	=	restart)
+	=		$0 stop
+	=		sleep 1
+	=		$0 start
+	=		;;
+	=
+	=	status)
+	=		statusproc /usr/bin/rsync
+	=		;;
+	=
+	=	*)
+	=		echo "Usage: $0 {start|stop|reload|restart|status}"
+	=		exit 1
+	=		;;
+	=esac
+	=
+	=# End $rc_base/init.d/rsyncd
+	</content>
+	</textdump>
+
+      <permissions mode="755" base="/etc/rc.d/init.d">
+	<name>rsyncd</name>
+      </permissions>
+
+
+      <link base="/etc/rc.d/init.d">
+	<option>force</option>
+	<target>../init.d/rsyncd</target>
+	<name>../rc0.d/K30rsyncd</name>
+      </link>
+
+      <link base="/etc/rc.d/init.d">
+	<option>force</option>
+	<target>../init.d/rsyncd</target>
+	<name>../rc1.d/K30rsyncd</name>
+      </link>
+
+      <link base="/etc/rc.d/init.d">
+	<option>force</option>
+	<target>../init.d/rsyncd</target>
+	<name>../rc2.d/K30rsyncd</name>
+      </link>
+
+      <link base="/etc/rc.d/init.d">
+	<option>force</option>
+	<target>../init.d/rsyncd</target>
+	<name>../rc3.d/S30rsyncd</name>
+      </link>
+
+      <link base="/etc/rc.d/init.d">
+	<option>force</option>
+	<target>../init.d/rsyncd</target>
+	<name>../rc4.d/S30rsyncd</name>
+      </link>
+
+      <link base="/etc/rc.d/init.d">
+	<option>force</option>
+	<target>../init.d/rsyncd</target>
+	<name>../rc5.d/S30rsyncd</name>
+      </link>
+
+      <link base="/etc/rc.d/init.d">
+	<option>force</option>
+	<target>../init.d/rsyncd</target>
+	<name>../rc6.d/K30rsyncd</name>
+      </link>
+
+      </stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&rsync-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,179 @@
+<package name="gpm" version="&gpm-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&gpm-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+		        <source>&packages_dir;/&gpm-patch1;</source>
+		        <destination>&build_dir;</destination>
+		</copy>
+
+		<copy>
+		        <source>&packages_dir;/&gpm-patch2;</source>
+		        <destination>&build_dir;</destination>
+		</copy>
+
+		<copy>
+		        <source>&packages_dir;/&gpm-patch3;</source>
+		        <destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&gpm-directory;</base>
+			<environment>
+			        <variable name="LDFLAGS">-lm</variable>
+			</environment>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p0</param>
+			<param>-i ../&gpm-patch1;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&gpm-patch2;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&gpm-patch3;</param>
+		</patch>
+
+
+		<configure command="LDFLAGS='-lm' ./configure">
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+		
+		<textdump>
+		    <file>/etc/rc.d/init.d/gpm</file>
+		    <content>
+                        =#!/bin/sh
+                        =# Begin $rc_base/init.d/gpm
+                        =
+                        =# Based on sysklogd script from LFS-3.1 and earlier.
+                        =# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+                        =# GPM specific parts by Mark Hymers - markh@linuxfromscratch.org
+                        =
+                        =source /etc/sysconfig/rc
+                        =source $rc_functions
+                        =
+                        =if [ -f /etc/sysconfig/mouse ]
+                        =	then
+                        =        source /etc/sysconfig/mouse
+                        =fi
+                        =
+                        =if [ -z "$MDEVICE" ] || [ -z "$PROTOCOL" ]
+                        =	then
+                        =	echo "Please create an /etc/sysconfig/mouse file containing"
+                        =	echo "MDEVICE and PROTOCOL values"
+                        =	exit 1;
+                        =fi
+                        =
+                        =case "$1" in
+                        =        start)
+                        =                echo "Starting gpm..."
+                        =                loadproc gpm -m $MDEVICE -t $PROTOCOL
+                        =                ;;
+                        =
+                        =        stop)
+                        =                echo "Stopping gpm..."
+                        =                killproc gpm
+                        =                ;;
+                        =
+                        =        restart)
+                        =                $0 stop
+                        =                sleep 1
+                        =                $0 start
+                        =                ;;
+                        =
+                        =        status)
+                        =                statusproc gpm
+                        =                ;;
+                        =
+                        =        *)
+                        =                echo "Usage: $0 {start|stop|restart|status}"
+                        =                exit 1
+                        =                ;;
+                        =esac
+                        =
+                        =# End $rc_base/init.d/gpm
+		    </content>
+		</textdump>
+		<permissions mode="755">
+		    <name>/etc/rc.d/init.d/gpm</name>
+		</permissions>
+
+		<textdump>
+		    <file>/etc/sysconfig/mouse</file>
+		    <content>
+                        =# start /etc/sysconfig/mouse
+                        =MDEVICE=&mouse_device;
+                        =PROTOCOL=&mouse_protocol;
+                        =# end /etc/sysconfig/mouse
+		    </content>
+		</textdump>
+
+
+		<link base="/etc/rc.d/init.d">
+		    <option>force</option>
+		    <target>../init.d/gpm</target>
+		    <name>../rc0.d/K10gpm</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		    <option>force</option>
+		    <target>../init.d/gpm</target>
+		    <name>../rc1.d/K10gpm</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		    <option>force</option>
+		    <target>../init.d/gpm</target>
+		    <name>../rc2.d/K10gpm</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		    <option>force</option>
+		    <target>../init.d/gpm</target>
+		    <name>../rc3.d/S70gpm</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		    <option>force</option>
+		    <target>../init.d/gpm</target>
+		    <name>../rc4.d/S70gpm</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		    <option>force</option>
+		    <target>../init.d/gpm</target>
+		    <name>../rc5.d/S70gpm</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		    <option>force</option>
+		    <target>../init.d/gpm</target>
+		    <name>../rc6.d/K10gpm</name>
+		</link>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&gpm-directory;</remove>
+	</stage>
+
+</package>

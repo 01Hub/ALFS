@@ -1,0 +1,38 @@
+<package name="kdeaddons" version="&kdeaddons-version;">
+
+        <packageinfo>
+                <requires><name>kdemultimedia</name></requires>
+                <requires><name>kdenetwork</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&kdeaddons-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&kdeaddons-directory;</base>
+		</stageinfo>
+
+		<configure>
+                        <param>--prefix=/opt/kde-&kde-version;</param>
+                        <param>--disable-debug</param>
+                        <param>--disable-dependency-tracking</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&kdeaddons-directory;</remove>
+	</stage>
+
+</package>

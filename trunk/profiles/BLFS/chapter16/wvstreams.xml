@@ -1,0 +1,61 @@
+<package name="wvstreams" version="&wvstreams-version;">
+
+    <packageinfo>
+            <requires><name>openssl</name></requires>
+    </packageinfo>
+
+    <stage name="Unpacking a package.">
+	<unpack>
+		<archive>&packages_dir;/&wvstreams-package;</archive>
+		<destination>&build_dir;</destination>
+	</unpack>
+
+
+	<copy>
+	        <source>&packages_dir;/&wvstreams-wvcrypto-patch;</source>
+		<destination>&build_dir;</destination>
+	</copy>
+
+	<copy>
+	        <source>&packages_dir;/&wvstreams-wvresolver-patch;</source>
+		<destination>&build_dir;</destination>
+	</copy>
+
+	<execute command="/sbin/ldconfig" />
+    </stage>
+
+    <stage name="Installing a package.">
+        <stageinfo>
+		<base>&build_dir;/&wvstreams-directory;</base>
+	</stageinfo>
+
+	<patch>
+		<param>-N</param>
+		<param>-p1</param>
+		<param>-i ../&wvstreams-wvcrypto-patch;</param>
+	</patch>
+
+	<patch>
+		<param>-N</param>
+		<param>-p1</param>
+		<param>-i ../&wvstreams-wvresolver-patch;</param>
+	</patch>
+
+	<make>
+	        <param>PREFIX=/usr</param>
+	        <param>LDFLAGS=-lcrypt</param>
+	</make>
+
+	<make>
+	        <param>PREFIX=/usr</param>
+		<param>install</param>
+	</make>
+    </stage>
+
+    <stage name="Clean-up.">
+	<remove>&build_dir;/&wvstreams-directory;</remove>
+	<remove>&build_dir;/&wvstreams-wvcrypto-patch;</remove>
+	<remove>&build_dir;/&wvstreams-wvresolver-patch;</remove>
+    </stage>
+
+</package>

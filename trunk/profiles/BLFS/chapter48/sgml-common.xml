@@ -1,0 +1,72 @@
+<package name="sgml-common" version="&sgml-common-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&sgml-common-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&sgml-common-directory;</base>
+		</stageinfo>
+
+		<link>
+		        <option>force</option>
+			<target>/usr/share/automake-1.7</target>
+			<name>/usr/share/automake</name>
+		</link>
+		
+
+		<configure>
+		        <param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
+			<param>--mandir=/usr/share/man</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<!-- remove comments if you update
+		     and remove the space in - -remove
+
+		<execute command="install-catalog">
+		        <param>- -remove</param>
+			<param>/etc/sgml/sgml-ent.cat</param>
+			<param>/usr/share/sgml/sgml-iso-entities-8879.1986/catalog</param>
+		</execute>
+
+		<execute command="install-catalog">
+		        <param>- -remove</param>
+			<param>/etc/sgml/sgml-docbook.cat</param>
+			<param>/etc/sgml/sgml-ent.cat</param>
+		</execute>
+
+		-->
+
+
+		<execute command="install-catalog">
+		        <param>--add</param>
+			<param>/etc/sgml/sgml-ent.cat</param>
+			<param>/usr/share/sgml/sgml-iso-entities-8879.1986/catalog</param>
+		</execute>
+
+		<execute command="install-catalog">
+		        <param>--add</param>
+			<param>/etc/sgml/sgml-docbook.cat</param>
+			<param>/etc/sgml/sgml-ent.cat</param>
+		</execute>
+
+		<remove>/usr/share/automake</remove>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&sgml-common-directory;</remove>
+	</stage>
+
+</package>

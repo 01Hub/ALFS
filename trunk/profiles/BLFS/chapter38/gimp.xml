@@ -1,0 +1,43 @@
+<package name="gimp" version="&gimp-version;">
+
+        <packageinfo>
+                <requires><name>gtk+</name></requires>
+
+		<utilizes><name>libtiff</name></utilizes>
+		<utilizes><name>libpng</name></utilizes>
+		<utilizes><name>libjpeg</name></utilizes>
+		<utilizes><name>aalib</name></utilizes>
+		<utilizes><name>mpeglib</name></utilizes>
+		<utilizes><name>python</name></utilizes>
+		<utilizes><name>perlmodules</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&gimp-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&gimp-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&gimp-directory;</remove>
+	</stage>
+
+</package>

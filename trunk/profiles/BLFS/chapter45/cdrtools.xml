@@ -1,0 +1,36 @@
+<package name="cdrtools" version="&cdrtools-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&cdrtools-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&cdrtools-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>INS_BASE=/usr</param>
+			<param>DEFINSUSR=root</param>
+			<param>DEFINSGRP=root</param>
+			<param>COPTS="$CFLAGS"</param>
+		</make>
+		
+		<make>
+			<param>INS_BASE=/usr</param>
+			<param>DEFINSUSR=root</param>
+			<param>DEFINSGRP=root</param>
+			<param>COPTS="$CFLAGS"</param>
+			<param>install</param>
+		</make>
+		
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&cdrtools-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,37 @@
+<package name="zip" version="&zip-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&zip-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&zip-directory;</base>
+		</stageinfo>
+
+		<copy>
+			<source>unix/Makefile</source>
+			<destination>.</destination>
+		</copy>
+
+		<make>
+		        <param>prefix=/usr</param>
+		        <param>generic_gcc</param>
+		</make>
+
+		<make>
+		        <param>prefix=/usr</param>
+		        <param>generic_gcc</param>
+			<param>install</param>
+		</make>
+		
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&zip-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,63 @@
+<package name="evolution" version="&evolution-version;">
+
+        <packageinfo>
+                <requires><name>bonobo</name></requires>
+                <requires><name>bonobo-conf</name></requires>
+                <requires><name>gal</name></requires>
+                <requires><name>libcapplet</name></requires>
+                <requires><name>gtkhtml</name></requires>
+                <requires><name>soup</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking the packages.">
+		<unpack>
+			<archive>&packages_dir;/&evolution-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&db3117-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing db-3.1.17.">
+		<stageinfo>
+			<base>&build_dir;/&db3117-directory;/build_unix</base>
+		</stageinfo>
+		
+		<configure command="../dist/configure">
+		        <param>--prefix=/opt/db-3.1.17</param>
+			<param>--enable-compat185</param>
+		</configure>
+
+		<make>
+		        <param>docdir=/usr/doc/Berkeley-DB</param>
+			<param>all</param>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Installing evolution.">
+		<stageinfo>
+			<base>&build_dir;/&evolution-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/opt/gnome</param>
+			<param>--with-db3=/opt/db-3.1.17</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&evolution-directory;</remove>
+		<remove>&build_dir;/&db3117-directory;</remove>
+	</stage>
+
+</package>

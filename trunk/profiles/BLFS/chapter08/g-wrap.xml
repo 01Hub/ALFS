@@ -1,0 +1,43 @@
+<package name="g-wrap" version="&g-wrap-version;">
+
+        <packageinfo>
+                <requires><name>guile</name></requires>
+                <requires><name>slib</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&g-wrap-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&g-wrap-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<!-- to avoid a problem with gcc 3.2 -->
+		<search_replace
+		    base = "&build_dir;/&g-wrap-directory;/test">
+		        <file>Makefile</file>
+			<find>-Werror</find>
+			<replace></replace>
+		</search_replace>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&g-wrap-directory;</remove>
+	</stage>
+
+</package>

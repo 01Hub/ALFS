@@ -1,0 +1,47 @@
+<package name="gdbm" version="&gdbm-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&gdbm-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&gdbm-directory;</base>
+		</stageinfo>
+
+		<configure />
+
+
+
+		<make>
+                        <param>prefix=/usr</param>		       
+		</make>
+
+		<make>
+                        <param>prefix=/usr</param>
+			<param>man3dir=/usr/share/man/man3</param>
+                        <param>infodir=/usr/share/info</param>
+                        <param>BINOWN=root</param>
+			<param>BINGRP=root</param>
+			<param>install</param>
+		</make>
+
+		<make>
+                        <param>prefix=/usr</param>
+                        <param>man3dir=/usr/share/man/man3</param>
+                        <param>infodir=/usr/share/info</param>
+                        <param>BINOWN=root</param>
+                        <param>BINGRP=root</param>
+                        <param>install-compat</param>
+		</make>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&gdbm-directory;</remove>
+	</stage>
+
+</package>

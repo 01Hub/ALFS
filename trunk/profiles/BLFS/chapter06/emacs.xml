@@ -1,0 +1,38 @@
+<package name="emacs" version="&emacs-version;">
+
+    <packageinfo>
+        <utilizes>
+	    <name>xfree86</name>
+	</utilizes>
+    </packageinfo>
+
+    <stage name="Unpacking a package.">
+	<unpack>
+		<archive>&packages_dir;/&emacs-package;</archive>
+		<destination>&build_dir;</destination>
+	</unpack>
+    </stage>
+
+    <stage name="Installing a package.">
+        <stageinfo>
+		<base>&build_dir;/&emacs-directory;</base>
+	</stageinfo>
+
+	<configure>
+	        <param>--prefix=/usr</param>
+	</configure>
+	
+	<make>
+		<param>bootstrap</param>
+	</make>
+
+	<make>
+		<param>install</param>
+	</make>
+    </stage>
+
+    <stage name="Clean-up.">
+	<remove>&build_dir;/&emacs-directory;</remove>
+    </stage>
+
+</package>

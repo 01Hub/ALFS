@@ -1,0 +1,28 @@
+<package name="slib" version="&slib-version;">
+
+        <packageinfo>
+                <requires><name>readline</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&slib-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+
+		<copy base="&build_dir;">
+		         <option>recursive</option>
+			 <source>&slib-directory;</source>
+		         <destination>/usr/share/guile</destination>
+		</copy>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&slib-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,100 @@
+<package name="linuxpam" version="&linuxpam-version;">
+
+        <packageinfo>
+                <requires><name>cracklib</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&linuxpam-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&linuxpam-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--enable-static-libpam</param>
+		        <param>--with-mailspool=/var/mail</param>
+		        <param>--enable-read-both-confs</param>
+		        <param>--sysconfdir=/etc</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<move>
+		        <source>/lib/libpam.a</source>
+			<source>/lib/libpam_misc.a</source>
+			<source>/lib/libpamc.a</source>
+			<destination>/usr/lib</destination>
+		</move>
+
+
+		<link>
+		        <option>force</option>
+			<target>../../lib/libpam.so.0.77</target>
+			<name>/usr/lib/libpam.so</name>
+		</link>
+
+		<link>
+		        <option>force</option>
+			<target>../../lib/libpam_misc.so.0.77</target>
+			<name>/usr/lib/libpam_misc.so</name>
+		</link>
+
+		<link>
+		        <option>force</option>
+			<target>../../lib/libpamc.so.0.77</target>
+			<name>/usr/lib/libpamc.so</name>
+		</link>
+
+		<mkdir>
+		       <option>parents</option>
+		       <name>/etc/pam.d</name>
+		</mkdir>
+
+		<textdump base="/etc/pam.d">
+		        <file>other</file>
+
+			<content>
+			        =# Begin /etc/pam.d/other
+				=
+				=auth            required        pam_unix.so     nullok
+				=account         required        pam_unix.so
+				=session         required        pam_unix.so
+				=password        required        pam_unix.so     nullok
+				=
+				=# End /etc/pam.d/other
+			</content>
+		</textdump>
+
+		<textdump base="/etc">
+		        <file>pam.conf</file>
+
+			<content>
+			=# Begin /etc/pam.conf
+			=
+			=other           auth            required        pam_unix.so     nullok
+			=other           account         required        pam_unix.so
+			=other           session         required        pam_unix.so
+			=other           password        required        pam_unix.so     nullok
+			=
+			=# End /etc/pam.conf
+			</content>
+		</textdump>
+
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&linuxpam-directory;</remove>
+	</stage>
+
+</package>

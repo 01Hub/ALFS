@@ -1,0 +1,40 @@
+<package name="libglade" version="&libglade-version;">
+
+        <packageinfo>
+                <requires><name>libxml2</name></requires>
+        	<requires><name>gtk+</name></requires>
+		<utilizes><name>python</name></utilizes>
+		<utilizes><name>gtk-doc</name></utilizes>
+		<utilizes><name>sgml-dtd31</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&libglade-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&libglade-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="/sbin/ldconfig" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&libglade-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,52 @@
+<package name="db" version="&db-version;">
+
+
+        <!-- warning : db is build with java binding as it is
+                       required by openoffice
+                       is you don't want java and openoffice,
+                       <packageinfo>
+                               you can remove the <requires><name>, but you need
+                       </packageinfo>
+                       also to remove the option enable-java -->
+
+        <packageinfo>
+                <requires><name>j2sdk</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&db-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<environment>
+			        <variable name="JAVA_HOME">/opt/&j2sdk-directory;</variable>
+			        <variable name="PATH" mode="append">:/opt/&j2sdk-directory;/bin</variable>
+			</environment>
+			<base>&build_dir;/&db-directory;/build_unix</base>
+		</stageinfo>
+
+		<configure command="../dist/configure">
+			<param>--prefix=/usr</param>
+			<param>--enable-compat185</param>
+			<param>--enable-cxx</param>
+			<param>--enable-java</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>docdir=/usr/share/doc/db-&db-version;</param>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&db-directory;</remove>
+	</stage>
+
+</package>

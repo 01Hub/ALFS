@@ -1,0 +1,34 @@
+<package name="slrn" version="&slrn-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&slrn-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&slrn-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+			<param>--with-slrnpull</param>
+		</configure>
+		
+		<make>
+		        <param>LDFLAGS="-ldl"</param>
+		</make>
+
+		<make>
+			<param>install</param>
+		</make>
+		
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&slrn-directory;</remove>
+	</stage>
+
+</package>

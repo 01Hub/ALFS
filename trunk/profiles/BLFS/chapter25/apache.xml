@@ -1,0 +1,137 @@
+<package name="apache" version="&apache-version;">
+
+    <packageinfo>
+                <requires><name>db</name></requires>
+                <requires><name>gdbm</name></requires>
+                <requires><name>openssl</name></requires>
+                <requires><name>openldap</name></requires>
+                <requires><name>lynx</name></requires>
+    </packageinfo>
+
+
+    <stage name="Unpacking a package.">
+	<unpack>
+		<archive>&packages_dir;/&apache-package;</archive>
+		<destination>&build_dir;</destination>
+	</unpack>
+    </stage>
+
+    <stage name="Installing a package.">
+        <stageinfo>
+		<base>&build_dir;/&apache-directory;</base>
+	</stageinfo>
+
+	<execute command="id -u apache &amp;> /dev/null || groupadd apache" />
+	<execute command="id -u apache &amp;> /dev/null || useradd -c apache -d /dev/null -g apache -s /bin/false apache" />
+
+	<configure>
+                <param>--prefix=/usr</param>
+                <param>--sbindir=/usr/sbin</param>
+                <param>--libexecdir=/usr/lib/apache</param>
+                <param>--datadir=/var/www</param>
+                <param>--sysconfdir=/etc/apache</param>
+                <param>--localstatedir=/var/www</param>
+                <param>--includedir=/usr/include/apache</param>
+                <param>--enable-mods-shared=all</param>
+	</configure>
+
+	<make />
+
+	<make>
+		<param>install</param>
+	</make>
+
+
+	<textdump base="/etc/rc.d/init.d">
+		<file>apache</file>
+	<content>
+	=#!/bin/bash
+	=
+	=source /etc/sysconfig/rc
+	=source $rc_functions
+	=
+	=case "$1" in
+	=        start)
+	=                echo "Starting Apache daemon..."
+	=                /usr/sbin/apachectl -k start
+	=                evaluate_retval
+	=                ;;
+	=
+	=        stop)
+	=                echo "Stopping Apache daemon..."
+	=                /usr/sbin/apachectl -k stop
+	=                evaluate_retval
+	=                ;;
+	=
+	=        restart)
+	=                echo "Restarting Apache daemon..."
+	=                /usr/sbin/apachectl -k restart
+	=                evaluate_retval
+	=                ;;
+	=
+	=        status)
+	=                statusproc /usr/sbin/httpd
+	=                ;;
+	=                
+	=        *)
+	=                echo "Usage: $0 {start|stop|restart|status}"
+	=                exit 1
+	=                ;;
+	=esac
+	</content>
+	</textdump>
+
+	<permissions mode="755">
+		<name>/etc/rc.d/init.d/apache</name>
+	</permissions>
+		
+	<link base="/etc/rc.d/init.d">
+	        <option>force</option>
+		<target>../init.d/apache</target>
+		<name>../rc0.d/K28apache</name>
+	</link>
+
+	<link base="/etc/rc.d/init.d">
+	        <option>force</option>
+		<target>../init.d/apache</target>
+		<name>../rc1.d/K28apache</name>
+	</link>
+
+	<link base="/etc/rc.d/init.d">
+	        <option>force</option>
+		<target>../init.d/apache</target>
+		<name>../rc2.d/K28apache</name>
+	</link>
+
+	<link base="/etc/rc.d/init.d">
+	        <option>force</option>
+		<target>../init.d/apache</target>
+		<name>../rc3.d/S32apache</name>
+	</link>
+
+	<link base="/etc/rc.d/init.d">
+	        <option>force</option>
+		<target>../init.d/apache</target>
+		<name>../rc4.d/S32apache</name>
+	</link>
+
+	<link base="/etc/rc.d/init.d">
+	        <option>force</option>
+		<target>../init.d/apache</target>
+		<name>../rc5.d/S32apache</name>
+	</link>
+
+	<link base="/etc/rc.d/init.d">
+	        <option>force</option>
+		<target>../init.d/apache</target>
+		<name>../rc6.d/K28apache</name>
+	</link>
+		
+
+    </stage>
+
+    <stage name="Clean-up.">
+	<remove>&build_dir;/&apache-directory;</remove>
+    </stage>
+
+</package>

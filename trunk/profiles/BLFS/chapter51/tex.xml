@@ -1,0 +1,49 @@
+<package name="tex" version="&tex-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&tex-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing the frontend package.">
+		<stageinfo>
+			<base>&build_dir;/&tex-directory;</base>
+		</stageinfo>
+
+		<mkdir>
+		        <option>parents</option>
+		        <name>/usr/share/texmf</name>
+		</mkdir>
+
+		<execute command="gzip -dc &packages_dir;/&tex-texmf-package; | (umask 0; cd /usr/share/texmf; tar xvf -)" />
+
+		<execute command="gzip -dc &packages_dir;/&tex-texmfsrc-package; | (umask 0; cd /usr/share/texmf; tar xvf -)" />
+
+
+		<configure>
+		        <param>--with-x=no</param>
+			<param>--prefix=/usr</param>
+			<param>--without-texinfo</param>
+			<param>--with-system-ncurses</param>
+			<param>--with-system-zlib</param>
+			<param>--exec-prefix=/usr</param>
+			<param>--bindir=/usr/bin</param>
+		</configure>
+
+		<make>
+		        <param>world</param>
+		</make>
+
+		<!-- the book specified 'letter' instead of 'a4' -->
+		<execute command="texconfig dvips paper a4" />
+
+		<execute command="texconfig font rw" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&tex-directory;</remove>
+	</stage>
+
+</package>

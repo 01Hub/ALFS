@@ -1,0 +1,1306 @@
+<!--************* packages for chapter 4 *************-->
+
+<!ENTITY shadow-version   "4.0.3">
+<!ENTITY shadow-package   "shadow-4.0.3.tar.bz2">
+<!ENTITY shadow-directory "shadow-4.0.3">
+
+<!ENTITY shadow-patch     "shadow-4.0.3.patch">
+
+<!ENTITY gnupg-version      "1.2.3">
+<!ENTITY gnupg-package      "gnupg-1.2.3.tar.bz2">
+<!ENTITY gnupg-directory    "gnupg-1.2.3">
+
+<!ENTITY iptables-version   "1.2.8">
+<!ENTITY iptables-package   "iptables-1.2.8.tar.bz2">
+<!ENTITY iptables-directory "iptables-1.2.8">
+
+<!ENTITY linuxpam-version   "0.77">
+<!ENTITY linuxpam-package   "Linux-PAM-0.77.tar.bz2">
+<!ENTITY linuxpam-directory "Linux-PAM-0.77">
+
+<!--************* packages for chapter 5 *************-->
+
+<!ENTITY reiserfsutils-version   "3.6.11">
+<!ENTITY reiserfsutils-package   "reiserfsprogs-3.6.11.tar.gz">
+<!ENTITY reiserfsutils-directory "reiserfsprogs-3.6.11">
+
+<!ENTITY xfsprogs-version   "2.5.6">
+<!ENTITY xfsprogs-package   "xfsprogs-2.5.6.src.tar.gz">
+<!ENTITY xfsprogs-directory "xfsprogs-2.5.6">
+
+<!--************* packages for chapter 6 *************-->
+
+<!ENTITY emacs-version   "21.3">
+<!ENTITY emacs-package   "emacs-21.3.tar.gz">
+<!ENTITY emacs-directory "emacs-21.3">
+
+<!ENTITY nano-version   "1.2.2">
+<!ENTITY nano-package   "nano-1.2.2.tar.gz">
+<!ENTITY nano-directory "nano-1.2.2">
+
+<!ENTITY joe-version   "2.9.7">
+<!ENTITY joe-package   "joe-2.9.7.tgz">
+<!ENTITY joe-directory "joe-2.9.7">
+
+<!--************* packages for chapter 7 *************-->
+
+<!ENTITY tcsh-version   "6.12">
+<!ENTITY tcsh-package   "tcsh-6.12.00.tar.gz">
+<!ENTITY tcsh-directory "tcsh-6.12.00">
+
+<!ENTITY zsh-version   "4.0.6">
+<!ENTITY zsh-package   "zsh-4.0.6.tar.bz2">
+<!ENTITY zsh-directory "zsh-4.0.6">
+
+
+<!--************* packages for chapter 8 *************-->
+
+<!ENTITY openssl-version   "0.9.7b">
+<!ENTITY openssl-package   "openssl-0.9.7b.tar.gz">
+<!ENTITY openssl-directory "openssl-0.9.7b">
+
+<!ENTITY pcre-version   "4.3">
+<!ENTITY pcre-package   "pcre-4.3.tar.bz2">
+<!ENTITY pcre-directory "pcre-4.3">
+
+<!ENTITY popt-version   "1.7">
+<!ENTITY popt-package   "popt-1.7.tar.gz">
+<!ENTITY popt-directory "popt-1.7">
+
+<!ENTITY slang-version   "1.4.9">
+<!ENTITY slang-package   "slang-1.4.9.tar.bz2">
+<!ENTITY slang-directory "slang-1.4.9">
+
+<!ENTITY libfam-version   "2.6.9">
+<!ENTITY libfam-package   "fam-2.6.9.tar.gz">
+<!ENTITY libfam-directory "fam-2.6.9">
+
+<!ENTITY libfam-ppatch1   "dnotify.patch.gz">
+<!ENTITY libfam-patch1    "dnotify.patch">
+
+<!ENTITY libfam-ppatch2   "libfam-gcc3.patch.gz">
+<!ENTITY libfam-patch2    "libfam-gcc3.patch">
+
+<!ENTITY libxml-version   "1.8.17">
+<!ENTITY libxml-package   "libxml-1.8.17.tar.gz">
+<!ENTITY libxml-directory "libxml-1.8.17">
+
+<!ENTITY libxml2-version   "2.5.11">
+<!ENTITY libxml2-package   "libxml2-2.5.11.tar.bz2">
+<!ENTITY libxml2-directory "libxml2-2.5.11">
+
+<!ENTITY libxslt-version   "1.0.33">
+<!ENTITY libxslt-package   "libxslt-1.0.33.tar.bz2">
+<!ENTITY libxslt-directory "libxslt-1.0.33">
+
+<!ENTITY readline-version   "4.3">
+<!ENTITY readline-package   "readline-4.3.tar.gz">
+<!ENTITY readline-directory "readline-4.3">
+
+<!ENTITY gmp-version   "4.1.2">
+<!ENTITY gmp-package   "gmp-4.1.2.tar.bz2">
+<!ENTITY gmp-directory "gmp-4.1.2">
+
+<!ENTITY gdbm-version   "1.8.3">
+<!ENTITY gdbm-package   "gdbm-1.8.3.tar.gz">
+<!ENTITY gdbm-directory "gdbm-1.8.3">
+
+<!ENTITY glib-version   "1.2.10">
+<!ENTITY glib-package   "glib-1.2.10.tar.gz">
+<!ENTITY glib-directory "glib-1.2.10">
+
+<!ENTITY glib2-version   "2.2.3">
+<!ENTITY glib2-package   "glib-2.2.3.tar.bz2">
+<!ENTITY glib2-directory "glib-2.2.3">
+
+<!ENTITY expat-version   "1.95.6">
+<!ENTITY expat-package   "expat-1.95.6.tar.gz">
+<!ENTITY expat-directory "expat-1.95.6">
+
+<!ENTITY expat-patch     "expat-1.95.6.patch">
+
+<!ENTITY libesmtp-version   "1.0">
+<!ENTITY libesmtp-package   "libesmtp-1.0.tar.bz2">
+<!ENTITY libesmtp-directory "libesmtp-1.0">
+
+<!ENTITY aspell-version   "0.50.3">
+<!ENTITY aspell-package   "aspell-0.50.3.tar.gz">
+<!ENTITY aspell-directory "aspell-0.50.3">
+
+<!ENTITY guile-version   "1.6.4">
+<!ENTITY guile-package   "guile-1.6.4.tar.gz">
+<!ENTITY guile-directory "guile-1.6.4">
+
+<!ENTITY slib-version   "2d6">
+<!ENTITY slib-package   "slib2d6.tar.gz">
+<!ENTITY slib-directory "slib">
+
+<!ENTITY g-wrap-version   "1.2.1">
+<!ENTITY g-wrap-package   "g-wrap-1.2.1.tar.bz2">
+<!ENTITY g-wrap-directory "g-wrap-1.2.1">
+
+<!ENTITY libsoup-version   "1.99.23">
+<!ENTITY libsoup-package   "libsoup-1.99.23.tar.bz2">
+<!ENTITY libsoup-directory "libsoup-1.99.23">
+
+<!ENTITY stlport-version   "4.5.3">
+<!ENTITY stlport-package   "STLport-4.5.3.tar.gz">
+<!ENTITY stlport-directory "STLport-4.5.3">
+
+<!ENTITY stlport-patch     "STLport-4.5.3-gcc3.patch">
+
+<!ENTITY lzo-version       "1.08">
+<!ENTITY lzo-package       "lzo-1.08.tar.gz">
+<!ENTITY lzo-directory     "lzo-1.08">
+
+<!--************* packages for chapter 9 *************-->
+
+<!ENTITY lcms-version   "1.10">
+<!ENTITY lcms-package   "lcms-1.10.tar.gz">
+<!ENTITY lcms-directory "lcms-1.10">
+
+<!ENTITY libjpeg-version   "6b">
+<!ENTITY libjpeg-package   "jpegsrc.v6b.tar.gz">
+<!ENTITY libjpeg-directory "jpeg-6b">
+
+<!ENTITY libpng-version   "1.2.5">
+<!ENTITY libpng-package   "libpng-1.2.5.tar.gz">
+<!ENTITY libpng-directory "libpng-1.2.5">
+
+<!ENTITY libtiff-version   "3.5.7">
+<!ENTITY libtiff-package   "tiff-v3.5.7.tar.gz">
+<!ENTITY libtiff-directory "tiff-v3.5.7">
+
+<!ENTITY libungif-version   "4.1.0b1">
+<!ENTITY libungif-package   "libungif-4.1.0b1.tar.gz">
+<!ENTITY libungif-directory "libungif-4.1.0b1">
+
+<!ENTITY libmng-version   "1.0.5">
+<!ENTITY libmng-package   "libmng-1.0.5.tar.gz">
+<!ENTITY libmng-directory "libmng-1.0.5">
+
+<!ENTITY imlib-version   "1.9.14">
+<!ENTITY imlib-package   "imlib-1.9.14.tar.gz">
+<!ENTITY imlib-directory "imlib-1.9.14">
+
+<!ENTITY aalib-version   "1.4rc5">
+<!ENTITY aalib-package   "aalib-1.4rc5.tar.gz">
+<!ENTITY aalib-directory "aalib-1.4.0">
+
+<!ENTITY svgalib-version   "1.4.3">
+<!ENTITY svgalib-package   "svgalib-1.4.3.tar.gz">
+<!ENTITY svgalib-directory "svgalib-1.4.3">
+
+<!ENTITY svgalib-patch     "svgalib-1.4.3-vga.patch">
+
+<!ENTITY directfb-version   "0.9.19">
+<!ENTITY directfb-package   "DirectFB-0.9.19.tar.gz">
+<!ENTITY directfb-directory "DirectFB-0.9.19">
+
+<!ENTITY imlib2-version   "1.1.0">
+<!ENTITY imlib2-package   "imlib2-1.1.0.tar.gz">
+<!ENTITY imlib2-directory "imlib2-1.1.0">
+
+<!--************* packages for chapter 10 *************-->
+
+<!ENTITY bc-version   "1.06">
+<!ENTITY bc-package   "bc-1.06.tar.gz">
+<!ENTITY bc-directory "bc-1.06">
+
+<!ENTITY rep-gtk-version   "0.18">
+<!ENTITY rep-gtk-package   "rep-gtk-0.18.tar.gz">
+<!ENTITY rep-gtk-directory "rep-gtk-0.18">
+
+<!--************* packages for chapter 11 *************-->
+
+<!ENTITY gpm-version   "1.20.1">
+<!ENTITY gpm-package   "gpm-1.20.1.tar.bz2">
+<!ENTITY gpm-directory "gpm-1.20.1">
+
+<!ENTITY gpm-patch1    "gpm-1.20.1-smooth-cursor.patch">
+<!ENTITY gpm-patch2    "gpm-1.20.1-segfault.patch">
+<!ENTITY gpm-patch3    "gpm-1.20.1-silent.patch">
+
+<!ENTITY fcron-version   "">
+<!ENTITY fcron-package   "">
+<!ENTITY fcron-directory "">
+
+<!ENTITY hdparm-version   "5.3">
+<!ENTITY hdparm-package   "hdparm-5.3.tar.gz">
+<!ENTITY hdparm-directory "hdparm-5.3">
+
+<!ENTITY which-version   "2.14">
+<!ENTITY which-package   "which-2.14.tar.gz">
+<!ENTITY which-directory "which-2.14">
+
+<!ENTITY unzip-version   "5.50">
+<!ENTITY unzip-package   "unzip550.tar.gz">
+<!ENTITY unzip-directory "unzip-5.50">
+
+<!ENTITY zip-version   "2.3">
+<!ENTITY zip-package   "zip23.tar.gz">
+<!ENTITY zip-directory "zip-2.3">
+
+<!ENTITY pciutils-version   "2.1.11">
+<!ENTITY pciutils-package   "pciutils-2.1.11.tar.bz2">
+<!ENTITY pciutils-directory "pciutils-2.1.11">
+
+<!ENTITY pkgconfig-version   "0.15.0">
+<!ENTITY pkgconfig-package   "pkgconfig-0.15.0.tar.gz">
+<!ENTITY pkgconfig-directory "pkgconfig-0.15.0">
+
+<!ENTITY cpio-version   "2.5">
+<!ENTITY cpio-package   "cpio-2.5.tar.gz">
+<!ENTITY cpio-directory "cpio-2.5">
+
+<!--************* packages for chapter 12 *************-->
+
+<!ENTITY python-version   "2.3">
+<!ENTITY python-package   "Python-2.3.tgz">
+<!ENTITY python-directory "Python-2.3">
+
+<!ENTITY librep-version   "0.16.2">
+<!ENTITY librep-package   "librep-0.16.2.tar.gz">
+<!ENTITY librep-directory "librep-0.16.2">
+
+<!ENTITY j2sdk-version   "1_4_1_02">
+<!ENTITY j2sdk-package   "j2sdk-1_4_1_02-linux-i586.bin">
+<!ENTITY j2sdk-directory "j2sdk1.4.1_02">
+
+<!ENTITY j2sdk-ppatch    "libstdc++-libc6.1-1.so.2.bz2">
+<!ENTITY j2sdk-patch     "libstdc++-libc6.1-1.so.2">
+
+<!ENTITY ruby-version   "1.8.0">
+<!ENTITY ruby-package   "ruby-1.8.0.tar.gz">
+<!ENTITY ruby-directory "ruby-1.8.0">
+
+<!ENTITY gnat-version   "3.14p">
+<!ENTITY gnat-package   "gnat-3.14p-i686-pc-linux-gnu-bin.tar.gz">
+<!ENTITY gnat-directory "gnat-3.14p-i686-pc-linux-gnu-bin">
+
+<!ENTITY gcc-full-version   "3.3.1">
+<!ENTITY gcc-full-package   "gcc-3.3.1.tar.bz2">
+<!ENTITY gcc-full-directory "gcc-3.3.1">
+
+<!ENTITY gcc-full-patch     "gcc-3.3.1-no_fixincludes-2.patch">
+
+<!ENTITY nasm-version   "0.98.37">
+<!ENTITY nasm-package   "nasm-0.98.37.tar.bz2">
+<!ENTITY nasm-directory "nasm-0.98.37">
+
+<!--************* packages for chapter 14 *************-->
+
+<!ENTITY dhcpcd-version   "1.3.22-pl4">
+<!ENTITY dhcpcd-package   "dhcpcd-1.3.22-pl4.tar.gz">
+<!ENTITY dhcpcd-directory "dhcpcd-1.3.22-pl4">
+
+<!ENTITY dhcpcd-patch     "dhcpcd-1.3.22-pl4.patch">
+
+<!--************* packages for chapter 16 *************-->
+
+<!ENTITY curl-version   "7.10.7">
+<!ENTITY curl-package   "curl-7.10.7.tar.bz2">
+<!ENTITY curl-directory "curl-7.10.7">
+
+<!ENTITY wvstreams-version   "3.70">
+<!ENTITY wvstreams-package   "wvstreams-3.70.tar.gz">
+<!ENTITY wvstreams-directory "wvstreams-3.70">
+
+<!ENTITY wvstreams-wvcrypto-patch     "wvstreams-3.70-wvcrypto.patch">
+<!ENTITY wvstreams-wvresolver-patch   "wvstreams-3.70-wvresolver.patch">
+
+<!ENTITY gnet-version   "2.0.4">
+<!ENTITY gnet-package   "gnet-2.0.4.tar.gz">
+<!ENTITY gnet-directory "gnet-2.0.4">
+
+<!--************* packages for chapter 17 *************-->
+
+<!ENTITY links-version   "0.98">
+<!ENTITY links-package   "links-0.98.tar.gz">
+<!ENTITY links-directory "links-0.98">
+
+<!ENTITY lynx-version   "2.8.4">
+<!ENTITY lynx-package   "lynx2.8.4.tar.bz2">
+<!ENTITY lynx-directory "lynx2-8-4">
+
+<!ENTITY w3m-version   "0.41">
+<!ENTITY w3m-package   "w3m-0.4.1.tar.gz">
+<!ENTITY w3m-directory "w3m-0.4.1">
+
+<!--************* packages for chapter 18 *************-->
+
+<!ENTITY ncftp-version   "3.1.6">
+<!ENTITY ncftp-package   "ncftp-3.1.6-src.tar.bz2">
+<!ENTITY ncftp-directory "ncftp-3.1.6">
+
+<!ENTITY cvs-version   "1.11.5">
+<!ENTITY cvs-package   "cvs-1.11.5.tar.gz">
+<!ENTITY cvs-directory "cvs-1.11.5">
+
+<!ENTITY cvs-ppatch    "cvs-1.11.2-zlib.patch.bz2">
+<!ENTITY cvs-patch     "cvs-1.11.2-zlib.patch">
+
+<!ENTITY wget-version   "1.8.2">
+<!ENTITY wget-package   "wget-1.8.2.tar.gz">
+<!ENTITY wget-directory "wget-1.8.2">
+
+<!ENTITY tcpwrappers-version   "7.6">
+<!ENTITY tcpwrappers-package   "tcp_wrappers_7.6.tar.gz">
+<!ENTITY tcpwrappers-directory "tcp_wrappers_7.6">
+
+<!ENTITY tcpwrappers-ppatch    "tcp_wrappers_7.6.diff.gz">
+<!ENTITY tcpwrappers-patch     "tcp_wrappers_7.6.diff">
+
+<!ENTITY portmap-version   "5">
+<!ENTITY portmap-package   "portmap_5.orig.tar.gz">
+<!ENTITY portmap-directory "portmap_5beta">
+
+<!ENTITY portmap-ppatch    "portmap_5-1.diff.gz">
+<!ENTITY portmap-patch     "portmap_5-1.diff">
+
+<!ENTITY inetutils-version   "1.4.2">
+<!ENTITY inetutils-package   "inetutils-1.4.2.tar.gz">
+<!ENTITY inetutils-directory "inetutils-1.4.2">
+
+<!--************* packages for chapter 19 *************-->
+
+<!ENTITY traceroute-version   "1.4a12">
+<!ENTITY traceroute-package   "traceroute.tar.gz">
+<!ENTITY traceroute-directory "traceroute-1.4a12">
+
+<!ENTITY nmap-version   "3.30">
+<!ENTITY nmap-package   "nmap-3.30.tgz">
+<!ENTITY nmap-directory "nmap-3.30">
+
+<!ENTITY whois-version   "4.6.6">
+<!ENTITY whois-package   "whois_4.6.6.tar.gz">
+<!ENTITY whois-directory "whois-4.6.6">
+
+<!--************* packages for chapter 20 *************-->
+
+<!ENTITY procmail-version   "3.22">
+<!ENTITY procmail-package   "procmail-3.22.tar.gz">
+<!ENTITY procmail-directory "procmail-3.22">
+
+<!ENTITY fetchmail-version   "6.2.3">
+<!ENTITY fetchmail-package   "fetchmail-6.2.3.tar.gz">
+<!ENTITY fetchmail-directory "fetchmail-6.2.3">
+
+<!ENTITY mutt-version   "1.4.1i">
+<!ENTITY mutt-package   "mutt-1.4.1i.tar.gz">
+<!ENTITY mutt-directory "mutt-1.4.1">
+
+<!ENTITY pine-version   "4.56">
+<!ENTITY pine-package   "pine4.56.tar.bz2">
+<!ENTITY pine-directory "pine4.56">
+
+<!ENTITY pine-patch     "pine-4.56-fhs.patch">
+
+<!ENTITY slrn-version   "0.9.7.4">
+<!ENTITY slrn-package   "slrn-0.9.7.4.tar.bz2">
+<!ENTITY slrn-directory "slrn-0.9.7.4">
+
+<!--************* packages for chapter 21 *************-->
+
+<!ENTITY daemontools-version   "0.76">
+<!ENTITY daemontools-package   "daemontools-0.76.tar.gz">
+<!ENTITY daemontools-directory "admin">
+
+
+<!--************* packages for chapter 22 *************-->
+
+<!ENTITY postfix-version   "2.0.15">
+<!ENTITY postfix-package   "postfix-2.0.15.tar.gz">
+<!ENTITY postfix-directory "postfix-2.0.15">
+
+<!ENTITY qpopper-version   "4.0.5">
+<!ENTITY qpopper-package   "qpopper4.0.5.tar.gz">
+<!ENTITY qpopper-directory "qpopper4.0.5">
+
+
+<!--************* packages for chapter 23 *************-->
+
+<!ENTITY openssh-version   "3.7.1p1">
+<!ENTITY openssh-package   "openssh-3.7.1p1.tar.gz">
+<!ENTITY openssh-directory "openssh-3.7.1p1">
+
+<!ENTITY rsync-version   "2.5.6">
+<!ENTITY rsync-package   "rsync-2.5.6.tar.gz">
+<!ENTITY rsync-directory "rsync-2.5.6">
+
+<!ENTITY openldap-version   "2.1.17">
+<!ENTITY openldap-package   "openldap-2.1.17.tgz">
+<!ENTITY openldap-directory "openldap-2.1.17">
+
+<!ENTITY bind-version   "9.2.2">
+<!ENTITY bind-package   "bind-9.2.2.tar.gz">
+<!ENTITY bind-directory "bind-9.2.2">
+
+<!ENTITY xinetd-version   "2.3.12">
+<!ENTITY xinetd-package   "xinetd-2.3.12.tar.gz">
+<!ENTITY xinetd-directory "xinetd-2.3.12">
+
+<!ENTITY leafnode-version   "1.9.33">
+<!ENTITY leafnode-package   "leafnode-1.9.33.rel.tar.bz2">
+<!ENTITY leafnode-directory "leafnode-1.9.33.rel">
+
+<!--************* packages for chapter 24 *************-->
+
+<!ENTITY db-version   "4.1.25">
+<!ENTITY db-package   "db-4.1.25.tar.gz">
+<!ENTITY db-directory "db-4.1.25">
+
+<!ENTITY db3-version   "3.3.11">
+<!ENTITY db3-package   "db-3.3.11.tar.gz">
+<!ENTITY db3-directory "db-3.3.11">
+
+<!ENTITY mysql-version   "4.0.15">
+<!ENTITY mysql-package   "mysql-4.0.15.tar.gz">
+<!ENTITY mysql-directory "mysql-4.0.15">
+
+<!ENTITY postgresql-version   "7.3.4">
+<!ENTITY postgresql-package   "postgresql-7.3.4.tar.gz">
+<!ENTITY postgresql-directory "postgresql-7.3.4">
+
+<!--************* packages for chapter 25 *************-->
+
+<!ENTITY apache-version   "2.0.47">
+<!ENTITY apache-package   "httpd-2.0.47.tar.gz">
+<!ENTITY apache-directory "httpd-2.0.47">
+
+<!ENTITY proftpd-version   "1.2.8">
+<!ENTITY proftpd-package   "proftpd-1.2.8.tar.bz2">
+<!ENTITY proftpd-directory "proftpd-1.2.8">
+
+<!--************* packages for chapter 26 *************-->
+
+<!ENTITY xfree86-version   "4.3.0">
+<!ENTITY xfree86-package1  "X430src-1.tgz">
+<!ENTITY xfree86-package2  "X430src-2.tgz">
+<!ENTITY xfree86-package3  "X430src-3.tgz">
+<!ENTITY xfree86-package4  "X430src-4.tgz">
+<!ENTITY xfree86-package5  "X430src-5.tgz">
+<!ENTITY xfree86-package6  "X430src-6.tgz">
+<!ENTITY xfree86-package7  "X430src-7.tgz">
+<!ENTITY xfree86-directory "xc">
+
+<!--************* packages for chapter 27 *************-->
+
+<!ENTITY freetype-version   "2.1.5">
+<!ENTITY freetype-package   "freetype-2.1.5.tar.bz2">
+<!ENTITY freetype-directory "freetype-2.1.5">
+
+<!ENTITY fontconfig-version   "2.2.1">
+<!ENTITY fontconfig-package   "fontconfig-2.2.1.tar.gz">
+<!ENTITY fontconfig-directory "fontconfig-2.2.1">
+
+<!ENTITY qt-version   "3.1.2">
+<!ENTITY qt-package   "qt-x11-free-3.1.2.tar.bz2">
+<!ENTITY qt-directory "qt-x11-free-3.1.2">
+
+<!ENTITY gtkplus-version   "1.2.10">
+<!ENTITY gtkplus-package   "gtk+-1.2.10.tar.gz">
+<!ENTITY gtkplus-directory "gtk+-1.2.10">
+
+<!ENTITY gtkplus2-version   "2.2.4">
+<!ENTITY gtkplus2-package   "gtk+-2.2.4.tar.bz2">
+<!ENTITY gtkplus2-directory "gtk+-2.2.4">
+
+<!ENTITY atk-version   "1.2.4">
+<!ENTITY atk-package   "atk-1.2.4.tar.bz2">
+<!ENTITY atk-directory "atk-1.2.4">
+
+<!ENTITY pango-version   "1.2.5">
+<!ENTITY pango-package   "pango-1.2.5.tar.gz">
+<!ENTITY pango-directory "pango-1.2.5">
+
+<!ENTITY lesstif-version   "0.93.46">
+<!ENTITY lesstif-package   "lesstif-0.93.46.tar.bz2">
+<!ENTITY lesstif-directory "lesstif-0.93.46">
+
+<!ENTITY startup-notification-version   "0.5">
+<!ENTITY startup-notification-package   "startup-notification-0.5.tar.gz">
+<!ENTITY startup-notification-directory "startup-notification-0.5">
+
+<!--************* packages for chapter 28 *************-->
+
+<!ENTITY sawfish-version   "1.3">
+<!ENTITY sawfish-package   "sawfish-1.3.tar.gz">
+<!ENTITY sawfish-directory "sawfish-1.3">
+
+<!ENTITY fluxbox-version   "0.1.14">
+<!ENTITY fluxbox-package   "fluxbox-0.1.14.tar.bz2">
+<!ENTITY fluxbox-directory "fluxbox-0.1.14">
+
+<!ENTITY xfce-version   "3.8.18">
+<!ENTITY xfce-package   "xfce-3.8.18.tar.gz">
+<!ENTITY xfce-directory "xfce-3.8.18">
+
+<!ENTITY metacity-version   "2.4.55">
+<!ENTITY metacity-package   "metacity-2.4.55.tar.bz2">
+<!ENTITY metacity-directory "metacity-2.4.55">
+
+<!--************* packages for chapter 29 *************-->
+
+<!ENTITY arts-version      "1.1">
+<!ENTITY arts-package      "arts-1.1.tar.bz2">
+<!ENTITY arts-directory    "arts-1.1">
+
+<!ENTITY kde-version   "3.1">
+
+<!ENTITY kdelibs-version   "3.1">
+<!ENTITY kdelibs-package   "kdelibs-3.1.tar.bz2">
+<!ENTITY kdelibs-directory "kdelibs-3.1">
+
+<!ENTITY kdebase-version   "3.1">
+<!ENTITY kdebase-package   "kdebase-3.1.tar.bz2">
+<!ENTITY kdebase-directory "kdebase-3.1">
+
+<!--************* packages for chapter 30 *************-->
+
+<!ENTITY kdemultimedia-version   "3.1">
+<!ENTITY kdemultimedia-package   "kdemultimedia-3.1.tar.bz2">
+<!ENTITY kdemultimedia-directory "kdemultimedia-3.1">
+
+<!ENTITY kdenetwork-version   "3.1">
+<!ENTITY kdenetwork-package   "kdenetwork-3.1.tar.bz2">
+<!ENTITY kdenetwork-directory "kdenetwork-3.1">
+
+<!ENTITY kdegraphics-version   "3.1">
+<!ENTITY kdegraphics-package   "kdegraphics-3.1.tar.bz2">
+<!ENTITY kdegraphics-directory "kdegraphics-3.1">
+
+<!ENTITY kdepim-version   "3.1">
+<!ENTITY kdepim-package   "kdepim-3.1.tar.bz2">
+<!ENTITY kdepim-directory "kdepim-3.1">
+
+<!ENTITY kdeadmin-version   "3.1">
+<!ENTITY kdeadmin-package   "kdeadmin-3.1.tar.bz2">
+<!ENTITY kdeadmin-directory "kdeadmin-3.1">
+
+<!ENTITY kdegames-version   "3.1">
+<!ENTITY kdegames-package   "kdegames-3.1.tar.bz2">
+<!ENTITY kdegames-directory "kdegames-3.1">
+
+<!ENTITY kdeutils-version   "3.1">
+<!ENTITY kdeutils-package   "kdeutils-3.1.tar.bz2">
+<!ENTITY kdeutils-directory "kdeutils-3.1">
+
+<!ENTITY kdeedu-version   "3.1">
+<!ENTITY kdeedu-package   "kdeedu-3.1.tar.bz2">
+<!ENTITY kdeedu-directory "kdeedu-3.1">
+
+<!ENTITY kdeartwork-version   "3.1">
+<!ENTITY kdeartwork-package   "kdeartwork-3.1.tar.bz2">
+<!ENTITY kdeartwork-directory "kdeartwork-3.1">
+
+<!ENTITY kdetoys-version   "3.1">
+<!ENTITY kdetoys-package   "kdetoys-3.1.tar.bz2">
+<!ENTITY kdetoys-directory "kdetoys-3.1">
+
+<!ENTITY kdeaddons-version   "3.1">
+<!ENTITY kdeaddons-package   "kdeaddons-3.1.tar.bz2">
+<!ENTITY kdeaddons-directory "kdeaddons-3.1">
+
+<!--************* packages for chapter 31 *************-->
+
+<!ENTITY kdoc-version   "snapshot">
+<!ENTITY kdoc-package   "kdoc-snapshot.tar.gz">
+<!ENTITY kdoc-directory "kdoc">
+
+<!ENTITY kdebindings-version   "3.0.5a">
+<!ENTITY kdebindings-package   "kdebindings-3.0.5a.tar.bz2">
+<!ENTITY kdebindings-directory "kdebindings-3.0.5a">
+
+<!ENTITY kdesdk-version   "3.0.5a">
+<!ENTITY kdesdk-package   "kdesdk-3.0.5a.tar.bz2">
+<!ENTITY kdesdk-directory "kdesdk-3.0.5a">
+
+<!ENTITY kdevelop-version   "2.1.4">
+<!ENTITY kdevelop-package   "kdevelop-2.1.4_for_KDE_3.0.tar.bz2">
+<!ENTITY kdevelop-directory "kdevelop-2.1.4_for_KDE_3.0">
+
+<!--************* packages for chapter 32 *************-->
+
+<!ENTITY gtk-doc-version   "1.0">
+<!ENTITY gtk-doc-package   "gtk-doc-1.0.tar.bz2">
+<!ENTITY gtk-doc-directory "gtk-doc-1.0">
+
+<!ENTITY png-support-dtd   "png-support-3.1.dtd">
+
+<!ENTITY linc-version   "1.0.3">
+<!ENTITY linc-package   "linc-1.0.3.tar.bz2">
+<!ENTITY linc-directory "linc-1.0.3">
+
+<!ENTITY libidl-version   "0.8.2">
+<!ENTITY libidl-package   "libIDL-0.8.2.tar.bz2">
+<!ENTITY libidl-directory "libIDL-0.8.2">
+
+<!ENTITY orbit2-version   "2.6.1">
+<!ENTITY orbit2-package   "ORBit2-2.6.1.tar.bz2">
+<!ENTITY orbit2-directory "ORBit2-2.6.1">
+
+<!ENTITY intltool-version   "0.26">
+<!ENTITY intltool-package   "intltool-0.26.tar.bz2">
+<!ENTITY intltool-directory "intltool-0.26">
+
+<!ENTITY bonobo-activation-version   "2.2.4">
+<!ENTITY bonobo-activation-package   "bonobo-activation-2.2.4.tar.bz2">
+<!ENTITY bonobo-activation-directory "bonobo-activation-2.2.4">
+
+<!ENTITY libbonobo-version   "2.2.1">
+<!ENTITY libbonobo-package   "libbonobo-2.2.1.tar.bz2">
+<!ENTITY libbonobo-directory "libbonobo-2.2.1">
+
+<!ENTITY gconf2-version   "2.2.1">
+<!ENTITY gconf2-package   "GConf-2.2.1.tar.bz2">
+<!ENTITY gconf2-directory "GConf-2.2.1">
+
+<!ENTITY gnome-mime-data-version   "2.2.1">
+<!ENTITY gnome-mime-data-package   "gnome-mime-data-2.2.1.tar.bz2">
+<!ENTITY gnome-mime-data-directory "gnome-mime-data-2.2.1">
+
+<!ENTITY gnome-vfs2-version   "2.2.5">
+<!ENTITY gnome-vfs2-package   "gnome-vfs-2.2.5.tar.bz2">
+<!ENTITY gnome-vfs2-directory "gnome-vfs-2.2.5">
+
+<!ENTITY libgnome-version   "2.2.3">
+<!ENTITY libgnome-package   "libgnome-2.2.3.tar.bz2">
+<!ENTITY libgnome-directory "libgnome-2.2.3">
+
+<!ENTITY libart-lgpl-version   "2.3.11">
+<!ENTITY libart-lgpl-package   "libart_lgpl-2.3.11.tar.bz2">
+<!ENTITY libart-lgpl-directory "libart_lgpl-2.3.11">
+
+<!ENTITY libglade-version   "2.0.1">
+<!ENTITY libglade-package   "libglade-2.0.1.tar.gz">
+<!ENTITY libglade-directory "libglade-2.0.1">
+
+<!ENTITY libgnomecanvas-version   "2.2.1">
+<!ENTITY libgnomecanvas-package   "libgnomecanvas-2.2.1.tar.bz2">
+<!ENTITY libgnomecanvas-directory "libgnomecanvas-2.2.1">
+
+<!ENTITY libbonoboui-version   "2.2.2">
+<!ENTITY libbonoboui-package   "libbonoboui-2.2.2.tar.bz2">
+<!ENTITY libbonoboui-directory "libbonoboui-2.2.2">
+
+<!ENTITY gnome-icon-themes-version   "1.0.6">
+<!ENTITY gnome-icon-themes-package   "gnome-icon-theme-1.0.6.tar.bz2">
+<!ENTITY gnome-icon-themes-directory "gnome-icon-theme-1.0.6">
+
+<!ENTITY libgnomeui-version   "2.2.2">
+<!ENTITY libgnomeui-package   "libgnomeui-2.2.2.tar.bz2">
+<!ENTITY libgnomeui-directory "libgnomeui-2.2.2">
+
+<!ENTITY libwnck-version   "2.2.2">
+<!ENTITY libwnck-package   "libwnck-2.2.2.tar.bz2">
+<!ENTITY libwnck-directory "libwnck-2.2.2">
+
+<!ENTITY gtk-engines-version   "2.2.0">
+<!ENTITY gtk-engines-package   "gtk-engines-2.2.0.tar.bz2">
+<!ENTITY gtk-engines-directory "gtk-engines-2.2.0">
+
+<!ENTITY gtk-thinice-engine-version   "2.0.2">
+<!ENTITY gtk-thinice-engine-package   "gtk-thinice-engine-2.0.2.tar.bz2">
+<!ENTITY gtk-thinice-engine-directory "gtk-thinice-engine-2.0.2">
+
+<!ENTITY gnome-themes-version   "2.2.2">
+<!ENTITY gnome-themes-package   "gnome-themes-2.2.2.tar.bz2">
+<!ENTITY gnome-themes-directory "gnome-themes-2.2.2">
+
+<!ENTITY scrollkeeper-version   "0.3.12">
+<!ENTITY scrollkeeper-package   "scrollkeeper-0.3.12.tar.gz">
+<!ENTITY scrollkeeper-directory "scrollkeeper-0.3.12">
+
+<!ENTITY vte-version   "0.10.29">
+<!ENTITY vte-package   "vte-0.10.29.tar.bz2">
+<!ENTITY vte-directory "vte-0.10.29">
+
+<!ENTITY libgtop-version   "2.0.2">
+<!ENTITY libgtop-package   "libgtop-2.0.2.tar.bz2">
+<!ENTITY libgtop-directory "libgtop-2.0.2 ">
+
+<!ENTITY gail-version   "1.2.2">
+<!ENTITY gail-package   "gail-1.2.2.tar.bz2">
+<!ENTITY gail-directory "gail-1.2.2">
+
+<!ENTITY at-spi-version   "1.1.9">
+<!ENTITY at-spi-package   "at-spi-1.1.9.tar.bz2">
+<!ENTITY at-spi-directory "at-spi-1.1.9">
+
+<!ENTITY libgail-gnome-version   "1.0.2">
+<!ENTITY libgail-gnome-package   "libgail-gnome-1.0.2.tar.bz2">
+<!ENTITY libgail-gnome-directory "libgail-gnome-1.0.2">
+
+<!ENTITY librsvg-version   "2.2.5">
+<!ENTITY librsvg-package   "librsvg-2.2.5.tar.bz2">
+<!ENTITY librsvg-directory "librsvg-2.2.5">
+
+<!ENTITY eel-version   "2.2.4">
+<!ENTITY eel-package   "eel-2.2.4.tar.bz2">
+<!ENTITY eel-directory "eel-2.2.4">
+
+<!ENTITY libgtkhtml-version   "2.2.4">
+<!ENTITY libgtkhtml-package   "libgtkhtml-2.2.4.tar.bz2">
+<!ENTITY libgtkhtml-directory "libgtkhtml-2.2.4">
+
+<!ENTITY libgsf-version    "1.8.2">
+<!ENTITY libgsf-package    "libgsf-1.8.2.tar.bz2">
+<!ENTITY libgsf-directory  "libgsf-1.8.2">
+
+<!ENTITY gal-version   "1.99.9">
+<!ENTITY gal-package   "gal-1.99.9.tar.bz2">
+<!ENTITY gal-directory "gal-1.99.9">
+
+<!ENTITY libgnomeprint-version   "2.2.1.3">
+<!ENTITY libgnomeprint-package   "libgnomeprint-2.2.1.3.tar.bz2">
+<!ENTITY libgnomeprint-directory "libgnomeprint-2.2.1.3">
+
+<!ENTITY libgnomeprintui-version   "2.2.1.2">
+<!ENTITY libgnomeprintui-package   "libgnomeprintui-2.2.1.2.tar.bz2 ">
+<!ENTITY libgnomeprintui-directory "libgnomeprintui-2.2.1.2">
+
+<!ENTITY gtkhtml-version   "3.0.8">
+<!ENTITY gtkhtml-package   "gtkhtml-3.0.8.tar.bz2">
+<!ENTITY gtkhtml-directory "gtkhtml-3.0.8">
+
+<!--************* packages for chapter 33 *************-->
+
+<!ENTITY gnome-desktop-version   "2.2.2">
+<!ENTITY gnome-desktop-package   "gnome-desktop-2.2.2.tar.bz2">
+<!ENTITY gnome-desktop-directory "gnome-desktop-2.2.2">
+
+<!ENTITY gnome-panel-version   "2.2.2.2">
+<!ENTITY gnome-panel-package   "gnome-panel-2.2.2.2.tar.bz2">
+<!ENTITY gnome-panel-directory "gnome-panel-2.2.2.2">
+
+<!ENTITY gnome-session-version   "2.2.2">
+<!ENTITY gnome-session-package   "gnome-session-2.2.2.tar.bz2">
+<!ENTITY gnome-session-directory "gnome-session-2.2.2">
+
+<!ENTITY control-center-version   "2.2.2">
+<!ENTITY control-center-package   "control-center-2.2.2.tar.bz2">
+<!ENTITY control-center-directory "control-center-2.2.2">
+
+<!--************* packages for chapter 34 *************-->
+
+<!ENTITY gnome-terminal-version   "2.2.2">
+<!ENTITY gnome-terminal-package   "gnome-terminal-2.2.2.tar.bz2">
+<!ENTITY gnome-terminal-directory "gnome-terminal-2.2.2">
+
+<!ENTITY gnome-system-monitor-version   "2.0.5">
+<!ENTITY gnome-system-monitor-package   "gnome-system-monitor-2.0.5.tar.bz2">
+<!ENTITY gnome-system-monitor-directory "gnome-system-monitor-2.0.5">
+
+<!ENTITY gnome-applets-version   "2.2.2">
+<!ENTITY gnome-applets-package   "gnome-applets-2.2.2.tar.bz2">
+<!ENTITY gnome-applets-directory "gnome-applets-2.2.2">
+
+<!ENTITY gnome-utils-version   "2.2.3">
+<!ENTITY gnome-utils-package   "gnome-utils-2.2.3.tar.bz2">
+<!ENTITY gnome-utils-directory "gnome-utils-2.2.3">
+
+<!ENTITY gnome-games-version   "2.2.1">
+<!ENTITY gnome-games-package   "gnome-games-2.2.1.tar.bz2">
+<!ENTITY gnome-games-directory "gnome-games-2.2.1">
+
+<!ENTITY nautilus-version   "2.2.2">
+<!ENTITY nautilus-package   "nautilus-2.2.2.tar.bz2">
+<!ENTITY nautilus-directory "nautilus-2.2.2">
+
+<!ENTITY yelp-version   "2.2.3">
+<!ENTITY yelp-package   "yelp-2.2.3.tar.bz2">
+<!ENTITY yelp-directory "yelp-2.2.3">
+
+<!ENTITY bug-buddy-version   "2.2.106">
+<!ENTITY bug-buddy-package   "bug-buddy-2.2.106.tar.bz2">
+<!ENTITY bug-buddy-directory "bug-buddy-2.2.106">
+
+<!ENTITY gedit-version   "2.2.2">
+<!ENTITY gedit-package   "gedit-2.2.2.tar.bz2">
+<!ENTITY gedit-directory "gedit-2.2.2">
+
+<!ENTITY eog-version   "2.2.2">
+<!ENTITY eog-package   "eog-2.2.2.tar.bz2">
+<!ENTITY eog-directory "eog-2.2.2">
+
+<!ENTITY gstreamer-version   "0.6.2">
+<!ENTITY gstreamer-package   "gstreamer-0.6.2.tar.bz2">
+<!ENTITY gstreamer-directory "gstreamer-0.6.2">
+
+<!ENTITY gst-plugins-version   "0.6.2">
+<!ENTITY gst-plugins-package   "gst-plugins-0.6.2.tar.bz2">
+<!ENTITY gst-plugins-directory "gst-plugins-0.6.2">
+
+<!ENTITY gnome-media-version   "2.2.2">
+<!ENTITY gnome-media-package   "gnome-media-2.2.2.tar.bz2">
+<!ENTITY gnome-media-directory "gnome-media-2.2.2">
+
+<!ENTITY nautilus-media-version   "0.2.2">
+<!ENTITY nautilus-media-package   "nautilus-media-0.2.2.tar.bz2">
+<!ENTITY nautilus-media-directory "nautilus-media-0.2.2">
+
+<!ENTITY gnome2-user-docs-version   "2.0.6">
+<!ENTITY gnome2-user-docs-package   "gnome2-user-docs-2.0.6.tar.bz2">
+<!ENTITY gnome2-user-docs-directory "gnome2-user-docs-2.0.6">
+
+<!--************* packages for chapter 35 *************-->
+
+<!ENTITY gconf-editor-version   "0.4.1">
+<!ENTITY gconf-editor-package   "gconf-editor-0.4.1.tar.bz2">
+<!ENTITY gconf-editor-directory "gconf-editor-0.4.1">
+
+<!ENTITY gdm-version   "2.4.1.4">
+<!ENTITY gdm-package   "gdm-2.4.1.4.tar.bz2">
+<!ENTITY gdm-directory "gdm-2.4.1.4">
+
+<!--************* packages for chapter 37 *************-->
+
+<!ENTITY orbit-version   "0.5.17">
+<!ENTITY orbit-package   "ORBit-0.5.17.tar.gz">
+<!ENTITY orbit-directory "ORBit-0.5.17">
+
+<!ENTITY oaf-version   "0.6.10">
+<!ENTITY oaf-package   "oaf-0.6.10.tar.gz">
+<!ENTITY oaf-directory "oaf-0.6.10">
+
+<!ENTITY gnome-libs-version   "1.4.2">
+<!ENTITY gnome-libs-package   "gnome-libs-1.4.2.tar.gz">
+<!ENTITY gnome-libs-directory "gnome-libs-1.4.2">
+
+<!ENTITY gdk-pixbuf-version   "0.22.0">
+<!ENTITY gdk-pixbuf-package   "gdk-pixbuf-0.22.0.tar.bz2">
+<!ENTITY gdk-pixbuf-directory "gdk-pixbuf-0.22.0">
+
+<!ENTITY gconf-version   "1.0.9">
+<!ENTITY gconf-package   "GConf-1.0.9.tar.bz2">
+<!ENTITY gconf-directory "GConf-1.0.9">
+
+<!ENTITY gnome-vfs-version   "1.0.5">
+<!ENTITY gnome-vfs-package   "gnome-vfs-1.0.5.tar.bz2">
+<!ENTITY gnome-vfs-directory "gnome-vfs-1.0.5">
+
+<!ENTITY gnome-print-version   "0.37">
+<!ENTITY gnome-print-package   "gnome-print-0.37.tar.bz2">
+<!ENTITY gnome-print-directory "gnome-print-0.37">
+
+<!ENTITY libglade1-version   "0.17">
+<!ENTITY libglade1-package   "libglade-0.17.tar.gz">
+<!ENTITY libglade1-directory "libglade-0.17">
+
+<!ENTITY libcapplet-version   "1.5.11">
+<!ENTITY libcapplet-package   "libcapplet-1.5.11.tar.bz2">
+<!ENTITY libcapplet-directory "libcapplet-1.5.11">
+
+<!ENTITY libghttp-version   "1.0.9">
+<!ENTITY libghttp-package   "libghttp-1.0.9.tar.gz">
+<!ENTITY libghttp-directory "libghttp-1.0.9">
+
+<!ENTITY bonobo-version   "1.0.22">
+<!ENTITY bonobo-package   "bonobo-1.0.22.tar.bz2">
+<!ENTITY bonobo-directory "bonobo-1.0.22">
+
+<!ENTITY guppi-version   "0.40.3">
+<!ENTITY guppi-package   "Guppi-0.40.3.tar.bz2">
+<!ENTITY guppi-directory "Guppi-0.40.3">
+
+<!ENTITY bonobo-conf-version   "0.16">
+<!ENTITY bonobo-conf-package   "bonobo-conf-0.16.tar.gz">
+<!ENTITY bonobo-conf-directory "bonobo-conf-0.16">
+
+<!ENTITY soup-version   "0.7.4">
+<!ENTITY soup-package   "soup-0.7.4.tar.bz2">
+<!ENTITY soup-directory "soup-0.7.4">
+
+<!--************* packages for chapter 38 *************-->
+
+<!ENTITY abiword-version   "2.0.0">
+<!ENTITY abiword-package   "abiword-2.0.0.tar.bz2">
+<!ENTITY abiword-directory "abiword-2.0.0">
+
+<!ENTITY gnumeric-version   "1.2.0">
+<!ENTITY gnumeric-package   "gnumeric-1.2.0.tar.bz2">
+<!ENTITY gnumeric-directory "gnumeric-1.2.0">
+
+<!ENTITY gnucash-version   "1.8.2">
+<!ENTITY gnucash-package   "gnucash-1.8.2.tar.gz">
+<!ENTITY gnucash-directory "gnucash-1.8.2">
+
+<!ENTITY gimp-version   "1.2.3">
+<!ENTITY gimp-package   "gimp-1.2.3.tar.bz2">
+<!ENTITY gimp-directory "gimp-1.2.3">
+
+<!ENTITY evolution-version   "1.2.1">
+<!ENTITY evolution-package   "evolution-1.2.1.tar.bz2">
+<!ENTITY evolution-directory "evolution-1.2.1">
+
+<!ENTITY db3117-version   "3.1.17">
+<!ENTITY db3117-package   "db-3.1.17.tar.gz">
+<!ENTITY db3117-directory "db-3.1.17">
+
+<!--************* packages for chapter 39 *************-->
+
+<!ENTITY koffice-version   "1.2.92">
+<!ENTITY koffice-package   "koffice-1.2.92.tar.bz2">
+<!ENTITY koffice-directory "koffice-1.2.92">
+
+<!ENTITY openoffice-version   "1.0.2">
+<!ENTITY openoffice-package   "OOo_1.0.2_source.tar.bz2">
+<!ENTITY openoffice-directory "oo_1.0.2_src">
+
+<!ENTITY gpc-version   "231">
+<!ENTITY gpc-package   "gpc231.tar.Z">
+<!ENTITY gpc-directory "gpc231">
+
+<!ENTITY openoffice-01-patch   "openoffice-1.0.2-add-entry-for-kmail.patch">
+<!ENTITY openoffice-02-patch   "openoffice-1.0.2-linux-test-bin-location.patch">
+<!ENTITY openoffice-03-patch   "openoffice-1.0.2-add-pam-headers.patch">
+<!ENTITY openoffice-04-patch   "openoffice-1.0.2-main-retval.patch">
+<!ENTITY openoffice-05-patch   "openoffice-1.0.2-bison-fix.patch">
+<!ENTITY openoffice-06-patch   "openoffice-1.0.2-mdk-asm-fixes.patch">
+<!ENTITY openoffice-07-patch   "openoffice-1.0.2-cpputools-regcomp-makefile.patch">
+<!ENTITY openoffice-08-patch   "openoffice-1.0.2-new-mozilla-ab.patch">
+<!ENTITY openoffice-09-patch   "openoffice-1.0.2-debug-keepsetup.patch">
+<!ENTITY openoffice-10-patch   "openoffice-1.0.2-psprint-pdf-drivers.patch">
+<!ENTITY openoffice-11-patch   "openoffice-1.0.2-dmake-clean.patch">
+<!ENTITY openoffice-12-patch   "openoffice-1.0.2-sal-main-cmdline.patch">
+<!ENTITY openoffice-13-patch   "openoffice-1.0.2-dont-build-mozab.patch">
+<!ENTITY openoffice-14-patch   "openoffice-1.0.2-system-db-4.1.patch">
+<!ENTITY openoffice-15-patch   "openoffice-1.0.2-dont-catch-segv.patch">
+<!ENTITY openoffice-16-patch   "openoffice-1.0.2-system-freetype-2.1.patch">
+<!ENTITY openoffice-17-patch   "openoffice-1.0.2-dont-uglify-html.patch">
+<!ENTITY openoffice-18-patch   "openoffice-1.0.2-system-getopt.patch">
+<!ENTITY openoffice-19-patch   "openoffice-1.0.2-dont-unset-home.patch">
+<!ENTITY openoffice-20-patch   "openoffice-1.0.2-system-libXrender.patch">
+<!ENTITY openoffice-21-patch   "openoffice-1.0.2-honor-current-path.patch">
+<!ENTITY openoffice-22-patch   "openoffice-1.0.2-system-nas.patch">
+<!ENTITY openoffice-23-patch   "openoffice-1.0.2-jdk1.4-syntax-fix.patch">
+<!ENTITY openoffice-24-patch   "openoffice-1.0.2-user-fontpath.patch">
+
+<!--************* packages for chapter 40 *************-->
+
+<!ENTITY mozilla-version   "1.4">
+<!ENTITY mozilla-package   "mozilla-source-1.4.tar.bz2">
+<!ENTITY mozilla-directory "mozilla">
+
+<!ENTITY mozilla-patch1    "mozilla-1.4-already-running.patch">
+<!ENTITY mozilla-patch2    "mozilla-1.4-default-plugin-less-annoying.patch">
+<!ENTITY mozilla-patch3    "mozilla-1.4-over-the-spot.patch">
+<!ENTITY mozilla-patch4    "mozilla-1.4-wallet.patch">
+
+<!ENTITY mozilla-spellchecker-ppatch    "mozilla-1.3-spellchecker.tar.bz2">
+<!ENTITY mozilla-spellchecker-patch     "spellcheck">
+
+<!ENTITY galeon-version   "1.3.7">
+<!ENTITY galeon-package   "galeon-1.3.7.tar.gz">
+<!ENTITY galeon-directory "galeon-1.3.7">
+
+<!ENTITY dillo-version   "0.7.3">
+<!ENTITY dillo-package   "dillo-0.7.3.tar.bz2">
+<!ENTITY dillo-directory "dillo-0.7.3">
+
+<!--************* packages for chapter 41 *************-->
+
+<!ENTITY pan-version   "0.14.2">
+<!ENTITY pan-package   "pan-0.14.2.tar.bz2">
+<!ENTITY pan-directory "pan-0.14.2">
+
+<!ENTITY balsa-version   "2.0.14">
+<!ENTITY balsa-package   "balsa-2.0.14.tar.bz2">
+<!ENTITY balsa-directory "balsa-2.0.14">
+
+<!--************* packages for chapter 42 *************-->
+
+<!ENTITY alsa-driver-version   "0.9.4">
+<!ENTITY alsa-driver-package   "alsa-driver-0.9.4.tar.bz2">
+<!ENTITY alsa-driver-directory "alsa-driver-0.9.4">
+
+<!ENTITY alsa-lib-version      "0.9.4">
+<!ENTITY alsa-lib-package      "alsa-lib-0.9.4.tar.bz2">
+<!ENTITY alsa-lib-directory    "alsa-lib-0.9.4">
+
+<!ENTITY alsa-utils-version      "0.9.4">
+<!ENTITY alsa-utils-package      "alsa-utils-0.9.4.tar.bz2">
+<!ENTITY alsa-utils-directory    "alsa-utils-0.9.4">
+
+<!ENTITY alsa-tools-version      "0.9.4">
+<!ENTITY alsa-tools-package      "alsa-tools-0.9.4.tar.bz2">
+<!ENTITY alsa-tools-directory    "alsa-tools-0.9.4">
+
+<!ENTITY alsa-oss-version        "0.9.4">
+<!ENTITY alsa-oss-package        "alsa-oss-0.9.4.tar.bz2">
+<!ENTITY alsa-oss-directory      "alsa-oss-0.9.4">
+
+<!ENTITY audiofile-version      "0.2.3">
+<!ENTITY audiofile-package      "audiofile-0.2.3.tar.gz">
+<!ENTITY audiofile-directory    "audiofile-0.2.3">
+
+<!ENTITY esound-version      "0.2.30">
+<!ENTITY esound-package      "esound-0.2.30.tar.bz2">
+<!ENTITY esound-directory    "esound-0.2.30">
+
+<!ENTITY sdl-version      "1.2.5">
+<!ENTITY sdl-package      "SDL-1.2.5.tar.gz">
+<!ENTITY sdl-directory    "SDL-1.2.5">
+
+<!ENTITY libao-version      "0.8.3">
+<!ENTITY libao-package      "libao-0.8.3.tar.gz">
+<!ENTITY libao-directory    "libao-0.8.3">
+
+<!ENTITY libogg-version      "1.0">
+<!ENTITY libogg-package      "libogg-1.0.tar.gz">
+<!ENTITY libogg-directory    "libogg-1.0">
+
+<!ENTITY libvorbis-version      "1.0">
+<!ENTITY libvorbis-package      "libvorbis-1.0.tar.gz">
+<!ENTITY libvorbis-directory    "libvorbis-1.0">
+
+<!ENTITY nas-version      "1.6">
+<!ENTITY nas-package      "nas-1.6.src.tar.gz">
+<!ENTITY nas-directory    "nas-1.6">
+
+<!ENTITY nas-patch        "nas-1.6-bison-fix.patch">
+
+<!ENTITY libmpeg3-version      "1.5.2">
+<!ENTITY libmpeg3-package      "libmpeg3-1.5.2-src.tar.bz2">
+<!ENTITY libmpeg3-directory    "libmpeg3-1.5.2">
+
+<!ENTITY libmad-version      "0.15.0b">
+<!ENTITY libmad-package      "libmad-0.15.0b.tar.gz">
+<!ENTITY libmad-directory    "libmad-0.15.0b">
+
+<!ENTITY openquicktime-version      "1.0">
+<!ENTITY openquicktime-package      "openquicktime-1.0-src.tgz">
+<!ENTITY openquicktime-directory    "openquicktime-1.0-src">
+
+<!ENTITY libfame-version      "0.9.0">
+<!ENTITY libfame-package      "libfame-0.9.0.tar.gz">
+<!ENTITY libfame-directory    "libfame-0.9.0">
+
+<!ENTITY speex-version        "1.0.1">
+<!ENTITY speex-package        "speex-1.0.1.tar.gz">
+<!ENTITY speex-directory      "speex-1.0.1">
+
+<!ENTITY id3lib-version        "3.8.3">
+<!ENTITY id3lib-package        "id3lib-3.8.3.tar.gz">
+<!ENTITY id3lib-directory      "id3lib-3.8.3">
+
+<!ENTITY flac-version          "1.1.0">
+<!ENTITY flac-package          "flac-1.1.0.tar.gz">
+<!ENTITY flac-directory        "flac-1.1.0">
+
+<!ENTITY libdvdread-version          "0.9.4">
+<!ENTITY libdvdread-package          "libdvdread-0.9.4.tar.gz">
+<!ENTITY libdvdread-directory        "libdvdread-0.9.4">
+
+<!ENTITY libdvdcss-version           "1.2.8">
+<!ENTITY libdvdcss-package           "libdvdcss-1.2.8.tar.bz2">
+<!ENTITY libdvdcss-directory         "libdvdcss-1.2.8">
+
+<!--************* packages for chapter 43 *************-->
+
+<!ENTITY mpg123-version      "0.59r">
+<!ENTITY mpg123-package      "mpg123-0.59r.tar.gz">
+<!ENTITY mpg123-directory    "mpg123-0.59r">
+
+<!ENTITY vorbis-tools-version      "1.0">
+<!ENTITY vorbis-tools-package      "vorbis-tools-1.0.tar.gz">
+<!ENTITY vorbis-tools-directory    "vorbis-tools-1.0">
+
+<!ENTITY xmms-version      "1.2.7">
+<!ENTITY xmms-package      "xmms-1.2.7.tar.bz2">
+<!ENTITY xmms-directory    "xmms-1.2.7">
+
+<!ENTITY lame-version      "3.93.1">
+<!ENTITY lame-package      "lame-3.93.1.tar.gz">
+<!ENTITY lame-directory    "lame-3.93.1">
+
+<!ENTITY cdparanoia-version      "III-alpha9.8">
+<!ENTITY cdparanoia-package      "cdparanoia-III-alpha9.8.src.tgz">
+<!ENTITY cdparanoia-directory    "cdparanoia-III-alpha9.8">
+
+<!--************* packages for chapter 44 *************-->
+
+<!ENTITY xvid-version      "0.9.2">
+<!ENTITY xvid-package      "xvidcore-0.9.2.tar.bz2">
+<!ENTITY xvid-directory    "xvidcore-0.9.2">
+
+<!ENTITY ffmpeg-version      "0.4.6">
+<!ENTITY ffmpeg-package      "ffmpeg-0.4.6.tar.gz">
+<!ENTITY ffmpeg-directory    "ffmpeg-0.4.6">
+
+<!ENTITY avifile-version      "0.7.22">
+<!ENTITY avifile-package      "avifile-0.7.34-20030319.tgz">
+<!ENTITY avifile-directory    "avifile0.7-0.7.34">
+
+<!ENTITY avifile-binaries-package      "binaries-011002.tgz">
+
+<!ENTITY mplayer-version      "1.0pre1">
+<!ENTITY mplayer-package      "MPlayer-1.0pre1.tar.bz2">
+<!ENTITY mplayer-directory    "MPlayer-1.0pre1">
+
+<!ENTITY mplayer-codecs-package            "extralite.tar.bz2">
+<!ENTITY mplayer-arial-iso-8859-1-package  "font-arial-iso-8859-1.tar.bz2">
+<!ENTITY mplayer-skin-package              "default-1.7.tar.bz2">
+
+<!ENTITY xine-lib-version      "1-beta11">
+<!ENTITY xine-lib-package      "xine-lib-1-beta11.tar.gz">
+<!ENTITY xine-lib-directory    "xine-lib-1-beta11">
+
+<!ENTITY xine-ui-version      "0.9.20">
+<!ENTITY xine-ui-package      "xine-ui-0.9.20.tar.gz">
+<!ENTITY xine-ui-directory    "xine-ui-0.9.20">
+
+<!ENTITY transcode-version      "0.6.3">
+<!ENTITY transcode-package      "transcode-0.6.3.tar.gz">
+<!ENTITY transcode-directory    "transcode-0.6.3">
+
+<!--************* packages for chapter 45 *************-->
+
+<!ENTITY cdrtools-version   "2.0">
+<!ENTITY cdrtools-package   "cdrtools-2.0.tar.gz">
+<!ENTITY cdrtools-directory "cdrtools-2.0">
+
+<!ENTITY cdrdao-version     "1.1.7">
+<!ENTITY cdrdao-package     "cdrdao-1.1.7.src.tar.bz2">
+<!ENTITY cdrdao-directory   "cdrdao-1.1.7">
+
+<!--************* packages for chapter 46 *************-->
+
+<!ENTITY cups-version   "1.1.19">
+<!ENTITY cups-package   "cups-1.1.19-source.tar.bz2">
+<!ENTITY cups-directory "cups-1.1.19">
+
+<!ENTITY afplghostscript-version   "8.00">
+<!ENTITY afplghostscript-package   "ghostscript-8.00.tar.bz2">
+<!ENTITY afplghostscript-directory "ghostscript-8.00">
+
+<!ENTITY afplghostscript-fonts1 "ghostscript-fonts-std-8.11.tar.gz">
+<!ENTITY afplghostscript-fonts2 "gnu-gs-fonts-other-6.0.tar.gz">
+<!ENTITY afplghostscript-fonts3 "urw-fonts-1.0.7pre22.tar.bz2">
+
+<!ENTITY espghostscript-version   "7.07.1rc2">
+<!ENTITY espghostscript-package   "espgs-7.07.1rc2-source.tar.bz2">
+<!ENTITY espghostscript-directory "espgs-7.07.1rc2">
+
+<!ENTITY espghostscript-fonts1 "gnu-gs-fonts-std-6.0.tar.gz">
+<!ENTITY espghostscript-fonts2 "gnu-gs-fonts-other-6.0.tar.gz">
+<!ENTITY espghostscript-fonts3 "urw-fonts-1.0.7pre22.tar.bz2">
+
+<!ENTITY espghostscript-driver "Omni-0.9.0.tar.gz">
+
+<!ENTITY lprng-version   "3.8.20">
+<!ENTITY lprng-package   "LPRng-3.8.20.tgz">
+<!ENTITY lprng-directory "LPRng-3.8.20">
+
+<!--************* packages for chapter 46 *************-->
+
+<!ENTITY sane-version   "1.0.9">
+<!ENTITY sane-frontend-package   "sane-frontends-1.0.9.tar.gz">
+<!ENTITY sane-frontend-directory "sane-frontends-1.0.9">
+
+<!ENTITY sane-backend-package   "sane-backends-1.0.9.tar.gz">
+<!ENTITY sane-backend-directory "sane-backends-1.0.9">
+
+<!ENTITY xsane-version   "0.90">
+<!ENTITY xsane-package   "xsane-0.90.tar.gz">
+<!ENTITY xsane-directory "xsane-0.90">
+
+<!--************* packages for chapter 48 *************-->
+
+<!ENTITY sgml-common-version   "0.6.3">
+<!ENTITY sgml-common-package   "sgml-common-0.6.3.tgz">
+<!ENTITY sgml-common-directory "sgml-common-0.6.3">
+
+<!ENTITY sgml-dtd31-version   "3.1">
+<!ENTITY sgml-dtd31-package   "docbk31.zip">
+<!ENTITY sgml-dtd31-directory "docbk31">
+
+<!ENTITY sgml-dtd-version   "4.2">
+<!ENTITY sgml-dtd-package   "docbook-4.2.zip">
+<!ENTITY sgml-dtd-directory "docbook-4.2">
+
+<!ENTITY opensp-version   "1.5">
+<!ENTITY opensp-package   "OpenSP-1.5.tar.gz">
+<!ENTITY opensp-directory "OpenSP-1.5">
+	
+<!ENTITY opensp-patch     "OpenSP-1.5-LITLEN.patch">
+
+<!ENTITY openjade-version   "1.3.2">
+<!ENTITY openjade-package   "openjade-1.3.2.tar.gz">
+<!ENTITY openjade-directory "openjade-1.3.2">
+
+<!ENTITY docbook-dsssl-version   "1.78">
+<!ENTITY docbook-dsssl-package   "docbook-dsssl-1.78.tar.gz">
+<!ENTITY docbook-dsssl-directory "docbook-dsssl-1.78">
+
+<!--************* packages for chapter 49 *************-->
+
+<!ENTITY xml-dtd-version   "4.2">
+<!ENTITY xml-dtd-package   "docbook-xml-4.2.zip">
+<!ENTITY xml-dtd-directory "docbook-xml-4.2">
+
+<!ENTITY docbook-xsl-version   "1.61.3">
+<!ENTITY docbook-xsl-package   "docbook-xsl-1.61.3.tar.gz">
+<!ENTITY docbook-xsl-directory "docbook-xsl-1.61.3">
+
+<!--************* packages for chapter 50 *************-->
+
+<!ENTITY a2ps-version   "4.13b">
+<!ENTITY a2ps-package   "a2ps-4.13b.tar.gz">
+<!ENTITY a2ps-directory "a2ps-4.13">
+
+<!ENTITY enscript-version   "1.6.1">
+<!ENTITY enscript-package   "enscript-1.6.1.tar.gz">
+<!ENTITY enscript-directory "enscript-1.6.1">
+
+<!ENTITY gsview-version   "4.3">
+<!ENTITY gsview-package   "gsview-4.3.tar.gz">
+<!ENTITY gsview-directory "gsview-4.3">
+
+<!ENTITY psutils-version   "p17">
+<!ENTITY psutils-package   "psutils-p17.tar.gz">
+<!ENTITY psutils-directory "psutils">
+
+<!ENTITY xpdf-version   "2.02">
+<!ENTITY xpdf-package   "xpdf-2.02.tar.gz">
+<!ENTITY xpdf-directory "xpdf-2.02">
+
+<!--************* packages for chapter 50 *************-->
+
+<!ENTITY tex-version   "2.0.2">
+<!ENTITY tex-package   "tetex-src-2.0.2.tar.gz">
+<!ENTITY tex-directory "tetex-src-2.0.2">
+
+<!ENTITY tex-texmf-package     "tetex-texmf-2.0.2.tar.gz">
+<!ENTITY tex-texmfsrc-package  "tetex-texmfsrc-2.0.2.tar.gz">
+
+
+<!--************* packages for chapter 99 *************-->
+
+<!ENTITY cracklib-version   "2.7">
+<!ENTITY cracklib-package   "cracklib,2.7.tgz">
+<!ENTITY cracklib-directory "cracklib,2.7">
+
+<!ENTITY cracklib-dictionary "allwords">
+
+<!ENTITY t1lib-version   "1.3">
+<!ENTITY t1lib-package   "t1lib-1.3.tar.gz">
+<!ENTITY t1lib-directory "T1Lib-1.3">
+
+<!ENTITY bison175-version   "1.75">
+<!ENTITY bison175-package   "bison-1.75.tar.bz2">
+<!ENTITY bison175-directory "bison-1.75">
+
+<!ENTITY libole2-version   "0.2.4">
+<!ENTITY libole2-package   "libole2-0.2.4.tar.bz2">
+<!ENTITY libole2-directory "libole2-0.2.4">
+
+<!ENTITY mktemp-version   "1.5">
+<!ENTITY mktemp-package   "mktemp-1.5.tar.gz">
+<!ENTITY mktemp-directory "mktemp-1.5">
+
+<!ENTITY fribidi-version   "0.10.4">
+<!ENTITY fribidi-package   "fribidi-0.10.4.tar.gz">
+<!ENTITY fribidi-directory "fribidi-0.10.4">
+ 

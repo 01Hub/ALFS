@@ -1,0 +1,75 @@
+<package name="mplayer" version="&mplayer-version;">
+
+        <packageinfo>
+		<requires><name>gtk+</name></requires>
+		<utilizes><name>freetype</name></utilizes>
+		<utilizes><name>libpng</name></utilizes>
+		<utilizes><name>libjpeg</name></utilizes>
+		<utilizes><name>libungif</name></utilizes>
+		<utilizes><name>aalib</name></utilizes>
+		<utilizes><name>sdl</name></utilizes>
+		<utilizes><name>ffmpeg</name></utilizes>
+		<utilizes><name>xvid</name></utilizes>
+		<utilizes><name>opendivx</name></utilizes>
+		<utilizes><name>oss</name></utilizes>
+		<utilizes><name>arts</name></utilizes>
+		<utilizes><name>alsa</name></utilizes>
+		<utilizes><name>lz0</name></utilizes>
+		<utilizes><name>libdvdnav</name></utilizes>
+		<utilizes><name>mad</name></utilizes>
+		<utilizes><name>cdparanoia</name></utilizes>
+		<utilizes><name>libogg</name></utilizes>
+	</packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&mplayer-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&mplayer-codecs-package;</source>
+			<source>&packages_dir;/&mplayer-arial-iso-8859-1-package;</source>
+			<source>&packages_dir;/&mplayer-skin-package;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+		        <environment>
+			        <variable name="CFLAGS"></variable>
+			</environment>
+			<base>&build_dir;/&mplayer-directory;</base>
+		</stageinfo>
+
+		<execute command="install -d /usr/lib/mplayer/extralite" />
+		<execute command="tar xjvf ../&mplayer-codecs-package; -C /usr/lib/mplayer" />
+		<execute command="tar xjvf ../&mplayer-arial-iso-8859-1-package; -C /usr/lib/mplayer/font" />
+		<execute command="tar xjvf ../&mplayer-skin-package; -C /usr/lib/mplayer/Skin" />
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--confdir=/etc/mplayer</param>
+			<param>--enable-largefiles</param>
+			<param>--enable-gui</param>
+			<param>--enable-menu</param>
+			<param>--enable-shared-pp</param>
+			<param>--with-codecsdir=/usr/lib/mplayer/extralite</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&mplayer-directory;</remove>
+		<remove>&build_dir;/&mplayer-codecs-package;</remove>
+		<remove>&build_dir;/&mplayer-arial-iso-8859-1-package;</remove>
+		<remove>&build_dir;/&mplayer-skin-package;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,41 @@
+<package name="imlib" version="&imlib-version;">
+
+        <packageinfo>
+                <requires><name>xfree86</name></requires>
+                <requires><name>libjpeg</name></requires>
+                <requires><name>libtiff</name></requires>
+                <requires><name>libungif</name></requires>
+                <requires><name>libpng</name></requires>
+                <requires><name>glib</name></requires>
+                <requires><name>gtk+</name></requires>
+        </packageinfo>
+
+        <stage name="Unpacking a package">
+		<unpack>
+			<archive>&packages_dir;/&imlib-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package">
+		<stageinfo>
+			<base>&build_dir;/&imlib-directory;</base>
+		</stageinfo>
+
+		<configure command="CPPFLAGS=-w ./configure">
+		        <param>--prefix=/usr</param>
+		        <param>--sysconfdir=/etc/imlib</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&imlib-directory;</remove>
+	</stage>
+
+</package>

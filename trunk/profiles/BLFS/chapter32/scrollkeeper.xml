@@ -1,0 +1,43 @@
+<package name="scrollkeeper" version="&scrollkeeper-version;">
+
+        <packageinfo>
+                <requires><name>libxml2</name></requires>
+        	<requires><name>libxslt</name></requires>
+        	<requires><name>intltool</name></requires>
+        	<requires><name>xml-dtd</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&scrollkeeper-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&scrollkeeper-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
+                        <param>--localstatedir=/var</param>
+                        <param>--disable-static</param>
+                        <param>--with-omfdirs=/usr/share/omf:/opt/gnome/share/omf:/opt/kde/share/omf:&gnome-prefix;/share/omf</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="/sbin/ldconfig" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&scrollkeeper-directory;</remove>
+	</stage>
+
+</package>

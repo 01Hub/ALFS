@@ -1,0 +1,114 @@
+<package name="gcc-full" version="&gcc-full-version;">
+
+        <packageinfo>
+                <requires><name>tcsh</name></requires>
+                <requires><name>gnat</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&gnat-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&gnat-directory;</base>
+		</stageinfo>
+
+		<textdump base="/tmp">
+		        <file>gnat_reply</file>
+
+			<content>
+			        =
+			        =3
+				=/opt/gnat
+			</content>
+		</textdump>
+
+		<execute command="./doconfig &lt; /tmp/gnat_reply" />
+
+		<execute command="./doinstall" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&gnat-directory;</remove>
+		<remove>/tmp/gnat_reply</remove>
+	</stage>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&gcc-full-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<mkdir>
+		        <name>&build_dir;/gcc-build</name>
+		</mkdir>
+
+		<copy>
+		        <source>&packages_dir;/&gcc-full-patch;</source>
+		        <destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<environment>
+			        <variable name="CC">cc</variable>
+			        <variable name="CFLAGS" />
+			        <variable name="CXXFLAGS" />
+			        <variable name="PATH">/usr/src/gnat/bin:/bin:/usr/bin:/usr/local/bin</variable>
+
+			</environment>
+			<base>&build_dir;/gcc-build</base>
+		</stageinfo>
+
+		<patch base="&build_dir;/&gcc-full-directory;">
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&gcc-full-patch;</param>
+		</patch>
+
+		<execute base="&build_dir;/&gcc-full-directory;/gcc/ada"
+		        command="touch treeprs.ads [es]info.h nmake.ad[bs]" />
+
+		<configure base="&build_dir;/gcc-build"
+		           command="../&gcc-full-directory;/configure">
+		        <param>--prefix=/usr</param>
+			<param>--enable-shared</param>
+			<param>--enable-languages=c,c++,objc,f77,ada,java</param>
+			<param>--enable-threads=posix</param>
+			<param>--enable-__cxa_atexit</param>
+			<param>--enable-clocale=gnu</param>
+		</configure>
+
+		<make base="&build_dir;/gcc-build">
+		        <param>bootstrap</param>
+		</make>
+
+		<make base="&build_dir;/gcc-build">
+		        <param>-C gcc</param>
+		        <param>gnatlib_and_tools</param>
+		</make>
+
+		<make base="&build_dir;/gcc-build">
+		        <param>install</param>
+		</make>
+
+		<link>
+		        <option>force</option>
+		        <target>g77</target>
+			<name>/usr/bin/f77</name>
+		</link>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&gcc-full-directory;</remove>
+		<remove>&build_dir;/gnat</remove>
+		<remove>&build_dir;/gcc-build</remove>
+		<remove>&build_dir;/&gcc-full-patch;</remove>
+	</stage>
+
+</package>

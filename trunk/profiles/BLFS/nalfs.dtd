@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+       nALFS :   Document Type Definition
+       Version : 3.1
+       Author:   V. Dzuba
+       Date:     February 20th, 2003
+
+       This DTD is an evolution of 3.1, following discussions on the
+       newsgroup alfs.discuss
+
+       The last version of the DTD and its documentation are available at :
+             http://vassilidzuba.nerim.net/
+
+       This DTD is published under both BSD and GNU licenses.
+-->
+
+<!ENTITY lt     "&#38;#60;"> 
+<!ENTITY gt     "&#62;"> 
+<!ENTITY amp    "&#38;#38;"> 
+<!ENTITY apos   "&#39;"> 
+<!ENTITY quot   "&#34;"> 
+
+<!ENTITY % ops "(configure|copy|execute|if|link|make|mkdir|move|ownership
+|package|patch|permissions|remove|search_replace|stage|textdump|unpack)*">
+
+
+<!ELEMENT alfs           %ops;>
+<!ATTLIST alfs
+          version        CDATA   #FIXED "3.1">
+
+<!ELEMENT archive        (#PCDATA)>
+
+<!ELEMENT base           (#PCDATA)>
+
+<!ELEMENT configure      (param*)>
+<!ATTLIST configure
+          base           CDATA #IMPLIED
+          command        CDATA #IMPLIED>
+
+<!ELEMENT content        (#PCDATA)>
+
+<!ELEMENT copy           (option*, source+, destination)>
+<!ATTLIST copy
+          base           CDATA #IMPLIED>
+
+<!ELEMENT description    (para|list)*>
+
+<!ELEMENT destination    (#PCDATA)>
+
+<!ELEMENT digest         (#PCDATA)>
+<!ATTLIST digest         
+          type           CDATA     "md5">
+
+<!ELEMENT else           (%ops;)>
+
+<!ELEMENT execute        (param*)>
+<!ATTLIST execute
+          base           CDATA #IMPLIED
+          command        CDATA #REQUIRED>
+
+<!ELEMENT environment    (variable+)>
+
+<!ELEMENT file           (#PCDATA)>
+
+<!ELEMENT find           (#PCDATA)>
+
+<!ELEMENT if             (then?,else?)>
+<!ATTLIST if
+          test           CDATA #IMPLIED
+          package        CDATA #IMPLIED
+	  condition      (eq|ne|gt|ge|lt|le) #IMPLIED
+          version        CDATA #IMPLIED>
+
+<!ELEMENT item           (#PCDATA)>
+
+<!ELEMENT link           (option?, target+, name)>
+<!ATTLIST link
+          base           CDATA #IMPLIED
+	  type           CDATA #IMPLIED>
+
+<!ELEMENT list           (item|list)+>
+<!ATTLIST list
+          type           (bullet|number) "bullet">
+
+<!ELEMENT make           (param*)>
+<!ATTLIST make
+          base           CDATA #IMPLIED>
+
+<!ELEMENT mkdir          (option?, name+)>
+<!ATTLIST mkdir
+          base           CDATA #IMPLIED>
+          
+<!ELEMENT move           (option?, source+, destination)>
+<!ATTLIST move
+          base           CDATA #IMPLIED>
+
+<!ELEMENT name           (#PCDATA)>
+
+<!ELEMENT option         (#PCDATA)>
+
+<!ELEMENT ownership      (option?, name+)>
+<!ATTLIST ownership
+          base           CDATA #IMPLIED
+          user           CDATA #IMPLIED
+	  group          CDATA #IMPLIED>
+          
+<!ELEMENT package        (packageinfo?,stage+)>
+<!ATTLIST package
+          name           CDATA #REQUIRED
+          version        CDATA #REQUIRED>
+
+<!ELEMENT packageinfo    (description?,requires*,utilizes*)>
+
+<!ELEMENT para           (#PCDATA)>
+
+<!ELEMENT param          (#PCDATA)>
+
+<!ELEMENT patch          (param*)>
+<!ATTLIST patch
+          base           CDATA #IMPLIED>
+
+<!ELEMENT permissions    (option?, name*)>
+<!ATTLIST permissions
+          base           CDATA #IMPLIED
+          mode           CDATA #REQUIRED>
+
+<!ELEMENT reference      (#PCDATA)>
+
+<!ELEMENT remove         (#PCDATA)>
+
+<!ELEMENT replace        (#PCDATA)>
+
+<!ELEMENT requires       (name,version*)>
+
+<!ELEMENT root           (#PCDATA)>
+
+<!ELEMENT search_replace (file, find, replace)>
+<!ATTLIST search_replace
+          base           CDATA #IMPLIED>
+
+<!ELEMENT stage          (stageinfo?,%ops;)>
+<!ATTLIST stage
+          name           CDATA #IMPLIED>
+          
+<!ELEMENT source         (#PCDATA)>
+
+<!ELEMENT stageinfo      (root?,environment?,user?,base?)>
+
+<!ELEMENT target         (#PCDATA)>
+
+<!ELEMENT textdump       (file, content)>
+<!ATTLIST textdump
+          base           CDATA #IMPLIED
+	  mode           CDATA #IMPLIED>
+
+<!ELEMENT then           (%ops;)>
+
+<!ELEMENT unpack         (digest?, reference?,archive,destination)>
+
+<!ELEMENT user           (#PCDATA)>
+
+<!ELEMENT utilizes       (name,version*)>
+
+<!ELEMENT variable       (#PCDATA)>
+<!ATTLIST variable
+          name           CDATA #REQUIRED
+	  mode           CDATA #IMPLIED>
+
+<!ELEMENT version        (#PCDATA)>
+<!ATTLIST version
+          condition      (eq|ne|gt|ge|lt|le) #REQUIRED>

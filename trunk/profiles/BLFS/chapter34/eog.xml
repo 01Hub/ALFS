@@ -1,0 +1,38 @@
+<package name="eog" version="&eog-version;">
+
+        <packageinfo>
+                <requires><name>libgnomeui</name></requires>
+                <requires><name>libgnomeprint</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&eog-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&eog-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+			<param>--libexecdir=&gnome-prefix;/sbin</param>
+			<param>--localstatedir=/var/lib</param>
+			<param>--sysconfdir=/etc/gnome</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&eog-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,46 @@
+<package name="gnome-vfs2" version="&gnome-vfs2-version;">
+
+        <packageinfo>
+                <requires><name>orbit2</name></requires>
+        	<requires><name>gconf2</name></requires>
+        	<requires><name>bonobo-activation</name></requires>
+        	<requires><name>gnome-mime-data</name></requires>
+		<utilizes><name>libfam</name></utilizes>
+		<utilizes><name>openssl</name></utilizes>
+		<utilizes><name>cdparanoia</name></utilizes>
+		<utilizes><name>gtk-doc</name></utilizes>
+		<utilizes><name>xml-dtd</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&gnome-vfs2-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&gnome-vfs2-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+			<param>--sysconfdir=/etc/gnome</param>
+			<param>--disable-gtk-doc</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="/sbin/ldconfig" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&gnome-vfs2-directory;</remove>
+	</stage>
+
+</package>

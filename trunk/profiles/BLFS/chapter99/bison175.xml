@@ -1,0 +1,32 @@
+<package name="bison175" version="&bison175-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&bison175-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&bison175-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/opt/bison175</param>
+		        <param>--without-doc</param>
+		</configure>
+
+		<make>
+		</make>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&bison175-directory;</remove>
+	</stage>
+
+</package>

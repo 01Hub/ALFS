@@ -1,0 +1,24 @@
+# Begin /etc/bashrc 
+# Written for Beyond Linux From Scratch 
+# by James Robertson <jameswrobertson@earthlink.net>
+
+# System wide aliases and functions.
+
+# System wide environment variables and startup programs should go into
+# /etc/profile.  Personal environment variables and startup programs
+# should go into ~/.bash_profile.  Personal aliases and functions should
+# go into ~/.bashrc
+
+# By default we want the umask to get set.
+# Even for non-interactive and non-login shells.
+if [ "$(id -gn)" = "$(id -un)" -a $(id -u) -gt 99 ] ; then
+	umask 002
+else
+	umask 022
+fi
+
+# Provides a colored /bin/ls command.  Used in conjunction with code in
+# /etc/profile.
+alias ls='ls --color=auto'
+
+# End /etc/bashrc

@@ -1,0 +1,41 @@
+<package name="librsvg" version="&librsvg-version;">
+
+        <packageinfo>
+                <requires><name>gtk+2</name></requires>
+                <requires><name>libxml2</name></requires>
+                <requires><name>libart-lgpl</name></requires>
+		<utilizes><name>libgsf</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&librsvg-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&librsvg-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+			<param>--sysconfdir=/etc/gnome/</param>
+			<param>--disable-gtk-doc</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="/sbin/ldconfig" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&librsvg-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,58 @@
+<package name="avifile" version="&avifile-version;">
+
+        <packageinfo>
+                <requires><name>xfree86</name></requires>
+                <requires><name>libjpeg</name></requires>
+                <requires><name>sdl</name></requires>
+		<utilizes><name>ffmeg</name></utilizes>
+		<utilizes><name>opendivx</name></utilizes>
+		<utilizes><name>xvid</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&avifile-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&avifile-binaries-package;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&avifile-directory;</base>
+			<environment>
+			        <variable name="LD_LIBRARY_PATH" mode="append">:/opt/qt/lib</variable>
+			</environment>
+		</stageinfo>
+
+		<execute command="install -d /usr/lib/win32" />
+
+		<execute command="tar -xzvf ../&avifile-binaries-package; -C /usr/lib" />
+
+		<search_replace>
+		        <file>configure</file>
+			<find>extern "C" void exit(int);</find>
+			<replace>extern "C" void exit(int) throw();</replace>
+		</search_replace>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&avifile-directory;</remove>
+	</stage>
+
+</package>

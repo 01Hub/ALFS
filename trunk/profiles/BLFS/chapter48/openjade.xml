@@ -1,0 +1,90 @@
+<package name="openjade" version="&openjade-version;">
+
+        <packageinfo>
+                <requires><name>opensp</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&openjade-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&openjade-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+			<param>--enable-http</param>
+			<param>--disable-static</param>
+			<param>--enable-default-catalog=/etc/sgml/catalog</param>
+			<param>--enable-default-search-path=/usr/share/sgml</param>
+			<param>--datadir=/usr/share/sgml/openjade-&openjade-version;</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<link base="/usr/bin">
+		        <option>force</option>
+			<target>openjade</target>
+			<name>jade</name>
+		</link>
+
+		<link base="/usr/lib">
+		        <option>force</option>
+			<target>libogrove.so</target>
+			<name>libgrove.so</name>
+		</link>
+
+		<link base="/usr/lib">
+		        <option>force</option>
+			<target>libospgrove.so</target>
+			<name>libspgrove.so</name>
+		</link>
+
+		<link base="/usr/lib">
+		        <option>force</option>
+			<target>libostyle.so</target>
+			<name>libstyle.so</name>
+		</link>
+
+		<execute command="install">
+		        <param>-m644</param>
+			<param>dsssl/catalog</param>
+			<param>/usr/share/sgml/openjade-&openjade-version;/</param>
+		</execute>
+
+		<execute command="install">
+		        <param>-m644</param>
+			<param>dsssl/*.dtd</param>
+			<param>dsssl/*.dsl</param>
+			<param>dsssl/*.sgm</param>
+			<param>/usr/share/sgml/openjade-&openjade-version;</param>
+		</execute>
+
+		<execute command="install-catalog">
+			 <param>--add</param>
+			 <param>/etc/sgml/openjade-&openjade-version;.cat</param>
+			 <param>/usr/share/sgml/openjade-&openjade-version;/catalog</param>
+		</execute>
+
+		<execute command="install-catalog">
+		         <param>--add</param>
+			 <param>/etc/sgml/sgml-docbook.cat</param>
+			 <param>/etc/sgml/openjade-&openjade-version;.cat</param>
+		</execute>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&openjade-directory;</remove>
+	</stage>
+
+</package>

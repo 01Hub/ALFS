@@ -1,0 +1,36 @@
+<package name="libpng" version="&libpng-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&libpng-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&libpng-directory;</base>
+		</stageinfo>
+
+		<make>
+		        <param>prefix=/usr</param>
+		        <param>CC="gcc $CFLAGS"</param>
+		        <param>ZLIBINC=/usr/include</param>
+		        <param>ZLIBLIB=/usr/lib</param>
+		        <param>-f scripts/makefile.linux</param>
+		</make>
+
+		<make>
+			<param>prefix=/usr</param>
+			<param>install</param>
+			<param>-f scripts/makefile.linux</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&libpng-directory;</remove>
+	</stage>
+
+
+</package>
+

@@ -1,0 +1,134 @@
+<package name="xinetd" version="&xinetd-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&xinetd-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&xinetd-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+		        <param>install</param>
+		</make>
+
+		<!-- MODIFY THE only_from !!! -->
+		<textdump base="/etc">
+		<file>inetd.conf</file>
+		<content>
+		        =#
+			=# Sample configuration file for xinetd
+			=#
+			=defaults
+			={
+			=    instances      = 25
+			=    log_type       = FILE /var/log/servicelog
+			=    log_on_success = HOST PID
+			=    log_on_failure = HOST RECORD
+			=    only_from 	    = localhost 192.168.123.0/24
+			=    disabled       = tftp
+			=}
+		</content>
+		</textdump>
+
+		<textdump base="/etc/rc.d/init.d">
+		        <file>xinetd</file>
+	        <content>
+		        #!/bin/bash
+			=# Begin $rc_base/init.d/xinetd
+			=# Based on sysklogd script from LFS-3.1 and earlier.
+			=# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+			=source /etc/sysconfig/rc
+			=source $rc_functions
+			=case "$1" in
+			=    start)
+			=        echo "Starting xinetd..."
+			=        loadproc /usr/sbin/xinetd
+			=        ;;
+			=    stop)
+			=        echo "Stopping xinetd..."
+			=        killproc /usr/sbin/xinetd
+			=        ;;
+			=    reload)
+			=        echo "Reloading xinetd..."
+			=        killall -HUP xinetd
+			=        ;;
+			=    restart)
+			=        $0 stop
+			=        sleep 1
+			=        $0 start
+			=        ;;
+			=    status)
+			=        statusproc /usr/sbin/xinetd
+			=        ;;
+			=    *)
+			=        echo "Usage: $0 {start|stop|reload|restart|status}"
+			=        exit 1
+			=        ;;
+			=esac
+			=# End $rc_base/init.d/xinetd
+	        </content>
+		</textdump>
+
+		<permissions mode="755">
+		        <name>/etc/rc.d/init.d/xinetd</name>
+		</permissions>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/inetd</target>
+			<name>../rc0.d/K49inetd</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/inetd</target>
+			<name>../rc1.d/K49inetd</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/inetd</target>
+			<name>../rc2.d/K49inetd</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/inetd</target>
+			<name>../rc3.d/S22inetd</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/inetd</target>
+			<name>../rc4.d/S22inetd</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/inetd</target>
+			<name>../rc5.d/S22inetd</name>
+		</link>
+
+		<link base="/etc/rc.d/init.d">
+		        <option>force</option>
+			<target>../init.d/inetd</target>
+			<name>../rc6.d/K49inetd</name>
+		</link>
+	</stage>
+		
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&xinetd-directory;</remove>
+	</stage>
+
+</package>

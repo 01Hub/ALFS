@@ -1,0 +1,50 @@
+<package name="openssl" version="&openssl-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&openssl-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&openssl-directory;</base>
+		</stageinfo>
+
+		<search_replace base="&build_dir;/&openssl-directory;/doc/apps">
+		       <file>passwd.pod</file>
+		       <find>passwd - compute password hashes</find>
+		       <replace>openssl-passwd - compute password hashes</replace>
+		</search_replace>
+
+	        <move>
+		        <source>doc/apps/passwd.pod</source>
+			<destination>doc/apps/openssl-passwd.pod</destination>
+		</move>
+
+		<configure command="./Configure">
+			<param>linux-elf</param>
+			<param>--openssldir=/etc/ssl</param>
+			<param>--prefix=/usr</param>
+			<param>shared</param>
+		</configure>
+
+		<make>
+		        <param>MANDIR=/usr/share/man</param>	
+		</make>
+
+		<make>
+		        <param>MANDIR=/usr/share/man</param>	
+			<param>install</param>
+		</make>
+
+		<remove>/etc/ssl/lib</remove>
+	</stage>
+
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&openssl-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,29 @@
+<package name="iptables" version="&iptables-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&iptables-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&iptables-directory;</base>
+		</stageinfo>
+
+		<make>
+		        <param>PREFIX=/usr</param>
+		</make>
+
+		<make>
+		        <param>PREFIX=/usr</param>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&iptables-directory;</remove>
+	</stage>
+
+</package>

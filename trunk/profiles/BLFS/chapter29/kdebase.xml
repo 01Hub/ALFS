@@ -1,0 +1,53 @@
+<package name="kdebase" version="&kdebase-version;">
+
+        <packageinfo>
+                <requires><name>openssl</name></requires>
+        	<requires><name>lesstif</name></requires>
+        	<requires><name>cdparanoia</name></requires>
+        	<requires><name>libvorbis</name></requires>
+        	<requires><name>cups</name></requires>
+
+		<utilizes><name>lame</name></utilizes>
+		<utilizes><name>linuxpam</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&kdebase-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&kdebase-directory;</base>
+		</stageinfo>
+
+                <link>
+		        <option>force</option>
+			<target>/usr/lib/libmisc.la</target>
+			<name>/lib/libmisc.la</name>
+		</link>
+
+		<configure>
+                        <param>--prefix=/opt/kde-&kde-version;</param>
+                        <param>--disable-debug</param>
+                        <param>--disable-dependency-tracking</param>
+                        <param>--disable-lametest</param>
+                        <param>--with-shadow</param>
+		</configure>
+
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&kdebase-directory;</remove>
+	</stage>
+
+</package>

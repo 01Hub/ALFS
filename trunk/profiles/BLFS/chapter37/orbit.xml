@@ -1,0 +1,37 @@
+<package name="orbit" version="&orbit-version;">
+
+        <packageinfo>
+                <requires><name>popt</name></requires>
+        	<requires><name>glib</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&orbit-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&orbit-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/opt/gnome</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="/sbin/ldconfig" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&orbit-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,69 @@
+<package name="sgml-dtd" version="&sgml-dtd-version;">
+
+        <packageinfo>
+                <requires><name>unzip</name></requires>
+        	<requires><name>sgml-common</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+
+	        <mkdir>
+		        <name>&build_dir;/&sgml-dtd-directory;</name>
+		</mkdir>
+
+		<unpack>
+			<archive>&packages_dir;/&sgml-dtd-package;</archive>
+			<destination>&build_dir;/&sgml-dtd-directory;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&sgml-dtd-directory;</base>
+		</stageinfo>
+
+		<copy>
+		        <source>docbook.cat</source>
+			<destination>docbook.cat.orig</destination>
+		</copy>
+		<execute command="sed -e '/ISO 8879/d' docbook.cat.orig > docbook.cat" />
+
+		<copy>
+		        <source>docbook.cat</source>
+			<destination>docbook.cat.orig</destination>
+		</copy>
+		<execute command="sed -e '/gml/d' docbook.cat.orig > docbook.cat" />
+		<ownership user="root" group="root">
+		        <option>recursive</option>
+			<name>.</name>
+		</ownership>
+
+		<execute command="install -d /usr/share/sgml/docbook/sgml-dtd-4.2" />
+
+		<permissions mode="755">
+		        <option>recursive</option>
+			<name>.</name>
+		</permissions>
+
+		<execute command="install docbook.cat /usr/share/sgml/docbook/sgml-dtd-4.2/catalog" />
+
+		<copy>
+		        <option>archive</option>
+			<option>force</option>
+		        <source>*.dtd</source>
+			<source>*.mod</source>
+			<source>*.dcl</source>
+			<destination>/usr/share/sgml/docbook/sgml-dtd-4.2</destination>
+		</copy>
+
+		<execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-4.2.cat /usr/share/sgml/docbook/sgml-dtd-4.2/catalog" />
+
+		<execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-4.2.cat /etc/sgml/sgml-docbook.cat" />
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&sgml-dtd-directory;</remove>
+	</stage>
+
+</package>

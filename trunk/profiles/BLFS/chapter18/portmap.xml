@@ -1,0 +1,127 @@
+<!-- part of this file has been written by Marteen Sanders -->
+
+<package name="portmap" version="&portmap-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&portmap-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&portmap-ppatch;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&portmap-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&portmap-patch;</param>
+		</patch>
+
+		<remove>/usr/share/doc/portmap</remove>
+		<mkdir base="/usr/share/doc">
+		        <option>parents</option>
+		        <name>portmap</name>
+		</mkdir>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+		
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&portmap-directory;</remove>
+		<remove>&build_dir;/&portmap-patch;</remove>
+	</stage>
+        <stage name="Create the portmap boot scripts">
+
+      <textdump base="/etc/rc.d/init.d/">
+	<file>portmap</file>
+        <content>
+	  =#!/bin/sh
+	  =# Begin /etc/rc.d/init.d/portmap
+	  =
+	  =source /etc/rc.d/init.d/functions
+	  = 
+	  =case "$1" in
+	  =        start)
+	  =                echo "Starting RPC Portmap"
+	  =                loadproc /sbin/portmap
+	  =                ;;
+	  =
+	  =        stop)
+	  =                echo "Stopping Portmap"
+	  =                killproc /sbin/portmap
+	  =                ;;
+	  =
+	  =        restart)
+	  =                $0 stop
+	  =                /bin/sleep 1
+	  =                $0 start
+	  =                ;;
+	  =
+	  =        *)
+	  =                echo "Usage: $0 {start|stop|restart}"
+	  =                exit 1
+	  =                ;;
+	  =
+	  =esac
+	  =
+	  =# End /etc/rc.d/init.d/portmap
+	</content>
+      </textdump>
+
+      <permissions mode="754" base="/etc/rc.d/init.d">
+	<name>portmap</name>
+      </permissions>
+
+      <link base="/etc/rc.d/init.d">
+	<option>force</option>
+	<target>../init.d/portmap</target>
+	<name>../rc0.d/K49portmap</name>
+      </link>
+
+      <link base="/etc/rc.d/init.d">
+	<option>force</option>
+	<target>../init.d/portmap</target>
+	<name>../rc1.d/K49portmap</name>
+      </link>
+
+      <link base="/etc/rc.d/init.d">
+	<option>force</option>
+	<target>../init.d/portmap</target>
+	<name>../rc2.d/K49portmap</name>
+      </link>
+
+      <link base="/etc/rc.d/init.d">
+	<option>force</option>
+	<target>../init.d/portmap</target><name>../rc3.d/S22portmap</name>
+      </link>
+      <link base="/etc/rc.d/init.d">
+	<option>force</option>
+	<target>../init.d/portmap</target><name>../rc4.d/S22portmap</name>
+      </link>
+      <link base="/etc/rc.d/init.d">
+	<option>force</option>
+	<target>../init.d/portmap</target><name>../rc5.d/S22portmap</name>
+      </link>
+      <link base="/etc/rc.d/init.d">
+	<option>force</option>
+	<target>../init.d/portmap</target><name>../rc6.d/K49portmap</name>
+      </link>
+
+     </stage> 
+
+</package>

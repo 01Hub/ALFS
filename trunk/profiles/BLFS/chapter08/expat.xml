@@ -1,0 +1,43 @@
+<package name="expat" version="&expat-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&expat-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+	                <source>&packages_dir;/&expat-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&expat-directory;</base>
+		</stageinfo>
+
+		<patch>
+		        <param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&expat-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&expat-directory;</remove>
+		<remove>&build_dir;/&expat-patch;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,39 @@
+<package name="gnome-session" version="&gnome-session-version;">
+
+        <packageinfo>
+                <requires><name>libgnomeui</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&gnome-session-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<environment>
+			        <variable name="PATH" mode="append">:&gnome-prefix;/sbin:/sbin</variable>
+			</environment>
+			<base>&build_dir;/&gnome-session-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+			<param>--localstatedir=/var/lib</param>
+			<param>--sysconfdir=/etc/gnome</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&gnome-session-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,28 @@
+<package name="xfsprogs" version="&xfsprogs-version;">
+
+    <stage name="Unpacking a package.">
+	<unpack>
+		<archive>&packages_dir;/&xfsprogs-package;</archive>
+		<destination>&build_dir;</destination>
+	</unpack>
+    </stage>
+
+    <stage name="Installing a package.">
+        <stageinfo>
+		<base>&build_dir;/&xfsprogs-directory;</base>
+	</stageinfo>
+
+	<configure />
+	
+	<make />
+
+	<make>
+		<param>install</param>
+	</make>
+    </stage>
+
+    <stage name="Clean-up.">
+	<remove>&build_dir;/&xfsprogs-directory;</remove>
+    </stage>
+
+</package>

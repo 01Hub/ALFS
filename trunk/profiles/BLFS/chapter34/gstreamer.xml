@@ -1,0 +1,37 @@
+<package name="gstreamer" version="&gstreamer-version;">
+
+        <packageinfo>
+                <requires><name>libgnomeui</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&gstreamer-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&gstreamer-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=&gnome-prefix;</param>
+			<param>--localstatedir=/var/log</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="gst-register" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&gstreamer-directory;</remove>
+	</stage>
+
+</package>

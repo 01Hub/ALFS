@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<stage name="Building /etc/rc.d/init.d/random">
+
+<textdump base="/etc/rc.d/init.d">
+        <file>random</file>
+        <content>
+            =#!/bin/sh
+            =# Begin $rc_base/init.d/random
+            =
+            =# Based on sysklogd script from LFS-3.1 and earlier.
+            =# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+            =# Random script elements by Larry Lawrence
+            =
+            =source /etc/sysconfig/rc
+            =source $rc_functions
+            =
+            =case "$1" in
+            =        start)
+            =                echo "Initializing kernel random number generator..."
+            =                if [ -f /var/tmp/random-seed ]; then
+            =	                cat /var/tmp/random-seed >/dev/urandom
+            =		fi
+            =		dd if=/dev/urandom of=/var/tmp/random-seed count=1 &amp;>/dev/null
+            =		evaluate_retval
+            =		;;
+            =		
+            =	stop)
+            =		echo "Saving random seed..."
+            =		dd if=/dev/urandom of=/var/tmp/random-seed count=1 &amp;>/dev/null
+            =		evaluate_retval
+            =		;;
+            =
+            =        *)
+            =                echo "Usage: $0 {start|stop}"
+            =                exit 1
+            =                ;;
+            =esac
+            =
+            =# End $rc_base/init.d/random
+        </content>
+</textdump>
+
+<permissions mode="755">
+    <name>/etc/rc.d/init.d/random</name>
+</permissions>
+
+
+<link base="/etc/rc.d/init.d">
+    <option>force</option>
+    <target>../init.d/random</target>
+    <name>../rc0.d/K45random</name>
+</link>
+
+<link base="/etc/rc.d/init.d">
+    <option>force</option>
+    <target>../init.d/random</target>
+    <name>../rc2.d/S25random</name>
+</link>
+
+<link base="/etc/rc.d/init.d">
+    <option>force</option>
+    <target>../init.d/random</target>
+    <name>../rc3.d/S25random</name>
+</link>
+
+<link base="/etc/rc.d/init.d">
+    <option>force</option>
+    <target>../init.d/random</target>
+    <name>../rc4.d/S25random</name>
+</link>
+
+<link base="/etc/rc.d/init.d">
+    <option>force</option>
+    <target>../init.d/random</target>
+    <name>../rc5.d/S25random</name>
+</link>
+
+<link base="/etc/rc.d/init.d">
+    <option>force</option>
+    <target>../init.d/random</target>
+    <name>../rc6.d/K45random</name>
+</link>
+
+
+</stage>
+

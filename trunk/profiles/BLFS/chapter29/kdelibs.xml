@@ -1,0 +1,49 @@
+<package name="kdelibs" version="&kdelibs-version;">
+
+        <packageinfo>
+                <requires><name>openssl</name></requires>
+        	<requires><name>alsa-driver</name></requires>
+        	<requires><name>alsa-lib</name></requires>
+        	<requires><name>pcre</name></requires>
+        	<requires><name>libxml2</name></requires>
+        	<requires><name>libxslt</name></requires>
+        	<requires><name>cups</name></requires>
+
+		<utilizes><name>libfam</name></utilizes>
+		<utilizes><name>libtiff</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&kdelibs-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&kdelibs-directory;</base>
+		</stageinfo>
+
+		<configure>
+                        <param>--prefix=/opt/kde-&kde-version;</param>
+                        <param>--disable-debug</param>
+                        <param>--disable-dependency-tracking</param>
+                        <param>--with-alsa</param>
+                        <param>--enable-fast-malloc=full</param>
+		</configure>
+
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&kdelibs-directory;</remove>
+	</stage>
+
+</package>

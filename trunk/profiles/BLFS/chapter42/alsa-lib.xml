@@ -1,0 +1,29 @@
+<package name="alsa-lib" version="&alsa-lib-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&alsa-lib-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&alsa-lib-directory;</base>
+		</stageinfo>
+
+		<configure>
+		</configure>
+
+		<make/>
+		
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&alsa-lib-directory;</remove>
+	</stage>
+
+</package>

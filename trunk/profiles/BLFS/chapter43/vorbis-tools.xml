@@ -1,0 +1,37 @@
+<package name="vorbis-tools" version="&vorbis-tools-version;">
+
+        <packageinfo>
+                <requires><name>curl</name></requires>
+        	<requires><name>libao</name></requires>
+        	<requires><name>libogg</name></requires>
+        	<requires><name>libvorbis</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&vorbis-tools-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&vorbis-tools-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&vorbis-tools-directory;</remove>
+	</stage>
+
+</package>
