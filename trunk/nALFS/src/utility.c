@@ -277,8 +277,9 @@ int create_temp_file(char *templ)
 
 
 	if ((fd = mkstemp(templ)) == -1) {
-		PRINT_ERROR("Creating temporary file (%s) failed:", templ);
-		PRINT_ERROR("    %s", strerror(errno));
+		PRINT_ERROR("Creating temporary file");
+		PRINT_ERROR("%s", templ);
+		PRINT_ERROR("failed: %s", strerror(errno));
 		return -1;
 
 	} else {

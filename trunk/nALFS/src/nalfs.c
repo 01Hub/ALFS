@@ -38,9 +38,6 @@
 
 #include <stdarg.h>
 
-#include <libxml/tree.h>
-#include <libxml/parser.h>
-#include <libxml/xmlversion.h>
 #include <libxml/uri.h>
 
 #ifdef HAVE_CONFIG_H
@@ -75,7 +72,6 @@ static const int min_pad_size_for_help = 64;
 static const int min_pad_size_for_options = 32;
 
 static const char state_file_name[] = "state_file";
-static const char changed_files_suffix[] = ".files";
 
 
 static char *search_string;		// Last entered string for searching.
@@ -570,29 +566,6 @@ static int is_corresponding_state(const char *file_name, element_s *el)
 	return is_corresponding;
 }
 
-static char *alloc_current_package_file(const char *extension)
-{
-	char *filename;
-	char *package_str;
-	element_s *current_package;
-
-
-	ASSERT(current_running != NULL);
-
-	current_package = get_elements_package(current_running);
-
-	package_str = alloc_package_string(current_package);
-
-	filename = alloc_real_packages_directory_name();
-	append_str(&filename, "/");
-	append_str(&filename, package_str);
-	append_str(&filename, extension);
-
-	xfree(package_str);
-
-	return filename;
-}
-
 static INLINE void receive_state(void)
 {
 	if (comm_read_to_file(FRONTEND_CTRL_SOCK, state.filename) == 0) {
@@ -605,96 +578,64 @@ static INLINE void receive_state(void)
 	}
 }
 
-static INLINE char *receive_changed_files(void)
+static INLINE int receive_changed_files(logf_t *logf)
 {
-	char *filename = NULL;
-	char *suffix = NULL;
-
-	
-	append_str(&suffix, changed_files_suffix);
-	append_str(&suffix, ".XXXXXX");
-
-	filename = alloc_current_package_file(suffix);
-
-	xfree(suffix);
-
-	if (create_temp_file(filename)) {
-		xfree(filename);
-		return NULL;
-	}
+	char *filename = logf_create_flog(logf);
 
 	if (comm_read_to_file(FRONTEND_CTRL_SOCK, filename) == 0) {
-		Nprint("Installed files stored in \"%s\".", filename);
+		if (filename) {
+			Nprint("Installed files stored in \"%s\".", filename);
+			return 0;
+		}
 	}
 
-	return filename;
-}
-
-/* Create a new log file for a package (if it doesn't already exist)
- * and add a new node to it.
- */
-static INLINE xmlDocPtr merge_log_files(char *file, xmlNodePtr new_node)
-{
-	xmlDocPtr doc = NULL;
-
-	if (file_exists(file)) {
-		doc = logf_parse_logfile(file);
-
-		if (doc == NULL)
-			Nprint_err("Error parsing %s, creating new one.", file);
-	}
-
-	if (doc == NULL)
-		doc = logf_new_logfile();
-
-
-	if (xmlAddChild(doc->children, new_node) == NULL) {
-		Nprint_err("Unable to add new state to the old log file");
-	}
-
-	return doc;
+	return -1;
 }
 
 static INLINE void receive_log_file(void)
 {
 	size_t size;
+	char *s;
 	char *ptr;
-	char *filename;
-
-	xmlDocPtr doc;
-	xmlNodePtr new_node;
-
+	char *package_str;
+	char *pdir;
+	element_s *current_package;
+	logf_t *logf;
 
 	/* Get new log file. */
 	comm_read_to_memory(FRONTEND_CTRL_SOCK, &ptr, &size);
 
-	/* Parse it and unlink its root element. */
-	doc = xmlParseMemory(ptr, size);
-	new_node = xmlDocGetRootElement(doc);
-	xmlUnlinkNode(new_node);
-	xmlFreeDoc(doc);
+	/* Get package string for the current running element. */
+	ASSERT(current_running != NULL);
+	current_package = get_elements_package(current_running);
+	package_str = alloc_package_string(current_package);
+
+	pdir = alloc_real_packages_directory_name();
+
+	logf = logf_init_from_package_string(pdir, package_str);
+
+	if (logf_merge_log(logf, ptr, size) == -1) {
+		Nprint_err("Unable to add new state to the old log file");
+	}
+
+	xfree(package_str);
+	xfree(pdir);
 	xfree(ptr);
-
-	filename = alloc_current_package_file(LOG_FILE_SUFFIX);
-
-	doc = merge_log_files(filename, new_node);
 
 	/*
 	 * Read the list of installed files (if any) from the backend,
 	 * store it in the file, and update the package log with its name.
+	 * TODO: Put it in a separate function.
 	 */
-	if (logf_has_installed_files(new_node)) {
+	if (logf_has_flog(logf)) {
 		ctrl_msg_s *message;
 
 		if ((message = comm_read_ctrl_message(FRONTEND_CTRL_SOCK))) {
 			ctrl_msg_type_e type = comm_msg_type(message);
 
 			if (type == CTRL_SENDING_FILES_FILE) {
-				char *f = receive_changed_files();
-
-				if (f) {
-					logf_add_installed_files(new_node, f);
-					xfree(f);
+				if (receive_changed_files(logf) == 0) {
+					logf_update_with_flog(logf);
 				}
 			}
 		}
@@ -702,17 +643,15 @@ static INLINE void receive_log_file(void)
 		comm_free_message(message);
 	}
 
+	s = logf_get_package_fullname(logf, 0);
 
-	/* Save log file. */
-	xmlSetDocCompressMode(doc, 0);
-	if (xmlSaveFormatFile(filename, doc, 1) == -1) {
-		Nprint_err("Unable to save log file to %s.", filename);
+	if (logf_save(logf) == 0) {
+		Nprint("Log file stored in \"%s\".", s);
 	} else {
-		Nprint("Log file stored in \"%s\".", filename);
+		Nprint_err("Unable to save log file to %s.", s);
 	}
 
-	xfree(filename);
-	xmlFreeDoc(doc);
+	logf_free(logf);
 }
 
 /*
@@ -1158,7 +1097,7 @@ static INLINE void display_installed_packages(void)
 	pdir = alloc_real_packages_directory_name();
 
 	Nprint("Reading log files from %s...", pdir);
-	logf = logf_init(pdir);
+	logf = logf_init_from_directory(pdir);
 
 	min_pad_size = logf_get_packages_cnt(logf);
 

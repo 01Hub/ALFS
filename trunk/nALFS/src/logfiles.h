@@ -46,24 +46,44 @@ void logf_add_start_time(
 	xmlDocPtr xml_doc, const char *name, const char *time_str);
 xmlDocPtr logf_new_run(const char *name, const char *version);
 
-xmlDocPtr logf_parse_logfile(const char *file);
-xmlDocPtr logf_new_logfile(void);
-int logf_has_installed_files(xmlNodePtr node);
-void logf_add_installed_files(xmlNodePtr node, const char *f);
 
 /*
  * logf interface.
  */
 
-#define LOG_FILE_SUFFIX ".log"
-
 typedef struct logf logf_t;
 
-logf_t *logf_init(const char *pdir);
+
 void logf_free(logf_t *logf);
+int logf_save(logf_t *logf);
+
+char *logf_get_package_fullname(logf_t *logf, int i);
+
+/*
+ * Multiple log files, initialized from directory.
+ */
+
+logf_t *logf_init_from_directory(const char *pdir);
 
 int logf_get_packages_cnt(logf_t *logf);
+
 char *logf_get_package_name(logf_t *logf, int i);
+
+/*
+ * A single log file, initialized from package's string.
+ */
+
+logf_t *logf_init_from_package_string(const char *pdir, const char *pstr);
+
+int logf_merge_log(logf_t *logf, const char *ptr, size_t size);
+
+/* Checks if the list of installed files exists for this log file. */
+int logf_has_flog(logf_t *logf);
+
+/* Creates an empty file for the list of installed files. */
+char *logf_create_flog(logf_t *logf);
+
+void logf_update_with_flog(logf_t *logf);
 
 
 #endif /* H_LOGFILES_ */
