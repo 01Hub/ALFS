@@ -68,7 +68,6 @@ http://downloads.linuxfromscratch.org/patches/6.1-cvs/inetutils-1.4.2-no_server_
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/man-1.5m2-80cols-1.patch
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/mktemp-1.5-add_tempfile-1.patch
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/net-tools-1.60-gcc34-2.patch
-http://downloads.linuxfromscratch.org/patches/6.1-cvs/net-tools-1.60-kernel_headers-1.patch
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/perl-5.8.4-libc-1.patch
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/readline-4.3-gnu_fixes-1.patch
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/sysklogd-1.4.1-kernel_headers-1.patch
