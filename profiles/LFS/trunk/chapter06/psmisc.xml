@@ -36,11 +36,6 @@
       </move>
       <link>
         <option>force</option>
-        <target>pstree</target>
-        <name>/usr/bin/pstree.x11</name>
-      </link>
-      <link>
-        <option>force</option>
         <target>killall</target>
         <name>/bin/pidof</name>
       </link>

@@ -82,6 +82,7 @@
         <source>&gcc-specs-patch;</source>
         <source>&gettext-package;</source>
         <source>&glibc-package;</source>
+	<source>&glibc-linuxthreads-package;</source>
         <source>&grep-package;</source>
         <source>&groff-package;</source>
         <source>&grub-package;</source>
@@ -93,7 +94,6 @@
         <source>&inetutils-kernel-headers-patch;</source>
         <source>&iproute2-package;</source>
         <source>&iproute2-remove-db-patch;</source>
-        <source>&iproute2-find-update-patch;</source>
         <source>&kbd-package;</source>
         <source>&less-package;</source>
         <source>&lfs-bootscripts-package;</source>
@@ -101,7 +101,6 @@
         <source>&libtool-package;</source>
         <source>&libxml2-package;</source>
         <source>&linux-package;</source>
-        <source>&linux-security-patch;</source>
         <source>&linux-libc-headers-package;</source>
         <source>&m4-package;</source>
         <source>&make-package;</source>
@@ -121,13 +120,14 @@
         <source>&readline-fixes-patch;</source>
         <source>&sed-package;</source>
         <source>&shadow-package;</source>
+	<source>&shadow-lastlog-patch;</source>
         <source>&syslog-ng-package;</source>
         <source>&sysvinit-package;</source>
         <source>&tar-package;</source>
+	<source>&tar-sparse-fix-patch;</source>
         <source>&tcl-package;</source>
         <source>&texinfo-package;</source>
         <source>&udev-package;</source>
-        <source>&udev-permissions-file;</source>
         <source>&udev-rules-file;</source>
         <source>&util-linux-package;</source>
         <source>&util-linux-cramfs-patch;</source>
