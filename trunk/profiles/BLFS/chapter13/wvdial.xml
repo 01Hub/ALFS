@@ -22,11 +22,15 @@
 			<param>install</param>
 		</make>
 
-		<execute command="touch /etc/wvdial.conf" />
+		<execute command="touch">
+			<param>/etc/wvdial.conf</param>
+		</execute>
 		
 		<!-- uncomment this if you actually have a modem connected
 		     to your computer
-		<execute command="wvdialconf /etc/wvdial.conf" />
+		<execute command="wvdialconf">
+			<param>/etc/wvdial.conf</param>
+		</execute>
 		-->
 	</stage>
 
