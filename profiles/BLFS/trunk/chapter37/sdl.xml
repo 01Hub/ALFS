@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch37.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,49 +10,58 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="sdl" version="&sdl-version;">
-
-        <packageinfo>
-                <utilizes><name>alsa-lib</name></utilizes>
-                <utilizes><name>esound</name></utilizes>
-		<utilizes><name>arts</name></utilizes>
-		<utilizes><name>nas</name></utilizes>
-		<utilizes><name>nasm</name></utilizes>
-		<utilizes><name>xfree86</name></utilizes>
-		<utilizes><name>aalib</name></utilizes>
-		<utilizes><name>directfb</name></utilizes>
-		<utilizes><name>svgalib</name></utilizes>
-        </packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&sdl-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&sdl-directory;</base>
-		</stageinfo>
-
-		<configure>
-		        <param>--prefix=/usr</param>
-		        <param>--disable-debug</param>
-		</configure>
-
-		<make/>
-		
-		<make>
-			<param>install</param>
-		</make>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&sdl-directory;</remove>
-	</stage>
-
-</package>
+  <package name="sdl" version="&sdl-version;">
+    <packageinfo>
+      <utilizes>
+        <name>alsa-lib</name>
+      </utilizes>
+      <utilizes>
+        <name>esound</name>
+      </utilizes>
+      <utilizes>
+        <name>arts</name>
+      </utilizes>
+      <utilizes>
+        <name>nas</name>
+      </utilizes>
+      <utilizes>
+        <name>nasm</name>
+      </utilizes>
+      <utilizes>
+        <name>xfree86</name>
+      </utilizes>
+      <utilizes>
+        <name>aalib</name>
+      </utilizes>
+      <utilizes>
+        <name>directfb</name>
+      </utilizes>
+      <utilizes>
+        <name>svgalib</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&sdl-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&sdl-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--disable-debug</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&sdl-directory;</remove>
+    </stage>
+  </package>
 </alfs>
