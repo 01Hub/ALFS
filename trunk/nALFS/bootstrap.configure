@@ -192,7 +192,7 @@ if test "${USE_SSL}" = "yes"; then
    fi
 fi
 
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile doc/Makefile])
 EOF
 
 default_syntaxes=`echo ${all_syntaxes} | tr -s '[:blank:]' ',' | tr '_' '.'`
