@@ -31,7 +31,9 @@
 			<param>--without-cvs</param>
 		</configure>
 
-		<make />
+		<make>
+			<param>AUTOCONF=no</param>
+		</make>
 
 <!--
 		<make>
