@@ -1,0 +1,25 @@
+<package name="iana-etc" version="&iana-etc-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&iana-etc-md5;</digest>
+			<archive>&packages_dir;/&iana-etc-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&iana-etc-directory;</base>
+		</stageinfo>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&iana-etc-directory;</remove>
+	</stage>
+</package>

@@ -1,0 +1,248 @@
+<!--
+
+	LFS profile, version CVS
+	=================================
+	by Dave Wheeler (davewheeler69@hotmail.com)
+	updates by "Mark"
+        updates by Kevin P. Fleming (kpfleming@linuxfromscratch.org)
+	updates by Jamie Bennett (jamie@linuxfromscratch.org)
+	updates by Thomas Pegg (thomasp@linuxfromscratch.org)
+	Adapted from a profile by Vassili Dzuba (vassilidzuba@nerim.net)
+	Adapted from a profile by Neven Has - haski@sezampro.yu
+
+	Note : read the file README before running this profile
+
+-->
+
+
+<!DOCTYPE alfs SYSTEM "ALFS-3.1.dtd" [
+
+<!ENTITY % general_entities SYSTEM "config/general.ent">
+<!ENTITY % package_entities SYSTEM "config/package.ent">
+<!ENTITY % system_entities SYSTEM "system.ent">
+
+%general_entities;
+%package_entities;
+%system_entities;
+
+]>
+
+
+<alfs version="3.1">
+
+<stage name="Chapter 5 - Constructing a temporary system">
+	&c5-creatingtoolsdir;
+	&c5-addinguser;
+	&c5-settingenvironment;
+
+	<stage name="Installing packages in /tools as &lfs-user;.">
+		<stageinfo>
+			<user>&lfs-user;</user>
+			<environment>
+				<variable name="LFS">&LFS;</variable>
+				<variable name="LC_ALL">POSIX</variable>
+				<variable name="PATH" mode="prepend">/tools/bin:</variable>
+				<variable name="CFLAGS">&gcc_optimizations;</variable>
+				<variable name="CXXFLAGS">&gcc_optimizations;</variable>
+				<variable name="CC"></variable>
+				<variable name="CXX"></variable>
+				<variable name="CPP"></variable>
+				<variable name="LD_LIBRARY_PATH"></variable>
+				<variable name="LD_PRELOAD"></variable>
+			</environment>
+		</stageinfo>
+
+		&c5-binutils-pass1;
+		&c5-gcc-pass1;
+		&c5-libc-headers;
+		&c5-kernel-headers;
+		&c5-glibc;
+		&c5-lockingglibc;
+		&c5-tcl;
+		&c5-expect;
+		&c5-dejagnu;
+		&c5-gcc-pass2;
+		&c5-binutils-pass2;
+		&c5-gawk;
+		&c5-coreutils;
+		&c5-bzip2;
+		&c5-gzip;
+		&c5-diffutils;
+		&c5-findutils;
+		&c5-make;
+		&c5-grep;
+		&c5-sed;
+		&c5-gettext;
+		&c5-ncurses;
+		&c5-patch;
+		&c5-tar;
+		&c5-texinfo;
+		&c5-bash;
+		&c5-m4;
+		&c5-bison;
+		&c5-flex;
+		&c5-util-linux;
+		&c5-perl;
+		&c5-udev;
+		&c5-strip;
+	</stage>
+</stage>
+
+<stage name="Chapter 6 - Installing basic system software">
+	<stage name="Creating directories and mounting the proc and sysfs file systems">
+		&c6-proc;
+	</stage>
+
+	<stage name="Chroot with /tools">
+		<stageinfo>
+			<root>&LFS;</root>
+			<environment>
+				<variable name="HOME">/root</variable>
+				<variable name="TERM">&TERM;</variable>
+				<variable name="PS1">'\u:\w\$ '</variable>
+				<variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin</variable>
+				<variable name="CFLAGS">&gcc_optimizations;</variable>
+				<variable name="CXXFLAGS">&gcc_optimizations;</variable>
+			</environment>
+		</stageinfo>
+
+		&c6-changingowner;
+		&c6-creatingdirs;
+		&c6-createfiles;
+		&c6-pwdgroup;
+		&c6-basic-dev;
+		&c6-libc-headers;
+		&c6-man-pages;
+		&c6-glibc;
+		&c6-adjustingtoolchain;
+		&c6-binutils;
+		&c6-gcc;
+		&c6-coreutils;
+		&c6-zlib;
+		&c6-mktemp;
+		&c6-iana-etc;		
+		&c6-findutils;
+		&c6-gawk;
+		&c6-ncurses;
+		&c6-readline;
+		&c6-vim;
+		&c6-m4;
+		&c6-bison;
+		&c6-less;
+		&c6-groff;
+		&c6-sed;
+		&c6-flex;
+		&c6-gettext;
+		&c6-net-tools;
+		&c6-inetutils;
+		&c6-perl;
+		&c6-texinfo;
+		&c6-autoconf;
+		&c6-automake;
+		&c6-bash;
+		&c6-file;
+		&c6-libtool;
+		&c6-bzip2;
+		&c6-diffutils;
+		&c6-kbd;
+		&c6-e2fsprogs;
+		&c6-grep;
+		&c6-grub;
+		&c6-gzip;
+		&c6-hotplug;
+		&c6-man;
+		&c6-make;
+		&c6-module-tools;
+		&c6-patch;
+		&c6-procps;
+		&c6-psmisc;
+		&c6-shadow;
+		&c6-sysklogd;
+		&c6-sysvinit;
+		&c6-tar;
+		&c6-udev;
+		&c6-util-linux;
+		&c6-strip;
+	</stage>
+</stage>
+
+<stage name="Chapter 7 - Setting up system boot scripts">
+	<stageinfo>
+		<root>&LFS;</root>
+		<environment>
+			<variable name="HOME">/root</variable>
+			<variable name="TERM">&TERM;</variable>
+			<variable name="PS1">'\u:\w\$ '</variable>
+			<variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin</variable>
+			<variable name="CFLAGS">&gcc_optimizations;</variable>
+			<variable name="CXXFLAGS">&gcc_optimizations;</variable>
+		</environment>
+	</stageinfo>
+
+	&c7-bootscripts;
+	&c7-setclock;
+	&c7-console;
+	&c7-inputrc;
+	&c7-bash_startup;
+	&c7-hostname;
+	&c7-hosts;
+	&c7-network;
+</stage>
+
+<stage name="Chapter 8 - Making the LFS system bootable">
+	<stageinfo>
+		<root>&LFS;</root>
+		<environment>
+			<variable name="HOME">/root</variable>
+			<variable name="TERM">&TERM;</variable>
+			<variable name="PS1">'\u:\w\$ '</variable>
+			<variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin</variable>
+			<variable name="CFLAGS">&gcc_optimizations;</variable>
+			<variable name="CXXFLAGS">&gcc_optimizations;</variable>
+		</environment>
+	</stageinfo>
+
+	&c8-fstab;
+	&c8-kernel;
+	&c8-grub;
+</stage>
+
+<stage name="Chapter 9 - The End">
+        <stageinfo>
+                <root>&LFS;</root>
+                <environment>
+                        <variable name="HOME">/root</variable>
+                        <variable name="TERM">&TERM;</variable>
+                        <variable name="PS1">'\u:\w\$ '</variable>
+                        <variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin</variable>
+                        <variable name="CFLAGS">&gcc_optimizations;</variable>
+                        <variable name="CXXFLAGS">&gcc_optimizations;</variable>
+                </environment>
+        </stageinfo>
+
+	&c9-libxml2;
+	&c9-nALFS;
+
+	<remove>/tools</remove>
+
+	<textdump>
+		<file>/etc/lfs-release</file>
+		<content>=&LFS-version;</content>
+	</textdump>
+</stage>
+
+<stage name="Finishing Up">
+	<remove>/tools</remove>
+
+	<execute command="umount">
+		<param>&LFS;/dev/pts</param>
+		<param>&LFS;/dev/shm</param>
+		<param>&LFS;/dev</param>
+		<param>&LFS;/proc</param>
+		<param>&LFS;/sys</param>
+		<!-- If you used a bind mount for your package dir, unmount it here. -->
+		<!-- <param>&LFS;&packages_dir;</param> -->
+	</execute>
+</stage>
+
+</alfs>
