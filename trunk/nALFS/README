@@ -102,11 +102,10 @@ in your home directory. An example of this can be found in doc/nALFSrc
 and can be copied, renamed and modified to suit your particular needs.
 
 To run nALFS with the latest stable LFS profile you first need to 
-setup a config directory. For more information on doing this please see:
+download the profile, unpack it, and setup a config directory.
+For more configuration information please see the profile's README file.
 
-    profile/LFS-*/README
-
-When you enter the program, type '?' for a list of all available 
+When you enter the nALFS program, type '?' for a list of all available 
 commands.
 
 Note: If you are upgrading from a version prior to 1.2.0, and you are
@@ -217,11 +216,9 @@ to compile the program. To install it, use:
 
 Just type:
 
-    nALFS profile/LFS-*/LFS-*.xml
+    nALFS /path/to/your/profile.xml
 
-where "profiles/LFS-*/LFS-*.xml" is the current stable LFS profile
-distributed with the nALFS package. Multiple profiles separated by
-spaces can also be specified.
+Multiple profiles separated by spaces can also be specified.
 
 nALFS reads the /etc/nALFSrc file, then the ~/.nALFSrc file, in which
 different options can be set.  An example of these files is located in
