@@ -37,7 +37,7 @@
 #if HANDLER_SYNTAX_2_0 || HANDLER_SYNTAX_3_0
 
 
-static int log_main(element_s *el)
+static int log_main(element_s * const el)
 {
 	Nprint_h("%s", el->content ? el->content : "");
 

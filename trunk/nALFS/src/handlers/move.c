@@ -49,7 +49,7 @@
 static const char *move_parameters_ver2[] =
 { "options", "base", "source", "destination", NULL };
 
-static int move_main_ver2(element_s *el)
+static int move_main_ver2(element_s * const el)
 {
 	int status = 0;
 	int force = option_exists("force", el);
@@ -112,7 +112,7 @@ static const char *move_parameters_ver3[] =
 { "option", "source", "destination", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
-static int move_main_ver3(element_s *el)
+static int move_main_ver3(element_s * const el)
 {
 	int options[1], force;
 	int status = 0;
@@ -135,7 +135,7 @@ static int move_main_ver3(element_s *el)
 		return -1;
 	}
 
-	base = alloc_base_dir_new(el);
+	base = alloc_base_dir_new(el, 1);
 
 	if (change_current_dir(base)) {
 		xfree(base);

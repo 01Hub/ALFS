@@ -186,7 +186,7 @@ element_s *parse_profile(const char *filename)
  * Different utility funtions.
  */
 
-char *attr_value(const char *name, element_s *element)
+char *attr_value(const char * const name, const element_s * const element)
 {
 	if (element->attr) {
 		int i;
@@ -202,7 +202,7 @@ char *attr_value(const char *name, element_s *element)
 	return NULL;
 }
 
-char *raw_param_value(const char *name, const element_s *element)
+char *raw_param_value(const char * const name, const element_s * const element)
 {
 	element_s *tmp;
 
@@ -216,7 +216,8 @@ char *raw_param_value(const char *name, const element_s *element)
 	return NULL;
 }
 
-char *alloc_trimmed_param_value(const char *name, const element_s *element)
+char *alloc_trimmed_param_value(const char * const name,
+				const element_s * const element)
 {
 	char *tmp;
 
@@ -228,7 +229,7 @@ char *alloc_trimmed_param_value(const char *name, const element_s *element)
 	return tmp;
 }
 
-element_s *next_param(element_s *param)
+element_s *next_param(const element_s * const param)
 {
 	element_s *tmp;
 
@@ -243,7 +244,7 @@ element_s *next_param(element_s *param)
 	return NULL;
 }
 
-element_s *first_param(const char *name, const element_s *element)
+element_s *first_param(const char * const name, const element_s * const element)
 {
 	element_s *tmp;
 

@@ -50,7 +50,7 @@
 static const char *owner_parameters[] =
 { "options", "base", "user", "group", "name", NULL };
 
-static int owner_main(element_s *el)
+static int owner_main(element_s * const el)
 {
 	int status = 0;
 	int recursive = option_exists("recursive", el);

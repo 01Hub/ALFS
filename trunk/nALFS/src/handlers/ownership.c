@@ -42,7 +42,7 @@
 static const char *ownership_parameters[] = { "option", "name", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "user", "group", NULL };
 
-static int ownership_main(element_s *el)
+static int ownership_main(element_s *const el)
 {
 	int status = 0;
 	int options[1], recursive;
@@ -61,7 +61,7 @@ static int ownership_main(element_s *el)
 		return -1;
 	}
 
-	base = alloc_base_dir_new(el);
+	base = alloc_base_dir_new(el, 1);
 	if (change_current_dir(base)) {
 		xfree(base);
 		return -1;

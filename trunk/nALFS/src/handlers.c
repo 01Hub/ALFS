@@ -348,84 +348,48 @@ char *alloc_base_dir(element_s *el)
 	return xstrdup("/");
 }
 
-/* Used by new syntax (3.0). */
-char *alloc_base_dir_new(element_s *el)
+/* Used by new syntax (3.0+). */
+char *alloc_base_dir_new(const element_s * const el, const int default_root)
 {
-	element_s *s;
+	const element_s *s;
 	char *dir;
 
-
 	if ((dir = attr_value("base", el)) && strlen(dir)) {
 		return xstrdup(dir);
 	}
 
 	for (s = el->parent; s; s = s->parent) {
-		if (!s->handler) continue;
+		if (!s->handler)
+			continue;
+		if ((s->handler->data & HDATA_BASE) == 0)
+			continue;
 
-		if (s->handler->type & HTYPE_STAGE) {
-			element_s *sinfo;
-
-			if ((sinfo = first_param("stageinfo", s)) == NULL) {
-				continue;
-			}
-
-			if ((dir = alloc_trimmed_param_value("base", sinfo))) {
-				return dir;
-			}
-		}
+		dir  = s->handler->alloc_data(s, HDATA_BASE);
+		if (dir)
+			return dir;
 	}
 
-	return xstrdup("/");
+	if (default_root) {
+		return xstrdup("/");
+	} else {
+		return NULL;
+	}
 }
 
-/* Used by new syntax (3.2) when you _must_ have <base> present */
-char *alloc_base_dir_force(element_s *el)
+char *alloc_stage_shell(const element_s * const el)
 {
-	element_s *s;
-	char *dir = NULL;
-
-	if ((dir = attr_value("base", el)) && strlen(dir)) {
-		return xstrdup(dir);
-	}
-
-	for (s = el->parent; s; s = s->parent) {
-		if (!s->handler) continue;
-
-		if (s->handler->type & HTYPE_STAGE) {
-			element_s *sinfo;
-
-			if ((sinfo = first_param("stageinfo", s)) == NULL) {
-				continue;
-			}
-
-			if ((dir = alloc_trimmed_param_value("base", sinfo))) {
-				return dir;
-			}
-		}
-	}
-
-	return dir;
-}
-
-char *alloc_stage_shell(element_s *el)
-{
-	element_s *s;
+	const element_s *s;
 	char *shell;
 
 	for (s = el->parent; s; s = s->parent) {
-		if (!s->handler) continue;
+		if (!s->handler)
+			continue;
+		if ((s->handler->data & HDATA_SHELL) == 0)
+			continue;
 
-		if (s->handler->type & HTYPE_STAGE) {
-			element_s *sinfo;
-
-			if ((sinfo = first_param("stageinfo", s)) == NULL) {
-				continue;
-			}
-
-			if ((shell = alloc_trimmed_param_value("shell", sinfo))) {
-				return shell;
-			}
-		}
+		shell = s->handler->alloc_data(s, HDATA_SHELL);
+		if (shell)
+			return shell;
 	}
 
 	return xstrdup("sh");

@@ -116,7 +116,7 @@ static int unpack_archive(element_s *element, const char *archive)
 static const char *unpack_parameters_ver2[] =
 { "archive", "destination", NULL };
 
-static int unpack_main_ver2(element_s *el)
+static int unpack_main_ver2(element_s * const el)
 {
 	int status = 0;
 	char *archive, *destination;
@@ -168,7 +168,7 @@ static int unpack_main_ver2(element_s *el)
 static const char *unpack_parameters_ver3[] =
 { "digest", "reference", "archive", "destination", NULL };
 
-static int unpack_main_ver3(element_s *el)
+static int unpack_main_ver3(element_s * const el)
 {
 	int status = -1;
 	char *archive = NULL;
@@ -255,7 +255,7 @@ static int unpack_main_ver3(element_s *el)
 static const char *unpack_parameters_ver3_2[] =
 { "digest", "reference", "archive", NULL };
 
-static int unpack_main_ver3_2(element_s *el)
+static int unpack_main_ver3_2(element_s * const el)
 {
 	int status = -1;
 	char *archive = NULL;
@@ -271,7 +271,7 @@ static int unpack_main_ver3_2(element_s *el)
 	}
 
 	/* <base> is mandatory, we don't want to unpack just anywhere! */
-	if ((base = alloc_base_dir_force(el)) == NULL) {
+	if ((base = alloc_base_dir_new(el, 0)) == NULL) {
 		Nprint_h_err("<base> is missing.");
 		goto free_all_and_return;
 	}

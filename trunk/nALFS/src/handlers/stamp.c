@@ -39,7 +39,7 @@
 
 // char *HANDLER_SYMBOL(attributes)[] = { "name", "version" };
 
-static int stamp_main(element_s *el)
+static int stamp_main(element_s * const el)
 {
 	int status = 0;
 	char *name;

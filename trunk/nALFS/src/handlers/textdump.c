@@ -114,7 +114,7 @@ static const char *textdump_parameters_ver2[] =
 { "base", "file", "content", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "mode", NULL };
 
-static int textdump_main_ver2(element_s *el)
+static int textdump_main_ver2(element_s * const el)
 {
 	int i;
 	char *base = alloc_base_dir(el);
@@ -135,10 +135,10 @@ static const char *textdump_parameters_ver3[] =
 { "file", "content", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "mode", NULL };
 
-static int textdump_main_ver3(element_s *el)
+static int textdump_main_ver3(element_s * const el)
 {
 	int i;
-	char *base = alloc_base_dir_new(el);
+	char *base = alloc_base_dir_new(el, 1);
 
 	i = textdump_main(el, base);
 
@@ -151,7 +151,8 @@ static int textdump_main_ver3(element_s *el)
 #endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
 
 
-static char *textdump_data(element_s *el, handler_data_e data)
+static char *textdump_data(const element_s * const el,
+			   const handler_data_e data)
 {
 	(void) data;
 

@@ -45,7 +45,7 @@
 static const char *package_parameters_ver2[] =
 { "name", "version", "base", NULL };
 
-static int package_main_ver2(element_s *el)
+static int package_main_ver2(element_s * const el)
 {
 	int i;
 
@@ -62,7 +62,8 @@ static int package_main_ver2(element_s *el)
 	return i;
 }
 
-static char *package_data_ver2(element_s *el, handler_data_e data)
+static char *package_data_ver2(const element_s * const el,
+			       const handler_data_e data)
 {
 	if (data == HDATA_NAME) {
 		return alloc_trimmed_param_value("name", el);
@@ -232,7 +233,7 @@ static const char *package_parameters_ver3[] = {
 };
 // char *HANDLER_SYMBOL(attributes)[] = { "name", "version", "logfile", NULL };
 
-static int package_main_ver3(element_s *el)
+static int package_main_ver3(element_s * const el)
 {
 	int status = 0;
 	element_s *packageinfo;
@@ -258,7 +259,8 @@ static int package_main_ver3(element_s *el)
 	return status;
 }
 
-static char *package_data_ver3(element_s *el, handler_data_e data)
+static char *package_data_ver3(const element_s * const el,
+			       const handler_data_e data)
 {
 	char *s;
 

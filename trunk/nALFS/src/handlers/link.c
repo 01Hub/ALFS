@@ -49,7 +49,7 @@ static const char *link_parameters_ver2[] =
 { "options", "base", "target", "name", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "type", NULL };
 
-static int link_main_ver2(element_s *el)
+static int link_main_ver2(element_s * const el)
 {
 	int status;
 	int force = option_exists("force", el);
@@ -140,7 +140,7 @@ static const char *link_parameters_ver3[] =
 { "option", "target", "name", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "type", "base", NULL };
 
-static int link_main_ver3(element_s *el)
+static int link_main_ver3(element_s * const el)
 {
 	int options[2], force, no_dereference;
 	int status;
@@ -160,7 +160,7 @@ static int link_main_ver3(element_s *el)
 
 	link_name = alloc_trimmed_param_value("name", el);
 
-	base = alloc_base_dir_new(el);
+	base = alloc_base_dir_new(el, 1);
 	if (change_current_dir(base)) {
 		xfree(base);
 		xfree(link_name);

@@ -140,7 +140,7 @@ static INLINE int change_to_user(const char *user)
 
 // char *HANDLER_SYMBOL(attributes)[] = { "user", NULL };
 
-static int su_main(element_s *el)
+static int su_main(element_s * const el)
 {
 	int status;
 	pid_t su_pid, got_pid;
