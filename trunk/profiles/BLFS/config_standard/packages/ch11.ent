@@ -1,0 +1,49 @@
+<!--************* packages for chapter 11 *************-->
+
+<!ENTITY gpm-version   "1.20.1">
+<!ENTITY gpm-package   "gpm-&gpm-version;.tar.bz2">
+<!ENTITY gpm-directory "gpm-&gpm-version;">
+
+<!ENTITY gpm-patch1    "gpm-&gpm-version;-segfault.patch">
+<!ENTITY gpm-patch2    "gpm-&gpm-version;-silent.patch">
+
+<!ENTITY fcron-version   "2.9.4">
+<!ENTITY fcron-package   "fcron-&fcron-version;.src.tar.gz">
+<!ENTITY fcron-directory "fcron-&fcron-version;">
+
+<!ENTITY hdparm-version   "5.5">
+<!ENTITY hdparm-package   "hdparm-&hdparm-version;.tar.gz">
+<!ENTITY hdparm-directory "hdparm-&hdparm-version;">
+<!ENTITY hdparm-patch1 "hdparm-&hdparm-version;-glibc_CVS-1.patch">
+
+<!ENTITY which-version   "2.16">
+<!ENTITY which-package   "which-&which-version;.tar.gz">
+<!ENTITY which-directory "which-&which-version;">
+
+<!ENTITY unzip-version   "5.51">
+<!ENTITY unzip-package   "unzip551.tar.gz">
+<!ENTITY unzip-directory "unzip-&unzip-version;">
+
+<!ENTITY unzip-patch1    "unzip-&unzip-version;-fix-Makefile.patch">
+<!ENTITY unzip-patch2    "unzip-&unzip-version;-fix-libz.patch">
+<!ENTITY unzip-patch3    "unzip-&unzip-version;-dont-make-noise.patch">
+
+<!ENTITY zip-version   "2.3">
+<!ENTITY zip-package   "zip23.tar.gz">
+<!ENTITY zip-directory "zip-&zip-version;">
+
+<!ENTITY pciutils-version   "2.1.11">
+<!ENTITY pciutils-package   "pciutils-&pciutils-version;.tar.bz2">
+<!ENTITY pciutils-directory "pciutils-&pciutils-version;">
+
+<!ENTITY pkgconfig-version   "0.15.0">
+<!ENTITY pkgconfig-package   "pkgconfig-&pkgconfig-version;.tar.gz">
+<!ENTITY pkgconfig-directory "pkgconfig-&pkgconfig-version;">
+
+<!ENTITY cpio-version   "2.5">
+<!ENTITY cpio-package   "cpio-&cpio-version;.tar.gz">
+<!ENTITY cpio-directory "cpio-&cpio-version;">
+
+<!ENTITY mc-version   "4.6.0">
+<!ENTITY mc-package   "mc-&mc-version;.tar.gz">
+<!ENTITY mc-directory "mc-&mc-version;">

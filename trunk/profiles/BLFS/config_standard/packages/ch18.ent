@@ -1,0 +1,42 @@
+<!--************* packages for chapter 18 *************-->
+
+<!ENTITY ncftp-version   "3.1.7">
+<!ENTITY ncftp-package   "ncftp-&ncftp-version;-src.tar.bz2">
+<!ENTITY ncftp-directory "ncftp-&ncftp-version;">
+
+<!ENTITY cvs-version   "1.11.16">
+<!ENTITY cvs-package   "cvs-&cvs-version;.tar.bz2">
+<!ENTITY cvs-directory "cvs-&cvs-version;">
+
+<!ENTITY wget-version   "1.9.1">
+<!ENTITY wget-package   "wget-&wget-version;.tar.gz">
+<!ENTITY wget-directory "wget-&wget-version;">
+
+<!ENTITY tcpwrappers-version   "7.6">
+<!ENTITY tcpwrappers-package   "tcp_wrappers_&tcpwrappers-version;.tar.gz">
+<!ENTITY tcpwrappers-directory "tcp_wrappers_&tcpwrappers-version;">
+
+<!ENTITY tcpwrappers-shared-libs-plus-plus-patch     "tcp_wrappers-&tcpwrappers-version;-shared-lib-plus-plus.patch">
+
+<!ENTITY portmap-version   "5beta">
+<!ENTITY portmap-package   "portmap_&portmap-version;.tar.gz">
+<!ENTITY portmap-directory "portmap_&portmap-version;">
+
+<!ENTITY portmap-compilation-fixes-patch    "portmap-&portmap-version;-compilation-fixes-2.patch">
+<!ENTITY portmap-glibc-errno-fix-patch    "portmap-&portmap-version;-glibc-errno-fix.patch">
+
+<!ENTITY inetutils-version   "1.4.2">
+<!ENTITY inetutils-package   "inetutils-&inetutils-version;.tar.gz">
+<!ENTITY inetutils-directory "inetutils-&inetutils-version;">
+
+<!ENTITY nfs-utils-version   "1.0.6">
+<!ENTITY nfs-utils-package   "nfs-utils-&nfs-utils-version;.tar.gz">
+<!ENTITY nfs-utils-directory "nfs-utils-&nfs-utils-version;">
+
+<!ENTITY ncpfs-version   "2.2.4">
+<!ENTITY ncpfs-package   "ncpfs-&ncpfs-version;.tar.gz">
+<!ENTITY ncpfs-directory "ncpfs-&ncpfs-version;">
+
+<!ENTITY ntp-version   "4.2.0">
+<!ENTITY ntp-package   "ntp-&ntp-version;.tar.gz">
+<!ENTITY ntp-directory "ntp-&ntp-version;">

@@ -1,0 +1,28 @@
+<!--************* packages for chapter 10 *************-->
+
+<!ENTITY bc-version   "1.06">
+<!ENTITY bc-package   "bc-&bc-version;.tar.gz">
+<!ENTITY bc-directory "bc-&bc-version;">
+
+<!ENTITY bc-flex-invocation-patch    "bc-&bc-version;-flex_invocation-1.patch">
+<!ENTITY bc-readline-patch    "bc-&bc-version;-readline-1.patch">
+
+<!ENTITY rep-gtk-version   "0.18">
+<!ENTITY rep-gtk-package   "rep-gtk-&rep-gtk-version;.tar.gz">
+<!ENTITY rep-gtk-directory "rep-gtk-&rep-gtk-version;">
+
+<!ENTITY rep-gtk-gtk2.4-patch    "rep-gtk-&rep-gtk-version;-gtk2.4.patch">
+
+<!ENTITY compface-version   "1.4">
+<!ENTITY compface-package   "compface-&compface-version;.tar.gz">
+<!ENTITY compface-directory "compface-&compface-version;">
+
+<!ENTITY compface-errno-2-patch     "compface-&compface-version;-errno-2.patch">
+
+<!ENTITY imagemagick-version   "5.5.7-16">
+<!ENTITY imagemagick-package   "ImageMagick-&imagemagick-version;.tar.bz2">
+<!ENTITY imagemagick-directory "ImageMagick-&imagemagick-version;">
+
+<!ENTITY hd2u-version   "0.9.0">
+<!ENTITY hd2u-package   "hd2u-&hd2u-version;.tar.gz">
+<!ENTITY hd2u-directory "hd2u-&hd2u-version;">
