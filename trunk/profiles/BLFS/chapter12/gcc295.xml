@@ -60,9 +60,6 @@ ln -sf $IL /usr/lib/libstdc++-libc6.3-2.so.3" />
 	<stage name="Cleanup">
 		<remove>&build_dir;/&gcc295-directory;</remove>
 		<remove>&build_dir;/gcc-build</remove>
-		<remove>&build_dir;/&gcc295-patch1;</remove>
-		<remove>&build_dir;/&gcc295-patch2;</remove>
-		<remove>&build_dir;/&gcc295-patch3;</remove>
 	</stage>
 
 </package>

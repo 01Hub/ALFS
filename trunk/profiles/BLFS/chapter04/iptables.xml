@@ -26,8 +26,8 @@
 		</make>
 
 
-	<!-- set-up for personnal firewall -->
-	<!-- other set-ups are available in the Book -->
+	<!-- setup for personal firewall -->
+	<!-- other setups are available in the book -->
 
 		<textdump base="/etc/rc.d/init.d">
 			<file>firewall</file>

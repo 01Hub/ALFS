@@ -34,7 +34,6 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&freetype-directory;</remove>
-		<remove>&build_dir;/&freetype-bytecode-interpreter-patch;</remove>
 	</stage>
 
 </package>

@@ -31,7 +31,6 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&compface-directory;</remove>
-		<remove>&build_dir;/&compface-errno-2-patch;</remove>
 	</stage>
 
 </package>

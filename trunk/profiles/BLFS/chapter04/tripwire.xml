@@ -41,14 +41,41 @@
 
 		<!-- the following commands are for automating the build of tripwire, these command are not in the book -->
 
-		<execute command="sed -i 's%TWMAILMETHOD=SENDMAIL%#&amp;%' install.cfg" />
-		<execute command="sed -i 's%TWMAILPROGRAM%#&amp;%' install.cfg" />
+		<search_replace>
+			<file>install.cfg</file>
+			<find>TWMAILMETHOD=SENDMAIL</find>
+			<replace>#TWMAILMETHOD=SENDMAIL</replace>
+		</search_replace>
 
-		<execute command="sed -i 's%# TWMAILMETHOD=SMTP%TWMAILMETHOD=SMTP%' install.cfg" />
-		<execute command="sed -i 's%# TWSMTPHOST=&quot;mail.domain.com&quot;%TWSMTPHOST=&quot;&tripwire-mail-domain;&quot;%' install.cfg" />
-		<execute command="sed -i 's%# TWSMTPPORT=25%TWSMTPPORT=&tripwire-smtp-port;%' install.cfg" />
+		<search_replace>
+			<file>install.cfg</file>
+			<find>TWMAILPROGRAM</find>
+			<replace>#TWMAILPROGRAM</replace>
+		</search_replace>
 
-		<execute command="./install.sh -n -s &quot;&tripwire-sitepassphrase;&quot; -l &quot;&tripwire-localpassphrase;&quot;" />
+		<search_replace>
+			<file>install.cfg</file>
+			<find># TWMAILMETHOD=SMTP</find>
+			<replace>TWMAILMETHOD=SMTP</replace>
+		</search_replace>
+
+		<search_replace>
+			<file>install.cfg</file>
+			<find># TWSMTPHOST=&quot;mail.domain.com&quot;</find>
+			<replace>TWSMTPHOST=&quot;&tripwire-mail-domain;&quot;</replace>
+		</search_replace>
+
+		<search_replace>
+			<file>install.cfg</file>
+			<find># TWSMTPPORT=25</find>
+			<replace>TWSMTPPORT=&tripwire-smtp-port;</replace>
+		</search_replace>
+
+		<execute command="./install.sh">
+			<param>-n</param>
+			<param>-s &quot;&tripwire-sitepassphrase;&quot;</param>
+			<param>-l &quot;&tripwire-localpassphrase;&quot;</param>
+		</execute>
 	
 		<copy>
 			<source>/etc/tripwire/tw.cfg</source>
@@ -66,11 +93,14 @@
 		</copy>
 
 		<execute command="twadmin">
-			<param>-m P -Q &tripwire-sitepassphrase; /etc/tripwire/&tripwire-policy-file;</param>
+			<param>-m P</param>
+			<param>-Q &tripwire-sitepassphrase;</param>
+			<param>/etc/tripwire/&tripwire-policy-file;</param>
 		</execute>
 
 		<execute command="tripwire">
-			<param>-m i -P &tripwire-localpassphrase;</param>
+			<param>-m i</param>
+			<param>-P &tripwire-localpassphrase;</param>
 		</execute>
 
 	</stage>
@@ -78,7 +108,6 @@
 
 	<stage name="Clean-Up">
 		<remove>&build_dir;/&tripwire-package;</remove>
-		<remove>&build_dir;/&tripwire-gcc-patch;</remove>
 		<remove>&build_dir;/&tripwire-policy-file;</remove>
 	</stage>
 

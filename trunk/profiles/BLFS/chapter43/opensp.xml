@@ -120,7 +120,6 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&opensp-directory;</remove>
-		<remove>&build_dir;/&opensp-patch;</remove>
 	</stage>
 
 </package>

@@ -37,7 +37,6 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&libpng-directory;</remove>
-		<remove>&build_dir;/&libpng-link-to-proper-libs-patch;</remove>
 	</stage>
 
 

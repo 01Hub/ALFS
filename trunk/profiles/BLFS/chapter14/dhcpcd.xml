@@ -60,7 +60,6 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&dhcpcd-directory;</remove>
-		<remove>&build_dir;/&dhcpcd-patch;</remove>
 		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
 	</stage>
 

@@ -43,8 +43,6 @@
 
     <stage name="Cleanup">
 	<remove>&build_dir;/&wvstreams-directory;</remove>
-	<remove>&build_dir;/&wvstreams-wvcrypto-patch;</remove>
-	<remove>&build_dir;/&wvstreams-wvresolver-patch;</remove>
     </stage>
 
 </package>

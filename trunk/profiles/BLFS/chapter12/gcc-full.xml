@@ -75,7 +75,6 @@
 	<stage name="Cleanup">
 		<remove>&build_dir;/&gcc-full-directory;</remove>
 		<remove>&build_dir;/gcc-build</remove>
-		<remove>&build_dir;/&gcc-full-patch1;</remove>
 		<remove>/opt/gnat</remove>
 	</stage>
 

@@ -37,7 +37,6 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&rep-gtk-directory;</remove>
-		<remove>&build_dir;/&rep-gtk-gtk2.4-patch;</remove>
 	</stage>
 
 </package>

@@ -32,7 +32,6 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&svgalib-directory;</remove>
-		<remove>&build_dir;/&svgalib-gcc3-1-patch;</remove>
 	</stage>
 
 </package>

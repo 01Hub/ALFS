@@ -59,7 +59,6 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&pine-directory;</remove>
-		<remove>&build_dir;/&pine-patch;</remove>
 	</stage>
 
 </package>
