@@ -32,10 +32,6 @@
 			<base>&build_dir;/glibc-build</base>
 		</stageinfo>
 
-		<execute command="touch">
-			<param>/etc/ld.so.conf</param>
-		</execute>
-
 		<patch base="&build_dir;/&glibc-directory;">
 			<param>-N</param>
 			<param>-p1</param>
@@ -55,6 +51,10 @@
 		<make>
 			<param>check</param>
 		</make>
+
+		<execute command="touch">
+			<param>/etc/ld.so.conf</param>
+		</execute>
 
 		<make>
 			<param>install</param>
