@@ -1,8 +1,8 @@
 <!--************* packages for chapter 43 *************-->
 
-<!ENTITY sgml-common-version   "0.6.3">
-<!ENTITY sgml-common-package   "sgml-common-&sgml-common-version;.tgz">
-<!ENTITY sgml-common-directory "sgml-common-&sgml-common-version;">
+<!ENTITY sgml-common-version       "0.6.3">
+<!ENTITY sgml-common-package       "sgml-common-&sgml-common-version;.tar.bz2">
+<!ENTITY sgml-common-directory     "sgml-common-&sgml-common-version;">
 <!ENTITY sgml-common-manpage-patch "sgml-common-&sgml-common-version;-manpage-1.patch">
 
 <!ENTITY sgml-dtd31-version   "3.1">
@@ -13,21 +13,20 @@
 <!ENTITY sgml-dtd-package   "docbook-&sgml-dtd-version;.zip">
 <!ENTITY sgml-dtd-directory "docbook-&sgml-dtd-version;">
 
-<!ENTITY opensp-version   "1.5.1">
-<!ENTITY opensp-package   "OpenSP-&opensp-version;.tar.gz">
-<!ENTITY opensp-directory "OpenSP-&opensp-version;">
+<!ENTITY opensp-version      "1.5.1">
+<!ENTITY opensp-package      "OpenSP-&opensp-version;.tar.bz2">
+<!ENTITY opensp-directory    "OpenSP-&opensp-version;">
 <!ENTITY opensp-litlen-patch "OpenSP-&opensp-version;-LITLEN-1.patch">
-<!ENTITY opensp-gcc34-patch "OpenSP-&opensp-version;-gcc34-1.patch">
+<!ENTITY opensp-gcc34-patch  "OpenSP-&opensp-version;-gcc34-1.patch">
 
 <!ENTITY openjade-version   "1.3.2">
-<!ENTITY openjade-package   "openjade-&openjade-version;.tar.gz">
+<!ENTITY openjade-package   "openjade-&openjade-version;.tar.bz2">
 <!ENTITY openjade-directory "openjade-&openjade-version;">
 
 <!ENTITY docbook-dsssl-version   "1.78">
-<!ENTITY docbook-dsssl-package   "docbook-dsssl-&docbook-dsssl-version;.tar.gz">
+<!ENTITY docbook-dsssl-package   "docbook-dsssl-&docbook-dsssl-version;.tar.bz2">
 <!ENTITY docbook-dsssl-directory "docbook-dsssl-&docbook-dsssl-version;">
 
-<!ENTITY docbook-utils-version "0.6.14">
-<!ENTITY docbook-utils-package "docbook-utils-&docbook-utils-version;.tar.gz">
+<!ENTITY docbook-utils-version   "0.6.14">
+<!ENTITY docbook-utils-package   "docbook-utils-&docbook-utils-version;.tar.bz2">
 <!ENTITY docbook-utils-directory "docbook-utils-&docbook-utils-version;">
-

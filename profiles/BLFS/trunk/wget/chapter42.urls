@@ -1,3 +1,4 @@
-ftp://ftp.sane-project.org/pub/sane/sane-backends-1.0.15/sane-backends-1.0.15.tar.gz
-ftp://ftp.sane-project.org/pub/sane/sane-frontends-1.0.13/sane-frontends-1.0.13.tar.gz
-ftp://ftp.sane-project.org/pub/sane/xsane-0.97.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/sane-backends-1.0.15.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/sane-frontends-1.0.13.tar.bz2
+
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/xsane-0.97.tar.bz2

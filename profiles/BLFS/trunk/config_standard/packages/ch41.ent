@@ -5,20 +5,20 @@
 <!ENTITY cups-directory "cups-&cups-version;">
 
 <!ENTITY lprng-version   "3.8.26">
-<!ENTITY lprng-package   "LPRng-&lprng-version;.tgz">
+<!ENTITY lprng-package   "LPRng-&lprng-version;.tar.bz2">
 <!ENTITY lprng-directory "LPRng-&lprng-version;">
 
 <!ENTITY afplghostscript-version   "8.14">
 <!ENTITY afplghostscript-package   "ghostscript-&afplghostscript-version;.tar.bz2">
 <!ENTITY afplghostscript-directory "ghostscript-&afplghostscript-version;">
 
-<!ENTITY ghostscript-fonts1 "ghostscript-fonts-std-8.11.tar.gz">
-<!ENTITY ghostscript-fonts2 "gnu-gs-fonts-other-6.0.tar.gz">
-
 <!ENTITY espghostscript-version   "7.07.1">
 <!ENTITY espghostscript-package   "espgs-&espghostscript-version;-source.tar.bz2">
 <!ENTITY espghostscript-directory "espgs-&espghostscript-version;">
 
+<!ENTITY ghostscript-fonts1 "ghostscript-fonts-std-8.11.tar.bz2">
+<!ENTITY ghostscript-fonts2 "ghostscript-gnu-gs-fonts-other-6.0.tar.bz2">
+
 <!ENTITY gimp-print-version   "4.2.7">
-<!ENTITY gimp-print-package   "gimp-print-&gimp-print-version;.tar.gz">
+<!ENTITY gimp-print-package   "gimp-print-&gimp-print-version;.tar.bz2">
 <!ENTITY gimp-print-directory "gimp-print-&gimp-print-version;">
