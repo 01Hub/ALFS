@@ -76,7 +76,7 @@
 				=set backspace=2
 				=syntax on
 				=
-				=if (&amp;term == "iterm") || (&amp;term == "putty")
+				=if (&real-amp;term == "iterm") || (&real-amp;term == "putty")
 				=  set background=dark
 				=endif
 				=

@@ -10,7 +10,7 @@
 <stage name="Adding the LFS User">
 	<execute command="groupadd -f lfs" />
 	
-	<execute command="id -u &lfs-user; &amp;> /dev/null || useradd -s /bin/bash -g lfs -m -k /dev/null &lfs-user;" />
+	<execute command="id -u &lfs-user; &real-amp;> /dev/null || useradd -s /bin/bash -g lfs -m -k /dev/null &lfs-user;" />
 
 	<execute command="echo &lfs-user;:&lfs-password; | chpasswd" />
 
