@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<chapter id="chapter-functions" xreflabel="Chapter 3">
+<?dbhtml dir="chapter03"?>
+<title>Specific Functional Requirements</title>
+<?dbhtml filename="chapter03.html"?>
+
+	<section id="ch-functions-functions">
+		<title>Functionality</title>
+
+		<section id="ch-functions-validation">
+			<title>Profile Validation &amp; Processing</title>
+
+			<para><quote>alfs</quote> will fully support both XML profile
+			      validation and processing.  Validation is the method by which
+			      an XML document (in our case a profile) is proved to fully
+			      conform to the <quote>alfs</quote> XML Schema and is also
+			      therefore well-formed XML.  Processing is the method by which
+			      a system takes a valid XML document and separates it into
+			      useful pieces.  <quote>alfs</quote> needs both fully valid XML
+			      profiles and powerful processing capabilities to function
+			      correctly.  <quote>alfs</quote> will support both GUI and
+			      command line support for validating a profile.
+			</para>
+
+			<para>As part of the validation process, <quote>alfs</quote> will
+			      also support the capability to check all packages referenced
+			      in a profile against their md5sums before build time.
+			</para>
+		</section>
+
+		<section>
+			<title>Conditional Execution</title>
+			<para>To make <quote>alfs</quote> the premier LFS build tool, there
+			      has to be a way to handle conditions.  Not every system is
+			      static and if the tool is going to be able to handle
+			      cross-building and other advanced features, then conditional
+			      execution is a firm requirement.
+			</para>
+		</section>
+
+		<section>
+			<title>Package Management Functions</title>
+
+			<para><quote>alfs</quote> will support basic package management type
+		          functions.  These will include dependency resolution,
+			      uninstallation, reinstallation, proper umask support, etc.
+			      The GUI will also support a feature to allow a person to query
+			      on what is installed on a system, look at dependency trees for
+			      a certain package (e.g. what has been installed and what needs
+			      to be installed), and provide full details on a package's
+			      installation.
+			</para>
+		</section>
+
+		<section>
+			<title>Logging</title>
+
+			<para>As mentioned above, <quote>alfs</quote> will support logging
+			      the actions carried out during the installation of a package.
+			      The logging facility is geared towards the package management
+			      type functions, but also lends itself well to gathering
+			      details on SBU data, iterative comparison of builds and other
+			      such things that LFSers are interested in.  The idea of the
+			      logging facility is to provide a single source of log type
+			      data from an entire build process.  The logging facility must
+			      also support being able to compare different installations of
+			      the same package.
+			</para>
+		</section>
+
+		<section>
+			<title>Split of Front End and Back End</title>
+
+			<para><quote>alfs</quote> will support a seperation of front and
+			      back end.  The back end (daemon) is the process that does all
+				  the hard grunt work and the client (user interface) is just a
+			      smaller application that connects to and manipulates a running
+			      daemon.  The <quote>alfs</quote> daemon will run on the target
+			      box (i.e. the one that you want a new LFS system to be
+			      installed on).  The daemon will run as a service on a box and
+			      will have access to stateful information like profile logs,
+			      XML validation and processing code, etc.  It will not provide
+				  a GUI.
+			</para>
+
+			<para>The front end will provide a user interface.  It will connect
+			      to the daemon (either on the same box, or from a remote one).
+			      It will be responsible for telling the daemon what profile to
+			      load and what to do with it (e.g. validate it, run it, select
+			      only a section to run, look at and analyze a log, etc.)
+			</para>
+
+			<para>For the implementation of a front-end/back-end architecture, a
+			      clearly defined and supportable communication protocol is
+			      required.  The only requirement is that it needs to be one in
+			      use today in the rest of the world.  We do not want to create 
+			      our own when so many already exist to choose from.
+			</para>
+		</section>
+
+		<section>
+			<title>General GUI Features</title>
+			<itemizedlist>
+				<listitem><para>Marking (highlighting) different interesting
+				          elements.</para>
+				</listitem>
+
+				<listitem><para>Support for interactive commands in
+				          &lt;execute&gt;</para>
+				</listitem>
+
+				<listitem><para>Enumerate all screen parts for coloring</para>
+				</listitem>
+
+				<listitem><para>Support for configuring colors</para></listitem>
+
+				<listitem><para>Progress indicator when downloading files</para>
+				</listitem>
+
+				<listitem><para>Command for checking archives and
+				          &lt;unpack&gt;'s URLs</para>
+				</listitem>
+
+				<listitem><para>Performing an action on all marked elements
+				          </para>
+				</listitem>
+
+				<listitem><para>Editing and reloading .nALFSrc from the program
+				          </para>
+				</listitem>
+
+				<listitem><para>Flag to silently ignore failure</para>
+				</listitem>
+			</itemizedlist>
+		</section>
+	</section>
+
+	<section>
+		<title>Usability</title>
+		<section>
+			<title>Internationalization</title>
+			<para>The LFS community is made up of many people from many
+			      nationalities.  <quote>alfs</quote> will support displaying
+			      messages to the user in their native language.
+			</para>
+		</section>
+	</section>
+
+	<section>
+		<title>Reliability</title>
+		<para></para>
+	</section>
+
+	<section>
+		<title>Performance</title>
+		<para></para>
+	</section>
+
+	<section>
+		<title>Supportability</title>
+		<para></para>
+	</section>
+
+	<section>
+		<title>Design Constraints</title>
+		<para></para>
+	</section>
+
+	<section>
+		<title>User Documentation and Help System Requirements</title>
+
+		<para>As with any good application, documentation and help facilities
+		      will exist for alfs. The following documents will be made
+		      available to users:
+		</para>
+
+		<itemizedlist>
+			<listitem><para>alfs schema guide</para></listitem>
+			<listitem><para>alfs-ui user guide</para></listitem>
+			<listitem><para>alfsd user guide</para></listitem>
+			<listitem><para>lfs developers' guide</para></listitem>
+		</itemizedlist>
+	</section>
+
+	<section>
+		<title>Purchased Components</title>
+		<para><quote>alfs</quote> is an open-source tool and as such will use
+		      absolutely no purchased components.  Everything that alfs will
+		      need is already available in an OSS format.
+		</para>
+	</section>
+
+	<section>
+		<title>Interfaces</title>
+
+		<section>
+			<title>User Interfaces</title>
+			<para></para>
+		</section>
+
+		<section>
+			<title>Hardware Interfaces</title>
+			<para></para>
+		</section>
+
+		<section>
+			<title>Software Interfaces</title>
+			<para></para>
+		</section>
+
+		<section>
+			<title>Communications Interfaces</title>
+			<para></para>
+		</section>
+	</section>
+
+	<section>
+		<title>Licensing Requirements</title>
+		<para><quote>alfs</quote> will be licensed under the GPL.</para>
+
+		<para>All of alfs' documentation will be licensed under the Creative
+		      Commons Attribution-NonCommercial-ShareAlike License (
+		      <ulink url="http://creativecommons.org/licenses/by-nc-sa/2.0/"/>).
+		</para>
+	</section>
+</chapter>
