@@ -8,4 +8,14 @@
 
   <!-- Fix encoding issues with default UTF-8 output of the xhtml stylesheet -->
   <xsl:output method="html" encoding="ISO-8859-1" indent="no" />
+
+  <!-- Point to the CSS file -->
+  <xsl:param name="html.stylesheet" select="'srs.css'"/>
+
+  <!-- Control the TOC generation -->
+  <xsl:param name="generate.toc" select="'book toc'"/>
+
+  <!-- Chapter and section numbering -->
+  <xsl:param name="section.autolabel" select="1"/>
+  <xsl:param name="section.label.includes.component.label" select="1"/>
 </xsl:stylesheet>
