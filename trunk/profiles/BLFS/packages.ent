@@ -404,9 +404,9 @@
 
 <!--************* packages for chapter 17 *************-->
 
-<!ENTITY links-version   "0.98">
-<!ENTITY links-package   "links-0.98.tar.gz">
-<!ENTITY links-directory "links-0.98">
+<!ENTITY links-version   "2.1pre11">
+<!ENTITY links-package   "links-2.1pre11.tar.bz2">
+<!ENTITY links-directory "links-2.1pre11">
 
 <!ENTITY lynx-version   "2.8.4">
 <!ENTITY lynx-package   "lynx2.8.4.tar.bz2">

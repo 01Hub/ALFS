@@ -41,6 +41,10 @@
 		<param>-i ../&wvstreams-wvresolver-patch;</param>
 	</patch>
 
+	<remove>/usr/lib/libwvcrypto.*</remove>
+	<remove>/usr/lib/libwvstreams.*</remove>
+	<remove>/usr/lib/libwvutils.*</remove>
+
 	<make>
 	        <param>PREFIX=/usr</param>
 	        <param>LDFLAGS=-lcrypt</param>

@@ -18,7 +18,6 @@
 
 	<configure>
 	        <param>--prefix=/usr</param>
-		<param>--enable-glib2</param>
 	</configure>
 	
 	<make />

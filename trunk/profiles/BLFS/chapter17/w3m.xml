@@ -1,5 +1,14 @@
 <package name="w3m" version="&w3m-version;">
 
+        <packageinfo>
+                <utilizes><name>gpm</name></utilizes>
+                <utilizes><name>openssl</name></utilizes>
+                <utilizes><name>imlib</name></utilizes>
+                <utilizes><name>imlib2</name></utilizes>
+                <utilizes><name>gdkpixelbuffer</name></utilizes>
+                <utilizes><name>compface</name></utilizes>
+        </packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&w3m-package;</archive>
@@ -30,5 +39,4 @@
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&w3m-directory;</remove>
 	</stage>
-
 </package>
