@@ -282,8 +282,8 @@
 <!ENTITY procps-package "procps-&procps-version;.tar.gz">
 <!ENTITY procps-directory "procps-&procps-version;">
 
-<!ENTITY psmisc-md5 "8449269fdc8ae5d7d494df745e1180d3">
-<!ENTITY psmisc-version "21.4">
+<!ENTITY psmisc-md5 "c62b09ad5129e2f7e4611019d1d3d4b8">
+<!ENTITY psmisc-version "21.5">
 <!ENTITY psmisc-package "psmisc-&psmisc-version;.tar.gz">
 <!ENTITY psmisc-directory "psmisc-&psmisc-version;">
 
