@@ -61,7 +61,7 @@ int parse_profile(const char *filename) {
 
     cur = xmlDocGetRootElement(doc);
 
-    if (cur = NULL) {
+    if (cur == NULL) {
 	fprintf(stderr, "Empty root element.\n");
 	xmlFreeDoc(doc);
 	return (-1);
@@ -85,7 +85,6 @@ int parse_profile(const char *filename) {
 
 int main(int argc, char **argv) {
     int c;
-
 
     while ((c = getopt_long(argc, argv, "hv", long_options, (int *)0)) != EOF) {
 	switch (c) {
