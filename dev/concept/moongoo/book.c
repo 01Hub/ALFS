@@ -6,18 +6,19 @@
 #include <util.h>
 
 command *cmd;
+int num;
 profile *prof;
 replaceable *__r;
-int num;
 
 void t_sect1 (xmlNodePtr node, void *data);
 void process_cmd (char *line, xmlNodePtr node);
 void __t_userinput (xmlNodePtr node, void *data);
 command *t_userinput (xmlNodePtr node, int *n);
+void t_chapter (xmlNodePtr node);
 
 void t_sect1 (xmlNodePtr node, void *data)
 {
-	int i;
+	int i, j;
 	char *title, *tmp;
 		
 	title = find_value(node->children, "title");
@@ -28,19 +29,21 @@ void t_sect1 (xmlNodePtr node, void *data)
 		return;
 	}
 
-	prof->pkg = realloc(prof->pkg, (++prof->n)*sizeof(package));
 	i = prof->n-1;
+	prof->ch[i].pkg = realloc(prof->ch[i].pkg, 
+			(++prof->ch[i].n)*sizeof(package));
+	j = prof->ch[i].n-1;
 	
 	tmp = strdog(lower_case(title), "version");
-	prof->pkg[i].vers = entity_val(tmp);
-	prof->pkg[i].name = strcut(title, 0, strlen(title)-
-		((prof->pkg[i].vers) ? 1 : 0));
-	prof->pkg[i].build = t_userinput(node->children, 
-		&prof->pkg[i].n);
+	prof->ch[i].pkg[j].vers = entity_val(tmp);
+	prof->ch[i].pkg[j].name = strcut(title, 0, strlen(title)-
+		((prof->ch[i].pkg[j].vers) ? 1 : 0));
+	prof->ch[i].pkg[j].build = t_userinput(node->children, 
+		&prof->ch[i].pkg[j].n);
 	free(tmp);
 
-	if (!prof->pkg[i].n)
-		prof->n--;
+	if (!prof->ch[i].pkg[i].n)
+		prof->ch[i].n--;
 }
 
 void process_cmd (char *line, xmlNodePtr node)
@@ -102,12 +105,46 @@ command *t_userinput (xmlNodePtr node, int *n)
 	return cmd;
 }
 
+void t_chapter (xmlNodePtr node)
+{
+	int i = prof->n-1;
+	prof->ch[i].name = xmlGetProp(node, "xreflabel");
+	prof->ch[i].ref = xmlGetProp(node, "id");
+	prof->ch[i].pkg = NULL;
+	prof->ch[i].n = 0;
+	foreach(node->children, "sect1", (xml_handler_t)t_sect1, NULL);
+}
+
 profile *bookasprofile (xmlNodePtr node)
 {
+	xmlNodePtr info = find_node(node, "bookinfo");
 	__r = init_repl(MOO_XML);
+	
 	prof = (profile *)malloc(sizeof(profile));
-	prof->pkg = NULL;
+	prof->name = find_value(info, "title");
+	prof->vers = find_value(info, "subtitle");
+	prof->vers = strcut(prof->vers, strlen("Version"), strlen(prof->vers));
+	prof->ch = NULL;
 	prof->n = 0;
-	foreach(node, "sect1", (xml_handler_t)t_sect1, NULL);
+	
+	node = node->children;
+	while (node)
+	{
+		if (!strcmp(node->name, "part"))
+		{
+			xmlNodePtr cur = node->children;
+			while (cur)
+			{
+				if (!strcmp(cur->name, "chapter"))
+				{
+					prof->ch = realloc(prof->ch, (++prof->n)*sizeof(chapter));
+					t_chapter(cur);
+				}
+				cur=cur->next;
+			}
+		}
+		node=node->next;
+	}
+	
 	return prof;
 }

@@ -19,30 +19,35 @@ typedef enum
 
 typedef struct
 {
-	char *cmd;
-	char **arg;
+	char *cmd, **arg;
 	int n;
 	role role;
 } command;
 
 typedef struct
 {
-	char *name;
-	char *vers;
+	char *name, *vers;
 	command *build;
 	int n;
 } package;
 
 typedef struct
 {
+	char *name, *ref;
 	package *pkg;
+	int n;
+} chapter;
+
+typedef struct
+{
+	char *name, *vers;
+	chapter *ch;
 	int n;
 } profile;
 
 typedef struct
 {
-	char *orig;
-	char *repl;
+	char *orig, *repl;
 } replaceable;
 
 extern xmlDocPtr doc;
@@ -52,6 +57,8 @@ typedef void (*xml_handler_t) (xmlNodePtr node, void *data);
 void print_subtree (xmlNodePtr node);
 void print_pkg (package pkg);
 void print_cmd (command cmd);
+void print_chapter (chapter ch);
+void print_profile (profile prof);
 
 void resolve_entities (xmlNodePtr node);
 void foreach (xmlNodePtr node, char *str, xml_handler_t func, void *data);
