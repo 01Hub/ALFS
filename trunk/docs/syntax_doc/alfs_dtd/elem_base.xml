@@ -18,9 +18,11 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>base</filename> is used to specify the base directory
-which will be used by all the commands in the stage, unless another
-base is specified at the level of the command as an attribute. See also&nbsp;:&nbsp;&nbsp;
+<para>The element <filename>base</filename> is used to specify the base
+directory which will be used by all the commands in the stage (inherited),
+unless another base is specified at the level of the command as an attribute.
+See also&nbsp;:&nbsp;&nbsp;
+
 <xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
