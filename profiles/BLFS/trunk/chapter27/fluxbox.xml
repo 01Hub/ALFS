@@ -27,15 +27,8 @@
       <stageinfo>
         <base>&build_dir;/&fluxbox-directory;</base>
       </stageinfo>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&fluxbox-gcc33-patch;</param>
-      </patch>
       <configure>
         <param>--prefix=/usr</param>
-        <param>--enable-kde</param>
-        <param>--enable-gnome</param>
       </configure>
       <make />
       <make>
