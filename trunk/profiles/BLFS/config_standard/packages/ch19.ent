@@ -13,5 +13,5 @@
 <!ENTITY whois-directory "whois-&whois-version;">
 
 <!ENTITY bind-utils-version "9.2.3">
-<!ENTITY bind-utils-package "bind-&bind-version;.tar.gz">
+<!ENTITY bind-utils-package "bind-&bind-utils-version;.tar.gz">
 <!ENTITY bind-utils-directory "bind-&bind-utils-version;">

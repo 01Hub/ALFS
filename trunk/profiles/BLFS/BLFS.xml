@@ -212,51 +212,53 @@
 
 <stage name="Chapter 16 (Networking Libraries)">
 
-    &curl;
-    &wvstreams;
-    &gnet;
-    &libsoup;
+    <xi:include href="chapter16/curl.xml" />
+    <xi:include href="chapter16/wvstreams.xml" />
+    <xi:include href="chapter16/gnet.xml" />
+    <xi:include href="chapter16/libsoup.xml" />
 
 </stage>
 
 <stage name="Chapter 17 (Text Web Browsers)">
 
-    &links;
-    &lynx;
-    &w3m;
+    <xi:include href="chapter17/links.xml" />
+    <xi:include href="chapter17/lynx.xml" />
+    <xi:include href="chapter17/w3m.xml" />
 
 </stage>
 
 
 <stage name="Chapter 18 (Basic Networking Programs)">
 
-    &ncftp;
-    &cvs;
-    &wget;
-    &tcpwrappers;
-    &portmap;
-    &inetutils;
-    &ntp;
+    <xi:include href="chapter18/ncftp.xml" />
+    <xi:include href="chapter18/cvs.xml" />
+    <xi:include href="chapter18/wget.xml" />
+    <xi:include href="chapter18/tcpwrappers.xml" />
+    <xi:include href="chapter18/portmap.xml" />
+    <xi:include href="chapter18/inetutils.xml" />
+    <xi:include href="chapter18/nfs-utils.xml" />
+    <xi:include href="chapter18/ncpfs.xml" />
+    <xi:include href="chapter18/ntp.xml" />
 
 </stage>
 
 <stage name="Chapter 19 (Basic Networking Utilities)">
 
-    &traceroute;
-    &nmap;
-    &whois;
-    &bind-utils;
+    <xi:include href="chapter19/traceroute.xml" />
+    <xi:include href="chapter19/nmap.xml" />
+    <xi:include href="chapter19/whois.xml" />
+    <xi:include href="chapter19/bind-utils.xml" />
 
 </stage>
 
 <stage name="Chapter 20 (Mail/News Clients)">
 
-    &nail;
-    &procmail;
-    &fetchmail;
-    &mutt;
-    &pine;
-    &slrn;
+    <xi:include href="chapter20/nail.xml" />
+    <xi:include href="chapter20/procmail.xml" />
+    <xi:include href="chapter20/fetchmail.xml" />
+    <xi:include href="chapter20/mutt.xml" />
+    <xi:include href="chapter20/pine.xml" />
+    <xi:include href="chapter20/slrn.xml" />
 
 </stage>
 
