@@ -155,14 +155,23 @@ static int parse_node_parameters(xmlNodePtr node, element_s *element)
 					       (const char *) child->name);
 
 		if (param) {
+			xmlChar *xml_content = NULL;
 			const char *content = NULL;
 			xmlNodePtr free_child;
 
-			if (child->children && child->children->content)
-				content = (const char *) child->children->content;
+			if (child->children &&
+			    child->children->type == XML_TEXT_NODE &&
+			    child->children->next == NULL)
+				xml_content = xmlNodeGetContent(child);
 
-			if (content && !param->untrimmed)
-				content = alloc_trimmed_str(content);
+			if (xml_content) {
+				if (param->untrimmed) {
+					content = xstrdup(xml_content);
+				} else {
+					content = alloc_trimmed_str(xml_content);
+				}
+				xmlFree(xml_content);
+			}
 
 			if (!param->content_optional && (!content ||
 							 (strlen(content) == 0))) {
@@ -172,8 +181,7 @@ static int parse_node_parameters(xmlNodePtr node, element_s *element)
 				result = handler->parameter(element, param, content);
 			}
 
-			if (content && !param->untrimmed)
-				xfree(content);
+			xfree(content);
 
 			if (result)
 				return result;
