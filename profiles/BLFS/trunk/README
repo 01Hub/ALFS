@@ -2,12 +2,15 @@
                      BLFS-svn Profile
 ===========================================================
 
-We recommend that you read this README completely before
-you start using the profile.
+Note: We recommend that you read this README completely
+before you start using the profile.
 
 This profile contains the instructions to automatically
 build the packages of the BLFS book. It is expected to be
-used on your LFS system.
+used on an LFS system.
+
+Configuring the profile:
+========================
 
 There are some configuration files that must be customized
 before you can create your BLFS installation. These are:
@@ -17,6 +20,9 @@ before you can create your BLFS installation. These are:
  - all files in ./config_standard/{etc,home,root,x} and
    subdirectories. Things you need to configure are marked
    with exclamation marks, !like this!.
+
+Running the profile:
+====================
 
 To use the profile you should:
 
