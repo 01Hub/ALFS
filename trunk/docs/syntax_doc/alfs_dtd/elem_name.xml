@@ -6,16 +6,22 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT name           (#PCDATA)>
+&lt;!ELEMENT name           (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_link">link</link>,
-<link linkend="elem_mkdir">mkdir</link>,
-<link linkend="elem_ownership">ownership</link>,
-<link linkend="elem_permissions">permissions</link>,
-<link linkend="elem_requires">requires</link>.
-and <link linkend="elem_utilizes">utilizes</link>.
+<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_link"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_mkdir"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_ownership"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_permissions"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_requires"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_utilizes"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_package"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_variable"/>
 </para>
 
 </sect2>
@@ -23,7 +29,7 @@ and <link linkend="elem_utilizes">utilizes</link>.
 <sect2>
 <title>Description</title>
 
-<para>The element <token>name</token> is used to specify a name for
+<para>The element <filename>name</filename> is used to specify a name for
 some commands that requires it.</para>
 
 </sect2>
@@ -31,20 +37,16 @@ some commands that requires it.</para>
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;mkdir base="/usr/local/lib">
-   &lt;option>parents&lt;/option>
-   &lt;name>X11&lt;/name>
-&lt;/mkdir>
-</programlisting>
+<userinput><screen>&lt;mkdir base=&quot;/usr/local/lib&quot;&gt;
+	&lt;option&gt;parents&lt;/option&gt;
+	&lt;name&gt;X11&lt;/name&gt;
+&lt;/mkdir&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-cd /usr/local/lib
+<userinput><screen>cd /usr/local/lib
 echo Making directory X11
-mkdir -p X11
-</programlisting>
+<command>mkdir -p X11</command></screen></userinput>
 
 </sect2>
 

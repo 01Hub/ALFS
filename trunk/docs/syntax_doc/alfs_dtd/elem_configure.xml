@@ -6,20 +6,18 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT configure     ((param | prefix)*)&gt;
+&lt;!ELEMENT configure      ((param | prefix)*)&gt;
 &lt;!ATTLIST configure
-          base            CDATA #IMPLIED
-          command         CDATA #IMPLIED&gt;
+          base           CDATA #IMPLIED
+          command        CDATA #IMPLIED&gt;
 </synopsis>
 
 <para>This element is an element of&nbsp;:&nbsp;&nbsp;
-
 <xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_stage"/>
 </para>
 
 <para>See also&nbsp;:&nbsp;&nbsp;
-
 <xref linkend="elem_param"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_prefix"/>
 </para>
@@ -33,7 +31,7 @@
 operation elements. The element <filename>configure</filename> is used to
 describe the command <command>configure</command>.</para>
 
-<para>Notice that all the elements <filename>param</filename> and
+<para>Notice that the elements <filename>param</filename> and
 <filename>prefix</filename> are surrounded by parathensis
 [&nbsp;(&nbsp;)&nbsp;] and followed by an asterisk [&nbsp;*&nbsp;]. The
 asterisk signifies that each element can be used optionally inside the
@@ -41,15 +39,16 @@ asterisk signifies that each element can be used optionally inside the
 they can be used more than once.</para>
 
 <para>When processing the element, one executes the command
-<command>./configure</command> with the parameter(s) and prefix(es) specified.</para>
+<command>./configure</command> with the parameter(s) and prefix(es)
+specified.</para>
 
 <para>The attribute <filename>base</filename> allows you to specify the
 directory in which the command is executed. See
-<xref linkend="elem_base"/>.</para>
+<xref xrefend="elem_base"/>.</para>
 
 <para>The attribute <filename>command</filename> allows you to specify a
-custom command if you doen't want to use the default
-<command>./configure</command>. This is extremely usefull when running
+custom command if you don't want to use the default
+<command>./configure</command>. This is extremely useful when running
 <command>./configure</command> in a build directory outside the main source
 directory.  The packages <filename>gcc</filename> and
 <filename>glibc</filename> often require this.</para>
@@ -59,21 +58,20 @@ directory.  The packages <filename>gcc</filename> and
 <sect2>
 <title>Examples</title>
 
-<para>This example calls to <filename>configure</filename> without any
-parameters :</para>
+<para>This example calls <filename>configure</filename> without any
+parameters&nbsp;:</para>
 
 <screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
-&lt;/configure&gt;
-</userinput></screen>
+&lt;/configure&gt;</userinput></screen>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
 <screen><userinput>echo Executing configure
 cd /usr/src/mypackage/
 <command>./configure</command></userinput></screen>
 
-<para>This example calls <filename>configure</filename> with a parameter :
-</para>
+<para>This example calls <filename>configure</filename> with a
+parameter&nbsp;: </para>
 
 <screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
 	&lt;prefix&gt;CFLAGS=&quot;...&quot;&lt;prefix&gt;
@@ -81,7 +79,7 @@ cd /usr/src/mypackage/
 	&lt;param&gt;--prefix=/opt/mypackage&lt;/param&gt;
 &lt;/configure&gt;</userinput></screen>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
 <screen><userinput>echo Executing configure
 cd /usr/src/mypackage/
@@ -94,7 +92,7 @@ an explicit command :</para>
 	&lt;param&gt;--prefix=/opt/mypackage&lt;/param&gt;
 &lt;/configure&gt;</userinput></screen>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
 <screen><userinput>echo Executing configure
 cd /usr/src/mypackage/

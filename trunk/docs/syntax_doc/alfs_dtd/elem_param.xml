@@ -6,14 +6,14 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT param          (#PCDATA)>
+&lt;!ELEMENT param          (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the element
-<link linkend="elem_configure">configure</link>,
-<link linkend="elem_execute">execute</link>,
-<link linkend="elem_make">make</link>
-and <link linkend="elem_patch">patch</link>.
+<para>This element occurs in the element&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_execute"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_make"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_patch"/>
 </para>
 
 </sect2>
@@ -21,26 +21,22 @@ and <link linkend="elem_patch">patch</link>.
 <sect2>
 <title>Description</title>
 
-<para>This element is used to specify a parameter of the element
-to which it belongs.</para>
+<para>This element is used to specify a parameter of the element to which
+it belongs.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;make>
-    &lt;param>install&lt;/param>
-&lt;/make>
-</programlisting>
+<userinput><screen>&lt;make&gt;
+	&lt;param&gt;install&lt;/param&gt;
+&lt;/make&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-echo Executing make
-make install
-</programlisting>
+<userinput><screen>echo Executing make
+<command>make install</command></screen></userinput>
 
 </sect2>
 

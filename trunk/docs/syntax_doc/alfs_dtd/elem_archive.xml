@@ -6,10 +6,10 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT archive     (#PCDATA)&gt;
+&lt;!ELEMENT archive        (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the&nbsp;
+<para>This element occurs in the element&nbsp;:&nbsp;&nbsp;
 <xref linkend="elem_unpack"/>.
 </para>
 
@@ -31,11 +31,11 @@ in an <filename>unpack</filename> operation.</para>
 	&lt;destination&gt;/usr/src&lt;/destination&gt;
 &lt;/unpack&gt;</userinput></screen>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
 <screen><userinput>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
 cd /usr/src
-<command>tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></userinput></screen>
+<command>tar -xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></userinput></screen>
 
 </sect2>
 

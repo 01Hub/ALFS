@@ -6,22 +6,20 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT move           (option?, source+, destination)>
+&lt;!ELEMENT move           (option?, source+, destination)&gt;
 &lt;!ATTLIST move
-          base           CDATA #IMPLIED>
+             base           CDATA #IMPLIED&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_alfs">alfs</link>,
-<link linkend="elem_alfs">else</link>,
-<link linkend="elem_stage">stage</link>.
-and <link linkend="elem_then">then</link>
+<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 </para>
 
-<para>See also :
-<link linkend="elem_option">option</link>,
-<link linkend="elem_source">source</link>,
-<link linkend="elem_destination">destination</link>.
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_option"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_source"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_destination"/>
 </para>
 
 </sect2>
@@ -29,10 +27,12 @@ and <link linkend="elem_then">then</link>
 <sect2>
 <title>Description</title>
 
-<para>The element <token>move</token> is used to move one or several source
-files and/or directories  into a destination file or directory</para>
+<para>The element <filename>move</filename> is one of the many main
+operation elements. It is used to move one or several source
+files and/or directories into a destination file or directory.</para>
 
-<para>The supported option is an option of the mv command:
+<para>The sub-element <filename>option</filename> is an option of the
+<command>mkdir</command> command:
 <itemizedlist>
 <listitem><para>force</para></listitem>
 </itemizedlist>.
@@ -41,29 +41,33 @@ files and/or directories  into a destination file or directory</para>
 <para>When processing this element, one moves each source
 to the destination, using the specified option if present.</para>
 
-<para>When the attribute <token>base</token> is specified,
-it should contain the name of the current directory
-from which the move operation is performed.
-</para>
+<para>The sub-elements <filename>source</filename> contains the name(s) of
+the directory were the source file is.</para>
+
+<para>The sub-element <filename>destination</filename> contains the name of
+the destination directory for the <command>mv</command> command.</para>
+
+<para>The attribute <filename>base</filename> gives the name of the
+directory in which the new directory will be created.</para>
+
+<para>When the attribute <filename>base</filename> is specified, it should
+contain the name of the current directory from which the move operation is
+performed. </para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;move>
-    &lt;source>/usr/src/mypackage/config.txt&lt;/source>
-    &lt;destination>/opt/mypackage/config.txt&lt;/destination>
-&lt;/move>
-</programlisting>
+<userinput><screen>&lt;move&gt;
+	&lt;source&gt;/usr/src/mypackage/config.txt&lt;/source&gt;
+	&lt;destination&gt;/opt/mypackage/config.txt&lt;/destination&gt;
+&lt;/move&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-echo Move ' /usr/src/mypackage/config.txt /opt/mypackage/config.txt'
-mv  /usr/src/mypackage/config.txt /opt/mypackage/config.txt
-</programlisting>
+<userinput><screen>echo Move ' /usr/src/mypackage/config.txt /opt/mypackage/config.txt'
+<command>mv /usr/src/mypackage/config.txt /opt/mypackage/config.txt</command></screen></userinput>
 
 </sect2>
 

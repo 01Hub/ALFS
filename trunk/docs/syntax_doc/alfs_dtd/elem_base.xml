@@ -6,11 +6,10 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT base     (#PCDATA)&gt;
+&lt;!ELEMENT base           (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the&nbsp;
-
+<para>This element occurs in the element&nbsp;:&nbsp;&nbsp;
 <xref linkend="elem_stageinfo"/>
 </para>
 
@@ -23,7 +22,6 @@
 directory which will be used by all the commands in the stage (inherited),
 unless another base is specified at the level of the command as an attribute.
 See also&nbsp;:&nbsp;&nbsp;
-
 <xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -60,20 +58,18 @@ See also&nbsp;:&nbsp;&nbsp;
 	&lt;/make&gt;
 &lt;/stage&gt;</userinput></screen>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Stage
+<screen><userinput>echo Entering Stage
+cd /usr/src/gzip.1.2.4a
 
 echo Executing configure
-cd /usr/src/gzip.1.2.4a
 <command>./configure</command>
 
 echo Executing make
-cd /usr/src/gzip.1.2.4a
 <command>make</command>
 
 echo Executing make
-cd /usr/src/gzip.1.2.4a
 <command>make install</command>
 
 echo Exiting stage</userinput></screen>

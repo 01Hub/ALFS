@@ -6,10 +6,15 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT prefix     (#PCDATA)&gt;
+&lt;!ELEMENT prefix         (#PCDATA)&gt;
 </synopsis>
 
-<para>PAGE TO BE WRITTEN</para>
+<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_execute"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_make"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_patch"/>
+</para>
 
 </sect2>
 

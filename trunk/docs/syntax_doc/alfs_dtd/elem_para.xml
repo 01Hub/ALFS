@@ -6,12 +6,11 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT para    (#PCDATA)>
+&lt;!ELEMENT para           (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_description">description</link>
-and <link linkend="elem_item">item</link>.
+<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_description"/>
 </para>
 
 </sect2>
@@ -19,41 +18,36 @@ and <link linkend="elem_item">item</link>.
 <sect2>
 <title>Description</title>
 
-<para>The element <token>para</token> contains
-a paragraph of documentary text.</para>
+<para>The element <filename>para</filename> contains a paragraph of
+documentary text.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-    &lt;package name="gimp" version="1.2.3">
-        &lt;packageinfo>
-	        &lt;description>
-                    &lt;para>The gimp package contains the GNU Image
-		    Manipulation Program.
-		    This is useful for photo retouching, image
-		    composition and image authoring.
-		    &lt;/para>
-		&lt;/description>
+<userinput><screen>&lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
+	&lt;packageinfo;&gt;
+		&lt;description;&gt;
+			&lt;para;&gt;The gimp package contains the GNU Image Manipulation Program.
+			This is useful for photo retouching, image composition and image authoring.
+			&lt;/para;&gt;
+		&lt;/description;&gt;
 
-                &lt;requires>gtk+&lt;/requires>
+		&lt;requires;&gt;&lt;name;&gt;gtk+&lt;/name;&gt;&lt;/requires;&gt;
 
-		&lt;utilizes>&lt;name>libtiff&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>libpng&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>libjpeg&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>aalib&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>mpeg_lib&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>python&lt;/name>&lt;/utilizes>
+		&lt;utilizes;&gt;&lt;name;&gt;libtiff&lt;/name;&gt;&lt;/utilizes;&gt;
+		&lt;utilizes;&gt;&lt;name;&gt;libpng&lt;/name;&gt;&lt;/utilizes;&gt;
+		&lt;utilizes;&gt;&lt;name;&gt;libjpeg&lt;/name;&gt;&lt;/utilizes;&gt;
+		&lt;utilizes;&gt;&lt;name;&gt;aalib&lt;/name;&gt;&lt;/utilizes;&gt;
+		&lt;utilizes;&gt;&lt;name;&gt;mpeg_lib&lt;/name;&gt;&lt;/utilizes;&gt;
+		&lt;utilizes;&gt;&lt;name;&gt;python&lt;/name;&gt;&lt;/utilizes;&gt;
 
-        &lt;/required>
+	&lt;/required;&gt;
 
-	....
+	......
 
-    &lt;/package>
-
-</programlisting>
+&lt;/package;&gt;</screen></userinput>
 
 </sect2>
 

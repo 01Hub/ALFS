@@ -6,18 +6,17 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT list    (item|list)+>
+&lt;!ELEMENT list           (item | list)+&gt;
 &lt;!ATTLIST list
-          type           (bullet|number) "bullet">
+          type           (bullet | number) "bullet"&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_description">description</link>
-and <link linkend="elem_list">list</link>.
+<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_description"/>
 </para>
 
-<para>See also :
-<link linkend="elem_item">item</link>.
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_item"/>
 </para>
 
 </sect2>
@@ -25,7 +24,7 @@ and <link linkend="elem_list">list</link>.
 <sect2>
 <title>Description</title>
 
-<para>The element <token>list</token> contains
+<para>The element <filename>list</filename> contains
 a list of items or sub-lists in a description.</para>
 
 </sect2>
@@ -33,36 +32,32 @@ a list of items or sub-lists in a description.</para>
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-    &lt;package name="gimp" version="1.2.3">
-        &lt;packageinfo>
-	        &lt;description>
-                    &lt;para>The gimp package contains the GNU Image
-		    Manipulation Program.
-		    This is useful for :&lt;/para>
-		    &lt;list>
-		    &lt;item>photo retouching,&lt;/item>
-		    &lt;item>image composition,&lt;/item>
-		    &lt;item>image authoring.&lt;/item>
-		    &lt;/list>
-		&lt;/description>
+<userinput><screen>&lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
+	&lt;packageinfo&gt;
+		&lt;description&gt;
+		&lt;para&gt;The gimp package contains the GNU Image Manipulation Program.
+			This is useful for&nbsp;:&lt;/para&gt;
+		&lt;list&gt;
+			&lt;item&gt;photo retouching,&lt;/item&gt;
+			&lt;item&gt;image composition,&lt;/item&gt;
+			&lt;item&gt;image authoring.&lt;/item&gt;
+		&lt;/list&gt;
+		&lt;/description&gt;
 
-                &lt;requires>&lt;name>gtk+&lt;/name>&lt;/requires>
+		&lt;requires&gt;&lt;name&gt;gtk+&lt;/name&gt;&lt;/requires&gt;
 
-		&lt;utilizes>&lt;name>libtiff&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>libpng&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>libjpeg&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>aalib&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>mpeg_lib&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>python&lt;/name>&lt;/utilizes>
+		&lt;utilizes&gt;&lt;name&gt;libtiff&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;libpng&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;libjpeg&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;aalib&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;mpeg_lib&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;python&lt;/name&gt;&lt;/utilizes&gt;
 
-        &lt;/required>
+	&lt;/required&gt;
 
 	....
 
-    &lt;/package>
-
-</programlisting>
+&lt;/package&gt;</screen></userinput>
 
 </sect2>
 

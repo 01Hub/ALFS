@@ -6,14 +6,14 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT variable       (#PCDATA)>
+&lt;!ELEMENT variable       (#PCDATA)&gt;
 &lt;!ATTLIST variable
-          name           CDATA #REQUIRED
-          mode           CDATA #IMPLIED>
+             name           CDATA #REQUIRED
+             mode           CDATA #IMPLIED&gt;
 </synopsis>
 
-<para>This element occurs in the element
-<link linkend="elem_environment">environment</link>.
+<para>This element occurs in the element&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_environment"/>
 </para>
 
 </sect2>
@@ -21,13 +21,13 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>variable</token> allows to add a variable definition to
+<para>The element <filename>variable</filename> allows to add a variable definition to
 the environment.</para>
 
-<para>The name of the variable is given by the attribute <token>name</token>
+<para>The name of the variable is given by the attribute <filename>name</filename>
 of the element.</para>
 
-<para>The attribute <token>mode</token> can take the value <literal>"append"</literal>,
+<para>The attribute <filename>mode</filename> can take the value <literal>"append"</literal>,
 in which case the content of the element is appended to the value of the environment
 variable</para>
 
@@ -39,30 +39,27 @@ element.</para>
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;stage>
-    &lt;stageinfo>
-        &lt;base>/usr/src/gzip.1.2.4a&lt;/base>
-        &lt;environment>
-            &lt;variable name="GCCFLAGS">-O2&lt;/variable>
-	    &lt;variable name="PATH" mode="append">:/opt/foo&lt;/variable>
-        &lt;/environment>
-    &lt;/stageinfo>
+<userinput><screen>&lt;stage&gt;
+	&lt;stageinfo&gt;
+		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
+		&lt;environment&gt;
+			&lt;variable name=&quot;GCCFLAGS&quot;&gt;-O2&lt;/variable&gt;
+			&lt;variable name=&quot;PATH&quot; mode=&quot;append&quot;&gt;:/opt/foo&lt;/variable&gt;
+		&lt;/environment&gt;
+	&lt;/stageinfo&gt;
 
-    &lt;configure />
+	&lt;configure /&gt;
 
-    &lt;make />
+	&lt;make /&gt;
 
-    &lt;make>
-        &lt;param>install&lt;/param>
-    &lt;/make>
-&lt;/stage>
-</programlisting>
+	&lt;make&gt;
+		&lt;param&gt;install&lt;/param&gt;
+	&lt;/make&gt;
+&lt;/stage&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-echo Stage
+<userinput><screen>echo Stage
 
 export GCCFLAGS=-O2
 export PATH=${PATH}:/opt/foo
@@ -78,8 +75,7 @@ echo Executing make
 cd /usr/src/gzip.1.2.4a
 make install
 
-echo Exiting stage
-</programlisting>
+echo Exiting stage</screen></userinput>
 
 </sect2>
 

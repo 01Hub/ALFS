@@ -6,17 +6,17 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT packageinfo    (description?,requires*,utilizes*)>
+&lt;!ELEMENT packageinfo    (description?, requires*, utilizes*)&gt;
 </synopsis>
 
-<para>This element occurs in the element
-<link linkend="elem_package">package</link>.
+<para>This element occurs in the element&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_package"/>
 </para>
 
-<para>See also :
-<link linkend="elem_description">description</link>,
-<link linkend="elem_requires">requires</link>.
-<link linkend="elem_utilizes">utilizes</link>.
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_description"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_requires"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_utilizes"/>
 </para>
 
 </sect2>
@@ -24,59 +24,27 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>packageinfo</token> groups
-elements containg information about the package, namely
-a description and some deopendency relationship.</para>
+<para>The element <filename>packageinfo</filename> groups elements containg
+information about the package, namely a description and some deopendency
+relationship.</para>
 
-<para>The description of the packge is contained
-in the <token>description</token> sub-element.
-</para>
+<para>The description of the packge is contained in the
+<filename>description</filename> sub-element.</para>
 
-<para>The relationship "depends-on" is described
-by the <token>requires</token> sub-element.
-</para>
+<para>The relationship "depends-on" is described by the
+<filename>requires</filename> sub-element.</para>
 
-<para>The relationship "will utilize" is described
-by the <token>utilizes</token> sub-element.
-</para>
+<para>The relationship "will utilize" is described by the
+<filename>utilizes</filename> sub-element.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-    &lt;package name="gimp" version="1.2.3">
-        &lt;packageinfo>
-	        &lt;description>
-                    &lt;para>The gimp package contains the GNU Image
-		    Manipulation Program.
-		    This is useful for photo retouching, image
-		    composition and image authoring.
-		    &lt;/para>
-		&lt;/description>
+<para>The equivalent bash script is&nbsp;:</para>
 
-                &lt;requires>&lt;name>gtk+&lt;/name>&lt;/requires>
-
-		&lt;utilizes>&lt;name>libtiff&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>libpng&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>libjpeg&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>aalib&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>mpeg_lib&lt;/name>&lt;/utilizes>
-		&lt;utilizes>&lt;name>python&lt;/name>&lt;/utilizes>
-
-        &lt;/required>
-
-	....
-
-    &lt;/package>
-
-</programlisting>
-
-<para>The equivalent bash script is :</para>
-
-<programlisting>
-echo Generating package zlib 1.1.4
+<userinput><screen>echo Generating package zlib 1.1.4
 
 #-----------------------------------------
 echo Stage "Unpacking a package."
@@ -93,9 +61,7 @@ echo Exiting stage "Unpacking a package."
 
 ...
 
-echo End of generating package zlib 1.1.4
-
-</programlisting>
+echo End of generating package zlib 1.1.4</screen></userinput>
 
 </sect2>
 

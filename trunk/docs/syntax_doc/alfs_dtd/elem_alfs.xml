@@ -6,17 +6,16 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT alfs     ((configure | copy | download | execute | link |
-                     make | mkdir | move | ownership | package |
-                     patch | permissions | remove | search_replace |
-                     stage | textdump | unpack)*)&gt;
+&lt;!ELEMENT alfs           ((configure | copy | download | execute | link | 
+                           make | mkdir | move | ownership | package | 
+                           patch | permissions | remove | search_replace | 
+                           stage | textdump | unpack)*)&gt;
 &lt;!ATTLIST alfs
-          base       CDATA #IMPLIED
-          version    CDATA #FIXED &quot;3.1&quot;&gt;
+          base           CDATA #IMPLIED
+          version        CDATA #FIXED &quot;3.1&quot;&gt;
 </synopsis>
 
 <para>See also&nbsp;:&nbsp;&nbsp;
-
 <xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_download"/>&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -44,14 +43,14 @@
 <para>The element <filename>alfs</filename> is the root element of the
 &book-product;. This means that an <acronym>ALFS</acronym> profile should
 contain one and only one <filename>alfs</filename> element with all the other
-elements being embedded in this element.</para>
+elements being embedded within this element.</para>
 
 <para>When processing an <filename>alfs</filename> element, one processes all its
 embedded children in their order of occurence.</para>
 
 <para>Notice that all the main operation elements
 (<filename>configure</filename> to <filename>unpack</filename>) are surrounded
-by parathensis [&nbsp;(&nbsp;)&nbsp;]and followed by an asterisk
+by parathensis [&nbsp;(&nbsp;)&nbsp;] and followed by an asterisk
 [&nbsp;*&nbsp;]. The asterisk signifies that each main operation element can
 be used optionally inside the <filename>alfs</filename> declaration in a
 profile and that, if used, they can be used more than once.</para>
@@ -64,7 +63,7 @@ inherit its value from an earlier use in the profile. See
 <xref linkend="elem_base"/>.</para>
 
 <para>The attribute <filename>version</filename> identifies the version of the
-ALFS profile syntax used; it should be
+<acronym>ALFS</acronym> profile syntax used; it should be
 <userinput>&quot;3.1&quot;</userinput>.</para>
 
 </sect2>
@@ -74,16 +73,19 @@ ALFS profile syntax used; it should be
 
 <screen><userinput>&lt;!DOCTYPE alfs SYSTEM &quot;alfs-3.1.dtd&quot; [
 
-&lt;!ENTITY % general_entities SYSTEM &quot;entities/general&quot;&gt;
+	&lt;!ENTITY % general_entities SYSTEM &quot;entities/general&quot;&gt;
 
-%general_entities;
+	%general_entities;
 
 ]&gt;
+
 &lt;alfs version=&quot;3.1&quot;&gt;
 
  .....
 
 &lt;/alfs&gt;</userinput></screen>
+
+<para>There is no equivalent Bash script example for this element.</para>
 
 </sect2>
 

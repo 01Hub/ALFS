@@ -6,11 +6,15 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT user           (#PCDATA)>
+&lt;!ELEMENT user           (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_stageinfo">stageinfo</link>.
+<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_stageinfo"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_ownership"/>
 </para>
 
 </sect2>
@@ -18,31 +22,29 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>user</token> allow to specify a user ID
-that will be the effective user ID when executing the commands
-of the stage to which it applies.</para>
+<para>The element <filename>user</filename> allow to specify a user ID that
+will be the effective user ID when executing the commands of the stage to
+which it applies.</para>
+
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;stage>
-    &lt;stageinfo>
-        &lt;base>/usr/src/mypackage&lt;/base>
-	&lt;user>lfs&lt;/user>
-    &lt;/stageinfo>
+<userinput><screen>&lt;stage&gt;
+	&lt;stageinfo&gt;
+		&lt;base&gt;/usr/src/mypackage&lt;/base&gt;
+		&lt;user&gt;lfs&lt;/user&gt;
+	&lt;/stageinfo&gt;
 
-    &lt;make>
-        &lt;param>install&lt;/param>
-    &lt;/make>
-&lt;/stage>
-</programlisting>
+	&lt;make&gt;
+		&lt;param&gt;install&lt;/param&gt;
+	&lt;/make&gt;
+&lt;/stage&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-echo Stage
+<userinput><screen>echo Stage
 
 echo Creating file ./_nalfs_tmp.1...
 cat > ./_nalfs_tmp.1 &lt;&lt; 'EOF1'
@@ -60,9 +62,7 @@ echo Executing as user lfs
 
 echo Finished execution as user lfs
 
-echo Exiting stage
-
-</programlisting>
+echo Exiting stage</screen></userinput>
 
 </sect2>
 

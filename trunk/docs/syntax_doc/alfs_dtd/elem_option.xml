@@ -6,24 +6,24 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT option         (#PCDATA)>
+&lt;!ELEMENT option         (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_copy">copy</link>,
-<link linkend="elem_link">link</link>,
-<link linkend="elem_mkdir">mkdir</link>,
-<link linkend="elem_move">move</link>,
-<link linkend="elem_ownership">ownership</link>
-and <link linkend="elem_permissions">permissions</link>.
-.</para>
+<para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_link"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_mkdir"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_move"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_ownership"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_permissions"/>
+</para>
 
 </sect2>
 
 <sect2>
 <title>Description</title>
 
-<para>The element <token>option</token> allows to specify an option
+<para>The element <filename>option</filename> allows to specify an option
 of the englobing element.</para>
 
 </sect2>
@@ -31,20 +31,16 @@ of the englobing element.</para>
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;mkdir base="/usr/local/lib">
-   &lt;option>parents&lt;/option>
-   &lt;name>X11&lt;/name>
-&lt;/mkdir>
-</programlisting>
+<userinput><screen>&lt;mkdir base=&quot;/usr/local/lib&quot;&gt;
+	&lt;option&gt;parents&lt;/option&gt;
+	&lt;name&gt;X11&lt;/name&gt;
+&lt;/mkdir&gt;</screen></userinput>
 
-<para>The equivalent bash script is :</para>
+<para>The equivalent bash script is&nbsp;:</para>
 
-<programlisting>
-cd /usr/local/lib
+<userinput><screen>cd /usr/local/lib
 echo Making directory X11
-mkdir -p X11
-</programlisting>
+<command>mkdir -p X11</command></screen></userinput>
 
 </sect2>
 

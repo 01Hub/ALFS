@@ -6,15 +6,15 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT version        (#PCDATA)>
-&lt;!ATTLIST variable
-          condition      (eq | ne | gt | ge | lt | le) #REQUIRED>
+&lt;!ELEMENT version        (#PCDATA)&gt;
+&lt;!ATTLIST version
+          condition      (eq | ne | gt | ge | lt | le) #REQUIRED&gt;
 </synopsis>
 
 <para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
 <xref linkend="elem_package"/>&nbsp;&nbsp;|&nbsp;&nbsp;
-<xref linkend="elem_utilizes"/>&nbsp;&nbsp;|&nbsp;&nbsp;
-<xref linkend="elem_requires"/>
+<xref linkend="elem_requires"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_utilizes"/>
 </para>
 
 </sect2>
@@ -57,7 +57,8 @@ different from 3.0beta.</para>
 	&lt;/requires&gt;
 &lt;/packageinfo&gt;</screen></userinput>
 
-<para>This signifies that the package being build requires guile in its
+<para>This signifies that the package being build requires
+<filename>guile</filename> in its
 version 1.5 or more recent.</para>
 
 <para>There is no equivalent Bash script example for this element.</para>
