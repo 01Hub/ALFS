@@ -1,15 +1,6 @@
 <stage name="Configuring system components">
-	<link>
-		<option>force</option>
-		<target>&keymap;</target>
-		<name>/usr/share/kbd/keymaps/defkeymap.map.gz</name>
-	</link>
 
-	<execute command="loadkeys">
-		<param>-m</param>
-		<param>/usr/share/kbd/keymaps/defkeymap.map.gz</param>
-		<param>> &linux-src-location;/&linux-directory;/drivers/char/defkeymap.c</param>
-	</execute>
+&c6-keymap;
 
 	<execute command="echo">
 		<param>root:&password;</param>

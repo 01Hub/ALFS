@@ -14,7 +14,7 @@
 	<remove>&build_dir;/binutils-build</remove>
 
 	<search_replace>
-		<file>/tools/lib/gcc-lib/&gcc_target;/&gcc-version;/specs</file>
+		<file>/tools/lib/gcc-lib/*/&gcc-version;/specs</file>
 		<find> /lib/ld-linux.so.2</find>
 		<replace> /tools/lib/ld-linux.so.2</replace>
 	</search_replace>
