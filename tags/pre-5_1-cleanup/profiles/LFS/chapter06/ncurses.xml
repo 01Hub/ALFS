@@ -1,0 +1,57 @@
+<package name="ncurses" version="&ncurses-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&ncurses-md5;</digest>
+			<archive>&packages_dir;/&ncurses-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&ncurses-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--with-shared</param>
+			<param>--without-debug</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<permissions mode="755">
+			<name>/usr/lib/*.&ncurses-version;</name>
+		</permissions>
+
+		<permissions mode="644">
+			<name>/usr/lib/libncurses++.a</name>
+		</permissions>
+
+		<move>
+			<source>/usr/lib/libncurses.so.5*</source>
+			<destination>/lib</destination>
+		</move>
+
+		<link>
+			<option>force</option>
+			<target>../../lib/libncurses.so.5</target>
+			<name>/usr/lib/libncurses.so</name>
+		</link>
+
+		<link>
+			<option>force</option>
+			<target>libncurses.so</target>
+			<name>/usr/lib/libcurses.so</name>
+		</link>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&ncurses-directory;</remove>
+	</stage>
+</package>

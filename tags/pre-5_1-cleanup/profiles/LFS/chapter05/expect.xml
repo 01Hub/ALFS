@@ -1,0 +1,51 @@
+<package name="expect" version="&expect-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&expect-md5;</digest>
+			<archive>&packages_dir;/&expect-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&expect-spawn-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&expect-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&expect-spawn-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/tools</param>
+			<param>--with-tcl=/tools/lib</param>
+			<param>--with-x=no</param>
+		</configure>
+
+		<make />
+
+<!--
+		<make>
+			<param>test</param>
+		</make>
+-->
+
+		<make>
+			<param>SCRIPTS=&quot;&quot;</param>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&tcl-directory;</remove>
+		<remove>&build_dir;/&expect-directory;</remove>
+		<remove>&build_dir;/&expect-spawn-patch;</remove>
+	</stage>
+</package>

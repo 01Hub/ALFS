@@ -1,0 +1,53 @@
+<package name="inetutils" version="&inetutils-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&inetutils-md5;</digest>
+			<archive>&packages_dir;/&inetutils-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&inetutils-no-man-pages-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&inetutils-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&inetutils-no-man-pages-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--disable-syslogd</param>
+			<param>--libexecdir=/usr/sbin</param>
+			<param>--disable-logger</param>
+			<param>--sysconfdir=/etc</param>
+			<param>--localstatedir=/var</param>
+			<param>--disable-whois</param>
+			<param>--disable-servers</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<move>
+			<source>/usr/bin/ping</source>
+			<destination>/bin</destination>
+		</move>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&inetutils-directory;</remove>
+		<remove>&build_dir;/&inetutils-no-man-pages-patch;</remove>
+	</stage>
+</package>

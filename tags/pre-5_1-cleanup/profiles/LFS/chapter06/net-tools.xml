@@ -1,0 +1,43 @@
+<package name="net-tools" version="&net-tools-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&net-tools-md5;</digest>
+			<archive>&packages_dir;/&net-tools-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&net-tools-miitool-gcc33;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&net-tools-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&net-tools-miitool-gcc33;</param>
+		</patch>
+
+		<execute command="yes">
+			<param>""</param>
+			<param>| make</param>
+			<param>config</param>
+		</execute>
+
+		<make />
+
+		<make>
+			<param>update</param>
+		</make>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&net-tools-directory;</remove>
+		<remove>&build_dir;/&net-tools-miitool-gcc33;</remove>
+	</stage>
+</package>
