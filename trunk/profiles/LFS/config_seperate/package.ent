@@ -42,6 +42,9 @@
 <!ENTITY coreutils-hostname-patch-md5 "e836031a4efebca5d1a239bfd1caa94d">
 <!ENTITY coreutils-hostname-patch "coreutils-&coreutils-version;-hostname-2.patch">
 
+<!ENTITY coreutils-posixver-patch-md5 "da35702005003b43906f543c425c91df">
+<!ENTITY coreutils-posixver-patch "coreutils-&coreutils-version;-posixver-2.patch">
+
 <!ENTITY coreutils-uname-patch-md5 "df8a4ae4ffb495680766b0541edf4a3c">
 <!ENTITY coreutils-uname-patch "coreutils-&coreutils-version;-uname.patch">
 
@@ -133,16 +136,11 @@
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.gz">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
-<!ENTITY glibc-md5 "ede969aad568f48083e413384f20753c">
-<!ENTITY glibc-version "2.3.2">
-<!ENTITY glibc-package "glibc-&glibc-version;.tar.bz2">
-<!ENTITY glibc-directory "glibc-&glibc-version;">
-
-<!ENTITY glibc-linuxthreads-md5 "894b8969cfbdf787c73e139782167607">
-<!ENTITY glibc-linuxthreads-package "glibc-linuxthreads-&glibc-version;.tar.bz2">
-
-<!ENTITY glibc-sscanf-patch-md5 "d2b10cd08cd854ef3f889b39ddb055d3">
-<!ENTITY glibc-sscanf-patch "glibc-&glibc-version;-sscanf-1.patch">
+<!ENTITY glibc-md5 "795895e3992dad76093b96cb8a78e0a0">
+<!ENTITY glibc-version "2.3.3">
+<!ENTITY glibc-cvs-version "20031202">
+<!ENTITY glibc-package "glibc-&glibc-version;-&glibc-cvs-version;.tar.bz2">
+<!ENTITY glibc-directory "glibc-&glibc-version;-&glibc-cvs-version;">
 
 <!ENTITY grep-md5 "ddd99e2d5d4f4611357e31e97f080cf2">
 <!ENTITY grep-version "2.5.1">
@@ -172,8 +170,8 @@
 <!ENTITY inetutils-no-man-pages-patch-md5 "eb477f532bc6d26e7025fcfc4452511d">
 <!ENTITY inetutils-no-man-pages-patch "inetutils-&inetutils-version;-no_server_man_pages-1.patch">
 
-<!ENTITY kbd-md5 "34c6489af3b9b9098170248ff2b553aa">
-<!ENTITY kbd-version "1.11">
+<!ENTITY kbd-md5 "7892c7010512a9bc6697a295c921da25">
+<!ENTITY kbd-version "1.12">
 <!ENTITY kbd-package "kbd-&kbd-version;.tar.gz">
 <!ENTITY kbd-directory "kbd-&kbd-version;">
 
@@ -260,8 +258,8 @@
 <!ENTITY patch-package "patch-&patch-version;.tar.gz">
 <!ENTITY patch-directory "patch-&patch-version;">
 
-<!ENTITY perl-md5 "fa356b74f99166b63a68a322c3c68f91">
-<!ENTITY perl-version "5.8.2">
+<!ENTITY perl-md5 "6d2b389f8c6424b7af303f417947714f">
+<!ENTITY perl-version "5.8.3">
 <!ENTITY perl-package "perl-&perl-version;.tar.gz">
 <!ENTITY perl-directory "perl-&perl-version;">
 
@@ -288,13 +286,10 @@
 <!ENTITY sed-package "sed-&sed-version;.tar.gz">
 <!ENTITY sed-directory "sed-&sed-version;">
 
-<!ENTITY shadow-md5 "4fa404ebb4e29828232b3c9a2abddefd">
-<!ENTITY shadow-version "4.0.3">
+<!ENTITY shadow-md5 "3a3d17d3d7c630b602baf66ae7434c61">
+<!ENTITY shadow-version "4.0.4.1">
 <!ENTITY shadow-package "shadow-&shadow-version;.tar.bz2">
 <!ENTITY shadow-directory "shadow-&shadow-version;">
-
-<!ENTITY shadow-newgrp-patch-md5 "02290c933822f75db4e6f50639f38ad5">
-<!ENTITY shadow-newgrp-patch "shadow-&shadow-version;-newgrp-fix.patch">
 
 <!ENTITY sysklogd-md5 "d214aa40beabf7bdb0c9b3c64432c774">
 <!ENTITY sysklogd-version "1.4.1">

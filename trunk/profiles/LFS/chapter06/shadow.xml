@@ -5,11 +5,6 @@
 			<archive>&packages_dir;/&shadow-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&shadow-newgrp-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
@@ -21,17 +16,14 @@
 			<param>/usr/bin/passwd</param>
 		</execute>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&shadow-newgrp-patch;</param>
-		</patch>
-
 		<configure>
-			<param>--prefix=/usr</param>
 			<param>--libdir=/usr/lib</param>
 			<param>--enable-shared</param>
 		</configure>
+
+		<execute command="echo">
+			<param>'#define HAVE_SETLOCALE 1' &gt;&gt; config.h</param>
+		</execute>
 
 		<make />
 
@@ -62,17 +54,14 @@
 			<replace>MD5_CRYPT_ENAB	yes</replace>
 		</search_replace>
 
-		<link>
-			<option>force</option>
-			<target>vipw</target>
-			<name>/usr/sbin/vigr</name>
-		</link>
-
-		<remove>/bin/vipw</remove>
-
 		<move>
 			<source>/bin/sg</source>
 			<destination>/usr/bin</destination>
+		</move>
+
+		<move>
+			<source>/bin/vigr</source>
+			<destination>/usr/sbin</destination>
 		</move>
 
 		<move base="/usr/lib">
@@ -107,6 +96,5 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&shadow-directory;</remove>
-		<remove>&build_dir;/&shadow-newgrp-patch;</remove>
 	</stage>
 </package>
