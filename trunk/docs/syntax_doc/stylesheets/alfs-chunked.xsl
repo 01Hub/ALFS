@@ -21,7 +21,7 @@
         <xsl:variable name="filename">
           <xsl:call-template name="make-relative-filename">
             <xsl:with-param name="base.dir" select="''"/>
-            <xsl:with-param name="base.name" select="concat($base.dir, 'prologue/legalnotice.html')"/>
+            <xsl:with-param name="base.name" select="concat($base.dir,'preface/legalnotice.html')"/>
           </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="title">
@@ -29,7 +29,7 @@
         </xsl:variable>
         <xsl:element name="a">
           <xsl:attribute name="href">
-            <xsl:value-of select="'prologue/legalnotice.html'"/>
+            <xsl:value-of select="'preface/legalnotice.html'"/>
           </xsl:attribute>
           <xsl:copy-of select="$title"/>
         </xsl:element>
