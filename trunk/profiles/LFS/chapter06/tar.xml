@@ -1,0 +1,37 @@
+<package name="tar" version="&tar-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&tar-md5;</digest>
+			<archive>&packages_dir;/&tar-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&tar-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--bindir=/bin</param>
+			<param>--libexecdir=/usr/bin</param>
+		</configure>
+
+		<make/>
+
+<!--
+		<make>
+			<param>check</param>
+		</make>
+-->
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&tar-directory;</remove>
+	</stage>
+</package>

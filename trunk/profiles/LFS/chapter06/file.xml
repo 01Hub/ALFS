@@ -1,0 +1,29 @@
+<package name="file" version="&file-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&file-md5;</digest>
+			<archive>&packages_dir;/&file-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&file-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&file-directory;</remove>
+	</stage>
+</package>

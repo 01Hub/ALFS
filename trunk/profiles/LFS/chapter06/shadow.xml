@@ -1,0 +1,119 @@
+<package name="shadow" version="&shadow-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&shadow-md5;</digest>
+			<archive>&packages_dir;/&shadow-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&shadow-newgrp-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&shadow-directory;</base>
+		</stageinfo>
+
+		<execute command="touch">
+			<param>/var/run/utmp</param>
+			<param>/var/log/{btmp,lastlog,wtmp}</param>
+		</execute>
+		
+		<permissions base="/var" mode="644">
+			<name>run/utmp</name>
+			<name>log/btmp</name>
+			<name>log/lastlog</name>
+			<name>log/wtmp</name>
+		</permissions>
+
+		<execute command="touch">
+			<param>/usr/bin/passwd</param>
+		</execute>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&shadow-newgrp-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--libdir=/usr/lib</param>
+			<param>--enable-shared</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<copy>
+			<source>etc/limits</source>
+			<source>etc/login.access</source>
+			<destination>/etc</destination>
+		</copy>
+
+		<copy>
+			<source>etc/login.defs.linux</source>
+			<destination>/etc/login.defs</destination>
+		</copy>
+
+		<search_replace>
+			<file>/etc/login.defs</file>
+			<find>/var/spool/mail</find>
+			<replace>/var/mail</replace>
+		</search_replace>
+
+		<search_replace>
+			<file>/etc/login.defs</file>
+			<find>#MD5_CRYPT_ENAB	no</find>
+			<replace>MD5_CRYPT_ENAB	yes</replace>
+		</search_replace>
+
+		<link type="symbolic">
+			<target>vipw</target>
+			<name>/usr/sbin/vigr</name>
+		</link>
+
+		<remove>/bin/vipw</remove>
+
+		<move>
+			<source>/bin/sg</source>
+			<destination>/usr/bin</destination>
+		</move>
+
+		<move base="/usr/lib">
+			<source>libshadow.so.0*</source>
+			<source>libmisc.so.0*</source>
+			<destination>/lib</destination>
+		</move>
+
+		<link type="symbolic">
+			<option>force</option>
+			<target>../../lib/libshadow.so.0</target>
+			<name>/usr/lib/libshadow.so</name>
+		</link>
+
+		<link type="symbolic">
+			<option>force</option>
+			<target>../../lib/libmisc.so.0</target>
+			<name>/usr/lib/libmisc.so</name>
+		</link>
+
+		<remove>/bin/groups</remove>
+	</stage>
+
+	<stage name="Configuring a package.">
+		<execute command="/usr/sbin/pwconv" />
+		<execute command="/usr/sbin/grpconv" />
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&shadow-directory;</remove>
+		<remove>&build_dir;/&shadow-newgrp-patch;</remove>
+	</stage>
+</package>

@@ -1,0 +1,51 @@
+<stage name="Creating tools directory.">
+	<mkdir>
+		<option>parents</option>
+		<name>&LFS;/tools</name>
+	</mkdir>
+	
+	<link>
+		<option>force</option>
+		<target>&LFS;/tools</target>
+		<name>/</name>
+	</link>
+	
+	<!-- From this point forward isn't in the book, it's only here for nALFS to use -->
+	<mkdir base="&LFS;">
+		<option>parents</option>
+		<name>&LFS;&packages_dir;</name>
+	</mkdir>
+	
+	<mkdir>
+		<option>parents</option>
+		<name>&LFS;&build_dir;</name>
+	</mkdir>
+	
+	<!--
+	        If you run a kernel that supports VFS bindings (< 2.4),
+	        you can uncomment this command instead of using the
+	        use the <copy>.
+	        Don't forget to also uncomment the unmounting command from the end
+	        of the profile.
+	
+	        warning: if you use the mount option, and if the execution
+	        of your profile fails, be carefull to unmount the package
+	        directory before you delete the content the target partition !!!
+	
+	        note : a space has been inserted between the two dashes the first
+	        parameter to avoid the double dash being deteted as the end of
+	        the comment. You need to remove it if you use this command.
+	
+	<execute command="mount">
+		<param>- -bind</param>
+		<param>&orig_packages_dir;</param>
+		<param>&LFS;&packages_dir;</param>
+	</execute>
+	
+	-->
+	
+	<copy>
+		<source>&orig_packages_dir;/*</source>
+		<destination>&LFS;&packages_dir;</destination>
+	</copy>
+</stage>

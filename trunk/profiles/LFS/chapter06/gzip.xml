@@ -1,0 +1,58 @@
+<package name="gzip" version="&gzip-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&gzip-md5;</digest>
+			<archive>&packages_dir;/&gzip-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&gzip-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<search_replace>
+			<file>gzexe.in</file>
+			<find>"BINDIR"</find>
+			<replace>/bin</replace>
+		</search_replace>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<move>
+			<source>/usr/bin/gzip</source>
+			<destination>/bin</destination>
+		</move>
+
+		<remove>/usr/bin/gunzip</remove>
+		<remove>/usr/bin/zcat</remove>
+
+		<link type="symbolic">
+			<target>gzip</target>
+			<name>/bin/gunzip</name>
+		</link>
+
+		<link type="symbolic">
+			<target>gzip</target>
+			<name>/bin/zcat</name>
+		</link>
+
+		<link type="symbolic">
+			<target>gunzip</target>
+			<name>/bin/uncompress</name>
+		</link>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&gzip-directory;</remove>
+	</stage>
+</package>

@@ -1,0 +1,24 @@
+<package name="bzip2" version="&bzip2-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&bzip2-md5;</digest>
+			<archive>&packages_dir;/&bzip2-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&bzip2-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>PREFIX=/tools</param>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&bzip2-directory;</remove>
+	</stage>
+</package>
