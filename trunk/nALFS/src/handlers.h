@@ -57,7 +57,9 @@ typedef struct handler_info_s {
 	int is_action;		/* Whether it's the element that actually
 				 * does something, or it's only a "container".
 				 */
-	int proirity;
+	int priority;           /* Higher priority handlers "override" lower
+				   priority ones (allows user to make custom
+				   handlers that replace standard ones) */
 } handler_info_s;
 
 
