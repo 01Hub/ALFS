@@ -30,6 +30,10 @@
 
 <package name="PDL" version="&PDL-version;">
 
+	<packageinfo>
+		<requires><name>Astro-FITS-Header</name></requires>
+	</packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&PDL-package;</archive>
@@ -113,6 +117,11 @@
 </package>
 
 <package name="Gtk-Perl" version="&Gtk-Perl-version;">
+
+	<packageinfo>
+		<requires><name>XML-Writer</name></requires>
+		<requires><name>XML-Parser</name></requires>
+	</packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>

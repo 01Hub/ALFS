@@ -2,12 +2,11 @@
 
         <packageinfo>
                 <requires><name>gc</name></requires>
-
                 <utilizes><name>gpm</name></utilizes>
                 <utilizes><name>openssl</name></utilizes>
                 <utilizes><name>imlib</name></utilizes>
                 <utilizes><name>imlib2</name></utilizes>
-                <utilizes><name>gdkpixelbuffer</name></utilizes>
+                <utilizes><name>gdk-pixbuf</name></utilizes>
                 <utilizes><name>compface</name></utilizes>
         </packageinfo>
 

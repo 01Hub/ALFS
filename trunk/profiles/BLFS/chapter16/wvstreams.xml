@@ -10,7 +10,6 @@
 		<destination>&build_dir;</destination>
 	</unpack>
 
-
 	<copy>
 	        <source>&packages_dir;/&wvstreams-wvcrypto-patch;</source>
 		<destination>&build_dir;</destination>
@@ -21,7 +20,6 @@
 		<destination>&build_dir;</destination>
 	</copy>
 
-	<execute command="/sbin/ldconfig" />
     </stage>
 
     <stage name="Installing a package.">
@@ -40,10 +38,6 @@
 		<param>-p1</param>
 		<param>-i ../&wvstreams-wvresolver-patch;</param>
 	</patch>
-
-	<remove>/usr/lib/libwvcrypto.*</remove>
-	<remove>/usr/lib/libwvstreams.*</remove>
-	<remove>/usr/lib/libwvutils.*</remove>
 
 	<make>
 	        <param>PREFIX=/usr</param>

@@ -1,8 +1,7 @@
 <package name="pciutils" version="&pciutils-version;">
 
         <packageinfo>
-                <requires><name>wget</name></requires>
-                <!--requires><name>lynx</name></requires-->
+                <requires><name>which</name></requires>
 	</packageinfo>
 
 	<stage name="Unpacking a package.">

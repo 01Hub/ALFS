@@ -16,11 +16,11 @@
 			<param>--prefix=/usr</param>
 		</configure>
 
-		<make base ="&build_dir;/&ncftp-directory;/libncftp">
+		<make base="&build_dir;/&ncftp-directory;/libncftp">
 		        <param>shared</param>
 		</make>
 
-		<make base ="&build_dir;/&ncftp-directory;/libncftp">
+		<make base="&build_dir;/&ncftp-directory;/libncftp">
 		        <param>soinstall</param>
 		</make>
 

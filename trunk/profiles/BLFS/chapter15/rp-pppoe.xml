@@ -52,7 +52,7 @@
 	</stage>
 
 	<stage name="Cleanup.">
-		<remove>&build_dir;/</remove>
+		<remove>&build_dir;/&rp-pppoe-directory;</remove>
 	</stage>
 </package>
 

@@ -75,6 +75,11 @@
 			<param>-non-interactive</param>
 		</execute>
 
+		<mkdir>
+			<option>parents</option>
+			<name>/usr/share/doc/postfix</name>
+		</mkdir>
+
 		<copy>
 			<option>recursive</option>
 			<option>force</option>

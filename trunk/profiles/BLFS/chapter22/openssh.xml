@@ -49,7 +49,7 @@
 
 		<search_replace>
 			<file>configure</file>
-			<find>-lcryptp</find>
+			<find>-lcrypto</find>
 			<replace>/usr/lib/libcrypto.a</replace>
 		</search_replace>
 

@@ -55,7 +55,7 @@
 		</make>
 
 		<copy>
-		        <source>php.ini-dist</source>
+		        <source>php.ini-recommended</source>
 			<destination>/etc/php.ini</destination>
 		</copy>
 
