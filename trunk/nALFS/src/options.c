@@ -211,10 +211,10 @@ static void option_invalid(const struct option_s *option,
 
 	va_start(ap, format);
 	if (vsnprintf(buffer, sizeof buffer, format, ap) > 0)
-		Nprint_err("Option \"%s\" invalid value: %s\n",
+		Nprint_err("Option \"%s\" invalid value: %s",
 			   option->name, buffer);
 	else
-		Nprint_err("Option \"%s\" invalid value\n", option->name);
+		Nprint_err("Option \"%s\" invalid value.", option->name);
 	va_end(ap);
 }
 
