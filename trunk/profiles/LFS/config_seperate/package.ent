@@ -111,9 +111,9 @@
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.gz">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
-<!ENTITY glibc-md5 "8523411a05dba92977e51fe6addd6d1d">
+<!ENTITY glibc-md5 "461a0e3918697865de347470577472f6">
 <!ENTITY glibc-version "2.3.4">
-<!ENTITY glibc-cvs-version "-20040408">
+<!ENTITY glibc-cvs-version "-20040510">
 <!ENTITY glibc-package "glibc-&glibc-version;&glibc-cvs-version;.tar.bz2">
 <!ENTITY glibc-directory "glibc-&glibc-version;&glibc-cvs-version;">
 
@@ -293,9 +293,9 @@
 <!ENTITY sysvinit-package "sysvinit-&sysvinit-version;.tar.gz">
 <!ENTITY sysvinit-directory "sysvinit-&sysvinit-version;">
 
-<!ENTITY tar-md5 "0bb83f8404a4ffdb7d5fcd2ae5d99fd9">
-<!ENTITY tar-version "1.13.94">
-<!ENTITY tar-package "tar-&tar-version;.tar.gz">
+<!ENTITY tar-md5 "f1932e0fbd4641885bfdcc75495c91b7">
+<!ENTITY tar-version "1.14">
+<!ENTITY tar-package "tar-&tar-version;.tar.bz2">
 <!ENTITY tar-directory "tar-&tar-version;">
 
 <!ENTITY tcl-md5 "9009a92dc648775fb8a9b0789b995756">
