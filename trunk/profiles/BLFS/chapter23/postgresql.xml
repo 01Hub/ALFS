@@ -1,0 +1,65 @@
+<package name="postgresql" version="&postgresql-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&postgresql-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&postgresql-directory;</base>
+		</stageinfo>
+
+		<configure>
+                        <param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<mkdir>
+		        <option>parents</option>
+			<name>/var/pgsql/data</name>
+		</mkdir>
+
+
+		<execute command="grep ^postgres /etc/passwd">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| useradd</param>
+			<param>-d /var/pgsql/data</param>
+			<param>postgres</param>
+		</execute>
+
+		<ownership user="postgres">
+		        <name>/var/pgsql/data</name>
+		</ownership>
+
+		<execute command="su - postgres -c '/usr/bin/initdb -D /var/pgsql/data'" />
+	</stage>
+
+	<stage name="Installing postgresql bootscript">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-postgresql</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&postgresql-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+
+</package>

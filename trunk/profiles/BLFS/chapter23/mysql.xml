@@ -1,0 +1,115 @@
+<package name="mysql" version="&mysql-version;">
+
+        <packageinfo>
+	        <utilizes><name>readline</name></utilizes>
+	        <utilizes><name>openssl</name></utilizes>
+	</packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&mysql-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&mysql-directory;</base>
+		</stageinfo>
+
+		<execute command="grep ^mysql /etc/group">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| groupadd</param>
+			<param>mysql</param>
+		</execute>
+
+		<execute command="grep ^mysql /etc/passwd">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| useradd</param>
+		        <param>-c mysql</param>
+			<param>-d /dev/null</param>
+			<param>-g mysql</param>
+			<param>-s /bin/false</param>
+			<param>mysql</param>
+		</execute>
+
+		<configure>
+                        <param>--prefix=/usr</param>
+                        <param>--sysconfdir=/etc</param>
+                        <param>--libexecdir=/usr/sbin</param>
+                        <param>--localstatedir=/var/lib/mysql</param>
+                        <param>--enable-thread-safe-client</param>
+			<param>--enable-local-infile</param>
+			<param>--enable-assembler</param>
+                        <param>--without-debug</param>
+                        <param>--without-bench</param>
+		</configure>
+
+		<make>
+			<param>testdir=/usr/lib/mysql/mysql-test</param>
+		</make>
+
+		<make>
+			<param>testdir=/usr/lib/mysql/mysql-test</param>
+			<param>install</param>
+		</make>
+
+		<execute command="cd /usr/lib &amp;&amp; 
+			ln -sf mysql/libmysqlclient{,_r}.so* ." />
+
+		<!-- CONFIGURATION -->
+
+		<copy>
+		        <source>/usr/share/mysql/my-medium.cnf</source>
+			<destination>/etc/my.cnf</destination>
+		</copy>
+
+		<execute command="mysql_install_db" />
+
+		<ownership user="mysql" group="mysql">
+		    <option>recursive</option>
+		    <name>/var/lib/mysql</name>
+		</ownership>
+
+		<!--
+
+		<execute command="safe_mysqld 2>&amp;1 >/dev/null &amp;" />
+
+		<textdump>
+		        <file>/tmp/mysql.script</file>
+			<content>
+			=UPDATE user SET password=password(&mysql-password;) WHERE user='root';
+			=FLUSH PRIVILEGES;
+			=EXIT;
+			</content>
+		</textdump>
+
+		<execute command="mysql -uroot mysql &lt; /tmp/mysql.script" />
+
+		<remove>/tmp/mysql.script</remove>
+
+		<execute command="kill `pidof -x safe_mysqld mysqld`" />
+		-->
+	</stage>
+
+	<stage name="Install mysql bootscript">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+	
+		<make>
+			<param>install-mysql</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&mysql-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+
+</package>

@@ -17,18 +17,22 @@
 			<base>&build_dir;/&leafnode-directory;</base>
 		</stageinfo>
 
-		<execute command="grep news:  /etc/group  || groupadd">
+		<execute command="grep ^news /etc/group">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| groupadd</param>
 		        <param>news</param>
 		</execute>
 		
-		<execute command="id -u news || useradd">
+		<execute command="grep ^news /etc/passwd">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| useradd</param>
 			<param>-g news</param>
 			<param>news</param>
 		</execute>
 
 		<configure>
-			<param>--localstatedir=/var</param>
 			<param>--prefix=/usr</param>
+			<param>--localstatedir=/var</param>
 			<param>--sysconfdir=/etc/news</param>
 			<param>--with-lockfile=/var/lock/fetchnews.lck</param>
 		</configure>
@@ -47,8 +51,8 @@
 
 
 		<textdump mode="append" base="/etc">
-		<file>xinetd.conf</file>		
-		<content>
+			<file>xinetd.conf</file>		
+			<content>
 		        =
 		        =service nntp
 			={
@@ -62,7 +66,7 @@
 			=    instances       = 7
 			=    per_source      = 3
 			=}
-		</content>
+			</content>
 		</textdump>
 
 		<copy>

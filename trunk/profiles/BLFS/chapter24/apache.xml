@@ -1,0 +1,93 @@
+<package name="apache" version="&apache-version;">
+
+	<packageinfo>
+		<utilizes><name>db</name></utilizes>
+		<utilizes><name>gdbm</name></utilizes>
+		<utilizes><name>openssl</name></utilizes>
+		<utilizes><name>openldap</name></utilizes>
+		<utilizes><name>lynx</name></utilizes>
+	</packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&apache-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&apache-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&apache-directory;</base>
+		</stageinfo>
+
+		<execute command="grep ^apache /etc/group">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| groupadd</param>
+			<param>apache</param>
+		</execute>
+
+		<execute command="grep ^apache /etc/passwd">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| useradd</param>
+			<param>-c apache</param>
+			<param>-d /dev/null</param>
+			<param>-g apache</param>
+			<param>-s /bin/false</param>
+			<param>apache</param>
+		</execute>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&apache-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--enable-layout=LFS</param>
+			<param>--enable-mods-shared=all</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+		
+		<search_replace base="/etc/apache">
+			<file>httpd.conf</file>
+			<find>User nobody</find>
+			<replace>User apache</replace>
+		</search_replace>
+
+		<search_replace base="/etc/apache">
+			<file>httpd.conf</file>
+			<find>Group #-1</find>
+			<replace>Group apache</replace>
+		</search_replace>
+	</stage>
+
+	<stage name="Installing apache bootscript">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-apache</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&apache-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+</package>

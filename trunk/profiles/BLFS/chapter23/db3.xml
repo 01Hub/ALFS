@@ -9,10 +9,6 @@
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<environment>
-			        <variable name="JAVA_HOME">/opt/&j2sdk-directory;</variable>
-			        <variable name="PATH" mode="append">:/opt/&j2sdk-directory;/bin</variable>
-			</environment>
 			<base>&build_dir;/&db3-directory;/build_unix</base>
 		</stageinfo>
 

@@ -44,7 +44,7 @@
 
 <!-- the fully qualified host name, used by postfix -->
 <!ENTITY hostname  "vassilidzuba.net1.nerim.net">
-
+<!ENTITY domain "your.domain">
 
 <!-- where to put gnome -->
 <!ENTITY gnome-prefix "/opt/gnome-2.4">

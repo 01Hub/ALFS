@@ -1,0 +1,85 @@
+<package name="openssh" version="&openssh-version;">
+
+        <packageinfo>
+                <requires><name>openssl</name></requires>
+		<utilizes><name>linuxpam</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&openssh-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+		
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&openssh-directory;</base>
+		</stageinfo>
+
+		<mkdir>
+		        <option>parents</option>
+			<name>/var/empty</name>
+		</mkdir>
+
+		<ownership user="root" group="sys">
+		        <name>/var/empty</name>
+                </ownership>
+
+		<execute command="grep ^sshd /etc/group">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| groupadd</param>
+		        <param>sshd</param>
+		</execute>
+		
+		<execute command="grep ^sshd /etc/passwd">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| useradd</param>
+			<param>-c 'sshd privsep'</param>
+			<param>-d /var/empty</param>
+			<param>-g sshd</param>
+			<param>-s /bin/false</param>
+			<param>sshd</param>
+		</execute>
+
+		<search_replace>
+			<file>configure</file>
+			<find>-lcryptp</find>
+			<replace>/usr/lib/libcrypto.a</replace>
+		</search_replace>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+		        <param>--sysconfdir=/etc/ssh</param>
+		        <param>--libexecdir=/usr/sbin</param>
+		        <param>--with-md5-passwords</param>
+		</configure>
+
+		<make />
+
+		<make>
+		        <param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Installing openssh bootscript">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-sshd</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&openssh-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+
+</package>

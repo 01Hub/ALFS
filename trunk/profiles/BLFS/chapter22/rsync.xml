@@ -1,0 +1,67 @@
+<package name="rsync" version="&rsync-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&rsync-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&rsync-directory;</base>
+		</stageinfo>
+
+		<execute command="grep ^rsyncd /etc/group">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| groupadd</param>
+		        <param>rsyncd</param>
+		</execute>
+		
+		<execute command="grep ^rsyncd /etc/passwd">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| useradd</param>
+			<param>-c rsyncd</param>
+			<param>-d /home/rsync</param>
+			<param>-g rsyncd</param>
+			<param>-s /bin/false</param>
+			<param>rsyncd</param>
+		</execute>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+		        <param>install</param>
+		</make>
+		
+		<textdump base="/etc">
+        		<file>/etc/rsync.conf</file>
+			<content>
+			=# This is a basic rsync configuration file
+			=# It exports a single module without user authentification.
+			=
+			=motd file = /home/rsync/welcome.msg
+			=use chroot = yes
+			=
+			=[localhost]
+			=	path = /home/rsync
+			=	comment = Default rsync module
+			=	read only = yes
+			=	list = yes
+			=	uid = rsyncd
+			=	gid = rsyncd
+			=
+			</content>
+     		 </textdump>		
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&rsync-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+
+</package>

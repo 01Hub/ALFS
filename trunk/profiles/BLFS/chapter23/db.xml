@@ -1,0 +1,34 @@
+<package name="db" version="&db-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&db-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&db-directory;/build_unix</base>
+		</stageinfo>
+
+		<configure command="../dist/configure">
+			<param>--prefix=/usr</param>
+			<param>--enable-compat185</param>
+			<param>--enable-cxx</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>docdir=/usr/share/doc/db-&db-version;</param>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&db-directory;</remove>
+	</stage>
+
+</package>

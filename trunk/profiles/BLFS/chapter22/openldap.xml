@@ -18,9 +18,9 @@
 
 		<configure>
 		        <param>--prefix=/usr</param>
+			<param>--libexecdir=/usr/sbin</param>
 			<param>--sysconfdir=/etc</param>
 			<param>--disable-debug</param>
-			<param>--libexecdir=/usr/sbin</param>
 			<param>--enable-ldbm</param>
 		</configure>
 
