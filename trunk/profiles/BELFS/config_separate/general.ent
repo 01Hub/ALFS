@@ -160,7 +160,7 @@ network.-->
 	This file should be in a state that running `make oldconfig` will run straight through, as
 	that's what the profile in chapter 8 does with this entity.
     -->
-<!ENTITY kernel-config "&packages_dir;/linux-config">
+<!ENTITY kernel-config "linux-config">
 
 <!-- grub settings (these need to be in grub's notation) 
 	NOTE:  The grub configuration profile is completely commented out.  You should edit
