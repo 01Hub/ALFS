@@ -6,8 +6,8 @@ clean:
 	  rm -rf $(OUTDIR); \
 	fi;
 
-	if [ -e nALFS-HACKERS-GUIDE ]; then \
-	  rm -rf nALFS-HACKERS-GUIDE; \
+	if [ -e nALFS-USERS-GUIDE ]; then \
+	  rm -rf nALFS-USERS-GUIDE; \
 	fi;
 
 dist-clean: clean
@@ -53,15 +53,9 @@ chunks-html: common
 	sed -i -e "s@../stylesheets@stylesheets@" \
 	  $(OUTDIR)index.html
 
-	sed -i -e "s@../stylesheets@../../stylesheets@" \
-	  $(OUTDIR)introduction/welcome/*.html 
-
 	sed -i -e "s@images@../images@g" \
-	  $(OUTDIR)chapter01/*.html $(OUTDIR)introduction/*.html \
+	  $(OUTDIR)chapter00/*.html $(OUTDIR)chapter01/*.html \
 	  $(OUTDIR)preface/*.html
-
-	sed -i -e "s@images@../../images@g" \
-	  $(OUTDIR)introduction/welcome/*.html
 
 	echo indent-spaces: 2 > $(OUTDIR)tidy.conf
 	echo wrap: 78 >> $(OUTDIR)tidy.conf
@@ -84,9 +78,9 @@ chunks-html: common
 	bash stylesheets/goTidy $(OUTDIR)
 	rm $(OUTDIR)tidy.conf
 	rm $(OUTDIR)stylesheets/alfs-chunked.xsl
-	mv $(OUTDIR) nALFS-HACKERS-GUIDE
+	mv $(OUTDIR) nALFS-USERS-GUIDE
 
-	tar -cjvf nALFS-HACKERS-GUIDE-CVS-CHUNKS-html.tar.bz2 nALFS-HACKERS-GUIDE/*
+	tar -cjvf nALFS-USERS-GUIDE-CVS-CHUNKS-html.tar.bz2 nALFS-USERS-GUIDE/*
 
 nochunks-html: common
 	sed -e "s@XSLROOTDIR@$(XSLROOTDIR)@" \
@@ -118,9 +112,9 @@ nochunks-html: common
 	bash stylesheets/goTidy $(OUTDIR)
 	rm $(OUTDIR)tidy.conf
 	rm $(OUTDIR)alfs-onechunk.xsl
-	mv $(OUTDIR)index.html nALFS-HACKERS-GUIDE-CVS-NOCHUNKS.html
+	mv $(OUTDIR)index.html nALFS-USERS-GUIDE-CVS-NOCHUNKS.html
 
 flat-text: nochunks-html
-	lynx -dump nALFS-HACKERS-GUIDE-CVS-NOCHUNKS.html > nALFS-HACKERS-GUIDE-CVS.txt
+	lynx -dump nALFS-USERS-GUIDE-CVS-NOCHUNKS.html > nALFS-USERS-GUIDE-CVS.txt
 
 .PHONY: clean dist-clean common chunks-html nochunks-html flat-text
