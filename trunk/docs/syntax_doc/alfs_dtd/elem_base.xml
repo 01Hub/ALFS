@@ -33,7 +33,7 @@ base is specified at the level of the command as an attribute. See also&nbsp;:&n
 <xref linkend="elem_patch"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_permissions"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_search_replace"/>&nbsp;&nbsp;|&nbsp;&nbsp;
-<xref linkend="elem_textdump"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_textdump"/>
 </para>
 
 </sect2>
