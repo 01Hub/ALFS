@@ -3,11 +3,9 @@
         <packageinfo>
                 <requires><name>libglade</name></requires>
                 <requires><name>fribidi</name></requires>
-
-		<utilizes><name>expat</name></utilizes>
-		<utilizes><name>libpng</name></utilizes>
 		<utilizes><name>popt</name></utilizes>
 		<utilizes><name>aspell</name></utilizes>
+		<utilizes><name>gnome-libs</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -31,6 +29,18 @@
 		<make>
 			<param>install</param>
 		</make>
+
+		<copy>
+			<source>../abiword-docs/man/abiword.8</source>
+			<destination>/usr/share/man/man8</destination>
+		</copy>
+
+		<copy>
+			<option>recursive</option>
+			<option>force</option>
+			<source>../abiword-docs/help</source>
+			<destination>/usr/share/doc/abiword</destination>
+		</copy>
 	</stage>
 
 	<stage name="Clean-up.">

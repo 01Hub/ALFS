@@ -475,7 +475,7 @@
     &libghttp;
 </stage>
 
-<stage name="Chapter 36 (Individual Office Programs)">
+<stage name="Chapter 33 (Individual Office Programs)">
     
     &abiword;
     &gnumeric;
@@ -485,14 +485,14 @@
 
 </stage>
 
-<stage name="Chapter 37 (Office Suites)">
+<stage name="Chapter 34 (Office Suites)">
 
     &koffice;    
     &openoffice;
 
 </stage>
 
-<stage name="Chapter 38 (Graphical Web Browsers)">
+<stage name="Chapter 35 (Graphical Web Browsers)">
     
     &mozilla;
     &galeon;
@@ -500,14 +500,14 @@
 
 </stage>
 
-<stage name="Chapter 39 (Other X-based Internet Programs)">
+<stage name="Chapter 36 (Other X-based Internet Programs)">
     
     &pan;
     &balsa;
 
 </stage>
 
-<stage name="Chapter 40 (Multimedia Libraries and Drivers)">
+<stage name="Chapter 37 (Multimedia Libraries and Drivers)">
 
     &alsa-driver;
     &alsa-lib;
@@ -538,7 +538,7 @@
 
 </stage>
 
-<stage name="Chapter 41 (Audio utilities)">
+<stage name="Chapter 38 (Audio utilities)">
 
     &mpg123;
     &vorbis-tools;
@@ -548,7 +548,7 @@
 
 </stage>
 
-<stage name="Chapter 42 (Video utilities)">
+<stage name="Chapter 39 (Video utilities)">
 
     &ffmpeg;
     &avifile;
@@ -558,14 +558,14 @@
 
 </stage>
 
-<stage name="Chapter 43 (CD-Writing utilities)">
+<stage name="Chapter 40 (CD-Writing utilities)">
 
     &cdrtools;
     &cdrdao;
 
 </stage>
 
-<stage name="Chapter 44 (Printing)">
+<stage name="Chapter 41 (Printing)">
 
     &cups;
     &afplghostscript;
@@ -574,7 +574,7 @@
 
 </stage>
 
-<stage name="Chapter 45 (Scanning)">
+<stage name="Chapter 42 (Scanning)">
 
     &sane;
     &xsane;
@@ -582,7 +582,7 @@
 </stage>
 
 
-<stage name="Chapter 46 (Standard Generalized Markup Language - SGML)">
+<stage name="Chapter 43 (Standard Generalized Markup Language - SGML)">
 
     &sgml-common;
     &sgml-dtd31;
@@ -593,14 +593,14 @@
 
 </stage>
 
-<stage name="Chapter 47 (Extensible Markup Language - XML)">
+<stage name="Chapter 44 (Extensible Markup Language - XML)">
 
     &xml-dtd;
     &docbook-xsl;
 
 </stage>
 
-<stage name="Chapter 48 (PostScript)">
+<stage name="Chapter 45 (PostScript)">
 
     &a2ps;
     &enscript;
@@ -610,7 +610,7 @@
 
 </stage>
 
-<stage name="Chapter 49 (Typesetting)">
+<stage name="Chapter 46 (Typesetting)">
 
     &tex;
 

@@ -3,8 +3,6 @@
         <packageinfo>
                 <requires><name>libgnomeprintui</name></requires>
                 <requires><name>libgsf</name></requires>
-
-		<utilizes><name>gda</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -20,10 +18,10 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=/usr</param>
+			<param>--libexecdir=/usr/sbin</param>
 			<param>--localstatedir=/var/lib</param>
-			<param>--sysconfdir=/etc/gnome</param>
-			<param>--libexecdir=&gnome-prefix;/sbin</param>
+			<param>--sysconfdir=/etc</param>
 		</configure>
 
 		<make/>

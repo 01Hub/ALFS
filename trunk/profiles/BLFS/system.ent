@@ -317,12 +317,12 @@
 <!ENTITY gtkhtml1        SYSTEM "./chapter32/gtkhtml.xml">
 <!ENTITY libghttp        SYSTEM "./chapter32/libghttp.xml">
 
-<!-- chapter 38 -->
-<!ENTITY abiword         SYSTEM "./chapter38/abiword.xml">
-<!ENTITY gnumeric        SYSTEM "./chapter38/gnumeric.xml">
-<!ENTITY gnucash         SYSTEM "./chapter38/gnucash.xml">
-<!ENTITY gimp            SYSTEM "./chapter38/gimp.xml">
-<!ENTITY evolution       SYSTEM "./chapter38/evolution.xml">
+<!-- chapter 33 -->
+<!ENTITY abiword         SYSTEM "./chapter33/abiword.xml">
+<!ENTITY gnumeric        SYSTEM "./chapter33/gnumeric.xml">
+<!ENTITY gnucash         SYSTEM "./chapter33/gnucash.xml">
+<!ENTITY gimp            SYSTEM "./chapter33/gimp.xml">
+<!ENTITY evolution       SYSTEM "./chapter33/evolution.xml">
 
 <!-- chapter 39 -->
 <!ENTITY koffice         SYSTEM "./chapter39/koffice.xml">
