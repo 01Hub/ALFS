@@ -82,9 +82,6 @@ static volatile int got_sigchld;	// Signals backend termination.
 
 static element_s *current_running;	// Currently executing element.
 
-static element_s *root_element;		// Parent of all profiles.
-
-
 /* Timer. */
 
 static struct timer {
@@ -735,7 +732,7 @@ static element_s *find_element_by_key(const char *str)
 	str_copy = xstrdup(str);
 
 	if ((tok = strtok(str_copy, " "))) { /* Profile's name. */
-		element_s *profile = get_profile_by_name(root_element, tok);
+		element_s *profile = get_profile_by_name(tok);
 
 		ASSERT(profile != NULL);
 
@@ -1397,13 +1394,16 @@ static int should_skip_element(element_s *el, int *depth)
 		return 1;
 	}
 
-	if (!*opt_display_alfs && Is_element_name(el, "alfs")) {
+/* TODO: is skipping of <alfs> elements really useful? */
+#if 0
+	if (!*opt_display_alfs && (el, "alfs")) {
 		if (depth) {
 			--(*depth);
 			el->hide_children = 0;
 		}
 		return 1;
 	}
+#endif
 
 	if (!*opt_display_doctype && el->type == TYPE_DOCTYPE) {
 		if (depth) {
@@ -3196,29 +3196,6 @@ static INLINE void start_executing_next(element_s *el)
  * Profile's functions (adding, removing, reloading, moving).
  */
 
-static INLINE int remove_profile(element_s *profile)
-{
-	/* This is the only profile left, not removing it. */
-	if (profile->prev == NULL && profile->next == NULL) {
-		return -1;
-	}
-
-	if (profile->prev == NULL) {
-		/* It's a first profile. */
-		profile->parent->children = profile->next;
-	} else {
-		profile->prev->next = profile->next;
-	}
-
-	if (profile->next) {
-		profile->next->prev = profile->prev;
-	}
-
-	free_element(profile);
-
-	return 0;
-}
-
 static INLINE int reload_profile(element_s *old_profile)
 {
 	element_s *new_profile;
@@ -3252,7 +3229,6 @@ static INLINE int reload_profile(element_s *old_profile)
 static element_s *do_add_profile(const char *profile)
 {
 	struct stat file_stat;
-	element_s *last_profile;
 	element_s *new_profile;
 
 
@@ -3267,23 +3243,7 @@ static element_s *do_add_profile(const char *profile)
 		return NULL;
 	}
 
-	if (root_element) {
-		last_profile = root_element->children;
-		while (last_profile->next) {
-			last_profile = last_profile->next;
-		}
-
-		last_profile->next = new_profile;
-		new_profile->prev = last_profile;
-
-	} else {
-		root_element = init_new_element();
-		root_element->type = TYPE_ROOT;
-		root_element->name = xstrdup("Profile collection");
-		root_element->children = new_profile;
-	}
-
-	new_profile->parent = root_element;
+	add_profile(new_profile);
 
 	Nprint("Profile added: %s", new_profile->name);
 
@@ -3295,7 +3255,7 @@ static element_s *do_add_profile(const char *profile)
  * a directory, reads all .xml files in it, non-recursively.
  * Returns number of added profiles.
  */
-static int add_profile(const char *name)
+static int add_profile_from_path(const char *name)
 {
 	int num = 0;
 	struct stat file_stat;
@@ -3356,7 +3316,7 @@ static INLINE int add_new_profile(void)
 			(const xmlChar *)filename,
 			(const xmlChar *)base);
 
-		num = add_profile(fullname);
+		num = add_profile_from_path(fullname);
 
 		xfree(fullname);
 		xfree(base);
@@ -3380,7 +3340,7 @@ static INLINE int move_profile_up(element_s *profile)
 	/* Second profile. */
 	if (profile->prev->prev == NULL) {
 		/* Now it's first, update root element. */
-		root_element->children = profile;
+		profile->parent->children = profile;
 	}
 
 
@@ -3420,7 +3380,7 @@ static INLINE int move_profile_down(element_s *profile)
 	/* First profile. */
 	if (profile->prev == NULL) {
 		/* Now it's second, update root element. */
-		root_element->children = profile->next;
+		profile->parent->children = profile->next;
 	}
 
 
@@ -4744,7 +4704,7 @@ int main(int argc, char **argv)
 
 	/* Add profiles from command line. */
 	for (i = optind; i < argc; ++i) {
-		add_profile(argv[i]);
+		add_profile_from_path(argv[i]);
 	}
 
 	if (*opt_log_status_window) {

@@ -77,17 +77,27 @@ typedef struct element_s {
 	struct element_s *profile;
 } element_s;
 
+element_s *root_element;
 
-element_s *init_new_element(void);
-void free_element(element_s *el);
-void link_element(element_s *el, element_s *prev, element_s *parent,
-		  element_s *profile);
+void add_profile(element_s * const profile);
+void remove_profile(element_s * const profile);
+
+element_s *create_profile_element(const char * const profile_path);
+element_s *create_comment_element(const element_s * const profile,
+				  const element_s * const parent);
+element_s *create_handler_element(const element_s * const profile,
+				  const element_s * const parent,
+				  const char * const handler_name);
+
+void free_element(element_s * const el);
+void link_element(element_s * const el, element_s * const prev);
+
 element_s *parse_profile(const char *filename);
 
-element_s *get_profile_by_element(element_s *el);
-element_s *get_profile_by_name(element_s *root, const char *name);
+element_s *get_profile_by_element(const element_s * const el);
+element_s *get_profile_by_name(const char * const name);
 
-element_s *get_next_element(element_s *el);
-element_s *get_prev_element(element_s *el);
+element_s *get_next_element(const element_s * const el);
+element_s *get_prev_element(const element_s * const el);
 
 #endif /* H_PARSER_ */

@@ -90,44 +90,6 @@
  * XML_DOCB_DOCUMENT_NODE=     21
  */
 
-static unsigned int element_id = 0;
-
-static const struct handler_attribute *find_handler_attribute(const handler_info_s *handler,
-							      const char *name)
-{
-	int i;
-	const struct handler_attribute *attr;
-
-	if (!handler->attributes)
-		return NULL;
-
-	for (i = 0; (handler->attributes[i].name); ++i) {
-		attr = &handler->attributes[i];
-		if (strcmp(attr->name, name) == 0)
-			return attr;
-	}
-
-	return NULL;
-}
-
-static const struct handler_parameter *find_handler_parameter(const handler_info_s *handler,
-							      const char *name)
-{
-	int i;
-	const struct handler_parameter *param;
-
-	if (!handler->parameters)
-		return NULL;
-
-	for (i = 0; (handler->parameters[i].name); ++i) {
-		param = &handler->parameters[i];
-		if (strcmp(param->name, name) == 0)
-			return param;
-	}
-
-	return NULL;
-}
-
 static int parse_node_attributes(xmlNodePtr node, element_s *element)
 {
 	handler_info_s *handler = element->handler;
@@ -287,62 +249,29 @@ static int make_handler_element(xmlNodePtr node, element_s *element)
 	return 0;
 }
 
-static INLINE element_s *create_element(xmlNodePtr node, element_s *parent)
+static element_s *create_element(xmlNodePtr node,
+				 const element_s * const parent,
+				 const element_s * const profile)
 {
-	xmlChar *c;
-	handler_s *handler;
-	element_s *el = init_new_element();
-	const char *syntax_version;
+	element_s *el = NULL;
 
-
-	el->id = element_id++;
-	el->parent = parent;
-	syntax_version = find_parent_with_data(el, HDATA_SYNTAX_VERSION);
-
-	switch (node->type) {
-		case XML_ELEMENT_NODE:
-			el->name = xstrdup((const char *)node->name);
-			if ((handler = find_handler(el->name, syntax_version))) {
-				el->type = TYPE_ELEMENT;
-				el->handler = handler->info;
-				if (make_handler_element(node, el)) {
-					free_element(el);
-					el = NULL;
-				} else {
-					/* Add content, if any. */
-					if (node->children
-					    && node->children->type == XML_TEXT_NODE
-					    && node->children->next == NULL) {
-						if ((c = xmlNodeGetContent(node))) {
-							el->content = xstrdup((const char *)c);
-							xfree(c);
-						}
-					}
-				}
-			} else {
-				Nprint_err("No handler found for %s (syntax version %s).",
-					   el->name, syntax_version);
-				free_element(el);
-				el = NULL;
-			}
-
-			break;
-		case XML_COMMENT_NODE:
-			el->name = xstrdup("comment");
-			el->type = TYPE_COMMENT;
-			el->handler = find_handler("comment", syntax_version)->info;
+	if (node->type == XML_ELEMENT_NODE) {
+		if ((el = create_handler_element(profile, parent,
+						 (const char *) node->name))) {
 			if (make_handler_element(node, el)) {
 				free_element(el);
 				el = NULL;
-				break;
 			}
-
-			break;
-		default:
-			break;
+		}
+	} else if (node->type == XML_COMMENT_NODE) {
+		if ((el = create_comment_element(profile, parent))) {
+			if (make_handler_element(node, el)) {
+				free_element(el);
+				el = NULL;
+			}
+		}
 	}
 
-	xfree(syntax_version);
 	return el;
 }
 
@@ -357,10 +286,10 @@ static element_s *convert_nodes(xmlNodePtr node, element_s *profile,
 		return NULL;
 	}
 
-	if ((el = create_element(node, parent))) {
+	if ((el = create_element(node, parent, profile))) {
 		for (child = node->children; child; child = child->next) {
 			if ((c = convert_nodes(child, profile, el))) {
-				link_element(c, prev, el, profile);
+				link_element(c, prev);
 				prev = c;
 			}
 		}
@@ -375,23 +304,15 @@ static INLINE element_s *convert_doc(xmlDocPtr doc)
 	element_s *el, *profile, *prev = NULL;
 	xmlNodePtr child;
 
-	profile = init_new_element();
-
 	if ((realpath((const char *)doc->URL, resolved_path))) {
-		profile->name = xstrdup(resolved_path);
+		profile = create_profile_element(resolved_path);
 	} else {
-		profile->name = xstrdup((const char *)doc->URL);
+		profile = create_profile_element((const char *)doc->URL);
 	}
-
-	profile->type = TYPE_PROFILE;
-	profile->id = element_id++;
-	profile->profile = profile;
-	profile->handler = find_handler("__root", "all")->info;
 
 	for (child = doc->children; child; child = child->next) {
 		if ((el = convert_nodes(child, profile, profile))) {
-			link_element(el, prev, profile, profile);
-
+			link_element(el, prev);
 			prev = el;
 		}
 	}
