@@ -24,7 +24,7 @@
 		</stageinfo>
 
 		<configure>
-			<prefix>PAGE=letter</prefix>
+			<prefix>PAGE=&paper_size;</prefix>
 			<param>--prefix=/usr</param>
 		</configure>
 
