@@ -569,7 +569,9 @@ static void finish_logging(char *installed_files)
 
 	package_string = alloc_package_string(current_package);
 
-	Nprint("Sending the package log to the frontend... ");
+	if (opt_be_verbose) {
+		Nprint("Sending the package log to the frontend... ");
+	}
 
 	comm_send_ctrl_msg(BACKEND_CTRL_SOCK,
 		CTRL_SENDING_LOG_FILE, "%s", package_string);
