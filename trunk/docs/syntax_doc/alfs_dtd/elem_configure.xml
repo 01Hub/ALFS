@@ -8,8 +8,8 @@
 <synopsis>
 &lt;!ELEMENT configure     ((param | prefix)*)&gt;
 &lt;!ATTLIST configure
-          base             CDATA #IMPLIED
-          command          CDATA #IMPLIED&gt;
+          base            CDATA #IMPLIED
+          command         CDATA #IMPLIED&gt;
 </synopsis>
 
 <para>This element is an element of&nbsp;:&nbsp;&nbsp;
