@@ -23,7 +23,6 @@
 		<option>parents</option>
 
 		<name>bin</name>
-		<name>etc</name>
 		<name>include</name>
 		<name>lib</name>
 		<name>sbin</name>
@@ -66,7 +65,6 @@
 
 	<mkdir base="/usr/local">
 		<option>parents</option>
-
 		<name>bin</name>
 		<name>etc</name>
 		<name>include</name>
