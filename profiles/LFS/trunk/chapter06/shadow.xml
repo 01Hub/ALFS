@@ -34,11 +34,15 @@
 			<replace></replace>
 		</search_replace>
 
-		<search_replace>
-			<file>man/Makefile</file>
-			<find>groups</find>
-			<replace></replace>
-		</search_replace>
+		<!--
+		  Note: the next step uses sed, because the matching
+		  lines need to be removed from the file.
+		-->
+		<execute command="sed">
+			<param>-i</param>
+			<param>-e '/groups/d'</param>
+			<param>man/Makefile</param>
+		</execute>
 
 		<make>
 			<param>&jlevel;</param>	
