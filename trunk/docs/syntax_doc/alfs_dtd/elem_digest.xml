@@ -21,12 +21,19 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>digest</filename> is used to specify the MD5
-digest hash of the archive file to be unpacked, or of the file to be
-downloaded.</para>
+<para>The <command>digest</command> element is used to specify a unique
+digest of the file to be operated on by the parent element. Typically these
+digests are MD5 sums, but an ALFS implementation can support alternative
+digests as well, including SHA-1.</para>
 
-<para>The attribute <filename>type</filename> is preset as an MD5
-hash.</para>
+<note><para>Support for the <command>digest</command> element is
+implementation specific.  Not all implementations will support every type
+of digest hash available.  Refer to the documentation for your
+implementation to determine what options are available.</para></note>
+
+<para>The <command>type</command> attribute specifies the algorithm used to
+create the specified digest value, and defaults to MD5 if not
+specified.</para>
 
 </sect2>
 

@@ -23,13 +23,22 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>requires</filename> denotes a dependency
+<para>The <command>requires</command> element denotes a dependency
 between two packages. The package containing the
-<filename>requires</filename> element depends on the package whose name is
-contained in the <filename>name</filename> sub-element.</para>
+<command>requires</command> element depends on the package whose name is
+contained in the <command>name</command> sub-element.</para>
 
-<para>The actual name is put into a <filename>name</filename> element
-because we might want to add a version in a future version.</para>
+<para>The actual name is put into a <command>name</command>
+child-element.</para>
+
+<note><para>To work properly, the package identified in the
+<command>name</command> child-element must be defined in either the same
+profile as the <command>requires</command> element, or in an additional
+profile (if the ALFS implementation you are using supports loading multiple
+profiles).</para></note>
+
+<para>The <command>version</command> element can be used to specify the
+allowable version(s) of the required package.</para>
 
 </sect2>
 

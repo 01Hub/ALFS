@@ -23,17 +23,20 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>utilizes</filename> indicates that the package
-containing the <filename>utilizes</filename> element utilizes the package
-whose name is contained in the <filename>name</filename> sub-element, but
+<para>The <command>utilizes</command> element indicates that the package
+containing the <command>utilizes</command> element utilizes the package
+whose name is contained in the <command>name</command> sub-element, but
 does not depend on it (in which case the element
-<filename>requires</filename> should be used).</para>
+<command>requires</command> should be used).</para>
 
-<para>The actual name is put into a <filename>name</filename> element
-because we might want to add a version in a future version.</para>
+<para>The actual name is put into a <command>name</command>
+child-element.</para>
 
-<note><para>To work properly, then element <filename>name</filename> must
-be defined in the same profile.</para></note>
+<note><para>To work properly, the package identified in the
+<command>name</command> child-element must be defined in either the same
+profile as the <command>utilizes</command> element, or in an additional
+profile (if the ALFS implementation you are using supports loading multiple
+profiles).</para></note>
 
 </sect2>
 

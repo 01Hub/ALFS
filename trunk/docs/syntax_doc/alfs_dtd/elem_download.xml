@@ -26,29 +26,30 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>download</filename> is one of the top-level
+<para>The <command>download</command> element is one of the top-level
 operation elements. It is used to specify one or several URLs from which a
-file can be downloaded, and optionally a digest to check that the file
-being downloaded is the right one.</para>
+file can be downloaded; optionally a digest to check that the file being
+downloaded is the right one and was downloaded correctly (not corrupted or
+truncated).</para>
 
-<para>The sub-element <filename>file</filename> contains the name of the
+<para>The <command>file</command> sub-element contains the name of the
 file to be downloaded.</para>
 
-<para>The sub-element <filename>url</filename> contains the url of the
+<para>The <command>url</command> sub-element contains the url of the
 directory from which the download is performed. It should be terminated by
 a slash [&nbsp;/&nbsp;]. More precisely, the actual URL used for the
-download is the catenation of the content of the <filename>url</filename>
-element with the content of the <filename>file</filename> element.</para>
+download is the catenation of the content of the <command>url</command>
+element with the content of the <command>file</command> element.</para>
 
-<para>The sub-element <filename>destination</filename> contains the path of
+<para>The <command>destination</command> sub-element contains the path of
 the directory into which the download should be performed.</para>
 
-<para>The sub-element <filename>digest</filename> contains the value with
+<para>The <command>digest</command> sub-element contains the value to
 which the digest computed from the dowloaded file will be compared. See
 <xref linkend="elem_digest"/>.</para>
 
 <para>If the file is already present in the destination directory, no
-download is performed but the digest is checked if present.</para>
+download is performed but the digest is checked if specified.</para>
 
 </sect2>
 
@@ -59,7 +60,6 @@ download is performed but the digest is checked if present.</para>
 	&lt;file&gt;gzip-1.2.4a.tar.gz&lt;/file&gt;
 	&lt;url&gt;ftp://gnu.org/&lt;/url&gt;
 	&lt;destination&gt;/tmp/&lt;/destination&gt;
-	&lt;digest&gt;924e6a05e52715dc0f96385b35f2f680&lt;/digest&gt;
 &lt;/download&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>

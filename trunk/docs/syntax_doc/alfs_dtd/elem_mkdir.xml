@@ -6,7 +6,7 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT mkdir          (option?, name+, permissions?)&gt;
+&lt;!ELEMENT mkdir          (option?, permissions?, name+)&gt;
 &lt;!ATTLIST mkdir
           base           CDATA #IMPLIED&gt;
 </synopsis>
@@ -27,29 +27,27 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>mkdir</filename> is one of the top-level
+<para>The <command>mkdir</command> element is one of the top-level
 operation elements. It describes the creation of one (or several)
 directory(ies).</para>
 
-<para>The sub-element <filename>option</filename> provides a means to pass
+<para>The <command>option</command> sub-element provides a means to pass
 an option to the <command>mkdir</command> command.</para>
 
 <note><para>Not all of the <command>mkdir</command> options are in every
 implementation.  Refer to the documentation for your implementation to
 determine what options are available.</para></note>
 
-<para>The sub-element <filename>name</filename> contains the name(s) of
-the directory(ies) to be created.</para>
-
-<para>The sub-element <filename>permissions</filename> assigns permissions
+<para>The <command>permissions</command> sub-element assigns permissions
 to the directories created by the command following the syntax in 
 <xref linkend="elem_permissions"/>.</para>
 
-<para>The attribute <filename>base</filename> gives the name of the
+<para>The <command>name</command> sub-element contains the name(s) of
+the directory(ies) to be created.</para>
+
+<para>The <command>base</command> attribute gives the name of the
 directory in which the new directory will be created. See
 <xref linkend="elem_base"/>.</para>
-
-<para></para>
 
 </sect2>
 

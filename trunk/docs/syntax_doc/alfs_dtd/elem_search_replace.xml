@@ -27,20 +27,20 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>search_replace</filename> is one of the
+<para>The <command>search_replace</command> element is one of the
 top-level operation elements.  It is used to perform a search and replace
-operation of a file.</para>
+operation of a file on a file's contents.</para>
 
-<para>The sub-element <filename>file</filename> contains the
-filename</para>
+<para>The <command>file</command> sub-element contains the
+filename.</para>
 
-<para>The sub-element <filename>find</filename> contains the string to be
-searched</para>
+<para>The <command>find</command> sub-element contains the string to be
+searched.</para>
 
-<para>The sub-element <filename>replace</filename> contains the replacement
+<para>The <command>replace</command> sub-element contains the replacement
 string.</para>
 
-<para>The attribute <filename>base</filename> specifies the directory in
+<para>The <command>base</command> attribute specifies the directory in
 which the file replacement occurs. See 
 <xref linkend="elem_base"/>.</para>
 

@@ -32,9 +32,11 @@ element.</para>
 
 <para>The attribute <filename>mode</filename> can take the value
 <literal>"append"</literal>, in which case the content of the element is
-appended to the value of the environment variable</para>
+appended to the value of the environment variable.</para>
 
-</sect2>
+<para>The attribute <filename>mode</filename> can also take the value
+<literal>"prepend"</literal>, in which case the content of the element is
+prepended to the value of the environment variable.</para></sect2>
 
 <sect2>
 <title>Examples</title>

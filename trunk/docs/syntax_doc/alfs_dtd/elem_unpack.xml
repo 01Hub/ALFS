@@ -26,19 +26,19 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>unpack</filename> is one of the top-level
+<para>The <command>unpack</command> element is one of the top-level
 operation elements.  It is used to unpack an archive into a destination
 directory</para>
 
-<para>The sub-element <filename>reference</filename> gives the URL of the
+<para>The <command>reference</command> sub-element gives the URL of the
 archive; it is only used if the archive file is not available locally.</para>
 
-<para>The sub-element <filename>digest</filename> gives the digest of the
+<para>The <command>digest</command> sub-element gives the digest of the
 archive, as computed by openssl, using the digest type specified in the
-attribute <filename>type</filename>.</para>
+attribute <command>type</command>. See <xref linkend="elem_digest"/>.</para>
 
-<para>The sub-element <filename>archive</filename> gives the name of the
-archive, and the sub-element <filename>destination</filename> gives the
+<para>The <command>archive</command> sub-element gives the name of the
+archive, and the sub-element <command>destination</command> gives the
 name of the directory in which the archive is unpacked.</para>
 
 </sect2>
@@ -47,7 +47,6 @@ name of the directory in which the archive is unpacked.</para>
 <title>Examples</title>
 
 <screen><userinput>&lt;unpack&gt;
-	&lt;digest&gt;cbe9f79450aeecfb06d5e856af16c2cf&lt;/digest&gt;
 	&lt;reference&gt;ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz&lt;/reference&gt;
 	&lt;archive&gt;/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive&gt;
 	&lt;destination&gt;/usr/src&lt;/destination&gt;
@@ -56,13 +55,7 @@ name of the directory in which the archive is unpacked.</para>
 <para>The equivalent bash script is&nbsp;:</para>
 
 <screen>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
-[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
-  echo Retrieving  ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
-[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
-  wget -O /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
-[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
-  echo Archive does not exist &amp;&amp; exit 3
-
+wget -nc -O /usr/src/lfs-packages/gzip-1.2.4a.tar.gz ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
 cd /usr/src
 <command>tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></screen>
 
