@@ -26,7 +26,7 @@ be ignored are:</para>
 <para><filename>--------------------------------------------------</filename></para>
 
 <sect2>
-<title>Linux kernel coding style</title>
+<title>Linux Kernel Coding Style</title>
 
 <para>This is a short document describing the preferred coding style for the linux
 kernel. Coding style is very personal, and I won't <emphasis>force</emphasis>
