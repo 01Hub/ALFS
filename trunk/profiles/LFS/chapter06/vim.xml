@@ -48,7 +48,7 @@
 				=" Begin /etc/vimrc
 				=
 				=set nocompatible
-				=set bs=2
+				=set backspace=2
 				=syntax on
 				=
 				=" End /etc/vimrc
