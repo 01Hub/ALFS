@@ -570,8 +570,8 @@
 <!ENTITY php-package   "php-4.3.3.tar.bz2">
 <!ENTITY php-directory "php-4.3.3">
 
-<!ENTITY proftpd-version   "1.2.8">
-<!ENTITY proftpd-package   "proftpd-1.2.8.tar.bz2">
+<!ENTITY proftpd-version   "1.2.8p">
+<!ENTITY proftpd-package   "proftpd-1.2.8p.tar.bz2">
 <!ENTITY proftpd-directory "proftpd-1.2.8">
 
 <!--************* packages for chapter 26 *************-->

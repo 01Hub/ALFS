@@ -5,12 +5,22 @@
 			<archive>&packages_dir;/&freetype-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
+		<copy>
+		        <source>&packages_dir;/&freetype-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
 			<base>&build_dir;/&freetype-directory;</base>
 		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&freetype-patch;</param>
+		</patch>
 
 		<search_replace
 		    base = "&build_dir;/&freetype-directory;/include/freetype/config">
