@@ -59,7 +59,8 @@ get_profile() {
 }
 
 get_dtd() {
-    cp ../DTD/${1}-${DTD_VERSION}.dtd doc
+    svn export svn://svn.linuxfromscratch.org/ALFS/DTD/${1} download/DTD
+    cp download/DTD/ALFS.dtd doc
 }
 
 while getopts ?d:s:h:u:p: param; do
@@ -68,7 +69,7 @@ while getopts ?d:s:h:u:p: param; do
 	    mkdir -p download
 	    DTD_VERSION=${OPTARG}
 	    echo Getting ${DTD_VERSION} version of DTD...
-	    get_dtd ALFS
+	    get_dtd ${DTD_VERSION}
 	    echo done.
 	    ;;
 	s)
