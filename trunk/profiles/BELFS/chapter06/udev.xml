@@ -23,7 +23,9 @@
 			<param>-i ../&udev-config-patch;</param>
 		</patch>
 
-		<make />
+		<make>
+		  <param>udevdir=/dev</param>
+		</make>
 
 		<make>
 		  <param>udevdir=/dev</param>
