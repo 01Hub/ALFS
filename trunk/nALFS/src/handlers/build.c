@@ -56,6 +56,7 @@ static int build_main(element_s *el)
 const char *build_parameters[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
+#if HANDLER_SYNTAX_2_0
 	{
 		.name = "build",
 		.description = "Build",
@@ -67,6 +68,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.is_action = 0,
 		.priority = 0
 	},
+#endif
 	{
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}

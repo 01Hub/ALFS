@@ -124,6 +124,7 @@ static int check_main(element_s *el)
 const char *check_parameters[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
+#if HANDLER_SYNTAX_3_0
 	{
 		.name = "check",
 		.description = "Check for installed package",
@@ -135,6 +136,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.is_action = 1,
 		.priority = 0
 	},
+#endif
 	{
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}
