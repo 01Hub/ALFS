@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!--
+       BLFS CVS profile
 
-       BLFS CVS profile (in book order)
+       originally by Vassili Dzuba - vdzuba@linuxfromscratch.org
 
-       by Vassili Dzuba - vdzuba@linuxfromscratch.org
+       Maintained by:
+       Thomas Pegg <thomasp@linuxfromscratch.org>
+       Jamie Bennett <jamie@linuxfromscratch.org>
+       Joachim Beckers <joachim@linuxfromscratch.org>
+       Kevin P. Fleming <kpfleming@linuxfromscratch.org>
 
-       Last updated : 20031103
-      *** ALPHA VERSION ***
+       Last updated : 2004-07-03
   -->
 
 <!DOCTYPE alfs SYSTEM "ALFS-3.1.dtd" [
