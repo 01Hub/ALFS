@@ -204,7 +204,7 @@
 <!ENTITY libpng-package   "libpng-&libpng-version;.tar.gz">
 <!ENTITY libpng-directory "libpng-&libpng-version;">
 
-<!ENTITY libpng-link-to-proper-libs-patch     "libpng-1.2.5-link-to-proper-libs.patch">
+<!ENTITY libpng-link-to-proper-libs-patch     "libpng-&libpng-version;-link-to-proper-libs.patch">
 
 <!ENTITY libtiff-version   "3.6.1">
 <!ENTITY libtiff-package   "tiff-v&libtiff-version;.tar.gz">
@@ -214,7 +214,7 @@
 <!ENTITY libungif-package   "libungif-&libungif-version;.tar.gz">
 <!ENTITY libungif-directory "libungif-&libungif-version;">
 
-<!ENTITY libungif-patch     "libungif-4.1.0b1-va_start.patch">
+<!ENTITY libungif-patch     "libungif-&libungif-version;-va_start.patch">
 
 <!ENTITY libmng-version   "1.0.7">
 <!ENTITY libmng-package   "libmng-&libmng-version;.tar.gz">
@@ -228,7 +228,7 @@
 <!ENTITY freetype-package   "freetype-&freetype-version;.tar.bz2">
 <!ENTITY freetype-directory "freetype-&freetype-version;">
 
-<!ENTITY freetype-bytecode-interpreter-patch     "freetype-2.1.5-bytecode-interpreter.patch">
+<!ENTITY freetype-bytecode-interpreter-patch "freetype-&freetype-version;-bytecode-interpreter.patch">
 
 <!ENTITY fontconfig-version   "2.2.2">
 <!ENTITY fontconfig-package   "fontconfig-&fontconfig-version;.tar.gz">
@@ -246,7 +246,7 @@
 <!ENTITY svgalib-package   "svgalib-&svgalib-version;.tar.gz">
 <!ENTITY svgalib-directory "svgalib-&svgalib-version;">
 
-<!ENTITY svgalib-gcc3-1-patch     "svgalib-1.4.3-gcc3-1.patch">
+<!ENTITY svgalib-gcc3-1-patch     "svgalib-&svgalib-version;-gcc3-1.patch">
 
 <!ENTITY directfb-version   "0.9.20">
 <!ENTITY directfb-package   "DirectFB-&directfb-version;.tar.gz">
@@ -266,20 +266,20 @@
 <!ENTITY bc-package   "bc-&bc-version;.tar.gz">
 <!ENTITY bc-directory "bc-&bc-version;">
 
-<!ENTITY bc-flex-invocation-patch    "bc-1.06-flex-invocation.patch">
-<!ENTITY bc-readline-patch    "bc-1.06-readline.patch">
+<!ENTITY bc-flex-invocation-patch    "bc-&bc-version;-flex_invocation-1.patch">
+<!ENTITY bc-readline-patch    "bc-&bc-version;-readline-1.patch">
 
 <!ENTITY rep-gtk-version   "0.18">
 <!ENTITY rep-gtk-package   "rep-gtk-&rep-gtk-version;.tar.gz">
 <!ENTITY rep-gtk-directory "rep-gtk-&rep-gtk-version;">
 
-<!ENTITY rep-gtk-gtk2.4-patch    "rep-gtk-0.18-gtk2.4.patch">
+<!ENTITY rep-gtk-gtk2.4-patch    "rep-gtk-&rep-gtk-version;-gtk2.4.patch">
 
 <!ENTITY compface-version   "1.4">
 <!ENTITY compface-package   "compface-&compface-version;.tar.gz">
 <!ENTITY compface-directory "compface-&compface-version;">
 
-<!ENTITY compface-errno-2-patch     "compface-1.4-errno-2.patch">
+<!ENTITY compface-errno-2-patch     "compface-&compface-version;-errno-2.patch">
 
 <!ENTITY imagemagick-version   "5.5.7-16">
 <!ENTITY imagemagick-package   "ImageMagick-&imagemagick-version;.tar.bz2">
@@ -292,53 +292,52 @@
 <!--************* packages for chapter 11 *************-->
 
 <!ENTITY gpm-version   "1.20.1">
-<!ENTITY gpm-package   "gpm-1.20.1.tar.bz2">
-<!ENTITY gpm-directory "gpm-1.20.1">
+<!ENTITY gpm-package   "gpm-&gpm-version;.tar.bz2">
+<!ENTITY gpm-directory "gpm-&gpm-version;">
 
-<!ENTITY gpm-patch1    "gpm-1.20.1-segfault.patch">
-<!ENTITY gpm-patch2    "gpm-1.20.1-silent.patch">
+<!ENTITY gpm-patch1    "gpm-&gpm-version;-segfault.patch">
+<!ENTITY gpm-patch2    "gpm-&gpm-version;-silent.patch">
 
 <!ENTITY fcron-version   "2.9.4">
-<!ENTITY fcron-package   "fcron-2.9.4.src.tar.gz">
-<!ENTITY fcron-directory "fcron-2.9.4">
+<!ENTITY fcron-package   "fcron-&fcron-version;.src.tar.gz">
+<!ENTITY fcron-directory "fcron-&fcron-version;">
 
 <!ENTITY hdparm-version   "5.5">
-<!ENTITY hdparm-package   "hdparm-5.5.tar.gz">
-<!ENTITY hdparm-directory "hdparm-5.5">
-<!ENTITY hdparm-patch1 "">
+<!ENTITY hdparm-package   "hdparm-&hdparm-version;.tar.gz">
+<!ENTITY hdparm-directory "hdparm-&hdparm-version;">
+<!ENTITY hdparm-patch1 "hdparm-&hdparm-version;-glibc_CVS-1.patch">
 
 <!ENTITY which-version   "2.16">
-<!ENTITY which-package   "which-2.16.tar.gz">
-<!ENTITY which-directory "which-2.16">
+<!ENTITY which-package   "which-&which-version;.tar.gz">
+<!ENTITY which-directory "which-&which-version;">
 
 <!ENTITY unzip-version   "5.51">
 <!ENTITY unzip-package   "unzip551.tar.gz">
-<!ENTITY unzip-directory "unzip-5.51">
+<!ENTITY unzip-directory "unzip-&unzip-version;">
 
-<!ENTITY unzip-patch1    "unzip-5.51-fix-Makefile.patch">
-<!ENTITY unzip-patch2    "unzip-5.51-fix-libz.patch">
-<!ENTITY unzip-patch3    "unzip-5.51-dotdot.patch">
-<!ENTITY unzip-patch4    "unzip-5.51-dont-make-noise.patch">
+<!ENTITY unzip-patch1    "unzip-&unzip-version;-fix-Makefile.patch">
+<!ENTITY unzip-patch2    "unzip-&unzip-version;-fix-libz.patch">
+<!ENTITY unzip-patch3    "unzip-&unzip-version;-dont-make-noise.patch">
 
 <!ENTITY zip-version   "2.3">
 <!ENTITY zip-package   "zip23.tar.gz">
-<!ENTITY zip-directory "zip-2.3">
+<!ENTITY zip-directory "zip-&zip-version;">
 
 <!ENTITY pciutils-version   "2.1.11">
-<!ENTITY pciutils-package   "pciutils-2.1.11.tar.bz2">
-<!ENTITY pciutils-directory "pciutils-2.1.11">
+<!ENTITY pciutils-package   "pciutils-&pciutils-version;.tar.bz2">
+<!ENTITY pciutils-directory "pciutils-&pciutils-version;">
 
 <!ENTITY pkgconfig-version   "0.15.0">
-<!ENTITY pkgconfig-package   "pkgconfig-0.15.0.tar.gz">
-<!ENTITY pkgconfig-directory "pkgconfig-0.15.0">
+<!ENTITY pkgconfig-package   "pkgconfig-&pkgconfig-version;.tar.gz">
+<!ENTITY pkgconfig-directory "pkgconfig-&pkgconfig-version;">
 
 <!ENTITY cpio-version   "2.5">
-<!ENTITY cpio-package   "cpio-2.5.tar.gz">
-<!ENTITY cpio-directory "cpio-2.5">
+<!ENTITY cpio-package   "cpio-&cpio-version;.tar.gz">
+<!ENTITY cpio-directory "cpio-&cpio-version;">
 
 <!ENTITY mc-version   "4.6.0">
-<!ENTITY mc-package   "mc-4.6.0.tar.gz">
-<!ENTITY mc-directory "mc-4.6.0">
+<!ENTITY mc-package   "mc-&mc-version;.tar.gz">
+<!ENTITY mc-directory "mc-&mc-version;">
 
 <!--************* packages for chapter 12 *************-->
 
@@ -404,17 +403,17 @@
 <!ENTITY gnat-package   "gnat-&gnat-version;-i686-pc-redhat71-gnu-bin.tar.gz">
 <!ENTITY gnat-directory "gnat-&gnat-version;-i686-pc-linux-gnu-bin">
 
-<!ENTITY gcc-full-version   "3.3.2">
+<!ENTITY gcc-full-version   "3.3.3">
 <!ENTITY gcc-full-package   "gcc-&gcc-full-version;.tar.bz2">
 <!ENTITY gcc-full-directory "gcc-&gcc-full-version;">
 
 <!ENTITY gcc-full-patch1    "gcc-&gcc-full-version;-no_fixincludes-1.patch">
 
-<!ENTITY tcl-version   "8.4.5">
+<!ENTITY tcl-version   "8.4.6">
 <!ENTITY tcl-package   "tcl&tcl-version;-src.tar.gz">
 <!ENTITY tcl-directory "tcl&tcl-version;">
 
-<!ENTITY tk-version   "8.4.5">
+<!ENTITY tk-version   "8.4.6">
 <!ENTITY tk-package   "tk&tk-version;-src.tar.gz">
 <!ENTITY tk-directory "tk&tk-version;">
 
