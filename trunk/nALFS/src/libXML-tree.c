@@ -268,20 +268,20 @@ static int make_handler_element(xmlNodePtr node, element_s *element)
 		}
 
 		/* If the handler wants to validate its private data */
-		if (handler->invalid_data) {
-			result = handler->invalid_data(element);
-			if (result)
-				return result;
+		if (handler->valid_data) {
+			result = handler->valid_data(element);
+			if (!result)
+				return -1;
 		}
 
 	}
 
 	/* If the element's parent wants to validate its children */
-	if (parent->invalid_child) {
-		result = parent->invalid_child(element->parent, element);
-		if (result) {
+	if (parent->valid_child) {
+		result = parent->valid_child(element->parent, element);
+		if (!result) {
 			Nprint_warn("<%s>: <%s> not valid here.", parent->name, handler->name);
-			return result;
+			return -1;
 		}
 	}
 

@@ -79,9 +79,9 @@ typedef int (*handler_parameter)(const element_s * const element,
 				 const char * const value);
 typedef int (*handler_content)(const element_s * const element,
 			       const char * const content);
-typedef int (*handler_invalid_data)(const element_s * const element);
-typedef int (*handler_invalid_child)(const element_s * const element,
-				     const element_s * const child);
+typedef int (*handler_valid_data)(const element_s * const element);
+typedef int (*handler_valid_child)(const element_s * const element,
+				   const element_s * const child);
 
 typedef struct handler_info_s {
 	const char *name;		/* Name of the element it handles. */
@@ -114,8 +114,8 @@ typedef struct handler_info_s {
 	*/
 	handler_setup setup;	/* Function to setup handler private data. */
 	handler_free free;
-	handler_invalid_data invalid_data; /* Validate private data. */
-	handler_invalid_child invalid_child; /* Validate potential child. */
+	handler_valid_data valid_data; /* Validate private data. */
+	handler_valid_child valid_child; /* Validate potential child. */
 	handler_attribute attribute;
 	handler_parameter parameter;
 	handler_content content;

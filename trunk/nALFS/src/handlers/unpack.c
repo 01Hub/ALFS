@@ -206,39 +206,39 @@ static int unpack_parameter(const element_s * const element,
 	}
 }
 
-static int unpack_invalid_data(const element_s * const element)
+static int unpack_valid_data(const element_s * const element)
 {
 	struct unpack_data *data = (struct unpack_data *) element->handler_data;
 
 	if (!data->archive) {
 		Nprint_err("<unpack>: \"archive\" must be specified.");
-		return 1;
+		return 0;
 	}
 
 	if (!data->destination) {
 		Nprint_err("<unpack>: \"destination\" must be specified.");
-		return 1;
+		return 0;
 	}
 
-	return 0;
+	return 1;
 }
 
-static int unpack_invalid_child(const element_s * const element,
-				const element_s * const child)
+static int unpack_valid_child(const element_s * const element,
+			      const element_s * const child)
 {
 	struct unpack_data *data = (struct unpack_data *) element->handler_data;
 
 	if (child->handler->type & HTYPE_DIGEST) {
 		if (data->digest) {
 			Nprint_err("<unpack>: only one <digest> allowed.");
-			return 1;
+			return 0;
 		}
 
 		data->digest = child;
-		return 0;
+		return 1;
 	}
 
-	return 1;
+	return 0;
 }
 
 #if HANDLER_SYNTAX_2_0
@@ -373,13 +373,13 @@ static const struct handler_attribute unpack_attributes_v3_2[] = {
 	{ .name = NULL }
 };
 
-static int unpack_invalid_data_v3_2(const element_s * const element)
+static int unpack_valid_data_v3_2(const element_s * const element)
 {
 	struct unpack_data *data = (struct unpack_data *) element->handler_data;
 
 	if (!data->archive) {
 		Nprint_err("<unpack>: \"archive\" must be specified.");
-		return 1;
+		return 0;
 	}
 
 	if (!data->base) {
@@ -387,13 +387,13 @@ static int unpack_invalid_data_v3_2(const element_s * const element)
 
 		if (!base) {
 			Nprint_err("<unpack>: \"base\" must be specified at or above this element.");
-			return 1;
+			return 0;
 		} else {
 			xfree(base);
 		}
 	}
 
-	return 0;
+	return 1;
 }
 
 static int unpack_main_ver3_2(const element_s * const element)
@@ -426,7 +426,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = unpack_setup,
 		.free = unpack_free,
 		.parameter = unpack_parameter,
-		.invalid_data = unpack_invalid_data,
+		.valid_data = unpack_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -441,8 +441,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = unpack_setup,
 		.free = unpack_free,
 		.parameter = unpack_parameter,
-		.invalid_data = unpack_invalid_data,
-		.invalid_child = unpack_invalid_child,
+		.valid_data = unpack_valid_data,
+		.valid_child = unpack_valid_child,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -457,8 +457,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = unpack_setup,
 		.free = unpack_free,
 		.parameter = unpack_parameter,
-		.invalid_data = unpack_invalid_data,
-		.invalid_child = unpack_invalid_child,
+		.valid_data = unpack_valid_data,
+		.valid_child = unpack_valid_child,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -476,8 +476,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameter = unpack_parameter,
 		.attribute = unpack_attribute,
 		.alternate_shell = 1,
-		.invalid_data = unpack_invalid_data_v3_2,
-		.invalid_child = unpack_invalid_child,
+		.valid_data = unpack_valid_data_v3_2,
+		.valid_child = unpack_valid_child,
 	},
 #endif
 	{

@@ -107,16 +107,16 @@ static int digest_content(const element_s * const element,
 	return 0;
 }
 
-static int digest_invalid_data(const element_s * const element)
+static int digest_valid_data(const element_s * const element)
 {
 	struct digest_data *data = (struct digest_data *) element->handler_data;
 
 	if (!data->content) {
 		Nprint_err("<digest>: content cannot be empty.");
-		return 1;
+		return 0;
 	}
 
-	return 0;
+	return 1;
 }
 
 static char *digest_data(const element_s * const element,
@@ -171,7 +171,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.content = digest_content,
 		.data = HDATA_COMMAND | HDATA_VERSION,
 		.alloc_data = digest_data,
-		.invalid_data = digest_invalid_data,
+		.valid_data = digest_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -188,7 +188,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.content = digest_content,
 		.data = HDATA_COMMAND | HDATA_VERSION,
 		.alloc_data = digest_data,
-		.invalid_data = digest_invalid_data,
+		.valid_data = digest_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -205,7 +205,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.content = digest_content,
 		.data = HDATA_COMMAND | HDATA_VERSION,
 		.alloc_data = digest_data,
-		.invalid_data = digest_invalid_data,
+		.valid_data = digest_valid_data,
 	},
 #endif
 	{

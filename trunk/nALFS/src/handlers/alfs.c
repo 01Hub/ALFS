@@ -89,16 +89,16 @@ static int alfs_attribute(const element_s * const element,
 	}
 }
 
-static int alfs_invalid_child(const element_s * const element,
-			      const element_s * const child)
+static int alfs_valid_child(const element_s * const element,
+			    const element_s * const child)
 {
 	(void) element;
 
-	return !(child->handler->type & (HTYPE_NORMAL |
-					 HTYPE_COMMENT |
-					 HTYPE_TEXTDUMP |
-					 HTYPE_PACKAGE |
-					 HTYPE_EXECUTE));
+	return child->handler->type & (HTYPE_NORMAL |
+				       HTYPE_COMMENT |
+				       HTYPE_TEXTDUMP |
+				       HTYPE_PACKAGE |
+				       HTYPE_EXECUTE);
 }
 
 static int alfs_main(const element_s * const el)
@@ -127,7 +127,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = alfs_free,
 		.attributes = alfs_attributes,
 		.attribute = alfs_attribute,
-		.invalid_child = alfs_invalid_child,
+		.valid_child = alfs_valid_child,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -141,7 +141,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = alfs_free,
 		.attributes = alfs_attributes,
 		.attribute = alfs_attribute,
-		.invalid_child = alfs_invalid_child,
+		.valid_child = alfs_valid_child,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -155,7 +155,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = alfs_free,
 		.attributes = alfs_attributes,
 		.attribute = alfs_attribute,
-		.invalid_child = alfs_invalid_child,
+		.valid_child = alfs_valid_child,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -169,7 +169,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.free = alfs_free,
 		.attributes = alfs_attributes,
 		.attribute = alfs_attribute,
-		.invalid_child = alfs_invalid_child,
+		.valid_child = alfs_valid_child,
 	},
 #endif
 	{
