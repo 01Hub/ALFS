@@ -17,6 +17,7 @@ t_plug *getplug ()
 	return &ass_plugin;
 }
 
+// TODO: Implement the new ASS syntax
 static void t_shell (xmlNodePtr node, void *data)
 {
 	parse_cmdblock(prof, node);
@@ -28,13 +29,13 @@ static void t_item (xmlNodePtr node, void *data)
 
 	if (xmlGetProp(node, "sha1"))
 	{
-		moo->algo = SHA1;
+		moo->algo = ALGO_SHA1;
 		moo->sum = xmlGetProp(node, "sha1");
 	}
 	else
 	if (xmlGetProp(node, "md5"))
 	{
-		moo->algo = MD5;
+		moo->algo = ALGO_MD5;
 		moo->sum = xmlGetProp(node, "md5");
 	}
 	

@@ -3,7 +3,7 @@ CFLAGS+=-std=c99 -D_BSD_SOURCE -D_GNU_SOURCE
 CFLAGS+=-Wall -Werror -g3
 
 CFLAGS+=`xml2-config --cflags` `curl-config --cflags`
-LDLIBS+=`xml2-config --libs` `curl-config --libs` -ldl
+LDLIBS+=`xml2-config --libs` `curl-config --libs` -ldl -ltar -lcrypto
 
 .PHONY: clean todo all-subdirs clean-subdirs sloccount
 

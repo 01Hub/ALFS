@@ -5,4 +5,8 @@
 
 extern const char *compr[NUM_COMPR], *unpck[NUM_COMPR];
 
+char *directory (char *tarball);
+char *read_file (char *fname);
+char *popen_read (char *cmd);
+
 #endif

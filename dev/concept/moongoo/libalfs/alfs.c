@@ -449,9 +449,9 @@ char *algo2str (hash_algo algo)
 	{
 		case (ALGO_NONE):
 			return "none";
-		case (MD5):
+		case (ALGO_MD5):
 			return "md5";
-		case (SHA1):
+		case (ALGO_SHA1):
 			return "sha1";
 		default:
 			return "unknown";
