@@ -94,8 +94,8 @@ static int setenv_attribute(const element_s * const element,
 
 	switch (attr->private) {
 	case SETENV_MODE:
-		if (!strcmp(value, "append")) {
-			Nprint_err("<%s>: the only \"mode\" allowed is \"append\".", element->handler->name);
+		if (strcmp(value, "append")) {
+			Nprint_err("<%s>: the only \"mode\" allowed is \"append\". (%s)", element->handler->name, value);
 			return 1;
 		}
 		data->append_mode = 1;

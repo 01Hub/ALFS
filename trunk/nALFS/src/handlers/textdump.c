@@ -127,8 +127,8 @@ static int textdump_attribute(const element_s * const element,
 		data->base = xstrdup(value);
 		return 0;
 	case TEXTDUMP_MODE:
-		if (!strcmp(value, "append")) {
-			Nprint_err("<%s>: the only \"mode\" allowed is \"append\".", element->handler->name);
+		if (strcmp(value, "append")) {
+			Nprint_err("<%s>: the only \"mode\" allowed is \"append\" (%s).", element->handler->name, value);
 			return 1;
 		}
 		data->append_mode = 1;
