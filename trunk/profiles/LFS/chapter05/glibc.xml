@@ -60,7 +60,7 @@
 		</mkdir>
 
 		<execute command="touch">
-			<param>/etc/ld.so.conf</param>
+			<param>/tools/etc/ld.so.conf</param>
 		</execute>
 
 		<make>
