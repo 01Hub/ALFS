@@ -31,6 +31,9 @@
       <utilizes>
         <name>&krb-impl;</name>
       </utilizes>
+      <utilizes>
+        <name>pth</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

@@ -11,6 +11,9 @@
 %config_entities;
 %files;
 
+<!ENTITY % package_entities_extra SYSTEM "../config/packages/ch43.ent">
+%package_entities_extra;
+
 <!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
 <!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
 
@@ -25,7 +28,7 @@
       	<name>net-tools</name>
       </utilizes>
       <utilizes>
-	<name>Net-DNS</name>
+	<name>net-dns</name>
       </utilizes>
       <utilizes>
 	<name>openjade</name>
@@ -49,7 +52,7 @@
         <param>named</param>
       </execute>
       <execute command="getent passwd named &gt; /dev/null || useradd">
-        <param>-c named</param>
+        <param>-c "BIND Owner"</param>
         <param>-m</param>
         <param>-g named</param>
         <param>-s /bin/false</param>
@@ -60,6 +63,16 @@
       <stageinfo>
         <base>&build_dir;/&bind-directory;</base>
       </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&bind-patch;</param>
+      </patch>
+      <search_replace>
+        <file>configure</file>
+        <find>dsssl-stylesheets</find>
+        <replace>dsssl-stylesheets-&docbook-dsssl-version;</replace>
+      </search_replace>
       <configure>
         <param>--prefix=/usr</param>
         <param>--sysconfdir=/etc</param>
@@ -115,7 +128,6 @@
 	<source>misc/sdb</source>
 	<destination>/usr/share/doc/bind-&bind-version;/misc</destination>
       </copy>
-
     </stage>
     <stage name="Configuring chroot environment">
       <stageinfo>

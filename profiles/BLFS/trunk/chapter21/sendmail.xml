@@ -61,6 +61,12 @@
         <param>-s /bin/false</param>
         <param>smmsp</param>
       </execute>
+    <permissions mode="1777">
+      <name>/var/mail</name>
+    </permissions>
+    <mkdir>
+      <name>/var/spool/mqueue</name>
+    </mkdir>
     </stage>
     <stage name="Installing.">
       <stageinfo>
@@ -81,13 +87,28 @@
         <source>generic-linux.mc</source>
         <destination>sendmail.mc</destination>
       </copy>
+      <execute base="&build_dir;/&sendmail-directory;/cf/cf" command="sh Build">
+        <param>sendmail.mc</param>
+      </execute>
       <mkdir>
         <option>parents</option>
         <name>/etc/mail</name>
       </mkdir>
-      <execute base="&build_dir;/&sendmail-directory;/cf/cf" command="sh Build sendmail.mc" />
+      <permissions mode="755">
+        <name>/etc/mail</name>
+      </permissions>
       <execute base="&build_dir;/&sendmail-directory;/cf/cf" command="sh Build install-cf" />
       <execute command="sh Build install" />
+      <copy>
+        <option>recursive</option>
+        <source>cf/*</source>
+        <destination>/etc/mail</destination>
+      </copy>
+      <copy>
+        <source>cf/cf/submit.mc</source>
+        <source>cf/cf/sendmail.mc</source>
+        <destination>/etc/mail</destination>
+      </copy>
       <copy>
       	<source>sendmail/sendmail.8</source>
 	<source>editmap/editmap.8</source>
@@ -132,17 +153,8 @@
 	  =MAILER-DAEMON: root
 	</content>
       </textdump>
-      <copy>
-        <option>recursive</option>
-        <source>cf/*</source>
-        <destination>/etc/mail</destination>
-      </copy>
-      <copy>
-        <source>cf/cf/submit.mc</source>
-        <source>cf/cf/sendmail.mc</source>
-        <destination>/etc/mail</destination>
-      </copy>
       <execute command="newaliases -v" />
+      <execute base="/etc/mail" command="m4 m4/cf.m4 sendmail.mc &gt; sendmail.cf" />
     </stage>
     <stage name="Installing bootscript and configuration">
       <stageinfo>

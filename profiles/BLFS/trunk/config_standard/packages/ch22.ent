@@ -3,11 +3,11 @@
 <!ENTITY bind-version   "9.3.0">
 <!ENTITY bind-package   "bind-&bind-version;.tar.gz">
 <!ENTITY bind-directory "bind-&bind-version;">
+<!ENTITY bind-patch     "&bind-version;-patch1">
 
 <!ENTITY dhcp-version "3.0.1">
 <!ENTITY dhcp-package "dhcp-&dhcp-version;.tar.gz">
 <!ENTITY dhcp-directory "dhcp-&dhcp-version;">
-
 <!ENTITY dhcp-iproute2-patch "dhcp-&dhcp-version;-iproute2-1.patch">
 
 <!ENTITY leafnode-version   "1.10.0">
@@ -22,8 +22,8 @@
 <!ENTITY rsync-package   "rsync-&rsync-version;.tar.gz">
 <!ENTITY rsync-directory "rsync-&rsync-version;">
 
-<!ENTITY openldap-version   "2.2.17">
-<!ENTITY openldap-package   "openldap-stable-20040923.tgz">
+<!ENTITY openldap-version   "2.2.20">
+<!ENTITY openldap-package   "openldap-&openldap-version;.tgz">
 <!ENTITY openldap-directory "openldap-&openldap-version;">
 
 <!ENTITY samba-version "3.0.9">

@@ -19,6 +19,9 @@
       <utilizes>
 	<name>&mta-impl;</name>
       </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
