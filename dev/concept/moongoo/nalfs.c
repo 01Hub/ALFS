@@ -4,13 +4,16 @@
 #include <util.h>
 #include <devel.h>
 
+// TODO: Having a big static buffer sucks
+#define BUF_LEN		3000
+
 profile *prof;
-char commando[512];
+char commando[BUF_LEN];
 
 void parse_unpack (xmlNodePtr node)
 {
 	node=node->children;
-	snprintf(commando, 512, "tar -C %s %s\n", find_value(node, 
+	snprintf(commando, BUF_LEN, "tar -C %s %s\n", find_value(node, 
 		"destination"), find_value(node, "archive"));
 	
 	// TODO: Handle <digest>
@@ -19,20 +22,20 @@ void parse_unpack (xmlNodePtr node)
 
 void parse_remove (xmlNodePtr node)
 {
-	snprintf(commando, 512, "rm -rf %s\n", xmlNodeGetContent(node));
+	snprintf(commando, BUF_LEN, "rm -rf %s\n", xmlNodeGetContent(node));
 }
 
 void parse_make (xmlNodePtr node)
 {
 	node=node->children;
-	snprintf(commando, 512, "%s make %s\n", find_value(node, "prefix"), 
+	snprintf(commando, BUF_LEN, "%s make %s\n", find_value(node, "prefix"), 
 		find_values(node, "param"));
 }
 
 void parse_configure (xmlNodePtr node)
 {
 	node = node->children;
-	snprintf(commando, 512, "%s ./configure %s\n", find_value(node, 
+	snprintf(commando, BUF_LEN, "%s ./configure %s\n", find_value(node, 
 		"prefix"), find_values(node, "param"));
 }
 
@@ -41,14 +44,14 @@ void parse_copy (xmlNodePtr node)
 	char *orig[4] = { "force", "archive", "recursive", NULL };
 	char *repl[4] = { "-f", "-a", "-r", NULL };
 	node = node->children;
-	snprintf(commando, 512, "cp %s %s %s\n", find_values_repl(node, "option",
+	snprintf(commando, BUF_LEN, "cp %s %s %s\n", find_values_repl(node, "option",
 		orig, repl), find_value(node, "source"), find_value(node, 
 		"destination"));
 }
 
 void __parse_env (xmlNodePtr node, void *data)
 {
-	snprintf(commando, 512, "export %s=\"%s\"\n", xmlGetProp(node, "name"), 
+	snprintf(commando, BUF_LEN, "export %s=\"%s\"\n", xmlGetProp(node, "name"), 
 			xmlNodeGetContent(node));
 }
 
@@ -59,7 +62,7 @@ void parse_environment (xmlNodePtr node, void *data)
 
 void parse_base (xmlNodePtr node, void *data)
 {
-	snprintf(commando, 512, "cd %s\n", xmlNodeGetContent(node));
+	snprintf(commando, BUF_LEN, "cd %s\n", xmlNodeGetContent(node));
 }
 
 void parse_stageinfo (xmlNodePtr node)
@@ -72,13 +75,13 @@ void parse_stageinfo (xmlNodePtr node)
 void parse_textdump (xmlNodePtr node)
 {
 	node=node->children;
-	snprintf(commando, 512, "cat >%s << EOF\n%s\nEOF\n", find_value(node,
+	snprintf(commando, BUF_LEN, "cat >%s << EOF\n%s\nEOF\n", find_value(node,
 		"file"), cut_trail(find_value(node, "content"), "="));
 }
 
 void parse_execute (xmlNodePtr node)
 {
-	snprintf(commando, 512, "%s %s\n", xmlGetProp(node, "command"), 
+	snprintf(commando, BUF_LEN, "%s %s\n", xmlGetProp(node, "command"), 
 		find_values(node->children, "param"));
 }
 
@@ -87,14 +90,14 @@ void parse_mkdir (xmlNodePtr node)
 	char *orig[2] = { "parents", NULL };
 	char *repl[2] = { "-p", NULL };
 	node=node->children;
-	snprintf(commando, 512, "mkdir %s %s\n", find_values_repl(node, "option",
+	snprintf(commando, BUF_LEN, "mkdir %s %s\n", find_values_repl(node, "option",
 		orig, repl), find_value(node, "name"));
 }
 
 void parse_search_replace (xmlNodePtr node)
 {
 	node = node->children;
-	snprintf(commando, 512, "sed -i 's%%%s%%%s%%g' %s\n", find_value(node,
+	snprintf(commando, BUF_LEN, "sed -i 's%%%s%%%s%%g' %s\n", find_value(node,
 		"find"), find_value(node, "replace"), find_value(node, "file"));
 }
 
@@ -102,7 +105,7 @@ void parse_permissions (xmlNodePtr node)
 {
 	char *orig[2] = { "recursive", NULL };
 	char *repl[2] = { "-R", NULL };
-	snprintf(commando, 512, "chmod %s %s %s\n", find_values_repl(node->children,
+	snprintf(commando, BUF_LEN, "chmod %s %s %s\n", find_values_repl(node->children,
 		"option", orig, repl), xmlGetProp(node, "mode"), 
 		find_value(node->children, "name"));
 }
@@ -111,7 +114,7 @@ void parse_ownership (xmlNodePtr node)
 {
 	char *orig[2] = { "recursive", NULL };
 	char *repl[2] = { "-R", NULL };
-	snprintf(commando, 512, "chown %s %s:%s %s\n", 
+	snprintf(commando, BUF_LEN, "chown %s %s:%s %s\n", 
 		find_values_repl(node->children, "option", orig, repl), 
 		xmlGetProp(node, "user"), xmlGetProp(node, "group"),
 		find_value(node->children, "name"));
@@ -119,12 +122,12 @@ void parse_ownership (xmlNodePtr node)
 
 void parse_patch (xmlNodePtr node)
 {
-	snprintf(commando, 512, "patch %s\n", find_values(node->children, "param"));
+	snprintf(commando, BUF_LEN, "patch %s\n", find_values(node->children, "param"));
 }
 
 void parse_move (xmlNodePtr node)
 {
-	snprintf(commando, 512, "mv %s %s\n", find_value(node->children, "source"), 
+	snprintf(commando, BUF_LEN, "mv %s %s\n", find_value(node->children, "source"), 
 		find_value(node->children, "destination"));
 }
 
@@ -132,7 +135,7 @@ void parse_link (xmlNodePtr node)
 {
 	char *orig[2] = { "force", NULL };
 	char *repl[2] = { "f", NULL };
-	snprintf(commando, 512, "ln -s%s %s %s\n", find_values_repl(node->children,
+	snprintf(commando, BUF_LEN, "ln -s%s %s %s\n", find_values_repl(node->children,
 		"option", orig, repl), find_value(node->children, "target"),
 		find_value(node->children, "name"));
 }
