@@ -115,9 +115,9 @@
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.gz">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
-<!ENTITY glibc-md5 "508188d136cbc32935637c17398d7748">
+<!ENTITY glibc-md5 "ec29bf73a4fd0897dcaf564fa8ae4c4c">
 <!ENTITY glibc-version "2.3.4">
-<!ENTITY glibc-cvs-tag "-20040701">
+<!ENTITY glibc-cvs-tag "-20040828">
 <!ENTITY glibc-package "glibc-&glibc-version;&glibc-cvs-tag;.tar.bz2">
 <!ENTITY glibc-directory "glibc-&glibc-version;&glibc-cvs-tag;">
 
@@ -171,17 +171,14 @@
 <!ENTITY inetutils-kernel-headers-patch-md5 "de1f835265b7ed818d7c0fb8c0be334b">
 <!ENTITY inetutils-kernel-headers-patch "inetutils-&inetutils-version;-kernel_headers-1.patch">
 
-<!ENTITY iproute2-md5 "dab25877d70f132dcfeaba373805d867">
-<!ENTITY iproute2-version "2.6.8">
-<!ENTITY iproute2-cvs-ver "040823">
-<!ENTITY iproute2-package "iproute2-&iproute2-version;-&iproute2-cvs-ver;.tar.gz">
+<!ENTITY iproute2-md5 "3e49a2065c02038faa01c97a46bb63df">
+<!ENTITY iproute2-version "2.6.9">
+<!ENTITY iproute2-cvs-ver "ss040831">
+<!ENTITY iproute2-package "iproute2-&iproute2-version;-&iproute2-cvs-ver;.tar.bz2">
 <!ENTITY iproute2-directory "iproute2-&iproute2-version;">
 
 <!ENTITY iproute2-remove-db-patch-md5 "b3964c194cda7a36979d245380b4556f">
 <!ENTITY iproute2-remove-db-patch "iproute2-&iproute2-version;_&iproute2-cvs-ver;-remove_db-1.patch">
-
-<!ENTITY iproute2-manpages-patch-md5 "8ee2e330e92712d5a4e0d967b95e865c">
-<!ENTITY iproute2-manpages-patch "iproute2-&iproute2-version;_&iproute2-cvs-ver;-manpages-1.patch">
 
 <!ENTITY kbd-md5 "7892c7010512a9bc6697a295c921da25">
 <!ENTITY kbd-version "1.12">
@@ -193,10 +190,15 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "1ce531e61c060124def9897d9f6ca026">
-<!ENTITY lfs-bootscripts-version "2.2.2">
+<!ENTITY lfs-bootscripts-md5 "8a39d48d7d1316e93877b9095f4574ea">
+<!ENTITY lfs-bootscripts-version "2.2.3">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
+
+<!ENTITY libol-md5 "4183c9fc4d92af1249d0a7cf8041acbe">
+<!ENTITY libol-version "0.3.14">
+<!ENTITY libol-package "libol-&libol-version;.tar.bz2">
+<!ENTITY libol-directory "libol-&libol-version;">
 
 <!ENTITY libtool-md5 "ed04093bc9d88faa3e476ac6f4db8d50">
 <!ENTITY libtool-version "1.5.8">
@@ -214,8 +216,8 @@
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
 
-<!ENTITY linux-libc-headers-md5 "b876a1819ca0179cd2b690ef0b034c66">
-<!ENTITY linux-libc-headers-version "2.6.8.0">
+<!ENTITY linux-libc-headers-md5 "a75c264f90b07b4f3ba05febc7386f4b">
+<!ENTITY linux-libc-headers-version "2.6.8.1">
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
 <!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
 
@@ -306,16 +308,10 @@
 <!ENTITY shadow-package "shadow-&shadow-version;.tar.bz2">
 <!ENTITY shadow-directory "shadow-&shadow-version;">
 
-<!ENTITY sysklogd-md5 "d214aa40beabf7bdb0c9b3c64432c774">
-<!ENTITY sysklogd-version "1.4.1">
-<!ENTITY sysklogd-package "sysklogd-&sysklogd-version;.tar.gz">
-<!ENTITY sysklogd-directory "sysklogd-&sysklogd-version;">
-
-<!ENTITY sysklogd-kernel-headers-patch-md5 "290ef10e5fe52676899da43cb8dd2914">
-<!ENTITY sysklogd-kernel-headers-patch "sysklogd-&sysklogd-version;-kernel_headers-1.patch">
-
-<!ENTITY sysklogd-signal-patch-md5 "cbe6093ef2fb8089d86d8dd636224cc7">
-<!ENTITY sysklogd-signal-patch "sysklogd-&sysklogd-version;-signal-1.patch">
+<!ENTITY syslog-ng-md5 "ebd1e0630fccc34b860a3211b9980838">
+<!ENTITY syslog-ng-version "1.6.5">
+<!ENTITY syslog-ng-package "syslog-ng-&syslog-ng-version;.tar.bz2">
+<!ENTITY syslog-ng-directory "syslog-ng-&syslog-ng-version;">
 
 <!ENTITY sysvinit-md5 "8a2d8f1ed5a2909da04132fefa44905e">
 <!ENTITY sysvinit-version "2.85">
@@ -339,6 +335,9 @@
 <!ENTITY texinfo-version "4.7">
 <!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
+
+<!ENTITY texinfo-segfault-patch-md5 "ce5aa1bb05b3c6638e071d2b0283fdd6">
+<!ENTITY texinfo-segfault-patch "texinfp-&texinfo-version;-segfault-1.patch">
 
 <!ENTITY udev-md5 "8202bf86e9f2cb5483d473f9977eeafc">
 <!ENTITY udev-version "030">

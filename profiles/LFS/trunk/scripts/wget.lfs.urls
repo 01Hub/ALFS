@@ -31,21 +31,21 @@ ftp://ftp.kernel.org/pub/linux/utils/kernel/module-init-tools/module-init-tools-
 ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/hotplug-2004_04_01.tar.bz2
 ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/udev-030.tar.bz2
 ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-2.6.8.1.tar.bz2
-ftp://ftp.lfs-matrix.de/pub/lfs/packages/conglomeration/glibc/glibc-2.3.4-20040701.tar.bz2
+ftp://ftp.lfs-matrix.de/pub/lfs/packages/conglomeration/glibc/glibc-2.3.4-20040828.tar.bz2
 ftp://ftp.pld.org.pl/software/shadow/shadow-4.0.4.1.tar.bz2
 ftp://ftp.vim.org/pub/vim/unix/vim-6.3.tar.bz2
 ftp://ftp.vim.org/pub/vim/extra/vim-6.3-lang.tar.gz
 ftp://ftp.win.tue.nl/pub/home/aeb/linux-local/utils/kbd/kbd-1.12.tar.gz
 ftp://sources.redhat.com/pub/bzip2/v102/bzip2-1.0.2.tar.gz
 
-http://developer.osdl.org/dev/iproute2/download/iproute2-2.6.8-040823.tar.gz
+http://developer.osdl.org/dev/iproute2/download/iproute2-2.6.9-ss040831.tar.bz2
 http://distro.ibiblio.org/pub/linux/distributions/sorcerer/sources/grep/2.5.1/grep-2.5.1.tar.bz2
 http://distro.ibiblio.org/pub/linux/distributions/sorcerer/sources/groff/1.19.1/groff-1.19.1.tar.bz2
-http://downloads.linuxfromscratch.org/lfs-bootscripts-2.2.2.tar.bz2
+http://downloads.linuxfromscratch.org/lfs-bootscripts-2.2.3.tar.bz2
 http://downloads.linuxfromscratch.org/udev-config-2.permissions
 http://downloads.linuxfromscratch.org/udev-config-1.rules 
 http://expect.nist.gov/old/expect-5.42.1.tar.gz
-http://ep09.pld-linux.org/~mmazur/linux-libc-headers/linux-libc-headers-2.6.8.0.tar.bz2
+http://ep09.pld-linux.org/~mmazur/linux-libc-headers/linux-libc-headers-2.6.8.1.tar.bz2
 http://freshmeat.net/redir/mktemp/20624/url_tgz/mktemp-1.5.tar.gz
 http://freshmeat.net/redir/util-linux/11029/url_tgz/util-linux-2.12b.tar.gz
 http://ftp.tuniv.szczecin.pl/pub/Linux/alpha-gnu/bison/bison-1.875a.tar.bz2
@@ -54,6 +54,8 @@ http://umn.dl.sourceforge.net/sourceforge/e2fsprogs/e2fsprogs-1.35.tar.gz
 http://umn.dl.sourceforge.net/sourceforge/psmisc/psmisc-21.5.tar.gz
 http://umn.dl.sourceforge.net/sourceforge/tcl/tcl8.4.7-src.tar.gz
 http://umn.dl.sourceforge.net/sourceforge/lex/flex-2.5.31.tar.bz2
+http://www.balabit.com/downloads/syslog-ng/libol/0.3/libol-0.3.14.tar.bz2
+http://www.balabit.com/downloads/syslog-ng/1.6/src/syslog-ng-1.6.5.tar.bz2
 http://www.gzip.org/zlib/zlib-1.2.1.tar.bz2
 http://www.ibiblio.org/pub/Linux/system/daemons/sysklogd-1.4.1.tar.gz
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/coreutils-5.2.1-suppress_uptime_kill_su-1.patch
@@ -66,14 +68,14 @@ http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/hotplug-2004_04_01-bogu
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/hotplug-2004_04_01-device-2.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/inetutils-1.4.2-kernel_headers-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/inetutils-1.4.2-no_server_man_pages-1.patch
-http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/iproute2-2.6.8_04823-remove_db-1.patch
-http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/iproute2-2.6.8_04823-manpages-1.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/iproute2-2.6.8_ss04831-remove_db-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/man-1.5o-80cols-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/mktemp-1.5-add_tempfile-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/perl-5.8.5-libc-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/sysklogd-1.4.1-kernel_headers-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/sysklogd-1.4.1-signal-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/sysvinit-2.85-proclen-1.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/texinfo-4.7-segfault-1.patch
 http://www.sethwklein.net/projects/iana-etc/downloads/iana-etc-1.01.tar.bz2
 
 

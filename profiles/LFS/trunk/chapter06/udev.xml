@@ -35,13 +35,13 @@
 		<copy base="&packages_dir;">
         		<option>force</option>
         		<source>&udev-permissions-file;</source>
-        		<destination>/etc/udev/permissions.d/00-lfs.permissions</destination>
+        		<destination>/etc/udev/permissions.d/25-lfs.permissions</destination>
 		</copy>
 
 		<copy base="&packages_dir;">
         		<option>force</option>
         		<source>&udev-rules-file;</source>
-        		<destination>/etc/udev/rules.d/00-lfs.rules</destination>
+        		<destination>/etc/udev/rules.d/25-lfs.rules</destination>
 		</copy>		
 	</stage>
 

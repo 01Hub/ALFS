@@ -29,12 +29,6 @@
 			<param>-i &packages_dir;/&iproute2-remove-db-patch;</param>
 		</patch>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&iproute2-manpages-patch;</param>
-		</patch>
-
 		<configure />
 
 		<make>
