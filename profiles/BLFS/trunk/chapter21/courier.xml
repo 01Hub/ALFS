@@ -68,6 +68,8 @@
         <param>--disable-autorenamesent</param>
         <param>--enable-workarounds-for-imap-client-bugs</param>
         <param>--with-db=gdbm</param>
+        <param>--with-ispell=/usr/bin/aspell</param>
+        <param>--enable-mimetypes</param>
       </configure>
       <make />
       <make>

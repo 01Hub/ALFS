@@ -12,6 +12,14 @@
 ]>
 <alfs>
   <package name="wvdial" version="&wvdial-version;">
+    <packageinfo>
+      <requires>
+        <name>wvstreams</name>
+      </requires>
+      <requires>
+        <name>ppp</name>
+      </requires>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&wvdial-package;</archive>
