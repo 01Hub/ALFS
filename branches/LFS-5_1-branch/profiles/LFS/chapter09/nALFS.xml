@@ -21,6 +21,11 @@
 		<make>
 			<param>install</param>
 		</make>
+
+		<copy>
+			<source>doc/nALFSrc</source>
+			<destination>/etc/nALFSrc</destination>
+		</copy>
 	</stage>
 
 	<stage name="Cleaning up.">
