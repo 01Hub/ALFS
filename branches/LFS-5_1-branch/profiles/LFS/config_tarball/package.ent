@@ -74,7 +74,7 @@
 <!ENTITY expect-directory "expect-5.41">
 
 <!ENTITY expect-spawn-patch-md5 "ef6d0d0221c571fb420afb7033b3bbba">
-<!ENTITY expect-spawn-patch "expect-&expect-version;-spawn.patch">
+<!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
 
 <!ENTITY file-md5 "cdcb598477128d1be116f13f71a84e24">
 <!ENTITY file-version "4.09">
@@ -195,6 +195,11 @@
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.bz2">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
+<!ENTITY libxml2-md5 "41e9ccf94c1cacb8b1d127b01fba8c38">
+<!ENTITY libxml2-version "2.6.9">
+<!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.gz">
+<!ENTITY libxml2-directory "libxml2-&libxml2-version;">
+
 <!ENTITY linux-md5 "88d7aefa03c92739cb70298a0b486e2c">
 <!ENTITY linux-version "2.4.26">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
@@ -241,6 +246,11 @@
 <!ENTITY modutils-version "2.4.27">
 <!ENTITY modutils-package "modutils-&modutils-version;.tar.bz2">
 <!ENTITY modutils-directory "modutils-&modutils-version;">
+
+<!ENTITY nALFS-md5 "1e7bb2216cbddec8c97fc0a440216bf1">
+<!ENTITY nALFS-version "1.2.4">
+<!ENTITY nALFS-package "nALFS-&nALFS-version;.tar.bz2">
+<!ENTITY nALFS-directory "nALFS-&nALFS-version;">
 
 <!ENTITY ncurses-md5 "236968460fe1a1d0e293a9c5e6f10805">
 <!ENTITY ncurses-version "5.4">
