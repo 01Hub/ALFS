@@ -1,5 +1,4 @@
 AC_INIT(nALFS,CVS,[],nALFS)
-AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([gnubuild])
 AM_INIT_AUTOMAKE([foreign dist-bzip2 subdir-objects])
 AM_MAINTAINER_MODE
