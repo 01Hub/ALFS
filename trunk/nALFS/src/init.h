@@ -28,7 +28,7 @@
  * Some program's info.
  */
 #define EMAIL              "haski@sezampro.yu"
-#define SITE               "http://www.beotel.yu/~has/projects/alfs/index.html"
+#define SITE               "http://www.linuxfromscratch.org/alfs/"
 #define COPYRIGHT          "Copyright (C) 2001-2003 Neven Has"
 
 void read_env_variables(void);
