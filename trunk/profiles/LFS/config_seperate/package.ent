@@ -205,6 +205,8 @@
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
 
+<!ENTITY linux-src-fpu-patch "linux-&linux-version;-fpu-1.patch">
+
 <!ENTITY linux-libc-headers-md5 "7b73c05e9631d592746247dff1211e11">
 <!ENTITY linux-libc-headers-version "2.6.6.0">
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
