@@ -183,7 +183,7 @@ static int load_handler(lt_dlhandle handle, lt_ptr data)
 		handler_info_s *hi = &handler_info[i];
 		handler_s *found;
 
-		if (found = find_handler(hi->name, hi->syntax_version)) {
+		if ((found = find_handler(hi->name, hi->syntax_version))) {
 			if (found->info->priority >= hi->priority) {
 				Nprint_warn("The handler already exists, "
 					    "skipping it: %s (%s)",
