@@ -30,10 +30,6 @@
      -->
 <!ENTITY orig_packages_dir "/home/dwheeler/LFS-5.0/packages">
 
-<!-- original package dir for PREBLFS -->
-<!ENTITY orig_preblfs_packages_dir "/var2/packages-PREBLFS">
-
-
 <!-- Partition of your new LFS system.
      This entity is used only to initialize the new fstab file.
      No attempt is done to access this partition during
