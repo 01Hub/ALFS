@@ -8,9 +8,9 @@
 
 <!-- Generally used entities go here -->
 
-<!ENTITY maintainer-fullname "James Robertson">
-<!ENTITY maintainer-firstname "James">
-<!ENTITY maintainer-address "jwrober@linuxfromscratch.org">
+<!ENTITY book-maintainer-fullname "James Robertson">
+<!ENTITY book-maintainer-firstname "James">
+<!ENTITY book-maintainer-address "jwrober@linuxfromscratch.org">
 <!ENTITY book-product "ALFS DTD">
 
 <!ENTITY ftp-root "ftp://ftp.linuxfromscratch.org">
