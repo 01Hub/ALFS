@@ -1,0 +1,7 @@
+<!ENTITY chapter00            SYSTEM "chapter00.xml">
+<!ENTITY ch0-acknowledgements SYSTEM "acknowledgements.xml">
+<!ENTITY ch0-changelog        SYSTEM "changelog.xml">
+<!ENTITY ch0-contactinfo      SYSTEM "contactinfo.xml">
+<!ENTITY ch0-conventions      SYSTEM "conventions.xml">
+<!ENTITY ch0-introduction     SYSTEM "introduction.xml">
+
