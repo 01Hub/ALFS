@@ -1,0 +1,11 @@
+<sect1 id="preface-audience">
+<title>Who would want to read this book</title>
+<?dbhtml filename="audience.html" dir="preface"?>
+
+<para>This book is mainly aimed at those who want more information on the 
+&book-product;. The DTD is designed to be implementation agnostic. This means 
+that you may be reading this book as part of an <acronym>ALFS</acronym> source 
+tarball or on the <acronym>ALFS</acronym> website.</para>
+
+</sect1>
+
