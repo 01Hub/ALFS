@@ -8,14 +8,21 @@
 
 <!-- Generally used entities go here -->
 
+<!ENTITY lt     "&#38;#60;">
+<!ENTITY gt     "&#62;">
+<!ENTITY amp    "&#38;#38;">
+<!ENTITY apos   "&#39;">
+<!ENTITY quot   "&#34;">
+<!ENTITY nbsp   "&#32;">
+<!ENTITY emdash "&#304;">
+
+<!ENTITY book-product "ALFS DTD">
+
 <!ENTITY book-maintainer-fullname "James Robertson">
 <!ENTITY book-maintainer-firstname "James">
 <!ENTITY book-maintainer-address "jwrober@linuxfromscratch.org">
-<!ENTITY book-product "ALFS DTD">
 
 <!ENTITY ftp-root "ftp://ftp.linuxfromscratch.org">
 <!ENTITY http-root "http://www.linuxfromscratch.org">
 <!ENTITY hints-root "http://www.linuxfromscratch.org/hints">
 <!ENTITY alfs-root "http://www.linuxfromscratch.org/alfs">
-<!ENTITY nbsp " ">
-<!ENTITY emdash "--">
