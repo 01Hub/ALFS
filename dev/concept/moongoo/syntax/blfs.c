@@ -11,7 +11,8 @@ static t_plug sample_plugin =
 {
 	name:	"BLFS book as profile",
 	vers:	PLUG_VER,
-	parse:	parse_blfs
+	parse:	parse_blfs,
+	write_prof: NULL
 };
 
 t_plug *getplug ()

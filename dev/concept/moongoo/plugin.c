@@ -47,6 +47,7 @@ plug_info *plugscan (char *dir)
 	}
 
 	ret = realloc(ret, (++num)*sizeof(plug_info));
+	ret[num-1].info = NULL;
 	ret[num-1].path = NULL;
 
 	closedir(d);
@@ -132,6 +133,20 @@ void plugunload (plug_info *plug)
 	while (plug[i].path)
 	{
 		dlclose(plug[i].hand);
+		i++;
+	}
+}
+
+void print_plugs (plug_info *plugs, char *def)
+{
+	int i=0;
+	
+	while (plugs[i].info)
+	{
+		char *tmp = plugarg(plugs[i].path);
+		if (strcmp(tmp, "sample"))
+			printf("\t%s\t\t%s%s\n", tmp, plugs[i].info->name, 
+				(((def) && !strcmp(tmp, def)) ? " (default)" : ""));
 		i++;
 	}
 }

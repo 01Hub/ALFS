@@ -12,12 +12,14 @@
 #include <plugin.h>
 
 profile *parse_example (xmlNodePtr node, replaceable *r);
+void write_example (profile *prof, char *fname);
 
 static t_plug sample_plugin =
 {
 	name:	"Example plugin",
 	vers:	PLUG_VER,
-	parse:	parse_example
+	parse:	parse_example,
+	write_prof: write_example
 };
 
 t_plug *getplug ()
@@ -28,4 +30,9 @@ t_plug *getplug ()
 profile *parse_example (xmlNodePtr node, replaceable *r)
 {
 	return NULL;
+}
+
+void write_example (profile *prof, char *fname)
+{
+	printf("Moongoo!\n");
 }

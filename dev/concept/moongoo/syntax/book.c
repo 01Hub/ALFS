@@ -15,7 +15,8 @@ static t_plug book_plugin =
 {
 	name:	"LFS book as profile",
 	vers:	PLUG_VER,
-	parse:	bookasprofile
+	parse:	bookasprofile,
+	write_prof: NULL
 };
 
 t_plug *getplug ()

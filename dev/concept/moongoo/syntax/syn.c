@@ -11,7 +11,8 @@ static t_plug syn_plugin =
 {
 	name:	"Hive profile syntax",
 	vers:	PLUG_VER,
-	parse:	syn_profile
+	parse:	syn_profile,
+	write_prof: NULL
 };
 
 t_plug *getplug ()

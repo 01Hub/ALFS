@@ -11,6 +11,7 @@ typedef struct
 	char *name;
 	int vers;
 	profile *(* parse) (xmlNodePtr node, replaceable *r);
+	void (* write_prof) (profile *prof, char *fname);
 } t_plug;
 
 typedef struct
@@ -33,5 +34,6 @@ void plugerr (char *fname);
 void print_plug (plug_info plug);
 char *plugarg (char *path);
 void plugunload (plug_info *plug);
+void print_plugs (plug_info *plugs, char *def);
 
 #endif

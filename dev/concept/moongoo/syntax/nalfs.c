@@ -18,7 +18,8 @@ static t_plug nalfs_plugin =
 {
 	name:	"nALFS legacy syntax",
 	vers:	PLUG_VER,
-	parse:	nalfs_profile
+	parse:	nalfs_profile,
+	write_prof: NULL
 };
 
 t_plug *getplug ()

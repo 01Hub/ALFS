@@ -2,7 +2,7 @@ CC=gcc
 
 CFLAGS=-I. -I../libalfs
 
-TESTS=tst_md5 tst_sha1 tst_squeeze
+TESTS=tst_libtar tst_md5 tst_sha1 tst_squeeze
 
 .PHONY: all
 
@@ -15,6 +15,7 @@ run: $(TESTS)
 
 include ../inc.mak
 
+tst_libtar: tst.o ../libalfs/libalfs.a
 tst_md5: tst.o ../libalfs/libalfs.a
 tst_sha1: tst.o ../libalfs/libalfs.a
 tst_squeeze: tst.o ../libalfs/libalfs.a
