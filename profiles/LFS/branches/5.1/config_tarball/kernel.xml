@@ -69,7 +69,7 @@
 
 		<copy>
 			<source>System.map</source>
-			<destination>/boot/System-&linux-version;.map</destination>
+			<destination>/boot/System.map-&linux-version;</destination>
 		</copy>
 
 		<copy>
