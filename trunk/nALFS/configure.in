@@ -78,7 +78,8 @@ AC_ARG_WITH(ssl,
 			enable_ssl=yes
 			;;
 		*)
-			LIBS="$LIBS -L$withval/lib"
+			SSL_DIR="$withval"
+			LIBS="$LIBS -L$SSL_DIR/lib"
 			enable_ssl=yes
 			;;
 	esac
@@ -86,8 +87,8 @@ AC_ARG_WITH(ssl,
 
 if test "$enable_ssl" == "yes" ; then
 	AC_CHECK_LIB(ssl, OpenSSL_add_all_digests, [
-		CPPFLAGS="$CPPFLAGS -DHAVE_LIBSSL"
-		LIBS="$LIBS -lcrypto -lssl"])
+		CPPFLAGS="$CPPFLAGS -I$SSL_DIR/include -DHAVE_LIBSSL"
+		LIBS="$LIBS -lcrypto -lssl"], [], -lcrypto)
 fi
 
 
