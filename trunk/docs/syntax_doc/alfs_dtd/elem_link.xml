@@ -58,7 +58,7 @@ works.</para>
 <sect2>
 <title>Examples</title>
 
-<screen><userinput>&lt;link type=&quot;symbolic&quot; &gt;
+<screen><userinput>&lt;link type=&quot;symbolic&quot;&gt;
 	&lt;target&gt;share/man&lt;/target&gt;
 	&lt;target&gt;share/doc&lt;/target&gt;
 	&lt;target&gt;share/info&lt;/target&gt;

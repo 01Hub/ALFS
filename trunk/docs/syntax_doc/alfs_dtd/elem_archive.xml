@@ -18,15 +18,15 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>archive</filename> is used to specify the archive file
-in an <filename>unpack</filename> operation.</para>
+<para>The element <filename>archive</filename> is used to specify the
+archive file in an <filename>unpack</filename> operation.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<para>See <xref linkend="elem_unpack"/> for example usage.</para>
+<para>Refer to <xref linkend="elem_unpack"/> for an example.</para>
 
 </sect2>
 

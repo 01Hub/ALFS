@@ -32,6 +32,7 @@ element.</para></note>
 <title>Examples</title>
 
 <screen><userinput>&lt;textdump base=&quot;/etc&quot;&gt;
+
 	&lt;file&gt;group&lt;/file&gt;
 
 	&lt;content&gt;
@@ -48,6 +49,7 @@ element.</para></note>
 		=dialout:x:10:
 		=audio:x:11:
 	&lt;/content&gt;
+
 &lt;/textdump></userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>

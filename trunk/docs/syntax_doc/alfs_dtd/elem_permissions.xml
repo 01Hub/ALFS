@@ -26,6 +26,13 @@
 operation elements.  It allows one to change the permissions of a (set of)
 file(s) or directory(ies).</para>
 
+<para>The sub-element <filename>option</filename> provides a means to pass
+an option to the <command>chmod</command> command.</para>
+
+<note><para>Not all of the <command>chmod</command> options are in every
+implementation.  Refer to the documentation for your implementation to
+determine what options are available.</para></note>
+
 <para>The sub-element(s) <filename>name</filename> contain the name(s) of
 the files whose permission is to be modified.</para>
 

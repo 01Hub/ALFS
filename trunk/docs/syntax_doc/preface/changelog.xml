@@ -6,9 +6,12 @@
 
 <itemizedlist>
 
-<listitem><para>May 28th, 2004 [jwrober]: Cleaned up elem_copy,
-elem_description, elem_destination, elem_digest, elem_download,
-elem_environment, elem_execute, elem_file, 
+<listitem><para>May 28th, 2004 [jwrober]: Cleaned up elem_archive,
+elem_configure, elem_copy, elem_description, elem_destination, elem_digest,
+elem_download, elem_environment, elem_execute, elem_file, elem_find,
+elem_item, elem_link, elem_list, elem_make, elem_mkdir, elem_move,
+elem_name, elem_ownership, elem_package, elem_packageinfo, elem_para,
+elem_param, 
 </para></listitem>
 
 <listitem><para>April 2nd, 2004 [jwrober]: Cleaned up elem_alfs,

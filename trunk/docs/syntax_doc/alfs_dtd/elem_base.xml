@@ -45,11 +45,14 @@ attribute.</para>
 <title>Examples</title>
 
 <screen><userinput>&lt;stage name=&quot;Install gzip&quot;&gt;
+
 	&lt;stageinfo&gt;
+
 		&lt;root&gt;/mnt/lfs&lt;/root&gt;
 		&lt;user&gt;lfs&lt;/user&gt;
 		&lt;environment&gt;PATH=/bin:/sbin&lt;/environment&gt;
 		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
+
 	&lt;/stageinfo&gt;
 
 	&lt;configure&gt;
@@ -61,6 +64,7 @@ attribute.</para>
 	&lt;make&gt;
 		&lt;param&gt;install&lt;/param&gt;
 	&lt;/make&gt;
+
 &lt;/stage&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
