@@ -73,7 +73,7 @@
 
 <!ELEMENT find           (#PCDATA)>
 
-<!ELEMENT if		 ((%tests;)+, then?, else?)
+<!ELEMENT if		 ((%tests;)+, then?, else?)>
 
 <!ELEMENT item           (#PCDATA)>
 
