@@ -22,6 +22,12 @@
       <requires>
         <name>mozilla</name>
       </requires>
+      <utilizes>
+	<name>nautilus</name>
+      </utilizes>
+      <utilizes>
+	<name>libgtkhtml</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

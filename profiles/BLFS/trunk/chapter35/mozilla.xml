@@ -22,12 +22,27 @@
       <requires>
         <name>libidl</name>
       </requires>
-      <requires>
-        <name>libmng</name>
-      </requires>
-      <requires>
-        <name>which</name>
-      </requires>
+      <utilizes>
+	<name>gnupg</name>
+      </utilizes>
+      <utilizes>
+	<name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+	<name>unzip</name>
+      </utilizes>
+      <utilizes>
+	<name>gnome-vfs2</name>
+      </utilizes>
+      <utilizes>
+	<name>libart-lgpl</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>doxygen</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -46,29 +61,35 @@
       <configure>
         <param>--prefix=/usr</param>
         <param>--with-default-mozilla-five-home=/usr/lib/mozilla</param>
-        <param>--enable-default-toolkit=gtk2</param>
-        <param>--with-x</param>
         <param>--with-system-zlib</param>
-        <param>--with-system-jpeg</param>
         <param>--with-system-png</param>
-        <param>--with-system-mng</param>
-        <param>--enable-xft</param>
-        <param>--enable-crypto</param>
-        <param>--disable-accessibility</param>
-        <param>--disable-tests</param>
-        <param>--disable-debug</param>
-        <param>--disable-logging</param>
-        <param>--enable-reorder</param>
-        <param>--enable-strip</param>
-        <param>--disable-pedantic</param>
-        <param>--enable-cpp-rtti</param>
-        <param>--enable-extensions=all</param>
+	<param>--enable-application=suite</param>
+        <param>--enable-default-toolkit=gtk2</param>
+	<param>--enable-extensions=all</param>
+	<param>--enable-crypto</param>
+	<param>--enable-xft</param>
+	<param>--enable-xinerama</param>
+	<param>--enable-optimize</param>
+	<param>--enable-reorder</param>
+	<param>--enable-strip</param>
+	<param>--enable-cpp-rtti</param>
+	<param>--enable-calendar</param>
+	<param>--disable-freetype2</param>
+	<param>--disable-accessibility</param>
+	<param>--disable-debug</param>
+	<param>--disable-tests</param>
+	<param>--disable-logging</param>
+	<param>--disable-pedantic</param>
+	<param>--disable-installer</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
-      <execute command="install -d /usr/include/mozilla-&mozilla-version;/nss" />
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/include/mozilla-&mozilla-version;/nss</name>
+      </mkdir>
       <execute command="cp -Lf dist/private/nss/*.h dist/public/nss/*.h /usr/include/mozilla-&mozilla-version;/nss" />
       <execute command="ln -nsf mozilla-&mozilla-version; /usr/include/mozilla" />
       <execute command="ln -nsf mozilla-&mozilla-version; /usr/lib/mozilla" />
@@ -105,7 +126,7 @@
         </stageinfo>
         <execute command="./regxpcom" />
         <execute command="./regchrome" />
-        <execute command="touch `find /usr/lib/mozilla-&mozilla-version; -name *.rdf`" />
+        <execute command="touch `find . -name *.rdf`" />
       </stage>
     </stage>
     <stage name="Cleanup">
