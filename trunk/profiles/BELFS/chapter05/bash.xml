@@ -32,6 +32,7 @@
 
 		<configure>
 			<param>--prefix=/tools</param>
+			<param>--without-bash-malloc</param>
 		</configure>
 
 		<make />

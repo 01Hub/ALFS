@@ -7,14 +7,36 @@
 	</mkdir>
 
 	<execute command="mount">
+		<param>-t proc</param>
 		<param>proc</param>
 		<param>&BELFS;/proc</param>
-		<param>-t proc</param>
 	</execute>
 
 	<execute command="mount">
+		<param>-t sysfs</param>
 		<param>sysfs</param>
 		<param>&BELFS;/sys</param>
-		<param>-t sysfs</param>
+	</execute>
+
+	<execute command="mount">
+	  <param>-f</param>
+		<param>-t ramfs</param>
+		<param>ramfs</param>
+		<param>&BELFS;/dev</param>
+	</execute>
+
+	<execute command="mount">
+	  <param>-f</param>
+		<param>-t tmpfs</param>
+		<param>tmpfs</param>
+		<param>&BELFS;/dev/shm</param>
+	</execute>
+
+	<execute command="mount">
+	  <param>-f</param>
+		<param>-t devpts</param>
+		<param>-o gid=4,mode=620</param>
+		<param>devpts</param>
+		<param>&BELFS;/dev/pts</param>
 	</execute>
 </stage>
