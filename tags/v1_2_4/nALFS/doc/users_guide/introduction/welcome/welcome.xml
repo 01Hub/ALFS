@@ -1,0 +1,11 @@
+<chapter id="chapter00" xreflabel="Welcome">
+<?dbhtml filename="chapter00.html" dir="chapter00"?>
+<title>Welcome to &book-product;</title>
+
+&ch0-introduction;
+&ch0-acknowledgements;
+&ch0-conventions;
+&ch0-contactinfo;
+&ch0-changelog;
+
+</chapter>
