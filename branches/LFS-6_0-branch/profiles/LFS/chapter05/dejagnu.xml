@@ -1,0 +1,27 @@
+<package name="dejagnu" version="&dejagnu-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&dejagnu-md5;</digest>
+			<archive>&packages_dir;/&dejagnu-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&dejagnu-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/tools</param>
+		</configure>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&dejagnu-directory;</remove>
+	</stage>
+</package>

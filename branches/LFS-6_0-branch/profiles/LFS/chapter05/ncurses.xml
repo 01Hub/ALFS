@@ -1,0 +1,33 @@
+<package name="ncurses" version="&ncurses-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&ncurses-md5;</digest>
+			<archive>&packages_dir;/&ncurses-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&ncurses-directory;</base>
+		</stageinfo>
+
+                <configure>
+			<param>--prefix=/tools</param>
+			<param>--with-shared</param>
+			<param>--without-debug</param>
+			<param>--without-ada</param>
+			<param>--enable-overwrite</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&ncurses-directory;</remove>
+	</stage>
+</package>

@@ -1,0 +1,73 @@
+<package name="flex" version="&flex-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&flex-md5;</digest>
+			<archive>&packages_dir;/&flex-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&flex-debian-fixes-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&flex-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&flex-debian-fixes-patch;</param>
+		</patch>
+
+		<execute command="touch">
+			<param>doc/*.1</param>
+		</execute>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+<!--
+		<make>
+			<param>check</param>
+		</make>
+-->
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<link>
+			<option>force</option>
+			<target>libfl.a</target>
+			<name>/usr/lib/libl.a</name>
+		</link>
+
+		<textdump>
+			<file>/usr/bin/lex</file>
+			<content>
+				=#!/bin/sh
+				=# Begin /usr/bin/lex
+				=
+				=exec /usr/bin/flex -l "$@"
+				=
+				=# End /usr/bin/lex
+			</content>
+		</textdump>
+
+		<permissions mode="755">
+			<name>/usr/bin/lex</name>
+		</permissions>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&flex-directory;</remove>
+		<remove>&build_dir;/&flex-debian-fixes-patch;</remove>
+	</stage>
+</package>

@@ -1,0 +1,50 @@
+<package name="kernel-headers" version="&linux-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&linux-md5;</digest>
+			<archive>&packages_dir;/&linux-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&linux-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>mrproper</param>
+		</make>
+
+		<make>
+			<param>include/linux/version.h</param>
+		</make>
+
+		<make>
+			<param>include/asm</param>
+		</make>
+
+		<mkdir>
+			<option>parents</option>
+			<name>/tools/glibc-kernheaders/asm</name>
+		</mkdir>
+
+		<copy>
+			<option>recursive</option>
+			<source>include/asm/*</source>
+			<destination>/tools/glibc-kernheaders/asm</destination>
+		</copy>
+
+		<copy>
+			<option>recursive</option>
+			<source>include/asm-generic</source>
+			<destination>/tools/glibc-kernheaders</destination>
+		</copy>
+
+		<copy>
+			<option>recursive</option>
+			<source>include/linux</source>
+			<destination>/tools/glibc-kernheaders</destination>
+		</copy>
+	</stage>
+</package>
