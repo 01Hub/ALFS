@@ -3,8 +3,8 @@
 <!ENTITY autoconf-package "autoconf-&autoconf-version;.tar.bz2">
 <!ENTITY autoconf-directory "autoconf-&autoconf-version;">
 
-<!ENTITY automake-md5 "57f405a10fc5990ed6120fbbef3ab502">
-<!ENTITY automake-version "1.8.4">
+<!ENTITY automake-md5 "0114aa6d7dc32112834b68105fb8d7e2">
+<!ENTITY automake-version "1.8.5">
 <!ENTITY automake-package "automake-&automake-version;.tar.bz2">
 <!ENTITY automake-directory "automake-&automake-version;">
 
@@ -16,8 +16,8 @@
 <!ENTITY bash-patch-md5 "dfc7399bb57798e18fbb99f9edce4da0">
 <!ENTITY bash-patch "bash-&bash-version;-gnu-fixes-2.patch">
 
-<!ENTITY binutils-md5 "1c1af0064ebd3d7bd99905874656a21e">
-<!ENTITY binutils-version "2.15.90.0.3">
+<!ENTITY binutils-md5 "624e6b74983ac6b2960edaf2d522ca58">
+<!ENTITY binutils-version "2.15">
 <!ENTITY binutils-package "binutils-&binutils-version;.tar.bz2">
 <!ENTITY binutils-directory "binutils-&binutils-version;">
 
@@ -88,17 +88,18 @@
 <!ENTITY gawk-package "gawk-&gawk-version;.tar.bz2">
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
-<!ENTITY gcc-version "3.3.3">
+<!ENTITY gcc-version "3.3.4">
+<!ENTITY gcc-pre-version "-20040517">
 <!ENTITY gcc-directory "gcc-&gcc-version;">
 
-<!ENTITY gcc-core-md5 "f878a455b14b3830aaf2da0a17f003c0">
-<!ENTITY gcc-core-package "gcc-core-&gcc-version;.tar.bz2">
+<!ENTITY gcc-core-md5 "796be7bd806c6e8b9f156b48caace74c">
+<!ENTITY gcc-core-package "gcc-core-&gcc-version;&gcc-pre-version;.tar.bz2">
 
-<!ENTITY gcc-gpp-md5 "29830b52f2c112fc660d662427660641">
-<!ENTITY gcc-gpp-package "gcc-g++-&gcc-version;.tar.bz2">
+<!ENTITY gcc-gpp-md5 "7be3230e5120da85d1c6e0a559659a81">
+<!ENTITY gcc-gpp-package "gcc-g++-&gcc-version;&gcc-pre-version;.tar.bz2">
   
-<!ENTITY gcc-testsuite-md5 "b8892afcca035b1dcaaf359b219184f2">
-<!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;.tar.bz2">
+<!ENTITY gcc-testsuite-md5 "53501af2c24b9ea02f7bfbeb2a15e629">
+<!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;&gcc-pre-version;.tar.bz2">
 
 <!ENTITY gcc-no-fixincludes-patch-md5 "5f764c74b3e9c36252fe4f9a14598ee4">
 <!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no-fixincludes-1.patch">
