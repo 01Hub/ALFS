@@ -26,12 +26,12 @@
 			=# Default Entry for LFS
 			=title LFS (&LFS-version; kernel &linux-version;)
 			=root (&grub-root;)
-			=kernel - -no-mem-option /boot/lfskernel-&linux-version; root=&lfs_partition;
+			=kernel /boot/lfskernel-&linux-version; root=&lfs_partition; ro
 			=
 			=# Redhat Linux
 			=#title Redhat
 			=#root (hd0,2)
-			=#kernel /boot/kernel-2.4.20 root=/dev/hda3
+			=#kernel /boot/kernel-2.4.20 root=/dev/hda3 ro
 			=#initrd /boot/initrd-2.4.20
 			=#
 			=# Windows
