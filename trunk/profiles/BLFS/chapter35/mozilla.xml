@@ -1,16 +1,10 @@
 <package name="mozilla" version="&mozilla-version;">
 
         <packageinfo>
-                <requires><name>xfree86</name></requires>
-                <requires><name>freetype</name></requires>
         	<requires><name>zip</name></requires>
-        	<requires><name>glib2</name></requires>
         	<requires><name>gtk+2</name></requires>
         	<requires><name>libidl</name></requires>
-        	<requires><name>lcms</name></requires>
-        	<requires><name>libjpeg</name></requires>
         	<requires><name>libmng</name></requires>
-        	<requires><name>libpng</name></requires>
         	<requires><name>which</name></requires>
         </packageinfo>
 
@@ -18,28 +12,7 @@
 		<unpack>
 			<archive>&packages_dir;/&mozilla-package;</archive>
 			<destination>&build_dir;</destination>
-		</unpack>
-		
-		<copy>
-		        <source>&packages_dir;/&mozilla-patch1;</source>
-			<destination>&build_dir;</destination>
-		</copy>
-		
-		<copy>
-		        <source>&packages_dir;/&mozilla-patch2;</source>
-			<destination>&build_dir;</destination>
-		</copy>
-		
-		<copy>
-		        <source>&packages_dir;/&mozilla-patch3;</source>
-			<destination>&build_dir;</destination>
-		</copy>
-		
-		<copy>
-		        <source>&packages_dir;/&mozilla-patch4;</source>
-			<destination>&build_dir;</destination>
-		</copy>
-		
+		</unpack>		
 	</stage>
 
 	<stage name="Installing a package.">
@@ -47,39 +20,13 @@
 			<environment>
 			        <variable name="MOZILLA_OFFICIAL">1</variable>
 			        <variable name="BUILD_OFFICIAL">1</variable>
-			        <variable name="MOZ_INTERNAL_LIBART_LGPL">1</variable>
 			</environment>
 			<base>&build_dir;/&mozilla-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&mozilla-patch1;</param>
-		</patch>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&mozilla-patch2;</param>
-		</patch>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&mozilla-patch3;</param>
-		</patch>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&mozilla-patch4;</param>
-		</patch>
-
 		<configure>
 			<param>--prefix=/usr</param>
-			<param>--enable-default-mozilla-five-home</param>
-			<param>--enable-toolkit-gtk2</param>
+			<param>--with-default-mozilla-five-home=/usr/lib/mozilla</param>
 			<param>--enable-default-toolkit=gtk2</param>
 			<param>--with-x</param>
 			<param>--with-system-zlib</param>
@@ -88,17 +35,15 @@
 			<param>--with-system-mng</param>
 			<param>--enable-xft</param>
 			<param>--enable-crypto</param>
-			<param>--enable-java-supplement</param>
 			<param>--disable-accessibility</param>
 			<param>--disable-tests</param>
 			<param>--disable-debug</param>
 			<param>--disable-logging</param>
-			<param>--disable-pedantic</param>
 			<param>--enable-reorder</param>
 			<param>--enable-strip</param>
+			<param>--disable-pedantic</param>
 			<param>--enable-cpp-rtti</param>
 			<param>--enable-extensions=all</param>
-			<param>--enable-svg</param>
 		</configure>
 
 		<make/>
@@ -115,13 +60,37 @@
 
 		<execute command="ln -nsf mozilla-&mozilla-version; /usr/lib/mozilla" />
 
-		<stage name="regxpcom and regchrome">
+		<move base="/usr/lib/mozilla-&mozilla-version;">
+			<source>libnspr4.so</source>
+			<source>libplc4.so</source>
+			<source>libplds4.so</source>
+			<source>libnss3.so</source>
+			<source>libsmime3.so</source>
+			<source>libsoftokn3.so</source>
+			<source>libssl3.so</source>
+			<source>libsoftokn3.chk</source>
+			<destination>/usr/lib</destination>
+		</move>
+	
+		<link>
+			<option>force</option>
+			<target>../libnspr4.so</target>
+			<target>../libplc4.so</target>
+			<target>../libplds4.so</target>
+			<target>../libnss3.so</target>
+			<target>../libsmime3.so</target>
+			<target>../libsoftokn3.so</target>
+			<target>../libssl3.so</target>
+			<target>../libsoftokn3.chk</target>
+			<name>/usr/lib/mozilla-&mozilla-version;</name>
+		</link>
+
+
+		<stage name="Multi-User Operation Setup">
 		        <stageinfo>
 				<environment>
-					<variable name="LD_LIBRARY_PATH">
-					         /usr/lib/mozilla-&mozilla-version;</variable>
-					<variable name="MOZILLA_FIVE_HOME">
-					         /usr/lib/mozilla-&mozilla-version;</variable>
+					<variable name="LD_LIBRARY_PATH">/usr/lib/mozilla-&mozilla-version;</variable>
+					<variable name="MOZILLA_FIVE_HOME">/usr/lib/mozilla-&mozilla-version;</variable>
 				</environment>
 			        <base>/usr/lib/mozilla-&mozilla-version;</base>
 			</stageinfo>
@@ -135,10 +104,6 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&mozilla-directory;</remove>
-		<remove>&build_dir;/&mozilla-patch1;</remove>
-		<remove>&build_dir;/&mozilla-patch2;</remove>
-		<remove>&build_dir;/&mozilla-patch3;</remove>
-		<remove>&build_dir;/&mozilla-patch4;</remove>
 	</stage>
 
 </package>

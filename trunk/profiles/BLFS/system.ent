@@ -326,14 +326,16 @@
 <!ENTITY koffice         SYSTEM "./chapter34/koffice.xml">
 <!ENTITY openoffice      SYSTEM "./chapter34/openoffice.xml">
 
-<!-- chapter 40 -->
-<!ENTITY mozilla         SYSTEM "./chapter40/mozilla.xml">
-<!ENTITY galeon          SYSTEM "./chapter40/galeon.xml">
-<!ENTITY dillo           SYSTEM "./chapter40/dillo.xml">
+<!-- chapter 35 -->
+<!ENTITY mozilla         SYSTEM "./chapter35/mozilla.xml">
+<!ENTITY firefox         SYSTEM "./chapter35/firefox.xml">
+<!ENTITY galeon          SYSTEM "./chapter35/galeon.xml">
+<!ENTITY dillo           SYSTEM "./chapter35/dillo.xml">
 
-<!-- chapter 41 -->
-<!ENTITY pan             SYSTEM "./chapter41/pan.xml">
-<!ENTITY balsa           SYSTEM "./chapter41/balsa.xml">
+<!-- chapter 36 -->
+<!ENTITY thunderbird	 SYSTEM "./chapter36/thunderbird.xml">
+<!ENTITY pan             SYSTEM "./chapter36/pan.xml">
+<!ENTITY balsa           SYSTEM "./chapter36/balsa.xml">
 
 <!-- chapter 42 -->
 <!ENTITY alsa-driver  SYSTEM "./chapter42/alsa-driver.xml">
