@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch06.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,37 +10,29 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="joe" version="&joe-version;">
-
+  <package name="joe" version="&joe-version;">
     <stage name="Unpacking">
-	<unpack>
-		<archive>&packages_dir;/&joe-package;</archive>
-		<destination>&build_dir;</destination>
-	</unpack>
+      <unpack>
+        <archive>&packages_dir;/&joe-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
     </stage>
-
     <stage name="Installing">
-        <stageinfo>
-		<base>&build_dir;/&joe-directory;</base>
-	</stageinfo>
-
-	<configure>
-	        <param>--prefix=/usr</param>
-	        <param>--sysconfdir=/etc</param>
-	</configure>
-	
-	<make />
-
-	<make>
-		<param>install</param>
-	</make>
+      <stageinfo>
+        <base>&build_dir;/&joe-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--sysconfdir=/etc</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
     </stage>
-
     <stage name="Cleanup">
-	<remove>&build_dir;/&joe-directory;</remove>
+      <remove>&build_dir;/&joe-directory;</remove>
     </stage>
-
-</package>
+  </package>
 </alfs>
