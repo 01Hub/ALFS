@@ -2,14 +2,14 @@
 # itself when it is reinvoked at the end of --mode=install processing
 # this patch corrects that behavior to keep the "noise" down
 # during installation
-patch -d gnubuild -p1 <<EOF
+patch -d gnubuild -p1 <<"EOF"
 --- libtool-1.5/ltmain.sh~	Mon Apr 14 14:58:24 2003
 +++ libtool-1.5/ltmain.sh	Thu Oct 16 09:02:56 2003
 @@ -238,6 +238,7 @@
    --debug)
-     \$echo "\$progname: enabling shell trace mode"
+     $echo "$progname: enabling shell trace mode"
      set -x
-+    preserve_args="\$preserve_args \$arg"
++    preserve_args="$preserve_args $arg"
      ;;
  
    --dry-run | -n)
@@ -17,16 +17,16 @@ patch -d gnubuild -p1 <<EOF
  
    --quiet | --silent)
      show=:
-+    preserve_args="\$preserve_args \$arg"
++    preserve_args="$preserve_args $arg"
      ;;
  
    --tag) prevopt="--tag" prev=tag ;;
 @@ -5653,7 +5655,7 @@
-     if test -n "\$current_libdirs"; then
+     if test -n "$current_libdirs"; then
        # Maybe just do a dry run.
-       test -n "\$run" && current_libdirs=" -n\$current_libdirs"
--      exec_cmd='\$SHELL \$0 --finish\$current_libdirs'
-+      exec_cmd='\$SHELL \$0 \$preserve_args --finish\$current_libdirs'
+       test -n "$run" && current_libdirs=" -n$current_libdirs"
+-      exec_cmd='$SHELL $0 --finish$current_libdirs'
++      exec_cmd='$SHELL $0 $preserve_args --finish$current_libdirs'
      else
        exit 0
      fi
