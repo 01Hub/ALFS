@@ -13,8 +13,8 @@
 	<execute command="echo &lfs-user;:&lfs-password; | chpasswd" />
 
 	<ownership user="&lfs-user;">
-		<option>recursive</option>
 		<name>&LFS;/tools</name>
+		<name>&LFS;&build_dir;</name>
 	</ownership>
 </stage>
 

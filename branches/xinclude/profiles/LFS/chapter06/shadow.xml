@@ -113,12 +113,12 @@
 	<stage name="Configuring.">
 		<execute command="pwconv" />
 		<execute command="grpconv" />
-	</stage>
 
-	<execute command="echo">
-		<param>root:&password;</param>
-		<param>| chpasswd</param>
-	</execute>
+		<execute command="echo">
+			<param>root:&password;</param>
+			<param>| chpasswd</param>
+		</execute>
+	</stage>
 
 
 	<stage name="Cleaning up.">
