@@ -12,7 +12,7 @@
 <package name="gcc-pass1" version="&gcc-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<archive>&packages_dir;/&gcc-package;</archive>
+			<archive>&packages_dir;/&gcc-core-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 

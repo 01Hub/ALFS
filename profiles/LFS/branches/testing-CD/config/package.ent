@@ -347,8 +347,7 @@
 <!ENTITY util-linux-package "util-linux-&util-linux-version;.tar.bz2">
 <!ENTITY util-linux-directory "util-linux-&util-linux-version;">
 
-<!ENTITY util-linux-sfdisk-patch-md5 "e9dedbb70a28804f2fd6c565a9dda206">
-<!ENTITY util-linux-sfdisk-patch "util-linux-&util-linux-version;-sfdisk-1.patch">
+<!ENTITY util-linux-sfdisk-patch "util-linux-&util-linux-version;-sfdisk-2.patch">
 
 <!ENTITY vim-md5 "821fda8f14d674346b87e3ef9cb96389">
 <!ENTITY vim-version "6.3">
