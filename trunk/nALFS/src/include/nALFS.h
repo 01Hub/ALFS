@@ -32,11 +32,36 @@
 
 struct element_s;
 
+
+/* functions for downloading and verifying file contents */
 extern int verify_digest(const char *type, const char *digest, const char *file);
 extern void alloc_element_digest(const struct element_s *el, char **digest, char **type);
 extern int load_url(const char *output, const char *url);
 extern int get_url(const char *url, const char *destination,
 		   const char *digest, const char *digest_type);
+
+
+/* functions for determining and acting upon file compression types and
+   archive formats
+*/
+
+typedef enum compression_type_e {
+	COMPRESS_GZ, COMPRESS_BZ2, COMPRESS_Z, COMPRESS_UNKNOWN
+} compression_type_e;
+
+typedef enum archive_format_e {
+	ARCHIVE_TAR, ARCHIVE_ZIP, ARCHIVE_PAX, ARCHIVE_CPIO, ARCHIVE_UNKNOWN
+} archive_format_e;
+
+extern compression_type_e get_compression_type(const char *filename);
+extern archive_format_e get_archive_format(const char *filename);
+extern char *alloc_decompress_command(compression_type_e type);
+extern char *alloc_unpack_command(archive_format_e format);
+
+
+/* macro to prefix handler symbols to match libtool expectations for when
+   handlers are linked into the main binary (in a static build)
+*/
 
 #ifdef MODULE_NAME
 #define __HANDLER_SYMBOL(handler_mod, name) handler_mod ## _LTX_ ## handler_ ## name
