@@ -100,7 +100,12 @@ static int execute_main_ver3(element_s *el)
 		return -1;
 	}
 
-	command = xstrdup(c);
+	command = xstrdup("");
+
+	append_prefix_elements(&command, el);
+
+	append_str(&command, c);
+
 	append_param_elements(&command, el);
 
 	Nprint_h("Executing system command in %s:", base);
@@ -136,7 +141,7 @@ static const char *execute_parameters_ver2[] =
 { "base", "command", "param", NULL };
 
 static const char *execute_parameters_ver3[] =
-{ "base", "command", "param", NULL };
+{ "base", "command", "param", "prefix", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
