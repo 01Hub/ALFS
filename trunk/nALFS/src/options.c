@@ -193,6 +193,34 @@ static option_s options[] = {
 		(option_pointer *)& opt_editor,
 		(option_pointer *)& ""
 	},{
+		"gunzip_command", O_STRING,
+		(option_pointer *)& opt_gunzip_command,
+		(option_pointer *)& "zcat %s"
+	},{
+		"uncompress_command", O_STRING,
+		(option_pointer *)& opt_uncompress_command,
+		(option_pointer *)& "zcat %s"
+	},{
+		"bunzip2_command", O_STRING,
+		(option_pointer *)& opt_bunzip2_command,
+		(option_pointer *)& "bunzip2 -dc %s"
+	},{
+		"untar_command", O_STRING,
+		(option_pointer *)& opt_untar_command,
+		(option_pointer *)& "tar xv"
+	},{
+		"unpax_command", O_STRING,
+		(option_pointer *)& opt_unpax_command,
+		(option_pointer *)& "pax -rv"
+	},{
+		"uncpio_command", O_STRING,
+		(option_pointer *)& opt_uncpio_command,
+		(option_pointer *)& "cpio -idv"
+	},{
+		"unzip_command", O_STRING,
+		(option_pointer *)& opt_unzip_command,
+		(option_pointer *)& "unzip %s"
+	},{
 		NULL, 0, NULL, NULL
 	}
 };

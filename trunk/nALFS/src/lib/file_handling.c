@@ -35,6 +35,7 @@
 #include <nALFS.h>
 
 #include "utility.h"
+#include "options.h"
 
 
 compression_type_e get_compression_type(const char *filename)
@@ -74,40 +75,46 @@ archive_format_e get_archive_format(const char *filename)
 }
 
 
+/* This function returns the appropriate command to perform a decompression
+   of the specified type to stdout. The default commands are in src/options.c.
+   The commands will be passed the filename to decompress as a string
+   parameter, so '%s' should be used to substitute the path into the
+   command string.
+*/
 char *alloc_decompress_command(compression_type_e type)
 {
 	switch (type) {
 	case COMPRESS_GZ:
-		return xstrdup("zcat %s");
-		break;
+		return xstrdup(opt_gunzip_command);
 	case COMPRESS_BZ2:
-		return xstrdup("bunzip2 -dc %s");
-		break;
+		return xstrdup(opt_bunzip2_command);
 	case COMPRESS_Z:
-		return xstrdup("zcat %s");
-		break;
+		return xstrdup(opt_uncompress_command);
 	default:
 		return NULL;
 	}
 }
 
 
+/* This function returns the appropriate command to unpack a file of the
+   specified type. The default commands are in src/options.c. The commands
+   _should_ be written to expect their input on stdin, but if a particular
+   command cannot accept input in that fashion (unzip, for example), '%s'
+   can be used in the string to substitute the path of the file to unpack.
+   If this is done, however, the unpack command will not be usable in a
+   "chain" with a decompressor ahead of it.
+*/
 char *alloc_unpack_command(archive_format_e format)
 {
 	switch (format) {
 	case ARCHIVE_TAR:
-		return xstrdup("tar xv");
-		break;
+		return xstrdup(opt_untar_command);
 	case ARCHIVE_ZIP:
-		/* since the "unzip" command does not support reading
-		   from standard input, and since it also will not be
-		   used in combination with another compression type,
-		   this unpack command gets the filename parameter
-		*/
-		return xstrdup("unzip %s");
-		break;
+		return xstrdup(opt_unzip_command);
 	case ARCHIVE_PAX:
+		return xstrdup(opt_unpax_command);
 	case ARCHIVE_CPIO:
+		return xstrdup(opt_uncpio_command);
 	default:
 		return NULL;
 	}

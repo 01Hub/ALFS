@@ -138,6 +138,13 @@ EXTERN BOOL opt_print_startup_help INIT(= 0);
 EXTERN NUMBER opt_windows_relation INIT(= 0);
 EXTERN NUMBER opt_status_history INIT(= 0);
 EXTERN STRING opt_editor INIT(= NULL);
+EXTERN STRING opt_bunzip2_command INIT(= NULL);
+EXTERN STRING opt_gunzip_command INIT(= NULL);
+EXTERN STRING opt_uncompress_command INIT(= NULL);
+EXTERN STRING opt_untar_command INIT(= NULL);
+EXTERN STRING opt_unpax_command INIT(= NULL);
+EXTERN STRING opt_uncpio_command INIT(= NULL);
+EXTERN STRING opt_unzip_command INIT(= NULL);
 
 
 void set_option(option_pointer **var_pointer, NUMBER number, char *string);

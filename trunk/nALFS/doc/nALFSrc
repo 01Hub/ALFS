@@ -116,6 +116,31 @@ set display_stage_header no
 
 
 ###############################################################################
+##                    File decompression and unpacking                       ##
+###############################################################################
+
+# These options hold the appropriate commands to perform a decompression
+# of the specified file type to stdout. The default commands are listed below.
+# The commands will be passed the filename to decompress as a string
+# parameter, so '%s' should be used to substitute the path into the
+# command string.
+# set gunzip_command "zcat %s"
+# set bunzip2_command "bunzip2 -dc %s"
+# set uncompress_command "zcat %s"
+
+# These options hold the appropriate commands to unpack a file of the
+# specified type. The default commands are listed below. The commands
+# _should_ be written to expect their input on stdin, but if a particular
+# command cannot accept input in that fashion (unzip, for example), '%s'
+# can be used in the string to substitute the path of the file to unpack.
+# If this is done, however, the unpack command will not be usable in a
+# "chain" with a decompressor ahead of it.
+# set untar_command "tar xv"
+# set unzip_command "unzip %s"
+# set unpax_command "pax -rv"
+# set uncpio_command "cpio -idv"
+
+###############################################################################
 ##                                  Misc                                     ##
 ###############################################################################
 
