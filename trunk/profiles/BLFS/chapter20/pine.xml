@@ -1,5 +1,10 @@
 <package name="pine" version="&pine-version;">
 
+	<packageinfo>
+		<requires><name>openssl</name></requires>
+		<utilizes><name>openldap</name></utilizes>
+	</packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&pine-package;</archive>
@@ -24,8 +29,8 @@
 		</patch>
 
 		<execute command="./build">
-		        <param>DEBUG=-0</param>
-			<param>MAILSPOOL='/var/mail'</param>
+		        <param>DEBUG=-O</param>
+			<param>MAILSPOOL=/var/mail</param>
 			<param>SSLDIR=/usr</param>
 			<param>SSLCERTS=/etc/ssl/certs</param>
 			<param>slx</param>

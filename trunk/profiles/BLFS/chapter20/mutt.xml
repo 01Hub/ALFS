@@ -1,5 +1,9 @@
 <package name="mutt" version="&mutt-version;">
 
+	<packageinfo>
+		<utilizes><name>gnupg</name></utilizes>
+	</packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&mutt-package;</archive>
@@ -12,8 +16,8 @@
 			<base>&build_dir;/&mutt-directory;</base>
 		</stageinfo>
 
-		<!-- uncomment if no MTA is installed -->
-
+		<!-- uncomment if no MTA is installed
+		
 		<execute command="groupadd">
 		        <param>mail</param>
 		</execute>
@@ -22,7 +26,7 @@
 		        <name>/var/mail</name>
 		</ownership>
 		
-		<!-- -->
+		 -->
 
 		<configure>
 		        <param>--prefix=/usr</param>

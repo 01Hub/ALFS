@@ -18,6 +18,7 @@
 
 		<configure>
 		        <param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
 			<param>--with-slrnpull</param>
 		</configure>
 		

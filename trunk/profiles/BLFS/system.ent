@@ -139,6 +139,7 @@
 <!ENTITY traceroute SYSTEM "./chapter19/traceroute.xml">
 <!ENTITY nmap       SYSTEM "./chapter19/nmap.xml">
 <!ENTITY whois      SYSTEM "./chapter19/whois.xml">
+<!ENTITY bind-utils SYSTEM "./chapter19/bind-utils.xml">
 
 <!-- chapter 20 -->
 <!ENTITY nail       SYSTEM "./chapter20/nail.xml">
@@ -149,11 +150,11 @@
 <!ENTITY slrn       SYSTEM "./chapter20/slrn.xml">
 
 <!-- chapter 21 -->
-<!ENTITY daemontools SYSTEM "./chapter21/daemontools.xml">
-
-<!-- chapter 22 -->
-<!ENTITY postfix   SYSTEM "./chapter22/postfix.xml">
-<!ENTITY qpopper   SYSTEM "./chapter22/qpopper.xml">
+<!ENTITY postfix   SYSTEM "./chapter21/postfix.xml">
+<!ENTITY sendmail  SYSTEM "./chapter21/sendmail.xml">
+<!ENTITY exim      SYSTEM "./chapter21/exim.xml">
+<!ENTITY qpopper   SYSTEM "./chapter21/qpopper.xml">
+<!ENTITY courier   SYSTEM "./chapter21/courier.xml">
 
 <!-- chapter 23 -->
 <!ENTITY openssh   SYSTEM "./chapter23/openssh.xml">

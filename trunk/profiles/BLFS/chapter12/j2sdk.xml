@@ -1,4 +1,4 @@
-<package name="j2sdk" version="&j2sdk-version;">
+<package name="j2sdk" version="&j2sdk-binary-version;">
 
 	<stage name="Unpacking a package.">
 		<stageinfo>
@@ -22,11 +22,6 @@
 		</permissions>
 
 		<execute command="yes | ./j2sdk*.bin" />
-
-		<unpack>
-			<archive>&packages_dir;/&j2sdk-ppatch;</archive>
-			<destination>&build_dir;/&j2sdk-directory;/jre/lib/i386</destination>
-		</unpack>
 
 		<move>
 		        <option>force</option>

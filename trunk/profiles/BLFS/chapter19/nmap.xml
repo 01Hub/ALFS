@@ -1,7 +1,10 @@
 <package name="nmap" version="&nmap-version;">
 
         <packageinfo>
-	        <requires><name>gtk+</name></requires>
+		<utilizes><name>openssl</name></utilizes>
+		<utilizes><name>pcre</name></utilizes>
+	        <utilizes><name>gtk+</name></utilizes>
+		<utilizes><name>libpcap</name></utilizes>
 	</packageinfo>
 
 	<stage name="Unpacking a package.">

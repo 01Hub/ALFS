@@ -382,10 +382,10 @@
 <!ENTITY gnat-directory "gnat-&gnat-version;-i686-pc-linux-gnu-bin">
 
 <!ENTITY gcc-full-version   "3.3.2">
-<!ENTITY gcc-full-package   "gcc-&gcc-version;.tar.bz2">
-<!ENTITY gcc-full-directory "gcc-&gcc-version;">
+<!ENTITY gcc-full-package   "gcc-&gcc-full-version;.tar.bz2">
+<!ENTITY gcc-full-directory "gcc-&gcc-full-version;">
 
-<!ENTITY gcc-full-patch1    "gcc-&gcc-version;-no_fixincludes-1.patch">
+<!ENTITY gcc-full-patch1    "gcc-&gcc-full-version;-no_fixincludes-1.patch">
 
 <!ENTITY tcl-version   "8.4.5">
 <!ENTITY tcl-package   "tcl&tcl-version;-src.tar.gz">
@@ -520,61 +520,71 @@
 <!--************* packages for chapter 19 *************-->
 
 <!ENTITY traceroute-version   "1.4a12">
-<!ENTITY traceroute-package   "traceroute.tar.gz">
-<!ENTITY traceroute-directory "traceroute-1.4a12">
+<!ENTITY traceroute-package   "traceroute-&traceroute-version;.tar.gz">
+<!ENTITY traceroute-directory "traceroute-&traceroute-version;">
 
-<!ENTITY nmap-version   "3.30">
-<!ENTITY nmap-package   "nmap-3.30.tgz">
-<!ENTITY nmap-directory "nmap-3.30">
+<!ENTITY nmap-version   "3.50">
+<!ENTITY nmap-package   "nmap-&nmap-version;.tar.bz2">
+<!ENTITY nmap-directory "nmap-&nmap-version;">
 
-<!ENTITY whois-version   "4.6.7">
-<!ENTITY whois-package   "whois_4.6.7.tar.gz">
-<!ENTITY whois-directory "whois-4.6.7">
+<!ENTITY whois-version   "4.6.9">
+<!ENTITY whois-package   "whois_&whois-version;.tar.gz">
+<!ENTITY whois-directory "whois-&whois-version;">
+
+<!ENTITY bind-utils-version "9.2.3">
+<!ENTITY bind-utils-package "bind-&bind-version;.tar.gz">
+<!ENTITY bind-utils-directory "bind-&bind-utils-version;">
+
 
 <!--************* packages for chapter 20 *************-->
 
-<!ENTITY nail-version   "10.5">
-<!ENTITY nail-package   "nail-10.5.tar.gz">
-<!ENTITY nail-directory "nail-10.5">
+<!ENTITY nail-version   "10.7">
+<!ENTITY nail-package   "nail-&nail-version;.tar.gz">
+<!ENTITY nail-directory "nail-&nail-version;">
 
 <!ENTITY procmail-version   "3.22">
-<!ENTITY procmail-package   "procmail-3.22.tar.gz">
-<!ENTITY procmail-directory "procmail-3.22">
+<!ENTITY procmail-package   "procmail-&procmail-version;.tar.gz">
+<!ENTITY procmail-directory "procmail-&procmail-version;">
 
-<!ENTITY fetchmail-version   "6.2.3">
-<!ENTITY fetchmail-package   "fetchmail-6.2.3.tar.gz">
-<!ENTITY fetchmail-directory "fetchmail-6.2.3">
+<!ENTITY fetchmail-version   "6.2.5">
+<!ENTITY fetchmail-package   "fetchmail-&fetchmail-version;.tar.gz">
+<!ENTITY fetchmail-directory "fetchmail-&fetchmail-version;">
 
-<!ENTITY mutt-version   "1.4.1i">
-<!ENTITY mutt-package   "mutt-1.4.1i.tar.gz">
-<!ENTITY mutt-directory "mutt-1.4.1">
+<!ENTITY mutt-version   "1.4.2.1i">
+<!ENTITY mutt-package   "mutt-&mutt-version;.tar.gz">
+<!ENTITY mutt-directory "mutt-1.4.2.1">
 
 <!ENTITY pine-version   "4.58">
-<!ENTITY pine-package   "pine4.58.tar.bz2">
-<!ENTITY pine-directory "pine4.58">
+<!ENTITY pine-package   "pine&pine-version;.tar.bz2">
+<!ENTITY pine-directory "pine&pine-version;">
 
-<!ENTITY pine-patch     "pine-4.58-fhs.patch">
+<!ENTITY pine-patch     "pine-&pine-version;-fhs.patch">
 
-<!ENTITY slrn-version   "0.9.7.4">
-<!ENTITY slrn-package   "slrn-0.9.7.4.tar.bz2">
-<!ENTITY slrn-directory "slrn-0.9.7.4">
+<!ENTITY slrn-version   "0.9.8.0">
+<!ENTITY slrn-package   "slrn-&slrn-version;.tar.bz2">
+<!ENTITY slrn-directory "slrn-&slrn-version;">
 
 <!--************* packages for chapter 21 *************-->
 
-<!ENTITY daemontools-version   "0.76">
-<!ENTITY daemontools-package   "daemontools-0.76.tar.gz">
-<!ENTITY daemontools-directory "admin">
+<!ENTITY postfix-version   "2.0.19">
+<!ENTITY postfix-package   "postfix-&postfix-version;.tar.gz">
+<!ENTITY postfix-directory "postfix-&postfix-version;">
 
+<!ENTITY sendmail-version "8.12.10">
+<!ENTITY sendmail-package "sendmail.&sendmail-version;.tar.gz">
+<!ENTITY sendmail-directory "sendmail-&sendmail-version;">
 
-<!--************* packages for chapter 22 *************-->
-
-<!ENTITY postfix-version   "2.0.16">
-<!ENTITY postfix-package   "postfix-2.0.16.tar.gz">
-<!ENTITY postfix-directory "postfix-2.0.16">
+<!ENTITY exim-version "4.24">
+<!ENTITY exim-package "exim-&exim-version;.tar.bz2">
+<!ENTITY exim-directory "exim-&exim-version;">
 
 <!ENTITY qpopper-version   "4.0.5">
-<!ENTITY qpopper-package   "qpopper4.0.5.tar.gz">
-<!ENTITY qpopper-directory "qpopper4.0.5">
+<!ENTITY qpopper-package   "qpopper&qpopper-version;.tar.gz">
+<!ENTITY qpopper-directory "qpopper&qpopper-version;">
+
+<!ENTITY courier-version "0.45.4">
+<!ENTITY courier-package "courier-&courier-version;.tar.bz2">
+<!ENTITY courier-directory "courier-&courier-version;">
 
 
 <!--************* packages for chapter 23 *************-->

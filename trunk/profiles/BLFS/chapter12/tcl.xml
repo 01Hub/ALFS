@@ -47,7 +47,7 @@
 
 		<search_replace base="&build_dir;/&tcl-directory;/doc">
 			<file>mkLinks</file>
-			<search> Thread.3</search>
+			<find> Thread.3</find>
 			<replace> Tcl_Thread.3</replace>
 		</search_replace>
 

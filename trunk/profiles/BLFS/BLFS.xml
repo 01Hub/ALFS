@@ -9,7 +9,7 @@
       *** ALPHA VERSION ***
   -->
 
-<!DOCTYPE alfs SYSTEM "nalfs.dtd" [
+<!DOCTYPE alfs SYSTEM "ALFS-3.1.dtd" [
 
 <!ENTITY % files SYSTEM "files.ent">
 %files;
@@ -237,6 +237,7 @@
     &traceroute;
     &nmap;
     &whois;
+    &bind-utils;
 
 </stage>
 
@@ -251,11 +252,13 @@
 
 </stage>
 
-
 <stage name="Chapter 21 (Mail Server Software)">
 
     &postfix;
+    &sendmail;
+    &exim;
     &qpopper;
+    &courier;
 
 </stage>
 

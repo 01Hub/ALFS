@@ -1,0 +1,88 @@
+<package name="courier" version="&courier-version;">
+
+	<packageinfo>
+		<requires><name>gdbm</name></requires>
+	</packageinfo>
+
+	<stage name="Unpacking.">
+		<unpack>
+			<archive>&packages_dir;/&courier-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&courier-directory;</base>
+		</stageinfo>
+
+		<execute command="grep ^courier /etc/group">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| groupadd</param>
+			<param>courier</param>
+		</execute>
+
+		<execute command="grep ^courier /etc/passwd">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| useradd</param>
+			<param>-c 'Courier Mail Server'</param>
+			<param>-d /dev/null</param>
+		        <param>-g courier</param>
+			<param>-s /bin/false</param>
+			<param>courier</param>
+		</execute>
+
+		<execute command="grep ^bin /etc/passwd">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| useradd</param>
+			<param>-c 'bin'</param>
+			<param>-d /dev/null</param>
+			<param>-g bin</param>
+			<param>-u 1</param>
+			<param>bin</param>
+		</execute>
+
+		<mkdir>
+			<option>parents</option>
+			<name>/var/run/courier</name>
+		</mkdir>
+
+		<ownership user="courier" group="courier">
+			<name>/var/run/courier</name>
+		</ownership>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--libexecdir=/usr/lib/courier</param>
+			<param>--datadir=/usr/share/courier</param>
+			<param>--sysconfdir=/etc/courier</param>
+			<param>--localstatedir=/var/lib/courier</param>
+			<param>--with-piddir=/var/run/courier</param>
+			<param>--disable-root-check</param>
+			<param>--with-mailuser=courier</param>
+			<param>--with-mailgroup=courier</param>
+			<param>--with-paranoid-smtpext</param>
+			<param>--disable-autorenamesent</param>
+			<param>--enable-workarounds-for-imap-client-bugs</param>
+			<param>--with-db=gdbm</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<make>
+			<param>install-configure</param>
+		</make>
+	</stage>
+
+	
+
+	<stage name="Cleanup.">
+		<remove>&build_dir;/&courier-directory;</remove>
+	</stage>
+</package>
+

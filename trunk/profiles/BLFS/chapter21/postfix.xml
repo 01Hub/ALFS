@@ -1,0 +1,125 @@
+<package name="postfix" version="&postfix-version;">
+
+        <packageinfo>
+                <requires><name>db</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&postfix-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&postfix-directory;</base>
+		</stageinfo>
+
+		<execute command="grep ^postfix /etc/group">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| groupadd</param>
+			<param>postfix</param>
+		</execute>
+		
+		<execute command="grep ^postdrop /etc/group">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| groupadd</param>
+			<param>postdrop</param>
+		</execute>
+		
+		<execute command="grep ^nogroup /etc/group">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| groupadd</param>
+		        <param>-g 65534</param>
+			<param>nogroup</param>
+		</execute>
+		
+		<execute command="grep ^postfix /etc/passwd">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| useradd</param>
+		        <param>-c postfix</param>
+			<param>-d /dev/null</param>
+			<param>-g postfix</param>
+			<param>-s /bin/false</param>
+			<param>postfix</param>
+		</execute>
+
+		<execute command="grep ^nobody /etc/passwd">
+			<param>&amp;&gt; /dev/null</param>
+			<param>|| useradd</param>
+		        <param>-c nobody</param>
+			<param>-d /home</param>
+			<param>-g nogroup</param>
+			<param>-s /bin/bash</param>
+			<param>-u 65534</param>
+			<param>nobody</param>
+		</execute>
+
+		<ownership user="postfix" group="postfix">
+		        <name>/var/mail</name>
+                </ownership>
+		
+		<make />
+
+		<execute command="sh">
+			<param>postfix-install</param>
+			<param>daemon_directory=/usr/sbin</param>
+			<param>manpage_directory=/usr/share/man</param>
+			<param>sample_directory=/usr/share/doc/postfix</param>
+			<param>-non-interactive</param>
+		</execute>
+
+		<copy>
+			<option>recursive</option>
+			<option>force</option>
+			<source>html/*</source>
+			<destination>/usr/share/doc/postfix</destination>
+		</copy>
+		
+		<textdump>
+		        <file>/etc/aliases</file>
+			<content>
+		        	=# Begin /etc/aliases
+				=
+				=MAILER-DAEMON:    postmaster
+				=postmaster:       root
+				=
+				=root:             &username;
+				=# End /etc/aliases
+			</content>
+		</textdump>
+
+		<copy base="/etc/postfix">
+			<source>main.cf</source>
+			<destination>main.cf.bak</destination>
+		</copy>
+
+		<execute command="sed &quot;s/#myhostname = host.domain.tld/myhostname = &hostname;&quot; \ 
+			/etc/postfix/main.cf.bak > /etc/postfix/main.cf" />
+
+		<execute command="/usr/bin/newaliases" />
+
+	</stage>
+
+	<stage name="Installing postfix bootscript">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-postfix</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&postfix-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+
+</package>
