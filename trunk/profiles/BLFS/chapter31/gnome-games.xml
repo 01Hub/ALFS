@@ -36,6 +36,7 @@
 		</stageinfo>
 
 		<mkdir>
+		        <option>parents</option>
 			<name>/var/lib/games</name>
 		</mkdir>
 
