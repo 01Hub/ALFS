@@ -6,6 +6,11 @@
 			<destination>&build_dir;</destination>
 		</unpack>
 
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
 		<copy>
 		        <source>&packages_dir;/&gpm-patch1;</source>
 		        <destination>&build_dir;</destination>
@@ -36,6 +41,7 @@
 
 		<configure command="LDFLAGS='-lm' ./configure">
 			<param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
 		</configure>
 
 		<make />
@@ -44,125 +50,42 @@
 			<param>install</param>
 		</make>
 
+		<copy base="./conf">
+			<option>force</option>
+			<source>gpm-root.conf</source>
+			<destination>/etc</destination>
+		</copy>
+
 		<execute command="ldconfig -n -l /usr/lib/libgpm.so.1.19.0" />
-		
-		<textdump>
-		    <file>/etc/rc.d/init.d/gpm</file>
-		    <content>
-                        =#!/bin/sh
-                        =# Begin $rc_base/init.d/gpm
-                        =
-                        =# Based on sysklogd script from LFS-3.1 and earlier.
-                        =# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
-                        =# GPM specific parts by Mark Hymers - markh@linuxfromscratch.org
-                        =
-                        =source /etc/sysconfig/rc
-                        =source $rc_functions
-                        =
-                        =if [ -f /etc/sysconfig/mouse ]
-                        =	then
-                        =        source /etc/sysconfig/mouse
-                        =fi
-                        =
-                        =if [ -z "$MDEVICE" ] || [ -z "$PROTOCOL" ]
-                        =	then
-                        =	echo "Please create an /etc/sysconfig/mouse file containing"
-                        =	echo "MDEVICE and PROTOCOL values"
-                        =	exit 1;
-                        =fi
-                        =
-                        =case "$1" in
-                        =        start)
-                        =                echo "Starting gpm..."
-                        =                loadproc gpm -m $MDEVICE -t $PROTOCOL
-                        =                ;;
-                        =
-                        =        stop)
-                        =                echo "Stopping gpm..."
-                        =                killproc gpm
-                        =                ;;
-                        =
-                        =        restart)
-                        =                $0 stop
-                        =                sleep 1
-                        =                $0 start
-                        =                ;;
-                        =
-                        =        status)
-                        =                statusproc gpm
-                        =                ;;
-                        =
-                        =        *)
-                        =                echo "Usage: $0 {start|stop|restart|status}"
-                        =                exit 1
-                        =                ;;
-                        =esac
-                        =
-                        =# End $rc_base/init.d/gpm
-		    </content>
+	</stage>
+
+	<stage name="Install gpm bootscripts">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-gpm</param>
+		</make>
+	</stage>
+
+	<stage name="Installing mouse">
+		<textdump base="/etc/sysconfig">
+			<file>mouse</file>
+			<content>
+				=# Begin /etc/sysconfig/mouse
+				=MDEVICE=&mouse_device;
+				=PROTOCOL=&mouse_protocol;
+				=# End /etc/sysconfig/mouse
+			</content>
 		</textdump>
-		<permissions mode="755">
-		    <name>/etc/rc.d/init.d/gpm</name>
-		</permissions>
-
-		<textdump>
-		    <file>/etc/sysconfig/mouse</file>
-		    <content>
-                        =# start /etc/sysconfig/mouse
-                        =MDEVICE=&mouse_device;
-                        =PROTOCOL=&mouse_protocol;
-                        =# end /etc/sysconfig/mouse
-		    </content>
-		</textdump>
-
-
-		<link base="/etc/rc.d/init.d">
-		    <option>force</option>
-		    <target>../init.d/gpm</target>
-		    <name>../rc0.d/K10gpm</name>
-		</link>
-
-		<link base="/etc/rc.d/init.d">
-		    <option>force</option>
-		    <target>../init.d/gpm</target>
-		    <name>../rc1.d/K10gpm</name>
-		</link>
-
-		<link base="/etc/rc.d/init.d">
-		    <option>force</option>
-		    <target>../init.d/gpm</target>
-		    <name>../rc2.d/K10gpm</name>
-		</link>
-
-		<link base="/etc/rc.d/init.d">
-		    <option>force</option>
-		    <target>../init.d/gpm</target>
-		    <name>../rc3.d/S70gpm</name>
-		</link>
-
-		<link base="/etc/rc.d/init.d">
-		    <option>force</option>
-		    <target>../init.d/gpm</target>
-		    <name>../rc4.d/S70gpm</name>
-		</link>
-
-		<link base="/etc/rc.d/init.d">
-		    <option>force</option>
-		    <target>../init.d/gpm</target>
-		    <name>../rc5.d/S70gpm</name>
-		</link>
-
-		<link base="/etc/rc.d/init.d">
-		    <option>force</option>
-		    <target>../init.d/gpm</target>
-		    <name>../rc6.d/K10gpm</name>
-		</link>
 	</stage>
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&gpm-directory;</remove>
 		<remove>&build_dir;/&gpm-patch1;</remove>
 		<remove>&build_dir;/&gpm-patch2;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
 	</stage>
 
 </package>
