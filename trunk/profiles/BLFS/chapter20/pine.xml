@@ -13,7 +13,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing">
+	<stage name="Patching">
 		<stageinfo>
 			<base>&build_dir;/&pine-directory;</base>
 		</stageinfo>
@@ -23,6 +23,12 @@
 			<param>-p1</param>
 			<param>-i &packages_dir;/&pine-patch;</param>
 		</patch>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&pine-directory;</base>
+		</stageinfo>
 
 		<execute command="./build">
 		        <param>DEBUG=-O</param>
