@@ -27,17 +27,20 @@ AC_ARG_ENABLE([syntax],
         [SYNTAX_LIST=$enableval],
         [SYNTAX_LIST=2.0,3.0,3.1])
 
+handlers_2_0=0
+handlers_3_0=0
+handlers_3_1=0
 save_ifs="$IFS"; IFS="${IFS}${PATH_SEPARATOR},"
 for syntax_ver in ${SYNTAX_LIST}; do
     case ${syntax_ver} in
     2.0)
-        AC_DEFINE([HANDLER_SYNTAX_2_0], [1], [Define if ALFS 2.0 profile syntax handlers should be built.])
+	handlers_2_0=1
         ;;
     3.0)
-        AC_DEFINE([HANDLER_SYNTAX_3_0], [1], [Define if ALFS 3.0 profile syntax handlers should be built.])
+	handlers_3_0=1
         ;;
     3.1)
-        AC_DEFINE([HANDLER_SYNTAX_3_1], [1], [Define if ALFS 3.1 profile syntax handlers should be built.])
+	handlers_3_1=1
         ;;
     *)
         echo "***"
@@ -47,6 +50,13 @@ for syntax_ver in ${SYNTAX_LIST}; do
     esac
 done
 IFS="${save_ifs}"
+
+AM_CONDITIONAL(HANDLERS_2_0, test x${handlers_2_0} = x1)
+AM_CONDITIONAL(HANDLERS_3_0, test x${handlers_3_0} = x1)
+AM_CONDITIONAL(HANDLERS_3_1, test x${handlers_3_1} = x1)
+AC_DEFINE_UNQUOTED([HANDLER_SYNTAX_2_0], ${handlers_2_0}, [Define to 1if ALFS 2.0 profile syntax handlers should be built.])
+AC_DEFINE_UNQUOTED([HANDLER_SYNTAX_3_0], ${handlers_3_0}, [Define to 1if ALFS 3.0 profile syntax handlers should be built.])
+AC_DEFINE_UNQUOTED([HANDLER_SYNTAX_3_1], ${handlers_3_1}, [Define to 1if ALFS 3.1 profile syntax handlers should be built.])
 
 AC_ARG_ENABLE([inline], AC_HELP_STRING([--enable-inline], [enable compiler inlining of most functions]), [], [enableval=no])
 
