@@ -1,3 +1,6 @@
+<!-- configuration for cracklib -->
+<!ENTITY cracklib-wordlist "allwords">
+
 <!-- configuration for tripwire -->
 <!-- the content of the following entity should be the name of your policy file for tripwire -->
 <!ENTITY tripwire-policy-file "twpol.txt">

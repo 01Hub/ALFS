@@ -26,7 +26,7 @@
       <name>openldap</name>
     </utilizes>
     <utilizes>
-      <name>heimdal</name>
+      <name>&krb-impl;</name>
     </utilizes>
     <utilizes>
       <name>&j2sdk;</name>
@@ -45,6 +45,15 @@
     </utilizes>
     <utilizes>
       <name>courier</name>
+    </utilizes>
+    <utilizes>
+      <name>krb4</name>
+    </utilizes>
+    <utilizes>
+      <name>SQLite</name>
+    </utilizes>
+    <utilizes>
+      <name>dmalloc</name>
     </utilizes>
   </packageinfo>
   <stage name="Unpacking.">

@@ -1,6 +1,6 @@
 <!--************* packages for chapter 24 **************-->
 
-<!ENTITY apache-version   "2.0.52">
+<!ENTITY apache-version   "2.0.53">
 <!ENTITY apache-package   "httpd-&apache-version;.tar.bz2">
 <!ENTITY apache-directory "httpd-&apache-version;">
 <!ENTITY apache-patch     "httpd-&apache-version;-config-1.patch">

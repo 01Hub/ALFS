@@ -103,18 +103,13 @@
       <name>/usr/bin</name>
     </link>
     <move base="/usr/lib">
-      <source>libotp.so.0</source>
-      <source>libotp.so.0.1.4</source>
-      <source>libkafs.so.0</source>
-      <source>libkafs.so.0.4.0</source>
-      <source>libkrb5.so.17</source>
-      <source>libkrb5.so.17.3.0</source>
-      <source>libasn1.so.6</source>
-      <source>libasn1.so.6.0.2</source>
-      <source>libroken.so.16</source>
-      <source>libroken.so.16.0.3</source>
-      <source>libcrypto.so.0.9.7</source>
-      <source>libdb-4.2.so</source>
+      <source>libotp.so.0*</source>
+      <source>libkafs.so.0*</source>
+      <source>libkrb5.so.17*</source>
+      <source>libasn1.so.6*</source>
+      <source>libroken.so.16*</source>
+      <source>libcrypto.so.0*</source>
+      <source>libdb-4.3.so</source>
       <destination>/lib</destination>
     </move>
     <link>
@@ -129,8 +124,9 @@
       <target>../../lib/libasn1.so.6.0.2</target>
       <target>../../lib/libroken.so.16</target>
       <target>../../lib/libroken.so.16.0.3</target>
+      <target>../../lib/libcrypto.so.0</target>
       <target>../../lib/libcrypto.so.0.9.7</target>
-      <target>../../lib/libdb-4.2.so</target>
+      <target>../../lib/libdb-4.3.so</target>
       <name>/usr/lib</name>
     </link>
     &ldconfig;

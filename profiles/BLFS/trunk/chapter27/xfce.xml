@@ -25,6 +25,12 @@
       <utilizes>
         <name>startup-notification</name>
       </utilizes>
+      <utilizes>
+      	<name>a2ps</name>
+      </utilizes>
+      <utilizes>
+	<name>psutils</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -32,41 +38,41 @@
         <destination>&build_dir;</destination>
       </unpack>
       <unpack>
-        <archive>&build_dir;/&xfce-directory;/src/&xfce-libxfce4util-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src</destination>
+        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-libxfce4util-package;</archive>
+        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
       </unpack>
       <unpack>
-        <archive>&build_dir;/&xfce-directory;/src/&xfce-libxfcegui4-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src</destination>
+        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-libxfcegui4-package;</archive>
+        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
       </unpack>
       <unpack>
-        <archive>&build_dir;/&xfce-directory;/src/&xfce-libxfce4mcs-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src</destination>
+        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-libxfce4mcs-package;</archive>
+        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
       </unpack>
       <unpack>
-        <archive>&build_dir;/&xfce-directory;/src/&xfce-xfcemcsmanager-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src</destination>
+        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfcemcsmanager-package;</archive>
+        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
       </unpack>
       <unpack>
-        <archive>&build_dir;/&xfce-directory;/src/&xfce-xfwm4-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src</destination>
+        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfwm4-package;</archive>
+        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
       </unpack>
       <unpack>
-        <archive>&build_dir;/&xfce-directory;/src/&xfce-xfdesktop-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src</destination>
+        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfdesktop-package;</archive>
+        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
       </unpack>
       <unpack>
-        <archive>&build_dir;/&xfce-directory;/src/&xfce-xfce4panel-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src</destination>
+        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfce4panel-package;</archive>
+        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
       </unpack>
       <unpack>
-        <archive>&build_dir;/&xfce-directory;/src/&xfce-xfceutils-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src</destination>
+        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfceutils-package;</archive>
+        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src/&xfce-libxfce4util-directory;</base>
+        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-libxfce4util-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
@@ -78,7 +84,7 @@
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src/&xfce-libxfcegui4-directory;</base>
+        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-libxfcegui4-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
@@ -90,7 +96,7 @@
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src/&xfce-libxfce4mcs-directory;</base>
+        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-libxfce4mcs-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
@@ -102,7 +108,7 @@
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src/&xfce-xfcemcsmanager-directory;</base>
+        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfcemcsmanager-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
@@ -114,7 +120,7 @@
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src/&xfce-xfwm4-directory;</base>
+        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfwm4-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
@@ -126,20 +132,7 @@
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src/&xfce-xfdesktop-directory;</base>
-      </stageinfo>
-      <configure>
-        <param>--prefix=/usr</param>
-        <param>--sysconfdir=/etc</param>
-      </configure>
-      <make />
-      <make>
-        <param>install</param>
-      </make>
-    </stage>
-    <stage name="Installing">
-      <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src/&xfce-xfce4panel-directory;</base>
+        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfdesktop-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
@@ -152,7 +145,20 @@
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src/&xfce-xfceutils-directory;</base>
+        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfce4panel-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--sysconfdir=/etc</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfceutils-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
