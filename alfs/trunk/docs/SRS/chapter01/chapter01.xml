@@ -8,26 +8,32 @@
 
 <section id="ch-intro-purpose">
 <title>Purpose</title>
-<para>This document aims to provide a concrete specification describing the
-software tool alfs. Readers of this document should have a basic understanding
-of XML, networks, and the client/server model.</para>
+<para>This document provides a functional specification for the software
+tool <quote>alfs</quote></para>
+</section>
+
+<section id="ch-intro-audience">
+<title>Intended Audience</title>
+<para>This document is targeted toward users and developers of the
+<quote>alfs</quote> tool.</para>
 </section>
 
 <section id="ch-intro-scope">
 <title>Scope</title>
-<para>This document will cover all the fundamental concepts that together will
-form the alfs tool. The scope of this document will be limited to the ideas that
-surround this tool and will not go into detail on any specific programming
-languages or development tools.</para>
+<para>This document covers the high level descriptions of all the functionality
+that the alfs tool will provide.  The scope of this document will be limited to
+describing what features will be made available, and therefore will not go into
+detail on any specific programming languages or development tools.</para>
 </section>
 
 <section id="ch-intro-name">
 <title>Product Name</title>
-<para>After some healthy debate and work on the mailing lists, the tool will be
-named simply &quot;alfs&quot;.  We write it in all lowercase to differentiate it
-somewhat from the project name it is named after (ALFS).  The project is the
-tool and the tool is the project, so the name should fit inside this idea and is
-why we have selected this name.</para>
+  <para>The tool is called 'alfs'.  It is important it be written entirely in
+  lowercase to differentiate it from the project name it is a part of (ALFS).
+  </para>
+
+  <para>The project is the tool and the tool is the project, so the name should
+  fit inside this idea and is why the name 'alfs' was chosen.</para>
 </section>
 
 <section id="ch-intro-defs">
