@@ -240,6 +240,8 @@
 		<param>&LFS;/dev</param>
 		<param>&LFS;/proc</param>
 		<param>&LFS;/sys</param>
+		<!-- If you used a bind mount for your package dir, unmount it here. -->
+		<!-- <param>&LFS;&packages_dir;</param> -->
 	</execute>
 </stage>
 
