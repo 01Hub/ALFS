@@ -355,15 +355,12 @@ static INLINE void change_to_profiles_dir(element_s *el)
 static int do_execute_element(element_s *el)
 {
 	int i = 0;
-	element_s *profile = get_profile_by_element(el);
-
 
 	if (! (Can_run(el) && el->should_run)) {
 		return 0;
 	}
 
-	comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_STARTED,
-		"%s %s %d", profile->handler->name, el->handler->name, el->id);
+	comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_STARTED, "%d", el->id);
 
 	if (el->type == TYPE_PROFILE) {
 		i = execute_children(el);
@@ -390,12 +387,10 @@ static int do_execute_element(element_s *el)
 	if (i == 0) {
 		// TODO: Is there a point of setting these at all?
 		el->run_status = get_element_status(el);
-		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_ENDED,
-			"%s %s %d", profile->handler->name, el->handler->name, el->id);
+		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_ENDED, "%d", el->id);
 	} else {
 		el->run_status = RUN_STATUS_FAILED;
-		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_FAILED,
-			"%s %s %d", profile->handler->name, el->handler->name, el->id);
+		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_FAILED, "%d", el->id);
 	}
 
 	return i;
@@ -404,15 +399,12 @@ static int do_execute_element(element_s *el)
 int do_execute_test_element(element_s *element, int *result)
 {
 	int i = 0;
-	element_s *profile = get_profile_by_element(element);
-
 
 	if (! (Can_run(element) && element->should_run)) {
 		return 0;
 	}
 
-	comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_STARTED,
-		"%s %s %d", profile->handler->name, element->handler->name, element->id);
+	comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_STARTED, "%d", element->id);
 
 	if (*opt_use_relative_dirs)
 		change_to_profiles_dir(element);
@@ -422,12 +414,10 @@ int do_execute_test_element(element_s *element, int *result)
 	if (i == 0) {
 		// TODO: Is there a point of setting these at all?
 		element->run_status = get_element_status(element);
-		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_ENDED,
-			"%s %s %d", profile->handler->name, element->handler->name, element->id);
+		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_ENDED, "%d", element->id);
 	} else {
 		element->run_status = RUN_STATUS_FAILED;
-		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_FAILED,
-			"%s %s %d", profile->handler->name, element->handler->name, element->id);
+		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_FAILED, "%d", element->id);
 	}
 
 	return i;

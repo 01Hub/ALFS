@@ -43,7 +43,7 @@ int get_url(const char *url, const char *destination, const char *digest,
 	int command_status;
 	struct stat stat_buf;
 	char *dirname_buf;
-	char *temp_file_name;
+	char *temp_file_name = NULL;
 	    
 
 	/* Construct a temporary filename */
@@ -52,10 +52,8 @@ int get_url(const char *url, const char *destination, const char *digest,
 	   the dirname() function wants to modify it
 	*/
 	dirname_buf = xstrdup(destination);
-	temp_file_name = xstrdup(dirname(dirname_buf));
+	append_str_format(&temp_file_name, "%s/.nALFS.XXXXXX", dirname(dirname_buf));
 	xfree(dirname_buf);
-	append_str(&temp_file_name, "/");
-	append_str(&temp_file_name, ".nALFS.XXXXXX");
 	if (create_temp_file(temp_file_name))
 		goto free_all_and_return;
 	/* There is a small risk that another user could create a symlink

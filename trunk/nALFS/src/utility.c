@@ -180,6 +180,7 @@ int remove_new_line(char *buf)
 void append_str_format(char **ptr, const char *format, ...)
 {
 	va_list ap;
+	va_list ap2;
 	int old_length = 0;
 	int new_length;
 	char *value;
@@ -192,13 +193,13 @@ void append_str_format(char **ptr, const char *format, ...)
 		old_length = strlen(*ptr);
 
 	va_start(ap, format);
+	va_copy(ap2, ap);
 	new_length = vsnprintf(NULL, 0, format, ap);
 	va_end(ap);
 
       	value = xrealloc(*ptr, new_length + old_length + 1);
-	va_start(ap, format);
-	vsnprintf(value + old_length, new_length + 1, format, ap);
-	va_end(ap);
+	vsnprintf(value + old_length, new_length + 1, format, ap2);
+	va_end(ap2);
 
 	*ptr = value;
 }

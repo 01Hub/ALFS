@@ -685,53 +685,16 @@ static int handle_data_msg(void)
 	return 0;
 }
 
-static element_s *do_find_element_by_key(element_s *profile, unsigned int id)
-{
-	unsigned int i;
-	element_s *el;
-
-
-	for (i = 0, el = profile; el; el = get_next_element(el), ++i) {
-		if (i == id) {
-			return el;
-		}
-	}
-
-	return NULL;
-}
-
-/* str's format: "profile_name element_name element_id" */
+/* takes string containing element id and gets element */
 static element_s *find_element_by_key(const char *str)
 {
-	char *tok;
-	char *str_copy;
-	element_s *element = NULL;
+	char *endptr;
+	unsigned int id = strtoul(str, &endptr, 10);
 
+	if (*endptr == NULL)
+		return get_element_by_id(id);
 
-	str_copy = xstrdup(str);
-
-	if ((tok = strtok(str_copy, " "))) { /* Profile's name. */
-		element_s *profile = get_profile_by_name(tok);
-
-		ASSERT(profile != NULL);
-
-		if ((tok = strtok(NULL, " "))) { /* Element's name. */
-
-			if ((tok = strtok(NULL, " "))) { /* Element's ID. */
-				char *endptr;
-				unsigned int id = strtoul(tok, &endptr, 10);
-
-				if (*endptr == 0) {
-					element =
-					do_find_element_by_key(profile, id);
-				}
-			}
-		}
-	}
-
-	xfree(str_copy);
-
-	return element;
+	return NULL;
 }
 
 static INLINE void send_element_status(const char *key)
@@ -929,7 +892,7 @@ static INLINE void run_editor(const char *filename)
 {
 	int i;
 	const char *editor;
-	char *command;
+	char *command = NULL;
 
 
 	endwin();
@@ -944,9 +907,7 @@ static INLINE void run_editor(const char *filename)
 		editor = "vi";
 	}
 
-	command = xstrdup(editor);
-	append_str(&command, " ");
-	append_str(&command, filename);
+	append_str_format(&command, "%s %s", editor, filename);
 
 	i = system(command);
 
@@ -1078,12 +1039,8 @@ static int pkg_do_remove_package(logs_t *logs, int idx)
 	char *plog = logs_get_plog_filename(logs, idx);
 
 
-	append_str(&command, "rm -fr `cat ");
-	append_str(&command, flog);
-	append_str(&command, "`");
-
+	append_str_format(&command, "rm -fr `cat %s`", flog);
 	system(command);
-
 	xfree(command);
 
 	Nprint("Done removing files.");
@@ -1092,13 +1049,8 @@ static int pkg_do_remove_package(logs_t *logs, int idx)
 
 	if (get_key(windows.main->name) == 'Y') {
 		command = NULL;
-		append_str(&command, "rm -f ");
-		append_str(&command, flog);
-		append_str(&command, " ");
-		append_str(&command, plog);
-
+		append_str_format(&command, "rm -f %s %f", flog, plog);
 		system(command);
-
 		xfree(command);
 
 		Nprint("Log files removed:");
@@ -1200,9 +1152,7 @@ static void pkg_write_main_line(logs_t *logs, int idx)
 		append_str(&line, " ");
 	}
 
-	append_str(&line, name);
-	append_str(&line, " - ");
-	append_str(&line, version);
+	append_str_format(&line, "%s - %s", name, version);
 
 	/* Print the line. */
 	if (strlen(line) + 4 > (unsigned int)windows.max_cols) {
@@ -1336,8 +1286,6 @@ static void write_main_line(element_s *el, int *depth)
 {
 	int i, j;
 	char *line = NULL;
-	char status_mark[4];
-
 
 	if (should_skip_element(el, depth)) {
 		return;
@@ -1348,46 +1296,15 @@ static void write_main_line(element_s *el, int *depth)
 		(displayed.total) * sizeof *displayed.elements);
 	displayed.elements[displayed.total - 1] = el;
 
-
-	/* Space for cursor. */
-	for (i = 0; i < (int)strlen(*opt_cursor); ++i) {
-		append_str(&line, " ");
-	}
-
-	/* Marked or not. */
-	if (el->marked) {
-		append_str(&line, " * ");
-	} else {
-		append_str(&line, "   ");
-	}
-
-	/* Run-status mark. */
-	status_mark[0] = status_to_mark(el->run_status);
-	status_mark[1] = ' ';
-	status_mark[2] = ' ';
-	status_mark[3] = '\0';
-	append_str(&line, status_mark);
-
-	/* Indentation space. */
-	j = (*depth) * *opt_indentation_size;
-	for (i = 0; i < j; ++i) {
-		append_str(&line, " ");
-	}
-
-	/* Does element have children. */
-	if (el->children) {
-		if (el->hide_children) {
-			append_str(&line, "+ ");
-		} else {
-			append_str(&line, "- ");
-		}
-	} else {
-		append_str(&line, "  ");
-	}
+	append_str_format(&line, "%*s %s %c%*s%s ",
+			  strlen(*opt_cursor), "",
+			  el->marked ? "*" : " ",
+			  status_to_mark(el->run_status),
+			  *depth * *opt_indentation_size, "",
+			  el->children ? (el->hide_children ? "+" : "-") : " ");
 
 	if (el->handler->data & HDATA_DISPLAY_NAME) {
-		char *display = el->handler->alloc_data(el,
-							HDATA_DISPLAY_NAME);
+		char *display = el->handler->alloc_data(el, HDATA_DISPLAY_NAME);
 		append_str(&line, display);
 		xfree(display);
 	} else {
@@ -4370,16 +4287,14 @@ static INLINE void set_main_signals(void)
 static INLINE void append_prune_dirs_from_file(void)
 {
 	FILE *fp;
-	char *file;
+	char *file = NULL;
 
 
 	/* Get real file name. */
 	if (*opt_find_prunes_file[0] == '/') {
 		file = xstrdup(*opt_find_prunes_file);
 	} else {
-		file = xstrdup(*opt_alfs_directory);
-		append_str(&file, "/");
-		append_str(&file, *opt_find_prunes_file);
+		append_str_format(&file, "%s/%s", *opt_alfs_directory, *opt_find_prunes_file);
 	}
 
 	/* Read directories from a file. */
@@ -4413,10 +4328,8 @@ static INLINE void append_prune_dirs_from_file(void)
  */
 static INLINE void init_state_file(void)
 {
-	state.filename = xstrdup(*opt_alfs_directory);
-	append_str(&state.filename, "/");
-       	append_str(&state.filename, state_file_name);
-
+	state.filename = NULL;
+	append_str_format(&state.filename, "%s/%s",  *opt_alfs_directory, state_file_name);
 	state.exists = file_exists(state.filename) ? 1 : 0;
 }
 
@@ -4488,7 +4401,7 @@ static void nprint_text(msg_id_e mid, const char *format,...)
 	}
 
 	va_start(ap, format);
-        __va_copy(ap2, ap);
+        va_copy(ap2, ap);
 
 	console = (mid == T_ERR) ? stderr : stdout;
 

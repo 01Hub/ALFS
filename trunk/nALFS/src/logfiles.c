@@ -253,9 +253,9 @@ struct logs *logs_init_from_directory(const char *dir_name)
 
 			plogf = xmalloc(sizeof *plogf);
 
-			plogf->filename = xstrdup(dir_name);
-			append_str(&plogf->filename, "/");
-			append_str(&plogf->filename, next->d_name);
+			plogf->filename = NULL;
+			append_str_format(&plogf->filename, "%s/%s",
+					  dir_name, next->d_name);
 			plogf->name = NULL;
 			plogf->version = NULL;
 			plogf->installed = NULL;
@@ -354,10 +354,9 @@ struct logs *logs_init_from_package_string(
 
 	plogf = xmalloc(sizeof *plogf);
 
-	plogf->filename = xstrdup(pdir);
-	append_str(&plogf->filename, "/");
-	append_str(&plogf->filename, package_str);
-	append_str(&plogf->filename, SUFFIX_FOR_LOGF);
+	plogf->filename = NULL;
+	append_str_format(&plogf->filename, "%s/%s%s", pdir,
+			  package_str, SUFFIX_FOR_LOGF);
 	plogf->name = NULL;
 	plogf->version = NULL;
 	plogf->installed = NULL;
@@ -420,8 +419,7 @@ char *logs_create_flog(struct logs *logs)
 	tmp = strrchr(filename, '.');
 	*tmp = '\0';
 	
-	append_str(&filename, SUFFIX_FOR_FLOG);
-	append_str(&filename, ".XXXXXX");
+	append_str(&filename, SUFFIX_FOR_FLOG ".XXXXXX");
 
 	if (create_temp_file(filename)) {
 		xfree(filename);
