@@ -68,8 +68,8 @@ int main (int argc, char **argv)
 				printf("\t-h\t\tPrint this fluff\n");
 				printf("\t-q\t\tNo output\n");
 				printf("\t-s SYNTAX\tChoose syntax (help shows them)\n");
-				printf("\t-o SYNTAX\tOutput the input in another %s",
-						"syntax (help shows them)\n");
+				printf("\t-o SYNTAX\tOutput the input in another"
+					"syntax (help shows them)\n");
 				printf("\t-V\t\tVersion information\n");
 				goto cleanup;
 			case 'c':

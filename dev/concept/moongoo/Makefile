@@ -1,7 +1,7 @@
 CFLAGS=-I. -Ilibalfs
 
 BIN=moongoo
-OBJS=build.o moongoo.o plugin.o url.o
+OBJS=build.o main.o plugin.o url.o
 
 ifeq ($(OPTS),)
 OPTS=-s ass -o ass_out
@@ -32,6 +32,6 @@ run: $(BIN)
 	./$(BIN) $(OPTS)
 
 build.o: build.h
-moongoo.o: main.h
+main.o: main.h
 plugin.o: plugin.h
 url.o: url.h
