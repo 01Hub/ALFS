@@ -31,6 +31,8 @@ int main ()
 	comm_wrint(0);
 	comm_deinit();
 
+	sed_paralell (prof, paralell_filter, popt_pkg, popt_cmd);
+	set_filter(default_filter);
 	print_profile(*prof);
 	
 	return 0;
