@@ -25,6 +25,8 @@ srcdir       := @top_srcdir@/src/lib
 top_builddir := @top_builddir@
 include $(top_builddir)/Rules.mak
 
+CFLAGS += -fPIC
+
 .PHONY: all
 
 all: $(NALFS_LIB)
