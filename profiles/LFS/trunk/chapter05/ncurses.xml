@@ -28,6 +28,9 @@
         <param>--enable-overwrite</param>
       </configure>
       <make>
+        <param>sources</param>
+      </make>
+      <make>
         <param>&jlevel;</param>
       </make>
       <make>
