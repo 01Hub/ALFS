@@ -41,7 +41,7 @@ chunks-html: common
 	  stylesheets/alfs-chunked.xsl \
 	  > $(OUTDIR)stylesheets/alfs-chunked.xsl
 
-	xsltproc --nonet -stringparam base.dir $(OUTDIR) \
+	xsltproc -nonet -stringparam base.dir $(OUTDIR) \
 	  $(OUTDIR)stylesheets/alfs-chunked.xsl \
 	  index.xml
 
@@ -51,7 +51,7 @@ chunks-html: common
 	  $(OUTDIR)images
 
 	sed -i -e "s@../stylesheets@stylesheets@" \
-	  $(OUTDIR)alfs_dtd.html $(OUTDIR)index.html $(OUTDIR)preface.html
+	  $(OUTDIR)index.html
 
 	sed -i -e "s@images@../images@g" \
 	  $(OUTDIR)alfs_dtd/*.html $(OUTDIR)preface/*.html
