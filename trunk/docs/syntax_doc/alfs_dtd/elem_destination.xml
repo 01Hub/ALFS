@@ -43,6 +43,9 @@ occurs in.</para>
 cd /usr/src
 <command>tar -xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></userinput></screen>
 
+</sect2>
+
+<sect2>
 <title>Example #2</title>
 
 <para>The second example is a copy command.</para>

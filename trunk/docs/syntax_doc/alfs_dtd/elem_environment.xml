@@ -42,20 +42,13 @@ existing value.</para>
 <screen><userinput>&lt;stage&gt;
 	&lt;stageinfo&gt;
 		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
-	&lt;environment&gt;
-		&lt;variable name="GCCFLAGS"&gt;-O2&lt;/variable&gt;
-		&lt;variable name="PATH" mode="prepend"&gt;/usr/src/gzip.1.2.4a:&lt;/variable&gt;
-		&lt;variable name="LDFLAGS" mode="append"&gt; -s&lt;/variable&gt;
+		&lt;environment&gt;
+			&lt;variable name="GCCFLAGS"&gt;-O2&lt;/variable&gt;
+			&lt;variable name="PATH" mode="prepend"&gt;/usr/src/gzip.1.2.4a:&lt;/variable&gt;
+			&lt;variable name="LDFLAGS" mode="append"&gt; -s&lt;/variable&gt;
 		&lt;/environment&gt;
 	&lt;/stageinfo&gt;
 
-	&lt;configure /&gt;
-
-	&lt;make /&gt;
-
-	&lt;make&gt;
-		&lt;param&gt;install&lt;/param&gt;
-	&lt;/make&gt;
 &lt;/stage&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
@@ -65,18 +58,6 @@ existing value.</para>
 export GCCFLAGS=-O2
 export PATH=/usr/src/gzip.1.2.4a:$PATH
 export LDFLAGS="$LDFLAGS -s"
-
-echo Executing configure
-cd /usr/src/gzip.1.2.4a
-<command>./configure</command>
-
-echo Executing make
-cd /usr/src/gzip.1.2.4a
-<command>make</command>
-
-echo Executing make
-cd /usr/src/gzip.1.2.4a
-<command>make install</command>
 
 echo Exiting stage</userinput></screen>
 
