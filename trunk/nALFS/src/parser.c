@@ -112,7 +112,7 @@ void link_element(element_s *el, element_s *prev, element_s *parent,
 {
 	/* Parent<->Child */
 	if (parent) {
-		el->parent = parent;
+		/* el->parent is set at parsing time */
 
 		if (parent->children == NULL) {
 			parent->children = el;
