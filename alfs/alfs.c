@@ -118,7 +118,7 @@ int main (int argc, char **argv)
 	doc = xmlParseFile(argv[argc-1]);
 	if (!doc)
 		return 2;
-	xmlXIncludeProcessFlags(doc, XML_PARSE_NOENT);
+	xmlXIncludeProcessFlags(doc, XML_PARSE_NOENT|XML_PARSE_NONET);
 	cur = xmlDocGetRootElement(doc);
 
 	//print_subtree(cur);

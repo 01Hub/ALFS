@@ -1,7 +1,7 @@
 CFLAGS=-I../libalfs -I..
 
 LIBS=ass.so blfs.so book.so diyl.so nalfs.so syn.so
-LIBS+=sample.so
+#LIBS+=sample.so
 
 CLEANFILES=$(LIBS)
 
