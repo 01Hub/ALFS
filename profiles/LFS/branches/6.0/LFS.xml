@@ -118,6 +118,7 @@
 		<xi:include href="chapter06/gawk.xml" />
 		<xi:include href="chapter06/ncurses.xml" />
 		<xi:include href="chapter06/readline.xml" />
+		<xi:include href="chapter06/vim.xml" />
 		<xi:include href="chapter06/m4.xml" />
 		<xi:include href="chapter06/bison.xml" />
 		<xi:include href="chapter06/less.xml" />
@@ -125,7 +126,6 @@
 		<xi:include href="chapter06/sed.xml" />
 		<xi:include href="chapter06/flex.xml" />
 		<xi:include href="chapter06/gettext.xml" />
-		<xi:include href="chapter06/vim.xml" />
 		<xi:include href="chapter06/inetutils.xml" />
 		<xi:include href="chapter06/iproute2.xml" />
 		<xi:include href="chapter06/perl.xml" />
