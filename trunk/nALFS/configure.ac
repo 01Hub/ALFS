@@ -23,42 +23,63 @@ if test x$enable_static = xyes; then
 fi
 
 AC_ARG_ENABLE([syntax],
-	AC_HELP_STRING([--enable-syntax=VERSIONS], [enable only specific ALFS profile syntax versions to be built]),
-	[SYNTAX_LIST=$enableval],
-	[SYNTAX_LIST=2.0,3.0,3.1])
+        AC_HELP_STRING([--enable-syntax=VERSIONS], [enable only specific ALFS profile syntax versions to be built]),
+        [SYNTAX_LIST=$enableval],
+        [SYNTAX_LIST=2.0,3.0,3.1])
 
 save_ifs="$IFS"; IFS="${IFS}${PATH_SEPARATOR},"
 for syntax_ver in ${SYNTAX_LIST}; do
     case ${syntax_ver} in
     2.0)
-	AC_DEFINE([HANDLER_SYNTAX_2_0], [1], [Define if ALFS 2.0 profile syntax handlers should be built.])
+        AC_DEFINE([HANDLER_SYNTAX_2_0], [1], [Define if ALFS 2.0 profile syntax handlers should be built.])
         ;;
     3.0)
-	AC_DEFINE([HANDLER_SYNTAX_3_0], [1], [Define if ALFS 3.0 profile syntax handlers should be built.])
+        AC_DEFINE([HANDLER_SYNTAX_3_0], [1], [Define if ALFS 3.0 profile syntax handlers should be built.])
         ;;
     3.1)
-	AC_DEFINE([HANDLER_SYNTAX_3_1], [1], [Define if ALFS 3.1 profile syntax handlers should be built.])
+        AC_DEFINE([HANDLER_SYNTAX_3_1], [1], [Define if ALFS 3.1 profile syntax handlers should be built.])
         ;;
     *)
-	echo "***"
-	echo "*** Unknown syntax version supplied: ${syntax_ver}"
-	exit 1
-	;;
+        echo "***"
+        echo "*** Unknown syntax version supplied: ${syntax_ver}"
+        exit 1
+        ;;
     esac
 done
 IFS="${save_ifs}"
 
-AC_ARG_ENABLE([inline], AC_HELP_STRING([--disable-inline], [disable compiler inlining of functions]), [INLINE=$withval], [INLINE=yes])
+AC_ARG_ENABLE([inline], AC_HELP_STRING([--enable-inline], [enable compiler inlining of most functions]), [], [enableval=no])
 
-if test "$INLINE" = "yes"; then
-    AC_DEFINE([INLINE], [inline], [Define to "inline" to allow the compiler to inline functions.])
-fi
+case ${enableval} in
+     n|no)
+         inline_val=
+         ;;
+     y|ye|yes)
+         inline_val=inline
+         ;;
+     *)
+         echo "***"
+         echo "*** Unknown --enable-inline value supplied: ${enableval}"
+         exit 1
+         ;;
+esac
 
-AC_ARG_ENABLE([element-editor], AC_HELP_STRING([--disable-element-editor], [disable editing of elements]), [USE_EDITOR=$withval], [USE_EDITOR=yes])
+AC_DEFINE_UNQUOTED([INLINE], $inline_val, [Define to "inline" to tell the compiler to inline most functions.])
 
-if test "$USE_EDITOR" = "yes"; then
-   AC_DEFINE([USE_EDITOR], [], [Define to allow editing of elements.])
-fi
+AC_ARG_ENABLE([element-editor], AC_HELP_STRING([--disable-element-editor], [disable editing of elements]), [], [enableval=yes])
+
+case ${enableval} in
+     n|no)
+         ;;
+     y|ye|yes)
+         AC_DEFINE([USE_EDITOR], [], [Define to allow editing of elements.])
+         ;;
+     *)
+         echo "***"
+         echo "*** Unknown --enable-element-editor value supplied: ${enableval}"
+         exit 1
+         ;;
+esac
 
 AC_ARG_WITH([run-dir-variable], AC_HELP_STRING([--with-run-dir-variable=NAME], [use environment variable NAME for nALFS run dir [[default=ALFS_DIR]]]), [ALFS_VAR="$withval"], [ALFS_VAR="ALFS_DIR"])
 
@@ -79,17 +100,17 @@ AC_DEFINE_UNQUOTED([RC_FILE_NAME], "$RC_FILE_NAME", [Define to set name of confi
 AC_ARG_WITH([libxml2], AC_HELP_STRING([--with-libxml2=PATH],[search for xml2-config in PATH/bin]), [
 case "$withval" in
      n|no)
-	echo "***"
-	echo "*** You specified --without-libxml2."
+        echo "***"
+        echo "*** You specified --without-libxml2."
         echo "*** libxml2 is required to build this package."
-	exit 1
-	;;
+        exit 1
+        ;;
      y|ye|yes)
         AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no])
-	;;
+        ;;
      *)
-	AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no], [$withval/bin])
-	;;
+        AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no], [$withval/bin])
+        ;;
 esac
 ], [
 AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no])
@@ -118,24 +139,33 @@ else
    exit 1
 fi
 
-AC_ARG_ENABLE([libxml2-SAX], AC_HELP_STRING([--enable-libxml2-SAX], [enable using libxml2's SAX functions for parsing profiles]), [PARSE_WITH_LIBXML_SAX=$withval], [PARSE_WITH_LIBXML_SAX=no])
+AC_ARG_ENABLE([libxml2-SAX], AC_HELP_STRING([--enable-libxml2-SAX], [enable using libxml2's SAX functions for parsing profiles]), [], [enableval=no])
 
-if test "$PARSE_WITH_LIBXML_SAX" = "yes"; then
-    AC_DEFINE([PARSE_WITH_LIBXML_SAX], [], [Define to use libxml2's SAX functions for parsing profiles.])
-fi
+case ${enableval} in
+     n|no)
+         ;;
+     y|ye|yes)
+         AC_DEFINE([PARSE_WITH_LIBXML_SAX], [], [Define to use libxml2's SAX functions for parsing profiles.])
+         ;;
+     *)
+         echo "***"
+         echo "*** Unknown --enable-libxml2-SAX value supplied: ${enableval}"
+         exit 1
+         ;;
+esac
 
 AC_ARG_WITH([curl], AC_HELP_STRING([--with-curl=PATH],[search for curl-config in PATH/bin]), [
 case "$withval" in
      n|no)
-	;;
+        ;;
      y|ye|yes)
         USE_CURL=yes
         AC_PATH_PROG([CURL_CONFIG], [curl-config], [no])
-	;;
+        ;;
      *)
         USE_CURL=yes
-	AC_PATH_PROG([CURL_CONFIG], [curl-config], [no], [$withval/bin])
-	;;
+        AC_PATH_PROG([CURL_CONFIG], [curl-config], [no], [$withval/bin])
+        ;;
 esac
 ], [
 AC_PATH_PROG([CURL_CONFIG], [curl-config], [no])
@@ -165,14 +195,14 @@ fi
 AC_ARG_WITH([ssl], AC_HELP_STRING([--with-ssl=PATH],[use ssl files in PATH (ssl is needed for checking non-MD5 digests in <unpack> and <download> elements)]), [
 case "$withval" in
      n|no)
-	;;
+        ;;
      y|ye|yes)
         USE_SSL=yes
-	;;
+        ;;
      *)
         USE_SSL=yes
-	SSL_DIR="$withval"
-	;;
+        SSL_DIR="$withval"
+        ;;
 esac
 ])
 
@@ -183,7 +213,7 @@ if test "$USE_SSL" = "yes"; then
       if test "$SSL_DIR" != ""; then
          SSL_LIB="-L$SSL_DIR/lib -Wl,--rpath,$SSL_DIR/lib $SSL_LIB"
          SSL_INCLUDES="-I$SSL_DIR/include"
-	 AC_SUBST([SSL_INCLUDES])
+         AC_SUBST([SSL_INCLUDES])
       fi
       AC_SUBST([SSL_LIB])
    else
