@@ -5,12 +5,6 @@
 			<archive>&packages_dir;/&net-tools-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&net-tools-miitool-gcc33;</source>
-			<source>&packages_dir;/&net-tools-kernel-headers-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing.">
@@ -21,13 +15,13 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&net-tools-miitool-gcc33;</param>
+			<param>-i &packages_dir;/&net-tools-miitool-gcc33;</param>
 		</patch>
 
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&net-tools-kernel-headers-patch;</param>
+			<param>-i &packages_dir;/&net-tools-kernel-headers-patch;</param>
 		</patch>
 
 		<execute command="yes">
@@ -45,7 +39,5 @@
 
 	<stage name="Cleaning up.">
 		<remove>&build_dir;/&net-tools-directory;</remove>
-		<remove>&build_dir;/&net-tools-miitool-gcc33;</remove>
-		<remove>&build_dir;/&net-tools-kernel-headers-patch;</remove>
 	</stage>
 </package>
