@@ -43,90 +43,194 @@
 #include "parser.h"
 #include "backend.h"
 
-
-#define El_search_replace_file(el) alloc_trimmed_param_value("file", el)
-#define El_search_replace_find(el) alloc_trimmed_param_value("find", el)
-#define El_search_replace_replace(el) alloc_trimmed_param_value("replace", el)
-
 #define TMP_SEARCH_REPLACE_FILE	"/tmp/nALFS-XXXXXX"
 
+enum {
+	SEARCH_REPLACE_FIND,
+	SEARCH_REPLACE_REPLACE,
+	SEARCH_REPLACE_FILE,
+	SEARCH_REPLACE_BASE,
+};
 
-static int search_replace_main(element_s *el, const char *base_dir)
+struct search_replace_data {
+	char *find;
+	char *replace;
+	char *file;
+	char *base;
+};
+
+#if HANDLER_SYNTAX_2_0
+
+static const struct handler_parameter search_replace_parameters_v2[] = {
+	{ .name = "base", .private = SEARCH_REPLACE_BASE },
+	{ .name = "find", .private = SEARCH_REPLACE_FIND },
+	{ .name = "replace", .private = SEARCH_REPLACE_REPLACE },
+	{ .name = "file", .private = SEARCH_REPLACE_FILE },
+	{ .name = NULL }
+};
+
+#endif /* HANDLER_SYNTAX_2_0 */
+
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
+
+static const struct handler_parameter search_replace_parameters_v3[] = {
+	{ .name = "find", .private = SEARCH_REPLACE_FIND },
+	{ .name = "replace", .private = SEARCH_REPLACE_REPLACE },
+	{ .name = "file", .private = SEARCH_REPLACE_FILE },
+	{ .name = NULL }
+};
+
+static const struct handler_attribute search_replace_attributes[] = {
+	{ .name = "base", .private = SEARCH_REPLACE_BASE },
+	{ .name = NULL }
+};
+
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
+
+static int search_replace_setup(element_s * const element)
 {
+	struct search_replace_data *data;
+
+	if ((data = xmalloc(sizeof(struct search_replace_data))) == NULL)
+		return -1;
+
+	data->base = NULL;
+	data->file = NULL;
+	data->find = NULL;
+	data->replace = NULL;
+	element->handler_data = data;
+
+	return 0;
+}
+
+static void search_replace_free(const element_s * const element)
+{
+	struct search_replace_data *data = (struct search_replace_data *) element->handler_data;
+
+	xfree(data->base);
+	xfree(data->file);
+	xfree(data->find);
+	xfree(data->replace);
+	xfree(data);
+}
+
+static int search_replace_attribute(const element_s * const element,
+				    const struct handler_attribute * const attr,
+				    const char * const value)
+{
+	struct search_replace_data *data = (struct search_replace_data *) element->handler_data;
+
+	switch (attr->private) {
+	case SEARCH_REPLACE_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify \"base\" more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int search_replace_parameter(const element_s * const element,
+			    const struct handler_parameter * const param,
+			    const char * const value)
+{
+	struct search_replace_data *data = (struct search_replace_data *) element->handler_data;
+
+	switch (param->private) {
+	case SEARCH_REPLACE_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify <base> more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	case SEARCH_REPLACE_FILE:
+		if (data->file) {
+			Nprint_err("<%s>: cannot specify <file> more than once.", element->handler->name);
+			return 1;
+		}
+		data->file = xstrdup(value);
+		return 0;
+	case SEARCH_REPLACE_FIND:
+		if (data->find) {
+			Nprint_err("<%s>: cannot specify <find> more than once.", element->handler->name);
+			return 1;
+		}
+		data->find = xstrdup(value);
+		return 0;
+	case SEARCH_REPLACE_REPLACE:
+		if (data->replace) {
+			Nprint_err("<%s>: cannot specify <replace> more than once.", element->handler->name);
+			return 1;
+		}
+		data->replace = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int search_replace_valid_data(const element_s * const element)
+{
+	struct search_replace_data *data = (struct search_replace_data *) element->handler_data;
+
+	if (!data->file) {
+		Nprint_err("<%s>: <file> must be specified.", element->handler->name);
+		return 0;
+	}
+
+	if (!data->find) {
+		Nprint_err("<%s>: <find> must be specified.", element->handler->name);
+		return 0;
+	}
+
+	return 1;
+}
+
+static int search_replace_main(const element_s * const element)
+{
+	struct search_replace_data *data = (struct search_replace_data *) element->handler_data;
 	int i, c, fdw, offset, num_found = 0;
 	char *buf = NULL;
-	char *file;
-	char *find;
-	char *replace = El_search_replace_replace(el);
 	char tmp_file[] = TMP_SEARCH_REPLACE_FILE;
 	FILE *fp, *fpw;
 	struct stat file_stat;
 
-
-	if ((find = El_search_replace_find(el)) == NULL) {
-		Nprint_h_err("No find string specified.");
-		return -1;
-	}
-
-	if ((file = El_search_replace_file(el)) == NULL) {
-		Nprint_h_err("No file specified.");
-		xfree(find);
-		return -1;
-	}
-
-	if (change_current_dir(base_dir)) {
-		xfree(find);
-		xfree(file);
-		return -1;
-	}
-
-	Nprint_h("Searching %s (%s)",  file, base_dir);
-	Nprint_h("    for \"%s\"", find);
-	Nprint_h("    and replacing with \"%s\".",
-		replace ? replace : "");
-
-	if ((fp = fopen(file, "r")) == NULL) {
-		Nprint_h_err("Opening %s failed: %s",
-			file, strerror(errno));
-		xfree(find);
-		xfree(file);
+	if (change_to_base_dir(element, data->base, 1))
 		return -1;
 
+	Nprint_h("Searching %s (%s)", data->file);
+	Nprint_h("    for \"%s\"", data->find);
+	Nprint_h("    and replacing with \"%s\".", data->replace ? data->replace : "");
+
+	if ((fp = fopen(data->file, "r")) == NULL) {
+		Nprint_h_err("Opening %s failed: %s", data->file, strerror(errno));
+		return -1;
 	}
 
 	if (fstat(fileno(fp), &file_stat)) {
-		Nprint_h_err("Error fstat()ing %s: %s",
-			file, strerror(errno));
-		xfree(find);
-		xfree(file);
+		Nprint_h_err("Error fstat()ing %s: %s", data->file, strerror(errno));
 		return -1;
 	}
 
 	if ((fdw = mkstemp(tmp_file)) == -1) {
-		Nprint_h_err("Error opening temporary file: %s",
-			strerror(errno));
-		xfree(find);
-		xfree(file);
+		Nprint_h_err("Error opening temporary file: %s", strerror(errno));
 		return -1;
 	}
 	
-
 	if ((fpw = fdopen(fdw, "w")) == NULL) {
-		Nprint_h_err("Opening %s failed: %s",
-			tmp_file, strerror(errno));
-		xfree(find);
-		xfree(file);
+		Nprint_h_err("Opening %s failed: %s", tmp_file, strerror(errno));
 		return -1;
 	}
 
-	offset = (int)strlen(find) - 1;
-
-	buf = xmalloc(strlen(find) + 1);
-
-	for (i = 0; i < (int)(strlen(find)) + 1; i++) {
+	offset = (int)strlen(data->find) - 1;
+	buf = xmalloc(strlen(data->find) + 1);
+	for (i = 0; i < (int)(strlen(data->find)) + 1; i++) {
 		buf[i] = '\0';
 	}
-
 	while ((c = getc(fp)) != EOF) {
 		/* Shift to left, adding c at the end. */
 		i = offset;
@@ -136,12 +240,12 @@ static int search_replace_main(element_s *el, const char *base_dir)
 		}
 		buf[i] = c;
 
-		if (strcmp(buf + offset, find) == 0) {
+		if (strcmp(buf + offset, data->find) == 0) {
 			num_found++;
-			fseek(fpw, (long)-strlen(find) + 1, SEEK_CUR);
+			fseek(fpw, (long)-strlen(data->find) + 1, SEEK_CUR);
 
-			if (replace) {
-				fprintf(fpw, "%s", replace);
+			if (data->replace) {
+				fprintf(fpw, "%s", data->replace);
 			}
 
 		} else {
@@ -157,82 +261,21 @@ static int search_replace_main(element_s *el, const char *base_dir)
 	fclose(fpw);
 	fclose(fp);
 
-	Nprint_h("Made %d change%s.", num_found,
-		num_found != 1 ? "s" : ""); /* :-) */
+	Nprint_h("Made %d change%s.", num_found, num_found != 1 ? "s" : ""); /* :-) */
 
-	if (execute_command(el, "mv -f %s %s", tmp_file, file)) {
-		Nprint_h_err("System command for moving %s to %s failed.",
-			tmp_file, file);
-		xfree(find);
-		xfree(file);
+	if (execute_command(element, "mv -f %s %s", tmp_file, data->file)) {
+		Nprint_h_err("System command for moving %s to %s failed.", tmp_file, data->file);
 		return -1;
 	}
 
 	/* Changing the file mode. */
-	if (chmod(file, file_stat.st_mode)) {
-		Nprint_h_err("chmod(%s) failed: %s",
-			file, strerror(errno));
-		xfree(find);
-		xfree(file);
+	if (chmod(data->file, file_stat.st_mode)) {
+		Nprint_h_err("chmod(%s) failed: %s", data->file, strerror(errno));
 		return -1;
 	}
 
-	xfree(find);
-	xfree(file);
-
 	return 0;
 }
-
-
-#if HANDLER_SYNTAX_2_0
-
-static const struct handler_parameter search_replace_parameters_ver2[] = {
-	{ .name = "base" },
-	{ .name = "find" },
-	{ .name = "replace" },
-	{ .name = "file" },
-	{ .name = NULL }
-};
-
-static int search_replace_main_ver2(const element_s * const el)
-{
-	int i;
-	char *base = alloc_base_dir(el);
-
-	i = search_replace_main(el, base);
-
-	xfree(base);
-
-	return i;
-}
-
-#endif /* HANDLER_SYNTAX_2_0 */
-
-
-#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
-
-static const struct handler_parameter search_replace_parameters_ver3[] = {
-	{ .name = "find" },
-	{ .name = "replace" },
-	{ .name = "file" },
-	{ .name = NULL }
-};
-
-static const struct handler_attribute search_replace_attributes[] = {
-	{ .name = "base" },
-	{ .name = NULL }
-};
-
-static int search_replace_main_ver3(const element_s * const el)
-{
-	if (change_to_base_dir(el, attr_value("base", el), 1))
-		return -1;
-
-	return search_replace_main(el, ".");
-}
-
-#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
-
 
 /*
  * Handlers' information.
@@ -244,10 +287,15 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "search_replace",
 		.description = "Search and replace",
 		.syntax_version = "2.0",
-		.parameters = search_replace_parameters_ver2,
-		.main = search_replace_main_ver2,
+		.parameters = search_replace_parameters_v2,
+		.main = search_replace_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = search_replace_setup,
+		.free = search_replace_free,
+		.attribute = search_replace_attribute,
+		.parameter = search_replace_parameter,
+		.valid_data = search_replace_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -255,11 +303,16 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "search_replace",
 		.description = "Search and replace",
 		.syntax_version = "3.0",
-		.parameters = search_replace_parameters_ver3,
+		.parameters = search_replace_parameters_v3,
 		.attributes = search_replace_attributes,
-		.main = search_replace_main_ver3,
+		.main = search_replace_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = search_replace_setup,
+		.free = search_replace_free,
+		.attribute = search_replace_attribute,
+		.parameter = search_replace_parameter,
+		.valid_data = search_replace_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -267,11 +320,16 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "search_replace",
 		.description = "Search and replace",
 		.syntax_version = "3.1",
-		.parameters = search_replace_parameters_ver3,
+		.parameters = search_replace_parameters_v3,
 		.attributes = search_replace_attributes,
-		.main = search_replace_main_ver3,
+		.main = search_replace_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = search_replace_setup,
+		.free = search_replace_free,
+		.attribute = search_replace_attribute,
+		.parameter = search_replace_parameter,
+		.valid_data = search_replace_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -279,12 +337,17 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "search_replace",
 		.description = "Search and replace",
 		.syntax_version = "3.2",
-		.parameters = search_replace_parameters_ver3,
+		.parameters = search_replace_parameters_v3,
 		.attributes = search_replace_attributes,
-		.main = search_replace_main_ver3,
+		.main = search_replace_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
 		.alternate_shell = 1,
+		.setup = search_replace_setup,
+		.free = search_replace_free,
+		.attribute = search_replace_attribute,
+		.parameter = search_replace_parameter,
+		.valid_data = search_replace_valid_data,
 	},
 #endif
 	{

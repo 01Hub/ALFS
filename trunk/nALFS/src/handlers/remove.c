@@ -42,9 +42,141 @@
 #include "parser.h"
 #include "backend.h"
 
+enum {
+	REMOVE_BASE,
+	REMOVE_FILE,
+};
+
+struct remove_data {
+	char *base;
+	int file_count;
+	char **files;
+	char *content;
+};
+
+#if HANDLER_SYNTAX_3_2
+
+static const struct handler_parameter remove_parameters_v3_2[] = {
+	{ .name = "file", .private = REMOVE_FILE },
+	{ .name = NULL }
+};
+
+static const struct handler_attribute remove_attributes_v3_2[] = {
+	{ .name = "base", .private = REMOVE_BASE },
+	{ .name = NULL }
+};
+
+#endif
+
+static int remove_setup(element_s * const element)
+{
+	struct remove_data *data;
+
+	if ((data = xmalloc(sizeof(struct remove_data))) == NULL)
+		return -1;
+
+	data->file_count = 0;
+	data->files = NULL;
+	data->base = NULL;
+	data->content = NULL;
+	element->handler_data = data;
+
+	return 0;
+}
+
+static void remove_free(const element_s * const element)
+{
+	struct remove_data *data = (struct remove_data *) element->handler_data;
+	int i;
+
+	xfree(data->base);
+	xfree(data->content);
+	if (data->file_count > 0) {
+		for (i = 0; i < data->file_count; i++)
+			xfree(data->files[i]);
+		xfree(data->files);
+	}
+	xfree(data);
+}
+
+static int remove_attribute(const element_s * const element,
+			    const struct handler_attribute * const attr,
+			    const char * const value)
+{
+	struct remove_data *data = (struct remove_data *) element->handler_data;
+
+	switch (attr->private) {
+	case REMOVE_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify \"base\" more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int remove_parameter(const element_s * const element,
+			    const struct handler_parameter * const param,
+			    const char * const value)
+{
+	struct remove_data *data = (struct remove_data *) element->handler_data;
+
+	switch (param->private) {
+	case REMOVE_FILE:
+		data->file_count++;
+		if ((data->files = xrealloc(data->files,
+					    sizeof(data->files[0]) * (data->file_count))) == NULL) {
+			Nprint_err("xrealloc() failed: %s", strerror(errno));
+			return -1;
+		}
+		data->files[(data->file_count - 1)] = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int remove_content(const element_s * const element,
+			  const char * const content)
+{
+	struct remove_data *data = (struct remove_data *) element->handler_data;
+
+	if (strlen(content))
+		data->content = xstrdup(content);
+
+	return 0;
+}
+
+static int remove_valid_data(const element_s * const element)
+{
+	struct remove_data *data = (struct remove_data *) element->handler_data;
+
+	if (!data->content) {
+		Nprint_err("<%s>: content must be specified.", element->handler->name);
+		return 0;
+	}
+
+	return 1;
+}
+
+static int remove_valid_data_v3_2(const element_s * const element)
+{
+	struct remove_data *data = (struct remove_data *) element->handler_data;
+
+	if (!data->file_count) {
+		Nprint_err("<%s>: <file> must be specified.", element->handler->name);
+		return 0;
+	}
+
+	return 1;
+}
+
 #if HANDLER_SYNTAX_2_0
 
-static INLINE void warn_if_doesnt_exist(const char *file)
+static INLINE void warn_if_doesnt_exist(const char * const file)
 {
         struct stat file_stat;
 
@@ -55,68 +187,43 @@ static INLINE void warn_if_doesnt_exist(const char *file)
 	}
 }
 
-
-static int remove_main_ver2(const element_s * const el)
+static int remove_main_ver2(const element_s * const element)
 {
+	struct remove_data *data = (struct remove_data *) element->handler_data;
 	int status = 0;
 	char *tok;
-	char *targets;
        
-
-	if (change_current_dir("/")) {
+	if (change_current_dir("/"))
 		return -1;
-	}
 
-	if ((targets = alloc_trimmed_str(el->content)) == NULL) {
-		Nprint_h_err("No targets specified.");
-		return -1;
-	}
-
-	for (tok = strtok(targets, WHITE_SPACE);
-	     tok;
-	     tok = strtok(NULL, WHITE_SPACE)) {
+	for (tok = strtok(data->content, WHITE_SPACE); tok; tok = strtok(NULL, WHITE_SPACE)) {
 		Nprint_h("Removing %s.", tok);
-
 		warn_if_doesnt_exist(tok);
-
-		if ((status = execute_command(el, "rm -fr %s", tok))) {
+		if ((status = execute_command(element, "rm -fr %s", tok))) {
 			Nprint_h_err("Removing failed.");
 			break;
 		}
 	}
 
-	xfree(targets);
-	
 	return status;
 }
 
 #endif /* HANDLER_SYNTAX_2_0 */
 
-
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 
 
-static int remove_main_ver3(const element_s * const el)
+static int remove_main_ver3(const element_s * const element)
 {
+	struct remove_data *data = (struct remove_data *) element->handler_data;
 	int status = 0;
-	char *name;
        
-
-	if (change_current_dir("/")) {
+	if (change_current_dir("/"))
 		return -1;
-	}
 
-	if ((name = alloc_trimmed_str(el->content)) == NULL) {
-		Nprint_h_err("No name specified.");
-		return -1;
-	}
+	Nprint_h("Removing %s.", data->content);
 
-	Nprint_h("Removing %s.", name);
-
-	if ((status = execute_command(el, "rm -fr %s", name))) {
+	if ((status = execute_command(element, "rm -fr %s", data->content)))
 		Nprint_h_err("Removing failed.");
-	}
-
-	xfree(name);
 	
 	return status;
 }
@@ -125,54 +232,24 @@ static int remove_main_ver3(const element_s * const el)
 
 #if HANDLER_SYNTAX_3_2
 
-static const struct handler_parameter remove_parameters_v3_2[] = {
-	{ .name = "file" },
-	{ .name = NULL }
-};
-
-static const struct handler_attribute remove_attributes_v3_2[] = {
-	{ .name = "base" },
-	{ .name = NULL }
-};
-
-static int remove_main_ver3_2(const element_s * const el)
+static int remove_main_ver3_2(const element_s * const element)
 {
-	int status   = 0;
-	char *name   = NULL;
-	element_s *p = NULL;
+	struct remove_data *data = (struct remove_data *) element->handler_data;
+	int status = 0;
+	int i;
 
-	if ((first_param("file", el)) == NULL) {
-		Nprint_h_err("No file(s) specified.");
-		return -1;
-	}
-
-	if (change_to_base_dir(el, attr_value("base", el), 1))
+	if (change_to_base_dir(element, data->base, 1))
 		return -1;
 
-	for (p = first_param("file", el); p; p = next_param(p)) {
+	for (i = 0; i < data->file_count; i++) {
+        	Nprint_h("Removing %s.", data->files[i]);
 
-    		if ((name = alloc_trimmed_str(p->content)) == NULL) {
-            		Nprint_h_err("No file specified.");
-            		status = -1;
-            		break;
-	    	}
-        
-        	Nprint_h("Removing %s.", name);
-
-        	if ((status = execute_command(el, "rm -fr %s", name))) {
+        	if ((status = execute_command(element, "rm -fr %s", data->files[i]))) {
             		Nprint_h_err("Removing failed.");
             		status = -1;
             		break;
 	    	}
-
-		xfree(name);
     	}
-
-     	// if we had to exit prematurely from an if test then free name
-      
-        if (status) {
-		xfree(name);
-	}
 
 	return status;
 }
@@ -192,6 +269,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = remove_main_ver2,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = remove_setup,
+		.free = remove_free,
+		.content = remove_content,
+		.valid_data = remove_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -202,6 +283,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = remove_main_ver3,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = remove_setup,
+		.free = remove_free,
+		.content = remove_content,
+		.valid_data = remove_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -212,6 +297,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = remove_main_ver3,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = remove_setup,
+		.free = remove_free,
+		.content = remove_content,
+		.valid_data = remove_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -225,6 +314,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
 		.alternate_shell = 1,
+		.setup = remove_setup,
+		.free = remove_free,
+		.valid_data = remove_valid_data_v3_2,
+		.attribute = remove_attribute,
+		.parameter = remove_parameter,
 	},
 #endif
 	{
