@@ -16,7 +16,10 @@ the LFS subversion (SVN) repository.</para>
 
 <para>To get a good feel for what all the repository contains, you can
 go to the SVN web at <ulink
-url="http://svn.linuxfromscratch.org/viewcvs.cgi/?root=ALFS">http://svn.linuxfromscratch.org/viewcvs.cgi/?root=ALFS</ulink></para>
+url="http://svn.linuxfromscratch.org/viewcvs.cgi/?root=ALFS">http://svn.linuxfromscratch.org/viewcvs.cgi/?root=ALFS</ulink>.
+There is also an excellent online book at <ulink
+url="http://svnbook.red-bean.com/">http://svnbook.red-bean.com/</ulink>
+that contains the whole SVN users and administrators guides.</para>
 
 <para>You can do an anonymous TRUNK checkout of the &book-product;
 source code by issuing the following command&nbsp;:</para>
