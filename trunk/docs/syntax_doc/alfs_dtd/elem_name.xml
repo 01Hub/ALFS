@@ -18,7 +18,7 @@
 <xref linkend="elem_utilizes"/>
 </para>
 
-<para>See also&nbsp;:&nbsp;&nbsp;
+<para>See also (used as an attribute)&nbsp;:&nbsp;&nbsp;
 <xref linkend="elem_package"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_stage"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_variable"/>

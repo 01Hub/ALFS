@@ -31,28 +31,25 @@
 operation elements. It is used to move one or several source
 files and/or directories into a destination file or directory.</para>
 
-<para>The sub-element <filename>option</filename> is an option of the
-<command>mkdir</command> command:
-<itemizedlist>
-<listitem><para>force</para></listitem>
-</itemizedlist>.
-</para>
+<para>The sub-element <filename>option</filename> provides a means to pass
+an option to the <command>mv</command> command.</para>
+
+<note><para>Not all of the <command>cp</command> options are in every
+implementation.  Refer to the documentation for your implementation to
+determine what options are available.</para></note>
 
 <para>When processing this element, one moves each source
 to the destination, using the specified option if present.</para>
 
-<para>The sub-elements <filename>source</filename> contains the name(s) of
+<para>The sub-element <filename>source</filename> contains the name of
 the directory were the source file is.</para>
 
 <para>The sub-element <filename>destination</filename> contains the name of
 the destination directory for the <command>mv</command> command.</para>
 
 <para>The attribute <filename>base</filename> gives the name of the
-directory in which the new directory will be created.</para>
-
-<para>When the attribute <filename>base</filename> is specified, it should
-contain the name of the current directory from which the move operation is
-performed. </para>
+directory in which the new directory will be created. See
+<xref linkend="elem_base"/>.</para>
 
 </sect2>
 

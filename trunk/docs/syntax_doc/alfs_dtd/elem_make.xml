@@ -27,7 +27,8 @@
 <title>Description</title>
 
 <para>The element <filename>make</filename> is one of the many main
-operation elements.  It describes a make command.</para>
+operation elements.  It describes the <userinput>make</userinput>
+command.</para>
 
 <para>The sub-element <filename>param</filename> allows you to specify
 parameters of the make command.</para>
@@ -36,12 +37,13 @@ parameters of the make command.</para>
 environment variable or some other prefix to the make command</para>
 
 <para>The attribute <filename>base</filename> allows you to specify the
-directory in which the make will be performed.</para>
+directory in which the make will be performed. See
+<xref linkend="elem_base"/>.</para>
 
 </sect2>
 
 <sect2>
-<title>Examples</title>
+<title>Example #1</title>
 
 <para>The first example is a make without parameter</para>
 
@@ -51,6 +53,11 @@ directory in which the make will be performed.</para>
 
 <screen><userinput>echo Executing make
 <command>make</command></userinput></screen>
+
+</sect2>
+
+<sect2>
+<title>Example #2</title>
 
 <para>The second example is a make with a parameter</para>
 
