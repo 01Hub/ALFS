@@ -23,11 +23,9 @@ your linux computer:</para>
 
 <listitem><para>GNU libtool-1.5 or newer.</para></listitem>
 
-<listitem><para>GNU autoconf-2.57 or newer.</para></listitem>
-
 <listitem><para>GCC-3.3 or newer.</para></listitem>
 
-<listitem><para>CVS-1.11 or newer.</para></listitem>
+<listitem><para>SVN-1.0.5 or newer.</para></listitem>
 
 <listitem><para>OpenSSL-0.9.7c or newer.</para></listitem>
 

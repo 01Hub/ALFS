@@ -13,51 +13,71 @@ few steps to follow:</para>
 
 <itemizedlist>
 
-<listitem><para>Check out a clean copy of the nALFS repository. Using an
-existing copy, especially one that has been configured and used as a build
-tree, can potentially cause errors in the <command>make dist</command> process.</para></listitem>
+<listitem><para>Check out a clean copy of nALFS from the SVN repository. Using an existing
+copy, especially one that has been configured and used as a build tree, can potentially
+cause errors in the <command>make dist</command> process.</para></listitem>
 
-<listitem><para>Edit <filename>bootstrap.configure</filename>, and modify
-the line starting with AC_INIT to reflect the version number that you want
-the distribution to be given (replace &quot;CVS&quot; with your desired
-version number). Do not commit this change to the CVS repository, as the
-CVS version should always report its version number as
-&quot;CVS&quot;.</para></listitem>
+<listitem><para>Edit <filename>bootstrap.configure</filename>, and modify the line starting
+with AC_INIT to reflect the version number that you want the distribution to be given
+(replace &quot;SVN&quot; with your desired version number). Do not commit this change to the
+SVN repository, as the SVN version should always report its version number as
+&quot;SVN&quot;.</para></listitem>
 
-<listitem><para>Run <command>sh ./bootstrap -d CVS -g CVS -p 5.0</command>.
-This command will create the configure script and Makefile (as is normally
-done with a CVS checkout), but will also download, extract and rename the
-documentation files that will be included in the tarball. These files
-include the DTD (the current CVS version), the syntax document describing
-the DTD, the user's guide and the hacker's guide. The latter three
-documents are currently downloaded from James Robertson's home directory on
-the LFS server, but see the URL_BASE variable in the bootstrap script to
-change the download source. In addition, the LFS-5.0 profile will be
-downloaded so it can be included in the tarball.</para></listitem>
+<listitem><para>Run <command>aclocal</command> to ensure that your
+<filename>aclocal.m4</filename> file is up to date.</para></listitem>
 
-<listitem><para>Run <command>./configure</command> specifying any
-parameters your system needs to complete the configuration
-process.</para></listitem>
+<listitem>
+
+<para>Run <command>sh ./bootstrap</command> with some parameters (to be explained).  This
+command will create the configure script and Makefile (as is normally done with a SVN
+checkout), but will also download, extract and rename the documentation files that will be
+included in the tarball. These files include the DTD, the syntax document describing the
+DTD, the user's guide and the hacker's guide. The latter three documents are currently
+downloaded from the ALFS/downloads ares on the LFS server.  See the URL_BASE variable in
+the bootstrap script to change the download source.</para>
+
+<para>The <command>bootstrap</command> shell script supports multiple parameters.  The
+<command>-d</command> parameter will download the version of the nALFS DTD specified.  To
+get the SVN trunk use <command>-d trunk</command>.  The <command>-s</command> parameter will
+download the version of the ALFS DTD Syntax Doc specified.  To get the SVN trunk use
+<command>-s SVN</command>.  To get a named version (e.g. v3.1) use <command>-s
+3.1</command>.  The <command>-u</command> and <command>-h</command> parameters will download
+the version of the nALFS User's Guide and Hacker's Guide respectively.  They work just like
+the <command>-s</command> parameter does.  The <command>-p</command> will download the
+version of the official LFS stable profile specified.  It works like the
+<command>-d</command> parameter.</para>
+
+<para>A good example for reference: <command>sh ./bootstrap -d trunk -s SVN -u SVN -h SVN -p
+5.1.1-5</command></para></listitem>
+
+</itemizedlist>
+
+<note><para>If you want to add more than one profile version to the distribution tarball,
+you can rerun <command>bootstrap</command> many times with just the <command>-p</command>
+parameter.</para></note>
+
+<itemizedlist>
+
+<listitem><para>Run <command>./configure</command> specifying any parameters your system
+needs to complete the configuration process.</para></listitem>
 
 <listitem><para>Run <command>make dist</command>. This will produce both a
-<filename>.tar.gz</filename> and a <filename>.tar.bz2</filename> file in
-the current directory containing everything that should be needed to build
-&book-product; on an end-user's system. Note that this tarball will be
-created using the <filename>autoconf</filename>,
-<filename>automake</filename> and <filename>libtool</filename> versions
-<emphasis>on your development system</emphasis>, so please make sure they
-are current releases before creating a tarball for public
+<filename>.tar.gz</filename> and a <filename>.tar.bz2</filename> file in the current
+directory containing everything that should be needed to build &book-product; on an
+end-user's system. Note that this tarball will be created using the
+<filename>autoconf</filename>, <filename>automake</filename> and
+<filename>libtool</filename> versions <emphasis>on your development system</emphasis>, so
+please make sure they are current releases before creating a tarball for public
 consumption.</para></listitem>
 
-<listitem><para>Run <command>make distcheck</command>. If your system
-requires any special parameters to be given to configure for it to complete
-(like <command>--with-libxml2</command>, for example), then you can use
-<command>make DISTCHECK_CONFIGURE_FLAGS=&quot;...&quot; distcheck</command>
-to supply those parameters. The distcheck process will actually unpack the
-tarball into a temporary directory, and run a complete
-configure/make/install/uninstall process on it to ensure that no build
-errors occur. This step should be considered to be mandatory before
-releasing your tarball to the general public.</para></listitem>
+<listitem><para>Run <command>make distcheck</command>. If your system requires any special
+parameters to be given to configure for it to complete (like
+<command>--with-libxml2</command>, for example), then you can use <command>make
+DISTCHECK_CONFIGURE_FLAGS=&quot;...&quot; distcheck</command> to supply those parameters.
+The distcheck process will actually unpack the tarball into a temporary directory, and run a
+complete configure/make/install/uninstall process on it to ensure that no build errors
+occur. This step should be considered to be mandatory before releasing your tarball to the
+general public.</para></listitem>
 
 </itemizedlist>
 
