@@ -1,13 +1,1 @@
-<package name="linux-headers" version="&linux-version;">
-	<stage name="Installing kernel headers.">
-		<copy>
-			<option>archive</option>
-			<source>/tools/include/asm</source>
-			<source>/tools/include/asm-generic</source>
-			<source>/tools/include/linux</source>
-			<destination>/usr/include</destination>
-		</copy>
-		
-		<execute command="touch /usr/include/linux/autoconf.h" />
-	</stage>
-</package>
+

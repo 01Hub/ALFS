@@ -60,6 +60,7 @@ suites for GCC and Binutils until you are able to resolve the issue.
 
 		<configure command="../&gcc-directory;/configure">
 			<param>--prefix=/tools</param>
+			<param>--libexecdir=/tools/lib</param>
 			<param>--with-local-prefix=/tools</param>
 			<param>--enable-clocale=gnu</param>
 			<param>--enable-shared</param>

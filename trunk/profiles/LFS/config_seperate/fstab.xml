@@ -8,6 +8,7 @@
 			=&lfs_partition;  /               &fs_type; defaults       1    1
 			=&swap_partition; swap            swap      pri=1          0    0
 			=proc             /proc           proc      defaults       0    0
+			=sysfs		  /sys		  sysfs     defaults       0    0
 			=devpts           /dev/pts        devpts    gid=4,mode=620 0    0
 			=shm              /dev/shm        tmpfs     defaults       0    0
 			=# End /etc/fstab

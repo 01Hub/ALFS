@@ -21,29 +21,30 @@
 		</make>
 
 		<make>
-			<param>symlinks</param>
+			<param>include/asm</param>
 		</make>
 
 		<mkdir>
 			<option>parents</option>
-			<name>/tools/include/asm</name>
+			<name>/tools/glibc-kernheaders/asm</name>
 		</mkdir>
 
 		<copy>
+			<option>recursive</option>
 			<source>include/asm/*</source>
-			<destination>/tools/include/asm</destination>
+			<destination>/tools/glibc-kernheaders/asm</destination>
 		</copy>
 
 		<copy>
 			<option>recursive</option>
 			<source>include/asm-generic</source>
-			<destination>/tools/include</destination>
+			<destination>/tools/glibc-kernheaders</destination>
 		</copy>
 
 		<copy>
 			<option>recursive</option>
 			<source>include/linux</source>
-			<destination>/tools/include</destination>
+			<destination>/tools/glibc-kernheaders</destination>
 		</copy>
 	</stage>
 </package>
