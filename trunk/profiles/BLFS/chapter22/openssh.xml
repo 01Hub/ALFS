@@ -32,6 +32,18 @@
 		</execute>
 	</stage>
 
+	<stage name="Patching">
+		<stageinfo>
+			<base>&build_dir;/&openssh-directory;</base>
+		</stageinfo>
+
+		<search_replace>
+			<file>configure</file>
+			<find>-lcrypto</find>
+			<replace>/usr/lib/libcrypto.a</replace>
+		</search_replace>
+	</stage>
+
 	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&openssh-directory;</base>
@@ -45,12 +57,6 @@
 		<ownership user="root" group="sys">
 		        <name>/var/empty</name>
                 </ownership>
-
-		<search_replace>
-			<file>configure</file>
-			<find>-lcrypto</find>
-			<replace>/usr/lib/libcrypto.a</replace>
-		</search_replace>
 
 		<configure>
 		        <param>--prefix=/usr</param>
