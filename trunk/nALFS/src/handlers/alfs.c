@@ -102,6 +102,23 @@ static int alfs_valid_child(const element_s * const element,
 				       HTYPE_EXECUTE);
 }
 
+static char *alfs_data(const element_s * const element,
+		       const handler_data_e data_requested)
+{
+	struct alfs_data *data = (struct alfs_data *) element->handler_data;
+
+	switch (data_requested) {
+	case HDATA_SYNTAX_VERSION:
+		if (data->version)
+			return xstrdup(data->version);
+		break;
+	default:
+		break;
+	}
+
+	return NULL;
+}
+
 static int alfs_main(const element_s * const el)
 {
 	int status;
@@ -129,6 +146,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attributes = alfs_attributes,
 		.attribute = alfs_attribute,
 		.valid_child = alfs_valid_child,
+		.data = HDATA_SYNTAX_VERSION,
+		.alloc_data = alfs_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -143,6 +162,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attributes = alfs_attributes,
 		.attribute = alfs_attribute,
 		.valid_child = alfs_valid_child,
+		.data = HDATA_SYNTAX_VERSION,
+		.alloc_data = alfs_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -157,6 +178,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attributes = alfs_attributes,
 		.attribute = alfs_attribute,
 		.valid_child = alfs_valid_child,
+		.data = HDATA_SYNTAX_VERSION,
+		.alloc_data = alfs_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -171,6 +194,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attributes = alfs_attributes,
 		.attribute = alfs_attribute,
 		.valid_child = alfs_valid_child,
+		.data = HDATA_SYNTAX_VERSION,
+		.alloc_data = alfs_data,
 	},
 #endif
 	{

@@ -90,9 +90,6 @@
  * XML_DOCB_DOCUMENT_NODE=     21
  */
 
-
-static char *syntax_version = NULL;
-
 static unsigned int element_id;
 
 static const struct handler_attribute *find_handler_attribute(const handler_info_s *handler,
@@ -227,11 +224,6 @@ static int parse_node_parameters(xmlNodePtr node, element_s *element)
 			child = child->next;
 			xmlUnlinkNode(free_child);
 			xmlFreeNode(free_child);
-		} else if (!find_handler(child->name, syntax_version)) {
-			Nprint_warn("<%s>: <%s> not supported here.", 
-				    handler->name,
-				    (const char *) child->name);
-			child = child->next;
 		} else {
 			child = child->next;
 		}
@@ -303,44 +295,38 @@ static INLINE element_s *create_element(xmlNodePtr node, element_s *parent)
 	xmlChar *c;
 	handler_s *handler;
 	element_s *el = init_new_element();
+	const char *syntax_version;
 
 
 	el->id = element_id++;
 	el->parent = parent;
+	syntax_version = find_parent_with_data(el, HDATA_SYNTAX_VERSION);
 
 	switch (node->type) {
 		case XML_ELEMENT_NODE:
 			el->name = xstrdup((const char *)node->name);
-
-			/* Change syntax version, if specified. */
-			if (strcmp(node->name, "alfs") == 0) {
-				char *version = (char *) xmlGetProp(node,
-					(const xmlChar *)"version");
-
-				if (version && strlen(version)) {
-					xfree(syntax_version);
-					syntax_version = version;
-				}
-			}
-
 			if ((handler = find_handler(el->name, syntax_version))) {
 				el->type = TYPE_ELEMENT;
 				el->handler = handler->info;
 				if (make_handler_element(node, el)) {
 					free_element(el);
 					el = NULL;
-					break;
+				} else {
+					/* Add content, if any. */
+					if (node->children
+					    && node->children->type == XML_TEXT_NODE
+					    && node->children->next == NULL) {
+						if ((c = xmlNodeGetContent(node))) {
+							el->content = xstrdup((const char *)c);
+							xfree(c);
+						}
+					}
 				}
-			}
-
-			/* Add content, if any. */
-			if (node->children
-			&& node->children->type == XML_TEXT_NODE
-			&& node->children->next == NULL) {
-				if ((c = xmlNodeGetContent(node))) {
-					el->content = xstrdup((const char *)c);
-					xfree(c);
-				}
+			} else {
+				Nprint_err("No handler found for %s (syntax version %s).",
+					   el->name, syntax_version);
+				free_element(el);
+				el = NULL;
 			}
 
 			break;
@@ -359,6 +345,7 @@ static INLINE element_s *create_element(xmlNodePtr node, element_s *parent)
 			break;
 	}
 
+	xfree(syntax_version);
 	return el;
 }
 
@@ -442,19 +429,11 @@ element_s *parse_with_libxml2_tree(const char *filename)
 	xmlDocPtr doc;
 	element_s *profile = NULL;
 
-
-	/* Set the default syntax version. It will be changed while
-	 * parsing, if there is version="" inside <alfs>.
-	 */
-	syntax_version = xstrdup(*opt_default_syntax);
-
 	xmlSubstituteEntitiesDefault(1);
 	xmlSetGenericErrorFunc(NULL, handle_error);
 
 	if ((doc = xmlParseFile(filename)) == NULL) {
 		Nprint_err("Parsing \"%s\" failed.", filename);
-		xfree(syntax_version);
-		syntax_version = NULL;
 		return NULL;
 	}
 
@@ -465,9 +444,6 @@ element_s *parse_with_libxml2_tree(const char *filename)
 	profile = convert_doc(doc);
 
 	xmlFreeDoc(doc);
-
-	xfree(syntax_version);
-	syntax_version = NULL;
 
 	return profile;
 }

@@ -65,6 +65,21 @@ static int root_valid_child(const element_s * const element,
 	return 1;
 }
 
+static char *root_data(const element_s * const element,
+		       const handler_data_e data_requested)
+{
+	(void) element;
+	switch (data_requested) {
+	case HDATA_SYNTAX_VERSION:
+		return xstrdup(*opt_default_syntax);
+		break;
+	default:
+		break;
+	}
+
+	return NULL;
+}
+
 static int comment_main(const element_s * const el)
 {
 	(void) el;
@@ -80,6 +95,8 @@ static handler_info_s embedded_handlers_info[] = {
 		.main = root_main,
 		.type = HTYPE_NORMAL,
 		.valid_child = root_valid_child,
+		.data = HDATA_SYNTAX_VERSION,
+		.alloc_data = root_data,
 	},
 #if HANDLER_SYNTAX_2_0
 	{
@@ -327,16 +344,21 @@ char *alloc_execute_command(element_s *el)
 	return el->handler->alloc_data(el, HDATA_COMMAND);
 }
 
-static const element_s *find_parent_with_data(const element_s * const element,
-					      const handler_data_e data_requested)
+const char *find_parent_with_data(const element_s * const element,
+				  const handler_data_e data_requested)
 {
 	const element_s *s;
+	char *data;
 
 	for (s = element->parent; s; s = s->parent) {
 		if (!s->handler)
 			continue;
 		if ((s->handler->data & data_requested) == 0)
-			return s;
+			continue;
+
+		data = s->handler->alloc_data(s, data_requested);
+		if (data)
+			return data;
 	}
 
 	return NULL;
@@ -344,18 +366,7 @@ static const element_s *find_parent_with_data(const element_s * const element,
 
 const char *alloc_base_dir(const element_s * const element)
 {
-	const element_s *s;	
-	const char *dir;
-
-	s = find_parent_with_data(element, HDATA_BASE);
-
-	if (s) {
-		dir  = s->handler->alloc_data(s, HDATA_BASE);
-		if (dir)
-			return dir;
-	}
-
-	return NULL;
+	return find_parent_with_data(element, HDATA_BASE);
 }
 
 int change_to_base_dir(const element_s * const element,
@@ -383,16 +394,12 @@ int change_to_base_dir(const element_s * const element,
 
 const char *alloc_stage_shell(const element_s * const el)
 {
-	const element_s *s;
-	char *shell;
+	const char *dir;
 
-	s = find_parent_with_data(el, HDATA_SHELL);
+	dir = find_parent_with_data(el, HDATA_SHELL);
 
-	if (s) {
-		shell = s->handler->alloc_data(s, HDATA_SHELL);
-		if (shell)
-			return shell;
-	}
+	if (dir)
+		return dir;
 
 	return xstrdup("sh");
 }

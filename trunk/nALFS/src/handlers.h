@@ -52,6 +52,7 @@ typedef enum handler_data_e {
 	HDATA_FILE = (1 << 4),
 	HDATA_BASE = (1 << 5),
 	HDATA_SHELL = (1 << 6),
+	HDATA_SYNTAX_VERSION = (1 << 7),
 } handler_data_e;
 
 struct handler_attribute {
@@ -146,6 +147,9 @@ char *alloc_package_string(element_s *el);
 int package_has_name_and_version(element_s *el);
 char *alloc_textdump_file(element_s *el);
 char *alloc_execute_command(element_s *el);
+
+const char *find_parent_with_data(const element_s * const element,
+				  const handler_data_e data_requested);
 
 const char *alloc_base_dir(const element_s * const element);
 
