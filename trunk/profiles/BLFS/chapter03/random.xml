@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS-3.1.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%config_entities;
+
+
+]>
+
+<alfs>
 
 <stage name="Random Number Generation">
 
@@ -24,4 +35,4 @@
 	</stage>
 
 </stage>
-
+</alfs>
