@@ -48,7 +48,6 @@
 		<xi:include href="chapter05/binutils-pass1.xml" />
 		<xi:include href="chapter05/gcc-pass1.xml" />
 		<xi:include href="chapter05/libc-headers.xml" />
-		<xi:include href="chapter05/kernel-headers.xml" />
 		<xi:include href="chapter05/glibc.xml" />
 		<xi:include href="chapter05/lockingglibc.xml" />
 		<xi:include href="chapter05/tcl.xml" />

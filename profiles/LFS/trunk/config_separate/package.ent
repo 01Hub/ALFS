@@ -3,8 +3,8 @@
 <!ENTITY autoconf-package "autoconf-&autoconf-version;.tar.bz2">
 <!ENTITY autoconf-directory "autoconf-&autoconf-version;">
 
-<!ENTITY automake-md5 "c0b6434087e3be0606ef9d172238f26c">
-<!ENTITY automake-version "1.9">
+<!ENTITY automake-md5 "65143af82931c2c4d703d3a17c1c9d15">
+<!ENTITY automake-version "1.9.1">
 <!ENTITY automake-package "automake-&automake-version;.tar.bz2">
 <!ENTITY automake-directory "automake-&automake-version;">
 
@@ -12,6 +12,9 @@
 <!ENTITY bash-version "3.0">
 <!ENTITY bash-package "bash-&bash-version;.tar.gz">
 <!ENTITY bash-directory "bash-&bash-version;">
+
+<!ENTITY bash-display-wrap-patch-md5 "e6c29f2841c297ad85c3753aada6cc3f">
+<!ENTITY bash-display-wrap-patch "bash-&bash-version;-display_wrap-1.patch">
 
 <!ENTITY binutils-md5 "41983069bef07af4f1350c6d30666b2d">
 <!ENTITY binutils-version "2.15.91.0.2">
@@ -80,8 +83,8 @@
 <!ENTITY flex-debian-fixes-patch-md5 "bea8241afec0639333352dfcfd1809bf">
 <!ENTITY flex-debian-fixes-patch "flex-&flex-version;-debian_fixes-2.patch">
 
-<!ENTITY gawk-md5 "a116eec17e7ba085febb74c7758823bd">
-<!ENTITY gawk-version "3.1.3">
+<!ENTITY gawk-md5 "b8b532beaf02350e69d2d5dc98cb1e37">
+<!ENTITY gawk-version "3.1.4">
 <!ENTITY gawk-package "gawk-&gawk-version;.tar.bz2">
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
@@ -168,14 +171,17 @@
 <!ENTITY inetutils-kernel-headers-patch-md5 "de1f835265b7ed818d7c0fb8c0be334b">
 <!ENTITY inetutils-kernel-headers-patch "inetutils-&inetutils-version;-kernel_headers-1.patch">
 
-<!ENTITY iproute2-md5 "0d8c23f6c3a42bb680c3bdf9f580987a">
+<!ENTITY iproute2-md5 "dab25877d70f132dcfeaba373805d867">
 <!ENTITY iproute2-version "2.6.8">
-<!ENTITY iproute2-cvs-ver "ss040730">
+<!ENTITY iproute2-cvs-ver "040823">
 <!ENTITY iproute2-package "iproute2-&iproute2-version;-&iproute2-cvs-ver;.tar.gz">
 <!ENTITY iproute2-directory "iproute2-&iproute2-version;">
 
 <!ENTITY iproute2-remove-db-patch-md5 "b3964c194cda7a36979d245380b4556f">
 <!ENTITY iproute2-remove-db-patch "iproute2-&iproute2-version;_&iproute2-cvs-ver;-remove_db-1.patch">
+
+<!ENTITY iproute2-manpages-patch-md5 "8ee2e330e92712d5a4e0d967b95e865c">
+<!ENTITY iproute2-manpages-patch "iproute2-&iproute2-version;_&iproute2-cvs-ver;-manpages-1.patch">
 
 <!ENTITY kbd-md5 "7892c7010512a9bc6697a295c921da25">
 <!ENTITY kbd-version "1.12">
@@ -187,8 +193,8 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "a45f3ea51b00808ee725c3f92c826aa1">
-<!ENTITY lfs-bootscripts-version "2.2.1">
+<!ENTITY lfs-bootscripts-md5 "1ce531e61c060124def9897d9f6ca026">
+<!ENTITY lfs-bootscripts-version "2.2.2">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
@@ -197,24 +203,24 @@
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.gz">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
-<!ENTITY libxml2-md5 "c391173a26ec7c2ac702b54d06420fdb">
-<!ENTITY libxml2-version "2.6.11">
+<!ENTITY libxml2-md5 "7a08dcf03b1dcadec10a1cd2f7575cfb">
+<!ENTITY libxml2-version "2.6.12">
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.gz">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
-<!ENTITY linux-md5 "a74671ea68b0e3c609e8785ed8497c14">
-<!ENTITY linux-version "2.6.7">
+<!ENTITY linux-md5 "9517ca999e822b898fbdc7e72796b1aa">
+<!ENTITY linux-version "2.6.8.1">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
 
-<!ENTITY linux-libc-headers-md5 "ac14861e5fa7e52d98a6174add34084d">
-<!ENTITY linux-libc-headers-version "2.6.7.0">
+<!ENTITY linux-libc-headers-md5 "b876a1819ca0179cd2b690ef0b034c66">
+<!ENTITY linux-libc-headers-version "2.6.8.0">
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
 <!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
 
-<!ENTITY m4-md5 "76984d94e85afb21caa88b5cc5aea0b3">
-<!ENTITY m4-version "1.4.1">
+<!ENTITY m4-md5 "efdc34556ef254b2c5b227fd12b75fc8">
+<!ENTITY m4-version "1.4.2">
 <!ENTITY m4-package "m4-&m4-version;.tar.gz">
 <!ENTITY m4-directory "m4-&m4-version;">
 
@@ -223,8 +229,8 @@
 <!ENTITY make-package "make-&make-version;.tar.bz2">
 <!ENTITY make-directory "make-&make-version;">
 
-<!ENTITY man-md5 "5d77e73731f8f2be531c0cfe63d09270">
-<!ENTITY man-version "1.5n">
+<!ENTITY man-md5 "52ce909335d85203478da5ff69cd0e14">
+<!ENTITY man-version "1.5o">
 <!ENTITY man-package "man-&man-version;.tar.bz2">
 <!ENTITY man-directory "man-&man-version;">
 
@@ -272,8 +278,8 @@
 <!ENTITY perl-libc-1-patch-md5 "f033161efa8b4b174ec6667e4e739efa">
 <!ENTITY perl-libc-1-patch "perl-&perl-version;-libc-1.patch">
 
-<!ENTITY procps-md5 "ef88b94da3f181f2be1f6963820b00ab">
-<!ENTITY procps-version "3.2.2">
+<!ENTITY procps-md5 "5389800bf413e70365d982bac9438d31">
+<!ENTITY procps-version "3.2.3">
 <!ENTITY procps-package "procps-&procps-version;.tar.gz">
 <!ENTITY procps-directory "procps-&procps-version;">
 
@@ -287,8 +293,11 @@
 <!ENTITY readline-package "readline-&readline-version;.tar.gz">
 <!ENTITY readline-directory "readline-&readline-version;">
 
-<!ENTITY sed-md5 "570c0a53a64ec020d8fcbce51fb6d71a">
-<!ENTITY sed-version "4.1.1">
+<!ENTITY readline-display-wrap-patch-md5 "5280d7b859bb8d80e7b8ca709f137970">
+<!ENTITY readline-display-wrap-patch "readline-&readline-version;-display_wrap-1.patch">
+
+<!ENTITY sed-md5 "928f0e06422f414091917401f1a834d0">
+<!ENTITY sed-version "4.1.2">
 <!ENTITY sed-package "sed-&sed-version;.tar.gz">
 <!ENTITY sed-directory "sed-&sed-version;">
 
@@ -344,13 +353,10 @@
 <!ENTITY udev-permissions-version "2">
 <!ENTITY udev-permissions-file "udev-config-&udev-permissions-version;.permissions">
 
-<!ENTITY util-linux-md5 "5fa39c3d8761b48732be137a06853c64">
-<!ENTITY util-linux-version "2.12a">
+<!ENTITY util-linux-md5 "2e96fd7efa1ff477502e91c31572d51b">
+<!ENTITY util-linux-version "2.12b">
 <!ENTITY util-linux-package "util-linux-&util-linux-version;.tar.gz">
 <!ENTITY util-linux-directory "util-linux-&util-linux-version;">
-
-<!ENTITY util-linux-kernel-headers-patch-md5 "9baf322f021ff4019407f7384732a4bf">
-<!ENTITY util-linux-kernel-headers-patch "util-linux-&util-linux-version;-kernel_headers-1.patch">
 
 <!ENTITY vim-md5 "821fda8f14d674346b87e3ef9cb96389">
 <!ENTITY vim-version "6.3">

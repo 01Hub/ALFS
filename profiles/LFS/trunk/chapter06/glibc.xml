@@ -41,7 +41,6 @@
 			<param>--with-kernel=2.6.0</param>
 			<param>--without-cvs</param>
 			<param>--libexecdir=/usr/lib/glibc</param>
-			<param>--with-headers=/tools/glibc-kernheaders</param>
 		</configure>
 
 		<make />
