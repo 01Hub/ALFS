@@ -1,3 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../ALFS-3.1.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+
+<alfs>
+
 <!-- uncomment the following section if you wish to have your default keymap
 compiled into the kernel -->
 
@@ -9,3 +20,4 @@ compiled into the kernel -->
 	</execute>
 -->
 
+</alfs>

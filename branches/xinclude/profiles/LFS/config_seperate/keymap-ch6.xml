@@ -1,3 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../ALFS-3.1.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+
+<alfs>
+
 <!-- Uncomment the following section if you use a non-US keyboard
  and set the keymap entity in the general.ent also contained in this
  directory to the proper keymap file for your keyboard -->
@@ -9,3 +20,5 @@
 		<name>/usr/share/kbd/keymaps/defkeymap.map.gz</name>
 	</link>
 -->
+
+</alfs>
