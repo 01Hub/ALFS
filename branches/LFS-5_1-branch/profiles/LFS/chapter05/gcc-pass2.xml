@@ -18,12 +18,6 @@
 			<destination>&build_dir;</destination>
 		</unpack>
 
-		<copy>
-			<source>&packages_dir;/&gcc-no-fixincludes-patch;</source>
-			<source>&packages_dir;/&gcc-specs-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
-
 		<mkdir base="&build_dir;">
 			<option>parents</option>
 			<name>gcc-build</name>
@@ -49,13 +43,13 @@ suites for GCC and Binutils until you are able to resolve the issue.
 		<patch base="&build_dir;/&gcc-directory;">
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&gcc-no-fixincludes-patch;</param>
+			<param>-i &packages_dir;/&gcc-no-fixincludes-patch;</param>
 		</patch>
 
 		<patch base="&build_dir;/&gcc-directory;">
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&gcc-specs-patch;</param>
+			<param>-i &packages_dir;/&gcc-specs-patch;</param>
 		</patch>
 
 		<configure command="../&gcc-directory;/configure">
@@ -86,7 +80,5 @@ suites for GCC and Binutils until you are able to resolve the issue.
 	<stage name="Cleaning up.">
 		<remove>&build_dir;/&gcc-directory;</remove>
 		<remove>&build_dir;/gcc-build</remove>
-		<remove>&build_dir;/&gcc-no-fixincludes-patch;</remove>
-		<remove>&build_dir;/&gcc-specs-patch;</remove>
 	</stage>
 </package>

@@ -5,11 +5,6 @@
 			<archive>&packages_dir;/&kbd-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&kbd-more-programs-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing.">
@@ -20,7 +15,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&kbd-more-programs-patch;</param>
+			<param>-i &packages_dir;/&kbd-more-programs-patch;</param>
 		</patch>
 
 		<configure />
@@ -37,6 +32,5 @@
 
 	<stage name="Cleaning up.">
 		<remove>&build_dir;/&kbd-directory;</remove>
-		<remove>&build_dir;/&kbd-more-programs-patch;</remove>
 	</stage>
 </package>

@@ -18,11 +18,6 @@
 			<destination>&build_dir;</destination>
 		</unpack>
 
-		<copy>
-			<source>&packages_dir;/&gcc-no-fixincludes-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
-
 		<mkdir base="&build_dir;">
 			<option>parents</option>
 			<name>gcc-build</name>
@@ -41,7 +36,7 @@
 		<patch base="&build_dir;/&gcc-directory;">
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&gcc-no-fixincludes-patch;</param>
+			<param>-i &packages_dir;/&gcc-no-fixincludes-patch;</param>
 		</patch>
 
 		<search_replace base="&build_dir;/&gcc-directory;">
@@ -88,6 +83,5 @@
 	<stage name="Cleaning up.">
 		<remove>&build_dir;/&gcc-directory;</remove>
 		<remove>&build_dir;/gcc-build</remove>
-		<remove>&build_dir;/&gcc-no-fixincludes-patch;</remove>
 	</stage>
 </package>
