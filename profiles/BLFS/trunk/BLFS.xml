@@ -14,19 +14,11 @@
   -->
 
 <!DOCTYPE alfs SYSTEM "DTD/ALFS.dtd" [
-
-<!ENTITY % files SYSTEM "config/files.ent">
-%files;
-
 <!ENTITY % general_entities SYSTEM "config/general.ent">
-<!ENTITY % package_entities SYSTEM "config/packages.ent">
 <!ENTITY % config_entities SYSTEM  "config/config.ent">
-<!ENTITY % system_entities  SYSTEM "system.ent">
 
 %general_entities;
-%package_entities;
 %config_entities;
-%system_entities;
 
 <!ENTITY apos "'">
 
@@ -34,7 +26,7 @@
 
 <alfs version="3.1" xmlns:xi="http://www.w3.org/2001/XInclude">
 
-<stage name="Beyond Linux From Scratch">
+<stage name="Beyond Linux From Scratch v&blfs-version;">
     <stageinfo>
         <environment>
 	    <variable name="PATH" mode="append">:/usr/X11R6/bin</variable>
@@ -546,81 +538,81 @@
 
 <stage name="Chapter 38 (Audio utilities)">
 
-    &mpg123;
-    &vorbis-tools;
-    &xmms;
-    &lame;
-    &cdparanoia;
+    <xi:include href="chapter38/mpg123.xml" />
+    <xi:include href="chapter38/vorbis-tools.xml" />
+    <xi:include href="chapter38/xmms.xml" />
+    <xi:include href="chapter38/lame.xml" />
+    <xi:include href="chapter38/cdparanoia.xml" />
 
 </stage>
 
 <stage name="Chapter 39 (Video utilities)">
 
-    &ffmpeg;
-    &avifile;
-    &mplayer;
-    &xine-ui;
-    &transcode;
+    <xi:include href="chapter39/ffmpeg.xml" />
+    <xi:include href="chapter39/avifile.xml" />
+    <xi:include href="chapter39/mplayer.xml" />
+    <xi:include href="chapter39/xine-ui.xml" />
+    <xi:include href="chapter39/transcode.xml" />
 
 </stage>
 
 <stage name="Chapter 40 (CD-Writing utilities)">
 
-    &cdrtools;
-    &cdrdao;
-    &udftools;
+    <xi:include href="chapter40/cdrtools.xml" />
+    <xi:include href="chapter40/cdrdao.xml" />
+    <xi:include href="chapter40/udftools.xml" />
 
 </stage>
 
 <stage name="Chapter 41 (Printing)">
 
-    &cups;
-    &lprng;
-    &afplghostscript;
-    &espghostscript;
-    &gimp-print;
+    <xi:include href="chapter41/cups.xml" />
+    <xi:include href="chapter41/lprng.xml" />
+    <xi:include href="chapter41/afplghostscript.xml" />
+    <xi:include href="chapter41/espghostscript.xml" />
+    <xi:include href="chapter41/gimp-print.xml" />
 
 </stage>
 
 <stage name="Chapter 42 (Scanning)">
 
-    &sane;
-    &xsane;
+    <xi:include href="chapter42/sane.xml" />
+    <xi:include href="chapter42/xsane.xml" />
 
 </stage>
 
 
 <stage name="Chapter 43 (Standard Generalized Markup Language - SGML)">
 
-    &sgml-common;
-    &sgml-dtd31;
-    &sgml-dtd;
-    &opensp;
-    &openjade;
-    &docbook-dsssl;
+    <xi:include href="chapter43/sgml-common.xml" />
+    <xi:include href="chapter43/sgml-dtd31.xml" />
+    <xi:include href="chapter43/sgml-dtd.xml" />
+    <xi:include href="chapter43/opensp.xml" />
+    <xi:include href="chapter43/openjade.xml" />
+    <xi:include href="chapter43/docbook-dsssl.xml" />
 
 </stage>
 
 <stage name="Chapter 44 (Extensible Markup Language - XML)">
 
-    &xml-dtd;
-    &docbook-xsl;
+    <xi:include href="chapter44/xml-dtd.xml" />
+    <xi:include href="chapter44/docbook-xsl.xml" />
 
 </stage>
 
 <stage name="Chapter 45 (PostScript)">
 
-    &a2ps;
-    &enscript;
-    &psutils;
-    &gsview;
-    &xpdf;
+    <xi:include href="chapter45/a2ps.xml" />
+    <xi:include href="chapter45/enscript.xml" />
+    <xi:include href="chapter45/psutils.xml" />
+    <xi:include href="chapter45/gsview.xml" />
+    <xi:include href="chapter45/xpdf.xml" />
 
 </stage>
 
 <stage name="Chapter 46 (Typesetting)">
 
-    &tex;
+    <xi:include href="chapter46/tex.xml" />
 
 </stage>
 
