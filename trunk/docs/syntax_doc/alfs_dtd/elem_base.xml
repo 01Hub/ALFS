@@ -46,7 +46,8 @@ used by any parent element it was called from.</para>
 <important><para>It is very important to understand the difference between
 the two uses. Most importantly understand that the <command>base</command>
 element/attribute has no effect on the parent element it is used in unless
-relative paths are used.</para></important>
+relative paths are used in the parent element's other attributes and child
+elements.</para></important>
 
 </sect2>
 

@@ -5,6 +5,15 @@
 
 <itemizedlist>
 
+<listitem><para>June 17th, 2004 [jwrober]: Removed an incorrect reference
+to openssl in the unpack element's page.</para></listitem>
+
+<listitem><para>June 17th, 2004 [jwrober]: Changed the important
+admonition's grammar.</para></listitem>
+
+<listitem><para>June 17th, 2004 [jwrober]: Added a comment to the XML
+Syntax page about the predefined standard entities.</para></listitem>
+
 <listitem><para>June 14th, 2004 [jwrober]: Grammar updates Pass #4 &emdash;
 modified the token used so the element/attribute would stand out more in
 the HTML.</para></listitem>

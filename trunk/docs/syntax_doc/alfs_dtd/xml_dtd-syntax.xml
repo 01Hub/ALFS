@@ -88,6 +88,10 @@ ASCII chart. Here is a good list&nbsp;:</para>
 
 </itemizedlist>
 
+<para>Generally, you can assume that amp, lt, gt, and apos are predefined,
+but you can always make sure by using the numeric references above.  Also,
+if you ever need to create your own, you know how to do it now.</para>
+
 </sect2>
 
 <sect2>

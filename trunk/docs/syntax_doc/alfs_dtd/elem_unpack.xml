@@ -35,9 +35,8 @@ archive; it is only used if the archive file is not available
 locally.</para>
 
 <para>The <command>digest</command> child-element gives the digest of the
-archive, as computed by openssl, using the digest type specified in the
-<command>type</command> attribute. See 
-<xref linkend="elem_digest"/>.</para>
+archive, using the digest type specified in the <command>type</command>
+attribute. See <xref linkend="elem_digest"/>.</para>
 
 <para>The <command>archive</command> child-element gives the name of the
 archive, and the <command>destination</command> child-element gives the
