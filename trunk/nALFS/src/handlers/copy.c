@@ -106,7 +106,7 @@ static int copy_attribute(const element_s * const element,
 	switch (attr->private) {
 	case COPY_BASE:
 		if (data->base) {
-			Nprint_err("<copy>: cannot specify \"base\" more than once.");
+			Nprint_err("<%s>: cannot specify \"base\" more than once.", element->handler->name);
 			return 1;
 		}
 		data->base = xstrdup(value);
@@ -126,7 +126,7 @@ static int copy_parameter(const element_s * const element,
 	switch (param->private) {
 	case COPY_BASE:
 		if (data->base) {
-			Nprint_err("<copy>: cannot specify <base> more than once.");
+			Nprint_err("<%s>: cannot specify <base> more than once.", element->handler->name);
 			return 1;
 		}
 		data->base = xstrdup(value);
@@ -153,7 +153,7 @@ static int copy_parameter(const element_s * const element,
 			option_found++;
 		}
 		if (!option_found) {
-			Nprint_err("<copy>: invalid options in (%s) ignored", value);
+			Nprint_err("<%s>: invalid options in (%s) ignored", element->handler->name, value);
 			return 1;
 		} else {
 			return 0;
@@ -179,7 +179,7 @@ static int copy_parameter(const element_s * const element,
 			data->no_dereference = 1;
 			return 0;
 		}
-		Nprint_err("<copy>: invalid option (%s) ignored", value);
+		Nprint_err("<%s>: invalid option (%s) ignored", element->handler->name, value);
 		return 1;
 	case COPY_SOURCE:
 		data->source_count++;
@@ -192,7 +192,7 @@ static int copy_parameter(const element_s * const element,
 		return 0;
 	case COPY_DESTINATION:
 		if (data->destination) {
-			Nprint_err("<copy>: cannot specify <destination> more than once.");
+			Nprint_err("<%s>: cannot specify <destination> more than once.", element->handler->name);
 			return 1;
 		}
 		data->destination = xstrdup(value);
@@ -207,12 +207,12 @@ static int copy_valid_data(const element_s * const element)
 	struct copy_data *data = (struct copy_data *) element->handler_data;
 
 	if (data->source_count == 0) {
-		Nprint_err("<copy>: <source> must be specified.");
+		Nprint_err("<%s>: <source> must be specified.", element->handler->name);
 		return 0;
 	}
 
 	if (!data->destination) {
-		Nprint_err("<copy>: <destination> must be specified.");
+		Nprint_err("<%s>: <destination> must be specified.", element->handler->name);
 		return 0;
 	}
 
