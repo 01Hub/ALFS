@@ -88,12 +88,6 @@ network.-->
      -->
 <!ENTITY keymap "i386/qwerty/us.map.gz">
 
-<!-- value of UTC variable 
-     This entity will be used to set the value of the variable UTC
-     in the file /etc/sysconfig/clock
-     -->
-<!ENTITY UTC "1">
-
 <!-- Temporary user name used for installing Chapter 5.
      This is a user in the host distribution. It will not
      be deleted at the end of the build.
