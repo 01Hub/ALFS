@@ -1,0 +1,178 @@
+<stage name="perlmodules">
+
+<package name="permodules-astro" version="&perlmodules-astro-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&perlmodules-astro-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing package astro-FITS-Header">
+		<stageinfo>
+			<base>&build_dir;/&perlmodules-astro-directory;</base>
+		</stageinfo>
+
+		<execute command="perl Makefile.PL" />
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>		
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&perlmodules-astro-directory;</remove>
+	</stage>
+</package>
+
+<package name="permodules-pdl" version="&perlmodules-pdl-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&perlmodules-pdl-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing package PDL">
+		<stageinfo>
+			<base>&build_dir;/&perlmodules-pdl-directory;</base>
+		</stageinfo>
+
+		<execute command="perl Makefile.PL" />
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>		
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&perlmodules-pdl-directory;</remove>
+	</stage>
+</package>
+
+<package name="permodules-xmlwriter" version="&perlmodules-xmlwriter-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&perlmodules-xmlwriter-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing package XML-Writer">
+		<stageinfo>
+			<base>&build_dir;/&perlmodules-xmlwriter-directory;</base>
+		</stageinfo>
+
+		<execute command="perl Makefile.PL" />
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>		
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&perlmodules-xmlwriter-directory;</remove>
+	</stage>
+</package>
+
+<package name="permodules-xmlparser" version="&perlmodules-xmlparser-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&perlmodules-xmlparser-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing package XML-Parser">
+		<stageinfo>
+			<base>&build_dir;/&perlmodules-xmlparser-directory;</base>
+		</stageinfo>
+
+		<execute command="perl Makefile.PL" />
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>		
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&perlmodules-xmlparser-directory;</remove>
+	</stage>
+</package>
+
+<package name="permodules-gtk" version="&perlmodules-gtk-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&perlmodules-gtk-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing package Gtk-Perl">
+		<stageinfo>
+			<base>&build_dir;/&perlmodules-gtk-directory;</base>
+		</stageinfo>
+
+		<execute command="perl Makefile.PL --without-guessing" />
+
+		<!-- next command is expected to fail. -->
+		<execute command="make || true"/>
+
+		<execute command="cp Gtk/Makefile Gtk/Makefile.bak" />
+		<execute command="sed '/^OBJECT/s/xs/./g' Gtk/Makefile.bak > Gtk/Makefile" />
+		<execute command="cp Gtk/Makefile Gtk/Makefile.bak" />
+		<execute command="sed '/^OBJECT/s/build/./g' Gtk/Makefile.bak > Gtk/Makefile" />
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>		
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&perlmodules-gtk-directory;</remove>
+	</stage>
+</package>
+
+<package name="permodules-recdesent" version="&perlmodules-recdescent-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&perlmodules-recdescent-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing package Parse-RecDescent">
+		<stageinfo>
+			<base>&build_dir;/&perlmodules-recdescent-directory;</base>
+		</stageinfo>
+
+		<execute command="perl Makefile.PL" />
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>		
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&perlmodules-recdescent-directory;</remove>
+	</stage>
+</package>
+
+</stage>
