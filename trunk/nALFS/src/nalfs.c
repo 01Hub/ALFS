@@ -1216,6 +1216,10 @@ static INLINE int pkg_print_installed_packages(logs_t *logs)
 	return lines_written + 1;
 }
 
+/* TODO: pkg_main(Current_element)
+ *       So that we can immediately point the cursor
+ *       to the package in selected profile.
+ */
 static INLINE void pkg_main(void)
 {
 	int pcnt;
@@ -4211,14 +4215,13 @@ static int browse(void)
 			break;
 
 		case 'P': /* 'P'ackages. */
-
-			/* TODO: pkg_main(Current_element)
-			 *       So that we can immediately point the cursor
-			 *       to the package of selected profile.
-			 */
-			pkg_main();
-
-			rewrite_main();
+			if (Backend_exists) {
+				Nprint_warn(
+				"Can't manage packages while running.");
+			} else {
+				pkg_main();
+				rewrite_main();
+			}
 
 			break;
 
