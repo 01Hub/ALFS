@@ -2,58 +2,76 @@
 
 <!ENTITY libjpeg-version   "6b">
 <!ENTITY libjpeg-package   "jpegsrc.v&libjpeg-version;.tar.bz2">
+<!ENTITY libjpeg-md5       "a3e1af1e7958d563626dc62c6f8a50af">
 <!ENTITY libjpeg-directory "jpeg-&libjpeg-version;">
 
-<!ENTITY libpng-version                   "1.2.8">
-<!ENTITY libpng-package                   "libpng-&libpng-version;.tar.bz2">
-<!ENTITY libpng-directory                 "libpng-&libpng-version;">
-<!ENTITY libpng-link-to-proper-libs-patch "libpng-&libpng-version;-link_to_proper_libs-1.patch">
+<!ENTITY libpng-version   "1.2.8">
+<!ENTITY libpng-package   "libpng-&libpng-version;.tar.bz2">
+<!ENTITY libpng-md5       "00cea4539bea4bd34cbf8b82ff9589cd">
+<!ENTITY libpng-directory "libpng-&libpng-version;">
+
+<!ENTITY libpng-link-to-proper-libs-patch     "libpng-&libpng-version;-link_to_proper_libs-1.patch">
+<!ENTITY libpng-link-to-proper-libs-patch-md5 "1673589ec711a0907e46fd9dbc822a51">
 
 <!ENTITY libtiff-version   "3.7.1">
 <!ENTITY libtiff-package   "tiff-&libtiff-version;.tar.bz2">
+<!ENTITY libtiff-md5       "4e050623232b3035039be117921dcb6c">
 <!ENTITY libtiff-directory "tiff-&libtiff-version;">
 
 <!ENTITY libungif-version   "4.1.3">
 <!ENTITY libungif-package   "libungif-&libungif-version;.tar.bz2">
+<!ENTITY libungif-md5       "8c198831cc0495596c78134b8849e9ad">
 <!ENTITY libungif-directory "libungif-&libungif-version;">
 
 <!ENTITY giflib-version   "4.1.3">
 <!ENTITY giflib-package   "giflib-&giflib-version;.tar.bz2">
+<!ENTITY giflib-md5       "22efc9599ccf91d288374dcf0679abf1">
 <!ENTITY giflib-directory "giflib-&giflib-version;">
 
 <!ENTITY libmng-version   "1.0.8">
 <!ENTITY libmng-package   "libmng-&libmng-version;.tar.bz2">
+<!ENTITY libmng-md5       "03eb8a145a0760923d4eea8f290f1da9">
 <!ENTITY libmng-directory "libmng-&libmng-version;">
 
 <!ENTITY lcms-version   "1.14">
 <!ENTITY lcms-package   "lcms-&lcms-version;.tar.bz2">
+<!ENTITY lcms-md5       "399957403c76d20ea571a1b1232bda09">
 <!ENTITY lcms-directory "lcms-&lcms-version;">
 
-<!ENTITY freetype-version                    "2.1.9">
-<!ENTITY freetype-package                    "freetype-&freetype-version;.tar.bz2">
-<!ENTITY freetype-directory                  "freetype-&freetype-version;">
-<!ENTITY freetype-bytecode-interpreter-patch "freetype-&freetype-version;-bytecode_interpreter-1.patch">
+<!ENTITY freetype-version   "2.1.9">
+<!ENTITY freetype-package   "freetype-&freetype-version;.tar.bz2">
+<!ENTITY freetype-md5       "ec1b903e4be5f073caa72458ea58c29c">
+<!ENTITY freetype-directory "freetype-&freetype-version;">
+
+<!ENTITY freetype-bytecode-interpreter-patch     "freetype-&freetype-version;-bytecode_interpreter-1.patch">
+<!ENTITY freetype-bytecode-interpreter-patch-md5 "d795413ea5f480f746d22756bfb5572c">
 
 <!ENTITY fontconfig-version   "2.2.3">
 <!ENTITY fontconfig-package   "fontconfig-&fontconfig-version;.tar.bz2">
+<!ENTITY fontconfig-md5       "ca6f403e0c15c0b860f6f19454a6967a">
 <!ENTITY fontconfig-directory "fontconfig-&fontconfig-version;">
 
 <!ENTITY libart_lgpl-version   "2.3.16">
 <!ENTITY libart_lgpl-package   "libart_lgpl-&libart_lgpl-version;.tar.bz2">
+<!ENTITY libart_lgpl-md5       "6bb13292b00649d01400a5b29a6c87cb">
 <!ENTITY libart_lgpl-directory "libart_lgpl-&libart_lgpl-version;">
 
 <!ENTITY librsvg-version   "2.8.1">
 <!ENTITY librsvg-package   "librsvg-&librsvg-version;.tar.bz2">
+<!ENTITY librsvg-md5       "01c14f6adcf3a71be2b808879e1223a0">
 <!ENTITY librsvg-directory "librsvg-&librsvg-version;">
 
 <!ENTITY imlib-version   "1.9.15">
 <!ENTITY imlib-package   "imlib-&imlib-version;.tar.bz2">
+<!ENTITY imlib-md5       "7db987e6c52e4daf70d7d0f471238eae">
 <!ENTITY imlib-directory "imlib-&imlib-version;">
 
 <!ENTITY aalib-version   "1.4rc5">
 <!ENTITY aalib-package   "aalib-&aalib-version;.tar.bz2">
+<!ENTITY aalib-md5       "b6c1e8a09656f4db8f306ea24e64de73">
 <!ENTITY aalib-directory "aalib-&aalib-version;">
 
 <!ENTITY imlib2-version   "1.1.2">
 <!ENTITY imlib2-package   "imlib2-&imlib2-version;.tar.bz2">
+<!ENTITY imlib2-md5       "b4acbe8ac5c7bfe57b9e7e91e0fdb0fb">
 <!ENTITY imlib2-directory "imlib2-&imlib2-version;">

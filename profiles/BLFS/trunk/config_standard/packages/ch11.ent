@@ -1,56 +1,79 @@
 <!--************* packages for chapter 11 *************-->
 
-<!ENTITY gpm-version        "1.20.1">
-<!ENTITY gpm-package        "gpm-&gpm-version;.tar.bz2">
-<!ENTITY gpm-directory      "gpm-&gpm-version;">
-<!ENTITY gpm-segfault-patch "gpm-&gpm-version;-segfault-1.patch">
-<!ENTITY gpm-silent-patch   "gpm-&gpm-version;-silent-1.patch">
+<!ENTITY gpm-version   "1.20.1">
+<!ENTITY gpm-package   "gpm-&gpm-version;.tar.bz2">
+<!ENTITY gpm-md5       "2c63e827d755527950d9d13fe3d87692">
+<!ENTITY gpm-directory "gpm-&gpm-version;">
+
+<!ENTITY gpm-segfault-patch     "gpm-&gpm-version;-segfault-1.patch">
+<!ENTITY gpm-segfault-patch-md5 "f5fc48ce26a1ead5b5bbcb1364cf08fc">
+
+<!ENTITY gpm-silent-patch     "gpm-&gpm-version;-silent-1.patch">
+<!ENTITY gpm-silent-patch-md5 "c61004de4a3c68dfbe3c963f0e00f647">
 
 <!ENTITY fcron-version   "2.9.5.1">
 <!ENTITY fcron-package   "fcron-&fcron-version;.src.tar.bz2">
+<!ENTITY fcron-md5       "031398cc7b7d06b2eeb20a17575fba04">
 <!ENTITY fcron-directory "fcron-&fcron-version;">
 
 <!ENTITY hdparm-version   "5.8">
 <!ENTITY hdparm-package   "hdparm-&hdparm-version;.tar.bz2">
+<!ENTITY hdparm-md5       "5ee4c5f62bc5d1d0b3fb4b70b2ecf64d">
 <!ENTITY hdparm-directory "hdparm-&hdparm-version;">
 
 <!ENTITY which-version   "2.16">
 <!ENTITY which-package   "which-&which-version;.tar.bz2">
+<!ENTITY which-md5       "eddf15d19646c6bf330db4b5b04db670">
 <!ENTITY which-directory "which-&which-version;">
 
-<!ENTITY unzip-version               "5.51">
-<!ENTITY unzip-package               "unzip551.tar.bz2">
-<!ENTITY unzip-directory             "unzip-&unzip-version;">
-<!ENTITY unzip-fix-makefile-patch    "unzip-&unzip-version;-fix_Makefile-1.patch">
-<!ENTITY unzip-fix-libz-patch        "unzip-&unzip-version;-fix_libz-1.patch">
-<!ENTITY unzip-dont-make-noise-patch "unzip-&unzip-version;-dont_make_noise-1.patch">
+<!ENTITY unzip-version   "5.51">
+<!ENTITY unzip-package   "unzip551.tar.bz2">
+<!ENTITY unzip-md5       "18d26f1aa92ae91213452973b66d0385">
+<!ENTITY unzip-directory "unzip-&unzip-version;">
+
+<!ENTITY unzip-fix-makefile-patch     "unzip-&unzip-version;-fix_Makefile-1.patch">
+<!ENTITY unzip-fix-makefile-patch-md5 "7eed9722a71abe04bf4f1efd81a78bf8">
+
+<!ENTITY unzip-fix-libz-patch     "unzip-&unzip-version;-fix_libz-1.patch">
+<!ENTITY unzip-fix-libz-patch-md5 "1a54b1d74b7dca13e4418c8a0583bdcc">
+
+<!ENTITY unzip-dont-make-noise-patch     "unzip-&unzip-version;-dont_make_noise-1.patch">
+<!ENTITY unzip-dont-make-noise-patch-md5 "c69caa30644307a05184882558605f95">
 
 <!ENTITY zip-version   "2.31">
 <!ENTITY zip-package   "zip231.tar.bz2">
+<!ENTITY zip-md5       "c3481166528adf192239549bb833f32e">
 <!ENTITY zip-directory "zip-&zip-version;">
 
 <!ENTITY pciutils-version   "2.1.11">
 <!ENTITY pciutils-package   "pciutils-&pciutils-version;.tar.bz2">
+<!ENTITY pciutils-md5       "2b3b2147b7bc91f362be55cb49fa1c4e">
 <!ENTITY pciutils-directory "pciutils-&pciutils-version;">
 
 <!ENTITY pkgconfig-version   "0.15.0">
 <!ENTITY pkgconfig-package   "pkgconfig-&pkgconfig-version;.tar.bz2">
+<!ENTITY pkgconfig-md5       "8e3f44717a76069fcc8fdae9c252369b">
 <!ENTITY pkgconfig-directory "pkgconfig-&pkgconfig-version;">
 
 <!ENTITY cpio-version   "2.6">
 <!ENTITY cpio-package   "cpio-&cpio-version;.tar.bz2">
+<!ENTITY cpio-md5       "25e0e8725bc60ed3460c9cde92752674">
 <!ENTITY cpio-directory "cpio-&cpio-version;">
 
 <!ENTITY mc-version   "4.6.0">
 <!ENTITY mc-package   "mc-&mc-version;.tar.bz2">
+<!ENTITY mc-md5       "15160c5464c752dfe0c906b877e1cc6f">
 <!ENTITY mc-directory "mc-&mc-version;">
 
 <!ENTITY sysstat-version   "5.0.6">
 <!ENTITY sysstat-package   "sysstat-&sysstat-version;.tar.bz2">
+<!ENTITY sysstat-md5       "a1a59f5952655485aa03e608abb8930e">
 <!ENTITY sysstat-directory "sysstat-&sysstat-version;">
 
-<!ENTITY apache-ant-version            "1.6.2">
-<!ENTITY apache-ant-package            "apache-ant-&apache-ant-version;-src.tar.bz2">
-<!ENTITY apache-ant-directory          "apache-ant-&apache-ant-version;">
-<!ENTITY apache-ant-blfs-install-patch "apache-ant-&apache-ant-version;-blfs_install-1.patch">
+<!ENTITY apache-ant-version   "1.6.2">
+<!ENTITY apache-ant-package   "apache-ant-&apache-ant-version;-src.tar.bz2">
+<!ENTITY apache-ant-md5       "83c3adefdbf90bcbc4b804d4c55c0778">
+<!ENTITY apache-ant-directory "apache-ant-&apache-ant-version;">
 
+<!ENTITY apache-ant-blfs-install-patch     "apache-ant-&apache-ant-version;-blfs_install-1.patch">
+<!ENTITY apache-ant-blfs-install-patch-md5 "5e6b8143b93926adb0d8252b69744edc">

@@ -1,25 +1,35 @@
 <!--************* packages for chapter 6 *************-->
 
-<!ENTITY vim-version            "6.3">
-<!ENTITY vim-package            "vim-&vim-version;.tar.bz2">
-<!ENTITY vim-directory          "vim63">
-<!ENTITY vim-lang-package       "vim-&vim-version;-lang.tar.bz2">
-<!ENTITY vim-security-fix-patch "vim-&vim-version;-security_fix-1.patch">
+<!ENTITY vim-version   "6.3">
+<!ENTITY vim-package   "vim-&vim-version;.tar.bz2">
+<!ENTITY vim-md5       "821fda8f14d674346b87e3ef9cb96389">
+<!ENTITY vim-directory "vim63">
+
+<!ENTITY vim-lang-package "vim-&vim-version;-lang.tar.bz2">
+<!ENTITY vim-lang-md5     "58dcbac0857f916a9c46c6731662fbd5">
+
+<!ENTITY vim-security-fix-patch     "vim-&vim-version;-security_fix-1.patch">
+<!ENTITY vim-security-fix-patch-md5 "ef9a421f1d29993ce5bbd709cece4624">
 
 <!ENTITY emacs-version   "21.4">
 <!ENTITY emacs-package   "emacs-&emacs-version;.tar.bz2">
+<!ENTITY emacs-md5       "b7abb7a49189695ebb8c90494ebae59f">
 <!ENTITY emacs-directory "emacs-&emacs-version;">
 
 <!ENTITY nano-version   "1.2.4">
 <!ENTITY nano-package   "nano-&nano-version;.tar.bz2">
+<!ENTITY nano-md5       "fe7e722448ab8d2eb9e23d8048b2eaf5">
 <!ENTITY nano-directory "nano-&nano-version;">
 
 <!ENTITY joe-version   "3.1">
 <!ENTITY joe-package   "joe-&joe-version;.tar.bz2">
+<!ENTITY joe-md5       "90dda61d5e16c38e1ac564e2fcf24030">
 <!ENTITY joe-directory "joe-&joe-version;">
 
-<!ENTITY ed-version       "0.2">
-<!ENTITY ed-package       "ed-&ed-version;.tar.bz2">
-<!ENTITY ed-directory     "ed-&ed-version;">
-<!ENTITY ed-mkstemp-patch "ed-&ed-version;-mkstemp-1.patch">
+<!ENTITY ed-version   "0.2">
+<!ENTITY ed-package   "ed-&ed-version;.tar.bz2">
+<!ENTITY ed-md5       "ccbd510fbe415ed7255a816f868b8366">
+<!ENTITY ed-directory "ed-&ed-version;">
 
+<!ENTITY ed-mkstemp-patch     "ed-&ed-version;-mkstemp-1.patch">
+<!ENTITY ed-mkstemp-patch-md5 "4d0beb2f0ad4c304b49c06b08d0a03e5">

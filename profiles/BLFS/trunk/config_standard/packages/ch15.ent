@@ -1,5 +1,8 @@
 <!--************* packages for chapter 15 *************-->
 <!ENTITY rp-pppoe-version   "3.5">
 <!ENTITY rp-pppoe-package   "rp-pppoe-&rp-pppoe-version;.tar.bz2">
+<!ENTITY rp-pppoe-md5       "f1e520cb74bb5e0ea7ab03d2bffcaad4">
 <!ENTITY rp-pppoe-directory "rp-pppoe-&rp-pppoe-version;">
+
 <!ENTITY rp-pppoe-patch     "rp-pppoe-&rp-pppoe-version;-iproute2-1.patch">
+<!ENTITY rp-pppoe-patch-md5 "3e1aa49ec164b0ec3f9fb0620ea3a42c">
