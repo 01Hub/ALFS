@@ -87,7 +87,7 @@
 <!ATTLIST make
           base           CDATA #IMPLIED>
 
-<!ELEMENT mkdir          (option?, name+, permissions?)>
+<!ELEMENT mkdir          (option?, permissions?, name+)>
 <!ATTLIST mkdir
           base           CDATA #IMPLIED>
           
