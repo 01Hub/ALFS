@@ -1,5 +1,5 @@
 ==============================================
-        LFS-SVN PROFILE
+	LFS-SVN PROFILE
 ==============================================
 
 This profile must be used with nALFS 1.2.3 or later.
@@ -10,24 +10,15 @@ configurations the profile could be used to generate.
 
 To use the profile you should :-
 
-1) If you downloaded the LFS packages seperately you should copy
-   the config_separate directory to a directory named config :-
-
-  	cp -r config_separate config
-
-or
-
-   If you downloaded the lfs-package tarball you should copy the
-   config_tarball directory to a directory named config :-
-
-   	cp -r config_tarball config
+1) First it is recommended to make a backup copy of the config
+   directory prior to making any modifications to the files within it.
 
 2) Customize the files in the new configuration directory
    - the file general.ent contains a bunch of entity declarations
      (Note: this file contains an entity called TERM that should be
-            set to the same value as the TERM environment variable on
-            your build system. It defaults to "linux", the most common
-            value for a GNU/Linux system.)
+	    set to the same value as the TERM environment variable on
+	    your build system. It defaults to "linux", the most common
+	    value for a GNU/Linux system.)
    - the file fstab.xml contains the commands to generate the fstab file
    - the file kernel.xml contains the commands for building the kernel
    - the file grub.xml contains the commands for configuring the grub
@@ -47,4 +38,3 @@ or
 4) Execute sh ./runit as root. Please note that if you have installed
    nALFS into a location other than /usr/local/bin you will need to edit
    runit to point to your copy of nALFS.
-
