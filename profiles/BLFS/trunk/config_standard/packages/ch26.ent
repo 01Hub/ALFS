@@ -13,7 +13,7 @@
 <!ENTITY gtkplus2-directory "gtk+-&gtkplus2-version;">
 
 <!ENTITY atk-version   "1.9.0">
-<!ENTITY atk-package   "atk-&atk-version;tar.bz2">
+<!ENTITY atk-package   "atk-&atk-version;.tar.bz2">
 <!ENTITY atk-directory "atk-&atk-version;">
 
 <!ENTITY pango-version   "1.8.1">
@@ -40,6 +40,6 @@
 <!ENTITY libxklavier-package "libxklavier-&libxklavier-version;.tar.gz">
 <!ENTITY libxklavier-directory "libxklavier-&libxklavier-version;">
 
-<!ENTITY freeglut-version "2.20">
+<!ENTITY freeglut-version "2.2.0">
 <!ENTITY freeglut-package "freeglut-&freeglut-version;.tar.gz">
 <!ENTITY freeglut-directory "freeglut-&freeglut-version;">
