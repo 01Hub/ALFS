@@ -26,6 +26,24 @@ DIV.navfooter IMG
     BORDER-LEFT: medium none;
     BORDER-BOTTOM: medium none
 }
+DIV.book {
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
+    TEXT-ALIGN: left
+}
+DIV.book DIV.titlepage H3.author {
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 14pt;
+    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
+    TEXT-ALIGN: left
+}
+DIV.book DIV.dedication DIV.titlepage H2.title {
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 14pt;
+    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
+    TEXT-ALIGN: left
+}
 DIV.book DIV.titlepage H1.title
 {
     FONT-WEIGHT: bold;
