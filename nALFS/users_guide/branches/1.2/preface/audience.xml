@@ -1,0 +1,14 @@
+<sect1 id="preface-audience" xreflabel="Audience">
+<?dbhtml filename="audience.html" dir="preface"?>
+<title>Who Would Want To Read This Book</title>
+
+<para>This is the user's guide for &book-product; v&nalfs-version;. If you
+have &book-product; installed on your computer and want to know how to use
+it, then you have found the right place. &book-product; is a tool to
+automate the build procedure for the LFS book. It can also be used to
+automate software package installation steps or any other administrative
+task you can think of. The ALFS DTD has many features available for use
+inside the tool.</para>
+
+</sect1>
+

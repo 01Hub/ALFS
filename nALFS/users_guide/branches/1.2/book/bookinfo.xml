@@ -1,0 +1,11 @@
+<bookinfo>
+
+<title>&book-product; User's Guide</title>
+<subtitle>Version &version;&nbsp;&emdash;&nbsp;&releasedate;</subtitle>
+
+&book-info-authorgroup;
+&book-info-copyright;
+&book-info-legalnotice;
+&book-info-abstract;
+
+</bookinfo>
