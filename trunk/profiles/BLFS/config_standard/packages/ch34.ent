@@ -1,0 +1,17 @@
+<!--************* packages for chapter 34 *************-->
+
+<!ENTITY koffice-version   "1.3.1">
+<!ENTITY koffice-package   "koffice-&koffice-version;.tar.bz2">
+<!ENTITY koffice-directory "koffice-&koffice-version;">
+
+<!ENTITY openoffice-version   "1.1.1">
+<!ENTITY openoffice-package   "OOo_&openoffice-version;p1_source.tar.bz2">
+<!ENTITY openoffice-directory "oo_&openoffice-version;_src">
+
+<!ENTITY gpc-version   "231">
+<!ENTITY gpc-package   "gpc&gpc-version;.tar.Z">
+<!ENTITY gpc-directory "gpc&gpc-version;">
+
+<!ENTITY openoffice-test-bin-patch "openoffice-&openoffice-version;-test-bin-loc.patch">
+<!ENTITY openoffice-no-pam-patch "openoffice-&openoffice-version;-no-pam.patch">
+<!ENTITY openoffice-jdk-patch "openoffice-&openoffice-version;-jdk-1.4.2-fix.patch">

@@ -1,0 +1,65 @@
+<!--************* packages for chapter 29 *************-->
+
+<!ENTITY kdeadmin-version   "&kde-version;">
+<!ENTITY kdeadmin-package   "kdeadmin-&kdeadmin-version;.tar.bz2">
+<!ENTITY kdeadmin-directory "kdeadmin-&kdeadmin-version;">
+
+<!ENTITY kdenetwork-version   "&kde-version;">
+<!ENTITY kdenetwork-package   "kdenetwork-&kdenetwork-version;.tar.bz2">
+<!ENTITY kdenetwork-directory "kdenetwork-&kdenetwork-version;">
+
+<!ENTITY kdepim-version   "&kde-version;">
+<!ENTITY kdepim-package   "kdepim-&kdepim-version;.tar.bz2">
+<!ENTITY kdepim-directory "kdepim-&kdepim-version;">
+
+<!ENTITY kdemultimedia-version   "&kde-version;">
+<!ENTITY kdemultimedia-package   "kdemultimedia-&kdemultimedia-version;.tar.bz2">
+<!ENTITY kdemultimedia-directory "kdemultimedia-&kdemultimedia-version;">
+
+<!ENTITY kdegraphics-version   "&kde-version;">
+<!ENTITY kdegraphics-package   "kdegraphics-&kdegraphics-version;.tar.bz2">
+<!ENTITY kdegraphics-directory "kdegraphics-&kdegraphics-version;">
+
+<!ENTITY kdeutils-version   "&kde-version;">
+<!ENTITY kdeutils-package   "kdeutils-&kdeutils-version;.tar.bz2">
+<!ENTITY kdeutils-directory "kdeutils-&kdeutils-version;">
+
+<!ENTITY kdeedu-version   "&kde-version;">
+<!ENTITY kdeedu-package   "kdeedu-&kdeedu-version;.tar.bz2">
+<!ENTITY kdeedu-directory "kdeedu-&kdeedu-version;">
+
+<!ENTITY kdesdk-version   "&kde-version;">
+<!ENTITY kdesdk-package   "kdesdk-&kdesdk-version;.tar.bz2">
+<!ENTITY kdesdk-directory "kdesdk-&kdesdk-version;">
+
+<!ENTITY kdevelop-version   "3.0.3">
+<!ENTITY kdevelop-package   "kdevelop-&kdevelop-version;.tar.bz2">
+<!ENTITY kdevelop-directory "kdevelop-&kdevelop-version;">
+
+<!ENTITY quanta-version "&kde-version;">
+<!ENTITY quanta-package "quanta-&quanta-version;.tar.bz2">
+<!ENTITY quanta-directory "quanta-&quanta-version;">
+
+<!ENTITY kdebindings-version   "&kde-version;">
+<!ENTITY kdebindings-package   "kdebindings-&kdebindings-version;.tar.bz2">
+<!ENTITY kdebindings-directory "kdebindings-&kdebindings-version;">
+
+<!ENTITY kdeaccessibility-version   "&kde-version;">
+<!ENTITY kdeaccessibility-package   "kdeaccessibility-&kdeaccessibility-version;.tar.bz2">
+<!ENTITY kdeaccessibility-directory "kdeaccessibility-&kdeaccessibility-version;">
+
+<!ENTITY kdetoys-version   "&kde-version;">
+<!ENTITY kdetoys-package   "kdetoys-&kdetoys-version;.tar.bz2">
+<!ENTITY kdetoys-directory "kdetoys-&kdetoys-version;">
+
+<!ENTITY kdegames-version   "&kde-version;">
+<!ENTITY kdegames-package   "kdegames-&kdegames-version;.tar.bz2">
+<!ENTITY kdegames-directory "kdegames-&kdegames-version;">
+
+<!ENTITY kdeartwork-version   "&kde-version;">
+<!ENTITY kdeartwork-package   "kdeartwork-&kdeartwork-version;.tar.bz2">
+<!ENTITY kdeartwork-directory "kdeartwork-&kdeartwork-version;">
+
+<!ENTITY kdeaddons-version   "&kde-version;">
+<!ENTITY kdeaddons-package   "kdeaddons-&kdeaddons-version;.tar.bz2">
+<!ENTITY kdeaddons-directory "kdeaddons-&kdeaddons-version;">

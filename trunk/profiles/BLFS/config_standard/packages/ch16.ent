@@ -1,0 +1,20 @@
+<!--************* packages for chapter 16 *************-->
+
+<!ENTITY curl-version   "7.11.1">
+<!ENTITY curl-package   "curl-&curl-version;.tar.bz2">
+<!ENTITY curl-directory "curl-&curl-version;">
+
+<!ENTITY wvstreams-version   "3.70">
+<!ENTITY wvstreams-package   "wvstreams-&wvstreams-version;.tar.gz">
+<!ENTITY wvstreams-directory "wvstreams-&wvstreams-version;">
+
+<!ENTITY wvstreams-wvcrypto-patch     "wvstreams-&wvstreams-version;-wvcrypto.patch">
+<!ENTITY wvstreams-wvresolver-patch   "wvstreams-&wvstreams-version;-wvresolver.patch">
+
+<!ENTITY gnet-version   "2.0.5">
+<!ENTITY gnet-package   "gnet-&gnet-version;.tar.gz">
+<!ENTITY gnet-directory "gnet-&gnet-version;">
+
+<!ENTITY libsoup-version   "1.99.28">
+<!ENTITY libsoup-package   "libsoup-&libsoup-version;.tar.bz2">
+<!ENTITY libsoup-directory "libsoup-&libsoup-version;">

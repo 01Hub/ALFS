@@ -1,0 +1,41 @@
+<!--************* packages for chapter 26 *************-->
+
+<!ENTITY qt-version   "3.3.2">
+<!ENTITY qt-package   "qt-x11-free-&qt-version;.tar.bz2">
+<!ENTITY qt-directory "qt-x11-free-&qt-version;">
+
+<!ENTITY gtkplus-version   "1.2.10">
+<!ENTITY gtkplus-package   "gtk+-&gtkplus-version;.tar.gz">
+<!ENTITY gtkplus-directory "gtk+-&gtkplus-version;">
+
+<!ENTITY gtkplus2-version   "2.4.1">
+<!ENTITY gtkplus2-package   "gtk+-&gtkplus2-version;.tar.bz2">
+<!ENTITY gtkplus2-directory "gtk+-&gtkplus2-version;">
+
+<!ENTITY atk-version   "1.6.1">
+<!ENTITY atk-package   "atk-&atk-version;tar.bz2">
+<!ENTITY atk-directory "atk-&atk-version;">
+
+<!ENTITY pango-version   "1.4.0">
+<!ENTITY pango-package   "pango-&pango-version;.tar.gz">
+<!ENTITY pango-directory "pango-&pango-version;">
+
+<!ENTITY lesstif-version   "0.93.94">
+<!ENTITY lesstif-package   "lesstif-&lesstif-version;.tar.bz2">
+<!ENTITY lesstif-directory "lesstif-&lesstif-version;">
+
+<!ENTITY startup-notification-version   "0.6">
+<!ENTITY startup-notification-package   "startup-notification-&startup-notification-version;.tar.gz">
+<!ENTITY startup-notification-directory "startup-notification-&startup-notification-version;">
+
+<!ENTITY shared-mime-info-version "0.14">
+<!ENTITY shared-mime-info-package "shared-mime-info-&shared-mime-info-version;.tar.gz">
+<!ENTITY shared-mime-info-directory "shared-mime-info-&shared-mime-info-version;">
+
+<!ENTITY hicolor-icon-theme-version "0.5">
+<!ENTITY hicolor-icon-theme-package "hicolor-icon-theme-&hicolor-icon-theme-version;.tar.gz">
+<!ENTITY hicolor-icon-theme-directory "hicolor-icon-theme-&hicolor-icon-theme-version;">
+
+<!ENTITY libxklavier-version "1.02">
+<!ENTITY libxklavier-package "libxklavier-&libxklavier-version;.tar.gz">
+<!ENTITY libxklavier-directory "libxklavier-&libxklavier-version;">

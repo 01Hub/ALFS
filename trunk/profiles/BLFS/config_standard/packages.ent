@@ -1284,7 +1284,7 @@
 <!ENTITY balsa-package   "balsa-&balsa-version;.tar.bz2">
 <!ENTITY balsa-directory "balsa-&balsa-version;">
 
-<!--************* packages for chapter 42 *************-->
+<!--************* packages for chapter 37 *************-->
 <!ENTITY alsa-version "1.0.4">
 
 <!ENTITY alsa-driver-version   "&alsa-version;">

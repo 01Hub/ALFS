@@ -1,0 +1,19 @@
+<!--************* packages for chapter 23 *************-->
+
+<!ENTITY db-version   "4.2.52">
+<!ENTITY db-package   "db-&db-version;.tar.gz">
+<!ENTITY db-directory "db-&db-version;">
+<!ENTITY db-patch1 "patch.&db-version;.1">
+<!ENTITY db-patch2 "patch.&db-version;.2">
+
+<!ENTITY db3-version   "3.3.11">
+<!ENTITY db3-package   "db-&db3-version;.tar.gz">
+<!ENTITY db3-directory "db-&db3-version;">
+
+<!ENTITY mysql-version   "4.0.20">
+<!ENTITY mysql-package   "mysql-&mysql-version;.tar.gz">
+<!ENTITY mysql-directory "mysql-&mysql-version;">
+
+<!ENTITY postgresql-version   "7.4.2">
+<!ENTITY postgresql-package   "postgresql-&postgresql-version;.tar.bz2">
+<!ENTITY postgresql-directory "postgresql-&postgresql-version;">
