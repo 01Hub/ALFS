@@ -172,21 +172,16 @@ AC_PATH_PROG([CURL_CONFIG], [curl-config], [no])
 ])
 
 if test "${CURL_CONFIG}" != "no"; then
-   AC_CHECK_LIB([curl], [curl_global_init], [AC_DEFINE([HAVE_LIBCURL], [], [Define to use libcurl instead of wget for downloading.])], [], [`${CURL_CONFIG} --libs`])
-   if test "${ac_cv_lib_curl_curl_global_init}" = "yes"; then
-      curl_version=0x`${CURL_CONFIG} --vernum`
-      if test $(($curl_version > 0x070a00)) != 0; then
-          CURL_LIB=`${CURL_CONFIG} --libs | sed -e 's/^-L\(.*\) -lcurl.*$/\1/'`/libcurl.la
-          CURL_INCLUDES=`${CURL_CONFIG} --cflags`
-	  AC_SUBST([CURL_LIB])
-	  AC_SUBST([CURL_INCLUDES])
-      else
+   AC_CHECK_LIB([curl], [curl_global_init], [CURL_FOUND=yes], [], [`${CURL_CONFIG} --libs`])
+   if test "${CURL_FOUND}" = "yes"; then
+      CURL_VERSION=`${CURL_CONFIG} --version`
+      AX_COMPARE_VERSION([${CURL_VERSION}], [ge], [7.10.0], [], [
           echo "***"
-	  echo "*** The libcurl on this system is an older version than 7.10.0."
-	  echo "*** Either install a newer version, or run configure without"
-	  echo "*** including --with-curl."
-	  exit 1
-      fi
+          echo "*** The CURL installation on this system is version ${CURL_VERSION}."
+          echo "*** Version 7.10.0 or above is required to build this package, so the problem"
+          echo "*** must be corrected before continuing."
+          exit 1
+      ])
    else
       echo "***"
       echo "*** The libcurl installation on this system appears to be broken."
@@ -194,6 +189,11 @@ if test "${CURL_CONFIG}" != "no"; then
       echo "*** including --with-curl."
       exit 1
    fi
+   AC_DEFINE([HAVE_LIBCURL], [], [Define to use libcurl instead of wget for downloading.])
+   CURL_LIB=`${CURL_CONFIG} --libs | sed -e 's/^-L\(.*\) -lcurl.*$/\1/'`/libcurl.la
+   CURL_INCLUDES=`${CURL_CONFIG} --cflags`
+   AC_SUBST([CURL_LIB])
+   AC_SUBST([CURL_INCLUDES])
 elif test "${USE_CURL}" = "yes"; then
    echo "***"
    echo "*** Can't find curl-config. Make sure this system has curl installed,"

@@ -134,7 +134,8 @@ If you use <download> and/or <unpack> elements in your profiles and
 wish to get better download performance (and more reliability) than
 using "wget" for the download processes, nALFS can be built using the
 curl libraries that are included in the curl distribution from
-http://curl.haxx.se/.
+http://curl.haxx.se/. This version of nALFS requires curl version
+7.10.0 or later.
 
 A copy of the DTD used to validate ALFS profiles is included in the
 nALFS distribution, at doc/ALFS.dtd. This file can be used with the
