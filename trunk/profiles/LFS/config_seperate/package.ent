@@ -3,8 +3,8 @@
 <!ENTITY autoconf-package "autoconf-&autoconf-version;.tar.bz2">
 <!ENTITY autoconf-directory "autoconf-&autoconf-version;">
 
-<!ENTITY automake-md5 "57f405a10fc5990ed6120fbbef3ab502">
-<!ENTITY automake-version "1.8.4">
+<!ENTITY automake-md5 "0114aa6d7dc32112834b68105fb8d7e2">
+<!ENTITY automake-version "1.8.5">
 <!ENTITY automake-package "automake-&automake-version;.tar.bz2">
 <!ENTITY automake-directory "automake-&automake-version;">
 
