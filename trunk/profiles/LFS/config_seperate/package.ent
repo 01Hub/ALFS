@@ -202,8 +202,8 @@
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
 
-<!ENTITY linux-libc-headers-md5 "853533befd57d3b8cbadb4da946ef85e">
-<!ENTITY linux-libc-headers-version "2.6.5.1">
+<!ENTITY linux-libc-headers-md5 "4349c3961642962eab510328dd9f2549">
+<!ENTITY linux-libc-headers-version "2.6.5.2">
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
 <!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
 
