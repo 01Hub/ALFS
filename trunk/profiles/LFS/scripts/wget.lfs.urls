@@ -20,6 +20,7 @@ ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/libtool/libtool-1.5.6.tar.
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/make/make-3.80.tar.bz2
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/ncurses/ncurses-5.4.tar.gz
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/patch/patch-2.5.4.tar.gz
+ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/readline/readline-4.3.tar.gz
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/texinfo/texinfo-4.7.tar.bz2
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/sed/sed-4.0.9.tar.gz
 ftp://ftp.astron.com/pub/file/file-4.09.tar.gz
@@ -67,6 +68,7 @@ http://downloads.linuxfromscratch.org/patches/6.1-cvs/mktemp-1.5-add-tempfile-1.
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/net-tools-1.60-gcc34-2.patch
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/net-tools-1.60-kernel-headers-1.patch
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/perl-5.8.4-libc-1.patch
+http://downloads.linuxfromscratch.org/patches/6.1-cvs/readline-4.3-gnu-fixes-1.patch
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/sysklogd-1.4.1-kernel-headers-1.patch
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/udev-025-config-1.patch
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/util-linux-2.12a-kernel-headers-1.patch

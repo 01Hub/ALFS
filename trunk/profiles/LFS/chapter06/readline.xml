@@ -1,0 +1,63 @@
+<package name="readline" version="&readline-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&readline-md5;</digest>
+			<archive>&packages_dir;/&readline-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&readline-gnu-fixes-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&readline-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&readline-gnu-fixes-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<permissions mode="644">
+			<name>/usr/lib/*.&readline-version;</name>
+		</permissions>
+
+		<move>
+			<source>/usr/lib/libreadline.so.4*</source>
+			<source>/usr/lib/libhistory.so.4*</source>
+			<destination>/lib</destination>
+		</move>
+
+		<link>
+			<option>force</option>
+			<target>../../lib/libhistory.so.4</target>
+			<name>/usr/lib/libhistory.so</name>
+		</link>
+
+		<link>
+			<option>force</option>
+			<target>../../lib/libreadline.so.4</target>
+			<name>/usr/lib/libreadline.so</name>
+		</link>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&readline-directory;</remove>
+		<remove>&build_dir;/&readline-gnu-fixes-patch;</remove>
+	</stage>
+</package>
