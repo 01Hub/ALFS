@@ -1,2 +1,2 @@
 <!ENTITY ch1              SYSTEM "chapter01.xml">
-<!ENTITY ch1-introduction SYSTEM "indroduction">
+<!ENTITY ch1-introduction SYSTEM "indroduction.xml">
