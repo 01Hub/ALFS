@@ -1,8 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS-3.1.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch04.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+
+<alfs>
 <package name="linuxpam" version="&linuxpam-version;">
 
-        <!--<packageinfo>
+        <packageinfo>
                 <utilizes><name>cracklib</name></utilizes>
-        </packageinfo>-->
+        </packageinfo>
 
 	<stage name="Unpacking">
 		<unpack>
@@ -116,3 +129,4 @@
 	</stage>
 
 </package>
+</alfs>

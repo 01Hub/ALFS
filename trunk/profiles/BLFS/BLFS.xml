@@ -67,66 +67,66 @@
 
 <stage name="Chapter 4 (Security)">
 
-    &cracklib;
-    &linuxpam;
-    &shadow;
-    &iptables;
-    &gnupg;
-    &tripwire;
-    &heimdal;
-    &mitkrb;
+    <xi:include href="chapter04/cracklib.xml" />
+    <xi:include href="chapter04/linuxpam.xml" />
+    <xi:include href="chapter04/shadow.xml" />
+    <xi:include href="chapter04/iptables.xml" />
+    <xi:include href="chapter04/gnupg.xml" />
+    <xi:include href="chapter04/tripwire.xml" />
+    <xi:include href="chapter04/heimdal.xml" />
+    <xi:include href="chapter04/mitkrb.xml" />
 
 </stage>
 
 <stage name="Chapter 5 (Filesystems)">
 
-    &reiserfsutils;
-    &xfsprogs;
+    <xi:include href="chapter05/reiserfsutils.xml" />
+    <xi:include href="chapter05/xfsprogs.xml" />
 
 </stage>
 
 <stage name="Chapter 6 (Editors)">
 
-    &vim;
-    &emacs;
-    &nano;
-    &joe;
+    <xi:include href="chapter06/vim.xml" />
+    <xi:include href="chapter06/emacs.xml" />
+    <xi:include href="chapter06/nano.xml" />
+    <xi:include href="chapter06/joe.xml" />
 
 </stage>
 
 <stage name="Chapter 7 (Shells)">
 
-    &ash;
-    &tcsh;
-    &zsh;
+    <xi:include href="chapter07/ash.xml" />
+    <xi:include href="chapter07/tcsh.xml" />
+    <xi:include href="chapter07/zsh.xml" />
 
 </stage>
 
 <stage name="Chapter 8 (General Libraries)">
 
-    &openssl;
-    &pcre;
-    &popt;
-    &slang;
-    &libfam;
-    &libxml;
-    &libxml2;
-    &libxslt;
-    &readline;
-    &gmp;
-    &gdbm;
-    &glib;
-    &glib2;
-    &expat;
-    &libesmtp;
-    &aspell;
-    &ispell;
-    &guile;
-    &slib;
-    &g-wrap;
-    &lzo;
-    &libpcap;
-    &libusb;
+    <xi:include href="chapter08/openssl.xml" />
+    <xi:include href="chapter08/pcre.xml" />
+    <xi:include href="chapter08/popt.xml" />
+    <xi:include href="chapter08/slang.xml" />
+    <xi:include href="chapter08/libfam.xml" />
+    <xi:include href="chapter08/libxml.xml" />
+    <xi:include href="chapter08/libxml2.xml" />
+    <xi:include href="chapter08/libxslt.xml" />
+    <xi:include href="chapter08/readline.xml" />
+    <xi:include href="chapter08/gmp.xml" />
+    <xi:include href="chapter08/gdbm.xml" />
+    <xi:include href="chapter08/glib.xml" />
+    <xi:include href="chapter08/glib2.xml" />
+    <xi:include href="chapter08/expat.xml" />
+    <xi:include href="chapter08/libesmtp.xml" />
+    <xi:include href="chapter08/aspell.xml" />
+    <xi:include href="chapter08/ispell.xml" />
+    <xi:include href="chapter08/guile.xml" />
+    <xi:include href="chapter08/slib.xml" />
+    <xi:include href="chapter08/g-wrap.xml" />
+    <xi:include href="chapter08/lzo.xml" />
+    <xi:include href="chapter08/libpcap.xml" />
+    <xi:include href="chapter08/libusb.xml" />
 
 </stage>
 
