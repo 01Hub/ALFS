@@ -8,6 +8,7 @@
 
 		<copy>
 			<source>&packages_dir;/&sysklogd-kernel-headers-patch;</source>
+			<source>&packages_dir;/&sysklogd-signal-patch;</source>
 			<destination>&build_dir;</destination>
 		</copy>
 	</stage>
@@ -21,6 +22,12 @@
 			<param>-N</param>
 			<param>-p1</param>
 			<param>-i ../&sysklogd-kernel-headers-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&sysklogd-signal-patch;</param>
 		</patch>
 
 		<make />
@@ -50,5 +57,6 @@
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&sysklogd-directory;</remove>
 		<remove>&build_dir;/&sysklogd-kernel-headers-patch;</remove>
+		<remove>&build_dir;/&sysklogd-signal-patch;</remove>
 	</stage>
 </package>

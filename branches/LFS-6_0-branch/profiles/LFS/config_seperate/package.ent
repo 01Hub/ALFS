@@ -277,6 +277,9 @@
 <!ENTITY sysklogd-kernel-headers-patch-md5 "290ef10e5fe52676899da43cb8dd2914">
 <!ENTITY sysklogd-kernel-headers-patch "sysklogd-&sysklogd-version;-kernel-headers-1.patch">
 
+<!ENTITY sysklogd-signal-patch-md5 "cbe6093ef2fb8089d86d8dd636224cc7">
+<!ENTITY sysklogd-signal-patch "sysklogd-&sysklogd-version;-signal-1.patch">
+
 <!ENTITY sysvinit-md5 "8a2d8f1ed5a2909da04132fefa44905e">
 <!ENTITY sysvinit-version "2.85">
 <!ENTITY sysvinit-package "sysvinit-&sysvinit-version;.tar.gz">
