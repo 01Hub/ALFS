@@ -33,7 +33,7 @@
         <param>mrproper</param>
       </make>
       <copy>
-        <source>&packages_dir;/&kernel-config;</source>
+        <source>&skeleton_dir;/linux-kernel-config</source>
         <destination>.config</destination>
       </copy>
       <xi:include href="../config/keymap-ch8.xml" />

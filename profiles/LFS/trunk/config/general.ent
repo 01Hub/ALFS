@@ -100,12 +100,6 @@
 <!-- gcc target triplet (used for adjusting the toolchain) -->
 <!ENTITY gcc_target "i686-pc-linux-gnu">
 
-<!-- Linux .config file to use
-	This file should be in a state that running `make oldconfig` will run straight through, as
-	that's what the profile in chapter 8 does with this entity.
-    -->
-<!ENTITY kernel-config "linux-config">
-
 <!-- grub settings (these need to be in grub's notation) -->
 <!ENTITY grub-root "hd0,0">
 <!ENTITY grub-install-location "hd0">
