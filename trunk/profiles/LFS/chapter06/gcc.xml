@@ -47,6 +47,7 @@
 
 		<make>
 			<param>-k check</param>
+			<param>|| true</param>
 		</make>
 
 <!-- Shows a summary of the tests ran in the above `make -k check` -->

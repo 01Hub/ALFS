@@ -45,8 +45,6 @@
 			<param>install</param>
 		</make>
 
-		<remove>/tmp/pt_chown</remove>
-
 		<mkdir>
 			<option>parents</option>
 			<name>/usr/lib/locale</name>

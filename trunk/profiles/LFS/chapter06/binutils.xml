@@ -38,7 +38,8 @@ suites for Binutils and GCC until you are able to resolve the issue.
 		</make>
 
 		<make>
-			<param>check</param>
+			<param>-k check</param>
+			<param>|| true</param>
 		</make>
 
 		<make>

@@ -19,29 +19,29 @@
 		</patch>
 
 		<search_replace>
-		  <file>udevstart.c</file>
+		  	<file>udevstart.c</file>
 			<find>/sbin/udev</find>
 			<replace>/tools/sbin/udev</replace>
 		</search_replace>
 
 		<search_replace>
-		  <file>etc/udev/udev.conf.in</file>
+		  	<file>etc/udev/udev.conf.in</file>
 			<find>/etc</find>
 			<replace>/tools/etc</replace>
 		</search_replace>
 
 		<make>
-		  <param>prefix=/tools</param>
+		  	<param>prefix=/tools</param>
 			<param>etcdir=/tools/etc</param>
 		</make>
 
 		<make>
-		  <param>udevdir=/dev</param>
+		  	<param>udevdir=/dev</param>
 			<param>etc/udev/udev.conf</param>
 		</make>
 
 		<make>
-		  <param>DESTDIR=/tools</param>
+		  	<param>DESTDIR=/tools</param>
 			<param>install</param>
 		</make>
 	</stage>
