@@ -96,11 +96,10 @@ To configure, compile, install and run nALFS, just type:
     ./configure
     make
     make install
-    nALFS profile/LFS-*/LFS-*.xml
+    nALFS /path/to/your/profile.xml
 
-This will start nALFS using the latest stable LFS profile, which is
-included in the nALFS distribution. When you enter the program, type
-'?' for a list of all available commands.
+This will start nALFS using your chosen profile. When you enter
+the program, type '?' for a list of all available commands.
 
 
 3. Requirements
@@ -201,11 +200,9 @@ to compile the program. To install it, use:
 
 Just type:
 
-    nALFS profile/LFS-*/LFS-*.xml
+    nALFS /path/to/your/profile.xml
 
-where "profiles/LFS-*/LFS-*.xml" is the current stable LFS profile
-distributed with the nALFS package. Multiple profiles separated by
-spaces can also be specified.
+Multiple profiles separated by spaces can also be specified.
 
 nALFS reads the /etc/nALFSrc file, then the ~/.nALFSrc file, in which
 different options can be set.  An example of these files is located in
