@@ -14,7 +14,7 @@
   <package name="intltool" version="&intltool-version;">
     <packageinfo>
       <requires>
-        <name>xml-parser</name>
+        <name>XML-Parser</name>
       </requires>
     </packageinfo>
     <stage name="Unpacking">

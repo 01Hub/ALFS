@@ -30,7 +30,10 @@
     <stageinfo>
       <base>&build_dir;/&Net-DNS-directory;</base>
     </stageinfo>
-    <execute command="perl Makefile.PL" />
+    <execute command="echo">
+	<param>"&nameserver-tests;" |</param>
+	<param>perl Makefile.PL</param>
+    </execute>
     <make />
     <make>
       <param>test</param>

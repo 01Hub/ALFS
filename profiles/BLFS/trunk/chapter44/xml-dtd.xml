@@ -188,7 +188,7 @@
         <param>/etc/xml/docbook</param>
       </execute>
       <execute command="xmlcatalog">
-        <param>--noout --add "rewriteURI""</param>
+        <param>--noout --add "rewriteURI"</param>
         <param>"http://www.oasis-open.org/docbook/xml/4.2"</param>
         <param>"file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;"</param>
         <param>/etc/xml/docbook</param>
