@@ -12,7 +12,7 @@
 			<base>&build_dir;/&mutt-directory;</base>
 		</stageinfo>
 
-		<!-- uncomment if no MTA is installed
+		<!-- uncomment if no MTA is installed -->
 
 		<execute command="groupadd">
 		        <param>mail</param>
@@ -20,9 +20,9 @@
 		
 		<ownership group="mail">
 		        <name>/var/mail</name>
-		</execute>
+		</ownership>
 		
-		-->
+		<!-- -->
 
 		<configure>
 		        <param>--prefix=/usr</param>

@@ -233,6 +233,7 @@
 
 <stage name="Chapter 20 (Basic networking programs)">
 
+    &nail;
     &procmail;
     &fetchmail;
     &mutt;
@@ -241,16 +242,16 @@
 
 </stage>
 
+<stage name="Chapter 21 (DJB's utilities)">
+
+    &daemontools;
+
+</stage>
+
 <stage name="Chapter 22 (Mail server software)">
 
     &postfix;
     &qpopper;
-
-</stage>
-
-<stage name="Chapter 21 (DJB's utilities)">
-
-    &daemontools;
 
 </stage>
 

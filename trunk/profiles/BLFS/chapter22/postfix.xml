@@ -16,7 +16,6 @@
 			<base>&build_dir;/&postfix-directory;</base>
 		</stageinfo>
 
-
 		<execute command="grep postfix:  /etc/group  || groupadd">
 		        <param>postfix</param>
 		</execute>

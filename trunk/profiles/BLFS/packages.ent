@@ -470,6 +470,10 @@
 
 <!--************* packages for chapter 20 *************-->
 
+<!ENTITY nail-version   "10.5">
+<!ENTITY nail-package   "nail-10.5.tar.gz">
+<!ENTITY nail-directory "nail-10.5">
+
 <!ENTITY procmail-version   "3.22">
 <!ENTITY procmail-package   "procmail-3.22.tar.gz">
 <!ENTITY procmail-directory "procmail-3.22">
@@ -482,11 +486,11 @@
 <!ENTITY mutt-package   "mutt-1.4.1i.tar.gz">
 <!ENTITY mutt-directory "mutt-1.4.1">
 
-<!ENTITY pine-version   "4.56">
-<!ENTITY pine-package   "pine4.56.tar.bz2">
-<!ENTITY pine-directory "pine4.56">
+<!ENTITY pine-version   "4.58">
+<!ENTITY pine-package   "pine4.58.tar.bz2">
+<!ENTITY pine-directory "pine4.58">
 
-<!ENTITY pine-patch     "pine-4.56-fhs.patch">
+<!ENTITY pine-patch     "pine-4.58-fhs.patch">
 
 <!ENTITY slrn-version   "0.9.7.4">
 <!ENTITY slrn-package   "slrn-0.9.7.4.tar.bz2">
