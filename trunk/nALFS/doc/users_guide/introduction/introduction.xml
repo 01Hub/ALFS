@@ -29,7 +29,7 @@ aim is to provide a much simpler method for building a Linux system.</para>
 <para><acronym>ALFS</acronym> uses profiles (simple <acronym>XML</acronym> 
 files) which describe what actions are to be taken and what commands executed. 
 Feeding the program (like &book-product;) with those profiles, will make the 
-program act upon them.<para>
+program act upon them.</para>
 
 <para>For example, if you want to create a directory, all you have to do is
 to put:</para>
