@@ -6,11 +6,11 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT archive        (#PCDATA)&gt;
+&lt;!ELEMENT archive     (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_unpack">unpack</link>.
+<para>This element occurs in the element
+<xref linkend="elem_unpack"/>.
 </para>
 
 </sect2>
@@ -18,28 +18,24 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>archive</token> is used to specify the archive in an
- <token>unpack</token> operation.</para>
+<para>The element <filename>archive</filename> is used to specify the archive file
+in an <filename>unpack</filename> operation.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;unpack&gt;
+<screen><userinput>&lt;unpack&gt;
     &lt;archive&gt;/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive&gt;
     &lt;destination&gt;/usr/src&lt;/destination&gt;
-&lt;/unpack&gt;
-</programlisting>
+&lt;/unpack&gt;</userinput></screen>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>
-echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+<screen><userinput>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
 cd /usr/src
-tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz
-</programlisting>
+tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</userinput></screen>
 
 </sect2>
 
