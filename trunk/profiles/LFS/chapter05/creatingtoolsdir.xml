@@ -105,6 +105,8 @@
 			<source>&perl-libc-1-patch;</source>
 			<source>&procps-package;</source>
 			<source>&psmisc-package;</source>
+			<source>&readline-package;</source>
+			<source>&readline-gnu-fixes-patch;</source>
 			<source>&sed-package;</source>
 			<source>&shadow-package;</source>
 			<source>&sysklogd-package;</source>
