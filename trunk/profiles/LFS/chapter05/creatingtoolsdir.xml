@@ -66,9 +66,10 @@
 			<source>&flex-package;</source>
 			<source>&flex-debian-fixes-patch;</source>
 			<source>&gawk-package;</source>
-			<source>&gcc-core-package;</source>
-			<source>&gcc-gpp-package;</source>
-			<source>&gcc-testsuite-package;</source>
+			<source>&gcc-package;</source>
+<!--			<source>&gcc-core-package;</source> -->
+<!--			<source>&gcc-gpp-package;</source> -->
+<!--			<source>&gcc-testsuite-package;</source> -->
 			<source>&gcc-no-fixincludes-patch;</source>
 			<source>&gcc-specs-patch;</source>
 			<source>&gettext-package;</source>
@@ -77,6 +78,10 @@
 			<source>&groff-package;</source>
 			<source>&grub-package;</source>
 			<source>&gzip-package;</source>
+			<source>&hotplug-package;</source>
+			<source>&hotplug-bogus-deps-patch;</source>
+			<source>&hotplug-cosmetic-patch;</source>
+			<source>&hotplug-device-patch;</source>
 			<source>&iana-etc-package;</source>
 			<source>&inetutils-package;</source>
 			<source>&inetutils-no-man-pages-patch;</source>

@@ -16,8 +16,8 @@
 <!ENTITY bash-patch-md5 "dfc7399bb57798e18fbb99f9edce4da0">
 <!ENTITY bash-patch "bash-&bash-version;-gnu-fixes-2.patch">
 
-<!ENTITY binutils-md5 "1c1af0064ebd3d7bd99905874656a21e">
-<!ENTITY binutils-version "2.15.90.0.3">
+<!ENTITY binutils-md5 "624e6b74983ac6b2960edaf2d522ca58">
+<!ENTITY binutils-version "2.15">
 <!ENTITY binutils-package "binutils-&binutils-version;.tar.bz2">
 <!ENTITY binutils-directory "binutils-&binutils-version;">
 
@@ -88,8 +88,11 @@
 <!ENTITY gawk-package "gawk-&gawk-version;.tar.bz2">
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
-<!ENTITY gcc-version "3.4.0">
+<!ENTITY gcc-version "3.4.1-20040517">
 <!ENTITY gcc-directory "gcc-&gcc-version;">
+
+<!ENTITY gcc-md5 "a01b2065e50312d9a51b47d52b742711">
+<!ENTITY gcc-package "gcc-&gcc-version;.tar.bz2">
 
 <!ENTITY gcc-core-md5 "6371ff0a37d5e1809f4f59d0045dcaa5">
 <!ENTITY gcc-core-package "gcc-core-&gcc-version;.tar.bz2">
@@ -137,6 +140,20 @@
 <!ENTITY gzip-package "gzip-&gzip-version;.tar.bz2">
 <!ENTITY gzip-directory "gzip-&gzip-version;">
 
+<!ENTITY hotplug-md5 "527f0242481024c77255f3c1fa09e6ee">
+<!ENTITY hotplug-version "2004_04_01">
+<!ENTITY hotplug-package "hotplug-&hotplug-version;.tar.bz2">
+<!ENTITY hotplug-directory "hotplug-&hotplug-version;">
+
+<!ENTITY hotplug-bogus-deps-patch-md5 "7fda669c1dc9f0bebfcdece932fa37e3">
+<!ENTITY hotplug-bogus-deps-patch "hotplug-&hotplug-version;-bogus-deps-1.patch">
+
+<!ENTITY hotplug-cosmetic-patch-md5 "72e708d6d8123f078b56ff0bde227a27">
+<!ENTITY hotplug-cosmetic-patch "hotplug-&hotplug-version;-cosmetic-2.patch">
+
+<!ENTITY hotplug-device-patch-md5 "a1d22e7f5de1baf26817a9b26ed64ae7">
+<!ENTITY hotplug-device-patch "hotplug-&hotplug-version;-device-2.patch">
+
 <!ENTITY iana-etc-md5 "5fe38814596587ef3e18b74d045370fe">
 <!ENTITY iana-etc-version "1.00">
 <!ENTITY iana-etc-package "iana-etc-&iana-etc-version;.tar.bz2">
@@ -163,8 +180,8 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "797b4a7918676f439ad6061c6d3c1752">
-<!ENTITY lfs-bootscripts-version "2.1.1-pre2">
+<!ENTITY lfs-bootscripts-md5 "24d0adf6ec94f47d5b7e895613f6441c">
+<!ENTITY lfs-bootscripts-version "2.1.1">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
@@ -323,8 +340,8 @@
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
 
-<!ENTITY udev-config-patch-md5 "dad32f5298f46da1099fa46af02d27db">
-<!ENTITY udev-config-patch "udev-&udev-version;-config-1.patch">
+<!ENTITY udev-config-patch-md5 "fb47429ab562e30df6784d9b996b4881">
+<!ENTITY udev-config-patch "udev-&udev-version;-config-2.patch">
 
 <!ENTITY util-linux-md5 "5fa39c3d8761b48732be137a06853c64">
 <!ENTITY util-linux-version "2.12a">
