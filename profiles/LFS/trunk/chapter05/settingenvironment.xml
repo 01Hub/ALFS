@@ -12,14 +12,14 @@
     </stageinfo>
     <copy>
       <source>&skeleton_dir;/home/lfs/dot_bash_profile</source>
-      <destination>&lfs-user-dir;.bash_profile</destination>
+      <destination>&lfs-user-dir;/.bash_profile</destination>
     </copy>
     <copy>
       <source>&skeleton_dir;/home/lfs/dot_bashrc</source>
-      <destination>&lfs-user-dir;.bashrc</destination>
+      <destination>&lfs-user-dir;/.bashrc</destination>
     </copy>
     <search_replace>
-      <file>&lfs-user-dir;.bashrc</file>
+      <file>&lfs-user-dir;/.bashrc</file>
       <find>[LFS]</find>
       <replace>&LFS;</replace>
     </search_replace>
