@@ -48,5 +48,6 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&inetutils-directory;</remove>
+		<remove>&build_dir;/&inetutils-no-man-pages-patch;</remove>
 	</stage>
 </package>
