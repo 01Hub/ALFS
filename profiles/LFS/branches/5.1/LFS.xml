@@ -37,18 +37,16 @@
 
 	<stage name="Installing packages in /tools as &lfs-user;.">
 		<stageinfo>
+			<root>/</root>
 			<user>&lfs-user;</user>
 			<environment>
 				<variable name="LFS">&LFS;</variable>
 				<variable name="LC_ALL">POSIX</variable>
-				<variable name="PATH" mode="prepend">/tools/bin:</variable>
+				<variable name="PATH">/tools/bin:/bin:/usr/bin</variable>
 				<variable name="CFLAGS">&gcc_optimizations;</variable>
 				<variable name="CXXFLAGS">&gcc_optimizations;</variable>
-				<variable name="CC"></variable>
-				<variable name="CXX"></variable>
-				<variable name="CPP"></variable>
-				<variable name="LD_LIBRARY_PATH"></variable>
-				<variable name="LD_PRELOAD"></variable>
+				<variable name="TERM">&TERM;</variable>
+				<variable name="HOME">&lfs-user-dir;</variable>
 			</environment>
 		</stageinfo>
 
