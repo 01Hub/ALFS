@@ -25,24 +25,24 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>stageinfo</filename> allows you to specify
+<para>The <command>stageinfo</command> element allows you to specify
 several contexts of information used to process the commands of the
-<filename>stage</filename> to which the <filename>stageinfo</filename>
+<command>stage</command> to which the <command>stageinfo</command>
 belongs.</para>
 
-<para>The <filename>base</filename> sub-element specifies a base directory
+<para>The <command>base</command> sub-element specifies a base directory
 that will be used by all the commands of the stage, unless the command
 redefines the base locally. See <xref linkend="elem_base"/>.</para>
 
-<para>The <filename>user</filename> sub-element specifies a user name that
+<para>The <command>user</command> sub-element specifies a user name that
 will be used as the effective user ID of the current process for all the
 commands of the stage. See <xref linkend="elem_user"/>.</para>
 
-<para>The <filename>root</filename> sub-element specifies a directory name in
+<para>The <command>root</command> sub-element specifies a directory name in
 which the commands of the stage will be performed (using a chroot
 command). See <xref linkend="elem_root"/>.</para>
 
-<para>The <filename>environment</filename> sub-element allow you to specify
+<para>The <command>environment</command> sub-element allow you to specify
 an environment variable that will be added to the current environment when
 processing the commands of the stage. See 
 <xref linkend="elem_environment"/>.</para>
@@ -57,7 +57,6 @@ processing the commands of the stage. See
 	&lt;stageinfo&gt;
 		&lt;root&gt;/mnt/lfs&lt;/root&gt;
 		&lt;user&gt;lfs&lt;/user&gt;
-		&lt;environment&gt;PATH=/bin:/sbin&lt;/environment&gt;
 		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
 	&lt;/stageinfo&gt;
 
@@ -77,19 +76,16 @@ processing the commands of the stage. See
 
 <screen>echo Executing configure
 su - lfs
-export PATH=/bin:/sbin
 cd /usr/src/gzip.1.2.4a
 <command>./configure</command>
 
 echo Executing make
 su - lfs
-export PATH=/bin:/sbin
 cd /usr/src/gzip.1.2.4a
 <command>make</command>
 
 echo Executing make
 su - lfs
-export PATH=/bin:/sbin
 cd /usr/src/gzip.1.2.4a
 <command>make install</command>
 

@@ -34,10 +34,19 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>base</filename> is used to specify the base
-directory which will be used by all the commands in the stage (inherited),
-unless another base is specified at the level of the command as an
-attribute.</para>
+<para>The <command>base</command> element when used as an <emphasis
+role="bold">element</emphasis> specifies the base directory which will be
+used by all the commands in the stage (inherited), unless another base is
+specified at the level of the command as an attribute.</para>
+
+<para>The <command>base</command> element when used as an <emphasis
+role="bold">attribute</emphasis> specifies the base directory which will be
+used by any parent element it was called from.</para>
+
+<important><para>It is very important to understand the difference between
+the two uses.  Also understand that the base element/attribute has no
+effect on the parent element it is used in unless relative paths are
+used.</para></important>
 
 </sect2>
 

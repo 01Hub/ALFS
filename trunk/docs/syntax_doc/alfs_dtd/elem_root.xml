@@ -17,7 +17,7 @@
 
 <sect2><title>Description</title>
 
-<para>The element <filename>root</filename> allow you to specify the name
+<para>The <command>root</command> element allows you to specify the name
 of a directory which will be the root directory for the commands of the
 stage.</para>
 
@@ -62,9 +62,7 @@ EOF1
 
 chmod 775 /mnt/lfs/_nalfs_tmp.1
 echo Executing in directory /mnt/lfs
-/usr/sbin/chroot /mnt/lfs /static/bin/env -i \
-    PATH='/bin:/usr/bin:/sbin:/usr/sbin:/static/bin' \
-    HOME='/root' /static/bin/bash -c ./_nalfs_tmp.1
+/usr/sbin/chroot /mnt/lfs sh -c ./_nalfs_tmp.1
 
 echo Exiting stage</screen>
 

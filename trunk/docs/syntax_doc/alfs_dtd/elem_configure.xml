@@ -68,8 +68,8 @@ cd /usr/src/mypackage/
 <sect2>
 <title>Example #2</title>
 
-<para>This second example calls <filename>configure</filename> with a
-parameter&nbsp;: </para>
+<para>This second example calls <filename>configure</filename> with some
+prefixes and a parameter&nbsp;: </para>
 
 <screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
 	&lt;prefix&gt;CFLAGS=&quot;...&quot;&lt;prefix&gt;
@@ -81,7 +81,7 @@ parameter&nbsp;: </para>
 
 <screen>echo Executing configure
 cd /usr/src/mypackage/
-<command>./configure --prefix=/opt/mypackage</command></screen>
+<command>CFLAGS="..." CXXFLAGS="..." ./configure --prefix=/opt/mypackage</command></screen>
 
 </sect2>
 
@@ -93,24 +93,6 @@ parameter and uses prefix&nbsp;:</para>
 
 <screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
 	&lt;prefix&gt;PATH=/usr/local/bin&lt;/prefix&gt;
-	&lt;param&gt;--prefix=/opt/mypackage&lt;/param&gt;
-&lt;/configure&gt;</userinput></screen>
-
-<para>The equivalent bash script is&nbsp;:</para>
-
-<screen>echo Executing configure
-cd /usr/src/mypackage/
-<command>PATH=/usr/local/bin ./configure --prefix=/opt/mypackage</command></screen>
-
-</sect2>
-
-<sect2>
-<title>Example #4</title>
-
-<para>This fourth example calls <filename>configure</filename> with a
-parameter and an explicit command (same result as example #3)&nbsp;:</para>
-
-<screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot; command=&quot;PATH=/usr/local/bin ./configure&quot;&gt;
 	&lt;param&gt;--prefix=/opt/mypackage&lt;/param&gt;
 &lt;/configure&gt;</userinput></screen>
 
