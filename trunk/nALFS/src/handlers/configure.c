@@ -115,9 +115,11 @@ static int configure_main_ver3(element_s *el)
  * Handlers' information.
  */
 
-const char *configure_parameters_ver2[] = { "base", "command", "param", NULL };
+static const char *configure_parameters_ver2[] =
+{ "base", "command", "param", NULL };
 
-const char *configure_parameters_ver3[] = { "param", "prefix", NULL };
+static const char *configure_parameters_ver3[] =
+{ "param", "prefix", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {

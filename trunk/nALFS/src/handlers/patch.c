@@ -112,9 +112,9 @@ static int patch_main_ver3(element_s *el)
  * Handlers' information.
  */
 
-const char *patch_parameters_ver2[] = { "base", "param", NULL };
+static const char *patch_parameters_ver2[] = { "base", "param", NULL };
 
-const char *patch_parameters_ver3[] = { "param", NULL };
+static const char *patch_parameters_ver3[] = { "param", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {

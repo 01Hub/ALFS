@@ -203,10 +203,10 @@ static int mkdir_main_ver3(element_s *el)
  * Handlers' information.
  */
 
-const char *mkdir_parameters_ver2[] =
+static const char *mkdir_parameters_ver2[] =
 { "options", "base", "dir", "permissions", NULL };
 
-const char *mkdir_parameters_ver3[] =
+static const char *mkdir_parameters_ver3[] =
 { "option", "name", "permissions", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 

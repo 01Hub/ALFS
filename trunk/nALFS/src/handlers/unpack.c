@@ -346,10 +346,10 @@ static int unpack_main_ver3(element_s *el)
  * Handlers' information.
  */
 
-const char *unpack_parameters_ver2[] =
+static const char *unpack_parameters_ver2[] =
 { "archive", "destination", NULL };
 
-const char *unpack_parameters_ver3[] =
+static const char *unpack_parameters_ver3[] =
 { "digest", "reference", "archive", "destination", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {

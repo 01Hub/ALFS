@@ -146,10 +146,12 @@ static char *textdump_data(element_s *el, handler_data_e data)
  * Handlers' information.
  */
 
-const char *textdump_parameters_ver2[] = { "base", "file", "content", NULL };
+static const char *textdump_parameters_ver2[] =
+{ "base", "file", "content", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "mode", NULL };
 
-const char *textdump_parameters_ver3[] = { "file", "content", NULL };
+static const char *textdump_parameters_ver3[] =
+{ "file", "content", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "mode", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {

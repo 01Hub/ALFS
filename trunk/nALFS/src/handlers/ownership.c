@@ -161,7 +161,7 @@ static int ownership_main(element_s *el)
  * Handlers' information.
  */
 
-const char *ownership_parameters[] = { "option", "name", NULL };
+static const char *ownership_parameters[] = { "option", "name", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "user", "group", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {

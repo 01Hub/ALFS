@@ -120,7 +120,7 @@ static int remove_main_ver3(element_s *el)
  * Handlers' information.
  */
 
-const char *remove_parameters_ver[] = { NULL };
+static const char *remove_parameters_ver[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

@@ -121,7 +121,7 @@ static int check_main(element_s *el)
  * Handlers' information.
  */
 
-const char *check_parameters[] = { NULL };
+static const char *check_parameters[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_3_0

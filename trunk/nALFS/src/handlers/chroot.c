@@ -112,7 +112,7 @@ static int chroot_main(element_s *el)
  * Handlers' information.
  */
 
-const char *chroot_parameters[] = { NULL };
+static const char *chroot_parameters[] = { NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "dir", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {

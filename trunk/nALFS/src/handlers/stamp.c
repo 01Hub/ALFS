@@ -61,7 +61,7 @@ static int stamp_main(element_s *el)
  * Handlers' information.
  */
 
-const char *stamp_parameters[] = { NULL };
+static const char *stamp_parameters[] = { NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "name", "version" };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
