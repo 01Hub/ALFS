@@ -38,6 +38,7 @@ char *strcut (char *str, int begin, int count);
 int whereis (char *str, char ch);
 char *notrail (char *str, char *token);
 char *squeeze (char *str);
+char *squeeze_all (char *str);
 char *strkill (char *str, char *tokill);
 char *strnstr (char *haystack, char *needle, int n);
 char *strnrchr (char *haystack, char needle, int n);

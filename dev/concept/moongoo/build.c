@@ -53,7 +53,6 @@ int build_pkg (package pkg)
 	return 0;
 }
 
-// TODO: Write shorter code for sed_paralell()
 void sed_paralell (profile *prof, char **filter, char **p1, char **p2)
 {
 	int i, j, k;

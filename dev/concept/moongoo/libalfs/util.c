@@ -254,7 +254,7 @@ char *notrail (char *str, char *token)
 	return ret;
 }
 
-char *squeeze (char *str)
+char *squeeze_all (char *str)
 {
 	bool blank=false;
 	int i, len=0;
@@ -282,6 +282,32 @@ char *squeeze (char *str)
 	
 	ret[len]='\0';
 	return ret;
+}
+
+char *squeeze (char *str)
+{
+	int i, begin=0, end=strlen(str);
+
+	if (!str)
+		return NULL;
+
+	for (i=0;i<strlen(str);i++)
+	{
+		if (isblank(str[i]))
+			begin++;
+		else
+			break;
+	}
+
+	for (i=strlen(str)-1;i>=0;i--)
+	{
+		if (isblank(str[i]))
+			end--;
+		else
+			break;
+	}
+
+	return strcut(str, begin, end-begin);
 }
 
 char *strkill (char *str, char *tokill)
@@ -318,7 +344,9 @@ char *strnstr (char *haystack, char *needle, int n)
 	for (i=0;i<n;i++)
 	{
 		ret = strstr(ret, needle);
-		if ((ret) && (strcmp(haystack, ret)))
+		if (!ret)
+			break;
+		if (strcmp(haystack, ret))
 			ret++;
 	}
 

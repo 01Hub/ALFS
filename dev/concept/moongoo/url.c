@@ -2,8 +2,8 @@
 
 #include <url.h>
 
-// XXX: Tcl URL is not yet found (tcl8.4.7-src.tar.gz)
-// XXX: Vim-lang will not be downloaded atm.
+// TODO: Tcl URL is not yet found (tcl8.4.7-src.tar.gz)
+// TODO: Vim-lang will not be downloaded atm.
 static void t_url (xmlNodePtr cur, void *data)
 {
 	profile *prof = (profile *)data;

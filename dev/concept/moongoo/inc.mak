@@ -18,7 +18,7 @@ clean-subdirs:
 	done
 
 clean: clean-subdirs
-	rm -f $(BIN) $(LIB) $(LIBS) *.o
+	rm -f $(BIN) $(LIB) $(LIBS) *.o $(TESTS)
 	
 todo:
 	@find -name '*.c'|xargs grep "TODO:"|cut -d" " -f3-|sort
