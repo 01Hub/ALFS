@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+
+<alfs>
+
+<package name="expect" version="&expect-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&expect-md5;</digest>
+			<archive>&packages_dir;/&expect-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&expect-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&expect-spawn-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/tools</param>
+			<param>--with-tcl=/tools/lib</param>
+			<param>--with-x=no</param>
+		</configure>
+
+		<make />
+
+<!--
+		<make>
+			<param>test</param>
+		</make>
+-->
+
+		<make>
+			<param>SCRIPTS=&quot;&quot;</param>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&tcl-directory;</remove>
+		<remove>&build_dir;/&expect-directory;</remove>
+	</stage>
+</package>
+
+</alfs>
