@@ -97,7 +97,7 @@ void add_option (replaceable *r, char *key, char *value)
 
 	r = realloc(r, (++count)*sizeof(replaceable));
 
-	printf("%s\n", r[count-3].orig);
+	//printf("%s\n", r[count-3].orig);
 	
 	r[count-2].orig = key;
 	r[count-2].repl = value;

@@ -226,9 +226,10 @@ static void t_stage2 (xmlNodePtr node, void *data)
 
 static void t_pkg (xmlNodePtr node, void *data)
 {
-	package *pkg = next_pkg(prof);
+	package *pkg = pkg_append(prof);
 	pkg->name = xmlGetProp(node, "name");
 	pkg->vers = xmlGetProp(node, "version");
+
 	foreach(node->children, "stage", (xml_handler_t)t_stage2, NULL);
 }
 
@@ -240,7 +241,7 @@ static void t_alfs (xmlNodePtr node, void *data)
 
 static void t_stage (xmlNodePtr node, void *data)
 {
-	chapter *ch = next_chpt(prof);
+	chapter *ch = chpt_append(prof);
 	ch->name = xmlGetProp(node, "name");
 	ch->name = ch->name;
 	foreach(node->children, "alfs", (xml_handler_t)t_alfs, NULL);
@@ -256,8 +257,9 @@ profile *nalfs_profile (xmlNodePtr node, replaceable *r)
 		return NULL;
 	}
 	
-	prof = new_prof();
+	prof = prof_alloc();
 	prof->name = "nALFS legacy profile";
+
 	foreach(node->children, "stage", (xml_handler_t)t_stage, NULL);
 	return prof;
 }

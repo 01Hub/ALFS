@@ -3,79 +3,114 @@
 
 #include <alfs.h>
 
+static void print_str (gpointer data, gpointer user_data);
+static void print_urls (package *pkg);
+
 bool colors = true;
 role *filter = NULL;
 
-void print_links (profile prof)
+static void each_pkg (gpointer data, gpointer user_data)
 {
-	int i, j;
-
-	for (i=0;i<prof.n;i++)
-		for (j=0;j<prof.ch[i].n;j++)
-			print_urls(prof.ch[i].pkg[j]);
+	package *p = (package *)data;
+	pkg_func func = (pkg_func)user_data;
+	func(p);
 }
 
-void print_urls (package pkg)
+static void each_chpt (gpointer data, gpointer user_data)
 {
-	int k;
-	
-	for (k=0;k<pkg.m;k++)
-	{
-		download moo = pkg.dl[k];
-		printf("%s: %s --- ", algo2str(moo.algo), moo.sum);
-		printf("%s://%s\n", proto2str(moo.proto), moo.url);
-	}
+	chapter *c = (chapter *)data;
+	g_list_foreach(c->pkg, (GFunc)each_pkg, user_data);
 }
-		
-void print_cmd (command cmd)
-{
-	int i=0;
 
-	if (filtered(cmd.role))
+static void print_cmd (gpointer data, gpointer user_data)
+{
+	command *cmd = (command *)data;
+
+	if (filtered(cmd->role))
 		return;
 	
-	printf("%s ", cmd.cmd);
-	for (i=0;i<cmd.n;i++)
-		printf("%s ", cmd.arg[i]);
-	if (cmd.role!=ROLE_NONE)
-		printf("(%s)", role2str(cmd.role));
+	printf("%s ", cmd->cmd);
+	if (cmd->arg)
+		g_list_foreach(cmd->arg, (GFunc)print_str, " ");	
+	if (cmd->role!=ROLE_NONE)
+		printf("(%s)", role2str(cmd->role));
 	printf("\n");
+}
+
+static void print_ch (gpointer data, gpointer user_data)
+{
+	chapter *c = (chapter *)data;
+	print_chapter(*c);
+}
+
+static void print_dl (gpointer data, gpointer user_data)
+{
+	download *dl = (download *)data;
+	printf("%s: %s --- ", algo2str(dl->algo), dl->sum);
+	printf("%s://%s\n", proto2str(dl->proto), dl->url);
+}
+
+static void print_pkg_gfunc (gpointer data, gpointer user_data)
+{
+	package *pkg = (package *)data;
+	print_pkg(*pkg);
+}
+
+static void print_str (gpointer data, gpointer user_data)
+{
+	char *str = (char *)data;
+	char *str2 = (char *)user_data;
+	printf("%s%s", str, str2);
+}
+
+void print_links (profile prof)
+{
+	g_list_foreach(prof.ch, (GFunc)each_chpt, print_urls);
+}
+
+static void print_urls (package *pkg)
+{
+	g_list_foreach(pkg->dl, (GFunc)print_dl, NULL);
 }
 
 static void __print_deps (profile *prof, package pkg, int indent)
 {
-	int i;
+	GList *list = pkg.dep;
 
 	printfi(indent, "%s\n", pkg.name);
 	
-	if (!pkg.dep)
+	if (!list)
 		return;
 
-	for (i=0;i<pkg.o;i++)
+	while (list)
 	{
-		if (!pkg.dep[i].name)
+		dep *d = (dep *)list->data;	
+		
+		if (!d->name)
 			continue;
 
-		if (pkg.dep[i].type==OPT)
+		if (d->type==OPT)
 			continue;
 		
 		if (prof)
 		{
 			int j;
-			package *p = search_pkg(prof, lower_case(pkg.dep[i].name), NULL);
+			package *p = search_pkg(prof, lower_case(d->name), NULL);
 				
 			for (j=0;j<indent;j++)
 				printf("\t");
 				
 			if (!p)
 				fprintf(stderr, "Dependency %s does not exist.\n", 
-					pkg.dep[i].name);
+					d->name);
 			else
 				__print_deps(NULL, *p, indent+1);
 				//print_deptree(*prof, *p);
 		}
 		else
-			printfi(indent+1, "%s\n", pkg.dep[i].name);
+			printfi(indent+1, "%s\n", d->name);
+
+		list = list->next;
 	}
 }
 
@@ -91,8 +126,6 @@ void print_deptree (profile prof, package pkg)
 
 void print_pkg (package pkg)
 {
-	int i;
-	
 	if (colors)
 		term_set(RESET, GREEN, BLACK);
 	if (!pkg.vers)
@@ -101,39 +134,29 @@ void print_pkg (package pkg)
 		printf("%s\nVersion: %s\n\n", pkg.name, pkg.vers);
 	if (colors)
 		term_reset();
-	
-	for (i=0;i<pkg.n;i++)
-		print_cmd(pkg.build[i]);
+
+	g_list_foreach(pkg.build, (GFunc)print_cmd, NULL);
 	printf("\n");
 }		
 
 void print_chapter (chapter ch)
 {
-	int i;
-
-	if (!ch.n)
-		return;
-
 	if (colors)
 		term_set(RESET, RED, BLACK);
 	printf("%s\n", ch.name);
 	if (colors)
 		term_reset();
-	for (i=0;i<ch.n;i++)
-		print_pkg(ch.pkg[i]);
+	g_list_foreach(ch.pkg, (GFunc)print_pkg_gfunc, NULL);
 }
 
 void print_profile (profile prof)
 {
-	int i;
-
 	if (colors)
 		term_set(RESET, BLUE, BLACK);
 	printf("%s %s\n", prof.name, ((prof.vers) ? (prof.vers) : ""));
 	if (colors)
 		term_reset();
-	for (i=0;i<prof.n;i++)
-		print_chapter(prof.ch[i]);
+	g_list_foreach(prof.ch, (GFunc)print_ch, NULL);
 }
 
 void print_subtree (xmlNodePtr node)
@@ -284,17 +307,29 @@ bool filtered (role role)
 
 package *search_pkg (profile *prof, char *name, char *ch)
 {
-	int i, j;
+	GList *c = prof->ch;
 
-	for (i=0;i<prof->n;i++)
+	while (c)
 	{
-		if ((ch) && (strcmp(lower_case(ch), lower_case(prof->ch[i].ref))))
+		GList *p;
+		chapter *chp = (chapter *)c->data;
+		
+		if ((ch) && (strcmp(lower_case(ch), lower_case(chp->ref))))
 			continue;
 		
-		for (j=0;j<prof->ch[i].n;j++)
+		p = chp->pkg;
+		while (p)
+		{
+			package *pkg = (package *)p->data;
+			
 			if (!strcmp(lower_case(name), 
-				lower_case(prof->ch[i].pkg[j].name)))
-				return &prof->ch[i].pkg[j];
+				lower_case(pkg->name)))
+				return pkg;
+
+			p=p->next;
+		}
+
+		c=c->next;
 	}
 
 	return NULL;

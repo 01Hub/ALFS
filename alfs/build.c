@@ -10,19 +10,19 @@ replaceable *r;
 static int core_exec (command build)
 {	
 	if (!strcmp(build.cmd, "cd"))
-		return chdir(build.arg[0]);
+		return chdir((char *)g_list_first(build.arg)->data);
 
 	return -1;
 }
 
 int build_pkg (package pkg)
 {
-	int i;
+	GList *cmd = pkg.build;
 	
-	for (i=0;i<pkg.n;i++)
+	while (cmd)
 	{
-		command *build = &pkg.build[i];
-		int j;
+		GList *args;
+		command *build = (command *)cmd->data;
 		char *argv[3];
 
 		if (!strncmp(build->cmd, "__", 2))
@@ -40,62 +40,80 @@ int build_pkg (package pkg)
 		argv[0] = "sh";
 		argv[1] = "-c";
 		argv[2] = strcut(build->cmd, 0, strlen(build->cmd));
-		for (j=0;j<build->n;j++)
-			argv[2] = strdog2(argv[2], build->arg[j]);
+		
+		args = build->arg;
+		while (args)
+		{
+			argv[2] = strdog2(argv[2], (char *)args->data);
+			args = args->next;
+		}
 		
 		if (execvp(argv[0], argv))
 		{
 			perror("shell");
 			return -1;
 		}
+
+		cmd = cmd->next;
 	}
 
 	return 0;
 }
 
+static void __sed_para (gpointer data, gpointer user_data)
+{
+	command *moo = (command *)data;
+	sed_arg *arg = (sed_arg *)user_data;
+	bool no = false;
+	int m = 0;
+	
+	if (strcmp(moo->cmd, "make")||(moo->role!=ROLE_NONE))
+		return;
+
+	while (arg->filter[m])
+	{
+		if (g_list_find_custom(moo->arg, arg->filter[m], g_compare_str))
+			no = true;
+		m++;
+	}
+				
+	if (!no)
+	{
+		char *opt = "-j";
+		
+		m = 0;
+		while (arg->p1[m])
+		{
+			if (!strcmp(arg->name, arg->p1[m]))
+				opt = arg->p2[m];
+			m++;
+		}
+
+		moo->arg = g_list_insert(moo->arg, strdog(opt, 
+			get_option(r, "PARALELL")), 0);
+	}
+}				
+
+static void each_pkg (gpointer data, gpointer user_data)
+{
+	package *p = (package *)data;
+	((sed_arg *)user_data)->name = p->name;
+	g_list_foreach(p->build, (GFunc)__sed_para, user_data);
+}
+
+static void each_ch (gpointer data, gpointer user_data)
+{
+	chapter *c = (chapter *)data;
+	g_list_foreach(c->pkg, (GFunc)each_pkg, user_data);
+}
+
 void sed_paralell (profile *prof, char **filter, char **p1, char **p2)
 {
-	int i, j, k;
+	sed_arg arg;
 	
-	for (i=0;i<prof->n;i++)
-		for (j=0;j<prof->ch[i].n;j++)
-			for (k=0;k<prof->ch[i].pkg[j].n;k++)
-			{
-				int m = 0, o;
-				bool no = false;
-				package *pkg = &prof->ch[i].pkg[j];
-				command *moo = &pkg->build[k];
-
-				if (strcmp(moo->cmd, "make")||(moo->role!=ROLE_NONE))
-					continue;
-
-				while (filter[m])
-				{
-					for (o=0;o<moo->n;o++)
-						if (!strcmp(moo->arg[o], filter[m]))
-							no = true;
-					m++;
-				}
-				
-				if (!no)
-				{
-					char **new = (char **)malloc((moo->n+1)*sizeof(char *)), 
-						**old, *opt;
-					moo->arg = realloc(moo->arg, (++moo->n)*sizeof(char *));
-					for (m=0;m<moo->n-1;m++)
-						new[m+1]=moo->arg[m];
-					o=0;
-					opt = "-j";
-					while (p1[o])
-					{
-						if (!strcmp(pkg->name, p1[o]))
-							opt = p2[o];
-						o++;
-					}
-					new[0] = strdog(opt, get_option(r, "PARALELL"));
-					old = moo->arg;
-					moo->arg = new;
-					free(old);
-				}
-			}
+	arg.filter = filter;
+	arg.p1 = p1;
+	arg.p2 = p2;
+		
+	g_list_foreach(prof->ch, (GFunc)each_ch, &arg);	
 }

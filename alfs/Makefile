@@ -5,8 +5,8 @@ OBJS=build.o alfs.o plugin.o url.o
 
 ifeq ($(OPTS),)
 OPTS=-q
-OPTS+=~/projects/alfs/books/multi-arch/index.xml
-#OPTS+=~/projects/alfs/books/book/index.xml
+#OPTS+=~/projects/alfs/books/multi-arch/index.xml
+OPTS+=~/projects/alfs/books/book/index.xml
 #OPTS+=~/projects/alfs/books/lfs-profile/LFS.xml
 #OPTS+=~/projects/alfs/books/ass/index.xml
 #OPTS+=~/projects/hive/unstable/profile.xml

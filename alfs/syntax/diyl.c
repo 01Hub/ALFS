@@ -24,18 +24,19 @@ static void t_userinput (xmlNodePtr node, void *data)
 
 static void t_sect2 (xmlNodePtr node, void *data)
 {
-	package *pkg = next_pkg_title(prof, node);
+	package *pkg = pkg_append_title(node, prof);
 	foreach(node->children, "userinput", (xml_handler_t)t_userinput, NULL);
 
-	if (!pkg->n)
-		prof->ch[prof->n-1].n--;
+	if (!g_list_length(pkg->build))
+		last_chpt(prof)->pkg = g_list_remove(last_chpt(prof)->pkg, pkg);
 }
 
 static void t_sect1 (xmlNodePtr node, void *data)
 {
-	chapter *ch = next_chpt(prof);
+	chapter *ch = chpt_append(prof);
 	ch->name = find_value(node->children, "title");
 	ch->ref = xmlGetProp(node, "id");
+	
 	foreach(node->children, "sect2", (xml_handler_t)t_sect2, NULL);
 }
 
@@ -49,7 +50,7 @@ profile *parse_diyl (xmlNodePtr node, replaceable *r)
 		return NULL;
 	}
 
-	prof = new_prof();
+	prof = prof_alloc();
 	prof->name = find_value(info, "title");
 	prof->vers = find_value(info, "pubdate");
 

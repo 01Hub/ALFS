@@ -26,8 +26,7 @@ static void t_shell (xmlNodePtr node, void *data)
 
 static void t_page (xmlNodePtr node, void *data)
 {
-	package *pkg = next_pkg(prof);
-
+	package *pkg = pkg_append(prof);
 	pkg->name = find_value(node, "title");
 	pkg->vers = find_value(node, "version");
 
@@ -39,9 +38,10 @@ static void t_page (xmlNodePtr node, void *data)
 
 static  void t_chapter (xmlNodePtr node, void *data)
 {
-	chapter *ch = next_chpt(prof);
+	chapter *ch = chpt_append(prof);
 	ch->name = xmlGetProp(node, "name");
 	ch->ref = xmlGetProp(node, "ref");
+	
 	foreach(node->children, "page", (xml_handler_t)t_page, NULL);
 }
 
@@ -55,9 +55,10 @@ profile *ass_profile (xmlNodePtr node, replaceable *r)
 		return NULL;
 	}
 	
-	prof = new_prof();
+	prof = prof_alloc();
 	prof->name = find_value(node, "title");
 	prof->vers = find_value(node, "version");
+	
 	foreach(node->children, "chapter", (xml_handler_t)t_chapter, NULL);
 	return prof;
 }
