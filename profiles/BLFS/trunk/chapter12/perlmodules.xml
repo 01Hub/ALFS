@@ -109,6 +109,9 @@
         <requires>
           <name>XML-Parser</name>
         </requires>
+        <requires>
+          <name>gtk+</name>
+        </requires>
       </packageinfo>
       <stage name="Unpacking">
         <unpack>

@@ -27,6 +27,20 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Creating user and group">
+      <execute command="groupadd">
+        <param>-g 65534</param>
+        <param>nogroup</param>
+      </execute>
+      <execute command="useradd">
+        <param>-c nobody</param>
+        <param>-d /home</param>
+        <param>-g nogroup</param>
+        <param>-s /bin/bash</param>
+        <param>-u 65534</param>
+        <param>nobody</param>
+      </execute>
+    </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&nfs-utils-directory;</base>

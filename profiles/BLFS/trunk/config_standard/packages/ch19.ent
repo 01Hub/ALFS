@@ -9,7 +9,7 @@
 <!ENTITY nmap-directory "nmap-&nmap-version;">
 
 <!ENTITY whois-version   "4.6.14">
-<!ENTITY whois-package   "whois_&whois-version;.tar.gz">
+<!ENTITY whois-package   "whois-&whois-version;.tar.gz">
 <!ENTITY whois-directory "whois-&whois-version;">
 
 <!ENTITY bind-utils-version "9.2.3">
