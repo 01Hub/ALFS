@@ -78,6 +78,7 @@
 		&c5-texinfo;
 		&c5-bash;
 		&c5-perl;
+		&c5-strip;
 	</stage>
 </stage>
 
