@@ -24,9 +24,25 @@
 		</stageinfo>
 
 		<configure>
-			<param>--libdir=/usr/lib</param>
+			<param>--libdir=/lib</param>
 			<param>--enable-shared</param>
 		</configure>
+
+		<search_replace>
+			<file>src/Makefile</file>
+			<find>groups$(EXEEXT) </find>
+			<replace></replace>
+		</search_replace>
+
+		<!--
+		  Note: the next step uses sed, because the matching
+		  lines need to be removed from the file.
+		-->
+		<execute command="sed">
+			<param>-i</param>
+			<param>-e '/groups/d'</param>
+			<param>man/Makefile</param>
+		</execute>
 
 		<make />
 
@@ -62,10 +78,12 @@
 			<destination>/bin</destination>
 		</move>
 
-		<move base="/usr/lib">
-			<source>libshadow.so.0*</source>
-			<destination>/lib</destination>
+		<move>
+			<source>/lib/libshadow.*a</source>
+			<destination>/usr/lib</destination>
 		</move>
+
+		<remove>/lib/libshadow.so</remove>
 
 		<link>
 			<option>force</option>
@@ -76,8 +94,6 @@
 		<mkdir>
 			<name>/etc/default</name>
 		</mkdir>
-
-		<remove>/bin/groups</remove>
 	</stage>
 
 	<stage name="Configuring">
