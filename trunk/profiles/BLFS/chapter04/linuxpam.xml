@@ -11,7 +11,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing">
+	<stage name="Patching">
 		<stageinfo>
 			<base>&build_dir;/&linuxpam-directory;</base>
 		</stageinfo>
@@ -21,6 +21,13 @@
 			<param>-p1</param>
 			<param>-i &packages_dir;/&linuxpam-linkage-patch;</param>
 		</patch>
+
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&linuxpam-directory;</base>
+		</stageinfo>
 
 		<execute command="autoconf" />
 
@@ -68,6 +75,9 @@
 		       <name>/etc/pam.d</name>
 		</mkdir>
 
+	</stage>
+
+	<stage name="Configuring">
 		<textdump base="/etc/pam.d">
 		        <file>other</file>
 

@@ -26,6 +26,9 @@
 		</make>
 
 
+	</stage>
+
+	<stage name="Configuring">
 	<!-- setup for personal firewall -->
 	<!-- other setups are available in the book -->
 

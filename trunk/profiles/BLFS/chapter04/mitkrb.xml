@@ -67,6 +67,14 @@
       <name>/usr/lib</name>
     </link>
     &ldconfig;
+  </stage>
+  <stage name="Installing bootscript and configuration">
+    <stageinfo>
+      <base>&build_dir;/&blfs-bootscripts-directory;</base>
+    </stageinfo>
+    <make>
+      <param>install-kerberos</param>
+    </make>
     <textdump base="/etc">
       <file>krb5.conf</file>
       <content>
@@ -93,14 +101,6 @@
       =# End /etc/krb5.conf
       </content>
     </textdump>
-  </stage>
-  <stage name="Installing bootscript and configuration">
-    <stageinfo>
-      <base>&build_dir;/&blfs-bootscripts-directory;</base>
-    </stageinfo>
-    <make>
-      <param>install-kerberos</param>
-    </make>
   </stage>
   <stage name="Cleanup.">
     <remove>&build_dir;/&mitkrb-directory;</remove>
