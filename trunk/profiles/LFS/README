@@ -1,5 +1,5 @@
 ==============================================
-        LFS-CVS PROFILE
+        LFS-5.0 PROFILE
 ==============================================
 
 This profile must be used with nALFS 1.1.8 or later.
@@ -22,5 +22,11 @@ To use the profile you should:
 
 - create a symbolic link named "config" to the configuration
   you want to use
+
+- if you downloaded the lfs-packages-5.0 tarball from the lfs website
+  then one change needs to be made to LFS-5.0.xml:
+	The line <!ENTITY % package_entities SYSTEM "package.ent">
+	needs to be changed to read
+	<!ENTITY % package_entities SYSTEM "package-5.0tb.ent">
 
 - execute ./runit as root
