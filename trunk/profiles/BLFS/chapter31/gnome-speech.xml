@@ -1,23 +1,23 @@
-<package name="gst-plugins" version="&gst-plugins-version;">
+<package name="gnome-speech" version="&gnome-speech-version;">
 
         <packageinfo>
-                <requires><name>gstreamer</name></requires>
+                <requires><name>libbonobo</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&gst-plugins-package;</archive>
+			<archive>&packages_dir;/&gnome-speech-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&gst-plugins-directory;</base>
+			<base>&build_dir;/&gnome-speech-directory;</base>
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 		</configure>
 
 		<make/>
@@ -25,12 +25,10 @@
 		<make>
 			<param>install</param>
 		</make>
-
-		<execute command="gst-register" />
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&gst-plugins-directory;</remove>
+		<remove>&build_dir;/&gnome-speech-directory;</remove>
 	</stage>
 
 </package>

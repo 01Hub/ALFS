@@ -1,5 +1,8 @@
 <package name="gal" version="&gal-version;">
 
+	<packageinfo>
+		<requires><name>libgnomeprintui</name></requires>
+	</packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
@@ -14,7 +17,7 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=/opt/gnome</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 		</configure>
 
 		<make/>

@@ -1,24 +1,26 @@
-<package name="gstreamer" version="&gstreamer-version;">
+<package name="gcalctool" version="&gcalctool-version;">
 
         <packageinfo>
                 <requires><name>libgnomeui</name></requires>
+		<requires><name>scrollkeeper</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&gstreamer-package;</archive>
+			<archive>&packages_dir;/&gcalctool-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&gstreamer-directory;</base>
+			<base>&build_dir;/&gcalctool-directory;</base>
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
-			<param>--localstatedir=/var/log</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--sysconfdir=/etc/gnome</param>
+			<param>--localstatedir=/var/lib</param>
 		</configure>
 
 		<make/>
@@ -26,12 +28,10 @@
 		<make>
 			<param>install</param>
 		</make>
-
-		<execute command="gst-register" />
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&gstreamer-directory;</remove>
+		<remove>&build_dir;/&gcalctool-directory;</remove>
 	</stage>
 
 </package>

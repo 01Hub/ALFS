@@ -2,7 +2,8 @@
 
         <packageinfo>
                 <requires><name>libgnomeui</name></requires>
-                <requires><name>startup-notification</name></requires>
+                <requires><name>libwnck</name></requires>
+		<requires><name>libgtop</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -18,7 +19,7 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 			<param>--localstatedir=/var/lib</param>
 			<param>--sysconfdir=/etc/gnome</param>
 		</configure>

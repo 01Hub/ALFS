@@ -13,14 +13,11 @@
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<environment>
-			        <variable name="PATH" mode="append">:&gnome-prefix;/sbin:/sbin</variable>
-			</environment>
 			<base>&build_dir;/&gnome-session-directory;</base>
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 			<param>--localstatedir=/var/lib</param>
 			<param>--sysconfdir=/etc/gnome</param>
 		</configure>

@@ -1,25 +1,25 @@
-<package name="nautilus" version="&nautilus-version;">
+<package name="file-roller" version="&file-roller-version;">
 
         <packageinfo>
                 <requires><name>libgnomeui</name></requires>
-		<utilizes><name>medusa</name></utilizes>
+                <requires><name>scrollkeeper</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&nautilus-package;</archive>
+			<archive>&packages_dir;/&file-roller-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&nautilus-directory;</base>
+			<base>&build_dir;/&file-roller-directory;</base>
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
-			<param>--libexecdir=&gnome-prefix;/sbin</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--localstatedir=/var/lib</param>
 			<param>--sysconfdir=/etc/gnome</param>
 		</configure>
 
@@ -28,12 +28,10 @@
 		<make>
 			<param>install</param>
 		</make>
-
-		<execute command="/sbin/ldconfig" />
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&nautilus-directory;</remove>
+		<remove>&build_dir;/&file-roller-directory;</remove>
 	</stage>
 
 </package>

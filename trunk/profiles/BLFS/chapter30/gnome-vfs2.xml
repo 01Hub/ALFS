@@ -1,14 +1,15 @@
 <package name="gnome-vfs2" version="&gnome-vfs2-version;">
 
         <packageinfo>
-                <requires><name>orbit2</name></requires>
+		<requires><name>intltool</name></requires>
         	<requires><name>gconf2</name></requires>
         	<requires><name>gnome-mime-data</name></requires>
+		<requires><name>shared-mime-info</name></requires>
+		<utilizes><name>samba</name></utilizes>
 		<utilizes><name>libfam</name></utilizes>
 		<utilizes><name>openssl</name></utilizes>
 		<utilizes><name>cdparanoia</name></utilizes>
 		<utilizes><name>gtk-doc</name></utilizes>
-		<utilizes><name>xml-dtd</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -24,12 +25,13 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
 			<param>--sysconfdir=/etc/gnome</param>
 			<param>--disable-gtk-doc</param>
 		</configure>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>install</param>

@@ -1,6 +1,7 @@
 <package name="gnome-themes" version="&gnome-themes-version;">
 
         <packageinfo>
+		<requires><name>intltool</name></requires>
                 <requires><name>gtk-engines</name></requires>
         </packageinfo>
 

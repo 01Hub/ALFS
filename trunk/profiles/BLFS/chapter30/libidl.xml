@@ -17,8 +17,7 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
-			<param>--localstatedir=/var/spool</param>
+			<param>--prefix=/usr</param>
 		</configure>
 
 		<make/>

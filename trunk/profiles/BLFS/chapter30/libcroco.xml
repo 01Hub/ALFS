@@ -1,8 +1,8 @@
 <package name="libcroco" version="&libcroco-version;">
 
         <packageinfo>
+                <requires><name>glib2</name></requires>
                 <requires><name>libxml2</name></requires>
-                <requires><name>pango</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -18,7 +18,7 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 		</configure>
 
 		<make/>

@@ -1,11 +1,11 @@
 <package name="libgnomeui" version="&libgnomeui-version;">
 
         <packageinfo>
-                <requires><name>libgnome</name></requires>
-                <requires><name>libgnomecanvas</name></requires>
                 <requires><name>libbonoboui</name></requires>
+		<requires><name>gnome-keyring</name></requires>
+		<utilizes><name>esound</name></utilizes>
+		<utilizes><name>libjpeg</name></utilizes>
 		<utilizes><name>gtk-doc</name></utilizes>
-		<utilizes><name>sgml-dtd31</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -21,8 +21,8 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
-			<param>--libexecdir=&gnome-prefix;/sbin</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
 			<param>--disable-gtk-doc</param>
 		</configure>
 

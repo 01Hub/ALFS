@@ -1,7 +1,7 @@
 <package name="bug-buddy" version="&bug-buddy-version;">
 
         <packageinfo>
-                <requires><name>libgnomeui</name></requires>
+                <requires><name>gnome-desktop</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -17,7 +17,7 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 			<param>--localstatedir=/var/lib</param>
 		</configure>
 

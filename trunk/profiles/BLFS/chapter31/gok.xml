@@ -1,24 +1,29 @@
-<package name="eel" version="&eel-version;">
+<package name="gok" version="&gok-version;">
 
         <packageinfo>
                 <requires><name>libgnomeui</name></requires>
-		<requires><name>gail</name></requires>
+                <requires><name>scrollkeeper</name></requires>
+		<requires><name>libwnck</name></requires>
+		<requires><name>at-spi</name></requires>
+		<requires><name>esound</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&eel-package;</archive>
+			<archive>&packages_dir;/&gok-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&eel-directory;</base>
+			<base>&build_dir;/&gok-directory;</base>
 		</stageinfo>
 
 		<configure>
 			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--sysconfdir=/etc/gnome</param>
+			<param>--localstatedir=/var/lib</param>
 		</configure>
 
 		<make/>
@@ -26,12 +31,10 @@
 		<make>
 			<param>install</param>
 		</make>
-
-		<execute command="/sbin/ldconfig" />
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&eel-directory;</remove>
+		<remove>&build_dir;/&gok-directory;</remove>
 	</stage>
 
 </package>

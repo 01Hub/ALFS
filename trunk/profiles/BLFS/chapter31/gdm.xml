@@ -1,8 +1,10 @@
 <package name="gdm" version="&gdm-version;">
 
         <packageinfo>
-                <requires><name>linuxpam</name></requires>
-                <requires><name>libgnome</name></requires>
+		<requires><name>libgnomeui</name></requires>
+		<requires><name>scrollkeeper</name></requires>
+		<requires><name>librsvg</name></requires>
+                <utilizes><name>linuxpam</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -17,11 +19,10 @@
 			<base>&build_dir;/&gdm-directory;</base>
 		</stageinfo>
 
-		<execute command="grep gdm: /etc/group || /usr/sbin/groupadd">
-		        <param>gdm</param>
-		</execute>
+		<execute command="groupadd -f gdm" />
 
-		<execute command="id -u gdm || /usr/sbin/useradd">
+		<execute command="grep -q ^gdm">
+			<param>|| useradd</param>
 		        <param>-c gdm</param>
 			<param>-d /dev/null</param>
 			<param>-g gdm</param>
@@ -30,7 +31,8 @@
 		</execute>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
 			<param>--sysconfdir=/etc/gnome</param>
 			<param>--localstatedir=/var/lib</param>
 			<param>--with-pam-prefix=/etc</param>

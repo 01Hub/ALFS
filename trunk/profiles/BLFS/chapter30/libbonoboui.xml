@@ -2,8 +2,8 @@
 
         <packageinfo>
                 <requires><name>libgnome</name></requires>
-                <requires><name>libbonobo</name></requires>
                 <requires><name>libgnomecanvas</name></requires>
+		<utilizes><name>gtk-doc</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -19,7 +19,7 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 		</configure>
 
 		<make/>

@@ -1,24 +1,23 @@
-<package name="libgtkhtml" version="&libgtkhtml-version;">
+<package name="gtksourceview" version="&gtksourceview-version;">
 
         <packageinfo>
-                <requires><name>gail</name></requires>
-                <requires><name>gnome-vfs2</name></requires>
+                <requires><name>libgnomeprintui</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&libgtkhtml-package;</archive>
+			<archive>&packages_dir;/&gtksourceview-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&libgtkhtml-directory;</base>
+			<base>&build_dir;/&gtksourceview-directory;</base>
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 		</configure>
 
 		<make/>
@@ -31,7 +30,7 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&libgtkhtml-directory;</remove>
+		<remove>&build_dir;/&gtksourceview-directory;</remove>
 	</stage>
 
 </package>

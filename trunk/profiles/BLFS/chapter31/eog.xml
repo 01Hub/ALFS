@@ -1,8 +1,8 @@
 <package name="eog" version="&eog-version;">
 
         <packageinfo>
-                <requires><name>libgnomeui</name></requires>
-                <requires><name>libgnomeprint</name></requires>
+                <requires><name>libgnomeprintui</name></requires>
+		<utilizes><name>libjpeg</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -18,8 +18,8 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
-			<param>--libexecdir=&gnome-prefix;/sbin</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
 			<param>--localstatedir=/var/lib</param>
 			<param>--sysconfdir=/etc/gnome</param>
 		</configure>

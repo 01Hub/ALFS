@@ -14,7 +14,6 @@
 
 		<configure>
 			<param>--prefix=/usr</param>
-			<param>--mandir=/usr/share/man</param>
 		</configure>
 
 		<make/>
@@ -22,8 +21,6 @@
 		<make>
 			<param>install</param>
 		</make>
-
-		<execute command="/sbin/ldconfig" />
 	</stage>
 
 	<stage name="Clean-up.">
