@@ -136,7 +136,8 @@
 			<source>&tcl-package;</source>
 			<source>&texinfo-package;</source>
 			<source>&udev-package;</source>
-			<source>&udev-permissions-patch;</source>
+			<source>&udev-permissions-file;</source>
+			<source>&udev-rules-file;</source>
 			<source>&util-linux-package;</source>
 			<source>&util-linux-kernel-headers-patch;</source>
 			<source>&vim-package;</source>
