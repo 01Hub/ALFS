@@ -30,11 +30,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
-      <archive>&packages_dir;/&mitkrb-directory;</archive>
-      <destination>&build_dir;</destination>
-    </unpack>
-    <unpack>
-      <archive>&build_dir;/&mitkrb-krb5-package;</archive>
+      <archive>&build_dir;/&mitkrb-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>
   </stage>

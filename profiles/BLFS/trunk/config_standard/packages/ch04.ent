@@ -1,15 +1,17 @@
 <!--************* packages for chapter 4 *************-->
 
 <!ENTITY openssl-version   "0.9.7e">
-<!ENTITY openssl-package   "openssl-&openssl-version;.tar.gz">
+<!ENTITY openssl-package   "openssl-&openssl-version;.tar.bz2">
 <!ENTITY openssl-directory "openssl-&openssl-version;">
 
 <!ENTITY cracklib-version       "2.7">
-<!ENTITY cracklib-package       "cracklib,&cracklib-version;.tar.gz">
+<!ENTITY cracklib-package       "cracklib,&cracklib-version;.tar.bz2">
 <!ENTITY cracklib-directory     "cracklib,&cracklib-version;">
-<!ENTITY cracklib-wordlist      "allwords">
 <!ENTITY cracklib-blfs-patch    "cracklib,&cracklib-version;-blfs-1.patch">
 <!ENTITY cracklib-heimdal-patch "cracklib,&cracklib-version;-heimdal-1.patch">
+
+<!ENTITY cracklib-wordlist         "allwords">
+<!ENTITY cracklib-wordlist-package "allwords.bz2">
 
 <!ENTITY linuxpam-version       "0.78">
 <!ENTITY linuxpam-package       "Linux-PAM-&linuxpam-version;.tar.bz2">
@@ -30,24 +32,23 @@
 <!ENTITY gnupg-directory "gnupg-&gnupg-version;">
 
 <!ENTITY tripwire-portable-version   "0.9">
-<!ENTITY tripwire-portable-package   "tripwire-portable-&tripwire-portable-version;.tar.gz">
+<!ENTITY tripwire-portable-package   "tripwire-portable-&tripwire-portable-version;.tar.bz2">
 <!ENTITY tripwire-portable-directory "tripwire-portable-&tripwire-portable-version;">
 
 <!ENTITY heimdal-version        "0.6.3">
-<!ENTITY heimdal-package        "heimdal-&heimdal-version;.tar.gz">
+<!ENTITY heimdal-package        "heimdal-&heimdal-version;.tar.bz2">
 <!ENTITY heimdal-directory      "heimdal-&heimdal-version;">
 <!ENTITY heimdal-fhs-patch      "heimdal-&heimdal-version;-fhs_compliance-1.patch">
 <!ENTITY heimdal-cracklib-patch "heimdal-&heimdal-version;-cracklib-1.patch">
 
 <!ENTITY mitkrb-version      "1.4">
-<!ENTITY mitkrb-package      "krb5-&mitkrb-version;-signed.tar">
-<!ENTITY mitkrb-krb5-package "krb5-&mitkrb-version;.tar.gz">
+<!ENTITY mitkrb-package      "krb5-&mitkrb-version;.tar.bz2">
 <!ENTITY mitkrb-directory    "krb5-&mitkrb-version;">
 
 <!ENTITY cyrus-sasl-version   "2.1.20">
-<!ENTITY cyrus-sasl-package   "cyrus-sasl-&cyrus-sasl-version;.tar.gz">
+<!ENTITY cyrus-sasl-package   "cyrus-sasl-&cyrus-sasl-version;.tar.bz2">
 <!ENTITY cyrus-sasl-directory "cyrus-sasl-&cyrus-sasl-version;">
 
 <!ENTITY stunnel-version   "4.07">
-<!ENTITY stunnel-package   "stunnel-&stunnel-version;.tar.gz">
+<!ENTITY stunnel-package   "stunnel-&stunnel-version;.tar.bz2">
 <!ENTITY stunnel-directory "stunnel-&stunnel-version;">

@@ -1,10 +1,10 @@
-ftp://ftp.kernel.org/pub/linux/daemons/autofs/v4/autofs-4.1.3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/autofs-4.1.3.tar.bz2
 
-http://ftp.kernel.org/pub/linux/daemons/autofs/v4/autofs-4.1.3-strict.patch
-http://ftp.kernel.org/pub/linux/daemons/autofs/v4/autofs-4.1.3-bad_chdir.patch
-http://ftp.kernel.org/pub/linux/daemons/autofs/v4/autofs-4.1.3-mtab_lock.patch
-http://ftp.kernel.org/pub/linux/daemons/autofs/v4/autofs-4.1.3-non_block_ping.patch
-http://ftp.kernel.org/pub/linux/daemons/autofs/v4/autofs-4.1.3-signal-race-fix.patch
-http://ftp.kernel.org/pub/linux/daemons/autofs/v4/autofs-4.1.3-sock-leak-fix.patch
-http://ftp.kernel.org/pub/linux/daemons/autofs/v4/autofs-4.1.3-replicated_server_select.patch
-http://ftp.kernel.org/pub/linux/daemons/autofs/v4/autofs-4.1.3-multi-over.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/autofs-4.1.3-strict.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/autofs-4.1.3-bad_chdir.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/autofs-4.1.3-mtab_lock.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/autofs-4.1.3-non_block_ping.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/autofs-4.1.3-signal-race-fix.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/autofs-4.1.3-sock-leak-fix.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/autofs-4.1.3-replicated_server_select.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/autofs-4.1.3-multi-over.patch

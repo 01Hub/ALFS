@@ -190,13 +190,10 @@
         <source>resolv.conf</source>
         <destination>resolv.conf.bak</destination>
       </copy>
-      <textdump>
-        <file>/etc/resolv.conf</file>
-        <content>
-	  =search &domain;
-	  =nameserver 127.0.0.1
-	</content>
-      </textdump>
+      <copy base="&blfs-config;">
+	<source>etc/resolv.conf</source>
+	<destination>/etc/resolv.conf</destination>
+      </copy>
       <ownership user="named" group="named">
         <option>recursive</option>
         <name>/home/named</name>
