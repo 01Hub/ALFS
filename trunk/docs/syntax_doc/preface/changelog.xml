@@ -6,6 +6,9 @@
 
 <itemizedlist>
 
+<listitem><para>February 23rd, 2004 [jwrober]: Finished the digest element
+description.  Closes bug 759.</para></listitem>
+
 <listitem><para>February 23rd, 2004 [jwrober]: Fixed copy element
 description.  Closes bug 758.</para></listitem>
 

@@ -21,13 +21,12 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>unpack</filename> is used to specify the digest
-of the archive file to be unpacked, or of the file to be downloaded.
-</para>
+<para>The element <filename>digest</filename> is used to specify the MD5
+digest hash of the archive file to be unpacked, or of the file to be
+downloaded.</para>
 
-
-<para>The attribute <filename>type</filename> is preset as an MD5 hash.
-</para>
+<para>The attribute <filename>type</filename> is preset as an MD5
+hash.</para>
 
 </sect2>
 
