@@ -168,7 +168,10 @@
       <mkdir>
         <name>/usr/lib/mplayer/codecs</name>
       </mkdir>
-      <execute command="tar xjvf &packages_dir;/&mplayer-codecs-package; -C /usr/lib/mplayer/codecs" />
+      <unpack>
+        <archive>&packages_dir;/&mplayer-codecs-package;</archive>
+        <destination>/usr/lib/mplayer/codecs</destination>
+      </unpack>
       <ownership user="root" group="root">
         <option>recursive</option>
         <name>/usr/lib/mplayer/codecs</name>
@@ -176,7 +179,10 @@
       <mkdir>
         <name>/usr/lib/mplayer/Skin</name>
       </mkdir>
-      <execute command="tar xjvf &packages_dir;/&mplayer-skin-package; -C /usr/share/mplayer/Skin" />
+      <unpack>
+        <archive>&packages_dir;/&mplayer-skin-package;</archive>
+        <destination>/usr/lib/mplayer/Skin</destination>
+      </unpack>
       <ownership user="root" group="root">
         <option>recursive</option>
         <name>/usr/share/mplayer/Skin/Blue</name>
@@ -221,7 +227,10 @@
         <source>etc/codecs.conf</source>
         <destination>/etc/mplayer</destination>
       </copy>
-      <execute command="tar xjvf &packages_dir;/&mplayer-font-package; -C /usr/share/mplayer/font" />
+      <unpack>
+        <archive>&packages_dir;/&mplayer-font-package;</archive>
+        <destination>/usr/share/mplayer/font</destination>
+      </unpack>
       <ownership user="root" group="root">
         <option>recursive</option>
         <name>/usr/share/mplayer/font</name>
