@@ -23,12 +23,6 @@
 			<base>&build_dir;/&udev-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&udev-config-patch;</param>
-		</patch>
-
 		<search_replace>
 		  	<file>udevstart.c</file>
 			<find>/sbin/udev</find>
@@ -55,6 +49,18 @@
 		  	<param>DESTDIR=/tools</param>
 			<param>install</param>
 		</make>
+		
+		<copy base="&packages_dir;">
+        		<option>force</option>
+        		<source>udev-config-1.permissions</source>
+        		<destination>/tools/etc/udev/permissions.d/00-lfs.permissions</destination>
+		</copy>
+
+		<copy base="&packages_dir;">
+        		<option>force</option>
+        		<source>udev-config-1.rules</source>
+        		<destination>/tools/etc/udev/rules.d/00-lfs.rules</destination>
+		</copy>				
 	</stage>
 
 	<stage name="Cleanup">
