@@ -1,6 +1,6 @@
 <package name="dhclient" version="&dhclient-version;">
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&dhclient-package;</archive>
 			<destination>&build_dir;</destination>
@@ -12,7 +12,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&dhclient-directory;</base>
 		</stageinfo>
@@ -65,7 +65,7 @@
 		</textdump>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&dhclient-directory;</remove>
 		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
 	</stage>

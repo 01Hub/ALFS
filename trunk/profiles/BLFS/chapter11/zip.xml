@@ -1,13 +1,13 @@
 <package name="zip" version="&zip-version;">
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&zip-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&zip-directory;</base>
 		</stageinfo>
@@ -29,7 +29,7 @@
 		
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&zip-directory;</remove>
 	</stage>
 

@@ -1,13 +1,13 @@
 <package name="tex" version="&tex-version;">
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&tex-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
-	<stage name="Installing the frontend package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&tex-directory;</base>
 		</stageinfo>
@@ -46,7 +46,7 @@
 		<execute command="texconfig font rw" />
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&tex-directory;</remove>
 	</stage>
 

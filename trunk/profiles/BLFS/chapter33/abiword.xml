@@ -8,14 +8,14 @@
 		<utilizes><name>gnome-libs</name></utilizes>
         </packageinfo>
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&abiword-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&abiword-directory;/abi</base>
 		</stageinfo>
@@ -43,7 +43,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&abiword-directory;</remove>
 	</stage>
 

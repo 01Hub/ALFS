@@ -1,13 +1,13 @@
 <package name="db" version="&db-version;">
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&db-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&db-directory;/build_unix</base>
 		</stageinfo>
@@ -39,7 +39,7 @@
 
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&db-directory;</remove>
 	</stage>
 

@@ -1,6 +1,6 @@
 <package name="gpm" version="&gpm-version;">
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&gpm-package;</archive>
 			<destination>&build_dir;</destination>
@@ -22,7 +22,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&gpm-directory;</base>
 		</stageinfo>
@@ -59,7 +59,7 @@
 		<execute command="ldconfig -n -l /usr/lib/libgpm.so.1.19.0" />
 	</stage>
 
-	<stage name="Install gpm bootscripts">
+	<stage name="Installing bootscript and configuration">
 		<stageinfo>
 			<base>&build_dir;/&blfs-bootscripts-directory;</base>
 		</stageinfo>
@@ -67,9 +67,7 @@
 		<make>
 			<param>install-gpm</param>
 		</make>
-	</stage>
 
-	<stage name="Installing mouse">
 		<textdump base="/etc/sysconfig">
 			<file>mouse</file>
 			<content>
@@ -81,7 +79,7 @@
 		</textdump>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&gpm-directory;</remove>
 		<remove>&build_dir;/&gpm-patch1;</remove>
 		<remove>&build_dir;/&gpm-patch2;</remove>

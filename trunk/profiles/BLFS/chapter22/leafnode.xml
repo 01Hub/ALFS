@@ -5,14 +5,14 @@
                 <requires><name>xinetd</name></requires>
         </packageinfo>
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&leafnode-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&leafnode-directory;</base>
 		</stageinfo>
@@ -75,7 +75,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&leafnode-directory;</remove>
 	</stage>
 

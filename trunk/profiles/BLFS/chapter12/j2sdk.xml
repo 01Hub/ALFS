@@ -1,6 +1,6 @@
 <package name="j2sdk-binary" version="&j2sdk-binary-version;">
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<stageinfo>
 			<base>&build_dir;</base>
 		</stageinfo>
@@ -16,7 +16,7 @@
 
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/java-build</base>
 		</stageinfo>
@@ -53,7 +53,7 @@
 
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/java-build/&j2sdk-binary-package;</remove>
 		<remove>&build_dir;/java-build/&j2sdk-binary-directory;</remove>
 	</stage>

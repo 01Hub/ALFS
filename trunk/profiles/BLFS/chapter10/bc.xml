@@ -4,7 +4,7 @@
                 <requires><name>readline</name></requires>
 	</packageinfo>
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&bc-package;</archive>
 			<destination>&build_dir;</destination>
@@ -21,7 +21,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&bc-directory;</base>
 		</stageinfo>
@@ -50,7 +50,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&bc-directory;</remove>
 		<remove>&build_dir;/&bc-flex-invocation-patch;</remove>
 		<remove>&build_dir;/&bc-readline-patch;</remove>

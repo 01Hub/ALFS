@@ -11,14 +11,14 @@
 		<utilizes><name>pkgconfig</name></utilizes>
         </packageinfo>
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&kdegraphics-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&kdegraphics-directory;</base>
 		</stageinfo>
@@ -37,7 +37,7 @@
 
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&kdegraphics-directory;</remove>
 	</stage>
 

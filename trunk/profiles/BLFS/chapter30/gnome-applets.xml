@@ -8,14 +8,14 @@
                 <utilizes><name>gnome-panel</name></utilizes>
         </packageinfo>
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&gnome-applets-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&gnome-applets-directory;</base>
 		</stageinfo>
@@ -37,7 +37,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&gnome-applets-directory;</remove>
 	</stage>
 

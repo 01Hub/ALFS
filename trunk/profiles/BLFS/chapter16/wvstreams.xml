@@ -4,7 +4,7 @@
             <requires><name>openssl</name></requires>
     </packageinfo>
 
-    <stage name="Unpacking a package.">
+    <stage name="Unpacking">
 	<unpack>
 		<archive>&packages_dir;/&wvstreams-package;</archive>
 		<destination>&build_dir;</destination>
@@ -22,7 +22,7 @@
 
     </stage>
 
-    <stage name="Installing a package.">
+    <stage name="Installing">
         <stageinfo>
 		<base>&build_dir;/&wvstreams-directory;</base>
 	</stageinfo>
@@ -52,7 +52,7 @@
 	<execute command="/sbin/ldconfig" />
     </stage>
 
-    <stage name="Clean-up.">
+    <stage name="Cleanup">
 	<remove>&build_dir;/&wvstreams-directory;</remove>
 	<remove>&build_dir;/&wvstreams-wvcrypto-patch;</remove>
 	<remove>&build_dir;/&wvstreams-wvresolver-patch;</remove>

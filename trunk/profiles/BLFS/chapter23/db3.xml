@@ -1,13 +1,13 @@
 <package name="db3" version="&db3-version;">
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&db3-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&db3-directory;/build_unix</base>
 		</stageinfo>
@@ -38,7 +38,7 @@
 		<execute command = "ln -nsf /opt/db-3.3/include /usr/include/db3" />
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&db3-directory;</remove>
 	</stage>
 

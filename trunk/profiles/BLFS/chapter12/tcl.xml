@@ -1,13 +1,13 @@
 <package name="tcl" version="&tcl-version;">
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&tcl-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<environment>
 			    <variable name="VERSION">&tcl-version;</variable>
@@ -84,7 +84,7 @@
 		</link>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&tcl-directory;</remove>
 	</stage>
 

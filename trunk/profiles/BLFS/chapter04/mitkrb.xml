@@ -94,7 +94,7 @@
       </content>
     </textdump>
   </stage>
-  <stage name="Install bootscript">
+  <stage name="Installing bootscript and configuration">
     <stageinfo>
       <base>&build_dir;/&blfs-bootscripts-directory;</base>
     </stageinfo>

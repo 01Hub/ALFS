@@ -1,6 +1,6 @@
 <package name="dhcpcd" version="&dhcpcd-version;">
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&dhcpcd-package;</archive>
 			<destination>&build_dir;</destination>
@@ -17,7 +17,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&dhcpcd-directory;</base>
 		</stageinfo>
@@ -63,7 +63,7 @@
 		</textdump>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&dhcpcd-directory;</remove>
 		<remove>&build_dir;/&dhcpcd-patch;</remove>
 		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>

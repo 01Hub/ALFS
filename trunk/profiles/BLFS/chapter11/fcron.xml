@@ -12,14 +12,14 @@
         </packageinfo>
 
 
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&fcron-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&fcron-directory;</base>
 		</stageinfo>
@@ -54,7 +54,7 @@
 		<execute command="ldconfig -n -l /usr/lib/libfcron.so.1.19.0" />
 	</stage>
 
-	<stage name="Install fcron bootscripts">
+	<stage name="Installing bootscript and configuration">
 		<stageinfo>
 			<base>&build_dir;/&blfs-bootscripts-directory;</base>
 		</stageinfo>
@@ -65,7 +65,7 @@
 	</stage>
 
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&fcron-directory;</remove>
 		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
 	</stage>
