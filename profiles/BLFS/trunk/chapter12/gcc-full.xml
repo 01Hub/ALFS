@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch12.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,92 +10,79 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="gcc-full" version="&gcc-full-version;">
-
-        <packageinfo>
-                <requires><name>tcsh</name></requires>
-                <requires><name>gnat</name></requires>
-        </packageinfo>
-
-	
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&gcc-full-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-
-		<mkdir>
-		        <name>&build_dir;/gcc-build</name>
-		</mkdir>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<environment>
-			        <variable name="CC">/usr/bin/gcc</variable>
-			        <variable name="CFLAGS" />
-			        <variable name="CXXFLAGS" />
-			        <variable name="PATH">/opt/gnat/bin:/bin:/usr/bin:/usr/local/bin</variable>
-			</environment>
-			<base>&build_dir;/gcc-build</base>
-		</stageinfo>
-
-		<patch base="&build_dir;/&gcc-full-directory;">
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&gcc-full-patch1;</param>
-		</patch>
-
-		<search_replace base="&build_dir;/&gcc-full-directory;">
-			<file>libiberty/Makefile.in</file>
-			<find>install_to_$(INSTALL_DEST) </find>
-			<replace> </replace>
-		</search_replace>
-
-		<execute base="&build_dir;/&gcc-full-directory;/gcc/ada"
-		        command="touch">
-			<param>treeprs.ads</param>
-			<param>[es]info.h</param>
-			<param>nmake.ad[bs]</param>
-		</execute>
-
-		<configure command="../&gcc-full-directory;/configure">
-			<prefix>CC=/usr/bin/gcc</prefix>
-		        <param>--prefix=/usr</param>
-			<param>--enable-shared</param>
-			<param>--enable-languages=c,c++,objc,f77,ada,java</param>
-			<param>--enable-threads=posix</param>
-			<param>--enable-__cxa_atexit</param>
-			<param>--enable-clocale=gnu</param>
-		</configure>
-
-		<make>
-		        <param>bootstrap</param>
-		</make>
-
-		<make>
-		        <param>-C gcc</param>
-		        <param>gnatlib_and_tools</param>
-		</make>
-
-		<make>
-		        <param>install</param>
-		</make>
-
-		<link>
-		        <option>force</option>
-		        <target>g77</target>
-			<name>/usr/bin/f77</name>
-		</link>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&gcc-full-directory;</remove>
-		<remove>&build_dir;/gcc-build</remove>
-		<remove>/opt/gnat</remove>
-	</stage>
-
-</package>
+  <package name="gcc-full" version="&gcc-full-version;">
+    <packageinfo>
+      <requires>
+        <name>tcsh</name>
+      </requires>
+      <requires>
+        <name>gnat</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&gcc-full-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <mkdir>
+        <name>&build_dir;/gcc-build</name>
+      </mkdir>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <environment>
+          <variable name="CC">/usr/bin/gcc</variable>
+          <variable name="CFLAGS" />
+          <variable name="CXXFLAGS" />
+          <variable name="PATH">/opt/gnat/bin:/bin:/usr/bin:/usr/local/bin</variable>
+        </environment>
+        <base>&build_dir;/gcc-build</base>
+      </stageinfo>
+      <patch base="&build_dir;/&gcc-full-directory;">
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gcc-full-patch1;</param>
+      </patch>
+      <search_replace base="&build_dir;/&gcc-full-directory;">
+        <file>libiberty/Makefile.in</file>
+        <find>install_to_$(INSTALL_DEST)</find>
+        <replace></replace>
+      </search_replace>
+      <execute base="&build_dir;/&gcc-full-directory;/gcc/ada" command="touch">
+        <param>treeprs.ads</param>
+        <param>[es]info.h</param>
+        <param>nmake.ad[bs]</param>
+      </execute>
+      <configure command="../&gcc-full-directory;/configure">
+        <prefix>CC=/usr/bin/gcc</prefix>
+        <param>--prefix=/usr</param>
+        <param>--enable-shared</param>
+        <param>--enable-languages=c,c++,objc,f77,ada,java</param>
+        <param>--enable-threads=posix</param>
+        <param>--enable-__cxa_atexit</param>
+        <param>--enable-clocale=gnu</param>
+      </configure>
+      <make>
+        <param>bootstrap</param>
+      </make>
+      <make>
+        <param>-C gcc</param>
+        <param>gnatlib_and_tools</param>
+      </make>
+      <make>
+        <param>install</param>
+      </make>
+      <link>
+        <option>force</option>
+        <target>g77</target>
+        <name>/usr/bin/f77</name>
+      </link>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gcc-full-directory;</remove>
+      <remove>&build_dir;/gcc-build</remove>
+      <remove>/opt/gnat</remove>
+    </stage>
+  </package>
 </alfs>
