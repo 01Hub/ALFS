@@ -2,8 +2,4 @@
 
 	&c6-keymap;
 
-	<execute command="echo">
-		<param>root:&password;</param>
-		<param>| chpasswd</param>
-	</execute>
 </stage>

@@ -30,6 +30,9 @@
 		<make>
 			<param>install</param>
 		</make>
+		
+		&c6-keymap;
+
 	</stage>
 
 	<stage name="Clean-up.">

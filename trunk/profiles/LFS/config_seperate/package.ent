@@ -48,8 +48,8 @@
 <!ENTITY coreutils-uname-patch-md5 "df8a4ae4ffb495680766b0541edf4a3c">
 <!ENTITY coreutils-uname-patch "coreutils-&coreutils-version;-uname.patch">
 
-<!ENTITY dejagnu-md5 "f0cc24ebe8d1ba94f731d9cd04aa05f3">
-<!ENTITY dejagnu-version "1.4.3">
+<!ENTITY dejagnu-md5 "053f18fd5d00873de365413cab17a666">
+<!ENTITY dejagnu-version "1.4.4">
 <!ENTITY dejagnu-package "dejagnu-&dejagnu-version;.tar.gz">
 <!ENTITY dejagnu-directory "dejagnu-&dejagnu-version;">
 
@@ -71,10 +71,10 @@
 <!ENTITY ed-mkstemp-patch-md5 "e7e2248f9baa76de3db8210298e0d79e">
 <!ENTITY ed-mkstemp-patch "ed-&ed-version;-mkstemp.patch">
 
-<!ENTITY expect-md5 "38a39787ef888f4fa009a8384d5c7c0a">
-<!ENTITY expect-version "5.39.0">
+<!ENTITY expect-md5 "c79799a1c4ae2f51d8267110f6e37a8d">
+<!ENTITY expect-version "5.40.0">
 <!ENTITY expect-package "expect.tar.gz">
-<!ENTITY expect-directory "expect-5.39">
+<!ENTITY expect-directory "expect-5.40">
 
 <!ENTITY expect-spawn-patch-md5 "ef6d0d0221c571fb420afb7033b3bbba">
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn.patch">
@@ -131,8 +131,8 @@
 <!ENTITY gcc-specs-patch-md5 "74cb9822f21774ae1c9a8ef1fa133f49">
 <!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-1.patch">
 
-<!ENTITY gettext-md5 "b3477289185e7781527345c14a4565de">
-<!ENTITY gettext-version "0.13.1">
+<!ENTITY gettext-md5 "78f4b862510beb2e5d43223dd610e77d">
+<!ENTITY gettext-version "0.14.1">
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.gz">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
@@ -152,8 +152,8 @@
 <!ENTITY groff-package "groff-&groff-version;.tar.gz">
 <!ENTITY groff-directory "groff-&groff-version;">
 
-<!ENTITY grub-md5 "289ed7946dec7ac4eac146b3a5c0c608">
-<!ENTITY grub-version "0.93">
+<!ENTITY grub-md5 "299672a99cf59656e653d8ffd7851b56">
+<!ENTITY grub-version "0.94">
 <!ENTITY grub-package "grub-&grub-version;.tar.gz">
 <!ENTITY grub-directory "grub-&grub-version;">
 
@@ -193,8 +193,8 @@
 <!ENTITY lfs-utils-package "lfs-utils-&lfs-utils-version;.tar.bz2">
 <!ENTITY lfs-utils-directory "lfs-utils-&lfs-utils-version;">
 
-<!ENTITY libtool-md5 "0e1844f25e2ad74c3715b5776d017545">
-<!ENTITY libtool-version "1.5">
+<!ENTITY libtool-md5 "db66ba05502f533ad0cfd84dc0e03bd5">
+<!ENTITY libtool-version "1.5.2">
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.gz">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
@@ -227,9 +227,9 @@
 <!ENTITY man-80cols-patch-md5 "4cee1076e1205f4093e611a87f6ba7b2">
 <!ENTITY man-80cols-patch "man-&man-version;-80cols.patch">
 
-<!ENTITY man-pages-md5 "c2008b298e34008a1b84595415f09fce">
-<!ENTITY man-pages-version "1.64">
-<!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.gz">
+<!ENTITY man-pages-md5 "7e2d47fb1c3176812e8fd03572e52c92">
+<!ENTITY man-pages-version "1.65">
+<!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.bz2">
 <!ENTITY man-pages-directory "man-pages-&man-pages-version;">
 
 <!ENTITY modutils-md5 "704c8d2834bcaa6f31d4ad79d154157a">
