@@ -3,10 +3,153 @@
 <title>XML DTD Syntax</title>
 
 <sect2>
-<title>Syntax</title>
+<title>Quick Introduction to XML</title>
 
-<para>PAGE TO BE WRITTEN</para>
+<para>To ensure that all readers of the &book-product; get as much as
+possible from its contents, it is necessary to provide a quick introduction
+to the concepts of <acronym>XML</acronym> and <acronym>DTD</acronym>
+syntax. The eXtensible Markup Language is very powerful and easy to use and
+understand.</para>
 
+<note><para>This introduction does not provide any examples.  This book in
+written in an XML DTD called DocBook XML.  For an example of XML just look
+at the book's source.  Since this book is documenting an XML DTD, look at
+the rest of the book's contents for examples DTD syntax</para></note>
+
+<para>To begin, here are some basic rules of
+<acronym>XML</acronym>&nbsp;:</para>
+
+<itemizedlist>
+
+<listitem><para><acronym>XML</acronym> documents use a self-describing and
+simple to use syntax.</para></listitem>
+
+<listitem><para>All <acronym>XML</acronym> elements must have a closing
+tag. With <acronym>XML</acronym>, it is illegal to omit the closing
+tag.</para></listitem>
+
+<listitem><para><acronym>XML</acronym> tags are case
+sensitive.</para></listitem>
+
+<listitem><para>All <acronym>XML</acronym> elements must be properly
+nested. Improper nesting of tags makes no sense to
+<acronym>XML</acronym>.</para></listitem>
+
+<listitem><para>All <acronym>XML</acronym> documents must have a root
+element. All <acronym>XML</acronym> documents must contain a single tag
+pair to define a root element.</para></listitem>
+
+<listitem><para>Attribute values must always be quoted. With
+<acronym>XML</acronym>, it is illegal to omit quotation marks around
+attribute values.</para></listitem>
+
+<listitem><para>With <acronym>XML</acronym>, white space is
+preserved.</para></listitem>
+
+<listitem><para>With <acronym>XML</acronym>, <acronym>CR</acronym> /
+<acronym>LF</acronym> is converted to
+<acronym>LF</acronym></para></listitem>
+
+</itemizedlist>
+
+</sect2>
+
+<sect2>
+<title>XML Elements and Attributes</title>
+
+<para>XML is designed to hold any kind of information.  This information is
+stored in Elements.  Elements are the basic building blocks of XML.
+Attributes provide a mechanism to further define or classify an element.
+Elements have relationships with other elements in a document.  Some are
+parents and some are children.  Using this symantic description, one can
+see that children elements need parent elements defined first.  As
+mentioned in the last section, a XML document must have a root element.
+Think of this as the ultimate parent element.  It must be defined before
+all other elements and all elements will reside inside of the root element.
+An element can have element content, mixed content, simple content, empty
+content or attributes.</para>
+
+<para>XML elements must follow these naming rules&nbsp;:</para>
+
+<itemizedlist>
+
+<listitem><para>Names can contain letters, numbers, and other
+characters</para></listitem>
+
+<listitem><para>Names must not start with a number or punctuation
+character</para></listitem>
+
+<listitem><para>Names must not start with the letters xml (or XML or Xml
+..)</para></listitem>
+
+<listitem><para>Names cannot contain spaces</para></listitem>
+
+</itemizedlist>
+
+</sect2>
+
+<sect2>
+<title>Quick Introduction to DTD Syntax</title>
+
+<para>Once an XML document is written, it is generally a good idea to
+validate the elements against a known DTD.  The Document Type Definition is
+the mechanism with which one validates the content of a well-formed XML
+document.</para>
+
+<para>XML DTD files contain&nbsp;:</para>
+
+<itemizedlist>
+
+<listitem><para>Element declarations and definitions&nbsp;:&nbsp;Elements
+are declared and defined with their relationships in the DTD
+file.</para></listitem>
+
+<listitem><para>Attribute declarations and definitions&nbsp;:&nbsp;Element
+classes or attributes are declared and defined in the DTD
+file.</para></listitem>
+
+<listitem><para>Entities&nbsp;:&nbsp;Entities are the same thing as
+variables inside a DTD file or XML document.</para></listitem>
+
+<listitem><para>PCDATA&nbsp;:&nbsp;PCDATA is Parsed Character DATA. PCDATA
+is text that will be parsed by a parser. Tags inside the text will be
+treated as markup and entities will be expanded.</para></listitem>
+
+<listitem><para>CDATA&nbsp;:&nbsp;CDATA is Character DATA. CDATA is text
+that will NOT be parsed by a parser. Tags inside the text will NOT be
+treated as markup and entities will not be expanded.</para></listitem>
+
+</itemizedlist>
+
+<para>Elements are declared in the DTD file using a simple,
+but strict syntax.  There are four ways to define an element&nbsp;:
+
+<itemizedlist>
+
+<listitem><para>EMPTY&nbsp;:&nbsp;When an element is declared with the
+EMPTY keyword, it means that the element will not hold any information.
+This is generally used for special tags like &lt;br&gt;.</para></listitem>
+
+<listitem><para>ANY&nbsp;:&nbsp;When an element is declared with the ANY
+keyword, it means that the element can contain any information that the
+programmer wants it to. This is generally a special case.</para></listitem>
+
+<listitem><para>Character Data&nbsp;:&nbsp;When an element is declared with
+either the PCDATA or CDATA keywords, the will hold one of the two types of
+information described above.</para></listitem>
+
+<listitem><para>With Children&nbsp;:&nbsp;When an element is declared with
+the names of other elements in it, this defines a parent child
+relationship. Look in the DTD for the child element names to be further
+defined with the other three ways.</para></listitem>
+
+<listitem><para>Mixed&nbsp;:&nbsp;Some combination of the above
+four.</para></listitem>
+
+</itemizedlist>
+
+<para>When an element is declared with children, it will also define how
+the children can be called: </para>
 </sect2>
 
 </sect1>
