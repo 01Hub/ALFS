@@ -62,10 +62,12 @@
 
 <stage name="Chapter 4 (Security)">
 
+    &cracklib;
     &linuxpam;
     &shadow;
     &iptables;
     &gnupg;
+    &tripwire;
 
 </stage>
 
@@ -607,10 +609,8 @@
        instructions have not been written yet.
        -->
 
-   &cracklib;
    &t1lib;
    &libole2;
-   &mktemp;
    &bison175;
    &fribidi;
 

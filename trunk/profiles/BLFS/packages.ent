@@ -72,18 +72,18 @@
 <!--************* packages for chapter 7 *************-->
 
 <!ENTITY ash-version    "0.4.0">
-<!ENTITY ash-package    "ash-0.4.0.tar.gz">
-<!ENTITY ash-directory  "ash-0.4.0">
+<!ENTITY ash-package    "ash-&ash-version;.tar.gz">
+<!ENTITY ash-directory  "ash-&ash-version;">
 
-<!ENTITY ash-patch      "ash-0.4.0-cumulative-fixes.patch">
+<!ENTITY ash-patch      "ash-&ash-version;-cumulative-fixes.patch">
  
 <!ENTITY tcsh-version   "6.12">
-<!ENTITY tcsh-package   "tcsh-6.12.00.tar.gz">
-<!ENTITY tcsh-directory "tcsh-6.12.00">
+<!ENTITY tcsh-package   "tcsh-&tcsh-version;.00.tar.gz">
+<!ENTITY tcsh-directory "tcsh-&tcsh-version;.00">
 
-<!ENTITY zsh-version   "4.1.1">
-<!ENTITY zsh-package   "zsh-4.1.1.tar.bz2">
-<!ENTITY zsh-directory "zsh-4.1.1">
+<!ENTITY zsh-version   "4.2.0">
+<!ENTITY zsh-package   "zsh-&zsh-version;.tar.bz2">
+<!ENTITY zsh-directory "zsh-&zsh-version;">
 
 
 <!--************* packages for chapter 8 *************-->

@@ -23,7 +23,7 @@
 	</copy>
 
 	<copy>
-      		<source>&blfs-config;/skel/dot_bash_logout</source>
+      		<source>&blfs-config;/etc/skel/dot_bash_logout</source>
 		<destination>/root/.bash_logout</destination>
 	</copy>
 
