@@ -56,10 +56,6 @@
      -->
 <!ENTITY domain "your.domain">
 
-<!-- Set here the name of the module of your network card -->
-<!ENTITY network-card-module "sis900">
-<!ENTITY network-interface   "eth0">
-
 <!-- Timezone file
      This entity will be used as the target of the link
      /etc/localtime

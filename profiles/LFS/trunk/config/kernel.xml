@@ -57,10 +57,10 @@
         <source>.config</source>
         <destination>/boot/config-lfskernel-&linux-version;</destination>
       </copy>
-      <textdump>
-        <file>/etc/modprobe.conf</file>
-        <content>=alias &network-interface; &network-card-module;</content>
-      </textdump>
+      <copy>
+        <source>&skeleton_dir;/etc/modprobe.conf</source>
+        <destination>/etc</destination>
+      </copy>
     </stage>
   </package>
 </alfs>
