@@ -172,13 +172,13 @@
 <!ENTITY inetutils-no-man-pages-patch-md5 "eb477f532bc6d26e7025fcfc4452511d">
 <!ENTITY inetutils-no-man-pages-patch "inetutils-&inetutils-version;-no_server_man_pages-1.patch">
 
-<!ENTITY kbd-md5 "924e6a05e52715dc0f96385b35f2f680">
-<!ENTITY kbd-version "1.08">
+<!ENTITY kbd-md5 "4976501c90d82dc987eaf36ccefce70c">
+<!ENTITY kbd-version "1.10">
 <!ENTITY kbd-package "kbd-&kbd-version;.tar.gz">
 <!ENTITY kbd-directory "kbd-&kbd-version;">
 
-<!ENTITY kbd-more-programs-patch-md5 "a8adfa0c2b58747ad7a9d66760ab502a">
-<!ENTITY kbd-more-programs-patch "kbd-&kbd-version;-more-programs-3.patch">
+<!ENTITY kbd-more-programs-patch-md5 "dc70180a6bc0afa2b741cd38e3cc2e18">
+<!ENTITY kbd-more-programs-patch "kbd-&kbd-version;-more-programs-2.patch">
 
 <!ENTITY less-md5 "40c2dd4ac137b61b6a55a6478817daf4">
 <!ENTITY less-version "381">

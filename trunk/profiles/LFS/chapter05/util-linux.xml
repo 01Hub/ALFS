@@ -35,9 +35,15 @@
 			<param>more</param>
 		</make>
 
+		<make>
+			<param>-C sys-utils</param>
+			<param>arch</param>
+		</make>
+
 		<copy>
 			<source>mount/{,u}mount</source>
 			<source>text-utils/more</source>
+			<source>sys-utils/arch</source>
 			<destination>/tools/bin</destination>
 		</copy>
 	</stage>
