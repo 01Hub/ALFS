@@ -2,6 +2,7 @@
 
         <packageinfo>
                 <requires><name>libgnomeui</name></requires>
+		<requires><name>scrollkeeper</name></requires>
                 <requires><name>mozilla</name></requires>
         </packageinfo>
 
@@ -15,14 +16,11 @@
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<environment>
-			        <variable name="CFLAGS">-O2</variable>
-			</environment>
 			<base>&build_dir;/&galeon-directory;</base>
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 			<param>--sysconfdir=/etc/gnome</param>
 			<param>--localstatedir=/var/lib</param>
 		</configure>

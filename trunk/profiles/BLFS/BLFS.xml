@@ -488,6 +488,7 @@
 <stage name="Chapter 35 (Graphical Web Browsers)">
     
     &mozilla;
+    &firefox;
     &galeon;
     &dillo;
 
@@ -495,6 +496,7 @@
 
 <stage name="Chapter 36 (Other X-based Internet Programs)">
     
+    &thunderbird;
     &pan;
     &balsa;
 

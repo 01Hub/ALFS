@@ -2,12 +2,13 @@
 
         <packageinfo>
                 <requires><name>libgtkhtml</name></requires>
-                <requires><name>libgnome</name></requires>
+                <requires><name>libgnomeprintui</name></requires>
                 <requires><name>openssl</name></requires>
                 <requires><name>aspell</name></requires>
                 <requires><name>libesmtp</name></requires>
-                <requires><name>libgnomeprintui</name></requires>
 		<utilizes><name>pcre</name></utilizes>
+		<utilizes><name>gnupg</name></utilizes>
+		<utilizes><name>openldap</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -24,8 +25,12 @@
 
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--localstatedir=/var/lib</param>
 			<param>--with-ssl</param>
+			<param>--sysconfdir=/etc/gnome</param>
+			<param>--with-ldap</param>
+			<param>--with-gpgme</param>
 		</configure>
 
 		<make/>
