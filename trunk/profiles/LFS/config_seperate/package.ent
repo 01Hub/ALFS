@@ -214,10 +214,10 @@
 <!ENTITY make-package "make-&make-version;.tar.bz2">
 <!ENTITY make-directory "make-&make-version;">
 
-<!ENTITY MAKEDEV-md5 "6ad9f744b586b2dad42958f1c0d334d9">
-<!ENTITY MAKEDEV-version "1.7">
-<!ENTITY MAKEDEV-package "MAKEDEV-&MAKEDEV-version;.bz2">
-<!ENTITY MAKEDEV-file "MAKEDEV-&MAKEDEV-version;">
+<!ENTITY make_devices-md5 "412757ac3eeb2efe5adfb9d39e3eda27">
+<!ENTITY make_devices-version "1.1">
+<!ENTITY make_devices-package "make_devices-&make_devices-version;.bz2">
+<!ENTITY make_devices-file "make_devices-&make_devices-version;">
  
 <!ENTITY man-md5 "41e6397e359b8555d6a734c9c3840b49">
 <!ENTITY man-version "1.5m2">
