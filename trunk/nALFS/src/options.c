@@ -25,6 +25,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <stdarg.h>
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -34,6 +35,8 @@
 #include "nalfs-core.h"
 #include "logging.h"
 #include "utility.h"
+#include "win.h"
+#include "bufsize.h"
 
 /* These macro definitions will cause the options in options.h to actually
    be allocated storage in this module.
@@ -187,13 +190,13 @@ static void option_invalid(const struct option_s *option,
 			   const char *format, ...)
 {
 	va_list ap;
+	char buffer[MAX_ERROR_MSG_LEN];
 
 	va_start(ap, format);
-	fprintf(stderr, "Option \"%s\" has an invalid value: ",
-		option->name);
-	vfprintf(stderr, format, ap);
-	fprintf(stderr, "\n");
+	vsnprintf(buffer, sizeof buffer, format, ap);
 	va_end(ap);
+	Nprint_err("Option \"%s\" invalid value: %s",
+		   option->name, buffer);
 }
 
 static int validate_number_minmax(const struct option_s *option,
@@ -284,6 +287,7 @@ static int validate_number_input(const struct option_s *option,
 	char *tmp;
 	int status = 1;
 
+	errno = 0;
 	*val = (NUMBER) strtol(input, &tmp, 10);
 			
 	if (tmp != NULL && *tmp) {

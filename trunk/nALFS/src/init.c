@@ -39,6 +39,7 @@
 #include "options.h"
 #include "utility.h"
 #include "logging.h"
+#include "win.h"
 
 #include "init.h"
 
@@ -113,7 +114,7 @@ static INLINE int handle_set_line(const char *opt, const char *val)
 			break;
 
 		case OPTION_UNKNOWN:
-			fprintf(stderr, "Option \"%s\" is unknown.\n", opt);
+			Nprint_err("Option \"%s\" is unknown.\n", opt);
 			ret = -1;
 			break;
 
@@ -202,7 +203,7 @@ static int parse_rc_line(char *line)
 		return handle_set_line(opt, val);
 	}
 
-	fprintf(stderr, "Unknown command (%s).\n", command);
+	Nprint_err("Unknown command (%s).\n", command);
 
 	return -1;
 }
@@ -218,14 +219,11 @@ static INLINE int parse_rc_file(const char *rcfile)
 	/* Open it. */
 	if ((fp = fopen(rcfile, "r")) == NULL) {
 		if (errno == ENOENT) {
-			fprintf(stderr,
-				"No configuration file to read (%s).\n",
-				rcfile);
+			Nprint_err("No configuration file to read (%s).",
+				   rcfile);
 		} else {
-			fprintf(stderr,
-				"Unable to open rc file (%s): %s\n",
-				rcfile,
-				strerror(errno));
+			Nprint_err("Unable to open rc file (%s): %s",
+				   rcfile, strerror(errno));
 		}
 		return 0; /* Just don't read it then. */
 	}
@@ -239,15 +237,14 @@ static INLINE int parse_rc_file(const char *rcfile)
 			while ((c = getc(fp)) != EOF && c != '\n')
 				/* Skip in circle. */;
 
-			fprintf(stderr, "File %s:\nLine %d too long, won't read it.\n",
-				rcfile, line_num);
+			Nprint_err("File %s, line %d too long, won't read it.",
+				   rcfile, line_num);
 		}
 
 		if (parse_rc_line(line) != 0) {
 			ret = 1;
-			fprintf(stderr, 
-				"File %s:\nError at line %d: %s\n",
-				rcfile, line_num, line);
+			Nprint_err("File %s, error at line %d: %s",
+				   rcfile, line_num, line);
 		}
 	}
 
