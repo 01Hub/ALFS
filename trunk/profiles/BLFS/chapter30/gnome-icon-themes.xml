@@ -1,19 +1,19 @@
-<package name="gnome-icon-themes" version="&gnome-icon-themes-version;">
+<package name="gnome-icon-theme" version="&gnome-icon-theme-version;">
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&gnome-icon-themes-package;</archive>
+			<archive>&packages_dir;/&gnome-icon-theme-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&gnome-icon-themes-directory;</base>
+			<base>&build_dir;/&gnome-icon-theme-directory;</base>
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=/usr</param>
 		</configure>
 
 		<make/>
@@ -24,7 +24,7 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&gnome-icon-themes-directory;</remove>
+		<remove>&build_dir;/&gnome-icon-theme-directory;</remove>
 	</stage>
 
 </package>

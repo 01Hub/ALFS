@@ -5,7 +5,6 @@
         	<requires><name>gtk+</name></requires>
 		<utilizes><name>python</name></utilizes>
 		<utilizes><name>gtk-doc</name></utilizes>
-		<utilizes><name>sgml-dtd31</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -21,7 +20,7 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=/usr</param>
 		</configure>
 
 		<make/>

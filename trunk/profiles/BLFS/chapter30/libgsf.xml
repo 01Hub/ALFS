@@ -1,12 +1,11 @@
 <package name="libgsf" version="&libgsf-version;">
 
         <packageinfo>
-        	<requires><name>libbonobo</name></requires>
-        	<requires><name>gnome-vfs</name></requires>
-
+        	<requires><name>glib2</name></requires>
+        	<requires><name>libxml2</name></requires>
+		<utilizes><name>gnome-vfs2</name></utilizes>
                 <utilizes><name>gtk-doc</name></utilizes>
-        	<utilizes><name>sgml-dtd</name></utilizes>
-        </packageinfo>
+         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
@@ -21,7 +20,7 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 			<param>--disable-gtk-doc</param>
 		</configure>
 

@@ -1,27 +1,27 @@
-<package name="gnome-terminal" version="&gnome-terminal-version;">
+<package name="epiphany" version="&epiphany-version;">
 
         <packageinfo>
                 <requires><name>libgnomeui</name></requires>
-                <requires><name>startup-notification</name></requires>
-                <requires><name>vte</name></requires>
+                <requires><name>scrollkeeper</name></requires>
+		<requires><name>mozilla</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&gnome-terminal-package;</archive>
+			<archive>&packages_dir;/&epiphany-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&gnome-terminal-directory;</base>
+			<base>&build_dir;/&epiphany-directory;</base>
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
-			<param>--localstatedir=/var/lib</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 			<param>--sysconfdir=/etc/gnome</param>
+			<param>--localstatedir=/var/lib</param>
 		</configure>
 
 		<make/>
@@ -32,7 +32,7 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&gnome-terminal-directory;</remove>
+		<remove>&build_dir;/&epiphany-directory;</remove>
 	</stage>
 
 </package>

@@ -1,24 +1,24 @@
-<package name="eel" version="&eel-version;">
+<package name="gst-plugins" version="&gst-plugins-version;">
 
         <packageinfo>
-                <requires><name>libgnomeui</name></requires>
-		<requires><name>gail</name></requires>
+                <requires><name>gstreamer</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&eel-package;</archive>
+			<archive>&packages_dir;/&gst-plugins-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&eel-directory;</base>
+			<base>&build_dir;/&gst-plugins-directory;</base>
 		</stageinfo>
 
 		<configure>
 			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--sysconfdir=/etc/gnome</param>
 		</configure>
 
 		<make/>
@@ -27,11 +27,11 @@
 			<param>install</param>
 		</make>
 
-		<execute command="/sbin/ldconfig" />
+		<execute command="gst-register" />
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&eel-directory;</remove>
+		<remove>&build_dir;/&gst-plugins-directory;</remove>
 	</stage>
 
 </package>

@@ -1,11 +1,10 @@
 <package name="libgnome" version="&libgnome-version;">
 
         <packageinfo>
-                <requires><name>esound</name></requires>
                 <requires><name>gnome-vfs2</name></requires>
-                <requires><name>gtk-doc</name></requires>
-                <requires><name>sgml-dtd31</name></requires>
-        </packageinfo>
+		<utilizes><name>esound</name></utilizes>
+                <utilizes><name>gtk-doc</name></utilizes>
+       </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
@@ -20,13 +19,13 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
-			<param>--libexecdir=&gnome-prefix;/sbin</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
 			<param>--sysconfdir=/etc/gnome</param>
 			<param>--disable-gtk-doc</param>
 		</configure>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>install</param>

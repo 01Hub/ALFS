@@ -4,7 +4,6 @@
                 <requires><name>gail</name></requires>
                 <requires><name>libbonobo</name></requires>
 		<utilizes><name>gtk-doc</name></utilizes>
-		<utilizes><name>sgml-dtd31</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -12,11 +11,6 @@
 			<archive>&packages_dir;/&at-spi-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-		        <source>&packages_dir;/&at-spi-patch;</source>
-		        <destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
@@ -24,15 +18,9 @@
 			<base>&build_dir;/&at-spi-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&at-spi-patch;</param>
-		</patch>
-
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
-			<param>--libexecdir=&gnome-prefix;/sbin</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
 			<param>--disable-gtk-doc</param>
 		</configure>
 
@@ -45,7 +33,6 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&at-spi-directory;</remove>
-		<remove>&build_dir;/&at-spi-patch;</remove>
 	</stage>
 
 </package>

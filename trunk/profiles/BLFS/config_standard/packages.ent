@@ -809,245 +809,284 @@
 <!ENTITY kdevelop-package   "kdevelop-2.1.4_for_KDE_3.0.tar.bz2">
 <!ENTITY kdevelop-directory "kdevelop-2.1.4_for_KDE_3.0">
 
-<!--************* packages for chapter 32 *************-->
+<!--************* packages for chapter 30 *************-->
 
-<!ENTITY gtk-doc-version   "1.1">
-<!ENTITY gtk-doc-package   "gtk-doc-1.1.tar.bz2">
-<!ENTITY gtk-doc-directory "gtk-doc-1.1">
+<!ENTITY gtk-doc-version   "1.2">
+<!ENTITY gtk-doc-package   "gtk-doc-&gtk-doc-version;.tar.bz2">
+<!ENTITY gtk-doc-directory "gtk-doc-&gtk-doc-version;">
 
-<!ENTITY png-support-dtd   "png-support-3.1.dtd">
+<!ENTITY libidl-version   "0.8.3">
+<!ENTITY libidl-package   "libIDL-&libidl-version;.tar.bz2">
+<!ENTITY libidl-directory "libIDL-&libidl-version;">
 
-<!ENTITY linc-version   "1.0.3">
-<!ENTITY linc-package   "linc-1.0.3.tar.bz2">
-<!ENTITY linc-directory "linc-1.0.3">
+<!ENTITY orbit2-version   "2.10.1">
+<!ENTITY orbit2-package   "ORBit2-&orbit2-version;.tar.bz2">
+<!ENTITY orbit2-directory "ORBit2-&orbit2-version;">
 
-<!ENTITY libidl-version   "0.8.2">
-<!ENTITY libidl-package   "libIDL-0.8.2.tar.bz2">
-<!ENTITY libidl-directory "libIDL-0.8.2">
+<!ENTITY intltool-version   "0.30">
+<!ENTITY intltool-package   "intltool-&intltool-version;.tar.bz2">
+<!ENTITY intltool-directory "intltool-&intltool-version;">
 
-<!ENTITY orbit2-version   "2.8.2">
-<!ENTITY orbit2-package   "ORBit2-2.8.2.tar.bz2">
-<!ENTITY orbit2-directory "ORBit2-2.8.2">
+<!ENTITY libbonobo-version   "2.6.0">
+<!ENTITY libbonobo-package   "libbonobo-&libbonobo-version;.tar.bz2">
+<!ENTITY libbonobo-directory "libbonobo-&libbonobo-version;">
 
-<!ENTITY intltool-version   "0.27.2">
-<!ENTITY intltool-package   "intltool-0.27.2.tar.bz2">
-<!ENTITY intltool-directory "intltool-0.27.2">
+<!ENTITY gconf2-version   "2.6.1">
+<!ENTITY gconf2-package   "GConf-&gconf2-version;.tar.bz2">
+<!ENTITY gconf2-directory "GConf-&gconf2-version;">
 
-<!ENTITY libbonobo-version   "2.4.2">
-<!ENTITY libbonobo-package   "libbonobo-2.4.2.tar.bz2">
-<!ENTITY libbonobo-directory "libbonobo-2.4.2">
+<!ENTITY gnome-mime-data-version   "2.4.1">
+<!ENTITY gnome-mime-data-package   "gnome-mime-data-&gnome-mime-data-version;.tar.bz2">
+<!ENTITY gnome-mime-data-directory "gnome-mime-data-&gnome-mime-data-version;">
 
-<!ENTITY gconf2-version   "2.4.0.1">
-<!ENTITY gconf2-package   "GConf-2.4.0.1.tar.bz2">
-<!ENTITY gconf2-directory "GConf-2.4.0.1">
+<!ENTITY gnome-vfs2-version   "2.6.1.1">
+<!ENTITY gnome-vfs2-package   "gnome-vfs-&gnome-vfs2-version;.tar.bz2">
+<!ENTITY gnome-vfs2-directory "gnome-vfs-&gnome-vfs2-version;">
 
-<!ENTITY gnome-mime-data-version   "2.4.0">
-<!ENTITY gnome-mime-data-package   "gnome-mime-data-2.4.0.tar.bz2">
-<!ENTITY gnome-mime-data-directory "gnome-mime-data-2.4.0">
-
-<!ENTITY gnome-vfs2-version   "2.4.1">
-<!ENTITY gnome-vfs2-package   "gnome-vfs-2.4.1.tar.bz2">
-<!ENTITY gnome-vfs2-directory "gnome-vfs-2.4.1">
-
-<!ENTITY libgnome-version   "2.4.0">
-<!ENTITY libgnome-package   "libgnome-2.4.0.tar.bz2">
-<!ENTITY libgnome-directory "libgnome-2.4.0">
+<!ENTITY libgnome-version   "2.6.1.1">
+<!ENTITY libgnome-package   "libgnome-&libgnome-version;.tar.bz2">
+<!ENTITY libgnome-directory "libgnome-&libgnome-version;">
 
 <!ENTITY libart-lgpl-version   "2.3.16">
-<!ENTITY libart-lgpl-package   "libart_lgpl-2.3.16.tar.bz2">
-<!ENTITY libart-lgpl-directory "libart_lgpl-2.3.16">
+<!ENTITY libart-lgpl-package   "libart_lgpl-&libart-lgpl-version;.tar.bz2">
+<!ENTITY libart-lgpl-directory "libart_lgpl-&libart-lgpl-version;">
 
-<!ENTITY libglade-version   "2.0.1">
-<!ENTITY libglade-package   "libglade-2.0.1.tar.gz">
-<!ENTITY libglade-directory "libglade-2.0.1">
+<!ENTITY libglade-version   "2.3.6">
+<!ENTITY libglade-package   "libglade-&libglade-version;.tar.bz2">
+<!ENTITY libglade-directory "libglade-&libglade-version;">
 
-<!ENTITY libgnomecanvas-version   "2.4.0">
-<!ENTITY libgnomecanvas-package   "libgnomecanvas-2.4.0.tar.bz2">
-<!ENTITY libgnomecanvas-directory "libgnomecanvas-2.4.0">
+<!ENTITY libgnomecanvas-version   "2.6.1.1">
+<!ENTITY libgnomecanvas-package   "libgnomecanvas-&libgnomecanvas-version;.tar.bz2">
+<!ENTITY libgnomecanvas-directory "libgnomecanvas-&libgnomecanvas-version;">
 
-<!ENTITY libbonoboui-version   "2.4.1">
-<!ENTITY libbonoboui-package   "libbonoboui-2.4.1.tar.bz2">
-<!ENTITY libbonoboui-directory "libbonoboui-2.4.1">
+<!ENTITY libbonoboui-version   "2.6.0">
+<!ENTITY libbonoboui-package   "libbonoboui-&libbonoboui-version;.tar.bz2">
+<!ENTITY libbonoboui-directory "libbonoboui-&libbonoboui-version;">
 
-<!ENTITY gnome-icon-themes-version   "1.0.9">
-<!ENTITY gnome-icon-themes-package   "gnome-icon-theme-1.0.9.tar.bz2">
-<!ENTITY gnome-icon-themes-directory "gnome-icon-theme-1.0.9">
+<!ENTITY gnome-icon-theme-version   "1.2.1">
+<!ENTITY gnome-icon-theme-package   "gnome-icon-theme-&gnome-icon-theme-version;.tar.bz2">
+<!ENTITY gnome-icon-theme-directory "gnome-icon-theme-&gnome-icon-theme-version;">
 
-<!ENTITY libgnomeui-version   "2.4.0.1">
-<!ENTITY libgnomeui-package   "libgnomeui-2.4.0.1.tar.bz2">
-<!ENTITY libgnomeui-directory "libgnomeui-2.4.0.1">
+<!ENTITY gnome-keyring-version "0.2.1">
+<!ENTITY gnome-keyring-package "gnome-keyring-&gnome-keyring-version;.tar.bz2">
+<!ENTITY gnome-keyring-directory "gnome-keyring-&gnome-keyring-version;">
 
-<!ENTITY libwnck-version   "2.4.0.1">
-<!ENTITY libwnck-package   "libwnck-2.4.0.1.tar.bz2">
-<!ENTITY libwnck-directory "libwnck-2.4.0.1">
+<!ENTITY libgnomeui-version   "2.6.1.1">
+<!ENTITY libgnomeui-package   "libgnomeui-&libgnomeui-version;.tar.bz2">
+<!ENTITY libgnomeui-directory "libgnomeui-&libgnomeui-version;">
 
 <!ENTITY gtk-engines-version   "2.2.0">
-<!ENTITY gtk-engines-package   "gtk-engines-2.2.0.tar.bz2">
-<!ENTITY gtk-engines-directory "gtk-engines-2.2.0">
+<!ENTITY gtk-engines-package   "gtk-engines-&gtk-engines-version;.tar.bz2">
+<!ENTITY gtk-engines-directory "gtk-engines-&gtk-engines-version;">
 
-<!ENTITY gnome-themes-version   "2.4.1">
-<!ENTITY gnome-themes-package   "gnome-themes-2.4.1.tar.bz2">
-<!ENTITY gnome-themes-directory "gnome-themes-2.4.1">
+<!ENTITY gnome-themes-version   "2.6.1">
+<!ENTITY gnome-themes-package   "gnome-themes-&gnome-themes-version;.tar.bz2">
+<!ENTITY gnome-themes-directory "gnome-themes-&gnome-themes-version;">
 
 <!ENTITY scrollkeeper-version   "0.3.14">
-<!ENTITY scrollkeeper-package   "scrollkeeper-0.3.14.tar.bz2">
-<!ENTITY scrollkeeper-directory "scrollkeeper-0.3.14">
+<!ENTITY scrollkeeper-package   "scrollkeeper-&scrollkeeper-version;.tar.bz2">
+<!ENTITY scrollkeeper-directory "scrollkeeper-&scrollkeeper-version;">
+
+<!ENTITY gnome-desktop-version   "2.6.1">
+<!ENTITY gnome-desktop-package   "gnome-desktop-&gnome-desktop-version;.tar.bz2">
+<!ENTITY gnome-desktop-directory "gnome-desktop-&gnome-desktop-version;">
+
+<!ENTITY libwnck-version   "2.6.1">
+<!ENTITY libwnck-package   "libwnck-&libwnck-version;.tar.bz2">
+<!ENTITY libwnck-directory "libwnck-&libwnck-version;">
+
+<!ENTITY gnome-panel-version   "2.6.1">
+<!ENTITY gnome-panel-package   "gnome-panel-&gnome-panel-version;.tar.bz2">
+<!ENTITY gnome-panel-directory "gnome-panel-&gnome-panel-version;">
+
+<!ENTITY gnome-session-version   "2.6.1">
+<!ENTITY gnome-session-package   "gnome-session-&gnome-session-version;.tar.bz2">
+<!ENTITY gnome-session-directory "gnome-session-&gnome-session-version;">
 
 <!ENTITY vte-version   "0.11.10">
-<!ENTITY vte-package   "vte-0.11.10.tar.bz2">
-<!ENTITY vte-directory "vte-0.11.10">
+<!ENTITY vte-package   "vte-&vte-version;.tar.bz2">
+<!ENTITY vte-directory "vte-&vte-version;">
 
-<!ENTITY libgtop-version   "2.0.5">
-<!ENTITY libgtop-package   "libgtop-2.0.5.tar.bz2">
-<!ENTITY libgtop-directory "libgtop-2.0.5 ">
+<!ENTITY gnome-terminal-version   "2.6.1">
+<!ENTITY gnome-terminal-package   "gnome-terminal-&gnome-terminal-version;.tar.bz2">
+<!ENTITY gnome-terminal-directory "gnome-terminal-&gnome-terminal-version;">
 
-<!ENTITY gail-version   "1.4.1">
-<!ENTITY gail-package   "gail-1.4.1.tar.bz2">
-<!ENTITY gail-directory "gail-1.4.1">
+<!ENTITY libgtop-version   "2.6.0">
+<!ENTITY libgtop-package   "libgtop-&libgtop-version;.tar.bz2">
+<!ENTITY libgtop-directory "libgtop-&libgtop-version;">
 
-<!ENTITY libcroco-version   "0.3.0">
-<!ENTITY libcroco-package   "libcroco-0.3.0.tar.bz2">
-<!ENTITY libcroco-directory "libcroco-0.3.0">
+<!ENTITY gail-version   "1.6.3">
+<!ENTITY gail-package   "gail-&gail-version;.tar.bz2">
+<!ENTITY gail-directory "gail-&gail-version;">
 
-<!ENTITY librsvg-version   "2.4.0">
-<!ENTITY librsvg-package   "librsvg-2.4.0.tar.bz2">
-<!ENTITY librsvg-directory "librsvg-2.4.0">
+<!ENTITY gstreamer-version   "0.8.1">
+<!ENTITY gstreamer-package   "gstreamer-&gstreamer-version;.tar.bz2">
+<!ENTITY gstreamer-directory "gstreamer-&gstreamer-version;">
 
-<!ENTITY eel-version   "2.4.1">
-<!ENTITY eel-package   "eel-2.4.1.tar.bz2">
-<!ENTITY eel-directory "eel-2.4.1">
+<!ENTITY gst-plugins-version   "0.8.1">
+<!ENTITY gst-plugins-package   "gst-plugins-&gst-plugins-version;.tar.bz2">
+<!ENTITY gst-plugins-directory "gst-plugins-&gst-plugins-version;">
 
-<!ENTITY libgtkhtml-version   "2.4.1">
-<!ENTITY libgtkhtml-package   "libgtkhtml-2.4.1.tar.bz2">
-<!ENTITY libgtkhtml-directory "libgtkhtml-2.4.1">
+<!ENTITY gnome-applets-version   "2.6.0">
+<!ENTITY gnome-applets-package   "gnome-applets-&gnome-applets-version;.tar.bz2">
+<!ENTITY gnome-applets-directory "gnome-applets-&gnome-applets-version;">
 
 <!ENTITY libgsf-version    "1.8.2">
-<!ENTITY libgsf-package    "libgsf-1.8.2.tar.bz2">
-<!ENTITY libgsf-directory  "libgsf-1.8.2">
+<!ENTITY libgsf-package    "libgsf-&libgsf-version;.tar.bz2">
+<!ENTITY libgsf-directory  "libgsf-&libgsf-version;">
 
-<!ENTITY gal-version   "1.99.10">
-<!ENTITY gal-package   "gal-1.99.10.tar.bz2">
-<!ENTITY gal-directory "gal-1.99.10">
+<!ENTITY libcroco-version   "0.5.1">
+<!ENTITY libcroco-package   "libcroco-&libcroco-version;.tar.bz2">
+<!ENTITY libcroco-directory "libcroco-&libcroco-version;">
 
-<!ENTITY libgnomeprint-version   "2.4.0">
-<!ENTITY libgnomeprint-package   "libgnomeprint-2.4.0.tar.bz2">
-<!ENTITY libgnomeprint-directory "libgnomeprint-2.4.0">
+<!ENTITY librsvg-version   "2.6.5">
+<!ENTITY librsvg-package   "librsvg-&librsvg-version;.tar.bz2">
+<!ENTITY librsvg-directory "librsvg-&librsvg-version;">
 
-<!ENTITY libgnomeprintui-version   "2.4.0">
-<!ENTITY libgnomeprintui-package   "libgnomeprintui-2.4.0.tar.bz2">
-<!ENTITY libgnomeprintui-directory "libgnomeprintui-2.4.0">
+<!ENTITY eel-version   "2.6.1">
+<!ENTITY eel-package   "eel-&eel-version;.tar.bz2">
+<!ENTITY eel-directory "eel-&eel-version;">
 
-<!ENTITY gtksourceview-version   "0.7.0">
-<!ENTITY gtksourceview-package   "gtksourceview-0.7.0.tar.bz2">
-<!ENTITY gtksourceview-directory "gtksourceview-0.7.0">
+<!ENTITY nautilus-version   "2.6.1">
+<!ENTITY nautilus-package   "nautilus-&nautilus-version;.tar.bz2">
+<!ENTITY nautilus-directory "nautilus-&nautilus-version;">
 
-<!ENTITY gtkhtml-version   "3.0.9">
-<!ENTITY gtkhtml-package   "gtkhtml-3.0.9.tar.bz2">
-<!ENTITY gtkhtml-directory "gtkhtml-3.0.9">
+<!ENTITY control-center-version   "2.6.1">
+<!ENTITY control-center-package   "control-center-&control-center-version;.tar.bz2">
+<!ENTITY control-center-directory "control-center-&control-center-version;">
 
-<!ENTITY at-spi-version   "1.1.9">
-<!ENTITY at-spi-package   "at-spi-1.1.9.tar.bz2">
-<!ENTITY at-spi-directory "at-spi-1.1.9">
+<!--************* packages for chapter 31 *************-->
+<!ENTITY libgnomeprint-version   "2.6.1">
+<!ENTITY libgnomeprint-package   "libgnomeprint-&libgnomeprint-version;.tar.bz2">
+<!ENTITY libgnomeprint-directory "libgnomeprint-&libgnomeprint-version;">
 
-<!ENTITY at-spi-patch     "at-spi-1.1.9-lspi.patch">
+<!ENTITY libgnomeprintui-version   "2.6.1">
+<!ENTITY libgnomeprintui-package   "libgnomeprintui-&libgnomeprintui-version;.tar.bz2">
+<!ENTITY libgnomeprintui-directory "libgnomeprintui-&libgnomeprintui-version;">
 
-<!--************* packages for chapter 33 *************-->
+<!ENTITY gtkhtml-version   "3.1.12">
+<!ENTITY gtkhtml-package   "gtkhtml-&gtkhtml-version;.tar.bz2">
+<!ENTITY gtkhtml-directory "gtkhtml-&gtkhtml-version;">
 
-<!ENTITY gnome-desktop-version   "2.4.1.1">
-<!ENTITY gnome-desktop-package   "gnome-desktop-2.4.1.1.tar.bz2">
-<!ENTITY gnome-desktop-directory "gnome-desktop-2.4.1.1">
+<!ENTITY libgtkhtml-version   "2.6.1">
+<!ENTITY libgtkhtml-package   "libgtkhtml-&libgtkhtml-version;.tar.bz2">
+<!ENTITY libgtkhtml-directory "libgtkhtml-&libgtkhtml-version;">
 
-<!ENTITY gnome-panel-version   "2.4.1">
-<!ENTITY gnome-panel-package   "gnome-panel-2.4.1.tar.bz2">
-<!ENTITY gnome-panel-directory "gnome-panel-2.4.1">
+<!ENTITY yelp-version   "2.6.1">
+<!ENTITY yelp-package   "yelp-&yelp-version;.tar.bz2">
+<!ENTITY yelp-directory "yelp-&yelp-version;">
 
-<!ENTITY gnome-session-version   "2.4.1">
-<!ENTITY gnome-session-package   "gnome-session-2.4.1.tar.bz2">
-<!ENTITY gnome-session-directory "gnome-session-2.4.1">
+<!ENTITY bug-buddy-version   "2.6.1">
+<!ENTITY bug-buddy-package   "bug-buddy-&bug-buddy-version;.tar.bz2">
+<!ENTITY bug-buddy-directory "bug-buddy-&bug-buddy-version;">
 
-<!ENTITY nautilus-version   "2.4.1">
-<!ENTITY nautilus-package   "nautilus-2.4.1.tar.bz2">
-<!ENTITY nautilus-directory "nautilus-2.4.1">
+<!ENTITY gtksourceview-version   "1.0.1">
+<!ENTITY gtksourceview-package   "gtksourceview-&gtksourceview-version;.tar.bz2">
+<!ENTITY gtksourceview-directory "gtksourceview-&gtksourceview-version;">
 
-<!ENTITY control-center-version   "2.4.0">
-<!ENTITY control-center-package   "control-center-2.4.0.tar.bz2">
-<!ENTITY control-center-directory "control-center-2.4.0">
+<!ENTITY gedit-version   "2.6.1">
+<!ENTITY gedit-package   "gedit-&gedit-version;.tar.bz2">
+<!ENTITY gedit-directory "gedit-&gedit-version;">
 
-<!--************* packages for chapter 34 *************-->
+<!ENTITY eog-version   "2.6.1">
+<!ENTITY eog-package   "eog-&eog-version;.tar.bz2">
+<!ENTITY eog-directory "eog-&eog-version;">
 
-<!ENTITY gnome-terminal-version   "2.4.1">
-<!ENTITY gnome-terminal-package   "gnome-terminal-2.4.1.tar.bz2">
-<!ENTITY gnome-terminal-directory "gnome-terminal-2.4.1">
+<!ENTITY ggv-version   "2.6.1">
+<!ENTITY ggv-package   "ggv-&ggv-version;.tar.bz2">
+<!ENTITY ggv-directory "ggv-&ggv-version;">
 
-<!ENTITY gnome-applets-version   "2.4.1">
-<!ENTITY gnome-applets-package   "gnome-applets-2.4.1.tar.bz2">
-<!ENTITY gnome-applets-directory "gnome-applets-2.4.1">
+<!ENTITY file-roller-version "2.6.1">
+<!ENTITY file-roller-package "file-roller-&file-roller-version;.tar.bz2">
+<!ENTITY file-roller-directory "file-roller-&file-roller-version;">
 
-<!ENTITY yelp-version   "2.4.1">
-<!ENTITY yelp-package   "yelp-2.4.1.tar.bz2">
-<!ENTITY yelp-directory "yelp-2.4.1">
+<!ENTITY gconf-editor-version   "2.6.1">
+<!ENTITY gconf-editor-package   "gconf-editor-&gconf-editor-version;.tar.bz2">
+<!ENTITY gconf-editor-directory "gconf-editor-&gconf-editor-version;">
 
-<!ENTITY bug-buddy-version   "2.4.1">
-<!ENTITY bug-buddy-package   "bug-buddy-2.4.1.tar.bz2">
-<!ENTITY bug-buddy-directory "bug-buddy-2.4.1">
+<!ENTITY gnome-utils-version   "2.6.2">
+<!ENTITY gnome-utils-package   "gnome-utils-&gnome-utils-version;.tar.bz2">
+<!ENTITY gnome-utils-directory "gnome-utils-&gnome-utils-version;">
 
-<!ENTITY gedit-version   "2.4.1">
-<!ENTITY gedit-package   "gedit-2.4.1.tar.bz2">
-<!ENTITY gedit-directory "gedit-2.4.1">
+<!ENTITY gal-version   "2.1.8">
+<!ENTITY gal-package   "gal-&gal-version;.tar.bz2">
+<!ENTITY gal-directory "gal-&gal-version;">
 
-<!ENTITY eog-version   "2.4.1">
-<!ENTITY eog-package   "eog-2.4.1.tar.bz2">
-<!ENTITY eog-directory "eog-2.4.1">
+<!ENTITY gnome-system-monitor-version   "2.6.0">
+<!ENTITY gnome-system-monitor-package   "gnome-system-monitor-&gnome-system-monitor-version;.tar.bz2">
+<!ENTITY gnome-system-monitor-directory "gnome-system-monitor-&gnome-system-monitor-version;">
 
-<!ENTITY acme-version   "2.4.1">
-<!ENTITY acme-package   "acme-2.4.1.tar.bz2">
-<!ENTITY acme-directory "acme-2.4.1">
+<!ENTITY gnome-media-version   "2.6.1">
+<!ENTITY gnome-media-package   "gnome-media-&gnome-media-version;.tar.bz2">
+<!ENTITY gnome-media-directory "gnome-media-&gnome-media-version;">
 
-<!ENTITY ggv-version   "2.4.0.1">
-<!ENTITY ggv-package   "ggv-2.4.0.1.tar.bz2">
-<!ENTITY ggv-directory "ggv-2.4.0.1">
+<!ENTITY nautilus-media-version   "0.8.0">
+<!ENTITY nautilus-media-package   "nautilus-media-&nautilus-media-version;.tar.bz2">
+<!ENTITY nautilus-media-directory "nautilus-media-&nautilus-media-version;">
 
-<!ENTITY gnome-utils-version   "2.4.0">
-<!ENTITY gnome-utils-package   "gnome-utils-2.4.0.tar.bz2">
-<!ENTITY gnome-utils-directory "gnome-utils-2.4.0">
+<!ENTITY gnome-netstatus-version "2.6.1">
+<!ENTITY gnome-netstatus-package "gnome-netstatus-&gnome-netstatus-version;.tar.bz2">
+<!ENTITY gnome-netstatus-directory "gnome-netstatus-&gnome-netstatus-version;">
 
-<!ENTITY gnome-system-monitor-version   "2.4.0">
-<!ENTITY gnome-system-monitor-package   "gnome-system-monitor-2.4.0.tar.bz2">
-<!ENTITY gnome-system-monitor-directory "gnome-system-monitor-2.4.0">
+<!ENTITY gcalctool-version "4.3.51">
+<!ENTITY gcalctool-package "gcalctool-&gcalctool-version;.tar.bz2">
+<!ENTITY gcalctool-directory "gcalctool-&gcalctool-version;">
 
-<!ENTITY gstreamer-version   "0.6.4">
-<!ENTITY gstreamer-package   "gstreamer-0.6.4.tar.bz2">
-<!ENTITY gstreamer-directory "gstreamer-0.6.4">
+<!ENTITY gpdf-version "0.131">
+<!ENTITY gpdf-package "gpdf-&gpdf-version;.tar.bz2">
+<!ENTITY gpdf-directory "gpdf-&gpdf-version;">
 
-<!ENTITY gst-plugins-version   "0.6.4">
-<!ENTITY gst-plugins-package   "gst-plugins-0.6.4.tar.bz2">
-<!ENTITY gst-plugins-directory "gst-plugins-0.6.4">
+<!ENTITY gucharmap-version "1.4.1">
+<!ENTITY gucharmap-package "gucharmap-&gucharmap-version;.tar.bz2">
+<!ENTITY gucharmap-directory "gucharmap-&gucharmap-version;">
 
-<!ENTITY gnome-media-version   "2.4.1.1">
-<!ENTITY gnome-media-package   "gnome-media-2.4.1.1.tar.bz2">
-<!ENTITY gnome-media-directory "gnome-media-2.4.1.1">
+<!ENTITY nautilus-cd-burner-version "2.6.1">
+<!ENTITY nautilus-cd-burner-package "nautilus-cd-burner-&nautilus-cd-burner-version;.tar.bz2">
+<!ENTITY nautilus-cd-burner-directory "nautilus-cd-burner-&nautilus-cd-burner-version;">
 
-<!ENTITY nautilus-media-version   "0.2.2">
-<!ENTITY nautilus-media-package   "nautilus-media-0.2.2.tar.bz2">
-<!ENTITY nautilus-media-directory "nautilus-media-0.2.2">
+<!ENTITY zenity-version "2.6.2">
+<!ENTITY zenity-package "zenity-&zenity-version;.tar.bz2">
+<!ENTITY zenity-directory "zenity-&zenity-version;">
 
-<!ENTITY gnome-games-version   "2.2.1">
-<!ENTITY gnome-games-package   "gnome-games-2.2.1.tar.bz2">
-<!ENTITY gnome-games-directory "gnome-games-2.2.1">
+<!ENTITY gnome-speech-version "0.3.2">
+<!ENTITY gnome-speech-package "gnome-speech-&gnome-speech-version;.tar.bz2">
+<!ENTITY gnome-speech-directory "gnome-speech-&gnome-speech-version;">
 
-<!ENTITY gnome2-user-docs-version   "2.0.6">
-<!ENTITY gnome2-user-docs-package   "gnome2-user-docs-2.0.6.tar.bz2">
-<!ENTITY gnome2-user-docs-directory "gnome2-user-docs-2.0.6">
+<!ENTITY at-spi-version   "1.4.2">
+<!ENTITY at-spi-package   "at-spi-&at-spi-version;.tar.bz2">
+<!ENTITY at-spi-directory "at-spi-&at-spi-version;">
 
-<!--************* packages for chapter 35 *************-->
+<!ENTITY gnome-mag-version "0.10.11">
+<!ENTITY gnome-mag-package "gnome-mag-&gnome-mag-version;.tar.bz2">
+<!ENTITY gnome-mag-directory "gnome-mag-&gnome-mag-version;">
 
-<!ENTITY gconf-editor-version   "2.4.0">
-<!ENTITY gconf-editor-package   "gconf-editor-2.4.0.tar.bz2">
-<!ENTITY gconf-editor-directory "gconf-editor-2.4.0">
+<!ENTITY gnopernicus-version "0.8.4">
+<!ENTITY gnopernicus-package "gnopernicus-&gnopernicus-version;.tar.bz2">
+<!ENTITY gnopernicus-directory "gnopernicus-&gnopernicus-version;">
 
-<!ENTITY gdm-version   "2.4.1.4">
-<!ENTITY gdm-package   "gdm-2.4.1.4.tar.bz2">
-<!ENTITY gdm-directory "gdm-2.4.1.4">
+<!ENTITY gok-version "0.10.2">
+<!ENTITY gok-package "gok-&gok-version;.tar.bz2">
+<!ENTITY gok-directory "gok-&gok-version;">
+
+<!ENTITY epiphany-version "1.2.5">
+<!ENTITY epiphany-package "epiphany-&epiphany-version;.tar.bz2">
+<!ENTITY epiphany-directory "epiphany-&epiphany-version;">
+
+<!ENTITY gnomemeeting-version "1.0.2">
+<!ENTITY gnomemeeting-package "gnomemeeting-&gnomemeeting-version;.tar.bz2">
+<!ENTITY gnomemeeting-directory "gnomemeeting-&gnomemeeting-version;">
+
+<!ENTITY gnome-games-version   "2.6.1">
+<!ENTITY gnome-games-package   "gnome-games-&gnome-games-version;.tar.bz2">
+<!ENTITY gnome-games-directory "gnome-games-&gnome-games-version;">
+
+<!ENTITY gnome2-user-docs-version   "2.6.0.1">
+<!ENTITY gnome2-user-docs-package   "gnome2-user-docs-&gnome2-user-docs-version;.tar.bz2">
+<!ENTITY gnome2-user-docs-directory "gnome2-user-docs-&gnome2-user-docs-version;">
+
+<!ENTITY gdm-version   "2.6.0.2">
+<!ENTITY gdm-package   "gdm-&gdm-version;.tar.bz2">
+<!ENTITY gdm-directory "gdm-&gdm-version;">
 
 <!--************* packages for chapter 37 *************-->
 

@@ -4,7 +4,10 @@
                 <requires><name>gtk+2</name></requires>
                 <requires><name>libxml2</name></requires>
                 <requires><name>libart-lgpl</name></requires>
+		<requires><name>popt</name></requires>
 		<utilizes><name>libgsf</name></utilizes>
+		<utilizes><name>libcroco</name></utilizes>
+		<utilizes><name>gtk-doc</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -20,8 +23,8 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
-			<param>--sysconfdir=/etc/gnome/</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--sysconfdir=/etc/gnome</param>
 			<param>--disable-gtk-doc</param>
 		</configure>
 

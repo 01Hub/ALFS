@@ -1,7 +1,6 @@
 <package name="orbit2" version="&orbit2-version;">
 
 	<packageinfo>
-        	<requires><name>glib2</name></requires>
         	<requires><name>libidl</name></requires>
         	<requires><name>popt</name></requires>
 	</packageinfo>
@@ -17,8 +16,6 @@
 		<stageinfo>
 			<base>&build_dir;/&orbit2-directory;</base>
 		</stageinfo>
-
-		<execute command="/sbin/ldconfig" />
 
 		<configure>
 			<param>--prefix=&gnome-prefix;</param>

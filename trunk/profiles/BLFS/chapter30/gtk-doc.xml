@@ -4,8 +4,6 @@
 	        <requires><name>openjade</name></requires>
 	        <requires><name>libxslt</name></requires>
 	        <requires><name>xml-dtd</name></requires>
-	        <requires><name>sgml-dtd</name></requires>
-	        <requires><name>sgml-dtd31</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -13,11 +11,6 @@
 			<archive>&packages_dir;/&gtk-doc-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-		        <source>&packages_dir;/&png-support-dtd;</source>
-			<destination>/usr/share/sgml/docbook/sgml-dtd-3.1</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing a package.">

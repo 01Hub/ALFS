@@ -2,6 +2,9 @@
 
         <packageinfo>
                 <requires><name>libgnomeui</name></requires>
+		<requires><name>scrollkeeper</name></requires>
+		<requires><name>librsvg</name></requires>
+		<utilizes><name>esound</name></utilizes>
 		<utilizes><name>guile</name></utilizes>
         </packageinfo>
 
@@ -17,8 +20,23 @@
 			<base>&build_dir;/&gnome-games-directory;</base>
 		</stageinfo>
 
+		<mkdir>
+			<name>/var/lib/games</name>
+		</mkdir>
+
+		<execute command="groupadd -f games" />
+
+		<execute command="grep -q ^games /etc/passwd">
+			<param>|| useradd</param>
+			<param>-c 'games'</param>
+			<param>-d /var/lib/games</param>
+			<param>-g games</param>
+			<param>-s /bin/false</param>
+			<param>games</param>
+		</execute>
+
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 			<param>--localstatedir=/var/lib</param>
 			<param>--sysconfdir=/etc/gnome</param>
 		</configure>

@@ -2,7 +2,7 @@
 
         <packageinfo>
                 <requires><name>gtk+2</name></requires>
-                <requires><name>startup-notification</name></requires>
+                <utilizes><name>startup-notification</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -18,7 +18,7 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 		</configure>
 
 		<make/>

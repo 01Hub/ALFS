@@ -1,9 +1,12 @@
 <package name="control-center" version="&control-center-version;">
 
         <packageinfo>
-                <requires><name>gnome-desktop</name></requires>
+                <requires><name>libxklavier</name></requires>
                 <requires><name>nautilus</name></requires>
 		<requires><name>metacity</name></requires>
+		<utilizes><name>esound</name></utilizes>
+		<utilizes><name>alsa</name></utilizes>
+		<utilizes><name>gst-plugins</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -19,7 +22,8 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
 			<param>--localstatedir=/var/lib</param>
 			<param>--sysconfdir=/etc/gnome</param>
 		</configure>

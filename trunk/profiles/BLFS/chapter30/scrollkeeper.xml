@@ -1,10 +1,10 @@
 <package name="scrollkeeper" version="&scrollkeeper-version;">
 
         <packageinfo>
-                <requires><name>libxml2</name></requires>
         	<requires><name>libxslt</name></requires>
         	<requires><name>intltool</name></requires>
         	<requires><name>xml-dtd</name></requires>
+		<requires><name>XML-Parser</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -24,7 +24,7 @@
 			<param>--sysconfdir=/etc</param>
                         <param>--localstatedir=/var</param>
                         <param>--disable-static</param>
-                        <param>--with-omfdirs=/usr/share/omf:/opt/gnome/share/omf:/opt/kde/share/omf:&gnome-prefix;/share/omf</param>
+                        <param>--with-omfdirs=/usr/share/omf:/opt/gnome/share/omf:/opt/kde/share/omf:/opt/gnome-2.6/share/omf</param>
 		</configure>
 
 		<make/>

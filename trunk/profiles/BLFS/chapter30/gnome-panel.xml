@@ -1,11 +1,10 @@
 <package name="gnome-panel" version="&gnome-panel-version;">
 
         <packageinfo>
-                <requires><name>libgnomeui</name></requires>
-                <requires><name>scrollkeeper</name></requires>
+                <requires><name>gnome-desktop</name></requires>
                 <requires><name>libwnck</name></requires>
 		<utilizes><name>gtk-doc</name></utilizes>
-		<utilizes><name>sgml-dtd31</name></utilizes>
+		<utilizes><name>startup-notification</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -21,8 +20,8 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
-			<param>--libexecdir=&gnome-prefix;/sbin</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
 			<param>--localstatedir=/var/lib</param>
 			<param>--sysconfdir=/etc/gnome</param>
 			<param>--disable-gtk-doc</param>

@@ -1,24 +1,25 @@
-<package name="eel" version="&eel-version;">
+<package name="nautilus-cd-burner" version="&nautilus-cd-burner-version;">
 
         <packageinfo>
-                <requires><name>libgnomeui</name></requires>
-		<requires><name>gail</name></requires>
+                <requires><name>nautilus</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&eel-package;</archive>
+			<archive>&packages_dir;/&nautilus-cd-burner-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&eel-directory;</base>
+			<base>&build_dir;/&nautilus-cd-burner-directory;</base>
 		</stageinfo>
 
 		<configure>
 			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+			<param>--sysconfdir=/etc/gnome</param>
 		</configure>
 
 		<make/>
@@ -26,12 +27,10 @@
 		<make>
 			<param>install</param>
 		</make>
-
-		<execute command="/sbin/ldconfig" />
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&eel-directory;</remove>
+		<remove>&build_dir;/&nautilus-cd-burner-directory;</remove>
 	</stage>
 
 </package>

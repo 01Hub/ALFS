@@ -361,11 +361,12 @@
 -->
 
 
-<stage name="Chapter 30 (GNOME libraries)">
+<stage name="Chapter 30 (GNOME Core Packages)">
 
     <stageinfo>
         <environment>
-	    <variable name="PKG_CONFIG_PATH">/usr/X11R6/lib/pkgconfig:/usr/lib/pkgconfig:&gnome-prefix;/lib/pkgconfig</variable>
+	    <variable name="PKG_CONFIG_PATH">/usr/X11R6/lib/pkgconfig:&gnome-prefix;/lib/pkgconfig</variable>
+	    <variable name="GNOME_PREFIX">&gnome-prefix;</variable>
         </environment>
     </stageinfo>
 
@@ -384,65 +385,67 @@
     &libgnomecanvas;
     &libbonoboui;
     &gnome-icon-themes;
+    &gnome-keyring;
     &libgnomeui;
     &gtk-engines;
     &gnome-themes;
-    &libwnck;
     &scrollkeeper;
+    &gnome-desktop;
+    &libwnck;
+    &gnome-panel;
+    &gnome-session;
     &vte;
+    &gnome-terminal;
     &libgtop;
     &gail;
+    &gstreamer;
+    &gst-plugins;
+    &gnome-applets;
     &libgsf;
     &libcroco;
     &librsvg;
     &eel;
-    &libgtkhtml;
-    &libgnomeprint;
-    &libgnomeprintui;
-    &gtksourceview;
-    &gal;
-    &gtkhtml;
-
-</stage>
-
-<stage name="Chapter 31 (GNOME core)">
-    
-    &gnome-desktop;
-    &gnome-panel;
-    &gnome-session;
     &nautilus;
     &control-center;
-    &gnome-desktop;
 </stage>
 
-<stage name="Chapter 32 (Additional GNOME Packages)">
-    
-    &gnome-terminal;
-    &gnome-applets;
+<stage name="Chapter 31 (GNOME Additional Packages)">
+    &libgnomeprint;
+    &libgnomeprintui;
+    &gtkhtml;
+    &libgtkhtml;
     &yelp;
     &bug-buddy;
+    &gtksourceview;
     &gedit;
     &eog;
-    &acme;
     &ggv;
-    &gnome-utils;
-    &gnome-system-monitor;
-    &gstreamer;
-    &gst-plugins;
-    &gnome-media;
-
-    &gnome-games;
-    &nautilus-media;
-    &gnome2-user-docs;
-
-</stage>
-
-<stage name="Chapter 33 (Other GNOME Packages)">
-    
+    &file-roller;
     &gconf-editor;
+    &gnome-utils;
+    &gal;
+    &gnome-system-monitor;
+    &gnome-media;
+    &nautilus-media;
+    &gnome-netstatus;
+    &gcalctool;
+    &gpdf;
+    &gucharmap;
+    &nautilus-cd-burner;
+    &zenity;
+    &gnome-speech;
+    &at-spi;
+    &gnome-mag;
+    &gnopernicus;
+    &gok;
+    &epiphany;
+    &gnomemeeting;
+    &gnome-games;
+    &gnome2-user-docs;
     &gdm;
 
 </stage>
+
 
 <stage name="Chapter 35 (GNOME 1.4 Libraries)">
     

@@ -1,24 +1,27 @@
-<package name="eel" version="&eel-version;">
+<package name="libgnomeprintui" version="&libgnomeprintui-version;">
 
         <packageinfo>
+                <requires><name>libgnomeprint</name></requires>
+		<requires><name>gnome-icon-theme</name></requires>
                 <requires><name>libgnomeui</name></requires>
-		<requires><name>gail</name></requires>
+		<utilizes><name>gtk-doc</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&eel-package;</archive>
+			<archive>&packages_dir;/&libgnomeprintui-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&eel-directory;</base>
+			<base>&build_dir;/&libgnomeprintui-directory;</base>
 		</stageinfo>
 
 		<configure>
 			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--disable-gtk-doc</param>
 		</configure>
 
 		<make/>
@@ -31,7 +34,7 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&eel-directory;</remove>
+		<remove>&build_dir;/&libgnomeprintui-directory;</remove>
 	</stage>
 
 </package>

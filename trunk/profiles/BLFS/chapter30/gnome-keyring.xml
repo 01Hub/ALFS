@@ -1,0 +1,29 @@
+<package name="gnome-keyring" version="&gnome-keyring-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<archive>&packages_dir;/&gnome-keyring-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&gnome-keyring-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&gnome-keyring-directory;</remove>
+	</stage>
+</package>

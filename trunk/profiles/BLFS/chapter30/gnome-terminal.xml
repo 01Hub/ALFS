@@ -1,24 +1,26 @@
-<package name="acme" version="&acme-version;">
+<package name="gnome-terminal" version="&gnome-terminal-version;">
 
         <packageinfo>
                 <requires><name>libgnomeui</name></requires>
-                <requires><name>libwnck</name></requires>
+                <requires><name>scrollkeeper</name></requires>
+                <requires><name>vte</name></requires>
+		<utilizes><name>startup-notification</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&acme-package;</archive>
+			<archive>&packages_dir;/&gnome-terminal-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&acme-directory;</base>
+			<base>&build_dir;/&gnome-terminal-directory;</base>
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 			<param>--localstatedir=/var/lib</param>
 			<param>--sysconfdir=/etc/gnome</param>
 		</configure>
@@ -31,7 +33,7 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&acme-directory;</remove>
+		<remove>&build_dir;/&gnome-terminal-directory;</remove>
 	</stage>
 
 </package>

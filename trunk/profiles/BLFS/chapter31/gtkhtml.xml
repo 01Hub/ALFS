@@ -1,9 +1,9 @@
 <package name="gtkhtml" version="&gtkhtml-version;">
 
         <packageinfo>
-                <requires><name>gal</name></requires>
-        	<requires><name>libglade1</name></requires>
-        	<requires><name>libcapplet</name></requires>
+                <requires><name>gail</name></requires>
+        	<requires><name>libgnomeprintui</name></requires>
+        	<utilizes><name>libsoup</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -19,7 +19,8 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=/opt/gnome</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdit=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
 		</configure>
 
 		<make/>

@@ -1,7 +1,7 @@
 <package name="gnome-utils" version="&gnome-utils-version;">
 
         <packageinfo>
-                <requires><name>libgnomeui</name></requires>
+                <requires><name>gnome-panel</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -17,8 +17,8 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
-			<param>--libexecdir=&gnome-prefix;/sbin</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
 			<param>--localstatedir=/var/lib</param>
 			<param>--sysconfdir=/etc/gnome</param>
 		</configure>

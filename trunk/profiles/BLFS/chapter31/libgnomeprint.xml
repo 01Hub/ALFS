@@ -1,8 +1,11 @@
 <package name="libgnomeprint" version="&libgnomeprint-version;">
 
         <packageinfo>
-                <requires><name>libbonobo</name></requires>
+		<requires><name>pango</name></requires>
+                <requires><name>fontconfig</name></requires>
                 <requires><name>libart-lgpl</name></requires>
+		<requires><name>libxml2</name></requires>
+		<utilizes><name>cups</name></utilizes>
 		<utilizes><name>gtk-doc</name></utilizes>
         </packageinfo>
 
@@ -19,8 +22,9 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=&gnome-prefix;</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 			<param>--sysconfdir=/etc/gnome</param>
+			<param>--disable-gtk-doc</param>
 		</configure>
 
 		<make/>
