@@ -1,6 +1,6 @@
 ftp://alpha.gnu.org/pub/gnu/grub/grub-0.93.tar.gz
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/autoconf/autoconf-2.59.tar.bz2
-ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/automake/automake-1.8.tar.bz2
+ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/automake/automake-1.8.2.tar.bz2
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/bash/bash-2.05b.tar.gz
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/bison/bison-1.875.tar.bz2
@@ -17,7 +17,7 @@ ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/texinfo/texinfo-4.6.tar.bz
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/gcc/gcc-3.3.2/gcc-core-3.3.2.tar.bz2
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/gcc/gcc-3.3.2/gcc-g++-3.3.2.tar.bz2
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/gcc/gcc-3.3.2/gcc-testsuite-3.3.2.tar.bz2
-ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/sed/sed-4.0.8.tar.gz
+ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/sed/sed-4.0.9.tar.gz
 http://easynews.dl.sourceforge.net/sourceforge/e2fsprogs/e2fsprogs-1.34.tar.gz
 http://easynews.dl.sourceforge.net/sourceforge/psmisc/psmisc-21.4.tar.gz
 http://distro.ibiblio.org/pub/linux/distributions/sorcerer/sources/file/4.07/file-4.07.tar.bz2
@@ -32,7 +32,7 @@ http://ftp.kernel.org/pub/linux/kernel/v2.4/linux-2.4.24.tar.bz2
 ftp://ftp.pld.org.pl/software/shadow/shadow-4.0.3.tar.bz2
 ftp://ftp.seindal.dk/gnu/m4-1.4.tar.gz
 ftp://ftp.vim.org/pub/vim/unix/vim-6.2.tar.bz2
-ftp://ftp.win.tue.nl/pub/home/aeb/linux-local/utils/kbd/kbd-1.10.tar.gz
+ftp://ftp.win.tue.nl/pub/home/aeb/linux-local/utils/kbd/kbd-1.11.tar.gz
 ftp://sources.redhat.com/pub/bzip2/v102/bzip2-1.0.2.tar.gz
 ftp://sources.redhat.com/pub/glibc/releases/glibc-2.3.2.tar.bz2
 ftp://sources.redhat.com/pub/glibc/releases/glibc-linuxthreads-2.3.2.tar.bz2
@@ -50,7 +50,7 @@ http://www.linuxfromscratch.org/patches/lfs/cvs/gcc-2.95.3-returntype-fix.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/gcc-3.3.2-no_fixincludes-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/gcc-3.3.2-specs-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/inetutils-1.4.2-no_server_man_pages-1.patch
-http://www.linuxfromscratch.org/patches/lfs/cvs/kbd-1.10-more-programs-2.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/kbd-1.11-more-programs-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/glibc-2.3.2-sscanf-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/man-1.5m2-80cols.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/ncurses-5.3-etip-2.patch
