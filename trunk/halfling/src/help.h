@@ -36,8 +36,8 @@
 #ifndef _HELP_H_
 #define _HELP_H_
 
-void print_usage(void);
 void print_help(void);
+void print_usage(void);
 void print_version(void);
 
 #endif /* _HELP_H_ */

@@ -37,5 +37,11 @@
 #define _LIB_H_
 
 void log(const char *format, ...);
+char *display_time(const char *format);
+char *getTag(xmlDoc *doc, xmlNode *cur, const char *name);
+char *getMultiTag(xmlDoc *doc, xmlNode *cur, const char *name);
+char *strconcat(const char *str, ...);
+int unpack(const char *destination, const char *source);
+int execute(const char *base, const char *cmd);
 
 #endif /* _LIB_H_ */

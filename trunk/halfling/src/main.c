@@ -37,64 +37,27 @@
 #include <getopt.h>
 #include <libxml/tree.h>
 #include <libxml/parser.h>
+#include "halfling.h"
 #include "help.h"
-#include "tags.h"
-
-
-static struct option long_options[] = {
-    {"help", no_argument, NULL, 'h'},
-    {"version", no_argument, NULL, 'v'},
-    {0, 0, NULL, 0}
-};
-
-
-int parse_profile(const char *filename) {
-    xmlDoc *doc = NULL;
-    xmlNode *cur = NULL;
-
-    doc = xmlParseFile(filename);
-
-    if (doc == NULL) {
-	fprintf(stderr, "Document is not well-formed.\n");
-	return (-1);
-    }
-
-    cur = xmlDocGetRootElement(doc);
-
-    if (cur == NULL) {
-	fprintf(stderr, "Empty root element.\n");
-	xmlFreeDoc(doc);
-	return (-1);
-    }
-
-    cur = cur->xmlChildrenNode;
-
-    while (cur != NULL) {
-	if (!strcmp(cur->name, "package")) {
-	    tag_package(doc, cur);
-	}
-
-	cur = cur->next;
-    }
-
-    xmlFreeDoc(doc);
-
-    return (0);
-}
 
 
 int main(int argc, char **argv) {
     int c;
 
-    while ((c = getopt_long(argc, argv, "hv", long_options, (int *)0)) != EOF) {
+    while ((c = getopt_long(argc, argv, "hvt", long_options, (int *)0)) != EOF) {
 	switch (c) {
 	    case 'h':
 		print_help();
 		exit(1);
 		break;
+
 	    case 'v':
 		print_version();
 		exit(1);
+		break;
+
+	    case 't':
+		showtime = 1;
 		break;
 	}
     }
@@ -108,5 +71,5 @@ int main(int argc, char **argv) {
 	printf("\nTry 'halfing --help' for more information.\n");
     }
 
-    return (0);
+    return(0);
 }

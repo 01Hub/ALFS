@@ -34,25 +34,42 @@
 
 
 #include <stdio.h>
-#include "help.h"
+#include <libxml/tree.h>
+#include <libxml/parser.h>
+#include "halfling.h"
+#include "tags.h"
 
 
-void print_help(void) {
-    print_usage();
-    printf("\
-Options:\n\
-  -h,  --help       Display this help and exit.\n\
-  -v,  --version    Print the version information and exit.\n\
-  -t,  --time       Print time with output.\
-\n");
-}
+int parse_profile(const char *filename) {
+    xmlDoc *doc = NULL;
+    xmlNode *cur = NULL;
 
+    doc = xmlParseFile(filename);
 
-void print_usage(void) {
-    printf("Usage: halfling [options] profile(s)\n");
-}
+    if (doc == NULL) {
+	fprintf(stderr, "Document is not well-formed.\n");
+	return(-1);
+    }
 
+    cur = xmlDocGetRootElement(doc);
 
-void print_version(void) {
-    printf("halfling version CVS, by Jesse Tie-Ten-Quee.\n");
+    if (cur == NULL) {
+	fprintf(stderr, "Empty root element.\n");
+	xmlFreeDoc(doc);
+	return(-1);
+    }
+
+    cur = cur->xmlChildrenNode;
+
+    while (cur != NULL) {
+	if (strcmp(cur->name, "package") == 0) {
+	    tag_package(doc, cur);
+	}
+
+	cur = cur->next;
+    }
+
+    xmlFreeDoc(doc);
+
+    return(0);
 }

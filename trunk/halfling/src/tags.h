@@ -36,6 +36,16 @@
 #ifndef _TAGS_H_
 #define _TAGS_H_
 
+void tag_configure(xmlDoc *doc, xmlNode *cur);
+void tag_copy(xmlDoc *doc, xmlNode *cur);
+void tag_execute(xmlDoc *doc, xmlNode *cur);
+void tag_info(xmlDoc *doc, xmlNode *cur);
+void tag_link(xmlDoc *doc, xmlNode *cur);
+void tag_make(xmlDoc *doc, xmlNode *cur);
+void tag_mkdir(xmlDoc *doc, xmlNode *cur);
 void tag_package(xmlDoc *doc, xmlNode *cur);
+void tag_remove(xmlDoc *doc, xmlNode *cur);
+void tag_setenv(xmlDoc *doc, xmlNode *cur);
+void tag_unpack(xmlDoc *doc, xmlNode *cur);
 
 #endif /* _TAGS_H_ */

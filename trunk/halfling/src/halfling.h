@@ -33,26 +33,20 @@
  */
 
 
-#include <stdio.h>
-#include "help.h"
+#ifndef _HALFLING_H_
+#define _HALFLING_H_
 
+#include <getopt.h>
 
-void print_help(void) {
-    print_usage();
-    printf("\
-Options:\n\
-  -h,  --help       Display this help and exit.\n\
-  -v,  --version    Print the version information and exit.\n\
-  -t,  --time       Print time with output.\
-\n");
-}
+static struct option long_options[] = {
+    {"help", no_argument, NULL, 'h'},
+    {"version", no_argument, NULL, 'v'},
+    {"time", no_argument, NULL, 't'},
+    {0, 0, NULL, 0}
+};
 
+int showtime;
 
-void print_usage(void) {
-    printf("Usage: halfling [options] profile(s)\n");
-}
+int parse_profile(const char *filename);
 
-
-void print_version(void) {
-    printf("halfling version CVS, by Jesse Tie-Ten-Quee.\n");
-}
+#endif /* _HALFLING_H_ */
