@@ -12,6 +12,11 @@
 ]>
 <alfs>
   <package name="bonobo" version="&bonobo-version;">
+    <packageinfo>
+      <requires>
+	<name>gnome-print</name>
+      </requires>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&bonobo-package;</archive>

@@ -19,7 +19,7 @@
 <!ENTITY gnome-print-version   "0.37">
 <!ENTITY gnome-print-package   "gnome-print-&gnome-print-version;.tar.bz2">
 <!ENTITY gnome-print-directory "gnome-print-&gnome-print-version;">
-<!ENTITY gnome-print-ft-patch "gnome-print-&gnome-print-version;-ft217-fixes.patch">
+<!ENTITY gnome-print-ft-patch "gnome-print-&gnome-print-version;-ft217_fixes-1.patch">
 
 <!ENTITY bonobo-version   "1.0.22">
 <!ENTITY bonobo-package   "bonobo-&bonobo-version;.tar.bz2">
@@ -32,6 +32,7 @@
 <!ENTITY gnome-vfs-version   "1.0.5">
 <!ENTITY gnome-vfs-package   "gnome-vfs-&gnome-vfs-version;.tar.bz2">
 <!ENTITY gnome-vfs-directory "gnome-vfs-&gnome-vfs-version;">
+<!ENTITY gnome-vfs-gcc34-patch "gnome-vfs-&gnome-vfs-version;-gcc34-1.patch">
 
 <!ENTITY libglade1-version   "0.17">
 <!ENTITY libglade1-package   "libglade-&libglade1-version;.tar.gz">
@@ -44,6 +45,7 @@
 <!ENTITY guppi-version   "0.40.3">
 <!ENTITY guppi-package   "Guppi-&guppi-version;.tar.bz2">
 <!ENTITY guppi-directory "Guppi-&guppi-version;">
+<!ENTITY guppi-gcc34-patch "Guppi-&guppi-version;-gcc34-1.patch">
 
 <!ENTITY libcapplet-version   "1.5.11">
 <!ENTITY libcapplet-package   "libcapplet-&libcapplet-version;.tar.bz2">
@@ -52,10 +54,12 @@
 <!ENTITY soup-version "0.7.11">
 <!ENTITY soup-package "soup-&soup-version;.tar.bz2">
 <!ENTITY soup-directory "soup-&soup-version;">
+<!ENTITY soup-gcc34-patch "soup-&soup-version;-gcc_3.4-1.patch">
 
 <!ENTITY gtkhtml1-version "1.1.7">
 <!ENTITY gtkhtml1-package "gtkhtml-&gtkhtml1-version;.tar.bz2">
 <!ENTITY gtkhtml1-directory "gtkhtml-&gtkhtml1-version;">
+<!ENTITY gtkhtml1-gcc34-patch "gtkhtml-&gtkhtml1-version;-gcc34-1.patch">
 
 <!ENTITY libghttp-version   "1.0.9">
 <!ENTITY libghttp-package   "libghttp-&libghttp-version;.tar.gz">

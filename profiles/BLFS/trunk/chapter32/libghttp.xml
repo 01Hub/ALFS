@@ -12,11 +12,6 @@
 ]>
 <alfs>
   <package name="libghttp" version="&libghttp-version;">
-    <packageinfo>
-      <utilizes>
-        <name>gtkhtml1</name>
-      </utilizes>
-    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&libghttp-package;</archive>

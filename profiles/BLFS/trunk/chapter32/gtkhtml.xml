@@ -28,12 +28,31 @@
       <utilizes>
         <name>soup</name>
       </utilizes>
+      <utilizes>
+	<name>bonobo</name>
+      </utilizes>
+      <utilizes>
+	<name>libghttp</name>
+      </utilizes>
+      <utilizes>
+	<name>gtk-doc</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&gtkhtml1-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&gtkhtml1-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&gtkhtml1-gcc34-patch;</param>
+      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>
