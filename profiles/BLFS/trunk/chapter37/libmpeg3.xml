@@ -27,6 +27,11 @@
       <stageinfo>
         <base>&build_dir;/&libmpeg3-directory;</base>
       </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&libmpeg3-patch;</param>
+      </patch>
       <make />
       <make>
         <param>install</param>

@@ -22,6 +22,9 @@
       <utilizes>
         <name>tcpwrappers</name>
       </utilizes>
+      <utilizes>
+        <name>docbook-utils</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

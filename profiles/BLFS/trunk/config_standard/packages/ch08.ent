@@ -4,9 +4,11 @@
 <!ENTITY pcre-package   "pcre-&pcre-version;.tar.bz2">
 <!ENTITY pcre-directory "pcre-&pcre-version;">
 
-<!ENTITY popt-version   "1.7">
-<!ENTITY popt-package   "popt-&popt-version;.tar.gz">
-<!ENTITY popt-directory "popt-&popt-version;">
+<!ENTITY popt-major-minor "1.7">
+<!ENTITY popt-version     "&popt-major-minor;-5">
+<!ENTITY popt-package     "popt_&popt-major-minor;.orig.tar.gz">
+<!ENTITY popt-directory   "popt-&popt-version;">
+<!ENTITY popt-patch       "popt_&popt-version;.diff">
 
 <!ENTITY slang-version   "1.4.9">
 <!ENTITY slang-package   "slang-&slang-version;.tar.bz2">
@@ -22,7 +24,7 @@
 <!ENTITY libxml-package   "libxml-&libxml-version;.tar.bz2">
 <!ENTITY libxml-directory "libxml-&libxml-version;">
 
-<!ENTITY libxml2-version   "2.6.16">
+<!ENTITY libxml2-version   "2.6.17">
 <!ENTITY libxml2-package   "libxml2-&libxml2-version;.tar.gz">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
@@ -43,7 +45,7 @@
 <!ENTITY glib-directory "glib-&glib-version;">
 <!ENTITY glib-gcc34-patch "glib-&glib-version;-gcc34-1.patch">
 
-<!ENTITY glib2-version   "2.4.7">
+<!ENTITY glib2-version   "2.6.0">
 <!ENTITY glib2-package   "glib-&glib2-version;.tar.bz2">
 <!ENTITY glib2-directory "glib-&glib2-version;">
 

@@ -22,6 +22,11 @@
       <stageinfo>
         <base>&build_dir;/&libfame-directory;</base>
       </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&libfame-patch;</param>
+      </patch>
       <configure>
         <param>--prefix=/usr</param>
       </configure>
