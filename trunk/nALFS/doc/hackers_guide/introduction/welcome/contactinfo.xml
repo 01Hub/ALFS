@@ -40,15 +40,13 @@ mailing list will be copied to its correspondent newsgroup, and vice versa.</par
 
 <para>Some other links that might interest you:</para>
 
-<para>Linux From Scratch:
-<blockquote><literallayout>
-<ulink url="&http-root;">&http-root;</ulink>
-</literallayout></blockquote></para>
+<para>Linux From Scratch:</para>
+<blockquote><para><ulink url="&http-root;">&http-root;</ulink>
+</para></blockquote>
 
-<para>Automated Linux From Scratch:
-<blockquote><literallayout>
-<ulink url="&alfs-root;">&alfs-root;</ulink>
-</literallayout></blockquote></para>
+<para>Automated Linux From Scratch:</para>
+<blockquote><para><ulink url="&alfs-root;">&alfs-root;</ulink>
+</para></blockquote>
 
 </sect2>
 
