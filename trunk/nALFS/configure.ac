@@ -22,6 +22,32 @@ if test x$enable_static = xyes; then
    AC_DEFINE([STATIC_BUILD], [1], [Define if the application is being built as a static executable.])
 fi
 
+AC_ARG_ENABLE([syntax],
+	AC_HELP_STRING([--enable-syntax=VERSIONS], [enable only specific ALFS profile syntax versions to be built]),
+	[SYNTAX_LIST=$enableval],
+	[SYNTAX_LIST=2.0,3.0,3.1])
+
+save_ifs="$IFS"; IFS="${IFS}${PATH_SEPARATOR},"
+for syntax_ver in ${SYNTAX_LIST}; do
+    case ${syntax_ver} in
+    2.0)
+	AC_DEFINE([HANDLER_SYNTAX_2_0], [1], [Define if ALFS 2.0 profile syntax handlers should be built.])
+        ;;
+    3.0)
+	AC_DEFINE([HANDLER_SYNTAX_3_0], [1], [Define if ALFS 3.0 profile syntax handlers should be built.])
+        ;;
+    3.1)
+	AC_DEFINE([HANDLER_SYNTAX_3_1], [1], [Define if ALFS 3.1 profile syntax handlers should be built.])
+        ;;
+    *)
+	echo "***"
+	echo "*** Unknown syntax version supplied: ${syntax_ver}"
+	exit 1
+	;;
+    esac
+done
+IFS="${save_ifs}"
+
 AC_ARG_ENABLE([inline], AC_HELP_STRING([--disable-inline], [disable compiler inlining of functions]), [INLINE=$withval], [INLINE=yes])
 
 if test "$INLINE" = "yes"; then
