@@ -67,6 +67,7 @@ suites for GCC and Binutils until you are able to resolve the issue.
 			<param>--enable-threads=posix</param>
 			<param>--enable-__cxa_atexit</param>
 			<param>--enable-languages=c,c++</param>
+			<param>--disable-libstdcxx-pch</param>
 		</configure>
 
 		<make />
