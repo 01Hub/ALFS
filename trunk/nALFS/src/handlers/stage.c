@@ -50,6 +50,8 @@
 extern char **environ;
 
 
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+
 static INLINE int set_supplementary_groups(const char *user, gid_t gid)
 {
 	size_t size;
@@ -367,6 +369,10 @@ static int parse_stageinfo_and_execute_children(
 	return status;
 }
 
+static const char *stage_parameters[] =
+{ "stageinfo", "base", "root", "user", "environment", "variable", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = {
+// "name", "description", "logfile", "mode", NULL };
 
 static int stage_main(element_s *el)
 {
@@ -404,15 +410,12 @@ static int stage_main(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *stage_parameters[] =
-{ "stageinfo", "base", "root", "user", "environment", "variable", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = {
-// "name", "description", "logfile", "mode", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_3_0

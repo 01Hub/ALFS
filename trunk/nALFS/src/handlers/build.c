@@ -35,6 +35,10 @@
 #include "logging.h"
 
 
+#if HANDLER_SYNTAX_2_0
+
+static const char *build_parameters[] = { NULL };
+
 static int build_main(element_s *el)
 {
 	int i;
@@ -48,12 +52,12 @@ static int build_main(element_s *el)
 	return i;
 }
 
+#endif /* HANDLER_SYNTAX_2_0 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *build_parameters[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

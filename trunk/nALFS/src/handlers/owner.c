@@ -45,6 +45,11 @@
 #define El_owner_targets(el) alloc_trimmed_param_value("name", el)
 
 
+#if HANDLER_SYNTAX_2_0
+
+static const char *owner_parameters[] =
+{ "options", "base", "user", "group", "name", NULL };
+
 static int owner_main(element_s *el)
 {
 	int status = 0;
@@ -169,13 +174,12 @@ static int owner_main(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_2_0 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *owner_parameters[] =
-{ "options", "base", "user", "group", "name", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

@@ -34,6 +34,10 @@
 #include "win.h"
 
 
+#if HANDLER_SYNTAX_2_0 || HANDLER_SYNTAX_3_0
+
+static const char *log_parameters[] = { NULL };
+
 static int log_main(element_s *el)
 {
 	Nprint_h("%s", el->content ? el->content : "");
@@ -41,12 +45,12 @@ static int log_main(element_s *el)
 	return 0;
 }
 
+#endif /* HANDLER_SYNTAX_2_0 || HANDLER_SYNTAX_3_0 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *log_parameters[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

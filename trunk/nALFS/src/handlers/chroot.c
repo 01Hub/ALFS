@@ -44,6 +44,11 @@
 #include "backend.h"
 
 
+#if HANDLER_SYNTAX_2_0
+
+static const char *chroot_parameters[] = { NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "dir", NULL };
+
 static int chroot_main(element_s *el)
 {
 	int status;
@@ -107,13 +112,12 @@ static int chroot_main(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_2_0 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *chroot_parameters[] = { NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "dir", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

@@ -43,6 +43,12 @@
 #define El_link_name(el) alloc_trimmed_param_value("name", el)
 
 
+#if HANDLER_SYNTAX_2_0
+
+static const char *link_parameters_ver2[] =
+{ "options", "base", "target", "name", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "type", NULL };
+
 static int link_main_ver2(element_s *el)
 {
 	int status;
@@ -125,6 +131,14 @@ static int link_main_ver2(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_2_0 */
+
+
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+
+static const char *link_parameters_ver3[] =
+{ "option", "target", "name", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "type", "base", NULL };
 
 static int link_main_ver3(element_s *el)
 {
@@ -236,18 +250,12 @@ static int link_main_ver3(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *link_parameters_ver2[] =
-{ "options", "base", "target", "name", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "type", NULL };
-
-static const char *link_parameters_ver3[] =
-{ "option", "target", "name", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "type", "base", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

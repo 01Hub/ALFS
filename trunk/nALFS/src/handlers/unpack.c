@@ -111,6 +111,11 @@ static int unpack_archive(const char *archive)
 }
 
 
+#if HANDLER_SYNTAX_2_0
+
+static const char *unpack_parameters_ver2[] =
+{ "archive", "destination", NULL };
+
 static int unpack_main_ver2(element_s *el)
 {
 	int status = 0;
@@ -155,6 +160,13 @@ static int unpack_main_ver2(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_2_0 */
+
+
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+
+static const char *unpack_parameters_ver3[] =
+{ "digest", "reference", "archive", "destination", NULL };
 
 static int unpack_main_ver3(element_s *el)
 {
@@ -236,16 +248,12 @@ static int unpack_main_ver3(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *unpack_parameters_ver2[] =
-{ "archive", "destination", NULL };
-
-static const char *unpack_parameters_ver3[] =
-{ "digest", "reference", "archive", "destination", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0

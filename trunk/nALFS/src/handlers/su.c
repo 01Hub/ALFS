@@ -48,6 +48,8 @@
 #include "utility.h"
 
 
+#if HANDLER_SYNTAX_2_0
+
 static INLINE int set_supplementary_groups(const char *user)
 {
 	int i;
@@ -141,6 +143,9 @@ static INLINE int change_to_user(const char *user)
 }
 
 
+static const char *su_parameters[] = { NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "user", NULL };
+
 static int su_main(element_s *el)
 {
 	int status;
@@ -200,13 +205,12 @@ static int su_main(element_s *el)
 	return status;
 }
 
+#endif /* HANDLER_SYNTAX_2_0 */
+
 
 /*
  * Handlers' information.
  */
-
-static const char *su_parameters[] = { NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "user", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_2_0
