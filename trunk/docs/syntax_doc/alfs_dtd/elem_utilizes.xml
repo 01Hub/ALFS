@@ -41,19 +41,20 @@ same profile.</para>
 
 <screen><userinput>&lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
 
-&lt;packageinfo&gt;
-	&lt;requires&gt;&lt;name&gt;gtk+&lt;/name&gt;&lt;/requires&gt;
+	&lt;packageinfo&gt;
 
-	&lt;utilizes&gt;&lt;name&gt;libtiff&lt;/name&gt;&lt;/utilizes&gt;
-	&lt;utilizes&gt;&lt;name&gt;libpng&lt;/name&gt;&lt;/utilizes&gt;
-	&lt;utilizes&gt;&lt;name&gt;libjpeg&lt;/name&gt;&lt;/utilizes&gt;
-	&lt;utilizes&gt;&lt;name&gt;aalib&lt;/name&gt;&lt;/utilizes&gt;
-	&lt;utilizes&gt;&lt;name&gt;mpeg_lib&lt;/name&gt;&lt;/utilizes&gt;
-	&lt;utilizes&gt;&lt;name&gt;python&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;requires&gt;&lt;name&gt;gtk+&lt;/name&gt;&lt;/requires&gt;
 
-&lt;/packageinfo&gt;
+		&lt;utilizes&gt;&lt;name&gt;libtiff&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;libpng&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;libjpeg&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;aalib&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;mpeg_lib&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;python&lt;/name&gt;&lt;/utilizes&gt;
 
-	....
+	&lt;/packageinfo&gt;
+
+	.....
 
 &lt;/package&gt;</userinput></screen>
 
