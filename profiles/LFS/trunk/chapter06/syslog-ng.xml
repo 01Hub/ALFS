@@ -34,6 +34,10 @@
 			<param>install</param>
 		</make>
 
+		<mkdir>
+			<name>/etc/syslog-ng</name>
+		</mkdir>
+
 		<textdump>
 			<file>/etc/syslog-ng/syslog-ng.conf</file>
 			<content>

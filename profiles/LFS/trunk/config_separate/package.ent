@@ -340,7 +340,7 @@
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
 <!ENTITY texinfo-segfault-patch-md5 "ce5aa1bb05b3c6638e071d2b0283fdd6">
-<!ENTITY texinfo-segfault-patch "texinfp-&texinfo-version;-segfault-1.patch">
+<!ENTITY texinfo-segfault-patch "texinfo-&texinfo-version;-segfault-1.patch">
 
 <!ENTITY udev-md5 "8202bf86e9f2cb5483d473f9977eeafc">
 <!ENTITY udev-version "030">
