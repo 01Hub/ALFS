@@ -1,8 +1,8 @@
 <package name="gcc-pass1" version="&gcc-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&gcc-core-md5;</digest>
-			<archive>&packages_dir;/&gcc-core-package;</archive>
+			<digest>&gcc-md5;</digest>
+			<archive>&packages_dir;/&gcc-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 

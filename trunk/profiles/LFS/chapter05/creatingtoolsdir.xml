@@ -90,6 +90,7 @@
 			<source>&less-package;</source>
 			<source>&lfs-bootscripts-package;</source>
 			<source>&libtool-package;</source>
+			<source>&libxml2-package;</source>
 			<source>&linux-package;</source>
 			<source>&linux-libc-headers-package;</source>
 			<source>&kernel-config;</source>
@@ -102,6 +103,7 @@
 			<source>&mktemp-tempfile-patch;</source>
 			<source>&module-tools-package;</source>
 			<source>&ncurses-package;</source>
+			<source>&nALFS-package;</source>
 			<source>&net-tools-package;</source>
 			<source>&net-tools-gcc34-patch;</source>
 			<source>&net-tools-kernel-headers-patch;</source>
