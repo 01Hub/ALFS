@@ -359,7 +359,9 @@ char *alloc_base_dir_new(element_s *el)
 	}
 
 	for (s = el->parent; s; s = s->parent) {
-		if (Is_element_name(s, "stage")) {
+		if (!s->handler) continue;
+
+		if (s->handler->info->type & HTYPE_STAGE) {
 			element_s *sinfo;
 
 			if ((sinfo = first_param("stageinfo", s)) == NULL) {
@@ -386,7 +388,9 @@ char *alloc_base_dir_force(element_s *el)
 	}
 
 	for (s = el->parent; s; s = s->parent) {
-		if (Is_element_name(s, "stage")) {
+		if (!s->handler) continue;
+
+		if (s->handler->info->type & HTYPE_STAGE) {
 			element_s *sinfo;
 
 			if ((sinfo = first_param("stageinfo", s)) == NULL) {
@@ -408,7 +412,9 @@ char *alloc_stage_shell(element_s *el)
 	char *shell = "sh";
 
 	for (s = el->parent; s; s = s->parent) {
-		if (Is_element_name(s, "stage")) {
+		if (!s->handler) continue;
+
+		if (s->handler->info->type & HTYPE_STAGE) {
 			element_s *sinfo;
 
 			if ((sinfo = first_param("stageinfo", s)) == NULL) {
