@@ -37,7 +37,7 @@ i386 keymaps) -->
 	<textdump>
 		<file>/etc/kbd/bs-sends-del</file>
 		<content>
-		=                keycode 14 =    Delete  Delete          Delete  Delete
+		=                keycode 14 =    Delete  Delete Delete  Delete
 		=        alt     keycode 14 =    Meta_Delete
 		=altgr   alt     keycode 14 =    Meta_Delete
 		=                keycode 111 =   Remove

@@ -58,12 +58,6 @@
 		<remove>/usr/bin/bzcat</remove>
 		<remove>/usr/bin/bzip2</remove>
 
-		<move base="/usr/bin">
-			<source>bzip2recover</source>
-			<source>bzless</source>
-			<source>bzmore</source>
-			<destination>/bin</destination>
-		</move>
 
 		<link>
 			<option>force</option>
