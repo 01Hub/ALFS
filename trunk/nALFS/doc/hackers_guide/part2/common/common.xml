@@ -1,0 +1,15 @@
+<chapter id="common-common" xreflabel="Common">
+<?dbhtml filename="common/common.html" dir="part2"?>
+<title>Common Elements for the &book-product; Hackers Guide</title>
+
+<sect1>
+
+<para>PAGE TO BE WRITTEN</para>
+
+</sect1>
+
+&common-cvs;
+&common-bugzilla;
+
+</chapter>
+

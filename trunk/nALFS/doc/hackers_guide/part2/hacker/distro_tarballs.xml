@@ -1,5 +1,5 @@
-<sect1 id="ch1-distro_tarballs" xreflabel="Distribution Tarballs">
-<?dbhtml filename="distro_tarballs.html" dir="chapter01"?>
+<sect1 id="hacker-distro-tarballs" xreflabel="Distribution Tarballs">
+<?dbhtml filename="distro_tarballs.html" dir="hacker"?>
 <title>Distribution Tarballs</title>
 
 <para>When you are ready to produce a tarball for distribution, there are a
