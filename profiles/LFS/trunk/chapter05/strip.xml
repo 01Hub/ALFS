@@ -2,14 +2,15 @@
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
 []>
 <alfs>
-  <!--    
+<!--
  ************************ 
  * OPTIONAL BUT USEFUL  *
  ************************
 
  * remove the space in between the - -strip commands to make the strip work
-
+-->
   <stage name="First stripping of debug symbols">
+    <!--    
     <execute command="/tools/bin/strip">
       <param>- -strip-debug</param>
       <param>/tools/lib/*</param>
@@ -19,6 +20,6 @@
       <param>/tools/{,s}bin/*</param>
     </execute>
     <remove>/tools/{doc,info,man}</remove>
+    -->
   </stage>
--->
 </alfs>
