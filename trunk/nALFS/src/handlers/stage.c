@@ -306,6 +306,14 @@ static int stage_setup(element_s * const element)
 	return 0;
 }
 
+static void stage_free(const element_s * const element)
+{
+	struct stage_data *data = (struct stage_data *) element->handler_data;
+	
+	xfree(data->name);
+	xfree(element->handler_data);
+}
+
 static int stage_attribute(const element_s * const element,
 			   const char * const attribute,
 			   const char * const value)
@@ -442,6 +450,17 @@ static int stageinfo_setup(element_s * const element)
 	return 0;
 }
 
+static void stageinfo_free(const element_s * const element)
+{
+	struct stageinfo_data *data = (struct stageinfo_data *) element->handler_data;
+	
+	xfree(data->base);
+	xfree(data->root);
+	xfree(data->user);
+	xfree(data->shell);
+	xfree(element->handler_data);
+}
+
 static int stageinfo_parameter(const element_s * const element,
 			       const char * const parameter,
 			       const char * const value)
@@ -559,6 +578,15 @@ static int variable_setup(element_s *element)
 	return 0;
 }
 
+static void variable_free(const element_s * const element)
+{
+	struct variable_data *data = (struct variable_data *) element->handler_data;
+	
+	xfree(data->name);
+	xfree(data->value);
+	xfree(element->handler_data);
+}
+
 static int variable_attribute(const element_s * const element,
 			      const char * const attribute,
 			      const char * const value)
@@ -648,6 +676,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.data = HDATA_BASE,
 		.alloc_data = stage_data,
 		.setup = stage_setup,
+		.free = stage_free,
 		.attributes = stage_attributes,
 		.parse_attribute = stage_attribute,
 	},
@@ -659,6 +688,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = stageinfo_main,
 		.alloc_data = stageinfo_data,
 		.setup = stageinfo_setup,
+		.free = stageinfo_free,
 		.parameters = stageinfo_parameters,
 		.parse_parameter = stageinfo_parameter,
 	},
@@ -676,6 +706,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.main = variable_main,
 		.setup = variable_setup,
+		.free = variable_free,
 		.attributes = variable_attributes,
 		.parse_attribute = variable_attribute,
 		.parse_content = variable_content,
@@ -692,6 +723,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.data = HDATA_BASE,
 		.alloc_data = stage_data,
 		.setup = stage_setup,
+		.free = stage_free,
 		.attributes = stage_attributes,
 		.parse_attribute = stage_attribute,
 	},
@@ -703,6 +735,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = then_main,
 		.data = HDATA_BASE,
 		.alloc_data = stage_data,
+		.setup = stage_setup,
+		.free = stage_free,
+		.attributes = stage_attributes,
+		.parse_attribute = stage_attribute,
 	},
 	{
 		.name = "else",
@@ -712,6 +748,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = else_main,
 		.data = HDATA_BASE,
 		.alloc_data = stage_data,
+		.setup = stage_setup,
+		.free = stage_free,
+		.attributes = stage_attributes,
+		.parse_attribute = stage_attribute,
 	},
 	{
 		.name = "stageinfo",
@@ -721,6 +761,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = stageinfo_main,
 		.alloc_data = stageinfo_data,
 		.setup = stageinfo_setup,
+		.free = stageinfo_free,
 		.parameters = stageinfo_parameters,
 		.parse_parameter = stageinfo_parameter,
 	},
@@ -738,6 +779,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.main = variable_main,
 		.setup = variable_setup,
+		.free = variable_free,
 		.attributes = variable_attributes,
 		.parse_attribute = variable_attribute,
 		.parse_content = variable_content,
@@ -754,6 +796,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.data = HDATA_BASE | HDATA_SHELL,
 		.alloc_data = stage_data,
 		.setup = stage_setup,
+		.free = stage_free,
 		.attributes = stage_attributes,
 		.parse_attribute = stage_attribute,
 	},
@@ -765,6 +808,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = then_main,
 		.data = HDATA_BASE | HDATA_SHELL,
 		.alloc_data = stage_data,
+		.setup = stage_setup,
+		.free = stage_free,
+		.attributes = stage_attributes,
+		.parse_attribute = stage_attribute,
 	},
 	{
 		.name = "else",
@@ -774,6 +821,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = else_main,
 		.data = HDATA_BASE | HDATA_SHELL,
 		.alloc_data = stage_data,
+		.setup = stage_setup,
+		.free = stage_free,
+		.attributes = stage_attributes,
+		.parse_attribute = stage_attribute,
 	},
 	{
 		.name = "stageinfo",
@@ -782,6 +833,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_STAGEINFO,
 		.main = stageinfo_main,
 		.setup = stageinfo_setup,
+		.free = stageinfo_free,
 		.alloc_data = stageinfo_data,
 		.parameters = stageinfo_parameters_3_2,
 		.parse_parameter = stageinfo_parameter,
@@ -800,6 +852,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.main = variable_main,
 		.setup = variable_setup,
+		.free = variable_free,
 		.attributes = variable_attributes,
 		.parse_attribute = variable_attribute,
 		.parse_content = variable_content,

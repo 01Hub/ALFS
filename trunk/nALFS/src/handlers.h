@@ -56,6 +56,7 @@ typedef char *(*handler_data_f)(const element_s * const element,
 typedef int (*handler_f)(element_s * const element);
 typedef int (*handler_test)(element_s * const element, int * const result);
 typedef int (*handler_setup)(element_s * const element);
+typedef void (*handler_free)(const element_s * const element);
 typedef int (*handler_parse)(const element_s * const element,
 			     const char * const name,
 			     const char * const value);
@@ -88,11 +89,14 @@ typedef struct handler_info_s {
 				   <shell> element if present in a containing
 				   element */
 
-	/* The following five functions are used during profile parsing, to
+	/* The following functions are used during profile parsing, to
 	   allow handler to store private data in the element_s structure,
 	   and to validate the provided parameters, attributes and content.
+	   The handler_free function is called when an element is freed,
+	   so the handler can free any private data it may have stored.
 	*/
 	handler_setup setup;	/* Function to setup handler private data. */
+	handler_free free;
 	handler_invalid_data invalid_data; /* Validate private data. */
 	handler_invalid_child invalid_child; /* Validate potential child. */
 	handler_parse parse_attribute;
