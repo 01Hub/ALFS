@@ -12,7 +12,7 @@
 ]>
 <alfs>
    <stage name="GNOME pre-installation.">
-    <textdump base="/root">
+    <textdump base="/root" mode="append">
       <file>.bash_profile</file>
       <content>
 	=export GNOME_PREFIX=&gnome-prefix;

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Being $rc_base/init.d/firewall.stop
+# Begin $rc_base/init.d/firewall.stop
 
 # deactivate IP-Forwarding 
 echo 0 > /proc/sys/net/ipv4/ip_forward
@@ -16,3 +16,5 @@ iptables -X
 iptables -P INPUT       ACCEPT
 iptables -P FORWARD     ACCEPT
 iptables -P OUTPUT      ACCEPT
+
+# End $rc_base/init.d/firewall.stop

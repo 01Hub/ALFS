@@ -7,11 +7,6 @@
 <!ENTITY tripwire-sitepassphrase "blahville">
 <!ENTITY tripwire-localpassphrase "blahville2">
 
-<!-- configuartion for kerberos (MIT or Heimdal) -->
-<!ENTITY krb-domain "lfs.org">
-<!ENTITY krb-all-caps-domain "LFS.ORG">
-<!ENTITY krb-hostname "belgarath.lfs.org">
-
 <!-- configuration for stunnel -->
 <!ENTITY stunnel-country "CA">
 <!ENTITY stunnel-state "Alberta">
@@ -19,16 +14,6 @@
 <!ENTITY stunnel-org "Linux From Scratch">
 <!ENTITY stunnel-orgunit "ALFS">
 <!ENTITY stunnel-host "localhost">
-
-<!-- configuration for dhclient -->
-<!-- These two entities should be set to appropriate values to start and stop dhclient -->
-<!ENTITY dhclient-start-params "-q">
-<!ENTITY dhclient-stop-params "-q -r">
-
-<!-- configuration for dhcpcd -->
-<!-- These two entities should be set to appropriate values to start and stop dhcpcd -->
-<!ENTITY dhcpcd-start-params "">
-<!ENTITY dhcpcd-stop-params "-k">
 
 <!-- Kerberos Implementation -->
 <!-- MIT krb 5 (mitkrb) or Heimdal (heimdal) -->

@@ -1,3 +1,5 @@
+## Begin /etc/nanorc
+
 set autoindent
 set const
 set fill 72
@@ -7,3 +9,5 @@ set nohelp
 set regexp
 set smooth
 set suspend
+
+## End /etc/nanorc

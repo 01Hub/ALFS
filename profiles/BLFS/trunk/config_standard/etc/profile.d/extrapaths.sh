@@ -1,3 +1,5 @@
+# Begin /etc/profile.d/extrapaths.sh
+
 if [ -d /usr/local/lib/pkgconfig ] ; then
         pathappend /usr/local/lib/pkgconfig PKG_CONFIG_PATH
 fi
@@ -19,3 +21,5 @@ fi
 #if [ $EUID -gt 99 ]; then
 #        pathappend .
 #fi
+
+# End /etc/profile.d/extrapaths.sh

@@ -1,3 +1,6 @@
+# Begin /etc/mail/aliases
+
 postmaster: root
 MAILER-DAEMON: root
 
+# End /etc/mail/aliases
