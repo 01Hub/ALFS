@@ -6,7 +6,7 @@ http://www.catb.org/~esr/fetchmail/fetchmail-6.2.5.tar.gz
 
 ftp://ftp.mutt.org/mutt/mutt-1.4.2.1i.tar.gz
 
-ftp://ftp.cac.washington.edu/pine/pine4.58.tar.bz2
-http://www.linuxfromscratch.org/patches/blfs/cvs/pine-4.58-fhs-2.patch
+ftp://ftp.cac.washington.edu/pine/pine4.60.tar.bz2
+http://www.linuxfromscratch.org/patches/blfs/5.1/pine-4.60-fhs-3.patch
 
 ftp://ftp.fh-heilbronn.de/pub/mirrors/slrn/slrn-0.9.8.0.tar.bz2

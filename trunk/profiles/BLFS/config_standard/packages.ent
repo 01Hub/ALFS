@@ -547,7 +547,7 @@
 <!ENTITY nmap-package   "nmap-&nmap-version;.tar.bz2">
 <!ENTITY nmap-directory "nmap-&nmap-version;">
 
-<!ENTITY whois-version   "4.6.9">
+<!ENTITY whois-version   "4.6.14">
 <!ENTITY whois-package   "whois_&whois-version;.tar.gz">
 <!ENTITY whois-directory "whois-&whois-version;">
 
@@ -574,11 +574,11 @@
 <!ENTITY mutt-package   "mutt-&mutt-version;.tar.gz">
 <!ENTITY mutt-directory "mutt-1.4.2.1">
 
-<!ENTITY pine-version   "4.58">
+<!ENTITY pine-version   "4.60">
 <!ENTITY pine-package   "pine&pine-version;.tar.bz2">
 <!ENTITY pine-directory "pine&pine-version;">
 
-<!ENTITY pine-patch     "pine-&pine-version;-fhs.patch">
+<!ENTITY pine-patch     "pine-&pine-version;-fhs-3.patch">
 
 <!ENTITY slrn-version   "0.9.8.0">
 <!ENTITY slrn-package   "slrn-&slrn-version;.tar.bz2">
@@ -586,7 +586,7 @@
 
 <!--************* packages for chapter 21 *************-->
 
-<!ENTITY postfix-version   "2.0.19">
+<!ENTITY postfix-version   "2.1.1">
 <!ENTITY postfix-package   "postfix-&postfix-version;.tar.gz">
 <!ENTITY postfix-directory "postfix-&postfix-version;">
 
@@ -602,7 +602,7 @@
 <!ENTITY qpopper-package   "qpopper&qpopper-version;.tar.gz">
 <!ENTITY qpopper-directory "qpopper&qpopper-version;">
 
-<!ENTITY courier-version "0.45.4">
+<!ENTITY courier-version "0.45.5">
 <!ENTITY courier-package "courier-&courier-version;.tar.bz2">
 <!ENTITY courier-directory "courier-&courier-version;">
 
@@ -625,17 +625,18 @@
 <!ENTITY openssh-package   "openssh-&openssh-version;.tar.gz">
 <!ENTITY openssh-directory "openssh-&openssh-version;">
 
-<!ENTITY rsync-version   "2.6.0">
+<!ENTITY rsync-version   "2.6.2">
 <!ENTITY rsync-package   "rsync-&rsync-version;.tar.gz">
 <!ENTITY rsync-directory "rsync-&rsync-version;">
 
-<!ENTITY openldap-version   "2.1.29">
+<!ENTITY openldap-version   "2.1.30">
 <!ENTITY openldap-package   "openldap-&openldap-version;.tgz">
 <!ENTITY openldap-directory "openldap-&openldap-version;">
 
-<!ENTITY samba-version "2.2.8a">
+<!ENTITY samba-version "3.0.4">
 <!ENTITY samba-package "samba-&samba-version;.tar.bz2">
 <!ENTITY samba-directory "samba-&samba-version;">
+<!ENTITY samba-maintainer-patch "samba-&samba-version;-maintainer.patch">
 
 <!ENTITY xinetd-version   "2.3.13">
 <!ENTITY xinetd-package   "xinetd-&xinetd-version;.tar.gz">
@@ -653,7 +654,7 @@
 <!ENTITY db3-package   "db-&db3-version;.tar.gz">
 <!ENTITY db3-directory "db-&db3-version;">
 
-<!ENTITY mysql-version   "4.0.18">
+<!ENTITY mysql-version   "4.0.20">
 <!ENTITY mysql-package   "mysql-&mysql-version;.tar.gz">
 <!ENTITY mysql-directory "mysql-&mysql-version;">
 
@@ -701,7 +702,7 @@
 
 <!--************* packages for chapter 26 *************-->
 
-<!ENTITY qt-version   "3.3.1">
+<!ENTITY qt-version   "3.3.2">
 <!ENTITY qt-package   "qt-x11-free-&qt-version;.tar.bz2">
 <!ENTITY qt-directory "qt-x11-free-&qt-version;">
 
@@ -709,11 +710,11 @@
 <!ENTITY gtkplus-package   "gtk+-&gtkplus-version;.tar.gz">
 <!ENTITY gtkplus-directory "gtk+-&gtkplus-version;">
 
-<!ENTITY gtkplus2-version   "2.4.0">
+<!ENTITY gtkplus2-version   "2.4.1">
 <!ENTITY gtkplus2-package   "gtk+-&gtkplus2-version;.tar.bz2">
 <!ENTITY gtkplus2-directory "gtk+-&gtkplus2-version;">
 
-<!ENTITY atk-version   "1.6.0">
+<!ENTITY atk-version   "1.6.1">
 <!ENTITY atk-package   "atk-&atk-version;tar.bz2">
 <!ENTITY atk-directory "atk-&atk-version;">
 
@@ -1014,7 +1015,7 @@
 <!ENTITY libgnomeprintui-package   "libgnomeprintui-&libgnomeprintui-version;.tar.bz2">
 <!ENTITY libgnomeprintui-directory "libgnomeprintui-&libgnomeprintui-version;">
 
-<!ENTITY gtkhtml-version   "3.1.12">
+<!ENTITY gtkhtml-version   "3.0.10">
 <!ENTITY gtkhtml-package   "gtkhtml-&gtkhtml-version;.tar.bz2">
 <!ENTITY gtkhtml-directory "gtkhtml-&gtkhtml-version;">
 
@@ -1058,7 +1059,7 @@
 <!ENTITY gnome-utils-package   "gnome-utils-&gnome-utils-version;.tar.bz2">
 <!ENTITY gnome-utils-directory "gnome-utils-&gnome-utils-version;">
 
-<!ENTITY gal-version   "2.1.8">
+<!ENTITY gal-version   "1.99.11">
 <!ENTITY gal-package   "gal-&gal-version;.tar.bz2">
 <!ENTITY gal-directory "gal-&gal-version;">
 

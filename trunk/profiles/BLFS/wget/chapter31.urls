@@ -1,6 +1,7 @@
 ftp://ftp.gnome.org/pub/GNOME/sources/libgnomeprint/2.6/libgnomeprint-2.6.1.tar.bz2
 ftp://ftp.gnome.org/pub/GNOME/sources/libgnomeprintui/2.6/libgnomeprintui-2.6.1.tar.bz2
-ftp://ftp.gnome.org/pub/GNOME/sources/gtkhtml/3.1/gtkhtml-3.1.12.tar.bz2
+ftp://ftp.gnome.org/pub/GNOME/sources/gal/1.99/gal-1.99.11.tar.bz2
+ftp://ftp.gnome.org/pub/GNOME/sources/gtkhtml/3.0/gtkhtml-3.0.10.tar.bz2
 ftp://ftp.gnome.org/pub/GNOME/sources/libgtkhtml/2.6/libgtkhtml-2.6.1.tar.bz2
 ftp://ftp.gnome.org/pub/GNOME/sources/yelp/2.6/yelp-2.6.1.tar.bz2
 ftp://ftp.gnome.org/pub/GNOME/sources/bug-buddy/2.6/bug-buddy-2.6.1.tar.bz2
@@ -11,7 +12,6 @@ ftp://ftp.gnome.org/pub/GNOME/sources/ggv/2.6/ggv-2.6.1.tar.bz2
 ftp://ftp.gnome.org/pub/GNOME/sources/file-roller/2.6/file-roller-2.6.1.tar.bz2
 ftp://ftp.gnome.org/pub/GNOME/sources/gconf-editor/2.6/gconf-editor-2.6.1.tar.bz2
 ftp://ftp.gnome.org/pub/GNOME/sources/gnome-utils/2.6/gnome-utils-2.6.2.tar.bz2
-ftp://ftp.gnome.org/pub/GNOME/sources/gal/2.1/gal-2.1.8.tar.bz2
 ftp://ftp.gnome.org/pub/GNOME/sources/gnome-system-monitor/2.6/gnome-system-monitor-2.6.0.tar.bz2
 ftp://ftp.gnome.org/pub/GNOME/sources/gnome-media/2.6/gnome-media-2.6.1.tar.bz2
 ftp://ftp.gnome.org/pub/GNOME/sources/nautilus-media/0.8/nautilus-media-0.8.0.tar.bz2
