@@ -36,11 +36,11 @@
 		</configure>
 
 		<make />
-
+<!--
 		<make>
 			<param>install-root</param>
 		</make>
-<!--
+
 		<textdump mode="append">
 			<file>/etc/group</file>
 			<content>

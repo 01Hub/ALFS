@@ -8,7 +8,7 @@
 
 <stage name="Stripping debug symbols">
 	<execute command="/tools/bin/find">
-		<param>/{,usr/,usr/local/}{bin,sbin,lib}</param>
+		<param>/{,usr/}{bin,lib,sbin}</param>
 		<param>-type f</param>
 		<param>-exec /tools/bin/strip - -strip-debug '{}' ';'</param>	
 	</execute>
