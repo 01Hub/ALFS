@@ -70,9 +70,9 @@
 <!ENTITY file-package "file-&file-version;.tar.gz">
 <!ENTITY file-directory "file-&file-version;">
 
-<!ENTITY findutils-md5 "7225c2705b01e47811066f4e9dc8d677">
+<!ENTITY findutils-md5 "e90ce7222daadeb8616b8db461e17cbc">
 <!ENTITY findutils-version "4.1.20">
-<!ENTITY findutils-package "findutils-&findutils-version;.tar.bz2">
+<!ENTITY findutils-package "findutils-&findutils-version;.tar.gz">
 <!ENTITY findutils-directory "findutils-&findutils-version;">
 
 <!ENTITY flex-md5 "363dcc4afc917dc51306eb9d3de0152f">
@@ -292,9 +292,9 @@
 <!ENTITY tcl-package "tcl&tcl-version;-src.tar.gz">
 <!ENTITY tcl-directory "tcl&tcl-version;">
 
-<!ENTITY texinfo-md5 "72a57e378efb9898c9e41ca839554dae">
+<!ENTITY texinfo-md5 "c2fa2ef957f0d728f821ae9b2362ef4e">
 <!ENTITY texinfo-version "4.7">
-<!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.gz">
+<!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
 <!ENTITY udev-md5 "4f4c0ace4307cb1c73d9f5365fe6c946">
