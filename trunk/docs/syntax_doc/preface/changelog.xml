@@ -5,6 +5,10 @@
 
 <itemizedlist>
 
+<listitem><para>September 26th, 2003 [jwrober]: Modified the header of each 
+page to conform with the DocBook rules that the LFS and BLFS books use (for 
+consistency).</para></listitem>
+
 <listitem><para>September 24th, 2003 [jwrober]: Removed all references to 
 nALFS, moved files to the ALFS/docs from the ALFS/nALFS/doc moudule in 
 CVS.</para></listitem>
