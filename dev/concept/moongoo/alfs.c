@@ -198,10 +198,12 @@ void resolve_entities (xmlNodePtr node)
 	{
 		if (node->type==XML_ENTITY_REF_NODE)
 		{
-			printf("%s\n", node->parent->parent->parent->name);
-			//print_subtree(node->parent->children);
-			//node->prev->next=node->next->next;
-			//printf("%s %s\n", node->name, entity_val((char *)node->name));
+			// TODO: Resolve entities which are outside text nodes
+			if ((node->prev) && (node->prev->type==XML_TEXT_NODE) &&
+				(strcmp(node->prev->parent->name, "title")))
+			{
+				xmlNodeAddContent(node->prev, entity_val((char *)node->name));
+			}
 		}
 		resolve_entities(node->children);
 		node=node->next;
