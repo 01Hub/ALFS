@@ -239,14 +239,15 @@ static INLINE int parse_rc_file(const char *rcfile)
 			while ((c = getc(fp)) != EOF && c != '\n')
 				/* Skip in circle. */;
 
-			fprintf(stderr, "Line %d too long, won't read it.\n",
-								line_num);
+			fprintf(stderr, "File %s:\nLine %d too long, won't read it.\n",
+				rcfile, line_num);
 		}
 
-		if ((ret = parse_rc_line(line)) != 0) {
+		if (parse_rc_line(line) != 0) {
+			ret = 1;
 			fprintf(stderr, 
-				"Error at line %d: %s\n", line_num, line);
-			break;
+				"File %s:\nError at line %d: %s\n",
+				rcfile, line_num, line);
 		}
 	}
 
