@@ -3,12 +3,27 @@
 #include <alfs.h>
 #include <devel.h>
 #include <util.h>
+#include <plugin.h>
 
 // TODO: Having a big static buffer sucks
 #define BUF_LEN		3000
 
 profile *prof;
 char commando[BUF_LEN];
+
+profile *nalfs_profile (xmlNodePtr node);
+
+static t_plug nalfs_plugin =
+{
+	name:	"nALFS legacy syntax",
+	vers:	1,
+	parse:	nalfs_profile
+};
+
+t_plug *getplug ()
+{
+	return &nalfs_plugin;
+}
 
 void parse_unpack (xmlNodePtr node)
 {

@@ -4,6 +4,7 @@
 #include <alfs.h>
 #include <repl.h>
 #include <util.h>
+#include <plugin.h>
 
 command *cmd;
 int num;
@@ -15,6 +16,19 @@ void process_cmd (char *line, xmlNodePtr node);
 void __t_userinput (xmlNodePtr node, void *data);
 command *t_userinput (xmlNodePtr node, int *n);
 void t_chapter (xmlNodePtr node);
+profile *bookasprofile (xmlNodePtr node);
+
+static t_plug book_plugin =
+{
+	name:	"Book as profile",
+	vers:	1,
+	parse:	bookasprofile
+};
+
+t_plug *getplug ()
+{
+	return &book_plugin;
+}
 
 void t_sect1 (xmlNodePtr node, void *data)
 {

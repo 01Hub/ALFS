@@ -1,3 +1,8 @@
-LIBS=
+CFLAGS=-I../libalfs -I..
+LDLIBS=-L../libalfs -lalfs
 
-all: $(LIB)
+LIBS=$(patsubst %.c,%.so,$(wildcard *.c))
+
+all: $(LIBS)
+
+include ../inc.mak

@@ -2,8 +2,23 @@
 
 #include <alfs.h>
 #include <util.h>
+#include <plugin.h>
 
 profile *prof;
+
+profile *ass_profile (xmlNodePtr node);
+
+static t_plug ass_plugin =
+{
+	name:	"ALFS simple syntax",
+	vers:	1,
+	parse:	ass_profile
+};
+
+t_plug *getplug ()
+{
+	return &ass_plugin;
+}
 
 // TODO: Support download/directory in the ASS parser
 void process_cmd3 (char *line, xmlNodePtr node)
