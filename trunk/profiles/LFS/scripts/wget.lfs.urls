@@ -70,6 +70,7 @@ http://downloads.linuxfromscratch.org/patches/6.1-cvs/net-tools-1.60-kernel-head
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/perl-5.8.4-libc-1.patch
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/readline-4.3-gnu-fixes-1.patch
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/sysklogd-1.4.1-kernel-headers-1.patch
+http://downloads.linuxfromscratch.org/patches/6.1-cvs/sysklogd-1.4.1-signal-1.patch
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/udev-025-config-1.patch
 http://downloads.linuxfromscratch.org/patches/6.1-cvs/util-linux-2.12a-kernel-headers-1.patch
 http://www.tazenda.demon.co.uk/phil/net-tools/net-tools-1.60.tar.bz2
