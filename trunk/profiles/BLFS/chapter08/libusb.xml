@@ -18,6 +18,13 @@
 		</unpack>
 	</stage>
 
+	<stage name="Creating group">
+		<execute command="groupadd">
+			<param>-f</param>
+			<param>-g 15</param>
+			<param>usb</param>
+		</execute>
+	</stage>
 
 	<stage name="Installing">
 		<stageinfo>
@@ -34,12 +41,6 @@
 		<make>
 			<param>install</param>
 		</make>
-
-		<execute command="grep -q ^usb /etc/group">
-			<param>|| groupadd</param>
-			<param>-g 15</param>
-			<param>usb</param>
-		</execute>
 	</stage>
 
 	<stage name="Installing bootscript and configuration">
