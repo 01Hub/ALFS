@@ -20,7 +20,6 @@ NALFS_LIBS="-lnALFS"
 AC_CONFIG_LIBCONFIG_IN([nALFS])
 AC_STDC_HEADERS
 AC_CONFIG_HEADER([config.h])
-AX_CFLAGS_GCC_OPTION([-Wno-unused-function])
 AC_CHECK_LIB([form], [form_driver], [MAIN_LIBS="${MAIN_LIBS} -lform"])
 AC_CHECK_LIB([ncurses], [initscr], [MAIN_LIBS="${MAIN_LIBS} -lncurses"])
 AC_SUBST([MAIN_LIBS])
