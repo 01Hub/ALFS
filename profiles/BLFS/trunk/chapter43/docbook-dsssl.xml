@@ -36,10 +36,10 @@
         <name>test</name>
         <name>images</name>
       </mkdir>
-      <execute command="install">
-        <param>bin/collateindex.pl</param>
-        <param>/usr/bin</param>
-      </execute>
+      <copy>
+        <source>bin/collateindex.pl</source>
+        <destination>/usr/bin</destination>
+      </copy>
       <copy>
         <source>catalog</source>
         <source>VERSION</source>

@@ -480,6 +480,7 @@
       <xi:include href="chapter43/opensp.xml" />
       <xi:include href="chapter43/openjade.xml" />
       <xi:include href="chapter43/docbook-dsssl.xml" />
+      <xi:include href="chapter43/docbook-utils.xml" />
     </stage>
     <stage name="Chapter 44 (Extensible Markup Language - XML)">
       <xi:include href="chapter44/xml-dtd.xml" />
@@ -491,6 +492,7 @@
       <xi:include href="chapter45/psutils.xml" />
       <xi:include href="chapter45/gsview.xml" />
       <xi:include href="chapter45/xpdf.xml" />
+      <xi:include href="chapter45/fop.xml" />
     </stage>
     <stage name="Chapter 46 (Typesetting)">
       <xi:include href="chapter46/tex.xml" />

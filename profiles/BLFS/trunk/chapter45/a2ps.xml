@@ -14,10 +14,16 @@
   <package name="a2ps" version="&a2ps-version;">
     <packageinfo>
       <utilizes>
+        <name>&ximpl;</name>
+      </utilizes>
+      <utilizes>
         <name>psutils</name>
       </utilizes>
       <utilizes>
-        <name>ghostscript</name>
+      	<name>tex</name>
+      </utilizes>
+      <utilizes>
+	<name>&ghostscript-impl;</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -40,10 +46,16 @@
         <find>/usr/local/share/ghostscript</find>
         <replace>/usr/share/ghostscript</replace>
       </search_replace>
+      <search_replace>
+	<file>lib/path-concat.c</file>
+	<find>char *malloc ();</find>
+	<replace>/* char *malloc (); */</replace>
+      </search_replace>
       <configure>
         <param>--prefix=/usr</param>
         <param>--sysconfdir=/etc/a2ps</param>
         <param>--localstatedir=/var</param>
+	<param>--enable-shared</param>
         <param>--with-medium=letter</param>
       </configure>
       <make />

@@ -44,36 +44,33 @@
       </search_replace>
       <search_replace>
         <file>docbook.cat</file>
-        <find>gml</find>
-        <replace></replace>
-      </search_replace>
-      <search_replace>
-        <file>docbook.cat</file>
         <find>DTDDECL "-//OASIS//DTD DocBook V3.1//EN"</find>
         <replace>SGMLDECL</replace>
       </search_replace>
-      <execute command="install -d /usr/share/sgml/docbook/sgml-dtd-3.1" />
+      <mkdir>
+      	<option>parents</option>
+	<name>/usr/share/sgml/docbook/sgml-dtd-&sgml-dtd31-version;</name>
+      </mkdir>
       <ownership user="root" group="root">
         <option>recursive</option>
         <name>.</name>
       </ownership>
-      <permissions mode="755">
-        <option>recursive</option>
-        <name>.</name>
-      </permissions>
-      <execute command="install docbook.cat /usr/share/sgml/docbook/sgml-dtd-3.1/catalog" />
+      <copy>
+	<source>docbook.cat</source>
+	<destination>/usr/share/sgml/docbook/sgml-dtd-&sgml-dtd31-version;/catalog</destination>
+      </copy>
       <copy>
         <option>archive</option>
         <option>force</option>
         <source>*.dtd</source>
         <source>*.mod</source>
         <source>*.dcl</source>
-        <destination>/usr/share/sgml/docbook/sgml-dtd-3.1</destination>
+        <destination>/usr/share/sgml/docbook/sgml-dtd-&sgml-dtd31-version;</destination>
       </copy>
-      <execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-3.1.cat /usr/share/sgml/docbook/sgml-dtd-3.1/catalog" />
-      <execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-3.1.cat /etc/sgml/sgml-docbook.cat" />
+      <execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-&sgml-dtd31-version;.cat /usr/share/sgml/docbook/sgml-dtd-&sgml-dtd31-version;/catalog" />
+      <execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-&sgml-dtd31-version;.cat /etc/sgml/sgml-docbook.cat" />
       <textdump>
-        <file>/usr/share/sgml/docbook/sgml-dtd-3.1/catalog</file>
+        <file>/usr/share/sgml/docbook/sgml-dtd-&sgml-dtd31-version;/catalog</file>
         <content>
 	  = -- Begin Single Major Version catalog changes --
 	  =
