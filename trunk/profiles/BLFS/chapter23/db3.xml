@@ -35,7 +35,12 @@
 			<destination>/opt/db-3.3/include/db_185.h</destination>
 		</move>
 
-		<execute command = "ln -nsf /opt/db-3.3/include /usr/include/db3" />
+		<link>
+			<option>no-dereference</option>
+			<option>force</option>
+			<target>/opt/db-3.3/include</target>
+			<name>/usr/include/db3</name>
+		</link>
 	</stage>
 
 	<stage name="Cleanup">
