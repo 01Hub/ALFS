@@ -1115,49 +1115,49 @@
 
 <!--************* packages for chapter 42 *************-->
 
-<!ENTITY alsa-driver-version   "0.9.6">
-<!ENTITY alsa-driver-package   "alsa-driver-0.9.6.tar.bz2">
-<!ENTITY alsa-driver-directory "alsa-driver-0.9.6">
+<!ENTITY alsa-driver-version   "0.9.8">
+<!ENTITY alsa-driver-package   "alsa-driver-0.9.8.tar.bz2">
+<!ENTITY alsa-driver-directory "alsa-driver-0.9.8">
 
-<!ENTITY alsa-lib-version      "0.9.6">
-<!ENTITY alsa-lib-package      "alsa-lib-0.9.6.tar.bz2">
-<!ENTITY alsa-lib-directory    "alsa-lib-0.9.6">
+<!ENTITY alsa-lib-version      "0.9.8">
+<!ENTITY alsa-lib-package      "alsa-lib-0.9.8.tar.bz2">
+<!ENTITY alsa-lib-directory    "alsa-lib-0.9.8">
 
-<!ENTITY alsa-utils-version      "0.9.6">
-<!ENTITY alsa-utils-package      "alsa-utils-0.9.6.tar.bz2">
-<!ENTITY alsa-utils-directory    "alsa-utils-0.9.6">
+<!ENTITY alsa-utils-version      "0.9.8">
+<!ENTITY alsa-utils-package      "alsa-utils-0.9.8.tar.bz2">
+<!ENTITY alsa-utils-directory    "alsa-utils-0.9.8">
 
-<!ENTITY alsa-tools-version      "0.9.6">
-<!ENTITY alsa-tools-package      "alsa-tools-0.9.6.tar.bz2">
-<!ENTITY alsa-tools-directory    "alsa-tools-0.9.6">
+<!ENTITY alsa-tools-version      "0.9.8">
+<!ENTITY alsa-tools-package      "alsa-tools-0.9.8.tar.bz2">
+<!ENTITY alsa-tools-directory    "alsa-tools-0.9.8">
 
-<!ENTITY alsa-oss-version        "0.9.6">
-<!ENTITY alsa-oss-package        "alsa-oss-0.9.6.tar.bz2">
-<!ENTITY alsa-oss-directory      "alsa-oss-0.9.6">
+<!ENTITY alsa-oss-version        "0.9.8">
+<!ENTITY alsa-oss-package        "alsa-oss-0.9.8.tar.bz2">
+<!ENTITY alsa-oss-directory      "alsa-oss-0.9.8">
 
-<!ENTITY audiofile-version      "0.2.3">
-<!ENTITY audiofile-package      "audiofile-0.2.3.tar.gz">
-<!ENTITY audiofile-directory    "audiofile-0.2.3">
+<!ENTITY audiofile-version      "0.2.4">
+<!ENTITY audiofile-package      "audiofile-0.2.4.tar.gz">
+<!ENTITY audiofile-directory    "audiofile-0.2.4">
 
-<!ENTITY esound-version      "0.2.30">
-<!ENTITY esound-package      "esound-0.2.30.tar.bz2">
-<!ENTITY esound-directory    "esound-0.2.30">
+<!ENTITY esound-version      "0.2.32">
+<!ENTITY esound-package      "esound-0.2.32.tar.bz2">
+<!ENTITY esound-directory    "esound-0.2.32">
 
 <!ENTITY sdl-version      "1.2.6">
 <!ENTITY sdl-package      "SDL-1.2.6.tar.gz">
 <!ENTITY sdl-directory    "SDL-1.2.6">
 
-<!ENTITY libao-version      "0.8.3">
-<!ENTITY libao-package      "libao-0.8.3.tar.gz">
-<!ENTITY libao-directory    "libao-0.8.3">
+<!ENTITY libao-version      "0.8.4">
+<!ENTITY libao-package      "libao-0.8.4.tar.gz">
+<!ENTITY libao-directory    "libao-0.8.4">
 
-<!ENTITY libogg-version      "1.0">
-<!ENTITY libogg-package      "libogg-1.0.tar.gz">
-<!ENTITY libogg-directory    "libogg-1.0">
+<!ENTITY libogg-version      "1.1">
+<!ENTITY libogg-package      "libogg-1.1.tar.gz">
+<!ENTITY libogg-directory    "libogg-1.1">
 
-<!ENTITY libvorbis-version      "1.0">
-<!ENTITY libvorbis-package      "libvorbis-1.0.tar.gz">
-<!ENTITY libvorbis-directory    "libvorbis-1.0">
+<!ENTITY libvorbis-version      "1.0.1">
+<!ENTITY libvorbis-package      "libvorbis-1.0.1.tar.gz">
+<!ENTITY libvorbis-directory    "libvorbis-1.0.1">
 
 <!ENTITY nas-version      "1.6">
 <!ENTITY nas-package      "nas-1.6.src.tar.gz">
@@ -1181,9 +1181,9 @@
 <!ENTITY libfame-package      "libfame-0.9.0.tar.gz">
 <!ENTITY libfame-directory    "libfame-0.9.0">
 
-<!ENTITY speex-version        "1.0.1">
-<!ENTITY speex-package        "speex-1.0.1.tar.gz">
-<!ENTITY speex-directory      "speex-1.0.1">
+<!ENTITY speex-version        "1.0.3">
+<!ENTITY speex-package        "speex-1.0.3.tar.gz">
+<!ENTITY speex-directory      "speex-1.0.3">
 
 <!ENTITY id3lib-version        "3.8.3">
 <!ENTITY id3lib-package        "id3lib-3.8.3.tar.gz">
@@ -1217,19 +1217,23 @@
 <!ENTITY xine-lib-package      "xine-lib-1-rc0a.tar.gz">
 <!ENTITY xine-lib-directory    "xine-lib-1-rc0a">
 
+<!ENTITY libmikmod-version      "3.1.10">
+<!ENTITY libmikmod-package      "libmikmod-3.1.10.tar.gz">
+<!ENTITY libmikmod-directory    "libmikmod-3.1.10">
+
 <!--************* packages for chapter 43 *************-->
 
 <!ENTITY mpg123-version      "0.59r">
 <!ENTITY mpg123-package      "mpg123-0.59r.tar.gz">
 <!ENTITY mpg123-directory    "mpg123-0.59r">
 
-<!ENTITY vorbis-tools-version      "1.0">
-<!ENTITY vorbis-tools-package      "vorbis-tools-1.0.tar.gz">
-<!ENTITY vorbis-tools-directory    "vorbis-tools-1.0">
+<!ENTITY vorbis-tools-version      "1.0.1">
+<!ENTITY vorbis-tools-package      "vorbis-tools-1.0.1.tar.gz">
+<!ENTITY vorbis-tools-directory    "vorbis-tools-1.0.1">
 
-<!ENTITY xmms-version      "1.2.7">
-<!ENTITY xmms-package      "xmms-1.2.7.tar.bz2">
-<!ENTITY xmms-directory    "xmms-1.2.7">
+<!ENTITY xmms-version      "1.2.8">
+<!ENTITY xmms-package      "xmms-1.2.8.tar.bz2">
+<!ENTITY xmms-directory    "xmms-1.2.8">
 
 <!ENTITY lame-version      "3.93.1">
 <!ENTITY lame-package      "lame-3.93.1.tar.gz">

@@ -518,6 +518,7 @@
     &liba52;
     &xvid;
     &xine-lib;
+    &libmikmod;
 
 </stage>
 

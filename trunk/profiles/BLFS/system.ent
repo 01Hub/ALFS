@@ -337,6 +337,7 @@
 <!ENTITY liba52       SYSTEM "./chapter42/liba52.xml">
 <!ENTITY xvid         SYSTEM "./chapter42/xvid.xml">
 <!ENTITY xine-lib     SYSTEM "./chapter42/xine-lib.xml">
+<!ENTITY libmikmod    SYSTEM "./chapter42/libmikmod.xml">
 
 <!-- chapter 43 -->
 <!ENTITY mpg123       SYSTEM "./chapter43/mpg123.xml">
