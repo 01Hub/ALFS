@@ -38,6 +38,7 @@ typedef enum handler_type_e {
 	HTYPE_TRUE_RESULT = 16,	/* handler should be run for a true test */
 	HTYPE_FALSE_RESULT = 32,/* handler should be run for a false test */
 	HTYPE_EXECUTE = 64,
+	HTYPE_STAGE = 128,      /* handler is a stage container */
 } handler_type_e;
 
 typedef enum handler_data_e {
