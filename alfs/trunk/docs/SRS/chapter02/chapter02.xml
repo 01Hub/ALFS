@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<chapter id="chapter-general" xreflabel="Chapter 2">
+<?dbhtml dir="chapter02"?>
+<title>Overall Description</title>
+<?dbhtml filename="chapter02.html"?>
+
+<section id="ch-gen-functions">
+<title>alfs Functions</title>
+
+<para>alfs is designed to be the most complete implementation of the ALFS schema
+syntax specification.  It is designed to support complete automation in the
+creation (build) of Linux From Scratch systems.  The ALFS schema is an XML
+specification that handles the outline of a procedure to be processed by the
+application.  This outline is referred to as a profile.  Each profile can be a
+small set of commands for basic tasks or a large set of commands to build an
+entire system including all LFS and BLFS packages.  When alfs reads a profile,
+it parses the XML into internal command structures and uses its own library of
+internal shared objects to perform the actual work.  alfs will not
+&quot;reinvent the wheel&quot; so to speak with regards to basic system commands
+like <command>make</command>, or <command>cp</command>.  The shared objects are
+wrappers and translators for alfs to use to take the XML profile and run system
+commands.</para>
+
+<para>alfs will also support an extensive logging XML schema.  This new schema
+is designed to provide a large amount of logging facilities that current Linux
+systems support, but not in one place or within one tool.  Most Linux users must
+use Bash shell scripts or other wrapper type scripts to pull these tools
+together to perform debugging, troubleshooting or comparative analysis of a
+build.</para>
+</section>
+
+<section id="ch-gen-similarsys">
+<title>Similar Systems</title>
+<para>alfs is the natural successor to nALFS. It will provide backwards
+compatibility but with extended, optional, functionality.  alfs can be used as a
+direct replacement for nALFS. It should be noted here that alfs will be a
+complete rewrite of nALFS.</para>
+</section>
+
+<section id="ch-gen-impl">
+<title>alfs Implementation Highlights</title>
+
+<para>alfs will support the following concepts:</para>
+<itemizedlist>
+  <listitem><para>Complete separation of a backend server daemon which carries
+    out the specific tasks and a frontend client that initiates the
+    instructions.</para>
+  </listitem>
+
+  <listitem><para>Validation of profiles before any other actions take place.
+  </para></listitem>
+
+  <listitem><para>Downloading and checking of packages from both local and
+  external locations.</para></listitem>
+
+  <listitem><para>Dependency resolution to ensure a package never gets installed
+  unless it has its dependencies satisfied.</para></listitem>
+
+  <listitem><para>A comprehensive and informational logging system.</para>
+  </listitem>
+
+  <listitem><para>A package uninstallation feature.</para></listitem>
+  <listitem><para>Allow support for different clients.</para></listitem>
+  <listitem><para>Ability to handle conditional executions.</para></listitem>
+</itemizedlist>
+</section>
+</chapter>

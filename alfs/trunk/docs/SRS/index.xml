@@ -3,4 +3,5 @@
 <book>
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="prologue/bookinfo.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="chapter01/chapter01.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="chapter02/chapter02.xml"/>
 </book>
