@@ -6,15 +6,21 @@
 
 <itemizedlist>
 
+<listitem><para>May 29th, 2004 [jwrober]: With some help from Manuel
+Canales Esparcia, modified the no-chunks xsl file to support inline css
+styling.</para></listitem>
+
 <listitem><para>May 29th, 2004 [jwrober]: Updated to DocBook v4.3 and
 applied formatting similar to the ALFS Syntax Doc.</para></listitem>
 
-<listitem><para>November 10th, 2003 [kpfleming]: Updated distribution instructions.</para></listitem>
+<listitem><para>November 10th, 2003 [kpfleming]: Updated distribution
+instructions.</para></listitem>
 
-<listitem><para>November 9th, 2003 [kpfleming]: Updated distribution instructions.</para></listitem>
+<listitem><para>November 9th, 2003 [kpfleming]: Updated distribution
+instructions.</para></listitem>
 
-<listitem><para>November 5th, 2003 [jwrober]: Updated most pages to help with
-presentation in the txt file version of the doc.</para></listitem>
+<listitem><para>November 5th, 2003 [jwrober]: Updated most pages to help
+with presentation in the txt file version of the doc.</para></listitem>
 
 <listitem><para>November 4th, 2003 [kpfleming]: Distro Tarballs page was
 missing bootstrap command.</para></listitem>
@@ -26,8 +32,9 @@ Tarballs pages with new updated information.</para></listitem>
 and added a first stab at CVS.</para></listitem>
 
 <listitem><para>October 29th, 2003 [jwrober]: Added a new chapter for
-Bugzilla, CVS, Coding Style and Distribution Tarballs.  Added an initial page
-for each and then a first stab at the Coding Style page.</para></listitem>
+Bugzilla, CVS, Coding Style and Distribution Tarballs.  Added an initial
+page for each and then a first stab at the Coding Style
+page.</para></listitem>
 
 <listitem><para>October 8th, 2003 [jwrober]: Added an Introduction
 section.</para></listitem>

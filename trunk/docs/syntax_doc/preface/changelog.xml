@@ -5,6 +5,10 @@
 
 <itemizedlist>
 
+<listitem><para>May 29th, 2004 [jwrober]: With some help from Manuel
+Canales Esparcia, modified the no-chunks xsl file to support inline css
+styling.</para></listitem>
+
 <listitem><para>May 29th, 2004 [jwrober]: Upgraded to DocBook v4.3 and some
 other little nagging bugs fixes in the render.</para></listitem>
 
