@@ -58,7 +58,7 @@ int main (int argc, char **argv)
 				quiet = true;
 				break;
 			case 'V':
-				printf("moongoo %s\nWritten by Boris Buegling\n", VERSION);
+				printf("%s %s\nWritten by Boris Buegling\n", NAME, VERSION);
 				goto cleanup;
 			case 'h':
 				printf("moongoo [OPTIONS] BOOK\n");

@@ -1,4 +1,4 @@
-/* Moongoo plugin API example
+/* Plugin API example
  *
  * Put your plugin info into the static t_plug structure, including your
  * parser function, which needs to take one xmlNodePtr as argument and

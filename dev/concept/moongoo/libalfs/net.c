@@ -45,7 +45,7 @@ static memchunk *__url_get (char *url, bool header, protocol proto)
 	curl_easy_setopt(handle, CURLOPT_URL, url);
 	curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, writemem_cb);
 	curl_easy_setopt(handle, CURLOPT_WRITEDATA, (void *)chunk);
-	curl_easy_setopt(handle, CURLOPT_USERAGENT, "moongoo-agent/1.0");
+	curl_easy_setopt(handle, CURLOPT_USERAGENT, "curl-agent/1.0");
 	//curl_easy_setopt(handle, CURLOPT_VERBOSE, 1);
 	
 	chunk->res = curl_easy_perform(handle);
