@@ -1,4 +1,4 @@
-<sect1 id="elem_alfs" xreflabel="Element: &lt;alfs&gt;">
+<sect1 id="elem_alfs" xreflabel="Element &emdash; &lt;alfs&gt;">
 <?dbhtml filename="elem_alfs.html" dir="alfs_dtd"?>
 <title>Element: &lt;alfs&gt;</title>
 
@@ -15,25 +15,26 @@
           version     CDATA #FIXED &quot;3.1&quot;&gt;
 </synopsis>
 
-<para>See also :
-<xref linkend="elem_configure"/>,
-<xref linkend="elem_copy"/>,
-<xref linkend="elem_download"/>,
-<xref linkend="elem_execute"/>,
-<xref linkend="elem_link"/>,
-<xref linkend="elem_make"/>,
-<xref linkend="elem_mkdir"/>,
-<xref linkend="elem_move"/>,
-<xref linkend="elem_ownership"/>,
-<xref linkend="elem_package"/>,
-<xref linkend="elem_patch"/>,
-<xref linkend="elem_permissions"/>,
-<xref linkend="elem_remove"/>,
-<xref linkend="elem_search_replace"/>,
-<xref linkend="elem_stage"/>,
-<xref linkend="elem_textdump"/>,
-<xref linkend="elem_unpack"/>.
-</para>
+<para>See also :</para>
+<itemizedlist>
+<listitem><para><xref linkend="elem_configure"/></para></listitem>
+<listitem><para><xref linkend="elem_copy"/></para></listitem>
+<listitem><para><xref linkend="elem_download"/></para></listitem>
+<listitem><para><xref linkend="elem_execute"/></para></listitem>
+<listitem><para><xref linkend="elem_link"/></para></listitem>
+<listitem><para><xref linkend="elem_make"/></para></listitem>
+<listitem><para><xref linkend="elem_mkdir"/></para></listitem>
+<listitem><para><xref linkend="elem_move"/></para></listitem>
+<listitem><para><xref linkend="elem_ownership"/></para></listitem>
+<listitem><para><xref linkend="elem_package"/></para></listitem>
+<listitem><para><xref linkend="elem_patch"/></para></listitem>
+<listitem><para><xref linkend="elem_permissions"/></para></listitem>
+<listitem><para><xref linkend="elem_remove"/></para></listitem>
+<listitem><para><xref linkend="elem_search_replace"/></para></listitem>
+<listitem><para><xref linkend="elem_stage"/></para></listitem>
+<listitem><para><xref linkend="elem_textdump"/></para></listitem>
+<listitem><para><xref linkend="elem_unpack"/></para></listitem>
+</itemizedlist>
 
 </sect2>
 
