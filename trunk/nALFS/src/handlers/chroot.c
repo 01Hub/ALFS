@@ -46,35 +46,77 @@
 
 #if HANDLER_SYNTAX_2_0
 
+enum chroot_attribute_types {
+	CHROOT_DIR,
+};
+
 static const struct handler_attribute chroot_attributes[] = {
-	{ .name = "dir" },
+	{ .name = "dir", .private = CHROOT_DIR },
 	{ .name = NULL }
 };
 
+struct chroot_data {
+	char *dir;
+};
+
+static int chroot_setup(element_s * const element)
+{
+	struct chroot_data *data;
+
+	if ((data = xmalloc(sizeof(struct chroot_data))) == NULL)
+		return 1;
+
+	data->dir = NULL;
+	element->handler_data = data;
+
+	return 0;
+};
+
+static void chroot_free(const element_s * const element)
+{
+	struct chroot_data *data = (struct chroot_data *) element->handler_data;
+
+	xfree(data->dir);
+	xfree(data);
+}
+
+static int chroot_attribute(const element_s * const element,
+			   const struct handler_attribute * const attr,
+			   const char * const value)
+{
+	struct chroot_data *data = (struct chroot_data *) element->handler_data;
+
+	switch (attr->private) {
+	case CHROOT_DIR:
+		if (data->dir) {
+			Nprint_err("<chroot>: cannot specify \"dir\" more than once.");
+			return 1;
+		}
+		data->dir = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
 static int chroot_main(const element_s * const el)
 {
+	struct chroot_data *data = (struct chroot_data *) el->handler_data;
 	int status;
 	pid_t chroot_pid, got_pid;
-	char *dir = attr_value("dir", el);
-
-	
-	if (dir == NULL) {
-		Nprint_h_err("No directory specified for chroot.");
-		return -1;
-	}
 
 	chroot_pid = fork();
 
 	if (chroot_pid == 0) { /* Child. */
 		Start_receiving_sigio();
 
-		Nprint_h("Changing root directory to %s.", dir);
+		Nprint_h("Changing root directory to %s.", data->dir);
 
-		if (change_current_dir(dir)) {
+		if (change_current_dir(data->dir)) {
 			exit(EXIT_FAILURE);
 		}
 
-		if (chroot(dir)) {
+		if (chroot(data->dir)) {
 			Nprint_h_err("    %s", strerror(errno));
 			exit(EXIT_FAILURE);
 		}
@@ -87,7 +129,7 @@ static int chroot_main(const element_s * const el)
 
 	if ((got_pid = waitpid(chroot_pid, &status, WUNTRACED)) == -1) {
 		fatal_backend_error("waitpid() for %ld in chroot failed.",
-			(long)chroot_pid);
+				    (long)chroot_pid);
 	}
 
 	if (WIFEXITED(status)) { /* Child exited normally. */
@@ -95,19 +137,17 @@ static int chroot_main(const element_s * const el)
 
 	} else if (WIFSIGNALED(status)) {
 		Nprint_h_err("Chroot child (%ld) killed by signal %d%s.",
-			(long)got_pid,
-			WTERMSIG(status),
-			WCOREDUMP(status) ? " (core dumped)" : "");
+			     (long)got_pid, WTERMSIG(status),
+			     WCOREDUMP(status) ? " (core dumped)" : "");
 		status = -1;
 
 	} else if (WIFSTOPPED(status)) {
 		Nprint_h_err("Chroot child (%ld) stopped by signal %d.",
-			(long)got_pid, WSTOPSIG(status));
+			     (long)got_pid, WSTOPSIG(status));
 		status = -1;
 
 	} else {
-		Nprint_h_err("Chroot child (%ld) exited abnormaly.",
-			(long)got_pid);
+		Nprint_h_err("Chroot child (%ld) exited abnormaly.", (long)got_pid);
 		status = -1;
 	}
 	
@@ -130,6 +170,9 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = chroot_main,
 		.type = HTYPE_NORMAL,
 		.attributes = chroot_attributes,
+		.setup = chroot_setup,
+		.free = chroot_free,
+		.attribute = chroot_attribute,
 	},
 #endif
 	{
