@@ -53,7 +53,6 @@ http://umn.dl.sourceforge.net/sourceforge/lex/flex-2.5.31.tar.bz2
 http://www.gzip.org/zlib/zlib-1.2.1.tar.bz2
 http://www.ibiblio.org/pub/Linux/system/daemons/sysklogd-1.4.1.tar.gz
 http://downloads.linuxfromscratch.org/lfs-bootscripts-2.1.1.tar.bz2
-http://downloads.linuxfromscratch.org/patches/6.1-cvs/udev-026-config-1.patch
 http://www.tazenda.demon.co.uk/phil/net-tools/net-tools-1.60.tar.bz2
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/bash-2.05b-gnu_fixes-2.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/coreutils-5.2.1-suppress_hostname_uptime_kill_su-1.patch
@@ -75,3 +74,4 @@ http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/readline-4.3-gnu_fixes-
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/sysklogd-1.4.1-kernel_headers-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/sysklogd-1.4.1-signal-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/util-linux-2.12a-kernel_headers-1.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/udev-026-config-1.patch
