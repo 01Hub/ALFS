@@ -691,7 +691,7 @@ static element_s *find_element_by_key(const char *str)
 	char *endptr;
 	unsigned int id = strtoul(str, &endptr, 10);
 
-	if (*endptr == NULL)
+	if (*endptr == 0)
 		return get_element_by_id(id);
 
 	return NULL;
@@ -4469,6 +4469,8 @@ int main(int argc, char **argv)
 
 	nprint = nprint_init;
 
+	/* Load all handlers (before options, so handlers can provide options). */
+	load_all_handlers();
 
 	set_options_to_defaults();
 
@@ -4493,7 +4495,6 @@ int main(int argc, char **argv)
 
 	init_needed_directories();
 
-
 	init_state_file();
 
 	if (! Empty_string(*opt_find_prunes_file)) {
@@ -4501,7 +4502,6 @@ int main(int argc, char **argv)
 	}
 
 	set_main_signals();
-
 
 	if (*opt_run_interactive) { /* Start ncurses. */
 		start_display();
@@ -4512,9 +4512,7 @@ int main(int argc, char **argv)
 	/* Print some useful information. */
 	Nprint("Using \"%s\" directory.", *opt_alfs_directory);
 	Nprint("Using libxml2, version %s.", LIBXML_DOTTED_VERSION);
-
-	/* Load all handlers. */
-	load_all_handlers();
+	Nprint("Total %d handlers loaded.", get_handler_count());
 
 	/* Add profiles from command line. */
 	for (i = optind; i < argc; ++i) {
