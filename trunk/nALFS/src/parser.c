@@ -197,7 +197,7 @@ char *attr_value(const char *name, element_s *element)
 	return NULL;
 }
 
-char *raw_param_value(const char *name, element_s *element)
+char *raw_param_value(const char *name, const element_s *element)
 {
 	element_s *tmp;
 
@@ -211,7 +211,7 @@ char *raw_param_value(const char *name, element_s *element)
 	return NULL;
 }
 
-char *alloc_trimmed_param_value(const char *name, element_s *element)
+char *alloc_trimmed_param_value(const char *name, const element_s *element)
 {
 	char *tmp;
 
@@ -238,7 +238,7 @@ element_s *next_param(element_s *param)
 	return NULL;
 }
 
-element_s *first_param(const char *name, element_s *element)
+element_s *first_param(const char *name, const element_s *element)
 {
 	element_s *tmp;
 

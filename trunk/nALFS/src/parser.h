@@ -84,10 +84,10 @@ void link_element(element_s *el, element_s *prev, element_s *parent);
 element_s *parse_profile(const char *filename);
 
 char *attr_value(const char *name, element_s *element);
-char *raw_param_value(const char *name, element_s *element);
-char *alloc_trimmed_param_value(const char *name, element_s *element);
+char *raw_param_value(const char *name, const element_s *element);
+char *alloc_trimmed_param_value(const char *name, const element_s *element);
 element_s *next_param(element_s *param);
-element_s *first_param(const char *name, element_s *element);
+element_s *first_param(const char *name, const element_s *element);
 
 element_s *get_profile_by_element(element_s *el);
 element_s *get_profile_by_name(element_s *root, const char *name);

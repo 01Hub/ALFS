@@ -1,5 +1,5 @@
 /*
- *  digest.c - Verify a file's contents have not been changed.
+ *  digest.c - Functions for handling file digests.
  * 
  *  Copyright (C) 2001-2003
  *  
@@ -47,6 +47,33 @@
 
 #include "win.h"
 #include "md5.h"
+#include "parser.h"
+#include "utility.h"
+
+#define El_unpack_digest(el) alloc_trimmed_param_value("digest", el)
+
+void alloc_element_digest(const element_s *el, char **digest, char **type)
+{
+
+	if ((*digest = El_unpack_digest(el)) != NULL) {
+		element_s *el2 = first_param("digest", el);
+		*type = attr_value("type", el2);
+		char *s;
+
+		if (*type != NULL) {
+			/* make a copy of the attribute value before
+			   modifying it */
+			*type = xstrdup(*type);
+			for (s = *type; *s; s++) {
+				*s = tolower(*s);
+			}
+		}
+	  
+		if ((*type == NULL) || (**type == 0)) {
+			*type = xstrdup("md5");
+		}
+	}
+}
 
 int verify_digest(const char* type, const char* digest, const char* file)
 {

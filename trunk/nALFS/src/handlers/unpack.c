@@ -46,46 +46,12 @@
 #define El_unpack_destination(el) alloc_trimmed_param_value("destination", el)
 
 #define El_unpack_reference(el) alloc_trimmed_param_value("reference", el)
-#define El_unpack_digest(el) alloc_trimmed_param_value("digest", el)
 
 
 typedef enum extension_e {
 	GZ, TAR_GZ, TGZ, BZ2, TAR_BZ2, TAR, ZIP, TAR_Z, Z, UNKNOWN
 } extension_e;
 
-
-static INLINE int get_reference(const char *reference, const char *archive)
-{
-	int status;
-	struct stat file_stat;
-	    
-
-	/* TODO: We need to make sure that a directory for archive exists. */
-
-#ifdef HAVE_LIBCURL
-	status = load_url(archive, reference);
-#else
-	status = execute_command("wget --progress=dot -O %s %s", archive, reference);
-#endif
-
-	if (status) {
-		Nprint_h_err("Getting reference failed:");
-		Nprint_h_err("    %s", reference);
-
-		unlink(archive);
-
-		return -1;
-	}
-
-	if (stat(archive, &file_stat)) {
-		Nprint_h_err("Unable to get %s from reference %s:",
-			archive, reference);
-		Nprint_h_err("    %s", strerror(errno));
-		return -1;
-	}
-
-	return 0;
-}
 
 static INLINE char *alloc_basename(const char *archive)
 {
@@ -226,31 +192,31 @@ int unpack_main_ver2(element_s *el)
 
 int unpack_main_ver3(element_s *el)
 {
-	int status = 0;
-	char *base_name;
-	char *archive;
-	char *destination;
-	char *digest;
+	int status = -1;
+	char *base_name = NULL;
+	char *archive = NULL;
+	char *destination = NULL;
+	char *digest = NULL;
+	char *digest_type = NULL;
 	struct stat file_stat;
 	extension_e extension = UNKNOWN;
+	int command_status;
 
 
 	if ((archive = El_unpack_archive(el)) == NULL) {
 		Nprint_h_err("Archive name is missing.");
-		return -1;
+		goto free_all_and_return;
 	}
 
 	if ((destination = El_unpack_destination(el)) == NULL) {
 		Nprint_h_err("Destination is missing.");
-		xfree(archive);
-		return -1;
+		goto free_all_and_return;
 	}
 	
-	if (change_current_dir(destination)) {
-		xfree(archive);
-		xfree(destination);
-		return -1;
-	}
+	if (change_current_dir(destination))
+		goto free_all_and_return;
+
+	alloc_element_digest(el, &digest, &digest_type);
 
 	/* Check if archive exists. */
 	if ((stat(archive, &file_stat))) {
@@ -260,11 +226,9 @@ int unpack_main_ver3(element_s *el)
 			Nprint_h_warn("Archive %s not found.", archive);
 			Nprint_h("Trying to fetch it from <reference>...");
 
-			if (get_reference(reference, archive)) {
-				xfree(archive);
-				xfree(destination);
+			if (get_url(reference, archive, digest, digest_type)) {
 				xfree(reference);
-				return -1;
+				goto free_all_and_return;
 			}
 
 			xfree(reference);
@@ -272,35 +236,13 @@ int unpack_main_ver3(element_s *el)
 		} else {
 			Nprint_h_err("Checking for %s failed:", archive);
 			Nprint_h_err("    %s", strerror(errno));
-			xfree(archive);
-			xfree(destination);
-			return -1;
+			xfree(reference);
+			goto free_all_and_return;
 		}
-	}
-
-	if ((digest = El_unpack_digest(el)) != NULL) {
-		element_s *el2 = first_param("digest", el);
-		char *type = attr_value("type", el2);
-		char *s;
-
-
-		if (type != NULL) {
-			for (s = type; *s; s++) {
-				*s = tolower(*s);
-			}
-		}
-	  
-		if ((type == NULL) || (*type == 0)) {
-			type = "md5";
-		}
-
-		if (verify_digest(type, digest, archive)) {
-			Nprint_h_err("Wrong %s digest of archive: %s",
-				type, archive);
-			xfree(archive);
-			xfree(destination);
-			return -1;
-		}
+	} else if (verify_digest(digest_type, digest, archive)) {
+		Nprint_h_err("Wrong %s digest of archive: %s",
+			     digest_type, archive);
+		goto free_all_and_return;
 	}
 
 	/* Watch for the order! */
@@ -332,51 +274,55 @@ int unpack_main_ver3(element_s *el)
 		case GZ: 
 		case Z: 
 			Nprint_h("Unpacking %s...", archive);
-			status = execute_command("zcat %s > %s",
-				archive, base_name);
+			command_status = execute_command("zcat %s > %s",
+							 archive, base_name);
 			break;
 
 		case TGZ:
 		case TAR_GZ:
 		case TAR_Z:
 			Nprint_h("Unpacking %s...", archive);
-			status = execute_command("tar xzvf %s", archive);
+			command_status = execute_command("tar xzvf %s", archive);
 			break;
 
 		case BZ2:
 			Nprint_h("Unpacking %s...", archive);
-			status = execute_command("bzip2 -dc %s > %s",
-				archive, base_name);
+			command_status = execute_command("bzip2 -dc %s > %s",
+							 archive, base_name);
 			break;
 
 		case TAR_BZ2:
 			Nprint_h("Unpacking %s...", archive);
-			status = execute_command(
+			command_status = execute_command(
 				"tar --use-compress-prog=bunzip2 -xvf %s",
 				archive);
 			break;
 
 		case TAR:
 			Nprint_h("Unpacking %s...", archive);
-			status = execute_command("tar xvf %s", archive);
+			command_status = execute_command("tar xvf %s", archive);
 			break;
 
 		case ZIP:
 			Nprint_h("Unpacking %s...", archive);
-			status = execute_command("unzip %s", archive);
+			command_status = execute_command("unzip %s", archive);
 			break;
 
 		case UNKNOWN:
 			Nprint_h_err("Unknown archive (%s).", archive);
-			status = -1;
+			command_status = -1;
 	}
 
-	if (status) {
+	if (command_status) {
 		Nprint_h_err("Unpacking %s failed.", archive);
 	} else {
 		Nprint_h("Done unpacking %s.", archive);
+		status = 0;
 	}
 
+ free_all_and_return:
+	xfree(digest_type);
+	xfree(digest);
 	xfree(base_name);
 	xfree(archive);
 	xfree(destination);
