@@ -12,6 +12,20 @@
 ]>
 <alfs>
   <package name="ruby" version="&ruby-version;">
+    <packageinfo>
+      <utilizes>
+        <name>openssl</name>
+      </utilizes>
+      <utilizes>
+        <name>tk</name>
+      </utilizes>
+      <utilizes>
+        <name>db</name>
+      </utilizes>
+      <utilizes>
+        <name>gdbm</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&ruby-package;</archive>
@@ -24,6 +38,8 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
+        <param>--enable-shared</param>
+        <param>--enable-pthread</param>
       </configure>
       <make />
       <make>

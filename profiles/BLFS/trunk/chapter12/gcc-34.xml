@@ -11,18 +11,15 @@
 
 ]>
 <alfs>
-  <package name="gcc-full" version="&gcc-full-version;">
+  <package name="gcc-3.4" version="&gcc-34-version;">
     <packageinfo>
       <requires>
-        <name>tcsh</name>
-      </requires>
-      <requires>
-        <name>gnat</name>
+        <name>dejagnu</name>
       </requires>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gcc-full-package;</archive>
+        <archive>&packages_dir;/&gcc-34-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <mkdir>
@@ -39,24 +36,24 @@
         </environment>
         <base>&build_dir;/gcc-build</base>
       </stageinfo>
-      <patch base="&build_dir;/&gcc-full-directory;">
+      <patch base="&build_dir;/&gcc-34-directory;">
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&gcc-full-patch1;</param>
+        <param>-i &packages_dir;/&gcc-34-no_fixincludes-patch;</param>
       </patch>
-      <search_replace base="&build_dir;/&gcc-full-directory;">
+      <patch base="&build_dir;/&gcc-34-directory;">
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gcc-34-linkonce-patch;</param>
+      </patch>
+      <search_replace base="&build_dir;/&gcc-34-directory;">
         <file>libiberty/Makefile.in</file>
         <find>install_to_$(INSTALL_DEST)</find>
         <replace></replace>
       </search_replace>
-      <execute base="&build_dir;/&gcc-full-directory;/gcc/ada" command="touch">
-        <param>treeprs.ads</param>
-        <param>[es]info.h</param>
-        <param>nmake.ad[bs]</param>
-      </execute>
-      <configure command="../&gcc-full-directory;/configure">
-        <prefix>CC=/usr/bin/gcc</prefix>
+      <configure command="../&gcc-34-directory;/configure">
         <param>--prefix=/usr</param>
+        <param>--libexecdir=/usr/lib</param>
         <param>--enable-shared</param>
         <param>--enable-languages=c,c++,objc,f77,ada,java</param>
         <param>--enable-threads=posix</param>
@@ -68,19 +65,37 @@
       </make>
       <make>
         <param>-C gcc</param>
-        <param>gnatlib_and_tools</param>
+        <param>gnatlib-shared</param>
+      </make>
+      <make>
+        <param>-C gcc</param>
+        <param>gnattools</param>
+      </make>
+      <make>
+        <param>-k check</param>
       </make>
       <make>
         <param>install</param>
       </make>
       <link>
         <option>force</option>
+        <target>../usr/bin/cpp</target>
+        <name>/lib</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>gcc</target>
+        <name>/usr/bin/cc</name>
+      </link>
+      <link>
+        <option>force</option>
         <target>g77</target>
         <name>/usr/bin/f77</name>
       </link>
+      <execute command="chown -R root:root /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include" />
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&gcc-full-directory;</remove>
+      <remove>&build_dir;/&gcc-34-directory;</remove>
       <remove>&build_dir;/gcc-build</remove>
       <remove>/opt/gnat</remove>
     </stage>

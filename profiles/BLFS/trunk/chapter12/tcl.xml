@@ -27,6 +27,7 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
+        <param>--enable-threads</param>
       </configure>
       <make />
       <search_replace>

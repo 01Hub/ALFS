@@ -12,6 +12,59 @@
 ]>
 <alfs>
   <stage name="Perl modules">
+    <package name="Parse-RecDescent" version="&Parse-RecDescent-version;">
+      <stage name="Unpacking">
+        <unpack>
+          <archive>&packages_dir;/&Parse-RecDescent-package;</archive>
+          <destination>&build_dir;</destination>
+        </unpack>
+      </stage>
+      <stage name="Installing">
+        <stageinfo>
+          <base>&build_dir;/&Parse-RecDescent-directory;</base>
+        </stageinfo>
+        <execute command="perl Makefile.PL" />
+        <make />
+        <make>
+          <param>test</param>
+        </make>
+        <make>
+          <param>install</param>
+        </make>
+      </stage>
+      <stage name="Cleanup">
+        <remove>&build_dir;/&Parse-RecDescent-directory;</remove>
+      </stage>
+    </package>
+    <package name="Inline" version="&Inline-version;">
+      <packageinfo>
+        <requires>
+          <name>Parse-RecDescent</name>
+        </requires>
+      </packageinfo>
+      <stage name="Unpacking">
+        <unpack>
+          <archive>&packages_dir;/&Inline-package;</archive>
+          <destination>&build_dir;</destination>
+        </unpack>
+      </stage>
+      <stage name="Installing">
+        <stageinfo>
+          <base>&build_dir;/&Inline-directory;</base>
+        </stageinfo>
+        <execute command="perl Makefile.PL" />
+        <make />
+        <make>
+          <param>test</param>
+        </make>
+        <make>
+          <param>install</param>
+        </make>
+      </stage>
+      <stage name="Cleanup">
+        <remove>&build_dir;/&Inline-directory;</remove>
+      </stage>
+    </package>
     <package name="Astro-FITS-Header" version="&Astro-FITS-Header-version;">
       <stage name="Unpacking">
         <unpack>
@@ -26,6 +79,9 @@
         <execute command="perl Makefile.PL" />
         <make />
         <make>
+          <param>test</param>
+        </make>
+        <make>
           <param>install</param>
         </make>
       </stage>
@@ -33,10 +89,40 @@
         <remove>&build_dir;/&Astro-FITS-Header-directory;</remove>
       </stage>
     </package>
+    <package name="ExtUtils-F77" version="&ExtUtils-F77-version;">
+      <stage name="Unpacking">
+        <unpack>
+          <archive>&packages_dir;/&ExtUtils-F77-package;</archive>
+          <destination>&build_dir;</destination>
+        </unpack>
+      </stage>
+      <stage name="Installing">
+        <stageinfo>
+          <base>&build_dir;/&ExtUtils-F77-directory;</base>
+        </stageinfo>
+        <execute command="perl Makefile.PL" />
+        <make />
+        <make>
+          <param>test</param>
+        </make>
+        <make>
+          <param>install</param>
+        </make>
+      </stage>
+      <stage name="Cleanup">
+        <remove>&build_dir;/&ExtUtils-F77-directory;</remove>
+      </stage>
+    </package>
     <package name="PDL" version="&PDL-version;">
       <packageinfo>
         <requires>
           <name>Astro-FITS-Header</name>
+        </requires>
+        <requires>
+          <name>ExtUtils-F77</name>
+        </requires>
+        <requires>
+          <name>Inline</name>
         </requires>
       </packageinfo>
       <stage name="Unpacking">
@@ -51,6 +137,9 @@
         </stageinfo>
         <execute command="perl Makefile.PL" />
         <make />
+        <make>
+          <param>test</param>
+        </make>
         <make>
           <param>install</param>
         </make>
@@ -73,6 +162,9 @@
         <execute command="perl Makefile.PL" />
         <make />
         <make>
+          <param>test</param>
+        </make>
+        <make>
           <param>install</param>
         </make>
       </stage>
@@ -81,6 +173,11 @@
       </stage>
     </package>
     <package name="XML-Parser" version="&XML-Parser-version;">
+      <packageinfo>
+        <requires>
+          <name>expat</name>
+        </requires>
+      </packageinfo>
       <stage name="Unpacking">
         <unpack>
           <archive>&packages_dir;/&XML-Parser-package;</archive>
@@ -93,6 +190,9 @@
         </stageinfo>
         <execute command="perl Makefile.PL" />
         <make />
+        <make>
+          <param>test</param>
+        </make>
         <make>
           <param>install</param>
         </make>
@@ -126,6 +226,9 @@
         <execute command="perl Makefile.PL --without-guessing" />
         <make />
         <make>
+          <param>test</param>
+        </make>
+        <make>
           <param>install</param>
         </make>
       </stage>
@@ -133,25 +236,60 @@
         <remove>&build_dir;/&Gtk-Perl-directory;</remove>
       </stage>
     </package>
-    <package name="Parse-RecDescent" version="&Parse-RecDescent-version;">
+    <package name="SGMLSpm" version="&SGMLSpm-version;">
       <stage name="Unpacking">
         <unpack>
-          <archive>&packages_dir;/&Parse-RecDescent-package;</archive>
+          <archive>&packages_dir;/&SGMLSpm-package;</archive>
           <destination>&build_dir;</destination>
         </unpack>
       </stage>
       <stage name="Installing">
         <stageinfo>
-          <base>&build_dir;/&Parse-RecDescent-directory;</base>
+          <base>&build_dir;/&SGMLSpm-directory;</base>
         </stageinfo>
         <execute command="perl Makefile.PL" />
         <make />
+        <make>
+          <param>test</param>
+        </make>
         <make>
           <param>install</param>
         </make>
       </stage>
       <stage name="Cleanup">
-        <remove>&build_dir;/&Parse-RecDescent-directory;</remove>
+        <remove>&build_dir;/&SGMLSpm-directory;</remove>
+      </stage>
+    </package>
+    <package name="Perl-Tk" version="&Perl-Tk-version;">
+      <packageinfo>
+        <requires>
+          <name>tk</name>
+        </requires>
+        <requires>
+          <name>libjpeg</name>
+        </requires>
+      </packageinfo>
+      <stage name="Unpacking">
+        <unpack>
+          <archive>&packages_dir;/&Perl-Tk-package;</archive>
+          <destination>&build_dir;</destination>
+        </unpack>
+      </stage>
+      <stage name="Installing">
+        <stageinfo>
+          <base>&build_dir;/&Perl-Tk-directory;</base>
+        </stageinfo>
+        <execute command="perl Makefile.PL" />
+        <make />
+        <make>
+          <param>test</param>
+        </make>
+        <make>
+          <param>install</param>
+        </make>
+      </stage>
+      <stage name="Cleanup">
+        <remove>&build_dir;/&Perl-Tk-directory;</remove>
       </stage>
     </package>
   </stage>

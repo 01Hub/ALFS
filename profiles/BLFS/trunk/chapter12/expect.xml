@@ -11,56 +11,48 @@
 
 ]>
 <alfs>
-  <package name="python" version="&python-version;">
+  <package name="expect" version="&expect-version;">
     <packageinfo>
-      <utilizes>
-        <name>openssl</name>
-      </utilizes>
-      <utilizes>
-        <name>expat</name>
-      </utilizes>
+      <requires>
+        <name>tcl</name>
+      </requires>
       <utilizes>
         <name>tk</name>
-      </utilizes>
-      <utilizes>
-        <name>gdbm</name>
-      </utilizes>
-      <utilizes>
-        <name>db</name>
-      </utilizes>
-      <utilizes>
-        <name>gmp</name>
-      </utilizes>
-      <utilizes>
-        <name>pth</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&python-package;</archive>
+        <archive>&packages_dir;/&expect-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&python-directory;</base>
+        <base>&build_dir;/&expect-directory;</base>
       </stageinfo>
-      <patch>
+      <patch base="&build_dir;/&expect-directory;">
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&python-gdbm-patch;</param>
+        <param>-i &packages_dir;/&expect-spawn-patch;</param>
       </patch>
       <configure>
         <param>--prefix=/usr</param>
+        <param>--with-tcl=/usr/lib</param>
+        <param>--with-tclinclude=/usr/include/tcl8.4</param>
         <param>--enable-shared</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
+      <link>
+        <option>force</option>
+        <target>../libexpect5.42.a</target>
+        <name>/usr/lib/expect5.42</name>
+      </link>
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&python-directory;</remove>
+      <remove>&build_dir;/&expect-directory;</remove>
     </stage>
   </package>
 </alfs>

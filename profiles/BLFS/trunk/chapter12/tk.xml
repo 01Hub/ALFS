@@ -14,7 +14,7 @@
   <package name="tk" version="&tk-version;">
     <packageinfo>
       <requires>
-        <name>xfree</name>
+        <name>&ximpl;</name>
       </requires>
       <requires>
         <name>tcl</name>
@@ -35,6 +35,7 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
+        <param>--enable-threads</param>
       </configure>
       <make />
       <search_replace>

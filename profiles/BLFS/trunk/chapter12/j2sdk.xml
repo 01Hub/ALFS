@@ -11,7 +11,7 @@
 
 ]>
 <alfs>
-  <package name="j2sdk-binary" version="&j2sdk-binary-version;">
+  <package name="j2sdk-binary" version="&j2sdk-version;_&j2sdk-bin-suffix;">
     <stage name="Unpacking">
       <stageinfo>
         <base>&build_dir;</base>
@@ -20,7 +20,7 @@
         <name>java-build</name>
       </mkdir>
       <copy>
-        <source>&packages_dir;/&j2sdk-binary-package;</source>
+        <source>&packages_dir;/&j2sdk-bin-package;</source>
         <destination>&build_dir;/java-build</destination>
       </copy>
     </stage>
@@ -31,10 +31,10 @@
       <execute command="sed">
         <param>-i</param>
         <param>"s:^PATH=.*::"</param>
-        <param>&j2sdk-binary-package;</param>
+        <param>&j2sdk-bin-package;</param>
       </execute>
       <permissions mode="711">
-        <name>&j2sdk-binary-package;</name>
+        <name>&j2sdk-bin-package;</name>
       </permissions>
       <mkdir>
         <option>parents</option>
@@ -45,23 +45,46 @@
         <target>/bin/true</target>
         <name>bin/more</name>
       </link>
-      <execute command="yes | PATH=$PWD/bin:$PATH ./&j2sdk-binary-package;" />
+      <execute command="yes | PATH=$PWD/bin:$PATH ./&j2sdk-bin-package;" />
       <mkdir>
         <option>parents</option>
-        <name>/opt/j2sdk/j2sdk-precompiled-&j2sdk-binary-norev-version;</name>
+        <name>/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;</name>
       </mkdir>
-      <move base="&build_dir;/java-build/&j2sdk-binary-directory;">
+      <move base="&build_dir;/java-build/j2sdk&j2sdk-version;">
         <option>force</option>
         <source>*</source>
-        <destination>/opt/j2sdk/j2sdk-precompiled-&j2sdk-binary-norev-version;</destination>
+        <destination>/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;</destination>
       </move>
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/java-build/&j2sdk-binary-package;</remove>
-      <remove>&build_dir;/java-build/&j2sdk-binary-directory;</remove>
+      <remove>&build_dir;/java-build/&j2sdk-bin-package;</remove>
+      <remove>&build_dir;/java-build/j2sdk&j2sdk-version;</remove>
     </stage>
   </package>
-  <package name="j2sdk-src" version="&j2sdk-src-version;">
+  <package name="j2sdk-source" version="&j2sdk-version;">
+    <packageinfo>
+      <requires>
+        <name>&ximpl;</name>
+      </requires>
+      <requires>
+        <name>zip</name>
+      </requires>
+      <requires>
+        <name>unzip</name>
+      </requires>
+      <requires>
+        <name>cpio</name>
+      </requires>
+      <requires>
+        <name>alsa</name>
+      </requires>
+      <requires>
+        <name>tcsh</name>
+      </requires>
+      <requires>
+        <name>gcc</name>
+      </requires>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&j2sdk-src-package;</archive>
@@ -79,19 +102,20 @@
     <stage name="Installing">
       <stageinfo>
         <environment>
-          <variable name="PATH" mode="append">:/opt/j2sdk/j2sdk-precompiled-&j2sdk-binary-norev-version;/bin</variable>
-          <variable name="ALT_BOOTDIR">/opt/j2sdk/j2sdk-precompiled-&j2sdk-binary-norev-version;</variable>
+          <variable name="JAVA_HOME">/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;</variable>
+          <variable name="PATH" mode="append">:/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;/bin</variable>
+          <variable name="ALT_BOOTDIR">/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;</variable>
           <variable name="CLASSPATH" />
           <variable name="CFLAGS" />
           <variable name="CXXFLAGS" />
           <variable name="LDFLAGS" />
           <variable name="ALT_DEVTOOLS_PATH">"/usr/bin"</variable>
-          <variable name="BUILD_NUMBER">blfs-5.1-nALFS</variable>
+          <variable name="BUILD_NUMBER">blfs-&blfs-version;</variable>
           <variable name="DEV_ONLY">true</variable>
           <variable name="ALT_MOZILLA_PATH">&build_dir;/java-build</variable>
           <variable name="INSANE">true</variable>
           <variable name="MAKE_VERBOSE">true</variable>
-          <variable name="ALT_CACERTS_FILE">/opt/j2sdk/j2sdk-precompiled-&j2sdk-binary-norev-version;/jre/lib/security/cacerts</variable>
+          <variable name="ALT_CACERTS_FILE">/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;/jre/lib/security/cacerts</variable>
         </environment>
         <base>&build_dir;/java-build</base>
       </stageinfo>
@@ -130,7 +154,7 @@
       <copy base="&build_dir;/java-build/control/build/linux-i586">
         <option>archive</option>
         <source>j2sdk-image</source>
-        <destination>/opt/j2sdk/j2sdk-&j2sdk-src-version;</destination>
+        <destination>/opt/j2sdk/j2sdk-&j2sdk-version;</destination>
       </copy>
     </stage>
   </package>

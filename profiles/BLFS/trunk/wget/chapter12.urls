@@ -1,28 +1,54 @@
-ftp://ftp.python.org/pub/python/2.3.3/Python-2.3.3.tar.bz2
-http://www.linuxfromscratch.org/patches/blfs/5.1/Python-2.3.3-gdbm-2.patch
+ftp://ftp.python.org/pub/python/2.3.4/Python-2.3.4.tar.bz2
+http://www.linuxfromscratch.org/blfs/downloads/svn/Python-2.3.4-gdbm-1.patch
 
-ftp://cpan.pair.com/authors/id/C/CS/CSOE/PDL-2.4.0.tar.gz
+http://search.cpan.org/CPAN/authors/id/C/CS/CSOE/PDL-2.4.1.tar.gz
+http://www.cpan.org/authors/id/K/KG/KGB/ExtUtils-F77-1.14.tar.gz
+http://www.cpan.org/authors/id/I/IN/INGY/Inline-0.44.tar.gz
+ftp://cpan.pair.com/authors/id/D/DC/DCONWAY/Parse-RecDescent-1.94.tar.gz
 ftp://cpan.pair.com/authors/id/A/AA/AALLAN/Astro-FITS-Header-2.8.1.tar.gz
 ftp://cpan.pair.com/authors/id/M/ML/MLEHMANN/Gtk-Perl-0.7009.tar.gz
-ftp://cpan.pair.com/authors/id/E/ED/EDAVIS/XML-Writer-0.4.1.tar.gz
+http://www.cpan.org/authors/id/J/JO/JOSEPHW/XML-Writer-0.510.tar.gz
 ftp://cpan.pair.com/authors/id/M/MS/MSERGEANT/XML-Parser-2.34.tar.gz
-ftp://cpan.pair.com/authors/id/D/DC/DCONWAY/Parse-RecDescent-1.94.tar.gz
+http://www.cpan.org/authors/id/D/DM/DMEGG/SGMLSpm-1.03ii.tar.gz
+http://www.cpan.org/authors/id/N/NI/NI-S/Tk-804.027.tar.gz
 
 http://telia.dl.sourceforge.net/sourceforge/librep/librep-0.17.tar.gz
 
+http://java.sun.com/j2se/1.4.2/download.html
+http://wwws.sun.com/software/communitysource/j2se/java2/download.html
+http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-fix_inline_asm-1.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-gcc33-1.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-motif_mkmsgcat-1.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-remove_debug_image-1.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-remove_fixed_paths-1.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-static_cxx-1.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-ash-1.patch
+
 ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.1.tar.gz
 
-ftp://mirrors.rcn.net/pub/sourceware/gcc/releases/gcc-3.3.3/gcc-3.3.3.tar.bz2
-http://www.linuxfromscratch.org/patches/blfs/5.1/gcc-3.3.3-no_fixincludes-1.patch
+ftp://ftp.us.xemacs.org/pub/tcl/tcl8_4/tcl8.4.7-src.tar.gz
+ftp://ftp.us.xemacs.org/pub/tcl/tcl8_4/tk8.4.7-src.tar.gz
+
+http://expect.nist.gov/old/expect-5.42.1.tar.gz
+http://www.linuxfromscratch.org/blfs/downloads/svn/expect-5.42.1-spawn-1.patch
+
+ftp://ftp.gnu.org/pub/gnu/dejagnu/dejagnu-1.4.4.tar.gz
 
 ftp://cs.nyu.edu/pub/gnat/3.15p/gnat-3.15p-i686-pc-redhat71-gnu-bin.tar.gz
 
-ftp://ftp.us.xemacs.org/pub/tcl/tcl8_4/tcl8.4.6-src.tar.gz
-ftp://ftp.us.xemacs.org/pub/tcl/tcl8_4/tk8.4.6-src.tar.gz
+ftp://mirrors.rcn.net/pub/sourceware/gcc/releases/gcc-3.4.1/gcc-3.4.1.tar.bz2
+ftp://mirrors.rcn.net/pub/sourceware/gcc/releases/gcc-3.4.1/gcc-testsuite-3.4.1.tar.bz2
+http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-3.4.1-no_fixincludes-1.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-3.4.1-linkonce-1.patch
+
+ftp://mirrors.rcn.net/pub/sourceware/gcc/releases/gcc-3.3.3/gcc-3.3.3.tar.bz2
+http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-3.3.3-no_fixincludes-1.patch
 
 ftp://ftp.gnu.org/gnu/gcc/gcc-2.95.3.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/5.1/gcc-2.95.3-2.patch
-http://www.linuxfromscratch.org/patches/blfs/5.1/gcc-2.95.3-no-fixinc.patch
-http://www.linuxfromscratch.org/patches/blfs/5.1/gcc-2.95.3-returntype-fix.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-2.95.3-2.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-2.95.3-no_fixinc-1.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-2.95.3-returntype_fix-1.patch
 
 http://unc.dl.sourceforge.net/sourceforge/nasm/nasm-0.98.38.tar.bz2
+
+ftp://ftp.stack.nl/pub/users/dimitri/doxygen-1.3.9.1.src.tar.gz

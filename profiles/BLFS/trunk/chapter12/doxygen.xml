@@ -11,48 +11,38 @@
 
 ]>
 <alfs>
-  <package name="python" version="&python-version;">
+  <package name="doxygen" version="&doxygen-version;">
     <packageinfo>
       <utilizes>
-        <name>openssl</name>
+        <name>qt</name>
       </utilizes>
       <utilizes>
-        <name>expat</name>
+        <name>python</name>
       </utilizes>
       <utilizes>
-        <name>tk</name>
+        <name>tex</name>
       </utilizes>
       <utilizes>
-        <name>gdbm</name>
+        <name>&ghostscript-impl;</name>
       </utilizes>
       <utilizes>
-        <name>db</name>
-      </utilizes>
-      <utilizes>
-        <name>gmp</name>
-      </utilizes>
-      <utilizes>
-        <name>pth</name>
+        <name>graphviz</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&python-package;</archive>
+        <archive>&packages_dir;/&doxygen-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&python-directory;</base>
+        <base>&build_dir;/&doxygen-directory;</base>
       </stageinfo>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&python-gdbm-patch;</param>
-      </patch>
+      <remove>src/unistd.h</remove>
       <configure>
         <param>--prefix=/usr</param>
-        <param>--enable-shared</param>
+        <param>--docdir=/usr/share/doc</param>
       </configure>
       <make />
       <make>
@@ -60,7 +50,7 @@
       </make>
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&python-directory;</remove>
+      <remove>&build_dir;/&doxygen-directory;</remove>
     </stage>
   </package>
 </alfs>
