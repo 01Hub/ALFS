@@ -121,7 +121,8 @@ you run nALFS 1.2.0 (although no harm will be done).
 ===============
 
 For actual parsing of XML profiles, nALFS uses the libxml2 (aka
-gnome-xml) library. You can find it on the web at http://xmlsoft.org/.
+gnome-xml) library. This version of nALFS requires libxml2 version 2.6.0
+or later. You can find it on the web at http://xmlsoft.org/.
 
 If you use <download> and/or <unpack> elements in your profiles, and wish
 to have the source file contents verified by computing digests, you can
