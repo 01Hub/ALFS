@@ -37,104 +37,11 @@
 #include "nalfs.h"
 #include "backend.h"
 #include "config.h"
-#include "digest.h"
+#include "lib.h"
 
 #define El_download_file(el) alloc_trimmed_param_value("file", el)
 #define El_download_destination(el) alloc_trimmed_param_value("destination", el)
 #define El_download_digest(el) alloc_trimmed_param_value("digest", el)
-
-#ifdef HAVE_LIBCURL
-
-typedef struct output_file_s {
-	const char *filename;
-	FILE *stream;
-} output_file_s;
-
-#include <curl/curl.h>
-
-int my_fwrite(void *buffer, size_t size, size_t nmemb, void *data)
-{
-	output_file_s *output = (output_file_s *)data;
-
-
-	if (output->stream == NULL) { /* Open the output file. */
-		if ((output->stream = fopen(output->filename, "wb")) == NULL) {
-			Nprint_err("Unable to open %s for writing.",
-					output->filename);
-			return -1;
-		}
-	}
-
-	return fwrite(buffer, size, nmemb, output->stream);
-}
-
-int load_url(const char *archive, const char *url)
-{
-	CURL *handle;
-	CURLcode err;
-	char error_buffer[CURL_ERROR_SIZE];
-	output_file_s output = { archive, NULL };
-	FILE *error_file = NULL;
-
-
-	Nprint("Downloading with Curl:");
-	Nprint("    %s", url);
-
-	if ((err = curl_global_init(CURL_GLOBAL_ALL)) != 0) {
-		Nprint_err("Error initializing Curl (%d).", err);
-		return -1;
-	}
-
-	if ((handle = curl_easy_init()) == NULL) {
-		Nprint_err("Error initializing easy interface.");
-		curl_global_cleanup();
-		return -1;
-	}
-
-	/* Can't ignore CURLOPT_STDERR when CURLOPT_ERRORBUFFER is set? */
-	error_file = fopen("/dev/null", "w");
-	if (error_file) {
-		curl_easy_setopt(handle, CURLOPT_ERRORBUFFER, error_buffer);
-		curl_easy_setopt(handle, CURLOPT_STDERR, error_file);
-	}
-	/* Set URL to download, callback function and the output file. */
-	curl_easy_setopt(handle, CURLOPT_URL, url);
-	curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, my_fwrite);
-	curl_easy_setopt(handle, CURLOPT_FILE, &output);
-	curl_easy_setopt(handle, CURLOPT_FAILONERROR, 1);
-
-	/* Start downloading. */
-	err = curl_easy_perform(handle);
-
-	/* Cleanup. */
-	curl_easy_cleanup(handle);
-	curl_global_cleanup();
-
-	if (output.stream) { /* Close output file. */
-		fclose(output.stream);
-	}
-	if (error_file) { /* Close error file. */
-		fclose(error_file);
-	}
-
-	if (err != CURLE_OK) {
-		if (error_file) {
-			Nprint_err("Downloading with Curl failed:");
-			Nprint_err("    %s", error_buffer);
-		} else {
-			Nprint_err("Downloading with Curl failed (%d).", err);
-		}
-
-		return -1;
-	}
-
-	Nprint("Downloading with Curl completed successfully.");
-
-	return 0;
-}
-
-#endif
-
 
 static INLINE int get_url(const char *urldir, const char *file)
 {

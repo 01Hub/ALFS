@@ -1,5 +1,5 @@
 /*
- *  digest.h - Verify a file's contents have not been changed.
+ *  lib.h - Functions in the nALFS library.
  * 
  *  Copyright (C) 2003-2003
  *  
@@ -21,9 +21,10 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef _DIGEST_H
-#define _DIGEST_H
+#ifndef _LIB_H
+#define _LIB_H
 
 extern int verify_digest(const char *type, char *digest, const char *file);
+extern int load_url(const char *output, const char *url);
 
-#endif /* _DIGEST_H */
+#endif /* _LIB_H */
