@@ -375,6 +375,33 @@ char *alloc_base_dir_new(element_s *el)
 	return xstrdup("/");
 }
 
+/* Used by new syntax (3.2) when you _must_ have <base> present */
+char *alloc_base_dir_force(element_s *el)
+{
+	element_s *s;
+	char *dir = NULL;
+
+	if ((dir = attr_value("base", el)) && strlen(dir)) {
+		return xstrdup(dir);
+	}
+
+	for (s = el->parent; s; s = s->parent) {
+		if (Is_element_name(s, "stage")) {
+			element_s *sinfo;
+
+			if ((sinfo = first_param("stageinfo", s)) == NULL) {
+				continue;
+			}
+
+			if ((dir = alloc_trimmed_param_value("base", sinfo))) {
+				return dir;
+			}
+		}
+	}
+
+	return dir;
+}
+
 /* Used by the old syntax (2.0). */
 int option_exists(const char *option, element_s *element)
 {
