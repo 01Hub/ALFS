@@ -1,3 +1,14 @@
+2004-06-19  tag v1_2_4
+
+2004-06-09  Jamie Bennett
+
+	* Ensure that nALFS does not build with CURL support unless requested
+
+2004-06-08  Kevin P. Fleming
+
+	* make configure script check libxml2 version (change in version 1.2.3 requires
+	  libxml2 version 2.6.0 or greater)
+
 2004-06-06  tag v1_2_3
 
 2004-05-31  Kevin P. Fleming
