@@ -6,7 +6,7 @@
 
 #include <build.h>
 #include <libalfs.h>
-#include <main.h>
+#include <test.h>
 #include <plugin.h>
 #include <url.h>
 
