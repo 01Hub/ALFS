@@ -234,7 +234,7 @@
 <!ENTITY make-package "make-&make-version;.tar.bz2">
 <!ENTITY make-directory "make-&make-version;">
 
-<!ENTITY man-md5 "7256fd773be7f3ba3ef0f18c859ecace">
+<!ENTITY man-md5 "3800006ccd2f1f16124a2ac3abf04b30">
 <!ENTITY man-version "1.5p">
 <!ENTITY man-package "man-&man-version;.tar.bz2">
 <!ENTITY man-directory "man-&man-version;">
