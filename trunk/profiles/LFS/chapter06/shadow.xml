@@ -104,6 +104,10 @@
 			<target>../../lib/libmisc.so.0</target>
 			<name>/usr/lib/libmisc.so</name>
 		</link>
+		
+		<mkdir>
+			<name>/etc/default</name>
+		</mkdir>
 
 		<remove>/bin/groups</remove>
 	</stage>
