@@ -185,6 +185,32 @@ static void nprint_backend(msg_id_e mid, const char *format, ...)
 	}
 }
 
+static void send_child_output(const struct child_output * const child,
+			      size_t length)
+{
+	char *chunk;
+	char tmp;
+	size_t chunk_size;
+
+	if (length <= (MAX_DATA_MSG_LEN - 4)) {
+		child->buf[length] = '\0';
+		Nprint_sys("%s", &child->buf[0]);
+		return;
+	}
+
+	chunk = &child->buf[0];
+
+	while (length > 0) {
+		chunk_size = (length > MAX_DATA_MSG_LEN - 4) ? MAX_DATA_MSG_LEN - 4 : length;
+		length -= chunk_size;
+		tmp = chunk[chunk_size];
+		chunk[chunk_size] = '\0';
+		Nprint_sys("%s", chunk);
+		chunk += chunk_size;
+		*chunk = tmp;
+	}
+}
+
 static void handle_child_output(struct child_output * const child)
 {
 	ssize_t input;
@@ -204,8 +230,7 @@ static void handle_child_output(struct child_output * const child)
 	while ((line_end = strchr(&child->buf[0], '\n')) != NULL) {
 		size_t line_length = (line_end - &child->buf[0]) + 1;
 
-		*line_end = '\0';
-		Nprint_sys("%s", &child->buf[0]);
+		send_child_output(child, line_length);
 		memmove(&child->buf[0], ++line_end, child->used - line_length);
 		child->used -= line_length;
 	}
@@ -257,14 +282,12 @@ static void wait_for_child_completion(void)
 		}
 	}
 
-	if (child_stdout.used > 0) {
-		child_stdout.buf[child_stdout.used] = '\0';
-		Nprint_sys("%s", &child_stdout.buf[0]);
-	}
-	if (child_stderr.used > 0) {
-		child_stderr.buf[child_stderr.used] = '\0';
-		Nprint_sys("%s", &child_stderr.buf[0]);
-	}
+	if (child_stdout.used > 0)
+		send_child_output(&child_stdout, child_stdout.used);
+
+	if (child_stderr.used > 0)
+		send_child_output(&child_stderr, child_stderr.used);
+
 }
 
 int execute_direct_command(const char *command, char *const argv[])
@@ -490,16 +513,18 @@ void start_backend(element_s *first)
 		fatal_backend_error("pipe() for stdout failed: %s", strerror(errno));
 	}
 
-	child_stdout.buf = xmalloc(MAX_DATA_MSG_LEN - 4);
-	child_stdout.size = MAX_DATA_MSG_LEN - 4;
+	child_stdout.buf = xmalloc(16384);
+	/* leave for adding trailing null character */
+	child_stdout.size = 16383;
 	child_stdout.used = 0;
 
 	if (pipe(&child_stderr.pipe[0])) {
 		fatal_backend_error("pipe() for stderr failed: %s", strerror(errno));
 	}
 
-	child_stderr.buf = xmalloc(MAX_DATA_MSG_LEN - 4);
-	child_stderr.size = MAX_DATA_MSG_LEN - 4;
+	child_stderr.buf = xmalloc(16384);
+	/* leave for adding trailing null character */
+	child_stderr.size = 16383;
 	child_stderr.used = 0;
 
 	result = execute_children(first);
@@ -508,6 +533,9 @@ void start_backend(element_s *first)
 	(void) close(child_stdout.pipe[0]);
 	(void) close(child_stderr.pipe[1]);
 	(void) close(child_stderr.pipe[0]);
+
+	xfree(child_stdout.buf);
+	xfree(child_stderr.buf);
 
 	exit(result);
 }
