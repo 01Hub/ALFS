@@ -20,9 +20,6 @@
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <environment>
-          <variable name="VERSION">&tcl-version;</variable>
-        </environment>
         <base>&build_dir;/&tcl-directory;/unix</base>
       </stageinfo>
       <configure>

@@ -1,6 +1,17 @@
 # Begin /etc/bashrc 
 # Written for Beyond Linux From Scratch 
 # by James Robertson <jameswrobertson@earthlink.net>
+# updated by Bruce Dubbs <bdubbs@linuxfromscratch.org>
+
+# Make sure that the terminal is set up properly for each shell
+
+if [ -f /etc/profile.d/tinker-term.sh ]; then
+  source /etc/profile.d/tinker-term.sh
+fi
+
+if [ -f /etc/profile.d/xterm-titlebars.sh ]; then
+  source /etc/profile.d/xterm-titlebars.sh
+fi
 
 # System wide aliases and functions.
 

@@ -29,7 +29,7 @@
       <name>heimdal</name>
     </utilizes>
     <utilizes>
-      <name>j2sdk</name>
+      <name>&j2sdk;</name>
     </utilizes>
     <utilizes>
       <name>mysql</name>

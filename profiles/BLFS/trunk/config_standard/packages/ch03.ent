@@ -1,0 +1,4 @@
+<!--************* packages for chapter 3 *************-->
+<!ENTITY autofs-version "4.1.3">
+<!ENTITY autofs-package "autofs-&autofs-version;.tar.bz2">
+<!ENTITY autofs-directory "autofs-&autofs-version;">

@@ -2,7 +2,7 @@
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
-<!ENTITY % package_entities SYSTEM "../config/packages/ch30.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch09.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
 
 %general_entities;
@@ -20,19 +20,31 @@
         <name>libxml2</name>
       </requires>
       <requires>
-        <name>libart-lgpl</name>
+        <name>libart_lgpl</name>
       </requires>
       <requires>
         <name>popt</name>
       </requires>
       <utilizes>
-        <name>libgsf</name>
-      </utilizes>
-      <utilizes>
         <name>libcroco</name>
       </utilizes>
       <utilizes>
-        <name>gtk-doc</name>
+        <name>libgsf</name>
+      </utilizes>
+      <utilizes>
+        <name>gnome-vfs2</name>
+      </utilizes>
+      <utilizes>
+      	<name>libgnomeprintui</name>
+      </utilizes>
+      <utilizes>
+	<name>mozilla</name>
+      </utilizes>
+      <utilizes>
+	<name>gtk-doc</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-utils</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -46,14 +58,16 @@
       <base>&build_dir;/&librsvg-directory;</base>
     </stageinfo>
     <configure>
-      <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-      <param>--sysconfdir=/etc/gnome</param>
+      <param>--prefix=/usr</param>
+      <param>--sysconfdir=/etc</param>
       <param>--disable-gtk-doc</param>
     </configure>
     <make />
     <make>
       <param>install</param>
-    </make>&ldconfig;</stage>
+    </make>
+    &ldconfig;
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&librsvg-directory;</remove>
     </stage>

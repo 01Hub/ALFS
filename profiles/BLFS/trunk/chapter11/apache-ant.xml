@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch11.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+<package name="apache-ant" version="&apache-ant-version;">
+  <packageinfo>
+    <requires>
+      <name>&j2sdk;</name>
+    </requires>
+  </packageinfo>
+  <stage name="Unpacking.">
+    <unpack>
+      <archive>&packages_dir;/&apache-ant-package;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+  </stage>
+  <stage name="Patching.">
+    <stageinfo>
+      <base>&build_dir;/&apache-ant-directory;</base>
+    </stageinfo>
+    <patch>
+      <param>-N</param>
+      <param>-p1</param>
+      <param>-i &packages_dir;/&apache-ant-blfs-install-patch;</param>
+    </patch>
+  </stage>
+  <stage name="Installing.">
+    <stageinfo>
+      <base>&build_dir;/&apache-ant-directory;</base>
+    </stageinfo>
+    <execute command="./build.sh">
+      <param>-Ddist.dir=/opt/ant-&apache-ant-version;</param>
+      <param>dist</param>
+    </execute>
+    <link>
+      <option>force</option>
+      <target>/etc/ant</target>
+      <name>/opt/ant-&apache-ant-version;/etc</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>ant-&apache-ant-version;</target>
+      <name>/opt/ant</name>
+    </link>
+  </stage>
+  <stage name="Cleanup.">
+    <remove>&build_dir;/&apache-ant-directory;</remove>
+  </stage>
+</package>
+</alfs>

@@ -1,10 +1,8 @@
-ftp://ftp.alsa-project.org/pub/driver/alsa-driver-1.0.4.tar.bz2
-ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.0.4.tar.bz2
-ftp://ftp.alsa-project.org/pub/utils/alsa-utils-1.0.4.tar.bz2
-http://www.linuxfromscratch.org/patches/blfs/5.1/alsa-utils-1.0.4-arecord-1.patch
-ftp://ftp.alsa-project.org/pub/tools/alsa-tools-1.0.4.tar.bz2
-ftp://ftp.alsa-project.org/pub/firmware/alsa-firmware-1.0.4.tar.bz2
-ftp://ftp.alsa-project.org/pub/oss-lib/alsa-oss-1.0.4.tar.bz2
+ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.0.7.tar.bz2
+ftp://ftp.alsa-project.org/pub/utils/alsa-utils-1.0.7.tar.bz2
+ftp://ftp.alsa-project.org/pub/tools/alsa-tools-1.0.7.tar.bz2
+ftp://ftp.alsa-project.org/pub/firmware/alsa-firmware-1.0.7.tar.bz2
+ftp://ftp.alsa-project.org/pub/oss-lib/alsa-oss-1.0.7.tar.bz2
 
 http://www.68k.org/~michael/audiofile/audiofile-0.2.6.tar.gz
 

@@ -16,7 +16,9 @@
       <stageinfo>
         <base>&build_dir;</base>
       </stageinfo>
+      <remove>&build_dir;/java-build</remove>
       <mkdir>
+	<option>parents</option>
         <name>java-build</name>
       </mkdir>
       <copy>
@@ -50,7 +52,7 @@
         <option>parents</option>
         <name>/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;</name>
       </mkdir>
-      <move base="&build_dir;/java-build/j2sdk&j2sdk-version;">
+      <move base="&build_dir;/java-build/&j2sdk-bin-directory;">
         <option>force</option>
         <source>*</source>
         <destination>/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;</destination>
@@ -58,7 +60,7 @@
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/java-build/&j2sdk-bin-package;</remove>
-      <remove>&build_dir;/java-build/j2sdk&j2sdk-version;</remove>
+      <remove>&build_dir;/java-build/&j2sdk-bin-directory;</remove>
     </stage>
   </package>
   <package name="j2sdk-source" version="&j2sdk-version;">
@@ -76,13 +78,13 @@
         <name>cpio</name>
       </requires>
       <requires>
-        <name>alsa</name>
+        <name>alsa-lib</name>
       </requires>
       <requires>
         <name>tcsh</name>
       </requires>
       <requires>
-        <name>gcc</name>
+        <name>gcc-3.3</name>
       </requires>
     </packageinfo>
     <stage name="Unpacking">
@@ -103,6 +105,7 @@
       <stageinfo>
         <environment>
           <variable name="JAVA_HOME">/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;</variable>
+	  <variable name="PATH" mode="prepend">/opt/gcc-&gcc-33-version;/bin:</variable>
           <variable name="PATH" mode="append">:/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;/bin</variable>
           <variable name="ALT_BOOTDIR">/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;</variable>
           <variable name="CLASSPATH" />
@@ -133,6 +136,11 @@
         <param>-N</param>
         <param>-p1</param>
         <param>-i &packages_dir;/&j2sdk-motif-patch;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&j2sdk-nptl-patch;</param>
       </patch>
       <patch>
         <param>-N</param>

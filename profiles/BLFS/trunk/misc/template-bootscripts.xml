@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/chxx.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+]>
+<alfs>
+<package name="" version="">
+  <stage name="Unpacking.">
+    <unpack>
+      <archive>&packages_dir;/</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+  </stage>
+  &bootscripts-get;
+  <stage name="Installing.">
+    <stageinfo>
+      <base>&build_dir;/</base>
+    </stageinfo>
+    <configure>
+      <param>--prefix=/usr</param>
+    </configure>
+    <make />
+    <make>
+      <param>install</param>
+    </make>
+  </stage>
+  <stage name="Installing bootscript and configuration">
+    <stageinfo>
+      <base>&build_dir;/&blfs-bootscripts-directory;</base>
+    </stageinfo>
+    <make>
+      <param></param>
+    </make>
+  </stage>
+  &bootscripts-clean;
+  <stage name="Cleanup.">
+    <remove>&build_dir;/</remove>
+  </stage>
+</package>
+</alfs>

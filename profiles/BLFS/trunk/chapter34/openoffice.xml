@@ -17,7 +17,7 @@
         <name>&ximpl;</name>
       </requires>
       <requires>
-        <name>j2sdk</name>
+        <name>&j2sdk;</name>
       </requires>
       <requires>
         <name>zip</name>

@@ -9,6 +9,8 @@
 %package_entities;
 %config_entities;
 
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
 ]>
 <alfs>
   <package name="fcron" version="&fcron-version;">
@@ -35,6 +37,7 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="groupadd">
         <param>-f</param>
@@ -82,9 +85,9 @@
         <param>install-fcron</param>
       </make>
     </stage>
+    &bootscripts-clean;
     <stage name="Cleanup">
       <remove>&build_dir;/&fcron-directory;</remove>
-      <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
     </stage>
   </package>
 </alfs>

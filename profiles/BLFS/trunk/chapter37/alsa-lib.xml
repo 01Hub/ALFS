@@ -12,11 +12,6 @@
 ]>
 <alfs>
   <package name="alsa-lib" version="&alsa-lib-version;">
-    <packageinfo>
-      <requires>
-        <name>alsa-driver</name>
-      </requires>
-    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&alsa-lib-package;</archive>

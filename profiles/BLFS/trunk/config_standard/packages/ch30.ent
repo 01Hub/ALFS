@@ -104,10 +104,6 @@
 <!ENTITY gnome-applets-package   "gnome-applets-&gnome-applets-version;.tar.bz2">
 <!ENTITY gnome-applets-directory "gnome-applets-&gnome-applets-version;">
 
-<!ENTITY librsvg-version   "2.6.5">
-<!ENTITY librsvg-package   "librsvg-&librsvg-version;.tar.bz2">
-<!ENTITY librsvg-directory "librsvg-&librsvg-version;">
-
 <!ENTITY eel-version   "2.6.1">
 <!ENTITY eel-package   "eel-&eel-version;.tar.bz2">
 <!ENTITY eel-directory "eel-&eel-version;">

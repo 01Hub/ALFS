@@ -12,11 +12,6 @@
 ]>
 <alfs>
   <package name="guile" version="&guile-version;">
-    <packageinfo>
-      <utilizes>
-        <name>readline</name>
-      </utilizes>
-    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&guile-package;</archive>

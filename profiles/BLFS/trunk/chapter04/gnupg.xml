@@ -19,6 +19,9 @@
       <utilizes>
 	<name>docbook-utils</name>
       </utilizes>
+      <utilizes>
+      	<name>&mta-impl;</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

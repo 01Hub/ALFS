@@ -1,9 +1,5 @@
 <!--************* packages for chapter 37 *************-->
-<!ENTITY alsa-version "1.0.4">
-
-<!ENTITY alsa-driver-version   "&alsa-version;">
-<!ENTITY alsa-driver-package   "alsa-driver-&alsa-driver-version;.tar.bz2">
-<!ENTITY alsa-driver-directory "alsa-driver-&alsa-driver-version;">
+<!ENTITY alsa-version "1.0.7">
 
 <!ENTITY alsa-lib-version      "&alsa-version;">
 <!ENTITY alsa-lib-package      "alsa-lib-&alsa-lib-version;.tar.bz2">

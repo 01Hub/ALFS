@@ -32,7 +32,7 @@
 	<name>&krb-impl;</name>
       </utilizes>
       <utilizes>
-	<name>j2sdk</name>
+	<name>&j2sdk;</name>
       </utilizes>
       <utilizes>
 	<name>net-tools</name>

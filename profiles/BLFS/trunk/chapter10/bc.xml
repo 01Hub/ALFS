@@ -12,11 +12,6 @@
 ]>
 <alfs>
   <package name="bc" version="&bc-version;">
-    <packageinfo>
-      <requires>
-        <name>readline</name>
-      </requires>
-    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&bc-package;</archive>

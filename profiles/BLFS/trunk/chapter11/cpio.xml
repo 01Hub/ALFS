@@ -22,16 +22,22 @@
       <stageinfo>
         <base>&build_dir;/&cpio-directory;</base>
       </stageinfo>
+      <search_replace>
+      	<file>src/mt.c</file>
+	<find>invalid_arg</find>
+	<replace>argmatch_invalid</replace>
+      </search_replace>
       <configure>
+	<param>CPIO_MT_PROG=mt</param>
         <param>--prefix=/usr</param>
-        <param>--libexec=/tmp/cpio</param>
         <param>--bindir=/bin</param>
+        <param>--libexecdir=/tmp</param>
+	<param>--with-rmt=/usr/sbin/rmt</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
-      <remove>/tmp/cpio</remove>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&cpio-directory;</remove>

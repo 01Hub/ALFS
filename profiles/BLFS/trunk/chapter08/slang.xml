@@ -35,12 +35,11 @@
     <make>
       <param>install-elf</param>
     </make>
-    <make>
-      <param>install-links</param>
-    </make>
     <permissions mode="755">
       <name>/usr/lib/libslang.so.&slang-version;</name>
-    </permissions>&ldconfig;</stage>
+    </permissions>
+    &ldconfig;
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&slang-directory;</remove>
     </stage>

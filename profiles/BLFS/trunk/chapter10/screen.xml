@@ -14,7 +14,7 @@
   <package name="screen" version="&screen-version;">
     <packageinfo>
       <utilizes>
-        <name>xml-parser</name>
+        <name>linuxpam</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -37,7 +37,10 @@
       <make>
         <param>install</param>
       </make>
-      <execute command="install -m 644 etc/etcscreenrc /etc/screenrc" />
+      <copy>
+	<source>etc/etcscreenrc</source>
+	<destination>/etc/screenrc</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&screen-directory;</remove>

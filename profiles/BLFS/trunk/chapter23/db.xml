@@ -17,7 +17,7 @@
 	<name>tcl</name>
       </utilizes>
       <utilizes>
-	<name>j2sdk</name>
+	<name>&j2sdk;</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

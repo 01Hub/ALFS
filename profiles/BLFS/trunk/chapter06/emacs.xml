@@ -26,7 +26,7 @@
         <name>libtiff</name>
       </utilizes>
       <utilizes>
-        <name>libungif</name>
+        <name>&gif-impl;</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
