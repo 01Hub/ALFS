@@ -19,6 +19,9 @@
       <utilizes>
 	<name>python</name>
       </utilizes>
+      <utilizes>
+	<name>libgcrypt</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

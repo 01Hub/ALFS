@@ -42,6 +42,7 @@
       <make>
         <param>install</param>
       </make>
+      &ldconfig;
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&fontconfig-directory;</remove>

@@ -54,19 +54,19 @@
       </unpack>
     </stage>
     <stage name="Installing">
-    <stageinfo>
-      <base>&build_dir;/&librsvg-directory;</base>
-    </stageinfo>
-    <configure>
-      <param>--prefix=/usr</param>
-      <param>--sysconfdir=/etc</param>
-      <param>--disable-gtk-doc</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>
-    &ldconfig;
+      <stageinfo>
+	<base>&build_dir;/&librsvg-directory;</base>
+      </stageinfo>
+      <configure>
+	<param>--prefix=/usr</param>
+	<param>--sysconfdir=/etc</param>
+	<param>--disable-gtk-doc</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+      &ldconfig;
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&librsvg-directory;</remove>

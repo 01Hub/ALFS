@@ -12,6 +12,11 @@
 ]>
 <alfs>
   <package name="libpcap" version="&libpcap-version;">
+    <packageinfo>
+      <utilizes>
+	<name>DAG</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&libpcap-package;</archive>

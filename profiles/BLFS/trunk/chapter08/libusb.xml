@@ -17,7 +17,7 @@
         <name>openjade</name>
       </utilizes>
       <utilizes>
-        <name>sgmldtd31</name>
+        <name>sgml-dtd31</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -36,6 +36,8 @@
       <stageinfo>
         <base>&build_dir;/&libusb-directory;</base>
       </stageinfo>
+      <execute command="libtoolize -f" />
+      <execute command="autoreconf -f" />
       <configure>
         <param>--prefix=/usr</param>
         <param>--disable-build-docs</param>

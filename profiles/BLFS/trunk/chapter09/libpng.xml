@@ -18,27 +18,32 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&libpng-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&libpng-link-to-proper-libs-patch;</param>
+      </patch>
+    </stage>
     <stage name="Installing">
-    <stageinfo>
-      <base>&build_dir;/&libpng-directory;</base>
-    </stageinfo>
-    <patch>
-      <param>-N</param>
-      <param>-p1</param>
-      <param>-i &packages_dir;/&libpng-link-to-proper-libs-patch;</param>
-    </patch>
-    <make>
-      <param>prefix=/usr</param>
-      <param>ZLIBINC=/usr/include</param>
-      <param>ZLIBLIB=/usr/lib</param>
-      <param>-f scripts/makefile.linux</param>
-    </make>
-    <make>
-      <param>prefix=/usr</param>
-      <param>install</param>
-      <param>-f scripts/makefile.linux</param>
-    </make>
-    &ldconfig;
+      <stageinfo>
+	<base>&build_dir;/&libpng-directory;</base>
+      </stageinfo>
+      <make>
+	<param>prefix=/usr</param>
+	<param>ZLIBINC=/usr/include</param>
+	<param>ZLIBLIB=/usr/lib</param>
+	<param>-f scripts/makefile.linux</param>
+      </make>
+      <make>
+	<param>prefix=/usr</param>
+	<param>install</param>
+	<param>-f scripts/makefile.linux</param>
+      </make>
+      &ldconfig;
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libpng-directory;</remove>
