@@ -157,6 +157,7 @@ fi
 AC_ARG_WITH([curl], [AC_HELP_STRING([--with-curl=PATH],[search for curl-config in PATH/bin])], [
 case ${with_curl} in
      n|no)
+	CURL_CONFIG=no
         ;;
      y|ye|yes)
         USE_CURL=yes
