@@ -40,6 +40,7 @@
 			<param>--with-binutils=/tools/bin</param>
 			<param>--without-gd</param>
 			<param>--without-cvs</param>
+			<param>--with-headers=/tools/include</param>
 		</configure>
 
 		<make />

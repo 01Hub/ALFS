@@ -23,26 +23,19 @@
 			<base>&build_dir;/&udev-directory;</base>
 		</stageinfo>
 
-		<search_replace>
-		  	<file>udevstart.c</file>
-			<find>/sbin/udev</find>
-			<replace>/tools/sbin/udev</replace>
-		</search_replace>
-
-		<search_replace>
-		  	<file>etc/udev/udev.conf.in</file>
-			<find>/etc</find>
-			<replace>/tools/etc</replace>
-		</search_replace>
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&udev-etcdir-patch;</param>
+		</patch>
 
 		<make>
 		  	<param>prefix=/tools</param>
-			<param>etcdir=/tools/etc</param>
+			<param>udevdir=/dev</param>
 		</make>
 
 		<make>
-		  	<param>DESTDIR=/tools</param>
-			<param>udevdir=/dev</param>
+			<param>prefix=/tools</param>	
 			<param>install</param>
 		</make>
 		

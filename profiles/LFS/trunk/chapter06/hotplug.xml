@@ -23,47 +23,13 @@
 			<base>&build_dir;/&hotplug-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&hotplug-bogus-deps-patch;</param>
-		</patch>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&hotplug-device-patch;</param>
-		</patch>
-<!-- this patch is optional, if you use this patch you need to uncomment the section
-below
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&hotplug-isapnp-patch;</param>
-		</patch>
--->
-
 		<make>
 			<param>install</param>
 		</make>
 
 		<remove>/etc/init.d</remove>
-<!-- uncomment this section if you uncommented the ISAPNP patch above
-		<textdump mode="append" base="/etc">
-			<content>
-			=# Begin /etc/modprobe.conf entries for ISAPNP hardware detection script
-			=# by Marco d'Itri
-			=alias pnp:dPNP0511 irtty-sir
-			=alias pnp:dPNP0700 floppy
-			=alias pnp:dPNP0800 pcspkr
-			=alias pnp:dPNP0B00 rtc
-			=alias pnp:dPNP0303 atkbd
-			=alias pnp:dPNP0F13 psmouse
-			=alias pnp:dPNPB02F analog
-			=# End /etc/modprobe.conf entries for ISAPNP hardware detection script
-			</content>
-		</textdump>
--->
+		<remove>/etc/hotplug/net.agent</remove>
+
 	</stage>
 
 	<stage name="Cleaning up.">
