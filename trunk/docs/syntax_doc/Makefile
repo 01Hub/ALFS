@@ -1,4 +1,4 @@
-BASEDIR=/cygdrive/c/CVSWORK/alfs-syntax-doc/
+BASEDIR=./
 XSLROOTDIR=/usr/share/docbook-xsl/
 
 clean:
