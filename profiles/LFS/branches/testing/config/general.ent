@@ -121,7 +121,7 @@ network.-->
 <!ENTITY password "r00tme">
 
 <!-- LFS book version -->
-<!ENTITY LFS-version "6.1-testing-4341">
+<!ENTITY LFS-version "6.1-testing-4461">
 
 <!-- THE FOLLOWING TWO ENTITIES DECLARATIONS SHOULDN'T BE MOFIFIED
      UNLESS YOU KNOW WHAT YOU ARE DOING
