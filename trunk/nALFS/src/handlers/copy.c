@@ -124,6 +124,13 @@ static int copy_parameter(const element_s * const element,
 	int option_found = 0;
 
 	switch (param->private) {
+	case COPY_BASE:
+		if (data->base) {
+			Nprint_err("<copy>: cannot specify <base> more than once.");
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
 	case COPY_OPTIONS:
 		if (option_in_string("force", value)) {
 			data->force = 1;
