@@ -25,6 +25,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <errno.h>
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -40,258 +41,439 @@
 #include "utility.h"
 #include "nprint.h"
 
+/* <package> handler */
 
-#if HANDLER_SYNTAX_2_0
-
-static const struct handler_parameter package_parameters_v2[] = {
-	{ .name = "name" },
-	{ .name = "version" },
-	{ .name = "base" },
-	{ .name = NULL }
+enum {
+	PKG_NAME,
+	PKG_VERSION,
+	PKG_BASE,
 };
 
-static int package_main_ver2(const element_s * const el)
+struct package_data {
+	char *name;
+	char *version;
+	char *base;
+	const element_s *packageinfo;
+};
+
+static int package_setup(element_s * const element)
 {
-	int i;
+	struct package_data *data;
 
-	start_logging_element(el);
-	log_start_time(el);
+	if ((data = xmalloc(sizeof(struct package_data))) == NULL)
+		return 1;
 
-	i = execute_children(el);
+	data->name = NULL;
+	data->version = NULL;
+	data->base = NULL;
+	data->packageinfo = NULL;
+	element->handler_data = data;
 
-	log_end_time(el, i);
-	timer_pause();
-	end_logging_element(el, i);
-	timer_resume();
-
-	return i;
+	return 0;
 }
 
-static char *package_data_ver2(const element_s * const el,
-			       const handler_data_e data)
+static void package_free(const element_s * const element)
 {
-	if (data == HDATA_NAME) {
-		return alloc_trimmed_param_value("name", el);
+	struct package_data *data = (struct package_data *) element->handler_data;
+	
+	xfree(data->name);
+	xfree(data->version);
+	xfree(data->base);
+	xfree(element->handler_data);
+}
 
-	} else if (data == HDATA_VERSION) {
-		return alloc_trimmed_param_value("version", el);
+static int package_attribute(const element_s * const element,
+			     const struct handler_attribute * const attr,
+			     const char * const value)
+{
+	struct package_data *data = (struct package_data *) element->handler_data;
 
+	switch (attr->private) {
+	case PKG_NAME:
+		if (data->name) {
+			Nprint_err("<%s>: cannot specify \"name\" more than once.", element->handler->name);
+			return 1;
+		}
+		data->name = xstrdup(value);
+		return 0;
+	case PKG_VERSION:
+		if (data->version) {
+			Nprint_err("<%s>: cannot specify \"version\" more than once.", element->handler->name);
+			return 1;
+		}
+		data->version = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int package_parameter(const element_s * const element,
+			     const struct handler_parameter * const param,
+			     const char * const value)
+{
+	struct package_data *data = (struct package_data *) element->handler_data;
+
+	switch (param->private) {
+	case PKG_NAME:
+		if (data->name) {
+			Nprint_err("<%s>: cannot specify <name> more than once.", element->handler->name);
+			return 1;
+		}
+		data->name = xstrdup(value);
+		return 0;
+	case PKG_VERSION:
+		if (data->version) {
+			Nprint_err("<%s>: cannot specify <version> more than once.", element->handler->name);
+			return 1;
+		}
+		data->version = xstrdup(value);
+		return 0;
+	case PKG_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify <base> more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int package_valid_child(const element_s * const element,
+			       const element_s * const child)
+{
+	struct package_data *data = (struct package_data *) element->handler_data;
+
+	if (child->handler->type & HTYPE_PACKAGEINFO) {
+		if (data->packageinfo) {
+			Nprint_err("<%s>: only one <packageinfo> allowed.", element->handler->name);
+			return 0;
+		}
+
+		data->packageinfo = child;
+		return 1;
+	}
+
+	return child->handler->type & (HTYPE_NORMAL |
+				       HTYPE_COMMENT |
+				       HTYPE_TEXTDUMP |
+				       HTYPE_PACKAGE |
+				       HTYPE_EXECUTE);
+}
+
+static int package_valid_data(const element_s * const element)
+{
+	struct package_data *data = (struct package_data *) element->handler_data;
+
+	if (!data->name) {
+		Nprint_err("<%s>: \"name\" must be specified.", element->handler->name);
+		return 0;
+	}
+
+	return 1;
+}
+
+static char *package_data(const element_s * const element,
+			  const handler_data_e data_requested)
+{
+	struct package_data *data = (struct package_data *) element->handler_data;
+
+	switch (data_requested) {
+	case HDATA_BASE:
+		if (data->base)
+			return xstrdup(data->base);
+		break;
+	case HDATA_NAME:
+		if (data->name)
+			return xstrdup(data->name);
+		break;
+	case HDATA_VERSION:
+		if (data->version)
+			return xstrdup(data->version);
+		break;
+	default:
+		break;
 	}
 
 	return NULL;
 }
 
-#endif /* HANDLER_SYNTAX_2_0 */
-
-
-#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
-
-static INLINE int check_utilizes(element_s *utilizes)
+static int package_main(const element_s * const element)
 {
-	element_s *el;
-	char *package = NULL;
-
-
-	el = first_param("name", utilizes);
-
-	if (el == NULL) {
-		Nprint_h_warn("<utilizes> misses <name>, ignoring.");
-		return 1;
-	}
-
-	if ((package = alloc_trimmed_str(el->content)) == NULL) {
-		Nprint_h_warn("Utilizes name content empty, ignoring.");
-		return 1;
-	}
-
-	if (check_stamp(package) != 0) {
-		Nprint_warn("Utilized package missing: %s", package);
-	}
-
-	for (el = first_param("version", utilizes); el; el = next_param(el)) {
-		char *version = NULL;
-		char *condition = NULL;
-
-		if ((version = alloc_trimmed_str(el->content)) == NULL) {
-			Nprint_h_warn("Utilizes version content empty, ignoring.");
-			xfree(package);
-			return 1;
-		}
-
-		condition = attr_value("condition", el);
-
-		if (Empty_string(condition)) {
-			Nprint_h_warn("Utilizes condition missing, ignoring.");
-			xfree(package);
-			xfree(version);
-			return 1;
-		}
-		
-		check_stamp_version(package, condition, version);
-		/* Ignoring return value, just printing a warning. */			
-		xfree(version);
-	}
-
-	xfree(package);
-
-	return 0;
-}
-
-static INLINE int check_requires(element_s *requires)
-{
-	element_s *el;
-	char *package = NULL;
+	struct package_data *data = (struct package_data *) element->handler_data;
 	int status = 0;
 
+	start_logging_element(element);
+	log_start_time(element);
 
-	el = first_param("name", requires);
-
-	if (el == NULL) {
-		Nprint_h_warn("<requires> misses <name>, ignoring.");
-		return 1;
+	if (data->packageinfo) {
+		status = execute_children_filtered(element, HTYPE_PACKAGEINFO);
 	}
 
-	if ((package = alloc_trimmed_str(el->content)) == NULL) {
-		Nprint_h_warn("Requires name content empty, ignoring.");
-		return 1;
-	}
+	if (status == 0)
+		status = execute_children_filtered(element, ~HTYPE_PACKAGEINFO);
 
-	status = check_stamp(package);
-
-	if (status) {
-		Nprint_h_err("Some required packages are missing; "
-			"build aborted.");
-		return -1;
-	}
-
-	for (el = first_param("version", requires); el; el = next_param(el)) {
-		char *version = NULL;
-		char *condition = NULL;
-
-		if ((version = alloc_trimmed_str(el->content)) == NULL) {
-			Nprint_h_warn("Requires version content empty, ignoring.");
-			xfree(package);
-			return 1;
-		}
-
-		condition = attr_value("condition", el);
-
-		if (Empty_string(condition)) {
-			Nprint_h_warn("Requires condition missing, ignoring.");
-			xfree(package);
-			xfree(version);
-			return 1;
-		}
-
-		status = check_stamp_version(package, condition, version);
-		/* Ignoring return value, just printing a warning. */			
-		xfree(version);
-
-		if (status) {
-			Nprint_h_err(
-				"Some required packages "
-				"don't have the required version; build aborted.");
-			xfree(package);
-			return -1;
-		} else {
-			Nprint_h("Required package version OK.");
-		}
-	}
-
-	xfree(package);
-
-	return 0;
-}
-
-static int parse_packageinfo(element_s *packageinfo)
-{
-	element_s *e;
-
-
-	for (e = first_param("utilizes", packageinfo); e; e = next_param(e)) {
-		if (check_utilizes(e) == -1) {
-			return -1;
-		}
-	}
-
-	for (e = first_param("requires", packageinfo); e; e = next_param(e)) {
-		if (check_requires(e) == -1) {
-			return -1;
-		}
-	}
-
-	return 0;
-}
-
-
-static const struct handler_parameter package_parameters_v3[] = {
-	{ .name = "name" },
-	{ .name = "version" },
-	{ .name = "packageinfo" },
-	{ .name = "description" },
-	{ .name = "list" },
-	{ .name = "item" },
-	{ .name = "para" },
-	{ .name = "requires" },
-	{ .name = "utilizes" },
-	{ .name = NULL }
-};
-
-static const struct handler_attribute package_attributes_v3[] = {
-	{ .name = "name" },
-	{ .name = "version" },
-	{ .name = "logfile" },
-	{ .name = NULL }
-};
-
-static int package_main_ver3(const element_s * const el)
-{
-	int status = 0;
-	element_s *packageinfo;
-
-
-	start_logging_element(el);
-	log_start_time(el);
-
-	packageinfo = first_param("packageinfo", el);
-	if (packageinfo != NULL) {
-		status = parse_packageinfo(packageinfo);
-	}
-
-	if (status == 0) {
-		status = execute_children(el);
-	}
-
-	log_end_time(el, status);	
+	log_end_time(element, status);
 	timer_pause();
-	end_logging_element(el, status);
+	end_logging_element(element, status);
 	timer_resume();
 
 	return status;
 }
 
-static char *package_data_ver3(const element_s * const el,
-			       const handler_data_e data)
+#if HANDLER_SYNTAX_2_0
+
+static const struct handler_parameter package_parameters_v2[] = {
+	{ .name = "name", .private = PKG_NAME },
+	{ .name = "version", .private = PKG_VERSION },
+	{ .name = "base", .private = PKG_BASE },
+	{ .name = NULL }
+};
+
+#endif /* HANDLER_SYNTAX_2_0 */
+
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
+
+static const struct handler_attribute package_attributes_v3[] = {
+	{ .name = "name", .private = PKG_NAME },
+	{ .name = "version", .private = PKG_VERSION },
+	{ .name = NULL }
+};
+
+/* <version> handler */
+
+enum {
+	VERSION_CONDITION,
+};
+
+static const struct handler_attribute version_attributes[] = {
+	{ .name = "condition", .private = VERSION_CONDITION },
+	{ .name = NULL }
+};
+
+struct version_data {
+	char *condition;
+	char *content;
+};
+
+static int version_setup(element_s *element)
 {
-	char *s;
+	struct version_data *data;
 
-	if (data == HDATA_NAME) {
-		if ((s = attr_value("name", el))) {
-			return xstrdup(s);
+	if ((data = xmalloc(sizeof(struct version_data))) == NULL)
+		return 1;
+
+	data->condition = NULL;
+	data->content = NULL;
+	element->handler_data = data;
+
+	return 0;
+}
+
+static void version_free(const element_s * const element)
+{
+	struct version_data *data = (struct version_data *) element->handler_data;
+	
+	xfree(data->condition);
+	xfree(data->content);
+	xfree(element->handler_data);
+}
+
+static int version_attribute(const element_s * const element,
+			     const struct handler_attribute * const attr,
+			     const char * const value)
+{
+	struct version_data *data = (struct version_data *) element->handler_data;
+
+	switch (attr->private) {
+	case VERSION_CONDITION:
+		if (data->condition) {
+			Nprint_err("<%s>: cannot specify \"condition\" more than once.", element->handler->name);
+			return 1;
 		}
+		data->condition = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
 
-	} else if (data == HDATA_VERSION) {
-		if ((s = attr_value("version", el))) {
-			return xstrdup(s);
-		}
+static int version_content(const element_s * const element,
+			   const char * const content)
+{
+	struct version_data *data = (struct version_data *) element->handler_data;
 
+	if (strlen(content))
+		data->content = xstrdup(content);
+
+	return 0;
+}
+
+static int version_valid_data(const element_s * const element)
+{
+	struct version_data *data = (struct version_data *) element->handler_data;
+
+	if (!data->content) {
+		Nprint_err("<%s>: content cannot be empty.", element->handler->name);
+		return 0;
 	}
 
-	return NULL;
+	return 1;
+}
+
+static int version_test(const element_s * const element, int * const result)
+{
+	struct version_data *data = (struct version_data *) element->handler_data;
+
+/* TODO: check_stamp_version(package, condition, version); */
+/* needs to get package name from parent element in some fashion */
+
+	(void) element;
+	(void) result;
+	(void) data;
+	return 0;
+}
+
+/* <utilizes> amd <requires> handlers */
+
+enum {
+	UTREQ_NAME,
+};
+
+struct utreq_data {
+	char *name;
+};
+
+static const struct handler_parameter utreq_parameters[] = {
+	{ .name = "name", .private = UTREQ_NAME },
+	{ .name = NULL }
+};
+
+static int utreq_setup(element_s * const element)
+{
+	struct utreq_data *data;
+
+	if ((data = xmalloc(sizeof(struct utreq_data))) == NULL)
+		return -1;
+
+	data->name = NULL;
+	element->handler_data = data;
+
+	return 0;
+}
+
+static void utreq_free(const element_s * const element)
+{
+	struct utreq_data *data = (struct utreq_data *) element->handler_data;
+
+	xfree(data->name);
+	xfree(data);
+}
+
+static int utreq_parameter(const element_s * const element,
+			    const struct handler_parameter * const param,
+			    const char * const value)
+{
+	struct utreq_data *data = (struct utreq_data *) element->handler_data;
+
+	switch (param->private) {
+	case UTREQ_NAME:
+		if (data->name) {
+			Nprint_err("<%s>: cannot specify <name> more than once.", element->handler->name);
+			return 1;
+		}
+		data->name = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int utreq_valid_data(const element_s * const element)
+{
+	struct utreq_data *data = (struct utreq_data *) element->handler_data;
+
+	if (!data->name) {
+		Nprint_err("<%s>: <name> must be specified.", element->handler->name);
+		return 0;
+	}
+
+	return 1;
+}
+
+static int utreq_valid_child(const element_s * const element,
+			     const element_s * const child)
+{
+	(void) element;
+
+	if (child->handler->test != version_test)
+		return 0;
+
+	return 1;
+}
+
+static int process_utreq(const element_s * const element, int optional)
+{
+	struct utreq_data *data = (struct utreq_data *) element->handler_data;
+	int i;
+	element_s *child;
+	int result;
+
+	if (check_stamp(data->name) != 0) {
+		if (optional) {
+			Nprint_h_warn("Utilized package missing: %s", data->name);
+		} else {
+			Nprint_h_warn("Required package missing: %s", data->name);
+			return 1;
+		}
+	}
+
+	result = 0;
+	for (child = element->children; !result && child; child = child->next) {
+		i = do_execute_test_element(child, result);
+		if (i != 0)
+			return i;
+	}
+
+	if (!result && !optional) {
+		Nprint_h_warn("Required package version missing: %s", data->name);
+		return 1;
+	}
+	return 0;
+}
+
+static int utilizes_main(const element_s * const element)
+{
+	return process_utreq(element, 1);
+}
+
+static int requires_main(const element_s * const element)
+{
+	return process_utreq(element, 0);
+}
+
+/* <packageinfo> handler */
+
+static int packageinfo_valid_child(const element_s * const element,
+				   const element_s * const child)
+{
+	(void) element;
+
+	if (!(child->handler->main == requires_main) ||
+	     (child->handler->main == utilizes_main))
+		return 0;
+
+	return 1;
+}
+
+static int packageinfo_main(const element_s * const element)
+{
+	return execute_children(element);
 }
 
 #endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
-
 
 /*
  * Handlers' information.
@@ -304,9 +486,16 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Package",
 		.syntax_version = "2.0",
 		.parameters = package_parameters_v2,
-		.main = package_main_ver2,
+		.main = package_main,
 		.type = HTYPE_PACKAGE,
-		.alloc_data = package_data_ver2,
+		.data = HDATA_NAME | HDATA_VERSION | HDATA_BASE,
+		.alloc_data = package_data,
+		.setup = package_setup,
+		.free = package_free,
+		.main = package_main,
+		.parameter = package_parameter,
+		.valid_child = package_valid_child,
+		.valid_data = package_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -314,11 +503,64 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "package",
 		.description = "Package",
 		.syntax_version = "3.0",
-		.parameters = package_parameters_v3,
 		.attributes = package_attributes_v3,
-		.main = package_main_ver3,
+		.main = package_main,
 		.type = HTYPE_PACKAGE,
-		.alloc_data = package_data_ver3,
+		.data = HDATA_NAME | HDATA_VERSION,
+		.alloc_data = package_data,
+		.setup = package_setup,
+		.free = package_free,
+		.main = package_main,
+		.attribute = package_attribute,
+		.valid_child = package_valid_child,
+		.valid_data = package_valid_data,
+	},
+	{
+		.name = "packageinfo",
+		.description = "packageinfo",
+		.syntax_version = "3.0",
+		.type = HTYPE_NORMAL,
+		.main = packageinfo_main,
+		.valid_child = packageinfo_valid_child,
+	},
+	{
+		.name = "utilizes",
+		.description = "utilizes",
+		.syntax_version = "3.0",
+		.type = HTYPE_NORMAL,
+		.setup = utreq_setup,
+		.free = utreq_free,
+		.parameters = utreq_parameters,
+		.parameter = utreq_parameter,
+		.valid_data = utreq_valid_data,
+		.valid_child = utreq_valid_child,
+		.main = utilizes_main,
+	},
+	{
+		.name = "requires",
+		.description = "requires",
+		.syntax_version = "3.0",
+		.type = HTYPE_NORMAL,
+		.setup = utreq_setup,
+		.free = utreq_free,
+		.parameters = utreq_parameters,
+		.parameter = utreq_parameter,
+		.valid_data = utreq_valid_data,
+		.valid_child = utreq_valid_child,
+		.main = requires_main,
+	},
+	{
+		.name = "version",
+		.description = "version",
+		.syntax_version = "3.0",
+		.type = HTYPE_TEST,
+		.setup = version_setup,
+		.free = version_free,
+		.attributes = version_attributes,
+		.attribute = version_attribute,
+		.content = version_content,
+		.valid_data = version_valid_data,
+		.test = version_test,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -326,11 +568,64 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "package",
 		.description = "Package",
 		.syntax_version = "3.1",
-		.parameters = package_parameters_v3,
 		.attributes = package_attributes_v3,
-		.main = package_main_ver3,
+		.main = package_main,
 		.type = HTYPE_PACKAGE,
-		.alloc_data = package_data_ver3,
+		.data = HDATA_NAME | HDATA_VERSION,
+		.alloc_data = package_data,
+		.setup = package_setup,
+		.free = package_free,
+		.main = package_main,
+		.attribute = package_attribute,
+		.valid_child = package_valid_child,
+		.valid_data = package_valid_data,
+	},
+	{
+		.name = "packageinfo",
+		.description = "packageinfo",
+		.syntax_version = "3.1",
+		.type = HTYPE_NORMAL,
+		.main = packageinfo_main,
+		.valid_child = packageinfo_valid_child,
+	},
+	{
+		.name = "utilizes",
+		.description = "utilizes",
+		.syntax_version = "3.1",
+		.type = HTYPE_NORMAL,
+		.setup = utreq_setup,
+		.free = utreq_free,
+		.parameters = utreq_parameters,
+		.parameter = utreq_parameter,
+		.valid_data = utreq_valid_data,
+		.valid_child = utreq_valid_child,
+		.main = utilizes_main,
+	},
+	{
+		.name = "requires",
+		.description = "requires",
+		.syntax_version = "3.1",
+		.type = HTYPE_NORMAL,
+		.setup = utreq_setup,
+		.free = utreq_free,
+		.parameters = utreq_parameters,
+		.parameter = utreq_parameter,
+		.valid_data = utreq_valid_data,
+		.valid_child = utreq_valid_child,
+		.main = requires_main,
+	},
+	{
+		.name = "version",
+		.description = "version",
+		.syntax_version = "3.1",
+		.type = HTYPE_TEST,
+		.setup = version_setup,
+		.free = version_free,
+		.attributes = version_attributes,
+		.attribute = version_attribute,
+		.content = version_content,
+		.valid_data = version_valid_data,
+		.test = version_test,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -338,12 +633,64 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "package",
 		.description = "Package",
 		.syntax_version = "3.2",
-		.parameters = package_parameters_v3,
 		.attributes = package_attributes_v3,
-		.main = package_main_ver3,
+		.main = package_main,
 		.type = HTYPE_PACKAGE,
-		.alloc_data = package_data_ver3,
-		.alternate_shell = 1,
+		.data = HDATA_NAME | HDATA_VERSION,
+		.alloc_data = package_data,
+		.setup = package_setup,
+		.free = package_free,
+		.main = package_main,
+		.attribute = package_attribute,
+		.valid_child = package_valid_child,
+		.valid_data = package_valid_data,
+	},
+	{
+		.name = "packageinfo",
+		.description = "packageinfo",
+		.syntax_version = "3.2",
+		.type = HTYPE_NORMAL,
+		.main = packageinfo_main,
+		.valid_child = packageinfo_valid_child,
+	},
+	{
+		.name = "utilizes",
+		.description = "utilizes",
+		.syntax_version = "3.2",
+		.type = HTYPE_NORMAL,
+		.setup = utreq_setup,
+		.free = utreq_free,
+		.parameters = utreq_parameters,
+		.parameter = utreq_parameter,
+		.valid_data = utreq_valid_data,
+		.valid_child = utreq_valid_child,
+		.main = utilizes_main,
+	},
+	{
+		.name = "requires",
+		.description = "requires",
+		.syntax_version = "3.2",
+		.type = HTYPE_NORMAL,
+		.setup = utreq_setup,
+		.free = utreq_free,
+		.parameters = utreq_parameters,
+		.parameter = utreq_parameter,
+		.valid_data = utreq_valid_data,
+		.valid_child = utreq_valid_child,
+		.main = requires_main,
+	},
+	{
+		.name = "version",
+		.description = "version",
+		.syntax_version = "3.2",
+		.type = HTYPE_TEST,
+		.setup = version_setup,
+		.free = version_free,
+		.attributes = version_attributes,
+		.attribute = version_attribute,
+		.content = version_content,
+		.valid_data = version_valid_data,
+		.test = version_test,
 	},
 #endif
 	{
