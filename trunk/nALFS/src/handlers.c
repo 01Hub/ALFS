@@ -484,6 +484,20 @@ char *alloc_stage_shell(const element_s * const el)
 	return xstrdup("sh");
 }
 
+int option_in_string(const char * const option, const char * const string)
+{
+	const char *tmp;
+	const char *tok;
+
+	tmp = xstrdup(string);
+	for (tok = strtok(tmp, WHITE_SPACE); tok; tok = strtok(NULL, WHITE_SPACE)) {
+		if (strcmp(option, tok) == 0)
+			break;
+	}
+	xfree(tmp);
+	return tok ? 1 : 0;
+}
+
 /* Used by the old syntax (2.0). */
 int option_exists(const char *option, element_s *element)
 {
