@@ -78,6 +78,10 @@ static int alfs_attribute(const element_s * const element,
 
 	switch (attr->private) {
 	case ALFS_VERSION:
+		if (data->version) {
+			Nprint_err("<alfs>: cannot specify \"version\" more than once.");
+			return 1;
+		}
 		data->version = xstrdup(value);
 		return 0;
 	default:
