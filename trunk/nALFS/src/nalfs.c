@@ -34,6 +34,7 @@
 #include <sys/types.h>
 #include <sys/time.h>
 #include <sys/stat.h>
+#include <dirent.h>
 #include <limits.h>
 
 #include <stdarg.h>
@@ -3177,9 +3178,17 @@ static INLINE int reload_profile(element_s *old_profile)
 
 static element_s *do_add_profile(const char *profile)
 {
+	struct stat file_stat;
 	element_s *last_profile;
 	element_s *new_profile;
 
+
+	if (stat(profile, &file_stat) == 0) {
+		if (S_ISDIR(file_stat.st_mode)) {
+			Nprint("%s is a directory, ignoring it.", profile);
+			return NULL;
+		}
+	}
 
 	if ((new_profile = parse_profile(profile)) == NULL) {
 		return NULL;
@@ -3208,10 +3217,56 @@ static element_s *do_add_profile(const char *profile)
 	return new_profile;
 }
 
-static INLINE element_s *add_new_profile(void)
+/*
+ * If fullname is a file, adds that single profile.  If it's
+ * a directory, reads all .xml files in it, non-recursively.
+ * Returns number of added profiles.
+ */
+static int add_profile(const char *fullname)
 {
+	int num = 0;
+	struct stat file_stat;
+
+	if (stat(fullname, &file_stat) == 0) {
+		if (S_ISDIR(file_stat.st_mode)) {
+			struct dirent *next;
+			DIR *dir = opendir(fullname);
+
+			if (dir != NULL) {
+				while ((next = readdir(dir)) != NULL) {
+					char *s;
+					/* Check for the right suffix. */
+					s = strrchr(next->d_name, '.');
+					if (s && strcmp(s, ".xml") == 0) {
+						char *f = xstrdup(fullname);
+						append_str(&f, "/");
+						append_str(&f, next->d_name);
+
+						if (do_add_profile(f)) {
+							++num;
+						}
+
+						xfree(f);
+					}
+				}
+			}
+
+		} else {
+			do_add_profile(fullname);
+		}
+
+	} else {
+		Nprint_err("Can't get information about %s:", fullname);
+		Nprint_err("%s", strerror(errno));
+	}
+
+	return num;
+}
+
+static INLINE int add_new_profile(void)
+{
+	int num = 0;
 	char *filename = NULL;
-	element_s *profile = NULL;
 	
 
 	get_string_from_bottom("Profile to add:", &filename);
@@ -3231,7 +3286,7 @@ static INLINE element_s *add_new_profile(void)
 			(const xmlChar *)filename,
 			(const xmlChar *)base);
 
-		profile = do_add_profile(fullname);
+		num = add_profile(fullname);
 
 		xfree(fullname);
 		xfree(base);
@@ -3239,7 +3294,7 @@ static INLINE element_s *add_new_profile(void)
 
 	xfree(filename);
 
-	return profile;
+	return num;
 }
 
 static INLINE int move_profile_up(element_s *profile)
@@ -4002,8 +4057,8 @@ static int browse(void)
 				break;
 			}
 
-			if (add_new_profile() == NULL) {
-				Nprint("Profile not added.");
+			if (add_new_profile() <= 0) {
+				Nprint("No profiles added.");
 				break;
 			}
 
@@ -4582,7 +4637,7 @@ int main(int argc, char **argv)
 
 	/* Add profiles from command line. */
 	for (i = optind; i < argc; ++i) {
-		do_add_profile(argv[i]);
+		add_profile(argv[i]);
 	}
 
 	if (opt_log_status_window) {
