@@ -18,9 +18,9 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>url</filename> allow to specify the URL of the
-directory containing the file to be downloaded when processing a
-<filename>download</filename> element.</para>
+<para>The element <filename>url</filename> allows you to specify the
+Uniform Resource Locator (URL) of the directory containing the file to be
+downloaded when processing a <filename>download</filename> element.</para>
 
 </sect2>
 
@@ -33,6 +33,8 @@ directory containing the file to be downloaded when processing a
 	&lt;destination&gt;/tmp/&lt;/destination&gt;
 	&lt;digest&gt;924e6a05e52715dc0f96385b35f2f680&lt;/digest&gt;
 &lt;/download&gt;</userinput></screen>
+
+<para>There is no equivalent Bash script example for this element.</para>
 
 </sect2>
 
