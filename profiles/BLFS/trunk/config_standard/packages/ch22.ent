@@ -14,14 +14,6 @@
 <!ENTITY leafnode-package   "leafnode-&leafnode-version;.rel.tar.bz2">
 <!ENTITY leafnode-directory "leafnode-&leafnode-version;.rel">
 
-<!ENTITY openssh-version   "3.9p1">
-<!ENTITY openssh-package   "openssh-&openssh-version;.tar.gz">
-<!ENTITY openssh-directory "openssh-&openssh-version;">
-
-<!ENTITY rsync-version   "2.6.3">
-<!ENTITY rsync-package   "rsync-&rsync-version;.tar.gz">
-<!ENTITY rsync-directory "rsync-&rsync-version;">
-
 <!ENTITY openldap-version   "2.2.20">
 <!ENTITY openldap-package   "openldap-&openldap-version;.tgz">
 <!ENTITY openldap-directory "openldap-&openldap-version;">
