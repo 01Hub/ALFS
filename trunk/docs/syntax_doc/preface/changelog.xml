@@ -16,7 +16,7 @@ include element prefix &emdash; Bug 764.</para></listitem>
 include element prefix &emdash; Bug 762.</para></listitem>
 
 <listitem><para>May 28th, 2004 [jwrober]: Updated in elem_configure and
-elem_prefix for correct bash examples &emdash; Bug 757.</para></listitem
+elem_prefix for correct bash examples &emdash; Bug 757.</para></listitem>
 
 <listitem><para>May 28th, 2004 [jwrober]: Filled in elem_prefix page
 &emdash; Bug 802.</para></listitem>
