@@ -24,40 +24,19 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>list</filename> contains
-a list of items or sub-lists in a description.</para>
+<para>The element <filename>list</filename> contains a list of items or
+sub-lists in a description.</para>
+
+<para>The attribute <filename>type</filename> provides a way to define a
+numbered or bulleted list</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<screen><userinput>&lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
-	&lt;packageinfo&gt;
-		&lt;description&gt;
-		&lt;para&gt;The gimp package contains the GNU Image Manipulation Program.
-			This is useful for&nbsp;:&lt;/para&gt;
-		&lt;list&gt;
-			&lt;item&gt;photo retouching,&lt;/item&gt;
-			&lt;item&gt;image composition,&lt;/item&gt;
-			&lt;item&gt;image authoring.&lt;/item&gt;
-		&lt;/list&gt;
-		&lt;/description&gt;
-
-		&lt;requires&gt;&lt;name&gt;gtk+&lt;/name&gt;&lt;/requires&gt;
-
-		&lt;utilizes&gt;&lt;name&gt;libtiff&lt;/name&gt;&lt;/utilizes&gt;
-		&lt;utilizes&gt;&lt;name&gt;libpng&lt;/name&gt;&lt;/utilizes&gt;
-		&lt;utilizes&gt;&lt;name&gt;libjpeg&lt;/name&gt;&lt;/utilizes&gt;
-		&lt;utilizes&gt;&lt;name&gt;aalib&lt;/name&gt;&lt;/utilizes&gt;
-		&lt;utilizes&gt;&lt;name&gt;mpeg_lib&lt;/name&gt;&lt;/utilizes&gt;
-		&lt;utilizes&gt;&lt;name&gt;python&lt;/name&gt;&lt;/utilizes&gt;
-
-	&lt;/required&gt;
-
-	....
-
-&lt;/package&gt;</userinput></screen>
+<para>See the parent <xref linkend="elem_description"/> for an
+example.</para>
 
 </sect2>
 

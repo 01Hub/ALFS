@@ -31,33 +31,27 @@
 <para>The element <filename>link</filename> is one of the many main
 operation elements. It allows you to create a hard or symbolic link.</para>
 
-<para>The sub-element <filename>target</filename> gives the name(s) of the targets.</para>
+<para>The sub-element <filename>target</filename> gives the name(s) of the
+targets.</para>
 
-<para>The sub-element <filename>option</filename> FILL IN HERE.</para>
+<para>The sub-element <filename>option</filename> provides a means to pass
+an option to the <command>ln</command> command.</para>
+
+<note><para>Not all of the <command>ln</command> options are in every
+implementation. Refer to the documentation for your implementation to
+determine what options are available.</para></note>
 
 <para>The sub-element <filename>name</filename> gives the name of the link.
 When there are several targets, this must be the name of a directory, in
-which the links
-to the targets will be created.</para>
+which the links to the targets will be created.</para>
 
-<para>The attribute <filename>base</filename> specifies the directory in which
-the link creation is performed.</para>
+<para>The attribute <filename>base</filename> specifies the directory in
+which the link creation is performed.  See 
+<xref linkend="elem_base"/>.</para>
 
-<para>The attribute <filename>type</filename> specifies if the link is symbolic (the attribute
-value is "symbolic" or not specified) or not (if the attribute value is "hard")</para>
-
-<para>The following two options are supported&nbsp;:</para>
-
-<itemizedlist>
-
-<listitem><para>"force" means that the existing destination files
-are removed.</para></listitem>
-
-<listitem><para>"no_dereference" means that if the destination is a symxref to a directory
-it will be treated as if it were a normal file (and thus will replace it if the "force"
-option is specified).</para></listitem>
-
-</itemizedlist>
+<para>The attribute <filename>type</filename> generally can have one of two
+values: symbolic or hard to go along with how the <command>ln</command>
+works.</para>
 
 </sect2>
 
