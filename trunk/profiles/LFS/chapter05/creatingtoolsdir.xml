@@ -88,7 +88,6 @@
 			<source>&grep-package;</source>
 			<source>&groff-package;</source>
 			<source>&grub-package;</source>
-			<source>&grub-gcc34-patch;</source>
 			<source>&gzip-package;</source>
 			<source>&hotplug-package;</source>
 			<source>&hotplug-bogus-deps-patch;</source>
