@@ -168,9 +168,7 @@ case ${with_curl} in
         AC_PATH_PROG([CURL_CONFIG], [curl-config], [no], [${with_curl}/bin])
         ;;
 esac
-], [
-AC_PATH_PROG([CURL_CONFIG], [curl-config], [no])
-])
+], [CURL_CONFIG=no])
 
 if test "${CURL_CONFIG}" != "no"; then
    AC_CHECK_LIB([curl], [curl_global_init], [CURL_FOUND=yes], [], [`${CURL_CONFIG} --libs`])
