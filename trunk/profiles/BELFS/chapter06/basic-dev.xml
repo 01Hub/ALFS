@@ -27,14 +27,12 @@
 		</mkdir>
 
 	  <execute command="mount">
-		  <param>-n</param>
 		  <param>-t tmpfs</param>
 		  <param>none</param>
 		  <param>/dev/shm</param>
 	  </execute>
 
 	  <execute command="mount">
-		  <param>-n</param>
 		  <param>-t devpts</param>
 			<param>-o gid=4,mode=620</param>
 		  <param>none</param>
