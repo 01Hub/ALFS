@@ -1,0 +1,28 @@
+<package name="MAKEDEV" version="&MAKEDEV-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&MAKEDEV-md5;</digest>
+			<archive>&packages_dir;/&MAKEDEV-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<copy base="&build_dir;">
+			<source>&MAKEDEV-file;</source>
+			<destination>/dev/MAKEDEV</destination>
+		</copy>
+
+		<permissions base="/dev" mode="754">
+			<name>MAKEDEV</name>
+		</permissions>
+
+		<execute base="/dev" command="./MAKEDEV">
+			<param>-v generic-nopty</param>
+		</execute>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&MAKEDEV-file;</remove>
+	</stage>
+</package>

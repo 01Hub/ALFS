@@ -1,0 +1,35 @@
+<package name="sed" version="&sed-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&sed-md5;</digest>
+			<archive>&packages_dir;/&sed-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&sed-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/tools</param>
+		</configure>
+
+		<make />
+
+<!--
+		<make>
+			<param>check</param>
+		</make>
+-->
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&sed-directory;</remove>
+	</stage>
+</package>
