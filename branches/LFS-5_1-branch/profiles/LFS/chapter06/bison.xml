@@ -1,0 +1,47 @@
+<package name="bison" version="&bison-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&bison-md5;</digest>
+			<archive>&packages_dir;/&bison-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&bison-attribute-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&bison-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&bison-attribute-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+<!--
+		<make>
+			<param>check</param>
+		</make>
+-->
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&bison-directory;</remove>
+		<remove>&build_dir;/&bison-attribute-patch;</remove>
+	</stage>
+</package>

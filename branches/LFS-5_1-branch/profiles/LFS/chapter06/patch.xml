@@ -1,0 +1,30 @@
+<package name="patch" version="&patch-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&patch-md5;</digest>
+			<archive>&packages_dir;/&patch-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&patch-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<prefix>CPPFLAGS=-D_GNU_SOURCE</prefix>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&patch-directory;</remove>
+	</stage>
+</package>

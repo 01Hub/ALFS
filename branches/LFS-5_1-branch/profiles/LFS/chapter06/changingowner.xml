@@ -1,0 +1,6 @@
+<stage name="Changing ownership of tools directory">
+	<ownership user="0" group="0">
+		<option>recursive</option>
+		<name>/tools</name>
+	</ownership>
+</stage>
