@@ -43,18 +43,18 @@ ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/module-init-t
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/ncurses/ncurses-5.4.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/patch/patch-2.5.4.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/perl/perl-5.8.6.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/procps/procps-3.2.4.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/procps/procps-3.2.5.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/psmisc/psmisc-21.5.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/readline/readline-5.0.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/sed/sed-4.1.2.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/shadow/shadow-4.0.6.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/sed/sed-4.1.4.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/shadow/shadow-4.0.7.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/syslog-ng/syslog-ng-1.6.5.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/sysvinit/sysvinit-2.86.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/tar/tar-1.15.1.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/tcl/tcl8.4.9-src.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/texinfo/texinfo-4.8.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/udev/udev-050.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/util-linux/util-linux-2.12p.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/util-linux/util-linux-2.12q.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/vim/vim-6.3.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/vim/vim-6.3-lang.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/zlib/zlib-1.2.2.tar.bz2
@@ -77,7 +77,7 @@ http://www.linuxfromscratch.org/patches/lfs/cvs/testing/linux-2.6.10-security_fi
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/mktemp-1.5-add_tempfile-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/perl-5.8.6-libc-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/readline-5.0-display_wrap-1.patch
-http://www.linuxfromscratch.org/patches/lfs/cvs/testing/util-linux-2.12p-cramfs-1.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/testing/util-linux-2.12q-cramfs-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/vim-6.3-security_fix-1.patch
 
 

@@ -277,8 +277,8 @@
 <!ENTITY perl-libc-1-patch-md5 "f033161efa8b4b174ec6667e4e739efa">
 <!ENTITY perl-libc-1-patch "perl-&perl-version;-libc-1.patch">
 
-<!ENTITY procps-md5 "213e7783317c672afccfecda7b81528c">
-<!ENTITY procps-version "3.2.4">
+<!ENTITY procps-md5 "4a6faa1ca606546f16504f27a895c98f">
+<!ENTITY procps-version "3.2.5">
 <!ENTITY procps-package "procps-&procps-version;.tar.bz2">
 <!ENTITY procps-directory "procps-&procps-version;">
 
@@ -295,13 +295,13 @@
 <!ENTITY readline-display-wrap-patch-md5 "5280d7b859bb8d80e7b8ca709f137970">
 <!ENTITY readline-display-wrap-patch "readline-&readline-version;-display_wrap-1.patch">
 
-<!ENTITY sed-md5 "537f96fa633ed949b0bf1dc9d1c678b4">
-<!ENTITY sed-version "4.1.2">
+<!ENTITY sed-md5 "356901f3b2a9ae87b3926074847800e9">
+<!ENTITY sed-version "4.1.4">
 <!ENTITY sed-package "sed-&sed-version;.tar.bz2">
 <!ENTITY sed-directory "sed-&sed-version;">
 
-<!ENTITY shadow-md5 "3ca79b02c0aaa82128f4c32cb68ffe4f">
-<!ENTITY shadow-version "4.0.6">
+<!ENTITY shadow-md5 "89ebec0d1c0d861a5bd5c4c63e5cb0cc">
+<!ENTITY shadow-version "4.0.7">
 <!ENTITY shadow-package "shadow-&shadow-version;.tar.bz2">
 <!ENTITY shadow-directory "shadow-&shadow-version;">
 
@@ -346,8 +346,8 @@
 <!ENTITY udev-permissions-version "2">
 <!ENTITY udev-permissions-file "udev-config-&udev-permissions-version;.permissions">
 
-<!ENTITY util-linux-md5 "1bdf2ce5e3fd65fbbe87d67b4f3852e7">
-<!ENTITY util-linux-version "2.12p">
+<!ENTITY util-linux-md5 "54320aa1abbce00c0dc030e2c3afe5d7">
+<!ENTITY util-linux-version "2.12q">
 <!ENTITY util-linux-package "util-linux-&util-linux-version;.tar.bz2">
 <!ENTITY util-linux-directory "util-linux-&util-linux-version;">
 
