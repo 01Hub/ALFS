@@ -9,13 +9,34 @@
 
 typedef enum
 {
-	NONE = 1,
+	ROLE_NONE = 1,
 	NOEXECUTE,
 	INTERACTIVE,
 	TESTSUITE,
 	INSTALL,
 	CHROOT
 } role;
+
+typedef enum
+{
+	HASH_NONE = 1,
+	MD5,
+	SHA1
+} hash_algo;
+
+typedef enum
+{
+	PROTO_NONE = 1,
+	HTTP,
+	FTP
+} protocol;
+
+typedef struct
+{
+	hash_algo algo;
+	protocol proto;
+	char *url, *sum;
+} download;
 
 typedef struct
 {

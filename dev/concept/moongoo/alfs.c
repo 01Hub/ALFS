@@ -17,7 +17,7 @@ void print_cmd (command cmd)
 	printf("%s ", cmd.cmd);
 	for (i=0;i<cmd.n;i++)
 		printf("%s ", cmd.arg[i]);
-	if (cmd.role!=NONE)
+	if (cmd.role!=ROLE_NONE)
 		printf("(%s)", role2str(cmd.role));
 	printf("\n");
 }
@@ -134,7 +134,7 @@ char *role2str (role role)
 {
 	switch (role)
 	{
-		case (NONE):
+		case (ROLE_NONE):
 			return "none";
 		case (NOEXECUTE):
 			return "noexecute";
@@ -156,7 +156,7 @@ role parse_role (xmlNodePtr node)
 	char *prop = xmlGetProp(node, "role");
 
 	if (!prop)
-		return NONE;
+		return ROLE_NONE;
 	if (!strcmp(prop, "noexecute"))
 		return NOEXECUTE;
 	if (!strcmp(prop, "interactive"))
@@ -170,7 +170,7 @@ role parse_role (xmlNodePtr node)
 
 	fprintf(stderr, "%s is an unknown role-attribute.\n", prop);
 	
-	return NONE;
+	return ROLE_NONE;
 }
 
 char *type2str (xmlElementType type)

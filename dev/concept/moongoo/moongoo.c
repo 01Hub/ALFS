@@ -5,6 +5,8 @@
 #include <book.h>
 #include <syn.h>
 #include <repl.h>
+#include <nalfs.h>
+#include <ass.h>
 #include <util.h>
 
 role default_filter[4] = { NOEXECUTE, INTERACTIVE, TESTSUITE, 0 };
@@ -28,14 +30,16 @@ int main (int argc, char **argv)
 	cur=xmlDocGetRootElement(doc);
 	resolve_entities(cur);
 	
-	prof=bookasprofile(cur);
+	//prof=bookasprofile(cur);
 	//prof=syn_profile(cur);
+	prof=nalfs_profile(cur);
+	//prof=ass_profile(cur);
 	
-	if (prof)
+	/*if (prof)
 	{
 		set_filter(default_filter);
 		print_profile(*prof);
-	}
+	}*/
 	
 	xmlFreeDoc(doc);
 	return 0;
