@@ -3,11 +3,7 @@
 #include <getopt.h>
 
 #include <alfs.h>
-#include <book.h>
-#include <syn.h>
 #include <repl.h>
-#include <nalfs.h>
-#include <ass.h>
 #include <util.h>
 #include <build.h>
 
@@ -18,10 +14,10 @@ char *popt_cmd[2] = { "PARALLELMFLAGS=-j", NULL };
 
 int main (int argc, char **argv)
 {
-	char c, *syn = NULL;
+	char c, *syn = NULL, *moo_xml = NULL;
 	bool quiet = false;
 	xmlNodePtr cur;
-	profile *prof;
+	//profile *prof;
 	
 	if (argc<2)
 	{
@@ -29,11 +25,20 @@ int main (int argc, char **argv)
 		return 1;
 	}
 
-	while ((c = getopt(argc, argv, "s:qVh")) != EOF)
+	while ((c = getopt(argc, argv, "s:qVhc:")) != EOF)
 	{
 		switch (c)
 		{
 			case 's':
+				if (!strcmp(optarg, "help"))
+				{
+					printf("Available syntaxes:\n");
+					printf("\tbook\t\tBook as profile (default)\n");
+					printf("\tnalfs\t\tnALFS legacy syntax\n");
+					printf("\tass\t\tALFS simple syntax\n");
+					printf("\tsyn\t\tHive profile syntax\n");
+					return 0;
+				}
 				syn = (char *)malloc(strlen(optarg)+1);
 				strcpy(syn, optarg);
 				break;
@@ -45,11 +50,16 @@ int main (int argc, char **argv)
 				return 0;
 			case 'h':
 				printf("moongoo [OPTIONS] BOOK\n");
-				printf("\t-s SYNTAX\tChoose syntax\n");
+				printf("\t-s SYNTAX\tChoose syntax (help shows them)\n");
+				printf("\t-c CONF.XML\tXML configuration file.\n");
 				printf("\t-q\t\tNo output\n");
 				printf("\t-V\t\tVersion information\n");
 				printf("\t-h\t\tPrint this fluff\n");
 				return 0;
+			case 'c':
+				moo_xml = (char *)malloc(strlen(optarg)+1);
+				strcpy(moo_xml, optarg);
+				break;
 		}
 	}
 
@@ -60,7 +70,7 @@ int main (int argc, char **argv)
 	xmlXIncludeProcessFlags(doc, XML_PARSE_NOENT);
 	cur=xmlDocGetRootElement(doc);
 	
-	if ((!syn)||(!strcmp(syn, "book")))
+	/*if ((!syn)||(!strcmp(syn, "book")))
 		prof=bookasprofile(cur);
 	else
 	if (!strcmp(syn, "syn"))
@@ -84,7 +94,7 @@ int main (int argc, char **argv)
 		print_pkg(*search_pkg(prof, "Glibc-20041115", 
 			"chapter-building-system"));
 		//print_profile(*prof);
-	}
+	}*/
 	
 	xmlFreeDoc(doc);
 	return 0;
