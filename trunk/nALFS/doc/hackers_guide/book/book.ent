@@ -34,3 +34,4 @@
 <!ENTITY http-root "http://www.linuxfromscratch.org">
 <!ENTITY hints-root "http://www.linuxfromscratch.org/hints">
 <!ENTITY alfs-root "http://www.linuxfromscratch.org/alfs">
+<!ENTITY bugzilla-root "http://bugs.linuxfromscratch.org">
