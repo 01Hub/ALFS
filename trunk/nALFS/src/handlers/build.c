@@ -1,9 +1,10 @@
 /*
  *  build.c - Handler.
  *
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001, 2002, 2004
  *
  *  Neven Has <haski@sezampro.yu>
+ *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -34,9 +35,10 @@
 #include "backend.h"
 #include "logging.h"
 
-
-#if HANDLER_SYNTAX_2_0
-
+static int build_setup(const element_s * element)
+{
+	return 0;
+}
 
 static int build_main(const element_s * const el)
 {
@@ -51,8 +53,6 @@ static int build_main(const element_s * const el)
 	return i;
 }
 
-#endif /* HANDLER_SYNTAX_2_0 */
-
 
 /*
  * Handlers' information.
@@ -66,6 +66,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "2.0",
 		.main = build_main,
 		.type = HTYPE_NORMAL,
+		.setup = build_setup,
 	},
 #endif
 	{
