@@ -75,7 +75,7 @@ while getopts hd:g:p: param; do
 	p)
 	    mkdir -p download
 	    mkdir -p profile
-	    PROFILE_URL_BASE=http://www.linuxfromscratch.org/alfs/downloads/profiles
+	    PROFILE_URL_BASE=http://www.linuxfromscratch.org/alfs/downloads/profiles/stable
 	    PROFILE_VERSION=${OPTARG}
 	    echo Getting ${PROFILE_VERSION} of profile...
 	    get_profile
