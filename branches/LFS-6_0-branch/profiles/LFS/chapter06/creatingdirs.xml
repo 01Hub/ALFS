@@ -1,0 +1,156 @@
+<stage name="Creating directory tree">
+	<mkdir base="/">
+		<option>parents</option>
+	
+		<name>bin</name>
+		<name>boot</name>
+		<name>dev</name>
+		<name>etc/opt</name>
+		<name>home</name>
+		<name>lib</name>
+		<name>media/cdrom</name>
+		<name>media/floppy</name>
+		<name>mnt</name>
+		<name>proc</name>
+		<name>root</name>
+		<name>sbin</name>
+		<name>srv</name>
+		<name>sys</name>
+		<name>tmp</name>
+		<name>usr/local</name>
+		<name>var</name>
+		<name>opt</name>
+	</mkdir>
+
+	<mkdir base="/usr">
+		<option>parents</option>
+
+		<name>bin</name>
+		<name>include</name>
+		<name>lib</name>
+		<name>sbin</name>
+		<name>share</name>
+		<name>src</name>
+	</mkdir>
+
+	<link>
+		<option>force</option>
+		<target>share/man</target>
+		<target>share/doc</target>
+		<target>share/info</target>
+		<name>/usr</name>
+	</link>
+
+	<mkdir base="/usr/share">
+		<option>parents</option>
+
+		<name>doc</name>
+		<name>info</name>
+		<name>locale</name>
+		<name>man</name>
+		<name>misc</name>
+		<name>terminfo</name>
+		<name>zoneinfo</name>
+	</mkdir>
+
+	<mkdir base="/usr/share/man">
+		<option>parents</option>
+
+		<name>man1</name>
+		<name>man2</name>
+		<name>man3</name>
+		<name>man4</name>
+		<name>man5</name>
+		<name>man6</name>
+		<name>man7</name>
+		<name>man8</name>
+	</mkdir>
+
+	<mkdir base="/usr/local">
+		<option>parents</option>
+		<name>bin</name>
+		<name>etc</name>
+		<name>include</name>
+		<name>lib</name>
+		<name>sbin</name>
+		<name>share</name>
+		<name>src</name>
+	</mkdir>
+
+	<link>
+		<option>force</option>
+		<target>share/man</target>
+		<target>share/doc</target>
+		<target>share/info</target>
+		<name>/usr/local</name>
+	</link>
+
+	<mkdir base="/usr/local/share">
+		<option>parents</option>
+
+		<name>dict</name>
+		<name>doc</name>
+		<name>info</name>
+		<name>locale</name>
+		<name>man</name>
+		<name>nls</name>
+		<name>misc</name>
+		<name>terminfo</name>
+		<name>zoneinfo</name>
+	</mkdir>
+
+	<mkdir base="/usr/local/share/man">
+		<option>parents</option>
+
+		<name>man1</name>
+		<name>man2</name>
+		<name>man3</name>
+		<name>man4</name>
+		<name>man5</name>
+		<name>man6</name>
+		<name>man7</name>
+		<name>man8</name>
+	</mkdir>
+	
+	<mkdir base="/var">
+		<option>parents</option>
+
+		<name>lock</name>
+		<name>log</name>
+		<name>mail</name>
+		<name>run</name>
+		<name>spool</name>
+		<name>tmp</name>
+		<name>opt</name>
+		<name>cache</name>
+		<name>lib/misc</name>
+		<name>local</name>
+	</mkdir>
+
+	<mkdir base="/opt">
+		<option>parents</option>
+
+		<name>bin</name>
+		<name>doc</name>
+		<name>include</name>
+		<name>info</name>
+		<name>lib</name>
+		<name>man/man1</name>
+		<name>man/man2</name>
+		<name>man/man3</name>
+		<name>man/man4</name>
+		<name>man/man5</name>
+		<name>man/man6</name>
+		<name>man/man7</name>
+		<name>man/man8</name>
+	</mkdir>
+	
+	<permissions mode="0750">
+		<name>/root</name>
+	</permissions>
+
+	<permissions mode="1777">
+		<name>/tmp</name>
+		<name>/var/tmp</name>
+	</permissions>
+</stage>
