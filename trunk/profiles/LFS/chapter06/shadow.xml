@@ -93,8 +93,8 @@
 	</stage>
 
 	<stage name="Configuring a package.">
-		<execute command="/usr/sbin/pwconv" />
-		<execute command="/usr/sbin/grpconv" />
+		<execute command="pwconv" />
+		<execute command="grpconv" />
 	</stage>
 
 	<execute command="echo">

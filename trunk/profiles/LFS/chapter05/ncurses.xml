@@ -5,23 +5,12 @@
 			<archive>&packages_dir;/&ncurses-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&ncurses-etip-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
 			<base>&build_dir;/&ncurses-directory;</base>
 		</stageinfo>
-
-                <patch>
-                        <param>-N</param>
-                        <param>-p1</param>
-                        <param>-i ../&ncurses-etip-patch;</param>
-                </patch>
 
                 <configure>
 			<param>--prefix=/tools</param>
@@ -40,6 +29,5 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&ncurses-directory;</remove>
-		<remove>&build_dir;/&ncurses-etip-patch;</remove>
 	</stage>
 </package>
