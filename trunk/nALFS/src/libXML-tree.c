@@ -201,13 +201,34 @@ static int make_handler_element(xmlNodePtr node, element_s *element)
 			}
 		}
 
-		result = handler->valid(element);
+		/* If the handler cares about its content, pass it in
+		   and check the result. */
+
+		if (handler->parse_content) {
+			xmlChar *content;
+
+			if (node->children
+			    && node->children->type == XML_TEXT_NODE
+			    && node->children->next == NULL) {
+				if ((content = xmlNodeGetContent(node))) {
+					result = handler->parse_content(element,
+									content);
+					xfree(content);
+					if (result)
+						return result;
+				}
+			}
+
+		}
+
+		if (handler->valid)
+			result = handler->valid(element);
 	}
 
 	return result;
 }
 
-static INLINE element_s *create_element(xmlNodePtr node)
+static INLINE element_s *create_element(xmlNodePtr node, element_s *parent)
 {
 	xmlChar *c;
 	handler_s *handler;
@@ -215,6 +236,7 @@ static INLINE element_s *create_element(xmlNodePtr node)
 
 
 	el->id = element_id++;
+	el->parent = parent;
 
 	switch (node->type) {
 		case XML_ELEMENT_NODE:
@@ -273,7 +295,8 @@ static INLINE element_s *create_element(xmlNodePtr node)
 	return el;
 }
 
-static element_s *convert_nodes(xmlNodePtr node, element_s *profile)
+static element_s *convert_nodes(xmlNodePtr node, element_s *profile,
+				element_s *parent)
 {
 	element_s *el, *c, *prev = NULL;
 	xmlNodePtr child;
@@ -283,10 +306,10 @@ static element_s *convert_nodes(xmlNodePtr node, element_s *profile)
 		return NULL;
 	}
 
-	el = create_element(node);
+	el = create_element(node, parent);
 
 	for (child = node->children; child; child = child->next) {
-		if ((c = convert_nodes(child, profile))) {
+		if ((c = convert_nodes(child, profile, el))) {
 			link_element(c, prev, el, profile);
 
 			prev = c;
@@ -318,7 +341,7 @@ static INLINE element_s *convert_doc(xmlDocPtr doc)
 	profile->profile = profile;
 
 	for (child = doc->children; child; child = child->next) {
-		if ((el = convert_nodes(child, profile))) {
+		if ((el = convert_nodes(child, profile, profile))) {
 			link_element(el, prev, profile, profile);
 
 			prev = el;
