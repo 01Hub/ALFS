@@ -42,8 +42,8 @@
 <sect2>
 <title>Description</title>
 
-<para>This element groups the elements that should be executed if
-the test performed when evaluating an <filename>if</filename> element is satisfied.
+<para>This element groups the elements that should be executed if the test
+performed when evaluating an <filename>if</filename> element is satisfied.
 </para>
 
 </sect2>

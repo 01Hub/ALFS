@@ -35,7 +35,7 @@ available.</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+<screen>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
 [[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
   echo Retrieving  ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
 [[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
@@ -44,7 +44,7 @@ available.</para>
   echo Archive does not exist &amp;&amp; exit 3
 
 cd /usr/src
-<command>tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></userinput></screen>
+<command>tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></screen>
 
 </sect2>
 

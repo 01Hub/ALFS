@@ -52,13 +52,13 @@ used in the command <filename>chmod</filename>.</para>
 <title>Examples</title>
 
 <screen><userinput>&lt;permissions mode=&quot;755&quot;&gt;
-    &lt;name&gt;/usr/bin/lex&lt;/name&gt;
+	&lt;name&gt;/usr/bin/lex&lt;/name&gt;
 &lt;/permissions&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Changing permissions of /usr/bin/lex to 755
-<command>chmod 755 /usr/bin/lex</command></userinput></screen>
+<screen>echo Changing permissions of /usr/bin/lex to 755
+<command>chmod 755 /usr/bin/lex</command></screen>
 
 </sect2>
 
