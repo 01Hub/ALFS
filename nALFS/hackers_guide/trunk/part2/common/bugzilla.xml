@@ -9,35 +9,42 @@
 <title>Bugzilla</title>
 
 <para>The &book-product; package tracks all &quot;<emphasis
-role="bold">bugs</emphasis>&quot; in the LFS Bugzilla database. A &quot;<emphasis
-role="bold">bug</emphasis>&quot; is defined as an issue, todo or enhancement request tied to
-one of the ALFS products. The Bugzilla database can be accessed via the web at&nbsp;<ulink
-url="&bugzilla-root;">&bugzilla-root;</ulink>. The package is split across two Bugzilla
-products: &quot;<emphasis role="bold">ALFS Profiles</emphasis>&quot; and &quot;<emphasis
-role="bold">Automated Linux From Scratch</emphasis>&quot;. The distinction between the two
+role="bold">bugs</emphasis>&quot; in the LFS Bugzilla database. A
+&quot;<emphasis role="bold">bug</emphasis>&quot; is defined as an issue,
+to-do or enhancement request tied to one of the ALFS products. The
+Bugzilla database can be accessed via the web at&nbsp;<ulink
+url="&bugzilla-root;">&bugzilla-root;</ulink>. The package is split
+across two Bugzilla products: &quot;<emphasis role="bold">ALFS
+Profiles</emphasis>&quot; and &quot;<emphasis role="bold">Automated
+Linux From Scratch</emphasis>&quot;. The distinction between the two
 should be pretty clear.</para>
 
-<para>The &quot;<emphasis role="bold">Automated Linux From Scratch</emphasis>&quot; product
-is then split up into five components: &quot;<emphasis role="bold">Back End
-(XML)</emphasis>&quot;, &quot;<emphasis role="bold">Doc</emphasis>s&quot;, &quot;<emphasis
-role="bold">DTD</emphasis>&quot;, &quot;<emphasis role="bold">Extras</emphasis>&quot;, and
-&quot;<emphasis role="bold">Front End (GUI)</emphasis>&quot;. The &quot;<emphasis
-role="bold">Back End (XML)</emphasis>&quot; component is for all of the back end handlers
-that parse the XML and perform the work they ask for. The &quot;<emphasis
-role="bold">Docs</emphasis>&quot; component is to track all issues related to the three
-works (this book, the ALFS DTD Syntax Doc and the Users Guide). The &quot;<emphasis
-role="bold">DTD</emphasis>&quot; component is designed to take care of all issues around the
-main ALFS DTD and any other DTD's that the project uses. A good example would be the logging
-DTD.  The &quot;<emphasis role="bold">Extras</emphasis>&quot; component is for any add-ons
-or extras to the &book-product; package. The &quot;<emphasis role="bold">Front End
-(GUI)</emphasis>&quot; is designed to track any bugs for the <filename>ncurses</filename>
-GUI.</para>
+<para>The &quot;<emphasis role="bold">Automated Linux From
+Scratch</emphasis>&quot; product is then split up into five components:
+&quot;<emphasis role="bold">Back End (XML)</emphasis>&quot;,
+&quot;<emphasis role="bold">Doc</emphasis>s&quot;, &quot;<emphasis
+role="bold">DTD</emphasis>&quot;, &quot;<emphasis
+role="bold">Extras</emphasis>&quot;, and &quot;<emphasis
+role="bold">Front End (GUI)</emphasis>&quot;. The &quot;<emphasis
+role="bold">Back End (XML)</emphasis>&quot; component is for all of the
+back end handlers that parse the XML and perform the work they ask for.
+The &quot;<emphasis role="bold">Docs</emphasis>&quot; component is to
+track all issues related to the three works (this book, the ALFS DTD
+Syntax Doc and the Users Guide). The &quot;<emphasis
+role="bold">DTD</emphasis>&quot; component is designed to take care of
+all issues around the main ALFS DTD and any other DTD's that the project
+uses. A good example would be the logging DTD.  The &quot;<emphasis
+role="bold">Extras</emphasis>&quot; component is for any add-ons or
+extras to the &book-product; package. The &quot;<emphasis
+role="bold">Front End (GUI)</emphasis>&quot; is designed to track any
+bugs for the <filename>ncurses</filename> GUI.</para>
 
-<para>If you find a bug in one of the products, first look in the Bugzilla database to see
-if your issue is there.  If not, then please read the <xref
-linkend="intro-welcome-contactinfo"/> page on how to contact the development team at the
-appropriate mailing list. The team will decide if your issue is really a bug or just user
-error. If a bug is found, then you can (or one of the development team will) add the bug in
-the database for work on later.</para>
+<para>If you find a bug in one of the products, first look in the
+Bugzilla database to see if your issue is there.  If not, then please
+read the <xref linkend="intro-welcome-contactinfo"/> page on how to
+contact the development team at the appropriate mailing list. The team
+will decide if your issue is really a bug or just user error. If a bug
+is found, then you can (or one of the development team will) add the bug
+in the database for work on later.</para>
 
 </sect1>

@@ -121,7 +121,7 @@ added option does not work properly.</para>
 <para>All other types of files fall into two categories:</para>
 
 <blockquote><para>those that should be present 
-<emphasis role="bold">only</emphasis> in the CVS repository</para>
+<emphasis role="bold">only</emphasis> in the SVN repository</para>
 </blockquote>
 
 <para>Nothing needs to be done for these files, other than the relevant

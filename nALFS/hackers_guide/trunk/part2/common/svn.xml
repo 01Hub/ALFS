@@ -11,7 +11,7 @@
 <sect2>
 <title>Check Out</title>
 
-<para>Bleading edge development of &book-product; occurs on the TRUNK of
+<para>Bleeding edge development of &book-product; occurs on the TRUNK of
 the LFS subversion (SVN) repository.</para>
 
 <para>To get a good feel for what all the repository contains, you can
@@ -37,14 +37,14 @@ your local working &quot;sandbox&quot; directory.  This path is
 arbitrary, you do not have to use
 <filename>ALFS/nALFS</filename> if you do not want to.</para>
 
-<para>If all you want to do is udpate the local sandbox, then issue
+<para>If all you want to do is update the local sandbox, then issue
 this command in the local working directory (eg.
 <filename>ALFS/nALFS</filename> in your sandbox:</para>
 
 <emphasis role="bold"><filename>svn update</filename></emphasis></note>
 
 <para>If you are planning on being able to check files back in, you need
-to ensure that you do a priviledged checkout.  To do a priviledged
+to ensure that you do a privileged checkout.  To do a priviledged
 checkout, add a &quot;+ssh&quot; just after the second &quot;svn&quot;
 in the above command.  Here is an example&nbsp;:</para>
 
@@ -69,6 +69,19 @@ Guide</emphasis>&nbsp;:
 <listitem><para><emphasis role="bold">ALFS Syntax
 Document</emphasis>&nbsp;:
 <filename>/ALFS/docs/syntax_doc/trunk</filename></para></listitem>
+
+</itemizedlist>
+
+<para>The standard LFS and BLFS profiles are in a third place the
+repository.  You can find them in the following locations&nbsp;:</para>
+
+<itemizedlist>
+
+<listitem><para><emphasis role="bold">LFS</emphasis>&nbsp;:
+<filename>/ALFS/profile/LFS/trunk</filename></para></listitem>
+
+<listitem><para><emphasis role="bold">BLFS</emphasis>&nbsp;:
+<filename>/ALFS/profiles/BLFS/trunk</filename></para></listitem>
 
 </itemizedlist>
 
