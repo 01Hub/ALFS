@@ -1,0 +1,3 @@
+LIBS=
+
+all: $(LIB)
