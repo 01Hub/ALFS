@@ -294,10 +294,13 @@
 <!ENTITY readline-gnu-fixes-patch-md5 "469994b522eeacaa7af2ebd29ea090cd">
 <!ENTITY readline-gnu-fixes-patch "readline-&readline-version;-gnu_fixes-1.patch">
 
-<!ENTITY sed-md5 "d8fb554bc6577aaedd39b94b3cb3df70">
-<!ENTITY sed-version "4.0.9">
+<!ENTITY sed-md5 "d8a08cc12fda1826deb2028dd729e189">
+<!ENTITY sed-version "4.1">
 <!ENTITY sed-package "sed-&sed-version;.tar.gz">
 <!ENTITY sed-directory "sed-&sed-version;">
+
+<!ENTITY sed-permissions-patch-md5 "2d505c61417e56d880267e54a97fa75a">
+<!ENTITY sed-permissions-patch "sed-&sed-version;-permissions-1.patch">
 
 <!ENTITY shadow-md5 "3a3d17d3d7c630b602baf66ae7434c61">
 <!ENTITY shadow-version "4.0.4.1">
