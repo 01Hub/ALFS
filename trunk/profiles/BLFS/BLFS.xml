@@ -162,6 +162,8 @@
     &j2sdk;
     &ruby;
     &gcc-full;
+    &tcl;
+    &tk;
     &nasm;
 
 
