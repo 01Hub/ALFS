@@ -46,7 +46,7 @@
 
 static const char *patch_parameters_ver2[] = { "base", "param", NULL };
 
-static int patch_main_ver2(element_s *el)
+static int patch_main_ver2(element_s * const el)
 {
 	int status;
 	char *base;
@@ -87,7 +87,7 @@ static int patch_main_ver2(element_s *el)
 static const char *patch_parameters_ver3[] = { "param", "prefix", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
-static int patch_main_ver3(element_s *el)
+static int patch_main_ver3(element_s * const el)
 {
 	int status;
 	char *base;
@@ -100,7 +100,7 @@ static int patch_main_ver3(element_s *el)
 		return -1;
 	}
 
-	base = alloc_base_dir_new(el);
+	base = alloc_base_dir_new(el, 1);
 
 	if (change_current_dir(base)) {
 		xfree(base);
@@ -145,7 +145,7 @@ static const char *patch_parameters_ver3_2[] = { "digest", "reference", "file",
 						 "param", "prefix", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "mode", "path_strip", NULL };
 
-static int patch_main_ver3_2(element_s *el)
+static int patch_main_ver3_2(element_s * const el)
 {
         int status = -1;
 	char *base = NULL;
@@ -164,7 +164,7 @@ static int patch_main_ver3_2(element_s *el)
 		goto free_all_and_return;
 	}
 
-	base = alloc_base_dir_new(el);
+	base = alloc_base_dir_new(el, 1);
 
 	if (change_current_dir(base)) {
 		goto free_all_and_return;

@@ -57,7 +57,7 @@ static INLINE void warn_if_doesnt_exist(const char *file)
 }
 
 
-static int remove_main_ver2(element_s *el)
+static int remove_main_ver2(element_s * const el)
 {
 	int status = 0;
 	char *tok;
@@ -96,7 +96,7 @@ static int remove_main_ver2(element_s *el)
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 
 
-static int remove_main_ver3(element_s *el)
+static int remove_main_ver3(element_s * const el)
 {
 	int status = 0;
 	char *name;
@@ -126,7 +126,7 @@ static int remove_main_ver3(element_s *el)
 
 #if HANDLER_SYNTAX_3_2
 
-static int remove_main_ver3_2(element_s *el)
+static int remove_main_ver3_2(element_s * const el)
 {
 	int status   = 0;
 	char *name   = NULL;
@@ -138,7 +138,7 @@ static int remove_main_ver3_2(element_s *el)
 		return -1;
 	}
 
-	base = alloc_base_dir_new(el);
+	base = alloc_base_dir_new(el, 1);
 
 	if (change_current_dir(base)) {
 		xfree(base);

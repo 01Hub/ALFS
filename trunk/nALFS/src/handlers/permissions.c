@@ -49,7 +49,7 @@
 static const char *permissions_parameters_ver2[] =
 { "base", "options", "mode", "name", NULL };
 
-static int permissions_main_ver2(element_s *el)
+static int permissions_main_ver2(element_s * const el)
 {
 	int status = 0;
 	int recursive = option_exists("recursive", el);
@@ -134,7 +134,7 @@ static const char *permissions_parameters_ver3[] =
 { "option", "name", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "mode", NULL };
 
-static int permissions_main_ver3(element_s *el)
+static int permissions_main_ver3(element_s * const el)
 {
 	int options[1], recursive;
 	int status = 0;
@@ -151,7 +151,7 @@ static int permissions_main_ver3(element_s *el)
 		return -1;
 	}
 
-	base = alloc_base_dir_new(el);
+	base = alloc_base_dir_new(el, 1);
 	if (change_current_dir(base)) {
 		xfree(base);
 		return -1;

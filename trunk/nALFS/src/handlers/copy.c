@@ -49,7 +49,7 @@
 static const char *copy_parameters_ver2[] =
 { "options", "base", "source", "destination", NULL };
 
-static int copy_main_ver2(element_s *el)
+static int copy_main_ver2(element_s * const el)
 {
 	int status = 0;
 	int archive = option_exists("archive",el);
@@ -133,7 +133,7 @@ static const char *copy_parameters_ver3[] =
 { "option", "source", "destination", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
-static int copy_main_ver3(element_s *el)
+static int copy_main_ver3(element_s * const el)
 {
 	int options[5];
 	int status = 0;
@@ -173,7 +173,7 @@ static int copy_main_ver3(element_s *el)
 		append_str(&common_command, " -R");
 	}
 
-	base = alloc_base_dir_new(el);
+	base = alloc_base_dir_new(el, 1);
 
 	if (change_current_dir(base)) {
 		xfree(destination);

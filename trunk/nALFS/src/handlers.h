@@ -43,16 +43,25 @@ typedef enum handler_type_e {
 } handler_type_e;
 
 typedef enum handler_data_e {
-	HDATA_COMMAND, HDATA_NAME, HDATA_VERSION, HDATA_FILE
+	HDATA_COMMAND = 1,
+	HDATA_NAME = 2,
+	HDATA_VERSION = 4,
+	HDATA_FILE = 8,
+	HDATA_BASE = 16,
+	HDATA_SHELL = 32,
 } handler_data_e;
 
-typedef char *(*handler_data_f)(element_s *, handler_data_e data);
-typedef int (*handler_f)(element_s *);
-typedef int (*handler_test)(element_s *, int *);
-typedef int (*handler_setup)(element_s *);
-typedef int (*handler_parse)(const element_s *, const char *, const char *);
-typedef int (*handler_parse_content)(const element_s *, const char *);
-typedef int (*handler_valid)(const element_s *);
+typedef char *(*handler_data_f)(const element_s * const element,
+				const handler_data_e data_requested);
+typedef int (*handler_f)(element_s * const element);
+typedef int (*handler_test)(element_s * const element, int * const result);
+typedef int (*handler_setup)(element_s * const element);
+typedef int (*handler_parse)(const element_s * const element,
+			     const char * const name,
+			     const char * const value);
+typedef int (*handler_parse_content)(const element_s * const element,
+				     const char * const content);
+typedef int (*handler_valid)(const element_s * const element);
 
 typedef struct handler_info_s {
 	const char *name;		/* Name of the element it handles. */
@@ -61,27 +70,25 @@ typedef struct handler_info_s {
 	const char **parameters;	/* Parameters allowed. */
 	const char **attributes;	/* Attributes allowed. */
 
-	handler_f main;
-
 	handler_type_e type;
+	handler_data_e data;
 	handler_data_f alloc_data;
 
-	int is_action;		/* Whether it's the element that actually
-				 * does something, or it's only a "container".
-				 */
+	handler_f main;
+	handler_test test;		/* used by HTYPE_TEST handlers */
+
+	int is_action;		/* If the element actually performs something
+				   or is only a container */
 	int priority;           /* Higher priority handlers "override" lower
 				   priority ones (allows user to make custom
 				   handlers that replace standard ones) */
-
-	handler_test test;	/* used by HTYPE_TEST */
 	int alternate_shell;	/* commands issued by handler should support
 				   <shell> element if present in a containing
-				   stage
-				*/
-	/* The following four functions are used during profile parsing, to
+				   element */
+
+	/* The following five functions are used during profile parsing, to
 	   allow handler to store private data in the element_s structure,
-	   and to validate the provided parameters and attributes at
-	   profile parsing time.
+	   and to validate the provided parameters, attributes and content.
 	*/
 	handler_setup setup;	/* Function to setup handler private data. */
 	handler_valid valid;	/* Function to validate private data. */
@@ -114,9 +121,8 @@ char *alloc_textdump_file(element_s *el);
 char *alloc_execute_command(element_s *el);
 
 char *alloc_base_dir(element_s *el);
-char *alloc_base_dir_new(element_s *el);
-char *alloc_base_dir_force(element_s *el);
-char *alloc_stage_shell(element_s *el);
+char *alloc_base_dir_new(const element_s * const el, const int default_root);
+char *alloc_stage_shell(const element_s * const el);
 int option_exists(const char *option, element_s *element);
 void check_options(int total, int *opts, const char *string_, element_s *el);
 char *append_param_elements(char **string, element_s *el);

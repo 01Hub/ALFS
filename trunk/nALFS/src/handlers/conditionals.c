@@ -81,7 +81,7 @@ static int do_shelltest(element_s *element, const char *test, int *result)
 #if HANDLER_SYNTAX_3_1
 static const char *if_parameters_3_1[] = { "then", "else", NULL };
 
-static int if_main_3_1(element_s *element)
+static int if_main_3_1(element_s * const element)
 {
 	char *shelltest;
 	char *packagetest;
@@ -115,7 +115,7 @@ static int if_main_3_1(element_s *element)
 static const char *if_parameters_3_2[] = { "test", "package-version", "package-built", "and", "or", "not", "then", "else", NULL };
 static const char *boolean_parameters_3_2[] = { "test", "package-version", "package-built", "and", "or", "not", NULL };
 
-static int if_main_3_2(element_s *element)
+static int if_main_3_2(element_s * const element)
 {
 	int i;
 	element_s *child;
@@ -140,7 +140,7 @@ static int if_main_3_2(element_s *element)
 	return execute_children_filtered(element, result_handler_type);
 }
 
-static int and_test_3_2(element_s *element, int *result)
+static int and_test_3_2(element_s * const element, int * const result)
 {
 	int i;
 	element_s *child;
@@ -161,7 +161,7 @@ static int and_test_3_2(element_s *element, int *result)
 	return 0;
 }
 
-static int or_test_3_2(element_s *element, int *result)
+static int or_test_3_2(element_s * const element, int * const result)
 {
 	int i;
 	element_s *child;
@@ -182,7 +182,7 @@ static int or_test_3_2(element_s *element, int *result)
 	return 0;
 }
 
-static int not_test_3_2(element_s *element, int *result)
+static int not_test_3_2(element_s * const element, int * const result)
 {
 	int i;
 	element_s *child;
@@ -207,7 +207,7 @@ static int not_test_3_2(element_s *element, int *result)
 	return 0;
 }
 
-static int shelltest_test_3_2(element_s *element, int *result)
+static int shelltest_test_3_2(element_s * const element, int * const result)
 {
 	char *test;
 	int status = -1;
@@ -222,14 +222,16 @@ static int shelltest_test_3_2(element_s *element, int *result)
 	return status;
 }
 
-static int package_version_test_3_2(element_s *element, int *result)
+static int package_version_test_3_2(element_s * const element,
+				    int * const result)
 {
 	(void) element;
 	(void) result;
 	return 0;
 }
 
-static int package_built_test_3_2(element_s *element, int *result)
+static int package_built_test_3_2(element_s * const element,
+				  int * const result)
 {
 	(void) element;
 	(void) result;

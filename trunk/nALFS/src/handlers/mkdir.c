@@ -49,7 +49,7 @@
 static const char *mkdir_parameters_ver2[] =
 { "options", "base", "dir", "permissions", NULL };
 
-static int mkdir_main_ver2(element_s *el)
+static int mkdir_main_ver2(element_s * const el)
 {
 	int status = 0;
 	int parents = option_exists("parents", el);
@@ -122,7 +122,7 @@ static const char *mkdir_parameters_ver3[] =
 { "option", "name", "permissions", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
-static int mkdir_main_ver3(element_s *el)
+static int mkdir_main_ver3(element_s * const el)
 {
 	int options[1], parents;
 	int status = 0;
@@ -139,7 +139,7 @@ static int mkdir_main_ver3(element_s *el)
 		return -1;
 	}
 
-	base = alloc_base_dir_new(el);
+	base = alloc_base_dir_new(el, 1);
 
 	if (change_current_dir(base)) {
 		xfree(base);

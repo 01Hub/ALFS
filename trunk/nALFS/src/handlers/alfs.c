@@ -32,11 +32,16 @@
 
 #include "handlers.h"
 #include "backend.h"
+#include "nprint.h"
 
 
-static int alfs_main(element_s *el)
+static int alfs_main(element_s * const el)
 {
-	return execute_children(el);
+	int status;
+
+	status = execute_children(el);
+
+	return status;
 }
 
 

@@ -53,7 +53,7 @@
 static const char *download_parameters[] =
 { "digest", "file", "url", "destination", NULL };
 
-static int download_main(element_s *el)
+static int download_main(element_s * const el)
 {
 	/* status assumes failure until set otherwise */
 	int status = -1;
@@ -143,7 +143,7 @@ static int download_main(element_s *el)
 static const char *download_parameters_3_2[] =
 { "digest", "file", "url", NULL };
 
-static int download_main_3_2(element_s *el)
+static int download_main_3_2(element_s * const el)
 {
 	/* status assumes failure until set otherwise */
 	int status = -1;
@@ -160,7 +160,7 @@ static int download_main_3_2(element_s *el)
 	}
 
 	/* <base> is mandatory, we don't want to download just anywhere! */
-	if ((base = alloc_base_dir_force(el)) == NULL) {
+	if ((base = alloc_base_dir_new(el, 0)) == NULL) {
 		Nprint_h_err("<base> is missing.");
 		goto free_all_and_return;
 	}

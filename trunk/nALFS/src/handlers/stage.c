@@ -1,9 +1,10 @@
 /*
- *  stage.c - Handler.
+ *  stage.c - Handlers for <stage> and <stage>-related elements.
  * 
- *  Copyright (C) 2002-2003
+ *  Copyright (C) 2002-2004
  *  
  *  Neven Has <haski@sezampro.yu>
+ *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -49,8 +50,6 @@
 
 extern char **environ;
 
-
-#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
 static INLINE int set_supplementary_groups(const char *user, gid_t gid)
 {
@@ -140,8 +139,6 @@ static INLINE int change_to_user(const char *user)
 	return 0;
 }
 
-
-
 static INLINE int unset_variable(const char *variable)
 {
 	Nprint_h("Unsetting environment variable %s.", variable);
@@ -212,244 +209,139 @@ static INLINE int set_variable(const char *variable, const char *value)
 	return 0;
 }
 
-static INLINE int set_environment(element_s *environment)
+static const element_s *find_stageinfo(const element_s *element)
 {
-	element_s *v;
+	const element_s *child;
 
-
-	for (v = first_param("variable", environment); v; v = next_param(v)) {
-		char *name, *value;
-				
-		name = attr_value("name", v);
-		value = alloc_trimmed_str(v->content);
-
-		if (value) {
-			char *mode = attr_value("mode", v);
-
-			if (mode && strcmp(mode, "append") == 0) {
-				append_to_variable(name, value);
-			} else if (mode && strcmp(mode, "prepend") == 0) {
-				prepend_to_variable(name, value);
-			} else {
-				set_variable(name, value);
-			}
-
-			xfree(value);
-
-		} else {
-			unset_variable(name);
+	for (child = element->children; child; child = child->next) {
+		if (child->handler->type & HTYPE_STAGEINFO) {
+			return child;
 		}
 	}
-	
-	return 0;
+
+	return NULL;
 }
 
+/* common function used by all stage-like handlers to actually execute
+   the element's children
+*/
 
-
-static int parse_stageinfo_and_execute_children(
-	element_s *el,
-	element_s *stageinfo)
+static int process_stage(element_s *element)
 {
-	int status = 0;
+	int status;
 	pid_t pid, got_pid;
-	char *user = NULL, *root = NULL;
-	element_s *environment_el, *user_el, *root_el;
-	
-	/* <base> is read by elements under <stage> themselves. */
-	environment_el = first_param("environment", stageinfo);
-	user_el = first_param("user", stageinfo);
-	root_el = first_param("root", stageinfo);
 
-	if (user_el) {
-		if ((user = alloc_trimmed_str(user_el->content)) == NULL) {
-	                Nprint_h_err("User not specified.");
-	                return -1;
-		}
-	}
+	/* if no <stageinfo> found, simply execute children */
 
-	if (root_el) {
-		if ((root = alloc_trimmed_str(root_el->content)) == NULL) {
-			Nprint_h_err("Root directory not specified.");
-			xfree(user);
-			return -1;
-		}
-	}
+	if (!find_stageinfo(element))
+		return execute_children(element);
 
-	/* Nothing interesting found, no need for forking. */
-	if (!environment_el && !user && !root) {
-		xfree(user);
-		xfree(root);
-
-		return execute_children(el);
-	}
+	/* found <stageinfo>, assume that a fork() is necessary */
 
 	pid = fork();
 
 	if (pid == 0) { /* Child. */
 		Start_receiving_sigio();
 
-		if (root) {
-			Nprint_h("Changing root directory to \"%s\".", root);
+		status = execute_children_filtered(element, HTYPE_STAGEINFO);
 
-			if (change_current_dir(root)) {
-				xfree(user);
-				xfree(root);
-				exit(EXIT_FAILURE);
-			}
-			if (chroot(root)) {
-				Nprint_h_err("    %s", strerror(errno));
-				xfree(user);
-				xfree(root);
-				exit(EXIT_FAILURE);
-			}
+		if (status)
+			exit(status);
 
-			xfree(root);
-
-			/* clear the environment after successful chroot */
-
-			environ = NULL;
-		}
-
-		if (user) {
-			Nprint_h("Changing to user \"%s\".", user);
-
-			if (change_to_user(user) == -1) {
-				xfree(user);
-				exit(EXIT_FAILURE);
-			}
-
-			xfree(user);
-		}
-
-		if (environment_el) {
-			set_environment(environment_el);
-		}
-
-		exit(execute_children(el));
+		exit(execute_children_filtered(element, ~HTYPE_STAGEINFO));
 
 	} else if (pid == -1) { /* Error. */
-		fatal_backend_error("fork() in su/chroot element failed.");
+		fatal_backend_error("fork() in <stage> failed.");
 	}
 
 	/* Parent. */
 
 	if ((got_pid = waitpid(pid, &status, WUNTRACED)) == -1) {
-		fatal_backend_error("waitpid() for %ld in /chroot failed.",
-			(long)pid);
+		fatal_backend_error("waitpid() for %ld in <stage> failed.",
+				    (long)pid);
 	}
 
 	if (WIFEXITED(status)) { /* Child exited normally. */
 		status = WEXITSTATUS(status);
 
 	} else if (WIFSIGNALED(status)) {
-		Nprint_h_err("Su/chroot child (%ld) killed by signal %d%s.",
-			(long)got_pid, WTERMSIG(status),
-			WCOREDUMP(status) ? " (core dumped)" : "");
+		Nprint_h_err("<stage> child (%ld) killed by signal %d%s.",
+			     (long) got_pid, WTERMSIG(status),
+			     WCOREDUMP(status) ? " (core dumped)" : "");
 		status = -1;
 
 	} else if (WIFSTOPPED(status)) {
-		Nprint_h_err("Su/chroot child (%ld) stopped by signal %d.",
-			(long)got_pid, WSTOPSIG(status));
+		Nprint_h_err("<stage> child (%ld) stopped by signal %d.",
+			     (long) got_pid, WSTOPSIG(status));
 		status = -1;
 
 	} else {
-		Nprint_h_err("Su/chroot child (%ld) exited abnormaly.",
-			(long)got_pid);
+		Nprint_h_err("<stage> child (%ld) exited abnormally.",
+			     (long) got_pid);
 		status = -1;
 	}
-
-	xfree(user);
-	xfree(root);
 
 	return status;
 }
 
-static const char *stage_parameters[] =
-{ "stageinfo", "base", "root", "user", "environment", NULL };
 
-static const char *stage_attributes[] =
-{ "name", NULL};
+/* <stage> handler */
+
+static const char *stage_attributes[] = { "name", NULL};
 
 struct stage_data {
 	char *name;
 };
 
-// char *HANDLER_SYMBOL(attributes)[] = {
-// "name", "description", "logfile", "mode", NULL };
-
-static int stage_setup(element_s *element)
+static int stage_setup(element_s * const element)
 {
 	struct stage_data *data;
 
-	if ((data = malloc(sizeof(struct stage_data))) == NULL)
+	if ((data = xmalloc(sizeof(struct stage_data))) == NULL)
 		return 1;
 
 	data->name = NULL;
-
 	element->handler_data = data;
+
 	return 0;
 }
 
-static int stage_valid(element_s *element)
+static int stage_attribute(const element_s * const element,
+			   const char * const attribute,
+			   const char * const value)
 {
-	return 0;
-}
-
-static int stage_attribute(element_s *element, const char *attribute,
-			   const char *value)
-{
-	int result = 1;
 	struct stage_data *data = (struct stage_data *) element->handler_data;
 
-	if (strcmp(attribute, "name") == 0) {
-		if (strlen(value)) {
-			data->name = xstrdup(value);
-			result = 0;
-		} else {
-			Nprint_err("<stage>: \"name\" cannot be empty.");
-		}
-	}
+	if (strcmp(attribute, "name") == 0)
+		if ((data->name = parse_string_attribute(value,
+							 "<stage>: \"name\" cannot be empty.")))
+			return 0;
 
-	return result;
+	return 1;
 }
 
-static int stage_parameter(element_s *element, const char *parameter,
-			   const char *value)
-{
-	int result = 1;
-	struct stage_data *data = (struct stage_data *) element->handler_data;
-
-	return result;
-}
-
-static int stage_main(element_s *el)
+static int stage_main(element_s * const element)
 {
 	int status;
-	char *stage_name = attr_value("name", el);
-	element_s *stageinfo;
-       
+	struct stage_data *data = (struct stage_data *) element->handler_data;
 
 	if (*opt_be_verbose) {
-		if (stage_name) {
-			Nprint_h("Entering new stage: %s", stage_name);
+		if (data->name) {
+			Nprint_h("Entering new stage: %s", data->name);
 		} else {
 			Nprint_h("Entering new stage.");
 		}
 	}
 
-	log_start_time(el);
+	log_start_time(element);
 
-	if ((stageinfo = first_param("stageinfo", el))) {
-		status = parse_stageinfo_and_execute_children(el, stageinfo);
-	} else {
-		status = execute_children(el);
-	}
+	status = process_stage(element);
 
-	log_end_time(el, status);
+	log_end_time(element, status);
 
 	if (*opt_be_verbose) {
-		if (stage_name) {
-			Nprint_h("Exiting stage: %s", stage_name);
+		if (data->name) {
+			Nprint_h("Exiting stage: %s", data->name);
 		} else {
 			Nprint_h("Exiting stage.");
 		}
@@ -458,31 +350,34 @@ static int stage_main(element_s *el)
 	return status;
 }
 
-#if HANDLER_SYNTAX_3_2
+static char *stage_data(const element_s * const element,
+			const handler_data_e data_requested)
+{
+	const element_s *stageinfo;
 
-static const char *stage_parameters_3_2[] =
-{ "stageinfo", "base", "root", "user", "environment", "shell", NULL };
+	/* the only data elements currently supported by the <stage>
+	   element are HDATA_BASE and HDATA_SHELL, which actually
+	   are supplied by an HTYPE_STAGEINFO child, if it exists
+	*/
 
-#endif
+	if (!(stageinfo = find_stageinfo(element)))
+		return NULL;
+	
+	return stageinfo->handler->alloc_data(stageinfo, data_requested);
+}
 
 #if HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
-static int then_main(element_s *el)
+static int then_main(element_s * const el)
 {
 	int status;
-	element_s *stageinfo;
-       
 
 	if (*opt_be_verbose)
 		Nprint_h("Executing <then> block.");
 
 	log_start_time(el);
 
-	if ((stageinfo = first_param("stageinfo", el))) {
-		status = parse_stageinfo_and_execute_children(el, stageinfo);
-	} else {
-		status = execute_children(el);
-	}
+	status = process_stage(el);
 
 	log_end_time(el, status);
 
@@ -492,22 +387,16 @@ static int then_main(element_s *el)
 	return status;
 }
 
-static int else_main(element_s *el)
+static int else_main(element_s * const el)
 {
 	int status;
-	element_s *stageinfo;
-       
 
 	if (*opt_be_verbose)
 		Nprint_h("Executing <else> block.");
 
 	log_start_time(el);
 
-	if ((stageinfo = first_param("stageinfo", el))) {
-		status = parse_stageinfo_and_execute_children(el, stageinfo);
-	} else {
-		status = execute_children(el);
-	}
+	status = process_stage(el);
 
 	log_end_time(el, status);
 
@@ -519,8 +408,230 @@ static int else_main(element_s *el)
 
 #endif /* HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
 
-#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
+/* <stageinfo> handler */
 
+static const char *stageinfo_parameters[] = { "base", "root", "user", NULL };
+
+#if HANDLER_SYNTAX_3_2
+
+static const char *stageinfo_parameters_3_2[] = { "base", "root", "user",
+						  "shell", NULL };
+
+#endif
+
+struct stageinfo_data {
+	char *base;
+	char *root;
+	char *user;
+	char *shell;
+};
+
+static int stageinfo_setup(element_s * const element)
+{
+	struct stageinfo_data *data;
+
+	if ((data = xmalloc(sizeof(struct stageinfo_data))) == NULL)
+		return 1;
+
+	data->base = NULL;
+	data->root = NULL;
+	data->user = NULL;
+	data->shell = NULL;
+	element->handler_data = data;
+
+	return 0;
+}
+
+static int stageinfo_parameter(const element_s * const element,
+			       const char * const parameter,
+			       const char * const value)
+{
+	struct stageinfo_data *data = (struct stageinfo_data *) element->handler_data;
+
+	if (strcmp(parameter, "base") == 0)
+		if ((data->base = parse_string_parameter(value,
+							 "<stageinfo>: \"base\" cannot be empty.")))
+			return 0;
+
+	if (strcmp(parameter, "user") == 0)
+		if ((data->user = parse_string_parameter(value,
+							 "<stageinfo>: \"user\" cannot be empty.")))
+			return 0;
+
+	if (strcmp(parameter, "root") == 0)
+		if ((data->root = parse_string_parameter(value,
+							 "<stageinfo>: \"root\" cannot be empty.")))
+			return 0;
+
+	if (strcmp(parameter, "shell") == 0)
+		if ((data->shell = parse_string_parameter(value,
+							  "<stageinfo>: \"shell\" cannot be empty.")))
+			return 0;
+
+	return 1;
+}
+
+static int stageinfo_main(element_s * const element)
+{
+	struct stageinfo_data *data = (struct stageinfo_data *) element->handler_data;
+
+	if (data->root) {
+		Nprint_h("Changing root directory to \"%s\".", data->root);
+
+		if (change_current_dir(data->root))
+			return -1;
+
+		if (chroot(data->root)) {
+			Nprint_h_err("    %s", strerror(errno));
+			return -1;
+		}
+
+		/* clear the environment after successful chroot */
+		environ = NULL;
+	}
+
+	if (data->user) {
+		Nprint_h("Changing to user \"%s\".", data->user);
+
+		if (change_to_user(data->user) == -1)
+			return -1;
+	}
+
+	return execute_children(element);
+}
+
+static char *stageinfo_data(const element_s * const element,
+			    const handler_data_e data_requested)
+{
+	struct stageinfo_data *data = (struct stageinfo_data *) element->handler_data;
+
+	switch (data_requested) {
+	case HDATA_SHELL:
+		if (data->shell)
+			return xstrdup(data->shell);
+		break;
+	case HDATA_BASE:
+		if (data->base)
+			return xstrdup(data->base);
+		break;
+	default:
+		break;
+	}
+
+	return NULL;
+}
+
+/* <environment> handler */
+
+static int environment_main(element_s * const element)
+{
+	return execute_children(element);
+}
+
+/* <variable> handler */
+
+static const char *variable_attributes[] = { "mode", "name", NULL};
+
+enum variable_mode {
+	VAR_SET,
+	VAR_APPEND,
+	VAR_PREPEND
+};
+
+struct variable_data {
+	enum variable_mode mode;
+	char *name;
+	char *value;
+};
+
+static int variable_setup(element_s *element)
+{
+	struct variable_data *data;
+
+	if ((data = xmalloc(sizeof(struct variable_data))) == NULL)
+		return 1;
+
+	data->name = NULL;
+	data->value = NULL;
+	data->mode = VAR_SET;
+	element->handler_data = data;
+
+	return 0;
+}
+
+static int variable_attribute(const element_s * const element,
+			      const char * const attribute,
+			      const char * const value)
+{
+	struct variable_data *data = (struct variable_data *) element->handler_data;
+
+	if (strcmp(attribute, "name") == 0)
+		if ((data->name = parse_string_attribute(value,
+							 "<variable>: \"name\" cannot be empty.")))
+			return 0;
+
+	if (strcmp(attribute, "mode") == 0) {
+		if (strcmp(value, "append") == 0) {
+			data->mode = VAR_APPEND;
+			return 0;
+		} else if (strcmp(value, "prepend") == 0) {
+			data->mode = VAR_PREPEND;
+			return 0;
+		} else
+			Nprint_err("<variable>: unknown \"mode\" (%s)", value);
+	}
+
+	return 1;
+}
+
+static int variable_content(const element_s * const element,
+			    const char * const content)
+{
+	struct variable_data *data = (struct variable_data *) element->handler_data;
+
+	if (strlen(content))
+		data->value = xstrdup(content);
+
+	return 0;
+}
+
+static int variable_valid(const element_s * const element)
+{
+	struct variable_data *data = (struct variable_data *) element->handler_data;
+
+	if (!data->name) {
+		Nprint_err("<variable>: \"name\" must be specified.");
+		return 1;
+	}
+
+	if (!data->value &&
+	    ((data->mode == VAR_APPEND) || (data->mode == VAR_PREPEND))) {
+		Nprint_err("<variable>: content cannot be empty if mode is prepend or append.");
+		return 1;
+	}
+
+	return 0;
+}
+
+static int variable_main(element_s * const element)
+{
+	struct variable_data *data = (struct variable_data *) element->handler_data;
+
+	switch (data->mode) {
+	case VAR_SET:
+		if (data->value) {
+			return set_variable(data->name, data->value);
+		} else {
+			return unset_variable(data->name);
+		}
+	case VAR_APPEND:
+		return append_to_variable(data->name, data->value);
+	case VAR_PREPEND:
+		return prepend_to_variable(data->name, data->value);
+	}
+
+	return 1;
+}
 
 /*
  * Handlers' information.
@@ -532,12 +643,43 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "stage",
 		.description = "Enter stage: ", // FIXME
 		.syntax_version = "3.0",
-		.parameters = stage_parameters,
-		.main = stage_main,
 		.type = HTYPE_NORMAL | HTYPE_STAGE,
-		.alloc_data = NULL,
-		.is_action = 0,
-		.priority = 0
+		.main = stage_main,
+		.data = HDATA_BASE,
+		.alloc_data = stage_data,
+		.setup = stage_setup,
+		.attributes = stage_attributes,
+		.parse_attribute = stage_attribute,
+	},
+	{
+		.name = "stageinfo",
+		.description = "stageinfo",
+		.syntax_version = "3.0",
+		.type = HTYPE_STAGEINFO,
+		.main = stageinfo_main,
+		.alloc_data = stageinfo_data,
+		.setup = stageinfo_setup,
+		.parameters = stageinfo_parameters,
+		.parse_parameter = stageinfo_parameter,
+	},
+	{
+		.name = "environment",
+		.description = "environment",
+		.syntax_version = "3.0",
+		.type = HTYPE_NORMAL,
+		.main = environment_main,
+	},
+	{
+		.name = "variable",
+		.description = "variable",
+		.syntax_version = "3.0",
+		.type = HTYPE_NORMAL,
+		.main = variable_main,
+		.setup = variable_setup,
+		.attributes = variable_attributes,
+		.parse_attribute = variable_attribute,
+		.parse_content = variable_content,
+		.valid = variable_valid,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -545,34 +687,61 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "stage",
 		.description = "Enter stage: ", // FIXME
 		.syntax_version = "3.1",
-		.parameters = stage_parameters,
-		.main = stage_main,
 		.type = HTYPE_NORMAL | HTYPE_STAGE,
-		.alloc_data = NULL,
-		.is_action = 0,
-		.priority = 0
+		.main = stage_main,
+		.data = HDATA_BASE,
+		.alloc_data = stage_data,
+		.setup = stage_setup,
+		.attributes = stage_attributes,
+		.parse_attribute = stage_attribute,
 	},
 	{
 		.name = "then",
 		.description = "then",
 		.syntax_version = "3.1",
-		.parameters = stage_parameters,
-		.main = then_main,
 		.type = HTYPE_TRUE_RESULT | HTYPE_STAGE,
-		.alloc_data = NULL,
-		.is_action = 0,
-		.priority = 0
+		.main = then_main,
+		.data = HDATA_BASE,
+		.alloc_data = stage_data,
 	},
 	{
 		.name = "else",
 		.description = "else",
 		.syntax_version = "3.1",
-		.parameters = stage_parameters,
-		.main = else_main,
 		.type = HTYPE_FALSE_RESULT | HTYPE_STAGE,
-		.alloc_data = NULL,
-		.is_action = 0,
-		.priority = 0
+		.main = else_main,
+		.data = HDATA_BASE,
+		.alloc_data = stage_data,
+	},
+	{
+		.name = "stageinfo",
+		.description = "stageinfo",
+		.syntax_version = "3.1",
+		.type = HTYPE_STAGEINFO,
+		.main = stageinfo_main,
+		.alloc_data = stageinfo_data,
+		.setup = stageinfo_setup,
+		.parameters = stageinfo_parameters,
+		.parse_parameter = stageinfo_parameter,
+	},
+	{
+		.name = "environment",
+		.description = "environment",
+		.syntax_version = "3.1",
+		.type = HTYPE_NORMAL,
+		.main = environment_main,
+	},
+	{
+		.name = "variable",
+		.description = "variable",
+		.syntax_version = "3.1",
+		.type = HTYPE_NORMAL,
+		.main = variable_main,
+		.setup = variable_setup,
+		.attributes = variable_attributes,
+		.parse_attribute = variable_attribute,
+		.parse_content = variable_content,
+		.valid = variable_valid,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -580,42 +749,61 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "stage",
 		.description = "Enter stage: ", // FIXME
 		.syntax_version = "3.2",
-		.parameters = stage_parameters_3_2,
-		.attributes = stage_attributes,
-		.main = stage_main,
-		.setup = stage_setup,
-		.valid = stage_valid,
-		.parse_attribute = stage_attribute,
-		.parse_parameter = stage_parameter,
 		.type = HTYPE_NORMAL | HTYPE_STAGE,
-		.alloc_data = NULL,
-		.is_action = 0,
-		.alternate_shell = 1,
-		.priority = 0
+		.main = stage_main,
+		.data = HDATA_BASE | HDATA_SHELL,
+		.alloc_data = stage_data,
+		.setup = stage_setup,
+		.attributes = stage_attributes,
+		.parse_attribute = stage_attribute,
 	},
 	{
 		.name = "then",
 		.description = "then",
 		.syntax_version = "3.2",
-		.parameters = stage_parameters_3_2,
-		.main = then_main,
 		.type = HTYPE_TRUE_RESULT | HTYPE_STAGE,
-		.alloc_data = NULL,
-		.is_action = 0,
-		.alternate_shell = 1,
-		.priority = 0
+		.main = then_main,
+		.data = HDATA_BASE | HDATA_SHELL,
+		.alloc_data = stage_data,
 	},
 	{
 		.name = "else",
 		.description = "else",
 		.syntax_version = "3.2",
-		.parameters = stage_parameters_3_2,
-		.main = else_main,
 		.type = HTYPE_FALSE_RESULT | HTYPE_STAGE,
-		.alloc_data = NULL,
-		.is_action = 0,
-		.alternate_shell = 1,
-		.priority = 0
+		.main = else_main,
+		.data = HDATA_BASE | HDATA_SHELL,
+		.alloc_data = stage_data,
+	},
+	{
+		.name = "stageinfo",
+		.description = "stageinfo",
+		.syntax_version = "3.2",
+		.type = HTYPE_STAGEINFO,
+		.main = stageinfo_main,
+		.setup = stageinfo_setup,
+		.alloc_data = stageinfo_data,
+		.parameters = stageinfo_parameters_3_2,
+		.parse_parameter = stageinfo_parameter,
+	},
+	{
+		.name = "environment",
+		.description = "environment",
+		.syntax_version = "3.2",
+		.type = HTYPE_NORMAL,
+		.main = environment_main,
+	},
+	{
+		.name = "variable",
+		.description = "variable",
+		.syntax_version = "3.2",
+		.type = HTYPE_NORMAL,
+		.main = variable_main,
+		.setup = variable_setup,
+		.attributes = variable_attributes,
+		.parse_attribute = variable_attribute,
+		.parse_content = variable_content,
+		.valid = variable_valid,
 	},
 #endif
 	{

@@ -110,7 +110,7 @@ static INLINE int do_setenv(
 
 static const char *setenv_parameters[] = { "variable", "value", NULL };
 
-static int setenv_main(element_s *el)
+static int setenv_main(element_s * const el)
 {
 	int i;
 	char *variable;

@@ -48,7 +48,7 @@
 
 // char *HANDLER_SYMBOL(attributes)[] = { "dir", NULL };
 
-static int chroot_main(element_s *el)
+static int chroot_main(element_s * const el)
 {
 	int status;
 	pid_t chroot_pid, got_pid;

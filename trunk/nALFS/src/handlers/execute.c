@@ -49,7 +49,7 @@
 static const char *execute_parameters_ver2[] =
 { "base", "command", "param", NULL };
 
-static int execute_main_ver2(element_s *el)
+static int execute_main_ver2(element_s * const el)
 {
 	int status;
 	char *base;
@@ -83,7 +83,8 @@ static int execute_main_ver2(element_s *el)
 	
 }
 
-static char *execute_data_ver2(element_s *el, handler_data_e data)
+static char *execute_data_ver2(const element_s * const el,
+			       const handler_data_e data)
 {
 	(void) data;
 
@@ -99,7 +100,7 @@ static const char *execute_parameters_ver3[] =
 { "param", "prefix", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
 
-static int execute_main_ver3(element_s *el)
+static int execute_main_ver3(element_s * const el)
 {
 	int status;
 	char *base;
@@ -111,7 +112,7 @@ static int execute_main_ver3(element_s *el)
 		return -1;
 	}
 
-	base = alloc_base_dir_new(el);
+	base = alloc_base_dir_new(el, 1);
 
 	if (change_current_dir(base)) {
 		xfree(base);
@@ -137,7 +138,8 @@ static int execute_main_ver3(element_s *el)
 	return status;
 }
 
-static char *execute_data_ver3(element_s *el, handler_data_e data)
+static char *execute_data_ver3(const element_s * const el,
+			       const handler_data_e data)
 {
 	char *command;
 
@@ -159,7 +161,7 @@ static const char *execute_parameters_ver3_2[] =
 { "param", "prefix", "content", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
 
-static int execute_main_ver3_2(element_s *el)
+static int execute_main_ver3_2(element_s * const el)
 {
 	int status = -1;
 	char *base;
@@ -185,7 +187,7 @@ static int execute_main_ver3_2(element_s *el)
 		return -1;
 	}
 
-	base = alloc_base_dir_new(el);
+	base = alloc_base_dir_new(el, 1);
 
 	if (change_current_dir(base)) {
 		xfree(base);
@@ -243,7 +245,8 @@ static int execute_main_ver3_2(element_s *el)
 	return status;
 }
 
-static char *execute_data_ver3_2(element_s *el, handler_data_e data)
+static char *execute_data_ver3_2(const element_s * const el,
+				 const handler_data_e data)
 {
 	char *command;
 	element_s *content_param;
