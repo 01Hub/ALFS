@@ -57,7 +57,7 @@ static INLINE int get_url(const char *urldir, const char *file)
 #ifdef HAVE_LIBCURL
 	status = load_url(file, url);
 #else
-	status = execute_command("wget --progress=dot -O %s %s%s", file, url);
+	status = execute_command("wget --progress=dot -O %s %s", file, url);
 #endif
 
 	if (status) {
