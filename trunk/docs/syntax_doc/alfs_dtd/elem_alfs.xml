@@ -15,23 +15,23 @@
           version     CDATA #FIXED &quot;3.1&quot;&gt;
 </synopsis>
 
-<para>See also :
-<xref linkend="elem_configure"/>&nbsp;|&nbsp;
-<xref linkend="elem_copy"/>&nbsp;|&nbsp;
-<xref linkend="elem_download"/>&nbsp;|&nbsp;
-<xref linkend="elem_execute"/>&nbsp;|&nbsp;
-<xref linkend="elem_link"/>&nbsp;|&nbsp;
-<xref linkend="elem_make"/>&nbsp;|&nbsp;
-<xref linkend="elem_mkdir"/>&nbsp;|&nbsp;
-<xref linkend="elem_move"/>&nbsp;|&nbsp;
-<xref linkend="elem_ownership"/>&nbsp;|&nbsp;
-<xref linkend="elem_package"/>&nbsp;|&nbsp;
-<xref linkend="elem_patch"/>&nbsp;|&nbsp;
-<xref linkend="elem_permissions"/>&nbsp;|&nbsp;
-<xref linkend="elem_remove"/>&nbsp;|&nbsp;
-<xref linkend="elem_search_replace"/>&nbsp;|&nbsp;
-<xref linkend="elem_stage"/>&nbsp;|&nbsp;
-<xref linkend="elem_textdump"/>&nbsp;|&nbsp;
+<para>See also&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_download"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_execute"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_link"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_make"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_mkdir"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_move"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_ownership"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_package"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_patch"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_permissions"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_remove"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_search_replace"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_textdump"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_unpack"/>
 </para>
 
@@ -56,13 +56,14 @@ be used optionally inside the <filename>alfs</filename> declaration in a
 profile and that if used, they can be used more than once.</para>
 
 <para>The attribute <filename>base</filename> identifies the base directory
-that work should be performed under. The use of <literal>#IMPLIED</literal>
-denotes that this attribute is optional.  If not used,
-<filename>base</filename> will inherit its value from an earlier use in the
-profile.</para>
+that work should be performed under. The use of
+<userinput>#IMPLIED</userinput> denotes that this attribute is optional.  If
+not used, <filename>base</filename> will inherit its value from an earlier use
+in the profile.</para>
 
 <para>The attribute <filename>version</filename> identifies the version of the
-ALFS profile syntax used; it should be <literal>"3.1"</literal>.</para>
+ALFS profile syntax used; it should be
+<userinput>&quot;3.1&quot;</userinput>.</para>
 
 </sect2>
 
