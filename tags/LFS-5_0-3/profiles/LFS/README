@@ -1,0 +1,32 @@
+==============================================
+        LFS-5.0 PROFILE
+==============================================
+
+This profile must be used with nALFS 1.1.8 or later.
+
+To allow an easier customization of the configuration files,
+there is now a configuration directory for the different
+configurations the profile could be used to generate.
+
+To use the profile you should:
+
+- create a configuration directory by copying either the config_seperate
+  (if your downloading the packages via the wget script) directory or
+  the config_tarball (if your using the lfs-packages tarball --
+  currently only applies to LFS-5.0) directory;
+  should be named config_XXX where XXX is the name of the configuration
+
+- customize the files in the new configuration directory
+  - the file general.ent contains a bunch of entity declarations
+  - the file fstab.xml contains the command to generate the fstab file
+  - the file kernel.xml contains the profile for building the kernel
+  - the file grub.xml contains the commands for configuring grub - 
+      these are commented out by default
+  - the file keymap.xml is used to set up the default keymap
+
+- create a symbolic link named "config" to the configuration
+  you want to use
+
+- execute sh ./runit as root. Please note that if you have installed nALFS
+  into a non-standard location (/usr/local/bin) then you may need to edit
+  runit to point to your local copy.

@@ -1,0 +1,48 @@
+<package name="groff" version="&groff-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&groff-md5;</digest>
+			<archive>&packages_dir;/&groff-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&groff-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<prefix>PAGE=letter</prefix>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<link>
+			<option>force</option>
+			<target>soelim</target>
+			<name>/usr/bin/zsoelim</name>
+		</link>
+
+		<link>
+			<option>force</option>
+			<target>eqn</target>
+			<name>/usr/bin/geqn</name>
+		</link>
+
+		<link>
+			<option>force</option>
+			<target>tbl</target>
+			<name>/usr/bin/gtbl</name>
+		</link>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&groff-directory;</remove>
+	</stage>
+</package>

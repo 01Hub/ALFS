@@ -1,0 +1,78 @@
+<package name="zlib" version="&zlib-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&zlib-md5;</digest>
+			<archive>&packages_dir;/&zlib-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&zlib-vsnprintf-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&zlib-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&zlib-vsnprintf-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--shared</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<make>
+			<param>clean</param>
+		</make>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+<!--
+		<make>
+			<param>test</param>
+		</make>
+-->
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<move>
+			<source>/usr/lib/libz.so.*</source>
+			<destination>/lib</destination>
+		</move>
+
+		<link>
+			<option>force</option>
+			<target>../../lib/libz.so.1</target>
+			<name>/usr/lib/libz.so</name>
+		</link>
+
+		<copy>
+			<source>zlib.3</source>
+			<destination>/usr/share/man/man3</destination>
+		</copy>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&zlib-directory;</remove>
+		<remove>&build_dir;/&zlib-vsnprintf-patch;</remove>
+	</stage>
+</package>
