@@ -70,37 +70,31 @@
 #include "option-list.h"
 
 
-void set_string_option(STRING *var, const char *value)
+void set_string_option(STRING * const var, const char *value)
 {
+	ASSERT(var != NULL);
+	ASSERT(value != NULL);
+
+	xfree(*var);
+	*var = xstrdup(value);
+}
+
+void append_string_option(STRING * const var, const char *value)
+{
+	char *new_value = NULL;
 
 	ASSERT(var != NULL);
 	ASSERT(value != NULL);
 
-	/*
-	 * Some options need special treatment when they are set.
-	 */
-
-	if (var == opt_find_prunes) {
-		/* Append the value, instead of overwriting the existing. */
-
-		char *new_value = NULL;
-
-		if (*var && strlen(*var) > 0) {
-			append_str(&new_value, *var);
-			append_str(&new_value, " ");
-		}
-
-		append_str(&new_value, value);
-
-		xfree(*var);
-
-		*var = new_value;
-
-	} else {
-		xfree(*var);
-
-		*var = xstrdup(value);
+	if (*var && strlen(*var) > 0) {
+		append_str(&new_value, *var);
+		append_str(&new_value, " ");
 	}
+
+	append_str(&new_value, value);
+
+	xfree(*var);
+	*var = new_value;
 }
 
 /*
