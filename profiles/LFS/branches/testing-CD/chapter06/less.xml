@@ -12,7 +12,6 @@
 <package name="less" version="&less-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&less-md5;</digest>
 			<archive>&packages_dir;/&less-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

@@ -12,7 +12,6 @@
 <package name="kbd" version="&kbd-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&kbd-md5;</digest>
 			<archive>&packages_dir;/&kbd-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

@@ -12,7 +12,6 @@
 <package name="findutils" version="&findutils-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&findutils-md5;</digest>
 			<archive>&packages_dir;/&findutils-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

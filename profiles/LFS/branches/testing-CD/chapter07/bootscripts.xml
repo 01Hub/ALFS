@@ -12,7 +12,6 @@
 <package name="bootscripts" version="&lfs-bootscripts-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&lfs-bootscripts-md5;</digest>
 			<archive>&packages_dir;/&lfs-bootscripts-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

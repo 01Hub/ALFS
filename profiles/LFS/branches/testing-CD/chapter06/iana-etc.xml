@@ -12,7 +12,6 @@
 <package name="iana-etc" version="&iana-etc-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&iana-etc-md5;</digest>
 			<archive>&packages_dir;/&iana-etc-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

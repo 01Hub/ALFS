@@ -12,7 +12,6 @@
 <package name="bzip2" version="&bzip2-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&bzip2-md5;</digest>
 			<archive>&packages_dir;/&bzip2-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

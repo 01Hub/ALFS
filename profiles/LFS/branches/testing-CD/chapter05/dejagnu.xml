@@ -12,7 +12,6 @@
 <package name="dejagnu" version="&dejagnu-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&dejagnu-md5;</digest>
 			<archive>&packages_dir;/&dejagnu-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

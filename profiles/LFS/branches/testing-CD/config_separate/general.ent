@@ -26,7 +26,7 @@
                  enter the wrong directory, nALFS will try to download
                  all the packages in it !!!
      -->
-<!ENTITY orig_packages_dir "/your/LFS-CVS/packages">
+<!ENTITY orig_packages_dir "/usr/src/packages">
 
 <!-- Partition of your new LFS system.
      This entity is used only to initialize the new fstab file.
@@ -121,7 +121,7 @@ network.-->
 <!ENTITY password "r00tme">
 
 <!-- LFS book version -->
-<!ENTITY LFS-version "SVN-testing-4176">
+<!ENTITY LFS-version "6.0-CD">
 
 <!-- THE FOLLOWING TWO ENTITIES DECLARATIONS SHOULDN'T BE MOFIFIED
      UNLESS YOU KNOW WHAT YOU ARE DOING

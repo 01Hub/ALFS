@@ -12,7 +12,6 @@
 <package name="psmisc" version="&psmisc-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&psmisc-md5;</digest>
 			<archive>&packages_dir;/&psmisc-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

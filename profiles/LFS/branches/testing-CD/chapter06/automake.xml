@@ -12,7 +12,6 @@
 <package name="automake" version="&automake-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&automake-md5;</digest>
 			<archive>&packages_dir;/&automake-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

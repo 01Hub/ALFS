@@ -12,7 +12,6 @@
 <package name="mktemp" version="&mktemp-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&mktemp-md5;</digest>
 			<archive>&packages_dir;/&mktemp-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

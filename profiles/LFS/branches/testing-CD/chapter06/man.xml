@@ -12,7 +12,6 @@
 <package name="man" version="&man-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&man-md5;</digest>
 			<archive>&packages_dir;/&man-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

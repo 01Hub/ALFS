@@ -12,7 +12,6 @@
 <package name="expect" version="&expect-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&expect-md5;</digest>
 			<archive>&packages_dir;/&expect-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

@@ -12,7 +12,6 @@
 <package name="bash" version="&bash-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&bash-md5;</digest>
 			<archive>&packages_dir;/&bash-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

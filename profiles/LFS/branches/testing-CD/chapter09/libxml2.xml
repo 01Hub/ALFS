@@ -12,7 +12,6 @@
 <package name="libxml2" version="&libxml2-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&libxml2-md5;</digest>
 			<archive>&packages_dir;/&libxml2-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

@@ -12,7 +12,6 @@
 <package name="iproute2" version="&iproute2-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&iproute2-md5;</digest>
 			<archive>&packages_dir;/&iproute2-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

@@ -12,7 +12,6 @@
 <package name="groff" version="&groff-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&groff-md5;</digest>
 			<archive>&packages_dir;/&groff-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

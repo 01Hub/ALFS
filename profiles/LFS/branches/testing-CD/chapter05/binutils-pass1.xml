@@ -12,7 +12,6 @@
 <package name="binutils-pass1" version="&binutils-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&binutils-md5;</digest>
 			<archive>&packages_dir;/&binutils-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

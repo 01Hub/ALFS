@@ -12,7 +12,6 @@
 <package name="make" version="&make-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&make-md5;</digest>
 			<archive>&packages_dir;/&make-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
