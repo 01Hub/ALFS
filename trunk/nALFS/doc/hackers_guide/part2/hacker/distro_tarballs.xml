@@ -2,6 +2,40 @@
 <?dbhtml filename="distro_tarballs.html" dir="chapter01"?>
 <title>Distribution Tarballs</title>
 
-<para>PAGE TO BE WRITTEN</para>
+<para>When you are ready to produce a tarball for distribution, there are a
+few steps to follow:</para>
+
+<itemizedlist>
+
+<listitem><para>Edit <filename>configure.ac</filename>, and modify the line
+starting with AC_INIT (should be the first line) to reflect the version number
+that you want the distribution to be given. Commit this change to the CVS
+repository, and create a CVS tag to match the version
+number.</para></listitem>
+
+<listitem><para>Run a normal <filename>./configure</filename> process for your
+system.</para></listitem>
+
+<listitem><para>Run <command>make dist</command>. This will produce both a
+<filename>.tar.gz</filename> and a <filename>.tar.bz2</filename> file in the
+current directory containing everything that should be needed to build
+<acronym>&book-product;</acronym> on an end-user's system. Note that this
+tarball will be created using the <filename>autoconf</filename>,
+<filename>automake</filename> and <filename>libtool</filename> versions
+<emphasis>on your development system</emphasis>, so please make sure they are
+current releases before creating a tarball for public
+consumption.</para></listitem>
+
+<listitem><para>Run <command>make distcheck</command>. If your system requires
+any special parameters to be given to configure for it to complete (like
+<command>--with-libxml2</command>, for example), then you can use
+<command>make DISTCHECK_CONFIGURE_FLAGS="..." distcheck</command> to supply
+those parameters. The distcheck process will actually unpack the tarball into
+a temporary directory, and run a complete configure/make/install/uninstall
+process on it to ensure that no build errors occur. This step should be
+considered to be mandatory before releasing your tarball to the general
+public.</para></listitem>
+
+</itemizedlist>
 
 </sect1>
