@@ -48,6 +48,7 @@
 #include "bufsize.h"
 #include "utility.h"
 #include "parser.h"
+#include "nprint.h"
 #include "win.h"
 #include "handlers.h"
 #include "backend.h"
@@ -134,6 +135,9 @@ static pid_t backend_pid = 0;
 /* Pointer to current function to use for printing to main window. */
 void (*nprint)(msg_id_e mid, const char *format, ...);
 
+/* Counters used by nprint_init to track errors/warnings. */
+int init_errors = 0;
+int init_warnings = 0;
 
 /*
  * Some smaller, helper functions, used often.
@@ -4626,6 +4630,33 @@ static void nprint_text(msg_id_e mid, const char *format,...)
 	xfree(file);
 }
 
+static void nprint_init(msg_id_e mid, const char *format,...)
+{
+	FILE *console;
+	va_list ap;
+
+	va_start(ap, format);
+
+	switch (mid) {
+	case T_ERR:
+		console = stderr;
+		++init_errors;
+		break;
+	case T_WAR:
+		console = stdout;
+		++init_warnings;
+		break;
+	default:
+		console = stdout;
+		break;
+	}
+
+	vfprintf(console, format, ap);
+	fflush(console);
+
+	va_end(ap);
+}
+
 /*
  * Main.
  */
@@ -4635,7 +4666,7 @@ int main(int argc, char **argv)
 	int i;
 
 
-	nprint = nprint_text;
+	nprint = nprint_init;
 
 
 	set_options_to_defaults();
@@ -4657,6 +4688,8 @@ int main(int argc, char **argv)
 
 	if (!post_validate_options())
 		return EXIT_FAILURE;
+
+	nprint = nprint_text;
 
 	init_needed_directories();
 

@@ -35,7 +35,7 @@
 #include "nalfs-core.h"
 #include "logging.h"
 #include "utility.h"
-#include "win.h"
+#include "nprint.h"
 #include "bufsize.h"
 
 /* These macro definitions will cause the options in options.h to actually
@@ -211,10 +211,10 @@ static void option_invalid(const struct option_s *option,
 
 	va_start(ap, format);
 	if (vsnprintf(buffer, sizeof buffer, format, ap) > 0)
-		Nprint_err("Option \"%s\" invalid value: %s",
+		Nprint_err("Option \"%s\" invalid value: %s\n",
 			   option->name, buffer);
 	else
-		Nprint_err("Option \"%s\" invalid value", option->name);
+		Nprint_err("Option \"%s\" invalid value\n", option->name);
 	va_end(ap);
 }
 
