@@ -16,6 +16,12 @@
       <requires>
         <name>gtk+</name>
       </requires>
+      <utilizes>
+      	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>wget</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -29,7 +35,7 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
-        <param>--sysconfdir=/etc</param>
+        <param>--sysconfdir=/etc/dillo</param>
       </configure>
       <make />
       <make>

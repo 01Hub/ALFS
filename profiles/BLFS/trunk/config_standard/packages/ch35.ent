@@ -1,18 +1,17 @@
 <!--************* packages for chapter 35 *************-->
 
-<!ENTITY mozilla-version   "1.6">
+<!ENTITY mozilla-version   "1.7.5">
 <!ENTITY mozilla-package   "mozilla-source-&mozilla-version;.tar.bz2">
 <!ENTITY mozilla-directory "mozilla">
 
-<!ENTITY firefox-version "0.8">
-<!ENTITY firefox-moz-lib-version "1.6">
+<!ENTITY firefox-version "1.0">
 <!ENTITY firefox-package "firefox-source-&firefox-version;.tar.bz2">
 <!ENTITY firefox-directory "mozilla">
 
-<!ENTITY galeon-version   "1.3.14a">
+<!ENTITY galeon-version   "1.3.18">
 <!ENTITY galeon-package   "galeon-&galeon-version;.tar.bz2">
-<!ENTITY galeon-directory "galeon-1.3.14">
+<!ENTITY galeon-directory "galeon-&galeon-version;">
 
-<!ENTITY dillo-version   "0.8.1">
+<!ENTITY dillo-version   "0.8.4">
 <!ENTITY dillo-package   "dillo-&dillo-version;.tar.bz2">
 <!ENTITY dillo-directory "dillo-&dillo-version;">

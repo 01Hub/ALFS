@@ -129,12 +129,12 @@
 	<target>/opt/gcc-&gcc-33-version;/include/c++/&gcc-33-version;</target>
 	<name>/usr/g++-v3</name>
       </link>
-      <search_replace base="&build_dir;/&openoffice-directory;/solenv/inc">
+      <search_replace base="&build_dir;/OOo-build/&openoffice-directory;/solenv/inc">
         <file>unxlngi4.mk</file>
         <find>-mcpu=pentiumpro</find>
         <replace></replace>
       </search_replace>
-      <configure base="&build_dir;/&openoffice-directory;/config_office">
+      <configure base="&build_dir;/OOo-build/&openoffice-directory;/config_office">
         <param>--with-lang=ENUS</param>
         <param>--with-dict=ENUS</param>
         <param>--without-fonts</param>
@@ -194,8 +194,7 @@
       <execute command="&build_dir;/install-oo.sh" />
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&openoffice-directory;</remove>
-      <remove>&build_dir;/&gpc-directory;</remove>
+      <remove>&build_dir;/OOo-build</remove>
       <remove>&build_dir;/install-oo.sh</remove>
       <remove>/usr/g++-v3</remove>
     </stage>

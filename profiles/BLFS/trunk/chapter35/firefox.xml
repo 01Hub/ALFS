@@ -22,12 +22,27 @@
       <requires>
         <name>libidl</name>
       </requires>
-      <requires>
-        <name>libmng</name>
-      </requires>
-      <requires>
-        <name>which</name>
-      </requires>
+      <utilizes>
+	<name>gnupg</name>
+      </utilizes>
+      <utilizes>
+	<name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+	<name>unzip</name>
+      </utilizes>
+      <utilizes>
+	<name>gnome-vfs2</name>
+      </utilizes>
+      <utilizes>
+	<name>libart-lgpl</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>doxygen</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -45,47 +60,57 @@
         <base>&build_dir;/&firefox-directory;</base>
       </stageinfo>
       <configure>
-        <param>--prefix=/opt/firefox-&firefox-version;</param>
-        <param>--enable-default-toolkit=gtk2</param>
-        <param>--with-x</param>
-        <param>--with-system-zlib</param>
-        <param>--with-system-jpeg</param>
-        <param>--with-system-png</param>
-        <param>--with-system-mng</param>
-        <param>--enable-xft</param>
-        <param>--enable-crypto</param>
-        <param>--disable-accessibility</param>
-        <param>--disable-tests</param>
-        <param>--disable-debug</param>
-        <param>--disable-logging</param>
-        <param>--enable-reorder</param>
-        <param>--enable-strip</param>
-        <param>--disable-pedantic</param>
-        <param>--enable-cpp-rtti</param>
-        <param>--enable-extensions=all</param>
-        <param>--disable-calendar</param>
-        <param>--disable-mailnews</param>
+	<param>--prefix=/usr</param>
+	<param>--with-default-mozilla-five-home=/usr/lib/firefox-&firefox-version;</param>
+	<param>--with-user-appdir=.firefox</param>
+	<param>--with-system-zlib</param>
+	<param>--with-system-png</param>
+	<param>--enable-application=browser</param>
+	<param>--enable-default-toolkit=gtk2</param>
+	<param>--enable-extensions=all,-typeaheadfind</param>
+	<param>--enable-crypto</param>
+	<param>--enable-xft</param>
+	<param>--enable-xinerama</param>
+	<param>--enable-optimize</param>
+	<param>--enable-reorder</param>
+	<param>--enable-strip</param>
+	<param>--enable-cpp-rtti</param>
+	<param>--enable-single-profile</param>
+	<param>--disable-freetype2</param>
+	<param>--disable-accessibility</param>
+	<param>--disable-debug</param>
+	<param>--disable-tests</param>
+	<param>--disable-logging</param>
+	<param>--disable-pedantic</param>
+	<param>--disable-installer</param>
+	<param>--disable-mailnews</param>
+	<param>--disable-ldap</param>
+	<param>--disable-composer</param>
+	<param>--disable-profilesharing</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
-      <link>
-        <option>force</option>
-        <target>/opt/firefox-&firefox-version;/bin/firefox</target>
-        <name>/usr/bin/MozillaFirefox</name>
-      </link>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/include/firefox-&firefox-version;/nss</name>
+      </mkdir>
+      <execute command="cp">
+	<param>-Lf dist/private/nss/*.h dist/public/nss/*.h</param>
+	<param>/usr/include/firefox-&firefox-version;/nss</param>
+      </execute>
       <stage name="Multi-User Operation Setup">
         <stageinfo>
           <environment>
-            <variable name="LD_LIBRARY_PATH">/opt/firefox-&firefox-version;/lib/mozilla-&firefox-moz-lib-version;</variable>
-            <variable name="MOZILLA_FIVE_HOME">/opt/firefox-&firefox-version;/lib/mozilla-&firefox-moz-lib-version;</variable>
+            <variable name="LD_LIBRARY_PATH">/usr/lib/firefox-&firefox-version;</variable>
+            <variable name="MOZILLA_FIVE_HOME">/usr/lib/firefox-&firefox-version;</variable>
           </environment>
-          <base>/opt/firefox-&firefox-version;/lib/mozilla-&firefox-moz-lib-version;</base>
+          <base>/usr/lib/firefox-&firefox-version;/</base>
         </stageinfo>
         <execute command="./regxpcom" />
         <execute command="./regchrome" />
-        <execute command="touch `find /opt/firefox-&firefox-version;/lib/mozilla-&firefox-moz-lib-version; -name *.rdf`" />
+        <execute command="touch `find . -name *.rdf`" />
       </stage>
     </stage>
     <stage name="Cleanup">
