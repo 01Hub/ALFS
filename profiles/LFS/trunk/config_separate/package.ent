@@ -3,8 +3,8 @@
 <!ENTITY autoconf-package "autoconf-&autoconf-version;.tar.bz2">
 <!ENTITY autoconf-directory "autoconf-&autoconf-version;">
 
-<!ENTITY automake-md5 "b5799f983d0a062ec59810f6b289cd27">
-<!ENTITY automake-version "1.9.2">
+<!ENTITY automake-md5 "0ee08fb0ee48d20a4f8da99137340efd">
+<!ENTITY automake-version "1.9.3">
 <!ENTITY automake-package "automake-&automake-version;.tar.bz2">
 <!ENTITY automake-directory "automake-&automake-version;">
 
@@ -73,8 +73,8 @@
 <!ENTITY file-package "file-&file-version;.tar.gz">
 <!ENTITY file-directory "file-&file-version;">
 
-<!ENTITY findutils-md5 "e90ce7222daadeb8616b8db461e17cbc">
-<!ENTITY findutils-version "4.1.20">
+<!ENTITY findutils-md5 "0851097756a20f27725eacf03687a9b3">
+<!ENTITY findutils-version "4.2.3">
 <!ENTITY findutils-package "findutils-&findutils-version;.tar.gz">
 <!ENTITY findutils-directory "findutils-&findutils-version;">
 
@@ -168,9 +168,9 @@
 <!ENTITY inetutils-kernel-headers-patch-md5 "de1f835265b7ed818d7c0fb8c0be334b">
 <!ENTITY inetutils-kernel-headers-patch "inetutils-&inetutils-version;-kernel_headers-1.patch">
 
-<!ENTITY iproute2-md5 "4079036ec0283341d37f96ce9ae1a932">
+<!ENTITY iproute2-md5 "4b3f335b0139cb909c6a2ae8bf72e548">
 <!ENTITY iproute2-version "2.6.9">
-<!ENTITY iproute2-cvs-ver "ss040831">
+<!ENTITY iproute2-cvs-ver "041019">
 <!ENTITY iproute2-package "iproute2-&iproute2-version;-&iproute2-cvs-ver;.tar.gz">
 <!ENTITY iproute2-directory "iproute2-&iproute2-version;">
 
@@ -207,14 +207,14 @@
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.gz">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
-<!ENTITY linux-md5 "9517ca999e822b898fbdc7e72796b1aa">
-<!ENTITY linux-version "2.6.8.1">
+<!ENTITY linux-md5 "e921200f074ca97184e150ef5a4af825">
+<!ENTITY linux-version "2.6.9">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
 
-<!ENTITY linux-libc-headers-md5 "a75c264f90b07b4f3ba05febc7386f4b">
-<!ENTITY linux-libc-headers-version "2.6.8.1">
+<!ENTITY linux-libc-headers-md5 "d3507b2c0203a0760a677022badcf455">
+<!ENTITY linux-libc-headers-version "2.6.9.1">
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
 <!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
 
@@ -236,8 +236,8 @@
 <!ENTITY man-80cols-patch-md5 "9c93fd4384b6b69273278ae5621e1f4a">
 <!ENTITY man-80cols-patch "man-&man-version;-80cols-1.patch">
 
-<!ENTITY man-pages-md5 "cb31f64227949214691e9266473cd4a1">
-<!ENTITY man-pages-version "1.69">
+<!ENTITY man-pages-md5 "c28daa285ad9c7eeab629056a711fdb7">
+<!ENTITY man-pages-version "1.70">
 <!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.bz2">
 <!ENTITY man-pages-directory "man-pages-&man-pages-version;">
 
@@ -300,8 +300,8 @@
 <!ENTITY sed-package "sed-&sed-version;.tar.gz">
 <!ENTITY sed-directory "sed-&sed-version;">
 
-<!ENTITY shadow-md5 "3a3d17d3d7c630b602baf66ae7434c61">
-<!ENTITY shadow-version "4.0.4.1">
+<!ENTITY shadow-md5 "cca17a4843a3b5b324a5398faf81c3b4">
+<!ENTITY shadow-version "4.0.5">
 <!ENTITY shadow-package "shadow-&shadow-version;.tar.bz2">
 <!ENTITY shadow-directory "shadow-&shadow-version;">
 
@@ -336,13 +336,10 @@
 <!ENTITY texinfo-segfault-patch-md5 "ce5aa1bb05b3c6638e071d2b0283fdd6">
 <!ENTITY texinfo-segfault-patch "texinfo-&texinfo-version;-segfault-1.patch">
 
-<!ENTITY udev-md5 "b4de833f8afd0ded074bc2d389b48f24">
-<!ENTITY udev-version "035">
+<!ENTITY udev-md5 "0b86c5c07615f417042d796366fad4d2">
+<!ENTITY udev-version "042">
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
-
-<!ENTITY udev-destdir-patch-md5 "e062f55b90e34531697dfdfbf790ff97">
-<!ENTITY udev-destdir-patch "udev-&udev-version;-DESTDIR-1.patch">
 
 <!ENTITY udev-rules-md5 "b60fa9f4b83cb5902f0686521278fc6d">
 <!ENTITY udev-rules-version "1">
@@ -368,10 +365,8 @@
 <!ENTITY vim-lang-md5 "5395c4dacbf1c5008b22c4b86794e8a7">
 <!ENTITY vim-lang-package "vim-&vim-version;-lang.tar.gz">
 
-<!ENTITY zlib-md5 "8106069990476a3c5187301465bd7a60">
-<!ENTITY zlib-version "1.2.1">
+<!ENTITY zlib-md5 "1b8aab042d40979e456194c468fd72c5">
+<!ENTITY zlib-version "1.2.2">
 <!ENTITY zlib-package "zlib-&zlib-version;.tar.bz2">
 <!ENTITY zlib-directory "zlib-&zlib-version;">
 
-<!ENTITY zlib-security-patch-md5 "1b451d8388afcbc5455f670bcb3c856b">
-<!ENTITY zlib-security-patch "zlib-&zlib-version;-security-1.patch">
