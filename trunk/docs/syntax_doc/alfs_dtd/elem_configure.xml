@@ -27,31 +27,31 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>configure</filename> is one of the top-level
-operation elements. The element <filename>configure</filename> is used to
-describe the command <userinput>configure</userinput>.</para>
+<para>The <command>configure</command> element is one of the top-level
+operation elements. The <command>configure</command> element is used to
+describe the <userinput>configure</userinput> command.</para>
 
-<para>When processing the element, one executes the command
+<para>When processing the element, you execute the command
 <userinput>./configure</userinput> with the parameter(s) and prefix(es)
 specified.</para>
 
-<para>The attribute <filename>base</filename> allows you to specify the
-directory in which the command is executed. See
-<xref linkend="elem_base"/>.</para>
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
 
-<para>The attribute <filename>command</filename> allows you to specify a
+<para>The <command>command</command> attribute allows you to specify a
 custom command if you don't want to use the default
 <userinput>./configure</userinput>. This is extremely useful when running
 <userinput>./configure</userinput> in a build directory outside the main source
-directory.  The packages <filename>gcc</filename> and
-<filename>glibc</filename> often require this.</para>
+directory.  The packages <command>gcc</command> and
+<command>glibc</command> often require this.</para>
 
 </sect2>
 
 <sect2>
 <title>Example #1</title>
 
-<para>This first example calls <filename>configure</filename> without any
+<para>This first example calls <command>configure</command> without any
 parameters&nbsp;:</para>
 
 <screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
@@ -68,7 +68,7 @@ cd /usr/src/mypackage/
 <sect2>
 <title>Example #2</title>
 
-<para>This second example calls <filename>configure</filename> with some
+<para>This second example calls <command>configure</command> with some
 prefixes and a parameter&nbsp;: </para>
 
 <screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
@@ -88,7 +88,7 @@ cd /usr/src/mypackage/
 <sect2>
 <title>Example #3</title>
 
-<para>This third example calls <filename>configure</filename> with a
+<para>This third example calls <command>configure</command> with a
 parameter and uses prefix&nbsp;:</para>
 
 <screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;

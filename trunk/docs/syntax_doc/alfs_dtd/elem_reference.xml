@@ -18,7 +18,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>reference</filename> is used to specify the URL
+<para>The <command>reference</command> element is used to specify the URL
 of the reference archive to download if the local copy is not
 available.</para>
 

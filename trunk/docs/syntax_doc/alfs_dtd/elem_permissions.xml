@@ -22,29 +22,27 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>permissions</filename> is one of the top-level
-operation elements.  It allows you to change the permissions of a (set of)
+<para>The <command>permissions</command> element is one of the top-level
+operation elements. It allows you to change the permissions of a (set of)
 file(s) or directory(ies).</para>
 
-<para>The sub-element <filename>option</filename> provides a means to pass
+<para>The <command>option</command> child-element provides a means to pass
 an option to the <command>chmod</command> command.</para>
 
-<note><para>Not all of the <command>chmod</command> options are in every
-implementation.  Refer to the documentation for your implementation to
-determine what options are available.</para></note>
+<note><para>Not all of the <command>chmod</command> command's options are
+in every implementation.  Refer to the documentation for your
+implementation to determine what options are available.</para></note>
 
-<para>The sub-element(s) <filename>name</filename> contain the name(s) of
-the files whose permission is to be modified. See
-<xref linkend="elem_name"/>.</para>
+<para>The <command>name</command> child-element contains the name(s) of the
+files whose permission is to be modified. See <xref
+linkend="elem_name"/>.</para>
 
-<para>The attribute <filename>base</filename> gives the name of the
-directory in which the command will be performed. See
-<xref linkend="elem_base"/>.</para>
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
 
-<para>The attribute <filename>mode</filename> gives the new access mode, as
-used in the command <filename>chmod</filename>.</para>
-
-<para>The only option supported is "recursive"</para>
+<para>The <command>mode</command> attribute gives the new access mode, as
+used in the <command>chmod</command> command.</para>
 
 </sect2>
 

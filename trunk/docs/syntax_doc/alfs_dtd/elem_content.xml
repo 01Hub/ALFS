@@ -18,9 +18,9 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>content</filename> is used to specify the
-content of the file being created when processing a
-<filename>textdump</filename> operation.</para>
+<para>The <command>content</command> element is used to specify the content
+of the file being created when processing a <command>textdump</command>
+operation.</para>
 
 <note><para>Of course, it is possible to use XML entity references in the
 <userinput>#PCDATA</userinput> or string of this element.</para></note>

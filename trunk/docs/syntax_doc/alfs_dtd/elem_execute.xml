@@ -27,21 +27,21 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>execute</filename> is one of the top-level
+<para>The <command>execute</command> element is one of the top-level
 operation elements. It is used to execute any arbitrary system
 command.</para>
 
-<para>The sub-element <filename>param</filename> contains parameters for
+<para>The <command>param</command> child-element contains parameters for
 the command.</para>
 
-<para>The sub-element <filename>prefix</filename> contains any prefix data
+<para>The <command>prefix</command> child-element contains any prefix data
 for the command to execute.</para>
 
-<para>The attribute <filename>base</filename> allows you to specify the
-directory in which the command will be executed. See 
-<xref linkend="elem_base"/>.</para>
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
 
-<para>The attribute <filename>command</filename> contains the text of the
+<para>The <command>command</command> attribute contains the text of the
 command itself.</para>
 
 </sect2>

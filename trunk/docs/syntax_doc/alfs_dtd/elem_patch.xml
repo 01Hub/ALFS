@@ -26,19 +26,20 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>patch</filename> is one of the top-level
+<para>The <command>patch</command> element is one of the top-level
 operation elements.  It is used to execute the <command>patch</command>
 command.</para>
 
-<para>The sub-element <filename>param</filename> contain the parameters of
+<para>The <command>param</command> child-element contains the parameters of
 the command.</para>
 
-<para>The sub-element <filename>prefix</filename> provides a means to
+<para>The <command>prefix</command> child-element provides a means to
 specify an environment variable or some other prefix to the
 <command>patch</command> command.</para>
 
-<para>The attribute <filename>base</filename> specified the directory in
-which the command will be performed.</para>
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
 
 </sect2>
 

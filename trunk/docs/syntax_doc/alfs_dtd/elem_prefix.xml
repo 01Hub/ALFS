@@ -21,9 +21,8 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>prefix</filename> provides a means to
-specify an environment variable or some other prefix to the parent
-element.</para>
+<para>The <command>prefix</command> element provides a means to specify an
+environment variable or some other prefix to the parent element.</para>
 
 </sect2>
 

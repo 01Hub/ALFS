@@ -27,24 +27,24 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>textdump</filename> is one of the top-level
+<para>The <command>textdump</command> element is one of the top-level
 operation elements. It allows you to create a text file containing
 specified text.</para>
 
-<para>The sub-element <filename>file</filename> contains the name of the
+<para>The <command>file</command> child-element contains the name of the
 file to be created.</para>
 
-<para>The sub-element <filename>content</filename> is used to specify the
+<para>The <command>content</command> child-element is used to specify the
 content of the file being created when processing a
-<filename>textdump</filename> operation. When processing the textual
-content of this element, one removes the leading blanks up to and including
-a '=' character.</para>
+<command>textdump</command> operation. When processing the textual content
+of this element, one removes the leading blanks up to and including a
+<literal>'='</literal> character.</para>
 
-<para>The attribute <filename>base</filename> allows you to specify the
-directory in which the file creation will be perforemd. See
-<xref linkend="elem_base"/>.</para>
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
 
-<para>The attribute <filename>mode</filename> allows you to specify the
+<para>The <command>mode</command> attribute allows you to specify the
 append creation mode.</para>
 
 </sect2>

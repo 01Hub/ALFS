@@ -45,11 +45,11 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>stage</filename> is one of the top-level
+<para>The <command>stage</command> element is one of the top-level
 operation elements.  It allows you to regroup commands, give a name to this
-group (through the attribute <filename>name</filename>) and optionally
-modify the execution context through the element
-<filename>stageinfo</filename>.</para>
+group (through the <command>name</command> attribute) and optionally modify
+the execution context through the element
+<command>stageinfo</command>.</para>
 
 </sect2>
 

@@ -44,7 +44,7 @@
 <title>Description</title>
 
 <para>This element groups the elements that should be executed if the test
-performed when evaluating an <filename>if</filename> element isn't
+performed when evaluating an <command>if</command> element isn't
 satisfied.</para>
 
 </sect2>

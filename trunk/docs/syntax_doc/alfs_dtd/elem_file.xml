@@ -20,9 +20,9 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>file</filename> is used to specify the filename
-for a <filename>download</filename>, <filename>search_replace</filename> or
-<filename>textdump</filename> operation.</para>
+<para>The <command>file</command> element is used to specify the filename
+for a <command>download</command>, <command>search_replace</command> or
+<command>textdump</command> operation.</para>
 
 </sect2>
 

@@ -20,9 +20,9 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>include</filename> contains data necessary to
-handle the <filename>xi:include</filename> directive in an
-<filename>alfs</filename> element.</para>
+<para>The <command>include</command> element contains data necessary to
+handle the <command>xi:include</command> directive in an
+<command>alfs</command> element.</para>
 
 </sect2>
 

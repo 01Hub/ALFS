@@ -21,9 +21,9 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>destination</filename> is used to specify the
+<para>The <command>destination</command> element is used to specify the
 name of the destination file or directory when processing an element in
-which it occurs</para>
+which it occurs.</para>
 
 </sect2>
 

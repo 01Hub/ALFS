@@ -28,24 +28,24 @@
 <para>The <command>stageinfo</command> element allows you to specify
 several contexts of information used to process the commands of the
 <command>stage</command> to which the <command>stageinfo</command>
-belongs.</para>
+element belongs.</para>
 
-<para>The <command>base</command> sub-element specifies a base directory
-that will be used by all the commands of the stage, unless the command
-redefines the base locally. See <xref linkend="elem_base"/>.</para>
-
-<para>The <command>user</command> sub-element specifies a user name that
+<para>The <command>user</command> child-element specifies a user ID that
 will be used as the effective user ID of the current process for all the
 commands of the stage. See <xref linkend="elem_user"/>.</para>
 
-<para>The <command>root</command> sub-element specifies a directory name in
-which the commands of the stage will be performed (using a chroot
+<para>The <command>root</command> child-element specifies a directory name
+in which the commands of the stage will be performed (using a chroot
 command). See <xref linkend="elem_root"/>.</para>
 
-<para>The <command>environment</command> sub-element allow you to specify
-an environment variable that will be added to the current environment when
-processing the commands of the stage. See 
-<xref linkend="elem_environment"/>.</para>
+<para>The <command>environment</command> child-element allows you to
+specify an environment variable that will be added to the current
+environment when processing the commands of the stage. See <xref
+linkend="elem_environment"/>.</para>
+
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
 
 </sect2>
 

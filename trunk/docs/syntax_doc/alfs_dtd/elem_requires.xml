@@ -23,10 +23,10 @@
 <sect2>
 <title>Description</title>
 
-<para>The <command>requires</command> element denotes a dependency
-between two packages. The package containing the
-<command>requires</command> element depends on the package whose name is
-contained in the <command>name</command> sub-element.</para>
+<para>The <command>requires</command> element denotes a dependency between
+two packages. The package containing the <command>requires</command>
+element depends on the package whose name is contained in the
+<command>name</command> child-element.</para>
 
 <para>The actual name is put into a <command>name</command>
 child-element.</para>

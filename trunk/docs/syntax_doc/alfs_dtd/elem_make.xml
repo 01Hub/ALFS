@@ -26,19 +26,18 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>make</filename> is one of the top-level
-operation elements.  It describes the <userinput>make</userinput>
-command.</para>
+<para>The <command>make</command> element is one of the top-level operation
+elements. It describes the <userinput>make</userinput> command.</para>
 
-<para>The sub-element <filename>param</filename> allows you to specify
+<para>The <command>param</command> child-element allows you to specify
 parameters of the make command.</para>
 
-<para>The sub-element <filename>prefix</filename> allows you to specify an
+<para>The <command>prefix</command> child-element allows you to specify an
 environment variable or some other prefix to the make command</para>
 
-<para>The attribute <filename>base</filename> allows you to specify the
-directory in which the make will be performed. See
-<xref linkend="elem_base"/>.</para>
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
 
 </sect2>
 

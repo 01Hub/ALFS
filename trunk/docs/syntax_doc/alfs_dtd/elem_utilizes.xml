@@ -25,11 +25,11 @@
 
 <para>The <command>utilizes</command> element indicates that the package
 containing the <command>utilizes</command> element utilizes the package
-whose name is contained in the <command>name</command> sub-element, but
+whose name is contained in the <command>name</command> child-element, but
 does not depend on it (in which case the element
 <command>requires</command> should be used).</para>
 
-<para>The actual name is put into a <command>name</command>
+<para>The actual name is put into the <command>name</command>
 child-element.</para>
 
 <note><para>To work properly, the package identified in the

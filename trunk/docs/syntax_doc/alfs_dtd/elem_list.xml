@@ -24,10 +24,10 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>list</filename> contains a list of items or
+<para>The <command>list</command> element contains a list of items or
 sub-lists in a description.</para>
 
-<para>The attribute <filename>type</filename> provides a way to define a
+<para>The <command>type</command> attribute provides a way to define a
 numbered or bulleted list</para>
 
 </sect2>

@@ -5,6 +5,21 @@
 
 <itemizedlist>
 
+<listitem><para>June 14th, 2004 [jwrober]: Grammar updates Pass #4 &emdash;
+modified the token used so the element/attribute would stand out more in
+the HTML.</para></listitem>
+
+<listitem><para>June 14th, 2004 [jwrober]: Grammar updates Pass #3 &emdash;
+made sure the base element's text is used exactly the same throughout the
+book.</para></listitem>
+
+<listitem><para>June 14th, 2004 [jwrober]: Grammar updates Pass #2 &emdash;
+changed sub-element to child-element.</para></listitem>
+
+<listitem><para>June 14th, 2004 [jwrober]: Grammar updates Pass #1 &emdash;
+put the word element or attribute behind the element/attribute's
+name.</para></listitem>
+
 <listitem><para>June 7th, 2004 [jwrober]: A bunch of textual edits for
 readability from Kevin Fleming.</para></listitem>
 

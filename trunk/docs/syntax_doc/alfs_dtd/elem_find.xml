@@ -18,8 +18,8 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>find</filename> allows you to specify the
-string to be searched for in a search and replace operation.</para>
+<para>The <command>find</command> element allows you to specify the string
+to be searched for in a search and replace operation.</para>
 
 </sect2>
 

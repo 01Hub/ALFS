@@ -21,22 +21,24 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>variable</filename> allows you to add a
-variable definition to the system environment.</para>
+<para>The <command>variable</command> element allows you to add a variable
+definition to the system environment.</para>
 
-<para>The name of the variable is given by the attribute
-<filename>name</filename> of the element.</para>
+<para>The name of the variable is given by the <command>name</command>
+attribute of the element.</para>
 
 <para>The value of the variable is given by the textual content of the
 element.</para>
 
-<para>The attribute <filename>mode</filename> can take the value
+<para>The <command>mode</command> attribute can take the value
 <literal>"append"</literal>, in which case the content of the element is
 appended to the value of the environment variable.</para>
 
-<para>The attribute <filename>mode</filename> can also take the value
+<para>The <command>mode</command> attribute can also take the value
 <literal>"prepend"</literal>, in which case the content of the element is
-prepended to the value of the environment variable.</para></sect2>
+prepended to the value of the environment variable.</para>
+
+</sect2>
 
 <sect2>
 <title>Examples</title>

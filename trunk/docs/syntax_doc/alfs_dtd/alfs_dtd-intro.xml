@@ -9,14 +9,14 @@ the various XML elements that can occur in a profile.</para>
 <itemizedlist>
 
 <listitem><para>the formal definition of the element, using the exact DTD
-syntax</para></listitem>
+syntax.</para></listitem>
 
-<listitem><para>a description of the element</para></listitem>
+<listitem><para>a description of the element.</para></listitem>
 
-<listitem><para>one or several examples</para></listitem>
+<listitem><para>one or several examples.</para></listitem>
 
 <listitem><para>an equivalent bash script(s) for the examples (when
-applicable)</para></listitem>
+applicable).</para></listitem>
 
 </itemizedlist>
 

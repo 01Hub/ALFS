@@ -18,7 +18,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>para</filename> contains a paragraph of
+<para>The <command>para</command> element contains a paragraph of
 documentary text.</para>
 
 </sect2>
