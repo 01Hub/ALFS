@@ -14,8 +14,20 @@
   <package name="qpopper" version="&qpopper-version;">
     <packageinfo>
       <requires>
-        <name>postfix</name>
+        <name>&mta-impl;</name>
       </requires>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>gdbm</name>
+      </utilizes>
+      <utilizes>
+	<name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+	<name>mitkrb</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -37,10 +49,6 @@
       <textdump mode="append">
         <file>/etc/inetd.conf</file>
         <content>=pop stream tcp nowait root /usr/sbin/popper popper</content>
-      </textdump>
-      <textdump mode="append">
-        <file>/etc/services</file>
-        <content>=pop 110/tcp</content>
       </textdump>
       <execute command="killall inetd || inetd" />
       <textdump mode="append">

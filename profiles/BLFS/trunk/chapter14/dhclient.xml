@@ -48,8 +48,8 @@
         <content>
 	  =ONBOOT=yes
 	  =SERVICE=dhclient"
-	  =DHCP_START="-q &dhclient-start-params;"
-	  =DHCP_STOP="-q -r &dhclient-stop-params;"
+	  =DHCP_START="&dhclient-start-params;"
+	  =DHCP_STOP="&dhclient-stop-params;"
 	</content>
       </textdump>
       <textdump>
@@ -60,7 +60,8 @@
 	  =interface "eth0" {
 	  = prepend domain-name-servers 127.0.0.1;
 	  = request subnet-mask, broadcast-address, time-offset, routers,
-	  = domain-name, domain-name-servers, host-name; =require subnet-mask, domain-name-servers;
+	  =	    domain-name, domain-name-servers, host-name; 
+	  = require subnet-mask, domain-name-servers;
 	  =}
 	  =# end dhclient.conf
 	</content>

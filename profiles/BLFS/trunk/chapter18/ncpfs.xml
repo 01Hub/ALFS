@@ -17,7 +17,7 @@
   <package name="ncpfs" version="&ncpfs-version;">
     <packageinfo>
       <utilizes>
-        <name>linux-pam</name>
+        <name>linuxpam</name>
       </utilizes>
       <utilizes>
         <name>php</name>
@@ -53,15 +53,14 @@
         <base>&build_dir;/&blfs-bootscripts-directory;</base>
       </stageinfo>
       <make>
-        <param>make install-service-ipx</param>
+        <param>install-service-ipx</param>
       </make>
-      <textdump base="/etc/sysconfig/network-devices/">
-        <file>ifconfig.ipx0</file>
+      <textdump>
+        <file>/etc/sysconfig/network-devices/ifconfig.eth0/ipx</file>
         <content>
-	  =ONBOOT=yes
-	  =SERVICE=ipx
-	  =IPXDEV=eth0
-	  =FRAME=802.2
+	  =ONBOOT="yes"
+	  =SERVICE="ipx"
+	  =FRAME="802.2"
 	</content>
       </textdump>
     </stage>

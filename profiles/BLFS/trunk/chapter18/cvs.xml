@@ -12,11 +12,38 @@
 ]>
 <alfs>
   <package name="cvs" version="&cvs-version;">
+    <packageinfo>
+      <utilizes>
+	<name>gdbm</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>&ghostscript-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>&mta-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>vim</name>
+      </utilizes>
+    </packageinfo>      
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&cvs-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&cvs-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&cvs-zlib-patch;</param>
+      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>

@@ -15,6 +15,41 @@
 ]>
 <alfs>
   <package name="samba" version="&samba-version;">
+    <packageinfo>
+      <utilizes>
+	<name>popt</name>
+      </utilizes>
+      <utilizes>
+	<name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+	<name>openldap</name>
+      </utilizes>
+      <utilizes>
+	<name>cups</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>libxml2</name>
+      </utilizes>
+      <utilizes>
+	<name>mysql</name>
+      </utilizes>
+      <utilizes>
+	<name>postgresql</name>
+      </utilizes>
+      <utilizes>
+	<name>python</name>
+      </utilizes>
+      <utilizes>
+	<name>xinetd</name>
+      </utilizes>
+      <utilizes>
+	<name>stunnel</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking.">
       <unpack>
         <archive>&packages_dir;/&samba-package;</archive>
@@ -22,16 +57,6 @@
       </unpack>
     </stage>
     &bootscripts-get;
-    <stage name="Patching.">
-      <stageinfo>
-        <base>&build_dir;/&samba-directory;/source</base>
-      </stageinfo>
-      <patch base="&build_dir;/&samba-directory;">
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&samba-maintainer-patch;</param>
-      </patch>
-    </stage>
     <stage name="Installing.">
       <stageinfo>
         <base>&build_dir;/&samba-directory;/source</base>
@@ -52,6 +77,9 @@
       <make>
         <param>install</param>
       </make>
+      <permissions mode="644">
+	<name>/usr/include/libsmbclient.h</name>
+      </permissions>
       <copy>
         <source>nsswitch/libnss_win{s,bind.so}</source>
         <destination>/lib</destination>
@@ -75,18 +103,21 @@
       </copy>
       <textdump mode="append">
         <file>/etc/services</file>
-        <content>=swat		901/tcp</content>
+        <content>
+	=swat		901/tcp
+	=swat_tunnel	902/tcp
+	</content>
       </textdump>
       <textdump mode="append">
         <file>/etc/inetd.conf</file>
-        <content>=swat stream tcp nowait.400 root /usr/sbin/swat swat</content>
+        <content>=swat_tunnel stream tcp nowait.400 root /usr/sbin/swat swat</content>
       </textdump>
       <textdump mode="append">
         <file>/etc/xinetd.conf</file>
         <content>
-	  =service swat
+	  =service swat_tunnel
 	  ={
-	  =    port            = 901
+	  =    port            = 902
 	  =    socket_type     = stream
 	  =    wait            = no
 	  =    only_from       = 127.0.0.1
@@ -94,6 +125,14 @@
 	  =    server          = /usr/sbin/swat
 	  =    log_on_failure  += USERID
 	  =}
+	</content>
+      </textdump>
+      <textdump mode="append">
+	<file>/etc/stunnel/stunnel.conf</file>
+	<content>
+	  =[swat]
+	  =accept = 901
+	  =connect = 902
 	</content>
       </textdump>
     </stage>

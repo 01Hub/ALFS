@@ -29,9 +29,6 @@
         <name>libtiff</name>
       </utilizes>
       <utilizes>
-        <name>svgalib</name>
-      </utilizes>
-      <utilizes>
         <name>&ximpl;</name>
       </utilizes>
     </packageinfo>

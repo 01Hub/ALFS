@@ -19,6 +19,21 @@
       <requires>
         <name>db</name>
       </requires>
+      <utilizes>
+	<name>&ximpl;</name>
+      </utilizes>
+      <utilizes>
+	<name>openldap</name>
+      </utilizes>
+      <utilizes>
+	<name>mysql</name>
+      </utilizes>
+      <utilizes>
+	<name>tcpwrappers</name>
+      </utilizes>
+      <utilizes>
+	<name>linuxpam</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking.">
       <unpack>
@@ -28,11 +43,10 @@
     </stage>
     &bootscripts-get;
     <stage name="Creating user and group">
-      <execute command="groupadd">
-        <param>-f</param>
+      <execute command="getent group exim &gt; /dev/null || groupadd">
         <param>exim</param>
       </execute>
-      <execute command="grep -q ^exim /etc/passwd || useradd">
+      <execute command="getent passwd exim &gt; /dev/null || useradd">
         <param>-c exim</param>
         <param>-d /dev/null</param>
         <param>-g exim</param>

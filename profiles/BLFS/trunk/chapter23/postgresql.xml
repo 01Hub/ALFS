@@ -15,6 +15,38 @@
 ]>
 <alfs>
   <package name="postgresql" version="&postgresql-version;">
+    <packageinfo>
+      <utilizes>
+	<name>python</name>
+      </utilizes>
+      <utilizes>
+	<name>tcl</name>
+      </utilizes>
+      <utilizes>
+	<name>tk</name>
+      </utilizes>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+	<name>sgml-dtd31</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-dsssl</name>
+      </utilizes>
+      <utilizes>
+	<name>SGMLSpm</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>apache-ant</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&postgresql-package;</archive>
@@ -23,28 +55,48 @@
     </stage>
     &bootscripts-get;
     <stage name="Creating user">
-      <execute command="grep -q ^postgres /etc/passwd || useradd">
-        <param>-d /var/pgsql/data</param>
+      <execute command="getent passwd postgres &gt; /dev/null || useradd">
+        <param>-d /srv/pgsql/data</param>
         <param>postgres</param>
       </execute>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&postgresql-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&postgresql-dsssl-patch;</param>
+      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&postgresql-directory;</base>
       </stageinfo>
+      <execute command='sed -i.orig -e "/CATALOG \/etc\/sgml\/OpenSP-1.5.1.cat/d" \
+	/etc/sgml/catalog /etc/sgml/sgml-docbook.cat' />
       <configure>
         <param>--prefix=/usr</param>
+	<param>--enable-thread-safety</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
+      <make>
+	<param>install-all-headers</param>
+      </make>
+      <ownership user="root" group="root">
+	<option>recursive</option>
+	<name>/usr/share/doc/postgresql/html</name>
+      </ownership>
       <mkdir>
         <option>parents</option>
-        <name>/var/pgsql/data</name>
+        <name>/srv/pgsql/data</name>
       </mkdir>
       <ownership user="postgres">
-        <name>/var/pgsql/data</name>
+        <name>/srv/pgsql/data</name>
       </ownership>
     </stage>
     <stage name="Initializing database">
@@ -52,7 +104,7 @@
         <user>postgres</user>
       </stageinfo>
       <execute command="initdb">
-        <param>-D /var/pgsql/data</param>
+        <param>-D /srv/pgsql/data</param>
       </execute>
     </stage>
     <stage name="Installing bootscript and configuration">

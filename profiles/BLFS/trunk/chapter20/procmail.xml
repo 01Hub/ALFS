@@ -23,7 +23,6 @@
         <base>&build_dir;/&procmail-directory;</base>
       </stageinfo>
       <make>
-        <param>BASENAME=/usr</param>
         <param>LOCKINGTEST=/tmp</param>
         <param>install</param>
       </make>

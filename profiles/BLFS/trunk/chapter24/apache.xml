@@ -31,6 +31,9 @@
       <utilizes>
         <name>expat</name>
       </utilizes>
+      <utilizes>
+	<name>doxygen</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -40,11 +43,10 @@
     </stage>
     &bootscripts-get;
     <stage name="Creating user and group">
-      <execute command="groupadd">
-        <param>-f</param>
+      <execute command="getent group apache &gt; /dev/null || groupadd">
         <param>apache</param>
       </execute>
-      <execute command="grep -q ^apache /etc/passwd || useradd">
+      <execute command="getent passwd apache &gt; /dev/null || useradd">
         <param>-c apache</param>
         <param>-d /dev/null</param>
         <param>-g apache</param>
@@ -67,13 +69,36 @@
         <base>&build_dir;/&apache-directory;</base>
       </stageinfo>
       <configure>
-        <param>--enable-layout=LFS</param>
+        <param>--enable-layout=FHS</param>
         <param>--enable-mods-shared=all</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
+      <ownership user="root" group="root">
+	<name>/usr/sbin/apxs</name>
+	<name>/usr/sbin/apachectl</name>
+	<name>/usr/sbin/dbmmanage</name>
+	<name>/usr/sbin/envvars-std</name>
+	<name>/usr/sbin/envvars</name>
+	<name>/usr/include/apache/*</name>
+	<name>/usr/lib/apache/httpd.exp</name>
+	<name>/usr/share/man/man1/dbmmanage.1</name>
+	<name>/usr/share/man/man1/htdigest.1</name>
+	<name>/usr/share/man/man1/htpasswd.1</name>
+	<name>/usr/share/man/man8/ab.8</name>
+	<name>/usr/share/man/man8/apachectl.8</name>
+	<name>/usr/share/man/man8/apxs.8</name>
+	<name>/usr/share/man/man8/httpd.8</name>
+	<name>/usr/share/man/man8/logresolve.8</name>
+	<name>/usr/share/man/man8/rotatelogs.8</name>
+	<name>/usr/share/man/man8/suexec.8</name>
+      </ownership>
+      <ownership user="apache" group="apache">
+	<option>recursive</option>
+	<name>/srv/www</name>
+      </ownership>
     </stage>
     <stage name="Installing bootscript and configuration">
       <stageinfo>

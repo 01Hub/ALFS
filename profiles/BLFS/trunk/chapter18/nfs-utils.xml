@@ -28,11 +28,11 @@
     </stage>
     &bootscripts-get;
     <stage name="Creating user and group">
-      <execute command="groupadd">
+      <execute command="getent group nogroup &gt; /dev/null || groupadd">
         <param>-g 65534</param>
         <param>nogroup</param>
       </execute>
-      <execute command="useradd">
+      <execute command="getent passwd nobody &gt; /dev/null || useradd">
         <param>-c nobody</param>
         <param>-d /home</param>
         <param>-g nogroup</param>
@@ -61,6 +61,15 @@
       <make>
         <param>install-nfs-server</param>
       </make>
+      <textdump base="/etc/sysconfig">
+	<file>nfs-server</file>
+	<content>
+	  =PORT="2049"
+	  =PROCESSES="8"
+	  =QUOTAS="no"
+	  =KILLDELAY="10"
+	</content>
+      </textdump>
       <make>
         <param>install-nfs-client</param>
       </make>

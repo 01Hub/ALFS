@@ -16,6 +16,33 @@
       <requires>
         <name>gdbm</name>
       </requires>
+      <utilizes>
+	<name>mysql</name>
+      </utilizes>
+      <utilizes>
+	<name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>libfam</name>
+      </utilizes>
+      <utilizes>
+	<name>openldap</name>
+      </utilizes>
+      <utilizes>
+	<name>apache</name>
+      </utilizes>
+      <utilizes>
+	<name>aspell</name>
+      </utilizes>
+      <utilizes>
+	<name>gnupg</name>
+      </utilizes>
+      <utilizes>
+	<name>expect</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking.">
       <unpack>
@@ -24,18 +51,18 @@
       </unpack>
     </stage>
     <stage name="Creating user and group">
-      <execute command="groupadd">
+      <execute command="getent group courier &gt; /dev/null || groupadd">
         <param>-f</param>
         <param>courier</param>
       </execute>
-      <execute command="grep -q ^courier /etc/passwd || useradd">
+      <execute command="getent passwd courier &gt; /dev/null || useradd">
         <param>-c courier</param>
         <param>-d /dev/null</param>
         <param>-g courier</param>
         <param>-s /bin/false</param>
         <param>courier</param>
       </execute>
-      <execute command="grep -q ^bin /etc/passwd || useradd">
+      <execute command="getent passwd bin &gt; /dev/null || useradd">
         <param>-c bin</param>
         <param>-d /dev/null</param>
         <param>-g bin</param>

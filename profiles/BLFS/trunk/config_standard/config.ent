@@ -27,21 +27,33 @@
 
 <!-- configuration for dhclient -->
 <!-- These two entities should be set to appropriate values to start and stop dhclient -->
-<!ENTITY dhclient-start-params "">
-<!ENTITY dhclient-stop-params "-r">
+<!ENTITY dhclient-start-params "-q">
+<!ENTITY dhclient-stop-params "-q -r">
 
 <!-- configuration for dhcpcd -->
 <!-- These two entities should be set to appropriate values to start and stop dhcpcd -->
 <!ENTITY dhcpcd-start-params "">
 <!ENTITY dhcpcd-stop-params "-k">
 
+<!-- Kerberos Implementation -->
+<!-- MIT krb 5 (mitkrb) or Heimdal (heimdal) -->
+<!ENTITY krb-impl "heimdal">
+
+<!-- DHCP Config (Server) -->
+<!ENTITY dhcp-subnet "192.168.5.0">
+<!ENTITY dhcp-netmask "255.255.255.0">
+<!ENTITY dhcp-beg-range "192.168.5.10">
+<!ENTITY dhcp-end-range "192.168.5.240">
+<!ENTITY dhcp-broadcast "192.168.5.255">
+<!ENTITY dhcp-routers-addr "192.168.5.1">
+
 <!-- X Window System Implementation -->
 <!-- XFree86 (xfree86) or X.org (xorg) -->
 <!ENTITY ximpl "xorg">
 
 <!-- Ghostscript Implementation -->
-<!-- esp or afpl -->
-<!ENTITY ghostscript-impl "esp">
+<!-- esp (espghostscript) or afpl (ghostscript)-->
+<!ENTITY ghostscript-impl "espghostscript">
 
 <!-- GIF library implementation-->
 <!-- libungif or giflib -->
@@ -50,6 +62,9 @@
 <!-- MTA (mail transport agent) -->
 <!-- sendmail, exim, courier, qpopper or postfix -->
 <!ENTITY mta-impl "sendmail">
+
+<!-- MySQL -->
+<!ENTITY mysql-root-pass "blahblah">
 
 <!-- where to put kde -->
 <!ENTITY kde-prefix "/usr">

@@ -10,6 +10,7 @@
 %config_entities;
 
 ]>
+<alfs>
 <package name="" version="">
   <stage name="Unpacking.">
     <unpack>
@@ -33,3 +34,4 @@
     <remove>&build_dir;/</remove>
   </stage>
 </package>
+</alfs>

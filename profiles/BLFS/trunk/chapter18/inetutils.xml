@@ -19,6 +19,9 @@
       <utilizes>
         <name>tcpwrappers</name>
       </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -26,18 +29,29 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&inetutils-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&inetutils-kernel-header-patch;</param>
+      </patch>
+    </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&inetutils-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
-        <param>--disable-syslogd</param>
-        <param>--libexecdir=/usr/sbin</param>
+	<param>--libexecdir=/usr/sbin</param>
+	<param>--sysconfdir=/etc</param>
+	<param>--localstatedir=/var</param>
+	<param>--mandir=/usr/share/man</param>
         <param>--infodir=/usr/share/info</param>
-        <param>--sysconfdir=/etc</param>
-        <param>--localstatedir=/var</param>
-        <param>--mandir=/usr/share/man</param>
+	<param>--disable-logger</param>
+	<param>--disable-syslogd</param>
       </configure>
       <make />
       <make>

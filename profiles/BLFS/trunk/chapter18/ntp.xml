@@ -46,9 +46,21 @@
       <textdump base="/etc">
         <file>ntp.conf</file>
         <content>
-	  =server time-a.nist.gov prefer
-	  =server time-b.nist.gov
-	  =server tick.usno.navy.mil
+	  =# Africa
+	  =server tock.nml.csir.co.za
+	  =
+	  =# Asia
+	  =server ntp.shim.org
+	  =
+	  =# Australia
+	  =server ntp.saard.net
+	  =
+	  =# Europe
+	  =server ntp.tuxfamily.net
+	  =
+	  =# North America
+	  =server clock.psu.edu
+	  =
 	  =driftfile /var/cache/ntp.drift
 	</content>
       </textdump>

@@ -19,6 +19,12 @@
       <requires>
         <name>procmail</name>
       </requires>
+      <utilizes>
+	<name>python</name>
+      </utilizes>
+      <utilizes>
+	<name>tk</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

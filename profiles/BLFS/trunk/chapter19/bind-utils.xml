@@ -32,6 +32,15 @@
         <param>-C lib/isc</param>
       </make>
       <make>
+	<param>-C lib/bind9</param>
+      </make>
+      <make>
+	<param>-C lib/isccfg</param>
+      </make>
+      <make>
+	<param>-C lib/lwres</param>
+      </make>
+      <make>
         <param>-C bin/dig</param>
       </make>
       <make>

@@ -17,8 +17,11 @@
         <name>pcre</name>
       </requires>
       <requires>
-        <name>xinetd</name>
+	<name>tcpwrappers</name>
       </requires>
+      <utilizes>
+        <name>xinetd</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -27,11 +30,10 @@
       </unpack>
     </stage>
     <stage name="Creating user and group">
-      <execute command="groupadd">
-        <param>-f</param>
+      <execute command="getent group news &gt; /dev/null || groupadd">
         <param>news</param>
       </execute>
-      <execute command="grep -q ^news /etc/passwd || useradd">
+      <execute command="getent passwd news &gt; /dev/null || useradd">
         <param>-g news</param>
         <param>news</param>
       </execute>
@@ -43,16 +45,30 @@
     <configure>
       <param>--prefix=/usr</param>
       <param>--localstatedir=/var</param>
-      <param>--sysconfdir=/etc/news</param>
-      <param>--with-lockfile=/var/lock/fetchnews.lck</param>
+      <param>--sysconfdir=/etc/leafnode</param>
+      <param>--with-lockfile=/var/lock/leafnode/fetchnews.lck</param>
     </configure>
     <make />
     <make>
       <param>install</param>
-    </make>&ldconfig; 
-    <make>
-      <param>update</param>
     </make>
+    &ldconfig;
+    <copy>
+      <source>/etc/leafnode/config.example</source>
+      <destination>/etc/leafnode/config</destination>
+    </copy>
+    <textdump base="/etc">
+      <file>nntpserver</file>
+      <content>
+	=127.0.0.1
+      </content>
+    </textdump>
+    <textdump mode="append" base="/etc/sysconfig">
+      <file>createfiles</file>
+      <content>
+	=/var/lock/leafnode   dir   2775    news    news
+      </content>
+    </textdump>
     <textdump mode="append" base="/etc">
       <file>xinetd.conf</file>
       <content>
@@ -70,10 +86,7 @@
         =}
 	</content>
     </textdump>
-    <copy>
-      <source>/etc/news/config.example</source>
-      <destination>/etc/news/config</destination>
-    </copy></stage>
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&leafnode-directory;</remove>
     </stage>

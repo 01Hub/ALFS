@@ -1,6 +1,6 @@
 <!--************* packages for chapter 20 *************-->
 
-<!ENTITY nail-version   "10.7">
+<!ENTITY nail-version   "11.11">
 <!ENTITY nail-package   "nail-&nail-version;.tar.bz2">
 <!ENTITY nail-directory "nail-&nail-version;">
 
@@ -22,6 +22,6 @@
 
 <!ENTITY pine-patch     "pine-&pine-version;-fhs-3.patch">
 
-<!ENTITY slrn-version   "0.9.8.0">
+<!ENTITY slrn-version   "0.9.8.1">
 <!ENTITY slrn-package   "slrn-&slrn-version;.tar.bz2">
 <!ENTITY slrn-directory "slrn-&slrn-version;">

@@ -16,6 +16,12 @@
       <requires>
         <name>slang</name>
       </requires>
+      <requires>
+	<name>&mta-impl;</name>
+      </requires>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
