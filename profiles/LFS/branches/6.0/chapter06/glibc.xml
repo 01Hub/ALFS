@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="glibc" version="&glibc-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&glibc-md5;</digest>
 			<archive>&packages_dir;/&glibc-package;</archive>
@@ -23,7 +23,7 @@
 		</mkdir>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<environment>
 				<variable name="CFLAGS" />
@@ -85,7 +85,7 @@
 		</make>
 	</stage>
 
-	<stage name="Configuring.">
+	<stage name="Configuring">
 		<textdump>
 			<file>/etc/nsswitch.conf</file>
 			<content>
@@ -127,7 +127,7 @@
 		</textdump>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&glibc-directory;</remove>
 		<remove>&build_dir;/glibc-build</remove>
 	</stage>

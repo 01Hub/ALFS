@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="mktemp" version="&mktemp-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&mktemp-md5;</digest>
 			<archive>&packages_dir;/&mktemp-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&mktemp-directory;</base>
 		</stageinfo>
@@ -45,7 +45,7 @@
 		</make>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&mktemp-directory;</remove>
 	</stage>
 </package>

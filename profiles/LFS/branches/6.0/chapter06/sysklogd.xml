@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="sysklogd" version="&sysklogd-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&sysklogd-md5;</digest>
 			<archive>&packages_dir;/&sysklogd-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&sysklogd-directory;</base>
 		</stageinfo>
@@ -59,7 +59,7 @@
 		</textdump>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&sysklogd-directory;</remove>
 	</stage>
 </package>

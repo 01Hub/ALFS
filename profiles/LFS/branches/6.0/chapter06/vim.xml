@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="vim" version="&vim-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&vim-md5;</digest>
 			<archive>&packages_dir;/&vim-package;</archive>
@@ -23,7 +23,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&vim-directory;</base>
 		</stageinfo>
@@ -78,7 +78,7 @@
 
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&vim-directory;</remove>
 	</stage>
 </package>

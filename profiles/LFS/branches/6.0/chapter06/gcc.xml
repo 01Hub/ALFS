@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="gcc" version="&gcc-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&gcc-core-md5;</digest>
 			<archive>&packages_dir;/&gcc-core-package;</archive>
@@ -40,7 +40,7 @@
 		</mkdir>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<environment>
 				<variable name="CFLAGS" />
@@ -104,7 +104,7 @@
 		</link>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&gcc-directory;</remove>
 		<remove>&build_dir;/gcc-build</remove>
 	</stage>

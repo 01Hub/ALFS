@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="zlib" version="&zlib-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&zlib-md5;</digest>
 			<archive>&packages_dir;/&zlib-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&zlib-directory;</base>
 		</stageinfo>
@@ -82,7 +82,7 @@
 		</link>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&zlib-directory;</remove>
 	</stage>
 </package>

@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="m4" version="&m4-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&m4-md5;</digest>
 			<archive>&packages_dir;/&m4-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&m4-directory;</base>
 		</stageinfo>
@@ -40,7 +40,7 @@
 		</make>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&m4-directory;</remove>
 	</stage>
 </package>

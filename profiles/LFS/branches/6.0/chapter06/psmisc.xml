@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="psmisc" version="&psmisc-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&psmisc-md5;</digest>
 			<archive>&packages_dir;/&psmisc-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&psmisc-directory;</base>
 		</stageinfo>
@@ -52,7 +52,7 @@
 		</link>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&psmisc-directory;</remove>
 	</stage>
 </package>

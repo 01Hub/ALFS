@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="perl" version="&perl-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&perl-md5;</digest>
 			<archive>&packages_dir;/&perl-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&perl-directory;</base>
 		</stageinfo>
@@ -57,7 +57,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&perl-directory;</remove>
 	</stage>
 </package>

@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="kernel-headers" version="&linux-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&linux-md5;</digest>
 			<archive>&packages_dir;/&linux-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&linux-directory;</base>
 		</stageinfo>

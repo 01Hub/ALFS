@@ -9,8 +9,8 @@
 
 <alfs>
 
-<stage name="Re-adjusting the toolchain.">
-	<stage name="Adjusting the linker.">
+<stage name="Re-adjusting the Toolchain">
+	<stage name="Adjusting the Linker">
 		<stageinfo>
 			<base>&build_dir;/binutils-build</base>
 		</stageinfo>
@@ -25,7 +25,7 @@
 	<remove>&build_dir;/&binutils-directory;</remove>
 	<remove>&build_dir;/binutils-build</remove>
 
-	<stage name="Amending GCC specs file.">
+	<stage name="Amending the GCC specs File">
 		<search_replace>
 			<file>/tools/lib/gcc/&gcc_target;/&gcc-version;/specs</file>
 			<find> /tools/lib/&glibc-loader;</find>
