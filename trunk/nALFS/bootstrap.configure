@@ -122,21 +122,6 @@ else
    exit 1
 fi
 
-AC_ARG_ENABLE([libxml2-SAX], AC_HELP_STRING([--enable-libxml2-SAX], [enable using libxml2's SAX functions for parsing profiles [[default=no]]]), [], [enableval=no])
-
-case ${enableval} in
-     n|no)
-         ;;
-     y|ye|yes)
-         AC_DEFINE([PARSE_WITH_LIBXML_SAX], [], [Define to use libxml2's SAX functions for parsing profiles.])
-         ;;
-     *)
-         echo "***"
-         echo "*** Unknown --enable-libxml2-SAX value supplied: ${enableval}"
-         exit 1
-         ;;
-esac
-
 AC_ARG_WITH([curl], AC_HELP_STRING([--with-curl=PATH],[search for curl-config in PATH/bin]), [
 case ${withval} in
      n|no)
