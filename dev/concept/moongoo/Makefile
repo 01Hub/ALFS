@@ -7,12 +7,14 @@ LDLIBS+=`xml2-config --libs`
 CFLAGS+=-Wall -Werror -g3
 
 BIN=moongoo
-OBJS=alfs.o book.o util.o repl.o syn.o nalfs.o ass.o devel.o
+OBJS=alfs.o book.o util.o repl.o syn.o nalfs.o ass.o devel.o build.o
 
-#BOOK=~/projects/alfs/book/index.xml
-BOOK=~/projects/alfs/lfs-profile/LFS.xml
+BOOK=~/projects/alfs/book/index.xml
+#BOOK=~/projects/alfs/lfs-profile/LFS.xml
 #BOOK=~/projects/alfs/ass/index.xml
 #BOOK=~/projects/hive/unstable/profile.xml
+
+OPTS=
 
 .PHONY: all clean compile run memcheck debug todo
 
@@ -24,13 +26,13 @@ clean:
 compile: $(BIN)
 
 run: compile
-	./$(BIN) -s nalfs -q $(BOOK)
+	./$(BIN) $(OPTS) $(BOOK)
 
 memcheck: compile
-	valgrind -q --tool=memcheck $(BIN) $(BOOK)
+	valgrind -q --tool=memcheck $(BIN) $(OPTS) $(BOOK)
 
 debug: compile
-	@echo "Book: $(BOOK)"
+	@echo "Book: $(OPTS) $(BOOK)"
 	gdb ./$(BIN)
 
 todo:
@@ -44,3 +46,4 @@ repl.o: repl.h
 nalfs.o: nalfs.h
 ass.o: ass.h
 devel.o: devel.h
+build.o: build.h

@@ -9,13 +9,17 @@
 #include <nalfs.h>
 #include <ass.h>
 #include <util.h>
+#include <build.h>
 
 role default_filter[4] = { NOEXECUTE, INTERACTIVE, TESTSUITE, 0 };
+char *paralell_filter[4] = { "configure-host", "clean", "mrproper", NULL };
+char *popt_pkg[2] = { "Glibc-20041115", NULL };
+char *popt_cmd[2] = { "PARALLELMFLAGS=-j", NULL };
 
 int main (int argc, char **argv)
 {
 	char c, *syn = NULL;
-	bool quiet;
+	bool quiet = false;
 	xmlNodePtr cur;
 	profile *prof;
 	
@@ -72,11 +76,14 @@ int main (int argc, char **argv)
 		fprintf(stderr, "Syntax '%s' is not valid.\n", syn);
 		return 1;
 	}
-	
-	if ((prof)||(!quiet))
+
+	if ((prof) && (!quiet))
 	{
+		build_paralell (prof, paralell_filter, popt_pkg, popt_cmd);
 		set_filter(default_filter);
-		print_profile(*prof);
+		print_pkg(*search_pkg(prof, "Glibc-20041115", 
+			"chapter-building-system"));
+		//print_profile(*prof);
 	}
 	
 	xmlFreeDoc(doc);

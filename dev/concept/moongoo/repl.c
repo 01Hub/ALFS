@@ -3,32 +3,42 @@
 #include <repl.h>
 #include <alfs.h>
 
+replaceable *r = NULL;
+
 void t_repl (xmlNodePtr node, void *data)
 {
 	xmlNodePtr text = find_node(node->children, "text");
-	int i=0;
 	char *repl = xmlNodeGetContent(text);
-	replaceable *r = (replaceable *)data;
+	char *opt = get_option(repl);
+	
+	if (!strcmp(opt, ""))
+	{
+		fprintf(stderr, "Unconfigured replaceable: %s\n", repl);
+		return;
+	}
+	
+	xmlNodeSetContent(node, opt);
+}
+
+char *get_option (char *key)
+{
+	int i=0;
 	
 	if (!r)
-		return;
+		return NULL;
 	
 	while (r[i].orig)
 	{
-		if (!strcmp(repl, r[i].orig))
-		{
-			xmlNodeSetContent(node, r[i].repl);
-			return;
-		}
+		if (!strcmp(key, r[i].orig))
+			return r[i].repl;
 		i++;
 	}
-	
-	fprintf(stderr, "Unknown replaceable: %s\n", repl);
+
+	return "";
 }
 
 replaceable *init_repl (char *fname)
 {
-	replaceable *r = NULL;
 	xmlDocPtr doc;
 	xmlNodePtr node;
 	int count=0;

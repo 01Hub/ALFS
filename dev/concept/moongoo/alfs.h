@@ -90,6 +90,7 @@ char *find_value (xmlNodePtr node, char *str);
 char *find_values (xmlNodePtr node, char *str);
 char *find_values_repl (xmlNodePtr node, char *str, char **orig, char **repl);
 char *entity_val (char *name);
+package *search_pkg (profile *prof, char *name, char *ch);
 
 char *role2str (role role);
 char *type2str (xmlElementType type);

@@ -247,7 +247,6 @@ void t_stage2 (xmlNodePtr node, void *data)
 					if (!strncmp(temp, "cat >", 5))
 					{
 						char *t;
-						fprintf(stderr, "%s\n", temp);
 						t = strnstr(temp, "EOF", 2);
 						process_cmd4(strcut(temp, 0, t-temp+3));
 						t+=2;

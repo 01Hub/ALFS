@@ -22,4 +22,6 @@
 <answer name="[/path/to/your/keymap]"></answer>
 <!-- Paths -->
 <answer name="[unpacked sources dir]">/usr/src</answer>
+<!-- Paralell building -->
+<answer name="PARALELL">666</answer>
 </answers>
