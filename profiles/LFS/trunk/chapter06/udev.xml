@@ -24,6 +24,11 @@
         <param>&jlevel;</param>
         <param>udevdir=/dev</param>
       </make>
+      <!--
+      <make>
+      	<param>test</param>
+      </make>
+      -->
       <make>
         <param>udevdir=/dev</param>
         <param>install</param>
