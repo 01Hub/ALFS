@@ -116,6 +116,7 @@ char *chroot_parameters[] = { NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "dir", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
+#ifdef HANDLER_SYNTAX_2_0
 	{
 		.name = "chroot",
 		.description = "Enter chroot",
@@ -126,7 +127,9 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = NULL,
 		.is_action = 0,
 		.priority = 0
-	}, {
+	},
+#endif
+	{
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}
 };

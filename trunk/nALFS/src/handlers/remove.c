@@ -122,6 +122,7 @@ int remove_main_ver3(element_s *el)
 char *remove_parameters_ver[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
+#ifdef HANDLER_SYNTAX_2_0
 	{
 		.name = "remove",
 		.description = "Remove files",
@@ -132,7 +133,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
-	}, {
+	},
+#endif
+#ifdef HANDLER_SYNTAX_3_1
+	{
 		.name = "remove",
 		.description = "Remove files",
 		.syntax_version = "3.0",
@@ -142,7 +146,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
-	}, {
+	},
+#endif
+#ifdef HANDLER_SYNTAX_3_1
+	{
 		.name = "remove",
 		.description = "Remove files",
 		.syntax_version = "3.1",
@@ -152,7 +159,9 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
-	}, {
+	},
+#endif
+	{
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}
 };

@@ -151,6 +151,7 @@ char *textdump_parameters_ver3[] = { "file", "content", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "mode", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
+#ifdef HANDLER_SYNTAX_2_0
 	{
 		.name = "textdump",
 		.description = "Dump text",
@@ -161,7 +162,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = textdump_data,
 		.is_action = 1,
 		.priority = 0
-	}, {
+	},
+#endif
+#ifdef HANDLER_SYNTAX_3_0
+	{
 		.name = "textdump",
 		.description = "Dump text",
 		.syntax_version = "3.0",
@@ -171,7 +175,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = textdump_data,
 		.is_action = 1,
 		.priority = 0
-	}, {
+	},
+#endif
+#ifdef HANDLER_SYNTAX_3_1
+	{
 		.name = "textdump",
 		.description = "Dump text",
 		.syntax_version = "3.1",
@@ -181,7 +188,9 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = textdump_data,
 		.is_action = 1,
 		.priority = 0
-	}, {
+	},
+#endif
+	{
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}
 };

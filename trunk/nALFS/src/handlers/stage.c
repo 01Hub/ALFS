@@ -408,6 +408,7 @@ char *stage_parameters[] =
 // "name", "description", "logfile", "mode", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
+#ifdef HANDLER_SYNTAX_3_0
 	{
 		.name = "stage",
 		.description = "Enter stage: ", // FIXME
@@ -418,7 +419,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = NULL,
 		.is_action = 0,
 		.priority = 0
-	}, {
+	},
+#endif
+#ifdef HANDLER_SYNTAX_3_1
+	{
 		.name = "stage",
 		.description = "Enter stage: ", // FIXME
 		.syntax_version = "3.1",
@@ -428,7 +432,9 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = NULL,
 		.is_action = 0,
 		.priority = 0
-	}, {
+	},
+#endif
+	{
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}
 };
