@@ -42,8 +42,6 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&bc-directory;</remove>
-		<remove>&build_dir;/&bc-flex-invocation-patch;</remove>
-		<remove>&build_dir;/&bc-readline-patch;</remove>
 	</stage>
 
 </package>

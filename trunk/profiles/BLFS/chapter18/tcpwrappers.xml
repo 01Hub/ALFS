@@ -31,6 +31,5 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&tcpwrappers-directory;</remove>
-		<remove>&build_dir;/&tcpwrappers-shared-libs-plus-plus-patch;</remove>
 	</stage>
 </package>

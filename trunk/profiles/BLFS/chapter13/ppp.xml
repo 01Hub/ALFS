@@ -32,7 +32,6 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&ppp-directory;</remove>
-		<remove>&build_dir;/&ppp-patch;</remove>
 	</stage>
 
 </package>

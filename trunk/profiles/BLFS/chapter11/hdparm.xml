@@ -29,7 +29,6 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&hdparm-directory;</remove>
-		<remove>&build_dir;/&hdparm-patch1;</remove>
 	</stage>
 
 </package>

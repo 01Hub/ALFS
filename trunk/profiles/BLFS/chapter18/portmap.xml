@@ -53,8 +53,6 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&portmap-directory;</remove>
-		<remove>&build_dir;/&portmap-compilation-fixes-patch;</remove>
-		<remove>&build_dir;/&portmap-glibc-errno-fix-patch;</remove>
 		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
 	</stage>
 

@@ -71,8 +71,6 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&gpm-directory;</remove>
-		<remove>&build_dir;/&gpm-patch1;</remove>
-		<remove>&build_dir;/&gpm-patch2;</remove>
 		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
 	</stage>
 

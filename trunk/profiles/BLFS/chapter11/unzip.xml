@@ -59,9 +59,6 @@
 
 	<stage name="Cleanup">
 		<remove>&build_dir;/&unzip-directory;</remove>
-		<remove>&build_dir;/&unzip-patch1;</remove>
-		<remove>&build_dir;/&unzip-patch2;</remove>
-		<remove>&build_dir;/&unzip-patch3;</remove>
 	</stage>
 
 </package>
