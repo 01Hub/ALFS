@@ -9,11 +9,13 @@
   <!-- Uncomment the following section if you use a non-US keyboard
  and set the keymap entity in the general.ent also contained in this
  directory to the proper keymap file for your keyboard -->
+ <stage name="Set default console keyboard mapping">
   <!--
         <link>
                 <option>force</option>
                 <target>&keymap;</target>
                 <name>/usr/share/kbd/keymaps/defkeymap.map.gz</name>
         </link>
--->
+  -->
+  </stage>
 </alfs>

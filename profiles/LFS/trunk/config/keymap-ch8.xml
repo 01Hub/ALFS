@@ -4,11 +4,13 @@
 <alfs>
   <!-- uncomment the following section if you wish to have your default keymap
 compiled into the kernel -->
+  <stage name="Include default keyboard mapping into kernel">
   <!--
         <execute command="loadkeys">
                 <param>-m</param>
                 <param>/usr/share/kbd/keymaps/defkeymap.map.gz</param>
                 <param> > drivers/char/defkeymap.c</param>
         </execute>
--->
+  -->
+  </stage>
 </alfs>
