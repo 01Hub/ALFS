@@ -4,7 +4,7 @@
 
 <!ENTITY nalfs-version "1.2.2">
 <!ENTITY version "&nalfs-version;-2004-05-31">
-<!ENTITY releasedate "May 31, 2004">
+<!ENTITY releasedate "May 31st, 2004">
 
 <!ENTITY % book      SYSTEM "book/book.ent">
 <!ENTITY % preface   SYSTEM "preface/preface.ent">
