@@ -13,7 +13,7 @@
        Last updated : 2004-07-03
   -->
 
-<!DOCTYPE alfs SYSTEM "ALFS-3.1.dtd" [
+<!DOCTYPE alfs SYSTEM "DTD/ALFS-3.1.dtd" [
 
 <!ENTITY % files SYSTEM "config/files.ent">
 %files;
