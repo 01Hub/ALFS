@@ -20,10 +20,6 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-
-#include <string.h>
-#include <dirent.h>
-
 #include <libxml/tree.h>
 #include <libxml/parser.h>
 

@@ -21,17 +21,11 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <errno.h>
 #include <signal.h>
 #include <stdarg.h>
 #include <fcntl.h>
 #include <time.h>
-#include <sys/types.h>
 #include <sys/wait.h>
 #include <libgen.h>
 #include <sys/poll.h>
@@ -307,7 +301,7 @@ int execute_command(const element_s * const element, const char *format, ...)
 	int status = 0;
 	char command[MAX_COMMAND_LEN];
 	char *args[4];
-	char *shell;
+	const char *shell;
 	char *temp;
 
 

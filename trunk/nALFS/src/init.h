@@ -1,9 +1,10 @@
 /*
  *  init.h - Initializing options.
  *
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001, 2002, 2004
  *
  *  Neven Has <haski@sezampro.yu>
+ *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -27,9 +28,9 @@
 /*
  * Some program's info.
  */
-#define EMAIL              "haski@sezampro.yu"
+#define EMAIL              "alfs-discuss@linuxfromscratch.org"
 #define SITE               "http://www.linuxfromscratch.org/alfs/"
-#define COPYRIGHT          "Copyright (C) 2001-2003 Neven Has"
+#define COPYRIGHT          "Copyright (C) 2001-2004 Neven Has, Kevin P. Fleming and others"
 
 void read_env_variables(void);
 

@@ -1,9 +1,10 @@
 /*
  *  utility.h - Various useful utilities.
  *
- *  Copyright (C) 2001-2003
+ *  Copyright (C) 2001-2004
  *
  *  Neven Has <haski@sezampro.yu>
+ *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -24,50 +25,68 @@
 #ifndef H_UTILITY_
 #define H_UTILITY_
 
-
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
-#include <assert.h>
 #include <sys/types.h>
 #include <dirent.h>
-
+#include <ctype.h>
+#include <errno.h>
+#include <unistd.h>
 
 #ifdef DO_ASSERT
+#include <assert.h>
 #define ASSERT(x) assert(x)
 #else
 #define ASSERT(x)
 #endif
 
-
 #define WHITE_SPACE	" \n\r\t\v"
 
 #define SKIPWS(c)	while (*(c) && isspace ((int)(*(c)))) ++c
 
-#define Empty_string(s)	((s) == NULL || strlen(s) == 0)
+#define Empty_string(s)	((s) == NULL || *s == '\0')
 
 #define Toggle(a)	((a) = (a) ? 0 : 1);
 #define Yesno(a)	((a) ? "Yes" : "No")
 #define Onoff(a)	((a) ? "On" : "Off")
 #define Min(a,b)	(((a) < (b)) ? (a) : (b))
 
-
 #ifndef WCOREDUMP
 #define WCOREDUMP(a) 0
 #endif
 
+extern void (*fatal_error)(const char * const file, unsigned int line,
+			   const char * const format, ...);
+
+#define Fatal_error(a, b...) do { \
+	fatal_error(__FILE__, __LINE__, a, ## b); \
+} while (0)
 
 /*
  * Memory allocation utilities.
  */
 
-void *xmalloc(size_t size);
-void *xrealloc(void *ptr, size_t size);
-#ifdef DEBUG_MEMORY
-void xfree(void *ptr);
-#else
+static inline void *xmalloc(size_t size)
+{
+	void *value = malloc(size);
+
+	if (value == NULL) {
+		Fatal_error("malloc() failed (size %zd)", size);
+	}
+	return value;
+}
+
+static inline void *xrealloc(void *ptr, size_t size)
+{
+	void *value;
+
+	if ((value = realloc(ptr, size)) == NULL) {
+		Fatal_error("realloc() failed (ptr: %p, size %zd)", ptr, size);
+	}
+	return value;
+}
+
 #define xfree free
-#endif
 
 /*
  * Strings' utilities.
@@ -97,10 +116,5 @@ struct dirent *xreaddir(DIR *dir, const char *dir_name, const char *suffix);
 
 int change_current_dir(const char *dir);
 char *get_home_directory(void);
-
-void pfile(const char *format, ...);
-
-unsigned number_len(unsigned num);
-
 
 #endif /* H_UTILITY_ */
