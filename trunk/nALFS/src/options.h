@@ -60,12 +60,6 @@ typedef enum logging_method {
 #define NUMBER 	int
 #define STRING 	char *
 
-union option_value {
-	STRING str_value;
-	BOOL bool_value;
-	NUMBER num_value;
-};
-
 enum option_type {
 	O_BOOL,
 	O_NUMBER,
@@ -78,8 +72,23 @@ struct option_s {
 
 	enum option_type type;
 
-	union option_value value;
-	union option_value def_value;
+	union {
+		struct {
+			STRING value;
+			STRING const def_value;
+			int (*validate)(STRING value);
+		} str;
+		struct {
+			BOOL value;
+			BOOL const def_value;
+			int (*validate)(BOOL value);
+		} bool;
+		struct {
+			NUMBER value;
+			NUMBER const def_value;
+			int (*validate)(NUMBER value);
+		} num;
+	} val;
 };
 
 #ifndef STRING_OPTION
