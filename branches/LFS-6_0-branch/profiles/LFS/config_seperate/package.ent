@@ -36,8 +36,8 @@
 <!ENTITY coreutils-package "coreutils-&coreutils-version;.tar.bz2">
 <!ENTITY coreutils-directory "coreutils-&coreutils-version;">
 
-<!ENTITY coreutils-hostname-patch-md5 "b8291682b44eedc59643648a93bb449f">
-<!ENTITY coreutils-hostname-patch "coreutils-&coreutils-version;-hostname-1.patch">
+<!ENTITY coreutils-dupes-patch-md5 "2aab9aa8d0f8c55fafff56fee64497e3">
+<!ENTITY coreutils-dupes-patch "coreutils-&coreutils-version;-dupes-1.patch">
 
 <!ENTITY coreutils-uname-patch-md5 "da72f7adae07bf9dfd97b63bdf38ea30">
 <!ENTITY coreutils-uname-patch "coreutils-&coreutils-version;-uname-1.patch">
