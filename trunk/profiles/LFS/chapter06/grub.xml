@@ -27,12 +27,6 @@
 			<base>&build_dir;/&grub-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&grub-gcc34-patch;</param>
-		</patch>
-
 		<configure>
 			<param>--prefix=/usr</param>
 		</configure>
