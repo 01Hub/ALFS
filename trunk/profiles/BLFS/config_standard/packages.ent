@@ -451,7 +451,7 @@
 <!ENTITY dhcpcd-package   "dhcpcd-&dhcpcd-version;.tar.gz">
 <!ENTITY dhcpcd-directory "dhcpcd-&dhcpcd-version;">
 
-<!ENTITY dhcpcd-patch     "dhcpcd-&dhcpcd-version;-fhs.patch">
+<!ENTITY dhcpcd-patch     "dhcpcd-&dhcpcd-version;-fhs-1.patch">
 
 <!--************* packages for chapter 15 *************-->
 <!ENTITY rp-pppoe-version "3.5">
@@ -468,14 +468,14 @@
 <!ENTITY wvstreams-package   "wvstreams-&wvstreams-version;.tar.gz">
 <!ENTITY wvstreams-directory "wvstreams-&wvstreams-version;">
 
-<!ENTITY wvstreams-wvcrypto-patch     "wvstreams-3.70-wvcrypto.patch">
-<!ENTITY wvstreams-wvresolver-patch   "wvstreams-3.70-wvresolver.patch">
+<!ENTITY wvstreams-wvcrypto-patch     "wvstreams-&wvstreams-version;-wvcrypto.patch">
+<!ENTITY wvstreams-wvresolver-patch   "wvstreams-&wvstreams-version;-wvresolver.patch">
 
 <!ENTITY gnet-version   "2.0.5">
 <!ENTITY gnet-package   "gnet-&gnet-version;.tar.gz">
 <!ENTITY gnet-directory "gnet-&gnet-version;">
 
-<!ENTITY libsoup-version   "1.99.26">
+<!ENTITY libsoup-version   "1.99.28">
 <!ENTITY libsoup-package   "libsoup-&libsoup-version;.tar.bz2">
 <!ENTITY libsoup-directory "libsoup-&libsoup-version;">
 
@@ -500,7 +500,7 @@
 <!ENTITY ncftp-package   "ncftp-&ncftp-version;-src.tar.bz2">
 <!ENTITY ncftp-directory "ncftp-&ncftp-version;">
 
-<!ENTITY cvs-version   "1.11.14">
+<!ENTITY cvs-version   "1.11.16">
 <!ENTITY cvs-package   "cvs-&cvs-version;.tar.bz2">
 <!ENTITY cvs-directory "cvs-&cvs-version;">
 
@@ -512,14 +512,14 @@
 <!ENTITY tcpwrappers-package   "tcp_wrappers_&tcpwrappers-version;.tar.gz">
 <!ENTITY tcpwrappers-directory "tcp_wrappers_&tcpwrappers-version;">
 
-<!ENTITY tcpwrappers-shared-libs-plus-plus-patch     "tcp_wrappers-7.6-shared-lib-plus-plus.patch">
+<!ENTITY tcpwrappers-shared-libs-plus-plus-patch     "tcp_wrappers-&tcpwrappers-version;-shared-lib-plus-plus.patch">
 
 <!ENTITY portmap-version   "5beta">
 <!ENTITY portmap-package   "portmap_&portmap-version;.tar.gz">
 <!ENTITY portmap-directory "portmap_&portmap-version;">
 
-<!ENTITY portmap-compilation-fixes-patch    "portmap-5beta-compilation-fixes-2.patch">
-<!ENTITY portmap-glibc-errno-fix-patch    "portmap-5beta-glibc-errno-fix.patch">
+<!ENTITY portmap-compilation-fixes-patch    "portmap-&portmap-version;-compilation-fixes-2.patch">
+<!ENTITY portmap-glibc-errno-fix-patch    "portmap-&portmap-version;-glibc-errno-fix.patch">
 
 <!ENTITY inetutils-version   "1.4.2">
 <!ENTITY inetutils-package   "inetutils-&inetutils-version;.tar.gz">
