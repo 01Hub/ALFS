@@ -32,6 +32,12 @@
 			<param>mrproper</param>
 		</make>
 
+		<search_replace>
+		  	<file>kernel/kmod.c</file>
+			<find>/sbin/hotplug</find>
+			<replace>/bin/true</replace>
+		</search_replace>		
+		
 		<copy>
 			<source>&packages_dir;/&kernel-config;</source>
 			<destination>.config</destination>
