@@ -10,6 +10,11 @@
 			<destination>&build_dir;</destination>
 		</unpack>
 
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
 		<copy>
 			<source>&packages_dir;/&portmap-compilation-fixes-patch;</source>
 			<destination>&build_dir;</destination>
@@ -60,6 +65,7 @@
 		<remove>&build_dir;/&portmap-directory;</remove>
 		<remove>&build_dir;/&portmap-compilation-fixes-patch;</remove>
 		<remove>&build_dir;/&portmap-glibc-errno-fix-patch;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
 	</stage>
 
 </package>
