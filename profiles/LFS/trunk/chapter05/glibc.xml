@@ -41,6 +41,7 @@
 			<param>--without-gd</param>
 			<param>--without-cvs</param>
 			<param>--with-headers=/tools/include</param>
+			<param>--disable-selinux</param>
 		</configure>
 
 		<make>

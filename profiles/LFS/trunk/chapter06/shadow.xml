@@ -24,9 +24,21 @@
 		</stageinfo>
 
 		<configure>
-			<param>--libdir=/usr/lib</param>
+			<param>--libdir=/lib</param>
 			<param>--enable-shared</param>
 		</configure>
+
+		<search_replace>
+			<file>src/Makefile</file>
+			<find>groups$(EXEEXT) </find>
+			<replace></replace>
+		</search_replace>
+
+		<search_replace>
+			<file>man/Makefile</file>
+			<find>groups</find>
+			<replace></replace>
+		</search_replace>
 
 		<make>
 			<param>&jlevel;</param>	
@@ -64,10 +76,12 @@
 			<destination>/bin</destination>
 		</move>
 
-		<move base="/usr/lib">
-			<source>libshadow.so.0*</source>
-			<destination>/lib</destination>
+		<move>
+			<source>/lib/libshadow.*a</source>
+			<destination>/usr/lib</destination>
 		</move>
+
+		<remove>/lib/libshadow.so</remove>
 
 		<link>
 			<option>force</option>
@@ -79,7 +93,6 @@
 			<name>/etc/default</name>
 		</mkdir>
 
-		<remove>/bin/groups</remove>
 	</stage>
 
 	<stage name="Configuring">

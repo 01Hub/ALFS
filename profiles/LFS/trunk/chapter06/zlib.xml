@@ -26,6 +26,7 @@
 		<configure>
 			<param>--prefix=/usr</param>
 			<param>--shared</param>
+			<param>--libdir=/lib</param>
 		</configure>
 
 		<make />
@@ -39,6 +40,14 @@
 		<make>
 			<param>install</param>
 		</make>
+
+		<remove>/lib/libz.so</remove>
+
+		<link>
+			<option>force</option>
+			<target>../../lib/libz.so.&zlib-version;</target>
+			<name>/usr/lib/libz.so</name>
+		</link>
 
 		<make>
 			<param>clean</param>
@@ -63,17 +72,6 @@
 		<permissions mode="644">
 			<name>/usr/lib/libz.a</name>
 		</permissions>
-
-		<move>
-			<source>/usr/lib/libz.so.*</source>
-			<destination>/lib</destination>
-		</move>
-
-		<link>
-			<option>force</option>
-			<target>../../lib/libz.so.1</target>
-			<name>/usr/lib/libz.so</name>
-		</link>
 	</stage>
 
 	<stage name="Cleanup">

@@ -21,7 +21,6 @@
 	-->
 
 	<!-- Sample grub configuration-->
-	<!--
 	<textdump>
 		<file>/boot/grub/menu.lst</file>
 		<content>
@@ -52,7 +51,6 @@
 			=#
 		</content>
 	</textdump>
-	-->
 </stage>
 
 </alfs>
