@@ -6,7 +6,7 @@
 
 #include <build.h>
 #include <libalfs.h>
-#include <moongoo.h>
+#include <main.h>
 #include <plugin.h>
 #include <url.h>
 
@@ -61,7 +61,7 @@ int main (int argc, char **argv)
 				printf("%s %s\nWritten by Boris Buegling\n", NAME, VERSION);
 				goto cleanup;
 			case 'h':
-				printf("moongoo [OPTIONS] BOOK\n");
+				printf("%s [OPTIONS] BOOK\n", NAME);
 				printf("\t-b\t\tBuild\n");
 				printf("\t-C\t\tNo colors in output\n");
 				printf("\t-c CONF.XML\tXML configuration file\n");
