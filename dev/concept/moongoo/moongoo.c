@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <getopt.h>
 
 #include <alfs.h>
 #include <book.h>
@@ -13,32 +14,70 @@ role default_filter[4] = { NOEXECUTE, INTERACTIVE, TESTSUITE, 0 };
 
 int main (int argc, char **argv)
 {
+	char c, *syn = NULL;
+	bool quiet;
 	xmlNodePtr cur;
 	profile *prof;
-
+	
 	if (argc<2)
 	{
 		fprintf(stderr, "No book to parse.\n");
 		return 1;
 	}
-	
+
+	while ((c = getopt(argc, argv, "s:qVh")) != EOF)
+	{
+		switch (c)
+		{
+			case 's':
+				syn = (char *)malloc(strlen(optarg)+1);
+				strcpy(syn, optarg);
+				break;
+			case 'q':
+				quiet = true;
+				break;
+			case 'V':
+				printf("moongoo 0.0.1\nWritten by Boris Buegling\n");
+				return 0;
+			case 'h':
+				printf("moongoo [OPTIONS] BOOK\n");
+				printf("\t-s SYNTAX\tChoose syntax\n");
+				printf("\t-q\t\tNo output\n");
+				printf("\t-V\t\tVersion information\n");
+				printf("\t-h\t\tPrint this fluff\n");
+				return 0;
+		}
+	}
+
 	xmlSubstituteEntitiesDefault(1);
-	doc=xmlParseFile(argv[1]);
+	doc=xmlParseFile(argv[argc-1]);
 	if (!doc)
 		return 2;
 	xmlXIncludeProcessFlags(doc, XML_PARSE_NOENT);
 	cur=xmlDocGetRootElement(doc);
 	
-	//prof=bookasprofile(cur);
-	//prof=syn_profile(cur);
-	prof=nalfs_profile(cur);
-	//prof=ass_profile(cur);
+	if ((!syn)||(!strcmp(syn, "book")))
+		prof=bookasprofile(cur);
+	else
+	if (!strcmp(syn, "syn"))
+		prof=syn_profile(cur);
+	else
+	if (!strcmp(syn, "nalfs"))
+		prof=nalfs_profile(cur);
+	else
+	if (!strcmp(syn, "ass"))
+		prof=ass_profile(cur);
+	else
+	{
+		fprintf(stderr, "Syntax '%s' is not valid.\n", syn);
+		return 1;
+	}
 	
-	/*if (prof)
+	if ((prof)||(!quiet))
 	{
 		set_filter(default_filter);
 		print_profile(*prof);
-	}*/
+	}
 	
 	xmlFreeDoc(doc);
 	return 0;
