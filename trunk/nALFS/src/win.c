@@ -339,7 +339,8 @@ static void move_cursor(int *top, int *cursor, int lines, int input)
 int tmp_window_driver(int lines, int *top, int *cursor)
 {
 	int i, input;
-	int old_cursor;
+	/* silence compiler warning about possible use before init */
+	int old_cursor = 0;
 
 
 	if (cursor) {
