@@ -2,18 +2,25 @@
 
 <package name="portmap" version="&portmap-version;">
 
+        <packageinfo>
+                <requires><name>tcpwrappers</name></requires>
+        </packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&portmap-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 
-		<unpack>
-			<archive>&packages_dir;/&portmap-ppatch;</archive>
+		<copy>
+			<source>&packages_dir;/&portmap-patch1;</source>
 			<destination>&build_dir;</destination>
-		</unpack>
+		</copy>
 
-
+		<copy>
+			<source>&packages_dir;/&portmap-patch2;</source>
+			<destination>&build_dir;</destination>
+		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
@@ -24,14 +31,14 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&portmap-patch;</param>
+			<param>-i ../&portmap-patch1;</param>
 		</patch>
 
-		<remove>/usr/share/doc/portmap</remove>
-		<mkdir base="/usr/share/doc">
-		        <option>parents</option>
-		        <name>portmap</name>
-		</mkdir>
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&portmap-patch2;</param>
+		</patch>
 
 		<make/>
 
@@ -43,9 +50,11 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&portmap-directory;</remove>
-		<remove>&build_dir;/&portmap-patch;</remove>
+		<remove>&build_dir;/&portmap-patch1;</remove>
+		<remove>&build_dir;/&portmap-patch2;</remove>
 	</stage>
-        <stage name="Create the portmap boot scripts">
+
+      <stage name="Create the portmap boot scripts">
 
       <textdump base="/etc/rc.d/init.d/">
 	<file>portmap</file>

@@ -422,9 +422,9 @@
 <!ENTITY ncftp-package   "ncftp-3.1.6-src.tar.bz2">
 <!ENTITY ncftp-directory "ncftp-3.1.6">
 
-<!ENTITY cvs-version   "1.11.5">
-<!ENTITY cvs-package   "cvs-1.11.5.tar.gz">
-<!ENTITY cvs-directory "cvs-1.11.5">
+<!ENTITY cvs-version   "1.11.6">
+<!ENTITY cvs-package   "cvs-1.11.6.tar.bz2">
+<!ENTITY cvs-directory "cvs-1.11.6">
 
 <!ENTITY cvs-ppatch    "cvs-1.11.2-zlib.patch.bz2">
 <!ENTITY cvs-patch     "cvs-1.11.2-zlib.patch">
@@ -437,19 +437,22 @@
 <!ENTITY tcpwrappers-package   "tcp_wrappers_7.6.tar.gz">
 <!ENTITY tcpwrappers-directory "tcp_wrappers_7.6">
 
-<!ENTITY tcpwrappers-ppatch    "tcp_wrappers_7.6.diff.gz">
-<!ENTITY tcpwrappers-patch     "tcp_wrappers_7.6.diff">
+<!ENTITY tcpwrappers-patch     "tcp_wrappers-7.6-shared-lib-plus-plus.patch">
 
-<!ENTITY portmap-version   "5">
-<!ENTITY portmap-package   "portmap_5.orig.tar.gz">
+<!ENTITY portmap-version   "5beta">
+<!ENTITY portmap-package   "portmap_5beta.tar.gz">
 <!ENTITY portmap-directory "portmap_5beta">
 
-<!ENTITY portmap-ppatch    "portmap_5-1.diff.gz">
-<!ENTITY portmap-patch     "portmap_5-1.diff">
+<!ENTITY portmap-patch1    "portmap-5beta-compilation-fixes-2.patch">
+<!ENTITY portmap-patch2    "portmap-5beta-glibc-errno-fix.patch">
 
 <!ENTITY inetutils-version   "1.4.2">
 <!ENTITY inetutils-package   "inetutils-1.4.2.tar.gz">
 <!ENTITY inetutils-directory "inetutils-1.4.2">
+
+<!ENTITY ntp-version   "4.1.2">
+<!ENTITY ntp-package   "ntp-4.1.2.tar.gz">
+<!ENTITY ntp-directory "ntp-4.1.2">
 
 <!--************* packages for chapter 19 *************-->
 

@@ -5,23 +5,12 @@
 			<archive>&packages_dir;/&cvs-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<unpack>
-		        <archive>&packages_dir;/&cvs-ppatch;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
 			<base>&build_dir;/&cvs-directory;</base>
 		</stageinfo>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&cvs-patch;</param>
-		</patch>
 
 		<configure>
 			<param>--prefix=/usr</param>
@@ -32,12 +21,9 @@
 		<make>
 			<param>install</param>
 		</make>
-		
 	</stage>
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&cvs-directory;</remove>
-		<remove>&build_dir;/&cvs-patch;</remove>
 	</stage>
-
 </package>

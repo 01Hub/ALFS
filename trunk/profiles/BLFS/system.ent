@@ -114,12 +114,13 @@
 <!ENTITY w3m        SYSTEM "./chapter17/w3m.xml">
 
 <!-- chapter 18 -->
-<!ENTITY ncftp      SYSTEM "./chapter18/ncftp.xml">
-<!ENTITY cvs        SYSTEM "./chapter18/cvs.xml">
-<!ENTITY wget       SYSTEM "./chapter18/wget.xml">
+<!ENTITY ncftp       SYSTEM "./chapter18/ncftp.xml">
+<!ENTITY cvs         SYSTEM "./chapter18/cvs.xml">
+<!ENTITY wget        SYSTEM "./chapter18/wget.xml">
 <!ENTITY tcpwrappers SYSTEM "./chapter18/tcpwrappers.xml">
-<!ENTITY portmap    SYSTEM "./chapter18/portmap.xml">
-<!ENTITY inetutils  SYSTEM "./chapter18/inetutils.xml">
+<!ENTITY portmap     SYSTEM "./chapter18/portmap.xml">
+<!ENTITY inetutils   SYSTEM "./chapter18/inetutils.xml">
+<!ENTITY ntp         SYSTEM "./chapter18/ntp.xml">
 
 <!-- chapter 19 -->
 <!ENTITY traceroute SYSTEM "./chapter19/traceroute.xml">

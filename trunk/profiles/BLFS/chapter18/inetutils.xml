@@ -17,6 +17,8 @@
 			 <param>--disable-syslogd</param>
 			 <param>--libexecdir=/usr/sbin</param>
 			 <param>--infodir=/usr/share/info</param>
+			 <param>--sysconfdir=/etc</param>
+			 <param>--localstatedir=/var</param>
 			 <param>--mandir=/usr/share/man</param>
 			 <param>--with-wrap</param>
 			 <param>--with-pam</param>
@@ -27,7 +29,11 @@
 		<make>
 			<param>install</param>
 		</make>
-		
+
+		<move>
+		        <source>/usr/bin/ping</source>
+			<destination>/bin</destination>
+		</move>
 	</stage>
 
 	<stage name="Clean-up.">
