@@ -1,9 +1,7 @@
 #include <ctype.h>
 #include <string.h>
 
-#include <gen.h>
 #include <parse.h>
-#include <util.h>
 
 package *cur_pkg (profile *prof)
 {

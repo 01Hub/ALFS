@@ -54,6 +54,28 @@ static void t_part (xmlNodePtr node, void *data)
 	foreach(node->children, "chapter", (xml_handler_t)t_chapter, NULL);
 }
 
+static bool handle_arch (xmlNodePtr node, void *data)
+{
+	char *arch = get_option(r, "arch");
+	char *attr = xmlGetProp(node, "arch");
+
+	//printf("%s\n", arch);
+	
+	/* TODO: Check this w/o having a default arch set
+	if (!arch)
+	{
+		fprintf(stderr, "You're using a multi-arch book w/o having arch set.\n");
+		return false;
+	}*/
+	
+	if (!attr)
+		return false;
+	if (!strcmp(arch, attr))
+		return false;
+
+	return true;
+}
+
 profile *bookasprofile (xmlNodePtr node, replaceable *_r)
 {
 	xmlNodePtr info = find_node(node, "bookinfo");
@@ -68,6 +90,8 @@ profile *bookasprofile (xmlNodePtr node, replaceable *_r)
 		fprintf(stderr, "XML document is not a valid LFS book.\n");
 		return NULL;
 	}
+
+	remove_nodes(node, (xml_opt_t)handle_arch, _r);
 
 	r = _r;
 	prof = new_prof();

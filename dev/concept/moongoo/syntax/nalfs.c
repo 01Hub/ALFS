@@ -1,8 +1,6 @@
 #include <string.h>
 
-#include <alfs.h>
-#include <devel.h>
-#include <util.h>
+#include <libalfs.h>
 #include <plugin.h>
 
 // Needs to be big enough to hold parsed cats

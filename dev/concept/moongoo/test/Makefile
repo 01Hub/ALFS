@@ -4,7 +4,7 @@ CFLAGS=-I. -I../libalfs
 
 TESTS=tst_libtar tst_md5 tst_sha1 tst_squeeze
 
-.PHONY: all
+.PHONY: all run
 
 all: run
 
@@ -13,7 +13,7 @@ run: $(TESTS)
 		(echo "Running $$test..." && exec ./$$test) || exit $$?; \
 	done
 
-include ../inc.mak
+include ../libalfs/inc.mak
 
 tst_libtar: tst.o ../libalfs/libalfs.a
 tst_md5: tst.o ../libalfs/libalfs.a

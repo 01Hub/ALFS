@@ -1,6 +1,5 @@
 #include <string.h>
 
-#include <alfs.h>
 #include <repl.h>
 
 void t_repl (xmlNodePtr node, void *data)
@@ -84,3 +83,24 @@ replaceable *init_repl (char *fname)
 	r[count-1].repl = NULL;
 	return r;
 }	
+
+void add_option (replaceable *r, char *key, char *value)
+{
+	int count=0;
+	
+	if (!r)
+		return;
+
+	while (r[count].orig)
+		count++;
+	count++;
+
+	r = realloc(r, (++count)*sizeof(replaceable));
+
+	printf("%s\n", r[count-3].orig);
+	
+	r[count-2].orig = key;
+	r[count-2].repl = value;
+	r[count-1].orig = NULL;
+	r[count-1].repl = NULL;
+}
