@@ -82,7 +82,7 @@ void free_element(element_s *el)
 		child = tmp;
 	}
 
-	if (el->handler->free)
+	if (el->handler && el->handler->free)
 		el->handler->free(el);
 
 	xfree(el->name);
