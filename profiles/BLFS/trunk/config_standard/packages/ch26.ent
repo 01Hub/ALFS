@@ -8,7 +8,7 @@
 <!ENTITY gtkplus-package   "gtk+-&gtkplus-version;.tar.gz">
 <!ENTITY gtkplus-directory "gtk+-&gtkplus-version;">
 
-<!ENTITY gtkplus2-version   "2.6.0">
+<!ENTITY gtkplus2-version   "2.6.4">
 <!ENTITY gtkplus2-package   "gtk+-&gtkplus2-version;.tar.bz2">
 <!ENTITY gtkplus2-directory "gtk+-&gtkplus2-version;">
 
@@ -16,7 +16,7 @@
 <!ENTITY atk-package   "atk-&atk-version;tar.bz2">
 <!ENTITY atk-directory "atk-&atk-version;">
 
-<!ENTITY pango-version   "1.8.0">
+<!ENTITY pango-version   "1.8.1">
 <!ENTITY pango-package   "pango-&pango-version;.tar.bz2">
 <!ENTITY pango-directory "pango-&pango-version;">
 

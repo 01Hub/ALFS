@@ -39,7 +39,7 @@
 <!ENTITY screen-package   "screen-&screen-version;.tar.gz">
 <!ENTITY screen-directory "screen-&screen-version;">
 
-<!ENTITY tidy-version   "050120">
+<!ENTITY tidy-version   "050301">
 <!ENTITY tidy-package   "tidy_src_&tidy-version;.tgz">
 <!ENTITY tidy-directory "tidy_src_&tidy-version;">
 <!ENTITY tidy-docs      "tidy_docs.tgz">
