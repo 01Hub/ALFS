@@ -5,6 +5,7 @@
 <!ENTITY common-bugzilla        SYSTEM "common/bugzilla.xml">
 
 <!ENTITY hacker-hacker          SYSTEM "hacker/hacker.xml">
+<!ENTITY hacker-prereqs         SYSTEM "hacker/prereqs.xml">
 <!ENTITY hacker-coding-style    SYSTEM "hacker/coding_style.xml">
 <!ENTITY hacker-distro-tarballs SYSTEM "hacker/distro_tarballs.xml">
 

@@ -4,10 +4,12 @@
 
 <sect1>
 
-<para>PAGE TO BE WRITTEN</para>
+<para>This chapter contains all the information you need to write code for
+the &book-product;.</para>
 
 </sect1>
 
+&hacker-prereqs;
 &hacker-coding-style;
 &hacker-distro-tarballs;
 
