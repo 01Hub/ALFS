@@ -1,0 +1,15 @@
+<chapter id="hacker-hacker" xreflabel="Hackers">
+<?dbhtml filename="hacker/hacker.html" dir="part2"?>
+<title>Information for &book-product; Hackers</title>
+
+<sect1>
+
+<para>PAGE TO BE WRITTEN</para>
+
+</sect1>
+
+&hacker-coding-style;
+&hacker-distro-tarballs;
+
+</chapter>
+

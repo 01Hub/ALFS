@@ -1,4 +1,5 @@
-<sect1 id="ch1-cvs" xreflabel="CVS">
+<sect1 id="common-cvs" xreflabel="CVS">
+<?dbhtml filename="cvs.html" dir="common"?>
 <title>CVS</title>
 
 <sect2>

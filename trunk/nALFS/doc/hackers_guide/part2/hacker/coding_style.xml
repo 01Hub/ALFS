@@ -1,5 +1,5 @@
-<sect1 id="ch1-coding_style" xreflabel="Coding Style">
-<?dbhtml filename="coding-style.html" dir="chapter01"?>
+<sect1 id="hacker-coding-style" xreflabel="Coding Style">
+<?dbhtml filename="coding-style.html" dir="hacker"?>
 <title>Coding Style</title>
 
 <para>The development team would like to keep a clean and standardized coding

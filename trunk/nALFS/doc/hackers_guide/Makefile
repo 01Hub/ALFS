@@ -54,14 +54,19 @@ chunks-html: common
 	  $(OUTDIR)index.html
 
 	sed -i -e "s@../stylesheets@../../stylesheets@" \
-	  $(OUTDIR)introduction/welcome/*.html 
+	  $(OUTDIR)introduction/welcome/*.html \
+	  $(OUTDIR)part2/common/*.html \
+	  $(OUTDIR)part2/hacker/*.html
 
 	sed -i -e "s@images@../images@g" \
-	  $(OUTDIR)chapter01/*.html $(OUTDIR)introduction/*.html \
+	  $(OUTDIR)introduction/*.html \
+	  $(OUTDIR)part2/*.html \
 	  $(OUTDIR)preface/*.html
 
 	sed -i -e "s@images@../../images@g" \
-	  $(OUTDIR)introduction/welcome/*.html
+	  $(OUTDIR)introduction/welcome/*.html \
+	  $(OUTDIR)part2/common/*.html \
+	  $(OUTDIR)part2/hacker/*.html	  
 
 	echo indent-spaces: 2 > $(OUTDIR)tidy.conf
 	echo wrap: 78 >> $(OUTDIR)tidy.conf
