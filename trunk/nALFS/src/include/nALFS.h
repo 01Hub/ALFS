@@ -1,5 +1,5 @@
 /*
- *  lib.h - Functions in the nALFS library.
+ *  nALFS.h - Definition of interfaces to nALFS library.
  * 
  *  Copyright (C) 2003-2003
  *  
@@ -21,10 +21,18 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef H_LIB_
-#define H_LIB_
+#ifndef H_NALFS_
+#define H_NALFS_
 
-extern int verify_digest(const char *type, char *digest, const char *file);
+extern int verify_digest(const char *type, const char *digest, const char *file);
 extern int load_url(const char *output, const char *url);
 
-#endif /* H_LIB_ */
+#ifdef MODULE_NAME
+#define __HANDLER_SYMBOL(handler_mod, name) handler_mod ## _LTX_ ## handler_ ## name
+#define _HANDLER_SYMBOL(handler_mod, name) __HANDLER_SYMBOL(handler_mod,name)
+#define HANDLER_SYMBOL(name) _HANDLER_SYMBOL(MODULE_NAME,name)
+#else
+#define HANDLER_SYMBOL(name) MODULE_NAME_was_not_defined
+#endif
+
+#endif /* H_NALFS_ */
