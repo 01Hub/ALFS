@@ -1,4 +1,5 @@
 AC_INIT(nALFS,CVS,[],nALFS)
+AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([gnubuild])
 AM_INIT_AUTOMAKE([foreign dist-bzip2 subdir-objects])
 AM_MAINTAINER_MODE
@@ -12,14 +13,22 @@ AC_LIBTOOL_DLOPEN
 AM_PROG_LIBTOOL
 LIBTOOL="$LIBTOOL --silent"
 AC_LIB_LTDL
+AC_CONFIG_LIBCONFIG_IN_STATIC
+NALFS_VERSION="${PACKAGE_VERSION}"
+NALFS_LIBS="-lnALFS"
+AC_CONFIG_LIBCONFIG_IN([nALFS])
 AC_STDC_HEADERS
 AC_CONFIG_HEADER([config.h])
+AX_CFLAGS_GCC_OPTION([-Wno-unused-function])
+AX_CFLAGS_GCC_OPTION([-fno-strict-aliasing])
 AC_CHECK_LIB([form], [form_driver], [MAIN_LIBS="$MAIN_LIBS -lform"])
 AC_CHECK_LIB([ncurses], [initscr], [MAIN_LIBS="$MAIN_LIBS -lncurses"])
 AC_SUBST([MAIN_LIBS])
 AM_CONDITIONAL(STATIC_BUILD, test x$enable_static = xyes)
 if test x$enable_static = xyes; then
    AC_DEFINE([STATIC_BUILD], [1], [Define if the application is being built as a static executable.])
+else
+   AC_DEFINE_DIR([HANDLERS_DIRECTORY], [libdir/nALFS], [Define to location where the handler shared plugin files are installed.])
 fi
 
 AC_ARG_ENABLE([syntax],
@@ -235,4 +244,4 @@ if test "$USE_SSL" = "yes"; then
    fi
 fi
 
-AC_OUTPUT([Makefile])
+AC_OUTPUT([Makefile nALFS-config])
