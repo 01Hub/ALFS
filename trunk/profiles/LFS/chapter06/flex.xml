@@ -1,5 +1,5 @@
 <package name="flex" version="&flex-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&flex-md5;</digest>
 			<archive>&packages_dir;/&flex-package;</archive>
@@ -12,7 +12,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&flex-directory;</base>
 		</stageinfo>
@@ -66,7 +66,7 @@
 		</permissions>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&flex-directory;</remove>
 		<remove>&build_dir;/&flex-debian-fixes-patch;</remove>
 	</stage>

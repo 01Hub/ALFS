@@ -1,5 +1,5 @@
 <package name="shadow" version="&shadow-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&shadow-md5;</digest>
 			<archive>&packages_dir;/&shadow-package;</archive>
@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&shadow-directory;</base>
 		</stageinfo>
@@ -99,7 +99,7 @@
 		<remove>/bin/groups</remove>
 	</stage>
 
-	<stage name="Configuring a package.">
+	<stage name="Configuring.">
 		<execute command="pwconv" />
 		<execute command="grpconv" />
 	</stage>
@@ -110,7 +110,7 @@
 	</execute>
 
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&shadow-directory;</remove>
 	</stage>
 </package>

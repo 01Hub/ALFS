@@ -1,5 +1,5 @@
 <package name="expect" version="&expect-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&expect-md5;</digest>
 			<archive>&packages_dir;/&expect-package;</archive>
@@ -12,7 +12,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&expect-directory;</base>
 		</stageinfo>
@@ -43,7 +43,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&tcl-directory;</remove>
 		<remove>&build_dir;/&expect-directory;</remove>
 		<remove>&build_dir;/&expect-spawn-patch;</remove>

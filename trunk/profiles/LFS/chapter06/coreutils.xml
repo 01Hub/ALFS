@@ -1,5 +1,5 @@
 <package name="coreutils" version="&coreutils-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&coreutils-md5;</digest>
 			<archive>&packages_dir;/&coreutils-package;</archive>
@@ -13,7 +13,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&coreutils-directory;</base>
 		</stageinfo>
@@ -124,7 +124,7 @@
 		</link>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&coreutils-directory;</remove>
 		<remove>&build_dir;/&coreutils-uname-patch;</remove>
 		<remove>&build_dir;/&coreutils-dupes-patch;</remove>
