@@ -122,7 +122,7 @@ treated as markup and entities will not be expanded.</para></listitem>
 </itemizedlist>
 
 <para>Elements are declared in the DTD file using a simple,
-but strict syntax.  There are four ways to define an element&nbsp;:
+but strict syntax.  There are four ways to define an element&nbsp;:</para>
 
 <itemizedlist>
 
@@ -150,6 +150,7 @@ four.</para></listitem>
 
 <para>When an element is declared with children, it will also define how
 the children can be called: </para>
+
 </sect2>
 
 </sect1>
