@@ -256,9 +256,6 @@
 <!ENTITY ncurses-etip-patch-md5 "f23e4804d186bf184b9829770f6b63cc">
 <!ENTITY ncurses-etip-patch "ncurses-&ncurses-version;-etip-2.patch">
 
-<!ENTITY ncurses-vsscanf-patch-md5 "d0755e0b1d0d5e3e454c38f1316b08e1">
-<!ENTITY ncurses-vsscanf-patch "ncurses-&ncurses-version;-vsscanf.patch">
-
 <!ENTITY net-tools-md5 "888774accab40217dde927e21979c165">
 <!ENTITY net-tools-version "1.60">
 <!ENTITY net-tools-package "net-tools-&net-tools-version;.tar.bz2">

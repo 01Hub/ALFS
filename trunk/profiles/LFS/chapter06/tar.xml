@@ -15,7 +15,7 @@
 		<configure>
 			<param>--prefix=/usr</param>
 			<param>--bindir=/bin</param>
-			<param>--libexecdir=/usr/bin</param>
+			<param>--libexecdir=/usr/sbin</param>
 		</configure>
 
 		<make />

@@ -26,10 +26,12 @@
 		<configure />
 
 		<make>
+			<param>HAVE_KILL=yes</param>
 			<param>HAVE_SLN=yes</param>
 		</make>
 
 		<make>
+			<param>HAVE_KILL=yes</param>
 			<param>HAVE_SLN=yes</param>
 			<param>install</param>
 		</make>

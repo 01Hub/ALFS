@@ -25,6 +25,7 @@
 
 		<configure>
 			<param>--prefix=/usr</param>
+			<param>--exec-prefix=""</param>
 		</configure>
 
 		<make />
@@ -39,11 +40,6 @@
 			<param>install</param>
 		</make>
 
-		<move base="/usr/bin">
-			<source>ed</source>
-			<source>red</source>
-			<destination>/bin</destination>
-		</move>
 	</stage>
 
 	<stage name="Clean-up.">

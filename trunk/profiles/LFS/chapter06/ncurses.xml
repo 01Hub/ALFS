@@ -8,7 +8,6 @@
 
 		<copy>
 			<source>&packages_dir;/&ncurses-etip-patch;</source>
-			<source>&packages_dir;/&ncurses-vsscanf-patch;</source>
 			<destination>&build_dir;</destination>
 		</copy>
 	</stage>
@@ -22,12 +21,6 @@
 			<param>-N</param>
 			<param>-p1</param>
 			<param>-i ../&ncurses-etip-patch;</param>
-		</patch>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&ncurses-vsscanf-patch;</param>
 		</patch>
 
 		<configure>
@@ -71,6 +64,5 @@
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&ncurses-directory;</remove>
 		<remove>&build_dir;/&ncurses-etip-patch;</remove>
-		<remove>&build_dir;/&ncurses-vsscanf-patch;</remove>
 	</stage>
 </package>
