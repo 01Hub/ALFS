@@ -4,46 +4,35 @@
         Revision:          $LastChangedRevision$ 
 -->
 
-<sect1 id="common-cvs" xreflabel="CVS">
-<?dbhtml filename="cvs.html" dir="common"?>
-<title>CVS</title>
-
-<sect2>
-<title>Check Out</title>
-
-<para>Bleading edge development of &book-product; occurs on HEAD in the LFS
-CVS repository. You can do an anonymous HEAD checkout by issuing the
-following command&nbsp;:</para>
-
-<screen><command>cvs -z9 -d :pserver:anonymous@cvs.linuxfromscratch.org:/home/cvsroot checkout ALFS/nALFS</command></screen>
-
-<para>The current stable version of &book-product; is developed on the 1.2
-branch (branch-1_2) in the LFS CVS repository. You can do an anonymous
-checkout of this branch by issuing the following command&nbsp;:</para>
-
-<screen><command>cvs -z9 -d :pserver:anonymous@cvs.linuxfromscratch.org:/home/cvsroot checkout -r branch-1_2 ALFS/nALFS</command></screen>
-
-</sect2>
+<sect1 id="hacker-svn" xreflabel="&book-product; Code from SVN">
+<?dbhtml filename="svn.html" dir="hacker"?>
+<title>Code from SVN</title>
 
 <sect2>
 <title>Usage</title>
 
-<para>The CVS repository copy of &book-product; does not include an
-executable <filename>configure</filename> script nor a
-<filename>Makefile</filename>. This is by design, as there is a script to
-create them, which ensures that their contents will always be up to date
-with the source tree contents and not require manual editing.</para>
+<para>Before you can follow these instructions, you will need to have
+acquired a copy of the &book-product; source code from the SVN
+repository.  You can get that from <xref linkend="common-svn"/>.</para>
+
+<para>The repository copy of the &book-product; source code does not
+include an executable <filename>configure</filename> script nor a
+<filename>Makefile</filename>. This is by design, as there is a script
+to create them, which ensures that their contents will always be up to
+date with the source tree contents and not require manual
+editing.</para>
 
 <para>&book-product; has been configured to use the GNU
 <filename>autotools</filename> suite for its build process. The build
 system was created using <filename>autoconf-2.57</filename>,
-<filename>automake-1.7.7</filename> and <filename>libtool-1.5</filename>.
-If you use older versions than those, you may experience warnings and/or
-outright failures (<filename>automake-1.6</filename> is known to be unable
-to handle the &book-product; <filename>Makefile.am</filename>) file.</para>
+<filename>automake-1.7.7</filename> and
+<filename>libtool-1.5</filename>.  If you use older versions than those,
+you may experience warnings and/or outright failures
+(<filename>automake-1.6</filename> is known to be unable to handle the
+&book-product; <filename>Makefile.am</filename>) file.</para>
 
-<para>After you checkout the &book-product; source tree, you will need to
-execute:</para>
+<para>After you checkout the &book-product; source tree, you will need
+to execute&nbsp;:</para>
 
 <screen><command>sh ./bootstrap</command></screen>
 
@@ -71,14 +60,15 @@ parts of the <filename>autotools</filename> suite. The warning about
 &quot;update your 'aclocal.m4'&quot; can be ignored, as
 <filename>aclocal</filename> is already executed later by
 <filename>autoreconf</filename>. The <filename>patch</filename> offset
-and/or fuzz messages about <filename>ltmain.sh</filename> are caused by the
-<filename>bootstrap</filename> script applying a patch created against
-<filename>libtool-1.5</filename>; if your <filename>libtool</filename>
-version is different, the patch should still work correctly, but you may
-see messages like this from the <filename>patch</filename> command. In the
-worst case, the patch fails to apply, the &book-product; build will still
-be functional, but <filename>libtool</filename> will generate more output
-messages than necessary.</para>
+and/or fuzz messages about <filename>ltmain.sh</filename> are caused by
+the <filename>bootstrap</filename> script applying a patch created
+against <filename>libtool-1.5</filename>; if your
+<filename>libtool</filename> version is different, the patch should
+still work correctly, but you may see messages like this from the
+<filename>patch</filename> command. In the worst case, the patch fails
+to apply, the &book-product; build will still be functional, but
+<filename>libtool</filename> will generate more output messages than
+necessary.</para>
 
 <para>Once <filename>bootstrap</filename> has been run, you can execute
 <filename>./configure</filename> like any other GNU autoconf-based package
@@ -97,19 +87,20 @@ what must be rebuilt.</para>
 
 <para>In addition, if you are going to make changes to
 <filename>bootstrap</filename>, you should add the
-<filename>&quot;--enable-maintainer-mode&quot;</filename> parameter to your
-<filename>configure</filename> command. With this done, each time you edit
-and re-run <filename>bootstrap</filename>, the
+<filename>&quot;--enable-maintainer-mode&quot;</filename> parameter to
+your <filename>configure</filename> command. With this done, each time
+you edit and re-run <filename>bootstrap</filename>, the
 <filename>Makefile</filename> will automatically re-run
-<filename>configure</filename> to make your changes take effect. Be warned
-though, that if you manually edit <filename>Makefile.am</filename> or
-<filename>configure.ac</filename>, you must modify the
-<filename>bootstrap</filename> script to incorporate your changes, because
-these files are not stored in the CVS repository.</para>
+<filename>configure</filename> to make your changes take effect. Be
+warned though, that if you manually edit
+<filename>Makefile.am</filename> or <filename>configure.ac</filename>,
+you must modify the <filename>bootstrap</filename> script to incorporate
+your changes, because these files are not stored in the CVS
+repository.</para>
 
-<para>If you add any C source files to the tree, you will need to rerun the
-<filename>bootstrap</filename> script to get them included in your build.
-If you add header files, it is not necessary to rerun the
+<para>If you add any C source files to the tree, you will need to rerun
+the <filename>bootstrap</filename> script to get them included in your
+build.  If you add header files, it is not necessary to rerun the
 <filename>bootstrap</filename> script unless you plan on using &quot;make
 dist&quot; from that same tree, in which case those added headers would not
 get included into the tarball.</para>

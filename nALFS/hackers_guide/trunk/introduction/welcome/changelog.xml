@@ -12,6 +12,11 @@
 
 <itemizedlist>
 
+<listitem><para>October 14th, 2004 [jwrober]: Finsihed off the update to
+SVN from CVS.  Added a new page to the core code hackers area and moved
+the verbiage from the common SVN page to there.  This will set up for
+specific SVN stuff for profiles and docs.</para></listitem>
+
 <listitem><para>October 12th, 2004 [jwrober]: Updated multiple pages to
 replect the change to SVN.  Also updated the distro_tarballs page to
 provide clearer instructions.</para></listitem>
