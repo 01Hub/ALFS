@@ -7,14 +7,14 @@
                 <utilizes><name>swig</name></utilizes>
         </packageinfo>
 
-        <stage name="Unpacking>
+        <stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&lcms-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
-	<stage name="Installing>
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&lcms-directory;</base>
 		</stageinfo>

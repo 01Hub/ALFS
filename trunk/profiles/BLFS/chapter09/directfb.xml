@@ -16,7 +16,7 @@
 
 
 
-        <stage name="Unpacking>
+        <stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&directfb-package;</archive>
 			<destination>&build_dir;</destination>
@@ -28,7 +28,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing>
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&directfb-directory;</base>
 		</stageinfo>
@@ -44,7 +44,7 @@
 		</make>
 	</stage>
 
-	<stage name="Installing>
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&directfb-extra-directory;</base>
 		</stageinfo>

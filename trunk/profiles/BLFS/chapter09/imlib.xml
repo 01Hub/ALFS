@@ -5,14 +5,14 @@
                 <requires><name>gtk+</name></requires>
         </packageinfo>
 
-        <stage name="Unpacking>
+        <stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&imlib-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
-	<stage name="Installing>
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&imlib-directory;</base>
 		</stageinfo>
