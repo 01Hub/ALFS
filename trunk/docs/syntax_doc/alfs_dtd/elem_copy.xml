@@ -8,7 +8,7 @@
 <synopsis>
 &lt;!ELEMENT copy     (option*, source+, destination)&gt;
 &lt;!ATTLIST copy
-          base     CDATA #IMPLIED&gt;
+          base      CDATA #IMPLIED&gt;
 </synopsis>
 
 <para>This element is an element of&nbsp;:&nbsp;&nbsp;
