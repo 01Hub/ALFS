@@ -2765,9 +2765,6 @@ static int write_element_info(
 
 	/* Print attributes (if any). */
 	if (el->attr) {
-		int i;
-
-	
 		for (i = 0; el->attr[i]; i += 2) {
 			Xwprintw(windows.main->name, "%s = %s\n",
 				el->attr[i], el->attr[i+1]);
