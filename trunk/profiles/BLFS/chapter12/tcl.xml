@@ -11,7 +11,6 @@
 		<stageinfo>
 			<environment>
 			    <variable name="VERSION">&tcl-version;</variable>
-			    <variable name="V">8.4</variable>
 			</environment>
 			<base>&build_dir;/&tcl-directory;/unix</base>
 		</stageinfo>
@@ -31,13 +30,13 @@
 		<search_replace>
 		       <file>tclConfig.sh</file>
 		       <find>&build_dir;/&tcl-directory;</find>
-		       <replace>/usr/include/tcl8.4</replace>
+		       <replace>/usr/include/tcl&tcl-major-minor;</replace>
 		</search_replace>
 
 		<search_replace>
 		       <file>tclConfig.sh</file>
-		       <find>TCL_LIB_FILE='libtcl8.4${TCL_DBGX}.so'</find>
-		       <replace>TCL_LIB_FILE="libtcl8.4${TCL_DBGX}.so"</replace>
+		       <find>TCL_LIB_FILE='libtcl&tcl-major-minor;${TCL_DBGX}.so'</find>
+		       <replace>TCL_LIB_FILE="libtcl&tcl-major-minor;${TCL_DBGX}.so"</replace>
 		</search_replace>
 
 		<move base="&build_dir;/&tcl-directory;/doc">
@@ -55,31 +54,51 @@
 			<param>install</param>
 		</make>
 
-		<execute command="install -d /usr/include/tcl${V}/unix" />
-		<execute command="install -m644 *.h /usr/include/tcl${V}/unix/" />
-		<execute command="install -d /usr/include/tcl${V}/generic" />
-		<execute command="install -c -m644 ../generic/*.h /usr/include/tcl${V}/generic/" />
+		<mkdir>
+			<option>parents</option>
+			<name>/usr/include/tcl&tcl-major-minor;/unix</name>
+		</mkdir>
 
-		<remove>/usr/include/tcl${V}/generic/tcl.h</remove>
-		<remove>/usr/include/tcl${V}/generic/tclDecls.h</remove>
-		<remove>/usr/include/tcl${V}/generic/tclPlatDecls.h</remove>
+		<copy>
+			<source>*.h</source>
+			<destination>/usr/include/tcl&tcl-major-minor;/unix</destination>
+		</copy>
+
+		<mkdir>
+			<option>parents</option>
+			<name>/usr/include/tcl&tcl-major-minor;/generic</name>
+		</mkdir>
+
+		<copy>
+			<source>../generic/*.h</source>
+			<destination>/usr/include/tcl&tcl-major-minor;/generic</destination>
+		</copy>
+
+		<permissions mode="0644">
+			<name>/usr/include/tcl&tcl-major-minor;/unix/*.h</name>
+			<name>/usr/include/tcl&tcl-major-minor;/generic/*.h</name>
+		</permissions>
+
+		<remove>/usr/include/tcl&tcl-major-minor;/generic/tcl.h</remove>
+		<remove>/usr/include/tcl&tcl-major-minor;/generic/tclDecls.h</remove>
+		<remove>/usr/include/tcl&tcl-major-minor;/generic/tclPlatDecls.h</remove>
 		
 		<link>
 		        <option>force</option>
 			<option>no-dereference</option>
-			<target>/usr/include/tcl${V}</target>
-			<name>/usr/lib/tcl${V}/include</name>
+			<target>/usr/include/tcl&tcl-major-minor;</target>
+			<name>/usr/lib/tcl&tcl-major-minor;/include</name>
 		</link>
 
 		<link>
 		        <option>force</option>
-			<target>libtcl${V}.so</target>
+			<target>libtcl&tcl-major-minor;.so</target>
 			<name>/usr/lib/libtcl.so</name>
 		</link>
 
 		<link>
 		        <option>force</option>
-			<target>tclsh${V}</target>
+			<target>tclsh&tcl-major-minor;</target>
 			<name>/usr/bin/tclsh</name>
 		</link>
 	</stage>
