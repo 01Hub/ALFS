@@ -41,7 +41,10 @@
 #include "parser.h"
 #include "backend.h"
 
-static const char *remove_parameters_ver_3_2[] = { "base", "file",  NULL };
+static const struct handler_parameter remove_parameters_ver3_2[] = {
+	{ .name = "file" },
+	{ .name = NULL }
+};
 
 #if HANDLER_SYNTAX_2_0
 
@@ -188,7 +191,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Remove files",
 		.syntax_version = "2.0",
 		.main = remove_main_ver2,
-		.type = 0,
+		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
@@ -200,7 +203,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Remove files",
 		.syntax_version = "3.0",
 		.main = remove_main_ver3,
-		.type = 0,
+		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
@@ -212,7 +215,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Remove files",
 		.syntax_version = "3.1",
 		.main = remove_main_ver3,
-		.type = 0,
+		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
@@ -223,9 +226,9 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "remove",
 		.description = "Remove files",
 		.syntax_version = "3.2",
-		.parameters = remove_parameters_ver_3_2,
+		.parameters = remove_parameters_ver3_2,
 		.main = remove_main_ver3_2,
-		.type = 0,
+		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,

@@ -45,8 +45,14 @@
 
 #if HANDLER_SYNTAX_2_0
 
-static const char *link_parameters_ver2[] =
-{ "options", "base", "target", "name", NULL };
+static const struct handler_parameter link_parameters_ver2[] = {
+	{ .name = "base" },
+	{ .name = "options" },
+	{ .name = "target" },
+	{ .name = "name" },
+	{ .name = NULL }
+};
+
 // char *HANDLER_SYMBOL(attributes)[] = { "type", NULL };
 
 static int link_main_ver2(element_s * const el)
@@ -136,8 +142,13 @@ static int link_main_ver2(element_s * const el)
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
-static const char *link_parameters_ver3[] =
-{ "option", "target", "name", NULL };
+static const struct handler_parameter link_parameters_ver3[] = {
+	{ .name = "option" },
+	{ .name = "target" },
+	{ .name = "name" },
+	{ .name = NULL }
+};
+
 // char *HANDLER_SYMBOL(attributes)[] = { "type", "base", NULL };
 
 static int link_main_ver3(element_s * const el)

@@ -42,7 +42,11 @@
 
 #if HANDLER_SYNTAX_2_0
 
-static const char *make_parameters_ver2[] = { "base", "param", NULL };
+static const struct handler_parameter make_parameters_ver2[] = {
+	{ .name = "base" },
+	{ .name = "param" },
+	{ .name = NULL }
+};
 
 static int make_main_ver2(element_s * const el)
 {
@@ -77,7 +81,12 @@ static int make_main_ver2(element_s * const el)
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
-static const char *make_parameters_ver3[] = { "param", "prefix", NULL };
+static const struct handler_parameter make_parameters_ver3[] = {
+	{ .name = "prefix" },
+	{ .name = "param" },
+	{ .name = NULL }
+};
+
 // char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
 static int make_main_ver3(element_s * const el)

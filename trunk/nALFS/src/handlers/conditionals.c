@@ -79,7 +79,12 @@ static int do_shelltest(element_s *element, const char *test, int *result)
 #endif
 
 #if HANDLER_SYNTAX_3_1
-static const char *if_parameters_3_1[] = { "then", "else", NULL };
+
+static const struct handler_parameter if_parameters_3_1[] = {
+	{ .name = "then" },
+	{ .name = "else" },
+	{ .name = NULL }
+};
 
 static int if_main_3_1(element_s * const element)
 {
@@ -112,8 +117,28 @@ static int if_main_3_1(element_s * const element)
 #endif
 
 #if HANDLER_SYNTAX_3_2
-static const char *if_parameters_3_2[] = { "test", "package-version", "package-built", "and", "or", "not", "then", "else", NULL };
-static const char *boolean_parameters_3_2[] = { "test", "package-version", "package-built", "and", "or", "not", NULL };
+
+static const struct handler_parameter if_parameters_3_2[] = {
+	{ .name = "then" },
+	{ .name = "else" },
+	{ .name = "package-version" },
+	{ .name = "package-built" },
+	{ .name = "test" },
+	{ .name = "and" },
+	{ .name = "or" },
+	{ .name = "not" },
+	{ .name = NULL }
+};
+
+static const struct handler_parameter boolean_parameters_3_2[] = {
+	{ .name = "package-version" },
+	{ .name = "package-built" },
+	{ .name = "test" },
+	{ .name = "and" },
+	{ .name = "or" },
+	{ .name = "not" },
+	{ .name = NULL }
+};
 
 static int if_main_3_2(element_s * const element)
 {

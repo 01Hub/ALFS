@@ -50,8 +50,13 @@
 
 #if HANDLER_SYNTAX_3_1 
 
-static const char *download_parameters[] =
-{ "digest", "file", "url", "destination", NULL };
+static const struct handler_parameter download_parameters[] = {
+	{ .name = "digest" },
+	{ .name = "file" },
+	{ .name = "url" },
+	{ .name = "destination" },
+	{ .name = NULL }
+};
 
 static int download_main(element_s * const el)
 {
@@ -140,8 +145,12 @@ static int download_main(element_s * const el)
 
 #if HANDLER_SYNTAX_3_2
 
-static const char *download_parameters_3_2[] =
-{ "digest", "file", "url", NULL };
+static const struct handler_parameter download_parameters_3_2[] = {
+	{ .name = "digest" },
+	{ .name = "file" },
+	{ .name = "url" },
+	{ .name = NULL }
+};
 
 static int download_main_3_2(element_s * const el)
 {

@@ -108,7 +108,11 @@ static INLINE int do_setenv(
 }
 
 
-static const char *setenv_parameters[] = { "variable", "value", NULL };
+static const struct handler_parameter setenv_parameters[] = {
+	{ .name = "variable" },
+	{ .name = "value" },
+	{ .name = NULL }
+};
 
 static int setenv_main(element_s * const el)
 {

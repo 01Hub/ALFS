@@ -74,13 +74,42 @@ static handler_info_s embedded_handlers_info[] = {
 		.main = root_main,
 		.type = HTYPE_NORMAL,
 	},
+#if HANDLER_SYNTAX_2_0
 	{
-		.name = "__comment",
+		.name = "comment",
 		.description = "comment element",
-		.syntax_version = "all",
+		.syntax_version = "2.0",
 		.main = comment_main,
-		.type = HTYPE_NORMAL,
+		.type = HTYPE_COMMENT,
 	},
+#endif
+#if HANDLER_SYNTAX_3_0
+	{
+		.name = "comment",
+		.description = "comment element",
+		.syntax_version = "3.0",
+		.main = comment_main,
+		.type = HTYPE_COMMENT,
+	},
+#endif
+#if HANDLER_SYNTAX_3_1
+	{
+		.name = "comment",
+		.description = "comment element",
+		.syntax_version = "3.1",
+		.main = comment_main,
+		.type = HTYPE_COMMENT,
+	},
+#endif
+#if HANDLER_SYNTAX_3_2
+	{
+		.name = "comment",
+		.description = "comment element",
+		.syntax_version = "3.2",
+		.main = comment_main,
+		.type = HTYPE_COMMENT,
+	},
+#endif
 	{
 		.name = NULL
 	}
@@ -126,18 +155,19 @@ int parameter_exists(const char *name)
 
 
 
-static INLINE int add_new_parameters(const char **params)
+static INLINE int add_new_parameters(const struct handler_parameter *params)
 {
 	int i, total = 0;
-	const char *param;
+	const struct handler_parameter *param;
 
 
-	for (i = 0; (param = params[i]); ++i) {
+	for (i = 0; (params[i].name); ++i) {
+		param = &params[i];
 		int j, param_already_exists = 0;
 
 		/* Check if tok already exists in parameters. */
 		for (j = 0; parameters[j]; ++j) {
-			if (strcmp(param, parameters[j]) == 0) {
+			if (strcmp(param->name, parameters[j]) == 0) {
 				++param_already_exists;
 			}
 		}
@@ -148,7 +178,7 @@ static INLINE int add_new_parameters(const char **params)
 			parameters = xrealloc(
 				parameters,
 				(j+2) * sizeof *parameters);
-			parameters[j] = xstrdup(param);
+			parameters[j] = xstrdup(param->name);
 			parameters[j+1] = NULL;
 		}
 	}
@@ -542,17 +572,6 @@ char *append_prefix_elements(char **string, element_s *el)
 	}
 
 	return *string;
-}
-
-char *parse_string_parameter(const char * const value,
-			     const char * const message)
-{
-	if (strlen(value)) {
-		return xstrdup(value);
-	} else {
-		Nprint_err(message);
-		return NULL;
-	}
 }
 
 char *parse_string_content(const char * const value,

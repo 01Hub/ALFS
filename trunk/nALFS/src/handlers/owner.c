@@ -47,8 +47,14 @@
 
 #if HANDLER_SYNTAX_2_0
 
-static const char *owner_parameters[] =
-{ "options", "base", "user", "group", "name", NULL };
+static const struct handler_parameter owner_parameters[] = {
+	{ .name = "options" },
+	{ .name = "name" },
+	{ .name = "base" },
+	{ .name = "user" },
+	{ .name = "group" },
+	{ .name = NULL }
+};
 
 static int owner_main(element_s * const el)
 {

@@ -39,7 +39,12 @@
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
-static const char *ownership_parameters[] = { "option", "name", NULL };
+static const struct handler_parameter ownership_parameters[] = {
+	{ .name = "option" },
+	{ .name = "name" },
+	{ .name = NULL }
+};
+
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "user", "group", NULL };
 
 static int ownership_main(element_s *const el)

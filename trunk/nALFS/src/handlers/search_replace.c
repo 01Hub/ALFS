@@ -185,8 +185,13 @@ static int search_replace_main(element_s *el, const char *base_dir)
 
 #if HANDLER_SYNTAX_2_0
 
-static const char *search_replace_parameters_ver2[] =
-{ "base", "find", "replace", "file", NULL };
+static const struct handler_parameter search_replace_parameters_ver2[] = {
+	{ .name = "base" },
+	{ .name = "find" },
+	{ .name = "replace" },
+	{ .name = "file" },
+	{ .name = NULL }
+};
 
 static int search_replace_main_ver2(element_s * const el)
 {
@@ -205,8 +210,13 @@ static int search_replace_main_ver2(element_s * const el)
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
-static const char *search_replace_parameters_ver3[] =
-{ "find", "replace", "file", NULL };
+static const struct handler_parameter search_replace_parameters_ver3[] = {
+	{ .name = "find" },
+	{ .name = "replace" },
+	{ .name = "file" },
+	{ .name = NULL }
+};
+
 // char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
 static int search_replace_main_ver3(element_s * const el)

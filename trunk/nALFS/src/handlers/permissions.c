@@ -46,8 +46,13 @@
 
 #if HANDLER_SYNTAX_2_0
 
-static const char *permissions_parameters_ver2[] =
-{ "base", "options", "mode", "name", NULL };
+static const struct handler_parameter permissions_parameters_ver2[] = {
+	{ .name = "base" },
+	{ .name = "options" },
+	{ .name = "mode" },
+	{ .name = "name" },
+	{ .name = NULL }
+};
 
 static int permissions_main_ver2(element_s * const el)
 {
@@ -130,8 +135,12 @@ static int permissions_main_ver2(element_s * const el)
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
-static const char *permissions_parameters_ver3[] =
-{ "option", "name", NULL };
+static const struct handler_parameter permissions_parameters_ver3[] = {
+	{ .name = "option" },
+	{ .name = "name" },
+	{ .name = NULL }
+};
+
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "mode", NULL };
 
 static int permissions_main_ver3(element_s * const el)
