@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="bootscripts" version="&lfs-bootscripts-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&lfs-bootscripts-md5;</digest>
 			<archive>&packages_dir;/&lfs-bootscripts-package;</archive>
@@ -18,17 +18,19 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&lfs-bootscripts-directory;</base>
 		</stageinfo>
 
 		<make>
 			<param>install</param>
+			<param>install-hotplug</param>
+			<param>install-syslog-ng</param>
 		</make>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&lfs-bootscripts-directory;</remove>
 	</stage>
 </package>

@@ -9,7 +9,7 @@
 
 <alfs>
 
-<stage name="Creating tools directory.">
+<stage name="Creating the $LFS/tools Directory">
 	<mkdir>
 		<option>parents</option>
 		<name>&LFS;/tools</name>
@@ -60,7 +60,8 @@
 			<source>&autoconf-package;</source>
 			<source>&automake-package;</source>
 			<source>&bash-package;</source>
-			<source>&bash-display-wrap-patch;</source>
+			<source>&bash-fixes-patch;</source>
+			<source>&bash-wcontinued-patch;</source>
 			<source>&binutils-package;</source>
 			<source>&bison-package;</source>
 			<source>&bzip2-package;</source>
@@ -77,10 +78,10 @@
 			<source>&flex-package;</source>
 			<source>&flex-debian-fixes-patch;</source>
 			<source>&gawk-package;</source>
-<!--			<source>&gcc-package;</source> -->
-			<source>&gcc-core-package;</source>
-			<source>&gcc-gpp-package;</source>
-			<source>&gcc-testsuite-package;</source>
+			<source>&gcc-package;</source>
+<!--			<source>&gcc-core-package;</source> -->
+<!--			<source>&gcc-gpp-package;</source> -->
+<!--			<source>&gcc-testsuite-package;</source> -->
 			<source>&gcc-linkonce-patch;</source>
 			<source>&gcc-no-fixincludes-patch;</source>
 			<source>&gcc-specs-patch;</source>
@@ -90,15 +91,17 @@
 			<source>&groff-package;</source>
 			<source>&grub-package;</source>
 			<source>&gzip-package;</source>
+			<source>&hotplug-package;</source>
 			<source>&iana-etc-package;</source>
 			<source>&inetutils-package;</source>
 			<source>&inetutils-no-man-pages-patch;</source>
 			<source>&inetutils-kernel-headers-patch;</source>
-			<source>&iproute2-package;</source>
-			<source>&iproute2-remove-db-patch;</source>
+ 			<source>&iproute2-package;</source>
+ 			<source>&iproute2-remove-db-patch;</source>
 			<source>&kbd-package;</source>
 			<source>&less-package;</source>
 			<source>&lfs-bootscripts-package;</source>
+			<source>&libol-package;</source>
 			<source>&libtool-package;</source>
 			<source>&libxml2-package;</source>
 			<source>&linux-package;</source>
@@ -111,7 +114,7 @@
 			<source>&man-pages-package;</source>
 			<source>&mktemp-package;</source>
 			<source>&mktemp-tempfile-patch;</source>
-			<source>&module-tools-package;</source>
+			<source>&module-init-tools-package;</source>
 			<source>&ncurses-package;</source>
 			<source>&nALFS-package;</source>
 			<source>&patch-package;</source>
@@ -120,12 +123,10 @@
 			<source>&procps-package;</source>
 			<source>&psmisc-package;</source>
 			<source>&readline-package;</source>
-			<source>&readline-display-wrap-patch;</source>
+			<source>&readline-fixes-patch;</source>
 			<source>&sed-package;</source>
 			<source>&shadow-package;</source>
-			<source>&sysklogd-package;</source>
-			<source>&sysklogd-kernel-headers-patch;</source>
-			<source>&sysklogd-signal-patch;</source>
+			<source>&syslog-ng-package;</source>
 			<source>&sysvinit-package;</source>
 			<source>&sysvinit-proclen-patch;</source>
 			<source>&tar-package;</source>
@@ -136,11 +137,9 @@
 			<source>&udev-permissions-file;</source>
 			<source>&udev-rules-file;</source>
 			<source>&util-linux-package;</source>
-			<source>&util-linux-sfdisk-patch;</source>
 			<source>&vim-package;</source>
 			<source>&vim-lang-package;</source>
 			<source>&zlib-package;</source>
-			<source>&zlib-security-patch;</source>
 			<destination>&LFS;&packages_dir;</destination>
 		</copy>
 	</stage>

@@ -3,7 +3,7 @@
 
 <alfs>
 
-<stage name="Creating directory tree">
+<stage name="Creating Directories">
 	<mkdir base="/">
 		<option>parents</option>
 	

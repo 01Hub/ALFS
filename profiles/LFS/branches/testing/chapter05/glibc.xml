@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="glibc" version="&glibc-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&glibc-md5;</digest>
 			<archive>&packages_dir;/&glibc-package;</archive>
@@ -23,7 +23,7 @@
 		</mkdir>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<environment>
 				<variable name="CFLAGS" />
@@ -35,23 +35,19 @@
 		<configure command="../&glibc-directory;/configure">
 			<param>--prefix=/tools</param>
 			<param>--disable-profile</param>
-			<param>--enable-add-ons=nptl</param>
-			<param>--with-tls</param>
-			<param>--with-__thread</param>
+			<param>--enable-add-ons</param>
 			<param>--enable-kernel=2.6.0</param>
 			<param>--with-binutils=/tools/bin</param>
 			<param>--without-gd</param>
 			<param>--without-cvs</param>
-			<param>--with-headers=/tools/glibc-kernheaders</param>
+			<param>--with-headers=/tools/include</param>
 		</configure>
 
 		<make />
 
-<!--
 		<make>
 			<param>check</param>
 		</make>
--->
 
 		<mkdir>
 			<name>/tools/etc</name>
@@ -70,6 +66,12 @@
 			<name>/tools/lib/locale</name>
 		</mkdir>
 
+<!--
+		<make>
+			<param>localedata/install-locales</param>
+		</make>
+-->
+
 		<execute command="localedef -i de_DE -f ISO-8859-1 de_DE" />
 		<execute command="localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro" />
 		<execute command="localedef -i en_HK -f ISO-8859-1 en_HK" />
@@ -83,7 +85,7 @@
 		<execute command="localedef -i ja_JP -f EUC-JP ja_JP" />
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&glibc-directory;</remove>
 		<remove>&build_dir;/glibc-build</remove>
 	</stage>

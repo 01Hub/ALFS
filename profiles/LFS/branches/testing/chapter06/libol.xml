@@ -9,26 +9,23 @@
 
 <alfs>
 
-<package name="grub" version="&grub-version;">
+<package name="libol" version="&libol-version;">
 	<stage name="Unpacking">
 		<unpack>
-			<digest>&grub-md5;</digest>
-			<archive>&packages_dir;/&grub-package;</archive>
+			<digest>&libol-md5;</digest>
+			<archive>&packages_dir;/&libol-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing">
 		<stageinfo>
-			<environment>
-				<variable name="CFLAGS" />
-				<variable name="CXXFLAGS" />
-			</environment>
-			<base>&build_dir;/&grub-directory;</base>
+			<base>&build_dir;/&libol-directory;</base>
 		</stageinfo>
 
 		<configure>
 			<param>--prefix=/usr</param>
+			<param>--enable-shared</param>
 		</configure>
 
 		<make />
@@ -36,21 +33,10 @@
 		<make>
 			<param>install</param>
 		</make>
-
-		<mkdir>
-			<name>/boot/grub</name>
-		</mkdir>
-
-		<copy base="/usr/share/grub/i386-pc">
-			<source>stage1</source>
-			<source>stage2</source>
-			<source>e2fs_stage1_5</source>
-			<destination>/boot/grub</destination>
-		</copy>
 	</stage>
 
 	<stage name="Cleanup">
-		<remove>&build_dir;/&grub-directory;</remove>
+		<remove>&build_dir;/&libol-directory;</remove>
 	</stage>
 </package>
 

@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="iproute2" version="&iproute2-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&iproute2-md5;</digest>
 			<archive>&packages_dir;/&iproute2-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&iproute2-directory;</base>
 		</stageinfo>
@@ -36,12 +36,12 @@
 		</make>
 
 		<make>
-			<param>SBINDIR=/sbin</param>
 			<param>install</param>
+			<param>SBINDIR=/sbin</param>
 		</make>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&iproute2-directory;</remove>
 	</stage>
 </package>
