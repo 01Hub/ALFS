@@ -63,6 +63,7 @@
 <!ENTITY c6-groff SYSTEM              "chapter06/groff.xml">
 <!ENTITY c6-grub SYSTEM               "chapter06/grub.xml">
 <!ENTITY c6-gzip SYSTEM               "chapter06/gzip.xml">
+<!ENTITY c6-hotplug SYSTEM            "chapter06/hotplug.xml">
 <!ENTITY c6-iana-etc SYSTEM           "chapter06/iana-etc.xml">
 <!ENTITY c6-inetutils SYSTEM          "chapter06/inetutils.xml">
 <!ENTITY c6-kbd SYSTEM                "chapter06/kbd.xml">

@@ -149,6 +149,7 @@
 		&c6-grep;
 		&c6-grub;
 		&c6-gzip;
+		&c6-hotplug;
 		&c6-man;
 		&c6-make;
 		&c6-module-tools;
