@@ -33,6 +33,7 @@
 #include <time.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <libgen.h>
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -294,6 +295,8 @@ int execute_shell_command(element_s *element, const char *format, ...)
 	int status = 0;
 	char command[MAX_COMMAND_LEN];
 	char *args[4];
+	char *shell;
+	char *temp;
 
 
 	va_start(ap, format);
@@ -301,11 +304,17 @@ int execute_shell_command(element_s *element, const char *format, ...)
 	va_end(ap);
 
 	if (status > -1 && status < (int) sizeof command) {
-		args[0] = "sh";
+		shell = alloc_stage_shell(element);
+		/* make a copy of shell because basename may modify it */
+		temp = xstrdup(shell);
+		args[0] = xstrdup(basename(temp));
 		args[1] = "-c";
 		args[2] = command;
 		args[3] = NULL;
-		status = execute_direct_command("sh", args);
+		status = execute_direct_command(shell, args);
+		xfree(args[0]);
+		xfree(temp);
+		xfree(shell);
 	} else {
 		Nprint_err("System command is too long.");
 		return -1;

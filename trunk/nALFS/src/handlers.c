@@ -402,6 +402,28 @@ char *alloc_base_dir_force(element_s *el)
 	return dir;
 }
 
+char *alloc_stage_shell(element_s *el)
+{
+	element_s *s;
+	char *shell = "sh";
+
+	for (s = el->parent; s; s = s->parent) {
+		if (Is_element_name(s, "stage")) {
+			element_s *sinfo;
+
+			if ((sinfo = first_param("stageinfo", s)) == NULL) {
+				continue;
+			}
+
+			if ((shell = alloc_trimmed_param_value("shell", sinfo))) {
+				return shell;
+			}
+		}
+	}
+
+	return shell;
+}
+
 /* Used by the old syntax (2.0). */
 int option_exists(const char *option, element_s *element)
 {
