@@ -4581,11 +4581,11 @@ static void nprint_curses(msg_id_e mid, const char *format,...)
 	xfree(file);
 }
 
-/* TODO: Check for T_ERR and print those messages to stderr. */
 static void nprint_text(msg_id_e mid, const char *format,...)
 {
 	char *file = alloc_real_status_logfile_name();
 	FILE *fp = NULL;
+	FILE *console = stdout;
 	va_list ap;
         va_list ap2;
 
@@ -4599,16 +4599,19 @@ static void nprint_text(msg_id_e mid, const char *format,...)
 	va_start(ap, format);
         __va_copy(ap2, ap);
 
+	if (mid == T_ERR)
+		console = stderr;
+
 	if (mid != T_RAW) {
-		printf("\n%c: ", msg_character(mid));
+		fprintf(console, "\n%c: ", msg_character(mid));
 
 		if (*opt_log_status_window && fp) {
 			fprintf(fp, "\n%c: ", msg_character(mid));
 		}
 	}
 
-	vprintf(format, ap);
-	fflush(stdout);
+	vfprintf(console, format, ap);
+	fflush(console);
 
 	if (*opt_log_status_window && fp) {
 		vfprintf(fp, format, ap2);
@@ -4645,7 +4648,7 @@ int main(int argc, char **argv)
 	read_env_variables();
 
 	if (read_rc_file() != 0) {
-		fprintf(stderr, "Reading RC file failed.\n");
+		Nprint_err("Reading RC file failed.\n");
 		return EXIT_FAILURE;
 	}
 

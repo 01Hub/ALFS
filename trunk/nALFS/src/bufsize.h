@@ -27,6 +27,7 @@
 /*
  * Maximum lengths of some strings.
  */
+#define MAX_ERROR_MSG_LEN		1024
 #define MAX_DATA_MSG_LEN		1024
 #define MAX_CTRL_MSG_LEN		1024
 #define MAX_COMMAND_LEN			1024
