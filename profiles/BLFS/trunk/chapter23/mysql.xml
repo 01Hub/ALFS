@@ -34,6 +34,9 @@
       <utilizes>
 	<name>tex</name>
       </utilizes>
+      <utilizes>
+	<name>libedit</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -106,7 +109,8 @@
       </textdump>
       <execute command="mysql -uroot mysql &lt; /tmp/mysql.script" />
       <remove>/tmp/mysql.script</remove>
-      <execute command="kill `pidof -x mysqld_safe mysqld`" />-->
+      <execute command="kill `pidof -x mysqld_safe mysqld`" />
+-->
     </stage>
     <stage name="Installing bootscript and configuration">
       <stageinfo>

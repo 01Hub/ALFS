@@ -17,34 +17,61 @@
         <name>apache</name>
       </requires>
       <utilizes>
-        <name>mysql</name>
+        <name>libxml2</name>
+      </utilizes>
+      <utilizes>
+        <name>libxslt</name>
       </utilizes>
       <utilizes>
         <name>openssl</name>
       </utilizes>
       <utilizes>
-        <name>bc</name>
-      </utilizes>
-      <utilizes>
-        <name>curl</name>
-      </utilizes>
-      <utilizes>
-        <name>db</name>
+        <name>clibpdf</name>
       </utilizes>
       <utilizes>
         <name>libjpeg</name>
       </utilizes>
       <utilizes>
-        <name>libpng</name>
+        <name>libtiff</name>
       </utilizes>
       <utilizes>
-        <name>freetype</name>
+        <name>curl</name>
+      </utilizes>
+      <utilizes>
+        <name>qdbm</name>
+      </utilizes>
+      <utilizes>
+        <name>cdb</name>
       </utilizes>
       <utilizes>
         <name>gdbm</name>
       </utilizes>
       <utilizes>
-        <name>sendmail</name>
+        <name>db</name>
+      </utilizes>
+      <utilizes>
+        <name>libfam</name>
+      </utilizes>
+      <utilizes>
+        <name>gd</name>
+      </utilizes>
+      <utilizes>
+        <name>libpng</name>
+      </utilizes>
+      <utilizes>
+        <name>&ximpl;</name>
+      </utilizes>
+      <utilizes>
+        <name>freetype</name>
+      </utilizes>
+      <utilizes>
+        <name>t1lib</name>
+      </utilizes>
+      <utilizes>
+        <name>gmp</name>
+      </utilizes>
+      <utilizes>
+        <name>mysql</name>
       </utilizes>
       <utilizes>
         <name>pcre</name>
@@ -53,19 +80,79 @@
         <name>postgesql</name>
       </utilizes>
       <utilizes>
-        <name>readline</name>
+        <name>aspell</name>
       </utilizes>
       <utilizes>
-        <name>libtiff</name>
+        <name>pkgconfig</name>
       </utilizes>
       <utilizes>
-        <name>readline</name>
+        <name>tidy</name>
+      </utilizes>
+      <utilizes>
+        <name>openldap</name>
+      </utilizes>
+      <utilizes>
+        <name>cyrus</name>
+      </utilizes>
+      <utilizes>
+        <name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+        <name>libmcrypt</name>
+      </utilizes>
+      <utilizes>
+        <name>mhash</name>
+      </utilizes>
+      <utilizes>
+        <name>net-snmp</name>
+      </utilizes>
+      <utilizes>
+        <name>sqlite</name>
+      </utilizes>
+      <utilizes>
+        <name>dmalloc</name>
+      </utilizes>
+      <utilizes>
+        <name>mnogosearch</name>
+      </utilizes>
+      <utilizes>
+        <name>minisql</name>
+      </utilizes>
+      <utilizes>
+        <name>empress</name>
+      </utilizes>
+      <utilizes>
+        <name>birdstep</name>
+      </utilizes>
+      <utilizes>
+        <name>dbmaker</name>
+      </utilizes>
+      <utilizes>
+        <name>adabas</name>
+      </utilizes>
+      <utilizes>
+        <name>frontbase</name>
+      </utilizes>
+      <utilizes>
+        <name>caudium</name>
+      </utilizes>
+      <utilizes>
+        <name>wddx</name>
+      </utilizes>
+      <utilizes>
+        <name>fdftoolkit</name>
+      </utilizes>
+      <utilizes>
+        <name>hyperwave</name>
+      </utilizes>
+      <utilizes>
+        <name>monetra</name>
       </utilizes>
       <utilizes>
         <name>expat</name>
       </utilizes>
       <utilizes>
-        <name>gmp</name>
+        <name>&mta-impl;</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -78,13 +165,22 @@
       <stageinfo>
         <base>&build_dir;/&php-directory;</base>
       </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&php-db43-patch;</param>
+      </patch>
       <configure>
         <param>--prefix=/usr</param>
         <param>--sysconfdir=/etc</param>
         <param>--with-apxs2</param>
         <param>--with-config-file-path=/etc</param>
         <param>--with-zlib</param>
+        <param>--enable-bcmath</param>
         <param>--with-bz2</param>
+        <param>--enable-calendar</param>
+        <param>--enable-dba</param>
+        <param>--enable-exif</param>
         <param>--enable-ftp</param>
         <param>--with-gettext</param>
         <param>--with-iconv</param>
