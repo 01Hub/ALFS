@@ -78,14 +78,14 @@ struct option_s {
 			int (*validate)(const struct option_s *option,
 					const STRING value);
 			void (*post_validate)(const struct option_s *option);
-		} str;
+		} u_str;
 		struct {
 			BOOL value;
 			BOOL const def_value;
 			int (*validate)(const struct option_s *option,
 					const BOOL value);
 			void (*post_validate)(const struct option_s *option);
-		} bool;
+		} u_bool;
 		struct {
 			NUMBER value;
 			NUMBER const def_value;
@@ -94,7 +94,7 @@ struct option_s {
 			int (*validate)(const struct option_s *option,
 					const NUMBER value);
 			void (*post_validate)(const struct option_s *option);
-		} num;
+		} u_num;
 	} val;
 };
 
