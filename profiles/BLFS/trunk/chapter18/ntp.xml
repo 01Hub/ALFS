@@ -40,27 +40,10 @@
       <make>
         <param>install</param>
       </make>
-      <textdump base="/etc">
-        <file>ntp.conf</file>
-        <content>
-	  =# Africa
-	  =server tock.nml.csir.co.za
-	  =
-	  =# Asia
-	  =server ntp.shim.org
-	  =
-	  =# Australia
-	  =server ntp.saard.net
-	  =
-	  =# Europe
-	  =server ntp.tuxfamily.net
-	  =
-	  =# North America
-	  =server clock.psu.edu
-	  =
-	  =driftfile /var/cache/ntp.drift
-	</content>
-      </textdump>
+      <copy>
+        <source>&blfs-config;/etc/ntp.conf</source>
+        <destination>/etc/ntp.conf</destination>
+      </copy>
     </stage>
     <stage name="Installing bootscript and configuration">
       <stageinfo>

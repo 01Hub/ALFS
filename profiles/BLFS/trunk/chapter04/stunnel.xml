@@ -85,18 +85,10 @@
     <make>
       <param>install-stunnel</param>
     </make>
-    <textdump base="/etc/stunnel">
-      <file>stunnel.conf</file>
-      <content>
-	  =# File: /etc/stunnel/stunnel.conf 
-	  =
-	  =pid = /run/stunnel.pid
-	  =chroot = /var/lib/stunnel 
-	  =client = no
-	  =setuid = stunnel 
-	  =setgid = stunnel
-      </content>
-    </textdump>
+    <copy>
+      <source>&blfs-config;/etc/stunnel/stunnel.conf</source>
+      <destination>/etc/stunnel/stunnel.conf</destination>
+    </copy>
   </stage>
   &bootscripts-clean; 
   <stage name="Cleanup.">

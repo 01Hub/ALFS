@@ -46,20 +46,10 @@
         <source>nanorc.sample</source>
         <destination>/usr/share/doc/nano/examples</destination>
       </copy>
-      <textdump base="/etc">
-        <file>nanorc</file>
-        <content>
-	  =set autoindent
-	  =set const
-	  =set fill 72
-	  =set historylog
-	  =set multibuffer
-	  =set nohelp
-	  =set regexp
-	  =set smooth
-	  =set suspend
-	</content>
-      </textdump>
+    <copy>
+      <source>&blfs-config;/etc/nanorc</source>
+      <destination>/etc/nanorc</destination>
+    </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&nano-directory;</remove>

@@ -1,0 +1,9 @@
+set autoindent
+set const
+set fill 72
+set historylog
+set multibuffer
+set nohelp
+set regexp
+set smooth
+set suspend

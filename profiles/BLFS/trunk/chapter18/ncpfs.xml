@@ -55,14 +55,10 @@
       <make>
         <param>install-service-ipx</param>
       </make>
-      <textdump>
-        <file>/etc/sysconfig/network-devices/ifconfig.eth0/ipx</file>
-        <content>
-	  =ONBOOT="yes"
-	  =SERVICE="ipx"
-	  =FRAME="802.2"
-	</content>
-      </textdump>
+    <copy>
+      <source>&blfs-config;/etc/sysconfig/network-devices/ifconfig.eth0/ipx</source>
+      <destination>/etc/sysconfig/network-devices/ifconfig.eth0/ipx</destination>
+    </copy>
     </stage>
     &bootscripts-clean;
     <stage name="Cleanup">

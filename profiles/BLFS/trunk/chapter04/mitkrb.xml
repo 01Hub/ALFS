@@ -103,32 +103,10 @@
     <make>
       <param>install-kerberos</param>
     </make>
-    <textdump base="/etc">
-      <file>krb5.conf</file>
-      <content>
-	=# Begin /etc/krb5.conf
-	=  
-	=[libdefaults]
-	=    default_realm = &krb-all-caps-domain;
-	=    encrypt = true
-	=
-	=[realms]
-	=    &krb-all-caps-domain; = {
-	=        kdc = &krb-hostname;
-	=        admin_server = &krb-hostname;
-	=    }
-	=
-	=[domain_realm]
-	=    .&krb-domain; = &krb-all-caps-domain;
-	=
-	=[logging]
-	=    kdc = SYSLOG[:INFO[:AUTH]]
-	=    admin_server = SYSLOG[INFO[:AUTH]]
-	=    default = SYSLOG[[:SYS]]
-	=
-	=# End /etc/krb5.conf
-      </content>
-    </textdump>
+    <copy>
+      <source>&blfs-config;/etc/krb5.conf</source>
+      <destination>/etc/krb5.conf</destination>
+    </copy>
   </stage>
   &bootscripts-clean;
   <stage name="Cleanup.">
