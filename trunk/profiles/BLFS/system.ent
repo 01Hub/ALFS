@@ -84,15 +84,16 @@
 <!ENTITY mc         SYSTEM "./chapter11/mc.xml">
 
 <!-- chapter 12 -->
-<!ENTITY python     SYSTEM "./chapter12/python.xml">
-<!ENTITY librep     SYSTEM "./chapter12/librep.xml">
-<!ENTITY j2sdk      SYSTEM "./chapter12/j2sdk.xml">
-<!ENTITY ruby       SYSTEM "./chapter12/ruby.xml">
-<!ENTITY gcc-full   SYSTEM "./chapter12/gcc-full.xml">
-<!ENTITY tcl        SYSTEM "./chapter12/tcl.xml">
-<!ENTITY tk         SYSTEM "./chapter12/tk.xml">
-<!ENTITY gcc295     SYSTEM "./chapter12/gcc295.xml">
-<!ENTITY nasm       SYSTEM "./chapter12/nasm.xml">
+<!ENTITY python      SYSTEM "./chapter12/python.xml">
+<!ENTITY perlmodules SYSTEM "./chapter12/perlmodules.xml">
+<!ENTITY librep      SYSTEM "./chapter12/librep.xml">
+<!ENTITY j2sdk       SYSTEM "./chapter12/j2sdk.xml">
+<!ENTITY ruby        SYSTEM "./chapter12/ruby.xml">
+<!ENTITY gcc-full    SYSTEM "./chapter12/gcc-full.xml">
+<!ENTITY tcl         SYSTEM "./chapter12/tcl.xml">
+<!ENTITY tk          SYSTEM "./chapter12/tk.xml">
+<!ENTITY gcc295      SYSTEM "./chapter12/gcc295.xml">
+<!ENTITY nasm        SYSTEM "./chapter12/nasm.xml">
 
 <!-- chapter 14 -->
 <!ENTITY dhcpcd     SYSTEM "./chapter14/dhcpcd.xml">
