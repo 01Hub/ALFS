@@ -10,7 +10,6 @@
 <!ENTITY cracklib-wordlist "allwords">
 <!ENTITY cracklib-blfs-patch "cracklib-&cracklib-version;-blfs-1.patch">
 
-
 <!ENTITY linuxpam-version   "0.77">
 <!ENTITY linuxpam-package   "Linux-PAM-&linuxpam-version;.tar.bz2">
 <!ENTITY linuxpam-directory "Linux-PAM-&linuxpam-version;">
@@ -37,13 +36,12 @@
 
 <!ENTITY tripwire-gcc-patch "tripwire-&tripwire-version;-gcc3-build-fixes.patch">
 <!-- the content of the following entity should be the name of your policy file for tripwire -->
-<!--<!ENTITY tripwire-policy-file "tripwire-policy.txt">-->
-<!ENTITY tripwire-policy-file "twpol-all.txt">
+<!ENTITY tripwire-policy-file "tripwire-policy.txt">
+<!-- these should be changed to usable values -->
 <!ENTITY tripwire-mail-domain "mail.domain.com">
 <!ENTITY tripwire-smtp-port "25">
 <!ENTITY tripwire-sitepassphrase "blahville">
 <!ENTITY tripwire-localpassphrase "blahville2">
-
 
 <!--************* packages for chapter 5 *************-->
 
@@ -109,10 +107,10 @@
 <!ENTITY slang-directory "slang-&slang-version;">
 
 <!ENTITY libfam-version   "2.7.0">
-<!ENTITY libfam-package   "fam-&fam-version;.tar.gz">
-<!ENTITY libfam-directory "fam-&fam-version;">
+<!ENTITY libfam-package   "fam-&libfam-version;.tar.gz">
+<!ENTITY libfam-directory "fam-&libfam-version;">
 
-<!ENTITY libfam-patch     "fam-&fam-version;-dnotify.patch">
+<!ENTITY libfam-patch     "fam-&libfam-version;-dnotify.patch">
 
 <!ENTITY libxml-version   "1.8.17">
 <!ENTITY libxml-package   "libxml-&libxml-version;.tar.gz">

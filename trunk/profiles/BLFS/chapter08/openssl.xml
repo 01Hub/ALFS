@@ -5,24 +5,12 @@
 			<archive>&packages_dir;/&openssl-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-	<copy>
-		<source>&packages_dir;/&openssl-patch;</source>
-		<destination>&build_dir;</destination>
-	</copy>
-
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
 			<base>&build_dir;/&openssl-directory;</base>
 		</stageinfo>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&openssl-patch;</param>
-		</patch>
 
 		<search_replace base="&build_dir;/&openssl-directory;/doc/apps">
 		       <file>passwd.pod</file>
@@ -34,6 +22,17 @@
 		        <source>doc/apps/passwd.pod</source>
 			<destination>doc/apps/openssl-passwd.pod</destination>
 		</move>
+
+		<move>
+			<source>doc/crypto/threads.pod</source>
+			<destination>doc/crypto/openssl_threads.pod</destination>
+		</move>
+
+		<search_replace>
+			<file>Configure</file>
+			<find>-m486</find>
+			<replace>-march=i486</replace>
+		</search_replace>
 
 		<configure command="./config">
 			<param>--openssldir=/etc/ssl</param>
@@ -57,18 +56,11 @@
 		</copy>
 
 		<remove>/etc/ssl/lib</remove>
-
-		<permissions mode="755">
-		        <name>/usr/lib/pkgconfig</name>
-		</permissions>
-
-
 	</stage>
 
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&openssl-directory;</remove>
-		<remove>&build_dir;/&openssl-patch;</remove>
 	</stage>
 
 </package>
