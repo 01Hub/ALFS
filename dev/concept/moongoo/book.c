@@ -35,6 +35,7 @@ void t_sect1 (xmlNodePtr node, void *data)
 	j = prof->ch[i].n-1;
 	
 	tmp = strdog(lower_case(title), "version");
+	// TODO: Name and version are not correctly separated
 	prof->ch[i].pkg[j].vers = entity_val(tmp);
 	prof->ch[i].pkg[j].name = strcut(title, 0, strlen(title)-
 		((prof->ch[i].pkg[j].vers) ? 1 : 0));

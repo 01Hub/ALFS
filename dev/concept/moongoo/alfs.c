@@ -312,3 +312,20 @@ bool filtered (role role)
 	}
 	return false;
 }
+
+package *search_pkg (profile *prof, char *name, char *ch)
+{
+	int i, j;
+
+	for (i=0;i<prof->n;i++)
+	{
+		if (strcmp(ch, prof->ch[i].ref))
+			continue;
+		
+		for (j=0;j<prof->ch[i].n;j++)
+			if (!strcmp(name, prof->ch[i].pkg[j].name))
+				return &prof->ch[i].pkg[j];
+	}
+
+	return NULL;
+}
