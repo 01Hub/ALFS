@@ -38,7 +38,7 @@
 		<execute command="/etc/rc.d/init.d/sysklogd reload" />
 
 		<execute command="id -u fcron &amp;> /dev/null || groupadd fcron" />
-		<execute command="id -u fcron &amp;> /dev/null || useradd -c fcron -d /dev/null -g fcron fcron" />
+		<execute command="id -u fcron &amp;> /dev/null || useradd -d /dev/null -g fcron -s /bin/false fcron" />
 
 		<configure>
 			<param>--without-sendmail</param>
@@ -52,92 +52,22 @@
 		</make>
 
 		<execute command="ldconfig -n -l /usr/lib/libfcron.so.1.19.0" />
-		
-		<textdump>
-		    <file>/etc/rc.d/init.d/fcron</file>
-		    <content>
-		    =#!/bin/sh
-		    =# Begin $rc_base/init.d/fcron
-		    =
-		    =# Based on sysklogd script from LFS-3.1 and earlier.
-		    =# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
-		    =
-		    =source /etc/sysconfig/rc
-		    =source $rc_functions
-		    =
-		    =case "$1" in
-		    =        start)
-		    =                echo "Starting fcron..."
-		    =                loadproc fcron
-		    =                ;;
-		    =
-		    =        stop)
-		    =                echo "Stopping fcron..."
-		    =                killproc fcron
-		    =                ;;
-		    =
-		    =        restart)
-		    =                $0 stop
-		    =                sleep 1
-		    =                $0 start
-		    =                ;;
-		    =
-		    =        status)
-		    =                statusproc fcron
-		    =                ;;
-		    =
-		    =        *)
-		    =                echo "Usage: $0 {start|stop|restart|status}"
-		    =                exit 1
-		    =                ;;
-		    =esac
-		    =
-		    =# End $rc_base/init.d/fcron
-		    </content>
-		</textdump>
-		<permissions mode="755">
-		    <name>/etc/rc.d/init.d/fcron</name>
-		</permissions>
-
-		<link base="/etc/rc.d/init.d">
-		    <option>force</option>
-		    <target>../init.d/fcron</target>
-		    <name>../rc0.d/K08fcron</name>
-		</link>
-
-		<link base="/etc/rc.d/init.d">
-		    <option>force</option>
-		    <target>../init.d/fcron</target>
-		    <name>../rc2.d/S40fcron</name>
-		</link>
-
-		<link base="/etc/rc.d/init.d">
-		    <option>force</option>
-		    <target>../init.d/fcron</target>
-		    <name>../rc3.d/S40fcron</name>
-		</link>
-
-		<link base="/etc/rc.d/init.d">
-		    <option>force</option>
-		    <target>../init.d/fcron</target>
-		    <name>../rc4.d/S40fcron</name>
-		</link>
-
-		<link base="/etc/rc.d/init.d">
-		    <option>force</option>
-		    <target>../init.d/fcron</target>
-		    <name>../rc5.d/S40fcron</name>
-		</link>
-
-		<link base="/etc/rc.d/init.d">
-		    <option>force</option>
-		    <target>../init.d/fcron</target>
-		    <name>../rc6.d/K08fcron</name>
-		</link>
 	</stage>
+
+	<stage name="Install fcron bootscripts">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-fcron</param>
+		</make>
+	</stage>
+
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&fcron-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
 	</stage>
 
 </package>
