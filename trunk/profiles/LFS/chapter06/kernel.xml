@@ -29,7 +29,15 @@
 			<param>symlinks</param>
 		</make>
 		
-		<execute command="cp -HR include/asm /usr/include"/>
+		<mkdir>
+			<option>parents</option>
+			<name>/usr/include/asm</name>
+		</mkdir>
+
+		<copy>
+			<source>include/asm/*</source>
+			<destination>/usr/include/asm</destination>
+		</copy>
 
 		<copy>
 			<option>recursive</option>

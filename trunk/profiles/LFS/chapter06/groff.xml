@@ -24,16 +24,19 @@
 		</make>
 
 		<link>
+			<option>force</option>
 			<target>soelim</target>
 			<name>/usr/bin/zsoelim</name>
 		</link>
 
 		<link>
+			<option>force</option>
 			<target>eqn</target>
 			<name>/usr/bin/geqn</name>
 		</link>
 
 		<link>
+			<option>force</option>
 			<target>tbl</target>
 			<name>/usr/bin/gtbl</name>
 		</link>

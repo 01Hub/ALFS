@@ -23,7 +23,7 @@
 			<param>-i ../&kbd-more-programs-patch;</param>
 		</patch>
 
-		<configure/>
+		<configure />
 
 		<make />
 

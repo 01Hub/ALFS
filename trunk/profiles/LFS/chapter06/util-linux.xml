@@ -23,7 +23,7 @@
 			<name>/var/lib/hwclock</name>
 		</mkdir>
 
-		<configure/>
+		<configure />
 
 		<make>
 			<param>HAVE_SLN=yes</param>

@@ -28,7 +28,8 @@
 			<param>install</param>
 		</make>
 
-		<link type="symbolic">
+		<link>
+			<option>force</option>
 			<target>libfl.a</target>
 			<name>/usr/lib/libl.a</name>
 		</link>

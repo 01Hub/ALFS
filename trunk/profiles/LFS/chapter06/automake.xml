@@ -28,7 +28,8 @@
 			<param>install</param>
 		</make>
 
-		<link type="symbolic">
+		<link>
+			<option>force</option>
 			<target>automake-1.7</target>
 			<name>/usr/share/automake</name>
 		</link>

@@ -31,7 +31,8 @@
 		<name>src</name>
 	</mkdir>
 
-	<link type="symbolic">
+	<link>
+		<option>force</option>
 		<target>share/man</target>
 		<target>share/doc</target>
 		<target>share/info</target>
@@ -77,7 +78,8 @@
 		<name>src</name>
 	</mkdir>
 
-	<link type="symbolic">
+	<link>
+		<option>force</option>
 		<target>share/man</target>
 		<target>share/doc</target>
 		<target>share/info</target>

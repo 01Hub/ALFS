@@ -59,7 +59,7 @@
 			<destination>/lib</destination>
 		</move>
 
-		<link type="symbolic">
+		<link>
 			<option>force</option>
 			<target>../../lib/libz.so.1</target>
 			<name>/usr/lib/libz.so</name>

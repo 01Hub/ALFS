@@ -30,7 +30,8 @@
 			<param>install</param>
 		</make>
 
-		<link type="symbolic">
+		<link>
+			<option>force</option>
 			<target>vim</target>
 			<name>/usr/bin/vi</name>
 		</link>
@@ -38,12 +39,12 @@
 		<textdump>
 			<file>/root/.vimrc</file>
 			<content>
-			=" Begin /root/.vimrc
-			=
-			=set nocompatible
-			=set bs=2
-			=
-			=" End /root/.vimrc
+				=" Begin /root/.vimrc
+				=
+				=set nocompatible
+				=set bs=2
+				=
+				=" End /root/.vimrc
 			</content>
 		</textdump>
 	</stage>
