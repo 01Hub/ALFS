@@ -16,7 +16,8 @@
 <!ENTITY opensp-version   "1.5.1">
 <!ENTITY opensp-package   "OpenSP-&opensp-version;.tar.gz">
 <!ENTITY opensp-directory "OpenSP-&opensp-version;">
-<!ENTITY opensp-patch     "OpenSP-&opensp-version;-LITLEN.patch">
+<!ENTITY opensp-litlen-patch "OpenSP-&opensp-version;-LITLEN-1.patch">
+<!ENTITY opensp-gcc34-patch "OpenSP-&opensp-version;-gcc34-1.patch">
 
 <!ENTITY openjade-version   "1.3.2">
 <!ENTITY openjade-package   "openjade-&openjade-version;.tar.gz">
@@ -25,3 +26,8 @@
 <!ENTITY docbook-dsssl-version   "1.78">
 <!ENTITY docbook-dsssl-package   "docbook-dsssl-&docbook-dsssl-version;.tar.gz">
 <!ENTITY docbook-dsssl-directory "docbook-dsssl-&docbook-dsssl-version;">
+
+<!ENTITY docbook-utils-version "0.6.14">
+<!ENTITY docbook-utils-package "docbook-utils-&docbook-utils-version;.tar.gz">
+<!ENTITY docbook-utils-directory "docbook-utils-&docbook-utils-version;">
+

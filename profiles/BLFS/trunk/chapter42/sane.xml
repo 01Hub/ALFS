@@ -14,7 +14,13 @@
   <package name="sane" version="&sane-version;">
     <packageinfo>
       <utilizes>
+	<name>libjpeg</name>
+      </utilizes>
+      <utilizes>
         <name>libusb</name>
+      </utilizes>
+      <utilizes>
+	<name>tex</name>
       </utilizes>
       <utilizes>
         <name>&ximpl;</name>

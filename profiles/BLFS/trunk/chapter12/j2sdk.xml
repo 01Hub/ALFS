@@ -57,6 +57,12 @@
         <source>*</source>
         <destination>/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;</destination>
       </move>
+      <link>
+	<option>force</option>
+	<option>no-dereference</option>
+	<target>j2sdk-precompiled-&j2sdk-version;</target>
+	<name>/opt/j2sdk/j2sdk</name>
+      </link>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/java-build/&j2sdk-bin-package;</remove>
@@ -164,6 +170,12 @@
         <source>j2sdk-image</source>
         <destination>/opt/j2sdk/j2sdk-&j2sdk-version;</destination>
       </copy>
+      <link>
+	<option>force</option>
+	<option>no-dereference</option>
+	<target>j2sdk-&j2sdk-version;</target>
+	<name>/opt/j2sdk/j2sdk</name>
+      </link>
     </stage>
   </package>
 </alfs>

@@ -47,16 +47,18 @@
         <find>gml</find>
         <replace></replace>
       </search_replace>
-      <execute command="install -d /usr/share/sgml/docbook/sgml-dtd-&sgml-dtd-version;" />
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/sgml/docbook/sgml-dtd-&sgml-dtd-version;</name>
+      </mkdir>
       <ownership user="root" group="root">
         <option>recursive</option>
         <name>.</name>
       </ownership>
-      <permissions mode="755">
-        <option>recursive</option>
-        <name>.</name>
-      </permissions>
-      <execute command="install docbook.cat /usr/share/sgml/docbook/sgml-dtd-&sgml-dtd-version;/catalog" />
+      <copy>
+	<source>docbook.cat</source>
+	<destination>/usr/share/sgml/docbook/sgml-dtd-&sgml-dtd-version;/catalog</destination>
+      </copy>
       <copy>
         <option>archive</option>
         <option>force</option>

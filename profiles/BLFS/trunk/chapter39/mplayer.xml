@@ -182,8 +182,8 @@
         <name>/usr/share/mplayer/Skin/Blue</name>
       </ownership>
       <permissions mode="0755">
-        <file>/usr/share/mplayer/Skin/Blue</file>
-        <file>/usr/share/mplayer/Skin/Blue/icons</file>
+        <name>/usr/share/mplayer/Skin/Blue</name>
+        <name>/usr/share/mplayer/Skin/Blue/icons</name>
       </permissions>
       <link type="symbolic">
         <option>force</option>
@@ -224,7 +224,7 @@
       <execute command="tar xjvf &packages_dir;/&mplayer-font-package; -C /usr/share/mplayer/font" />
       <ownership user="root" group="root">
         <option>recursive</option>
-        <file>/usr/share/mplayer/font</file>
+        <name>/usr/share/mplayer/font</name>
       </ownership>
       <link base="/usr/share/mplayer/font">
         <option>force</option>

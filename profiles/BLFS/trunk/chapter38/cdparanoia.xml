@@ -40,8 +40,8 @@
         <param>install</param>
       </make>
       <permissions mode="755">
-        <file>/usr/lib/libcdda_interface.so.0.9.8</file>
-        <file>/usr/lib/libcdda_paranoia.so.0.9.8</file>
+        <name>/usr/lib/libcdda_interface.so.0.9.8</name>
+        <name>/usr/lib/libcdda_paranoia.so.0.9.8</name>
       </permissions>
       &ldconfig;
     </stage>

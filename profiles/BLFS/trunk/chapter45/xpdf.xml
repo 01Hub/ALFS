@@ -17,7 +17,7 @@
         <name>lesstif</name>
       </requires>
       <utilizes>
-        <name>ghostscript</name>
+        <name>&ghostscript-impl;</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -30,6 +30,11 @@
       <stageinfo>
         <base>&build_dir;/&xpdf-directory;</base>
       </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p0</param>
+        <param>-i &packages_dir;/&xpdf-pl1-patch;</param>
+      </patch>
       <patch>
         <param>-N</param>
         <param>-p1</param>

@@ -1,13 +1,13 @@
 <!--************* packages for chapter 42 *************-->
 
-<!ENTITY sane-version   "1.0.14">
-<!ENTITY sane-frontend-version   "1.0.12">
+<!ENTITY sane-version   "1.0.15">
+<!ENTITY sane-frontend-version   "1.0.13">
 <!ENTITY sane-frontend-package   "sane-frontends-&sane-frontend-version;.tar.gz">
 <!ENTITY sane-frontend-directory "sane-frontends-&sane-frontend-version;">
 <!ENTITY sane-backend-version   "&sane-version;">
 <!ENTITY sane-backend-package   "sane-backends-&sane-backend-version;.tar.gz">
 <!ENTITY sane-backend-directory "sane-backends-&sane-backend-version;">
 
-<!ENTITY xsane-version   "0.93">
+<!ENTITY xsane-version   "0.97">
 <!ENTITY xsane-package   "xsane-&xsane-version;.tar.gz">
 <!ENTITY xsane-directory "xsane-&xsane-version;">

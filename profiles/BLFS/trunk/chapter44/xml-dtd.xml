@@ -33,7 +33,10 @@
       <stageinfo>
         <base>&build_dir;/&xml-dtd-directory;</base>
       </stageinfo>
-      <execute command="install -d /usr/share/xml/docbook/xml-dtd-&xml-dtd-version;" />
+      <mkdir>
+      	<option>parents</option>
+	<name>/usr/share/xml/docbook/xml-dtd-&xml-dtd-version;</name>
+      </mkdir>
       <copy>
         <option>archive</option>
         <option>force</option>

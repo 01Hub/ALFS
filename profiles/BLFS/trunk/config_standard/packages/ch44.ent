@@ -4,6 +4,6 @@
 <!ENTITY xml-dtd-package   "docbook-xml-&xml-dtd-version;.zip">
 <!ENTITY xml-dtd-directory "docbook-xml-&xml-dtd-version;">
 
-<!ENTITY docbook-xsl-version   "1.65.1">
-<!ENTITY docbook-xsl-package   "docbook-xsl-&docbook-xsl-version;.tar.gz">
+<!ENTITY docbook-xsl-version   "1.67.2">
+<!ENTITY docbook-xsl-package   "docbook-xsl-&docbook-xsl-version;.tar.bz2">
 <!ENTITY docbook-xsl-directory "docbook-xsl-&docbook-xsl-version;">

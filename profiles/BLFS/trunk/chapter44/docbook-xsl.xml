@@ -33,8 +33,10 @@
       <copy>
         <option>archive</option>
         <option>force</option>
+	<source>INSTALL</source>
         <source>VERSION</source>
         <source>common</source>
+	<source>eclipse</source>
         <source>extensions</source>
         <source>fo</source>
         <source>html</source>
@@ -46,19 +48,20 @@
         <source>params</source>
         <source>profiling</source>
         <source>template</source>
-        <source>tools</source>
         <source>xhtml</source>
         <destination>/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;</destination>
       </copy>
-      <execute command="install">
-        <param>-d /usr/share/doc/xml</param>
-      </execute>
+      <mkdir>
+      	<option>parents</option>
+	<name>/usr/share/doc/xml</name>
+      </mkdir>
       <copy>
         <option>archive</option>
         <option>force</option>
         <source>doc/*</source>
         <destination>/usr/share/doc/xml</destination>
       </copy>
+      <execute command="sh INSTALL" base="/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;" />
       <textdump>
         <file>&build_dir;/dircheck.sh</file>
         <content>
@@ -85,18 +88,6 @@
         <param>/etc/xml/catalog</param>
       </execute>
       <execute command="xmlcatalog">
-        <param>--noout --add "rewriteSystem"</param>
-        <param>"http://docbook.sourceforge.net/release/xsl/current"</param>
-        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
-        <param>/etc/xml/catalog</param>
-      </execute>
-      <execute command="xmlcatalog">
-        <param>--noout --add "rewriteURI"</param>
-        <param>"http://docbook.sourceforge.net/release/xsl/current"</param>
-        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
-        <param>/etc/xml/catalog</param>
-      </execute>
-      <execute command="xmlcatalog">
         <param>--noout --add "delegateSystem"</param>
         <param>"http://docbook.sourceforge.net/release/xsl/"</param>
         <param>"file:///etc/xml/docbook"</param>
@@ -108,6 +99,14 @@
         <param>"file:///etc/xml/docbook"</param>
         <param>/etc/xml/catalog</param>
       </execute>
+      <textdump>
+      	<file>/etc/profile.d/xsl.sh</file>
+	<content>
+	  =# Set up Environment Variable for XSL Processing
+	  =export XML_CATALOG_FILES="/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;/catalog.xml \
+	  =  /etc/xml/catalog"
+	</content>
+      </textdump>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&docbook-xsl-directory;</remove>
