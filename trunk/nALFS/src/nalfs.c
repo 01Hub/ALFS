@@ -3249,6 +3249,8 @@ static int add_profile(const char *fullname)
 						xfree(f);
 					}
 				}
+
+				closedir(dir);
 			}
 
 		} else {
