@@ -304,6 +304,7 @@ enum long_option {
 	LONG_OPTION_VERSION,
 	LONG_OPTION_HELP,
 	LONG_OPTION_GENERATE_STAMP,
+	LONG_OPTION_DISABLE_DIGEST,
 	LONG_OPTION_RCFILE,
 };
 
@@ -358,6 +359,7 @@ static INLINE void print_help_and_exit(const char *prog)
 "    -p, --prune <dirs>            Ignore <dirs> (separated with spaces) when\n"
 "                                  logging files.\n"
 "    -S, --generate-stamp          Toggle stamp mode.\n"
+"    -d, --disable-digest          Disable digest checking\n"
 "    --rcfile <file>               Use <file> as configuration file.\n"
 "    -v, --verbose                 Toggle verbosity (%s).\n"
 "    --version                     Display program's version.\n"
@@ -417,6 +419,8 @@ void read_command_line_options(int *argc, char ***argv)
 	{"help", no_argument, NULL, LONG_OPTION_HELP},
 
 	{"generate-stamp", no_argument, NULL, LONG_OPTION_GENERATE_STAMP},
+	
+	{"disable-digest", no_argument, NULL, LONG_OPTION_DISABLE_DIGEST},	
 
 	{"rcfile", required_argument, NULL, LONG_OPTION_RCFILE},
 
@@ -425,7 +429,7 @@ void read_command_line_options(int *argc, char ***argv)
 	};
 
 
-	while ((i = getopt_long(*argc, *argv, "lPfhisBSL:b:p:v", long_opts, NULL)) != -1) {
+	while ((i = getopt_long(*argc, *argv, "lPfhisBSdL:b:p:v", long_opts, NULL)) != -1) {
 		switch (i) {
 			case LONG_OPTION_DISPLAY_ALFS:
 				Toggle(*opt_display_alfs);
@@ -489,6 +493,11 @@ void read_command_line_options(int *argc, char ***argv)
 			case 'S':
 			case LONG_OPTION_GENERATE_STAMP:
 				Toggle(*opt_stamp_packages);
+				break;
+
+			case 'd':
+			case LONG_OPTION_DISABLE_DIGEST:
+				Toggle(*opt_disable_digest);
 				break;
 
 			case LONG_OPTION_RCFILE:

@@ -58,6 +58,7 @@ BOOL_OPTION(log_handlers, 1, NULL, NULL);
 BOOL_OPTION(log_backend, 1, NULL, NULL);
 BOOL_OPTION(stamp_packages, 0, NULL, NULL);
 STRING_OPTION(stamp_directory, "stamps", NULL, NULL);
+BOOL_OPTION(disable_digest, 0, NULL, NULL);
 BOOL_OPTION(display_stage_header, 0, NULL, NULL);
 STRING_OPTION(find_base, "/", NULL, NULL);
 STRING_OPTION(find_prunes, "", NULL, NULL);

@@ -40,7 +40,7 @@
 #include "nprint.h"
 #include "parser.h"
 #include "backend.h"
-
+#include "options.h"
 
 #define El_unpack_archive(el) alloc_trimmed_param_value("archive", el)
 #define El_unpack_destination(el) alloc_trimmed_param_value("destination", el)
@@ -191,7 +191,8 @@ static int unpack_main_ver3(element_s *el)
 	if (change_current_dir(destination))
 		goto free_all_and_return;
 
-	alloc_element_digest(el, &digest, &digest_type);
+	if (!*opt_disable_digest)
+		alloc_element_digest(el, &digest, &digest_type);
 
 	/* Check if archive exists. */
 	if ((stat(archive, &file_stat))) {

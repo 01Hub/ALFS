@@ -1888,6 +1888,17 @@ static INLINE void toggle_generate_stamp(void)
 }
 #endif
 
+static INLINE void toggle_disable_digest(void)
+{
+	if (*opt_disable_digest) {
+		Nprint("Digest checking now enabled.");
+		*opt_disable_digest = 0;
+	} else {
+		Nprint("Digest checking now disabled.");
+		*opt_disable_digest = 1;
+	}
+}
+
 static INLINE void toggle_system_output(void)
 {
 	if (Backend_exists) {
