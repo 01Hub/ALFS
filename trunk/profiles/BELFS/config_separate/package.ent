@@ -60,14 +60,6 @@
 <!ENTITY e2fsprogs-package "e2fsprogs-&e2fsprogs-version;.tar.gz">
 <!ENTITY e2fsprogs-directory "e2fsprogs-&e2fsprogs-version;">
 
-<!ENTITY ed-md5 "ddd57463774cae9b50e70cd51221281b">
-<!ENTITY ed-version "0.2">
-<!ENTITY ed-package "ed-&ed-version;.tar.gz">
-<!ENTITY ed-directory "ed-&ed-version;">
-
-<!ENTITY ed-mkstemp-patch-md5 "e7e2248f9baa76de3db8210298e0d79e">
-<!ENTITY ed-mkstemp-patch "ed-&ed-version;-mkstemp.patch">
-
 <!ENTITY expect-md5 "490664773286690d111d9cd055c50700">
 <!ENTITY expect-version "5.41.0">
 <!ENTITY expect-package "expect-&expect-version;.tar.gz">
@@ -263,11 +255,6 @@
 
 <!ENTITY perl-libc-1-patch-md5 "f033161efa8b4b174ec6667e4e739efa">
 <!ENTITY perl-libc-1-patch "perl-&perl-version;-libc-1.patch">
-
-<!ENTITY procinfo-md5 "27658d0a69040aca05a65b9888599d50">
-<!ENTITY procinfo-version "18">
-<!ENTITY procinfo-package "procinfo-&procinfo-version;.tar.gz">
-<!ENTITY procinfo-directory "procinfo-&procinfo-version;">
 
 <!ENTITY procps-md5 "2672014ec05deb20680713a7b750cb16">
 <!ENTITY procps-version "3.2.1">
