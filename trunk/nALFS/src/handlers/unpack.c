@@ -83,7 +83,7 @@ static int unpack_archive(const char *archive)
 
 	if (unpacker != NULL) {
 		if (decompressor != NULL) {
-			command = decompressor;
+			command = xstrdup(decompressor);
 			append_str(&command, " | ");
 		}
 		append_str(&command, unpacker);
@@ -94,7 +94,7 @@ static int unpack_archive(const char *archive)
 		char *base_name = alloc_basename(archive);
 
 		Nprint_h("Decompressing %s...", archive);
-		command = decompressor;
+		command = xstrdup(decompressor);
 		append_str(&command, " > %s");
 		status = execute_command(command, archive, base_name);
 		xfree(base_name);
