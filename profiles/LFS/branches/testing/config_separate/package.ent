@@ -13,8 +13,8 @@
 <!ENTITY bash-package "bash-&bash-version;.tar.gz">
 <!ENTITY bash-directory "bash-&bash-version;">
 
-<!ENTITY binutils-md5 "624e6b74983ac6b2960edaf2d522ca58">
-<!ENTITY binutils-version "2.15">
+<!ENTITY binutils-md5 "41983069bef07af4f1350c6d30666b2d">
+<!ENTITY binutils-version "2.15.91.0.2">
 <!ENTITY binutils-package "binutils-&binutils-version;.tar.bz2">
 <!ENTITY binutils-directory "binutils-&binutils-version;">
 
