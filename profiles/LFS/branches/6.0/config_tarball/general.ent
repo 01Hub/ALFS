@@ -8,7 +8,6 @@
 
      -->
 
-
 <!-- Directory in which LFS system will be installed.
      The build process try to mkdir -p it if it doen't exist.
      If you want to build LFS in its own partition (which
@@ -16,7 +15,6 @@
      and mount the  partition before running nALFS.
      -->
 <!ENTITY LFS "/mnt/lfs">
-
 
 <!-- Location of your LFS packages.
      This is the directory in which all the packages downloaded
@@ -28,38 +26,35 @@
                  enter the wrong directory, nALFS will try to download
                  all the packages in it !!!
      -->
-<!ENTITY orig_packages_dir "/home/dwheeler/LFS-5.0/packages">
+<!ENTITY orig_packages_dir "/your/LFS-CVS/packages">
 
 <!-- Partition of your new LFS system.
      This entity is used only to initialize the new fstab file.
      No attempt is done to access this partition during
      the build, except if it has been mounted on &LFS;
      -->
-<!ENTITY lfs_partition "/dev/hdb10">
-
+<!ENTITY lfs_partition "/dev/hda2">
 
 <!-- Type of your LFS partition.
      This entity is used only to initialize the new fstab file.
      -->
 <!ENTITY fs_type "ext3">
 
-
 <!-- Swap partition.
      This entity is used only to initialize the new fstab file
      -->
-<!ENTITY swap_partition "/dev/hdb1">
-
+<!ENTITY swap_partition "/dev/hda3">
 
 <!-- Name of your machine.
      This entity is used to create the files /etc/hosts
      and /etc/sysconfig/network
      -->
-<!ENTITY hostname "wheeler3">
+<!ENTITY hostname "yourhost">
 
 <!-- Domain of your machine. 
      This entity is used to create the files /etc/hosts
      -->
-<!ENTITY domain "middle-earth">
+<!ENTITY domain "your.domain">
 
 <!-- Some networking entities.
      These entities are used when creating the files
@@ -69,7 +64,7 @@
 <!ENTITY gateway    "172.16.1.1">
 <!ENTITY on_boot    "yes">
 <!ENTITY IP         "172.16.1.22">
-<!ENTITY netmask    "255.255.255.0">
+<!ENTITY prefix     "24">
 <!ENTITY broadcast  "172.16.1.255">
 
 <!-- In the entity below replace 127.0.0.1 with the IP address of the DNS server most appropriate for
@@ -87,7 +82,6 @@ network.-->
      -->
 <!ENTITY localtime "/usr/share/zoneinfo/America/Denver">
 
-
 <!-- Keymap file. 
      This entity will be used as the target of the link
      /usr/share/kbd/keymaps/defkeymap.map.gz
@@ -99,7 +93,6 @@ network.-->
      in the file /etc/sysconfig/clock
      -->
 <!ENTITY UTC "1">
-
 
 <!-- Temporary user name used for installing Chapter 5.
      This is a user in the host distribution. It will not
@@ -117,10 +110,8 @@ network.-->
      -->
 <!ENTITY lfs-password "lf1nstl">
 
-
 <!-- Temporary user's home directory. -->
 <!ENTITY lfs-user-dir "/home/&lfs-user;">
-
 
 <!-- Root password. 
      This is the password of root in the new LFS distribution.
@@ -129,10 +120,8 @@ network.-->
      -->
 <!ENTITY password "r00tme">
 
-
 <!-- LFS book version -->
-<!ENTITY LFS-version "CVS-2004-02-01">
-
+<!ENTITY LFS-version "6.0">
 
 <!-- THE FOLLOWING TWO ENTITIES DECLARATIONS SHOULDN'T BE MOFIFIED
      UNLESS YOU KNOW WHAT YOU ARE DOING
@@ -140,7 +129,6 @@ network.-->
 
 <!-- Directory (inside LFS) where all packages will be copied. -->
 <!ENTITY packages_dir "/tools/packages-&LFS-version;">
-
 
 <!-- Directory (inside LFS) where all packages will be compiled. -->
 <!ENTITY build_dir "/tools/build">
@@ -159,7 +147,7 @@ network.-->
 	This file should be in a state that running `make oldconfig` will run straight through, as
 	that's what the profile in chapter 8 does with this entity.
     -->
-<!ENTITY kernel-config "&packages_dir;/linux-config">
+<!ENTITY kernel-config "linux-config">
 
 <!-- grub settings (these need to be in grub's notation) 
 	NOTE:  The grub configuration profile is completely commented out.  You should edit

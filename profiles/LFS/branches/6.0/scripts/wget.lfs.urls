@@ -76,6 +76,9 @@ http://www.linuxfromscratch.org/patches/lfs/cvs/testing/readline-5.0-display_wra
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/sysklogd-1.4.1-kernel_headers-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/sysklogd-1.4.1-signal-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/testing/sysvinit-2.85-proclen-1.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/testing/texinfo-4.7-segfault-1.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/testing/util-linux-2.12b-sfdisk-2.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/testing/zlib-1.2.1-security-1.patch
 http://www.sethwklein.net/projects/iana-etc/downloads/iana-etc-1.01.tar.bz2
 
 ftp://xmlsoft.org/libxml2-2.6.12.tar.gz
