@@ -1,0 +1,131 @@
+#!/bin/bash
+
+# Bootstrap script for nALFS, used to get a CVS checkout ready for use.
+
+set -e
+
+[ -r src/nalfs.c ] || {
+    echo "***"
+    echo "*** The bootstrap script must be run in the top directory"
+    echo "*** of the CVS source distribution."
+    echo "***"
+    exit 1
+}
+
+# if requested, download the current ALFS/nALFS docs and prepare them
+# in the doc directory for distribution
+
+WGET="wget -N -nv"
+
+get_text_doc() {
+    ${WGET} -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}.txt
+    cp download/${1}-${DOC_VERSION}.txt doc/${2}.txt
+}
+
+get_html_nohunks_doc() {
+    ${WGET} -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}-NOHUNKS.html
+    cp download/${1}-${DOC_VERSION}-NOHUNKS.html doc/${2}.html
+}
+
+get_html_doc() {
+    ${WGET} -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}-html.tar.bz2
+    bzcat download/${1}-${DOC_VERSION}-html.tar.bz2 | tar --extract --directory=download
+    mkdir -p doc/${2}
+    cp -R download/${1}/* doc/${2}
+}
+
+get_profile() {
+    ${WGET} -P download ${PROFILE_URL_BASE}/profile-LFS-${PROFILE_VERSION}.tar.bz2
+    bzcat download/profile-LFS-${PROFILE_VERSION}.tar.bz2 | tar --extract --directory=profile
+    rm profile/*/*.dtd
+    ln -sf ../../doc/ALFS.dtd profile/*
+    #temporary fix until official profile has proper DTD name
+    perl -pi -e 's/nalfs.dtd/ALFS.dtd/' profile/*/LFS-*.xml
+}
+
+get_dtd() {
+    cp ../DTD/${1}-${DTD_VERSION}.dtd doc/${1}.dtd
+}
+
+while getopts hd:g:p: param; do
+    case $param in
+	d)
+	    mkdir -p download
+	    DTD_VERSION=${OPTARG}
+	    echo Getting ${DTD_VERSION} version of DTD...
+	    get_dtd ALFS
+	    echo done.
+	    ;;
+	g)
+	    mkdir -p download
+	    DOC_VERSION=${OPTARG}
+	    echo Getting ${DOC_VERSION} version of guides...
+	    DOC_URL_BASE=http://linuxfromscratch.org/~jwrober
+	    get_text_doc ALFS-SYNTAX-DOC syntax_doc
+	    get_text_doc nALFS-USERS-GUIDE users_guide
+	    get_text_doc nALFS-HACKERS-GUIDE hackers_guide
+	    get_html_doc ALFS-SYNTAX-DOC syntax_doc
+	    get_html_doc nALFS-USERS-GUIDE users_guide
+	    get_html_doc nALFS-HACKERS-GUIDE hackers_guide
+	    get_html_nohunks_doc ALFS-SYNTAX-DOC syntax_doc
+	    get_html_nohunks_doc nALFS-USERS-GUIDE users_guide
+	    get_html_nohunks_doc nALFS-HACKERS-GUIDE hackers_guide
+	    echo done.
+	    ;;
+	p)
+	    mkdir -p download
+	    mkdir -p profile
+	    PROFILE_URL_BASE=http://www.linuxfromscratch.org/alfs/downloads/profiles
+	    PROFILE_VERSION=${OPTARG}
+	    echo Getting ${PROFILE_VERSION} of profile...
+	    get_profile
+	    echo done.
+	    ;;
+	*)
+	    cat 1>&2 <<"EOF"
+nALFS bootscript supports the following optional arguments:
+    -d {version} downloads specified version of the DTD
+    -g {version} downloads specified version of the guides
+    -p {version} downloads specified version of the LFS profile
+EOF
+	    exit 1
+	    ;;
+    esac
+done
+
+# some 'macros' for processing filename lists
+SP2NL="tr '\040' '\012'"
+NL2SP="tr '\015\012' '\040\040'"
+
+# create a directory for the GNU autotools to put their stuff into
+mkdir -p gnubuild
+
+# create nALFS-config.in to quiet autoconf, which will overwrite it later
+touch nALFS-config.in
+
+# build available handler list
+# grep each handler file to determine which syntax version(s) it supports
+# store this in a variable for each handler, so bootstrap.configure can use it
+# this will result in a Makefile that builds only the
+# handlers containing versions the user requests with --enable-syntax
+# also generate a list of all syntax versions present across all handlers
+
+all_handlers=`ls src/handlers/*.c | sed 's~src/handlers/\(.*\)\.c~\1~'`
+for handler in ${all_handlers}; do
+    syntaxes=`egrep "#if HANDLER_SYNTAX_[^ ]+$" src/handlers/${handler}.c | sed 's/^.*HANDLER_SYNTAX_\(.*\)$/\1/' | sort -u`
+    eval "${handler}_syntaxes=\"${syntaxes}\""
+    all_syntaxes="${all_syntaxes} ${syntaxes}"
+done
+all_syntaxes=`echo ${all_syntaxes} | ${SP2NL} | sort -u`
+
+. ./bootstrap.option-array > src/option-array.h
+
+. ./bootstrap.Makefile > Makefile.am
+
+. ./bootstrap.doc > doc/Makefile.am
+
+. ./bootstrap.configure > configure.ac
+
+autoreconf --install --force
+
+. ./bootstrap.libtool
