@@ -20,7 +20,7 @@
 
 <para>The element <filename>base</filename> is used to specify the base directory
 which will be used by all the commands in the stage, unless another
-base is specified at the level of the command. See also&nbsp;&nbsp;|&nbsp;&nbsp;
+base is specified at the level of the command as an attribute. See also&nbsp;:&nbsp;&nbsp;
 <xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -63,15 +63,15 @@ base is specified at the level of the command. See also&nbsp;&nbsp;|&nbsp;&nbsp;
 
 echo Executing configure
 cd /usr/src/gzip.1.2.4a
-./configure
+<command>./configure</command>
 
 echo Executing make
 cd /usr/src/gzip.1.2.4a
-make
+<command>make</command>
 
 echo Executing make
 cd /usr/src/gzip.1.2.4a
-make install
+<command>make install</command>
 
 echo Exiting stage</userinput></screen>
 
