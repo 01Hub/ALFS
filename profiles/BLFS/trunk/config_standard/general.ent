@@ -17,6 +17,7 @@
 <!-- entities for configuring gpm -->
 <!ENTITY mouse_device "/dev/psaux">
 <!ENTITY mouse_protocol "ps2">
+<!ENTITY mouse_options "">
 
 <!-- entities for configuring the network -->
 <!ENTITY network-interface "eth0">

@@ -25,17 +25,17 @@
       <patch>
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&unzip-patch1;</param>
+        <param>-i &packages_dir;/&unzip-fix_makefile-patch;</param>
       </patch>
       <patch>
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&unzip-patch2;</param>
+        <param>-i &packages_dir;/&unzip-fix_libz-patch;</param>
       </patch>
       <patch>
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&unzip-patch3;</param>
+        <param>-i &packages_dir;/&unzip-dont_make_noise-patch;</param>
       </patch>
       <copy>
         <source>unix/Makefile</source>
@@ -43,14 +43,17 @@
       </copy>
       <make>
         <param>prefix=/usr</param>
+        <param>LOCAL_UNZIP=-DUSE_UNSHRINK</param>
         <param>linux</param>
       </make>
       <make>
         <param>prefix=/usr</param>
+        <param>LOCAL_UNZIP=-DUSE_UNSHRINK</param>
         <param>linux_shlibz</param>
       </make>
       <make>
         <param>prefix=/usr</param>
+        <param>LOCAL_UNZIP=-DUSE_UNSHRINK</param>
         <param>install</param>
       </make>
       <copy>

@@ -4,17 +4,16 @@
 <!ENTITY gpm-package   "gpm-&gpm-version;.tar.bz2">
 <!ENTITY gpm-directory "gpm-&gpm-version;">
 
-<!ENTITY gpm-patch1    "gpm-&gpm-version;-segfault.patch">
-<!ENTITY gpm-patch2    "gpm-&gpm-version;-silent.patch">
+<!ENTITY gpm-segfault-patch "gpm-&gpm-version;-segfault-1.patch">
+<!ENTITY gpm-silent-patch "gpm-&gpm-version;-silent-1.patch">
 
-<!ENTITY fcron-version   "2.9.4">
+<!ENTITY fcron-version   "2.9.5">
 <!ENTITY fcron-package   "fcron-&fcron-version;.src.tar.gz">
 <!ENTITY fcron-directory "fcron-&fcron-version;">
 
-<!ENTITY hdparm-version   "5.5">
+<!ENTITY hdparm-version   "5.7">
 <!ENTITY hdparm-package   "hdparm-&hdparm-version;.tar.gz">
 <!ENTITY hdparm-directory "hdparm-&hdparm-version;">
-<!ENTITY hdparm-patch1 "hdparm-&hdparm-version;-glibc_CVS-1.patch">
 
 <!ENTITY which-version   "2.16">
 <!ENTITY which-package   "which-&which-version;.tar.gz">
@@ -24,9 +23,9 @@
 <!ENTITY unzip-package   "unzip551.tar.gz">
 <!ENTITY unzip-directory "unzip-&unzip-version;">
 
-<!ENTITY unzip-patch1    "unzip-&unzip-version;-fix-Makefile.patch">
-<!ENTITY unzip-patch2    "unzip-&unzip-version;-fix-libz.patch">
-<!ENTITY unzip-patch3    "unzip-&unzip-version;-dont-make-noise.patch">
+<!ENTITY unzip-fix_makefile-patch    "unzip-&unzip-version;-fix_Makefile-1.patch">
+<!ENTITY unzip-fix_libz-patch        "unzip-&unzip-version;-fix_libz-1.patch">
+<!ENTITY unzip-dont_make_noise-patch "unzip-&unzip-version;-dont_make_noise-1.patch">
 
 <!ENTITY zip-version   "2.3">
 <!ENTITY zip-package   "zip23.tar.gz">
@@ -47,3 +46,7 @@
 <!ENTITY mc-version   "4.6.0">
 <!ENTITY mc-package   "mc-&mc-version;.tar.gz">
 <!ENTITY mc-directory "mc-&mc-version;">
+
+<!ENTITY sysstat-version   "5.0.6">
+<!ENTITY sysstat-package   "sysstat-&sysstat-version;.tar.gz">
+<!ENTITY sysstat-directory "sysstat-&sysstat-version;">

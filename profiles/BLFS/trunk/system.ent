@@ -98,6 +98,7 @@
 <!ENTITY pkgconfig  SYSTEM "./chapter11/pkgconfig.xml">
 <!ENTITY cpio       SYSTEM "./chapter11/cpio.xml">
 <!ENTITY mc         SYSTEM "./chapter11/mc.xml">
+<!ENTITY sysstat    SYSTEM "./chapter11/sysstat.xml">
 
 <!-- chapter 12 -->
 <!ENTITY python      SYSTEM "./chapter12/python.xml">

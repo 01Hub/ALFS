@@ -20,6 +20,9 @@
         <name>&ximpl;</name>
       </utilizes>
       <utilizes>
+        <name>gpm</name>
+      </utilizes>
+      <utilizes>
         <name>samba</name>
       </utilizes>
       <utilizes>
@@ -30,6 +33,9 @@
       </utilizes>
       <utilizes>
         <name>unzip</name>
+      </utilizes>
+      <utilizes>
+        <name>gnome-libs</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
