@@ -1,4 +1,11 @@
-<stage name="Mounting proc and devpts file systems">
+<stage name="Creating directories and mounting file systems">
+
+	<mkdir base="$LFS;">
+		<option>parents</option>
+		<name>proc</name>
+		<name>dev/pts</name>
+	</mkdir>
+
 	<execute command="mount">
 		<param>proc</param>
 		<param>/proc</param>
