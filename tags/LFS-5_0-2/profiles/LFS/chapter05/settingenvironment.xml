@@ -1,0 +1,18 @@
+<stage name="Setting up the environment.">
+	<stageinfo>
+		<user>&lfs-user;</user>
+	</stageinfo>
+
+	<textdump>
+		<file>&lfs-user-dir;/.bash_profile</file>
+		<content>
+			=set +h
+			=umask 022
+			=LFS=&LFS;
+			=LC_ALL=POSIX
+			=PATH=/tools/bin:$PATH
+			=export LFS LC_ALL PATH
+			=unset CC CXX CPP LD_LIBRARY_PATH LD_PRELOAD
+		</content>
+	</textdump>
+</stage>

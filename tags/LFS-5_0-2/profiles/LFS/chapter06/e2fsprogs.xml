@@ -1,0 +1,46 @@
+<package name="e2fsprogs" version="&e2fsprogs-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&e2fsprogs-md5;</digest>
+			<archive>&packages_dir;/&e2fsprogs-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<mkdir base="&build_dir;">
+			<name>e2fsprogs-build</name>
+		</mkdir>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/e2fsprogs-build</base>
+		</stageinfo>
+
+		<configure command="../&e2fsprogs-directory;/configure">
+			<param>--prefix=/usr</param>
+			<param>--with-root-prefix=""</param>
+			<param>--enable-elf-shlibs</param>
+		</configure>
+
+		<make />
+
+<!--
+		<make>
+			<param>check</param>
+		</make>
+-->
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<make>
+			<param>install-libs</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&e2fsprogs-directory;</remove>
+		<remove>&build_dir;/e2fsprogs-build</remove>
+	</stage>
+</package>

@@ -1,0 +1,13 @@
+<stage name="Creating the /etc/hosts file">
+	<textdump>
+		<file>/etc/hosts</file>
+		<content>
+			=# Begin /etc/hosts (network card version)
+			=
+			=127.0.0.1 localhost.localdomain localhost
+			=&IP; &hostname;.&domain; &hostname;
+			=
+			=# End /etc/hosts (network card version)
+		</content>
+	</textdump>
+</stage>

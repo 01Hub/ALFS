@@ -1,0 +1,12 @@
+<stage name="Configuring the setclock script">
+	<textdump>
+		<file>/etc/sysconfig/clock</file>
+		<content>
+			=# Begin /etc/sysconfig/clock
+			=
+			=UTC=&UTC;
+			=
+			=# End /etc/sysconfig/clock
+		</content>
+	</textdump>
+</stage>
