@@ -3,18 +3,15 @@
 <!ENTITY autoconf-package "autoconf-&autoconf-version;.tar.bz2">
 <!ENTITY autoconf-directory "autoconf-&autoconf-version;">
 
-<!ENTITY automake-md5 "0114aa6d7dc32112834b68105fb8d7e2">
-<!ENTITY automake-version "1.8.5">
+<!ENTITY automake-md5 "c0b6434087e3be0606ef9d172238f26c">
+<!ENTITY automake-version "1.9">
 <!ENTITY automake-package "automake-&automake-version;.tar.bz2">
 <!ENTITY automake-directory "automake-&automake-version;">
 
-<!ENTITY bash-md5 "5238251b4926d778dfe162f6ce729733">
-<!ENTITY bash-version "2.05b">
+<!ENTITY bash-md5 "26c4d642e29b3533d8d754995bc277b3">
+<!ENTITY bash-version "3.0">
 <!ENTITY bash-package "bash-&bash-version;.tar.gz">
 <!ENTITY bash-directory "bash-&bash-version;">
-
-<!ENTITY bash-patch-md5 "dfc7399bb57798e18fbb99f9edce4da0">
-<!ENTITY bash-patch "bash-&bash-version;-gnu_fixes-2.patch">
 
 <!ENTITY binutils-md5 "0d64d65d33a7f305e5ef8351086b9a3a">
 <!ENTITY binutils-version "2.15.91.0.1">
@@ -65,8 +62,8 @@
 <!ENTITY expect-spawn-patch-md5 "ef6d0d0221c571fb420afb7033b3bbba">
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
 
-<!ENTITY file-md5 "46209022d57dbca7bb3cc07aa63bd008">
-<!ENTITY file-version "4.09">
+<!ENTITY file-md5 "c3cf1bda84a9d55896d4b7dd2caee68d">
+<!ENTITY file-version "4.10">
 <!ENTITY file-package "file-&file-version;.tar.gz">
 <!ENTITY file-directory "file-&file-version;">
 
@@ -136,9 +133,9 @@
 <!ENTITY grub-package "grub-&grub-version;.tar.gz">
 <!ENTITY grub-directory "grub-&grub-version;">
 
-<!ENTITY gzip-md5 "d303f3530ad9b70022ff6fd58e5250f8">
+<!ENTITY gzip-md5 "3d6c191dfd2bf307014b421c12dc8469">
 <!ENTITY gzip-version "1.3.5">
-<!ENTITY gzip-package "gzip-&gzip-version;.tar.bz2">
+<!ENTITY gzip-package "gzip-&gzip-version;.tar.gz">
 <!ENTITY gzip-directory "gzip-&gzip-version;">
 
 <!ENTITY hotplug-md5 "527f0242481024c77255f3c1fa09e6ee">
@@ -226,8 +223,8 @@
 <!ENTITY make-package "make-&make-version;.tar.bz2">
 <!ENTITY make-directory "make-&make-version;">
 
-<!ENTITY man-md5 "41e6397e359b8555d6a734c9c3840b49">
-<!ENTITY man-version "1.5m2">
+<!ENTITY man-md5 "5d77e73731f8f2be531c0cfe63d09270">
+<!ENTITY man-version "1.5n">
 <!ENTITY man-package "man-&man-version;.tar.bz2">
 <!ENTITY man-directory "man-&man-version;">
 
@@ -267,8 +264,8 @@
 <!ENTITY patch-package "patch-&patch-version;.tar.gz">
 <!ENTITY patch-directory "patch-&patch-version;">
 
-<!ENTITY perl-md5 "3eb135afd0114f4e1acdd4ad6b8fd947">
-<!ENTITY perl-version "5.8.4">
+<!ENTITY perl-md5 "9db6be76aa275f415d75c224ad1d4029">
+<!ENTITY perl-version "5.8.5">
 <!ENTITY perl-package "perl-&perl-version;.tar.bz2">
 <!ENTITY perl-directory "perl-&perl-version;">
 
@@ -285,13 +282,10 @@
 <!ENTITY psmisc-package "psmisc-&psmisc-version;.tar.gz">
 <!ENTITY psmisc-directory "psmisc-&psmisc-version;">
 
-<!ENTITY readline-md5 "f86f7cb717ab321fe15f1bbcb058c11e">
-<!ENTITY readline-version "4.3">
+<!ENTITY readline-md5 "9a39d15f1ed592883f8c6671e8c13120">
+<!ENTITY readline-version "5.0">
 <!ENTITY readline-package "readline-&readline-version;.tar.gz">
 <!ENTITY readline-directory "readline-&readline-version;">
-
-<!ENTITY readline-gnu-fixes-patch-md5 "469994b522eeacaa7af2ebd29ea090cd">
-<!ENTITY readline-gnu-fixes-patch "readline-&readline-version;-gnu_fixes-1.patch">
 
 <!ENTITY sed-md5 "570c0a53a64ec020d8fcbce51fb6d71a">
 <!ENTITY sed-version "4.1.1">
@@ -327,8 +321,8 @@
 <!ENTITY tar-package "tar-&tar-version;.tar.bz2">
 <!ENTITY tar-directory "tar-&tar-version;">
 
-<!ENTITY tcl-md5 "9009a92dc648775fb8a9b0789b995756">
-<!ENTITY tcl-version "8.4.6">
+<!ENTITY tcl-md5 "07e256e21bd0d05887770318b540c36f">
+<!ENTITY tcl-version "8.4.7">
 <!ENTITY tcl-package "tcl&tcl-version;-src.tar.gz">
 <!ENTITY tcl-directory "tcl&tcl-version;">
 
