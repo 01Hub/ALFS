@@ -24,35 +24,40 @@
       </unpack>
     </stage>
     &bootscripts-get;
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&gpm-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&gpm-segfault-patch;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&gpm-silent-patch;</param>
+      </patch>
+    </stage>
     <stage name="Installing">
-    <stageinfo>
-      <base>&build_dir;/&gpm-directory;</base>
-    </stageinfo>
-    <patch>
-      <param>-N</param>
-      <param>-p1</param>
-      <param>-i &packages_dir;/&gpm-segfault-patch;</param>
-    </patch>
-    <patch>
-      <param>-N</param>
-      <param>-p1</param>
-      <param>-i &packages_dir;/&gpm-silent-patch;</param>
-    </patch>
-    <configure>
-      <prefix>LDFLAGS='-lm'</prefix>
-      <param>--prefix=/usr</param>
-      <param>--sysconfdir=/etc</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>
-    <copy base="./conf">
-      <option>force</option>
-      <source>gpm-root.conf</source>
-      <destination>/etc</destination>
-    </copy>
-    &ldconfig;
+      <stageinfo>
+	<base>&build_dir;/&gpm-directory;</base>
+      </stageinfo>
+      <configure>
+	<prefix>LDFLAGS='-lm'</prefix>
+	<param>--prefix=/usr</param>
+	<param>--sysconfdir=/etc</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+      <copy>
+	<option>force</option>
+	<source>conf/gpm-root.conf</source>
+	<destination>/etc</destination>
+      </copy>
+      &ldconfig;
     </stage>
     <stage name="Installing bootscript and configuration">
       <stageinfo>

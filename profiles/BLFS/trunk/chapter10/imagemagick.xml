@@ -23,10 +23,13 @@
         <name>lcms</name>
       </utilizes>
       <utilizes>
+        <name>libpng</name>
+      </utilizes>
+      <utilizes>
         <name>libjpeg</name>
       </utilizes>
       <utilizes>
-        <name>libpng</name>
+        <name>freetype</name>
       </utilizes>
       <utilizes>
         <name>libtiff</name>
@@ -35,31 +38,88 @@
         <name>libxml2</name>
       </utilizes>
       <utilizes>
-        <name>libwmf</name>
+        <name>mozilla</name>
       </utilizes>
       <utilizes>
-        <name>libexif</name>
+        <name>tex</name>
       </utilizes>
       <utilizes>
-        <name>flashpix</name>
+        <name>gimp</name>
       </utilizes>
       <utilizes>
-        <name>jbig</name>
+        <name>sane</name>
       </utilizes>
       <utilizes>
-        <name>jasper</name>
+        <name>wget</name>
+      </utilizes>
+      <utilizes>
+        <name>enscript</name>
       </utilizes>
       <utilizes>
         <name>graphviz</name>
       </utilizes>
       <utilizes>
-        <name>corefonts</name>
+        <name>flashpix</name>
       </utilizes>
       <utilizes>
-        <name>electricfence</name>
+	<name>jasper</name>
       </utilizes>
       <utilizes>
-        <name>dmalloc</name>
+	<name>jbig-kit</name>
+      </utilizes>
+      <utilizes>
+	<name>libwmf</name>
+      </utilizes>
+      <utilizes>
+	<name>autotrace</name>
+      </utilizes>
+      <utilizes>
+	<name>ralcgm</name>
+      </utilizes>
+      <utilizes>
+	<name>dcraw</name>
+      </utilizes>
+      <utilizes>
+	<name>transfig</name>
+      </utilizes>
+      <utilizes>
+	<name>gnuplot</name>
+      </utilizes>
+      <utilizes>
+	<name>hp2xx</name>
+      </utilizes>
+      <utilizes>
+	<name>html2ps</name>
+      </utilizes>
+      <utilizes>
+	<name>netpbm</name>
+      </utilizes>
+      <utilizes>
+	<name>mpeg2-codec</name>
+      </utilizes>
+      <utilizes>
+	<name>pov-ray</name>
+      </utilizes>
+      <utilizes>
+	<name>utah-raster-toolkit</name>
+      </utilizes>
+      <utilizes>
+	<name>txt2html</name>
+      </utilizes>
+      <utilizes>
+	<name>libexif</name>
+      </utilizes>
+      <utilizes>
+	<name>radiance</name>
+      </utilizes>
+      <utilizes>
+	<name>corefonts</name>
+      </utilizes>
+      <utilizes>
+	<name>electric-fence</name>
+      </utilizes>
+      <utilizes>
+	<name>dmalloc</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
