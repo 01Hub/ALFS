@@ -200,7 +200,7 @@ static INLINE void read_descriptor(int pfd)
 	}
 }
 
-static INLINE int do_execute_command(const char *cmdstring)
+int execute_direct_command(const char *command, char *const argv[])
 {
 	int status, pfd[2];
 	pid_t got_pid, command_pid = 0;
@@ -242,7 +242,7 @@ static INLINE int do_execute_command(const char *cmdstring)
 				strerror(errno));
 		}
 
-		execlp("sh", "sh", "-c", cmdstring, NULL);
+		execvp(command, argv);
 
 		Nprint_err("Executing command using \"sh\" failed: %s",
 			strerror(errno));
@@ -288,11 +288,12 @@ static INLINE int do_execute_command(const char *cmdstring)
 	return status;
 }
 
-int execute_command(const char *format, ...)
+int execute_shell_command(element_s *element, const char *format, ...)
 {
 	va_list ap;
 	int status = 0;
 	char command[MAX_COMMAND_LEN];
+	char *args[4];
 
 
 	va_start(ap, format);
@@ -300,7 +301,37 @@ int execute_command(const char *format, ...)
 	va_end(ap);
 
 	if (status > -1 && status < (int) sizeof command) {
-		status = do_execute_command(command);
+		args[0] = "sh";
+		args[1] = "-c";
+		args[2] = command;
+		args[3] = NULL;
+		status = execute_direct_command("sh", args);
+	} else {
+		Nprint_err("System command is too long.");
+		return -1;
+	}
+
+	return status;
+}
+
+int execute_command(const char *format, ...)
+{
+	va_list ap;
+	int status = 0;
+	char command[MAX_COMMAND_LEN];
+	char *args[4];
+
+
+	va_start(ap, format);
+	status = vsnprintf(command, sizeof command, format, ap);
+	va_end(ap);
+
+	if (status > -1 && status < (int) sizeof command) {
+		args[0] = "sh";
+		args[1] = "-c";
+		args[2] = command;
+		args[3] = NULL;
+		status = execute_direct_command("sh", args);
 	} else {
 		Nprint_err("System command is too long.");
 		return -1;

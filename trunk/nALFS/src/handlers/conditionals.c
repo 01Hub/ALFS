@@ -226,11 +226,15 @@ static int shelltest_test_3_2(element_s *element, int *result)
 
 static int package_version_test_3_2(element_s *element, int *result)
 {
+	(void) element;
+	(void) result;
 	return 0;
 }
 
 static int package_built_test_3_2(element_s *element, int *result)
 {
+	(void) element;
+	(void) result;
 	return 0;
 }
 #endif

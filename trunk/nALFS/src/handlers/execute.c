@@ -207,6 +207,7 @@ static int execute_main_ver3_2(element_s *el)
 		FILE *temp_script;
 		char *tok;
 		char *temp_file_name;
+		char *args[2];
 
 		temp_file_name = xstrdup(*opt_alfs_directory);
 		append_str(&temp_file_name, "/");
@@ -224,7 +225,9 @@ static int execute_main_ver3_2(element_s *el)
 					Nprint_h_err("    %s (%s)", temp_file_name, strerror(errno));
 				} else {
 					Nprint_h("Executing script in %s:", base);
-					status = execute_command(temp_file_name);
+					args[0] = "nALFS_temp_script";
+					args[1] = NULL;
+					status = execute_direct_command(temp_file_name, args);
 				}
 				unlink(temp_file_name);
 			} else {
