@@ -4,7 +4,7 @@
        Version : CVS
        Author:   V. Dzuba
        Updates:  Kevin P. Fleming
-       Date:     October 27, 2003
+       Date:     February 5, 2004
 
        The current version of the DTD is available at:
              http://www.linuxfromscratch.org/alfs/downloads/stable
@@ -21,12 +21,15 @@
 <!ENTITY apos   "&#39;"> 
 <!ENTITY quot   "&#34;"> 
 
-<!ENTITY % ops "configure | copy | download | execute | link | make | mkdir | move | ownership | package | patch | permissions | remove | search_replace | stage | textdump | unpack">
+<!ENTITY % ops "configure | copy | download | execute | if | link | make | mkdir | move | ownership | package | patch | permissions | remove | search_replace | stage | textdump | unpack">
+<!ENTITY % tests "test | package-built | package-version | and | or | not">
 
 <!ELEMENT alfs           ((%ops;)*)>
 <!ATTLIST alfs
           base           CDATA #IMPLIED
           version        CDATA #FIXED "3.2">
+
+<!ELEMENT and            ((%tests;)*)>
 
 <!ELEMENT archive        (#PCDATA)>
 
@@ -53,6 +56,8 @@
 
 <!ELEMENT download       (file, url*, destination, digest?)>
 
+<!ELEMENT else           (stageinfo?, (alfs | %ops;)*)>
+
 <!ELEMENT execute        ((param | prefix)*)>
 <!ATTLIST execute
           base           CDATA #IMPLIED
@@ -63,6 +68,8 @@
 <!ELEMENT file           (#PCDATA)>
 
 <!ELEMENT find           (#PCDATA)>
+
+<!ELEMENT if		 ((%tests;)+, then?, else?)
 
 <!ELEMENT item           (#PCDATA)>
 
@@ -89,7 +96,11 @@
 
 <!ELEMENT name           (#PCDATA)>
 
+<!ELEMENT not            (%tests;)>
+
 <!ELEMENT option         (#PCDATA)>
+
+<!ELEMENT or             ((%tests;)*)>
 
 <!ELEMENT ownership      (option?, name+)>
 <!ATTLIST ownership
@@ -145,10 +156,14 @@
 
 <!ELEMENT target         (#PCDATA)>
 
+<!ELEMENT test           (#PCDATA)>
+
 <!ELEMENT textdump       (file, content)>
 <!ATTLIST textdump
           base           CDATA #IMPLIED
 	  mode           CDATA #IMPLIED>
+
+<!ELEMENT then           (stageinfo?, (alfs | %ops;)*)>
 
 <!ELEMENT unpack         (digest?, reference*, archive, destination)>
 
