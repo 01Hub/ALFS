@@ -8,8 +8,8 @@
         $LastChangedRevision$ 
 -->
 
-<!ENTITY version "1.2-0.3">
-<!ENTITY releasedate "October 14th, 2004">
+<!ENTITY version "1.2-0.4">
+<!ENTITY releasedate "October 22nd, 2004">
 
 <!ENTITY % book         SYSTEM "book/book.ent">
 <!ENTITY % preface      SYSTEM "preface/preface.ent">

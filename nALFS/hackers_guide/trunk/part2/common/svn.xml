@@ -26,13 +26,19 @@ svn://svn.linuxfromscratch.org/ALFS/nALFS/nALFS/trunk \
 ALFS/nALFS</command></screen>
 
 <note><para>SVN commands are very simple and similar to the Concurrent
-Version System (CVS).  When issuing an SVN &quot;co&quot; or
-&quot;update&quot; command, you should be in the top level of your local
-working &quot;sandbox&quot;.  The above command will place the trunk of
-the &book-product; source code into the <filename>ALFS/nALFS</filename>
-directory below the root of your local working &quot;sandbox&quot;
-directory.  This path is arbitrary, you do not have to use
-<filename>ALFS/nALFS</filename>.</para></note>
+Version System (CVS).  When issuing an SVN &quot;co&quot; command, you
+should be in the top level of your local working &quot;sandbox&quot;.
+The above command will place the trunk of the &book-product; source code
+into the <filename>ALFS/nALFS</filename> directory below the root of
+your local working &quot;sandbox&quot; directory.  This path is
+arbitrary, you do not have to use
+<filename>ALFS/nALFS</filename> if you do not want to.</para>
+
+<para>If all you want to do is udpate the local sandbox, then issue
+this command in the local working directory (eg.
+<filename>ALFS/nALFS</filename> in your sandbox:</para>
+
+<emphasis role="bold"><filename>svn update</filename></emphasis></note>
 
 <para>If you are planning on being able to check files back in, you need
 to ensure that you do a priviledged checkout.  To do a priviledged
