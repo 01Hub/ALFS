@@ -1,0 +1,17 @@
+<sect1 id="preface-changelog" xreflabel="ChangeLog">
+<?dbhtml filename="changelog.html" dir="preface"?>
+<title>ChangeLog</title>
+
+<para>&version; - &releasedate;</para>
+
+<itemizedlist>
+
+<listitem><para>September 29th, 2003 [jwrober]: Added the 
+preface. Most of it is empty.</para></listitem>
+
+<listitem><para>September 26th, 2003 [jwrober]: Base document 
+created.</para></listitem>
+
+</itemizedlist>
+
+</sect1>

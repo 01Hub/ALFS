@@ -3,12 +3,14 @@
 			"/usr/share/docbook/docbookx.dtd" [
 
 <!ENTITY nalfs-version "1.1.8">
-<!ENTITY version "&nalfs-version;-20030926">
-<!ENTITY releasedate "September 26th, 2003">
+<!ENTITY version "&nalfs-version;-20030929">
+<!ENTITY releasedate "September 29th, 2003">
 
 <!ENTITY % book SYSTEM "book/book.ent">
+<!ENTITY % preface   SYSTEM "preface/preface.ent">
 
 %book;
+%preface;
 
 ]>
 
