@@ -84,14 +84,14 @@ static int stamp_attribute(const element_s * const element,
 	switch (attr->private) {
 	case STAMP_NAME:
 		if (data->name) {
-			Nprint_err("<stamp>: cannot specify \"name\" more than once.");
+			Nprint_err("<%s>: cannot specify \"name\" more than once.", element->handler->name);
 			return 1;
 		}
 		data->name = xstrdup(value);
 		return 0;
 	case STAMP_VERSION:
 		if (data->version) {
-			Nprint_err("<stamp>: cannot specify \"version\" more than once.");
+			Nprint_err("<%s>: cannot specify \"version\" more than once.", element->handler->name);
 			return 1;
 		}
 		data->version = xstrdup(value);
@@ -106,12 +106,12 @@ static int stamp_valid_data(const element_s * const element)
 	struct stamp_data *data = (struct stamp_data *) element->handler_data;
 
 	if (!data->name) {
-		Nprint_err("<stamp>: \"name\" cannot be empty.");
+		Nprint_err("<%s>: \"name\" cannot be empty.", element->handler->name);
 		return 0;
 	}
 
 	if (!data->version) {
-		Nprint_err("<stamp>: \"version\" cannot be empty.");
+		Nprint_err("<%s>: \"version\" cannot be empty.", element->handler->name);
 		return 0;
 	}
 
