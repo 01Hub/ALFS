@@ -24,3 +24,5 @@ for i in `find . -name "*.xml"`; do
         xmllint --nonet --noent "${i}" > "${i}";
 done
 
+exit 0
+
