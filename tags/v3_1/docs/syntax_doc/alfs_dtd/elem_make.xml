@@ -1,0 +1,75 @@
+<sect1 id="elem_make" xreflabel="Element: &lt;make&gt;">
+<?dbhtml filename="elem_make.html" dir="alfs_dtd"?>
+<title>Element: &lt;make&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT make           ((param | prefix)*)&gt;
+&lt;!ATTLIST make
+          base           CDATA #IMPLIED&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_param"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_prefix"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>make</command> element is one of the top-level operation
+elements. It describes the <userinput>make</userinput> command.</para>
+
+<para>The <command>param</command> child-element allows you to specify
+parameters of the make command.</para>
+
+<para>The <command>prefix</command> child-element allows you to specify an
+environment variable or some other prefix to the make command</para>
+
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
+
+</sect2>
+
+<sect2>
+<title>Example #1</title>
+
+<para>The first example is a make without parameter</para>
+
+<screen><userinput>&lt;make /&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Executing make
+<command>make</command></screen>
+
+</sect2>
+
+<sect2>
+<title>Example #2</title>
+
+<para>The second example is a make with a parameter</para>
+
+<screen><userinput>&lt;make base=&quot;/usr/src/mypackage&quot;&gt;
+	&lt;param&gt;install&lt;/param&gt;
+&lt;/make&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Executing make
+cd /usr/src/mypackage
+<command>make install</command></screen>
+
+</sect2>
+
+</sect1>

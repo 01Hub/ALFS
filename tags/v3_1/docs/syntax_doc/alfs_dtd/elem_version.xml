@@ -1,0 +1,68 @@
+<sect1 id="elem_version" xreflabel="Element: &lt;version&gt;">
+<?dbhtml filename="elem_version.html" dir="alfs_dtd"?>
+<title>Element: &lt;version&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT version        (#PCDATA)&gt;
+&lt;!ATTLIST version
+          condition      (eq | ne | gt | ge | lt | le) #REQUIRED&gt;
+</synopsis>
+
+<para>This element occurs&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_package"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_requires"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_utilizes"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>version</command> element describes a constraint on the
+version of an utilized or required package.</para>
+
+<para>The condition is satisfied if the comparison specified by the
+<command>condition</command> attribute applies between the actual version
+value of the package, and the value specified as the content of the
+element.</para>
+
+<para>When performing the comparison, the sequences of digits are compared
+numerically, while all the other characters are compared using their codes.
+Moreover, any substring is greater than the empty string.</para>
+
+<para>That means, for instance, that 2.0.10 is greater than 2.0.9, 2.0a is
+greater than 2.0 and 2.10 is greater than 2.1a.</para>
+
+<note><para>The algorithm fails for reasonable interpretations of version
+numbers like 3.0 and 3.0beta. Intuitively, 3.0 is greater than 3.0beta, but
+the algorithm returns the opposite.  To indicate for instance that the
+required package must have a version greater than 3.0, one would need two
+<command>version</command> elements, to require that the actual version be
+greater than or equal to 3.0, and that it be different from
+3.0beta.</para></note>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;packageinfo&gt;
+	&lt;requires&gt;
+		&lt;name&gt;guile&lt;/name&gt;
+		&lt;version condition="ge"&gt;1.5&lt;/version&gt;
+	&lt;/requires&gt;
+&lt;/packageinfo&gt;</userinput></screen>
+
+<para>This signifies that the package being build requires
+<command>guile</command> in its
+version 1.5 or more recent.</para>
+
+<para>There is no equivalent Bash script example for this element.</para>
+
+</sect2>
+
+</sect1>

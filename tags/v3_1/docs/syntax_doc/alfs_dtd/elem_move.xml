@@ -1,0 +1,72 @@
+<sect1 id="elem_move" xreflabel="Element: &lt;move&gt;">
+<?dbhtml filename="elem_move.html" dir="alfs_dtd"?>
+<title>Element: &lt;move&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT move           (option?, source+, destination)&gt;
+&lt;!ATTLIST move
+          base           CDATA #IMPLIED&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_option"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_source"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_destination"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>move</command> element is one of the top-level operation
+elements. It can be used to move one or more files and/or directories into
+a destination directory, or to rename a single file or directory.</para>
+
+<para>The <command>option</command> child-element provides a means to pass
+an option to the <command>mv</command> command.</para>
+
+<note><para>Not all of the <command>mv</command> command's options are in
+every implementation.  Refer to the documentation for your implementation
+to determine what options are available.</para></note>
+
+<para>When processing this element, you move each source to the
+destination, using the specified option if present.</para>
+
+<para>The <command>source</command> child-element contains the name of the
+source file and its directory.</para>
+
+<para>The <command>destination</command> child-element contains the name of
+the destination directory (and, optionally, the command) for the
+<command>mv</command> command.</para>
+
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;move&gt;
+	&lt;source&gt;/usr/src/mypackage/config.txt&lt;/source&gt;
+	&lt;destination&gt;/opt/mypackage/config.txt&lt;/destination&gt;
+&lt;/move&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Move ' /usr/src/mypackage/config.txt /opt/mypackage/config.txt'
+<command>mv /usr/src/mypackage/config.txt /opt/mypackage/config.txt</command></screen>
+
+</sect2>
+
+</sect1>

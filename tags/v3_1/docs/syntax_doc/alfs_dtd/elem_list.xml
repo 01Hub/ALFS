@@ -1,0 +1,43 @@
+<sect1 id="elem_list" xreflabel="Element: &lt;list&gt;">
+<?dbhtml filename="elem_list.html" dir="alfs_dtd"?>
+<title>Element: &lt;list&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT list           (item | list)+&gt;
+&lt;!ATTLIST list
+          type           (bullet | number) "bullet"&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_description"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_item"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>list</command> element contains a list of items or
+sub-lists in a description.</para>
+
+<para>The <command>type</command> attribute provides a way to define a
+numbered or bulleted list</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<para>Refer to the parent <xref linkend="elem_description"/> for an
+example.</para>
+
+</sect2>
+
+</sect1>

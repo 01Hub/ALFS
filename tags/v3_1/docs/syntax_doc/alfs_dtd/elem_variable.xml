@@ -1,0 +1,86 @@
+<sect1 id="elem_variable" xreflabel="Element: &lt;variable&gt;">
+<?dbhtml filename="elem_variable.html" dir="alfs_dtd"?>
+<title>Element: &lt;variable&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT variable       (#PCDATA)&gt;
+&lt;!ATTLIST variable
+          name           CDATA #REQUIRED
+          mode           CDATA #IMPLIED&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_environment"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>variable</command> element allows you to add a variable
+definition to the system environment.</para>
+
+<para>The name of the variable is given by the <command>name</command>
+attribute of the element.</para>
+
+<para>The value of the variable is given by the textual content of the
+element.</para>
+
+<para>The <command>mode</command> attribute can take the value
+<literal>"append"</literal>, in which case the content of the element is
+appended to the value of the environment variable.</para>
+
+<para>The <command>mode</command> attribute can also take the value
+<literal>"prepend"</literal>, in which case the content of the element is
+prepended to the value of the environment variable.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;stage&gt;
+	&lt;stageinfo&gt;
+		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
+		&lt;environment&gt;
+			&lt;variable name=&quot;GCCFLAGS&quot;&gt;-O2&lt;/variable&gt;
+			&lt;variable name=&quot;PATH&quot; mode=&quot;append&quot;&gt;:/opt/foo&lt;/variable&gt;
+		&lt;/environment&gt;
+	&lt;/stageinfo&gt;
+
+	&lt;configure /&gt;
+
+	&lt;make /&gt;
+
+	&lt;make&gt;
+		&lt;param&gt;install&lt;/param&gt;
+	&lt;/make&gt;
+&lt;/stage&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Stage
+
+export GCCFLAGS=-O2
+export PATH=${PATH}:/opt/foo
+echo Executing configure
+cd /usr/src/gzip.1.2.4a
+<command>./configure</command>
+
+echo Executing make
+cd /usr/src/gzip.1.2.4a
+<command>make</command>
+
+echo Executing make
+cd /usr/src/gzip.1.2.4a
+<command>make install</command>
+
+echo Exiting stage</screen>
+
+</sect2>
+
+</sect1>

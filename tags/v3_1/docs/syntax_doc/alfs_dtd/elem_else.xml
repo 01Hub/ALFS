@@ -1,0 +1,52 @@
+<sect1 id="elem_else" xreflabel="Element: &lt;else&gt;">
+<?dbhtml filename="elem_else.html" dir="alfs_dtd"?>
+<title>Element: &lt;else&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT else        (stageinfo?,(configure|copy|download|execute|
+                                       if|xref|make|mkdir|move|ownership|package|
+                                       patch|permissions|remove|search_replace|
+                                       stage|textdump|unpack)*)>
+</synopsis>
+
+<para>This element occurs in
+<xref xrefend="elem_if">if</xref>.
+</para>
+
+<para>See also :
+<xref xrefend="elem_configure">configure</xref>,
+<xref xrefend="elem_copy">copy</xref>,
+<xref xrefend="elem_download">download</xref>,
+<xref xrefend="elem_execute">execute</xref>,
+<xref xrefend="elem_if">if</xref>,
+<xref xrefend="elem_xref">xref</xref>,
+<xref xrefend="elem_make">make</xref>,
+<xref xrefend="elem_mkdir">mkdir</xref>,
+<xref xrefend="elem_move">move</xref>,
+<xref xrefend="elem_ownership">ownership</xref>,
+<xref xrefend="elem_package">package</xref>,
+<xref xrefend="elem_patch">patch</xref>,
+<xref xrefend="elem_permissions">permissions</xref>,
+<xref xrefend="elem_remove">remove</xref>,
+<xref xrefend="elem_search_replace">search_replace</xref>,
+<xref xrefend="elem_stageinfo">stageinfo</xref>,
+<xref xrefend="elem_textdump">textdump</xref>,
+<xref xrefend="elem_unpack">unpack</xref>.
+</para>
+
+</sect2>
+
+
+<sect2>
+<title>Description</title>
+
+<para>This element groups the elements that should be executed if the test
+performed when evaluating an <command>if</command> element isn't
+satisfied.</para>
+
+</sect2>
+
+</sect1>

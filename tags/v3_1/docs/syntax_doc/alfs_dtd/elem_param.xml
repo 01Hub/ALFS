@@ -1,0 +1,43 @@
+<sect1 id="elem_param" xreflabel="Element: &lt;param&gt;">
+<?dbhtml filename="elem_param.html" dir="alfs_dtd"?>
+<title>Element: &lt;param&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT param          (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_execute"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_make"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_patch"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>This element is used to specify a parameter for the parent
+element.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;make&gt;
+	&lt;param&gt;install&lt;/param&gt;
+&lt;/make&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Executing make
+<command>make install</command></screen>
+
+</sect2>
+
+</sect1>

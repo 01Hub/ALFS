@@ -1,0 +1,75 @@
+<sect1 id="elem_link" xreflabel="Element: &lt;link&gt;">
+<?dbhtml filename="elem_link.html" dir="alfs_dtd"?>
+<title>Element: &lt;link&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT link           (option?, target+, name)&gt;
+&lt;!ATTLIST link
+          base           CDATA #IMPLIED
+          type           CDATA #IMPLIED&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_option"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_target"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_name"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>link</command> element is one of the top-level operation
+elements. It allows you to create a hard or symbolic link.</para>
+
+<para>The <command>target</command> child-element gives the name(s) of the
+target.</para>
+
+<para>The <command>option</command> child-element provides a means to pass
+an option to the <command>ln</command> command.</para>
+
+<note><para>Not all of the <command>ln</command> command's options are in
+every implementation. Refer to the documentation for your implementation to
+determine what options are available.</para></note>
+
+<para>The <command>name</command> child-element gives the name of the link.
+When there are several targets, this must be the name of a directory, in
+which the links to the targets will be created.</para>
+
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
+
+<para>The <command>type</command> attribute generally can have one of two
+values: &quot;symbolic&quot; or &quot;hard&quot; to go along with how the
+<command>ln</command> works.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;link type=&quot;symbolic&quot;&gt;
+	&lt;target&gt;share/man&lt;/target&gt;
+	&lt;target&gt;share/doc&lt;/target&gt;
+	&lt;target&gt;share/info&lt;/target&gt;
+	&lt;name&gt;/usr/local&lt;/name&gt;
+&lt;/link&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo 'Linking  share/man share/doc share/info into /usr/local'
+<command>ln -s  share/man share/doc share/info /usr/local</command></screen>
+
+</sect2>
+
+</sect1>

@@ -1,0 +1,107 @@
+<sect1 id="elem_configure" xreflabel="Element&nbsp;: &lt;configure&gt;">
+<?dbhtml filename="elem_configure.html" dir="alfs_dtd"?>
+<title>Element&nbsp;: &lt;configure&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT configure      ((param | prefix)*)&gt;
+&lt;!ATTLIST configure
+          base           CDATA #IMPLIED
+          command        CDATA #IMPLIED&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_param"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_prefix"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>configure</command> element is one of the top-level
+operation elements. The <command>configure</command> element is used to
+describe the <userinput>configure</userinput> command.</para>
+
+<para>When processing the element, you execute the command
+<userinput>./configure</userinput> with the parameter(s) and prefix(es)
+specified.</para>
+
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
+
+<para>The <command>command</command> attribute allows you to specify a
+custom command if you don't want to use the default
+<userinput>./configure</userinput>. This is extremely useful when running
+<userinput>./configure</userinput> in a build directory outside the main source
+directory.  The packages <command>gcc</command> and
+<command>glibc</command> often require this.</para>
+
+</sect2>
+
+<sect2>
+<title>Example #1</title>
+
+<para>This first example calls <command>configure</command> without any
+parameters&nbsp;:</para>
+
+<screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
+&lt;/configure&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Executing configure
+cd /usr/src/mypackage/
+<command>./configure</command></screen>
+
+</sect2>
+
+<sect2>
+<title>Example #2</title>
+
+<para>This second example calls <command>configure</command> with some
+prefixes and a parameter&nbsp;: </para>
+
+<screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
+	&lt;prefix&gt;CFLAGS=&quot;...&quot;&lt;prefix&gt;
+	&lt;prefix&gt;CXXFLAGS=&quot;...&quot;&lt;prefix&gt;
+	&lt;param&gt;--prefix=/opt/mypackage&lt;/param&gt;
+&lt;/configure&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Executing configure
+cd /usr/src/mypackage/
+<command>CFLAGS="..." CXXFLAGS="..." ./configure --prefix=/opt/mypackage</command></screen>
+
+</sect2>
+
+<sect2>
+<title>Example #3</title>
+
+<para>This third example calls <command>configure</command> with a
+parameter and uses prefix&nbsp;:</para>
+
+<screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
+	&lt;prefix&gt;PATH=/usr/local/bin&lt;/prefix&gt;
+	&lt;param&gt;--prefix=/opt/mypackage&lt;/param&gt;
+&lt;/configure&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Executing configure
+cd /usr/src/mypackage/
+<command>PATH=/usr/local/bin ./configure --prefix=/opt/mypackage</command></screen>
+
+</sect2>
+
+</sect1>

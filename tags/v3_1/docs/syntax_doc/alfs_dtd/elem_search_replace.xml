@@ -1,0 +1,67 @@
+<sect1 id="elem_search_replace" xreflabel="Element: &lt;search_replace&gt;">
+<?dbhtml filename="elem_search_replace.html" dir="alfs_dtd"?>
+<title>Element: &lt;search_replace&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT search_replace (file, find, replace)&gt;
+&lt;!ATTLIST configure
+          base           CDATA #IMPLIED&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_file"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_find"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_replace"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>search_replace</command> element is one of the top-level
+operation elements.  It is used to perform a search and replace operation
+of a file on a file's contents.</para>
+
+<para>The <command>file</command> child-element contains the
+filename.</para>
+
+<para>The <command>find</command> child-element contains the string to be
+searched.</para>
+
+<para>The <command>replace</command> child-element contains the replacement
+string.</para>
+
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;search_replace base=&quot;/usr/src/mypackage&quot;&gt;
+	&lt;file&gt;runit.sh&lt;/file&gt;
+	&lt;find&gt;BINDIR&lt;/find&gt;
+	&lt;replace&gt;/bin&lt;/replace&gt;
+&lt;/search_replace&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Performing substitution in runit.sh
+cd /usr/src/mypackage
+cp runit.sh /tmp/foo.$$
+<command>sed -e 's/BINDIR/\/bin/' /tmp/foo.$$ > runit.sh</command></screen>
+
+</sect2>
+
+</sect1>

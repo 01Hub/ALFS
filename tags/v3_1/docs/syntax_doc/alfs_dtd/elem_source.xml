@@ -1,0 +1,34 @@
+<sect1 id="elem_source" xreflabel="Element: &lt;source&gt;">
+<?dbhtml filename="elem_source.html" dir="alfs_dtd"?>
+<title>Element: &lt;source&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT source         (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_move"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>source</command> element is used to specify the name of
+the source in the parent element.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<para>See any one of the parent elements for an example.</para>
+
+</sect2>
+
+</sect1>

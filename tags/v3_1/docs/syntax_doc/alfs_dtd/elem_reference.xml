@@ -1,0 +1,51 @@
+<sect1 id="elem_reference" xreflabel="Element: &lt;reference&gt;">
+<?dbhtml filename="elem_reference.html" dir="alfs_dtd"?>
+<title>Element: &lt;reference&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT reference      (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_unpack"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>reference</command> element is used to specify the URL
+of the reference archive to download if the local copy is not
+available.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;unpack&gt;
+	&lt;reference&gt;ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz&lt;/reference&gt;
+	&lt;archive&gt;/usr/src/lfs-packages/gzip.1.2.4a&lt;/archive&gt;
+	&lt;destination&gt;/usr/src&lt;/destination&gt;
+&lt;/unpack&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
+  echo Retrieving  ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
+[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
+  wget -O /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
+[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
+  echo Archive does not exist &amp;&amp; exit 3
+
+cd /usr/src
+<command>tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></screen>
+
+</sect2>
+
+</sect1>

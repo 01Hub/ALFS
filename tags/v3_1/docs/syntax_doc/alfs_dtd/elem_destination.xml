@@ -1,0 +1,67 @@
+<sect1 id="elem_destination" xreflabel="Element: &lt;destination&gt;">
+<?dbhtml filename="elem_destination.html" dir="alfs_dtd"?>
+<title>Element: &lt;destination&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT destination    (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_download"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_move"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_unpack"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>destination</command> element is used to specify the
+name of the destination file or directory when processing an element in
+which it occurs.</para>
+
+</sect2>
+
+<sect2>
+<title>Example #1</title>
+
+<para>The first example is an unpack command.</para>
+
+<screen><userinput>&lt;unpack&gt;
+	&lt;archive&gt;/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive&gt;
+	&lt;destination&gt;/usr/src&lt;/destination&gt;
+&lt;/unpack&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+cd /usr/src
+<command>tar -xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></screen>
+
+</sect2>
+
+<sect2>
+<title>Example #2</title>
+
+<para>The second example is a copy command.</para>
+
+<screen><userinput>&lt;copy base="/usr/src/mypackage"&gt;
+	&lt;option&gt;force&lt;/option&gt;
+	&lt;source&gt;config.txt&lt;/source&gt;
+	&lt;destination&gt;/opt/mypackage/config.txt&lt;/destination&gt;
+&lt;/copy&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Copying 'config.txt into /opt/mypackage/config.txt'
+cd /usr/src/mypackage
+<command>cp -f  config.txt /opt/mypackage/config.txt</command></screen>
+
+</sect2>
+
+</sect1>

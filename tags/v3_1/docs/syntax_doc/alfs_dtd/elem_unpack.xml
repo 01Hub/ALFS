@@ -1,0 +1,65 @@
+<sect1 id="elem_unpack" xreflabel="Element: &lt;unpack&gt;">
+<?dbhtml filename="elem_unpack.html" dir="alfs_dtd"?>
+<title>Element: &lt;unpack&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT unpack         (digest?, reference*, archive, destination)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_archive"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_destination"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_digest"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_reference"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>unpack</command> element is one of the top-level
+operation elements. It is used to unpack an archive into a destination
+directory.</para>
+
+<para>The <command>reference</command> child-element gives the URL of the
+archive; it is only used if the archive file is not available
+locally.</para>
+
+<para>The <command>digest</command> child-element gives the digest of the
+archive, using the digest type specified in the <command>type</command>
+attribute. See <xref linkend="elem_digest"/>.</para>
+
+<para>The <command>archive</command> child-element gives the name of the
+archive, and the <command>destination</command> child-element gives the
+name of the directory in which the archive is unpacked.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;unpack&gt;
+	&lt;reference&gt;ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz&lt;/reference&gt;
+	&lt;archive&gt;/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive&gt;
+	&lt;destination&gt;/usr/src&lt;/destination&gt;
+&lt;/unpack&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+wget -nc -O /usr/src/lfs-packages/gzip-1.2.4a.tar.gz ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
+cd /usr/src
+<command>tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></screen>
+
+</sect2>
+
+</sect1>

@@ -1,0 +1,33 @@
+<sect1 id="elem_replace" xreflabel="Element: &lt;replace&gt;">
+<?dbhtml filename="elem_replace.html" dir="alfs_dtd"?>
+<title>Element: &lt;replace&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT replace        (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_search_replace"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>replace</command> element allows you to specify the
+replacement string in a search and replace operation.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<para>Refer to <xref linkend="elem_search_replace"/> for an example.</para>
+
+</sect2>
+
+</sect1>

@@ -1,0 +1,106 @@
+<sect1 id="elem_base" xreflabel="Element&nbsp;: &lt;base&gt;">
+<?dbhtml filename="elem_base.html" dir="alfs_dtd"?>
+<title>Element&nbsp;: &lt;base&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT base           (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_stageinfo"/>
+</para>
+
+<para>This element occurs as an attribute in the elements&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_execute"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_link"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_make"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_mkdir"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_move"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_ownership"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_patch"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_permissions"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_search_replace"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_textdump"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>base</command> element when used as an <emphasis
+role="bold">element</emphasis> specifies the base directory which will be
+used by all the commands in the stage (inherited), unless another base is
+specified at the level of the command as an attribute.</para>
+
+<para>The <command>base</command> element when used as an <emphasis
+role="bold">attribute</emphasis> specifies the base directory which will be
+used by any parent element it was called from.</para>
+
+<important><para>It is very important to understand the difference between
+the two uses. Most importantly understand that the <command>base</command>
+element/attribute has no effect on the parent element it is used in unless
+relative paths are used in the parent element's other attributes and child
+elements.</para></important>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;stage name=&quot;Install gzip&quot;&gt;
+
+	&lt;stageinfo&gt;
+
+		&lt;root&gt;/mnt/lfs&lt;/root&gt;
+		&lt;user&gt;lfs&lt;/user&gt;
+		&lt;environment&gt;
+			&lt;variable name="PATH"&gt;/bin:/sbin&lt;/variable&gt;
+		&lt;/environment&gt;
+		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
+
+	&lt;/stageinfo&gt;
+
+	&lt;configure&gt;
+	&lt;/configure&gt;
+
+	&lt;make&gt;
+	&lt;/make&gt;
+
+	&lt;make&gt;
+		&lt;param&gt;install&lt;/param&gt;
+	&lt;/make&gt;
+
+&lt;/stage&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Executing configure
+su - lfs
+export PATH=/bin:/sbin
+cd /usr/src/gzip.1.2.4a
+<command>./configure</command>
+
+echo Executing make
+su - lfs
+export PATH=/bin:/sbin
+cd /usr/src/gzip.1.2.4a
+<command>make</command>
+
+echo Executing make
+su - lfs
+export PATH=/bin:/sbin
+cd /usr/src/gzip.1.2.4a
+<command>make install</command>
+
+echo Exiting stage</screen>
+
+</sect2>
+
+</sect1>

@@ -1,0 +1,36 @@
+<sect1 id="elem_url" xreflabel="Element: &lt;url&gt;">
+<?dbhtml filename="elem_url.html" dir="alfs_dtd"?>
+<title>Element: &lt;url&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT url            (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_download"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>url</command> element allows you to specify the Uniform
+Resource Locator (URL) of the directory containing the file to be
+downloaded when processing a <command>download</command> element.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<para>Refer to <xref linkend="elem_download"/> for an example.</para>
+
+<para>There is no equivalent Bash script example for this element.</para>
+
+</sect2>
+
+</sect1>

@@ -1,0 +1,68 @@
+<sect1 id="elem_environment" xreflabel="Element: &lt;environment&gt;">
+<?dbhtml filename="elem_environment.html" dir="alfs_dtd"?>
+<title>Element: &lt;environment&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT environment    (variable+)&gt;
+&lt;!ATTLIST environment
+          mode           (append | prepend) #IMPLIED&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_stageinfo"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_variable"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>environment</command> element allows you to define one
+or more environment variables to be added to the system environment used
+when calling the commands of the stage to which it applies.</para>
+
+<para>By default, the supplied value replaces any existing value for the
+specified variable. The <command>mode</command> attribute allows you to
+specify whether the supplied value should be prepended or appended to the
+existing value.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;stage&gt;
+	&lt;stageinfo&gt;
+
+		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
+
+		&lt;environment&gt;
+			&lt;variable name="GCCFLAGS"&gt;-O2&lt;/variable&gt;
+			&lt;variable name="PATH" mode="prepend"&gt;/usr/src/gzip.1.2.4a:&lt;/variable&gt;
+			&lt;variable name="LDFLAGS" mode="append"&gt; -s&lt;/variable&gt;
+		&lt;/environment&gt;
+
+	&lt;/stageinfo&gt;
+
+&lt;/stage&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Stage
+
+export GCCFLAGS=-O2
+export PATH=/usr/src/gzip.1.2.4a:$PATH
+export LDFLAGS="$LDFLAGS -s"
+
+echo Exiting stage</screen>
+
+</sect2>
+
+</sect1>
