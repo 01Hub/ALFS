@@ -137,6 +137,7 @@ int setenv_main(element_s *el)
 char *setenv_parameters[] = { "variable", "value", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
+#ifdef HANDLER_SYNTAX_2_0
 	{
 		.name = "setenv",
 		.description = "Set environment",
@@ -147,7 +148,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
-	}, {
+	},
+#endif
+#ifdef HANDLER_SYNTAX_3_0
+	{
 		.name = "setenv",
 		.description = "Set environment",
 		.syntax_version = "3.0",
@@ -157,7 +161,9 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
-	}, {
+	},
+#endif
+	{
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}
 };

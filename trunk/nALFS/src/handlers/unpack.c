@@ -341,6 +341,7 @@ char *unpack_parameters_ver3[] =
 { "digest", "reference", "archive", "destination", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
+#ifdef HANDLER_SYNTAX_2_0
 	{
 		.name = "unpack",
 		.description = "Unpack",
@@ -351,7 +352,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
-	}, {
+	},
+#endif
+#ifdef HANDLER_SYNTAX_3_0
+	{
 		.name = "unpack",
 		.description = "Unpack",
 		.syntax_version = "3.0",
@@ -361,7 +365,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
-	}, {
+	},
+#endif
+#ifdef HANDLER_SYNTAX_3_1
+	{
 		.name = "unpack",
 		.description = "Unpack",
 		.syntax_version = "3.1",
@@ -371,7 +378,9 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
-	}, {
+	},
+#endif
+	{
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}
 };

@@ -65,6 +65,7 @@ char *stamp_parameters[] = { NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "name", "version" };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
+#ifdef HANDLER_SYNTAX_3_0
 	{
 		.name = "stamp",
 		.description = "Produce a stamp",
@@ -75,7 +76,9 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = NULL,
 		.is_action = 0,
 		.priority = 0
-	}, {
+	},
+#endif
+	{
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}
 };

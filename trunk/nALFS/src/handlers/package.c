@@ -274,6 +274,7 @@ char *package_parameters_ver3[] = {
 // char *HANDLER_SYMBOL(attributes)[] = { "name", "version", "logfile", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
+#ifdef HANDLER_SYNTAX_2_0
 	{
 		.name = "package",
 		.description = "Package",
@@ -284,7 +285,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = package_data_ver2,
 		.is_action = 0,
 		.priority = 0
-	}, {
+	},
+#endif
+#ifdef HANDLER_SYNTAX_3_0
+	{
 		.name = "package",
 		.description = "Package",
 		.syntax_version = "3.0",
@@ -294,7 +298,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = package_data_ver3,
 		.is_action = 0,
 		.priority = 0
-	}, {
+	},
+#endif
+#ifdef HANDLER_SYNTAX_3_1
+	{
 		.name = "package",
 		.description = "Package",
 		.syntax_version = "3.1",
@@ -304,7 +311,9 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = package_data_ver3,
 		.is_action = 0,
 		.priority = 0
-	}, {
+	},
+#endif
+	{
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}
 };
