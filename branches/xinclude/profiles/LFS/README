@@ -2,7 +2,7 @@
         LFS-CVS PROFILE
 ==============================================
 
-This profile must be used with nALFS 1.1.8 or later.
+This profile must be used with nALFS 1.2.3 or later.
 
 To allow an easier customization of the configuration files,
 there is now a configuration directory for the different
