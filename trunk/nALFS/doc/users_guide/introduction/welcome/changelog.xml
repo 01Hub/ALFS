@@ -6,6 +6,9 @@
 
 <itemizedlist>
 
+<listitem><para>June 8th, 2004 [jwrober]: Changed the required version of
+libxml2 to 2.6.0 or greater.</para></listitem>
+
 <listitem><para>May 31st, 2004 [jwrober]: Moved files and directories
 around to match the Hackers Guide better.</para></listitem>
 

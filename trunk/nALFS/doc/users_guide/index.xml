@@ -2,9 +2,9 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
 		"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 
-<!ENTITY nalfs-version "1.2.2">
-<!ENTITY version "&nalfs-version;-2004-05-31">
-<!ENTITY releasedate "May 31st, 2004">
+<!ENTITY nalfs-version "1.2.3">
+<!ENTITY version "&nalfs-version;-2004-06-08">
+<!ENTITY releasedate "June 8th, 2004">
 
 <!ENTITY % book		SYSTEM "book/book.ent">
 <!ENTITY % preface	SYSTEM "preface/preface.ent">
