@@ -88,7 +88,7 @@
         <destination>sendmail.mc</destination>
       </copy>
       <execute base="&build_dir;/&sendmail-directory;/cf/cf" command="sh Build">
-        <param>sendmail.mc</param>
+        <param>sendmail.cf</param>
       </execute>
       <mkdir>
         <option>parents</option>
