@@ -32,13 +32,10 @@
     <replace> /lib/&glibc-loader;</replace>
   </search_replace>
 
-  <search_replace>
-    <file>/tools/lib/gcc/&gcc_target;/&gcc-version;/specs</file>
-    <find>*startfile_prefix_spec:</find>
-    <replace>*startfile_prefix_spec:
-/usr/lib</replace>
-  </search_replace>
-
+  <execute command="perl">
+    <param>-pi -e &apos;s@\*startfile_prefix_spec:\n@$_/usr/lib/@g;&apos;</param>
+    <param>/tools/lib/gcc/&gcc_target;/&gc-version;/specs</param>
+  </execute>
 </stage>
 
 <!-- Test basic functions of toolchain with:
