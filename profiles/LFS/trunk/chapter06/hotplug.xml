@@ -31,7 +31,6 @@
       <remove>/etc/hotplug/net.agent</remove>
       <mkdir>
       	<option>parents</option>
-	<name>/var/log/hotplug</name>
 	<name>/lib/firmware</name>
       </mkdir>
       <execute command="touch /var/log/hotplug/events" />
