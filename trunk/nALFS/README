@@ -101,6 +101,18 @@ To configure, compile, install and run nALFS, just type:
 When you enter the program, type '?' for a list of all available
 commands.
 
+nALFS support (at least) three different ALFS profile versions: 2.0, 3.0 and
+3.1. If not otherwise specified, the build process will build handlers for
+all these versions. If you would like to exclude building handlers for
+profile versions that you do not use, you can include the --enable-syntax
+argument to the configure command, like so:
+
+    ./configure --enable-syntax=3.0,3.1
+
+The --enable-syntax argument accepts a list of versions (separated by
+commas or colons) to build; all other versions present in the source
+tree will be excluded.
+
 nALFS can be built as a static executable, meaning that all its handlers
 and other requirements will be linked into a single file, requiring no
 actual "installation". This will happen automatically if you build nALFS
