@@ -29,7 +29,8 @@
 			<param>-i &packages_dir;/&gpm-patch2;</param>
 		</patch>
 
-		<configure command="LDFLAGS='-lm' ./configure">
+		<configure>
+			<prefix>LDFLAGS='-lm'</prefix>
 			<param>--prefix=/usr</param>
 			<param>--sysconfdir=/etc</param>
 		</configure>
@@ -46,7 +47,7 @@
 			<destination>/etc</destination>
 		</copy>
 
-		<execute command="ldconfig -n -l /usr/lib/libgpm.so.1.19.0" />
+		&ldconfig;
 	</stage>
 
 	<stage name="Installing bootscript and configuration">

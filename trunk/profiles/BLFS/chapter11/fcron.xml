@@ -50,7 +50,9 @@
 		    </content>
 		</textdump>
 
-		<execute command="/etc/rc.d/init.d/sysklogd reload" />
+		<execute command="/etc/rc.d/init.d/sysklogd">
+			<param>reload</param>
+		</execute>
 
 		<configure>
 			<param>--without-sendmail</param>
@@ -62,8 +64,6 @@
 		<make>
 			<param>install</param>
 		</make>
-
-		<execute command="ldconfig -n -l /usr/lib/libfcron.so.1.19.0" />
 	</stage>
 
 	<stage name="Installing bootscript and configuration">
