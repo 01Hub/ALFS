@@ -14,7 +14,7 @@
 
 		<configure command="./configure.gnu">
 			<param>--prefix=/usr</param>
-			<param>-Dpager="/sites/www.linuxfromscratch.org/bin/less -isR"</param>
+			<param>-Dpager="/bin/less -isR"</param>
 		</configure>
 
 		<make />

@@ -7,8 +7,6 @@
 		</unpack>
 
 		<copy>
-			<source>&packages_dir;/&man-manpath-patch;</source>
-			<source>&packages_dir;/&man-pagerpatch;</source>
 			<source>&packages_dir;/&man-80cols-patch;</source>
 			<destination>&build_dir;</destination>
 		</copy>
@@ -22,20 +20,20 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&man-manpath-patch;</param>
-		</patch>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&man-pagerpatch;</param>
-		</patch>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
 			<param>-i ../&man-80cols-patch;</param>
 		</patch>
+
+		<search_replace base="&build_dir;/&man-directory;">
+			<file>configure</file>
+			<find>-is</find>
+			<replace>-isR</replace>
+		</search_replace>
+
+		<search_replace base="&build_dir;/&man-directory;">
+			<file>src/man.conf.in</file>
+   			<find>MANPATH&#x09;/usr/man</find>
+			<replace>#MANPATH /usr/man</replace>
+		</search_replace>
 
 		<configure>
 			<param>-default</param>
@@ -51,8 +49,6 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&man-directory;</remove>
-		<remove>&build_dir;/&man-manpath-patch;</remove>
-		<remove>&build_dir;/&man-pagerpatch;</remove>
 		<remove>&build_dir;/&man-80cols-patch;</remove>
 	</stage>
 </package>
