@@ -45,6 +45,7 @@
 		  <base>&orig_packages_dir;</base>
     </stageinfo>
     <copy>
+		  <source>&kernel-config;</source>
       <source>&autoconf-package;</source>
       <source>&automake-package;</source>
       <source>&bash-package;</source>
