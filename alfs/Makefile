@@ -3,20 +3,23 @@ CFLAGS=-Ilibalfs
 BIN=alfs
 OBJS=build.o alfs.o plugin.o url.o
 
+LDLIBS=`pkg-config gtk+-2.0 --libs`
+
 ifeq ($(OPTS),)
-OPTS=-q
+#OPTS=-q
+#OPTS+=~/stuff/LFS/SVN/lfs/index.xml
 #OPTS+=~/projects/alfs/books/multi-arch/index.xml
-OPTS+=~/projects/alfs/books/book/index.xml
+#OPTS+=~/projects/alfs/books/book/index.xml
 #OPTS+=~/projects/alfs/books/lfs-profile/LFS.xml
 #OPTS+=~/projects/alfs/books/ass/index.xml
 #OPTS+=~/projects/hive/unstable/profile.xml
-#OPTS+=~/projects/alfs/books/blfs/index.xml
+OPTS+=~/projects/alfs/books/blfs/index.xml
 #OPTS+=~/projects/alfs/books/hlfs/index.xml
 #OPTS+=~/projects/alfs/books/book-rng/index.xml
 #OPTS+=~/projects/alfs/books/refbuild/xml/x86-reference-build.xml
 endif
 
-SUBDIRS=libalfs syntax test output
+SUBDIRS=libalfs syntax output
 
 .PHONY: all memcheck run
 

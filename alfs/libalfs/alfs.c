@@ -305,6 +305,7 @@ bool filtered (role role)
 	return false;
 }
 
+// TODO: Inifite loop when the package does not exist
 package *search_pkg (profile *prof, char *name, char *ch)
 {
 	GList *c = prof->ch;

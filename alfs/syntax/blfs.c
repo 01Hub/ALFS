@@ -112,7 +112,6 @@ static void t_url (xmlNodePtr node, void *data)
 	if (isdl)
 	{
 		download *moo = dl_append(prof);
-
 		moo->proto = proto;
 		moo->url = find_attr(node->children, "ulink", "url");
 	}
