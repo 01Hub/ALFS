@@ -1,31 +1,29 @@
-ftp://ftp.fu-berlin.de/unix/linux/mirrors/gentoo/distfiles/ncftp-3.1.7-src.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/ncftp-3.1.7-src.tar.bz2
 
-https://ccvs.cvshome.org/files/documents/19/534/cvs-1.11.18.tar.bz2
-http://www.linuxfromscratch.org/blfs/downloads/svn/cvs-1.11.18-zlib-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/cvs-1.11.18.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/cvs-1.11.18-zlib-1.patch
 
-http://subversion.tigris.org/tarballs/subversion-1.1.3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/subversion-1.1.3.tar.bz2
 
-ftp://ftp.gnu.org/gnu/wget/wget-1.9.1.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/wget-1.9.1.tar.bz2
 
-ftp://ftp.porcupine.org/pub/security/tcp_wrappers_7.6.tar.gz
-http://www.linuxfromscratch.org/blfs/downloads/svn/tcp_wrappers-7.6-shared_lib_plus_plus-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/tcp_wrappers-7.6-gcc34-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/tcp_wrappers_7.6.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/tcp_wrappers-7.6-shared_lib_plus_plus-1.patch
 
-ftp://ftp.porcupine.org/pub/security/portmap_5beta.tar.gz
-http://www.linuxfromscratch.org/blfs/downloads/svn/portmap-5beta-compilation_fixes-3.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/portmap-5beta-glibc_errno_fix-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/portmap_5beta.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/portmap-5beta-compilation_fixes-3.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/portmap-5beta-glibc_errno_fix-1.patch
 
-ftp://ftp.gnu.org/gnu/inetutils/inetutils-1.4.2.tar.gz
-http://www.linuxfromscratch.org/blfs/downloads/svn/inetutils-1.4.2-kernel_headers-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/inetutils-1.4.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/inetutils-1.4.2-kernel_headers-1.patch
 
-ftp://ftp.kernel.org/pub/linux/utils/nfs/nfs-utils-1.0.6.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/nfs-utils-1.0.6.tar.bz2
 
-ftp://platan.vc.cvut.cz/pub/linux/ncpfs/ncpfs-2.2.4.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/ncpfs-2.2.4.tar.bz2
 
-ftp://ftp.udel.edu/pub/ntp/ntp4/ntp-4.2.0.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/ntp-4.2.0.tar.bz2
 
-ftp://ftp.ibiblio.org/pub/Linux/distributions/rootlinux/rootlinux-1.3/source/base/net-tools/net-tools-1.60.tar.gz
-http://www.linuxfromscratch.org/blfs/downloads/svn/net-tools-1.60-gcc34-3.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/net-tools-1.60-kernel_headers-2.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/net-tools-1.60-mii_ioctl-1.patch
-
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/net-tools-1.60.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/net-tools-1.60-gcc34-3.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/net-tools-1.60-kernel_headers-2.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/net-tools-1.60-mii_ioctl-1.patch

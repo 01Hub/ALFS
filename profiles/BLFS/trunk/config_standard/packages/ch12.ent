@@ -1,81 +1,120 @@
 <!--************* packages for chapter 12 *************-->
 
-<!ENTITY python-version   "2.4">
-<!ENTITY python-package   "Python-&python-version;.tar.bz2">
-<!ENTITY python-directory "Python-&python-version;">
-
-<!ENTITY python-gdbm-patch "Python-&python-version;-gdbm-1.patch">
-<!ENTITY python-db43-patch "Python-&python-version;-db43-1.patch">
+<!ENTITY python-version        "2.4">
+<!ENTITY python-package        "Python-&python-version;.tar.bz2">
+<!ENTITY python-directory      "Python-&python-version;">
+<!ENTITY python-gdbm-patch     "Python-&python-version;-gdbm-1.patch">
+<!ENTITY python-db43-patch     "Python-&python-version;-db43-1.patch">
 <!ENTITY python-security-patch "patch.txt">
 
 <!-- Begin Perl Modules -->
-<!ENTITY Astro-FITS-Header-version   "2.8.1">
-<!ENTITY Astro-FITS-Header-package   "Astro-FITS-Header-&Astro-FITS-Header-version;.tar.gz">
-<!ENTITY Astro-FITS-Header-directory "Astro-FITS-Header-&Astro-FITS-Header-version;">
-
-<!ENTITY Digest-HMAC-version "1.01">
-<!ENTITY Digest-HMAC-package "Digest-HMAC-&Digest-HMAC-version;.tar.gz">
-<!ENTITY Digest-HMAC-directory "Digest-HMAC-&Digest-HMAC-version;">
-
-<!ENTITY Digest-SHA1-version "2.10">
-<!ENTITY Digest-SHA1-package "Digest-SHA1-&Digest-SHA1-version;.tar.gz">
-<!ENTITY Digest-SHA1-directory "Digest-SHA1-&Digest-SHA1-version;">
-
-<!ENTITY ExtUtils-F77-version   "1.14">
-<!ENTITY ExtUtils-F77-package   "ExtUtils-F77-&ExtUtils-F77-version;.tar.gz">
-<!ENTITY ExtUtils-F77-directory "ExtUtils-F77-&ExtUtils-F77-version;">
-
-<!ENTITY Filter-version "1.30">
-<!ENTITY Filter-package "Filter-&Filter-version;.tar.gz">
-<!ENTITY Filter-directory "Filter-&Filter-version;">
-
 <!ENTITY Gtk-Perl-version   "0.7009">
-<!ENTITY Gtk-Perl-package   "Gtk-Perl-&Gtk-Perl-version;.tar.gz">
+<!ENTITY Gtk-Perl-package   "Gtk-Perl-&Gtk-Perl-version;.tar.bz2">
 <!ENTITY Gtk-Perl-directory "Gtk-Perl-&Gtk-Perl-version;">
 
-<!ENTITY Inline-version   "0.44">
-<!ENTITY Inline-package   "Inline-&Inline-version;.tar.gz">
-<!ENTITY Inline-directory "Inline-&Inline-version;">
-
-<!ENTITY Module-Info-version "0.26">
-<!ENTITY Module-Info-package "Module-Info-&Module-Info-version;.tar.gz">
-<!ENTITY Module-Info-directory "Module-Info-&Module-Info-version;">
-
-<!ENTITY Net-DNS-version "0.48">
-<!ENTITY Net-DNS-package "Net-DNS-&Net-DNS-version;.tar.gz">
-<!ENTITY Net-DNS-directory "Net-DNS-&Net-DNS-version;">
-
-<!ENTITY Parse-RecDescent-version   "1.94">
-<!ENTITY Parse-RecDescent-package   "Parse-RecDescent-&Parse-RecDescent-version;.tar.gz">
-<!ENTITY Parse-RecDescent-directory "Parse-RecDescent-&Parse-RecDescent-version;">
-
-<!ENTITY PDL-version   "2.4.2">
-<!ENTITY PDL-package   "PDL-&PDL-version;.tar.gz">
-<!ENTITY PDL-directory "PDL-&PDL-version;">
-
-<!ENTITY SGMLSpm-version   "1.03ii">
-<!ENTITY SGMLSpm-package   "SGMLSpm-&SGMLSpm-version;.tar.gz">
-<!ENTITY SGMLSpm-directory "SGMLSpm">
-
-<!ENTITY Term-Readline-Gnu-version "1.15">
-<!ENTITY Term-Readline-Gnu-package "Term-ReadLine-Gnu-&Term-Readline-Gnu-version;.tar.gz">
-<!ENTITY Term-Readline-Gnu-directory "Term-ReadLine-Gnu-&Term-Readline-Gnu-version;">
-
-<!ENTITY Perl-Tk-version   "804.027">
-<!ENTITY Perl-Tk-package   "Tk-&Perl-Tk-version;.tar.gz">
-<!ENTITY Perl-Tk-directory "Tk-&Perl-Tk-version;">
-
-<!ENTITY XML-Writer-version   "0.510">
-<!ENTITY XML-Writer-package   "XML-Writer-&XML-Writer-version;.tar.gz">
+<!ENTITY XML-Writer-version   "0.520">
+<!ENTITY XML-Writer-package   "XML-Writer-&XML-Writer-version;.tar.bz2">
 <!ENTITY XML-Writer-directory "XML-Writer-&XML-Writer-version;">
 
 <!ENTITY XML-Parser-version   "2.34">
-<!ENTITY XML-Parser-package   "XML-Parser-&XML-Parser-version;.tar.gz">
+<!ENTITY XML-Parser-package   "XML-Parser-&XML-Parser-version;.tar.bz2">
 <!ENTITY XML-Parser-directory "XML-Parser-&XML-Parser-version;">
+
+<!ENTITY SGMLSpm-version   "1.03ii">
+<!ENTITY SGMLSpm-package   "SGMLSpm-&SGMLSpm-version;.tar.bz2">
+<!ENTITY SGMLSpm-directory "SGMLSpm">
+
+<!ENTITY Perl-Tk-version   "804.027">
+<!ENTITY Perl-Tk-package   "Tk-&Perl-Tk-version;.tar.bz2">
+<!ENTITY Perl-Tk-directory "Tk-&Perl-Tk-version;">
+
+<!ENTITY Net-DNS-version "0.48">
+<!ENTITY Net-DNS-package "Net-DNS-&Net-DNS-version;.tar.bz2">
+<!ENTITY Net-DNS-directory "Net-DNS-&Net-DNS-version;">
+
+<!ENTITY Digest-HMAC-version "1.01">
+<!ENTITY Digest-HMAC-package "Digest-HMAC-&Digest-HMAC-version;.tar.bz2">
+<!ENTITY Digest-HMAC-directory "Digest-HMAC-&Digest-HMAC-version;">
+
+<!ENTITY Digest-SHA1-version "2.10">
+<!ENTITY Digest-SHA1-package "Digest-SHA1-&Digest-SHA1-version;.tar.bz2">
+<!ENTITY Digest-SHA1-directory "Digest-SHA1-&Digest-SHA1-version;">
+
+<!ENTITY libwww-perl-version   "5.803">
+<!ENTITY libwww-perl-package   "libwww-perl-&libwww-perl-version;.tar.bz2">
+<!ENTITY libwww-perl-directory "libwww-perl-&libwww-perl-version;">
+
+<!ENTITY URI-version   "1.35">
+<!ENTITY URI-package   "URI-&URI-version;.tar.bz2">
+<!ENTITY URI-directory "URI-&URI-version;">
+
+<!ENTITY Business-ISBN-version "1.79">
+<!ENTITY Business-ISBN-package "Business-ISBN-&Business-ISBN-version;.tar.bz2">
+<!ENTITY Business-ISBN-directory "Business-ISBN-&Business-ISBN-version;">
+
+<!ENTITY Business-ISBN-Data-version   "1.09">
+<!ENTITY Business-ISBN-Data-package   "Business-ISBN-Data-&Business-ISBN-Data-version;.tar.bz2">
+<!ENTITY Business-ISBN-Data-directory "Business-ISBN-Data-&Business-ISBN-Data-version;">
+
+<!ENTITY Test-Pod-version   "1.20">
+<!ENTITY Test-Pod-package   "Test-Pod-&Test-Pod-version;.tar.bz2">
+<!ENTITY Test-Pod-directory "Test-Pod-&Test-Pod-version;">
+
+<!ENTITY Pod-Simple-version   "3.02">
+<!ENTITY Pod-Simple-package   "Pod-Simple-&Pod-Simple-version;.tar.bz2">
+<!ENTITY Pod-Simple-directory "Pod-Simple-&Pod-Simple-version;">
+
+<!ENTITY Pod-Escapes-version   "1.04">
+<!ENTITY Pod-Escapes-package   "Pod-Escapes-&Pod-Escapes-version;.tar.bz2">
+<!ENTITY Pod-Escapes-directory "Pod-Escapes-&Pod-Escapes-version;">
+
+<!ENTITY Test-Builder-Tester-version   "1.01">
+<!ENTITY Test-Builder-Tester-package   "Test-Builder-Tester-&Test-Builder-Tester-version;.tar.bz2">
+<!ENTITY Test-Builder-Tester-directory "Test-Builder-Tester-&Test-Builder-Tester-version;">
+
+<!ENTITY Test-Prereq-version   "1.025">
+<!ENTITY Test-Prereq-package   "Test-Prereq-&Test-Prereq-version;.tar.bz2">
+<!ENTITY Test-Prereq-directory "Test-Prereq-&Test-Prereq-version;">
+
+<!ENTITY Module-Info-version   "0.26">
+<!ENTITY Module-Info-package   "Module-Info-&Module-Info-version;.tar.bz2">
+<!ENTITY Module-Info-directory "Module-Info-&Module-Info-version;">
+
+<!ENTITY Module-Corelist-version   "0.1.97">
+<!ENTITY Module-Corelist-package   "Module-Corelist-&Module-Corelist-version;.tar.bz2">
+<!ENTITY Module-Corelist-directory "Module-Corelist-&Module-Corelist-version;">
+
+<!ENTITY HTML-Parser-version   "3.44">
+<!ENTITY HTML-Parser-package   "HTML-Parser-&HTML-Parser-version;.tar.bz2">
+<!ENTITY HTML-Parser-directory "HTML-Parser-&HTML-Parser-version;">
+
+<!ENTITY HTML-Tagset-version   "3.04">
+<!ENTITY HTML-Tagset-package   "HTML-Tagset-&HTML-Tagset-version;.tar.bz2">
+<!ENTITY HTML-Tagset-directory "HTML-Tagset-&HTML-Tagset-version;">
+
+<!ENTITY Compress-Zlib-version   "1.33">
+<!ENTITY Compress-Zlib-package   "Compress-Zlib-&Compress-Zlib-version;.tar.bz2">
+<!ENTITY Compress-Zlib-directory "Compress-Zlib-&Compress-Zlib-version;">
+
+<!ENTITY Crypt-SSLeay-version   "0.51">
+<!ENTITY Crypt-SSLeay-package   "Crypt-SSLeay-&Crypt-SSLeay-version;.tar.bz2">
+<!ENTITY Crypt-SSLeay-directory "Crypt-SSLeay-&Crypt-SSLeay-version;">
+
+<!ENTITY DateManip-version   "5.42a">
+<!ENTITY DateManip-package   "DateManip-&DateManip-version;.tar.bz2">
+<!ENTITY DateManip-directory "DateManip-&DateManip-version;">
+
+<!ENTITY Finance-Quote-version   "1.08">
+<!ENTITY Finance-Quote-package   "Finance-Quote-&Finance-Quote-version;.tar.bz2">
+<!ENTITY Finance-Quote-directory "Finance-Quote-&Finance-Quote-version;">
+
+<!ENTITY HTML-TableExtract-version   "1.08">
+<!ENTITY HTML-TableExtract-package   "HTML-TableExtract-&HTML-TableExtract-version;.tar.bz2">
+<!ENTITY HTML-TableExtract-directory "HTML-TableExtract-&HTML-TableExtract-version;">
 <!-- End Perl Modules-->
 
 <!ENTITY librep-version   "0.17">
-<!ENTITY librep-package   "librep-&librep-version;.tar.gz">
+<!ENTITY librep-package   "librep-&librep-version;.tar.bz2">
 <!ENTITY librep-directory "librep-&librep-version;">
 
 <!ENTITY j2sdk-version "1.4.2">
@@ -91,7 +130,7 @@
 <!ENTITY j2sdk-src-bin-package             "j2sdk-&j2sdk-src-version;-bin-scsl.zip">
 <!ENTITY j2sdk-src-mozilla-headers-package "j2sdk-&j2sdk-src-version;-mozilla_headers-unix.zip">
 
-<!ENTITY j2sdk-asm-patch          "j2sdk-&j2sdk-version;-fix_inline_asm-1.patch">
+<!ENTITY j2sdk-asm-patch          "j2sdk-&j2sdk-version;-fix__asm-1.patch">
 <!ENTITY j2sdk-gcc33-patch        "j2sdk-&j2sdk-version;-gcc33-1.patch">
 <!ENTITY j2sdk-motif-patch        "j2sdk-&j2sdk-version;-motif_mkmsgcat-1.patch">
 <!ENTITY j2sdk-nptl-patch         "j2sdk-&j2sdk-version;-nptl-1.patch">
@@ -100,43 +139,39 @@
 <!ENTITY j2sdk-static-cxx-patch   "j2sdk-&j2sdk-version;-static_cxx-1.patch">
 
 <!ENTITY ruby-version   "1.8.2">
-<!ENTITY ruby-package   "ruby-&ruby-version;.tar.gz">
+<!ENTITY ruby-package   "ruby-&ruby-version;.tar.bz2">
 <!ENTITY ruby-directory "ruby-&ruby-version;">
 
 <!ENTITY tcl-major-minor "8.4">
 <!ENTITY tcl-version     "&tcl-major-minor;.9">
-<!ENTITY tcl-package     "tcl&tcl-version;-src.tar.gz">
+<!ENTITY tcl-package     "tcl&tcl-version;-src.tar.bz2">
 <!ENTITY tcl-directory   "tcl&tcl-version;">
 
 <!ENTITY tk-major-minor "8.4">
 <!ENTITY tk-version     "&tk-major-minor;.9">
-<!ENTITY tk-package     "tk&tk-version;-src.tar.gz">
+<!ENTITY tk-package     "tk&tk-version;-src.tar.bz2">
 <!ENTITY tk-directory   "tk&tk-version;">
 
 <!ENTITY expect-major-minor "5.42">
 <!ENTITY expect-version     "&expect-major-minor;.1">
-<!ENTITY expect-package     "expect-&expect-version;.tar.gz">
+<!ENTITY expect-package     "expect-&expect-version;.tar.bz2">
 <!ENTITY expect-directory   "expect-&expect-version;">
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
 
 <!ENTITY dejagnu-version   "1.4.4">
-<!ENTITY dejagnu-package   "dejagnu-&dejagnu-version;.tar.gz">
+<!ENTITY dejagnu-package   "dejagnu-&dejagnu-version;.tar.bz2">
 <!ENTITY dejagnu-directory "dejagnu-&dejagnu-version;">
-
-<!ENTITY gnat-version   "3.15p">
-<!ENTITY gnat-package   "gnat-&gnat-version;-i686-pc-redhat71-gnu-bin.tar.gz">
-<!ENTITY gnat-directory "gnat-&gnat-version;-i686-pc-linux-gnu-bin">
 
 <!ENTITY gcc-34-version              "3.4.1">
 <!ENTITY gcc-34-package              "gcc-&gcc-34-version;.tar.bz2">
 <!ENTITY gcc-34-directory            "gcc-&gcc-34-version;">
-<!ENTITY gcc-34-no_fixincludes-patch "gcc-&gcc-34-version;-no_fixincludes-1.patch">
+<!ENTITY gcc-34-no-fixincludes-patch "gcc-&gcc-34-version;-no_fixincludes-1.patch">
 <!ENTITY gcc-34-linkonce-patch       "gcc-&gcc-34-version;-linkonce-1.patch">
 
 <!ENTITY gcc-33-version              "3.3.4">
 <!ENTITY gcc-33-package              "gcc-&gcc-33-version;.tar.bz2">
 <!ENTITY gcc-33-directory            "gcc-&gcc-33-version;">
-<!ENTITY gcc-33-no_fixincludes-patch "gcc-&gcc-33-version;-no_fixincludes-1.patch">
+<!ENTITY gcc-33-no-fixincludes-patch "gcc-&gcc-33-version;-no_fixincludes-1.patch">
 <!ENTITY gcc-33-linkonce-patch	     "gcc-&gcc-33-version;-linkonce-1.patch">
 
 <!ENTITY nasm-version   "0.98.38">
@@ -144,5 +179,5 @@
 <!ENTITY nasm-directory "nasm-&nasm-version;">
 
 <!ENTITY doxygen-version   "1.4.1">
-<!ENTITY doxygen-package   "doxygen-&doxygen-version;.src.tar.gz">
+<!ENTITY doxygen-package   "doxygen-&doxygen-version;.src.tar.bz2">
 <!ENTITY doxygen-directory "doxygen-&doxygen-version;">

@@ -25,17 +25,17 @@
       <patch>
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&unzip-fix_makefile-patch;</param>
+        <param>-i &packages_dir;/&unzip-fix-makefile-patch;</param>
       </patch>
       <patch>
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&unzip-fix_libz-patch;</param>
+        <param>-i &packages_dir;/&unzip-fix-libz-patch;</param>
       </patch>
       <patch>
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&unzip-dont_make_noise-patch;</param>
+        <param>-i &packages_dir;/&unzip-dont-make-noise-patch;</param>
       </patch>
     </stage>
     <stage name="Installing">

@@ -1,12 +1,12 @@
-http://umn.dl.sourceforge.net/sourceforge/nail/nail-11.20.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/nail-11.20.tar.bz2
 
-ftp://ftp.procmail.net/pub/procmail/procmail-3.22.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/procmail-3.22.tar.bz2
 
-http://www.catb.org/~esr/fetchmail/fetchmail-6.2.5.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/fetchmail-6.2.5.tar.bz2
 
-ftp://ftp.mutt.org/mutt/mutt-1.4.2.1i.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/mutt-1.4.2.1i.tar.bz2
 
-ftp://ftp.fu-berlin.de/unix/linux/mirrors/gentoo/distfiles/pine4.60.tar.bz2
-http://www.linuxfromscratch.org/blfs/downloads/svn/pine-4.60-fhs-3.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/pine4.60.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/pine-4.60-fhs-3.patch
 
-ftp://ftp.fh-heilbronn.de/pub/mirrors/slrn/slrn-0.9.8.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/slrn-0.9.8.1.tar.bz2

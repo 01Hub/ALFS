@@ -9,5 +9,5 @@
 <!ENTITY lynx-directory "lynx2-8-5">
 
 <!ENTITY w3m-version   "0.5.1">
-<!ENTITY w3m-package   "w3m-&w3m-version;.tar.gz">
+<!ENTITY w3m-package   "w3m-&w3m-version;.tar.bz2">
 <!ENTITY w3m-directory "w3m-&w3m-version;">
