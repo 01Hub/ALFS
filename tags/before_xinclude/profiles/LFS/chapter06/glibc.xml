@@ -1,0 +1,121 @@
+<package name="glibc" version="&glibc-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&glibc-md5;</digest>
+			<archive>&packages_dir;/&glibc-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<mkdir base="&build_dir;">
+			<option>parents</option>
+			<name>glibc-build</name>
+		</mkdir>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<environment>
+				<variable name="CFLAGS" />
+				<variable name="CXXFLAGS" />
+			</environment>
+			<base>&build_dir;/glibc-build</base>
+		</stageinfo>
+
+		<configure command="../&glibc-directory;/configure">
+			<param>--prefix=/usr</param>
+			<param>--disable-profile</param>
+			<param>--enable-add-ons=nptl</param>
+			<param>--with-tls</param>
+			<param>--libexecdir=/tmp/pt_chown</param>
+			<param>--with-headers=/tools/glibc-kernheaders</param>
+			<param>--without-cvs</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>check</param>
+		</make>
+
+		<execute command="touch">
+			<param>/etc/ld.so.conf</param>
+		</execute>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<mkdir>
+			<option>parents</option>
+			<name>/usr/lib/locale</name>
+		</mkdir>
+
+		<execute command="localedef -i de_DE -f ISO-8859-1 de_DE" />
+		<execute command="localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro" />
+		<execute command="localedef -i en_HK -f ISO-8859-1 en_HK" />
+		<execute command="localedef -i en_PH -f ISO-8859-1 en_PH" />
+		<execute command="localedef -i en_US -f ISO-8859-1 en_US" />
+		<execute command="localedef -i es_MX -f ISO-8859-1 es_MX" />
+		<execute command="localedef -i fa_IR -f UTF-8 fa_IR" />
+		<execute command="localedef -i fr_FR -f ISO-8859-1 fr_FR" />
+		<execute command="localedef -i fr_FR@euro -f ISO-8859-15 fr_FR@euro" />
+		<execute command="localedef -i it_IT -f ISO-8859-1 it_IT" />
+		<execute command="localedef -i ja_JP -f EUC-JP ja_JP" />
+
+		<make>
+			<param>-C ../&glibc-directory;/linuxthreads/man</param>
+		</make>
+
+		<make>
+			<param>-C ../&glibc-directory;/linuxthreads/man</param>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Configuring.">
+		<textdump>
+			<file>/etc/nsswitch.conf</file>
+			<content>
+				=# Begin /etc/nsswitch.conf
+				=
+				=passwd: files
+				=group: files
+				=shadow: files
+				=
+				=hosts: files dns
+				=networks: files
+				=
+				=protocols: files
+				=services: files
+				=ethers: files
+				=rpc: files
+				=
+				=# End /etc/nsswitch.conf
+			</content>
+		</textdump>
+
+		<remove>/etc/localtime</remove>
+		<copy>
+			<option>force</option>
+			<source>&localtime;</source>
+			<destination>/etc/localtime</destination>
+		</copy>
+
+		<textdump>
+			<file>/etc/ld.so.conf</file>
+			<content>
+				=# Begin /etc/ld.so.conf
+				=
+				=/usr/local/lib
+				=/opt/lib
+				=
+				=# End /etc/ld.so.conf
+			</content>
+		</textdump>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&glibc-directory;</remove>
+		<remove>&build_dir;/glibc-build</remove>
+	</stage>
+</package>

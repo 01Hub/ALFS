@@ -1,0 +1,52 @@
+<package name="binutils-pass2" version="&binutils-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&binutils-md5;</digest>
+			<archive>&packages_dir;/&binutils-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<mkdir base="&build_dir;">
+			<option>parents</option>
+			<name>binutils-build</name>
+		</mkdir>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<environment>
+				<variable name="CFLAGS" />
+				<variable name="CXXFLAGS" />
+			</environment>
+			<base>&build_dir;/binutils-build</base>
+		</stageinfo>
+
+		<configure command="../&binutils-directory;/configure">
+			<param>--prefix=/tools</param>
+			<param>--enable-shared</param>
+			<param>--with-lib-path=/tools/lib</param>
+		</configure>
+
+		<make />
+
+<!--
+		<make>
+			<param>-k check</param>
+		</make>
+-->
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<make>
+			<param>-C ld</param>
+			<param>clean</param>
+		</make>
+
+		<make>
+			<param>-C ld</param>
+			<param>LIB_PATH=/usr/lib:/lib</param>
+		</make>
+	</stage>
+</package>
