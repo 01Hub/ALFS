@@ -21,14 +21,16 @@
 <sect2>
 <title>Description</title>
 
-<para>SECTION TO BE WRITTEN</para>
+<para>The element <filename>prefix</filename> provides a means to
+specify an environment variable or some other prefix to the englobing
+element.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<para>SECTION TO BE WRITTEN</para>
+<para>See any one of the parent elements for an example.</para>
 
 </sect2>
 

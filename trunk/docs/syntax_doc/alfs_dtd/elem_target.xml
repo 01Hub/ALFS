@@ -26,17 +26,7 @@ operation.</para>
 <sect2>
 <title>Examples</title>
 
-<screen><userinput>&lt;link&gt;
-	&lt;target&gt;share/man&lt;/target&gt;
-	&lt;target&gt;share/doc&lt;/target&gt;
-	&lt;target&gt;share/info&lt;/target&gt;
-	&lt;name&gt;/usr/local&lt;/name&gt;
-&lt;/link&gt;</userinput></screen>
-
-<para>The equivalent bash script is&nbsp;:</para>
-
-<screen><userinput>echo 'Linking  share/man share/doc share/info into /usr/local'
-<command>ln -s  share/man share/doc share/info /usr/local</command></userinput></screen>
+<para>Refer to <xref linkend="elem_link"/> for an example.</para>
 
 </sect2>
 

@@ -23,7 +23,9 @@
 operation elements.  It allows one to remove a file or directory.
 The content of the element contains the name of the file.</para>
 
-<para>The deletion of the directory is always recursive (rm -fr).</para>
+<note><para>Not all of the <command>rm</command> options are in every
+implementation.  Refer to the documentation for your implementation to
+determine what options are available.</para></note>
 
 </sect2>
 

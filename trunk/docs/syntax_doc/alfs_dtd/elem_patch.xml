@@ -8,7 +8,7 @@
 <synopsis>
 &lt;!ELEMENT patch          ((param | prefix)*)&gt;
 &lt;!ATTLIST patch
-             base           CDATA #IMPLIED&gt;
+          base           CDATA #IMPLIED&gt;
 </synopsis>
 
 <para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
@@ -27,10 +27,15 @@
 <title>Description</title>
 
 <para>The element <filename>patch</filename> is one of the many main
-operation elements.  It is used to execute the patch command.</para>
+operation elements.  It is used to execute the <command>patch</command>
+command.</para>
 
-<para>The sub-elements <filename>param</filename> contain the parameters of
+<para>The sub-element <filename>param</filename> contain the parameters of
 the command.</para>
+
+<para>The sub-element <filename>prefix</filename> provides a means to
+specify an environment variable or some other prefix to the
+<command>patch</command> command.</para>
 
 <para>The attribute <filename>base</filename> specified the directory in
 which the command will be performed.</para>
