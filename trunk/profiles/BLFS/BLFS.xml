@@ -108,6 +108,7 @@
     &glib2;
     &expat;
     &libesmtp;
+    &aspell;
     &ispell;
     &guile;
     &slib;
@@ -129,6 +130,7 @@
     &svgalib;
     &directfb;
     &imlib2;
+    &imagemagick;
 
 </stage>
 

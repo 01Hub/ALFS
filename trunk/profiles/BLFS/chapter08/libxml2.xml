@@ -3,6 +3,7 @@
     <packageinfo>
         <utilizes>
 	    <name>python</name>
+	    <name>readline</name>
 	</utilizes>
     </packageinfo>
 
