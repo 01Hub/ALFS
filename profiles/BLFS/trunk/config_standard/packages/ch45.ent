@@ -1,34 +1,33 @@
 <!--************* packages for chapter 45 *************-->
 
 <!ENTITY a2ps-version   "4.13b">
-<!ENTITY a2ps-package   "a2ps-&a2ps-version;.tar.gz">
+<!ENTITY a2ps-package   "a2ps-&a2ps-version;.tar.bz2">
 <!ENTITY a2ps-directory "a2ps-4.13">
 
 <!ENTITY enscript-version   "1.6.4">
-<!ENTITY enscript-package   "enscript-&enscript-version;.tar.gz">
+<!ENTITY enscript-package   "enscript-&enscript-version;.tar.bz2">
 <!ENTITY enscript-directory "enscript-&enscript-version;">
 
 <!ENTITY psutils-version   "p17">
-<!ENTITY psutils-package   "psutils-&psutils-version;.tar.gz">
+<!ENTITY psutils-package   "psutils-&psutils-version;.tar.bz2">
 <!ENTITY psutils-directory "psutils">
 
-<!ENTITY gsview-version   "4.6">
-<!ENTITY gsview-package   "gsview-&gsview-version;.tar.gz">
-<!ENTITY gsview-directory "gsview-&gsview-version;">
+<!ENTITY gsview-version        "4.6">
+<!ENTITY gsview-package        "gsview-&gsview-version;.tar.bz2">
+<!ENTITY gsview-directory      "gsview-&gsview-version;">
 <!ENTITY gsview-pstotext-patch "gsview-&gsview-version;-pstotext-1.patch">
-<!ENTITY gsview-lang-patch "gsview-&gsview-version;-lang-1.patch">
+<!ENTITY gsview-lang-patch     "gsview-&gsview-version;-lang-1.patch">
 
-<!ENTITY xpdf-version   "3.00">
-<!ENTITY xpdf-plevel "pl3">
-<!ENTITY xpdf-package   "xpdf-&xpdf-version;.tar.gz">
-<!ENTITY xpdf-directory "xpdf-&xpdf-version;">
-<!ENTITY xpdf-pl1-patch "xpdf-&xpdf-version;pl1.patch">
-<!ENTITY xpdf-pl2-patch "xpdf-&xpdf-version;pl2.patch">
-<!ENTITY xpdf-pl3-patch "xpdf-&xpdf-version;pl3.patch">
-<!ENTITY xpdf-freetype-patch "xpdf-&xpdf-version;&xpdf-plevel;-freetype_2.1.7_hack-2.patch">
+<!ENTITY xpdf-version        "3.00">
+<!ENTITY xpdf-patchlevel     "pl3">
+<!ENTITY xpdf-package        "xpdf-&xpdf-version;.tar.bz2">
+<!ENTITY xpdf-directory      "xpdf-&xpdf-version;">
+<!ENTITY xpdf-pl1-patch      "xpdf-&xpdf-version;pl1.patch">
+<!ENTITY xpdf-pl2-patch      "xpdf-&xpdf-version;pl2.patch">
+<!ENTITY xpdf-pl3-patch      "xpdf-&xpdf-version;pl3.patch">
+<!ENTITY xpdf-freetype-patch "xpdf-&xpdf-version;&xpdf-patchlevel;-freetype_2.1.7_hack-2.patch">
 
-<!ENTITY fop-version "0.20.5">
-<!ENTITY fop-package "fop-&fop-version;-src.tar.gz">
-<!ENTITY fop-directory "fop-&fop-version;">
+<!ENTITY fop-version    "0.20.5">
+<!ENTITY fop-package    "fop-&fop-version;-src.tar.bz2">
+<!ENTITY fop-directory  "fop-&fop-version;">
 <!ENTITY fop-jai-binary "jai-1_1_2_01-lib-linux-i586-jdk.bin">
-

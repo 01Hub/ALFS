@@ -1,16 +1,16 @@
-ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/sgml-common-0.6.3.tgz
-http://www.linuxfromscratch.org/blfs/downloads/svn/sgml-common-0.6.3-manpage-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/sgml-common-0.6.3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/sgml-common-0.6.3-manpage-1.patch
 
-ftp://ftp.rutgers.edu/pub/kde/devel/docbook/SOURCES/docbk31.zip
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/docbk31.zip
 
-http://www.docbook.org/sgml/4.3/docbook-4.3.zip
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/docbook-4.3.zip
 
-ftp://ftp.fu-berlin.de/unix/linux/mirrors/gentoo/distfiles/OpenSP-1.5.1.tar.gz
-http://www.linuxfromscratch.org/blfs/downloads/svn/OpenSP-1.5.1-LITLEN-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/OpenSP-1.5.1-gcc34-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/OpenSP-1.5.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/OpenSP-1.5.1-LITLEN-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/OpenSP-1.5.1-gcc34-1.patch
 
-ftp://ftp.freestandards.org/pub/lsb/app-battery/packages/openjade-1.3.2.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/openjade-1.3.2.tar.bz2
 
-http://unc.dl.sourceforge.net/sourceforge/docbook/docbook-dsssl-1.78.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/docbook-dsssl-1.78.tar.bz2
 
-ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/docbook-utils-0.6.14.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/docbook-utils-0.6.14.tar.bz2
