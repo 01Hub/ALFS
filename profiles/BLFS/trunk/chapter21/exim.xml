@@ -26,6 +26,12 @@
 	<name>openldap</name>
       </utilizes>
       <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>cyrus-sasl</name>
+      </utilizes>
+      <utilizes>
 	<name>mysql</name>
       </utilizes>
       <utilizes>
@@ -70,11 +76,14 @@
         <source>doc/exim.8</source>
         <destination>/usr/share/man/man8</destination>
       </copy>
-      <link>
-        <option>force</option>
-        <target>exim-4.24-1</target>
-        <name>/usr/sbin/exim</name>
-      </link>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/exim-&exim-version;</name>
+      </mkdir>
+      <copy>
+	<source>doc/*</source>
+	<destination>/usr/share/doc/exim-&exim-version;</destination>
+      </copy>
       <link>
         <option>force</option>
         <target>exim</target>

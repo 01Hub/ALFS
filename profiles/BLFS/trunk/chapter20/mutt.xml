@@ -23,21 +23,21 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Creating user and group">
+      <execute command="getent group mail &gt; /dev/null || groupadd">
+        <param>mail</param>
+      </execute>
+      <!-- uncomment the following block if no MTA is installed -->
+      <!--
+      <ownership group="mail">
+	<name>/var/mail</name>
+      </ownership>
+      -->
+    </stage>  
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&mutt-directory;</base>
       </stageinfo>
-      <!-- uncomment if no MTA is installed
-                
-                <execute command="groupadd">
-                        <param>mail</param>
-                </execute>
-                
-                <ownership group="mail">
-                        <name>/var/mail</name>
-                </ownership>
-                
-                 -->
       <configure>
         <param>--prefix=/usr</param>
         <param>--sysconfdir=/etc</param>

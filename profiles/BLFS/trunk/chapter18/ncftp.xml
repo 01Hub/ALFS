@@ -25,10 +25,12 @@
       <configure>
         <param>--prefix=/usr</param>
       </configure>
-      <make base="&build_dir;/&ncftp-directory;/libncftp">
+      <make>
+      	<param>-C libncftp</param>
         <param>shared</param>
       </make>
-      <make base="&build_dir;/&ncftp-directory;/libncftp">
+      <make>
+      	<param>-C libncftp</param>
         <param>soinstall</param>
       </make>
       <make />

@@ -37,6 +37,7 @@
         <param>--prefix=/usr</param>
         <param>--sysconfdir=/etc</param>
         <param>--with-slrnpull</param>
+	<param>--enable-spool</param>
       </configure>
       <make>
         <param>LDFLAGS="-ldl"</param>

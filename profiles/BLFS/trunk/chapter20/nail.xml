@@ -43,6 +43,11 @@
         <target>nail</target>
         <name>/usr/bin/mail</name>
       </link>
+      <link>
+      	<option>force</option>
+	<target>nail</target>
+	<name>/usr/bin/mailx</name>
+      </link>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&nail-directory;</remove>

@@ -88,6 +88,42 @@
       <execute base="&build_dir;/&sendmail-directory;/cf/cf" command="sh Build sendmail.mc" />
       <execute base="&build_dir;/&sendmail-directory;/cf/cf" command="sh Build install-cf" />
       <execute command="sh Build install" />
+      <copy>
+      	<source>sendmail/sendmail.8</source>
+	<source>editmap/editmap.8</source>
+	<source>mailstats/mailstats.8</source>
+	<source>makemap/makemap.8</source>
+	<source>praliases/praliases.8</source>
+	<source>smrsh/smrsh.8</source>
+	<destination>/usr/share/man/man8</destination>
+      </copy>
+      <copy>
+	<source>sendmail/aliases.5</source>
+	<destination>/usr/share/man/man5</destination>
+      </copy>
+      <copy>
+	<source>sendmail/mailq.1</source>
+	<source>sendmail/newaliases.1</source>
+	<source>vacation/vacation.1</source>
+	<destination>/usr/share/man/man1</destination>
+      </copy>
+      <search_replace base="&build_dir;/&sendmail-directory;/doc/op">
+	<file>Makefile</file>
+	<find>groff</find>
+	<replace>GROFF_NO_SGR=1 groff</replace>
+      </search_replace>
+      <make>
+	<param>op.txt</param>
+      </make>
+      <mkdir> 
+	<option>parents</option>
+	<name>/usr/share/doc/sendmail/&sendmail-version;</name>
+      </mkdir>
+      <copy>
+	<source>op.ps</source>
+	<source>op.txt</source>
+	<destination>/usr/share/doc/sendmail/&sendmail-version;</destination>
+      </copy>
       <execute command="echo `hostname` &gt; /etc/mail/local-host-names" />
       <textdump>
         <file>/etc/mail/aliases</file>

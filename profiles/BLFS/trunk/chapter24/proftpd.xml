@@ -29,19 +29,19 @@
       <link>
 	<option>force</option>
 	<target>false</target>
-	<name>/bin/proftpdonly</name>
+	<name>/usr/lib/proftpd/proftpdshell</name>
       </link>
       <textdump mode="append">
 	<file>/etc/shells</file>
 	<content>
-	  =/bin/proftpdonly
+	  =/usr/lib/proftpd/proftpdshell
 	</content>
       </textdump>
       <execute command="getent passwd proftpd &gt; /dev/null || useradd">
         <param>-c proftpd</param>
         <param>-d /home/ftp</param>
         <param>-g proftpd</param>
-        <param>-s /bin/proftpdonly</param>
+        <param>-s /usr/lib/proftpd/proftpdshell</param>
         <param>proftpd</param>
       </execute>
     </stage>

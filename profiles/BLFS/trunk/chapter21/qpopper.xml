@@ -66,9 +66,7 @@
 	  =   protocol = tcp
 	  =   wait = no
 	  =   user = root
-	  =   passenv = PATH 
 	  =   server = /usr/sbin/popper
-	  =   server_args = popper
 	  = }
 	</content>
       </textdump>

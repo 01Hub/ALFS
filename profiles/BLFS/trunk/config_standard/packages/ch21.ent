@@ -8,7 +8,7 @@
 <!ENTITY sendmail-package "sendmail.&sendmail-version;.tar.gz">
 <!ENTITY sendmail-directory "sendmail-&sendmail-version;">
 
-<!ENTITY exim-version "4.24">
+<!ENTITY exim-version "4.43">
 <!ENTITY exim-package "exim-&exim-version;.tar.bz2">
 <!ENTITY exim-directory "exim-&exim-version;">
 

@@ -18,7 +18,7 @@
 <!ENTITY openssh-package   "openssh-&openssh-version;.tar.gz">
 <!ENTITY openssh-directory "openssh-&openssh-version;">
 
-<!ENTITY rsync-version   "2.6.2">
+<!ENTITY rsync-version   "2.6.3">
 <!ENTITY rsync-package   "rsync-&rsync-version;.tar.gz">
 <!ENTITY rsync-directory "rsync-&rsync-version;">
 
@@ -26,7 +26,7 @@
 <!ENTITY openldap-package   "openldap-stable-20040923.tgz">
 <!ENTITY openldap-directory "openldap-&openldap-version;">
 
-<!ENTITY samba-version "3.0.7">
+<!ENTITY samba-version "3.0.9">
 <!ENTITY samba-package "samba-&samba-version;.tar.bz2">
 <!ENTITY samba-directory "samba-&samba-version;">
 

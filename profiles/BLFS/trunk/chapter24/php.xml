@@ -14,11 +14,11 @@
   <package name="php" version="&php-version;">
     <packageinfo>
       <requires>
-        <name>mysql</name>
-      </requires>
-      <requires>
         <name>apache</name>
       </requires>
+      <utilizes>
+        <name>mysql</name>
+      </utilizes>
       <utilizes>
         <name>openssl</name>
       </utilizes>
@@ -88,9 +88,9 @@
         <param>--enable-ftp</param>
         <param>--with-gettext</param>
         <param>--with-iconv</param>
-        <param>--with-mysql=/usr</param>
         <param>--with-ncurses</param>
 	<param>--with-readline</param>
+	<param>--disable-libxml</param>
       </configure>
       <make />
       <make>
