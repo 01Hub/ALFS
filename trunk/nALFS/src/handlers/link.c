@@ -40,103 +40,199 @@
 #include "backend.h"
 
 
-#define El_link_target(el) alloc_trimmed_param_value("target", el)
-#define El_link_name(el) alloc_trimmed_param_value("name", el)
+enum {
+	LINK_BASE,
+	LINK_OPTIONS,
+	LINK_OPTION,
+	LINK_TARGET,
+	LINK_NAME,
+	LINK_TYPE,
+};
 
+struct link_data {
+	char *base;
+	char *name;
+	int target_count;
+	char **targets;
+	int force;
+	int no_dereference;
+	int hard_link;
+};
+
+static int link_setup(element_s * const element)
+{
+	struct link_data *data;
+
+	if ((data = xmalloc(sizeof(struct link_data))) == NULL)
+		return 1;
+
+	data->hard_link = 0;
+	data->force = 0;
+	data->no_dereference = 0;
+	data->base = NULL;
+	data->name = NULL;
+	data->target_count = 0;
+	data->targets = NULL;
+	element->handler_data = data;
+
+	return 0;
+};
+
+static void link_free(const element_s * const element)
+{
+	struct link_data *data = (struct link_data *) element->handler_data;
+	int i;
+
+	xfree(data->base);
+	xfree(data->name);
+	if (data->target_count > 0) {
+		for (i = 0; i < data->target_count; i++)
+			xfree(data->targets[i]);
+		xfree(data->targets);
+	}
+	xfree(data);
+}
+
+static int link_attribute(const element_s * const element,
+			  const struct handler_attribute * const attr,
+			  const char * const value)
+{
+	struct link_data *data = (struct link_data *) element->handler_data;
+
+	switch (attr->private) {
+	case LINK_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify \"base\" more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	case LINK_TYPE:
+		if (!strcmp("symbolic", value)) {
+			data->hard_link = 0;
+		} else if (!strcmp("hard", value)) {
+			data->hard_link = 1;
+		} else {
+			Nprint_err("<%s>: \"type\" must be \"symbolic\" or \"hard\".", element->handler->name);
+			return 0;
+		}
+	default:
+		return 1;
+	}
+}
+
+static int link_parameter(const element_s * const element,
+			  const struct handler_parameter * const param,
+			  const char * const value)
+{
+	struct link_data *data = (struct link_data *) element->handler_data;
+
+	switch (param->private) {
+	case LINK_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify <base> more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	case LINK_OPTIONS:
+		if (option_in_string("force", value)) {
+			data->force = 1;
+			return 0;
+		} else {
+			Nprint_err("<%s>: invalid options in (%s) ignored", element->handler->name, value);
+			return 1;
+		}
+	case LINK_OPTION:
+		if (!strcmp("force", value)) {
+			data->force = 1;
+			return 0;
+		}
+		if (!strcmp("no-dereference", value)) {
+			data->no_dereference = 1;
+			return 0;
+		}
+		Nprint_err("<%s>: invalid option (%s) ignored", element->handler->name, value);
+		return 1;
+	case LINK_TARGET:
+		data->target_count++;
+		if ((data->targets = xrealloc(data->targets,
+					      sizeof(data->targets[0]) * (data->target_count))) == NULL) {
+			Nprint_err("xrealloc() failed: %s", strerror(errno));
+			return -1;
+		}
+		data->targets[(data->target_count - 1)] = xstrdup(value);
+		return 0;
+	case LINK_NAME:
+		if (data->name) {
+			Nprint_err("<%s>: cannot specify <name> more than once.", element->handler->name);
+			return 1;
+		}
+		data->name = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int link_valid_data(const element_s * const element)
+{
+	struct link_data *data = (struct link_data *) element->handler_data;
+
+	if (data->target_count == 0) {
+		Nprint_err("<%s>: <target> must be specified.", element->handler->name);
+		return 0;
+	}
+
+	return 1;
+}
 
 #if HANDLER_SYNTAX_2_0
 
 static const struct handler_parameter link_parameters_v2[] = {
-	{ .name = "base" },
-	{ .name = "options" },
-	{ .name = "target" },
-	{ .name = "name" },
+	{ .name = "base", .private = LINK_BASE },
+	{ .name = "options", .private = LINK_OPTIONS },
+	{ .name = "target", .private = LINK_TARGET },
+	{ .name = "name", .private = LINK_NAME },
 	{ .name = NULL }
 };
 
 static const struct handler_attribute link_attributes_v2[] = {
-	{ .name = "type" },
+	{ .name = "type", .private = LINK_TYPE },
 	{ .name = NULL }
 };
 
-static int link_main_ver2(const element_s * const el)
+static int link_main_ver2(const element_s * const element)
 {
+	struct link_data *data = (struct link_data *) element->handler_data;
 	int status;
-	int force = option_exists("force", el);
-	char *type = attr_value("type", el);
-	char *base;
-	char *target;
-	char *link_name;
-	char *command = NULL;
-	char *message = NULL;
 
-
-	if ((target = El_link_target(el)) == NULL) {
-		Nprint_h_err("No source files specified.");
+	if (change_to_base_dir(element, data->base, 1))
 		return -1;
-	}
 
-	link_name = El_link_name(el);
-
-	base = alloc_base_dir(el);
-
-	if (change_current_dir(base)) {
-		xfree(base);
-		xfree(target);
-		xfree(link_name);
-		return -1;
-	}
-
-	if (type == NULL || strcmp(type, "symbolic") == 0) {
-		append_str(&command, "ln -s");
-		append_str(&message, "Creating symbolic link in ");
-
-	} else if (strcmp(type, "hard") == 0) {
-		append_str(&command, "ln");
-		append_str(&message, "Creating hard link in ");
-
+	if (data->name) {
+		Nprint_h("Creating %s link %s%s -> %s",
+			 data->hard_link ? "hard" : "symbolic",
+			 data->force ? "(force) " : "",
+			 data->name, data->targets[0]);
+		status = execute_command(element, "ln %s %s %s %s",
+					 data->hard_link ? "" : "-s",
+					 data->force ? "-f" : "",
+					 data->targets[0],
+					 data->name);
 	} else {
-		Nprint_h_warn("Unknown link type (%s), using symbolic.", type);
-		append_str(&command, "ln -s");
-		append_str(&message, "Creating symbolic link in ");
+		Nprint_h("Creating %s link %s%s",
+			 data->hard_link ? "hard" : "symbolic",
+			 data->force ? "(force) " : "",
+			 data->targets[0]);
+		status = execute_command(element, "ln %s %s %s",
+					 data->hard_link ? "" : "-s",
+					 data->force ? "-f" : "",
+					 data->targets[0]);
 	}
 
-	append_str(&message, base);
-
-	if (force) {
-		append_str(&command, " -f");
-		append_str(&message, " (force):");
-
-	} else {
-		append_str(&message, ":");
-	}
-
-	Nprint_h("%s", message);
-
-	if (link_name) {
-		Nprint_h("    %s -> %s", link_name, target);
-	} else {
-		Nprint_h("    %s", target);
-	}
-
-	append_str(&command, " ");
-	append_str(&command, target);
-
-	if (link_name) {
-		append_str(&command, " ");
-		append_str(&command, link_name);
-	}
-
-	if ((status = execute_command(el, "%s", command))) {
-		Nprint_h_err("Executing \"%s\" in \"%s\" failed.",
-			command, base);
-	}
-
-	xfree(base);
-	xfree(target);
-	xfree(link_name);
-	xfree(command);
-	xfree(message);
+	if (status)
+		Nprint_h_err("Creating link failed.");
 
 	return status;
 }
@@ -159,103 +255,51 @@ static const struct handler_attribute link_attributes_v3[] = {
 	{ .name = NULL }
 };
 
-static int link_main_ver3(const element_s * const el)
+static int link_main_ver3(const element_s * const element)
 {
-	int options[2], force, no_dereference;
+	struct link_data *data = (struct link_data *) element->handler_data;
 	int status;
-	char *type;
 	char *targets = NULL;
-	char *link_name;
-	char *command = NULL;
-	char *message = NULL;
-	element_s *p;
+	int i;
 
-
-	if (change_to_base_dir(el, attr_value("base", el), 1))
+	if (change_to_base_dir(element, data->base, 1))
 		return -1;
 
-	/* Read all <option>s. */
-	check_options(2, options, "force no-dereference", el);
-	force = options[0];
-	no_dereference = options[1];
-
-	link_name = alloc_trimmed_param_value("name", el);
-
-	type = attr_value("type", el);
-
-	if (type == NULL || strcmp(type, "symbolic") == 0) {
-		append_str(&message, "Creating symbolic link in ");
-		append_str(&command, "ln -s");
-
-	} else if (strcmp(type, "hard") == 0) {
-		append_str(&message, "Creating hard link in ");
-		append_str(&command, "ln");
-
-	} else {
-		Nprint_h_warn("Unknown link type (%s), using symbolic.", type);
-		append_str(&message, "Creating symbolic link");
-		append_str(&command, "ln -s");
+	for (i = 0; i < data->target_count; i++) {
+		append_str(&targets, data->targets[i]);
+		append_str(&targets, " ");
 	}
 
-	if (force) {
-		append_str(&message, " (force)");
-		append_str(&command, " -f");
-	}
-
-	if (no_dereference) {
-		append_str(&message, " (no_dereference)");
-		append_str(&command, " -n");
-	}
-
-	append_str(&message, ": ");
-
-	if (link_name) {
-		append_str(&message, link_name);
-	}
-
-	/* Concatenate all targets in "targets". */
-	for (p = first_param("target", el); p; p = next_param(p)) {
-		char *target;
-
-
-		if ((target = alloc_trimmed_str(p->content)) == NULL) {
-			Nprint_h_warn("No target specified.");
-			continue;
-		}
-
-		if (targets != NULL) {
-			append_str(&targets, " ");
-		}
-
-		append_str(&targets, target);
-
-		xfree(target);
-	}
-
-	if (targets) {
-		append_str(&command, " ");
-		append_str(&command, targets);
-
-		if (link_name) {
-			append_str(&command, " ");
-			append_str(&command, link_name);
-		}
-
-		Nprint_h("%s", message);
+	if (data->name) {
+		Nprint_h("Creating %s link %s%s%s",
+			 data->hard_link ? "hard" : "symbolic",
+			 data->force ? "(force) " : "",
+			 data->no_dereference ? "(no-dereference) " : "",
+			 data->name);
 		Nprint_h("    %s", targets);
-
-		if ((status = execute_command(el, "%s", command))) {
-			Nprint_h_err("Executing \"%s\" failed.", command);
-		}
-
+		status = execute_command(element, "ln %s %s %s %s %s",
+					 data->hard_link ? "" : "-s",
+					 data->force ? "-f" : "",
+					 data->no_dereference ? "-n" : "",
+					 targets,
+					 data->name);
 	} else {
-		Nprint_h_err("No target for link specified.");
-		status = -1;
+		Nprint_h("Creating %s link %s%s",
+			 data->hard_link ? "hard" : "symbolic",
+			 data->force ? "(force) " : "",
+			 data->no_dereference ? "(no-dereference) " : "");
+		Nprint_h("    %s", targets);
+		status = execute_command(element, "ln %s %s %s %s",
+					 data->hard_link ? "" : "-s",
+					 data->force ? "-f" : "",
+					 data->no_dereference ? "-n" : "",
+					 targets);
 	}
 
-	xfree(link_name);
-	xfree(command);
-	xfree(message);
+	xfree(targets);
+
+	if (status)
+		Nprint_h_err("Creating link failed.");
 
 	return status;
 }
@@ -278,6 +322,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = link_main_ver2,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = link_setup,
+		.free = link_free,
+		.attribute = link_attribute,
+		.parameter = link_parameter,
+		.valid_data = link_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -290,6 +339,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = link_main_ver3,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = link_setup,
+		.free = link_free,
+		.attribute = link_attribute,
+		.parameter = link_parameter,
+		.valid_data = link_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -302,6 +356,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.main = link_main_ver3,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = link_setup,
+		.free = link_free,
+		.attribute = link_attribute,
+		.parameter = link_parameter,
+		.valid_data = link_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -315,6 +374,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
 		.alternate_shell = 1,
+		.setup = link_setup,
+		.free = link_free,
+		.attribute = link_attribute,
+		.parameter = link_parameter,
+		.valid_data = link_valid_data,
 	},
 #endif
 	{
