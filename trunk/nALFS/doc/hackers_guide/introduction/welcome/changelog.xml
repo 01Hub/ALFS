@@ -6,7 +6,11 @@
 
 <itemizedlist>
 
-<listitem><para>November 4th, 2003 [kpfleming]: Distro Tarballs page was missing bootstrap command.</para></listitem>
+<listitem><para>November 5th, 2003 [jwrober]: Updated most pages to help with
+presentation in the txt file version of the doc.</para></listitem>
+
+<listitem><para>November 4th, 2003 [kpfleming]: Distro Tarballs page was
+missing bootstrap command.</para></listitem>
 
 <listitem><para>November 4th, 2003 [kpfleming]: Updated the CVS and Distro
 Tarballs pages with new updated information.</para></listitem>

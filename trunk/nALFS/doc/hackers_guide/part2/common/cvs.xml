@@ -26,6 +26,7 @@ you may experience warnings and/or outright failures
 
 <para>in the &book-product; directory itself. This should result output similar to the following:</para>
 
+
 <screen><userinput><command>$ sh ./bootstrap</command>
 You should update your 'aclocal.m4' by running aclocal.
 Putting files in AC_CONFIG_AUX_DIR, `gnubuild'.
@@ -38,6 +39,7 @@ patching file ltmain.sh
 Hunk #1 succeeded at 160 with fuzz 2 (offset -78 lines).
 Hunk #2 succeeded at 269 with fuzz 1.
 Hunk #3 succeeded at 4483 (offset -1172 lines).</userinput></screen>
+
 
 <para>This output comes from the <filename>autoreconf</filename> tool, which
 is part of <filename>autoconf</filename>, that automatically runs
