@@ -1,0 +1,18 @@
+#!/bin/bash
+cat <<EOF
+nobase_dist_pkgdata_DATA = nALFSrc
+EOF
+
+pushd doc > /dev/null
+for file in `find . -name \*.dtd -print`; do
+	echo nobase_dist_pkgdata_DATA += ${file}
+done
+
+for file in `find . -name \*.txt -print`; do
+	echo nobase_dist_pkgdata_DATA += ${file}
+done
+
+for file in `find . -name \*.html -print`; do
+	echo nobase_dist_pkgdata_DATA += ${file}
+done
+popd > /dev/null
