@@ -5,33 +5,33 @@
 <sect2>
 <title>Mailing Lists</title>
 
-<para>The &book-product; uses two mailing list hosted from the Linux From 
+<para>The &book-product; uses two mailing list hosted from the Linux From
 Scratch servers.</para>
 
-<para>Please direct your emails to the mail <acronym>ALFS</acronym> mailing 
-list at <ulink url="mailto:alfs-discuss@linuxfromscratch.org">
-alfs-discuss@linuxfromscratch.org</ulink>. This is an excellent place to post 
-questions and bug reports. For complete mailing list information, refer to 
-<ulink url="&http-root;/mailman/listinfo/alfs-discuss">
-&http-root;/mailman/listinfo/alfs-discuss</ulink></para>
+<para>Please direct the majority of your emails to the <acronym>ALFS</acronym> mailing list at
+<ulink url="mailto:alfs-discuss@linuxfromscratch.org">alfs-discuss@linuxfromscratch.org</ulink>.
+This is an excellent place to post questions and bug reports. For complete mailing list information, refer to
+<ulink url="&http-root;/mailman/listinfo/alfs-discuss">&http-root;/mailman/listinfo/alfs-discuss</ulink>.
+</para>
 
-<para>The second list is really for the development team at 
-<ulink url="mailto:alfs-log@linuxfromscratch.org"> 
-alfs-log@linuxfromscratch.org</ulink>. This is an excellent place to see the 
-daily activity of the project. For complete mailing list information, refer 
-to <ulink url="&http-root;/mailman/listinfo/alfs-discuss"> 
-&http-root;/mailman/listinfo/alfs-discuss</ulink></para>
+<para>The second list is really for the development team's use and is available at
+<ulink url="mailto:alfs-log@linuxfromscratch.org">alfs-log@linuxfromscratch.org</ulink>.
+This is an excellent place to see the daily activity of the project. For complete mailing list information, refer to
+<ulink url="&http-root;/mailman/listinfo/alfs-discuss">&http-root;/mailman/listinfo/alfs-discuss</ulink>
+</para>
 
 </sect2>
 
 <sect2>
 <title>News Server</title>
 
-<para>All the mailing lists hosted at linuxfromscratch.org are also 
-accessible via the <acronym>NNTP</acronym> server. All messages posted to a 
+<para>All the mailing lists hosted at linuxfromscratch.org are also
+accessible via the <acronym>NNTP</acronym> server. All messages posted to a
 mailing list will be copied to its correspondent newsgroup, and vice versa.</para>
 
-<para>The news server can be reached at <ulink url="news:news.linuxfromscratch.org">news.linuxfromscratch.org</ulink>.</para>
+<para>The news server can be reached at
+<ulink url="news:news.linuxfromscratch.org">news.linuxfromscratch.org</ulink>.
+</para>
 
 </sect2>
 
@@ -55,11 +55,11 @@ mailing list will be copied to its correspondent newsgroup, and vice versa.</par
 <sect2>
 <title>Other</title>
 
-<para>The current &book-product documentation maintainer is &book-maintainer-fullname;.  
+<para>The current &book-product documentation maintainer is &book-maintainer-fullname;.
 If you need to reach &book-maintainer-firstname;, send an email to
 <ulink url="mailto:&book-maintainer-address;">&book-maintainer-address;</ulink>.</para>
 
-<para>The current &book-product source code owner is &product-maintainer-fullname;.  
+<para>The current &book-product source code owner is &product-maintainer-fullname;.
 If you need to reach &product-maintainer-firstname;, send an email to
 <ulink url="mailto:&product-maintainer-address;">&product-maintainer-address;</ulink>.</para>
 

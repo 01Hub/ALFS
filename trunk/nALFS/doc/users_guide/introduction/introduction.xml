@@ -3,36 +3,33 @@
 <title>Introduction</title>
 
 <para><acronym>LFS</acronym> stands for Linux From Scratch and it's a project, 
-led by <ulink url="mailto:gerard@linuxfromscratch.org">Gerard 
-Beekmans</ulink>&nbsp;&nbsp;&lt;gerard@linuxfromscratch.org&gt;, which helps 
-you build your own Linux system.</para>
+led by <ulink url="mailto:gerard@linuxfromscratch.org">Gerard Beekmans</ulink> 
+&emdash; &lt;gerard@linuxfromscratch.org&gt;, which helps you build your own 
+Linux system.</para>
 
 <para>What this means is that you will use nothing but the source code of 
-various software packages needed for a fully functional Linux 
-system.&nbsp;&nbsp;You will compile the packages one-by-one on your own 
-computer.&nbsp;&nbsp;During this process, you will be able to tweak every 
-single corner of your system, by editing a bunch of configuration files, 
-creating your own boot scripts etc.</para>
+various software packages needed for a fully functional Linux system. You will 
+compile the packages one-by-one on your own computer. During this process, you 
+will be able to tweak every single corner of your system, by editing a bunch 
+of configuration files, creating your own boot scripts etc.</para>
 
-<para>All this might sound a bit complicated and require too much 
-work.&nbsp;&nbsp;But even if it is, it's well worth it.&nbsp;&nbsp;One of the 
-<acronym>LFS</acronym> project's secondary goals is 
-education.&nbsp;&nbsp;Great care is taken in each step to explain what is 
-occuring at each phase of the build procedure.</para>
+<para>All this might sound a bit complicated and require too much work. But 
+even if it is, it's well worth it. One of the <acronym>LFS</acronym> project's 
+secondary goals is education. Great care is taken in each step to explain what 
+is occuring at each phase of the build procedure.</para>
 
 <para>Best of all it that it does not have to be that complicated or time 
-consuming.&nbsp;&nbsp;With only a few keystrokes and the right software, you 
-can just sit back and relax, while your system is being built &emdash; from 
-scratch.&nbsp;This is where the <acronym>ALFS</acronym> project comes into 
-play.</para>
+consuming. With only a few keystrokes and the right software, you can just sit 
+back and relax, while your system is being built &emdash; from scratch. This 
+is where the <acronym>ALFS</acronym> project comes into play.</para>
 
 <para><acronym>ALFS</acronym> stands for Automated Linux From Scratch, and its 
 aim is to provide a much simpler method for building a Linux system.</para>
 
 <para><acronym>ALFS</acronym> uses profiles (simple <acronym>XML</acronym> 
-files) which describe what actions are to be taken and what commands 
-executed.&nbsp;&nbsp;Feeding the program (like &book-product;) with those 
-profiles, will make the program act upon them.</para>
+files) which describe what actions are to be taken and what commands executed. 
+Feeding the program (like &book-product;) with those profiles, will make the 
+program act upon them.</para>
 
 <para>For example, if you want to create a directory, all you have to do is
 to put:</para>
@@ -42,14 +39,15 @@ to put:</para>
 &lt;/mkdir&gt;</command></screen>
 
 <para>in the profile and leave the rest to the program. Of course, you are not 
-limited to just compiling packages for <acronym>LFS</acronym>.&nbsp;&nbsp;You 
-can do just about anything.</para>
+limited to just compiling packages for <acronym>LFS</acronym>. You can do just 
+about anything. All it takes is a little time to write a profile for it.</para>
 
 <para>This might seem very similar to ordinary shell scripting, but it has 
-also a lot of advantages.&nbsp;&nbsp;With this approach &book-product;, after 
-reading any properly formatted profile, can be instructed to pause execution, 
-start execution from selected element (by browsing a profile in a tree-like 
-mode) and much much more.</para>
+also a lot of advantages. With this approach &book-product; (after reading any 
+properly formatted profile) can be instructed to pause execution, start 
+execution from a selected element (by browsing a profile in a tree-like mode), 
+enter special environments like <filename>chroot</filename>, and much much 
+more.</para>
 
 </sect1>
 

@@ -1,7 +1,6 @@
 <legalnotice>
 
-<para>Copyright (c) 2001-2003, <acronym>&book-product;</acronym> Development 
-Team</para>
+<para>Copyright (c) 2001-2003, &book-product; Development Team</para>
 
 <para>All rights reserved.</para>
 
@@ -12,18 +11,17 @@ met:</para>
 <itemizedlist>
 
 <listitem><para>Redistributions in any form must retain the above copyright 
-notice, this list of conditions and the following 
-disclaimer.</para></listitem>
+notice, this list of conditions and the following disclaimer.</para></listitem>
 
-<listitem><para>Neither the name of "Linux From Scratch", "Automated Linux 
-From Scratch" nor the names of its contributors may be used to endorse or 
+<listitem><para>The names "Linux From Scratch", "Automated Linux From 
+Scratch", or the names of its contributors may not be used to endorse or 
 promote products derived from this material without specific prior written 
 permission.</para></listitem>
 
-<listitem><para>Any material derived from Linux From Scratch must contain a 
+<listitem><para>Any material derived from "Linux From Scratch" must contain a 
 reference to the "Linux From Scratch" project.</para></listitem>
 
-<listitem><para>Any material derived from Automated Linux From Scratch must 
+<listitem><para>Any material derived from "Automated Linux From Scratch" must 
 contain a reference to the "Automated Linux From Scratch" 
 project.</para></listitem>
 
