@@ -220,6 +220,13 @@
 	</textdump>
 </stage>
 
-<remove>/tools</remove>
+<stage name="Finishing Up">
+	<remove>/tools</remove>
+
+	<execute command="umount">
+		<param>&LFS;/proc</param>
+		<param>&LFS;/dev/pts</param>
+	</execute>
+</stage>
 
 </alfs>
