@@ -25,43 +25,56 @@
 <title>Description</title>
 
 <para>The element <filename>packageinfo</filename> groups elements containg
-information about the package, namely a description and some deopendency
-relationship.</para>
+information about the package, namely a description and some dependency
+relationship(s).</para>
 
-<para>The description of the packge is contained in the
-<filename>description</filename> sub-element.</para>
+<para>The <filename>description</filename> sub-element provides for a
+description of the packge.</para>
 
-<para>The relationship "depends-on" is described by the
-<filename>requires</filename> sub-element.</para>
+<para>The <filename>requires</filename> sub-element provides for a
+relationship (dependancy) to other defined packages in the profile.</para>
 
-<para>The relationship "will utilize" is described by the
-<filename>utilizes</filename> sub-element.</para>
+<para>The <filename>utilizes</filename> sub-element provdes for a
+relationship (uses / optional) to other defined packages in the
+profile.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<para>The equivalent bash script is&nbsp;:</para>
+<screen><userinput>&lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
+	&lt;packageinfo&gt;
 
-<screen><userinput>echo Generating package zlib 1.1.4
+		&lt;description&gt;
 
-#-----------------------------------------
-echo Stage "Unpacking a package."
+			&lt;para&gt;The gimp package contains the GNU Image Manipulation Program.
+			            This is useful for :&lt;/para&gt;
 
-echo Unpacking /usr/src/lfs-packages/zlib.1.1.4.tar.gz into /usr/src
-cd /usr/src
-[[ $? != 0 ]] &amp;&amp;  echo Command failed &amp;&amp; exit 3
+			&lt;list&gt;
+				&lt;item&gt;photo retouching,&lt;/item&gt;
+				&lt;item&gt;image composition,&lt;/item&gt;
+				&lt;item&gt;image authoring.&lt;/item&gt;
+			&lt;/list&gt;
 
-tar xzvf /usr/src/lfs-packages/zlib.1.1.4.tar.gz
-[[ $? != 0 ]] &amp;&amp;  echo Command failed &amp;&amp; exit 3
+		&lt;/description&gt;
+	
+		&lt;requires&gt;&lt;name&gt;gtk+&lt;/name&gt;&lt;/requires&gt;
 
+		&lt;utilizes&gt;&lt;name&gt;libtiff&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;libpng&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;libjpeg&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;aalib&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;mpeg_lib&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;python&lt;/name&gt;&lt;/utilizes&gt;
 
-echo Exiting stage "Unpacking a package."
+	&lt;/packageinfo&gt;
 
-...
+	....
 
-echo End of generating package zlib 1.1.4</userinput></screen>
+&lt;/package&gt;</userinput></screen>
+
+<para>There is no equivalent bash script for the element.</para>
 
 </sect2>
 
