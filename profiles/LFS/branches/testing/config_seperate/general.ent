@@ -64,7 +64,7 @@
 <!ENTITY gateway    "172.16.1.1">
 <!ENTITY on_boot    "yes">
 <!ENTITY IP         "172.16.1.22">
-<!ENTITY netmask    "255.255.255.0">
+<!ENTITY prefix     "24">
 <!ENTITY broadcast  "172.16.1.255">
 
 <!-- In the entity below replace 127.0.0.1 with the IP address of the DNS server most appropriate for
@@ -121,7 +121,7 @@ network.-->
 <!ENTITY password "r00tme">
 
 <!-- LFS book version -->
-<!ENTITY LFS-version "6.0-testing-20040712">
+<!ENTITY LFS-version "6.0-testing-20040717">
 
 <!-- THE FOLLOWING TWO ENTITIES DECLARATIONS SHOULDN'T BE MOFIFIED
      UNLESS YOU KNOW WHAT YOU ARE DOING
