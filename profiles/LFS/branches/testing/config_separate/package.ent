@@ -326,6 +326,9 @@
 <!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
+<!ENTITY texinfo-segfault-patch-md5 "ce5aa1bb05b3c6638e071d2b0283fdd6">
+<!ENTITY texinfo-segfault-patch "texinfo-&texinfo-version;-segfault-1.patch">
+
 <!ENTITY udev-md5 "8202bf86e9f2cb5483d473f9977eeafc">
 <!ENTITY udev-version "030">
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
@@ -344,6 +347,9 @@
 <!ENTITY util-linux-package "util-linux-&util-linux-version;.tar.bz2">
 <!ENTITY util-linux-directory "util-linux-&util-linux-version;">
 
+<!ENTITY util-linux-sfdisk-patch-md5 "e9dedbb70a28804f2fd6c565a9dda206">
+<!ENTITY util-linux-sfdisk-patch "util-linux-&util-linux-version;-sfdisk-1.patch">
+
 <!ENTITY vim-md5 "821fda8f14d674346b87e3ef9cb96389">
 <!ENTITY vim-version "6.3">
 <!ENTITY vim-package "vim-&vim-version;.tar.bz2">
@@ -356,3 +362,6 @@
 <!ENTITY zlib-version "1.2.1">
 <!ENTITY zlib-package "zlib-&zlib-version;.tar.bz2">
 <!ENTITY zlib-directory "zlib-&zlib-version;">
+
+<!ENTITY zlib-security-patch-md5 "1b451d8388afcbc5455f670bcb3c856b">
+<!ENTITY zlib-security-patch "zlib-&zlib-version;-security-1.patch">

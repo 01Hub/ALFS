@@ -23,6 +23,12 @@
 			<base>&build_dir;/&texinfo-directory;</base>
 		</stageinfo>
 
+		<patch base="&build_dir;/&texinfo-package;">
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&texinfo-segfault-patch;</param>
+		</patch>
+
 		<configure>
 			<param>--prefix=/usr</param>
 		</configure>
