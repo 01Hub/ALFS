@@ -23,7 +23,12 @@
 			<param>-i ../&perl-libc-1-patch;</param>
 		</patch>
 
-		<execute command="echo &quot;uname -m&quot; &gt; /tools/bin/arch" />
+		<textdump>
+			<file>/tools/bin/arch</file>
+			<content>
+				=uname -m
+			</content>
+		</textdump>
 
 		<permissions mode="755">
 			<name>/tools/bin/arch</name>
