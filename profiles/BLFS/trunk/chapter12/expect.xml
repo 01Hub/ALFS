@@ -26,15 +26,20 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <base>&build_dir;/&expect-directory;</base>
+	<base>&build_dir;/&expect-directory;</base>
       </stageinfo>
-      <patch base="&build_dir;/&expect-directory;">
+      <patch>
         <param>-N</param>
         <param>-p1</param>
         <param>-i &packages_dir;/&expect-spawn-patch;</param>
       </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&expect-directory;</base>
+      </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
         <param>--with-tcl=/usr/lib</param>

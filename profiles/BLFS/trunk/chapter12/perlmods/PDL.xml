@@ -13,21 +13,21 @@
 <alfs>
 <package name="PDL" version="&PDL-version;">
   <packageinfo>
-    <requires>
+    <utilizes>
       <name>Filter</name>
-    </requires>
-    <requires>
+    </utilizes>
+    <utilizes>
       <name>Inline</name>
-    </requires>
-    <requires>
+    </utilizes>
+    <utilizes>
       <name>Term-Readline-Gnu</name>
-    </requires>
-    <requires>
+    </utilizes>
+    <utilizes>
       <name>ExtUtils-F77</name>
-    </requires>
-    <requires>
+    </utilizes>
+    <utilizes>
       <name>Astro-FITS-Header</name>
-    </requires>
+    </utilizes>
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
