@@ -42,7 +42,7 @@ the file <filename>$LFS/etc/group</filename> from whatever is typed on the
 following lines until the sequence <acronym>EOF</acronym> is encountered.
 Therefore, this whole section is generally typed as seen.</para></blockquote>
 
-<note>Sample Note</note>
+<note><para>Sample Note</para></note>
 
 <blockquote><para>This type of section is to define a notice of some kind.
 Mostly to alert you of something to take note of.</para></blockquote>
