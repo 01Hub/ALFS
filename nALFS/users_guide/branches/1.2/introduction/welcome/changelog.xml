@@ -1,0 +1,50 @@
+<sect1 id="intro-welcome-changelog" xreflabel="ChangeLog">
+<?dbhtml filename="changelog.html" dir="welcome"?>
+<title>ChangeLog</title>
+
+<para>&version; &emdash; &releasedate;</para>
+
+<itemizedlist>
+
+<listitem><para>June 20th, 2004 [jwrober]: Modified version number standard
+to follow the &book-product;'s version number with a &quot;side&quot;
+version number.</para></listitem>
+
+<listitem><para>June 8th, 2004 [jwrober]: Changed the required version of
+libxml2 to 2.6.0 or greater.</para></listitem>
+
+<listitem><para>May 31st, 2004 [jwrober]: Moved files and directories
+around to match the Hackers Guide better.</para></listitem>
+
+<listitem><para>May 31st, 2004 [jwrober]: Removed Unused XML Tags from the
+source.</para></listitem>
+
+<listitem><para>May 31st, 2004 [jwrober]: Updated to DocBook v4.3 and
+applied formatting similar to the ALFS Syntax Doc and nALFS Hackers Guide.
+</para></listitem>
+
+<listitem><para>October 9th, 2003 [jwrober]: Filled in the prerequisites
+page.</para></listitem>
+
+<listitem><para>October 7th, 2003 [jwrober]: Added a quick start page from the
+README and basic prerequisites.</para></listitem>
+
+<listitem><para>October 6th, 2003 [jwrober]: Updated the introduction and
+contact info pages.</para></listitem>
+
+<listitem><para>October 6th, 2003 [jwrober]: Preface &emdash; Added a foreward
+from the editor.</para></listitem>
+
+<listitem><para>October 3rd, 2003 [jwrober]: Preface &emdash; Added an
+introduction, updated the acknowledgements, audience and
+prerequisites.</para></listitem>
+
+<listitem><para>September 29th, 2003 [jwrober]: Added the
+preface. Most of it is empty.</para></listitem>
+
+<listitem><para>September 26th, 2003 [jwrober]: Base document
+created.</para></listitem>
+
+</itemizedlist>
+
+</sect1>

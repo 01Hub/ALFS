@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+		"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+
+<!ENTITY nalfs-version "1.2">
+<!ENTITY version "&nalfs-version;-0.1">
+<!ENTITY releasedate "June 23rd, 2004">
+
+<!ENTITY % book		SYSTEM "book/book.ent">
+<!ENTITY % preface	SYSTEM "preface/preface.ent">
+<!ENTITY % introduction	SYSTEM "introduction/introduction.ent">
+<!ENTITY % chapter01	SYSTEM "chapter01/chapter01.ent">
+
+%book;
+%preface;
+%introduction;
+%chapter01;
+
+]>
+
+<book>
+
+&book;
+
+</book>

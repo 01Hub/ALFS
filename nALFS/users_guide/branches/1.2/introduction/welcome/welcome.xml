@@ -1,0 +1,64 @@
+<chapter id="intro-welcome" xreflabel="Welcome">
+<?dbhtml filename="welcome/welcome.html" dir="introduction"?>
+<title>Welcome to the &book-product; Users Guide</title>
+
+<sect1>
+
+<para>LFS stands for Linux From Scratch and it's a project, led by 
+
+<ulink url="mailto:gerard@linuxfromscratch.org">Gerard Beekmans</ulink> 
+
+&emdash;&lt;gerard@linuxfromscratch.org&gt;, which helps you build your own 
+Linux system.</para>
+
+<para>What this means is that you will use nothing but the source code of
+various software packages needed for a fully functional Linux system. You
+will compile the packages one-by-one on your own computer. During this
+process, you will be able to tweak every single corner of your system, by
+editing a bunch of configuration files, creating your own boot scripts
+etc.</para>
+
+<para>All this might sound a bit complicated and require too much work. But
+even if it is, it's well worth it. One of the LFS project's secondary goals
+is education. Great care is taken in each step to explain what is occuring
+at each phase of the build procedure.</para>
+
+<para>Best of all it that it does not have to be that complicated or time
+consuming. With only a few keystrokes and the right software, you can just
+sit back and relax, while your system is being built &emdash; from scratch.
+This is where the ALFS project comes into play.</para>
+
+<para>ALFS stands for Automated Linux From Scratch, and its aim is to
+provide a much simpler method for building a Linux system.</para>
+
+<para>ALFS uses profiles (simple XML files) which describe what actions are
+to be taken and what commands executed.  Feeding the program (like
+&book-product;) with those profiles, will make the program act upon
+them.</para>
+
+<para>For example, if you want to create a directory, all you have to do is
+to put:</para>
+
+<screen><command>&lt;mkdir&gt;
+	&lt;name&gt;/some/directory&lt;/name&gt;
+&lt;/mkdir&gt;</command></screen>
+
+<para>in the profile and leave the rest to the program. Of course, you are
+not limited to just compiling packages for LFS. You can do just about
+anything. All it takes is a little time to write a profile for it.</para>
+
+<para>This might seem very similar to ordinary shell scripting, but it has
+also a lot of advantages. With this approach &book-product; (after reading
+any properly formatted profile) can be instructed to pause execution, start
+execution from a selected element (by browsing a profile in a tree-like
+mode), enter special environments like <filename>chroot</filename>, and
+much much more.</para>
+
+</sect1>
+
+&intro-welcome-acknowledgements;
+&intro-welcome-conventions;
+&intro-welcome-contactinfo;
+&intro-welcome-changelog;
+
+</chapter>
