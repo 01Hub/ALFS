@@ -7,6 +7,9 @@
 	</unpack>
     </stage>
 
+    <!-- warning: the XFS patch required to uyse the XFS system
+         has not been added to the profile yet. -->
+
     <stage name="Installing a package.">
         <stageinfo>
 		<base>&build_dir;/&xfsprogs-directory;</base>

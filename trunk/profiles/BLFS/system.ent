@@ -19,6 +19,7 @@
 <!ENTITY xfsprogs      SYSTEM "./chapter05/xfsprogs.xml">
 
 <!-- chapter 6 -->
+<!ENTITY vim        SYSTEM "./chapter06/vim.xml">
 <!ENTITY emacs      SYSTEM "./chapter06/emacs.xml">
 <!ENTITY nano       SYSTEM "./chapter06/nano.xml">
 <!ENTITY joe        SYSTEM "./chapter06/joe.xml">

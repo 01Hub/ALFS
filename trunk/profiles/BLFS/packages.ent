@@ -32,6 +32,10 @@
 
 <!--************* packages for chapter 6 *************-->
 
+<!ENTITY vim-version   "6.2">
+<!ENTITY vim-package   "vim-6.2.tar.bz2">
+<!ENTITY vim-directory "vim62">
+
 <!ENTITY emacs-version   "21.3">
 <!ENTITY emacs-package   "emacs-21.3.tar.gz">
 <!ENTITY emacs-directory "emacs-21.3">
@@ -40,9 +44,9 @@
 <!ENTITY nano-package   "nano-1.2.2.tar.gz">
 <!ENTITY nano-directory "nano-1.2.2">
 
-<!ENTITY joe-version   "2.9.7">
-<!ENTITY joe-package   "joe-2.9.7.tgz">
-<!ENTITY joe-directory "joe-2.9.7">
+<!ENTITY joe-version   "2.9.8">
+<!ENTITY joe-package   "joe-2.9.8.tar.gz">
+<!ENTITY joe-directory "joe-2.9.8">
 
 <!--************* packages for chapter 7 *************-->
 
