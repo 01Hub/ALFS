@@ -1,0 +1,197 @@
+#
+# Example of a configuration file ( should be copied to ~/.nALFSrc )
+#
+
+###############################################################################
+##                          Files and directories                            ##
+###############################################################################
+
+# Main directory used by nALFS for storing different files. If not
+# set, $ALFS_DIR environment variable will be checked. If empty,
+# ~/.nALFS/ will be used.
+# set alfs_directory "/var/log/ALFS"
+
+# Directory where packages' log files will be stored.
+# It's relative to alfs_directory, but a full path can be specified.
+set packages_directory "packages"
+
+# Directory that will be used if NALFS_STAMP_DIR environment variable is
+# not set. Packages' stamps are stored in it.
+# It's relative to alfs_directory, but a full path can be specified.
+set stamp_directory "stamps"
+
+# Base directory used when adding new profiles.
+set profiles_directory "/"
+
+# Log file for status window.
+# It's relative to alfs_directory, but a full path can be specified.
+set status_logfile "log_file"
+
+
+###############################################################################
+##                                Logging                                    ##
+###############################################################################
+
+# Log status window.
+set log_status_window no
+
+# If set to "no", handlers, changed files and packages' compilation
+# times won't be logged and no file will be created in
+# packages_directory. That is - it disables the backend-side logging
+# completely, so the rest of the logging options below won't have any
+# effect.
+set log_backend yes
+
+# Log handler actions.
+set log_handlers yes
+
+# Logging of changed files:
+#   0 - logging off
+#   1 - logging using time stamps
+set logging_method 0
+
+# Default base directory for find()-like search. If it can't be
+# used, "/" will be used instead.
+set find_base "/mnt/lfs"
+
+# White-space separated list of directories which will be ignored when
+# find()-like search is performed. They are relative to find_base.
+set find_prunes "/tmp /proc /dev /usr/src/linux /mnt /opt /home /root"
+
+# File, in which the list of directories that will be ignored by a
+# find()-like search is stored.
+# It's relative to alfs_directory, but a full path can be specified.
+set find_prunes_file "prune_list"
+
+
+###############################################################################
+##                                 Syntax                                    ##
+###############################################################################
+
+# Default syntax version, used when it's not specified within the
+# profile ("version" inside <alfs>).
+set default_syntax "3.0"
+
+# If you want to be able to use relative addressing inside elements
+# set this to "yes" (relative to profile's directory).
+set use_relative_dirs no
+
+
+###############################################################################
+##                               Appearance                                  ##
+###############################################################################
+
+# Your favorite cursor.
+set cursor "->"
+
+# Number of spaces for indenting elements in the main window.
+set indentation_size 4
+
+# Print the name of the current profile on the top line.
+set display_profile yes
+
+# Print options' values on the middle line.
+set display_options_line yes
+
+# Print the timer (and backend status) on the bottom line:
+#   0 - no
+#   1 - total time executing
+#   2 - time of the current execution
+set display_timer 1
+
+# Whether or not to display <alfs> element, doctype and comments.
+# display_doctype is not used yet.
+set display_alfs no
+set display_doctype no
+set display_comments no
+
+# Expand all profiles when program is started.
+set expand_profiles no
+
+# Default number of lines (in percents) that main window occupies.
+set windows_relation 50
+
+# Print "Enter stage: ", or not.
+set display_stage_header no
+
+
+###############################################################################
+##                    File decompression and unpacking                       ##
+###############################################################################
+
+# These options hold the appropriate commands to perform a decompression
+# of the specified file type to stdout. The default commands are listed below.
+# The commands will be passed the filename to decompress as a string
+# parameter, so '%s' should be used to substitute the path into the
+# command string.
+# set gunzip_command "zcat %s"
+# set bunzip2_command "bunzip2 -dc %s"
+# set uncompress_command "zcat %s"
+
+# These options hold the appropriate commands to unpack a file of the
+# specified type. The default commands are listed below. The commands
+# _should_ be written to expect their input on stdin, but if a particular
+# command cannot accept input in that fashion (unzip, for example), '%s'
+# can be used in the string to substitute the path of the file to unpack.
+# If this is done, however, the unpack command will not be usable in a
+# "chain" with a decompressor ahead of it.
+# set untar_command "tar xv"
+# set unzip_command "unzip %s"
+# set unpax_command "pax -rv"
+# set uncpio_command "cpio -idv"
+
+###############################################################################
+##                                  Misc                                     ##
+###############################################################################
+
+# Be verbose.
+set be_verbose no
+
+# Sleep for this number of seconds, after getting the time stamp
+# (used when logging installed files). Needed for some packages
+# that can be compiled in a very short time.
+set sleep_after_stamp 1
+
+# Produce an audible or visible alert when execution has stopped.
+set beep_when_done no
+
+# Move the cursor to the running element, when it's changed.
+set follow_running no
+
+# In interactive mode, start parsing the specified profiles
+# immediately.
+set start_immediately no
+
+# Print system output in status window.
+set show_system_output yes
+
+# Set to "no" if you want the "For help, type '?'" message to go away.
+set print_startup_help yes
+
+# Number of lines to keep in the status window.
+set status_history 500
+
+# Setting this value to "no" will make the program run in
+# non-interactive, non-curses mode, starting the execution of the
+# profiles immediately.
+set run_interactive yes
+
+# Default jump-to element, used by several commands ('J', 'K', ';'):
+#   0 - failed element
+#   1 - running element
+#   2 - done element
+#   3 - package
+set jumpto_element 1
+
+# Whether to create stamp files for installed packages. These can
+# be later used with <check>, to check if some package is installed.
+set stamp_packages no
+
+# If any of the following environment variables are exported, and
+# warn_if_set is set to "yes", nALFS will print a warning.
+set warn_if_set_variables "CPPFLAGS CXXFLAGS CFLAGS LDFLAGS"
+set warn_if_set no
+
+# Editor to use.
+set editor "vim"
+
