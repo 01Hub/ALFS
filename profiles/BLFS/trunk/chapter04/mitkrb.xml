@@ -8,6 +8,9 @@
 %package_entities;
 %config_entities;
 
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
 ]>
 
 <alfs>
@@ -32,11 +35,8 @@
       <archive>&build_dir;/&mitkrb-krb5-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>
-    <unpack>
-      <archive>&packages_dir;/&blfs-bootscripts-package;</archive>
-      <destination>&build_dir;</destination>
-    </unpack>
   </stage>
+  &bootscripts-get;
   <stage name="Installing.">
     <stageinfo>
       <base>&build_dir;/&mitkrb-directory;</base>
@@ -114,9 +114,9 @@
       </content>
     </textdump>
   </stage>
+  &bootscripts-clean;
   <stage name="Cleanup.">
     <remove>&build_dir;/&mitkrb-directory;</remove>
-    <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
   </stage>
 </package>
 </alfs>

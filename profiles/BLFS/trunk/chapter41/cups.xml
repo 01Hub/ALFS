@@ -9,6 +9,9 @@
 %package_entities;
 %config_entities;
 
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
 ]>
 <alfs>
   <package name="cups" version="&cups-version;">
@@ -40,11 +43,8 @@
         <archive>&packages_dir;/&cups-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
-      <unpack>
-        <archive>&packages_dir;/&blfs-bootscripts-package;</archive>
-        <destination>&build_dir;</destination>
-      </unpack>
     </stage>
+    &bootscripts-get;
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&cups-directory;</base>
@@ -63,9 +63,9 @@
         <param>install-cups</param>
       </make>
     </stage>
+    &bootscripts-clean;
     <stage name="Cleanup">
       <remove>&build_dir;/&cups-directory;</remove>
-      <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
     </stage>
   </package>
 </alfs>

@@ -1,0 +1,6 @@
+<stage name="Unpacking bootscripts">
+  <unpack>
+    <archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+    <destination>&build_dir;</destination>
+  </unpack>
+</stage>

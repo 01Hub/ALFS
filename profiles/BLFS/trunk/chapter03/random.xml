@@ -7,16 +7,13 @@
 %general_entities;
 %config_entities;
 
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
 
 ]>
 <alfs>
   <stage name="Random Number Generation">
-    <stage name="Unpacking">
-      <unpack>
-        <archive>&packages_dir;/&blfs-bootscripts-package;</archive>
-        <destination>&build_dir;</destination>
-      </unpack>
-    </stage>
+    &bootscripts-get;
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&blfs-bootscripts-directory;</base>
@@ -25,8 +22,6 @@
         <param>install-random</param>
       </make>
     </stage>
-    <stage name="Cleanup">
-      <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
-    </stage>
+    &bootscripts-clean;
   </stage>
 </alfs>
