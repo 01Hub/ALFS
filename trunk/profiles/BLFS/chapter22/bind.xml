@@ -42,30 +42,43 @@
 		<make>
 		        <param>install</param>
 		</make>
+	</stage>
 
-		<mkdir base="/home/named">
+	<stage name="Configuring chroot environment">
+		<stageinfo>
+			<base>/home/named</base>
+		</stageinfo>
+
+		<mkdir>
 			<option>parents</option>
 			<name>dev</name>
 			<name>etc/namedb/slave</name>
 			<name>var/run</name>
 		</mkdir>
 
-		<execute command="mknod /home/named/dev/null c 1 3" />
-		<execute command="mknod /home/named/dev/random c 1 8" />
+		<execute command="mknod">
+			<param>dev/null</param>
+			<param>c 1 3</param>
+ 		</execute>
+
+		<execute command="mknod">
+			<param>dev/random</param>
+			<param>c 1 8</param>
+ 		</execute>
 		
 		<permissions mode="666">
-			<name>/home/named/dev/null</name>
-			<name>/home/named/dev/random</name>
+			<name>dev/null</name>
+			<name>dev/random</name>
 		</permissions>
 
 		<mkdir>
 			<option>parents</option>
-			<name>/home/named/etc/namedb/pz</name>
+			<name>etc/namedb/pz</name>
 		</mkdir>
 
 		<copy>
 			<source>/etc/localtime</source>
-			<destination>/home/named/etc</destination>
+			<destination>etc</destination>
 		</copy>
 	</stage>
 

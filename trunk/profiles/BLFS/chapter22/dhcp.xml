@@ -28,7 +28,9 @@
 			<param>install</param>
 		</make>
 
-		<execute command="touch /var/state/dhcp/dhcpd.leases" />
+		<execute command="touch">
+			<param>/var/state/dhcp/dhcpd.leases</param>
+		</execute>
 
 		<textdump>
 			<file>/etc/dhcpd.conf</file>

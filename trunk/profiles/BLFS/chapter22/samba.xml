@@ -12,8 +12,7 @@
 		</unpack>
 	</stage>
 
-
-	<stage name="Installing.">
+	<stage name="Patching.">
 		<stageinfo>
 			<base>&build_dir;/&samba-directory;/source</base>
 		</stageinfo>
@@ -23,6 +22,12 @@
 			<param>-p1</param>
 			<param>-i &packages_dir;/&samba-maintainer-patch;</param>
 		</patch>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&samba-directory;/source</base>
+		</stageinfo>
 
 		<mkdir>
 			<option>parents</option>
@@ -44,7 +49,14 @@
 			<param>install</param>
 		</make>
 
-		<execute command="install -m755 nsswitch/libnss_win{s,bind.so} /lib" />
+		<copy>
+			<source>nsswitch/libnss_win{s,bind.so}</source>
+			<destination>/lib</destination>
+		</copy>
+
+		<permissions mode="0755">
+			<name>/lib/nsswitch/libnss_win{s,bind.so}</name>
+		</permissions>
 
 		<link base="/lib">
 			<option>force</option>
