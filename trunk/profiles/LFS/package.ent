@@ -272,13 +272,13 @@
 <!ENTITY patch-package "patch-&patch-version;.tar.gz">
 <!ENTITY patch-directory "patch-&patch-version;">
 
-<!ENTITY perl-md5 "d9bdb180620306023fd35901a2878b62">
-<!ENTITY perl-version "5.8.0">
+<!ENTITY perl-md5 "fa356b74f99166b63a68a322c3c68f91">
+<!ENTITY perl-version "5.8.2">
 <!ENTITY perl-package "perl-&perl-version;.tar.gz">
 <!ENTITY perl-directory "perl-&perl-version;">
 
-<!ENTITY perl-libc-3-patch-md5 "f033161efa8b4b174ec6667e4e739efa">
-<!ENTITY perl-libc-3-patch "perl-&perl-version;-libc-3.patch">
+<!ENTITY perl-libc-1-patch-md5 "f033161efa8b4b174ec6667e4e739efa">
+<!ENTITY perl-libc-1-patch "perl-&perl-version;-libc-1.patch">
 
 <!ENTITY procinfo-md5 "27658d0a69040aca05a65b9888599d50">
 <!ENTITY procinfo-version "18">
