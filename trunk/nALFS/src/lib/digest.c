@@ -57,9 +57,9 @@ void alloc_element_digest(const element_s *el, char **digest, char **type)
 
 	if ((*digest = El_unpack_digest(el)) != NULL) {
 		element_s *el2 = first_param("digest", el);
-		*type = attr_value("type", el2);
 		char *s;
 
+		*type = attr_value("type", el2);
 		if (*type != NULL) {
 			/* make a copy of the attribute value before
 			   modifying it */

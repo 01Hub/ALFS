@@ -37,6 +37,8 @@
 
 #include "utility.h"
 #include "win.h"
+#include "backend.h"
+
 
 int get_url(const char *url, const char *destination, const char *digest,
 	    const char *digest_type)
@@ -46,28 +48,19 @@ int get_url(const char *url, const char *destination, const char *digest,
 	int command_status;
 	struct stat stat_buf;
 	char *temp_file_name;
-	int temp_file;
 	    
 
 	/* Construct a temporary filename */
 
 	temp_file_name = xstrdup(".nALFS.XXXXXX");
-
-	if ((temp_file = mkstemp(temp_file_name)) == -1) {
-		Nprint_h_err("Could not create a temporary file");
-		Nprint_h_err("    %s", strerror(errno));
+	if (create_temp_file(temp_file_name))
 		goto free_all_and_return;
-	}
-	/* Because we cannot use the file handle returned by mkstemp,
-	   and it was opened with O_EXCL, it must be closed before the
-	   download can be performed. There is a small risk that another
-	   user could create a symlink at the path we just generated
-	   before the download starts, which would then put the download
-	   results in a different place than intended. While this could be
-	   considered a security risk, it is so minor as to be
-	   negligible for this application.
+	/* There is a small risk that another user could create a symlink
+	   at the path we just generated before the download starts,
+	   which would then put the download results in a different place
+	   than intended. While this could be considered a security risk,
+	   it is so minor as to be negligible for this application.
 	*/
-	else close(temp_file);
 	    
 	/* Perform the download into the temporary file, to avoid damaging
 	   any existing file during a failed download attempt.
@@ -77,7 +70,7 @@ int get_url(const char *url, const char *destination, const char *digest,
 	command_status = load_url(temp_file_name, url);
 #else
 	command_status = execute_command("wget --progress=dot -O %s %s",
-				 temp_file_name, url);
+					 temp_file_name, url);
 #endif
 
 	if (command_status) {
@@ -94,16 +87,15 @@ int get_url(const char *url, const char *destination, const char *digest,
 		goto free_all_and_return;
 	}
 
-	if (digest && verify_digest(digest_type, digest, temp_file_name)) {
-		Nprint_h_err("Wrong %s digest of %s", digest_type, url);
-		unlink(temp_file_name);
-		goto free_all_and_return;
-	}
-
 	if (rename(temp_file_name, destination)) {
 		Nprint_h_err("Unable to move file to %s:", destination);
 		Nprint_h_err("    %s", strerror(errno));
 		unlink(temp_file_name);
+		goto free_all_and_return;
+	}
+
+	if (digest && verify_digest(digest_type, digest, destination)) {
+		Nprint_h_err("Wrong %s digest of %s", digest_type, url);
 		goto free_all_and_return;
 	}
 
