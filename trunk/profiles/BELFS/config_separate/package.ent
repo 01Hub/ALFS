@@ -183,8 +183,8 @@
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
-<!ENTITY libtool-md5 "db66ba05502f533ad0cfd84dc0e03bd5">
-<!ENTITY libtool-version "1.5.2">
+<!ENTITY libtool-md5 "f9b709f4ac6d094afdee9cdbe1c6ffe7">
+<!ENTITY libtool-version "1.5.6">
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.gz">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
@@ -245,11 +245,8 @@
 <!ENTITY net-tools-package "net-tools-&net-tools-version;.tar.bz2">
 <!ENTITY net-tools-directory "net-tools-&net-tools-version;">
 
-<!ENTITY net-tools-miitool-gcc33-md5 "fc629313c10ebd75abd2750aafbaa0be">
-<!ENTITY net-tools-miitool-gcc33 "net-tools-&net-tools-version;-miitool-gcc33-1.patch">
-
-<!ENTITY net-tools-gcc34-patch-md5 "ffb0bab2e4289f346b2edc2fdfca5ef8">
-<!ENTITY net-tools-gcc34-patch "net-tools-&net-tools-version;-gcc34-1.patch">
+<!ENTITY net-tools-gcc34-patch-md5 "ba53635e2a17d6ea437cd81659d6bb6c">
+<!ENTITY net-tools-gcc34-patch "net-tools-&net-tools-version;-gcc34-2.patch">
 
 <!ENTITY net-tools-kernel-headers-patch-md5 "0fcd25afa43cf85b99c34268ff2f1274">
 <!ENTITY net-tools-kernel-headers-patch "net-tools-&net-tools-version;-kernel-headers-1.patch">

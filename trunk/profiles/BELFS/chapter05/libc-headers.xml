@@ -24,4 +24,8 @@
 			<destination>/tools/include</destination>
 		</copy>
 	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&linux-libc-headers-directory;</remove>
+	</stage>
 </package>
