@@ -19,7 +19,8 @@
       =sysfs /sys sysfs defaults 0 0
       =devpts /dev/pts devpts gid=4,mode=620 0 0
       =shm /dev/shm tmpfs defaults 0 0
-      =# End /etc/fstab</content>
+      =# End /etc/fstab
+      </content>
     </textdump>
   </stage>
 </alfs>

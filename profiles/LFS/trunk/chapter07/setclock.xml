@@ -14,7 +14,8 @@
       =
       =UTC=&UTC;
       =
-      =# End /etc/sysconfig/clock</content>
+      =# End /etc/sysconfig/clock
+      </content>
     </textdump>
   </stage>
 </alfs>
