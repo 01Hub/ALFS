@@ -28,9 +28,9 @@
 <!ENTITY book-maintainer-firstname "James">
 <!ENTITY book-maintainer-address "jwrober@linuxfromscratch.org">
 
-<!ENTITY product-maintainer-fullname "Kevin Fleming">
-<!ENTITY product-maintainer-firstname "Kevin">
-<!ENTITY product-maintainer-address "kpfleming@linuxfromscratch.org">
+<!ENTITY product-maintainer-fullname "Jeremy Huntwork">
+<!ENTITY product-maintainer-firstname "Jeremy">
+<!ENTITY product-maintainer-address "jhuntwork@linuxfromscratch.org">
 
 <!ENTITY profile-maintainer-fullname "Thomas Pegg">
 <!ENTITY profile-maintainer-firstname "Thomas">

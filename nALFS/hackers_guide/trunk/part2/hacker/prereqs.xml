@@ -25,6 +25,8 @@ your linux computer:</para>
 
 <listitem><para>GCC-3.3 or newer.</para></listitem>
 
+<listitem><para>libxml2 2.6.10 or newer.</para></listitem>
+
 <listitem><para>SVN-1.0.5 or newer.</para></listitem>
 
 <listitem><para>OpenSSL-0.9.7c or newer.</para></listitem>

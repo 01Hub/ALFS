@@ -61,12 +61,17 @@ be copied to its correspondent newsgroup, and vice versa.</para>
 <blockquote><para><ulink url="&alfs-root;">&alfs-root;</ulink>
 </para></blockquote>
 
+<para>The LFS IRC server has a channel dedicated to nALFS development.  Pop on
+any time.</para>
+<blockquote><para><ulink url="irc://irc.linuxfromscratch.org/#alfs-dev">
+irc://irc.linuxfromscratch.org/#alfs-dev</ulink></para></blockquote>
+
 </sect2>
 
 <sect2>
 <title>Other</title>
 
-<para>The current &book-product; source code owner is
+<para>The current &book-product; project leader is
 &product-maintainer-fullname;.  If you need to reach
 &product-maintainer-firstname;, send an email to
 
