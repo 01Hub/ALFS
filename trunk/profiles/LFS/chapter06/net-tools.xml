@@ -45,7 +45,7 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&net-tools-directory;</remove>
-		<remove>&build_dir;/&net-tools-miitool-gcc33;</remove>
+		<remove>&build_dir;/&net-tools-gcc34-patch;</remove>
 		<remove>&build_dir;/&net-tools-kernel-headers-patch;</remove>
 	</stage>
 </package>
