@@ -149,6 +149,6 @@
 <!ENTITY nasm-package   "nasm-&nasm-version;.tar.bz2">
 <!ENTITY nasm-directory "nasm-&nasm-version;">
 
-<!ENTITY doxygen-version   "1.3.9.1">
+<!ENTITY doxygen-version   "1.4.1">
 <!ENTITY doxygen-package   "doxygen-&doxygen-version;.src.tar.gz">
 <!ENTITY doxygen-directory "doxygen-&doxygen-version;">
