@@ -1,6 +1,6 @@
 <chapter id="alfs_dtd" xreflabel="&book-product;">
 <?dbhtml filename="alfs_dtd/alfs_dtd.html"?>
-<title>Description of the <acronym>ALFS</acronym> Profile Syntax</title>
+<title>Description of the ALFS Profile Syntax</title>
 
 &alfs_dtd-intro;
 &xml_dtd-syntax;

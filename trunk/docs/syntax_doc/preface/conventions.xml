@@ -39,7 +39,7 @@ websites, etc.</para></blockquote>
 <blockquote><para>This type of section is used mainly when creating
 configuration files.  The first command (in bold) tells the system to create
 the file <filename>$LFS/etc/group</filename> from whatever is typed on the
-following lines until the sequence <acronym>EOF</acronym> is encountered.
+following lines until the sequence EOF is encountered.
 Therefore, this whole section is generally typed as seen.</para></blockquote>
 
 <note><para>Sample Note</para></note>

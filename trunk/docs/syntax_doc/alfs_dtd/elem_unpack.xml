@@ -30,9 +30,8 @@
 operation elements.  It is used to unpack an archive into a destination
 directory</para>
 
-<para>The sub-element <filename>reference</filename> gives the
-<acronym>URL</acronym> of the archive, which is used if the archive file is
-not available locally.</para>
+<para>The sub-element <filename>reference</filename> gives the URL of the
+archive, which is used if the archive file is not available locally.</para>
 
 <para>The sub-element <filename>digest</filename> gives the digest of the
 archive, as computed by openssl, using the digest type specified in the
