@@ -39,6 +39,7 @@ typedef enum handler_type_e {
 	HTYPE_FALSE_RESULT = 32,/* handler should be run for a false test */
 	HTYPE_EXECUTE = 64,
 	HTYPE_STAGE = 128,      /* handler is a stage container */
+	HTYPE_STAGEINFO = 256,  /* handler provides stage information */
 } handler_type_e;
 
 typedef enum handler_data_e {
@@ -48,9 +49,10 @@ typedef enum handler_data_e {
 typedef char *(*handler_data_f)(element_s *, handler_data_e data);
 typedef int (*handler_f)(element_s *);
 typedef int (*handler_test)(element_s *, int *);
-typedef int (*handler_parse)(element_s *, const char *, const char *);
 typedef int (*handler_setup)(element_s *);
-typedef int (*handler_valid)(element_s *);
+typedef int (*handler_parse)(const element_s *, const char *, const char *);
+typedef int (*handler_parse_content)(const element_s *, const char *);
+typedef int (*handler_valid)(const element_s *);
 
 typedef struct handler_info_s {
 	const char *name;		/* Name of the element it handles. */
@@ -85,6 +87,7 @@ typedef struct handler_info_s {
 	handler_valid valid;	/* Function to validate private data. */
 	handler_parse parse_attribute;
 	handler_parse parse_parameter;
+	handler_parse_content parse_content;
 } handler_info_s;
 
 
@@ -118,5 +121,12 @@ int option_exists(const char *option, element_s *element);
 void check_options(int total, int *opts, const char *string_, element_s *el);
 char *append_param_elements(char **string, element_s *el);
 char *append_prefix_elements(char **string, element_s *el);
+
+char *parse_string_attribute(const char * const value,
+			     const char * const message);
+char *parse_string_parameter(const char * const value,
+			     const char * const message);
+char *parse_string_content(const char * const value,
+			   const char * const message);
 
 #endif /* H_HANDLER_ */
