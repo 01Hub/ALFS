@@ -1,14 +1,16 @@
 #ifndef __COMM_H__
 #define __COMM_H__
 
+#include <config.h>
+#include <nc_glib.h>
 #include <nc_sock.h>
-
-#define CHK_NULL(x) if ((x)==NULL) exit (1)
-#define CHK_ERR(err,s) if ((err)==-1) { perror(s); exit(1); }
-#define CHK_SSL(err) if ((err)==-1) { ERR_print_errors_fp(stderr); exit(2); }
 
 #define SEC_LEN		128
 #define MANGO		127
+
+typedef void * (*reader_t) ();
+
+extern sock cl;
 
 int comm_deinit ();
 int comm_init (char *hst, char *dr);
@@ -16,15 +18,19 @@ int comm_srv_deinit ();
 int comm_srv_init (int argc, char **argv);
 
 char comm_rdch ();
-int comm_wrch (char c);
-
+void *comm_rdchunk ();
 float comm_rdfloat ();
-int comm_wrfloat (float f);
-
 int comm_rdint ();
-int comm_wrint (int i);
-
 char *comm_rdstr ();
+GList *comm_rdlist (reader_t reader);
+
+void def_str_writer (gpointer data);
+
+int comm_wrch (char c);
+int comm_wrchunk (void *data, int len);
+int comm_wrfloat (float f);
+int comm_wrint (int i);
 int comm_wrstr (char *str);
+int comm_wrlist (GList *list, GFunc writer, gpointer userdata);
 
 #endif

@@ -1,12 +1,13 @@
 LIB=libcomm.a
-OBJS=libcomm.o
+OBJS=libcomm.o reader.o writer.o ssl.o secret.o remote.o
+
+CFLAGS=-I../libalfs
 
 .PHONY: all
 
 all: $(LIB)
 
-include /usr/share/nc-mk/nc.mak
-include /usr/share/nc-mk/libnc.mak
+include ../libalfs/inc.mak
 
 $(LIB): $(OBJS)
 	ar crv $@ $^

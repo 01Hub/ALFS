@@ -147,7 +147,7 @@ void print_plugs (plug_info *plugs, char *def)
 	{
 		char *tmp = plugarg(plugs[i].path);
 		if (strcmp(tmp, "sample"))
-			printf("\t%s\t\t%s%s\n", tmp, plugs[i].info->name, 
+			printf("\t%s\t\t%s%s\n", tmp, plugs[i].info->name,
 				(((def) && !strcmp(tmp, def)) ? " (default)" : ""));
 		i++;
 	}

@@ -11,7 +11,7 @@ void t_repl (xmlNodePtr node, void *data)
 
 	if (!opt)
 	{
-		fprintf(stderr, "Unconfigured replaceable: %s\n", repl);
+		//fprintf(stderr, "Unconfigured replaceable: %s\n", repl);
 		return;
 	}
 	
