@@ -8,8 +8,8 @@
 <synopsis>
 &lt;!ELEMENT textdump       (file, content)&gt;
 &lt;!ATTLIST textdump
-             base           CDATA #IMPLIED
-             mode           CDATA #IMPLIED&gt;
+          base           CDATA #IMPLIED
+          mode           CDATA #IMPLIED&gt;
 </synopsis>
 
 <para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;

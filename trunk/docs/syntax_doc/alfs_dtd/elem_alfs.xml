@@ -9,10 +9,12 @@
 &lt;!ELEMENT alfs           ((configure | copy | download | execute | link | 
                            make | mkdir | move | ownership | package | 
                            patch | permissions | remove | search_replace | 
-                           stage | textdump | unpack)*)&gt;
+                           stage | textdump | unpack | include)+)&gt;
 &lt;!ATTLIST alfs
           base           CDATA #IMPLIED
-          version        CDATA #FIXED &quot;3.1&quot;&gt;
+          version        CDATA #FIXED &quot;3.1&quot;
+          xml:base       CDATA #IMPLIED
+          xmlns:xi       CDATA #IMPLIED&gt;
 </synopsis>
 
 <para>See also&nbsp;:&nbsp;&nbsp;
@@ -32,7 +34,8 @@
 <xref linkend="elem_search_replace"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_stage"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_textdump"/>&nbsp;&nbsp;|&nbsp;&nbsp;
-<xref linkend="elem_unpack"/>
+<xref linkend="elem_unpack"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_include"/>
 </para>
 
 </sect2>
@@ -46,7 +49,7 @@ one <filename>alfs</filename> element with all the other elements being
 embedded within this element.</para>
 
 <para>When processing an <filename>alfs</filename> element, one processes
-all its embedded children in their order of occurence.</para>
+all its embedded children in their order of occurrence.</para>
 
 <para>The attribute <filename>base</filename> is used to specify the base
 directory which will be used by all the commands in the element
@@ -55,6 +58,10 @@ directory which will be used by all the commands in the element
 <para>The attribute <filename>version</filename> identifies the version of
 the ALFS profile syntax used; it should be
 <userinput>&quot;3.1&quot;</userinput>.</para>
+
+<para>The element <filename>include</filename> and the attributes
+<filename>xml:base</filename> and <filename>xmlns:xi</filename> allow you
+to use <filename>xi:include</filename> directives in your profiles.</para>
 
 </sect2>
 

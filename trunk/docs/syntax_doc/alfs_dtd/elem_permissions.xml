@@ -8,8 +8,8 @@
 <synopsis>
 &lt;!ELEMENT permissions    (option?, name+)&gt;
 &lt;!ATTLIST permissions
-             base           CDATA #IMPLIED
-             mode           CDATA #REQUIRED&gt;
+          base           CDATA #IMPLIED
+          mode           CDATA #REQUIRED&gt;
 </synopsis>
 
 <para>See also&nbsp;:&nbsp;&nbsp;

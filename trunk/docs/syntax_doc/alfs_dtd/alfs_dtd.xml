@@ -18,6 +18,7 @@
 &elem_execute;
 &elem_file;
 &elem_find;
+&elem_include;
 &elem_item;
 &elem_link;
 &elem_list;

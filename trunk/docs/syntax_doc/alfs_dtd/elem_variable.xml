@@ -8,8 +8,8 @@
 <synopsis>
 &lt;!ELEMENT variable       (#PCDATA)&gt;
 &lt;!ATTLIST variable
-             name           CDATA #REQUIRED
-             mode           CDATA #IMPLIED&gt;
+          name           CDATA #REQUIRED
+          mode           CDATA #IMPLIED&gt;
 </synopsis>
 
 <para>This element occurs in the element&nbsp;:&nbsp;&nbsp;

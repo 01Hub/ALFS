@@ -9,7 +9,6 @@
 &lt;!ELEMENT environment    (variable+)&gt;
 &lt;!ATTLIST environment
           mode           (append | prepend) #IMPLIED&gt;
-
 </synopsis>
 
 <para>This element occurs in the element&nbsp;:&nbsp;&nbsp;

@@ -8,9 +8,9 @@
 <synopsis>
 &lt;!ELEMENT ownership      (option?, name+)&gt;
 &lt;!ATTLIST ownership
-             base           CDATA #IMPLIED
-             user           CDATA #IMPLIED
-             group          CDATA #IMPLIED&gt;
+          base           CDATA #IMPLIED
+          user           CDATA #IMPLIED
+          group          CDATA #IMPLIED&gt;
 </synopsis>
 
 <para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
