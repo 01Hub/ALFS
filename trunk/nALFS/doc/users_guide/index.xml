@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+			"/usr/share/docbook/docbookx.dtd" [
+
+<!ENTITY version "20030926">
+<!ENTITY releasedate "September 26th, 2003">
+<!ENTITY nalfs-version "1.1.8">
+
+<!ENTITY % book SYSTEM "book/book.ent">
+
+%book;
+
+]>
+
+<book>
+
+&book;
+
+</book>
