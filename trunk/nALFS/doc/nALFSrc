@@ -47,11 +47,10 @@ set log_handlers yes
 
 # Logging of changed files:
 #   0 - logging off
-#   1 - logging using one find()
-#   2 - logging using two find()s
+#   1 - logging using time stamps
 set logging_method 0
 
-# Default base directory for find()-like searches. If it can't be
+# Default base directory for find()-like search. If it can't be
 # used, "/" will be used instead.
 set find_base "/mnt/lfs"
 
@@ -123,8 +122,8 @@ set display_stage_header no
 # Be verbose.
 set be_verbose no
 
-# Sleep for this number of seconds, after getting the time stamp (in
-# the one-find() method of logging files). Needed for some packages
+# Sleep for this number of seconds, after getting the time stamp
+# (used when logging installed files). Needed for some packages
 # that can be compiled in a very short time.
 set sleep_after_stamp 1
 

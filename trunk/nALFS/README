@@ -264,7 +264,7 @@ options' menu).
     | | | | | | | | | |Log backend (times/handler actions/changed files).
     | | | | | | | | |
     | | | | | | | | |Log changed files (can be 'f' for logging using time
-    | | | | | | | | |stamps, 'F' for logging using two finds, or empty).
+    | | | | | | | | |stamps, or empty).
     | | | | | | | | 
     | | | | | | | |Log handler actions.
     | | | | | | |

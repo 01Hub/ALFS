@@ -54,29 +54,24 @@
 
 #define MAX_PACKAGE_NAME_AND_VERSION_BUF_SIZE 128
 
-/* Some temporary files. */
-#define FILE_STATE_FILE_1	"/tmp/nALFS.state_file_1.XXXXXX"
-#define FILE_STATE_FILE_2	"/tmp/nALFS.state_file_2.XXXXXX"
-#define FILE_INSTALLED		"/tmp/nALFS.installed_files.XXXXXX"
+#define LIST_OF_FILES		"/tmp/nALFS.list_of_files.XXXXXX"
 
 
 typedef enum state_type_e {
 	STATE_TYPE_UNKNOWN = 0,
 	STATE_IS_TIME_STAMP,
-	STATE_IS_LIST_OF_FILES
 } state_type_e;
 
 
-typedef struct statefile_s {
+typedef struct flist_s {
 	int complete;
 	char *name;
-} statefile_s;
+} flist_s;
 
 
 static time_t time_stamp = -1;
 
-static statefile_s *statefile_new;
-static statefile_s *statefile_current;
+static flist_s *list_of_files;
 
 static element_s *current_package;
 
@@ -455,23 +450,23 @@ void log_handler_action(const char *format, ...)
 	logs_add_handler_action(logs, string);
 }
 
-static void free_statefile(statefile_s **statefile)
+static void free_flist(flist_s **f)
 {
-	if (*statefile == NULL) {
+	if (*f == NULL) {
 		return;
 	}
 
-	Debug_logging("Deleting the state file (%s).", (*statefile)->name);
-	delete_file((*statefile)->name);
+	Debug_logging("Deleting the state file (%s).", (*f)->name);
+	delete_file((*f)->name);
 
-	xfree((*statefile)->name);
-	xfree(*statefile);
-	*statefile= NULL;
+	xfree((*f)->name);
+	xfree(*f);
+	*f = NULL;
 }
 
 
 
-static int collect_files(const char *f, statefile_s **statefile)
+static int collect_files(const char *f, flist_s **flist)
 {
 	int i;
 	char filename[strlen(f) + 1];
@@ -493,19 +488,10 @@ static int collect_files(const char *f, statefile_s **statefile)
 	/* Doing allocation here, in case collecting is stopped
 	 * (so that this temporary file can be deleted).
 	 */
-	*statefile = xmalloc(sizeof *statefile);
-	(*statefile)->name = xstrdup(filename);
-	(*statefile)->complete = 0;
+	*flist = xmalloc(sizeof *flist);
+	(*flist)->name = xstrdup(filename);
+	(*flist)->complete = 0;
 
-
-	if (opt_logging_method == LOG_USING_TWO_FINDS) {
-		char *package_str = alloc_package_string(current_package);
-
-		fprintf(fp, "%s: %s\n",
-			STATE_IS_LIST_OF_FILES_MSG, package_str);
-
-		xfree(package_str);
-	}
 
 	Nprint("Collecting files from %s...",
 		opt_find_base ? opt_find_base : "/");
@@ -516,35 +502,14 @@ static int collect_files(const char *f, statefile_s **statefile)
 
 	if (i) {
 		Nprint_warn("Collecting files failed or interrupted.");
-		free_statefile(statefile);
+		free_flist(flist);
 		return -1;
 	}
 
 	Debug_logging("Collecting files successful.");
-	(*statefile)->complete = 1;
+	(*flist)->complete = 1;
 
 	return 0;
-}
-
-static INLINE void create_installed_files_file(
-	const char *current,
-	const char *new,
-	const char *filename)
-{
-	if (opt_logging_method == LOG_USING_TWO_FINDS) {
-		logs_add_installed_files_two_finds(
-			logs, opt_find_base, opt_find_prunes);
-
-		/* TODO: Ugly. */
-		execute_command("sort %s %s | uniq -u | sort -bk8 >> %s",
-			current, new, filename);
-
-	} else if (opt_logging_method == LOG_USING_ONE_FIND) {
-		logs_add_installed_files_one_find(logs);
-
-		/* TODO: Ugly II. */
-		execute_command("cp -f %s %s", new, filename);
-	}
 }
 
 static INLINE void send_state(void)
@@ -583,18 +548,6 @@ static INLINE void send_state(void)
 
 		xfree(data);
 	}
-
-	/*
-	 * Send current state file (if any) to the frontend.
-	 */
-	if (statefile_current && statefile_current->complete) {
-		Nprint("Sending the current state "
-			"file to the frontend...");
-		comm_send_from_file(
-			BACKEND_CTRL_SOCK,
-			CTRL_SENDING_STATE,
-			statefile_current->name);
-	}
 }
 
 static void finish_logging(char *installed_files)
@@ -626,26 +579,19 @@ static void finish_logging(char *installed_files)
 	 */
 
 	if (installed_files) {
-		Debug_logging("Sending a list of installed "
-			"files (%s)... ", installed_files);
+		Debug_logging("Sending a list of installed files (%s)... ",
+			installed_files);
+
 		comm_send_from_file(
 			BACKEND_CTRL_SOCK,
 			CTRL_SENDING_FILES_FILE,
 			installed_files);
-
-
-		Debug_logging("Deleting a list (%s)...", installed_files);
-		delete_file(installed_files);
-
-		xfree(installed_files);
-
 	} else {
 		send_state();
 	}
 
 	time_stamp = -1;
-	free_statefile(&statefile_current);
-	free_statefile(&statefile_new);
+	free_flist(&list_of_files);
 	current_package = NULL;
 }
 
@@ -703,16 +649,7 @@ static INLINE char *stage_two_of_logging_changed_files(void)
 		return NULL;
 	}
 
-	if (opt_logging_method == LOG_USING_TWO_FINDS) {
-		Debug_logging("Logging using two finds.");
-
-		if (! statefile_current) {
-			Debug_logging("Not doing stage two - "
-				"no current state file.");
-			return NULL;
-		}
-
-	} else if (opt_logging_method == LOG_USING_ONE_FIND) {
+	if (opt_logging_method == LOG_USING_ONE_FIND) {
 		Debug_logging("Logging using one find.");
 
 		if (time_stamp == -1) {
@@ -722,22 +659,11 @@ static INLINE char *stage_two_of_logging_changed_files(void)
 		}
 	}
 
-	collect_files(FILE_STATE_FILE_2, &statefile_new);
+	collect_files(LIST_OF_FILES, &list_of_files);
 
-	if (statefile_new) {
-		char *filename = xstrdup(FILE_INSTALLED);
-
-		if (create_temp_file(filename)) {
-			xfree(filename);
-			return NULL;
-		}
-
-		create_installed_files_file(
-			statefile_current ? statefile_current->name : NULL,
-			statefile_new->name,
-			filename);
-
-		return filename;
+	if (list_of_files) {
+		logs_add_installed_files(logs, opt_find_base, opt_find_prunes);
+		return list_of_files->name;
 	}
 
 	return NULL;
@@ -777,17 +703,7 @@ static INLINE void end_package_logging(int status)
 
 static void stage_one_of_logging_changed_files(void)
 {
-	if (opt_logging_method == LOG_USING_TWO_FINDS) {
-		Debug_logging("Logging using two finds.");
-
-		/* Check if the frontend sent us a state file. */
-		if (statefile_current == NULL) {
-			collect_files(FILE_STATE_FILE_1, &statefile_current);
-		} else {
-			Nprint("Using the existing state file.");
-		}
-
-	} else if (opt_logging_method == LOG_USING_ONE_FIND) {
+	if (opt_logging_method == LOG_USING_ONE_FIND) {
 		Debug_logging("Logging using one find.");
 
 		/* Check if the frontend sent us a time stamp. */
@@ -805,89 +721,26 @@ static void stage_one_of_logging_changed_files(void)
 	}
 }
 
-static INLINE state_type_e get_state_file_type(const char *line)
-{
-	size_t silofm_len = strlen(STATE_IS_LIST_OF_FILES_MSG);
-	size_t sitsm_len = strlen(STATE_IS_TIME_STAMP_MSG);
-
-
-	if (strncmp(line, STATE_IS_LIST_OF_FILES_MSG, silofm_len) == 0) {
-		if (opt_logging_method == LOG_USING_TWO_FINDS) {
-			return STATE_IS_LIST_OF_FILES;
-		}
-
-	} else if (strncmp(line, STATE_IS_TIME_STAMP_MSG, sitsm_len) == 0) {
-		if (opt_logging_method == LOG_USING_ONE_FIND) {
-			return STATE_IS_TIME_STAMP;
-		}
-	}
-
-	return STATE_TYPE_UNKNOWN;
-}
-
 /* Used in the function below. */
 char *strptime(const char *s, const char *format, struct tm *tm);
 
-static INLINE void check_and_store_state(
-	const char *filename,
-	statefile_s **statefile,
-	time_t *t)
+static INLINE void receive_state(void)
 {
-	int should_delete_file = 0;
-	char line[MAX_STATE_FILE_LINE_LEN];
+	char *ptr;
+	size_t size;
+	char *time_str;
 	struct tm broken_down_time;
-	FILE *fp;
 
 
-	if ((fp = fopen(filename, "r")) == NULL) {
-		Nprint_warn("Unable to open \"%s\" for reading: %s",
-				filename, strerror(errno));
-		return;
-	}
+	comm_read_to_memory(BACKEND_CTRL_SOCK, &ptr, &size);
 
-	fgets(line, sizeof line, fp);
-	remove_new_line(line);
+	time_str = strchr(ptr, '\n') + 1;
 
-	switch (get_state_file_type(line)) {
-		case STATE_IS_LIST_OF_FILES:
-			(*statefile) = xmalloc(sizeof **statefile);
+	strptime(time_str, DATE_FORMAT, &broken_down_time);
 
-			(*statefile)->name = xstrdup(filename);
-			(*statefile)->complete = 1;
+	time_stamp = mktime(&broken_down_time);
 
-			Debug_logging("Received state file stored in \"%s\".",
-				(*statefile)->name);
-
-			break;
-
-		case STATE_IS_TIME_STAMP:
-			/* Read a time string line. */
-			fgets(line, sizeof line, fp);
-			remove_new_line(line);
-
-			strptime(line, DATE_FORMAT, &broken_down_time);
-
-			*t = mktime(&broken_down_time);
-
-			Debug_logging("Time stamp stored (%ld).", *t);
-
-			should_delete_file = 1;
-
-			break;
-
-		case STATE_TYPE_UNKNOWN:
-			Debug_logging("Option for state's type is off.");
-
-			should_delete_file = 1;
-
-			break;
-	}
-
-	fclose(fp);
-
-	if (should_delete_file) {
-		delete_file(filename);
-	}
+	Debug_logging("Time stamp stored (%ld).", time_stamp);
 }
 
 static INLINE void request_state(void)
@@ -904,33 +757,10 @@ static INLINE void request_state(void)
 	type = comm_msg_type(message);
 
 	if (type == CTRL_NO_STATE) {
-		Debug_logging("Frontend doesn't have a state file "
-			"to send us.");
+		Debug_logging("Frontend doesn't have a state file.");
 
 	} else if (type == CTRL_SENDING_STATE) {
-		char *f, filename[] = FILE_STATE_FILE_1;
-
-		if (create_temp_file(filename)) {
-			f = NULL; // Reading and discarding all messages.
-		} else {
-			f = filename;
-		}
-
-		Debug_logging("Receiving a state from the frontend...");
-
-		if (comm_read_to_file(BACKEND_CTRL_SOCK, f) != 0) {
-			Nprint_warn("Receiving state file failed.");
-			return;
-		}
-
-		if (f == NULL) {
-			return;
-		}
-
-		check_and_store_state(
-			filename,
-			&statefile_current,
-			&time_stamp);
+		receive_state();
 
 	} else {
 		Nprint_warn("Unexpected control message (%d) received.", type);
