@@ -12,10 +12,6 @@
 			<base>&build_dir;/&shadow-directory;</base>
 		</stageinfo>
 
-		<execute command="touch">
-			<param>/usr/bin/passwd</param>
-		</execute>
-
 		<configure>
 			<param>--libdir=/usr/lib</param>
 			<param>--enable-shared</param>
@@ -28,12 +24,6 @@
 			</content>
 		</textdump>
 
-		<search_replace>
-		  	<file>libmisc/xmalloc.c</file>
-			<find>extern char *malloc ();</find>
-			<replace>/* extern char *malloc (); */</replace>
-		</search_replace>
-		
 		<make />
 
 		<make>
@@ -71,6 +61,11 @@
 		<move>
 			<source>/bin/vigr</source>
 			<destination>/usr/sbin</destination>
+		</move>
+
+		<move>
+			<source>/usr/bin/passwd</source>
+			<destination>/bin</destination>
 		</move>
 
 		<move base="/usr/lib">

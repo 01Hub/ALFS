@@ -19,6 +19,8 @@
 			=lp:x:9:
 			=dialout:x:10:
 			=audio:x:11:
+			=video:x:12:
+			=utmp:x:13:
 		</content>
 	</textdump>
 
@@ -26,12 +28,15 @@
 		<param>/var/run/utmp</param>
 		<param>/var/log/{btmp,lastlog,wtmp}</param>
 	</execute>
-		
-	<permissions base="/var" mode="644">
+
+	<ownership base="/var" group="utmp">
 		<name>run/utmp</name>
-		<name>log/btmp</name>
 		<name>log/lastlog</name>
-		<name>log/wtmp</name>
+	</ownership>
+		
+	<permissions base="/var" mode="664">
+		<name>run/utmp</name>
+		<name>log/lastlog</name>
 	</permissions>
 
 </stage>
