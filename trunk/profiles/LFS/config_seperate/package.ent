@@ -136,6 +136,9 @@
 <!ENTITY grub-package "grub-&grub-version;.tar.gz">
 <!ENTITY grub-directory "grub-&grub-version;">
 
+<!ENTITY grub-gcc34-patch-md5 "b8932cf9a0b8de8418565a933754decb">
+<!ENTITY grub-gcc34-patch "grub-0.94-gcc34-1.patch">
+
 <!ENTITY gzip-md5 "d303f3530ad9b70022ff6fd58e5250f8">
 <!ENTITY gzip-version "1.3.5">
 <!ENTITY gzip-package "gzip-&gzip-version;.tar.bz2">
@@ -318,6 +321,9 @@
 <!ENTITY sysvinit-package "sysvinit-&sysvinit-version;.tar.gz">
 <!ENTITY sysvinit-directory "sysvinit-&sysvinit-version;">
 
+<!ENTITY sysvinit-proclen-patch-md5 "5291e1eea513b59cdb66797638f7be31"
+<!ENTITY sysvinit-proclen-patch "sysvinit-&sysvinit-version;-proclen-1.patch"
+
 <!ENTITY tar-md5 "f1932e0fbd4641885bfdcc75495c91b7">
 <!ENTITY tar-version "1.14">
 <!ENTITY tar-package "tar-&tar-version;.tar.bz2">
@@ -353,6 +359,9 @@
 <!ENTITY vim-version "6.3">
 <!ENTITY vim-package "vim-&vim-version;.tar.bz2">
 <!ENTITY vim-directory "vim63">
+
+<!ENTITY vim-lang-md5 "5395c4dacbf1c5008b22c4b86794e8a7">
+<!ENTITY vim-lang-package "vim-&vim-version-lang.tar.gz">
 
 <!ENTITY zlib-md5 "8106069990476a3c5187301465bd7a60">
 <!ENTITY zlib-version "1.2.1">

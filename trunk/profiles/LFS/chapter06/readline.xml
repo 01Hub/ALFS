@@ -33,7 +33,9 @@
 			<param>--prefix=/usr</param>
 		</configure>
 
-		<make />
+		<make>
+			<param>SHLIB_XLDFLAGS=-lncurses</param>
+		</make>
 
 		<make>
 			<param>install</param>

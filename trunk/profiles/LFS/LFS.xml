@@ -120,7 +120,6 @@
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/gawk.xml" />
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/ncurses.xml" />
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/readline.xml" />
-		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/vim.xml" />
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/m4.xml" />
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/bison.xml" />
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/less.xml" />
@@ -128,6 +127,7 @@
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/sed.xml" />
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/flex.xml" />
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/gettext.xml" />
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/vim.xml" />
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/net-tools.xml" />
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/inetutils.xml" />
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter06/perl.xml" />

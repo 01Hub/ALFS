@@ -27,16 +27,15 @@
 			<base>&build_dir;/&grub-directory;</base>
 		</stageinfo>
 
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&grub-gcc34-patch;</param>
+		</patch>
+
 		<configure>
 			<param>--prefix=/usr</param>
 		</configure>
-
-		<make>
-			<param>-C stage2</param>
-			<param>STAGE2_CFLAGS=-O2</param>
-			<param>pre_stage2_exec-builtins.o</param>
-			<param>pre_stage2_exec-serial.o</param>
-		</make>
 
 		<make />
 
