@@ -302,7 +302,7 @@ char *strnstr (char *haystack, char *needle, int n)
 	for (i=0;i<n;i++)
 	{
 		ret = strstr(ret, needle);
-		if (strcmp(haystack, ret))
+		if ((ret) && (strcmp(haystack, ret)))
 			ret++;
 	}
 
