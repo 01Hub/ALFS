@@ -1,0 +1,251 @@
+#!/bin/bash
+cat << "EOF"
+AC_INIT(nALFS,CVS,[],nALFS)
+AC_CONFIG_AUX_DIR([gnubuild])
+AM_INIT_AUTOMAKE([foreign dist-bzip2 subdir-objects])
+AM_MAINTAINER_MODE
+AC_CONFIG_SRCDIR([src/nalfs.c])
+AC_PROG_CC
+AM_PROG_CC_C_O
+AC_PROG_LD
+AM_ENABLE_SHARED
+AM_DISABLE_STATIC
+AC_LIBTOOL_DLOPEN
+AM_PROG_LIBTOOL
+LIBTOOL="${LIBTOOL} --silent"
+AC_LIB_LTDL
+AC_CONFIG_LIBCONFIG_IN_STATIC
+NALFS_VERSION="${PACKAGE_VERSION}"
+NALFS_LIBS="-lnALFS"
+AC_CONFIG_LIBCONFIG_IN([nALFS])
+AC_STDC_HEADERS
+AC_CONFIG_HEADER([config.h])
+AC_CHECK_LIB([form], [form_driver], [MAIN_LIBS="${MAIN_LIBS} -lform"])
+AC_CHECK_LIB([ncurses], [initscr], [MAIN_LIBS="${MAIN_LIBS} -lncurses"])
+AC_SUBST([MAIN_LIBS])
+AM_CONDITIONAL(STATIC_BUILD, test x${enable_static} = xyes)
+if test x${enable_static} = xyes; then
+   AC_DEFINE([STATIC_BUILD], [1], [Define if the application is being built as a static executable.])
+else
+   AC_DEFINE_DIR([HANDLERS_DIRECTORY], [libdir/nALFS], [Define to location where the handler shared plugin files are installed.])
+fi
+
+AC_ARG_ENABLE([inline], AC_HELP_STRING([--enable-inline], [enable compiler inlining of most functions [[default=no]]]), [], [enableval=no])
+
+case ${enableval} in
+     n|no)
+         inline_val=
+         ;;
+     y|ye|yes)
+         inline_val=inline
+         ;;
+     *)
+         echo "***"
+         echo "*** Unknown --enable-inline value supplied: ${enableval}"
+         exit 1
+         ;;
+esac
+
+AC_DEFINE_UNQUOTED([INLINE], $inline_val, [Define to "inline" to tell the compiler to inline most functions.])
+
+AC_ARG_ENABLE([element-editor], AC_HELP_STRING([--enable-element-editor], [disable editing of elements [[default=yes]]]), [], [enableval=yes])
+
+case ${enableval} in
+     n|no)
+         ;;
+     y|ye|yes)
+         AC_DEFINE([USE_EDITOR], [], [Define to allow editing of elements.])
+         ;;
+     *)
+         echo "***"
+         echo "*** Unknown --enable-element-editor value supplied: ${enableval}"
+         exit 1
+         ;;
+esac
+
+AC_ARG_WITH([run-dir-variable], AC_HELP_STRING([--with-run-dir-variable=NAME], [use environment variable NAME for nALFS run dir [[default=ALFS_DIR]]]), [ALFS_VAR="${withval}"], [ALFS_VAR="ALFS_DIR"])
+
+AC_DEFINE_UNQUOTED([ALFS_VAR], "${ALFS_VAR}", [Define environment variable that can hold path to run dir.])
+
+AC_ARG_WITH([run-dir-name], AC_HELP_STRING([--with-run-dir-name=NAME], [name of directory to create in $HOME when no other run dir specified [[default=.nALFS]]]), [ALFS_DIRECTORY_NAME="${withval}"], [ALFS_DIRECTORY_NAME=".nALFS"])
+
+AC_DEFINE_UNQUOTED([ALFS_DIRECTORY_NAME], "${ALFS_DIRECTORY_NAME}", [Define name of run dir in $HOME when not otherwise specified.])
+
+AC_ARG_WITH([dir-mode], AC_HELP_STRING([--with-dir-mode=MODE], [permissions to apply to created directories [[default=0700]]]), [DIRS_MODE="${withval}"], [DIRS_MODE="0700"])
+
+AC_DEFINE_UNQUOTED([DIRS_MODE], $DIRS_MODE, [Define to set permissions applied to created directories.])
+
+AC_ARG_WITH([rcfile-name], AC_HELP_STRING([--with-rcfile-name=NAME], [name of configuration file in $HOME [[default=.nALFSrc]]]), [RC_FILE_NAME="${withval}"], [RC_FILE_NAME=".nALFSrc"])
+
+AC_DEFINE_UNQUOTED([RC_FILE_NAME], "${RC_FILE_NAME}", [Define to set name of configuration file in $HOME.])
+
+AC_ARG_WITH([libxml2], AC_HELP_STRING([--with-libxml2=PATH],[search for xml2-config in PATH/bin]), [
+case ${withval} in
+     n|no)
+        echo "***"
+        echo "*** You specified --without-libxml2."
+        echo "*** libxml2 is required to build this package."
+        exit 1
+        ;;
+     y|ye|yes)
+        AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no])
+        ;;
+     *)
+        AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no], [${withval}/bin])
+        ;;
+esac
+], [
+AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no])
+])
+
+if test "${XML2_CONFIG}" != "no"; then
+   AC_CHECK_LIB(xml2, xmlParseFile, AC_DEFINE([HAVE_LIBXML2], [], [Must always be defined, libxml2 is required for building this package.]), [], `${XML2_CONFIG} --libs`)
+   if test "${ac_cv_lib_xml2_xmlParseFile}" = "yes"; then
+      XML2_LIB=`${XML2_CONFIG} --libs | sed -e 's/^-L\(.*\) -lxml2.*$/\1/'`/libxml2.la
+      XML2_INCLUDES=`${XML2_CONFIG} --cflags`
+      AC_SUBST([XML2_LIB])
+      AC_SUBST([XML2_INCLUDES])
+      AC_CHECK_LIB(xml2, xmlXIncludeProcess, AC_DEFINE([HAVE_XINCLUDE], [], [Define to enable use of xi:include in profiles.]), [], `${XML2_CONFIG} --libs`)
+   else
+      echo "***"
+      echo "*** The libxml2 installation on this system appears to be broken."
+      echo "*** Since libxml2 is required to build this package, the problem"
+      echo "*** must be corrected before continuing."
+      exit 1
+   fi
+else
+   echo "***"
+   echo "*** Can't find xml2-config. Make sure this system has libxml2 installed."
+   echo "*** If it does, try using --with-libxml2=PATH."
+   echo "*** If it does not, download it from http://xmlsoft.org./"
+   exit 1
+fi
+
+AC_ARG_WITH([curl], AC_HELP_STRING([--with-curl=PATH],[search for curl-config in PATH/bin]), [
+case ${withval} in
+     n|no)
+        ;;
+     y|ye|yes)
+        USE_CURL=yes
+        AC_PATH_PROG([CURL_CONFIG], [curl-config], [no])
+        ;;
+     *)
+        USE_CURL=yes
+        AC_PATH_PROG([CURL_CONFIG], [curl-config], [no], [${withval}/bin])
+        ;;
+esac
+], [
+AC_PATH_PROG([CURL_CONFIG], [curl-config], [no])
+])
+
+if test "${CURL_CONFIG}" != "no"; then
+   AC_CHECK_LIB(curl, curl_global_init, AC_DEFINE([HAVE_LIBCURL], [], [Define to use libcurl instead of wget for downloading.]), [], `${CURL_CONFIG} --libs`)
+   if test "${ac_cv_lib_curl_curl_global_init}" = "yes"; then
+      CURL_LIB=`${CURL_CONFIG} --libs | sed -e 's/^-L\(.*\) -lcurl.*$/\1/'`/libcurl.la
+      CURL_INCLUDES=`${CURL_CONFIG} --cflags`
+      AC_SUBST([CURL_LIB])
+      AC_SUBST([CURL_INCLUDES])
+   else
+      echo "***"
+      echo "*** The libcurl installation on this system appears to be broken."
+      echo "*** Either correct the installation, or run configure without"
+      echo "*** including --with-curl."
+      exit 1
+   fi
+elif test "${USE_CURL}" = "yes"; then
+   echo "***"
+   echo "*** Can't find curl-config. Make sure this system has curl installed,"
+   echo "*** or run configure without including --with-curl."
+   exit 1
+fi
+
+AC_ARG_WITH([ssl], AC_HELP_STRING([--with-ssl=PATH],[use ssl files in PATH (ssl is needed for checking non-MD5 digests in <unpack> and <download> elements)]), [
+case ${withval} in
+     n|no)
+        ;;
+     y|ye|yes)
+        USE_SSL=yes
+        ;;
+     *)
+        USE_SSL=yes
+        SSL_DIR="${withval}"
+        ;;
+esac
+])
+
+if test "${USE_SSL}" = "yes"; then
+   AC_CHECK_LIB([ssl], [OpenSSL_add_all_digests], AC_DEFINE([HAVE_LIBSSL], [], [Define to indicate the SSL libraries should be used for verifying non-MD5 digests.]), [], -L${SSL_DIR}/lib -lcrypto)
+   if test "${ac_cv_lib_ssl_OpenSSL_add_all_digests}" = "yes"; then
+      SSL_LIB="-lssl -lcrypto"
+      if test "${SSL_DIR}" != ""; then
+         SSL_LIB="-L${SSL_DIR}/lib -Wl,--rpath,${SSL_DIR}/lib $SSL_LIB"
+         SSL_INCLUDES="-I${SSL_DIR}/include"
+         AC_SUBST([SSL_INCLUDES])
+      fi
+      AC_SUBST([SSL_LIB])
+   else
+      echo "***"
+      echo "*** The ssl installation on this system appears to be broken."
+      echo "*** Either correct the installation, or run configure without"
+      echo "*** including --with-ssl."
+      exit 1
+   fi
+fi
+
+AC_CONFIG_FILES([Makefile doc/Makefile])
+EOF
+
+default_syntaxes=`echo ${all_syntaxes} | tr -s '[:blank:]' ',' | tr '_' '.'`
+
+cat << EOF
+AC_ARG_ENABLE([syntax],
+        AC_HELP_STRING([--enable-syntax=VERSIONS], [enable only specific ALFS profile syntax versions to be built [[default=${default_syntaxes}]]]),
+        [SYNTAX_LIST=\${enableval}],
+        [SYNTAX_LIST=${default_syntaxes}])
+EOF
+
+for syntax in ${all_syntaxes}; do
+	echo syntax_${syntax}=0
+done
+
+cat << "EOF"
+save_ifs="${IFS}"; IFS="${IFS}${PATH_SEPARATOR},"
+for syntax_ver in ${SYNTAX_LIST}; do
+    case ${syntax_ver} in
+EOF
+
+for syntax in ${all_syntaxes}; do
+	cat << EOF
+	${syntax/_/.})
+	    syntax_${syntax}=1
+	    ;;
+EOF
+done
+
+cat << "EOF"
+    *)
+        echo "***"
+        echo "*** Unknown syntax version supplied: ${syntax_ver}"
+        exit 1
+        ;;
+    esac
+done
+IFS="${save_ifs}"
+EOF
+
+for syntax in ${all_syntaxes}; do
+	cat << EOF
+AC_DEFINE_UNQUOTED([HANDLER_SYNTAX_${syntax}], \${syntax_${syntax}}, [Define to 1 if ALFS ${syntax/_/.} profile syntax handlers should be built.])
+EOF
+done
+
+for handler in ${all_handlers}; do
+    echo -n "AM_CONDITIONAL([HANDLER_$handler], test \$(("
+    eval "syntax_list=\${${handler}_syntaxes}"
+    for syntax in ${syntax_list}; do
+	echo -n "syntax_${syntax} + "
+    done
+    echo "0)) -gt 0)"
+done
+
+echo AC_OUTPUT
