@@ -8,6 +8,7 @@
 #include <build.h>
 #include <plugin.h>
 
+#define DEF_SYN		"book"
 #define	VERSION		"0.0.2"
 
 role default_filter[4] = { NOEXECUTE, INTERACTIVE, TESTSUITE, 0 };
@@ -30,6 +31,7 @@ int main (int argc, char **argv)
 		return 1;
 	}
 
+	// TODO: Make the plugin directory configurable
 	plugin = plugscan("syntax");
 
 	if (!plugin)
@@ -51,7 +53,7 @@ int main (int argc, char **argv)
 						char *tmp = plugarg(plugin[i].path);
 						if (strcmp(tmp, "sample"))
 							printf("\t%s\t\t%s%s\n", tmp, 
-								plugin[i].info->name, ((i==0) 
+								plugin[i].info->name, ((!strcmp(tmp, DEF_SYN)) 
 								? " (default)" : ""));
 						i++;
 					}
@@ -88,21 +90,20 @@ int main (int argc, char **argv)
 	xmlXIncludeProcessFlags(doc, XML_PARSE_NOENT);
 	cur=xmlDocGetRootElement(doc);
 	
-	if (syn)
+	if (!syn)
+		syn = DEF_SYN;
+	
+	while (plugin[i].path)
 	{
-		while (plugin[i].path)
-		{
-			if (!strcmp(syn, plugarg(plugin[i].path)))
-				prof = plugin[i].info->parse(cur);
-			i++;
-		}
+		if (!strcmp(syn, plugarg(plugin[i].path)))
+			prof = plugin[i].info->parse(cur);
+		i++;
 	}
-	else
-		prof = plugin[0].info->parse(cur);
 	
 	if (!prof)
 	{
 		fprintf(stderr, "Document was not parsed correctly.\n");
+		plugunload(plugin);
 		xmlFreeDoc(doc);
 		return 1;
 	}
@@ -111,11 +112,13 @@ int main (int argc, char **argv)
 	{
 		build_paralell (prof, paralell_filter, popt_pkg, popt_cmd);
 		set_filter(default_filter);
+		// TODO: Make print_pkg segfault resistant
 		/*print_pkg(*search_pkg(prof, "Glibc-20041115", 
 			"chapter-building-system"));*/
 		print_profile(*prof);
 	}
 	
+	plugunload(plugin);
 	xmlFreeDoc(doc);
 	return 0;
 }

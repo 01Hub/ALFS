@@ -3,6 +3,7 @@
 
 #include <alfs.h>
 
+#define PLUG_VER	2
 #define PLUG_EXT	"so"
 
 typedef struct
@@ -16,6 +17,7 @@ typedef struct
 {
 	t_plug *info;
 	char *path;
+	void *hand;
 } plug_info;
 
 typedef struct
@@ -30,5 +32,6 @@ plug_hand *plugload (char *fname);
 void plugerr (char *fname);
 void print_plug (plug_info plug);
 char *plugarg (char *path);
+void plugunload (plug_info *plug);
 
 #endif
