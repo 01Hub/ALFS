@@ -869,7 +869,9 @@ static int handle_ctrl_msg(void)
 
 
 	if ((message = comm_read_ctrl_message(FRONTEND_CTRL_SOCK)) != NULL) {
-		char *content = comm_msg_content(message);
+		char *content;
+
+		content = comm_msg_content(message);
 
 		switch (comm_msg_type(message)) {
 			case CTRL_ELEMENT_STARTED:
@@ -899,7 +901,6 @@ static int handle_ctrl_msg(void)
 			case CTRL_REQUEST_EL_STATUS:
 				send_element_status(content);
 				break;
-
 
 			default:
 				Nprint_warn("Unknown control message: %s",
@@ -4586,7 +4587,7 @@ static void nprint_curses(msg_id_e mid, const char *format,...)
 
 	wstandend(windows.status->name);
 
-	vwprintw(windows.status->name, (char *) format, ap);
+	vwprintw(windows.status->name, format, ap);
 
 	if (*opt_log_status_window && fp) {
 		vfprintf(fp, format, ap2);

@@ -296,59 +296,54 @@ static INLINE unsigned long socket_read_max(int s, char *buf, unsigned long max)
  */
 static char *do_read_ctrl_message(int s)
 {
-	unsigned total_read, size_len;
-
+	ssize_t num_read;
+	size_t to_read = 9;
+	char size_buf[10];
+	char *pos;
+	char *message = NULL;
 
 	if (! is_read_available(s, 0)) {
 		return NULL;
 	}
 
-	total_read = 0;
-	size_len = number_len(number_len(CTRL_UNKNOWN)+1+MAX_CTRL_MSG_LEN)+1;
+	pos = &size_buf[0];
 
-	while (total_read < size_len) {
-		char size_buf[size_len + 1];
-		char *pos = size_buf + total_read;
-
-		if (read(s, pos, 1) != 1) {
+	while (to_read > 0) {
+		num_read = read(s, pos, to_read);
+		if (num_read < 0)
 			break;
-		}
-
-		pos[1] = '\0';
-
-		++total_read;
-
-		if (*pos == '|') {
-			unsigned long i, size;
-			char *message = NULL;
-
-			size = strtoul(size_buf, (char **)NULL, 10);
-
-			if (size == ULONG_MAX || size == 0) {
-				Nprint_err("Can find out msg size from \"%s\".",
-					size_buf);
-				break;
-			}
-
-			message = xmalloc(size + 1);
-
-			if ((i = socket_read_max(s, message, size)) > 0) {
-				message[i] = '\0';
-				return message;
-			}
-
-			xfree(message);
-
-			break;
-		}
+		to_read -= num_read;
+		pos += num_read;
 	}
+
+	if (to_read > 0)
+		return NULL;
+
+	/* overwrite the last character read, which will be '|' */
+	*--pos = '\0';
+
+	to_read = strtoul(size_buf, (char **) NULL, 10);
+
+	if (to_read == ULONG_MAX || to_read == 0) {
+		Nprint_err("Can't read msg size from \"%s\".", size_buf);
+		return NULL;
+	}
+
+	message = xmalloc(to_read + 1);
+
+	if ((num_read = socket_read_max(s, message, to_read)) > 0) {
+		message[num_read] = '\0';
+		return message;
+	}
+
+	xfree(message);
 
 	return NULL;
 }
 
 ctrl_msg_s *comm_read_ctrl_message(socket_e s)
 {
-	char *tmp, *body;
+	char *content, *body;
 	ctrl_msg_s *message;
 
 
@@ -356,18 +351,15 @@ ctrl_msg_s *comm_read_ctrl_message(socket_e s)
 		return NULL;
 	}
 
-	if ((tmp = strchr(body, '|')) == NULL) {
-		xfree(body);
-		return NULL;
-	}
-	*tmp++ = '\0';
+	content = body + 5;
+	*(body + 4) = '\0';
 
 	message = xmalloc(sizeof *message);
 
 	message->type = atoi(body);
 
-	if (tmp && *tmp) {
-		message->content = xstrdup(tmp);
+	if (*content) {
+		message->content = xstrdup(content);
 	} else {
 		message->content = NULL;
 	}
@@ -396,20 +388,27 @@ int comm_send_ctrl_msg(
 		va_start(ap, format);
 		result = vsnprintf(buf, buf_size, format, ap);
 		va_end(ap);
-		if ((result < buf_size) && (result > -1))
-			break;
-		if (result > -1)
-			buf_size += 1;
-		else
-			buf_size *= 2;
-		if ((buf = xrealloc(buf, buf_size)) == NULL) {
-			Nprint_err("xrealloc() failed: %s", strerror(errno));
+		if (result >= buf_size) {
+			buf_size = result + 1;
+			if ((buf = xrealloc(buf, buf_size)) == NULL) {
+				Nprint_err("xrealloc() failed: %s", strerror(errno));
+				xfree(buf);
+				return -1;
+			}
+		} else if (result < 0) {
+			Nprint_err("vsnprintf() failed: %s", strerror(errno));
+			xfree(buf);
 			return -1;
+		} else {
+			break;
 		}
 	}
 
 	full_message = xmalloc(result + 15);
-	sprintf(full_message, "%08d|%04d|%s", result + 6, t, buf);
+	/* message size does _NOT_ include trailing null, as it is not sent by write() */
+	/* message size does _NOT_ include size prefix, or '|' separator */
+	sprintf(full_message, "%08d|%04d|%s", result + 5, t, buf);
+	xfree(buf);
 	ret = write(comm_get_socket(s), full_message, strlen(full_message));
 	xfree(full_message);
 	if (ret == -1) {
