@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ $(id -u) -ne 0 ]; then
+   echo "Attention: this profile should be run as root."
+   exit 3
+fi
+
+if [ ! -e config ]; then
+  echo "Attention: You must create a config directory (or link)."
+fi
+
+umask 022
+/usr/local/bin/nALFS -l -L nalfs.log BELFS.xml

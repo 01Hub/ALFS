@@ -1,0 +1,69 @@
+<package name="perl" version="&perl-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&perl-md5;</digest>
+			<archive>&packages_dir;/&perl-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&perl-libc-1-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&perl-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&perl-libc-1-patch;</param>
+		</patch>
+
+		<textdump>
+			<file>/tools/bin/arch</file>
+			<content>
+				=uname -m
+			</content>
+		</textdump>
+
+		<permissions mode="755">
+			<name>/tools/bin/arch</name>
+		</permissions>
+
+		<configure command="./configure.gnu">
+			<param>--prefix=/tools</param>
+			<param>-Dstatic_ext=&apos;IO Fcntl POSIX&apos;</param>
+		</configure>
+
+		<make>
+			<param>perl</param>
+			<param>utilities</param>
+		</make>
+
+		<copy>
+			<source>perl</source>
+			<source>pod/pod2man</source>
+			<destination>/tools/bin</destination>
+		</copy>
+
+		<mkdir>
+			<option>parents</option>
+			<name>/tools/lib/perl5/&perl-version;</name>
+		</mkdir>
+
+		<copy>
+			<option>recursive</option>
+			<source>lib/*</source>
+			<destination>/tools/lib/perl5/&perl-version;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&perl-directory;</remove>
+		<remove>&build_dir;/&perl-libc-1-patch;</remove>
+	</stage>
+</package>
