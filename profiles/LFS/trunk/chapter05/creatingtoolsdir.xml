@@ -60,6 +60,7 @@
 			<source>&autoconf-package;</source>
 			<source>&automake-package;</source>
 			<source>&bash-package;</source>
+			<source>&bash-display-wrap-patch;</source>
 			<source>&binutils-package;</source>
 			<source>&bison-package;</source>
 			<source>&bzip2-package;</source>
@@ -98,6 +99,7 @@
 			<source>&inetutils-kernel-headers-patch;</source>
  			<source>&iproute2-package;</source>
  			<source>&iproute2-remove-db-patch;</source>
+ 			<source>&iproute2-manpages-patch;</source>
 			<source>&kbd-package;</source>
 			<source>&less-package;</source>
 			<source>&lfs-bootscripts-package;</source>
@@ -122,6 +124,7 @@
 			<source>&procps-package;</source>
 			<source>&psmisc-package;</source>
 			<source>&readline-package;</source>
+			<source>&readline-display-wrap-patch;</source>
 			<source>&sed-package;</source>
 			<source>&shadow-package;</source>
 			<source>&sysklogd-package;</source>
@@ -136,7 +139,6 @@
 			<source>&udev-permissions-file;</source>
 			<source>&udev-rules-file;</source>
 			<source>&util-linux-package;</source>
-			<source>&util-linux-kernel-headers-patch;</source>
 			<source>&vim-package;</source>
 			<source>&vim-lang-package;</source>
 			<source>&zlib-package;</source>

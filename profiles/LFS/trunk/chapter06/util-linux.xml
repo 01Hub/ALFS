@@ -23,12 +23,6 @@
 			<base>&build_dir;/&util-linux-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&util-linux-kernel-headers-patch;</param>
-		</patch>
-
 		<search_replace>
 			<file>hwclock/hwclock.c</file>
 			<find>etc/adjtime</find>
