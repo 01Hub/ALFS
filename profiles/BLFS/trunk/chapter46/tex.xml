@@ -46,8 +46,23 @@
         <option>parents</option>
         <name>/usr/share/texmf</name>
       </mkdir>
-      <execute command="gzip -dc &packages_dir;/&tex-texmf-package; | (umask 0; cd /usr/share/texmf; tar xvf -)" />
-      <execute command="gzip -dc &packages_dir;/&tex-texmfsrc-package; | (umask 0; cd /usr/share/texmf; tar xvf -)" />
+      <stage name="Installing texmf">
+        <!-- force the stage handler to fork, so the umask will be reset to default when done -->
+	<stageinfo>
+	  <user>root</user>
+	</stageinfo>
+        <execute command="umask">
+	  <param>0</param>
+	</execute>
+        <unpack>
+          <archive>&packages_dir;/&tex-texmf-package;</archive>
+          <destination>/usr/share/texmf</destination>
+        </unpack>
+        <unpack>
+          <archive>&packages_dir;/&tex-texmfsrc-package;</archive>
+          <destination>/usr/share/texmf</destination>
+        </unpack>
+      </stage>
       <patch>
         <param>-N</param>
         <param>-p1</param>
