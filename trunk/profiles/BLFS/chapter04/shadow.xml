@@ -28,11 +28,19 @@
 		</patch>
 
 		<configure>
-			<param>--prefix=/usr</param>
+			<prefix>LIBS="-lpam -lpam_misc"</prefix>
 			<param>--libdir=/usr/lib</param>
 			<param>--enable-shared</param>
 			<param>--with-libpam</param>
+			<param>--without-libcrack</param>
 		</configure>
+
+		<textdump mode="append">
+			<file>config.h</file>
+			<content>
+			=#define HAVE_SETLOCALE 1
+			</content>
+		</textdump>
 
 		<make/>
 
@@ -40,17 +48,14 @@
 			<param>install</param>
 		</make>
 
-		<link>
-		       <option>force</option>
-		       <target>vipw</target>
-		       <name>/usr/sbin/vigr</name>
-		</link>
-
-		<remove>/bin/vipw</remove>
+		<move>
+			<source>/bin/sg</source>
+			<destination>/usr/bin</destination>
+		</move>
 
 		<move>
-		        <source>/bin/sg</source>
-			<destination>/usr/bin</destination>
+			<source>/bin/vigr</source>
+			<destination>/usr/sbin</destination>
 		</move>
 
 		<move>
@@ -69,11 +74,6 @@
 		       <target>../../lib/libmisc.so.0</target>
 		       <name>/usr/lib/libmisc.so</name>
 		</link>
-
-		<copy>
-		       <source>debian/securetty</source>
-		       <destination>/etc/securetty</destination>
-		</copy>
 
 
 		<textdump base="/etc/pam.d">
@@ -191,12 +191,6 @@
 
 		<search_replace base="/etc">
 		        <file>/etc/login.defs</file>
-			<find>DIALUPS_CHECK_ENAB</find>
-			<replace>#DIALUPS_CHECK_ENAB</replace>
-		</search_replace>
-
-		<search_replace base="/etc">
-		        <file>/etc/login.defs</file>
 			<find>LASTLOG_ENAB</find>
 			<replace>#LASTLOG_ENAB</replace>
 		</search_replace>
@@ -215,8 +209,8 @@
 
 		<search_replace base="/etc">
 		        <file>/etc/login.defs</file>
-			<find>#CONSOLE</find>
-			<replace>CONSOLE</replace>
+			<find>CONSOLE</find>
+			<replace>#CONSOLE</replace>
 		</search_replace>
 
 		<search_replace base="/etc">

@@ -1,0 +1,87 @@
+<package name="tripwire" version="&tripwire-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&tripwire-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&tripwire-gcc-patch;</source>
+			<source>&packages_dir;/&tripwire-policy-file;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&tripwire-directory;</base>
+		</stageinfo>
+	
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&tripwire-gcc-patch;</param>
+		</patch>
+
+		<make>
+			<param>-C</param>
+			<param>src</param>
+			<param>release</param>
+		</make>
+
+		<copy>
+			<source>install/install.{sh,cfg}</source>
+			<destination>.</destination>
+		</copy>
+
+		<!--The default configuration is to use a local MTA. If you don't have a MTA
+                installed and have no wish to install one, modify the install.cfg to use an SMTP server
+		instead.-->
+
+		<!-- the following commands are for automating the build of tripwire, these command are not in the book -->
+
+		<execute command="sed -i 's%TWMAILMETHOD=SENDMAIL%#&amp;%' install.cfg" />
+		<execute command="sed -i 's%TWMAILPROGRAM%#&amp;%' install.cfg" />
+
+		<execute command="sed -i 's%# TWMAILMETHOD=SMTP%TWMAILMETHOD=SMTP%' install.cfg" />
+		<execute command="sed -i 's%# TWSMTPHOST=&quot;mail.domain.com&quot;%TWSMTPHOST=&quot;&tripwire-mail-domain;&quot;%' install.cfg" />
+		<execute command="sed -i 's%# TWSMTPPORT=25%TWSMTPPORT=&tripwire-smtp-port;%' install.cfg" />
+
+		<execute command="./install.sh -n -s &quot;&tripwire-sitepassphrase;&quot; -l &quot;&tripwire-localpassphrase;&quot;" />
+	
+		<copy>
+			<source>/etc/tripwire/tw.cfg</source>
+			<destination>/usr/sbin</destination>
+		</copy>
+
+		<copy>
+			<source>policy/*.txt</source>
+			<destination>/usr/share/doc/tripwire</destination>
+		</copy>
+
+		<copy>
+			<source>&build_dir;/&tripwire-policy-file;</source>
+			<destination>/etc/tripwire</destination>
+		</copy>
+
+		<execute command="twadmin">
+			<param>-m P -Q &tripwire-sitepassphrase; /etc/tripwire/&tripwire-policy-file;</param>
+		</execute>
+
+		<execute command="tripwire">
+			<param>-m i -P &tripwire-localpassphrase;</param>
+		</execute>
+
+	</stage>
+
+
+	<stage name="Clean-Up">
+		<remove>&build_dir;/&tripwire-package;</remove>
+		<remove>&build_dir;/&tripwire-gcc-patch;</remove>
+		<remove>&build_dir;/&tripwire-policy-file;</remove>
+	</stage>
+
+</package>
+

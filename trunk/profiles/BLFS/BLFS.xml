@@ -92,6 +92,7 @@
 
 </stage>
 
+<!--
 <stage name="Chapter 8 (General Libraries)">
 
     &openssl;
@@ -136,7 +137,7 @@
     &imlib2;
 
 </stage>
-
+-->
 
 <stage name="Chapter 10 (General Utilities)">
 
