@@ -138,7 +138,7 @@ static INLINE element_s *create_element(xmlNodePtr node)
 
 			if ((handler = find_handler(el->name, syntax_version))) {
 				el->type = TYPE_ELEMENT;
-				el->handler = handler;
+				el->handler = handler->info;
 
 			} else if (parameter_exists(el->name)) {
 				el->type = TYPE_PARAMETER;

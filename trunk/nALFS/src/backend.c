@@ -306,7 +306,7 @@ int execute_command(element_s *element, const char *format, ...)
 	va_end(ap);
 
 	if (status > -1 && status < (int) sizeof command) {
-		if (element && element->handler->info->alternate_shell) {
+		if (element && element->handler->alternate_shell) {
 			shell = alloc_stage_shell(element);
 		} else {
 			shell = xstrdup("sh");
@@ -371,7 +371,7 @@ static int do_execute_element(element_s *el)
 				change_to_profiles_dir(el);
 			}
 
-			i = el->handler->info->main(el);
+			i = el->handler->main(el);
 
 		} else { /* Never reached.
 			  * (Only elements with ->handler have TYPE_ELEMENT
@@ -413,7 +413,7 @@ int do_execute_test_element(element_s *element, int *result)
 	if (*opt_use_relative_dirs)
 		change_to_profiles_dir(element);
 
-	i = element->handler->info->test(element, result);
+	i = element->handler->test(element, result);
 
 	if (i == 0) {
 		// TODO: Is there a point of setting these at all?
@@ -445,7 +445,7 @@ int execute_children_filtered(element_s *element, handler_type_e type_filter)
 		int i;
 
 		if (child->handler &&
-		    ((child->handler->info->type & type_filter) == 0))
+		    ((child->handler->type & type_filter) == 0))
 			continue;
 
 		if ((i = do_execute_element(child)))
