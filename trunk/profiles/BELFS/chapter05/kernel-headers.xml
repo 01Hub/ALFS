@@ -26,10 +26,11 @@
 
 		<mkdir>
 			<option>parents</option>
-			<name>/tools/glibc-kernheaders</name>
+			<name>/tools/glibc-kernheaders/asm</name>
 		</mkdir>
 
 		<copy>
+			<option>recursive</option>
 			<source>include/asm/*</source>
 			<destination>/tools/glibc-kernheaders/asm</destination>
 		</copy>
