@@ -13,6 +13,11 @@
 			<destination>&build_dir;</destination>
 		</unpack>
 
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
 		<copy>
 		        <source>&packages_dir;/&libfam-patch;</source>
 			<destination>&build_dir;</destination>
@@ -45,9 +50,20 @@
 		</make>
 	</stage>
 
+	<stage name="Install fam bootscript">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-fam</param>
+		</make>
+	</stage>
+
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&libfam-directory;</remove>
 		<remove>&build_dir;/&libfam-patch;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
 	</stage>
 
 </package>
