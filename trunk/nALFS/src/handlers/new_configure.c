@@ -23,23 +23,28 @@
 
 #include <stdlib.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME new_configure
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
 #include "handlers.h"
 #include "backend.h"
-#include "config.h"
 
 
-char handler_name[] = "configure";
-char handler_description[] = "Configure";
-char *handler_syntax_versions[] = { "3.0", "3.1", NULL };
-// char *handler_attributes[] = { "base", "command", NULL };
-char *handler_parameters[] = { "param", "prefix", NULL };
-int handler_action = 1;
+char HANDLER_SYMBOL(name)[] = "configure";
+char HANDLER_SYMBOL(description)[] = "Configure";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "3.0", "3.1", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
+char *HANDLER_SYMBOL(parameters)[] = { "param", "prefix", NULL };
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status;
 	char *c, *command = NULL;

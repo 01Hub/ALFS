@@ -23,23 +23,28 @@
 
 #include <stdlib.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME new_move
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
 #include "handlers.h"
 #include "backend.h"
-#include "config.h"
 
 
-char handler_name[] = "move";
-char handler_description[] = "Move files";
-char *handler_syntax_versions[] = { "3.0", "3.1", NULL };
-// char *handler_attributes[] = { "base", NULL };
-char *handler_parameters[] = { "option", "source", "destination", NULL };
-int handler_action = 1;
+char HANDLER_SYMBOL(name)[] = "move";
+char HANDLER_SYMBOL(description)[] = "Move files";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "3.0", "3.1", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
+char *HANDLER_SYMBOL(parameters)[] = { "option", "source", "destination", NULL };
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int options[1], force;
 	int status = 0;

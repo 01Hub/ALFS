@@ -29,13 +29,18 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME new_search_replace
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
 #include "handlers.h"
 #include "backend.h"
-#include "config.h"
-#include "nalfs.h"
+#include "nalfs-core.h"
 
 
 #define El_search_replace_file(el) alloc_trimmed_param_value("file", el)
@@ -45,15 +50,15 @@
 #define TMP_SEARCH_REPLACE_FILE	"/tmp/nALFS-XXXXXX"
 
 
-char handler_name[] = "search_replace";
-char handler_description[] = "Search and replace";
-char *handler_syntax_versions[] = { "3.0", "3.1", NULL };
-// char *handler_attributes[] = { "base", NULL };
-char *handler_parameters[] = { "find", "replace", "file", NULL };
-int handler_action = 1;
+char HANDLER_SYMBOL(name)[] = "search_replace";
+char HANDLER_SYMBOL(description)[] = "Search and replace";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "3.0", "3.1", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
+char *HANDLER_SYMBOL(parameters)[] = { "find", "replace", "file", NULL };
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int i, c, fdw, offset, num_found = 0;
 	char *buf = NULL;

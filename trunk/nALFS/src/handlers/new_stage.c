@@ -32,14 +32,18 @@
 #include <grp.h>
 #include <sys/stat.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME new_stage
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
 #include "handlers.h"
-#include "nalfs.h"
-#include "config.h"
+#include "nalfs-core.h"
 #include "backend.h"
-
 
 static INLINE int set_supplementary_groups(const char *user, gid_t gid)
 {
@@ -355,17 +359,17 @@ static int parse_stageinfo_and_execute_children(
 
 
 
-char handler_name[] = "stage";
-char handler_description[] = "Enter stage: ";
-char *handler_syntax_versions[] = { "3.0", "3.1", NULL };
-// char *handler_attributes[] = {
+char HANDLER_SYMBOL(name)[] = "stage";
+char HANDLER_SYMBOL(description)[] = "Enter stage: ";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "3.0", "3.1", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = {
 // "name", "description", "logfile", "mode", NULL };
-char *handler_parameters[] =
+char *HANDLER_SYMBOL(parameters)[] =
 { "stageinfo", "base", "root", "user", "environment", "variable", NULL };
-int handler_action = 0;
+int HANDLER_SYMBOL(action) = 0;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status;
 	char *stage_name = attr_value("name", el);
