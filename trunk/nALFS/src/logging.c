@@ -629,7 +629,7 @@ static INLINE int ask_about_element_status(element_s *el)
 	element_s *profile = get_profile_by_element(el);
 
 	comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_REQUEST_EL_STATUS,
-		"%s %s %d", profile->handler->name, el->handler->name, el->id);
+		"%d", el->id);
 
 	while ((message = comm_read_ctrl_message(BACKEND_CTRL_SOCK)) == NULL)
 		/* Wait for the first control message. */ ;
