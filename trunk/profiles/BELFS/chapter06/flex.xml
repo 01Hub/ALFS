@@ -34,7 +34,7 @@
 		<make />
 
 		<make>
-			<param>bigcheck</param>
+			<param>check</param>
 		</make>
 
 		<make>
