@@ -42,7 +42,7 @@
 			<param>-confdir=/etc</param>
 		</configure>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>install</param>

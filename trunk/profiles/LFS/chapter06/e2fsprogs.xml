@@ -22,7 +22,7 @@
 			<param>--enable-elf-shlibs</param>
 		</configure>
 
-		<make/>
+		<make />
 
 <!--
 		<make>

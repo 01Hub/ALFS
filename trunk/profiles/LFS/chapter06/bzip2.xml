@@ -20,7 +20,7 @@
 			<param>clean</param>
 		</make>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>install</param>

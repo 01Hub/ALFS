@@ -18,7 +18,7 @@
 			<param>--with-included-regex</param>
 		</configure>
 
-		<make/>
+		<make />
 
 <!--
 		<make>

@@ -29,7 +29,7 @@
 			<param>config</param>
 		</execute>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>update</param>

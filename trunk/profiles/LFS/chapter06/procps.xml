@@ -23,7 +23,7 @@
 			<param>-i ../&procps-locale-fix-patch;</param>
 		</patch>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>install</param>

@@ -27,7 +27,7 @@
 			<param>--with-lib-path=/tools/lib</param>
 		</configure>
 
-		<make/>
+		<make />
 
 <!--
 		<make>

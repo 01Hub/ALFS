@@ -16,7 +16,7 @@
 			<param>--prefix=/usr</param>
 		</configure>
 
-		<make/>
+		<make />
 
 <!--
 		<textdump>

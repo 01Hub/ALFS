@@ -16,7 +16,7 @@
 			<param>--prefix=/tools</param>
 		</configure>
 
-		<make/>
+		<make />
 
 <!--
 		<make>

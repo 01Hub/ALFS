@@ -28,7 +28,7 @@
 			<param>--bindir=/bin</param>
 		</configure>
 
-		<make/>
+		<make />
 
 <!--
 		<make>

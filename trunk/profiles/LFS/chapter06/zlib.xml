@@ -28,7 +28,7 @@
 			<param>--shared</param>
 		</configure>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>install</param>
@@ -42,7 +42,7 @@
 			<param>--prefix=/usr</param>
 		</configure>
 
-		<make/>
+		<make />
 
 <!--
 		<make>

@@ -68,7 +68,7 @@ suites for GCC and Binutils until you are able to resolve the issue.
 			<param>--enable-languages=c,c++</param>
 		</configure>
 
-		<make/>
+		<make />
 
 <!--
 		<make>

@@ -23,7 +23,7 @@
 			<param>--disable-servers</param>
 		</configure>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>install</param>

@@ -38,7 +38,7 @@
 			<param>--enable-overwrite</param>
 		</configure>
 
-		<make/>
+		<make />
 
 		<make>
 			<param>install</param>
