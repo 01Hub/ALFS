@@ -1,10 +1,10 @@
-<!ENTITY autoconf-md5 "407ea53787ce13f5ca427e9a51e05bc2">
-<!ENTITY autoconf-version "2.57">
+<!ENTITY autoconf-md5 "db3fa3069c6554b3505799c7e1022e2b">
+<!ENTITY autoconf-version "2.58">
 <!ENTITY autoconf-package "autoconf-&autoconf-version;.tar.bz2">
 <!ENTITY autoconf-directory "autoconf-&autoconf-version;">
 
-<!ENTITY automake-md5 "68c4cbf2c54aff9a26e348e43d941bd5">
-<!ENTITY automake-version "1.7.6">
+<!ENTITY automake-md5 "571fd0b0598eb2a27dcf68adcfddfacb">
+<!ENTITY automake-version "1.7.9">
 <!ENTITY automake-package "automake-&automake-version;.tar.bz2">
 <!ENTITY automake-directory "automake-&automake-version;">
 
@@ -76,8 +76,8 @@
 <!ENTITY expect-spawn-patch-md5 "ef6d0d0221c571fb420afb7033b3bbba">
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn.patch">
 
-<!ENTITY file-md5 "a3421fd75ff5f0c93fdfa0ff332e9571">
-<!ENTITY file-version "4.04">
+<!ENTITY file-md5 "4781df6185d11bdcd3d229f314e5c527">
+<!ENTITY file-version "4.06">
 <!ENTITY file-package "file-&file-version;.tar.bz2">
 <!ENTITY file-directory "file-&file-version;">
 
@@ -243,8 +243,8 @@
 <!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.gz">
 <!ENTITY man-pages-directory "man-pages-&man-pages-version;">
 
-<!ENTITY modutils-md5 "2c0cca3ef6330a187c6ef4fe41ecaa4d">
-<!ENTITY modutils-version "2.4.25">
+<!ENTITY modutils-md5 "704c8d2834bcaa6f31d4ad79d154157a">
+<!ENTITY modutils-version "2.4.26">
 <!ENTITY modutils-package "modutils-&modutils-version;.tar.bz2">
 <!ENTITY modutils-directory "modutils-&modutils-version;">
 
@@ -285,21 +285,18 @@
 <!ENTITY procinfo-package "procinfo-&procinfo-version;.tar.gz">
 <!ENTITY procinfo-directory "procinfo-&procinfo-version;">
 
-<!ENTITY procps-md5 "18d6c40c61fd8a94b315c07e949837ab">
-<!ENTITY procps-version "3.1.11">
+<!ENTITY procps-md5 "e146860df435f863811206e4f9d3becf">
+<!ENTITY procps-version "3.1.14">
 <!ENTITY procps-package "procps-&procps-version;.tar.gz">
 <!ENTITY procps-directory "procps-&procps-version;">
-
-<!ENTITY procps-locale-fix-patch-md5 "de725a14b708cd1ceb88674b46de36b3">
-<!ENTITY procps-locale-fix-patch "procps-&procps-version;-locale-fix.patch">
 
 <!ENTITY psmisc-md5 "df5aef7438a00d4f41bc0c5e91e4ec7d">
 <!ENTITY psmisc-version "21.3">
 <!ENTITY psmisc-package "psmisc-&psmisc-version;.tar.gz">
 <!ENTITY psmisc-directory "psmisc-&psmisc-version;">
 
-<!ENTITY sed-md5 "005738e7f97bd77d95b6907156c8202a">
-<!ENTITY sed-version "4.0.7">
+<!ENTITY sed-md5 "fb7fa2a7336afc358012763b292e2124">
+<!ENTITY sed-version "4.0.8">
 <!ENTITY sed-package "sed-&sed-version;.tar.gz">
 <!ENTITY sed-directory "sed-&sed-version;">
 
