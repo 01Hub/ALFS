@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<chapter id="chapter-intro" xreflabel="Chapter 1">
+<?dbhtml dir="chapter01"?>
+<title>Introduction</title>
+<?dbhtml filename="chapter01.html"?>
+
+<section id="ch-intro-purpose">
+<title>Purpose</title>
+<para>This document aims to provide a concrete specification describing the
+software tool alfs. Readers of this document should have a basic understanding
+of XML, networks, and the client/server model.</para>
+</section>
+
+<section id="ch-intro-scope">
+<title>Scope</title>
+<para>This document will cover all the fundamental concepts that together will
+form the alfs tool. The scope of this document will be limited to the ideas that
+surround this tool and will not go into detail on any specific programming
+languages or development tools.</para>
+</section>
+
+<section id="ch-intro-name">
+<title>Product Name</title>
+<para>After some healthy debate and work on the mailing lists, the tool will be
+named simply &quot;alfs&quot;.  We write it in all lowercase to differentiate it
+somewhat from the project name it is named after (ALFS).  The project is the
+tool and the tool is the project, so the name should fit inside this idea and is
+why we have selected this name.</para>
+</section>
+
+<section id="ch-intro-defs">
+<title>Definitions, Acronymns, and Abbreviations</title>
+<variablelist>
+  <varlistentry>
+    <term>ALFS</term>
+    <listitem><para>Automated Linux From Scratch &ndash; an open architecture of
+      automating the build of an LFS system using an XML based profile.</para>
+    </listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term>XML</term>
+    <listitem><para>Extensible Markup Language (XML) is a simple, very flexible
+     text format that is playing an increasingly important role in the exchange
+     of a wide variety of data on the Web and elsewhere. [1]</para></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term>Client/Server</term>
+    <listitem><para>A model of computing architecture where a component
+      application runs on one computer and another runs on a remote server
+      computer.</para></listitem>
+  </varlistentry>
+</variablelist>
+</section>
+
+<section id="ch-intro-refs">
+<title>References</title>
+<orderedlist numeration="arabic">
+  <listitem><para><ulink url="http://w3.org/XML/"/></para></listitem>
+</orderedlist>
+</section>
+
+<section id="ch-intro-overview">
+<title>Overview</title>
+<para>alfs is a tool that is used to simplify and automate the tasks that
+installing and managing software packages on a Linux system require. Its primary
+goal is to automate the LFS build procedure. Using a standard documented
+protocol, alfs will accept instructions, validate them, and carry out the
+specific tasks that correspond to these higher-level orders. alfs will then
+report back on the outcomes of its actions.</para>
+</section>
+</chapter>

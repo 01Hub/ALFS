@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<bookinfo>
+<title>alfs Software Requirements Specification</title>
+<subtitle>Version 0.1</subtitle>
+
+
+<authorgroup>
+<author><firstname>Various</firstname><surname>Contributors</surname></author>
+</authorgroup>
+
+
+<copyright id="copyright">
+	<year>2005</year>
+	<holder>Jeremy Huntwork</holder>
+</copyright>
+
+<legalnotice>
+
+<para>This work is licensed under the Creative Commons
+Attribution-NonCommercial-ShareAlike License.  To view a copy of this license,
+visit http://creativecommons.org/licenses/by-nc-sa/2.0/ or send a letter to
+Creative Commons, 559 Nathan Abbott Way, Stanford, California 94305,USA.</para>
+</legalnotice>
+
+</bookinfo>
