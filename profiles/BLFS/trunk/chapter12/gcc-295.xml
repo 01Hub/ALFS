@@ -11,10 +11,10 @@
 
 ]>
 <alfs>
-  <package name="gcc295" version="&gcc295-version;">
+  <package name="gcc-2.9.5" version="&gcc-295-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gcc295-package;</archive>
+        <archive>&packages_dir;/&gcc-295-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <mkdir>
@@ -25,23 +25,23 @@
       <stageinfo>
         <base>&build_dir;/gcc-build</base>
       </stageinfo>
-      <patch base="&build_dir;/&gcc295-directory;">
+      <patch base="&build_dir;/&gcc-295-directory;">
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&gcc295-patch1;</param>
+        <param>-i &packages_dir;/&gcc-295-patch;</param>
       </patch>
-      <patch base="&build_dir;/&gcc295-directory;">
+      <patch base="&build_dir;/&gcc-295-directory;">
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&gcc295-patch2;</param>
+        <param>-i &packages_dir;/&gcc-295-no_fixincludes-patch;</param>
       </patch>
-      <patch base="&build_dir;/&gcc295-directory;">
+      <patch base="&build_dir;/&gcc-295-directory;">
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&gcc295-patch3;</param>
+        <param>-i &packages_dir;/&gcc-295-returntype_fix-patch;</param>
       </patch>
-      <configure command="../&gcc295-directory;/configure">
-        <param>--prefix=/opt/gcc-&gcc295-version;</param>
+      <configure command="../&gcc-295-directory;/configure">
+        <param>--prefix=/opt/gcc-&gcc-295-version;</param>
         <param>--enable-shared</param>
         <param>--enable-languages=c,c++</param>
         <param>--enable-threads=posix</param>
@@ -52,17 +52,16 @@
       <make>
         <param>install</param>
       </make>
-      <execute command="L=`find /opt/gcc-&gcc295-version;/lib -name '*libstdc++*.so' -type f` &real-amp;&real-amp;">
-        <param>IL=`basename $L` &real-amp;&real-amp;</param>
-        <param>for i in /opt/gcc-&gcc295-version;/lib/*.so*;</param>
-        <param>do mv -f $i /usr/lib;ln -sf /usr/lib/`basename $i` /opt/gcc-&gcc295-version;/lib; done &real-amp;&real-amp;</param>
+      <execute command="L=`find /opt/gcc-&gcc-295-version;/lib -name '*libstdc++*.so' -type f` &real-amp;&real-amp; IL=`basename $L` &real-amp;&real-amp;">
+        <param>for i in /opt/gcc-&gcc-295-version;/lib/*.so*;</param>
+        <param>do mv -f $i /usr/lib; ln -sf /usr/lib/`basename $i` /opt/gcc-&gcc-295-version;/lib; done &real-amp;&real-amp;</param>
         <param>ln -sf $IL /usr/lib/libstdc++-libc6.1-1.so.2 &real-amp;&real-amp;</param>
         <param>ln -sf $IL /usr/lib/libstdc++-libc6.2-2.so.3 &real-amp;&real-amp;</param>
         <param>ln -sf $IL /usr/lib/libstdc++-libc6.3-2.so.3</param>
       </execute>
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&gcc295-directory;</remove>
+      <remove>&build_dir;/&gcc-295-directory;</remove>
       <remove>&build_dir;/gcc-build</remove>
     </stage>
   </package>

@@ -146,12 +146,16 @@
       <xi:include href="chapter12/librep.xml" />
       <xi:include href="chapter12/j2sdk.xml" />
       <xi:include href="chapter12/ruby.xml" />
-      <xi:include href="chapter12/gnat.xml" />
-      <xi:include href="chapter12/gcc-full.xml" />
       <xi:include href="chapter12/tcl.xml" />
       <xi:include href="chapter12/tk.xml" />
-      <xi:include href="chapter12/gcc295.xml" />
+      <xi:include href="chapter12/expect.xml" />
+      <xi:include href="chapter12/dejagnu.xml" />
+      <xi:include href="chapter12/gnat.xml" />
+      <xi:include href="chapter12/gcc-34.xml" />
+      <xi:include href="chapter12/gcc-33.xml" />
+      <xi:include href="chapter12/gcc-295.xml" />
       <xi:include href="chapter12/nasm.xml" />
+      <xi:include href="chapter12/doxygen.xml" />
     </stage>
     <stage name="Chapter 13 (Dial-up networking)">
       <xi:include href="chapter13/ppp.xml" />
@@ -288,7 +292,6 @@
       <xi:include href="chapter30/gnome-mime-data.xml" />
       <xi:include href="chapter30/gnome-vfs2.xml" />
       <xi:include href="chapter30/libgnome.xml" />
-      <xi:include href="chapter30/libart_lgpl.xml" />
       <xi:include href="chapter30/libglade.xml" />
       <xi:include href="chapter30/libgnomecanvas.xml" />
       <xi:include href="chapter30/libbonoboui.xml" />

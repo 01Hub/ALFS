@@ -20,7 +20,7 @@
         <name>gmp</name>
       </utilizes>
       <utilizes>
-        <name>readline</name>
+        <name>gcc</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

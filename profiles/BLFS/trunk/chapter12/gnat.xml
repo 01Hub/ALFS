@@ -12,6 +12,11 @@
 ]>
 <alfs>
   <package name="gnat" version="&gnat-version;">
+    <packageinfo>
+      <requires>
+        <name>tcsh</name>
+      </requires>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&gnat-package;</archive>
@@ -25,11 +30,11 @@
       <textdump base="/tmp">
         <file>gnat_reply</file>
         <content>
-	  =
-	  =3
-	  =/opt/gnat
-	  =
-	</content>
+	    =
+	    =3
+	    =/opt/gnat
+	    =
+	    </content>
       </textdump>
       <execute command="./doconfig &lt; /tmp/gnat_reply" />
       <execute command="./doinstall" />
