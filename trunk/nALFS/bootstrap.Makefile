@@ -1,3 +1,4 @@
+#!/bin/bash
 cat <<EOF
 ACLOCAL_FLAGS=-I m4
 EXTRA_DIST = CHANGES COPYING README CREDITS
@@ -45,13 +46,10 @@ for file in src/*.{c,h}; do
     echo src_nALFS_SOURCES += ${file} 
 done
 
-for syntax in ${all_syntaxes}; do
-    echo if HANDLERS_${syntax} 
-    eval "handlers=\"\${handlers_${syntax}}\""
-    for handler in ${handlers}; do
+for handler in ${all_handlers}; do
+	echo if HANDLER_${handler}
 	echo src_nALFS_LDFLAGS += -dlopen src/handlers/${handler}.la 
-    done
-    echo endif 
+	echo endif
 done
 
 cat  <<EOF
@@ -74,16 +72,10 @@ cat  <<EOF
 pkglib_LTLIBRARIES =
 EOF
 
-for syntax in ${all_syntaxes}; do
-    echo if HANDLERS_${syntax} 
-    eval "handlers=\"\${handlers_${syntax}}\""
-    for handler in ${handlers}; do
-	echo pkglib_LTLIBRARIES += src/handlers/${handler}.la 
-    done
-    echo endif 
-done
-
 for handler in ${all_handlers}; do
+    echo if HANDLER_${handler}
+    echo pkglib_LTLIBRARIES += src/handlers/${handler}.la 
     echo src_handlers_${handler}_la_SOURCES = src/handlers/${handler}.c 
     echo src_handlers_${handler}_la_LDFLAGS = -module -avoid-version 
+    echo endif
 done
