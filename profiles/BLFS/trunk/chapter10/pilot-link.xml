@@ -25,6 +25,9 @@
     <utilizes>
       <name>python</name>
     </utilizes>
+    <utilizes>
+      <name>electric-fence</name>
+    </utilizes>
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>

@@ -19,6 +19,33 @@
     <requires>
       <name>libglade</name>
     </requires>
+    <utilizes>
+      <name>libjpeg</name>
+    </utilizes>
+    <utilizes>
+      <name>gle</name>
+    </utilizes>
+    <utilizes>
+      <name>netpbm</name>
+    </utilizes>
+    <utilizes>
+      <name>fortune-mod</name>
+    </utilizes>
+    <utilizes>
+      <name>xdaliclock</name>
+    </utilizes>
+    <utilizes>
+      <name>yelp</name>
+    </utilizes>
+    <utilizes>
+      <name>linuxpam</name>
+    </utilizes>
+    <utilizes>
+      <name>krb4</name>
+    </utilizes>
+    <utilizes>
+      <name>&krb-impl;</name>
+    </utilizes>
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
