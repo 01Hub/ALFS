@@ -12,15 +12,15 @@ header files and source files, as the make system will know exactly what must
 be rebuilt.</para>
 
 <para>In addition, if you are going to make changes to
-<filename>configure.ac</filename>, you should add the
-<filename>&quot;--enable-maintainer-mode&quot;</filename> parameter to the
+<filename>bootstrap</filename>, you should add the
+<filename>&quot;--enable-maintainer-mode&quot;</filename> parameter to your
 <filename>configure</filename> command. With this done, each time you edit
-<filename>configure.ac</filename>, the <filename>Makefile</filename> will
-automatically re-run <filename>configure</filename> to make your changes take
-effect. Be warned though, that if you manually edit
-<filename>Makefile.am</filename>, you must modify the
-<filename>bootstrap</filename> script to incorporate your changes, because
-<filename>Makefile.am</filename> is not stored in the <acronym>CVS</acronym>
+and re-run <filename>bootstrap</filename>, the <filename>Makefile</filename>
+will automatically re-run <filename>configure</filename> to make your changes
+take effect. Be warned though, that if you manually edit
+<filename>Makefile.am</filename> or <filename>configure.ac<filename>, you must 
+modify the <filename>bootstrap</filename> script to incorporate your changes, 
+because these files are not stored in the <acronym>CVS</acronym>
 repository.</para>
 
 <para>If you add any C source files to the tree, you will need to rerun the
@@ -29,6 +29,16 @@ you add header files, it is not necessary to rerun the
 <filename>bootstrap</filename> script unless you plan on using &quot;make
 dist&quot; from that same tree, in which case those added headers would not
 get included into the tarball.</para>
+
+<para>If you add or remove &quot;syntax versions&quot; in any of the handlers, 
+you must re-run <filename>bootstrap</filename> to get the version lists in
+<filename>Makefile.am</filename> and <filename>configure.ac</filename> to
+incorporate your changes, or you will experience unusual build behavior.</para>
+
+<para>If you add or remove any program options in <filename>src/options.h</filename>, 
+you must re-run <filename>bootstrap</filename> to regenerate src/option-list.h.
+Without that file being regenerated, you may experience compile errors or find
+that your newly added option does not work properly.</para>
 
 <para>All other types of files fall into two categories:</para>
 
@@ -40,7 +50,7 @@ repository</para></blockquote>
 
 <blockquote><para>those that should be added to the distribution tarball</para></blockquote>
 
-<para>The <filename>bootstrap</filename> script will need to be edited,
+<para>The <filename>bootstrap.Makefile</filename> script will need to be edited,
 specifically the line that sets <filename>EXTRA_DIST</filename> near the
 beginning of the script. Add the path(s) to the new files to this line, or add
 an additional line starting with &quot;<filename>EXTRA_DIST
@@ -56,15 +66,15 @@ created by &quot;make dist&quot;.</para>
 <para>The <acronym>CVS</acronym> repository copy of &book-product; does not
 include an executable <filename>configure</filename> script nor a
 <filename>Makefile</filename>. This is by design, as there is a script to
-create them, which ensures that the <filename>Makefile</filename> content will
+create them, which ensures that their contents will
 always be up to date with the source tree contents and not require manual
 editing.</para>
 
 <para>&book-product; has been configured to use the <acronym>GNU</acronym>
 <filename>autotools</filename> suite for its build process. The build system
-was created using <filename>autoconf-2.57</filename>, <filename>automake-
-1.7.7</filename> and <filename>libtool-1.5</filename>. If you use older
-versions than those, you may experience warnings and/or outright failures
+was created using <filename>autoconf-2.57</filename>, <filename>automake-1.7.7</filename> 
+and <filename>libtool-1.5</filename>. If you use older versions than those, 
+you may experience warnings and/or outright failures
 (<filename>automake-1.6</filename> is known to be unable to handle the
 &book-product; <filename>Makefile.am</filename>).</para>
 
