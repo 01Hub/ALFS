@@ -23,6 +23,10 @@
 			<param>-i ../&flex-debian-fixes-patch;</param>
 		</patch>
 
+		<execute command="touch">
+		  <param>doc/*.1</param>
+		</execute>
+
 		<configure>
 			<param>--prefix=/usr</param>
 		</configure>
