@@ -26,27 +26,32 @@
 #include <unistd.h>
 #include <errno.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME mkdir
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
 #include "handlers.h"
 #include "backend.h"
-#include "config.h"
 
 
 #define El_mkdir_dirs(el) alloc_trimmed_param_value("dir", el)
 #define El_mkdir_perm(el) alloc_trimmed_param_value("permissions", el)
 
 
-char handler_name[] = "mkdir";
-char handler_description[] = "Make directories";
-char *handler_syntax_versions[] = { "2.0", NULL };
-// char *handler_attributes[] = { NULL };
-char *handler_parameters[] = { "options", "base", "dir", "permissions", NULL };
-int handler_action = 1;
+char HANDLER_SYMBOL(name)[] = "mkdir";
+char HANDLER_SYMBOL(description)[] = "Make directories";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { NULL };
+char *HANDLER_SYMBOL(parameters)[] = { "options", "base", "dir", "permissions", NULL };
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status = 0;
 	int parents = option_exists("parents", el);

@@ -27,11 +27,16 @@
 #include <unistd.h>
 #include <errno.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME textdump
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
 #include "handlers.h"
-#include "config.h"
 
 
 #define El_textdump_content(el) alloc_trimmed_param_value("content", el)
@@ -50,15 +55,15 @@ static INLINE FILE *open_for_overwrite(const char *file, const char *base)
 }
 
 
-char handler_name[] = "textdump";
-char handler_description[] = "Dump text";
-char *handler_syntax_versions[] = { "2.0", NULL };
-// char *handler_attributes[] = { "mode", NULL };
-char *handler_parameters[] = { "base", "file", "content", NULL };
-int handler_action = 1;
+char HANDLER_SYMBOL(name)[] = "textdump";
+char HANDLER_SYMBOL(description)[] = "Dump text";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "mode", NULL };
+char *HANDLER_SYMBOL(parameters)[] = { "base", "file", "content", NULL };
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	char *tok;
 	char *base = NULL;
@@ -116,7 +121,7 @@ int handler_main(element_s *el)
 	return 0;
 }
 
-char *handler_alloc_textdump_file(element_s *el)
+char *HANDLER_SYMBOL(alloc_textdump_file)(element_s *el)
 {
 	return alloc_trimmed_param_value("file", el);
 }

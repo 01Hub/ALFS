@@ -25,23 +25,28 @@
 #include <string.h>
 #include <errno.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME execute
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
 #include "handlers.h"
-#include "config.h"
 #include "backend.h"
 
 
-char handler_name[] = "execute";
-char handler_description[] = "Execute";
-char *handler_syntax_versions[] = { "2.0", NULL };
-// char *handler_attributes[] = { NULL };
-char *handler_parameters[] = { "base", "command", "param", NULL };
-int handler_action = 1;
+char HANDLER_SYMBOL(name)[] = "execute";
+char HANDLER_SYMBOL(description)[] = "Execute";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { NULL };
+char *HANDLER_SYMBOL(parameters)[] = { "base", "command", "param", NULL };
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status;
 	char *base;
@@ -75,7 +80,7 @@ int handler_main(element_s *el)
 	
 }
 
-char *handler_alloc_execute_command(element_s *el)
+char *HANDLER_SYMBOL(alloc_execute_command)(element_s *el)
 {
 	return alloc_trimmed_param_value("command", el);
 }

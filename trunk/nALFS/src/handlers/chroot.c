@@ -29,22 +29,28 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME chroot
+#include <nALFS.h>
 #include "parser.h"
 #include "win.h"
 #include "utility.h"
-#include "nalfs.h"
+#include "nalfs-core.h"
 #include "backend.h"
 
 
-char handler_name[] = "chroot";
-char handler_description[] = "Enter chroot";
-char *handler_syntax_versions[] = { "2.0", NULL };
-// char *handler_attributes[] = { "dir", NULL };
-char *handler_parameters[] = { NULL };
-int handler_action = 0;
+char HANDLER_SYMBOL(name)[] = "chroot";
+char HANDLER_SYMBOL(description)[] = "Enter chroot";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "dir", NULL };
+char *HANDLER_SYMBOL(parameters)[] = { NULL };
+int HANDLER_SYMBOL(action) = 0;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status;
 	pid_t chroot_pid, got_pid;

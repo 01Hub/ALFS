@@ -26,9 +26,14 @@
 #include <unistd.h>
 #include <errno.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME copy
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
-#include "config.h"
 #include "parser.h"
 #include "handlers.h"
 #include "backend.h"
@@ -38,16 +43,16 @@
 #define El_copy_destination(el) alloc_trimmed_param_value("destination", el)
 
 
-char handler_name[] = "copy";
-char handler_description[] = "Copy";
-char *handler_syntax_versions[] = { "2.0", NULL };
-// char *handler_attributes[] = { NULL };
-char *handler_parameters[] =
+char HANDLER_SYMBOL(name)[] = "copy";
+char HANDLER_SYMBOL(description)[] = "Copy";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { NULL };
+char *HANDLER_SYMBOL(parameters)[] =
 { "options", "base", "source", "destination", NULL };
-int handler_action = 1;
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status = 0;
 	int archive = option_exists("archive",el);

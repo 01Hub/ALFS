@@ -25,6 +25,12 @@
 #include <string.h>
 #include <time.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME package
+#include <nALFS.h>
 #include "logging.h"
 #include "utility.h"
 #include "parser.h"
@@ -33,15 +39,15 @@
 #include "backend.h"
 
 
-char handler_name[] = "package";
-char handler_description[] = "Package";
-char *handler_syntax_versions[] = { "2.0", NULL };
-// char *handler_attributes[] = { NULL };
-char *handler_parameters[] = { "name", "version", "base", NULL };
-int handler_action = 0;
+char HANDLER_SYMBOL(name)[] = "package";
+char HANDLER_SYMBOL(description)[] = "Package";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { NULL };
+char *HANDLER_SYMBOL(parameters)[] = { "name", "version", "base", NULL };
+int HANDLER_SYMBOL(action) = 0;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int i;
 
@@ -56,12 +62,12 @@ int handler_main(element_s *el)
 	return i;
 }
 
-char *handler_alloc_package_name(element_s *el)
+char *HANDLER_SYMBOL(alloc_package_name)(element_s *el)
 {
 	return alloc_trimmed_param_value("name", el);
 }
 
-char *handler_alloc_package_version(element_s *el)
+char *HANDLER_SYMBOL(alloc_package_version)(element_s *el)
 {
 	return alloc_trimmed_param_value("version", el);
 }

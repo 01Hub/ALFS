@@ -26,22 +26,27 @@
 #include <unistd.h>
 #include <errno.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME log
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
 #include "backend.h"
-#include "config.h"
 
 
-char handler_name[] = "log";
-char handler_description[] = "Log";
-char *handler_syntax_versions[] = { "2.0", "3.0", NULL };
-// char *handler_attributes[] = { NULL };
-char *handler_parameters[] = { NULL };
-int handler_action = 0;
+char HANDLER_SYMBOL(name)[] = "log";
+char HANDLER_SYMBOL(description)[] = "Log";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", "3.0", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { NULL };
+char *HANDLER_SYMBOL(parameters)[] = { NULL };
+int HANDLER_SYMBOL(action) = 0;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	if (el->content != NULL) {
 		Nprint_h("%s", el->content);
