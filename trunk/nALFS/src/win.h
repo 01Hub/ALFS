@@ -158,7 +158,7 @@ void start_display(void);
 void end_display(void);
 void recreate_main_window(int num_of_lines);
 void resize_all_windows(void);
-int tmp_window_driver(int lines, int *top_line);
+int tmp_window_driver(int lines, int *top_line, int *cursor);
 
 
 /*

@@ -271,43 +271,118 @@ void resize_all_windows(void)
 	windows.status->lines = status_lines;
 }
 
-int tmp_window_driver(int lines, int *top_line)
+void fix_cursor_and_top(int *cursor, int *top, int lines)
 {
-	int input;
+	int window_lines = windows.main->lines;
+
+	if (cursor) {
+		if (*cursor < 0) {
+			*cursor = 0;
+		}
+		if (*cursor > lines - 1) {
+			*cursor = lines - 1;
+		}
+
+		while (*cursor > (*top + (window_lines - 1))) {
+			(*top)++;
+		}
+		while (*cursor < *top) {
+			(*top)--;
+		}
+	}
+
+	if (*top < 0) {
+		*top = 0;
+	}
+	if (*top > lines - window_lines) {
+		*top = lines - window_lines + 1;
+	}
+}
+
+static void change_value(int *i, int lines, int input)
+{
+	switch (input) {
+		case KEY_UP:
+			--(*i);
+			break;
+		case KEY_DOWN:
+			++(*i);
+			break;
+		case KEY_PPAGE:
+			*i -= windows.main->lines - 1;
+			break;
+		case KEY_NPAGE:
+			*i += windows.main->lines - 1;
+			break;
+		case KEY_HOME:
+			*i = 0;
+			break;
+		case KEY_END:
+			*i = lines - 1;
+			break;
+		case ' ':
+			break;
+	}
+}
+
+static void move_cursor(int *top, int *cursor, int lines, int input)
+{
+	if (cursor == NULL) {
+		change_value(top, lines, input);
+	} else {
+		change_value(cursor, lines, input);
+	}
+
+	fix_cursor_and_top(cursor, top, lines);
+}
+
+int tmp_window_driver(int lines, int *top, int *cursor)
+{
+	int i, input;
+	int old_cursor;
 
 
-	windows.main->ref(*top_line);
+	if (cursor) {
+		move_cursor(top, cursor, lines, ' ');
+		Xmvwaddstr(windows.main->name, *cursor, 0, opt_cursor_string);
+	}
+
+	windows.main->ref(*top);
 
 	while (1) {
+		if (cursor) {
+			old_cursor = *cursor;
+		}
+
 		input = get_key(windows.main->name);
 
 		switch (input) {
 			case KEY_UP:
-				--(*top_line);
+				move_cursor(top, cursor, lines, KEY_UP);
 				break;
 
 			case '\n':
 			case KEY_DOWN:
-				++(*top_line);
+				move_cursor(top, cursor, lines, KEY_DOWN);
 				break;
 
 			case MOD_CTRL('p'):
 			case KEY_PPAGE:
-				*top_line -= windows.main->lines / 2;
+				move_cursor(top, cursor, lines, KEY_PPAGE);
 				break;
 
 			case ' ':
 			case MOD_CTRL('n'):
 			case KEY_NPAGE:
-				*top_line += windows.main->lines / 2;
+				move_cursor(top, cursor, lines, KEY_NPAGE);
 				break;
 
 			case KEY_HOME:
-				*top_line = 0;
+				move_cursor(top, cursor, lines, KEY_HOME);
 				break;
 
 			case KEY_END:
-				*top_line = lines - windows.main->lines + 1;
+				move_cursor(top, cursor, lines, KEY_END);
 				break;
 
 			case 'q':
@@ -319,14 +394,18 @@ int tmp_window_driver(int lines, int *top_line)
 				return input;
 		}
 
-		if (*top_line < 0) {
-			*top_line = 0;
-		}
-		if (*top_line > lines - windows.main->lines + 1) {
-			*top_line = lines - windows.main->lines + 1;
+		if (cursor) {
+			for (i = 0; i < strlen(opt_cursor_string) + 1; ++i)
+				Xmvwaddch(
+				windows.main->name, old_cursor, i, ' ');
+
+			Xmvwaddstr(
+			windows.main->name, *cursor, 0, opt_cursor_string);
 		}
 
-		windows.main->ref(*top_line);
+		windows.main->ref(*top);
+
+		refresh(); /* For moving the annoying '_' cursor. */
 	}
 
 	/* Never reached. */

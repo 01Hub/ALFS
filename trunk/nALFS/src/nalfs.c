@@ -1053,7 +1053,7 @@ static INLINE void display_help_page(void)
 
 	lines = write_help();
 
-	tmp_window_driver(lines, &top);
+	tmp_window_driver(lines, &top, NULL);
 
 	windows.active = MAIN_WINDOW;
 }
@@ -1064,7 +1064,7 @@ static INLINE void display_help_page(void)
 
 static INLINE int print_installed_packages(logf_t *logf)
 {
-	int i, lines_written;
+	int i, j, lines_written;
 	int packages_cnt = logf_get_packages_cnt(logf);
 
 
@@ -1074,11 +1074,20 @@ static INLINE int print_installed_packages(logf_t *logf)
 	for (i = 0; i < packages_cnt ; ++i) {
 		char *pname = logf_get_package_name(logf, i);
 
+		/* Space for cursor. */
+		for (j = 0; j < strlen(opt_cursor_string) + 1; ++j)
+			Xwaddch(windows.main->name, ' ');
+
 		Xwprintw(windows.main->name, "Log file found: %s\n", pname);
 	}
 
-	Xwprintw(windows.main->name,
-		"\nFound %d packages' logs.", packages_cnt);
+	Xwprintw(windows.main->name, "\n");
+
+	/* Space for cursor. */
+	for (j = 0; j < strlen(opt_cursor_string) + 1; ++j)
+		Xwaddch(windows.main->name, ' ');
+
+	Xwprintw(windows.main->name, "Found %d packages' logs.", packages_cnt);
 
 	getyx(windows.main->name, lines_written, i);
 
@@ -1088,7 +1097,7 @@ static INLINE int print_installed_packages(logf_t *logf)
 static INLINE void display_installed_packages(void)
 {
 	int input;
-	int lines, top = 0;
+	int lines, top = 0, curr = 0;
 	int min_pad_size;
 	char *pdir;
 	logf_t *logf;
@@ -1111,8 +1120,8 @@ static INLINE void display_installed_packages(void)
 
 		lines = print_installed_packages(logf);
 
-		while ((input = tmp_window_driver(lines, &top)) != -1) {
-			Nprint("Acting on pressed %d.", input);
+		while ((input = tmp_window_driver(lines+1, &top, &curr)) != -1) {
+			Nprint("Pressed %d, cursor on %d.", input, curr);
 		}
 
 		windows.active = MAIN_WINDOW;
@@ -2392,7 +2401,7 @@ static INLINE void change_options(void)
 
 	lines = print_options();
 
-	while ((input = tmp_window_driver(lines, &top)) != -1) {
+	while ((input = tmp_window_driver(lines, &top, NULL)) != -1) {
 		if (do_change_option(input) != 0) {
 			Nprint_warn("No such option.");
 		} else {
@@ -2826,7 +2835,7 @@ static void display_element_info(
 
 	lines = write_element_info(el, print_extra_info);
 	
-	tmp_window_driver(lines, &top);
+	tmp_window_driver(lines, &top, NULL);
 
 	windows.active = MAIN_WINDOW;
 }
