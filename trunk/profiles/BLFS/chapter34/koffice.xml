@@ -2,6 +2,12 @@
 
         <packageinfo>
                 <requires><name>kdebase</name></requires>
+		<utilizes><name>libart-lgpl</name></utilizes>
+		<utilizes><name>python</name></utilizes>
+		<utilizes><name>libxml2</name></utilizes>
+		<utilizes><name>libxslt</name></utilizes>
+		<utilizes><name>aspell</name></utilizes>
+		<utilizes><name>imagemagick</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -17,8 +23,9 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=/opt/kde-&kde-version;</param>
+			<param>--prefix=&kde-prefix;</param>
 			<param>--disable-debug</param>
+			<param>--disable-dependency-tracking</param>
 		</configure>
 
 		<make/>

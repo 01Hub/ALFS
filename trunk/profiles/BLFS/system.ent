@@ -322,9 +322,9 @@
 <!ENTITY gimp            SYSTEM "./chapter33/gimp.xml">
 <!ENTITY evolution       SYSTEM "./chapter33/evolution.xml">
 
-<!-- chapter 39 -->
-<!ENTITY koffice         SYSTEM "./chapter39/koffice.xml">
-<!ENTITY openoffice      SYSTEM "./chapter39/openoffice.xml">
+<!-- chapter 34 -->
+<!ENTITY koffice         SYSTEM "./chapter34/koffice.xml">
+<!ENTITY openoffice      SYSTEM "./chapter34/openoffice.xml">
 
 <!-- chapter 40 -->
 <!ENTITY mozilla         SYSTEM "./chapter40/mozilla.xml">
