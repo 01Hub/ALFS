@@ -7,8 +7,18 @@
 		<destination>/etc/profile</destination>
 	</copy>
 
-	<execute command="install --directory --mode=0755 --owner=root --group=root /etc/profile.d" />
+	<mkdir>
+		<option>parents</option>
+		<name>/etc/profile.d</name>
+	</mkdir>
 
+	<ownership user="root" group="root">
+		<name>/etc/profile.d</name>
+	</ownership>
+
+	<permissions mode="0755">
+		<name>/etc/profile.d</name>
+	</permissions>
 
 	<copy>
 		<source>&blfs-config;/etc/profile.d/dircolors.sh</source>
