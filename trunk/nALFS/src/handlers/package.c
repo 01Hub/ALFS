@@ -55,7 +55,9 @@ static int package_main_ver2(element_s *el)
 	i = execute_children(el);
 
 	log_end_time(el, i);
+	timer_pause();
 	end_logging_element(el, i);
+	timer_resume();
 
 	return i;
 }
@@ -248,8 +250,10 @@ static int package_main_ver3(element_s *el)
 		status = execute_children(el);
 	}
 
-	log_end_time(el, status);
+	log_end_time(el, status);	
+	timer_pause();
 	end_logging_element(el, status);
+	timer_resume();
 
 	return status;
 }

@@ -59,6 +59,12 @@ extern char *alloc_decompress_command(compression_type_e type);
 extern char *alloc_unpack_command(archive_format_e format);
 
 
+/* functions to pause and resume the execution timer */
+
+void timer_pause(void);
+void timer_resume(void);
+
+
 /* macro to prefix handler symbols to match libtool expectations for when
    handlers are linked into the main binary (in a static build)
 */

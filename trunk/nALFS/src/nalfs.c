@@ -45,6 +45,7 @@
 #include <config.h>
 #endif
 
+#include "nALFS.h"
 #include "bufsize.h"
 #include "utility.h"
 #include "parser.h"
@@ -88,9 +89,11 @@ static element_s *root_element;		// Parent of all profiles.
 
 static struct timer {
 	time_t backend_started;
+	time_t timer_paused;
 
 	double current_executing;
 	double total_executing;
+	double current_paused;
 
 } timer;
 
@@ -2330,7 +2333,7 @@ static INLINE char *timer_convert(double sec)
 
 static double timer_display(int backend_running)
 {
-	double curr = difftime(time(NULL), timer.backend_started);
+	double curr = (difftime(time(NULL), timer.backend_started) - timer.current_paused);
 
 
 	if (! backend_running) {
@@ -2357,8 +2360,11 @@ static INLINE void timer_end(int backend_running)
 {
 	double last = timer_display(backend_running);
 
+	timer.timer_paused = 0;
+
 	timer.current_executing = last;
 	timer.total_executing += last;
+	timer.current_paused = 0;
 }
 
 static INLINE void timer_begin(void)
@@ -2369,9 +2375,22 @@ static INLINE void timer_begin(void)
 static INLINE void timer_reset(void)
 {
 	timer.backend_started = time(NULL);
+	timer.timer_paused = 0;
 
 	timer.current_executing = 0;
 	timer.total_executing = 0;
+	timer.current_paused = 0;
+}
+
+void timer_pause(void)
+{
+	timer.timer_paused = time(NULL);
+}
+
+void timer_resume(void)
+{
+	timer.current_paused += difftime(time(NULL), timer.timer_paused);
+	timer.timer_paused = 0;
 }
 
 static void draw_timer(void)
@@ -2386,7 +2405,7 @@ static void draw_timer(void)
 
 
 		if (Backend_exists) {
-			curr = difftime(time(NULL), timer.backend_started);
+			curr = difftime(time(NULL), timer.backend_started) - timer.current_paused;
 			total = timer.total_executing + curr;
 		} else {
 			curr = timer.current_executing;
