@@ -1,3 +1,4 @@
+<!ENTITY alfs_dtd            SYSTEM "alfs_dtd.xml">
 <!ENTITY elem_alfs           SYSTEM "elem_alfs.xml">
 <!ENTITY elem_archive        SYSTEM "elem_archive.xml">
 <!ENTITY elem_base           SYSTEM "elem_base.xml">
