@@ -98,7 +98,7 @@
 	<name>/var/run/mysql</name>
      </ownership>
 <!--
-     <execute command="mysqld_safe 2>&real-amp;1 >/dev/null &real-amp;" />
+     <execute command="mysqld_safe 2&gt;&real-amp;1 &gt;/dev/null &real-amp;" />
      <textdump>
       <file>/tmp/mysql.script</file>
 	<content>

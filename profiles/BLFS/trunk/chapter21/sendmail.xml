@@ -40,6 +40,9 @@
 	<name>cyrus-sasl</name>
       </utilizes>
       <utilizes>
+	<name>nph</name>
+      </utilizes>
+      <utilizes>
 	<name>&ghostscript-impl;</name>
       </utilizes>
     </packageinfo>

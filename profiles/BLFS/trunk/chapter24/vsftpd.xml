@@ -34,6 +34,11 @@
   </stage>
   &bootscripts-get;
   <stage name="Creating user and group">
+    <mkdir>
+      <option>parents</option>
+      <name>/var/ftp/empty</name>
+      <name>/home/ftp</name>
+    </mkdir>
     <execute command="getent group vsftpd &gt; /dev/null || groupadd">
       <param>vsftpd</param>
     </execute>
@@ -58,11 +63,6 @@
     <stageinfo>
       <base>&build_dir;/&vsftpd-directory;</base>
     </stageinfo>
-    <mkdir>
-      <option>parents</option>
-      <name>/var/ftp/empty</name>
-      <name>/home/ftp</name>
-    </mkdir>
     <make />
     <copy>
       <source>vsftpd</source>

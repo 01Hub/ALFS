@@ -24,6 +24,9 @@
       <utilizes>
         <name>xinetd</name>
       </utilizes>
+      <utilizes>
+	<name>fcron</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -44,48 +47,48 @@
     <stageinfo>
       <base>&build_dir;/&leafnode-directory;</base>
     </stageinfo>
-    <configure>
-      <param>--prefix=/usr</param>
-      <param>--localstatedir=/var</param>
-      <param>--sysconfdir=/etc/leafnode</param>
-      <param>--with-lockfile=/var/lock/leafnode/fetchnews.lck</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>
-    &ldconfig;
-    <copy>
-      <source>/etc/leafnode/config.example</source>
-      <destination>/etc/leafnode/config</destination>
-    </copy>
-    <copy base="&blfs-config;">
-      <source>etc/nntpserver</source>
-      <destination>/etc</destination>
-    </copy>
-    <textdump mode="append" base="/etc/sysconfig">
-      <file>createfiles</file>
-      <content>
-	=/var/lock/leafnode   dir   2775    news    news
-      </content>
-    </textdump>
-    <textdump mode="append" base="/etc">
-      <file>xinetd.conf</file>
-      <content>
-        =service nntp
-        ={
-        =   flags           = NAMEINARGS NOLIBWRAP
-        =   socket_type     = stream
-        =   protocol        = tcp
-        =   wait            = no
-        =   user            = news
-        =   server          = /usr/sbin/tcpd
-        =   server_args     = /usr/sbin/leafnode
-        =   instances       = 7
-        =   per_source      = 3
-        =}
+      <configure>
+	<param>--prefix=/usr</param>
+	<param>--localstatedir=/var</param>
+	<param>--sysconfdir=/etc/leafnode</param>
+	<param>--with-lockfile=/var/lock/leafnode/fetchnews.lck</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+      &ldconfig;
+      <copy>
+	<source>/etc/leafnode/config.example</source>
+	<destination>/etc/leafnode/config</destination>
+      </copy>
+      <copy base="&blfs-config;">
+	<source>etc/nntpserver</source>
+	<destination>/etc</destination>
+      </copy>
+      <textdump mode="append" base="/etc/sysconfig">
+	<file>createfiles</file>
+	<content>
+	  =/var/lock/leafnode   dir   2775    news    news
 	</content>
-    </textdump>
+      </textdump>
+      <textdump mode="append" base="/etc">
+	<file>xinetd.conf</file>
+	<content>
+	  =service nntp
+	  ={
+	  =   flags           = NAMEINARGS NOLIBWRAP
+	  =   socket_type     = stream
+	  =   protocol        = tcp
+	  =   wait            = no
+	  =   user            = news
+	  =   server          = /usr/sbin/tcpd
+	  =   server_args     = /usr/sbin/leafnode
+	  =   instances       = 7
+	  =   per_source      = 3
+	  =}
+	</content>
+      </textdump>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&leafnode-directory;</remove>

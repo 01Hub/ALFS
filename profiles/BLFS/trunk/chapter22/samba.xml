@@ -47,6 +47,9 @@
 	<name>xinetd</name>
       </utilizes>
       <utilizes>
+	<name>valgrind</name>
+      </utilizes>
+      <utilizes>
 	<name>stunnel</name>
       </utilizes>
     </packageinfo>

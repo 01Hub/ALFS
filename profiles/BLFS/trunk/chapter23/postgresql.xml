@@ -46,6 +46,9 @@
       <utilizes>
 	<name>apache-ant</name>
       </utilizes>
+      <utilizes>
+	<name>rendezvous</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
