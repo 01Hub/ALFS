@@ -12,7 +12,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing">
+	<stage name="Patching">
 		<stageinfo>
 			<base>&build_dir;/&dhcpcd-directory;</base>
 		</stageinfo>
@@ -22,6 +22,12 @@
 			<param>-p1</param>
 			<param>-i &packages_dir;/&dhcpcd-patch;</param>
 		</patch>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&dhcpcd-directory;</base>
+		</stageinfo>
 
 		<configure>
 			<param>--prefix=""</param>
@@ -36,7 +42,7 @@
 		</make>
 	</stage>
 
-	<stage name="Install dhcpcd service script">
+	<stage name="Installing dhcpcd service script">
 		<stageinfo>
 			<base>&build_dir;/&blfs-bootscripts-directory;</base>
 		</stageinfo>
@@ -46,13 +52,13 @@
 		</make>
 	</stage>
 
-	<stage name="Configure dhcpcd">
+	<stage name="Configuring dhcpcd">
 		<textdump>
 			<file>/etc/sysconfig/network-devices/ifconfig.eth0</file>
 			<content>
 			=ONBOOT=yes
 			=DHCP_START="&dhcpcd-start-params;"
-			=DHCP_STOP="-k &dhcpcd-stop-params;"
+			=DHCP_STOP="&dhcpcd-stop-params;"
 			=SERVICE=dhcpcd
 			</content>
 		</textdump>
