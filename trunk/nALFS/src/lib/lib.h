@@ -21,10 +21,10 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef _LIB_H
-#define _LIB_H
+#ifndef H_LIB_
+#define H_LIB_
 
 extern int verify_digest(const char *type, char *digest, const char *file);
 extern int load_url(const char *output, const char *url);
 
-#endif /* _LIB_H */
+#endif /* H_LIB_ */

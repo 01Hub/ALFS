@@ -20,8 +20,8 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef _MD5_H
-#define _MD5_H
+#ifndef H_MD5_
+#define H_MD5_
 
 #define uint8  unsigned char
 #define uint32 unsigned long int
@@ -37,4 +37,4 @@ extern void md5_starts( struct md5_context *ctx );
 extern void md5_update( struct md5_context *ctx, uint8 *input, uint32 length );
 extern void md5_finish( struct md5_context *ctx, uint8 digest[16] );
 
-#endif /* _MD5_H */
+#endif /* H_MD5_ */
