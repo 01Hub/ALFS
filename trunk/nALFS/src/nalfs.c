@@ -67,7 +67,6 @@
 
 /* Minimum sizes of main pad when displaying something other than elements. */
 static const int min_pad_size_for_elements_info = 128;
-// static const int min_pad_size_for_elements_xml = 1024;
 static const int min_pad_size_for_help = 64;
 static const int min_pad_size_for_options = 32;
 
@@ -953,6 +952,40 @@ static void clear_done_run_status(element_s *el)
 }
 
 /*
+ * Starting the editor with specified file name.
+ */
+
+static INLINE void run_editor(const char *filename)
+{
+	char *editor;
+	char *command;
+
+
+	endwin();
+
+	editor = opt_editor;
+
+	if (Empty_string(editor)) {
+		editor = getenv("EDITOR");
+	}
+
+	if (Empty_string(editor)) {
+		editor = "vi";
+	}
+
+	command = xstrdup(editor);
+	append_str(&command, " ");
+	append_str(&command, filename);
+
+	system(command);
+
+	xfree(command);
+
+	refresh();
+	keypad(windows.main->name, 1);
+}
+
+/*
  * Help menu.
  */
 
@@ -1059,10 +1092,104 @@ static INLINE void display_help_page(void)
 }
 
 /*
- * Installed packages.
+ * Packages.
  */
 
-static INLINE int print_installed_packages(log_f_t *log_f)
+static void pkg_remove_package(log_f_t *log_f, int idx)
+{
+	int c;
+	char *flog;
+
+
+	if ((flog = log_f_get_flog_filename(log_f, idx)) == NULL) {
+		Nprint("List of installed files doesn't exist.");
+		return;
+	}
+
+	Nprint("Edit the list of files to remove? (y/N)?");
+
+	c = get_key(windows.main->name);
+
+	if (c == 'y') {
+		run_editor(flog);
+
+	} else if (c != 'N') {
+		Nprint("Removing package aborted.");
+		return;
+	}
+
+	/* We're going to do "rm -fr", so be REALLY annoying. */
+
+	Nprint("Do you want to continue with removing this package? (n/Y)");
+
+	if ((get_key(windows.main->name)) != 'Y') {
+		Nprint("Removing package aborted.");
+		return;
+	}
+
+	Nprint_warn("Typing yes now, will remove all files listed in:");
+	Nprint_warn("%s", flog);
+	Nprint_warn("Pressing anything else will abort this.");
+
+	if (get_key(windows.main->name) == 'y'
+	&&  get_key(windows.main->name) == 'e'
+	&&  get_key(windows.main->name) == 's') {
+		Nprint("rm -fr `cat %s`", flog);
+		Nprint("goes here.", flog);
+
+	} else {
+		Nprint("Removing package aborted.");
+	}
+}
+
+static void pkg_process_command(log_f_t *log_f, int idx, int input)
+{
+	switch (input) {
+		case 'R':
+			pkg_remove_package(log_f, idx);
+			break;
+
+		/*
+		 * A lot of useful commands can be added here.  Not
+		 * only related to _installed_ packages, but to ones
+		 * in loaded profiles too (or packages described in
+		 * profiles located in some specified directory).
+		 */
+
+	      default:
+			Nprint_warn("Unknown command.");
+			break;
+	}
+}
+
+static void pkg_write_main_line(log_f_t *log_f, int idx)
+{
+	size_t i;
+	char *line = NULL;
+	char *plog = log_f_get_plog_filename(log_f, idx);
+	char *flog = log_f_get_flog_filename(log_f, idx);
+
+
+	/* Space for cursor. */
+	for (i = 0; i < strlen(opt_cursor_string) + 1; ++i) {
+		append_str(&line, " ");
+	}
+
+	append_str(&line, plog);
+	append_str(&line, " - ");
+	append_str(&line, flog ? flog : "none");
+
+	/* Print the line. */
+	if (strlen(line) + 4 > (unsigned int)windows.max_cols) {
+		waddnstr(windows.main->name, line, windows.max_cols - 7);
+		Xwaddstr(windows.main->name, "...\n");
+	} else {
+		Xwaddstr(windows.main->name, line);
+		Xwaddstr(windows.main->name, "\n");
+	}
+}
+
+static INLINE int pkg_print_installed_packages(log_f_t *log_f)
 {
 	size_t j;
 	int i, lines_written;
@@ -1072,34 +1199,27 @@ static INLINE int print_installed_packages(log_f_t *log_f)
 	Xwerase(windows.main->name);
 	Xwmove(windows.main->name, 0, 0);
 
-	for (i = 0; i < packages_cnt ; ++i) {
-		char *pname = log_f_get_plog_filename(log_f, i);
-
-		/* Space for cursor. */
-		for (j = 0; j < strlen(opt_cursor_string) + 1; ++j)
-			Xwaddch(windows.main->name, ' ');
-
-		Xwprintw(windows.main->name, "Log file found: %s\n", pname);
+	/* Space for cursor. */
+	for (j = 0; j < strlen(opt_cursor_string) + 1; ++j) {
+		Xwaddstr(windows.main->name, " ");
 	}
 
-	Xwprintw(windows.main->name, "\n");
+	Xwaddstr(windows.main->name, "R - remove package\n\n");
 
-	/* Space for cursor. */
-	for (j = 0; j < strlen(opt_cursor_string) + 1; ++j)
-		Xwaddch(windows.main->name, ' ');
-
-	Xwprintw(windows.main->name, "Found %d packages' logs.", packages_cnt);
+	for (i = 0; i < packages_cnt ; ++i) {
+		pkg_write_main_line(log_f, i);
+	}
 
 	getyx(windows.main->name, lines_written, i);
 
-	return lines_written;
+	return lines_written + 1;
 }
 
-static INLINE void display_installed_packages(void)
+static INLINE void pkg_main(void)
 {
+	int pcnt;
 	int input;
 	int lines, top = 0, curr = 0;
-	int min_pad_size;
 	char *pdir;
 	log_f_t *log_f;
 	
@@ -1107,22 +1227,24 @@ static INLINE void display_installed_packages(void)
 	pdir = alloc_real_packages_directory_name();
 
 	Nprint("Reading log files from %s...", pdir);
+
 	log_f = log_f_init_from_directory(pdir);
+	pcnt = log_f_get_packages_cnt(log_f);
 
-	min_pad_size = log_f_get_packages_cnt(log_f);
+	if (pcnt > 0) {
+		Nprint("Found %d packages' logs.", pcnt);
 
-	if (min_pad_size > 0) {
 		windows.active = TMP_WINDOW;
 
 		/* Recreate main pad if it is too small. */
-		if (total_number_of_elements() < min_pad_size) {
-			recreate_main_window(min_pad_size);
+		if (total_number_of_elements() < pcnt + 10) { // XXX
+			recreate_main_window(pcnt + 10);
 		}
 
-		lines = print_installed_packages(log_f);
+		lines = pkg_print_installed_packages(log_f);
 
-		while ((input = tmp_window_driver(lines+1, &top, &curr)) != -1) {
-			Nprint("Pressed %d, cursor on %d.", input, curr);
+		while ((input = tmp_window_driver(lines, &top, &curr)) != -1) {
+			pkg_process_command(log_f, curr - 2, input); // XXX
 		}
 
 		windows.active = MAIN_WINDOW;
@@ -3383,38 +3505,6 @@ static element_s *search_backwards(const char *string, element_s *el)
 }
 
 /*
- * Starting editor on current element's profile.
- */
-
-static INLINE void run_editor(void)
-{
-	char *editor;
-	char *command;
-	element_s *profile;
-
-
-	editor = opt_editor;
-
-	if (Empty_string(editor)) {
-		editor = getenv("EDITOR");
-	}
-
-	if (Empty_string(editor)) {
-		editor = "vi";
-	}
-
-       	profile = get_profile_by_element(Current_element);
-
-	command = xstrdup(editor);
-	append_str(&command, " ");
-	append_str(&command, profile->name);
-
-	system(command);
-
-	xfree(command);
-}
-
-/*
  * Opening and closing all elements.
  */
 
@@ -3768,13 +3858,13 @@ static int browse(void)
 			break;
 
 		case 'E': /* Start editor on element's profile. */
-			endwin();
+			{
+				element_s *profile =
+				get_profile_by_element(Current_element);
 
-			run_editor();
+				run_editor(profile->name);
+			}
 
-			refresh();
-
-			keypad(windows.main->name, 1);
 
 			break;
 
@@ -4080,11 +4170,11 @@ static int browse(void)
 
 		case 'P': /* 'P'ackages. */
 
-			/* TODO: display_installed_packages(Current_element)
+			/* TODO: pkg_main(Current_element)
 			 *       So that we can immediately point the cursor
 			 *       to the package of selected profile.
 			 */
-			display_installed_packages();
+			pkg_main();
 
 			rewrite_main();
 

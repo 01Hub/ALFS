@@ -68,6 +68,7 @@ log_f_t *log_f_init_from_directory(const char *pdir);
 int log_f_get_packages_cnt(log_f_t *log_f);
 
 char *log_f_get_plog_filename(log_f_t *log_f, int i);
+char *log_f_get_flog_filename(log_f_t *log_f, int i);
 
 /*
  * A single log file, initialized from package's string.
