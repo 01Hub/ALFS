@@ -37,7 +37,7 @@
 		</make>
 
 		<execute command="touch">
-			<param>/etc/ld.so.conf</param>
+			<param>/etc/&ld-config-file;</param>
 		</execute>
 
 		<make>
@@ -104,14 +104,14 @@
 		</copy>
 
 		<textdump>
-			<file>/etc/ld.so.conf</file>
+			<file>/etc/&ld-config-file;</file>
 			<content>
-				=# Begin /etc/ld.so.conf
+				=# Begin /etc/&ld-config-file;
 				=
 				=/usr/local/lib
 				=/opt/lib
 				=
-				=# End /etc/ld.so.conf
+				=# End /etc/&ld-config-file;
 			</content>
 		</textdump>
 	</stage>
