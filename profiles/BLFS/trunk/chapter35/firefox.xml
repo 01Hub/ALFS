@@ -23,9 +23,6 @@
         <name>libidl</name>
       </requires>
       <utilizes>
-	<name>gnupg</name>
-      </utilizes>
-      <utilizes>
 	<name>libjpeg</name>
       </utilizes>
       <utilizes>
@@ -35,7 +32,7 @@
 	<name>gnome-vfs2</name>
       </utilizes>
       <utilizes>
-	<name>libart-lgpl</name>
+	<name>libgnome</name>
       </utilizes>
       <utilizes>
 	<name>&krb-impl;</name>
