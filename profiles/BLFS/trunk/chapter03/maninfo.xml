@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
 <!ENTITY % files SYSTEM "../config/files.ent">
@@ -9,25 +10,19 @@
 %files;
 
 ]>
-
 <alfs>
-
-<stage name="Compressing man and info pages">
-	<stageinfo>
-		<base>/usr/sbin</base>
-	</stageinfo>
-
-<!-- Note: this section does not execute the script that is installed here. Refer to the script
+  <stage name="Compressing man and info pages">
+    <stageinfo>
+      <base>/usr/sbin</base>
+    </stageinfo>
+    <!-- Note: this section does not execute the script that is installed here. Refer to the script
 itself and the installation page in the BLFS Book for instructions on how to use it. -->
-
-	<copy>
-		<source>&blfs-config;/scripts/compressdoc</source>
-		<destination>.</destination>
-	</copy>
-
-	<permissions mode="755">
-		<name>/compressdoc</name>
-	</permissions>
-</stage>
-
+    <copy>
+      <source>&blfs-config;/scripts/compressdoc</source>
+      <destination>.</destination>
+    </copy>
+    <permissions mode="755">
+      <name>/compressdoc</name>
+    </permissions>
+  </stage>
 </alfs>

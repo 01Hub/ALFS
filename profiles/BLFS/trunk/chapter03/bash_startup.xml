@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
 <!ENTITY % files SYSTEM "../config/files.ent">
@@ -9,60 +10,47 @@
 %files;
 
 ]>
-
 <alfs>
-
-<stage name="The Bash Shell Startup Files">
-	
-	<copy>
-        	<source>&blfs-config;/etc/profile</source>
-		<destination>/etc/profile</destination>
-	</copy>
-
-	<mkdir>
-		<option>parents</option>
-		<name>/etc/profile.d</name>
-	</mkdir>
-
-	<ownership user="root" group="root">
-		<name>/etc/profile.d</name>
-	</ownership>
-
-	<permissions mode="0755">
-		<name>/etc/profile.d</name>
-	</permissions>
-
-	<copy base="&blfs-config;/etc/profile.d">
-		<source>dircolors.sh</source>
-		<source>extrapaths.sh</source>
-		<source>readline.sh</source>
-		<source>tinker-term.sh</source>
-		<source>umask.sh</source>
-		<source>X.sh</source>
-		<source>xterm-titlebars.sh</source>
-		<destination>/etc/profile.d</destination>
-	</copy>	
-
-	<copy>
-        	<source>&blfs-config;/etc/bashrc</source>
-		<destination>/etc/bashrc</destination>
-	</copy>
-
-	<copy>
-        	<source>&blfs-config;/etc/skel/dot_bash_profile</source>
-		<destination>/root/.bash_profile</destination>
-	</copy>
-
-	<copy>
-        	<source>&blfs-config;/etc/skel/dot_bashrc</source>
-		<destination>/root/.bashrc</destination>
-	</copy>
-
-	<copy>
-      		<source>&blfs-config;/etc/skel/dot_bash_logout</source>
-		<destination>/root/.bash_logout</destination>
-	</copy>
-
-</stage>
-
+  <stage name="The Bash Shell Startup Files">
+    <copy>
+      <source>&blfs-config;/etc/profile</source>
+      <destination>/etc/profile</destination>
+    </copy>
+    <mkdir>
+      <option>parents</option>
+      <name>/etc/profile.d</name>
+    </mkdir>
+    <ownership user="root" group="root">
+      <name>/etc/profile.d</name>
+    </ownership>
+    <permissions mode="0755">
+      <name>/etc/profile.d</name>
+    </permissions>
+    <copy base="&blfs-config;/etc/profile.d">
+      <source>dircolors.sh</source>
+      <source>extrapaths.sh</source>
+      <source>readline.sh</source>
+      <source>tinker-term.sh</source>
+      <source>umask.sh</source>
+      <source>X.sh</source>
+      <source>xterm-titlebars.sh</source>
+      <destination>/etc/profile.d</destination>
+    </copy>
+    <copy>
+      <source>&blfs-config;/etc/bashrc</source>
+      <destination>/etc/bashrc</destination>
+    </copy>
+    <copy>
+      <source>&blfs-config;/etc/skel/dot_bash_profile</source>
+      <destination>/root/.bash_profile</destination>
+    </copy>
+    <copy>
+      <source>&blfs-config;/etc/skel/dot_bashrc</source>
+      <destination>/root/.bashrc</destination>
+    </copy>
+    <copy>
+      <source>&blfs-config;/etc/skel/dot_bash_logout</source>
+      <destination>/root/.bash_logout</destination>
+    </copy>
+  </stage>
 </alfs>
