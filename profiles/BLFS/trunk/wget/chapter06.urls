@@ -1,12 +1,12 @@
-ftp://ftp.vim.org/pub/vim/unix/vim-6.3.tar.bz2
-http://ftp.at.vim.org/pub/vim/extra/vim-6.3-lang.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/vim-6.3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/vim-6.3-lang.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/vim-6.3-security_fix-1.patch
 
-ftp://ftp.gnu.org/pub/gnu/emacs/emacs-21.4.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/emacs-21.4.tar.bz2
 
-http://www.nano-editor.org/dist/v1.2/nano-1.2.4.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/nano-1.2.4.tar.bz2
 
-http://umn.dl.sourceforge.net/sourceforge/joe-editor/joe-3.1.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/joe-3.1.tar.bz2
 
-ftp://ftp.gnu.org/pub/gnu/ed/ed-0.2.tar.gz
-http://www.linuxfromscratch.org/blfs/downloads/svn/ed-0.2-mkstemp-1.patch
-
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/ed-0.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/ed-0.2-mkstemp-1.patch

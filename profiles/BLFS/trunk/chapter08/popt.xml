@@ -17,6 +17,10 @@
         <archive>&packages_dir;/&popt-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
+      <unpack>
+        <archive>&packages_dir;/&popt-patch-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
@@ -25,7 +29,7 @@
       <patch>
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&popt-patch;</param>
+        <param>-i &build_dir;/&popt-patch;</param>
       </patch>
       <configure>
         <param>--prefix=/usr</param>

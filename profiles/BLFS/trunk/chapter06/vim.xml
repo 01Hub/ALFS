@@ -56,6 +56,11 @@
 	  =#define SYS_GVIMRC_FILE "/etc/gvimrc"
 	</content>
       </textdump>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&vim-security-fix-patch;</param>
+      </patch>
       <configure>
         <param>--prefix=/usr</param>
         <param>--with-features=huge</param>

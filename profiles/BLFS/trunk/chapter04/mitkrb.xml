@@ -30,7 +30,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
-      <archive>&build_dir;/&mitkrb-package;</archive>
+      <archive>&packages_dir;/&mitkrb-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>
   </stage>

@@ -25,7 +25,7 @@
     <patch>
       <param>-N</param>
       <param>-p1</param>
-      <param>-i &packages_dir;/&freetype-bytecode_interpreter-patch;</param>
+      <param>-i &packages_dir;/&freetype-bytecode-interpreter-patch;</param>
     </patch>
     <configure>
       <param>--prefix=/usr</param>

@@ -1,13 +1,12 @@
 <!--************* packages for chapter 7 *************-->
 
 <!ENTITY ash-version   "0.4.0">
-<!ENTITY ash-package   "ash-&ash-version;.tar.gz">
+<!ENTITY ash-package   "ash-&ash-version;.tar.bz2">
 <!ENTITY ash-directory "ash-&ash-version;">
-
 <!ENTITY ash-patch     "ash-&ash-version;-cumulative_fixes-1.patch">
  
 <!ENTITY tcsh-version   "6.13">
-<!ENTITY tcsh-package   "tcsh-&tcsh-version;.00.tar.gz">
+<!ENTITY tcsh-package   "tcsh-&tcsh-version;.00.tar.bz2">
 <!ENTITY tcsh-directory "tcsh-&tcsh-version;.00">
 
 <!ENTITY zsh-version   "4.2.4">

@@ -1,6 +1,6 @@
-http://slackware.osuosl.org/slackware/source/ap/ash/ash-0.4.0.tar.gz
-http://www.linuxfromscratch.org/blfs/downloads/svn/ash-0.4.0-cumulative_fixes-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/ash-0.4.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/ash-0.4.0-cumulative_fixes-1.patch
 
-http://gd.tuwien.ac.at/utils/shells/tcsh/tcsh-6.13.00.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/tcsh-6.13.00.tar.bz2
 
-http://unc.dl.sourceforge.net/sourceforge/zsh/zsh-4.2.4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/zsh-4.2.4.tar.bz2
