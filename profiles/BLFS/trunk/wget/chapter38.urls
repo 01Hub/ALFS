@@ -4,6 +4,8 @@ http://www.vorbis.com/files/1.0.1/unix/vorbis-tools-1.0.1.tar.gz
 
 http://www.xmms.org/files/1.2.x/xmms-1.2.10.tar.bz2
 
-http://umn.dl.sourceforge.net/sourceforge/lame/lame-3.95.1.tar.gz
+http://umn.dl.sourceforge.net/sourceforge/lame/lame-3.96.1.tar.gz
 
 ftp://ftp.yars.free.net/pub/software/unix/util/cd/cdparanoia-III-alpha9.8.src.tgz
+http://www.linuxfromscratch.org/blfs/downloads/svn/cdparanoia-III-alpha9.8-includes-1.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/cdparanoia-III-alpha9.8-gcc34-1.patch

@@ -11,7 +11,7 @@
 
 ]>
 <alfs>
-  <package name="ghostscript" version="&afplghostscript-version;">
+  <package name="afpl ghostscript" version="&afplghostscript-version;">
     <packageinfo>
       <utilizes>
         <name>libjpeg</name>
@@ -54,12 +54,6 @@
       <make />
       <make>
         <param>install</param>
-      </make>
-      <make>
-        <param>so</param>
-      </make>
-      <make>
-        <param>soinstall</param>
       </make>
     </stage>
     <stage name="Cleanup">

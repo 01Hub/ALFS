@@ -15,6 +15,17 @@
 ]>
 <alfs>
   <package name="lprng" version="&lprng-version;">
+    <packageinfo>
+      <utilizes>
+        <name>openssl</name>
+      </utilizes>
+      <utilizes>
+        <name>tcpwrappers</name>
+      </utilizes>
+      <utilizes>
+        <name>krb4</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&lprng-package;</archive>

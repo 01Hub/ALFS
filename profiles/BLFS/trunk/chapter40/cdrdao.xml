@@ -17,7 +17,31 @@
         <name>lame</name>
       </utilizes>
       <utilizes>
-        <name>pkgconfig</name>
+        <name>pccts</name>
+      </utilizes>
+      <utilizes>
+        <name>libgnomeui</name>
+      </utilizes>
+      <utilizes>
+        <name>libsigc++</name>
+      </utilizes>
+      <utilizes>
+        <name>gtkmm</name>
+      </utilizes>
+      <utilizes>
+        <name>libglademm</name>
+      </utilizes>
+      <utilizes>
+        <name>libgnomecanvasmm</name>
+      </utilizes>
+      <utilizes>
+        <name>gconfmm</name>
+      </utilizes>
+      <utilizes>
+        <name>libgnomemm</name>
+      </utilizes>
+      <utilizes>
+        <name>libgnomeuimm</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -30,6 +54,11 @@
       <stageinfo>
         <base>&build_dir;/&cdrdao-directory;</base>
       </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&cdrdao-patch;</param>
+      </patch>
       <configure>
         <param>--prefix=/usr</param>
       </configure>

@@ -12,10 +12,12 @@
 <!ENTITY xmms-package      "xmms-&xmms-version;.tar.bz2">
 <!ENTITY xmms-directory    "xmms-&xmms-version;">
 
-<!ENTITY lame-version      "3.95.1">
+<!ENTITY lame-version      "3.96.1">
 <!ENTITY lame-package      "lame-&lame-version;.tar.gz">
 <!ENTITY lame-directory    "lame-&lame-version;">
 
-<!ENTITY cdparanoia-version      "III-alpha9.8">
-<!ENTITY cdparanoia-package      "cdparanoia-&cdparanoia-version;.src.tgz">
-<!ENTITY cdparanoia-directory    "cdparanoia-&cdparanoia-version;">
+<!ENTITY cdparanoia-version        "III-alpha9.8">
+<!ENTITY cdparanoia-package        "cdparanoia-&cdparanoia-version;.src.tgz">
+<!ENTITY cdparanoia-directory      "cdparanoia-&cdparanoia-version;">
+<!ENTITY cdparanoia-includes-patch "cdparanoia-&cdparanoia-version;-includes-1.patch">
+<!ENTITY cdparanoia-gcc34-patch    "cdparanoia-&cdparanoia-version;-gcc34-1.patch">

@@ -17,10 +17,19 @@
         <name>xine-lib</name>
       </requires>
       <utilizes>
+        <name>pkgconfig</name>
+      </utilizes>
+      <utilizes>
         <name>curl</name>
       </utilizes>
       <utilizes>
         <name>aalib</name>
+      </utilizes>
+      <utilizes>
+        <name>lirc</name>
+      </utilizes>
+      <utilizes>
+        <name>libcaca</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

@@ -20,6 +20,12 @@
         <name>lame</name>
       </utilizes>
       <utilizes>
+        <name>liba52</name>
+      </utilizes>
+      <utilizes>
+        <name>imlib2</name>
+      </utilizes>
+      <utilizes>
         <name>&ximpl;</name>
       </utilizes>
       <utilizes>
@@ -27,6 +33,15 @@
       </utilizes>
       <utilizes>
         <name>freetype</name>
+      </utilizes>
+      <utilizes>
+        <name>faac</name>
+      </utilizes>
+      <utilizes>
+        <name>faad</name>
+      </utilizes>
+      <utilizes>
+        <name>tex</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -45,8 +60,13 @@
       <configure>
         <param>--prefix=/usr</param>
         <param>--enable-shared</param>
+        <param>--enable-pthreads</param>
+        <param>--disable-ffplay</param>
       </configure>
       <make />
+      <make>
+        <param>-C doc ffmpeg.1 ffserver.1 ffplay.1</param>
+      </make>
       <make>
         <param>install</param>
       </make>

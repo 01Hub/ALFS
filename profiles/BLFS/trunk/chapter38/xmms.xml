@@ -31,12 +31,6 @@
       <utilizes>
         <name>libmikmod</name>
       </utilizes>
-      <utilizes>
-        <name>libxml</name>
-      </utilizes>
-      <utilizes>
-        <name>gnome-libs</name>
-      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

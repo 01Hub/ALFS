@@ -13,6 +13,9 @@
 <alfs>
   <package name="transcode" version="&transcode-version;">
     <packageinfo>
+      <requires>
+        <name>ffmpeg</name>
+      </requires>
       <utilizes>
         <name>nasm</name>
       </utilizes>
@@ -23,22 +26,28 @@
         <name>&ximpl;</name>
       </utilizes>
       <utilizes>
-        <name>mplayer</name>
+        <name>freetype</name>
+      </utilizes>
+      <utilizes>
+        <name>gtk+</name>
+      </utilizes>
+      <utilizes>
+        <name>sdl</name>
+      </utilizes>
+      <utilizes>
+        <name>libxml2</name>
       </utilizes>
       <utilizes>
         <name>imagemagick</name>
+      </utilizes>
+      <utilizes>
+        <name>libjpeg</name>
       </utilizes>
       <utilizes>
         <name>libdv</name>
       </utilizes>
       <utilizes>
         <name>libdvdread</name>
-      </utilizes>
-      <utilizes>
-        <name>sdl</name>
-      </utilizes>
-      <utilizes>
-        <name>qt</name>
       </utilizes>
       <utilizes>
         <name>avifile</name>
@@ -56,19 +65,7 @@
         <name>lzo</name>
       </utilizes>
       <utilizes>
-        <name>libxml2</name>
-      </utilizes>
-      <utilizes>
         <name>liba52</name>
-      </utilizes>
-      <utilizes>
-        <name>ffmpeg</name>
-      </utilizes>
-      <utilizes>
-        <name>libmad</name>
-      </utilizes>
-      <utilizes>
-        <name>curl</name>
       </utilizes>
       <utilizes>
         <name>libogg</name>
@@ -77,16 +74,25 @@
         <name>libvorbis</name>
       </utilizes>
       <utilizes>
-        <name>libjpeg</name>
+        <name>mjpegtools</name>
       </utilizes>
       <utilizes>
-        <name>gtk+</name>
+        <name>libquicktime</name>
       </utilizes>
       <utilizes>
-        <name>freetype</name>
+        <name>theora</name>
       </utilizes>
       <utilizes>
-        <name>openquicktime</name>
+        <name>lve</name>
+      </utilizes>
+      <utilizes>
+        <name>pvm3</name>
+      </utilizes>
+      <utilizes>
+        <name>lors/ibp</name>
+      </utilizes>
+      <utilizes>
+        <name>mplayer</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
