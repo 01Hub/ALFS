@@ -27,6 +27,7 @@ void term_reset ();
 
 char *lower_case (char *str);
 char *strdog (char *str1, char *str2);
+char *strdog2 (char *str1, char *str2);
 char *chrep (char *str, char old, char new);
 char **tokenize (char *str, char *token, int *i);
 char *strrep (char *str, char *old, char *new);

@@ -109,11 +109,31 @@ xmlNodePtr find_node (xmlNodePtr root, char *str)
 	return NULL;
 }
 
+char *find_values (xmlNodePtr node, char *str)
+{
+	char *ret;
+
+	if ((!node)||(!str))
+		return "";
+
+	ret = (char *)malloc(1);
+	strcpy(ret, "");
+
+	while (node)
+	{
+		if (!strcmp(node->name, str))
+			ret = strdog2(ret, xmlNodeGetContent(node));
+		node = node->next;
+	}
+
+	return ret;
+}			
+
 char *find_value (xmlNodePtr node, char *str)
 {
 	xmlNodePtr moo = find_node(node, str);
 	if (!moo)
-		return NULL;
+		return "";
 	return xmlNodeGetContent(moo);
 }
 
