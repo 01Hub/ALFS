@@ -41,184 +41,221 @@
 #include "backend.h"
 
 
-#define El_mkdir_dirs(el) alloc_trimmed_param_value("dir", el)
-#define El_mkdir_perm(el) alloc_trimmed_param_value("permissions", el)
+enum {
+	MKDIR_OPTION,
+	MKDIR_BASE,
+	MKDIR_NAME,
+	MKDIR_NAMES,
+	MKDIR_PERMISSIONS,
+};
 
+struct mkdir_data {
+	char *base;
+	int parents;
+	char *permissions;
+	int name_count;
+	char **names;
+};
+
+static int mkdir_setup(element_s * const element)
+{
+	struct mkdir_data *data;
+
+	if ((data = xmalloc(sizeof(struct mkdir_data))) == NULL)
+		return 1;
+
+	data->parents = 0;
+	data->base = NULL;
+	data->name_count = 0;
+	data->names = NULL;
+	data->permissions = NULL;
+	element->handler_data = data;
+
+	return 0;
+};
+
+static void mkdir_free(const element_s * const element)
+{
+	struct mkdir_data *data = (struct mkdir_data *) element->handler_data;
+	int i;
+
+	xfree(data->base);
+	xfree(data->permissions);
+	if (data->name_count > 0) {
+		for (i = 0; i < data->name_count; i++)
+			xfree(data->names[i]);
+		xfree(data->names);
+	}
+	xfree(data);
+}
+
+static int mkdir_attribute(const element_s * const element,
+			   const struct handler_attribute * const attr,
+			   const char * const value)
+{
+	struct mkdir_data *data = (struct mkdir_data *) element->handler_data;
+
+	switch (attr->private) {
+	case MKDIR_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify \"base\" more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int mkdir_parameter(const element_s * const element,
+			   const struct handler_parameter * const param,
+			   const char * const value)
+{
+	struct mkdir_data *data = (struct mkdir_data *) element->handler_data;
+	char *tmp;
+	char *tok;
+
+	switch (param->private) {
+	case MKDIR_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify <base> more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	case MKDIR_PERMISSIONS:
+		if (data->permissions) {
+			Nprint_err("<%s>: cannot specify <permissions> more than once.", element->handler->name);
+			return 1;
+		}
+		data->permissions = xstrdup(value);
+		return 0;
+	case MKDIR_OPTION:
+		if (!strcmp("parents", value)) {
+			data->parents = 1;
+			return 0;
+		}
+		Nprint_err("<%s>: invalid option (%s) ignored", element->handler->name, value);
+		return 1;
+	case MKDIR_NAME:
+		data->name_count++;
+		if ((data->names = xrealloc(data->names,
+					    sizeof(data->names[0]) * (data->name_count))) == NULL) {
+			Nprint_err("xrealloc() failed: %s", strerror(errno));
+			return -1;
+		}
+		data->names[(data->name_count - 1)] = xstrdup(value);
+		return 0;
+	case MKDIR_NAMES:
+		tmp = xstrdup(value);
+		for (tok = strtok(tmp, WHITE_SPACE); tok; tok = strtok(NULL, WHITE_SPACE)) {
+			data->name_count++;
+			if ((data->names = xrealloc(data->names,
+						    sizeof(data->names[0]) * (data->name_count))) == NULL) {
+				Nprint_err("xrealloc() failed: %s", strerror(errno));
+				return -1;
+			}
+			data->names[(data->name_count - 1)] = xstrdup(value);
+		}
+		xfree(tmp);
+	default:
+		return 1;
+	}
+}
 
 #if HANDLER_SYNTAX_2_0
 
 static const struct handler_parameter mkdir_parameters_ver2[] = {
-	{ .name = "options" },
-	{ .name = "base" },
-	{ .name = "dir" },
-	{ .name = "permissions" },
+	{ .name = "options", .private = MKDIR_OPTION },
+	{ .name = "base", .private = MKDIR_BASE },
+	{ .name = "dir", .private = OPTION_NAMES },
+	{ .name = "permissions", .private = OPTION_PERMISSIONS },
 	{ .name = NULL }
 };
 
-static int mkdir_main_ver2(const element_s * const el)
+static int mkdir_valid_data_v2(const element_s * const element)
 {
-	int status = 0;
-	int parents = option_exists("parents", el);
-	char *tok;
-	char *base;
-	char *directories;
-	char *perm;
+	struct mkdir_data *data = (struct mkdir_data *) element->handler_data;
 
-
-	if ((directories = El_mkdir_dirs(el))== NULL) {
-		Nprint_h_err("No directories specified.");
-		return -1;
+	if (data->name_count == 0) {
+		Nprint_err("<%s>: \"dir\" must be specified.", element->handler->name);
+		return 0;
 	}
 
-	base = alloc_base_dir(el);
-
-	if (change_current_dir(base)) {
-		xfree(base);
-		xfree(directories);
-		return -1;
-	}
-
-	perm = El_mkdir_perm(el);
-
-	for (tok = strtok(directories, WHITE_SPACE); tok;
-	     tok = strtok(NULL, WHITE_SPACE)) {
-		if (perm) {
-			Nprint_h("Creating directory in %s%s: %s (%s)",
-				base, parents ? " (parents)" : "", tok, perm);
-		} else {
-			Nprint_h("Creating directory in %s%s: %s",
-				base, parents ? " (parents)" : "", tok);
-		}
-
-		if (parents) {
-			status = execute_command(el, "mkdir -p %s", tok);
-		} else {
-			status = execute_command(el, "mkdir %s", tok);
-		}
-
-		if (status) {
-			Nprint_h_err("Creating %s failed.", tok);
-			break;
-		}
-
-		if (! perm) {
-			continue;
-		}
-
-		/* Change permissions. */
-		if ((status = execute_command(el, "chmod %s %s", perm, tok))) {
-			Nprint_h_err("Changing permissions failed.");
-			break;
-		}
-	}
-
-	xfree(base);
-	xfree(directories);
-	xfree(perm);
-	
-	return status;
+	return 1;
 }
 
 #endif /* HANDLER_SYNTAX_2_0 */
 
-
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
 static const struct handler_parameter mkdir_parameters_v3[] = {
-	{ .name = "option" },
-	{ .name = "name" },
-	{ .name = "permissions" },
+	{ .name = "option", .private = MKDIR_OPTION },
+	{ .name = "name", .private = MKDIR_NAME },
+	{ .name = "permissions", .private = MKDIR_PERMISSIONS },
 	{ .name = NULL }
 };
 
 static const struct handler_attribute mkdir_attributes_v3[] = {
-	{ .name = "base" },
+	{ .name = "base", .private = MKDIR_BASE },
 	{ .name = NULL }
 };
 
-static int mkdir_main_ver3(const element_s * const el)
+static int mkdir_valid_data_v3(const element_s * const element)
 {
-	int options[1], parents;
-	int status = 0;
-	char *perm;
-	element_s *p;
+	struct mkdir_data *data = (struct mkdir_data *) element->handler_data;
 
-	if (change_to_base_dir(el, attr_value("base", el), 1))
-		return -1;
-
-	check_options(1, options, "parents", el);
-	parents = options[0];
-
-	if ((first_param("name", el)) == NULL) {
-		Nprint_h_err("No directories specified.");
-		return -1;
+	if (data->name_count == 0) {
+		Nprint_err("<%s>: <name> must be specified.", element->handler->name);
+		return 0;
 	}
 
-	perm = alloc_trimmed_param_value("permissions", el);
-
-	for (p = first_param("name", el); p; p = next_param(p)) {
-		char *dir;
-		char *command, *message;
-
-
-		if ((dir = alloc_trimmed_str(p->content)) == NULL) {
-			Nprint_h_warn("Directory name empty, ignoring.");
-			continue;
-		}
-
-		command = xstrdup("mkdir ");
-		message = xstrdup("Creating directory");
-
-		if (parents) {
-			append_str(&command, " -p ");
-			append_str(&message, " (parents)");
-		}
-
-		append_str(&command, dir);
-
-		append_str(&message, ": ");
-		append_str(&message, dir);
-
-		if (perm) {
-			append_str(&message, " (");
-			append_str(&message, perm);
-			append_str(&message, ")");
-		}
-		
-		Nprint_h("%s", message);
-
-		if ((status = execute_command(el, "%s", command))) {
-			Nprint_h_err("Creating %s failed.", dir);
-			xfree(dir);
-			xfree(command);
-			xfree(message);
-			break;
-		}
-
-		if (perm) {
-			/* Change permissions. */
-			if ((status = execute_command(el, "chmod %s %s",
-			perm, dir))) {
-				Nprint_h_err("Changing permissions failed.");
-				xfree(dir);
-				xfree(command);
-				xfree(message);
-				break;
-			}
-		}
-
-		xfree(dir);
-		xfree(command);
-		xfree(message);
-	}
-
-	xfree(perm);
-	
-	return status;
+	return 1;
 }
 
 #endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
 
+static int mkdir_main(const element_s * const element)
+{
+	struct mkdir_data *data = (struct mkdir_data *) element->handler_data;
+	int status = 0;
+	int i;
+
+	if (change_to_base_dir(element, data->base, 1))
+		return -1;
+
+	for (i = 0; i < data->name_count; i++) {
+		if (data->permissions) {
+			Nprint_h("Creating directory %s%s: (%s)",
+				 data->names[i], data->parents ? " (parents)" : "",
+				 data->permissions);
+		} else {
+			Nprint_h("Creating directory %s%s",
+				 data->names[i], data->parents ? " (parents)" : "");
+		}
+
+		status = execute_command(element, "mkdir %s %s",
+					 data->parents ? "-p" : "", data->names[i]);
+
+		if (status) {
+			Nprint_h_err("Creation failed.");
+			break;
+		}
+
+		if (data->permissions) {
+			/* Change permissions. */
+			if ((status = execute_command(element, "chmod %s %s",
+						      data->permissions,
+						      data->names[i]))) {
+				Nprint_h_err("Changing permissions failed.");
+				break;
+			}
+		}
+	}
+
+	return status;
+}
 
 /*
  * Handlers' information.
@@ -231,9 +268,13 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Make directories",
 		.syntax_version = "2.0",
 		.parameters = mkdir_parameters_ver2,
-		.main = mkdir_main_ver2,
+		.main = mkdir_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = mkdir_setup,
+		.free = mkdir_free,
+		.parameter = mkdir_parameter,
+		.valid_data = mkdir_valid_data_v2,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -243,9 +284,14 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.0",
 		.parameters = mkdir_parameters_v3,
 		.attributes = mkdir_attributes_v3,
-		.main = mkdir_main_ver3,
+		.main = mkdir_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = mkdir_setup,
+		.free = mkdir_free,
+		.parameter = mkdir_parameter,
+		.attribute = mkdir_attribute,
+		.valid_data = mkdir_valid_data_v3,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -255,9 +301,14 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.1",
 		.parameters = mkdir_parameters_v3,
 		.attributes = mkdir_attributes_v3,
-		.main = mkdir_main_ver3,
+		.main = mkdir_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = mkdir_setup,
+		.free = mkdir_free,
+		.parameter = mkdir_parameter,
+		.attribute = mkdir_attribute,
+		.valid_data = mkdir_valid_data_v3,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -267,10 +318,15 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.2",
 		.parameters = mkdir_parameters_v3,
 		.attributes = mkdir_attributes_v3,
-		.main = mkdir_main_ver3,
+		.main = mkdir_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
 		.alternate_shell = 1,
+		.setup = mkdir_setup,
+		.free = mkdir_free,
+		.parameter = mkdir_parameter,
+		.attribute = mkdir_attribute,
+		.valid_data = mkdir_valid_data_v3,
 	},
 #endif
 	{

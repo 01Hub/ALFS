@@ -22,10 +22,13 @@
  */
 
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
 #include <errno.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -36,102 +39,140 @@
 
 #include "handlers.h"
 #include "utility.h"
-#include "parser.h"
 #include "nprint.h"
+#include "parser.h"
 #include "backend.h"
+#include "options.h"
 
+enum {
+	CONFIGURE_BASE,
+	CONFIGURE_PARAM,
+	CONFIGURE_PREFIX,
+};
+
+struct configure_data {
+	char *base;
+	char *param;
+	int param_seen;
+	char *prefix;
+	int prefix_seen;
+};
+
+static int configure_setup(element_s * const element)
+{
+	struct configure_data *data;
+
+	if ((data = xmalloc(sizeof(struct configure_data))) == NULL)
+		return -1;
+
+	data->param = xstrdup(" ");
+	data->param_seen = 0;
+	data->prefix = xstrdup("");
+	data->prefix_seen = 0;
+	data->base = NULL;
+	element->handler_data = data;
+
+	return 0;
+}
+
+static void configure_free(const element_s * const element)
+{
+	struct configure_data *data = (struct configure_data *) element->handler_data;
+
+	xfree(data->base);
+	xfree(data->prefix);
+	xfree(data->param);
+	xfree(data);
+}
+
+static int configure_attribute(const element_s * const element,
+			       const struct handler_attribute * const attr,
+			       const char * const value)
+{
+	struct configure_data *data = (struct configure_data *) element->handler_data;
+
+	switch (attr->private) {
+	case CONFIGURE_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify \"base\" more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int configure_parameter(const element_s * const element,
+			       const struct handler_parameter * const param,
+			       const char * const value)
+{
+	struct configure_data *data = (struct configure_data *) element->handler_data;
+
+	switch (param->private) {
+	case CONFIGURE_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify <base> more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	case CONFIGURE_PREFIX:
+		append_str(&data->prefix, value);
+		append_str(&data->prefix, " ");
+		data->prefix_seen = 1;
+		return 0;
+	case CONFIGURE_PARAM:
+		append_str(&data->param, value);
+		append_str(&data->param, " ");
+		data->param_seen = 1;
+		return 0;
+	default:
+		return 1;
+	}
+}
 
 #if HANDLER_SYNTAX_2_0
 
-static const struct handler_parameter configure_parameters_ver2[] = {
-	{ .name = "base" },
-	{ .name = "command" },
-	{ .name = "param" },
+static const struct handler_parameter configure_parameters_v2[] = {
+	{ .name = "base", .private = CONFIGURE_BASE },
+	{ .name = "param", .private = CONFIGURE_PARAM },
 	{ .name = NULL }
 };
 
-static int configure_main_ver2(const element_s * const el)
-{
-	int status;
-	char *c, *command = NULL;
-	char *base;
-       
-
-	base = alloc_base_dir(el);
-
-	if (change_current_dir(base)) {
-		xfree(base);
-		return -1;
-	}
-
-	if ((c = alloc_trimmed_param_value("command", el))) {
-		append_str(&command, c);
-	} else {
-		append_str(&command, "./configure");
-	}
-	xfree(c);
-
-	append_param_elements(&command, el);
-
-	Nprint_h("Executing in %s:", base);
-	Nprint_h("    %s", command);
-	status = execute_command(el, "%s", command);
-
-	xfree(base);
-	xfree(command);
-
-	return status;
-}
-
 #endif /* HANDLER_SYNTAX_2_0 */
-
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
 static const struct handler_parameter configure_parameters_v3[] = {
-	{ .name = "prefix" },
-	{ .name = "param" },
+	{ .name = "prefix", .private = CONFIGURE_PREFIX },
+	{ .name = "param", .private = CONFIGURE_PARAM },
 	{ .name = NULL }
 };
 
 static const struct handler_attribute configure_attributes_v3[] = {
-	{ .name = "base" },
-	{ .name = "command" },
+	{ .name = "base", .private = CONFIGURE_BASE },
 	{ .name = NULL }
 };
 
-static int configure_main_ver3(const element_s * const el)
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
+
+static int configure_main(const element_s * const element)
 {
+	struct configure_data *data = (struct configure_data *) element->handler_data;
 	int status;
-	char *c, *command = NULL;
-       
 
-	if (change_to_base_dir(el, attr_value("base", el), 1))
+	if (change_to_base_dir(element, data->base, 1))
 		return -1;
+	
+	Nprint_h("Executing system command");
+	Nprint_h("    %s configure %s", data->prefix, data->param);
 
-	command = xstrdup("");
-
-	append_prefix_elements(&command, el);
-
-	if ((c = attr_value("command", el))) {
-		append_str(&command, c);
-	} else {
-		append_str(&command, "./configure");
-	}
-
-	append_param_elements(&command, el);
-
-	Nprint_h("Executing:");
-	Nprint_h("    %s", command);
-	status = execute_command(el, "%s", command);
-
-	xfree(command);
+	status = execute_command(element, "%s configure %s", data->prefix, data->param);
 
 	return status;
 }
-
-#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
-
 
 /*
  * Handlers' information.
@@ -143,10 +184,13 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "configure",
 		.description = "Configure",
 		.syntax_version = "2.0",
-		.parameters = configure_parameters_ver2,
-		.main = configure_main_ver2,
+		.parameters = configure_parameters_v2,
+		.main = configure_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = configure_setup,
+		.free = configure_free,
+		.parameter = configure_parameter,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -156,9 +200,13 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.0",
 		.parameters = configure_parameters_v3,
 		.attributes = configure_attributes_v3,
-		.main = configure_main_ver3,
+		.main = configure_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = configure_setup,
+		.free = configure_free,
+		.parameter = configure_parameter,
+		.attribute = configure_attribute,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -168,9 +216,13 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.1",
 		.parameters = configure_parameters_v3,
 		.attributes = configure_attributes_v3,
-		.main = configure_main_ver3,
+		.main = configure_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
+		.setup = configure_setup,
+		.free = configure_free,
+		.parameter = configure_parameter,
+		.attribute = configure_attribute,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -180,10 +232,14 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.2",
 		.parameters = configure_parameters_v3,
 		.attributes = configure_attributes_v3,
-		.main = configure_main_ver3,
+		.main = configure_main,
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
 		.alternate_shell = 1,
+		.setup = configure_setup,
+		.free = configure_free,
+		.parameter = configure_parameter,
+		.attribute = configure_attribute,
 	},
 #endif
 	{

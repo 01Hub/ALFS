@@ -41,149 +41,175 @@
 #include "parser.h"
 #include "backend.h"
 
-
-#define El_owner_user(el) alloc_trimmed_param_value("user", el)
-#define El_owner_group(el) alloc_trimmed_param_value("group", el)
-#define El_owner_targets(el) alloc_trimmed_param_value("name", el)
-
-
-#if HANDLER_SYNTAX_2_0
-
-static const struct handler_parameter owner_parameters[] = {
-	{ .name = "options" },
-	{ .name = "name" },
-	{ .name = "base" },
-	{ .name = "user" },
-	{ .name = "group" },
-	{ .name = NULL }
+enum {
+	OWNER_OPTIONS,
+	OWNER_NAMES,
+	OWNER_BASE,
+	OWNER_USER,
+	OWNER_GROUP,
 };
 
-static int owner_main(const element_s * const el)
-{
-	int status = 0;
-	int recursive = option_exists("recursive", el);
-	char *tok;
+struct owner_data {
 	char *base;
 	char *user;
 	char *group;
-	char *targets;
-	char *command = NULL;
-	char *message = NULL;
+	int recursive;
+	int name_count;
+	char **names;
+};
 
+static const struct handler_parameter owner_parameters[] = {
+	{ .name = "options", .private = OWNER_OPTIONS },
+	{ .name = "name", .private = OWNER_NAMES },
+	{ .name = "base", .private = OWNER_BASE },
+	{ .name = "user", .private = OWNER_USER },
+	{ .name = "group", .private = OWNER_GROUP },
+	{ .name = NULL }
+};
 
-	user = El_owner_user(el);
-	group = El_owner_group(el);
+static int owner_setup(element_s * const element)
+{
+	struct owner_data *data;
 
-	if ((user == NULL) && (group == NULL)) {
-		Nprint_h_err("No user and/or group specified.");
-		xfree(user);
-		xfree(group);
-		return -1;
+	if ((data = xmalloc(sizeof(struct owner_data))) == NULL)
+		return 1;
+
+	data->recursive = 0;
+	data->base = NULL;
+	data->name_count = 0;
+	data->names = NULL;
+	data->user = NULL;
+	data->group = NULL;
+	element->handler_data = data;
+
+	return 0;
+};
+
+static void owner_free(const element_s * const element)
+{
+	struct owner_data *data = (struct owner_data *) element->handler_data;
+	int i;
+
+	xfree(data->base);
+	xfree(data->user);
+	xfree(data->group);
+	if (data->name_count > 0) {
+		for (i = 0; i < data->name_count; i++)
+			xfree(data->names[i]);
+		xfree(data->names);
 	}
-
-	if ((targets = El_owner_targets(el)) == NULL) {
-		Nprint_h_err("No targets specified.");
-		xfree(user);
-		xfree(group);
-		return -1;
-	}
-
-	base = alloc_base_dir(el);
-
-	if (change_current_dir(base)) {
-		xfree(base);
-		xfree(targets);
-		xfree(user);
-		xfree(group);
-
-		return -1;
-	}
-
-	for (tok = strtok(targets, WHITE_SPACE); tok;
-	     tok = strtok(NULL, WHITE_SPACE)) {
-		if ((user != NULL) && (group != NULL)) {
-			append_str(&command, "chown ");
-
-			append_str(&message, "Changing ownership to ");
-			append_str(&message, user);
-			append_str(&message, ":");
-			append_str(&message, group);
-			append_str(&message, " ");
-			if (recursive) {
-				append_str(&command, "-R ");
-				append_str(&message, "(recursive) ");
-			}
-			append_str(&message, "in ");
-			append_str(&message, base);
-			append_str(&message, ": ");
-			append_str(&message, tok);
-
-			append_str(&command, user);
-			append_str(&command, ":");
-			append_str(&command, group);
-		} else if (user != NULL) {
-			append_str(&command, "chown ");
-
-			append_str(&message, "Changing user ownership to ");
-			append_str(&message, user);
-			append_str(&message, " ");
-			if (recursive) {
-				append_str(&command, "-R ");
-				append_str(&message, "(recursive) ");
-			}
-			append_str(&message, "in ");
-			append_str(&message, base);
-			append_str(&message, ": ");
-			append_str(&message, tok);
-
-			append_str(&command, user);
-		} else {   /* group != NULL */
-			append_str(&command, "chgrp ");
-
-			append_str(&message, "Changing group ownership to ");
-			append_str(&message, group);
-			append_str(&message, " ");
-			if (recursive) {
-				append_str(&command, "-R ");
-				append_str(&message, "(recursive) ");
-			}
-			append_str(&message, "in ");
-			append_str(&message, base);
-			append_str(&message, ": ");
-			append_str(&message, tok);
-
-			append_str(&command, group);
-		}
-
-		append_str(&command, " ");
-		append_str(&command, tok);
-
-		Nprint_h("%s", message);
-
-		if ((status = execute_command(el, command))) {
-			Nprint_h_err("Changing ownership failed.");
-			break;
-		}
-
-		xfree(command);
-		command = NULL;
-		xfree(message);
-		message = NULL;
-	}
-
-	xfree(command);
-	xfree(message);
-
-	xfree(base);
-	xfree(targets);
-	xfree(user);
-	xfree(group);
-	
-	return status;
+	xfree(data);
 }
 
-#endif /* HANDLER_SYNTAX_2_0 */
+static int owner_parameter(const element_s * const element,
+			   const struct handler_parameter * const param,
+			   const char * const value)
+{
+	struct owner_data *data = (struct owner_data *) element->handler_data;
+	char *tmp;
+	char *tok;
 
+	switch (param->private) {
+	case OWNER_BASE:
+		if (data->base) {
+			Nprint_err("<%s>: cannot specify <base> more than once.", element->handler->name);
+			return 1;
+		}
+		data->base = xstrdup(value);
+		return 0;
+	case OWNER_USER:
+		if (data->user) {
+			Nprint_err("<%s>: cannot specify <user> more than once.", element->handler->name);
+			return 1;
+		}
+		data->user = xstrdup(value);
+		return 0;
+	case OWNER_GROUP:
+		if (data->group) {
+			Nprint_err("<%s>: cannot specify <group> more than once.", element->handler->name);
+			return 1;
+		}
+		data->group = xstrdup(value);
+		return 0;
+	case OWNER_OPTION:
+		if (!strcmp("recursive", value)) {
+			data->recursive = 1;
+			return 0;
+		}
+		Nprint_err("<%s>: invalid option (%s) ignored", element->handler->name, value);
+		return 1;
+	case OWNER_NAMES:
+		tmp = xstrdup(value);
+		for (tok = strtok(tmp, WHITE_SPACE); tok; tok = strtok(NULL, WHITE_SPACE)) {
+			data->name_count++;
+			if ((data->names = xrealloc(data->names,
+						    sizeof(data->names[0]) * (data->name_count))) == NULL) {
+				Nprint_err("xrealloc() failed: %s", strerror(errno));
+				return -1;
+			}
+			data->names[(data->name_count - 1)] = xstrdup(value);
+		}
+		xfree(tmp);
+	default:
+		return 1;
+	}
+}
+
+static int owner_valid_data(const element_s * const element)
+{
+	struct owner_data *data = (struct owner_data *) element->handler_data;
+
+	if (data->name_count == 0) {
+		Nprint_err("<%s>: <name> must be specified.", element->handler->name);
+		return 0;
+	}
+
+	if (!(data->user || data->group)) {
+		Nprint_err("<%s>: <user> or <group> must be specified.", element->handler->name);
+		return 0;
+	}
+
+	return 1;
+}
+
+static int owner_main(const element_s * const element)
+{
+	struct owner_data *data = (struct owner_data *) element->handler_data;
+	int status = 0;
+	int i;
+
+	if (change_to_base_dir(element, data->base, 1))
+		return -1;
+
+	if (data->user) {
+		for (i = 0; i < data->name_count; i++) {
+			Nprint_h("Changing user ownership to %s%s: %s", data->user,
+				 data->recursive ? "(recursive)" : " ", data->names[i]);
+			status = execute_command(element, "chown %s %s %s",
+						 data->recursive ? "-R" : "",
+						 data->user, data->names[i]);
+			if (status) {
+				Nprint_h_err("Changing ownership failed.");
+				break;
+			}
+		}
+	}
+
+	if ((status == 0) && data->group) {
+		for (i = 0; i < data->name_count; i++) {
+			Nprint_h("Changing group ownership to %s%s: %s", data->group,
+				 data->recursive ? "(recursive)" : " ", data->names[i]);
+			status = execute_command(element, "chgrp %s %s %s",
+						 data->recursive ? "-R" : "",
+						 data->group, data->names[i]);
+			if (status) {
+				Nprint_h_err("Changing ownership failed.");
+				break;
+			}
+		}
+	}
+	return status;
+}
 
 /*
  * Handlers' information.
@@ -200,7 +226,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
+		.priority = 0,
+		.setup = owner_setup,
+		.free = owner_free,
+		.parameter = owner_parameter,
+		.valid_data = owner_valid_data,
 	},
 #endif
 	{
