@@ -114,10 +114,12 @@ for handler in ${all_handlers}; do
     echo endif
 done
 
-for file in `find profile -type f -print`; do
-	echo EXTRA_DIST += ${file}
-done
+if test -d profile; then
+    for file in `find profile -type f -print`; do
+        echo EXTRA_DIST += ${file}
+    done	
 
-for file in `find profile -type l -print`; do
-	echo EXTRA_DIST += ${file}
-done
+    for file in `find profile -type l -print`; do
+        echo EXTRA_DIST += ${file}
+    done	
+fi
