@@ -11,7 +11,7 @@
 		</unpack>
 
 		<copy>
-		        <source>&packages_dir;/&shadow-patch;</source>
+		        <source>&packages_dir;/&shadow-pam-patch;</source>
 		        <destination>&build_dir;</destination>
 		</copy>
 	</stage>
@@ -24,7 +24,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&shadow-patch;</param>
+			<param>-i ../&shadow-pam-patch;</param>
 		</patch>
 
 		<configure>
@@ -264,6 +264,6 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&shadow-directory;</remove>
-		<remove>&build_dir;/&shadow-patch;</remove>
+		<remove>&build_dir;/&shadow-pam-patch;</remove>
 	</stage>
 </package>
