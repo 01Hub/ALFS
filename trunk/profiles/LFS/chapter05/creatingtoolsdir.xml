@@ -88,6 +88,7 @@
 			<source>&grep-package;</source>
 			<source>&groff-package;</source>
 			<source>&grub-package;</source>
+			<source>&grub-gcc34-patch;</source>
 			<source>&gzip-package;</source>
 			<source>&hotplug-package;</source>
 			<source>&hotplug-bogus-deps-patch;</source>
@@ -130,6 +131,7 @@
 			<source>&sysklogd-kernel-headers-patch;</source>
 			<source>&sysklogd-signal-patch;</source>
 			<source>&sysvinit-package;</source>
+			<source>&sysvinit-proclen-patch;</source>
 			<source>&tar-package;</source>
 			<source>&tcl-package;</source>
 			<source>&texinfo-package;</source>
@@ -138,6 +140,7 @@
 			<source>&util-linux-package;</source>
 			<source>&util-linux-kernel-headers-patch;</source>
 			<source>&vim-package;</source>
+			<source>&vim-lang-package;</source>
 			<source>&zlib-package;</source>
 			<destination>&LFS;&packages_dir;</destination>
 		</copy>
