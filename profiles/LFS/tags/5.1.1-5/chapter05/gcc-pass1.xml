@@ -1,0 +1,52 @@
+<package name="gcc-pass1" version="&gcc-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&gcc-core-md5;</digest>
+			<archive>&packages_dir;/&gcc-core-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<mkdir base="&build_dir;">
+			<option>parents</option>
+			<name>gcc-build</name>
+		</mkdir>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<environment>
+				<variable name="CFLAGS" />
+				<variable name="CXXFLAGS" />
+			</environment>
+			<base>&build_dir;/gcc-build</base>
+		</stageinfo>
+
+		<configure command="../&gcc-directory;/configure">
+			<param>--prefix=/tools</param>
+			<param>--with-local-prefix=/tools</param>
+			<param>--disable-nls</param>
+			<param>--enable-shared</param>
+			<param>--enable-languages=c</param>
+		</configure>
+
+		<make>
+			<param>BOOT_LDFLAGS="-static"</param>
+			<param>bootstrap</param>
+		</make>
+
+		<make>
+			<param>install</param>
+		</make>
+
+                <link>
+			<option>force</option>
+			<target>gcc</target>
+			<name>/tools/bin/cc</name>
+		</link>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/gcc-build</remove>
+		<remove>&build_dir;/&gcc-directory;</remove>
+	</stage>
+</package>

@@ -1,0 +1,11 @@
+<!-- uncomment the following section if you wish to have your default keymap
+compiled into the kernel -->
+
+<!--
+	<execute command="loadkeys">
+		<param>-m</param>
+		<param>/usr/share/kbd/keymaps/defkeymap.map.gz</param>
+		<param> > drivers/char/defkeymap.c</param>
+	</execute>
+-->
+
