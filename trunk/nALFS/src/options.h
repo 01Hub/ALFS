@@ -22,7 +22,7 @@
  */
 
 
-#include "option_struct.h"
+#include "option-struct.h"
 
 #ifndef H_OPTIONS_
 #define H_OPTIONS_
