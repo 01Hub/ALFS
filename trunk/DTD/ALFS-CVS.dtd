@@ -146,13 +146,15 @@
 <!ATTLIST search_replace
           base           CDATA #IMPLIED>
 
+<!ELEMENT shell          (#PCDATA)>
+
 <!ELEMENT stage          (stageinfo?, (alfs | %ops;)*)>
 <!ATTLIST stage
           name           CDATA #IMPLIED>
           
 <!ELEMENT source         (#PCDATA)>
 
-<!ELEMENT stageinfo      (root?, user?, environment?, base?)>
+<!ELEMENT stageinfo      (root?, user?, environment?, base?, shell?)>
 
 <!ELEMENT target         (#PCDATA)>
 
