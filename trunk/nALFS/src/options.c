@@ -42,28 +42,45 @@
    be allocated storage in this module.
 */
 
-#define STRING_OPTION(opt_name, opt_def_value, opt_other...) \
+#define STRING_OPTION(opt_name, opt_def_value, opt_validate, \
+		      opt_post_validate) \
 		static struct option_s real_opt_##opt_name = { \
 			.name = #opt_name, \
 			.type = O_STRING, \
-			.val.str = { .def_value = opt_def_value, \
-				     ## opt_other } \
+			.val = { \
+				.str = { .value = NULL, \
+					 .def_value = opt_def_value, \
+					 .validate = opt_validate, \
+					 .post_validate = opt_post_validate } \
+				} \
 		}; \
 		STRING * const opt_##opt_name = &real_opt_##opt_name .val.str.value
-#define BOOL_OPTION(opt_name, opt_def_value, opt_other...) \
+#define BOOL_OPTION(opt_name, opt_def_value, opt_validate, \
+		    opt_post_validate) \
 		static struct option_s real_opt_##opt_name = { \
 			.name = #opt_name, \
 			.type = O_BOOL, \
-			.val.bool = { .def_value = opt_def_value, \
-				      ## opt_other } \
+			.val = { \
+				.bool = { .value = 0, \
+					  .def_value = opt_def_value, \
+					  .validate = opt_validate, \
+					  .post_validate = opt_post_validate } \
+				} \
 		}; \
 		BOOL * const opt_##opt_name = &real_opt_##opt_name .val.bool.value
-#define NUMBER_OPTION(opt_name, opt_def_value, opt_other...) \
+#define NUMBER_OPTION(opt_name, opt_def_value, opt_min_value, opt_max_value, \
+		      opt_validate, opt_post_validate) \
 		static struct option_s real_opt_##opt_name = { \
 			.name = #opt_name, \
 			.type = O_NUMBER, \
-			.val.num = { .def_value = opt_def_value, \
-				     ## opt_other } \
+			.val = { \
+				.num = { .value = 0, \
+					 .def_value = opt_def_value, \
+					 .min_value = opt_min_value, \
+					 .max_value = opt_max_value, \
+					 .validate = opt_validate, \
+					 .post_validate = opt_post_validate } \
+				} \
 		}; \
 		NUMBER * const opt_##opt_name = &real_opt_##opt_name .val.num.value
 
