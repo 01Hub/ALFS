@@ -247,8 +247,8 @@
 <!ENTITY modutils-package "modutils-&modutils-version;.tar.bz2">
 <!ENTITY modutils-directory "modutils-&modutils-version;">
 
-<!ENTITY nALFS-md5 "981775a3e2dbbcfaab9df44652992f2a">
-<!ENTITY nALFS-version "1.2.2">
+<!ENTITY nALFS-md5 "1e7bb2216cbddec8c97fc0a440216bf1">
+<!ENTITY nALFS-version "1.2.4">
 <!ENTITY nALFS-package "nALFS-&nALFS-version;.tar.bz2">
 <!ENTITY nALFS-directory "nALFS-&nALFS-version;">
 
