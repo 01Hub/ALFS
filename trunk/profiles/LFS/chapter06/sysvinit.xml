@@ -23,6 +23,12 @@
 			<base>&build_dir;/&sysvinit-directory;</base>
 		</stageinfo>
 
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&sysvinit-proclen-patch;</param>
+		</patch>
+
 		<search_replace>
 			<file>src/init.c</file>
 			<find>Sending processes</find>

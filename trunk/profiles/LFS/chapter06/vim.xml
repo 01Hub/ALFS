@@ -16,6 +16,11 @@
 			<archive>&packages_dir;/&vim-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
+		<unpack>
+			<digest>&vim-lang-md5;</digest>
+			<archive>&packages_dir;/&vim-lang-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
 	</stage>
 
 	<stage name="Installing.">
@@ -62,7 +67,7 @@
 				=set nocompatible
 				=set backspace=2
 				=syntax on
-				=set background=dark
+				="set fileencodings=ucs-bom,utf-8,your-8-bit-charset
 				=
 				=" End /etc/vimrc
 			</content>

@@ -30,6 +30,7 @@ ftp://ftp.kernel.org/pub/linux/kernel/v2.6/linux-2.6.6.tar.bz2
 ftp://ftp.pld.org.pl/software/shadow/shadow-4.0.4.1.tar.bz2
 ftp://ftp.gnu.org/gnu/m4-1.4.1.tar.gz
 ftp://ftp.vim.org/pub/vim/unix/vim-6.3.tar.bz2
+ftp://ftp.vim.org/pub/vim/extras/vim-6.3-lang.tar.gz
 ftp://ftp.win.tue.nl/pub/home/aeb/linux-local/utils/kbd/kbd-1.12.tar.gz
  ftp://gaosu.rave.org/pub/linux/lfs/packages/conglomeration/glibc/glibc-2.3.4-20040529.tar.bz2
  ftp://gaosu.rave.org/pub/linux/lfs/packages/conglomeration/gcc/gcc-3.4.1-20040601.tar.bz2
@@ -75,3 +76,5 @@ http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/sysklogd-1.4.1-kernel_h
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/sysklogd-1.4.1-signal-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/util-linux-2.12a-kernel_headers-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/udev-026-config-1.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/sysvinit-2.85-proclen-1.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/grub-0.94-gcc34-1.patch
