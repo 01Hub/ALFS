@@ -104,6 +104,9 @@
 <!ENTITY gcc-testsuite-md5 "">
 <!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
+<!ENTITY gcc-linkonce-patch-md5 "a068347f66b14f1a9f32bb66ed16d72c">
+<!ENTITY gcc-linkonce-patch "gcc-&gcc-version;-linkonce-1.patch">
+
 <!ENTITY gcc-no-fixincludes-patch-md5 "78fa00bc9f7173b9658eeb86ce9291c9">
 <!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no_fixincludes-1.patch">
 

@@ -62,6 +62,7 @@ http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/coreutils-5.2.1-suppres
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/coreutils-5.2.1-uname-2.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/expect-5.42.1-spawn-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/flex-2.5.31-debian_fixes-2.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/gcc-3.4.1-linkonce-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/gcc-3.4.1-no_fixincludes-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/gcc-3.4.1-specs-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/hotplug-2004_04_01-bogus_deps-1.patch
