@@ -123,9 +123,9 @@ network.-->
 <!-- LFS book version -->
 <!ENTITY LFS-version "SVN-unstable-4616">
 
-<!-- THE FOLLOWING TWO ENTITIES DECLARATIONS SHOULDN'T BE MOFIFIED
+<!-- THE FOLLOWING THREE ENTITY DECLARATIONS SHOULDN'T BE MODIFIED
      UNLESS YOU KNOW WHAT YOU ARE DOING
-      -->
+-->
 
 <!-- Directory (inside LFS) where all packages will be copied. -->
 <!ENTITY packages_dir "/tools/packages-&LFS-version;">
@@ -133,18 +133,22 @@ network.-->
 <!-- Directory (inside LFS) where all packages will be compiled. -->
 <!ENTITY build_dir "/tools/build">
 
+<!-- Directory (inside LFS) where all skeleton config files will be copied. -->
+<!ENTITY skeleton_dir "/tools/skeleton-&LFS-version;">
+
 <!-- gcc optimizations flags (overridden in packages known
-    to behave badly with optimizations 
-    see http://www.linuxfromscratch.org/hints/downloads/files/optimization.txt for more info
-    IF YOU DON'T KNOW WHAT THIS IS FOR, DON'T CHANGE IT
-    -->
+     to behave badly with optimizations)
+     see http://www.linuxfromscratch.org/hints/downloads/files/optimization.txt
+     for more info
+     IF YOU DON'T KNOW WHAT THIS IS FOR, DON'T CHANGE IT
+-->
 <!ENTITY gcc_optimizations "">
 
-<!-- parallel build level (make flag -j). Default is unset. For faster build times,
-	you might try setting this flag to 2-3 times the number of processors in
-	your machine. So, for example, a single processor machine, you might set this
-	entity to "-j3"
-     -->
+<!-- parallel build level (make flag -j). Default is unset. For faster build
+     times, you might try setting this flag to 2-3 times the number of
+     processors in your machine. So, for example, a single processor machine,
+     you might set this entity to "-j3"
+-->
 <!ENTITY jlevel "">
 
 <!-- gcc target triplet (used for adjusting the toolchain) -->

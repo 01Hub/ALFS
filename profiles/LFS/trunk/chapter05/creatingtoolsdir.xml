@@ -3,9 +3,11 @@
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/package.ent">
+<!ENTITY % profile_entities SYSTEM "../config/profile.ent">
 
 %general_entities;
 %package_entities;
+%profile_entities;
 ]>
 <alfs>
   <stage name="Creating the $LFS/tools Directory">
@@ -23,6 +25,7 @@
       <option>parents</option>
       <name>&LFS;&packages_dir;</name>
       <name>&LFS;&build_dir;</name>
+      <name>&LFS;&skeleton_dir;</name>
     </mkdir>
     <!--
       If you run a kernel that supports VFS bindings (2.4 or later),
@@ -134,6 +137,13 @@
         <source>&vim-security-patch;</source>
         <source>&zlib-package;</source>
         <destination>&LFS;&packages_dir;</destination>
+      </copy>
+    </stage>
+    <stage name="Copying skeleton configuration files">
+      <copy>
+        <option>recursive</option>
+        <source>&lfs-profile;/skeleton/*</source>
+	<destination>&LFS;&skeleton_dir;</destination>
       </copy>
     </stage>
   </stage>
