@@ -1,63 +1,53 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/package.ent">
 
 %general_entities;
 %package_entities;
 ]>
-
 <alfs>
-
-<package name="bash" version="&bash-version;">
-	<stage name="Unpacking">
-		<unpack>
-			<digest>&bash-md5;</digest>
-			<archive>&packages_dir;/&bash-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&bash-directory;</base>
-		</stageinfo>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&bash-wcontinued-patch;</param>
-		</patch>
-
-		<configure>
-			<param>--prefix=/tools</param>
-			<param>--without-bash-malloc</param>
-		</configure>
-
-		<make>
-			<param>&jlevel;</param>
-		</make>
-
-<!--
-		<make>
-			<param>tests</param>
-		</make>
--->
-
-		<make>
-			<param>install</param>
-		</make>
-
-		<link>
-			<option>force</option>
-			<target>bash</target>
-			<name>/tools/bin/sh</name>
-		</link>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&bash-directory;</remove>
-	</stage>
-</package>
-
+  <package name="bash" version="&bash-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&bash-md5;</digest>
+        <archive>&packages_dir;/&bash-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&bash-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&bash-wcontinued-patch;</param>
+      </patch>
+      <configure>
+        <param>--prefix=/tools</param>
+        <param>--without-bash-malloc</param>
+      </configure>
+      <make>
+        <param>&jlevel;</param>
+      </make>
+      <!--
+      <make>
+        <param>tests</param>
+      </make>
+      -->
+      <make>
+        <param>install</param>
+      </make>
+      <link>
+        <option>force</option>
+        <target>bash</target>
+        <name>/tools/bin/sh</name>
+      </link>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&bash-directory;</remove>
+    </stage>
+  </package>
 </alfs>

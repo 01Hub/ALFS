@@ -1,52 +1,44 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/package.ent">
 
 %general_entities;
 %package_entities;
 ]>
-
 <alfs>
-
-<package name="grep" version="&grep-version;">
-	<stage name="Unpacking">
-		<unpack>
-			<digest>&grep-md5;</digest>
-			<archive>&packages_dir;/&grep-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&grep-directory;</base>
-		</stageinfo>
-
-		<configure>
-			<param>--prefix=/tools</param>
-			<param>--disable-perl-regexp</param>
-			<param>--with-included-regex</param>
-		</configure>
-
-		<make>
-			<param>&jlevel;</param>
-		</make>
-
-<!--
-		<make>
-			<param>check</param>
-		</make>
--->
-
-		<make>
-			<param>install</param>
-		</make>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&grep-directory;</remove>
-	</stage>
-</package>
-
+  <package name="grep" version="&grep-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&grep-md5;</digest>
+        <archive>&packages_dir;/&grep-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&grep-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/tools</param>
+        <param>--disable-perl-regexp</param>
+        <param>--with-included-regex</param>
+      </configure>
+      <make>
+        <param>&jlevel;</param>
+      </make>
+      <!--
+      <make>
+        <param>check</param>
+      </make>
+      -->
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&grep-directory;</remove>
+    </stage>
+  </package>
 </alfs>
