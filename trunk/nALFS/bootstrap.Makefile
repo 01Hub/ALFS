@@ -29,7 +29,7 @@ noinst_LTLIBRARIES = src/ltdl/ltdl.la
 src_ltdl_ltdl_la_LDFLAGS = -module -avoid-version
 src_ltdl_ltdl_la_SOURCES = src/ltdl/ltdl.c src/ltdl/ltdl.h
 src_ltdl_ltdl_la_LIBADD = $(LIBADD_DL) 
-src_ltdl_ltdl_la_CFLAGS =
+src_ltdl_ltdl_la_CFLAGS = -w
 
 bin_PROGRAMS = src/nALFS
 bin_SCRIPTS = @NALFS_CONFIG@
