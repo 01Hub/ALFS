@@ -78,7 +78,8 @@ int get_url(const char *url, const char *destination, const char *digest,
 #ifdef HAVE_LIBCURL
 	command_status = load_url(temp_file_name, url);
 #else
-	command_status = execute_command("wget --progress=dot -O %s %s",
+	command_status = execute_command(NULL,
+					 "wget --progress=dot -O %s %s",
 					 temp_file_name, url);
 #endif
 
