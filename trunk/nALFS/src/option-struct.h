@@ -1,5 +1,5 @@
 /*
- *  option_struct.h - Structures and enums used to process program options.
+ *  option-struct.h - Structures and enums used to process program options.
  *
  *  Copyright (C) 2002
  *
