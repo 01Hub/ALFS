@@ -453,21 +453,9 @@ static void change_run_status_marks(element_s *el, run_status_e status)
 static void draw_profile_name(element_s *profile)
 {
 	int start, end;
-	char *tmp, *profile_name = NULL;
+	char *profile_name = NULL;
 
-
-	if ((tmp = strrchr(profile->handler->name, '/'))) {
-		append_str(&profile_name, ++tmp);
-	} else {
-		append_str(&profile_name, profile->handler->name);
-	}
-
-	ASSERT(profile_name != NULL);
-
-	if (profile_name == NULL) {
-		return;
-	}
-
+	profile_name = profile->handler->alloc_data(profile, HDATA_DISPLAY_NAME);
 	end = windows.max_cols - strlen(PACKAGE_STRING) - 10;
 	start = end - strlen(profile_name) - 3;
 
