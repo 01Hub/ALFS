@@ -52,52 +52,6 @@ static FILE *fp;
 static time_t time_stamp = -1;
 
 
-static INLINE struct passwd *xgetpwuid(uid_t uid)
-{
-	struct passwd *pw;
-	FILE *f;
-
-
-	if ((f = fopen("/etc/passwd", "r")) == NULL) {
-		Nprint_err("Unable to open /etc/passwd: %s",
-			strerror(errno));
-		return NULL;
-	}
-
-	while ((pw = fgetpwent(f))) {
-		if (pw->pw_uid == uid) {
-			break;
-		}
-	}
-
-	fclose(f);
-
-	return pw;
-}
-
-static INLINE struct group *xgetgrgid(gid_t gid)
-{
-	struct group *gr;
-	FILE *f;
-
-
-	if ((f = fopen("/etc/group", "r")) == NULL) {
-		Nprint_err("Unable to open /etc/group: %s",
-			strerror(errno));
-		return NULL;
-	}
-
-	while ((gr = fgetgrent(f))) {
-		if (gr->gr_gid == gid) {
-			break;
-		}
-	}
-
-	fclose(f);
-
-	return gr;
-}
-
 /* Returns:
  *  -1  Search interrupted (option turened off)
  *   1  File action failed.
