@@ -29,6 +29,18 @@
         <name>openssl</name>
       </utilizes>
       <utilizes>
+        <name>gnutls</name>
+      </utilizes>
+      <utilizes>
+        <name>libgpg-error</name>
+      </utilizes>
+      <utilizes>
+        <name>libgcrypt</name>
+      </utilizes>
+      <utilizes>
+        <name>opencdk</name>
+      </utilizes>
+      <utilizes>
         <name>linuxpam</name>
       </utilizes>
       <utilizes>
@@ -36,6 +48,18 @@
       </utilizes>
       <utilizes>
         <name>python</name>
+      </utilizes>
+      <utilizes>
+        <name>&j2sdk;</name>
+      </utilizes>
+      <utilizes>
+        <name>openslp</name>
+      </utilizes>
+      <utilizes>
+        <name>libpaper</name>
+      </utilizes>
+      <utilizes>
+        <name>valgrind</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

@@ -19,16 +19,32 @@
       </unpack>
     </stage>
     <stage name="Installing">
-    <stageinfo>
-      <base>&build_dir;/&cdparanoia-directory;</base>
-    </stageinfo>
-    <configure>
-      <param>--prefix=/usr</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>&ldconfig;</stage>
+      <stageinfo>
+        <base>&build_dir;/&cdparanoia-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&cdparanoia-includes-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&cdparanoia-gcc34-patch;</param>
+      </patch>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <permissions mode="755">
+        <file>/usr/lib/libcdda_interface.so.0.9.8</file>
+        <file>/usr/lib/libcdda_paranoia.so.0.9.8</file>
+      </permissions>
+      &ldconfig;
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&cdparanoia-directory;</remove>
     </stage>

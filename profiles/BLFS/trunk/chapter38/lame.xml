@@ -19,6 +19,15 @@
       <utilizes>
         <name>nasm</name>
       </utilizes>
+      <utilizes>
+        <name>libsndfile</name>
+      </utilizes>
+      <utilizes>
+        <name>electricfence</name>
+      </utilizes>
+      <utilizes>
+        <name>dmalloc</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

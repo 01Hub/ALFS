@@ -17,11 +17,20 @@
         <archive>&packages_dir;/&udftools-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
+      <unpack>
+        <archive>&packages_dir;/&udftools-patch-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&udftools-directory;</base>
       </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &build_dir;/&udftools-patch;</param>
+      </patch>
       <configure>
         <param>--prefix=/usr</param>
       </configure>

@@ -1,5 +1,8 @@
-ftp://ftp.berlios.de/pub/cdrecord/cdrtools-2.00.3.tar.gz
+ftp://ftp.berlios.de/pub/cdrecord/cdrtools-2.01.tar.bz2
 
-http://umn.dl.sourceforge.net/sourceforge/cdrdao/cdrdao-1.1.8.tar.gz
+http://umn.dl.sourceforge.net/sourceforge/cdrdao/cdrdao-1.1.9.tar.gz
+http://www.linuxfromscratch.org/blfs/downloads/svn/cdrdao-1.1.9-gcc34-1.patch
 
-http://umn.dl.sourceforge.net/sourceforge/linux-udf/udftools-1.0.0b2.tar.gz
+http://internap.dl.sourceforge.net/sourceforge/linux-udf/udftools-1.0.0b3.tar.gz
+http://w1.894.telia.com/~u89404340/patches/packet/2.6/packet-2.6.8-2.patch.bz2
+http://w1.894.telia.com/~u89404340/patches/packet/udftools-1.0.0b3.patch.bz2

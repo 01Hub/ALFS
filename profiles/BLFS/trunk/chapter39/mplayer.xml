@@ -14,63 +14,6 @@
   <package name="mplayer" version="&mplayer-version;">
     <packageinfo>
       <utilizes>
-        <name>&ximpl;</name>
-      </utilizes>
-      <utilizes>
-        <name>libpng</name>
-      </utilizes>
-      <utilizes>
-        <name>libjpeg</name>
-      </utilizes>
-      <utilizes>
-        <name>gtk+</name>
-      </utilizes>
-      <utilizes>
-        <name>directfb</name>
-      </utilizes>
-      <utilizes>
-        <name>svgalib</name>
-      </utilizes>
-      <utilizes>
-        <name>freetype</name>
-      </utilizes>
-      <utilizes>
-        <name>fontconfig</name>
-      </utilizes>
-      <utilizes>
-        <name>libungif</name>
-      </utilizes>
-      <utilizes>
-        <name>libogg</name>
-      </utilizes>
-      <utilizes>
-        <name>libvorbis</name>
-      </utilizes>
-      <utilizes>
-        <name>aalib</name>
-      </utilizes>
-      <utilizes>
-        <name>sdl</name>
-      </utilizes>
-      <utilizes>
-        <name>xvid</name>
-      </utilizes>
-      <utilizes>
-        <name>arts</name>
-      </utilizes>
-      <utilizes>
-        <name>alsa</name>
-      </utilizes>
-      <utilizes>
-        <name>esound</name>
-      </utilizes>
-      <utilizes>
-        <name>lzo</name>
-      </utilizes>
-      <utilizes>
-        <name>libmad</name>
-      </utilizes>
-      <utilizes>
         <name>cdparanoia</name>
       </utilizes>
       <utilizes>
@@ -80,22 +23,133 @@
         <name>libdvdread</name>
       </utilizes>
       <utilizes>
-        <name>nas</name>
-      </utilizes>
-      <utilizes>
         <name>samba</name>
       </utilizes>
       <utilizes>
-        <name>lame</name>
+        <name>libmatroska</name>
+      </utilizes>
+      <utilizes>
+        <name>dvb</name>
+      </utilizes>
+      <utilizes>
+        <name>alsa-lib</name>
+      </utilizes>
+      <utilizes>
+        <name>arts</name>
+      </utilizes>
+      <utilizes>
+        <name>esound</name>
+      </utilizes>
+      <utilizes>
+        <name>nas</name>
+      </utilizes>
+      <utilizes>
+        <name>sdl</name>
       </utilizes>
       <utilizes>
         <name>xmms</name>
       </utilizes>
       <utilizes>
-        <name>flac</name>
+        <name>polypaudio</name>
+      </utilizes>
+      <utilizes>
+        <name>bio2jack</name>
+      </utilizes>
+      <utilizes>
+        <name>jack</name>
+      </utilizes>
+      <utilizes>
+        <name>&ximpl;</name>
+      </utilizes>
+      <utilizes>
+        <name>libpng</name>
+      </utilizes>
+      <utilizes>
+        <name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+        <name>&gif-impl;</name>
+      </utilizes>
+      <utilizes>
+        <name>gtk+</name>
+      </utilizes>
+      <utilizes>
+        <name>freetype</name>
+      </utilizes>
+      <utilizes>
+        <name>fontconfig</name>
+      </utilizes>
+      <utilizes>
+        <name>aalib</name>
+      </utilizes>
+      <utilizes>
+        <name>directfb</name>
+      </utilizes>
+      <utilizes>
+        <name>svgalib</name>
+      </utilizes>
+      <utilizes>
+        <name>ggi</name>
+      </utilizes>
+      <utilizes>
+        <name>libcaca</name>
+      </utilizes>
+      <utilizes>
+        <name>ladspa</name>
+      </utilizes>
+      <utilizes>
+        <name>dxr2</name>
+      </utilizes>
+      <utilizes>
+        <name>libdxr3</name>
+      </utilizes>
+      <utilizes>
+        <name>mp1e</name>
+      </utilizes>
+      <utilizes>
+        <name>fribidi</name>
+      </utilizes>
+      <utilizes>
+        <name>enca</name>
+      </utilizes>
+      <utilizes>
+        <name>libvorbis</name>
+      </utilizes>
+      <utilizes>
+        <name>xvid</name>
+      </utilizes>
+      <utilizes>
+        <name>lzo</name>
+      </utilizes>
+      <utilizes>
+        <name>libmad</name>
+      </utilizes>
+      <utilizes>
+        <name>lame</name>
       </utilizes>
       <utilizes>
         <name>libfame</name>
+      </utilizes>
+      <utilizes>
+        <name>theora</name>
+      </utilizes>
+      <utilizes>
+        <name>tremor</name>
+      </utilizes>
+      <utilizes>
+        <name>faad2</name>
+      </utilizes>
+      <utilizes>
+        <name>divx4linux</name>
+      </utilizes>
+      <utilizes>
+        <name>toolame</name>
+      </utilizes>
+      <utilizes>
+        <name>lirccd</name>
+      </utilizes>
+      <utilizes>
+        <name>lirc</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -111,19 +165,54 @@
         </environment>
         <base>&build_dir;/&mplayer-directory;</base>
       </stageinfo>
-      <execute command="install -d /usr/lib/mplayer/codecs" />
+      <mkdir>
+        <name>/usr/lib/mplayer/codecs</name>
+      </mkdir>
       <execute command="tar xjvf &packages_dir;/&mplayer-codecs-package; -C /usr/lib/mplayer/codecs" />
+      <ownership user="root" group="root">
+        <option>recursive</option>
+        <name>/usr/lib/mplayer/codecs</name>
+      </ownership>
+      <mkdir>
+        <name>/usr/lib/mplayer/Skin</name>
+      </mkdir>
+      <execute command="tar xjvf &packages_dir;/&mplayer-skin-package; -C /usr/share/mplayer/Skin" />
+      <ownership user="root" group="root">
+        <option>recursive</option>
+        <name>/usr/share/mplayer/Skin/Blue</name>
+      </ownership>
+      <permissions mode="0755">
+        <file>/usr/share/mplayer/Skin/Blue</file>
+        <file>/usr/share/mplayer/Skin/Blue/icons</file>
+      </permissions>
+      <link type="symbolic">
+        <option>force</option>
+        <target>Blue</target>
+        <name>/usr/share/mplayer/Skin/default</name>
+      </link>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&mplayer-patch;</param>
+      </patch>
       <configure>
         <param>--prefix=/usr</param>
         <param>--confdir=/etc/mplayer</param>
         <param>--enable-largefiles</param>
-        <param>--enable-shared-pp</param>
-        <param>--with-codecsdir=/usr/lib/mplayer/codecs</param>
+        <param>--enable-menu</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+        <name>/usr/share/doc/mplayer</name>
+      </mkdir>
+      <copy>
+        <option>recursive</option>
+        <source>DOCS/*</source>
+        <destination>/usr/share/doc/mplayer</destination>
+      </copy>
       <make>
         <param>-C libavcodec/libpostproc</param>
         <param>install</param>
@@ -132,26 +221,16 @@
         <source>etc/codecs.conf</source>
         <destination>/etc/mplayer</destination>
       </copy>
-      <execute command="tar xjvf &packages_dir;/&mplayer-arial-iso-8859-1-package; -C /usr/share/mplayer/font" />
-      <link>
-        <option>force</option>
-        <target>font-arial-iso-8859-1/font-arial-&mplayer-font-size;-iso-8859-1/*</target>
-        <name>/usr/share/mplayer/font</name>
-      </link>
-      <execute command="tar xjvf &packages_dir;/&mplayer-skin-package; -C /usr/share/mplayer/Skin" />
-      <execute command="chown -R root:root /usr/share/mplayer" />
+      <execute command="tar xjvf &packages_dir;/&mplayer-font-package; -C /usr/share/mplayer/font" />
       <ownership user="root" group="root">
         <option>recursive</option>
-        <name>/usr/share/mplayer</name>
-        <name>/usr/lib/mplayer/codecs</name>
+        <file>/usr/share/mplayer/font</file>
       </ownership>
-      <textdump>
-        <file>/etc/mplayer/mplayer.conf</file>
-        <content>
-	  =gui = yes
-	  =skin = default
-	</content>
-      </textdump>
+      <link base="/usr/share/mplayer/font">
+        <option>force</option>
+        <target>font-arial-iso-8859-1/font-arial-&mplayer-font-size;-iso-8859-1/*</target>
+        <name>.</name>
+      </link>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&mplayer-directory;</remove>

@@ -1,6 +1,6 @@
 <!--************* packages for chapter 41 *************-->
 
-<!ENTITY cups-version   "1.1.20">
+<!ENTITY cups-version   "1.1.21">
 <!ENTITY cups-package   "cups-&cups-version;-source.tar.bz2">
 <!ENTITY cups-directory "cups-&cups-version;">
 
@@ -19,6 +19,6 @@
 <!ENTITY espghostscript-package   "espgs-&espghostscript-version;-source.tar.bz2">
 <!ENTITY espghostscript-directory "espgs-&espghostscript-version;">
 
-<!ENTITY gimp-print-version "4.2.6">
-<!ENTITY gimp-print-package "gimp-print-&gimp-print-version;.tar.gz">
+<!ENTITY gimp-print-version   "4.2.7">
+<!ENTITY gimp-print-package   "gimp-print-&gimp-print-version;.tar.gz">
 <!ENTITY gimp-print-directory "gimp-print-&gimp-print-version;">

@@ -16,6 +16,18 @@
       <utilizes>
         <name>cups</name>
       </utilizes>
+      <utilizes>
+        <name>foomatic</name>
+      </utilizes>
+      <utilizes>
+        <name>ijs</name>
+      </utilizes>
+      <utilizes>
+        <name>tex</name>
+      </utilizes>
+      <utilizes>
+        <name>&ghostscript-impl;</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking.">
       <unpack>
