@@ -6,13 +6,19 @@
 	<textdump>
 		<file>&lfs-user-dir;/.bash_profile</file>
 		<content>
+			=exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash
+		</content>
+	</textdump>
+
+	<textdump>
+		<file>&lfs-user-dir;/.bashrc</file>
+		<content>
 			=set +h
 			=umask 022
 			=LFS=&LFS;
 			=LC_ALL=POSIX
-			=PATH=/tools/bin:$PATH
+			=PATH=/tools/bin:/bin:/usr/bin
 			=export LFS LC_ALL PATH
-			=unset CC CXX CPP LD_LIBRARY_PATH LD_PRELOAD
 		</content>
 	</textdump>
 </stage>
