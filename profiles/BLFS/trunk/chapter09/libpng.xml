@@ -25,7 +25,7 @@
     <patch>
       <param>-N</param>
       <param>-p1</param>
-      <param>-i &packages_dir;/&libpng-link-to-proper-libs-patch;</param>
+      <param>-i &packages_dir;/&libpng-link_to_proper_libs-patch;</param>
     </patch>
     <make>
       <param>prefix=/usr</param>
@@ -37,7 +37,9 @@
       <param>prefix=/usr</param>
       <param>install</param>
       <param>-f scripts/makefile.linux</param>
-    </make>&ldconfig;</stage>
+    </make>
+    &ldconfig;
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libpng-directory;</remove>
     </stage>
