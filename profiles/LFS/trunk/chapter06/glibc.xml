@@ -15,6 +15,11 @@
         <archive>&packages_dir;/&glibc-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
+      <unpack>
+        <digest>&glibc-linuxthreads-md5;</digest>
+        <archive>&packages_dir;/&glibc-linuxthreads-package;</archive>
+        <destination>&build_dir;/&glibc-directory;</destination>
+      </unpack>
       <mkdir base="&build_dir;">
         <option>parents</option>
         <name>glibc-build</name>
