@@ -10,18 +10,57 @@
 
 <sect1>
 
-<para>Editing the guides for the &book-product; is not difficult at any
+<para>Editing the guides for &book-product; is not difficult at any
 stretch of the imagination. The biggest piece is have an understanding of
 the DocBook XML DTD. The DTD's <ulink url="http://docbook.org/">home
 page</ulink> has a lot of information on how to use it and <ulink
 url="http://docbook.org/tdg/en/html/docbook.html">a book</ulink> is also
 available.</para>
 
-<para>The books (or guides) each have their own unique design and layout.
-They all, however, share a lot of common pieces. As mentioned above, they
-are all written using the DocBook XML DTD v4.3. They all can be parsed into
-three formats: chunks-html, nochunks-html and flat-text.</para>
+<para>The &book-product; books (or guides) each have their own unique
+design and layout.  They all, however, share some common pieces.</para>
 
+<itemizedlist>
+
+<listitem><para>As mentioned above, they are all written using the
+DocBook XML DTD v4.3.</para></listitem>
+
+<listitem><para>They all can be parsed into
+three formats: chunks-html, nochunks-html and
+flat-text.</para></listitem>
+
+<listitem><para>Each has a Preface that contains: a foreward, the
+guide's organization, a &quot;Who would want to read this&quot; section
+and finally a prerequisites page.</para></listitem>
+
+<listitem><para>Each has an Introduction that contains: a welcome page,
+acknowledgements, docuement conventions, contact info and changelog.</para></listitem>
+
+</itemizedlist>
+
+<para>This is where the similarities end.  After this point, each book
+takes on the charastistics necessary for its audience.</para>
+
+<para>The books are available from the SVN repository.  See the <xref
+linkend="common-svn"/> page for instructions.  In the root of the
+guide's source tree is a <filename>README</filename> file.  It provides
+the necessary instructions to help you install the tools that you will
+need to use the makefile to parse the XML source into one of the three
+rendered editions.</para>
+
+<para><emphasis role="bold">A note on version numbers</emphasis>&nbsp;:
+The guides each have a seperate version number.  The number is split
+into two pieces.  The first piece is the major and minor version of
+&book-product; that the guide is written for.  The second piece is the
+version of the guide itself.  The version numbering scheme is set up
+this way to ensure that a reader will know that the version of the guide
+they are reading goes with the version of the package they are using.
+The version number of the ALFS DTD syntax document is special.  It is
+versioned to be the same as the version of the DTD itself.  The ALFS DTD
+is special in this regard.  &book-product; uses the DTD, but the DTD is
+&quot;implementation agnostic&quot; and keeps its own version number
+seperate from any implementation (&book-product; is one implementation
+of the ALFS DTD).</para>
 
 </sect1>
 
