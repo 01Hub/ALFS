@@ -2,16 +2,16 @@
 
 <stage name="Configuring for Network Filesystems">
 
-	<stage name="Unpack lfs-bootscripts package">
+	<stage name="Unpack blfs-bootscripts package">
 		<unpack>
-			<archive>&packages_dir;/&lfs-bootscripts-package;</archive>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Install bootscript">
 		<stageinfo>
-			<base>&build_dir;/&lfs-bootscripts-directory;</base>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
 		</stageinfo>
 
 		<make>
@@ -20,7 +20,7 @@
 	</stage>
 
 	<stage name="Clean Up">
-		<remove>&build_dir;/&lfs-bootscripts-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
 	</stage>
 
 </stage>
