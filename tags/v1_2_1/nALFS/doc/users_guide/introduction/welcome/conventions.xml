@@ -1,0 +1,45 @@
+<sect1 id="ch0-conventions" xreflabel="Conventions">
+<?dbhtml filename="conventions.html" dir="chapter00"?>
+<title>Conventions Used In This Book</title>
+
+<para>To make things easy to follow, there are a number of conventions used
+throughout the book.  Following are some examples:</para>
+
+<screen><command>./configure --prefix=/usr</command></screen>
+
+<blockquote><para>This form of text is designed to be typed in exactly as seen
+unless otherwise noted in the surrounding text.</para></blockquote>
+
+<para><filename>install-info: unknown option
+`--dir-file=/mnt/lfs/usr/info/dir'</filename></para>
+
+<blockquote><para>This form of text (fixed width text) is showing screen
+output, probably as the result of commands issued and is also used to show
+filenames such as <filename>~/.nALFSrc</filename></para></blockquote>
+
+<para><emphasis>Emphasis</emphasis></para>
+
+<blockquote><para>This form of text is used for several purposes in the
+book but mainly to emphasize important points or to give examples as to
+what to type.</para></blockquote>
+
+<para><ulink url="http://www.linuxfromscratch.org/alfs">http://www.linuxfromscratch.org/alfs</ulink></para>
+
+<blockquote><para>This form of text is used for hyperlinks, both within the
+book and to external pages such as HowTo's, download locations,
+websites, etc.</para></blockquote>
+
+<screen><userinput><command>cat &gt; $LFS/etc/group &lt;&lt; "EOF"</command>>
+	root:x:0:
+	bin:x:1:
+	......
+<command>EOF</command></userinput></screen>
+
+<blockquote><para>This type of section is used mainly when creating
+configuration files.  The first command (in bold) tells the system to create
+the file <filename>$LFS/etc/group</filename> from whatever is typed on the
+following lines until the sequence <acronym>EOF</acronym> is encountered.
+Therefore, this whole section is generally typed as seen.</para></blockquote>
+
+</sect1>
+
