@@ -23,6 +23,9 @@
         <name>tcpwrappers</name>
       </utilizes>
       <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
         <name>krb4</name>
       </utilizes>
     </packageinfo>
@@ -39,13 +42,24 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
-        <param>--libexecdir=/usr/sbin</param>
+        <param>--libexecdir=/usr/lib/lprng</param>
         <param>--sysconfdir=/etc</param>
+	<param>--enable-shared</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/lprng-&lprng-version;</name>
+      </mkdir>
+      <copy>
+	<option>recursive</option>
+	<source>DOCS/*</source>
+	<source>PrintingCookbook</source>
+	<destination>/usr/share/doc/lprng-&lprng-version;</destination>
+      </copy>
     </stage>
     <stage name="Installing bootscript and configuration">
       <stageinfo>

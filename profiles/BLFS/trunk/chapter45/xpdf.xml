@@ -31,9 +31,22 @@
         <base>&build_dir;/&xpdf-directory;</base>
       </stageinfo>
       <patch>
+	<param>-d xpdf</param>
         <param>-N</param>
         <param>-p0</param>
         <param>-i &packages_dir;/&xpdf-pl1-patch;</param>
+      </patch>
+      <patch>
+	<param>-d xpdf</param>
+        <param>-N</param>
+        <param>-p0</param>
+        <param>-i &packages_dir;/&xpdf-pl2-patch;</param>
+      </patch>
+      <patch>
+	<param>-d xpdf</param>
+        <param>-N</param>
+        <param>-p0</param>
+        <param>-i &packages_dir;/&xpdf-pl3-patch;</param>
       </patch>
       <patch>
         <param>-N</param>

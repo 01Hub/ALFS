@@ -10,6 +10,8 @@ http://www.linuxfromscratch.org/blfs/downloads/svn/gsview-4.6-lang-1.patch
 
 ftp://ftp.foolabs.com/pub/xpdf/xpdf-3.00.tar.gz
 ftp://ftp.foolabs.com/pub/xpdf/xpdf-3.00pl1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/xpdf-3.00pl1-freetype_2.1.7_hack-2.patch
+ftp://ftp.foolabs.com/pub/xpdf/xpdf-3.00pl2.patch
+ftp://ftp.foolabs.com/pub/xpdf/xpdf-3.00pl3.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/xpdf-3.00pl3-freetype_2.1.7_hack-2.patch
 
 ftp://apache.mirrors.pair.com/xml/fop/source/fop-0.20.5-src.tar.gz

@@ -74,6 +74,11 @@
 	<param>kio/kio/job.cpp</param>
 	<param>&packages_dir;/&kdelibs-kio-patch;</param>
       </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p0</param>
+	<param>-i &packages_dir;/&kdelibs-kioslave-patch;</param>
+      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>

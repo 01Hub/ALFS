@@ -2,3 +2,13 @@
 <!ENTITY autofs-version "4.1.3">
 <!ENTITY autofs-package "autofs-&autofs-version;.tar.bz2">
 <!ENTITY autofs-directory "autofs-&autofs-version;">
+
+<!ENTITY autofs-strict-patch "autofs-&autofs-version;-strict.patch">
+<!ENTITY autofs-bad-chdir-patch "autofs-&autofs-version;-bad_chdir.patch">
+<!ENTITY autofs-mtab-lock-patch "autofs-&autofs-version;-mtab_lock.patch">
+<!ENTITY autofs-non-block-ping-patch "autofs-&autofs-version;-non_block_ping.patch">
+<!ENTITY autofs-signal-race-fix-patch "autofs-&autofs-version;-signal-race-fix.patch">
+<!ENTITY autofs-sock-leak-fix-patch "autofs-&autofs-version;-sock-leak-fix.patch">
+<!ENTITY autofs-replicated-server-select-patch "autofs-&autofs-version;-replicated_server_select.patch">
+<!ENTITY autofs-multi-over-patch "autofs-&autofs-version;-multi-over.patch">
+

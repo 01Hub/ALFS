@@ -1,6 +1,6 @@
 <!ENTITY real-amp "&#38;#38;">
 <!-- book version -->
-<!ENTITY blfs-version "svn-20050204">
+<!ENTITY blfs-version "svn-20050218">
 
 <!-- directory containing the compressed packages -->
 <!ENTITY packages_dir  "/mnt/src">

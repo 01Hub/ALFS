@@ -4,7 +4,7 @@
 <!ENTITY curl-package   "curl-&curl-version;.tar.bz2">
 <!ENTITY curl-directory "curl-&curl-version;">
 
-<!ENTITY wvstreams-version   "3.75.0">
+<!ENTITY wvstreams-version   "4.0.1">
 <!ENTITY wvstreams-package   "wvstreams-&wvstreams-version;.tar.gz">
 <!ENTITY wvstreams-directory "wvstreams-&wvstreams-version;">
 

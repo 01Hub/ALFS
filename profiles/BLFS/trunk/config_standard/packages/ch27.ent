@@ -4,7 +4,7 @@
 <!ENTITY sawfish-package   "sawfish-&sawfish-version;.tar.gz">
 <!ENTITY sawfish-directory "sawfish-&sawfish-version;">
 
-<!ENTITY fluxbox-version   "0.9.10">
+<!ENTITY fluxbox-version   "0.9.12">
 <!ENTITY fluxbox-package   "fluxbox-&fluxbox-version;.tar.bz2">
 <!ENTITY fluxbox-directory "fluxbox-&fluxbox-version;">
 
