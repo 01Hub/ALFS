@@ -1,6 +1,6 @@
-<!ENTITY lfs-bootscripts-version "2.0.4">
-<!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
-<!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
+<!ENTITY blfs-bootscripts-version "2004-05-15">
+<!ENTITY blfs-bootscripts-package "blfs-bootscripts-&blfs-bootscripts-version;.tar.bz2">
+<!ENTITY blfs-bootscripts-directory "blfs-bootscripts-&blfs-bootscripts-version;">
 
 <!--************* packages for chapter 4 *************-->
 
@@ -113,15 +113,15 @@
 <!ENTITY libfam-patch     "fam-&libfam-version;-dnotify.patch">
 
 <!ENTITY libxml-version   "1.8.17">
-<!ENTITY libxml-package   "libxml-&libxml-version;.tar.gz">
+<!ENTITY libxml-package   "libxml-&libxml-version;.tar.bz2">
 <!ENTITY libxml-directory "libxml-&libxml-version;">
 
 <!ENTITY libxml2-version   "2.6.9">
-<!ENTITY libxml2-package   "libxml2-&libxml2-version;.tar.bz2">
+<!ENTITY libxml2-package   "libxml2-&libxml2-version;.tar.gz">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
 <!ENTITY libxslt-version   "1.1.6">
-<!ENTITY libxslt-package   "libxslt-&libxslt-version;.tar.bz2">
+<!ENTITY libxslt-package   "libxslt-&libxslt-version;.tar.gz">
 <!ENTITY libxslt-directory "libxslt-&libxslt-version;">
 
 <!ENTITY readline-version   "4.3">
@@ -148,8 +148,6 @@
 <!ENTITY expat-package   "expat-&expat-version;.tar.gz">
 <!ENTITY expat-directory "expat-&expat-version;">
 
-<!ENTITY expat-patch     "expat-1.95.6-fix-declaration-order.patch">
-
 <!ENTITY libesmtp-version   "1.0.2">
 <!ENTITY libesmtp-package   "libesmtp-&libesmtp-version;.tar.bz2">
 <!ENTITY libesmtp-directory "libesmtp-&libesmtp-version;">
@@ -157,6 +155,12 @@
 <!ENTITY aspell-version   "0.50.5">
 <!ENTITY aspell-package   "aspell-&aspell-version;.tar.gz">
 <!ENTITY aspell-directory "aspell-&aspell-version;">
+
+<!--these should be customized to your language-->
+<!ENTITY aspell-dict-version "0.51-1">
+<!ENTITY aspell-dict-lang "en">
+<!ENTITY aspell-dict-package "aspell-&aspell-dict-lang;-&aspell-dict-version;.tar.bz2">
+<!ENTITY aspell-dict-directory "aspell-&aspell-dict-lang;-&aspell-dict-version;">
 
 <!ENTITY ispell-version   "3.2.06.epa7">
 <!ENTITY ispell-package   "ispell-&ispell-version;.tar.bz2">
@@ -178,7 +182,7 @@
 <!ENTITY lzo-package       "lzo-&lzo-version;.tar.gz">
 <!ENTITY lzo-directory     "lzo-&lzo-version;">
 
-<!ENTITY libpcap-version    "0.8.1">
+<!ENTITY libpcap-version    "0.8.3">
 <!ENTITY libpcap-package    "libpcap-&libpcap-version;.tar.gz">
 <!ENTITY libpcap-directory  "libpcap-&libpcap-version;">
 

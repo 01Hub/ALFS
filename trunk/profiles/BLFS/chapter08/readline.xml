@@ -1,9 +1,5 @@
 <package name="readline" version="&readline-version;">
 
-        <packageinfo>
-                <requires><name>libxml2</name></requires>
-        </packageinfo>
-
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&readline-package;</archive>

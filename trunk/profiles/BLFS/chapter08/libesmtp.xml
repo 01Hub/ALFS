@@ -1,8 +1,8 @@
 <package name="libesmtp" version="&libesmtp-version;">
-
-        <packageinfo>
-                <requires><name>libxml2</name></requires>
-        </packageinfo>
+	
+	<packageinfo>
+		<utilizes><name>openssl</name></utilizes>
+	</packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>

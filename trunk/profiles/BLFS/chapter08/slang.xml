@@ -35,7 +35,7 @@
 		</make>
 
 		<permissions mode="755">
-		        <name>/usr/lib/libslang.so.1.4.9</name>
+		        <name>/usr/lib/libslang.so.&slang-version;</name>
 		</permissions>
 
 		<execute command="/sbin/ldconfig" />

@@ -1,10 +1,10 @@
 <package name="libfam" version="&libfam-version;">
 
-    <packageinfo>
-        <requires>
-	    <name>portmap</name>
-	</requires>
-    </packageinfo>
+   	<packageinfo>
+        	<requires>
+	    		<name>portmap</name>
+		</requires>
+	</packageinfo>
 
 
 	<stage name="Unpacking a package.">
@@ -31,10 +31,7 @@
 			<param>-i ../&libfam-patch;</param>
 		</patch>
 
-		<execute command="libtoolize --force" />
-		<execute command="aclocal" />
-		<execute command="automake --add-missing" />
-		<execute command="autoconf" />
+		<execute command="autoreconf -f -i" />
 
 		<configure>
 			<param>--prefix=/usr</param>
