@@ -23,9 +23,6 @@
       <name>db</name>
     </requires>
     <utilizes>
-      <name>readline</name>
-    </utilizes>
-    <utilizes>
       <name>linuxpam</name>
     </utilizes>
     <utilizes>
@@ -112,8 +109,6 @@
       <source>libroken.so.16</source>
       <source>libroken.so.16.0.3</source>
       <source>libcrypto.so.0.9.7</source>
-      <source>libcom_err.so.2</source>
-      <source>libcom_err.so.2.1</source>
       <source>libdb-4.2.so</source>
       <destination>/lib</destination>
     </move>
@@ -130,8 +125,6 @@
       <target>../../lib/libroken.so.16</target>
       <target>../../lib/libroken.so.16.0.3</target>
       <target>../../lib/libcrypto.so.0.9.7</target>
-      <target>../../lib/libcom_err.so.2</target>
-      <target>../../lib/libcom_err.so.2.1</target>
       <target>../../lib/libdb-4.2.so</target>
       <name>/usr/lib</name>
     </link>

@@ -48,10 +48,10 @@
       <make>
         <param>install</param>
       </make>
-      <move>
-        <source>/lib/libpam.a</source>
-        <source>/lib/libpam_misc.a</source>
-        <source>/lib/libpamc.a</source>
+      <move base="/lib">
+        <source>libpam.a</source>
+        <source>libpam_misc.a</source>
+        <source>libpamc.a</source>
         <destination>/usr/lib</destination>
       </move>
       <link>
