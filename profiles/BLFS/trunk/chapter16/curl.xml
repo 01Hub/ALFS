@@ -61,7 +61,19 @@
       <make>
         <param>install</param>
       </make>
-<!-- We still need to add something here. See bug 228.-->
+      <execute command="find">
+        <param>docs -name "Makefile*"</param>
+        <param>-o -name "*.1"</param>
+        <param>-o -name "*.3"</param>
+        <param>| xargs rm</param>
+      </execute>
+      <mkdir>
+        <name>/usr/share/doc/curl-&curl-version;</name>
+      </mkdir>
+      <copy>
+        <source>docs/*</source>
+        <destination>/usr/share/doc/curl-&curl-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&curl-directory;</remove>
