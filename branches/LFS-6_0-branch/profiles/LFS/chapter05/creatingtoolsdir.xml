@@ -109,6 +109,7 @@
 			<source>&shadow-package;</source>
 			<source>&sysklogd-package;</source>
 			<source>&sysklogd-kernel-headers-patch;</source>
+			<source>&sysklogd-signal-patch;</source>
 			<source>&sysvinit-package;</source>
 			<source>&tar-package;</source>
 			<source>&tcl-package;</source>
