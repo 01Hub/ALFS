@@ -1,6 +1,6 @@
 CFLAGS=-I. -Ilibalfs
 
-BIN=moongoo
+BIN=main
 OBJS=build.o main.o plugin.o url.o
 
 ifeq ($(OPTS),)
