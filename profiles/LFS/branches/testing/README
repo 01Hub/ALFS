@@ -11,9 +11,9 @@ configurations the profile could be used to generate.
 To use the profile you should :-
 
 1) If you downloaded the LFS packages seperately you should copy 
-   the config_seperate directory to a directory named config :-
+   the config_separate directory to a directory named config :-
 
-  	cp -r config_seperate config
+  	cp -r config_separate config
 	
 or
 
