@@ -49,7 +49,7 @@ static const struct handler_parameter package_parameters_v2[] = {
 	{ .name = NULL }
 };
 
-static int package_main_ver2(element_s * const el)
+static int package_main_ver2(const element_s * const el)
 {
 	int i;
 
@@ -243,7 +243,7 @@ static const struct handler_attribute package_attributes_v3[] = {
 	{ .name = NULL }
 };
 
-static int package_main_ver3(element_s * const el)
+static int package_main_ver3(const element_s * const el)
 {
 	int status = 0;
 	element_s *packageinfo;

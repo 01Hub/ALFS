@@ -54,7 +54,7 @@ static const struct handler_parameter mkdir_parameters_ver2[] = {
 	{ .name = NULL }
 };
 
-static int mkdir_main_ver2(element_s * const el)
+static int mkdir_main_ver2(const element_s * const el)
 {
 	int status = 0;
 	int parents = option_exists("parents", el);
@@ -135,27 +135,21 @@ static const struct handler_attribute mkdir_attributes_v3[] = {
 	{ .name = NULL }
 };
 
-static int mkdir_main_ver3(element_s * const el)
+static int mkdir_main_ver3(const element_s * const el)
 {
 	int options[1], parents;
 	int status = 0;
-	char *base;
 	char *perm;
 	element_s *p;
 
+	if (change_to_base_dir(el, attr_value("base", el), 1))
+		return -1;
 
 	check_options(1, options, "parents", el);
 	parents = options[0];
 
 	if ((first_param("name", el)) == NULL) {
 		Nprint_h_err("No directories specified.");
-		return -1;
-	}
-
-	base = alloc_base_dir_new(el, 1);
-
-	if (change_current_dir(base)) {
-		xfree(base);
 		return -1;
 	}
 
@@ -172,8 +166,7 @@ static int mkdir_main_ver3(element_s * const el)
 		}
 
 		command = xstrdup("mkdir ");
-		message = xstrdup("Creating directory in ");
-		append_str(&message, base);
+		message = xstrdup("Creating directory");
 
 		if (parents) {
 			append_str(&command, " -p ");
@@ -218,7 +211,6 @@ static int mkdir_main_ver3(element_s * const el)
 		xfree(message);
 	}
 
-	xfree(base);
 	xfree(perm);
 	
 	return status;

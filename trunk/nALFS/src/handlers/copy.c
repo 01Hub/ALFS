@@ -54,7 +54,7 @@ static const struct handler_parameter copy_parameters_ver2[] = {
 	{ .name = NULL }
 };
 
-static int copy_main_ver2(element_s * const el)
+static int copy_main_ver2(const element_s * const el)
 {
 	int status = 0;
 	int archive = option_exists("archive",el);
@@ -146,15 +146,16 @@ static const struct handler_attribute copy_attributes_v3[] = {
 	{ .name = NULL }
 };
 
-static int copy_main_ver3(element_s * const el)
+static int copy_main_ver3(const element_s * const el)
 {
 	int options[5];
 	int status = 0;
 	char *common_command;
-	char *base;
 	char *destination;
 	element_s *p;
 
+	if (change_to_base_dir(el, attr_value("base", el), 1))
+		return -1;
 
 	if (first_param("source", el) == NULL) {
 		Nprint_h_err("No source files specified.");
@@ -186,15 +187,6 @@ static int copy_main_ver3(element_s * const el)
 		append_str(&common_command, " -R");
 	}
 
-	base = alloc_base_dir_new(el, 1);
-
-	if (change_current_dir(base)) {
-		xfree(destination);
-		xfree(common_command);
-		xfree(base);
-		return -1;
-	}
-
 	for (p = first_param("source", el); p; p = next_param(p)) {
 		char *s, *command;
 
@@ -211,7 +203,7 @@ static int copy_main_ver3(element_s * const el)
 		append_str(&command, " ");
 		append_str(&command, destination);
 
-		Nprint_h("Executing in %s:", base);
+		Nprint_h("Executing:");
 		Nprint_h("    %s", command);
 
 		status = execute_command(el, "%s", command);
@@ -227,7 +219,6 @@ static int copy_main_ver3(element_s * const el)
 
 	xfree(destination);
 	xfree(common_command);
-	xfree(base);
 	
 	return status;
 }

@@ -54,7 +54,7 @@ static const struct handler_parameter permissions_parameters_ver2[] = {
 	{ .name = NULL }
 };
 
-static int permissions_main_ver2(element_s * const el)
+static int permissions_main_ver2(const element_s * const el)
 {
 	int status = 0;
 	int recursive = option_exists("recursive", el);
@@ -147,11 +147,10 @@ static const struct handler_attribute permissions_attributes_v3[] = {
 	{ .name = NULL }
 };
 
-static int permissions_main_ver3(element_s * const el)
+static int permissions_main_ver3(const element_s * const el)
 {
 	int options[1], recursive;
 	int status = 0;
-	char *base;
 	char *mode;
 	element_s *p;
 
@@ -164,11 +163,8 @@ static int permissions_main_ver3(element_s * const el)
 		return -1;
 	}
 
-	base = alloc_base_dir_new(el, 1);
-	if (change_current_dir(base)) {
-		xfree(base);
+	if (change_to_base_dir(el, attr_value("base", el), 1))
 		return -1;
-	}
 
 	for (p = first_param("name", el); p; p = next_param(p)) {
 		char *name;
@@ -191,8 +187,6 @@ static int permissions_main_ver3(element_s * const el)
 			append_str(&message, " (recursive)");
 
 		}
-		append_str(&message, " in ");
-		append_str(&message, base);
 		append_str(&message, ": ");
 		append_str(&message, name);
 
@@ -214,8 +208,6 @@ static int permissions_main_ver3(element_s * const el)
 			break;
 	}
 
-	xfree(base);
-	
 	return status;
 }
 

@@ -58,7 +58,7 @@ static const struct handler_attribute link_attributes_v2[] = {
 	{ .name = NULL }
 };
 
-static int link_main_ver2(element_s * const el)
+static int link_main_ver2(const element_s * const el)
 {
 	int status;
 	int force = option_exists("force", el);
@@ -158,12 +158,11 @@ static const struct handler_attribute link_attributes_v3[] = {
 	{ .name = NULL }
 };
 
-static int link_main_ver3(element_s * const el)
+static int link_main_ver3(const element_s * const el)
 {
 	int options[2], force, no_dereference;
 	int status;
 	char *type;
-	char *base;
 	char *targets = NULL;
 	char *link_name;
 	char *command = NULL;
@@ -171,19 +170,15 @@ static int link_main_ver3(element_s * const el)
 	element_s *p;
 
 
+	if (change_to_base_dir(el, attr_value("base", el), 1))
+		return -1;
+
 	/* Read all <option>s. */
 	check_options(2, options, "force no-dereference", el);
 	force = options[0];
 	no_dereference = options[1];
 
 	link_name = alloc_trimmed_param_value("name", el);
-
-	base = alloc_base_dir_new(el, 1);
-	if (change_current_dir(base)) {
-		xfree(base);
-		xfree(link_name);
-		return -1;
-	}
 
 	type = attr_value("type", el);
 
@@ -197,11 +192,9 @@ static int link_main_ver3(element_s * const el)
 
 	} else {
 		Nprint_h_warn("Unknown link type (%s), using symbolic.", type);
-		append_str(&message, "Creating symbolic link in ");
+		append_str(&message, "Creating symbolic link");
 		append_str(&command, "ln -s");
 	}
-
-	append_str(&message, base);
 
 	if (force) {
 		append_str(&message, " (force)");
@@ -251,8 +244,7 @@ static int link_main_ver3(element_s * const el)
 		Nprint_h("    %s", targets);
 
 		if ((status = execute_command(el, "%s", command))) {
-			Nprint_h_err("Executing \"%s\" in %s failed.",
-				command, base);
+			Nprint_h_err("Executing \"%s\" failed.", command);
 		}
 
 	} else {
@@ -260,7 +252,6 @@ static int link_main_ver3(element_s * const el)
 		status = -1;
 	}
 
-	xfree(base);
 	xfree(link_name);
 	xfree(command);
 	xfree(message);

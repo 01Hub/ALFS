@@ -143,7 +143,7 @@ static const struct handler_attribute su_attributes[] = {
 	{ .name = NULL }
 };
 
-static int su_main(element_s * const el)
+static int su_main(const element_s * const el)
 {
 	int status;
 	pid_t su_pid, got_pid;

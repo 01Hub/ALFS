@@ -51,7 +51,7 @@ static const struct handler_attribute chroot_attributes[] = {
 	{ .name = NULL }
 };
 
-static int chroot_main(element_s * const el)
+static int chroot_main(const element_s * const el)
 {
 	int status;
 	pid_t chroot_pid, got_pid;

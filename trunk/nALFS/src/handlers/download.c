@@ -58,7 +58,7 @@ static const struct handler_parameter download_parameters[] = {
 	{ .name = NULL }
 };
 
-static int download_main(element_s * const el)
+static int download_main(const element_s * const el)
 {
 	/* status assumes failure until set otherwise */
 	int status = -1;
@@ -157,12 +157,11 @@ static const struct handler_attribute download_attributes_v3_2[] = {
 	{ .name = NULL }
 };
 
-static int download_main_3_2(element_s * const el)
+static int download_main_3_2(const element_s * const el)
 {
 	/* status assumes failure until set otherwise */
 	int status = -1;
 	char *file = NULL;
-	char *base = NULL;
 	char *digest = NULL;
 	char *digest_type = NULL;
 	struct stat file_stat;
@@ -173,20 +172,8 @@ static int download_main_3_2(element_s * const el)
 		goto free_all_and_return;
 	}
 
-	/* <base> is mandatory, we don't want to download just anywhere! */
-	if ((base = alloc_base_dir_new(el, 0)) == NULL) {
-		Nprint_h_err("<base> is missing.");
+	if (change_to_base_dir(el, attr_value("base", el), 1))
 		goto free_all_and_return;
-	}
-
-	/* changing to <base> directory */
-	if (change_current_dir(base))
-		goto free_all_and_return;
-
-	Nprint_h("downloading to %s", base);
-		
-    /* base is not needed anymore so free it */
-	xfree(base);	
 
 	alloc_element_digest(el, &digest, &digest_type);
 
@@ -240,7 +227,6 @@ static int download_main_3_2(element_s * const el)
 	xfree(digest_type);
 	xfree(digest);
 	xfree(file);
-	xfree(base);
 
 	return status;
 }

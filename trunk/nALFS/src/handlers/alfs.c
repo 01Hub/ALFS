@@ -33,9 +33,72 @@
 #include "handlers.h"
 #include "backend.h"
 #include "nprint.h"
+#include "utility.h"
 
 
-static int alfs_main(element_s * const el)
+enum alfs_attribute_types {
+	ALFS_VERSION
+};
+
+static const struct handler_attribute alfs_attributes[] = {
+	{ .name = "version", .private = ALFS_VERSION },
+        { .name = NULL }
+};
+
+struct alfs_data {
+	char *version;
+};
+
+static int alfs_setup(element_s * const element)
+{
+	struct alfs_data *data;
+
+	if ((data = xmalloc(sizeof(struct alfs_data))) == NULL)
+		return 1;
+
+	data->version = NULL;
+	element->handler_data = data;
+
+	return 0;
+};
+
+static void alfs_free(const element_s * const element)
+{
+	struct alfs_data *data = (struct alfs_data *) element->handler_data;
+
+	xfree(data->version);
+	xfree(data);
+}
+
+static int alfs_attribute(const element_s * const element,
+			  const struct handler_attribute * const attr,
+			  const char * const value)
+{
+	struct alfs_data *data = (struct alfs_data *) element->handler_data;
+
+	switch (attr->private) {
+	case ALFS_VERSION:
+		data->version = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int alfs_invalid_child(const element_s * const element,
+			      const element_s * const child)
+{
+	(void) element;
+
+	return !(child->handler->type & (HTYPE_NORMAL |
+					 HTYPE_COMMENT |
+					 HTYPE_TEXTDUMP |
+					 HTYPE_PACKAGE |
+					 HTYPE_EXECUTE |
+					 HTYPE_STAGE));
+}
+
+static int alfs_main(const element_s * const el)
 {
 	int status;
 
@@ -57,6 +120,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "2.0",
 		.main = alfs_main,
 		.type = HTYPE_NORMAL,
+		.setup = alfs_setup,
+		.free = alfs_free,
+		.attributes = alfs_attributes,
+		.attribute = alfs_attribute,
+		.invalid_child = alfs_invalid_child,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -66,6 +134,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.0",
 		.main = alfs_main,
 		.type = HTYPE_NORMAL,
+		.setup = alfs_setup,
+		.free = alfs_free,
+		.attributes = alfs_attributes,
+		.attribute = alfs_attribute,
+		.invalid_child = alfs_invalid_child,
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -75,6 +148,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.1",
 		.main = alfs_main,
 		.type = HTYPE_NORMAL,
+		.setup = alfs_setup,
+		.free = alfs_free,
+		.attributes = alfs_attributes,
+		.attribute = alfs_attribute,
+		.invalid_child = alfs_invalid_child,
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -84,7 +162,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.2",
 		.main = alfs_main,
 		.type = HTYPE_NORMAL,
-		.alternate_shell = 1,
+		.setup = alfs_setup,
+		.free = alfs_free,
+		.attributes = alfs_attributes,
+		.attribute = alfs_attribute,
+		.invalid_child = alfs_invalid_child,
 	},
 #endif
 	{

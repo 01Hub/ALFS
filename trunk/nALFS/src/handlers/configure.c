@@ -49,7 +49,7 @@ static const struct handler_parameter configure_parameters_ver2[] = {
 	{ .name = NULL }
 };
 
-static int configure_main_ver2(element_s * const el)
+static int configure_main_ver2(const element_s * const el)
 {
 	int status;
 	char *c, *command = NULL;
@@ -99,19 +99,14 @@ static const struct handler_attribute configure_attributes_v3[] = {
 	{ .name = NULL }
 };
 
-static int configure_main_ver3(element_s * const el)
+static int configure_main_ver3(const element_s * const el)
 {
 	int status;
 	char *c, *command = NULL;
-	char *base;
        
 
-	base = alloc_base_dir_new(el, 1);
-
-	if (change_current_dir(base)) {
-		xfree(base);
+	if (change_to_base_dir(el, attr_value("base", el), 1))
 		return -1;
-	}
 
 	command = xstrdup("");
 
@@ -125,11 +120,10 @@ static int configure_main_ver3(element_s * const el)
 
 	append_param_elements(&command, el);
 
-	Nprint_h("Executing in %s:", base);
+	Nprint_h("Executing:");
 	Nprint_h("    %s", command);
 	status = execute_command(el, "%s", command);
 
-	xfree(base);
 	xfree(command);
 
 	return status;

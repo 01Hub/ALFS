@@ -49,8 +49,8 @@
 #include "options.h"
 
 /* Forward declarations for cross-handler references */
-static int environment_main(element_s * const element);
-static int variable_main(element_s * const element);
+static int environment_main(const element_s * const element);
+static int variable_main(const element_s * const element);
 
 
 extern char **environ;
@@ -234,7 +234,7 @@ struct stage_data {
    the element's children
 */
 
-static int process_stage(element_s *element)
+static int process_stage(const element_s * const element)
 {
 	struct stage_data *data = (struct stage_data *) element->handler_data;
 	int status;
@@ -353,7 +353,7 @@ static int stage_invalid_child(const element_s * const element,
 					 HTYPE_STAGE));
 }
 
-static int stage_main(element_s * const element)
+static int stage_main(const element_s * const element)
 {
 	int status;
 	struct stage_data *data = (struct stage_data *) element->handler_data;
@@ -401,7 +401,7 @@ static char *stage_data(const element_s * const element,
 
 #if HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
-static int then_main(element_s * const el)
+static int then_main(const element_s * const el)
 {
 	int status;
 
@@ -420,7 +420,7 @@ static int then_main(element_s * const el)
 	return status;
 }
 
-static int else_main(element_s * const el)
+static int else_main(const element_s * const el)
 {
 	int status;
 
@@ -539,7 +539,7 @@ static int stageinfo_invalid_child(const element_s * const element,
 	return 0;
 }
 
-static int stageinfo_main(element_s * const element)
+static int stageinfo_main(const element_s * const element)
 {
 	struct stageinfo_data *data = (struct stageinfo_data *) element->handler_data;
 
@@ -604,7 +604,7 @@ static int environment_invalid_child(const element_s * const element,
 	return 0;
 }
 
-static int environment_main(element_s * const element)
+static int environment_main(const element_s * const element)
 {
 	return execute_children(element);
 }
@@ -722,7 +722,7 @@ static int variable_invalid_child(const element_s * const element,
 	return 1;
 }
 
-static int variable_main(element_s * const element)
+static int variable_main(const element_s * const element)
 {
 	struct variable_data *data = (struct variable_data *) element->handler_data;
 

@@ -66,8 +66,8 @@ struct handler_parameter {
 
 typedef char *(*handler_data_f)(const element_s * const element,
 				const handler_data_e data_requested);
-typedef int (*handler_f)(element_s * const element);
-typedef int (*handler_test)(element_s * const element, int * const result);
+typedef int (*handler_f)(const element_s * const element);
+typedef int (*handler_test)(const element_s * const element, int * const result);
 typedef int (*handler_setup)(element_s * const element);
 typedef void (*handler_free)(const element_s * const element);
 typedef int (*handler_attribute)(const element_s * const element,
@@ -144,7 +144,10 @@ char *alloc_textdump_file(element_s *el);
 char *alloc_execute_command(element_s *el);
 
 char *alloc_base_dir(element_s *el);
-char *alloc_base_dir_new(const element_s * const el, const int default_root);
+
+int change_to_base_dir(const element_s * const element, const char * const local_base, 
+		       const int default_root);
+
 char *alloc_stage_shell(const element_s * const el);
 int option_exists(const char *option, element_s *element);
 void check_options(int total, int *opts, const char *string_, element_s *el);

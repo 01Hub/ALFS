@@ -53,7 +53,7 @@ static const struct handler_parameter execute_parameters_v2[] = {
 	{ .name = NULL }
 };
 
-static int execute_main_ver2(element_s * const el)
+static int execute_main_ver2(const element_s * const el)
 {
 	int status;
 	char *base;
@@ -112,22 +112,17 @@ static const struct handler_attribute execute_attributes_v3[] = {
 	{ .name = NULL }
 };
 
-static int execute_main_ver3(element_s * const el)
+static int execute_main_ver3(const element_s * const el)
 {
 	int status;
-	char *base;
 	char *c, *command;
 
 
+	if (change_to_base_dir(el, attr_value("base", el), 1))
+		return -1;
+
 	if ((c = attr_value("command", el)) == NULL) {
 		Nprint_h_err("No command specified.");
-		return -1;
-	}
-
-	base = alloc_base_dir_new(el, 1);
-
-	if (change_current_dir(base)) {
-		xfree(base);
 		return -1;
 	}
 
@@ -139,12 +134,11 @@ static int execute_main_ver3(element_s * const el)
 
 	append_param_elements(&command, el);
 
-	Nprint_h("Executing system command in %s:", base);
+	Nprint_h("Executing system command:");
 	Nprint_h("    %s", command);
 
 	status = execute_command(el, "%s", command);
 
-	xfree(base);
 	xfree(command);
 
 	return status;
@@ -182,12 +176,14 @@ static const struct handler_attribute execute_attributes_v3_2[] = {
 	{ .name = NULL }
 };
 
-static int execute_main_ver3_2(element_s * const el)
+static int execute_main_ver3_2(const element_s * const el)
 {
 	int status = -1;
-	char *base;
 	char *c;
 	char *content = NULL;
+
+	if (change_to_base_dir(el, attr_value("base", el), 1))
+		return -1;
 
 	c = attr_value("command", el);
 	content = alloc_trimmed_param_value("content", el);
@@ -208,13 +204,6 @@ static int execute_main_ver3_2(element_s * const el)
 		return -1;
 	}
 
-	base = alloc_base_dir_new(el, 1);
-
-	if (change_current_dir(base)) {
-		xfree(base);
-		return -1;
-	}
-
 	if (c) {
 		char *command;
 
@@ -222,7 +211,7 @@ static int execute_main_ver3_2(element_s * const el)
 		append_prefix_elements(&command, el);
 		append_str(&command, c);
 		append_param_elements(&command, el);
-		Nprint_h("Executing system command in %s:", base);
+		Nprint_h("Executing system command:");
 		Nprint_h("    %s", command);
 		status = execute_command(el, "%s", command);
 		xfree(command);
@@ -247,7 +236,7 @@ static int execute_main_ver3_2(element_s * const el)
 					Nprint_h_err("Cannot make temporary script executable.");
 					Nprint_h_err("    %s (%s)", temp_file_name, strerror(errno));
 				} else {
-					Nprint_h("Executing script in %s:", base);
+					Nprint_h("Executing script");
 					args[0] = "nALFS_temp_script";
 					args[1] = NULL;
 					status = execute_direct_command(temp_file_name, args);
@@ -260,7 +249,6 @@ static int execute_main_ver3_2(element_s * const el)
 		xfree(temp_file_name);
 	}
 
-	xfree(base);
 	xfree(content);
 
 	return status;

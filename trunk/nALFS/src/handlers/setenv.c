@@ -119,7 +119,7 @@ static const struct handler_attribute setenv_attributes[] = {
 	{ .name = NULL }
 };
 
-static int setenv_main(element_s * const el)
+static int setenv_main(const element_s * const el)
 {
 	int i;
 	char *variable;

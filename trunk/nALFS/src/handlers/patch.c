@@ -50,7 +50,7 @@ static const struct handler_parameter patch_parameters_v2[] = {
 	{ .name = NULL }
 };
 
-static int patch_main_ver2(element_s * const el)
+static int patch_main_ver2(const element_s * const el)
 {
 	int status;
 	char *base;
@@ -99,30 +99,22 @@ static const struct handler_attribute patch_attributes_v3[] = {
 	{ .name = NULL }
 };
 
-// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
-
-static int patch_main_ver3(element_s * const el)
+static int patch_main_ver3(const element_s * const el)
 {
 	int status;
-	char *base;
 	char *parameters = NULL;
 	char *command;
 
+
+	if (change_to_base_dir(el, attr_value("base", el), 1))
+		return -1;
 
 	if (append_param_elements(&parameters, el) == NULL) {
 		Nprint_h_err("No patch parameters specified.");
 		return -1;
 	}
 
-	base = alloc_base_dir_new(el, 1);
-
-	if (change_current_dir(base)) {
-		xfree(base);
-		xfree(parameters);
-		return -1;
-	}
-	
-	Nprint_h("Patching in %s", base);
+	Nprint_h("Patching");
 	command = xstrdup("");
 
 	append_prefix_elements(&command, el);
@@ -144,7 +136,6 @@ static int patch_main_ver3(element_s * const el)
 	}
 	
 	xfree(command);
-	xfree(base);
 	xfree(parameters);
 
 	return status;
@@ -171,10 +162,9 @@ static const struct handler_attribute patch_attributes_v3_2[] = {
 	{ .name = NULL }
 };
 
-static int patch_main_ver3_2(element_s * const el)
+static int patch_main_ver3_2(const element_s * const el)
 {
         int status = -1;
-	char *base = NULL;
 	char *file = NULL;
 	char *command = NULL;
 	char *digest = NULL;
@@ -185,17 +175,14 @@ static int patch_main_ver3_2(element_s * const el)
 	struct stat file_stat;
 
 
+	if (change_to_base_dir(el, attr_value("base", el), 1))
+		return -1;
+
 	if ((file = alloc_trimmed_param_value("file", el)) == NULL) {
 		Nprint_h_err("File name is missing.");
 		goto free_all_and_return;
 	}
 
-	base = alloc_base_dir_new(el, 1);
-
-	if (change_current_dir(base)) {
-		goto free_all_and_return;
-	}
-	
 	alloc_element_digest(el, &digest, &digest_type);
 
 	/* Check if file exists and if not attempt to download it. */
@@ -237,8 +224,6 @@ static int patch_main_ver3_2(element_s * const el)
 			     file);
 		goto free_all_and_return;
 	}
-
-	Nprint_h("Patching in %s", base);
 
 	decompressor = alloc_decompress_command(get_compression_type(file));
 
@@ -286,7 +271,6 @@ free_all_and_return:
 	xfree(digest);
 	xfree(file);
 	xfree(command);
-	xfree(base);
 
 	return status;
 }

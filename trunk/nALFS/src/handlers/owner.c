@@ -56,7 +56,7 @@ static const struct handler_parameter owner_parameters[] = {
 	{ .name = NULL }
 };
 
-static int owner_main(element_s * const el)
+static int owner_main(const element_s * const el)
 {
 	int status = 0;
 	int recursive = option_exists("recursive", el);

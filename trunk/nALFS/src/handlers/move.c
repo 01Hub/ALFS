@@ -54,7 +54,7 @@ static const struct handler_parameter move_parameters_ver2[] = {
 	{ .name = NULL }
 };
 
-static int move_main_ver2(element_s * const el)
+static int move_main_ver2(const element_s * const el)
 {
 	int status = 0;
 	int force = option_exists("force", el);
@@ -125,14 +125,16 @@ static const struct handler_attribute move_attributes_v3[] = {
 	{ .name = NULL }
 };
 
-static int move_main_ver3(element_s * const el)
+static int move_main_ver3(const element_s * const el)
 {
 	int options[1], force;
 	int status = 0;
-	char *base;
 	char *destination;
 	element_s *p;
 
+
+	if (change_to_base_dir(el, attr_value("base", el), 1))
+		return -1;
 
 	check_options(1, options, "force", el);
 	force = options[0];
@@ -148,14 +150,6 @@ static int move_main_ver3(element_s * const el)
 		return -1;
 	}
 
-	base = alloc_base_dir_new(el, 1);
-
-	if (change_current_dir(base)) {
-		xfree(base);
-		xfree(destination);
-		return -1;
-	}
-
 	for (p = first_param("source", el); p; p = next_param(p)) {
 		char *s;
 
@@ -164,8 +158,8 @@ static int move_main_ver3(element_s * const el)
 			continue;
 		}
 
-		Nprint_h("Moving from %s to %s%s: %s",
-			base, destination, force ? " (force)" : "", s);
+		Nprint_h("Moving to %s%s: %s",
+			destination, force ? " (force)" : "", s);
 
 		if (force) {
 			status = execute_command(el, "mv -f %s %s", s, destination);
@@ -181,7 +175,6 @@ static int move_main_ver3(element_s * const el)
 		}
 	}
 
-	xfree(base);
 	xfree(destination);
 	
 	return status;

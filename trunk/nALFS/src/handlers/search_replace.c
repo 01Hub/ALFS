@@ -193,7 +193,7 @@ static const struct handler_parameter search_replace_parameters_ver2[] = {
 	{ .name = NULL }
 };
 
-static int search_replace_main_ver2(element_s * const el)
+static int search_replace_main_ver2(const element_s * const el)
 {
 	int i;
 	char *base = alloc_base_dir(el);
@@ -222,16 +222,12 @@ static const struct handler_attribute search_replace_attributes[] = {
 	{ .name = NULL }
 };
 
-static int search_replace_main_ver3(element_s * const el)
+static int search_replace_main_ver3(const element_s * const el)
 {
-	int i;
-	char *base = alloc_base_dir_new(el, 1);
+	if (change_to_base_dir(el, attr_value("base", el), 1))
+		return -1;
 
-	i = search_replace_main(el, base);
-
-	xfree(base);
-
-	return i;
+	return search_replace_main(el, ".");
 }
 
 #endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
