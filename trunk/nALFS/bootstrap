@@ -47,7 +47,7 @@ get_dtd() {
     cp ../DTD/${1}-${DTD_VERSION}.dtd doc/${1}.dtd
 }
 
-while getopts d:g:p: param; do
+while getopts hd:g:p: param; do
     case $param in
 	d)
 	    mkdir -p download
@@ -81,18 +81,17 @@ while getopts d:g:p: param; do
 	    get_profile
 	    echo done.
 	    ;;
-    esac
-done
-
-if test "${param}" = "?" -a ${OPTIND} -gt 1; then
-    cat 1>&2 <<"EOF"
+	*)
+	    cat 1>&2 <<"EOF"
 nALFS bootscript supports the following optional arguments:
     -d {version} downloads specified version of the DTD
     -g {version} downloads specified version of the guides
     -p {version} downloads specified version of the LFS profile
 EOF
-    exit 1
-fi
+	    exit 1
+	    ;;
+    esac
+done
 
 # some 'macros' for processing filename lists
 SP2NL="tr '\040' '\012'"
