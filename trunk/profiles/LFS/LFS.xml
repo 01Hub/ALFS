@@ -179,6 +179,9 @@
 
 	&c7-bootscripts;
 	&c7-setclock;
+	&c7-console;
+	&c7-inputrc;
+	&c7-bash_startup;
 	&c7-hostname;
 	&c7-hosts;
 	&c7-network;
