@@ -17,7 +17,7 @@ ftp://mirrors.usc.edu/pub/gnu/coreutils/coreutils-5.2.1.tar.bz2
 ftp://mirrors.usc.edu/pub/gnu/dejagnu/dejagnu-1.4.4.tar.gz
 ftp://mirrors.usc.edu/pub/gnu/diffutils/diffutils-2.8.1.tar.gz
 ftp://mirrors.usc.edu/pub/gnu/gawk/gawk-3.1.4.tar.bz2
-ftp://mirrors.usc.edu/pub/gnu/gcc/gcc-3.4.2/gcc-3.4.2.tar.bz2
+ftp://mirrors.usc.edu/pub/gnu/gcc/gcc-3.4.3/gcc-3.4.3.tar.bz2
 ftp://mirrors.usc.edu/pub/gnu/gettext/gettext-0.14.1.tar.gz
 ftp://mirrors.usc.edu/pub/gnu/inetutils/inetutils-1.4.2.tar.gz
 ftp://mirrors.usc.edu/pub/gnu/less/less-382.tar.gz
@@ -38,7 +38,7 @@ ftp://mirrors.usc.edu/pub/kernel/pub/linux/utils/kernel/hotplug/hotplug-2004_09_
 ftp://mirrors.usc.edu/pub/kernel/pub/linux/utils/kernel/hotplug/udev-042.tar.bz2
 ftp://mirrors.usc.edu/pub/kernel/pub/linux/kernel/v2.6/linux-2.6.9.tar.bz2
 ftp://sources.redhat.com/pub/bzip2/v102/bzip2-1.0.2.tar.gz
-ftp://sources.redhat.com/pub/glibc/snapshots/glibc-20041011.tar.bz2
+ftp://sources.redhat.com/pub/glibc/snapshots/glibc-20041108.tar.bz2
 
 http://developer.osdl.org/dev/iproute2/download/iproute2-2.6.9-041019.tar.gz
 http://distro.ibiblio.org/pub/linux/distributions/sorcerer/sources/grep/2.5.1/grep-2.5.1.tar.bz2
@@ -62,9 +62,9 @@ http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/coreutils-5.2.1-suppres
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/coreutils-5.2.1-uname-2.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/expect-5.42.1-spawn-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/flex-2.5.31-debian_fixes-2.patch
-http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/gcc-3.4.2-linkonce-1.patch
-http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/gcc-3.4.2-no_fixincludes-1.patch
-http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/gcc-3.4.2-specs-1.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/gcc-3.4.3-linkonce-1.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/gcc-3.4.3-no_fixincludes-1.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/gcc-3.4.3-specs-2.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/inetutils-1.4.2-kernel_headers-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/inetutils-1.4.2-no_server_man_pages-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/iproute2-2.6.9_041019-remove_db-1.patch
@@ -74,7 +74,6 @@ http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/perl-5.8.5-libc-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/readline-5.0-fixes-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/sysvinit-2.85-proclen-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/texinfo-4.7-segfault-1.patch
-http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/udev-035-DESTDIR-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/util-linux-2.12h-sfdisk-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/zlib-1.2.1-security-1.patch
 http://www.sethwklein.net/projects/iana-etc/downloads/iana-etc-1.02.tar.bz2
