@@ -34,6 +34,10 @@
 <!-- MIT krb 5 (mitkrb) or Heimdal (heimdal) -->
 <!ENTITY krb-impl "heimdal">
 
+<!-- Perl Version --> 
+<!-- Needed for perl modules -->
+<!ENTITY perl-version "5.8.5">
+
 <!-- Java Implementation -->
 <!-- Set so packages that utilize or depend on java will use either the binary (j2sdk-binary) or 
   source (j2sdk-source) version -->
