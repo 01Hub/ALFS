@@ -428,10 +428,18 @@ int comm_send_ctrl_msg(
 void comm_create_socket_pairs(void)
 {
 	if (socketpair(PF_UNIX, SOCK_STREAM, 0, data_sock) == -1) {
-		Fatal_error("socketpair() failed: %s", strerror(errno));
+		if (errno == EAFNOSUPPORT) {
+			Fatal_error("Your kernel does not support UNIX domain sockets.");
+		} else {
+			Fatal_error("socketpair() failed: %s", strerror(errno));
+		}
 	}
 	if (socketpair(PF_UNIX, SOCK_STREAM, 0, ctrl_sock) == -1) {
-		Fatal_error("socketpair() failed: %s", strerror(errno));
+		if (errno == EAFNOSUPPORT) {
+			Fatal_error("Your kernel does not support UNIX domain sockets.");
+		} else {
+			Fatal_error("socketpair() failed: %s", strerror(errno));
+		}
 	}
 
 	/* Non-blocking reading for our data socket. */
