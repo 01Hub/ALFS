@@ -7,7 +7,7 @@ LDLIBS+=`xml2-config --libs`
 CFLAGS+=-Wall -Werror -g3
 
 BIN=moongoo
-OBJS=alfs.o book.o util.o repl.o syn.o nalfs.o ass.o
+OBJS=alfs.o book.o util.o repl.o syn.o nalfs.o ass.o devel.o
 
 #BOOK=~/projects/alfs/book/index.xml
 BOOK=~/projects/alfs/lfs-profile/LFS.xml
@@ -51,3 +51,4 @@ book.o: book.h
 repl.o: repl.h
 nalfs.o: nalfs.h
 ass.o: ass.h
+devel.o: devel.h

@@ -37,6 +37,23 @@ char *strdog (char *str1, char *str2)
 	return ret;
 }
 
+char *strdog2 (char *str1, char *str2)
+{
+	char *ret;
+
+	if ((!str1)||(!str2))
+		return NULL;
+	
+	ret=(char *)malloc(strlen(str1)+strlen(str2)+2);
+
+	strcpy(ret, str1);
+	if (strlen(str1)>0)
+		strcat(ret, " ");
+	strcat(ret, str2);
+	free(str1);
+	return ret;
+}
+
 char *chrep (char *str, char old, char new)
 {
 	char *ret;

@@ -88,6 +88,7 @@ void resolve_entities (xmlNodePtr node);
 void foreach (xmlNodePtr node, char *str, xml_handler_t func, void *data);
 xmlNodePtr find_node (xmlNodePtr root, char *str);
 char *find_value (xmlNodePtr node, char *str);
+char *find_values (xmlNodePtr node, char *str);
 char *entity_val (char *name);
 
 char *role2str (role role);
