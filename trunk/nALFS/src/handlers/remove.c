@@ -41,9 +41,8 @@
 #include "parser.h"
 #include "backend.h"
 
-
 static const char *remove_parameters_ver[] = { NULL };
-
+static const char *remove_parameters_ver_3_2[] = { "base", "file",  NULL };
 
 #if HANDLER_SYNTAX_2_0
 
@@ -96,7 +95,7 @@ static int remove_main_ver2(element_s *el)
 #endif /* HANDLER_SYNTAX_2_0 */
 
 
-#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 
 
 static int remove_main_ver3(element_s *el)
 {
@@ -124,8 +123,56 @@ static int remove_main_ver3(element_s *el)
 	return status;
 }
 
-#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
 
+#if HANDLER_SYNTAX_3_2
+
+static int remove_main_ver3_2(element_s *el)
+{
+	int status   = 0;
+	char *name   = NULL;
+	char *base   = NULL;
+	element_s *p = NULL;
+
+	if ((first_param("file", el)) == NULL) {
+		Nprint_h_err("No file(s) specified.");
+		return -1;
+	}
+
+	base = alloc_base_dir_new(el);
+
+	if (change_current_dir(base)) {
+		xfree(base);
+		return -1;
+	}
+
+	xfree(base);
+
+	for (p = first_param("file", el); p; p = next_param(p)) {
+
+    		if ((name = alloc_trimmed_str(p->content)) == NULL) {
+            		Nprint_h_err("No file specified.");
+            		status = -1;
+            		break;
+	    	}
+        
+        	Nprint_h("Removing %s.", name);
+
+        	if ((status = execute_command("rm -fr %s", name))) {
+            		Nprint_h_err("Removing failed.");
+            		status = -1;
+            		break;
+	    	}
+
+		xfree(name);
+    	}
+
+	xfree(name);
+
+	return status;
+}
+
+#endif
 
 /*
  * Handlers' information.
@@ -176,8 +223,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "remove",
 		.description = "Remove files",
 		.syntax_version = "3.2",
-		.parameters = remove_parameters_ver,
-		.main = remove_main_ver3,
+		.parameters = remove_parameters_ver_3_2,
+		.main = remove_main_ver3_2,
 		.type = 0,
 		.alloc_data = NULL,
 		.is_action = 1,
