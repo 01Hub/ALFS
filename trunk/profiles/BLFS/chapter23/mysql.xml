@@ -3,6 +3,7 @@
         <packageinfo>
 	        <utilizes><name>readline</name></utilizes>
 	        <utilizes><name>openssl</name></utilizes>
+		<utilizes><name>tcpwrappers</name></utilizes>
 	</packageinfo>
 
 	<stage name="Unpacking a package.">

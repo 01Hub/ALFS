@@ -1,9 +1,7 @@
 <package name="vim" version="&vim-version;">
 
     <packageinfo>
-        <requires><name>xfree86</name></requires>
-	<!-- or -->
-	<!--<requires><name>xorg</name></requires>-->
+        <utilizes><name>xfree86</name></utilizes>
         <utilizes><name>gtk+2</name></utilizes>
         <utilizes><name>lesstif</name></utilizes>
 	<utilizes><name>python</name></utilizes>

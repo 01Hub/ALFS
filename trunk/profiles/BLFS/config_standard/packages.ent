@@ -1,6 +1,6 @@
-<!ENTITY blfs-bootscripts-version "2004-05-15">
+<!ENTITY blfs-bootscripts-version "5.1">
 <!ENTITY blfs-bootscripts-package "blfs-bootscripts-&blfs-bootscripts-version;.tar.bz2">
-<!ENTITY blfs-bootscripts-directory "blfs-bootscripts-&blfs-bootscripts-version;">
+<!ENTITY blfs-bootscripts-directory "blfs-bootscripts-2004-05-22">
 
 <!--************* packages for chapter 4 *************-->
 
@@ -8,7 +8,8 @@
 <!ENTITY cracklib-package   "cracklib,&cracklib-version;.tar.gz">
 <!ENTITY cracklib-directory "cracklib,&cracklib-version;">
 <!ENTITY cracklib-wordlist "allwords">
-<!ENTITY cracklib-blfs-patch "cracklib-&cracklib-version;-blfs-1.patch">
+<!ENTITY cracklib-blfs-patch "cracklib,&cracklib-version;-blfs-1.patch">
+<!ENTITY cracklib-heimdal-patch "cracklib,&cracklib-version;-heimdal-1.patch">
 
 <!ENTITY linuxpam-version   "0.77">
 <!ENTITY linuxpam-package   "Linux-PAM-&linuxpam-version;.tar.bz2">
@@ -33,8 +34,18 @@
 <!ENTITY tripwire-version "2.3.1-2">
 <!ENTITY tripwire-package "tripwire-&tripwire-version;.tar.gz">
 <!ENTITY tripwire-directory "tripwire-&tripwire-version;">
-
 <!ENTITY tripwire-gcc-patch "tripwire-&tripwire-version;-gcc3-build-fixes.patch">
+
+<!ENTITY heimdal-version "0.6.2">
+<!ENTITY heimdal-package "heimdal-&heimdal-version;.tar.gz">
+<!ENTITY heimdal-directory "heimdal-&heimdal-version;">
+<!ENTITY heimdal-fhs-patch "heimdal-&heimdal-version;-fhs-compliance-1.patch">
+<!ENTITY heimdal-cracklib-patch "heimdal-&heimdal-version;-cracklib-1.patch">
+
+<!ENTITY mitkrb-version "1.3.3">
+<!ENTITY mitkrb-package "krb5-&mitkrb-version;.tar">
+<!ENTITY mitkrb-krb5-package "krb5-&mitkrb-version;.tar.gz">
+<!ENTITY mitkrb-directory "krb5-&mitkrb-version;">
 
 <!--************* packages for chapter 5 *************-->
 
@@ -42,7 +53,7 @@
 <!ENTITY reiserfsutils-package   "reiserfsprogs-&reiserfsutils-version;.tar.gz">
 <!ENTITY reiserfsutils-directory "reiserfsprogs-&reiserfsutils-version;">
 
-<!ENTITY xfsprogs-version   "2.6.10">
+<!ENTITY xfsprogs-version   "2.6.13">
 <!ENTITY xfsprogs-package   "xfsprogs-&xfsprogs-version;.src.tar.gz">
 <!ENTITY xfsprogs-directory "xfsprogs-&xfsprogs-version;">
 
@@ -60,7 +71,7 @@
 <!ENTITY nano-package   "nano-&nano-version;.tar.gz">
 <!ENTITY nano-directory "nano-&nano-version;">
 
-<!ENTITY joe-version   "2.9.8">
+<!ENTITY joe-version   "3.0">
 <!ENTITY joe-package   "joe-&joe-version;.tar.gz">
 <!ENTITY joe-directory "joe-&joe-version;">
 
@@ -70,9 +81,9 @@
 <!ENTITY ash-package    "ash-&ash-version;.tar.gz">
 <!ENTITY ash-directory  "ash-&ash-version;">
 
-<!ENTITY ash-patch      "ash-&ash-version;-cumulative-fixes.patch">
+<!ENTITY ash-patch      "ash-&ash-version;-cumulative-fixes-1.patch">
  
-<!ENTITY tcsh-version   "6.12">
+<!ENTITY tcsh-version   "6.13">
 <!ENTITY tcsh-package   "tcsh-&tcsh-version;.00.tar.gz">
 <!ENTITY tcsh-directory "tcsh-&tcsh-version;.00">
 
@@ -121,8 +132,8 @@
 <!ENTITY readline-package   "readline-&readline-version;.tar.gz">
 <!ENTITY readline-directory "readline-&readline-version;">
 
-<!ENTITY gmp-version   "4.1.2">
-<!ENTITY gmp-package   "gmp-&gmp-version;.tar.bz2">
+<!ENTITY gmp-version   "4.1.3">
+<!ENTITY gmp-package   "gmp-&gmp-version;.tar.gz">
 <!ENTITY gmp-directory "gmp-&gmp-version;">
 
 <!ENTITY gdbm-version   "1.8.3">
@@ -133,7 +144,7 @@
 <!ENTITY glib-package   "glib-&glib-version;.tar.gz">
 <!ENTITY glib-directory "glib-&glib-version;">
 
-<!ENTITY glib2-version   "2.4.0">
+<!ENTITY glib2-version   "2.4.1">
 <!ENTITY glib2-package   "glib-&glib2-version;.tar.bz2">
 <!ENTITY glib2-directory "glib-&glib2-version;">
 
@@ -178,6 +189,10 @@
 <!ENTITY libpcap-version    "0.8.3">
 <!ENTITY libpcap-package    "libpcap-&libpcap-version;.tar.gz">
 <!ENTITY libpcap-directory  "libpcap-&libpcap-version;">
+
+<!ENTITY libusb-version "0.1.8">
+<!ENTITY libusb-package "libusb-&libusb-version;.tar.gz">
+<!ENTITY libusb-directory "libusb-&libusb-version;">
 
 <!--************* packages for chapter 9 *************-->
 
@@ -629,9 +644,11 @@
 
 <!--************* packages for chapter 23 *************-->
 
-<!ENTITY db-version   "4.1.25">
+<!ENTITY db-version   "4.2.52">
 <!ENTITY db-package   "db-&db-version;.tar.gz">
 <!ENTITY db-directory "db-&db-version;">
+<!ENTITY db-patch1 "patch.&db-version;.1">
+<!ENTITY db-patch2 "patch.&db-version;.2">
 
 <!ENTITY db3-version   "3.3.11">
 <!ENTITY db3-package   "db-&db3-version;.tar.gz">

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<package name="mitkrb" version="&mitkrb-version;">
+  <!--<packageinfo>
+    <utilizes>
+      <name>xinetd</name>
+    </utilizes>
+    <utilizes>
+      <name>linuxpam</name>
+    </utilizes>
+    <utilizes>
+      <name>openldap</name>
+    </utilizes>
+  </packageinfo>-->
+  <stage name="Unpacking.">
+    <unpack>
+      <archive>&packages_dir;/&mitkrb-directory;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+    <unpack>
+      <archive>&build_dir;/&mitkrb-krb5-package;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+    <unpack>
+      <archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+  </stage>
+  <stage name="Installing.">
+    <stageinfo>
+      <base>&build_dir;/&mitkrb-directory;</base>
+    </stageinfo>
+    <configure>
+      <param>--prefix=/usr</param>
+      <param>--sysconfdir=/etc</param>
+      <param>--datadir=/var/lib</param>
+      <param>--libexecdir=/usr/sbin</param>
+      <param>--enable-dns</param>   
+      <param>--enable-shared</param>
+      <param>--mandir=/usr/share/man</param>
+    </configure>
+    <make />
+    <make>
+      <param>install</param>
+    </make>
+    <move base="/bin">
+      <source>login</source>
+      <destination>login.shadow</destination>
+    </move>
+    <move>
+      <source>/usr/sbin/login.krb5</source>
+      <destination>/bin/login</destination>
+    </move>
+    <move base="/usr/lib">
+      <source>libkrb5.so.3*</source>
+      <source>libkrb4.so.2*</source>
+      <source>libdes425.so.3*</source>
+      <source>libk5crypto.so.3*</source>
+      <source>libcom_err.so.3*</source>
+      <destination>/lib</destination>
+    </move>
+    <link>
+      <target>../../lib/libkrb5.so</target>
+      <target>../../lib/libkrb4.so</target>
+      <target>../../lib/libdes425.so</target>
+      <target>../../lib/libk5crypto.so</target>
+      <target>../../lib/libcom_err.so</target>
+      <name>/usr/lib</name>
+    </link>
+    &ldconfig;
+    <textdump base="/etc">
+      <file>krb5.conf</file>
+      <content>
+      =# Begin /etc/krb5.conf
+      =  
+      =[libdefaults]
+      =    default_realm = &mitkrb-all-caps-domain;
+      =    encrypt = true
+      =
+      =[realms]
+      =    &mitkrb-all-caps-domain; = {
+      =        kdc = &mitkrb-hostname;
+      =        admin_server = &mitkrb-hostname;
+      =    }
+      =
+      =[domain_realm]
+      =    .&mitkrb-domain; = &mitkrb-all-caps-domain;
+      =
+      =[logging]
+      =    kdc = SYSLOG[:INFO[:AUTH]]
+      =    admin_server = SYSLOG[INFO[:AUTH]]
+      =    default = SYSLOG[[:SYS]]
+      =
+      =# End /etc/krb5.conf
+      </content>
+    </textdump>
+  </stage>
+  <stage name="Install bootscript">
+    <stageinfo>
+      <base>&build_dir;/&blfs-bootscripts-directory;</base>
+    </stageinfo>
+    <make>
+      <param>install-kerberos</param>
+    </make>
+  </stage>
+  <stage name="Cleanup.">
+    <remove>&build_dir;/&mitkrb-directory;</remove>
+    <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+  </stage>
+</package>

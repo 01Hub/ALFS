@@ -16,6 +16,8 @@
 <!ENTITY iptables  SYSTEM "./chapter04/iptables.xml">
 <!ENTITY linuxpam  SYSTEM "./chapter04/linuxpam.xml">
 <!ENTITY tripwire  SYSTEM "./chapter04/tripwire.xml">
+<!ENTITY heimdal   SYSTEM "./chapter04/heimdal.xml">
+<!ENTITY mitkrb    SYSTEM "./chapter04/mitkrb.xml">
 
 <!-- chapter 5 -->
 <!ENTITY reiserfsutils SYSTEM "./chapter05/reiserfsutils.xml">
@@ -55,6 +57,7 @@
 <!ENTITY g-wrap     SYSTEM "./chapter08/g-wrap.xml">
 <!ENTITY lzo        SYSTEM "./chapter08/lzo.xml">
 <!ENTITY libpcap    SYSTEM "./chapter08/libpcap.xml">
+<!ENTITY libusb     SYSTEM "./chapter08/libusb.xml">
 
 <!-- chapter 9 -->
 <!ENTITY libjpeg    SYSTEM "./chapter09/libjpeg.xml">
