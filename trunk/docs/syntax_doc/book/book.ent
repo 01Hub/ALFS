@@ -14,7 +14,7 @@
 <!ENTITY book-product "ALFS DTD">
 
 <!ENTITY ftp-root "ftp://ftp.linuxfromscratch.org">
-<!ENTITY http-root "http://ftp.linuxfromscratch.org">
+<!ENTITY http-root "http://www.linuxfromscratch.org">
 <!ENTITY hints-root "http://www.linuxfromscratch.org/hints">
 <!ENTITY alfs-root "http://www.linuxfromscratch.org/alfs">
 <!ENTITY nbsp " ">

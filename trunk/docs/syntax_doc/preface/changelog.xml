@@ -6,49 +6,52 @@
 
 <itemizedlist>
 
-<listitem><para>September 30th, 2003 [jwrober]: Added an alfs_dtd intro 
+<listitem><para>November 3rd, 2003 [jwrober]: Updated acknowledgements,
+conventions and general preface pages.</para></listitem>
+
+<listitem><para>September 30th, 2003 [jwrober]: Added an alfs_dtd intro
 page.</para></listitem>
 
-<listitem><para>September 26th, 2003 [jwrober]: Modified the header of each 
-page to conform with the DocBook rules that the LFS and BLFS books use (for 
+<listitem><para>September 26th, 2003 [jwrober]: Modified the header of each
+page to conform with the DocBook rules that the LFS and BLFS books use (for
 consistency).</para></listitem>
 
-<listitem><para>September 24th, 2003 [jwrober]: Removed all references to 
-nALFS, moved files to the ALFS/docs from the ALFS/nALFS/doc moudule in 
+<listitem><para>September 24th, 2003 [jwrober]: Removed all references to
+nALFS, moved files to the ALFS/docs from the ALFS/nALFS/doc moudule in
 CVS.</para></listitem>
 
-<listitem><para>September 22nd, 2003 [jwrober]: Various changes to file 
-locations and began standardizing document look and feel like the LFS and BLFS 
+<listitem><para>September 22nd, 2003 [jwrober]: Various changes to file
+locations and began standardizing document look and feel like the LFS and BLFS
 Books.</para></listitem>
 
-<listitem><para>September 18th, 2003 [vdzuba]:  Reorganized the document, now 
+<listitem><para>September 18th, 2003 [vdzuba]:  Reorganized the document, now
 split into small chunks.</para> </listitem>
 
-<listitem><para>February 20th, 2003 [vdzuba]:  Added the elements &lt;if&gt;, 
+<listitem><para>February 20th, 2003 [vdzuba]:  Added the elements &lt;if&gt;,
 &lt;then&gt; and &lt;else&gt;.</para></listitem>
 
-<listitem><para>February 5th, 2003 [vdzuba]:  Added an option to &lt;link&gt; 
+<listitem><para>February 5th, 2003 [vdzuba]:  Added an option to &lt;link&gt;
 and added element &lt;version&gt;.</para></listitem>
 
-<listitem><para>January 19th, 2003 [vdzuba]:  Upgraded to version 3.1 of the 
+<listitem><para>January 19th, 2003 [vdzuba]:  Upgraded to version 3.1 of the
 DTD.</para></listitem>
 
-<listitem><para>January 8th, 2003 [vdzuba]:  Replaced "option?" by "option*" 
+<listitem><para>January 8th, 2003 [vdzuba]:  Replaced "option?" by "option*"
 in copy.</para></listitem>
 
-<listitem><para>December 5th, 2002 [vdzuba]:  Added bash script equivalent to 
+<listitem><para>December 5th, 2002 [vdzuba]:  Added bash script equivalent to
 all examples.</para></listitem>
 
-<listitem><para>October 22nd, 2002 [vdzuba]:  Replaced "parent" with "parents" 
+<listitem><para>October 22nd, 2002 [vdzuba]:  Replaced "parent" with "parents"
 in mkdir.</para></listitem>
 
-<listitem><para>October 21st, 2002 [vdzuba]:  Added element 
+<listitem><para>October 21st, 2002 [vdzuba]:  Added element
 &lt;digest&gt;.</para></listitem>
 
-<listitem><para>October 13th, 2002 [vdzuba]:  Make attribute append of 
+<listitem><para>October 13th, 2002 [vdzuba]:  Make attribute append of
 &lt;variable&gt; optional.</para></listitem>
 
-<listitem><para>September 5th, 2002 [vdzuba]:  Added chapter with 
+<listitem><para>September 5th, 2002 [vdzuba]:  Added chapter with
 syntax.</para></listitem>
 
 <listitem><para>May 7th, 2002 [highos]:  Initial structure.</para></listitem>
