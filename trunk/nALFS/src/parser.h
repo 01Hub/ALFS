@@ -88,6 +88,8 @@ void link_element(element_s * const el, element_s * const prev);
 
 element_s *parse_profile(const char *filename);
 
+element_s *get_element_by_id(unsigned int id);
+
 element_s *get_profile_by_element(const element_s * const el);
 element_s *get_profile_by_name(const char * const name);
 

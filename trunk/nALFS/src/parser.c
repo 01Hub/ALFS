@@ -241,6 +241,18 @@ element_s *parse_profile(const char *filename)
  * Different utility funtions.
  */
 
+element_s *get_element_by_id(unsigned int id)
+{
+	element_s *el;
+
+	for (el = root_element; el; el = get_next_element(el)) {
+		if (el->id == id)
+			return el;
+	}
+
+	return NULL;
+}
+
 element_s *get_profile_by_element(const element_s * const el)
 {
 	return el->profile;
@@ -251,6 +263,7 @@ element_s *get_profile_by_name(const char * const name)
 	element_s *el;
 
 	for (el = root_element->children; el; el = el->next) {
+/* TODO: is this correct, or even necessary? */
 		if (strcmp(el->handler->name, name) == 0) {
 			return el;
 		}
