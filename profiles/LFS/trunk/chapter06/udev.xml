@@ -23,12 +23,17 @@
 			<base>&build_dir;/&udev-directory;</base>
 		</stageinfo>
 
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&udev-etcdir-patch;</param>
+		</patch>
+
 		<make>
 		  	<param>udevdir=/dev</param>
 		</make>
 
 		<make>
-		  	<param>udevdir=/dev</param>
 			<param>install</param>
 		</make>
 

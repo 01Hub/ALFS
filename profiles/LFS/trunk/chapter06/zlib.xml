@@ -23,6 +23,12 @@
 			<base>&build_dir;/&zlib-directory;</base>
 		</stageinfo>
 
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&zlib-security-patch;</param>
+		</patch>
+
 		<configure>
 			<param>--prefix=/usr</param>
 			<param>--shared</param>

@@ -37,11 +37,11 @@
 
 		<configure>
 			<param>--prefix=/usr</param>
-			<param>--disable-syslogd</param>
-			<param>--libexecdir=/usr/sbin</param>
-			<param>--disable-logger</param>
+			<param>--libexecdir=/usr/sbin</param>	
 			<param>--sysconfdir=/etc</param>
 			<param>--localstatedir=/var</param>
+			<param>--disable-logger</param>
+			<param>--disable-syslogd</param>
 			<param>--disable-whois</param>
 			<param>--disable-servers</param>
 		</configure>

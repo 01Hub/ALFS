@@ -60,7 +60,7 @@
 			<source>&autoconf-package;</source>
 			<source>&automake-package;</source>
 			<source>&bash-package;</source>
-			<source>&bash-display-wrap-patch;</source>
+			<source>&bash-fixes-patch;</source>
 			<source>&binutils-package;</source>
 			<source>&bison-package;</source>
 			<source>&bzip2-package;</source>
@@ -91,9 +91,6 @@
 			<source>&grub-package;</source>
 			<source>&gzip-package;</source>
 			<source>&hotplug-package;</source>
-			<source>&hotplug-bogus-deps-patch;</source>
-			<source>&hotplug-device-patch;</source>
-<!--			<source>&hotplug-isapnp-patch;</source> -->
 			<source>&iana-etc-package;</source>
 			<source>&inetutils-package;</source>
 			<source>&inetutils-no-man-pages-patch;</source>
@@ -125,7 +122,7 @@
 			<source>&procps-package;</source>
 			<source>&psmisc-package;</source>
 			<source>&readline-package;</source>
-			<source>&readline-display-wrap-patch;</source>
+			<source>&readline-fixes-patch;</source>
 			<source>&sed-package;</source>
 			<source>&shadow-package;</source>
 			<source>&syslog-ng-package;</source>
@@ -136,12 +133,15 @@
 			<source>&texinfo-package;</source>
 			<source>&texinfo-segfault-patch;</source>
 			<source>&udev-package;</source>
+			<source>&udev-etcdir-patch;</source>
 			<source>&udev-permissions-file;</source>
 			<source>&udev-rules-file;</source>
 			<source>&util-linux-package;</source>
+			<source>&util-linux-sfdisk-patch;</source>
 			<source>&vim-package;</source>
 			<source>&vim-lang-package;</source>
 			<source>&zlib-package;</source>
+			<source>&zlib-security-patch;</source>
 			<destination>&LFS;&packages_dir;</destination>
 		</copy>
 	</stage>
