@@ -61,7 +61,7 @@
 <!ELEMENT execute        (((param | prefix)*) | content)>
 <!ATTLIST execute
           base           CDATA #IMPLIED
-          command        CDATA #REQUIRED>
+          command        CDATA #IMPLIED>
 
 <!ELEMENT environment    (variable+)>
 
@@ -76,7 +76,7 @@
 <!ELEMENT link           (option?, target+, name)>
 <!ATTLIST link
           base           CDATA #IMPLIED
-	  type           CDATA #IMPLIED>
+	  type           (hard | symbolic) #IMPLIED>
 
 <!ELEMENT list           (item|list)+>
 <!ATTLIST list
@@ -122,7 +122,7 @@
 <!ELEMENT patch          (digest?, reference*, file, (param | prefix)*)>
 <!ATTLIST patch
           base           CDATA #IMPLIED
-          mode           CDATA #IMPLIED
+          mode           (forward | reverse) #IMPLIED
           path_strip     CDATA #IMPLIED>
 
 <!ELEMENT permissions    (option?, name*)>
@@ -161,7 +161,7 @@
 <!ELEMENT textdump       (file, content)>
 <!ATTLIST textdump
           base           CDATA #IMPLIED
-	  mode           CDATA #IMPLIED>
+	  mode           (append | overwrite) #IMPLIED>
 
 <!ELEMENT then           (stageinfo?, (alfs | %ops;)*)>
 
@@ -176,7 +176,7 @@
 <!ELEMENT variable       (#PCDATA)>
 <!ATTLIST variable
           name           CDATA #REQUIRED
-	  mode           CDATA #IMPLIED>
+	  mode           (append | prepend) #IMPLIED>
 
 <!ELEMENT version        (#PCDATA)>
 <!ATTLIST version
