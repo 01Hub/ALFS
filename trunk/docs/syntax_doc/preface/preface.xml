@@ -1,4 +1,4 @@
-<preface id="preface">
+<preface id="preface" xreflabel="Preface">
 <?dbhtml filename="preface.html" dir="preface"?>
 <title>Preface</title>
 
@@ -6,5 +6,6 @@
 &preface-audience;
 &preface-contactinfo;
 &preface-acknowledgements;
+&preface-conventions;
 
 </preface>
