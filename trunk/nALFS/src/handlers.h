@@ -51,12 +51,21 @@ typedef enum handler_data_e {
 	HDATA_SHELL = (1 << 6),
 } handler_data_e;
 
+struct handler_attribute {
+	const char * const name;
+	const int private;		/* Internal to handler. */
+	const int content_optional;
+};
+
 typedef char *(*handler_data_f)(const element_s * const element,
 				const handler_data_e data_requested);
 typedef int (*handler_f)(element_s * const element);
 typedef int (*handler_test)(element_s * const element, int * const result);
 typedef int (*handler_setup)(element_s * const element);
 typedef void (*handler_free)(const element_s * const element);
+typedef int (*handler_attribute)(const element_s * const element,
+				 const struct handler_attribute * const attr,
+				 const char * const value);
 typedef int (*handler_parse)(const element_s * const element,
 			     const char * const name,
 			     const char * const value);
@@ -71,7 +80,7 @@ typedef struct handler_info_s {
 	const char *description;	/* Short description. */
 	const char *syntax_version;	/* Syntax version string. */
 	const char **parameters;	/* Parameters allowed. */
-	const char **attributes;	/* Attributes allowed. */
+	const struct handler_attribute *attributes; /* Attributes allowed. */
 
 	handler_type_e type;
 	handler_data_e data;
@@ -99,7 +108,7 @@ typedef struct handler_info_s {
 	handler_free free;
 	handler_invalid_data invalid_data; /* Validate private data. */
 	handler_invalid_child invalid_child; /* Validate potential child. */
-	handler_parse parse_attribute;
+	handler_attribute attribute;
 	handler_parse parse_parameter;
 	handler_parse_content parse_content;
 } handler_info_s;
@@ -135,8 +144,6 @@ void check_options(int total, int *opts, const char *string_, element_s *el);
 char *append_param_elements(char **string, element_s *el);
 char *append_prefix_elements(char **string, element_s *el);
 
-char *parse_string_attribute(const char * const value,
-			     const char * const message);
 char *parse_string_parameter(const char * const value,
 			     const char * const message);
 char *parse_string_content(const char * const value,

@@ -216,7 +216,14 @@ static INLINE int set_variable(const char *variable, const char *value)
 
 /* <stage> handler */
 
-static const char *stage_attributes[] = { "name", NULL};
+enum stage_attribute_types {
+	STAGE_NAME,
+};
+
+static struct handler_attribute stage_attributes[] = {
+	{ .name = "name", .private = STAGE_NAME },
+	{ .name = NULL }
+};
 
 struct stage_data {
 	char *name;
@@ -309,17 +316,18 @@ static void stage_free(const element_s * const element)
 }
 
 static int stage_attribute(const element_s * const element,
-			   const char * const attribute,
+			   const struct handler_attribute * const attr,
 			   const char * const value)
 {
 	struct stage_data *data = (struct stage_data *) element->handler_data;
 
-	if (strcmp(attribute, "name") == 0)
-		if ((data->name = parse_string_attribute(value,
-							 "<stage>: \"name\" cannot be empty.")))
-			return 0;
-
-	return 1;
+	switch (attr->private) {
+	case STAGE_NAME:
+		data->name = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
 }
 
 static int stage_invalid_child(const element_s * const element,
@@ -590,7 +598,16 @@ static int environment_main(element_s * const element)
 
 /* <variable> handler */
 
-static const char *variable_attributes[] = { "mode", "name", NULL};
+enum variable_attribute_types {
+	VARIABLE_NAME,
+	VARIABLE_MODE,
+};
+
+static struct handler_attribute variable_attributes[] = {
+	{ .name = "name", .private = VARIABLE_NAME },
+	{ .name = "mode", .private = VARIABLE_MODE },
+	{ .name = NULL }
+};
 
 enum variable_mode {
 	VAR_SET,
@@ -629,28 +646,29 @@ static void variable_free(const element_s * const element)
 }
 
 static int variable_attribute(const element_s * const element,
-			      const char * const attribute,
+			      const struct handler_attribute * const attr,
 			      const char * const value)
 {
 	struct variable_data *data = (struct variable_data *) element->handler_data;
 
-	if (strcmp(attribute, "name") == 0)
-		if ((data->name = parse_string_attribute(value,
-							 "<variable>: \"name\" cannot be empty.")))
-			return 0;
-
-	if (strcmp(attribute, "mode") == 0) {
+	switch (attr->private) {
+	case VARIABLE_NAME:
+		data->name = xstrdup(value);
+		return 0;
+	case VARIABLE_MODE:
 		if (strcmp(value, "append") == 0) {
 			data->mode = VAR_APPEND;
 			return 0;
 		} else if (strcmp(value, "prepend") == 0) {
 			data->mode = VAR_PREPEND;
 			return 0;
-		} else
+		} else {
 			Nprint_err("<variable>: unknown \"mode\" (%s)", value);
+			return 1;
+		}
+	default:
+		return 1;
 	}
-
-	return 1;
 }
 
 static int variable_content(const element_s * const element,
@@ -728,7 +746,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = stage_setup,
 		.free = stage_free,
 		.attributes = stage_attributes,
-		.parse_attribute = stage_attribute,
+		.attribute = stage_attribute,
 		.invalid_child = stage_invalid_child,
 	},
 	{
@@ -761,7 +779,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = variable_setup,
 		.free = variable_free,
 		.attributes = variable_attributes,
-		.parse_attribute = variable_attribute,
+		.attribute = variable_attribute,
 		.parse_content = variable_content,
 		.invalid_data = variable_invalid_data,
 		.invalid_child = variable_invalid_child,
@@ -779,7 +797,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = stage_setup,
 		.free = stage_free,
 		.attributes = stage_attributes,
-		.parse_attribute = stage_attribute,
+		.attribute = stage_attribute,
 		.invalid_child = stage_invalid_child,
 	},
 	{
@@ -793,7 +811,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = stage_setup,
 		.free = stage_free,
 		.attributes = stage_attributes,
-		.parse_attribute = stage_attribute,
+		.attribute = stage_attribute,
 		.invalid_child = stage_invalid_child,
 	},
 	{
@@ -807,7 +825,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = stage_setup,
 		.free = stage_free,
 		.attributes = stage_attributes,
-		.parse_attribute = stage_attribute,
+		.attribute = stage_attribute,
 		.invalid_child = stage_invalid_child,
 	},
 	{
@@ -840,7 +858,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = variable_setup,
 		.free = variable_free,
 		.attributes = variable_attributes,
-		.parse_attribute = variable_attribute,
+		.attribute = variable_attribute,
 		.parse_content = variable_content,
 		.invalid_data = variable_invalid_data,
 		.invalid_child = variable_invalid_child,
@@ -858,7 +876,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = stage_setup,
 		.free = stage_free,
 		.attributes = stage_attributes,
-		.parse_attribute = stage_attribute,
+		.attribute = stage_attribute,
 		.invalid_child = stage_invalid_child,
 	},
 	{
@@ -872,7 +890,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = stage_setup,
 		.free = stage_free,
 		.attributes = stage_attributes,
-		.parse_attribute = stage_attribute,
+		.attribute = stage_attribute,
 		.invalid_child = stage_invalid_child,
 	},
 	{
@@ -886,7 +904,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = stage_setup,
 		.free = stage_free,
 		.attributes = stage_attributes,
-		.parse_attribute = stage_attribute,
+		.attribute = stage_attribute,
 		.invalid_child = stage_invalid_child,
 	},
 	{
@@ -919,7 +937,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = variable_setup,
 		.free = variable_free,
 		.attributes = variable_attributes,
-		.parse_attribute = variable_attribute,
+		.attribute = variable_attribute,
 		.parse_content = variable_content,
 		.invalid_data = variable_invalid_data,
 		.invalid_child = variable_invalid_child,
