@@ -152,9 +152,8 @@ static const struct handler_parameter *find_handler_parameter(const handler_info
 static int parse_node_attributes(xmlNodePtr node, element_s *element)
 {
 	handler_info_s *handler = element->handler;
-	xmlAttrPtr attr;
-	const struct handler_attribute *handler_attr;
-	const char *content;
+	xmlAttrPtr prop;
+	const struct handler_attribute *attr;
 	int result;
 
 	/* Pass any attributes present in the node to the
@@ -162,22 +161,26 @@ static int parse_node_attributes(xmlNodePtr node, element_s *element)
 	   any data associated with them.
 	*/
 
-	for (attr = node->properties; attr; attr = attr->next) {
-		handler_attr = find_handler_attribute(handler,
-						      (const char *) attr->name);
-		if (!handler_attr) {
-			Nprint_warn("<%s>: \"%s\" attribute is not supported.", handler->name, (const char *) attr->name);
+	for (prop = node->properties; prop; prop = prop->next) {
+		const char *content = NULL;
+
+		attr = find_handler_attribute(handler,
+					      (const char *) prop->name);
+		if (!attr) {
+			Nprint_warn("<%s>: \"%s\" attribute is not supported.", handler->name, (const char *) prop->name);
 			continue;
 		}
 		
-		content = (const char *) attr->children->content;
+		if (prop->children && prop->children->content)
+			content = (const char *) prop->children->content;
 
-		if ((!handler_attr->content_optional) && (strlen(content) == 0)) {
-			Nprint_err("<%s>: \"%s\" attribute cannot be empty.", handler->name, handler_attr->name);
+		if (!attr->content_optional && (!content ||
+						(strlen(content) == 0))) {
+			Nprint_err("<%s>: \"%s\" attribute cannot be empty.", handler->name, attr->name);
 			return 1;
 		}
 
-		result = handler->attribute(element, handler_attr, content);
+		result = handler->attribute(element, attr, content);
 		if (result)
 			return result;
 	}
@@ -190,7 +193,6 @@ static int parse_node_parameters(xmlNodePtr node, element_s *element)
 	handler_info_s *handler = element->handler;
 	xmlNodePtr child;
 	const struct handler_parameter *param;
-	const char *content;
 	int result;
 
 	/* Check all elements inside the node to see if they are
@@ -206,9 +208,13 @@ static int parse_node_parameters(xmlNodePtr node, element_s *element)
 					       (const char *) child->name);
 
 		if (param) {
-			content = (const char *) child->children->content;
+			const char *content = NULL;
 
-			if ((!param->content_optional) && (strlen(content) == 0)) {
+			if (child->children && child->children->content)
+				content = (const char *) child->children->content;
+
+			if (!param->content_optional && (!content ||
+							 (strlen(content) == 0))) {
 				Nprint_err("<%s>: \"%s\" parameter cannot be empty.", handler->name, param->name);
 				return 1;
 			}
