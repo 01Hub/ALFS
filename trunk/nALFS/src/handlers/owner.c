@@ -131,7 +131,7 @@ static int owner_parameter(const element_s * const element,
 		}
 		data->group = xstrdup(value);
 		return 0;
-	case OWNER_OPTION:
+	case OWNER_OPTIONS:
 		if (!strcmp("recursive", value)) {
 			data->recursive = 1;
 			return 0;

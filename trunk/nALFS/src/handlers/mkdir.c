@@ -169,8 +169,8 @@ static int mkdir_parameter(const element_s * const element,
 static const struct handler_parameter mkdir_parameters_ver2[] = {
 	{ .name = "options", .private = MKDIR_OPTION },
 	{ .name = "base", .private = MKDIR_BASE },
-	{ .name = "dir", .private = OPTION_NAMES },
-	{ .name = "permissions", .private = OPTION_PERMISSIONS },
+	{ .name = "dir", .private = MKDIR_NAMES },
+	{ .name = "permissions", .private = MKDIR_PERMISSIONS },
 	{ .name = NULL }
 };
 
