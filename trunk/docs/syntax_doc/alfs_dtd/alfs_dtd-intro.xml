@@ -1,6 +1,6 @@
 <sect1 id="alfs_dtd-intro" xreflabel="&book-product; Introduction">
 <?dbhtml filename="alfs_dtd-introduction.html" dir="alfs_dtd"?>
-<title>&book-product; Introduction</title>
+<title>Introduction</title>
 
 <para><acronym>ALFS</acronym> profiles are written using an 
 <acronym>XML</acronym> syntax. This chapter describes the various 
