@@ -14,8 +14,44 @@
   <package name="gstreamer" version="&gstreamer-version;">
     <packageinfo>
       <requires>
-        <name>libgnomeui</name>
+        <name>glib2</name>
       </requires>
+      <requires>
+        <name>libxml2</name>
+      </requires>
+      <requires>
+        <name>popt</name>
+      </requires>
+      <utilizes>
+        <name>libgnomeui</name>
+      </utilizes>
+      <utilizes>
+        <name>python</name>
+      </utilizes>
+      <utilizes>
+        <name>valgrind</name>
+      </utilizes>
+      <utilizes>
+        <name>libxslt</name>
+      </utilizes>
+      <utilizes>
+        <name>gtk-doc</name>
+      </utilizes>
+      <utilizes>
+        <name>tex</name>
+      </utilizes>
+      <utilizes>
+        <name>&ghostscript-impl;</name>
+      </utilizes>
+      <utilizes>
+        <name>docbook-utils</name>
+      </utilizes>
+      <utilizes>
+        <name>transfig</name>
+      </utilizes>
+      <utilizes>
+        <name>netbpm</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -24,20 +60,26 @@
       </unpack>
     </stage>
     <stage name="Installing">
-    <stageinfo>
-      <base>&build_dir;/&gstreamer-directory;</base>
-    </stageinfo>
-    <configure>
-      <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-      <param>--localstatedir=/var/lib</param>
-      <param>--sysconfdir=/etc/gnome</param>
-      <param>--disable-docs-build</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>
-    <execute command="gst-register" />&ldconfig;</stage>
+      <stageinfo>
+        <base>&build_dir;/&gstreamer-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--sysconfdir=/etc</param>
+        <param>--localstatedir=/var</param>
+        <param>--disable-docs-build</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <ownership user="root" group="root">
+        <option>recursive</option>
+        <name>/usr/share/doc/gstreamer-&gstreamer-version;</name>
+      </ownership>
+      <execute command="gst-register" />
+      &ldconfig;
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gstreamer-directory;</remove>
     </stage>

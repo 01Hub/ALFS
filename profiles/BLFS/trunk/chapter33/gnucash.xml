@@ -14,7 +14,7 @@
   <package name="gnucash" version="&gnucash-version;">
     <packageinfo>
       <requires>
-        <name>db</name>
+        <name>oaf</name>
       </requires>
       <requires>
         <name>gal1</name>
@@ -26,13 +26,58 @@
         <name>libghttp</name>
       </requires>
       <requires>
-        <name>guppi</name>
-      </requires>
-      <requires>
         <name>g-wrap</name>
       </requires>
       <utilizes>
+	<name>postgresql</name>
+      </utilizes>
+      <utilizes>
+	<name>guppi</name>
+      </utilizes>
+      <utilizes>
+	<name>scrollkeeper</name>
+      </utilizes>
+      <utilizes>
+	<name>guile-www</name>
+      </utilizes>
+      <utilizes>
+	<name>lwp</name>
+      </utilizes>
+      <utilizes>
+	<name>html-parser</name>
+      </utilizes>
+      <utilizes>
+	<name>datemanip</name>
+      </utilizes>
+      <utilizes>
+	<name>finance-quote</name>
+      </utilizes>
+      <utilizes>
+	<name>graphviz</name>
+      </utilizes>
+      <utilizes>
 	<name>doxygen</name>
+      </utilizes>
+      <utilizes>
+	<name>electricfence</name>
+      </utilizes>
+      <utilizes>
+	<name>libofx</name>
+      </utilizes>
+      <utilizes>
+	<name>ktoblzcheck</name>
+      </utilizes>
+      <utilizes>
+	<name>aqhbci</name>
+      </utilizes>
+      <utilizes>
+	<name>gwenhywfar</name>
+      </utilizes>
+      <utilizes>
+	<name>aqbanking</name>
+      </utilizes>
+      <utilizes>
+	<name>libchipcard</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -47,6 +92,9 @@
       </stageinfo>
       <configure>
         <param>--prefix=/opt/gnome</param>
+        <param>--sysconfdir=/etc</param>
+        <param>--disable-guppi</param>
+        <param>--disable-error-on-warning</param>
       </configure>
       <make />
       <make>

@@ -30,6 +30,11 @@
       <stageinfo>
         <base>&build_dir;/&openquicktime-directory;</base>
       </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&openquicktime-patch;</param>
+      </patch>
       <configure>
         <param>--prefix=/usr</param>
       </configure>

@@ -49,7 +49,6 @@
 <!ENTITY nas-version      "1.6">
 <!ENTITY nas-package      "nas-&nas-version;.src.tar.gz">
 <!ENTITY nas-directory    "nas-&nas-version;">
-<!ENTITY nas-patch        "nas-&nas-version;-bison-fix.patch">
 
 <!ENTITY libmpeg3-version      "1.5.4">
 <!ENTITY libmpeg3-package      "libmpeg3-&libmpeg3-version;-src.tar.bz2">
@@ -62,6 +61,7 @@
 <!ENTITY openquicktime-version      "1.0">
 <!ENTITY openquicktime-package      "openquicktime-&openquicktime-version;-src.tgz">
 <!ENTITY openquicktime-directory    "openquicktime-&openquicktime-version;-src">
+<!ENTITY openquicktime-patch        "openquicktime-&openquicktime-version;-gcc34-1.patch">
 
 <!ENTITY libfame-version      "0.9.1">
 <!ENTITY libfame-package      "libfame-&libfame-version;.tar.gz">

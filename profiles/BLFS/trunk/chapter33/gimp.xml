@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+	<?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
@@ -18,6 +18,9 @@
       </requires>
       <requires>
         <name>libart-lgpl</name>
+      </requires>
+      <requires>
+        <name>xml-parser</name>
       </requires>
       <utilizes>
         <name>gimp-print</name>
@@ -44,16 +47,28 @@
         <name>libgtkhtml</name>
       </utilizes>
       <utilizes>
+        <name>libxslt</name>
+      </utilizes>
+      <utilizes>
         <name>python</name>
       </utilizes>
       <utilizes>
-	<name>XML-Parser</name>
+        <name>pygtk</name>
       </utilizes>
       <utilizes>
         <name>gtk-doc</name>
       </utilizes>
       <utilizes>
 	<name>&mta-impl;</name>
+      </utilizes>
+      <utilizes>
+        <name>alsa</name>
+      </utilizes>
+      <utilizes>
+        <name>libexif</name>
+      </utilizes>
+      <utilizes>
+        <name>libwmf</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

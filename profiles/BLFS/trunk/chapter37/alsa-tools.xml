@@ -19,6 +19,9 @@
       <utilizes>
         <name>gtk+</name>
       </utilizes>
+      <utilizes>
+        <name>fltk</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
