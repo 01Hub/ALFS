@@ -1,7 +1,7 @@
 <bookinfo>
 
 <title>&book-product; Hackers Guide</title>
-<subtitle>Version &version;</subtitle>
+<subtitle>Version &version;&nbsp;&emdash;&nbsp;&releasedate;</subtitle>
 
 &book-info-authorgroup;
 &book-info-copyright;
