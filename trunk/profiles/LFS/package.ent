@@ -76,8 +76,8 @@
 <!ENTITY expect-spawn-patch-md5 "ef6d0d0221c571fb420afb7033b3bbba">
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn.patch">
 
-<!ENTITY file-md5 "4781df6185d11bdcd3d229f314e5c527">
-<!ENTITY file-version "4.06">
+<!ENTITY file-md5 "41cad73b7a7e88149e7b05db759fa2c5">
+<!ENTITY file-version "4.07">
 <!ENTITY file-package "file-&file-version;.tar.bz2">
 <!ENTITY file-directory "file-&file-version;">
 
@@ -203,8 +203,8 @@
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.gz">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
-<!ENTITY linux-md5 "642af5ab5e1fc63685fde85e9ae601e4">
-<!ENTITY linux-version "2.4.23">
+<!ENTITY linux-md5 "1e055c42921b2396a559d84df4c3d9aa">
+<!ENTITY linux-version "2.4.24">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
@@ -276,8 +276,8 @@
 <!ENTITY procinfo-package "procinfo-&procinfo-version;.tar.gz">
 <!ENTITY procinfo-directory "procinfo-&procinfo-version;">
 
-<!ENTITY procps-md5 "e146860df435f863811206e4f9d3becf">
-<!ENTITY procps-version "3.1.14">
+<!ENTITY procps-md5 "496d9f87be5eaebcd1080bb5b9999da4">
+<!ENTITY procps-version "3.1.15">
 <!ENTITY procps-package "procps-&procps-version;.tar.gz">
 <!ENTITY procps-directory "procps-&procps-version;">
 
