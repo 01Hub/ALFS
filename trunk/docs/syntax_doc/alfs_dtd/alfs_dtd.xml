@@ -3,6 +3,7 @@
 <title>Description of the <acronym>ALFS</acronym> Profile Syntax</title>
 
 &alfs_dtd-intro;
+&xml_dtd-syntax;
 &elem_alfs;
 &elem_archive;
 &elem_base;
