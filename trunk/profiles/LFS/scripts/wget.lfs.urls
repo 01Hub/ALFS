@@ -53,7 +53,7 @@ http://umn.dl.sourceforge.net/sourceforge/tcl/tcl8.4.6-src.tar.gz
 http://umn.dl.sourceforge.net/sourceforge/lex/flex-2.5.31.tar.bz2
 http://www.gzip.org/zlib/zlib-1.2.1.tar.bz2
 http://www.ibiblio.org/pub/Linux/system/daemons/sysklogd-1.4.1.tar.gz
-http://downloads.linuxfromscratch.org/lfs-bootscripts-2.1.1.tar.bz2
+http://downloads.linuxfromscratch.org/lfs-bootscripts-2.1.2-pre2.tar.bz2
 http://www.tazenda.demon.co.uk/phil/net-tools/net-tools-1.60.tar.bz2
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/bash-2.05b-gnu_fixes-2.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/coreutils-5.2.1-suppress_hostname_uptime_kill_su-1.patch
