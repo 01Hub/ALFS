@@ -1,4 +1,4 @@
-<sect1 id="chapter00" xreflabel="Introduction">
+<chapter id="chapter00" xreflabel="Introduction">
 <?dbhtml filename="chapter00.html" dir="chapter00"?>
 <title>Introduction</title>
 
@@ -8,4 +8,4 @@
 &ch0-contactinfo;
 &ch0-changelog;
 
-</sect1>
+</chapter>

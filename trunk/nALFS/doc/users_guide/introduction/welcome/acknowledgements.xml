@@ -1,4 +1,4 @@
-<sect2 id="ch0-acknowledgements" xreflabel="Acknowledgements">
+<sect1 id="ch0-acknowledgements" xreflabel="Acknowledgements">
 <?dbhtml filename="acknowledgements.html" dir="chapter00"?>
 <title>Acknowledgements</title>
 
@@ -57,4 +57,4 @@ the tool and submitting bug reports.</para></listitem>
 
 </itemizedlist>
 
-</sect2>
+</sect1>

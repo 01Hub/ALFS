@@ -1,4 +1,4 @@
-<sect2 id="ch0-introduction" xreflabel="Introduction">
+<sect1 id="ch0-introduction" xreflabel="Introduction">
 <?dbhtml filename="introduction.html" dir="chapter00"?>
 <title>Introduction</title>
 
@@ -48,5 +48,5 @@ properly formatted profile, can be instructed to pause execution, start
 execution from selected element (by browsing a profile in a tree-like mode) 
 and much much more.</para>
 
-</sect2>
+</sect1>
 
