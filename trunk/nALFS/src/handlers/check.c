@@ -1,9 +1,11 @@
 /*
  *  check.c - Handler.
  * 
- *  Copyright (C) 2002 by Vassili Dzuba <vassilidzuba@nerim.net>
+ *  Copyright (C) 2002, 2004
  *
- *  Parts Copyright (C) 2001, 2002 by Neven Has <haski@sezampro.yu>
+ *  Vassili Dzuba <vassilidzuba@nerim.net>
+ *  Neven Has <haski@sezampro.yu>
+ *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
