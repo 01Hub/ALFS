@@ -46,7 +46,7 @@ static INLINE void warn_if_doesnt_exist(const char *file)
 {
         struct stat file_stat;
 
-        if (stat(file, &file_stat)) {
+        if (lstat(file, &file_stat)) {
 		if (errno == ENOENT) {
 			Nprint_h_warn("File %s doesn't exist.", file);
 		}
