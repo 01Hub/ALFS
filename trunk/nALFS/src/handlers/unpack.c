@@ -239,7 +239,7 @@ static int unpack_main_ver3(element_s *el)
 			xfree(reference);
 			goto free_all_and_return;
 		}
-	} else if (verify_digest(digest_type, digest, archive)) {
+	} else if (digest && verify_digest(digest_type, digest, archive)) {
 		Nprint_h_err("Wrong %s digest of archive: %s",
 			     digest_type, archive);
 		goto free_all_and_return;
