@@ -11,8 +11,7 @@
 
 ]>
 <alfs>
-  <package name="gnome-pre-installation" version="1.0">
-    <stage name="GNOME pre-installation.">
+   <stage name="GNOME pre-installation.">
     <textdump base="/root">
       <file>.bash_profile</file>
       <content>
@@ -41,6 +40,7 @@
 	=
 	=# End gnome addition to man.conf
       </content>
-    </textdump>&ldconfig;</stage>
-  </package>
+    </textdump>
+    &ldconfig;
+  </stage>
 </alfs>

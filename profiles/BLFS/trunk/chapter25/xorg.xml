@@ -99,6 +99,12 @@
         <target>../X11R6/include/X11</target>
         <name>/usr/include/X11</name>
       </link>
+      <!-- update /etc/ld.so.conf -->
+      <search_replace base="/etc">
+	<file>ld.so.conf</file>
+	<find>/usr/X11R6/lib</find>
+	<replace></replace>
+      </search_replace>
       <textdump mode="append" base="/etc">
         <file>ld.so.conf</file>
         <content>=/usr/X11R6/lib</content>
@@ -108,6 +114,10 @@
         <file>createfiles</file>
         <content>=/tmp/.ICE-unix dir 1777 root root</content>
       </textdump>
+      <copy base="&blfs-config;/root">
+	<source>dot_xinitrc</source>
+	<destination>/root/.xinitrc</destination>
+      </copy>
       <xi:include href="fonts.xml" />
     </stage>
     <stage name="Cleanup">

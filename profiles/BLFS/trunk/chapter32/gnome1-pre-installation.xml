@@ -36,6 +36,9 @@
       =
       =MANPATH /opt/gnome/man
       =
-      =# End Gnome 1.4 Libraries addition to man.conf</content>
-  </textdump>&ldconfig;</stage>
+      =# End Gnome 1.4 Libraries addition to man.conf
+    </content>
+  </textdump>
+  &ldconfig;
+  </stage>
 </alfs>

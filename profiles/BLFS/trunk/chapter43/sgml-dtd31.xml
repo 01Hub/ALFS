@@ -69,7 +69,7 @@
       </copy>
       <execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-&sgml-dtd31-version;.cat /usr/share/sgml/docbook/sgml-dtd-&sgml-dtd31-version;/catalog" />
       <execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-&sgml-dtd31-version;.cat /etc/sgml/sgml-docbook.cat" />
-      <textdump>
+      <textdump mode="append">
         <file>/usr/share/sgml/docbook/sgml-dtd-&sgml-dtd31-version;/catalog</file>
         <content>
 	  = -- Begin Single Major Version catalog changes --
