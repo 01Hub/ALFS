@@ -1,0 +1,20 @@
+<stage name="Creating directories and mounting file systems">
+
+	<mkdir base="&LFS;">
+		<option>parents</option>
+		<name>proc</name>
+		<name>dev/pts</name>
+	</mkdir>
+
+	<execute command="mount">
+		<param>proc</param>
+		<param>&LFS;/proc</param>
+		<param>-t proc</param>
+	</execute>
+
+	<execute command="mount">
+		<param>devpts</param>
+		<param>&LFS;/dev/pts</param>
+		<param>-t devpts</param>
+	</execute>
+</stage>
