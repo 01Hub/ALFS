@@ -292,9 +292,9 @@
 <!ENTITY tcl-package "tcl&tcl-version;-src.tar.gz">
 <!ENTITY tcl-directory "tcl&tcl-version;">
 
-<!ENTITY texinfo-md5 "72a57e378efb9898c9e41ca839554dae">
+<!ENTITY texinfo-md5 "c2fa2ef957f0d728f821ae9b2362ef4e">
 <!ENTITY texinfo-version "4.7">
-<!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.gz">
+<!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
 <!ENTITY udev-md5 "4f4c0ace4307cb1c73d9f5365fe6c946">
