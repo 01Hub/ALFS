@@ -535,3 +535,36 @@ char *append_prefix_elements(char **string, element_s *el)
 
 	return *string;
 }
+
+char *parse_string_attribute(const char * const value,
+			     const char * const message)
+{
+	if (strlen(value)) {
+		return xstrdup(value);
+	} else {
+		Nprint_err(message);
+		return NULL;
+	}
+}
+
+char *parse_string_parameter(const char * const value,
+			     const char * const message)
+{
+	if (strlen(value)) {
+		return xstrdup(value);
+	} else {
+		Nprint_err(message);
+		return NULL;
+	}
+}
+
+char *parse_string_content(const char * const value,
+			   const char * const message)
+{
+	if (strlen(value)) {
+		return xstrdup(value);
+	} else {
+		Nprint_err(message);
+		return NULL;
+	}
+}
