@@ -23,8 +23,7 @@
 			<param>install</param>
 		</make>
 
-
-		<execute command="cd doc &amp;&amp; for dir in man?; do for file in $dir/*; do gunzip /usr/share/man/$file; done; done" />
+		<execute base="doc" command="for dir in man?; do for file in $dir/*; do gunzip /usr/share/man/$file; done; done" />
 
 		&ldconfig;
 
