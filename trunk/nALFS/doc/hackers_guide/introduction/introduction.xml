@@ -1,6 +1,6 @@
 <part id="introduction" xreflabel="Introduction">
 <?dbhtml filename="introduction/introduction.html"?>
-<title>Welcome to the &book-product; Hackers Guide</title>
+<title>Introduction</title>
 
 &intro-welcome-welcome;
 
