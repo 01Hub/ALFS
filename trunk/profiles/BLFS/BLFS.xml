@@ -46,7 +46,7 @@
         </environment>
     </stageinfo>
 
-<stage name="chapter 3 (After LFS Configuration Issues)">
+<stage name="Chapter 3 (After LFS Configuration Issues)">
 
     &issue;
     &bash_startup;
@@ -57,7 +57,7 @@
 
 </stage>
 
-<stage name="chapter 4 (security)">
+<stage name="Chapter 4 (Security)">
 
     &linuxpam;
     &shadow;
@@ -66,7 +66,7 @@
 
 </stage>
 
-<stage name="chapter 5 (filessytems)">
+<stage name="Chapter 5 (Filesystems)">
 
     <!-- &ext3; -->
     &reiserfsutils;
@@ -74,7 +74,7 @@
 
 </stage>
 
-<stage name="chapter 6 (editors)">
+<stage name="Chapter 6 (Editors)">
 
     &vim;
     &emacs;
@@ -83,7 +83,7 @@
 
 </stage>
 
-<stage name="chapter 7 (shells)">
+<stage name="Chapter 7 (Shells)">
 
     &ash;
     &tcsh;
@@ -91,7 +91,7 @@
 
 </stage>
 
-<stage name="chapter 8 (general libraries)">
+<stage name="Chapter 8 (General Libraries)">
 
     &openssl;
     &pcre;
@@ -118,7 +118,7 @@
 
 </stage>
 
-<stage name="Chapter 9 (graphic libraries)">
+<stage name="Chapter 9 (Graphics and Font Libraries)">
 
     &lcms;
     &libjpeg;
@@ -137,7 +137,7 @@
 </stage>
 
 
-<stage name="Chapter 10 (general utilities)">
+<stage name="Chapter 10 (General Utilities)">
 
     &bc;
     &rep-gtk;
@@ -146,7 +146,7 @@
 
 </stage>
 
-<stage name="Chapter 11 (system utilities)">
+<stage name="Chapter 11 (System Utilities)">
 
     &gpm;
     &fcron;
@@ -161,7 +161,7 @@
 
 </stage>
 
-<stage name="Chapter 12 (programming tools)">
+<stage name="Chapter 12 (Programming)">
 
     &python;
     &perlmodules;
@@ -185,20 +185,20 @@
 </stage>
 
 
-<stage name="Chapter 14 (DHCP clients)">
+<stage name="Chapter 14 (DHCP Clients)">
 
     &dhcpcd;
 
 </stage>
 
-<stage name="Chapter 15 (Networking - other)">
+<stage name="Chapter 15 (Other Connections)">
 
     <!-- &isdn; -->
     <!-- &pppoe; -->
 
 </stage>
 
-<stage name="Chapter 16 (Networking libraries)">
+<stage name="Chapter 16 (Networking Libraries)">
 
     &curl;
     &wvstreams;
@@ -207,7 +207,7 @@
 
 </stage>
 
-<stage name="Chapter 17 (Text mode browsers)">
+<stage name="Chapter 17 (Text Web Browsers)">
 
     &links;
     &lynx;
@@ -216,7 +216,7 @@
 </stage>
 
 
-<stage name="Chapter 18 (Basic networking programs)">
+<stage name="Chapter 18 (Basic Networking Programs)">
 
     &ncftp;
     &cvs;
@@ -228,7 +228,7 @@
 
 </stage>
 
-<stage name="Chapter 19 (Basic networking utilities)">
+<stage name="Chapter 19 (Basic Networking Utilities)">
 
     &traceroute;
     &nmap;
@@ -236,7 +236,7 @@
 
 </stage>
 
-<stage name="Chapter 20 (Basic networking programs)">
+<stage name="Chapter 20 (Mail/News Clients)">
 
     &nail;
     &procmail;
@@ -247,20 +247,15 @@
 
 </stage>
 
-<stage name="Chapter 21 (DJB's utilities)">
 
-    &daemontools;
-
-</stage>
-
-<stage name="Chapter 22 (Mail server software)">
+<stage name="Chapter 21 (Mail Server Software)">
 
     &postfix;
     &qpopper;
 
 </stage>
 
-<stage name="Chapter 23 (Other Server Software)">
+<stage name="Chapter 22 (Other Server Software)">
 
     &openssh;
     &rsync;
@@ -271,7 +266,7 @@
 
 </stage>
 
-<stage name="Chapter 24 (Databases)">
+<stage name="Chapter 23 (Databases)">
 
     &db;
     &db3;
@@ -280,7 +275,7 @@
 
 </stage>
 
-<stage name="Chapter 25 (Web serving)">
+<stage name="Chapter 24 (Web serving)">
 
     &apache;
     &php;
@@ -288,13 +283,13 @@
 
 </stage>
 
-<stage name="Chapter 26 (XFree)">
+<stage name="Chapter 25 (X Window Environment)">
 
     &xfree86;
 
 </stage>
 
-<stage name="Chapter 27 (X libraries)">
+<stage name="Chapter 26 (X Libraries)">
 
     &qt;
     &gtkplus;
@@ -306,7 +301,7 @@
            
 </stage>
 
-<stage name="Chapter 28 (Window Managers)">
+<stage name="Chapter 27 (Window Managers)">
 
     &sawfish;
     &fluxbox;
@@ -315,7 +310,7 @@
 
 </stage>
 
-<stage name="Chapter 29 (KDE Core packages)">
+<stage name="Chapter 28 (KDE Core Packages)">
 
     &arts;
     &kdelibs;
@@ -323,7 +318,7 @@
 
 </stage>
 
-<stage name="Chapter 30 (KDE Additional packages)">
+<stage name="Chapter 29 (KDE Additional Packages)">
 
     &kdemultimedia;
     &kdenetwork;
@@ -339,19 +334,19 @@
 
 </stage>
 
+<!-- this section not currently in the book
 <stage name="Chapter 31 (Other KDE packages)">
 
     &kdoc;
-    <!--
     &kdebindings;
     &kdesdk;
     &kdevelop;
-    -->
 
 </stage>
+-->
 
 
-<stage name="Chapter 32 (GNOME libraries)">
+<stage name="Chapter 30 (GNOME libraries)">
 
     <stageinfo>
         <environment>
@@ -395,7 +390,7 @@
 
 </stage>
 
-<stage name="Chapter 33 (GNOME core)">
+<stage name="Chapter 31 (GNOME core)">
     
     &gnome-desktop;
     &gnome-panel;
@@ -405,7 +400,7 @@
     &gnome-desktop;
 </stage>
 
-<stage name="Chapter 34 (GNOME additional packages)">
+<stage name="Chapter 32 (Additional GNOME Packages)">
     
     &gnome-terminal;
     &gnome-applets;
@@ -427,14 +422,14 @@
 
 </stage>
 
-<stage name="Chapter 35 (Other Gnome packages)">
+<stage name="Chapter 33 (Other GNOME Packages)">
     
     &gconf-editor;
     &gdm;
 
 </stage>
 
-<stage name="Chapter 37 (Additional gnome 1.4 libraries)">
+<stage name="Chapter 35 (GNOME 1.4 Libraries)">
     
     <stageinfo>
         <environment>
@@ -462,7 +457,7 @@
     
 </stage>
 
-<stage name="Chapter 38 (Individual Office Programs)">
+<stage name="Chapter 36 (Individual Office Programs)">
     
     &abiword;
     &gnumeric;
@@ -472,14 +467,14 @@
 
 </stage>
 
-<stage name="Chapter 39 (Office Suites)">
+<stage name="Chapter 37 (Office Suites)">
 
     &koffice;    
     &openoffice;
 
 </stage>
 
-<stage name="Chapter 40 (Graphical Web Browsers)">
+<stage name="Chapter 38 (Graphical Web Browsers)">
     
     &mozilla;
     &galeon;
@@ -487,14 +482,14 @@
 
 </stage>
 
-<stage name="Chapter 41 (Other X-based Internet Programs)">
+<stage name="Chapter 39 (Other X-based Internet Programs)">
     
     &pan;
     &balsa;
 
 </stage>
 
-<stage name="Chapter 42 (Multimedia Libraries and Drivers)">
+<stage name="Chapter 40 (Multimedia Libraries and Drivers)">
 
     &alsa-driver;
     &alsa-lib;
@@ -525,7 +520,7 @@
 
 </stage>
 
-<stage name="Chapter 43 (Multimedia utilities)">
+<stage name="Chapter 41 (Audio utilities)">
 
     &mpg123;
     &vorbis-tools;
@@ -535,7 +530,7 @@
 
 </stage>
 
-<stage name="Chapter 44 (Video utilities)">
+<stage name="Chapter 42 (Video utilities)">
 
     &ffmpeg;
     &avifile;
@@ -545,14 +540,14 @@
 
 </stage>
 
-<stage name="Chapter 45 (CD-Writing utilities)">
+<stage name="Chapter 43 (CD-Writing utilities)">
 
     &cdrtools;
     &cdrdao;
 
 </stage>
 
-<stage name="Chapter 46 (Printing)">
+<stage name="Chapter 44 (Printing)">
 
     &cups;
     &afplghostscript;
@@ -561,7 +556,7 @@
 
 </stage>
 
-<stage name="Chapter 47 (Scanning)">
+<stage name="Chapter 45 (Scanning)">
 
     &sane;
     &xsane;
@@ -569,7 +564,7 @@
 </stage>
 
 
-<stage name="Chapter 48 (Standard Generalized Markup Language - SGML)">
+<stage name="Chapter 46 (Standard Generalized Markup Language - SGML)">
 
     &sgml-common;
     &sgml-dtd31;
@@ -580,14 +575,14 @@
 
 </stage>
 
-<stage name="Chapter 49 (Extensible Markup Language - XML)">
+<stage name="Chapter 47 (Extensible Markup Language - XML)">
 
     &xml-dtd;
     &docbook-xsl;
 
 </stage>
 
-<stage name="Chapter 50 (Postscript)">
+<stage name="Chapter 48 (PostScript)">
 
     &a2ps;
     &enscript;
@@ -597,7 +592,7 @@
 
 </stage>
 
-<stage name="Chapter 51 (Typesetting)">
+<stage name="Chapter 49 (Typesetting)">
 
     &tex;
 
