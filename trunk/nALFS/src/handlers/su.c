@@ -205,7 +205,7 @@ static int su_main(element_s *el)
  * Handlers' information.
  */
 
-char *su_parameters[] = { NULL };
+const char *su_parameters[] = { NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "user", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {

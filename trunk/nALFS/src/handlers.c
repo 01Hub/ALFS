@@ -90,10 +90,10 @@ int parameter_exists(const char *name)
 
 
 
-static INLINE int add_new_parameters(char **params)
+static INLINE int add_new_parameters(const char **params)
 {
 	int i, total = 0;
-	char *param;
+	const char *param;
 
 
 	for (i = 0; (param = params[i]); ++i) {

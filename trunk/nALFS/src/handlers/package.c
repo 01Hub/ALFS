@@ -257,9 +257,9 @@ static char *package_data_ver3(element_s *el, handler_data_e data)
  * Handlers' information.
  */
 
-char *package_parameters_ver2[] = { "name", "version", "base", NULL };
+const char *package_parameters_ver2[] = { "name", "version", "base", NULL };
 
-char *package_parameters_ver3[] = { 
+const char *package_parameters_ver3[] = { 
 	"packageinfo",
 	"description",
 	"list",

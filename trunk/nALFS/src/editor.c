@@ -238,7 +238,8 @@ static char *text_to_field(const char *text)
 
 static char *field_to_text(const char *field_)
 {
-	int i, width = windows.max_cols - 2;
+	int i;
+	size_t width = windows.max_cols - 2;
 	char line[width + 1];
 	char *end, *result = NULL;
 	char *f, *field;

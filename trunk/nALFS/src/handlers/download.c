@@ -137,7 +137,8 @@ static int download_main(element_s *el)
  * Handlers' information.
  */
 
-char *download_parameters[] = { "digest", "file", "url", "destination", NULL };
+const char *download_parameters[] =
+{ "digest", "file", "url", "destination", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #ifdef HANDLER_SYNTAX_3_1

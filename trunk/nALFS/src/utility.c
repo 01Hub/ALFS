@@ -346,9 +346,9 @@ void pfile(const char *format, ...)
 	fclose(fp);
 }
 
-int number_len(int num)
+unsigned number_len(unsigned num)
 {
-	int i = 1;
+	unsigned i = 1;
 
 
 	while ((num /= 10))

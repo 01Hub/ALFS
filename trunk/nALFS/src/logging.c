@@ -556,7 +556,7 @@ static INLINE void send_state(void)
 	 * Send a time stamp (if any) to the frontend.
 	 */
 	if (time_stamp != -1) {
-		int data_len;
+		size_t data_len;
 		char *data;
 		char *package_string;
 		char time_string[DATE_FORMAT_LEN + 1];
@@ -603,7 +603,7 @@ static INLINE void send_state(void)
 
 static void finish_logging(char *installed_files)
 {
-	int size;
+	size_t size;
 	xmlChar *ptr;
 
 
@@ -613,7 +613,7 @@ static void finish_logging(char *installed_files)
 	 * Send package log file to the frontend.
 	 */
 
-	xmlDocDumpFormatMemory(xml_doc, &ptr, &size, 1);
+	xmlDocDumpFormatMemory(xml_doc, &ptr, (int *)&size, 1);
 	xmlFreeDoc(xml_doc);
 	xml_doc = NULL;
 
@@ -812,8 +812,8 @@ static void stage_one_of_logging_changed_files(void)
 
 static INLINE state_type_e get_state_file_type(const char *line)
 {
-	int silofm_len = strlen(STATE_IS_LIST_OF_FILES_MSG);
-	int sitsm_len = strlen(STATE_IS_TIME_STAMP_MSG);
+	size_t silofm_len = strlen(STATE_IS_LIST_OF_FILES_MSG);
+	size_t sitsm_len = strlen(STATE_IS_TIME_STAMP_MSG);
 
 
 	if (strncmp(line, STATE_IS_LIST_OF_FILES_MSG, silofm_len) == 0) {

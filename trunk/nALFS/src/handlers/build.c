@@ -53,7 +53,7 @@ static int build_main(element_s *el)
  * Handlers' information.
  */
 
-char *build_parameters[] = { NULL };
+const char *build_parameters[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
 #ifdef HANDLER_SYNTAX_2_0

@@ -94,7 +94,7 @@ char *get_home_directory(void);
 
 void pfile(const char *format, ...);
 
-int number_len(int num);
+unsigned number_len(unsigned num);
 
 
 #endif /* H_UTILITY_ */

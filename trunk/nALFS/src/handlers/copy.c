@@ -212,10 +212,10 @@ static int copy_main_ver3(element_s *el)
  * Handlers' information.
  */
 
-char *copy_parameters_ver2[] =
+const char *copy_parameters_ver2[] =
 { "options", "base", "source", "destination", NULL };
 
-char *copy_parameters_ver3[] =
+const char *copy_parameters_ver3[] =
 { "option", "source", "destination", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
