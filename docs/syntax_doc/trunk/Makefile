@@ -116,4 +116,7 @@ nochunks-html: common
 flat-text: nochunks-html
 	lynx -dump ALFS-SYNTAX-DOC-SVN-NOCHUNKS.html > ALFS-SYNTAX-DOC-SVN.txt
 
-.PHONY: clean dist-clean common chunks-html nochunks-html flat-text
+validate:
+	xmllint --noout --nonet --xinclude --postvalid index.xml
+
+.PHONY: clean dist-clean common chunks-html nochunks-html flat-text validate

@@ -6,6 +6,10 @@
 # Description: Works around libxml2 bug 135713 by preprocessing entity        #
 #              references before performing any stylesheet processing.        #
 #                                                                             #
+# Last Changed Date: $LastChangedDate$                                        #
+# Last Changed By:   $LastChangedBy$                                          #
+# Revision:          $LastChangedRevision$                                    #
+#                                                                             #
 # Author:      Manuel Canales Esparcia                                        #
 #                                                                             #
 ###############################################################################

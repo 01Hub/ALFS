@@ -1,3 +1,9 @@
+<!--
+        Last Changed Date: $LastChangedDate$
+        Last Changed By:   $LastChangedBy$
+        Revision:          $LastChangedRevision$ 
+-->
+
 <sect1 id="elem_replace" xreflabel="Element: &lt;replace&gt;">
 <?dbhtml filename="elem_replace.html" dir="alfs_dtd"?>
 <title>Element: &lt;replace&gt;</title>

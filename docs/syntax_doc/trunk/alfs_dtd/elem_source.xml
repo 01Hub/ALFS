@@ -1,3 +1,9 @@
+<!--
+        Last Changed Date: $LastChangedDate$
+        Last Changed By:   $LastChangedBy$
+        Revision:          $LastChangedRevision$ 
+-->
+
 <sect1 id="elem_source" xreflabel="Element: &lt;source&gt;">
 <?dbhtml filename="elem_source.html" dir="alfs_dtd"?>
 <title>Element: &lt;source&gt;</title>
