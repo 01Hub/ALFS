@@ -1,0 +1,24 @@
+<stage name="Creating essential symlinks.">
+	<link type="symbolic">
+		<target>/tools/bin/bash</target>
+		<target>/tools/bin/cat</target>
+		<target>/tools/bin/pwd</target>
+		<target>/tools/bin/stty</target>
+		<name>/bin</name>
+	</link>
+
+	<link type="symbolic">
+		<target>/tools/bin/perl</target>
+		<name>/usr/bin</name>
+	</link>
+
+	<link type="symbolic">
+		<target>/tools/lib/libgcc_s.so.1</target>
+		<name>/usr/lib</name>
+	</link>
+
+	<link type="symbolic">
+		<target>bash</target>
+		<name>/bin/sh</name>
+	</link>
+</stage>

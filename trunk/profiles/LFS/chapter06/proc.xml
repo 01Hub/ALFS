@@ -1,0 +1,13 @@
+<stage name="Mounting proc and devpts file systems">
+	<execute command="mount">
+		<param>proc</param>
+		<param>/proc</param>
+		<param>-t proc</param>
+	</execute>
+
+	<execute command="mount">
+		<param>devpts</param>
+		<param>/dev/pts</param>
+		<param>-t devpts</param>
+	</execute>
+</stage>

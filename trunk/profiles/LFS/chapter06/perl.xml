@@ -1,0 +1,40 @@
+<package name="perl" version="&perl-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&perl-md5;</digest>
+			<archive>&packages_dir;/&perl-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&perl-directory;</base>
+		</stageinfo>
+
+		<configure command="./configure.gnu">
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+<!--
+		<textdump>
+			<file>/etc/hosts</file>
+			<content>=127.0.0.1 $(hostname) localhost</content>
+		</textdump>
+
+		<make>
+			<param>test</param>
+		</make>
+-->
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&perl-directory;</remove>
+	</stage>
+</package>

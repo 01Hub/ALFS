@@ -1,0 +1,92 @@
+<package name="gcc-pass2" version="&gcc-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&gcc-core-md5;</digest>
+			<archive>&packages_dir;/&gcc-core-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<digest>&gcc-gpp-md5;</digest>
+			<archive>&packages_dir;/&gcc-gpp-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<digest>&gcc-testsuite-md5;</digest>
+			<archive>&packages_dir;/&gcc-testsuite-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+			<source>&packages_dir;/&gcc-no-fixincludes-patch;</source>
+			<source>&packages_dir;/&gcc-specs-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+
+		<mkdir base="&build_dir;">
+			<option>parents</option>
+			<name>gcc-build</name>
+		</mkdir>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<environment>
+				<variable name="CFLAGS" />
+				<variable name="CXXFLAGS" />
+			</environment>
+			<base>&build_dir;/gcc-build</base>
+		</stageinfo>
+
+<!-- Run the following command:  expect -c "spawn ls"
+If you receive the message:
+	The system has no more ptys.  Ask your system administrator to create more.
+Your host distribution is not set up for proper PTY operation. In this case there is no point in running the test
+suites for GCC and Binutils until you are able to resolve the issue.
+-->
+
+		<patch base="&build_dir;/&gcc-directory;">
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&gcc-no-fixincludes-patch;</param>
+		</patch>
+
+		<patch base="&build_dir;/&gcc-directory;">
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&gcc-specs-patch;</param>
+		</patch>
+
+		<configure command="../&gcc-directory;/configure">
+			<param>--prefix=/tools</param>
+			<param>--with-local-prefix=/tools</param>
+			<param>--enable-clocale=gnu</param>
+			<param>--enable-shared</param>
+			<param>--enable-threads=posix</param>
+			<param>--enable-__cxa_atexit</param>
+			<param>--enable-languages=c,c++</param>
+		</configure>
+
+		<make/>
+
+<!--
+		<make>
+			<param>-k check</param>
+		</make>
+
+		<execute command="../&gcc-directory;/contrib/test_summary" />
+-->
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&gcc-directory;</remove>
+		<remove>&build_dir;/gcc-build</remove>
+		<remove>&build_dir;/&gcc-no-fixincludes-patch;</remove>
+		<remove>&build_dir;/&gcc-specs-patch;</remove>
+	</stage>
+</package>

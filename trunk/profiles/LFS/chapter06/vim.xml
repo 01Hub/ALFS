@@ -1,0 +1,54 @@
+<package name="vim" version="&vim-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&vim-md5;</digest>
+			<archive>&packages_dir;/&vim-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&vim-directory;</base>
+		</stageinfo>
+
+		<textdump mode="append">
+			<file>src/feature.h</file>
+			<content>
+				=#define SYS_VIMRC_FILE "/etc/vimrc"
+				=#define SYS_GVIMRC_FILE "/etc/gvimrc"
+			</content>
+		</textdump>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<link type="symbolic">
+			<target>vim</target>
+			<name>/usr/bin/vi</name>
+		</link>
+
+		<textdump>
+			<file>/root/.vimrc</file>
+			<content>
+			=" Begin /root/.vimrc
+			=
+			=set nocompatible
+			=set bs=2
+			=
+			=" End /root/.vimrc
+			</content>
+		</textdump>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&vim-directory;</remove>
+	</stage>
+</package>
