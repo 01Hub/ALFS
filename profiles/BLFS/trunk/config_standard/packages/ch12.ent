@@ -7,33 +7,61 @@
 <!ENTITY python-gdbm-patch "Python-&python-version;-gdbm-1.patch">
 
 <!-- Begin Perl Modules -->
-<!ENTITY Module-Info-version "0.26">
-<!ENTITY Module-Info-package "Module-Info-&Module-Info-version;.tar.gz">
-<!ENTITY Module-Info-directory "Module-Info-&Module-Info-version;">
+<!ENTITY Astro-FITS-Header-version   "2.8.1">
+<!ENTITY Astro-FITS-Header-package   "Astro-FITS-Header-&Astro-FITS-Header-version;.tar.gz">
+<!ENTITY Astro-FITS-Header-directory "Astro-FITS-Header-&Astro-FITS-Header-version;">
 
-<!ENTITY PDL-version   "2.4.2">
-<!ENTITY PDL-package   "PDL-&PDL-version;.tar.gz">
-<!ENTITY PDL-directory "PDL-&PDL-version;">
+<!ENTITY Digest-HMAC-version "1.01">
+<!ENTITY Digest-HMAC-package "Digest-HMAC-&Digest-HMAC-version;.tar.gz">
+<!ENTITY Digest-HMAC-directory "Digest-HMAC-&Digest-HMAC-version;">
+
+<!ENTITY Digest-SHA1-version "2.10">
+<!ENTITY Digest-SHA1-package "Digest-SHA1-&Digest-SHA1-version;.tar.gz">
+<!ENTITY Digest-SHA1-directory "Digest-SHA1-&Digest-SHA1-version;">
 
 <!ENTITY ExtUtils-F77-version   "1.14">
 <!ENTITY ExtUtils-F77-package   "ExtUtils-F77-&ExtUtils-F77-version;.tar.gz">
 <!ENTITY ExtUtils-F77-directory "ExtUtils-F77-&ExtUtils-F77-version;">
 
+<!ENTITY Filter-version "1.30">
+<!ENTITY Filter-package "Filter-&Filter-version;.tar.gz">
+<!ENTITY Filter-directory "Filter-&Filter-version;">
+
+<!ENTITY Gtk-Perl-version   "0.7009">
+<!ENTITY Gtk-Perl-package   "Gtk-Perl-&Gtk-Perl-version;.tar.gz">
+<!ENTITY Gtk-Perl-directory "Gtk-Perl-&Gtk-Perl-version;">
+
 <!ENTITY Inline-version   "0.44">
 <!ENTITY Inline-package   "Inline-&Inline-version;.tar.gz">
 <!ENTITY Inline-directory "Inline-&Inline-version;">
+
+<!ENTITY Module-Info-version "0.26">
+<!ENTITY Module-Info-package "Module-Info-&Module-Info-version;.tar.gz">
+<!ENTITY Module-Info-directory "Module-Info-&Module-Info-version;">
+
+<!ENTITY Net-DNS-version "0.48">
+<!ENTITY Net-DNS-package "Net-DNS-&Net-DNS-version;.tar.gz">
+<!ENTITY Net-DNS-directory "Net-DNS-&Net-DNS-version;">
 
 <!ENTITY Parse-RecDescent-version   "1.94">
 <!ENTITY Parse-RecDescent-package   "Parse-RecDescent-&Parse-RecDescent-version;.tar.gz">
 <!ENTITY Parse-RecDescent-directory "Parse-RecDescent-&Parse-RecDescent-version;">
 
-<!ENTITY Astro-FITS-Header-version   "2.8.1">
-<!ENTITY Astro-FITS-Header-package   "Astro-FITS-Header-&Astro-FITS-Header-version;.tar.gz">
-<!ENTITY Astro-FITS-Header-directory "Astro-FITS-Header-&Astro-FITS-Header-version;">
+<!ENTITY PDL-version   "2.4.2">
+<!ENTITY PDL-package   "PDL-&PDL-version;.tar.gz">
+<!ENTITY PDL-directory "PDL-&PDL-version;">
 
-<!ENTITY Gtk-Perl-version   "0.7009">
-<!ENTITY Gtk-Perl-package   "Gtk-Perl-&Gtk-Perl-version;.tar.gz">
-<!ENTITY Gtk-Perl-directory "Gtk-Perl-&Gtk-Perl-version;">
+<!ENTITY SGMLSpm-version   "1.03ii">
+<!ENTITY SGMLSpm-package   "SGMLSpm-&SGMLSpm-version;.tar.gz">
+<!ENTITY SGMLSpm-directory "SGMLSpm">
+
+<!ENTITY Term-Readline-Gnu-version "1.15">
+<!ENTITY Term-Readline-Gnu-package "Term-ReadLine-Gnu-&Term-Readline-Gnu-version;.tar.gz">
+<!ENTITY Term-Readline-Gnu-directory "Term-ReadLine-Gnu-&Term-Readline-Gnu-version;">
+
+<!ENTITY Perl-Tk-version   "804.027">
+<!ENTITY Perl-Tk-package   "Tk-&Perl-Tk-version;.tar.gz">
+<!ENTITY Perl-Tk-directory "Tk-&Perl-Tk-version;">
 
 <!ENTITY XML-Writer-version   "0.510">
 <!ENTITY XML-Writer-package   "XML-Writer-&XML-Writer-version;.tar.gz">
@@ -42,14 +70,6 @@
 <!ENTITY XML-Parser-version   "2.34">
 <!ENTITY XML-Parser-package   "XML-Parser-&XML-Parser-version;.tar.gz">
 <!ENTITY XML-Parser-directory "XML-Parser-&XML-Parser-version;">
-
-<!ENTITY SGMLSpm-version   "1.03ii">
-<!ENTITY SGMLSpm-package   "SGMLSpm-&SGMLSpm-version;.tar.gz">
-<!ENTITY SGMLSpm-directory "SGMLSpm-&SGMLSpm-version;">
-
-<!ENTITY Perl-Tk-version   "804.027">
-<!ENTITY Perl-Tk-package   "Tk-&Perl-Tk-version;.tar.gz">
-<!ENTITY Perl-Tk-directory "Perl-Tk-&Perl-Tk-version;">
 <!-- End Perl Modules-->
 
 <!ENTITY librep-version   "0.17">
