@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch30.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="scrollkeeper" version="&scrollkeeper-version;">
+    <packageinfo>
+      <requires>
+        <name>libxslt</name>
+      </requires>
+      <requires>
+        <name>intltool</name>
+      </requires>
+      <requires>
+        <name>xml-dtd</name>
+      </requires>
+      <requires>
+        <name>XML-Parser</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&scrollkeeper-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+    <stageinfo>
+      <base>&build_dir;/&scrollkeeper-directory;</base>
+    </stageinfo>
+    <configure>
+      <param>--prefix=/usr</param>
+      <param>--sysconfdir=/etc</param>
+      <param>--localstatedir=/var</param>
+      <param>--disable-static</param>
+      <param>--with-omfdirs=/usr/share/omf:/opt/gnome/share/omf:/opt/kde/share/omf:/opt/gnome-2.6/share/omf</param>
+    </configure>
+    <make />
+    <make>
+      <param>install</param>
+    </make>&ldconfig;</stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&scrollkeeper-directory;</remove>
+    </stage>
+  </package>
+</alfs>

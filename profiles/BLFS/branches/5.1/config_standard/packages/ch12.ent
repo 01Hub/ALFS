@@ -1,0 +1,91 @@
+<!--************* packages for chapter 12 *************-->
+
+<!ENTITY python-version   "2.3.3">
+<!ENTITY python-package   "Python-&python-version;.tar.bz2">
+<!ENTITY python-directory "Python-&python-version;">
+
+<!ENTITY python-patch     "Python-&python-version;-gdbm-2.patch">
+
+<!-- Perl Modules -->
+<!ENTITY PDL-version   "2.4.0">
+<!ENTITY PDL-package   "PDL-&PDL-version;.tar.gz">
+<!ENTITY PDL-directory "PDL-&PDL-version;">
+
+<!ENTITY Astro-FITS-Header-version   "2.8.1">
+<!ENTITY Astro-FITS-Header-package   "Astro-FITS-Header-&Astro-FITS-Header-version;.tar.gz">
+<!ENTITY Astro-FITS-Header-directory "Astro-FITS-Header-&Astro-FITS-Header-version;">
+
+<!ENTITY Gtk-Perl-version   "0.7009">
+<!ENTITY Gtk-Perl-package   "Gtk-Perl-&Gtk-Perl-version;.tar.gz">
+<!ENTITY Gtk-Perl-directory "Gtk-Perl-&Gtk-Perl-version;">
+
+<!ENTITY XML-Writer-version   "0.4.1">
+<!ENTITY XML-Writer-package   "XML-Writer-&XML-Writer-version;.tar.gz">
+<!ENTITY XML-Writer-directory "XML-Writer-&XML-Writer-version;">
+
+<!ENTITY XML-Parser-version   "2.34">
+<!ENTITY XML-Parser-package   "XML-Parser-&XML-Parser-version;.tar.gz">
+<!ENTITY XML-Parser-directory "XML-Parser-&XML-Parser-version;">
+
+<!ENTITY Parse-RecDescent-version   "1.94">
+<!ENTITY Parse-RecDescent-package   "Parse-RecDescent-&Parse-RecDescent-version;.tar.gz">
+<!ENTITY Parse-RecDescent-directory "Parse-RecDescent-&Parse-RecDescent-version;">
+
+<!ENTITY librep-version   "0.17">
+<!ENTITY librep-package   "librep-&librep-version;.tar.gz">
+<!ENTITY librep-directory "librep-&librep-version;">
+
+<!ENTITY j2sdk-binary-version   "1.4.2_04">
+<!ENTITY j2sdk-binary-norev-version "1.4.2">
+<!ENTITY j2sdk-binary-alt-version "1_4_2_04">
+<!ENTITY j2sdk-src-version "1.4.2">
+<!ENTITY j2sdk-src-alt-version "1_4_2">
+<!ENTITY j2sdk-binary-package   "j2sdk-&j2sdk-binary-alt-version;-linux-i586.bin">
+<!ENTITY j2sdk-binary-directory "j2sdk&j2sdk-binary-version;">
+<!-- http://wwws.sun.com/software/communitysource/j2se/java2/download.html -->
+<!ENTITY j2sdk-src-package "j2sdk-&j2sdk-src-alt-version;-src-scsl.zip">
+<!ENTITY j2sdk-src-bin-package "j2sdk-&j2sdk-src-alt-version;-bin-scsl.zip">
+<!ENTITY j2sdk-src-mozilla-headers-package "j2sdk-&j2sdk-src-alt-version;-mozilla_headers-unix.zip">
+
+<!ENTITY j2sdk-asm-patch "j2sdk-&j2sdk-src-version;-fix-inline-asm-1.patch">
+<!ENTITY j2sdk-gcc33-patch "j2sdk-&j2sdk-src-version;-gcc33-1.patch">
+<!ENTITY j2sdk-motif-patch "j2sdk-&j2sdk-src-version;-motif-mkmsgcat.patch">
+<!ENTITY j2sdk-remove-debug-patch "j2sdk-&j2sdk-src-version;-remove-debug-image.patch">
+<!ENTITY j2sdk-fixed-paths-patch "j2sdk-&j2sdk-src-version;-remove-fixed-paths-1.patch">
+<!ENTITY j2sdk-static-cxx-patch "j2sdk-&j2sdk-src-version;-static_cxx.patch">
+
+<!ENTITY ruby-version   "1.8.1">
+<!ENTITY ruby-package   "ruby-&ruby-version;.tar.gz">
+<!ENTITY ruby-directory "ruby-&ruby-version;">
+
+<!ENTITY gnat-version   "3.15p">
+<!ENTITY gnat-package   "gnat-&gnat-version;-i686-pc-redhat71-gnu-bin.tar.gz">
+<!ENTITY gnat-directory "gnat-&gnat-version;-i686-pc-linux-gnu-bin">
+
+<!ENTITY gcc-full-version   "3.3.3">
+<!ENTITY gcc-full-package   "gcc-&gcc-full-version;.tar.bz2">
+<!ENTITY gcc-full-directory "gcc-&gcc-full-version;">
+
+<!ENTITY gcc-full-patch1    "gcc-&gcc-full-version;-no_fixincludes-1.patch">
+
+<!ENTITY tcl-version   "8.4.6">
+<!ENTITY tcl-major-minor "8.4">
+<!ENTITY tcl-package   "tcl&tcl-version;-src.tar.gz">
+<!ENTITY tcl-directory "tcl&tcl-version;">
+
+<!ENTITY tk-version   "8.4.6">
+<!ENTITY tk-major-minor "8.4">
+<!ENTITY tk-package   "tk&tk-version;-src.tar.gz">
+<!ENTITY tk-directory "tk&tk-version;">
+
+<!ENTITY gcc295-version   "2.95.3">
+<!ENTITY gcc295-package   "gcc-&gcc295-version;.tar.gz">
+<!ENTITY gcc295-directory "gcc-&gcc295-version;">
+
+<!ENTITY gcc295-patch1     "gcc-&gcc295-version;-2.patch">
+<!ENTITY gcc295-patch2     "gcc-&gcc295-version;-no-fixinc.patch">
+<!ENTITY gcc295-patch3     "gcc-&gcc295-version;-returntype-fix.patch">
+
+<!ENTITY nasm-version   "0.98.38">
+<!ENTITY nasm-package   "nasm-&nasm-version;.tar.bz2">
+<!ENTITY nasm-directory "nasm-&nasm-version;">

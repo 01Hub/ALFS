@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch12.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="tcl" version="&tcl-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&tcl-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <environment>
+          <variable name="VERSION">&tcl-version;</variable>
+        </environment>
+        <base>&build_dir;/&tcl-directory;/unix</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <search_replace>
+        <file>tclConfig.sh</file>
+        <find>&build_dir;/&tcl-directory;/unix</find>
+        <replace>/usr/lib</replace>
+      </search_replace>
+      <search_replace>
+        <file>tclConfig.sh</file>
+        <find>&build_dir;/&tcl-directory;</find>
+        <replace>/usr/include/tcl&tcl-major-minor;</replace>
+      </search_replace>
+      <search_replace>
+        <file>tclConfig.sh</file>
+        <find>TCL_LIB_FILE='libtcl&tcl-major-minor;${TCL_DBGX}.so'</find>
+        <replace>TCL_LIB_FILE="libtcl&tcl-major-minor;${TCL_DBGX}.so"</replace>
+      </search_replace>
+      <move base="&build_dir;/&tcl-directory;/doc">
+        <source>Thread.3</source>
+        <destination>Tcl_Thread.3</destination>
+      </move>
+      <search_replace base="&build_dir;/&tcl-directory;/unix">
+        <file>mkLinks</file>
+        <find>Thread.3</find>
+        <replace>Tcl_Thread.3</replace>
+      </search_replace>
+      <make>
+        <param>install</param>
+      </make>
+      <mkdir>
+        <option>parents</option>
+        <name>/usr/include/tcl&tcl-major-minor;/unix</name>
+      </mkdir>
+      <copy>
+        <source>*.h</source>
+        <destination>/usr/include/tcl&tcl-major-minor;/unix</destination>
+      </copy>
+      <mkdir>
+        <option>parents</option>
+        <name>/usr/include/tcl&tcl-major-minor;/generic</name>
+      </mkdir>
+      <copy>
+        <source>../generic/*.h</source>
+        <destination>/usr/include/tcl&tcl-major-minor;/generic</destination>
+      </copy>
+      <permissions mode="0644">
+        <name>/usr/include/tcl&tcl-major-minor;/unix/*.h</name>
+        <name>/usr/include/tcl&tcl-major-minor;/generic/*.h</name>
+      </permissions>
+      <remove>/usr/include/tcl&tcl-major-minor;/generic/tcl.h</remove>
+      <remove>/usr/include/tcl&tcl-major-minor;/generic/tclDecls.h</remove>
+      <remove>/usr/include/tcl&tcl-major-minor;/generic/tclPlatDecls.h</remove>
+      <link>
+        <option>force</option>
+        <option>no-dereference</option>
+        <target>/usr/include/tcl&tcl-major-minor;</target>
+        <name>/usr/lib/tcl&tcl-major-minor;/include</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>libtcl&tcl-major-minor;.so</target>
+        <name>/usr/lib/libtcl.so</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>tclsh&tcl-major-minor;</target>
+        <name>/usr/bin/tclsh</name>
+      </link>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&tcl-directory;</remove>
+    </stage>
+  </package>
+</alfs>

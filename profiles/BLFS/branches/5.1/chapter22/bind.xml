@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch22.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="bind" version="&bind-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&bind-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Creating user and group">
+      <execute command="groupadd">
+        <param>-f</param>
+        <param>named</param>
+      </execute>
+      <execute command="grep -q ^named /etc/passwd || useradd">
+        <param>-c named</param>
+        <param>-m</param>
+        <param>-g named</param>
+        <param>-s /bin/false</param>
+        <param>named</param>
+      </execute>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&bind-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--sysconfdir=/etc</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Configuring chroot environment">
+      <stageinfo>
+        <base>/home/named</base>
+      </stageinfo>
+      <mkdir>
+        <option>parents</option>
+        <name>dev</name>
+        <name>etc/namedb/slave</name>
+        <name>var/run</name>
+      </mkdir>
+      <execute command="mknod">
+        <param>dev/null</param>
+        <param>c 1 3</param>
+      </execute>
+      <execute command="mknod">
+        <param>dev/random</param>
+        <param>c 1 8</param>
+      </execute>
+      <permissions mode="666">
+        <name>dev/null</name>
+        <name>dev/random</name>
+      </permissions>
+      <mkdir>
+        <option>parents</option>
+        <name>etc/namedb/pz</name>
+      </mkdir>
+      <copy>
+        <source>/etc/localtime</source>
+        <destination>etc</destination>
+      </copy>
+    </stage>
+    <stage name="Configuring bind">
+      <textdump>
+        <file>/home/named/etc/named.conf</file>
+        <content>
+	  = options {
+	  =   directory "/etc/namedb";
+	  =   pid-file "/var/run/named.pid";
+	  =   statistics-file "/var/run/named.stats";
+	  =
+	  = };
+	  = controls {
+	  =   inet 127.0.0.1 allow { localhost; } keys { rndc_key; };
+	  = };
+	  = key "rndc_key" {
+	  =   algorithm hmac-md5;
+	  =   secret "[c3Ryb25nIGVub3VnaCBmb3IgYSBtYW4gYnV0IG1hZGUgZm9yIGEgd29tYW4K]";
+	  = };
+	  = zone "." {
+	  =   type hint;
+	  =   file "root.hints";
+	  = };
+	  = zone "0.0.127.in-addr.arpa" {
+	  =   type master;
+	  =   file "pz/127.0.0";
+	  = };
+	</content>
+      </textdump>
+      <textdump>
+        <file>/home/named/etc/namedb/pz/127.0.0</file>
+        <content>
+	  =$TTL 3D
+	  =@	  IN	  SOA	    ns.local.domain.	  hostmaster.local.domain. ( 
+	  =			      1	    ; Serial
+	  =			      8H    ; Refresh
+	  =			      2H    ; Retry
+	  =			      4W    ; Expire
+	  =			      1D)   ; Minimum TTL
+	  =		    NS	    ns.local.domain.
+	  =1		    PTR	    localhost.
+	</content>
+      </textdump>
+      <textdump>
+        <file>/home/named/etc/namedb/root.hints</file>
+        <content>
+	  =.                       6D  IN      NS      A.ROOT-SERVERS.NET.
+	  =.                       6D  IN      NS      B.ROOT-SERVERS.NET.
+	  =.                       6D  IN      NS      C.ROOT-SERVERS.NET.
+	  =.                       6D  IN      NS      D.ROOT-SERVERS.NET.
+	  =.                       6D  IN      NS      E.ROOT-SERVERS.NET.
+	  =.                       6D  IN      NS      F.ROOT-SERVERS.NET.
+	  =.                       6D  IN      NS      G.ROOT-SERVERS.NET.
+	  =.                       6D  IN      NS      H.ROOT-SERVERS.NET.
+	  =.                       6D  IN      NS      I.ROOT-SERVERS.NET.
+	  =.                       6D  IN      NS      J.ROOT-SERVERS.NET.
+	  =.                       6D  IN      NS      K.ROOT-SERVERS.NET.
+	  =.                       6D  IN      NS      L.ROOT-SERVERS.NET.
+	  =.                       6D  IN      NS      M.ROOT-SERVERS.NET.
+	  =A.ROOT-SERVERS.NET.     6D  IN      A       198.41.0.4
+	  =B.ROOT-SERVERS.NET.     6D  IN      A       128.9.0.107
+	  =C.ROOT-SERVERS.NET.     6D  IN      A       192.33.4.12
+	  =D.ROOT-SERVERS.NET.     6D  IN      A       128.8.10.90
+	  =E.ROOT-SERVERS.NET.     6D  IN      A       192.203.230.10
+	  =F.ROOT-SERVERS.NET.     6D  IN      A       192.5.5.241
+	  =G.ROOT-SERVERS.NET.     6D  IN      A       192.112.36.4
+	  =H.ROOT-SERVERS.NET.     6D  IN      A       128.63.2.53
+	  =I.ROOT-SERVERS.NET.     6D  IN      A       192.36.148.17
+	  =J.ROOT-SERVERS.NET.     6D  IN      A       192.58.128.30
+	  =K.ROOT-SERVERS.NET.     6D  IN      A       193.0.14.129
+	  =L.ROOT-SERVERS.NET.     6D  IN      A       198.32.64.12
+	  =M.ROOT-SERVERS.NET.     6D  IN      A       202.12.27.33
+	</content>
+      </textdump>
+      <textdump>
+        <file>/etc/rndc.conf</file>
+        <content>
+	  =key rndc_key {
+	  =algorithm "hmac-md5";
+	  =    secret
+	  =    "[c3Ryb25nIGVub3VnaCBmb3IgYSBtYW4gYnV0IG1hZGUgZm9yIGEgd29tYW4K]";
+	  =    };
+	  =options {
+	  =    default-server localhost;
+	  =    default-key    rndc_key;
+	  =};
+	</content>
+      </textdump>
+      <copy base="/etc">
+        <source>resolv.conf</source>
+        <destination>resolv.conf.bak</destination>
+      </copy>
+      <textdump>
+        <file>/etc/resolv.conf</file>
+        <content>
+	  =search &domain;
+	  =nameserver 127.0.0.1
+	</content>
+      </textdump>
+      <ownership user="named" group="named">
+        <option>recursive</option>
+        <name>/home/named</name>
+      </ownership>
+    </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-bind</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&bind-directory;</remove>
+      <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+    </stage>
+  </package>
+</alfs>

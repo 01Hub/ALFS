@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch11.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="fcron" version="&fcron-version;">
+    <packageinfo>
+      <utilizes>
+        <name>sendmail</name>
+      </utilizes>
+      <utilizes>
+        <name>postfix</name>
+      </utilizes>
+      <utilizes>
+        <name>qmail</name>
+      </utilizes>
+      <utilizes>
+        <name>exim</name>
+      </utilizes>
+      <utilizes>
+        <name>courier</name>
+      </utilizes>
+      <utilizes>
+        <name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+        <name>openjade</name>
+      </utilizes>
+      <utilizes>
+        <name>docbook-dsssl</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&fcron-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Creating user and group">
+      <execute command="groupadd">
+        <param>-f</param>
+        <param>fcron</param>
+      </execute>
+      <execute command="grep -q ^fcron /etc/passwd || useradd">
+        <param>-c fcron</param>
+        <param>-d /dev/null</param>
+        <param>-g fcron</param>
+        <param>-s /bin/false</param>
+        <param>fcron</param>
+      </execute>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&fcron-directory;</base>
+      </stageinfo>
+      <textdump mode="append">
+        <file>/etc/syslog.conf</file>
+        <content>
+	  =# Begin fcron addition to /etc/syslog.conf
+	  =
+	  =cron.* -/var/log/cron.log
+	  =
+	  =# End fcron addition
+	</content>
+      </textdump>
+      <execute command="/etc/rc.d/init.d/sysklogd">
+        <param>reload</param>
+      </execute>
+      <configure>
+        <param>--without-sendmail</param>
+        <param>--with-answer-all=no</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-fcron</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&fcron-directory;</remove>
+      <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+    </stage>
+  </package>
+</alfs>

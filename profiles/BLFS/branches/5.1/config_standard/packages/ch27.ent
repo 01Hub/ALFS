@@ -1,0 +1,34 @@
+<!--************* packages for chapter 27 *************-->
+
+<!ENTITY sawfish-version   "1.3">
+<!ENTITY sawfish-package   "sawfish-&sawfish-version;.tar.gz">
+<!ENTITY sawfish-directory "sawfish-&sawfish-version;">
+
+<!ENTITY fluxbox-version   "0.1.14">
+<!ENTITY fluxbox-package   "fluxbox-&fluxbox-version;.tar.bz2">
+<!ENTITY fluxbox-directory "fluxbox-&fluxbox-version;">
+<!ENTITY fluxbox-gcc33-patch "fluxbox-&fluxbox-version;-gcc33.patch">
+
+<!ENTITY metacity-version   "2.8.0">
+<!ENTITY metacity-package   "metacity-&metacity-version;.tar.bz2">
+<!ENTITY metacity-directory "metacity-&metacity-version;">
+
+<!ENTITY xfce-version   "4.0.4">
+<!ENTITY xfce-package   "xfce-&xfce-version;-src.tar.bz2">
+<!ENTITY xfce-directory "xfce-&xfce-version;">
+<!ENTITY xfce-libxfce4util-package "libxfce4util-&xfce-version;.tar.gz">
+<!ENTITY xfce-libxfce4util-directory "libxfce4util-&xfce-version;">
+<!ENTITY xfce-libxfcegui4-package "libxfcegui4-&xfce-version;.tar.gz">
+<!ENTITY xfce-libxfcegui4-directory "libxfcegui4-&xfce-version;">
+<!ENTITY xfce-libxfce4mcs-package "libxfce4mcs-&xfce-version;.tar.gz">
+<!ENTITY xfce-libxfce4mcs-directory "libxfce4mcs-&xfce-version;">
+<!ENTITY xfce-xfcemcsmanager-package "xfce-mcs-mananger-&xfce-version;.tar.gz">
+<!ENTITY xfce-xfcemcsmanager-directory "xfce-mcs-manager-&xfce-version;">
+<!ENTITY xfce-xfwm4-package "xfwm4-&xfce-version;.tar.gz">
+<!ENTITY xfce-xfwm4-directory "xfwm4-&xfce-version;">
+<!ENTITY xfce-xfdesktop-package "xfdesktop-&xfce-version;.tar.gz">
+<!ENTITY xfce-xfdesktop-directory "xfdesktop-&xfce-version;">
+<!ENTITY xfce-xfce4panel-package "xfce4-panel-&xfce-version;.tar.gz">
+<!ENTITY xfce-xfce4panel-directory "xfce4-panel-&xfce-version;">
+<!ENTITY xfce-xfceutils-package "xfce-utils-&xfce-version;.tar.gz">
+<!ENTITY xfce-xfceutils-directory "xfce-utils-&xfce-version;">

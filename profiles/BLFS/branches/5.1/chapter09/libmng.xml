@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch09.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="libmng" version="&libmng-version;">
+    <packageinfo>
+      <requires>
+        <name>libjpeg</name>
+      </requires>
+      <requires>
+        <name>lcms</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&libmng-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&libmng-directory;</base>
+      </stageinfo>
+      <execute command="./autogen.sh" />
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <copy>
+        <source>doc/man/*.3</source>
+        <destination>/usr/share/man/man3</destination>
+      </copy>
+      <copy>
+        <source>doc/man/*.5</source>
+        <destination>/usr/share/man/man5</destination>
+      </copy>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&libmng-directory;</remove>
+    </stage>
+  </package>
+</alfs>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch31.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="eog" version="&eog-version;">
+    <packageinfo>
+      <requires>
+        <name>libgnomeprintui</name>
+      </requires>
+      <utilizes>
+        <name>libjpeg</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&eog-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&eog-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+        <param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+        <param>--localstatedir=/var/lib</param>
+        <param>--sysconfdir=/etc/gnome</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&eog-directory;</remove>
+    </stage>
+  </package>
+</alfs>

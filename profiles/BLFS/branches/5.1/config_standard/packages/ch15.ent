@@ -1,0 +1,4 @@
+<!--************* packages for chapter 15 *************-->
+<!ENTITY rp-pppoe-version "3.5">
+<!ENTITY rp-pppoe-package "rp-pppoe-&rp-pppoe-version;.tar.gz">
+<!ENTITY rp-pppoe-directory "rp-pppoe-&rp-pppoe-version;">

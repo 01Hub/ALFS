@@ -1,0 +1,8 @@
+<!--************* packages for chapter 46 *************-->
+
+<!ENTITY tex-version   "2.0.2">
+<!ENTITY tex-package   "tetex-src-&tex-version;.tar.gz">
+<!ENTITY tex-texmf-package     "tetex-texmf-&tex-version;.tar.gz">
+<!ENTITY tex-texmfsrc-package  "tetex-texmfsrc-&tex-version;.tar.gz">
+<!ENTITY tex-directory "tetex-src-&tex-version;">
+<!ENTITY tex-readlink-patch "tetex-src-&tex-version;-remove-readlink-1.patch">

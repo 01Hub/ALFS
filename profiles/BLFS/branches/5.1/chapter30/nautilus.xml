@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch30.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="nautilus" version="&nautilus-version;">
+    <packageinfo>
+      <requires>
+        <name>eel</name>
+      </requires>
+      <requires>
+        <name>librsvg</name>
+      </requires>
+      <requires>
+        <name>gnome-desktop</name>
+      </requires>
+      <utilizes>
+        <name>startup-notification</name>
+      </utilizes>
+      <utilizes>
+        <name>esound</name>
+      </utilizes>
+      <utilizes>
+        <name>libgsf</name>
+      </utilizes>
+      <utilizes>
+        <name>cdparanoia</name>
+      </utilizes>
+      <utilizes>
+        <name>libjpeg</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&nautilus-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&nautilus-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+        <param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+        <param>--sysconfdir=/etc/gnome</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&nautilus-directory;</remove>
+    </stage>
+  </package>
+</alfs>

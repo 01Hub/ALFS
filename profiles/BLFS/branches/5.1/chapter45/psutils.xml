@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch45.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="psutils" version="&psutils-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&psutils-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&psutils-directory;</base>
+      </stageinfo>
+      <copy>
+        <source>Makefile.unix</source>
+        <destination>Makefile</destination>
+      </copy>
+      <search_replace>
+        <file>Makefile</file>
+        <find>/usr/local</find>
+        <replace>/usr</replace>
+      </search_replace>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&psutils-directory;</remove>
+    </stage>
+  </package>
+</alfs>

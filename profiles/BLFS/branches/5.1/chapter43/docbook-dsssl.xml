@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch43.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="docbook-dsssl" version="&docbook-dsssl-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&docbook-dsssl-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&docbook-dsssl-directory;</base>
+      </stageinfo>
+      <mkdir>
+        <option>parents</option>
+        <name>/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;</name>
+      </mkdir>
+      <mkdir base="/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;">
+        <option>parents</option>
+        <name>dtds/decls</name>
+        <name>lib</name>
+        <name>common</name>
+        <name>html</name>
+        <name>print</name>
+        <name>test</name>
+        <name>images</name>
+      </mkdir>
+      <execute command="install">
+        <param>bin/collateindex.pl</param>
+        <param>/usr/bin</param>
+      </execute>
+      <copy>
+        <source>catalog</source>
+        <source>VERSION</source>
+        <destination>/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;</destination>
+      </copy>
+      <copy>
+        <source>dtds/decls/*.dcl</source>
+        <destination>/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;/dtds/decls</destination>
+      </copy>
+      <copy>
+        <source>lib/dblib.dsl</source>
+        <destination>/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;/lib</destination>
+      </copy>
+      <copy>
+        <source>common/*.dsl</source>
+        <destination>/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;/common</destination>
+      </copy>
+      <copy>
+        <source>common/*.ent</source>
+        <destination>/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;/common</destination>
+      </copy>
+      <copy>
+        <source>html/*.dsl</source>
+        <destination>/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;/html</destination>
+      </copy>
+      <copy>
+        <source>lib/*.dsl</source>
+        <destination>/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;/lib</destination>
+      </copy>
+      <copy>
+        <source>print/*.dsl</source>
+        <destination>/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;/print</destination>
+      </copy>
+      <copy>
+        <source>images/*.gif</source>
+        <destination>/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;/images</destination>
+      </copy>
+      <execute command="install-catalog">
+        <param>--add</param>
+        <param>/etc/sgml/dsssl-docbook-stylesheets.cat</param>
+        <param>/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;/catalog</param>
+      </execute>
+      <execute command="install-catalog">
+        <param>--add</param>
+        <param>/etc/sgml/sgml-docbook.cat</param>
+        <param>/etc/sgml/dsssl-docbook-stylesheets.cat</param>
+      </execute>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&docbook-dsssl-directory;</remove>
+    </stage>
+  </package>
+</alfs>

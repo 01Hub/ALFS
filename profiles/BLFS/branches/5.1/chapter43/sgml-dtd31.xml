@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch43.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="sgml-dtd31" version="&sgml-dtd31-version;">
+    <packageinfo>
+      <requires>
+        <name>unzip</name>
+      </requires>
+      <requires>
+        <name>sgml-common</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <mkdir>
+        <name>&build_dir;/&sgml-dtd31-directory;</name>
+      </mkdir>
+      <unpack>
+        <archive>&packages_dir;/&sgml-dtd31-package;</archive>
+        <destination>&build_dir;/&sgml-dtd31-directory;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&sgml-dtd31-directory;</base>
+      </stageinfo>
+      <copy>
+        <source>docbook.cat</source>
+        <destination>docbook.cat.orig</destination>
+      </copy>
+      <search_replace>
+        <file>docbook.cat</file>
+        <find>ISO 8879</find>
+        <replace></replace>
+      </search_replace>
+      <search_replace>
+        <file>docbook.cat</file>
+        <find>gml</find>
+        <replace></replace>
+      </search_replace>
+      <search_replace>
+        <file>docbook.cat</file>
+        <find>DTDDECL "-//OASIS//DTD DocBook V3.1//EN"</find>
+        <replace>SGMLDECL</replace>
+      </search_replace>
+      <execute command="install -d /usr/share/sgml/docbook/sgml-dtd-3.1" />
+      <ownership user="root" group="root">
+        <option>recursive</option>
+        <name>.</name>
+      </ownership>
+      <permissions mode="755">
+        <option>recursive</option>
+        <name>.</name>
+      </permissions>
+      <execute command="install docbook.cat /usr/share/sgml/docbook/sgml-dtd-3.1/catalog" />
+      <copy>
+        <option>archive</option>
+        <option>force</option>
+        <source>*.dtd</source>
+        <source>*.mod</source>
+        <source>*.dcl</source>
+        <destination>/usr/share/sgml/docbook/sgml-dtd-3.1</destination>
+      </copy>
+      <execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-3.1.cat /usr/share/sgml/docbook/sgml-dtd-3.1/catalog" />
+      <execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-3.1.cat /etc/sgml/sgml-docbook.cat" />
+      <textdump>
+        <file>/usr/share/sgml/docbook/sgml-dtd-3.1/catalog</file>
+        <content>
+	  = -- Begin Single Major Version catalog changes --
+	  =
+	  =PUBLIC "-//Davenport//DTD DocBook V3.0//EN" "docbook.dtd"
+	  =
+	  = -- End Single Major Version catalog changes --
+	</content>
+      </textdump>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&sgml-dtd31-directory;</remove>
+    </stage>
+  </package>
+</alfs>

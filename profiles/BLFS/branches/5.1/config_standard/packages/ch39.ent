@@ -1,0 +1,28 @@
+<!--************* packages for chapter 39 *************-->
+
+<!ENTITY ffmpeg-version      "0.4.8">
+<!ENTITY ffmpeg-package      "ffmpeg-&ffmpeg-version;.tar.gz">
+<!ENTITY ffmpeg-directory    "ffmpeg-&ffmpeg-version;">
+
+<!ENTITY avifile-base-version "0.7">
+<!ENTITY avifile-version      "&avifile-base-version;.38">
+<!ENTITY avifile-package      "avifile-&avifile-base-version;-&avifile-version;.tar.gz">
+<!ENTITY avifile-directory    "avifile-&avifile-base-version;-&avifile-version;">
+
+<!ENTITY avifile-binaries-package      "binaries-011002.tgz">
+
+<!ENTITY mplayer-version      "1.0pre4">
+<!ENTITY mplayer-package      "MPlayer-&mplayer-version;.tar.bz2">
+<!ENTITY mplayer-directory    "mplayer-&mplayer-version;">
+
+<!ENTITY mplayer-codecs-package            "extralite.tar.bz2">
+<!ENTITY mplayer-arial-iso-8859-1-package  "font-arial-iso-8859-1.tar.bz2">
+<!ENTITY mplayer-skin-package              "default-1.8.tar.bz2">
+
+<!ENTITY xine-ui-version      "0.9.23">
+<!ENTITY xine-ui-package      "xine-ui-&xine-ui-version;.tar.gz">
+<!ENTITY xine-ui-directory    "xine-ui-&xine-ui-version;">
+
+<!ENTITY transcode-version      "0.6.12">
+<!ENTITY transcode-package      "transcode-&transcode-version;.tar.bz2">
+<!ENTITY transcode-directory    "transcode-&transcode-version;">

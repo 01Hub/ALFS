@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch12.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="python" version="&python-version;">
+    <packageinfo>
+      <utilizes>
+        <name>expat</name>
+      </utilizes>
+      <utilizes>
+        <name>tk</name>
+      </utilizes>
+      <utilizes>
+        <name>gdbm</name>
+      </utilizes>
+      <utilizes>
+        <name>db</name>
+      </utilizes>
+      <utilizes>
+        <name>gmp</name>
+      </utilizes>
+      <utilizes>
+        <name>readline</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&python-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&python-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&python-patch;</param>
+      </patch>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--enable-shared</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&python-directory;</remove>
+    </stage>
+  </package>
+</alfs>
