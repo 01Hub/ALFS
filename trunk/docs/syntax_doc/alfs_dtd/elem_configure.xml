@@ -6,21 +6,20 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT configure      (param*)>
+&lt;!ELEMENT configure     ((param | prefix)*)&gt;
 &lt;!ATTLIST configure
-          base           CDATA #IMPLIED
-          command        CDATA #IMPLIED>
+          base             CDATA #IMPLIED
+          command          CDATA #IMPLIED&gt;
 </synopsis>
 
-<para>This element occurs in the elements
-<link linkend="elem_alfs">alfs</link>,
-<link linkend="elem_alfs">else</link>,
-<link linkend="elem_stage">stage</link>.
-and <link linkend="elem_then">then</link>
+<para>This element is an element of&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
 </para>
 
-<para>See also :
-<link linkend="elem_param">param</link>
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_param"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_prefix"/>
 </para>
 
 </sect2>
@@ -28,71 +27,74 @@ and <link linkend="elem_then">then</link>
 <sect2>
 <title>Description</title>
 
-<para>The element <token>configure</token> is used to describe a command
-configure.</para>
+<para>The element <filename>configure</filename> is one of the many main
+operation elements. The element <filename>configure</filename> is used to
+describe the command <command>configure</command>.</para>
 
-<para>When processing the element, one executes the command ./configure
-with the parameters specified.</para>
+<para>Notice that all the elements <filename>param</filename> and
+<filename>prefix</filename> are surrounded by parathensis
+[&nbsp;(&nbsp;)&nbsp;]and followed by an asterisk [&nbsp;*&nbsp;]. The
+asterisk signifies that each element can be used optionally inside the
+<filename>configure</filename> declaration in a profile and that, if used,
+they can be used more than once.</para>
 
-<para>The attribute <token>base</token> allows to specify the directory
-in which the command is executed.</para>
+<para>When processing the element, one executes the command
+<command>./configure</command> with the parameter(s) and prefix(es) specified.</para>
 
-<para>The attribute <token>command</token> allows to specify the command
-if one doesn't want to use the default "./configure".</para>
+<para>The attribute <filename>base</filename> allows you to specify the
+directory in which the command is executed. See
+<xref linkend="elem_base"/>.</para>
+
+<para>The attribute <filename>command</filename> allows you to specify a
+custom command if you doen't want to use the default
+<command>./configure</command>. This is extremely usefull when running
+<command>./configure</command> in a build directory outside the main source
+directory.  The packages <filename>gcc</filename> and
+<filename>glibc</filename> often require this.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<para>The first example is a call to configure without
-parameter :</para>
+<para>This example calls to <filename>configure</filename> without any
+parameters :</para>
 
-<programlisting>
-&lt;configure base="/usr/src/mypackage/" />
-</programlisting>
-
-<para>The equivalent bash script is :</para>
-
-<programlisting>
-echo Executing configure
-cd /usr/src/mypackage/
-./configure
-</programlisting>
-
-<para>The second example is a call to configure with
-a parameter :</para>
-
-<programlisting>
-&lt;configure base="/usr/src/mypackage/">
-  &lt;param>--prefix=/opt/mypackage&lt;/param>
-&lt;/configure>
-</programlisting>
+<screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
+&lt;/configure&gt;
+</userinput></screen>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>
-echo Executing configure
+<screen><userinput>echo Executing configure
 cd /usr/src/mypackage/
-./configure --prefix=/opt/mypackage
-</programlisting>
+<command>./configure</command></userinput></screen>
 
-<para>The third example is a call to configure with
-a parameter and an explicit command :</para>
+<para>This example calls <filename>configure</filename> with a parameter :
+</para>
 
-<programlisting>
-&lt;configure base="/usr/src/mypackage/"
-    command="PATH=/usr/local/bin ./configure">
-  &lt;param>--prefix=/opt/mypackage&lt;/param>
-&lt;/configure>
-</programlisting>
+<screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
+	&lt;param&gt;--prefix=/opt/mypackage&lt;/param&gt;
+&lt;/configure&gt;</userinput></screen>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Executing configure
+<screen><userinput>echo Executing configure
 cd /usr/src/mypackage/
-PATH=/usr/local/bin ./configure --prefix=/opt/mypackage
-</programlisting>
+<command>./configure --prefix=/opt/mypackage</command></userinput></screen>
+
+<para>This example calls <filename>configure</filename> with a parameter and
+an explicit command :</para>
+
+<screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot; command=&quot;PATH=/usr/local/bin ./configure&quot;&gt;
+	&lt;param&gt;--prefix=/opt/mypackage&lt;/param&gt;
+&lt;/configure&gt;</userinput></screen>
+
+<para>The equivalent bash script is :</para>
+
+<screen><userinput>echo Executing configure
+cd /usr/src/mypackage/
+<command>PATH=/usr/local/bin ./configure --prefix=/opt/mypackage</command></userinput></screen>
 
 </sect2>
 
