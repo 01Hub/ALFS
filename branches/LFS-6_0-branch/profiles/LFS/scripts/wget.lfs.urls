@@ -1,8 +1,6 @@
 ftp://alpha.gnu.org/pub/gnu/grub/grub-0.94.tar.gz
 ftp://alpha.gnu.org/gnu/tar/tar-1.13.94.tar.gz
 ftp://alpha.gnu.org/gnu/findutils/findutils-4.1.20.tar.gz
-ftp://be-linux.org/belfs/glibc-2.3.4-20040408.tar.bz2
-ftp://be-linux.org/belfs/lfs-bootscripts-2.1.1-pre2.tar.bz2
 ftp://cpan.pair.com/pub/CPAN/src/perl-5.8.4.tar.bz2
 ftp://ftp.cis.ohio-state.edu/mirror/gnu/autoconf/autoconf-2.59.tar.bz2
 ftp://ftp.cis.ohio-state.edu/mirror/gnu/automake/automake-1.8.5.tar.bz2
@@ -31,6 +29,7 @@ ftp://ftp.pld.org.pl/software/shadow/shadow-4.0.4.1.tar.bz2
 ftp://ftp.seindal.dk/gnu/m4-1.4.tar.gz
 ftp://ftp.vim.org/pub/vim/unix/vim-6.2.tar.bz2
 ftp://ftp.win.tue.nl/pub/home/aeb/linux-local/utils/kbd/kbd-1.12.tar.gz
+ftp://gaosu.rave.org/pub/linux/lfs/packages/conglomeration/glibc-2.3.4-20040510.tar.bz2
 ftp://gcc.gnu.org/pub/gcc/prerelease-3.3.4-20040517/gcc-core-3.3.4-20040517.tar.bz2
 ftp://gcc.gnu.org/pub/gcc/prerelease-3.3.4-20040517/gcc-g++-3.3.4-20040517.tar.bz2
 ftp://gcc.gnu.org/pub/gcc/prerelease-3.3.4-20040517/gcc-testsuite-3.3.4-20040517.tar.bz2
@@ -53,6 +52,7 @@ http://umn.dl.sourceforge.net/sourceforge/tcl/tcl8.4.6-src.tar.gz
 http://umn.dl.sourceforge.net/sourceforge/lex/flex-2.5.31.tar.bz2
 http://www.gzip.org/zlib/zlib-1.2.1.tar.bz2
 http://www.ibiblio.org/pub/Linux/system/daemons/sysklogd-1.4.1.tar.gz
+http://downloads.linuxfromscratch.org/lfs-bootscripts-2.1.1.tar.bz2
 http://downloads.linuxfromscratch.org/patches/6.0-cvs/bash-2.05b-gnu-fixes-2.patch
 http://downloads.linuxfromscratch.org/patches/6.0-cvs/coreutils-5.2.1-dupes-1.patch
 http://downloads.linuxfromscratch.org/patches/6.0-cvs/coreutils-5.2.1-uname-1.patch
@@ -69,6 +69,6 @@ http://downloads.linuxfromscratch.org/patches/6.0-cvs/net-tools-1.60-kernel-head
 http://downloads.linuxfromscratch.org/patches/6.0-cvs/perl-5.8.4-libc-1.patch
 http://downloads.linuxfromscratch.org/patches/6.0-cvs/sysklogd-1.4.1-kernel-headers-1.patch
 http://downloads.linuxfromscratch.org/patches/6.0-cvs/sysklogd-1.4.1-signal-1.patch
-http://downloads.linuxfromscratch.org/patches/6.0-cvs/udev-025-config-1.patch
+http://downloads.linuxfromscratch.org/patches/6.0-cvs/udev-025-config-2.patch
 http://downloads.linuxfromscratch.org/patches/6.0-cvs/util-linux-2.12a-kernel-headers-1.patch
 http://www.tazenda.demon.co.uk/phil/net-tools/net-tools-1.60.tar.bz2

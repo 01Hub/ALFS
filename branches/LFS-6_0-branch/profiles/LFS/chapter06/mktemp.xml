@@ -28,6 +28,10 @@
 		<make>
 			<param>install</param>
 		</make>
+
+		<make>
+			<param>install-tempfile</param>
+		</make>
 	</stage>
 
 	<stage name="Cleaning up.">

@@ -33,7 +33,6 @@
 <!ENTITY c5-tar                SYSTEM "chapter05/tar.xml">
 <!ENTITY c5-tcl                SYSTEM "chapter05/tcl.xml">
 <!ENTITY c5-texinfo            SYSTEM "chapter05/texinfo.xml">
-<!ENTITY c5-udev               SYSTEM "chapter05/udev.xml">
 <!ENTITY c5-util-linux         SYSTEM "chapter05/util-linux.xml">
 
 <!-- Chapter 6 -->
@@ -41,7 +40,6 @@
 <!ENTITY c6-autoconf SYSTEM           "chapter06/autoconf.xml">
 <!ENTITY c6-automake SYSTEM           "chapter06/automake.xml">
 <!ENTITY c6-bash SYSTEM               "chapter06/bash.xml">
-<!ENTITY c6-basic-dev SYSTEM          "chapter06/basic-dev.xml">
 <!ENTITY c6-binutils SYSTEM           "chapter06/binutils.xml">
 <!ENTITY c6-bison SYSTEM              "chapter06/bison.xml">
 <!ENTITY c6-bzip2 SYSTEM              "chapter06/bzip2.xml">
