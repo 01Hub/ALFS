@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch31.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,45 +10,46 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="gucharmap" version="&gucharmap-version;">
-
-        <packageinfo>
-                <requires><name>intltool</name></requires>
-		<requires><name>popt</name></requires>
-		<requires><name>gtk+2</name></requires>
-		<utilizes><name>libgnomeui</name></utilizes>
-		<utilizes><name>scrollkeeper</name></utilizes>
-        </packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&gucharmap-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&gucharmap-directory;</base>
-		</stageinfo>
-
-		<configure>
-			<param>--prefix=&gnome-prefix;</param>
-			<param>--localstatedir=/var/lib</param>
-		</configure>
-
-		<make/>
-
-		<make>
-			<param>install</param>
-		</make>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&gucharmap-directory;</remove>
-	</stage>
-
-</package>
+  <package name="gucharmap" version="&gucharmap-version;">
+    <packageinfo>
+      <requires>
+        <name>intltool</name>
+      </requires>
+      <requires>
+        <name>popt</name>
+      </requires>
+      <requires>
+        <name>gtk+2</name>
+      </requires>
+      <utilizes>
+        <name>libgnomeui</name>
+      </utilizes>
+      <utilizes>
+        <name>scrollkeeper</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&gucharmap-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&gucharmap-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=&gnome-prefix;</param>
+        <param>--localstatedir=/var/lib</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gucharmap-directory;</remove>
+    </stage>
+  </package>
 </alfs>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch30.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,41 +10,36 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="libgail-gnome" version="&libgail-gnome-version;">
-
-        <packageinfo>
-                <requires><name>libgnomeui</name></requires>
-                <requires><name>at-spi</name></requires>
-        </packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&libgail-gnome-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&libgail-gnome-directory;</base>
-		</stageinfo>
-
-		<configure>
-			<param>--prefix=&gnome-prefix;</param>
-		</configure>
-
-		<make/>
-
-		<make>
-			<param>install</param>
-		</make>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&libgail-gnome-directory;</remove>
-	</stage>
-
-</package>
+  <package name="libgail-gnome" version="&libgail-gnome-version;">
+    <packageinfo>
+      <requires>
+        <name>libgnomeui</name>
+      </requires>
+      <requires>
+        <name>at-spi</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&libgail-gnome-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&libgail-gnome-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=&gnome-prefix;</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&libgail-gnome-directory;</remove>
+    </stage>
+  </package>
 </alfs>

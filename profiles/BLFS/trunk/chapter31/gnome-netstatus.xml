@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch31.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,43 +10,36 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="gnome-netstatus" version="&gnome-netstatus-version;">
-
-        <packageinfo>
-                <requires><name>gnome-panel</name></requires>
-        </packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&gnome-netstatus-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&gnome-netstatus-directory;</base>
-		</stageinfo>
-
-		<configure>
-			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
-			<param>--sysconfdir=/etc/gnome</param>
-			<param>--localstatedir=/var/lib</param>
-		</configure>
-
-		<make/>
-
-		<make>
-			<param>install</param>
-		</make>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&gnome-netstatus-directory;</remove>
-	</stage>
-
-</package>
+  <package name="gnome-netstatus" version="&gnome-netstatus-version;">
+    <packageinfo>
+      <requires>
+        <name>gnome-panel</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&gnome-netstatus-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&gnome-netstatus-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+        <param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+        <param>--sysconfdir=/etc/gnome</param>
+        <param>--localstatedir=/var/lib</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gnome-netstatus-directory;</remove>
+    </stage>
+  </package>
 </alfs>
