@@ -38,7 +38,6 @@
         <param>--disable-profile</param>
         <param>--enable-add-ons</param>
         <param>--enable-kernel=2.6.0</param>
-        <param>--without-cvs</param>
         <param>--libexecdir=/usr/lib/glibc</param>
       </configure>
       <make>
