@@ -6,6 +6,9 @@
 
 <itemizedlist>
 
+<listitem><para>February 23rd, 2004 [jwrober]: Finished the download element
+description.  Closes bug 760.</para></listitem>
+
 <listitem><para>February 23rd, 2004 [jwrober]: Finished the url element
 description.  Closes bug 769.</para></listitem>
 
