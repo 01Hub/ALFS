@@ -40,7 +40,7 @@
 #include "backend.h"
 
 
-int configure_main_ver2(element_s *el)
+static int configure_main_ver2(element_s *el)
 {
 	int status;
 	char *c, *command = NULL;
@@ -73,7 +73,7 @@ int configure_main_ver2(element_s *el)
 	return status;
 }
 
-int configure_main_ver3(element_s *el)
+static int configure_main_ver3(element_s *el)
 {
 	int status;
 	char *c, *command = NULL;

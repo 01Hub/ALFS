@@ -74,7 +74,7 @@ static INLINE char *alloc_basename(const char *archive)
 }
 
 
-int unpack_main_ver2(element_s *el)
+static int unpack_main_ver2(element_s *el)
 {
 	int status = 0;
 	char *base_name;
@@ -190,7 +190,7 @@ int unpack_main_ver2(element_s *el)
 	return status;
 }
 
-int unpack_main_ver3(element_s *el)
+static int unpack_main_ver3(element_s *el)
 {
 	int status = -1;
 	char *base_name = NULL;
@@ -200,7 +200,7 @@ int unpack_main_ver3(element_s *el)
 	char *digest_type = NULL;
 	struct stat file_stat;
 	extension_e extension = UNKNOWN;
-	int command_status;
+	int command_status = -1;
 
 
 	if ((archive = El_unpack_archive(el)) == NULL) {

@@ -57,7 +57,7 @@ static INLINE element_s *find_package(const char *name)
 #endif
 
 
-int check_main(element_s *el)
+static int check_main(element_s *el)
 {
 	int status = 0;
 	char *package;

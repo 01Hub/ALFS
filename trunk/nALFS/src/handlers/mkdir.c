@@ -43,7 +43,7 @@
 #define El_mkdir_dirs(el) alloc_trimmed_param_value("dir", el)
 #define El_mkdir_perm(el) alloc_trimmed_param_value("permissions", el)
 
-int mkdir_main_ver2(element_s *el)
+static int mkdir_main_ver2(element_s *el)
 {
 	int status = 0;
 	int parents = option_exists("parents", el);
@@ -107,7 +107,7 @@ int mkdir_main_ver2(element_s *el)
 	return status;
 }
 
-int mkdir_main_ver3(element_s *el)
+static int mkdir_main_ver3(element_s *el)
 {
 	int options[1], parents;
 	int status = 0;

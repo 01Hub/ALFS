@@ -34,7 +34,7 @@
 #include "backend.h"
 
 
-int alfs_main(element_s *el)
+static int alfs_main(element_s *el)
 {
 	return execute_children(el);
 }

@@ -40,7 +40,7 @@
 #include "backend.h"
 
 
-int patch_main_ver2(element_s *el)
+static int patch_main_ver2(element_s *el)
 {
 	int status;
 	char *base;
@@ -73,7 +73,7 @@ int patch_main_ver2(element_s *el)
 	return status;
 }
 
-int patch_main_ver3(element_s *el)
+static int patch_main_ver3(element_s *el)
 {
 	int status;
 	char *base;

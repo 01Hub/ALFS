@@ -44,7 +44,7 @@
 #define El_copy_destination_v2(el) alloc_trimmed_param_value("destination", el)
 
 
-int copy_main_ver2(element_s *el)
+static int copy_main_ver2(element_s *el)
 {
 	int status = 0;
 	int archive = option_exists("archive",el);
@@ -121,7 +121,7 @@ int copy_main_ver2(element_s *el)
 
 #define El_copy_destination(el) alloc_trimmed_param_value("destination", el)
 
-int copy_main_ver3(element_s *el)
+static int copy_main_ver3(element_s *el)
 {
 	int options[5];
 	int status = 0;

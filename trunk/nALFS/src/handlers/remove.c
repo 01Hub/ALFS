@@ -54,7 +54,7 @@ static INLINE void warn_if_doesnt_exist(const char *file)
 }
 
 
-int remove_main_ver2(element_s *el)
+static int remove_main_ver2(element_s *el)
 {
 	int status = 0;
 	char *tok;
@@ -89,7 +89,7 @@ int remove_main_ver2(element_s *el)
 }
 
 
-int remove_main_ver3(element_s *el)
+static int remove_main_ver3(element_s *el)
 {
 	int status = 0;
 	char *name;

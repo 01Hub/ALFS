@@ -34,7 +34,7 @@
 #include "win.h"
 
 
-int log_main(element_s *el)
+static int log_main(element_s *el)
 {
 	Nprint_h("%s", el->content ? el->content : "");
 

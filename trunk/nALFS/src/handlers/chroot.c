@@ -44,7 +44,7 @@
 #include "backend.h"
 
 
-int chroot_main(element_s *el)
+static int chroot_main(element_s *el)
 {
 	int status;
 	pid_t chroot_pid, got_pid;
