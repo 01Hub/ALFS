@@ -8,10 +8,12 @@
 
 <!ENTITY % book      SYSTEM "book/book.ent">
 <!ENTITY % preface   SYSTEM "preface/preface.ent">
+<!ENTITY % chapter00 SYSTEM "chapter00/chapter00.ent">
 <!ENTITY % chapter01 SYSTEM "chapter01/chapter01.ent">
 
 %book;
 %preface;
+%chapter00;
 %chapter01;
 
 ]>

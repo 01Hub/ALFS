@@ -1,5 +1,5 @@
-<sect1 id="ch1-introduction" xreflabel="Introduction">
-<?dbhtml filename="introduction.html" dir="chapter01"?>
+<sect1 id="ch0-introduction" xreflabel="Introduction">
+<?dbhtml filename="introduction.html" dir="chapter00"?>
 <title>Introduction</title>
 
 <para><acronym>LFS</acronym> stands for Linux From Scratch and it's a project, 
