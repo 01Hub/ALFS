@@ -132,7 +132,63 @@ eg;
     </link>
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Permissions:
+------------
+
+    <permissions mode="" base="">
+	<name />
+    </permissions>
+
+eg;
+
+    <permissions mode="777" base="/tmp">
+	<name>foo</name>
+	<name>bar</name>
+    </permissions>
+
+
+Ownership:
+----------
+
+    <ownership user="" group="" base="">
+	<name />
+    </ownership>
+
+eg;
+
+    <ownership user="root" group="root" base="/tmp">
+	<name>foo</name>
+	<name>bar</name>
+    </ownership>
+
+
+Unpack:
+-------
+
+    <unpack>
+	<option />
+	<source />
+	<destination />
+    </unpack>
+
+eg;
+
+    <unpack>
+	<source>/tmp/sed-3.02.tar.bz2</source>
+	<destination>/tmp</destination>
+    </unpack>
+
+Remove:
+-------
+
+    <remove />
+
+eg;
+
+    <remove>/tmp/sed-3.02</remove>
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Generic Package:
 ----------------
