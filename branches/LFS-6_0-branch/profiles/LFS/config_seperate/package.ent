@@ -173,6 +173,11 @@
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.gz">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
+<!ENTITY libxml2-md5 "41e9ccf94c1cacb8b1d127b01fba8c38">
+<!ENTITY libxml2-version "2.6.9">
+<!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.gz">
+<!ENTITY libxml2-directory "libxml2-&libxml2-version;">
+
 <!ENTITY linux-md5 "5218790bc3db41e77a7422969639a9ad">
 <!ENTITY linux-version "2.6.6">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
@@ -219,6 +224,11 @@
 <!ENTITY module-tools-version "3.0">
 <!ENTITY module-tools-package "module-init-tools-&module-tools-version;.tar.bz2">
 <!ENTITY module-tools-directory "module-init-tools-&module-tools-version;">
+
+<!ENTITY nALFS-md5 "981775a3e2dbbcfaab9df44652992f2a">
+<!ENTITY nALFS-version "1.2.2">
+<!ENTITY nALFS-package "nALFS-&nALFS-version;.tar.bz2">
+<!ENTITY nALFS-directory "nALFS-&nALFS-version;">
 
 <!ENTITY ncurses-md5 "069c8880072060373290a4fefff43520">
 <!ENTITY ncurses-version "5.4">
