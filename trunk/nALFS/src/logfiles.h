@@ -56,7 +56,8 @@ logs_t *logs_init_from_directory(const char *pdir);
 int logs_get_packages_cnt(logs_t *logs);
 char *logs_get_plog_filename(logs_t *logs, int i);
 char *logs_get_plog_name(logs_t *logs, int i);
-char *logs_get_flog_filename(logs_t *logs, int i);
+char *logs_get_plog_version(logs_t *logs, int i);
+char *logs_get_plog_installed(logs_t *logs, int i);
 
 /*
  * A single log file, initialized from package's string.

@@ -225,6 +225,30 @@ int logs_save(struct logs *logs)
  * Multiple log files, initialized from directory.
  */
 
+
+static void update_plogf_after_parsing(struct plogf *plogf)
+{
+	xmlNodePtr p, node;
+       
+
+	p = plogf->doc->children;
+
+	node = n_xmlGetLastElementByName(p, "name");
+	if (node) {
+		plogf->name = (char *) xmlNodeGetContent(node);
+	}
+
+	node = n_xmlGetLastElementByName(p, "version");
+	if (node) {
+		plogf->version = (char *) xmlNodeGetContent(node);
+	}
+
+	node = n_xmlGetLastElementByName(p, EL_NAME_FOR_FILES_NAME);
+	if (node) {
+		plogf->installed = (char *) xmlNodeGetContent(node);
+	}
+}
+
 struct logs *logs_init_from_directory(const char *dir_name)
 {
 	DIR *dir;
@@ -260,6 +284,8 @@ struct logs *logs_init_from_directory(const char *dir_name)
 			if (plogf->doc) {
 				plogf->doc->children =
 				xmlDocGetRootElement(plogf->doc);
+
+				update_plogf_after_parsing(plogf);
 			}
 
 			++logs->cnt;
@@ -299,25 +325,22 @@ char *logs_get_plog_name(struct logs *logs, int i)
 	return NULL;
 }
 
-char *logs_get_flog_filename(struct logs *logs, int i)
+char *logs_get_plog_version(struct logs *logs, int i)
 {
-	char *filename = NULL;
-	xmlDocPtr doc = NULL;
-
 	if (0 <= i && i < logs->cnt) {
-		doc = logs->list[i]->doc;
+		return logs->list[i]->version;
 	}
 
-	if (doc != NULL) {
-		xmlNodePtr n = n_xmlGetLastElementByName(
-			doc->children, EL_NAME_FOR_FILES_NAME);
+	return NULL;
+}
 
-		if (n) {
-			filename = xmlNodeGetContent(n);
-		}
+char *logs_get_plog_installed(struct logs *logs, int i)
+{
+	if (0 <= i && i < logs->cnt) {
+		return logs->list[i]->installed;
 	}
 
-	return filename;
+	return NULL;
 }
 
 /*
