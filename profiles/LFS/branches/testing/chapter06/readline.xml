@@ -23,6 +23,12 @@
 			<base>&build_dir;/&readline-directory;</base>
 		</stageinfo>
 
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&readline-display-wrap-patch;</param>
+		</patch>
+
 		<configure>
 			<param>--prefix=/usr</param>
 		</configure>
