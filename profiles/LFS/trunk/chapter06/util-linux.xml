@@ -45,6 +45,10 @@
         <param>HAVE_SLN=yes</param>
         <param>install</param>
       </make>
+      <move>
+        <source>/usr/bin/logger</source>
+	<destination>/bin</destination>
+      </move>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&util-linux-directory;</remove>
