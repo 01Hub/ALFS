@@ -23,6 +23,8 @@
 
 
 #include <string.h>
+#include <stdlib.h>
+#include <errno.h>
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -276,12 +278,34 @@ static int validate_boolean_input(const struct option_s *option,
 	return status;
 }
 
+static int validate_number_input(const struct option_s *option,
+				 const char *input, NUMBER *val)
+{
+	char *tmp;
+	int status = 1;
+
+	*val = (NUMBER) strtol(input, &tmp, 10);
+			
+	if (tmp != NULL && *tmp) {
+		option_invalid(option,
+			       "%s\n\textraneous characters found (%s).",
+			       input, tmp);
+		status = 0;
+	} else if (errno) {
+		option_invalid(option,
+			       "%s\n\tnumeric conversion failure.",
+			       input);
+		status = 0;
+	}
+
+	return status;
+			
+}
+
 set_opt_e set_yet_unknown_option(const char *opt, const char *val)
 {
 	int i;
-	long num;
-	char *s = NULL;
-
+	NUMBER num;
 
 	for (i = 0; options[i]; i++) {
 		if (strcmp(options[i]->name, opt) != 0) {
@@ -290,16 +314,14 @@ set_opt_e set_yet_unknown_option(const char *opt, const char *val)
 
 		switch (options[i]->type) {
 		case O_BOOL:
-			if (validate_boolean_input(options[i], val,
+			if (!validate_boolean_input(options[i], val,
 						   &options[i]->val.bool.value))
-				return OPTION_SET;
+				return OPTION_INVALID_VALUE;
 			
-			return OPTION_INVALID_VALUE;
+			return OPTION_SET;
 			
 		case O_NUMBER:
-			num = strtol(val, &s, 10);
-			
-			if (s != NULL && *s)
+			if (!validate_number_input(options[i], val, &num))
 				return OPTION_INVALID_VALUE;
 			
 			if (options[i]->val.num.validate &&
