@@ -77,28 +77,32 @@
 		&c5-tar;
 		&c5-texinfo;
 		&c5-bash;
-		&c5-util-linux;
 		&c5-perl;
+		&c5-util-linux;
+		&c5-strip;
 	</stage>
 </stage>
 
 <stage name="Chapter 6 - Installing basic system software">
+	<stage name="Creating directories and mounting the proc and devpts file systems">
+		&c6-proc;
+	</stage>
+
 	<stage name="Chroot with /tools">
 		<stageinfo>
 			<root>&LFS;</root>
 			<environment>
 				<variable name="HOME">/root</variable>
-				<variable name="TERM">$TERM</variable>
+				<variable name="TERM">&TERM;</variable>
 				<variable name="PS1">'\u:\w\$ '</variable>
 				<variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin</variable>
 				<variable name="CFLAGS">&gcc_optimizations;</variable>
 				<variable name="CXXFLAGS">&gcc_optimizations;</variable>
 			</environment>
 		</stageinfo>
-	
+
 		&c6-changingowner;
 		&c6-creatingdirs;
-		&c6-proc;
 		&c6-createfiles;
 		&c6-pwdgroup;
 		&c6-makedev;
@@ -110,7 +114,8 @@
 		&c6-gcc;
 		&c6-coreutils;
 		&c6-zlib;
-		&c6-lfs-utils;
+		&c6-mktemp;
+		&c6-iana-etc;		
 		&c6-findutils;
 		&c6-gawk;
 		&c6-ncurses;
@@ -152,22 +157,7 @@
 		&c6-tar;
 		&c6-util-linux;
 		&c6-gcc-2953;
-	</stage>
-
-	<stage name="Revised chroot (no /tools).">
-		<stageinfo>
-			<root>&LFS;</root>
-			<environment>
-				<variable name="HOME">/root</variable>
-				<variable name="TERM">$TERM</variable>
-				<variable name="PS1">'\u:\w\$ '</variable>
-				<variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin</variable>
-				<variable name="CFLAGS">&gcc_optimizations;</variable>
-				<variable name="CXXFLAGS">&gcc_optimizations;</variable>
-			</environment>
-		</stageinfo>
-		
-		&c6-bootscripts;
+		&c6-strip;
 	</stage>
 </stage>
 
@@ -176,7 +166,7 @@
 		<root>&LFS;</root>
 		<environment>
 			<variable name="HOME">/root</variable>
-			<variable name="TERM">$TERM</variable>
+			<variable name="TERM">&TERM;</variable>
 			<variable name="PS1">'\u:\w\$ '</variable>
 			<variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin</variable>
 			<variable name="CFLAGS">&gcc_optimizations;</variable>
@@ -184,6 +174,7 @@
 		</environment>
 	</stageinfo>
 
+	&c7-bootscripts;
 	&c7-setclock;
 	&c7-hostname;
 	&c7-hosts;
@@ -195,7 +186,7 @@
 		<root>&LFS;</root>
 		<environment>
 			<variable name="HOME">/root</variable>
-			<variable name="TERM">$TERM</variable>
+			<variable name="TERM">&TERM;</variable>
 			<variable name="PS1">'\u:\w\$ '</variable>
 			<variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin</variable>
 			<variable name="CFLAGS">&gcc_optimizations;</variable>
@@ -213,21 +204,13 @@
                 <root>&LFS;</root>
                 <environment>
                         <variable name="HOME">/root</variable>
-                        <variable name="TERM">$TERM</variable>
+                        <variable name="TERM">&TERM;</variable>
                         <variable name="PS1">'\u:\w\$ '</variable>
                         <variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin</variable>
                         <variable name="CFLAGS">&gcc_optimizations;</variable>
                         <variable name="CXXFLAGS">&gcc_optimizations;</variable>
                 </environment>
         </stageinfo>
-
-	<stage name="Stripping debug symbols">
-		<execute command="/tools/bin/find">
-			<param>/{,usr/,usr/local/}{bin,sbin,lib}</param>
-			<param>-type f</param>
-			<param>-exec /tools/bin/strip --strip-debug '{}' ';'</param>	
-		</execute>
-	</stage>
 
 	<remove>/tools</remove>
 
@@ -237,6 +220,13 @@
 	</textdump>
 </stage>
 
-<remove>/tools</remove>
+<stage name="Finishing Up">
+	<remove>/tools</remove>
+
+	<execute command="umount">
+		<param>&LFS;/proc</param>
+		<param>&LFS;/dev/pts</param>
+	</execute>
+</stage>
 
 </alfs>
