@@ -31,8 +31,7 @@ a <filename>download</filename>, <filename>search_replace</filename> or
 
 <para>The first example is a search_replace.</para>
 
-<userinput><screen>&lt;search_replace
-	base = &quot;/usr/src/mypackage&quot;&gt;
+<userinput><screen>&lt;search_replace base=&quot;/usr/src/mypackage&quot;&gt;
 	&lt;file&gt;runit.sh&lt;/file&gt;
 	&lt;find&gt;BINDIR&lt;/find&gt;
 	&lt;replace&gt;/bin&lt;/replace&gt;
@@ -40,10 +39,10 @@ a <filename>download</filename>, <filename>search_replace</filename> or
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<userinput><screen>echo Performing substitution in runit.sh
+<screen><userinput>echo Performing substitution in runit.sh
 cd /usr/src/mypackage
 cp runit.sh /tmp/foo.$$
-<command>sed -e 's/BINDIR/\/bin/' /tmp/foo.$$ > runit.sh</command></screen></userinput>
+<command>sed -e 's/BINDIR/\/bin/' /tmp/foo.$$ > runit.sh</command></userinput></screen>
 
 <para>The second example is a textdump.</para>
 
