@@ -193,6 +193,7 @@ static int textdump_main(const element_s * const element)
 	struct textdump_data *data = (struct textdump_data *) element->handler_data;
 	char *tok;
 	FILE *fp;
+	char *tmp;
 
 	if (change_to_base_dir(element, data->base, 1))
 		return -1;
@@ -211,9 +212,11 @@ static int textdump_main(const element_s * const element)
 		return -1;
 	}
 
-	for (tok = strtok(data->content, "\n"); tok; tok = strtok(NULL, "\n")) {
+	tmp = xstrdup(data->content);
+	for (tok = strtok(tmp, "\n"); tok; tok = strtok(NULL, "\n")) {
 		fprintf(fp, "%s\n", ++tok);
 	}
+	xfree(tmp);
 
 	fclose(fp);
 	

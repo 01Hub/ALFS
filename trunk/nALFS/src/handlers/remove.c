@@ -192,11 +192,13 @@ static int remove_main_ver2(const element_s * const element)
 	struct remove_data *data = (struct remove_data *) element->handler_data;
 	int status = 0;
 	char *tok;
+	char *tmp;
        
 	if (change_current_dir("/"))
 		return -1;
 
-	for (tok = strtok(data->content, WHITE_SPACE); tok; tok = strtok(NULL, WHITE_SPACE)) {
+	tmp = xstrdup(data->content);
+	for (tok = strtok(tmp, WHITE_SPACE); tok; tok = strtok(NULL, WHITE_SPACE)) {
 		Nprint_h("Removing %s.", tok);
 		warn_if_doesnt_exist(tok);
 		if ((status = execute_command(element, "rm -fr %s", tok))) {
@@ -204,6 +206,7 @@ static int remove_main_ver2(const element_s * const element)
 			break;
 		}
 	}
+	xfree(tmp);
 
 	return status;
 }
