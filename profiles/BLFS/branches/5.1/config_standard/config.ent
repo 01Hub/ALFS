@@ -27,6 +27,10 @@
 <!ENTITY dhcpcd-start-params "">
 <!ENTITY dhcpcd-stop-params "-k">
 
+<!-- X Window System Implementation -->
+<!-- XFree86 (xfree86) or X.org (xorg) -->
+<!ENTITY ximpl "xorg">
+
 <!-- where to put kde -->
 <!ENTITY kde-prefix "/usr">
 

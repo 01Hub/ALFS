@@ -17,7 +17,7 @@
         <name>glib2</name>
       </requires>
       <utilizes>
-        <name>xfree86</name>
+        <name>&ximpl;</name>
       </utilizes>
       <utilizes>
         <name>samba</name>

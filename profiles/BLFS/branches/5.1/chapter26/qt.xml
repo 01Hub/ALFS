@@ -14,7 +14,7 @@
   <package name="qt" version="&qt-version;">
     <packageinfo>
       <requires>
-        <name>xfree86</name>
+        <name>&ximpl;</name>
       </requires>
       <requires>
         <name>libpng</name>
