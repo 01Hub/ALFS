@@ -43,19 +43,19 @@ stage.</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Creating file /mnt/lfs/_nalfs_tmp.1...
+<screen>echo Creating file /mnt/lfs/_nalfs_tmp.1...
 cat > /mnt/lfs/_nalfs_tmp.1 &lt;&lt; 'EOF1'
 echo Executing configure
 cd /usr/src/gzip.1.2.4a
-./configure
+<command>./configure</command>
 
 echo Executing make
 cd /usr/src/gzip.1.2.4a
-make
+<command>make</command>
 
 echo Executing make
 cd /usr/src/gzip.1.2.4a
-make install
+<command>make install</command>
 
 true
 EOF1

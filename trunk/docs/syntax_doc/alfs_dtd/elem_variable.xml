@@ -59,23 +59,23 @@ appended to the value of the environment variable</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Stage
+<screen>echo Stage
 
 export GCCFLAGS=-O2
 export PATH=${PATH}:/opt/foo
 echo Executing configure
 cd /usr/src/gzip.1.2.4a
-./configure
+<command>./configure</command>
 
 echo Executing make
 cd /usr/src/gzip.1.2.4a
-make
+<command>make</command>
 
 echo Executing make
 cd /usr/src/gzip.1.2.4a
-make install
+<command>make install</command>
 
-echo Exiting stage</userinput></screen>
+echo Exiting stage</screen>
 
 </sect2>
 

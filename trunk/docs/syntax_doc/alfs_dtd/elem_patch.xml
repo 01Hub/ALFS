@@ -53,8 +53,8 @@ which the command will be performed.</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo 'patch -N -p1 -i ../gawk-3.1.1.patch'
-<command>patch -N -p1 -i ../gawk-3.1.1.patch</command></userinput></screen>
+<screen>echo 'patch -N -p1 -i ../gawk-3.1.1.patch'
+<command>patch -N -p1 -i ../gawk-3.1.1.patch</command></screen>
 
 </sect2>
 

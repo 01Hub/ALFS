@@ -49,7 +49,7 @@ creation mode.</para>
 </sect2>
 
 <sect2>
-<title>Examples</title>
+<title>Example #1</title>
 
 <screen><userinput>&lt;textdump base=&quot;/etc&quot;&gt;
 	&lt;file&gt;group&lt;/file&gt;
@@ -72,8 +72,8 @@ creation mode.</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>cd /etc
-cat > group &lt;&lt; 'EOF'
+<screen>cd /etc
+<command>cat > group &lt;&lt; 'EOF'</command>
 root:x:0:
 bin:x:1:
 sys:x:2:
@@ -86,7 +86,12 @@ disk:x:8:
 lp:x:9:
 dialout:x:10:
 audio:x:11:
-EOF</userinput></screen>
+<command>EOF</command></screen>
+
+</sect2>
+
+<sect2>
+<title>Example #2</title>
 
 <screen><userinput>&lt;textdump mode=&quot;append&quot;&gt;
         &lt;file&gt;/etc/sysconfig/network&lt;/file&gt;
@@ -98,11 +103,11 @@ EOF</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Generating file /etc/sysconfig/network
-cat >> /etc/sysconfig/network &lt;&lt; 'EOF'
+<screen>echo Generating file /etc/sysconfig/network
+<command>cat >> /etc/sysconfig/network &lt;&lt; 'EOF'</command>
 GATEWAY=192.168.123.254
 GATEWAY_IF=eth0
-EOF</userinput></screen>
+<command>EOF</command></screen>
 
 </sect2>
 

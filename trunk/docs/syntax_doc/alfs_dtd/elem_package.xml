@@ -60,7 +60,7 @@ the package. See <xref linkend="elem_version"/>.</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Generating package zlib 1.1.4
+<screen>echo Generating package zlib 1.1.4
 
 #-----------------------------------------
 echo Stage "Unpacking a package."
@@ -69,15 +69,15 @@ echo Unpacking /usr/src/lfs-packages/zlib.1.1.4.tar.gz into /usr/src
 cd /usr/src
 [[ $? != 0 ]] &amp;&amp;  echo Command failed &amp;&amp; exit 3
 
-tar xzvf /usr/src/lfs-packages/zlib.1.1.4.tar.gz
+<command>tar xzvf /usr/src/lfs-packages/zlib.1.1.4.tar.gz</command>
 [[ $? != 0 ]] &amp;&amp;  echo Command failed &amp;&amp; exit 3
 
 
 echo Exiting stage "Unpacking a package."
 
-...
+.....
 
-echo End of generating package zlib 1.1.4</userinput></screen>
+echo End of generating package zlib 1.1.4</screen>
 
 </sect2>
 

@@ -57,10 +57,10 @@ which the file replacement occurs. See
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Performing substitution in runit.sh
+<screen>echo Performing substitution in runit.sh
 cd /usr/src/mypackage
 cp runit.sh /tmp/foo.$$
-<command>sed -e 's/BINDIR/\/bin/' /tmp/foo.$$ > runit.sh</command></userinput></screen>
+<command>sed -e 's/BINDIR/\/bin/' /tmp/foo.$$ > runit.sh</command></screen>
 
 </sect2>
 

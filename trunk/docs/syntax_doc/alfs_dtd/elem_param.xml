@@ -35,8 +35,8 @@ element.</para>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Executing make
-<command>make install</command></userinput></screen>
+<screen>echo Executing make
+<command>make install</command></screen>
 
 </sect2>
 

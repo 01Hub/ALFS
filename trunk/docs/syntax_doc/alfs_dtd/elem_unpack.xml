@@ -27,18 +27,20 @@
 <title>Description</title>
 
 <para>The element <filename>unpack</filename> is one of the many main
-operation elements.  It is used to unpack an archive into a destination directory</para>
+operation elements.  It is used to unpack an archive into a destination
+directory</para>
 
 <para>The sub-element <filename>reference</filename> gives the
 <acronym>URL</acronym> of the archive, which is used if the archive file is
 not available locally.</para>
 
-<para>The sub-element <filename>digest</filename> gives the digest of the archive, as computed
-by openssl, using the digest type specified in the attribute <filename>type</filename>.</para>
+<para>The sub-element <filename>digest</filename> gives the digest of the
+archive, as computed by openssl, using the digest type specified in the
+attribute <filename>type</filename>.</para>
 
-<para>The sub-element <filename>archive</filename> gives the name of the archive,
-and the sub-element <filename>destination</filename> given the name of the directory
-in which the archive is unpacked</para>
+<para>The sub-element <filename>archive</filename> gives the name of the
+archive, and the sub-element <filename>destination</filename> given the
+name of the directory in which the archive is unpacked</para>
 
 </sect2>
 
@@ -46,15 +48,15 @@ in which the archive is unpacked</para>
 <title>Examples</title>
 
 <screen><userinput>&lt;unpack&gt;
-    &lt;digest&gt;cbe9f79450aeecfb06d5e856af16c2cf&lt;/digest&gt;
-    &lt;reference&gt;ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz&lt;/reference&gt;
-    &lt;archive&gt;/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive&gt;
-    &lt;destination&gt;/usr/src&lt;/destination&gt;
+	&lt;digest&gt;cbe9f79450aeecfb06d5e856af16c2cf&lt;/digest&gt;
+	&lt;reference&gt;ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz&lt;/reference&gt;
+	&lt;archive&gt;/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive&gt;
+	&lt;destination&gt;/usr/src&lt;/destination&gt;
 &lt;/unpack&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+<screen>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
 [[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
   echo Retrieving  ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
 [[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp;
@@ -63,7 +65,7 @@ in which the archive is unpacked</para>
   echo Archive does not exist &amp;&amp; exit 3
 
 cd /usr/src
-<command>tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></userinput></screen>
+<command>tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></screen>
 
 </sect2>
 

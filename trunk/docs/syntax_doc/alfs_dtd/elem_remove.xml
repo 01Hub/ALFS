@@ -36,8 +36,8 @@ determine what options are available.</para></note>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Removing /usr/src/mypackage
-<command>rm -rf /usr/src/mypackage</command></userinput></screen>
+<screen>echo Removing /usr/src/mypackage
+<command>rm -rf /usr/src/mypackage</command></screen>
 
 </sect2>
 
