@@ -19,7 +19,6 @@
 
 	<configure>
 	        <param>--prefix=/usr</param>
-		<param>--prefix=/usr</param>
 		<param>--sysconfdir=/etc</param>
 		<param>--enable-color</param>
 		<param>--enable-multibuffer</param>
@@ -44,18 +43,18 @@
 	</copy>
 
 	<textdump base="/etc">
-	<file>nanorc</file>
-	<content>
-	=set autoindent
-	=set const
-	=set fill 72
-	=set historylog
-	=set multibuffer
-	=set nohelp
-	=set regexp
-	=set smooth
-	=set suspend
-        </content>
+		<file>nanorc</file>
+		<content>
+		=set autoindent
+		=set const
+		=set fill 72
+		=set historylog
+		=set multibuffer
+		=set nohelp
+		=set regexp
+		=set smooth
+		=set suspend
+        	</content>
 	</textdump>
 	
     </stage>

@@ -2,8 +2,13 @@
 
     <packageinfo>
         <requires><name>xfree86</name></requires>
+	<!-- or -->
+	<!--<requires><name>xorg</name></requires>-->
         <utilizes><name>gtk+2</name></utilizes>
         <utilizes><name>lesstif</name></utilizes>
+	<utilizes><name>python</name></utilizes>
+	<utilizes><name>tcl</name></utilizes>
+	<utilizes><name>ruby</name></utilizes>
     </packageinfo>
 
     <stage name="Unpacking a package.">

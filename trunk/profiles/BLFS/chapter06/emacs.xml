@@ -4,7 +4,7 @@
         <utilizes><name>xfree86</name></utilizes>
         <utilizes><name>libjpeg</name></utilizes>
         <utilizes><name>libpng</name></utilizes>
-        <utilizes><name>libtiff6</name></utilizes>
+        <utilizes><name>libtiff</name></utilizes>
         <utilizes><name>libungif</name></utilizes>
     </packageinfo>
 
