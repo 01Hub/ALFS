@@ -26,7 +26,7 @@
                  enter the wrong directory, nALFS will try to download
                  all the packages in it !!!
      -->
-<!ENTITY orig_packages_dir "/home/jeremy/lfs-unstable-sources">
+<!ENTITY orig_packages_dir "/your/LFS-CVS/packages">
 
 <!-- Partition of your new LFS system.
      This entity is used only to initialize the new fstab file.
@@ -167,7 +167,7 @@ network.-->
      environment variable
 -->
 
-<!ENTITY TERM "xterm-color">
+<!ENTITY TERM "linux">
 
 <!-- argument entities for /etc/sysconfig/console script -->
 <!ENTITY keymap-args "">
