@@ -48,4 +48,3 @@ or
    nALFS into a location other than /usr/local/bin you will need to edit
    runit to point to your copy of nALFS.
 
-Testing.
