@@ -19,6 +19,7 @@ To use the profile you should:
   - the file kernel.xml contains the profile for building the kernel
   - the file grub.xml contains the commands for configuring grub - 
       these are commented out by default
+  - the file keymap.xml is used to set up the default keymap
 
 - create a symbolic link named "config" to the configuration
   you want to use
