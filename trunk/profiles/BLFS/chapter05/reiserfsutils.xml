@@ -26,13 +26,13 @@
 	<link>
 	        <option>force</option>
 	        <target>reiserfsck</target>
-		<name>/sbin/fsck.reiserfsck</name>
+		<name>/sbin/fsck.reiserfs</name>
 	</link>
 
 	<link>
 	        <option>force</option>
 	        <target>mkreiserfs</target>
-		<name>/sbin/mkfs.resiserfs</name>
+		<name>/sbin/mkfs.reiserfs</name>
 	</link>
 
     </stage>

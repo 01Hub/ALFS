@@ -1,56 +1,73 @@
-<!ENTITY lfs-bootscripts-version "2.0.3">
+<!ENTITY lfs-bootscripts-version "2.0.4">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
 <!--************* packages for chapter 4 *************-->
 
+<!ENTITY cracklib-version   "2.7">
+<!ENTITY cracklib-package   "cracklib,&cracklib-version;.tar.gz">
+<!ENTITY cracklib-directory "cracklib,&cracklib-version;">
+<!ENTITY cracklib-wordlist "allwords">
+<!ENTITY cracklib-blfs-patch "cracklib-&cracklib-version;-blfs-1.patch">
+
+
 <!ENTITY linuxpam-version   "0.77">
-<!ENTITY linuxpam-package   "Linux-PAM-0.77.tar.bz2">
-<!ENTITY linuxpam-directory "Linux-PAM-0.77">
+<!ENTITY linuxpam-package   "Linux-PAM-&linuxpam-version;.tar.bz2">
+<!ENTITY linuxpam-directory "Linux-PAM-&linuxpam-version;">
 
-<!ENTITY linuxpam-patch     "Linux-PAM-0.77-linkage-1.patch">
+<!ENTITY linuxpam-linkage-patch "Linux-PAM-&linuxpam-version;-linkage-2.patch">
 
-<!ENTITY shadow-version   "4.0.3">
-<!ENTITY shadow-package   "shadow-4.0.3.tar.bz2">
-<!ENTITY shadow-directory "shadow-4.0.3">
+<!ENTITY shadow-version   "4.0.4.1">
+<!ENTITY shadow-package   "shadow-&shadow-version;.tar.bz2">
+<!ENTITY shadow-directory "shadow-&shadow-version;">
 
-<!ENTITY shadow-patch     "shadow-4.0.3-pam-2.patch">
+<!ENTITY shadow-pam-patch     "shadow-&shadow-version;-pam-1.patch">
 
 <!ENTITY iptables-version   "1.2.9">
-<!ENTITY iptables-package   "iptables-1.2.9.tar.bz2">
-<!ENTITY iptables-directory "iptables-1.2.9">
+<!ENTITY iptables-package   "iptables-&iptables-version;.tar.bz2">
+<!ENTITY iptables-directory "iptables-&iptables-version;">
 
 <!ENTITY gnupg-version      "1.2.4">
-<!ENTITY gnupg-package      "gnupg-1.2.4.tar.bz2">
-<!ENTITY gnupg-directory    "gnupg-1.2.4">
+<!ENTITY gnupg-package      "gnupg-&gnupg-version;.tar.bz2">
+<!ENTITY gnupg-directory    "gnupg-&gnupg-version;">
+
+<!ENTITY tripwire-version "2.3.1-2">
+<!ENTITY tripwire-package "tripwire-&tripwire-version;.tar.gz">
+<!ENTITY tripwire-directory "tripwire-&tripwire-version;">
+
+<!ENTITY tripwire-gcc-patch "tripwire-&tripwire-version;-gcc3-build-fixes.patch">
+<!-- the content of the following entity should be the name of your policy file for tripwire -->
+<!--<!ENTITY tripwire-policy-file "tripwire-policy.txt">-->
+<!ENTITY tripwire-policy-file "twpol-all.txt">
+
 
 <!--************* packages for chapter 5 *************-->
 
-<!ENTITY reiserfsutils-version   "3.6.11">
-<!ENTITY reiserfsutils-package   "reiserfsprogs-3.6.11.tar.gz">
-<!ENTITY reiserfsutils-directory "reiserfsprogs-3.6.11">
+<!ENTITY reiserfsutils-version   "3.6.14">
+<!ENTITY reiserfsutils-package   "reiserfsprogs-&reiserfsutils-version;.tar.gz">
+<!ENTITY reiserfsutils-directory "reiserfsprogs-&reiserfsutils-version;">
 
-<!ENTITY xfsprogs-version   "2.5.6">
-<!ENTITY xfsprogs-package   "xfsprogs-2.5.6.src.tar.gz">
-<!ENTITY xfsprogs-directory "xfsprogs-2.5.6">
+<!ENTITY xfsprogs-version   "2.6.10">
+<!ENTITY xfsprogs-package   "xfsprogs-&xfsprogs-version;.src.tar.gz">
+<!ENTITY xfsprogs-directory "xfsprogs-&xfsprogs-version;">
 
 <!--************* packages for chapter 6 *************-->
 
 <!ENTITY vim-version   "6.2">
-<!ENTITY vim-package   "vim-6.2.tar.bz2">
+<!ENTITY vim-package   "vim-&vim-version;.tar.bz2">
 <!ENTITY vim-directory "vim62">
 
 <!ENTITY emacs-version   "21.3">
-<!ENTITY emacs-package   "emacs-21.3.tar.gz">
-<!ENTITY emacs-directory "emacs-21.3">
+<!ENTITY emacs-package   "emacs-&emacs-version;.tar.gz">
+<!ENTITY emacs-directory "emacs-&emacs-version;">
 
-<!ENTITY nano-version   "1.2.2">
-<!ENTITY nano-package   "nano-1.2.2.tar.gz">
-<!ENTITY nano-directory "nano-1.2.2">
+<!ENTITY nano-version   "1.2.3">
+<!ENTITY nano-package   "nano-&nano-version;.tar.gz">
+<!ENTITY nano-directory "nano-&nano-version;">
 
 <!ENTITY joe-version   "2.9.8">
-<!ENTITY joe-package   "joe-2.9.8.tar.gz">
-<!ENTITY joe-directory "joe-2.9.8">
+<!ENTITY joe-package   "joe-&joe-version;.tar.gz">
+<!ENTITY joe-directory "joe-&joe-version;">
 
 <!--************* packages for chapter 7 *************-->
 
@@ -1414,11 +1431,6 @@
 
 <!--************* packages for chapter 99 *************-->
 
-<!ENTITY cracklib-version   "2.7">
-<!ENTITY cracklib-package   "cracklib,2.7.tgz">
-<!ENTITY cracklib-directory "cracklib,2.7">
-
-<!ENTITY cracklib-dictionary "allwords">
 
 <!ENTITY t1lib-version   "1.3">
 <!ENTITY t1lib-package   "t1lib-1.3.tar.gz">

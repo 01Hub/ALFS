@@ -13,10 +13,12 @@
 
 
 <!-- chapter 4 -->
+<!ENTITY cracklib  SYSTEM "./chapter04/cracklib.xml">
 <!ENTITY shadow    SYSTEM "./chapter04/shadow.xml">
 <!ENTITY gnupg     SYSTEM "./chapter04/gnupg.xml">
 <!ENTITY iptables  SYSTEM "./chapter04/iptables.xml">
 <!ENTITY linuxpam  SYSTEM "./chapter04/linuxpam.xml">
+<!ENTITY tripwire  SYSTEM "./chapter04/tripwire.xml">
 
 <!-- chapter 5 -->
 <!ENTITY reiserfsutils SYSTEM "./chapter05/reiserfsutils.xml">
@@ -396,7 +398,6 @@
 <!ENTITY tex         SYSTEM "./chapter51/tex.xml">
 
 <!-- chapter 99 -->
-<!ENTITY cracklib  SYSTEM "./chapter99/cracklib.xml">
 <!ENTITY t1lib     SYSTEM "./chapter99/t1lib.xml">
 <!ENTITY bison175  SYSTEM "./chapter99/bison175.xml">
 <!ENTITY libole2   SYSTEM "./chapter99/libole2.xml">

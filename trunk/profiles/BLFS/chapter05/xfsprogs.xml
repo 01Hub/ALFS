@@ -7,16 +7,20 @@
 	</unpack>
     </stage>
 
-    <!-- warning: the XFS patch required to uyse the XFS system
-         has not been added to the profile yet. -->
+    <!-- If planning to use xfs filesystems, you should patch your kernel to support XFS prior to running
+	this profile -->
 
     <stage name="Installing a package.">
         <stageinfo>
 		<base>&build_dir;/&xfsprogs-directory;</base>
 	</stageinfo>
 
-	<configure />
-	
+	<search_replace>
+		<file>Makefile</file>
+		<find>autoconf</find>
+		<replace> </replace>
+	</search_replace>
+
 	<make />
 
 	<make>
