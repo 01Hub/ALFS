@@ -141,7 +141,6 @@ const char *download_parameters[] =
 { "digest", "file", "url", "destination", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
-#ifdef HANDLER_SYNTAX_3_1
 	{
 		.name = "download",
 		.description = "Download",
@@ -153,7 +152,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.is_action = 1,
 		.priority = 0
 	},
-#endif
 	{
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}

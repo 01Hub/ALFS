@@ -115,6 +115,7 @@ static int remove_main_ver3(element_s *el)
 	return status;
 }
 
+
 /*
  * Handlers' information.
  */
@@ -122,7 +123,7 @@ static int remove_main_ver3(element_s *el)
 const char *remove_parameters_ver[] = { NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
-#ifdef HANDLER_SYNTAX_2_0
+#if HANDLER_SYNTAX_2_0
 	{
 		.name = "remove",
 		.description = "Remove files",
@@ -135,7 +136,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.priority = 0
 	},
 #endif
-#ifdef HANDLER_SYNTAX_3_1
+#if HANDLER_SYNTAX_3_0
 	{
 		.name = "remove",
 		.description = "Remove files",
@@ -148,7 +149,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.priority = 0
 	},
 #endif
-#ifdef HANDLER_SYNTAX_3_1
+#if HANDLER_SYNTAX_3_1
 	{
 		.name = "remove",
 		.description = "Remove files",

@@ -360,7 +360,6 @@ static int parse_stageinfo_and_execute_children(
 }
 
 
-
 static int stage_main(element_s *el)
 {
 	int status;
@@ -408,7 +407,7 @@ const char *stage_parameters[] =
 // "name", "description", "logfile", "mode", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
-#ifdef HANDLER_SYNTAX_3_0
+#if HANDLER_SYNTAX_3_0
 	{
 		.name = "stage",
 		.description = "Enter stage: ", // FIXME
@@ -421,7 +420,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.priority = 0
 	},
 #endif
-#ifdef HANDLER_SYNTAX_3_1
+#if HANDLER_SYNTAX_3_1
 	{
 		.name = "stage",
 		.description = "Enter stage: ", // FIXME

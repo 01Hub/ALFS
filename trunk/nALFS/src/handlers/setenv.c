@@ -137,7 +137,7 @@ static int setenv_main(element_s *el)
 const char *setenv_parameters[] = { "variable", "value", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
-#ifdef HANDLER_SYNTAX_2_0
+#if HANDLER_SYNTAX_2_0
 	{
 		.name = "setenv",
 		.description = "Set environment",
@@ -150,7 +150,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.priority = 0
 	},
 #endif
-#ifdef HANDLER_SYNTAX_3_0
+#if HANDLER_SYNTAX_3_0
 	{
 		.name = "setenv",
 		.description = "Set environment",

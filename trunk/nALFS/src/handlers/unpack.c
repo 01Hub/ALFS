@@ -188,6 +188,7 @@ static int unpack_main_ver2(element_s *el)
 	return status;
 }
 
+
 static int unpack_main_ver3(element_s *el)
 {
 	int status = -1;
@@ -340,6 +341,7 @@ static int unpack_main_ver3(element_s *el)
 	return status;
 }
 
+
 /*
  * Handlers' information.
  */
@@ -351,7 +353,7 @@ const char *unpack_parameters_ver3[] =
 { "digest", "reference", "archive", "destination", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
-#ifdef HANDLER_SYNTAX_2_0
+#if HANDLER_SYNTAX_2_0
 	{
 		.name = "unpack",
 		.description = "Unpack",
@@ -364,7 +366,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.priority = 0
 	},
 #endif
-#ifdef HANDLER_SYNTAX_3_0
+#if HANDLER_SYNTAX_3_0
 	{
 		.name = "unpack",
 		.description = "Unpack",
@@ -377,7 +379,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.priority = 0
 	},
 #endif
-#ifdef HANDLER_SYNTAX_3_1
+#if HANDLER_SYNTAX_3_1
 	{
 		.name = "unpack",
 		.description = "Unpack",

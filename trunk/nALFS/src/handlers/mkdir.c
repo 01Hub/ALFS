@@ -43,6 +43,7 @@
 #define El_mkdir_dirs(el) alloc_trimmed_param_value("dir", el)
 #define El_mkdir_perm(el) alloc_trimmed_param_value("permissions", el)
 
+
 static int mkdir_main_ver2(element_s *el)
 {
 	int status = 0;
@@ -106,6 +107,7 @@ static int mkdir_main_ver2(element_s *el)
 	
 	return status;
 }
+
 
 static int mkdir_main_ver3(element_s *el)
 {
@@ -209,7 +211,7 @@ const char *mkdir_parameters_ver3[] =
 // char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
-#ifdef HANDLER_SYNTAX_2_0
+#if HANDLER_SYNTAX_2_0
 	{
 		.name = "mkdir",
 		.description = "Make directories",
@@ -222,7 +224,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.priority = 0
 	},
 #endif
-#ifdef HANDLER_SYNTAX_3_0
+#if HANDLER_SYNTAX_3_0
 	{
 		.name = "mkdir",
 		.description = "Make directories",
@@ -235,7 +237,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.priority = 0
 	},
 #endif
-#ifdef HANDLER_SYNTAX_3_1
+#if HANDLER_SYNTAX_3_1
 	{
 		.name = "mkdir",
 		.description = "Make directories",

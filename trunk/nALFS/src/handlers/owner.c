@@ -178,7 +178,6 @@ const char *owner_parameters[] =
 { "options", "base", "user", "group", "name", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
-#ifdef HANDLER_SYNTAX_2_0
 	{
 		.name = "owner",
 		.description = "Change ownership",
@@ -190,7 +189,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.is_action = 1,
 		.priority = 0
 	},
-#endif
 	{
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}

@@ -42,6 +42,7 @@
 #define El_link_target(el) alloc_trimmed_param_value("target", el)
 #define El_link_name(el) alloc_trimmed_param_value("name", el)
 
+
 static int link_main_ver2(element_s *el)
 {
 	int status;
@@ -123,6 +124,7 @@ static int link_main_ver2(element_s *el)
 
 	return status;
 }
+
 
 static int link_main_ver3(element_s *el)
 {
@@ -248,7 +250,7 @@ const char *link_parameters_ver3[] =
 // char *HANDLER_SYMBOL(attributes)[] = { "type", "base", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
-#ifdef HANDLER_SYNTAX_2_0
+#if HANDLER_SYNTAX_2_0
 	{
 		.name = "link",
 		.description = "Link",
@@ -261,7 +263,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.priority = 0
 	},
 #endif
-#ifdef HANDLER_SYNTAX_3_0
+#if HANDLER_SYNTAX_3_0
 	{
 		.name = "link",
 		.description = "Link",
@@ -274,7 +276,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.priority = 0
 	},
 #endif
-#ifdef HANDLER_SYNTAX_3_1
+#if HANDLER_SYNTAX_3_1
 	{
 		.name = "link",
 		.description = "Link",
