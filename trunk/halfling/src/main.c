@@ -44,31 +44,32 @@
 int main(int argc, char **argv) {
     int c;
 
-    while ((c = getopt_long(argc, argv, "hvt", long_options, (int *)0)) != EOF) {
-	switch (c) {
-	    case 'h':
-		print_help();
-		exit(1);
-		break;
+    while ((c = getopt_long(argc, argv, "hvt", long_options, \
+                                                        (int *)0)) != EOF) {
+        switch (c) {
+            case 'h':
+                print_help();
+                exit(1);
+                break;
 
-	    case 'v':
-		print_version();
-		exit(1);
-		break;
+            case 'v':
+                print_version();
+                exit(1);
+                break;
 
-	    case 't':
-		showtime = 1;
-		break;
-	}
+            case 't':
+                showtime = 1;
+                break;
+        }
     }
 
     if (optind < argc) {
-	while (optind < argc) {
-	    parse_profile(argv[optind++]);
-	}
+        while (optind < argc) {
+            parse_profile(argv[optind++]);
+        }
     } else {
-	print_usage();
-	printf("\nTry 'halfing --help' for more information.\n");
+        print_usage();
+        printf("\nTry 'halfing --help' for more information.\n");
     }
 
     return(0);

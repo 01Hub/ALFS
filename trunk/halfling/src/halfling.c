@@ -44,29 +44,31 @@ int parse_profile(const char *filename) {
     xmlDoc *doc = NULL;
     xmlNode *cur = NULL;
 
+    xmlSubstituteEntitiesDefault(1);
+
     doc = xmlParseFile(filename);
 
     if (doc == NULL) {
-	fprintf(stderr, "Document is not well-formed.\n");
-	return(-1);
+        fprintf(stderr, "Document is not well-formed.\n");
+        return(-1);
     }
 
     cur = xmlDocGetRootElement(doc);
 
     if (cur == NULL) {
-	fprintf(stderr, "Empty root element.\n");
-	xmlFreeDoc(doc);
-	return(-1);
+        fprintf(stderr, "Empty root element.\n");
+        xmlFreeDoc(doc);
+        return(-1);
     }
 
     cur = cur->xmlChildrenNode;
 
     while (cur != NULL) {
-	if (strcmp(cur->name, "package") == 0) {
-	    tag_package(doc, cur);
-	}
+        if (strcmp(cur->name, "package") == 0) {
+            tag_package(doc, cur);
+        }
 
-	cur = cur->next;
+        cur = cur->next;
     }
 
     xmlFreeDoc(doc);

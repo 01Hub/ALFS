@@ -50,10 +50,10 @@ void tag_configure(xmlDoc *doc, xmlNode *cur) {
     options = getMultiTag(doc, cur, "option");
 
     if (command == NULL) {
-	cmd = strconcat("./configure", options, NULL);
+    cmd = strconcat("./configure", options, NULL);
         log("Running `configure%s' in %s.\n", options, base);
     } else {
-	cmd = strconcat(command, " ", options, NULL);
+    cmd = strconcat(command, " ", options, NULL);
         log("Running `%s%s' in %s\n", command, options, base);
     }
 
@@ -61,9 +61,9 @@ void tag_configure(xmlDoc *doc, xmlNode *cur) {
 
     free(base);
     free(command);
-    if (options != "") {
-	free(options);
-    }
+    /*if (options != "") {
+    free(options);
+    }*/
     free(cmd);
 }
 
@@ -77,7 +77,7 @@ void tag_copy(xmlDoc *doc, xmlNode *cur) {
     base = xmlGetProp(cur, "base");
 
     if (base == NULL) {
-	base = strconcat("/", NULL);
+    base = strconcat("/", NULL);
     }
 
     source = getTag(doc, cur, "source");
@@ -103,7 +103,17 @@ void tag_execute(xmlDoc *doc, xmlNode *cur) {
     char *cmd = NULL;
 
     base = xmlGetProp(cur, "base");
+
+    if (base == NULL) {
+        base = strconcat("/", NULL);
+    }
+
     command = xmlGetProp(cur, "command");
+
+    if (command == NULL) {
+        command = strconcat(" ", NULL);
+    }
+
     options = getMultiTag(doc, cur, "option");
 
     cmd = strconcat(command, options, NULL);
@@ -114,7 +124,7 @@ void tag_execute(xmlDoc *doc, xmlNode *cur) {
 
     free(base);
     free(command);
-    free(options);
+    /*free(options);*/
     free(cmd);
 }
 
@@ -164,6 +174,7 @@ void tag_link(xmlDoc *doc, xmlNode *cur) {
     free(cmd);
 }
 
+
 /* FIXME: -C isn't needed if we use base. */
 void tag_make(xmlDoc *doc, xmlNode *cur) {
     char *base = NULL;
@@ -178,9 +189,9 @@ void tag_make(xmlDoc *doc, xmlNode *cur) {
     execute(base, cmd);
 
     free(base);
-    if (options != "") {
-	free(options);
-    }
+    /*if (options != "") {
+    free(options);
+    }*/
     free(cmd);
 }
 
@@ -193,22 +204,22 @@ void tag_mkdir(xmlDoc *doc, xmlNode *cur) {
     base = xmlGetProp(cur, "base");
 
     if (base == NULL) {
-	base = strconcat("/", NULL);
+    base = strconcat("/", NULL);
     }
 
     cur = cur->xmlChildrenNode;
 
     while (cur != NULL) {
-	if (strcmp(cur->name, "name") == 0) {
-	    name = xmlNodeListGetString(doc, cur->xmlChildrenNode, 1);
-	    cmd = strconcat("mkdir ", name, NULL);
-	    log("Creating directory %s in %s.\n", name, base);
-	    execute(base, cmd);
-	    free(name);
-	    free(cmd);
-	}
+    if (strcmp(cur->name, "name") == 0) {
+        name = xmlNodeListGetString(doc, cur->xmlChildrenNode, 1);
+        cmd = strconcat("mkdir ", name, NULL);
+        log("Creating directory %s in %s.\n", name, base);
+        execute(base, cmd);
+        free(name);
+        free(cmd);
+    }
 
-	cur = cur->next;
+    cur = cur->next;
     }
 
     free(base);
@@ -220,31 +231,30 @@ void tag_package(xmlDoc *doc, xmlNode *cur) {
     cur = cur->xmlChildrenNode;
 
     while (cur != NULL) {
-	if (strcmp(cur->name, "info") == 0) {
-	    tag_info(doc, cur);
-	} else if (strcmp(cur->name, "unpack") == 0) {
-	    tag_unpack(doc, cur);
-	} else if (strcmp(cur->name, "configure") == 0) {
-	    tag_configure(doc, cur);
-	} else if (strcmp(cur->name, "copy") == 0 ) {
-	    tag_copy(doc, cur);
-	} else if (strcmp(cur->name, "execute") == 0) {
-	    tag_execute(doc, cur);
-	} else if (strcmp(cur->name, "make") == 0) {
-	    tag_make(doc, cur);
-	} else if (strcmp(cur->name, "mkdir") == 0) {
-	    tag_mkdir(doc, cur);
-	} else if (strcmp(cur->name, "link") == 0) {
-	    tag_link(doc, cur);
-	} else if (strcmp(cur->name, "remove") == 0) {
-	    tag_remove(doc, cur);
-	} else if (strcmp(cur->name, "setenv") == 0) {
-	    tag_setenv(doc, cur);
-	}
+        if (strcmp(cur->name, "info") == 0) {
+            tag_info(doc, cur);
+        } else if (strcmp(cur->name, "unpack") == 0) {
+            tag_unpack(doc, cur);
+        } else if (strcmp(cur->name, "configure") == 0) {
+            tag_configure(doc, cur);
+        } else if (strcmp(cur->name, "copy") == 0 ) {
+            tag_copy(doc, cur);
+        } else if (strcmp(cur->name, "execute") == 0) {
+            tag_execute(doc, cur);
+        } else if (strcmp(cur->name, "make") == 0) {
+            tag_make(doc, cur);
+        } else if (strcmp(cur->name, "mkdir") == 0) {
+            tag_mkdir(doc, cur);
+        } else if (strcmp(cur->name, "link") == 0) {
+            tag_link(doc, cur);
+        } else if (strcmp(cur->name, "remove") == 0) {
+            tag_remove(doc, cur);
+        } else if (strcmp(cur->name, "setenv") == 0) {
+            tag_setenv(doc, cur);
+        }
 
-	cur = cur->next;
+        cur = cur->next;
     }
-
 }
 
 
@@ -271,11 +281,11 @@ void tag_setenv(xmlDoc *doc, xmlNode *cur) {
     value = getTag(doc, cur, "value");
 
     if (value == NULL) {
-	log("Unsetting %s environmental variable.\n", variable);
-	unsetenv(variable);
+        log("Unsetting %s environmental variable.\n", variable);
+        unsetenv(variable);
     } else {
-	log("Setting environmental variable %s to %s.\n", variable, value);
-	setenv(variable, value, 1);
+        log("Setting environmental variable %s to %s.\n", variable, value);
+        setenv(variable, value, 1);
     }
 
     free(variable);
