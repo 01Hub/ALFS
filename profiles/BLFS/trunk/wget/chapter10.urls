@@ -18,8 +18,9 @@ ftp://ftp.gnome.org/pub/GNOME/sources/intltool/0.32/intltool-0.32.1.tar.bz2
 
 ftp://ftp.gnu.org/pub/gnu/screen/screen-4.0.2.tar.gz
 
-http://tidy.sourceforge.net/src/old/tidy_src_050301.tgz
+http://tidy.sourceforge.net/src/old/tidy_src_050305.tgz
 http://tidy.sourceforge.net/docs/tidy_docs.tgz
+http://www.linuxfromscratch.org/blfs/downloads/svn/tidy-050305-prevent_PRE_newlines-1.patch
 
 http://freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.10.tar.gz
 

@@ -28,9 +28,26 @@
       <execute command="getent group proftpd &gt; /dev/null || groupadd">
         <param>proftpd</param>
       </execute>
+      <execute command="getent passwd proftpd &gt; /dev/null || useradd">
+        <param>-c proftpd</param>
+        <param>-d /home/ftp</param>
+        <param>-g proftpd</param>
+        <param>-s /usr/lib/proftpd/proftpdshell</param>
+        <param>proftpd</param>
+      </execute>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/lib/proftpd</name>
+      </mkdir>
+      <ownership user="proftpd" group="proftpd">
+	<name>/usr/lib/proftpd</name>
+      </ownership>
+      <permissions mode="775">
+	<name>/usr/lib/proftpd</name>
+      </permissions>
       <link>
 	<option>force</option>
-	<target>false</target>
+	<target>/bin/false</target>
 	<name>/usr/lib/proftpd/proftpdshell</name>
       </link>
       <textdump mode="append">
@@ -39,13 +56,6 @@
 	  =/usr/lib/proftpd/proftpdshell
 	</content>
       </textdump>
-      <execute command="getent passwd proftpd &gt; /dev/null || useradd">
-        <param>-c proftpd</param>
-        <param>-d /home/ftp</param>
-        <param>-g proftpd</param>
-        <param>-s /usr/lib/proftpd/proftpdshell</param>
-        <param>proftpd</param>
-      </execute>
     </stage>
     <stage name="Installing">
       <stageinfo>

@@ -39,10 +39,11 @@
 <!ENTITY screen-package   "screen-&screen-version;.tar.gz">
 <!ENTITY screen-directory "screen-&screen-version;">
 
-<!ENTITY tidy-version   "050301">
+<!ENTITY tidy-version   "050305">
 <!ENTITY tidy-package   "tidy_src_&tidy-version;.tgz">
 <!ENTITY tidy-directory "tidy_src_&tidy-version;">
 <!ENTITY tidy-docs      "tidy_docs.tgz">
+<!ENTITY tidy-newlines-patch "tidy-&tidy-version;-prevent_PRE_newlines-1.patch">
 
 <!ENTITY desktop-file-utils-version   "0.10">
 <!ENTITY desktop-file-utils-package   "desktop-file-utils-&desktop-file-utils-version;.tar.gz">
