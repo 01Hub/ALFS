@@ -20,11 +20,6 @@
 		        <source>&packages_dir;/&unzip-patch3;</source>
 			<destination>&build_dir;</destination>
 		</copy>
-
-		<copy>
-		        <source>&packages_dir;/&unzip-patch4;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
@@ -48,12 +43,6 @@
 		        <param>-N</param>
 			<param>-p1</param>
 			<param>-i ../&unzip-patch3;</param>
-		</patch>
-
-		<patch>
-		        <param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&unzip-patch4;</param>
 		</patch>
 
 		<copy>

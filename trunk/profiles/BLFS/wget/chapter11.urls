@@ -1,8 +1,14 @@
 ftp://arcana.linux.it/pub/gpm/gpm-1.20.1.tar.bz2
+http://www.linuxfromscratch.org/patches/blfs/5.1/gpm-1.20.1-segfault.patch
+http://www.linuxfromscratch.org/patches/blfs/5.1/gpm-1.20.1-silent.patch
 ftp://ftp.seul.org/pub/fcron/fcron-2.9.4.src.tar.gz
 ftp://ftp.ibiblio.org/pub/Linux/system/hardware/hdparm-5.5.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/5.1/hdparm-5.5-glibc_CVS-1.patch
 ftp://ftp.gnu.org/gnu/which/which-2.16.tar.gz
 ftp://ftp.info-zip.org/pub/infozip/src/unzip551.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/5.1/unzip-5.51-fix-Makefile.patch
+http://www.linuxfromscratch.org/patches/blfs/5.1/unzip-5.51-fix-libz.patch
+http://www.linuxfromscratch.org/patches/blfs/5.1/unzip-5.51-dont-make-noise.patch
 ftp://ftp.info-zip.org/pub/infozip/src/zip23.tar.gz
 ftp://ftp.kernel.org/pub/software/utils/pciutils/pciutils-2.1.11.tar.bz2
 ftp://ftp.netbuddy.org/linux/pkgconfig-0.15.0.tar.gz
