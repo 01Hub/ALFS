@@ -25,11 +25,6 @@
 #define H_PARSER_
 
 
-#define Can_run(el) ( \
-	(el)->type == TYPE_ELEMENT || \
-	(el)->type == TYPE_PROFILE || \
-	(el)->type == TYPE_ROOT )
-
 #define Is_element_name(el,str) \
 	(el->type == TYPE_ELEMENT && strcmp(el->handler->name, str) == 0)
 

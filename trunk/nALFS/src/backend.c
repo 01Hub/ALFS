@@ -356,7 +356,7 @@ static int do_execute_element(element_s *el)
 {
 	int i = 0;
 
-	if (! (Can_run(el) && el->should_run)) {
+	if (!el->should_run) {
 		return 0;
 	}
 
@@ -399,10 +399,6 @@ static int do_execute_element(element_s *el)
 int do_execute_test_element(element_s *element, int *result)
 {
 	int i = 0;
-
-	if (! (Can_run(element) && element->should_run)) {
-		return 0;
-	}
 
 	comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_STARTED, "%d", element->id);
 
