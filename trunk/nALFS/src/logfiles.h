@@ -67,7 +67,7 @@ logf_t *logf_init_from_directory(const char *pdir);
 
 int logf_get_packages_cnt(logf_t *logf);
 
-char *logf_get_package_name(logf_t *logf, int i);
+char *logf_get_plog_filename(logf_t *logf, int i);
 
 /*
  * A single log file, initialized from package's string.

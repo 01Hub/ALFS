@@ -25,7 +25,17 @@
 #define H_LIBXML_
 
 
+#include "parser.h"
+
 element_s *parse_with_libxml2_tree(const char *filename);
+
+/*
+ * Helper functions for accessing nodes in libXML.
+ */
+
+#include <libxml/tree.h>
+
+xmlNodePtr n_xmlGetLastElementByName(xmlNodePtr p, const xmlChar *name);
 
 
 #endif /* H_LIBXML_ */

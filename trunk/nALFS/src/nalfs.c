@@ -1072,7 +1072,7 @@ static INLINE int print_installed_packages(logf_t *logf)
 	Xwmove(windows.main->name, 0, 0);
 
 	for (i = 0; i < packages_cnt ; ++i) {
-		char *pname = logf_get_package_name(logf, i);
+		char *pname = logf_get_plog_filename(logf, i);
 
 		/* Space for cursor. */
 		for (j = 0; j < strlen(opt_cursor_string) + 1; ++j)
