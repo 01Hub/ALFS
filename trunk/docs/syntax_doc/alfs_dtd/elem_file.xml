@@ -31,11 +31,11 @@ a <filename>download</filename>, <filename>search_replace</filename> or
 
 <para>The first example is a search_replace.</para>
 
-<userinput><screen>&lt;search_replace base=&quot;/usr/src/mypackage&quot;&gt;
+<screen><userinput>&lt;search_replace base=&quot;/usr/src/mypackage&quot;&gt;
 	&lt;file&gt;runit.sh&lt;/file&gt;
 	&lt;find&gt;BINDIR&lt;/find&gt;
 	&lt;replace&gt;/bin&lt;/replace&gt;
-&lt;/search_replace&gt;</screen></userinput>
+&lt;/search_replace&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 

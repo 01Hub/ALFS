@@ -53,7 +53,7 @@ command itself.</para>
 
 <para>The first example is an execute command without a parameter.</para>
 
-<userinput><screen>&lt;execute command=&quot;umount&quot;&gt;</screen></userinput>
+<screen><userinput>&lt;execute command=&quot;umount&quot;&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
