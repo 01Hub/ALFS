@@ -8,7 +8,8 @@
 <title>Part I &emdash; Introduction</title>
 
 <para>This part contains information which is essential to
-the rest of the book.</para>
+the rest of the book available at <xref linkend="introduction"/>
+</para>
 
 </sect2>
 
@@ -16,7 +17,7 @@ the rest of the book.</para>
 <title>Part II &emdash; &book-product; Code Hackers</title>
 
 <para>This part contains information just for &book-product;'s code
-hackers.</para>
+hackers available at <xref linkend="hacker"/>.</para>
 
 </sect2>
 
