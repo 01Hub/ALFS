@@ -50,9 +50,28 @@
 	<param>c 5 2</param>
     </execute>
 
+    <execute command="mknod">
+  	<param>-m 666</param>
+	<param>/dev/tty</param>
+	<param>c 5 0</param>
+    </execute>
+
+    <execute command="mknod">
+  	<param>-m 444</param>
+	<param>/dev/random</param>
+	<param>c 1 8</param>
+    </execute>
+
+    <execute command="mknod">
+  	<param>-m 444</param>
+	<param>/dev/urandom</param>
+	<param>c 1 9</param>
+    </execute>
+
     <ownership base="/dev" user="root" group="tty">
 	<name>console</name>
 	<name>ptmx</name>
+	<name>tty</name>
     </ownership>
 
     <link>

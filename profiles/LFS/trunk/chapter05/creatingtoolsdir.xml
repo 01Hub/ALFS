@@ -61,6 +61,7 @@
 			<source>&automake-package;</source>
 			<source>&bash-package;</source>
 			<source>&bash-fixes-patch;</source>
+			<source>&bash-wcontinued-patch;</source>
 			<source>&binutils-package;</source>
 			<source>&bison-package;</source>
 			<source>&bzip2-package;</source>
@@ -133,7 +134,6 @@
 			<source>&texinfo-package;</source>
 			<source>&texinfo-segfault-patch;</source>
 			<source>&udev-package;</source>
-			<source>&udev-destdir-patch;</source>
 			<source>&udev-permissions-file;</source>
 			<source>&udev-rules-file;</source>
 			<source>&util-linux-package;</source>
@@ -141,7 +141,6 @@
 			<source>&vim-package;</source>
 			<source>&vim-lang-package;</source>
 			<source>&zlib-package;</source>
-			<source>&zlib-security-patch;</source>
 			<destination>&LFS;&packages_dir;</destination>
 		</copy>
 	</stage>
