@@ -101,6 +101,30 @@ To configure, compile, install and run nALFS, just type:
 When you enter the program, type '?' for a list of all available
 commands.
 
+nALFS can be built as a static executable, meaning that all its handlers
+and other requirements will be linked into a single file, requiring no
+actual "installation". This will happen automatically if you build nALFS
+on a system that does not support shared libraries, or you can force
+a static build by typing:
+
+    ./configure --disable-shared --enable-static
+    make
+
+When the make is complete, ./src/nALFS will be a single executable
+containing everything needed to run nALFS on your system.
+
+Warning: As of the current version, nALFS uses a function from the C
+library that glibc-2.2 (and later) implement by using the "libnss" shared
+libraries that are part of glibc itself. This means that even if you
+build a static binary of nALFS, the libnss libraries from your build
+system will still be required on the system that you wish to run nALFS
+on. This will be addressed in a future release of nALFS.
+
+Warning: If you build a static nALFS binary and choose to include CURL
+(libcurl) support for downloading files in your profiles, you may
+experience problems due to libcurl's use of the resolver library provided
+by glibc.
+
 
 3. Requirements
 ===============
