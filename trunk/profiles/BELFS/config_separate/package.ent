@@ -100,16 +100,16 @@
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
 <!ENTITY gcc-version "3.4.0">
-<!ENTITY gcc-cvs-version "-20040416">
+<!ENTITY gcc-cvs-version "">
 <!ENTITY gcc-directory "gcc-&gcc-version;&gcc-cvs-version;">
 
-<!ENTITY gcc-core-md5 "df91546817949b25d12faf49fb970d86">
+<!ENTITY gcc-core-md5 "6371ff0a37d5e1809f4f59d0045dcaa5">
 <!ENTITY gcc-core-package "gcc-core-&gcc-version;&gcc-cvs-version;.tar.bz2">
 
-<!ENTITY gcc-gpp-md5 "b6d3e21cf7a3079b2208b2da2e43310c">
+<!ENTITY gcc-gpp-md5 "4b66e4ce2e25d8c73b05ea97f27b2d8e">
 <!ENTITY gcc-gpp-package "gcc-g++-&gcc-version;&gcc-cvs-version;.tar.bz2">
   
-<!ENTITY gcc-testsuite-md5 "367c997163884fea73a1a4c26f9a977a">
+<!ENTITY gcc-testsuite-md5 "dcc17608ae1c801eac934f5955b1820c">
 <!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;&gcc-cvs-version;.tar.bz2">
 
 <!ENTITY gcc-no-fixincludes-patch-md5 "78fa00bc9f7173b9658eeb86ce9291c9">
@@ -178,8 +178,8 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "ff81fce38ba8f5d8cc48dd0e26fc7b5f">
-<!ENTITY lfs-bootscripts-version "2.0.91">
+<!ENTITY lfs-bootscripts-md5 "586742a7676dceb4e02f36539c72df1a">
+<!ENTITY lfs-bootscripts-version "2.0.4-pre1">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
@@ -194,8 +194,8 @@
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
 
-<!ENTITY linux-libc-headers-md5 "8391f89504e7489f1b069949c9567560">
-<!ENTITY linux-libc-headers-version "2.6.4.0">
+<!ENTITY linux-libc-headers-md5 "95cc1a8aef4d4aa143dc611894982423">
+<!ENTITY linux-libc-headers-version "2.6.5.0">
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
 <!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
 

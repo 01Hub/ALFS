@@ -17,7 +17,7 @@
 		</make>
 
 		<make>
-			<param>install-udev</param>
+			<param>install-contrib-udev</param>
 		</make>
 	</stage>
 
