@@ -338,8 +338,7 @@ static void move_cursor(int *top, int *cursor, int lines, int input)
 
 int tmp_window_driver(int lines, int *top, int *cursor)
 {
-	int i, input;
-	/* silence compiler warning about possible use before init */
+	int input;
 	int old_cursor = 0;
 
 
@@ -396,6 +395,7 @@ int tmp_window_driver(int lines, int *top, int *cursor)
 		}
 
 		if (cursor) {
+			size_t i;
 			for (i = 0; i < strlen(opt_cursor_string) + 1; ++i)
 				Xmvwaddch(
 				windows.main->name, old_cursor, i, ' ');
