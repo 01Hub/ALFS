@@ -1,0 +1,24 @@
+Automated Linux From Scratch, http://automated.linuxfromscratch.org/
+====================================================================
+
+    o document the syntax in a user friendly way. (XML Docbook)
+
+    o write down all the suggestions for syntax improves that have been
+      talked about by "The Committe" (aka alfs-discuss ;)
+	- This will entail literally reading all of alfs-discuss over the
+	  past 3-4 months now, iirc.
+
+    o list other alfs-like implementations with description on the website
+	-n ALFS (allready listed)
+	- Mark Ellis alfs (allready listed)
+	- LFSMake
+	- ralfs
+	- sourcer
+	- Will have to consult my bookmarks for more..
+
+    o Look into ANT (http://jakarta.apache.org/ant) some more.
+	- Suggestion on the mail about dependencies and the option of
+	  force, ignoring an error.
+
+    o More to be added soon...
+
