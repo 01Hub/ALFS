@@ -46,9 +46,21 @@ get_html_nohunks_doc() {
     cp download/${1}-${DOC_VERSION}-NOHUNKS.html doc/${2}.html
 }
 
+get_html_nohunks_doc_2() {
+    ${WGET} -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}-NOCHUNKS.html
+    cp download/${1}-${DOC_VERSION}-NOCHUNKS.html doc/${2}.html
+}
+
 get_html_doc() {
     ${WGET} -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}-html.tar.bz2
     bzcat download/${1}-${DOC_VERSION}-html.tar.bz2 | tar --extract --directory=download
+    mkdir -p doc/${2}
+    cp -R download/${1}/* doc/${2}
+}
+
+get_html_doc_2() {
+    ${WGET} -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}-CHUNKS-html.tar.bz2
+    bzcat download/${1}-${DOC_VERSION}-CHUNKS-html.tar.bz2 | tar --extract --directory=download
     mkdir -p doc/${2}
     cp -R download/${1}/* doc/${2}
 }
@@ -79,10 +91,10 @@ while getopts hd:g:p: param; do
 	    get_text_doc ALFS-SYNTAX-DOC syntax_doc
 	    get_text_doc nALFS-USERS-GUIDE users_guide
 	    get_text_doc nALFS-HACKERS-GUIDE hackers_guide
-	    get_html_doc ALFS-SYNTAX-DOC syntax_doc
+	    get_html_doc_2 ALFS-SYNTAX-DOC syntax_doc
 	    get_html_doc nALFS-USERS-GUIDE users_guide
 	    get_html_doc nALFS-HACKERS-GUIDE hackers_guide
-	    get_html_nohunks_doc ALFS-SYNTAX-DOC syntax_doc
+	    get_html_nohunks_doc_2 ALFS-SYNTAX-DOC syntax_doc
 	    get_html_nohunks_doc nALFS-USERS-GUIDE users_guide
 	    get_html_nohunks_doc nALFS-HACKERS-GUIDE hackers_guide
 	    echo done.
