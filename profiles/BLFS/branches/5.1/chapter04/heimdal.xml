@@ -29,7 +29,7 @@
       <name>openldap</name>
     </utilizes>
     <utilizes>
-      <name>xfree86</name>
+      <name>&ximpl;</name>
     </utilizes>
     <utilizes>
       <name>cracklib</name>

@@ -14,7 +14,7 @@
   <package name="vim" version="&vim-version;">
     <packageinfo>
       <utilizes>
-        <name>xfree86</name>
+        <name>&ximpl;</name>
       </utilizes>
       <utilizes>
         <name>gtk+2</name>

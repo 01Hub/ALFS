@@ -26,7 +26,7 @@
         <name>gtk+</name>
       </utilizes>
       <utilizes>
-        <name>xfree86</name>
+        <name>&ximpl;</name>
       </utilizes>
       <utilizes>
         <name>gimp-print</name>
