@@ -1,6 +1,6 @@
 <stage name="Creating directories and mounting file systems">
 
-	<mkdir base="$LFS;">
+	<mkdir base="&LFS;">
 		<option>parents</option>
 		<name>proc</name>
 		<name>dev/pts</name>
