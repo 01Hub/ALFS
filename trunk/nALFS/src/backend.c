@@ -1,9 +1,10 @@
 /*
  *  backend.c - Backend.
  *
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001, 2002, 2004
  *
  *  Neven Has <haski@sezampro.yu>
+ *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -376,17 +377,59 @@ static int do_execute_element(element_s *el)
 	return i;
 }
 
-int execute_children(element_s *el)
+int do_execute_test_element(element_s *element, int *result)
+{
+	int i = 0;
+	element_s *profile = get_profile_by_element(element);
+
+
+	if (! (Can_run(element) && element->should_run)) {
+		return 0;
+	}
+
+	comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_STARTED,
+		"%s %s %d", profile->name, element->name, element->id);
+
+	if (*opt_use_relative_dirs)
+		change_to_profiles_dir(element);
+
+	i = element->handler->info->test(element, result);
+
+	if (i == 0) {
+		// TODO: Is there a point of setting these at all?
+		element->run_status = get_element_status(element);
+		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_ENDED,
+			"%s %s %d", profile->name, element->name, element->id);
+	} else {
+		element->run_status = RUN_STATUS_FAILED;
+		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_FAILED,
+			"%s %s %d", profile->name, element->name, element->id);
+	}
+
+	return i;
+}
+
+int execute_children(element_s *element)
+{
+	return execute_children_filtered(element,
+					 HTYPE_NORMAL | HTYPE_EXECUTE | 
+					 HTYPE_PACKAGE | HTYPE_TEXTDUMP);
+}
+
+int execute_children_filtered(element_s *element, handler_type_e type_filter)
 {
 	element_s *child;
 
 
-	for (child = el->children; child; child = child->next) {
+	for (child = element->children; child; child = child->next) {
 		int i;
 
-		if ((i = do_execute_element(child))) {
+		if (child->handler &&
+		    ((child->handler->info->type & type_filter) == 0))
+			continue;
+
+		if ((i = do_execute_element(child)))
 			return i;
-		}
 	}
 
 	return 0;

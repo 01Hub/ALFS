@@ -246,7 +246,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.1",
 		.parameters = download_parameters,
 		.main = download_main,
-		.type = 0,
+		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
@@ -259,13 +259,13 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.2",
 		.parameters = download_parameters_3_2,
 		.main = download_main_3_2,
-		.type = 0,
+		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
 		.priority = 0
 	},
 #endif
 	{
-		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+		.name = NULL
 	}
 };

@@ -1,9 +1,10 @@
 /*
  *  handlers.h - Handlers' functions.
  *
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001, 2002, 2004
  *
  *  Neven Has <haski@sezampro.yu>
+ *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -30,10 +31,13 @@
 
 
 typedef enum handler_type_e {
-	/* Using 0 for all other handlers, for now */
-	HTYPE_EXECUTE = 1,
-	HTYPE_PACKAGE,
-	HTYPE_TEXTDUMP
+	HTYPE_NORMAL = 1,
+	HTYPE_PACKAGE = 2,
+	HTYPE_TEXTDUMP = 4,
+	HTYPE_TEST = 8,		/* handler provides a test result */
+	HTYPE_TRUE_RESULT = 16,	/* handler should be run for a true test */
+	HTYPE_FALSE_RESULT = 32,/* handler should be run for a false test */
+	HTYPE_EXECUTE = 64,
 } handler_type_e;
 
 typedef enum handler_data_e {
@@ -42,6 +46,7 @@ typedef enum handler_data_e {
 
 typedef char *(*handler_data_f)(element_s *, handler_data_e data);
 typedef int (*handler_f)(element_s *);
+typedef int (*handler_test)(element_s *, int *);
 
 typedef struct handler_info_s {
 	const char *name;		/* Name of the element it handles. */
@@ -60,6 +65,8 @@ typedef struct handler_info_s {
 	int priority;           /* Higher priority handlers "override" lower
 				   priority ones (allows user to make custom
 				   handlers that replace standard ones) */
+
+	handler_test test;	/* used by HTYPE_TEST */
 } handler_info_s;
 
 
