@@ -31,6 +31,10 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "utility.h"
 
 /*
@@ -38,7 +42,7 @@
  */
 
 #include "win.h" /* For Nprint_err.*/
-#include "nalfs.h" /* For Fatal_error. */
+#include "nalfs-core.h" /* For Fatal_error. */
 
 #define PRINT_ERROR Nprint_err
 #define FATAL_ERROR Fatal_error

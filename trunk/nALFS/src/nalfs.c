@@ -43,6 +43,11 @@
 #include <libxml/xmlversion.h>
 #include <libxml/uri.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include "bufsize.h"
 #include "utility.h"
 #include "parser.h"
 #include "win.h"
@@ -54,9 +59,8 @@
 #include "logfiles.h"
 #include "options.h"
 #include "init.h"
-#include "config.h"
 
-#include "nalfs.h"
+#include "nalfs-core.h"
 
                      /* r a c v s o w h f B */
 #define OPTIONS_SPACE "                     "
@@ -132,6 +136,8 @@ static pid_t backend_pid = 0;
 
 #define Backend_exists (backend_pid > 0)
 
+/* Pointer to current function to use for printing to main window. */
+void (*nprint)(msg_id_e mid, const char *format, ...);
 
 
 /*
@@ -463,7 +469,7 @@ static void draw_profile_name(element_s *profile)
 		return;
 	}
 
-	end = windows.max_cols - strlen(PROGRAM_FULL_NAME) - 10;
+	end = windows.max_cols - strlen(PACKAGE_STRING) - 10;
 	start = end - strlen(profile_name) - 3;
 
 	if (start < 0 || end - start < 7) { /* Not enough space. */
@@ -1082,7 +1088,7 @@ static INLINE int write_help(void)
 	Xwprintw(windows.main->name,
 	"\n\n");
 	Xwprintw(windows.main->name,
-	" " PROGRAM_FULL_NAME ", " COPYRIGHT "\n");
+	" " PACKAGE_STRING ", " COPYRIGHT "\n");
 	Xwprintw(windows.main->name,
 	" nALFS comes with ABSOLUTELY NO WARRANTY.\n");
 	Xwprintw(windows.main->name,
@@ -2108,10 +2114,10 @@ static void draw_static_border(void)
 	Xmvaddch(middle_line_y, windows.max_cols - 1, ACS_RTEE);
 
 	/* Program's border and its name. */
-	if ((i = windows.max_cols - strlen(PROGRAM_FULL_NAME) - 6) > 1) {
+	if ((i = windows.max_cols - strlen(PACKAGE_STRING) - 6) > 1) {
 		Xmvaddch(0, i, ACS_RTEE);
-		mvprintw(0, i + 1, " " PROGRAM_FULL_NAME " ");
-		Xmvaddch(0, i + 1 + 1 + strlen(PROGRAM_FULL_NAME) + 1, ACS_LTEE);
+		mvprintw(0, i + 1, " " PACKAGE_STRING " ");
+		Xmvaddch(0, i + 1 + 1 + strlen(PACKAGE_STRING) + 1, ACS_LTEE);
 	}
 
 	if (opt_display_options_line) { /* Border of option indicators. */
@@ -4010,7 +4016,7 @@ static int browse(void)
 			rewrite_main();
 #else
 			Nprint_warn(
-			"USE_EDITOR macro not defined in config.h.");
+			"nALFS was built with --disable-element-editor.");
 #endif
 			break;
 

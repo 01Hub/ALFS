@@ -26,6 +26,7 @@
 
 
 #include "parser.h"
+#include "ltdl.h"
 
 
 typedef int (*main_handler_function_f)(struct element_s *);
@@ -43,7 +44,7 @@ typedef struct handler_s {
 	/* Main handler function. */
 	main_handler_function_f main_function;
 
-	void *handle;		/* Handle for the dynamic library. */
+	lt_dlhandle handle;	/* Handle for the dynamic library. */
 } handler_s;
 
 

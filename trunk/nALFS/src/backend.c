@@ -33,14 +33,18 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include "bufsize.h"
 #include "utility.h"
 #include "parser.h"
 #include "handlers.h"
 #include "win.h"
 #include "logging.h"
-#include "nalfs.h"
+#include "nalfs-core.h"
 #include "comm.h"
-#include "config.h"
 
 #include "backend.h"
 

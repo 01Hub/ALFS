@@ -32,10 +32,14 @@
 #include <unistd.h>
 #include <limits.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include "bufsize.h"
 #include "win.h"
 #include "utility.h"
-#include "nalfs.h"
-#include "config.h"
+#include "nalfs-core.h"
 
 #include "comm.h"
 

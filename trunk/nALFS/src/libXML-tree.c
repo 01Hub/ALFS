@@ -35,6 +35,10 @@
 #include <string.h>
 #include <limits.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include <libxml/tree.h>
 #include <libxml/parser.h>
 #ifdef HAVE_XINCLUDE
@@ -42,13 +46,13 @@
 #endif
 #include <libxml/xmlerror.h>
 
+#include "bufsize.h"
 #include "win.h"
 #include "handlers.h"
 #include "utility.h"
 #include "parser.h"
-#include "nalfs.h"
+#include "nalfs-core.h"
 #include "options.h"
-#include "config.h"
 
 #include "libXML-tree.h"
 

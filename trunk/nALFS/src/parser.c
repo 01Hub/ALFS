@@ -28,11 +28,14 @@
 #include <ctype.h>
 #include <limits.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "utility.h"
 #include "win.h"
 #include "handlers.h"
-#include "nalfs.h"
-#include "config.h"
+#include "nalfs-core.h"
 #ifdef PARSE_WITH_LIBXML_SAX
 #include "libXML-SAX.h"
 #else

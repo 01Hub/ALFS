@@ -28,10 +28,13 @@
 #include <errno.h>
 #include <curses.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "utility.h"
-#include "nalfs.h"
+#include "nalfs-core.h"
 #include "options.h"
-#include "config.h"
 
 #include "win.h"
 

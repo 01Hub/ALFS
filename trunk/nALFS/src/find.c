@@ -34,12 +34,15 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "utility.h"
 #include "backend.h"
-#include "nalfs.h"
+#include "nalfs-core.h"
 #include "win.h"
 #include "logging.h"
-#include "config.h"
 
 #include "find.h"
 

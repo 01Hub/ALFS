@@ -25,9 +25,6 @@
 #define H_EDITOR_
 
 
-#include "config.h"
-
-
 #ifdef USE_EDITOR
 
 void edit_element(element_s *el);
