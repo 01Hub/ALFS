@@ -1,0 +1,16 @@
+http://www.crypticide.com/users/alecm/security/cracklib,2.7.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/cvs/cracklib-2.7-blfs-1.patch
+http://www.cotse.com/wordlists/allwords
+
+ftp://ftp.kernel.org/pub/linux/libs/pam/pre/library/Linux-PAM-0.77.tar.bz2
+http://www.linuxfromscratch.org/patches/blfs/cvs/Linux-PAM-0.77-linkage-3.patch
+
+http://www.linuxfromscratch.org/patches/blfs/cvs/shadow-4.0.4.1-pam-1.patch
+
+ftp://ftp.netfilter.org/pub/iptables/iptables-1.2.9.tar.bz2
+
+ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-1.2.4.tar.bz2
+
+ftp://ftp.fu-berlin.de/unix/security/tripwire/tripwire-2.3.1-2.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/cvs/tripwire-2.3.1-2-gcc3-build-fixes.patch
+
