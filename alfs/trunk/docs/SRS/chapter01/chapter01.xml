@@ -21,19 +21,21 @@ tool <quote>alfs</quote></para>
 <section id="ch-intro-scope">
 <title>Scope</title>
 <para>This document covers the high level descriptions of all the functionality
-that the alfs tool will provide.  The scope of this document will be limited to
-describing what features will be made available, and therefore will not go into
-detail on any specific programming languages or development tools.</para>
+that the <quote>alfs</quote> tool will provide.  The scope of this document will
+be limited to describing what features will be made available, and therefore
+will not go into detail on any specific programming languages or development
+tools.</para>
 </section>
 
 <section id="ch-intro-name">
 <title>Product Name</title>
-  <para>The tool is called 'alfs'.  It is important it be written entirely in
-  lowercase to differentiate it from the project name it is a part of (ALFS).
-  </para>
+  <para>The tool is called <quote>alfs</quote>.  It is important it be written
+entirely in lowercase to differentiate it from the project name it is a part of
+(ALFS).</para>
 
   <para>The project is the tool and the tool is the project, so the name should
-  fit inside this idea and is why the name 'alfs' was chosen.</para>
+  fit inside this idea and is why the name <quote>alfs</quote> was chosen.
+  </para>
 </section>
 
 <section id="ch-intro-defs">
@@ -71,11 +73,11 @@ detail on any specific programming languages or development tools.</para>
 
 <section id="ch-intro-overview">
 <title>Overview</title>
-<para>alfs is a tool that is used to simplify and automate the tasks that
+<para><quote>alfs</quote> is a tool that is used to simplify and automate the tasks that
 installing and managing software packages on a Linux system require. Its primary
 goal is to automate the LFS build procedure. Using a standard documented
-protocol, alfs will accept instructions, validate them, and carry out the
-specific tasks that correspond to these higher-level orders. alfs will then
-report back on the outcomes of its actions.</para>
+protocol, <quote>alfs</quote> will accept instructions, validate them, and
+carry out the specific tasks that correspond to these higher-level orders.
+<quote>alfs</quote> will then report back on the outcomes of its actions.</para>
 </section>
 </chapter>
