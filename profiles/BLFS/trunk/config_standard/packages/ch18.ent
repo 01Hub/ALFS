@@ -4,6 +4,14 @@
 <!ENTITY ncftp-package   "ncftp-&ncftp-version;-src.tar.bz2">
 <!ENTITY ncftp-directory "ncftp-&ncftp-version;">
 
+<!ENTITY openssh-version   "3.9p1">
+<!ENTITY openssh-package   "openssh-&openssh-version;.tar.gz">
+<!ENTITY openssh-directory "openssh-&openssh-version;">
+
+<!ENTITY rsync-version   "2.6.3">
+<!ENTITY rsync-package   "rsync-&rsync-version;.tar.gz">
+<!ENTITY rsync-directory "rsync-&rsync-version;">
+
 <!ENTITY cvs-version    "1.11.18">
 <!ENTITY cvs-package    "cvs-&cvs-version;.tar.bz2">
 <!ENTITY cvs-directory  "cvs-&cvs-version;">
@@ -17,10 +25,10 @@
 <!ENTITY wget-package   "wget-&wget-version;.tar.bz2">
 <!ENTITY wget-directory "wget-&wget-version;">
 
-<!ENTITY tcpwrappers-version                     "7.6">
-<!ENTITY tcpwrappers-package                     "tcp_wrappers_&tcpwrappers-version;.tar.bz2">
-<!ENTITY tcpwrappers-directory                   "tcp_wrappers_&tcpwrappers-version;">
-<!ENTITY tcpwrappers-gcc34-patch                 "tcp_wrappers-&tcpwrappers-version;-gcc34-1.patch">
+<!ENTITY tcpwrappers-version  "7.6">
+<!ENTITY tcpwrappers-package  "tcp_wrappers_&tcpwrappers-version;.tar.bz2">
+<!ENTITY tcpwrappers-directory "tcp_wrappers_&tcpwrappers-version;">
+<!ENTITY tcpwrappers-gcc34-patch "tcp_wrappers-&tcpwrappers-version;-gcc34-1.patch">
 <!ENTITY tcpwrappers-shared-libs-plus-plus-patch "tcp_wrappers-&tcpwrappers-version;-shared_lib_plus_plus-1.patch">
 
 <!ENTITY portmap-version                 "5beta">

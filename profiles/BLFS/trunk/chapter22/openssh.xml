@@ -2,7 +2,7 @@
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
-<!ENTITY % package_entities SYSTEM "../config/packages/ch22.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch18.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
 
 %general_entities;
@@ -14,38 +14,22 @@
 
 ]>
 <alfs>
-  <package name="openssh" version="&openssh-version;">
+  <stage name="OpenSSH Server">
+  <package name="openssh-server" version="&openssh-version;">
     <packageinfo>
       <requires>
-        <name>openssl</name>
+	<name>openssh</name>
       </requires>
-      <utilizes>
-        <name>linuxpam</name>
-      </utilizes>
-      <utilizes>
-	<name>tcpwrappers</name>
-      </utilizes>
-      <utilizes>
-	<name>&ximpl;</name>
-      </utilizes>
-      <utilizes>
-	<name>&krb-impl;</name>
-      </utilizes>
-      <utilizes>
-	<name>&j2sdk;</name>
-      </utilizes>
-      <utilizes>
-	<name>net-tools</name>
-      </utilizes>
     </packageinfo>
-    <stage name="Unpacking">
-      <unpack>
-        <archive>&packages_dir;/&openssh-package;</archive>
-        <destination>&build_dir;</destination>
-      </unpack>
-    </stage>
     &bootscripts-get;
     <stage name="Creating user and group">
+      <mkdir>
+        <option>parents</option>
+        <name>/var/empty</name>
+      </mkdir>
+      <ownership user="root" group="sys">
+        <name>/var/empty</name>
+      </ownership>
       <execute command="getent group sshd &gt; /dev/null || groupadd">
         <param>sshd</param>
       </execute>
@@ -57,44 +41,6 @@
         <param>sshd</param>
       </execute>
     </stage>
-    <stage name="Patching">
-      <stageinfo>
-        <base>&build_dir;/&openssh-directory;</base>
-      </stageinfo>
-      <search_replace>
-        <file>configure</file>
-        <find>-lcrypto</find>
-        <replace>/usr/lib/libcrypto.a</replace>
-      </search_replace>
-    </stage>
-    <stage name="Installing">
-      <stageinfo>
-        <base>&build_dir;/&openssh-directory;</base>
-      </stageinfo>
-      <mkdir>
-        <option>parents</option>
-        <name>/var/empty</name>
-      </mkdir>
-      <ownership user="root" group="sys">
-        <name>/var/empty</name>
-      </ownership>
-      <configure>
-        <param>--prefix=/usr</param>
-        <param>--sysconfdir=/etc/ssh</param>
-        <param>--libexecdir=/usr/sbin</param>
-        <param>--with-md5-passwords</param>
-      </configure>
-      <make />
-      <make>
-        <param>install</param>
-      </make>
-      <textdump mode="append">
-      	<file>/etc/ssh/sshd_config</file>
-	<content>
-	  =PermitRootLogin no
-	</content>
-      </textdump>
-    </stage>
     <stage name="Installing bootscript and configuration">
       <stageinfo>
         <base>&build_dir;/&blfs-bootscripts-directory;</base>
@@ -102,10 +48,14 @@
       <make>
         <param>install-sshd</param>
       </make>
+      <textdump mode="append">
+	<file>/etc/ssh/sshd_config</file>
+	<content>
+	  =PermitRootLogin no
+	</content>
+      </textdump>
     </stage>
     &bootscripts-clean;
-    <stage name="Cleanup">
-      <remove>&build_dir;/&openssh-directory;</remove>
-    </stage>
   </package>
+  </stage>
 </alfs>

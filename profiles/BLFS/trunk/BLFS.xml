@@ -189,6 +189,8 @@
     </stage>
     <stage name="Chapter 18 (Basic Networking Programs)">
       <xi:include href="chapter18/ncftp.xml" />
+      <xi:include href="chapter18/openssh.xml" />
+      <xi:include href="chapter18/rsync.xml" />
       <xi:include href="chapter18/cvs.xml" />
       <xi:include href="chapter18/subversion.xml" />
       <xi:include href="chapter18/wget.xml" />
