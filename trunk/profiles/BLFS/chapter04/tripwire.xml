@@ -5,12 +5,6 @@
 			<archive>&packages_dir;/&tripwire-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&tripwire-policy-file;</source>
-			<destination>&build_dir;</destination>
-		</copy>
-
 	</stage>
 
 	<stage name="Installing">
@@ -23,7 +17,13 @@
 			<param>-p1</param>
 			<param>-i &packages_dir;/&tripwire-gcc-patch;</param>
 		</patch>
+	</stage>
 
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&tripwire-directory;</base>
+		</stageinfo>
+	
 		<make>
 			<param>-C</param>
 			<param>src</param>
@@ -76,6 +76,18 @@
 			<param>-s &quot;&tripwire-sitepassphrase;&quot;</param>
 			<param>-l &quot;&tripwire-localpassphrase;&quot;</param>
 		</execute>
+
+		<copy>
+			<source>policy/*.txt</source>
+			<destination>/usr/share/doc/tripwire</destination>
+		</copy>
+
+	</stage>
+
+	<stage name="Configuring">
+		<stageinfo>
+			<base>&build_dir;/&tripwire-directory;</base>
+		</stageinfo>
 	
 		<copy>
 			<source>/etc/tripwire/tw.cfg</source>
@@ -83,12 +95,7 @@
 		</copy>
 
 		<copy>
-			<source>policy/*.txt</source>
-			<destination>/usr/share/doc/tripwire</destination>
-		</copy>
-
-		<copy>
-			<source>&build_dir;/&tripwire-policy-file;</source>
+			<source>&packages_dir;/&tripwire-policy-file;</source>
 			<destination>/etc/tripwire</destination>
 		</copy>
 
@@ -102,13 +109,11 @@
 			<param>-m i</param>
 			<param>-P &tripwire-localpassphrase;</param>
 		</execute>
-
 	</stage>
 
 
 	<stage name="Clean-Up">
 		<remove>&build_dir;/&tripwire-package;</remove>
-		<remove>&build_dir;/&tripwire-policy-file;</remove>
 	</stage>
 
 </package>

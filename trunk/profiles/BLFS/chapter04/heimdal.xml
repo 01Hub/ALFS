@@ -31,14 +31,10 @@
       <destination>&build_dir;</destination>
     </unpack>	
   </stage>
-  <stage name="Installing.">
+  <stage name="Patching.">
     <stageinfo>
       <base>&build_dir;/&heimdal-directory;</base>
     </stageinfo>
-    <move base="/usr/bin">
-      <source>ftp</source>
-      <destination>ftpn</destination>
-    </move>
     <patch>
       <param>-N</param>
       <param>-p1</param>
@@ -49,6 +45,15 @@
       <param>-p1</param>
       <param>-i &packages_dir;/&heimdal-cracklib-patch;</param>
     </patch>
+  </stage>
+  <stage name="Installing.">
+    <stageinfo>
+      <base>&build_dir;/&heimdal-directory;</base>
+    </stageinfo>
+    <move base="/usr/bin">
+      <source>ftp</source>
+      <destination>ftpn</destination>
+    </move>
     <configure>
       <param>--prefix=/usr</param>
       <param>--sysconfdir=/etc/heimdal</param>
@@ -117,7 +122,18 @@
       <name>/usr/lib</name>
     </link>
     &ldconfig;
-    <execute command="install -d /etc/heimdal" />
+  </stage>
+  <stage name="Installing bootscript and configuration">
+    <stageinfo>
+      <base>&build_dir;/&blfs-bootscripts-directory;</base>
+    </stageinfo>
+    <make>
+      <param>install-heimdal</param>
+    </make>
+    <mkdir>
+      <option>parents</option>
+      <name>/etc/heimdal</name>
+    </mkdir>
     <textdump base="/etc/heimdal">
       <file>krb5.conf</file>
       <content>
@@ -146,14 +162,6 @@
       </content>
     </textdump>
     <!-- all other configuration concerning heimdal must be done manually -->
-  </stage>
-  <stage name="Installing bootscript and configuration">
-    <stageinfo>
-      <base>&build_dir;/&blfs-bootscripts-directory;</base>
-    </stageinfo>
-    <make>
-      <param>install-heimdal</param>
-    </make>
   </stage>
   <stage name="Cleanup.">
     <remove>&build_dir;/&heimdal-directory;</remove>

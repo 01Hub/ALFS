@@ -11,7 +11,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing">
+	<stage name="Patching">
 		<stageinfo>
 			<base>&build_dir;/&shadow-directory;</base>
 		</stageinfo>
@@ -21,6 +21,13 @@
 			<param>-p1</param>
 			<param>-i &packages_dir;/&shadow-pam-patch;</param>
 		</patch>
+
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&shadow-directory;</base>
+		</stageinfo>
 
 		<configure>
 			<prefix>LIBS="-lpam -lpam_misc"</prefix>
@@ -71,8 +78,15 @@
 		</link>
 
 
-		<textdump base="/etc/pam.d">
-		       <file>login</file>
+	</stage>
+
+	<stage name="Configuring">
+		<stageinfo>
+			<base>/etc</base>
+		</stageinfo>
+
+		<textdump>
+		       <file>pam.d/login</file>
 		       <content>
                            =# Begin /etc/pam.d/login
                            =
@@ -93,8 +107,8 @@
 		</textdump>
 
 
-		<textdump base="/etc/pam.d">
-		       <file>passwd</file>
+		<textdump>
+		       <file>pam.d/passwd</file>
 		       <content>
                            =# Begin /etc/pam.d/passwd
                            =
@@ -104,8 +118,8 @@
 		       </content>
 		</textdump>
 
-		<textdump base="/etc/pam.d">
-		       <file>shadow</file>
+		<textdump>
+		       <file>pam.d/shadow</file>
 		       <content>
                            =# Begin /etc/pam.d/shadow
                            =
@@ -119,8 +133,8 @@
 		       </content>
 		</textdump>
 
-		<textdump base="/etc/pam.d">
-		       <file>su</file>
+		<textdump>
+		       <file>pam.d/su</file>
 		       <content>
                            =# Begin /etc/pam.d/su
                            =
@@ -133,8 +147,8 @@
 		       </content>
 		</textdump>
 
-		<textdump base="/etc/pam.d">
-		       <file>useradd</file>
+		<textdump>
+		       <file>pam.d/useradd</file>
 		       <content>
                            =# Begin /etc/pam.d/useradd
                            =
@@ -148,8 +162,8 @@
 		       </content>
 		</textdump>
 
-		<textdump base="/etc/pam.d">
-		       <file>chage</file>
+		<textdump>
+		       <file>pam.d/chage</file>
 		       <content>
                            =# Begin /etc/pam.d/chage
                            =
@@ -166,8 +180,8 @@
 <!--
   uncomment after checking PAM for proper configuration
 
-		<textdump base="/etc/pam.d">
-		       <file>other</file>
+		<textdump>
+		       <file>pam.d/other</file>
 		       <content>
                            =# Begin /etc/pam.d/other
                            =
@@ -184,68 +198,68 @@
 -->
 
 
-		<search_replace base="/etc">
-		        <file>/etc/login.defs</file>
+		<search_replace>
+		        <file>login.defs</file>
 			<find>LASTLOG_ENAB</find>
 			<replace>#LASTLOG_ENAB</replace>
 		</search_replace>
 
-		<search_replace base="/etc">
-		        <file>/etc/login.defs</file>
+		<search_replace>
+		        <file>login.defs</file>
 			<find>MAIL_CHECK_ENAB</find>
 			<replace>#MAIL_CHECK_ENAB</replace>
 		</search_replace>
 
-		<search_replace base="/etc">
-		        <file>/etc/login.defs</file>
+		<search_replace>
+		        <file>login.defs</file>
 			<find>PORTTIME_CHECKS_ENAB</find>
 			<replace>#PORTTIME_CHECKS_ENAB</replace>
 		</search_replace>
 
-		<search_replace base="/etc">
-		        <file>/etc/login.defs</file>
+		<search_replace>
+		        <file>login.defs</file>
 			<find>CONSOLE</find>
 			<replace>#CONSOLE</replace>
 		</search_replace>
 
-		<search_replace base="/etc">
-		        <file>/etc/login.defs</file>
+		<search_replace>
+		        <file>login.defs</file>
 			<find>MOTD_FILE</find>
 			<replace>#MOTD_FILE</replace>
 		</search_replace>
 
-		<search_replace base="/etc">
-		        <file>/etc/login.defs</file>
+		<search_replace>
+		        <file>login.defs</file>
 			<find>NOLOGINS_FILE</find>
 			<replace>#NOLOGINS_FILE</replace>
 		</search_replace>
 
-		<search_replace base="/etc">
-		        <file>/etc/login.defs</file>
+		<search_replace>
+		        <file>login.defs</file>
 			<find>PASS_MIN_LEN</find>
 			<replace>#PASS_MIN_LEN</replace>
 		</search_replace>
 
-		<search_replace base="/etc">
-		        <file>/etc/login.defs</file>
+		<search_replace>
+		        <file>login.defs</file>
 			<find>SU_WHEEL_ONLY</find>
 			<replace>#SU_WHEEL_ONLY</replace>
 		</search_replace>
 
-		<search_replace base="/etc">
-		        <file>/etc/login.defs</file>
+		<search_replace>
+		        <file>login.defs</file>
 			<find>MD5_CRYPT_ENAB</find>
 			<replace>#MD5_CRYPT_ENAB</replace>
 		</search_replace>
 
-		<search_replace base="/etc">
-		        <file>/etc/login.defs</file>
+		<search_replace>
+		        <file>login.defs</file>
 			<find>CONSOLE_GROUPS</find>
 			<replace>#CONSOLE_GROUPS</replace>
 		</search_replace>
 
-		<search_replace base="/etc">
-		        <file>/etc/login.defs</file>
+		<search_replace>
+		        <file>login.defs</file>
 			<find>ENVIRON_FILE</find>
 			<replace>#ENVIRON_FILE</replace>
 		</search_replace>
