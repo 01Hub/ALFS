@@ -13,6 +13,9 @@
 <!ENTITY bash-package "bash-&bash-version;.tar.gz">
 <!ENTITY bash-directory "bash-&bash-version;">
 
+<!ENTITY bash-display-wrap-patch-md5 "e6c29f2841c297ad85c3753aada6cc3f">
+<!ENTITY bash-display-wrap-patch "bash-&bash-version;-display_wrap-1.patch">
+
 <!ENTITY binutils-md5 "41983069bef07af4f1350c6d30666b2d">
 <!ENTITY binutils-version "2.15.91.0.2">
 <!ENTITY binutils-package "binutils-&binutils-version;.tar.bz2">
@@ -173,8 +176,8 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "a45f3ea51b00808ee725c3f92c826aa1">
-<!ENTITY lfs-bootscripts-version "2.2.1">
+<!ENTITY lfs-bootscripts-md5 "1ce531e61c060124def9897d9f6ca026">
+<!ENTITY lfs-bootscripts-version "2.2.2">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
@@ -272,6 +275,9 @@
 <!ENTITY readline-version "5.0">
 <!ENTITY readline-package "readline-&readline-version;.tar.gz">
 <!ENTITY readline-directory "readline-&readline-version;">
+
+<!ENTITY readline-display-wrap-patch-md5 "5280d7b859bb8d80e7b8ca709f137970">
+<!ENTITY readline-display-wrap-patch "readline-&readline-version;-display_wrap-1.patch">
 
 <!ENTITY sed-md5 "570c0a53a64ec020d8fcbce51fb6d71a">
 <!ENTITY sed-version "4.1.1">
