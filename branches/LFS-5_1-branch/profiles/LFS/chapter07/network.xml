@@ -11,6 +11,7 @@
 		<file>/etc/sysconfig/network-devices/ifconfig.eth0</file>
 		<content>
 			=ONBOOT=&on_boot;
+			=SERVICE=static
 			=IP=&IP;
 			=NETMASK=&netmask;
 			=BROADCAST=&broadcast;

@@ -7,7 +7,6 @@
 		</unpack>
 
 		<copy>
-			<source>&packages_dir;/&coreutils-posixver-patch;</source>
 			<source>&packages_dir;/&coreutils-uname-patch;</source>
 			<source>&packages_dir;/&coreutils-hostname-patch;</source>
 			<destination>&build_dir;</destination>
@@ -22,12 +21,6 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&coreutils-posixver-patch;</param>
-		</patch>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
 			<param>-i ../&coreutils-uname-patch;</param>
 		</patch>
 
@@ -38,15 +31,16 @@
 		</patch>
 
 		<configure>
+			<prefix>DEFAULT_POSIX2_VERSION=199209</prefix>
 			<param>--prefix=/usr</param>
 		</configure>
 
 		<make />
-
+<!--
 		<make>
 			<param>install-root</param>
 		</make>
-<!--
+
 		<textdump mode="append">
 			<file>/etc/group</file>
 			<content>
@@ -136,7 +130,6 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&coreutils-directory;</remove>
-		<remove>&build_dir;/&coreutils-posixver-patch;</remove>
 		<remove>&build_dir;/&coreutils-uname-patch;</remove>
 		<remove>&build_dir;/&coreutils-hostname-patch;</remove>
 	</stage>
