@@ -18,11 +18,11 @@
 <!ENTITY bash-gcc34-patch-md5 "8041adc7b2be710231edf9f04ee9e949">
 <!ENTITY bash-gcc34-patch "bash-&bash-version;-gcc34-1.patch">
 
-<!ENTITY binutils-md5 "24dfb3016306eae4eb10985b4ef01f42">
-<!ENTITY binutils-version "2.15.90">
-<!ENTITY binutils-cvs-version "20040408">
-<!ENTITY binutils-package "binutils-&binutils-version;-&binutils-cvs-version;.tar.bz2">
-<!ENTITY binutils-directory "binutils-&binutils-version;-&binutils-cvs-version;">
+<!ENTITY binutils-md5 "1dc607d12be82ab73af35d9fd0522656">
+<!ENTITY binutils-version "2.15.90.0.2">
+<!ENTITY binutils-cvs-version "">
+<!ENTITY binutils-package "binutils-&binutils-version;&binutils-cvs-version;.tar.bz2">
+<!ENTITY binutils-directory "binutils-&binutils-version;&binutils-cvs-version;">
 
 <!ENTITY bison-md5 "ccbd5076dab6e319cc8ce1a7035cae92">
 <!ENTITY bison-version "1.875a">
@@ -100,17 +100,17 @@
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
 <!ENTITY gcc-version "3.4.0">
-<!ENTITY gcc-cvs-version "20040406">
-<!ENTITY gcc-directory "gcc-&gcc-version;-&gcc-cvs-version;">
+<!ENTITY gcc-cvs-version "-20040406">
+<!ENTITY gcc-directory "gcc-&gcc-version;&gcc-cvs-version;">
 
 <!ENTITY gcc-core-md5 "f508291f0a22efbd9ecd4160ba28e2bb">
-<!ENTITY gcc-core-package "gcc-core-&gcc-version;-&gcc-cvs-version;.tar.bz2">
+<!ENTITY gcc-core-package "gcc-core-&gcc-version;&gcc-cvs-version;.tar.bz2">
 
 <!ENTITY gcc-gpp-md5 "f6d41deeebe5861c730642db0b046b21">
-<!ENTITY gcc-gpp-package "gcc-g++-&gcc-version;-&gcc-cvs-version;.tar.bz2">
+<!ENTITY gcc-gpp-package "gcc-g++-&gcc-version;&gcc-cvs-version;.tar.bz2">
   
 <!ENTITY gcc-testsuite-md5 "f19ed6ec00fb69bf0f60f8f097122304">
-<!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;-&gcc-cvs-version;.tar.bz2">
+<!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;&gcc-cvs-version;.tar.bz2">
 
 <!ENTITY gcc-no-fixincludes-patch-md5 "78fa00bc9f7173b9658eeb86ce9291c9">
 <!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no-fixincludes-1.patch">
@@ -125,9 +125,9 @@
 
 <!ENTITY glibc-md5 "8523411a05dba92977e51fe6addd6d1d">
 <!ENTITY glibc-version "2.3.4">
-<!ENTITY glibc-cvs-version "20040408">
-<!ENTITY glibc-package "glibc-&glibc-version;-&glibc-cvs-version;.tar.bz2">
-<!ENTITY glibc-directory "glibc-&glibc-version;-&glibc-cvs-version;">
+<!ENTITY glibc-cvs-version "-20040408">
+<!ENTITY glibc-package "glibc-&glibc-version;&glibc-cvs-version;.tar.bz2">
+<!ENTITY glibc-directory "glibc-&glibc-version;&glibc-cvs-version;">
 
 <!ENTITY grep-md5 "ddd99e2d5d4f4611357e31e97f080cf2">
 <!ENTITY grep-version "2.5.1">
