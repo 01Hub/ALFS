@@ -1,12 +1,24 @@
 <package name="vim" version="&vim-version;">
 
     <packageinfo>
-        <utilizes><name>xfree86</name></utilizes>
-        <utilizes><name>gtk+2</name></utilizes>
-        <utilizes><name>lesstif</name></utilizes>
-	<utilizes><name>python</name></utilizes>
-	<utilizes><name>tcl</name></utilizes>
-	<utilizes><name>ruby</name></utilizes>
+        <utilizes>
+		<name>xfree86</name>
+	</utilizes>
+        <utilizes>
+		<name>gtk+2</name>
+	</utilizes>
+        <utilizes>
+		<name>lesstif</name>
+	</utilizes>
+        <utilizes>
+		<name>python</name>
+	</utilizes>
+        <utilizes>
+		<name>tcl</name>
+	</utilizes>
+        <utilizes>
+		<name>ruby</name>
+	</utilizes>
     </packageinfo>
 
     <stage name="Unpacking">
