@@ -70,9 +70,9 @@
 <!ENTITY file-package "file-&file-version;.tar.gz">
 <!ENTITY file-directory "file-&file-version;">
 
-<!ENTITY findutils-md5 "7225c2705b01e47811066f4e9dc8d677">
+<!ENTITY findutils-md5 "e90ce7222daadeb8616b8db461e17cbc">
 <!ENTITY findutils-version "4.1.20">
-<!ENTITY findutils-package "findutils-&findutils-version;.tar.bz2">
+<!ENTITY findutils-package "findutils-&findutils-version;.tar.gz">
 <!ENTITY findutils-directory "findutils-&findutils-version;">
 
 <!ENTITY flex-md5 "363dcc4afc917dc51306eb9d3de0152f">
