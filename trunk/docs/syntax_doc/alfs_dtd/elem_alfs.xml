@@ -1,4 +1,4 @@
-<sect1 id="elem_alfs" xreflabel="Element &emdash; &lt;alfs&gt;">
+<sect1 id="elem_alfs" xreflabel="Element: &lt;alfs&gt;">
 <?dbhtml filename="elem_alfs.html" dir="alfs_dtd"?>
 <title>Element: &lt;alfs&gt;</title>
 
@@ -15,26 +15,25 @@
           version     CDATA #FIXED &quot;3.1&quot;&gt;
 </synopsis>
 
-<para>See also :</para>
-<itemizedlist>
-<listitem><para><xref linkend="elem_configure"/></para></listitem>
-<listitem><para><xref linkend="elem_copy"/></para></listitem>
-<listitem><para><xref linkend="elem_download"/></para></listitem>
-<listitem><para><xref linkend="elem_execute"/></para></listitem>
-<listitem><para><xref linkend="elem_link"/></para></listitem>
-<listitem><para><xref linkend="elem_make"/></para></listitem>
-<listitem><para><xref linkend="elem_mkdir"/></para></listitem>
-<listitem><para><xref linkend="elem_move"/></para></listitem>
-<listitem><para><xref linkend="elem_ownership"/></para></listitem>
-<listitem><para><xref linkend="elem_package"/></para></listitem>
-<listitem><para><xref linkend="elem_patch"/></para></listitem>
-<listitem><para><xref linkend="elem_permissions"/></para></listitem>
-<listitem><para><xref linkend="elem_remove"/></para></listitem>
-<listitem><para><xref linkend="elem_search_replace"/></para></listitem>
-<listitem><para><xref linkend="elem_stage"/></para></listitem>
-<listitem><para><xref linkend="elem_textdump"/></para></listitem>
-<listitem><para><xref linkend="elem_unpack"/></para></listitem>
-</itemizedlist>
+<para>See also :
+<xref linkend="elem_configure"/>&nbsp;|&nbsp;
+<xref linkend="elem_copy"/>&nbsp;|&nbsp;
+<xref linkend="elem_download"/>&nbsp;|&nbsp;
+<xref linkend="elem_execute"/>&nbsp;|&nbsp;
+<xref linkend="elem_link"/>&nbsp;|&nbsp;
+<xref linkend="elem_make"/>&nbsp;|&nbsp;
+<xref linkend="elem_mkdir"/>&nbsp;|&nbsp;
+<xref linkend="elem_move"/>&nbsp;|&nbsp;
+<xref linkend="elem_ownership"/>&nbsp;|&nbsp;
+<xref linkend="elem_package"/>&nbsp;|&nbsp;
+<xref linkend="elem_patch"/>&nbsp;|&nbsp;
+<xref linkend="elem_permissions"/>&nbsp;|&nbsp;
+<xref linkend="elem_remove"/>&nbsp;|&nbsp;
+<xref linkend="elem_search_replace"/>&nbsp;|&nbsp;
+<xref linkend="elem_stage"/>&nbsp;|&nbsp;
+<xref linkend="elem_textdump"/>&nbsp;|&nbsp;
+<xref linkend="elem_unpack"/>
+</para>
 
 </sect2>
 
