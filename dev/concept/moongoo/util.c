@@ -291,3 +291,19 @@ char *strnstr (char *haystack, char *needle, int n)
 
 	return ret;
 }	
+
+void term_set (int attr, int fg, int bg)
+{
+	char cmd[13];
+
+	sprintf(cmd, "%c[%d;%d;%dm", 0x1B, attr, fg+30, bg+40);
+	printf(cmd);
+}
+
+void term_reset ()
+{
+	char cmd[13];
+
+	sprintf(cmd, "%c[m", 0x1B);
+	printf(cmd);
+}

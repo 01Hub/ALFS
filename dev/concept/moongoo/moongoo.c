@@ -8,7 +8,7 @@
 
 int main (int argc, char **argv)
 {
-	int i;
+	//int i;
 	xmlNodePtr cur;
 	profile *prof;
 
@@ -26,16 +26,7 @@ int main (int argc, char **argv)
 	resolve_entities(cur);
 	
 	prof=bookasprofile(cur);
-	for (i=0;i<prof->n;i++)
-	{
-		package pkg = prof->pkg[i];
-		
-		//if (!strcmp(pkg.name, "Module-Init-Tools"))
-		//if (!strcmp(pkg.name, "Creating a file system"))
-		//if (!strcmp(pkg.name, "Linux"))
-		if (!strcmp(pkg.name, "Creating the /etc/fstab file"))
-			print_pkg(pkg);
-	}
+	print_profile(*prof);
 	
 	xmlFreeDoc(doc);
 	return 0;

@@ -29,7 +29,30 @@ void print_pkg (package pkg)
 	
 	for (i=0;i<pkg.n;i++)
 		print_cmd(pkg.build[i]);
+	printf("\n");
 }		
+
+void print_chapter (chapter ch)
+{
+	int i;
+
+	term_set(RESET, RED, BLACK);
+	printf("%s\n", ch.name);
+	term_reset();
+	for (i=0;i<ch.n;i++)
+		print_pkg(ch.pkg[i]);
+}
+
+void print_profile (profile prof)
+{
+	int i;
+
+	term_set(RESET, BLUE, BLACK);
+	printf("%s %s\n", prof.name, prof.vers);
+	term_reset();
+	for (i=0;i<prof.n;i++)
+		print_chapter(prof.ch[i]);
+}
 
 void print_subtree (xmlNodePtr node)
 {
