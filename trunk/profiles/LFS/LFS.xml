@@ -78,6 +78,7 @@
 		&c5-texinfo;
 		&c5-bash;
 		&c5-perl;
+		&c5-util-linux;
 		&c5-strip;
 	</stage>
 </stage>
@@ -113,7 +114,8 @@
 		&c6-gcc;
 		&c6-coreutils;
 		&c6-zlib;
-		&c6-lfs-utils;
+		&c6-mktemp;
+		&c6-iana-etc;		
 		&c6-findutils;
 		&c6-gawk;
 		&c6-ncurses;
