@@ -18,3 +18,4 @@
 <!ENTITY hints-root "http://www.linuxfromscratch.org/hints">
 <!ENTITY alfs-root "http://www.linuxfromscratch.org/alfs">
 <!ENTITY nbsp " ">
+<!ENTITY emdash "--">
