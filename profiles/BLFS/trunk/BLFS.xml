@@ -480,67 +480,67 @@
 
 <stage name="Chapter 33 (Individual Office Programs)">
     
-    &abiword;
-    &gnumeric;
-    &gnucash;
-    &gimp;
-    &evolution;
+    <xi:include href="chapter33/abiword.xml" />
+    <xi:include href="chapter33/gnumeric.xml" />
+    <xi:include href="chapter33/gnucash.xml" />
+    <xi:include href="chapter33/gimp.xml" />
+    <xi:include href="chapter33/evolution.xml" />
 
 </stage>
 
 <stage name="Chapter 34 (Office Suites)">
 
-    &koffice;    
-    &openoffice;
+    <xi:include href="chapter34/koffice.xml" />
+    <xi:include href="chapter34/openoffice.xml" />
 
 </stage>
 
 <stage name="Chapter 35 (Graphical Web Browsers)">
     
-    &mozilla;
-    &firefox;
-    &galeon;
-    &dillo;
+    <xi:include href="chapter35/mozilla.xml" />
+    <xi:include href="chapter35/firefox.xml" />
+    <xi:include href="chapter35/galeon.xml" />
+    <xi:include href="chapter35/dillo.xml" />
 
 </stage>
 
 <stage name="Chapter 36 (Other X-based Internet Programs)">
     
-    &thunderbird;
-    &pan;
-    &balsa;
+    <xi:include href="chapter36/thunderbird.xml" />
+    <xi:include href="chapter36/pan.xml" />
+    <xi:include href="chapter36/balsa.xml" />
 
 </stage>
 
 <stage name="Chapter 37 (Multimedia Libraries and Drivers)">
 
-    &alsa-driver;
-    &alsa-lib;
-    &alsa-utils;
-    &alsa-tools;
-    &alsa-firmware;
-    &alsa-oss;
-    &audiofile;
-    &esound;
-    &sdl;
-    &libao;
-    &libogg;
-    &libvorbis;
-    &nas;
-    &libmpeg3;
-    &libmad;
-    &openquicktime;
-    &libfame;
-    &speex;
-    &id3lib;
-    &flac;
-    &libdvdcss;
-    &libdvdread;
-    &libdv;
-    &liba52;
-    &xvid;
-    &xine-lib;
-    &libmikmod;
+    <xi:include href="chapter37/alsa-driver.xml" />
+    <xi:include href="chapter37/alsa-lib.xml" />
+    <xi:include href="chapter37/alsa-utils.xml" />
+    <xi:include href="chapter37/alsa-tools.xml" />
+    <xi:include href="chapter37/alsa-firmware.xml" />
+    <xi:include href="chapter37/alsa-oss.xml" />
+    <xi:include href="chapter37/audiofile.xml" />
+    <xi:include href="chapter37/esound.xml" />
+    <xi:include href="chapter37/sdl.xml" />
+    <xi:include href="chapter37/libao.xml" />
+    <xi:include href="chapter37/libogg.xml" />
+    <xi:include href="chapter37/libvorbis.xml" />
+    <xi:include href="chapter37/nas.xml" />
+    <xi:include href="chapter37/libmpeg3.xml" />
+    <xi:include href="chapter37/libmad.xml" />
+    <xi:include href="chapter37/openquicktime.xml" />
+    <xi:include href="chapter37/libfame.xml" />
+    <xi:include href="chapter37/speex.xml" />
+    <xi:include href="chapter37/id3lib.xml" />
+    <xi:include href="chapter37/flac.xml" />
+    <xi:include href="chapter37/libdvdcss.xml" />
+    <xi:include href="chapter37/libdvdread.xml" />
+    <xi:include href="chapter37/libdv.xml" />
+    <xi:include href="chapter37/liba52.xml" />
+    <xi:include href="chapter37/xvid.xml" />
+    <xi:include href="chapter37/xine-lib.xml" />
+    <xi:include href="chapter37/libmikmod.xml" />
 
 </stage>
 
