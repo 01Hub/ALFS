@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch24.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,93 +10,110 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="php" version="&php-version;">
-
-        <packageinfo>
-                <requires><name>mysql</name></requires>
-                <requires><name>apache</name></requires>
-		
-		<utilizes><name>openssl</name></utilizes>
-                <utilizes><name>bc</name></utilizes>
-                <utilizes><name>curl</name></utilizes>
-                <utilizes><name>db</name></utilizes>
-                <utilizes><name>libjpeg</name></utilizes>
-                <utilizes><name>libpng</name></utilizes>
-		<utilizes><name>freetype</name></utilizes>
-                <utilizes><name>gdbm</name></utilizes>
-                <utilizes><name>sendmail</name></utilizes>
-                <utilizes><name>pcre</name></utilizes>
-                <utilizes><name>postgesql</name></utilizes>
-                <utilizes><name>readline</name></utilizes>
-                <utilizes><name>libtiff</name></utilizes>
-                <utilizes><name>readline</name></utilizes>
-                <utilizes><name>expat</name></utilizes>
-                <utilizes><name>gmp</name></utilizes>
-        </packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&php-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&php-directory;</base>
-		</stageinfo>
-
-		<configure>
-		        <param>--prefix=/usr</param>
-			<param>--sysconfdir=/etc</param>
-			<param>--with-apxs2</param>
-			<param>--with-config-file-path=/etc</param>
-			<param>--with-zlib</param>
-			<param>--with-bz2</param>
-			<param>--enable-ftp</param>
-			<param>--with-gettext</param>
-			<param>--with-iconv</param>
-			<param>--with-mysql=/usr</param>
-			<param>--with-ncurses</param>
-		</configure>
-
-		<make />
-
-		<make>
-			<param>install</param>
-		</make>
-
-		<copy>
-		        <source>php.ini-recommended</source>
-			<destination>/etc/php.ini</destination>
-		</copy>
-
-	</stage>
-
-
-	<stage name="Configuring">
-
-	<!-- remove line if already inserted -->
-		<search_replace base="/etc/apache">
-			<file>httpd.conf</file>
-			<find>AddType application/x-httpd-php .php</find>
-			<replace></replace>
-		</search_replace>
-	
-		<textdump mode="append" base="/etc/apache">
-	        	<file>httpd.conf</file>
-			<content>
-                	=AddType application/x-httpd-php .php
-			</content>
-		</textdump>
-	</stage>
-
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&php-directory;</remove>
-	</stage>
-
-</package>
+  <package name="php" version="&php-version;">
+    <packageinfo>
+      <requires>
+        <name>mysql</name>
+      </requires>
+      <requires>
+        <name>apache</name>
+      </requires>
+      <utilizes>
+        <name>openssl</name>
+      </utilizes>
+      <utilizes>
+        <name>bc</name>
+      </utilizes>
+      <utilizes>
+        <name>curl</name>
+      </utilizes>
+      <utilizes>
+        <name>db</name>
+      </utilizes>
+      <utilizes>
+        <name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+        <name>libpng</name>
+      </utilizes>
+      <utilizes>
+        <name>freetype</name>
+      </utilizes>
+      <utilizes>
+        <name>gdbm</name>
+      </utilizes>
+      <utilizes>
+        <name>sendmail</name>
+      </utilizes>
+      <utilizes>
+        <name>pcre</name>
+      </utilizes>
+      <utilizes>
+        <name>postgesql</name>
+      </utilizes>
+      <utilizes>
+        <name>readline</name>
+      </utilizes>
+      <utilizes>
+        <name>libtiff</name>
+      </utilizes>
+      <utilizes>
+        <name>readline</name>
+      </utilizes>
+      <utilizes>
+        <name>expat</name>
+      </utilizes>
+      <utilizes>
+        <name>gmp</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&php-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&php-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--sysconfdir=/etc</param>
+        <param>--with-apxs2</param>
+        <param>--with-config-file-path=/etc</param>
+        <param>--with-zlib</param>
+        <param>--with-bz2</param>
+        <param>--enable-ftp</param>
+        <param>--with-gettext</param>
+        <param>--with-iconv</param>
+        <param>--with-mysql=/usr</param>
+        <param>--with-ncurses</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <copy>
+        <source>php.ini-recommended</source>
+        <destination>/etc/php.ini</destination>
+      </copy>
+    </stage>
+    <stage name="Configuring">
+      <!-- remove line if already inserted -->
+      <search_replace base="/etc/apache">
+        <file>httpd.conf</file>
+        <find>AddType application/x-httpd-php .php</find>
+        <replace></replace>
+      </search_replace>
+      <textdump mode="append" base="/etc/apache">
+        <file>httpd.conf</file>
+        <content>=AddType application/x-httpd-php .php</content>
+      </textdump>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&php-directory;</remove>
+    </stage>
+  </package>
 </alfs>
