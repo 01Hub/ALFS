@@ -6,8 +6,8 @@ use strict;
 # A simple and ugly Perl script for converting nALFS XML log
 # files to user-friendly format.
 #
-# Usage:  ./flog < ~/.nALFS/package/diffutils-2.7.log
-#    or:  cat ~/.nALFS/package/*.log | ./flog
+# Usage:  ./flog < ~/.nALFS/packages/diffutils-2.7.log
+#    or:  cat ~/.nALFS/packages/*.log | ./flog
 #    or:  something else...
 #
 
