@@ -119,6 +119,12 @@ profile *bookasprofile (xmlNodePtr node)
 {
 	xmlNodePtr info = find_node(node, "bookinfo");
 	__r = init_repl(MOO_XML);
+
+	if (!info)
+	{
+		fprintf(stderr, "XML document is not a valid LFS book.\n");
+		return NULL;
+	}
 	
 	prof = (profile *)malloc(sizeof(profile));
 	prof->name = find_value(info, "title");

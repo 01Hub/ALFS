@@ -7,9 +7,10 @@ LDLIBS+=`xml2-config --libs`
 CFLAGS+=-Wall -Werror -g3
 
 BIN=moongoo
-OBJS=alfs.o book.o util.o repl.o
+OBJS=alfs.o book.o util.o repl.o syn.o
 
 BOOK=~/projects/alfs/book/index.xml
+#BOOK=~/projects/hive/unstable/profile.xml
 
 .PHONY: all clean compile run memcheck debug todo upload bug
 
