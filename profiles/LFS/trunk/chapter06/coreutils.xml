@@ -78,6 +78,7 @@
 		</make>
 
 		<move base="/usr/bin">
+			<source>[</source>
 			<source>basename</source>
 			<source>cat</source>
 			<source>chgrp</source>
@@ -90,6 +91,7 @@
 			<source>echo</source>
 			<source>false</source>
 			<source>head</source>
+			<source>hostname</source>
 			<source>install</source>
 			<source>ln</source>
 			<source>ls</source>
@@ -113,14 +115,6 @@
 			<source>/usr/bin/chroot</source>
 			<destination>/usr/sbin</destination>
 		</move>
-
-		<remove>/usr/bin/kill</remove>
-
-		<link>
-			<option>force</option>
-			<target>test</target>
-			<name>/bin/[</name>
-		</link>
 
 		<link>
 			<option>force</option>
