@@ -50,7 +50,7 @@
 
 <!ELEMENT download       (file, url*, destination, digest?)>
 
-<!ELEMENT execute        (param*)>
+<!ELEMENT execute        ((param | prefix)*)>
 <!ATTLIST execute
           base           CDATA #IMPLIED
           command        CDATA #REQUIRED>
@@ -105,7 +105,7 @@
 
 <!ELEMENT param          (#PCDATA)>
 
-<!ELEMENT patch          (param*)>
+<!ELEMENT patch          ((param | prefix)*)>
 <!ATTLIST patch
           base           CDATA #IMPLIED>
 

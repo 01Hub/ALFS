@@ -79,6 +79,7 @@ static int patch_main_ver3(element_s *el)
 	int status;
 	char *base;
 	char *parameters = NULL;
+	char *command;
 
 
 	if (append_param_elements(&parameters, el) == NULL) {
@@ -97,10 +98,25 @@ static int patch_main_ver3(element_s *el)
 	Nprint_h("Patching in %s", base);
 	Nprint_h("    patch %s", parameters);
 
-	if ((status = execute_command("patch %s", parameters))) {
+	command = xstrdup("");
+
+	append_prefix_elements(&command, el);
+
+	/* the trailing space on the string below is important, since
+	   append_param_elements will not have put a space at the
+	   beginning of the parameters string (since it was NULL to
+	   begin with)
+	*/
+
+	append_str(&command, "patch ");
+
+	append_str(&command, parameters);
+
+	if ((status = execute_command(command))) {
 		Nprint_h_err("Patching failed.");
 	}
 	
+	xfree(command);
 	xfree(base);
 	xfree(parameters);
 
@@ -114,7 +130,7 @@ static int patch_main_ver3(element_s *el)
 
 static const char *patch_parameters_ver2[] = { "base", "param", NULL };
 
-static const char *patch_parameters_ver3[] = { "param", NULL };
+static const char *patch_parameters_ver3[] = { "param", "prefix", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
