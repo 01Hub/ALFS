@@ -47,101 +47,35 @@
 
 #define El_download_file(el) alloc_trimmed_param_value("file", el)
 #define El_download_destination(el) alloc_trimmed_param_value("destination", el)
-#define El_download_digest(el) alloc_trimmed_param_value("digest", el)
 
-
-static INLINE int get_url(const char *urldir, const char *file)
-{
-	int status;
-	struct stat file_stat;
-	char *url = malloc(strlen(urldir) + strlen(file) + 1);
-	
-	strcpy(url, urldir);
-	strcat(url, file);
-
-	/* TODO: We need to make sure that a directory for archive exists. */
-
-	/* check if the file exists and remove it, we can't be sure the
-	   chosen downloader will overwrite an existing file
-	*/
-	if (stat(file, &file_stat))
-		unlink(file);
-
-#ifdef HAVE_LIBCURL
-	status = load_url(file, url);
-#else
-	status = execute_command("wget --progress=dot -O %s %s", file, url);
-#endif
-
-	if (status) {
-		Nprint_h_err("Getting url failed:");
-		Nprint_h_err("    %s", url);
-
-		unlink(file);
-
-		xfree(url);
-		return -1;
-	}
-
-	if (stat(file, &file_stat)) {
-		Nprint_h_err("Unable to get %s from url %s:",
-			file, url);
-		Nprint_h_err("    %s", strerror(errno));
-
-		xfree(url);
-		return -1;
-	}
-
-	xfree(url);	
-	return 0;
-}
 
 int download_main(element_s *el)
 {
-	int status = 0;
-	char *file;
-	char *destination;
-	char *digest;
-	char *digest_type;
+	/* status assumes failure until set otherwise */
+	int status = -1;
+	char *file = NULL;
+	char *destination = NULL;
+	char *digest = NULL;
+	char *digest_type = NULL;
 	struct stat file_stat;
 
 	/* <file> is mandatory */
 	if ((file = El_download_file(el)) == NULL) {
 		Nprint_h_err("File name is missing.");
-		return -1;
+		goto free_all_and_return;
 	}
 
 	/* <destination> is mandatory */
 	if ((destination = El_download_destination(el)) == NULL) {
 		Nprint_h_err("Destination is missing.");
-		xfree(file);
-		return -1;
+		goto free_all_and_return;
 	}
 	
 	/* changing to <destination> directory */
-	if (change_current_dir(destination)) {
-		xfree(file);
-		xfree(destination);
-		return -1;
-	}
+	if (change_current_dir(destination))
+		goto free_all_and_return;
 
-	if ((digest = El_download_digest(el)) != NULL) {
-		element_s *el2 = first_param("digest", el);
-
-		digest_type = attr_value("type", el2);
-
-		if (digest_type != NULL) {
-			char *s;
-
-			for (s = digest_type; *s; s++) {
-				*s = tolower(*s);
-			}
-		}
-	  
-		if ((digest_type == NULL) || (*digest_type == 0)) {
-			digest_type = "md5";
-		}
-	}
+	alloc_element_digest(el, &digest, &digest_type);
 
 	/* Check if file exists. */
 	if ((stat(file, &file_stat))) {
@@ -153,58 +87,48 @@ int download_main(element_s *el)
 			Nprint_h("Trying to fetch it from <url>...");
 
 	                for (p = first_param("url", el); p; p = next_param(p)) {
-			      char *s;
+				char *s;
 
-			      if ((s = alloc_trimmed_str(p->content)) == NULL) {
-				Nprint_h_warn("Source empty.");
-				continue;
-			      }
-
-  			      if (! get_url(s, file)) {
-				found = 1;
-			      }
-
-			      if (found && (digest != NULL)) {
-				      if (verify_digest(digest_type, digest, file)) {
-					      Nprint_h_err("Wrong %s digest of file: %s",
-							   digest_type, file);
-					      found = 0;
-				      }
-			      }
-
-			      xfree(s);
-
-			      if (found)
-				      break;
+				if ((s = alloc_trimmed_str(p->content)) == NULL) {
+					Nprint_h_warn("Source empty.");
+					continue;
+				}
+				
+				append_str(&s, file);
+				if (! get_url(s, file, digest, digest_type))
+					found = 1;
+				xfree(s);
+				if (found)
+					break;
 			}
-
+			
 			if (! found) {
-			  Nprint_h_err("Unable to download file %s.", file);
-			  xfree(file);
-			  xfree(destination);
-			  return -1;
+				Nprint_h_err("Unable to download file %s.", file);
+				goto free_all_and_return;
 			}
 
 		} else {
 			Nprint_h_err("Checking for %s failed:", file);
 			Nprint_h_err("    %s", strerror(errno));
-			xfree(file);
-			xfree(destination);
-			return -1;
+			goto free_all_and_return;
 		}
 	} else if (digest != NULL) {
 		if (verify_digest(digest_type, digest, file)) {
 			Nprint_h_err("Wrong %s digest of file: %s",
-				digest_type, file);
-			xfree(file);
-			xfree(destination);
-			return -1;
+				     digest_type, file);
+			goto free_all_and_return;
 		}
 	}
 
+	/* operation was successful, set status */
+	status = 0;
+
+ free_all_and_return:
+	xfree(digest_type);
+	xfree(digest);
 	xfree(file);
 	xfree(destination);
-	
+
 	return status;
 }
 

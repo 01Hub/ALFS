@@ -24,8 +24,19 @@
 #ifndef H_NALFS_
 #define H_NALFS_
 
+/* this is the equivalent of an "extern" definition, meaning the actual
+   structure definition will be found later during the compile. this is
+   needed because we don't want to bring all of parser.h and handlers.h
+   into this file at this time.
+*/
+
+struct element_s;
+
 extern int verify_digest(const char *type, const char *digest, const char *file);
+extern void alloc_element_digest(const struct element_s *el, char **digest, char **type);
 extern int load_url(const char *output, const char *url);
+extern int get_url(const char *url, const char *destination,
+		   const char *digest, const char *digest_type);
 
 #ifdef MODULE_NAME
 #define __HANDLER_SYMBOL(handler_mod, name) handler_mod ## _LTX_ ## handler_ ## name
