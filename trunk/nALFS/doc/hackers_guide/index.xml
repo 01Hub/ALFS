@@ -5,11 +5,13 @@
 <!ENTITY version "20031008">
 <!ENTITY releasedate "October 8th, 2003">
 
-<!ENTITY % book      SYSTEM "book/book.ent">
-<!ENTITY % preface   SYSTEM "preface/preface.ent">
+<!ENTITY % book         SYSTEM "book/book.ent">
+<!ENTITY % preface      SYSTEM "preface/preface.ent">
+<!ENTITY % introduction SYSTEM "introduction/introduction.ent">
 
 %book;
 %preface;
+%introduction;
 
 ]>
 
