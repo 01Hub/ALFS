@@ -7,9 +7,17 @@
     </requires>
     <utilizes>
       <name>readline</name>
+    </utilizes>
+    <utilizes>
       <name>linuxpam</name>
+    </utilizes>
+    <utilizes>
       <name>openldap</name>
+    </utilizes>
+    <utilizes>
       <name>xfree86</name>
+    </utilizes>
+    <utilizes>
       <name>cracklib</name>
     </utilizes>
   </packageinfo>-->
