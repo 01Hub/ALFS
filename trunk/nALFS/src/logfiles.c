@@ -27,6 +27,7 @@
 #include <libxml/tree.h>
 #include <libxml/parser.h>
 
+#include "libXML-tree.h"
 #include "utility.h"
 #include "logfiles.h"
 
@@ -247,7 +248,7 @@ int logf_get_packages_cnt(struct logf *logf)
 	return logf->cnt;
 }
 
-char *logf_get_package_name(struct logf *logf, int i)
+char *logf_get_plog_filename(struct logf *logf, int i)
 {
 	return logf->list[i]->name;
 }
@@ -306,7 +307,6 @@ int logf_merge_log(struct logf *logf, const char *ptr, size_t size)
 	xmlNodePtr new_node;
 	xmlDocPtr doc = logf->list[0]->doc;
 
-
 	/* Parse it and unlink its root element (new_node). */
 	doc = xmlParseMemory(ptr, size);
 	new_node = xmlDocGetRootElement(doc);
@@ -324,19 +324,8 @@ int logf_merge_log(struct logf *logf, const char *ptr, size_t size)
 
 static xmlNodePtr logf_get_flog_element(struct logf *logf)
 {
-	xmlNodePtr c;
-	xmlNodePtr n = xmlGetLastChild(logf->list[0]->doc->children);
-	/* n should be EL_NAME_FOR_A_RUN */
-
-	/* Find the last non-text child of n. */
-	for (c = n->children; c; c = c->next) {
-		if (c->type == XML_ELEMENT_NODE
-		&& strcmp((const char *)c->name, EL_NAME_FOR_FILES_ROOT) == 0) {
-			return c;
-		}
-	}
-
-	return NULL;
+	return n_xmlGetLastElementByName(
+		logf->list[0]->doc->children, EL_NAME_FOR_FILES_ROOT);
 }
 
 int logf_has_flog(struct logf *logf)

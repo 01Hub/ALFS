@@ -284,3 +284,27 @@ element_s *parse_with_libxml2_tree(const char *filename)
 
 	return profile;
 }
+
+/*
+ * Helper functions for accessing nodes in libXML.
+ */
+
+xmlNodePtr n_xmlGetLastElementByName(xmlNodePtr p, const xmlChar *name)
+{
+	xmlNodePtr n, c;
+	xmlNodePtr found = NULL;
+
+	for (n = p->children; n; n = n->next) {
+		if (n->type == XML_ELEMENT_NODE) {
+			if (xmlStrcmp(n->name, name) == 0) {
+				found = n;
+			}
+		}
+
+		if ((c = n_xmlGetLastElementByName(n, name))) {
+			found = c;
+		}
+	}
+
+	return found;
+}
