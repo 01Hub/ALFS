@@ -1,61 +1,59 @@
 # Begin /etc/profile
 # Written for Beyond Linux From Scratch
 # by James Robertson <jameswrobertson@earthlink.net>
-
+# modifications by Dagmar d'Surreal <rivyqntzne@pbzpnfg.arg>
+ 
 # System wide environment variables and startup programs.
-
+ 
 # System wide aliases and functions should go in /etc/bashrc.  Personal
 # environment variables and startup programs should go into
 # ~/.bash_profile.  Personal aliases and functions should go into
 # ~/.bashrc.
-
-# Function to help us manage paths
-pathman () {
-	if ! echo $PATH | /bin/egrep -q "(^|:)$1($|:)" ; then
-		if [ "$2" = "last" ] ; then
-			PATH=$PATH:$1
-		else
-			PATH=$1:$PATH
-		fi
-	fi
+ 
+# Functions to help us manage paths.  Second argument is the name of the
+# path variable to be modified (default: PATH)
+pathremove () {
+        local IFS=':'
+        local NEWPATH
+        local DIR
+        local PATHVARIABLE=${2:-PATH}
+        for DIR in ${!PATHVARIABLE} ; do
+                if [ "$DIR" != "$1" ] ; then
+                  NEWPATH=${NEWPATH:+$NEWPATH:}$DIR
+                fi
+        done
+        export $PATHVARIABLE="$NEWPATH"
 }
-
-# Add to the standard path.
-if [ $(id -u) = 0 ] ; then
-	if [ -d "/usr/local/sbin" ] ; then
-		pathman /usr/local/sbin last
-	fi
+ 
+pathprepend () {
+        pathremove $1 $2
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="$1${!PATHVARIABLE:+:${!PATHVARIABLE}}"
+}
+ 
+pathappend () {
+        pathremove $1 $2
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
+}
+ 
+if [ $EUID -eq 0 ] ; then
+        unset HISTFILE
 fi
-
-if [ $(id -u) != 0 ] ; then
-	if [ -d "/usr/local/bin" ] ; then
-		pathman /usr/local/bin last
-	fi
-fi
-
-if [ -d "/usr/X11R6/bin" ] ; then
-	pathman /usr/X11R6/bin last
-fi
-
+ 
 # Setup some environment variables.
-HISTSIZE=1000
-HISTIGNORE="&:[bf]g:exit"
-PS1="[\u@\h \w]\\$ "
-
-# Setup the INPUTRC environment variable.
-if [ -z "$INPUTRC" -a ! -f "$HOME/.inputrc" ] ; then
-	INPUTRC=/etc/inputrc
-fi
-
-# Setup for /bin/ls to support color, the alias is in /etc/bashrc.
-if [ -f "/etc/dircolors" ] ; then
-	eval $(dircolors -b /etc/dircolors)
-
-	if [ -f "$HOME/.dircolors" ] ; then
-		eval $(dircolors -b $HOME/.dircolors)
-	fi
-fi
-
-export PATH HISTSIZE HISTIGNORE PS1 LS_COLORS INPUTRC
+export HISTSIZE=1000
+export HISTIGNORE="&:[bf]g:exit"
+#export PS1="[\u@\h \w]\\$ "
+export PS1='\u@\h:\w\$ '
+ 
+for script in /etc/profile.d/*.sh ; do
+        if [ -x $script ] ; then
+                . $script
+        fi
+done
+ 
+# Now to clean up after ourselves
+unset pathremove pathprepend pathappend 
 
 # End /etc/profile

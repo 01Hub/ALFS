@@ -7,6 +7,20 @@
 		<destination>/etc/profile</destination>
 	</copy>
 
+	<execute command="install --directory --mode=0755 --owner=root --group=root /etc/profile.d" />
+
+
+	<copy>
+		<source>&blfs-config;/etc/profile.d/dircolors.sh</source>
+		<source>&blfs-config;/etc/profile.d/extrapaths.sh</source>
+		<source>&blfs-config;/etc/profile.d/readline.sh</source>
+		<source>&blfs-config;/etc/profile.d/tinker-term.sh</source>
+		<source>&blfs-config;/etc/profile.d/umask.sh</source>
+		<source>&blfs-config;/etc/profile.d/X.sh</source>
+		<source>&blfs-config;/etc/profile.d/xterm-titlebars.sh</source>
+		<destination>/etc/profile.d</destination>
+	</copy>	
+
 	<copy>
         	<source>&blfs-config;/etc/bashrc</source>
 		<destination>/etc/bashrc</destination>
