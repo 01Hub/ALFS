@@ -6,6 +6,9 @@
 
 <itemizedlist>
 
+<listitem><para>March, 14th, 2004 [jwrober]: Added an initial stab at an
+XML and DTD syntax intro &emdash; Bug 784.</para></listitem>
+
 <listitem><para>February 23rd, 2004 [jwrober]: Finished the download element
 description.  Closes bug 760.</para></listitem>
 
