@@ -232,7 +232,7 @@
 	<remove>/tools</remove>
 
 	<textdump>
-		<file>/etc/lfs</file>
+		<file>/etc/lfs-release</file>
 		<content>=&LFS-version;</content>
 	</textdump>
 </stage>
