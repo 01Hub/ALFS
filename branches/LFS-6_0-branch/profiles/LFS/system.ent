@@ -112,3 +112,7 @@
 <!ENTITY c8-kernel SYSTEM             "config/kernel.xml">
 <!ENTITY c8-grub SYSTEM               "config/grub.xml">
 <!ENTITY c8-keymap SYSTEM	      "config/keymap-ch8.xml">
+
+<!-- Chapter 9 -->
+<!ENTITY c9-libxml2 SYSTEM		"chapter09/libxml2.xml">
+<!ENTITY c9-nALFS SYSTEM		"chapter09/nALFS.xml">
