@@ -1,15 +1,14 @@
 <package name="nas" version="&nas-version;">
 
+	<packageinfo>
+		<requires><name>xfree86</name></requires>
+	</packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&nas-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-		        <source>&packages_dir;/&nas-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
@@ -20,7 +19,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&nas-patch;</param>
+			<param>-i &packages_dir;/&nas-patch;</param>
 		</patch>
 
 		<execute command="xmkmf" />
@@ -40,12 +39,6 @@
 		<make />
 
 		<make>
-		        <param>INCROOT=/usr/include</param>
-			<param>USRLIBDIR=/usr/lib</param>
-			<param>MANPATH=/usr/share/man</param>
-			<param>BINDIR=/usr/bin</param>
-			<param>LIBDIR=/usr/lib</param>
-			<param>CONFIGDIR=/usr/X11R6/lib/X11/config</param>
 			<param>install</param>
 			<param>install.man</param>
 		</make>
@@ -53,7 +46,6 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&nas-directory;</remove>
-		<remove>&build_dir;/&nas-patch;</remove>
 	</stage>
 
 </package>

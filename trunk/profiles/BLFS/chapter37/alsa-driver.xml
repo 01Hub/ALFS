@@ -12,11 +12,10 @@
 			<base>&build_dir;/&alsa-driver-directory;</base>
 		</stageinfo>
 
-		<remove>&build_dir;/&alsa-driver-directory;/include/linux/isapnp.h</remove>
-
-		<configure command="CC=/opt/gcc-2.95.3/bin/gcc ./configure">
-		        <param>--with-moddir=/lib/modules/&kernel-version;/kernel/drivers/sound/</param>
-			<param>--with-kernel=&kernel-directory;</param>
+		<configure>
+			<prefix>CC=/opt/gcc-2.95.3/bin/gcc</prefix>
+		        <param>--with-moddir=/lib/modules/`uname -r`/kernel/drivers/sound/</param>
+			<param>--with-kernel=/lib/modules/`uname -r`/build</param>
 			<param>--with-sequencer=yes</param>
 			<param>--with-oss=yes</param>
 			<param>--with-isapnp=no</param> 

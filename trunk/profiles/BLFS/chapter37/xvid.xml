@@ -26,11 +26,17 @@
 		        <param>install</param>
 		</make>
 
-		<copy>
-			<source>../../src/divx4.h</source>
-			<destination>/usr/include</destination>
-		</copy>
+		<link>
+			<option>force</option>
+			<target>libxvidcore.so.4.0</target>
+			<name>libxvidcore.so.4</name>
+		</link>
 
+		<link>
+			<option>force</option>
+			<target>libxvidcore.so.4</target>
+			<name>libxvidcore.so</name>
+		</link>
 	</stage>
 
 	<stage name="Clean-up.">

@@ -1,5 +1,9 @@
 <package name="alsa-oss" version="&alsa-oss-version;">
 
+	<packageinfo>
+		<requires><name>alsa-lib</name></requires>
+	</packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&alsa-oss-package;</archive>

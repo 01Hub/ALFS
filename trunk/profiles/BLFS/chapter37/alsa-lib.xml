@@ -1,5 +1,9 @@
 <package name="alsa-lib" version="&alsa-lib-version;">
 
+	<packageinfo>
+		<requires><name>alsa-driver</name></requires>
+	</packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&alsa-lib-package;</archive>
@@ -13,13 +17,16 @@
 		</stageinfo>
 
 		<configure>
+			<param>--enable-static</param>
 		</configure>
-
+		
 		<make/>
 		
 		<make>
 			<param>install</param>
 		</make>
+
+		&ldconfig;
 	</stage>
 
 	<stage name="Clean-up.">

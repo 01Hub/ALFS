@@ -1,18 +1,15 @@
 <package name="sdl" version="&sdl-version;">
 
         <packageinfo>
-                <requires><name>alsa-driver</name></requires>
-                <requires><name>esound</name></requires>
-
-		<utilizes><name>oss</name></utilizes>
-		<utilizes><name>alsa</name></utilizes>
-		<utilizes><name>esound</name></utilizes>
+                <utilizes><name>alsa-lib</name></utilizes>
+                <utilizes><name>esound</name></utilizes>
 		<utilizes><name>arts</name></utilizes>
 		<utilizes><name>nas</name></utilizes>
 		<utilizes><name>nasm</name></utilizes>
 		<utilizes><name>xfree86</name></utilizes>
 		<utilizes><name>aalib</name></utilizes>
 		<utilizes><name>directfb</name></utilizes>
+		<utilizes><name>svgalib</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
