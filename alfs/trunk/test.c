@@ -6,7 +6,7 @@
 
 #include <build.h>
 #include <libalfs.h>
-#include <test.h>
+#include "alfs.h"
 #include <plugin.h>
 #include <url.h>
 
@@ -69,10 +69,10 @@ int main (int argc, char **argv)
 				quiet = true;
 				break;
 			case 'V':
-				printf("%s %s\nWritten by Boris Buegling\n", NAME, VERSION);
+				printf("alfs %s\nWritten by Boris Buegling\n", VERSION);
 				return 0;
 			case 'h':
-				printf("%s [OPTIONS] BOOK\n", NAME);
+				printf("alfs [OPTIONS] BOOK\n");
 				printf("\t-b\t\tBuild\n");
 				printf("\t-C\t\tNo colors in output\n");
 				printf("\t-c CONF.XML\tXML configuration file\n");

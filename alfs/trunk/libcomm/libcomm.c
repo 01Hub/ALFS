@@ -23,7 +23,7 @@ static void *spawn_srv (void *inf)
 
 	secret = gen_secret();
 	
-	snprintf(cmd, 512, "ssh %s \"cd %s;./alfsd %s %i %s\"", info->host, 
+	snprintf(cmd, 512, "ssh %s \"cd %s;./alfsd %s %i %s 2>&1\"", info->host, 
 		info->dir, info->host, info->port, secret);
 	/*snprintf(cmd, 512, "ssh %s \"cd %s;echo -e 'run %s %i %s\nbt\nquit' >gdb.exe\"",
 		info->host, info->dir, info->host, info->port, secret);
@@ -35,7 +35,7 @@ static void *spawn_srv (void *inf)
 	if (!conn)
 		return NULL;
 	while (fgets(cmd, 512, conn))
-		printf("%s", cmd);
+		fprintf(stderr, "%s", cmd);
 	pclose(conn);
 	return NULL;
 }

@@ -265,3 +265,9 @@ void parse_unpck (profile *prof, char *url, xmlNodePtr node)
 	parse_cmd(prof, ret, node);
 	free(ret);
 }
+
+package *first_pkg (profile *prof)
+{
+	chapter *ch = (chapter *)g_list_first_data(prof->ch);
+	return (package *)g_list_first_data(ch->pkg);
+}

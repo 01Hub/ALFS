@@ -1,23 +1,28 @@
-#include <alfsd.h>
+#include "alfs.h"
+#include <build.h>
 #include <libcomm.h>
 #include <plugin.h>
 #include <remote.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <unistd.h>
 
-plug_info *parsers = NULL;
+plug_info *parsers = NULL, *writers = NULL;
 xmlDocPtr doc = NULL;
 
 static void cleanup ()
 {
 	if (parsers)
 		plugunload(parsers);
+	if (writers)
+		plugunload(writers);
 	if (doc)
 		xmlFreeDoc(doc);
 }
 
-static profile *parse (char *syn, char *fname)
+static profile *parse (char *syn, char *arch, char *moo_xml, char *fname)
 {
+	char *f;
 	int i=0;
 	profile *prof = NULL;
 	xmlNodePtr cur;
@@ -29,7 +34,7 @@ static profile *parse (char *syn, char *fname)
 	xmlXIncludeProcessFlags(doc, XML_PARSE_NOENT|XML_PARSE_NONET);
 	cur = xmlDocGetRootElement(doc);
 	
-	/*f = strdog(getenv("HOME"), moo_xml);
+	f = strdog(getenv("HOME"), moo_xml);
 	if (access(f, R_OK))
 	{
 		if (access("moo.xml", R_OK))
@@ -41,7 +46,7 @@ static profile *parse (char *syn, char *fname)
 		r = init_repl(f);
 	free(f);
 
-	add_option(r, "arch", arch);*/
+	add_option(r, "arch", arch);
 	
 	while (parsers[i].path)
 	{
@@ -57,6 +62,8 @@ int main (int argc, char **argv)
 {
 	char *plug_dir = PLUG_DIR;
 	bool running = true;
+	int i, len;
+	profile *prof = NULL;
 	
 	if (comm_srv_init(argc, argv))
 		return 1;
@@ -66,6 +73,10 @@ int main (int argc, char **argv)
 	if (getenv("NALFS_PLUGIN_DIR"))
 		plug_dir = getenv("NALFS_PLUGIN_DIR");
 	parsers = plugscan(strdog(plug_dir, "syntax/"));
+	writers = plugscan(strdog(plug_dir, "output/"));
+
+	if (!parsers)
+		fprintf(stderr, "No syntax plugins found.\n");
 	
 	while (running)
 	{
@@ -73,28 +84,63 @@ int main (int argc, char **argv)
 
 		switch (call)
 		{
-			case 0: // Quit
+			case REM_QUIT:
 				running=false;
 				break;
 			
-			case 1: // List of parser plugins
+			case REM_LIST_P:
+				len=0;
+				if (!parsers)
+					comm_wrint(1);
+				while (parsers[len].info) len++;
+				comm_wrint(0);
+				comm_wrint(len);
+				for (i=0;i<len;i++)
 				{
-					int i, len=0;
-					while (parsers[len].info) len++;
-					comm_wrint(len);
-					for (i=0;i<len;i++)
-					{
-						plug mango;
-						strcpy(mango.path, plugarg(parsers[i].path));
-						strcpy(mango.name, parsers[i].info->name);
-						comm_wrchunk(&mango, sizeof(plug));
-					}
+					plug mango;
+					strcpy(mango.path, plugarg(parsers[i].path));
+					strcpy(mango.name, parsers[i].info->name);
+					comm_wrchunk(&mango, sizeof(plug));
 				}
 				break;
 
-			case 2: // Parse a profile
-				profile_writer(parse("book", comm_rdstr()));
-				comm_wrstr("WIP.");
+			case REM_PARSE:
+				if (!parsers)
+					comm_wrint(1);
+				prof = parse(comm_rdstr(), comm_rdstr(), comm_rdstr(),
+					comm_rdstr());
+				if (prof)
+				{
+					comm_wrint(0);
+					profile_writer(prof);
+				}
+				else
+				{
+					fprintf(stderr, "Document was not parsed correctly.\n");
+					comm_wrint(1);
+				}
+				break;
+
+			case REM_OUTPUT:
+				if (!writers)
+				{
+					fprintf(stderr, "No output plugins available.\n");
+					comm_wrint(1);
+				}
+
+				if (!prof)
+				{
+					fprintf(stderr, "No profile was parsed, yet.\n");
+					comm_wrint(1);
+				}
+
+				i=0;
+				while (writers[i].path)
+				{
+					if (!strcmp(comm_rdstr(), plugarg(writers[i].path)))
+						writers[i].info->write_prof(prof, NULL);
+					i++;
+				}
 				break;
 
 			default:
