@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch46.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+<package name="jadetex" version="&jadetex-version;">
+  <stage name="Unpacking.">
+    <unpack>
+      <archive>&packages_dir;/&jadetex-package;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+  </stage>
+  <stage name="Installing.">
+    <stageinfo>
+      <base>&build_dir;/&jadetex-directory;</base>
+    </stageinfo>
+    <search_replace>
+      <file>/usr/share/texmf/web2c/texmf.cnf</file>
+      <find>original texmf.cnf</find>
+      <replace>modified texmf.cnf</replace>
+    </search_replace>
+    <execute command="sed">
+      <param>-i -e 's@main_memory.mpost = 1500000@&real-amp;\npool_size.context = 750000@'</param>
+      <param>/usr/share/texmf/web2c/texmf.cnf</param>
+    </execute>
+    <textdump mode="append">
+      <file>/usr/share/texmf/web2c/texmf.cnf</file>
+      <content>
+	=% The following 3 sections added for JadeTeX
+	=
+	=% latex settings
+	=main_memory.latex = 1100000
+	=param_size.latex = 1500
+	=stack_size.latex = 1500
+	=hash_extra.latex = 15000
+	=string_vacancies.latex = 45000
+	=pool_free.latex = 47500
+	=nest_size.latex = 500
+	=save_size.latex = 5000
+	=pool_size.latex = 500000
+	=max_strings.latex = 55000
+	=font_mem_size.latex= 400000
+	=
+	=% jadetex settings
+	=main_memory.jadetex = 1500000
+	=param_size.jadetex = 1500
+	=stack_size.jadetex = 1500
+	=hash_extra.jadetex = 50000
+	=string_vacancies.jadetex = 45000
+	=pool_free.jadetex = 47500
+	=nest_size.jadetex = 500
+	=save_size.jadetex = 5000
+	=pool_size.jadetex = 500000
+	=max_strings.jadetex = 55000
+	=
+	=% pdfjadetex settings
+	=main_memory.pdfjadetex = 2500000
+	=param_size.pdfjadetex = 1500
+	=stack_size.pdfjadetex = 1500
+	=hash_extra.pdfjadetex = 50000
+	=string_vacancies.pdfjadetex = 45000
+	=pool_free.pdfjadetex = 47500
+	=nest_size.pdfjadetex = 500
+	=save_size.pdfjadetex = 5000
+	=pool_size.pdfjadetex = 500000
+	=max_strings.pdfjadetex = 55000
+      </content>
+    </textdump>
+    <copy>
+      <option>recursive</option>
+      <source>/usr/share/texmf/tex/latex/config</source>
+      <destination>.</destination>
+    </copy>
+    <execute base="&build_dir;/&jadetex-directory;/config" command="tex">
+      <param>-ini -progname=latex latex.ini</parma>
+    </execute>
+    <move base="/usr/share/texmf/web2c">
+      <source>latex.fmt</source>
+      <destination>latex.fmt.orig</destination>
+    </move>
+    <copy>
+      <source>config/latex.fmt</source>
+      <destination>/usr/share/texmf/web2c</destination>
+    </copy>
+    <make>
+      <param>install</param>
+    </make>
+    <link>
+      <option>force</option>
+      <target>tex</target>
+      <name>/usr/bin/jadetex</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>pdftex</target>
+      <name>/usr/bin/pdfjadetex</name>
+    </link>
+    <execute command="mktexlsr" />
+  </stage>
+  <stage name="Cleanup.">
+    <remove>&build_dir;/&jadetex-directory;</remove>
+  </stage>
+</package>
+</alfs>

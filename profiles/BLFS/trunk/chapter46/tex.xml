@@ -12,6 +12,26 @@
 ]>
 <alfs>
   <package name="tex" version="&tex-version;">
+    <packageinfo>
+      <requires>
+	<name>ed</name>
+      </requires>
+      <utilizes>
+	<name>libpng</name>
+      </utilizes>
+      <utilizes>
+	<name>&ximpl;</name>
+      </utilizes>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>mysql</name>
+      </utilizes>
+      <utilizes>
+	<name>Perl-Tk</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&tex-package;</archive>
@@ -31,6 +51,11 @@
       <patch>
         <param>-N</param>
         <param>-p1</param>
+        <param>-i &packages_dir;/&tex-flex-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
         <param>-i &packages_dir;/&tex-readlink-patch;</param>
       </patch>
       <configure>
@@ -43,7 +68,10 @@
         <param>--bindir=/usr/bin</param>
       </configure>
       <make>
-        <param>world</param>
+        <param>all</param>
+      </make>
+      <make>
+	<param>install</param>
       </make>
       <execute command="texconfig dvips paper letter" />
       <execute command="texconfig font rw" />

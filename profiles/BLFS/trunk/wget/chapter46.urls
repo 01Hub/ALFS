@@ -1,4 +1,7 @@
 ftp://tug.ctan.org/tex-archive/systems/unix/teTeX/current/distrib/tetex-src-2.0.2.tar.gz
 ftp://tug.ctan.org/tex-archive/systems/unix/teTeX/current/distrib/tetex-texmf-2.0.2.tar.gz
 ftp://tug.ctan.org/tex-archive/systems/unix/teTeX/current/distrib/tetex-texmfsrc-2.0.2.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/5.1/tetex-src-2.0.2-remove-readlink-1.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/tetex-src-2.0.2-flex-1.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/tetex-src-2.0.2-remove_readlink-1.patch
+
+http://voxel.dl.sourceforge.net/sourceforge/jadetex/jadetex-3.13.tar.gz

@@ -5,4 +5,9 @@
 <!ENTITY tex-texmf-package     "tetex-texmf-&tex-version;.tar.gz">
 <!ENTITY tex-texmfsrc-package  "tetex-texmfsrc-&tex-version;.tar.gz">
 <!ENTITY tex-directory "tetex-src-&tex-version;">
-<!ENTITY tex-readlink-patch "tetex-src-&tex-version;-remove-readlink-1.patch">
+<!ENTITY tex-flex-patch "tetex-src-&tex-version;-flex-1.patch">
+<!ENTITY tex-readlink-patch "tetex-src-&tex-version;-remove_readlink-1.patch">
+
+<!ENTITY jadetex-version "3.13">
+<!ENTITY jadetex-package "jadetex-&jadetex-version;.tar.gz">
+<!ENTITY jadetex-directory "jadetex-&jadetex-version;">
