@@ -1,0 +1,56 @@
+<package name="linux-headers" version="&linux-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&linux-md5;</digest>
+			<archive>&packages_dir;/&linux-package;</archive>
+			<destination>&linux-src-location;</destination>
+		</unpack>
+
+		<ownership user="0" group="0">
+			<option>recursive</option>
+			<name>&linux-src-location;/&linux-directory;</name>
+		</ownership>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&linux-src-location;/&linux-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>mrproper</param>
+		</make>
+		
+		<make>
+			<param>include/linux/version.h</param>
+		</make>
+		
+		<make>
+			<param>symlinks</param>
+		</make>
+		
+		<mkdir>
+			<option>parents</option>
+			<name>/usr/include/asm</name>
+		</mkdir>
+
+		<copy>
+			<source>include/asm/*</source>
+			<destination>/usr/include/asm</destination>
+		</copy>
+
+		<copy>
+			<option>recursive</option>
+			<source>include/asm-generic</source>
+			<destination>/usr/include</destination>
+		</copy>
+
+		<copy>
+			<option>recursive</option>
+			<source>include/linux</source>
+			<destination>/usr/include</destination>
+		</copy>
+		
+		<execute command="touch /usr/include/linux/autoconf.h" />
+	</stage>
+</package>

@@ -1,0 +1,43 @@
+<package name="util-linux" version="&util-linux-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&util-linux-md5;</digest>
+			<archive>&packages_dir;/&util-linux-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&util-linux-directory;</base>
+		</stageinfo>
+
+		<search_replace>
+			<file>hwclock/hwclock.c</file>
+			<find>etc/adjtime</find>
+			<replace>var/lib/hwclock/adjtime</replace>
+		</search_replace>
+
+		<mkdir>
+			<option>parents</option>
+			<name>/var/lib/hwclock</name>
+		</mkdir>
+
+		<configure />
+
+		<make>
+			<param>HAVE_KILL=yes</param>
+			<param>HAVE_SLN=yes</param>
+		</make>
+
+		<make>
+			<param>HAVE_KILL=yes</param>
+			<param>HAVE_SLN=yes</param>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&util-linux-directory;</remove>
+	</stage>
+</package>

@@ -1,0 +1,35 @@
+<package name="m4" version="&m4-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&m4-md5;</digest>
+			<archive>&packages_dir;/&m4-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&m4-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+<!--
+		<make>
+			<param>check</param>
+		</make>
+-->
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&m4-directory;</remove>
+	</stage>
+</package>
