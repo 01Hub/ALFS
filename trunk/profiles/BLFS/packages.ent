@@ -60,9 +60,9 @@
 <!ENTITY tcsh-package   "tcsh-6.12.00.tar.gz">
 <!ENTITY tcsh-directory "tcsh-6.12.00">
 
-<!ENTITY zsh-version   "4.0.6">
-<!ENTITY zsh-package   "zsh-4.0.6.tar.bz2">
-<!ENTITY zsh-directory "zsh-4.0.6">
+<!ENTITY zsh-version   "4.1.1">
+<!ENTITY zsh-package   "zsh-4.1.1.tar.bz2">
+<!ENTITY zsh-directory "zsh-4.1.1">
 
 
 <!--************* packages for chapter 8 *************-->
