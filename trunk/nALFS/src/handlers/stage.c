@@ -216,7 +216,7 @@ static INLINE int set_variable(const char *variable, const char *value)
 
 /* <stage> handler */
 
-enum stage_attribute_types {
+enum {
 	STAGE_NAME,
 };
 
@@ -446,7 +446,7 @@ static int else_main(const element_s * const el)
 
 /* <stageinfo> handler */
 
-enum stageinfo_parameter_types {
+enum {
 	STAGEINFO_BASE,
 	STAGEINFO_ROOT,
 	STAGEINFO_USER,
@@ -630,7 +630,7 @@ static int environment_main(const element_s * const element)
 
 /* <variable> handler */
 
-enum variable_attribute_types {
+enum {
 	VARIABLE_NAME,
 	VARIABLE_MODE,
 };

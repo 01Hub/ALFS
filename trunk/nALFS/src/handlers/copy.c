@@ -40,8 +40,9 @@
 #include "backend.h"
 
 
-enum copy_info_types {
+enum {
 	COPY_OPTIONS,
+	COPY_OPTION,
 	COPY_BASE,
 	COPY_SOURCE,
 	COPY_DESTINATION,

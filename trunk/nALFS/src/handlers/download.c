@@ -46,13 +46,10 @@
 #include "backend.h"
 
 
-enum download_parameter_types {
+enum {
 	DOWNLOAD_FILE,
 	DOWNLOAD_URL,
 	DOWNLOAD_DESTINATION,
-};
-
-enum download_attribute_types {
 	DOWNLOAD_BASE,
 };
 
