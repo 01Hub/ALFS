@@ -7,7 +7,7 @@
 		</unpack>
 
 		<copy>
-			<source>&packages_dir;/&tcpwrappers-patch;</source>
+			<source>&packages_dir;/&tcpwrappers-shared-libs-plus-plus-patch;</source>
 			<destination>&build_dir;</destination>
 		</copy>
 	</stage>
@@ -20,7 +20,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&tcpwrappers-patch;</param>
+			<param>-i ../&tcpwrappers-shared-libs-plus-plus-patch;</param>
 		</patch>
 
 		<make>
@@ -36,6 +36,6 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&tcpwrappers-directory;</remove>
-		<remove>&build_dir;/&tcpwrappers-patch;</remove>
+		<remove>&build_dir;/&tcpwrappers-shared-libs-plus-plus-patch;</remove>
 	</stage>
 </package>

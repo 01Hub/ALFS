@@ -35,12 +35,12 @@
 			<param>install</param>
 		</make>
 
-		<copy>
+		<copy base="&build_dir;/&w3m-directory;">
 			<source>doc/keymap.default</source>
 			<destination>/etc/w3m/keymap</destination>
 		</copy>
 
-		<copy>
+		<copy base="&build_dir;/&w3m-directory;">
 			<source>doc/menu.default</source>
 			<destination>/etc/w3m/menu</destination>
 		</copy>

@@ -1,5 +1,10 @@
 <package name="inetutils" version="&inetutils-version;">
 
+        <packageinfo>
+                <utilizes><name>linux-pam</name></utilizes>
+                <utilizes><name>tcpwrappers</name></utilizes>
+        </packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&inetutils-package;</archive>
@@ -20,8 +25,6 @@
 			 <param>--sysconfdir=/etc</param>
 			 <param>--localstatedir=/var</param>
 			 <param>--mandir=/usr/share/man</param>
-			 <param>--with-wrap</param>
-			 <param>--with-pam</param>
 		</configure>
 
 		<make/>
