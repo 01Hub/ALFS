@@ -244,4 +244,5 @@ if test "$USE_SSL" = "yes"; then
    fi
 fi
 
-AC_OUTPUT([Makefile nALFS-config])
+AC_CONFIG_FILES([Makefile])
+AC_OUTPUT
