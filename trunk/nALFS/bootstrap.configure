@@ -231,7 +231,7 @@ done
 
 cat << EOF
 AC_ARG_ENABLE([syntax],
-        AC_HELP_STRING([--enable-syntax=VERSIONS], [enable only specific ALFS profile syntax versions to be built [[default=${default_syntaxes}]]]),
+        AC_HELP_STRING([--enable-syntax=(VERSIONS|all)], [enable only specific ALFS profile syntax versions to be built [[default=${default_syntaxes}]]]),
         [],
         [enable_syntax=${default_syntaxes}])
 EOF
@@ -244,7 +244,14 @@ cat << "EOF"
 save_ifs="${IFS}"; IFS="${IFS}${PATH_SEPARATOR},"
 for syntax_ver in ${enable_syntax}; do
     case ${syntax_ver} in
+    all)
 EOF
+
+for syntax in ${all_syntaxes}; do
+	echo syntax_${syntax}=1
+done
+
+echo ";;"
 
 for syntax in ${all_syntaxes}; do
 	cat << EOF
