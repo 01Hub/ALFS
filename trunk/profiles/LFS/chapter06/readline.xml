@@ -41,7 +41,7 @@
 			<param>install</param>
 		</make>
 
-		<permissions mode="644">
+		<permissions mode="755">
 			<name>/usr/lib/*.&readline-version;</name>
 		</permissions>
 
