@@ -16,7 +16,7 @@ profile *nalfs_profile (xmlNodePtr node);
 static t_plug nalfs_plugin =
 {
 	name:	"nALFS legacy syntax",
-	vers:	1,
+	vers:	PLUG_VER,
 	parse:	nalfs_profile
 };
 

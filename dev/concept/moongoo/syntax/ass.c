@@ -11,7 +11,7 @@ profile *ass_profile (xmlNodePtr node);
 static t_plug ass_plugin =
 {
 	name:	"ALFS simple syntax",
-	vers:	1,
+	vers:	PLUG_VER,
 	parse:	ass_profile
 };
 

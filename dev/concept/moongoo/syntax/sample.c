@@ -15,7 +15,7 @@ profile *parse_example (xmlNodePtr node);
 static t_plug sample_plugin =
 {
 	name:	"Example plugin",
-	vers:	1,
+	vers:	PLUG_VER,
 	parse:	parse_example
 };
 

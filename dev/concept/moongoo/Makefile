@@ -6,9 +6,9 @@ OBJS=moongoo.o build.o plugin.o
 
 ifeq ($(OPTS),)
 OPTS=
-#OPTS+=~/projects/alfs/book/index.xml
+OPTS+=~/projects/alfs/book/index.xml
 #OPTS+=~/projects/alfs/lfs-profile/LFS.xml
-OPTS+=~/projects/alfs/ass/index.xml
+#OPTS+=~/projects/alfs/ass/index.xml
 #OPTS+=~/projects/hive/unstable/profile.xml
 endif
 

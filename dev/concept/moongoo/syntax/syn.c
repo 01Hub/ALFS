@@ -11,7 +11,7 @@ profile *syn_profile (xmlNodePtr node);
 static t_plug syn_plugin =
 {
 	name:	"Hive profile syntax",
-	vers:	1,
+	vers:	PLUG_VER,
 	parse:	syn_profile
 };
 

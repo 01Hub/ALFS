@@ -21,7 +21,7 @@ profile *bookasprofile (xmlNodePtr node);
 static t_plug book_plugin =
 {
 	name:	"Book as profile",
-	vers:	1,
+	vers:	PLUG_VER,
 	parse:	bookasprofile
 };
 

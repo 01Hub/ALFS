@@ -65,11 +65,19 @@ plug_info *pluginfo (char *fname)
 	if (!ret->info)
 	{
 		fprintf(stderr, "No plugin info in %s.\n", fname);
-		dlclose(hand);
+		dlclose(hand->hand);
 		return NULL;
 	}
 
-	dlclose(hand);
+	if (ret->info->vers!=PLUG_VER)
+	{
+		fprintf(stderr, "Incompatible plugin version %d.\n", 
+			ret->info->vers);
+		dlclose(hand->hand);
+		return NULL;
+	}
+
+	ret->hand = hand->hand;
 	return ret;
 }
 
@@ -90,7 +98,7 @@ plug_hand *plugload (char *fname)
 		plugerr(fname);
 		return NULL;
 	}
-	
+
 	return ret;
 }
 
@@ -115,4 +123,15 @@ void print_plug (plug_info plug)
 char *plugarg (char *path)
 {
 	return strkill(basename(path), "." PLUG_EXT);
+}
+
+void plugunload (plug_info *plug)
+{
+	int i = 0;
+
+	while (plug[i].path)
+	{
+		dlclose(plug[i].hand);
+		i++;
+	}
 }
