@@ -1,20 +1,19 @@
-<package name="gettext" version="&gettext-version;">
+<package name="m4" version="&m4-version;">
 	<stage name="Unpacking a package.">
 		<unpack>
-			<digest>&gettext-md5;</digest>
-			<archive>&packages_dir;/&gettext-package;</archive>
+			<digest>&m4-md5;</digest>
+			<archive>&packages_dir;/&m4-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&gettext-directory;</base>
+			<base>&build_dir;/&m4-directory;</base>
 		</stageinfo>
 
 		<configure>
 			<param>--prefix=/tools</param>
-			<param>--disable-libasprintf</param>
 		</configure>
 
 		<make />
@@ -31,6 +30,6 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&gettext-directory;</remove>
+		<remove>&build_dir;/&m4-directory;</remove>
 	</stage>
 </package>

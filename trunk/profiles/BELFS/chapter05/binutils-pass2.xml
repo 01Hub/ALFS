@@ -6,6 +6,11 @@
 			<destination>&build_dir;</destination>
 		</unpack>
 
+		<copy>
+			<source>&packages_dir;/&binutils-gcc34-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+
 		<mkdir base="&build_dir;">
 			<option>parents</option>
 			<name>binutils-build</name>
@@ -20,6 +25,12 @@
 			</environment>
 			<base>&build_dir;/binutils-build</base>
 		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&binutils-gcc34-patch;</param>
+		</patch>
 
 		<configure command="../&binutils-directory;/configure">
 			<param>--prefix=/tools</param>

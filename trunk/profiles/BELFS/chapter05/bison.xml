@@ -1,20 +1,19 @@
-<package name="gettext" version="&gettext-version;">
+<package name="bison" version="&bison-version;">
 	<stage name="Unpacking a package.">
 		<unpack>
-			<digest>&gettext-md5;</digest>
-			<archive>&packages_dir;/&gettext-package;</archive>
+			<digest>&bison-md5;</digest>
+			<archive>&packages_dir;/&bison-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&gettext-directory;</base>
+			<base>&build_dir;/&bison-directory;</base>
 		</stageinfo>
 
 		<configure>
 			<param>--prefix=/tools</param>
-			<param>--disable-libasprintf</param>
 		</configure>
 
 		<make />
@@ -31,6 +30,6 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&gettext-directory;</remove>
+		<remove>&build_dir;/&bison-directory;</remove>
 	</stage>
 </package>

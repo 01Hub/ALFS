@@ -33,6 +33,6 @@
 			<option>force</option>
 			<target>tclsh8.4</target>
 			<name>/tools/bin/tclsh</name>
-                </link>
+    </link>
 	</stage>
 </package>

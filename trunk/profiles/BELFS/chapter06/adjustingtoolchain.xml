@@ -13,6 +13,7 @@
 
 	<remove>&build_dir;/&binutils-directory;</remove>
 	<remove>&build_dir;/binutils-build</remove>
+  <remove>&build_dir;/&binutils-gcc34-patch;</remove>
 
 	<stage name="Amending GCC specs file.">
 		<search_replace>
