@@ -26,6 +26,14 @@ typedef enum
 	SHA1
 } hash_algo;
 
+typedef enum
+{
+	DEP_NONE = 1,
+	OPT,
+	REQ,
+	RECOM
+} dtype;
+
 typedef struct
 {
 	hash_algo algo;
@@ -42,11 +50,19 @@ typedef struct
 
 typedef struct
 {
+	dtype type;
+	char *name;
+} dep;
+
+typedef struct
+{
 	char *name, *vers;
 	command *build;
 	int n;
 	download *dl;
 	int m;
+	dep *dep;
+	int o;
 } package;
 
 typedef struct
@@ -71,8 +87,12 @@ typedef struct
 typedef void (*xml_handler_t) (xmlNodePtr node, void *data);
 typedef bool (*xml_match_t) (xmlNodePtr node, void *data);
 
+extern bool colors;
+
 void print_subtree (xmlNodePtr node);
 void print_pkg (package pkg);
+void print_deps (package pkg);
+void print_deptree (profile prof, package pkg);
 void print_cmd (command cmd);
 void print_chapter (chapter ch);
 void print_profile (profile prof);

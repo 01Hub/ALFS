@@ -3,7 +3,7 @@
 
 #include <libalfs.h>
 
-#define PLUG_VER	3
+#define PLUG_VER	4
 #define PLUG_EXT	"so"
 
 typedef struct

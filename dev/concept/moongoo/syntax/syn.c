@@ -82,6 +82,11 @@ void t_pkg (xmlNodePtr node, void *data)
 	prof->ch[i].pkg[j].vers = find_value(node, "version");
 	prof->ch[i].pkg[j].build = NULL;
 	prof->ch[i].pkg[j].n = 0;
+	prof->ch[i].pkg[j].dl = NULL;
+	prof->ch[i].pkg[j].m = 0;
+	prof->ch[i].pkg[j].dep = NULL;
+	prof->ch[i].pkg[j].o = 0;
+	
 	foreach(node->children, "shell", (xml_handler_t)t_shell, NULL);
 
 	if (!prof->ch[i].pkg[j].n)

@@ -11,16 +11,30 @@ void t_repl (xmlNodePtr node, void *data)
 	char *opt = get_option(r, repl);
 
 	if (!opt)
-		return;
-	
-	if (!strcmp(opt, ""))
 	{
 		fprintf(stderr, "Unconfigured replaceable: %s\n", repl);
 		return;
 	}
 	
+	if (!strcmp(opt, ""))
+		return;
+	
 	xmlNodeSetContent(node, opt);
 }
+
+void print_config (replaceable *r)
+{
+	int i=0;
+
+	if (!r)
+		return;
+	
+	while (r[i].orig)
+	{
+		printf("%s = %s\n", r[i].orig, r[i].repl);
+		i++;
+	}
+}		
 
 char *get_option (replaceable *r, char *key)
 {
@@ -36,7 +50,7 @@ char *get_option (replaceable *r, char *key)
 		i++;
 	}
 
-	return "";
+	return NULL;
 }
 
 replaceable *init_repl (char *fname)
