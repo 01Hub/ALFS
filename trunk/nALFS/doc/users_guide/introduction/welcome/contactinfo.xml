@@ -55,11 +55,11 @@ mailing list will be copied to its correspondent newsgroup, and vice versa.</par
 <sect2>
 <title>Other</title>
 
-<para>The current &book-product documentation maintainer is &book-maintainer-fullname;.
+<para>The current &book-product; documentation maintainer is &book-maintainer-fullname;.
 If you need to reach &book-maintainer-firstname;, send an email to
 <ulink url="mailto:&book-maintainer-address;">&book-maintainer-address;</ulink>.</para>
 
-<para>The current &book-product source code owner is &product-maintainer-fullname;.
+<para>The current &book-product; source code owner is &product-maintainer-fullname;.
 If you need to reach &product-maintainer-firstname;, send an email to
 <ulink url="mailto:&product-maintainer-address;">&product-maintainer-address;</ulink>.</para>
 

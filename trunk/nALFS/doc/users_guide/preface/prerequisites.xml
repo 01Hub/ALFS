@@ -64,15 +64,15 @@ installed.  Links to install procedures are provided, just in case.</para>
 
 <itemizedlist>
 
-<listitem><filename>Bzip2</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/bzip2.html">&http-root;/lfs/view/cvs/chapter06/bzip2.html</ulink><listitem>
-<listitem><filename>Coreutils</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/coreutils.html">&http-root;/lfs/view/cvs/chapter06/coreutils.html</ulink><listitem>
-<listitem><filename>Findutils</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/findutils.html">&http-root;/lfs/view/cvs/chapter06/findutils.html</ulink><listitem>
-<listitem><filename>Vim</filename> or another editor &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/vim.html">&http-root;/lfs/view/cvs/chapter06/vim.html</ulink><listitem>
-<listitem><filename>Libtool</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/libtool.html">&http-root;/lfs/view/cvs/chapter06/libtool.html</ulink><listitem>
-<listitem><filename>Make</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/make.html">&http-root;/lfs/view/cvs/chapter06/make.html</ulink><listitem>
-<listitem><filename>Patch</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/patch.html">&http-root;/lfs/view/cvs/chapter06/patch.html</ulink><listitem>
-<listitem><filename>Tar</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/tar.html">&http-root;/lfs/view/cvs/chapter06/tar.html</ulink><listitem>
-<listitem><filename>Util-linux</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/util-linux.html">&http-root;/lfs/view/cvs/chapter06/util-linux.html</ulink><listitem>
+<listitem><filename>Bzip2</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/bzip2.html">&http-root;/lfs/view/cvs/chapter06/bzip2.html</ulink></listitem>
+<listitem><filename>Coreutils</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/coreutils.html">&http-root;/lfs/view/cvs/chapter06/coreutils.html</ulink></listitem>
+<listitem><filename>Findutils</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/findutils.html">&http-root;/lfs/view/cvs/chapter06/findutils.html</ulink></listitem>
+<listitem><filename>Vim</filename> or another editor &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/vim.html">&http-root;/lfs/view/cvs/chapter06/vim.html</ulink></listitem>
+<listitem><filename>Libtool</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/libtool.html">&http-root;/lfs/view/cvs/chapter06/libtool.html</ulink></listitem>
+<listitem><filename>Make</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/make.html">&http-root;/lfs/view/cvs/chapter06/make.html</ulink></listitem>
+<listitem><filename>Patch</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/patch.html">&http-root;/lfs/view/cvs/chapter06/patch.html</ulink></listitem>
+<listitem><filename>Tar</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/tar.html">&http-root;/lfs/view/cvs/chapter06/tar.html</ulink></listitem>
+<listitem><filename>Util-linux</filename> &emdash; <ulink url="&http-root;/lfs/view/cvs/chapter06/util-linux.html">&http-root;/lfs/view/cvs/chapter06/util-linux.html</ulink></listitem>
 
 </itemizedlist>
 
