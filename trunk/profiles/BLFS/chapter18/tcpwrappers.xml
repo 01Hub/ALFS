@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing">
+	<stage name="Patching">
 		<stageinfo>
 			<base>&build_dir;/&tcpwrappers-directory;</base>
 		</stageinfo>
@@ -17,6 +17,12 @@
 			<param>-p1</param>
 			<param>-i &packages_dir;/&tcpwrappers-shared-libs-plus-plus-patch;</param>
 		</patch>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&tcpwrappers-directory;</base>
+		</stageinfo>
 
 		<make>
 		         <param>REAL_DAEMON_DIR=/usr/sbin</param>

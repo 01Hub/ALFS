@@ -11,7 +11,7 @@
 	</unpack>
     </stage>
 
-    <stage name="Installing">
+    <stage name="Patching">
         <stageinfo>
 		<base>&build_dir;/&wvstreams-directory;</base>
 	</stageinfo>
@@ -27,6 +27,12 @@
 		<param>-p1</param>
 		<param>-i &packages_dir;/&wvstreams-wvresolver-patch;</param>
 	</patch>
+    </stage>
+
+    <stage name="Installing">
+        <stageinfo>
+		<base>&build_dir;/&wvstreams-directory;</base>
+	</stageinfo>
 
 	<make>
 	        <param>PREFIX=/usr</param>

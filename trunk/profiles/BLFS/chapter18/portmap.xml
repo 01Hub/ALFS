@@ -16,7 +16,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing">
+	<stage name="Patching">
 		<stageinfo>
 			<base>&build_dir;/&portmap-directory;</base>
 		</stageinfo>
@@ -32,6 +32,13 @@
 			<param>-p1</param>
 			<param>-i &packages_dir;/&portmap-glibc-errno-fix-patch;</param>
 		</patch>
+
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&portmap-directory;</base>
+		</stageinfo>
 
 		<make/>
 

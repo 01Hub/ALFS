@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing">
+	<stage name="Patching">
 		<stageinfo>
 			<base>&build_dir;/&traceroute-directory;</base>
 		</stageinfo>
@@ -17,7 +17,13 @@
 		        <find>-o bin</find>
 		        <replace>-o root</replace>
 		</search_replace>
+	</stage>
 
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&traceroute-directory;</base>
+		</stageinfo>
+		
 		<configure>
 			<param>--prefix=/usr</param>
 		</configure>
