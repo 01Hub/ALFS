@@ -12,13 +12,13 @@
 
 <!ENTITY shadow-patch     "shadow-4.0.3-pam-2.patch">
 
-<!ENTITY iptables-version   "1.2.8">
-<!ENTITY iptables-package   "iptables-1.2.8.tar.bz2">
-<!ENTITY iptables-directory "iptables-1.2.8">
+<!ENTITY iptables-version   "1.2.9">
+<!ENTITY iptables-package   "iptables-1.2.9.tar.bz2">
+<!ENTITY iptables-directory "iptables-1.2.9">
 
-<!ENTITY gnupg-version      "1.2.3">
-<!ENTITY gnupg-package      "gnupg-1.2.3.tar.bz2">
-<!ENTITY gnupg-directory    "gnupg-1.2.3">
+<!ENTITY gnupg-version      "1.2.4">
+<!ENTITY gnupg-package      "gnupg-1.2.4.tar.bz2">
+<!ENTITY gnupg-directory    "gnupg-1.2.4">
 
 <!--************* packages for chapter 5 *************-->
 
@@ -95,13 +95,13 @@
 <!ENTITY libxml-package   "libxml-1.8.17.tar.gz">
 <!ENTITY libxml-directory "libxml-1.8.17">
 
-<!ENTITY libxml2-version   "2.6.3">
-<!ENTITY libxml2-package   "libxml2-2.6.3.tar.bz2">
-<!ENTITY libxml2-directory "libxml2-2.6.3">
+<!ENTITY libxml2-version   "2.6.6">
+<!ENTITY libxml2-package   "libxml2-2.6.6.tar.bz2">
+<!ENTITY libxml2-directory "libxml2-2.6.6">
 
-<!ENTITY libxslt-version   "1.1.1">
-<!ENTITY libxslt-package   "libxslt-1.1.1.tar.bz2">
-<!ENTITY libxslt-directory "libxslt-1.1.1">
+<!ENTITY libxslt-version   "1.1.4">
+<!ENTITY libxslt-package   "libxslt-1.1.4.tar.bz2">
+<!ENTITY libxslt-directory "libxslt-1.1.4">
 
 <!ENTITY readline-version   "4.3">
 <!ENTITY readline-package   "readline-4.3.tar.gz">
@@ -129,13 +129,13 @@
 
 <!ENTITY expat-patch     "expat-1.95.6-fix-declaration-order.patch">
 
-<!ENTITY libesmtp-version   "1.0">
-<!ENTITY libesmtp-package   "libesmtp-1.0.tar.bz2">
-<!ENTITY libesmtp-directory "libesmtp-1.0">
+<!ENTITY libesmtp-version   "1.0.2">
+<!ENTITY libesmtp-package   "libesmtp-1.0.2.tar.bz2">
+<!ENTITY libesmtp-directory "libesmtp-1.0.2">
 
-<!ENTITY aspell-version   "0.50.4.1">
-<!ENTITY aspell-package   "aspell-0.50.4.1.tar.gz">
-<!ENTITY aspell-directory "aspell-0.50.4.1">
+<!ENTITY aspell-version   "0.50.5">
+<!ENTITY aspell-package   "aspell-0.50.5.tar.gz">
+<!ENTITY aspell-directory "aspell-0.50.5">
 
 <!ENTITY ispell-version   "3.2.06.epa7">
 <!ENTITY ispell-package   "ispell-3.2.06.epa7.tar.bz2">
@@ -157,11 +157,15 @@
 <!ENTITY lzo-package       "lzo-1.08.tar.gz">
 <!ENTITY lzo-directory     "lzo-1.08">
 
+<!ENTITY libpcap-version    "0.8.1">
+<!ENTITY libpcap-package    "libpcap-0.8.1.tar.gz">
+<!ENTITY libpcap-directory  "libpcap-0.8.1">
+
 <!--************* packages for chapter 9 *************-->
 
-<!ENTITY lcms-version   "1.11">
-<!ENTITY lcms-package   "lcms-1.11.tar.gz">
-<!ENTITY lcms-directory "lcms-1.11">
+<!ENTITY lcms-version   "1.12">
+<!ENTITY lcms-package   "lcms-1.12.tar.gz">
+<!ENTITY lcms-directory "lcms-1.12">
 
 <!ENTITY libjpeg-version   "6b">
 <!ENTITY libjpeg-package   "jpegsrc.v6b.tar.gz">
@@ -171,9 +175,9 @@
 <!ENTITY libpng-package   "libpng-1.2.5.tar.gz">
 <!ENTITY libpng-directory "libpng-1.2.5">
 
-<!ENTITY libtiff-version   "3.6.0">
-<!ENTITY libtiff-package   "tiff-v3.6.0.tar.gz">
-<!ENTITY libtiff-directory "tiff-v3.6.0">
+<!ENTITY libtiff-version   "3.6.1">
+<!ENTITY libtiff-package   "tiff-v3.6.1.tar.gz">
+<!ENTITY libtiff-directory "tiff-v3.6.1">
 
 <!ENTITY libungif-version   "4.1.0b1">
 <!ENTITY libungif-package   "libungif-4.1.0b1.tar.gz">
@@ -184,6 +188,17 @@
 <!ENTITY libmng-version   "1.0.6">
 <!ENTITY libmng-package   "libmng-1.0.6.tar.gz">
 <!ENTITY libmng-directory "libmng-1.0.6">
+
+<!ENTITY freetype-version   "2.1.5">
+<!ENTITY freetype-package   "freetype-2.1.5.tar.bz2">
+<!ENTITY freetype-directory "freetype-2.1.5">
+
+<!ENTITY freetype-patch1     "freetype-2.1.5-ahhint.patch">
+<!ENTITY freetype-patch2     "freetype-2.1.5-bytecode-interpreter.patch">
+
+<!ENTITY fontconfig-version   "2.2.1">
+<!ENTITY fontconfig-package   "fontconfig-2.2.1.tar.gz">
+<!ENTITY fontconfig-directory "fontconfig-2.2.1">
 
 <!ENTITY imlib-version   "1.9.14">
 <!ENTITY imlib-package   "imlib-1.9.14.tar.gz">
@@ -592,16 +607,6 @@
 <!ENTITY xfree86-patch     "4.3.0-4.3.0.1.diff">
 
 <!--************* packages for chapter 27 *************-->
-
-<!ENTITY freetype-version   "2.1.5">
-<!ENTITY freetype-package   "freetype-2.1.5.tar.bz2">
-<!ENTITY freetype-directory "freetype-2.1.5">
-
-<!ENTITY freetype-patch     "freetype-2.1.5-ahhint.patch">
-
-<!ENTITY fontconfig-version   "2.2.1">
-<!ENTITY fontconfig-package   "fontconfig-2.2.1.tar.gz">
-<!ENTITY fontconfig-directory "fontconfig-2.2.1">
 
 <!ENTITY qt-version   "3.2.1">
 <!ENTITY qt-package   "qt-x11-free-3.2.1.tar.bz2">
