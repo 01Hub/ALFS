@@ -4,7 +4,7 @@
 <url name="automake">http://ftp.gnu.org/gnu/automake/</url>
 <url name="bash">http://ftp.gnu.org/gnu/bash/</url>
 <url name="binutils">http://www.kernel.org/pub/linux/devel/binutils/</url>
-<url name="bison">http://ftp.gnu.org/gnu/bison/</url>
+<url name="bison">http://ftp.tuniv.szczecin.pl/pub/Linux/alpha-gnu/bison/</url>
 <url name="bzip2" vurl="nodots">ftp://sources.redhat.com/pub/bzip2/v</url>
 <url name="coreutils">http://ftp.gnu.org/gnu/coreutils/</url>
 <url name="dejagnu">http://ftp.gnu.org/gnu/dejagnu/</url>
@@ -22,6 +22,7 @@
 <url name="groff">http://ftp.gnu.org/gnu/groff/</url>
 <url name="grub">ftp://alpha.gnu.org/gnu/grub/</url>
 <url name="gzip">ftp://alpha.gnu.org/gnu/gzip/</url>
+<url name="hotplug">http://www.kernel.org/pub/linux/utils/kernel/hotplug/</url>
 <url name="iana-etc">http://www.sethwklein.net/projects/iana-etc/downloads/</url>
 <url name="inetutils">http://ftp.gnu.org/gnu/inetutils/</url>
 <url name="iproute2">http://developer.osdl.org/dev/iproute2/download/</url>

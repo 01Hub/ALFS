@@ -5,6 +5,7 @@
 
 profile *prof;
 
+// TODO: Removed a <command> block because of parsing problems (postlfs/config/bootdisk.xml)
 profile *parse_blfs (xmlNodePtr node, replaceable *r);
 
 static t_plug sample_plugin =
@@ -19,50 +20,9 @@ t_plug *getplug ()
 	return &sample_plugin;
 }
 
-static void process_cmd (char *line)
-{
-	int i, j, k;
-
-	i = prof->n-1;
-	j = prof->ch[i].n-1;
-	prof->ch[i].pkg[j].build = realloc(prof->ch[i].pkg[j].build,
-			(++prof->ch[i].pkg[j].n)*sizeof(command));
-	k = prof->ch[i].pkg[j].n-1;
-
-	prof->ch[i].pkg[j].build[k].role = ROLE_NONE;
-
-	
-	if (strcnt(line, " "))
-	{
-		prof->ch[i].pkg[j].build[k].cmd = strcut(line, 0, whereis(line, ' '));
-		prof->ch[i].pkg[j].build[k].arg = tokenize(notrail(strstr(line, " "), 
-				" "), " ", &prof->ch[i].pkg[j].build[k].n);
-	}
-	else
-	{
-		prof->ch[i].pkg[j].build[k].cmd = line;
-		prof->ch[i].pkg[j].build[k].arg = NULL;
-		prof->ch[i].pkg[j].build[k].n = 0;
-	}
-}
-
 static void t_command (xmlNodePtr node, void *data)
 {
-	char *line = squeeze(xmlNodeGetContent(node));
-	line = strkill(line, "\\\n");
-
-	if (strcnt(line, "\n"))
-	{
-		char *tmp;
-
-		while ((line) && (strlen(line)))
-		{
-			tmp = strsep(&line, "\n");
-			process_cmd(tmp);
-		}
-	}
-	else
-		process_cmd(line);
+	parse_cmdblock(prof, node);
 }
 
 static void t_userinput (xmlNodePtr node, void *data)
@@ -77,19 +37,14 @@ static void t_xref (xmlNodePtr node, void *data)
 {
 	dtype *type = (dtype *)data;
 	char *role = xmlGetProp(node, "role");
-	int i, j, k;
+	dep *dep;
 
 	if ((role)&&(!strcmp(role, "no")))
 		return;
-	
-	i = prof->n-1;
-	j = prof->ch[i].n-1;
-	prof->ch[i].pkg[j].dep = realloc(prof->ch[i].pkg[j].dep,
-			(++prof->ch[i].pkg[j].o)*sizeof(dep));
-	k = prof->ch[i].pkg[j].o-1;
 
-	prof->ch[i].pkg[j].dep[k].name = xmlGetProp(node, "linkend");
-	prof->ch[i].pkg[j].dep[k].type = *type;
+	dep = next_dep(prof);
+	dep->name = xmlGetProp(node, "linkend");
+	dep->type = *type;
 }
 
 static void t_sect4 (xmlNodePtr node, void *data)
@@ -118,60 +73,104 @@ static void t_sect3 (xmlNodePtr node, void *data)
 {
 	char *title = strstr(find_value(node->children, "title"), " ");
 	
+	// TODO: Dependency parsing is broken
+	return;
+	
 	if ((title)&&(!strncmp(lower_case(title), " dependencies", 13)))
 		foreach(node->children, "sect4", (xml_handler_t)t_sect4, NULL);
 }
 
-static void t_sect1 (xmlNodePtr node, void *data)
+static void t_add (xmlNodePtr node, void *data)
 {
-	int i, j;
-	char *title, *tmp;
+	download *moo = next_dl(prof);
 
-	title = find_value(node->children, "title");
+	moo->url = find_attr(node->children, "ulink", "url");
+	moo->proto = check_proto(moo->url);
+}
+
+static void t_url (xmlNodePtr node, void *data)
+{
+	int n, i;
+	bool isdl = false;
+	char **moo = tokenize(lower_case(xmlNodeGetContent(node)), " ", &n);
+	protocol proto; 
+	
+	for (i=0;i<n;i++)
+	{
+		if (!strcmp(moo[i], "download"))
+			isdl = true;
+		
+		if ((!strcmp(moo[i], "size:"))||(!strcmp(moo[i], "md5"))||
+		   (!strcmp(moo[i], "size"))||(!strcmp(moo[i], "md5sum"))||
+		   (!strcmp(moo[i], "mirrors"))||(!strcmp(moo[i], "md5sum:")))
+			isdl = false;
+		
+		if (moo[i][0]=='(')
+		{
+			char *type = strcut(moo[i], 1, strlen(moo[i])-3);
+			proto = check_proto(type);
+		}
+	}
+	
+	if (isdl)
+	{
+		download *moo = next_dl(prof);
+
+		moo->proto = proto;
+		moo->url = find_attr(node->children, "ulink", "url");
+	}
+}
+
+static void t_info (xmlNodePtr node, void *data)
+{
+	char *title = lower_case(find_value(node->children, "title"));
 
 	if (!title)
-	{
-		fprintf(stderr, "%s: No title found.\n", node->name);
 		return;
-	}
-
-	i = prof->n-1;
-	prof->ch[i].pkg = realloc(prof->ch[i].pkg, 
-			(++prof->ch[i].n)*sizeof(package));
-	j = prof->ch[i].n-1;
-
-	tmp = strrchr(title, '-');
-	if (tmp)
-	{
-		char *t = strnrchr(title, '-', 2);
-		if ((t) && (isdigit(t[1])))
-			tmp = strdog(t, tmp); 
-	}
-	tmp = chrep(tmp, ' ', '\0');
-	prof->ch[i].pkg[j].vers = tmp ? strcut(tmp, 1, strlen(tmp)) : NULL;
-	prof->ch[i].pkg[j].name = tmp ? strcut(title, 0, 
-		strlen(title)-strlen(tmp)) : title;
-	prof->ch[i].pkg[j].build = NULL;
-	prof->ch[i].pkg[j].n = 0;
-	prof->ch[i].pkg[j].dl = NULL;
-	prof->ch[i].pkg[j].m = 0;
-	prof->ch[i].pkg[j].dep = NULL;
-	prof->ch[i].pkg[j].o = 0;
 	
-	foreach(node->children, "sect3", (xml_handler_t)t_sect3, data);
-	foreach(node->children, "userinput", (xml_handler_t)t_userinput, data);
+	if (!strcmp(title, "package information"))
+		foreach(node->children, "para", (xml_handler_t)t_url, NULL);
 
-	if (!prof->ch[i].pkg[j].n)
-		prof->ch[i].n--;
+	if (!strcmp(title, "additional downloads"))
+		foreach(node->children, "para", (xml_handler_t)t_add, NULL);
+}
+
+static void t_sect1 (xmlNodePtr node, void *data)
+{
+	package *pkg = next_pkg_title(prof, node);
+
+	foreach(node->children, "sect3", (xml_handler_t)t_info, NULL);
+	foreach(node->children, "sect3", (xml_handler_t)t_sect3, data);
+
+	if (pkg->m>0)
+	{
+		char *url = pkg->dl[0].url, *tball = basename(url);
+		int i;
+		
+		parse_unpck(prof, url, node);
+		for (i=0;i<NUM_COMPR;i++)
+		{
+			char *dir, *com;
+			com = strdog(".tar", (char *)compr[i]);
+			dir = strkill(tball, com);
+			if (strcmp(dir, tball))
+				parse_cmd(prof, strdog("__cd ", dir), node);
+			free(com);
+			free(dir);
+		}
+	}
+	
+	foreach(node->children, "userinput", (xml_handler_t)t_userinput, data);
+	
+	if (!pkg->n)
+		prof->ch[prof->n-1].n--;
 }
 
 static void t_chapter (xmlNodePtr node, void *data)
 {
-	prof->ch = realloc(prof->ch, (++prof->n)*sizeof(chapter));
-	prof->ch[prof->n-1].name = find_value(node->children, "title");
-	prof->ch[prof->n-1].ref = xmlGetProp(node, "id");
-	prof->ch[prof->n-1].pkg = NULL;
-	prof->ch[prof->n-1].n = 0;
+	chapter *ch = next_chpt(prof);
+	ch->name = find_value(node->children, "title");
+	ch->ref = xmlGetProp(node, "id");
 	foreach(node->children, "sect1", (xml_handler_t)t_sect1, data);
 }
 
@@ -190,13 +189,11 @@ profile *parse_blfs (xmlNodePtr node, replaceable *r)
 		return NULL;
 	}
 
-	prof = (profile *)malloc(sizeof(profile));
+	prof = new_prof();
 	prof->name = find_value(info->children, "title");
 	prof->vers = find_value(info->children, "subtitle");
 	prof->vers = strstr(prof->vers, " ");
 	prof->vers++;
-	prof->ch = NULL;
-	prof->n = 0;
 	foreach(node->children, "part", (xml_handler_t)t_part, r);
 	return prof;
 }

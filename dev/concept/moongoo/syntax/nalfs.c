@@ -5,13 +5,13 @@
 #include <util.h>
 #include <plugin.h>
 
-// TODO: Having a big static buffer sucks
-#define BUF_LEN		3000
+#define BUF_LEN		4096	// Needs to be big enough to hold parsed cats
 
 profile *prof;
 char commando[BUF_LEN];
 
 profile *nalfs_profile (xmlNodePtr node, replaceable *r);
+static void t_alfs (xmlNodePtr node, void *data);
 
 static t_plug nalfs_plugin =
 {
@@ -25,36 +25,36 @@ t_plug *getplug ()
 	return &nalfs_plugin;
 }
 
-void parse_unpack (xmlNodePtr node)
+static void parse_unpack (xmlNodePtr node)
 {
+	char *archive = find_value(node->children, "archive");
 	node=node->children;
-	snprintf(commando, BUF_LEN, "tar -C %s %s\n", find_value(node, 
-		"destination"), find_value(node, "archive"));
-	
-	// TODO: Handle <digest>
-	// find_value(node, "digest");
+	// TODO: squeeze() squeezes too much
+	snprintf(commando, BUF_LEN, "tar -C %s %s\necho \"%s  %s\"|md5sum -c -\n", 
+		find_value(node, "destination"), archive, find_value(node, "digest"),
+		archive);
 }
 
-void parse_remove (xmlNodePtr node)
+static void parse_remove (xmlNodePtr node)
 {
 	snprintf(commando, BUF_LEN, "rm -rf %s\n", xmlNodeGetContent(node));
 }
 
-void parse_make (xmlNodePtr node)
+static void parse_make (xmlNodePtr node)
 {
 	node=node->children;
 	snprintf(commando, BUF_LEN, "%s make %s\n", find_value(node, "prefix"), 
 		find_values(node, "param"));
 }
 
-void parse_configure (xmlNodePtr node)
+static void parse_configure (xmlNodePtr node)
 {
 	node = node->children;
 	snprintf(commando, BUF_LEN, "%s ./configure %s\n", find_value(node, 
 		"prefix"), find_values(node, "param"));
 }
 
-void parse_copy (xmlNodePtr node)
+static void parse_copy (xmlNodePtr node)
 {
 	char *orig[4] = { "force", "archive", "recursive", NULL };
 	char *repl[4] = { "-f", "-a", "-r", NULL };
@@ -64,43 +64,43 @@ void parse_copy (xmlNodePtr node)
 		"destination"));
 }
 
-void __parse_env (xmlNodePtr node, void *data)
+static void __parse_env (xmlNodePtr node, void *data)
 {
 	snprintf(commando, BUF_LEN, "export %s=\"%s\"\n", xmlGetProp(node, "name"), 
 			xmlNodeGetContent(node));
 }
 
-void parse_environment (xmlNodePtr node, void *data)
+static void parse_environment (xmlNodePtr node, void *data)
 {
 	foreach(node->children, "variable", (xml_handler_t)__parse_env, NULL);
 }
 
-void parse_base (xmlNodePtr node, void *data)
+static void parse_base (xmlNodePtr node, void *data)
 {
 	snprintf(commando, BUF_LEN, "cd %s\n", xmlNodeGetContent(node));
 }
 
-void parse_stageinfo (xmlNodePtr node)
+static void parse_stageinfo (xmlNodePtr node)
 {
 	foreach(node->children, "environment", (xml_handler_t)parse_environment, 
 		NULL);
 	foreach(node->children, "base", (xml_handler_t)parse_base, NULL);
 }
 
-void parse_textdump (xmlNodePtr node)
+static void parse_textdump (xmlNodePtr node)
 {
 	node=node->children;
 	snprintf(commando, BUF_LEN, "cat >%s << EOF\n%s\nEOF\n", find_value(node,
 		"file"), cut_trail(find_value(node, "content"), "="));
 }
 
-void parse_execute (xmlNodePtr node)
+static void parse_execute (xmlNodePtr node)
 {
 	snprintf(commando, BUF_LEN, "%s %s\n", xmlGetProp(node, "command"), 
 		find_values(node->children, "param"));
 }
 
-void parse_mkdir (xmlNodePtr node)
+static void parse_mkdir (xmlNodePtr node)
 {
 	char *orig[2] = { "parents", NULL };
 	char *repl[2] = { "-p", NULL };
@@ -109,14 +109,14 @@ void parse_mkdir (xmlNodePtr node)
 		orig, repl), find_value(node, "name"));
 }
 
-void parse_search_replace (xmlNodePtr node)
+static void parse_search_replace (xmlNodePtr node)
 {
 	node = node->children;
 	snprintf(commando, BUF_LEN, "sed -i 's%%%s%%%s%%g' %s\n", find_value(node,
 		"find"), find_value(node, "replace"), find_value(node, "file"));
 }
 
-void parse_permissions (xmlNodePtr node)
+static void parse_permissions (xmlNodePtr node)
 {
 	char *orig[2] = { "recursive", NULL };
 	char *repl[2] = { "-R", NULL };
@@ -125,7 +125,7 @@ void parse_permissions (xmlNodePtr node)
 		find_value(node->children, "name"));
 }
 
-void parse_ownership (xmlNodePtr node)
+static void parse_ownership (xmlNodePtr node)
 {
 	char *orig[2] = { "recursive", NULL };
 	char *repl[2] = { "-R", NULL };
@@ -135,18 +135,18 @@ void parse_ownership (xmlNodePtr node)
 		find_value(node->children, "name"));
 }
 
-void parse_patch (xmlNodePtr node)
+static void parse_patch (xmlNodePtr node)
 {
 	snprintf(commando, BUF_LEN, "patch %s\n", find_values(node->children, "param"));
 }
 
-void parse_move (xmlNodePtr node)
+static void parse_move (xmlNodePtr node)
 {
 	snprintf(commando, BUF_LEN, "mv %s %s\n", find_value(node->children, "source"), 
 		find_value(node->children, "destination"));
 }
 
-void parse_link (xmlNodePtr node)
+static void parse_link (xmlNodePtr node)
 {
 	char *orig[2] = { "force", NULL };
 	char *repl[2] = { "f", NULL };
@@ -155,33 +155,7 @@ void parse_link (xmlNodePtr node)
 		find_value(node->children, "name"));
 }
 
-void process_cmd4 (char *cmd)
-{
-	int i, j, k;
-	
-	i = prof->n-1;
-	j = prof->ch[i].n-1;
-	prof->ch[i].pkg[j].build = realloc(prof->ch[i].pkg[j].build, 
-		(++prof->ch[i].pkg[j].n)*sizeof(command));
-	k = prof->ch[i].pkg[j].n-1;
-
-	prof->ch[i].pkg[j].build[k].role = ROLE_NONE;
-	
-	if (strcnt(cmd, " "))
-	{
-		prof->ch[i].pkg[j].build[k].cmd = strcut(cmd, 0, whereis(cmd, ' '));
-		prof->ch[i].pkg[j].build[k].arg = tokenize(notrail(strstr(cmd, " "), 
-			" "),  " ", &prof->ch[i].pkg[j].build[k].n);
-	}
-	else
-	{
-		prof->ch[i].pkg[j].build[k].cmd = cmd;
-		prof->ch[i].pkg[j].build[k].arg = NULL;
-		prof->ch[i].pkg[j].build[k].n = 0;
-	}
-}
-
-void t_stage2 (xmlNodePtr node, void *data)
+static void t_stage2 (xmlNodePtr node, void *data)
 {
 	//printf("%s\n", xmlGetProp(node, "name"));
 
@@ -191,8 +165,6 @@ void t_stage2 (xmlNodePtr node, void *data)
 		if ((node->type!=XML_TEXT_NODE)&&(node->type!=XML_COMMENT_NODE)&&
 			(node->type!=XML_XINCLUDE_START)&&(node->type!=XML_XINCLUDE_END))
 		{
-			char *temp;
-			
 			strcpy(commando, "");
 			
 			if (!strcmp(node->name, "unpack"))
@@ -241,80 +213,36 @@ void t_stage2 (xmlNodePtr node, void *data)
 				parse_link(node);
 			else
 			if (!strcmp(node->name, "alfs"))
-			// TODO: Do recursive parsing
-				;
+				t_alfs(node, NULL);
 			else
 				fprintf(stderr, "The tag '%s' is not handled yet.\n", 
 					node->name);
 
-			strcpy(commando, squeeze(commando));
-			strcpy(commando, strkill(commando, "\\\n"));
-
-			temp = (char *)malloc(strlen(commando)+1);
-			strcpy(temp, commando);
-			
-			if (strcnt(temp, "\n"))
-			{
-				char *tmp;
-		
-				while ((temp) && (strlen(temp)))
-				{
-					if (!strncmp(temp, "cat >", 5))
-					{
-						char *t;
-						t = strnstr(temp, "EOF", 2);
-						process_cmd4(strcut(temp, 0, t-temp+3));
-						t+=2;
-						strcpy(temp, t);
-						continue;
-					}
-			
-					tmp = strsep(&temp, "\n");
-					process_cmd4(tmp);
-				}
-			}
-			else
-				process_cmd4(temp);
-			
+			parse_cmdblock_str(prof, commando);
 		}
 		node=node->next;
 	}
 }
 
-void t_pkg2 (xmlNodePtr node, void *data)
+static void t_pkg (xmlNodePtr node, void *data)
 {
-	int i, j;
-
-	i = prof->n-1;
-	prof->ch[i].pkg = realloc(prof->ch[i].pkg,
-			(++prof->ch[i].n)*sizeof(package));
-	j = prof->ch[i].n-1;
-
-	prof->ch[i].pkg[j].name = xmlGetProp(node, "name");
-	prof->ch[i].pkg[j].vers = xmlGetProp(node, "version");
-	prof->ch[i].pkg[j].build = NULL;
-	prof->ch[i].pkg[j].n = 0;
-	prof->ch[i].pkg[j].dl = NULL;
-	prof->ch[i].pkg[j].m = 0;
-	prof->ch[i].pkg[j].dep = NULL;
-	prof->ch[i].pkg[j].o = 0;
-	
+	package *pkg = next_pkg(prof);
+	pkg->name = xmlGetProp(node, "name");
+	pkg->vers = xmlGetProp(node, "version");
 	foreach(node->children, "stage", (xml_handler_t)t_stage2, NULL);
 }
 
-void t_alfs (xmlNodePtr node, void *data)
+static void t_alfs (xmlNodePtr node, void *data)
 {
-	// TODO: Handle <stage> node only pages, like chapter07/network.xml 
-	foreach(node->children, "package", (xml_handler_t)t_pkg2, NULL);
+	char *sect[3] = { "package", "stage", NULL };
+	foreach_multi(node->children, sect, (xml_handler_t)t_pkg, NULL);
 }
 
-void t_stage (xmlNodePtr node, void *data)
+static void t_stage (xmlNodePtr node, void *data)
 {
-	prof->ch = realloc(prof->ch, (++prof->n)*sizeof(chapter));
-	prof->ch[prof->n-1].name = xmlGetProp(node, "name");
-	prof->ch[prof->n-1].name = prof->ch[prof->n-1].name;
-	prof->ch[prof->n-1].pkg = NULL;
-	prof->ch[prof->n-1].n = 0;
+	chapter *ch = next_chpt(prof);
+	ch->name = xmlGetProp(node, "name");
+	ch->name = ch->name;
 	foreach(node->children, "alfs", (xml_handler_t)t_alfs, NULL);
 }
 
@@ -328,11 +256,8 @@ profile *nalfs_profile (xmlNodePtr node, replaceable *r)
 		return NULL;
 	}
 	
-	prof = (profile *)malloc(sizeof(profile));
+	prof = new_prof();
 	prof->name = "nALFS legacy profile";
-	prof->vers = NULL;
-	prof->ch = NULL;
-	prof->n = 0;
 	foreach(node->children, "stage", (xml_handler_t)t_stage, NULL);
 	return prof;
 }

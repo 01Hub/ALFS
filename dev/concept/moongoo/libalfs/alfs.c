@@ -9,16 +9,23 @@ role *filter = NULL;
 
 void print_links (profile prof)
 {
-	int i, j, k;
+	int i, j;
 
 	for (i=0;i<prof.n;i++)
 		for (j=0;j<prof.ch[i].n;j++)
-			for (k=0;k<prof.ch[i].pkg[j].m;k++)
-			{
-				download moo = prof.ch[i].pkg[j].dl[k];
-				printf("%s: %s\n", algo2str(moo.algo), moo.sum);
-				printf("%s://%s\n", proto2str(moo.proto), moo.url);
-			}
+			print_urls(prof.ch[i].pkg[j]);
+}
+
+void print_urls (package pkg)
+{
+	int k;
+	
+	for (k=0;k<pkg.m;k++)
+	{
+		download moo = pkg.dl[k];
+		printf("%s: %s --- ", algo2str(moo.algo), moo.sum);
+		printf("%s://%s\n", proto2str(moo.proto), moo.url);
+	}
 }
 		
 void print_cmd (command cmd)
@@ -156,6 +163,34 @@ void foreach (xmlNodePtr node, char *str, xml_handler_t func, void *data)
 	}
 }
 
+void foreach_multi (xmlNodePtr node, char **str, xml_handler_t func, 
+	void *data)
+{
+	if (!str)
+		return;
+
+	while (node)
+	{
+		bool recurse = true;
+		int i = 0;
+		
+		while (str[i])
+		{
+			if (!strcmp(node->name, str[i]))
+			{
+				func(node, data);
+				recurse = false;
+				break;
+			}
+			i++;
+		}
+		
+		if (recurse)
+			foreach_multi(node->children, str, func, data);
+		node = node->next;
+	}
+}
+
 xmlNodePtr find_node (xmlNodePtr root, char *str)
 {
 	if (!str)
@@ -245,6 +280,14 @@ char *find_value (xmlNodePtr node, char *str)
 	if (!moo)
 		return "";
 	return xmlNodeGetContent(moo);
+}
+
+char *find_attr (xmlNodePtr node, char *str, char *attr)
+{
+	xmlNodePtr moo = find_node(node, str);
+	if (!moo)
+		return "";
+	return xmlGetProp(moo, attr);
 }
 
 char *role2str (role role)

@@ -4,7 +4,8 @@
  * parser function, which needs to take one xmlNodePtr as argument and
  * return a pointer to a profile struct (see alfs.h). You now can just
  * put your parser code into the parser function using the libalfs 
- * routines. 
+ * routines. Use the routines from libalfs/parse.h for rapid parser
+ * development.
  * 
  */
 

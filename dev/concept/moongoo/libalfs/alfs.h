@@ -97,17 +97,20 @@ void print_cmd (command cmd);
 void print_chapter (chapter ch);
 void print_profile (profile prof);
 void print_links (profile prof);
+void print_urls (package pkg);
 
 void set_filter (role *role);
 void unset_filter ();
 bool filtered (role role);
 
 void foreach (xmlNodePtr node, char *str, xml_handler_t func, void *data);
+void foreach_multi (xmlNodePtr node, char **str, xml_handler_t func, void *data);
 xmlNodePtr find_node (xmlNodePtr root, char *str);
 xmlNodePtr find_node_match (xmlNodePtr node, xml_match_t func, void *data);
 char *find_value (xmlNodePtr node, char *str);
 char *find_values (xmlNodePtr node, char *str);
 char *find_values_repl (xmlNodePtr node, char *str, char **orig, char **repl);
+char *find_attr (xmlNodePtr node, char *str, char *attr);
 
 package *search_pkg (profile *prof, char *name, char *ch);
 char *role2str (role role);
