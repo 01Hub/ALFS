@@ -31,15 +31,6 @@
 #include "handlers.h"
 
 
-#define Start_receiving_sigio() \
-	set_receive_sigio(comm_get_socket(BACKEND_CTRL_SOCK), 1)
-
-#define Stop_receiving_sigio() \
-	set_receive_sigio(comm_get_socket(BACKEND_CTRL_SOCK), 0)
-
-void set_receive_sigio(int s, int receive_it);
-
-
 void fatal_backend_error(const char *format, ...);
 
 int execute_direct_command(const char *command, char *const argv[]);
