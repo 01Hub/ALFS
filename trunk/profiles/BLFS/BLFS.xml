@@ -447,7 +447,7 @@
 </stage>
 
 
-<stage name="Chapter 35 (GNOME 1.4 Libraries)">
+<stage name="Chapter 32 (GNOME 1.4 Libraries)">
     
     <stageinfo>
         <environment>
@@ -462,17 +462,17 @@
     &oaf;
     &gnome-libs;
     &gdk-pixbuf;
+    &gnome-print;
+    &bonobo;
     &gconf;
     &gnome-vfs;
-    &gnome-print;
     &libglade1;
-    &libcapplet;
-    &libghttp;
-    &bonobo;
+    &gal1;
     &guppi;
-    &bonobo-conf;
+    &libcapplet;
     &soup;
-    
+    &gtkhtml1;
+    &libghttp;
 </stage>
 
 <stage name="Chapter 36 (Individual Office Programs)">

@@ -1,21 +1,25 @@
-<package name="oaf" version="&oaf-version;">
+<package name="gnome-libs" version="&gnome-libs-version;">
 
         <packageinfo>
                 <requires><name>orbit</name></requires>
-                <requires><name>libxml</name></requires>
-		<utilizes><name>gtkdoc</name></utilizes>
+        	<requires><name>gtk+</name></requires>
+        	<requires><name>imlib</name></requires>
+                <requires><name>db</name></requires>
+		<utilizes><name>audiofile</name></utilizes>
+		<utilizes><name>esound</name></utilizes>
+		<utilizes><name>gtk-doc</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&oaf-package;</archive>
+			<archive>&packages_dir;/&gnome-libs-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&oaf-directory;</base>
+			<base>&build_dir;/&gnome-libs-directory;</base>
 		</stageinfo>
 
 		<configure>
@@ -33,7 +37,7 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&oaf-directory;</remove>
+		<remove>&build_dir;/&gnome-libs-directory;</remove>
 	</stage>
 
 </package>

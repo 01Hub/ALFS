@@ -1,0 +1,39 @@
+<package name="gtkhtml1" version="&gtkhtml1-version;">
+	
+	<packageinfo>
+		<requires><name>gconf</name></requires>
+		<requires><name>gal1</name></requires>
+		<requires><name>libglade1</name></requires>
+		<requires><name>libcapplet</name></requires>
+		<utilizes><name>soup</name></utilizes>
+	</packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&gtkhtml1-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&gtkhtml1-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/opt/gnome</param>
+			<param>--disable-gtk-doc</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&gtkhtml1-directory;</remove>
+	</stage>
+
+</package>
