@@ -8,7 +8,7 @@
 <synopsis>
 &lt;!ELEMENT search_replace (file, find, replace)&gt;
 &lt;!ATTLIST configure
-             base           CDATA #IMPLIED&gt;
+          base           CDATA #IMPLIED&gt;
 </synopsis>
 
 <para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;

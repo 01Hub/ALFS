@@ -1,6 +1,6 @@
 <sect1 id="elem_include" xreflabel="Element: &lt;include&gt;">
 <?dbhtml filename="elem_include.html" dir="alfs_dtd"?>
-<title>Element: &lt;item&gt;</title>
+<title>Element: &lt;include&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -21,7 +21,7 @@
 <title>Description</title>
 
 <para>The element <filename>include</filename> contains data necessary to
-handle the <filename>xi:include</filename> directive in a
+handle the <filename>xi:include</filename> directive in an
 <filename>alfs</filename> element.</para>
 
 </sect2>

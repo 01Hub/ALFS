@@ -8,8 +8,8 @@
 <synopsis>
 &lt;!ELEMENT package        (packageinfo?, stage+)&gt;
 &lt;!ATTLIST package
-             name           CDATA #REQUIRED
-             version        CDATA #REQUIRED&gt;
+          name           CDATA #REQUIRED
+          version        CDATA #REQUIRED&gt;
 </synopsis>
 
 <para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;

@@ -16,6 +16,7 @@
 <!ENTITY elem_file           SYSTEM "elem_file.xml">
 <!ENTITY elem_find           SYSTEM "elem_find.xml">
 <!ENTITY elem_if             SYSTEM "elem_if.xml">
+<!ENTITY elem_include        SYSTEM "elem_include.xml">
 <!ENTITY elem_item           SYSTEM "elem_item.xml">
 <!ENTITY elem_link           SYSTEM "elem_link.xml">
 <!ENTITY elem_list           SYSTEM "elem_list.xml">

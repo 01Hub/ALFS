@@ -8,7 +8,7 @@
 <synopsis>
 &lt;!ELEMENT move           (option?, source+, destination)&gt;
 &lt;!ATTLIST move
-             base           CDATA #IMPLIED&gt;
+          base           CDATA #IMPLIED&gt;
 </synopsis>
 
 <para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
