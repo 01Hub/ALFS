@@ -19,20 +19,18 @@ NL2SP="tr '\015\012' '\040\040'"
 # create nALFS-config.in to quiet autoconf, which will overwrite it later
 touch nALFS-config.in
 
-# build available handler lists
-# start with the list of all handlers present, then grep each handler file
-# to determine which syntax version(s) it supports, and add it to the
-# appropriate list; this will result in a Makefile that builds only the
+# build available handler list
+# grep each handler file to determine which syntax version(s) it supports
+# store this in a variable for each handler, so bootstrap.configure can use it
+# this will result in a Makefile that builds only the
 # handlers containing versions the user requests with --enable-syntax
-# also generate a list of all syntax versions present in the handlers
+# also generate a list of all syntax versions present across all handlers
 
 all_handlers=`ls src/handlers/*.c | sed 's~src/handlers/\(.*\)\.c~\1~'`
 for handler in ${all_handlers}; do
     syntaxes=`grep HANDLER_SYNTAX src/handlers/${handler}.c | sed 's/^.*HANDLER_SYNTAX_\(.*\)$/\1/' | sort -u`
+    eval "${handler}_syntaxes=\"${syntaxes}\""
     all_syntaxes="${all_syntaxes} ${syntaxes}"
-    for syntax in ${syntaxes}; do
-	eval "handlers_${syntax}=\"\${handlers_${syntax}} ${handler}\""
-    done
 done
 all_syntaxes=`echo ${all_syntaxes} | ${SP2NL} | sort -u`
 
