@@ -199,12 +199,8 @@ int do_collect_files(
 		Debug_logging("Prune list is empty.");
 	}
 
-	Start_receiving_sigio(); /* So we can stop the backend
-				  * while he's collecting files.
-				  */
+	/* TODO: code used to stop backend control message processing here */
 	status = recursive_action(root);
-
-	Stop_receiving_sigio();
 
 	if (prunes) { /* Free prune list. */
 		for (i = 0; prunes[i]; ++i) {

@@ -109,8 +109,6 @@ static int chroot_main(const element_s * const el)
 	chroot_pid = fork();
 
 	if (chroot_pid == 0) { /* Child. */
-		Start_receiving_sigio();
-
 		Nprint_h("Changing root directory to %s.", data->dir);
 
 		if (change_current_dir(data->dir)) {
