@@ -374,7 +374,7 @@ int comm_send_ctrl_msg(
 {
 	ssize_t ret;
 	va_list ap;
-	char *full_message;
+	char header[15];
 	int result;
 	char *buf;
 	int buf_size = 1024;
@@ -404,13 +404,13 @@ int comm_send_ctrl_msg(
 		}
 	}
 
-	full_message = xmalloc(result + 15);
+	/* header contains size of message (buf) plus type number and separators */
 	/* message size does _NOT_ include trailing null, as it is not sent by write() */
 	/* message size does _NOT_ include size prefix, or '|' separator */
-	sprintf(full_message, "%08d|%04d|%s", result + 5, t, buf);
+	sprintf(header, "%08d|%04d|", result + 5, t);
+	ret = write(comm_get_socket(s), header, 14);
+	ret = write(comm_get_socket(s), buf, result);
 	xfree(buf);
-	ret = write(comm_get_socket(s), full_message, strlen(full_message));
-	xfree(full_message);
 	if (ret == -1) {
 		Nprint_err("write() failed: %s", strerror(errno));
 		return -1;
