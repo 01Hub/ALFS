@@ -71,7 +71,7 @@
 <!ENTITY expect-md5 "490664773286690d111d9cd055c50700">
 <!ENTITY expect-version "5.41.0">
 <!ENTITY expect-package "expect-&expect-version;.tar.gz">
-<!ENTITY expect-directory "expect-&expect-version;">
+<!ENTITY expect-directory "expect-5.41">
 
 <!ENTITY expect-spawn-patch-md5 "ef6d0d0221c571fb420afb7033b3bbba">
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
