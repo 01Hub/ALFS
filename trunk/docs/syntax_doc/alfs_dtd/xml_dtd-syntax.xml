@@ -11,10 +11,13 @@ to the concepts of <acronym>XML</acronym> and <acronym>DTD</acronym>
 syntax. The eXtensible Markup Language is very powerful and easy to use and
 understand.</para>
 
-<note><para>This introduction does not provide any examples.  This book in
-written in an XML DTD called DocBook XML.  For an example of XML just look
-at the book's source.  Since this book is documenting an XML DTD, look at
-the rest of the book's contents for examples DTD syntax</para></note>
+<note><para>This introduction provides very few examples.  This book is
+written in an <acronym>XML</acronym> <acronym>DTD</acronym> called DocBook
+<acronym>XML</acronym>.  For an example of <acronym>XML</acronym> just look
+at the book's source.  Since this book is documenting an
+<acronym>XML</acronym> <acronym>DTD</acronym>, look at the rest of the
+book's contents for examples of <acronym>DTD</acronym>
+syntax.</para></note>
 
 <para>To begin, here are some basic rules of
 <acronym>XML</acronym>&nbsp;:</para>
@@ -36,8 +39,8 @@ nested. Improper nesting of tags makes no sense to
 <acronym>XML</acronym>.</para></listitem>
 
 <listitem><para>All <acronym>XML</acronym> documents must have a root
-element. All <acronym>XML</acronym> documents must contain a single tag
-pair to define a root element.</para></listitem>
+element. In other words, all <acronym>XML</acronym> documents must contain
+a single tag pair to define a root element.</para></listitem>
 
 <listitem><para>Attribute values must always be quoted. With
 <acronym>XML</acronym>, it is illegal to omit quotation marks around
@@ -46,9 +49,10 @@ attribute values.</para></listitem>
 <listitem><para>With <acronym>XML</acronym>, white space is
 preserved.</para></listitem>
 
-<listitem><para>With <acronym>XML</acronym>, <acronym>CR</acronym> /
-<acronym>LF</acronym> is converted to
-<acronym>LF</acronym></para></listitem>
+<listitem><para>With <acronym>XML</acronym>,
+<filename><acronym>CR</acronym></filename> /
+<filename><acronym>LF</acronym></filename> is converted to
+<filename><acronym>LF</acronym></filename></para></listitem>
 
 </itemizedlist>
 
@@ -57,19 +61,22 @@ preserved.</para></listitem>
 <sect2>
 <title>XML Elements and Attributes</title>
 
-<para>XML is designed to hold any kind of information.  This information is
-stored in Elements.  Elements are the basic building blocks of XML.
-Attributes provide a mechanism to further define or classify an element.
-Elements have relationships with other elements in a document.  Some are
-parents and some are children.  Using this symantic description, one can
-see that children elements need parent elements defined first.  As
-mentioned in the last section, a XML document must have a root element.
-Think of this as the ultimate parent element.  It must be defined before
-all other elements and all elements will reside inside of the root element.
-An element can have element content, mixed content, simple content, empty
-content or attributes.</para>
+<para><acronym>XML</acronym> is designed to hold any kind of information.
+This information is stored in Elements.  Elements are the basic building
+blocks of <acronym>XML</acronym> and are represented in an
+<acronym>XML</acronym> documents as tag pairs.  Attributes provide a
+mechanism to further define or classify an element.  Elements have
+relationships with other elements in a document.  Some are parents and some
+are children.  Using this symantic description, one can see that children
+elements need parent elements defined and used first.  As mentioned in the
+last section, an <acronym>XML</acronym> document must have a root element.
+Think of this as the ultimate parent element.  It must be defined and used
+before all other elements and all sub-elements (children) will reside
+inside of the root element.  An element can have element content, mixed
+content, simple content, empty content or attributes.</para>
 
-<para>XML elements must follow these naming rules&nbsp;:</para>
+<para><acronym>XML</acronym> elements must follow these naming
+rules&nbsp;:</para>
 
 <itemizedlist>
 
@@ -80,7 +87,7 @@ characters</para></listitem>
 character</para></listitem>
 
 <listitem><para>Names must not start with the letters xml (or XML or Xml
-..)</para></listitem>
+...)</para></listitem>
 
 <listitem><para>Names cannot contain spaces</para></listitem>
 
@@ -89,67 +96,123 @@ character</para></listitem>
 </sect2>
 
 <sect2>
-<title>Quick Introduction to DTD Syntax</title>
+<title>Quick Introduction to <acronym>DTD</acronym> Syntax</title>
 
-<para>Once an XML document is written, it is generally a good idea to
-validate the elements against a known DTD.  The Document Type Definition is
-the mechanism with which one validates the content of a well-formed XML
+<para>Once an <acronym>XML</acronym> document is written, it is generally a
+good idea to validate the elements used in the document against a known
+<acronym>DTD</acronym>.  The Document Type Definition is the mechanism with
+which one validates the content of a well-formed <acronym>XML</acronym>
 document.</para>
 
-<para>XML DTD files contain&nbsp;:</para>
+<para><acronym>XML</acronym> <acronym>DTD</acronym> files
+contain&nbsp;:</para>
 
 <itemizedlist>
 
 <listitem><para>Element declarations and definitions&nbsp;:&nbsp;Elements
-are declared and defined with their relationships in the DTD
-file.</para></listitem>
+are declared and defined with their relationships in the
+<acronym>DTD</acronym> file.</para></listitem>
 
 <listitem><para>Attribute declarations and definitions&nbsp;:&nbsp;Element
-classes or attributes are declared and defined in the DTD
-file.</para></listitem>
+classes or attributes are declared and defined in the
+<acronym>DTD</acronym> file.</para></listitem>
 
 <listitem><para>Entities&nbsp;:&nbsp;Entities are the same thing as
-variables inside a DTD file or XML document.</para></listitem>
+variables inside a <acronym>DTD</acronym> file or <acronym>XML</acronym>
+document.</para></listitem>
 
-<listitem><para>PCDATA&nbsp;:&nbsp;PCDATA is Parsed Character DATA. PCDATA
-is text that will be parsed by a parser. Tags inside the text will be
-treated as markup and entities will be expanded.</para></listitem>
+<listitem><para><filename><acronym>PCDATA</acronym></filename>&nbsp;:&nbsp;<filename><acronym>PCDATA</acronym></filename>
+is Parsed Character DATA. <filename><acronym>PCDATA</acronym></filename> is
+text that will be parsed by a parser. Tags inside the text will be treated
+as markup and entities will be expanded.</para></listitem>
 
-<listitem><para>CDATA&nbsp;:&nbsp;CDATA is Character DATA. CDATA is text
+<listitem><para><filename><acronym>CDATA</acronym></filename>&nbsp;:&nbsp;<filename><acronym>CDATA</acronym></filename>
+is Character DATA. <filename><acronym>CDATA</acronym></filename> is text
 that will NOT be parsed by a parser. Tags inside the text will NOT be
 treated as markup and entities will not be expanded.</para></listitem>
 
 </itemizedlist>
 
-<para>Elements are declared in the DTD file using a simple,
-but strict syntax.  There are four ways to define an element&nbsp;:</para>
+</sect2>
+
+<sect2>
+<title><acronym>DTD</acronym> Element Declaration</title>
+
+<para>Elements are declared in the <acronym>DTD</acronym> file using a
+simple, but strict syntax.  There are four ways to define an
+element&nbsp;:</para>
 
 <itemizedlist>
 
-<listitem><para>EMPTY&nbsp;:&nbsp;When an element is declared with the
-EMPTY keyword, it means that the element will not hold any information.
-This is generally used for special tags like &lt;br&gt;.</para></listitem>
+<listitem><para><filename>EMPTY</filename>&nbsp;:&nbsp;When an element is
+declared with the <filename>EMPTY</filename> keyword, it means that the
+element will not hold any information.  This is generally used for special
+tags like &lt;br&gt;.</para></listitem>
 
-<listitem><para>ANY&nbsp;:&nbsp;When an element is declared with the ANY
-keyword, it means that the element can contain any information that the
-programmer wants it to. This is generally a special case.</para></listitem>
+<listitem><para><filename>ANY</filename>&nbsp;:&nbsp;When an element is
+declared with the <filename>ANY</filename> keyword, it means that the
+element can contain any information that the author wants it to. This
+is generally a special case.</para></listitem>
 
 <listitem><para>Character Data&nbsp;:&nbsp;When an element is declared with
-either the PCDATA or CDATA keywords, the will hold one of the two types of
-information described above.</para></listitem>
+either the <filename>PCDATA</filename> or <filename>CDATA</filename>
+keywords, it will hold one of the two types of information described
+above.</para></listitem>
 
 <listitem><para>With Children&nbsp;:&nbsp;When an element is declared with
-the names of other elements in it, this defines a parent child
-relationship. Look in the DTD for the child element names to be further
-defined with the other three ways.</para></listitem>
+the names of other elements in it, this defines a parent-child
+relationship. Look in the <acronym>DTD</acronym> for the child element
+names to be further defined with the other three ways.</para></listitem>
 
-<listitem><para>Mixed&nbsp;:&nbsp;Some combination of the above
-four.</para></listitem>
+<listitem><para>Mixed&nbsp;:&nbsp;Some combination of the above four.
+Generally this is character data mixed with children.</para></listitem>
 
 </itemizedlist>
 
 <para>When an element is declared with children, it will also define how
-the children can be called: </para>
+the children can be used inside an <acronym>XML</acronym> document.  There
+are four ways that children elements can be defined in a
+<acronym>DTD</acronym> file&nbsp;: </para>
+
+<itemizedlist>
+
+<listitem><para>One Occurance Only&nbsp;:&nbsp;Example&nbsp;:&nbsp;
+<xref linkend="elem_search_replace"/>. The child elements of
+&lt;search_replace&gt;&nbsp;&emdash;&nbsp;&lt;file&gt;, &lt;find&gt;, and
+&lt;replace&gt; can one be used once. Notice that there are no symbols
+after any of the child element names. This is the
+identifier.</para></listitem>
+
+<listitem><para>Minimum of One Occurance&nbsp;:&nbsp;Example&nbsp;:&nbsp;
+<xref linkend="elem_permissions"/>. One of the child elements of
+&lt;permissions&gt;&nbsp;&emdash;&nbsp;&lt;name&gt;, must be used a minimum
+of once, but can also be used many times. Notice the plus [&nbsp;+&nbsp;]
+symbol after the name. This is the identifier.</para></listitem>
+
+<listitem><para>Zero or More Occurances&nbsp;:&nbsp;Example&nbsp;:&nbsp;
+<xref linkend="elem_download"/>. One of the child elements of
+&lt;download&gt;&nbsp;&emdash;&nbsp;&lt;url&gt;, can be used zero or
+many times. Notice the asterisk [&nbsp;*&nbsp;] symbol after the name.
+This is the identifier.</para></listitem>
+
+<listitem><para>Zero or One Occurance&nbsp;:&nbsp;Example&nbsp;:&nbsp;
+<xref linkend="elem_download"/>. One of the child elements of
+&lt;download&gt;&nbsp;&emdash;&nbsp;&lt;digest&gt;, can be used zero
+or one time only. Notice the question mark [&nbsp;?&nbsp;] symbol after the name.
+This is the identifier.</para></listitem>
+
+<listitem><para>Either / Or Occurances&nbsp;:&nbsp;Example&nbsp;:&nbsp;
+<xref linkend="elem_execute"/>. One of the two child elements of
+&lt;execute&gt;&nbsp;&emdash;&nbsp;&lt;param&gt;, or &lt;prefix&gt;, can
+only be used.  Notice the pipe [&nbsp;|&nbsp;] symbol in between the two
+elements. This is the identifier.</para></listitem>
+
+</itemizedlist>
+
+</sect2>
+
+<sect2>
+<title><acronym>DTD</acronym> Attribute Declaration</title>
 
 </sect2>
 
