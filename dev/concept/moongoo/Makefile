@@ -32,6 +32,6 @@ run: $(BIN)
 	./$(BIN) $(OPTS)
 
 build.o: build.h
-moongoo.o: moongoo.h
+moongoo.o: main.h
 plugin.o: plugin.h
 url.o: url.h

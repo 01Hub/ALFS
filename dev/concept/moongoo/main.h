@@ -1,5 +1,5 @@
-#ifndef __MOONGOO_H
-#define __MOONGOO_H
+#ifndef __MAIN_H
+#define __MAIN_H
 
 #define DEF_SYN		"book"
 #define MOO_XML		"/.nALFS/answers.xml"
