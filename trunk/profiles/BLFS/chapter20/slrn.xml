@@ -1,5 +1,9 @@
 <package name="slrn" version="&slrn-version;">
 
+        <packageinfo>
+	        <requires><name>slang</name></requires>
+	</packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&slrn-package;</archive>

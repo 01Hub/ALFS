@@ -24,10 +24,11 @@
 		</patch>
 
 		<execute command="./build">
-		        <param>slx</param>
+		        <param>DEBUG=-0</param>
 			<param>MAILSPOOL='/var/mail'</param>
 			<param>SSLDIR=/usr</param>
 			<param>SSLCERTS=/etc/ssl/certs</param>
+			<param>slx</param>
 		</execute>
 
 		<copy>
