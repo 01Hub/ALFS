@@ -5,11 +5,15 @@
 #include <util.h>
 
 xmlDocPtr doc;
+role *filter = NULL;
 
 void print_cmd (command cmd)
 {
 	int i=0;
 
+	if (filtered(cmd.role))
+		return;
+	
 	printf("%s ", cmd.cmd);
 	for (i=0;i<cmd.n;i++)
 		printf("%s ", cmd.arg[i]);
@@ -22,10 +26,12 @@ void print_pkg (package pkg)
 {
 	int i;
 	
+	term_set(RESET, GREEN, BLACK);
 	if (!pkg.vers)
 		printf("%s\n\n", pkg.name);
 	else
 		printf("%s-%s\n\n", pkg.name, pkg.vers);
+	term_reset();
 	
 	for (i=0;i<pkg.n;i++)
 		print_cmd(pkg.build[i]);
@@ -35,6 +41,9 @@ void print_pkg (package pkg)
 void print_chapter (chapter ch)
 {
 	int i;
+
+	if (!ch.n)
+		return;
 
 	term_set(RESET, RED, BLACK);
 	printf("%s\n", ch.name);
@@ -225,10 +234,38 @@ void resolve_entities (xmlNodePtr node)
 			if ((node->prev) && (node->prev->type==XML_TEXT_NODE) &&
 				(strcmp(node->prev->parent->name, "title")))
 			{
-				xmlNodeAddContent(node->prev, entity_val((char *)node->name));
+				char *text = entity_val((char *)node->name);
+				if (text)
+					xmlNodeAddContent(node->prev, text);
 			}
 		}
 		resolve_entities(node->children);
 		node=node->next;
 	}
+}
+
+void set_filter (role *role)
+{
+	filter = role;
+}
+
+void unset_filter ()
+{
+	filter = NULL;
+}
+
+bool filtered (role role)
+{
+	int i=0;
+
+	if (!filter)
+		return false;
+
+	while (filter[i])
+	{
+		if (role==filter[i])
+			return true;
+		i++;
+	}
+	return false;
 }
