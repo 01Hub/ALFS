@@ -22,18 +22,13 @@
 <title>Description</title>
 
 <para>The element <filename>destination</filename> is used to specify the
-name of the destination file or directory when processing a 
-<xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
-<xref linkend="elem_move"/>&nbsp;&nbsp;|&nbsp;&nbsp;
-<xref linkend="elem_unpack"/> element.</para>
-
-<para>It is also used to specify the path of the destination directory when
-processing a <xref linkend="elem_download"/> element.</para>
+name of the destination file or directory when processing an element it
+occurs in.</para> 
 
 </sect2>
 
 <sect2>
-<title>Examples</title>
+<title>Example #1</title>
 
 <para>The first example is an unpack command.</para>
 
@@ -47,6 +42,8 @@ processing a <xref linkend="elem_download"/> element.</para>
 <screen><userinput>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
 cd /usr/src
 <command>tar -xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz</command></userinput></screen>
+
+<title>Example #2</title>
 
 <para>The second example is a copy command.</para>
 
