@@ -101,7 +101,7 @@ To configure, compile, install and run nALFS, just type:
 When you enter the program, type '?' for a list of all available
 commands.
 
-nALFS support (at least) three different ALFS profile versions: 2.0, 3.0 and
+nALFS supports (at least) three different ALFS profile versions: 2.0, 3.0 and
 3.1. If not otherwise specified, the build process will build handlers for
 all these versions. If you would like to exclude building handlers for
 profile versions that you do not use, you can include the --enable-syntax
