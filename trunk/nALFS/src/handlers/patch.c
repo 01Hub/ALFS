@@ -44,7 +44,7 @@
 
 #if HANDLER_SYNTAX_2_0
 
-static const struct handler_parameter patch_parameters_ver2[] = {
+static const struct handler_parameter patch_parameters_v2[] = {
 	{ .name = "base" },
 	{ .name = "param" },
 	{ .name = NULL }
@@ -88,9 +88,14 @@ static int patch_main_ver2(element_s * const el)
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
 
-static const struct handler_parameter patch_parameters_ver3[] = {
+static const struct handler_parameter patch_parameters_v3[] = {
 	{ .name = "prefix" },
 	{ .name = "param" },
+	{ .name = NULL }
+};
+
+static const struct handler_attribute patch_attributes_v3[] = {
+	{ .name = "base" },
 	{ .name = NULL }
 };
 
@@ -150,7 +155,7 @@ static int patch_main_ver3(element_s * const el)
 
 #if HANDLER_SYNTAX_3_2
 
-static const struct handler_parameter patch_parameters_ver3_2[] = {
+static const struct handler_parameter patch_parameters_v3_2[] = {
 	{ .name = "prefix" },
 	{ .name = "param" },
 	{ .name = "digest" },
@@ -159,7 +164,12 @@ static const struct handler_parameter patch_parameters_ver3_2[] = {
 	{ .name = NULL }
 };
 
-// char *HANDLER_SYMBOL(attributes)[] = { "base", "mode", "path_strip", NULL };
+static const struct handler_attribute patch_attributes_v3_2[] = {
+	{ .name = "base" },
+	{ .name = "mode" },
+	{ .name = "path_strip" },
+	{ .name = NULL }
+};
 
 static int patch_main_ver3_2(element_s * const el)
 {
@@ -293,12 +303,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "patch",
 		.description = "Patch",
 		.syntax_version = "2.0",
-		.parameters = patch_parameters_ver2,
+		.parameters = patch_parameters_v2,
 		.main = patch_main_ver2,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -306,12 +314,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "patch",
 		.description = "Patch",
 		.syntax_version = "3.0",
-		.parameters = patch_parameters_ver3,
+		.parameters = patch_parameters_v3,
+		.attributes = patch_attributes_v3,
 		.main = patch_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -319,12 +326,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "patch",
 		.description = "Patch",
 		.syntax_version = "3.1",
-		.parameters = patch_parameters_ver3,
+		.parameters = patch_parameters_v3,
+		.attributes = patch_attributes_v3,
 		.main = patch_main_ver3,
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -332,13 +339,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "patch",
 		.description = "Patch",
 		.syntax_version = "3.2",
-		.parameters = patch_parameters_ver3_2,
+		.parameters = patch_parameters_v3_2,
+		.attributes = patch_attributes_v3_2,
 		.main = patch_main_ver3_2,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 #endif
 	{

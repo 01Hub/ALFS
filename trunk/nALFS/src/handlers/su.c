@@ -138,7 +138,10 @@ static INLINE int change_to_user(const char *user)
 }
 
 
-// char *HANDLER_SYMBOL(attributes)[] = { "user", NULL };
+static const struct handler_attribute su_attributes[] = {
+	{ .name = "user" },
+	{ .name = NULL }
+};
 
 static int su_main(element_s * const el)
 {
@@ -214,9 +217,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "2.0",
 		.main = su_main,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
-		.is_action = 0,
-		.priority = 0
+		.attributes = su_attributes,
 	},
 #endif
 	{

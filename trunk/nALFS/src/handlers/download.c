@@ -145,10 +145,15 @@ static int download_main(element_s * const el)
 
 #if HANDLER_SYNTAX_3_2
 
-static const struct handler_parameter download_parameters_3_2[] = {
+static const struct handler_parameter download_parameters_v3_2[] = {
 	{ .name = "digest" },
 	{ .name = "file" },
 	{ .name = "url" },
+	{ .name = NULL }
+};
+
+static const struct handler_attribute download_attributes_v3_2[] = {
+	{ .name = "base" },
 	{ .name = NULL }
 };
 
@@ -256,9 +261,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = download_parameters,
 		.main = download_main,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -266,13 +269,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "download",
 		.description = "Download",
 		.syntax_version = "3.2",
-		.parameters = download_parameters_3_2,
+		.parameters = download_parameters_v3_2,
+		.attributes = download_attributes_v3_2,
 		.main = download_main_3_2,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 #endif
 	{

@@ -134,14 +134,17 @@ static int copy_main_ver2(element_s * const el)
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
-static const struct handler_parameter copy_parameters_ver3[] = {
+static const struct handler_parameter copy_parameters_v3[] = {
 	{ .name = "option" },
 	{ .name = "source" },
 	{ .name = "destination" },
 	{ .name = NULL }
 };
 
-// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
+static const struct handler_attribute copy_attributes_v3[] = {
+	{ .name = "base" },
+	{ .name = NULL }
+};
 
 static int copy_main_ver3(element_s * const el)
 {
@@ -245,9 +248,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = copy_parameters_ver2,
 		.main = copy_main_ver2,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -255,12 +256,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "copy",
 		.description = "Copy",
 		.syntax_version = "3.0",
-		.parameters = copy_parameters_ver3,
+		.parameters = copy_parameters_v3,
+		.attributes = copy_attributes_v3,
 		.main = copy_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -268,12 +268,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "copy",
 		.description = "Copy",
 		.syntax_version = "3.1",
-		.parameters = copy_parameters_ver3,
+		.parameters = copy_parameters_v3,
+		.attributes = copy_attributes_v3,
 		.main = copy_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -281,13 +280,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "copy",
 		.description = "Copy",
 		.syntax_version = "3.2",
-		.parameters = copy_parameters_ver3,
+		.parameters = copy_parameters_v3,
+		.attributes = copy_attributes_v3,
 		.main = copy_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 #endif
 	{

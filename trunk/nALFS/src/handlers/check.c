@@ -134,9 +134,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.0",
 		.main = check_main,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 	{

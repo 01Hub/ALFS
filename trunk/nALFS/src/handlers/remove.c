@@ -41,11 +41,6 @@
 #include "parser.h"
 #include "backend.h"
 
-static const struct handler_parameter remove_parameters_ver3_2[] = {
-	{ .name = "file" },
-	{ .name = NULL }
-};
-
 #if HANDLER_SYNTAX_2_0
 
 static INLINE void warn_if_doesnt_exist(const char *file)
@@ -129,6 +124,16 @@ static int remove_main_ver3(element_s * const el)
 
 #if HANDLER_SYNTAX_3_2
 
+static const struct handler_parameter remove_parameters_v3_2[] = {
+	{ .name = "file" },
+	{ .name = NULL }
+};
+
+static const struct handler_attribute remove_attributes_v3_2[] = {
+	{ .name = "base" },
+	{ .name = NULL }
+};
+
 static int remove_main_ver3_2(element_s * const el)
 {
 	int status   = 0;
@@ -192,9 +197,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "2.0",
 		.main = remove_main_ver2,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -204,9 +207,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.0",
 		.main = remove_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -216,9 +217,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.1",
 		.main = remove_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -226,13 +225,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "remove",
 		.description = "Remove files",
 		.syntax_version = "3.2",
-		.parameters = remove_parameters_ver3_2,
+		.parameters = remove_parameters_v3_2,
+		.attributes = remove_attributes_v3_2,
 		.main = remove_main_ver3_2,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 #endif
 	{

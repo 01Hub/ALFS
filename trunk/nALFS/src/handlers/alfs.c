@@ -57,9 +57,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "2.0",
 		.main = alfs_main,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
-		.is_action = 0,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -69,9 +66,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.0",
 		.main = alfs_main,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
-		.is_action = 0,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -81,9 +75,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.1",
 		.main = alfs_main,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
-		.is_action = 0,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -93,10 +84,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.2",
 		.main = alfs_main,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
-		.is_action = 0,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 #endif
 	{

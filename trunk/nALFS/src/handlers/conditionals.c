@@ -80,9 +80,15 @@ static int do_shelltest(element_s *element, const char *test, int *result)
 
 #if HANDLER_SYNTAX_3_1
 
-static const struct handler_parameter if_parameters_3_1[] = {
+static const struct handler_parameter if_parameters_v3_1[] = {
 	{ .name = "then" },
 	{ .name = "else" },
+	{ .name = NULL }
+};
+
+static const struct handler_attribute if_attributes_v3_1[] = {
+	{ .name = "test" },
+	{ .name = "package" },
 	{ .name = NULL }
 };
 
@@ -274,12 +280,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "if",
 		.description = "if",
 		.syntax_version = "3.1",
-		.parameters = if_parameters_3_1,
+		.parameters = if_parameters_v3_1,
+		.attributes = if_attributes_v3_1,
 		.main = if_main_3_1,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -290,10 +295,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = if_parameters_3_2,
 		.main = if_main_3_2,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 	{
 		.name = "and",
@@ -302,10 +305,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = boolean_parameters_3_2,
 		.test = and_test_3_2,
 		.type = HTYPE_TEST,
-		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 	{
 		.name = "or",
@@ -314,10 +315,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = boolean_parameters_3_2,
 		.test = or_test_3_2,
 		.type = HTYPE_TEST,
-		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 	{
 		.name = "not",
@@ -326,10 +325,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = boolean_parameters_3_2,
 		.test = not_test_3_2,
 		.type = HTYPE_TEST,
-		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 	{
 		.name = "test",
@@ -337,10 +334,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.2",
 		.test = shelltest_test_3_2,
 		.type = HTYPE_TEST,
-		.alloc_data = NULL,
 		.alternate_shell = 1,
 		.is_action = 1,
-		.priority = 0
 	},
 	{
 		.name = "package-built",
@@ -348,10 +343,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.2",
 		.test = package_built_test_3_2,
 		.type = HTYPE_TEST,
-		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 	{
 		.name = "package-version",
@@ -359,10 +352,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.2",
 		.test = package_version_test_3_2,
 		.type = HTYPE_TEST,
-		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 #endif
 	{

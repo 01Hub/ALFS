@@ -46,7 +46,7 @@
 
 #if HANDLER_SYNTAX_2_0
 
-static const struct handler_parameter execute_parameters_ver2[] = {
+static const struct handler_parameter execute_parameters_v2[] = {
 	{ .name = "base" },
 	{ .name = "command" },
 	{ .name = "param" },
@@ -100,13 +100,17 @@ static char *execute_data_ver2(const element_s * const el,
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
 
-static const struct handler_parameter execute_parameters_ver3[] = {
+static const struct handler_parameter execute_parameters_v3[] = {
 	{ .name = "prefix" },
 	{ .name = "param" },
 	{ .name = NULL }
 };
 
-// char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
+static const struct handler_attribute execute_attributes_v3[] = {
+	{ .name = "command" },
+	{ .name = "base" },
+	{ .name = NULL }
+};
 
 static int execute_main_ver3(element_s * const el)
 {
@@ -165,14 +169,18 @@ static char *execute_data_ver3(const element_s * const el,
 
 #ifdef HANDLER_SYNTAX_3_2
 
-static const struct handler_parameter execute_parameters_ver3_2[] = {
+static const struct handler_parameter execute_parameters_v3_2[] = {
 	{ .name = "prefix" },
 	{ .name = "param" },
 	{ .name = "content" },
 	{ .name = NULL }
 };
 
-// char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
+static const struct handler_attribute execute_attributes_v3_2[] = {
+	{ .name = "command" },
+	{ .name = "base" },
+	{ .name = NULL }
+};
 
 static int execute_main_ver3_2(element_s * const el)
 {
@@ -288,12 +296,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "execute",
 		.description = "Execute",
 		.syntax_version = "2.0",
-		.parameters = execute_parameters_ver2,
+		.parameters = execute_parameters_v2,
 		.main = execute_main_ver2,
 		.type = HTYPE_EXECUTE,
 		.alloc_data = execute_data_ver2,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -301,12 +308,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "execute",
 		.description = "Execute",
 		.syntax_version = "3.0",
-		.parameters = execute_parameters_ver3,
+		.parameters = execute_parameters_v3,
+		.attributes = execute_attributes_v3,
 		.main = execute_main_ver3,
 		.type = HTYPE_EXECUTE,
 		.alloc_data = execute_data_ver3,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -314,12 +321,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "execute",
 		.description = "Execute",
 		.syntax_version = "3.1",
-		.parameters = execute_parameters_ver3,
+		.parameters = execute_parameters_v3,
+		.attributes = execute_attributes_v3,
 		.main = execute_main_ver3,
 		.type = HTYPE_EXECUTE,
 		.alloc_data = execute_data_ver3,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -327,13 +334,13 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "execute",
 		.description = "Execute",
 		.syntax_version = "3.2",
-		.parameters = execute_parameters_ver3_2,
+		.parameters = execute_parameters_v3_2,
+		.attributes = execute_attributes_v3_2,
 		.main = execute_main_ver3_2,
 		.type = HTYPE_EXECUTE,
 		.alloc_data = execute_data_ver3_2,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 #endif
 	{

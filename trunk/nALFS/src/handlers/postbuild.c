@@ -65,9 +65,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "2.0",
 		.main = postbuild_main,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 0,
-		.priority = 0
 	},
 #endif
 	{
