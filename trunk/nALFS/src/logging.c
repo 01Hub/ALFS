@@ -482,7 +482,7 @@ static int collect_files(const char *f, flist_s **flist)
 	/* Doing allocation here, in case collecting is stopped
 	 * (so that this temporary file can be deleted).
 	 */
-	*flist = xmalloc(sizeof *flist);
+	*flist = xmalloc(sizeof **flist);
 	(*flist)->name = xstrdup(filename);
 	(*flist)->complete = 0;
 
