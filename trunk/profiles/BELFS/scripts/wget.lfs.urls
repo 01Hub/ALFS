@@ -36,9 +36,9 @@ ftp://ftp.pld.org.pl/software/shadow/shadow-4.0.4.1.tar.bz2
 ftp://ftp.seindal.dk/gnu/m4-1.4.tar.gz
 ftp://ftp.vim.org/pub/vim/unix/vim-6.2.tar.bz2
 ftp://ftp.win.tue.nl/pub/home/aeb/linux-local/utils/kbd/kbd-1.12.tar.gz
-ftp://gcc.gnu.org/pub/gcc/prerelease-3.4.0-20040406/gcc-core-3.4.0-20040406.tar.bz2
-ftp://gcc.gnu.org/pub/gcc/prerelease-3.4.0-20040406/gcc-g++-3.4.0-20040406.tar.bz2
-ftp://gcc.gnu.org/pub/gcc/prerelease-3.4.0-20040406/gcc-testsuite-3.4.0-20040406.tar.bz2
+ftp://gcc.gnu.org/pub/gcc/prerelease-3.4.0-20040416/gcc-core-3.4.0-20040416.tar.bz2
+ftp://gcc.gnu.org/pub/gcc/prerelease-3.4.0-20040416/gcc-g++-3.4.0-20040416.tar.bz2
+ftp://gcc.gnu.org/pub/gcc/prerelease-3.4.0-20040416/gcc-testsuite-3.4.0-20040416.tar.bz2
 ftp://sources.redhat.com/pub/bzip2/v102/bzip2-1.0.2.tar.gz
 
 http://distro.ibiblio.org/pub/linux/distributions/sorcerer/sources/grep/2.5.1/grep-2.5.1.tar.bz2
