@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="bzip2" version="&bzip2-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&bzip2-md5;</digest>
 			<archive>&packages_dir;/&bzip2-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&bzip2-directory;</base>
 		</stageinfo>
@@ -72,7 +72,7 @@
 		</link>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&bzip2-directory;</remove>
 	</stage>
 </package>

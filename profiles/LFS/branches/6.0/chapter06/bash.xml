@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="bash" version="&bash-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&bash-md5;</digest>
 			<archive>&packages_dir;/&bash-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&bash-directory;</base>
 		</stageinfo>
@@ -49,7 +49,7 @@
 		</make>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&bash-directory;</remove>
 	</stage>
 </package>

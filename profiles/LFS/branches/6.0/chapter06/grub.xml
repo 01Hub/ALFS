@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="grub" version="&grub-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&grub-md5;</digest>
 			<archive>&packages_dir;/&grub-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<environment>
 				<variable name="CFLAGS" />
@@ -49,7 +49,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&grub-directory;</remove>
 	</stage>
 </package>

@@ -7,7 +7,7 @@
 
 <alfs>
 
-<stage name="Creating the /etc/hosts file">
+<stage name="Creating the /etc/hosts File">
 	<textdump>
 		<file>/etc/hosts</file>
 		<content>

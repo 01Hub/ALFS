@@ -7,7 +7,7 @@
 
 <alfs>
 
-<stage name="Bash Shell Startup Files">
+<stage name="The Bash Shell Startup Files">
 	<textdump base="/etc">
 		<file>profile</file>
 		<content>

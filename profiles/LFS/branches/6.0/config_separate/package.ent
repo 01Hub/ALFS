@@ -236,10 +236,10 @@
 <!ENTITY mktemp-tempfile-patch-md5 "1b65466c0238120110dc1d906ad66de4">
 <!ENTITY mktemp-tempfile-patch "mktemp-&mktemp-version;-add_tempfile-1.patch">
 
-<!ENTITY module-tools-md5 "f8bfc480c4168978eca7037cd341da07">
-<!ENTITY module-tools-version "3.0">
-<!ENTITY module-tools-package "module-init-tools-&module-tools-version;.tar.bz2">
-<!ENTITY module-tools-directory "module-init-tools-&module-tools-version;">
+<!ENTITY module-init-tools-md5 "f8bfc480c4168978eca7037cd341da07">
+<!ENTITY module-init-tools-version "3.0">
+<!ENTITY module-init-tools-package "module-init-tools-&module-init-tools-version;.tar.bz2">
+<!ENTITY module-init-tools-directory "module-init-tools-&module-init-tools-version;">
 
 <!ENTITY nALFS-md5 "1e7bb2216cbddec8c97fc0a440216bf1">
 <!ENTITY nALFS-version "1.2.4">

@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="inetutils" version="&inetutils-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&inetutils-md5;</digest>
 			<archive>&packages_dir;/&inetutils-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&inetutils-directory;</base>
 		</stageinfo>
@@ -58,7 +58,7 @@
 		</move>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&inetutils-directory;</remove>
 	</stage>
 </package>

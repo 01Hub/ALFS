@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="procps" version="&procps-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&procps-md5;</digest>
 			<archive>&packages_dir;/&procps-package;</archive>
@@ -19,7 +19,7 @@
 
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&procps-directory;</base>
 		</stageinfo>
@@ -31,7 +31,7 @@
 		</make>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&procps-directory;</remove>
 	</stage>
 </package>
