@@ -951,6 +951,7 @@ static void clear_done_run_status(element_s *el)
 
 static INLINE void run_editor(const char *filename)
 {
+	int i;
 	const char *editor;
 	char *command;
 
@@ -971,12 +972,17 @@ static INLINE void run_editor(const char *filename)
 	append_str(&command, " ");
 	append_str(&command, filename);
 
-	system(command);
-
-	xfree(command);
+	i = system(command);
 
 	refresh();
 	keypad(windows.main->name, 1);
+
+	if (i != 0) {
+		Nprint_warn("Executing: %s", command);
+		Nprint_warn("returned non-zero value.");
+	}
+
+	xfree(command);
 }
 
 /*
