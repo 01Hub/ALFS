@@ -39,8 +39,8 @@
 <!ENTITY coreutils-hostname-patch-md5 "b8291682b44eedc59643648a93bb449f">
 <!ENTITY coreutils-hostname-patch "coreutils-&coreutils-version;-hostname-1.patch">
 
-<!ENTITY coreutils-uname-patch-md5 "da72f7adae07bf9dfd97b63bdf38ea30">
-<!ENTITY coreutils-uname-patch "coreutils-&coreutils-version;-uname-1.patch">
+<!ENTITY coreutils-uname-patch-md5 "b7c081bac1b6a8e4629d5be9314d5184">
+<!ENTITY coreutils-uname-patch "coreutils-&coreutils-version;-uname-2.patch">
 
 <!ENTITY dejagnu-md5 "053f18fd5d00873de365413cab17a666">
 <!ENTITY dejagnu-version "1.4.4">
@@ -88,22 +88,22 @@
 <!ENTITY gawk-package "gawk-&gawk-version;.tar.bz2">
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
-<!ENTITY gcc-version "3.3.3">
+<!ENTITY gcc-version "3.4.0">
 <!ENTITY gcc-directory "gcc-&gcc-version;">
 
-<!ENTITY gcc-core-md5 "f878a455b14b3830aaf2da0a17f003c0">
+<!ENTITY gcc-core-md5 "6371ff0a37d5e1809f4f59d0045dcaa5">
 <!ENTITY gcc-core-package "gcc-core-&gcc-version;.tar.bz2">
 
-<!ENTITY gcc-gpp-md5 "29830b52f2c112fc660d662427660641">
+<!ENTITY gcc-gpp-md5 "4b66e4ce2e25d8c73b05ea97f27b2d8e">
 <!ENTITY gcc-gpp-package "gcc-g++-&gcc-version;.tar.bz2">
   
-<!ENTITY gcc-testsuite-md5 "b8892afcca035b1dcaaf359b219184f2">
+<!ENTITY gcc-testsuite-md5 "dcc17608ae1c801eac934f5955b1820c">
 <!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;.tar.bz2">
 
-<!ENTITY gcc-no-fixincludes-patch-md5 "5f764c74b3e9c36252fe4f9a14598ee4">
+<!ENTITY gcc-no-fixincludes-patch-md5 "78fa00bc9f7173b9658eeb86ce9291c9">
 <!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no-fixincludes-1.patch">
 
-<!ENTITY gcc-specs-patch-md5 "74cb9822f21774ae1c9a8ef1fa133f49">
+<!ENTITY gcc-specs-patch-md5 "a0d586aaa048622379836020c5040a5c">
 <!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-1.patch">
 
 <!ENTITY gettext-md5 "78f4b862510beb2e5d43223dd610e77d">
@@ -163,8 +163,8 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "4f33a7059b381d0ed02684e9bf64186a">
-<!ENTITY lfs-bootscripts-version "2.0.4">
+<!ENTITY lfs-bootscripts-md5 "a7a7c8353c3f07a78ee69c4a12ca78db">
+<!ENTITY lfs-bootscripts-version "2.1.0">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
@@ -230,8 +230,8 @@
 <!ENTITY net-tools-package "net-tools-&net-tools-version;.tar.bz2">
 <!ENTITY net-tools-directory "net-tools-&net-tools-version;">
 
-<!ENTITY net-tools-miitool-gcc33-md5 "fc629313c10ebd75abd2750aafbaa0be">
-<!ENTITY net-tools-miitool-gcc33 "net-tools-&net-tools-version;-miitool-gcc33-1.patch">
+<!ENTITY net-tools-gcc34-patch-md5 "ba53635e2a17d6ea437cd81659d6bb6c">
+<!ENTITY net-tools-gcc34-patch "net-tools-&net-tools-version;-gcc34-2.patch">
 
 <!ENTITY net-tools-kernel-headers-patch-md5 "0fcd25afa43cf85b99c34268ff2f1274">
 <!ENTITY net-tools-kernel-headers-patch "net-tools-&net-tools-version;-kernel-headers-1.patch">

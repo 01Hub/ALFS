@@ -15,10 +15,6 @@
 		<make>
 			<param>install</param>
 		</make>
-
-		<make>
-			<param>install-udev</param>
-		</make>
 	</stage>
 
 	<stage name="Clean-up.">

@@ -7,7 +7,7 @@
 		</unpack>
 
 		<copy>
-			<source>&packages_dir;/&net-tools-miitool-gcc33;</source>
+			<source>&packages_dir;/&net-tools-gcc34-patch;</source>
 			<source>&packages_dir;/&net-tools-kernel-headers-patch;</source>
 			<destination>&build_dir;</destination>
 		</copy>
@@ -21,7 +21,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&net-tools-miitool-gcc33;</param>
+			<param>-i ../&net-tools-gcc34-patch;</param>
 		</patch>
 
 		<patch>
