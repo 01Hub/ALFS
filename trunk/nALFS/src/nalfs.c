@@ -253,9 +253,7 @@ static INLINE void mark_element(element_s *el)
 	element_s *parent;
 
 
-	if (Can_run(el)) {
-		do_mark_element(el, el->marked ? 0 : 1);
-	}
+	do_mark_element(el, el->marked ? 0 : 1);
 
 	/* Mark/unmark all our parents, if needed. */
 	for (parent = el->parent; parent; parent = parent->parent) {
@@ -354,9 +352,8 @@ static INLINE void change_run_status_mark(element_s *el, run_status_e status)
 
 static void set_run_status(element_s *el, run_status_e status)
 {
-	if (!Can_run(el) || !*opt_run_interactive) {
+	if (!*opt_run_interactive)
 		return;
-	}
 
 	/* Change status. */
 	el->run_status = status;
@@ -365,45 +362,42 @@ static void set_run_status(element_s *el, run_status_e status)
 	change_run_status_mark(el, status);
 }
 
-static int has_child_with_run_status(element_s *el, run_status_e status)
+run_status_e get_element_status(element_s *el)
 {
 	element_s *child;
-
+	int child_normal = 0;
+	int child_status_none = 0;
+	int child_status_some_done = 0;
+	int child_status_done = 0;
+	run_status_e status = RUN_STATUS_NONE;
 
 	for (child = el->children; child; child = child->next) {
-		if (Can_run(child) && child->run_status == status) {
-			return 1;
+		if ((child->handler->type & HTYPE_NORMAL) == 0)
+			continue;
+		child_normal++;
+		switch (child->run_status) {
+		case RUN_STATUS_RUNNING:
+			return child->run_status;
+		case RUN_STATUS_FAILED:
+			return child->run_status;
+		case RUN_STATUS_NONE:
+			child_status_none++;
+			break;
+		case RUN_STATUS_DONE:
+			child_status_done++;
+			break;
+		case RUN_STATUS_SOME_DONE:
+			child_status_some_done++;
+			break;
 		}
 	}
 
-	return 0;
-}
-
-run_status_e get_element_status(element_s *el)
-{
-	run_status_e status;
-
-
-	if (! el->children) {
+	if (child_normal == 0)
 		status = RUN_STATUS_DONE;
-
-	} else if (has_child_with_run_status(el, RUN_STATUS_RUNNING)) {
-		status = RUN_STATUS_RUNNING;
-
-	} else if (has_child_with_run_status(el, RUN_STATUS_FAILED)) {
-		status = RUN_STATUS_FAILED;
-
-	} else if (! has_child_with_run_status(el, RUN_STATUS_NONE)
-	&& ! has_child_with_run_status(el, RUN_STATUS_SOME_DONE)) {
+	else if (child_status_done == child_normal)
 		status = RUN_STATUS_DONE;
-
-	} else if (has_child_with_run_status(el, RUN_STATUS_DONE)
-	|| has_child_with_run_status(el, RUN_STATUS_SOME_DONE)) {
+	else if ((child_status_done + child_status_some_done) != 0)
 		status = RUN_STATUS_SOME_DONE;
-
-	} else {
-		status = RUN_STATUS_NONE;
-	}
 
 	return status;
 }
@@ -412,10 +406,7 @@ static void do_change_run_status_marks(element_s *el, run_status_e status)
 {
 	element_s *child;
 
-
-	if (Can_run(el)) {
-		el->run_status = status;
-	}
+	el->run_status = status;
 
 	for (child = el->children; child; child = child->next) {
 		do_change_run_status_marks(child, status);
@@ -431,9 +422,7 @@ static void change_run_status_marks(element_s *el, run_status_e status)
 
 	/* Update the marks of element's parents. */
 	for (parent = el->parent; parent; parent = parent->parent) {
-		if (Can_run(parent)) {
-			parent->run_status = get_element_status(parent);
-		}
+		parent->run_status = get_element_status(parent);
 	}
 }
 
@@ -2859,9 +2848,11 @@ static void do_mark_for_running(element_s *el)
 	element_s *child;
 
 
-	if (el->run_status == RUN_STATUS_DONE || ! Can_run(el)) {
+	if (el->run_status == RUN_STATUS_DONE)
 		return;
-	}
+
+	if ((el->handler->type & HTYPE_NORMAL) == 0)
+		return;
 
 	el->should_run = 1;
 
@@ -2901,17 +2892,15 @@ static void start_executing_children(element_s *el)
 {
 	element_s *parent;
 
-
 	if (el->run_status == RUN_STATUS_DONE) {
 		Nprint_warn("Nothing to run. "
 		"Use 's' -> 'f' to force running of already run elements.");
 		return;
 	}
-	if (! Can_run(el)) {
+	if ((el->handler->type & HTYPE_NORMAL) == 0) {
 		Nprint_warn("This is not an element that can run.");
 		return;
 	}
-
 
 	/* Mark all element parents. */
 	for (parent = el->parent; parent; parent = parent->parent) {
@@ -2939,7 +2928,7 @@ static INLINE void start_executing_next(element_s *el)
 		"Use 's' -> 'f' to force running of already run elements.");
 		return;
 	}
-	if (! Can_run(el)) {
+	if ((el->handler->type & HTYPE_NORMAL) == 0) {
 		Nprint_warn("This is not an element that can run.");
 		return;
 	}
@@ -3604,12 +3593,6 @@ static int browse(void)
 				start_executing_next(Current_element);
 
 			} else if (input == 'f') {
-				if (! Can_run(Current_element)) {
-					Nprint_warn(
-					"This is not an element that can run.");
-					break;
-				}
-
 				clear_done_run_status(Current_element);
 				rewrite_main();
 
@@ -3755,11 +3738,6 @@ static int browse(void)
 			break;
 #endif
 		case 'm': /* Change run-status marks. */
-			if (! Can_run(Current_element)) {
-				Nprint("Wrong element type.");
-				break;
-			}
-
 			if (Current_element->should_run) {
 				Nprint_warn("Can't change status mark "
 				"of this element now - it's marked for "
