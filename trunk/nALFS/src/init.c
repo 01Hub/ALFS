@@ -118,10 +118,6 @@ static INLINE int handle_set_line(const char *opt, const char *val)
 			break;
 
 		case OPTION_INVALID_VALUE:
-			fprintf(stderr,
-				"Option \"%s\" has invalid value \"%s\".\n",
-				opt,
-				val);
 			ret = -1;
 			break;
 	}
