@@ -6,9 +6,8 @@
 			<destination>&build_dir;</destination>
 		</unpack>
 
-
 		<copy>
-			<source>&packages_dir;/&compface-patch;</source>
+			<source>&packages_dir;/&compface-errno-2-patch;</source>
 			<destination>&build_dir;</destination>
 		</copy>
 	</stage>
@@ -17,6 +16,12 @@
 		<stageinfo>
 			<base>&build_dir;/&compface-directory;</base>
 		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&compface-errno-2-patch;</param>
+		</patch>
 
 		<configure>
 			<param>--prefix=/usr</param>
@@ -31,7 +36,7 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&compface-directory;</remove>
-		<remove>&build_dir;/&compface-patch;</remove>
+		<remove>&build_dir;/&compface-errno-2-patch;</remove>
 	</stage>
 
 </package>

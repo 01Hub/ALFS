@@ -11,12 +11,12 @@
 		</unpack>
 
 		<copy>
-			<source>&packages_dir;/&bc-patch1;</source>
+			<source>&packages_dir;/&bc-flex-invocation-patch;</source>
 			<destination>&build_dir;</destination>
 		</copy>
 
 		<copy>
-		        <source>&packages_dir;/&bc-patch2;</source>
+		        <source>&packages_dir;/&bc-readline-patch;</source>
 			<destination>&build_dir;</destination>
 		</copy>
 	</stage>
@@ -29,13 +29,13 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&bc-patch1;</param>
+			<param>-i ../&bc-flex-invocation-patch;</param>
 		</patch>
 
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&bc-patch2;</param>
+			<param>-i ../&bc-readline-patch;</param>
 		</patch>
 
 		<configure>
@@ -52,8 +52,8 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&bc-directory;</remove>
-		<remove>&build_dir;/&bc-patch1;</remove>
-		<remove>&build_dir;/&bc-patch2;</remove>
+		<remove>&build_dir;/&bc-flex-invocation-patch;</remove>
+		<remove>&build_dir;/&bc-readline-patch;</remove>
 	</stage>
 
 </package>
