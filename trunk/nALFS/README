@@ -142,7 +142,8 @@ does not implement the <description> element used in
 <packageinfo>. These problems will be rectified in a future release.
 
 
-4. Compiling and installing ===========================
+4. Compiling and installing
+===========================
 
 First, you have to configure the package by typing:
 
