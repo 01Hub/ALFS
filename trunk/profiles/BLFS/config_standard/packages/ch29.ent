@@ -1,4 +1,5 @@
 <!--************* packages for chapter 29 *************-->
+<!ENTITY kde-version "3.2.2">
 
 <!ENTITY kdeadmin-version   "&kde-version;">
 <!ENTITY kdeadmin-package   "kdeadmin-&kdeadmin-version;.tar.bz2">
