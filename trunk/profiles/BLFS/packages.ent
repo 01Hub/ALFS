@@ -44,6 +44,12 @@
 
 <!--************* packages for chapter 7 *************-->
 
+<!ENTITY ash-version    "0.4.0">
+<!ENTITY ash-package    "ash-0.4.0.tar.gz">
+<!ENTITY ash-directory  "ash-0.4.0">
+
+<!ENTITY ash-patch      "ash-0.4.0-cumulative-fixes.patch">
+ 
 <!ENTITY tcsh-version   "6.12">
 <!ENTITY tcsh-package   "tcsh-6.12.00.tar.gz">
 <!ENTITY tcsh-directory "tcsh-6.12.00">
@@ -291,6 +297,14 @@
 <!ENTITY tk-version   "8.4.4">
 <!ENTITY tk-package   "tk8.4.4-src.tar.gz">
 <!ENTITY tk-directory "tk8.4.4">
+
+<!ENTITY gcc295-version   "2.95.3">
+<!ENTITY gcc295-package   "gcc-2.95.3.tar.gz">
+<!ENTITY gcc295-directory "gcc-2.95.3">
+
+<!ENTITY gcc295-patch1     "gcc-2.95.3-2.patch">
+<!ENTITY gcc295-patch2     "gcc-2.95.3-no-fixinc.patch">
+<!ENTITY gcc295-patch3     "gcc-2.95.3-returntype-fix.patch">
 
 <!ENTITY nasm-version   "0.98.37">
 <!ENTITY nasm-package   "nasm-0.98.37.tar.bz2">
