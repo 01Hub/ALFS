@@ -7,11 +7,11 @@ few steps to follow:</para>
 
 <itemizedlist>
 
-<listitem><para>Edit <filename>configure.ac</filename>, and modify the line
-starting with AC_INIT (should be the first line) to reflect the version number
-that you want the distribution to be given. Commit this change to the CVS
-repository, and create a CVS tag to match the version
-number.</para></listitem>
+<listitem><para>Edit <filename>bootstrap.configure</filename>, and modify the line
+starting with AC_INIT to reflect the version number
+that you want the distribution to be given (replace &quot;CVS&quot; with your desired version number). Do not commit this change to the CVS
+repository, as the CVS version should always report its version number as
+&quot;CVS&quot;.</para></listitem>
 
 <listitem><para>Run a normal <filename>./configure</filename> process for your
 system.</para></listitem>
@@ -29,7 +29,7 @@ consumption.</para></listitem>
 <listitem><para>Run <command>make distcheck</command>. If your system requires
 any special parameters to be given to configure for it to complete (like
 <command>--with-libxml2</command>, for example), then you can use
-<command>make DISTCHECK_CONFIGURE_FLAGS="..." distcheck</command> to supply
+<command>make DISTCHECK_CONFIGURE_FLAGS=&quot;...&quot; distcheck</command> to supply
 those parameters. The distcheck process will actually unpack the tarball into
 a temporary directory, and run a complete configure/make/install/uninstall
 process on it to ensure that no build errors occur. This step should be
