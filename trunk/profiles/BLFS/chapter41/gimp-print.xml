@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<packageinfo>
-  <utilizes>
-    <name>cups</name>
-  </utilizes>
-</packageinfo>
 <package name="gimp-print" version="&gimp-print-version;">
+  <packageinfo>
+    <utilizes>
+      <name>cups</name>
+    </utilizes>
+  </packageinfo>
   <stage name="Unpacking.">
     <unpack>
       <archive>&packages_dir;/&gimp-print-package;</archive>

@@ -28,8 +28,8 @@
     <make>
       <param>install</param>
     </make>
+    <execute command="/sbin/ldconfig" />
   </stage>
-  <execute command="/sbin/ldconfig" />
   <stage name="Cleanup.">
     <remove>&build_dir;/&libxklavier-directory;</remove>
   </stage>

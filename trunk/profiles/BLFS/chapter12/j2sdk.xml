@@ -75,7 +75,6 @@
 
 	<stage name="Installing">
 		<stageinfo>
-			<base>&build_dir;/java-build</base>
 			<environment>
 				<variable name="PATH" mode="append">:/opt/j2sdk/j2sdk-precompiled-&j2sdk-binary-norev-version;/bin</variable>
 				<variable name="ALT_BOOTDIR">/opt/j2sdk/j2sdk-precompiled-&j2sdk-binary-norev-version;</variable>
@@ -91,6 +90,7 @@
 				<variable name="MAKE_VERBOSE">true</variable>
 				<variable name="ALT_CACERTS_FILE">/opt/j2sdk/j2sdk-precompiled-&j2sdk-binary-norev-version;/jre/lib/security/cacerts</variable>
 			</environment>
+			<base>&build_dir;/java-build</base>
 		</stageinfo>
 
 

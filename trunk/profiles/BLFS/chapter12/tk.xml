@@ -54,7 +54,7 @@
 		
 		<link>
 		        <option>force</option>
-			<option>no_dereference</option>
+			<option>no-dereference</option>
 			<target>/usr/include/tk${V}</target>
 			<name>/usr/lib/tk${V}/include</name>
 		</link>
