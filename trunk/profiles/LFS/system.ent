@@ -37,7 +37,6 @@
 <!ENTITY c6-bash SYSTEM               "chapter06/bash.xml">
 <!ENTITY c6-binutils SYSTEM           "chapter06/binutils.xml">
 <!ENTITY c6-bison SYSTEM              "chapter06/bison.xml">
-<!ENTITY c6-bootscripts SYSTEM        "chapter06/bootscripts.xml">
 <!ENTITY c6-bzip2 SYSTEM              "chapter06/bzip2.xml">
 <!ENTITY c6-changingowner SYSTEM      "chapter06/changingowner.xml">
 <!ENTITY c6-configure SYSTEM          "chapter06/configure.xml">
@@ -92,6 +91,7 @@
 <!ENTITY c6-zlib SYSTEM               "chapter06/zlib.xml">
 
 <!-- Chapter 7 -->
+<!ENTITY c7-bootscripts SYSTEM        "chapter07/bootscripts.xml">
 <!ENTITY c7-setclock SYSTEM "chapter07/setclock.xml">
 <!ENTITY c7-hostname SYSTEM "chapter07/hostname.xml">
 <!ENTITY c7-hosts SYSTEM "chapter07/hosts.xml">
