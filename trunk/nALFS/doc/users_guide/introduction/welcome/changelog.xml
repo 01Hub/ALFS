@@ -6,6 +6,9 @@
 
 <itemizedlist>
 
+<listitem><para>May 31st, 2004 [jwrober]: Moved files and directories
+around to match the Hackers Guide better.</para></listitem>
+
 <listitem><para>May 31st, 2004 [jwrober]: Removed Unused XML Tags from the
 source.</para></listitem>
 
