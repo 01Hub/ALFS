@@ -180,10 +180,6 @@ network.-->
 
 <!ENTITY TERM "linux">
 
-<!-- argument entities for /etc/sysconfig/console script -->
-<!ENTITY keymap-args "">
-<!ENTITY font-args "">
-
 <!-- locale setting for /etc/profile -->
 <!ENTITY locale-language "en">
 <!ENTITY locale-country "US">
