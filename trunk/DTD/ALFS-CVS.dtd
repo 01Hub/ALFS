@@ -54,7 +54,9 @@
 <!ATTLIST digest         
           type           CDATA     "md5">
 
-<!ELEMENT download       (file, url*, destination, digest?)>
+<!ELEMENT download       (file, url*, digest?)>
+<!ATTLIST download
+          base           CDATA #IMPLIED>
 
 <!ELEMENT else           (stageinfo?, (alfs | %ops;)*)>
 
@@ -134,7 +136,10 @@
 
 <!ELEMENT reference      (#PCDATA)>
 
-<!ELEMENT remove         (#PCDATA)>
+<!ELEMENT remove         (file+)>
+<!ATTLIST remove
+          base           CDATA #IMPLIED>
+
 
 <!ELEMENT replace        (#PCDATA)>
 
@@ -167,7 +172,9 @@
 
 <!ELEMENT then           (stageinfo?, (alfs | %ops;)*)>
 
-<!ELEMENT unpack         (digest?, reference*, archive, destination)>
+<!ELEMENT unpack         (digest?, reference*, archive)>
+<!ATTLIST unpack
+          base           CDATA #IMPLIED>
 
 <!ELEMENT url            (#PCDATA)>
 
