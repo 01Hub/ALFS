@@ -1266,112 +1266,117 @@
 <!ENTITY balsa-directory "balsa-&balsa-version;">
 
 <!--************* packages for chapter 42 *************-->
+<!ENTITY alsa-version "1.0.4">
 
-<!ENTITY alsa-driver-version   "0.9.8">
-<!ENTITY alsa-driver-package   "alsa-driver-0.9.8.tar.bz2">
-<!ENTITY alsa-driver-directory "alsa-driver-0.9.8">
+<!ENTITY alsa-driver-version   "&alsa-version;">
+<!ENTITY alsa-driver-package   "alsa-driver-&alsa-driver-version;.tar.bz2">
+<!ENTITY alsa-driver-directory "alsa-driver-&alsa-driver-version;">
 
-<!ENTITY alsa-lib-version      "0.9.8">
-<!ENTITY alsa-lib-package      "alsa-lib-0.9.8.tar.bz2">
-<!ENTITY alsa-lib-directory    "alsa-lib-0.9.8">
+<!ENTITY alsa-lib-version      "&alsa-version;">
+<!ENTITY alsa-lib-package      "alsa-lib-&alsa-lib-version;.tar.bz2">
+<!ENTITY alsa-lib-directory    "alsa-lib-&alsa-lib-version;">
 
-<!ENTITY alsa-utils-version      "0.9.8">
-<!ENTITY alsa-utils-package      "alsa-utils-0.9.8.tar.bz2">
-<!ENTITY alsa-utils-directory    "alsa-utils-0.9.8">
+<!ENTITY alsa-utils-version      "&alsa-version;">
+<!ENTITY alsa-utils-package      "alsa-utils-&alsa-utils-version;.tar.bz2">
+<!ENTITY alsa-utils-directory    "alsa-utils-&alsa-utils-version;">
+<!ENTITY alsa-utils-arecord-patch "alsa-utils-&alsa-utils-version;-arecord-1.patch">
 
-<!ENTITY alsa-tools-version      "0.9.8">
-<!ENTITY alsa-tools-package      "alsa-tools-0.9.8.tar.bz2">
-<!ENTITY alsa-tools-directory    "alsa-tools-0.9.8">
+<!ENTITY alsa-tools-version      "&alsa-version;">
+<!ENTITY alsa-tools-package      "alsa-tools-&alsa-tools-version;.tar.bz2">
+<!ENTITY alsa-tools-directory    "alsa-tools-&alsa-tools-version;">
 
-<!ENTITY alsa-oss-version        "0.9.8">
-<!ENTITY alsa-oss-package        "alsa-oss-0.9.8.tar.bz2">
-<!ENTITY alsa-oss-directory      "alsa-oss-0.9.8">
+<!ENTITY alsa-firmware-version   "&alsa-version;">
+<!ENTITY alsa-firmware-package   "alsa-firmware-&alsa-firmware-version;.tar.bz2">
+<!ENTITY alsa-firmware-directory "alsa-firmware-&alsa-firmware-version;">
 
-<!ENTITY audiofile-version      "0.2.4">
-<!ENTITY audiofile-package      "audiofile-0.2.4.tar.gz">
-<!ENTITY audiofile-directory    "audiofile-0.2.4">
+<!ENTITY alsa-oss-version        "&alsa-version;">
+<!ENTITY alsa-oss-package        "alsa-oss-&alsa-oss-version;.tar.bz2">
+<!ENTITY alsa-oss-directory      "alsa-oss-&alsa-oss-version;">
 
-<!ENTITY esound-version      "0.2.32">
-<!ENTITY esound-package      "esound-0.2.32.tar.bz2">
-<!ENTITY esound-directory    "esound-0.2.32">
+<!ENTITY audiofile-version      "0.2.6">
+<!ENTITY audiofile-package      "audiofile-&audiofile-version;.tar.gz">
+<!ENTITY audiofile-directory    "audiofile-&audiofile-version;">
 
-<!ENTITY sdl-version      "1.2.6">
-<!ENTITY sdl-package      "SDL-1.2.6.tar.gz">
-<!ENTITY sdl-directory    "SDL-1.2.6">
+<!ENTITY esound-version      "0.2.34">
+<!ENTITY esound-package      "esound-&esound-version;.tar.bz2">
+<!ENTITY esound-directory    "esound-&esound-version;">
 
-<!ENTITY libao-version      "0.8.4">
-<!ENTITY libao-package      "libao-0.8.4.tar.gz">
-<!ENTITY libao-directory    "libao-0.8.4">
+<!ENTITY sdl-version         "1.2.7">
+<!ENTITY sdl-package         "SDL-&sdl-version;.tar.gz">
+<!ENTITY sdl-directory       "SDL-&sdl-version;">
+
+<!ENTITY libao-version      "0.8.5">
+<!ENTITY libao-package      "libao-&libao-version;.tar.gz">
+<!ENTITY libao-directory    "libao-&libao-version;">
 
 <!ENTITY libogg-version      "1.1">
-<!ENTITY libogg-package      "libogg-1.1.tar.gz">
-<!ENTITY libogg-directory    "libogg-1.1">
+<!ENTITY libogg-package      "libogg-&libogg-version;.tar.gz">
+<!ENTITY libogg-directory    "libogg-&libogg-version;">
 
 <!ENTITY libvorbis-version      "1.0.1">
-<!ENTITY libvorbis-package      "libvorbis-1.0.1.tar.gz">
-<!ENTITY libvorbis-directory    "libvorbis-1.0.1">
+<!ENTITY libvorbis-package      "libvorbis-&libvorbis-version;.tar.gz">
+<!ENTITY libvorbis-directory    "libvorbis-&libvorbis-version;">
 
 <!ENTITY nas-version      "1.6">
-<!ENTITY nas-package      "nas-1.6.src.tar.gz">
-<!ENTITY nas-directory    "nas-1.6">
+<!ENTITY nas-package      "nas-&nas-version;.src.tar.gz">
+<!ENTITY nas-directory    "nas-&nas-version;">
+<!ENTITY nas-patch        "nas-&nas-version;-bison-fix.patch">
 
-<!ENTITY nas-patch        "nas-1.6-bison-fix.patch">
+<!ENTITY libmpeg3-version      "1.5.4">
+<!ENTITY libmpeg3-package      "libmpeg3-&libmpeg3-version;-src.tar.bz2">
+<!ENTITY libmpeg3-directory    "libmpeg3-&libmpeg3-version;">
 
-<!ENTITY libmpeg3-version      "1.5.2">
-<!ENTITY libmpeg3-package      "libmpeg3-1.5.2-src.tar.bz2">
-<!ENTITY libmpeg3-directory    "libmpeg3-1.5.2">
-
-<!ENTITY libmad-version      "0.15.0b">
-<!ENTITY libmad-package      "libmad-0.15.0b.tar.gz">
-<!ENTITY libmad-directory    "libmad-0.15.0b">
+<!ENTITY libmad-version      "0.15.1b">
+<!ENTITY libmad-package      "libmad-&libmad-version;.tar.gz">
+<!ENTITY libmad-directory    "libmad-&libmad-version;">
 
 <!ENTITY openquicktime-version      "1.0">
-<!ENTITY openquicktime-package      "openquicktime-1.0-src.tgz">
-<!ENTITY openquicktime-directory    "openquicktime-1.0-src">
+<!ENTITY openquicktime-package      "openquicktime-&openquicktime-version;-src.tgz">
+<!ENTITY openquicktime-directory    "openquicktime-&openquicktime-version;-src">
 
-<!ENTITY libfame-version      "0.9.0">
-<!ENTITY libfame-package      "libfame-0.9.0.tar.gz">
-<!ENTITY libfame-directory    "libfame-0.9.0">
+<!ENTITY libfame-version      "0.9.1">
+<!ENTITY libfame-package      "libfame-&libfame-version;.tar.gz">
+<!ENTITY libfame-directory    "libfame-&libfame-version;">
 
 <!ENTITY speex-version        "1.0.3">
-<!ENTITY speex-package        "speex-1.0.3.tar.gz">
-<!ENTITY speex-directory      "speex-1.0.3">
+<!ENTITY speex-package        "speex-&speex-version;.tar.gz">
+<!ENTITY speex-directory      "speex-&speex-version;">
 
 <!ENTITY id3lib-version        "3.8.3">
-<!ENTITY id3lib-package        "id3lib-3.8.3.tar.gz">
-<!ENTITY id3lib-directory      "id3lib-3.8.3">
+<!ENTITY id3lib-package        "id3lib-&id3lib-version;.tar.gz">
+<!ENTITY id3lib-directory      "id3lib-&id3lib-version;">
 
 <!ENTITY flac-version          "1.1.0">
-<!ENTITY flac-package          "flac-1.1.0.tar.gz">
-<!ENTITY flac-directory        "flac-1.1.0">
-
-<!ENTITY libdvdread-version          "0.9.4">
-<!ENTITY libdvdread-package          "libdvdread-0.9.4.tar.gz">
-<!ENTITY libdvdread-directory        "libdvdread-0.9.4">
+<!ENTITY flac-package          "flac-&flac-version;.tar.gz">
+<!ENTITY flac-directory        "flac-&flac-version;">
 
 <!ENTITY libdvdcss-version           "1.2.8">
-<!ENTITY libdvdcss-package           "libdvdcss-1.2.8.tar.bz2">
-<!ENTITY libdvdcss-directory         "libdvdcss-1.2.8">
+<!ENTITY libdvdcss-package           "libdvdcss-&libdvdcss-version;.tar.bz2">
+<!ENTITY libdvdcss-directory         "libdvdcss-&libdvdcss-version;">
 
-<!ENTITY libdv-version               "0.99">
-<!ENTITY libdv-package               "libdv-0.99.tar.gz">
-<!ENTITY libdv-directory             "libdv-0.99">
+<!ENTITY libdvdread-version          "0.9.4">
+<!ENTITY libdvdread-package          "libdvdread-&libdvdread-version;.tar.gz">
+<!ENTITY libdvdread-directory        "libdvdread-&libdvdread-version;">
+
+<!ENTITY libdv-version               "0.101">
+<!ENTITY libdv-package               "libdv-&libdv-version;.tar.gz">
+<!ENTITY libdv-directory             "libdv-&libdv-version;">
 
 <!ENTITY liba52-version               "0.7.4">
-<!ENTITY liba52-package               "a52dec-0.7.4.tar.gz">
-<!ENTITY liba52-directory             "a52dec-0.7.4">
+<!ENTITY liba52-package               "a52dec-&liba52-version;.tar.gz">
+<!ENTITY liba52-directory             "a52dec-&liba52-version;">
 
-<!ENTITY xvid-version      "0.9.2">
-<!ENTITY xvid-package      "xvidcore-0.9.2.tar.bz2">
-<!ENTITY xvid-directory    "xvidcore-0.9.2">
+<!ENTITY xvid-version      "1.0.0-rc4">
+<!ENTITY xvid-package      "xvidcore-&xvid-version;.tar.bz2">
+<!ENTITY xvid-directory    "xvidcore-&xvid-version;">
 
-<!ENTITY xine-lib-version      "1-rc0a">
-<!ENTITY xine-lib-package      "xine-lib-1-rc0a.tar.gz">
-<!ENTITY xine-lib-directory    "xine-lib-1-rc0a">
+<!ENTITY xine-lib-version      "1-rc3a">
+<!ENTITY xine-lib-package      "xine-lib-&xine-lib-version;.tar.gz">
+<!ENTITY xine-lib-directory    "xine-lib-&xine-lib-version;">
 
 <!ENTITY libmikmod-version      "3.1.10">
-<!ENTITY libmikmod-package      "libmikmod-3.1.10.tar.gz">
-<!ENTITY libmikmod-directory    "libmikmod-3.1.10">
+<!ENTITY libmikmod-package      "libmikmod-&libmikmod-version;.tar.gz">
+<!ENTITY libmikmod-directory    "libmikmod-&libmikmod-version;">
 
 <!--************* packages for chapter 43 *************-->
 

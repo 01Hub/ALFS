@@ -33,9 +33,7 @@
 <!ENTITY BoardName   "Riva TNT2 M64">
 <!ENTITY BusID       "PCI:1:0:0">
 
-<!-- for ALSA driver -->
 
-<!ENTITY sound-card  "cmipci">
 
 <!-- to place some configuration files 
      (e.g. ~/xpdfrc)

@@ -508,6 +508,7 @@
     &alsa-lib;
     &alsa-utils;
     &alsa-tools;
+    &alsa-firmware;
     &alsa-oss;
     &audiofile;
     &esound;
@@ -523,8 +524,8 @@
     &speex;
     &id3lib;
     &flac;
-    &libdvdread;
     &libdvdcss;
+    &libdvdread;
     &libdv;
     &liba52;
     &xvid;

@@ -1,6 +1,5 @@
 <package name="libmpeg3" version="&libmpeg3-version;">
 
-
         <packageinfo>
                 <requires><name>nasm</name></requires>
         </packageinfo>
@@ -30,11 +29,8 @@
 
 		<copy>
 		        <source>libmpeg3.h</source>
-			<destination>/usr/include</destination>
-		</copy>
-
-		<copy>
-		        <source>mpeg3private.h</source>
+			<source>mpeg3private.h</source>
+			<source>mpeg3protos.h</source>
 			<destination>/usr/include</destination>
 		</copy>
 	</stage>

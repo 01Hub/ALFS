@@ -22,3 +22,6 @@
 
 <!-- where to put gnome -->
 <!ENTITY gnome-prefix "/usr">
+
+<!-- for ALSA driver -->
+<!ENTITY sound-card  "emu10k1">

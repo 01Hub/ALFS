@@ -1,0 +1,57 @@
+<package name="alsa-utils" version="&alsa-utils-version;">
+
+	<packageinfo>
+		<requires><name>alsa-lib</name></requires>
+	</packageinfo>
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&alsa-utils-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&alsa-utils-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&alsa-utils-arecord-patch;</param>
+		</patch>
+
+		<configure />
+
+		<make />
+		
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="touch /etc/asound.state" />
+		<execute command="alsactl store" />
+	</stage>
+
+	<stage name="Installing bootscripts">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-alsa</param>
+		</make>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&alsa-utils-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+
+</package>

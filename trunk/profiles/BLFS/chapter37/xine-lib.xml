@@ -3,16 +3,16 @@
         <packageinfo>
                 <requires><name>xfree86</name></requires>
                 <requires><name>esound</name></requires>
-
 		<utilizes><name>aalib</name></utilizes>
+		<utilizes><name>libmng</name></utilizes>
+		<utilizes><name>gnome-vfs2</name></utilizes>
 		<utilizes><name>sdl</name></utilizes>
 		<utilizes><name>directfb</name></utilizes>
-		<utilizes><name>dxr3</name></utilizes>
+		<utilizes><name>flac</name></utilizes>
+		<utilizes><name>libfame</name></utilizes>
 		<utilizes><name>libogg</name></utilizes>
 		<utilizes><name>libvorbis</name></utilizes>
-		<utilizes><name>ffmpeg</name></utilizes>
-		<utilizes><name>opendivx</name></utilizes>
-		<utilizes><name>xvid</name></utilizes>
+		<utilizes><name>speex</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">

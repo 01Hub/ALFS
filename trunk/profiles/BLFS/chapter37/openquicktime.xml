@@ -2,7 +2,7 @@
 
         <packageinfo>
                 <requires><name>glib</name></requires>
-                <requires><name>libjpeg</name></requires>
+                <utilizes><name>libjpeg</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
