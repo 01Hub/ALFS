@@ -113,14 +113,17 @@ static int move_main_ver2(element_s * const el)
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
-static const struct handler_parameter move_parameters_ver3[] = {
+static const struct handler_parameter move_parameters_v3[] = {
 	{ .name = "option" },
 	{ .name = "source" },
 	{ .name = "destination" },
 	{ .name = NULL }
 };
 
-// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
+static const struct handler_attribute move_attributes_v3[] = {
+	{ .name = "base" },
+	{ .name = NULL }
+};
 
 static int move_main_ver3(element_s * const el)
 {
@@ -200,9 +203,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = move_parameters_ver2,
 		.main = move_main_ver2,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -210,12 +211,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "move",
 		.description = "Move files",
 		.syntax_version = "3.0",
-		.parameters = move_parameters_ver3,
+		.parameters = move_parameters_v3,
+		.attributes = move_attributes_v3,
 		.main = move_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -223,12 +223,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "move",
 		.description = "Move files",
 		.syntax_version = "3.1",
-		.parameters = move_parameters_ver3,
+		.parameters = move_parameters_v3,
+		.attributes = move_attributes_v3,
 		.main = move_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -236,13 +235,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "move",
 		.description = "Move files",
 		.syntax_version = "3.2",
-		.parameters = move_parameters_ver3,
+		.parameters = move_parameters_v3,
+		.attributes = move_attributes_v3,
 		.main = move_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 #endif
 	{

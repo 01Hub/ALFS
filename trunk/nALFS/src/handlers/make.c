@@ -81,13 +81,16 @@ static int make_main_ver2(element_s * const el)
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
-static const struct handler_parameter make_parameters_ver3[] = {
+static const struct handler_parameter make_parameters_v3[] = {
 	{ .name = "prefix" },
 	{ .name = "param" },
 	{ .name = NULL }
 };
 
-// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
+static const struct handler_attribute make_attributes_v3[] = {
+	{ .name = "base" },
+	{ .name = NULL }
+};
 
 static int make_main_ver3(element_s * const el)
 {
@@ -138,9 +141,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = make_parameters_ver2,
 		.main = make_main_ver2,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -148,12 +149,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "make",
 		.description = "Run make",
 		.syntax_version = "3.0",
-		.parameters = make_parameters_ver3,
+		.parameters = make_parameters_v3,
+		.attributes = make_attributes_v3,
 		.main = make_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -161,12 +161,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "make",
 		.description = "Run make",
 		.syntax_version = "3.1",
-		.parameters = make_parameters_ver3,
+		.parameters = make_parameters_v3,
+		.attributes = make_attributes_v3,
 		.main = make_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -174,13 +173,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "make",
 		.description = "Run make",
 		.syntax_version = "3.2",
-		.parameters = make_parameters_ver3,
+		.parameters = make_parameters_v3,
+		.attributes = make_attributes_v3,
 		.main = make_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 #endif
 	{

@@ -217,7 +217,10 @@ static const struct handler_parameter search_replace_parameters_ver3[] = {
 	{ .name = NULL }
 };
 
-// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
+static const struct handler_attribute search_replace_attributes[] = {
+	{ .name = "base" },
+	{ .name = NULL }
+};
 
 static int search_replace_main_ver3(element_s * const el)
 {
@@ -247,9 +250,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = search_replace_parameters_ver2,
 		.main = search_replace_main_ver2,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -258,11 +259,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Search and replace",
 		.syntax_version = "3.0",
 		.parameters = search_replace_parameters_ver3,
+		.attributes = search_replace_attributes,
 		.main = search_replace_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -271,11 +271,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Search and replace",
 		.syntax_version = "3.1",
 		.parameters = search_replace_parameters_ver3,
+		.attributes = search_replace_attributes,
 		.main = search_replace_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -284,12 +283,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Search and replace",
 		.syntax_version = "3.2",
 		.parameters = search_replace_parameters_ver3,
+		.attributes = search_replace_attributes,
 		.main = search_replace_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 #endif
 	{

@@ -45,7 +45,12 @@ static const struct handler_parameter ownership_parameters[] = {
 	{ .name = NULL }
 };
 
-// char *HANDLER_SYMBOL(attributes)[] = { "base", "user", "group", NULL };
+static const struct handler_attribute ownership_attributes[] = {
+	{ .name = "base" },
+	{ .name = "user" },
+	{ .name = "group" },
+	{ .name = NULL }
+};
 
 static int ownership_main(element_s *const el)
 {
@@ -180,11 +185,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Change ownership",
 		.syntax_version = "3.0",
 		.parameters = ownership_parameters,
+		.attributes = ownership_attributes,
 		.main = ownership_main,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -193,11 +197,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Change ownership",
 		.syntax_version = "3.1",
 		.parameters = ownership_parameters,
+		.attributes = ownership_attributes,
 		.main = ownership_main,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -205,13 +208,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "ownership",
 		.description = "Change ownership",
 		.syntax_version = "3.2",
-		.parameters = ownership_parameters,
+		.parameters = ownership_parameters,	
+		.attributes = ownership_attributes,
 		.main = ownership_main,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 #endif
 	{

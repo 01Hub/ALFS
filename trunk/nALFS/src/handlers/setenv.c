@@ -114,6 +114,11 @@ static const struct handler_parameter setenv_parameters[] = {
 	{ .name = NULL }
 };
 
+static const struct handler_attribute setenv_attributes[] = {
+	{ .name = "mode" },
+	{ .name = NULL }
+};
+
 static int setenv_main(element_s * const el)
 {
 	int i;

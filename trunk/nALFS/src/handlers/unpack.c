@@ -260,10 +260,15 @@ static int unpack_main_ver3(element_s * const el)
 
 #if HANDLER_SYNTAX_3_2
 
-static const struct handler_parameter unpack_parameters_ver3_2[] = {
+static const struct handler_parameter unpack_parameters_v3_2[] = {
 	{ .name = "archive" },
 	{ .name = "digest" },
 	{ .name = "reference" },
+	{ .name = NULL }
+};
+
+static const struct handler_attribute unpack_attributes_v3_2[] = {
+	{ .name = "base" },
 	{ .name = NULL }
 };
 
@@ -368,9 +373,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = unpack_parameters_ver2,
 		.main = unpack_main_ver2,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -381,9 +384,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = unpack_parameters_ver3,
 		.main = unpack_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -394,9 +395,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = unpack_parameters_ver3,
 		.main = unpack_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -404,12 +403,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "unpack",
 		.description = "Unpack",
 		.syntax_version = "3.2",
-		.parameters = unpack_parameters_ver3_2,
+		.parameters = unpack_parameters_v3_2,
+		.attributes = unpack_attributes_v3_2,
 		.main = unpack_main_ver3_2,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0,
 		.alternate_shell = 1,
 	},
 #endif

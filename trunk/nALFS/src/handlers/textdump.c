@@ -110,14 +110,17 @@ static int textdump_main(element_s *el, const char *base_dir)
 
 #if HANDLER_SYNTAX_2_0
 
-static const struct handler_parameter textdump_parameters_ver2[] = {
+static const struct handler_parameter textdump_parameters_v2[] = {
 	{ .name = "base" },
 	{ .name = "file" },
 	{ .name = "content" },
 	{ .name = NULL }
 };
 
-// char *HANDLER_SYMBOL(attributes)[] = { "mode", NULL };
+static const struct handler_attribute textdump_attributes_v2[] = {
+	{ .name = "mode" },
+	{ .name = NULL }
+};
 
 static int textdump_main_ver2(element_s * const el)
 {
@@ -136,13 +139,17 @@ static int textdump_main_ver2(element_s * const el)
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
-static const struct handler_parameter textdump_parameters_ver3[] = {
+static const struct handler_parameter textdump_parameters_v3[] = {
 	{ .name = "file" },
 	{ .name = "content" },
 	{ .name = NULL }
 };
 
-// char *HANDLER_SYMBOL(attributes)[] = { "base", "mode", NULL };
+static const struct handler_attribute textdump_attributes_v3[] = {
+	{ .name = "base" },
+	{ .name = "mode" },
+	{ .name = NULL }
+};
 
 static int textdump_main_ver3(element_s * const el)
 {
@@ -180,12 +187,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "textdump",
 		.description = "Dump text",
 		.syntax_version = "2.0",
-		.parameters = textdump_parameters_ver2,
+		.parameters = textdump_parameters_v2,
+		.attributes = textdump_attributes_v2,
 		.main = textdump_main_ver2,
 		.type = HTYPE_TEXTDUMP,
 		.alloc_data = textdump_data,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -193,12 +200,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "textdump",
 		.description = "Dump text",
 		.syntax_version = "3.0",
-		.parameters = textdump_parameters_ver3,
+		.parameters = textdump_parameters_v3,
+		.attributes = textdump_attributes_v3,
 		.main = textdump_main_ver3,
 		.type = HTYPE_TEXTDUMP,
 		.alloc_data = textdump_data,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -206,12 +213,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "textdump",
 		.description = "Dump text",
 		.syntax_version = "3.1",
-		.parameters = textdump_parameters_ver3,
+		.parameters = textdump_parameters_v3,
+		.attributes = textdump_attributes_v3,
 		.main = textdump_main_ver3,
 		.type = HTYPE_TEXTDUMP,
 		.alloc_data = textdump_data,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -219,12 +226,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "textdump",
 		.description = "Dump text",
 		.syntax_version = "3.2",
-		.parameters = textdump_parameters_ver3,
+		.parameters = textdump_parameters_v3,
+		.attributes = textdump_attributes_v3,
 		.main = textdump_main_ver3,
 		.type = HTYPE_TEXTDUMP,
 		.alloc_data = textdump_data,
 		.is_action = 1,
-		.priority = 0,
 		.alternate_shell = 1,
 	},
 #endif

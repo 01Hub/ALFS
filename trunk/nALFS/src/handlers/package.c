@@ -42,7 +42,7 @@
 
 #if HANDLER_SYNTAX_2_0
 
-static const struct handler_parameter package_parameters_ver2[] = {
+static const struct handler_parameter package_parameters_v2[] = {
 	{ .name = "name" },
 	{ .name = "version" },
 	{ .name = "base" },
@@ -223,7 +223,7 @@ static int parse_packageinfo(element_s *packageinfo)
 }
 
 
-static const struct handler_parameter package_parameters_ver3[] = {
+static const struct handler_parameter package_parameters_v3[] = {
 	{ .name = "name" },
 	{ .name = "version" },
 	{ .name = "packageinfo" },
@@ -236,7 +236,12 @@ static const struct handler_parameter package_parameters_ver3[] = {
 	{ .name = NULL }
 };
 
-// char *HANDLER_SYMBOL(attributes)[] = { "name", "version", "logfile", NULL };
+static const struct handler_attribute package_attributes_v3[] = {
+	{ .name = "name" },
+	{ .name = "version" },
+	{ .name = "logfile" },
+	{ .name = NULL }
+};
 
 static int package_main_ver3(element_s * const el)
 {
@@ -297,12 +302,10 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "package",
 		.description = "Package",
 		.syntax_version = "2.0",
-		.parameters = package_parameters_ver2,
+		.parameters = package_parameters_v2,
 		.main = package_main_ver2,
 		.type = HTYPE_PACKAGE,
 		.alloc_data = package_data_ver2,
-		.is_action = 0,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -310,12 +313,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "package",
 		.description = "Package",
 		.syntax_version = "3.0",
-		.parameters = package_parameters_ver3,
+		.parameters = package_parameters_v3,
+		.attributes = package_attributes_v3,
 		.main = package_main_ver3,
 		.type = HTYPE_PACKAGE,
 		.alloc_data = package_data_ver3,
-		.is_action = 0,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -323,12 +325,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "package",
 		.description = "Package",
 		.syntax_version = "3.1",
-		.parameters = package_parameters_ver3,
+		.parameters = package_parameters_v3,
+		.attributes = package_attributes_v3,
 		.main = package_main_ver3,
 		.type = HTYPE_PACKAGE,
 		.alloc_data = package_data_ver3,
-		.is_action = 0,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -336,13 +337,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "package",
 		.description = "Package",
 		.syntax_version = "3.2",
-		.parameters = package_parameters_ver3,
+		.parameters = package_parameters_v3,
+		.attributes = package_attributes_v3,
 		.main = package_main_ver3,
 		.type = HTYPE_PACKAGE,
 		.alloc_data = package_data_ver3,
-		.is_action = 0,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 #endif
 	{

@@ -46,7 +46,10 @@
 
 #if HANDLER_SYNTAX_2_0
 
-// char *HANDLER_SYMBOL(attributes)[] = { "dir", NULL };
+static const struct handler_attribute chroot_attributes[] = {
+	{ .name = "dir" },
+	{ .name = NULL }
+};
 
 static int chroot_main(element_s * const el)
 {
@@ -126,9 +129,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "2.0",
 		.main = chroot_main,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
-		.is_action = 0,
-		.priority = 0
+		.attributes = chroot_attributes,
 	},
 #endif
 	{

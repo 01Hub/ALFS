@@ -37,7 +37,11 @@
 
 #if HANDLER_SYNTAX_2_0
 
-// char *HANDLER_SYMBOL(attributes)[] = { "name", "version" };
+static const struct handler_attribute stamp_attributes[] = {
+	{ .name = "name" },
+	{ .name = "version" },
+	{ .name = NULL }
+};
 
 static int stamp_main(element_s * const el)
 {
@@ -75,9 +79,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "3.0",
 		.main = stamp_main,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
-		.is_action = 0,
-		.priority = 0
+		.attributes = stamp_attributes,
 	},
 #endif
 	{

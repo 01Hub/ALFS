@@ -45,7 +45,7 @@
 
 #if HANDLER_SYNTAX_2_0
 
-static const struct handler_parameter link_parameters_ver2[] = {
+static const struct handler_parameter link_parameters_v2[] = {
 	{ .name = "base" },
 	{ .name = "options" },
 	{ .name = "target" },
@@ -53,7 +53,10 @@ static const struct handler_parameter link_parameters_ver2[] = {
 	{ .name = NULL }
 };
 
-// char *HANDLER_SYMBOL(attributes)[] = { "type", NULL };
+static const struct handler_attribute link_attributes_v2[] = {
+	{ .name = "type" },
+	{ .name = NULL }
+};
 
 static int link_main_ver2(element_s * const el)
 {
@@ -142,14 +145,18 @@ static int link_main_ver2(element_s * const el)
 
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
-static const struct handler_parameter link_parameters_ver3[] = {
+static const struct handler_parameter link_parameters_v3[] = {
 	{ .name = "option" },
 	{ .name = "target" },
 	{ .name = "name" },
 	{ .name = NULL }
 };
 
-// char *HANDLER_SYMBOL(attributes)[] = { "type", "base", NULL };
+static const struct handler_attribute link_attributes_v3[] = {
+	{ .name = "type" },
+	{ .name = "base" },
+	{ .name = NULL }
+};
 
 static int link_main_ver3(element_s * const el)
 {
@@ -274,12 +281,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "link",
 		.description = "Link",
 		.syntax_version = "2.0",
-		.parameters = link_parameters_ver2,
+		.parameters = link_parameters_v2,
+		.attributes = link_attributes_v2,
 		.main = link_main_ver2,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -287,12 +293,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "link",
 		.description = "Link",
 		.syntax_version = "3.0",
-		.parameters = link_parameters_ver3,
+		.parameters = link_parameters_v3,
+		.attributes = link_attributes_v3,
 		.main = link_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_1
@@ -300,12 +305,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "link",
 		.description = "Link",
 		.syntax_version = "3.1",
-		.parameters = link_parameters_ver3,
+		.parameters = link_parameters_v3,
+		.attributes = link_attributes_v3,
 		.main = link_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
 	},
 #endif
 #if HANDLER_SYNTAX_3_2
@@ -313,13 +317,12 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "link",
 		.description = "Link",
 		.syntax_version = "3.2",
-		.parameters = link_parameters_ver3,
+		.parameters = link_parameters_v3,
+		.attributes = link_attributes_v3,
 		.main = link_main_ver3,
 		.type = HTYPE_NORMAL,
-		.alloc_data = NULL,
 		.is_action = 1,
 		.alternate_shell = 1,
-		.priority = 0
 	},
 #endif
 	{
