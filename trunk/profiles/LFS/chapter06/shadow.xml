@@ -21,10 +21,13 @@
 			<param>--enable-shared</param>
 		</configure>
 
-		<execute command="echo">
-			<param>'#define HAVE_SETLOCALE 1' &gt;&gt; config.h</param>
-		</execute>
-
+		<textdump mode="append">
+			<file>config.h</file>
+			<content>
+=#define HAVE_SETLOCALE 1
+			</content>
+		</textdump>
+		
 		<make />
 
 		<make>
