@@ -9,12 +9,23 @@
 			<archive>&packages_dir;/&linuxpam-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
+
+		<copy>
+		        <source>&packages_dir;/&linuxpam-patch;</source>
+		        <destination>&build_dir;</destination>
+		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
 			<base>&build_dir;/&linuxpam-directory;</base>
 		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&linuxpam-patch;</param>
+		</patch>
 
 		<configure>
 		        <param>--enable-static-libpam</param>

@@ -60,10 +60,10 @@
 
 <stage name="chapter 4 (security)">
 
-    &shadow;
-    &gnupg;
-    &iptables;
     &linuxpam;
+    &shadow;
+    &iptables;
+    &gnupg;
 
 </stage>
 
