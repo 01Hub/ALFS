@@ -1,0 +1,6 @@
+<stage name="Configuring the localnet script">
+	<textdump>
+		<file>/etc/sysconfig/network</file>
+		<content>=HOSTNAME=&hostname;</content>
+	</textdump>
+</stage>

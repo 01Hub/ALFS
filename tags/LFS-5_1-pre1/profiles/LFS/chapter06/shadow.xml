@@ -1,0 +1,109 @@
+<package name="shadow" version="&shadow-version;">
+	<stage name="Unpacking a package.">
+		<unpack>
+			<digest>&shadow-md5;</digest>
+			<archive>&packages_dir;/&shadow-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&shadow-directory;</base>
+		</stageinfo>
+
+		<execute command="touch">
+			<param>/usr/bin/passwd</param>
+		</execute>
+
+		<configure>
+			<param>--libdir=/usr/lib</param>
+			<param>--enable-shared</param>
+		</configure>
+
+		<textdump mode="append">
+			<file>config.h</file>
+			<content>
+				=#define HAVE_SETLOCALE 1
+			</content>
+		</textdump>
+		
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<copy>
+			<source>etc/limits</source>
+			<source>etc/login.access</source>
+			<destination>/etc</destination>
+		</copy>
+
+		<copy>
+			<source>etc/login.defs.linux</source>
+			<destination>/etc/login.defs</destination>
+		</copy>
+
+		<search_replace>
+			<file>/etc/login.defs</file>
+			<find>/var/spool/mail</find>
+			<replace>/var/mail</replace>
+		</search_replace>
+
+		<search_replace>
+			<file>/etc/login.defs</file>
+			<find>#MD5_CRYPT_ENAB	no</find>
+			<replace>MD5_CRYPT_ENAB	yes</replace>
+		</search_replace>
+
+		<move>
+			<source>/bin/sg</source>
+			<destination>/usr/bin</destination>
+		</move>
+
+		<move>
+			<source>/bin/vigr</source>
+			<destination>/usr/sbin</destination>
+		</move>
+
+		<move base="/usr/lib">
+			<source>libshadow.so.0*</source>
+			<source>libmisc.so.0*</source>
+			<destination>/lib</destination>
+		</move>
+
+		<link>
+			<option>force</option>
+			<target>../../lib/libshadow.so.0</target>
+			<name>/usr/lib/libshadow.so</name>
+		</link>
+
+		<link>
+			<option>force</option>
+			<target>../../lib/libmisc.so.0</target>
+			<name>/usr/lib/libmisc.so</name>
+		</link>
+		
+		<mkdir>
+			<name>/etc/default</name>
+		</mkdir>
+
+		<remove>/bin/groups</remove>
+	</stage>
+
+	<stage name="Configuring a package.">
+		<execute command="/usr/sbin/pwconv" />
+		<execute command="/usr/sbin/grpconv" />
+	</stage>
+
+	<execute command="echo">
+		<param>root:&password;</param>
+		<param>| chpasswd</param>
+	</execute>
+
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&shadow-directory;</remove>
+	</stage>
+</package>
