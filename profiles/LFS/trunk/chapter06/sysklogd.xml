@@ -8,7 +8,7 @@
 %package_entities;
 ]>
 <alfs>
-  <package name="hotplug" version="&hotplug-version;">
+  <package name="sysklogd" version="&sysklogd-version;">
     <stage name="Unpacking.">
       <unpack>
         <digest>&sysklogd-md5;</digest>
@@ -25,12 +25,12 @@
         <param>-p1</param>
         <param>-i &packages_dir;/&sysklogd-fixes-patch;</param>
       </patch>	  
-	  <make />
+      <make />
       <make>
         <param>install</param>
       </make>
       <copy>
-        <source>etc/syslog.conf</source>
+        <source>&skeleton_dir;/etc/syslog.conf</source>
         <destination>/etc/syslog.conf</destination>
       </copy>
     </stage>
