@@ -207,8 +207,8 @@
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
 <!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
 
-<!ENTITY m4-md5 "9eb2dd07740b2d2f3c7adb3e8d299bda">
-<!ENTITY m4-version "1.4">
+<!ENTITY m4-md5 "76984d94e85afb21caa88b5cc5aea0b3">
+<!ENTITY m4-version "1.4.1">
 <!ENTITY m4-package "m4-&m4-version;.tar.gz">
 <!ENTITY m4-directory "m4-&m4-version;">
 
