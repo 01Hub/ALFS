@@ -71,7 +71,7 @@
 		</copy>
 
 		<textdump>
-			<file>/etc/modules.conf</file>
+			<file>/etc/modprobe.conf</file>
 			<content>=alias &network-interface; &network-card-module;</content>
 		</textdump>
 	</stage>
