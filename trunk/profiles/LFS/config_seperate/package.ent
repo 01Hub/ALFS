@@ -14,7 +14,7 @@
 <!ENTITY bash-directory "bash-&bash-version;">
 
 <!ENTITY bash-patch-md5 "dfc7399bb57798e18fbb99f9edce4da0">
-<!ENTITY bash-patch "bash-&bash-version;-gnu-fixes-2.patch">
+<!ENTITY bash-patch "bash-&bash-version;-gnu_fixes-2.patch">
 
 <!ENTITY binutils-md5 "0d64d65d33a7f305e5ef8351086b9a3a">
 <!ENTITY binutils-version "2.15.91.0.1">
@@ -105,7 +105,7 @@
 <!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
 <!ENTITY gcc-no-fixincludes-patch-md5 "78fa00bc9f7173b9658eeb86ce9291c9">
-<!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no-fixincludes-1.patch">
+<!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no_fixincludes-1.patch">
 
 <!ENTITY gcc-specs-patch-md5 "a0d586aaa048622379836020c5040a5c">
 <!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-1.patch">
@@ -246,8 +246,8 @@
 <!ENTITY module-tools-package "module-init-tools-&module-tools-version;.tar.bz2">
 <!ENTITY module-tools-directory "module-init-tools-&module-tools-version;">
 
-<!ENTITY nALFS-md5 "981775a3e2dbbcfaab9df44652992f2a">
-<!ENTITY nALFS-version "1.2.2">
+<!ENTITY nALFS-md5 "245cd1bc21a5d1b80ccfc693b03e6b6b">
+<!ENTITY nALFS-version "1.2.3">
 <!ENTITY nALFS-package "nALFS-&nALFS-version;.tar.bz2">
 <!ENTITY nALFS-directory "nALFS-&nALFS-version;">
 
