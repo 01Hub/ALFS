@@ -6,11 +6,11 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT base           (#PCDATA)>
+&lt;!ELEMENT base     (#PCDATA)&gt;
 </synopsis>
 
-<para>This element occurs in the element
-<link linkend="elem_stageinfo">stageinfo</link>,
+<para>This element occurs in the&nbsp;
+<xref linkend="elem_stageinfo"/>
 </para>
 
 </sect2>
@@ -18,35 +18,48 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>base</token> is used to specify a base directory
+<para>The element <filename>base</filename> is used to specify the base directory
 which will be used by all the commands in the stage, unless another
-base is specified at the level of the command.</para>
+base is specified at the level of the command. See also&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_execute"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_link"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_make"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_mkdir"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_move"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_ownership"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_patch"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_permissions"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_search_replace"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_textdump"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;stage>
-    &lt;stageinfo>
-        &lt;base>/usr/src/gzip.1.2.4a&lt;/base>
-    &lt;/stageinfo>
+<screen><userinput>&lt;stage&gt;
+	&lt;stageinfo&gt;
+		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
+	&lt;/stageinfo&gt;
 
-    &lt;configure />
+	&lt;configure&gt;
+	&lt;/configure&gt;
 
-    &lt;make />
+	&lt;make&gt;
+	&lt;/make&gt;
 
-    &lt;make>
-        &lt;param>install&lt;/param>
-    &lt;/make>
-&lt;/stage>
-</programlisting>
+	&lt;make&gt;
+        	&lt;param&gt;install&lt;/param&gt;
+	&lt;/make&gt;
+&lt;/stage&gt;</userinput></screen>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>
-echo Stage
+<screen><userinput>echo Stage
 
 echo Executing configure
 cd /usr/src/gzip.1.2.4a
@@ -60,8 +73,7 @@ echo Executing make
 cd /usr/src/gzip.1.2.4a
 make install
 
-echo Exiting stage
-</programlisting>
+echo Exiting stage</userinput></screen>
 
 </sect2>
 
