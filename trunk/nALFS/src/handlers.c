@@ -42,7 +42,11 @@
 #include "ltdl.h"
 
 
-static handler_s **handlers;
+static struct handlers {
+	int cnt;
+	handler_s **list;
+} handlers = { 0 };
+
 static char **parameters;
 
 
@@ -53,10 +57,10 @@ static char **parameters;
 handler_s *find_handler(const char *name, const char *syntax_version)
 {
 	int i;
-	handler_s *h;
 
+	for (i = 0; i < handlers.cnt; ++i) {
+		handler_s *h = handlers.list[i];
 
-	for (i = 0; (h = handlers[i]); ++i) {
 		if (strcmp(name, h->info->name) == 0
 		&& strcmp(syntax_version, h->info->syntax_version) == 0) {
 			return h;
@@ -86,7 +90,7 @@ int parameter_exists(const char *name)
 
 
 
-static INLINE int add_to_parameters(char **params)
+static INLINE int add_new_parameters(char **params)
 {
 	int i, total = 0;
 	char *param;
@@ -116,40 +120,12 @@ static INLINE int add_to_parameters(char **params)
 	return total;
 }
 
-/* Check if this handler already exists (has the same name and version). */
-static INLINE int does_already_exist(
-	const char *name, const char *syntax_version)
-{
-	int i;
-	handler_s *h;
-
-
-	for (i = 0; (h = handlers[i]); ++i) {
-		if (strcmp(name, h->info->name) == 0
-		&& strcmp(syntax_version, h->info->syntax_version) == 0) {
-			return 1;
-		}
-	}
-
-	return 0;
-}
-
 static INLINE int number_of_parameters(void)
 {
 	int i;
 
 	for (i = 0; parameters[i]; ++i)
 		/* Count the number of parameters. */;
-
-	return i;
-}
-
-static INLINE int number_of_handlers(void)
-{
-	int i;
-
-	for (i = 0; handlers[i]; ++i)
-		/* Count the number of handlers. */;
 
 	return i;
 }
@@ -161,6 +137,24 @@ static INLINE lt_ptr lookup_symbol(lt_dlhandle handle, const char *symbol_name)
 	if ((result = lt_dlsym(handle, symbol_name)) == NULL)
 		Nprint_err("%s: %s", symbol_name, lt_dlerror());
 	return result;
+}
+
+/* Creates new handler and puts it in handlers. */
+static INLINE void create_new_handler(handler_info_s *hi, lt_dlhandle handle)
+{
+	handler_s *handler = xmalloc(sizeof *handler);
+
+	handler->info = hi;
+	handler->handle = handle;
+
+	/* Add to handlers. */
+
+	++handlers.cnt;
+
+	handlers.list = xrealloc(handlers.list,
+		(handlers.cnt) * sizeof *handlers.list);
+
+	handlers.list[handlers.cnt-1] = handler;
 }
 
 static int load_handler(lt_dlhandle handle, lt_ptr data)
@@ -177,40 +171,22 @@ static int load_handler(lt_dlhandle handle, lt_ptr data)
 
 	/* Go through handler_info[].  */
 	for (i = 0; (handler_info[i].name); ++i) {
-		handler_s *handler;
 		handler_info_s *hi = &handler_info[i];
 
-		/* Check if this handler already exists in "handlers". */
-		if (does_already_exist(hi->name, hi->syntax_version)) {
+		if (find_handler(hi->name, hi->syntax_version)) {
 			Nprint_warn("The handler already exists, "
 				"skipping it: %s (%s)",
 				hi->name, hi->syntax_version);
 			continue;
 		}
 
-		handler = xmalloc(sizeof *handler);
-
-		handler->info = hi;
-		handler->handle = handle;
+		create_new_handler(hi, handle);
 
 		/* Update parameters. TODO: This can be obtained through
 		 * el->handler->info->parameters.  Plus, it doesn't
 		 * know anything about syntax versions.
 		 */
-		add_to_parameters(hi->parameters);
-
-		/* TODO: Create a structure containing handlers array and the
-		 *       number of those.  Counting them each time is ugly.
-		 *       Also put below in add_new_handler() function.
-		 */
-		{
-			int n = number_of_handlers();
-
-			/* Add to handlers. */
-			handlers = xrealloc(handlers, (n+2) * sizeof *handlers);
-			handlers[n] = handler;
-			handlers[n+1] = NULL;
-		}
+		add_new_parameters(hi->parameters);
 	}
 
 	return 0;
@@ -228,9 +204,6 @@ static int foreachfile_callback(const char *filename, lt_ptr data)
 
 int load_all_handlers(void)
 {
-	handlers = xmalloc(sizeof *handlers);
-	handlers[0] = NULL;
-
 	parameters = xmalloc(sizeof *parameters);
 	parameters[0] = NULL;
 
@@ -252,7 +225,7 @@ int load_all_handlers(void)
 #endif
 
 	lt_dlforeach(&load_handler, NULL);
-	Nprint("Total %d handlers loaded.", number_of_handlers());
+	Nprint("Total %d handlers loaded.", handlers.cnt);
 	Nprint("Total %d parameters found.", number_of_parameters());
 
 	return 0;
