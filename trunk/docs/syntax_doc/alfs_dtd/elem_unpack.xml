@@ -1,10 +1,12 @@
-<sect1 id="elem_unpack">
-<title>unpack</title>
+<sect1 id="elem_unpack" xreflabel="Element: &lt;unpack&gt;">
 <?dbhtml filename="elem_unpack.html" dir="alfs_dtd"?>
+<title>unpack</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT unpack         (digest?,reference?,archive,destination)>
+<synopsis>
+&lt;!ELEMENT unpack         (digest?,reference?,archive,destination)>
 </synopsis>
 
 <para>This element occurs in the elements
@@ -23,7 +25,9 @@ and <link linkend="elem_then">then</link>
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>This element is used to unpack an archive into a destination directory</para>
 
 <para>The sub-element <token>reference</token> gives the URL of the archive, which
@@ -50,14 +54,13 @@ extension of the archive file. The supported extensions are :
 </itemizedlist>
 </para>
 
-<note>
-<para>The use of the sub-elements digest and reference is deprecated.
-You should use the element download instead.</para>
-</note>
+<note><para>The use of the sub-elements digest and reference is deprecated. 
+You should use the element download instead.</para></note>
 
 </sect2> 
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
 
 <programlisting>
 &lt;unpack>
@@ -70,7 +73,8 @@ You should use the element download instead.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+<programlisting>
+echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
 [[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp; 
   echo Retrieving  ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
 [[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp; 
@@ -83,4 +87,5 @@ tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz
 </programlisting>
 
 </sect2>
+
 </sect1>

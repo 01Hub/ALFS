@@ -1,10 +1,12 @@
-<sect1 id="elem_execute">
-<title>execute</title>
+<sect1 id="elem_execute" xreflabel="Element: &lt;execute&gt;">
 <?dbhtml filename="elem_execute.html" dir="alfs_dtd"?>
+<title>execute</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT execute        (param*)>
+<synopsis>
+&lt;!ELEMENT execute        (param*)>
 &lt;!ATTLIST execute
           base           CDATA #IMPLIED
           command        CDATA #REQUIRED>
@@ -23,7 +25,9 @@ and <link linkend="elem_then">then</link>
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>execute</token> is used to execute an arbitrary command.</para>
 
 <para>The attribute <token>base</token> allows to specify the directory 
@@ -35,7 +39,8 @@ in which the command will be executed;</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
 
 <para>The first example is an execute command without parameter.</para>
 
@@ -45,7 +50,8 @@ in which the command will be executed;</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Executing 'umount'
+<programlisting>
+echo Executing 'umount'
 umount
 </programlisting>
 
@@ -64,6 +70,6 @@ umount
 mount /mnfs/lfs
 </programlisting>
 
-
 </sect2>
+
 </sect1>

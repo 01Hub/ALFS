@@ -1,10 +1,12 @@
-<sect1 id="elem_patch">
-<title>patch</title>
+<sect1 id="elem_patch" xreflabel="Element: &lt;patch&gt;">
 <?dbhtml filename="elem_patch.html" dir="alfs_dtd"?>
+<title>patch</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT patch          (param*)>
+<synopsis>
+&lt;!ELEMENT patch          (param*)>
 &lt;!ATTLIST patch
           base           CDATA #IMPLIED>
 </synopsis>
@@ -20,10 +22,11 @@ and <link linkend="elem_then">then</link>
 <link linkend="elem_param">param</link>,
 </para>
 
-
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>patch</token> is used to execute the patch command.</para>
 
 <para>The sub-elements <token>param</token> contain the parameters of the command.</para>
@@ -32,7 +35,9 @@ and <link linkend="elem_then">then</link>
 the command will be performed.</para>
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;patch>
     &lt;param>-N&lt;/param>
@@ -43,9 +48,11 @@ the command will be performed.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo 'patch -N -p1 -i ../gawk-3.1.1.patch'
+<programlisting>
+echo 'patch -N -p1 -i ../gawk-3.1.1.patch'
 patch -N -p1 -i ../gawk-3.1.1.patch
 </programlisting>
 
 </sect2>
+
 </sect1>

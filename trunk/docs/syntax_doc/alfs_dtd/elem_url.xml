@@ -1,28 +1,35 @@
-<sect1 id="elem_url">
-<title>url</title>
+<sect1 id="elem_url" xreflabel="Element: &lt;url&gt;">
 <?dbhtml filename="elem_url.html" dir="alfs_dtd"?>
+<title>url</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT url            (#PCDATA)>
+<synopsis>
+&lt;!ELEMENT url            (#PCDATA)>
 </synopsis>
 
 <para>This element occurs in the elements
 <link linkend="elem_download">download</link>.
 </para>
+
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>url</token> allow to specify the URL
 of the directory containing the file to be downloaded when
 processing a <token>download</token> element.
 </para>
 
-
 </sect2>
 
-<sect2><title>Examples</title>
-<programlisting>&lt;download>
+<sect2>
+<title>Examples</title>
+
+<programlisting>
+&lt;download>
     &lt;file>kbd-1.08.tar.gz&lt;/file>
     &lt;url>ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/&lt;/url>
     &lt;destination>/tmp/&lt;/destination>
@@ -31,4 +38,5 @@ processing a <token>download</token> element.
 </programlisting>
 
 </sect2>
+
 </sect1>

@@ -1,8 +1,9 @@
-<sect1 id="elem_environment">
-<title>environment</title>
+<sect1 id="elem_environment" xreflabel="Element: &lt;environment&gt;">
 <?dbhtml filename="elem_environment.html" dir="alfs_dtd"?>
+<title>environment</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
 <synopsis>
 &lt;!ELEMENT environment    (variable+)&gt;
@@ -20,7 +21,8 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>environment</token> allows you to define 
 one or more environment variables to be added to the system environment
@@ -33,7 +35,8 @@ value.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
 
 <programlisting>
 &lt;stage&gt;
@@ -58,7 +61,8 @@ value.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Stage
+<programlisting>
+echo Stage
 
 export GCCFLAGS=-O2
 export PATH=/usr/src/gzip.1.2.4a:$PATH
@@ -81,4 +85,5 @@ echo Exiting stage
 </programlisting>
 
 </sect2>
+
 </sect1>

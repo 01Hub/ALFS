@@ -1,10 +1,12 @@
-<sect1 id="elem_mkdir">
-<title>mkdir</title>
+<sect1 id="elem_mkdir" xreflabel="Element: &lt;mkdir&gt;">
 <?dbhtml filename="elem_mkdir.html" dir="alfs_dtd"?>
+<title>mkdir</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT mkdir          (option?, name+)>
+<synopsis>
+&lt;!ELEMENT mkdir          (option?, name+)>
 &lt;!ATTLIST mkdir
           base           CDATA #IMPLIED>
 </synopsis>
@@ -23,7 +25,8 @@ and <link linkend="elem_then">then</link>
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>mkdir</token> describes the creation of one
 (or several) directory(ies).</para>
@@ -39,7 +42,9 @@ directories are created as needed.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;mkdir base="/usr/local/lib">
    &lt;option>parents&lt;/option>
@@ -49,10 +54,12 @@ directories are created as needed.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>cd /usr/local/lib
+<programlisting>
+cd /usr/local/lib
 echo Making directory X11
 mkdir -p X11
 </programlisting>
+
 
 </sect2>
 </sect1>

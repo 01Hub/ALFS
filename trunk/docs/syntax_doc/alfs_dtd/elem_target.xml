@@ -1,10 +1,12 @@
-<sect1 id="elem_target">
-<title>target</title>
+<sect1 id="elem_target" xreflabel="Element: &lt;target&gt;">
 <?dbhtml filename="elem_target.html" dir="alfs_dtd"?>
+<title>target</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT target         (#PCDATA)>
+<synopsis>
+&lt;!ELEMENT target         (#PCDATA)>
 </synopsis>
 
 <para>This element occurs in the element
@@ -13,14 +15,17 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>target</token> describes a target of a link
 operation.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;link>
 	&lt;target>share/man&lt;/target>
@@ -32,10 +37,11 @@ operation.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo 'Linking  share/man share/doc share/info into /usr/local'
+<programlisting>
+echo 'Linking  share/man share/doc share/info into /usr/local'
 ln -s  share/man share/doc share/info /usr/local
 </programlisting>
 
-<para></para>
 </sect2>
+
 </sect1>

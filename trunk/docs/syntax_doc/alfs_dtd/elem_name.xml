@@ -1,10 +1,12 @@
-<sect1 id="elem_name">
-<title>name</title>
+<sect1 id="elem_name" xreflabel="Element: &lt;name&gt;">
 <?dbhtml filename="elem_name.html" dir="alfs_dtd"?>
+<title>name</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT name           (#PCDATA)>
+<synopsis>
+&lt;!ELEMENT name           (#PCDATA)>
 </synopsis>
 
 <para>This element occurs in the elements
@@ -18,12 +20,17 @@ and <link linkend="elem_utilizes">utilizes</link>.
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>name</token> is used to specify a name for 
 some commands that requires it.</para>
+
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;mkdir base="/usr/local/lib">
    &lt;option>parents&lt;/option>
@@ -33,11 +40,12 @@ some commands that requires it.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>cd /usr/local/lib
+<programlisting>
+cd /usr/local/lib
 echo Making directory X11
 mkdir -p X11
 </programlisting>
 
-
 </sect2>
+
 </sect1>

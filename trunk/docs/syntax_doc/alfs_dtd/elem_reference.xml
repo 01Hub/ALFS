@@ -1,10 +1,12 @@
-<sect1 id="elem_reference">
-<title>reference</title>
+<sect1 id="elem_reference" xreflabel="Element: &lt;reference&gt;">
 <?dbhtml filename="elem_reference.html" dir="alfs_dtd"?>
+<title>reference</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT reference      (#PCDATA)>
+<synopsis>
+&lt;!ELEMENT reference      (#PCDATA)>
 </synopsis>
 
 <para>This element occurs in the element
@@ -13,14 +15,17 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>reference</token> is used to specify the URL of the reference
 archive to download if the local copy is not available.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;unpack>
     &lt;reference>ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz&lt;/reference>
@@ -31,7 +36,8 @@ archive to download if the local copy is not available.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+<programlisting>
+cho Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
 [[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp; 
   echo Retrieving  ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
 [[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp; 

@@ -1,10 +1,12 @@
-<sect1 id="elem_download">
-<title>download</title>
+<sect1 id="elem_download" xreflabel="Element: &lt;download&gt;">
 <?dbhtml filename="elem_download.html" dir="alfs_dtd"?>
+<title>download</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT download    (file,url*,destination,digest?)>
+<synopsis>
+&lt;!ELEMENT download    (file,url*,destination,digest?)>
 </synopsis>
 
 <para>This element occurs in the elements
@@ -23,7 +25,9 @@ and <link linkend="elem_then">then</link>
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>download</token> is used to specify
 one or several urls from which a file can be downloaded,
 and optionally a digest to check that the file being downloaded
@@ -49,9 +53,11 @@ no download is performed but the digest is checked if present.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
 
-<programlisting>&lt;download>
+<programlisting>
+&lt;download>
     &lt;file>kbd-1.08.tar.gz&lt;/file>
     &lt;url>ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/&lt;/url>
     &lt;destination>/tmp/&lt;/destination>

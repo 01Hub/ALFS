@@ -1,10 +1,12 @@
-<sect1 id="elem_move">
-<title>move</title>
+<sect1 id="elem_move" xreflabel="Element: &lt;move&gt;">
 <?dbhtml filename="elem_move.html" dir="alfs_dtd"?>
+<title>move</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT move           (option?, source+, destination)>
+<synopsis>
+&lt;!ELEMENT move           (option?, source+, destination)>
 &lt;!ATTLIST move
           base           CDATA #IMPLIED>
 </synopsis>
@@ -24,7 +26,9 @@ and <link linkend="elem_then">then</link>
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>move</token> is used to move one or several source
 files and/or directories  into a destination file or directory</para>
 
@@ -41,10 +45,12 @@ to the destination, using the specified option if present.</para>
 it should contain the name of the current directory
 from which the move operation is performed.
 </para>
+
 </sect2>
 
+<sect2>
+<title>Examples</title>
 
-<sect2><title>Examples</title>
 <programlisting>
 &lt;move>
     &lt;source>/usr/src/mypackage/config.txt&lt;/source>
@@ -54,11 +60,11 @@ from which the move operation is performed.
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Move ' /usr/src/mypackage/config.txt /opt/mypackage/config.txt'
+<programlisting>
+echo Move ' /usr/src/mypackage/config.txt /opt/mypackage/config.txt'
 mv  /usr/src/mypackage/config.txt /opt/mypackage/config.txt
 </programlisting>
 
-
-
 </sect2>
+
 </sect1>

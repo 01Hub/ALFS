@@ -1,10 +1,12 @@
-<sect1 id="elem_content">
-<title>content</title>
+<sect1 id="elem_content" xreflabel="Element: &lt;content&gt;">
 <?dbhtml filename="elem_content.html" dir="alfs_dtd"?>
+<title>content</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT content        (#PCDATA)>
+<synopsis>
+&lt;!ELEMENT content        (#PCDATA)>
 </synopsis>
 
 <para>This element occurs in the element
@@ -13,19 +15,20 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>content</token> is used to specify the content of the
 file being created when processing a <token>textdump</token> operation.</para>
 
-<note>
-<para>
-Of course, it is possible to use XML entity references in the content of this element.
-</para>
-</note>
+<note><para>Of course, it is possible to use XML entity references in the 
+content of this element.</para></note>
+
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;textdump base="/etc">
         &lt;file>group&lt;/file>
@@ -49,7 +52,8 @@ Of course, it is possible to use XML entity references in the content of this el
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Generating file group
+<programlisting>
+echo Generating file group
 cd /etc
 
 cat > group &lt;&lt; 'EOF'
@@ -69,6 +73,6 @@ EOF
 
 </programlisting>
 
-
 </sect2>
+
 </sect1>

@@ -1,10 +1,12 @@
-<sect1 id="elem_root">
-<title>root</title>
+<sect1 id="elem_root" xreflabel="Element: &lt;root&gt;">
 <?dbhtml filename="elem_root.html" dir="alfs_dtd"?>
+<title>root</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT root           (#PCDATA)>
+<synopsis>
+&lt;!ELEMENT root           (#PCDATA)>
 </synopsis>
 
 <para>This element occurs in the element
@@ -16,11 +18,13 @@
 <sect2><title>Description</title>
 <para>The element <token>root</token> allow to specify the 
 name of a directory which will be the root directory
-for the commands of the stage.
-</para>
+for the commands of the stage.</para>
+
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;stage>
     &lt;stageinfo>
@@ -40,7 +44,8 @@ for the commands of the stage.
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Creating file /mnt/lfs/_nalfs_tmp.1...
+<programlisting>
+echo Creating file /mnt/lfs/_nalfs_tmp.1...
 cat > /mnt/lfs/_nalfs_tmp.1 &lt;&lt; 'EOF1'
 echo Executing configure
 cd /usr/src/gzip.1.2.4a
@@ -66,6 +71,6 @@ echo Executing in directory /mnt/lfs
 echo Exiting stage
 </programlisting>
 
-<para></para>
 </sect2>
+
 </sect1>

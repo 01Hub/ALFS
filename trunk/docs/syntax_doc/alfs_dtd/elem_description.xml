@@ -1,10 +1,12 @@
-<sect1 id="elem_description">
-<title>description</title>
+<sect1 id="elem_description" xreflabel="Element: &lt;description&gt;">
 <?dbhtml filename="elem_description.html" dir="alfs_dtd"?>
+<title>description</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT description        (para|list)*>
+<synopsis>
+&lt;!ELEMENT description        (para|list)*>
 </synopsis>
 
 <para>This element occurs in the element
@@ -18,27 +20,26 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
-<para>The element <token>description</token> 
-contains the description of a package. Its use is for 
-documentation only.</para>
+<para>The element <token>description</token> contains the description of a 
+package. Its use is for documentation only.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
-    &lt;package name="gimp" version="1.2.3">
-        &lt;packageinfo>
-	        &lt;description>
-                    &lt;para>The gimp package contains the GNU Image 
-		    Manipulation Program. 
-		    This is useful for photo retouching, image 
-		    composition and image authoring.
-		    &lt;/para>
+&lt;package name="gimp" version="1.2.3">
+	&lt;packageinfo>
+		&lt;description>
+			&lt;para>The gimp package contains the GNU Image Manipulation Program. This is 
+			useful for photo retouching, image composition and image authoring.&lt;/para>
 		&lt;/description>
 
-                &lt;requires>&lt;name>gtk+&lt;/name>&lt;/requires>
+		&lt;requires>&lt;name>gtk+&lt;/name>&lt;/requires>
 
 		&lt;utilizes>&lt;name>libtiff&lt;/name>&lt;/utilizes>
 		&lt;utilizes>&lt;name>libpng&lt;/name>&lt;/utilizes>
@@ -47,13 +48,13 @@ documentation only.</para>
 		&lt;utilizes>&lt;name>mpeg_lib&lt;/name>&lt;/utilizes>
 		&lt;utilizes>&lt;name>python&lt;/name>&lt;/utilizes>
 
-        &lt;/required>
+	&lt;/required>
 
 	....
 
-    &lt;/package>
-
+&lt;/package>
 </programlisting>
 
 </sect2>
+
 </sect1>

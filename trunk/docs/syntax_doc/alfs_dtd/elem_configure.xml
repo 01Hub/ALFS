@@ -1,10 +1,12 @@
-<sect1 id="elem_configure">
-<title>configure</title>
+<sect1 id="elem_configure" xreflabel="Element: &lt;configure&gt;">
 <?dbhtml filename="elem_configure.html" dir="alfs_dtd"?>
+<title>configure</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT configure      (param*)>
+<synopsis>
+&lt;!ELEMENT configure      (param*)>
 &lt;!ATTLIST configure
           base           CDATA #IMPLIED
           command        CDATA #IMPLIED>
@@ -23,7 +25,8 @@ and <link linkend="elem_then">then</link>
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>configure</token> is used to describe a command
 configure.</para>
@@ -39,7 +42,8 @@ if one doesn't want to use the default "./configure".</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
 
 <para>The first example is a call to configure without
 parameter :</para>
@@ -50,11 +54,11 @@ parameter :</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Executing configure
+<programlisting>
+echo Executing configure
 cd /usr/src/mypackage/
 ./configure
 </programlisting>
-
 
 <para>The second example is a call to configure with
 a parameter :</para>
@@ -67,7 +71,8 @@ a parameter :</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Executing configure
+<programlisting>
+echo Executing configure
 cd /usr/src/mypackage/
 ./configure --prefix=/opt/mypackage
 </programlisting>
@@ -90,4 +95,5 @@ PATH=/usr/local/bin ./configure --prefix=/opt/mypackage
 </programlisting>
 
 </sect2>
+
 </sect1>

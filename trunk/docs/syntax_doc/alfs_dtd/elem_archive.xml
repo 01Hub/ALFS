@@ -1,10 +1,12 @@
-<sect1 id="elem_archive">
-<title>archive</title>
+<sect1 id="elem_archive" xreflabel="Element: &lt;archive&gt;">
 <?dbhtml filename="elem_archive.html" dir="alfs_dtd"?>
+<title>archive</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT archive        (#PCDATA)>
+<synopsis>
+&lt;!ELEMENT archive        (#PCDATA)>
 </synopsis>
 
 <para>This element occurs in the elements
@@ -13,15 +15,19 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>archive</token> is used to specify the archive in an
  <token>unpack</token> operation.</para>
-<para></para>
+
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
 
-<programlisting>&lt;unpack>
+<programlisting>
+&lt;unpack>
     &lt;archive>/usr/src/lfs-packages/gzip.1.2.4a.tar.gz&lt;/archive>
     &lt;destination>/usr/src&lt;/destination>
 &lt;/unpack>
@@ -35,4 +41,5 @@ tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz
 </programlisting>
 
 </sect2>
+
 </sect1>

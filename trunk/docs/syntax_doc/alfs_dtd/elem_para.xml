@@ -1,10 +1,12 @@
-<sect1 id="elem_para">
-<title>para</title>
+<sect1 id="elem_para" xreflabel="Element: &lt;para&gt;">
 <?dbhtml filename="elem_para.html" dir="alfs_dtd"?>
+<title>para</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT para    (#PCDATA)>
+<synopsis>
+&lt;!ELEMENT para    (#PCDATA)>
 </synopsis>
 
 <para>This element occurs in the elements
@@ -14,14 +16,17 @@ and <link linkend="elem_item">item</link>.
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>para</token> contains
 a paragraph of documentary text.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
     &lt;package name="gimp" version="1.2.3">
         &lt;packageinfo>
@@ -51,4 +56,5 @@ a paragraph of documentary text.</para>
 </programlisting>
 
 </sect2>
+
 </sect1>

@@ -1,10 +1,12 @@
-<sect1 id="elem_package">
-<title>package</title>
+<sect1 id="elem_package" xreflabel="Element: &lt;package&gt;">
 <?dbhtml filename="elem_package.html" dir="alfs_dtd"?>
+<title>package</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT package        (packageinfo?,stage+)>
+<synopsis>
+&lt;!ELEMENT package        (packageinfo?,stage+)>
 &lt;!ATTLIST package
           name           CDATA #REQUIRED
           version        CDATA #REQUIRED>
@@ -22,10 +24,10 @@ and <link linkend="elem_then">then</link>
 <link linkend="elem_stage">stage</link>.
 </para>
 
-
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>package</token> describes the build process
 of a package.</para>
@@ -39,7 +41,9 @@ of a package.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;package name="zlib" version="1.1.4">
 	&lt;stage name="Unpacking a package.">
@@ -55,7 +59,8 @@ of a package.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Generating package zlib 1.1.4
+<programlisting>
+echo Generating package zlib 1.1.4
 
 #-----------------------------------------
 echo Stage "Unpacking a package."
@@ -77,4 +82,5 @@ echo End of generating package zlib 1.1.4
 </programlisting>
 
 </sect2>
+
 </sect1>

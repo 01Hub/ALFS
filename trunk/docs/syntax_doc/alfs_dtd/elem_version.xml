@@ -1,10 +1,12 @@
-<sect1 id="elem_version">
-<title>version</title>
+<sect1 id="elem_version" xreflabel="Element: &lt;version&gt;">
 <?dbhtml filename="elem_version.html" dir="alfs_dtd"?>
+<title>version</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT version       (#PCDATA)>
+<synopsis>
+&lt;!ELEMENT version       (#PCDATA)>
 &lt;!ATTLIST variable
           condition (eq|ne|gt|ge|lt|le) #REQUIRED>
 </synopsis>
@@ -16,7 +18,9 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>version</token> describes a constraint
 on the version of an utilized/required package.</para>
 
@@ -42,7 +46,9 @@ than or equals to 3.0, and that it be different from 3.0beta.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;packageinfo>
     &lt;requires>
@@ -55,6 +61,6 @@ than or equals to 3.0, and that it be different from 3.0beta.</para>
 <para>This signifies that the package being build requires
 guile in its version 1.5 or more recent.</para>
 
-
 </sect2>
+
 </sect1>

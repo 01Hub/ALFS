@@ -1,10 +1,12 @@
-<sect1 id="elem_remove">
-<title>remove</title>
+<sect1 id="elem_remove" xreflabel="Element: &lt;remove&gt;">
 <?dbhtml filename="elem_remove.html" dir="alfs_dtd"?>
+<title>remove</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT remove         (#PCDATA)>
+<synopsis>
+&lt;!ELEMENT remove         (#PCDATA)>
 </synopsis>
 
 <para>This element occurs in the elements
@@ -16,7 +18,8 @@ and <link linkend="elem_then">then</link>
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>remove</token> allows to remove a file or directory.
 The content of the element contains the name of the file.</para>
@@ -25,17 +28,20 @@ The content of the element contains the name of the file.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;remove>/usr/src/mypackage&lt;/remove>
 </programlisting>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Removing /usr/src/mypackage
+<programlisting>
+echo Removing /usr/src/mypackage
 rm -rf /usr/src/mypackage
 </programlisting>
 
-<para></para>
 </sect2>
+
 </sect1>

@@ -1,10 +1,12 @@
-<sect1 id="elem_textdump">
-<title>textdump</title>
+<sect1 id="elem_textdump" xreflabel="Element: &lt;textdump&gt;">
 <?dbhtml filename="elem_textdump.html" dir="alfs_dtd"?>
+<title>textdump</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT textdump       (file, content)>
+<synopsis>
+&lt;!ELEMENT textdump       (file, content)>
 &lt;!ATTLIST textdump
           base           CDATA #IMPLIED
           mode           CDATA #IMPLIED>
@@ -24,7 +26,8 @@ and <link linkend="elem_then">then</link>
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The sub-element <token>file</token> contains the name of the
 file to be created.</para>
@@ -42,7 +45,8 @@ the file creation will be perforemd.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
 
 <programlisting>
 &lt;textdump base="/etc">
@@ -67,7 +71,8 @@ the file creation will be perforemd.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>cd /etc
+<programlisting>
+cd /etc
 cat > group &lt;&lt; 'EOF'
 root:x:0:
 bin:x:1:
@@ -96,7 +101,8 @@ EOF
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Generating file /etc/sysconfig/network
+<programlisting>
+echo Generating file /etc/sysconfig/network
 cat >> /etc/sysconfig/network &lt;&lt; 'EOF'
 GATEWAY=192.168.123.254
 GATEWAY_IF=eth0
@@ -104,4 +110,5 @@ EOF
 </programlisting>
 
 </sect2>
+
 </sect1>

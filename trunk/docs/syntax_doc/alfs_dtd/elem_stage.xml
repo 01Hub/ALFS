@@ -1,10 +1,12 @@
-<sect1 id="elem_stage">
-<title>stage</title>
+<sect1 id="elem_stage" xreflabel="Element: &lt;stage&gt;">
 <?dbhtml filename="elem_stage.html" dir="alfs_dtd"?>
+<title>stage</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT stage          (stageinfo?,(configure|copy|download|execute|
+<synopsis>
+&lt;!ELEMENT stage          (stageinfo?,(configure|copy|download|execute|
                                        if|link|make|mkdir|move|ownership|package|
                                        patch|permissions|remove|search_replace|
                                        stage|textdump|unpack)*)>
@@ -42,14 +44,19 @@ and <link linkend="elem_then">then</link>
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>stage</token> allows to regroup commands,
 give a name to this group, through the attribute <token>name</token>,
 and optionally modify the execution context through the element
 <token>stageinfo</token>.</para>
+
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;stage>
     &lt;stageinfo>
@@ -68,7 +75,8 @@ and optionally modify the execution context through the element
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Executing configure
+<programlisting>
+echo Executing configure
 cd /usr/src/gzip.1.2.4a
 ./configure
 
@@ -83,6 +91,6 @@ make install
 echo Exiting stage
 </programlisting>
 
-<para></para>
 </sect2>
+
 </sect1>

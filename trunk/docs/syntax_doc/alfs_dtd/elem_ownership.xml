@@ -1,8 +1,9 @@
-<sect1 id="elem_ownership">
-<title>ownership</title>
+<sect1 id="elem_ownership" xreflabel="Element: &lt;ownership&gt;">
 <?dbhtml filename="elem_ownership.html" dir="alfs_dtd"?>
+<title>ownership</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
 <synopsis>
 &lt;!ELEMENT ownership      (option?, name+)>
@@ -26,7 +27,8 @@ and <link linkend="elem_then">then</link>
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>ownership</token> is used to perform
 a group and/or user ownership change on a file or set of files</para>
@@ -47,7 +49,8 @@ which will own the file or directory</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
 
 <para>The first example uses symbolic names.</para>
 
@@ -61,7 +64,8 @@ which will own the file or directory</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Changing group of /etc/rc.d into root
+<programlisting>
+echo Changing group of /etc/rc.d into root
 chgrp -R root /etc/rc.d
 
 echo Changing owner of /etc/rc.d into root
@@ -87,7 +91,8 @@ chown -R root /etc/sysconfig
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Changing group of /etc/rc.d into 0
+<programlisting>
+echo Changing group of /etc/rc.d into 0
 chgrp -R 0 /etc/rc.d
 
 echo Changing owner of /etc/rc.d into 0
@@ -101,4 +106,5 @@ chown -R 0 /etc/sysconfig
 </programlisting>
 
 </sect2>
+
 </sect1>

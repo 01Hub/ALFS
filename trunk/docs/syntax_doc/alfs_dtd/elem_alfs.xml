@@ -1,8 +1,10 @@
-<sect1 id="elem_alfs">
-<title>alfs</title>
+<sect1 id="elem_alfs" xreflabel="Element: &lt;alfs&gt;">
 <?dbhtml filename="elem_alfs.html" dir="alfs_dtd"?>
+<title>alfs</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
+
 <synopsis>&lt;!ELEMENT alfs           (configure|copy|download|execute|if|link|make|
                           mkdir|move|ownership|package|patch|
                           permissions|remove|search_replace|
@@ -34,7 +36,8 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>alfs</token> is the root element 
 of the DTD, meaning that an ALFS profile should contain one and only
@@ -48,7 +51,8 @@ ALFS profile syntax used; it should be <literal>"3.0"</literal>.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
 
 <programlisting>
 &lt;!DOCTYPE alfs SYSTEM "alfs.dtd" [
@@ -67,4 +71,5 @@ ALFS profile syntax used; it should be <literal>"3.0"</literal>.</para>
 </programlisting>
 
 </sect2>
+
 </sect1>

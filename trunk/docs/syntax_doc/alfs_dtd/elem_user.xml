@@ -1,10 +1,12 @@
-<sect1 id="elem_user">
-<title>user</title>
+<sect1 id="elem_user" xreflabel="Element: &lt;user&gt;">
 <?dbhtml filename="elem_user.html" dir="alfs_dtd"?>
+<title>user</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT user           (#PCDATA)>
+<synopsis>
+&lt;!ELEMENT user           (#PCDATA)>
 </synopsis>
 
 <para>This element occurs in the elements
@@ -13,13 +15,17 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>user</token> allow to specify a user ID
 that will be the effective user ID when executing the commands
 of the stage to which it applies.</para>
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;stage>
     &lt;stageinfo>
@@ -35,7 +41,8 @@ of the stage to which it applies.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Stage
+<programlisting>
+echo Stage
 
 echo Creating file ./_nalfs_tmp.1...
 cat > ./_nalfs_tmp.1 &lt;&lt; 'EOF1'
@@ -58,4 +65,5 @@ echo Exiting stage
 </programlisting>
 
 </sect2>
+
 </sect1>

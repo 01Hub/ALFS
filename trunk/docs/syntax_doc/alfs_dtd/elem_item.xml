@@ -1,10 +1,12 @@
-<sect1 id="elem_item">
-<title>item</title>
+<sect1 id="elem_item" xreflabel="Element: &lt;item&gt;">
 <?dbhtml filename="elem_item.html" dir="alfs_dtd"?>
+<title>item</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT item    (#PCDATA)+>
+<synopsis>
+&lt;!ELEMENT item    (#PCDATA)+>
 </synopsis>
 
 <para>This element occurs in the element
@@ -13,14 +15,17 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>item</token> contains
 a item within a list in a description.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
     &lt;package name="gimp" version="1.2.3">
         &lt;packageinfo>
@@ -53,4 +58,5 @@ a item within a list in a description.</para>
 </programlisting>
 
 </sect2>
+
 </sect1>

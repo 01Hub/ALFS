@@ -1,6 +1,6 @@
-<chapter id="alfs_dtd">
-<title>Description of the ALFS profile syntax</title>
+<chapter id="alfs_dtd" xreflabel="&book-product;">
 <?dbhtml filename="alfs_dtd.html" dir="alfs_dtd"?>
+<title>Description of the ALFS profile syntax</title>
 
 <para>ALFS profiles are written using an XML syntax. This chapter describes 
 the various XML elements that can occur in the profile.</para>

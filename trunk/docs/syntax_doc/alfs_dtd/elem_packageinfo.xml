@@ -1,10 +1,12 @@
-<sect1 id="elem_packageinfo">
-<title>packageinfo</title>
+<sect1 id="elem_packageinfo" xreflabel="Element: &lt;packageinfo&gt;">
 <?dbhtml filename="elem_packageinfo.html" dir="alfs_dtd"?>
+<title>packageinfo</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT packageinfo    (description?,requires*,utilizes*)>
+<synopsis>
+&lt;!ELEMENT packageinfo    (description?,requires*,utilizes*)>
 </synopsis>
 
 <para>This element occurs in the element
@@ -17,10 +19,10 @@
 <link linkend="elem_utilizes">utilizes</link>.
 </para>
 
-
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>packageinfo</token> groups 
 elements containg information about the package, namely
@@ -40,7 +42,9 @@ by the <token>utilizes</token> sub-element.
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
     &lt;package name="gimp" version="1.2.3">
         &lt;packageinfo>
@@ -71,7 +75,8 @@ by the <token>utilizes</token> sub-element.
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Generating package zlib 1.1.4
+<programlisting>
+echo Generating package zlib 1.1.4
 
 #-----------------------------------------
 echo Stage "Unpacking a package."
@@ -93,4 +98,5 @@ echo End of generating package zlib 1.1.4
 </programlisting>
 
 </sect2>
+
 </sect1>

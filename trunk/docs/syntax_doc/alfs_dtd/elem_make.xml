@@ -1,10 +1,12 @@
-<sect1 id="elem_make">
-<title>make</title>
+<sect1 id="elem_make" xreflabel="Element: &lt;make&gt;">
 <?dbhtml filename="elem_make.html" dir="alfs_dtd"?>
+<title>make</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT make           (param+)>
+<synopsis>
+&lt;!ELEMENT make           (param+)>
 &lt;!ATTLIST make
           base           CDATA #IMPLIED>
 </synopsis>
@@ -22,7 +24,8 @@ and <link linkend="elem_then">then</link>
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>make</token> describes a make command.</para>
 
@@ -34,7 +37,8 @@ in which the make will be performed.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
 
 <para>The first example is a make without parameter</para>
 
@@ -44,7 +48,8 @@ in which the make will be performed.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Executing make
+<programlisting>
+echo Executing make
 make
 </programlisting>
 
@@ -63,7 +68,6 @@ cd /usr/src/mypackage
 make install
 </programlisting>
 
-
-
 </sect2>
+
 </sect1>

@@ -1,10 +1,12 @@
-<sect1 id="elem_replace">
-<title>replace</title>
+<sect1 id="elem_replace" xreflabel="Element: &lt;replace&gt;">
 <?dbhtml filename="elem_replace.html" dir="alfs_dtd"?>
+<title>replace</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT replace        (#PCDATA)>
+<synopsis>
+&lt;!ELEMENT replace        (#PCDATA)>
 </synopsis>
 
 <para>This element occurs in the element
@@ -13,14 +15,17 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>replace</token> allows to specify the replacement string
 in a search and replace operation.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;search_replace
     base = "/usr/src/mypackage">
@@ -32,11 +37,13 @@ in a search and replace operation.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Performing substitution in runit.sh
+<programlisting>
+echo Performing substitution in runit.sh
 cd /usr/src/mypackage
 cp runit.sh /tmp/foo.$$
 sed -e 's/BINDIR/\/bin/' /tmp/foo.$$ > runit.sh
 </programlisting>
 
 </sect2>
+
 </sect1>

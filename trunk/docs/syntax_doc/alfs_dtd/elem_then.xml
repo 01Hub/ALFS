@@ -1,10 +1,12 @@
-<sect1 id="elem_then">
-<title>then</title>
+<sect1 id="elem_then" xreflabel="Element: &lt;then&gt;">
 <?dbhtml filename="elem_then.html" dir="alfs_dtd"?>
+<title>then</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT then        (stageinfo?,(configure|copy|download|execute|
+<synopsis>
+&lt;!ELEMENT then        (stageinfo?,(configure|copy|download|execute|
                                        if|link|make|mkdir|move|ownership|package|
                                        patch|permissions|remove|search_replace|
                                        stage|textdump|unpack)*)>
@@ -37,8 +39,8 @@
 
 </sect2>
 
-
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>This element groups the elements that should be executed if
 the test performed when evaluating an <token>if</token> element is satisfied.

@@ -1,10 +1,12 @@
-<sect1 id="elem_if">
-<title>if</title>
+<sect1 id="elem_if" xreflabel="Element: &lt;if&gt;">
 <?dbhtml filename="elem_if.html" dir="alfs_dtd"?>
+<title>if</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT if    (then?,else?)>
+<synopsis>
+&lt;!ELEMENT if    (then?,else?)>
 &lt;!ATTLIST if
           test     CDATA #IMPLIED
           package  CDATA #IMPLIED
@@ -24,41 +26,39 @@ and <link linkend="elem_then">then</link>.
 <link linkend="elem_then">then</link>.
 </para>
 
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The element <token>if</token> perform either a test either of a shell 
+expression (if the <token>test</token> attribute is specified), or an 
+evaluation on the existence or version of a package (if the 
+<token>package</token> attribute is specified. </para>
+
+<para>If the <token>test</token> attribute is specified, one look first for 
+four special values : "0", "1", "false", and "true", which have the usual 
+meaning. If the attribute has another value, one executes the attribute as a 
+shell expression, and consider that the test is satisfied of the status is 0. 
+</para>
+
+<para>If the <token>package</token> attribute is specified but the 
+<token>condition</token> attribute is not specified, the test will be 
+satisfied if the specified package has been build.</para>
+
+<para>If the attributes <token>package</token>, <token>condition</token> and 
+<token>version</token> are specified, the test will be satisfied if the 
+condition on the vaersion of the package is satisfied. The condition is 
+evaluated the same was as when evaluating the <token>version</token> 
+element.</para>
+
+<para>The two attributes <token>test</token> and <token>package</token> are 
+mutually exclusive.</para>
 
 </sect2>
 
-<sect2><title>Description</title>
-
-<para>The element <token>if</token> perform either a test either
-of a shell expression (if the <token>test</token> attribute
-is specified), or an evaluation on the existence
-or version of a package (if the <token>package</token> attribute
-is specified.
-</para>
-
-<para>If the <token>test</token> attribute is specified,
-one look first for four special values : "0", "1", "false", and "true",
-which have the usual meaning. If the attribute has another value,
-one executes the attribute as a shell expression, and consider
-that the test is satisfied of the status is 0.
-</para>
-
-<para>If the <token>package</token> attribute is specified but the
-<token>condition</token> attribute is not specified, the test will 
-be satisfied if the specified package has been build.</para>
-
-<para>If the attributes <token>package</token>, <token>condition</token>
-and <token>version</token> are specified, the test will be satisfied 
-if the condition on the vaersion of the package is satisfied.
-The condition is evaluated the same was as when evaluating
-the <token>version</token> element.</para>
-
-<para>The two attributes <token>test</token> and <token>package</token>
-are mutually exclusive.</para>
-
-</sect2>
-
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
 
 <programlisting>
 &lt;if test="0">

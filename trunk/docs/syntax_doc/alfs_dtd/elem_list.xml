@@ -1,10 +1,12 @@
-<sect1 id="elem_list">
-<title>list</title>
+<sect1 id="elem_list" xreflabel="Element: &lt;list&gt;">
 <?dbhtml filename="elem_list.html" dir="alfs_dtd"?>
+<title>list</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT list    (item|list)+>
+<synopsis>
+&lt;!ELEMENT list    (item|list)+>
 &lt;!ATTLIST list
           type           (bullet|number) "bullet">
 </synopsis>
@@ -20,14 +22,17 @@ and <link linkend="elem_list">list</link>.
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>list</token> contains
 a list of items or sub-lists in a description.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
     &lt;package name="gimp" version="1.2.3">
         &lt;packageinfo>
@@ -60,4 +65,5 @@ a list of items or sub-lists in a description.</para>
 </programlisting>
 
 </sect2>
+
 </sect1>

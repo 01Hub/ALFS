@@ -1,10 +1,12 @@
-<sect1 id="elem_stageinfo">
-<title>stageinfo</title>
+<sect1 id="elem_stageinfo" xreflabel="Element: &lt;stageinfo&gt;">
 <?dbhtml filename="elem_stageinfo.html" dir="alfs_dtd"?>
+<title>stageinfo</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT stageinfo      (root?,environment?,user?,base?)>
+<synopsis>
+&lt;!ELEMENT stageinfo      (root?,environment?,user?,base?)>
 </synopsis>
 
 <para>This element occurs in the element
@@ -20,7 +22,9 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>stageinfo</token> allows to specify several
 context informations used to process the commands of the stage
 to which the stageinfo belongs.</para>
@@ -42,7 +46,9 @@ the commands of the stage.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;stage>
     &lt;stageinfo>
@@ -61,7 +67,8 @@ the commands of the stage.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Executing configure
+<programlisting>
+echo Executing configure
 cd /usr/src/gzip.1.2.4a
 ./configure
 
@@ -76,6 +83,6 @@ make install
 echo Exiting stage
 </programlisting>
 
-<para></para>
 </sect2>
+
 </sect1>

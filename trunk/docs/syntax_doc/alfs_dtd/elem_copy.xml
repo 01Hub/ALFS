@@ -1,10 +1,12 @@
-<sect1 id="elem_copy">
-<title>copy</title>
+<sect1 id="elem_copy" xreflabel="Element: &lt;copy&gt;">
 <?dbhtml filename="elem_copy.html" dir="alfs_dtd"?>
+<title>copy</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT copy           (option*, source+, destination)>
+<synopsis>
+&lt;!ELEMENT copy           (option*, source+, destination)>
 &lt;!ATTLIST copy
           base           CDATA #IMPLIED>
 </synopsis>
@@ -24,7 +26,9 @@ and <link linkend="elem_then">then</link>
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>copy</token> is used to copy one or several source
 files and/or directories  into a destination file or directory</para>
 
@@ -45,9 +49,12 @@ to the destination, using the specified options.</para>
 it should contain the name of the current directory
 from which the copy operation is performed.
 </para>
+
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;copy base="/usr/src/mypackage">
    &lt;option>force&lt;/option>
@@ -58,11 +65,12 @@ from which the copy operation is performed.
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Copying ' config.txt into /opt/mypackage/config.txt'
+<programlisting>
+echo Copying ' config.txt into /opt/mypackage/config.txt'
 cd /usr/src/mypackage
 cp -f  config.txt /opt/mypackage/config.txt
 </programlisting>
 
-
 </sect2>
+
 </sect1>

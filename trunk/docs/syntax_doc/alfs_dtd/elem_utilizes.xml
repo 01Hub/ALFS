@@ -1,10 +1,12 @@
-<sect1 id="elem_utilizes">
-<title>utilizes</title>
+<sect1 id="elem_utilizes" xreflabel="Element: &lt;utilizes&gt;">
 <?dbhtml filename="elem_utilizes.html" dir="alfs_dtd"?>
+<title>utilizes</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT utilizes          (name,version*)>
+<synopsis>
+&lt;!ELEMENT utilizes          (name,version*)>
 </synopsis>
 
 <para>This element occurs in the element
@@ -18,7 +20,8 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>utilizes</token> indicates that the package 
 containg the <token>utilizes</token> element utilizes the package 
@@ -32,7 +35,8 @@ because we might want to add a version in a future version.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
 
 <programlisting>
     &lt;package name="gimp" version="1.2.3">

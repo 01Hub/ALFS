@@ -1,26 +1,34 @@
-<sect1 id="elem_source">
-<title>source</title>
+<sect1 id="elem_source" xreflabel="Element: &lt;source&gt;">
 <?dbhtml filename="elem_source.html" dir="alfs_dtd"?>
+<title>source</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT source         (#PCDATA)>
+<synopsis>
+&lt;!ELEMENT source         (#PCDATA)>
 </synopsis>
 
 <para>This element occurs in the elements
 <link linkend="elem_copy">copy</link>
 and <link linkend="elem_move">move</link>.
 .</para>
+
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>source</token> is used to specify name
 of the source file when processing a <link linkend="elem_copy">copy</link>,
 or a <link linkend="elem_move">move</link>.
 </para>
+
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;copy base="/usr/src/mypackage">
    &lt;option>force&lt;/option>
@@ -31,12 +39,12 @@ or a <link linkend="elem_move">move</link>.
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Copying 'config.txt into /opt/mypackage/config.txt'
+<programlisting>
+echo Copying 'config.txt into /opt/mypackage/config.txt'
 cd /usr/src/mypackage
 cp -f  config.txt /opt/mypackage/config.txt
 </programlisting>
 
-<para></para>
 </sect2>
 
 </sect1>

@@ -1,10 +1,12 @@
-<sect1 id="elem_search_replace">
-<title>search_replace</title>
+<sect1 id="elem_search_replace" xreflabel="Element: &lt;search_replace&gt;">
 <?dbhtml filename="elem_search_replace.html" dir="alfs_dtd"?>
+<title>search_replace</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT search_replace (file, find, replace)>
+<synopsis>
+&lt;!ELEMENT search_replace (file, find, replace)>
 
 &lt;!ATTLIST configure
           base           CDATA #IMPLIED>
@@ -23,10 +25,11 @@ and <link linkend="elem_then">then</link>
 <link linkend="elem_replace">replace</link>.
 </para>
 
-
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>search_replace</token> is used to perform
 a search and replace operation of a file.</para>
 
@@ -36,10 +39,11 @@ a search and replace operation of a file.</para>
 
 <para>The sub-element <token>replace</token> contains the replacement string.</para>
 
-
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;search_replace
     base = "/usr/src/mypackage">
@@ -51,11 +55,13 @@ a search and replace operation of a file.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Performing substitution in runit.sh
+<programlisting>
+echo Performing substitution in runit.sh
 cd /usr/src/mypackage
 cp runit.sh /tmp/foo.$$
 sed -e 's/BINDIR/\/bin/' /tmp/foo.$$ > runit.sh
 </programlisting>
 
 </sect2>
+
 </sect1>

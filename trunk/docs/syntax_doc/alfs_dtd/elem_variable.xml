@@ -1,10 +1,12 @@
-<sect1 id="elem_variable">
-<title>variable</title>
+<sect1 id="elem_variable" xreflabel="Element: &lt;variable&gt;">
 <?dbhtml filename="elem_variable.html" dir="alfs_dtd"?>
+<title>variable</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT variable       (#PCDATA)>
+<synopsis>
+&lt;!ELEMENT variable       (#PCDATA)>
 &lt;!ATTLIST variable
           name           CDATA #REQUIRED
           mode           CDATA #IMPLIED>
@@ -16,7 +18,9 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>variable</token> allows to add a variable definition to 
 the environment.</para>
 
@@ -30,11 +34,11 @@ variable</para>
 <para>The value of the variable is given by the textual content of the
 element.</para>
 
-
-
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
+
 <programlisting>
 &lt;stage>
     &lt;stageinfo>
@@ -57,7 +61,8 @@ element.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>echo Stage
+<programlisting>
+echo Stage
 
 export GCCFLAGS=-O2
 export PATH=${PATH}:/opt/foo
@@ -76,6 +81,6 @@ make install
 echo Exiting stage
 </programlisting>
 
-
 </sect2>
+
 </sect1>

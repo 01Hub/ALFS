@@ -1,10 +1,12 @@
-<sect1 id="elem_requires">
-<title>requires</title>
+<sect1 id="elem_requires" xreflabel="Element: &lt;requires&gt;">
 <?dbhtml filename="elem_requires.html" dir="alfs_dtd"?>
+<title>requires</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT requires          (name, version*)>
+<synopsis>
+&lt;!ELEMENT requires          (name, version*)>
 </synopsis>
 
 <para>This element occurs in the element
@@ -18,20 +20,21 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
 
 <para>The element <token>requires</token> denotes a dependency
 between two packages : the package containg the <token>requires</token>
 element depends on the package whose name is contained in the 
-<token>name</token> sub-element.
-</para>
+<token>name</token> sub-element.</para>
 
 <para>The actual name is put into a <token>name</token> element
 because we might want to add a version in a future version.</para>
 
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
 
 <programlisting>
     &lt;package name="librep" version="0.16.1">
@@ -54,7 +57,8 @@ because we might want to add a version in a future version.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>#-----------------------------------------
+<programlisting>
+#-----------------------------------------
 # processing package librep 0.16.1
 
 echo Generating package librep 0.16.1

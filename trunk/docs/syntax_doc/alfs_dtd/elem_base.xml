@@ -1,10 +1,12 @@
-<sect1 id="elem_base">
-<title>base</title>
+<sect1 id="elem_base" xreflabel="Element: &lt;base&gt;">
 <?dbhtml filename="elem_base.html" dir="alfs_dtd"?>
+<title>base</title>
 
-<sect2><title>Syntax</title>
+<sect2>
+<title>Syntax</title>
 
-<synopsis>&lt;!ELEMENT base           (#PCDATA)>
+<synopsis>
+&lt;!ELEMENT base           (#PCDATA)>
 </synopsis>
 
 <para>This element occurs in the element
@@ -13,14 +15,17 @@
 
 </sect2>
 
-<sect2><title>Description</title>
+<sect2>
+<title>Description</title>
+
 <para>The element <token>base</token> is used to specify a base directory
 which will be used by all the commands in the stage, unless another
 base is specified at the level of the command.</para>
-<para></para>
+<
 </sect2>
 
-<sect2><title>Examples</title>
+<sect2>
+<title>Examples</title>
 
 <programlisting>
 &lt;stage>
@@ -40,7 +45,7 @@ base is specified at the level of the command.</para>
 
 <para>The equivalent bash script is :</para>
 
-<programlisting>#-----------------------------------------
+<programlisting>
 echo Stage
 
 echo Executing configure
@@ -59,4 +64,5 @@ echo Exiting stage
 </programlisting>
 
 </sect2>
+
 </sect1>
