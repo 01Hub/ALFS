@@ -27,6 +27,8 @@
 
 #include "parser.h"
 
+void init_libXML_tree(void);
+
 element_s *parse_with_libxml2_tree(const char *filename);
 
 /*

@@ -73,8 +73,7 @@ void add_profile(element_s * const profile)
 {
 	ASSERT(profile->type == TYPE_PROFILE);
 
-	if (root_element == NULL) {
-		create_root_element();
+	if (root_element->children == NULL) {
 		root_element->children = profile;
 	} else {
 		element_s *last_profile = root_element->children;
@@ -235,6 +234,12 @@ element_s *parse_profile(const char *filename)
 	print_unknown_elements(profile);
 
 	return profile;
+}
+
+void init_parser(void)
+{
+	init_libXML_tree();
+	create_root_element();
 }
 
 /*
