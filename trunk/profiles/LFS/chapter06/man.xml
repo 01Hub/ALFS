@@ -36,7 +36,6 @@
 		</search_replace>
 
 		<configure>
-			<param>-default</param>
 			<param>-confdir=/etc</param>
 		</configure>
 
