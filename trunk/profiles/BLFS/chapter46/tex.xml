@@ -21,6 +21,11 @@
 
 		<execute command="gzip -dc &packages_dir;/&tex-texmfsrc-package; | (umask 0; cd /usr/share/texmf; tar xvf -)" />
 
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&tex-readlink-patch;</param>
+		</patch>
 
 		<configure>
 		        <param>--with-x=no</param>
@@ -36,8 +41,7 @@
 		        <param>world</param>
 		</make>
 
-		<!-- the book specified 'letter' instead of 'a4' -->
-		<execute command="texconfig dvips paper a4" />
+		<execute command="texconfig dvips paper letter" />
 
 		<execute command="texconfig font rw" />
 	</stage>
