@@ -8,7 +8,7 @@
 
 		<copy>
 			<source>&packages_dir;/&coreutils-uname-patch;</source>
-			<source>&packages_dir;/&coreutils-hostname-patch;</source>
+			<source>&packages_dir;/&coreutils-dupes-patch;</source>
 			<destination>&build_dir;</destination>
 		</copy>
 	</stage>
@@ -27,7 +27,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&coreutils-hostname-patch;</param>
+			<param>-i ../&coreutils-dupes-patch;</param>
 		</patch>
 
 		<configure>
@@ -97,7 +97,6 @@
 			<source>sync</source>
 			<source>sleep</source>
 			<source>stty</source>
-			<source>su</source>
 			<source>test</source>
 			<source>touch</source>
 			<source>true</source>
@@ -128,6 +127,6 @@
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&coreutils-directory;</remove>
 		<remove>&build_dir;/&coreutils-uname-patch;</remove>
-		<remove>&build_dir;/&coreutils-hostname-patch;</remove>
+		<remove>&build_dir;/&coreutils-dupes-patch;</remove>
 	</stage>
 </package>
