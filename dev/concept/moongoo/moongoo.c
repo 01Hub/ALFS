@@ -131,21 +131,22 @@ int main (int argc, char **argv)
 	{
 		/*package *glibc = search_pkg(prof, "glibc", 
 			"chapter-building-system");*/
-		package *gtk2 = search_pkg(prof, "gtk+",
-			"x-lib");
+		//package *gtk = search_pkg(prof, "gtk+", "x-lib");
+		//package *glib = search_pkg(prof, "glib", "general-genlib");
 		
 		sed_paralell (prof, paralell_filter, popt_pkg, popt_cmd);
 		set_filter(default_filter);
-		
-		if (gtk2)
-		{
-			//print_pkg(*gtk2);
-			print_deptree(*prof, *gtk2);
-		}
+	
+		/*if (glib)
+			//print_pkg(*glib);
+			print_urls(*glib);*/
+		/*if (gtk)
+			//print_pkg(*gtk);
+			print_deptree(*prof, *gtk);*/
 		/*if (glibc)
 			print_pkg(*glibc);*/
 		
-		//print_profile(*prof);
+		print_profile(*prof);
 		//print_links(*prof);
 	}
 

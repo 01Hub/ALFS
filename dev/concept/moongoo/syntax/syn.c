@@ -1,7 +1,4 @@
-#include <string.h>
-
-#include <alfs.h>
-#include <util.h>
+#include <libalfs.h>
 #include <plugin.h>
 
 profile *prof;
@@ -21,85 +18,29 @@ t_plug *getplug ()
 }
 
 // TODO: Complete syn support
-void process_cmd2 (char *line, xmlNodePtr node)
-{
-	int i, j, k;
-
-	i = prof->n-1;
-	j = prof->ch[i].n-1;
-
-	prof->ch[i].pkg[j].build = realloc(prof->ch[i].pkg[j].build,
-			(++prof->ch[i].pkg[j].n)*sizeof(command));
-	k = prof->ch[i].pkg[j].n-1;
-
-	prof->ch[i].pkg[j].build[k].role = ROLE_NONE;
-
-	if (strcnt(line, " "))
-	{
-		prof->ch[i].pkg[j].build[k].cmd = strcut(line, 0, whereis(line, ' '));
-		prof->ch[i].pkg[j].build[k].arg = tokenize(notrail(strstr(line, " "), 
-				" "), " ", &prof->ch[i].pkg[j].build[k].n);
-	}
-	else
-	{
-		prof->ch[i].pkg[j].build[k].cmd = line;
-		prof->ch[i].pkg[j].build[k].arg = NULL;
-		prof->ch[i].pkg[j].build[k].n = 0;
-	}
-}
-
 void t_shell (xmlNodePtr node, void *data)
 {
-	char *line = squeeze(xmlNodeGetContent(node));
-	line = strkill(line, "\\\n");
-	
-	if (strcnt(line, "\n"))
-	{
-		char *tmp;
-
-		while ((line) && (strlen(line)))
-		{
-			tmp = strsep(&line, "\n");
-			process_cmd2(tmp, node);
-		}
-	}
-	else
-		process_cmd2(line, node);
+	parse_cmdblock(prof, node);
 }
 
-void t_pkg (xmlNodePtr node, void *data)
+static void t_pkg (xmlNodePtr node, void *data)
 {
-	int i, j;
-	char *tmp;
+	char *tmp = find_value(node, "title");
+	package *pkg = next_pkg(prof);
 
-	i = prof->n-1;
-	prof->ch[i].pkg = realloc(prof->ch[i].pkg, 
-			(++prof->ch[i].n)*sizeof(package));
-	j = prof->ch[i].n-1;
-
-	tmp = find_value(node, "title");
-	prof->ch[i].pkg[j].name = strcut(tmp, 0, whereis(tmp, ' '));
-	prof->ch[i].pkg[j].vers = find_value(node, "version");
-	prof->ch[i].pkg[j].build = NULL;
-	prof->ch[i].pkg[j].n = 0;
-	prof->ch[i].pkg[j].dl = NULL;
-	prof->ch[i].pkg[j].m = 0;
-	prof->ch[i].pkg[j].dep = NULL;
-	prof->ch[i].pkg[j].o = 0;
-	
+	pkg->name = strcut(tmp, 0, whereis(tmp, ' '));
+	pkg->vers = find_value(node, "version");
 	foreach(node->children, "shell", (xml_handler_t)t_shell, NULL);
 
-	if (!prof->ch[i].pkg[j].n)
-		prof->ch[i].n--;
+	if (!pkg->n)
+		prof->ch[prof->n-1].n--;
 }
 
-void t_section (xmlNodePtr node)
+static void t_section (xmlNodePtr node)
 {	
-	int i = prof->n-1;
-	prof->ch[i].name = xmlGetProp(node, "title");
-	prof->ch[i].ref = prof->ch[i].name;
-	prof->ch[i].pkg = NULL;
-	prof->ch[i].n = 0;
+	chapter *ch = next_chpt(prof);
+	ch->name = xmlGetProp(node, "title");
+	ch->ref = ch->name;
 	foreach(node->children, "page", (xml_handler_t)t_pkg, NULL);
 }
 
@@ -113,22 +54,9 @@ profile *syn_profile (xmlNodePtr node, replaceable *r)
 		return NULL;
 	}
 
-	prof = (profile *)malloc(sizeof(profile));
+	prof = new_prof();
 	prof->name = find_value(node, "title");
 	prof->vers = find_value(node, "version");
-	prof->ch = NULL;
-	prof->n = 0;
-
-	node = node->children;
-	while (node)
-	{
-		if (!strcmp(node->name, "section"))
-		{
-			prof->ch = realloc(prof->ch, (++prof->n)*sizeof(chapter));
-			t_section(node);
-		}
-		node = node->next;
-	}
-
+	foreach(node->children, "section", (xml_handler_t)t_section, NULL);
 	return prof;
 }

@@ -5,6 +5,7 @@
 #include <devel.h>
 #include <gen.h>
 #include <net.h>
+#include <parse.h>
 #include <repl.h>
 #include <util.h>
 
