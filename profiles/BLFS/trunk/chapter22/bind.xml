@@ -28,7 +28,6 @@
 	<name>Net-DNS</name>
       </utilizes>
       <utilizes>
-      <utilizes>
 	<name>openjade</name>
       </utilizes>
       <utilizes>
