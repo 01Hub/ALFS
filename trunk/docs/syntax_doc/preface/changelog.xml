@@ -10,8 +10,8 @@
 elem_prefix.</para></listitem>
 
 <listitem><para>November 5th, 2003 [jwrober]: Updated elem_configure,
-elem_copy to match the DTD and standardized to the rest of the
-doc.</para></listitem>
+elem_copy, elem_description to match the DTD and standardized to the rest of
+the doc.</para></listitem>
 
 <listitem><para>November 4th, 2003 [jwrober]: Updated elem_alfs, elem_archive,
 elem_base to match the DTD; also began the element standardization with the
