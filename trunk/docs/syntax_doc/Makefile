@@ -70,4 +70,3 @@ chunks-html:
 	bash stylesheets/goTidy $(OUTDIR)
 	rm $(OUTDIR)tidy.conf
 
-

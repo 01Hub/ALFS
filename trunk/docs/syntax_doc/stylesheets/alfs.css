@@ -1,81 +1,125 @@
-div.book div.titlepage h1.title {
-  font-family: veranda, tahoma, helvetica, arial, sans-serif;
-  font-size: 16pt;
-  font-weight: bold;
-  text-align: center;
+DIV.navheader TABLE
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 8.5pt;
+    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
+    TEXT-ALIGN: left
 }
-
-div.book div.titlepage h2.subtitle {
-  font-family: veranda, tahoma, helvetica, arial, sans-serif;
-  font-size: 14pt;
-  font-weight: bold;
-  text-align: center;
-} 
-
-div.chapter div.titlepage h2.title {
-  font-family: veranda, tahoma, helvetica, arial, sans-serif;
-  font-size: 16pt;
-  font-weight: bold;
-  text-align: left;
+DIV.navfooter TABLE
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 8.5pt;
+    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
+    TEXT-ALIGN: left
 }
-
-div.sect1 div.titlepage h2.title {
-  font-family: veranda, tahoma, helvetica, arial, sans-serif;
-  font-size: 14pt;
-  font-weight: bold;
-  text-align: left;
+DIV.navheader IMG
+{
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+    BORDER-LEFT: medium none;
+    BORDER-BOTTOM: medium none
 }
-
-
-div.navheader img, div.navfooter img {
-  border: none;
+DIV.navfooter IMG
+{
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+    BORDER-LEFT: medium none;
+    BORDER-BOTTOM: medium none
 }
-
-div.sect1 {
-  font-family: veranda, tahoma, helvetica, arial, sans-serif;
-  font-size: 10pt;
-  font-weight: normal;
-  text-align: left;
+DIV.book DIV.titlepage H1.title
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 16pt;
+    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
+    TEXT-ALIGN: center
 }
-
-tt {
-  font-family: courier, monospace;
+DIV.book DIV.titlepage H2.subtitle
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14pt;
+    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
+    TEXT-ALIGN: center
 }
-
-pre.screen {
-  background-color: #DDDDDD;
-  color: black;
+DIV.chapter DIV.titlepage H2.title
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 16pt;
+    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
+    TEXT-ALIGN: left
 }
-
-pre.synopsis {
-  background-color: #DDDDDD;
-  color: black;
+DIV.sect1 DIV.titlepage H2.title
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14pt;
+    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
+    TEXT-ALIGN: left
 }
-
-div.warning {
-  border-style:solid; 
-  border-width:1px; 
+DIV.sect1
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: veranda, tahoma, helvetica, arial, sans-serif;
+    TEXT-ALIGN: left
 }
-
-div.note {
-  border-style:solid; 
-  border-width:1px; 
+TT
+{
+    FONT-FAMILY: courier, monospace
 }
-
-div.important {
-  border-style:solid; 
-  border-width:1px; 
+PRE.screen
+{
+    COLOR: black;
+    BACKGROUND-COLOR: #dddddd
 }
-
-div.caution {
-  border-style:solid; 
-  border-width:1px; 
+PRE.synopsis
+{
+    COLOR: black;
+    BACKGROUND-COLOR: #dddddd
 }
-
-div.warning h3.title {
-  text-align: center;
+DIV.warning
+{
+    BORDER-RIGHT: 1px solid;
+    BORDER-TOP: 1px solid;
+    BORDER-LEFT: 1px solid;
+    BORDER-BOTTOM: 1px solid
 }
-
-div.warning p, div.note, div.important, div.caution {
-  padding-left: 0.2in;
+DIV.note
+{
+    BORDER-RIGHT: 1px solid;
+    BORDER-TOP: 1px solid;
+    BORDER-LEFT: 1px solid;
+    BORDER-BOTTOM: 1px solid
+}
+DIV.important
+{
+    BORDER-RIGHT: 1px solid;
+    BORDER-TOP: 1px solid;
+    BORDER-LEFT: 1px solid;
+    BORDER-BOTTOM: 1px solid
+}
+DIV.caution
+{
+    BORDER-RIGHT: 1px solid;
+    BORDER-TOP: 1px solid;
+    BORDER-LEFT: 1px solid;
+    BORDER-BOTTOM: 1px solid
+}
+DIV.warning H3.title
+{
+    TEXT-ALIGN: center
+}
+DIV.warning P
+{
+    PADDING-LEFT: 0.2in
+}
+DIV.note
+{
+    PADDING-LEFT: 0.2in
+}
+DIV.important
+{
+    PADDING-LEFT: 0.2in
+}
+DIV.caution
+{
+    PADDING-LEFT: 0.2in
 }
