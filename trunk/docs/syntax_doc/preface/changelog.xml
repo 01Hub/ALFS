@@ -6,39 +6,42 @@
 
 <itemizedlist>
 
-<listitem><para>March, 30th, 2004 [jwrober]: Removed the implementation
-specific information in unpack element. Closes bug 768.</para></listitem>
+<listitem><para>April 2nd, 2004 [jwrober]: Added note to the conventions
+page.</para></listitem>
 
-<listitem><para>March, 30th, 2004 [jwrober]: Removed the note about digest
-and reference being deprecated in the DTD. Closes bug
+<listitem><para>March 30th, 2004 [jwrober]: Removed the implementation
+specific information in unpack element &emdash; Bug 768.</para></listitem>
+
+<listitem><para>March 30th, 2004 [jwrober]: Removed the note about digest
+and reference being deprecated in the DTD &emdash; Bug
 767.</para></listitem>
 
-<listitem><para>March, 30th, 2004 [jwrober]: Closed bug 765 about the
-parents option to mkdir.</para></listitem>
+<listitem><para>March 30th, 2004 [jwrober]: Added info about the
+parents option to mkdir &emdash; Bug 765.</para></listitem>
 
-<listitem><para>March, 30th, 2004 [jwrober]: Finished the XML and DTD
+<listitem><para>March 30th, 2004 [jwrober]: Finished the XML and DTD
 syntax intro &emdash; Bug 784.</para></listitem>
 
-<listitem><para>March, 15th, 2004 [jwrober]: Added more to the XML and DTD
+<listitem><para>March 15th, 2004 [jwrober]: Added more to the XML and DTD
 syntax intro &emdash; Bug 784.</para></listitem>
 
-<listitem><para>March, 14th, 2004 [jwrober]: Added an initial stab at an
+<listitem><para>March 14th, 2004 [jwrober]: Added an initial stab at an
 XML and DTD syntax intro &emdash; Bug 784.</para></listitem>
 
 <listitem><para>February 23rd, 2004 [jwrober]: Finished the download element
-description.  Closes bug 760.</para></listitem>
+description &emdash; Bug 760.</para></listitem>
 
 <listitem><para>February 23rd, 2004 [jwrober]: Finished the url element
-description.  Closes bug 769.</para></listitem>
+description &emdash; Bug 769.</para></listitem>
 
 <listitem><para>February 23rd, 2004 [jwrober]: Finished the digest element
-description.  Closes bug 759.</para></listitem>
+description &emdash; Bug 759.</para></listitem>
 
 <listitem><para>February 23rd, 2004 [jwrober]: Fixed copy element
-description.  Closes bug 758.</para></listitem>
+description &emdash; Bug 758.</para></listitem>
 
 <listitem><para>February 23rd, 2004 [jwrober]: Fixed wierd character in
-acknowledgements page.  Closes bug 755.</para></listitem>
+acknowledgements page &emdash; Bug 755.</para></listitem>
 
 <listitem><para>February 22nd, 2004 [jwrober]: Finished a first pass over
 the rest of the elements.</para></listitem>
@@ -78,11 +81,11 @@ Books.</para></listitem>
 <listitem><para>September 18th, 2003 [vdzuba]:  Reorganized the document, now
 split into small chunks.</para> </listitem>
 
-<listitem><para>February 20th, 2003 [vdzuba]:  Added the elements &lt;if&gt;,
-&lt;then&gt; and &lt;else&gt;.</para></listitem>
+<listitem><para>February 20th, 2003 [vdzuba]:  Added the elements if,
+then and else.</para></listitem>
 
-<listitem><para>February 5th, 2003 [vdzuba]:  Added an option to &lt;link&gt;
-and added element &lt;version&gt;.</para></listitem>
+<listitem><para>February 5th, 2003 [vdzuba]:  Added an option to link
+and added element version.</para></listitem>
 
 <listitem><para>January 19th, 2003 [vdzuba]:  Upgraded to version 3.1 of the
 DTD.</para></listitem>
@@ -97,10 +100,10 @@ all examples.</para></listitem>
 in mkdir.</para></listitem>
 
 <listitem><para>October 21st, 2002 [vdzuba]:  Added element
-&lt;digest&gt;.</para></listitem>
+digest.</para></listitem>
 
 <listitem><para>October 13th, 2002 [vdzuba]:  Make attribute append of
-&lt;variable&gt; optional.</para></listitem>
+variable optional.</para></listitem>
 
 <listitem><para>September 5th, 2002 [vdzuba]:  Added chapter with
 syntax.</para></listitem>
