@@ -368,7 +368,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.alloc_data = execute_data,
 		.is_action = 1,
 		.setup = execute_setup,
-		.free = execute_setup,
+		.free = execute_free,
 		.parameter = execute_parameter,
 		.valid_data = execute_valid_data_v2,
 	},

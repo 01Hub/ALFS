@@ -212,7 +212,7 @@ static const struct handler_attribute permissions_attributes_v3[] = {
 static int permissions_main(const element_s * const element)
 {
 	struct permissions_data *data = (struct permissions_data *) element->handler_data;
-	int status;
+	int status = 0;
 	char *command;
 	char *message;
 	int i;

@@ -171,7 +171,8 @@ static int download_common(const element_s * const element)
 	struct download_data *data = (struct download_data *) element->handler_data;
 	int status = -1;
 	struct stat file_stat;
-	char *digest, *digest_type;
+	char *digest = NULL;
+	char *digest_type = NULL;
 
 	if (data->digest) {
 		digest = data->digest->handler->alloc_data(data->digest, HDATA_COMMAND);
