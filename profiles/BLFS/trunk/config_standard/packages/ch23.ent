@@ -4,7 +4,7 @@
 <!ENTITY db-package   "db-&db-version;.tar.gz">
 <!ENTITY db-directory "db-&db-version;">
 
-<!ENTITY mysql-version   "4.1.7">
+<!ENTITY mysql-version   "4.1.8a">
 <!ENTITY mysql-package   "mysql-&mysql-version;.tar.gz">
 <!ENTITY mysql-directory "mysql-&mysql-version;">
 

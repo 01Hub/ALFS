@@ -3,12 +3,12 @@
 <!ENTITY apache-version   "2.0.52">
 <!ENTITY apache-package   "httpd-&apache-version;.tar.bz2">
 <!ENTITY apache-directory "httpd-&apache-version;">
-
 <!ENTITY apache-patch     "httpd-&apache-version;-config-1.patch">
 
-<!ENTITY php-version   "5.0.2">
-<!ENTITY php-package   "php-&php-version;.tar.bz2">
-<!ENTITY php-directory "php-&php-version;">
+<!ENTITY php-version    "5.0.3">
+<!ENTITY php-package    "php-&php-version;.tar.bz2">
+<!ENTITY php-directory  "php-&php-version;">
+<!ENTITY php-db43-patch "php-&php-version;-db43-1.patch">
 
 <!ENTITY proftpd-version   "1.2.10">
 <!ENTITY proftpd-package   "proftpd-&proftpd-version;.tar.bz2">
