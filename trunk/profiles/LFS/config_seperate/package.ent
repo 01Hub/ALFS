@@ -115,9 +115,9 @@
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.gz">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
-<!ENTITY glibc-md5 "23d24830bc82e4beb023c810c2267485">
+<!ENTITY glibc-md5 "508188d136cbc32935637c17398d7748">
 <!ENTITY glibc-version "2.3.4">
-<!ENTITY glibc-cvs-tag "-20040529">
+<!ENTITY glibc-cvs-tag "-20040701">
 <!ENTITY glibc-package "glibc-&glibc-version;&glibc-cvs-tag;.tar.bz2">
 <!ENTITY glibc-directory "glibc-&glibc-version;&glibc-cvs-tag;">
 
