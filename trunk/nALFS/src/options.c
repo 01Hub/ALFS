@@ -43,28 +43,28 @@
 			.type = O_STRING, \
 			.def_value.str_value = opt_def_value \
 		}; \
-		STRING *opt_##opt_name = &real_opt_##opt_name .value.str_value;
+		STRING * const opt_##opt_name = &real_opt_##opt_name .value.str_value;
 #define BOOL_OPTION(opt_name, opt_def_value) \
 		static struct option_s real_opt_##opt_name = { \
 			.name = #opt_name, \
 			.type = O_BOOL, \
 			.def_value.bool_value = opt_def_value \
 		}; \
-		BOOL *opt_##opt_name = &real_opt_##opt_name .value.bool_value;
+		BOOL * const opt_##opt_name = &real_opt_##opt_name .value.bool_value;
 #define NUMBER_OPTION(opt_name, opt_def_value) \
 		static struct option_s real_opt_##opt_name = { \
 			.name = #opt_name, \
 			.type = O_NUMBER, \
 			.def_value.num_value = opt_def_value \
 		}; \
-		NUMBER *opt_##opt_name = &real_opt_##opt_name .value.num_value;
+		NUMBER * const opt_##opt_name = &real_opt_##opt_name .value.num_value;
 #define COMMAND_OPTION(opt_name, opt_def_value) \
 		static struct option_s real_opt_##opt_name = { \
 			.name = #opt_name, \
 			.type = O_COMMAND, \
 			.def_value.str_value = opt_def_value \
 		}; \
-		STRING *opt_##opt_name = &real_opt_##opt_name .value.str_value;
+		STRING * const opt_##opt_name = &real_opt_##opt_name .value.str_value;
 
 #include "options.h"
 #include "option-list.h"
