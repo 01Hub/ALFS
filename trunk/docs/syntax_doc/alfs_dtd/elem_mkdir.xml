@@ -1,6 +1,6 @@
 <sect1 id="elem_mkdir" xreflabel="Element: &lt;mkdir&gt;">
 <?dbhtml filename="elem_mkdir.html" dir="alfs_dtd"?>
-<title>mkdir</title>
+<title>Element: &lt;mkdir&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -18,7 +18,7 @@
 and <link linkend="elem_then">then</link>
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_option">option</link>,
 <link linkend="elem_name">name</link>,
 </para>
@@ -37,7 +37,7 @@ to be created.</para>
 <para>The attribute <token>base</token> gives the name of the directory
 in which the new directory will be created.</para>
 
-<para>The only option supported is "parents". When specified, the parents 
+<para>The only option supported is "parents". When specified, the parents
 directories are created as needed.</para>
 
 </sect2>

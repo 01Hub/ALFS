@@ -1,6 +1,6 @@
 <sect1 id="elem_list" xreflabel="Element: &lt;list&gt;">
 <?dbhtml filename="elem_list.html" dir="alfs_dtd"?>
-<title>list</title>
+<title>Element: &lt;list&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -16,7 +16,7 @@
 and <link linkend="elem_list">list</link>.
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_item">item</link>.
 </para>
 
@@ -37,8 +37,8 @@ a list of items or sub-lists in a description.</para>
     &lt;package name="gimp" version="1.2.3">
         &lt;packageinfo>
 	        &lt;description>
-                    &lt;para>The gimp package contains the GNU Image 
-		    Manipulation Program. 
+                    &lt;para>The gimp package contains the GNU Image
+		    Manipulation Program.
 		    This is useful for :&lt;/para>
 		    &lt;list>
 		    &lt;item>photo retouching,&lt;/item>

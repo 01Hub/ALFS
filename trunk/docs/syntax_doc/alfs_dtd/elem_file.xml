@@ -1,6 +1,6 @@
 <sect1 id="elem_file" xreflabel="Element: &lt;file&gt;">
 <?dbhtml filename="elem_file.html" dir="alfs_dtd"?>
-<title>file</title>
+<title>Element: &lt;file&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -21,7 +21,7 @@ and <link linkend="elem_textdump">textdump</link>.
 <sect2>
 <title>Description</title>
 
-<para>The element <token>file</token> is used to specify the 
+<para>The element <token>file</token> is used to specify the
 file in a <token>download</token>, <token>search_replace</token>
 or <token>textdump</token>
 element.</para>

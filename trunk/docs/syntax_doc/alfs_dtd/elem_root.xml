@@ -1,6 +1,6 @@
 <sect1 id="elem_root" xreflabel="Element: &lt;root&gt;">
 <?dbhtml filename="elem_root.html" dir="alfs_dtd"?>
-<title>root</title>
+<title>Element: &lt;root&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -16,7 +16,7 @@
 </sect2>
 
 <sect2><title>Description</title>
-<para>The element <token>root</token> allow to specify the 
+<para>The element <token>root</token> allow to specify the
 name of a directory which will be the root directory
 for the commands of the stage.</para>
 
@@ -31,7 +31,7 @@ for the commands of the stage.</para>
         &lt;root>/mnt/lfs&lt;/root>
         &lt;base>/usr/src/gzip.1.2.4a&lt;/base>
     &lt;/stageinfo>
-   
+
     &lt;configure />
 
     &lt;make />

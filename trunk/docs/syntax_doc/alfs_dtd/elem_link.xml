@@ -1,6 +1,6 @@
 <sect1 id="elem_link" xreflabel="Element: &lt;link&gt;">
 <?dbhtml filename="elem_link.html" dir="alfs_dtd"?>
-<title>link</title>
+<title>Element: &lt;link&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -19,7 +19,7 @@
 and <link linkend="elem_then">then</link>
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_option">option</link>,
 <link linkend="elem_target">target</link>,
 <link linkend="elem_name">name</link>.

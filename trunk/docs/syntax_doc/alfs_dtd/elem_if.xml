@@ -1,6 +1,6 @@
 <sect1 id="elem_if" xreflabel="Element: &lt;if&gt;">
 <?dbhtml filename="elem_if.html" dir="alfs_dtd"?>
-<title>if</title>
+<title>Element: &lt;if&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -21,7 +21,7 @@
 and <link linkend="elem_then">then</link>.
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_else">else</link>,
 <link linkend="elem_then">then</link>.
 </para>
@@ -31,28 +31,28 @@ and <link linkend="elem_then">then</link>.
 <sect2>
 <title>Description</title>
 
-<para>The element <token>if</token> perform either a test either of a shell 
-expression (if the <token>test</token> attribute is specified), or an 
-evaluation on the existence or version of a package (if the 
+<para>The element <token>if</token> perform either a test either of a shell
+expression (if the <token>test</token> attribute is specified), or an
+evaluation on the existence or version of a package (if the
 <token>package</token> attribute is specified. </para>
 
-<para>If the <token>test</token> attribute is specified, one look first for 
-four special values : "0", "1", "false", and "true", which have the usual 
-meaning. If the attribute has another value, one executes the attribute as a 
-shell expression, and consider that the test is satisfied of the status is 0. 
+<para>If the <token>test</token> attribute is specified, one look first for
+four special values : "0", "1", "false", and "true", which have the usual
+meaning. If the attribute has another value, one executes the attribute as a
+shell expression, and consider that the test is satisfied of the status is 0.
 </para>
 
-<para>If the <token>package</token> attribute is specified but the 
-<token>condition</token> attribute is not specified, the test will be 
+<para>If the <token>package</token> attribute is specified but the
+<token>condition</token> attribute is not specified, the test will be
 satisfied if the specified package has been build.</para>
 
-<para>If the attributes <token>package</token>, <token>condition</token> and 
-<token>version</token> are specified, the test will be satisfied if the 
-condition on the vaersion of the package is satisfied. The condition is 
-evaluated the same was as when evaluating the <token>version</token> 
+<para>If the attributes <token>package</token>, <token>condition</token> and
+<token>version</token> are specified, the test will be satisfied if the
+condition on the vaersion of the package is satisfied. The condition is
+evaluated the same was as when evaluating the <token>version</token>
 element.</para>
 
-<para>The two attributes <token>test</token> and <token>package</token> are 
+<para>The two attributes <token>test</token> and <token>package</token> are
 mutually exclusive.</para>
 
 </sect2>

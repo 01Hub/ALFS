@@ -1,6 +1,6 @@
 <sect1 id="elem_para" xreflabel="Element: &lt;para&gt;">
 <?dbhtml filename="elem_para.html" dir="alfs_dtd"?>
-<title>para</title>
+<title>Element: &lt;para&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -31,9 +31,9 @@ a paragraph of documentary text.</para>
     &lt;package name="gimp" version="1.2.3">
         &lt;packageinfo>
 	        &lt;description>
-                    &lt;para>The gimp package contains the GNU Image 
-		    Manipulation Program. 
-		    This is useful for photo retouching, image 
+                    &lt;para>The gimp package contains the GNU Image
+		    Manipulation Program.
+		    This is useful for photo retouching, image
 		    composition and image authoring.
 		    &lt;/para>
 		&lt;/description>

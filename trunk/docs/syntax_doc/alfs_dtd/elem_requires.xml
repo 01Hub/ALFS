@@ -1,6 +1,6 @@
 <sect1 id="elem_requires" xreflabel="Element: &lt;requires&gt;">
 <?dbhtml filename="elem_requires.html" dir="alfs_dtd"?>
-<title>requires</title>
+<title>Element: &lt;requires&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -13,7 +13,7 @@
 <link linkend="elem_packageinfo">packageinfo</link>
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_name">name</link> and
 <link linkend="elem_version">version</link>
 </para>
@@ -25,7 +25,7 @@
 
 <para>The element <token>requires</token> denotes a dependency
 between two packages : the package containg the <token>requires</token>
-element depends on the package whose name is contained in the 
+element depends on the package whose name is contained in the
 <token>name</token> sub-element.</para>
 
 <para>The actual name is put into a <token>name</token> element

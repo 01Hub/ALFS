@@ -1,6 +1,6 @@
 <sect1 id="elem_make" xreflabel="Element: &lt;make&gt;">
 <?dbhtml filename="elem_make.html" dir="alfs_dtd"?>
-<title>make</title>
+<title>Element: &lt;make&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -18,7 +18,7 @@
 and <link linkend="elem_then">then</link>
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_param">param</link>,
 </para>
 

@@ -1,6 +1,6 @@
 <sect1 id="elem_environment" xreflabel="Element: &lt;environment&gt;">
 <?dbhtml filename="elem_environment.html" dir="alfs_dtd"?>
-<title>environment</title>
+<title>Element: &lt;environment&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -24,13 +24,13 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>environment</token> allows you to define 
+<para>The element <token>environment</token> allows you to define
 one or more environment variables to be added to the system environment
 used when calling the commands of the stage to which it applies.</para>
 
-<para>By default, the supplied value replaces any existing value for the 
-specified variable. The attribute <token>mode</token> allows you to specify 
-whether the supplied value should be prepended or appended to the existing 
+<para>By default, the supplied value replaces any existing value for the
+specified variable. The attribute <token>mode</token> allows you to specify
+whether the supplied value should be prepended or appended to the existing
 value.</para>
 
 </sect2>
@@ -48,7 +48,7 @@ value.</para>
             &lt;variable name="LDFLAGS" mode="append"&gt; -s&lt;/variable&gt;
 	    &lt;/environment&gt;
     &lt;/stageinfo&gt;
-   
+
     &lt;configure /&gt;
 
     &lt;make /&gt;

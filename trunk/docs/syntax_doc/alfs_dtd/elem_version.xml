@@ -1,6 +1,6 @@
 <sect1 id="elem_version" xreflabel="Element: &lt;version&gt;">
 <?dbhtml filename="elem_version.html" dir="alfs_dtd"?>
-<title>version</title>
+<title>Element: &lt;version&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -25,7 +25,7 @@
 on the version of an utilized/required package.</para>
 
 <para>The condition is satisfied if the comparison specified
-by the attribute <token>condition</token> applies between the 
+by the attribute <token>condition</token> applies between the
 actual version value of the package, and the value specified
 as the content of the element.</para>
 

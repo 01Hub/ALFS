@@ -1,6 +1,6 @@
 <sect1 id="elem_execute" xreflabel="Element: &lt;execute&gt;">
 <?dbhtml filename="elem_execute.html" dir="alfs_dtd"?>
-<title>execute</title>
+<title>Element: &lt;execute&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -30,7 +30,7 @@ and <link linkend="elem_then">then</link>
 
 <para>The element <token>execute</token> is used to execute an arbitrary command.</para>
 
-<para>The attribute <token>base</token> allows to specify the directory 
+<para>The attribute <token>base</token> allows to specify the directory
 in which the command will be executed;</para>
 
 <para>The attribute <token>command</token> contains the text of the command itself.</para>

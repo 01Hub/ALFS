@@ -1,6 +1,6 @@
 <sect1 id="elem_user" xreflabel="Element: &lt;user&gt;">
 <?dbhtml filename="elem_user.html" dir="alfs_dtd"?>
-<title>user</title>
+<title>Element: &lt;user&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -32,7 +32,7 @@ of the stage to which it applies.</para>
         &lt;base>/usr/src/mypackage&lt;/base>
 	&lt;user>lfs&lt;/user>
     &lt;/stageinfo>
-   
+
     &lt;make>
         &lt;param>install&lt;/param>
     &lt;/make>

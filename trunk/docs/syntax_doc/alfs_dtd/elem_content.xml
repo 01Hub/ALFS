@@ -1,6 +1,6 @@
 <sect1 id="elem_content" xreflabel="Element: &lt;content&gt;">
 <?dbhtml filename="elem_content.html" dir="alfs_dtd"?>
-<title>content</title>
+<title>Element: &lt;content&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -21,7 +21,7 @@
 <para>The element <token>content</token> is used to specify the content of the
 file being created when processing a <token>textdump</token> operation.</para>
 
-<note><para>Of course, it is possible to use XML entity references in the 
+<note><para>Of course, it is possible to use XML entity references in the
 content of this element.</para></note>
 
 </sect2>

@@ -1,6 +1,6 @@
 <sect1 id="elem_configure" xreflabel="Element: &lt;configure&gt;">
 <?dbhtml filename="elem_configure.html" dir="alfs_dtd"?>
-<title>configure</title>
+<title>Element: &lt;configure&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -19,7 +19,7 @@
 and <link linkend="elem_then">then</link>
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_param">param</link>
 </para>
 
@@ -31,10 +31,10 @@ and <link linkend="elem_then">then</link>
 <para>The element <token>configure</token> is used to describe a command
 configure.</para>
 
-<para>When processing the element, one executes the command ./configure 
+<para>When processing the element, one executes the command ./configure
 with the parameters specified.</para>
 
-<para>The attribute <token>base</token> allows to specify the directory 
+<para>The attribute <token>base</token> allows to specify the directory
 in which the command is executed.</para>
 
 <para>The attribute <token>command</token> allows to specify the command

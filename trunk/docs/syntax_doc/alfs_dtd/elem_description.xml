@@ -1,6 +1,6 @@
 <sect1 id="elem_description" xreflabel="Element: &lt;description&gt;">
 <?dbhtml filename="elem_description.html" dir="alfs_dtd"?>
-<title>description</title>
+<title>Element: &lt;description&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -13,7 +13,7 @@
 <link linkend="elem_packageinfo">packageinfo</link>.
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_para">para</link>,
 <link linkend="elem_list">list</link>.
 </para>
@@ -23,7 +23,7 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>description</token> contains the description of a 
+<para>The element <token>description</token> contains the description of a
 package. Its use is for documentation only.</para>
 
 </sect2>
@@ -35,7 +35,7 @@ package. Its use is for documentation only.</para>
 &lt;package name="gimp" version="1.2.3">
 	&lt;packageinfo>
 		&lt;description>
-			&lt;para>The gimp package contains the GNU Image Manipulation Program. This is 
+			&lt;para>The gimp package contains the GNU Image Manipulation Program. This is
 			useful for photo retouching, image composition and image authoring.&lt;/para>
 		&lt;/description>
 

@@ -1,6 +1,6 @@
 <sect1 id="elem_item" xreflabel="Element: &lt;item&gt;">
 <?dbhtml filename="elem_item.html" dir="alfs_dtd"?>
-<title>item</title>
+<title>Element: &lt;item&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -30,8 +30,8 @@ a item within a list in a description.</para>
     &lt;package name="gimp" version="1.2.3">
         &lt;packageinfo>
 	        &lt;description>
-                    &lt;para>The gimp package contains the GNU Image 
-		    Manipulation Program. 
+                    &lt;para>The gimp package contains the GNU Image
+		    Manipulation Program.
 		    This is useful for :&lt;/para>
 		    &lt;list>
 		    &lt;item>photo retouching,&lt;/item>

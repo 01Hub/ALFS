@@ -1,6 +1,6 @@
 <sect1 id="elem_package" xreflabel="Element: &lt;package&gt;">
 <?dbhtml filename="elem_package.html" dir="alfs_dtd"?>
-<title>package</title>
+<title>Element: &lt;package&gt;</title>
 
 <sect2>
 <title>Syntax</title>
@@ -19,7 +19,7 @@
 and <link linkend="elem_then">then</link>
 </para>
 
-<para>See also : 
+<para>See also :
 <link linkend="elem_packageinfo">packageinfo</link>,
 <link linkend="elem_stage">stage</link>.
 </para>
