@@ -42,7 +42,10 @@
         <param>--enable-compat185</param>
         <param>--enable-cxx</param>
       </configure>
-      <make />
+      <make>
+	<param>LIBSO_LIBS="-lpthread"</param>
+	<param>LIBXSO_LIBS="-lpthread"</param>
+      </make>
       <make>
         <param>docdir=/usr/share/doc/db-&db-version;</param>
         <param>install</param>

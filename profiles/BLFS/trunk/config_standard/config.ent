@@ -17,6 +17,14 @@
 <!ENTITY mitkrb-all-caps-domain "LFS.ORG">
 <!ENTITY mitkrb-hostname "belgarath.lfs.org">
 
+<!-- configuration for stunnel -->
+<!ENTITY stunnel-country "CA">
+<!ENTITY stunnel-state "Alberta">
+<!ENTITY stunnel-city "Calgary">
+<!ENTITY stunnel-org "Linux From Scratch">
+<!ENTITY stunnel-orgunit "ALFS">
+<!ENTITY stunnel-host "localhost">
+
 <!-- configuration for dhclient -->
 <!-- These two entities should be set to appropriate values to start and stop dhclient -->
 <!ENTITY dhclient-start-params "">

@@ -1,6 +1,6 @@
 <!ENTITY real-amp "&#38;#38;">
 <!-- book version -->
-<!ENTITY blfs-version "svn-20040901">
+<!ENTITY blfs-version "svn-20041030">
 
 <!-- directory containing the compressed packages -->
 <!ENTITY packages_dir  "/mnt/src">
@@ -54,6 +54,6 @@
 
 <!ENTITY ldconfig "<execute command='/sbin/ldconfig' />">
 
-<!ENTITY blfs-bootscripts-version "5.1">
+<!ENTITY blfs-bootscripts-version "20041027">
 <!ENTITY blfs-bootscripts-package "blfs-bootscripts-&blfs-bootscripts-version;.tar.bz2">
-<!ENTITY blfs-bootscripts-directory "blfs-bootscripts-2004-05-22">
+<!ENTITY blfs-bootscripts-directory "blfs-bootscripts-&blfs-bootscripts-version;">

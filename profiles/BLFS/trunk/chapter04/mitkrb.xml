@@ -39,16 +39,15 @@
   &bootscripts-get;
   <stage name="Installing.">
     <stageinfo>
-      <base>&build_dir;/&mitkrb-directory;</base>
+      <base>&build_dir;/&mitkrb-directory;/src</base>
     </stageinfo>
     <configure>
       <param>--prefix=/usr</param>
       <param>--sysconfdir=/etc</param>
-      <param>--datadir=/var/lib</param>
-      <param>--libexecdir=/usr/sbin</param>
-      <param>--enable-dns</param>   
+      <param>--localstatedir=/var/lib</param>
+      <param>--enable-dns</param>
       <param>--enable-shared</param>
-      <param>--mandir=/usr/share/man</param>
+      <param>--mandir=/usr/share/man</param>  
     </configure>
     <make />
     <make>

@@ -57,6 +57,8 @@
       <xi:include href="chapter04/tripwire.xml" />
       <xi:include href="chapter04/heimdal.xml" />
       <xi:include href="chapter04/mitkrb.xml" />
+      <xi:include href="chapter04/cyrus-sasl.xml"/>
+      <xi:include href="chapter04/stunnel.xml" />
     </stage>
     <stage name="Chapter 5 (Filesystems)">
       <xi:include href="chapter05/reiserfsprogs.xml" />
