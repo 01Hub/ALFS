@@ -100,16 +100,16 @@
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
 <!ENTITY gcc-version "3.4.0">
-<!ENTITY gcc-cvs-version "-20040406">
+<!ENTITY gcc-cvs-version "-20040416">
 <!ENTITY gcc-directory "gcc-&gcc-version;&gcc-cvs-version;">
 
-<!ENTITY gcc-core-md5 "f508291f0a22efbd9ecd4160ba28e2bb">
+<!ENTITY gcc-core-md5 "df91546817949b25d12faf49fb970d86">
 <!ENTITY gcc-core-package "gcc-core-&gcc-version;&gcc-cvs-version;.tar.bz2">
 
-<!ENTITY gcc-gpp-md5 "f6d41deeebe5861c730642db0b046b21">
+<!ENTITY gcc-gpp-md5 "b6d3e21cf7a3079b2208b2da2e43310c">
 <!ENTITY gcc-gpp-package "gcc-g++-&gcc-version;&gcc-cvs-version;.tar.bz2">
   
-<!ENTITY gcc-testsuite-md5 "f19ed6ec00fb69bf0f60f8f097122304">
+<!ENTITY gcc-testsuite-md5 "367c997163884fea73a1a4c26f9a977a">
 <!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;&gcc-cvs-version;.tar.bz2">
 
 <!ENTITY gcc-no-fixincludes-patch-md5 "78fa00bc9f7173b9658eeb86ce9291c9">
