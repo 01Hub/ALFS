@@ -193,10 +193,12 @@ static void option_invalid(const struct option_s *option,
 	char buffer[MAX_ERROR_MSG_LEN];
 
 	va_start(ap, format);
-	vsnprintf(buffer, sizeof buffer, format, ap);
+	if (vsnprintf(buffer, sizeof buffer, format, ap) > 0)
+		Nprint_err("Option \"%s\" invalid value: %s",
+			   option->name, buffer);
+	else
+		Nprint_err("Option \"%s\" invalid value", option->name);
 	va_end(ap);
-	Nprint_err("Option \"%s\" invalid value: %s",
-		   option->name, buffer);
 }
 
 static int validate_number_minmax(const struct option_s *option,
