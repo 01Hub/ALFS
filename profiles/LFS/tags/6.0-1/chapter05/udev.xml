@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+
+<alfs>
+
+<package name="udev" version="&udev-version;">
+	<stage name="Unpacking">
+		<unpack>
+			<digest>&udev-md5;</digest>
+			<archive>&packages_dir;/&udev-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&udev-directory;</base>
+		</stageinfo>
+
+		<search_replace>
+		  	<file>udevstart.c</file>
+			<find>/sbin/udev</find>
+			<replace>/tools/sbin/udev</replace>
+		</search_replace>
+
+		<search_replace>
+		  	<file>etc/udev/udev.conf.in</file>
+			<find>/etc</find>
+			<replace>/tools/etc</replace>
+		</search_replace>
+
+		<make>
+		  	<param>prefix=/tools</param>
+			<param>etcdir=/tools/etc</param>
+		</make>
+
+		<make>
+		  	<param>DESTDIR=/tools</param>
+			<param>udevdir=/dev</param>
+			<param>install</param>
+		</make>
+		
+		<copy base="&packages_dir;">
+        		<option>force</option>
+        		<source>&udev-permissions-file;</source>
+        		<destination>/tools/etc/udev/permissions.d/00-lfs.permissions</destination>
+		</copy>
+
+		<copy base="&packages_dir;">
+        		<option>force</option>
+        		<source>&udev-rules-file;</source>
+        		<destination>/tools/etc/udev/rules.d/00-lfs.rules</destination>
+		</copy>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&udev-directory;</remove>
+	</stage>
+</package>
+
+</alfs>

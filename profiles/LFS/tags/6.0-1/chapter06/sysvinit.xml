@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+
+<alfs>
+
+<package name="sysvinit" version="&sysvinit-version;">
+	<stage name="Unpacking">
+		<unpack>
+			<digest>&sysvinit-md5;</digest>
+			<archive>&packages_dir;/&sysvinit-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&sysvinit-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&sysvinit-proclen-patch;</param>
+		</patch>
+
+		<search_replace>
+			<file>src/init.c</file>
+			<find>Sending processes</find>
+			<replace>Sending processes started by init</replace>
+		</search_replace>
+
+		<make>
+			<param>-C src</param>
+		</make>
+
+		<make>
+			<param>-C src</param>
+			<param>install</param>
+		</make>
+
+		<textdump>
+			<file>/etc/inittab</file>
+			<content>
+				=# Begin /etc/inittab
+				=
+				=id:3:initdefault:
+				=
+				=si::sysinit:/etc/rc.d/init.d/rc sysinit
+				=
+				=l0:0:wait:/etc/rc.d/init.d/rc 0
+				=l1:S1:wait:/etc/rc.d/init.d/rc 1
+				=l2:2:wait:/etc/rc.d/init.d/rc 2
+				=l3:3:wait:/etc/rc.d/init.d/rc 3
+				=l4:4:wait:/etc/rc.d/init.d/rc 4
+				=l5:5:wait:/etc/rc.d/init.d/rc 5
+				=l6:6:wait:/etc/rc.d/init.d/rc 6
+				=
+				=ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
+				=
+				=su:S016:once:/sbin/sulogin
+				=
+				=1:2345:respawn:/sbin/agetty -I '\033(K' tty1 9600
+				=2:2345:respawn:/sbin/agetty -I '\033(K' tty2 9600
+				=3:2345:respawn:/sbin/agetty -I '\033(K' tty3 9600
+				=4:2345:respawn:/sbin/agetty -I '\033(K' tty4 9600
+				=5:2345:respawn:/sbin/agetty -I '\033(K' tty5 9600
+				=6:2345:respawn:/sbin/agetty -I '\033(K' tty6 9600
+				=
+				=# End /etc/inittab
+			</content>
+		</textdump>
+
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&sysvinit-directory;</remove>
+	</stage>
+</package>
+
+</alfs>
