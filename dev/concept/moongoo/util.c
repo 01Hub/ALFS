@@ -324,3 +324,37 @@ void term_reset ()
 	sprintf(cmd, "%c[m", 0x1B);
 	printf(cmd);
 }
+
+char *cut_trail (char *str, char *delim)
+{
+	char *ret;
+
+	if (!str)
+		return NULL;
+	
+	ret = (char *)malloc(1);
+	strcpy(ret, "");
+		
+	while ((str) && (strlen(str)))
+	{
+		char *t = ret, *tmp = strsep(&str, "\n");
+		tmp = notrail(tmp, "\t");
+		
+		if (!tmp)
+			continue;
+		
+		if (strcmp(tmp, ""))
+		{
+			tmp = strstr(tmp, delim);
+			tmp++;
+		}
+
+		ret = strdog(ret, tmp);
+		free(t);
+		t = ret;
+		ret = strdog(ret, "\n");
+		free(t);
+	}
+
+	return ret;
+}

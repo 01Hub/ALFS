@@ -40,5 +40,6 @@ char *notrail (char *str, char *token);
 char *squeeze (char *str);
 char *strkill (char *str, char *tokill);
 char *strnstr (char *haystack, char *needle, int n);
+char *cut_trail (char *str, char *delim);
 
 #endif
