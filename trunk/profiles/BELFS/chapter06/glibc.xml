@@ -24,9 +24,10 @@
 		<configure command="../&glibc-directory;/configure">
 			<param>--prefix=/usr</param>
 			<param>--disable-profile</param>
-			<param>--enable-add-ons=linuxthreads</param>
-			<param>--libexecdir=/usr/lib</param>
-			<param>--with-headers=/usr/include</param>
+			<param>--enable-add-ons=nptl</param>
+			<param>--with-tls</param>
+			<param>--libexecdir=/tmp/pt_chown</param>
+			<param>--with-headers=/tools/glibc-kernheaders</param>
 			<param>--without-cvs</param>
 		</configure>
 
@@ -43,6 +44,8 @@
 		<make>
 			<param>install</param>
 		</make>
+
+		<remove>/tmp/pt_chown</remove>
 
 		<mkdir>
 			<option>parents</option>
@@ -104,14 +107,14 @@
 		</copy>
 
 		<textdump>
-			<file>/etc/ld.so.config</file>
+			<file>/etc/ld.so.conf</file>
 			<content>
-				=# Begin /etc/ld.so.config
+				=# Begin /etc/ld.so.conf
 				=
 				=/usr/local/lib
 				=/opt/lib
 				=
-				=# End /etc/ld.so.config
+				=# End /etc/ld.so.conf
 			</content>
 		</textdump>
 	</stage>
