@@ -38,5 +38,11 @@
     <xi:include href="perlmods/DateManip.xml" />
     <xi:include href="perlmods/Finance-Quote.xml" />
     <xi:include href="perlmods/HTML-TableExtract.xml" />
+    <xi:include href="perlmods/PDL.xml" />
+    <xi:include href="perlmods/Filter.xml" />
+    <xi:include href="perlmods/Inline.xml" />
+    <xi:include href="perlmods/Term-ReadLine-Gnu.xml" />
+    <xi:include href="perlmods/ExtUtils-F77.xml" />
+    <xi:include href="perlmods/Astro-FITS-Header.xml" />
   </stage>
 </alfs>
