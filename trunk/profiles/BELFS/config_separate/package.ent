@@ -312,8 +312,8 @@
 <!ENTITY tcl-package "tcl&tcl-version;-src.tar.gz">
 <!ENTITY tcl-directory "tcl&tcl-version;">
 
-<!ENTITY texinfo-md5 "d6a771de9e05efd8c1c9152f8b8686d6">
-<!ENTITY texinfo-version "4.6">
+<!ENTITY texinfo-md5 "c2fa2ef957f0d728f821ae9b2362ef4e">
+<!ENTITY texinfo-version "4.7">
 <!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
