@@ -13,13 +13,13 @@
 		</stageinfo>
 
 		<copy>
-		  <option>recursive</option>
+		  	<option>recursive</option>
 			<source>include/asm-i386</source>
 			<destination>/tools/include/asm</destination>
 		</copy>
 
 		<copy>
-		  <option>recursive</option>
+		  	<option>recursive</option>
 			<source>include/linux</source>
 			<destination>/tools/include</destination>
 		</copy>

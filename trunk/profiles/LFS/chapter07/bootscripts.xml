@@ -15,6 +15,10 @@
 		<make>
 			<param>install</param>
 		</make>
+
+		<make>
+			<param>install-hotplug</param>
+		</make>
 	</stage>
 
 	<stage name="Cleaning up.">
