@@ -22,11 +22,6 @@
       <stageinfo>
         <base>&build_dir;/&hdparm-directory;</base>
       </stageinfo>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&hdparm-patch1;</param>
-      </patch>
       <make />
       <make>
         <param>binprefix=/usr</param>

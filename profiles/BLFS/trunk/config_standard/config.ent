@@ -47,6 +47,10 @@
 <!-- libungif or giflib -->
 <!ENTITY gif-impl "giflib">
 
+<!-- MTA (mail transport agent) -->
+<!-- sendmail, exim, courier, qpopper or postfix -->
+<!ENTITY mta-impl "sendmail">
+
 <!-- where to put kde -->
 <!ENTITY kde-prefix "/usr">
 

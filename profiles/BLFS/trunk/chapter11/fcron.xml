@@ -14,28 +14,19 @@
   <package name="fcron" version="&fcron-version;">
     <packageinfo>
       <utilizes>
-        <name>sendmail</name>
-      </utilizes>
-      <utilizes>
-        <name>postfix</name>
-      </utilizes>
-      <utilizes>
-        <name>qmail</name>
-      </utilizes>
-      <utilizes>
-        <name>exim</name>
-      </utilizes>
-      <utilizes>
-        <name>courier</name>
+        <name>&mta-impl;</name>
       </utilizes>
       <utilizes>
         <name>linuxpam</name>
       </utilizes>
       <utilizes>
-        <name>openjade</name>
+        <name>selinux</name>
       </utilizes>
       <utilizes>
-        <name>docbook-dsssl</name>
+        <name>docbook-utils</name>
+      </utilizes>
+      <utilizes>
+        <name>vim</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

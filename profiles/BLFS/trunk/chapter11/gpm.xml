@@ -29,12 +29,12 @@
     <patch>
       <param>-N</param>
       <param>-p1</param>
-      <param>-i &packages_dir;/&gpm-patch1;</param>
+      <param>-i &packages_dir;/&gpm-segfault-patch;</param>
     </patch>
     <patch>
       <param>-N</param>
       <param>-p1</param>
-      <param>-i &packages_dir;/&gpm-patch2;</param>
+      <param>-i &packages_dir;/&gpm-silent-patch;</param>
     </patch>
     <configure>
       <prefix>LDFLAGS='-lm'</prefix>
@@ -49,7 +49,9 @@
       <option>force</option>
       <source>gpm-root.conf</source>
       <destination>/etc</destination>
-    </copy>&ldconfig;</stage>
+    </copy>
+    &ldconfig;
+    </stage>
     <stage name="Installing bootscript and configuration">
       <stageinfo>
         <base>&build_dir;/&blfs-bootscripts-directory;</base>
@@ -61,8 +63,11 @@
         <file>mouse</file>
         <content>
 	  =# Begin /etc/sysconfig/mouse
-	  =MDEVICE=&mouse_device;
-	  =PROTOCOL=&mouse_protocol;
+      =
+	  =MDEVICE="&mouse_device;"
+	  =PROTOCOL="&mouse_protocol;"
+      =GPMOPTS="&mouse_options;"
+      =
 	  =# End /etc/sysconfig/mouse
 	</content>
       </textdump>

@@ -22,16 +22,14 @@
       <stageinfo>
         <base>&build_dir;/&zip-directory;</base>
       </stageinfo>
-      <copy>
-        <source>unix/Makefile</source>
-        <destination>.</destination>
-      </copy>
       <make>
         <param>prefix=/usr</param>
+        <param>-f unix/Makefile</param>
         <param>generic_gcc</param>
       </make>
       <make>
         <param>prefix=/usr</param>
+        <param>-f unix/Makefile</param>
         <param>install</param>
       </make>
     </stage>
