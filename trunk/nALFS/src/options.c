@@ -48,41 +48,41 @@
 			.name = #opt_name, \
 			.type = O_STRING, \
 			.val = { \
-				.str = { .value = NULL, \
-					 .def_value = opt_def_value, \
-					 .validate = opt_validate, \
-					 .post_validate = opt_post_validate } \
+				.u_str = { .value = NULL, \
+					   .def_value = opt_def_value, \
+					   .validate = opt_validate, \
+					   .post_validate = opt_post_validate } \
 				} \
 		}; \
-		STRING * const opt_##opt_name = &real_opt_##opt_name .val.str.value
+		STRING * const opt_##opt_name = &real_opt_##opt_name .val.u_str.value
 #define BOOL_OPTION(opt_name, opt_def_value, opt_validate, \
 		    opt_post_validate) \
 		static struct option_s real_opt_##opt_name = { \
 			.name = #opt_name, \
 			.type = O_BOOL, \
 			.val = { \
-				.bool = { .value = 0, \
-					  .def_value = opt_def_value, \
-					  .validate = opt_validate, \
-					  .post_validate = opt_post_validate } \
+				.u_bool = { .value = 0, \
+					    .def_value = opt_def_value, \
+					    .validate = opt_validate, \
+					    .post_validate = opt_post_validate } \
 				} \
 		}; \
-		BOOL * const opt_##opt_name = &real_opt_##opt_name .val.bool.value
+		BOOL * const opt_##opt_name = &real_opt_##opt_name .val.u_bool.value
 #define NUMBER_OPTION(opt_name, opt_def_value, opt_min_value, opt_max_value, \
 		      opt_validate, opt_post_validate) \
 		static struct option_s real_opt_##opt_name = { \
 			.name = #opt_name, \
 			.type = O_NUMBER, \
 			.val = { \
-				.num = { .value = 0, \
-					 .def_value = opt_def_value, \
-					 .min_value = opt_min_value, \
-					 .max_value = opt_max_value, \
-					 .validate = opt_validate, \
-					 .post_validate = opt_post_validate } \
+				.u_num = { .value = 0, \
+					   .def_value = opt_def_value, \
+					   .min_value = opt_min_value, \
+					   .max_value = opt_max_value, \
+					   .validate = opt_validate, \
+					   .post_validate = opt_post_validate } \
 				} \
 		}; \
-		NUMBER * const opt_##opt_name = &real_opt_##opt_name .val.num.value
+		NUMBER * const opt_##opt_name = &real_opt_##opt_name .val.u_num.value
 
 #include "option-struct.h"
 
@@ -127,17 +127,17 @@ static void set_option_to_default(struct option_s *option)
 {
 	switch (option->type) {
 	case O_BOOL:
-		option->val.bool.value = option->val.bool.def_value;
+		option->val.u_bool.value = option->val.u_bool.def_value;
 		break;
 		
 	case O_NUMBER:
-		option->val.num.value = option->val.num.def_value;
+		option->val.u_num.value = option->val.u_num.def_value;
 		break;
 		
 	case O_STRING:
-		if (option->val.str.value)
-			xfree(option->val.str.value);
-		option->val.str.value = xstrdup(option->val.str.def_value);
+		if (option->val.u_str.value)
+			xfree(option->val.u_str.value);
+		option->val.u_str.value = xstrdup(option->val.u_str.def_value);
 		break;
 	}
 }
@@ -223,14 +223,14 @@ static int validate_number_minmax(const struct option_s *option,
 {
 	int valid;
 
-	valid = (value >= option->val.num.min_value &&
-		 value <= option->val.num.max_value);
+	valid = (value >= option->val.u_num.min_value &&
+		 value <= option->val.u_num.max_value);
 
 	if (!valid)
 		option_invalid(option, "%d\n\tmust be between %d and %d",
 			       value,
-			       option->val.num.min_value,
-			       option->val.num.max_value);
+			       option->val.u_num.min_value,
+			       option->val.u_num.max_value);
 
 	return valid;
 }
@@ -338,7 +338,7 @@ set_opt_e set_yet_unknown_option(const char *opt, const char *val)
 		switch (options[i]->type) {
 		case O_BOOL:
 			if (!validate_boolean_input(options[i], val,
-						   &options[i]->val.bool.value))
+						   &options[i]->val.u_bool.value))
 				return OPTION_INVALID_VALUE;
 			
 			return OPTION_SET;
@@ -347,20 +347,20 @@ set_opt_e set_yet_unknown_option(const char *opt, const char *val)
 			if (!validate_number_input(options[i], val, &num))
 				return OPTION_INVALID_VALUE;
 			
-			if (options[i]->val.num.validate &&
-			    !options[i]->val.num.validate(options[i], num))
+			if (options[i]->val.u_num.validate &&
+			    !options[i]->val.u_num.validate(options[i], num))
 				return OPTION_INVALID_VALUE;
 			
-			options[i]->val.num.value = num;
+			options[i]->val.u_num.value = num;
 			
 			return OPTION_SET;
 			
 		case O_STRING:
-			if (options[i]->val.str.validate &&
-			    !options[i]->val.str.validate(options[i], val))
+			if (options[i]->val.u_str.validate &&
+			    !options[i]->val.u_str.validate(options[i], val))
 				return OPTION_INVALID_VALUE;
 			
-			set_string_option(&options[i]->val.str.value, val);
+			set_string_option(&options[i]->val.u_str.value, val);
 			
 			return OPTION_SET;
 		}
@@ -379,16 +379,16 @@ void post_validate_options(void)
 	for (i = 0; options[i]; i++) {
 		switch (options[i]->type) {
 		case O_BOOL:
-			if (options[i]->val.bool.post_validate)
-				options[i]->val.bool.post_validate(options[i]);
+			if (options[i]->val.u_bool.post_validate)
+				options[i]->val.u_bool.post_validate(options[i]);
 			break;
 		case O_NUMBER:
-			if (options[i]->val.num.post_validate)
-				options[i]->val.num.post_validate(options[i]);
+			if (options[i]->val.u_num.post_validate)
+				options[i]->val.u_num.post_validate(options[i]);
 			break;
 		case O_STRING:
-			if (options[i]->val.str.post_validate)
-				options[i]->val.str.post_validate(options[i]);
+			if (options[i]->val.u_str.post_validate)
+				options[i]->val.u_str.post_validate(options[i]);
 			break;
 		}
 	}
