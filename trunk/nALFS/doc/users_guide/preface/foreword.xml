@@ -6,14 +6,15 @@
 
 <para>Being a Systems Engineer by trade and having used Linux From Scratch 
 (<acronym>LFS</acronym>) for about a year, I was looking for a way to automate 
-tasks on my Linux servers at work. One day, while surfing the 
+tasks on my Linux servers at work.&nbsp;&nbsp;One day, while surfing the 
 <acronym>LFS</acronym> website, I found the <acronym>ALFS</acronym> project 
-and then the nALFS implementation. After trying it out, I fell in love with 
-the tool. I have been able to completely automate server builds and software 
-package installation across my data center.  Since I like the product so much, 
-I wanted to give back to the project and decided to take on the task of 
-documentation.  I hope you like the product as much as I do and it provides 
-the same utility to your environment as it has mine.</para>
+and then the nALFS implementation.&nbsp;&nbsp;After trying it out, I fell in 
+love with the tool.&nbsp;&nbsp;I have been able to completely automate server 
+builds and software package installation across my data 
+center.&nbsp;&nbsp;Since I like the product so much, I wanted to give back to 
+the project and decided to take on the task of documentation.&nbsp;&nbsp;I 
+hope you like the product as much as I do and it provides the same utility to 
+your environment as it has mine.</para>
 
 <blockquote><literallayout>James Robertson
 jwrober@linuxfromscratch.org</literallayout></blockquote>
