@@ -55,8 +55,7 @@ http://downloads.linuxfromscratch.org/lfs-bootscripts-1.12.tar.bz2
 http://www.linuxfromscratch.org/patches/lfs/5.0/man-1.5m2-80cols.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/man-1.5m2-manpath.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/man-1.5m2-pager.patch
-http://www.linuxfromscratch.org/patches/lfs/5.0/ncurses-5.3-etip-2.patch
-http://www.linuxfromscratch.org/patches/lfs/5.0/ncurses-5.3-vsscanf.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/ncurses-5.3-etip-2.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/net-tools-1.60-miitool-gcc33-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/perl-5.8.2-libc-1.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/shadow-4.0.3-newgrp-fix.patch
