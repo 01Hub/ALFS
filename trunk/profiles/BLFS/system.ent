@@ -51,6 +51,7 @@
 <!ENTITY slib       SYSTEM "./chapter08/slib.xml">
 <!ENTITY g-wrap     SYSTEM "./chapter08/g-wrap.xml">
 <!ENTITY lzo        SYSTEM "./chapter08/lzo.xml">
+<!ENTITY libpcap    SYSTEM "./chapter08/libpcap.xml">
 
 <!-- chapter 9 -->
 <!ENTITY lcms       SYSTEM "./chapter09/lcms.xml">
@@ -59,6 +60,8 @@
 <!ENTITY libtiff    SYSTEM "./chapter09/libtiff.xml">
 <!ENTITY libungif   SYSTEM "./chapter09/libungif.xml">
 <!ENTITY libmng     SYSTEM "./chapter09/libmng.xml">
+<!ENTITY freetype   SYSTEM "./chapter09/freetype.xml">
+<!ENTITY fontconfig SYSTEM "./chapter09/fontconfig.xml">
 <!ENTITY imlib      SYSTEM "./chapter09/imlib.xml">
 <!ENTITY aalib      SYSTEM "./chapter09/aalib.xml">
 <!ENTITY svgalib    SYSTEM "./chapter09/svgalib.xml">
@@ -166,8 +169,6 @@
 <!ENTITY xfree86   SYSTEM "./chapter26/xfree86.xml">
 
 <!-- chapter 27 -->
-<!ENTITY freetype   SYSTEM "./chapter27/freetype.xml">
-<!ENTITY fontconfig SYSTEM "./chapter27/fontconfig.xml">
 <!ENTITY qt         SYSTEM "./chapter27/qt.xml">
 <!ENTITY gtkplus    SYSTEM "./chapter27/gtk+.xml">
 <!ENTITY gtkplus2   SYSTEM "./chapter27/gtk+2.xml">
