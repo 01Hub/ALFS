@@ -1,10 +1,11 @@
 <package name="libsoup" version="&libsoup-version;">
 
-    <packageinfo>
-        <utilizes>
-	    <name>openssl</name>
-	</utilizes>
-    </packageinfo>
+	<packageinfo>
+		<requires><name>glib2</name></requires>
+		<utilizes><name>gtk-doc</name></utilizes>
+		<utilizes><name>openssl</name></utilizes>
+		<utilizes><name>gnutls</name></utilizes>
+	</packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
@@ -20,6 +21,7 @@
 
 		<configure>
 			<param>--prefix=/usr</param>
+			<param>--libexecdir=/usr/sbin</param>
 		</configure>
 
 		<make />

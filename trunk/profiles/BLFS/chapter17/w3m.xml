@@ -1,6 +1,8 @@
 <package name="w3m" version="&w3m-version;">
 
         <packageinfo>
+                <requires><name>gc</name></requires>
+
                 <utilizes><name>gpm</name></utilizes>
                 <utilizes><name>openssl</name></utilizes>
                 <utilizes><name>imlib</name></utilizes>
@@ -22,10 +24,9 @@
 		</stageinfo>
 
 		<configure>
-			<param>-yes</param>
-			<param>--lang=en</param>
-			<param>-model=monster</param>
 			<param>--prefix=/usr</param>
+			<param>--libexecdir=/usr/lib</param>
+			<param>--sysconfdir=/etc</param>
 		</configure>
 
 		<make/>
@@ -33,6 +34,16 @@
 		<make>
 			<param>install</param>
 		</make>
+
+		<copy>
+			<source>doc/keymap.default</source>
+			<destination>/etc/w3m/keymap</destination>
+		</copy>
+
+		<copy>
+			<source>doc/menu.default</source>
+			<destination>/etc/w3m/menu</destination>
+		</copy>
 
 	</stage>
 

@@ -1,8 +1,8 @@
 <package name="links" version="&links-version;">
 
         <packageinfo>
-                <utilizes><name>openssl</name></utilizes>
                 <utilizes><name>gpm</name></utilizes>
+                <utilizes><name>openssl</name></utilizes>
                 <utilizes><name>libpng</name></utilizes>
                 <utilizes><name>libjpeg</name></utilizes>
                 <utilizes><name>libtiff</name></utilizes>

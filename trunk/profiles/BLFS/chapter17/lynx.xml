@@ -1,7 +1,10 @@
 <package name="lynx" version="&lynx-version;">
 
         <packageinfo>
-                <requires><name>openssl</name></requires>
+                <utilizes><name>openssl</name></utilizes>
+                <utilizes><name>gnutls</name></utilizes>
+                <utilizes><name>mta</name></utilizes>
+                <utilizes><name>zip</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -19,7 +22,6 @@
 		<configure>
 			<param>--prefix=/usr</param>
 			<param>--libdir=/etc</param>
-			<param>--with-ssl</param>
 			<param>--with-zlib</param>
 		</configure>
 
@@ -30,26 +32,16 @@
 		</make>
 
 		<make>
-			<param>DOCDIR=/usr/share/doc/lynx-&lynx-version;/lynx_doc</param>
-			<param>HELPDIR=/usr/share/doc/lynx-&lynx-version;/lynx_help</param>
+			<param>docdir=/usr/share/doc/lynx-&lynx-version;/lynx_doc</param>
+			<param>helpdir=/usr/share/doc/lynx-&lynx-version;/lynx_help</param>
 			<param>install-doc</param>
 		</make>
 
 		<make>
-			<param>DOCDIR=/usr/share/doc/lynx-&lynx-version;/lynx_doc</param>
-			<param>HELPDIR=/usr/share/doc/lynx-&lynx-version;/lynx_help</param>
+			<param>docdir=/usr/share/doc/lynx-&lynx-version;/lynx_doc</param>
+			<param>helpdir=/usr/share/doc/lynx-&lynx-version;/lynx_help</param>
 			<param>install-help</param>
 		</make>
-
-
-		<search_replace
-		    base = "/etc">
-		    
-		    <file>lynx.cfg</file>
-		    <find>t/etc</find>
-		    <replace>t/usr/share/doc/lynx-&lynx-version;</replace>
-		</search_replace>
-
 	</stage>
 
 	<stage name="Clean-up.">
