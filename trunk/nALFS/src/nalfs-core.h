@@ -1,5 +1,5 @@
 /*
- *  nalfs.h - Main header file.
+ *  nalfs-core.h - Main header file.
  *
  *  Copyright (C) 2001, 2002
  *
@@ -21,8 +21,8 @@
  */
 
 
-#ifndef H_NALFS_
-#define H_NALFS_
+#ifndef H_NALFS_CORE_
+#define H_NALFS_CORE_
 
 
 #include <time.h>
@@ -50,10 +50,10 @@
 #endif
 
 
-int get_key(WINDOW *win);
+extern int get_key(WINDOW *win);
 
-run_status_e get_element_status(element_s *el);
+extern run_status_e get_element_status(element_s *el);
 
 /* void set_should_run_marks(element_s *el); */
 
-#endif /* H_NALFS_ */
+#endif /* H_NALFS_CORE_ */
