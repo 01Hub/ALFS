@@ -167,7 +167,11 @@ static int remove_main_ver3_2(element_s *el)
 		xfree(name);
     	}
 
-	xfree(name);
+     	// if we had to exit prematurely from an if test then free name
+      
+        if (status) {
+		xfree(name);
+	}
 
 	return status;
 }
