@@ -124,7 +124,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
 #  define assert(arg)	((void) 0)
 #endif
 
-#include "ltdl.h"
+#include "ltdl/ltdl.h"
 
 #if WITH_DMALLOC
 #  include <dmalloc.h>
