@@ -15,18 +15,20 @@ set -e
 # if requested, download the current ALFS/nALFS docs and prepare them
 # in the doc directory for distribution
 
+WGET="wget -N -nv"
+
 get_text_doc() {
-    wget -N -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}.txt
+    ${WGET} -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}.txt
     cp download/${1}-${DOC_VERSION}.txt doc/${2}.txt
 }
 
 get_html_nohunks_doc() {
-    wget -N -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}-NOHUNKS.html
+    ${WGET} -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}-NOHUNKS.html
     cp download/${1}-${DOC_VERSION}-NOHUNKS.html doc/${2}.html
 }
 
 get_html_doc() {
-    wget -N -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}-html.tar.bz2
+    ${WGET} -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}-html.tar.bz2
     bzcat download/${1}-${DOC_VERSION}-html.tar.bz2 | tar --extract --directory=download
     mkdir -p doc/${2}
     cp -R download/${1}/* doc/${2}
@@ -36,22 +38,31 @@ get_dtd() {
     cp ../DTD/${1}-${DTD_VERSION}.dtd doc/${1}.dtd
 }
 
-if test x$1 = x--get-docs; then
-    DOC_URL_BASE=http://www.linuxfromscratch.org/~jwrober
-    DOC_VERSION=CVS
-    DTD_VERSION=CVS
-    mkdir -p download
-    get_text_doc ALFS-SYNTAX-DOC syntax_doc
-    get_text_doc nALFS-USERS-GUIDE users_guide
-    get_text_doc nALFS-HACKERS-GUIDE hackers_guide
-    get_html_doc ALFS-SYNTAX-DOC syntax_doc
-    get_html_doc nALFS-USERS-GUIDE users_guide
-    get_html_doc nALFS-HACKERS-GUIDE hackers_guide
-    get_html_nohunks_doc ALFS-SYNTAX-DOC syntax_doc
-    get_html_nohunks_doc nALFS-USERS-GUIDE users_guide
-    get_html_nohunks_doc nALFS-HACKERS-GUIDE hackers_guide
-    get_dtd ALFS
-fi
+mkdir -p download
+
+while getopts dp param; do
+    case $param in
+	d)
+	    echo Getting docs...
+	    DOC_URL_BASE=http://www.linuxfromscratch.org/~jwrober
+	    DOC_VERSION=CVS
+	    DTD_VERSION=CVS
+	    get_text_doc ALFS-SYNTAX-DOC syntax_doc
+	    get_text_doc nALFS-USERS-GUIDE users_guide
+	    get_text_doc nALFS-HACKERS-GUIDE hackers_guide
+	    get_html_doc ALFS-SYNTAX-DOC syntax_doc
+	    get_html_doc nALFS-USERS-GUIDE users_guide
+	    get_html_doc nALFS-HACKERS-GUIDE hackers_guide
+	    get_html_nohunks_doc ALFS-SYNTAX-DOC syntax_doc
+	    get_html_nohunks_doc nALFS-USERS-GUIDE users_guide
+	    get_html_nohunks_doc nALFS-HACKERS-GUIDE hackers_guide
+	    get_dtd ALFS
+	    ;;
+	p)
+	    echo Getting profile...
+	    ;;
+    esac
+done
 
 # some 'macros' for processing filename lists
 SP2NL="tr '\040' '\012'"
