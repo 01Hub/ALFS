@@ -158,9 +158,7 @@ static int package_valid_child(const element_s * const element,
 
 	return child->handler->type & (HTYPE_NORMAL |
 				       HTYPE_COMMENT |
-				       HTYPE_TEXTDUMP |
-				       HTYPE_PACKAGE |
-				       HTYPE_EXECUTE);
+				       HTYPE_PACKAGE);
 }
 
 static int package_valid_data(const element_s * const element)
@@ -193,6 +191,24 @@ static char *package_data(const element_s * const element,
 		if (data->version)
 			return xstrdup(data->version);
 		break;
+	case HDATA_DISPLAY_NAME:
+	{
+		char *display;
+
+		display = xstrdup("Package");
+
+		if (data->name) {
+			append_str(&display, " ");
+			append_str(&display, data->name);
+		}
+
+		if (data->version) {
+			append_str(&display, " ");
+			append_str(&display, data->version);
+		}
+
+		return display;
+	}
 	default:
 		break;
 	}
@@ -488,7 +504,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = package_parameters_v2,
 		.main = package_main,
 		.type = HTYPE_PACKAGE,
-		.data = HDATA_NAME | HDATA_VERSION | HDATA_BASE,
+		.data = HDATA_NAME | HDATA_VERSION | HDATA_BASE | HDATA_DISPLAY_NAME,
 		.alloc_data = package_data,
 		.setup = package_setup,
 		.free = package_free,
@@ -506,7 +522,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attributes = package_attributes_v3,
 		.main = package_main,
 		.type = HTYPE_PACKAGE,
-		.data = HDATA_NAME | HDATA_VERSION,
+		.data = HDATA_NAME | HDATA_VERSION | HDATA_DISPLAY_NAME,
 		.alloc_data = package_data,
 		.setup = package_setup,
 		.free = package_free,
@@ -571,7 +587,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attributes = package_attributes_v3,
 		.main = package_main,
 		.type = HTYPE_PACKAGE,
-		.data = HDATA_NAME | HDATA_VERSION,
+		.data = HDATA_NAME | HDATA_VERSION | HDATA_DISPLAY_NAME,
 		.alloc_data = package_data,
 		.setup = package_setup,
 		.free = package_free,
@@ -636,7 +652,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.attributes = package_attributes_v3,
 		.main = package_main,
 		.type = HTYPE_PACKAGE,
-		.data = HDATA_NAME | HDATA_VERSION,
+		.data = HDATA_NAME | HDATA_VERSION | HDATA_DISPLAY_NAME,
 		.alloc_data = package_data,
 		.setup = package_setup,
 		.free = package_free,

@@ -31,10 +31,7 @@
 	(el)->type == TYPE_ROOT )
 
 #define Is_element_name(el,str) \
-	(el->type == TYPE_ELEMENT && strcmp(el->name, str) == 0)
-#define Is_parameter_name(el,str) \
-	(el->type == TYPE_PARAMETER && strcmp(el->name, str) == 0)
-
+	(el->type == TYPE_ELEMENT && strcmp(el->handler->name, str) == 0)
 
 typedef enum run_status_e {
 	RUN_STATUS_FAILED,
@@ -66,9 +63,6 @@ typedef struct element_s {
 
 	struct handler_info_s *handler;
 	void *handler_data;
-
-	char *name;
-	char *content;
 
 	struct element_s *parent;
 	struct element_s *children;

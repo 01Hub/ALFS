@@ -222,20 +222,22 @@ static int make_handler_element(xmlNodePtr node, element_s *element)
 		   and check the result. */
 
 		if (handler->content) {
-			xmlChar *content;
+			xmlChar *content = NULL;
 
-			if (node->children
-			    && node->children->type == XML_TEXT_NODE
-			    && node->children->next == NULL) {
-				if ((content = xmlNodeGetContent(node))) {
-					result = handler->content(element,
-								  content);
-					xfree(content);
-					if (result)
-						return result;
-				}
+			if (node->type == XML_COMMENT_NODE) {
+				content = xmlNodeGetContent(node);
+			} else if (node->children
+				   && node->children->type == XML_TEXT_NODE
+				   && node->children->next == NULL) {
+				content = xmlNodeGetContent(node);
 			}
-
+			if (content) {
+				result = handler->content(element,
+							  content);
+				xmlFree(content);
+				if (result)
+					return result;
+			}
 		}
 
 		/* If the handler wants to validate its private data */

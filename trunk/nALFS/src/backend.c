@@ -342,7 +342,7 @@ int execute_command(const element_s * const element, const char *format, ...)
 static INLINE void change_to_profiles_dir(element_s *el)
 {
 	element_s *profile = get_profile_by_element(el);
-	char *path = xstrdup(profile->name);
+	char *path = xstrdup(profile->handler->name);
 	char *tmp;
 
 
@@ -369,7 +369,7 @@ static int do_execute_element(element_s *el)
 	}
 
 	comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_STARTED,
-		"%s %s %d", profile->name, el->name, el->id);
+		"%s %s %d", profile->handler->name, el->handler->name, el->id);
 
 	if (el->type == TYPE_PROFILE) {
 		i = execute_children(el);
@@ -388,7 +388,7 @@ static int do_execute_element(element_s *el)
 			  * type and only those elements can run.)
 			  */
 			ASSERT(0);
-			Nprint_err("No handler for %s", el->name);
+			Nprint_err("No handler for %s", el->handler->name);
 			return -1;
 		}
 	}
@@ -397,11 +397,11 @@ static int do_execute_element(element_s *el)
 		// TODO: Is there a point of setting these at all?
 		el->run_status = get_element_status(el);
 		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_ENDED,
-			"%s %s %d", profile->name, el->name, el->id);
+			"%s %s %d", profile->handler->name, el->handler->name, el->id);
 	} else {
 		el->run_status = RUN_STATUS_FAILED;
 		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_FAILED,
-			"%s %s %d", profile->name, el->name, el->id);
+			"%s %s %d", profile->handler->name, el->handler->name, el->id);
 	}
 
 	return i;
@@ -418,7 +418,7 @@ int do_execute_test_element(element_s *element, int *result)
 	}
 
 	comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_STARTED,
-		"%s %s %d", profile->name, element->name, element->id);
+		"%s %s %d", profile->handler->name, element->handler->name, element->id);
 
 	if (*opt_use_relative_dirs)
 		change_to_profiles_dir(element);
@@ -429,11 +429,11 @@ int do_execute_test_element(element_s *element, int *result)
 		// TODO: Is there a point of setting these at all?
 		element->run_status = get_element_status(element);
 		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_ENDED,
-			"%s %s %d", profile->name, element->name, element->id);
+			"%s %s %d", profile->handler->name, element->handler->name, element->id);
 	} else {
 		element->run_status = RUN_STATUS_FAILED;
 		comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_ELEMENT_FAILED,
-			"%s %s %d", profile->name, element->name, element->id);
+			"%s %s %d", profile->handler->name, element->handler->name, element->id);
 	}
 
 	return i;
@@ -442,8 +442,7 @@ int do_execute_test_element(element_s *element, int *result)
 int execute_children(element_s *element)
 {
 	return execute_children_filtered(element,
-					 HTYPE_NORMAL | HTYPE_EXECUTE | 
-					 HTYPE_PACKAGE | HTYPE_TEXTDUMP);
+					 HTYPE_NORMAL | HTYPE_PACKAGE);
 }
 
 int execute_children_filtered(element_s *element, handler_type_e type_filter)

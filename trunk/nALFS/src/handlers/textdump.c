@@ -228,9 +228,22 @@ static char *textdump_data(const element_s * const element,
 {
 	struct textdump_data *data = (struct textdump_data *) element->handler_data;
 
-	(void) data_requested;
+	switch (data_requested) {
+	case HDATA_DISPLAY_NAME:
+	{
+		char *display;
 
-	return xstrdup(data->file);
+		display = xstrdup("Dump text (");
+		append_str(&display, data->file);
+		append_str(&display, ")");
+
+		return display;
+	}
+	default:
+		break;
+	}
+
+	return NULL;
 }
 
 /*
@@ -243,7 +256,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "textdump",
 		.description = "Dump text",
 		.syntax_version = "2.0",
-		.type = HTYPE_TEXTDUMP,
+		.type = HTYPE_NORMAL,
+		.data = HDATA_DISPLAY_NAME,
 		.alloc_data = textdump_data,
 		.is_action = 1,
 		.main = textdump_main,
@@ -261,7 +275,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "textdump",
 		.description = "Dump text",
 		.syntax_version = "3.0",
-		.type = HTYPE_TEXTDUMP,
+		.type = HTYPE_NORMAL,
+		.data = HDATA_DISPLAY_NAME,
 		.alloc_data = textdump_data,
 		.is_action = 1,
 		.main = textdump_main,
@@ -279,7 +294,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "textdump",
 		.description = "Dump text",
 		.syntax_version = "3.1",
-		.type = HTYPE_TEXTDUMP,
+		.type = HTYPE_NORMAL,
+		.data = HDATA_DISPLAY_NAME,
 		.alloc_data = textdump_data,
 		.is_action = 1,
 		.main = textdump_main,
@@ -297,7 +313,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "textdump",
 		.description = "Dump text",
 		.syntax_version = "3.2",
-		.type = HTYPE_TEXTDUMP,
+		.type = HTYPE_NORMAL,
+		.data = HDATA_DISPLAY_NAME,
 		.alloc_data = textdump_data,
 		.is_action = 1,
 		.alternate_shell = 1,

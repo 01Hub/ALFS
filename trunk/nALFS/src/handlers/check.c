@@ -96,6 +96,31 @@ static int check_content(const element_s * const element, const char * const con
 	return 0;
 }
 
+static char *check_data(const element_s * const element,
+			  const handler_data_e data_requested)
+{
+	struct check_data *data = (struct check_data *) element->handler_data;
+
+	switch (data_requested) {
+	case HDATA_DISPLAY_NAME:
+	{
+		char *display;
+
+		display = xstrdup("Check for installed package");
+		if (data->content) {
+			append_str(&display, ": ");
+			append_str(&display, data->content);
+		}
+
+		return display;
+	}
+	default:
+		break;
+	}
+
+	return NULL;
+}
+
 static int check_main(const element_s * const element)
 {
 	struct check_data *data = (struct check_data *) element->handler_data;
@@ -167,6 +192,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.setup = check_setup,
 		.free = check_free,
 		.content = check_content,
+		.data = HDATA_DISPLAY_NAME,
+		.alloc_data = check_data,
 	},
 #endif
 	{

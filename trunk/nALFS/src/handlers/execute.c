@@ -236,9 +236,25 @@ static char *execute_data(const element_s * const element,
 {
 	struct execute_data *data = (struct execute_data *) element->handler_data;
 
-	(void) data_requested;
+	switch (data_requested) {
+	case HDATA_DISPLAY_NAME:
+	{
+		char *display;
 
-	return xstrdup(data->command);
+		display = xstrdup("Execute ");
+		if (data->command) {
+			append_str(&display, data->command);
+		} else if (data->content) {
+			append_str(&display, "script");
+		}
+
+		return display;
+	}
+	default:
+		break;
+	}
+
+	return NULL;
 }
 
 #endif /* HANDLER_SYNTAX_2_0 || HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
@@ -335,21 +351,6 @@ static int execute_main_ver3_2(const element_s * const element)
 	return status;
 }
 
-static char *execute_data_ver3_2(const element_s * const element,
-				 const handler_data_e data_requested)
-{
-	struct execute_data *data = (struct execute_data *) element->handler_data;
-
-	(void) data_requested;
-
-	if (data->command) {
-		return xstrdup(data->command);
-	} else if (data->content) {
-		return xstrdup(data->content);
-	}
-	return NULL;
-}
-
 #endif
 
 /*
@@ -364,7 +365,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.syntax_version = "2.0",
 		.parameters = execute_parameters_v2,
 		.main = execute_main,
-		.type = HTYPE_EXECUTE,
+		.type = HTYPE_NORMAL,
+		.data = HDATA_DISPLAY_NAME,
 		.alloc_data = execute_data,
 		.is_action = 1,
 		.setup = execute_setup,
@@ -381,7 +383,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = execute_parameters_v3,
 		.attributes = execute_attributes_v3,
 		.main = execute_main,
-		.type = HTYPE_EXECUTE,
+		.type = HTYPE_NORMAL,
+		.data = HDATA_DISPLAY_NAME,
 		.alloc_data = execute_data,
 		.is_action = 1,
 		.setup = execute_setup,
@@ -399,7 +402,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = execute_parameters_v3,
 		.attributes = execute_attributes_v3,
 		.main = execute_main,
-		.type = HTYPE_EXECUTE,
+		.type = HTYPE_NORMAL,
+		.data = HDATA_DISPLAY_NAME,
 		.alloc_data = execute_data,
 		.is_action = 1,
 		.setup = execute_setup,
@@ -417,8 +421,9 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.parameters = execute_parameters_v3_2,
 		.attributes = execute_attributes_v3_2,
 		.main = execute_main_ver3_2,
-		.type = HTYPE_EXECUTE,
-		.alloc_data = execute_data_ver3_2,
+		.type = HTYPE_NORMAL,
+		.data = HDATA_DISPLAY_NAME,
+		.alloc_data = execute_data,
 		.is_action = 1,
 		.alternate_shell = 1,
 		.setup = execute_setup,

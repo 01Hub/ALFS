@@ -456,10 +456,10 @@ static void draw_profile_name(element_s *profile)
 	char *tmp, *profile_name = NULL;
 
 
-	if ((tmp = strrchr(profile->name, '/'))) {
+	if ((tmp = strrchr(profile->handler->name, '/'))) {
 		append_str(&profile_name, ++tmp);
 	} else {
-		append_str(&profile_name, profile->name);
+		append_str(&profile_name, profile->handler->name);
 	}
 
 	ASSERT(profile_name != NULL);
@@ -504,7 +504,7 @@ static INLINE element_s *get_elements_package(element_s *el)
 
 
 	for (p = el; p; p = p->parent) {
-		if (Is_element_name(p, "package")) {
+		if (p->handler->type & HTYPE_PACKAGE) {
 			break;
 		}
 	}
@@ -527,18 +527,18 @@ static int is_corresponding_state(const char *file_name, element_s *el)
 
 
 	if ((current_package = get_elements_package(el)) == NULL) {
-		Debug_logging("Element %s is not inside <package>.", el->name);
+		Debug_logging("Element %s is not inside <package>.", el->handler->name);
 		return 0;
 	}
 
 	if (package_has_name_and_version(current_package)) {
 		Debug_logging("Element's <package> has "
-			"name and version (%s).", el->name);
+			"name and version (%s).", el->handler->name);
 		package_str = alloc_package_string(current_package);
 
 	} else {
 		Debug_logging("Element's <package> dosn't have "
-			"name and version (%s).", el->name);
+			"name and version (%s).", el->handler->name);
 		return 0;
 	}
 
@@ -809,7 +809,7 @@ static INLINE void element_started(const char *msg_content)
 {
 	current_running = find_element_by_key(msg_content);
 
-	// Nprint("Started: %s (%s)", msg_content, current_running->name);
+	// Nprint("Started: %s (%s)", msg_content, current_running->handler->name);
 
 	ASSERT(current_running != NULL);
 
@@ -826,7 +826,7 @@ static INLINE void element_ended(const char *msg_content)
 {
 	element_s *current_ended = find_element_by_key(msg_content);
 
-	// Nprint("Ended: %s (%s)", msg_content, current_ended->name);
+	// Nprint("Ended: %s (%s)", msg_content, current_ended->handler->name);
 
 	ASSERT(current_ended != NULL);
 
@@ -843,7 +843,7 @@ static INLINE void element_failed(const char *msg_content)
 {
 	element_s *current_failed = find_element_by_key(msg_content);
 
-	// Nprint("Failed: %s (%s)", msg_content, current_failed->name);
+	// Nprint("Failed: %s (%s)", msg_content, current_failed->handler->name);
 
 	ASSERT(current_failed != NULL);
 
@@ -1318,76 +1318,6 @@ static INLINE void pkg_main(void)
  * Writing to main window.
  */
 
-/* Not really the good place for this. */
-static INLINE void add_element_specific_info(char **line, element_s *el)
-{
-	if (Is_element_name(el, "package")) {
-		char *name, *version;
-
-		if ((name = alloc_package_name(el))) {
-			append_str(line, " ");
-			append_str(line, name);
-
-			if ((version = alloc_package_version(el))) {
-				append_str(line, " ");
-				append_str(line, version);
-
-				xfree(version);
-			}
-
-			xfree(name);
-		}
-
-	} else if (Is_element_name(el, "execute")) {
-		char *command;
-
-		if ((command = alloc_execute_command(el))) {
-			append_str(line, " ");
-			append_str(line, command);
-
-			xfree(command);
-
-			/* In case command has multiple lines. */
-			remove_new_line(*line);
-		}
-
-	} else if (Is_element_name(el, "textdump")) {
-		char *file;
-
-		if ((file = alloc_textdump_file(el))) {
-			append_str(line, " (");
-			append_str(line, file);
-			append_str(line, ")");
-
-			xfree(file);
-		}
-
-	} else if (Is_element_name(el, "stage")) {
-		char *s;
-
-/* TODO: get description/name from handler */
-/*		if ((s = attr_value("description", el))) {
-			append_str(line, s);
-
-		} else {
-			if ((s = attr_value("name", el))) {
-				append_str(line, s);
-			}
-		}
-*/
-
-	} else if (Is_element_name(el, "check")) {
-		char *s;
-
-		if ((s = alloc_trimmed_str(el->content)) != NULL) {
-			append_str(line, ": ");
-			append_str(line, s);
-
-			xfree(s);
-		}
-	}
-}
-
 static int should_skip_element(element_s *el, int *depth)
 {
 	if (el->type == TYPE_COMMENT && !*opt_display_comments) {
@@ -1476,25 +1406,13 @@ static void write_main_line(element_s *el, int *depth)
 		append_str(&line, "  ");
 	}
 
-	if (el->handler) { /* Description and some element-specific info. */
-		if (! Is_element_name(el, "stage") || *opt_display_stage_header) {
-			append_str(&line, el->handler->description);
-		}
-
-		add_element_specific_info(&line, el);
-
-	} else { /* We don't want to print huge profile's directories. */
-		if (el->type == TYPE_PROFILE) {
-			char *tmp;
-
-			if ((tmp = strrchr(el->name, '/'))) {
-				append_str(&line, ++tmp);
-			} else {
-				append_str(&line, el->name);
-			}
-		} else {
-			append_str(&line, el->name);
-		}
+	if (el->handler->data & HDATA_DISPLAY_NAME) {
+		char *display = el->handler->alloc_data(el,
+							HDATA_DISPLAY_NAME);
+		append_str(&line, display);
+		xfree(display);
+	} else {
+		append_str(&line, el->handler->description);
 	}
 
 	/* Print the line. */
@@ -1588,7 +1506,7 @@ static INLINE int jump_match(element_s *el)
 				|| el->run_status == RUN_STATUS_SOME_DONE);
 
 		case JUMP_TO_PACKAGE:
-			return Is_element_name(el, "package");
+			return el->handler->type & HTYPE_PACKAGE;
 	}
 
 	/* Never reached. */
@@ -2868,13 +2786,14 @@ static void write_extra_element_info(element_s *el)
 
 static void build_description_aux(char **pcontent, element_s *node, int indent)
 {
+#if 0
 	static const char *spaces = "            ";
 
 	if (indent > 12) {
 		indent = 12;
 	}
 
-	if (strcmp(node->name, "para") == 0) {
+	if (strcmp(node->handler->name, "para") == 0) {
 		char *s = xstrdup(node->content);
 
 		if (! Empty_string(s)) {
@@ -2897,14 +2816,14 @@ static void build_description_aux(char **pcontent, element_s *node, int indent)
 		xfree(s);
 	}
 
-	if (strcmp(node->name, "list") == 0) {
+	if (strcmp(node->handler->name, "list") == 0) {
 		element_s *child;
 		for (child = node->children; child; child = child->next) {
 			build_description_aux(pcontent, child, indent + 4);
 		}
 	}
 
-	if (strcmp(node->name, "item") == 0) {
+	if (strcmp(node->handler->name, "item") == 0) {
 		char *s = xstrdup(node->content);
 
 		if (! Empty_string(s)) {
@@ -2935,6 +2854,7 @@ static void build_description_aux(char **pcontent, element_s *node, int indent)
 
 		xfree(s);
 	}
+#endif
 }
 
 static char *build_description(element_s *el)
@@ -2971,7 +2891,7 @@ static int write_element_info(
 		Xwaddch(windows.main->name, '\n');
 	}
 	
-	Xwprintw(windows.main->name, "Element name  : %s\n\n", el->name);
+	Xwprintw(windows.main->name, "Element name  : %s (syntax version %s)\n\n", el->handler->name, el->handler->syntax_version);
 
 /* TODO: get content from handler */
 	/* Print attributes (if any).
@@ -3004,7 +2924,6 @@ static int write_element_info(
 		xfree(s);
 
 	} else if (el->content) {
-*/
 	if (el->content) {
 		Xwprintw(windows.main->name,
 			"Full content\n------------\n%s",
@@ -3013,6 +2932,7 @@ static int write_element_info(
 	} else {
 		Xwaddstr(windows.main->name, "No content.");
 	}
+*/
 
 	getyx(windows.main->name, lines, i);
 
@@ -3150,7 +3070,7 @@ static void start_executing_children(element_s *el)
 
 
 	Nprint("");
-	Nprint("Executing %s...", el->name);
+	Nprint("Executing %s...", el->handler->name);
 	Nprint("");
 
 	start_executing();
@@ -3186,7 +3106,7 @@ static INLINE void start_executing_next(element_s *el)
 
 
 	Nprint("");
-	Nprint("Executing from %s...", el->name);
+	Nprint("Executing from %s...", el->handler->name);
 	Nprint("");
 
 	start_executing();
@@ -3201,8 +3121,8 @@ static INLINE int reload_profile(element_s *old_profile)
 	element_s *new_profile;
 
 
-	if ((new_profile = parse_profile(old_profile->name)) == NULL) {
-		Nprint_err("Parsing %s failed.", old_profile->name);
+	if ((new_profile = parse_profile(old_profile->handler->name)) == NULL) {
+		Nprint_err("Parsing %s failed.", old_profile->handler->name);
 		return -1;
 	}
 
@@ -3245,7 +3165,7 @@ static element_s *do_add_profile(const char *profile)
 
 	add_profile(new_profile);
 
-	Nprint("Profile added: %s", new_profile->name);
+	Nprint("Profile added: %s", profile);
 
 	return new_profile;
 }
@@ -3464,7 +3384,7 @@ static int search_matches(element_s *el, const char *string)
 	}
 
 	if (what & SEARCH_ELEMENT_NAME) {
-		if (xstrcasestr(el->name, string + offset)) {
+		if (xstrcasestr(el->handler->name, string + offset)) {
 			return 1;
 		}
 	}
@@ -3481,13 +3401,15 @@ static int search_matches(element_s *el, const char *string)
 	}
 */
 
+#if 0
 	if ((what & SEARCH_CONTENT) && el->content) {
 		if (xstrcasestr(el->content, string + offset)) {
 			return 1;
 		}
 	}
+#endif
 
-	if ((what & SEARCH_FOR_PACKAGE) && Is_element_name(el, "package")) {
+	if ((what & SEARCH_FOR_PACKAGE) && (el->handler->type & HTYPE_PACKAGE)) {
 		int match;
 		char *name = alloc_package_name(el);
 
@@ -3500,7 +3422,7 @@ static int search_matches(element_s *el, const char *string)
 		}
 	}
 
-	if ((what & SEARCH_FOR_FULL_PACKAGE) && Is_element_name(el, "package")) {
+	if ((what & SEARCH_FOR_FULL_PACKAGE) && (el->handler->type & HTYPE_PACKAGE)) {
 		int match;
 		char *name = alloc_package_name(el);
 
@@ -3952,7 +3874,7 @@ static int browse(void)
 				element_s *profile =
 				get_profile_by_element(Current_element);
 
-				run_editor(profile->name);
+				run_editor(profile->handler->name);
 			}
 
 
@@ -4159,7 +4081,7 @@ static int browse(void)
 			displayed.current = find_cursor(el);
 
 			if (reload_profile(el)) {
-				Nprint_err("Reloading %s failed.", el->name);
+				Nprint_err("Reloading %s failed.", el->handler->name);
 				break;
 			}
 
@@ -4167,7 +4089,7 @@ static int browse(void)
 
 			rewrite_main();
 
-			Nprint("Profile %s reloaded.", Current_element->name);
+			Nprint("Profile %s reloaded.", Current_element->handler->name);
 
 			break;
 		}

@@ -31,28 +31,30 @@
 
 
 typedef enum handler_type_e {
-	HTYPE_COMMENT = (1 << 0),
-	HTYPE_NORMAL = (1 << 1),
-	HTYPE_PACKAGE = (1 << 2),
-	HTYPE_TEXTDUMP = (1 << 3),
-	HTYPE_TEST = (1 << 4),		/* handler provides a test result */
-	HTYPE_TRUE_RESULT = (1 << 5),	/* handler should be run for a true test */
-	HTYPE_FALSE_RESULT = (1 << 6),	/* handler should be run for a false test */
-	HTYPE_EXECUTE = (1 << 7),
-	HTYPE_STAGE = (1 << 8),      /* handler is a stage container */
-	HTYPE_STAGEINFO = (1 << 9),  /* handler provides stage information */
-	HTYPE_DIGEST = (1 << 10),    /* handler provides file digest information */
-	HTYPE_PACKAGEINFO = (1 << 11),  /* handler provides package information */
+	HTYPE_COMMENT = 1,
+	HTYPE_NORMAL = 2,
+	HTYPE_PACKAGE = 4,
+	HTYPE_TEST = 16,		/* handler provides a test result */
+	HTYPE_TRUE_RESULT = 32,	/* handler should be run for a true test */
+	HTYPE_FALSE_RESULT = 64,	/* handler should be run for a false test */
+	HTYPE_STAGE = 256,      /* handler is a stage container */
+	HTYPE_STAGEINFO = 512,  /* handler provides stage information */
+	HTYPE_DIGEST = 1024,    /* handler provides file digest information */
+	HTYPE_PACKAGEINFO = 2048,  /* handler provides package information */
 } handler_type_e;
 
 typedef enum handler_data_e {
-	HDATA_COMMAND = (1 << 1),
-	HDATA_NAME = (1 << 2),
-	HDATA_VERSION = (1 << 3),
-	HDATA_FILE = (1 << 4),
-	HDATA_BASE = (1 << 5),
-	HDATA_SHELL = (1 << 6),
-	HDATA_SYNTAX_VERSION = (1 << 7),
+	HDATA_COMMAND = 1,
+	HDATA_VERSION = 4,
+	HDATA_NAME = 2,
+#if 0
+	HDATA_FILE = 8,
+#endif
+	HDATA_BASE = 16,
+	HDATA_SHELL = 32,
+	HDATA_SYNTAX_VERSION = 64,
+	HDATA_DISPLAY_NAME = 128,
+	HDATA_DISPLAY_DETAILS = 256,
 } handler_data_e;
 
 struct handler_attribute {
@@ -145,8 +147,6 @@ char *alloc_package_name(element_s *el);
 char *alloc_package_version(element_s *el);
 char *alloc_package_string(element_s *el);
 int package_has_name_and_version(element_s *el);
-char *alloc_textdump_file(element_s *el);
-char *alloc_execute_command(element_s *el);
 
 const char *find_handler_data(const element_s * const element,
 			      const handler_data_e data_requested);

@@ -49,9 +49,7 @@ static int postbuild_valid_child(const element_s * const element,
 
 	return child->handler->type & (HTYPE_NORMAL |
 				       HTYPE_COMMENT |
-				       HTYPE_TEXTDUMP |
-				       HTYPE_PACKAGE |
-				       HTYPE_EXECUTE);
+				       HTYPE_PACKAGE);
 }
 
 static int postbuild_main(const element_s * const el)

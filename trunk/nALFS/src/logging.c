@@ -636,7 +636,7 @@ static INLINE int ask_about_element_status(element_s *el)
 	element_s *profile = get_profile_by_element(el);
 
 	comm_send_ctrl_msg(BACKEND_CTRL_SOCK, CTRL_REQUEST_EL_STATUS,
-		"%s %s %d", profile->name, el->name, el->id);
+		"%s %s %d", profile->handler->name, el->handler->name, el->id);
 
 	while ((message = comm_read_ctrl_message(BACKEND_CTRL_SOCK)) == NULL)
 		/* Wait for the first control message. */ ;
@@ -816,7 +816,7 @@ void log_end_time(const element_s * const el, const int status)
 	t = time(NULL);
 	strftime(time_str, sizeof time_str, DATE_FORMAT, localtime(&t));
 
-	logs_add_end_time(logs, el->name, time_str, status);
+	logs_add_end_time(logs, el->handler->name, time_str, status);
 }
 
 void log_start_time(const element_s * const el)
@@ -833,7 +833,7 @@ void log_start_time(const element_s * const el)
 	t = time(NULL);
 	strftime(time_str, sizeof time_str, DATE_FORMAT, localtime(&t));
 
-	logs_add_start_time(logs, el->name, time_str);
+	logs_add_start_time(logs, el->handler->name, time_str);
 }
 
 void start_logging_element(const element_s * const el)
@@ -843,7 +843,7 @@ void start_logging_element(const element_s * const el)
 		return;
 	}
 
-	if (Is_element_name(el, "package")) {
+	if (el->handler->type & HTYPE_PACKAGE) {
 		if (package_has_name_and_version(el)) {
 			logs = start_package_logging(el);
 
@@ -860,7 +860,7 @@ void end_logging_element(const element_s * const el, const int status)
 		return;
 	}
 
-	if (Is_element_name(el, "package")) {
+	if (el->handler->type & HTYPE_PACKAGE) {
 		end_package_logging(status);
 
 	}
