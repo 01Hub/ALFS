@@ -106,10 +106,7 @@
     -->
 <!ENTITY kernel-config "linux-config">
 
-<!-- grub settings (these need to be in grub's notation) 
-	NOTE:  The grub configuration profile is completely commented out.  You should edit
-	chapter08/grub.xml for your individual system if you want to automate this.
-	-->
+<!-- grub settings (these need to be in grub's notation) -->
 <!ENTITY grub-root "hd0,0">
 <!ENTITY grub-install-location "hd0">
 
