@@ -18,6 +18,8 @@ your LFS installation:
    - the file kernel.xml contains the commands for building the kernel
    - the files keymap-ch6.xml and keymap-ch8.xml are used to set up
      the default keymap
+   - file console.xml contains the commands to set up the Linux
+     console for non-US English language support
 
 - "skeleton" directory
   This directory (and all its subdirectories) contain all the standard

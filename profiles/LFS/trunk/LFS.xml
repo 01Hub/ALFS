@@ -181,9 +181,9 @@
         <variable name="CXXFLAGS">&gcc_optimizations;</variable>
       </environment>
     </stageinfo>
-    <xi:include href="config/fstab.xml" />
+    <xi:include href="chapter08/fstab.xml" />
     <xi:include href="config/kernel.xml" />
-    <xi:include href="config/grub.xml" />
+    <xi:include href="chapter08/grub.xml" />
   </stage>
   <stage name="Chapter 9 - The End">
     <stageinfo>
