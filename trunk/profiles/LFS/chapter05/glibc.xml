@@ -24,8 +24,9 @@
 		<configure command="../&glibc-directory;/configure">
 			<param>--prefix=/tools</param>
 			<param>--disable-profile</param>
-			<param>--enable-add-ons=linuxthreads</param>
-			<param>--with-headers=/tools/include</param>
+			<param>--enable-add-ons=nptl</param>
+			<param>--with-tls</param>
+			<param>--with-headers=/tools/glibc-kernheaders</param>
 			<param>--with-binutils=/tools/bin</param>
 			<param>--without-gd</param>
 			<param>--without-cvs</param>

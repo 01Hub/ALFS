@@ -54,6 +54,7 @@
 
 		&c5-binutils-pass1;
 		&c5-gcc-pass1;
+		&c5-libc-headers;
 		&c5-kernel-headers;
 		&c5-glibc;
 		&c5-lockingglibc;
@@ -77,14 +78,18 @@
 		&c5-tar;
 		&c5-texinfo;
 		&c5-bash;
-		&c5-perl;
+		&c5-m4;
+		&c5-bison;
+		&c5-flex;
 		&c5-util-linux;
+		&c5-perl;
+		&c5-udev;
 		&c5-strip;
 	</stage>
 </stage>
 
 <stage name="Chapter 6 - Installing basic system software">
-	<stage name="Creating directories and mounting the proc and devpts file systems">
+	<stage name="Creating directories and mounting the proc and sysfs file systems">
 		&c6-proc;
 	</stage>
 
@@ -105,8 +110,8 @@
 		&c6-creatingdirs;
 		&c6-createfiles;
 		&c6-pwdgroup;
-		&c6-makedev;
-		&c6-kernel;
+		&c6-basic-dev;
+		&c6-libc-headers;
 		&c6-man-pages;
 		&c6-glibc;
 		&c6-adjustingtoolchain;
@@ -138,7 +143,6 @@
 		&c6-libtool;
 		&c6-bzip2;
 		&c6-diffutils;
-		&c6-ed;
 		&c6-kbd;
 		&c6-e2fsprogs;
 		&c6-grep;
@@ -146,17 +150,16 @@
 		&c6-gzip;
 		&c6-man;
 		&c6-make;
-		&c6-modutils;
+		&c6-module-tools;
 		&c6-patch;
-		&c6-procinfo;
 		&c6-procps;
 		&c6-psmisc;
 		&c6-shadow;
 		&c6-sysklogd;
 		&c6-sysvinit;
 		&c6-tar;
+		&c6-udev;
 		&c6-util-linux;
-		&c6-gcc-2953;
 		&c6-strip;
 	</stage>
 </stage>

@@ -8,6 +8,7 @@
 
 		<copy>
 			<source>&packages_dir;/&inetutils-no-man-pages-patch;</source>
+			<source>&packages_dir;/&inetutils-kernel-headers-patch;</source>
 			<destination>&build_dir;</destination>
 		</copy>
 	</stage>
@@ -21,6 +22,12 @@
 			<param>-N</param>
 			<param>-p1</param>
 			<param>-i ../&inetutils-no-man-pages-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&inetutils-kernel-headers-patch;</param>
 		</patch>
 
 		<configure>
@@ -49,5 +56,6 @@
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&inetutils-directory;</remove>
 		<remove>&build_dir;/&inetutils-no-man-pages-patch;</remove>
+		<remove>&build_dir;/&inetutils-kernel-headers-patch;</remove>
 	</stage>
 </package>

@@ -26,6 +26,7 @@
 		<configure>
 			<param>--prefix=/usr</param>
 			<param>--bindir=/bin</param>
+			<param>--without-bash-malloc</param>
 		</configure>
 
 		<make />

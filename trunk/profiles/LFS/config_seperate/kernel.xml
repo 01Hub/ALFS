@@ -32,35 +32,11 @@
 			<param>oldconfig</param>
 		</make>
 
-		<make>
-			<param>CC=/opt/gcc-2.95.3/bin/gcc</param>
-			<param>dep</param>
-		</make>
+		<make />
 
 		<make>
-			<param>CC=/opt/gcc-2.95.3/bin/gcc</param>
-			<param>bzImage</param>
-		</make>
-
-		<make>
-			<param>CC=/opt/gcc-2.95.3/bin/gcc</param>
-			<param>modules</param>
-		</make>
-
-		<make>
-			<param>CC=/opt/gcc-2.95.3/bin/gcc</param>
 			<param>modules_install</param>
 		</make>
-
-		<make>
-			<param>mandocs</param>
-		</make>
-
-		<copy>
-			<option>archive</option>
-			<source>Documentation/man</source>
-			<destination>/usr/share/man/man9</destination>
-		</copy>
 
 		<copy>
 			<source>arch/i386/boot/bzImage</source>
@@ -69,7 +45,7 @@
 
 		<copy>
 			<source>System.map</source>
-			<destination>/boot/System-&linux-version;.map</destination>
+			<destination>/boot/System.map-&linux-version;</destination>
 		</copy>
 
 		<copy>
