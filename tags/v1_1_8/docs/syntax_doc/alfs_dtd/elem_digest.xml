@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<sect1 id="elem_digest">
+<title>digest</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT digest    (#PCDATA)>
+&lt;ATTLIST digest
+         type      CDATA  "md5">
+</synopsis>
+
+<para>This element occurs in the element
+<link linkend="elem_download">download</link> and
+<link linkend="elem_unpack">unpack</link>.
+.</para>
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>unpack</token> is used to specify the
+digest of the archive file to be unpacked, or of the file to be downloaded.
+</para>
+</sect2>
+
+<sect2><title>Examples</title>
+
+<programlisting>&lt;download>
+    &lt;file>kbd-1.08.tar.gz&lt;/file>
+    &lt;url>ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/&lt;/url>
+    &lt;destination>/tmp/&lt;/destination>
+    &lt;digest>924e6a05e52715dc0f96385b35f2f680&lt;/digest>
+&lt;/download>
+</programlisting>
+
+<para>YAALFS does not process this element yet.</para>
+
+</sect2>
+</sect1>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<sect1 id="elem_patch">
+<title>patch</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT patch          (param*)>
+&lt;!ATTLIST patch
+          base           CDATA #IMPLIED>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_alfs">alfs</link>,
+<link linkend="elem_alfs">else</link>,
+<link linkend="elem_stage">stage</link>.
+and <link linkend="elem_then">then</link>
+</para>
+
+<para>See also : 
+<link linkend="elem_param">param</link>,
+</para>
+
+
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>patch</token> is used to execute the patch command.</para>
+
+<para>The sub-elements <token>param</token> contain the parameters of the command.</para>
+
+<para>The attribute <token>base</token> specified the directory in which 
+the command will be performed.</para>
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;patch>
+    &lt;param>-N&lt;/param>
+    &lt;param>-p1&lt;/param>
+    &lt;param>-i ../gawk-3.1.1.patch&lt;/param>
+&lt;/patch>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo 'patch -N -p1 -i ../gawk-3.1.1.patch'
+patch -N -p1 -i ../gawk-3.1.1.patch
+</programlisting>
+
+</sect2>
+</sect1>

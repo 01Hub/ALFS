@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<sect1 id="elem_if">
+<title>if</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT if    (then?,else?)>
+&lt;!ATTLIST if
+          test     CDATA #IMPLIED
+          package  CDATA #IMPLIED
+          condition (eq|ne|gt|ge|lt|le) #IMPLIED
+	  version  CDATA #IMPLIED>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_alfs">alfs</link>,
+<link linkend="elem_else">else</link>,
+<link linkend="elem_stage">stage</link>,
+and <link linkend="elem_then">then</link>.
+</para>
+
+<para>See also : 
+<link linkend="elem_else">else</link>,
+<link linkend="elem_then">then</link>.
+</para>
+
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<para>The element <token>if</token> perform either a test either
+of a shell expression (if the <token>test</token> attribute
+is specified), or an evaluation on the existence
+or version of a package (if the <token>package</token> attribute
+is specified.
+</para>
+
+<para>If the <token>test</token> attribute is specified,
+one look first for four special values : "0", "1", "false", and "true",
+which have the usual meaning. If the attribute has another value,
+one executes the attribute as a shell expression, and consider
+that the test is satisfied of the status is 0.
+</para>
+
+<para>If the <token>package</token> attribute is specified but the
+<token>condition</token> attribute is not specified, the test will 
+be satisfied if the specified package has been build.</para>
+
+<para>If the attributes <token>package</token>, <token>condition</token>
+and <token>version</token> are specified, the test will be satisfied 
+if the condition on the vaersion of the package is satisfied.
+The condition is evaluated the same was as when evaluating
+the <token>version</token> element.</para>
+
+<para>The two attributes <token>test</token> and <token>package</token>
+are mutually exclusive.</para>
+
+</sect2>
+
+<sect2><title>Examples</title>
+
+<programlisting>
+&lt;if test="0">
+&lt;then>&lt;execute command="echo this should be executed." />&lt;/then>
+&lt;else>&lt;execute command="echo this should not be executed." />&lt;/else>
+&lt;/if>
+</programlisting>
+
+<programlisting>
+&lt;execute command="touch /tmp/foo" />
+&lt;if test="[-r /tmp/foo">
+&lt;then>&lt;execute command="echo this should be executed." />&lt;/then>
+&lt;else>&lt;execute command="echo this should not be executed." />&lt;/else>
+&lt;/if>
+</programlisting>
+
+<programlisting>
+&lt;if package="bison">
+&lt;then>&lt;execute command="echo this should be executed if bison is build." />&lt;/then>
+&lt;else>&lt;execute command="echo this should not be executed if bison is build." />&lt;/else>
+&lt;/if>
+</programlisting>
+
+<programlisting>
+&lt;if package="bison" condition="ge" version="1.875">
+&lt;then>&lt;execute command="echo this should be executed if bison 1.875 or greater is build." />&lt;/then>
+&lt;/if>
+</programlisting>
+
+</sect2>
+
+</sect1>

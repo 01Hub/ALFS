@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<sect1 id="elem_user">
+<title>user</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT user           (#PCDATA)>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_stageinfo">stageinfo</link>.
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>user</token> allow to specify a user ID
+that will be the effective user ID when executing the commands
+of the stage to which it applies.</para>
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;stage>
+    &lt;stageinfo>
+        &lt;base>/usr/src/mypackage&lt;/base>
+	&lt;user>lfs&lt;/user>
+    &lt;/stageinfo>
+   
+    &lt;make>
+        &lt;param>install&lt;/param>
+    &lt;/make>
+&lt;/stage>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Stage
+
+echo Creating file ./_nalfs_tmp.1...
+cat > ./_nalfs_tmp.1 &lt;&lt; 'EOF1'
+echo Executing make
+cd /usr/src/mypackage
+make install
+
+true
+EOF1
+[[ $? != 0 ]] &amp;&amp;  echo Creating file failed &amp;&amp; exit 3
+
+chmod 775 ./_nalfs_tmp.1
+echo Executing as user lfs
+/bin/su lfs -c ./_nalfs_tmp.1
+
+echo Finished execution as user lfs
+
+echo Exiting stage
+
+</programlisting>
+
+</sect2>
+</sect1>

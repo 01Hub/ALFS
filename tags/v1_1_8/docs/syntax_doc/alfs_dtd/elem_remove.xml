@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<sect1 id="elem_remove">
+<title>remove</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT remove         (#PCDATA)>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_alfs">alfs</link>,
+<link linkend="elem_alfs">else</link>,
+<link linkend="elem_stage">stage</link>.
+and <link linkend="elem_then">then</link>
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<para>The element <token>remove</token> allows to remove a file or directory.
+The content of the element contains the name of the file.</para>
+
+<para>The deletion of the directory is always recursive (rm -fr).</para>
+
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;remove>/usr/src/mypackage&lt;/remove>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Removing /usr/src/mypackage
+rm -rf /usr/src/mypackage
+</programlisting>
+
+<para></para>
+</sect2>
+</sect1>

@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<sect1 id="elem_ownership">
+<title>ownership</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT ownership      (option?, name+)>
+&lt;!ATTLIST ownership
+          base           CDATA #IMPLIED
+          user           CDATA #IMPLIED
+          group          CDATA #IMPLIED>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_alfs">alfs</link>,
+<link linkend="elem_alfs">else</link>,
+<link linkend="elem_stage">stage</link>.
+and <link linkend="elem_then">then</link>
+</para>
+
+<para>See also : 
+<link linkend="elem_option">option</link>,
+<link linkend="elem_name">name</link>.
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<para>The element <token>ownership</token> is used to perform
+a group and/or user ownership change on a file or set of files</para>
+
+<para>The only option supported is "recursive"</para>
+
+<para>The sub-element <token>name</token> contains the name of the
+file (or directory) whose ownership is to be changed.</para>
+
+<para>The attribute <token>base</token> specifies the directory
+in which the command is performed.</para>
+
+<para>The attribute <token>user</token> specifies the name of the user
+which will own the file or directory</para>
+
+<para>The attribute <token>group</token> specifies the name of the group
+which will own the file or directory</para>
+
+</sect2>
+
+<sect2><title>Examples</title>
+
+<para>The first example uses symbolic names.</para>
+
+<programlisting>
+&lt;ownership user="root" group="root">
+    &lt;option>recursive&lt;/option>
+    &lt;name>/etc/rc.d&lt;/name>
+    &lt;name>/etc/sysconfig&lt;/name>
+&lt;/ownership>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Changing group of /etc/rc.d into root
+chgrp -R root /etc/rc.d
+
+echo Changing owner of /etc/rc.d into root
+chown -R root /etc/rc.d
+
+echo Changing group of /etc/sysconfig into root
+chgrp -R root /etc/sysconfig
+
+echo Changing owner of /etc/sysconfig into root
+chown -R root /etc/sysconfig
+</programlisting>
+
+<para>The second example uses numeric values (0 = root).</para>
+
+<programlisting>
+&lt;ownership user="0" group="0">
+    &lt;option>recursive&lt;/option>
+    &lt;name>/etc/rc.d&lt;/name>
+    &lt;name>/etc/sysconfig&lt;/name>
+&lt;/ownership>
+</programlisting>
+<para></para>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Changing group of /etc/rc.d into 0
+chgrp -R 0 /etc/rc.d
+
+echo Changing owner of /etc/rc.d into 0
+chown -R 0 /etc/rc.d
+
+echo Changing group of /etc/sysconfig into 0
+chgrp -R 0 /etc/sysconfig
+
+echo Changing owner of /etc/sysconfig into 0
+chown -R 0 /etc/sysconfig
+</programlisting>
+
+</sect2>
+</sect1>

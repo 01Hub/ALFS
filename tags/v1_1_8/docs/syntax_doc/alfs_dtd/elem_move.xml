@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<sect1 id="elem_move">
+<title>move</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT move           (option?, source+, destination)>
+&lt;!ATTLIST move
+          base           CDATA #IMPLIED>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_alfs">alfs</link>,
+<link linkend="elem_alfs">else</link>,
+<link linkend="elem_stage">stage</link>.
+and <link linkend="elem_then">then</link>
+</para>
+
+<para>See also : 
+<link linkend="elem_option">option</link>,
+<link linkend="elem_source">source</link>,
+<link linkend="elem_destination">destination</link>.
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>move</token> is used to move one or several source
+files and/or directories  into a destination file or directory</para>
+
+<para>The supported option is an option of the mv command:
+<itemizedlist>
+<listitem><para>force</para></listitem>
+</itemizedlist>.
+</para>
+
+<para>When processing this element, one moves each source
+to the destination, using the specified option if present.</para>
+
+<para>When the attribute <token>base</token> is specified, 
+it should contain the name of the current directory
+from which the move operation is performed.
+</para>
+</sect2>
+
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;move>
+    &lt;source>/usr/src/mypackage/config.txt&lt;/source>
+    &lt;destination>/opt/mypackage/config.txt&lt;/destination>    
+&lt;/move>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Move ' /usr/src/mypackage/config.txt /opt/mypackage/config.txt'
+mv  /usr/src/mypackage/config.txt /opt/mypackage/config.txt
+</programlisting>
+
+
+
+</sect2>
+</sect1>

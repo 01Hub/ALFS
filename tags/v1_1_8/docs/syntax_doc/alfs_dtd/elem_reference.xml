@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<sect1 id="elem_reference">
+<title>reference</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT reference      (#PCDATA)>
+</synopsis>
+
+<para>This element occurs in the element
+<link linkend="elem_unpack">unpack</link>.
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<para>The element <token>reference</token> is used to specify the URL of the reference
+archive to download if the local copy is not available.</para>
+
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;unpack>
+    &lt;reference>ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz&lt;/reference>
+    &lt;archive>/usr/src/lfs-packages/gzip.1.2.4a&lt;/archive>
+    &lt;destination>/usr/src&lt;/destination>
+&lt;/unpack>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Unpacking /usr/src/lfs-packages/gzip.1.2.4a.tar.gz into /usr/src
+[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp; 
+  echo Retrieving  ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
+[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp; 
+  wget -O /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ftp://ftp.gnu.org/gnu/gzip/gzip.1.2.4a.tar.gz
+[[ ! -f /usr/src/lfs-packages/gzip.1.2.4a.tar.gz ]] &amp;&amp; 
+  echo Archive does not exist &amp;&amp; exit 3
+
+cd /usr/src
+tar xzvf /usr/src/lfs-packages/gzip.1.2.4a.tar.gz
+</programlisting>
+
+</sect2>
+
+</sect1>

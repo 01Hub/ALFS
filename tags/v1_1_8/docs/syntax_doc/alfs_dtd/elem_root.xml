@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<sect1 id="elem_root">
+<title>root</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT root           (#PCDATA)>
+</synopsis>
+
+<para>This element occurs in the element
+<link linkend="elem_stageinfo">stageinfo</link>.
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>root</token> allow to specify the 
+name of a directory which will be the root directory
+for the commands of the stage.
+</para>
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;stage>
+    &lt;stageinfo>
+        &lt;root>/mnt/lfs&lt;/root>
+        &lt;base>/usr/src/gzip.1.2.4a&lt;/base>
+    &lt;/stageinfo>
+   
+    &lt;configure />
+
+    &lt;make />
+
+    &lt;make>
+        &lt;param>install&lt;/param>
+    &lt;/make>
+&lt;/stage>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Creating file /mnt/lfs/_nalfs_tmp.1...
+cat > /mnt/lfs/_nalfs_tmp.1 &lt;&lt; 'EOF1'
+echo Executing configure
+cd /usr/src/gzip.1.2.4a
+./configure
+
+echo Executing make
+cd /usr/src/gzip.1.2.4a
+make
+
+echo Executing make
+cd /usr/src/gzip.1.2.4a
+make install
+
+true
+EOF1
+
+chmod 775 /mnt/lfs/_nalfs_tmp.1
+echo Executing in directory /mnt/lfs
+/usr/sbin/chroot /mnt/lfs /static/bin/env -i \
+    PATH='/bin:/usr/bin:/sbin:/usr/sbin:/static/bin' \
+    HOME='/root' /static/bin/bash -c ./_nalfs_tmp.1
+
+echo Exiting stage
+</programlisting>
+
+<para></para>
+</sect2>
+</sect1>

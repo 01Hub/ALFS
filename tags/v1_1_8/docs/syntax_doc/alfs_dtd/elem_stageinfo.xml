@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<sect1 id="elem_stageinfo">
+<title>stageinfo</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT stageinfo      (root?,environment?,user?,base?)>
+</synopsis>
+
+<para>This element occurs in the element
+<link linkend="elem_stage">stage</link>.
+</para>
+
+<para>See also :
+<link linkend="elem_root">root</link>,
+<link linkend="elem_base">base</link>.
+<link linkend="elem_environment">environment</link>.
+<link linkend="elem_user">user</link>.
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>stageinfo</token> allows to specify several
+context informations used to process the commands of the stage
+to which the stageinfo belongs.</para>
+
+<para>The <token>base</token> sub-element specify a base directory that will be
+used by all the commands of the stage, unless that command redefines
+the base locally.</para>
+
+<para>The <token>user</token> sub-element specify a user name that will be used as
+the effective user ID of the current process for all the commands of the stage</para>
+
+<para>The <token>root</token> sub-element specify a directory name 
+in which the commands of the stage will be performed (using a chroot command).
+</para>
+
+<para>The <token>environment</token> sub-element allow to specify a environment variable
+that will be added to the current environment when processing 
+the commands of the stage.</para>
+
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;stage>
+    &lt;stageinfo>
+        &lt;base>/usr/src/gzip.1.2.4a&lt;/base>
+    &lt;/stageinfo>
+   
+    &lt;configure />
+
+    &lt;make />
+
+    &lt;make>
+        &lt;param>install&lt;/param>
+    &lt;/make>
+&lt;/stage>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Executing configure
+cd /usr/src/gzip.1.2.4a
+./configure
+
+echo Executing make
+cd /usr/src/gzip.1.2.4a
+make
+
+echo Executing make
+cd /usr/src/gzip.1.2.4a
+make install
+
+echo Exiting stage
+</programlisting>
+
+<para></para>
+</sect2>
+</sect1>

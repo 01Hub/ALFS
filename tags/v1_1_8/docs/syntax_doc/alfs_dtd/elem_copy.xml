@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<sect1 id="elem_copy">
+<title>copy</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT copy           (option*, source+, destination)>
+&lt;!ATTLIST copy
+          base           CDATA #IMPLIED>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_alfs">alfs</link>,
+<link linkend="elem_alfs">else</link>,
+<link linkend="elem_stage">stage</link>.
+and <link linkend="elem_then">then</link>
+</para>
+
+<para>See also : 
+<link linkend="elem_option">option</link>,
+<link linkend="elem_source">source</link>,
+<link linkend="elem_destination">destination</link>.
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>copy</token> is used to copy one or several source
+files and/or directories  into a destination file or directory</para>
+
+<para>The supported options are options of the cp command:
+<itemizedlist>
+<listitem><para>archive</para></listitem>
+<listitem><para>force</para></listitem>
+<listitem><para>no-dereference</para></listitem>
+<listitem><para>preserve</para></listitem>
+<listitem><para>recursive</para></listitem>
+</itemizedlist>.
+</para>
+
+<para>When processing this element, one copy each source
+to the destination, using the specified options.</para>
+
+<para>When the attribute <token>base</token> is specified, 
+it should contain the name of the current directory
+from which the copy operation is performed.
+</para>
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;copy base="/usr/src/mypackage">
+   &lt;option>force&lt;/option>
+   &lt;source>config.txt&lt;/source>
+   &lt;destination>/opt/mypackage/config.txt&lt;/destination>
+&lt;/copy>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Copying ' config.txt into /opt/mypackage/config.txt'
+cd /usr/src/mypackage
+cp -f  config.txt /opt/mypackage/config.txt
+</programlisting>
+
+
+</sect2>
+</sect1>

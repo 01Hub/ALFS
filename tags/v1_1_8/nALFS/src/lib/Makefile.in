@@ -1,0 +1,47 @@
+#
+#   Makefile - Makefile for common code library.
+#
+#   Copyright (C) 2001-2003
+#
+#   Neven Has <haski@sezampro.yu> and
+#   Kevin P. Fleming <kpfleming@backtobasicsmgmt.com>
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+
+srcdir       := @top_srcdir@/src/lib
+top_builddir := @top_builddir@
+include $(top_builddir)/Rules.mak
+
+CFLAGS += -fPIC
+
+.PHONY: all
+
+all: $(NALFS_LIB)
+
+$(NALFS_LIB): $(O_FILES)
+	$(AR) cr $@ $^
+	$(RANLIB) $@
+
+$(O_FILES): %.o: $(srcdir)/%.c
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+
+.PHONY: clean distclean
+
+clean:
+	$(RM) $(O_FILES) $(NALFS_LIB)
+
+distclean:
+	$(RM) Makefile

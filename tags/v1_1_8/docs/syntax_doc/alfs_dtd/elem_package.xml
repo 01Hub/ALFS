@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<sect1 id="elem_package">
+<title>package</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT package        (packageinfo?,stage+)>
+&lt;!ATTLIST package
+          name           CDATA #REQUIRED
+          version        CDATA #REQUIRED>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_alfs">alfs</link>,
+<link linkend="elem_alfs">else</link>,
+<link linkend="elem_stage">stage</link>.
+and <link linkend="elem_then">then</link>
+</para>
+
+<para>See also : 
+<link linkend="elem_packageinfo">packageinfo</link>,
+<link linkend="elem_stage">stage</link>.
+</para>
+
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<para>The element <token>package</token> describes the build process
+of a package.</para>
+
+<para>The actual build process is described by the <token>stage</token> sub-elements.
+</para>
+
+<para>The attribute <token>name</token> contains the name of the package.</para>
+
+<para>The attribute <token>version</token> contains the version of the package.</para>
+
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;package name="zlib" version="1.1.4">
+	&lt;stage name="Unpacking a package.">
+		&lt;unpack>
+			&lt;archive>/usr/src/lfs-packages/zlib.1.1.4.tar.gz&lt;/archive>
+			&lt;destination>/usr/src&lt;/destination>
+		&lt;/unpack>
+	&lt;/stage>
+
+        .....
+&lt;/package>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Generating package zlib 1.1.4
+
+#-----------------------------------------
+echo Stage "Unpacking a package."
+
+echo Unpacking /usr/src/lfs-packages/zlib.1.1.4.tar.gz into /usr/src
+cd /usr/src
+[[ $? != 0 ]] &amp;&amp;  echo Command failed &amp;&amp; exit 3
+
+tar xzvf /usr/src/lfs-packages/zlib.1.1.4.tar.gz
+[[ $? != 0 ]] &amp;&amp;  echo Command failed &amp;&amp; exit 3
+
+
+echo Exiting stage "Unpacking a package."
+
+...
+
+echo End of generating package zlib 1.1.4
+
+</programlisting>
+
+</sect2>
+</sect1>

@@ -1,0 +1,91 @@
+#
+#   Rules.mak.in
+#
+#   Copyright (C) 2003
+#
+#   Neven Has <haski@sezampro.yu>
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+
+
+#
+# This file is included by all Makefiles.
+# Each individual Makefile must define the following variables:
+#
+# srcdir -- current source directory
+#
+
+abs_top_srcdir := @abs_top_srcdir@
+
+prefix      := @prefix@
+exec_prefix := @exec_prefix@
+bindir      := @bindir@
+libdir      := @libdir@
+
+INSTALL     := @INSTALL@
+
+CC          := @CC@
+LD          := @LD@
+AR          := @AR@
+RANLIB      := @RANLIB@
+
+CPPFLAGS    := @CPPFLAGS@
+CFLAGS      := @CFLAGS@
+LDFLAGS     := @LDFLAGS@
+LDLIBS      := @LIBS@
+
+NALFS_LIB   := $(top_builddir)/src/lib/lib.a
+
+handlers_directory := $(libdir)/nALFS/
+
+CPPFLAGS += -DHANDLERS_DIRECTORY=\"$(handlers_directory)\"
+CPPFLAGS += -I$(abs_top_srcdir)/src/ -I$(abs_top_srcdir)/src/lib/
+
+CFLAGS   += -W -Wall -Wshadow -Winline
+
+C_FILES  := $(wildcard $(srcdir)/*.c)
+H_FILES  := $(wildcard $(srcdir)/*.h)
+O_FILES  := $(patsubst $(srcdir)/%.c,%.o, $(C_FILES))
+
+
+ifeq ($(shell echo $(HOME)), /home/neven)
+	CC := /opt/gcc/bin/gcc
+
+	CFLAGS += -std=gnu99
+
+	CFLAGS += -Wmultichar
+	# CFLAGS += -Wtraditional
+	CFLAGS += -Wundef
+	CFLAGS += -Wpointer-arith
+	CFLAGS += -Wbad-function-cast
+	# CFLAGS += -Wcast-qual
+	CFLAGS += -Wcast-align
+	# CFLAGS += -Wwrite-strings
+	CFLAGS += -Waggregate-return
+	CFLAGS += -Wstrict-prototypes
+	# CFLAGS += -Wmissing-prototypes
+	# CFLAGS += -Wmissing-declarations
+	CFLAGS += -Wredundant-decls
+	CFLAGS += -Wnested-externs
+	# CFLAGS += -Wunreachable-code
+
+	CFLAGS += -Werror
+
+	CPPFLAGS += -DDO_ASSERT
+	CPPFLAGS += -DDEBUG_NCURSES_FUNCTIONS
+	# CPPFLAGS += -DDEBUG_LOGGING
+	# CPPFLAGS += -DDEBUG_MEMORY
+endif

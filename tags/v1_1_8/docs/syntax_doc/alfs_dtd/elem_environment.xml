@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<sect1 id="elem_environment">
+<title>environment</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT environment    (variable+)>
+</synopsis>
+
+<para>This element occurs in the element
+<link linkend="elem_stageinfo">stageinfo</link>.
+</para>
+
+<para>See also :
+<link linkend="elem_variable">variable</link>,
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>environment</token> allows to define 
+one or more environment variables to be added to the environment
+used when calling the commands of the stage to which it applies.</para>
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;stage>
+    &lt;stageinfo>
+        &lt;base>/usr/src/gzip.1.2.4a&lt;/base>
+        &lt;environment>
+            &lt;variable name="GCCFLAGS">-O2&lt;/variable>
+        &lt;/environment>
+    &lt;/stageinfo>
+   
+    &lt;configure />
+
+    &lt;make />
+
+    &lt;make>
+        &lt;param>install&lt;/param>
+    &lt;/make>
+&lt;/stage>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Stage
+
+export GCCFLAGS=-O2
+
+echo Executing configure
+cd /usr/src/gzip.1.2.4a
+./configure
+
+echo Executing make
+cd /usr/src/gzip.1.2.4a
+make
+
+echo Executing make
+cd /usr/src/gzip.1.2.4a
+make install
+
+echo Exiting stage
+
+</programlisting>
+
+</sect2>
+</sect1>

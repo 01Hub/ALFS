@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<sect1 id="elem_list">
+<title>list</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT list    (item|list)+>
+&lt;!ATTLIST list
+          type           (bullet|number) "bullet">
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_description">description</link>
+and <link linkend="elem_list">list</link>.
+</para>
+
+<para>See also : 
+<link linkend="elem_item">item</link>.
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<para>The element <token>list</token> contains
+a list of items or sub-lists in a description.</para>
+
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+    &lt;package name="gimp" version="1.2.3">
+        &lt;packageinfo>
+	        &lt;description>
+                    &lt;para>The gimp package contains the GNU Image 
+		    Manipulation Program. 
+		    This is useful for :&lt;/para>
+		    &lt;list>
+		    &lt;item>photo retouching,&lt;/item>
+		    &lt;item>image composition,&lt;/item>
+		    &lt;item>image authoring.&lt;/item>
+		    &lt;/list>
+		&lt;/description>
+
+                &lt;requires>&lt;name>gtk+&lt;/name>&lt;/requires>
+
+		&lt;utilizes>&lt;name>libtiff&lt;/name>&lt;/utilizes>
+		&lt;utilizes>&lt;name>libpng&lt;/name>&lt;/utilizes>
+		&lt;utilizes>&lt;name>libjpeg&lt;/name>&lt;/utilizes>
+		&lt;utilizes>&lt;name>aalib&lt;/name>&lt;/utilizes>
+		&lt;utilizes>&lt;name>mpeg_lib&lt;/name>&lt;/utilizes>
+		&lt;utilizes>&lt;name>python&lt;/name>&lt;/utilizes>
+
+        &lt;/required>
+
+	....
+
+    &lt;/package>
+
+</programlisting>
+
+</sect2>
+</sect1>

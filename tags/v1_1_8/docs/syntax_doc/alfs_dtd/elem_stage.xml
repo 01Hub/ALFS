@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<sect1 id="elem_stage">
+<title>stage</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT stage          (stageinfo?,(configure|copy|download|execute|
+                                       if|link|make|mkdir|move|ownership|package|
+                                       patch|permissions|remove|search_replace|
+                                       stage|textdump|unpack)*)>
+&lt;!ATTLIST stage
+          name           CDATA #IMPLIED>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_alfs">alfs</link>,
+<link linkend="elem_alfs">else</link>,
+<link linkend="elem_stage">stage</link>.
+and <link linkend="elem_then">then</link>
+</para>
+
+<para>See also :
+<link linkend="elem_configure">configure</link>,
+<link linkend="elem_copy">copy</link>,
+<link linkend="elem_download">download</link>,
+<link linkend="elem_execute">execute</link>,
+<link linkend="elem_if">if</link>,
+<link linkend="elem_link">link</link>,
+<link linkend="elem_make">make</link>,
+<link linkend="elem_mkdir">mkdir</link>,
+<link linkend="elem_move">move</link>,
+<link linkend="elem_ownership">ownership</link>,
+<link linkend="elem_package">package</link>,
+<link linkend="elem_patch">patch</link>,
+<link linkend="elem_permissions">permissions</link>,
+<link linkend="elem_remove">remove</link>,
+<link linkend="elem_search_replace">search_replace</link>,
+<link linkend="elem_stageinfo">stageinfo</link>,
+<link linkend="elem_textdump">textdump</link>,
+<link linkend="elem_unpack">unpack</link>.
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>stage</token> allows to regroup commands,
+give a name to this group, through the attribute <token>name</token>,
+and optionally modify the execution context through the element
+<token>stageinfo</token>.</para>
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;stage>
+    &lt;stageinfo>
+        &lt;base>/usr/src/gzip.1.2.4a&lt;/base>
+    &lt;/stageinfo>
+   
+    &lt;configure />
+
+    &lt;make />
+
+    &lt;make>
+        &lt;param>install&lt;/param>
+    &lt;/make>
+&lt;/stage>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Executing configure
+cd /usr/src/gzip.1.2.4a
+./configure
+
+echo Executing make
+cd /usr/src/gzip.1.2.4a
+make
+
+echo Executing make
+cd /usr/src/gzip.1.2.4a
+make install
+
+echo Exiting stage
+</programlisting>
+
+<para></para>
+</sect2>
+</sect1>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+			"/usr/share/docbook/docbookx.dtd" [
+
+<!ENTITY version     "3.1-20030918">
+<!ENTITY releasedate "September 18, 2003">
+
+<!ENTITY legalnotice      SYSTEM "legalnotice.xml">
+<!ENTITY acknowledgements SYSTEM "acknowledgements.xml">
+<!ENTITY changelog        SYSTEM "changelog.xml">
+<!ENTITY contactinfo      SYSTEM "contactinfo.xml">
+
+<!ENTITY nalfs_dtd        SYSTEM "nalfs_dtd/nalfs_dtd.xml">
+
+
+<!ENTITY % nalfs_dtd_entities   SYSTEM "nalfs_dtd/nalfs_dtd.ent">
+%nalfs_dtd_entities;
+
+]>
+
+
+<book>
+
+    <bookinfo>
+	<title>Automated Linux From Scratch</title>
+	<subtitle>Version &version;</subtitle>
+
+	<authorgroup>
+            <author>
+                <firstname>Jesse</firstname>
+                <surname>Tie-Ten-Quee</surname>
+            </author>
+	    <author>
+		<firstname>Vassili</firstname>
+		<surname>Dzuba</surname>
+	    </author>
+	</authorgroup>
+
+	<copyright id="copyright">
+	    <year>2001-2003</year>
+	    <holder>Jesse Tie-Ten-Quee, Vassili Dzuba</holder>
+	</copyright>
+
+	&legalnotice;
+
+	<abstract>
+	    <para>Documentation and examples of the profile syntax, version 3.1.</para>
+	</abstract>
+    </bookinfo>
+
+    <chapter id="ch01">
+	<title>Introduction</title>
+
+	&acknowledgements;
+	&changelog;
+	&contactinfo;
+
+    </chapter>
+
+    &nalfs_dtd;
+
+</book>

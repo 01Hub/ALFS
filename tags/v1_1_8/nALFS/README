@@ -1,0 +1,292 @@
+nALFS, version 1.1.8
+====================
+
+
+nALFS is used for parsing the ALFS profiles (simple XML files) and, 
+following those profiles, do various things (like executing commands), 
+one by one, to (usually) compile some packages.
+
+
+1. LFS, ALFS
+
+2. Quick start
+
+3. Requirements
+
+4. Compiling and installing
+
+5. Running and usage
+
+   5.1 Run-status marks
+
+   5.2 Starting the execution
+
+   5.3 Types of messages (in status window)
+
+   5.4 Options indicators
+
+   5.5 Searching the profile
+
+   5.6 Non-interactive mode
+
+
+1. LFS, ALFS
+============
+
+LFS stands for Linux From Scratch and it's a project, led by Gerard
+Beekmans <gerard@linuxfromscratch.org>, which helps you build your own
+Linux system.
+
+What this means is that you will be using nothing but the source code
+of various packages needed for fully functional Linux system. You will
+compile them, one be one, on your own machine, and therefore, they
+will be maximally optimized for it. Also, you will be able to tweak
+every single corner of your system, by editing bunch of configuration
+files, creating your own boot scripts etc.
+
+All this might sound a bit complicated, requiring too much work. But
+even if it is, it's well worth it.
+
+However, it doesn't have to be that complicated. With only a few
+keystrokes and the right software, you can just sit back and relax,
+while your system is being built. This is where ALFS comes into play.
+
+ALFS stands for Automated Linux From Scratch, and its aim is to
+provide a much simpler method for building a Linux system.
+
+ALFS uses the profiles, simple XML files, which describe what actions
+are to be taken and what commands executed. Feeding the program (like
+nALFS) with those profiles, will make the program act upon them.
+
+For example, if you want to create a directory, all you have to do is
+to put:
+
+    <mkdir>
+        <name>/some/directory</name>
+    </mkdir>
+
+in the profile and leave the rest to the program. Of course, you are
+not limited to just compiling packages for LFS. You can do just about
+anything.
+
+This might seem very similar to ordinary shell scripting, but it has
+also a lot of advantages. With this approach, nALFS, which reads the
+given profile, can be instructed to pause execution, start execution
+from selected element (by browsing a profile in a tree-like mode) and
+much much more.
+
+Some links that might interest you:
+
+Linux From Scratch:
+    http://www.linuxfromscratch.org/
+
+Automated Linux From Scratch:
+    http://www.linuxfromscratch.org/alfs/
+
+Mailing lists for ALFS:
+    http://linuxfromscratch.org/mailman/listinfo/alfs-discuss
+    http://linuxfromscratch.org/mailman/listinfo/alfs-log
+
+
+2. Quick start
+==============
+
+To configure, compile, install and run nALFS, just type:
+
+    ./configure
+    make
+    make install
+    nALFS profiles/LFS/latest.xml
+
+When you enter the program, type '?' for a list of all available
+commands.
+
+
+3. Requirements
+===============
+
+For actual parsing of XML profiles, nALFS uses libxml2 (a.k.a. gnome-xml)
+library. You can find it on its homepage, http://xmlsoft.org/.
+
+
+4. Compiling and installing
+===========================
+
+First, you have to configure the package by typing:
+
+    ./configure
+
+To see the list of all available options, use "./configure --help".
+
+By default, nALFS executable will be stored in /usr/local/bin, while
+handlers will be copied to /usr/local/lib/nALFS directory.
+
+You can change these defaults by specifying --prefix or --libdir
+options to configure.
+
+Then, type:
+
+    make
+
+to compile the program. To install it, use:
+
+    make install
+
+
+5. Running and usage
+====================
+
+Just type:
+
+    nALFS profiles/LFS/latest.xml
+
+where "profiles/LFS/latest.xml" is your favorite profile. Multiple
+profiles separated with spaces can also be specified.
+
+nALFS reads ~/.nALFSrc file, in which different options can be set.
+An example of this file is located in doc/ directory.
+
+When you enter the program, you can press '?' to display a list of all
+available commands. They might be described here in detail one day -
+for now, just a few random hints...
+
+
+5.1 Run-status marks
+--------------------
+
+    >  - Currently running element
+         (all parents of the running element are also marked like this).
+    @  - Some, but not all, child elements are successfully done. 
+    #  - Element, and all its child elements (if any) are successfully done.
+    !  - Element, or at least one of its child elements (if any) failed.
+
+You can change these manually by pressing 'm' and picking the right one.
+
+
+5.2 Starting the execution
+--------------------------
+
+After pressing 's', you will have to choose what elements you want to
+run. You have four options:
+
+    m  - Run only marked elements. You can mark elements by pressing
+         'Insert' or '*'. It doesn't matter whether they are already
+         successfully executed or not - all marked elements will run
+         again.
+
+    c  - Run only the current element and its children. Elements marked
+         with '#' will be skipped.
+
+    n  - Run current element, its children, and all the elements below
+         the current (on the same level/depth). Elements marked with
+         '#' will be skipped.
+
+    f  - Force running of current element and its children. Elements
+         marked with '#' will also be executed.
+
+Since the elements that have already successfully run won't run again
+(unless they are marked or forced), you can safely press 's' on the
+first element (your profile) without worrying that some elements will
+get executed twice.
+
+Elements that previously failed (marked with '!') will always run again.
+
+
+5.3 Types of messages (in status window)
+----------------------------------------
+
+    I  - Informative message.
+    H  - Help message.
+    -  - System command output.
+    W  - Warning.
+    E  - Error message.
+
+Marks that are not in color (if you see any color at all) are the ones
+from the backend - a separate process that does all the work.
+
+
+5.4 Options indicators
+----------------------
+
+All options are changeable with 'o' (quickly) and 'O' (after entering the
+options' menu).
+
+--| r a c v s o w h f B |--
+
+    | | | | | | | | | |
+    | | | | | | | | | |Log backend (times/handler actions/changed files).
+    | | | | | | | | |
+    | | | | | | | | |Log changed files (can be 'f' for logging using time
+    | | | | | | | | |stamps, 'F' for logging using two finds, or empty).
+    | | | | | | | | 
+    | | | | | | | |Log handler actions.
+    | | | | | | |
+    | | | | | | |Log status window content.
+    | | | | | |
+    | | | | | |Follow running elements.
+    | | | | |
+    | | | | |Print system command output (see "Types of messages").
+    | | | |
+    | | | |Be verbose.
+    | | |
+    | | |Display comments.
+    | |
+    | |Display <alfs> element.
+    |
+    |Element to which you will jump after using 'J', 'K' or ';' commands.
+    |It can be 'r' (for currently running), 'f' (for the one that failed),
+    |'d' (for successfully done) or 'p' (for package).
+
+
+5.5 Searching the profile
+-------------------------
+
+By pressing '/', you will be prompted to enter a search string.
+Depending on your input (listed below), the search can be performed on
+various parts of the profile:
+
+   <string>     - everything
+   ~e <string>  - names of the elements
+   ~a <string>  - attributes (both name and value parts)
+   ~c <string>  - contents
+   ~p <string>  - names of the packages
+   ~P <string>  - names of the packages (the exact match)
+
+The last two can be especially useful, if you're trying to locate a
+specific package in some large profile.
+
+Searches are not case sensitive.
+
+
+5.6 Non-interactive mode
+------------------------
+
+Using a command-line option -i (or --interactive) will toggle the mode
+in which nALFS will run. By default (defined in config.h), nALFS runs
+in the interactive mode.
+
+However, it can also run in a non-interactive mode. By doing so, the
+program will start executing the profiles immediately, without any
+previous user interaction. All output will be printed on stdout. If
+the execution fails for some reason, nALFS will simply exit with the
+return value not equal to 0.
+
+This mode can be useful, for example, if you're writing your own
+scripts for automated installation and want to support ALFS profiles.
+You could split the profile into smaller chunks and feed them, one by
+one, to nALFS. By checking the program's return value, you could act
+accordingly.
+
+
+If you have any problems, either when compiling, running, or using the
+program, do email me. Any suggestions, ideas, bug reports, patches etc.
+are also highly welcome and can be sent to the address below.
+
+
+For the latest version of the program:
+
+    http://www.beotel.yu/~has/projects/alfs/index.html
+
+
+Neven Has
+haski@sezampro.yu

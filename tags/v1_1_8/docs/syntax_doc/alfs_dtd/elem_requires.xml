@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<sect1 id="elem_requires">
+<title>requires</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT requires          (name, version*)>
+</synopsis>
+
+<para>This element occurs in the element
+<link linkend="elem_packageinfo">packageinfo</link>
+</para>
+
+<para>See also : 
+<link linkend="elem_name">name</link> and
+<link linkend="elem_version">version</link>
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<para>The element <token>requires</token> denotes a dependency
+between two packages : the package containg the <token>requires</token>
+element depends on the package whose name is contained in the 
+<token>name</token> sub-element.
+</para>
+
+<para>The actual name is put into a <token>name</token> element
+because we might want to add a version in a future version.</para>
+
+</sect2>
+
+<sect2><title>Examples</title>
+
+<programlisting>
+    &lt;package name="librep" version="0.16.1">
+        &lt;packageinfo>
+                &lt;requires>&lt;name>gmp&lt;/name>&lt;/requires>
+                &lt;requires>&lt;name>gdbm&lt;/name>&lt;/requires>
+        &lt;/packageinfo>
+
+	&lt;stage name="Unpacking a package.">
+		&lt;unpack>
+			&lt;archive>librep-0.16.1/librep-0.16.1.tar.gz&lt;/archive>
+			&lt;destination>/usr/src&lt;/destination>
+		&lt;/unpack>
+	&lt;/stage>
+
+	....
+
+    &lt;/package>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>#-----------------------------------------
+# processing package librep 0.16.1
+
+echo Generating package librep 0.16.1
+
+[[ ! -f ${NALFS_STAMP_DIR:-/var/log/nALFS}/gmp]] &amp;&amp; echo Stamp of package gmp missing &amp;&amp; exit 3
+[[ ! -f ${NALFS_STAMP_DIR:-/var/log/nALFS}/gdbm]] &amp;&amp; echo Stamp of package gdbm missing &amp;&amp; exit 3
+
+#-----------------------------------------
+echo Stage "Unpacking a package."
+
+echo Unpacking librep-0.16.1/librep-0.16.1.tar.gz into /usr/src
+cd /usr/src
+tar xzvf librep-0.16.1/librep-0.16.1.tar.gz
+
+echo Exiting stage "Unpacking a package."
+
+....
+
+echo End of generating package librep 0.16.1
+</programlisting>
+
+</sect2>
+
+</sect1>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<sect1 id="elem_source">
+<title>source</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT source         (#PCDATA)>
+</synopsis>
+
+<para>This element occurs in the elements
+<link linkend="elem_copy">copy</link>
+and <link linkend="elem_move">move</link>.
+.</para>
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>source</token> is used to specify name
+of the source file when processing a <link linkend="elem_copy">copy</link>,
+or a <link linkend="elem_move">move</link>.
+</para>
+</sect2>
+
+<sect2><title>Examples</title>
+<programlisting>
+&lt;copy base="/usr/src/mypackage">
+   &lt;option>force&lt;/option>
+   &lt;source>config.txt&lt;/source>
+   &lt;destination>/opt/mypackage/config.txt&lt;/destination>
+&lt;/copy>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Copying 'config.txt into /opt/mypackage/config.txt'
+cd /usr/src/mypackage
+cp -f  config.txt /opt/mypackage/config.txt
+</programlisting>
+
+<para></para>
+</sect2>
+
+</sect1>

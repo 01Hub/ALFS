@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<sect1 id="elem_file">
+<title>file</title>
+
+<sect2><title>Syntax</title>
+
+<synopsis>&lt;!ELEMENT file           (#PCDATA)>
+</synopsis>
+
+
+<para>This element occurs in the elements
+<link linkend="elem_search_replace">download</link>,
+<link linkend="elem_search_replace">search_replace</link>
+and <link linkend="elem_textdump">textdump</link>.
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+<para>The element <token>file</token> is used to specify the 
+file in a <token>download</token>, <token>search_replace</token>
+or <token>textdump</token>
+element.</para>
+</sect2>
+
+<sect2><title>Examples</title>
+
+<para>The first example is a search_replace.</para>
+
+<programlisting>
+&lt;search_replace
+    base = "/usr/src/mypackage">
+    &lt;file>runit.sh&lt;/file>
+    &lt;find>BINDIR&lt;/find>
+    &lt;replace>/bin&lt;/replace>
+&lt;/search_replace>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Performing substitution in runit.sh
+cd /usr/src/mypackage
+cp runit.sh /tmp/foo.$$
+sed -e 's/BINDIR/\/bin/' /tmp/foo.$$ > runit.sh
+</programlisting>
+
+
+<para>The second example is a textdump.</para>
+
+<programlisting>
+&lt;textdump base="/etc">
+        &lt;file>group&lt;/file>
+
+        &lt;content>
+                =root:x:0:
+                =bin:x:1:
+                =sys:x:2:
+                =kmem:x:3:
+                =tty:x:4:
+                =tape:x:5:
+                =daemon:x:6:
+                =floppy:x:7:
+                =disk:x:8:
+                =lp:x:9:
+                =dialout:x:10:
+                =audio:x:11:
+        &lt;/content>
+&lt;/textdump>
+</programlisting>
+
+<para>The equivalent bash script is :</para>
+
+<programlisting>echo Generating file group
+cd /etc
+
+cat > group &lt;&lt; 'EOF'
+root:x:0:
+bin:x:1:
+sys:x:2:
+kmem:x:3:
+tty:x:4:
+tape:x:5:
+daemon:x:6:
+floppy:x:7:
+disk:x:8:
+lp:x:9:
+dialout:x:10:
+audio:x:11:
+EOF
+</programlisting>
+
+
+</sect2>
+</sect1>
