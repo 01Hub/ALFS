@@ -13,6 +13,7 @@
 int main (int argc, char **argv)
 {
 	char c, *syn = DEF_SYN, *moo_xml = MOO_XML, *plug_dir = PLUG_DIR, *f;
+	char *out = NULL;
 	bool quiet = false, build = false;
 	int i = 0, ret = 0;
 	xmlDocPtr doc = NULL;
@@ -89,8 +90,8 @@ int main (int argc, char **argv)
 					print_plugs(writers, NULL);
 					goto cleanup;
 				}
-				/*syn = (char *)malloc(strlen(optarg)+1);
-				strcpy(syn, optarg);*/
+				out = (char *)malloc(strlen(optarg)+1);
+				strcpy(out, optarg);
 				break;
 		}
 	}
@@ -133,6 +134,26 @@ int main (int argc, char **argv)
 		goto cleanup;
 	}
 
+	if (out)
+	{
+		if (!writers)
+		{
+			fprintf(stderr, "No output plugins available.\n");
+			ret=2;
+			goto cleanup;
+		}
+		
+		i=0;
+		while (writers[i].path)
+		{
+			if (!strcmp(out, plugarg(writers[i].path)))
+				writers[i].info->write_prof(prof, NULL);
+			i++;
+		}
+		
+		goto cleanup;
+	}
+	
 	if (build)
 		build_pkg(prof->ch[0].pkg[0]);
 

@@ -4,10 +4,10 @@ BIN=moongoo
 OBJS=build.o moongoo.o plugin.o url.o
 
 ifeq ($(OPTS),)
-OPTS=-o help
+OPTS=-s ass -o ass_out
 #OPTS+=~/projects/alfs/book/index.xml
 #OPTS+=~/projects/alfs/lfs-profile/LFS.xml
-#OPTS+=~/projects/alfs/ass/index.xml
+OPTS+=~/projects/alfs/ass/index.xml
 #OPTS+=~/projects/hive/unstable/profile.xml
 #OPTS+=~/projects/alfs/blfs/index.xml
 #OPTS+=~/projects/alfs/hlfs/index.xml
