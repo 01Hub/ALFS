@@ -229,11 +229,12 @@ static void handle_child_output(struct child_output * const child)
 	child->used += input;
 	child->buf[child->used] = '\0';
 	while ((line_end = strchr(&child->buf[0], '\n')) != NULL) {
-		size_t line_length = (line_end - &child->buf[0]) + 1;
+		size_t line_length = (line_end - &child->buf[0]);
 
 		send_child_output(child, line_length);
-		memmove(&child->buf[0], ++line_end, child->used - line_length);
-		child->used -= line_length;
+		memmove(&child->buf[0], ++line_end,
+			child->used - (line_length + 1));
+		child->used -= (line_length + 1);
 	}
 }
 
