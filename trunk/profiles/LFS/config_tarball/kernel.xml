@@ -57,6 +57,11 @@
 			<destination>/boot/System-&linux-version;.map</destination>
 		</copy>
 
+		<copy>
+			<source>.config</source>
+			<destination>/boot/config-lfskernel-&linux-version;</destination>
+		</copy>
+
 		<textdump>
 			<file>/etc/modules.conf</file>
 			<content>=alias &network-interface; &network-card-module;</content>
