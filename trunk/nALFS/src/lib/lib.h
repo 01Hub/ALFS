@@ -4,7 +4,7 @@
  *  Copyright (C) 2003-2003
  *  
  *  Neven Has <haski@sezampro.yu> and
- *  Kevin P. Fleming <kpfleming@backtobasicsmgmt.com>
+ *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
