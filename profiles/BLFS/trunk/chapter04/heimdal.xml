@@ -144,34 +144,10 @@
       <option>parents</option>
       <name>/etc/heimdal</name>
     </mkdir>
-    <textdump base="/etc/heimdal">
-      <file>krb5.conf</file>
-      <content>
-	=# Begin /etc/heimdal/krb5.conf
-	=  
-	=[libdefaults]
-	=    default_realm = &krb-all-caps-domain;
-	=    encrypt = true
-	=
-	=[realms]
-	=    &krb-all-caps-domain; = {
-	=        kdc = &krb-hostname;
-	=        admin_server = &krb-hostname;
-	=        kpasswd_server = &krb-hostname;
-	=    }
-	=
-	=[domain_realm]
-	=    .&krb-domain; = &krb-all-caps-domain;
-	=
-	=[logging]
-	=    kdc = FILE:/var/log/kdc.log
-	=    admin_server = FILE:/var/log/kadmin.log
-	=    default = FILE:/var/log/krb.log
-	=
-	=# End /etc/heimdal/krb5.conf
-      </content>
-    </textdump>
-    <!-- all other configuration concerning heimdal must be done manually -->
+    <copy>
+      <source>&blfs-config;/etc/heimdal/krb5.conf</source>
+      <destination>/etc/heimdal/krb5.conf</destination>
+    </copy>
   </stage>
   &bootscripts-clean;
   <stage name="Cleanup.">

@@ -1,0 +1,7 @@
+# Begin /etc/sysconfig/mouse
+
+MDEVICE="&mouse_device;"
+PROTOCOL="&mouse_protocol;"
+GPMOPTS="&mouse_options;"
+
+# End /etc/sysconfig/mouse

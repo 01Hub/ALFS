@@ -61,14 +61,10 @@
       <make>
         <param>install-nfs-server</param>
       </make>
-      <textdump base="/etc/sysconfig">
-	<file>nfs-server</file>
-	<content>
-	  =PORT="2049"
-	  =PROCESSES="8"
-	  =QUOTAS="no"
-	  =KILLDELAY="10"
-	</content>
+      <copy>
+        <source>&blfs-config;/etc/sysconfig/nfs-server</source>
+        <destination>/etc/sysconfig/nfs-server</destination>
+      </copy>
       </textdump>
       <make>
         <param>install-nfs-client</param>

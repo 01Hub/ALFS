@@ -81,27 +81,21 @@
     <remove>/etc/rc.d/init.d/autofs</remove>
   </stage>
   <stage name="Installing bootscript and configuration">
-      <stageinfo>
-        <base>&build_dir;/&blfs-bootscripts-directory;</base>
-      </stageinfo>
-      <make>
-        <param>install-autofs</param>
-      </make>
-      <move base="/etc">
-	<source>auto.master</source>
-	<destination>auto.master.bak</destination>
-      </move>
-      <textdump base="/etc">
-	<file>auto.master</file>
-	<content>
-	  =# Begin /etc/auto.master
-	  =
-	  =/media  /etc/auto.misc
-	  =
-	  =# End /etc/auto.master
-	</content>
-      </textdump>
-    </stage>
+    <stageinfo>
+      <base>&build_dir;/&blfs-bootscripts-directory;</base>
+    </stageinfo>
+    <make>
+      <param>install-autofs</param>
+    </make>
+    <move base="/etc">
+      <source>auto.master</source>
+      <destination>auto.master.bak</destination>
+    </move>
+    <copy>
+      <source>&blfs-config;/etc/auto.master</source>
+      <destination>/etc/auto.master</destination>
+    </copy>
+  </stage>
   &bootscripts-clean;
   <stage name="Cleanup.">
     <remove>&build_dir;/&autofs-directory;</remove>

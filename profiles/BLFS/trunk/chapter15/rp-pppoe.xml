@@ -49,13 +49,10 @@
       </make>
     </stage>
     <stage name="Configure rp-pppoe">
-      <textdump>
-        <file>/etc/sysconfig/network-devices/ifconfig.pppoe</file>
-        <content>
-	  =ONBOOT=yes 
-	  =SERVICE=pppoe
-	</content>
-      </textdump>
+      <copy>
+        <source>&blfs-config;/etc/sysconfig/network-devices/ifconfig.pppoe</source>
+        <destination>/etc/sysconfig/network-devices/ifconfig.pppoe</destination>
+      </copy>
     </stage>
     &bootscripts-clean;
     <stage name="Cleanup.">

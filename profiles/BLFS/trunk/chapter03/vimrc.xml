@@ -3,17 +3,9 @@
 [ ]>
 <alfs>
   <stage name="/etc/vimrc">
-    <textdump base="/etc">
-      <file>vimrc</file>
-      <content>
-	=" Begin .vimrc
-	=
-	=set columns=80
-	=set wrapmargin=8
-	=set ruler
-	=
-	=" End .vimrc
-      </content>
-    </textdump>
+    <copy>
+      <source>&blfs-config;/etc/vimrc</source>
+      <destination>/etc/vimrc</destination>
+    </copy>
   </stage>
 </alfs>

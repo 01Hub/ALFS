@@ -59,18 +59,14 @@
       <make>
         <param>install-gpm</param>
       </make>
-      <textdump base="/etc/sysconfig">
-        <file>mouse</file>
-        <content>
-	  =# Begin /etc/sysconfig/mouse
-	  =
-	  =MDEVICE="&mouse_device;"
-	  =PROTOCOL="&mouse_protocol;"
-	  =GPMOPTS="&mouse_options;"
-	  =
-	  =# End /etc/sysconfig/mouse
-	</content>
-      </textdump>
+      <mkdir>
+        <option>parents</option>
+        <name>/etc/sysconfig</name>
+      </mkdir>
+      <copy>
+        <source>&blfs-config;/etc/sysconfig/mouse</source>
+        <destination>/etc/sysconfig/mouse</destination>
+      </copy>
     </stage>
     &bootscripts-clean;
     <stage name="Cleanup">
