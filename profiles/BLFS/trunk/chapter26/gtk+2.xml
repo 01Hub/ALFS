@@ -31,6 +31,9 @@
       <utilizes>
         <name>gtk-doc</name>
       </utilizes>
+      <utilizes>
+	<name>docbook-utils</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -45,6 +48,8 @@
       <configure>
         <param>--prefix=/usr</param>
         <param>--sysconfdir=/etc</param>
+	<param>--without-libtiff</param>
+	<param>--without-libjpeg</param>
       </configure>
       <make />
       <make>

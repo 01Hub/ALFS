@@ -260,6 +260,7 @@
       <xi:include href="chapter26/shared-mime-info.xml" />
       <xi:include href="chapter26/hicolor-icon-theme.xml" />
       <xi:include href="chapter26/libxklavier.xml" />
+      <xi:include href="chapter26/freeglut.xml" />
     </stage>
     <stage name="Chapter 27 (Window Managers)">
       <xi:include href="chapter27/sawfish.xml" />

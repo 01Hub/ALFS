@@ -17,14 +17,23 @@
         <name>&ximpl;</name>
       </requires>
       <requires>
-        <name>libpng</name>
-      </requires>
-      <requires>
         <name>libmng</name>
       </requires>
       <requires>
         <name>libjpeg</name>
       </requires>
+      <utilizes>
+      	<name>nas</name>
+      </utilizes>
+      <utilizes>
+	<name>cups</name>
+      </utilizes>
+      <utilizes>
+	<name>mysql</name>
+      </utilizes>
+      <utilizes>
+	<name>postgresql</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -49,13 +58,13 @@
         <param>-datadir /usr/share/qt</param>
         <param>-translationdir /usr/share/qt/translations</param>
         <param>-sysconfdir /etc/qt</param>
-        <param>-release</param>
-        <param>-shared</param>
         <param>-qt-gif</param>
-        <param>-system-zlib</param>
-        <param>-no-g++-execeptions</param>
-        <param>-thread</param>
-        <param>-plugin-imgfmt-png</param>
+	<param>-system-zlib</param>
+	<param>-system-libmng</param>
+	<param>-no-exceptions</param>
+	<param>-thread</param>
+	<param>-plugin-imgfmt-png</param>
+	<param>-system-libjpeg</param>
         <param>-system-libpng</param>
       </configure>
       <make />
@@ -68,6 +77,17 @@
         <target>libqt-mt.so</target>
         <name>/usr/lib/libqt.so</name>
       </link>
+      <remove>/usr/bin/qmake</remove>
+      <copy>
+	<source>qmake/qmake</source>
+	<destination>/usr/bin</destination>
+      </copy>
+      <ownership user="root" group="root">
+	<name>/usr/bin/qmake</name>
+      </ownership>
+      <permissions mode="755">
+	<name>/usr/bin/qmake</name>
+      </permissions>
       <copy>
         <option>recursive</option>
         <source>doc/man</source>
