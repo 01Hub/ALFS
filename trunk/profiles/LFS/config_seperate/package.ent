@@ -3,8 +3,8 @@
 <!ENTITY autoconf-package "autoconf-&autoconf-version;.tar.bz2">
 <!ENTITY autoconf-directory "autoconf-&autoconf-version;">
 
-<!ENTITY automake-md5 "0a83fd4a2a32dc966b83ca3be86f884b">
-<!ENTITY automake-version "1.8">
+<!ENTITY automake-md5 "7a8138b29361baec06548e6a0ac63189">
+<!ENTITY automake-version "1.8.2">
 <!ENTITY automake-package "automake-&automake-version;.tar.bz2">
 <!ENTITY automake-directory "automake-&automake-version;">
 
@@ -172,13 +172,13 @@
 <!ENTITY inetutils-no-man-pages-patch-md5 "eb477f532bc6d26e7025fcfc4452511d">
 <!ENTITY inetutils-no-man-pages-patch "inetutils-&inetutils-version;-no_server_man_pages-1.patch">
 
-<!ENTITY kbd-md5 "4976501c90d82dc987eaf36ccefce70c">
-<!ENTITY kbd-version "1.10">
+<!ENTITY kbd-md5 "34c6489af3b9b9098170248ff2b553aa">
+<!ENTITY kbd-version "1.11">
 <!ENTITY kbd-package "kbd-&kbd-version;.tar.gz">
 <!ENTITY kbd-directory "kbd-&kbd-version;">
 
 <!ENTITY kbd-more-programs-patch-md5 "dc70180a6bc0afa2b741cd38e3cc2e18">
-<!ENTITY kbd-more-programs-patch "kbd-&kbd-version;-more-programs-2.patch">
+<!ENTITY kbd-more-programs-patch "kbd-&kbd-version;-more-programs-1.patch">
 
 <!ENTITY less-md5 "40c2dd4ac137b61b6a55a6478817daf4">
 <!ENTITY less-version "381">
@@ -283,8 +283,8 @@
 <!ENTITY psmisc-package "psmisc-&psmisc-version;.tar.gz">
 <!ENTITY psmisc-directory "psmisc-&psmisc-version;">
 
-<!ENTITY sed-md5 "fb7fa2a7336afc358012763b292e2124">
-<!ENTITY sed-version "4.0.8">
+<!ENTITY sed-md5 "d8fb554bc6577aaedd39b94b3cb3df70">
+<!ENTITY sed-version "4.0.9">
 <!ENTITY sed-package "sed-&sed-version;.tar.gz">
 <!ENTITY sed-directory "sed-&sed-version;">
 
