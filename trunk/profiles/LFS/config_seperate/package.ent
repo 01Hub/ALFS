@@ -261,9 +261,6 @@
 <!ENTITY net-tools-gcc34-patch-md5 "ba53635e2a17d6ea437cd81659d6bb6c">
 <!ENTITY net-tools-gcc34-patch "net-tools-&net-tools-version;-gcc34-2.patch">
 
-<!ENTITY net-tools-kernel-headers-patch-md5 "0fcd25afa43cf85b99c34268ff2f1274">
-<!ENTITY net-tools-kernel-headers-patch "net-tools-&net-tools-version;-kernel_headers-1.patch">
-
 <!ENTITY patch-md5 "ee5ae84d115f051d87fcaaef3b4ae782">
 <!ENTITY patch-version "2.5.4">
 <!ENTITY patch-package "patch-&patch-version;.tar.gz">

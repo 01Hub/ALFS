@@ -29,11 +29,11 @@
 			<param>-i &packages_dir;/&net-tools-gcc34-patch;</param>
 		</patch>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&net-tools-kernel-headers-patch;</param>
-		</patch>
+		<search_replace>
+			<file>lib/x25_sr.c</file>
+			<find>x25_address</find>
+			<replace>struct &amp;</replace>
+		</search_replace>
 
 		<execute command="yes">
 			<param>""</param>
