@@ -34,7 +34,7 @@ ftp://ftp.win.tue.nl/pub/home/aeb/linux-local/utils/kbd/kbd-1.08.tar.gz
 ftp://sources.redhat.com/pub/bzip2/v102/bzip2-1.0.2.tar.gz
 ftp://sources.redhat.com/pub/glibc/releases/glibc-2.3.2.tar.bz2
 ftp://sources.redhat.com/pub/glibc/releases/glibc-linuxthreads-2.3.2.tar.bz2
-http://csociety-ftp.ecn.purdue.edu/pub/gentoo/distfiles/perl-5.8.0.tar.gz
+http://csociety-ftp.ecn.purdue.edu/pub/gentoo/distfiles/perl-5.8.2.tar.gz
 http://downloads.linuxfromscratch.org/MAKEDEV-1.7.bz2
 http://www.linuxfromscratch.org/patches/lfs/5.0/bash-2.05b-2.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/bison-1.875-attribute.patch
@@ -58,7 +58,7 @@ http://www.linuxfromscratch.org/patches/lfs/5.0/man-1.5m2-pager.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/ncurses-5.3-etip-2.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/ncurses-5.3-vsscanf.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/net-tools-1.60-miitool-gcc33-1.patch
-http://www.linuxfromscratch.org/patches/lfs/5.0/perl-5.8.0-libc-3.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/perl-5.8.2-libc-1.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/shadow-4.0.3-newgrp-fix.patch
 http://www.linuxfromscratch.org/patches/lfs/5.0/zlib-1.1.4-vsnprintf.patch
 http://freshmeat.net/redir/expect/2476/url_tgz/expect.tar.gz

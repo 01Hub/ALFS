@@ -7,7 +7,7 @@
 		</unpack>
 
 		<copy>
-			<source>&packages_dir;/&perl-libc-3-patch;</source>
+			<source>&packages_dir;/&perl-libc-1-patch;</source>
 			<destination>&build_dir;</destination>
 		</copy>
 	</stage>
@@ -20,20 +20,12 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&perl-libc-3-patch;</param>
+			<param>-i ../&perl-libc-1-patch;</param>
 		</patch>
-
-		<permissions mode="u+w">
-			<name>hints/linux.sh</name>
-		</permissions>
-
-		<textdump mode="append">
-			<file>hints/linux.sh</file>
-			<content>=static_ext="IO re Fcntl"</content>
-		</textdump>
 
 		<configure command="./configure.gnu">
 			<param>--prefix=/tools</param>
+			<param>-Dstatic_ext=&apos;IO Fcntl&apos;</param>
 		</configure>
 
 		<make>
@@ -49,18 +41,18 @@
 
 		<mkdir>
 			<option>parents</option>
-			<name>/tools/lib/perl5/5.8.0</name>
+			<name>/tools/lib/perl5/&perl-version;</name>
 		</mkdir>
 
 		<copy>
 			<option>recursive</option>
 			<source>lib/*</source>
-			<destination>/tools/lib/perl5/5.8.0</destination>
+			<destination>/tools/lib/perl5/&perl-version;</destination>
 		</copy>
 	</stage>
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&perl-directory;</remove>
-		<remove>&build_dir;/&perl-libc-3-patch;</remove>
+		<remove>&build_dir;/&perl-libc-1-patch;</remove>
 	</stage>
 </package>
