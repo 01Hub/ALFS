@@ -579,8 +579,7 @@ static INLINE void send_state(void)
 		comm_send_from_memory(
 			BACKEND_CTRL_SOCK,
 			CTRL_SENDING_STATE,
-			data,
-			strlen(data));
+			data, data_len);
 
 		xfree(data);
 	}
