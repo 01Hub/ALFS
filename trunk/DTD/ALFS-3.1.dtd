@@ -54,6 +54,8 @@
 <!ELEMENT download       (file, url*, destination, digest?)>
 
 <!ELEMENT environment    (variable+)>
+<!ATTLIST environment
+          mode           ((append | prepend)?)>
 
 <!ELEMENT execute        ((param | prefix)*)>
 <!ATTLIST execute
