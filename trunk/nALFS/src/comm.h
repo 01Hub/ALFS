@@ -88,7 +88,7 @@ int comm_read_to_file(socket_e s, const char *file);
 int comm_read_to_memory(socket_e s, char **ptr, size_t *size);
 
 int comm_send_from_file(socket_e s, ctrl_msg_type_e t, const char *file);
-int comm_send_from_memory(socket_e s, ctrl_msg_type_e t, const char *ptr, size_t size);
+int comm_send_from_memory(socket_e s, const char *ptr, size_t size);
 
 ctrl_msg_s *comm_read_ctrl_message(socket_e s);
 int comm_send_ctrl_msg(socket_e s, ctrl_msg_type_e t, const char *f, ...);

@@ -212,15 +212,11 @@ int comm_send_from_file(socket_e s, ctrl_msg_type_e type, const char *file)
 	return 0;
 }
 
-int comm_send_from_memory(
-	socket_e s, ctrl_msg_type_e type, const char *ptr, size_t size)
+int comm_send_from_memory(socket_e s, const char *ptr, size_t size)
 {
 	char buf[MAX_CTRL_MSG_LEN + 1];
 	const char *current = ptr;
 
-
-	/* Notify the other side that we are going to start sending data. */
-	comm_send_ctrl_msg(s, type, "Sending data...");
 
 	while (current < ptr + size) {
 		size_t max = Min(MAX_CTRL_MSG_LEN, ptr + size - current);

@@ -541,10 +541,9 @@ static INLINE void send_state(void)
 
 		Debug_logging("Sending the time stamp to the frontend...");
 
-		comm_send_from_memory(
-			BACKEND_CTRL_SOCK,
-			CTRL_SENDING_STATE,
-			data, data_len);
+		comm_send_ctrl_msg(BACKEND_CTRL_SOCK,
+			CTRL_SENDING_STATE, "Sending data...");
+		comm_send_from_memory(BACKEND_CTRL_SOCK, data, data_len);
 
 		xfree(data);
 	}
@@ -554,6 +553,7 @@ static void finish_logging(char *installed_files)
 {
 	int size;
 	char *ptr;
+	char *package_string;
 
 
 	Debug_logging("Finishing logging...");
@@ -567,10 +567,15 @@ static void finish_logging(char *installed_files)
 	logs_free(logs);
 	logs = NULL;
 
+	package_string = alloc_package_string(current_package);
 
 	Nprint("Sending the package log to the frontend... ");
-	comm_send_from_memory(
-		BACKEND_CTRL_SOCK, CTRL_SENDING_LOG_FILE, ptr, (size_t)size);
+
+	comm_send_ctrl_msg(BACKEND_CTRL_SOCK,
+		CTRL_SENDING_LOG_FILE, "%s", package_string);
+	comm_send_from_memory(BACKEND_CTRL_SOCK, ptr, (size_t)size);
+
+	xfree(package_string);
 
 	xfree(ptr);
 

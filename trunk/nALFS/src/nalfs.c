@@ -589,26 +589,16 @@ static INLINE int receive_changed_files(logs_t *logs)
 	return -1;
 }
 
-static INLINE void receive_log_file(void)
+static INLINE void receive_log_file(const char *package_str)
 {
 	size_t size;
 	char *s;
 	char *ptr;
-	char *package_str;
 	char *pdir;
-	element_s *current_package;
 	logs_t *logs;
 
 	/* Get new log file. */
 	comm_read_to_memory(FRONTEND_CTRL_SOCK, &ptr, &size);
-
-	/* Get package string for the current running element. */
-	/* TODO: Get it from the control message that is sent from
-	 *       the backend.
-	 */
-	ASSERT(current_running != NULL);
-	current_package = get_elements_package(current_running);
-	package_str = alloc_package_string(current_package);
 
 	pdir = alloc_real_packages_directory_name();
 
@@ -618,7 +608,6 @@ static INLINE void receive_log_file(void)
 		Nprint_err("Unable to add new state to the old log file");
 	}
 
-	xfree(package_str);
 	xfree(pdir);
 	xfree(ptr);
 
@@ -897,7 +886,7 @@ static int handle_ctrl_msg(void)
 				break;
 
 			case CTRL_SENDING_LOG_FILE:
-				receive_log_file();
+				receive_log_file(content);
 				break;
 
 			case CTRL_SENDING_STATE:
