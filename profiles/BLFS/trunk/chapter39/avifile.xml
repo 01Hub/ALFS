@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch39.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,62 +10,60 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="avifile" version="&avifile-version;">
-
-        <packageinfo>
-                <requires><name>qt</name></requires>
-                <requires><name>sdl</name></requires>
-		<utilizes><name>ffmeg</name></utilizes>
-		<utilizes><name>xvid</name></utilizes>
-		<utilizes><name>libmad</name></utilizes>
-		<utilizes><name>libvorbis</name></utilizes>
-		<utilizes><name>lame</name></utilizes>
-        </packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&avifile-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&avifile-directory;</base>
-		</stageinfo>
-
-		<execute command="install -d /usr/lib/avifile-&avifile-base-version;/win32" />
-
-		<execute command="tar -xzvf &packages_dir;/&avifile-binaries-package; -C /usr/lib/avifile-&avifile-base-version;" />
-
-		<execute command="./autogen.sh" />
-
-		<configure/>
-
-		<make>
-		        <param>maintainer-clean</param>
-		</make>
-
-		<execute command="./autogen.sh" />
-
-		<configure>
-		        <param>--prefix=/usr</param>
-			<param>--with-win32-path=/usr/lib/avifile-&avifile-base-version;/win32</param>
-		</configure>
-
-		<make />
-
-		<make>
-			<param>install</param>
-		</make>
-
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&avifile-directory;</remove>
-	</stage>
-
-</package>
+  <package name="avifile" version="&avifile-version;">
+    <packageinfo>
+      <requires>
+        <name>qt</name>
+      </requires>
+      <requires>
+        <name>sdl</name>
+      </requires>
+      <utilizes>
+        <name>ffmeg</name>
+      </utilizes>
+      <utilizes>
+        <name>xvid</name>
+      </utilizes>
+      <utilizes>
+        <name>libmad</name>
+      </utilizes>
+      <utilizes>
+        <name>libvorbis</name>
+      </utilizes>
+      <utilizes>
+        <name>lame</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&avifile-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&avifile-directory;</base>
+      </stageinfo>
+      <execute command="install -d /usr/lib/avifile-&avifile-base-version;/win32" />
+      <execute command="tar -xzvf &packages_dir;/&avifile-binaries-package; -C /usr/lib/avifile-&avifile-base-version;" />
+      <execute command="./autogen.sh" />
+      <configure />
+      <make>
+        <param>maintainer-clean</param>
+      </make>
+      <execute command="./autogen.sh" />
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--with-win32-path=/usr/lib/avifile-&avifile-base-version;/win32</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&avifile-directory;</remove>
+    </stage>
+  </package>
 </alfs>
