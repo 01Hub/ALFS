@@ -54,7 +54,7 @@ struct textdump_data {
 static const struct handler_parameter textdump_parameters_v2[] = {
 	{ .name = "base", .private = TEXTDUMP_BASE },
 	{ .name = "file", .private = TEXTDUMP_FILE },
-	{ .name = "content", .private = TEXTDUMP_CONTENT, .untrimmed = 1 },
+	{ .name = "content", .private = TEXTDUMP_CONTENT },
 	{ .name = NULL }
 };
 
@@ -69,7 +69,7 @@ static const struct handler_attribute textdump_attributes_v2[] = {
 
 static const struct handler_parameter textdump_parameters_v3[] = {
 	{ .name = "file", .private = TEXTDUMP_FILE },
-	{ .name = "content", .private = TEXTDUMP_CONTENT, .untrimmed = 1 },
+	{ .name = "content", .private = TEXTDUMP_CONTENT },
 	{ .name = NULL }
 };
 
@@ -224,6 +224,19 @@ static char *textdump_data(const element_s * const element,
 	struct textdump_data *data = (struct textdump_data *) element->handler_data;
 
 	switch (data_requested) {
+	case HDATA_DISPLAY_DETAILS:
+	{
+		char *display = NULL;
+
+		if (data->base)
+			append_str_format(&display, "Base directory: %s\n", data->base);
+		append_str_format(&display, "File: %s (%s)\n", data->file,
+				  (data->append_mode) ? "append" : "overwrite");
+
+		append_str_format(&display, "Content:\n%s\n", data->content);
+
+		return display;
+	}
 	case HDATA_DISPLAY_NAME:
 	{
 		char *display = NULL;
@@ -250,7 +263,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Dump text",
 		.syntax_version = "2.0",
 		.type = HTYPE_NORMAL,
-		.data = HDATA_DISPLAY_NAME,
+		.data = HDATA_DISPLAY_NAME | HDATA_DISPLAY_DETAILS,
 		.alloc_data = textdump_data,
 		.is_action = 1,
 		.main = textdump_main,
@@ -269,7 +282,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Dump text",
 		.syntax_version = "3.0",
 		.type = HTYPE_NORMAL,
-		.data = HDATA_DISPLAY_NAME,
+		.data = HDATA_DISPLAY_NAME | HDATA_DISPLAY_DETAILS,
 		.alloc_data = textdump_data,
 		.is_action = 1,
 		.main = textdump_main,
@@ -288,7 +301,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Dump text",
 		.syntax_version = "3.1",
 		.type = HTYPE_NORMAL,
-		.data = HDATA_DISPLAY_NAME,
+		.data = HDATA_DISPLAY_NAME | HDATA_DISPLAY_DETAILS,
 		.alloc_data = textdump_data,
 		.is_action = 1,
 		.main = textdump_main,
@@ -307,7 +320,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.description = "Dump text",
 		.syntax_version = "3.2",
 		.type = HTYPE_NORMAL,
-		.data = HDATA_DISPLAY_NAME,
+		.data = HDATA_DISPLAY_NAME | HDATA_DISPLAY_DETAILS,
 		.alloc_data = textdump_data,
 		.is_action = 1,
 		.alternate_shell = 1,
