@@ -38,7 +38,7 @@
 		        <name>/usr/lib/libslang.so.&slang-version;</name>
 		</permissions>
 
-		<execute command="/sbin/ldconfig" />
+		&ldconfig;
 	</stage>
 
 	<stage name="Cleanup">
