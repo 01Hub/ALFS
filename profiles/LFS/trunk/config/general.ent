@@ -45,17 +45,6 @@
      -->
 <!ENTITY swap_partition "/dev/hda3">
 
-<!-- Name of your machine.
-     This entity is used to create the files /etc/hosts
-     and /etc/sysconfig/network
-     -->
-<!ENTITY hostname "yourhost">
-
-<!-- Domain of your machine. 
-     This entity is used to create the files /etc/hosts
-     -->
-<!ENTITY domain "your.domain">
-
 <!-- Timezone file
      This entity will be used as the target of the link
      /etc/localtime
