@@ -26,18 +26,24 @@
 		        <source>docbook.cat</source>
 			<destination>docbook.cat.orig</destination>
 		</copy>
-		<execute command="sed -e '/ISO 8879/d' docbook.cat.orig > docbook.cat" />
 
-		<copy>
-		        <source>docbook.cat</source>
-			<destination>docbook.cat.orig</destination>
-		</copy>
-		<execute command="sed -e '/gml/d' docbook.cat.orig > docbook.cat" />
-		<copy>
-		        <source>docbook.cat</source>
-			<destination>docbook.cat.orig</destination>
-		</copy>
-		<execute command='sed -e &apos;s|DTDDECL "-//OASIS//DTD DocBook V3.1//EN"|SGMLDECL|g&apos; docbook.cat.orig > docbook.cat' />
+		<search_replace>
+			<file>docbook.cat</file>
+			<find>ISO 8879</find>
+			<replace></replace>
+		</search_replace>
+
+		<search_replace>
+			<file>docbook.cat</file>
+			<find>gml</find>
+			<replace></replace>
+		</search_replace>
+
+		<search_replace>
+			<file>docbook.cat</file>
+			<find>DTDDECL "-//OASIS//DTD DocBook V3.1//EN"</find>
+			<replace>SGMLDECL</replace>
+		</search_replace>
 
 		<execute command="install -d /usr/share/sgml/docbook/sgml-dtd-3.1" />
 
@@ -66,6 +72,16 @@
 
 		<execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-3.1.cat /etc/sgml/sgml-docbook.cat" />
 
+		<textdump>
+			<file>/usr/share/sgml/docbook/sgml-dtd-3.1/catalog</file>
+			<content>
+			= -- Begin Single Major Version catalog changes --
+			=
+			=PUBLIC "-//Davenport//DTD DocBook V3.0//EN" "docbook.dtd"
+			=
+			= -- End Single Major Version catalog changes --
+			</content>
+		</textdump>
 	</stage>
 
 	<stage name="Clean-up.">

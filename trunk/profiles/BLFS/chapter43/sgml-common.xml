@@ -12,17 +12,19 @@
 			<base>&build_dir;/&sgml-common-directory;</base>
 		</stageinfo>
 
-		<link>
-		        <option>force</option>
-			<target>/usr/share/automake-1.7</target>
-			<name>/usr/share/automake</name>
-		</link>
-		
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&sgml-common-manpage-1.patch</param>
+		</patch>
+
+		<execute command="aclocal" />
+		<execute command="automake -acf" />
+		<execute command="autoconf" />
 
 		<configure>
 		        <param>--prefix=/usr</param>
 			<param>--sysconfdir=/etc</param>
-			<param>--mandir=/usr/share/man</param>
 		</configure>
 
 		<make />
@@ -48,7 +50,6 @@
 
 		-->
 
-
 		<execute command="install-catalog">
 		        <param>--add</param>
 			<param>/etc/sgml/sgml-ent.cat</param>
@@ -60,8 +61,6 @@
 			<param>/etc/sgml/sgml-docbook.cat</param>
 			<param>/etc/sgml/sgml-ent.cat</param>
 		</execute>
-
-		<remove>/usr/share/automake</remove>
 
 	</stage>
 

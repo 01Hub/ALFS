@@ -565,9 +565,10 @@
 <stage name="Chapter 41 (Printing)">
 
     &cups;
+    &lprng;
     &afplghostscript;
     &espghostscript;
-    &lprng;
+    &gimp-print;
 
 </stage>
 

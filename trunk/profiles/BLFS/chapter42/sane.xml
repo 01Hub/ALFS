@@ -1,9 +1,10 @@
 <package name="sane" version="&sane-version;">
 
         <packageinfo>
-                <utilizes><name>xfree86</name></utilizes>
-        	<utilizes><name>gtk+</name></utilizes>
-        	<utilizes><name>gimp</name></utilizes>
+                <utilizes><name>libusb</name></utilizes>
+        	<utilizes><name>xfree86</name></utilizes>
+        	<utilizes><name>gtk+2</name></utilizes>
+		<utilizes><name>gimp</name></utilizes>		
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -25,6 +26,7 @@
 
 		<configure>
 		        <param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
 		</configure>
 
 		<make />

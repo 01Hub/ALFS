@@ -1443,86 +1443,84 @@
 <!ENTITY udftools-package "udftools-&udftools-version;.tar.gz">
 <!ENTITY udftools-directory "udftools-&udftools-version;">
 
-<!--************* packages for chapter 46 *************-->
+<!--************* packages for chapter 41 *************-->
 
-<!ENTITY cups-version   "1.1.19">
-<!ENTITY cups-package   "cups-1.1.19-source.tar.bz2">
-<!ENTITY cups-directory "cups-1.1.19">
+<!ENTITY cups-version   "1.1.20">
+<!ENTITY cups-package   "cups-&cups-version;-source.tar.bz2">
+<!ENTITY cups-directory "cups-&cups-version;">
 
-<!ENTITY afplghostscript-version   "8.00">
-<!ENTITY afplghostscript-package   "ghostscript-8.00.tar.bz2">
-<!ENTITY afplghostscript-directory "ghostscript-8.00">
+<!ENTITY lprng-version   "3.8.26">
+<!ENTITY lprng-package   "LPRng-&lprng-version;.tgz">
+<!ENTITY lprng-directory "LPRng-&lprng-version;">
 
-<!ENTITY afplghostscript-fonts1 "ghostscript-fonts-std-8.11.tar.gz">
-<!ENTITY afplghostscript-fonts2 "gnu-gs-fonts-other-6.0.tar.gz">
-<!ENTITY afplghostscript-fonts3 "urw-fonts-1.0.7pre22.tar.bz2">
+<!ENTITY afplghostscript-version   "8.14">
+<!ENTITY afplghostscript-package   "ghostscript-&afplghostscript-version;.tar.bz2">
+<!ENTITY afplghostscript-directory "ghostscript-&afplghostscript-version;">
 
-<!ENTITY espghostscript-version   "7.07.1rc2">
-<!ENTITY espghostscript-package   "espgs-7.07.1rc2-source.tar.bz2">
-<!ENTITY espghostscript-directory "espgs-7.07.1rc2">
+<!ENTITY ghostscript-fonts1 "ghostscript-fonts-std-8.11.tar.gz">
+<!ENTITY ghostscript-fonts2 "gnu-gs-fonts-other-6.0.tar.gz">
 
-<!ENTITY espghostscript-fonts1 "gnu-gs-fonts-std-6.0.tar.gz">
-<!ENTITY espghostscript-fonts2 "gnu-gs-fonts-other-6.0.tar.gz">
-<!ENTITY espghostscript-fonts3 "urw-fonts-1.0.7pre22.tar.bz2">
+<!ENTITY espghostscript-version   "7.07.1">
+<!ENTITY espghostscript-package   "espgs-&espghostscript-version;-source.tar.bz2">
+<!ENTITY espghostscript-directory "espgs-&espghostscript-version;">
 
-<!ENTITY espghostscript-driver "Omni-0.9.0.tar.gz">
+<!ENTITY gimp-print-version "4.2.6">
+<!ENTITY gimp-print-package "gimp-print-&gimp-print-version;.tar.gz">
+<!ENTITY gimp-print-directory "gimp-print-&gimp-print-version;">
 
-<!ENTITY lprng-version   "3.8.20">
-<!ENTITY lprng-package   "LPRng-3.8.20.tgz">
-<!ENTITY lprng-directory "LPRng-3.8.20">
+<!--************* packages for chapter 42 *************-->
 
-<!--************* packages for chapter 46 *************-->
+<!ENTITY sane-version   "1.0.14">
+<!ENTITY sane-frontend-version   "1.0.12">
+<!ENTITY sane-frontend-package   "sane-frontends-&sane-frontend-version;.tar.gz">
+<!ENTITY sane-frontend-directory "sane-frontends-&sane-frontend-version;">
+<!ENTITY sane-backend-version   "&sane-version;">
+<!ENTITY sane-backend-package   "sane-backends-&sane-backend-version;.tar.gz">
+<!ENTITY sane-backend-directory "sane-backends-&sane-backend-version;">
 
-<!ENTITY sane-version   "1.0.9">
-<!ENTITY sane-frontend-package   "sane-frontends-1.0.9.tar.gz">
-<!ENTITY sane-frontend-directory "sane-frontends-1.0.9">
+<!ENTITY xsane-version   "0.93">
+<!ENTITY xsane-package   "xsane-&xsane-version;.tar.gz">
+<!ENTITY xsane-directory "xsane-&xsane-version;">
 
-<!ENTITY sane-backend-package   "sane-backends-1.0.9.tar.gz">
-<!ENTITY sane-backend-directory "sane-backends-1.0.9">
-
-<!ENTITY xsane-version   "0.90">
-<!ENTITY xsane-package   "xsane-0.90.tar.gz">
-<!ENTITY xsane-directory "xsane-0.90">
-
-<!--************* packages for chapter 48 *************-->
+<!--************* packages for chapter 43 *************-->
 
 <!ENTITY sgml-common-version   "0.6.3">
-<!ENTITY sgml-common-package   "sgml-common-0.6.3.tgz">
-<!ENTITY sgml-common-directory "sgml-common-0.6.3">
+<!ENTITY sgml-common-package   "sgml-common-&sgml-common-version;.tgz">
+<!ENTITY sgml-common-directory "sgml-common-&sgml-common-version;">
+<!ENTITY sgml-common-manpage-patch "sgml-common-&sgml-common-version;-manpage-1.patch">
 
 <!ENTITY sgml-dtd31-version   "3.1">
 <!ENTITY sgml-dtd31-package   "docbk31.zip">
 <!ENTITY sgml-dtd31-directory "docbk31">
 
-<!ENTITY sgml-dtd-version   "4.2">
-<!ENTITY sgml-dtd-package   "docbook-4.2.zip">
-<!ENTITY sgml-dtd-directory "docbook-4.2">
+<!ENTITY sgml-dtd-version   "4.3">
+<!ENTITY sgml-dtd-package   "docbook-&sgml-dtd-version;.zip">
+<!ENTITY sgml-dtd-directory "docbook-&sgml-dtd-version;">
 
-<!ENTITY opensp-version   "1.5">
-<!ENTITY opensp-package   "OpenSP-1.5.tar.gz">
-<!ENTITY opensp-directory "OpenSP-1.5">
-	
-<!ENTITY opensp-patch     "OpenSP-1.5-LITLEN.patch">
+<!ENTITY opensp-version   "1.5.1">
+<!ENTITY opensp-package   "OpenSP-&opensp-version;.tar.gz">
+<!ENTITY opensp-directory "OpenSP-&opensp-version;">
+<!ENTITY opensp-patch     "OpenSP-&opensp-version;-LITLEN.patch">
 
 <!ENTITY openjade-version   "1.3.2">
-<!ENTITY openjade-package   "openjade-1.3.2.tar.gz">
-<!ENTITY openjade-directory "openjade-1.3.2">
+<!ENTITY openjade-package   "openjade-&openjade-version;.tar.gz">
+<!ENTITY openjade-directory "openjade-&openjade-version;">
 
 <!ENTITY docbook-dsssl-version   "1.78">
-<!ENTITY docbook-dsssl-package   "docbook-dsssl-1.78.tar.gz">
-<!ENTITY docbook-dsssl-directory "docbook-dsssl-1.78">
+<!ENTITY docbook-dsssl-package   "docbook-dsssl-&docbook-dsssl-version;.tar.gz">
+<!ENTITY docbook-dsssl-directory "docbook-dsssl-&docbook-dsssl-version;">
 
-<!--************* packages for chapter 49 *************-->
+<!--************* packages for chapter 44 *************-->
 
-<!ENTITY xml-dtd-version   "4.2">
-<!ENTITY xml-dtd-package   "docbook-xml-4.2.zip">
-<!ENTITY xml-dtd-directory "docbook-xml-4.2">
+<!ENTITY xml-dtd-version   "4.3">
+<!ENTITY xml-dtd-package   "docbook-xml-&xml-dtd-version;.zip">
+<!ENTITY xml-dtd-directory "docbook-xml-&xml-dtd-version;">
 
-<!ENTITY docbook-xsl-version   "1.61.3">
-<!ENTITY docbook-xsl-package   "docbook-xsl-1.61.3.tar.gz">
-<!ENTITY docbook-xsl-directory "docbook-xsl-1.61.3">
+<!ENTITY docbook-xsl-version   "1.65.1">
+<!ENTITY docbook-xsl-package   "docbook-xsl-&docbook-xsl-version;.tar.gz">
+<!ENTITY docbook-xsl-directory "docbook-xsl-&docbook-xsl-version;">
 
-<!--************* packages for chapter 50 *************-->
+<!--************* packages for chapter 45 *************-->
 
 <!ENTITY a2ps-version   "4.13b">
 <!ENTITY a2ps-package   "a2ps-4.13b.tar.gz">
@@ -1544,7 +1542,7 @@
 <!ENTITY xpdf-package   "xpdf-2.02.tar.gz">
 <!ENTITY xpdf-directory "xpdf-2.02">
 
-<!--************* packages for chapter 50 *************-->
+<!--************* packages for chapter 46 *************-->
 
 <!ENTITY tex-version   "2.0.2">
 <!ENTITY tex-package   "tetex-src-2.0.2.tar.gz">
