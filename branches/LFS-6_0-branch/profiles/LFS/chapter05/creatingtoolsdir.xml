@@ -54,7 +54,7 @@
 			<source>&bison-package;</source>
 			<source>&bzip2-package;</source>
 			<source>&coreutils-package;</source>
-			<source>&coreutils-hostname-patch;</source>
+			<source>&coreutils-dupes-patch;</source>
 			<source>&coreutils-uname-patch;</source>
 			<source>&dejagnu-package;</source>
 			<source>&diffutils-package;</source>
