@@ -96,8 +96,6 @@ static int patch_main_ver3(element_s *el)
 	}
 	
 	Nprint_h("Patching in %s", base);
-	Nprint_h("    patch %s", parameters);
-
 	command = xstrdup("");
 
 	append_prefix_elements(&command, el);
@@ -111,6 +109,8 @@ static int patch_main_ver3(element_s *el)
 	append_str(&command, "patch ");
 
 	append_str(&command, parameters);
+
+	Nprint_h("    %s", command);
 
 	if ((status = execute_command(command))) {
 		Nprint_h_err("Patching failed.");
