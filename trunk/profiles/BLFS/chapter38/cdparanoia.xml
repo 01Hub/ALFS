@@ -16,15 +16,13 @@
 			<param>--prefix=/usr</param>
 		</configure>
 
-		<make>
-                        <param>FLAGS="$CFLAGS"</param>
-		</make>
+		<make />
 
 		<make>
 			<param>install</param>
 		</make>
 
-		<execute command="/sbin/ldconfig" />
+		&ldconfig;
 	</stage>
 
 	<stage name="Clean-up.">

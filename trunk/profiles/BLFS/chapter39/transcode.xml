@@ -1,18 +1,31 @@
 <package name="transcode" version="&transcode-version;">
 
         <packageinfo>
-                <requires><name>xine-lib</name></requires>
+		<utilizes><name>nasm</name></utilizes>
+		<utilizes><name>lame</name></utilizes>
 		<utilizes><name>xfree86</name></utilizes>
 		<utilizes><name>mplayer</name></utilizes>
+		<utilizes><name>imagemagick</name></utilizes>
+		<utilizes><name>libdv</name></utilizes>
+		<utilizes><name>libdvdread</name></utilizes>
 		<utilizes><name>sdl</name></utilizes>
+		<utilizes><name>qt</name></utilizes>
 		<utilizes><name>avifile</name></utilizes>
-		<utilizes><name>lame</name></utilizes>
 		<utilizes><name>libfame</name></utilizes>
-		<utilizes><name>opendivx</name></utilizes>
+		<utilizes><name>libmpeg3</name></utilizes>
 		<utilizes><name>xvid</name></utilizes>
+		<utilizes><name>lzo</name></utilizes>
+		<utilizes><name>libxml2</name></utilizes>
+		<utilizes><name>liba52</name></utilizes>
 		<utilizes><name>ffmpeg</name></utilizes>
+		<utilizes><name>libmad</name></utilizes>
 		<utilizes><name>curl</name></utilizes>
 		<utilizes><name>libogg</name></utilizes>
+		<utilizes><name>libvorbis</name></utilizes>
+		<utilizes><name>libjpeg</name></utilizes>
+		<utilizes><name>gtk+</name></utilizes>
+		<utilizes><name>freetype</name></utilizes>
+		<utilizes><name>openquicktime</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -29,6 +42,7 @@
 
 		<configure>
 			<param>--prefix=/usr</param>
+			<param>--without-x</param>
 		</configure>
 
 		<make/>

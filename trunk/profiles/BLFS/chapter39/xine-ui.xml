@@ -4,8 +4,6 @@
                 <requires><name>xine-lib</name></requires>
 		<utilizes><name>curl</name></utilizes>
 		<utilizes><name>aalib</name></utilizes>
-		<utilizes><name>libpng</name></utilizes>
-		<utilizes><name>lirc</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">

@@ -1,31 +1,31 @@
-<package name="lame" version="&lame-version;">
+<package name="udftools" version="&udftools-version;">
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&lame-package;</archive>
+			<archive>&packages_dir;/&udftools-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&lame-directory;</base>
+			<base>&build_dir;/&udftools-directory;</base>
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=/usr</param>
-			<param>--mandir=/usr/share/man</param>
+		        <param>--prefix=/usr</param>
 		</configure>
 
 		<make/>
-
+		
 		<make>
 			<param>install</param>
 		</make>
+		
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&lame-directory;</remove>
+		<remove>&build_dir;/&udftools-directory;</remove>
 	</stage>
 
 </package>
