@@ -1,5 +1,5 @@
 <package name="patch" version="&patch-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&patch-md5;</digest>
 			<archive>&packages_dir;/&patch-package;</archive>
@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&patch-directory;</base>
 		</stageinfo>
@@ -24,7 +24,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&patch-directory;</remove>
 	</stage>
 </package>

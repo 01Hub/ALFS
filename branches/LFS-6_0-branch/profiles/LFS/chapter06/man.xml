@@ -1,5 +1,5 @@
 <package name="man" version="&man-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&man-md5;</digest>
 			<archive>&packages_dir;/&man-package;</archive>
@@ -12,7 +12,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&man-directory;</base>
 		</stageinfo>
@@ -47,7 +47,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&man-directory;</remove>
 		<remove>&build_dir;/&man-80cols-patch;</remove>
 	</stage>

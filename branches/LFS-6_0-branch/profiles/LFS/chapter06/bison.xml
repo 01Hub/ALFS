@@ -1,5 +1,5 @@
 <package name="bison" version="&bison-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&bison-md5;</digest>
 			<archive>&packages_dir;/&bison-package;</archive>
@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&bison-directory;</base>
 		</stageinfo>
@@ -29,7 +29,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&bison-directory;</remove>
 	</stage>
 </package>
