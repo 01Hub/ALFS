@@ -96,10 +96,13 @@ To configure, compile and install nALFS, just type:
     ./configure
     make
     make install
-    
+   
+nALFS uses a configuration file named .nALFSrc which should be present
+in your home directory. An example of this can be found in doc/nALFSrc 
+and can be copied, renamed and modified to suit your particular needs.
+
 To run nALFS with the latest stable LFS profile you first need to 
-make a symbolic link to the correct config directory. For more 
-information on doing this please see:
+setup a config directory. For more information on doing this please see:
 
     profile/LFS-*/README
 
