@@ -32,7 +32,7 @@ http://ftp.kernel.org/pub/linux/kernel/v2.4/linux-2.4.24.tar.bz2
 ftp://ftp.pld.org.pl/software/shadow/shadow-4.0.3.tar.bz2
 ftp://ftp.seindal.dk/gnu/m4-1.4.tar.gz
 ftp://ftp.vim.org/pub/vim/unix/vim-6.2.tar.bz2
-ftp://ftp.win.tue.nl/pub/home/aeb/linux-local/utils/kbd/kbd-1.08.tar.gz
+ftp://ftp.win.tue.nl/pub/home/aeb/linux-local/utils/kbd/kbd-1.10.tar.gz
 ftp://sources.redhat.com/pub/bzip2/v102/bzip2-1.0.2.tar.gz
 ftp://sources.redhat.com/pub/glibc/releases/glibc-2.3.2.tar.bz2
 ftp://sources.redhat.com/pub/glibc/releases/glibc-linuxthreads-2.3.2.tar.bz2
@@ -50,7 +50,7 @@ http://www.linuxfromscratch.org/patches/lfs/cvs/gcc-2.95.3-returntype-fix.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/gcc-3.3.2-no_fixincludes-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/gcc-3.3.2-specs-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/inetutils-1.4.2-no_server_man_pages-1.patch
-http://www.linuxfromscratch.org/patches/lfs/cvs/kbd-1.08-more-programs-3.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/kbd-1.10-more-programs-2.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/glibc-2.3.2-sscanf-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/man-1.5m2-80cols.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/ncurses-5.3-etip-2.patch
