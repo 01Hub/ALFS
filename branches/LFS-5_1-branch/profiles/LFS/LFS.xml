@@ -103,7 +103,7 @@
 
 		&c6-changingowner;
 		&c6-creatingdirs;
-		&c6-createfiles;
+		&c6-symlinks;
 		&c6-pwdgroup;
 		&c6-makedev;
 		&c6-kernel;
