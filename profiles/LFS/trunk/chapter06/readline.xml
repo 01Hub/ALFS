@@ -31,6 +31,7 @@
 
 		<configure>
 			<param>--prefix=/usr</param>
+			<param>--libdir=/lib</param>
 		</configure>
 
 		<make>
@@ -43,25 +44,29 @@
 		</make>
 
 		<permissions mode="755">
-			<name>/usr/lib/*.&readline-version;</name>
+			<name>/lib/libreadline.so*</name>
+			<name>/lib/libhistory.so*</name>
 		</permissions>
 
 		<move>
-			<source>/usr/lib/libreadline.so.5*</source>
-			<source>/usr/lib/libhistory.so.5*</source>
-			<destination>/lib</destination>
+			<source>/lib/libreadline.a</source>
+			<source>/lib/libhistory.a</source>
+			<destination>/usr/lib</destination>
 		</move>
 
-		<link>
-			<option>force</option>
-			<target>../../lib/libhistory.so.5</target>
-			<name>/usr/lib/libhistory.so</name>
-		</link>
+		<remove>/lib/libreadline.so</remove>
+		<remove>/lib/libhistory.so</remove>
 
 		<link>
 			<option>force</option>
 			<target>../../lib/libreadline.so.5</target>
 			<name>/usr/lib/libreadline.so</name>
+		</link>
+
+		<link>
+			<option>force</option>
+			<target>../../lib/libhistory.so.5</target>
+			<name>/usr/lib/libhistory.so</name>
 		</link>
 	</stage>
 

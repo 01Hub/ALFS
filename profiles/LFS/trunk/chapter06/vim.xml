@@ -36,6 +36,12 @@
 			</content>
 		</textdump>
 
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&vim-security-patch;</param>
+		</patch>
+
 		<configure>
 			<param>--prefix=/usr</param>
 			<param>--enable-multibyte</param>
