@@ -5,11 +5,6 @@
 			<archive>&packages_dir;/&grub-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&grub-gcc-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
@@ -21,11 +16,11 @@
 			<base>&build_dir;/&grub-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&grub-gcc-patch;</param>
-		</patch>
+		<search_replace base="&build_dir;/&grub-directory;">
+			<file>stage2/fsys_reiserfs.c</file>
+			<find>2 long</find>
+			<replace>2</replace>
+		</search_replace>
 
 		<configure>
 			<param>--prefix=/usr</param>
@@ -51,6 +46,5 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&grub-directory;</remove>
-		<remove>&build_dir;/&grub-gcc-patch;</remove>
 	</stage>
 </package>

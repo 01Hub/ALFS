@@ -162,9 +162,6 @@
 <!ENTITY grub-package "grub-&grub-version;.tar.gz">
 <!ENTITY grub-directory "grub-&grub-version;">
 
-<!ENTITY grub-gcc-patch-md5 "ffdb54d51d981a1417164675689d7900">
-<!ENTITY grub-gcc-patch "grub-&grub-version;-gcc33-1.patch">
-
 <!ENTITY gzip-md5 "3d6c191dfd2bf307014b421c12dc8469">
 <!ENTITY gzip-version "1.3.5">
 <!ENTITY gzip-package "gzip-&gzip-version;.tar.gz">
@@ -234,12 +231,6 @@
 
 <!ENTITY man-80cols-patch-md5 "4cee1076e1205f4093e611a87f6ba7b2">
 <!ENTITY man-80cols-patch "man-&man-version;-80cols.patch">
-
-<!ENTITY man-manpath-patch-md5 "63234a8832b65eff44d7d6995fabbabb">
-<!ENTITY man-manpath-patch "man-&man-version;-manpath.patch">
-
-<!ENTITY man-pager-patch-md5 "767e17b3ba79043a617b27fa4b888dae">
-<!ENTITY man-pagerpatch "man-&man-version;-pager.patch">
 
 <!ENTITY man-pages-md5 "c2008b298e34008a1b84595415f09fce">
 <!ENTITY man-pages-version "1.64">
