@@ -35,9 +35,23 @@
 #include "backend.h"
 #include "logging.h"
 
-static int prebuild_setup(const element_s * element)
+static int prebuild_setup(element_s * const element)
 {
+	(void) element;
+
 	return 0;
+}
+
+static int prebuild_valid_child(const element_s * const element,
+				const element_s * const child)
+{
+	(void) element;
+
+	return child->handler->type & (HTYPE_NORMAL |
+				       HTYPE_COMMENT |
+				       HTYPE_TEXTDUMP |
+				       HTYPE_PACKAGE |
+				       HTYPE_EXECUTE);
 }
 
 static int prebuild_main(const element_s * const el)
@@ -68,6 +82,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.is_action = 1,
 		.setup = prebuild_setup,
+		.valid_child = prebuild_valid_child,
 	},
 #endif
 	{

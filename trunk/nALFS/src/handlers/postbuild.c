@@ -35,9 +35,23 @@
 #include "backend.h"
 #include "logging.h"
 
-static int postbuild_setup(const element_s * element)
+static int postbuild_setup(element_s * const element)
 {
+	(void) element;
+
 	return 0;
+}
+
+static int postbuild_valid_child(const element_s * const element,
+				 const element_s * const child)
+{
+	(void) element;
+
+	return child->handler->type & (HTYPE_NORMAL |
+				       HTYPE_COMMENT |
+				       HTYPE_TEXTDUMP |
+				       HTYPE_PACKAGE |
+				       HTYPE_EXECUTE);
 }
 
 static int postbuild_main(const element_s * const el)
@@ -67,6 +81,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.is_action = 0,
 		.setup = postbuild_setup,
+		.valid_child = postbuild_valid_child,
 	},
 #endif
 	{
