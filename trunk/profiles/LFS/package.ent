@@ -180,8 +180,8 @@
 <!ENTITY kbd-package "kbd-&kbd-version;.tar.gz">
 <!ENTITY kbd-directory "kbd-&kbd-version;">
 
-<!ENTITY kbd-more-programs-patch-md5 "ba23b2eadb707e66ad35a9e6a29edf72">
-<!ENTITY kbd-more-programs-patch "kbd-&kbd-version;-more-programs.patch">
+<!ENTITY kbd-more-programs-patch-md5 "a8adfa0c2b58747ad7a9d66760ab502a">
+<!ENTITY kbd-more-programs-patch "kbd-&kbd-version;-more-programs-3.patch">
 
 <!ENTITY less-md5 "40c2dd4ac137b61b6a55a6478817daf4">
 <!ENTITY less-version "381">
