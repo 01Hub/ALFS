@@ -40,6 +40,10 @@ searched</para>
 <para>The sub-element <filename>replace</filename> contains the replacement
 string.</para>
 
+<para>The attribute <filename>base</filename> specifies the directory in
+which the file replacement occurs. See 
+<xref linkend="elem_base"/>.</para>
+
 </sect2>
 
 <sect2>

@@ -28,8 +28,10 @@
 <title>Description</title>
 
 <para>The element <filename>textdump</filename> is one of the many main
-operation elements.  The sub-element <filename>file</filename> contains the
-name of the file to be created.</para>
+operation elements.</para>
+
+<para>The sub-element <filename>file</filename> contains the name of the
+file to be created.</para>
 
 <para>The sub-element <filename>content</filename> is used to specify the
 content of the file being created when processing a
@@ -38,7 +40,8 @@ content of this element, one removes the leading blanks up to and including
 a '=' character.</para>
 
 <para>The attribute <filename>base</filename> allows to specify the
-directory in which the file creation will be perforemd.</para>
+directory in which the file creation will be perforemd. See
+<xref linkend="elem_base"/>.</para>
 
 <para>The attribute <filename>mode</filename> allows to specify the append
 creation mode.</para>

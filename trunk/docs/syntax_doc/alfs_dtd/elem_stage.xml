@@ -11,7 +11,7 @@
                              package | patch | permissions | remove | 
                              search_replace | stage | textdump | unpack)*)&gt;
 &lt;!ATTLIST stage
-             name           CDATA #IMPLIED&gt;
+          name           CDATA #IMPLIED&gt;
 </synopsis>
 
 <para>This element occurs in the elements&nbsp;:&nbsp;&nbsp;
@@ -47,7 +47,7 @@
 
 <para>The element <filename>stage</filename> is one of the many main
 operation elements.  It allows one to regroup commands, give a name to this
-group, through the attribute <filename>name</filename>, and optionally
+group (through the attribute <filename>name</filename>) and optionally
 modify the execution context through the element
 <filename>stageinfo</filename>.</para>
 

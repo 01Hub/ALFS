@@ -24,7 +24,7 @@
 <title>Description</title>
 
 <para>The element <filename>requires</filename> denotes a dependency
-between two packages : the package containg the
+between two packages. The package containg the
 <filename>requires</filename> element depends on the package whose name is
 contained in the <filename>name</filename> sub-element.</para>
 
@@ -36,45 +36,7 @@ because we might want to add a version in a future version.</para>
 <sect2>
 <title>Examples</title>
 
-<screen><userinput>&lt;package name=&quot;librep&quot; version=&quot;0.16.1&quot;&gt;
-	&lt;packageinfo&gt;
-		&lt;requires&gt;&lt;name&gt;gmp&lt;/name&gt;&lt;/requires&gt;
-		&lt;requires&gt;&lt;name&gt;gdbm&lt;/name&gt;&lt;/requires&gt;
-	&lt;/packageinfo&gt;
-
-	&lt;stage name=&quot;Unpacking a package.&quot;&gt;
-		&lt;unpack&gt;
-			&lt;archive&gt;librep-0.16.1/librep-0.16.1.tar.gz&lt;/archive&gt;
-			&lt;destination&gt;/usr/src&lt;/destination&gt;
-		&lt;/unpack&gt;
-	&lt;/stage&gt;
-
-	......
-
-&lt;/package&gt;</userinput></screen>
-
-<para>The equivalent bash script is&nbsp;:</para>
-
-<screen><userinput>#-----------------------------------------
-# processing package librep 0.16.1
-
-echo Generating package librep 0.16.1
-
-[[ ! -f ${NALFS_STAMP_DIR:-/var/log/nALFS}/gmp]] &amp;&amp; echo Stamp of package gmp missing &amp;&amp; exit 3
-[[ ! -f ${NALFS_STAMP_DIR:-/var/log/nALFS}/gdbm]] &amp;&amp; echo Stamp of package gdbm missing &amp;&amp; exit 3
-
-#-----------------------------------------
-echo Stage "Unpacking a package."
-
-echo Unpacking librep-0.16.1/librep-0.16.1.tar.gz into /usr/src
-cd /usr/src
-<command>tar xzvf librep-0.16.1/librep-0.16.1.tar.gz</command>
-
-echo Exiting stage "Unpacking a package."
-
-....
-
-echo End of generating package librep 0.16.1</userinput></screen>
+<para>Refer to <xref linkend="elem_packageinfo"/> for an example.</para>
 
 </sect2>
 

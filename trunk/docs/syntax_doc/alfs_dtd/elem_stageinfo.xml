@@ -25,25 +25,27 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <filename>stageinfo</filename> allows to specify several
-context informations used to process the commands of the stage to which the
-stageinfo belongs.</para>
+<para>The element <filename>stageinfo</filename> allows you to specify
+several contexts of information used to process the commands of the
+<filename>stage</filename> to which the <filename>stageinfo</filename>
+belongs.</para>
 
-<para>The <filename>base</filename> sub-element specify a base directory
-that will be used by all the commands of the stage, unless that command
-redefines the base locally.</para>
+<para>The <filename>base</filename> sub-element specifies a base directory
+that will be used by all the commands of the stage, unless the command
+redefines the base locally. See <xref linkend="elem_base"/>.</para>
 
-<para>The <filename>user</filename> sub-element specify a user name that
+<para>The <filename>user</filename> sub-element specifies a user name that
 will be used as the effective user ID of the current process for all the
-commands of the stage</para>
+commands of the stage. See <xref linkend="elem_user"/>.</para>
 
-<para>The <filename>root</filename> sub-element specify a directory name in
+<para>The <filename>root</filename> sub-element specifies a directory name in
 which the commands of the stage will be performed (using a chroot
-command).</para>
+command). See <xref linkend="elem_root"/>.</para>
 
-<para>The <filename>environment</filename> sub-element allow to specify a
-environment variable that will be added to the current environment when
-processing the commands of the stage.</para>
+<para>The <filename>environment</filename> sub-element allow you to specify
+an environment variable that will be added to the current environment when
+processing the commands of the stage. See 
+<xref linkend="elem_environment"/>.</para>
 
 </sect2>
 
@@ -51,6 +53,7 @@ processing the commands of the stage.</para>
 <title>Examples</title>
 
 <screen><userinput>&lt;stage name=&quot;Install gzip&quot;&gt;
+
 	&lt;stageinfo&gt;
 		&lt;root&gt;/mnt/lfs&lt;/root&gt;
 		&lt;user&gt;lfs&lt;/user&gt;
@@ -67,11 +70,12 @@ processing the commands of the stage.</para>
 	&lt;make&gt;
 		&lt;param&gt;install&lt;/param&gt;
 	&lt;/make&gt;
+
 &lt;/stage&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
 
-<screen><userinput>echo Executing configure
+<screen>echo Executing configure
 su - lfs
 export PATH=/bin:/sbin
 cd /usr/src/gzip.1.2.4a
@@ -89,7 +93,7 @@ export PATH=/bin:/sbin
 cd /usr/src/gzip.1.2.4a
 <command>make install</command>
 
-echo Exiting stage</userinput></screen>
+echo Exiting stage</screen>
 
 </sect2>
 

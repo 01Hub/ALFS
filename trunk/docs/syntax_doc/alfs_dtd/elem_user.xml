@@ -31,38 +31,7 @@ which it applies.</para>
 <sect2>
 <title>Examples</title>
 
-<screen><userinput>&lt;stage&gt;
-	&lt;stageinfo&gt;
-		&lt;base&gt;/usr/src/mypackage&lt;/base&gt;
-		&lt;user&gt;lfs&lt;/user&gt;
-	&lt;/stageinfo&gt;
-
-	&lt;make&gt;
-		&lt;param&gt;install&lt;/param&gt;
-	&lt;/make&gt;
-&lt;/stage&gt;</userinput></screen>
-
-<para>The equivalent bash script is&nbsp;:</para>
-
-<screen><userinput>echo Stage
-
-echo Creating file ./_nalfs_tmp.1...
-cat > ./_nalfs_tmp.1 &lt;&lt; 'EOF1'
-echo Executing make
-cd /usr/src/mypackage
-make install
-
-true
-EOF1
-[[ $? != 0 ]] &amp;&amp;  echo Creating file failed &amp;&amp; exit 3
-
-chmod 775 ./_nalfs_tmp.1
-echo Executing as user lfs
-/bin/su lfs -c ./_nalfs_tmp.1
-
-echo Finished execution as user lfs
-
-echo Exiting stage</userinput></screen>
+<para>Refer to <xref linkend="elem_stageinfo"/> for and example.</para>
 
 </sect2>
 

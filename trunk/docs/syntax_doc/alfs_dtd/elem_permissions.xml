@@ -34,13 +34,15 @@ implementation.  Refer to the documentation for your implementation to
 determine what options are available.</para></note>
 
 <para>The sub-element(s) <filename>name</filename> contain the name(s) of
-the files whose permission is to be modified.</para>
+the files whose permission is to be modified. See
+<xref linkend="elem_name"/>.</para>
 
 <para>The attribute <filename>base</filename> gives the name of the
-directory in which the command will be performed</para>
+directory in which the command will be performed. See
+<xref linkend="elem_base"/>.</para>
 
 <para>The attribute <filename>mode</filename> gives the new access mode, as
-used in the command chmod.</para>
+used in the command <filename>chmod</filename>.</para>
 
 <para>The only option supported is "recursive"</para>
 
