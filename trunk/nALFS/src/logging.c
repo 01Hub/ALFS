@@ -45,6 +45,7 @@
 #include "comm.h"
 #include "handlers.h"
 #include "logfiles.h"
+#include "options.h"
 
 #include "logging.h"
 
@@ -434,7 +435,7 @@ void log_handler_action(const char *format, ...)
 	va_list ap;
 
 
-	if (! opt_log_handlers) {
+	if (! *opt_log_handlers) {
 		return;
 	}
 
@@ -494,9 +495,9 @@ static int collect_files(const char *f, flist_s **flist)
 
 
 	Nprint("Collecting files from %s...",
-		opt_find_base ? opt_find_base : "/");
+		*opt_find_base ? *opt_find_base : "/");
 
-	i = do_collect_files(fp, opt_find_base, opt_find_prunes, time_stamp);
+	i = do_collect_files(fp, *opt_find_base, *opt_find_prunes, time_stamp);
 
 	fclose(fp);
 
@@ -569,7 +570,7 @@ static void finish_logging(char *installed_files)
 
 	package_string = alloc_package_string(current_package);
 
-	if (opt_be_verbose) {
+	if (*opt_be_verbose) {
 		Nprint("Sending the package log to the frontend... ");
 	}
 
@@ -656,7 +657,7 @@ static INLINE char *stage_two_of_logging_changed_files(void)
 		return NULL;
 	}
 
-	if (opt_logging_method == LOG_USING_ONE_FIND) {
+	if (*opt_logging_method == LOG_USING_ONE_FIND) {
 		Debug_logging("Logging using one find.");
 
 		if (time_stamp == -1) {
@@ -669,7 +670,7 @@ static INLINE char *stage_two_of_logging_changed_files(void)
 	collect_files(LIST_OF_FILES, &list_of_files);
 
 	if (list_of_files) {
-		logs_add_installed_files(logs, opt_find_base, opt_find_prunes);
+		logs_add_installed_files(logs, *opt_find_base, *opt_find_prunes);
 		return list_of_files->name;
 	}
 
@@ -681,13 +682,13 @@ static INLINE void end_package_logging(int status)
 	char *installed_files = NULL;
 
 
-	if (opt_logging_method != LOG_OFF) {
+	if (*opt_logging_method != LOG_OFF) {
 		installed_files = stage_two_of_logging_changed_files();
 	} else {
 		Debug_logging("Logging files is off, not entering stage two.");
 	}
 
-	if (opt_stamp_packages) {
+	if (*opt_stamp_packages) {
 		char *name = alloc_package_name(current_package);
 		char *version = alloc_package_version(current_package);
 
@@ -710,7 +711,7 @@ static INLINE void end_package_logging(int status)
 
 static void stage_one_of_logging_changed_files(void)
 {
-	if (opt_logging_method == LOG_USING_ONE_FIND) {
+	if (*opt_logging_method == LOG_USING_ONE_FIND) {
 		Debug_logging("Logging using one find.");
 
 		/* Check if the frontend sent us a time stamp. */
@@ -718,8 +719,8 @@ static void stage_one_of_logging_changed_files(void)
 			Nprint("Creating new time stamp.");
 			time_stamp = time(NULL);
 
-			if (opt_sleep_after_stamp > 0) {
-				sleep(opt_sleep_after_stamp);
+			if (*opt_sleep_after_stamp > 0) {
+				sleep(*opt_sleep_after_stamp);
 			}
 
 		} else {
@@ -792,7 +793,7 @@ static INLINE logs_t *start_package_logging(element_s *el)
 	// Check if frontend has a state file to send us.
 	request_state();
 
-	if (opt_logging_method != LOG_OFF) {
+	if (*opt_logging_method != LOG_OFF) {
 		stage_one_of_logging_changed_files();
 	} else {
 		Debug_logging("Logging files is off, not entering stage one.");
@@ -841,7 +842,7 @@ void log_start_time(element_s *el)
 
 void start_logging_element(element_s *el)
 {
-	if (!opt_log_backend) { // Logging off.
+	if (!*opt_log_backend) { // Logging off.
 		Debug_logging("start_logging_element: log_backend is off");
 		return;
 	}

@@ -43,6 +43,7 @@
 
 #include "win.h" /* For Nprint_err.*/
 #include "nalfs-core.h" /* For Fatal_error. */
+#include "options.h" /* for opt_run_interactive */
 
 #define PRINT_ERROR Nprint_err
 #define FATAL_ERROR Fatal_error

@@ -171,9 +171,9 @@ static int total_number_of_elements(void)
 
 static void print_cursor(void)
 {
-	Xmvwaddstr(windows.main->name, displayed.current, 0, opt_cursor_string);
+	Xmvwaddstr(windows.main->name, displayed.current, 0, *opt_cursor);
 
-	Xwmove(windows.main->name, displayed.current, strlen(opt_cursor_string) + 6);
+	Xwmove(windows.main->name, displayed.current, strlen(*opt_cursor) + 6);
 	wchgat(windows.main->name, -1, A_BOLD, COLP_WHITE, NULL);
 
 }
@@ -185,13 +185,13 @@ static void remove_cursor(void)
 
 	Xwmove(windows.main->name, displayed.current, 0);
 
-	len = strlen(opt_cursor_string);
+	len = strlen(*opt_cursor);
 	for (i = 0; i < len; ++i) {
 		Xwaddch(windows.main->name, ' ');
 	}
 
 	Xwmove(windows.main->name,
-		displayed.current, strlen(opt_cursor_string) + 6);
+		displayed.current, strlen(*opt_cursor) + 6);
 	wchgat(windows.main->name, -1, A_NORMAL, COLP_WHITE, NULL);
 }
 
@@ -338,10 +338,10 @@ static void print_status_mark(int csr, run_status_e status)
 			return;
 	}
 
-	Xmvwaddch(windows.main->name, csr, strlen(opt_cursor_string) + 3,
+	Xmvwaddch(windows.main->name, csr, strlen(*opt_cursor) + 3,
 		status_to_mark(status));
 
-	Xwmove(windows.main->name, csr, strlen(opt_cursor_string) + 3);
+	Xwmove(windows.main->name, csr, strlen(*opt_cursor) + 3);
 	wchgat(windows.main->name, 1, A_NORMAL, pair, NULL);
 }
 
@@ -359,7 +359,7 @@ static INLINE void change_run_status_mark(element_s *el, run_status_e status)
 
 static void set_run_status(element_s *el, run_status_e status)
 {
-	if (!Can_run(el) || !opt_run_interactive) {
+	if (!Can_run(el) || !*opt_run_interactive) {
 		return;
 	}
 
@@ -791,7 +791,7 @@ static INLINE void jump_to_current_running(void)
 
 			print_cursor();
 
-			if (opt_display_profile) {
+			if (*opt_display_profile) {
 				draw_profile_name(
 				get_profile_by_element(Current_element));
 			}
@@ -812,7 +812,7 @@ static INLINE void element_started(const char *msg_content)
 	set_run_status(current_running, RUN_STATUS_RUNNING);
 
 	/* Jump to this element. */
-	if (opt_follow_running && opt_run_interactive) {
+	if (*opt_follow_running && *opt_run_interactive) {
 		jump_to_current_running();
 	}
 }
@@ -950,7 +950,7 @@ static INLINE void run_editor(const char *filename)
 
 	endwin();
 
-	editor = opt_editor;
+	editor = *opt_editor;
 
 	if (Empty_string(editor)) {
 		editor = getenv("EDITOR");
@@ -1212,7 +1212,7 @@ static void pkg_write_main_line(logs_t *logs, int idx)
 
 
 	/* Space for cursor. */
-	for (i = 0; i < strlen(opt_cursor_string) + 1; ++i) {
+	for (i = 0; i < strlen(*opt_cursor) + 1; ++i) {
 		append_str(&line, " ");
 	}
 
@@ -1244,7 +1244,7 @@ static INLINE int pkg_print_installed_packages(logs_t *logs)
 	Xwmove(windows.main->name, 0, 0);
 
 	/* Space for cursor. */
-	for (j = 0; j < strlen(opt_cursor_string) + 1; ++j) {
+	for (j = 0; j < strlen(*opt_cursor) + 1; ++j) {
 		Xwaddstr(windows.main->name, " ");
 	}
 
@@ -1383,11 +1383,11 @@ static INLINE void add_element_specific_info(char **line, element_s *el)
 
 static int should_skip_element(element_s *el, int *depth)
 {
-	if (el->type == TYPE_COMMENT && !opt_display_comments) {
+	if (el->type == TYPE_COMMENT && !*opt_display_comments) {
 		return 1;
 	}
 
-	if (!opt_display_alfs && Is_element_name(el, "alfs")) {
+	if (!*opt_display_alfs && Is_element_name(el, "alfs")) {
 		if (depth) {
 			--(*depth);
 			el->hide_children = 0;
@@ -1395,13 +1395,13 @@ static int should_skip_element(element_s *el, int *depth)
 		return 1;
 	}
 
-	if (!opt_display_doctype && el->type == TYPE_DOCTYPE) {
+	if (!*opt_display_doctype && el->type == TYPE_DOCTYPE) {
 		if (depth) {
 			el->hide_children = 1;
 		}
 		return 1;
 	}
-	if (!opt_display_doctype
+	if (!*opt_display_doctype
 	&& el->parent && el->parent->type == TYPE_DOCTYPE) {
 		return 1;
 	}
@@ -1431,7 +1431,7 @@ static void write_main_line(element_s *el, int *depth)
 
 
 	/* Space for cursor. */
-	for (i = 0; i < (int)strlen(opt_cursor_string); ++i) {
+	for (i = 0; i < (int)strlen(*opt_cursor); ++i) {
 		append_str(&line, " ");
 	}
 
@@ -1450,7 +1450,7 @@ static void write_main_line(element_s *el, int *depth)
 	append_str(&line, status_mark);
 
 	/* Indentation space. */
-	j = (*depth) * opt_indentation_size;
+	j = (*depth) * *opt_indentation_size;
 	for (i = 0; i < j; ++i) {
 		append_str(&line, " ");
 	}
@@ -1467,7 +1467,7 @@ static void write_main_line(element_s *el, int *depth)
 	}
 
 	if (el->handler) { /* Description and some element-specific info. */
-		if (! Is_element_name(el, "stage") || opt_display_stage_header) {
+		if (! Is_element_name(el, "stage") || *opt_display_stage_header) {
 			append_str(&line, el->handler->info->description);
 		}
 
@@ -1566,7 +1566,7 @@ static int found_searched(element_s *el)
 
 static INLINE int jump_match(element_s *el)
 {
-	switch (opt_jumpto_element) {
+	switch (*opt_jumpto_element) {
 		case JUMP_TO_FAILED:
 			return el->run_status == RUN_STATUS_FAILED;
 
@@ -1602,7 +1602,7 @@ static INLINE int jump_forward(element_s *el)
 			int i;
 
 			// Open all elements to the package.
-			if (opt_jumpto_element == JUMP_TO_PACKAGE) {
+			if (*opt_jumpto_element == JUMP_TO_PACKAGE) {
 				i = found_searched(curr);
 			} else {
 				i = find_cursor(curr);
@@ -1648,7 +1648,7 @@ static INLINE int jump_backward(element_s *el)
 			int i;
 
 			// Open all elements to the package.
-			if (opt_jumpto_element == JUMP_TO_PACKAGE) {
+			if (*opt_jumpto_element == JUMP_TO_PACKAGE) {
 				i = found_searched(curr);
 			} else {
 				i = find_cursor(curr);
@@ -1675,7 +1675,7 @@ static INLINE int jump_backward(element_s *el)
 
 static void print_did_not_jump_message(void)
 {
-	switch (opt_jumpto_element) {
+	switch (*opt_jumpto_element) {
 		case JUMP_TO_FAILED:
 			Nprint("No more failed elements.");
 			break;
@@ -1752,22 +1752,22 @@ static INLINE void toggle_jump_to_element(void)
 
 	switch (get_key(windows.main->name)) {
 		case 'r':
-			opt_jumpto_element = JUMP_TO_RUNNING;
+			*opt_jumpto_element = JUMP_TO_RUNNING;
 			Nprint("Jumping to running elements from now on.");
 			break;
 
 		case 'f':
-			opt_jumpto_element = JUMP_TO_FAILED;
+			*opt_jumpto_element = JUMP_TO_FAILED;
 			Nprint("Jumping to failed elements from now on.");
 			break;
 
 		case 'd':
-			opt_jumpto_element = JUMP_TO_DONE;
+			*opt_jumpto_element = JUMP_TO_DONE;
 			Nprint("Jumping to done elements from now on.");
 			break;
 
 		case 'p':
-			opt_jumpto_element = JUMP_TO_PACKAGE;
+			*opt_jumpto_element = JUMP_TO_PACKAGE;
 			Nprint("Jumping to packages from now on.");
 			break;
 
@@ -1783,9 +1783,9 @@ static INLINE void toggle_jump_to_element(void)
 
 static INLINE void toggle_verbosity(void)
 {
-	Toggle(opt_be_verbose);
+	Toggle(*opt_be_verbose);
 
-	if (opt_be_verbose) {
+	if (*opt_be_verbose) {
 		Nprint("Verbosity now on.");
 	} else {
 		Nprint("Verbosity now off.");
@@ -1798,9 +1798,9 @@ static INLINE void toggle_backend_logging(void)
 		comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_LOG_BACKEND, "");
 	}
 
-	Toggle(opt_log_backend);
+	Toggle(*opt_log_backend);
 
-	if (opt_log_backend) {
+	if (*opt_log_backend) {
 		Nprint("Backend logging now on.");
 	} else {
 		Nprint("Backend logging now off.");
@@ -1813,13 +1813,13 @@ static INLINE void toggle_logging(void)
 	FILE *fp;
 
 
-	if (opt_log_status_window) {
+	if (*opt_log_status_window) {
 		Nprint("Logging to \"%s\" now off.", file);
-		opt_log_status_window = 0;
+		*opt_log_status_window = 0;
 
 	} else {
 		if ((fp = fopen(file, "a")) != NULL) {
-			opt_log_status_window = 1;
+			*opt_log_status_window = 1;
 			Nprint("Logging to \"%s\" now on.", file);
 			fclose(fp);
 
@@ -1838,11 +1838,11 @@ static INLINE void toggle_logging_files(void)
 		comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_LOG_CHANGED_FILES, "");
 	}
 
-	if (++opt_logging_method > LAST_LOGGING_METHOD) {
-		opt_logging_method = 0;
+	if (++*opt_logging_method > LAST_LOGGING_METHOD) {
+		*opt_logging_method = 0;
 	}
 
-	switch (opt_logging_method) {
+	switch (*opt_logging_method) {
 		case LOG_USING_ONE_FIND:
 			Nprint("Logging changed files using time stamps.");
 			break;
@@ -1858,12 +1858,12 @@ static INLINE void toggle_logging_actions(void)
 		comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_LOG_HANDLER_ACTIONS, "");
 	}
 
-	if (opt_log_handlers) {
+	if (*opt_log_handlers) {
 		Nprint("Logging handler actions now off.");
-		opt_log_handlers = 0;
+		*opt_log_handlers = 0;
 	} else {
 		Nprint("Logging handler actions now on.");
-		opt_log_handlers = 1;
+		*opt_log_handlers = 1;
 	}
 }
 
@@ -1874,12 +1874,12 @@ static INLINE void toggle_generate_stamp(void)
 		comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_GENERATE_STAMP, "");
 	}
 
-	if (opt_stamp_packages) {
+	if (*opt_stamp_packages) {
 		Nprint("Generating stamp now off.");
-		opt_stamp_packages = 0;
+		*opt_stamp_packages = 0;
 	} else {
 		Nprint("Generating stamp now on.");
-		opt_stamp_packages = 1;
+		*opt_stamp_packages = 1;
 	}
 }
 #endif
@@ -1890,23 +1890,23 @@ static INLINE void toggle_system_output(void)
 		comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_SYSTEM_OUTPUT, "");
 	}
 
-	if (opt_show_system_output) {
+	if (*opt_show_system_output) {
 		Nprint("Displaying system output turned off.");
-		opt_show_system_output = 0;
+		*opt_show_system_output = 0;
 	} else {
 		Nprint("Displaying system output turned on.");
-		opt_show_system_output = 1;
+		*opt_show_system_output = 1;
 	}
 }
 
 static INLINE void toggle_following(void)
 {
-	if (opt_follow_running) {
+	if (*opt_follow_running) {
 		Nprint("Following running elements now off.");
-		opt_follow_running = 0;
+		*opt_follow_running = 0;
 	} else {
 		Nprint("Following running elements now on.");
-		opt_follow_running = 1;
+		*opt_follow_running = 1;
 	}
 }
 
@@ -1945,16 +1945,16 @@ static INLINE void toggle_comments(void)
 	element_s *old_el = Current_element;
 
 
-	Toggle(opt_display_comments);
+	Toggle(*opt_display_comments);
 
-	if (! opt_display_comments) {
+	if (! *opt_display_comments) {
 		Nprint("Comments hidden.");
 	} else {
 		Nprint("Comments will be displayed again.");
 	}
 
 	/* We're on the element that's going to be hidden, find another. */
-	if (Current_element->type == TYPE_COMMENT && !opt_display_comments) {
+	if (Current_element->type == TYPE_COMMENT && !*opt_display_comments) {
 		old_el = find_nearest_non_comment_element();
 	}
 
@@ -2001,16 +2001,16 @@ static INLINE void toggle_alfs(void)
 	element_s *old_el = Current_element;
 
 
-	Toggle(opt_display_alfs);
+	Toggle(*opt_display_alfs);
 
-	if (! opt_display_alfs) {
+	if (! *opt_display_alfs) {
 		Nprint("Alfs element hidden.");
 	} else {
 		Nprint("Alfs element will be displayed again.");
 	}
 
 	/* We're on the element that's going to be hidden, find another. */
-	if (Is_element_name(Current_element, "alfs") && !opt_display_alfs) {
+	if (Is_element_name(Current_element, "alfs") && !*opt_display_alfs) {
 		old_el = find_nearest_non_alfs_element();
 	}
 
@@ -2030,12 +2030,12 @@ static INLINE void change_find_options(void)
 		return;
 	}
 
-	get_string_from_bottom("Root directory:", &opt_find_base);
-	Nprint("Root directory: %s", opt_find_base ? opt_find_base : "/");
+	get_string_from_bottom("Root directory:", opt_find_base);
+	Nprint("Root directory: %s", *opt_find_base ? *opt_find_base : "/");
 
-	get_string_from_bottom("Prune directories:", &opt_find_prunes);
-	if (opt_find_prunes) {
-		Nprint("Prune directories: %s", opt_find_prunes);
+	get_string_from_bottom("Prune directories:", opt_find_prunes);
+	if (*opt_find_prunes) {
+		Nprint("Prune directories: %s", *opt_find_prunes);
 	} else {
 		Nprint("Not ignoring any directory.");
 	}
@@ -2054,7 +2054,7 @@ static void draw_options_indicators(void)
 
 	/* Jump to option. */
 
-	switch (opt_jumpto_element) {
+	switch (*opt_jumpto_element) {
 		case JUMP_TO_FAILED:
 			c = 'f';
 			pair = COLP_STATUS_FAILED;
@@ -2081,21 +2081,21 @@ static void draw_options_indicators(void)
 	wchgat(stdscr, 1, A_NORMAL, pair, NULL);
 
 	++col;
-	Xmvaddch(row, col++, opt_display_alfs		? 'a' : ' ');
-	Xmvaddch(row, col++, opt_display_doctype	? 'd' : ' ');
-	Xmvaddch(row, col++, opt_display_comments	? 'c' : ' ');
+	Xmvaddch(row, col++, *opt_display_alfs		? 'a' : ' ');
+	Xmvaddch(row, col++, *opt_display_doctype	? 'd' : ' ');
+	Xmvaddch(row, col++, *opt_display_comments	? 'c' : ' ');
 	++col;
-	Xmvaddch(row, col++, opt_be_verbose		? 'v' : ' ');
+	Xmvaddch(row, col++, *opt_be_verbose		? 'v' : ' ');
 	++col;
-	Xmvaddch(row, col++, opt_show_system_output 	? 's' : ' ');
+	Xmvaddch(row, col++, *opt_show_system_output 	? 's' : ' ');
 	++col;
-	Xmvaddch(row, col++, opt_follow_running		? 'o' : ' ');
+	Xmvaddch(row, col++, *opt_follow_running		? 'o' : ' ');
 	++col;
-	Xmvaddch(row, col++, opt_log_status_window	? 'w' : ' ');
+	Xmvaddch(row, col++, *opt_log_status_window	? 'w' : ' ');
 	++col;
-	Xmvaddch(row, col++, opt_log_handlers		? 'h' : ' ');
+	Xmvaddch(row, col++, *opt_log_handlers		? 'h' : ' ');
 	++col;
-	switch (opt_logging_method) {
+	switch (*opt_logging_method) {
 		case LOG_USING_ONE_FIND:
 			Xmvaddch(row, col++, 'f');
 			break;
@@ -2104,7 +2104,7 @@ static void draw_options_indicators(void)
 			break;
 	}
 	++col;
-	Xmvaddch(row, col++, opt_log_backend ? 'B' : ' ');
+	Xmvaddch(row, col++, *opt_log_backend ? 'B' : ' ');
 
 	refresh();
 }
@@ -2125,7 +2125,7 @@ static int print_options(void)
 	 * Set them.
 	 */
 
-	switch (opt_jumpto_element) {
+	switch (*opt_jumpto_element) {
 		case JUMP_TO_FAILED:
 			strcpy(jump, "Failed");
 			break;
@@ -2149,7 +2149,7 @@ static int print_options(void)
 	}
 
 
-	switch (opt_logging_method) {
+	switch (*opt_logging_method) {
 		case LOG_USING_ONE_FIND:
 			strcpy(find, "Using one find()-like search");
 			break;
@@ -2163,7 +2163,7 @@ static int print_options(void)
 			strcpy(find, "Unknown");
 	}
 
-	switch (opt_display_timer) {
+	switch (*opt_display_timer) {
 		case TIMER_NONE:
 			strcpy(tdisplay, "Nothing");
 			break;
@@ -2187,13 +2187,13 @@ static int print_options(void)
 
 	Po("To exit the option menu, type 'q'.\n");
 	Po("\n");
-	Po("(B)ackend logging: %s\n", Onoff(opt_log_backend));
-	Po("    (h) Log handler actions: %s\n", Yesno(opt_log_handlers));
+	Po("(B)ackend logging: %s\n", Onoff(*opt_log_backend));
+	Po("    (h) Log handler actions: %s\n", Yesno(*opt_log_handlers));
 	Po("    (f) Log changed files: %s\n", find);
 	Po("    (F) Find search options\n");
-	Po("        Base directory: %s\n", opt_find_base ? opt_find_base : "");
+	Po("        Base directory: %s\n", *opt_find_base ? *opt_find_base : "");
 	Po("        Prune directories:\n");
-	Po("        %s", opt_find_prunes ? opt_find_prunes : "");
+	Po("        %s", *opt_find_prunes ? *opt_find_prunes : "");
 	Po("\n\n");
 	Po("Jump-to element: %s\n", jump);
 	Po("    (jr) Jump to next running element\n");
@@ -2201,16 +2201,16 @@ static int print_options(void)
 	Po("    (jd) Jump to next successfully done element\n");
 	Po("    (jp) Jump to next package\n");
 	Po("\n");
-	Po("(w) Log status window: %s\n", Yesno(opt_log_status_window));
+	Po("(w) Log status window: %s\n", Yesno(*opt_log_status_window));
 	Po("\n");
-	Po("(o) Follow running element: %s\n", Yesno(opt_follow_running));
+	Po("(o) Follow running element: %s\n", Yesno(*opt_follow_running));
 	Po("\n");
-	Po("(a) Show <alfs> element: %s\n", Yesno(opt_display_alfs));
-//	Po("(d) Show doctype: %s\n", Yesno(opt_display_doctype));
-	Po("(c) Show comments: %s\n", Yesno(opt_display_comments));
+	Po("(a) Show <alfs> element: %s\n", Yesno(*opt_display_alfs));
+//	Po("(d) Show doctype: %s\n", Yesno(*opt_display_doctype));
+	Po("(c) Show comments: %s\n", Yesno(*opt_display_comments));
 	Po("\n");
-	Po("(v) Verbose program output: %s\n", Yesno(opt_be_verbose));
-	Po("(s) Display system output: %s\n", Yesno(opt_show_system_output));
+	Po("(v) Verbose program output: %s\n", Yesno(*opt_be_verbose));
+	Po("(s) Display system output: %s\n", Yesno(*opt_show_system_output));
 	Po("\n");
 	Po("(t) Timer displaying : %s", tdisplay);
 
@@ -2245,7 +2245,7 @@ static void draw_static_border(void)
 		Xmvaddch(0, i + 1 + 1 + strlen(PACKAGE_STRING) + 1, ACS_LTEE);
 	}
 
-	if (opt_display_options_line) { /* Border of option indicators. */
+	if (*opt_display_options_line) { /* Border of option indicators. */
 		int begin = strlen(OPTIONS_SPACE) + 4;
 		if ((i = windows.max_cols - begin) > 1) {
 			Xmvaddch(middle_line_y, i, ACS_RTEE);
@@ -2254,7 +2254,7 @@ static void draw_static_border(void)
 		}
 	}
 
-	if (opt_display_timer) { /* Timer's and backend status border. */
+	if (*opt_display_timer) { /* Timer's and backend status border. */
 		int ts = strlen(TIMERS_SPACE);
 		if ((i = windows.max_cols - ( ts + 3 )) > 1) {
 			Xmvaddch(windows.max_lines - 1, i, ACS_RTEE);
@@ -2275,7 +2275,7 @@ static void draw_backend_status(void)
 	int col = windows.max_cols - 6;
 
 
-	if (opt_display_timer == TIMER_NONE) {
+	if (*opt_display_timer == TIMER_NONE) {
 		return;
 	}
 
@@ -2368,7 +2368,7 @@ static void draw_timer(void)
 	int col = windows.max_cols - 15;
 
 
-	if (opt_display_timer != TIMER_NONE && col >= 6) {
+	if (*opt_display_timer != TIMER_NONE && col >= 6) {
 		char *str;
 		double curr, total;
 
@@ -2381,7 +2381,7 @@ static void draw_timer(void)
 			total = timer.total_executing;
 		}
 
-		switch (opt_display_timer) {
+		switch (*opt_display_timer) {
 			case TIMER_CURRENT:
 				mvaddch(row, col - 2, 'C');
 				str = timer_convert(curr);
@@ -2420,10 +2420,10 @@ static void redisplay_all(void)
 	draw_backend_status();
 	draw_timer();
 
-	if (opt_display_profile) {
+	if (*opt_display_profile) {
 		draw_profile_name(get_profile_by_element(Current_element));
 	}
-	if (opt_display_options_line) {
+	if (*opt_display_options_line) {
 		draw_options_indicators();
 	}
 
@@ -2433,19 +2433,19 @@ static void redisplay_all(void)
 
 static INLINE void toggle_timer(void)
 {
-	switch (opt_display_timer) {
+	switch (*opt_display_timer) {
 		case TIMER_NONE:
-			opt_display_timer = TIMER_TOTAL;
+			*opt_display_timer = TIMER_TOTAL;
 			Nprint("Displaying total time of execution.");
 			break;
 
 		case TIMER_TOTAL:
-			opt_display_timer = TIMER_CURRENT;
+			*opt_display_timer = TIMER_CURRENT;
 			Nprint("Displaying current time of execution.");
 			break;
 
 		case TIMER_CURRENT:
-			opt_display_timer = TIMER_NONE;
+			*opt_display_timer = TIMER_NONE;
 			Nprint("Not displaying timer.");
 			break;
 
@@ -2463,13 +2463,13 @@ static int do_change_option(int input)
 	switch (input) {
 		case 'c':
 			toggle_comments();
-			if (opt_display_options_line) {
+			if (*opt_display_options_line) {
 				draw_options_indicators();
 			}
 			break;
 		case 'a':
 			toggle_alfs();
-			if (opt_display_options_line) {
+			if (*opt_display_options_line) {
 				draw_options_indicators();
 			}
 			break;
@@ -2480,28 +2480,28 @@ static int do_change_option(int input)
 
 		case 'v':
 			toggle_verbosity();
-			if (opt_display_options_line) {
+			if (*opt_display_options_line) {
 				draw_options_indicators();
 			}
 			break;
 
 		case 'w':
 			toggle_logging();
-			if (opt_display_options_line) {
+			if (*opt_display_options_line) {
 				draw_options_indicators();
 			}
 			break;
 
 		case 'o':
 			toggle_following();
-			if (opt_display_options_line) {
+			if (*opt_display_options_line) {
 				draw_options_indicators();
 			}
 			break;
 
 		case 'f':
 			toggle_logging_files();
-			if (opt_display_options_line) {
+			if (*opt_display_options_line) {
 				draw_options_indicators();
 			}
 			break;
@@ -2512,28 +2512,28 @@ static int do_change_option(int input)
 
 		case 'h':
 			toggle_logging_actions();
-			if (opt_display_options_line) {
+			if (*opt_display_options_line) {
 				draw_options_indicators();
 			}
 			break;
 
 		case 's':
 			toggle_system_output();
-			if (opt_display_options_line) {
+			if (*opt_display_options_line) {
 				draw_options_indicators();
 			}
 			break;
 
 		case 'j':
 			toggle_jump_to_element();
-			if (opt_display_options_line) {
+			if (*opt_display_options_line) {
 				draw_options_indicators();
 			}
 			break;
 
 		case 'B':
 			toggle_backend_logging();
-			if (opt_display_options_line) {
+			if (*opt_display_options_line) {
 				draw_options_indicators();
 			}
 			break;
@@ -2660,8 +2660,8 @@ static int wait_for_the_backend(void)
 		change_run_status_to_failed(current_running);
 	}
 
-	if (opt_beep_when_done) {
-		if (opt_run_interactive) {
+	if (*opt_beep_when_done) {
+		if (*opt_run_interactive) {
 			beep();
 
 		} else {
@@ -3040,7 +3040,7 @@ static void start_executing(void)
 
 	backend_status = BACKEND_RUNNING;
 
-	if (opt_run_interactive) {
+	if (*opt_run_interactive) {
 		draw_backend_status();
 	}
 }
@@ -3307,7 +3307,7 @@ static INLINE int add_new_profile(void)
 
 	if (! Empty_string(filename)) {
 		char *fullname = NULL;
-		char *base = xstrdup(opt_profiles_directory);
+		char *base = xstrdup(*opt_profiles_directory);
 	
 		/* Lying and cheating RFC 2396, telling xmlBuildURI() that
 		 * the _whole_ string should be used as a base directory.
@@ -3640,11 +3640,11 @@ static int browse(void)
 	draw_backend_status();
 	draw_timer();
 
-	if (opt_display_options_line) {
+	if (*opt_display_options_line) {
 		draw_options_indicators();
 	}
 
-	if (opt_expand_profiles) {
+	if (*opt_expand_profiles) {
 		element_s *profile;
 
 		for (profile = root_element->children;
@@ -3656,11 +3656,11 @@ static int browse(void)
 
 	rewrite_main();
 
-	if (opt_print_startup_help) {
+	if (*opt_print_startup_help) {
 		Nprint("For help, type '?'.");
 	}
 
-	if (opt_start_immediately) {
+	if (*opt_start_immediately) {
 		start_executing_children(root_element);
 	}
 
@@ -3669,7 +3669,7 @@ static int browse(void)
 
 		print_cursor();
 
-		if (opt_display_profile) {
+		if (*opt_display_profile) {
 			draw_profile_name(get_profile_by_element(Current_element));
 		}
 
@@ -4358,11 +4358,11 @@ static INLINE void warn_if_variables_set(void)
 	char *var, *variables;
 
 
-	if (!opt_warn_if_set_variables || !strlen(opt_warn_if_set_variables)) {
+	if (!*opt_warn_if_set_variables || !strlen(*opt_warn_if_set_variables)) {
 		return;
 	}
 
-	variables = xstrdup(opt_warn_if_set_variables);
+	variables = xstrdup(*opt_warn_if_set_variables);
 
 	for (var = strtok(variables, WHITE_SPACE);
 	     var;
@@ -4421,7 +4421,7 @@ static void signal_term(int sig)
 	/* First, stop the backend. */
 	comm_send_ctrl_msg(FRONTEND_CTRL_SOCK, CTRL_STOP, "");
 
-	if (opt_run_interactive) {
+	if (*opt_run_interactive) {
 		end_display();
 	}
 
@@ -4434,7 +4434,7 @@ static void signal_int(int sig)
 {
 	(void)sig;
 
-	if (opt_run_interactive) {
+	if (*opt_run_interactive) {
 		end_display();
 	}
 
@@ -4458,7 +4458,7 @@ static INLINE void set_main_signals(void)
 		Fatal_error("signal() failed");
 	}
 
-	if (opt_run_interactive) {
+	if (*opt_run_interactive) {
 		if (signal(SIGWINCH, signal_winch) == SIG_ERR) {
 			Fatal_error("signal() failed");
 		}
@@ -4475,12 +4475,12 @@ static INLINE void append_prune_dirs_from_file(void)
 
 
 	/* Get real file name. */
-	if (opt_find_prunes_file[0] == '/') {
-		file = xstrdup(opt_find_prunes_file);
+	if (*opt_find_prunes_file[0] == '/') {
+		file = xstrdup(*opt_find_prunes_file);
 	} else {
-		file = xstrdup(opt_alfs_directory);
+		file = xstrdup(*opt_alfs_directory);
 		append_str(&file, "/");
-		append_str(&file, opt_find_prunes_file);
+		append_str(&file, *opt_find_prunes_file);
 	}
 
 	/* Read directories from a file. */
@@ -4500,7 +4500,7 @@ static INLINE void append_prune_dirs_from_file(void)
 		
 		fclose(fp);
 
-		Set_string_option(opt_find_prunes, new_dirs);
+		set_string_option(opt_find_prunes, new_dirs);
 
 		xfree(new_dirs);
 	}
@@ -4514,7 +4514,7 @@ static INLINE void append_prune_dirs_from_file(void)
  */
 static INLINE void init_state_file(void)
 {
-	state.filename = xstrdup(opt_alfs_directory);
+	state.filename = xstrdup(*opt_alfs_directory);
 	append_str(&state.filename, "/");
        	append_str(&state.filename, state_file_name);
 
@@ -4532,8 +4532,8 @@ static void nprint_curses(msg_id_e mid, const char *format,...)
 	va_list ap;
         va_list ap2;
 
-	if (opt_log_status_window && (fp = fopen(file, "a")) == NULL) {
-		opt_log_status_window = 0;
+	if (*opt_log_status_window && (fp = fopen(file, "a")) == NULL) {
+		*opt_log_status_window = 0;
 		nprint_curses(T_WAR,
 			"Unable to open \"%s\" for logging (%s).",
 			file, strerror(errno));
@@ -4548,7 +4548,7 @@ static void nprint_curses(msg_id_e mid, const char *format,...)
 	if (mid != T_RAW) {
 		Xwprintw(windows.status->name, "\n%c: ", msg_character(mid));
 
-		if (opt_log_status_window && fp) {
+		if (*opt_log_status_window && fp) {
 			fprintf(fp, "\n%c: ", msg_character(mid));
 		}
 	}
@@ -4557,7 +4557,7 @@ static void nprint_curses(msg_id_e mid, const char *format,...)
 
 	vwprintw(windows.status->name, (char *) format, ap);
 
-	if (opt_log_status_window && fp) {
+	if (*opt_log_status_window && fp) {
 		vfprintf(fp, format, ap2);
 	}
 
@@ -4566,7 +4566,7 @@ static void nprint_curses(msg_id_e mid, const char *format,...)
 	va_end(ap);
         va_end(ap2);
 
-	if (opt_log_status_window && fp) {
+	if (*opt_log_status_window && fp) {
 		fclose(fp);
 	}
 
@@ -4581,8 +4581,8 @@ static void nprint_text(msg_id_e mid, const char *format,...)
 	va_list ap;
         va_list ap2;
 
-	if (opt_log_status_window && (fp = fopen(file, "a")) == NULL) {
-		opt_log_status_window = 0;
+	if (*opt_log_status_window && (fp = fopen(file, "a")) == NULL) {
+		*opt_log_status_window = 0;
 		nprint_text(T_WAR,
 			"Unable to open \"%s\" for logging.", file);
 		nprint_text(T_WAR, "Logging will be disabled.");
@@ -4594,7 +4594,7 @@ static void nprint_text(msg_id_e mid, const char *format,...)
 	if (mid != T_RAW) {
 		printf("\n%c: ", msg_character(mid));
 
-		if (opt_log_status_window && fp) {
+		if (*opt_log_status_window && fp) {
 			fprintf(fp, "\n%c: ", msg_character(mid));
 		}
 	}
@@ -4602,14 +4602,14 @@ static void nprint_text(msg_id_e mid, const char *format,...)
 	vprintf(format, ap);
 	fflush(stdout);
 
-	if (opt_log_status_window && fp) {
+	if (*opt_log_status_window && fp) {
 		vfprintf(fp, format, ap2);
 	}
 
 	va_end(ap);
         va_end(ap2);
         
-	if (opt_log_status_window && fp) {
+	if (*opt_log_status_window && fp) {
 		fclose(fp);
 	}
 
@@ -4648,21 +4648,21 @@ int main(int argc, char **argv)
 
 	init_state_file();
 
-	if (! Empty_string(opt_find_prunes_file)) {
+	if (! Empty_string(*opt_find_prunes_file)) {
 		append_prune_dirs_from_file();
 	}
 
 	set_main_signals();
 
 
-	if (opt_run_interactive) { /* Start ncurses. */
+	if (*opt_run_interactive) { /* Start ncurses. */
 		start_display();
 		draw_static_border();
 		nprint = nprint_curses;
 	}
 
 	/* Print some useful information. */
-	Nprint("Using \"%s\" directory.", opt_alfs_directory);
+	Nprint("Using \"%s\" directory.", *opt_alfs_directory);
 	Nprint("Using libxml2, version %s.", LIBXML_DOTTED_VERSION);
 
 	/* Load all handlers. */
@@ -4673,17 +4673,17 @@ int main(int argc, char **argv)
 		add_profile(argv[i]);
 	}
 
-	if (opt_log_status_window) {
+	if (*opt_log_status_window) {
 		char *file = alloc_real_status_logfile_name();
 		Nprint("Using \"%s\" for status logging.", file);
 		xfree(file);
 	}
 
-	if (opt_warn_if_set) {
+	if (*opt_warn_if_set) {
 		warn_if_variables_set();
 	}
 
-	if (!opt_run_interactive) {
+	if (!*opt_run_interactive) {
 		i = run_non_interactively();
 
 		printf("\n\n");

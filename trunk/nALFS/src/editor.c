@@ -34,6 +34,7 @@
 #include "utility.h"
 #include "win.h"
 #include "nalfs-core.h"
+#include "options.h"
 
 #include "editor.h"
 

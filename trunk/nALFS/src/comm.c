@@ -40,6 +40,7 @@
 #include "win.h"
 #include "utility.h"
 #include "nalfs-core.h"
+#include "options.h"
 
 #include "comm.h"
 

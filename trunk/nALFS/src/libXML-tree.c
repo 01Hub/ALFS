@@ -259,7 +259,7 @@ element_s *parse_with_libxml2_tree(const char *filename)
 	/* Set the default syntax version. It will be changed while
 	 * parsing, if there is version="" inside <alfs>.
 	 */
-	syntax_version = xstrdup(opt_default_syntax);
+	syntax_version = xstrdup(*opt_default_syntax);
 
 	xmlSubstituteEntitiesDefault(1);
 	xmlSetGenericErrorFunc(NULL, handle_error);

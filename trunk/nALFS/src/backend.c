@@ -45,6 +45,7 @@
 #include "logging.h"
 #include "nalfs-core.h"
 #include "comm.h"
+#include "options.h"
 
 #include "backend.h"
 
@@ -105,21 +106,21 @@ static void handle_ctrl_msg(void)
 	while ((message = comm_read_ctrl_message(BACKEND_CTRL_SOCK))) {
 		switch (comm_msg_type(message)) {
 			case CTRL_LOG_CHANGED_FILES:
-				if (++opt_logging_method > LAST_LOGGING_METHOD) {
-					opt_logging_method = 0;
+				if (++*opt_logging_method > LAST_LOGGING_METHOD) {
+					*opt_logging_method = 0;
 				}
 				break;
 
 			case CTRL_LOG_HANDLER_ACTIONS:
-				Toggle(opt_log_handlers);
+				Toggle(*opt_log_handlers);
 				break;
 
 			case CTRL_SYSTEM_OUTPUT:
-				Toggle(opt_show_system_output);
+				Toggle(*opt_show_system_output);
 				break;
 
 			case CTRL_LOG_BACKEND:
-				Toggle(opt_log_backend);
+				Toggle(*opt_log_backend);
 				break;
 
 			case CTRL_PAUSE:
@@ -155,7 +156,7 @@ static void nprint_backend(msg_id_e mid, const char *format, ...)
 	vsnprintf(raw_msg, sizeof raw_msg, format, ap);
 	va_end(ap);
 
-	if (mid == T_SYS && !opt_show_system_output) {
+	if (mid == T_SYS && !*opt_show_system_output) {
 		return;
 	}
 
@@ -345,7 +346,7 @@ static int do_execute_element(element_s *el)
 	} else {
 		/* Find element's handler and then execute it's function. */
 		if (el->handler) {
-			if (opt_use_relative_dirs) {
+			if (*opt_use_relative_dirs) {
 				change_to_profiles_dir(el);
 			}
 

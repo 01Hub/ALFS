@@ -85,11 +85,11 @@ char *alloc_decompress_command(compression_type_e type)
 {
 	switch (type) {
 	case COMPRESS_GZ:
-		return xstrdup(opt_gunzip_command);
+		return xstrdup(*opt_gunzip_command);
 	case COMPRESS_BZ2:
-		return xstrdup(opt_bunzip2_command);
+		return xstrdup(*opt_bunzip2_command);
 	case COMPRESS_Z:
-		return xstrdup(opt_uncompress_command);
+		return xstrdup(*opt_uncompress_command);
 	default:
 		return NULL;
 	}
@@ -108,13 +108,13 @@ char *alloc_unpack_command(archive_format_e format)
 {
 	switch (format) {
 	case ARCHIVE_TAR:
-		return xstrdup(opt_untar_command);
+		return xstrdup(*opt_untar_command);
 	case ARCHIVE_ZIP:
-		return xstrdup(opt_unzip_command);
+		return xstrdup(*opt_unzip_command);
 	case ARCHIVE_PAX:
-		return xstrdup(opt_unpax_command);
+		return xstrdup(*opt_unpax_command);
 	case ARCHIVE_CPIO:
-		return xstrdup(opt_uncpio_command);
+		return xstrdup(*opt_uncpio_command);
 	default:
 		return NULL;
 	}
