@@ -227,7 +227,11 @@ struct log_f *log_f_init_from_directory(const char *dir_name)
 			append_str(&plogf->fullname, "/");
 			append_str(&plogf->fullname, plogf->name);
 			plogf->installed = NULL;
-			plogf->doc = NULL;
+			plogf->doc = xmlParseFile(plogf->fullname);
+			if (plogf->doc) {
+				plogf->doc->children =
+				xmlDocGetRootElement(plogf->doc);
+			}
 
 			++log_f->cnt;
 
@@ -250,7 +254,32 @@ int log_f_get_packages_cnt(struct log_f *log_f)
 
 char *log_f_get_plog_filename(struct log_f *log_f, int i)
 {
-	return log_f->list[i]->name;
+	if (0 <= i && i < log_f->cnt) {
+		return log_f->list[i]->name;
+	}
+
+	return NULL;
+}
+
+char *log_f_get_flog_filename(struct log_f *log_f, int i)
+{
+	char *filename = NULL;
+	xmlDocPtr doc = NULL;
+
+	if (0 <= i && i < log_f->cnt) {
+		doc = log_f->list[i]->doc;
+	}
+
+	if (doc != NULL) {
+		xmlNodePtr n = n_xmlGetLastElementByName(
+			doc->children, EL_NAME_FOR_FILES_NAME);
+
+		if (n) {
+			filename = xmlNodeGetContent(n);
+		}
+	}
+
+	return filename;
 }
 
 /*
