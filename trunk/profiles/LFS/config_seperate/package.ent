@@ -225,8 +225,8 @@
 <!ENTITY man-80cols-patch-md5 "9c93fd4384b6b69273278ae5621e1f4a">
 <!ENTITY man-80cols-patch "man-&man-version;-80cols-1.patch">
 
-<!ENTITY man-pages-md5 "dd510bb621064873219cc692e3ba808d">
-<!ENTITY man-pages-version "1.66">
+<!ENTITY man-pages-md5 "c31112bbfdd907f77c1419308a8cafba">
+<!ENTITY man-pages-version "1.67">
 <!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.bz2">
 <!ENTITY man-pages-directory "man-pages-&man-pages-version;">
 
