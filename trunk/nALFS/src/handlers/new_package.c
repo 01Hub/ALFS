@@ -20,20 +20,24 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
+#define MODULE_NAME new_package
+#include <nALFS.h>
 #include "utility.h"
 #include "parser.h"
 #include "backend.h"
 #include "logging.h"
 #include "win.h"
-#include "config.h"
 
 
-char handler_name[] = "package";
-char handler_description[] = "Package";
-char *handler_syntax_versions[] = { "3.0", "3.1", NULL };
-// char *handler_attributes[] = { "name", "version", "logfile", NULL };
-char *handler_parameters[] = {
+char HANDLER_SYMBOL(name)[] = "package";
+char HANDLER_SYMBOL(description)[] = "Package";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "3.0", "3.1", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "name", "version", "logfile", NULL };
+char *HANDLER_SYMBOL(parameters)[] = {
 	"packageinfo",
 	"description",
 	"list",
@@ -45,7 +49,7 @@ char *handler_parameters[] = {
 	"version",
 	NULL
 };
-int handler_action = 0;
+int HANDLER_SYMBOL(action) = 0;
 
 
 static INLINE int check_utilizes(element_s *utilizes)
@@ -186,7 +190,7 @@ static int parse_packageinfo(element_s *packageinfo)
 }
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status = 0;
 	element_s *packageinfo;
@@ -210,7 +214,7 @@ int handler_main(element_s *el)
 	return status;
 }
 
-char *handler_alloc_package_name(element_s *el)
+char *HANDLER_SYMBOL(alloc_package_name)(element_s *el)
 {
 	char *name;
 
@@ -221,7 +225,7 @@ char *handler_alloc_package_name(element_s *el)
 	return NULL;
 }
 
-char *handler_alloc_package_version(element_s *el)
+char *HANDLER_SYMBOL(alloc_package_version)(element_s *el)
 {
 	char *version;
 

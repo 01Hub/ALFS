@@ -23,23 +23,28 @@
 
 #include <stdlib.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME new_make
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
 #include "handlers.h"
 #include "backend.h"
-#include "config.h"
 
 
-char handler_name[] = "make";
-char handler_description[] = "Run make";
-char *handler_syntax_versions[] = { "3.0", "3.1", NULL };
-// char *handler_attributes[] = { "base", NULL };
-char *handler_parameters[] = { "param", "prefix", NULL };
-int handler_action = 1;
+char HANDLER_SYMBOL(name)[] = "make";
+char HANDLER_SYMBOL(description)[] = "Run make";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "3.0", "3.1", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
+char *HANDLER_SYMBOL(parameters)[] = { "param", "prefix", NULL };
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status;
 	char *base;

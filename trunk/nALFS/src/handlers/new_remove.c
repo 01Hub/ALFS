@@ -27,21 +27,26 @@
 #include <unistd.h>
 #include <errno.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME new_remove
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "backend.h"
-#include "config.h"
 
 
-char handler_name[] = "remove";
-char handler_description[] = "Remove files";
-char *handler_syntax_versions[] = { "3.0", "3.1", NULL };
-// char *handler_attributes[] = { NULL };
-char *handler_parameters[] = { NULL };
-int handler_action = 1;
+char HANDLER_SYMBOL(name)[] = "remove";
+char HANDLER_SYMBOL(description)[] = "Remove files";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "3.0", "3.1", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { NULL };
+char *HANDLER_SYMBOL(parameters)[] = { NULL };
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int status = 0;
 	char *name;

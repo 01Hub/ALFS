@@ -24,23 +24,28 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#define MODULE_NAME new_link
+#include <nALFS.h>
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
 #include "handlers.h"
 #include "backend.h"
-#include "config.h"
 
 
-char handler_name[] = "link";
-char handler_description[] = "Link";
-char *handler_syntax_versions[] = { "3.0", "3.1", NULL };
-// char *handler_attributes[] = { "type", "base", NULL };
-char *handler_parameters[] = { "option", "target", "name", NULL };
-int handler_action = 1;
+char HANDLER_SYMBOL(name)[] = "link";
+char HANDLER_SYMBOL(description)[] = "Link";
+char *HANDLER_SYMBOL(syntax_versions)[] = { "3.0", "3.1", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "type", "base", NULL };
+char *HANDLER_SYMBOL(parameters)[] = { "option", "target", "name", NULL };
+int HANDLER_SYMBOL(action) = 1;
 
 
-int handler_main(element_s *el)
+int HANDLER_SYMBOL(main)(element_s *el)
 {
 	int options[2], force, no_dereference;
 	int status;
