@@ -160,7 +160,7 @@
 
 <!ELEMENT shell          (#PCDATA)>
 
-<!ELEMENT stage          (stageinfo?, (%ops;)+)>
+<!ELEMENT stage          (stageinfo?, (%ops; | package | packagegroup)+)>
 <!ATTLIST stage
           name           CDATA #IMPLIED>
           
