@@ -31,10 +31,13 @@
 
 		<configure />
 
-		<make />
+		<make>
+			<param>SBINDIR=/sbin</param>
+		</make>
 
 		<make>
 			<param>install</param>
+			<param>SBINDIR=/sbin</param>
 		</make>
 	</stage>
 

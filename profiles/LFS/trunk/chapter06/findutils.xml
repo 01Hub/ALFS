@@ -26,7 +26,7 @@
 		<configure>
 			<param>--prefix=/usr</param>
 			<param>--libexecdir=/usr/lib/locate</param>
-			<param>--localstatedir=/var/lib/misc</param>
+			<param>--localstatedir=/var/lib/locate</param>
 		</configure>
 
 		<make />
