@@ -34,8 +34,6 @@
 #include "backend.h"
 
 
-static const char *alfs_parameters[] = { NULL };
-
 static int alfs_main(element_s *el)
 {
 	return execute_children(el);
@@ -52,7 +50,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "alfs",
 		.description = "ALFS profile",
 		.syntax_version = "2.0",
-		.parameters = alfs_parameters,
 		.main = alfs_main,
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
@@ -65,7 +62,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "alfs",
 		.description = "ALFS profile",
 		.syntax_version = "3.0",
-		.parameters = alfs_parameters,
 		.main = alfs_main,
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
@@ -78,7 +74,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "alfs",
 		.description = "ALFS profile",
 		.syntax_version = "3.1",
-		.parameters = alfs_parameters,
 		.main = alfs_main,
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
@@ -91,7 +86,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "alfs",
 		.description = "ALFS profile",
 		.syntax_version = "3.2",
-		.parameters = alfs_parameters,
 		.main = alfs_main,
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,

@@ -37,8 +37,6 @@
 #include "parser.h"
 
 
-static const char *null_parameters[] = { NULL };
-
 #if HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 static int do_shelltest(element_s *element, const char *test, int *result)
 {
@@ -310,7 +308,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "test",
 		.description = "Shell Test",
 		.syntax_version = "3.2",
-		.parameters = null_parameters,
 		.test = shelltest_test_3_2,
 		.type = HTYPE_TEST,
 		.alloc_data = NULL,
@@ -322,7 +319,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "package-built",
 		.description = "Package Built",
 		.syntax_version = "3.2",
-		.parameters = null_parameters,
 		.test = package_built_test_3_2,
 		.type = HTYPE_TEST,
 		.alloc_data = NULL,
@@ -334,7 +330,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "package-version",
 		.description = "Package Version",
 		.syntax_version = "3.2",
-		.parameters = null_parameters,
 		.test = package_version_test_3_2,
 		.type = HTYPE_TEST,
 		.alloc_data = NULL,

@@ -41,7 +41,6 @@
 #include "parser.h"
 #include "backend.h"
 
-static const char *remove_parameters_ver[] = { NULL };
 static const char *remove_parameters_ver_3_2[] = { "base", "file",  NULL };
 
 #if HANDLER_SYNTAX_2_0
@@ -188,7 +187,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "remove",
 		.description = "Remove files",
 		.syntax_version = "2.0",
-		.parameters = remove_parameters_ver,
 		.main = remove_main_ver2,
 		.type = 0,
 		.alloc_data = NULL,
@@ -201,7 +199,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "remove",
 		.description = "Remove files",
 		.syntax_version = "3.0",
-		.parameters = remove_parameters_ver,
 		.main = remove_main_ver3,
 		.type = 0,
 		.alloc_data = NULL,
@@ -214,7 +211,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "remove",
 		.description = "Remove files",
 		.syntax_version = "3.1",
-		.parameters = remove_parameters_ver,
 		.main = remove_main_ver3,
 		.type = 0,
 		.alloc_data = NULL,

@@ -59,7 +59,6 @@ static INLINE element_s *find_package(const char *name)
 
 #if HANDLER_SYNTAX_3_0
 
-static const char *check_parameters[] = { NULL };
 
 static int check_main(element_s *el)
 {
@@ -133,7 +132,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "check",
 		.description = "Check for installed package",
 		.syntax_version = "3.0",
-		.parameters = check_parameters,
 		.main = check_main,
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,

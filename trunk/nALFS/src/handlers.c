@@ -214,7 +214,8 @@ static INLINE void add_all_parameters(void)
 	int i;
 
 	for (i = 0; i < handlers.cnt; ++i) {
-		add_new_parameters(handlers.list[i]->info->parameters);
+		if (handlers.list[i]->info->parameters)
+			add_new_parameters(handlers.list[i]->info->parameters);
 	}
 }
 

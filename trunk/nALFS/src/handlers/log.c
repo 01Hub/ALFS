@@ -36,7 +36,6 @@
 
 #if HANDLER_SYNTAX_2_0 || HANDLER_SYNTAX_3_0
 
-static const char *log_parameters[] = { NULL };
 
 static int log_main(element_s *el)
 {
@@ -58,7 +57,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "log",
 		.description = "Log",
 		.syntax_version = "2.0",
-		.parameters = log_parameters,
 		.main = log_main,
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
@@ -71,7 +69,6 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "log",
 		.description = "Log",
 		.syntax_version = "3.0",
-		.parameters = log_parameters,
 		.main = log_main,
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
