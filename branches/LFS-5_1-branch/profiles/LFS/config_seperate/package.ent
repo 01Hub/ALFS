@@ -133,9 +133,9 @@
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.gz">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
-<!ENTITY glibc-md5 "795895e3992dad76093b96cb8a78e0a0">
+<!ENTITY glibc-md5 "cd11fabdf5162ad68329e7b28b308278">
 <!ENTITY glibc-version "2.3.3">
-<!ENTITY glibc-cvs-version "20031202">
+<!ENTITY glibc-cvs-version "lfs-5.1">
 <!ENTITY glibc-package "glibc-&glibc-version;-&glibc-cvs-version;.tar.bz2">
 <!ENTITY glibc-directory "glibc-&glibc-version;-&glibc-cvs-version;">
 
@@ -185,8 +185,8 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "4f33a7059b381d0ed02684e9bf64186a">
-<!ENTITY lfs-bootscripts-version "2.0.4">
+<!ENTITY lfs-bootscripts-md5 "874bba3e9d284fa88bc0b905665b30a8">
+<!ENTITY lfs-bootscripts-version "2.0.5">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
