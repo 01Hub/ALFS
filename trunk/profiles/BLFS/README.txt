@@ -11,7 +11,7 @@ and does not change itself to a chrooted environment.
 To be able to have absolute paths to some files in the
 BLFS profile, the "runit" command creates a file "files.ent" 
 that contains some entity declarations. You should therefore
-use "./runit.sh" to execute the profile.
+use "sh ./runit.sh" to execute the profile.
 
 As you could want to vary some configuration files for
 different installation, these configuration files can be stored
