@@ -122,7 +122,7 @@
 <!ENTITY grep-package "grep-&grep-version;.tar.bz2">
 <!ENTITY grep-directory "grep-&grep-version;">
 
-<!ENTITY groff-md5 "57d155378640c12a80642664dfdfc892">
+<!ENTITY groff-md5 "88239a9aa668235ac82c34bcdfc4e83a">
 <!ENTITY groff-version "1.19.1">
 <!ENTITY groff-package "groff-&groff-version;.tar.bz2">
 <!ENTITY groff-directory "groff-&groff-version;">
