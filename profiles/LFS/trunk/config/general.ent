@@ -56,22 +56,6 @@
      -->
 <!ENTITY domain "your.domain">
 
-<!-- Some networking entities.
-     These entities are used when creating the files
-     /etc/sysconfig/network and 
-     /etc/sysconfig/network-devices/ifconfig.eth0
-     -->
-<!ENTITY gateway    "172.16.1.1">
-<!ENTITY on_boot    "yes">
-<!ENTITY IP         "172.16.1.22">
-<!ENTITY prefix     "24">
-<!ENTITY broadcast  "172.16.1.255">
-
-<!-- In the entity below replace 127.0.0.1 with the IP address of the DNS server most appropriate for
-your setup. This will often be provided by your ISP or it may even be a router on your local
-network.-->
-<!ENTITY nameserver-ip "127.0.0.1">
-
 <!-- Set here the name of the module of your network card -->
 <!ENTITY network-card-module "sis900">
 <!ENTITY network-interface   "eth0">

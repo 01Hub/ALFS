@@ -11,26 +11,13 @@
       <option>parents</option>
       <name>/etc/sysconfig/network-devices/ifconfig.eth0</name>
     </mkdir>
-    <textdump>
-      <file>/etc/sysconfig/network-devices/ifconfig.eth0/ipv4</file>
-      <content>
-	=ONBOOT=&on_boot; 
-	=SERVICE=ipv4-static 
-	=IP=&IP; 
-	=GATEWAY=&gateway; 
-	=PREFIX=&prefix; 
-	=BROADCAST=&broadcast;
-      </content>
-    </textdump>
-    <textdump>
-      <file>/etc/resolv.conf</file>
-      <content>
-	=# Begin /etc/resolv.conf
-	= 
-	=nameserver &nameserver-ip; 
-	= 
-	=# End /etc/resolv.conf
-      </content>
-    </textdump>
+    <copy>
+      <source>&skeleton_dir;/etc/sysconfig/network-devices/ifconfig.eth0/ipv4</source>
+      <destination>/etc/sysconfig/network-devices/ifconfig.eth0</destination>
+    </copy>
+    <copy>
+      <source>&skeleton_dir;/etc/resolv.conf</source>
+      <destination>/etc</destination>
+    </copy>
   </stage>
 </alfs>
