@@ -79,7 +79,7 @@ chunks-html: common
 	rm $(OUTDIR)stylesheets/alfs-chunked.xsl
 	mv $(OUTDIR) ALFS-SYNTAX-DOC
 
-	tar -cjvf ALFS-SYNTAX-DOC-CVS-CHUNKS-html.tar.bz2 ALFS-SYNTAX-DOC/*
+	tar -cjvf ALFS-SYNTAX-DOC-SVN-CHUNKS-html.tar.bz2 ALFS-SYNTAX-DOC/*
 
 nochunks-html: common
 	sed -e "s@XSLROOTDIR@$(XSLROOTDIR)@" \
@@ -111,9 +111,9 @@ nochunks-html: common
 	bash stylesheets/goTidy $(OUTDIR)
 	rm $(OUTDIR)tidy.conf
 	rm $(OUTDIR)alfs-onechunk.xsl
-	mv $(OUTDIR)index.html ALFS-SYNTAX-DOC-CVS-NOCHUNKS.html
+	mv $(OUTDIR)index.html ALFS-SYNTAX-DOC-SVN-NOCHUNKS.html
 
 flat-text: nochunks-html
-	lynx -dump ALFS-SYNTAX-DOC-CVS-NOCHUNKS.html > ALFS-SYNTAX-DOC-CVS.txt
+	lynx -dump ALFS-SYNTAX-DOC-SVN-NOCHUNKS.html > ALFS-SYNTAX-DOC-SVN.txt
 
 .PHONY: clean dist-clean common chunks-html nochunks-html flat-text
