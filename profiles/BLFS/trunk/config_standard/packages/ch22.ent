@@ -10,7 +10,7 @@
 <!ENTITY dhcp-directory "dhcp-&dhcp-version;">
 <!ENTITY dhcp-iproute2-patch "dhcp-&dhcp-version;-iproute2-1.patch">
 
-<!ENTITY leafnode-version   "1.10.0">
+<!ENTITY leafnode-version   "1.10.8">
 <!ENTITY leafnode-package   "leafnode-&leafnode-version;.rel.tar.bz2">
 <!ENTITY leafnode-directory "leafnode-&leafnode-version;.rel">
 
@@ -26,8 +26,8 @@
 <!ENTITY openldap-package   "openldap-&openldap-version;.tgz">
 <!ENTITY openldap-directory "openldap-&openldap-version;">
 
-<!ENTITY samba-version "3.0.9">
-<!ENTITY samba-package "samba-&samba-version;.tar.bz2">
+<!ENTITY samba-version "3.0.11">
+<!ENTITY samba-package "samba-&samba-version;.tar.gz">
 <!ENTITY samba-directory "samba-&samba-version;">
 
 <!ENTITY xinetd-version   "2.3.13">

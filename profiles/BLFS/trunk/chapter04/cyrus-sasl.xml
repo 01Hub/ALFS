@@ -74,7 +74,7 @@
     </copy>
     <mkdir>
       <option>parents</option>
-      <name>/usr/share/doc/sasl</name>
+      <name>/usr/share/doc/sasl-&cyrus-sasl-version;</name>
     </mkdir>
     <copy>
       <source>doc/*.html</source>
@@ -83,11 +83,11 @@
       <source>doc/ONEWS</source>
       <source>doc/TODO</source>
       <source>saslauthd/LDAP_SASLAUTHD</source>
-      <destination>/usr/share/doc/sasl</destination>
+      <destination>/usr/share/doc/sasl-&cyrus-sasl-version;</destination>
     </copy>
     <permissions mode="644">
       <name>/usr/share/man/man8/saslauthd.8</name>
-      <name>/usr/share/doc/sasl/*</name>
+      <name>/usr/share/doc/sasl-&cyrus-sasl-version;/*</name>
     </permissions>
     <mkdir>
       <option>parents</option>
