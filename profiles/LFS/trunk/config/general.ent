@@ -28,23 +28,6 @@
      -->
 <!ENTITY orig_packages_dir "/your/LFS-SVN/packages">
 
-<!-- Partition of your new LFS system.
-     This entity is used only to initialize the new fstab file.
-     No attempt is done to access this partition during
-     the build, except if it has been mounted on &LFS;
-     -->
-<!ENTITY lfs_partition "/dev/hda2">
-
-<!-- Type of your LFS partition.
-     This entity is used only to initialize the new fstab file.
-     -->
-<!ENTITY fs_type "ext3">
-
-<!-- Swap partition.
-     This entity is used only to initialize the new fstab file
-     -->
-<!ENTITY swap_partition "/dev/hda3">
-
 <!-- Timezone file
      This entity will be used as the target of the link
      /etc/localtime
