@@ -175,6 +175,9 @@
 <!ENTITY inetutils-package "inetutils-&inetutils-version;.tar.gz">
 <!ENTITY inetutils-directory "inetutils-&inetutils-version;">
 
+<!ENTITY inetutils-no-man-pages-patch-md5 "eb477f532bc6d26e7025fcfc4452511d">
+<!ENTITY inetutils-no-man-pages-patch "inetutils-&inetutils-version;-no_server_man_pages-1.patch">
+
 <!ENTITY kbd-md5 "924e6a05e52715dc0f96385b35f2f680">
 <!ENTITY kbd-version "1.08">
 <!ENTITY kbd-package "kbd-&kbd-version;.tar.gz">
