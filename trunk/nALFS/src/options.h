@@ -22,100 +22,10 @@
  */
 
 
+#include "option_struct.h"
+
 #ifndef H_OPTIONS_
 #define H_OPTIONS_
-
-
-/*
- * Types of some options.
- */
-
-typedef enum timer_type {
-	TIMER_NONE = 0,
-	TIMER_TOTAL,
-	TIMER_CURRENT
-} timer_type_t;
-
-typedef enum jump_location {
-	JUMP_TO_FAILED = 0,
-	JUMP_TO_RUNNING,
-	JUMP_TO_DONE,
-	JUMP_TO_PACKAGE
-} jump_location_t;
-
-/* We're looping through this enum (toggling) - 0 markes the first value. */
-typedef enum logging_method {
-	LOG_OFF = 0,
-	LOG_USING_ONE_FIND,
-} logging_method_t;
-
-#define LAST_LOGGING_METHOD LOG_USING_ONE_FIND
-
-
-/*
- * Options themselves.
- */
-
-#define BOOL 	int
-#define NUMBER 	int
-#define STRING 	char *
-
-enum option_type {
-	O_BOOL,
-	O_NUMBER,
-	O_STRING
-};
-
-struct option_s {
-	char *name;
-
-	enum option_type type;
-
-	union {
-		struct {
-			STRING value;
-			STRING const def_value;
-			int (*validate)(const struct option_s *option,
-					const STRING value);
-			int (*post_validate)(const struct option_s *option);
-		} str;
-		struct {
-			BOOL value;
-			BOOL const def_value;
-			int (*validate)(const struct option_s *option,
-					const BOOL value);
-			int (*post_validate)(const struct option_s *option);
-		} bool;
-		struct {
-			NUMBER value;
-			NUMBER const def_value;
-			NUMBER const min_value;
-			NUMBER const max_value;
-			int (*validate)(const struct option_s *option,
-					const NUMBER value);
-			int (*post_validate)(const struct option_s *option);
-		} num;
-	} val;
-};
-
-#ifndef STRING_OPTION
-#define STRING_OPTION(opt_name, opt_def_value, opt_other...) \
-		extern STRING * const opt_##opt_name
-#endif /* STRING_OPTION */
-
-#ifndef BOOL_OPTION
-#define BOOL_OPTION(opt_name, opt_def_value, opt_other...) \
-		extern BOOL * const opt_##opt_name
-#endif /* BOOL_OPTION */
-
-#ifndef NUMBER_OPTION
-#define NUMBER_OPTION(opt_name, opt_def_value, opt_other...) \
-		extern NUMBER * const opt_##opt_name
-#endif /* NUMBER_OPTION */
-
-
-static int validate_command(const struct option_s *option, const STRING value);
-static int validate_number_minmax(const struct option_s *option, const NUMBER value);
 
 
 STRING_OPTION(alfs_directory, "");
@@ -170,28 +80,6 @@ STRING_OPTION(untar_command, "tar xv", validate_command);
 STRING_OPTION(unpax_command, "pax -rv", validate_command);
 STRING_OPTION(uncpio_command, "cpio -idv", validate_command);
 STRING_OPTION(unzip_command, "unzip %s", validate_command);
-
-
-void set_string_option(STRING * const var, const STRING value);
-void append_string_option(STRING * const var, const STRING value);
-void set_options_to_defaults(void);
-int post_validate_options(void);
-
-char *alloc_real_status_logfile_name(void);
-char *alloc_real_packages_directory_name(void);
-char *alloc_real_stamp_directory_name(void);
-
-/*
- * Setting option from RC file parser.
- */
-
-typedef enum set_opt_e {
-	OPTION_SET,
-	OPTION_UNKNOWN,
-	OPTION_INVALID_VALUE
-} set_opt_e;
-
-set_opt_e set_yet_unknown_option(const char *opt, const char *val);
 
 
 #endif /* H_OPTIONS_ */

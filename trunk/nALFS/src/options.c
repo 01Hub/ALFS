@@ -62,9 +62,13 @@
 		}; \
 		NUMBER * const opt_##opt_name = &real_opt_##opt_name .val.num.value
 
+#include "option_struct.h"
+
+static int validate_command(const struct option_s *option, const STRING value);
+static int validate_number_minmax(const struct option_s *option, const NUMBER value);
 
 #include "options.h"
-#include "option-list.h"
+#include "option-array.h"
 
 
 void set_string_option(STRING * const var, const char *value)
