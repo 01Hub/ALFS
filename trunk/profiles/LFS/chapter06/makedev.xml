@@ -14,7 +14,7 @@
 		</copy>
 
 		<permissions base="/dev" mode="754">
-			<name>&make_devices-file;</name>
+			<name>/dev/make_devices</name>
 		</permissions>
 
 		<execute base="/dev" command="./make_devices" />
