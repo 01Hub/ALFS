@@ -102,9 +102,15 @@ This will start nALFS using the latest stable LFS profile, which is
 included in the nALFS distribution. When you enter the program, type
 '?' for a list of all available commands.
 
+Note: If you are upgrading from a version prior to 1.2.0, and you are
+installing into the same location as the previous version, you must
+empty the <prefix>/share/nALFS/lib directory before doing the new
+"make install" operation. Otherwise old handler plugins will be left
+in that directory, and you will receive extraneous log message when
+you run nALFS 1.2.0 (although no harm will be done).
 
-3. Requirements
-===============
+
+3. Requirements ===============
 
 For actual parsing of XML profiles, nALFS uses the libxml2 (aka
 gnome-xml) library. You can find it on the web at http://xmlsoft.org/.
