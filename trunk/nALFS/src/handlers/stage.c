@@ -46,6 +46,8 @@
 #include "nalfs-core.h"
 #include "backend.h"
 
+extern char **environ;
+
 
 static INLINE int set_supplementary_groups(const char *user, gid_t gid)
 {
@@ -288,8 +290,26 @@ static int parse_stageinfo_and_execute_children(
 	if (pid == 0) { /* Child. */
 		Start_receiving_sigio();
 
-		if (environment_el) {
-			set_environment(environment_el);
+		if (root) {
+			Nprint_h("Changing root directory to \"%s\".", root);
+
+			if (change_current_dir(root)) {
+				xfree(user);
+				xfree(root);
+				exit(EXIT_FAILURE);
+			}
+			if (chroot(root)) {
+				Nprint_h_err("    %s", strerror(errno));
+				xfree(user);
+				xfree(root);
+				exit(EXIT_FAILURE);
+			}
+
+			xfree(root);
+
+			/* clear the environment after successful chroot */
+
+			environ = NULL;
 		}
 
 		if (user) {
@@ -304,20 +324,8 @@ static int parse_stageinfo_and_execute_children(
 			xfree(user);
 		}
 
-		if (root) {
-			Nprint_h("Changing root directory to \"%s\".", root);
-
-			if (change_current_dir(root)) {
-				xfree(root);
-				exit(EXIT_FAILURE);
-			}
-			if (chroot(root)) {
-				Nprint_h_err("    %s", strerror(errno));
-				xfree(root);
-				exit(EXIT_FAILURE);
-			}
-
-			xfree(root);
+		if (environment_el) {
+			set_environment(environment_el);
 		}
 
 		exit(execute_children(el));
