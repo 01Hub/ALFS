@@ -68,17 +68,17 @@
 <!ENTITY ed-mkstemp-patch-md5 "e7e2248f9baa76de3db8210298e0d79e">
 <!ENTITY ed-mkstemp-patch "ed-&ed-version;-mkstemp.patch">
 
-<!ENTITY expect-md5 "6ae1b87c9af993a69b901b6e52962c18">
-<!ENTITY expect-version "5.40.0">
+<!ENTITY expect-md5 "391a4b93dc01b1aad5f6e0752d5d5c73">
+<!ENTITY expect-version "5.40.1">
 <!ENTITY expect-package "expect.tar.gz">
 <!ENTITY expect-directory "expect-5.40">
 
 <!ENTITY expect-spawn-patch-md5 "ef6d0d0221c571fb420afb7033b3bbba">
-<!ENTITY expect-spawn-patch "expect-&expect-version;-spawn.patch">
+<!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
 
-<!ENTITY file-md5 "749010a666a2bbc2e452145fbb8e0626">
-<!ENTITY file-version "4.08">
-<!ENTITY file-package "file-&file-version;.tar.bz2">
+<!ENTITY file-md5 "46209022d57dbca7bb3cc07aa63bd008">
+<!ENTITY file-version "4.09">
+<!ENTITY file-package "file-&file-version;.tar.gz">
 <!ENTITY file-directory "file-&file-version;">
 
 <!ENTITY findutils-md5 "e90ce7222daadeb8616b8db461e17cbc">
@@ -185,18 +185,18 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "bd57889a62d6752a4ef1068fde57c36e">
-<!ENTITY lfs-bootscripts-version "2.0.2">
+<!ENTITY lfs-bootscripts-md5 "dc6dd27203a975afeb13174d83d6fa6a">
+<!ENTITY lfs-bootscripts-version "2.0.3">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
-<!ENTITY libtool-md5 "db66ba05502f533ad0cfd84dc0e03bd5">
-<!ENTITY libtool-version "1.5.2">
+<!ENTITY libtool-md5 "f9b709f4ac6d094afdee9cdbe1c6ffe7">
+<!ENTITY libtool-version "1.5.6">
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.gz">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
-<!ENTITY linux-md5 "5fc8e9f43fa44ac29ddf9a9980af57d8">
-<!ENTITY linux-version "2.4.25">
+<!ENTITY linux-md5 "88d7aefa03c92739cb70298a0b486e2c">
+<!ENTITY linux-version "2.4.26">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
@@ -303,8 +303,8 @@
 <!ENTITY sysvinit-package "sysvinit-&sysvinit-version;.tar.gz">
 <!ENTITY sysvinit-directory "sysvinit-&sysvinit-version;">
 
-<!ENTITY tar-md5 "6ef8c906e81eee441f8335652670ac4a">
-<!ENTITY tar-version "1.13.25">
+<!ENTITY tar-md5 "0bb83f8404a4ffdb7d5fcd2ae5d99fd9">
+<!ENTITY tar-version "1.13.94">
 <!ENTITY tar-package "tar-&tar-version;.tar.gz">
 <!ENTITY tar-directory "tar-&tar-version;">
 
@@ -313,9 +313,9 @@
 <!ENTITY tcl-package "tcl&tcl-version;-src.tar.gz">
 <!ENTITY tcl-directory "tcl&tcl-version;">
 
-<!ENTITY texinfo-md5 "d6a771de9e05efd8c1c9152f8b8686d6">
-<!ENTITY texinfo-version "4.6">
-<!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
+<!ENTITY texinfo-md5 "72a57e378efb9898c9e41ca839554dae">
+<!ENTITY texinfo-version "4.7">
+<!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.gz">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
 <!ENTITY util-linux-md5 "5fa39c3d8761b48732be137a06853c64">
