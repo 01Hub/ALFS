@@ -50,3 +50,4 @@
 <!ENTITY elem_utilizes       SYSTEM "elem_utilizes.xml">
 <!ENTITY elem_variable       SYSTEM "elem_variable.xml">
 <!ENTITY elem_version        SYSTEM "elem_version.xml">
+<!ENTITY xml_dtd-syntax      SYSTEM "xml_dtd-syntax.xml">
