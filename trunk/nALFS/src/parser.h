@@ -75,12 +75,14 @@ typedef struct element_s {
 	struct element_s *children;
 	struct element_s *prev;
 	struct element_s *next;
+	struct element_s *profile;
 } element_s;
 
 
 element_s *init_new_element(void);
 void free_element(element_s *el);
-void link_element(element_s *el, element_s *prev, element_s *parent);
+void link_element(element_s *el, element_s *prev, element_s *parent,
+		  element_s *profile);
 element_s *parse_profile(const char *filename);
 
 char *attr_value(const char *name, element_s *element);

@@ -177,7 +177,7 @@ static INLINE element_s *create_element(xmlNodePtr node)
 	return el;
 }
 
-static element_s *convert_nodes(xmlNodePtr node)
+static element_s *convert_nodes(xmlNodePtr node, element_s *profile)
 {
 	element_s *el, *c, *prev = NULL;
 	xmlNodePtr child;
@@ -190,8 +190,8 @@ static element_s *convert_nodes(xmlNodePtr node)
 	el = create_element(node);
 
 	for (child = node->children; child; child = child->next) {
-		if ((c = convert_nodes(child))) {
-			link_element(c, prev, el);
+		if ((c = convert_nodes(child, profile))) {
+			link_element(c, prev, el, profile);
 
 			prev = c;
 		}
@@ -219,10 +219,11 @@ static INLINE element_s *convert_doc(xmlDocPtr doc)
 
 	profile->type = TYPE_PROFILE;
 	profile->id = element_id++;
+	profile->profile = profile;
 
 	for (child = doc->children; child; child = child->next) {
-		if ((el = convert_nodes(child))) {
-			link_element(el, prev, profile);
+		if ((el = convert_nodes(child, profile))) {
+			link_element(el, prev, profile, profile);
 
 			prev = el;
 		}
