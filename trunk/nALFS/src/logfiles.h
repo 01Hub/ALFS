@@ -31,59 +31,59 @@
 
 /*
  * Functions dealing with the format of XML log files.
- * TODO: Hide libxml2 stuff completely, by using only logf_t pointer.
+ * TODO: Hide libxml2 stuff completely, by using only log_f_t pointer.
  *       (Like the functions at the bottom do.)
  */
 
-void logf_add_handler_action(xmlDocPtr xml_doc, const char *string);
-void logf_add_installed_files_one_find(xmlDocPtr xml_doc);
-void logf_add_installed_files_two_finds(
+void log_f_add_handler_action(xmlDocPtr xml_doc, const char *string);
+void log_f_add_installed_files_one_find(xmlDocPtr xml_doc);
+void log_f_add_installed_files_two_finds(
 	xmlDocPtr xml_doc, const char *find_base, const char *find_prunes);
-void logf_add_stopped_time(xmlDocPtr xml_doc, const char *time_str);
-void logf_add_end_time(
+void log_f_add_stopped_time(xmlDocPtr xml_doc, const char *time_str);
+void log_f_add_end_time(
 	xmlDocPtr xml_doc, const char *name, const char *time_str, int status);
-void logf_add_start_time(
+void log_f_add_start_time(
 	xmlDocPtr xml_doc, const char *name, const char *time_str);
-xmlDocPtr logf_new_run(const char *name, const char *version);
+xmlDocPtr log_f_new_run(const char *name, const char *version);
 
 
 /*
- * logf interface.
+ * log_f interface.
  */
 
-typedef struct logf logf_t;
+typedef struct log_f log_f_t;
 
 
-void logf_free(logf_t *logf);
-int logf_save(logf_t *logf);
+void log_f_free(log_f_t *log_f);
+int log_f_save(log_f_t *log_f);
 
-char *logf_get_package_fullname(logf_t *logf, int i);
+char *log_f_get_package_fullname(log_f_t *log_f, int i);
 
 /*
  * Multiple log files, initialized from directory.
  */
 
-logf_t *logf_init_from_directory(const char *pdir);
+log_f_t *log_f_init_from_directory(const char *pdir);
 
-int logf_get_packages_cnt(logf_t *logf);
+int log_f_get_packages_cnt(log_f_t *log_f);
 
-char *logf_get_plog_filename(logf_t *logf, int i);
+char *log_f_get_plog_filename(log_f_t *log_f, int i);
 
 /*
  * A single log file, initialized from package's string.
  */
 
-logf_t *logf_init_from_package_string(const char *pdir, const char *pstr);
+log_f_t *log_f_init_from_package_string(const char *pdir, const char *pstr);
 
-int logf_merge_log(logf_t *logf, const char *ptr, size_t size);
+int log_f_merge_log(log_f_t *log_f, const char *ptr, size_t size);
 
 /* Checks if the list of installed files exists for this log file. */
-int logf_has_flog(logf_t *logf);
+int log_f_has_flog(log_f_t *log_f);
 
 /* Creates an empty file for the list of installed files. */
-char *logf_create_flog(logf_t *logf);
+char *log_f_create_flog(log_f_t *log_f);
 
-void logf_update_with_flog(logf_t *logf);
+void log_f_update_with_flog(log_f_t *log_f);
 
 
 #endif /* H_LOGFILES_ */

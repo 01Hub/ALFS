@@ -578,9 +578,9 @@ static INLINE void receive_state(void)
 	}
 }
 
-static INLINE int receive_changed_files(logf_t *logf)
+static INLINE int receive_changed_files(log_f_t *log_f)
 {
-	char *filename = logf_create_flog(logf);
+	char *filename = log_f_create_flog(log_f);
 
 	if (comm_read_to_file(FRONTEND_CTRL_SOCK, filename) == 0) {
 		if (filename) {
@@ -600,7 +600,7 @@ static INLINE void receive_log_file(void)
 	char *package_str;
 	char *pdir;
 	element_s *current_package;
-	logf_t *logf;
+	log_f_t *log_f;
 
 	/* Get new log file. */
 	comm_read_to_memory(FRONTEND_CTRL_SOCK, &ptr, &size);
@@ -612,9 +612,9 @@ static INLINE void receive_log_file(void)
 
 	pdir = alloc_real_packages_directory_name();
 
-	logf = logf_init_from_package_string(pdir, package_str);
+	log_f = log_f_init_from_package_string(pdir, package_str);
 
-	if (logf_merge_log(logf, ptr, size) == -1) {
+	if (log_f_merge_log(log_f, ptr, size) == -1) {
 		Nprint_err("Unable to add new state to the old log file");
 	}
 
@@ -627,15 +627,15 @@ static INLINE void receive_log_file(void)
 	 * store it in the file, and update the package log with its name.
 	 * TODO: Put it in a separate function.
 	 */
-	if (logf_has_flog(logf)) {
+	if (log_f_has_flog(log_f)) {
 		ctrl_msg_s *message;
 
 		if ((message = comm_read_ctrl_message(FRONTEND_CTRL_SOCK))) {
 			ctrl_msg_type_e type = comm_msg_type(message);
 
 			if (type == CTRL_SENDING_FILES_FILE) {
-				if (receive_changed_files(logf) == 0) {
-					logf_update_with_flog(logf);
+				if (receive_changed_files(log_f) == 0) {
+					log_f_update_with_flog(log_f);
 				}
 			}
 		}
@@ -643,15 +643,15 @@ static INLINE void receive_log_file(void)
 		comm_free_message(message);
 	}
 
-	s = logf_get_package_fullname(logf, 0);
+	s = log_f_get_package_fullname(log_f, 0);
 
-	if (logf_save(logf) == 0) {
+	if (log_f_save(log_f) == 0) {
 		Nprint("Log file stored in \"%s\".", s);
 	} else {
 		Nprint_err("Unable to save log file to %s.", s);
 	}
 
-	logf_free(logf);
+	log_f_free(log_f);
 }
 
 /*
@@ -1062,18 +1062,18 @@ static INLINE void display_help_page(void)
  * Installed packages.
  */
 
-static INLINE int print_installed_packages(logf_t *logf)
+static INLINE int print_installed_packages(log_f_t *log_f)
 {
 	size_t j;
 	int i, lines_written;
-	int packages_cnt = logf_get_packages_cnt(logf);
+	int packages_cnt = log_f_get_packages_cnt(log_f);
 
 
 	Xwerase(windows.main->name);
 	Xwmove(windows.main->name, 0, 0);
 
 	for (i = 0; i < packages_cnt ; ++i) {
-		char *pname = logf_get_plog_filename(logf, i);
+		char *pname = log_f_get_plog_filename(log_f, i);
 
 		/* Space for cursor. */
 		for (j = 0; j < strlen(opt_cursor_string) + 1; ++j)
@@ -1101,15 +1101,15 @@ static INLINE void display_installed_packages(void)
 	int lines, top = 0, curr = 0;
 	int min_pad_size;
 	char *pdir;
-	logf_t *logf;
+	log_f_t *log_f;
 	
 
 	pdir = alloc_real_packages_directory_name();
 
 	Nprint("Reading log files from %s...", pdir);
-	logf = logf_init_from_directory(pdir);
+	log_f = log_f_init_from_directory(pdir);
 
-	min_pad_size = logf_get_packages_cnt(logf);
+	min_pad_size = log_f_get_packages_cnt(log_f);
 
 	if (min_pad_size > 0) {
 		windows.active = TMP_WINDOW;
@@ -1119,7 +1119,7 @@ static INLINE void display_installed_packages(void)
 			recreate_main_window(min_pad_size);
 		}
 
-		lines = print_installed_packages(logf);
+		lines = print_installed_packages(log_f);
 
 		while ((input = tmp_window_driver(lines+1, &top, &curr)) != -1) {
 			Nprint("Pressed %d, cursor on %d.", input, curr);
@@ -1131,7 +1131,7 @@ static INLINE void display_installed_packages(void)
 		Nprint("No packages' logs found in %s", pdir);
 	}
 
-	logf_free(logf);
+	log_f_free(log_f);
 
 	xfree(pdir);
 }
