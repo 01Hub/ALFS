@@ -59,6 +59,7 @@ element_s *init_new_element(void)
 	new->hide_children = 1;
 
 	new->handler = NULL;
+	new->handler_data = NULL;
 
 	new->parent = NULL;
 	new->children = NULL;
@@ -82,7 +83,7 @@ void free_element(element_s *el)
 		child = tmp;
 	}
 
-	if (el->handler && el->handler->free)
+	if (el->handler_data)
 		el->handler->free(el);
 
 	xfree(el->name);
@@ -96,12 +97,8 @@ void link_element(element_s *el, element_s *prev, element_s *parent,
 		  element_s *profile)
 {
 	/* Parent<->Child */
-	if (parent) {
-		/* el->parent is set at parsing time */
-
-		if (parent->children == NULL) {
-			parent->children = el;
-		}
+	if (parent->children == NULL) {
+		parent->children = el;
 	}
 
 	/* Previous<->Next */

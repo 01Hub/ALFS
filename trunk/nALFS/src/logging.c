@@ -775,7 +775,7 @@ static INLINE void request_state(void)
 	}
 }
 
-static INLINE logs_t *start_package_logging(element_s *el)
+static INLINE logs_t *start_package_logging(const element_s * const el)
 {
 	logs_t *l;
 
@@ -802,9 +802,7 @@ static INLINE logs_t *start_package_logging(element_s *el)
 	return l;
 }
 
-
-
-void log_end_time(element_s *el, int status)
+void log_end_time(const element_s * const el, const int status)
 {
 	char time_str[DATE_FORMAT_LEN + 1];
 	time_t t;
@@ -821,7 +819,7 @@ void log_end_time(element_s *el, int status)
 	logs_add_end_time(logs, el->name, time_str, status);
 }
 
-void log_start_time(element_s *el)
+void log_start_time(const element_s * const el)
 {
 	char time_str[DATE_FORMAT_LEN + 1];
 	time_t t;
@@ -838,9 +836,7 @@ void log_start_time(element_s *el)
 	logs_add_start_time(logs, el->name, time_str);
 }
 
-
-
-void start_logging_element(element_s *el)
+void start_logging_element(const element_s * const el)
 {
 	if (!*opt_log_backend) { // Logging off.
 		Debug_logging("start_logging_element: log_backend is off");
@@ -857,7 +853,7 @@ void start_logging_element(element_s *el)
 	}
 }
 
-void end_logging_element(element_s *el, int status)
+void end_logging_element(const element_s * const el, const int status)
 {
 	if (logs == NULL) { // No open file for logging.
 		Debug_logging("end_logging_element: logs is NULL");

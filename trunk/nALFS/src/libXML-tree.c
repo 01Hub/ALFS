@@ -90,7 +90,7 @@
  * XML_DOCB_DOCUMENT_NODE=     21
  */
 
-static unsigned int element_id;
+static unsigned int element_id = 0;
 
 static const struct handler_attribute *find_handler_attribute(const handler_info_s *handler,
 							      const char *name)
@@ -236,16 +236,13 @@ static int make_handler_element(xmlNodePtr node, element_s *element)
 {
 	handler_info_s *handler = element->handler;
 	handler_info_s *parent = element->parent->handler;
-	int result;
+	int result = 0;
 
 	/* If the element's parent wants to validate its children */
 	if (parent->valid_child) {
 		result = parent->valid_child(element->parent, element);
-		if (!result) {
-			Nprint_warn("<%s>: <%s> not valid here.", parent->name, handler->name);
-			return -1;
-		}
-	} else {
+	}
+	if (!result) {
 		Nprint_warn("<%s>: <%s> not valid here.", parent->name, handler->name);
 		return -1;
 	}
@@ -377,9 +374,6 @@ static INLINE element_s *convert_doc(xmlDocPtr doc)
 	char resolved_path[PATH_MAX];
 	element_s *el, *profile, *prev = NULL;
 	xmlNodePtr child;
-
-
-	element_id = 0;
 
 	profile = init_new_element();
 

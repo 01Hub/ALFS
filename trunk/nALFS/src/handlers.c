@@ -234,7 +234,7 @@ static int load_handler(lt_dlhandle handle, lt_ptr data)
 
 	(void) data;
 
-	handler_info = (handler_info_s *)lookup_symbol(handle, "handler_info");
+	handler_info = (handler_info_s *) lookup_symbol(handle, "handler_info");
 
 	if (handler_info == NULL) {
 		return 0;
@@ -406,7 +406,7 @@ const char *alloc_stage_shell(const element_s * const el)
 
 int option_in_string(const char * const option, const char * const string)
 {
-	const char *tmp;
+	char *tmp;
 	const char *tok;
 
 	tmp = xstrdup(string);
