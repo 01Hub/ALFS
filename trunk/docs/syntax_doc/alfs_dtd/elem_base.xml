@@ -21,7 +21,7 @@
 <para>The element <token>base</token> is used to specify a base directory
 which will be used by all the commands in the stage, unless another
 base is specified at the level of the command.</para>
-<
+
 </sect2>
 
 <sect2>
