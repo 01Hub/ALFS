@@ -2,14 +2,14 @@
 
 <stage name="Random Number Generation">
 
-	<stage name="Unpack blfs-bootscripts package">
+	<stage name="Unpacking">
 		<unpack>
 			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
-	<stage name="Install bootscript">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&blfs-bootscripts-directory;</base>
 		</stageinfo>
@@ -19,7 +19,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean Up">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
 	</stage>
 
