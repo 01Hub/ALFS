@@ -64,7 +64,7 @@ static int make_main_ver2(element_s *el)
 	Nprint_h("Executing in %s:", base);
 	Nprint_h("    %s", command);
 
-	status = execute_command("%s", command);
+	status = execute_command(el, "%s", command);
 
 	xfree(base);
 	xfree(command);
@@ -105,7 +105,7 @@ static int make_main_ver3(element_s *el)
 	Nprint_h("Executing in %s:", base);
 	Nprint_h("    %s", command);
 
-	status = execute_command("%s", command);
+	status = execute_command(el, "%s", command);
 
 	xfree(base);
 	xfree(command);
@@ -170,6 +170,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 #endif

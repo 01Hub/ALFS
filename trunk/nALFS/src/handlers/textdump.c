@@ -214,7 +214,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_TEXTDUMP,
 		.alloc_data = textdump_data,
 		.is_action = 1,
-		.priority = 0
+		.priority = 0,
+		.alternate_shell = 1,
 	},
 #endif
 	{

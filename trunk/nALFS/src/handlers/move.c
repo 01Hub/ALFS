@@ -85,9 +85,9 @@ static int move_main_ver2(element_s *el)
 			base, destination, force ? " (force)" : "", tok);
 
 		if (force) {
-			status = execute_command("mv -f %s %s", tok, destination);
+			status = execute_command(el, "mv -f %s %s", tok, destination);
 		} else {
-			status = execute_command("mv %s %s", tok, destination);
+			status = execute_command(el, "mv %s %s", tok, destination);
 		}
 
 		if (status) {
@@ -155,9 +155,9 @@ static int move_main_ver3(element_s *el)
 			base, destination, force ? " (force)" : "", s);
 
 		if (force) {
-			status = execute_command("mv -f %s %s", s, destination);
+			status = execute_command(el, "mv -f %s %s", s, destination);
 		} else {
-			status = execute_command("mv %s %s", s, destination);
+			status = execute_command(el, "mv %s %s", s, destination);
 		}
 
 		xfree(s);
@@ -231,6 +231,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 #endif

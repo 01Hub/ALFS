@@ -74,7 +74,7 @@ static int execute_main_ver2(element_s *el)
 	Nprint_h("Executing system command in %s:", base);
 	Nprint_h("    %s", command);
 
-	status = execute_command("%s", command);
+	status = execute_command(el, "%s", command);
 
 	xfree(base);
 	xfree(command);
@@ -129,7 +129,7 @@ static int execute_main_ver3(element_s *el)
 	Nprint_h("Executing system command in %s:", base);
 	Nprint_h("    %s", command);
 
-	status = execute_command("%s", command);
+	status = execute_command(el, "%s", command);
 
 	xfree(base);
 	xfree(command);
@@ -201,7 +201,7 @@ static int execute_main_ver3_2(element_s *el)
 		append_param_elements(&command, el);
 		Nprint_h("Executing system command in %s:", base);
 		Nprint_h("    %s", command);
-		status = execute_shell_command(el, "%s", command);
+		status = execute_command(el, "%s", command);
 		xfree(command);
 	} else {
 		FILE *temp_script;
@@ -316,6 +316,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_EXECUTE,
 		.alloc_data = execute_data_ver3_2,
 		.is_action = 1,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 #endif

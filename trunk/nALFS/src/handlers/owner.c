@@ -152,7 +152,7 @@ static int owner_main(element_s *el)
 
 		Nprint_h("%s", message);
 
-		if ((status = execute_command(command))) {
+		if ((status = execute_command(el, command))) {
 			Nprint_h_err("Changing ownership failed.");
 			break;
 		}

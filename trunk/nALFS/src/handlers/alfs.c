@@ -96,6 +96,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 0,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 #endif

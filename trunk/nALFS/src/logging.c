@@ -95,7 +95,7 @@ static INLINE int get_stamp_directory_status(
 
 		/* Directory doesn't exist. */
 
-		if (execute_command("mkdir -p %s", dirname) != 0) {
+		if (execute_command(NULL, "mkdir -p %s", dirname) != 0) {
 			Nprint_warn("Creating %s failed.\n", dirname);
 			return -1;
 		}
