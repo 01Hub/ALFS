@@ -333,7 +333,7 @@ struct dirent *xreaddir(DIR *dir, const char *dir_name, const char *suffix)
  * Misc.
  */
 
-int change_current_dir(const char *dir)
+int change_current_dir(const char * const dir)
 {
 	if (chdir(dir)) {
 		PRINT_ERROR("Changing current directory to %s failed:", dir);
