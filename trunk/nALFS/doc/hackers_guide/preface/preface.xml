@@ -1,5 +1,5 @@
 <preface id="preface" xreflabel="Preface">
-<?dbhtml filename="preface.html" dir="preface"?>
+<?dbhtml filename="preface/preface.html"?>
 <title>Preface</title>
 
 &preface-foreword;
