@@ -4585,7 +4585,7 @@ static void nprint_text(msg_id_e mid, const char *format,...)
 {
 	char *file = alloc_real_status_logfile_name();
 	FILE *fp = NULL;
-	FILE *console = stdout;
+	FILE *console;
 	va_list ap;
         va_list ap2;
 
@@ -4599,8 +4599,7 @@ static void nprint_text(msg_id_e mid, const char *format,...)
 	va_start(ap, format);
         __va_copy(ap2, ap);
 
-	if (mid == T_ERR)
-		console = stderr;
+	console = (mid == T_ERR) ? stderr : stdout;
 
 	if (mid != T_RAW) {
 		fprintf(console, "\n%c: ", msg_character(mid));
