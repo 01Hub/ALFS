@@ -1,0 +1,44 @@
+<package name="bash" version="&bash-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&bash-md5;</digest>
+			<archive>&packages_dir;/&bash-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&bash-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&bash-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--bindir=/bin</param>
+			<param>--without-bash-malloc</param>
+			<param>--with-installed-readline</param>
+		</configure>
+
+		<make />
+
+<!--
+		<make>
+			<param>tests</param>
+		</make>
+-->
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&bash-directory;</remove>
+	</stage>
+</package>

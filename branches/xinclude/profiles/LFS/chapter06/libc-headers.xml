@@ -1,0 +1,49 @@
+<package name="libc-headers" version="&linux-libc-headers-version;">
+	<stage name="Unpacking">
+		<unpack>
+			<digest>&linux-libc-headers-md5;</digest>
+			<archive>&packages_dir;/&linux-libc-headers-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&linux-libc-headers-directory;</base>
+		</stageinfo>
+
+		<copy>
+		  	<option>recursive</option>
+			<source>include/asm-i386</source>
+			<destination>/usr/include/asm</destination>
+		</copy>
+
+		<copy>
+		  	<option>recursive</option>
+			<source>include/linux</source>
+			<destination>/usr/include</destination>
+		</copy>
+
+		<ownership user="root" group="root">
+		  	<option>recursive</option>
+			<name>/usr/include/asm</name>
+			<name>/usr/include/linux</name>
+		</ownership>
+
+		<permissions mode="u=rw,o=r,g=r">
+		  	<option>recursive</option>
+			<name>/usr/include/asm</name>
+			<name>/usr/include/linux</name>
+		</permissions>
+
+		<permissions mode="a+X">
+		  	<option>recursive</option>
+			<name>/usr/include/asm</name>
+			<name>/usr/include/linux</name>
+		</permissions>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&linux-libc-headers-directory;</remove>
+	</stage>
+</package>
