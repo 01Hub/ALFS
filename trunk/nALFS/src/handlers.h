@@ -152,6 +152,7 @@ int change_to_base_dir(const element_s * const element, const char * const local
 		       const int default_root);
 
 char *alloc_stage_shell(const element_s * const el);
+int option_in_string(const char * const option, const char * const string);
 int option_exists(const char *option, element_s *element);
 void check_options(int total, int *opts, const char *string_, element_s *el);
 char *append_param_elements(char **string, element_s *el);
