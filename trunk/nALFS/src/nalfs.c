@@ -233,7 +233,7 @@ static INLINE void do_mark_element(element_s *el)
 	}
 }
 
-static void clear_marks(element_s *el, int all)
+static void clear_done_marks(element_s *el)
 {
 	element_s *child;
 
@@ -242,16 +242,14 @@ static void clear_marks(element_s *el, int all)
 	 *        if they don't contain any marked children.
 	 */
 
-	if (all) {
-		unmark_element(el, 1);
-	} else {
-		if (el->run_status == RUN_STATUS_DONE) {
-			unmark_element(el, 0);
-		}
-		for (child = el->children; child; child = child->next) {
-			clear_marks(child, all);
-		}
-	}
+	if ((el->handler->type & HTYPE_NORMAL) == 0)
+		return;
+
+	if (el->run_status == RUN_STATUS_DONE)
+		unmark_element(el, 0);
+
+	for (child = el->children; child; child = child->next)
+		clear_done_marks(child);
 }
 
 /*
@@ -3636,7 +3634,7 @@ static int browse(void)
 				break;
 			}
 
-			clear_marks(root_element, 0); /* Only successful. */
+			clear_done_marks(root_element);
 			rewrite_main();
 
 			Nprint("Successfully ended elements unmarked.");
@@ -3654,7 +3652,7 @@ static int browse(void)
 				break;
 			}
 
-			clear_marks(root_element, 1); /* All. */
+			unmark_element(root_element, 1); /* All. */
 			rewrite_main();
 
 			Nprint("All elements unmarked.");
