@@ -59,6 +59,14 @@ static int root_main(const element_s * const el)
 	return 0;
 }
 
+static int root_valid_child(const element_s * const element,
+			    const element_s * const child)
+{
+	(void) element;
+	(void) child;
+	return 1;
+}
+
 static int comment_main(const element_s * const el)
 {
 	(void) el;
@@ -73,6 +81,7 @@ static handler_info_s embedded_handlers_info[] = {
 		.syntax_version = "all",
 		.main = root_main,
 		.type = HTYPE_NORMAL,
+		.valid_child = root_valid_child,
 	},
 #if HANDLER_SYNTAX_2_0
 	{
