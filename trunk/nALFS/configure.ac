@@ -1,139 +1,173 @@
-dnl
-dnl configure.in
-dnl - Process this file with autoconf to produce a configure script.
-dnl
-dnl Copyright (C) 2002
-dnl
-dnl Neven Has <haski@sezampro.yu>
-dnl
-dnl This program is free software; you can redistribute it and/or modify
-dnl it under the terms of the GNU General Public License as published by
-dnl the Free Software Foundation; either version 2 of the License, or
-dnl (at your option) any later version.
-dnl
-dnl This program is distributed in the hope that it will be useful,
-dnl but WITHOUT ANY WARRANTY; without even the implied warranty of
-dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-dnl GNU General Public License for more details.
-dnl
-dnl You should have received a copy of the GNU General Public License
-dnl along with this program; if not, write to the Free Software
-dnl Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-dnl
-
-
-AC_INIT(src/nalfs.c)
-
-
+AC_INIT(nALFS,1.1.9-pre,[],nALFS)
+AC_CONFIG_AUX_DIR([gnubuild])
+AM_INIT_AUTOMAKE([foreign dist-bzip2 subdir-objects])
+AC_REVISION([$Revision: 1.2 $])
+AM_MAINTAINER_MODE
+AC_CONFIG_SRCDIR([src/nalfs.c])
 AC_PROG_CC
-AC_PROG_INSTALL
+AM_PROG_CC_C_O
+AC_PROG_LD
+AM_ENABLE_SHARED
+AM_DISABLE_STATIC
+AC_LIBTOOL_DLOPEN
+AM_PROG_LIBTOOL
+LIBTOOL="$LIBTOOL --silent"
+AC_LIB_LTDL
+AC_STDC_HEADERS
+AC_CONFIG_HEADER([config.h])
+AC_CHECK_LIB([form], [form_driver], [MAIN_LIBS="$MAIN_LIBS -lform"])
+AC_CHECK_LIB([ncurses], [initscr], [MAIN_LIBS="$MAIN_LIBS -lncurses"])
+AC_SUBST([MAIN_LIBS])
+AM_CONDITIONAL(STATIC_BUILD, test x$enable_static = xyes)
+if test x$enable_static = xyes; then
+   AC_DEFINE([STATIC_BUILD], [1], [Define if the application is being built as a static executable.])
+fi
 
-AC_CHECK_TOOL(AR, ar)
-AC_CHECK_TOOL(LD, ld)
-AC_CHECK_TOOL(RANLIB, ranlib, :)
+AC_ARG_ENABLE([inline], AC_HELP_STRING([--disable-inline], [disable compiler inlining of functions]), [INLINE=$withval], [INLINE=yes])
 
-AC_CHECK_LIB(ncurses, initscr)
-AC_CHECK_LIB(form, form_driver)
-AC_CHECK_LIB(dl, dlopen)
+if test "$INLINE" = "yes"; then
+    AC_DEFINE([INLINE], [inline], [Define to "inline" to allow the compiler to inline functions.])
+fi
 
+AC_ARG_ENABLE([element-editor], AC_HELP_STRING([--disable-element-editor], [disable editing of elements]), [USE_EDITOR=$withval], [USE_EDITOR=yes])
 
-dnl Check for libxml2 and its fetaures.
+if test "$USE_EDITOR" = "yes"; then
+   AC_DEFINE([USE_EDITOR], [], [Define to allow editing of elements.])
+fi
 
-AC_ARG_WITH(libxml2,
-[  --with-libxml2=PREFIX   search for xml2-config in PREFIX/bin],
-[
-	case "$withval" in
-		n|no|y|ye|yes) ;; dnl Do nothing, we need it.
+AC_ARG_WITH([run-dir-variable], AC_HELP_STRING([--with-run-dir-variable=NAME], [use environment variable NAME for nALFS run dir [[default=ALFS_DIR]]]), [ALFS_VAR="$withval"], [ALFS_VAR="ALFS_DIR"])
 
-		*) libxml2_prefix=$withval ;;
-	esac
-])
+AC_DEFINE_UNQUOTED([ALFS_VAR], "$ALFS_VAR", [Define environment variable that can hold path to run dir.])
 
-AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no],
-	[$libxml2_prefix/bin /bin /usr/bin /usr/local/bin $PATH $prefix/bin])
+AC_ARG_WITH([run-dir-name], AC_HELP_STRING([--with-run-dir-name=NAME], [name of directory to create in $HOME when no other run dir specified [[default=.nALFS]]]), [ALFS_DIRECTORY_NAME="$withval"], [ALFS_DIRECTORY_NAME=".nALFS"])
 
-if test "$XML2_CONFIG" != "no" ; then
-	LIBS="$LIBS `$XML2_CONFIG --libs`"
-	CFLAGS="$CFLAGS `$XML2_CONFIG --cflags`"
-else
-	echo "*** Can't find xml2-config. Make sure you have libxml2 installed."
-	echo "*** If you do, try using --with-libxml2=PREFIX."
-	echo "*** If not, download it from http://xmlsoft.org/."
+AC_DEFINE_UNQUOTED([ALFS_DIRECTORY_NAME], "$ALFS_DIRECTORY_NAME", [Define name of run dir in $HOME when not otherwise specified.])
+
+AC_ARG_WITH([dir-mode], AC_HELP_STRING([--with-dir-mode=MODE], [permissions to apply to created directories [[default=0700]]]), [DIRS_MODE="$withval"], [DIRS_MODE="0700"])
+
+AC_DEFINE_UNQUOTED([DIRS_MODE], $DIRS_MODE, [Define to set permissions applied to created directories.])
+
+AC_ARG_WITH([rcfile-name], AC_HELP_STRING([--with-rcfile-name=NAME], [name of configuration file in $HOME [[default=.nALFSrc]]]), [RC_FILE_NAME="$withval"], [RC_FILE_NAME=".nALFSrc"])
+
+AC_DEFINE_UNQUOTED([RC_FILE_NAME], "$RC_FILE_NAME", [Define to set name of configuration file in $HOME.])
+
+AC_ARG_WITH([libxml2], AC_HELP_STRING([--with-libxml2=PATH],[search for xml2-config in PATH/bin]), [
+case "$withval" in
+     n|no)
+	echo "***"
+	echo "*** You specified --without-libxml2."
+        echo "*** libxml2 is required to build this package."
 	exit 1
-fi
-
-AC_CHECK_LIB(xml2, xmlXIncludeProcess, CPPFLAGS="$CPPFLAGS -DHAVE_XINCLUDE")
-
-
-dnl Check for ssl library.
-
-AC_ARG_WITH(ssl,
-[  --with-ssl=PREFIX       specify prefix for ssl files (ssl will be used
-                          for checking non-MD5 digests in <unpack> elements)],
-[
-	case "$withval" in
-		n|no)
-			;;
-		y|ye|yes)
-			enable_ssl=yes
-			;;
-		*)
-			SSL_DIR="$withval"
-			LIBS="$LIBS -L$SSL_DIR/lib"
-			enable_ssl=yes
-			;;
-	esac
+	;;
+     y|ye|yes)
+        AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no])
+	;;
+     *)
+	AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no], [$withval/bin])
+	;;
+esac
+], [
+AC_PATH_PROG([XML2_CONFIG], [xml2-config], [no])
 ])
 
-if test "$enable_ssl" == "yes" ; then
-	AC_CHECK_LIB(ssl, OpenSSL_add_all_digests, [
-		CPPFLAGS="$CPPFLAGS -I$SSL_DIR/include -DHAVE_LIBSSL"
-		LIBS="$LIBS -lcrypto -lssl"], [], -lcrypto)
+if test "$XML2_CONFIG" != "no"; then
+   AC_CHECK_LIB(xml2, xmlParseFile, AC_DEFINE([HAVE_LIBXML2], [], [Must always be defined, libxml2 is required for building this package.]), [], `$XML2_CONFIG --libs`)
+   if test "$ac_cv_lib_xml2_xmlParseFile" = "yes"; then
+      XML2_LIB=`$XML2_CONFIG --libs | sed -e 's/^-L\(.*\) -lxml2.*$/\1/'`/libxml2.la
+      XML2_INCLUDES=`$XML2_CONFIG --cflags`
+      AC_SUBST([XML2_LIB])
+      AC_SUBST([XML2_INCLUDES])
+      AC_CHECK_LIB(xml2, xmlXIncludeProcess, AC_DEFINE([HAVE_XINCLUDE], [], [Define to enable use of xi:include in profiles.]), [], `$XML2_CONFIG --libs`)
+   else
+      echo "***"
+      echo "*** The libxml2 installation on this system appears to be broken."
+      echo "*** Since libxml2 is required to build this package, the problem"
+      echo "*** must be corrected before continuing."
+      exit 1
+   fi
+else
+   echo "***"
+   echo "*** Can't find xml2-config. Make sure this system has libxml2 installed."
+   echo "*** If it does, try using --with-libxml2=PATH."
+   echo "*** If it does not, download it from http://xmlsoft.org./"
+   exit 1
 fi
 
+AC_ARG_ENABLE([libxml2-SAX], AC_HELP_STRING([--enable-libxml2-SAX], [enable using libxml2's SAX functions for parsing profiles]), [PARSE_WITH_LIBXML_SAX=$withval], [PARSE_WITH_LIBXML_SAX=no])
 
-dnl Check for curl library.
-
-AC_ARG_WITH(curl,
-[  --with-curl=PREFIX      search for curl-config in PREFIX/bin (curl will
-                          be used for fetching files, instead of wget)],
-[
-	case "$withval" in
-		n|no)
-			disable_curl=yes
-			;;
-		y|ye|yes)
-			;;
-
-		*)
-			curl_prefix=$withval
-			;;
-	esac
-])
-
-if test "$disable_curl" != "yes" ; then
-	AC_PATH_PROG([CURL_CONFIG], [curl-config], [no],
-	[$curl_prefix/bin /bin /usr/bin /usr/local/bin $PATH $prefix/bin])
-
-	if test "$CURL_CONFIG" != "no" ; then
-		LIBS="$LIBS `$CURL_CONFIG --libs`"
-		CFLAGS="$CFLAGS `$CURL_CONFIG --cflags`"
-		CPPFLAGS="$CPPFLAGS -DHAVE_LIBCURL"
-	fi
+if test "$PARSE_WITH_LIBXML_SAX" = "yes"; then
+    AC_DEFINE([PARSE_WITH_LIBXML_SAX], [], [Define to use libxml2's SAX functions for parsing profiles.])
 fi
 
-
-dnl Link the program statically, or not.
-
-dnl AC_ARG_ENABLE(static-link,
-dnl 	[  --enable-static-link    link the program statically],
-dnl	[ LDFLAGS="$LDFLAGS -static" ])
-
-
-AC_OUTPUT([
-Rules.mak
-Makefile
-src/Makefile
-src/lib/Makefile
-src/handlers/Makefile
+AC_ARG_WITH([curl], AC_HELP_STRING([--with-curl=PATH],[search for curl-config in PATH/bin]), [
+case "$withval" in
+     n|no)
+	;;
+     y|ye|yes)
+        USE_CURL=yes
+        AC_PATH_PROG([CURL_CONFIG], [curl-config], [no])
+	;;
+     *)
+        USE_CURL=yes
+	AC_PATH_PROG([CURL_CONFIG], [curl-config], [no], [$withval/bin])
+	;;
+esac
+], [
+AC_PATH_PROG([CURL_CONFIG], [curl-config], [no])
 ])
+
+if test "$CURL_CONFIG" != "no"; then
+   AC_CHECK_LIB(curl, curl_global_init, AC_DEFINE([HAVE_LIBCURL], [], [Define to use libcurl instead of wget for downloading.]), [], `$CURL_CONFIG --libs`)
+   if test "$ac_cv_lib_curl_curl_global_init" = "yes"; then
+      CURL_LIB=`$CURL_CONFIG --libs | sed -e 's/^-L\(.*\) -lcurl.*$/\1/'`/libcurl.la
+      CURL_INCLUDES=`$CURL_CONFIG --cflags`
+      AC_SUBST([CURL_LIB])
+      AC_SUBST([CURL_INCLUDES])
+   else
+      echo "***"
+      echo "*** The libcurl installation on this system appears to be broken."
+      echo "*** Either correct the installation, or run configure without"
+      echo "*** including --with-curl."
+      exit 1
+   fi
+elif test "$USE_CURL" = "yes"; then
+   echo "***"
+   echo "*** Can't find curl-config. Make sure this system has curl installed,"
+   echo "*** or run configure without including --with-curl."
+   exit 1
+fi
+
+AC_ARG_WITH([ssl], AC_HELP_STRING([--with-ssl=PATH],[use ssl files in PATH (ssl is needed for checking non-MD5 digests in <unpack> and <download> elements)]), [
+case "$withval" in
+     n|no)
+	;;
+     y|ye|yes)
+        USE_SSL=yes
+	;;
+     *)
+        USE_SSL=yes
+	SSL_DIR="$withval"
+	;;
+esac
+])
+
+if test "$USE_SSL" = "yes"; then
+   AC_CHECK_LIB([ssl], [OpenSSL_add_all_digests], AC_DEFINE([HAVE_LIBSSL], [], [Define to indicate the SSL libraries should be used for verifying non-MD5 digests.]), [], -L$SSL_DIR/lib -lcrypto)
+   if test "$ac_cv_lib_ssl_OpenSSL_add_all_digests" = "yes"; then
+      SSL_LIB="-lssl -lcrypto"
+      if test "$SSL_DIR" != ""; then
+         SSL_LIB="-L$SSL_DIR/lib -Wl,--rpath,$SSL_DIR/lib $SSL_LIB"
+         SSL_INCLUDES="-I$SSL_DIR/include"
+	 AC_SUBST([SSL_INCLUDES])
+      fi
+      AC_SUBST([SSL_LIB])
+   else
+      echo "***"
+      echo "*** The ssl installation on this system appears to be broken."
+      echo "*** Either correct the installation, or run configure without"
+      echo "*** including --with-ssl."
+      exit 1
+   fi
+fi
+
+AC_OUTPUT([Makefile])
