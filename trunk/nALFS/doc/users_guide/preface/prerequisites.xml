@@ -19,12 +19,12 @@ provides an excellent installation procedure at
 <sect2>
 <title>libXML2</title>
 
-<para>Any version greater than v2.5.1 should work.  One primary feature you
-are looking for is support for <command>XInclude</command>. If for some reason
-your system does not have <filename>libXML2</filename> installed or
-<command>XInclude</command> compiled in, the BLFS book
-provides an excellent installation procedure at
-<ulink url="&http-root;/blfs/view/cvs/general/libxml2.html">&http-root;/blfs/view/cvs/general/libxml2.html</ulink>.
+<para>Any version greater than or equal to v2.6.0 should work.  One primary
+feature you are looking for is support for <command>XInclude</command>. If
+for some reason your system does not have <filename>libXML2</filename>
+installed or <command>XInclude</command> compiled in, the BLFS book
+provides an excellent installation procedure at <ulink
+url="&http-root;/blfs/view/cvs/general/libxml2.html">&http-root;/blfs/view/cvs/general/libxml2.html</ulink>.
 </para>
 
 </sect2>
