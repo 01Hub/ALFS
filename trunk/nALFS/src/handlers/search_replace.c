@@ -63,8 +63,8 @@ struct search_replace_data {
 
 static const struct handler_parameter search_replace_parameters_v2[] = {
 	{ .name = "base", .private = SEARCH_REPLACE_BASE },
-	{ .name = "find", .private = SEARCH_REPLACE_FIND },
-	{ .name = "replace", .private = SEARCH_REPLACE_REPLACE },
+	{ .name = "find", .private = SEARCH_REPLACE_FIND, .untrimmed = 1 },
+	{ .name = "replace", .private = SEARCH_REPLACE_REPLACE, .untrimmed = 1 },
 	{ .name = "file", .private = SEARCH_REPLACE_FILE },
 	{ .name = NULL }
 };
@@ -74,8 +74,8 @@ static const struct handler_parameter search_replace_parameters_v2[] = {
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
 static const struct handler_parameter search_replace_parameters_v3[] = {
-	{ .name = "find", .private = SEARCH_REPLACE_FIND },
-	{ .name = "replace", .private = SEARCH_REPLACE_REPLACE },
+	{ .name = "find", .private = SEARCH_REPLACE_FIND, .untrimmed = 1 },
+	{ .name = "replace", .private = SEARCH_REPLACE_REPLACE, .untrimmed = 1 },
 	{ .name = "file", .private = SEARCH_REPLACE_FILE },
 	{ .name = NULL }
 };

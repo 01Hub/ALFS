@@ -59,7 +59,7 @@ struct textdump_data {
 static const struct handler_parameter textdump_parameters_v2[] = {
 	{ .name = "base", .private = TEXTDUMP_BASE },
 	{ .name = "file", .private = TEXTDUMP_FILE },
-	{ .name = "content", .private = TEXTDUMP_CONTENT },
+	{ .name = "content", .private = TEXTDUMP_CONTENT, .untrimmed = 1 },
 	{ .name = NULL }
 };
 
@@ -74,7 +74,7 @@ static const struct handler_attribute textdump_attributes_v2[] = {
 
 static const struct handler_parameter textdump_parameters_v3[] = {
 	{ .name = "file", .private = TEXTDUMP_FILE },
-	{ .name = "content", .private = TEXTDUMP_CONTENT },
+	{ .name = "content", .private = TEXTDUMP_CONTENT, .untrimmed = 1 },
 	{ .name = NULL }
 };
 

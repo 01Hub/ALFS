@@ -53,7 +53,7 @@ struct setenv_data {
 
 static const struct handler_parameter setenv_parameters[] = {
 	{ .name = "variable", .private = SETENV_VARIABLE },
-	{ .name = "value", .private = SETENV_VALUE },
+	{ .name = "value", .private = SETENV_VALUE, .untrimmed = 1 },
 	{ .name = NULL }
 };
 

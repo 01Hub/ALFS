@@ -174,13 +174,20 @@ static int parse_node_attributes(xmlNodePtr node, element_s *element)
 		if (prop->children && prop->children->content)
 			content = (const char *) prop->children->content;
 
+		if (content && !attr->untrimmed)
+			content = alloc_trimmed_str(content);
+
 		if (!attr->content_optional && (!content ||
 						(strlen(content) == 0))) {
 			Nprint_err("<%s>: \"%s\" attribute cannot be empty.", handler->name, attr->name);
-			return 1;
+			result = 1;
+		} else {
+			result = handler->attribute(element, attr, content);
 		}
 
-		result = handler->attribute(element, attr, content);
+		if (content && !attr->untrimmed)
+			xfree(content);
+
 		if (result)
 			return result;
 	}
@@ -216,13 +223,20 @@ static int parse_node_parameters(xmlNodePtr node, element_s *element)
 			if (child->children && child->children->content)
 				content = (const char *) child->children->content;
 
+			if (content && !param->untrimmed)
+				content = alloc_trimmed_str(content);
+
 			if (!param->content_optional && (!content ||
 							 (strlen(content) == 0))) {
 				Nprint_err("<%s>: \"%s\" parameter cannot be empty.", handler->name, param->name);
-				return 1;
+				result = 1;
+			} else {
+				result = handler->parameter(element, param, content);
 			}
 
-			result = handler->parameter(element, param, content);
+			if (content && !param->untrimmed)
+				xfree(content);
+
 			if (result)
 				return result;
 			/* remove the child node from the DOM tree and free it,
