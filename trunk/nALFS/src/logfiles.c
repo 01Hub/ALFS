@@ -47,89 +47,6 @@
 #define SUFFIX_FOR_FLOG			".files"
 
 
-void logs_add_handler_action(xmlDocPtr xml_doc, const char *string)
-{
-	xmlNewTextChild(xml_doc->children, NULL,
-		EL_NAME_FOR_ACTION, (const xmlChar *)string);
-}
-
-void logs_add_installed_files_one_find(xmlDocPtr xml_doc)
-{
-	xmlNodePtr node;
-
-	node = xmlNewTextChild(
-		xml_doc->children, NULL, EL_NAME_FOR_FILES_ROOT, NULL);
-
-	xmlSetProp(node, "method", "time stamp");
-}
-
-void logs_add_installed_files_two_finds(
-	xmlDocPtr xml_doc,
-	const char *find_base,
-	const char *find_prunes)
-{
-	xmlNodePtr node;
-
-
-	node = xmlNewTextChild(
-		xml_doc->children, NULL, EL_NAME_FOR_FILES_ROOT, NULL);
-
-	xmlSetProp(node, "method", "two finds");
-
-	xmlNewTextChild(node, NULL,
-		EL_NAME_FOR_FILES_FIND_ROOT, (const xmlChar *)find_base);
-
-	xmlNewTextChild(node, NULL,
-		EL_NAME_FOR_FILES_FIND_PRUNES, (const xmlChar *)find_prunes);
-}
-
-void logs_add_stopped_time(xmlDocPtr xml_doc, const char *time_str)
-{
-	xmlNewTextChild(xml_doc->children, NULL,
-		"stopped", (const xmlChar *)time_str);
-}
-
-void logs_add_end_time(
-	xmlDocPtr xml_doc, const char *name, const char *time_str, int status)
-{
-	xmlNodePtr node;
-
-	node = xmlNewTextChild(xml_doc->children, NULL,
-		(const xmlChar *)name,
-		(const xmlChar *)time_str);
-
-	xmlSetProp(node, "mode", "end");
-	xmlSetProp(node, "status", status ? "failed" : "done");
-}
-
-void logs_add_start_time(
-	xmlDocPtr xml_doc, const char *name, const char *time_str)
-{
-	xmlNodePtr node;
-
-	node = xmlNewTextChild(xml_doc->children, NULL,
-		(const xmlChar *)name,
-		(const xmlChar *)time_str);
-
-	xmlSetProp(node, "mode", "start");
-}
-
-xmlDocPtr logs_new_run(const char *name, const char *version)
-{
-	xmlDocPtr doc = xmlNewDoc("1.0");
-
-	doc->children = xmlNewDocNode(doc, NULL, EL_NAME_FOR_A_RUN, NULL);
-
-	xmlNewTextChild(doc->children, NULL, "name", name);
-	xmlNewTextChild(doc->children, NULL, "version", version);
-
-	return doc;
-}
-
-/*
- * Implementation of logs interface.
- */
-
 struct plogf {
 	char *dir;		/* Log's directory. */
 	char *name;		/* Log's filename. */
@@ -145,6 +62,122 @@ struct logs {
 	int cnt;
 	struct plogf **list;
 };
+
+
+void logs_add_handler_action(struct logs *logs, const char *string)
+{
+	xmlNewTextChild(logs->list[0]->doc->children, NULL,
+		EL_NAME_FOR_ACTION, (const xmlChar *)string);
+}
+
+void logs_add_installed_files_one_find(struct logs *logs)
+{
+	xmlDocPtr doc = logs->list[0]->doc;
+	xmlNodePtr node;
+
+	node = xmlNewTextChild(
+		doc->children, NULL, EL_NAME_FOR_FILES_ROOT, NULL);
+
+	xmlSetProp(node, "method", "time stamp");
+}
+
+void logs_add_installed_files_two_finds(
+	struct logs *logs,
+	const char *find_base,
+	const char *find_prunes)
+{
+	xmlDocPtr doc;
+	xmlNodePtr node;
+
+
+	doc = logs->list[0]->doc;
+
+	node = xmlNewTextChild(
+		doc->children, NULL, EL_NAME_FOR_FILES_ROOT, NULL);
+
+	xmlSetProp(node, "method", "two finds");
+
+	xmlNewTextChild(node, NULL,
+		EL_NAME_FOR_FILES_FIND_ROOT, (const xmlChar *)find_base);
+
+	xmlNewTextChild(node, NULL,
+		EL_NAME_FOR_FILES_FIND_PRUNES, (const xmlChar *)find_prunes);
+}
+
+void logs_add_stopped_time(struct logs *logs, const char *time_str)
+{
+	xmlDocPtr doc = logs->list[0]->doc;
+
+	xmlNewTextChild(doc->children, NULL,
+		"stopped", (const xmlChar *)time_str);
+}
+
+void logs_add_end_time(
+	struct logs *logs, const char *name, const char *time_str, int status)
+{
+	xmlDocPtr doc = logs->list[0]->doc;
+	xmlNodePtr node;
+
+	node = xmlNewTextChild(doc->children, NULL,
+		(const xmlChar *)name,
+		(const xmlChar *)time_str);
+
+	xmlSetProp(node, "mode", "end");
+	xmlSetProp(node, "status", status ? "failed" : "done");
+}
+
+void logs_add_start_time(
+	struct logs *logs, const char *name, const char *time_str)
+{
+	xmlDocPtr doc = logs->list[0]->doc;
+	xmlNodePtr node;
+
+	node = xmlNewTextChild(doc->children, NULL,
+		(const xmlChar *)name,
+		(const xmlChar *)time_str);
+
+	xmlSetProp(node, "mode", "start");
+}
+
+struct logs *logs_init_new_run(const char *name, const char *version)
+{
+	struct logs *logs;
+	struct plogf *plogf;
+	xmlDocPtr doc;
+       
+
+	doc = xmlNewDoc("1.0");
+	doc->children = xmlNewDocNode(doc, NULL, EL_NAME_FOR_A_RUN, NULL);
+
+	xmlNewTextChild(doc->children, NULL, "name", name);
+	xmlNewTextChild(doc->children, NULL, "version", version);
+
+
+	plogf = xmalloc(sizeof *plogf);
+
+	plogf->dir = NULL;
+	plogf->name = NULL;
+	plogf->fullname = NULL;
+	plogf->installed = NULL;
+	plogf->doc = doc;
+
+
+	logs = xmalloc(sizeof *logs);
+
+	logs->cnt = 1;
+	logs->list = xmalloc(sizeof *logs->list);
+	logs->list[0] = plogf;
+
+	return logs;
+}
+
+void logs_dump_to_memory(struct logs *logs, char **ptr, int *size)
+{
+	xmlDocPtr doc = logs->list[0]->doc;
+
+	xmlDocDumpFormatMemory(doc,  (xmlChar **)ptr, size, 1);
+}
+
 
 
 void logs_free(struct logs *logs)

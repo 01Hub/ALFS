@@ -25,33 +25,23 @@
 #define H_LOGFILES_
 
 
-#include <libxml/tree.h>
-#include <libxml/parser.h>
-
-
-/*
- * Functions dealing with the format of XML log files.
- * TODO: Hide libxml2 stuff completely, by using only logs_t pointer.
- *       (Like the functions at the bottom do.)
- */
-
-void logs_add_handler_action(xmlDocPtr xml_doc, const char *string);
-void logs_add_installed_files_one_find(xmlDocPtr xml_doc);
-void logs_add_installed_files_two_finds(
-	xmlDocPtr xml_doc, const char *find_base, const char *find_prunes);
-void logs_add_stopped_time(xmlDocPtr xml_doc, const char *time_str);
-void logs_add_end_time(
-	xmlDocPtr xml_doc, const char *name, const char *time_str, int status);
-void logs_add_start_time(
-	xmlDocPtr xml_doc, const char *name, const char *time_str);
-xmlDocPtr logs_new_run(const char *name, const char *version);
-
-
-/*
- * logs interface.
- */
-
 typedef struct logs logs_t;
+
+
+void logs_add_handler_action(logs_t *logs, const char *string);
+
+void logs_add_installed_files_one_find(logs_t *logs);
+void logs_add_installed_files_two_finds(
+	logs_t *logs, const char *find_base, const char *find_prunes);
+
+void logs_add_stopped_time(logs_t *logs, const char *time_str);
+void logs_add_end_time(
+	logs_t *logs, const char *el_name, const char *time_str, int status);
+void logs_add_start_time(
+	logs_t *logs, const char *el_name, const char *time_str);
+
+logs_t *logs_init_new_run(const char *pname, const char *pversion);
+void logs_dump_to_memory(logs_t *logs, char **ptr, int *size);
 
 
 void logs_free(logs_t *logs);
