@@ -40,6 +40,16 @@
 		       <replace>TCL_LIB_FILE="libtcl8.4${TCL_DBGX}.so"</replace>
 		</search_replace>
 
+		<move base="&build_dir;/&tcl-directory;/doc">
+			<source>Thread.3</source>
+			<destination>Tcl_Thread.3</destination>
+		</move>
+
+		<search_replace base="&build_dir;/&tcl-directory;/doc">
+			<file>mkLinks</file>
+			<search> Thread.3</search>
+			<replace> Tcl_Thread.3</replace>
+		</search_replace>
 
 		<make>
 			<param>install</param>

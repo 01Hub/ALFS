@@ -333,101 +333,115 @@
 
 <!--************* packages for chapter 12 *************-->
 
-<!ENTITY python-version   "2.3.2">
-<!ENTITY python-package   "Python-2.3.2.tgz">
-<!ENTITY python-directory "Python-2.3.2">
+<!ENTITY python-version   "2.3.3">
+<!ENTITY python-package   "Python-&python-version;.tar.bz2">
+<!ENTITY python-directory "Python-&python-version;">
 
-<!ENTITY python-patch     "Python-2.3.2-gdbm-2.patch">
+<!ENTITY python-patch     "Python-&python-version;-gdbm-2.patch">
 
-<!ENTITY perlmodules-pdl-version   "2.4.0">
-<!ENTITY perlmodules-pdl-package   "PDL-2.4.0.tar.gz">
-<!ENTITY perlmodules-pdl-directory "PDL-2.4.0">
+<!-- Perl Modules -->
+<!ENTITY PDL-version   "2.4.0">
+<!ENTITY PDL-package   "PDL-&PDL-version;.tar.gz">
+<!ENTITY PDL-directory "PDL-&PDL-version;">
 
-<!ENTITY perlmodules-astro-version   "2.7.1">
-<!ENTITY perlmodules-astro-package   "Astro-FITS-Header-2.7.1.tar.gz">
-<!ENTITY perlmodules-astro-directory "Astro-FITS-Header-2.7.1">
+<!ENTITY Astro-FITS-Header-version   "2.8.1">
+<!ENTITY Astro-FITS-Header-package   "Astro-FITS-Header-&Astro-FITS-Header-version;.tar.gz">
+<!ENTITY Astro-FITS-Header-directory "Astro-FITS-Header-&Astro-FITS-Header-version;">
 
-<!ENTITY perlmodules-gtk-version   "0.7008">
-<!ENTITY perlmodules-gtk-package   "Gtk-Perl-0.7008.tar.gz">
-<!ENTITY perlmodules-gtk-directory "Gtk-Perl-0.7008">
+<!ENTITY Gtk-Perl-version   "0.7009">
+<!ENTITY Gtk-Perl-package   "Gtk-Perl-&Gtk-Perl-version;.tar.gz">
+<!ENTITY Gtk-Perl-directory "Gtk-Perl-&Gtk-Perl-version;">
 
-<!ENTITY perlmodules-xmlwriter-version   "0.4">
-<!ENTITY perlmodules-xmlwriter-package   "XML-Writer-0.4.tar.gz">
-<!ENTITY perlmodules-xmlwriter-directory "XML-Writer-0.4">
+<!ENTITY XML-Writer-version   "0.4.1">
+<!ENTITY XML-Writer-package   "XML-Writer-&XML-Writer-version;.tar.gz">
+<!ENTITY XML-Writer-directory "XML-Writer-&XML-Writer-version;">
 
-<!ENTITY perlmodules-xmlparser-version   "2.31">
-<!ENTITY perlmodules-xmlparser-package   "XML-Parser-2.31.tar.gz">
-<!ENTITY perlmodules-xmlparser-directory "XML-Parser-2.31">
+<!ENTITY XML-Parser-version   "2.34">
+<!ENTITY XML-Parser-package   "XML-Parser-&XML-Parser-version;.tar.gz">
+<!ENTITY XML-Parser-directory "XML-Parser-&XML-Parser-version;">
 
-<!ENTITY perlmodules-recdescent-version   "1.94">
-<!ENTITY perlmodules-recdescent-package   "Parse-RecDescent-1.94.tar.gz">
-<!ENTITY perlmodules-recdescent-directory "Parse-RecDescent-1.94">
+<!ENTITY Parse-RecDescent-version   "1.94">
+<!ENTITY Parse-RecDescent-package   "Parse-RecDescent-&Parse-RecDescent-version;.tar.gz">
+<!ENTITY Parse-RecDescent-directory "Parse-RecDescent-&Parse-RecDescent-version;">
 
-<!ENTITY librep-version   "0.16.2">
-<!ENTITY librep-package   "librep-0.16.2.tar.gz">
-<!ENTITY librep-directory "librep-0.16.2">
+<!ENTITY librep-version   "0.17">
+<!ENTITY librep-package   "librep-&librep-version;.tar.gz">
+<!ENTITY librep-directory "librep-&librep-version;">
 
-<!ENTITY j2sdk-version   "1_4_1_02">
+<!ENTITY j2sdk-binary-version   "1.4.2_03">
+<!ENTITY j2sdk-src-version "1.4.2">
 <!ENTITY j2sdk-package   "j2sdk-1_4_1_02-linux-i586.bin">
 <!ENTITY j2sdk-directory "j2sdk1.4.1_02">
 
-<!ENTITY j2sdk-ppatch    "libstdc++-libc6.1-1.so.2.bz2">
-<!ENTITY j2sdk-patch     "libstdc++-libc6.1-1.so.2">
+<!ENTITY ruby-version   "1.8.1">
+<!ENTITY ruby-package   "ruby-&ruby-version;.tar.gz">
+<!ENTITY ruby-directory "ruby-&ruby-version;">
 
-<!ENTITY ruby-version   "1.8.0">
-<!ENTITY ruby-package   "ruby-1.8.0.tar.gz">
-<!ENTITY ruby-directory "ruby-1.8.0">
+<!ENTITY gnat-version   "3.15p">
+<!ENTITY gnat-package   "gnat-&gnat-version;-i686-pc-redhat71-gnu-bin.tar.gz">
+<!ENTITY gnat-directory "gnat-&gnat-version;-i686-pc-linux-gnu-bin">
 
-<!ENTITY gnat-version   "3.14p">
-<!ENTITY gnat-package   "gnat-3.14p-i686-pc-linux-gnu-bin.tar.gz">
-<!ENTITY gnat-directory "gnat-3.14p-i686-pc-linux-gnu-bin">
+<!ENTITY gcc-full-version   "3.3.2">
+<!ENTITY gcc-full-package   "gcc-&gcc-version;.tar.bz2">
+<!ENTITY gcc-full-directory "gcc-&gcc-version;">
 
-<!ENTITY gcc-full-version   "3.3.1">
-<!ENTITY gcc-full-package   "gcc-3.3.1.tar.bz2">
-<!ENTITY gcc-full-directory "gcc-3.3.1">
+<!ENTITY gcc-full-patch1    "gcc-&gcc-version;-no_fixincludes-1.patch">
 
-<!ENTITY gcc-full-patch1    "gcc-3.3.1-no_fixincludes-2.patch">
-<!ENTITY gcc-full-patch2    "gcc-3.3.1-suppress-libiberty.patch">
+<!ENTITY tcl-version   "8.4.5">
+<!ENTITY tcl-package   "tcl&tcl-version;-src.tar.gz">
+<!ENTITY tcl-directory "tcl&tcl-version;">
 
-<!ENTITY tcl-version   "8.4.4">
-<!ENTITY tcl-package   "tcl8.4.4-src.tar.gz">
-<!ENTITY tcl-directory "tcl8.4.4">
-
-<!ENTITY tk-version   "8.4.4">
-<!ENTITY tk-package   "tk8.4.4-src.tar.gz">
-<!ENTITY tk-directory "tk8.4.4">
+<!ENTITY tk-version   "8.4.5">
+<!ENTITY tk-package   "tk&tk-version;-src.tar.gz">
+<!ENTITY tk-directory "tk&tk-version;">
 
 <!ENTITY gcc295-version   "2.95.3">
-<!ENTITY gcc295-package   "gcc-2.95.3.tar.gz">
-<!ENTITY gcc295-directory "gcc-2.95.3">
+<!ENTITY gcc295-package   "gcc-&gcc295-version;.tar.gz">
+<!ENTITY gcc295-directory "gcc-&gcc295-version;">
 
-<!ENTITY gcc295-patch1     "gcc-2.95.3-2.patch">
-<!ENTITY gcc295-patch2     "gcc-2.95.3-no-fixinc.patch">
-<!ENTITY gcc295-patch3     "gcc-2.95.3-returntype-fix.patch">
+<!ENTITY gcc295-patch1     "gcc-&gcc295-version;-2.patch">
+<!ENTITY gcc295-patch2     "gcc-&gcc295-version;-no-fixinc.patch">
+<!ENTITY gcc295-patch3     "gcc-&gcc295-version;-returntype-fix.patch">
 
 <!ENTITY nasm-version   "0.98.38">
-<!ENTITY nasm-package   "nasm-0.98.38.tar.bz2">
-<!ENTITY nasm-directory "nasm-0.98.38">
+<!ENTITY nasm-package   "nasm-&nasm-version;.tar.bz2">
+<!ENTITY nasm-directory "nasm-&nasm-version;">
 
 <!--************* packages for chapter 13 *************-->
 
-<!ENTITY ppp-version   "2.4.1">
-<!ENTITY ppp-package   "ppp-2.4.1.tar.gz">
-<!ENTITY ppp-directory "ppp-2.4.1">
+<!ENTITY ppp-version   "2.4.2">
+<!ENTITY ppp-package   "ppp-&ppp-version;.tar.gz">
+<!ENTITY ppp-directory "ppp-&ppp-version;">
 
-<!ENTITY ppp-patch     "ppp-2.4.1-pppoe-5.patch">
+<!ENTITY ppp-patch     "ppp-&ppp-version;-nobpf-3.patch">
 
 <!ENTITY wvdial-version   "1.53">
-<!ENTITY wvdial-package   "wvdial-1.53.tar.gz">
-<!ENTITY wvdial-directory "wvdial-1.53">
+<!ENTITY wvdial-package   "wvdial-&wvdial-version;.tar.gz">
+<!ENTITY wvdial-directory "wvdial-&wvdial-version;">
 
 <!--************* packages for chapter 14 *************-->
 
-<!ENTITY dhcpcd-version   "1.3.22-pl4">
-<!ENTITY dhcpcd-package   "dhcpcd-1.3.22-pl4.tar.gz">
-<!ENTITY dhcpcd-directory "dhcpcd-1.3.22-pl4">
+<!ENTITY dhclient-version "3.0pl2">
+<!ENTITY dhclient-package "dhcp-&dhclient-version;.tar.gz">
+<!ENTITY dhclient-directory "dhcp-&dhclient-version;">
 
-<!ENTITY dhcpcd-patch     "dhcpcd-1.3.22-pl4.patch">
+<!-- These two entities should be set to appropriate values to start and stop dhclient -->
+<!ENTITY dhclient-start-params "">
+<!ENTITY dhclient-stop-params "">
+
+<!ENTITY dhcpcd-version   "1.3.22-pl4">
+<!ENTITY dhcpcd-package   "dhcpcd-&dhcpcd-version;.tar.gz">
+<!ENTITY dhcpcd-directory "dhcpcd-&dhcpcd-version;">
+
+<!ENTITY dhcpcd-patch     "dhcpcd-&dhcpcd-version;-fhs.patch">
+<!-- These two entities should be set to appropriate values to start and stop dhcpcd -->
+<!ENTITY dhcpcd-start-params "">
+<!ENTITY dhcpcd-stop-params "">
+
+<!--************* packages for chapter 15 *************-->
+<!ENTITY rp-pppoe-version "3.5">
+<!ENTITY rp-pppoe-package "rp-pppoe-&rp-pppoe-version;.tar.gz">
+<!ENTITY rp-pppoe-directory "rp-pppoe-&rp-pppoe-version;">
 
 <!--************* packages for chapter 16 *************-->
 

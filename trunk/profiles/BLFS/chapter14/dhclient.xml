@@ -1,0 +1,72 @@
+<package name="dhclient" version="&dhclient-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&dhclient-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&dhclient-directory;</base>
+		</stageinfo>
+
+		<configure />
+
+		<make />
+
+		<make>
+			<param>LIBDIR=/usr/lib</param>
+			<param>INCDIR=/usr/include</param>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Install dhclient service script">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-service-dhclient</param>
+		</make>
+	</stage>
+
+	<stage name="Configure dhclient">
+		<textdump>
+			<file>/etc/sysconfig/network-devices/ifconfig.eth0</file>
+			<content>
+			=ONBOOT=yes
+			=DHCP_START="&dhclient-start-params;"
+			=DHCP_STOP="-r &dhclient-stop-params;"
+			=SERVICE=dhclient"
+			</content>
+		</textdump>
+
+		<textdump>
+			<file>/etc/dhclient.conf</file>
+			<content>
+			=# dhclient.conf
+			=
+			=interface "eth0"{
+			=prepend domain-name-servers 127.0.0.1;
+			=request subnet-mask, broadcast-address, time-offset, routers,
+        		=	domain-name, domain-name-servers, host-name;
+			=require subnet-mask, domain-name-servers;
+			=}
+			=# end dhclient.conf
+			</content>
+		</textdump>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&dhclient-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+
+</package>

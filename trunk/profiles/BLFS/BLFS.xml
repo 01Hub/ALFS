@@ -172,6 +172,7 @@
     &librep;
     &j2sdk;
     &ruby;
+    &gnat;
     &gcc-full;
     &tcl;
     &tk;
@@ -188,17 +189,16 @@
 
 </stage>
 
-
 <stage name="Chapter 14 (DHCP Clients)">
 
+    &dhclient;
     &dhcpcd;
 
 </stage>
 
 <stage name="Chapter 15 (Other Connections)">
 
-    <!-- &isdn; -->
-    <!-- &pppoe; -->
+    &rp-pppoe;
 
 </stage>
 

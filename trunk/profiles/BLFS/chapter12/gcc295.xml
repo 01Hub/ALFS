@@ -8,16 +8,8 @@
 
 		<copy>
 		        <source>&packages_dir;/&gcc295-patch1;</source>
-		        <destination>&build_dir;</destination>
-		</copy>
-
-		<copy>
-		        <source>&packages_dir;/&gcc295-patch2;</source>
-		        <destination>&build_dir;</destination>
-		</copy>
-
-		<copy>
-		        <source>&packages_dir;/&gcc295-patch3;</source>
+			<source>&packages_dir;/&gcc295-patch2;</source>
+			<source>&packages_dir;/&gcc295-patch3;</source>
 		        <destination>&build_dir;</destination>
 		</copy>
 
@@ -26,37 +18,31 @@
 		</mkdir>
 	</stage>
 
-	<stage name="Patching a package.">
-		<stageinfo>
-			<base>&build_dir;/&gcc295-directory;</base>
-		</stageinfo>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&gcc295-patch1;</param>
-		</patch>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&gcc295-patch2;</param>
-		</patch>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&gcc295-patch3;</param>
-		</patch>
-	</stage>
-
 	<stage name="Installing a package.">
 		<stageinfo>
 			<base>&build_dir;/gcc-build</base>
 		</stageinfo>
 
+		<patch base="&build_dir;/&gcc295-directory;">
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&gcc295-patch1;</param>
+		</patch>
+
+		<patch base="&build_dir;/&gcc295-directory;">
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&gcc295-patch2;</param>
+		</patch>
+
+		<patch base="&build_dir;/&gcc295-directory;">
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&gcc295-patch3;</param>
+		</patch>
+
 		<configure command="../&gcc295-directory;/configure">
-		        <param>--prefix=/opt/gcc-2.95.3</param>
+		        <param>--prefix=/opt/gcc-&gcc295-version;</param>
 			<param>--enable-shared</param>
 			<param>--enable-languages=c,c++</param>
 			<param>--enable-threads=posix</param>
@@ -70,11 +56,9 @@
 		        <param>install</param>
 		</make>
 
-		<execute command="" />
-
-		<execute command="L=`find /opt/gcc-2.95.3/lib -name '*libstdc++*.so' -type f` &amp;&amp;
+		<execute command="L=`find /opt/gcc-&gcc295-version;/lib -name '*libstdc++*.so' -type f` &amp;&amp;
 IL=`basename $L` &amp;&amp;
-for i in /opt/gcc-2.95.3/lib/*.so*; do mv -f $i /usr/lib;ln -sf /usr/lib/`basename $i` /opt/gcc-2.95.3/lib; done &amp;&amp;
+for i in /opt/gcc-&gcc295-version;/lib/*.so*; do mv -f $i /usr/lib;ln -sf /usr/lib/`basename $i` /opt/gcc-&gcc295-version;/lib; done &amp;&amp;
 ln -sf $IL /usr/lib/libstdc++-libc6.1-1.so.2 &amp;&amp;
 ln -sf $IL /usr/lib/libstdc++-libc6.2-2.so.3 &amp;&amp;
 ln -sf $IL /usr/lib/libstdc++-libc6.3-2.so.3" />

@@ -1,12 +1,10 @@
 <package name="librep" version="&librep-version;">
 
-    <packageinfo>
-        <requires><name>gmp</name></requires>
-	<requires><name>gdbm</name></requires>
-        <utilizes><name>readline</name></utilizes>
-    </packageinfo>
-
-
+    	<packageinfo>
+        	<requires><name>gdbm</name></requires>
+		<utilizes><name>gmp</name></utilizes>
+        	<utilizes><name>readline</name></utilizes>
+    	</packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
@@ -23,8 +21,6 @@
 		<configure>
 			<param>--prefix=/usr</param>
 			<param>--libexec=/usr/lib</param>
-			<param>--mandir=/usr/share/man</param>
-			<param>--infodir=/usr/share/info</param>
 		</configure>
 
 		<make/>

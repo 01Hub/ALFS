@@ -4,6 +4,7 @@
                 <utilizes><name>expat</name></utilizes>
                 <utilizes><name>tk</name></utilizes>
                 <utilizes><name>gdbm</name></utilizes>
+		<utilizes><name>db</name></utilizes>
                 <utilizes><name>gmp</name></utilizes>
                 <utilizes><name>readline</name></utilizes>
         </packageinfo>
