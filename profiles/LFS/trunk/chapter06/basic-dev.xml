@@ -26,7 +26,34 @@
       <param>/dev</param>
     </execute>
 
-    <execute command="/tools/sbin/udevstart" />
+    <execute command="mknod">
+	<param>-m 622</param>
+	<param>/dev/console</param>
+	<param>c 5 1</param>
+    </execute>
+
+    <execute command="mknod">
+  	<param>-m 666</param>
+	<param>/dev/null</param>
+	<param>c 1 3</param>
+    </execute>
+
+    <execute command="mknod">
+  	<param>-m 666</param>
+	<param>/dev/zero</param>
+	<param>c 1 5</param>
+    </execute>
+
+    <execute command="mknod">
+  	<param>-m 666</param>
+	<param>/dev/ptmx</param>
+	<param>c 5 2</param>
+    </execute>
+
+    <ownership base="/dev" user="root" group="tty">
+	<name>console</name>
+	<name>ptmx</name>
+    </ownership>
 
     <link>
       <target>/proc/self/fd</target>

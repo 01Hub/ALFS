@@ -16,6 +16,9 @@
 <!ENTITY bash-fixes-patch-md5 "a2eec57fcbd4e03d913853e66f3836ca">
 <!ENTITY bash-fixes-patch "bash-&bash-version;-fixes-1.patch">
 
+<!ENTITY bash-wcontinued-patch-md5 "93eb380f4dd903ee25e47c7950894578">
+<!ENTITY bash-wcontinued-patch "bash-&bash-version;-avoid_WCONTINUED-1.patch">
+
 <!ENTITY binutils-md5 "702bc82d8b10914e112fb5c5d8b66498">
 <!ENTITY binutils-version "2.15.92.0.2">
 <!ENTITY binutils-package "binutils-&binutils-version;.tar.bz2">
@@ -118,9 +121,9 @@
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.gz">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
-<!ENTITY glibc-md5 "ec29bf73a4fd0897dcaf564fa8ae4c4c">
-<!ENTITY glibc-version "2.3.4">
-<!ENTITY glibc-cvs-tag "-20040828">
+<!ENTITY glibc-md5 "9a79721c5edf1684fcb0f24e8c7618c3">
+<!ENTITY glibc-version "20041011">
+<!ENTITY glibc-cvs-tag "">
 <!ENTITY glibc-package "glibc-&glibc-version;&glibc-cvs-tag;.tar.bz2">
 <!ENTITY glibc-directory "glibc-&glibc-version;&glibc-cvs-tag;">
 
@@ -233,8 +236,8 @@
 <!ENTITY man-80cols-patch-md5 "9c93fd4384b6b69273278ae5621e1f4a">
 <!ENTITY man-80cols-patch "man-&man-version;-80cols-1.patch">
 
-<!ENTITY man-pages-md5 "c31112bbfdd907f77c1419308a8cafba">
-<!ENTITY man-pages-version "1.67">
+<!ENTITY man-pages-md5 "cb31f64227949214691e9266473cd4a1">
+<!ENTITY man-pages-version "1.69">
 <!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.bz2">
 <!ENTITY man-pages-directory "man-pages-&man-pages-version;">
 
@@ -333,13 +336,13 @@
 <!ENTITY texinfo-segfault-patch-md5 "ce5aa1bb05b3c6638e071d2b0283fdd6">
 <!ENTITY texinfo-segfault-patch "texinfo-&texinfo-version;-segfault-1.patch">
 
-<!ENTITY udev-md5 "6df7392c3f5fe44d7cf261a0d2497b99">
-<!ENTITY udev-version "032">
+<!ENTITY udev-md5 "b4de833f8afd0ded074bc2d389b48f24">
+<!ENTITY udev-version "035">
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
 
-<!ENTITY udev-etcdir-patch-md5 "452b4fba55a6b60cf9e5a858ef6f7ffc">
-<!ENTITY udev-etcdir-patch "udev-&udev-version;-etcdir-2.patch">
+<!ENTITY udev-destdir-patch-md5 "e062f55b90e34531697dfdfbf790ff97">
+<!ENTITY udev-destdir-patch "udev-&udev-version;-DESTDIR-1.patch">
 
 <!ENTITY udev-rules-md5 "b60fa9f4b83cb5902f0686521278fc6d">
 <!ENTITY udev-rules-version "1">
@@ -349,13 +352,13 @@
 <!ENTITY udev-permissions-version "2">
 <!ENTITY udev-permissions-file "udev-config-&udev-permissions-version;.permissions">
 
-<!ENTITY util-linux-md5 "3781296c4e6ba9ff7f68e18814f63d56">
-<!ENTITY util-linux-version "2.12g">
+<!ENTITY util-linux-md5 "f8f1b2096abbf52fadf86d470c5035dd">
+<!ENTITY util-linux-version "2.12h">
 <!ENTITY util-linux-package "util-linux-&util-linux-version;.tar.gz">
 <!ENTITY util-linux-directory "util-linux-&util-linux-version;">
 
-<!ENTITY util-linux-sfdisk-patch-md5 "abccfbd333292073cd619a604bd19231">
-<!ENTITY util-linux-sfdisk-patch "util-linux-&util-linux-version;-sfdisk-2.patch">
+<!ENTITY util-linux-sfdisk-patch-md5 "5a369b755115efc546ff616c18021cc1">
+<!ENTITY util-linux-sfdisk-patch "util-linux-&util-linux-version;-sfdisk-1.patch">
 
 <!ENTITY vim-md5 "821fda8f14d674346b87e3ef9cb96389">
 <!ENTITY vim-version "6.3">

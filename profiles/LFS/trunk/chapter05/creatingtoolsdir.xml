@@ -133,7 +133,7 @@
 			<source>&texinfo-package;</source>
 			<source>&texinfo-segfault-patch;</source>
 			<source>&udev-package;</source>
-			<source>&udev-etcdir-patch;</source>
+			<source>&udev-destdir-patch;</source>
 			<source>&udev-permissions-file;</source>
 			<source>&udev-rules-file;</source>
 			<source>&util-linux-package;</source>

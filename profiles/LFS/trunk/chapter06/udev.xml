@@ -23,17 +23,12 @@
 			<base>&build_dir;/&udev-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&udev-etcdir-patch;</param>
-		</patch>
-
 		<make>
 		  	<param>udevdir=/dev</param>
 		</make>
 
 		<make>
+			<param>udevdir=/dev</param>
 			<param>install</param>
 		</make>
 
@@ -47,7 +42,9 @@
         		<option>force</option>
         		<source>&udev-rules-file;</source>
         		<destination>/etc/udev/rules.d/25-lfs.rules</destination>
-		</copy>		
+		</copy>
+
+		<execute command="/sbin/udevstart" />	
 	</stage>
 
 	<stage name="Cleanup">

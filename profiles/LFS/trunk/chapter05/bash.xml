@@ -23,6 +23,12 @@
 			<base>&build_dir;/&bash-directory;</base>
 		</stageinfo>
 
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&bash-wcontinued-patch;</param>
+		</patch>
+
 		<configure>
 			<param>--prefix=/tools</param>
 			<param>--without-bash-malloc</param>
