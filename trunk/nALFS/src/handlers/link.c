@@ -42,7 +42,7 @@
 #define El_link_target(el) alloc_trimmed_param_value("target", el)
 #define El_link_name(el) alloc_trimmed_param_value("name", el)
 
-int link_main_ver2(element_s *el)
+static int link_main_ver2(element_s *el)
 {
 	int status;
 	int force = option_exists("force", el);
@@ -124,7 +124,7 @@ int link_main_ver2(element_s *el)
 	return status;
 }
 
-int link_main_ver3(element_s *el)
+static int link_main_ver3(element_s *el)
 {
 	int options[2], force, no_dereference;
 	int status;

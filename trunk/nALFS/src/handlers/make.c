@@ -40,7 +40,7 @@
 #include "backend.h"
 
 
-int make_main_ver2(element_s *el)
+static int make_main_ver2(element_s *el)
 {
 	int status;
 	char *base;
@@ -68,7 +68,7 @@ int make_main_ver2(element_s *el)
 	return status;
 }
 
-int make_main_ver3(element_s *el)
+static int make_main_ver3(element_s *el)
 {
 	int status;
 	char *base;

@@ -106,7 +106,7 @@ static INLINE int do_setenv(
 }
 
 
-int setenv_main(element_s *el)
+static int setenv_main(element_s *el)
 {
 	int i;
 	char *variable;

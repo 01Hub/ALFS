@@ -40,7 +40,7 @@
 #include "win.h"
 
 
-int package_main_ver2(element_s *el)
+static int package_main_ver2(element_s *el)
 {
 	int i;
 
@@ -55,7 +55,7 @@ int package_main_ver2(element_s *el)
 	return i;
 }
 
-char *package_data_ver2(element_s *el, handler_data_e data)
+static char *package_data_ver2(element_s *el, handler_data_e data)
 {
 	if (data == HDATA_NAME) {
 		return alloc_trimmed_param_value("name", el);
@@ -210,7 +210,7 @@ static int parse_packageinfo(element_s *packageinfo)
 }
 
 
-int package_main_ver3(element_s *el)
+static int package_main_ver3(element_s *el)
 {
 	int status = 0;
 	element_s *packageinfo;
@@ -234,7 +234,7 @@ int package_main_ver3(element_s *el)
 	return status;
 }
 
-char *package_data_ver3(element_s *el, handler_data_e data)
+static char *package_data_ver3(element_s *el, handler_data_e data)
 {
 	char *s;
 

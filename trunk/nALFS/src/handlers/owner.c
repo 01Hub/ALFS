@@ -45,7 +45,7 @@
 #define El_owner_targets(el) alloc_trimmed_param_value("name", el)
 
 
-int owner_main(element_s *el)
+static int owner_main(element_s *el)
 {
 	int status = 0;
 	int recursive = option_exists("recursive", el);

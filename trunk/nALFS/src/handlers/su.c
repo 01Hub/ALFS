@@ -141,7 +141,7 @@ static INLINE int change_to_user(const char *user)
 }
 
 
-int su_main(element_s *el)
+static int su_main(element_s *el)
 {
 	int status;
 	pid_t su_pid, got_pid;

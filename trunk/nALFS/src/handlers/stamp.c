@@ -35,7 +35,7 @@
 #include "backend.h"
 
 
-int stamp_main(element_s *el)
+static int stamp_main(element_s *el)
 {
 	int status = 0;
 	char *name;

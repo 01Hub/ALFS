@@ -35,7 +35,7 @@
 #include "logging.h"
 
 
-int build_main(element_s *el)
+static int build_main(element_s *el)
 {
 	int i;
 

@@ -50,7 +50,7 @@
 #define TMP_SEARCH_REPLACE_FILE	"/tmp/nALFS-XXXXXX"
 
 
-int search_replace_main(element_s *el, const char *base_dir)
+static int search_replace_main(element_s *el, const char *base_dir)
 {
 	int i, c, fdw, offset, num_found = 0;
 	char *buf = NULL;
@@ -182,7 +182,7 @@ int search_replace_main(element_s *el, const char *base_dir)
 	return 0;
 }
 
-int search_replace_main_ver2(element_s *el)
+static int search_replace_main_ver2(element_s *el)
 {
 	int i;
 	char *base = alloc_base_dir(el);
@@ -194,7 +194,7 @@ int search_replace_main_ver2(element_s *el)
 	return i;
 }
 
-int search_replace_main_ver3(element_s *el)
+static int search_replace_main_ver3(element_s *el)
 {
 	int i;
 	char *base = alloc_base_dir_new(el);

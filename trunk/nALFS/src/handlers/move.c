@@ -43,7 +43,7 @@
 #define El_move_source(el) alloc_trimmed_param_value("source", el)
 #define El_move_destination(el) alloc_trimmed_param_value("destination", el)
 
-int move_main_ver2(element_s *el)
+static int move_main_ver2(element_s *el)
 {
 	int status = 0;
 	int force = option_exists("force", el);
@@ -97,7 +97,7 @@ int move_main_ver2(element_s *el)
 	return status;
 }
 
-int move_main_ver3(element_s *el)
+static int move_main_ver3(element_s *el)
 {
 	int options[1], force;
 	int status = 0;

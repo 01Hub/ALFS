@@ -35,7 +35,7 @@
 #include "logging.h"
 
 
-int postbuild_main(element_s *el)
+static int postbuild_main(element_s *el)
 {
 	int i;
 

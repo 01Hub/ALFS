@@ -49,7 +49,7 @@
 #define El_download_destination(el) alloc_trimmed_param_value("destination", el)
 
 
-int download_main(element_s *el)
+static int download_main(element_s *el)
 {
 	/* status assumes failure until set otherwise */
 	int status = -1;

@@ -55,7 +55,7 @@ static INLINE FILE *open_for_overwrite(const char *file, const char *base)
 	return fopen(file, "w");
 }
 
-int textdump_main(element_s *el, const char *base_dir)
+static int textdump_main(element_s *el, const char *base_dir)
 {
 	char *tok;
 	char *file;
@@ -107,7 +107,7 @@ int textdump_main(element_s *el, const char *base_dir)
 	return 0;
 }
 
-int textdump_main_ver2(element_s *el)
+static int textdump_main_ver2(element_s *el)
 {
 	int i;
 	char *base = alloc_base_dir(el);
@@ -119,7 +119,7 @@ int textdump_main_ver2(element_s *el)
 	return i;
 }
 
-int textdump_main_ver3(element_s *el)
+static int textdump_main_ver3(element_s *el)
 {
 	int i;
 	char *base = alloc_base_dir_new(el);
@@ -132,7 +132,7 @@ int textdump_main_ver3(element_s *el)
 }
 	
 
-char *textdump_data(element_s *el, handler_data_e data)
+static char *textdump_data(element_s *el, handler_data_e data)
 {
 	(void) data;
 

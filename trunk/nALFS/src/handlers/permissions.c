@@ -43,7 +43,7 @@
 #define El_permissions_mode(el) alloc_trimmed_param_value("mode", el)
 #define El_permissions_targets(el) alloc_trimmed_param_value("name", el)
 
-int permissions_main_ver2(element_s *el)
+static int permissions_main_ver2(element_s *el)
 {
 	int status = 0;
 	int recursive = option_exists("recursive", el);
@@ -119,7 +119,7 @@ int permissions_main_ver2(element_s *el)
 	return status;
 }
 
-int permissions_main_ver3(element_s *el)
+static int permissions_main_ver3(element_s *el)
 {
 	int options[1], recursive;
 	int status = 0;

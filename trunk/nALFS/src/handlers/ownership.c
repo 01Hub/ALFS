@@ -37,7 +37,7 @@
 #include "backend.h"
 
 
-int ownership_main(element_s *el)
+static int ownership_main(element_s *el)
 {
 	int status = 0;
 	int options[1], recursive;

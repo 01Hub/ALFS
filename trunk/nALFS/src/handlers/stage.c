@@ -361,7 +361,7 @@ static int parse_stageinfo_and_execute_children(
 
 
 
-int stage_main(element_s *el)
+static int stage_main(element_s *el)
 {
 	int status;
 	char *stage_name = attr_value("name", el);

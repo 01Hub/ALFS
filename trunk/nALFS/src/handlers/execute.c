@@ -39,7 +39,7 @@
 #include "backend.h"
 
 
-int execute_main_ver2(element_s *el)
+static int execute_main_ver2(element_s *el)
 {
 	int status;
 	char *base;
@@ -73,7 +73,7 @@ int execute_main_ver2(element_s *el)
 	
 }
 
-char *execute_data_ver2(element_s *el, handler_data_e data)
+static char *execute_data_ver2(element_s *el, handler_data_e data)
 {
 	(void) data;
 
@@ -82,7 +82,7 @@ char *execute_data_ver2(element_s *el, handler_data_e data)
 
 
 
-int execute_main_ver3(element_s *el)
+static int execute_main_ver3(element_s *el)
 {
 	int status;
 	char *base;
@@ -115,7 +115,7 @@ int execute_main_ver3(element_s *el)
 	return status;
 }
 
-char *execute_data_ver3(element_s *el, handler_data_e data)
+static char *execute_data_ver3(element_s *el, handler_data_e data)
 {
 	char *command;
 

@@ -35,7 +35,7 @@
 #include "logging.h"
 
 
-int prebuild_main(element_s *el)
+static int prebuild_main(element_s *el)
 {
 	int i;
 
