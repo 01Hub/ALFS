@@ -1,15 +1,15 @@
 <package name="evolution" version="&evolution-version;">
 
         <packageinfo>
-                <requires><name>bonobo</name></requires>
-                <requires><name>bonobo-conf</name></requires>
-                <requires><name>gal</name></requires>
-                <requires><name>libcapplet</name></requires>
-                <requires><name>gtkhtml</name></requires>
-                <requires><name>soup</name></requires>
+		<requires><name>openssl</name></requires>
+		<requires><name>libsoup</name></requires>
+		<requires><name>gal</name></requires>
+		<requires><name>gtkhtml</name></requires>
+		<utilizes><name>openldap</name></utilizes>
+		<utilizes><name>gtk-doc</name></utilizes>                
         </packageinfo>
 
-	<stage name="Unpacking the packages.">
+	<stage name="Unpacking.">
 		<unpack>
 			<archive>&packages_dir;/&evolution-package;</archive>
 			<destination>&build_dir;</destination>
@@ -31,9 +31,9 @@
 			<param>--enable-compat185</param>
 		</configure>
 
+		<make />
+
 		<make>
-		        <param>docdir=/usr/doc/Berkeley-DB</param>
-			<param>all</param>
 			<param>install</param>
 		</make>
 	</stage>
@@ -44,8 +44,9 @@
 		</stageinfo>
 
 		<configure>
-			<param>--prefix=/opt/gnome</param>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 			<param>--with-db3=/opt/db-3.1.17</param>
+			<param>--enable-openssl</param>
 		</configure>
 
 		<make/>
