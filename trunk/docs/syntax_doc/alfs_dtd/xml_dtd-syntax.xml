@@ -7,50 +7,39 @@
 
 <para>To ensure that all readers of the &book-product; Book get as much as
 possible from its contents, it is necessary to provide a quick introduction
-to the concepts of <acronym>XML</acronym> and <acronym>DTD</acronym>
-syntax.</para>
+to the concepts of XML and DTD syntax.</para>
 
 <note><para>This introduction provides very few examples. This book is
-written in an <acronym>XML</acronym> <acronym>DTD</acronym> called DocBook
-<acronym>XML</acronym>. For an example of <acronym>XML</acronym> just look
-at the book's source. Since this book is documenting an
-<acronym>XML</acronym> <acronym>DTD</acronym>, look at the rest of the
-book's contents for examples of <acronym>DTD</acronym>
-syntax.</para></note>
+written in an XML DTD called DocBook XML. For an example of XML just look
+at the book's source. Since this book is documenting an XML DTD, look at
+the rest of the book's contents for examples of DTD syntax.</para></note>
 
-<para>To begin, here are some basic rules of
-<acronym>XML</acronym>&nbsp;:</para>
+<para>To begin, here are some basic rules of XML&nbsp;:</para>
 
 <itemizedlist>
 
-<listitem><para><acronym>XML</acronym> documents use a self-describing and
-simple to use syntax.</para></listitem>
+<listitem><para>XML documents use a self-describing and simple to use
+syntax.</para></listitem>
 
-<listitem><para>All <acronym>XML</acronym> elements must have a closing
-tag. With <acronym>XML</acronym>, it is illegal to omit the closing
-tag.</para></listitem>
+<listitem><para>All XML elements must have a closing tag. With XML, it is
+illegal to omit the closing tag.</para></listitem>
 
-<listitem><para><acronym>XML</acronym> tags are case
-sensitive.</para></listitem>
+<listitem><para>XML tags are case sensitive.</para></listitem>
 
-<listitem><para>All <acronym>XML</acronym> elements must be properly
-nested. Improper nesting of tags makes no sense to
-<acronym>XML</acronym>.</para></listitem>
+<listitem><para>All XML elements must be properly nested. Improper nesting
+of tags makes no sense to XML.</para></listitem>
 
-<listitem><para>All <acronym>XML</acronym> documents must have a root
-element. In other words, all <acronym>XML</acronym> documents must contain
-a single tag pair to define a root element.</para></listitem>
+<listitem><para>All XML documents must have a root element. In other words,
+all XML documents must contain a single tag pair to define a root
+element.</para></listitem>
 
-<listitem><para>Attribute values must always be quoted. With
-<acronym>XML</acronym>, it is illegal to omit quotation marks around
-attribute values.</para></listitem>
+<listitem><para>Attribute values must always be quoted. With XML, it is
+illegal to omit quotation marks around attribute values.</para></listitem>
 
-<listitem><para>With <acronym>XML</acronym>, white space is
-preserved.</para></listitem>
+<listitem><para>With XML, white space is preserved.</para></listitem>
 
-<listitem><para>With <acronym>XML</acronym>, <filename>CR</filename> /
-<filename>LF</filename> is converted to
-<filename>LF</filename></para></listitem>
+<listitem><para>With XML, <filename>CR</filename> / <filename>LF</filename>
+is converted to <filename>LF</filename></para></listitem>
 
 </itemizedlist>
 
@@ -59,23 +48,21 @@ preserved.</para></listitem>
 <sect2>
 <title>XML Elements and Attributes</title>
 
-<para><acronym>XML</acronym> is designed to hold any kind of information.
-This information is stored in Elements. Elements are the basic building
-blocks of <acronym>XML</acronym> and are represented in a
-<acronym>XML</acronym> document as tag pairs. Attributes provide a
-mechanism to further define or classify an element. Elements have
-relationships with other elements in a document. Some are parents and some
-are children. Using this semantic description, one can see that children
-elements need parent elements defined and used first. As mentioned in the
-last section, an <acronym>XML</acronym> document must have a root element.
-Think of this as the ultimate parent element. The root element must be
-defined and used before all other elements and all sub-elements (children).
-All elements and sub-elements will reside inside of the root element. An
-element can have parsed content, mixed content, simple content, empty
-content or attributes in their definition.</para>
+<para>XML is designed to hold any kind of information.  This information is
+stored in Elements. Elements are the basic building blocks of XML and are
+represented in a XML document as tag pairs. Attributes provide a mechanism
+to further define or classify an element. Elements have relationships with
+other elements in a document. Some are parents and some are children. Using
+this semantic description, one can see that children elements need parent
+elements defined and used first. As mentioned in the last section, an XML
+document must have a root element.  Think of this as the ultimate parent
+element. The root element must be defined and used before all other
+elements and all sub-elements (children).  All elements and sub-elements
+will reside inside of the root element. An element can have parsed content,
+mixed content, simple content, empty content or attributes in their
+definition.</para>
 
-<para><acronym>XML</acronym> elements must follow these naming
-rules&nbsp;:</para>
+<para>XML elements must follow these naming rules&nbsp;:</para>
 
 <itemizedlist>
 
@@ -95,31 +82,28 @@ character</para></listitem>
 </sect2>
 
 <sect2>
-<title>Quick Introduction to <acronym>DTD</acronym> Syntax</title>
+<title>Quick Introduction to DTD Syntax</title>
 
-<para>Once an <acronym>XML</acronym> document is written, it is generally a
-good idea to validate the elements used in the document against a known
-<acronym>DTD</acronym>. The Document Type Definition is the mechanism with
-which one validates the content of a well-formed <acronym>XML</acronym>
-document.</para>
+<para>Once an XML document is written, it is generally a good idea to
+validate the elements used in the document against a known DTD. The
+Document Type Definition is the mechanism with which one validates the
+content of a well-formed XML document.</para>
 
-<para><acronym>XML</acronym> <acronym>DTD</acronym> files
-contain&nbsp;:</para>
+<para>XML DTD files contain&nbsp;:</para>
 
 <itemizedlist>
 
 <listitem><para><emphasis role="bold">Element declarations and
 definitions</emphasis>&nbsp;:&nbsp;Elements are declared and defined with
-their relationships in the <acronym>DTD</acronym> file.</para></listitem>
+their relationships in the DTD file.</para></listitem>
 
 <listitem><para><emphasis role="bold">Attribute declarations and
 definitions</emphasis>&nbsp;:&nbsp;Element classes or attributes are
-declared and defined in the <acronym>DTD</acronym> file.</para></listitem>
+declared and defined in the DTD file.</para></listitem>
 
 <listitem><para><emphasis role="bold">Entities</emphasis>
 &nbsp;:&nbsp; Entities are the same thing as variables inside a
-<acronym>DTD</acronym> file or <acronym>XML</acronym> document. They can
-hold any kind of data.</para></listitem>
+DTD file or XML document. They can hold any kind of data.</para></listitem>
 
 <listitem><para><emphasis role="bold"><filename>PCDATA</filename></emphasis>
 &nbsp;:&nbsp;<filename>PCDATA</filename> is Parsed Character DATA.
@@ -138,11 +122,10 @@ expanded.</para></listitem>
 </sect2>
 
 <sect2>
-<title><acronym>DTD</acronym> Element Declaration</title>
+<title>DTD Element Declaration</title>
 
-<para>Elements are declared in the <acronym>DTD</acronym> file using a
-simple, but strict syntax.  There are four ways to define an
-element&nbsp;:</para>
+<para>Elements are declared in the DTD file using a simple, but strict
+syntax.  There are four ways to define an element&nbsp;:</para>
 
 <itemizedlist>
 
@@ -165,7 +148,7 @@ hold one of the two types of information described above.</para></listitem>
 <listitem><para><emphasis role="bold">With Children</emphasis>
 &nbsp;:&nbsp;When an element is declared with the names of other elements
 in it, this defines a parent-child relationship. Look in the
-<acronym>DTD</acronym> for the child element names to be further defined
+DTD for the child element names to be further defined
 with the other three ways.</para></listitem>
 
 <listitem><para><emphasis role="bold">Mixed</emphasis>
@@ -175,9 +158,8 @@ character data mixed with children.</para></listitem>
 </itemizedlist>
 
 <para>When an element is declared with children, it will also define how
-the children can be used inside an <acronym>XML</acronym> document.  There
-are four ways that children elements can be defined in a
-<acronym>DTD</acronym> file&nbsp;:</para>
+the children can be used inside an XML document.  There are four ways that
+children elements can be defined in a DTD file&nbsp;:</para>
 
 <itemizedlist>
 
@@ -220,11 +202,11 @@ identifier.</para></listitem>
 </sect2>
 
 <sect2>
-<title><acronym>DTD</acronym> Attribute Declaration</title>
+<title>DTD Attribute Declaration</title>
 
-<para>As mentioned above, attributes can help to define
-&quot;classes&quot; of Elements. Attributes are defined with types and
-values. There are 11 types&nbsp;:</para>
+<para>As mentioned above, attributes can help to define &quot;classes&quot;
+of Elements. Attributes are defined with types and values. There are 11
+types&nbsp;:</para>
 
 <itemizedlist>
 
@@ -244,11 +226,11 @@ values. There are 11 types&nbsp;:</para>
 &nbsp;:&nbsp;The value is a list of other ids,</para></listitem>
 
 <listitem><para><emphasis role="bold"><filename>NMTOKEN</filename></emphasis>
-&nbsp;:&nbsp;The value is a valid <acronym>XML</acronym>
+&nbsp;:&nbsp;The value is a valid XML
 name.</para></listitem>
 
 <listitem><para><emphasis role="bold"><filename>NMTOKENS</filename></emphasis>
-&nbsp;:&nbsp;The value is a list of valid <acronym>XML</acronym>
+&nbsp;:&nbsp;The value is a list of valid XML
 names.</para></listitem>
 
 <listitem><para><emphasis role="bold"><filename>ENTITY</filename></emphasis>
@@ -261,7 +243,7 @@ names.</para></listitem>
 &nbsp;:&nbsp;The value is a name of a notation.</para></listitem>
 
 <listitem><para><emphasis role="bold"><filename>xml</filename></emphasis>
-&nbsp;:&nbsp;The value is a predefined <acronym>XML</acronym>
+&nbsp;:&nbsp;The value is a predefined XML
 value.</para></listitem>
 
 </itemizedlist>

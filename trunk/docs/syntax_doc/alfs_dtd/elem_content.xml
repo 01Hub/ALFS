@@ -22,9 +22,8 @@
 content of the file being created when processing a
 <filename>textdump</filename> operation.</para>
 
-<note><para>Of course, it is possible to use <acronym>XML</acronym> entity
-references in the <userinput>#PCDATA</userinput> or string of this
-element.</para></note>
+<note><para>Of course, it is possible to use XML entity references in the
+<userinput>#PCDATA</userinput> or string of this element.</para></note>
 
 </sect2>
 

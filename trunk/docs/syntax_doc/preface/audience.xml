@@ -3,10 +3,9 @@
 <title>Who Would Want To Read This Book</title>
 
 <para>This book is mainly aimed at those who want more information on the
-&book-product;. The <acronym>DTD</acronym> is designed to be implementation
-agnostic. This means that you may be reading this book as part of an
-<acronym>ALFS</acronym> implementation source tarball or on the
-<acronym>ALFS</acronym> website.</para>
+&book-product;. The DTD is designed to be implementation agnostic. This
+means that you may be reading this book as part of an ALFS implementation
+source tarball or on the ALFS website.</para>
 
 </sect1>
 
