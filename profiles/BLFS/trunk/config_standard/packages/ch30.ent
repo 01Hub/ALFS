@@ -1,9 +1,5 @@
 <!--************* packages for chapter 30 *************-->
 
-<!ENTITY gtk-doc-version   "1.2">
-<!ENTITY gtk-doc-package   "gtk-doc-&gtk-doc-version;.tar.bz2">
-<!ENTITY gtk-doc-directory "gtk-doc-&gtk-doc-version;">
-
 <!ENTITY libidl-version   "0.8.3">
 <!ENTITY libidl-package   "libIDL-&libidl-version;.tar.bz2">
 <!ENTITY libidl-directory "libIDL-&libidl-version;">
@@ -11,10 +7,6 @@
 <!ENTITY orbit2-version   "2.10.1">
 <!ENTITY orbit2-package   "ORBit2-&orbit2-version;.tar.bz2">
 <!ENTITY orbit2-directory "ORBit2-&orbit2-version;">
-
-<!ENTITY intltool-version   "0.30">
-<!ENTITY intltool-package   "intltool-&intltool-version;.tar.bz2">
-<!ENTITY intltool-directory "intltool-&intltool-version;">
 
 <!ENTITY libbonobo-version   "2.6.0">
 <!ENTITY libbonobo-package   "libbonobo-&libbonobo-version;.tar.bz2">

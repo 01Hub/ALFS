@@ -39,6 +39,14 @@
 <!-- XFree86 (xfree86) or X.org (xorg) -->
 <!ENTITY ximpl "xorg">
 
+<!-- Ghostscript Implementation -->
+<!-- esp or afpl -->
+<!ENTITY ghostscript-impl "esp">
+
+<!-- GIF library implementation-->
+<!-- libungif or giflib -->
+<!ENTITY gif-impl "giflib">
+
 <!-- where to put kde -->
 <!ENTITY kde-prefix "/usr">
 

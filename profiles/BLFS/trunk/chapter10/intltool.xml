@@ -2,7 +2,7 @@
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
-<!ENTITY % package_entities SYSTEM "../config/packages/ch09.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch10.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
 
 %general_entities;
@@ -11,30 +11,21 @@
 
 ]>
 <alfs>
-  <package name="imlib2" version="&imlib2-version;">
+  <package name="intltool" version="&intltool-version;">
     <packageinfo>
       <requires>
-        <name>&ximpl;</name>
+        <name>xml-parser</name>
       </requires>
-      <requires>
-        <name>libjpeg</name>
-      </requires>
-      <utilizes>
-        <name>&gif-impl;</name>
-      </utilizes>
-      <utilizes>
-        <name>libtiff</name>
-      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&imlib2-package;</archive>
+        <archive>&packages_dir;/&intltool-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&imlib2-directory;</base>
+        <base>&build_dir;/&intltool-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
@@ -45,7 +36,7 @@
       </make>
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&imlib2-directory;</remove>
+      <remove>&build_dir;/&intltool-directory;</remove>
     </stage>
   </package>
 </alfs>
