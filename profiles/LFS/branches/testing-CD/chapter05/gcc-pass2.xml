@@ -12,7 +12,6 @@
 <package name="gcc-pass2" version="&gcc-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&gcc-md5;</digest>
 			<archive>&packages_dir;/&gcc-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

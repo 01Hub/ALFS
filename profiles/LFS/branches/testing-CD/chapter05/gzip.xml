@@ -12,7 +12,6 @@
 <package name="gzip" version="&gzip-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&gzip-md5;</digest>
 			<archive>&packages_dir;/&gzip-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

@@ -12,7 +12,6 @@
 <package name="libtool" version="&libtool-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&libtool-md5;</digest>
 			<archive>&packages_dir;/&libtool-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

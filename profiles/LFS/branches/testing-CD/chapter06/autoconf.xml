@@ -12,7 +12,6 @@
 <package name="autoconf" version="&autoconf-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&autoconf-md5;</digest>
 			<archive>&packages_dir;/&autoconf-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

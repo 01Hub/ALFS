@@ -12,7 +12,6 @@
 <package name="udev" version="&udev-version;">
 	<stage name="Unpacking">
 		<unpack>
-			<digest>&udev-md5;</digest>
 			<archive>&packages_dir;/&udev-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

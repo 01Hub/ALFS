@@ -12,7 +12,6 @@
 <package name="readline" version="&readline-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&readline-md5;</digest>
 			<archive>&packages_dir;/&readline-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

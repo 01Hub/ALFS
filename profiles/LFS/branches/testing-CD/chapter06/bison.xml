@@ -12,7 +12,6 @@
 <package name="bison" version="&bison-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&bison-md5;</digest>
 			<archive>&packages_dir;/&bison-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

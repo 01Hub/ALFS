@@ -12,7 +12,6 @@
 <package name="glibc" version="&glibc-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&glibc-md5;</digest>
 			<archive>&packages_dir;/&glibc-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

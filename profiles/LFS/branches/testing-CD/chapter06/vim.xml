@@ -12,12 +12,10 @@
 <package name="vim" version="&vim-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&vim-md5;</digest>
 			<archive>&packages_dir;/&vim-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 		<unpack>
-			<digest>&vim-lang-md5;</digest>
 			<archive>&packages_dir;/&vim-lang-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

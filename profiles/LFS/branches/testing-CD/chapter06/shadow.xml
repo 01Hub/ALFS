@@ -12,7 +12,6 @@
 <package name="shadow" version="&shadow-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&shadow-md5;</digest>
 			<archive>&packages_dir;/&shadow-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

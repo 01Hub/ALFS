@@ -12,7 +12,6 @@
 <package name="perl" version="&perl-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&perl-md5;</digest>
 			<archive>&packages_dir;/&perl-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

@@ -12,7 +12,6 @@
 <package name="inetutils" version="&inetutils-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&inetutils-md5;</digest>
 			<archive>&packages_dir;/&inetutils-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

@@ -12,7 +12,6 @@
 <package name="ncurses" version="&ncurses-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&ncurses-md5;</digest>
 			<archive>&packages_dir;/&ncurses-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

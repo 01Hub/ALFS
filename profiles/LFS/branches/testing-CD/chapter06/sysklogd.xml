@@ -12,7 +12,6 @@
 <package name="sysklogd" version="&sysklogd-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&sysklogd-md5;</digest>
 			<archive>&packages_dir;/&sysklogd-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

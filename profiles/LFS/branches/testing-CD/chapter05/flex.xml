@@ -12,7 +12,6 @@
 <package name="flex" version="&flex-version;">
 	<stage name="Unpacking">
 		<unpack>
-			<digest>&flex-md5;</digest>
 			<archive>&packages_dir;/&flex-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

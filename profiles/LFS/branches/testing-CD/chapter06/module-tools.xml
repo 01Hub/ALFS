@@ -12,7 +12,6 @@
 <package name="module-init-tools" version="&module-tools-version;">
 	<stage name="Unpacking">
 		<unpack>
-			<digest>&module-tools-md5;</digest>
 			<archive>&packages_dir;/&module-tools-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

@@ -12,7 +12,6 @@
 <package name="gawk" version="&gawk-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&gawk-md5;</digest>
 			<archive>&packages_dir;/&gawk-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

@@ -12,7 +12,6 @@
 <package name="grub" version="&grub-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&grub-md5;</digest>
 			<archive>&packages_dir;/&grub-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

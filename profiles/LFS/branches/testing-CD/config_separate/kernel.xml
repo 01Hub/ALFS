@@ -12,7 +12,6 @@
 <package name="linux" version="&linux-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&linux-md5;</digest>
 			<archive>&packages_dir;/&linux-package;</archive>
 			<destination>&linux-src-location;</destination>
 		</unpack>

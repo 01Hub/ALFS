@@ -12,7 +12,6 @@
 <package name="zlib" version="&zlib-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&zlib-md5;</digest>
 			<archive>&packages_dir;/&zlib-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

@@ -12,7 +12,6 @@
 <package name="patch" version="&patch-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&patch-md5;</digest>
 			<archive>&packages_dir;/&patch-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

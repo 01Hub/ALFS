@@ -12,7 +12,6 @@
 <package name="m4" version="&m4-version;">
 	<stage name="Unpacking">
 		<unpack>
-			<digest>&m4-md5;</digest>
 			<archive>&packages_dir;/&m4-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

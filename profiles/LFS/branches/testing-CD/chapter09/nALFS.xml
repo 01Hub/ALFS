@@ -12,7 +12,6 @@
 <package name="nALFS" version="&nALFS-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&nALFS-md5;</digest>
 			<archive>&packages_dir;/&nALFS-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

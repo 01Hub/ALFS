@@ -12,7 +12,6 @@
 <package name="sed" version="&sed-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&sed-md5;</digest>
 			<archive>&packages_dir;/&sed-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

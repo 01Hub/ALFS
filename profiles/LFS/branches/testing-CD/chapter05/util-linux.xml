@@ -12,7 +12,6 @@
 <package name="util-linux" version="&util-linux-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&util-linux-md5;</digest>
 			<archive>&packages_dir;/&util-linux-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

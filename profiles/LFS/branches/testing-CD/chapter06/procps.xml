@@ -12,7 +12,6 @@
 <package name="procps" version="&procps-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&procps-md5;</digest>
 			<archive>&packages_dir;/&procps-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>

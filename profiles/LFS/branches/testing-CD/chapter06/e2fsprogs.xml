@@ -12,7 +12,6 @@
 <package name="e2fsprogs" version="&e2fsprogs-version;">
 	<stage name="Unpacking.">
 		<unpack>
-			<digest>&e2fsprogs-md5;</digest>
 			<archive>&packages_dir;/&e2fsprogs-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
