@@ -39,7 +39,8 @@
 			<param>install</param>
 		</make>
 
-		<link type="symbolic">
+		<link>
+			<option>force</option>
 			<target>bash</target>
 			<name>/tools/bin/sh</name>
 		</link>

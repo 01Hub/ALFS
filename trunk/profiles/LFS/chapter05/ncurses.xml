@@ -23,13 +23,13 @@
                         <param>-p1</param>
                         <param>-i ../&ncurses-etip-patch;</param>
                 </patch>
-                                                                                                                                               
+
                 <patch>
                         <param>-N</param>
                         <param>-p1</param>
                         <param>-i ../&ncurses-vsscanf-patch;</param>
                 </patch>
-                                                                                                                                               
+
 		<configure>
 			<param>--prefix=/tools</param>
 			<param>--with-shared</param>
