@@ -1,6 +1,5 @@
 /*
- *  logfiles.c - Functions dealing with the format of XML log files
- *               of the packages.
+ *  logfiles.c - Functions dealing with packages' log files.
  *
  *  Copyright (C) 2003
  *
@@ -23,10 +22,12 @@
 
 
 #include <string.h>
+#include <dirent.h>
 
 #include <libxml/tree.h>
 #include <libxml/parser.h>
 
+#include "utility.h"
 #include "logfiles.h"
 
 
@@ -162,4 +163,91 @@ int logf_has_installed_files(xmlNodePtr node)
 void logf_add_installed_files(xmlNodePtr node, const char *f)
 {
 	xmlNewTextChild(node, NULL, EL_NAME_FOR_FILES_NAME, f);
+}
+
+/*
+ * Implementation of logf interface.
+ */
+
+struct plogf {
+	char *dir;		/* Log's directory. */
+	char *name;		/* Log's filename. */
+
+	char *installed;	/* Filename containing the list
+				 * of installed packages. */
+};
+
+struct logf {
+	int cnt;
+	struct plogf **list;
+};
+
+struct logf *logf_init(const char *dir_name)
+{
+	DIR *dir;
+	struct dirent *next;
+	struct logf *logf;
+
+
+	logf = xmalloc(sizeof *logf);
+
+	logf->cnt = 0;
+	logf->list = NULL;
+
+	if ((dir = opendir(dir_name))) {
+		while ((next = readdir(dir)) != NULL) {
+			char *s;
+			struct plogf *plogf;
+
+			/* Check for the right suffix. */
+			s = strrchr(next->d_name, '.');
+			if (s == NULL || (strcmp(s, LOG_FILE_SUFFIX) != 0)) {
+				continue;
+			}
+
+			plogf = xmalloc(sizeof *plogf);
+			plogf->dir = xstrdup(dir_name);
+			plogf->name = xstrdup(next->d_name);
+			plogf->installed = NULL;
+
+			++logf->cnt;
+
+			logf->list = xrealloc(
+				logf->list, logf->cnt * sizeof *logf->list);
+
+			logf->list[logf->cnt - 1] = plogf;
+		}
+
+		closedir(dir);
+	}
+	
+	return logf;
+}
+
+void logf_free(struct logf *logf)
+{
+	int i;
+
+	for (i = 0; i < logf->cnt; ++i) {
+		struct plogf *plogf = logf->list[i];
+
+		xfree(plogf->dir);
+		xfree(plogf->name);
+		xfree(plogf->installed);
+
+		xfree(plogf);
+	}
+
+	xfree(logf);
+}
+
+
+int logf_get_packages_cnt(struct logf *logf)
+{
+	return logf->cnt;
+}
+
+char *logf_get_package_name(struct logf *logf, int i)
+{
+	return logf->list[i]->name;
 }
