@@ -1,0 +1,31 @@
+<stage name="Configuring the network script">
+	<textdump mode="append">
+		<file>/etc/sysconfig/network</file>
+		<content>
+			=GATEWAY=&gateway;
+			=GATEWAY_IF=&gateway_if;
+		</content>
+	</textdump>
+
+	<textdump mode="append">
+		<file>/etc/sysconfig/network-devices/ifconfig.eth0</file>
+		<content>
+			=ONBOOT=&on_boot;
+			=SERVICE=static
+			=IP=&IP;
+			=NETMASK=&netmask;
+			=BROADCAST=&broadcast;
+		</content>
+	</textdump>
+
+	<textdump>
+		<file>/etc/resolv.conf</file>
+		<content>
+			=# Begin /etc/resolv.conf
+			=
+			=nameserver &nameserver-ip;
+			=
+			=# End /etc/resolv.conf
+		</content>
+	</textdump>
+</stage>
