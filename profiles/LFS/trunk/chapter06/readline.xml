@@ -23,12 +23,6 @@
 			<base>&build_dir;/&readline-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&readline-gnu-fixes-patch;</param>
-		</patch>
-
 		<configure>
 			<param>--prefix=/usr</param>
 		</configure>
@@ -46,20 +40,20 @@
 		</permissions>
 
 		<move>
-			<source>/usr/lib/libreadline.so.4*</source>
-			<source>/usr/lib/libhistory.so.4*</source>
+			<source>/usr/lib/libreadline.so.5*</source>
+			<source>/usr/lib/libhistory.so.5*</source>
 			<destination>/lib</destination>
 		</move>
 
 		<link>
 			<option>force</option>
-			<target>../../lib/libhistory.so.4</target>
+			<target>../../lib/libhistory.so.5</target>
 			<name>/usr/lib/libhistory.so</name>
 		</link>
 
 		<link>
 			<option>force</option>
-			<target>../../lib/libreadline.so.4</target>
+			<target>../../lib/libreadline.so.5</target>
 			<name>/usr/lib/libreadline.so</name>
 		</link>
 	</stage>
