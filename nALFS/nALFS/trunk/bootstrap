@@ -26,7 +26,7 @@ set -e
 [ -r src/nalfs.c ] || {
     echo "***"
     echo "*** The bootstrap script must be run in the top directory"
-    echo "*** of the CVS source distribution."
+    echo "*** of the SVN source distribution."
     echo "***"
     exit 1
 }
