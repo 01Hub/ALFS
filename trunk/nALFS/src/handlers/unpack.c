@@ -45,8 +45,6 @@
 #define El_unpack_archive(el) alloc_trimmed_param_value("archive", el)
 #define El_unpack_destination(el) alloc_trimmed_param_value("destination", el)
 
-#define El_unpack_reference(el) alloc_trimmed_param_value("reference", el)
-
 
 typedef enum extension_e {
 	GZ, TAR_GZ, TGZ, BZ2, TAR_BZ2, TAR, ZIP, TAR_Z, Z, UNKNOWN
@@ -220,23 +218,35 @@ static int unpack_main_ver3(element_s *el)
 
 	/* Check if archive exists. */
 	if ((stat(archive, &file_stat))) {
-		char *reference = El_unpack_reference(el);
-	
-		if (errno == ENOENT && reference != NULL) {
+	        if (errno == ENOENT && first_param("reference", el) != NULL) {
+		        int found = 0;
+			element_s *p;
+
 			Nprint_h_warn("Archive %s not found.", archive);
 			Nprint_h("Trying to fetch it from <reference>...");
 
-			if (get_url(reference, archive, digest, digest_type)) {
-				xfree(reference);
+	                for (p = first_param("reference", el); p; p = next_param(p)) {
+				char *s;
+
+				if ((s = alloc_trimmed_str(p->content)) == NULL) {
+					Nprint_h_warn("Source empty.");
+					continue;
+				}
+				
+				if (! get_url(s, archive, digest, digest_type))
+					found = 1;
+				xfree(s);
+				if (found)
+					break;
+			}
+			
+			if (! found) {
+				Nprint_h_err("Unable to download file %s.", archive);
 				goto free_all_and_return;
 			}
-
-			xfree(reference);
-
 		} else {
 			Nprint_h_err("Checking for %s failed:", archive);
 			Nprint_h_err("    %s", strerror(errno));
-			xfree(reference);
 			goto free_all_and_return;
 		}
 	} else if (digest && verify_digest(digest_type, digest, archive)) {
