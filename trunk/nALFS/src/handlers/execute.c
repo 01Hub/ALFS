@@ -134,7 +134,7 @@ static char *execute_data_ver3(element_s *el, handler_data_e data)
 
 const char *execute_parameters_ver2[] = { "base", "command", "param", NULL };
 
-const char *execute_parameters_ver3[] = { "base", "command", NULL };
+const char *execute_parameters_ver3[] = { "base", "command", "param", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
 
 handler_info_s HANDLER_SYMBOL(info)[] = {
