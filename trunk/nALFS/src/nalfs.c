@@ -1102,7 +1102,7 @@ static void pkg_remove_package(logs_t *logs, int idx)
 	char *flog;
 
 
-	if ((flog = logs_get_flog_filename(logs, idx)) == NULL) {
+	if ((flog = logs_get_plog_installed(logs, idx)) == NULL) {
 		Nprint("List of installed files doesn't exist.");
 		return;
 	}
@@ -1143,6 +1143,10 @@ static void pkg_remove_package(logs_t *logs, int idx)
 	}
 }
 
+/*
+ * TODO: Pressing enter should display package's information first.
+ *       From that window, other commands for that package can be given.
+ */
 static void pkg_process_command(logs_t *logs, int idx, int input)
 {
 	switch (input) {
@@ -1167,7 +1171,8 @@ static void pkg_write_main_line(logs_t *logs, int idx)
 {
 	size_t i;
 	char *line = NULL;
-	char *flog = logs_get_flog_filename(logs, idx);
+	char *name = logs_get_plog_name(logs, idx);
+	char *version = logs_get_plog_version(logs, idx);
 
 
 	/* Space for cursor. */
@@ -1175,7 +1180,9 @@ static void pkg_write_main_line(logs_t *logs, int idx)
 		append_str(&line, " ");
 	}
 
-	append_str(&line, flog ? flog : "none");
+	append_str(&line, name);
+	append_str(&line, " - ");
+	append_str(&line, version);
 
 	/* Print the line. */
 	if (strlen(line) + 4 > (unsigned int)windows.max_cols) {
