@@ -352,10 +352,10 @@
 <!ENTITY util-linux-kernel-headers-patch-md5 "9baf322f021ff4019407f7384732a4bf">
 <!ENTITY util-linux-kernel-headers-patch "util-linux-&util-linux-version;-kernel-headers-1.patch">
 
-<!ENTITY vim-md5 "c49d360bbd069d00e2a57804f2a123d9">
-<!ENTITY vim-version "6.2">
+<!ENTITY vim-md5 "821fda8f14d674346b87e3ef9cb96389">
+<!ENTITY vim-version "6.3">
 <!ENTITY vim-package "vim-&vim-version;.tar.bz2">
-<!ENTITY vim-directory "vim62">
+<!ENTITY vim-directory "vim63">
 
 <!ENTITY zlib-md5 "8106069990476a3c5187301465bd7a60">
 <!ENTITY zlib-version "1.2.1">
