@@ -245,6 +245,9 @@ static int make_handler_element(xmlNodePtr node, element_s *element)
 			Nprint_warn("<%s>: <%s> not valid here.", parent->name, handler->name);
 			return -1;
 		}
+	} else {
+		Nprint_warn("<%s>: <%s> not valid here.", parent->name, handler->name);
+		return -1;
 	}
 
 	if (handler->setup && ((result = handler->setup(element)) == 0)) {
