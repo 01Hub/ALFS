@@ -22,7 +22,7 @@ itself and the installation page in the BLFS Book for instructions on how to use
       <destination>.</destination>
     </copy>
     <permissions mode="755">
-      <name>/compressdoc</name>
+      <name>compressdoc</name>
     </permissions>
   </stage>
 </alfs>
