@@ -6,8 +6,8 @@ NOCHUNKS_OUTPUT=LFS-BOOK.html
 XSLROOTDIR=/usr/share/xml/docbook/xsl-stylesheets-current
 
 alfs-srs:
-	xsltproc --xinclude --nonet --stringparam html.stylesheet srs.css \
-	  -o $(BASEDIR)/$(HTML_OUTPUT) nochunks.xsl index.xml
+	xsltproc --xinclude --nonet -o $(BASEDIR)/$(HTML_OUTPUT) nochunks.xsl \
+	  index.xml
 	cp srs.css $(BASEDIR)
 	for filename in `find $(BASEDIR) -name "*.html"`; do \
 	  tidy -config tidy.conf $$filename; \
