@@ -103,7 +103,6 @@
         <source>&linux-package;</source>
         <source>&linux-security-patch;</source>
         <source>&linux-libc-headers-package;</source>
-        <source>&kernel-config;</source>
         <source>&m4-package;</source>
         <source>&make-package;</source>
         <source>&man-package;</source>
