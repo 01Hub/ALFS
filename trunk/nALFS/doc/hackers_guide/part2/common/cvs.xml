@@ -2,6 +2,87 @@
 <?dbhtml filename="cvs.html" dir="chapter01"?>
 <title>CVS</title>
 
-<para>PAGE TO BE WRITTEN</para>
+<sect2>
+<title>Editing source files</title>
+
+<para>The &book-product; build system, because it uses
+<filename>automake</filename>, has full dependency tracking on all files used
+to build the binaries. This will reduce your rebuilding time as you edit
+header files and source files, as the make system will know exactly what must
+be rebuilt.</para>
+
+<para>In addition, if you are going to make changes to
+<filename>configure.ac</filename>, you should add the
+<filename>&quot;--enable-maintainer-mode&quot;</filename> parameter to the
+<filename>configure</filename> command. With this done, each time you edit
+<filename>configure.ac</filename>, the <filename>Makefile</filename> will
+automatically re-run <filename>configure</filename> to make your changes take
+effect. Be warned though, that if you manually edit
+<filename>Makefile.am</filename>, you must modify the
+<filename>bootstrap</filename> script to incorporate your changes, because
+<filename>Makefile.am</filename> is not stored in the <acronym>CVS</acronym>
+repository.</para>
+
+</sect2>
+
+<sect2>
+<title>Usage</title>
+
+<para>The <acronym>CVS</acronym> repository copy of &book-product; does not
+include an executable <filename>configure</filename> script nor a
+<filename>Makefile</filename>. This is by design, as there is a script to
+create them, which ensures that the <filename>Makefile</filename> content will
+always be up to date with the source tree contents and not require manual
+editing.</para>
+
+<para>&book-product; has been configured to use the <acronym>GNU</acronym>
+<filename>autotools</filename> suite for its build process. The build system
+was created using <filename>autoconf-2.57</filename>, <filename>automake-
+1.7.7</filename> and <filename>libtool-1.5</filename>. If you use older
+versions than those, you may experience warnings and/or outright failures
+(<filename>automake-1.6</filename> is known to be unable to handle the
+&book-product; <filename>Makefile.am</filename>).</para>
+
+<para>When you checkout the nALFS source tree, you will need to execute:</para>
+
+<screen><command>sh ./bootstrap</command></screen>
+
+<para>in the &book-product; directory itself. This should result output similar to the following:</para>
+
+<screen><userinput><command>$ sh ./bootstrap</command>
+You should update your 'aclocal.m4' by running aclocal.
+Putting files in AC_CONFIG_AUX_DIR, `gnubuild'.
+configure.ac: installing 'gnubuild/install-sh'
+configure.ac: installing 'gnubuild/mkinstalldirs'
+configure.ac: installing 'gnubuild/missing'
+Makefile.am: installing 'gnubuild/compile'
+Makefile.am: installing 'gnubuild/depcomp'
+patching file ltmain.sh
+Hunk #1 succeeded at 160 with fuzz 2 (offset -78 lines).
+Hunk #2 succeeded at 269 with fuzz 1.
+Hunk #3 succeeded at 4483 (offset -1172 lines).</userinput></screen>
+
+<para>This output comes from the <filename>autoreconf</filename> tool, which
+is part of <filename>autoconf</filename>, that automatically runs
+<filename>libtoolize</filename>, <filename>autoheader</filename>,
+<filename>aclocal</filename> and other parts of the
+<filename>autotools</filename> suite. The warning about &quot;update your
+'aclocal.m4'&quot; can be ignored, as <filename>aclocal</filename> is already
+executed later by <filename>autoreconf</filename>. The
+<filename>patch</filename> offset and/or fuzz messages about
+<filename>ltmain.sh</filename> are caused by the
+<filename>bootstrap</filename> script applying a patch created against
+<filename>libtool-1.5</filename>; if your <filename>libtool</filename> version
+is different, the patch should still work correctly, but you may see messages
+like this from the <filename>patch</filename> command. In the worst case, the
+patch fails to apply, the &book-product; build will still be functional, but
+<filename>libtool</filename> will generate more output messages than
+necessary.</para>
+
+<para>Once <filename>bootstrap</filename> has been run, you can execute
+<filename>./configure</filename> like any other <acronym>GNU</acronym>
+autoconf-based package to configure &book-product; for your system.</para>
+
+</sect2>
 
 </sect1>
