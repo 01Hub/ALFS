@@ -11,10 +11,9 @@
 
 <package name="man" version="&man-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&man-md5;</digest>
 			<archive>&packages_dir;/&man-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -23,10 +22,8 @@
 			<base>&build_dir;/&man-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&man-80cols-patch;</param>
+		<patch path_strip="1">
+			<file>&packages_dir;/&man-80cols-patch;</file>
 		</patch>
 
 		<search_replace base="&build_dir;/&man-directory;">
@@ -53,7 +50,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&man-directory;</remove>
+		<remove>
+			<file>&build_dir;/&man-directory;</file>
+		</remove>
 	</stage>
 </package>
 

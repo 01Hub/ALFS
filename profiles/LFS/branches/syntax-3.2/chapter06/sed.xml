@@ -11,10 +11,9 @@
 
 <package name="sed" version="&sed-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&sed-md5;</digest>
 			<archive>&packages_dir;/&sed-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -42,7 +41,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&sed-directory;</remove>
+		<remove>
+			<file>&build_dir;/&sed-directory;</file>
+		</remove>
 	</stage>
 </package>
 

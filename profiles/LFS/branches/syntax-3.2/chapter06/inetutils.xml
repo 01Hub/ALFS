@@ -11,10 +11,9 @@
 
 <package name="inetutils" version="&inetutils-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&inetutils-md5;</digest>
 			<archive>&packages_dir;/&inetutils-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -23,16 +22,12 @@
 			<base>&build_dir;/&inetutils-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&inetutils-no-man-pages-patch;</param>
+		<patch path_strip="1">
+			<file>&packages_dir;/&inetutils-no-man-pages-patch;</file>
 		</patch>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&inetutils-kernel-headers-patch;</param>
+		<patch path_strip="1">
+			<file>&packages_dir;/&inetutils-kernel-headers-patch;</file>
 		</patch>
 
 		<configure>
@@ -59,7 +54,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&inetutils-directory;</remove>
+		<remove>
+			<file>&build_dir;/&inetutils-directory;</file>
+		</remove>
 	</stage>
 </package>
 

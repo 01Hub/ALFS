@@ -11,10 +11,9 @@
 
 <package name="autoconf" version="&autoconf-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&autoconf-md5;</digest>
 			<archive>&packages_dir;/&autoconf-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -41,7 +40,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&autoconf-directory;</remove>
+		<remove>
+			<file>&build_dir;/&autoconf-directory;</file>
+		</remove>
 	</stage>
 </package>
 

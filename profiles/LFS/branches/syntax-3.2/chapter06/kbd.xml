@@ -11,10 +11,9 @@
 
 <package name="kbd" version="&kbd-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&kbd-md5;</digest>
 			<archive>&packages_dir;/&kbd-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -36,7 +35,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&kbd-directory;</remove>
+		<remove>
+			<file>&build_dir;/&kbd-directory;</file>
+		</remove>
 	</stage>
 </package>
 

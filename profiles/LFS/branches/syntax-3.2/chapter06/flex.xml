@@ -11,10 +11,9 @@
 
 <package name="flex" version="&flex-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&flex-md5;</digest>
 			<archive>&packages_dir;/&flex-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -23,10 +22,8 @@
 			<base>&build_dir;/&flex-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&flex-debian-fixes-patch;</param>
+		<patch path_strip="1">
+			<file>&packages_dir;/&flex-debian-fixes-patch;</file>
 		</patch>
 
 		<execute command="touch">
@@ -73,7 +70,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&flex-directory;</remove>
+		<remove>
+			<file>&build_dir;/&flex-directory;</file>
+		</remove>
 	</stage>
 </package>
 

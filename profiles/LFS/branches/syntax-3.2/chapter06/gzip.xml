@@ -11,10 +11,9 @@
 
 <package name="gzip" version="&gzip-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&gzip-md5;</digest>
 			<archive>&packages_dir;/&gzip-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -44,8 +43,10 @@
 			<destination>/bin</destination>
 		</move>
 
-		<remove>/usr/bin/gunzip</remove>
-		<remove>/usr/bin/zcat</remove>
+		<remove>
+			<file>/usr/bin/gunzip</file>
+			<file>/usr/bin/zcat</file>
+		</remove>
 
 		<link>
 			<option>force</option>
@@ -67,7 +68,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&gzip-directory;</remove>
+		<remove>
+			<file>&build_dir;/&gzip-directory;</file>
+		</remove>
 	</stage>
 </package>
 

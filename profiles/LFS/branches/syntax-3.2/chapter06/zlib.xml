@@ -11,10 +11,9 @@
 
 <package name="zlib" version="&zlib-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&zlib-md5;</digest>
 			<archive>&packages_dir;/&zlib-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -77,7 +76,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&zlib-directory;</remove>
+		<remove>
+			<file>&build_dir;/&zlib-directory;</file>
+		</remove>
 	</stage>
 </package>
 

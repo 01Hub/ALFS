@@ -11,10 +11,9 @@
 
 <package name="sysklogd" version="&sysklogd-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&sysklogd-md5;</digest>
 			<archive>&packages_dir;/&sysklogd-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -23,16 +22,12 @@
 			<base>&build_dir;/&sysklogd-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&sysklogd-kernel-headers-patch;</param>
+		<patch path_strip="1">
+			<file>&packages_dir;/&sysklogd-kernel-headers-patch;</file>
 		</patch>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&sysklogd-signal-patch;</param>
+		<patch path_strip="1">
+			<file>&packages_dir;/&sysklogd-signal-patch;</file>
 		</patch>
 
 		<make />
@@ -60,7 +55,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&sysklogd-directory;</remove>
+		<remove>
+			<file>&build_dir;/&sysklogd-directory;</file>
+		</remove>
 	</stage>
 </package>
 

@@ -11,10 +11,9 @@
 
 <package name="libtool" version="&libtool-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&libtool-md5;</digest>
 			<archive>&packages_dir;/&libtool-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -41,7 +40,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&libtool-directory;</remove>
+		<remove>
+			<file>&build_dir;/&libtool-directory;</file>
+		</remove>
 	</stage>
 </package>
 

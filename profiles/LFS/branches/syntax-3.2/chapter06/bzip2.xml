@@ -11,10 +11,9 @@
 
 <package name="bzip2" version="&bzip2-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&bzip2-md5;</digest>
 			<archive>&packages_dir;/&bzip2-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -54,9 +53,11 @@
 			<name>/usr/lib/libbz2.so</name>
 		</link>
 
-		<remove>/usr/bin/bunzip2</remove>
-		<remove>/usr/bin/bzcat</remove>
-		<remove>/usr/bin/bzip2</remove>
+		<remove>
+			<file>/usr/bin/bunzip2</file>
+			<file>/usr/bin/bzcat</file>
+			<file>/usr/bin/bzip2</file>
+		</remove>
 
 		<move base="/usr/bin">
 			<source>bzip2recover</source>
@@ -79,7 +80,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&bzip2-directory;</remove>
+		<remove>
+			<file>&build_dir;/&bzip2-directory;</file>
+		</remove>
 	</stage>
 </package>
 

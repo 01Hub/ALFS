@@ -11,10 +11,9 @@
 
 <package name="automake" version="&automake-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&automake-md5;</digest>
 			<archive>&packages_dir;/&automake-package;</archive>
-			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
@@ -42,7 +41,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&automake-directory;</remove>
+		<remove>
+			<file>&build_dir;/&automake-directory;</file>
+		</remove>
 	</stage>
 </package>
 

@@ -22,8 +22,10 @@
 		</make>
 	</stage>
 
-	<remove>&build_dir;/&binutils-directory;</remove>
-	<remove>&build_dir;/binutils-build</remove>
+	<remove>
+		<file>&build_dir;/&binutils-directory;</file>
+		<file>&build_dir;/binutils-build</file>
+	</remove>
 
 	<stage name="Amending GCC specs file.">
 		<search_replace>
