@@ -26,7 +26,7 @@
 			<base>&build_dir;/binutils-build</base>
 		</stageinfo>
 
-		<patch>
+		<patch base="&build_dir;/&binutils-directory;">
 			<param>-N</param>
 			<param>-p1</param>
 			<param>-i ../&binutils-gcc34-patch;</param>
