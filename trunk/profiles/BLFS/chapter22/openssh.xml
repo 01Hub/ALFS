@@ -17,6 +17,21 @@
 		</unpack>
 	</stage>
 
+	<stage name="Creating user and group">
+		<execute command="groupadd">
+			<param>-f</param>
+			<param>sshd</param>
+		</execute>
+
+		<execute command="grep -q ^sshd /etc/passwd || useradd">
+			<param>-c sshd</param>
+			<param>-d /var/empty</param>
+			<param>-g sshd</param>
+			<param>-s /bin/false</param>
+			<param>sshd</param>
+		</execute>
+	</stage>
+
 	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&openssh-directory;</base>
@@ -30,22 +45,6 @@
 		<ownership user="root" group="sys">
 		        <name>/var/empty</name>
                 </ownership>
-
-		<execute command="grep ^sshd /etc/group">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| groupadd</param>
-		        <param>sshd</param>
-		</execute>
-		
-		<execute command="grep ^sshd /etc/passwd">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| useradd</param>
-			<param>-c 'sshd privsep'</param>
-			<param>-d /var/empty</param>
-			<param>-g sshd</param>
-			<param>-s /bin/false</param>
-			<param>sshd</param>
-		</execute>
 
 		<search_replace>
 			<file>configure</file>

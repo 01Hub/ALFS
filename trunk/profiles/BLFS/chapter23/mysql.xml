@@ -18,26 +18,25 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&mysql-directory;</base>
-		</stageinfo>
-
-		<execute command="grep ^mysql /etc/group">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| groupadd</param>
+	<stage name="Creating user and group">
+		<execute command="groupadd">
+			<param>-f</param>
 			<param>mysql</param>
 		</execute>
 
-		<execute command="grep ^mysql /etc/passwd">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| useradd</param>
-		        <param>-c mysql</param>
+		<execute command="grep -q ^mysql /etc/passwd || useradd">
+			<param>-c mysql</param>
 			<param>-d /dev/null</param>
 			<param>-g mysql</param>
 			<param>-s /bin/false</param>
 			<param>mysql</param>
 		</execute>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&mysql-directory;</base>
+		</stageinfo>
 
 		<configure>
                         <param>--prefix=/usr</param>

@@ -12,26 +12,25 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&proftpd-directory;</base>
-		</stageinfo>
-
-		<execute command="grep ^proftpd /etc/group">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| groupadd</param>
-		        <param>proftpd</param>
+	<stage name="Creating user and group">
+		<execute command="groupadd">
+			<param>-f</param>
+			<param>proftpd</param>
 		</execute>
 
-		<execute command="grep ^proftpd /etc/passwd">
-			<param>&amp;&gt; /dev/null</param>
-			<param>|| useradd</param>
-		        <param>-c proftpd</param>
+		<execute command="grep -q ^proftpd /etc/passwd || useradd">
+			<param>-c proftpd</param>
 			<param>-d /home/ftp</param>
 			<param>-g proftpd</param>
 			<param>-s /bin/false</param>
 			<param>proftpd</param>
 		</execute>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&proftpd-directory;</base>
+		</stageinfo>
 
 		<configure>
 			<prefix>install_user=proftpd</prefix>
