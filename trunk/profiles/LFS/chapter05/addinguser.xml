@@ -8,7 +8,9 @@
 <alfs>
 
 <stage name="Adding lfs user">
-	<execute command="id -u &lfs-user; &amp;> /dev/null || useradd -s /bin/bash -m -k /dev/null &lfs-user;" />
+	<execute command="groupadd lfs" />
+	
+	<execute command="id -u &lfs-user; &amp;> /dev/null || useradd -s /bin/bash -g lfs -m -k /dev/null &lfs-user;" />
 
 	<execute command="echo &lfs-user;:&lfs-password; | chpasswd" />
 
