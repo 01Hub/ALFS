@@ -52,6 +52,7 @@ creation mode.</para>
 <title>Example #1</title>
 
 <screen><userinput>&lt;textdump base=&quot;/etc&quot;&gt;
+
 	&lt;file&gt;group&lt;/file&gt;
 
 	&lt;content&gt;
@@ -94,11 +95,14 @@ audio:x:11:
 <title>Example #2</title>
 
 <screen><userinput>&lt;textdump mode=&quot;append&quot;&gt;
+
         &lt;file&gt;/etc/sysconfig/network&lt;/file&gt;
+
         &lt;content&gt;
                 =GATEWAY=192.168.123.254
                 =GATEWAY_IF=eth0
         &lt;/content&gt;
+
 &lt;/textdump&gt;</userinput></screen>
 
 <para>The equivalent bash script is&nbsp;:</para>
