@@ -90,7 +90,7 @@
 
 <!ENTITY gcc-version "3.3.4">
 <!ENTITY gcc-pre-version "-20040517">
-<!ENTITY gcc-directory "gcc-&gcc-version;">
+<!ENTITY gcc-directory "gcc-&gcc-version;&gcc-pre-version;">
 
 <!ENTITY gcc-core-md5 "796be7bd806c6e8b9f156b48caace74c">
 <!ENTITY gcc-core-package "gcc-core-&gcc-version;&gcc-pre-version;.tar.bz2">
