@@ -587,80 +587,95 @@
 <!ENTITY courier-directory "courier-&courier-version;">
 
 
+<!--************* packages for chapter 22 *************-->
+
+<!ENTITY bind-version   "9.2.3">
+<!ENTITY bind-package   "bind-&bind-version;.tar.gz">
+<!ENTITY bind-directory "bind-&bind-version;">
+
+<!ENTITY dhcp-version "3.0pl2">
+<!ENTITY dhcp-package "dhcp-&dhcp-version;.tar.gz">
+<!ENTITY dhcp-directory "dhcp-&dhcp-version;">
+
+<!ENTITY leafnode-version   "1.9.43">
+<!ENTITY leafnode-package   "leafnode-&leafnode-version;.rel.tar.bz2">
+<!ENTITY leafnode-directory "leafnode-&leafnode-version;.rel">
+
+<!ENTITY openssh-version   "3.8.1p1">
+<!ENTITY openssh-package   "openssh-&openssh-version;.tar.gz">
+<!ENTITY openssh-directory "openssh-&openssh-version;">
+
+<!ENTITY rsync-version   "2.6.0">
+<!ENTITY rsync-package   "rsync-&rsync-version;.tar.gz">
+<!ENTITY rsync-directory "rsync-&rsync-version;">
+
+<!ENTITY openldap-version   "2.1.29">
+<!ENTITY openldap-package   "openldap-&openldap-version;.tgz">
+<!ENTITY openldap-directory "openldap-&openldap-version;">
+
+<!ENTITY samba-version "2.2.8a">
+<!ENTITY samba-package "samba-&samba-version;.tar.bz2">
+<!ENTITY samba-directory "samba-&samba-version;">
+
+<!ENTITY xinetd-version   "2.3.13">
+<!ENTITY xinetd-package   "xinetd-&xinetd-version;.tar.gz">
+<!ENTITY xinetd-directory "xinetd-&xinetd-version;">
+
 <!--************* packages for chapter 23 *************-->
 
-<!ENTITY openssh-version   "3.7.1p1">
-<!ENTITY openssh-package   "openssh-3.7.1p1.tar.gz">
-<!ENTITY openssh-directory "openssh-3.7.1p1">
-
-<!ENTITY rsync-version   "2.5.6">
-<!ENTITY rsync-package   "rsync-2.5.6.tar.gz">
-<!ENTITY rsync-directory "rsync-2.5.6">
-
-<!ENTITY openldap-version   "2.1.17">
-<!ENTITY openldap-package   "openldap-2.1.17.tgz">
-<!ENTITY openldap-directory "openldap-2.1.17">
-
-<!ENTITY bind-version   "9.2.2">
-<!ENTITY bind-package   "bind-9.2.2.tar.gz">
-<!ENTITY bind-directory "bind-9.2.2">
-
-<!ENTITY xinetd-version   "2.3.12">
-<!ENTITY xinetd-package   "xinetd-2.3.12.tar.gz">
-<!ENTITY xinetd-directory "xinetd-2.3.12">
-
-<!ENTITY leafnode-version   "1.9.33">
-<!ENTITY leafnode-package   "leafnode-1.9.33.rel.tar.bz2">
-<!ENTITY leafnode-directory "leafnode-1.9.33.rel">
-
-<!--************* packages for chapter 24 *************-->
-
 <!ENTITY db-version   "4.1.25">
-<!ENTITY db-package   "db-4.1.25.tar.gz">
-<!ENTITY db-directory "db-4.1.25">
+<!ENTITY db-package   "db-&db-version;.tar.gz">
+<!ENTITY db-directory "db-&db-version;">
 
 <!ENTITY db3-version   "3.3.11">
-<!ENTITY db3-package   "db-3.3.11.tar.gz">
-<!ENTITY db3-directory "db-3.3.11">
+<!ENTITY db3-package   "db-&db3-version;.tar.gz">
+<!ENTITY db3-directory "db-&db3-version;">
 
-<!ENTITY mysql-version   "4.0.15a">
-<!ENTITY mysql-package   "mysql-4.0.15a.tar.gz">
-<!ENTITY mysql-directory "mysql-4.0.15a">
+<!ENTITY mysql-version   "4.0.18">
+<!ENTITY mysql-package   "mysql-&mysql-version;.tar.gz">
+<!ENTITY mysql-directory "mysql-&mysql-version;">
 
-<!ENTITY postgresql-version   "7.3.4">
-<!ENTITY postgresql-package   "postgresql-7.3.4.tar.gz">
-<!ENTITY postgresql-directory "postgresql-7.3.4">
+<!ENTITY postgresql-version   "7.4.2">
+<!ENTITY postgresql-package   "postgresql-&postgresql-version;.tar.bz2">
+<!ENTITY postgresql-directory "postgresql-&postgresql-version;">
+
+<!--************* packages for chapter 24 **************-->
+
+<!ENTITY apache-version   "2.0.49">
+<!ENTITY apache-package   "httpd-&apache-version;.tar.gz">
+<!ENTITY apache-directory "httpd-&apache-version;">
+
+<!ENTITY apache-patch     "httpd-&apache-version;-config.patch">
+
+<!ENTITY php-version   "4.3.6">
+<!ENTITY php-package   "php-&php-version;.tar.bz2">
+<!ENTITY php-directory "php-&php-version;">
+
+<!ENTITY proftpd-version   "1.2.9">
+<!ENTITY proftpd-package   "proftpd-&proftpd-version;.tar.bz2">
+<!ENTITY proftpd-directory "proftpd-&proftpd-version;">
 
 <!--************* packages for chapter 25 *************-->
 
-<!ENTITY apache-version   "2.0.47">
-<!ENTITY apache-package   "httpd-2.0.47.tar.gz">
-<!ENTITY apache-directory "httpd-2.0.47">
+<!ENTITY xorg-version "6.7.0">
+<!ENTITY xorg-package1 "X11R&xorg-version;-src1.tar.bz2">
+<!ENTITY xorg-package2 "X11R&xorg-version;-src2.tar.bz2">
+<!ENTITY xorg-package3 "X11R&xorg-version;-src3.tar.bz2">
+<!ENTITY xorg-package4 "X11R&xorg-version;-src4.tar.bz2">
+<!ENTITY xorg-package5 "X11R&xorg-version;-src5.tar.bz2">
+<!ENTITY xorg-package6 "X11R&xorg-version;-src6.tar.bz2">
+<!ENTITY xorg-package7 "X11R&xorg-version;-src7.tar.bz2">
+<!ENTITY xorg-directory "xc">
 
-<!ENTITY apache-patch     "httpd-2.0.47-config.patch">
-
-<!ENTITY php-version   "4.3.3">
-<!ENTITY php-package   "php-4.3.3.tar.bz2">
-<!ENTITY php-directory "php-4.3.3">
-
-<!ENTITY proftpd-version   "1.2.8p">
-<!ENTITY proftpd-package   "proftpd-1.2.8p.tar.bz2">
-<!ENTITY proftpd-directory "proftpd-1.2.8">
-
-<!--************* packages for chapter 26 *************-->
-
-<!ENTITY xfree86-version   "4.3.0">
-<!ENTITY xfree86-package1  "X430src-1.tgz">
-<!ENTITY xfree86-package2  "X430src-2.tgz">
-<!ENTITY xfree86-package3  "X430src-3.tgz">
-<!ENTITY xfree86-package4  "X430src-4.tgz">
-<!ENTITY xfree86-package5  "X430src-5.tgz">
-<!ENTITY xfree86-package6  "X430src-6.tgz">
-<!ENTITY xfree86-package7  "X430src-7.tgz">
+<!ENTITY xfree86-version   "4.4.0">
+<!ENTITY xfree86-package1  "XFree86-&xfree86-version;-src-1.tgz">
+<!ENTITY xfree86-package2  "XFree86-&xfree86-version;-src-2.tgz">
+<!ENTITY xfree86-package3  "XFree86-&xfree86-version;-src-3.tgz">
+<!ENTITY xfree86-package4  "XFree86-&xfree86-version;-src-4.tgz">
+<!ENTITY xfree86-package5  "XFree86-&xfree86-version;-src-5.tgz">
+<!ENTITY xfree86-package6  "XFree86-&xfree86-version;-src-6.tgz">
+<!ENTITY xfree86-package7  "XFree86-&xfree86-version;-src-7.tgz">
 <!ENTITY xfree86-directory "xc">
-
-<!ENTITY xfree86-ppatch    "4.3.0-4.3.0.1.diff.gz">
-<!ENTITY xfree86-patch     "4.3.0-4.3.0.1.diff">
 
 <!--************* packages for chapter 27 *************-->
 

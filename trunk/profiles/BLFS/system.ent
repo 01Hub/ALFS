@@ -156,27 +156,30 @@
 <!ENTITY qpopper   SYSTEM "./chapter21/qpopper.xml">
 <!ENTITY courier   SYSTEM "./chapter21/courier.xml">
 
+<!-- chapter 22 -->
+<!ENTITY bind      SYSTEM "./chapter22/bind.xml">
+<!ENTITY dhcp 	   SYSTEM "./chapter22/dhcp.xml">
+<!ENTITY leafnode  SYSTEM "./chapter22/leafnode.xml">
+<!ENTITY openssh   SYSTEM "./chapter22/openssh.xml">
+<!ENTITY rsync     SYSTEM "./chapter22/rsync.xml">
+<!ENTITY openldap  SYSTEM "./chapter22/openldap.xml">
+<!ENTITY samba     SYSTEM "./chapter22/samba.xml">
+<!ENTITY xinetd    SYSTEM "./chapter22/xinetd.xml">
+
 <!-- chapter 23 -->
-<!ENTITY openssh   SYSTEM "./chapter23/openssh.xml">
-<!ENTITY rsync     SYSTEM "./chapter23/rsync.xml">
-<!ENTITY openldap  SYSTEM "./chapter23/openldap.xml">
-<!ENTITY bind      SYSTEM "./chapter23/bind.xml">
-<!ENTITY xinetd    SYSTEM "./chapter23/xinetd.xml">
-<!ENTITY leafnode  SYSTEM "./chapter23/leafnode.xml">
+<!ENTITY db         SYSTEM "./chapter23/db.xml">
+<!ENTITY db3        SYSTEM "./chapter23/db3.xml">
+<!ENTITY mysql      SYSTEM "./chapter23/mysql.xml">
+<!ENTITY postgresql SYSTEM "./chapter23/postgresql.xml">
 
 <!-- chapter 24 -->
-<!ENTITY db         SYSTEM "./chapter24/db.xml">
-<!ENTITY db3        SYSTEM "./chapter24/db3.xml">
-<!ENTITY mysql      SYSTEM "./chapter24/mysql.xml">
-<!ENTITY postgresql SYSTEM "./chapter24/postgresql.xml">
+<!ENTITY apache    SYSTEM "./chapter24/apache.xml">
+<!ENTITY php       SYSTEM "./chapter24/php.xml">
+<!ENTITY proftpd   SYSTEM "./chapter24/proftpd.xml">
 
 <!-- chapter 25 -->
-<!ENTITY apache    SYSTEM "./chapter25/apache.xml">
-<!ENTITY php       SYSTEM "./chapter25/php.xml">
-<!ENTITY proftpd   SYSTEM "./chapter25/proftpd.xml">
-
-<!-- chapter 26 -->
-<!ENTITY xfree86   SYSTEM "./chapter26/xfree86.xml">
+<!ENTITY xorg      SYSTEM "./chapter25/xorg.xml">
+<!ENTITY xfree86   SYSTEM "./chapter25/xfree86.xml">
 
 <!-- chapter 27 -->
 <!ENTITY qt         SYSTEM "./chapter27/qt.xml">

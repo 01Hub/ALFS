@@ -1,0 +1,131 @@
+<package name="samba" version="2.2.8a">
+
+	<stage name="Unpacking.">
+		<unpack>
+			<archive>&packages_dir;/&samba-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&samba-directory;/source</base>
+		</stageinfo>
+
+		<mkdir>
+			<option>parents</option>
+			<name>/etc/samba/private</name>
+			<name>/var/cache/samba</name>
+		</mkdir>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
+			<param>--localstatedir=/var</param>
+			<param>--with-piddir=/var/run</param>
+			<param>--with-fhs</param>
+			<param>--with-smbmount</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<remove>/usr/private</remove>
+	
+		<textdump mode="append">
+			<file>/etc/services</file>
+			<content>
+			=swat 901/tcp
+			</content>
+		</textdump>
+
+		<textdump mode="append">
+			<file>/etc/inetd.conf</file>
+			<content>
+			=swat stream tcp nowait.400 root /usr/sbin/swat swat
+			</content>
+		</textdump>
+	</stage>
+
+	<stage name="Configuring samba">
+		<mkdir>
+			<option>parents</option>
+			<name>/var/lib/samba</name>
+			<name>/var/lib/samba/netlogon</name>
+			<name>/var/lib/samba/ntprofile</name>
+			<name>/var/lib/samba/profiles</name>
+		</mkdir>
+
+		<permissions mode="1777">
+			<option>recursive</option>
+			<name>/var/lib/samba</name>
+		</permissions>
+
+		<textdump>
+			<file>/etc/samba/smb.conf</file>
+			<content>
+			=[global]
+			=    netbios name = SAMBABOX
+			=    workgroup = DOMAIN01
+			=    os level = 64
+			=    preferred master = yes
+			=    domain master = yes
+			=    local master = yes
+			=    security = user
+			=    encrypt passwords = yes
+			=    domain logons = yes
+			=    log file = /var/log/log.%m
+			=    log level = 1
+			=    logon path = \\%N\home\%u\windows
+			=    logon drive = H:
+			=    logon home = \\homeserver\%u\windows
+			=    logon script = logon.cmd
+			=[netlogon]
+			=      path = /var/lib/samba/netlogon
+			=      read only = yes
+			=      write list = ntadmin
+			=[profiles]
+			=      path = /var/lib/samba/ntprofile
+			=      read only = no
+			=      create mask = 0600
+			=      directory mask = 0700
+			=; World writable share for testing
+			=[tmp]
+			=comment = Temporary file space
+			=        path = /tmp
+			=        read only = no
+			=        public = yes
+			=[home]
+			=comment = Users' home directories
+			=        path = /home
+			=        read only = no
+			=        public = no
+			</content>
+		</textdump>
+	</stage>
+
+	<stage name="Installing samba bootscript">
+		<stageinfo>
+			<base>&build_dir;/&samba-directory;</base>	
+		</stageinfo>
+
+		<make>
+			<param>install-samba</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup.">
+		<remove>&build_dir;/&samba-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+</package>
+

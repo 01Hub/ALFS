@@ -3,7 +3,8 @@
         <packageinfo>
                 <requires><name>expat</name></requires>
                 <requires><name>libpng</name></requires>
-                <requires><name>linuxpam</name></requires>
+		<requires><name>freetype</name></requires>
+		<requires><name>fontconfig</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking and patching a package.">
@@ -22,32 +23,23 @@
 			<destination>&build_dir;</destination>
 		</unpack>
 
-
 		<unpack>
 			<archive>&packages_dir;/&xfree86-package4;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
 
 		<unpack>
 			<archive>&packages_dir;/&xfree86-package5;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 
-
 		<unpack>
 			<archive>&packages_dir;/&xfree86-package6;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 
-
 		<unpack>
 			<archive>&packages_dir;/&xfree86-package7;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-
-		<unpack>
-			<archive>&packages_dir;/&xfree86-ppatch;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
@@ -57,14 +49,7 @@
 			<base>&build_dir;/&xfree86-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&xfree86-patch;</param>
-		</patch>		
-
-		<textdump
-		    base="&build_dir;/&xfree86-directory;/config/cf">
+		<textdump base="&build_dir;/&xfree86-directory;/config/cf">
 		    <file>host.def</file>
 		    <content>
 		    =/* Begin XFree86 host.def file */
@@ -76,7 +61,7 @@
 		    = * optimization line causes segmentation faults during build.  If that 
 		    = * happens, try building without the DefaultGcc2PpcOpt line.  **************/
 		    =
-		    =#define DefaultGcc2i386Opt  -O2 -fomit-frame-pointer -march=i686 
+		    =/* #define DefaultGcc2i386Opt  -O2 -fomit-frame-pointer -march=i686 */
 		    =/* #define DefaultGcc2AxpOpt   -O2 -mcpu=ev6 */
 		    =/* #define DefaultGcc2PpcOpt   -O2 -mcpu=750 */
 		    =
@@ -217,157 +202,36 @@
 		
 		<!-- update /etc/ld.so.conf -->
 
-		<search_replace
-		    base = "/etc">
-		    <file>ld.so.conf</file>
-		    <find>/usr/X11R6/lib</find>
-		    <replace></replace>
+		<search_replace base="/etc">
+		    	<file>ld.so.conf</file>
+		    	<find>/usr/X11R6/lib</find>
+		    	<replace></replace>
                 </search_replace>
 
-		<textdump
-		    mode="append"
-		    base="/etc">
-		    <file>ld.so.conf</file>
-		    <content>
+		<textdump mode="append" base="/etc">
+		    	<file>ld.so.conf</file>
+		    	<content>
                         =/usr/X11R6/lib
-		    </content>
+		    	</content>
 		</textdump>
 		
 		<execute command="/sbin/ldconfig" />
 		
-		<!-- update ~/.bash_profile -->
-
-		<search_replace
-		    base = "/root">
-		    <file>.bash_profile</file>
-		    <find>PATH=$PATH:/usr/X11R6/bin</find>
-		    <replace></replace>
-                </search_replace>
-
-		<textdump
-		    mode="append"
-		    base="/root">
-		    <file>.bash_profile</file>
-		    <content>
-		        =PATH=$PATH:/usr/X11R6/bin
-			=export PATH
-		    </content>
-		</textdump>
-		
 		<link base="/dev">
-		    <option>force</option>
-		    <target>psaux</target>
-		    <name>mouse</name>
+		    	<option>force</option>
+		    	<target>psaux</target>
+		    	<name>mouse</name>
 		</link>
 		
-		<textdump
-		    base="/etc/X11">
-		    <file>XF86Config</file>
-		    <content>
-                        =Section "ServerLayout"
-                        =	Identifier     "XFree86 Configured"
-                        =	Screen      0  "Screen0" 0 0
-                        =	InputDevice    "Mouse0" "CorePointer"
-                        =	InputDevice    "Keyboard0" "CoreKeyboard"
-                        =EndSection
-                        =
-                        =Section "Files"
-                        =	RgbPath      "/usr/X11R6/lib/X11/rgb"
-                        =	ModulePath   "/usr/X11R6/lib/modules"
-                        =	FontPath     "/usr/X11R6/lib/X11/fonts/misc/"
-                        =	FontPath     "/usr/X11R6/lib/X11/fonts/TTF"
-                        =	FontPath     "/usr/X11R6/lib/X11/fonts/75dpi/"
-                        =	FontPath     "/usr/X11R6/lib/X11/fonts/100dpi/"
-                        =	FontPath     "/usr/X11R6/lib/X11/fonts/Type1"
-                        =	FontPath     "/usr/X11R6/lib/X11/fonts/local"
-                        =	FontPath     "/usr/X11R6/lib/X11/fonts/CID"
-                        =	FontPath     "/usr/X11R6/lib/X11/fonts/Speedo"
-                        =EndSection
-                        =
-                        =Section "Module"
-                        =	Load  "extmod"
-                        =	Load  "glx"
-                        =	Load  "dri"
-                        =	Load  "dbe"
-                        =	Load  "record"
-                        =	Load  "xtrap"
-                        =	Load  "speedo"
-                        =	Load  "type1"
-                        =	Load  "freetype"
-                        =EndSection
-                        =
-                        =Section "InputDevice"
-                        =	Identifier  "Keyboard0"
-                        =	Driver      "keyboard"
-                        =       Option      "XkbRules"   "xfree86"
-                        =       Option      "XkbModel"   "pc105"
-                        =       Option      "XkbLayout"  "fr"
-                        =EndSection
-                        =
-                        =Section "InputDevice"
-                        =	Identifier  "Mouse0"
-                        =	Driver      "mouse"
-                        =	Option	    "Protocol" "&mouseProtocol;"
-                        =	Option	    "Device" "/dev/mouse"
-			=	Option      "ZAxisMapping"  "4 5"
-			=	Option      "Buttons"   "3"
-                        =EndSection
-                        =
-                        =Section "Monitor"
-                        =	Identifier   "Monitor0"
-                        =	VendorName   "Monitor Vendor"
-                        =	ModelName    "Monitor Model"
-                        =	HorizSync    &HorizSync;
-                        =	VertRefresh  &VertRefresh;
-                        =	Modeline     &Modeline;
-                        =EndSection
-                        =			
-                        =Section "Device"
-                        =	Identifier  "Card0"
-                        =	Driver      "&Driver;"
-                        =	VendorName  "&VendorName;"
-                        =	BoardName   "&BoardName;"
-                        =	BusID       "&BusID;"
-                        =EndSection
-                        =
-                        =Section "Screen"
-                        =	Identifier "Screen0"
-                        =	Device     "Card0"
-                        =	Monitor    "Monitor0"
-                        =	DefaultColorDepth 24
-                        =
-                        =	SubSection "Display"
-                        =		Depth     1
-                        =	EndSubSection
-                        =	SubSection "Display"
-                        =		Depth     4
-                        =	EndSubSection
-                        =	SubSection "Display"
-                        =		Depth     8
-                        =	EndSubSection
-                        =	SubSection "Display"
-                        =		Depth     15
-                        =	EndSubSection
-                        =	SubSection "Display"
-                        =		Depth     16
-                        =	EndSubSection
-                        =	SubSection "Display"
-                        =		Depth     24
-                        =	EndSubSection
-                        =EndSection
-		    </content>
-		</textdump>
-
-		<textdump
-		    base="/root">
-		    <file>.xinitrc</file>
-		    <content>
+		<textdump base="/root">
+		    	<file>.xinitrc</file>
+		    	<content>
                         =# Begin .xinitrc file
                         =xterm  -g 80x40+0+0   &amp;
                         =xclock -g 100x100-0+0 &amp;
                         =twm
                         =# End .xinitrc file
-		    </content>
+		    	</content>
 		</textdump>
 
 	</stage>

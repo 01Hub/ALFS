@@ -1,16 +1,16 @@
 <package name="php" version="&php-version;">
 
         <packageinfo>
-                <requires><name>openssl</name></requires>
-                <requires><name>bc</name></requires>
-                <requires><name>curl</name></requires>
-                <requires><name>db</name></requires>
-                <requires><name>libjpeg</name></requires>
-                <requires><name>libpng</name></requires>
-                <requires><name>freetype</name></requires>
                 <requires><name>mysql</name></requires>
                 <requires><name>apache</name></requires>
-
+		
+		<utilizes><name>openssl</name></utilizes>
+                <utilizes><name>bc</name></utilizes>
+                <utilizes><name>curl</name></utilizes>
+                <utilizes><name>db</name></utilizes>
+                <utilizes><name>libjpeg</name></utilizes>
+                <utilizes><name>libpng</name></utilizes>
+		<utilizes><name>freetype</name></utilizes>
                 <utilizes><name>gdbm</name></utilizes>
                 <utilizes><name>sendmail</name></utilizes>
                 <utilizes><name>pcre</name></utilizes>
@@ -34,42 +34,18 @@
 			<base>&build_dir;/&php-directory;</base>
 		</stageinfo>
 
-
-		<execute command="grep php:  /etc/group  || groupadd">
-		        <param>php</param>
-		</execute>
-		
-
-
-		<execute command="id -u php || useradd">
-		        <param>-c php</param>
-			<param>-d /home/ftp</param>
-			<param>-g php</param>
-			<param>-s /bin/false</param>
-			<param>php</param>
-		</execute>
-
-
 		<configure>
 		        <param>--prefix=/usr</param>
-			<param>--with-apxs2=/usr/sbin/apxs</param>
+			<param>--sysconfdir=/etc</param>
+			<param>--with-apxs2</param>
 			<param>--with-config-file-path=/etc</param>
-			<param>--with-openssl=/usr</param>
-			<param>--with-zlib=/usr</param>
-			<param>--enable-bcmath</param>
-			<param>--with-bz2=/usr</param>
-			<param>--with-curl</param>
+			<param>--with-zlib</param>
+			<param>--with-bz2</param>
 			<param>--enable-ftp</param>
-			<param>--with-gd</param>
-			<param>--with-jpeg-dir=/usr</param>
-			<param>--enable-gd-native-ttf</param>
-			<param>--with-db4</param>
-			<param>--with-png-dir=/usr</param>
-			<param>--with-freetype-dir=/usr</param>
 			<param>--with-gettext</param>
+			<param>--with-iconv</param>
 			<param>--with-mysql=/usr</param>
 			<param>--with-ncurses</param>
-			<param>--sysconfdir=/etc</param>
 		</configure>
 
 		<make />
@@ -89,20 +65,18 @@
 	<stage name="Configuring a package.">
 
 	<!-- remove line if already inserted -->
-	<search_replace base="/etc/apache">
-		<file>httpd.conf</file>
-		<find>AddType application/x-httpd-php .php</find>
-		<replace></replace>
-	</search_replace>
+		<search_replace base="/etc/apache">
+			<file>httpd.conf</file>
+			<find>AddType application/x-httpd-php .php</find>
+			<replace></replace>
+		</search_replace>
 	
-	<textdump mode="append" base="/etc/apache">
-	        <file>httpd.conf</file>
-		<content>
-                =AddType application/x-httpd-php .php
-		</content>
-	</textdump>	
-	
-
+		<textdump mode="append" base="/etc/apache">
+	        	<file>httpd.conf</file>
+			<content>
+                	=AddType application/x-httpd-php .php
+			</content>
+		</textdump>
 	</stage>
 
 
