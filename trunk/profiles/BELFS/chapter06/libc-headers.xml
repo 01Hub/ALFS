@@ -42,4 +42,8 @@
 			<name>/usr/include/linux</name>
 		</permissions>
 	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&linux-libc-headers-directory;</remove>
+	</stage>
 </package>

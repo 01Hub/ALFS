@@ -7,7 +7,7 @@
 		<make>
 			<param>-C ld</param>
 			<param>INSTALL=/tools/bin/install</param>
-			<param>install</param>
+			<param>install-data-local</param>
 		</make>
 	</stage>
 

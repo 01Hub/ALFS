@@ -15,6 +15,7 @@
 		<configure>
 			<param>--prefix=/tools</param>
 			<param>--disable-libasprintf</param>
+			<param>--disable-csharp</param>
 		</configure>
 
 		<make />

@@ -29,11 +29,10 @@
 
 		<make />
 
-<!--
 		<make>
+		  <param>-k</param>
 			<param>check</param>
 		</make>
--->
 
 		<make>
 			<param>install</param>

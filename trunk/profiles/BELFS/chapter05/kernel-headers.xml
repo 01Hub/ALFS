@@ -47,4 +47,8 @@
 			<destination>/tools/glibc-kernheaders</destination>
 		</copy>
 	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&linux-directory;</remove>
+	</stage>
 </package>
