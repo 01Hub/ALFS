@@ -3,9 +3,9 @@
 	xmlns="http://www.w3.org/1999/xhtml"        
 	version="1.0">
 <!--
-        Last Changed Date: $LastChangedDate$
-        Last Changed By:   $LastChangedBy$
-        Revision:          $LastChangedRevision$ 
+        $LastChangedDate$
+        $LastChangedBy$
+        $LastChangedRevision$ 
 -->
 
 <!-- Need to define the root where the XSL stylesheets are installed. -->
