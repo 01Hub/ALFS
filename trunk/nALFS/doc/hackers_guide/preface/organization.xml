@@ -2,6 +2,30 @@
 <?dbhtml filename="organization.html" dir="preface"?>
 <title>Organization</title>
 
-<para>PAGE TO BE WRITTEN</para>
+<para>This book is divided into the following parts.</para>
+
+<sect2>
+<title>Part I &emdash; Introduction</title>
+
+<para>This part contains information which is essential to
+the rest of the book.</para>
+
+</sect2>
+
+<sect2>
+<title>Part II &emdash; &book-product; Code Hackers</title>
+
+<para>This part contains information just for &book-product;'s code
+hackers.</para>
+
+</sect2>
+
+<sect2>
+<title>Part III &emdash; Document Editors</title>
+
+<para>This part contains information just for &book-product;'s documentation
+editors.</para>
+
+</sect2>
 
 </sect1>
