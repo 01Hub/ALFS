@@ -1,4 +1,5 @@
 <!ENTITY preface                  SYSTEM "preface.xml">
 <!ENTITY preface-audience         SYSTEM "audience.xml">
 <!ENTITY preface-foreword         SYSTEM "foreword.xml">
+<!ENTITY preface-organization     SYSTEM "organization.xml">
 <!ENTITY preface-prerequisites    SYSTEM "prerequisites.xml">

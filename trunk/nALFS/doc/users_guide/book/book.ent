@@ -5,7 +5,6 @@
 <!ENTITY book-info-legalnotice SYSTEM "legalnotice.xml">
 <!ENTITY book-info-abstract    SYSTEM "abstract.xml">
 <!ENTITY book-dedication       SYSTEM "dedication.xml">
-<!ENTITY book-organization     SYSTEM "organization.xml">
 
 <!-- Generally used entities go here -->
 
