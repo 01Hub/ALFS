@@ -145,11 +145,34 @@ static int copy_parameter(const element_s * const element,
 			option_found++;
 		}
 		if (!option_found) {
-			Nprint_err("<copy>: invalid option (%s) ignored", value);
+			Nprint_err("<copy>: invalid options in (%s) ignored", value);
 			return 1;
 		} else {
 			return 0;
 		}
+	case COPY_OPTION:
+		if (!strcmp("force", value)) {
+			data->force = 1;
+			return 0;
+		}
+		if (!strcmp("archive", value)) {
+			data->archive = 1;
+			return 0;
+		}
+		if (!strcmp("preserve", value)) {
+			data->preserve = 1;
+			return 0;
+		}
+		if (!strcmp("recursive", value)) {
+			data->recursive = 1;
+			return 0;
+		}
+		if (!strcmp("no-dereference", value)) {
+			data->no_dereference = 1;
+			return 0;
+		}
+		Nprint_err("<copy>: invalid option (%s) ignored", value);
+		return 1;
 	case COPY_SOURCE:
 		data->source_count++;
 		if ((data->sources = xrealloc(data->sources,
@@ -256,7 +279,7 @@ static int copy_main_ver2(const element_s * const el)
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
 static const struct handler_parameter copy_parameters_v3[] = {
-	{ .name = "option", .private = COPY_OPTIONS },
+	{ .name = "option", .private = COPY_OPTION },
 	{ .name = "source", .private = COPY_SOURCE },
 	{ .name = "destination", .private = COPY_DESTINATION },
 	{ .name = NULL }
