@@ -172,12 +172,19 @@
 
 </stage>
 
+<stage name="Chapter 13 (Dial-up networking)">
+
+    &ppp;
+    &wvdial;
+
+</stage>
+
+
 <stage name="Chapter 14 (DHCP clients)">
 
     &dhcpcd;
 
 </stage>
-
 <stage name="Chapter 15 (Networking - other)">
 
     <!-- &isdn; -->

@@ -95,6 +95,10 @@
 <!ENTITY gcc295      SYSTEM "./chapter12/gcc295.xml">
 <!ENTITY nasm        SYSTEM "./chapter12/nasm.xml">
 
+<!-- chapter 13 -->
+<!ENTITY ppp        SYSTEM "./chapter13/ppp.xml">
+<!ENTITY wvdial     SYSTEM "./chapter13/wvdial.xml">
+
 <!-- chapter 14 -->
 <!ENTITY dhcpcd     SYSTEM "./chapter14/dhcpcd.xml">
 

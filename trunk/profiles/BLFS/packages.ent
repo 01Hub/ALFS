@@ -360,6 +360,18 @@
 <!ENTITY nasm-package   "nasm-0.98.37.tar.bz2">
 <!ENTITY nasm-directory "nasm-0.98.37">
 
+<!--************* packages for chapter 13 *************-->
+
+<!ENTITY ppp-version   "2.4.1">
+<!ENTITY ppp-package   "ppp-2.4.1.tar.gz">
+<!ENTITY ppp-directory "ppp-2.4.1">
+
+<!ENTITY ppp-patch     "ppp-2.4.1-pppoe-5.patch">
+
+<!ENTITY wvdial-version   "1.53">
+<!ENTITY wvdial-package   "wvdial-1.53.tar.gz">
+<!ENTITY wvdial-directory "wvdial-1.53">
+
 <!--************* packages for chapter 14 *************-->
 
 <!ENTITY dhcpcd-version   "1.3.22-pl4">
