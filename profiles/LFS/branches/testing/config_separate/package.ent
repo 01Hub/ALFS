@@ -95,13 +95,13 @@
 <!ENTITY gcc-md5 "31b459062499f9f68d451db9cbf3205c">
 <!ENTITY gcc-package "gcc-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
-<!ENTITY gcc-core-md5 "">
+<!ENTITY gcc-core-md5 "4b05b134baf92457494a0f4a28aa5213">
 <!ENTITY gcc-core-package "gcc-core-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
-<!ENTITY gcc-gpp-md5 "">
+<!ENTITY gcc-gpp-md5 "7517c88648883e3d92e1e8525ab823fa">
 <!ENTITY gcc-gpp-package "gcc-g++-&gcc-version;&gcc-cvs-tag;.tar.bz2">
   
-<!ENTITY gcc-testsuite-md5 "">
+<!ENTITY gcc-testsuite-md5 "641f45606e17db4a3079cb7364a9e295">
 <!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
 <!ENTITY gcc-linkonce-patch-md5 "a068347f66b14f1a9f32bb66ed16d72c">
