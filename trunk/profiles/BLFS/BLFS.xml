@@ -132,81 +132,81 @@
 
 <stage name="Chapter 9 (Graphics and Font Libraries)">
 
-    &libjpeg;
-    &libpng;
-    &libtiff;
-    &libungif;
-    &libmng;
-    &lcms;
-    &freetype;
-    &fontconfig;
-    &imlib;
-    &aalib;
-    &svgalib;
-    &directfb;
-    &imlib2;
+    <xi:include href="chapter09/libjpeg.xml" />
+    <xi:include href="chapter09/libpng.xml" />
+    <xi:include href="chapter09/libtiff.xml" />
+    <xi:include href="chapter09/libungif.xml" />
+    <xi:include href="chapter09/libmng.xml" />
+    <xi:include href="chapter09/lcms.xml" />
+    <xi:include href="chapter09/freetype.xml" />
+    <xi:include href="chapter09/fontconfig.xml" />
+    <xi:include href="chapter09/imlib.xml" />
+    <xi:include href="chapter09/aalib.xml" />
+    <xi:include href="chapter09/svgalib.xml" />
+    <xi:include href="chapter09/directfb.xml" />
+    <xi:include href="chapter09/imlib2.xml" />
 
 </stage>
 
 <stage name="Chapter 10 (General Utilities)">
 
-    &bc;
-    &rep-gtk;
-    &compface;
-    &imagemagick;
-    &hd2u;
+    <xi:include href="chapter10/bc.xml" />
+    <xi:include href="chapter10/rep-gtk.xml" />
+    <xi:include href="chapter10/compface.xml" />
+    <xi:include href="chapter10/imagemagick.xml" />
+    <xi:include href="chapter10/hd2u.xml" />
 
 </stage>
 
 <stage name="Chapter 11 (System Utilities)">
 
-    &gpm;
-    &fcron;
-    &hdparm;
-    &which;
-    &unzip;
-    &zip;
-    &pciutils;
-    &pkgconfig;
-    &cpio;
-    &mc;
+    <xi:include href="chapter11/gpm.xml" />
+    <xi:include href="chapter11/fcron.xml" />
+    <xi:include href="chapter11/hdparm.xml" />
+    <xi:include href="chapter11/which.xml" />
+    <xi:include href="chapter11/unzip.xml" />
+    <xi:include href="chapter11/zip.xml" />
+    <xi:include href="chapter11/pciutils.xml" />
+    <xi:include href="chapter11/pkgconfig.xml" />
+    <xi:include href="chapter11/cpio.xml" />
+    <xi:include href="chapter11/mc.xml" />
 
 </stage>
 
 <stage name="Chapter 12 (Programming)">
 
-    &python;
-    &perlmodules;
-    &librep;
-    &j2sdk;
-    &ruby;
-    &gnat;
-    &gcc-full;
-    &tcl;
-    &tk;
-    &gcc295;
-    &nasm;
+    <xi:include href="chapter12/python.xml" />
+    <xi:include href="chapter12/perlmodules.xml" />
+    <xi:include href="chapter12/librep.xml" />
+    <xi:include href="chapter12/j2sdk.xml" />
+    <xi:include href="chapter12/ruby.xml" />
+    <xi:include href="chapter12/gnat.xml" />
+    <xi:include href="chapter12/gcc-full.xml" />
+    <xi:include href="chapter12/tcl.xml" />
+    <xi:include href="chapter12/tk.xml" />
+    <xi:include href="chapter12/gcc295.xml" />
+    <xi:include href="chapter12/nasm.xml" />
 
 
 </stage>
 
 <stage name="Chapter 13 (Dial-up networking)">
 
-    &ppp;
-    &wvdial;
+    <xi:include href="chapter13/ppp.xml" />
+    <xi:include href="chapter13/wvdial.xml" />
 
 </stage>
 
 <stage name="Chapter 14 (DHCP Clients)">
 
-    &dhclient;
-    &dhcpcd;
+    <xi:include href="chapter14/dhclient.xml" />
+    <xi:include href="chapter14/dhcpcd.xml" />
 
 </stage>
 
 <stage name="Chapter 15 (Other Connections)">
 
-    &rp-pppoe;
+    <xi:include href="chapter15/rp-pppoe.xml" />
 
 </stage>
 
