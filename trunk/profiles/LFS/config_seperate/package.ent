@@ -334,12 +334,12 @@
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
 <!ENTITY udev-md5 "4f4c0ace4307cb1c73d9f5365fe6c946">
-<!ENTITY udev-version "025">
+<!ENTITY udev-version "026">
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
 
 <!ENTITY udev-config-patch-md5 "fb47429ab562e30df6784d9b996b4881">
-<!ENTITY udev-config-patch "udev-&udev-version;-config-2.patch">
+<!ENTITY udev-config-patch "udev-&udev-version;-config-1.patch">
 
 <!ENTITY util-linux-md5 "5fa39c3d8761b48732be137a06853c64">
 <!ENTITY util-linux-version "2.12a">
