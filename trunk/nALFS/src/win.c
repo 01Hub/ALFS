@@ -49,6 +49,12 @@ windows_s windows = {
 };
 
 
+typedef struct msg_type_t {
+	msg_id_e id;		// Unique ID of the message type.
+	char character;		// Character to print before the message.
+	unsigned long attrs;	// Attributes for printing the above character.
+} msg_type_t;
+
 static const msg_type_t message_types[] = {
 	{ T_RAW, ' ', COL_WHITE },
 	{ T_INF, 'I', COL_CYAN },
@@ -57,7 +63,6 @@ static const msg_type_t message_types[] = {
 	{ T_WAR, 'W', COL_CYAN_BOLD },
 	{ T_ERR, 'E', COL_RED_BOLD }
 };
-
 
 
 char msg_character(msg_id_e mid)
