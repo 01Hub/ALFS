@@ -1,0 +1,71 @@
+<package name="cracklib" version="&cracklib-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&cracklib-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+		        <source>&packages_dir;/&cracklib-wordlist;</source>
+			<source>&packages_dir;/&cracklib-blfs-patch;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&cracklib-directory;</base>
+		</stageinfo>
+
+		<mkdir>
+			<option>parents</option>
+			<name>/usr/share/dict</name>
+		</mkdir>
+
+		<permissions mode="0755">
+			<name>/usr/share/dict</name>
+		</permissions>
+
+		<copy>
+		        <source>&build_dir;/&cracklib-wordlist;</source>
+			<destination>/usr/share/dict</destination>
+		</copy>
+
+		<permissions mode="644">
+			<name>/usr/share/dict/&cracklib-wordlist;</name>
+		</permissions>
+
+		<link base="/usr/share/dict">
+		        <option>force</option>
+		        <target>&cracklib-wordlist;</target>
+			<name>words</name>
+		</link>
+
+
+		<execute command="echo">
+			<param>$(hostname)</param>
+			<param>&gt;&gt;</param>
+			<param>/usr/share/dict/extra.words</param>
+		</execute>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&cracklib-blfs-patch;</param>
+		</patch>
+
+		<make>
+			<param>install</param>
+		</make>
+
+
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&cracklib-directory;</remove>
+		<remove>&build_dir;/&cracklib-wordlist;</remove>
+		<remove>&build_dir;/&cracklib-blfs-patch;</remove>
+	</stage>
+
+</package>

@@ -1,7 +1,7 @@
 <package name="linuxpam" version="&linuxpam-version;">
 
         <packageinfo>
-                <requires><name>cracklib</name></requires>
+                <utilizes><name>cracklib</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -27,6 +27,8 @@
 			<param>-i ../&linuxpam-linkage-patch;</param>
 		</patch>
 
+		<execute command="autoconf" />
+
 		<configure>
 		        <param>--enable-static-libpam</param>
 		        <param>--with-mailspool=/var/mail</param>
@@ -50,19 +52,19 @@
 
 		<link>
 		        <option>force</option>
-			<target>../../lib/libpam.so.0.77</target>
+			<target>../../lib/libpam.so.&linuxpam-version;</target>
 			<name>/usr/lib/libpam.so</name>
 		</link>
 
 		<link>
 		        <option>force</option>
-			<target>../../lib/libpam_misc.so.0.77</target>
+			<target>../../lib/libpam_misc.so.&linuxpam-version;</target>
 			<name>/usr/lib/libpam_misc.so</name>
 		</link>
 
 		<link>
 		        <option>force</option>
-			<target>../../lib/libpamc.so.0.77</target>
+			<target>../../lib/libpamc.so.&linuxpam-version;</target>
 			<name>/usr/lib/libpamc.so</name>
 		</link>
 
