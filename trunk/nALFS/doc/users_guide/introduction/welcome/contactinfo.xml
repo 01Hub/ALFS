@@ -12,8 +12,8 @@ Scratch servers.</para>
 list at <ulink url="mailto:alfs-discuss@linuxfromscratch.org">
 alfs-discuss@linuxfromscratch.org</ulink>. This is an excellent place to post 
 questions and bug reports. For complete mailing list information, refer to 
-<ulink url="&http-root;/mailman/listinfo/alfs-discuss"> &http-
-root;/mailman/listinfo/alfs-discuss</ulink></para>
+<ulink url="&http-root;/mailman/listinfo/alfs-discuss">
+&http-root;/mailman/listinfo/alfs-discuss</ulink></para>
 
 <para>The second list is really for the development team at 
 <ulink url="mailto:alfs-log@linuxfromscratch.org"> 
@@ -41,14 +41,14 @@ mailing list will be copied to its correspondent newsgroup, and vice versa.</par
 <para>Some other links that might interest you:</para>
 
 <para>Linux From Scratch:
-<blockquote>
+<blockquote><literallayout>
 <ulink url="&http-root;">&http-root;</ulink>
-</blockquote></para>
+</literallayout></blockquote></para>
 
 <para>Automated Linux From Scratch:
-<blockquote>
+<blockquote><literallayout>
 <ulink url="&alfs-root;">&alfs-root;</ulink>
-</blockquote></para>
+</literallayout></blockquote></para>
 
 </sect2>
 
