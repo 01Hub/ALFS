@@ -284,10 +284,9 @@ static int unpack_main_ver2(const element_s * const element)
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
 
 static const struct handler_parameter unpack_parameters_v3[] = {
-	{ .name = "archive" },
-	{ .name = "destination" },
-	{ .name = "digest" },
-	{ .name = "reference" },
+	{ .name = "archive", .private = UNPACK_ARCHIVE },
+	{ .name = "destination", .private = UNPACK_DESTINATION },
+	{ .name = "reference", .private = UNPACK_REFERENCE },
 	{ .name = NULL }
 };
 
@@ -331,7 +330,7 @@ static int unpack_main_ver3(const element_s * const element)
 			Nprint_h_err("Checking for %s failed:", data->archive);
 			Nprint_h_err("    %s", strerror(errno));
 		}
-	} else if (data->digest && verify_digest(digest_type, digest, data->archive)) {
+	} else if (digest && verify_digest(digest_type, digest, data->archive)) {
 		Nprint_h_err("Wrong %s digest of archive: %s", digest_type, data->archive);
 	} else {
 		status = 0;
@@ -356,14 +355,13 @@ static int unpack_main_ver3(const element_s * const element)
 #if HANDLER_SYNTAX_3_2
 
 static const struct handler_parameter unpack_parameters_v3_2[] = {
-	{ .name = "archive" },
-	{ .name = "digest" },
-	{ .name = "reference" },
+	{ .name = "archive", .private = UNPACK_ARCHIVE },
+	{ .name = "reference", .private = UNPACK_REFERENCE },
 	{ .name = NULL }
 };
 
 static const struct handler_attribute unpack_attributes_v3_2[] = {
-	{ .name = "base" },
+	{ .name = "base", .private = UNPACK_BASE },
 	{ .name = NULL }
 };
 
@@ -430,7 +428,7 @@ static int unpack_main_ver3_2(const element_s * const element)
 			Nprint_h_err("Checking for %s failed:", data->archive);
 			Nprint_h_err("    %s", strerror(errno));
 		}
-	} else if (data->digest && verify_digest(digest_type, digest, data->archive)) {
+	} else if (digest && verify_digest(digest_type, digest, data->archive)) {
 		Nprint_h_err("Wrong %s digest of archive: %s", digest_type, data->archive);
 	} else {
 		status = 0;
