@@ -28,7 +28,9 @@
 			<param>--enable-zlib</param>
 		</configure>
 
-		<make />
+		<make>
+			<param>DOCBOOKTOMAN=&quot;&quot;</param>
+		</make>
 
 		<make>
   			<param>check</param>
