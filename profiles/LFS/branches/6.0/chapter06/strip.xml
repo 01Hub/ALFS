@@ -4,7 +4,6 @@
 <alfs>
 
 <!-- 
-	
  ************************ 
  * OPTIONAL BUT USEFULL *
  ************************
@@ -15,8 +14,9 @@
 	<execute command="/tools/bin/find">
 		<param>/{,usr/,usr/local/}{bin,lib,sbin}</param>
 		<param>-type f</param>
-		<param>-exec /tools/bin/strip - -strip-debug '{}' ';'</param>	
+		<param>-exec /tools/bin/strip - -strip-debug '{}' ';'</param>
 	</execute>
-</stage> -->
+</stage>
+-->
 
 </alfs>

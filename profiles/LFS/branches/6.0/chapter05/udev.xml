@@ -56,7 +56,7 @@
         		<option>force</option>
         		<source>&udev-rules-file;</source>
         		<destination>/tools/etc/udev/rules.d/00-lfs.rules</destination>
-		</copy>				
+		</copy>
 	</stage>
 
 	<stage name="Cleanup">

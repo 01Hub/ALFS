@@ -35,7 +35,7 @@
 <!-- Test basic functions of toolchain with:
 	echo 'main(){}' > dummy.c; gcc dummy.c; readelf -l a.out | grep ': /tools';
 Output of last line s/b: [Requesting program interpreter: /tools/lib/ld-linux.so.2]
-If so:  
+If so:
 	rm dummy.c a.out
 Otherwise, STOP HERE & find & fix the problem
 -->
