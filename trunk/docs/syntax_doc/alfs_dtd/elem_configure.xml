@@ -13,11 +13,13 @@
 </synopsis>
 
 <para>This element is an element of&nbsp;:&nbsp;&nbsp;
+
 <xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_stage"/>
 </para>
 
 <para>See also&nbsp;:&nbsp;&nbsp;
+
 <xref linkend="elem_param"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_prefix"/>
 </para>
