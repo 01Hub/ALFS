@@ -12,6 +12,14 @@
 ]>
 <alfs>
 <package name="xscreensaver" version="&xscreensaver-version;">
+  <packageinfo>
+    <requires>
+      <name>bc</name>
+    </requires>
+    <requires>
+      <name>libglade</name>
+    </requires>
+  </packageinfo>
   <stage name="Unpacking.">
     <unpack>
       <archive>&packages_dir;/&xscreensaver-package;</archive>

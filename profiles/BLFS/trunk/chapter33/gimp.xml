@@ -20,7 +20,7 @@
         <name>libart-lgpl</name>
       </requires>
       <requires>
-        <name>xml-parser</name>
+        <name>XML-Parser</name>
       </requires>
       <utilizes>
         <name>gimp-print</name>
