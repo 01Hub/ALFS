@@ -158,7 +158,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_TEXTDUMP,
 		.alloc_data = textdump_data,
 		.is_action = 1,
-		.proirity = 0
+		.priority = 0
 	}, {
 		.name = "textdump",
 		.description = "Dump text",
@@ -168,7 +168,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_TEXTDUMP,
 		.alloc_data = textdump_data,
 		.is_action = 1,
-		.proirity = 0
+		.priority = 0
 	}, {
 		.name = "textdump",
 		.description = "Dump text",
@@ -178,7 +178,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_TEXTDUMP,
 		.alloc_data = textdump_data,
 		.is_action = 1,
-		.proirity = 0
+		.priority = 0
 	}, {
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}

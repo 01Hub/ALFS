@@ -145,7 +145,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_EXECUTE,
 		.alloc_data = execute_data_ver2,
 		.is_action = 1,
-		.proirity = 0
+		.priority = 0
 	}, {
 		.name = "execute",
 		.description = "Execute",
@@ -155,7 +155,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_EXECUTE,
 		.alloc_data = execute_data_ver3,
 		.is_action = 1,
-		.proirity = 0
+		.priority = 0
 	}, {
 		.name = "execute",
 		.description = "Execute",
@@ -165,7 +165,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_EXECUTE,
 		.alloc_data = execute_data_ver3,
 		.is_action = 1,
-		.proirity = 0
+		.priority = 0
 	}, {
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}
