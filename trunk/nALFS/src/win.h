@@ -28,6 +28,7 @@
 #include <curses.h>
 
 #include "logging.h"
+#include "nprint.h"
 
 
 #define MOD_CTRL(x) ((x) & 31)
@@ -58,20 +59,6 @@ enum cpair {
 #define COL_RED_BOLD	(COLOR_PAIR(COLP_RED) | A_BOLD)
 #define COL_GREEN	(COLOR_PAIR(COLP_GREEN))
 #define COL_WHITE	(COLOR_PAIR(COLP_WHITE))
-
-
-/*
- * Types of messages.  They are also used as message_types[] indexes.
- * First should be 0, last T_ERR, order matters.
- */
-typedef enum msg_id_e {
-	T_RAW = 0,
-	T_INF,
-	T_HLP,
-	T_SYS,
-	T_WAR,
-	T_ERR
-} msg_id_e;
 
 
 typedef struct msg_type_t {
@@ -119,40 +106,6 @@ typedef struct windows_s {
 } windows_s;
 
 extern windows_s windows;
-
-
-/*
- * Printing macros.
- */
-
-extern void (*nprint)(msg_id_e mid, const char *format,...);
-
-/* Print macros. */
-#define Nprint(a, b...)		nprint(T_INF, a, ## b)
-#define Nprint_warn(a, b...)	nprint(T_WAR, a, ## b)
-#define Nprint_err(a, b...)	nprint(T_ERR, a, ## b)
-#define Nprint_sys(a, b...)	nprint(T_SYS, a, ## b)
-#define Nprint_raw(a, b...)	nprint(T_RAW, a, ## b)
-#define Nprint_help(a, b...)	nprint(T_HLP, a, ## b)
-
-/*
- * Print macros used in handlers.  TODO: Remove them and use the same
- * macros as above, just define them differently when used in handlers.
- */
-#define Nprint_h(a, b...)	do { log_handler_action(a, ## b); \
-					Nprint(a, ## b); } while (0)
-#define Nprint_h_warn(a, b...)	do { log_handler_action(a, ## b); \
-					Nprint_warn(a, ## b); } while (0)
-#define Nprint_h_err(a, b...)	do { log_handler_action(a, ## b); \
-					Nprint_err(a, ## b); } while (0)
-#define Nprint_h_sys(a, b...)	do { log_handler_action(a, ## b); \
-					Nprint_sys(a, ## b); } while (0)
-#define Nprint_h_raw(a, b...)	do { log_handler_action(a, ## b); \
-					Nprint_raw(a, ## b); } while (0)
-#define Nprint_h_help(a, b...)	do{ log_handler_action(a, ## b); \
-					Nprint_help(a, ## b); } while (0)
-
-
 
 void start_display(void);
 void end_display(void);

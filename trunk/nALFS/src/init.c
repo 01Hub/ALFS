@@ -39,7 +39,7 @@
 #include "options.h"
 #include "utility.h"
 #include "logging.h"
-#include "win.h"
+#include "nprint.h"
 
 #include "init.h"
 
