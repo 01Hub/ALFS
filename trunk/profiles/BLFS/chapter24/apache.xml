@@ -35,7 +35,7 @@
 		</execute>
 	</stage>
 
-	<stage name="Installing">
+	<stage name="Patching">
 		<stageinfo>
 			<base>&build_dir;/&apache-directory;</base>
 		</stageinfo>
@@ -45,6 +45,12 @@
 			<param>-p1</param>
 			<param>-i &packages_dir;/&apache-patch;</param>
 		</patch>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&apache-directory;</base>
+		</stageinfo>
 
 		<configure>
 			<param>--enable-layout=LFS</param>
@@ -55,6 +61,16 @@
 
 		<make>
 			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Installing bootscript and configuration">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-apache</param>
 		</make>
 		
 		<search_replace base="/etc/apache">
@@ -68,16 +84,6 @@
 			<find>Group #-1</find>
 			<replace>Group apache</replace>
 		</search_replace>
-	</stage>
-
-	<stage name="Installing bootscript and configuration">
-		<stageinfo>
-			<base>&build_dir;/&blfs-bootscripts-directory;</base>
-		</stageinfo>
-
-		<make>
-			<param>install-apache</param>
-		</make>
 	</stage>
 
 	<stage name="Cleanup">
