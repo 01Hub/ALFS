@@ -21,6 +21,18 @@ or
    config_tarball directory to a directory named config :-
 
    	cp -r config_tarball config
+
+   NOTE: The LFS-5.1.1 package tarball has restricted permissions
+         on the package files contained in it. This will cause errors
+         while executing this profile, because the "lfs" user used
+         during chapter 5 will not be able to access the files. To
+         correct this problem, after unpacking the package tarball,
+         issue the following command in the lfs-packages directory:
+
+            chmod go+r *
+
+         This will add group and other read permissions to the files,
+         making them accessible to the "lfs" user.
   
 2) Customize the files in the new configuration directory
    - the file general.ent contains a bunch of entity declarations
