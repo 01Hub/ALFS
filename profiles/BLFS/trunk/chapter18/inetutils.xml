@@ -20,6 +20,9 @@
         <name>tcpwrappers</name>
       </utilizes>
       <utilizes>
+	<name>krb4</name>
+      </utilizes>
+      <utilizes>
 	<name>&krb-impl;</name>
       </utilizes>
     </packageinfo>

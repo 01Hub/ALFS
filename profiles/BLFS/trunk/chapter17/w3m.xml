@@ -37,6 +37,9 @@
       <utilizes>
         <name>compface</name>
       </utilizes>
+      <utilizes>
+	<name>nkf</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
