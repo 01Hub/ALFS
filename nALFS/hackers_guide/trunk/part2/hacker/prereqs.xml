@@ -1,3 +1,9 @@
+<!--
+        Last Changed Date: $LastChangedDate$
+        Last Changed By:   $LastChangedBy$
+        Revision:          $LastChangedRevision$ 
+-->
+
 <sect1 id="hacker-prereqs" xreflabel="Coding Prerequisites">
 <?dbhtml filename="prereqs.html" dir="hacker"?>
 <title>Coding Prerequisites</title>

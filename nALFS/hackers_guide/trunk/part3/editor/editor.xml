@@ -1,3 +1,9 @@
+<!--
+        Last Changed Date: $LastChangedDate$
+        Last Changed By:   $LastChangedBy$
+        Revision:          $LastChangedRevision$ 
+-->
+
 <chapter id="editor-editor" xreflabel="Editor">
 <?dbhtml filename="editor/editor.html" dir="part3"?>
 <title>Common Elements for all &book-product; Documentation Editors</title>

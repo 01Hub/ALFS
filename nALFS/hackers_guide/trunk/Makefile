@@ -134,4 +134,7 @@ nochunks-html: common
 flat-text: nochunks-html
 	lynx -dump nALFS-HACKERS-GUIDE-SVN-NOCHUNKS.html > nALFS-HACKERS-GUIDE-SVN.txt
 
-.PHONY: clean dist-clean common chunks-html nochunks-html flat-text
+validate:
+	xmllint --noout --nonet --xinclude --postvalid index.xml
+
+.PHONY: clean dist-clean common chunks-html nochunks-html flat-text validate

@@ -2,6 +2,12 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
 		"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 
+<!--
+        Last Changed Date: $LastChangedDate$
+        Last Changed By:   $LastChangedBy$
+        Revision:          $LastChangedRevision$ 
+-->
+
 <!ENTITY version "1.2-0.1">
 <!ENTITY releasedate "June 23rd, 2004">
 
