@@ -13,7 +13,7 @@
 <xref linkend="elem_stageinfo"/>
 </para>
 
-<para>This elements occurs as an attribute in the elements&nbsp;:&nbsp;&nbsp;
+<para>This element occurs as an attribute in the elements&nbsp;:&nbsp;&nbsp;
 <xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
 <xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -50,7 +50,9 @@ attribute.</para>
 
 		&lt;root&gt;/mnt/lfs&lt;/root&gt;
 		&lt;user&gt;lfs&lt;/user&gt;
-		&lt;environment&gt;PATH=/bin:/sbin&lt;/environment&gt;
+		&lt;environment&gt;
+			&lt;variable name="PATH"&gt;/bin:/sbin&lt;/variable&gt;
+		&lt;/environment&gt;
 		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
 
 	&lt;/stageinfo&gt;
