@@ -75,11 +75,16 @@
 <!ENTITY imlib2      SYSTEM "./chapter09/imlib2.xml">
 
 <!-- chapter 10 -->
-<!ENTITY bc         SYSTEM "./chapter10/bc.xml">
-<!ENTITY rep-gtk    SYSTEM "./chapter10/rep-gtk.xml">
-<!ENTITY compface   SYSTEM "./chapter10/compface.xml">
-<!ENTITY imagemagick SYSTEM "./chapter10/imagemagick.xml">
-<!ENTITY hd2u       SYSTEM "./chapter10/hd2u.xml">
+<!ENTITY bc                 SYSTEM "./chapter10/bc.xml">
+<!ENTITY rep-gtk            SYSTEM "./chapter10/rep-gtk.xml">
+<!ENTITY compface           SYSTEM "./chapter10/compface.xml">
+<!ENTITY imagemagick        SYSTEM "./chapter10/imagemagick.xml">
+<!ENTITY hd2u               SYSTEM "./chapter10/hd2u.xml">
+<!ENTITY gtk-doc            SYSTEM "./chapter10/gtk-doc.xml">
+<!ENTITY intltool           SYSTEM "./chapter10/intltool.xml">
+<!ENTITY                    SYSTEM "./chapter10/screen.xml">
+<!ENTITY tidy               SYSTEM "./chapter10/tidy.xml">
+<!ENTITY desktop-file-utils SYSTEM "./chapter10/desktopfileutils.xml">
 
 <!-- chapter 11 -->
 <!ENTITY gpm        SYSTEM "./chapter11/gpm.xml">
@@ -228,10 +233,8 @@
 
 <!-- chapter 30 -->
 <!ENTITY gnome-pre-installation SYSTEM "./chapter30/gnome-pre-installation.xml">
-<!ENTITY gtk-doc         SYSTEM "./chapter30/gtk-doc.xml">
 <!ENTITY libidl          SYSTEM "./chapter30/libidl.xml">
 <!ENTITY orbit2          SYSTEM "./chapter30/orbit2.xml">
-<!ENTITY intltool        SYSTEM "./chapter30/intltool.xml">
 <!ENTITY libbonobo       SYSTEM "./chapter30/libbonobo.xml">
 <!ENTITY gconf2          SYSTEM "./chapter30/gconf2.xml">
 <!ENTITY gnome-mime-data SYSTEM "./chapter30/gnome-mime-data.xml">

@@ -17,7 +17,7 @@
         <name>&ximpl;</name>
       </requires>
       <requires>
-        <name>ghostscript</name>
+        <name>&ghostscript-impl;</name>
       </requires>
       <utilizes>
         <name>lcms</name>
@@ -50,7 +50,16 @@
         <name>jasper</name>
       </utilizes>
       <utilizes>
+        <name>graphviz</name>
+      </utilizes>
+      <utilizes>
         <name>corefonts</name>
+      </utilizes>
+      <utilizes>
+        <name>electricfence</name>
+      </utilizes>
+      <utilizes>
+        <name>dmalloc</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -65,7 +74,6 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
-        <param>--enable-shared</param>
         <param>--with-modules</param>
       </configure>
       <make />

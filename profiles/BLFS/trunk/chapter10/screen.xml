@@ -2,7 +2,7 @@
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
-<!ENTITY % package_entities SYSTEM "../config/packages/ch30.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch10.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
 
 %general_entities;
@@ -11,27 +11,36 @@
 
 ]>
 <alfs>
-  <package name="intltool" version="&intltool-version;">
+  <package name="screen" version="&screen-version;">
+    <packageinfo>
+      <utilizes>
+        <name>xml-parser</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&intltool-package;</archive>
+        <archive>&packages_dir;/&screen-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&intltool-directory;</base>
+        <base>&build_dir;/&screen-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
+        <param>--with-socket-dir=/var/run/screen</param>
+        <param>--with-sys-screenrc=/etc/screenrc</param>
       </configure>
+      <execute command="sed -i -e 's%/usr/local/etc/screenrc%/etc/screenrc%' {etc,doc}/*" />
       <make />
       <make>
         <param>install</param>
       </make>
+      <execute command="install -m 644 etc/etcscreenrc /etc/screenrc" />
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&intltool-directory;</remove>
+      <remove>&build_dir;/&screen-directory;</remove>
     </stage>
   </package>
 </alfs>

@@ -17,10 +17,7 @@
         <name>gtk+</name>
       </requires>
       <requires>
-        <name>libungif</name>
-      </requires>
-      <requires>
-        <name>giflib</name>
+        <name>&gif-impl;</name>
       </requires>
     </packageinfo>
     <stage name="Unpacking">

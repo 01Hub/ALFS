@@ -122,6 +122,11 @@
       <xi:include href="chapter10/compface.xml" />
       <xi:include href="chapter10/imagemagick.xml" />
       <xi:include href="chapter10/hd2u.xml" />
+      <xi:include href="chapter10/gtk-doc.xml" />
+      <xi:include href="chapter10/intltool.xml" />
+      <xi:include href="chapter10/screen.xml" />
+      <xi:include href="chapter10/tidy.xml" />
+      <xi:include href="chapter10/desktopfileutils.xml" />
     </stage>
     <stage name="Chapter 11 (System Utilities)">
       <xi:include href="chapter11/gpm.xml" />
@@ -276,10 +281,8 @@
         </environment>
       </stageinfo>
       <xi:include href="chapter30/gnome-pre-installation.xml" />
-      <xi:include href="chapter30/gtk-doc.xml" />
       <xi:include href="chapter30/libidl.xml" />
       <xi:include href="chapter30/orbit2.xml" />
-      <xi:include href="chapter30/intltool.xml" />
       <xi:include href="chapter30/libbonobo.xml" />
       <xi:include href="chapter30/gconf2.xml" />
       <xi:include href="chapter30/gnome-mime-data.xml" />

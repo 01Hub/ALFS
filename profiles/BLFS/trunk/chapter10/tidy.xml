@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch10.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="tidy" version="&tidy-version;">
+    <packageinfo>
+      <utilizes>
+        <name>dmalloc</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&tidy-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <archive>&packages_dir;/&tidy-docs;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&tidy-directory;</base>
+      </stageinfo>
+      <execute command="sh build/gnuauto/setup.sh" />
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <execute command="install -m644 -oroot -groot htmldoc/man_page.txt /usr/share/man/man1/tidy.1" />
+      <execute command="install -d -m755 -oroot -groot /usr/share/doc/tidy" />
+      <copy>
+        <source>htmldoc</source>
+        <destination>/usr/share/doc/tidy</destination>
+      </copy>
+      <execute command="chown -R root:root /usr/share/doc/tidy" />
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&tidy-directory;</remove>
+    </stage>
+  </package>
+</alfs>
