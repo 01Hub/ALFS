@@ -182,7 +182,7 @@
       </environment>
     </stageinfo>
     <xi:include href="chapter08/fstab.xml" />
-    <xi:include href="config/kernel.xml" />
+    <xi:include href="chapter08/kernel.xml" />
     <xi:include href="chapter08/grub.xml" />
   </stage>
   <stage name="Chapter 9 - The End">
