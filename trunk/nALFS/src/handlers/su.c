@@ -120,9 +120,7 @@ static int su_valid_child(const element_s * const element, const element_s * con
 
 	return child->handler->type & (HTYPE_NORMAL |
 				       HTYPE_COMMENT |
-				       HTYPE_TEXTDUMP |
-				       HTYPE_PACKAGE |
-				       HTYPE_EXECUTE);
+				       HTYPE_PACKAGE);
 }
 
 static INLINE int set_supplementary_groups(const char *user)

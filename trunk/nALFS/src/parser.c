@@ -51,9 +51,6 @@ element_s *init_new_element(void)
 
 	new->id = element_id++;
 
-	new->name = NULL;
-	new->content = NULL;
-
 	new->should_run = 0;
 	new->run_status = RUN_STATUS_NONE;
 	new->marked = 0;
@@ -120,7 +117,11 @@ element_s *create_profile_element(const char * const profile_path)
 	profile->parent = root_element;
 	profile->profile = profile;
 	profile->handler = find_handler("__profile", "all")->info;
-	profile->name = xstrdup(profile_path);
+	(void) profile->handler->setup(profile);
+	(void) profile->handler->attribute(profile,
+					   find_handler_attribute(profile->handler,
+								  "path"),
+					   profile_path);
 
 	return profile;
 }
@@ -134,7 +135,6 @@ element_s *create_comment_element(const element_s * const profile,
 	el->parent = parent;
 	el->profile = profile;
 	el->handler = find_handler("__comment", "all")->info;
-	el->name = xstrdup("Xcomment");
 
 	return el;
 }
@@ -154,7 +154,6 @@ element_s *create_handler_element(const element_s * const profile,
 		el->parent = parent;
 		el->profile = profile;
 		el->handler = handler->info;
-		el->name = xstrdup(handler_name);
 	} else {
 		Nprint_err("No handler found for %s (syntax version %s).",
 			   handler_name, syntax_version);
@@ -179,9 +178,6 @@ void free_element(element_s *el)
 
 	if (el->handler_data)
 		el->handler->free(el);
-
-	xfree(el->name);
-	xfree(el->content);
 
 	xfree(el);
 }
@@ -208,7 +204,7 @@ static void append_el_parents(char **el_path, element_s *el)
 		append_str(el_path, "->");
 	}
 
-	append_str(el_path, el->name);
+	append_str(el_path, el->handler->name);
 }
 
 static INLINE void print_unknown_elements(element_s *profile)
@@ -260,7 +256,7 @@ element_s *get_profile_by_name(const char * const name)
 	element_s *el;
 
 	for (el = root_element->children; el; el = el->next) {
-		if (strcmp(el->name, name) == 0) {
+		if (strcmp(el->handler->name, name) == 0) {
 			return el;
 		}
 	}

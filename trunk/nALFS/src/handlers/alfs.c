@@ -97,9 +97,7 @@ static int alfs_valid_child(const element_s * const element,
 
 	return child->handler->type & (HTYPE_NORMAL |
 				       HTYPE_COMMENT |
-				       HTYPE_TEXTDUMP |
-				       HTYPE_PACKAGE |
-				       HTYPE_EXECUTE);
+				       HTYPE_PACKAGE);
 }
 
 static char *alfs_data(const element_s * const element,

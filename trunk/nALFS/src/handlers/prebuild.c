@@ -49,9 +49,7 @@ static int prebuild_valid_child(const element_s * const element,
 
 	return child->handler->type & (HTYPE_NORMAL |
 				       HTYPE_COMMENT |
-				       HTYPE_TEXTDUMP |
-				       HTYPE_PACKAGE |
-				       HTYPE_EXECUTE);
+				       HTYPE_PACKAGE);
 }
 
 static int prebuild_main(const element_s * const el)

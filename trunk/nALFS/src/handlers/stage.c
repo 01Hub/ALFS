@@ -349,9 +349,7 @@ static int stage_valid_child(const element_s * const element,
 
 	return child->handler->type & (HTYPE_NORMAL |
 				       HTYPE_COMMENT |
-				       HTYPE_TEXTDUMP |
-				       HTYPE_PACKAGE |
-				       HTYPE_EXECUTE);
+				       HTYPE_PACKAGE);
 }
 
 static int stage_main(const element_s * const element)
@@ -389,15 +387,35 @@ static char *stage_data(const element_s * const element,
 {
 	struct stage_data *data = (struct stage_data *) element->handler_data;
 
-	/* the only data elements currently supported by the <stage>
+	/* some data elements currently supported by the <stage>
 	   element are HDATA_BASE and HDATA_SHELL, which actually
 	   are supplied by an HTYPE_STAGEINFO child, if it exists
 	*/
 
-	if (!data->stageinfo)
-		return NULL;
+	switch (data_requested) {
+	case HDATA_DISPLAY_NAME:
+	{
+		char *display = NULL;
+
+		if (*opt_display_stage_header)
+			append_str(&display, "Enter stage: ");
+
+		if (data->name)
+			append_str(&display, data->name);
+
+		return display;
+	}
+	case HDATA_BASE:
+	case HDATA_SHELL:
+		if (!data->stageinfo)
+			return NULL;
 	
-	return data->stageinfo->handler->alloc_data(data->stageinfo, data_requested);
+		return data->stageinfo->handler->alloc_data(data->stageinfo, data_requested);
+	default:
+		break;
+	}
+
+	return NULL;
 }
 
 #if HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
@@ -766,11 +784,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_3_0
 	{
 		.name = "stage",
-		.description = "Enter stage: ", // FIXME
+		.description = "Enter stage: ",
 		.syntax_version = "3.0",
 		.type = HTYPE_NORMAL | HTYPE_STAGE,
 		.main = stage_main,
-		.data = HDATA_BASE,
+		.data = HDATA_BASE | HDATA_DISPLAY_NAME,
 		.alloc_data = stage_data,
 		.setup = stage_setup,
 		.free = stage_free,
@@ -816,11 +834,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_3_1
 	{
 		.name = "stage",
-		.description = "Enter stage: ", // FIXME
+		.description = "stage",
 		.syntax_version = "3.1",
 		.type = HTYPE_NORMAL | HTYPE_STAGE,
 		.main = stage_main,
-		.data = HDATA_BASE,
+		.data = HDATA_BASE | HDATA_DISPLAY_NAME,
 		.alloc_data = stage_data,
 		.setup = stage_setup,
 		.free = stage_free,
@@ -894,11 +912,11 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 #if HANDLER_SYNTAX_3_2
 	{
 		.name = "stage",
-		.description = "Enter stage: ", // FIXME
+		.description = "Enter stage: ",
 		.syntax_version = "3.2",
 		.type = HTYPE_NORMAL | HTYPE_STAGE,
 		.main = stage_main,
-		.data = HDATA_BASE | HDATA_SHELL,
+		.data = HDATA_BASE | HDATA_SHELL | HDATA_DISPLAY_NAME,
 		.alloc_data = stage_data,
 		.setup = stage_setup,
 		.free = stage_free,

@@ -50,11 +50,54 @@ static struct handlers {
 
 /* Embedded "handlers" for the profile and comment elements. */
 
-static int profile_main(const element_s * const el)
+enum {
+	PROFILE_PATH
+};
+
+struct profile_data {
+	char *path;
+};
+
+static const struct handler_attribute profile_attributes[] = {
+	{ .name = "path", .private = PROFILE_PATH },
+        { .name = NULL }
+};
+
+static int profile_setup(element_s * const element)
 {
-	(void) el;
+	struct profile_data *data;
+
+	if ((data = xmalloc(sizeof(struct profile_data))) == NULL)
+		return 1;
+
+	data->path = NULL;
+	element->handler_data = data;
 
 	return 0;
+}
+
+static void profile_free(const element_s * const element)
+{
+	struct profile_data *data = (struct profile_data *) element->handler_data;
+
+	xfree(data->path);
+	xfree(data);
+}
+
+static int profile_attribute(const element_s * const element,
+			     const struct handler_attribute * const attr,
+			     const char * const value)
+{
+	struct profile_data *data = (struct profile_data *) element->handler_data;
+
+	switch (attr->private) {
+	case PROFILE_PATH:
+		/* will never be called by parser more than once */
+		data->path = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
 }
 
 static int profile_valid_child(const element_s * const element,
@@ -68,16 +111,34 @@ static int profile_valid_child(const element_s * const element,
 static char *profile_data(const element_s * const element,
 			  const handler_data_e data_requested)
 {
-	(void) element;
+	struct profile_data *data = (struct profile_data *) element->handler_data;
+
 	switch (data_requested) {
 	case HDATA_SYNTAX_VERSION:
 		return xstrdup(*opt_default_syntax);
-		break;
+	case HDATA_DISPLAY_NAME:
+	{
+		char *tmp;
+
+		/* display only the file name, not the whole path */
+		if ((tmp = strrchr(data->path, '/'))) {
+			return xstrdup(++tmp);
+		} else {
+			return xstrdup(data->path);
+		}
+	}
 	default:
 		break;
 	}
 
 	return NULL;
+}
+
+static int profile_main(const element_s * const el)
+{
+	(void) el;
+
+	return 0;
 }
 
 struct comment_data {
@@ -116,6 +177,25 @@ static int comment_content(const element_s * const element,
 	return 0;
 }
 
+static char *comment_data(const element_s * const element,
+			  const handler_data_e data_requested)
+{
+	struct comment_data *data = (struct comment_data *) element->handler_data;
+
+	switch (data_requested) {
+	case HDATA_DISPLAY_NAME:
+		if (strchr(data->content, '\n')) {
+			return xstrdup("comment block");
+		} else {
+			return xstrdup(data->content);
+		};
+	default:
+		break;
+	}
+
+	return NULL;
+}
+
 static int comment_main(const element_s * const el)
 {
 	(void) el;
@@ -131,8 +211,12 @@ static handler_info_s embedded_handlers_info[] = {
 		.main = profile_main,
 		.type = HTYPE_NORMAL,
 		.valid_child = profile_valid_child,
-		.data = HDATA_SYNTAX_VERSION,
+		.data = HDATA_SYNTAX_VERSION | HDATA_DISPLAY_NAME,
 		.alloc_data = profile_data,
+		.attributes = profile_attributes,
+		.attribute = profile_attribute,
+		.setup = profile_setup,
+		.free = profile_free,
 	},
 	{
 		.name = "__comment",
@@ -143,6 +227,8 @@ static handler_info_s embedded_handlers_info[] = {
 		.setup = comment_setup,
 		.free = comment_free,
 		.content = comment_content,
+		.data = HDATA_DISPLAY_NAME,
+		.alloc_data = comment_data,
 	},
 	{
 		.name = NULL
@@ -342,16 +428,6 @@ int package_has_name_and_version(element_s *el)
 	xfree(version);
 
 	return s;
-}
-
-char *alloc_textdump_file(element_s *el)
-{
-	return el->handler->alloc_data(el, HDATA_FILE);
-}
-
-char *alloc_execute_command(element_s *el)
-{
-	return el->handler->alloc_data(el, HDATA_COMMAND);
 }
 
 const char *find_handler_data(const element_s * const element,
