@@ -12,6 +12,11 @@
 			<base>&build_dir;/&lfs-utils-directory;</base>
 		</stageinfo>
 
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--with-libc</param>
+		</configure>
+
 		<make />
 
 		<make>
