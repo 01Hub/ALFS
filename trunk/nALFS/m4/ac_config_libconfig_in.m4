@@ -160,7 +160,7 @@ echo 'fi' >>$LIBCONFIG_FILE
 m4_pushdef([LIBCONFIG_UP], [m4_translit([$1], [a-z], [A-Z])])dnl
 LIBCONFIG_UP[]_CONFIG="LIBCONFIG_DIR[]$1-config"
 AC_SUBST(LIBCONFIG_UP[]_CONFIG)
-dnl AC_CONFIG_FILES(LIBCONFIG_DIR[]$1[-config], [chmod +x ]LIBCONFIG_DIR[]$1[-config])
+AC_CONFIG_FILES(LIBCONFIG_DIR[]$1[-config], [chmod +x ]LIBCONFIG_DIR[]$1[-config])
 m4_popdef([LIBCONFIG_DIR])
 m4_popdef([LIBCONFIG_UP])
 ])

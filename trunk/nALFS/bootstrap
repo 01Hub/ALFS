@@ -14,7 +14,10 @@
 SP2NL="tr '\040' '\012'"
 NL2SP="tr '\015\012' '\040\040'"
 
+# create a directory for the GNU autotools to put their stuff into
 [ -d gnubuild ] || mkdir gnubuild
+# create nALFS-config.in to quiet autoconf, which will overwrite it later
+touch nALFS-config.in
 
 # build available handler lists
 # start with the list of all handlers present, then grep each handler file
