@@ -1,3 +1,9 @@
+<!--
+        Last Changed Date: $LastChangedDate$
+        Last Changed By:   $LastChangedBy$
+        Revision:          $LastChangedRevision$ 
+-->
+
 <chapter id="intro-welcome" xreflabel="Welcome">
 <?dbhtml filename="welcome/welcome.html" dir="introduction"?>
 <title>Welcome to the &book-product; Users Guide</title>

@@ -1,2 +1,8 @@
+<!--
+        Last Changed Date: $LastChangedDate$
+        Last Changed By:   $LastChangedBy$
+        Revision:          $LastChangedRevision$ 
+-->
+
 <!ENTITY chapter01       SYSTEM "chapter01.xml">
 <!ENTITY ch1-quick-start SYSTEM "quick-start.xml">

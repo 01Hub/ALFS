@@ -6,6 +6,10 @@
 # Description: Tidy is best used inside a loop, but Makefiles don't do Bash
 # loops well.  This file alleviates that problem.
 #
+# Last Changed Date: $LastChangedDate$
+# Last Changed By:   $LastChangedBy$
+# Revision:          $LastChangedRevision$ 
+#
 # Author:      James Robertson
 #
 ###############################################################################
