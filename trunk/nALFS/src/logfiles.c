@@ -48,9 +48,10 @@
 
 
 struct plogf {
-	char *dir;		/* Log's directory. */
-	char *name;		/* Log's filename. */
-	char *fullname;		/* Both -- makes life easier. */
+	char *filename;		/* Log's file name. */
+
+	char *name;		/* Name of the package. */
+	char *version;		/* Version of the package. */
 
 	char *installed;	/* File containing the list
 				 * of installed packages. */
@@ -155,9 +156,9 @@ struct logs *logs_init_new_run(const char *name, const char *version)
 
 	plogf = xmalloc(sizeof *plogf);
 
-	plogf->dir = NULL;
+	plogf->filename = NULL;
 	plogf->name = NULL;
-	plogf->fullname = NULL;
+	plogf->version = NULL;
 	plogf->installed = NULL;
 	plogf->doc = doc;
 
@@ -187,9 +188,9 @@ void logs_free(struct logs *logs)
 	for (i = 0; i < logs->cnt; ++i) {
 		struct plogf *plogf = logs->list[i];
 
-		xfree(plogf->dir);
+		xfree(plogf->filename);
 		xfree(plogf->name);
-		xfree(plogf->fullname);
+		xfree(plogf->version);
 		xfree(plogf->installed);
 		if (plogf->doc != NULL) {
 			xmlFreeDoc(plogf->doc);
@@ -205,7 +206,7 @@ void logs_free(struct logs *logs)
 int logs_save(struct logs *logs)
 {
 	if (logs->cnt > 0) {
-		char *filename = logs->list[0]->fullname;
+		char *filename = logs->list[0]->filename;
 		xmlDocPtr doc = logs->list[0]->doc;
 		
 		xmlSetDocCompressMode(doc, 0);
@@ -218,11 +219,6 @@ int logs_save(struct logs *logs)
 	}
 
 	return -1;
-}
-
-char *logs_get_package_fullname(struct logs *logs, int i)
-{
-	return logs->list[i]->fullname;
 }
 
 /*
@@ -254,13 +250,13 @@ struct logs *logs_init_from_directory(const char *dir_name)
 
 			plogf = xmalloc(sizeof *plogf);
 
-			plogf->dir = xstrdup(dir_name);
-			plogf->name = xstrdup(next->d_name);
-			plogf->fullname = xstrdup(plogf->dir);
-			append_str(&plogf->fullname, "/");
-			append_str(&plogf->fullname, plogf->name);
+			plogf->filename = xstrdup(dir_name);
+			append_str(&plogf->filename, "/");
+			append_str(&plogf->filename, next->d_name);
+			plogf->name = NULL;
+			plogf->version = NULL;
 			plogf->installed = NULL;
-			plogf->doc = xmlParseFile(plogf->fullname);
+			plogf->doc = xmlParseFile(plogf->filename);
 			if (plogf->doc) {
 				plogf->doc->children =
 				xmlDocGetRootElement(plogf->doc);
@@ -286,6 +282,15 @@ int logs_get_packages_cnt(struct logs *logs)
 }
 
 char *logs_get_plog_filename(struct logs *logs, int i)
+{
+	if (0 <= i && i < logs->cnt) {
+		return logs->list[i]->filename;
+	}
+
+	return NULL;
+}
+
+char *logs_get_plog_name(struct logs *logs, int i)
 {
 	if (0 <= i && i < logs->cnt) {
 		return logs->list[i]->name;
@@ -323,8 +328,8 @@ static xmlDocPtr logs_parse_or_create_plogf_doc(struct plogf *plogf)
 {
 	xmlDocPtr doc;
 
-	if (file_exists(plogf->fullname)) {
-		if ((doc = xmlParseFile(plogf->fullname)) != NULL) {
+	if (file_exists(plogf->filename)) {
+		if ((doc = xmlParseFile(plogf->filename)) != NULL) {
 			doc->children = xmlDocGetRootElement(doc);
 		}
 	} else {
@@ -345,12 +350,12 @@ struct logs *logs_init_from_package_string(
 
 	plogf = xmalloc(sizeof *plogf);
 
-	plogf->dir = xstrdup(pdir);
-	plogf->name = xstrdup(package_str);
-	append_str(&plogf->name, SUFFIX_FOR_LOGF);
-	plogf->fullname = xstrdup(plogf->dir);
-	append_str(&plogf->fullname, "/");
-	append_str(&plogf->fullname, plogf->name);
+	plogf->filename = xstrdup(pdir);
+	append_str(&plogf->filename, "/");
+	append_str(&plogf->filename, package_str);
+	append_str(&plogf->filename, SUFFIX_FOR_LOGF);
+	plogf->name = NULL;
+	plogf->version = NULL;
 	plogf->installed = NULL;
 	plogf->doc = logs_parse_or_create_plogf_doc(plogf);
 
@@ -404,7 +409,7 @@ char *logs_create_flog(struct logs *logs)
 	/* Just in case. */
 	xfree(logs->list[0]->installed);
 
-	filename = xstrdup(logs->list[0]->fullname);
+	filename = xstrdup(logs->list[0]->filename);
 
 	tmp = strrchr(filename, '.');
 	*tmp = '\0';

@@ -643,7 +643,7 @@ static INLINE void receive_log_file(void)
 		comm_free_message(message);
 	}
 
-	s = logs_get_package_fullname(logs, 0);
+	s = logs_get_plog_filename(logs, 0);
 
 	if (logs_save(logs) == 0) {
 		Nprint("Log file stored in \"%s\".", s);
@@ -1167,7 +1167,6 @@ static void pkg_write_main_line(logs_t *logs, int idx)
 {
 	size_t i;
 	char *line = NULL;
-	char *plog = logs_get_plog_filename(logs, idx);
 	char *flog = logs_get_flog_filename(logs, idx);
 
 
@@ -1176,8 +1175,6 @@ static void pkg_write_main_line(logs_t *logs, int idx)
 		append_str(&line, " ");
 	}
 
-	append_str(&line, plog);
-	append_str(&line, " - ");
 	append_str(&line, flog ? flog : "none");
 
 	/* Print the line. */
