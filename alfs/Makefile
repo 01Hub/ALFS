@@ -3,10 +3,8 @@ CFLAGS=-Ilibalfs
 BIN=alfs
 OBJS=build.o alfs.o plugin.o url.o
 
-LDLIBS=`pkg-config gtk+-2.0 --libs`
-
 ifeq ($(OPTS),)
-#OPTS=-q
+OPTS=-q
 #OPTS+=~/stuff/LFS/SVN/lfs/index.xml
 #OPTS+=~/projects/alfs/books/multi-arch/index.xml
 #OPTS+=~/projects/alfs/books/book/index.xml
