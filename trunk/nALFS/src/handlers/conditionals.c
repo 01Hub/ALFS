@@ -73,7 +73,7 @@ static int do_shelltest(const char *test, int *result)
 			*result = (status == 0) ? 1 : 0;
 			status = 0;
 		} else
-			status -1;
+			status = -1;
 	}
 
 	return status;
@@ -85,7 +85,31 @@ static const char *if_parameters_3_1[] = { "then", "else", NULL };
 
 static int if_main_3_1(element_s *element)
 {
-	return -1;
+	char *shelltest;
+	char *packagetest;
+	int test_result = 1;
+	handler_type_e result_handler_type = HTYPE_TRUE_RESULT;
+	int status;
+
+	shelltest = attr_value("test", element);
+	packagetest = attr_value("package", element);
+	if (shelltest && packagetest) {
+		Nprint_h_err("Cannot specify both \"test\" and \"package\".");
+		return -1;
+	}
+	if (!shelltest && !packagetest) {
+		Nprint_h_err("Must specify either \"test\" or \"package\".");
+		return -1;
+	}
+	if (shelltest) {
+		if ((status = do_shelltest(shelltest, &test_result)))
+			return status;
+	} else {
+	}
+	if (!test_result)
+		result_handler_type = HTYPE_FALSE_RESULT;
+
+	return execute_children_filtered(element, result_handler_type);
 }
 #endif
 
