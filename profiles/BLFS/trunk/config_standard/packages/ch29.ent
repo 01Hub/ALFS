@@ -20,8 +20,8 @@
 <!ENTITY kdegraphics-version   "&kde-version;">
 <!ENTITY kdegraphics-package   "kdegraphics-&kdegraphics-version;.tar.bz2">
 <!ENTITY kdegraphics-directory "kdegraphics-&kdegraphics-version;">
-<!ENTITY kdegraphics-patch1 "post-&kde-version;-kdegraphics.diff">
-<!ENTITY kdegraphics-patch2 "post-&kde-version;-kdegraphics-3.diff">
+<!ENTITY kdegraphics-patch1    "post-&kde-version;-kdegraphics.diff">
+<!ENTITY kdegraphics-patch2    "post-&kde-version;-kdegraphics-3.diff">
 
 <!ENTITY kdeutils-version   "&kde-version;">
 <!ENTITY kdeutils-package   "kdeutils-&kdeutils-version;.tar.bz2">

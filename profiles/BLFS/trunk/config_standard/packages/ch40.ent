@@ -10,10 +10,8 @@
 <!ENTITY cdrdao-patch     "cdrdao-&cdrdao-version;-gcc43-1.patch">
 
 <!ENTITY udftools-version       "1.0.0b3">
-<!ENTITY udftools-package       "udftools-&udftools-version;.tar.gz">
+<!ENTITY udftools-package       "udftools-&udftools-version;.tar.bz2">
 <!ENTITY udftools-directory     "udftools-&udftools-version;">
-
 <!ENTITY udftools-patch         "udftools-&udftools-version;.patch">
 <!ENTITY udftools-patch-package "&udftools-patch;.bz">
-
-<!ENTITY udftools-kernel-patch "packet-2.6.8-2.patch.bz2">
+<!ENTITY udftools-kernel-patch  "udftools-packet-2.6.8-2.patch.bz2">

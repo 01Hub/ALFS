@@ -5,18 +5,17 @@
 <!ENTITY koffice-directory "koffice-&koffice-version;">
 
 <!ENTITY gcc-33-version "3.3.4">
-<!ENTITY openoffice-version   "1.1.4">
-<!ENTITY openoffice-package   "OOo_&openoffice-version;_source.tar.bz2">
-<!ENTITY openoffice-directory "oo_&openoffice-version;_src">
+
+<!ENTITY openoffice-version        "1.1.4">
+<!ENTITY openoffice-package        "OOo_&openoffice-version;_source.tar.bz2">
+<!ENTITY openoffice-directory      "oo_&openoffice-version;_src">
+<!ENTITY openoffice-gcc33-patch    "OOo_&openoffice-version;-gcc33-1.patch">
+<!ENTITY openoffice-nptl-patch     "OOo_&openoffice-version;-nptl-1.patch">
+<!ENTITY openoffice-jdk-patch      "OOo_&openoffice-version;-jdk_1.4.2_fix-1.patch">
+<!ENTITY openoffice-test-bin-patch "OOo_&openoffice-version;-test_bin_loc-1.patch">
+<!ENTITY openoffice-freetype-patch "OOo_&openoffice-version;-freetype-1.patch">
+<!ENTITY openoffice-no-pam-patch   "OOo_&openoffice-version;-no_pam-1.patch">
 
 <!ENTITY gpc-version   "231">
 <!ENTITY gpc-package   "gpc&gpc-version;.tar.Z">
 <!ENTITY gpc-directory "gpc&gpc-version;">
-
-<!ENTITY openoffice-gcc33-patch "openoffice-&openoffice-version;-gcc33-1.patch">
-<!ENTITY openoffice-nptl-patch "openoffice-&openoffice-version;-nptl-1.patch">
-<!ENTITY openoffice-jdk-patch "openoffice-&openoffice-version;-jdk_1.4.2_fix-1.patch">
-<!ENTITY openoffice-test-bin-patch "openoffice-&openoffice-version;-test_bin_loc-1.patch">
-<!ENTITY openoffice-freetype-patch "openoffice-&openoffice-version;-freetype-1.patch">
-<!ENTITY openoffice-no-pam-patch "openoffice-&openoffice-version;-no_pam-1.patch">
-

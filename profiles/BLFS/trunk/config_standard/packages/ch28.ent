@@ -5,14 +5,14 @@
 <!ENTITY arts-package      "arts-&arts-version;.tar.bz2">
 <!ENTITY arts-directory    "arts-&arts-version;">
 
-<!ENTITY kdelibs-version   "&kde-version;">
-<!ENTITY kdelibs-package   "kdelibs-&kdelibs-version;.tar.bz2">
-<!ENTITY kdelibs-directory "kdelibs-&kdelibs-version;">
+<!ENTITY kdelibs-version          "&kde-version;">
+<!ENTITY kdelibs-package          "kdelibs-&kdelibs-version;.tar.bz2">
+<!ENTITY kdelibs-directory        "kdelibs-&kdelibs-version;">
 <!ENTITY kdelibs-htmlframes-patch "post-&kde-version;-kdelibs-htmlframes2.patch">
-<!ENTITY kdelibs-kio-patch "post-&kde-version;-kdelibs-kio.diff">
-<!ENTITY kdelibs-kioslave-patch "post-&kde-version;-kdelibs-kioslave.patch">
+<!ENTITY kdelibs-kio-patch        "post-&kde-version;-kdelibs-kio.diff">
+<!ENTITY kdelibs-kioslave-patch   "post-&kde-version;-kdelibs-kioslave.patch">
 
-<!ENTITY kdebase-version   "&kde-version;">
-<!ENTITY kdebase-package   "kdebase-&kdebase-version;.tar.bz2">
-<!ENTITY kdebase-directory "kdebase-&kdebase-version;">
+<!ENTITY kdebase-version          "&kde-version;">
+<!ENTITY kdebase-package          "kdebase-&kdebase-version;.tar.bz2">
+<!ENTITY kdebase-directory        "kdebase-&kdebase-version;">
 <!ENTITY kdebase-htmlframes-patch "post-&kde-version;-kdebase-htmlframes2.patch">

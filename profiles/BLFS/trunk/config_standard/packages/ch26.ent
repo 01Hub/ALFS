@@ -5,7 +5,7 @@
 <!ENTITY qt-directory "qt-x11-free-&qt-version;">
 
 <!ENTITY gtkplus-version   "1.2.10">
-<!ENTITY gtkplus-package   "gtk+-&gtkplus-version;.tar.gz">
+<!ENTITY gtkplus-package   "gtk+-&gtkplus-version;.tar.bz2">
 <!ENTITY gtkplus-directory "gtk+-&gtkplus-version;">
 
 <!ENTITY gtkplus2-version   "2.6.4">
@@ -25,21 +25,21 @@
 <!ENTITY lesstif-directory "lesstif-&lesstif-version;">
 
 <!ENTITY startup-notification-version   "0.8">
-<!ENTITY startup-notification-package   "startup-notification-&startup-notification-version;.tar.gz">
+<!ENTITY startup-notification-package   "startup-notification-&startup-notification-version;.tar.bz2">
 <!ENTITY startup-notification-directory "startup-notification-&startup-notification-version;">
 
-<!ENTITY shared-mime-info-version "0.15">
-<!ENTITY shared-mime-info-package "shared-mime-info-&shared-mime-info-version;.tar.gz">
+<!ENTITY shared-mime-info-version   "0.15">
+<!ENTITY shared-mime-info-package   "shared-mime-info-&shared-mime-info-version;.tar.bz2">
 <!ENTITY shared-mime-info-directory "shared-mime-info-&shared-mime-info-version;">
 
-<!ENTITY hicolor-icon-theme-version "0.5">
-<!ENTITY hicolor-icon-theme-package "hicolor-icon-theme-&hicolor-icon-theme-version;.tar.gz">
+<!ENTITY hicolor-icon-theme-version   "0.5">
+<!ENTITY hicolor-icon-theme-package   "hicolor-icon-theme-&hicolor-icon-theme-version;.tar.bz2">
 <!ENTITY hicolor-icon-theme-directory "hicolor-icon-theme-&hicolor-icon-theme-version;">
 
-<!ENTITY libxklavier-version "1.11">
-<!ENTITY libxklavier-package "libxklavier-&libxklavier-version;.tar.gz">
+<!ENTITY libxklavier-version   "1.11">
+<!ENTITY libxklavier-package   "libxklavier-&libxklavier-version;.tar.bz2">
 <!ENTITY libxklavier-directory "libxklavier-&libxklavier-version;">
 
-<!ENTITY freeglut-version "2.2.0">
-<!ENTITY freeglut-package "freeglut-&freeglut-version;.tar.gz">
+<!ENTITY freeglut-version   "2.2.0">
+<!ENTITY freeglut-package   "freeglut-&freeglut-version;.tar.bz2">
 <!ENTITY freeglut-directory "freeglut-&freeglut-version;">

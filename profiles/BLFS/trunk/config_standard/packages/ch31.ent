@@ -1,6 +1,6 @@
 <!--************* packages for chapter 31 *************-->
-<!ENTITY libgnomecups-version "0.1.13">
-<!ENTITY libgnomecups-package "libgnomecups-&libgnomecups-version;.tar.bz2">
+<!ENTITY libgnomecups-version   "0.1.13">
+<!ENTITY libgnomecups-package   "libgnomecups-&libgnomecups-version;.tar.bz2">
 <!ENTITY libgnomecups-directory "libgnomecups-&libgnomecups-version;">
 
 <!ENTITY libgnomeprint-version   "2.8.0.1">
@@ -23,12 +23,12 @@
 <!ENTITY libgtkhtml-package   "libgtkhtml-&libgtkhtml-version;.tar.bz2">
 <!ENTITY libgtkhtml-directory "libgtkhtml-&libgtkhtml-version;">
 
-<!ENTITY evolution-data-server-version "1.0.2">
-<!ENTITY evolution-data-server-package "evolution-data-server-&evolution-data-server-version;.tar.bz2">
+<!ENTITY evolution-data-server-version   "1.0.2">
+<!ENTITY evolution-data-server-package   "evolution-data-server-&evolution-data-server-version;.tar.bz2">
 <!ENTITY evolution-data-server-directory "evolution-data-server-&evolution-data-server-version;">
 
-<!ENTITY gnome-doc-utils-version "0.1">
-<!ENTITY gnome-doc-utils-package "gnome-doc-utils-&gnome-doc-utils-version;.tar.bz2">
+<!ENTITY gnome-doc-utils-version   "0.1">
+<!ENTITY gnome-doc-utils-package   "gnome-doc-utils-&gnome-doc-utils-version;.tar.bz2">
 <!ENTITY gnome-doc-utils-directory "gnome-doc-utils-&gnome-doc-utils-version;">
 
 <!ENTITY yelp-version   "2.6.4">
@@ -55,8 +55,8 @@
 <!ENTITY ggv-package   "ggv-&ggv-version;.tar.bz2">
 <!ENTITY ggv-directory "ggv-&ggv-version;">
 
-<!ENTITY file-roller-version "2.8.3">
-<!ENTITY file-roller-package "file-roller-&file-roller-version;.tar.bz2">
+<!ENTITY file-roller-version   "2.8.3">
+<!ENTITY file-roller-package   "file-roller-&file-roller-version;.tar.bz2">
 <!ENTITY file-roller-directory "file-roller-&file-roller-version;">
 
 <!ENTITY gconf-editor-version   "2.8.2">
@@ -79,64 +79,64 @@
 <!ENTITY nautilus-media-package   "nautilus-media-&nautilus-media-version;.tar.bz2">
 <!ENTITY nautilus-media-directory "nautilus-media-&nautilus-media-version;">
 
-<!ENTITY gnome-netstatus-version "2.8.0">
-<!ENTITY gnome-netstatus-package "gnome-netstatus-&gnome-netstatus-version;.tar.bz2">
+<!ENTITY gnome-netstatus-version   "2.8.0">
+<!ENTITY gnome-netstatus-package   "gnome-netstatus-&gnome-netstatus-version;.tar.bz2">
 <!ENTITY gnome-netstatus-directory "gnome-netstatus-&gnome-netstatus-version;">
 
-<!ENTITY gcalctool-version "4.4.20">
-<!ENTITY gcalctool-package "gcalctool-&gcalctool-version;.tar.bz2">
+<!ENTITY gcalctool-version   "4.4.20">
+<!ENTITY gcalctool-package   "gcalctool-&gcalctool-version;.tar.bz2">
 <!ENTITY gcalctool-directory "gcalctool-&gcalctool-version;">
 
-<!ENTITY gpdf-version "2.8.0">
-<!ENTITY gpdf-package "gpdf-&gpdf-version;.tar.bz2">
+<!ENTITY gpdf-version   "2.8.0">
+<!ENTITY gpdf-package   "gpdf-&gpdf-version;.tar.bz2">
 <!ENTITY gpdf-directory "gpdf-&gpdf-version;">
 
-<!ENTITY gucharmap-version "1.4.2">
-<!ENTITY gucharmap-package "gucharmap-&gucharmap-version;.tar.bz2">
+<!ENTITY gucharmap-version   "1.4.2">
+<!ENTITY gucharmap-package   "gucharmap-&gucharmap-version;.tar.bz2">
 <!ENTITY gucharmap-directory "gucharmap-&gucharmap-version;">
 
-<!ENTITY nautilus-cd-burner-version "2.8.5">
-<!ENTITY nautilus-cd-burner-package "nautilus-cd-burner-&nautilus-cd-burner-version;.tar.bz2">
+<!ENTITY nautilus-cd-burner-version   "2.8.5">
+<!ENTITY nautilus-cd-burner-package   "nautilus-cd-burner-&nautilus-cd-burner-version;.tar.bz2">
 <!ENTITY nautilus-cd-burner-directory "nautilus-cd-burner-&nautilus-cd-burner-version;">
 
-<!ENTITY zenity-version "2.8.1">
-<!ENTITY zenity-package "zenity-&zenity-version;.tar.bz2">
+<!ENTITY zenity-version   "2.8.1">
+<!ENTITY zenity-package   "zenity-&zenity-version;.tar.bz2">
 <!ENTITY zenity-directory "zenity-&zenity-version;">
 
 <!ENTITY at-spi-version   "1.6.0">
 <!ENTITY at-spi-package   "at-spi-&at-spi-version;.tar.bz2">
 <!ENTITY at-spi-directory "at-spi-&at-spi-version;">
 
-<!ENTITY libgail-gnome-version "1.1.0">
-<!ENTITY libgail-gnome-package "libgail-gnome-&libgail-gnome-version;.tar.bz2">
+<!ENTITY libgail-gnome-version   "1.1.0">
+<!ENTITY libgail-gnome-package   "libgail-gnome-&libgail-gnome-version;.tar.bz2">
 <!ENTITY libgail-gnome-directory "libgail-gnome-&libgail-gnome-version;">
 
-<!ENTITY java-access-bridge-version "1.4.2">
-<!ENTITY java-access-bridge-package "java-access-bridge-&java-access-bridge-version;.tar.bz2">
+<!ENTITY java-access-bridge-version   "1.4.2">
+<!ENTITY java-access-bridge-package   "java-access-bridge-&java-access-bridge-version;.tar.bz2">
 <!ENTITY java-access-bridge-directory "java-access-bridge-&java-access-bridge-version;">
 
-<!ENTITY gnome-speech-version "0.3.5">
-<!ENTITY gnome-speech-package "gnome-speech-&gnome-speech-version;.tar.bz2">
+<!ENTITY gnome-speech-version   "0.3.5">
+<!ENTITY gnome-speech-package   "gnome-speech-&gnome-speech-version;.tar.bz2">
 <!ENTITY gnome-speech-directory "gnome-speech-&gnome-speech-version;">
 
-<!ENTITY gnome-mag-version "0.11.10">
-<!ENTITY gnome-mag-package "gnome-mag-&gnome-mag-version;.tar.bz2">
+<!ENTITY gnome-mag-version   "0.11.10">
+<!ENTITY gnome-mag-package   "gnome-mag-&gnome-mag-version;.tar.bz2">
 <!ENTITY gnome-mag-directory "gnome-mag-&gnome-mag-version;">
 
-<!ENTITY gnopernicus-version "0.9.18">
-<!ENTITY gnopernicus-package "gnopernicus-&gnopernicus-version;.tar.bz2">
+<!ENTITY gnopernicus-version   "0.9.18">
+<!ENTITY gnopernicus-package   "gnopernicus-&gnopernicus-version;.tar.bz2">
 <!ENTITY gnopernicus-directory "gnopernicus-&gnopernicus-version;">
 
-<!ENTITY gok-version "0.11.16">
-<!ENTITY gok-package "gok-&gok-version;.tar.bz2">
+<!ENTITY gok-version   "0.11.16">
+<!ENTITY gok-package   "gok-&gok-version;.tar.bz2">
 <!ENTITY gok-directory "gok-&gok-version;">
 
-<!ENTITY epiphany-version "1.4.5">
-<!ENTITY epiphany-package "epiphany-&epiphany-version;.tar.bz2">
+<!ENTITY epiphany-version   "1.4.5">
+<!ENTITY epiphany-package   "epiphany-&epiphany-version;.tar.bz2">
 <!ENTITY epiphany-directory "epiphany-&epiphany-version;">
 
-<!ENTITY gnomemeeting-version "1.0.2">
-<!ENTITY gnomemeeting-package "gnomemeeting-&gnomemeeting-version;.tar.bz2">
+<!ENTITY gnomemeeting-version   "1.0.2">
+<!ENTITY gnomemeeting-package   "gnomemeeting-&gnomemeeting-version;.tar.bz2">
 <!ENTITY gnomemeeting-directory "gnomemeeting-&gnomemeeting-version;">
 
 <!ENTITY gnome-games-version   "2.8.1">

@@ -1,20 +1,20 @@
 <!--************* packages for chapter 33 *************-->
 
 <!ENTITY abiword-major-minor "2.2">
-<!ENTITY abiword-version   "&abiword-major-minor;.3">
-<!ENTITY abiword-package   "abiword-&abiword-version;.tar.bz2">
-<!ENTITY abiword-directory "abiword-&abiword-version;">
+<!ENTITY abiword-version     "&abiword-major-minor;.3">
+<!ENTITY abiword-package     "abiword-&abiword-version;.tar.bz2">
+<!ENTITY abiword-directory   "abiword-&abiword-version;">
 
 <!ENTITY gnumeric-version   "1.4.1">
 <!ENTITY gnumeric-package   "gnumeric-&gnumeric-version;.tar.bz2">
 <!ENTITY gnumeric-directory "gnumeric-&gnumeric-version;">
 
 <!ENTITY gnucash-version   "1.8.10">
-<!ENTITY gnucash-package   "gnucash-&gnucash-version;.tar.gz">
+<!ENTITY gnucash-package   "gnucash-&gnucash-version;.tar.bz2">
 <!ENTITY gnucash-directory "gnucash-&gnucash-version;">
 
 <!ENTITY gnucash-docs-version   "1.8.5">
-<!ENTITY gnucash-docs-package   "gnucash-docs-&gnucash-docs-version;.tar.gz">
+<!ENTITY gnucash-docs-package   "gnucash-docs-&gnucash-docs-version;.tar.bz2">
 <!ENTITY gnucash-docs-directory "gnucash-docs-&gnucash-docs-version;">
 
 <!ENTITY gimp-version   "2.2.3">
@@ -24,4 +24,3 @@
 <!ENTITY evolution-version   "2.0.2">
 <!ENTITY evolution-package   "evolution-&evolution-version;.tar.bz2">
 <!ENTITY evolution-directory "evolution-&evolution-version;">
-
