@@ -11,16 +11,16 @@
 
 ]>
 <alfs>
-  <package name="reiserfsutils" version="&reiserfsutils-version;">
+  <package name="reiserfsprogs" version="&reiserfsprogs-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&reiserfsutils-package;</archive>
+        <archive>&packages_dir;/&reiserfsprogs-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&reiserfsutils-directory;</base>
+        <base>&build_dir;/&reiserfsprogs-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
@@ -42,7 +42,7 @@
       </link>
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&reiserfsutils-directory;</remove>
+      <remove>&build_dir;/&reiserfsprogs-directory;</remove>
     </stage>
   </package>
 </alfs>
