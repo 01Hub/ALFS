@@ -26,7 +26,7 @@
 <!ENTITY bison-package "bison-&bison-version;.tar.bz2">
 <!ENTITY bison-directory "bison-&bison-version;">
 
-<!ENTITY bison-attribute-patch-md5 "7504d4e95d97b664dc9910615317a39c">
+<!ENTITY bison-attribute-patch-md5 "599a35b0a76fc4335e640389acdaffbe">
 <!ENTITY bison-attribute-patch "bison-&bison-version;-attribute.patch">
 
 <!ENTITY bzip2-md5 "ee76864958d568677f03db8afad92beb">
@@ -101,13 +101,13 @@
 <!ENTITY gcc-2953-package "gcc-&gcc-2953-version;.tar.gz">
 <!ENTITY gcc-2953-directory "gcc-&gcc-2953-version;">
 
-<!ENTITY gcc-2953-patch-md5 "011dd058ba5cc5f52ae3f31b7fd41c99">
+<!ENTITY gcc-2953-patch-md5 "55df4c204d1157f030f64b49d45e7e64">
 <!ENTITY gcc-2953-patch "gcc-&gcc-2953-version;-2.patch">
 
-<!ENTITY gcc-2953-patch-no-fixinc-md5 "6f476862002518b809d16caaf5b2e276">
+<!ENTITY gcc-2953-patch-no-fixinc-md5 "b84af298cbdc81d122037060437a3150">
 <!ENTITY gcc-2953-patch-no-fixinc "gcc-&gcc-2953-version;-no-fixinc.patch">
 
-<!ENTITY gcc-2953-returntype-fix-patch-md5 "f74207075f47b9b6adc875537aa98f3d">
+<!ENTITY gcc-2953-returntype-fix-patch-md5 "4ad05637a4b9d655b6ebc64061b93ee8">
 <!ENTITY gcc-2953-returntype-fix-patch "gcc-&gcc-2953-version;-returntype-fix.patch">
 
 <!ENTITY gcc-version "3.3.3">
