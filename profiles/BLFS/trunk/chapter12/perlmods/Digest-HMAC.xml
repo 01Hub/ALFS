@@ -12,6 +12,11 @@
 ]>
 <alfs>
 <package name="Digest-HMAC" version="&Digest-HMAC-version;">
+  <packageinfo>
+    <requires>
+      <name>Digest-SHA1</name>
+    </requires>
+  </packageinfo>
   <stage name="Unpacking.">
     <unpack>
       <archive>&packages_dir;/&Digest-HMAC-package;</archive>
