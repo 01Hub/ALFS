@@ -81,7 +81,7 @@ static int remove_main_ver2(element_s *el)
 
 		warn_if_doesnt_exist(tok);
 
-		if ((status = execute_command("rm -fr %s", tok))) {
+		if ((status = execute_command(el, "rm -fr %s", tok))) {
 			Nprint_h_err("Removing failed.");
 			break;
 		}
@@ -114,7 +114,7 @@ static int remove_main_ver3(element_s *el)
 
 	Nprint_h("Removing %s.", name);
 
-	if ((status = execute_command("rm -fr %s", name))) {
+	if ((status = execute_command(el, "rm -fr %s", name))) {
 		Nprint_h_err("Removing failed.");
 	}
 
@@ -158,7 +158,7 @@ static int remove_main_ver3_2(element_s *el)
         
         	Nprint_h("Removing %s.", name);
 
-        	if ((status = execute_command("rm -fr %s", name))) {
+        	if ((status = execute_command(el, "rm -fr %s", name))) {
             		Nprint_h_err("Removing failed.");
             		status = -1;
             		break;
@@ -232,6 +232,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = 0,
 		.alloc_data = NULL,
 		.is_action = 1,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 #endif

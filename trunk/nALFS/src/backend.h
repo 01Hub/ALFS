@@ -42,11 +42,8 @@ void set_receive_sigio(int s, int receive_it);
 
 void fatal_backend_error(const char *format, ...);
 
-/* execute_command() is deprecated, please use execute_shell_command() */
-int execute_command(const char *format, ...);
-
 int execute_direct_command(const char *command, char *const argv[]);
-int execute_shell_command(element_s *element, const char *format, ...);
+int execute_command(element_s *element, const char *format, ...);
 
 int do_execute_test_element(element_s *element, int *result);
 int execute_children(element_s *element);

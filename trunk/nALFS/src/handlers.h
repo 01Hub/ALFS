@@ -68,6 +68,10 @@ typedef struct handler_info_s {
 				   handlers that replace standard ones) */
 
 	handler_test test;	/* used by HTYPE_TEST */
+	int alternate_shell;	/* commands issued by handler should support
+				   <shell> element if present in a containing
+				   stage
+				*/
 } handler_info_s;
 
 
@@ -101,6 +105,5 @@ int option_exists(const char *option, element_s *element);
 void check_options(int total, int *opts, const char *string_, element_s *el);
 char *append_param_elements(char **string, element_s *el);
 char *append_prefix_elements(char **string, element_s *el);
-
 
 #endif /* H_HANDLER_ */

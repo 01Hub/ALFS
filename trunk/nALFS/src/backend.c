@@ -248,7 +248,9 @@ int execute_direct_command(const char *command, char *const argv[])
 		Nprint_err("Executing command using %s failed: %s", command,
 			strerror(errno));
 
-		exit(EXIT_FAILURE);
+		/* use a non-standard exit() code to ensure that the parent
+		   knows the executing command failed completely */
+		exit(-1);
 	}
 
 	/* Parent. */
@@ -289,7 +291,7 @@ int execute_direct_command(const char *command, char *const argv[])
 	return status;
 }
 
-int execute_shell_command(element_s *element, const char *format, ...)
+int execute_command(element_s *element, const char *format, ...)
 {
 	va_list ap;
 	int status = 0;
@@ -304,7 +306,11 @@ int execute_shell_command(element_s *element, const char *format, ...)
 	va_end(ap);
 
 	if (status > -1 && status < (int) sizeof command) {
-		shell = alloc_stage_shell(element);
+		if (element && element->handler->info->alternate_shell) {
+			shell = alloc_stage_shell(element);
+		} else {
+			shell = xstrdup("sh");
+		}
 		/* make a copy of shell because basename may modify it */
 		temp = xstrdup(shell);
 		args[0] = xstrdup(basename(temp));
@@ -315,32 +321,6 @@ int execute_shell_command(element_s *element, const char *format, ...)
 		xfree(args[0]);
 		xfree(temp);
 		xfree(shell);
-	} else {
-		Nprint_err("System command is too long.");
-		return -1;
-	}
-
-	return status;
-}
-
-int execute_command(const char *format, ...)
-{
-	va_list ap;
-	int status = 0;
-	char command[MAX_COMMAND_LEN];
-	char *args[4];
-
-
-	va_start(ap, format);
-	status = vsnprintf(command, sizeof command, format, ap);
-	va_end(ap);
-
-	if (status > -1 && status < (int) sizeof command) {
-		args[0] = "sh";
-		args[1] = "-c";
-		args[2] = command;
-		args[3] = NULL;
-		status = execute_direct_command("sh", args);
 	} else {
 		Nprint_err("System command is too long.");
 		return -1;

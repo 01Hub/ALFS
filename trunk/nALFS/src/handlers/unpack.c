@@ -71,7 +71,7 @@ static INLINE char *alloc_basename(const char *archive)
 	return base_name;
 }
 
-static int unpack_archive(const char *archive)
+static int unpack_archive(element_s *element, const char *archive)
 {
 	char *decompressor = NULL;
 	char *unpacker = NULL;
@@ -90,7 +90,7 @@ static int unpack_archive(const char *archive)
 		}
 		append_str(&command, unpacker);
 		Nprint_h("Unpacking %s...", archive);
-		status = execute_command(command, archive);
+		status = execute_command(element, command, archive);
 	} else if (decompressor != NULL) {
 		/* Allocate basename (without the last extension). */
 		char *base_name = alloc_basename(archive);
@@ -98,7 +98,7 @@ static int unpack_archive(const char *archive)
 		Nprint_h("Decompressing %s...", archive);
 		command = xstrdup(decompressor);
 		append_str(&command, " > %s");
-		status = execute_command(command, archive, base_name);
+		status = execute_command(element, command, archive, base_name);
 		xfree(base_name);
 	} else {
 		Nprint_h_err("Unknown archive (%s).", archive);
@@ -149,7 +149,7 @@ static int unpack_main_ver2(element_s *el)
 		return -1;
 	}
 
-	if (unpack_archive(archive)) {
+	if (unpack_archive(el, archive)) {
 		Nprint_h_err("Unpacking %s failed.", archive);
 	} else {
 		Nprint_h("Done unpacking %s.", archive);
@@ -232,7 +232,7 @@ static int unpack_main_ver3(element_s *el)
 		goto free_all_and_return;
 	}
 
-	if (unpack_archive(archive)) {
+	if (unpack_archive(el, archive)) {
 		Nprint_h_err("Unpacking %s failed.", archive);
 	} else {
 		Nprint_h("Done unpacking %s.", archive);
@@ -324,7 +324,7 @@ static int unpack_main_ver3_2(element_s *el)
 		goto free_all_and_return;
 	}
 
-	if (unpack_archive(archive)) {
+	if (unpack_archive(el, archive)) {
 		Nprint_h_err("Unpacking %s failed.", archive);
 	} else {
 		Nprint_h("Done unpacking %s.", archive);
@@ -397,7 +397,8 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
+		.priority = 0,
+		.alternate_shell = 1,
 	},
 #endif
 	{

@@ -533,6 +533,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL | HTYPE_STAGE,
 		.alloc_data = NULL,
 		.is_action = 0,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 	{
@@ -544,6 +545,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_TRUE_RESULT | HTYPE_STAGE,
 		.alloc_data = NULL,
 		.is_action = 0,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 	{
@@ -555,6 +557,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_FALSE_RESULT | HTYPE_STAGE,
 		.alloc_data = NULL,
 		.is_action = 0,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 #endif

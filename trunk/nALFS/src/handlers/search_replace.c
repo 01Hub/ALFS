@@ -159,7 +159,7 @@ static int search_replace_main(element_s *el, const char *base_dir)
 	Nprint_h("Made %d change%s.", num_found,
 		num_found != 1 ? "s" : ""); /* :-) */
 
-	if (execute_command("mv -f %s %s", tmp_file, file)) {
+	if (execute_command(el, "mv -f %s %s", tmp_file, file)) {
 		Nprint_h_err("System command for moving %s to %s failed.",
 			tmp_file, file);
 		xfree(find);
@@ -278,6 +278,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 #endif

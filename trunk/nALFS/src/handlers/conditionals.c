@@ -40,7 +40,7 @@
 static const char *null_parameters[] = { NULL };
 
 #if HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
-static int do_shelltest(const char *test, int *result)
+static int do_shelltest(element_s *element, const char *test, int *result)
 {
 	int status = 0;
 	long num_value;
@@ -68,7 +68,7 @@ static int do_shelltest(const char *test, int *result)
 		*result = 0;
 	} else {
 		Nprint_h("    test %s", temp);
-		status = execute_command("test %s", temp);
+		status = execute_command(element, "test %s", temp);
 		if ((status == 0) || (status == 1)) {
 			*result = (status == 0) ? 1 : 0;
 			status = 0;
@@ -102,7 +102,7 @@ static int if_main_3_1(element_s *element)
 		return -1;
 	}
 	if (shelltest) {
-		if ((status = do_shelltest(shelltest, &test_result)))
+		if ((status = do_shelltest(element, shelltest, &test_result)))
 			return status;
 	} else {
 	}
@@ -217,7 +217,7 @@ static int shelltest_test_3_2(element_s *element, int *result)
 	if ((test = alloc_trimmed_str(element->content)) == NULL) {
 		Nprint_h_err("No test content specified.");
 	} else {
-		status = do_shelltest(test, result);
+		status = do_shelltest(element, test, result);
 		xfree(test);
 	}
 
@@ -267,6 +267,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 	{
@@ -278,6 +279,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_TEST,
 		.alloc_data = NULL,
 		.is_action = 1,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 	{
@@ -289,6 +291,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_TEST,
 		.alloc_data = NULL,
 		.is_action = 1,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 	{
@@ -300,6 +303,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_TEST,
 		.alloc_data = NULL,
 		.is_action = 1,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 	{
@@ -310,6 +314,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.test = shelltest_test_3_2,
 		.type = HTYPE_TEST,
 		.alloc_data = NULL,
+		.alternate_shell = 1,
 		.is_action = 1,
 		.priority = 0
 	},
@@ -322,6 +327,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_TEST,
 		.alloc_data = NULL,
 		.is_action = 1,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 	{
@@ -333,6 +339,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_TEST,
 		.alloc_data = NULL,
 		.is_action = 1,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 #endif

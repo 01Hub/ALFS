@@ -102,7 +102,7 @@ static int ownership_main(element_s *el)
 
 			Nprint_h("%s", message);
 
-			if ((status = execute_command(command))) {
+			if ((status = execute_command(el, command))) {
 				Nprint_h_err("Changing ownership failed.");
 				xfree(s);
 				xfree(command);
@@ -141,7 +141,7 @@ static int ownership_main(element_s *el)
 
 			Nprint_h("%s", message);
 
-			if ((status = execute_command(command))) {
+			if ((status = execute_command(el, command))) {
 				Nprint_h_err("Changing ownership failed.");
 				xfree(s);
 				xfree(command);
@@ -205,6 +205,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 #endif

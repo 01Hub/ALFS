@@ -69,7 +69,7 @@ static int patch_main_ver2(element_s *el)
 	Nprint_h("Patching in %s", base);
 	Nprint_h("    patch %s", parameters);
 
-	if ((status = execute_command("patch %s", parameters))) {
+	if ((status = execute_command(el, "patch %s", parameters))) {
 		Nprint_h_err("Patching failed.");
 	}
 	
@@ -125,7 +125,7 @@ static int patch_main_ver3(element_s *el)
 
 	Nprint_h("    %s", command);
 
-	if ((status = execute_command(command))) {
+	if ((status = execute_command(el, command))) {
 		Nprint_h_err("Patching failed.");
 	}
 	
@@ -249,7 +249,8 @@ static int patch_main_ver3_2(element_s *el)
 
 	Nprint_h("    %s", command);
 
-	if ((status = execute_command(decompressor, file, command))) {
+	if ((status = execute_command(el, decompressor, file,
+				      command))) {
 		Nprint_h_err("Patching failed.");
 	}
 	
@@ -320,6 +321,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 #endif

@@ -334,6 +334,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_PACKAGE,
 		.alloc_data = package_data_ver3,
 		.is_action = 0,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 #endif

@@ -85,9 +85,9 @@ static int mkdir_main_ver2(element_s *el)
 		}
 
 		if (parents) {
-			status = execute_command("mkdir -p %s", tok);
+			status = execute_command(el, "mkdir -p %s", tok);
 		} else {
-			status = execute_command("mkdir %s", tok);
+			status = execute_command(el, "mkdir %s", tok);
 		}
 
 		if (status) {
@@ -100,7 +100,7 @@ static int mkdir_main_ver2(element_s *el)
 		}
 
 		/* Change permissions. */
-		if ((status = execute_command("chmod %s %s", perm, tok))) {
+		if ((status = execute_command(el, "chmod %s %s", perm, tok))) {
 			Nprint_h_err("Changing permissions failed.");
 			break;
 		}
@@ -180,7 +180,7 @@ static int mkdir_main_ver3(element_s *el)
 		
 		Nprint_h("%s", message);
 
-		if ((status = execute_command("%s", command))) {
+		if ((status = execute_command(el, "%s", command))) {
 			Nprint_h_err("Creating %s failed.", dir);
 			xfree(dir);
 			xfree(command);
@@ -190,7 +190,7 @@ static int mkdir_main_ver3(element_s *el)
 
 		if (perm) {
 			/* Change permissions. */
-			if ((status = execute_command("chmod %s %s",
+			if ((status = execute_command(el, "chmod %s %s",
 			perm, dir))) {
 				Nprint_h_err("Changing permissions failed.");
 				xfree(dir);
@@ -268,6 +268,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 #endif

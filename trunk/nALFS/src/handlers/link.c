@@ -117,7 +117,7 @@ static int link_main_ver2(element_s *el)
 		append_str(&command, link_name);
 	}
 
-	if ((status = execute_command("%s", command))) {
+	if ((status = execute_command(el, "%s", command))) {
 		Nprint_h_err("Executing \"%s\" in \"%s\" failed.",
 			command, base);
 	}
@@ -232,7 +232,7 @@ static int link_main_ver3(element_s *el)
 		Nprint_h("%s", message);
 		Nprint_h("    %s", targets);
 
-		if ((status = execute_command("%s", command))) {
+		if ((status = execute_command(el, "%s", command))) {
 			Nprint_h_err("Executing \"%s\" in %s failed.",
 				command, base);
 		}
@@ -307,6 +307,7 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
+		.alternate_shell = 1,
 		.priority = 0
 	},
 #endif
