@@ -58,12 +58,14 @@ struct handler_attribute {
 	const char * const name;
 	const int private;		/* Internal to handler. */
 	const int content_optional;
+	const int untrimmed;		/* handler wants raw content */
 };
 
 struct handler_parameter {
 	const char * const name;
 	const int private;		/* Internal to handler. */
 	const int content_optional;
+	const int untrimmed;		/* handler wants raw content */
 };
 
 typedef char *(*handler_data_f)(const element_s * const element,
