@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS-3.1.dtd" []>
+
+<alfs>
+<!--	
+ ************************ 
+ * OPTIONAL BUT USEFULL *
+ ************************
+
+ * remove the space in between the - -strip command to make the strip work
+
+<stage name="First stripping of debug symbols">
+	<execute command="/tools/bin/strip">
+		<param>- -strip-debug</param>
+		<param>/tools/lib/*</param>
+	</execute>
+
+	<execute command="/tools/bin/strip">
+		<param>- -strip-unneeded</param>
+		<param>/tools/{,s}bin/*</param>
+	</execute>
+
+	<remove>/tools/{doc,info,man}</remove>
+
+</stage>
+-->
+</alfs>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS-3.1.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+
+<alfs>
+
+<stage name="Locking glibc.">
+	<stage name="Adjusting the linker.">
+		<stageinfo>
+			<base>&build_dir;/binutils-build</base>
+		</stageinfo>
+
+		<make>
+			<param>-C ld</param>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<remove>&build_dir;/&binutils-directory;</remove>
+	<remove>&build_dir;/binutils-build</remove>
+
+	<search_replace>
+		<file>/tools/lib/gcc/&gcc_target;/&gcc-version;/specs</file>
+		<find> /lib/&glibc-loader;</find>
+		<replace> /tools/lib/&glibc-loader;</replace>
+	</search_replace>
+
+	<remove>/tools/lib/gcc/*/*/include/{pthread.h,bits/sigthread.h}</remove>
+
+<!-- Test basic functions of toolchain with:
+	echo 'main(){}' > dummy.c; gcc dummy.c; readelf -l a.out | grep ': /tools';
+Output of last line s/b: [Requesting program interpreter: /tools/lib/ld-linux.so.2]
+If so:  
+	rm dummy.c a.out
+Otherwise, STOP HERE & find & fix the problem
+-->
+
+</stage>
+
+</alfs>

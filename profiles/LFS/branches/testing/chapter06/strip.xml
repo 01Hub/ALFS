@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS-3.1.dtd" []>
+
+<alfs>
+
+<!-- 
+	
+ ************************ 
+ * OPTIONAL BUT USEFULL *
+ ************************
+
+ * remove the space in between the - -strip command to make the strip work
+
+<stage name="Stripping debug symbols">
+	<execute command="/tools/bin/find">
+		<param>/{,usr/,usr/local/}{bin,lib,sbin}</param>
+		<param>-type f</param>
+		<param>-exec /tools/bin/strip - -strip-debug '{}' ';'</param>	
+	</execute>
+</stage> -->
+
+</alfs>
