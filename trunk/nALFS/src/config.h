@@ -61,7 +61,7 @@
 /*
  * Some program's info.
  */
-#define VERSION            "1.1.7"
+#define VERSION            "1.1.8"
 #define PROGRAM_NAME       "nALFS"
 #define PROGRAM_FULL_NAME  PROGRAM_NAME " v" VERSION
 #define EMAIL              "haski@sezampro.yu"

@@ -1,4 +1,4 @@
-nALFS, version 1.1.7
+nALFS, version 1.1.8
 ====================
 
 
@@ -77,12 +77,15 @@ much much more.
 
 Some links that might interest you:
 
-Linux From Scratch: http://www.linuxfromscratch.org/
+Linux From Scratch:
+    http://www.linuxfromscratch.org/
 
-Automated Linux From Scratch: http://automated.linuxfromscratch.org/
+Automated Linux From Scratch:
+    http://www.linuxfromscratch.org/alfs/
 
-Information about alfs-discuss mailing list (which discusses the
-development of ALFS) can also be found at the above site.
+Mailing lists for ALFS:
+    http://linuxfromscratch.org/mailman/listinfo/alfs-discuss
+    http://linuxfromscratch.org/mailman/listinfo/alfs-log
 
 
 2. Quick start
