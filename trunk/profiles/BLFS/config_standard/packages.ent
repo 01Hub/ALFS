@@ -35,13 +35,6 @@
 <!ENTITY tripwire-directory "tripwire-&tripwire-version;">
 
 <!ENTITY tripwire-gcc-patch "tripwire-&tripwire-version;-gcc3-build-fixes.patch">
-<!-- the content of the following entity should be the name of your policy file for tripwire -->
-<!ENTITY tripwire-policy-file "tripwire-policy.txt">
-<!-- these should be changed to usable values -->
-<!ENTITY tripwire-mail-domain "mail.domain.com">
-<!ENTITY tripwire-smtp-port "25">
-<!ENTITY tripwire-sitepassphrase "blahville">
-<!ENTITY tripwire-localpassphrase "blahville2">
 
 <!--************* packages for chapter 5 *************-->
 
@@ -297,6 +290,7 @@
 <!ENTITY hdparm-version   "5.4">
 <!ENTITY hdparm-package   "hdparm-5.4.tar.gz">
 <!ENTITY hdparm-directory "hdparm-5.4">
+<!ENTITY hdparm-patch1 "">
 
 <!ENTITY which-version   "2.14">
 <!ENTITY which-package   "which-2.14.tar.gz">
@@ -425,18 +419,11 @@
 <!ENTITY dhclient-package "dhcp-&dhclient-version;.tar.gz">
 <!ENTITY dhclient-directory "dhcp-&dhclient-version;">
 
-<!-- These two entities should be set to appropriate values to start and stop dhclient -->
-<!ENTITY dhclient-start-params "">
-<!ENTITY dhclient-stop-params "">
-
 <!ENTITY dhcpcd-version   "1.3.22-pl4">
 <!ENTITY dhcpcd-package   "dhcpcd-&dhcpcd-version;.tar.gz">
 <!ENTITY dhcpcd-directory "dhcpcd-&dhcpcd-version;">
 
 <!ENTITY dhcpcd-patch     "dhcpcd-&dhcpcd-version;-fhs.patch">
-<!-- These two entities should be set to appropriate values to start and stop dhcpcd -->
-<!ENTITY dhcpcd-start-params "">
-<!ENTITY dhcpcd-stop-params "">
 
 <!--************* packages for chapter 15 *************-->
 <!ENTITY rp-pppoe-version "3.5">
@@ -682,35 +669,47 @@
 <!ENTITY xfree86-package7  "XFree86-&xfree86-version;-src-7.tgz">
 <!ENTITY xfree86-directory "xc">
 
-<!--************* packages for chapter 27 *************-->
+<!--************* packages for chapter 26 *************-->
 
-<!ENTITY qt-version   "3.2.1">
-<!ENTITY qt-package   "qt-x11-free-3.2.1.tar.bz2">
-<!ENTITY qt-directory "qt-x11-free-3.2.1">
+<!ENTITY qt-version   "3.3.1">
+<!ENTITY qt-package   "qt-x11-free-&qt-version;.tar.bz2">
+<!ENTITY qt-directory "qt-x11-free-&qt-version;">
 
 <!ENTITY gtkplus-version   "1.2.10">
-<!ENTITY gtkplus-package   "gtk+-1.2.10.tar.gz">
-<!ENTITY gtkplus-directory "gtk+-1.2.10">
+<!ENTITY gtkplus-package   "gtk+-&gtkplus-version;.tar.gz">
+<!ENTITY gtkplus-directory "gtk+-&gtkplus-version;">
 
-<!ENTITY gtkplus2-version   "2.2.4">
-<!ENTITY gtkplus2-package   "gtk+-2.2.4.tar.bz2">
-<!ENTITY gtkplus2-directory "gtk+-2.2.4">
+<!ENTITY gtkplus2-version   "2.4.0">
+<!ENTITY gtkplus2-package   "gtk+-&gtkplus2-version;.tar.bz2">
+<!ENTITY gtkplus2-directory "gtk+-&gtkplus2-version;">
 
-<!ENTITY atk-version   "1.4.1">
-<!ENTITY atk-package   "atk-1.4.1.tar.bz2">
-<!ENTITY atk-directory "atk-1.4.1">
+<!ENTITY atk-version   "1.6.0">
+<!ENTITY atk-package   "atk-&atk-version;tar.bz2">
+<!ENTITY atk-directory "atk-&atk-version;">
 
-<!ENTITY pango-version   "1.2.5">
-<!ENTITY pango-package   "pango-1.2.5.tar.gz">
-<!ENTITY pango-directory "pango-1.2.5">
+<!ENTITY pango-version   "1.4.0">
+<!ENTITY pango-package   "pango-&pango-version;.tar.gz">
+<!ENTITY pango-directory "pango-&pango-version;">
 
-<!ENTITY lesstif-version   "0.93.46">
-<!ENTITY lesstif-package   "lesstif-0.93.46.tar.bz2">
-<!ENTITY lesstif-directory "lesstif-0.93.46">
+<!ENTITY lesstif-version   "0.93.94">
+<!ENTITY lesstif-package   "lesstif-&lesstif-version;.tar.bz2">
+<!ENTITY lesstif-directory "lesstif-&lesstif-version;">
 
-<!ENTITY startup-notification-version   "0.5">
-<!ENTITY startup-notification-package   "startup-notification-0.5.tar.gz">
-<!ENTITY startup-notification-directory "startup-notification-0.5">
+<!ENTITY startup-notification-version   "0.6">
+<!ENTITY startup-notification-package   "startup-notification-&startup-notification-version;.tar.gz">
+<!ENTITY startup-notification-directory "startup-notification-&startup-notification-version;">
+
+<!ENTITY shared-mime-info-version "0.14">
+<!ENTITY shared-mime-info-package "shared-mime-info-&shared-mime-info-version;.tar.gz">
+<!ENTITY shared-mime-info-directory "shared-mime-info-&shared-mime-info-version;">
+
+<!ENTITY hicolor-icon-theme-version "0.5">
+<!ENTITY hicolor-icon-theme-package "hicolor-icon-theme-&hicolor-icon-theme-version;.tar.gz">
+<!ENTITY hicolor-icon-theme-directory "hicolor-icon-theme-&hicolor-icon-theme-version;">
+
+<!ENTITY libxklavier-version "1.02">
+<!ENTITY libxklavier-package "libxklavier-&libxklavier-version;.tar.gz">
+<!ENTITY libxklavier-directory "libxklavier-&libxklavier-version;">
 
 <!--************* packages for chapter 28 *************-->
 

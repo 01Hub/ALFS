@@ -2,10 +2,7 @@
 
         <packageinfo>
                 <requires><name>glib2</name></requires>
-		<utilizes><name>gtkdoc</name></utilizes>
 		<utilizes><name>gtk-doc</name></utilizes>
-		<utilizes><name>xml-dtd</name></utilizes>
-		<utilizes><name>docbook-xsl</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -22,7 +19,6 @@
 
 		<configure>
 			<param>--prefix=/usr</param>
-			<param>--enable-gtk-doc</param>
 		</configure>
 
 		<make/>

@@ -1,0 +1,18 @@
+<!-- configuration for tripwire -->
+<!-- the content of the following entity should be the name of your policy file for tripwire -->
+<!ENTITY tripwire-policy-file "tripwire-policy.txt">
+<!-- these should be changed to usable values -->
+<!ENTITY tripwire-mail-domain "mail.domain.com">
+<!ENTITY tripwire-smtp-port "25">
+<!ENTITY tripwire-sitepassphrase "blahville">
+<!ENTITY tripwire-localpassphrase "blahville2">
+
+<!-- configuration for dhclient -->
+<!-- These two entities should be set to appropriate values to start and stop dhclient -->
+<!ENTITY dhclient-start-params "">
+<!ENTITY dhclient-stop-params "">
+
+<!-- configuration for dhcpcd -->
+<!-- These two entities should be set to appropriate values to start and stop dhcpcd -->
+<!ENTITY dhcpcd-start-params "">
+<!ENTITY dhcpcd-stop-params "">

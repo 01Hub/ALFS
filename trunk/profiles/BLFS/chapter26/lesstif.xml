@@ -16,6 +16,9 @@
 			<base>&build_dir;/&lesstif-directory;</base>
 		</stageinfo>
 
+		<execute command="find -name Makefile.in | 
+			xargs sed -i 's@$(prefix)/LessTif@$(prefix)/share/LessTif@g'"/>
+
 		<configure>
 			<param>--prefix=/usr</param>
                         <param>--enable-build-20</param>

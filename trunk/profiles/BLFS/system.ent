@@ -181,14 +181,17 @@
 <!ENTITY xorg      SYSTEM "./chapter25/xorg.xml">
 <!ENTITY xfree86   SYSTEM "./chapter25/xfree86.xml">
 
-<!-- chapter 27 -->
-<!ENTITY qt         SYSTEM "./chapter27/qt.xml">
-<!ENTITY gtkplus    SYSTEM "./chapter27/gtk+.xml">
-<!ENTITY gtkplus2   SYSTEM "./chapter27/gtk+2.xml">
-<!ENTITY atk        SYSTEM "./chapter27/atk.xml">
-<!ENTITY pango      SYSTEM "./chapter27/pango.xml">
-<!ENTITY lesstif    SYSTEM "./chapter27/lesstif.xml">
-<!ENTITY startup-notification  SYSTEM "./chapter27/startup-notification.xml">
+<!-- chapter 26 -->
+<!ENTITY qt         SYSTEM "./chapter26/qt.xml">
+<!ENTITY gtkplus    SYSTEM "./chapter26/gtk+.xml">
+<!ENTITY gtkplus2   SYSTEM "./chapter26/gtk+2.xml">
+<!ENTITY atk        SYSTEM "./chapter26/atk.xml">
+<!ENTITY pango      SYSTEM "./chapter26/pango.xml">
+<!ENTITY lesstif    SYSTEM "./chapter26/lesstif.xml">
+<!ENTITY startup-notification  SYSTEM "./chapter26/startup-notification.xml">
+<!ENTITY shared-mime-info SYSTEM "./chapter26/shared-mime-info.xml">
+<!ENTITY hicolor-icon-theme SYSTEM "./chapter26/hicolor-icon-theme.xml">
+<!ENTITY libxklavier SYSTEM "./chapter26/libxklavier.xml">
 
 
 <!-- chapter 28 -->

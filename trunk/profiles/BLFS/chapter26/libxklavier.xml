@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<package name="" version="">
+<package name="libxklavier" version="&libxklavier-version;">
+  <packageinfo>
+    <requires>
+      <name>xfree86</name>
+    </requires>
+    <requires>
+      <name>pkgconfig</name>
+    </requires>
+    <requires>
+      <name>libxml2</name>
+    </requires>
+  </packageinfo>
   <stage name="Unpacking.">
     <unpack>
       <archive>&packages_dir;/</archive>
@@ -8,7 +19,7 @@
   </stage>
   <stage name="Installing.">
     <stageinfo>
-      <base>&build_dir;/</base>
+      <base>&build_dir;/&libxklavier-directory;</base>
     </stageinfo>
     <configure>
       <param>--prefix=/usr</param>
@@ -18,7 +29,8 @@
       <param>install</param>
     </make>
   </stage>
+  <execute command="/sbin/ldconfig" />
   <stage name="Cleanup.">
-    <remove>&build_dir;/</remove>
+    <remove>&build_dir;/&libxklavier-directory;</remove>
   </stage>
 </package>
