@@ -129,5 +129,9 @@ void parse_cmdblock_str (profile *prof, char *str);
 @param node XML node which will be passed to a parse_cmd() call
 */
 void parse_unpck (profile *prof, char *url, xmlNodePtr node);
+
+// TODO: doxygen
+
+package *first_pkg (profile *prof);
 	
 #endif

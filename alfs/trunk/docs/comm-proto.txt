@@ -14,7 +14,11 @@ Initial handshake:
 
 Communication:
 
-[TODO]
+Basically, the protocol just sends serialized fundamentals over the SSL 
+encrypted connection. The Methods have an int4 unique ID and an arbitrary
+list of arguments. They return an int4 error code and an arbitrary list
+of return values. All communication is synchronous and pre-defined, therefore
+the protocol does not need headers.
 
 End of communication:
 	
