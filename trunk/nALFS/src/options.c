@@ -37,34 +37,31 @@
    be allocated storage in this module.
 */
 
-#define STRING_OPTION(opt_name, opt_def_value) \
+#define STRING_OPTION(opt_name, opt_def_value, opt_other...) \
 		static struct option_s real_opt_##opt_name = { \
 			.name = #opt_name, \
 			.type = O_STRING, \
-			.val.str = { .def_value = opt_def_value } \
+			.val.str = { .def_value = opt_def_value, \
+				     ## opt_other } \
 		}; \
-		STRING * const opt_##opt_name = &real_opt_##opt_name .val.str.value;
-#define BOOL_OPTION(opt_name, opt_def_value) \
+		STRING * const opt_##opt_name = &real_opt_##opt_name .val.str.value
+#define BOOL_OPTION(opt_name, opt_def_value, opt_other...) \
 		static struct option_s real_opt_##opt_name = { \
 			.name = #opt_name, \
 			.type = O_BOOL, \
-			.val.bool = { .def_value = opt_def_value } \
+			.val.bool = { .def_value = opt_def_value, \
+				      ## opt_other } \
 		}; \
-		BOOL * const opt_##opt_name = &real_opt_##opt_name .val.bool.value;
-#define NUMBER_OPTION(opt_name, opt_def_value) \
+		BOOL * const opt_##opt_name = &real_opt_##opt_name .val.bool.value
+#define NUMBER_OPTION(opt_name, opt_def_value, opt_other...) \
 		static struct option_s real_opt_##opt_name = { \
 			.name = #opt_name, \
 			.type = O_NUMBER, \
-			.val.num = { .def_value= opt_def_value } \
+			.val.num = { .def_value = opt_def_value, \
+				     ## opt_other } \
 		}; \
-		NUMBER * const opt_##opt_name = &real_opt_##opt_name .val.num.value;
-#define COMMAND_OPTION(opt_name, opt_def_value) \
-		static struct option_s real_opt_##opt_name = { \
-			.name = #opt_name, \
-			.type = O_COMMAND, \
-			.val.str = { .def_value = opt_def_value } \
-		}; \
-		STRING * const opt_##opt_name = &real_opt_##opt_name .val.str.value;
+		NUMBER * const opt_##opt_name = &real_opt_##opt_name .val.num.value
+
 
 #include "options.h"
 #include "option-list.h"
@@ -112,7 +109,6 @@ static void set_option_to_default(struct option_s *option)
 		break;
 		
 	case O_STRING:
-	case O_COMMAND:
 		if (option->val.str.value)
 			xfree(option->val.str.value);
 		option->val.str.value = xstrdup(option->val.str.def_value);
@@ -181,48 +177,53 @@ char *alloc_real_stamp_directory_name(void)
 	return s;
 }
 
-static INLINE int not_correct_number(const struct option_s *option, NUMBER num)
+static int validate_number_minmax(const struct option_s *option,
+				  const NUMBER value)
 {
-	if (option == &real_opt_display_timer) {
-		if (num < TIMER_NONE || num > TIMER_CURRENT) {
-			return 1;
-		}
+	int valid;
 
-	} else if (option == &real_opt_jumpto_element) {
-		if (num < JUMP_TO_FAILED || num > JUMP_TO_PACKAGE) {
-			return 1;
-		}
+	valid = (value >= option->val.num.min_value &&
+		 value <= option->val.num.max_value);
 
-	} else if (option == &real_opt_logging_method) {
-		if (num < 0 || num > LAST_LOGGING_METHOD) {
-			return 1;
-		}
-	}
+	if (!valid)
+		fprintf(stderr,
+			"Option %s outside valid range, must be between"
+			" %d and %d\n", option->name,
+			option->val.num.min_value,
+			option->val.num.max_value);
 
-	return 0;
+	return valid;
 }
 
-static int not_valid_command(const char *command)
+static int validate_command(const struct option_s *option, const STRING value)
 {
 	const char *tmp;
 	int string_count = 0;
 
-	for (tmp = command; *tmp; ++tmp) {
+	for (tmp = value; *tmp; ++tmp) {
 		if (*tmp == '%') {
 			switch (*(++tmp)) {
 			case '%':
 				break;
 			case 's':
-				if (string_count++)
-					return 1;
+				if (string_count++) {
+					fprintf(stderr, "Option %s contains"
+						" more than one string"
+						" substitution\n",
+						option->name);
+					return 0;
+				}
 				break;
 			default:
-				return 1;
+				fprintf(stderr, "Option %s contains an"
+					" invalid substitution specifier\n",
+					option->name);
+				return 0;
 			}
 		}
 	}
 
-	return 0;
+	return 1;
 }
 
 set_opt_e set_yet_unknown_option(const char *opt, const char *val)
@@ -238,43 +239,40 @@ set_opt_e set_yet_unknown_option(const char *opt, const char *val)
 		}
 
 		switch (options[i]->type) {
-			case O_BOOL:
-				if (strcmp(val, BOOL_TRUE_VALUE) == 0) {
-					options[i]->val.bool.value = 1;
-					return OPTION_SET;
-
-				} else if (strcmp(val, BOOL_FALSE_VALUE) == 0) {
-					options[i]->val.bool.value = 0;
-					return OPTION_SET;
-				}
-
+		case O_BOOL:
+			if (strcmp(val, BOOL_TRUE_VALUE) == 0) {
+				options[i]->val.bool.value = 1;
+				return OPTION_SET;
+				
+			} else if (strcmp(val, BOOL_FALSE_VALUE) == 0) {
+				options[i]->val.bool.value = 0;
+				return OPTION_SET;
+			}
+			
+			return OPTION_INVALID_VALUE;
+			
+		case O_NUMBER:
+			num = strtol(val, &s, 10);
+			
+			if (s != NULL && *s)
 				return OPTION_INVALID_VALUE;
-
-			case O_NUMBER:
-				num = strtol(val, &s, 10);
-
-				if (s != NULL && *s)
-					return OPTION_INVALID_VALUE;
-
-				if (not_correct_number(options[i], num))
-					return OPTION_INVALID_VALUE;
-
-				options[i]->val.num.value = num;
-
-				return OPTION_SET;
-
-			case O_STRING:
-				set_string_option(&options[i]->val.str.value, val);
-
-				return OPTION_SET;
-
-			case O_COMMAND:
-				if (not_valid_command(val))
-					return OPTION_INVALID_VALUE;
-
-				set_string_option(&options[i]->val.str.value, val);
-
-				return OPTION_SET;
+			
+			if (options[i]->val.num.validate &&
+			    !options[i]->val.num.validate(options[i], num))
+				return OPTION_INVALID_VALUE;
+			
+			options[i]->val.num.value = num;
+			
+			return OPTION_SET;
+			
+		case O_STRING:
+			if (options[i]->val.str.validate &&
+			    !options[i]->val.str.validate(options[i], val))
+				return OPTION_INVALID_VALUE;
+			
+			set_string_option(&options[i]->val.str.value, val);
+			
+			return OPTION_SET;
 		}
 	}
 
