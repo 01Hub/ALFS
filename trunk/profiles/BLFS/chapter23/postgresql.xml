@@ -42,8 +42,16 @@
 		<ownership user="postgres">
 		        <name>/var/pgsql/data</name>
 		</ownership>
+	</stage>
 
-		<execute command="su - postgres -c '/usr/bin/initdb -D /var/pgsql/data'" />
+	<stage name="Initializing database">
+		<stageinfo>
+			<user>postgres</user>
+		</stageinfo>
+
+		<execute command="initdb">
+			<param>-D /var/pgsql/data</param>
+		</execute>
 	</stage>
 
 	<stage name="Installing bootscript and configuration">
