@@ -5,6 +5,7 @@ ftp://cpan.pair.com/pub/CPAN/src/perl-5.8.5.tar.bz2
 ftp://ftp.astron.com/pub/file/file-4.10.tar.gz
 ftp://ftp.cistron.nl/pub/people/miquels/sysvinit/sysvinit-2.85.tar.gz
 ftp://ftp.lfs-matrix.de/pub/lfs/packages/conglomeration/glibc/glibc-2.3.4-20040701.tar.bz2
+ftp://ftp.lfs-matrix.de/pub/lfs/packages/conglomeration/man/man-1.5o.tar.bz2
 ftp://ftp.mktemp.org/pub/mktemp/mktemp-1.5.tar.gz
 ftp://ftp.pld.org.pl/software/shadow/shadow-4.0.4.1.tar.bz2
 ftp://ftp.vim.org/pub/vim/unix/vim-6.3.tar.bz2
@@ -34,7 +35,7 @@ ftp://mirrors.usc.edu/pub/gnu/texinfo/texinfo-4.7.tar.bz2
 ftp://mirrors.usc.edu/pub/gnu/sed/sed-4.1.2.tar.gz
 ftp://mirrors.usc.edu/pub/gnu/tar/tar-1.14.tar.bz2
 ftp://mirrors.usc.edu/pub/kernel/pub/linux/devel/binutils/binutils-2.15.91.0.2.tar.bz2
-ftp://mirrors.usc.edu/pub/kernel/pub/linux/utils/man/man-1.5o.tar.bz2
+# ftp://mirrors.usc.edu/pub/kernel/pub/linux/utils/man/man-1.5o.tar.bz2
 ftp://mirrors.usc.edu/pub/kernel/pub/linux/docs/manpages/man-pages-1.67.tar.bz2
 ftp://mirrors.usc.edu/pub/kernel/pub/linux/utils/kernel/module-init-tools/module-init-tools-3.0.tar.bz2
 ftp://mirrors.usc.edu/pub/kernel/pub/linux/utils/kernel/hotplug/udev-030.tar.bz2
