@@ -1,0 +1,33 @@
+<sect1 id="elem_item" xreflabel="Element: &lt;item&gt;">
+<?dbhtml filename="elem_item.html" dir="alfs_dtd"?>
+<title>Element: &lt;item&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT item           (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_list"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>item</command> element contains an item within a list in
+a description element.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<para>Refer to <xref linkend="elem_description"/> for an example.</para>
+
+</sect2>
+
+</sect1>

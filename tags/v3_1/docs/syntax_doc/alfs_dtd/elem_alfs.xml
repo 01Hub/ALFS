@@ -1,0 +1,90 @@
+<sect1 id="elem_alfs" xreflabel="Element&nbsp;: &lt;alfs&gt;">
+<?dbhtml filename="elem_alfs.html" dir="alfs_dtd"?>
+<title>Element&nbsp;: &lt;alfs&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT alfs           ((configure | copy | download | execute | link | 
+                           make | mkdir | move | ownership | package | 
+                           patch | permissions | remove | search_replace | 
+                           stage | textdump | unpack | include)+)&gt;
+&lt;!ATTLIST alfs
+          base           CDATA #IMPLIED
+          version        CDATA #FIXED &quot;3.1&quot;
+          xml:base       CDATA #IMPLIED
+          xmlns:xi       CDATA #IMPLIED&gt;
+</synopsis>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_download"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_execute"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_link"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_make"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_mkdir"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_move"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_ownership"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_package"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_patch"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_permissions"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_remove"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_search_replace"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_textdump"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_unpack"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_include"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>alfs</command> element is the root element of an ALFS
+profile document. This means that an ALFS profile should contain one and
+only one <command>alfs</command> element with all the other elements being
+embedded (used) within this element.</para>
+
+<para>When processing an <command>alfs</command> element, you processes all
+its embedded children in their order of occurrence.</para>
+
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
+
+<para>The <command>version</command> attribute identifies the version of
+the ALFS profile syntax used; it should be
+<userinput>&quot;3.1&quot;</userinput>.</para>
+
+<para>The <command>include</command> element and the
+<command>xml:base</command> and <command>xmlns:xi</command> attributes
+allow you to use <command>xi:include</command> directives in your
+profile(s).</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;!DOCTYPE alfs SYSTEM &quot;alfs-3.1.dtd&quot; [
+
+	&lt;!ENTITY % general_entities SYSTEM &quot;entities/general&quot;&gt;
+
+	%general_entities;
+
+]&gt;
+
+&lt;alfs version=&quot;3.1&quot;&gt;
+
+ .....
+
+&lt;/alfs&gt;</userinput></screen>
+
+<para>There is no equivalent Bash script example for this element.</para>
+
+</sect2>
+
+</sect1>

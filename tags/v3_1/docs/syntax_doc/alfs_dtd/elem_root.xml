@@ -1,0 +1,71 @@
+<sect1 id="elem_root" xreflabel="Element: &lt;root&gt;">
+<?dbhtml filename="elem_root.html" dir="alfs_dtd"?>
+<title>Element: &lt;root&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT root           (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_stageinfo"/>
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<para>The <command>root</command> element allows you to specify the name of
+a directory which will be the root directory for the commands of the
+stage.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;stage&gt;
+	&lt;stageinfo&gt;
+		&lt;root&gt;/mnt/lfs&lt;/root&gt;
+		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
+	&lt;/stageinfo&gt;
+
+	&lt;configure /&gt;
+
+	&lt;make /&gt;
+
+	&lt;make&gt;
+		&lt;param&gt;install&lt;/param&gt;
+	&lt;/make&gt;
+&lt;/stage&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Creating file /mnt/lfs/_nalfs_tmp.1...
+cat > /mnt/lfs/_nalfs_tmp.1 &lt;&lt; 'EOF1'
+echo Executing configure
+cd /usr/src/gzip.1.2.4a
+<command>./configure</command>
+
+echo Executing make
+cd /usr/src/gzip.1.2.4a
+<command>make</command>
+
+echo Executing make
+cd /usr/src/gzip.1.2.4a
+<command>make install</command>
+
+true
+EOF1
+
+chmod 775 /mnt/lfs/_nalfs_tmp.1
+echo Executing in directory /mnt/lfs
+/usr/sbin/chroot /mnt/lfs sh -c ./_nalfs_tmp.1
+
+echo Exiting stage</screen>
+
+</sect2>
+
+</sect1>

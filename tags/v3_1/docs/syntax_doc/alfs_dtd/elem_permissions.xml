@@ -1,0 +1,63 @@
+<sect1 id="elem_permissions" xreflabel="Element: &lt;permissions&gt;">
+<?dbhtml filename="elem_permissions.html" dir="alfs_dtd"?>
+<title>Element: &lt;permissions&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT permissions    (option?, name+)&gt;
+&lt;!ATTLIST permissions
+          base           CDATA #IMPLIED
+          mode           CDATA #REQUIRED&gt;
+</synopsis>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_option"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_name"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>permissions</command> element is one of the top-level
+operation elements. It allows you to change the permissions of a (set of)
+file(s) or directory(ies).</para>
+
+<para>The <command>option</command> child-element provides a means to pass
+an option to the <command>chmod</command> command.</para>
+
+<note><para>Not all of the <command>chmod</command> command's options are
+in every implementation.  Refer to the documentation for your
+implementation to determine what options are available.</para></note>
+
+<para>The <command>name</command> child-element contains the name(s) of the
+files whose permission is to be modified. See <xref
+linkend="elem_name"/>.</para>
+
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
+
+<para>The <command>mode</command> attribute gives the new access mode, as
+used in the <command>chmod</command> command.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;permissions mode=&quot;755&quot;&gt;
+	&lt;name&gt;/usr/bin/lex&lt;/name&gt;
+&lt;/permissions&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Changing permissions of /usr/bin/lex to 755
+<command>chmod 755 /usr/bin/lex</command></screen>
+
+</sect2>
+
+</sect1>

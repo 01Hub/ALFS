@@ -1,0 +1,75 @@
+<sect1 id="elem_content" xreflabel="Element&nbsp;: &lt;content&gt;">
+<?dbhtml filename="elem_content.html" dir="alfs_dtd"?>
+<title>Element&nbsp;: &lt;content&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT content        (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_textdump"/>.
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>content</command> element is used to specify the content
+of the file being created when processing a <command>textdump</command>
+operation.</para>
+
+<note><para>Of course, it is possible to use XML entity references in the
+<userinput>#PCDATA</userinput> or string of this element.</para></note>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;textdump base=&quot;/etc&quot;&gt;
+
+	&lt;file&gt;group&lt;/file&gt;
+
+	&lt;content&gt;
+		=root:x:0:
+		=bin:x:1:
+		=sys:x:2:
+		=kmem:x:3:
+		=tty:x:4:
+		=tape:x:5:
+		=daemon:x:6:
+		=floppy:x:7:
+		=disk:x:8:
+		=lp:x:9:
+		=dialout:x:10:
+		=audio:x:11:
+	&lt;/content&gt;
+
+&lt;/textdump></userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Generating file group
+cd /etc
+<command>cat &gt; group &lt;&lt; 'EOF'</command>
+root:x:0:
+bin:x:1:
+sys:x:2:
+kmem:x:3:
+tty:x:4:
+tape:x:5:
+daemon:x:6:
+floppy:x:7:
+disk:x:8:
+lp:x:9:
+dialout:x:10:
+audio:x:11:
+<command>EOF</command></screen>
+
+</sect2>
+
+</sect1>

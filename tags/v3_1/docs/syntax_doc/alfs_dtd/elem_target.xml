@@ -1,0 +1,33 @@
+<sect1 id="elem_target" xreflabel="Element: &lt;target&gt;">
+<?dbhtml filename="elem_target.html" dir="alfs_dtd"?>
+<title>Element: &lt;target&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT target         (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_link"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>target</command> element describes a target of a link
+operation.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<para>Refer to <xref linkend="elem_link"/> for an example.</para>
+
+</sect2>
+
+</sect1>

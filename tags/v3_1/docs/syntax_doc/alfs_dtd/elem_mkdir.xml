@@ -1,0 +1,70 @@
+<sect1 id="elem_mkdir" xreflabel="Element: &lt;mkdir&gt;">
+<?dbhtml filename="elem_mkdir.html" dir="alfs_dtd"?>
+<title>Element: &lt;mkdir&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT mkdir          (option?, permissions?, name+)&gt;
+&lt;!ATTLIST mkdir
+          base           CDATA #IMPLIED&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_option"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_name"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_permissions"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>mkdir</command> element is one of the top-level
+operation elements. It describes the creation of one (or several)
+directory(ies).</para>
+
+<para>The <command>option</command> child-element provides a means to pass
+an option to the <command>mkdir</command> command.</para>
+
+<note><para>Not all of the <command>mkdir</command> command's options are
+in every implementation.  Refer to the documentation for your
+implementation to determine what options are available.</para></note>
+
+<para>The <command>permissions</command> child-element assigns permissions
+to the directories created by the command following the syntax in <xref
+linkend="elem_permissions"/>.</para>
+
+<para>The <command>name</command> child-element contains the name(s) of the
+directory(ies) to be created.</para>
+
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;mkdir base=&quot;/usr/local/lib&quot;&gt;
+	&lt;option&gt;parents&lt;/option&gt;
+	&lt;name&gt;X11&lt;/name&gt;
+&lt;/mkdir&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>cd /usr/local/lib
+echo Making directory X11
+<command>mkdir -p X11</command></screen>
+
+</sect2>
+
+</sect1>

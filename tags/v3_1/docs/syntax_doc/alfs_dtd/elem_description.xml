@@ -1,0 +1,40 @@
+<sect1 id="elem_description" xreflabel="Element&nbsp;: &lt;description&gt;">
+<?dbhtml filename="elem_description.html" dir="alfs_dtd"?>
+<title>Element&nbsp;: &lt;description&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT description    (para | list)*&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_packageinfo"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_para"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_list"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>description</command> element contains the description
+of a package. Its use is for documentation only.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<para>Refer to <xref linkend="elem_packageinfo"/> for an example.</para>
+
+<para>There is no equivalent Bash script example for this element.</para>
+
+</sect2>
+
+</sect1>

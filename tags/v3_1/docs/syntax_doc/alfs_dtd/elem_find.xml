@@ -1,0 +1,34 @@
+<sect1 id="elem_find" xreflabel="Element: &lt;find&gt;">
+<?dbhtml filename="elem_find.html" dir="alfs_dtd"?>
+<title>Element: &lt;find&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT find           (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_search_replace"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>find</command> element allows you to specify the string
+to be searched for in a search and replace operation.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<para>Refer to the parent <xref linkend="elem_search_replace"/> for an
+example.</para>
+
+</sect2>
+
+</sect1>

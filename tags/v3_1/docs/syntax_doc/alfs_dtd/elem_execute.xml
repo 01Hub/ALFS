@@ -1,0 +1,79 @@
+<sect1 id="elem_execute" xreflabel="Element: &lt;execute&gt;">
+<?dbhtml filename="elem_execute.html" dir="alfs_dtd"?>
+<title>Element: &lt;execute&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT execute        ((param | prefix)*)&gt;
+&lt;!ATTLIST execute
+          base           CDATA #IMPLIED
+          command        CDATA #REQUIRED&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_param"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_prefix"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>execute</command> element is one of the top-level
+operation elements. It is used to execute any arbitrary system
+command.</para>
+
+<para>The <command>param</command> child-element contains parameters for
+the command.</para>
+
+<para>The <command>prefix</command> child-element contains any prefix data
+for the command to execute.</para>
+
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
+
+<para>The <command>command</command> attribute contains the text of the
+command itself.</para>
+
+</sect2>
+
+<sect2>
+<title>Example #1</title>
+
+<para>The first example is an execute command without a parameter.</para>
+
+<screen><userinput>&lt;execute command=&quot;umount&quot;&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Executing 'umount'
+<command>umount</command></screen>
+
+</sect2>
+
+<sect2>
+<title>Example #2</title>
+
+<para>The second example is an execute command with one parameter.</para>
+
+<screen><userinput>&lt;execute command="mount"&gt;
+	&lt;param&gt;/mount/lfs&lt;/param&gt;
+&lt;/execute&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Executing 'mount'
+<command>mount /mount/lfs</command></screen>
+
+</sect2>
+
+</sect1>

@@ -1,0 +1,62 @@
+<sect1 id="elem_patch" xreflabel="Element: &lt;patch&gt;">
+<?dbhtml filename="elem_patch.html" dir="alfs_dtd"?>
+<title>Element: &lt;patch&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT patch          ((param | prefix)*)&gt;
+&lt;!ATTLIST patch
+          base           CDATA #IMPLIED&gt;
+</synopsis>
+
+<para>This element occurs&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_param"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_prefix"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>patch</command> element is one of the top-level
+operation elements.  It is used to execute the <command>patch</command>
+command.</para>
+
+<para>The <command>param</command> child-element contains the parameters of
+the command.</para>
+
+<para>The <command>prefix</command> child-element provides a means to
+specify an environment variable or some other prefix to the
+<command>patch</command> command.</para>
+
+<para>The <command>base</command> attribute allows you to specify the
+directory in which the operation will be performed. For a better
+description, see <xref linkend="elem_base"/>.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;patch&gt;
+	&lt;param&gt;-N&lt;/param&gt;
+	&lt;param&gt;-p1&lt;/param&gt;
+	&lt;param&gt;-i ../gawk-3.1.1.patch&lt;/param&gt;
+&lt;/patch&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo 'patch -N -p1 -i ../gawk-3.1.1.patch'
+<command>patch -N -p1 -i ../gawk-3.1.1.patch</command></screen>
+
+</sect2>
+
+</sect1>

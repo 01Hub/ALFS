@@ -1,0 +1,84 @@
+<sect1 id="elem_package" xreflabel="Element: &lt;package&gt;">
+<?dbhtml filename="elem_package.html" dir="alfs_dtd"?>
+<title>Element: &lt;package&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT package        (packageinfo?, stage+)&gt;
+&lt;!ATTLIST package
+          name           CDATA #REQUIRED
+          version        CDATA #REQUIRED&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_packageinfo"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>package</command> element is one of the top-level
+operation elements. It describes the build process of a package. The actual
+build process is described by the <command>stage</command>
+sub-elements.</para>
+
+<para>The <command>name</command> attribute contains the name of the
+package. See <xref linkend="elem_name"/>.</para>
+
+<para>The <command>version</command> attribute contains the version of the
+package. See <xref linkend="elem_version"/>.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;package name=&quot;zlib&quot; version=&quot;1.1.4&quot;&gt;
+
+	&lt;stage name=&quot;Unpacking a package.&quot;&gt;
+
+		&lt;unpack&gt;
+			&lt;archive&gt;/usr/src/lfs-packages/zlib.1.1.4.tar.gz&lt;/archive&gt;
+			&lt;destination&gt;/usr/src&lt;/destination&gt;
+		&lt;/unpack&gt;
+
+	&lt;/stage&gt;
+
+	.....
+
+&lt;/package&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Generating package zlib 1.1.4
+
+#-----------------------------------------
+echo Stage "Unpacking a package."
+
+echo Unpacking /usr/src/lfs-packages/zlib.1.1.4.tar.gz into /usr/src
+cd /usr/src
+[[ $? != 0 ]] &amp;&amp;  echo Command failed &amp;&amp; exit 3
+
+<command>tar xzvf /usr/src/lfs-packages/zlib.1.1.4.tar.gz</command>
+[[ $? != 0 ]] &amp;&amp;  echo Command failed &amp;&amp; exit 3
+
+
+echo Exiting stage "Unpacking a package."
+
+.....
+
+echo End of generating package zlib 1.1.4</screen>
+
+</sect2>
+
+</sect1>

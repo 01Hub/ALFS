@@ -1,0 +1,36 @@
+<sect1 id="elem_prefix" xreflabel="Element: &lt;prefix&gt;">
+<?dbhtml filename="elem_prefix.html" dir="alfs_dtd"?>
+<title>Element: &lt;prefix&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT prefix         (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_execute"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_make"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_patch"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>prefix</command> element provides a means to specify an
+environment variable or some other prefix to the parent element.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<para>See any one of the parent elements for an example.</para>
+
+</sect2>
+
+</sect1>

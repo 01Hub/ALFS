@@ -1,0 +1,6 @@
+<!ENTITY preface                  SYSTEM "preface.xml">
+<!ENTITY preface-acknowledgements SYSTEM "acknowledgements.xml">
+<!ENTITY preface-audience         SYSTEM "audience.xml">
+<!ENTITY preface-changelog        SYSTEM "changelog.xml">
+<!ENTITY preface-contactinfo      SYSTEM "contactinfo.xml">
+<!ENTITY preface-conventions      SYSTEM "conventions.xml">

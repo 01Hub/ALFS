@@ -1,0 +1,33 @@
+<sect1 id="elem_para" xreflabel="Element: &lt;para&gt;">
+<?dbhtml filename="elem_para.html" dir="alfs_dtd"?>
+<title>Element: &lt;para&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT para           (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_description"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>para</command> element contains a paragraph of
+documentary text.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<para>Refer to <xref linkend="elem_packageinfo"/> for an example.</para>
+
+</sect2>
+
+</sect1>

@@ -1,0 +1,82 @@
+<sect1 id="elem_packageinfo" xreflabel="Element: &lt;packageinfo&gt;">
+<?dbhtml filename="elem_packageinfo.html" dir="alfs_dtd"?>
+<title>Element: &lt;packageinfo&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT packageinfo    (description?, requires*, utilizes*)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_package"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_description"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_requires"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_utilizes"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>packageinfo</command> element groups elements containing
+information about the package, namely a description and some dependency
+relationship(s).</para>
+
+<para>The <command>description</command> child-element provides for a
+description of the packge.</para>
+
+<para>The <command>requires</command> child-element provides for a
+relationship (dependancy) to other defined packages in the profile.</para>
+
+<para>The <command>utilizes</command> child-element provdes for a
+relationship (uses / optional) to other defined packages in the
+profile.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
+
+	&lt;packageinfo&gt;
+
+		&lt;description&gt;
+
+			&lt;para&gt;The gimp package contains the GNU Image Manipulation Program.
+			            This is useful for :&lt;/para&gt;
+
+			&lt;list&gt;
+				&lt;item&gt;photo retouching,&lt;/item&gt;
+				&lt;item&gt;image composition,&lt;/item&gt;
+				&lt;item&gt;image authoring.&lt;/item&gt;
+			&lt;/list&gt;
+
+		&lt;/description&gt;
+	
+		&lt;requires&gt;&lt;name&gt;gtk+&lt;/name&gt;&lt;/requires&gt;
+
+		&lt;utilizes&gt;&lt;name&gt;libtiff&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;libpng&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;libjpeg&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;aalib&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;mpeg_lib&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;python&lt;/name&gt;&lt;/utilizes&gt;
+
+	&lt;/packageinfo&gt;
+
+	....
+
+&lt;/package&gt;</userinput></screen>
+
+<para>There is no equivalent bash script for the element.</para>
+
+</sect2>
+
+</sect1>

@@ -1,0 +1,38 @@
+<sect1 id="elem_user" xreflabel="Element: &lt;user&gt;">
+<?dbhtml filename="elem_user.html" dir="alfs_dtd"?>
+<title>Element: &lt;user&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT user           (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_stageinfo"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_ownership"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>user</command> element allows you to specify a user ID
+that will be the effective user ID when executing the commands of the stage
+to which it applies.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<para>Refer to <xref linkend="elem_stageinfo"/> for an example.</para>
+
+</sect2>
+
+</sect1>

@@ -1,0 +1,69 @@
+<sect1 id="elem_utilizes" xreflabel="Element: &lt;utilizes&gt;">
+<?dbhtml filename="elem_utilizes.html" dir="alfs_dtd"?>
+<title>Element: &lt;utilizes&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT utilizes       (name, version*)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_packageinfo"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_name"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_version"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>utilizes</command> element indicates that the package
+containing the <command>utilizes</command> element utilizes the package
+whose name is contained in the <command>name</command> child-element, but
+does not depend on it (in which case the element
+<command>requires</command> should be used).</para>
+
+<para>The actual name is put into the <command>name</command>
+child-element.</para>
+
+<note><para>To work properly, the package identified in the
+<command>name</command> child-element must be defined in either the same
+profile as the <command>utilizes</command> element, or in an additional
+profile (if the ALFS implementation you are using supports loading multiple
+profiles).</para></note>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;package name=&quot;gimp&quot; version=&quot;1.2.3&quot;&gt;
+
+	&lt;packageinfo&gt;
+
+		&lt;requires&gt;&lt;name&gt;gtk+&lt;/name&gt;&lt;/requires&gt;
+
+		&lt;utilizes&gt;&lt;name&gt;libtiff&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;libpng&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;libjpeg&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;aalib&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;mpeg_lib&lt;/name&gt;&lt;/utilizes&gt;
+		&lt;utilizes&gt;&lt;name&gt;python&lt;/name&gt;&lt;/utilizes&gt;
+
+	&lt;/packageinfo&gt;
+
+	.....
+
+&lt;/package&gt;</userinput></screen>
+
+<para>There is no equivalent Bash script example for this element.</para>
+
+</sect2>
+
+</sect1>

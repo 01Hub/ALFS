@@ -1,0 +1,36 @@
+<sect1 id="elem_file" xreflabel="Element: &lt;file&gt;">
+<?dbhtml filename="elem_file.html" dir="alfs_dtd"?>
+<title>Element: &lt;file&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT file           (#PCDATA)&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_download"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_search_replace"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_textdump"/>.
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>file</command> element is used to specify the filename
+for a <command>download</command>, <command>search_replace</command> or
+<command>textdump</command> operation.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<para>See any one of the parent elements for an example.</para>
+
+</sect2>
+
+</sect1>

@@ -1,0 +1,344 @@
+<sect1 id="xml_dtd-syntax" xreflabel="XML DTD Syntax">
+<?dbhtml filename="xml_dtd-syntax.html" dir="alfs_dtd"?>
+<title>XML &amp; DTD Syntax</title>
+
+<sect2>
+<title>Quick Introduction to XML Syntax</title>
+
+<para>To ensure that all readers of the &book-product; Book get as much as
+possible from its contents, it is necessary to provide a quick introduction
+to the concepts of XML and DTD syntax.</para>
+
+<note><para>This introduction provides very few examples. This book is
+written in an XML DTD called DocBook XML. For an example of XML just look
+at the book's source. Since this book is documenting an XML DTD, look at
+the rest of the book's contents for examples of DTD syntax.</para></note>
+
+<para>To begin, here are some basic rules of XML&nbsp;:</para>
+
+<itemizedlist>
+
+<listitem><para>XML documents use a self-describing and simple to use
+syntax.</para></listitem>
+
+<listitem><para>All XML elements must have a closing tag. With XML, it is
+illegal to omit the closing tag.</para></listitem>
+
+<listitem><para>XML tags are case sensitive.</para></listitem>
+
+<listitem><para>All XML elements must be properly nested. Improper nesting
+of tags makes no sense to XML.</para></listitem>
+
+<listitem><para>All XML documents must have a root element. In other words,
+all XML documents must contain a single tag pair to define a root
+element.</para></listitem>
+
+<listitem><para>Attribute values must always be quoted. With XML, it is
+illegal to omit quotation marks around attribute values.</para></listitem>
+
+<listitem><para>XML parsers preserve <emphasis role="bold">all</emphasis>
+whitespace in XML documents, even that which is considered
+non-significant.</para></listitem>
+
+<listitem><para>The use of the ampersand [&nbsp;&amp;&nbsp;] symbol is
+reserved. XML uses this to define an entity reference.</para></listitem>
+
+</itemizedlist>
+
+</sect2>
+
+<sect2>
+<title>Standard Entities</title>
+
+<para>As mentioned in the last section, the ampersand symbol cannot be used
+by itself. There are a set of standard entity references that every DTD
+file should contain. There are mostly symbols that you would want to place
+inside the XML file. You define them by using thier decimal value on the
+ASCII chart. Here is a good list&nbsp;:</para>
+
+<itemizedlist>
+
+<listitem><para>Less-Than [&nbsp;&lt;&nbsp;]&nbsp;:&nbsp;
+&quot;<filename>&amp;#60;</filename>&quot;
+</para></listitem>
+
+<listitem><para>Greater-Than [&nbsp;&gt;&nbsp;]&nbsp;:&nbsp;
+&quot;<filename>&amp;#62;</filename>&quot;
+</para></listitem>
+
+<listitem><para>Ampersand [&nbsp;&amp;&nbsp;]&nbsp;:&nbsp;
+&quot;<filename>&amp;#38;</filename>&quot;
+</para></listitem>
+
+<listitem><para>Apostrophe [&nbsp;&apos;&nbsp;]&nbsp;:&nbsp;
+&quot;<filename>&amp;#39;</filename>&quot;
+</para></listitem>
+
+<listitem><para>Quote [&nbsp;&quot;&nbsp;]&nbsp;:&nbsp;
+&quot;<filename>&amp;#34;</filename>&quot;
+</para></listitem>
+
+<listitem><para>Non Breaking Space (a forced space)&nbsp;:&nbsp;
+&quot;<filename>&amp;#32;</filename>&quot;
+</para></listitem>
+
+<listitem><para>Emdash [&nbsp;&emdash;&nbsp;]&nbsp;:&nbsp;
+&quot;<filename>&amp;#045;&amp;#045;</filename>&quot;
+</para></listitem>
+
+</itemizedlist>
+
+<para>Generally, you can assume that amp, lt, gt, and apos are predefined,
+but you can always make sure by using the numeric references above.  Also,
+if you ever need to create your own, you know how to do it now.</para>
+
+</sect2>
+
+<sect2>
+<title>XML Elements and Attributes</title>
+
+<para>XML is designed to hold any kind of information. This information is
+stored in Elements. Elements are the basic building blocks of XML and are
+represented in a XML document as tag pairs. Attributes provide a mechanism
+to further define or classify an element. Elements have relationships with
+other elements in a document. Some are parents and some are children. Using
+this semantic description, one can see that children elements need parent
+elements defined and used first. As mentioned in the last section, an XML
+document must have a root element.  Think of this as the ultimate parent
+element. The root element must be defined and used before all other
+elements and all sub-elements (children). All elements and sub-elements
+will reside inside of the root element. An element can have parsed content,
+mixed content, simple content, empty content or attributes in their
+definition.</para>
+
+<para>XML elements must follow these naming rules&nbsp;:</para>
+
+<itemizedlist>
+
+<listitem><para>Names can contain letters, numbers, and other
+characters</para></listitem>
+
+<listitem><para>Names must not start with a number or punctuation
+character</para></listitem>
+
+<listitem><para>Names must not start with the letters xml (or XML or Xml
+...)</para></listitem>
+
+<listitem><para>Names cannot contain spaces</para></listitem>
+
+</itemizedlist>
+
+</sect2>
+
+<sect2>
+<title>Quick Introduction to DTD Syntax</title>
+
+<para>Once an XML document is written, it is generally a good idea to
+validate the elements used in the document against a known DTD. The
+Document Type Definition is the mechanism with which one validates the
+content of a well-formed XML document.</para>
+
+<para>XML DTD files contain&nbsp;:</para>
+
+<itemizedlist>
+
+<listitem><para><emphasis role="bold">Element declarations and
+definitions</emphasis>&nbsp;:&nbsp;Elements are declared and defined with
+their relationships in the DTD file.</para></listitem>
+
+<listitem><para><emphasis role="bold">Attribute declarations and
+definitions</emphasis>&nbsp;:&nbsp;Element classes or attributes are
+declared and defined in the DTD file.</para></listitem>
+
+<listitem><para><emphasis role="bold">Entities</emphasis>
+&nbsp;:&nbsp; Entities are the same thing as variables inside a
+DTD file or XML document. They can hold any kind of data.</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>PCDATA</filename></emphasis>
+&nbsp;:&nbsp;<filename>PCDATA</filename> is Parsed Character DATA.
+<filename>PCDATA</filename> is text that will be parsed by a parser. Tags
+inside the text will be treated as markup and entities will be
+expanded.</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>CDATA</filename></emphasis>
+&nbsp;:&nbsp;<filename>CDATA</filename> is Character DATA.
+<filename>CDATA</filename> is text that will NOT be parsed by a parser.
+Tags inside the text will NOT be treated as markup and entities will not be
+expanded.</para></listitem>
+
+</itemizedlist>
+
+</sect2>
+
+<sect2>
+<title>DTD Element Declaration</title>
+
+<para>Elements are declared in the DTD file using a simple, but strict
+syntax.  There are four ways to define an element&nbsp;:</para>
+
+<itemizedlist>
+
+<listitem><para><emphasis role="bold"><filename>EMPTY</filename></emphasis>
+&nbsp;:&nbsp;When an element is declared with the
+<filename>EMPTY</filename> keyword, it means that the element will not hold
+any information. This is generally used for special tags like
+&lt;br&gt;.</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>ANY</filename></emphasis>
+&nbsp;:&nbsp;When an element is declared with the <filename>ANY</filename>
+keyword, it means that the element can contain any information that the
+author wants it to. This is generally a special case.</para></listitem>
+
+<listitem><para><emphasis role="bold">Character Data</emphasis>
+&nbsp;:&nbsp;When an element is declared with either the
+<filename>PCDATA</filename> or <filename>CDATA</filename> keywords, it will
+hold one of the two types of information described above.</para></listitem>
+
+<listitem><para><emphasis role="bold">With Children</emphasis>
+&nbsp;:&nbsp;When an element is declared with the names of other elements
+in it, this defines a parent-child relationship. Look in the
+DTD for the child element names to be further defined
+with the other three ways.</para></listitem>
+
+<listitem><para><emphasis role="bold">Mixed</emphasis>
+&nbsp;:&nbsp;Some combination of the above four.  Generally this is
+character data mixed with children.</para></listitem>
+
+</itemizedlist>
+
+<para>When an element is declared with children, it will also define how
+the children can be used inside an XML document and also in the <emphasis
+role="bold">order</emphasis> that they are allowed to appear in an XML
+document. There are four ways that children elements can be defined in a
+DTD file&nbsp;:</para>
+
+<itemizedlist>
+
+<listitem><para><emphasis role="bold">One Occurance Only</emphasis>
+&nbsp;:&nbsp;Example&nbsp;:&nbsp; <xref linkend="elem_search_replace"/>.
+The child elements of
+&lt;search_replace&gt;&nbsp;&emdash;&nbsp;&lt;file&gt;, &lt;find&gt;, and
+&lt;replace&gt; can only be used once. Notice that there are no symbols
+after any of the child element names. This is the
+identifier.</para></listitem>
+
+<listitem><para><emphasis role="bold">Minimum of One Occurance</emphasis>
+&nbsp;:&nbsp;Example&nbsp;:&nbsp; <xref linkend="elem_permissions"/>. One
+of the child elements of
+&lt;permissions&gt;&nbsp;&emdash;&nbsp;&lt;name&gt;, must be used a minimum
+of once, but can also be used many times. Notice the plus [&nbsp;+&nbsp;]
+symbol after the name. This is the identifier.</para></listitem>
+
+<listitem><para><emphasis role="bold">Zero or More Occurances</emphasis>
+&nbsp;:&nbsp;Example&nbsp;:&nbsp; <xref linkend="elem_download"/>. One of
+the child elements of &lt;download&gt;&nbsp;&emdash;&nbsp;&lt;url&gt;, can
+be used zero or many times. Notice the asterisk [&nbsp;*&nbsp;] symbol
+after the name. This is the identifier.</para></listitem>
+
+<listitem><para><emphasis role="bold">Zero or One Occurance</emphasis>
+&nbsp;:&nbsp;Example&nbsp;:&nbsp; <xref linkend="elem_download"/>. One of
+the child elements of &lt;download&gt;&nbsp;&emdash;&nbsp;&lt;digest&gt;,
+can be used zero or one time only. Notice the question mark [&nbsp;?&nbsp;]
+symbol after the name. This is the identifier.</para></listitem>
+
+<listitem><para><emphasis role="bold">Either / Or Occurances</emphasis>
+&nbsp;:&nbsp;Example&nbsp;:&nbsp; <xref linkend="elem_execute"/>. One of
+the two child elements of &lt;execute&gt;&nbsp;&emdash;&nbsp;&lt;param&gt;,
+or &lt;prefix&gt;, can only be used. Notice the pipe [&nbsp;|&nbsp;]
+symbol in between the two elements. This is the
+identifier.</para></listitem>
+
+</itemizedlist>
+
+</sect2>
+
+<sect2>
+<title>DTD Attribute Declaration</title>
+
+<para>As mentioned above, attributes can help to define &quot;classes&quot;
+of Elements. Attributes are defined with types and values. There are 11
+types&nbsp;:</para>
+
+<itemizedlist>
+
+<listitem><para><emphasis role="bold"><filename>CDATA</filename></emphasis>
+&nbsp;:&nbsp;The value is Character Data.</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>(en1|en2|...)</filename></emphasis>
+&nbsp;:&nbsp;The value is an enumerated list.</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>ID</filename></emphasis>
+&nbsp;:&nbsp;The value is a unique id.</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>IDREF</filename></emphasis>
+&nbsp;:&nbsp;The value is the id of another element.</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>IDREFS</filename></emphasis>
+&nbsp;:&nbsp;The value is a list of other ids,</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>NMTOKEN</filename></emphasis>
+&nbsp;:&nbsp;The value is a valid XML
+name.</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>NMTOKENS</filename></emphasis>
+&nbsp;:&nbsp;The value is a list of valid XML
+names.</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>ENTITY</filename></emphasis>
+&nbsp;:&nbsp;The value is an entity.</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>ENTITIES</filename></emphasis>
+&nbsp;:&nbsp;The value is a list of entities.</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>NOTATION</filename></emphasis>
+&nbsp;:&nbsp;The value is a name of a notation.</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>xml</filename></emphasis>
+&nbsp;:&nbsp;The value is a predefined XML
+value.</para></listitem>
+
+</itemizedlist>
+
+<para>There are four value options&nbsp;:</para>
+
+<itemizedlist>
+
+<listitem><para><emphasis role="bold"><filename>Value</filename></emphasis>
+&nbsp;:&nbsp;The default value of the attribute surrounded by quotes
+[&nbsp;&quot;&nbsp;&quot;&nbsp;]. Example&nbsp;:&nbsp;<xref
+linkend="elem_alfs"/>.</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>#IMPLIED</filename></emphasis>
+&nbsp;:&nbsp;The attribute is optional. Example&nbsp;:&nbsp;
+<xref linkend="elem_alfs"/>.</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>#REQUIRED</filename></emphasis>
+&nbsp;:&nbsp;The attribute is required when the element is used.
+Example&nbsp;:&nbsp;<xref linkend="elem_execute"/>.</para></listitem>
+
+<listitem><para><emphasis role="bold"><filename>#FIXED</filename></emphasis>
+&nbsp;:&nbsp;A fixed value. Used with the <filename>Value</filename>
+option. Example&nbsp;:&nbsp;<xref linkend="elem_alfs"/>.</para></listitem>
+
+</itemizedlist>
+
+</sect2>
+
+<sect2>
+<title>DOCTYPE and SYSTEM Declarations</title>
+
+<para>The <emphasis role="bold">DOCTYPE</emphasis> declaration is used in
+an XML document to define to the XML parser what DTD should be referenced.
+This declaration is helpful when you have a seperate DTD file outside of
+the XML document. See <xref linkend="elem_alfs"/> for an example.</para>
+
+<para>The <emphasis role="bold">SYSTEM</emphasis> declaration is used in an
+XML document to give provide a way to split up a file into smaller chunks.
+Many XML files can be quite large and having all the information inside one
+file can be unwieldy. The <emphasis role="bold">SYSTEM</emphasis>
+declaration works just like any <emphasis role="bold">ENTITY</emphasis>
+declaration. See <xref linkend="elem_alfs"/> for an example.</para>
+
+</sect2>
+
+</sect1>

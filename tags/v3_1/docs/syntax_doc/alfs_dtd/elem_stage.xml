@@ -1,0 +1,91 @@
+<sect1 id="elem_stage" xreflabel="Element: &lt;stage&gt;">
+<?dbhtml filename="elem_stage.html" dir="alfs_dtd"?>
+<title>Element: &lt;stage&gt;</title>
+
+<sect2>
+<title>Syntax</title>
+
+<synopsis>
+&lt;!ELEMENT stage          (stageinfo?, (alfs | configure | copy | download | 
+                             execute | link | make | mkdir | move | ownership |
+                             package | patch | permissions | remove | 
+                             search_replace | stage | textdump | unpack)*)&gt;
+&lt;!ATTLIST stage
+          name           CDATA #IMPLIED&gt;
+</synopsis>
+
+<para>This element occurs in&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stage"/>
+</para>
+
+<para>See also&nbsp;:&nbsp;&nbsp;
+<xref linkend="elem_alfs"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_configure"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_copy"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_download"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_execute"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_link"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_make"/>>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_mkdir"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_move"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_ownership"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_package"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_patch"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_permissions"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_remove"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_search_replace"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_stageinfo"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_textdump"/>&nbsp;&nbsp;|&nbsp;&nbsp;
+<xref linkend="elem_unpack"/>
+</para>
+
+</sect2>
+
+<sect2>
+<title>Description</title>
+
+<para>The <command>stage</command> element is one of the top-level
+operation elements.  It allows you to regroup commands, give a name to this
+group (through the <command>name</command> attribute) and optionally modify
+the execution context through the element
+<command>stageinfo</command>.</para>
+
+</sect2>
+
+<sect2>
+<title>Examples</title>
+
+<screen><userinput>&lt;stage&gt;
+	&lt;stageinfo&gt;
+		&lt;base&gt;/usr/src/gzip.1.2.4a&lt;/base&gt;
+	&lt;/stageinfo&gt;
+
+	&lt;configure /&gt;
+
+	&lt;make /&gt;
+
+	&lt;make&gt;
+		&lt;param&gt;install&lt;/param&gt;
+	&lt;/make&gt;
+&lt;/stage&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen>echo Executing configure
+cd /usr/src/gzip.1.2.4a
+<command>./configure</command>
+
+echo Executing make
+cd /usr/src/gzip.1.2.4a
+<command>make</command>
+
+echo Executing make
+cd /usr/src/gzip.1.2.4a
+<command>make install</command>
+
+echo Exiting stage</screen>
+
+</sect2>
+
+</sect1>

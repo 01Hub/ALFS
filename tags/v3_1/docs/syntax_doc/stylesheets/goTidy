@@ -1,0 +1,27 @@
+#!/bin/bash
+###############################################################################
+#
+# File:        goTidy
+#
+# Description: Tidy is best used inside a loop, but Makefiles don't do Bash
+# loops well.  This file alleviates that problem.
+#
+# Author:      James Robertson
+#
+###############################################################################
+
+NAME=`basename "$0"`
+DESTDIR="$1"
+
+cd $DESTDIR
+
+if [ -z "$1" ]; then
+        echo "USAGE: $NAME destdir"
+        exit
+fi
+
+for file in `find ./ -name "*.html"`; do 
+	tidy -config tidy.conf $file 2>/dev/null;
+done
+
+exit 0
