@@ -6,6 +6,21 @@
 
 <itemizedlist>
 
+<listitem><para>May 28th, 2004 [jwrober]: Updated in elem_patch to
+include element prefix &emdash; Bug 766.</para></listitem>
+
+<listitem><para>May 28th, 2004 [jwrober]: Updated in elem_make to
+include element prefix &emdash; Bug 764.</para></listitem>
+
+<listitem><para>May 28th, 2004 [jwrober]: Updated in elem_execute to
+include element prefix &emdash; Bug 762.</para></listitem>
+
+<listitem><para>May 28th, 2004 [jwrober]: Updated in elem_configure and
+elem_prefix for correct bash examples &emdash; Bug 757.</para></listitem
+
+<listitem><para>May 28th, 2004 [jwrober]: Filled in elem_prefix page
+&emdash; Bug 802.</para></listitem>
+
 <listitem><para>May 28th, 2004 [jwrober]: Updated alfs.css the rest of the
 element files to support better formatting of examples.</para></listitem>
 
@@ -14,8 +29,8 @@ elem_configure, elem_copy, elem_description, elem_destination, elem_digest,
 elem_download, elem_environment, elem_execute, elem_file, elem_find,
 elem_item, elem_link, elem_list, elem_make, elem_mkdir, elem_move,
 elem_name, elem_ownership, elem_package, elem_packageinfo, elem_para,
-elem_param, elem_patch, elem_permissions, elem_prefix, elem_remove,
-elem_replace, elem_requires, elem_search_replace, elem_source, elem_stage,
+elem_param, elem_patch, elem_permissions, elem_remove, elem_replace,
+elem_requires, elem_search_replace, elem_source, elem_stage,
 elem_stageinfo, elem_target, elem_textdump, elem_url, elem_user,
 elem_utilizes, elem_variable.</para></listitem>
 
