@@ -1,27 +1,138 @@
-Proposed "official" syntax for ALFS:
-====================================
+Proposed official syntax for ALFS:
+==================================
 
-This will have todo untill better docs can be written.
+    o This will shortly be moved into Docbook XML for the ALFS 1.0 rleease,
+      untill then, this will have todo ;)
 
-In the mean time, we can at least build up a reference
-of the current plans for the syntax.
+    o We could perhaps move <command /> to an attribute.
+      Not sure how much of a good idea that is however.
+
+    o Using <parameter/> instead of <option /> for configure/make/execute.
+      Needs more though.  Id prefer to <option /> stays with configure and
+      friends then just moving over to copy and friends.  Perhaps we can find
+      another name for them instead.. or just leave it as-is and say stfu ;)
+
+    o Because the usage of soft links (symbolic) are so popular, we _strongly_
+      suggest that anyone writting an ALFS implementation leave them as
+      default.  One less thing for profile writters having to keep track of.
+
+      We could problably set it as a default with a DTD, but i doubt all
+      implementations will even follow a DTD, so i just want to mention that
+      here.
 
 
-Generic Tags:
--------------
+Configure:
+----------
 
-unpack
-configure
-make
-execute
-remove
-copy
-move
-link
-mkdir
-permissions
-setenv
+    <configure base="">
+	<command />
+        <option />
+    </configure>
 
+eg;
+
+    <configure base="/tmp/sed-3.02">
+	<option>--prefix=/tmp/sed</option>
+    </configure>
+
+
+Make:
+-----
+
+    <make base="">
+	<option />
+    </make>
+
+eg;
+
+    <make base="/tmp/sed-3.02">
+	<option>install</option>
+    </make>
+
+
+Execute:
+--------
+
+    <execute base="">
+	<command />
+        <option />
+    </execute>
+
+eg;
+
+    <execute base="/tmp">
+	<command>touch</command>
+	<option>foobar.txt</option>
+    </execute>
+
+
+Mkdir:
+------
+
+    <mkdir base="">
+	<option />
+        <name />
+    </mkdir>
+
+eg;
+
+    <mkdir base="/tmp">
+	<name>foo</name>
+	<name>bar</name>
+    </mkdir>
+
+
+Copy:
+-----
+
+    <copy base="">
+	<option />
+        <source />
+	<destination />
+    </copy>
+
+eg;
+
+    <copy base="/tmp">
+	<source>foo</source>
+	<destination>bar</destination>
+    </copy>
+
+
+Move:
+-----
+
+    <move base="">
+	<option />
+        <source />
+	<destination />
+    </move>
+
+eg;
+
+    <move base="/tmp">
+	<source>foo</source>
+	<destination>bar</destination>
+    </move>
+
+
+Link:
+-----
+
+    <link type="soft|hard" base="">
+	<source />
+        <destination />
+    </link>
+
+eg;
+
+    <link base="/tmp">
+	<source>foo</source>
+	<destination>bar</destination>
+    </link>
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Generic Package:
 ----------------
@@ -38,7 +149,8 @@ Generic Package:
 
 I've presently left out the prebuild/build/postbuild (setup/build/install)
 untill we pick the best way to deal this this.  Allthough it would problably
-be best to leave the use of them optional anyways. (ala target problably)
+be best to leave the use of them optional anyways. (ala stage problably)
+
 
 Generic Profile:
 ----------------
