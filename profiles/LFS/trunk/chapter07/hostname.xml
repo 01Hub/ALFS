@@ -7,11 +7,9 @@
 ]>
 <alfs>
   <stage name="Configuring the localnet Script">
-    <textdump>
-      <file>/etc/sysconfig/network</file>
-      <content>
-	=HOSTNAME=&hostname;
-      </content>
-    </textdump>
+    <copy>
+      <source>&skeleton_dir;/etc/sysconfig/network</source>
+      <destination>/etc/sysconfig</destination>
+    </copy>
   </stage>
 </alfs>
