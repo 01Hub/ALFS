@@ -39,15 +39,116 @@
 #include "parser.h"
 #include "utility.h"
 
+enum {
+	SETENV_VALUE,
+	SETENV_VARIABLE,
+	SETENV_MODE,
+};
 
-#define El_setenv_value(el) raw_param_value("value", el)
-#define El_setenv_variable(el) alloc_trimmed_param_value("variable", el)
-#define El_setenv_mode(el) attr_value("mode", el)
+struct setenv_data {
+	char *variable;
+	char *value;
+	int append_mode;
+};
 
+static const struct handler_parameter setenv_parameters[] = {
+	{ .name = "variable", .private = SETENV_VARIABLE },
+	{ .name = "value", .private = SETENV_VALUE },
+	{ .name = NULL }
+};
 
-#if HANDLER_SYNTAX_2_0 || HANDLER_SYNTAX_3_0
+static const struct handler_attribute setenv_attributes[] = {
+	{ .name = "mode", .private = SETENV_MODE },
+	{ .name = NULL }
+};
 
-static INLINE int set_variable(const char *variable, const char *value)
+static int setenv_setup(element_s * const element)
+{
+	struct setenv_data *data;
+
+	if ((data = xmalloc(sizeof(struct setenv_data))) == NULL)
+		return -1;
+
+	data->variable = NULL;
+	data->value = NULL;
+	data->append_mode = 0;
+	element->handler_data = data;
+
+	return 0;
+}
+
+static void setenv_free(const element_s * const element)
+{
+	struct setenv_data *data = (struct setenv_data *) element->handler_data;
+
+	xfree(data->variable);
+	xfree(data->value);
+	xfree(data);
+}
+
+static int setenv_attribute(const element_s * const element,
+			    const struct handler_attribute * const attr,
+			    const char * const value)
+{
+	struct setenv_data *data = (struct setenv_data *) element->handler_data;
+
+	switch (attr->private) {
+	case SETENV_MODE:
+		if (!strcmp(value, "append")) {
+			Nprint_err("<%s>: the only \"mode\" allowed is \"append\".", element->handler->name);
+			return 1;
+		}
+		data->append_mode = 1;
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int setenv_parameter(const element_s * const element,
+			    const struct handler_parameter * const param,
+			    const char * const value)
+{
+	struct setenv_data *data = (struct setenv_data *) element->handler_data;
+
+	switch (param->private) {
+	case SETENV_VARIABLE:
+		if (data->variable) {
+			Nprint_err("<%s>: cannot specify <variable> more than once.", element->handler->name);
+			return 1;
+		}
+		data->variable = xstrdup(value);
+		return 0;
+	case SETENV_VALUE:
+		if (data->value) {
+			Nprint_err("<%s>: cannot specify <value> more than once.", element->handler->name);
+			return 1;
+		}
+		data->value = xstrdup(value);
+		return 0;
+	default:
+		return 1;
+	}
+}
+
+static int setenv_valid_data(const element_s * const element)
+{
+	struct setenv_data *data = (struct setenv_data *) element->handler_data;
+
+	if (!data->variable) {
+		Nprint_err("<%s>: <variable> must be specified.", element->handler->name);
+		return 0;
+	}
+
+	if (!data->value && data->append_mode) {
+		Nprint_err("<%s>: <value> must be specified in \"append\" mode.", element->handler->name);
+		return 0;
+	}
+
+	return 1;
+}
+
+static INLINE int set_variable(const char * const variable, const char * const value)
 {
 	Nprint_h("Setting environment variable %s:", variable);
 	Nprint_h("    %s", value);
@@ -60,7 +161,7 @@ static INLINE int set_variable(const char *variable, const char *value)
 	return 0;
 }
 
-static INLINE int append_to_variable(const char *variable, const char *value)
+static INLINE int append_to_variable(const char * const variable, const char * const value)
 {
 	int status = 0;
 	char *old_value, *full_value = NULL;
@@ -84,67 +185,29 @@ static INLINE int append_to_variable(const char *variable, const char *value)
 	return status;
 }
 
-static INLINE void unset_variable(const char *variable)
+static INLINE int unset_variable(const char * const variable)
 {
 	Nprint_h("Unsetting environment variable %s.", variable);
 
 	unsetenv(variable);
-}
-
-static INLINE int do_setenv(
-	const char *variable, const char *value, const char *mode)
-{
-	if (value == NULL) {
-		unset_variable(variable);
-
-	} else {
-		if (mode && strcmp(mode, "append") == 0) {
-			return append_to_variable(variable, value);
-		} else {
-			return set_variable(variable, value);
-		}
-	}
 
 	return 0;
 }
 
-
-static const struct handler_parameter setenv_parameters[] = {
-	{ .name = "variable" },
-	{ .name = "value" },
-	{ .name = NULL }
-};
-
-static const struct handler_attribute setenv_attributes[] = {
-	{ .name = "mode" },
-	{ .name = NULL }
-};
-
-static int setenv_main(const element_s * const el)
+static int setenv_main(const element_s * const element)
 {
-	int i;
-	char *variable;
-	char *value;
-	char *mode;
+	struct setenv_data *data = (struct setenv_data *) element->handler_data;
 
-
-	if ((variable = El_setenv_variable(el)) == NULL) {
-		Nprint_h_err("No variable specified.");
-		return -1;
+	if (!data->value) {
+		return unset_variable(data->variable);
+	} else {
+		if (data->append_mode) {
+			return append_to_variable(data->variable, data->value);
+		} else {
+			return set_variable(data->variable, data->value);
+		}
 	}
-
-	value = El_setenv_value(el);
-	mode = El_setenv_mode(el);
-
-	i = do_setenv(variable, value, mode);
-
-	xfree(variable);
-
-	return i;
 }
-
-#endif /* HANDLER_SYNTAX_2_0 || HANDLER_SYNTAX_3_0 */
-
 
 /*
  * Handlers' information.
@@ -156,12 +219,18 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "setenv",
 		.description = "Set environment",
 		.syntax_version = "2.0",
-		.parameters = setenv_parameters,
 		.main = setenv_main,
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
+		.priority = 0,
+		.setup = setenv_setup,
+		.free = setenv_free,
+		.parameters = setenv_parameters,
+		.attributes = setenv_attributes,
+		.parameter = setenv_parameter,
+		.attribute = setenv_attribute,
+		.valid_data = setenv_valid_data,
 	},
 #endif
 #if HANDLER_SYNTAX_3_0
@@ -169,12 +238,18 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "setenv",
 		.description = "Set environment",
 		.syntax_version = "3.0",
-		.parameters = setenv_parameters,
 		.main = setenv_main,
 		.type = HTYPE_NORMAL,
 		.alloc_data = NULL,
 		.is_action = 1,
-		.priority = 0
+		.priority = 0,
+		.setup = setenv_setup,
+		.free = setenv_free,
+		.parameters = setenv_parameters,
+		.attributes = setenv_attributes,
+		.parameter = setenv_parameter,
+		.attribute = setenv_attribute,
+		.valid_data = setenv_valid_data,
 	},
 #endif
 	{
