@@ -20,9 +20,6 @@
         <name>&ximpl;</name>
       </utilizes>
       <utilizes>
-        <name>freetype</name>
-      </utilizes>
-      <utilizes>
         <name>fontconfig</name>
       </utilizes>
       <utilizes>

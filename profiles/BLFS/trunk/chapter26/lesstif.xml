@@ -16,6 +16,12 @@
       <requires>
         <name>&ximpl;</name>
       </requires>
+      <utilizes>
+	<name>lynx</name>
+      </utilizes>
+      <utilizes>
+	<name>links</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -31,7 +37,6 @@
                               xargs sed -i 's@$(prefix)/LessTif@$(prefix)/share/LessTif@g'" />
       <configure>
         <param>--prefix=/usr</param>
-        <param>--enable-build-20</param>
         <param>--enable-build-21</param>
         <param>--disable-debug</param>
         <param>--enable-production</param>

@@ -19,6 +19,9 @@
       <requires>
         <name>libxml2</name>
       </requires>
+      <requires>
+	<name>XML-Parser</name>
+      </requires>
     </packageinfo>
     <stage name="Unpacking.">
       <unpack>

@@ -17,13 +17,13 @@
         <name>glib</name>
       </requires>
       <requires>
-        <name>libpng</name>
-      </requires>
-      <requires>
         <name>libtiff</name>
       </requires>
       <requires>
         <name>libjpeg</name>
+      </requires>
+      <requires>
+	<name>&ximpl;</name>
       </requires>
     </packageinfo>
     <stage name="Unpacking">
