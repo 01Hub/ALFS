@@ -1,17 +1,17 @@
-ftp://ftp.isc.org/isc/bind9/9.3.0/bind-9.3.0.tar.gz
-ftp://ftp.isc.org/isc/bind9/9.3.0/9.3.0-patch1
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/bind-9.3.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/bind-9.3.0-patch1
 
-ftp://ftp.isc.org/isc/dhcp/dhcp-3.0.2.tar.gz
-http://www.linuxfromscratch.org/blfs/downloads/svn/dhcp-3.0.2-iproute2-2.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/dhcp-3.0.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/dhcp-3.0.2-iproute2-2.patch
 
-http://unc.dl.sourceforge.net/sourceforge/leafnode/leafnode-1.10.8.rel.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/leafnode-1.10.8.rel.tar.bz2
 
-ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-3.9p1.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/openssh-3.9p1.tar.bz2
 
-http://rsync.samba.org/ftp/rsync/old-versions/rsync-2.6.3.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/rsync-2.6.3.tar.bz2
 
-ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.2.20.tgz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/openldap-2.2.20.tar.bz2
 
-ftp://ftp.samba.org/pub/samba/stable/samba-3.0.11.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/samba-3.0.11.tar.bz2
 
-ftp://gd.tuwien.ac.at/infosys/servers/xinetd/xinetd-2.3.13.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/xinetd-2.3.13.tar.bz2
