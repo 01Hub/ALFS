@@ -29,8 +29,9 @@
 <para>The element <filename>unpack</filename> is one of the many main
 operation elements.  It is used to unpack an archive into a destination directory</para>
 
-<para>The sub-element <filename>reference</filename> gives the URL of the archive, which
-is used if the archive file is not available locally.</para>
+<para>The sub-element <filename>reference</filename> gives the
+<acronym>URL<acronym> of the archive, which is used if the archive file is
+not available locally.</para>
 
 <para>The sub-element <filename>digest</filename> gives the digest of the archive, as computed
 by openssl, using the digest type specified in the attribute <filename>type</filename>.</para>
@@ -40,21 +41,28 @@ and the sub-element <filename>destination</filename> given the name of the direc
 in which the archive is unpacked</para>
 
 <para>The choice of the program performing the unpacking is based on the
-extension of the archive file. The supported extensions are :
+extension of the archive file. The supported extensions are&nbsp;:
+
 <itemizedlist spacing="compact">
+
 <listitem><para>.tar.gz</para></listitem>
+
 <listitem><para>.tar.bz2</para></listitem>
+
 <listitem><para>.Z</para></listitem>
+
 <listitem><para>.tgz</para></listitem>
+
 <listitem><para>.gz</para></listitem>
+
 <listitem><para>.bz2</para></listitem>
+
 <listitem><para>.tar</para></listitem>
+
 <listitem><para>.zip</para></listitem>
+
 </itemizedlist>
 </para>
-
-<note><para>The use of the sub-elements digest and reference is deprecated.
-You should use the element download instead.</para></note>
 
 </sect2>
 
