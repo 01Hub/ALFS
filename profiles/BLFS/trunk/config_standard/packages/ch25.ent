@@ -13,3 +13,5 @@
 <!ENTITY xfree86-package6  "XFree86-&xfree86-version;-src-6.tgz">
 <!ENTITY xfree86-package7  "XFree86-&xfree86-version;-src-7.tgz">
 <!ENTITY xfree86-directory "xc">
+
+<!ENTITY xfree86-security-patch "xorg-CAN-2004-0687-0688.patch">
