@@ -24,6 +24,7 @@
       </utilizes>
       <utilizes>
         <name>db</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
