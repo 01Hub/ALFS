@@ -36,7 +36,7 @@
       <mkdir>
         <name>/boot/grub</name>
       </mkdir>
-      <copy base="/usr/share/grub/i386-pc">
+      <copy base="/usr/lib/grub/i386-pc">
         <source>stage1</source>
         <source>stage2</source>
         <source>e2fs_stage1_5</source>
