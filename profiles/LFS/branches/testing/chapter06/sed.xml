@@ -21,13 +21,7 @@
 	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&sed-directory;</base>
-		</stageinfo>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&sed-permissions-patch;</param>
-		</patch>		
+		</stageinfo>	
 		
 		<configure>
 			<param>--prefix=/usr</param>
