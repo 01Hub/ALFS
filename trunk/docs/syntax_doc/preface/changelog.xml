@@ -1,4 +1,5 @@
 <sect1 id="ch01-changelog">
+<?dbhtml filename="changelog.html" dir="preface"?>
 <title>ChangeLog</title>
 
 <para>&version; - &releasedate;</para>

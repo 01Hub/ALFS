@@ -1,25 +1,26 @@
 <sect1 id="preface-acknowledgements">
-<title>Acknowledgements</title>
 <?dbhtml filename="acknowledgements.html" dir="preface"?>
+<title>Acknowledgements</title>
 
 <para>We would like to thank the following people and organizations for their 
 contributions towards the Automated Linux From Scratch project:</para>
 
 <itemizedlist>
 
-<listitem><para><ulink url="mailto:vdzuba@linuxfromscratch.org">Vassili
-Dzuba</ulink> for helping to create the DTD and writing the intial version
-of this book.</para></listitem>
+<listitem><para><ulink url="mailto:vdzuba@linuxfromscratch.org">Vassili 
+Dzuba</ulink> for helping to create the <acronym>DTD</acronym> and writing the 
+intial version of this book.</para></listitem>
 
 <listitem><para><ulink url="mailto:gerard@linuxfromscratch.org">Gerard 
 Beekmans</ulink> for being more then a great help.</para></listitem>
 
-<listitem><para>Jesse Tien-Ten-Que for helping to create the DTD and writing 
-the initial version of this book.</para></listitem>
+<listitem><para>Jesse Tien-Ten-Que for helping to create the 
+<acronym>DTD</acronym> and writing the initial version of this 
+book.</para></listitem>
 
-<listitem><para>Countless other people on the ALFS mailing list who are making 
-this project happen by giving their suggestions, testing the tools and submitting 
-bug reports.</para></listitem>
+<listitem><para>Countless other people on the <acronym>ALFS</acronym> mailing 
+list who are making this project happen by giving their suggestions, testing 
+the tools and submitting bug reports.</para></listitem>
 
 </itemizedlist>
 

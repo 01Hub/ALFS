@@ -1,6 +1,6 @@
 <preface id="preface">
-<title>Preface</title>
 <?dbhtml filename="preface.html" dir="preface"?>
+<title>Preface</title>
 
 &preface-changelog;
 &preface-audience;

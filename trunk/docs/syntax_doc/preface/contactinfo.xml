@@ -1,9 +1,9 @@
 <sect1 id="preface-contactinfo">
+<?dbhtml filename="contactinfo.html" dir="preface"?>
 <title>Contact Information</title>
-<?dbhtml filename="contact.html" dir="preface"?>
 
-<para>Please direct your emails to the ALFS mailing list
+<para>Please direct your emails to the <acronym>ALFS</acronym> mailing list 
 <ulink url="mailto:alfs-discuss@linuxfromscratch.org">alfs-discuss@linuxfromscratch.org</ulink>.
-</para>
+This is an excellent place to post questions and bug reports.</para>
 
 </sect1>
