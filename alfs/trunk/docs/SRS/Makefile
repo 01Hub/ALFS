@@ -6,8 +6,8 @@ NOCHUNKS_OUTPUT=LFS-BOOK.html
 XSLROOTDIR=/usr/share/xml/docbook/xsl-stylesheets-current
 
 alfs-srs:
-	xsltproc --xinclude --nonet -o $(BASEDIR)/$(HTML_OUTPUT) \
-	  $(XSLROOTDIR)/xhtml/docbook.xsl index.xml
+	xsltproc --xinclude --nonet -o $(BASEDIR)/$(HTML_OUTPUT) nochunks.xsl \
+	  index.xml
 
 validate:
 	xmllint --noout --nonet --xinclude --postvalid index.xml
