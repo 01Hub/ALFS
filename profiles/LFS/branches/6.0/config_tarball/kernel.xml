@@ -7,7 +7,7 @@
 %package_entities;
 ]>
 
-<alfs>
+<alfs xmlns:xi="http://www.w3.org/2001/XInclude">
 
 <package name="linux" version="&linux-version;">
 	<stage name="Unpacking.">
@@ -32,14 +32,21 @@
 			<param>mrproper</param>
 		</make>
 
+		<search_replace>
+		  	<file>kernel/kmod.c</file>
+			<find>/sbin/hotplug</find>
+			<replace>/bin/true</replace>
+		</search_replace>		
+		
 		<copy>
 			<source>&packages_dir;/&kernel-config;</source>
 			<destination>.config</destination>
 		</copy>
 
-		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../config/keymap-ch8.xml" />
+		<xi:include href="../config/keymap-ch8.xml" />
 
 		<make>
+			<prefix>yes "" |</prefix>
 			<param>oldconfig</param>
 		</make>
 
@@ -65,11 +72,10 @@
 		</copy>
 
 		<textdump>
-			<file>/etc/modules.conf</file>
+			<file>/etc/modprobe.conf</file>
 			<content>=alias &network-interface; &network-card-module;</content>
 		</textdump>
 	</stage>
 </package>
 
 </alfs>
-
