@@ -455,7 +455,7 @@ void log_handler_action(const char *format, ...)
 	vsnprintf(string, MAX_ACTION_MSG_LEN, format, ap);
 	va_end(ap);
 
-	logf_add_handler_action(xml_doc, string);
+	log_f_add_handler_action(xml_doc, string);
 }
 
 static void free_statefile(statefile_s **statefile)
@@ -535,7 +535,7 @@ static INLINE void create_installed_files_file(
 	const char *filename)
 {
 	if (opt_logging_method == LOG_USING_TWO_FINDS) {
-		logf_add_installed_files_two_finds(xml_doc,
+		log_f_add_installed_files_two_finds(xml_doc,
 			opt_find_base, opt_find_prunes);
 
 		/* TODO: Ugly. */
@@ -543,7 +543,7 @@ static INLINE void create_installed_files_file(
 			current, new, filename);
 
 	} else if (opt_logging_method == LOG_USING_ONE_FIND) {
-		logf_add_installed_files_one_find(xml_doc);
+		log_f_add_installed_files_one_find(xml_doc);
 
 		/* TODO: Ugly II. */
 		execute_command("cp -f %s %s", new, filename);
@@ -665,7 +665,7 @@ static INLINE void log_stopped_time(void)
 	t = time(NULL);
 	strftime(time_str, sizeof time_str, DATE_FORMAT, localtime(&t));
 
-	logf_add_stopped_time(xml_doc, time_str);
+	log_f_add_stopped_time(xml_doc, time_str);
 }
 
 void log_stopped_execution(void)
@@ -952,7 +952,7 @@ static INLINE xmlDocPtr start_package_logging(element_s *el)
 
 	current_package = el;
 
-	xmld = logf_new_run(name, version);
+	xmld = log_f_new_run(name, version);
 
 	xfree(name);
 	xfree(version);
@@ -985,7 +985,7 @@ void log_end_time(element_s *el, int status)
 	t = time(NULL);
 	strftime(time_str, sizeof time_str, DATE_FORMAT, localtime(&t));
 
-	logf_add_end_time(xml_doc, el->name, time_str, status);
+	log_f_add_end_time(xml_doc, el->name, time_str, status);
 }
 
 void log_start_time(element_s *el)
@@ -1002,7 +1002,7 @@ void log_start_time(element_s *el)
 	t = time(NULL);
 	strftime(time_str, sizeof time_str, DATE_FORMAT, localtime(&t));
 
-	logf_add_start_time(xml_doc, el->name, time_str);
+	log_f_add_start_time(xml_doc, el->name, time_str);
 }
 
 
