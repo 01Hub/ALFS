@@ -32,13 +32,13 @@ get included into the tarball.</para>
 
 <para>All other types of files fall into two categories:</para>
 
-<blockquote>those that should be present <emphasis>only</emphasis> in the CVS
-repository</blockquote>
+<blockquote><para>those that should be present <emphasis>only</emphasis> in the CVS
+repository</para></blockquote>
 
 <para>Nothing needs to be done for these files, other than the relevant
 &quot;cvs add&quot; commands.</para>
 
-<blockquote>those that should be added to the distribution tarball</blockquote>
+<blockquote><para>those that should be added to the distribution tarball</para></blockquote>
 
 <para>The <filename>bootstrap</filename> script will need to be edited,
 specifically the line that sets <filename>EXTRA_DIST</filename> near the
