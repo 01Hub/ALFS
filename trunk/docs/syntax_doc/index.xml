@@ -3,19 +3,19 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
 			"/usr/share/docbook/docbookx.dtd" [
 
-<!ENTITY version     "3.1-20030922">
-<!ENTITY releasedate "September 22, 2003">
+<!ENTITY version     "3.1-20030924">
+<!ENTITY releasedate "September 24, 2003">
 
 <!ENTITY legalnotice      SYSTEM "legalnotice.xml">
 <!ENTITY acknowledgements SYSTEM "acknowledgements.xml">
 <!ENTITY changelog        SYSTEM "changelog.xml">
 <!ENTITY contactinfo      SYSTEM "contactinfo.xml">
 
-<!ENTITY nalfs_dtd        SYSTEM "nalfs_dtd/nalfs_dtd.xml">
+<!ENTITY alfs_dtd        SYSTEM "alfs_dtd/alfs_dtd.xml">
 
 
-<!ENTITY % nalfs_dtd_entities   SYSTEM "nalfs_dtd/nalfs_dtd.ent">
-%nalfs_dtd_entities;
+<!ENTITY % alfs_dtd_entities   SYSTEM "alfs_dtd/alfs_dtd.ent">
+%alfs_dtd_entities;
 
 ]>
 
@@ -27,6 +27,10 @@
 	<subtitle>Version &version;</subtitle>
 
 	<authorgroup>
+	    <author>
+		<firstname>James</firstname>
+		<surname>Robertson</surname>
+	    </author>
             <author>
                 <firstname>Jesse</firstname>
                 <surname>Tie-Ten-Quee</surname>
@@ -39,13 +43,13 @@
 
 	<copyright id="copyright">
 	    <year>2001-2003</year>
-	    <holder>Jesse Tie-Ten-Quee, Vassili Dzuba</holder>
+	    <holder>James Robertson, Jesse Tie-Ten-Quee, Vassili Dzuba</holder>
 	</copyright>
 
 	&legalnotice;
 
 	<abstract>
-	    <para>Documentation and examples of the profile syntax, version 3.1.</para>
+	    <para>Documentation and examples of the ALFS profile syntax, version 3.1.</para>
 	</abstract>
     </bookinfo>
 
@@ -58,6 +62,6 @@
 
     </chapter>
 
-    &nalfs_dtd;
+    &alfs_dtd;
 
 </book>
