@@ -20,11 +20,9 @@
 
 		<make />
 
-<!--
 		<make>
 			<param>check</param>
 		</make>
--->
 
 		<make>
 			<param>install</param>

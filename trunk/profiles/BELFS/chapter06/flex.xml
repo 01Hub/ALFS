@@ -33,11 +33,9 @@
 
 		<make />
 
-<!--
 		<make>
 			<param>bigcheck</param>
 		</make>
--->
 
 		<make>
 			<param>install</param>

@@ -108,7 +108,6 @@
 		<param>| chpasswd</param>
 	</execute>
 
-
 	<stage name="Cleanup">
 		<remove>&build_dir;/&shadow-directory;</remove>
 	</stage>
