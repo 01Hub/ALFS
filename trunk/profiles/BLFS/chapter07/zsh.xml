@@ -1,5 +1,9 @@
 <package name="zsh" version="&zsh-version;">
 
+	<packageinfo>
+		<utilizes><name>pcre</name></utilizes>
+	</packageinfo>
+
     <stage name="Unpacking a package.">
 	<unpack>
 		<archive>&packages_dir;/&zsh-package;</archive>

@@ -22,14 +22,14 @@
 		<param>install</param>
 	</make>
 
-	<copy>
-	     <source>tcsh.man</source>
-	     <destination>/usr/share/man/man1/tcsh.1</destination>
-	</copy>
+	<make>
+		<param>install.man</param>
+	</make>
 
 	<link>
-	     <target>/usr/bin/tcsh</target>
-	     <name>/bin/csh</name>
+	   	<option>force</option>
+	   	<target>/usr/bin/tcsh</target>
+	     	<name>/bin/csh</name>
 	</link>
     </stage>
 
