@@ -6,6 +6,9 @@
 #include <repl.h>
 #include <util.h>
 #include <build.h>
+#include <plugin.h>
+
+#define	VERSION		"0.0.2"
 
 role default_filter[4] = { NOEXECUTE, INTERACTIVE, TESTSUITE, 0 };
 char *paralell_filter[4] = { "configure-host", "clean", "mrproper", NULL };
@@ -16,13 +19,23 @@ int main (int argc, char **argv)
 {
 	char c, *syn = NULL, *moo_xml = NULL;
 	bool quiet = false;
+	int i = 0;
 	xmlNodePtr cur;
-	//profile *prof;
+	plug_info *plugin;
+	profile *prof = NULL;
 	
 	if (argc<2)
 	{
 		fprintf(stderr, "No book to parse.\n");
 		return 1;
+	}
+
+	plugin = plugscan("syntax");
+
+	if (!plugin)
+	{
+		fprintf(stderr, "No syntax plugins found.\n");
+		return 2;
 	}
 
 	while ((c = getopt(argc, argv, "s:qVhc:")) != EOF)
@@ -33,10 +46,15 @@ int main (int argc, char **argv)
 				if (!strcmp(optarg, "help"))
 				{
 					printf("Available syntaxes:\n");
-					printf("\tbook\t\tBook as profile (default)\n");
-					printf("\tnalfs\t\tnALFS legacy syntax\n");
-					printf("\tass\t\tALFS simple syntax\n");
-					printf("\tsyn\t\tHive profile syntax\n");
+					while (plugin[i].path)
+					{
+						char *tmp = plugarg(plugin[i].path);
+						if (strcmp(tmp, "sample"))
+							printf("\t%s\t\t%s%s\n", tmp, 
+								plugin[i].info->name, ((i==0) 
+								? " (default)" : ""));
+						i++;
+					}
 					return 0;
 				}
 				syn = (char *)malloc(strlen(optarg)+1);
@@ -46,7 +64,7 @@ int main (int argc, char **argv)
 				quiet = true;
 				break;
 			case 'V':
-				printf("moongoo 0.0.1\nWritten by Boris Buegling\n");
+				printf("moongoo %s\nWritten by Boris Buegling\n", VERSION);
 				return 0;
 			case 'h':
 				printf("moongoo [OPTIONS] BOOK\n");
@@ -70,31 +88,33 @@ int main (int argc, char **argv)
 	xmlXIncludeProcessFlags(doc, XML_PARSE_NOENT);
 	cur=xmlDocGetRootElement(doc);
 	
-	/*if ((!syn)||(!strcmp(syn, "book")))
-		prof=bookasprofile(cur);
-	else
-	if (!strcmp(syn, "syn"))
-		prof=syn_profile(cur);
-	else
-	if (!strcmp(syn, "nalfs"))
-		prof=nalfs_profile(cur);
-	else
-	if (!strcmp(syn, "ass"))
-		prof=ass_profile(cur);
-	else
+	if (syn)
 	{
-		fprintf(stderr, "Syntax '%s' is not valid.\n", syn);
+		while (plugin[i].path)
+		{
+			if (!strcmp(syn, plugarg(plugin[i].path)))
+				prof = plugin[i].info->parse(cur);
+			i++;
+		}
+	}
+	else
+		prof = plugin[0].info->parse(cur);
+	
+	if (!prof)
+	{
+		fprintf(stderr, "Document was not parsed correctly.\n");
+		xmlFreeDoc(doc);
 		return 1;
 	}
-
-	if ((prof) && (!quiet))
+	
+	if (!quiet)
 	{
 		build_paralell (prof, paralell_filter, popt_pkg, popt_cmd);
 		set_filter(default_filter);
-		print_pkg(*search_pkg(prof, "Glibc-20041115", 
-			"chapter-building-system"));
-		//print_profile(*prof);
-	}*/
+		/*print_pkg(*search_pkg(prof, "Glibc-20041115", 
+			"chapter-building-system"));*/
+		print_profile(*prof);
+	}
 	
 	xmlFreeDoc(doc);
 	return 0;

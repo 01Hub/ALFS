@@ -2,8 +2,23 @@
 
 #include <alfs.h>
 #include <util.h>
+#include <plugin.h>
 
 profile *prof;
+
+profile *syn_profile (xmlNodePtr node);
+
+static t_plug syn_plugin =
+{
+	name:	"Hive profile syntax",
+	vers:	1,
+	parse:	syn_profile
+};
+
+t_plug *getplug ()
+{
+	return &syn_plugin;
+}
 
 // TODO: Complete syn support
 void process_cmd2 (char *line, xmlNodePtr node)

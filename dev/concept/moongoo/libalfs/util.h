@@ -41,5 +41,6 @@ char *squeeze (char *str);
 char *strkill (char *str, char *tokill);
 char *strnstr (char *haystack, char *needle, int n);
 char *cut_trail (char *str, char *delim);
+char *strdog_path (char *str1, char *str2);
 
 #endif

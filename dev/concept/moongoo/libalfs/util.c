@@ -54,6 +54,20 @@ char *strdog2 (char *str1, char *str2)
 	return ret;
 }
 
+char *strdog_path (char *str1, char *str2)
+{
+	char *ret, *tmp;
+	
+	if ((!str1)||(!str2))
+		return NULL;
+	
+	tmp = strdog(str1, "/");
+	ret = strdog(tmp, str2);
+
+	free(tmp);
+	return ret;
+}
+
 char *chrep (char *str, char old, char new)
 {
 	char *ret;
