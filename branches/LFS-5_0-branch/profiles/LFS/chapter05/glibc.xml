@@ -36,7 +36,9 @@
 			<name>/tools/etc</name>
 		</mkdir>
 
-		<execute command="touch /tools/etc/ld.so.conf" />
+		<execute command="touch">
+			<param>/tools/etc/ld.so.conf</param>
+		</execute>
 
 		<patch base="&build_dir;/&glibc-directory;">
 			<param>-N</param>

@@ -6,7 +6,7 @@ if [[ `whoami` != root ]]; then
 fi
 
 if [ ! -e config ]; then
-  echo Attention: You must create a config directory (or link).
+  echo "Attention: You must create a config directory (or link)."
 fi
 
 umask 022

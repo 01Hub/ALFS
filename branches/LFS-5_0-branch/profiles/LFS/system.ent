@@ -62,6 +62,7 @@
 <!ENTITY c6-inetutils SYSTEM          "chapter06/inetutils.xml">
 <!ENTITY c6-kbd SYSTEM                "chapter06/kbd.xml">
 <!ENTITY c6-kernel SYSTEM             "chapter06/kernel.xml">
+<!ENTITY c6-keymap SYSTEM	      "config/keymap.xml">
 <!ENTITY c6-less SYSTEM               "chapter06/less.xml">
 <!ENTITY c6-lfs-utils SYSTEM          "chapter06/lfs-utils.xml">
 <!ENTITY c6-libtool SYSTEM            "chapter06/libtool.xml">
