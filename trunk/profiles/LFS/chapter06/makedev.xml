@@ -1,28 +1,26 @@
-<package name="MAKEDEV" version="&MAKEDEV-version;">
+<package name="make_devices" version="&make_devices-version;">
 	<stage name="Unpacking a package.">
 		<unpack>
-			<digest>&MAKEDEV-md5;</digest>
-			<archive>&packages_dir;/&MAKEDEV-package;</archive>
+			<digest>&make_devices-md5;</digest>
+			<archive>&packages_dir;/&make_devices-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<copy base="&build_dir;">
-			<source>&MAKEDEV-file;</source>
-			<destination>/dev/MAKEDEV</destination>
+			<source>&make_devices-file;</source>
+			<destination>/dev/make_devices</destination>
 		</copy>
 
 		<permissions base="/dev" mode="754">
-			<name>MAKEDEV</name>
+			<name>&make_devices-file;</name>
 		</permissions>
 
-		<execute base="/dev" command="./MAKEDEV">
-			<param>-v generic-nopty</param>
-		</execute>
+		<execute base="/dev" command="./make_devices" />
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&MAKEDEV-file;</remove>
+		<remove>&build_dir;/&make_devices-file;</remove>
 	</stage>
 </package>
