@@ -9,8 +9,8 @@
 
 <alfs>
 
-<stage name="Locking glibc.">
-	<stage name="Adjusting the linker.">
+<stage name="Adjusting the Toolchain">
+	<stage name="Adjusting the Linker">
 		<stageinfo>
 			<base>&build_dir;/binutils-build</base>
 		</stageinfo>

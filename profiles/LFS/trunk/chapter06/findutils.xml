@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="findutils" version="&findutils-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&findutils-md5;</digest>
 			<archive>&packages_dir;/&findutils-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&findutils-directory;</base>
 		</stageinfo>
@@ -42,7 +42,7 @@
 		</make>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&findutils-directory;</remove>
 	</stage>
 </package>

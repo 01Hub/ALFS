@@ -9,18 +9,18 @@
 
 <alfs>
 
-<package name="module-init-tools" version="&module-tools-version;">
+<package name="module-init-tools" version="&module-init-tools-version;">
 	<stage name="Unpacking">
 		<unpack>
-			<digest>&module-tools-md5;</digest>
-			<archive>&packages_dir;/&module-tools-package;</archive>
+			<digest>&module-init-tools-md5;</digest>
+			<archive>&packages_dir;/&module-init-tools-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing">
 		<stageinfo>
-			<base>&build_dir;/&module-tools-directory;</base>
+			<base>&build_dir;/&module-init-tools-directory;</base>
 		</stageinfo>
 
 		<configure>
@@ -40,7 +40,7 @@
 	</stage>
 
 	<stage name="Cleanup">
-		<remove>&build_dir;/&module-tools-directory;</remove>
+		<remove>&build_dir;/&module-init-tools-directory;</remove>
 	</stage>
 </package>
 

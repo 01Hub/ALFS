@@ -7,7 +7,7 @@
 
 <alfs>
 
-<stage name="Configuring the localnet script">
+<stage name="Configuring the localnet Script">
 	<textdump>
 		<file>/etc/sysconfig/network</file>
 		<content>=HOSTNAME=&hostname;</content>

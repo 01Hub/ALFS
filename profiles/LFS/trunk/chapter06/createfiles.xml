@@ -3,7 +3,7 @@
 
 <alfs>
 
-<stage name="Creating essential symlinks.">
+<stage name="Creating Essential Symlinks">
 	<link>
 		<option>force</option>
 		<target>/tools/bin/bash</target>

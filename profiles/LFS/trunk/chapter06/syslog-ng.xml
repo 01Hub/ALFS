@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="syslog-ng" version="&syslog-ng-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&syslog-ng-md5;</digest>
 			<archive>&packages_dir;/&syslog-ng-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&syslog-ng-directory;</base>
 		</stageinfo>
@@ -118,7 +118,7 @@
 		</textdump>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&syslog-ng-directory;</remove>
 	</stage>
 </package>

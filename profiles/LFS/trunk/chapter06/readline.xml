@@ -10,7 +10,7 @@
 <alfs>
 
 <package name="readline" version="&readline-version;">
-	<stage name="Unpacking.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&readline-md5;</digest>
 			<archive>&packages_dir;/&readline-package;</archive>
@@ -18,7 +18,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&readline-directory;</base>
 		</stageinfo>
@@ -64,7 +64,7 @@
 		</link>
 	</stage>
 
-	<stage name="Cleaning up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&readline-directory;</remove>
 	</stage>
 </package>

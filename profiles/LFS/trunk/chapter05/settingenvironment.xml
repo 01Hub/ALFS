@@ -7,7 +7,7 @@
 
 <alfs>
 
-<stage name="Setting up the environment.">
+<stage name="Setting Up the Environment">
 	<stageinfo>
 		<user>&lfs-user;</user>
 	</stageinfo>
