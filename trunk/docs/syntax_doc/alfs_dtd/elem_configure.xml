@@ -35,7 +35,7 @@ describe the command <command>configure</command>.</para>
 
 <para>Notice that all the elements <filename>param</filename> and
 <filename>prefix</filename> are surrounded by parathensis
-[&nbsp;(&nbsp;)&nbsp;]and followed by an asterisk [&nbsp;*&nbsp;]. The
+[&nbsp;(&nbsp;)&nbsp;] and followed by an asterisk [&nbsp;*&nbsp;]. The
 asterisk signifies that each element can be used optionally inside the
 <filename>configure</filename> declaration in a profile and that, if used,
 they can be used more than once.</para>
