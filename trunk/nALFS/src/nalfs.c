@@ -4652,7 +4652,8 @@ static void nprint_init(msg_id_e mid, const char *format,...)
 	}
 
 	vfprintf(console, format, ap);
-	fflush(console);
+
+	fputc('\n', console);
 
 	va_end(ap);
 }

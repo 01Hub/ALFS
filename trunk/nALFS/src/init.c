@@ -114,7 +114,7 @@ static INLINE int handle_set_line(const char *opt, const char *val)
 			break;
 
 		case OPTION_UNKNOWN:
-			Nprint_err("Option \"%s\" is unknown.\n", opt);
+			Nprint_err("Option \"%s\" is unknown.", opt);
 			ret = -1;
 			break;
 
@@ -149,8 +149,7 @@ static INLINE int get_next_token(char **s, char *buffer)
 		} else if (ch == '\\') {
 			if (!quote) {
 				Nprint_warn(
-					"Escape character outside of quotes? "
-					"What for?\n");
+				"Escape character found outside of quotes.");
 				return -1;
 			}
 			buffer[pos++] = **s;
@@ -164,7 +163,7 @@ static INLINE int get_next_token(char **s, char *buffer)
 	buffer[pos] = '\0';
 
 	if (pos == 0) {
-		Nprint_warn("Empty token.\n");
+		Nprint_warn("Empty token.");
 		return -1;
 	}
 
@@ -203,7 +202,7 @@ static int parse_rc_line(char *line)
 		return handle_set_line(opt, val);
 	}
 
-	Nprint_err("Unknown command (%s).\n", command);
+	Nprint_err("Unknown command (%s).", command);
 
 	return -1;
 }
@@ -236,12 +235,12 @@ static INLINE void parse_rc_file(const char *rcfile)
 			while ((c = getc(fp)) != EOF && c != '\n')
 				/* Skip in circle. */;
 
-			Nprint_err("File %s, line %d too long, won't read it.\n",
+			Nprint_err("File %s, line %d too long, won't read it.",
 				   rcfile, line_num);
 		}
 
 		if (parse_rc_line(line) != 0) {
-			Nprint_err("File %s, error at line %d: %s\n",
+			Nprint_err("File %s, error at line %d: %s",
 				   rcfile, line_num, line);
 		}
 	}
@@ -274,7 +273,7 @@ void read_user_rc_file(void)
 	home_dir = get_home_directory();
 
 	if (Empty_string(home_dir)) {
-		Nprint_warn("Can't find your home directory.\n");
+		Nprint_warn("Can't find your home directory.");
 		return;
 	}
 
@@ -506,7 +505,7 @@ void read_command_line_options(int *argc, char ***argv)
 
 	/* Check for specified profiles. */
 	if (optind >= *argc) {
-		Nprint_err("No profiles specified.\n");
+		Nprint_err("No profiles specified.");
 		print_usage_and_exit();
 	}
 }
