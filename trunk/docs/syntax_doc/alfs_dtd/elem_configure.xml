@@ -74,6 +74,8 @@ cd /usr/src/mypackage/
 </para>
 
 <screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
+	&lt;prefix&gt;CFLAGS=&quot;...&quot;&lt;prefix&gt;
+	&lt;prefix&gt;CXXFLAGS=&quot;...&quot;&lt;prefix&gt;
 	&lt;param&gt;--prefix=/opt/mypackage&lt;/param&gt;
 &lt;/configure&gt;</userinput></screen>
 
