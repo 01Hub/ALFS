@@ -110,7 +110,8 @@ in that directory, and you will receive extraneous log message when
 you run nALFS 1.2.0 (although no harm will be done).
 
 
-3. Requirements ===============
+3. Requirements
+===============
 
 For actual parsing of XML profiles, nALFS uses the libxml2 (aka
 gnome-xml) library. You can find it on the web at http://xmlsoft.org/.
