@@ -39,7 +39,7 @@
 <!ENTITY screen-package   "screen-&screen-version;.tar.gz">
 <!ENTITY screen-directory "screen-&screen-version;">
 
-<!ENTITY tidy-version   "041026">
+<!ENTITY tidy-version   "050120">
 <!ENTITY tidy-package   "tidy_src_&tidy-version;.tgz">
 <!ENTITY tidy-directory "tidy_src_&tidy-version;">
 <!ENTITY tidy-docs      "tidy_docs.tgz">
@@ -48,7 +48,7 @@
 <!ENTITY desktop-file-utils-package   "desktop-file-utils-&desktop-file-utils-version;.tar.gz">
 <!ENTITY desktop-file-utils-directory "desktop-file-utils-&desktop-file-utils-version;">
 
-<!ENTITY xscreensaver-version "4.18">
+<!ENTITY xscreensaver-version "4.19">
 <!ENTITY xscreensaver-package "xscreensaver-&xscreensaver-version;.tar.gz">
 <!ENTITY xscreensaver-directory "xscreensaver-&xscreensaver-version;">
 
