@@ -284,6 +284,14 @@
 
 <!ENTITY gcc-full-patch     "gcc-3.3.1-no_fixincludes-2.patch">
 
+<!ENTITY tcl-version   "8.4.4">
+<!ENTITY tcl-package   "tcl8.4.4-src.tar.gz">
+<!ENTITY tcl-directory "tcl8.4.4">
+
+<!ENTITY tk-version   "8.4.4">
+<!ENTITY tk-package   "tk8.4.4-src.tar.gz">
+<!ENTITY tk-directory "tk8.4.4">
+
 <!ENTITY nasm-version   "0.98.37">
 <!ENTITY nasm-package   "nasm-0.98.37.tar.bz2">
 <!ENTITY nasm-directory "nasm-0.98.37">

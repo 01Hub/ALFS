@@ -1,0 +1,81 @@
+<package name="tcl" version="&tcl-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&tcl-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&tcl-directory;/unix</base>
+			<environment>
+			    <variable name="VERSION">&tcl-version;</variable>
+			    <variable name="V">8.4</variable>
+			</environment>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<search_replace>
+		       <file>tclConfig.sh</file>
+		       <find>&build_dir;/&tcl-directory;/unix</find>
+		       <replace>/usr/lib</replace>
+		</search_replace>
+
+		<search_replace>
+		       <file>tclConfig.sh</file>
+		       <find>&build_dir;/&tcl-directory;</find>
+		       <replace>/usr/include/tcl8.4</replace>
+		</search_replace>
+
+		<search_replace>
+		       <file>tclConfig.sh</file>
+		       <find>TCL_LIB_FILE='libtcl8.4${TCL_DBGX}.so'</find>
+		       <replace>TCL_LIB_FILE="libtcl8.4${TCL_DBGX}.so"</replace>
+		</search_replace>
+
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="install -d /usr/include/tcl${V}/unix" />
+		<execute command="install -m644 *.h /usr/include/tcl${V}/unix/" />
+		<execute command="install -d /usr/include/tcl${V}/generic" />
+		<execute command="install -c -m644 ../generic/*.h /usr/include/tcl${V}/generic/" />
+
+		<remove>/usr/include/tcl${V}/generic/tcl.h</remove>
+		<remove>/usr/include/tcl${V}/generic/tclDecls.h</remove>
+		<remove>/usr/include/tcl${V}/generic/tclPlatDecls.h</remove>
+		
+		<link>
+		        <option>force</option>
+			<option>no_dereference</option>
+			<target>/usr/include/tcl${V}</target>
+			<name>/usr/lib/tcl${V}/include</name>
+		</link>
+
+		<link>
+		        <option>force</option>
+			<target>libtcl${V}.so</target>
+			<name>/usr/lib/libtcl.so</name>
+		</link>
+
+		<link>
+		        <option>force</option>
+			<target>tclsh${V}</target>
+			<name>/usr/bin/tclsh</name>
+		</link>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&tcl-directory;</remove>
+	</stage>
+
+</package>

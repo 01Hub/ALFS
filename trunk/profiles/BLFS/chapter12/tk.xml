@@ -1,0 +1,74 @@
+<package name="tk" version="&tk-version;">
+
+	<stage name="Unpacking a package.">
+		<unpack>
+			<archive>&packages_dir;/&tk-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing a package.">
+		<stageinfo>
+			<base>&build_dir;/&tk-directory;/unix</base>
+			<environment>
+			    <variable name="VERSION">&tk-version;</variable>
+			    <variable name="V">8.4</variable>
+			</environment>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<search_replace>
+		       <file>tkConfig.sh</file>
+		       <find>&build_dir;/&tk-directory;/unix</find>
+		       <replace>/usr/lib</replace>
+		</search_replace>
+
+		<search_replace>
+		       <file>tkConfig.sh</file>
+		       <find>&build_dir;/&tk-directory;</find>
+		       <replace>/usr/include/tk8.4</replace>
+		</search_replace>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="install -d /usr/include/tk${V}/unix" />
+		<execute command="install -m644 *.h /usr/include/tk${V}/unix/" />
+		<execute command="install -d /usr/include/tk${V}/generic" />
+		<execute command="install -c -m644 ../generic/*.h /usr/include/tk${V}/generic/" />
+
+		<remove>/usr/include/tk${V}/generic/tk.h</remove>
+		<remove>/usr/include/tk${V}/generic/tkDecls.h</remove>
+		<remove>/usr/include/tk${V}/generic/tkPlatDecls.h</remove>
+		
+		<link>
+		        <option>force</option>
+			<option>no_dereference</option>
+			<target>/usr/include/tk${V}</target>
+			<name>/usr/lib/tk${V}/include</name>
+		</link>
+
+		<link>
+		        <option>force</option>
+			<target>libtk${V}.so</target>
+			<name>/usr/lib/libtk.so</name>
+		</link>
+
+		<link>
+		        <option>force</option>
+			<target>wish${V}</target>
+			<name>/usr/bin/wish</name>
+		</link>
+	</stage>
+
+	<stage name="Clean-up.">
+		<remove>&build_dir;/&tk-directory;</remove>
+	</stage>
+
+</package>
