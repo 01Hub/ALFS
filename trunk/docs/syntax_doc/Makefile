@@ -71,7 +71,7 @@ chunks-html: common
 	rm $(OUTDIR)stylesheets/alfs-chunked.xsl
 	mv $(OUTDIR) ALFS-SYNTAX_DOC
 
-	tar -cjvf ALFS-SYNTAX_DOC-CHUNKS-html.tar.bz2 ALFS-SYNTAX_DOC/*
+	tar -cjvf ALFS-SYNTAX_DOC-CVS-CHUNKS-html.tar.bz2 ALFS-SYNTAX_DOC/*
 
 nochunks-html: common
 	sed -e "s@XSLROOTDIR@$(XSLROOTDIR)@" \
