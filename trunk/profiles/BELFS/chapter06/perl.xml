@@ -19,16 +19,14 @@
 
 		<make />
 
-<!--
 		<textdump>
 			<file>/etc/hosts</file>
-			<content>=127.0.0.1 $(hostname) localhost</content>
+			<content>=127.0.0.1 &hostname; localhost</content>
 		</textdump>
 
 		<make>
 			<param>test</param>
 		</make>
--->
 
 		<make>
 			<param>install</param>
