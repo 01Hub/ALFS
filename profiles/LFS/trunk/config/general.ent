@@ -191,3 +191,5 @@ network.-->
       -->
 
 <!ENTITY paper_size "letter">
+
+<!ENTITY real-amp "&#38;#38;">
