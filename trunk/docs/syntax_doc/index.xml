@@ -2,69 +2,22 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
 			"/usr/share/docbook/docbookx.dtd" [
 
-<!ENTITY version     "3.1-20030926">
-<!ENTITY releasedate "September 26, 2003">
+<!ENTITY alfs-dtd-version "3.1">
+<!ENTITY version "&alfs-dtd-version;-20030927">
+<!ENTITY releasedate "September 27th, 2003">
 
-<!ENTITY legalnotice      SYSTEM "legalnotice.xml">
-<!ENTITY acknowledgements SYSTEM "acknowledgements.xml">
-<!ENTITY changelog        SYSTEM "changelog.xml">
-<!ENTITY contactinfo      SYSTEM "contactinfo.xml">
+<!ENTITY % book      SYSTEM "book/book.ent">
+<!ENTITY % preface   SYSTEM "preface/preface.ent">
+<!ENTITY % alfs_dtd  SYSTEM "alfs_dtd/alfs_dtd.ent">
 
-<!ENTITY alfs_dtd         SYSTEM "alfs_dtd/alfs_dtd.xml">
-
-
-<!ENTITY % alfs_dtd_entities   SYSTEM "alfs_dtd/alfs_dtd.ent">
-
-%alfs_dtd_entities;
+%book;
+%preface;
+%alfs_dtd;
 
 ]>
 
-
 <book>
 
-    <bookinfo>
-	<title>Automated Linux From Scratch</title>
-	<subtitle>Version &version;</subtitle>
-
-	<authorgroup>
-	    <author>
-		<firstname>Vassili</firstname>
-		<surname>Dzuba</surname>
-	    </author>
-            <author>
-                <firstname>James</firstname>
-                <surname>Robertson</surname>
-            </author>
-	    <author>
-		<firstname>Jesse</firstname>
-		<surname>Tie-Ten-Quee</surname>
-	    </author>
-	</authorgroup>
-
-	<copyright id="copyright">
-	    <year>2001-2003</year>
-	    <holder>Vassili Dzuba, James Robertson, Jesse Tie-Ten-Quee</holder>
-	</copyright>
-
-	&legalnotice;
-
-	<abstract>
-	    <para>Documentation and examples of the ALFS profile syntax, version 3.1.</para>
-	</abstract>
-    </bookinfo>
-
-    <chapter id="ch01">
-	<title>Introduction</title>
-
-	&acknowledgements;
-	
-	&changelog;
-	
-	&contactinfo;
-
-    </chapter>
-
-    
-    &alfs_dtd;
+&book;
 
 </book>
