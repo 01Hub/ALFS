@@ -18,6 +18,8 @@
 		<stageinfo>
 			<environment>
 			        <variable name="QTDIR">&build_dir;/&qt-directory;</variable>
+			        <variable name="LD_LIBRARY_PATH">&build_dir;/&qt-directory;/lib</variable>
+			        <variable name="PATH">/bin:/usr/sbin:/usr/bin:&build_dir;/&qt-directory;/bin</variable>
 			</environment>
 			<base>&build_dir;/&qt-directory;</base>
 		</stageinfo>

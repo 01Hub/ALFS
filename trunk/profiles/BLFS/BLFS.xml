@@ -514,6 +514,10 @@
     &flac;
     &libdvdread;
     &libdvdcss;
+    &libdv;
+    &liba52;
+    &xvid;
+    &xine-lib;
 
 </stage>
 
@@ -529,11 +533,9 @@
 
 <stage name="Chapter 44 (Video utilities)">
 
-    &xvid;
     &ffmpeg;
     &avifile;
     &mplayer;
-    &xine-lib;
     &xine-ui;
     &transcode;
 

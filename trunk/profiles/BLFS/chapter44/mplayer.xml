@@ -45,7 +45,10 @@
 
 		<execute command="install -d /usr/lib/mplayer/extralite" />
 		<execute command="tar xjvf ../&mplayer-codecs-package; -C /usr/lib/mplayer" />
+
+		<execute command="install -d /usr/lib/mplayer/font" />
 		<execute command="tar xjvf ../&mplayer-arial-iso-8859-1-package; -C /usr/lib/mplayer/font" />
+		<execute command="install -d /usr/lib/mplayer/Skin" />
 		<execute command="tar xjvf ../&mplayer-skin-package; -C /usr/lib/mplayer/Skin" />
 
 		<configure>
@@ -63,6 +66,28 @@
 		<make>
 			<param>install</param>
 		</make>
+
+		<make>
+			<param>-C libavcodec/libpostproc</param>
+			<param>install</param>
+		</make>
+
+		<copy>
+		        <source>etc/codecs.conf</source>
+			<destination>/etc/mplayer</destination>
+		</copy>
+
+		<execute command="tar xjvf ../default-1.7.tar.bz2 -C /usr/share/mplayer/Skin" />
+
+		<execute command="chown -R root:root /usr/{lib/mplayer/extralite,share/mplayer}" />
+
+		<textdump>
+		        <file>/etc/mplayer/mplayer.conf</file>
+			<content>
+			=gui = yes
+			=skin = default
+			</content>
+		</textdump>
 	</stage>
 
 	<stage name="Clean-up.">
