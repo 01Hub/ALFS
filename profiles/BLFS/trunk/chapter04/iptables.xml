@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch04.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,133 +10,116 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="iptables" version="&iptables-version;">
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&iptables-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&iptables-directory;</base>
-		</stageinfo>
-
-		<make>
-		        <param>PREFIX=/usr</param>
-			<param>LIBDIR=/usr</param>
-			<param>BINDIR=/sbin</param>
-		</make>
-
-		<make>
-		        <param>PREFIX=/usr</param>
-			<param>LIBDIR=/usr</param>
-			<param>BINDIR=/sbin</param>
-			<param>install</param>
-		</make>
-
-
-	</stage>
-
-	<stage name="Configuring">
-	<!-- setup for personal firewall -->
-	<!-- other setups are available in the book -->
-
-		<textdump base="/etc/rc.d/init.d">
-			<file>firewall</file>
-			<content>
-			=#!/bin/sh
-			=
-			=# Begin $rc_base/init.d/firewall
-			=
-			=# Insert connection-tracking modules (not needed if built into the kernel).
-			=modprobe ip_tables
-			=modprobe iptable_filter
-			=modprobe ip_conntrack
-			=modprobe ip_conntrack_ftp
-			=modprobe ipt_state
-			=modprobe ipt_LOG
-			=
-			=# allow local-only connections
-			=iptables -A INPUT  -i lo -j ACCEPT
-			=# free output on any interface to any ip for any service (equal to -P ACCEPT)
-			=iptables -A OUTPUT -j ACCEPT
-			=
-			=# permit answers on already established connections
-			=# and permit new connections related to established ones (eg active-ftp)
-			=iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-			=
-			=# Log everything else:  What's Windows' latest exploitable vulnerability?
-			=iptables -A INPUT -j LOG --log-prefix "FIREWALL:INPUT "
-			=
-			=# set a sane policy:    everything not accepted > /dev/null
-			=iptables -P INPUT    DROP
-			=iptables -P FORWARD  DROP
-			=iptables -P OUTPUT   DROP
-			=
-			=# be verbose on dynamic ip-addresses     (not needed in case of static IP)
-			=echo 2 > /proc/sys/net/ipv4/ip_dynaddr
-			=
-			=# disable ExplicitCongestionNotification - too many routers are still ignorant
-			=echo 0 > /proc/sys/net/ipv4/tcp_ecn
-			=
-			=# End $rc_base/init.d/firewall
-			</content>
-		</textdump>
-
-		<textdump base="/etc/rc.d/init.d">
-			<file>firewall.status</file>
-			<content>
-			=#!/bin/sh
-			=
-			=# Begin $rc_base/init.d/firewall.status
-			=
-			=echo "iptables.mangling:"
-			=iptables -t mangle  -v -L -n --line-numbers
-			=
-			=echo
-			=echo "iptables.nat:"
-			=iptables -t nat	    -v -L -n --line-numbers
-			=
-			=echo
-			=echo "iptables.filter:"
-			=iptables	    -v -L -n --line-numbers
-			</content>
-		</textdump>
-
-		<textdump base="/etc/rc.d/init.d">
-			<file>firewall.stop</file>
-			<content>
-			=#!/bin/sh
-			=
-			=# Being $rc_base/init.d/firewall.stop
-			=
-			=# deactivate IP-Forwarding 
-			=echo 0 > /proc/sys/net/ipv4/ip_forward
-			=
-			=iptables -Z
-			=iptables -F
-			=iptables -t nat         -F PREROUTING
-			=iptables -t nat         -F OUTPUT
-			=iptables -t nat         -F POSTROUTING
-			=iptables -t mangle      -F PREROUTING
-			=iptables -t mangle      -F OUTPUT
-			=iptables -X
-			=iptables -P INPUT       ACCEPT
-			=iptables -P FORWARD     ACCEPT
-			=iptables -P OUTPUT      ACCEPT
-			</content>
-		</textdump>
-
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&iptables-directory;</remove>
-	</stage>
-
-</package>
+  <package name="iptables" version="&iptables-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&iptables-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&iptables-directory;</base>
+      </stageinfo>
+      <make>
+        <param>PREFIX=/usr</param>
+        <param>LIBDIR=/usr</param>
+        <param>BINDIR=/sbin</param>
+      </make>
+      <make>
+        <param>PREFIX=/usr</param>
+        <param>LIBDIR=/usr</param>
+        <param>BINDIR=/sbin</param>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Configuring">
+      <!-- setup for personal firewall -->
+      <!-- other setups are available in the book -->
+      <textdump base="/etc/rc.d/init.d">
+        <file>firewall</file>
+        <content>
+	  =#!/bin/sh
+	  =
+	  =# Begin $rc_base/init.d/firewall
+	  =
+	  =# Insert connection-tracking modules (not needed if built into the kernel).
+	  =modprobe ip_tables
+	  =modprobe iptable_filter
+	  =modprobe ip_conntrack
+	  =modprobe ip_conntrack_ftp
+	  =modprobe ipt_state
+	  =modprobe ipt_LOG
+	  =
+	  =# allow local-only connections
+	  =iptables -A INPUT -i lo -j ACCEPT
+	  =# free output on any interface to any ip for any service (equal to -P ACCEPT)
+	  =iptables -A OUTPUT -j ACCEPT
+	  =
+	  =# permit answers on already established connections
+	  =# and permit new connections related to established ones (eg active-ftp)
+	  =iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+	  =
+	  =# Log everything else: What's Windows' latest exploitable vulnerability?
+	  =iptables -A INPUT -j LOG --log-prefix "FIREWALL:INPUT "
+	  =
+	  =# set a sane policy: everything not accepted &gt; /dev/null
+	  =iptables -P INPUT DROP =iptables -P FORWARD DROP =iptables -P OUTPUT DROP
+	  =
+	  =# be verbose on dynamic ip-addresses (not needed in case of static IP
+	  =echo 2 &gt; /proc/sys/net/ipv4/ip_dynaddr
+	  =
+	  =# disable ExplicitCongestionNotification - too many routers are still ignorant
+	  =echo 0 &gt; /proc/sys/net/ipv4/tcp_ecn
+	  =
+	  =# End $rc_base/init.d/firewall
+	</content>
+      </textdump>
+      <textdump base="/etc/rc.d/init.d">
+        <file>firewall.status</file>
+        <content>
+	  =#!/bin/sh
+	  =
+	  =# Begin $rc_base/init.d/firewall.status
+	  =
+	  =echo "iptables.mangling:"
+	  =iptables -t mangle -v -L -n --line-numbers
+	  =
+	  =echo
+	  =echo "iptables.nat:"
+	  =iptables -t nat -v -L -n --line-numbers
+	  =
+	  =echo
+	  =echo "iptables.filter:"
+	  =iptables -v -L -n --line-numbers
+	</content>
+      </textdump>
+      <textdump base="/etc/rc.d/init.d">
+        <file>firewall.stop</file>
+        <content>
+	  =#!/bin/sh
+	  =
+	  =# Being $rc_base/init.d/firewall.stop
+	  =
+	  =# deactivate IP-Forwarding
+	  =echo 0 &gt; /proc/sys/net/ipv4/ip_forward
+	  =
+	  =iptables -Z =iptables -F
+	  =iptables -t nat -F PREROUTING
+	  =iptables -t nat -F OUTPUT
+	  =iptables -t nat -F POSTROUTING
+	  =iptables -t mangle -F PREROUTING
+	  =iptables -t mangle -F OUTPUT
+	  =iptables -X
+	  =iptables -P INPUT ACCEPT
+	  =iptables -P FORWARD ACCEPT
+	  =iptables -P OUTPUT ACCEPT
+	</content>
+      </textdump>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&iptables-directory;</remove>
+    </stage>
+  </package>
 </alfs>

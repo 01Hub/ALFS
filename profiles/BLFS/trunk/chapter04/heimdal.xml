@@ -151,28 +151,28 @@
     <textdump base="/etc/heimdal">
       <file>krb5.conf</file>
       <content>
-      =# Begin /etc/heimdal/krb5.conf
-      =  
-      =[libdefaults]
-      =    default_realm = &heimdal-all-caps-domain;
-      =    encrypt = true
-      =
-      =[realms]
-      =    &heimdal-all-caps-domain; = {
-      =        kdc = &heimdal-hostname;
-      =        admin_server = &heimdal-hostname;
-      =        kpasswd_server = &heimdal-hostname;
-      =    }
-      =
-      =[domain_realm]
-      =    .&heimdal-domain; = &heimdal-all-caps-domain;
-      =
-      =[logging]
-      =    kdc = FILE:/var/log/kdc.log
-      =    admin_server = FILE:/var/log/kadmin.log
-      =    default = FILE:/var/log/krb.log
-      =
-      =# End /etc/heimdal/krb5.conf
+	=# Begin /etc/heimdal/krb5.conf
+	=  
+	=[libdefaults]
+	=    default_realm = &heimdal-all-caps-domain;
+	=    encrypt = true
+	=
+	=[realms]
+	=    &heimdal-all-caps-domain; = {
+	=        kdc = &heimdal-hostname;
+	=        admin_server = &heimdal-hostname;
+	=        kpasswd_server = &heimdal-hostname;
+	=    }
+	=
+	=[domain_realm]
+	=    .&heimdal-domain; = &heimdal-all-caps-domain;
+	=
+	=[logging]
+	=    kdc = FILE:/var/log/kdc.log
+	=    admin_server = FILE:/var/log/kadmin.log
+	=    default = FILE:/var/log/krb.log
+	=
+	=# End /etc/heimdal/krb5.conf
       </content>
     </textdump>
     <!-- all other configuration concerning heimdal must be done manually -->

@@ -90,27 +90,27 @@
     <textdump base="/etc">
       <file>krb5.conf</file>
       <content>
-      =# Begin /etc/krb5.conf
-      =  
-      =[libdefaults]
-      =    default_realm = &mitkrb-all-caps-domain;
-      =    encrypt = true
-      =
-      =[realms]
-      =    &mitkrb-all-caps-domain; = {
-      =        kdc = &mitkrb-hostname;
-      =        admin_server = &mitkrb-hostname;
-      =    }
-      =
-      =[domain_realm]
-      =    .&mitkrb-domain; = &mitkrb-all-caps-domain;
-      =
-      =[logging]
-      =    kdc = SYSLOG[:INFO[:AUTH]]
-      =    admin_server = SYSLOG[INFO[:AUTH]]
-      =    default = SYSLOG[[:SYS]]
-      =
-      =# End /etc/krb5.conf
+	=# Begin /etc/krb5.conf
+	=  
+	=[libdefaults]
+	=    default_realm = &mitkrb-all-caps-domain;
+	=    encrypt = true
+	=
+	=[realms]
+	=    &mitkrb-all-caps-domain; = {
+	=        kdc = &mitkrb-hostname;
+	=        admin_server = &mitkrb-hostname;
+	=    }
+	=
+	=[domain_realm]
+	=    .&mitkrb-domain; = &mitkrb-all-caps-domain;
+	=
+	=[logging]
+	=    kdc = SYSLOG[:INFO[:AUTH]]
+	=    admin_server = SYSLOG[INFO[:AUTH]]
+	=    default = SYSLOG[[:SYS]]
+	=
+	=# End /etc/krb5.conf
       </content>
     </textdump>
   </stage>
