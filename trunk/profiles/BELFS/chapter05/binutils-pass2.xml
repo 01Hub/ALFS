@@ -26,12 +26,6 @@
 			<base>&build_dir;/binutils-build</base>
 		</stageinfo>
 
-		<patch base="&build_dir;/&binutils-directory;">
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&binutils-gcc34-patch;</param>
-		</patch>
-
 		<configure command="../&binutils-directory;/configure">
 			<param>--prefix=/tools</param>
 			<param>--enable-shared</param>
