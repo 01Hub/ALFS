@@ -23,9 +23,21 @@ website at http://linuxfromscratch.org/alfs.
 
 * DocBook XSL Stylesheets-1.65.1 or better 
 	-- http://www.linuxfromscratch.org/blfs/view/cvs/pst/docbook-xsl.html
+	-- additionally create a link from
+		/usr/share/xml/docbook/xsl-stylesheets-1.65.1 to
+		/usr/share/xml/docbook/xsl-stylesheets-current
+
+		cd /usr/share/xml/docbook/ &&
+		ln -s xsl-stylesheets-1.65.1 xsl-stylesheets-current
 
 * lynx-2.8.5 or better
 	-- http://www.linuxfromscratch.org/blfs/view/cvs/basicnet/lynx.html
+
+* HTMLTidy
+  - http://tidy.sourceforge.net/
+
+  Installation of HTMLTidy is a simple `./configure --prefix=/usr && \
+  make && make install`
 
 2. Setting up the DTD
 ~~~~~~~~~~~~~~~~~~~~~
