@@ -1,5 +1,5 @@
 <package name="readline" version="&readline-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&readline-md5;</digest>
 			<archive>&packages_dir;/&readline-package;</archive>
@@ -12,7 +12,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&readline-directory;</base>
 		</stageinfo>
@@ -56,7 +56,7 @@
 		</link>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&readline-directory;</remove>
 		<remove>&build_dir;/&readline-gnu-fixes-patch;</remove>
 	</stage>

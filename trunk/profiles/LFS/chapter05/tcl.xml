@@ -1,5 +1,5 @@
 <package name="tcl" version="&tcl-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&tcl-md5;</digest>
 			<archive>&packages_dir;/&tcl-package;</archive>
@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&tcl-directory;/unix</base>
 		</stageinfo>

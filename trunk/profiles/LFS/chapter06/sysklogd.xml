@@ -1,5 +1,5 @@
 <package name="sysklogd" version="&sysklogd-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&sysklogd-md5;</digest>
 			<archive>&packages_dir;/&sysklogd-package;</archive>
@@ -13,7 +13,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&sysklogd-directory;</base>
 		</stageinfo>
@@ -54,7 +54,7 @@
 		</textdump>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&sysklogd-directory;</remove>
 		<remove>&build_dir;/&sysklogd-kernel-headers-patch;</remove>
 		<remove>&build_dir;/&sysklogd-signal-patch;</remove>
