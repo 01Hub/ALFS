@@ -28,11 +28,6 @@
 			<param>install</param>
 		</make>
 
-		<link>
-			<option>force</option>
-			<target>automake-1.7</target>
-			<name>/usr/share/automake</name>
-		</link>
 	</stage>
 
 	<stage name="Clean-up.">

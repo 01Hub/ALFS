@@ -37,16 +37,18 @@
 		</link>
 
 		<textdump>
-			<file>/root/.vimrc</file>
+			<file>/etc/vimrc</file>
 			<content>
-				=" Begin /root/.vimrc
+				=" Begin /etc/vimrc
 				=
 				=set nocompatible
 				=set bs=2
+				=syntax on
 				=
-				=" End /root/.vimrc
+				=" End /etc/vimrc
 			</content>
 		</textdump>
+
 	</stage>
 
 	<stage name="Clean-up.">
