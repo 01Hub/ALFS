@@ -92,11 +92,11 @@ while getopts hd:g:p: param; do
 	    get_text_doc nALFS-USERS-GUIDE users_guide
 	    get_text_doc nALFS-HACKERS-GUIDE hackers_guide
 	    get_html_doc_2 ALFS-SYNTAX-DOC syntax_doc
-	    get_html_doc nALFS-USERS-GUIDE users_guide
-	    get_html_doc nALFS-HACKERS-GUIDE hackers_guide
+	    get_html_doc_2 nALFS-USERS-GUIDE users_guide
+	    get_html_doc_2 nALFS-HACKERS-GUIDE hackers_guide
 	    get_html_nohunks_doc_2 ALFS-SYNTAX-DOC syntax_doc
-	    get_html_nohunks_doc nALFS-USERS-GUIDE users_guide
-	    get_html_nohunks_doc nALFS-HACKERS-GUIDE hackers_guide
+	    get_html_nohunks_doc_2 nALFS-USERS-GUIDE users_guide
+	    get_html_nohunks_doc_2 nALFS-HACKERS-GUIDE hackers_guide
 	    echo done.
 	    ;;
 	p)
