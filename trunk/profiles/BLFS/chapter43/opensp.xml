@@ -9,11 +9,6 @@
 			<archive>&packages_dir;/&opensp-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-		        <source>&packages_dir;/&opensp-patch;</source>
-		        <destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
@@ -24,7 +19,7 @@
 		<patch>
 			<param>-N</param>
 			<param>-p1</param>
-			<param>-i ../&opensp-patch;</param>
+			<param>-i &packages_dir;/&opensp-patch;</param>
 		</patch>
 
 		<configure>
@@ -36,11 +31,11 @@
 		</configure>
 
 		<make>
-		        <param>pkgdatadir=/usr/share/sgml/OpenSP-1.5</param>
+		        <param>pkgdatadir=/usr/share/sgml/OpenSP-&opensp-version;</param>
 		</make>
 
 		<make>
-		        <param>pkgdatadir=/usr/share/sgml/OpenSP-1.5</param>
+		        <param>pkgdatadir=/usr/share/sgml/OpenSP-&opensp-version;</param>
 			<param>install</param>
 		</make>
 
@@ -112,14 +107,14 @@
 
 		<execute command="install-catalog">
 		        <param>--add</param>
-			<param>/etc/sgml/OpenSP-1.5.cat</param>
-			<param>/usr/share/sgml/OpenSP-1.5/catalog</param>
+			<param>/etc/sgml/OpenSP-&opensp-version;.cat</param>
+			<param>/usr/share/sgml/OpenSP-&opensp-version;/catalog</param>
 		</execute>
 
 		<execute command="install-catalog">
 		        <param>--add</param>
 			<param>/etc/sgml/sgml-docbook.cat</param>
-			<param>/etc/sgml/OpenSP-1.5.cat</param>
+			<param>/etc/sgml/OpenSP-&opensp-version;.cat</param>
 		</execute>
 	</stage>
 

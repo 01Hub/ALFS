@@ -15,40 +15,16 @@
 		<mkdir>
 		       <option>parents</option>
 		       <name>/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;</name>
-		 </mkdir>
+		</mkdir>
 
 		<mkdir base="/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;">
 		        <option>parents</option>
 			<name>dtds/decls</name>
-		</mkdir>
-
-		<mkdir base="/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;">
-		        <option>parents</option>
 			<name>lib</name>
-		</mkdir>
-
-		<mkdir base="/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;">
-		        <option>parents</option>
 			<name>common</name>
-		</mkdir>
-
-		<mkdir base="/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;">
-		        <option>parents</option>
 			<name>html</name>
-		</mkdir>
-
-		<mkdir base="/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;">
-		        <option>parents</option>
 			<name>print</name>
-		</mkdir>
-
-		<mkdir base="/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;">
-		        <option>parents</option>
 			<name>test</name>
-		</mkdir>
-
-		<mkdir base="/usr/share/sgml/docbook/dsssl-stylesheets-&docbook-dsssl-version;">
-		        <option>parents</option>
 			<name>images</name>
 		</mkdir>
 

@@ -2,9 +2,10 @@
 
 	<packageinfo>
         	<requires><name>sane</name></requires>
-        	<requires><name>libpng</name></requires>
-        	<requires><name>gtk+</name></requires>
-        	<requires><name>gimp</name></requires>
+        	<requires><name>gtk+2</name></requires>
+        	<utilizes><name>libtiff</name></utilizes>
+        	<utilizes><name>libjpeg</name></utilizes>
+		<utilizes><name>gimp</name></utilizes>
 	</packageinfo>
 
 	<stage name="Unpacking a package.">

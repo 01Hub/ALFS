@@ -5,6 +5,11 @@
 			<archive>&packages_dir;/&lprng-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
@@ -18,15 +23,6 @@
 			<param>--sysconfdir=/etc</param>
 		</configure>
 
-		<!-- to avoid a problem with gcc 3.2 -->
-		<search_replace
-		    base = "&build_dir;/&lprng-directory;/src">
-		        <file>Makefile</file>
-			<find>-Werror</find>
-			<replace></replace>
-		</search_replace>
-
-
 		<make />
 
 		<make>
@@ -35,7 +31,18 @@
 
 	</stage>
 
+	<stage name="Installing bootscripts">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-lprng</param>
+		</make>
+	</stage>
+
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&lprng-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
 	</stage>
 </package>

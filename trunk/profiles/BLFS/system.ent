@@ -385,27 +385,28 @@
 <!ENTITY cdrdao    SYSTEM "./chapter40/cdrdao.xml">
 <!ENTITY udftools  SYSTEM "./chapter40/udftools.xml">
 
-<!-- chapter 46 -->
-<!ENTITY cups            SYSTEM "./chapter46/cups.xml">
-<!ENTITY afplghostscript SYSTEM "./chapter46/afplghostscript.xml">
-<!ENTITY espghostscript  SYSTEM "./chapter46/espghostscript.xml">
-<!ENTITY lprng           SYSTEM "./chapter46/lprng.xml">
+<!-- chapter 41 -->
+<!ENTITY cups            SYSTEM "./chapter41/cups.xml">
+<!ENTITY lprng           SYSTEM "./chapter41/lprng.xml">
+<!ENTITY afplghostscript SYSTEM "./chapter41/afplghostscript.xml">
+<!ENTITY espghostscript  SYSTEM "./chapter41/espghostscript.xml">
+<!ENTITY gimp-print 	 SYSTEM "./chapter41/gimp-print.xml">
 
-<!-- chapter 47 -->
-<!ENTITY sane        SYSTEM "./chapter47/sane.xml">
-<!ENTITY xsane       SYSTEM "./chapter47/xsane.xml">
+<!-- chapter 42 -->
+<!ENTITY sane        SYSTEM "./chapter42/sane.xml">
+<!ENTITY xsane       SYSTEM "./chapter42/xsane.xml">
 
-<!-- chapter 48 -->
-<!ENTITY sgml-common   SYSTEM "./chapter48/sgml-common.xml">
-<!ENTITY sgml-dtd31    SYSTEM "./chapter48/sgml-dtd31.xml">
-<!ENTITY sgml-dtd      SYSTEM "./chapter48/sgml-dtd.xml">
-<!ENTITY opensp        SYSTEM "./chapter48/opensp.xml">
-<!ENTITY openjade      SYSTEM "./chapter48/openjade.xml">
-<!ENTITY docbook-dsssl SYSTEM "./chapter48/docbook-dsssl.xml">
+<!-- chapter 43 -->
+<!ENTITY sgml-common   SYSTEM "./chapter43/sgml-common.xml">
+<!ENTITY sgml-dtd31    SYSTEM "./chapter43/sgml-dtd31.xml">
+<!ENTITY sgml-dtd      SYSTEM "./chapter43/sgml-dtd.xml">
+<!ENTITY opensp        SYSTEM "./chapter43/opensp.xml">
+<!ENTITY openjade      SYSTEM "./chapter43/openjade.xml">
+<!ENTITY docbook-dsssl SYSTEM "./chapter43/docbook-dsssl.xml">
 
-<!-- chapter 49 -->
-<!ENTITY xml-dtd     SYSTEM "./chapter49/xml-dtd.xml">
-<!ENTITY docbook-xsl SYSTEM "./chapter49/docbook-xsl.xml">
+<!-- chapter 44 -->
+<!ENTITY xml-dtd     SYSTEM "./chapter44/xml-dtd.xml">
+<!ENTITY docbook-xsl SYSTEM "./chapter44/docbook-xsl.xml">
 
 <!-- chapter 50 -->
 <!ENTITY a2ps        SYSTEM "./chapter50/a2ps.xml">
