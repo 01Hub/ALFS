@@ -14,7 +14,7 @@
 
 		<configure>
 			<param>--prefix=/usr</param>
-			<param>--libexec=/usr/sbin</param>
+			<param>--libexec=/tmp/cpio</param>
 			<param>--bindir=/bin</param>
 		</configure>
 
@@ -24,6 +24,7 @@
 			<param>install</param>
 		</make>
 		
+		<remove>/tmp/cpio</remove>
 	</stage>
 
 	<stage name="Clean-up.">

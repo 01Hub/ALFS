@@ -26,6 +26,7 @@
 		<make/>
 
 		<make>
+			<param>binprefix=/usr</param>
 			<param>install</param>
 		</make>
 		

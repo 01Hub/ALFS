@@ -24,7 +24,6 @@
 
 		<make>
 		        <param>prefix=/usr</param>
-		        <param>generic_gcc</param>
 			<param>install</param>
 		</make>
 		

@@ -283,27 +283,27 @@
 <!ENTITY gpm-patch1    "gpm-1.20.1-segfault.patch">
 <!ENTITY gpm-patch2    "gpm-1.20.1-silent.patch">
 
-<!ENTITY fcron-version   "2.9.3">
-<!ENTITY fcron-package   "fcron-2.9.3.src.tar.gz">
-<!ENTITY fcron-directory "fcron-2.9.3">
+<!ENTITY fcron-version   "2.9.4">
+<!ENTITY fcron-package   "fcron-2.9.4.src.tar.gz">
+<!ENTITY fcron-directory "fcron-2.9.4">
 
-<!ENTITY hdparm-version   "5.4">
-<!ENTITY hdparm-package   "hdparm-5.4.tar.gz">
-<!ENTITY hdparm-directory "hdparm-5.4">
+<!ENTITY hdparm-version   "5.5">
+<!ENTITY hdparm-package   "hdparm-5.5.tar.gz">
+<!ENTITY hdparm-directory "hdparm-5.5">
 <!ENTITY hdparm-patch1 "">
 
-<!ENTITY which-version   "2.14">
-<!ENTITY which-package   "which-2.14.tar.gz">
-<!ENTITY which-directory "which-2.14">
+<!ENTITY which-version   "2.16">
+<!ENTITY which-package   "which-2.16.tar.gz">
+<!ENTITY which-directory "which-2.16">
 
-<!ENTITY unzip-version   "5.50">
-<!ENTITY unzip-package   "unzip550.tar.gz">
-<!ENTITY unzip-directory "unzip-5.50">
+<!ENTITY unzip-version   "5.51">
+<!ENTITY unzip-package   "unzip551.tar.gz">
+<!ENTITY unzip-directory "unzip-5.51">
 
-<!ENTITY unzip-patch1    "unzip-5.50-fix-Makefile.patch">
-<!ENTITY unzip-patch2    "unzip-5.50-fix-libz.patch">
-<!ENTITY unzip-patch3    "unzip-5.50-dotdot.patch">
-<!ENTITY unzip-patch4    "unzip-5.50-dont-make-noise.patch">
+<!ENTITY unzip-patch1    "unzip-5.51-fix-Makefile.patch">
+<!ENTITY unzip-patch2    "unzip-5.51-fix-libz.patch">
+<!ENTITY unzip-patch3    "unzip-5.51-dotdot.patch">
+<!ENTITY unzip-patch4    "unzip-5.51-dont-make-noise.patch">
 
 <!ENTITY zip-version   "2.3">
 <!ENTITY zip-package   "zip23.tar.gz">
