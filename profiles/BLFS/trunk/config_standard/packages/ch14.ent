@@ -1,6 +1,6 @@
 <!--************* packages for chapter 14 *************-->
 
-<!ENTITY dhclient-version "3.0pl2">
+<!ENTITY dhclient-version "3.0.1">
 <!ENTITY dhclient-package "dhcp-&dhclient-version;.tar.gz">
 <!ENTITY dhclient-directory "dhcp-&dhclient-version;">
 

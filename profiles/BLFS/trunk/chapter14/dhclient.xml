@@ -44,12 +44,12 @@
     </stage>
     <stage name="Configure dhclient">
       <textdump>
-        <file>/etc/sysconfig/network-devices/ifconfig.eth0</file>
+        <file>/etc/sysconfig/network-devices/ifconfig.eth0/dhclient</file>
         <content>
 	  =ONBOOT=yes
-	  =DHCP_START="&dhclient-start-params;"
-	  =DHCP_STOP="&dhclient-stop-params;"
 	  =SERVICE=dhclient"
+	  =DHCP_START="-q &dhclient-start-params;"
+	  =DHCP_STOP="-q -r &dhclient-stop-params;"
 	</content>
       </textdump>
       <textdump>
