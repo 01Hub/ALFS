@@ -48,6 +48,7 @@ enum {
 	CONFIGURE_BASE,
 	CONFIGURE_PARAM,
 	CONFIGURE_PREFIX,
+	CONFIGURE_COMMAND,
 };
 
 struct configure_data {
@@ -56,6 +57,7 @@ struct configure_data {
 	int param_seen;
 	char *prefix;
 	int prefix_seen;
+	char *command;
 };
 
 static int configure_setup(element_s * const element)
@@ -70,6 +72,7 @@ static int configure_setup(element_s * const element)
 	data->prefix = xstrdup("");
 	data->prefix_seen = 0;
 	data->base = NULL;
+	data->command = NULL;
 	element->handler_data = data;
 
 	return 0;
@@ -82,6 +85,7 @@ static void configure_free(const element_s * const element)
 	xfree(data->base);
 	xfree(data->prefix);
 	xfree(data->param);
+	xfree(data->command);
 	xfree(data);
 }
 
@@ -98,6 +102,13 @@ static int configure_attribute(const element_s * const element,
 			return 1;
 		}
 		data->base = xstrdup(value);
+		return 0;
+	case CONFIGURE_COMMAND:
+		if (data->command) {
+			Nprint_err("<%s>: cannot specify \"command\" more than once.", element->handler->name);
+			return 1;
+		}
+		data->command = xstrdup(value);
 		return 0;
 	default:
 		return 1;
@@ -128,6 +139,13 @@ static int configure_parameter(const element_s * const element,
 		append_str(&data->param, " ");
 		data->param_seen = 1;
 		return 0;
+	case CONFIGURE_COMMAND:
+		if (data->command) {
+			Nprint_err("<%s>: cannot specify <command> more than once.", element->handler->name);
+			return 1;
+		}
+		data->command = xstrdup(value);
+		return 0;
 	default:
 		return 1;
 	}
@@ -138,6 +156,7 @@ static int configure_parameter(const element_s * const element,
 static const struct handler_parameter configure_parameters_v2[] = {
 	{ .name = "base", .private = CONFIGURE_BASE },
 	{ .name = "param", .private = CONFIGURE_PARAM },
+	{ .name = "command", .private = CONFIGURE_COMMAND },
 	{ .name = NULL }
 };
 
@@ -153,6 +172,7 @@ static const struct handler_parameter configure_parameters_v3[] = {
 
 static const struct handler_attribute configure_attributes_v3[] = {
 	{ .name = "base", .private = CONFIGURE_BASE },
+	{ .name = "command", .private = CONFIGURE_COMMAND },
 	{ .name = NULL }
 };
 
@@ -167,9 +187,13 @@ static int configure_main(const element_s * const element)
 		return -1;
 	
 	Nprint_h("Executing system command");
-	Nprint_h("    %s configure %s", data->prefix, data->param);
+	Nprint_h("    %s %s %s", data->prefix,
+		 (data->command) ? data->command : "configure",
+		 data->param);
 
-	status = execute_command(element, "%s configure %s", data->prefix, data->param);
+	status = execute_command(element, "%s %s %s", data->prefix,
+				 (data->command) ? data->command : "configure",
+				 data->param);
 
 	return status;
 }

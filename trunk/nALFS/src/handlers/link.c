@@ -243,15 +243,15 @@ static int link_main_ver2(const element_s * const element)
 #if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
 static const struct handler_parameter link_parameters_v3[] = {
-	{ .name = "option" },
-	{ .name = "target" },
-	{ .name = "name" },
+	{ .name = "option", .private = LINK_OPTION },
+	{ .name = "target", .private = LINK_TARGET },
+	{ .name = "name", .private = LINK_NAME },
 	{ .name = NULL }
 };
 
 static const struct handler_attribute link_attributes_v3[] = {
-	{ .name = "type" },
-	{ .name = "base" },
+	{ .name = "type", .private = LINK_TYPE },
+	{ .name = "base", .private = LINK_BASE },
 	{ .name = NULL }
 };
 
