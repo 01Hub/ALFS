@@ -114,6 +114,7 @@
     &slib;
     &g-wrap;
     &lzo;
+    &libpcap;
 
 </stage>
 
@@ -125,12 +126,13 @@
     &libtiff;
     &libungif;
     &libmng;
+    &freetype;
+    &fontconfig;
     &imlib;
     &aalib;
     &svgalib;
     &directfb;
     &imlib2;
-    &imagemagick;
 
 </stage>
 
@@ -140,6 +142,7 @@
     &bc;
     &rep-gtk;
     &compface;
+    &imagemagick;
 
 </stage>
 
@@ -293,8 +296,6 @@
 
 <stage name="Chapter 27 (X libraries)">
 
-    &freetype;
-    &fontconfig;
     &qt;
     &gtkplus;
     &gtkplus2;
