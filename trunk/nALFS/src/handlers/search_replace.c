@@ -1,9 +1,10 @@
 /*
  *  search_replace.c - Handler.
  * 
- *  Copyright (C) 2001-2003
+ *  Copyright (C) 2001-2004
  *  
  *  Neven Has <haski@sezampro.yu>
+ *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

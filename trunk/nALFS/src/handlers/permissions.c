@@ -1,9 +1,11 @@
 /*
  *  permissions.c - Handler.
  *
- *  Copyright (C) 2001-2003 by Neven Has <haski@sezampro.yu>
+ *  Copyright (C) 2001-2004
  *
- *  Parts Copyright (C) 2002-2003 by Maik Schreiber <bZ@iq-computing.de>
+ *  Neven Has <haski@sezampro.yu>
+ *  Maik Schreiber <bZ@iq-computing.de>
+ *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

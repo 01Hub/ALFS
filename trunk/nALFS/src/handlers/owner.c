@@ -1,9 +1,11 @@
 /*
  *  owner.c - Handler.
  *
- *  Copyright (C) 2002 by Maik Schreiber <bZ@iq-computing.de>
+ *  Copyright (C) 2002, 2004
  *
- *  Parts Copyright (C) 2001, 2002 by Neven Has <haski@sezampro.yu>
+ *  Maik Schreiber <bZ@iq-computing.de>
+ *  Neven Has <haski@sezampro.yu>
+ *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
