@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!--
-       BLFS CVS profile
+       BLFS SVN profile
 
        originally by Vassili Dzuba - vdzuba@linuxfromscratch.org
 
        Maintained by:
        Thomas Pegg <thomasp@linuxfromscratch.org>
        Jamie Bennett <jamie@linuxfromscratch.org>
-       Joachim Beckers <joachim@linuxfromscratch.org>
+       Joachim Beckers <jbeckers@linuxfromscratch.org>
        Kevin P. Fleming <kpfleming@linuxfromscratch.org>
 
        Last updated : 2004-07-03
@@ -59,7 +59,7 @@
       <xi:include href="chapter04/mitkrb.xml" />
     </stage>
     <stage name="Chapter 5 (Filesystems)">
-      <xi:include href="chapter05/reiserfsutils.xml" />
+      <xi:include href="chapter05/reiserfsprogs.xml" />
       <xi:include href="chapter05/xfsprogs.xml" />
     </stage>
     <stage name="Chapter 6 (Editors)">

@@ -20,7 +20,7 @@
 <!ENTITY mitkrb    SYSTEM "./chapter04/mitkrb.xml">
 
 <!-- chapter 5 -->
-<!ENTITY reiserfsutils SYSTEM "./chapter05/reiserfsutils.xml">
+<!ENTITY reiserfsutils SYSTEM "./chapter05/reiserfsprogs.xml">
 <!ENTITY xfsprogs      SYSTEM "./chapter05/xfsprogs.xml">
 
 <!-- chapter 6 -->

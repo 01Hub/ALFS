@@ -1,8 +1,12 @@
 ftp://ftp.gnu.org/gnu/a2ps/a2ps-4.13b.tar.gz
+
 ftp://ftp.gnu.org/gnu/enscript/enscript-1.6.1.tar.gz
+
 http://gd.tuwien.ac.at/publishing/tex/tex-utils/psutils/psutils-p17.tar.gz
+
 ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/ghostgum/gsview-4.6.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/5.1/gsview-4.6-pstotext.patch
 http://www.linuxfromscratch.org/patches/blfs/5.1/gsview-4.6-lang.patch
+
 ftp://ftp.foolabs.com/pub/xpdf/xpdf-3.00.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/5.1/xpdf-3.00-freetype-2.1.7-hack.patch
