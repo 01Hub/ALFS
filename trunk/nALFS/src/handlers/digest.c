@@ -70,7 +70,7 @@ static void digest_free(const element_s * const element)
 	struct digest_data *data = (struct digest_data *) element->handler_data;
 
 	xfree(data->content);
-	xfree(data->version);
+	xfree(data->type);
 	xfree(data);
 }
 
@@ -120,19 +120,18 @@ static char *digest_data(const element_s * const element,
 			 const handler_data_e data_requested)
 {
 	struct digest_data *data = (struct digest_data *) element->handler_data;
-	char *result;
 
 	switch (data_requested) {
 	case HDATA_COMMAND:
 		/* We're cheating here, and returning the digest as an HDATA_COMMNAND */
-		result = xstrdup(data->content);
+		return xstrdup(data->content);
 		break;
 	case HDATA_VERSION:
 		/* We're cheating here, and returning the digest type as an HDATA_VERSION */
 		if (data->type) {
-			result = xstrdup(data->type);
+			return xstrdup(data->type);
 		} else {
-			result = xstrdup("md5");
+			return xstrdup("md5");
 		}
 		break;
 	default:
@@ -142,8 +141,9 @@ static char *digest_data(const element_s * const element,
 	return NULL;
 }
 
-static int digest_main(const element_s * const el)
+static int digest_main(const element_s * const element)
 {
+	(void) element;
 	/* should never be called */
 	return 1;
 }
