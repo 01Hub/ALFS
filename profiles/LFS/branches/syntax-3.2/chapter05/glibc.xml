@@ -11,10 +11,10 @@
 
 <package name="glibc" version="&glibc-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&glibc-md5;</digest>
 			<archive>&packages_dir;/&glibc-package;</archive>
-			<destination>&build_dir;</destination>
+			
 		</unpack>
 
 		<mkdir base="&build_dir;">
@@ -84,8 +84,10 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&glibc-directory;</remove>
-		<remove>&build_dir;/glibc-build</remove>
+		<remove>
+			<file>&build_dir;/&glibc-directory;</file>
+			<file>&build_dir;/glibc-build</file>
+		</remove>
 	</stage>
 </package>
 

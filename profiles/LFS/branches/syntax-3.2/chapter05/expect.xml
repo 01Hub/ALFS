@@ -11,10 +11,10 @@
 
 <package name="expect" version="&expect-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&expect-md5;</digest>
 			<archive>&packages_dir;/&expect-package;</archive>
-			<destination>&build_dir;</destination>
+			
 		</unpack>
 	</stage>
 
@@ -23,10 +23,8 @@
 			<base>&build_dir;/&expect-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&expect-spawn-patch;</param>
+		<patch path_strip="1">
+			<file>&packages_dir;/&expect-spawn-patch;</file>
 		</patch>
 
 		<configure>
@@ -50,8 +48,10 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&tcl-directory;</remove>
-		<remove>&build_dir;/&expect-directory;</remove>
+		<remove>
+			<file>&build_dir;/&tcl-directory;</file>
+			<file>&build_dir;/&expect-directory;</file>
+		</remove>
 	</stage>
 </package>
 

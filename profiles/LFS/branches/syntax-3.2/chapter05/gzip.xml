@@ -11,10 +11,10 @@
 
 <package name="gzip" version="&gzip-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&gzip-md5;</digest>
 			<archive>&packages_dir;/&gzip-package;</archive>
-			<destination>&build_dir;</destination>
+			
 		</unpack>
 	</stage>
 
@@ -35,7 +35,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&gzip-directory;</remove>
+		<remove>
+			<file>&build_dir;/&gzip-directory;</file>
+		</remove>
 	</stage>
 </package>
 

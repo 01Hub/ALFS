@@ -11,10 +11,10 @@
 
 <package name="gcc-pass2" version="&gcc-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&gcc-md5;</digest>
 			<archive>&packages_dir;/&gcc-package;</archive>
-			<destination>&build_dir;</destination>
+			
 		</unpack>
 
 		<mkdir base="&build_dir;">
@@ -39,16 +39,12 @@ Your host distribution is not set up for proper PTY operation. In this case ther
 suites for GCC and Binutils until you are able to resolve the issue.
 -->
 
-		<patch base="&build_dir;/&gcc-directory;">
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&gcc-no-fixincludes-patch;</param>
+		<patch base="&build_dir;/&gcc-directory;" path_strip="1">
+			<file>&packages_dir;/&gcc-no-fixincludes-patch;</file>
 		</patch>
 
-		<patch base="&build_dir;/&gcc-directory;">
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&gcc-specs-patch;</param>
+		<patch base="&build_dir;/&gcc-directory;" path_strip="1">
+			<file>&packages_dir;/&gcc-specs-patch;</file>
 		</patch>
 
 		<configure command="../&gcc-directory;/configure">
@@ -79,8 +75,10 @@ suites for GCC and Binutils until you are able to resolve the issue.
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&gcc-directory;</remove>
-		<remove>&build_dir;/gcc-build</remove>
+		<remove>
+			<file>&build_dir;/&gcc-directory;</file>
+			<file>&build_dir;/gcc-build</file>
+		</remove>
 	</stage>
 </package>
 

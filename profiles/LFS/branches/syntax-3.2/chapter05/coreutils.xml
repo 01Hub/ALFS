@@ -11,10 +11,10 @@
 
 <package name="coreutils" version="&coreutils-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&coreutils-md5;</digest>
 			<archive>&packages_dir;/&coreutils-package;</archive>
-			<destination>&build_dir;</destination>
+			
 		</unpack>
 	</stage>
 
@@ -43,7 +43,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&coreutils-directory;</remove>
+		<remove>
+			<file>&build_dir;/&coreutils-directory;</file>
+		</remove>
 	</stage>
 </package>
 

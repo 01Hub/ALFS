@@ -21,8 +21,10 @@
 		</make>
 	</stage>
 
-	<remove>&build_dir;/&binutils-directory;</remove>
-	<remove>&build_dir;/binutils-build</remove>
+	<remove>
+		<file>&build_dir;/&binutils-directory;</file>
+		<file>&build_dir;/binutils-build</file>
+	</remove>
 
 	<search_replace>
 		<file>/tools/lib/gcc/&gcc_target;/&gcc-version;/specs</file>
@@ -30,7 +32,9 @@
 		<replace> /tools/lib/&glibc-loader;</replace>
 	</search_replace>
 
-	<remove>/tools/lib/gcc/*/*/include/{pthread.h,bits/sigthread.h}</remove>
+	<remove>
+		<file>/tools/lib/gcc/*/*/include/{pthread.h,bits/sigthread.h}</file>
+	</remove>
 
 <!-- Test basic functions of toolchain with:
 	echo 'main(){}' > dummy.c; gcc dummy.c; readelf -l a.out | grep ': /tools';

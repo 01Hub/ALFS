@@ -11,10 +11,10 @@
 
 <package name="kernel-headers" version="&linux-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&linux-md5;</digest>
 			<archive>&packages_dir;/&linux-package;</archive>
-			<destination>&build_dir;</destination>
+			
 		</unpack>
 	</stage>
 

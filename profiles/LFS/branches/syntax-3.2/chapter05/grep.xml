@@ -11,10 +11,10 @@
 
 <package name="grep" version="&grep-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&grep-md5;</digest>
 			<archive>&packages_dir;/&grep-package;</archive>
-			<destination>&build_dir;</destination>
+			
 		</unpack>
 	</stage>
 
@@ -43,7 +43,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&grep-directory;</remove>
+		<remove>
+			<file>&build_dir;/&grep-directory;</file>
+		</remove>
 	</stage>
 </package>
 
