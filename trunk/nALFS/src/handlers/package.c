@@ -37,7 +37,7 @@
 #include "parser.h"
 #include "backend.h"
 #include "utility.h"
-#include "win.h"
+#include "nprint.h"
 
 
 #if HANDLER_SYNTAX_2_0

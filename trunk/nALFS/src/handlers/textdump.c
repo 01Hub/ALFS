@@ -36,7 +36,7 @@
 
 #include "handlers.h"
 #include "utility.h"
-#include "win.h"
+#include "nprint.h"
 #include "parser.h"
 
 

@@ -31,7 +31,7 @@
 #include <nALFS.h>
 
 #include "handlers.h"
-#include "win.h"
+#include "nprint.h"
 
 
 #if HANDLER_SYNTAX_2_0 || HANDLER_SYNTAX_3_0
