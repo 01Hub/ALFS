@@ -38,7 +38,7 @@
 			<param>install</param>
 		</make>
 
-                <link type="symbolic">
+                <link>
 			<option>force</option>
 			<target>gcc</target>
 			<name>/tools/bin/cc</name>

@@ -14,27 +14,23 @@
 	<mkdir base="&LFS;">
 		<option>parents</option>
 		<name>&LFS;&packages_dir;</name>
-	</mkdir>
-	
-	<mkdir>
-		<option>parents</option>
 		<name>&LFS;&build_dir;</name>
 	</mkdir>
 	
 	<!--
-	        If you run a kernel that supports VFS bindings (< 2.4),
-	        you can uncomment this command instead of using the
-	        use the <copy>.
-	        Don't forget to also uncomment the unmounting command from the end
-	        of the profile.
+	        If you run a kernel that supports VFS bindings (2.4 or later),
+	        you can uncomment this command instead of using the <copy>.
+	        Don't forget to also uncomment the unmounting command from
+		the end of the profile.
 	
-	        warning: if you use the mount option, and if the execution
-	        of your profile fails, be carefull to unmount the package
-	        directory before you delete the content the target partition !!!
+	        Warning: if you use the mount option, and if the execution
+	        of your profile fails, be careful to unmount the package
+	        directory before you delete the content the target partition!
 	
-	        note : a space has been inserted between the two dashes the first
-	        parameter to avoid the double dash being deteted as the end of
-	        the comment. You need to remove it if you use this command.
+	        Note: a space has been inserted between the two dashes in the
+		bind parameter to avoid the double dash being deteted as the
+		end of the comment. You need to remove it if you use this
+                command.
 	
 	<execute command="mount">
 		<param>- -bind</param>

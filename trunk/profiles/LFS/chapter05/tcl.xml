@@ -26,7 +26,8 @@
 			<param>install</param>
 		</make>
 
-		<link type="symbolic">
+		<link>
+			<option>force</option>
 			<target>tclsh8.4</target>
 			<name>/tools/bin/tclsh</name>
                 </link>
