@@ -143,6 +143,7 @@
 
 <!-- chapter 25 -->
 <!ENTITY apache    SYSTEM "./chapter25/apache.xml">
+<!ENTITY php       SYSTEM "./chapter25/php.xml">
 <!ENTITY proftpd   SYSTEM "./chapter25/proftpd.xml">
 
 <!-- chapter 26 -->

@@ -262,6 +262,7 @@
 <stage name="Chapter 25 (Web serving)">
 
     &apache;
+    &php;
     &proftpd;
 
 </stage>
