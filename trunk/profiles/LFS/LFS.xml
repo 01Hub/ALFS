@@ -124,6 +124,7 @@
 		&c6-findutils;
 		&c6-gawk;
 		&c6-ncurses;
+		&c6-readline;
 		&c6-vim;
 		&c6-m4;
 		&c6-bison;
