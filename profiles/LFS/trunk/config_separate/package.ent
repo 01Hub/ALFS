@@ -54,10 +54,10 @@
 <!ENTITY e2fsprogs-package "e2fsprogs-&e2fsprogs-version;.tar.gz">
 <!ENTITY e2fsprogs-directory "e2fsprogs-&e2fsprogs-version;">
 
-<!ENTITY expect-md5 "490664773286690d111d9cd055c50700">
-<!ENTITY expect-version "5.41.0">
+<!ENTITY expect-md5 "fea346fac6aaf74b0851f2441f478571">
+<!ENTITY expect-version "5.42.1">
 <!ENTITY expect-package "expect-&expect-version;.tar.gz">
-<!ENTITY expect-directory "expect-5.41">
+<!ENTITY expect-directory "expect-5.42">
 
 <!ENTITY expect-spawn-patch-md5 "ef6d0d0221c571fb420afb7033b3bbba">
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
@@ -168,11 +168,11 @@
 <!ENTITY inetutils-kernel-headers-patch-md5 "de1f835265b7ed818d7c0fb8c0be334b">
 <!ENTITY inetutils-kernel-headers-patch "inetutils-&inetutils-version;-kernel_headers-1.patch">
 
-<!ENTITY iproute2-md5 "cecf5ee39e8d9033ad0a6f6af274cdab">
-<!ENTITY iproute2-version "2.6.X">
-<!ENTITY iproute2-cvs-ver "ss040702">
+<!ENTITY iproute2-md5 "0d8c23f6c3a42bb680c3bdf9f580987a">
+<!ENTITY iproute2-version "2.6.8">
+<!ENTITY iproute2-cvs-ver "ss040730">
 <!ENTITY iproute2-package "iproute2-&iproute2-version;-&iproute2-cvs-ver;.tar.gz">
-<!ENTITY iproute2-directory "iproute2-2.6.8">
+<!ENTITY iproute2-directory "iproute2-&iproute2-version;">
 
 <!ENTITY iproute2-remove-db-patch-md5 "b3964c194cda7a36979d245380b4556f">
 <!ENTITY iproute2-remove-db-patch "iproute2-&iproute2-version;_&iproute2-cvs-ver;-remove_db-1.patch">
@@ -192,8 +192,8 @@
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
-<!ENTITY libtool-md5 "f9b709f4ac6d094afdee9cdbe1c6ffe7">
-<!ENTITY libtool-version "1.5.6">
+<!ENTITY libtool-md5 "ed04093bc9d88faa3e476ac6f4db8d50">
+<!ENTITY libtool-version "1.5.8">
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.gz">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 

@@ -37,10 +37,12 @@
 			<param>--disable-profile</param>
 			<param>--enable-add-ons=nptl</param>
 			<param>--with-tls</param>
-			<param>--with-headers=/tools/glibc-kernheaders</param>
+			<param>--with-__thread</param>
+			<param>--enable-kernel=2.6.0</param>
 			<param>--with-binutils=/tools/bin</param>
 			<param>--without-gd</param>
 			<param>--without-cvs</param>
+			<param>--with-headers=/tools/glibc-kernheaders</param>
 		</configure>
 
 		<make />

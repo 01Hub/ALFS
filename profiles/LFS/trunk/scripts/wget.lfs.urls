@@ -15,7 +15,7 @@ ftp://ftp.cis.ohio-state.edu/mirror/gnu/gcc/gcc-3.4.1/gcc-3.4.1.tar.bz2
 ftp://ftp.cis.ohio-state.edu/mirror/gnu/gettext/gettext-0.14.1.tar.gz
 ftp://ftp.cis.ohio-state.edu/mirror/gnu/inetutils/inetutils-1.4.2.tar.gz
 ftp://ftp.cis.ohio-state.edu/mirror/gnu/less/less-382.tar.gz
-ftp://ftp.cis.ohio-state.edu/mirror/gnu/libtool/libtool-1.5.6.tar.gz
+ftp://ftp.cis.ohio-state.edu/mirror/gnu/libtool/libtool-1.5.8.tar.gz
 ftp://ftp.cis.ohio-state.edu/mirror/gnu/m4/m4-1.4.1.tar.gz
 ftp://ftp.cis.ohio-state.edu/mirror/gnu/make/make-3.80.tar.bz2
 ftp://ftp.cis.ohio-state.edu/mirror/gnu/ncurses/ncurses-5.4.tar.gz
@@ -40,13 +40,13 @@ ftp://ftp.vim.org/pub/vim/extra/vim-6.3-lang.tar.gz
 ftp://ftp.win.tue.nl/pub/home/aeb/linux-local/utils/kbd/kbd-1.12.tar.gz
 ftp://sources.redhat.com/pub/bzip2/v102/bzip2-1.0.2.tar.gz
 
-http://developer.osdl.org/dev/iproute2/download/iproute2-2.6.X-ss040702.tar.gz
+http://developer.osdl.org/dev/iproute2/download/iproute2-2.6.8-ss040730.tar.gz
 http://distro.ibiblio.org/pub/linux/distributions/sorcerer/sources/grep/2.5.1/grep-2.5.1.tar.bz2
 http://distro.ibiblio.org/pub/linux/distributions/sorcerer/sources/groff/1.19.1/groff-1.19.1.tar.bz2
 http://downloads.linuxfromscratch.org/lfs-bootscripts-2.2.1.tar.bz2
 http://downloads.linuxfromscratch.org/udev-config-2.permissions
 http://downloads.linuxfromscratch.org/udev-config-1.rules 
-http://expect.nist.gov/old/expect-5.41.0.tar.gz
+http://expect.nist.gov/old/expect-5.42.1.tar.gz
 http://ep09.pld-linux.org/~mmazur/linux-libc-headers/linux-libc-headers-2.6.7.0.tar.bz2
 http://freshmeat.net/redir/mktemp/20624/url_tgz/mktemp-1.5.tar.gz
 http://freshmeat.net/redir/util-linux/11029/url_tgz/util-linux-2.12a.tar.gz
@@ -60,7 +60,7 @@ http://www.gzip.org/zlib/zlib-1.2.1.tar.bz2
 http://www.ibiblio.org/pub/Linux/system/daemons/sysklogd-1.4.1.tar.gz
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/coreutils-5.2.1-suppress_uptime_kill_su-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/coreutils-5.2.1-uname-2.patch
-http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/expect-5.41.0-spawn-1.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/expect-5.42.1-spawn-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/flex-2.5.31-debian_fixes-2.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/gcc-3.4.1-no_fixincludes-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/gcc-3.4.1-specs-1.patch
@@ -68,7 +68,7 @@ http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/hotplug-2004_04_01-bogu
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/hotplug-2004_04_01-device-2.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/inetutils-1.4.2-kernel_headers-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/inetutils-1.4.2-no_server_man_pages-1.patch
-http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/iproute2-2.6.X_ss040702-remove_db-1.patch
+http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/iproute2-2.6.8_ss040730-remove_db-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/man-1.5n-80cols-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/mktemp-1.5-add_tempfile-1.patch
 http://www.linuxfromscratch.org/patches/lfs/cvs/unstable/perl-5.8.5-libc-1.patch
