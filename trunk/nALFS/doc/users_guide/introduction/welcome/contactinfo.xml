@@ -1,5 +1,5 @@
-<sect1 id="preface-contactinfo" xreflabel="Contact Information">
-<?dbhtml filename="contactinfo.html" dir="preface"?>
+<sect1 id="ch1-contactinfo" xreflabel="Contact Information">
+<?dbhtml filename="contactinfo.html" dir="chapter01"?>
 <title>Contact Information</title>
 
 <para>Please direct your emails to the <acronym>ALFS</acronym> mailing list 

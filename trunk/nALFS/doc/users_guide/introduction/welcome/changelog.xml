@@ -1,5 +1,5 @@
-<sect1 id="preface-changelog" xreflabel="ChangeLog">
-<?dbhtml filename="changelog.html" dir="preface"?>
+<sect1 id="ch1-changelog" xreflabel="ChangeLog">
+<?dbhtml filename="changelog.html" dir="chapter01"?>
 <title>ChangeLog</title>
 
 <para>&version; - &releasedate;</para>

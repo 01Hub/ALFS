@@ -1,5 +1,5 @@
-<sect1 id="preface-conventions" xreflabel="Conventions">
-<?dbhtml filename="conventions.html" dir="preface"?>
+<sect1 id="ch1-conventions" xreflabel="Conventions">
+<?dbhtml filename="conventions.html" dir="chapter01"?>
 <title>Conventions used in this book</title>
 
 <para>To make things easy to follow, there are a number of conventions used
