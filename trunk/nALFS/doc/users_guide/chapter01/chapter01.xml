@@ -2,4 +2,6 @@
 <?dbhtml filename="chapter01.html" dir="chapter01"?>
 <title>Chapter Title</title>
 
+&ch1-quick-start;
+
 </chapter>

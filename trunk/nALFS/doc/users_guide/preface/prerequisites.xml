@@ -2,6 +2,15 @@
 <?dbhtml filename="prerequisites.html" dir="preface"?>
 <title>Prerequisites</title>
 
-<para>PAGE TO BE WRITTEN</para>
+<para>&book-product; requires a functioning Linux system with the following
+libraries already installed and configured:</para>
+
+<itemizedlist>
+
+<listitem><para>libncurses</para></listitem>
+
+<listitem><para>libXML2</para></listitem>
+
+</itemizedlist>
 
 </sect1>

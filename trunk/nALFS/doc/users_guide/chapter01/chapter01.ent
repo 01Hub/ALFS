@@ -1,1 +1,2 @@
-<!ENTITY chapter01            SYSTEM "chapter01.xml">
+<!ENTITY chapter01       SYSTEM "chapter01.xml">
+<!ENTITY ch1-quick-start SYSTEM "quick-start.xml">
