@@ -105,12 +105,12 @@
 			<source>&libtool-package;</source>
 			<source>&libxml2-package;</source>
 			<source>&linux-package;</source>
+			<source>&linux-security-patch;</source>
 			<source>&linux-libc-headers-package;</source>
 			<source>&kernel-config;</source>
 			<source>&m4-package;</source>
 			<source>&make-package;</source>
 			<source>&man-package;</source>
-			<source>&man-80cols-patch;</source>
 			<source>&man-pages-package;</source>
 			<source>&mktemp-package;</source>
 			<source>&mktemp-tempfile-patch;</source>
@@ -128,17 +128,17 @@
 			<source>&shadow-package;</source>
 			<source>&syslog-ng-package;</source>
 			<source>&sysvinit-package;</source>
-			<source>&sysvinit-proclen-patch;</source>
 			<source>&tar-package;</source>
 			<source>&tcl-package;</source>
 			<source>&texinfo-package;</source>
-			<source>&texinfo-segfault-patch;</source>
 			<source>&udev-package;</source>
 			<source>&udev-permissions-file;</source>
 			<source>&udev-rules-file;</source>
 			<source>&util-linux-package;</source>
+			<source>&util-linux-cramfs-patch;</source>
 			<source>&vim-package;</source>
 			<source>&vim-lang-package;</source>
+			<source>&vim-security-patch;</source>
 			<source>&zlib-package;</source>
 			<destination>&LFS;&packages_dir;</destination>
 		</copy>

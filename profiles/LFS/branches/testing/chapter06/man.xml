@@ -23,12 +23,6 @@
 			<base>&build_dir;/&man-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&man-80cols-patch;</param>
-		</patch>
-
 		<search_replace base="&build_dir;/&man-directory;">
 			<file>configure</file>
 			<find>-is</find>

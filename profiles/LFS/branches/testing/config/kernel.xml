@@ -28,6 +28,12 @@
 			<base>&linux-src-location;/&linux-directory;</base>
 		</stageinfo>
 
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&linux-security-patch;</param>
+		</patch>
+
 		<make>
 			<param>mrproper</param>
 		</make>

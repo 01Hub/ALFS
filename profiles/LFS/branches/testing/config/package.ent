@@ -3,8 +3,8 @@
 <!ENTITY autoconf-package "autoconf-&autoconf-version;.tar.bz2">
 <!ENTITY autoconf-directory "autoconf-&autoconf-version;">
 
-<!ENTITY automake-md5 "0ee08fb0ee48d20a4f8da99137340efd">
-<!ENTITY automake-version "1.9.3">
+<!ENTITY automake-md5 "1b3a680fc5e046b275dd2456426f8a9e">
+<!ENTITY automake-version "1.9.4">
 <!ENTITY automake-package "automake-&automake-version;.tar.bz2">
 <!ENTITY automake-directory "automake-&automake-version;">
 
@@ -24,8 +24,8 @@
 <!ENTITY binutils-package "binutils-&binutils-version;.tar.bz2">
 <!ENTITY binutils-directory "binutils-&binutils-version;">
 
-<!ENTITY bison-md5 "ccbd5076dab6e319cc8ce1a7035cae92">
-<!ENTITY bison-version "1.875a">
+<!ENTITY bison-md5 "874cb7d2ca43df7aa575e728335cf19a">
+<!ENTITY bison-version "2.0">
 <!ENTITY bison-package "bison-&bison-version;.tar.bz2">
 <!ENTITY bison-directory "bison-&bison-version;">
 
@@ -91,30 +91,30 @@
 <!ENTITY gawk-package "gawk-&gawk-version;.tar.bz2">
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
-<!ENTITY gcc-version "3.4.2">
+<!ENTITY gcc-version "3.4.3">
 <!ENTITY gcc-cvs-tag "">
 <!ENTITY gcc-directory "gcc-&gcc-version;&gcc-cvs-tag;">
 
-<!ENTITY gcc-md5 "2fada3a3effd2fd791df09df1f1534b3">
+<!ENTITY gcc-md5 "e744b30c834360fccac41eb7269a3011">
 <!ENTITY gcc-package "gcc-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
-<!ENTITY gcc-core-md5 "cb1613efd03f4ed9969f076c012b9fee">
+<!ENTITY gcc-core-md5 "d2cbfe8fc3205c1d7969b26377405778">
 <!ENTITY gcc-core-package "gcc-core-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
-<!ENTITY gcc-gpp-md5 "247e312c5f4d8baa7fdfc16597ec2b4b">
+<!ENTITY gcc-gpp-md5 "26cb84db92feb8e03bb7bf3bc264844f">
 <!ENTITY gcc-gpp-package "gcc-g++-&gcc-version;&gcc-cvs-tag;.tar.bz2">
   
-<!ENTITY gcc-testsuite-md5 "70046557dd99761709dd0613ace12329">
+<!ENTITY gcc-testsuite-md5 "b4fff6ce0a038021b9e507917abb9a07">
 <!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
-<!ENTITY gcc-linkonce-patch-md5 "6d0b7e6b38cfc3d059c9bcb370623db0">
+<!ENTITY gcc-linkonce-patch-md5 "6526a9d6fa236c4e1c211c995e2b5d9d">
 <!ENTITY gcc-linkonce-patch "gcc-&gcc-version;-linkonce-1.patch">
 
-<!ENTITY gcc-no-fixincludes-patch-md5 "0105c14285a5bfcdd893365ce32043a2">
+<!ENTITY gcc-no-fixincludes-patch-md5 "3b52559864cfa50ac0c5a5e21eb73b19">
 <!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no_fixincludes-1.patch">
 
-<!ENTITY gcc-specs-patch-md5 "c170a1b67daccaa4f2e15b8a1fd79bae">
-<!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-1.patch">
+<!ENTITY gcc-specs-patch-md5 "ee516e41515e2fcb2cabe90ba1380304">
+<!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-2.patch">
 
 <!ENTITY gettext-md5 "c9f6b7c52eb9da4a84340966d1a08d0f">
 <!ENTITY gettext-version "0.14.1">
@@ -207,14 +207,17 @@
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
-<!ENTITY linux-md5 "e921200f074ca97184e150ef5a4af825">
-<!ENTITY linux-version "2.6.9">
+<!ENTITY linux-md5 "cffcd2919d9c8ef793ce1ac07a440eda">
+<!ENTITY linux-version "2.6.10">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
 
-<!ENTITY linux-libc-headers-md5 "d3507b2c0203a0760a677022badcf455">
-<!ENTITY linux-libc-headers-vefixes-rsion "2.6.9.1">
+<!ENTITY linux-security-patch-md5 "d317c73a3180339e7eff06aa3db83ce3">
+<!ENTITY linux-security-patch "linux-&linux-version;-security_fix-1.patch">
+
+<!ENTITY linux-libc-headers-md5 "a43c53f1bb0b586bc9bd2e8abb19e2bc">
+<!ENTITY linux-libc-headers-version "2.6.10.0">
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
 <!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
 
@@ -228,16 +231,13 @@
 <!ENTITY make-package "make-&make-version;.tar.bz2">
 <!ENTITY make-directory "make-&make-version;">
 
-<!ENTITY man-md5 "ead468e61db27ffb4e416a15bc40aaeb">
-<!ENTITY man-version "1.5o1">
+<!ENTITY man-md5 "7256fd773be7f3ba3ef0f18c859ecace">
+<!ENTITY man-version "1.5p">
 <!ENTITY man-package "man-&man-version;.tar.bz2">
 <!ENTITY man-directory "man-&man-version;">
 
-<!ENTITY man-80cols-patch-md5 "9c93fd4384b6b69273278ae5621e1f4a">
-<!ENTITY man-80cols-patch "man-&man-version;-80cols-1.patch">
-
-<!ENTITY man-pages-md5 "c28daa285ad9c7eeab629056a711fdb7">
-<!ENTITY man-pages-version "1.70">
+<!ENTITY man-pages-md5 "f417de446b7554cc33ea033a82525dae">
+<!ENTITY man-pages-version "2.01">
 <!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.bz2">
 <!ENTITY man-pages-directory "man-pages-&man-pages-version;">
 
@@ -269,8 +269,8 @@
 <!ENTITY patch-package "patch-&patch-version;.tar.bz2">
 <!ENTITY patch-directory "patch-&patch-version;">
 
-<!ENTITY perl-md5 "9db6be76aa275f415d75c224ad1d4029">
-<!ENTITY perl-version "5.8.5">
+<!ENTITY perl-md5 "3d030b6ff2a433840edb1a407d18dc0a">
+<!ENTITY perl-version "5.8.6">
 <!ENTITY perl-package "perl-&perl-version;.tar.bz2">
 <!ENTITY perl-directory "perl-&perl-version;">
 
@@ -310,34 +310,31 @@
 <!ENTITY syslog-ng-package "syslog-ng-&syslog-ng-version;.tar.bz2">
 <!ENTITY syslog-ng-directory "syslog-ng-&syslog-ng-version;">
 
-<!ENTITY sysvinit-md5 "ee1a5fb0725500f38dc08d5ef4577581">
-<!ENTITY sysvinit-version "2.85">
+<!ENTITY sysvinit-md5 "5b1d05d637863b888d211d4fb19a9a21">
+<!ENTITY sysvinit-version "2.86">
 <!ENTITY sysvinit-package "sysvinit-&sysvinit-version;.tar.bz2">
 <!ENTITY sysvinit-directory "sysvinit-&sysvinit-version;">
 
-<!ENTITY sysvinit-proclen-patch-md5 "5291e1eea513b59cdb66797638f7be31">
-<!ENTITY sysvinit-proclen-patch "sysvinit-&sysvinit-version;-proclen-1.patch">
-
-<!ENTITY tar-md5 "f1932e0fbd4641885bfdcc75495c91b7">
-<!ENTITY tar-version "1.14">
+<!ENTITY tar-md5 "57da3c38f8e06589699548a34d5a5d07">
+<!ENTITY tar-version "1.15.1">
 <!ENTITY tar-package "tar-&tar-version;.tar.bz2">
 <!ENTITY tar-directory "tar-&tar-version;">
 
-<!ENTITY tcl-md5 "7add1c1900f874ecd049100d750ce968">
-<!ENTITY tcl-version "8.4.8">
+<!ENTITY tcl-md5 "597e5576d9bf44e9e4e901168cae2654">
+<!ENTITY tcl-version "8.4.9">
 <!ENTITY tcl-package "tcl&tcl-version;-src.tar.bz2">
 <!ENTITY tcl-directory "tcl&tcl-version;">
 
-<!ENTITY texinfo-md5 "c2fa2ef957f0d728f821ae9b2362ef4e">
-<!ENTITY texinfo-version "4.7">
+<!ENTITY texinfo-md5 "6ba369bbfe4afaa56122e65b3ee3a68c">
+<!ENTITY texinfo-version "4.8">
 <!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
 <!ENTITY texinfo-segfault-patch-md5 "ce5aa1bb05b3c6638e071d2b0283fdd6">
 <!ENTITY texinfo-segfault-patch "texinfo-&texinfo-version;-segfault-1.patch">
 
-<!ENTITY udev-md5 "51d6b9722c1097ed4d28d2e46af4d9a3">
-<!ENTITY udev-version "046">
+<!ENTITY udev-md5 "eefa5f012ae66ac5adc7d9d7a6a5a6fc">
+<!ENTITY udev-version "050">
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
 
@@ -349,10 +346,13 @@
 <!ENTITY udev-permissions-version "2">
 <!ENTITY udev-permissions-file "udev-config-&udev-permissions-version;.permissions">
 
-<!ENTITY util-linux-md5 "e59e1e20e78d8d50ba26c43e1d887a19">
-<!ENTITY util-linux-version "2.12i">
+<!ENTITY util-linux-md5 "1bdf2ce5e3fd65fbbe87d67b4f3852e7">
+<!ENTITY util-linux-version "2.12p">
 <!ENTITY util-linux-package "util-linux-&util-linux-version;.tar.bz2">
 <!ENTITY util-linux-directory "util-linux-&util-linux-version;">
+
+<!ENTITY util-linux-cramfs-patch-md5 "1c3f40b30e12738eb7b66a35b7374572">
+<!ENTITY util-linux-cramfs-patch "util-linux-&util-linux-version;-cramfs-1.patch">
 
 <!ENTITY vim-md5 "821fda8f14d674346b87e3ef9cb96389">
 <!ENTITY vim-version "6.3">
@@ -361,6 +361,9 @@
 
 <!ENTITY vim-lang-md5 "58dcbac0857f916a9c46c6731662fbd5">
 <!ENTITY vim-lang-package "vim-&vim-version;-lang.tar.bz2">
+
+<!ENTITY vim-security-patch-md5 "ef9a421f1d29993ce5bbd709cece4624">
+<!ENTITY vim-security-patch "vim-&vim-version;-security_fix-1.patch">
 
 <!ENTITY zlib-md5 "1b8aab042d40979e456194c468fd72c5">
 <!ENTITY zlib-version "1.2.2">
