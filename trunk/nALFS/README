@@ -101,42 +101,6 @@ To configure, compile, install and run nALFS, just type:
 When you enter the program, type '?' for a list of all available
 commands.
 
-nALFS supports (at least) three different ALFS profile versions: 2.0, 3.0 and
-3.1. If not otherwise specified, the build process will build handlers for
-all these versions. If you would like to exclude building handlers for
-profile versions that you do not use, you can include the --enable-syntax
-argument to the configure command, like so:
-
-    ./configure --enable-syntax=3.0,3.1
-
-The --enable-syntax argument accepts a list of versions (separated by
-commas or colons) to build; all other versions present in the source
-tree will be excluded.
-
-nALFS can be built as a static executable, meaning that all its handlers
-and other requirements will be linked into a single file, requiring no
-actual "installation". This will happen automatically if you build nALFS
-on a system that does not support shared libraries, or you can force
-a static build by typing:
-
-    ./configure --disable-shared --enable-static
-    make
-
-When the make is complete, ./src/nALFS will be a single executable
-containing everything needed to run nALFS on your system.
-
-Warning: As of the current version, nALFS uses a function from the C
-library that glibc-2.2 (and later) implement by using the "libnss" shared
-libraries that are part of glibc itself. This means that even if you
-build a static binary of nALFS, the libnss libraries from your build
-system will still be required on the system that you wish to run nALFS
-on. This will be addressed in a future release of nALFS.
-
-Warning: If you build a static nALFS binary and choose to include curl
-(libcurl) support for downloading files in your profiles, you may
-experience problems due to libcurl's use of the resolver library provided
-by glibc.
-
 
 3. Requirements
 ===============
@@ -165,13 +129,48 @@ First, you have to configure the package by typing:
 
 To see the list of all available options, use "./configure --help".
 
+nALFS supports (at least) three different ALFS profile versions: 2.0, 3.0
+and 3.1. If not otherwise specified, the build process will build handlers
+for all these versions. If you would like to exclude building handlers for
+profile versions that you do not use, you can include the --enable-syntax
+argument to the configure command, like so:
+
+    ./configure --enable-syntax=3.0,3.1
+
+The --enable-syntax argument accepts a list of versions (separated by
+commas or colons) to build; all other versions present in the source
+tree will be excluded.
+
+nALFS can be built as a static executable, meaning that all its handlers
+and other requirements will be linked into a single file, requiring no
+actual "installation". This will happen automatically if you build nALFS
+on a system that does not support shared libraries, or you can force
+a static build by typing:
+
+    ./configure --disable-shared --enable-static
+
+When compilation is complete, ./src/nALFS will be a single executable
+containing everything needed to run nALFS on your system.
+
+Warning: As of the current version, nALFS uses a function from the C
+library that glibc-2.2 (and later) implement by using the "libnss" shared
+libraries that are part of glibc itself. This means that even if you
+build a static binary of nALFS, the libnss libraries from your build
+system will still be required on the system that you wish to run nALFS
+on. This will be addressed in a future release of nALFS.
+
+Warning: If you build a static nALFS binary and choose to include curl
+(libcurl) support for downloading files in your profiles, you may
+experience problems due to libcurl's use of the resolver library provided
+by glibc.
+
 By default, nALFS executable will be stored in /usr/local/bin, while
 handlers will be copied to /usr/local/lib/nALFS directory.
 
 You can change these defaults by specifying --prefix or --libdir
 options to configure.
 
-Then, type:
+Then, after configuring, type:
 
     make
 
