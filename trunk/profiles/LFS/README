@@ -29,4 +29,7 @@ To use the profile you should:
 	needs to be changed to read
 	<!ENTITY % package_entities SYSTEM "package-5.0tb.ent">
 
-- execute sh ./runit as root
+- execute sh ./runit as root. Please note that if you have installed nALFS
+  into a non-standard location (/usr/local/bin) then you may need to edit
+  runit to point to your local copy.
+  
