@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<package name="" version="">
+<package name="hicolor-icon-theme" version="&hicolor-icon-theme-version;">
   <stage name="Unpacking.">
     <unpack>
       <archive>&packages_dir;/</archive>
@@ -8,7 +8,7 @@
   </stage>
   <stage name="Installing.">
     <stageinfo>
-      <base>&build_dir;/</base>
+      <base>&build_dir;/&hicolor-icon-theme-directory;</base>
     </stageinfo>
     <configure>
       <param>--prefix=/usr</param>
@@ -17,8 +17,9 @@
     <make>
       <param>install</param>
     </make>
+    <execute command="/sbin/ldconfig" />
   </stage>
   <stage name="Cleanup.">
-    <remove>&build_dir;/</remove>
+    <remove>&build_dir;/&hicolor-icon-theme-directory;</remove>
   </stage>
 </package>
