@@ -1,0 +1,47 @@
+<package name="bc" version="&bc-version;">
+
+        <packageinfo>
+                <requires><name>readline</name></requires>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&bc-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&bc-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&bc-flex-invocation-patch;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&bc-readline-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--with-readline</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&bc-directory;</remove>
+	</stage>
+
+</package>

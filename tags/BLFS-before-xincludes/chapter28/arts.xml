@@ -1,0 +1,47 @@
+<package name="arts" version="&arts-version;">
+
+        <packageinfo>
+                <requires><name>qt</name></requires>
+		<requires><name>glib2</name></requires>
+		<utilizes><name>libogg</name></utilizes>
+		<utilizes><name>libvorbis</name></utilizes>
+		<utilizes><name>alsa</name></utilizes>
+		<utilizes><name>audiofile</name></utilizes>
+		<utilizes><name>pkgconfig</name></utilizes>
+		<utilizes><name>libmad</name></utilizes>
+		<utilizes><name>esound</name></utilizes>		
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&arts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&arts-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=&kde-prefix;</param>
+			<param>--disable-debug</param>
+			<param>--disable-dependency-tracking</param>
+		</configure>
+
+		<make/>
+		
+		<make>
+			<param>install</param>
+		</make>
+
+		&ldconfig;
+
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&arts-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,39 @@
+<package name="freetype" version="&freetype-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&freetype-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&freetype-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&freetype-bytecode-interpreter-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		&ldconfig;
+
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&freetype-directory;</remove>
+	</stage>
+
+</package>

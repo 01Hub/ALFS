@@ -1,0 +1,38 @@
+<package name="libao" version="&libao-version;">
+
+	<packageinfo>
+		<utilizes><name>xfree86</name></utilizes>
+		<utilizes><name>esound</name></utilizes>
+		<utilizes><name>alsa-lib</name></utilizes>
+		<utilizes><name>arts</name></utilizes>
+		<utilizes><name>nas</name></utilizes>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&libao-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&libao-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+		
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&libao-directory;</remove>
+	</stage>
+
+</package>

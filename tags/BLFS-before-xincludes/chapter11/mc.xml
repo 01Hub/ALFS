@@ -1,0 +1,40 @@
+<package name="mc" version="&mc-version;">
+
+        <packageinfo>
+                <requires><name>glib2</name></requires>
+                <utilizes><name>xfree86</name></utilizes>
+                <utilizes><name>samba</name></utilizes>
+                <utilizes><name>slang</name></utilizes>
+                <utilizes><name>zip</name></utilizes>
+                <utilizes><name>unzip</name></utilizes>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&mc-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&mc-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+		
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&mc-directory;</remove>
+	</stage>
+
+</package>

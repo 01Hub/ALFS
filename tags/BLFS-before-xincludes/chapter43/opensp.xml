@@ -1,0 +1,125 @@
+<package name="opensp" version="&opensp-version;">
+
+        <packageinfo>
+                <requires><name>sgml-common</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&opensp-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&opensp-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&opensp-patch;</param>
+		</patch>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+			<param>--disable-static</param>
+			<param>--enable-http</param>
+			<param>--enable-default-catalog=/etc/sgml/catalog</param>
+			<param>--enable-default-search-path=/usr/share/sgml</param>
+		</configure>
+
+		<make>
+		        <param>pkgdatadir=/usr/share/sgml/OpenSP-&opensp-version;</param>
+		</make>
+
+		<make>
+		        <param>pkgdatadir=/usr/share/sgml/OpenSP-&opensp-version;</param>
+			<param>install</param>
+		</make>
+
+		<link base="/usr/bin">
+		        <option>force</option>
+			<target>onsgmls</target>
+			<name>nsgmls</name>
+		</link>
+
+		<link base="/usr/bin">
+		        <option>force</option>
+			<target>osgmlnorm</target>
+			<name>sgmlnorm</name>
+		</link>
+
+		<link base="/usr/bin">
+		        <option>force</option>
+			<target>ospam</target>
+			<name>spam</name>
+		</link>
+
+		<link base="/usr/bin">
+		        <option>force</option>
+			<target>ospcat</target>
+			<name>spcat</name>
+		</link>
+
+		<link base="/usr/bin">
+		        <option>force</option>
+			<target>ospent</target>
+			<name>spent</name>
+		</link>
+
+		<link base="/usr/bin">
+		        <option>force</option>
+			<target>osx</target>
+			<name>sx</name>
+		</link>
+
+		<link base="/usr/bin">
+		        <option>force</option>
+			<target>osx</target>
+			<name>sgml2xml</name>
+		</link>
+
+		<link base="/usr/lib">
+		        <option>force</option>
+			<target>libosp.so</target>
+			<name>libsp.so</name>
+		</link>
+
+		<!-- remove comments if you update
+		     and remove the space in - -remove
+
+		<execute command="install-catalog">
+		        <param>- -remove</param>
+			<param>/etc/sgml/OpenSP-1.5.cat</param>
+			<param>/usr/share/sgml/OpenSP-1.5/catalog</param>
+		</execute>
+
+		<execute command="install-catalog">
+		        <param>- -remove</param>
+			<param>/etc/sgml/sgml-docbook.cat</param>
+			<param>/etc/sgml/OpenSP-1.5.cat</param>
+		</execute>
+
+		-->
+
+
+		<execute command="install-catalog">
+		        <param>--add</param>
+			<param>/etc/sgml/OpenSP-&opensp-version;.cat</param>
+			<param>/usr/share/sgml/OpenSP-&opensp-version;/catalog</param>
+		</execute>
+
+		<execute command="install-catalog">
+		        <param>--add</param>
+			<param>/etc/sgml/sgml-docbook.cat</param>
+			<param>/etc/sgml/OpenSP-&opensp-version;.cat</param>
+		</execute>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&opensp-directory;</remove>
+	</stage>
+
+</package>

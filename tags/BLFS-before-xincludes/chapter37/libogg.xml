@@ -1,0 +1,30 @@
+<package name="libogg" version="&libogg-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&libogg-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&libogg-directory;</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+		
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&libogg-directory;</remove>
+	</stage>
+
+</package>

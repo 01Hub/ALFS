@@ -1,0 +1,43 @@
+<package name="ppp" version="&ppp-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&ppp-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Patching">
+		<stageinfo>
+			<base>&build_dir;/&ppp-directory;</base>
+		</stageinfo>
+
+		<patch base="&build_dir;/&ppp-directory;">
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&ppp-patch;</param>
+		</patch>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&ppp-directory;</base>
+		</stageinfo>
+
+		<configure />
+
+		<make>
+			<param>ETCDIR=/etc/ppp</param>
+		</make>
+
+		<make>
+			<param>ETCDIR=/etc/ppp</param>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&ppp-directory;</remove>
+	</stage>
+
+</package>

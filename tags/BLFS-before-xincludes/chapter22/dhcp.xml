@@ -1,0 +1,68 @@
+<package name="dhcp" version="&dhcp-version;">
+
+	<stage name="Unpacking.">
+		<unpack>
+			<archive>&packages_dir;/&dhcp-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&dhcp-package;</base>
+		</stageinfo>
+
+		<configure />
+
+		<make />
+
+		<make>
+			<param>LIBDIR=/usr/lib</param>
+			<param>INCDIR=/usr/include</param>
+			<param>install</param>
+		</make>
+
+		<execute command="touch">
+			<param>/var/state/dhcp/dhcpd.leases</param>
+		</execute>
+
+		<textdump>
+			<file>/etc/dhcpd.conf</file>
+			<content>
+			=default-lease-time 72000;
+			=max-lease-time 144000;
+			=ddns-update-style ad-hoc;
+			=
+			=subnet 192.168.5.0 netmask 255.255.255.0 {
+			=  range 192.168.5.10 192.168.5.240;
+			=  option broadcast-address 195.168.5.255;
+			=  option routers 192.168.5.1;
+			=}
+			</content>
+		</textdump>
+	</stage>
+
+	<stage name="Installing bootscript and configuration">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+	
+		<make>
+			<param>install-dhcp</param>
+		</make>
+	</stage>
+
+
+
+	<stage name="Cleanup.">
+		<remove>&build_dir;/&dhcp-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+</package>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<stage name="/etc/issue">
+
+	<copy>
+        	<source>&blfs-config;/etc/issue</source>
+		<destination>/etc/issue</destination>
+	</copy>
+
+</stage>

@@ -1,0 +1,120 @@
+<package name="docbook-xsl" version="&docbook-xsl-version;">
+
+        <packageinfo>
+                <requires><name>libxslt</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&docbook-xsl-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&docbook-xsl-directory;</base>
+		</stageinfo>
+
+		<execute command="install">
+			<param>-d /usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;</param>
+		</execute>
+
+		<copy>
+			<option>archive</option>
+			<option>force</option>
+			<source>VERSION</source>
+			<source>common</source>
+			<source>extensions</source>
+			<source>fo</source>
+			<source>html</source>
+			<source>htmlhelp</source>
+			<source>images</source>
+			<source>javahelp</source>
+			<source>lib</source>
+			<source>manpages</source>
+			<source>params</source>
+			<source>profiling</source>
+			<source>template</source>
+			<source>tools</source>
+			<source>xhtml</source>
+			<destination>/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;</destination>
+		</copy>
+
+		<execute command="install">
+			<param>-d /usr/share/doc/xml</param>
+		</execute>
+
+		<copy>
+			<option>archive</option>
+			<option>force</option>
+			<source>doc/*</source>
+			<destination>/usr/share/doc/xml</destination>
+		</copy>
+
+		<textdump>
+			<file>&build_dir;/dircheck.sh</file>
+			<content>
+			=if [ ! -e /etc/xml/catalog ]; then mkdir -p /etc/xml; xmlcatalog --noout \
+			=--create /etc/xml/catalog; fi &amp;&amp;
+			=if [ ! -e /etc/xml/docbook ]; then xmlcatalog --noout --create \
+			=/etc/xml/docbook; fi
+			</content>
+		</textdump>
+
+		<permissions mode="755">
+			<name>&build_dir;/dircheck.sh</name>
+		</permissions>
+
+		<execute command="&build_dir;/dircheck.sh"/>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;rewriteSystem&quot;</param>
+			<param>&quot;http://docbook.sourceforge.net/release/xsl/&docbook-xsl-version;&quot;</param>
+			<param>&quot;/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;&quot;</param>
+			<param>/etc/xml/catalog</param>
+		</execute>
+	
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;rewriteURI&quot;</param>
+			<param>&quot;http://docbook.sourceforge.net/release/xsl/&docbook-xsl-version;&quot;</param>
+			<param>&quot;/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;&quot;</param>
+			<param>/etc/xml/catalog</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;rewriteSystem&quot;</param>
+			<param>&quot;http://docbook.sourceforge.net/release/xsl/current&quot;</param>
+			<param>&quot;/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;&quot;</param>
+			<param>/etc/xml/catalog</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;rewriteURI&quot;</param>
+			<param>&quot;http://docbook.sourceforge.net/release/xsl/current&quot;</param>
+			<param>&quot;/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;&quot;</param>
+			<param>/etc/xml/catalog</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;delegateSystem&quot;</param>
+			<param>&quot;http://docbook.sourceforge.net/release/xsl/&quot;</param>
+			<param>&quot;file:///etc/xml/docbook&quot;</param>
+			<param>/etc/xml/catalog</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;delegateURI&quot;</param>
+			<param>&quot;http://docbook.sourceforge.net/release/xsl/&quot;</param>
+			<param>&quot;file:///etc/xml/docbook&quot;</param>
+			<param>/etc/xml/catalog</param>
+		</execute>
+	</stage>
+
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&docbook-xsl-directory;</remove>
+		<remove>&build_dir;/dircheck.sh</remove>
+	</stage>
+
+</package>

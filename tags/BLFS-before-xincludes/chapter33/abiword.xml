@@ -1,0 +1,50 @@
+<package name="abiword" version="&abiword-version;">
+
+        <packageinfo>
+                <requires><name>libglade</name></requires>
+                <requires><name>fribidi</name></requires>
+		<utilizes><name>popt</name></utilizes>
+		<utilizes><name>aspell</name></utilizes>
+		<utilizes><name>gnome-libs</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&abiword-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&abiword-directory;/abi</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<copy>
+			<source>../abiword-docs/man/abiword.8</source>
+			<destination>/usr/share/man/man8</destination>
+		</copy>
+
+		<copy>
+			<option>recursive</option>
+			<option>force</option>
+			<source>../abiword-docs/help</source>
+			<destination>/usr/share/doc/abiword</destination>
+		</copy>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&abiword-directory;</remove>
+	</stage>
+
+</package>

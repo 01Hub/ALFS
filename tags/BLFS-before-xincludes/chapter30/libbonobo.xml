@@ -1,0 +1,40 @@
+<package name="libbonobo" version="&libbonobo-version;">
+
+        <packageinfo>
+                <requires><name>orbit2</name></requires>
+		<requires><name>XML-Parser</name></requires>
+		<utilizes><name>gtk-doc</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&libbonobo-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&libbonobo-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+			<param>--sysconfdir=/etc/gnome</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		&ldconfig;
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&libbonobo-directory;</remove>
+	</stage>
+
+</package>

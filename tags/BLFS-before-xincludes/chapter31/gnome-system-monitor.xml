@@ -1,0 +1,40 @@
+<package name="gnome-system-monitor" version="&gnome-system-monitor-version;">
+
+        <packageinfo>
+                <requires><name>libgnomeui</name></requires>
+                <requires><name>libwnck</name></requires>
+		<requires><name>libgtop</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&gnome-system-monitor-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&gnome-system-monitor-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--localstatedir=/var/lib</param>
+			<param>--sysconfdir=/etc/gnome</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		&ldconfig;
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&gnome-system-monitor-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,44 @@
+<package name="reiserfsutils" version="&reiserfsutils-version;">
+
+    <stage name="Unpacking">
+	<unpack>
+		<archive>&packages_dir;/&reiserfsutils-package;</archive>
+		<destination>&build_dir;</destination>
+	</unpack>
+    </stage>
+
+    <stage name="Installing">
+        <stageinfo>
+		<base>&build_dir;/&reiserfsutils-directory;</base>
+	</stageinfo>
+
+	<configure>
+	        <param>--prefix=/usr</param>
+	        <param>--sbindir=/sbin</param>
+	</configure>
+	
+	<make />
+
+	<make>
+		<param>install</param>
+	</make>
+	
+	<link>
+	        <option>force</option>
+	        <target>reiserfsck</target>
+		<name>/sbin/fsck.reiserfs</name>
+	</link>
+
+	<link>
+	        <option>force</option>
+	        <target>mkreiserfs</target>
+		<name>/sbin/mkfs.reiserfs</name>
+	</link>
+
+    </stage>
+
+    <stage name="Cleanup">
+	<remove>&build_dir;/&reiserfsutils-directory;</remove>
+    </stage>
+
+</package>

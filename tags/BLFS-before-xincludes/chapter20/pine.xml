@@ -1,0 +1,70 @@
+<package name="pine" version="&pine-version;">
+
+	<packageinfo>
+		<requires><name>openssl</name></requires>
+		<utilizes><name>openldap</name></utilizes>
+		<utilizes><name>mitkrb</name></utilizes>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&pine-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Patching">
+		<stageinfo>
+			<base>&build_dir;/&pine-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&pine-patch;</param>
+		</patch>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&pine-directory;</base>
+		</stageinfo>
+
+		<execute command="./build">
+		        <param>DEBUG=-O</param>
+			<param>MAILSPOOL=/var/mail</param>
+			<param>SSLDIR=/usr</param>
+			<param>SSLCERTS=/etc/ssl/certs</param>
+			<param>slx</param>
+		</execute>
+
+		<copy>
+		        <source>doc/pine.1</source>
+		        <source>doc/pico.1</source>
+		        <source>doc/rpdump.1</source>
+		        <source>doc/rpload.1</source>
+			<destination>/usr/share/man/man1</destination>
+		</copy>
+
+		<execute command="install" 
+		         base="&build_dir;/&pine-directory;/bin">
+		        <param>pine</param>
+		        <param>imapd</param>
+		        <param>ipop2d</param>
+		        <param>ipop3d</param>
+		        <param>mailutil</param>
+		        <param>mtest</param>
+		        <param>pico</param>
+		        <param>pilot</param>
+		        <param>rpdump</param>
+		        <param>rpload</param>
+		        <param>/usr/bin</param>
+		</execute>
+		
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&pine-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,35 @@
+<package name="zsh" version="&zsh-version;">
+
+	<packageinfo>
+		<utilizes><name>pcre</name></utilizes>
+	</packageinfo>
+
+    <stage name="Unpacking">
+	<unpack>
+		<archive>&packages_dir;/&zsh-package;</archive>
+		<destination>&build_dir;</destination>
+	</unpack>
+    </stage>
+
+    <stage name="Installing">
+        <stageinfo>
+		<base>&build_dir;/&zsh-directory;</base>
+	</stageinfo>
+
+	<configure>
+	        <param>--prefix=/usr</param>
+	</configure>
+	
+	<make />
+
+	<make>
+		<param>install</param>
+	</make>
+
+    </stage>
+
+    <stage name="Cleanup">
+	<remove>&build_dir;/&zsh-directory;</remove>
+    </stage>
+
+</package>

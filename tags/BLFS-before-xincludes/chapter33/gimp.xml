@@ -1,0 +1,47 @@
+<package name="gimp" version="&gimp-version;">
+
+        <packageinfo>
+                <requires><name>gtk+2</name></requires>
+		<requires><name>libart-lgpl</name></requires>
+
+		<utilizes><name>gimp-print</name></utilizes>
+		<utilizes><name>libmng</name></utilizes>
+		<utilizes><name>librsvg</name></utilizes>
+		<utilizes><name>aalib</name></utilizes>
+		<utilizes><name>python</name></utilizes>
+		<utilizes><name>gtk-doc</name></utilizes>
+		<utilizes><name>libgtkhtml</name></utilizes>
+		<utilizes><name>lcms</name></utilizes>
+
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&gimp-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&gimp-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
+			<param>--disable-print</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&gimp-directory;</remove>
+	</stage>
+
+</package>

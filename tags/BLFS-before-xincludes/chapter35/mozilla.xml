@@ -1,0 +1,109 @@
+<package name="mozilla" version="&mozilla-version;">
+
+        <packageinfo>
+        	<requires><name>zip</name></requires>
+        	<requires><name>gtk+2</name></requires>
+        	<requires><name>libidl</name></requires>
+        	<requires><name>libmng</name></requires>
+        	<requires><name>which</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&mozilla-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>		
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<environment>
+			        <variable name="MOZILLA_OFFICIAL">1</variable>
+			        <variable name="BUILD_OFFICIAL">1</variable>
+			</environment>
+			<base>&build_dir;/&mozilla-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--with-default-mozilla-five-home=/usr/lib/mozilla</param>
+			<param>--enable-default-toolkit=gtk2</param>
+			<param>--with-x</param>
+			<param>--with-system-zlib</param>
+			<param>--with-system-jpeg </param>
+			<param>--with-system-png</param>
+			<param>--with-system-mng</param>
+			<param>--enable-xft</param>
+			<param>--enable-crypto</param>
+			<param>--disable-accessibility</param>
+			<param>--disable-tests</param>
+			<param>--disable-debug</param>
+			<param>--disable-logging</param>
+			<param>--enable-reorder</param>
+			<param>--enable-strip</param>
+			<param>--disable-pedantic</param>
+			<param>--enable-cpp-rtti</param>
+			<param>--enable-extensions=all</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<execute command="install -d /usr/include/mozilla-&mozilla-version;/nss" />
+
+		<execute command="cp -Lf dist/private/nss/*.h dist/public/nss/*.h /usr/include/mozilla-&mozilla-version;/nss" />
+
+		<execute command="ln -nsf mozilla-&mozilla-version; /usr/include/mozilla" />
+
+		<execute command="ln -nsf mozilla-&mozilla-version; /usr/lib/mozilla" />
+
+		<move base="/usr/lib/mozilla-&mozilla-version;">
+			<source>libnspr4.so</source>
+			<source>libplc4.so</source>
+			<source>libplds4.so</source>
+			<source>libnss3.so</source>
+			<source>libsmime3.so</source>
+			<source>libsoftokn3.so</source>
+			<source>libssl3.so</source>
+			<source>libsoftokn3.chk</source>
+			<destination>/usr/lib</destination>
+		</move>
+	
+		<link>
+			<option>force</option>
+			<target>../libnspr4.so</target>
+			<target>../libplc4.so</target>
+			<target>../libplds4.so</target>
+			<target>../libnss3.so</target>
+			<target>../libsmime3.so</target>
+			<target>../libsoftokn3.so</target>
+			<target>../libssl3.so</target>
+			<target>../libsoftokn3.chk</target>
+			<name>/usr/lib/mozilla-&mozilla-version;</name>
+		</link>
+
+
+		<stage name="Multi-User Operation Setup">
+		        <stageinfo>
+				<environment>
+					<variable name="LD_LIBRARY_PATH">/usr/lib/mozilla-&mozilla-version;</variable>
+					<variable name="MOZILLA_FIVE_HOME">/usr/lib/mozilla-&mozilla-version;</variable>
+				</environment>
+			        <base>/usr/lib/mozilla-&mozilla-version;</base>
+			</stageinfo>
+
+			<execute command="./regxpcom" />
+			<execute command="./regchrome" />
+			<execute command="touch `find /usr/lib/mozilla-&mozilla-version; -name *.rdf`" />
+
+		</stage>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&mozilla-directory;</remove>
+	</stage>
+
+</package>

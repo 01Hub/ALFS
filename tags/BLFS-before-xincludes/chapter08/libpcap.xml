@@ -1,0 +1,30 @@
+<package name="libpcap" version="&libpcap-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&libpcap-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&libpcap-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&libpcap-directory;</remove>
+	</stage>
+
+</package>

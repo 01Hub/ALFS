@@ -1,0 +1,124 @@
+<package name="samba" version="&samba-version;">
+
+	<stage name="Unpacking.">
+		<unpack>
+			<archive>&packages_dir;/&samba-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Patching.">
+		<stageinfo>
+			<base>&build_dir;/&samba-directory;/source</base>
+		</stageinfo>
+
+		<patch base="&build_dir;/&samba-directory;">
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&samba-maintainer-patch;</param>
+		</patch>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&samba-directory;/source</base>
+		</stageinfo>
+
+		<mkdir>
+			<option>parents</option>
+			<name>/var/cache/samba</name>
+		</mkdir>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
+			<param>--localstatedir=/var</param>
+			<param>--with-piddir=/var/run</param>
+			<param>--with-fhs</param>
+			<param>--with-smbmount</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<copy>
+			<source>nsswitch/libnss_win{s,bind.so}</source>
+			<destination>/lib</destination>
+		</copy>
+
+		<permissions mode="0755">
+			<name>/lib/nsswitch/libnss_win{s,bind.so}</name>
+		</permissions>
+
+		<link base="/lib">
+			<option>force</option>
+			<target>libnss_winbind.so</target>
+			<name>libnss_winbind.so.2</name>
+		</link>
+
+		<link base="/lib">
+			<option>force</option>
+			<target>libnss_wins.so</target>
+			<name>libnss_wins.so.2</name>
+		</link>
+
+		<copy base="&build_dir;/&samba-directory;">
+			<source>examples/smb.conf.default</source>
+			<destination>/etc/samba</destination>
+		</copy>
+	
+		<textdump mode="append">
+			<file>/etc/services</file>
+			<content>
+			=swat 901/tcp
+			</content>
+		</textdump>
+
+		<textdump mode="append">
+			<file>/etc/inetd.conf</file>
+			<content>
+			=swat stream tcp nowait.400 root /usr/sbin/swat swat
+			</content>
+		</textdump>
+
+		<textdump mode="append">
+			<file>/etc/xinetd.conf</file>
+			<content>
+			={
+			=    port            = 901
+			=    socket_type     = stream
+			=    wait            = no
+			=    only_from       = 127.0.0.1
+			=    user            = root
+			=    server          = /usr/sbin/swat
+			=    log_on_failure  += USERID
+			=}
+			</content>
+		</textdump>
+	</stage>
+
+	<stage name="Installing bootscript and configuration">
+		<stageinfo>
+			<base>&build_dir;/&samba-directory;</base>	
+		</stageinfo>
+
+		<make>
+			<param>install-samba</param>
+			<param>install-winbind</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup.">
+		<remove>&build_dir;/&samba-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+</package>
+

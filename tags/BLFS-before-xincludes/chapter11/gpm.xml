@@ -1,0 +1,78 @@
+<package name="gpm" version="&gpm-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&gpm-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&gpm-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&gpm-patch1;</param>
+		</patch>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&gpm-patch2;</param>
+		</patch>
+
+		<configure>
+			<prefix>LDFLAGS='-lm'</prefix>
+			<param>--prefix=/usr</param>
+			<param>--sysconfdir=/etc</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<copy base="./conf">
+			<option>force</option>
+			<source>gpm-root.conf</source>
+			<destination>/etc</destination>
+		</copy>
+
+		&ldconfig;
+	</stage>
+
+	<stage name="Installing bootscript and configuration">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-gpm</param>
+		</make>
+
+		<textdump base="/etc/sysconfig">
+			<file>mouse</file>
+			<content>
+				=# Begin /etc/sysconfig/mouse
+				=MDEVICE=&mouse_device;
+				=PROTOCOL=&mouse_protocol;
+				=# End /etc/sysconfig/mouse
+			</content>
+		</textdump>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&gpm-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+
+</package>

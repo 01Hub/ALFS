@@ -1,0 +1,41 @@
+<package name="kdeaddons" version="&kdeaddons-version;">
+
+        <packageinfo>
+                <requires><name>kdebase</name></requires>
+		<utilizes><name>libxml2</name></utilizes>
+		<utilizes><name>db</name></utilizes>
+		<utilizes><name>xmms</name></utilizes>
+		<utilizes><name>sdl</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&kdeaddons-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&kdeaddons-directory;</base>
+		</stageinfo>
+
+		<configure>
+                        <param>--prefix=&kde-prefix;</param>
+                        <param>--disable-debug</param>
+                        <param>--disable-dependency-tracking</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&kdeaddons-directory;</remove>
+	</stage>
+
+</package>

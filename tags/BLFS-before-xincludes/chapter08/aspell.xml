@@ -1,0 +1,65 @@
+<package name="aspell" version="&aspell-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&aspell-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&aspell-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&aspell-directory;</remove>
+	</stage>
+
+</package>
+
+<package name="aspell-dictionary" version="&aspell-dict-version;">
+
+	<packageinfo>
+		<requires><name>which</name></requires>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&aspell-dict-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&aspell-dict-directory;</base>
+		</stageinfo>
+
+		<configure />
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&aspell-dict-directory;</remove>
+	</stage>
+
+</package>
+
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<package name="qt" version="&qt-version;">
+  <packageinfo>
+    <requires>
+      <name>xfree86</name>
+    </requires>
+    <requires>
+      <name>libpng</name>
+    </requires>
+    <requires>
+      <name>libmng</name>
+    </requires>
+    <requires>
+      <name>libjpeg</name>
+    </requires>
+  </packageinfo>
+  <stage name="Unpacking">
+    <unpack>
+      <archive>&packages_dir;/&qt-package;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+  </stage>
+  <stage name="Installing">
+    <stageinfo>
+      <environment>
+        <variable name="PATH" mode="prepend">&build_dir;/&qt-directory;/bin:</variable>
+        <variable name="LD_LIBRARY_PATH">&build_dir;/&qt-directory;/lib</variable>
+      </environment>
+      <base>&build_dir;/&qt-directory;</base>
+    </stageinfo>
+    <execute command="sed -i &quot;s:cp -f:install:&quot; mkspecs/linux-g++/qmake.conf" />
+    <configure command="echo yes | ./configure">
+      <param>-prefix /usr</param>
+      <param>-docdir /usr/share/doc/qt</param>
+      <param>-headerdir /usr/include/qt</param>
+      <param>-plugindir /usr/lib/qt/plugins</param>
+      <param>-datadir /usr/share/qt</param>
+      <param>-translationdir /usr/share/qt/translations</param>
+      <param>-sysconfdir /etc/qt</param>
+      <param>-release</param>
+      <param>-shared</param>
+      <param>-qt-gif</param>
+      <param>-system-zlib</param>
+      <param>-no-g++-execeptions</param>
+      <param>-thread</param>
+      <param>-plugin-imgfmt-png</param>
+      <param>-system-libpng</param>
+    </configure>
+    <make />
+    <execute command="find -type f -name Makefile | xargs sed -i &quot;s@-Wl,-rpath,/usr/lib@@g&quot;" />
+    <make>
+      <param>install</param>
+    </make>
+    <link>
+      <option>force</option>
+      <target>libqt-mt.so</target>
+      <name>/usr/lib/libqt.so</name>
+    </link>
+    <copy>
+      <option>recursive</option>
+      <source>doc/man</source>
+      <destination>/usr/share</destination>
+    </copy>
+    <copy>
+      <option>recursive</option>
+      <source>examples</source>
+      <destination>/usr/share/doc/qt</destination>
+    </copy>
+  </stage>
+  <stage name="Cleanup">
+    <remove>&build_dir;/&qt-directory;</remove>
+  </stage>
+</package>

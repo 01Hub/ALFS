@@ -1,0 +1,36 @@
+<package name="yelp" version="&yelp-version;">
+
+        <packageinfo>
+                <requires><name>libgnomeui</name></requires>
+		<requires><name>libgtkhtml</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&yelp-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&yelp-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&yelp-directory;</remove>
+	</stage>
+
+</package>

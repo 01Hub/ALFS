@@ -1,0 +1,42 @@
+<package name="libgnomeui" version="&libgnomeui-version;">
+
+        <packageinfo>
+                <requires><name>libbonoboui</name></requires>
+		<requires><name>gnome-keyring</name></requires>
+		<utilizes><name>esound</name></utilizes>
+		<utilizes><name>libjpeg</name></utilizes>
+		<utilizes><name>gtk-doc</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&libgnomeui-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&libgnomeui-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+			<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+			<param>--disable-gtk-doc</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		&ldconfig;
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&libgnomeui-directory;</remove>
+	</stage>
+
+</package>

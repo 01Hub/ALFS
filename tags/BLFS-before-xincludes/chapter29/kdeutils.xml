@@ -1,0 +1,38 @@
+<package name="kdeutils" version="&kdeutils-version;">
+
+        <packageinfo>
+                <requires><name>kdebase</name></requires>
+		<utilizes><name>libxml2</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&kdeutils-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&kdeutils-directory;</base>
+		</stageinfo>
+
+		<configure>
+                        <param>--prefix=&kde-prefix;</param>
+                        <param>--disable-debug</param>
+                        <param>--disable-dependency-tracking</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&kdeutils-directory;</remove>
+	</stage>
+
+</package>

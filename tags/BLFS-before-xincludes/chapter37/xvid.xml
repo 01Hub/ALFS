@@ -1,0 +1,46 @@
+<package name="xvid" version="&xvid-version;">
+
+        <packageinfo>
+                <utilizes><name>nasm</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&xvid-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&xvid-directory;/build/generic</base>
+		</stageinfo>
+
+		<configure>
+		        <param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+		        <param>install</param>
+		</make>
+
+		<link>
+			<option>force</option>
+			<target>libxvidcore.so.4.0</target>
+			<name>libxvidcore.so.4</name>
+		</link>
+
+		<link>
+			<option>force</option>
+			<target>libxvidcore.so.4</target>
+			<name>libxvidcore.so</name>
+		</link>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&xvid-directory;</remove>
+	</stage>
+
+</package>

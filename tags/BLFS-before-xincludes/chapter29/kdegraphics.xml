@@ -1,0 +1,44 @@
+<package name="kdegraphics" version="&kdegraphics-version;">
+
+        <packageinfo>
+                <requires><name>kdebase</name></requires>
+		<utilizes><name>libxml2</name></utilizes>
+		<utilizes><name>sane</name></utilizes>
+		<utilizes><name>libtiff</name></utilizes>
+		<utilizes><name>xpdf</name></utilizes>
+		<utilizes><name>imlib</name></utilizes>
+		<utilizes><name>libart-lgpl</name></utilizes>
+		<utilizes><name>pkgconfig</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&kdegraphics-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&kdegraphics-directory;</base>
+		</stageinfo>
+
+		<configure>
+                        <param>--prefix=&kde-prefix;</param>
+                        <param>--disable-debug</param>
+                        <param>--disable-dependency-tracking</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&kdegraphics-directory;</remove>
+	</stage>
+
+</package>

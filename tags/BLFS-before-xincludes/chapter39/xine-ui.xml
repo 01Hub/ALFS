@@ -1,0 +1,37 @@
+<package name="xine-ui" version="&xine-ui-version;">
+
+        <packageinfo>
+                <requires><name>xine-lib</name></requires>
+		<utilizes><name>curl</name></utilizes>
+		<utilizes><name>aalib</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&xine-ui-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&xine-ui-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&xine-ui-directory;</remove>
+	</stage>
+
+</package>

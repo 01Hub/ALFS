@@ -1,0 +1,58 @@
+<package name="rp-pppoe" version="&rp-pppoe-version;">
+
+	<packageinfo>
+		<requires><name>ppp</name></requires>
+	</packageinfo>
+
+	<stage name="Unpacking.">
+		<unpack>
+			<archive>&packages_dir;/&rp-pppoe-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&rp-pppoe-directory;/src</base>
+		</stageinfo>
+
+		<configure />
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Installing rp-pppoe service script">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-service-pppoe</param>
+		</make>
+	</stage>
+
+	<stage name="Configure rp-pppoe">
+		<textdump>
+			<file>/etc/sysconfig/network-devices/ifconfig.pppoe</file>
+			<content>
+			=ONBOOT=yes
+			=SERVICE=pppoe
+			</content>
+		</textdump>
+	</stage>
+
+	<stage name="Cleanup.">
+		<remove>&build_dir;/&rp-pppoe-directory;</remove>
+	</stage>
+</package>
+

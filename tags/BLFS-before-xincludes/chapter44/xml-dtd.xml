@@ -1,0 +1,228 @@
+<package name="xml-dtd" version="&xml-dtd-version;">
+
+        <packageinfo>
+                <requires><name>libxml2</name></requires>
+        	<requires><name>unzip</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking">
+	
+	        <mkdir>
+		        <name>&build_dir;/&xml-dtd-directory;</name>
+		</mkdir>
+
+		<unpack>
+			<archive>&packages_dir;/&xml-dtd-package;</archive>
+			<destination>&build_dir;/&xml-dtd-directory;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&xml-dtd-directory;</base>
+		</stageinfo>
+		
+		<execute command="install -d /usr/share/xml/docbook/xml-dtd-&xml-dtd-version;" />
+		
+		<copy>
+			<option>archive</option>
+			<option>force</option>
+			<source>docbook.cat</source>
+			<source>*.dtd</source>
+			<source>ent/</source>
+			<source>*.mod</source>
+			<destination>/usr/share/xml/docbook/xml-dtd-&xml-dtd-version;</destination>
+		</copy>
+
+		<textdump>
+			<file>&build_dir;/dircheck.sh</file>
+			<content>
+			=if [ ! -e /etc/xml/catalog ]; then mkdir -p /etc/xml; xmlcatalog --noout \
+			=--create /etc/xml/catalog; fi &amp;&amp;
+			=if [ ! -e /etc/xml/docbook ]; then xmlcatalog --noout --create \
+			=/etc/xml/docbook; fi
+			</content>
+		</textdump>
+
+		<permissions mode="755">
+			<name>&build_dir;/dircheck.sh</name>
+		</permissions>
+
+		<execute command="&build_dir;/dircheck.sh"/>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;public&quot;</param>
+			<param>&quot;-//OASIS//ELEMENTS DocBook XML Information Pool V&xml-dtd-version;//EN&quot;</param>
+			<param>&quot;file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;/dbpoolx.mod&quot;</param>
+			<param>/etc/xml/docbook</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;public&quot;</param>
+			<param>&quot;-//OASIS//DTD DocBook XML V&xml-dtd-version;//EN&quot;</param>
+			<param>&quot;http://oasis-open.org/docbook/xml/&xml-dtd-version;/docbookx.dtd&quot;</param>
+			<param>/etc/xml/docbook</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;public&quot;</param>
+			<param>&quot;-//OASIS//ENTITIES DocBook XML Character Entities V&xml-dtd-version;//EN&quot;</param>
+			<param>&quot;file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;/dbcentx.mod&quot;</param>
+			<param>/etc/xml/docbook</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;public&quot;</param>
+			<param>&quot;-//OASIS//ENTITIES DocBook XML Notations V&xml-dtd-version;//EN&quot;</param>
+			<param>&quot;file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;/dbnotnx.mod&quot;</param>
+			<param>/etc/xml/docbook</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;public&quot;</param>
+			<param>&quot;-//OASIS//ENTITIES DocBook XML Additional General Entities V&xml-dtd-version;//EN&quot;</param>
+			<param>&quot;file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;/dbgenent.mod&quot;</param>
+			<param>/etc/xml/docbook</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;public&quot;</param>
+			<param>&quot;-//OASIS//ELEMENTS DocBook XML Document Hierarchy V&xml-dtd-version;//EN&quot;</param>
+			<param>&quot;file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;/dbhierx.mod&quot;</param>
+			<param>/etc/xml/docbook</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;public&quot;</param>
+			<param>&quot;-//OASIS//DTD XML Exchange Table Model 19990315//EN&quot;</param>
+			<param>&quot;file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;/soextblx.dtd&quot;</param>
+			<param>/etc/xml/docbook</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;public&quot;</param>
+			<param>&quot;-//OASIS//DTD DocBook XML CALS Table Model V&xml-dtd-version;//EN&quot;</param>
+			<param>&quot;file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;/calstblx.dtd&quot;</param>
+			<param>/etc/xml/docbook</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;rewriteSystem&quot;</param>
+			<param>&quot;http://www.oasis-open.org/docbook/xml/&xml-dtd-version;&quot;</param>
+			<param>&quot;file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;&quot;</param>
+			<param>/etc/xml/docbook</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;rewriteURI&quot;</param>
+			<param>&quot;http://www.oasis-open.org/docbook/xml/&xml-dtd-version;&quot;</param>
+			<param>&quot;file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;&quot;</param>
+			<param>/etc/xml/docbook</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;delegatePublic&quot;</param>
+			<param>&quot;-//OASIS//ENTITIES DocBook XML&quot;</param>
+			<param>&quot;file:///etc/xml/docbook&quot;</param>
+			<param>/etc/xml/catalog</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;delegatePublic&quot;</param>
+			<param>&quot;-//OASIS//DTD DocBook XML&quot;</param>
+			<param>&quot;file:///etc/xml/docbook&quot;</param>
+			<param>/etc/xml/catalog</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;delegateSystem&quot;</param>
+			<param>&quot;http://www.oasis-open.org/docbook/&quot;</param>
+			<param>&quot;file:///etc/xml/docbook&quot;</param>
+			<param>/etc/xml/catalog</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;delegateURI&quot;</param>
+			<param>&quot;http://www.oasis-open.org/docbook/&quot;</param>
+			<param>&quot;file:///etc/xml/docbook&quot;</param>
+			<param>/etc/xml/catalog</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;delegateSystem&quot;</param>
+			<param>&quot;/usr/share/docbook/&quot;</param>
+			<param>&quot;file:///etc/xml/docbook&quot;</param>
+			<param>/etc/xml/catalog</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;delegateURI&quot;</param>
+			<param>&quot;/usr/share/docbook/&quot;</param>
+			<param>&quot;file:///etc/xml/docbook&quot;</param>
+			<param>/etc/xml/catalog</param>
+		</execute>
+	
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;rewriteSystem&quot;</param>
+			<param>&quot;/usr/share/docbook&quot;</param>
+			<param>&quot;file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;&quot;</param>
+			<param>/etc/xml/docbook</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;rewriteURI&quot;</param>
+			<param>&quot;/usr/share/docbook&quot;</param>
+			<param>&quot;file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;&quot;</param>
+			<param>/etc/xml/docbook</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;public&quot;</param>
+			<param>&quot;-//OASIS//DTD DocBook XML V4.1.2//EN&quot;</param>
+			<param>&quot;http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd&quot;</param>
+			<param>/etc/xml/docbook</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;delegateSystem&quot;</param>
+			<param>&quot;http://www.oasis-open.org/docbook/xml/4.1.2/&quot;</param>
+			<param>&quot;file:///etc/xml/docbook&quot;</param>
+			<param>/etc/xml/catalog</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;delegateURI&quot;</param>
+			<param>&quot;http://www.oasis-open.org/docbook/xml/4.1.2/&quot;</param>
+			<param>&quot;file:///etc/xml/docbook&quot;</param>
+			<param>/etc/xml/catalog</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;rewriteSystem&quot;</param>
+			<param>&quot;http://www.oasis-open.org/docbook/xml/4.1.2&quot;</param>
+			<param>&quot;file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;&quot;</param>
+			<param>/etc/xml/docbook</param>
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;rewriteURI&quot;</param>
+			<param>&quot;http://www.oasis-open.org/docbook/xml/4.1.2&quot;</param>
+			<param>&quot;file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;&quot;</param>
+			<param>/etc/xml/docbook</param>	
+		</execute>
+
+		<execute command="xmlcatalog">
+			<param>--noout --add &quot;rewriteURI"&quot;</param>
+			<param>&quot;http://www.oasis-open.org/docbook/xml/4.2&quot;</param>
+			<param>&quot;file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;&quot;</param>
+			<param>/etc/xml/docbook</param>
+		</execute>
+	</stage>
+
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&xml-dtd-directory;</remove>
+		<remove>&build_dir;/dircheck.sh</remove>
+	</stage>
+
+</package>

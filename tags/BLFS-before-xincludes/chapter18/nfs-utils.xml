@@ -1,0 +1,54 @@
+<package name="nfs-utils" version="&nfs-utils-version;">
+
+        <packageinfo>
+                <requires><name>portmap</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&nfs-utils-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&nfs-utils-directory;</base>
+		</stageinfo>
+
+		<configure>
+		         <param>--prefix=/usr</param>
+			 <param>--sysconfdir=/etc</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Installing bootscript and configuration">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-nfs-server</param>
+		</make>
+
+		<make>
+			<param>install-nfs-client</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&nfs-utils-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+</package>

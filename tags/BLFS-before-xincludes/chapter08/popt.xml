@@ -1,0 +1,30 @@
+<package name="popt" version="&popt-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&popt-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&popt-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&popt-directory;</remove>
+	</stage>
+
+</package>

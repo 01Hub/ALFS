@@ -1,0 +1,66 @@
+<package name="nano" version="&nano-version;">
+
+    <packageinfo>
+        <utilizes><name>slang</name></utilizes>
+    </packageinfo>
+
+ 
+    <stage name="Unpacking">
+	<unpack>
+		<archive>&packages_dir;/&nano-package;</archive>
+		<destination>&build_dir;</destination>
+	</unpack>
+    </stage>
+
+    <stage name="Installing">
+        <stageinfo>
+		<base>&build_dir;/&nano-directory;</base>
+	</stageinfo>
+
+	<configure>
+	        <param>--prefix=/usr</param>
+		<param>--sysconfdir=/etc</param>
+		<param>--enable-color</param>
+		<param>--enable-multibuffer</param>
+		<param>--enable-nanorc</param>
+	</configure>
+
+	
+	<make />
+
+	<make>
+		<param>install</param>
+	</make>
+
+	<mkdir base="/usr/share/doc">
+	        <option>parents</option>
+		<name>nano/examples</name>
+	</mkdir>
+
+	<copy>
+	        <source>nanorc.sample</source>
+		<destination>/usr/share/doc/nano/examples</destination>
+	</copy>
+
+	<textdump base="/etc">
+		<file>nanorc</file>
+		<content>
+		=set autoindent
+		=set const
+		=set fill 72
+		=set historylog
+		=set multibuffer
+		=set nohelp
+		=set regexp
+		=set smooth
+		=set suspend
+        	</content>
+	</textdump>
+	
+    </stage>
+
+    <stage name="Cleanup">
+	<remove>&build_dir;/&nano-directory;</remove>
+    </stage>
+
+</package>

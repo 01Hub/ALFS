@@ -1,0 +1,72 @@
+<package name="dhcpcd" version="&dhcpcd-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&dhcpcd-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Patching">
+		<stageinfo>
+			<base>&build_dir;/&dhcpcd-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&dhcpcd-patch;</param>
+		</patch>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&dhcpcd-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=""</param>
+			<param>--sysconfdir=/var/lib</param>
+			<param>--mandir=/usr/share/man</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Installing dhcpcd service script">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-service-dhcpcd</param>
+		</make>
+	</stage>
+
+	<stage name="Configuring dhcpcd">
+		<textdump>
+			<file>/etc/sysconfig/network-devices/ifconfig.eth0</file>
+			<content>
+			=ONBOOT=yes
+			=DHCP_START="&dhcpcd-start-params;"
+			=DHCP_STOP="&dhcpcd-stop-params;"
+			=SERVICE=dhcpcd
+			</content>
+		</textdump>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&dhcpcd-directory;</remove>
+		<remove>&build_dir;/&blfs-bootscripts-directory;</remove>
+	</stage>
+
+</package>

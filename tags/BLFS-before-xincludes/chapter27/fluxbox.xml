@@ -1,0 +1,43 @@
+<package name="fluxbox" version="&fluxbox-version;">
+
+	<packageinfo>
+        	<requires><name>xfree86</name></requires>
+	</packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&fluxbox-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&fluxbox-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&fluxbox-gcc33-patch;</param>
+		</patch>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--enable-kde</param>
+			<param>--enable-gnome</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&fluxbox-directory;</remove>
+	</stage>
+
+</package>

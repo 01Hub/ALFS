@@ -1,0 +1,39 @@
+<package name="oaf" version="&oaf-version;">
+
+        <packageinfo>
+                <requires><name>orbit</name></requires>
+                <requires><name>libxml</name></requires>
+		<utilizes><name>gtk-doc</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&oaf-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&oaf-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/opt/gnome</param>
+			<param>--disable-gtk-doc</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		&ldconfig;
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&oaf-directory;</remove>
+	</stage>
+
+</package>

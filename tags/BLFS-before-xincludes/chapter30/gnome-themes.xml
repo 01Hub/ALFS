@@ -1,0 +1,35 @@
+<package name="gnome-themes" version="&gnome-themes-version;">
+
+        <packageinfo>
+		<requires><name>intltool</name></requires>
+                <requires><name>gtk-engines</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&gnome-themes-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&gnome-themes-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&gnome-themes-directory;</remove>
+	</stage>
+
+</package>

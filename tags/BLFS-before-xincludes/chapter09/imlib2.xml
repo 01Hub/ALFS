@@ -1,0 +1,40 @@
+<package name="imlib2" version="&imlib2-version;">
+
+        <packageinfo>
+		<requires><name>xfree86</name></requires>
+                <requires><name>libjpeg</name></requires>
+
+		<utilizes><name>libtiff</name></utilizes>
+		<utilizes><name>libungif</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&imlib2-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&imlib2-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&imlib2-directory;</remove>
+	</stage>
+
+</package>
+

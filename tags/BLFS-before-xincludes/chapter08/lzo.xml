@@ -1,0 +1,31 @@
+<package name="lzo" version="&lzo-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&lzo-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&lzo-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+			<param>--enable-shared</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&lzo-directory;</remove>
+	</stage>
+
+</package>

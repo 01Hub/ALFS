@@ -1,0 +1,37 @@
+<package name="pan" version="&pan-version;">
+
+        <packageinfo>
+                <requires><name>gtk+2</name></requires>
+		<requires><name>gnet</name></requires>
+		<requires><name>intltool</name></requires>
+                <requires><name>libxml2</name></requires>
+		<utilizes><name>gtkspell</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&pan-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&pan-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&pan-directory;</remove>
+	</stage>
+</package>

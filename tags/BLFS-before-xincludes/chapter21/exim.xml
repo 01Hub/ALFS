@@ -1,0 +1,83 @@
+<package name="exim" version="&exim-version;">
+
+	<packageinfo>
+		<requires><name>db</name></requires>
+	</packageinfo>
+
+	<stage name="Unpacking.">
+		<unpack>
+			<archive>&packages_dir;/&exim-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<unpack>
+			<archive>&packages_dir;/&blfs-bootscripts-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Creating user and group">
+		<execute command="groupadd">
+			<param>-f</param>
+			<param>exim</param>
+		</execute>
+
+		<execute command="grep -q ^exim /etc/passwd || useradd">
+		        <param>-c exim</param>
+			<param>-d /dev/null</param>
+			<param>-g exim</param>
+			<param>-s /bin/false</param>
+			<param>exim</param>
+		</execute>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&exim-directory;</base>
+		</stageinfo>
+
+		<execute command="sed -e 's/^BIN_DIR.*$/BIN_DIRECTORY=\/usr\/sbin/' src/EDITME | \
+  			sed -e 's/^CONF.*$/CONFIGURE_FILE=\/etc\/exim.conf/' | \
+ 			sed -e 's/^EXIM_USER.*$/EXIM_USER=exim/' | \
+  			sed -e 's/^EXIM_MONITOR/#EXIM_MONITOR/' &gt; Local/Makefile" />
+		
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<copy>
+			<source>doc/exim.8</source>
+			<destination>/usr/share/man/man8</destination>
+		</copy>
+		
+		<link>
+			<option>force</option>
+			<target>exim-4.24-1</target>
+			<name>/usr/sbin/exim</name>
+		</link>
+
+		<link>
+			<option>force</option>
+			<target>exim</target>
+			<name>/usr/sbin/sendmail</name>
+		</link>
+
+	</stage>
+
+	<stage name="Installing bootscript and configuration">
+		<stageinfo>
+			<base>&build_dir;/&blfs-bootscripts-directory;</base>
+		</stageinfo>
+
+		<make>
+			<param>install-exim</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup.">
+		<remove>&build_dir;/&exim-directory;</remove>
+	</stage>
+</package>
+

@@ -1,0 +1,38 @@
+<package name="libbonoboui" version="&libbonoboui-version;">
+
+        <packageinfo>
+                <requires><name>libgnome</name></requires>
+                <requires><name>libgnomecanvas</name></requires>
+		<utilizes><name>gtk-doc</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&libbonoboui-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&libbonoboui-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+		</configure>
+
+		<make/>
+
+		<make>
+			<param>install</param>
+		</make>
+
+		&ldconfig;
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&libbonoboui-directory;</remove>
+	</stage>
+
+</package>

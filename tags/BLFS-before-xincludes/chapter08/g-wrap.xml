@@ -1,0 +1,35 @@
+<package name="g-wrap" version="&g-wrap-version;">
+
+        <packageinfo>
+                <requires><name>guile</name></requires>
+                <requires><name>slib</name></requires>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&g-wrap-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&g-wrap-directory;</base>
+		</stageinfo>
+
+		<configure>
+			<param>--prefix=/usr</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&g-wrap-directory;</remove>
+	</stage>
+
+</package>

@@ -1,0 +1,39 @@
+<package name="kdetoys" version="&kdetoys-version;">
+
+        <packageinfo>
+                <requires><name>kdebase</name></requires>
+		<utilizes><name>libxml2</name></utilizes>
+		<utilizes><name>libtiff</name></utilizes>
+        </packageinfo>
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&kdetoys-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&kdetoys-directory;</base>
+		</stageinfo>
+
+		<configure>
+                        <param>--prefix=&kde-prefix;</param>
+                        <param>--disable-debug</param>
+                        <param>--disable-dependency-tracking</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&kdetoys-directory;</remove>
+	</stage>
+
+</package>
