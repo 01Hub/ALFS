@@ -60,7 +60,6 @@
       <source>&dejagnu-package;</source>
       <source>&diffutils-package;</source>
       <source>&e2fsprogs-package;</source>
-      <source>&ed-package;</source>
       <source>&ed-mkstemp-patch;</source>
       <source>&expect-package;</source>
       <source>&expect-spawn-patch;</source>
@@ -106,7 +105,6 @@
       <source>&patch-package;</source>
       <source>&perl-package;</source>
       <source>&perl-libc-1-patch;</source>
-      <source>&procinfo-package;</source>
       <source>&procps-package;</source>
       <source>&psmisc-package;</source>
       <source>&sed-package;</source>
