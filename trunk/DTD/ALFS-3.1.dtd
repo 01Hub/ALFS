@@ -57,7 +57,7 @@
 
 <!ELEMENT environment    (variable+)>
 <!ATTLIST environment
-          mode           ((append | prepend)?)>
+          mode           (append | prepend) #IMPLIED>
 
 <!ELEMENT execute        ((param | prefix)*)>
 <!ATTLIST execute
