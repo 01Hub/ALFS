@@ -9,7 +9,10 @@ alfs-srs:
 	xsltproc --xinclude --nonet --stringparam html.stylesheet srs.css \
 	  -o $(BASEDIR)/$(HTML_OUTPUT) nochunks.xsl index.xml
 	cp srs.css $(BASEDIR)
+	for filename in `find $(BASEDIR) -name "*.html"`; do \
+	  tidy -config tidy.conf $$filename; \
+	  true; \
+	done;
 
 validate:
 	xmllint --noout --nonet --xinclude --postvalid index.xml
-
