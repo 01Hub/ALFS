@@ -2,9 +2,14 @@
 
         <packageinfo>
                 <requires><name>qt</name></requires>
+		<requires><name>glib2</name></requires>
+		<utilizes><name>libogg</name></utilizes>
+		<utilizes><name>libvorbis</name></utilizes>
 		<utilizes><name>alsa</name></utilizes>
 		<utilizes><name>audiofile</name></utilizes>
-		<utilizes><name>libvorbis</name></utilizes>
+		<utilizes><name>pkgconfig</name></utilizes>
+		<utilizes><name>libmad</name></utilizes>
+		<utilizes><name>esound</name></utilizes>		
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -20,7 +25,7 @@
 		</stageinfo>
 
 		<configure>
-		        <param>--prefix=/opt/kde-&kde-version;</param>
+		        <param>--prefix=&kde-prefix;</param>
 			<param>--disable-debug</param>
 			<param>--disable-dependency-tracking</param>
 		</configure>
@@ -30,23 +35,6 @@
 		<make>
 			<param>install</param>
 		</make>
-
-		<link>
-		        <option>force</option>
-			<target>/opt/kde-&kde-version;</target>
-			<name>/opt/kde</name>
-		</link>
-
-		<textdump mode="append">
-		        <file>/etc/ld.so.conf</file>
-			<content>
-			        =# Begin kde addition to /etc/ld.so.conf
-			        =
-			        =/opt/kde/lib
-			        =
-			        =# End kde addition
-			</content>
-		</textdump>
 
 		<execute command="/sbin/ldconfig" />
 

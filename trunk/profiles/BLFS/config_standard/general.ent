@@ -46,8 +46,9 @@
 <!ENTITY hostname  "vassilidzuba.net1.nerim.net">
 <!ENTITY domain "your.domain">
 
-<!-- where to put gnome -->
-<!ENTITY gnome-prefix "/opt/gnome-2.4">
-
 <!-- initial root password for mysql -->
 <!ENTITY mysql-password "alpha">
+
+
+<!ENTITY ldconfig "<execute command='/sbin/ldconfig' />">
+

@@ -2,6 +2,8 @@
 
         <packageinfo>
                 <requires><name>kdebase</name></requires>
+		<utilizes><name>libxml2</name></utilizes>
+		<utilizes><name>libtiff</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -17,7 +19,7 @@
 		</stageinfo>
 
 		<configure>
-                        <param>--prefix=/opt/kde-&kde-version;</param>
+                        <param>--prefix=&kde-prefix;</param>
                         <param>--disable-debug</param>
                         <param>--disable-dependency-tracking</param>
 		</configure>

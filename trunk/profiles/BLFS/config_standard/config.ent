@@ -16,3 +16,9 @@
 <!-- These two entities should be set to appropriate values to start and stop dhcpcd -->
 <!ENTITY dhcpcd-start-params "">
 <!ENTITY dhcpcd-stop-params "">
+
+<!-- where to put kde -->
+<!ENTITY kde-prefix "/usr">
+
+<!-- where to put gnome -->
+<!ENTITY gnome-prefix "/usr">
