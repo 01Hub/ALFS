@@ -36,15 +36,15 @@ static void t_userinput (xmlNodePtr node, void *data)
 static void t_xref (xmlNodePtr node, void *data)
 {
 	char *role = xmlGetProp(node, "role");
+	dep *d;
 	dtype *type = (dtype *)data;
-	package *pkg = cur_pkg(prof);
 
 	if ((role) && (!strcmp(role, "no")))
 		return;
 
-	pkg->dep = realloc(pkg->dep, (++pkg->o)*sizeof(dep));
-	pkg->dep[pkg->o-1].name = xmlGetProp(node, "linkend");
-	pkg->dep[pkg->o-1].type = *type;
+	d = dep_append(prof);
+	d->name = xmlGetProp(node, "linkend");
+	d->type = *type;
 }
 
 static void t_sect4 (xmlNodePtr node, void *data)
@@ -76,7 +76,7 @@ static void t_sect3 (xmlNodePtr node, void *data)
 
 static void t_add (xmlNodePtr node, void *data)
 {
-	download *moo = next_dl(prof);
+	download *moo = last_dl(prof);
 
 	moo->url = find_attr(node->children, "ulink", "url");
 	moo->proto = check_proto(moo->url);
@@ -84,31 +84,34 @@ static void t_add (xmlNodePtr node, void *data)
 
 static void t_url (xmlNodePtr node, void *data)
 {
-	int n, i;
 	bool isdl = false;
-	char **moo = tokenize(lower_case(xmlNodeGetContent(node)), " ", &n);
+	GList *list = tokenize(lower_case(xmlNodeGetContent(node)), " ");
 	protocol proto; 
 	
-	for (i=0;i<n;i++)
+	while (list)
 	{
-		if (!strcmp(moo[i], "download"))
+		char *moo = (char *)list->data;
+		
+		if (!strcmp(moo, "download"))
 			isdl = true;
 		
-		if ((!strcmp(moo[i], "size:"))||(!strcmp(moo[i], "md5"))||
-		   (!strcmp(moo[i], "size"))||(!strcmp(moo[i], "md5sum"))||
-		   (!strcmp(moo[i], "mirrors"))||(!strcmp(moo[i], "md5sum:")))
+		if ((!strcmp(moo, "size:"))||(!strcmp(moo, "md5"))||
+		   (!strcmp(moo, "size"))||(!strcmp(moo, "md5sum"))||
+		   (!strcmp(moo, "mirrors"))||(!strcmp(moo, "md5sum:")))
 			isdl = false;
 		
-		if (moo[i][0]=='(')
+		if (moo[0]=='(')
 		{
-			char *type = strcut(moo[i], 1, strlen(moo[i])-3);
+			char *type = strcut(moo, 1, strlen(moo)-3);
 			proto = check_proto(type);
 		}
+
+		list = list->next;
 	}
 	
 	if (isdl)
 	{
-		download *moo = next_dl(prof);
+		download *moo = dl_append(prof);
 
 		moo->proto = proto;
 		moo->url = find_attr(node->children, "ulink", "url");
@@ -131,14 +134,15 @@ static void t_info (xmlNodePtr node, void *data)
 
 static void t_sect1 (xmlNodePtr node, void *data)
 {
-	package *pkg = next_pkg_title(prof, node);
+	package *pkg = pkg_append_title(node, prof);
 
 	foreach(node->children, "sect3", (xml_handler_t)t_info, NULL);
 	foreach(node->children, "sect3", (xml_handler_t)t_sect3, data);
 
-	if (pkg->m>0)
+	if (g_list_length(pkg->dl)>0)
 	{
-		char *url = pkg->dl[0].url, *tball = basename(url);
+		char *url = ((download *)g_list_first_data(pkg->dl))->url, 
+			*tball = basename(url);
 		int i;
 		
 		parse_unpck(prof, url, node);
@@ -156,15 +160,16 @@ static void t_sect1 (xmlNodePtr node, void *data)
 	
 	foreach(node->children, "userinput", (xml_handler_t)t_userinput, data);
 	
-	if (!pkg->n)
-		prof->ch[prof->n-1].n--;
+	if (!g_list_length(pkg->build))
+		last_chpt(prof)->pkg = g_list_remove(last_chpt(prof)->pkg, pkg);
 }
 
 static void t_chapter (xmlNodePtr node, void *data)
 {
-	chapter *ch = next_chpt(prof);
+	chapter *ch = chpt_append(prof);
 	ch->name = find_value(node->children, "title");
 	ch->ref = xmlGetProp(node, "id");
+	
 	foreach(node->children, "sect1", (xml_handler_t)t_sect1, data);
 }
 
@@ -183,11 +188,12 @@ profile *parse_blfs (xmlNodePtr node, replaceable *r)
 		return NULL;
 	}
 
-	prof = new_prof();
+	prof = prof_alloc();
 	prof->name = find_value(info->children, "title");
 	prof->vers = find_value(info->children, "subtitle");
 	prof->vers = strstr(prof->vers, " ");
 	prof->vers++;
+	
 	foreach(node->children, "part", (xml_handler_t)t_part, r);
 	return prof;
 }

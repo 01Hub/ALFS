@@ -45,7 +45,7 @@ static void t_dl (xmlNodePtr node, void *data)
 
 static void t_item (xmlNodePtr node, void *data)
 {
-	download *dl = next_dl(prof);
+	download *dl = dl_append(prof);
 
 	dl->algo = ALGO_SHA1;
 	dl->sum = xmlGetProp(node, "sha");
@@ -73,7 +73,7 @@ static void t_dir (xmlNodePtr node, void *data)
 static void t_pkg (xmlNodePtr node, void *data)
 {
 	char *tmp = find_value(node->children, "title");
-	package *pkg = next_pkg(prof);
+	package *pkg = pkg_append(prof);
 
 	pkg->name = strcut(tmp, 0, whereis(tmp, ' '));
 	pkg->vers = find_value(node, "version");
@@ -82,13 +82,13 @@ static void t_pkg (xmlNodePtr node, void *data)
 	foreach(node->children, "directory", (xml_handler_t)t_dir, NULL);
 	foreach(node->children, "shell", (xml_handler_t)t_shell, NULL);
 
-	if (!pkg->n)
-		prof->ch[prof->n-1].n--;
+	if (!g_list_length(pkg->build))
+		last_chpt(prof)->pkg = g_list_remove(last_chpt(prof)->pkg, pkg);
 }
 
 static void t_section (xmlNodePtr node)
 {	
-	chapter *ch = next_chpt(prof);
+	chapter *ch = chpt_append(prof);
 	ch->name = xmlGetProp(node, "title");
 	ch->ref = ch->name;
 	foreach(node->children, "page", (xml_handler_t)t_pkg, NULL);
@@ -104,7 +104,7 @@ profile *syn_profile (xmlNodePtr node, replaceable *r)
 		return NULL;
 	}
 
-	prof = new_prof();
+	prof = prof_alloc();
 	prof->name = find_value(node, "title");
 	prof->vers = find_value(node, "version");
 	foreach(node->children, "section", (xml_handler_t)t_section, NULL);

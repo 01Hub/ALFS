@@ -3,6 +3,11 @@
 
 #include <alfs.h>
 
+typedef struct 
+{
+	char *name, **filter, **p1, **p2;
+} sed_arg;
+
 extern replaceable *r;
 
 int build_pkg (package pkg);

@@ -33,18 +33,20 @@ static void t_userinput (xmlNodePtr node, void *data)
 
 static void t_sect1 (xmlNodePtr node, void *data)
 {
-	package *pkg = next_pkg_title(prof, node);
+	package *pkg = pkg_append_title(node, prof);
+
 	foreach(node->children, "userinput", (xml_handler_t)t_userinput, NULL);
 
-	if (!pkg->n)
-		prof->ch[prof->n-1].n--;
+	if (!g_list_length(pkg->build))
+		last_chpt(prof)->pkg = g_list_remove(last_chpt(prof)->pkg, pkg);
 }
 
 static void t_chapter (xmlNodePtr node, void *data)
 {
-	chapter *ch = next_chpt(prof);
+	chapter *ch = chpt_append(prof);
 	ch->name = xmlGetProp(node, "xreflabel");
 	ch->ref = xmlGetProp(node, "id");
+
 	foreach(node->children, is_rng ? "section" : "sect1", 
 		(xml_handler_t)t_sect1, NULL);
 }
@@ -94,7 +96,7 @@ profile *bookasprofile (xmlNodePtr node, replaceable *_r)
 	remove_nodes(node, (xml_opt_t)handle_arch, _r);
 
 	r = _r;
-	prof = new_prof();
+	prof = prof_alloc();
 	prof->name = find_value(info, "title");
 	prof->vers = find_value(info, "subtitle");
 	prof->vers = strcut(prof->vers, strlen("Version"), strlen(prof->vers));

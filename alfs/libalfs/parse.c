@@ -3,127 +3,69 @@
 
 #include <parse.h>
 
-package *cur_pkg (profile *prof)
+profile *prof_alloc ()
 {
-	int i, j;
-
-	i = prof->n-1;
-	j = prof->ch[i].n-1;
-
-	return &prof->ch[i].pkg[j];
+	profile *p = (profile *)malloc(sizeof(profile));
+	p->name = NULL;
+	p->vers = NULL;
+	p->ch = NULL;
+	return p;
 }
 
-dep *cur_dep (profile *prof)
+void prof_free (profile *p)
 {
-	package *pkg = cur_pkg(prof);
-	return &pkg->dep[pkg->o-1];
+	g_list_free(p->ch);
+}
+
+chapter *chpt_alloc ()
+{
+	chapter *c = (chapter *)malloc(sizeof(chapter));
+	c->name = NULL;
+	c->ref = NULL;
+	c->pkg = NULL;
+	return c;
+}
+
+chapter *chpt_append (profile *prof)
+{
+	chapter *c = chpt_alloc();
+	prof->ch = g_list_append(prof->ch, c);
+	return c;
+}
+
+void chpt_free (chapter *c)
+{
+	g_list_free(c->pkg);
+}
+
+chapter *last_chpt (profile *prof)
+{
+	return (chapter *)g_list_last_data(prof->ch);
 }	
 
-chapter *next_chpt (profile *prof)
+package *pkg_alloc ()
 {
-	chapter *ch;
-
-	prof->ch = realloc(prof->ch, (++prof->n)*sizeof(chapter));
-	ch = &prof->ch[prof->n-1];
-	
-	ch->name = NULL;
-	ch->ref = NULL;
-	ch->pkg = NULL;
-	ch->n = 0;
-	
-	return ch;
+	package *p = (package *)malloc(sizeof(package));
+	p->name = NULL;
+	p->vers = NULL;
+	p->build = NULL;
+	p->dl = NULL;
+	p->dep = NULL;
+	return p;
 }
 
-command *next_cmd (profile *prof)
+package *pkg_append (profile *prof)
 {
-	command *cmd;
-	int i, j, k;
-
-	i = prof->n-1;
-	j = prof->ch[i].n-1;
-	prof->ch[i].pkg[j].build = realloc(prof->ch[i].pkg[j].build,
-			(++prof->ch[i].pkg[j].n)*sizeof(command));
-	k = prof->ch[i].pkg[j].n-1;
-
-	cmd = &prof->ch[i].pkg[j].build[k];
-	cmd->cmd = NULL;
-	cmd->arg = NULL;
-	cmd->n = 0;
-	cmd->role = ROLE_NONE;
-
-	return cmd;
+	package *p = pkg_alloc();
+	last_chpt(prof)->pkg = g_list_append(last_chpt(prof)->pkg, p);
+	return p;
 }
 
-// TODO: Crashes when used in syntax/blfs.c, need to investigate further
-dep *next_dep (profile *prof)
-{
-	dep *dep;
-	int i, j, k;
-	
-	i = prof->n-1;
-	j = prof->ch[i].n-1;
-
-	printf("%s\n", cur_pkg(prof)->name);
-
-	prof->ch[i].pkg[j].dep = realloc(prof->ch[i].pkg[j].dep,
-			(++prof->ch[i].pkg[j].o)*sizeof(dep));
-	k = prof->ch[i].pkg[j].o-1;
-	
-	dep = &prof->ch[i].pkg[j].dep[k];
-	dep->type = DEP_NONE;
-	dep->name = NULL;
-
-	return dep;
-}
-
-download *next_dl (profile *prof)
-{
-	download *dl;
-	int i, j, k;
-	
-	i = prof->n-1;
-	j = prof->ch[i].n-1;
-	prof->ch[i].pkg[j].dl = realloc(prof->ch[i].pkg[j].dl,
-		(++prof->ch[i].pkg[j].m)*sizeof(download));
-	k = prof->ch[i].pkg[j].m-1;
-	
-	dl = &prof->ch[i].pkg[j].dl[k];
-	dl->algo = ALGO_NONE;
-	dl->sum = NULL;
-	dl->proto = PROTO_NONE;
-	dl->url = NULL;
-	
-	return dl;
-}
-
-package *next_pkg (profile *prof)
-{
-	package *pkg;
-	int i, j;
-	
-	i = prof->n-1;
-	prof->ch[i].pkg = realloc(prof->ch[i].pkg, 
-			(++prof->ch[i].n)*sizeof(package));
-	j = prof->ch[i].n-1;
-	
-	pkg = &prof->ch[i].pkg[j];
-	pkg->name = NULL;
-	pkg->vers = NULL;
-	pkg->build = NULL;
-	pkg->n = 0;
-	pkg->dl = NULL;
-	pkg->m = 0;
-	pkg->dep = NULL;
-	pkg->o = 0;
-
-	return pkg;
-}
-
-package *next_pkg_title (profile *prof, xmlNodePtr node)
+package *pkg_alloc_title (xmlNodePtr node)
 {
 	char *title = find_value(node->children, "title"), 
-		*tmp = strrchr(title, '-');
-	package *pkg = next_pkg(prof);
+			*tmp = strrchr(title, '-');
+	package *pkg = pkg_alloc();
 
 	if (tmp)
 	{
@@ -135,32 +77,112 @@ package *next_pkg_title (profile *prof, xmlNodePtr node)
 	
 	pkg->name = tmp ? strcut(title, 0, strlen(title)-strlen(tmp)) : title;
 	pkg->vers = tmp ? strcut(tmp, 1, strlen(tmp)) : NULL;
-
+	
 	return pkg;
 }
 
-profile *new_prof ()
+package *pkg_append_title (xmlNodePtr node, profile *prof)
 {
-	profile *prof = (profile *)malloc(sizeof(profile));
-	
-	prof->name = NULL;
-	prof->vers = NULL;
-	prof->ch = NULL;
-	prof->n = 0;
+	package *p = pkg_alloc_title(node);
+	last_chpt(prof)->pkg = g_list_append(last_chpt(prof)->pkg, p);
+	return p;
+}
 
-	return prof;
+void pkg_free (package *p)
+{
+	g_list_free(p->build);
+	g_list_free(p->dl);
+	g_list_free(p->dep);
+}
+
+package *last_pkg (profile *prof)
+{
+	chapter *c = last_chpt(prof);
+	return (package *)g_list_last_data(c->pkg);
+}
+
+command *cmd_alloc ()
+{
+	command *c = (command *)malloc(sizeof(command));
+	c->cmd = NULL;
+	c->role = ROLE_NONE;
+	c->arg = NULL;
+	return c;
+}
+
+command *last_cmd (profile *prof)
+{
+	package *p = last_pkg(prof);
+	return (command *)g_list_last_data(p->build);
+}
+
+void cmd_free (command *cmd)
+{
+	g_list_free(cmd->arg);
+}
+
+dep *dep_alloc ()
+{
+	dep *d = (dep *)malloc(sizeof(dep));
+
+	d->name = NULL;
+	d->type = DEP_NONE;
+
+	return d;
+}
+
+dep *dep_append (profile *prof)
+{
+	dep *d = dep_alloc();
+	last_pkg(prof)->dep = g_list_append(last_pkg(prof)->dep, d);
+	return d;
+}
+
+void dep_free (dep *d)
+{
+}
+
+download *dl_alloc ()
+{
+	download *d = (download *)malloc(sizeof(download));
+
+	d->algo = ALGO_NONE;
+	d->proto = PROTO_NONE;
+	d->url = NULL;
+	d->sum = NULL;
+
+	return d;
+}
+
+download *dl_append (profile *prof)
+{
+	download *dl = dl_alloc();
+	last_pkg(prof)->dl = g_list_append(last_pkg(prof)->dl, dl);
+	return dl;
+}
+
+void dl_free (download *dl)
+{
+}
+
+download *last_dl (profile *prof)
+{
+	package *p = last_pkg(prof);
+	return (download *)g_list_last_data(p->dl);
 }
 
 void parse_cmd (profile *prof, char *line, xmlNodePtr node)
 {
-	command *cmd = next_cmd(prof);
+	command *cmd = cmd_alloc(prof);
+	last_pkg(prof)->build = g_list_append(last_pkg(prof)->build, cmd);
+
 	if (node)
 		cmd->role = parse_role(node);
 
 	if (strcnt(line, " "))
 	{
 		cmd->cmd = strcut(line, 0, whereis(line, ' '));
-		cmd->arg = tokenize(notrail(strstr(line, " "), " "), " ", &cmd->n);
+		cmd->arg = tokenize(notrail(strstr(line, " "), " "), " ");
 	}
 	else
 		cmd->cmd = line;
@@ -188,7 +210,7 @@ static void __parse_cmdblock (profile *prof, xmlNodePtr node, char *str)
 				if (!t)
 				{
 					fprintf(stderr, "Unterminated cat command in %s.\n",
-						cur_pkg(prof)->name);
+						last_pkg(prof)->name);
 					parse_cmd(prof, line, node);
 				}
 				else

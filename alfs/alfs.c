@@ -10,22 +10,34 @@
 #include <plugin.h>
 #include <url.h>
 
+plug_info *parsers = NULL, *writers = NULL;
+xmlDocPtr doc = NULL;
+
+static void cleanup ()
+{
+	if (parsers)
+		plugunload(parsers);
+	if (writers)
+		plugunload(writers);
+	if (doc)
+		xmlFreeDoc(doc);
+}	
+
 int main (int argc, char **argv)
 {
 	char c, *syn = DEF_SYN, *moo_xml = MOO_XML, *plug_dir = PLUG_DIR, *f;
 	char *out = NULL, *arch = NULL;
 	bool quiet = false, build = false;
-	int i = 0, ret = 0;
-	xmlDocPtr doc = NULL;
+	int i = 0;
 	xmlNodePtr cur;
-	plug_info *parsers, *writers;
 	profile *prof = NULL;
+	
+	atexit(cleanup);
 	
 	if (argc<2)
 	{
 		fprintf(stderr, "No book to parse.\n");
-		ret=1;
-		goto cleanup;
+		return 1;
 	}
 
 	if (getenv("NALFS_PLUGIN_DIR"))
@@ -36,8 +48,7 @@ int main (int argc, char **argv)
 	if (!parsers)
 	{
 		fprintf(stderr, "No syntax plugins found.\n");
-		ret=2;
-		goto cleanup;
+		return 2;
 	}
 
 	while ((c = getopt(argc, argv, "s:qVhc:bCo:a:")) != EOF)
@@ -49,7 +60,7 @@ int main (int argc, char **argv)
 				{
 					printf("Available input syntaxes:\n");
 					print_plugs(parsers, DEF_SYN);
-					goto cleanup;
+					return 0;
 				}
 				syn = (char *)malloc(strlen(optarg)+1);
 				strcpy(syn, optarg);
@@ -59,7 +70,7 @@ int main (int argc, char **argv)
 				break;
 			case 'V':
 				printf("%s %s\nWritten by Boris Buegling\n", NAME, VERSION);
-				goto cleanup;
+				return 0;
 			case 'h':
 				printf("%s [OPTIONS] BOOK\n", NAME);
 				printf("\t-b\t\tBuild\n");
@@ -71,7 +82,7 @@ int main (int argc, char **argv)
 				printf("\t-o SYNTAX\tOutput the input in another"
 					"syntax (help shows them)\n");
 				printf("\t-V\t\tVersion information\n");
-				goto cleanup;
+				return 0;
 			case 'c':
 				moo_xml = (char *)malloc(strlen(optarg)+1);
 				strcpy(moo_xml, optarg);
@@ -88,7 +99,7 @@ int main (int argc, char **argv)
 				{
 					printf("Available output syntaxes:\n");
 					print_plugs(writers, NULL);
-					goto cleanup;
+					return 0;
 				}
 				out = (char *)malloc(strlen(optarg)+1);
 				strcpy(out, optarg);
@@ -97,16 +108,16 @@ int main (int argc, char **argv)
 				arch = (char *)malloc(strlen(optarg)+1);
 				strcpy(arch, optarg);
 				break;
+			case ':':
+			case '?':
+				return 1;
 		}
 	}
 
 	xmlSubstituteEntitiesDefault(1);
 	doc = xmlParseFile(argv[argc-1]);
 	if (!doc)
-	{
-		ret=2;
-		goto cleanup;
-	}
+		return 2;
 	xmlXIncludeProcessFlags(doc, XML_PARSE_NOENT);
 	cur = xmlDocGetRootElement(doc);
 
@@ -133,13 +144,12 @@ int main (int argc, char **argv)
 		i++;
 	}
 
-	printf("Moo: %s\n", get_option(r, "arch"));
+	//printf("Moo: %s\n", get_option(r, "arch"));
 
 	if (!prof)
 	{
 		fprintf(stderr, "Document was not parsed correctly.\n");
-		ret=1;
-		goto cleanup;
+		return 1;
 	}
 
 	if (out)
@@ -147,8 +157,7 @@ int main (int argc, char **argv)
 		if (!writers)
 		{
 			fprintf(stderr, "No output plugins available.\n");
-			ret=2;
-			goto cleanup;
+			return 2;
 		}
 		
 		i=0;
@@ -159,11 +168,11 @@ int main (int argc, char **argv)
 			i++;
 		}
 		
-		goto cleanup;
+		return 0;
 	}
 	
-	if (build)
-		build_pkg(prof->ch[0].pkg[0]);
+	/*if (build)
+		build_pkg(first_pkg(prof));*/
 
 	if (!quiet)
 	{
@@ -193,13 +202,5 @@ int main (int argc, char **argv)
 	// Package URLs
 	//find_urls(PKG_XML, prof);
 
-
-cleanup:
-	if (parsers)
-		plugunload(parsers);
-	if (writers)
-		plugunload(writers);
-	if (doc)
-		xmlFreeDoc(doc);
-	return ret;
+	return 0;
 }

@@ -5,6 +5,7 @@
 #include <sys/types.h>
 
 #include <nc_digest.h>
+#include <nc_glib.h>
 #include <nc_net.h>
 #include <nc_util.h>
 #include <nc_xml.h>
@@ -36,8 +37,8 @@ typedef struct
 
 typedef struct
 {
-	char *cmd, **arg;
-	int n;
+	char *cmd;
+	GList *arg;
 	role role;
 } command;
 
@@ -50,26 +51,21 @@ typedef struct
 typedef struct
 {
 	char *name, *vers;
-	command *build;
-	int n;
-	download *dl;
-	int m;
-	dep *dep;
-	int o;
+	GList *build;
+	GList *dl;
+	GList *dep;
 } package;
 
 typedef struct
 {
 	char *name, *ref;
-	package *pkg;
-	int n;
+	GList *pkg;
 } chapter;
 
 typedef struct
 {
 	char *name, *vers;
-	chapter *ch;
-	int n;
+	GList *ch;
 } profile;
 
 typedef struct
@@ -79,15 +75,15 @@ typedef struct
 
 extern bool colors;
 
-void print_subtree (xmlNodePtr node);
-void print_pkg (package pkg);
+typedef void (*pkg_func) (package *p);
+
+void print_links (profile prof);
 void print_deps (package pkg);
 void print_deptree (profile prof, package pkg);
-void print_cmd (command cmd);
+void print_pkg (package pkg);
 void print_chapter (chapter ch);
 void print_profile (profile prof);
-void print_links (profile prof);
-void print_urls (package pkg);
+void print_subtree (xmlNodePtr node);
 
 void set_filter (role *role);
 void unset_filter ();
