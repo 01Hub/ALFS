@@ -46,6 +46,7 @@
 		<xi:include href="../config/keymap-ch8.xml" />
 
 		<make>
+			<prefix>yes "" |</prefix>
 			<param>oldconfig</param>
 		</make>
 
