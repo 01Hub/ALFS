@@ -187,8 +187,8 @@ static int validate_number_minmax(const struct option_s *option,
 
 	if (!valid)
 		fprintf(stderr,
-			"Option %s outside valid range, must be between"
-			" %d and %d\n", option->name,
+			"Option \"%s\" outside valid range, must be between"
+			" %d and %d.\n", option->name,
 			option->val.num.min_value,
 			option->val.num.max_value);
 
@@ -207,16 +207,16 @@ static int validate_command(const struct option_s *option, const STRING value)
 				break;
 			case 's':
 				if (string_count++) {
-					fprintf(stderr, "Option %s contains"
+					fprintf(stderr, "Option \"%s\" contains"
 						" more than one string"
-						" substitution\n",
+						" substitution.\n",
 						option->name);
 					return 0;
 				}
 				break;
 			default:
-				fprintf(stderr, "Option %s contains an"
-					" invalid substitution specifier\n",
+				fprintf(stderr, "Option \"%s\" contains an"
+					" invalid substitution specifier.\n",
 					option->name);
 				return 0;
 			}
@@ -224,6 +224,52 @@ static int validate_command(const struct option_s *option, const STRING value)
 	}
 
 	return 1;
+}
+
+static int convert_to_boolean(const char *input, BOOL *val)
+{
+	char *p;
+	int status = 1;
+	char *tmp = xstrdup(input);
+
+	p = tmp;
+	while (*p) {
+		*p = tolower(*p);
+		++p;
+	}
+
+	if (!strcmp(tmp, "yes"))
+		*val = 1;
+	else if (!strcmp(tmp, "y"))
+		*val = 1;
+	else if (!strcmp(tmp, "true"))
+		*val = 1;
+	else if (!strcmp(tmp, "no"))
+		*val = 0;
+	else if (!strcmp(tmp, "n"))
+		*val = 0;
+	else if (!strcmp(tmp, "false"))
+		*val = 0;
+	else
+		status = 0;
+
+	xfree(tmp);
+	return status;
+}
+
+static int validate_boolean_input(const struct option_s *option,
+				  const char *input)
+{
+	BOOL val;
+
+	if (!convert_to_boolean(input, &val)) {
+		fprintf(stderr, "Option \"%s\" does not contain a valid"
+			" boolean value,\nchoices are yes/y/true and"
+			" no/n/false.\n", option->name);
+		return 0;
+	}
+	else
+		return 1;
 }
 
 set_opt_e set_yet_unknown_option(const char *opt, const char *val)
@@ -240,12 +286,9 @@ set_opt_e set_yet_unknown_option(const char *opt, const char *val)
 
 		switch (options[i]->type) {
 		case O_BOOL:
-			if (strcmp(val, BOOL_TRUE_VALUE) == 0) {
-				options[i]->val.bool.value = 1;
-				return OPTION_SET;
-				
-			} else if (strcmp(val, BOOL_FALSE_VALUE) == 0) {
-				options[i]->val.bool.value = 0;
+			if (validate_boolean_input(options[i], val)) {
+				convert_to_boolean(val,
+						   &options[i]->val.bool.value);
 				return OPTION_SET;
 			}
 			

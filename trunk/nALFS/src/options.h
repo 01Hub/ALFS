@@ -178,9 +178,6 @@ char *alloc_real_stamp_directory_name(void);
  * Setting option from RC file parser.
  */
 
-#define BOOL_TRUE_VALUE "yes"
-#define BOOL_FALSE_VALUE "no"
-
 typedef enum set_opt_e {
 	OPTION_SET,
 	OPTION_UNKNOWN,
