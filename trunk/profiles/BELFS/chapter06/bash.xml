@@ -8,7 +8,6 @@
 
 		<copy>
 			<source>&packages_dir;/&bash-patch;</source>
-			<source>&packages_dir;/&bash-gcc34-patch;</source>
 			<destination>&build_dir;</destination>
 		</copy>
 	</stage>
@@ -22,12 +21,6 @@
 			<param>-N</param>
 			<param>-p1</param>
 			<param>-i ../&bash-patch;</param>
-		</patch>
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&bash-gcc34-patch;</param>
 		</patch>
 
 		<configure>
@@ -50,6 +43,5 @@
 	<stage name="Cleanup">
 		<remove>&build_dir;/&bash-directory;</remove>
 		<remove>&build_dir;/&bash-patch;</remove>
-		<remove>&build_dir;/&bash-gcc34-patch;</remove>
 	</stage>
 </package>

@@ -50,7 +50,6 @@
       <source>&automake-package;</source>
       <source>&bash-package;</source>
       <source>&bash-patch;</source>
-      <source>&bash-gcc34-patch;</source>
       <source>&binutils-package;</source>
       <source>&bison-package;</source>
       <source>&bzip2-package;</source>
@@ -60,7 +59,6 @@
       <source>&dejagnu-package;</source>
       <source>&diffutils-package;</source>
       <source>&e2fsprogs-package;</source>
-      <source>&ed-mkstemp-patch;</source>
       <source>&expect-package;</source>
       <source>&expect-spawn-patch;</source>
       <source>&file-package;</source>
