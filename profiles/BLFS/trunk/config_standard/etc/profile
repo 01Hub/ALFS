@@ -37,7 +37,12 @@ pathappend () {
         export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
 }
  
+
+# Set the initial path
+export PATH=/bin:/usr/bin
+
 if [ $EUID -eq 0 ] ; then
+        pathappend /sbin:/usr/sbin
         unset HISTFILE
 fi
  
@@ -48,7 +53,7 @@ export HISTIGNORE="&:[bf]g:exit"
 export PS1='\u@\h:\w\$ '
  
 for script in /etc/profile.d/*.sh ; do
-        if [ -x $script ] ; then
+        if [ -r $script ] ; then
                 . $script
         fi
 done
