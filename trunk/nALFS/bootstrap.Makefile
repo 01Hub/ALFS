@@ -25,8 +25,9 @@ if STATIC_BUILD
 endif
 
 AM_CPPFLAGS = -I$(srcdir)/src/include -I$(srcdir)/src
+AM_CFLAGS = -W -Wall -Wshadow -Winline
 if MAINTAINER_MODE
-AM_CFLAGS = -W -Wall -Wshadow -Winline -Wundef -Wnested-externs
+AM_CFLAGS += -Wundef -Wnested-externs
 AM_CFLAGS += -Wredundant-decls -Wcast-align -Wstrict-prototypes
 AM_CFLAGS += -Wmissing-prototypes -Wmissing-declarations -Wbad-function-cast
 AM_CFLAGS += -Wpointer-arith -Waggregate-return -std=gnu99 -Wfloat-equal
