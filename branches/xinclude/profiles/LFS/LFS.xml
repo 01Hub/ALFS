@@ -80,6 +80,7 @@
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/perl.xml" />
 		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chapter05/strip.xml" />
 	</stage>
+
 </stage>
 
 <stage name="Chapter 6 - Installing basic system software">
@@ -235,6 +236,8 @@
 		<param>&LFS;/dev</param>
 		<param>&LFS;/proc</param>
 		<param>&LFS;/sys</param>
+		<!-- If you used a bind mount for your package dir, unmount it here. -->
+		<!-- <param>&LFS;&packages_dir;</param> -->
 	</execute>
 </stage>
 
