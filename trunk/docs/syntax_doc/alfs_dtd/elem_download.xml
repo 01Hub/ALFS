@@ -57,8 +57,8 @@ download is performed but the digest is checked if present.</para>
 <title>Examples</title>
 
 <screen><userinput>&lt;download&gt;
-	&lt;file&gt;libxml2-2.6.9.tar.gz&lt;/file&gt;
-	&lt;url&gt;ftp://xmlsoft.org/&lt;/url&gt;
+	&lt;file&gt;gzip-1.2.4a.tar.gz&lt;/file&gt;
+	&lt;url&gt;ftp://gnu.org/&lt;/url&gt;
 	&lt;destination&gt;/tmp/&lt;/destination&gt;
 	&lt;digest&gt;924e6a05e52715dc0f96385b35f2f680&lt;/digest&gt;
 &lt;/download&gt;</userinput></screen>
@@ -66,7 +66,7 @@ download is performed but the digest is checked if present.</para>
 <para>The equivalent bash script is&nbsp;:</para>
 
 <screen><userinput>echo Executing 'download'
-<command>wget -nc -O /tmp/libxml2-2.6.9.tar.gz ftp://xmlsoft.org/libxml2-2.6.9.tar.gz</command></userinput></screen>
+<command>wget -nc -O /tmp/gzip-1.2.4a.tar.gz ftp://gnu.org/gzip-1.2.4a.tar.gz</command></userinput></screen>
 
 </sect2>
 

@@ -34,7 +34,7 @@ files and/or directories into a destination file or directory.</para>
 <para>The sub-element <filename>option</filename> provides a means to pass
 an option to the <command>mv</command> command.</para>
 
-<note><para>Not all of the <command>cp</command> options are in every
+<note><para>Not all of the <command>mv</command> options are in every
 implementation.  Refer to the documentation for your implementation to
 determine what options are available.</para></note>
 
