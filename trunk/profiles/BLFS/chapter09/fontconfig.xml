@@ -29,6 +29,11 @@
 		<make>
 			<param>install</param>
 		</make>
+
+		<execute command="sed -i -e '/^&lt;\/fontconfig&gt;/i\
+			&lt;dir&gt;/usr/X11R6/lib/X11/fonts/TTF&lt;/dir&gt;\
+			&lt;dir&gt;usr/X11R6/lib/X11/fonts/Type1&lt;/dir&gt;\
+			&lt;dir&gt;/usr/X11R6/lib/X11/fonts/truetype&lt;/dir&gt;' /etc/fonts/local.conf" />
 	</stage>
 
 	<stage name="Clean-up.">

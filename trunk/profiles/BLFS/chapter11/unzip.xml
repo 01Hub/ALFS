@@ -77,7 +77,6 @@
 		<remove>&build_dir;/&unzip-patch1;</remove>
 		<remove>&build_dir;/&unzip-patch2;</remove>
 		<remove>&build_dir;/&unzip-patch3;</remove>
-		<remove>&build_dir;/&unzip-patch4;</remove>
 	</stage>
 
 </package>

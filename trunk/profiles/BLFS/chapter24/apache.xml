@@ -5,7 +5,7 @@
 		<utilizes><name>gdbm</name></utilizes>
 		<utilizes><name>openssl</name></utilizes>
 		<utilizes><name>openldap</name></utilizes>
-		<utilizes><name>lynx</name></utilizes>
+		<utilizes><name>expat</name></utilizes>
 	</packageinfo>
 
 	<stage name="Unpacking a package.">

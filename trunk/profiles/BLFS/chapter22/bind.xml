@@ -31,7 +31,6 @@
 		<execute command="grep ^named /etc/group">
 			<param>&amp;&gt; /dev/null</param>
 			<param>|| groupadd</param>
-			<param>-g 200</param>
 			<param>named</param>
 		</execute>
 
@@ -40,7 +39,6 @@
 			<param>|| useradd</param>
 			<param>-m</param>
 			<param>-g named</param>
-		        <param>-u 200</param>
 			<param>-s /bin/false</param>
 			<param>named</param>
 		</execute>
@@ -72,6 +70,33 @@
 	</stage>
 
 	<stage name="Configuring bind">
+		<textdump>
+			<file>/home/named/etc/named.conf</file>
+			<content>
+			= options {
+			=     directory "/etc/namedb";
+			=    pid-file "/var/run/named.pid";
+			=    statistics-file "/var/run/named.stats";
+			=       
+			= };
+			= controls {
+			=     inet 127.0.0.1 allow { localhost; } keys { rndc_key; };
+			= };
+			= key "rndc_key" {
+			=     algorithm hmac-md5;
+			=     secret "[c3Ryb25nIGVub3VnaCBmb3IgYSBtYW4gYnV0IG1hZGUgZm9yIGEgd29tYW4K]";
+			= };
+			= zone "." {
+			=     type hint;
+			=     file "root.hints";
+			= };
+			= zone "0.0.127.in-addr.arpa" {
+			=     type master;
+			=     file "pz/127.0.0";
+			= };
+			</content>
+		</textdump>
+
 		<textdump>
 			<file>/home/named/etc/namedb/pz/127.0.0</file>
 			<content>

@@ -28,7 +28,6 @@
 
     <stage name="Clean-up.">
 	<remove>&build_dir;/&ash-directory;</remove>
-	<remove>&build_dir;/&ash-patch;</remove>
     </stage>
 
 </package>

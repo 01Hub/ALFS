@@ -1,7 +1,7 @@
 <package name="nail" version="&nail-version;">
 
         <packageinfo>
-	        <requires><name>openssl</name></requires>
+	        <utilizes><name>openssl</name></utilizes>
 	</packageinfo>
 
 
@@ -19,7 +19,6 @@
 
 		<configure>
 		        <param>--prefix=/usr</param>
-			<param>--with-openssl</param>
 		</configure>
 		
 		<make />

@@ -3,6 +3,7 @@
 	<packageinfo>
 		<requires><name>openssl</name></requires>
 		<utilizes><name>openldap</name></utilizes>
+		<utilizes><name>mitkrb</name></utilizes>
 	</packageinfo>
 
 	<stage name="Unpacking a package.">

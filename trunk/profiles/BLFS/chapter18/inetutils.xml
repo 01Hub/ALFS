@@ -1,7 +1,7 @@
 <package name="inetutils" version="&inetutils-version;">
 
         <packageinfo>
-                <utilizes><name>linux-pam</name></utilizes>
+                <utilizes><name>linuxpam</name></utilizes>
                 <utilizes><name>tcpwrappers</name></utilizes>
         </packageinfo>
 
