@@ -15,24 +15,16 @@
 			<archive>&packages_dir;/&avifile-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&avifile-binaries-package;</source>
-			<destination>&build_dir;</destination>
-		</copy>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<environment>
-			        <variable name="LD_LIBRARY_PATH" mode="append">:/opt/qt/lib</variable>
-			</environment>
 			<base>&build_dir;/&avifile-directory;</base>
 		</stageinfo>
 
-		<execute command="install -d /usr/lib/avifile-0.7/win32" />
+		<execute command="install -d /usr/lib/avifile-&avifile-base-version;/win32" />
 
-		<execute command="tar -xzvf ../&avifile-binaries-package; -C /usr/lib/avifile-0.7" />
+		<execute command="tar -xzvf &packages_dir;/&avifile-binaries-package; -C /usr/lib/avifile-&avifile-base-version;" />
 
 		<execute command="./autogen.sh" />
 
@@ -46,8 +38,7 @@
 
 		<configure>
 		        <param>--prefix=/usr</param>
-			<param>--with-qt-prefix=/opt/qt</param>
-			<param>--with-win32-path=/usr/lib/avifile-0.7/win32</param>
+			<param>--with-win32-path=/usr/lib/avifile-&avifile-base-version;/win32</param>
 		</configure>
 
 		<make />

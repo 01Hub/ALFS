@@ -16,14 +16,12 @@
 			<param>INS_BASE=/usr</param>
 			<param>DEFINSUSR=root</param>
 			<param>DEFINSGRP=root</param>
-			<param>COPTS="$CFLAGS"</param>
 		</make>
 		
 		<make>
 			<param>INS_BASE=/usr</param>
 			<param>DEFINSUSR=root</param>
 			<param>DEFINSGRP=root</param>
-			<param>COPTS="$CFLAGS"</param>
 			<param>install</param>
 		</make>
 		

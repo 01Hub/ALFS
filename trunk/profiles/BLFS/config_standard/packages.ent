@@ -1378,65 +1378,70 @@
 <!ENTITY libmikmod-package      "libmikmod-&libmikmod-version;.tar.gz">
 <!ENTITY libmikmod-directory    "libmikmod-&libmikmod-version;">
 
-<!--************* packages for chapter 43 *************-->
+<!--************* packages for chapter 38 *************-->
 
 <!ENTITY mpg123-version      "0.59r">
-<!ENTITY mpg123-package      "mpg123-0.59r.tar.gz">
-<!ENTITY mpg123-directory    "mpg123-0.59r">
+<!ENTITY mpg123-package      "mpg123-&mpg123-version;.tar.gz">
+<!ENTITY mpg123-directory    "mpg123-&mpg123-version;">
 
 <!ENTITY vorbis-tools-version      "1.0.1">
-<!ENTITY vorbis-tools-package      "vorbis-tools-1.0.1.tar.gz">
-<!ENTITY vorbis-tools-directory    "vorbis-tools-1.0.1">
+<!ENTITY vorbis-tools-package      "vorbis-tools-&vorbis-tools-version;.tar.gz">
+<!ENTITY vorbis-tools-directory    "vorbis-tools-&vorbis-tools-version;">
 
-<!ENTITY xmms-version      "1.2.8">
-<!ENTITY xmms-package      "xmms-1.2.8.tar.bz2">
-<!ENTITY xmms-directory    "xmms-1.2.8">
+<!ENTITY xmms-version      "1.2.10">
+<!ENTITY xmms-package      "xmms-&xmms-version;.tar.bz2">
+<!ENTITY xmms-directory    "xmms-&xmms-version;">
 
-<!ENTITY lame-version      "3.93.1">
-<!ENTITY lame-package      "lame-3.93.1.tar.gz">
-<!ENTITY lame-directory    "lame-3.93.1">
+<!ENTITY lame-version      "3.95.1">
+<!ENTITY lame-package      "lame-&lame-version;.tar.gz">
+<!ENTITY lame-directory    "lame-&lame-version;">
 
 <!ENTITY cdparanoia-version      "III-alpha9.8">
-<!ENTITY cdparanoia-package      "cdparanoia-III-alpha9.8.src.tgz">
-<!ENTITY cdparanoia-directory    "cdparanoia-III-alpha9.8">
+<!ENTITY cdparanoia-package      "cdparanoia-&cdparanoia-version;.src.tgz">
+<!ENTITY cdparanoia-directory    "cdparanoia-&cdparanoia-version;">
 
-<!--************* packages for chapter 44 *************-->
+<!--************* packages for chapter 39 *************-->
 
-<!ENTITY ffmpeg-version      "0.4.7">
-<!ENTITY ffmpeg-package      "ffmpeg-0.4.7.tar.gz">
-<!ENTITY ffmpeg-directory    "ffmpeg-0.4.7">
+<!ENTITY ffmpeg-version      "0.4.8">
+<!ENTITY ffmpeg-package      "ffmpeg-&ffmpeg-version;.tar.gz">
+<!ENTITY ffmpeg-directory    "ffmpeg-&ffmpeg-version;">
 
-<!ENTITY avifile-version      "0.7.38">
-<!ENTITY avifile-package      "avifile-0.7-0.7.38.tar.gz">
-<!ENTITY avifile-directory    "avifile-0.7-0.7.38">
+<!ENTITY avifile-base-version "0.7">
+<!ENTITY avifile-version      "&avifile-base-version;.38">
+<!ENTITY avifile-package      "avifile-&avifile-base-version;-&avifile-version;.tar.gz">
+<!ENTITY avifile-directory    "avifile-&avifile-base-version;-&avifile-version;">
 
 <!ENTITY avifile-binaries-package      "binaries-011002.tgz">
 
-<!ENTITY mplayer-version      "1.0pre1">
-<!ENTITY mplayer-package      "MPlayer-1.0pre1.tar.bz2">
-<!ENTITY mplayer-directory    "mplayer-1.0pre1">
+<!ENTITY mplayer-version      "1.0pre4">
+<!ENTITY mplayer-package      "MPlayer-&mplayer-version;.tar.bz2">
+<!ENTITY mplayer-directory    "mplayer-&mplayer-version;">
 
 <!ENTITY mplayer-codecs-package            "extralite.tar.bz2">
 <!ENTITY mplayer-arial-iso-8859-1-package  "font-arial-iso-8859-1.tar.bz2">
-<!ENTITY mplayer-skin-package              "default-1.7.tar.bz2">
+<!ENTITY mplayer-skin-package              "default-1.8.tar.bz2">
 
-<!ENTITY xine-ui-version      "0.9.21">
-<!ENTITY xine-ui-package      "xine-ui-0.9.21.tar.gz">
-<!ENTITY xine-ui-directory    "xine-ui-0.9.21">
+<!ENTITY xine-ui-version      "0.9.23">
+<!ENTITY xine-ui-package      "xine-ui-&xine-ui-version;.tar.gz">
+<!ENTITY xine-ui-directory    "xine-ui-&xine-ui-version;">
 
-<!ENTITY transcode-version      "0.6.10">
-<!ENTITY transcode-package      "transcode-0.6.10.tar.gz">
-<!ENTITY transcode-directory    "transcode-0.6.10">
+<!ENTITY transcode-version      "0.6.12">
+<!ENTITY transcode-package      "transcode-&transcode-version;.tar.bz2">
+<!ENTITY transcode-directory    "transcode-&transcode-version;">
 
-<!--************* packages for chapter 45 *************-->
+<!--************* packages for chapter 40 *************-->
 
 <!ENTITY cdrtools-version   "2.00.3">
-<!ENTITY cdrtools-package   "cdrtools-2.00.3.tar.gz">
-<!ENTITY cdrtools-directory "cdrtools-2.00.3">
+<!ENTITY cdrtools-package   "cdrtools-&cdrtools-version;.tar.gz">
+<!ENTITY cdrtools-directory "cdrtools-&cdrtools-version;">
 
-<!ENTITY cdrdao-version     "1.1.7">
-<!ENTITY cdrdao-package     "cdrdao-1.1.7.src.tar.bz2">
-<!ENTITY cdrdao-directory   "cdrdao-1.1.7">
+<!ENTITY cdrdao-version     "1.1.8">
+<!ENTITY cdrdao-package     "cdrdao-&cdrdao-version;.src.tar.bz2">
+<!ENTITY cdrdao-directory   "cdrdao-&cdrdao-version;">
+
+<!ENTITY udftools-version "1.0.0b2">
+<!ENTITY udftools-package "udftools-&udftools-version;.tar.gz">
+<!ENTITY udftools-directory "udftools-&udftools-version;">
 
 <!--************* packages for chapter 46 *************-->
 

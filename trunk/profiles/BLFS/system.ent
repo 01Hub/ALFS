@@ -366,23 +366,24 @@
 <!ENTITY xine-lib     SYSTEM "./chapter37/xine-lib.xml">
 <!ENTITY libmikmod    SYSTEM "./chapter37/libmikmod.xml">
 
-<!-- chapter 43 -->
-<!ENTITY mpg123       SYSTEM "./chapter43/mpg123.xml">
-<!ENTITY vorbis-tools SYSTEM "./chapter43/vorbis-tools.xml">
-<!ENTITY xmms         SYSTEM "./chapter43/xmms.xml">
-<!ENTITY lame         SYSTEM "./chapter43/lame.xml">
-<!ENTITY cdparanoia   SYSTEM "./chapter43/cdparanoia.xml">
+<!-- chapter 38 -->
+<!ENTITY mpg123       SYSTEM "./chapter38/mpg123.xml">
+<!ENTITY vorbis-tools SYSTEM "./chapter38/vorbis-tools.xml">
+<!ENTITY xmms         SYSTEM "./chapter38/xmms.xml">
+<!ENTITY lame         SYSTEM "./chapter38/lame.xml">
+<!ENTITY cdparanoia   SYSTEM "./chapter38/cdparanoia.xml">
 
-<!-- chapter 44 -->
-<!ENTITY avifile   SYSTEM "./chapter44/avifile.xml">
-<!ENTITY ffmpeg    SYSTEM "./chapter44/ffmpeg.xml">
-<!ENTITY mplayer   SYSTEM "./chapter44/mplayer.xml">
-<!ENTITY xine-ui   SYSTEM "./chapter44/xine-ui.xml">
-<!ENTITY transcode SYSTEM "./chapter44/transcode.xml">
+<!-- chapter 39 -->
+<!ENTITY avifile   SYSTEM "./chapter39/avifile.xml">
+<!ENTITY ffmpeg    SYSTEM "./chapter39/ffmpeg.xml">
+<!ENTITY mplayer   SYSTEM "./chapter39/mplayer.xml">
+<!ENTITY xine-ui   SYSTEM "./chapter39/xine-ui.xml">
+<!ENTITY transcode SYSTEM "./chapter39/transcode.xml">
 
-<!-- chapter 45 -->
-<!ENTITY cdrtools  SYSTEM "./chapter45/cdrtools.xml">
-<!ENTITY cdrdao    SYSTEM "./chapter45/cdrdao.xml">
+<!-- chapter 40 -->
+<!ENTITY cdrtools  SYSTEM "./chapter40/cdrtools.xml">
+<!ENTITY cdrdao    SYSTEM "./chapter40/cdrdao.xml">
+<!ENTITY udftools  SYSTEM "./chapter40/udftools.xml">
 
 <!-- chapter 46 -->
 <!ENTITY cups            SYSTEM "./chapter46/cups.xml">

@@ -1,11 +1,8 @@
 <package name="cdrdao" version="&cdrdao-version;">
 
         <packageinfo>
-	    <utilizes><name>lame</name></utilizes>
-	    <utilizes><name>gtk+</name></utilizes>
-	    <utilizes><name>gnome-libs</name></utilizes>
-	    <utilizes><name>gtkmm</name></utilizes>
-	    <utilizes><name>gnomemm</name></utilizes>
+		<utilizes><name>lame</name></utilizes>
+		<utilizes><name>pkgconfig</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">

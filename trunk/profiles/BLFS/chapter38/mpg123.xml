@@ -1,5 +1,9 @@
 <package name="mpg123" version="&mpg123-version;">
 
+	<packageinfo>
+		<requires><name>alsa-oss</name></requires>
+	</packageinfo>
+
 	<stage name="Unpacking a package.">
 		<unpack>
 			<archive>&packages_dir;/&mpg123-package;</archive>

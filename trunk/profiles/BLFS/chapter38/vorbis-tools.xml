@@ -1,10 +1,11 @@
 <package name="vorbis-tools" version="&vorbis-tools-version;">
 
         <packageinfo>
-                <requires><name>curl</name></requires>
-        	<requires><name>libao</name></requires>
-        	<requires><name>libogg</name></requires>
-        	<requires><name>libvorbis</name></requires>
+		<requires><name>libvorbis</name></requires>
+		<utilizes><name>curl</name></utilizes>
+        	<utilizes><name>libao</name></utilizes>
+		<utilizes><name>flac</name></utilizes>
+		<utilizes><name>speex</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">

@@ -1,16 +1,14 @@
 <package name="xmms" version="&xmms-version;">
 
         <packageinfo>
-                <requires><name>xfree86</name></requires>
         	<requires><name>gtk+</name></requires>
-        	<requires><name>glib</name></requires>
+		<utilizes><name>alsa-lib</name></utilizes>
 		<utilizes><name>esound</name></utilizes>
-		<utilizes><name>gnomelibs</name></utilizes>
-		<utilizes><name>gnomeapplets</name></utilizes>
-		<utilizes><name>libmikmod</name></utilizes>
 		<utilizes><name>libogg</name></utilizes>
 		<utilizes><name>libvorbis</name></utilizes>
+		<utilizes><name>libmikmod</name></utilizes>
 		<utilizes><name>libxml</name></utilizes>
+		<utilizes><name>gnome-libs</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
@@ -27,7 +25,6 @@
 
 		<configure>
 			<param>--prefix=/usr</param>
-			<param>--enable-one-plugin-dir</param>
 		</configure>
 
 		<make/>

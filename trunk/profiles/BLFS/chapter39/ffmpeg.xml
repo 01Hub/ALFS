@@ -3,7 +3,9 @@
         <packageinfo>
                 <utilizes><name>libvorbis</name></utilizes>
                 <utilizes><name>lame</name></utilizes>
-                <utilizes><name>imlib2</name></utilizes>
+                <utilizes><name>xfree86</name></utilizes>
+		<utilizes><name>sdl</name></utilizes>
+		<utilizes><name>freetype</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">

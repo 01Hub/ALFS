@@ -25,3 +25,6 @@
 
 <!-- for ALSA driver -->
 <!ENTITY sound-card  "emu10k1">
+
+<!-- mplayer arial font size -->
+<!ENTITY mplayer-font-size "14">

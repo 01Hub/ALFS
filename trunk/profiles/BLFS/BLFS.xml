@@ -558,6 +558,7 @@
 
     &cdrtools;
     &cdrdao;
+    &udftools;
 
 </stage>
 
