@@ -81,6 +81,7 @@
 <!--			<source>&gcc-core-package;</source> -->
 <!--			<source>&gcc-gpp-package;</source> -->
 <!--			<source>&gcc-testsuite-package;</source> -->
+			<source>&gcc-linkonce-patch;</source>
 			<source>&gcc-no-fixincludes-patch;</source>
 			<source>&gcc-specs-patch;</source>
 			<source>&gettext-package;</source>
