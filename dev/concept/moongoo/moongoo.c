@@ -18,8 +18,6 @@ int main (int argc, char **argv)
 		return 1;
 	}
 	
-	// TODO: Resolving of entities
-	//xmlSubstituteEntitiesDefault(1);
 	doc=xmlParseFile(argv[1]);
 	if (!doc)
 		return 2;
