@@ -1,20 +1,15 @@
-<package name="libxml2" version="&libxml2-version;">
-
-    <packageinfo>
-        <utilizes><name>python</name></utilizes>
-	<utilizes><name>readline</name></utilizes>
-    </packageinfo>
+<package name="libpcap" version="&libpcap-version;">
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&libxml2-package;</archive>
+			<archive>&packages_dir;/&libpcap-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&libxml2-directory;</base>
+			<base>&build_dir;/&libpcap-directory;</base>
 		</stageinfo>
 
 		<configure>
@@ -29,7 +24,7 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&libxml2-directory;</remove>
+		<remove>&build_dir;/&libpcap-directory;</remove>
 	</stage>
 
 </package>
