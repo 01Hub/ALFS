@@ -9,8 +9,8 @@ CFLAGS+=-Wall -Werror -g3
 BIN=moongoo
 OBJS=alfs.o book.o util.o repl.o syn.o nalfs.o ass.o devel.o
 
-#BOOK=~/projects/alfs/book/index.xml
-BOOK=~/projects/alfs/lfs-profile/LFS.xml
+BOOK=~/projects/alfs/book/index.xml
+#BOOK=~/projects/alfs/lfs-profile/LFS.xml
 #BOOK=~/projects/alfs/ass/index.xml
 #BOOK=~/projects/hive/unstable/profile.xml
 
