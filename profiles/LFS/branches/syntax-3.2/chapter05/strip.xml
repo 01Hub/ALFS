@@ -20,7 +20,9 @@
 		<param>/tools/{,s}bin/*</param>
 	</execute>
 
-	<remove>/tools/{doc,info,man}</remove>
+	<remove>
+			<file>/tools/{doc,info,man}</file>
+		</remove>
 
 </stage>
 -->

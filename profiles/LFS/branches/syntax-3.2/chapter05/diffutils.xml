@@ -11,10 +11,10 @@
 
 <package name="diffutils" version="&diffutils-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&diffutils-md5;</digest>
 			<archive>&packages_dir;/&diffutils-package;</archive>
-			<destination>&build_dir;</destination>
+			
 		</unpack>
 	</stage>
 
@@ -35,7 +35,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&diffutils-directory;</remove>
+		<remove>
+			<file>&build_dir;/&diffutils-directory;</file>
+		</remove>
 	</stage>
 </package>
 

@@ -11,10 +11,10 @@
 
 <package name="udev" version="&udev-version;">
 	<stage name="Unpacking">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&udev-md5;</digest>
 			<archive>&packages_dir;/&udev-package;</archive>
-			<destination>&build_dir;</destination>
+			
 		</unpack>
 	</stage>
 
@@ -60,7 +60,9 @@
 	</stage>
 
 	<stage name="Cleanup">
-		<remove>&build_dir;/&udev-directory;</remove>
+		<remove>
+			<file>&build_dir;/&udev-directory;</file>
+		</remove>
 	</stage>
 </package>
 

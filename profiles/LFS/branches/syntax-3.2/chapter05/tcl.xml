@@ -11,10 +11,10 @@
 
 <package name="tcl" version="&tcl-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&tcl-md5;</digest>
 			<archive>&packages_dir;/&tcl-package;</archive>
-			<destination>&build_dir;</destination>
+			
 		</unpack>
 	</stage>
 

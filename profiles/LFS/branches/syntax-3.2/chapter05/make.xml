@@ -11,10 +11,10 @@
 
 <package name="make" version="&make-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&make-md5;</digest>
 			<archive>&packages_dir;/&make-package;</archive>
-			<destination>&build_dir;</destination>
+			
 		</unpack>
 	</stage>
 
@@ -41,7 +41,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&make-directory;</remove>
+		<remove>
+			<file>&build_dir;/&make-directory;</file>
+		</remove>
 	</stage>
 </package>
 

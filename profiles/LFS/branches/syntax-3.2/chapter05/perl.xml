@@ -11,10 +11,10 @@
 
 <package name="perl" version="&perl-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&perl-md5;</digest>
 			<archive>&packages_dir;/&perl-package;</archive>
-			<destination>&build_dir;</destination>
+			
 		</unpack>
 	</stage>
 
@@ -23,10 +23,8 @@
 			<base>&build_dir;/&perl-directory;</base>
 		</stageinfo>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&perl-libc-1-patch;</param>
+		<patch path_strip="1">
+			<file>&packages_dir;/&perl-libc-1-patch;</file>
 		</patch>
 
 		<configure command="./configure.gnu">
@@ -58,7 +56,9 @@
 	</stage>
 
 	<stage name="Cleaning up.">
-		<remove>&build_dir;/&perl-directory;</remove>
+		<remove>
+			<file>&build_dir;/&perl-directory;</file>
+		</remove>
 	</stage>
 </package>
 

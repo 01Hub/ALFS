@@ -11,10 +11,10 @@
 
 <package name="binutils-pass2" version="&binutils-version;">
 	<stage name="Unpacking.">
-		<unpack>
+		<unpack base="&build_dir;">
 			<digest>&binutils-md5;</digest>
 			<archive>&packages_dir;/&binutils-package;</archive>
-			<destination>&build_dir;</destination>
+			
 		</unpack>
 
 		<mkdir base="&build_dir;">
