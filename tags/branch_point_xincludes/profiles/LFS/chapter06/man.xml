@@ -1,0 +1,47 @@
+<package name="man" version="&man-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&man-md5;</digest>
+			<archive>&packages_dir;/&man-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&man-directory;</base>
+		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i &packages_dir;/&man-80cols-patch;</param>
+		</patch>
+
+		<search_replace base="&build_dir;/&man-directory;">
+			<file>configure</file>
+			<find>-is</find>
+			<replace>-isR</replace>
+		</search_replace>
+
+		<search_replace base="&build_dir;/&man-directory;">
+			<file>src/man.conf.in</file>
+   			<find>MANPATH&#x09;/usr/man</find>
+			<replace>#MANPATH /usr/man</replace>
+		</search_replace>
+
+		<configure>
+			<param>-confdir=/etc</param>
+		</configure>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&man-directory;</remove>
+	</stage>
+</package>

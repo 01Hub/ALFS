@@ -1,0 +1,16 @@
+<stage name="Bash Shell Startup Files">
+	<textdump base="/etc">
+		<file>profile</file>
+		<content>
+		=# Begin /etc/profile
+		=# Written for Linux From Scratch
+		=# by Alexander E. Patrakov
+		=
+		=export LC_ALL=&locale-language;_&locale-country;
+		=export LANG=&locale-language;_&locale-country;
+		=export INPUTRC=/etc/inputrc
+		=
+		=# End /etc/profile
+		</content>
+	</textdump>
+</stage>

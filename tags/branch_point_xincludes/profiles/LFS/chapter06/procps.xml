@@ -1,0 +1,28 @@
+<package name="procps" version="&procps-version;">
+	<stage name="Unpacking.">
+		<unpack>
+			<digest>&procps-md5;</digest>
+			<archive>&packages_dir;/&procps-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+	</stage>
+
+	<stage name="Installing.">
+		<stageinfo>
+			<base>&build_dir;/&procps-directory;</base>
+		</stageinfo>
+
+		<make />
+
+		<make>
+			<param>install</param>
+		</make>
+
+		<remove>/lib/libproc.so</remove>
+	</stage>
+
+	<stage name="Cleaning up.">
+		<remove>&build_dir;/&procps-directory;</remove>
+	</stage>
+</package>
