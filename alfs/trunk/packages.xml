@@ -1,5 +1,5 @@
 <packages>
-<!-- Stolen from Matt's site -->
+<!-- Example package info XML document (URLs stolen from Matt's site) -->
 <url name="autoconf">http://ftp.gnu.org/gnu/autoconf/</url>
 <url name="automake">http://ftp.gnu.org/gnu/automake/</url>
 <url name="bash">http://ftp.gnu.org/gnu/bash/</url>

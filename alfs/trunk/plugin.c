@@ -10,6 +10,8 @@
 
 /* The plugin code is based on hyperplayer by James Lee (jbit) */
 
+static void plugerr (char *fname);
+
 plug_info *plugscan (char *dir)
 {
 	DIR *d;
@@ -103,7 +105,7 @@ plug_hand *plugload (char *fname)
 	return ret;
 }
 
-void plugerr (char *fname)
+static void plugerr (char *fname)
 {
 	char *msg = dlerror();
 	
