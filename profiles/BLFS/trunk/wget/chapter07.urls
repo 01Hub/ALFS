@@ -1,6 +1,6 @@
 ftp://distro.ibiblio.org/pub/Linux/distributions/slackware/slackware_source/ap/ash/ash-0.4.0.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/cvs/ash-0.4.0-cumulative-fixes-1.patch
+http://www.linuxfromscratch.org/patches/blfs/5.1/ash-0.4.0-cumulative-fixes-1.patch
 
 http://gd.tuwien.ac.at/utils/shells/tcsh/tcsh-6.13.00.tar.gz
 
-ftp://ftp.zsh.org/zsh/zsh-4.2.0.tar.bz2
+ftp://ftp.zsh.org/zsh/old/zsh-4.2.0.tar.bz2

@@ -8,7 +8,7 @@ http://umn.dl.sourceforge.net/sourceforge/libmng/libmng-1.0.7.tar.gz
 http://www.littlecms.com/lcms-1.12.tar.gz
 http://umn.dl.sourceforge.net/sourceforge/freetype/freetype-2.1.7.tar.bz2
 http://www.linuxfromscratch.org/patches/blfs/5.1/freetype-2.1.7-bytecode-interpreter.patch
-ftp://ftp.us.sinuspl.net/pub/src/fontconfig-2.2.2.tar.gz
+http://freedesktop.org/~fontconfig/release/fontconfig-2.2.2.tar.gz
 ftp://ftp.gnome.org/pub/GNOME/sources/imlib/1.9/imlib-1.9.14.tar.bz2
 http://prdownloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz
 http://www.svgalib.org/svgalib-1.4.3.tar.gz

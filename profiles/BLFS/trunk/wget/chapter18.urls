@@ -1,5 +1,5 @@
-ftp://ftp.ncftp.com/ncftp/ncftp-3.1.7-src.tar.bz2
-https://ccvs.cvshome.org/files/documents/19/152/cvs-1.11.16.tar.bz2
+http://public.planetmirror.com/pub/ncftp/ncftp/ncftp-3.1.7-src.tar.bz2
+http://distro.ibiblio.org/pub/linux/distributions/sorcerer/sources/cvs/1.11.16/cvs-1.11.16.tar.bz2
 ftp://ftp.gnu.org/gnu/wget/wget-1.9.1.tar.gz
 ftp://ftp.porcupine.org/pub/security/tcp_wrappers_7.6.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/5.1/tcp_wrappers-7.6-shared-lib-plus-plus.patch
