@@ -1,7 +1,7 @@
 /*
- *  init.h - Initializing options.
+ *  bufsize.h - header file defining buffer sizes.
  *
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001-2003
  *
  *  Neven Has <haski@sezampro.yu>
  *
@@ -21,23 +21,18 @@
  */
 
 
-#ifndef H_INIT_
-#define H_INIT_
+#ifndef H_BUFSIZE_
+#define H_BUFSIZE_
 
 /*
- * Some program's info.
+ * Maximum lengths of some strings.
  */
-#define EMAIL              "haski@sezampro.yu"
-#define SITE               "http://www.beotel.yu/~has/projects/alfs/index.html"
-#define COPYRIGHT          "Copyright (C) 2001-2003 Neven Has"
+#define MAX_DATA_MSG_LEN		1024
+#define MAX_CTRL_MSG_LEN		1024
+#define MAX_COMMAND_LEN			1024
+#define MAX_ACTION_MSG_LEN		1024
+#define MAX_XML_ERROR_MSG_LEN		1024
+#define MAX_STATE_FILE_LINE_LEN		1024
+#define MAX_RC_LINE_LEN			256
 
-void read_env_variables(void);
-
-int read_rc_file(void);
-
-void read_command_line_options(int *argc, char ***argv);
-
-void init_needed_directories(void);
-
-
-#endif /* H_INIT_ */
+#endif /* H_BUFSIZE_ */
