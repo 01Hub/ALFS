@@ -1,34 +1,32 @@
 <!--************* packages for chapter 11 *************-->
 
-<!ENTITY gpm-version   "1.20.1">
-<!ENTITY gpm-package   "gpm-&gpm-version;.tar.bz2">
-<!ENTITY gpm-directory "gpm-&gpm-version;">
-
+<!ENTITY gpm-version        "1.20.1">
+<!ENTITY gpm-package        "gpm-&gpm-version;.tar.bz2">
+<!ENTITY gpm-directory      "gpm-&gpm-version;">
 <!ENTITY gpm-segfault-patch "gpm-&gpm-version;-segfault-1.patch">
-<!ENTITY gpm-silent-patch "gpm-&gpm-version;-silent-1.patch">
+<!ENTITY gpm-silent-patch   "gpm-&gpm-version;-silent-1.patch">
 
 <!ENTITY fcron-version   "2.9.5.1">
-<!ENTITY fcron-package   "fcron-&fcron-version;.src.tar.gz">
+<!ENTITY fcron-package   "fcron-&fcron-version;.src.tar.bz2">
 <!ENTITY fcron-directory "fcron-&fcron-version;">
 
 <!ENTITY hdparm-version   "5.8">
-<!ENTITY hdparm-package   "hdparm-&hdparm-version;.tar.gz">
+<!ENTITY hdparm-package   "hdparm-&hdparm-version;.tar.bz2">
 <!ENTITY hdparm-directory "hdparm-&hdparm-version;">
 
 <!ENTITY which-version   "2.16">
-<!ENTITY which-package   "which-&which-version;.tar.gz">
+<!ENTITY which-package   "which-&which-version;.tar.bz2">
 <!ENTITY which-directory "which-&which-version;">
 
-<!ENTITY unzip-version   "5.51">
-<!ENTITY unzip-package   "unzip551.tar.gz">
-<!ENTITY unzip-directory "unzip-&unzip-version;">
-
-<!ENTITY unzip-fix_makefile-patch    "unzip-&unzip-version;-fix_Makefile-1.patch">
-<!ENTITY unzip-fix_libz-patch        "unzip-&unzip-version;-fix_libz-1.patch">
-<!ENTITY unzip-dont_make_noise-patch "unzip-&unzip-version;-dont_make_noise-1.patch">
+<!ENTITY unzip-version               "5.51">
+<!ENTITY unzip-package               "unzip551.tar.bz2">
+<!ENTITY unzip-directory             "unzip-&unzip-version;">
+<!ENTITY unzip-fix-makefile-patch    "unzip-&unzip-version;-fix_Makefile-1.patch">
+<!ENTITY unzip-fix-libz-patch        "unzip-&unzip-version;-fix_libz-1.patch">
+<!ENTITY unzip-dont-make-noise-patch "unzip-&unzip-version;-dont_make_noise-1.patch">
 
 <!ENTITY zip-version   "2.31">
-<!ENTITY zip-package   "zip231.tar.gz">
+<!ENTITY zip-package   "zip231.tar.bz2">
 <!ENTITY zip-directory "zip-&zip-version;">
 
 <!ENTITY pciutils-version   "2.1.11">
@@ -36,23 +34,23 @@
 <!ENTITY pciutils-directory "pciutils-&pciutils-version;">
 
 <!ENTITY pkgconfig-version   "0.15.0">
-<!ENTITY pkgconfig-package   "pkgconfig-&pkgconfig-version;.tar.gz">
+<!ENTITY pkgconfig-package   "pkgconfig-&pkgconfig-version;.tar.bz2">
 <!ENTITY pkgconfig-directory "pkgconfig-&pkgconfig-version;">
 
 <!ENTITY cpio-version   "2.6">
-<!ENTITY cpio-package   "cpio-&cpio-version;.tar.gz">
+<!ENTITY cpio-package   "cpio-&cpio-version;.tar.bz2">
 <!ENTITY cpio-directory "cpio-&cpio-version;">
 
 <!ENTITY mc-version   "4.6.0">
-<!ENTITY mc-package   "mc-&mc-version;.tar.gz">
+<!ENTITY mc-package   "mc-&mc-version;.tar.bz2">
 <!ENTITY mc-directory "mc-&mc-version;">
 
 <!ENTITY sysstat-version   "5.0.6">
-<!ENTITY sysstat-package   "sysstat-&sysstat-version;.tar.gz">
+<!ENTITY sysstat-package   "sysstat-&sysstat-version;.tar.bz2">
 <!ENTITY sysstat-directory "sysstat-&sysstat-version;">
 
-<!ENTITY apache-ant-version "1.6.2">
-<!ENTITY apache-ant-package "apache-ant-&apache-ant-version;-src.tar.bz2">
-<!ENTITY apache-ant-directory "apache-ant-&apache-ant-version;">
+<!ENTITY apache-ant-version            "1.6.2">
+<!ENTITY apache-ant-package            "apache-ant-&apache-ant-version;-src.tar.bz2">
+<!ENTITY apache-ant-directory          "apache-ant-&apache-ant-version;">
 <!ENTITY apache-ant-blfs-install-patch "apache-ant-&apache-ant-version;-blfs_install-1.patch">
 

@@ -1,7 +1,7 @@
 <!--************* packages for chapter 19 *************-->
 
 <!ENTITY traceroute-version   "1.4a12">
-<!ENTITY traceroute-package   "traceroute-&traceroute-version;.tar.gz">
+<!ENTITY traceroute-package   "traceroute-&traceroute-version;.tar.bz2">
 <!ENTITY traceroute-directory "traceroute-&traceroute-version;">
 
 <!ENTITY nmap-version   "3.75">
@@ -9,14 +9,13 @@
 <!ENTITY nmap-directory "nmap-&nmap-version;">
 
 <!ENTITY whois-version   "4.6.26">
-<!ENTITY whois-package   "whois_&whois-version;.tar.gz">
+<!ENTITY whois-package   "whois_&whois-version;.tar.bz2">
 <!ENTITY whois-directory "whois-&whois-version;">
 
-<!ENTITY bind-utils-version "9.3.0">
-<!ENTITY bind-utils-package "bind-&bind-utils-version;.tar.gz">
+<!ENTITY bind-utils-version   "9.3.0">
+<!ENTITY bind-utils-package   "bind-&bind-utils-version;.tar.bz2">
 <!ENTITY bind-utils-directory "bind-&bind-utils-version;">
 
-<!ENTITY ethereal-version "0.10.7">
-<!ENTITY ethereal-package "ethereal-&ethereal-version;.tar.bz2">
+<!ENTITY ethereal-version   "0.10.7">
+<!ENTITY ethereal-package   "ethereal-&ethereal-version;.tar.bz2">
 <!ENTITY ethereal-directory "ethereal-&ethereal-version;">
-

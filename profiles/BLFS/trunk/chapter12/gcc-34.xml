@@ -41,7 +41,7 @@
       <patch base="&build_dir;/&gcc-34-directory;">
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&gcc-34-no_fixincludes-patch;</param>
+        <param>-i &packages_dir;/&gcc-34-no-fixincludes-patch;</param>
       </patch>
       <patch base="&build_dir;/&gcc-34-directory;">
         <param>-N</param>

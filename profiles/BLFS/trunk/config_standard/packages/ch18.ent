@@ -4,57 +4,51 @@
 <!ENTITY ncftp-package   "ncftp-&ncftp-version;-src.tar.bz2">
 <!ENTITY ncftp-directory "ncftp-&ncftp-version;">
 
-<!ENTITY cvs-version   "1.11.18">
-<!ENTITY cvs-package   "cvs-&cvs-version;.tar.bz2">
-<!ENTITY cvs-directory "cvs-&cvs-version;">
-
+<!ENTITY cvs-version    "1.11.18">
+<!ENTITY cvs-package    "cvs-&cvs-version;.tar.bz2">
+<!ENTITY cvs-directory  "cvs-&cvs-version;">
 <!ENTITY cvs-zlib-patch "cvs-&cvs-version;-zlib-1.patch">
 
-<!ENTITY subversion-version "1.1.3">
-<!ENTITY subversion-package "subversion-&subversion-version;.tar.bz2">
+<!ENTITY subversion-version   "1.1.3">
+<!ENTITY subversion-package   "subversion-&subversion-version;.tar.bz2">
 <!ENTITY subversion-directory "subversion-&subversion-version;">
 
 <!ENTITY wget-version   "1.9.1">
-<!ENTITY wget-package   "wget-&wget-version;.tar.gz">
+<!ENTITY wget-package   "wget-&wget-version;.tar.bz2">
 <!ENTITY wget-directory "wget-&wget-version;">
 
-<!ENTITY tcpwrappers-version   "7.6">
-<!ENTITY tcpwrappers-package   "tcp_wrappers_&tcpwrappers-version;.tar.gz">
-<!ENTITY tcpwrappers-directory "tcp_wrappers_&tcpwrappers-version;">
-
+<!ENTITY tcpwrappers-version                     "7.6">
+<!ENTITY tcpwrappers-package                     "tcp_wrappers_&tcpwrappers-version;.tar.bz2">
+<!ENTITY tcpwrappers-directory                   "tcp_wrappers_&tcpwrappers-version;">
+<!ENTITY tcpwrappers-gcc34-patch                 "tcp_wrappers-&tcpwrappers-version;-gcc34-1.patch">
 <!ENTITY tcpwrappers-shared-libs-plus-plus-patch "tcp_wrappers-&tcpwrappers-version;-shared_lib_plus_plus-1.patch">
-<!ENTITY tcpwrappers-gcc34-patch "tcp_wrappers-&tcpwrappers-version;-gcc34-1.patch">
 
-<!ENTITY portmap-version   "5beta">
-<!ENTITY portmap-package   "portmap_&portmap-version;.tar.gz">
-<!ENTITY portmap-directory "portmap_&portmap-version;">
+<!ENTITY portmap-version                 "5beta">
+<!ENTITY portmap-package                 "portmap_&portmap-version;.tar.bz2">
+<!ENTITY portmap-directory               "portmap_&portmap-version;">
+<!ENTITY portmap-compilation-fixes-patch "portmap-&portmap-version;-compilation_fixes-3.patch">
+<!ENTITY portmap-glibc-errno-fix-patch   "portmap-&portmap-version;-glibc_errno_fix-1.patch">
 
-<!ENTITY portmap-compilation-fixes-patch    "portmap-&portmap-version;-compilation_fixes-3.patch">
-<!ENTITY portmap-glibc-errno-fix-patch    "portmap-&portmap-version;-glibc_errno_fix-1.patch">
-
-<!ENTITY inetutils-version   "1.4.2">
-<!ENTITY inetutils-package   "inetutils-&inetutils-version;.tar.gz">
-<!ENTITY inetutils-directory "inetutils-&inetutils-version;">
-
+<!ENTITY inetutils-version             "1.4.2">
+<!ENTITY inetutils-package             "inetutils-&inetutils-version;.tar.bz2">
+<!ENTITY inetutils-directory           "inetutils-&inetutils-version;">
 <!ENTITY inetutils-kernel-header-patch "inetutils-&inetutils-version;-kernel_headers-1.patch">
 
 <!ENTITY nfs-utils-version   "1.0.6">
-<!ENTITY nfs-utils-package   "nfs-utils-&nfs-utils-version;.tar.gz">
+<!ENTITY nfs-utils-package   "nfs-utils-&nfs-utils-version;.tar.bz2">
 <!ENTITY nfs-utils-directory "nfs-utils-&nfs-utils-version;">
 
 <!ENTITY ncpfs-version   "2.2.4">
-<!ENTITY ncpfs-package   "ncpfs-&ncpfs-version;.tar.gz">
+<!ENTITY ncpfs-package   "ncpfs-&ncpfs-version;.tar.bz2">
 <!ENTITY ncpfs-directory "ncpfs-&ncpfs-version;">
 
 <!ENTITY ntp-version   "4.2.0">
-<!ENTITY ntp-package   "ntp-&ntp-version;.tar.gz">
+<!ENTITY ntp-package   "ntp-&ntp-version;.tar.bz2">
 <!ENTITY ntp-directory "ntp-&ntp-version;">
 
-<!ENTITY net-tools-version "1.60">
-<!ENTITY net-tools-package "net-tools-&net-tools-version;.tar.gz">
-<!ENTITY net-tools-directory "net-tools-&net-tools-version;">
-
-<!ENTITY net-tools-gcc34-patch "net-tools-&net-tools-version;-gcc34-3.patch">
+<!ENTITY net-tools-version             "1.60">
+<!ENTITY net-tools-package             "net-tools-&net-tools-version;.tar.bz2">
+<!ENTITY net-tools-directory           "net-tools-&net-tools-version;">
+<!ENTITY net-tools-gcc34-patch         "net-tools-&net-tools-version;-gcc34-3.patch">
 <!ENTITY net-tools-kernel-header-patch "net-tools-&net-tools-version;-kernel_headers-2.patch">
-<!ENTITY net-tools-mii-ioctl-patch "net-tools-&net-tools-version;-mii_ioctl-1.patch">
-
+<!ENTITY net-tools-mii-ioctl-patch     "net-tools-&net-tools-version;-mii_ioctl-1.patch">

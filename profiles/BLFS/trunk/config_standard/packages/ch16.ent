@@ -5,13 +5,12 @@
 <!ENTITY curl-directory "curl-&curl-version;">
 
 <!ENTITY wvstreams-version   "4.0.1">
-<!ENTITY wvstreams-package   "wvstreams-&wvstreams-version;.tar.gz">
+<!ENTITY wvstreams-package   "wvstreams-&wvstreams-version;.tar.bz2">
 <!ENTITY wvstreams-directory "wvstreams-&wvstreams-version;">
-
 <!ENTITY wvstreams-tcl-patch "wvstreams-&wvstreams-version;-tcl84-1.patch">
 
 <!ENTITY gnet-version   "2.0.5">
-<!ENTITY gnet-package   "gnet-&gnet-version;.tar.gz">
+<!ENTITY gnet-package   "gnet-&gnet-version;.tar.bz2">
 <!ENTITY gnet-directory "gnet-&gnet-version;">
 
 <!ENTITY libsoup-version   "2.2.1">

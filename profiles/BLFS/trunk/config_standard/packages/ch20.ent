@@ -5,21 +5,20 @@
 <!ENTITY nail-directory "nail-&nail-version;">
 
 <!ENTITY procmail-version   "3.22">
-<!ENTITY procmail-package   "procmail-&procmail-version;.tar.gz">
+<!ENTITY procmail-package   "procmail-&procmail-version;.tar.bz2">
 <!ENTITY procmail-directory "procmail-&procmail-version;">
 
 <!ENTITY fetchmail-version   "6.2.5">
-<!ENTITY fetchmail-package   "fetchmail-&fetchmail-version;.tar.gz">
+<!ENTITY fetchmail-package   "fetchmail-&fetchmail-version;.tar.bz2">
 <!ENTITY fetchmail-directory "fetchmail-&fetchmail-version;">
 
 <!ENTITY mutt-version   "1.4.2.1i">
-<!ENTITY mutt-package   "mutt-&mutt-version;.tar.gz">
+<!ENTITY mutt-package   "mutt-&mutt-version;.tar.bz2">
 <!ENTITY mutt-directory "mutt-1.4.2.1">
 
 <!ENTITY pine-version   "4.60">
 <!ENTITY pine-package   "pine&pine-version;.tar.bz2">
 <!ENTITY pine-directory "pine&pine-version;">
-
 <!ENTITY pine-patch     "pine-&pine-version;-fhs-3.patch">
 
 <!ENTITY slrn-version   "0.9.8.1">

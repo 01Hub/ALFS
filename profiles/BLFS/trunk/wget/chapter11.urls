@@ -1,29 +1,29 @@
-ftp://arcana.linux.it/pub/gpm/gpm-1.20.1.tar.bz2
-http://www.linuxfromscratch.org/blfs/downloads/svn/gpm-1.20.1-segfault-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/gpm-1.20.1-silent-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gpm-1.20.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gpm-1.20.1-segfault-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gpm-1.20.1-silent-1.patch
 
-ftp://ftp.seul.org/pub/fcron/fcron-2.9.5.1.src.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/fcron-2.9.5.1.src.tar.bz2
 
-http://www.ibiblio.org/pub/Linux/system/hardware/hdparm-5.8.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/hdparm-5.8.tar.bz2
 
-ftp://ftp.gnu.org/gnu/which/which-2.16.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/which-2.16.tar.bz2
 
-ftp://ftp.info-zip.org/pub/infozip/src/unzip551.tar.gz
-http://www.linuxfromscratch.org/blfs/downloads/svn/unzip-5.51-fix_Makefile-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/unzip-5.51-fix_libz-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/unzip-5.51-dont_make_noise-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/unzip-5.51.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/unzip-5.51-fix_Makefile-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/unzip-5.51-fix_libz-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/unzip-5.51-dont_make_noise-1.patch
 
-ftp://ftp.info-zip.org/pub/infozip/src/zip231.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/zip231.tar.bz2
 
-ftp://ftp.kernel.org/pub/software/utils/pciutils/pciutils-2.1.11.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/pciutils-2.1.11.tar.bz2
 
-http://www.freedesktop.org/software/pkgconfig/releases/pkgconfig-0.15.0.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/pkgconfig-0.15.0.tar.bz2
 
-ftp://ftp.gnu.org/pub/gnu/cpio/cpio-2.6.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/cpio-2.6.tar.bz2
 
-ftp://ftp.uni-koeln.de/util/shell/mc-4.6.0.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/mc-4.6.0.tar.bz2
 
-http://perso.wanadoo.fr/sebastien.godard/sysstat-5.0.6.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/sysstat-5.0.6.tar.bz2
 
-ftp://ftp.oregonstate.edu/pub/apache/ant/source/apache-ant-1.6.2-src.tar.bz2
-http://www.linuxfromscratch.org/blfs/downloads/svn/apache-ant-1.6.2-blfs_install-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/apache-ant-1.6.2-src.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/apache-ant-1.6.2-blfs_install-1.patch

@@ -33,7 +33,7 @@
       <patch>
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&gcc-33-no_fixincludes-patch;</param>
+        <param>-i &packages_dir;/&gcc-33-no-fixincludes-patch;</param>
       </patch>
       <patch>
 	<param>-N</param>

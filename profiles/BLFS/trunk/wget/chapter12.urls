@@ -1,59 +1,67 @@
-ftp://ftp.python.org/pub/python/2.4/Python-2.4.tar.bz2
-http://www.linuxfromscratch.org/blfs/downloads/svn/Python-2.4-gdbm-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/Python-2.4-db43-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Python-2.4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Python-2.4-gdbm-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Python-2.4-db43-1.patch
 http://www.python.org/security/PSF-2005-001/patch.txt
 
-ftp://cpan.pair.com/authors/id/M/MB/MBARBON/Module-Info-0.26.tar.gz
-ftp://cpan.pair.com/authors/id/C/CS/CSOE/PDL-2.4.2.tar.gz
-ftp://cpan.pair.com/authors/id/K/KG/KGB/ExtUtils-F77-1.14.tar.gz
-ftp://cpan.pair.com/authors/id/I/IN/INGY/Inline-0.44.tar.gz
-ftp://cpan.pair.com/authors/id/D/DC/DCONWAY/Parse-RecDescent-1.94.tar.gz
-ftp://cpan.pair.com/authors/id/A/AA/AALLAN/Astro-FITS-Header-2.8.1.tar.gz
-ftp://cpan.pair.com/authors/id/M/ML/MLEHMANN/Gtk-Perl-0.7009.tar.gz
-ftp://cpan.pair.com/authors/id/J/JO/JOSEPHW/XML-Writer-0.510.tar.gz
-ftp://cpan.pair.com/authors/id/M/MS/MSERGEANT/XML-Parser-2.34.tar.gz
-ftp://cpan.pair.com/authors/id/D/DM/DMEGG/SGMLSpm-1.03ii.tar.gz
-ftp://cpan.pair.com/authors/id/N/NI/NI-S/Tk-804.027.tar.gz
-ftp://cpan.pair.com/authors/id/C/CR/CREIN/Net-DNS-0.48.tar.gz
-ftp://cpan.pair.com/authors/id/G/GA/GAAS/Digest-HMAC-1.01.tar.gz
-ftp://cpan.pair.com/authors/id/G/GA/GAAS/Digest-SHA1-2.10.tar.gz
-ftp://cpan.pair.com/authors/id/P/PM/PMQS/Filter-1.30.tar.gz
-ftp://cpan.pair.com/authors/id/H/HA/HAYASHI/Term-ReadLine-Gnu-1.15.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/Gtk-Perl-0.7009.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XML-Parser-2.34.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XML-Writer-0.520.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/SGMLSpm-1.03ii.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/Tk-804.027.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Net-DNS-0.48.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/Digest-HMAC-1.01.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/Digest-SHA1-2.10.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libwww-perl-5.803.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/URI-1.35.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/Business-ISBN-1.79.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/Business-ISBN-Data-1.09.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/Test-Pod-1.20.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Pod-Simple-3.02.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Pod-Escapes-1.04.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/Test-Builder-Tester-1.01.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/Test-Prereq-1.025.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Module-Info-0.26.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Module-CoreList-1.97.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/HTML-Parser-3.44.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/HTML-Tagset-3.04.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/Compress-Zlib-1.33.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/Crypt-SSLeay-0.51.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/DateManip-5.42a.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/Finance-Quote-1.08.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/HTML-TableExtract-1.08.tar.bz2
 
-http://telia.dl.sourceforge.net/sourceforge/librep/librep-0.17.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/librep-0.17.tar.bz2
 
 http://java.sun.com/j2se/1.4.2/download.html
 http://wwws.sun.com/software/communitysource/j2se/java2/download.html
-http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-fix_inline_asm-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-gcc33-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-motif_mkmsgcat-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-nptl-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-remove_debug_image-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-remove_fixed_paths-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-static_cxx-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-ash-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-fix_inline_asm-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-gcc33-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-motif_mkmsgcat-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-nptl-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-remove_debug_image-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-remove_fixed_paths-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-static_cxx-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-ash-1.patch
 
-ftp://ftp.ruby-lang.org/pub/ruby/ruby-1.8.2.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/ruby-1.8.2.tar.bz2
 
-ftp://ftp.us.xemacs.org/pub/tcl/tcl8_4/tcl8.4.9-src.tar.gz
-ftp://ftp.us.xemacs.org/pub/tcl/tcl8_4/tk8.4.9-src.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/tcl-8.4.9.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/tk8.4.9-src.tar.bz2
 
-http://expect.nist.gov/old/expect-5.42.1.tar.gz
-http://www.linuxfromscratch.org/blfs/downloads/svn/expect-5.42.1-spawn-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/expect-5.42.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/expect-5.42.1-spawn-1.patch
 
-ftp://ftp.gnu.org/pub/gnu/dejagnu/dejagnu-1.4.4.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/dejagnu-1.4.4.tar.bz2
 
-ftp://cs.nyu.edu/pub/gnat/3.15p/gnat-3.15p-i686-pc-redhat71-gnu-bin.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gcc-3.4.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gcc-3.4.1-testsuite.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gcc-3.4.1-no_fixincludes-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gcc-3.4.1-linkonce-1.patch
 
-ftp://mirrors.rcn.net/pub/sourceware/gcc/releases/gcc-3.4.1/gcc-3.4.1.tar.bz2
-ftp://mirrors.rcn.net/pub/sourceware/gcc/releases/gcc-3.4.1/gcc-testsuite-3.4.1.tar.bz2
-http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-3.4.1-no_fixincludes-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-3.4.1-linkonce-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gcc-3.3.4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gcc-3.3.4-no_fixincludes-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gcc-3.3.4-linkonce-1.patch
 
-ftp://mirrors.rcn.net/pub/sourceware/gcc/releases/gcc-3.3.4/gcc-3.3.4.tar.bz2
-http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-3.3.4-no_fixincludes-1.patch
-http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-3.3.4-linkonce-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/nasm-0.98.38.tar.bz2
 
-http://unc.dl.sourceforge.net/sourceforge/nasm/nasm-0.98.38.tar.bz2
-
-ftp://ftp.stack.nl/pub/users/dimitri/doxygen-1.4.1.src.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/doxygen-1.4.1.src.tar.bz2

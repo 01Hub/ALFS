@@ -1,9 +1,9 @@
 <!--************* packages for chapter 13 *************-->
 
 <!ENTITY ppp-version   "2.4.3">
-<!ENTITY ppp-package   "ppp-&ppp-version;.tar.gz">
+<!ENTITY ppp-package   "ppp-&ppp-version;.tar.bz2">
 <!ENTITY ppp-directory "ppp-&ppp-version;">
 
 <!ENTITY wvdial-version   "1.54.0">
-<!ENTITY wvdial-package   "wvdial-&wvdial-version;.tar.gz">
+<!ENTITY wvdial-package   "wvdial-&wvdial-version;.tar.bz2">
 <!ENTITY wvdial-directory "wvdial-&wvdial-version;">
