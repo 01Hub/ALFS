@@ -79,6 +79,7 @@ static int digest_attribute(const element_s * const element,
 			    const char * const value)
 {
 	struct digest_data *data = (struct digest_data *) element->handler_data;
+	char *s;
 
 	switch (attr->private) {
 	case DIGEST_TYPE:
@@ -87,6 +88,8 @@ static int digest_attribute(const element_s * const element,
 			return 1;
 		}
 		data->type = xstrdup(value);
+	        for (s = data->type; *s; s++)
+			*s = tolower(*s);
 		return 0;
 	default:
 		return 1;
