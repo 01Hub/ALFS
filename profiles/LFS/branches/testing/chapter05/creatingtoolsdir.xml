@@ -60,7 +60,6 @@
 			<source>&autoconf-package;</source>
 			<source>&automake-package;</source>
 			<source>&bash-package;</source>
-			<source>&bash-patch;</source>
 			<source>&binutils-package;</source>
 			<source>&bison-package;</source>
 			<source>&bzip2-package;</source>
@@ -119,9 +118,7 @@
 			<source>&procps-package;</source>
 			<source>&psmisc-package;</source>
 			<source>&readline-package;</source>
-			<source>&readline-gnu-fixes-patch;</source>
 			<source>&sed-package;</source>
-			<source>&sed-permissions-patch;</source>
 			<source>&shadow-package;</source>
 			<source>&sysklogd-package;</source>
 			<source>&sysklogd-kernel-headers-patch;</source>
