@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch08.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,34 +10,28 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="slib" version="&slib-version;">
-
-        <packageinfo>
-                <requires><name>guile</name></requires>
-        </packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&slib-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-
-		<copy base="&build_dir;">
-		         <option>recursive</option>
-			 <source>&slib-directory;</source>
-		         <destination>/usr/share/guile</destination>
-		</copy>
-
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&slib-directory;</remove>
-	</stage>
-
-</package>
+  <package name="slib" version="&slib-version;">
+    <packageinfo>
+      <requires>
+        <name>guile</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&slib-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <copy base="&build_dir;">
+        <option>recursive</option>
+        <source>&slib-directory;</source>
+        <destination>/usr/share/guile</destination>
+      </copy>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&slib-directory;</remove>
+    </stage>
+  </package>
 </alfs>
