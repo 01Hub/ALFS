@@ -1,5 +1,5 @@
 OUTDIR=./output/
-XSLROOTDIR=/usr/share/docbook-xsl/
+XSLROOTDIR=/usr/share/xml/docbook/xsl-stylesheets-current/
 
 clean:
 	if [ -e $(OUTDIR) ]; then \
