@@ -6,6 +6,13 @@
 
 <itemizedlist>
 
+<listitem><para>October 30th, 2003 [jwrober]: Updated the Coding Style page
+and added a first stab at CVS.</para></listitem>
+
+<listitem><para>October 29th, 2003 [jwrober]: Added a new chapter for
+Bugzilla, CVS, Coding Style and Distribution Tarballs.  Added an initial page
+for each and then a first stab at the Coding Style page.</para></listitem>
+
 <listitem><para>October 8th, 2003 [jwrober]: Added an Introduction
 section.</para></listitem>
 
