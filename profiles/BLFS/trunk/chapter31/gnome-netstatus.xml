@@ -37,6 +37,9 @@
       <make>
         <param>install</param>
       </make>
+      <permissions mode="644">
+	<name>&gnome-prefix;/share/gnome/help/gnome-netstatus/C/*.xml</name>
+      </permissions>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gnome-netstatus-directory;</remove>

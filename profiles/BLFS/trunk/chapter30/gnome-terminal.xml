@@ -22,9 +22,9 @@
       <requires>
         <name>vte</name>
       </requires>
-      <utilizes>
+      <requires>
         <name>startup-notification</name>
-      </utilizes>
+      </requires>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

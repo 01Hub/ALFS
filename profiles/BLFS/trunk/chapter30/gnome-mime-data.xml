@@ -12,6 +12,11 @@
 ]>
 <alfs>
   <package name="gnome-mime-data" version="&gnome-mime-data-version;">
+    <packageinfo>
+      <requires>
+	<name>XML-Parser</name>
+      </requires>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&gnome-mime-data-package;</archive>
@@ -19,17 +24,27 @@
       </unpack>
     </stage>
     <stage name="Installing">
-    <stageinfo>
-      <base>&build_dir;/&gnome-mime-data-directory;</base>
-    </stageinfo>
-    <configure>
-      <param>--prefix=&gnome-prefix;</param>
-      <param>--sysconfdir=/etc/gnome</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>&ldconfig;</stage>
+      <stageinfo>
+	<base>&build_dir;/&gnome-mime-data-directory;</base>
+      </stageinfo>
+      <configure>
+	<param>--prefix=&gnome-prefix;</param>
+	<param>--sysconfdir=/etc/gnome</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+      <mkdir>
+	<option>parents</option>
+	<name>&gnome-prefix;/man/man5</name>
+      </mkdir>
+      <copy>
+	<source>man/gnome-vfs-mime.5</source>
+	<destination>&gnome-prefix;/man/man5</destination>
+      </copy>
+      &ldconfig;
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gnome-mime-data-directory;</remove>
     </stage>

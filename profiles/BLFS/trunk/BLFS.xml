@@ -302,12 +302,13 @@
       <xi:include href="chapter30/orbit2.xml" />
       <xi:include href="chapter30/libbonobo.xml" />
       <xi:include href="chapter30/gconf2.xml" />
+      <xi:include href="chapter30/desktopfileutils.xml" />
       <xi:include href="chapter30/gnome-mime-data.xml" />
       <xi:include href="chapter30/gnome-vfs2.xml" />
       <xi:include href="chapter30/libgnome.xml" />
       <xi:include href="chapter30/libgnomecanvas.xml" />
       <xi:include href="chapter30/libbonoboui.xml" />
-      <xi:include href="chapter30/gnome-icon-themes.xml" />
+      <xi:include href="chapter30/gnome-icon-theme.xml" />
       <xi:include href="chapter30/gnome-keyring.xml" />
       <xi:include href="chapter30/libgnomeui.xml" />
       <xi:include href="chapter30/gtk-engines.xml" />
@@ -321,19 +322,22 @@
       <xi:include href="chapter30/gnome-terminal.xml" />
       <xi:include href="chapter30/libgtop.xml" />
       <xi:include href="chapter30/gail.xml" />
-      <xi:include href="chapter30/gstreamer.xml" />
-      <xi:include href="chapter30/gst-plugins.xml" />
       <xi:include href="chapter30/gnome-applets.xml" />
       <xi:include href="chapter30/eel.xml" />
       <xi:include href="chapter30/nautilus.xml" />
       <xi:include href="chapter30/control-center.xml" />
+      <xi:include href="chapter30/gnome2-user-docs.xml" />
+      <xi:include href="chapter30/config-core-gnome.xml" />
     </stage>
     <stage name="Chapter 31 (GNOME Additional Packages)">
+      <xi:include href="chapter31/libgnomecups.xml" />
       <xi:include href="chapter31/libgnomeprint.xml" />
       <xi:include href="chapter31/libgnomeprintui.xml" />
       <xi:include href="chapter31/gal.xml" />
       <xi:include href="chapter31/gtkhtml.xml" />
       <xi:include href="chapter31/libgtkhtml.xml" />
+      <xi:include href="chapter31/evolution-data-server.xml" />
+      <xi:include href="chapter31/gnome-doc-utils.xml" />
       <xi:include href="chapter31/yelp.xml" />
       <xi:include href="chapter31/bug-buddy.xml" />
       <xi:include href="chapter31/gtksourceview.xml" />
@@ -352,15 +356,16 @@
       <xi:include href="chapter31/gucharmap.xml" />
       <xi:include href="chapter31/nautilus-cd-burner.xml" />
       <xi:include href="chapter31/zenity.xml" />
-      <xi:include href="chapter31/gnome-speech.xml" />
       <xi:include href="chapter31/at-spi.xml" />
+      <xi:include href="chapter31/libgail-gnome.xml" />
+      <xi:include href="chapter31/java-access-bridge.xml" />
+      <xi:include href="chapter31/gnome-speech.xml" />
       <xi:include href="chapter31/gnome-mag.xml" />
       <xi:include href="chapter31/gnopernicus.xml" />
       <xi:include href="chapter31/gok.xml" />
       <xi:include href="chapter31/epiphany.xml" />
       <xi:include href="chapter31/gnomemeeting.xml" />
       <xi:include href="chapter31/gnome-games.xml" />
-      <xi:include href="chapter31/gnome2-user-docs.xml" />
       <xi:include href="chapter31/gdm.xml" />
     </stage>
     <stage name="Chapter 32 (GNOME 1.4 Libraries)">
@@ -436,6 +441,8 @@
       <xi:include href="chapter37/xvid.xml" />
       <xi:include href="chapter37/xine-lib.xml" />
       <xi:include href="chapter37/libmikmod.xml" />
+      <xi:include href="chapter37/gstreamer.xml" />
+      <xi:include href="chapter37/gst-plugins.xml" />
     </stage>
     <stage name="Chapter 38 (Audio utilities)">
       <xi:include href="chapter38/mpg123.xml" />

@@ -23,9 +23,6 @@
         <name>librsvg</name>
       </requires>
       <utilizes>
-        <name>esound</name>
-      </utilizes>
-      <utilizes>
         <name>guile</name>
       </utilizes>
     </packageinfo>
@@ -36,12 +33,11 @@
       </unpack>
     </stage>
     <stage name="Creating user and group">
-      <execute command="groupadd">
-        <param>-f</param>
+      <execute command="getent group games &gt;/dev/null || groupadd">
         <param>games</param>
       </execute>
-      <execute command="grep -q ^games /etc/passwd || useradd">
-        <param>-c games</param>
+      <execute command="getent passwd games &gt;/dev/null || useradd">
+        <param>-c 'Games High Score Owner'</param>
         <param>-d /var/lib/games</param>
         <param>-g games</param>
         <param>-s /bin/false</param>
@@ -56,6 +52,9 @@
         <option>parents</option>
         <name>/var/lib/games</name>
       </mkdir>
+      <ownership user="games" group="games">
+	<name>/var/lib/games</name>
+      </ownership>
       <configure>
         <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
         <param>--localstatedir=/var/lib</param>

@@ -19,6 +19,9 @@
       <requires>
         <name>gtksourceview</name>
       </requires>
+      <utilizes>
+	<name>aspell</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

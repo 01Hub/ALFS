@@ -26,16 +26,19 @@
         <name>startup-notification</name>
       </utilizes>
       <utilizes>
-        <name>esound</name>
+        <name>libgsf</name>
       </utilizes>
       <utilizes>
-        <name>libgsf</name>
+        <name>libcroco</name>
       </utilizes>
       <utilizes>
         <name>cdparanoia</name>
       </utilizes>
       <utilizes>
         <name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-utils</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

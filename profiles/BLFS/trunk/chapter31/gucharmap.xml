@@ -17,9 +17,6 @@
         <name>intltool</name>
       </requires>
       <requires>
-        <name>popt</name>
-      </requires>
-      <requires>
         <name>gtk+2</name>
       </requires>
       <utilizes>

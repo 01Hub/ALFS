@@ -14,13 +14,13 @@
   <package name="gtkhtml" version="&gtkhtml-version;">
     <packageinfo>
       <requires>
-        <name>gail</name>
-      </requires>
-      <requires>
-        <name>libgnomeprintui</name>
+        <name>gal</name>
       </requires>
       <utilizes>
         <name>libsoup</name>
+      </utilizes>
+      <utilizes>
+	<name>gail</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -35,7 +35,7 @@
       </stageinfo>
       <configure>
         <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-        <param>--libexecdit=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+        <param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
       </configure>
       <make />
       <make>

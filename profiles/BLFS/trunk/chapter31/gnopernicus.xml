@@ -14,7 +14,7 @@
   <package name="gnopernicus" version="&gnopernicus-version;">
     <packageinfo>
       <requires>
-        <name>libgnomeui</name>
+        <name>libgail-gnome</name>
       </requires>
       <requires>
         <name>scrollkeeper</name>
@@ -23,8 +23,11 @@
         <name>gnome-speech</name>
       </requires>
       <requires>
-        <name>at-spi</name>
+        <name>gnome-mag</name>
       </requires>
+      <utilizes>
+	<name>gtk-doc</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -38,8 +41,10 @@
       </stageinfo>
       <configure>
         <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-        <param>--sysconfdir=/etc/gnome</param>
-        <param>--localstatedir=/var/lib</param>
+        <param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+	<param>--sysconfdir=/etc/gnome</param>
+	<param>--localstatedir=/var/lib</param>
+	<param>--with-default-fonts-path=/usr/X11R6/lib/X11/fonts/Type1</param>
       </configure>
       <make />
       <make>

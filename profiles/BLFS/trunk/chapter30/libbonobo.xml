@@ -17,8 +17,14 @@
         <name>orbit2</name>
       </requires>
       <requires>
+	<name>libxml2</name>
+      </requires>
+      <requires>
         <name>XML-Parser</name>
       </requires>
+      <utilizes>
+	<name>&ximpl;</name>
+      </utilizes>
       <utilizes>
         <name>gtk-doc</name>
       </utilizes>
@@ -33,15 +39,17 @@
     <stageinfo>
       <base>&build_dir;/&libbonobo-directory;</base>
     </stageinfo>
-    <configure>
-      <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-      <param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
-      <param>--sysconfdir=/etc/gnome</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>&ldconfig;</stage>
+      <configure>
+	<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+	<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+	<param>--sysconfdir=/etc/gnome</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+      &ldconfig;
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libbonobo-directory;</remove>
     </stage>

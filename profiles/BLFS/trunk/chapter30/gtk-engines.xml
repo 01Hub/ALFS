@@ -24,16 +24,18 @@
       </unpack>
     </stage>
     <stage name="Installing">
-    <stageinfo>
-      <base>&build_dir;/&gtk-engines-directory;</base>
-    </stageinfo>
-    <configure>
-      <param>--prefix=/usr</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>&ldconfig;</stage>
+      <stageinfo>
+	<base>&build_dir;/&gtk-engines-directory;</base>
+      </stageinfo>
+      <configure>
+	<param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+      &ldconfig;
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gtk-engines-directory;</remove>
     </stage>

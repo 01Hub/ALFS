@@ -106,3 +106,12 @@
 <!ENTITY libmikmod-version      "3.1.10">
 <!ENTITY libmikmod-package      "libmikmod-&libmikmod-version;.tar.gz">
 <!ENTITY libmikmod-directory    "libmikmod-&libmikmod-version;">
+
+<!ENTITY gstreamer-version   "0.8.7">
+<!ENTITY gstreamer-package   "gstreamer-&gstreamer-version;.tar.bz2">
+<!ENTITY gstreamer-directory "gstreamer-&gstreamer-version;">
+
+<!ENTITY gst-plugins-version   "0.8.5">
+<!ENTITY gst-plugins-package   "gst-plugins-&gst-plugins-version;.tar.bz2">
+<!ENTITY gst-plugins-directory "gst-plugins-&gst-plugins-version;">
+

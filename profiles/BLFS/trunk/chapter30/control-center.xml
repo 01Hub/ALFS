@@ -22,14 +22,17 @@
       <requires>
         <name>metacity</name>
       </requires>
+      <requires>
+      	<name>gnome-icon-theme</name>
+      </requires>
       <utilizes>
-        <name>esound</name>
-      </utilizes>
-      <utilizes>
-        <name>alsa</name>
+        <name>alsa-lib</name>
       </utilizes>
       <utilizes>
         <name>gst-plugins</name>
+      </utilizes>
+      <utilizes>
+	<name>xscreensaver</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -37,6 +40,16 @@
         <archive>&packages_dir;/&control-center-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&control-center-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&control-center-gswitchit-patch;</param>
+      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>

@@ -25,6 +25,9 @@
       <utilizes>
         <name>gtk-doc</name>
       </utilizes>
+      <utilizes>
+	<name>docbook-utils</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -36,16 +39,18 @@
     <stageinfo>
       <base>&build_dir;/&gconf2-directory;</base>
     </stageinfo>
-    <configure>
-      <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-      <param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
-      <param>--sysconfdir=/etc/gnome</param>
-      <param>--disable-gtk-doc</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>&ldconfig;</stage>
+      <configure>
+	<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+	<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+	<param>--sysconfdir=/etc/gnome</param>
+	<param>--disable-gtk-doc</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+      &ldconfig;
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gconf2-directory;</remove>
     </stage>

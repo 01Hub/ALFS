@@ -12,6 +12,11 @@
 ]>
 <alfs>
   <package name="gnome-keyring" version="&gnome-keyring-version;">
+    <packageinfo>
+      <requires>
+	<name>gtk+2</name>
+      </requires>
+    </packageinfo>
     <stage name="Unpacking.">
       <unpack>
         <archive>&packages_dir;/&gnome-keyring-package;</archive>

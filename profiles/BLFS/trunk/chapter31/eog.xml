@@ -14,7 +14,7 @@
   <package name="eog" version="&eog-version;">
     <packageinfo>
       <requires>
-        <name>libgnomeprintui</name>
+        <name>eel</name>
       </requires>
       <utilizes>
         <name>libjpeg</name>
