@@ -1,7 +1,7 @@
 ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v6b.tar.gz
 ftp://ftp.iasi.roedu.net/pub/mirrors/ftp.gimp.org/gimp/libs/libpng-1.2.5.tar.bz2
 http://www.linuxfromscratch.org/patches/blfs/5.1/libpng-1.2.5-link-to-proper-libs.patch
-http://libtiff.maptools.org/dl/tiff-v3.6.1.tar.gz
+ftp://ftp.remotesensing.org/pub/libtiff/tiff-v3.6.1.tar.gz
 ftp://sunfreeware.secsup.org/pub/solaris/freeware/SOURCES/libungif-4.1.0b1.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/5.1/libungif-4.1.0b1-va_start.patch
 http://umn.dl.sourceforge.net/sourceforge/libmng/libmng-1.0.7.tar.gz
