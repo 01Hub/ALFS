@@ -12,18 +12,9 @@
 			<base>&build_dir;/&lfs-bootscripts-directory;</base>
 		</stageinfo>
 
-		<copy>
-			<option>archive</option>
-			<source>rc.d</source>
-			<source>sysconfig</source>
-			<destination>/etc</destination>
-		</copy>
-
-		<ownership user="root" group="root">
-			<option>recursive</option>
-			<name>/etc/rc.d</name>
-			<name>/etc/sysconfig</name>
-		</ownership>
+		<make>
+			<param>install</param>
+		</make>
 	</stage>
 
 	<stage name="Clean-up.">

@@ -16,12 +16,6 @@
 			<base>&build_dir;/&grub-directory;</base>
 		</stageinfo>
 
-		<search_replace base="&build_dir;/&grub-directory;">
-			<file>stage2/fsys_reiserfs.c</file>
-			<find>2 long</find>
-			<replace>2</replace>
-		</search_replace>
-
 		<configure>
 			<param>--prefix=/usr</param>
 		</configure>
