@@ -43,11 +43,11 @@ void log_handler_action(const char *format, ...);
 
 void log_stopped_execution(void);
 
-void log_end_time(element_s *el, int status);
-void log_start_time(element_s *el);
+void log_end_time(const element_s * const el, const int status);
+void log_start_time(const element_s * const el);
 
-void start_logging_element(element_s *el);
-void end_logging_element(element_s *el, int i);
+void start_logging_element(const element_s * const el);
+void end_logging_element(const element_s * const el, const int status);
 
 
 #endif /* H_LOGGING_ */
