@@ -6,8 +6,9 @@
 
 <itemizedlist>
 
-<listitem><para>April 2nd, 2004 [jwrober]: Cleaned up elem_alfs, elem_base,
-and part of elem_stageinfo.</para></listitem>
+<listitem><para>April 2nd, 2004 [jwrober]: Cleaned up elem_alfs,
+elem_archive, elem_base, elem_configure, and part of
+elem_stageinfo.</para></listitem>
 
 <listitem><para>April 2nd, 2004 [jwrober]: Added more formatting to the XML
 DTD intro page to match conventions.</para></listitem>
@@ -16,14 +17,14 @@ DTD intro page to match conventions.</para></listitem>
 page.</para></listitem>
 
 <listitem><para>March 30th, 2004 [jwrober]: Removed the implementation
-specific information in unpack element &emdash; Bug 768.</para></listitem>
+specific information in elem_unpack &emdash; Bug 768.</para></listitem>
 
-<listitem><para>March 30th, 2004 [jwrober]: Removed the note about digest
-and reference being deprecated in the DTD &emdash; Bug
+<listitem><para>March 30th, 2004 [jwrober]: Removed the note about
+elem_digest and elem_reference being deprecated in the DTD &emdash; Bug
 767.</para></listitem>
 
 <listitem><para>March 30th, 2004 [jwrober]: Added info about the
-parents option to mkdir &emdash; Bug 765.</para></listitem>
+parents option to elem_mkdir &emdash; Bug 765.</para></listitem>
 
 <listitem><para>March 30th, 2004 [jwrober]: Finished the XML and DTD
 syntax intro &emdash; Bug 784.</para></listitem>
@@ -34,17 +35,17 @@ syntax intro &emdash; Bug 784.</para></listitem>
 <listitem><para>March 14th, 2004 [jwrober]: Added an initial stab at an
 XML and DTD syntax intro &emdash; Bug 784.</para></listitem>
 
-<listitem><para>February 23rd, 2004 [jwrober]: Finished the download element
+<listitem><para>February 23rd, 2004 [jwrober]: Finished the elem_download
 description &emdash; Bug 760.</para></listitem>
 
-<listitem><para>February 23rd, 2004 [jwrober]: Finished the url element
+<listitem><para>February 23rd, 2004 [jwrober]: Finished the elem_url
 description &emdash; Bug 769.</para></listitem>
 
-<listitem><para>February 23rd, 2004 [jwrober]: Finished the digest element
+<listitem><para>February 23rd, 2004 [jwrober]: Finished the elem_digest
 description &emdash; Bug 759.</para></listitem>
 
-<listitem><para>February 23rd, 2004 [jwrober]: Fixed copy element
-description &emdash; Bug 758.</para></listitem>
+<listitem><para>February 23rd, 2004 [jwrober]: Fixed elem_copy description
+&emdash; Bug 758.</para></listitem>
 
 <listitem><para>February 23rd, 2004 [jwrober]: Fixed wierd character in
 acknowledgements page &emdash; Bug 755.</para></listitem>

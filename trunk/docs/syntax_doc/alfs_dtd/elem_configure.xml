@@ -29,17 +29,10 @@
 
 <para>The element <filename>configure</filename> is one of the many main
 operation elements. The element <filename>configure</filename> is used to
-describe the command <command>configure</command>.</para>
-
-<para>Notice that the elements <filename>param</filename> and
-<filename>prefix</filename> are surrounded by parathensis
-[&nbsp;(&nbsp;)&nbsp;] and followed by an asterisk [&nbsp;*&nbsp;]. The
-asterisk signifies that each element can be used optionally inside the
-<filename>configure</filename> declaration in a profile and that, if used,
-they can be used more than once.</para>
+describe the command <userinput>configure</userinput>.</para>
 
 <para>When processing the element, one executes the command
-<command>./configure</command> with the parameter(s) and prefix(es)
+<userinput>./configure</userinput> with the parameter(s) and prefix(es)
 specified.</para>
 
 <para>The attribute <filename>base</filename> allows you to specify the
@@ -48,8 +41,8 @@ directory in which the command is executed. See
 
 <para>The attribute <filename>command</filename> allows you to specify a
 custom command if you don't want to use the default
-<command>./configure</command>. This is extremely useful when running
-<command>./configure</command> in a build directory outside the main source
+<userinput>./configure</userinput>. This is extremely useful when running
+<userinput>./configure</userinput> in a build directory outside the main source
 directory.  The packages <filename>gcc</filename> and
 <filename>glibc</filename> often require this.</para>
 
@@ -58,7 +51,8 @@ directory.  The packages <filename>gcc</filename> and
 <sect2>
 <title>Examples</title>
 
-<para>This example calls <filename>configure</filename> without any
+<para><emphasis role="bold">EXAMPLE #1</emphasis>&nbsp;:&nbsp;
+This example calls <filename>configure</filename> without any
 parameters&nbsp;:</para>
 
 <screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
@@ -70,8 +64,9 @@ parameters&nbsp;:</para>
 cd /usr/src/mypackage/
 <command>./configure</command></userinput></screen>
 
-<para>This example calls <filename>configure</filename> with a
-parameter&nbsp;: </para>
+<para><emphasis role="bold">EXAMPLE #2</emphasis>&nbsp;:&nbsp;
+This example calls <filename>configure</filename> with a parameter&nbsp;:
+</para>
 
 <screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
 	&lt;prefix&gt;CFLAGS=&quot;...&quot;&lt;prefix&gt;
@@ -85,8 +80,24 @@ parameter&nbsp;: </para>
 cd /usr/src/mypackage/
 <command>./configure --prefix=/opt/mypackage</command></userinput></screen>
 
-<para>This example calls <filename>configure</filename> with a parameter and
-an explicit command :</para>
+<para><emphasis role="bold">EXAMPLE #3</emphasis>&nbsp;:&nbsp;
+This example calls <filename>configure</filename> with a parameter and uses
+prefix&nbsp;:</para>
+
+<screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot;&gt;
+	&lt;prefix&gt;PATH=/usr/local/bin&lt;/prefix&gt;
+	&lt;param&gt;--prefix=/opt/mypackage&lt;/param&gt;
+&lt;/configure&gt;</userinput></screen>
+
+<para>The equivalent bash script is&nbsp;:</para>
+
+<screen><userinput>echo Executing configure
+cd /usr/src/mypackage/
+<command>PATH=/usr/local/bin ./configure --prefix=/opt/mypackage</command></userinput></screen>
+
+<para><emphasis role="bold">EXAMPLE #4</emphasis>&nbsp;:&nbsp;
+This example calls <filename>configure</filename> with a parameter and an
+explicit command (same result as example #3)&nbsp;:</para>
 
 <screen><userinput>&lt;configure base=&quot;/usr/src/mypackage/&quot; command=&quot;PATH=/usr/local/bin ./configure&quot;&gt;
 	&lt;param&gt;--prefix=/opt/mypackage&lt;/param&gt;
