@@ -227,6 +227,7 @@ static void handle_child_output(struct child_output * const child)
 		return;
 
 	child->used += input;
+	child->buf[child->used] = '\0';
 	while ((line_end = strchr(&child->buf[0], '\n')) != NULL) {
 		size_t line_length = (line_end - &child->buf[0]) + 1;
 
