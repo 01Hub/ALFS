@@ -10,17 +10,8 @@ configurations the profile could be used to generate.
 
 To use the profile you should :-
 
-1) If you downloaded the LFS packages seperately you should copy
-   the config_separate directory to a directory named config :-
-
-  	cp -r config_separate config
-
-or
-
-   If you downloaded the lfs-package tarball you should copy the
-   config_tarball directory to a directory named config :-
-
-   	cp -r config_tarball config
+1) First it is recommended to make a backup copy of the config
+directory prior to making any modifications to the files within it.
 
 2) Customize the files in the new configuration directory
    - the file general.ent contains a bunch of entity declarations
@@ -47,4 +38,3 @@ or
 4) Execute sh ./runit as root. Please note that if you have installed
    nALFS into a location other than /usr/local/bin you will need to edit
    runit to point to your copy of nALFS.
-
