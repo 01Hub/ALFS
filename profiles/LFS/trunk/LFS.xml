@@ -129,8 +129,8 @@
 		<xi:include href="chapter06/flex.xml" />
 		<xi:include href="chapter06/gettext.xml" />
 		<xi:include href="chapter06/vim.xml" />
-		<xi:include href="chapter06/net-tools.xml" />
 		<xi:include href="chapter06/inetutils.xml" />
+		<xi:include href="chapter06/iproute2.xml" />
 		<xi:include href="chapter06/perl.xml" />
 		<xi:include href="chapter06/texinfo.xml" />
 		<xi:include href="chapter06/autoconf.xml" />

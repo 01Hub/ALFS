@@ -97,6 +97,8 @@
 			<source>&inetutils-package;</source>
 			<source>&inetutils-no-man-pages-patch;</source>
 			<source>&inetutils-kernel-headers-patch;</source>
+ 			<source>&iproute2-package;</source>
+ 			<source>&iproute2-remove-db-patch;</source>
 			<source>&kbd-package;</source>
 			<source>&less-package;</source>
 			<source>&lfs-bootscripts-package;</source>
@@ -115,8 +117,6 @@
 			<source>&module-tools-package;</source>
 			<source>&ncurses-package;</source>
 			<source>&nALFS-package;</source>
-			<source>&net-tools-package;</source>
-			<source>&net-tools-gcc34-patch;</source>
 			<source>&patch-package;</source>
 			<source>&perl-package;</source>
 			<source>&perl-libc-1-patch;</source>
