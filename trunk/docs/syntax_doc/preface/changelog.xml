@@ -1,10 +1,12 @@
 <sect1 id="preface-changelog" xreflabel="ChangeLog">
-<?dbhtml filename="changelog.html" dir="preface"?>
 <title>ChangeLog</title>
 
 <para>&version; - &releasedate;</para>
 
 <itemizedlist>
+
+<listitem><para>May 29th, 2004 [jwrober]: Upgraded to DocBook v4.3 and some
+other little nagging bugs fixes in the render.</para></listitem>
 
 <listitem><para>May 28th, 2004 [jwrober]: Updated in elem_patch to
 include element prefix &emdash; Bug 766.</para></listitem>
