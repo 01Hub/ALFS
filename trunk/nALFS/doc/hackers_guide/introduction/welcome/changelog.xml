@@ -1,0 +1,17 @@
+<sect1 id="intro-welcome-changelog" xreflabel="ChangeLog">
+<?dbhtml filename="changelog.html" dir="introduction"?>
+<title>ChangeLog</title>
+
+<para>&version; &emdash; &releasedate;</para>
+
+<itemizedlist>
+
+<listitem><para>October 8th, 2003 [jwrober]: Added an Introduction
+section.</para></listitem>
+
+<listitem><para>October 7th, 2003 [jwrober]: Basic book skeleton
+created</para></listitem>
+
+</itemizedlist>
+
+</sect1>
