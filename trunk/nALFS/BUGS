@@ -1,9 +1,0 @@
-List of known bugs and "bugs":
-==============================
-
-
-o   Timer keeps going after pause is pressed. This is NOT a bug.
-    Backend does keep executing (for some time at least).
-    'p' is "pausing the output", not the backend.
-
-o   --enable-static-link and handlers
