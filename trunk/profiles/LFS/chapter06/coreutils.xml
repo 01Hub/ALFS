@@ -7,6 +7,7 @@
 		</unpack>
 
 		<copy>
+			<source>&packages_dir;/&coreutils-posixver-patch;</source>
 			<source>&packages_dir;/&coreutils-uname-patch;</source>
 			<source>&packages_dir;/&coreutils-hostname-patch;</source>
 			<destination>&build_dir;</destination>
@@ -17,6 +18,12 @@
 		<stageinfo>
 			<base>&build_dir;/&coreutils-directory;</base>
 		</stageinfo>
+
+		<patch>
+			<param>-N</param>
+			<param>-p1</param>
+			<param>-i ../&coreutils-posixver-patch;</param>
+		</patch>
 
 		<patch>
 			<param>-N</param>
@@ -129,6 +136,7 @@
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&coreutils-directory;</remove>
+		<remove>&build_dir;/&coreutils-posixver-patch;</remove>
 		<remove>&build_dir;/&coreutils-uname-patch;</remove>
 		<remove>&build_dir;/&coreutils-hostname-patch;</remove>
 	</stage>

@@ -6,17 +6,6 @@
 			<destination>&build_dir;</destination>
 		</unpack>
 
-		<unpack>
-			<digest>&glibc-linuxthreads-md5;</digest>
-			<archive>&packages_dir;/&glibc-linuxthreads-package;</archive>
-			<destination>&build_dir;/&glibc-directory;</destination>
-		</unpack>
-
-		<copy>
-			<source>&packages_dir;/&glibc-sscanf-patch;</source>
-			<destination>&build_dir;</destination>
-		</copy>
-
 		<mkdir base="&build_dir;">
 			<option>parents</option>
 			<name>glibc-build</name>
@@ -32,19 +21,14 @@
 			<base>&build_dir;/glibc-build</base>
 		</stageinfo>
 
-		<patch base="&build_dir;/&glibc-directory;">
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i ../&glibc-sscanf-patch;</param>
-		</patch>
-
 		<configure command="../&glibc-directory;/configure">
 			<param>--prefix=/tools</param>
 			<param>--disable-profile</param>
-			<param>--enable-add-ons</param>
+			<param>--enable-add-ons=linuxthreads</param>
 			<param>--with-headers=/tools/include</param>
 			<param>--with-binutils=/tools/bin</param>
 			<param>--without-gd</param>
+			<param>--without-cvs</param>
 		</configure>
 
 		<make />
@@ -87,6 +71,5 @@
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&glibc-directory;</remove>
 		<remove>&build_dir;/glibc-build</remove>
-		<remove>&build_dir;/&glibc-sscanf-patch;</remove>
 	</stage>
 </package>
