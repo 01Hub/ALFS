@@ -9,6 +9,9 @@
 %package_entities;
 %config_entities;
 
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
 ]>
 <alfs>
   <package name="sendmail" version="&sendmail-version;">
@@ -25,11 +28,8 @@
         <archive>&packages_dir;/&sendmail-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
-      <unpack>
-        <archive>&packages_dir;/&blfs-bootscripts-package;</archive>
-        <destination>&build_dir;</destination>
-      </unpack>
     </stage>
+    &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="groupadd">
         <param>-f</param>
@@ -100,9 +100,9 @@
         <param>install-sendmail</param>
       </make>
     </stage>
+    &bootscripts-clean;
     <stage name="Cleanup.">
       <remove>&build_dir;/&sendmail-directory;</remove>
-      <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
     </stage>
   </package>
 </alfs>

@@ -9,6 +9,9 @@
 %package_entities;
 %config_entities;
 
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
 ]>
 <alfs>
   <package name="libusb" version="&libusb-version;">
@@ -25,11 +28,8 @@
         <archive>&packages_dir;/&libusb-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
-      <unpack>
-        <archive>&packages_dir;/&blfs-bootscripts-package;</archive>
-        <destination>&build_dir;</destination>
-      </unpack>
     </stage>
+    &bootscripts-get;
     <stage name="Creating group">
       <execute command="groupadd">
         <param>-f</param>
@@ -58,9 +58,9 @@
         <param>install-usb</param>
       </make>
     </stage>
+    &bootscripts-clean;
     <stage name="Cleanup">
       <remove>&build_dir;/&libusb-directory;</remove>
-      <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
     </stage>
   </package>
 </alfs>

@@ -9,6 +9,9 @@
 %package_entities;
 %config_entities;
 
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
 ]>
 <alfs>
   <package name="proftpd" version="&proftpd-version;">
@@ -17,11 +20,8 @@
         <archive>&packages_dir;/&proftpd-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
-      <unpack>
-        <archive>&packages_dir;/&blfs-bootscripts-package;</archive>
-        <destination>&build_dir;</destination>
-      </unpack>
     </stage>
+    &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="groupadd">
         <param>-f</param>
@@ -114,9 +114,9 @@
 	</content>
       </textdump>
     </stage>
+    &bootscripts-clean;
     <stage name="Cleanup">
       <remove>&build_dir;/&proftpd-directory;</remove>
-      <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
     </stage>
   </package>
 </alfs>

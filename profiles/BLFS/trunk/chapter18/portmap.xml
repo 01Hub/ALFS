@@ -9,6 +9,9 @@
 %package_entities;
 %config_entities;
 
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
 ]>
 <alfs>
   <package name="portmap" version="&portmap-version;">
@@ -22,11 +25,8 @@
         <archive>&packages_dir;/&portmap-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
-      <unpack>
-        <archive>&packages_dir;/&blfs-bootscripts-package;</archive>
-        <destination>&build_dir;</destination>
-      </unpack>
     </stage>
+    &bootscripts-get;
     <stage name="Patching">
       <stageinfo>
         <base>&build_dir;/&portmap-directory;</base>
@@ -59,9 +59,9 @@
         <param>install-portmap</param>
       </make>
     </stage>
+    &bootscripts-clean;
     <stage name="Cleanup">
       <remove>&build_dir;/&portmap-directory;</remove>
-      <remove>&build_dir;/&blfs-bootscripts-directory;</remove>
     </stage>
   </package>
 </alfs>

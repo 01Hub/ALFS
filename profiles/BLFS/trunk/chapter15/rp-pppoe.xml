@@ -9,6 +9,9 @@
 %package_entities;
 %config_entities;
 
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
 ]>
 <alfs>
   <package name="rp-pppoe" version="&rp-pppoe-version;">
@@ -22,11 +25,8 @@
         <archive>&packages_dir;/&rp-pppoe-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
-      <unpack>
-        <archive>&packages_dir;/&blfs-bootscripts-package;</archive>
-        <destination>&build_dir;</destination>
-      </unpack>
     </stage>
+    &bootscripts-get;
     <stage name="Installing.">
       <stageinfo>
         <base>&build_dir;/&rp-pppoe-directory;/src</base>
@@ -51,6 +51,7 @@
         <content>=ONBOOT=yes =SERVICE=pppoe</content>
       </textdump>
     </stage>
+    &bootscripts-clean;
     <stage name="Cleanup.">
       <remove>&build_dir;/&rp-pppoe-directory;</remove>
     </stage>
