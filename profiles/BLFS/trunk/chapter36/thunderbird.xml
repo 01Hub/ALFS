@@ -22,23 +22,31 @@
       <requires>
         <name>libidl</name>
       </requires>
-      <requires>
-        <name>libmng</name>
-      </requires>
-      <requires>
-        <name>which</name>
-      </requires>
-      <requires>
-        <name>hd2u</name>
-      </requires>
+      <utilizes>
+	<name>gnupg</name>
+      </utilizes>
+      <utilizes>
+	<name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+	<name>unzip</name>
+      </utilizes>
+      <utilizes>
+	<name>gnome-vfs2</name>
+      </utilizes>
+      <utilizes>
+	<name>libgnome</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>doxygen</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&thunderbird-package;</archive>
-        <destination>&build_dir;</destination>
-      </unpack>
-      <unpack>
-        <archive>&build_dir;/mozilla-thunderbird/archives/&thunderbird-thunderbird-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
@@ -51,53 +59,64 @@
         </environment>
         <base>&build_dir;/&thunderbird-directory;</base>
       </stageinfo>
-      <execute command="find -type f -print0 | xargs -0 dos2unix --d2u" />
       <configure>
-        <param>--prefix=/opt/thunderbird-&thunderbird-version;</param>
-        <param>--enable-default-toolkit=gtk2</param>
-        <param>--with-x</param>
-        <param>--with-system-zlib</param>
-        <param>--with-system-jpeg</param>
-        <param>--with-system-png</param>
-        <param>--with-system-mng</param>
-        <param>--enable-xft</param>
-        <param>--enable-crypto</param>
-        <param>--disable-accessibility</param>
-        <param>--disable-tests</param>
-        <param>--disable-debug</param>
-        <param>--disable-logging</param>
-        <param>--enable-reorder</param>
-        <param>--enable-strip</param>
-        <param>--disable-pedantic</param>
-        <param>--enable-cpp-rtti</param>
-        <param>--enable-extensions=all</param>
-        <param>--disable-calendar</param>
+	<param>--prefix=/usr</param>
+	<param>--with-default-mozilla-five-home=/usr/lib/thunderbird-&thunderbird-version;</param>
+	<param>--with-system-zlib</param>
+	<param>--with-system-png</param>
+	<param>--enable-application=mail</param>
+	<param>--enable-default-toolkit=gtk2</param>
+	<param>--enable-extensions=wallet,spellcheck,xmlextras,webservices</param>
+	<param>--enable-crypto</param>
+	<param>--enable-xft</param>
+	<param>--enable-xinerama</param>
+	<param>--enable-optimize</param>
+	<param>--enable-reorder</param>
+	<param>--enable-strip</param>
+	<param>--enable-cpp-rtti</param>
+	<param>--enable-single-profile</param>
+	<param>--enable-necko-protocols=http,file,jar,viewsource,res,data</param>
+	<param>--enable-image-decoders=default,-xbm</param>
+	<param>--disable-freetype2</param>
+	<param>--disable-accessibility</param>
+	<param>--disable-debug</param>
+	<param>--disable-tests</param>
+	<param>--disable-logging</param>
+	<param>--disable-pedantic</param>
+	<param>--disable-installer</param>
+	<param>--disable-profilesharing</param>
+	<param>--disable-mathml</param>
+	<param>--disable-oji</param>
+	<param>--disable-plugins</param>
+	<param>--disable-necko-disk-cache</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
-      <link>
-        <option>force</option>
-        <target>/opt/thunderbird-&thunderbird-version;/bin/thunderbird</target>
-        <name>/usr/bin/MozillaThunderbird</name>
-      </link>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/include/thunderbird-&thunderbird-version;/nss</name>
+      </mkdir>
+      <execute command="cp">
+	<param>-Lf dist/private/nss/*.h dist/public/nss/*.h</param>
+	<param>/usr/include/thunderbird-&thunderbird-version;/nss</param>
+      </execute>
       <stage name="Multi-User Operation Setup">
         <stageinfo>
           <environment>
-            <variable name="LD_LIBRARY_PATH">/opt/thunderbird-&thunderbird-version;/lib/mozilla-&thunderbird-moz-lib-version;</variable>
-            <variable name="MOZILLA_FIVE_HOME">/opt/thunderbird-&thunderbird-version;/lib/mozilla-&thunderbird-moz-lib-version;</variable>
+            <variable name="LD_LIBRARY_PATH">/usr/lib/thunderbird-&thunderbird-version;</variable>
+            <variable name="MOZILLA_FIVE_HOME">/usr/lib/thunderbird-&thunderbird-version;</variable>
           </environment>
-          <base>/opt/thunderbird-&thunderbird-version;/lib/mozilla-&thunderbird-moz-lib-version;</base>
+          <base>/usr/lib/thunderbird-&thunderbird-version;</base>
         </stageinfo>
         <execute command="./regxpcom" />
         <execute command="./regchrome" />
-        <execute command="touch `find /opt/thunderbird-&thunderbird-version;/lib/mozilla-&thunderbird-moz-lib-version; -name *.rdf`" />
+        <execute command="touch `find . -name *.rdf`" />
       </stage>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&thunderbird-directory;</remove>
-      <remove>&build_dir;/mozilla-thunderbird</remove>
     </stage>
   </package>
 </alfs>
