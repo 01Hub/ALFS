@@ -3,8 +3,8 @@
 <!ENTITY autoconf-package "autoconf-&autoconf-version;.tar.bz2">
 <!ENTITY autoconf-directory "autoconf-&autoconf-version;">
 
-<!ENTITY automake-md5 "5e8a685a304c0def671decdfe453a631">
-<!ENTITY automake-version "1.8.3">
+<!ENTITY automake-md5 "57f405a10fc5990ed6120fbbef3ab502">
+<!ENTITY automake-version "1.8.4">
 <!ENTITY automake-package "automake-&automake-version;.tar.bz2">
 <!ENTITY automake-directory "automake-&automake-version;">
 
@@ -68,10 +68,10 @@
 <!ENTITY ed-mkstemp-patch-md5 "e7e2248f9baa76de3db8210298e0d79e">
 <!ENTITY ed-mkstemp-patch "ed-&ed-version;-mkstemp.patch">
 
-<!ENTITY expect-md5 "391a4b93dc01b1aad5f6e0752d5d5c73">
-<!ENTITY expect-version "5.40.1">
-<!ENTITY expect-package "expect.tar.gz">
-<!ENTITY expect-directory "expect-5.40">
+<!ENTITY expect-md5 "490664773286690d111d9cd055c50700">
+<!ENTITY expect-version "5.41.0">
+<!ENTITY expect-package "expect-&expect-version;.tar.gz">
+<!ENTITY expect-directory "expect-5.41">
 
 <!ENTITY expect-spawn-patch-md5 "ef6d0d0221c571fb420afb7033b3bbba">
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
@@ -185,8 +185,8 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "dc6dd27203a975afeb13174d83d6fa6a">
-<!ENTITY lfs-bootscripts-version "2.0.3">
+<!ENTITY lfs-bootscripts-md5 "4f33a7059b381d0ed02684e9bf64186a">
+<!ENTITY lfs-bootscripts-version "2.0.4">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
@@ -260,9 +260,9 @@
 <!ENTITY patch-package "patch-&patch-version;.tar.gz">
 <!ENTITY patch-directory "patch-&patch-version;">
 
-<!ENTITY perl-md5 "6d2b389f8c6424b7af303f417947714f">
-<!ENTITY perl-version "5.8.3">
-<!ENTITY perl-package "perl-&perl-version;.tar.gz">
+<!ENTITY perl-md5 "3eb135afd0114f4e1acdd4ad6b8fd947">
+<!ENTITY perl-version "5.8.4">
+<!ENTITY perl-package "perl-&perl-version;.tar.bz2">
 <!ENTITY perl-directory "perl-&perl-version;">
 
 <!ENTITY perl-libc-1-patch-md5 "f033161efa8b4b174ec6667e4e739efa">
