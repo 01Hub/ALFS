@@ -84,7 +84,7 @@
 		&c5-flex;
 		&c5-util-linux;
 		&c5-perl;
-		&c6-udev;
+		&c5-udev;
 		&c5-strip;
 	</stage>
 </stage>
