@@ -4651,6 +4651,9 @@ int main(int argc, char **argv)
 
 	read_command_line_options(&argc, &argv);
 
+	if (!post_validate_options())
+		return EXIT_FAILURE;
+
 	init_needed_directories();
 
 
