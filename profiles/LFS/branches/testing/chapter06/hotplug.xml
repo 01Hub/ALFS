@@ -29,7 +29,7 @@
 
 		<copy>
 			<source>etc/hotplug/pnp.distmap</source>
-			<destination>/etc/hotplug</source>
+			<destination>/etc/hotplug</destination>
 		</copy>
 
 		<remove>/etc/init.d</remove>
