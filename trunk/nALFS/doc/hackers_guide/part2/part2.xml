@@ -1,6 +1,6 @@
 <part id="hacker" xreflabel="&book-product; Hackers">
 <?dbhtml filename="part2/hacker.html"?>
-<title>&book-product; Hackers</title>
+<title>&book-product; Code Hackers</title>
 
 &common-common;
 &hacker-hacker;

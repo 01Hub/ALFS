@@ -1,10 +1,11 @@
 <chapter id="common-common" xreflabel="Common">
 <?dbhtml filename="common/common.html" dir="part2"?>
-<title>Common Elements for the &book-product; Hackers Guide</title>
+<title>Common Elements for all &book-product; Hackers</title>
 
 <sect1>
 
-<para>PAGE TO BE WRITTEN</para>
+<para>This chater contains any common information you may need irregardless
+of what you may be doing for the project.</para>
 
 </sect1>
 

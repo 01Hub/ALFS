@@ -60,17 +60,26 @@ be copied to its correspondent newsgroup, and vice versa.</para>
 <sect2>
 <title>Other</title>
 
-<para>The current &book-product; documentation maintainer is
-&book-maintainer-fullname;.  If you need to reach
-&book-maintainer-firstname;, send an email to
-
-<ulink url="mailto:&book-maintainer-address;">&book-maintainer-address;</ulink>.</para>
-
 <para>The current &book-product; source code owner is
 &product-maintainer-fullname;.  If you need to reach
 &product-maintainer-firstname;, send an email to
 
-<ulink url="mailto:&product-maintainer-address;">&product-maintainer-address;</ulink>.</para>
+<ulink url="mailto:&product-maintainer-address;">&product-maintainer-address;</ulink>
+.</para>
+
+<para>The current &book-product; documentation maintainer is
+&book-maintainer-fullname;.  If you need to reach
+&book-maintainer-firstname;, send an email to
+
+<ulink url="mailto:&book-maintainer-address;">&book-maintainer-address;</ulink>
+.</para>
+
+<para>The current &book-product; profile lead maintainer is
+&profile-maintainer-fullname;.  If you need to reach
+&profile-maintainer-firstname;, send an email to
+
+<ulink url="mailto:&profile-maintainer-address;">&profile-maintainer-address;</ulink>
+.</para>
 
 </sect2>
 
