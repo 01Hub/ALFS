@@ -1098,14 +1098,12 @@ static INLINE int write_help(void)
 
 	getyx(windows.main->name, lines_written, i);
 
-	windows.main->ref(0);
-
 	return lines_written;
 }
 
-static void display_help_page(void)
+static INLINE void display_help_page(void)
 {
-	int input, lines, info_top = 0;
+	int lines, top = 0;
 
 
 	windows.active = TMP_WINDOW;
@@ -1117,61 +1115,9 @@ static void display_help_page(void)
 
 	lines = write_help();
 
-	while (1) {
-		input = get_key(windows.main->name);
+	tmp_window_driver(lines, &top);
 
-		switch (input) {
-			case 'k':
-			case KEY_UP:
-				--info_top;
-				break;
-
-			case '\n':
-			case 'j':
-			case KEY_DOWN:
-				++info_top;
-				break;
-
-			case 'b':
-			case MOD_CTRL('p'):
-			case KEY_PPAGE:
-				info_top -= windows.main->lines / 2;
-				break;
-
-			case ' ':
-			case MOD_CTRL('n'):
-			case KEY_NPAGE:
-				info_top += windows.main->lines / 2;
-				break;
-
-			case KEY_HOME:
-				info_top = 0;
-				break;
-
-			case KEY_END:
-				info_top = lines - windows.main->lines + 1;
-				break;
-
-			case '?':
-			case 'q':
-			case 'h':
-			case KEY_LEFT:
-			case KEY_F(10):
-				windows.active = MAIN_WINDOW;
-				return;
-		}
-
-		if (info_top < 0) {
-			info_top = 0;
-		}
-		if (info_top > lines - windows.main->lines + 1) {
-			info_top = lines - windows.main->lines + 1;
-		}
-
-		windows.main->ref(info_top);
-	}
-
-	/* Never reached. */
+	windows.active = MAIN_WINDOW;
 }
 
 /*
@@ -2427,86 +2373,29 @@ static int do_change_option(int input)
 
 static INLINE void change_options(void)
 {
-	int pad_size;
-	int input, lines, info_top = 0;
+	int input;
+	int lines, top = 0;
 
 
 	windows.active = TMP_WINDOW;
 
 	/* Recreate main pad if it is too small. */
-	pad_size = total_number_of_elements();
-	if (pad_size < min_pad_size_for_options) {
-		pad_size = min_pad_size_for_options;
-		recreate_main_window(pad_size);
+	if (total_number_of_elements() < min_pad_size_for_options) {
+		recreate_main_window(min_pad_size_for_options);
 	}
 
 	lines = print_options();
-	windows.main->ref(0);
 
-	while (1) {
-		input = get_key(windows.main->name);
-
-		switch (input) {
-			/*
-			 * Navigation.
-			 */
-
-			case KEY_UP:
-				--info_top;
-				break;
-
-			case '\n':
-			case KEY_DOWN:
-				++info_top;
-				break;
-
-			case MOD_CTRL('p'):
-			case KEY_PPAGE:
-				info_top -= windows.main->lines / 2;
-				break;
-
-			case ' ':
-			case MOD_CTRL('n'):
-			case KEY_NPAGE:
-				info_top += windows.main->lines / 2;
-				break;
-
-			case KEY_HOME:
-				info_top = 0;
-				break;
-
-			case KEY_END:
-				info_top = lines - windows.main->lines + 1;
-				break;
-			/*
-			 * Quit option menu.
-			 */
-
-			case 'q':
-			case KEY_LEFT:
-			case KEY_F(10):
-				windows.active = MAIN_WINDOW;
-				return;
-		
-			default:
-				if (do_change_option(input) != 0) {
-					Nprint_warn("No such option.");
-				} else {
-					lines = print_options();
-				}
+	while ((input = tmp_window_driver(lines, &top)) != -1) {
+		if (do_change_option(input) != 0) {
+			Nprint_warn("No such option.");
+		} else {
+			/* Option changed, print them again. */
+			lines = print_options();
 		}
-
-		if (info_top < 0) {
-			info_top = 0;
-		}
-		if (info_top > lines - windows.main->lines + 1) {
-			info_top = lines - windows.main->lines + 1;
-		}
-
-		windows.main->ref(info_top);
 	}
 
-	/* Never reached. */
+	windows.active = MAIN_WINDOW;
 }
 
 
@@ -2852,8 +2741,26 @@ static char *build_description(element_s *el)
 	return content;
 }
 
-static void write_element_info(element_s *el)
+enum print_info_amount {
+	PRINT_MORE_INFO,
+	PRINT_LESS_INFO
+};
+
+static int write_element_info(
+	element_s *el,
+	enum print_info_amount print_extra_info)
 {
+	int lines, i;
+
+
+	Xwerase(windows.main->name);
+	Xwmove(windows.main->name, 0, 0);
+
+	if (print_extra_info == PRINT_MORE_INFO) {
+		write_extra_element_info(el);
+		Xwaddch(windows.main->name, '\n');
+	}
+	
 	Xwprintw(windows.main->name, "Element name  : %s\n\n", el->name);
 
 	/* Print attributes (if any). */
@@ -2894,205 +2801,32 @@ static void write_element_info(element_s *el)
 	} else {
 		Xwaddstr(windows.main->name, "No content.");
 	}
-}
 
-enum print_info_amount {
-	PRINT_MORE_INFO,
-	PRINT_LESS_INFO
-};
+	getyx(windows.main->name, lines, i);
+
+	return lines;
+}
 
 static void display_element_info(
 	element_s *el,
 	enum print_info_amount print_extra_info)
 {
-	int i, pad_size;
-	int input, lines, info_top = 0;
+	int lines, top = 0;
 
 
 	windows.active = TMP_WINDOW;
 
 	/* Recreate main pad if it is too small. */
-	pad_size = total_number_of_elements();
-	if (pad_size < min_pad_size_for_elements_info) {
-		pad_size = min_pad_size_for_elements_info;
-		recreate_main_window(pad_size);
+	if (total_number_of_elements() < min_pad_size_for_elements_info) {
+		recreate_main_window(min_pad_size_for_elements_info);
 	}
 
-	/*
-	 * Print information and get the number of lines printed.
-	 */
+	lines = write_element_info(el, print_extra_info);
+	
+	tmp_window_driver(lines, &top);
 
-	Xwerase(windows.main->name);
-	Xwmove(windows.main->name, 0, 0);
-
-	if (print_extra_info == PRINT_MORE_INFO) {
-		write_extra_element_info(el);
-		Xwaddch(windows.main->name, '\n');
-	}
-	write_element_info(el);
-
-	getyx(windows.main->name, lines, i);
-	windows.main->ref(0);
-
-	/*
-	 * Enter input loop.
-	 */
-
-	while (1) {
-		input = get_key(windows.main->name);
-
-		switch (input) {
-			case 'k':
-			case KEY_UP:
-				--info_top;
-				break;
-
-			case '\n':
-			case 'j':
-			case KEY_DOWN:
-				++info_top;
-				break;
-
-			case 'b':
-			case MOD_CTRL('p'):
-			case KEY_PPAGE:
-				info_top -= windows.main->lines / 2;
-				break;
-
-			case ' ':
-			case MOD_CTRL('n'):
-			case KEY_NPAGE:
-				info_top += windows.main->lines / 2;
-				break;
-
-			case KEY_HOME:
-				info_top = 0;
-				break;
-
-			case KEY_END:
-				info_top = lines - windows.main->lines + 1;
-				break;
-
-			case 'i':
-			case 'q':
-			case 'h':
-			case KEY_LEFT:
-			case KEY_F(10):
-				windows.active = MAIN_WINDOW;
-				return;
-		}
-
-		if (info_top < 0) {
-			info_top = 0;
-		}
-		if (info_top > lines - windows.main->lines + 1) {
-			info_top = lines - windows.main->lines + 1;
-		}
-
-		windows.main->ref(info_top);
-	}
-
-	/* Never reached. */
+	windows.active = MAIN_WINDOW;
 }
-
-#if 0
-/*
- * Writing elements' recursively.
- */
-
-static void write_element_recursively(element_s *el)
-{
-	(void)el;
-}
-
-static INLINE void display_element_in_xml(element_s *el)
-{
-	int i, pad_size;
-	int input, lines, info_top = 0;
-
-
-	windows.active = TMP_WINDOW;
-
-	/* Recreate main pad if it is too small. */
-	pad_size = total_number_of_elements();
-	if (pad_size < min_pad_size_for_elements_xml) {
-		pad_size = min_pad_size_for_elements_xml;
-		recreate_main_window(pad_size);
-	}
-
-	/*
-	 * Print information and get the number of lines printed.
-	 */
-
-	Xwerase(windows.main->name);
-	Xwmove(windows.main->name, 0, 0);
-
-	write_element_recursively(el);
-
-	getyx(windows.main->name, lines, i);
-	windows.main->ref(0);
-
-	/*
-	 * Enter input loop.
-	 */
-
-	while (1) {
-		input = get_key(windows.main->name);
-
-		switch (input) {
-			case 'k':
-			case KEY_UP:
-				--info_top;
-				break;
-
-			case '\n':
-			case 'j':
-			case KEY_DOWN:
-				++info_top;
-				break;
-
-			case 'b':
-			case MOD_CTRL('p'):
-			case KEY_PPAGE:
-				info_top -= windows.main->lines / 2;
-				break;
-
-			case ' ':
-			case MOD_CTRL('n'):
-			case KEY_NPAGE:
-				info_top += windows.main->lines / 2;
-				break;
-
-			case KEY_HOME:
-				info_pop = 0;
-				break;
-
-			case KEY_END:
-				info_top = lines - windows.main->lines + 1;
-				break;
-
-			case 'x':
-			case 'q':
-			case 'h':
-			case KEY_LEFT:
-			case KEY_F(10):
-				windows.active = MAIN_WINDOW;
-				return;
-		}
-
-		if (info_top < 0) {
-			info_top = 0;
-		}
-		if (info_top > lines - windows.main->lines + 1) {
-			info_top = lines - windows.main->lines + 1;
-		}
-
-		windows.main->ref(info_top);
-	}
-
-	/* Never reached. */
-}
-#endif
 
 /*
  *
