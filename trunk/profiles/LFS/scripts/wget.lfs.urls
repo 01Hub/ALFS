@@ -12,9 +12,9 @@ ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/diffutils/diffutils-2.8.1.
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/ed/ed-0.2.tar.gz
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/gawk/gawk-3.1.3.tar.bz2
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/gcc/gcc-2.95.3.tar.gz
-ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/gcc/gcc-3.3.2/gcc-core-3.3.2.tar.bz2
-ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/gcc/gcc-3.3.2/gcc-g++-3.3.2.tar.bz2
-ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/gcc/gcc-3.3.2/gcc-testsuite-3.3.2.tar.bz2
+ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/gcc/releases/gcc-3.3.3/gcc-core-3.3.3.tar.bz2
+ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/gcc/releases/gcc-3.3.3/gcc-g++-3.3.3.tar.bz2
+ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/gcc/releases/gcc-3.3.3/gcc-testsuite-3.3.3.tar.bz2
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/gettext/gettext-0.14.1.tar.gz
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/inetutils/inetutils-1.4.2.tar.gz
 ftp://cudlug.cudenver.edu/pub/mirrors/ftp.gnu.org/gnu/less/less-382.tar.gz

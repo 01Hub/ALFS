@@ -9,10 +9,13 @@
 		<name>etc/opt</name>
 		<name>home</name>
 		<name>lib</name>
+		<name>media/cdrom</name>
+		<name>media/floppy</name>
 		<name>mnt</name>
 		<name>proc</name>
 		<name>root</name>
 		<name>sbin</name>
+		<name>srv</name>
 		<name>tmp</name>
 		<name>usr/local</name>
 		<name>var</name>
