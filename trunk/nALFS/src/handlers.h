@@ -94,6 +94,8 @@ char *alloc_execute_command(element_s *el);
 
 char *alloc_base_dir(element_s *el);
 char *alloc_base_dir_new(element_s *el);
+char *alloc_base_dir_force(element_s *el);
+char *alloc_stage_shell(element_s *el);
 int option_exists(const char *option, element_s *element);
 void check_options(int total, int *opts, const char *string_, element_s *el);
 char *append_param_elements(char **string, element_s *el);

@@ -201,7 +201,7 @@ static int execute_main_ver3_2(element_s *el)
 		append_param_elements(&command, el);
 		Nprint_h("Executing system command in %s:", base);
 		Nprint_h("    %s", command);
-		status = execute_command("%s", command);
+		status = execute_shell_command(el, "%s", command);
 		xfree(command);
 	} else {
 		FILE *temp_script;
