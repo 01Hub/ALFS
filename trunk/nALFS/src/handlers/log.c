@@ -22,9 +22,6 @@
 
 
 #include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <errno.h>
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -32,27 +29,46 @@
 
 #define MODULE_NAME log
 #include <nALFS.h>
-#include "utility.h"
-#include "win.h"
-#include "parser.h"
-#include "backend.h"
+
+#include "handlers.h"
 
 
-char HANDLER_SYMBOL(name)[] = "log";
-char HANDLER_SYMBOL(description)[] = "Log";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", "3.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { NULL };
-char *HANDLER_SYMBOL(parameters)[] = { NULL };
-int HANDLER_SYMBOL(action) = 0;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int log_main(element_s *el)
 {
-	if (el->content != NULL) {
-		Nprint_h("%s", el->content);
-	} else {
-		Nprint_h("");
-	}
-	
+	Nprint_h("%s", el->content ? el->content : "");
+
 	return 0;
 }
+
+
+/*
+ * Handlers' information.
+ */
+
+char *log_parameters[] = { NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "log",
+		.description = "Log",
+		.syntax_version = "2.0",
+		.parameters = log_parameters,
+		.main = log_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.proirity = 0
+	}, {
+		.name = "log",
+		.description = "Log",
+		.syntax_version = "3.0",
+		.parameters = log_parameters,
+		.main = log_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

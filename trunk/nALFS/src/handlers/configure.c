@@ -1,7 +1,7 @@
 /*
  *  configure.c - Handler.
  * 
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001-2003
  *  
  *  Neven Has <haski@sezampro.yu>
  *
@@ -32,22 +32,15 @@
 
 #define MODULE_NAME configure
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "utility.h"
 #include "parser.h"
 #include "win.h"
 #include "backend.h"
-#include "handlers.h"
 
 
-char HANDLER_SYMBOL(name)[] = "configure";
-char HANDLER_SYMBOL(description)[] = "Configure";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { NULL };
-char *HANDLER_SYMBOL(parameters)[] = { "base", "command", "param", NULL };
-int HANDLER_SYMBOL(action) = 1;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int configure_main_ver2(element_s *el)
 {
 	int status;
 	char *c, *command = NULL;
@@ -79,3 +72,85 @@ int HANDLER_SYMBOL(main)(element_s *el)
 
 	return status;
 }
+
+int configure_main_ver3(element_s *el)
+{
+	int status;
+	char *c, *command = NULL;
+	char *base;
+       
+
+	base = alloc_base_dir_new(el);
+
+	if (change_current_dir(base)) {
+		xfree(base);
+		return -1;
+	}
+
+	command = xstrdup("");
+
+	append_prefix_elements(&command, el);
+
+	if ((c = attr_value("command", el))) {
+		append_str(&command, c);
+	} else {
+		append_str(&command, "./configure");
+	}
+
+	append_param_elements(&command, el);
+
+	Nprint_h("Executing in %s:", base);
+	Nprint_h("    %s", command);
+	status = execute_command("%s", command);
+
+	xfree(base);
+	xfree(command);
+
+	return status;
+}
+
+
+/*
+ * Handlers' information.
+ */
+
+char *configure_parameters_ver2[] = { "base", "command", "param", NULL };
+
+char *configure_parameters_ver3[] = { "param", "prefix", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", "command", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "configure",
+		.description = "Configure",
+		.syntax_version = "2.0",
+		.parameters = configure_parameters_ver2,
+		.main = configure_main_ver2,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "configure",
+		.description = "Configure",
+		.syntax_version = "3.0",
+		.parameters = configure_parameters_ver3,
+		.main = configure_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "configure",
+		.description = "Configure",
+		.syntax_version = "3.1",
+		.parameters = configure_parameters_ver3,
+		.main = configure_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

@@ -29,22 +29,41 @@
 #include "ltdl.h"
 
 
-typedef int (*main_handler_function_f)(struct element_s *);
+typedef enum handler_type_e {
+	/* Using 0 for all other handlers, for now */
+	HTYPE_EXECUTE = 1,
+	HTYPE_PACKAGE,
+	HTYPE_TEXTDUMP
+} handler_type_e;
 
-typedef struct handler_s {
-	char *name;		/* Name of the element it handles. */
-	char *version;		/* Syntax version string. */
+typedef enum handler_data_e {
+	HDATA_COMMAND, HDATA_NAME, HDATA_VERSION, HDATA_FILE
+} handler_data_e;
 
-	char *description;	/* Short description. */
+typedef char *(*handler_data_f)(element_s *, handler_data_e data);
+typedef int (*handler_f)(element_s *);
 
-	int action;		/* Whether it's the element that actually
+typedef struct handler_info_s {
+	char *name;			/* Name of the element it handles. */
+	char *description;		/* Short description. */
+	char *syntax_version;		/* Syntax version string. */
+	char **parameters;		/* Parameters allowed. */
+
+	handler_f main;
+
+	handler_type_e type;
+	handler_data_f alloc_data;
+
+	int is_action;		/* Whether it's the element that actually
 				 * does something, or it's only a "container".
 				 */
+	int proirity;
+} handler_info_s;
 
-	/* Main handler function. */
-	main_handler_function_f main_function;
 
-	lt_dlhandle handle;	/* Handle for the dynamic library. */
+typedef struct handler_s {
+	handler_info_s *info;
+	lt_dlhandle handle;
 } handler_s;
 
 
@@ -70,7 +89,6 @@ int option_exists(const char *option, element_s *element);
 void check_options(int total, int *opts, const char *string_, element_s *el);
 char *append_param_elements(char **string, element_s *el);
 char *append_prefix_elements(char **string, element_s *el);
-
 
 
 #endif /* H_HANDLER_ */

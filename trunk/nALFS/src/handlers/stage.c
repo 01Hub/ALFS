@@ -1,5 +1,5 @@
 /*
- *  new-stage.c - Handler.
+ *  stage.c - Handler.
  * 
  *  Copyright (C) 2002-2003
  *  
@@ -36,14 +36,16 @@
 #include <config.h>
 #endif
 
-#define MODULE_NAME new_stage
+#define MODULE_NAME stage
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
-#include "handlers.h"
 #include "nalfs-core.h"
 #include "backend.h"
+
 
 static INLINE int set_supplementary_groups(const char *user, gid_t gid)
 {
@@ -359,17 +361,7 @@ static int parse_stageinfo_and_execute_children(
 
 
 
-char HANDLER_SYMBOL(name)[] = "stage";
-char HANDLER_SYMBOL(description)[] = "Enter stage: ";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "3.0", "3.1", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = {
-// "name", "description", "logfile", "mode", NULL };
-char *HANDLER_SYMBOL(parameters)[] =
-{ "stageinfo", "base", "root", "user", "environment", "variable", NULL };
-int HANDLER_SYMBOL(action) = 0;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int stage_main(element_s *el)
 {
 	int status;
 	char *stage_name = attr_value("name", el);
@@ -404,3 +396,39 @@ int HANDLER_SYMBOL(main)(element_s *el)
 
 	return status;
 }
+
+
+/*
+ * Handlers' information.
+ */
+
+char *stage_parameters[] =
+{ "stageinfo", "base", "root", "user", "environment", "variable", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = {
+// "name", "description", "logfile", "mode", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "stage",
+		.description = "Enter stage: ", // FIXME
+		.syntax_version = "3.0",
+		.parameters = stage_parameters,
+		.main = stage_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.proirity = 0
+	}, {
+		.name = "stage",
+		.description = "Enter stage: ", // FIXME
+		.syntax_version = "3.1",
+		.parameters = stage_parameters,
+		.main = stage_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

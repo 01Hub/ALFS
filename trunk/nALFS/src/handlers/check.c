@@ -1,5 +1,5 @@
 /*
- *  new-check.c - Handler.
+ *  check.c - Handler.
  * 
  *  Copyright (C) 2002 by Vassili Dzuba <vassilidzuba@nerim.net>
  *
@@ -24,12 +24,13 @@
 #include <config.h>
 #endif
 
-#define MODULE_NAME new_check
+#define MODULE_NAME check
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
-#include "handlers.h"
 #include "backend.h"
 #include "nalfs-core.h"
 
@@ -56,15 +57,7 @@ static INLINE element_s *find_package(const char *name)
 #endif
 
 
-char HANDLER_SYMBOL(name)[] = "check";
-char HANDLER_SYMBOL(description)[] = "Check for installed package";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "3.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { NULL };
-char *HANDLER_SYMBOL(parameters)[] = { NULL };
-int HANDLER_SYMBOL(action) = 1;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int check_main(element_s *el)
 {
 	int status = 0;
 	char *package;
@@ -122,3 +115,26 @@ int HANDLER_SYMBOL(main)(element_s *el)
 	
 	return status;
 }
+
+
+/*
+ * Handlers' information.
+ */
+
+char *check_parameters[] = { NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "check",
+		.description = "Check for installed package",
+		.syntax_version = "3.0",
+		.parameters = check_parameters,
+		.main = check_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

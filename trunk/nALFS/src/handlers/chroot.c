@@ -35,6 +35,8 @@
 
 #define MODULE_NAME chroot
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "parser.h"
 #include "win.h"
 #include "utility.h"
@@ -42,15 +44,7 @@
 #include "backend.h"
 
 
-char HANDLER_SYMBOL(name)[] = "chroot";
-char HANDLER_SYMBOL(description)[] = "Enter chroot";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "dir", NULL };
-char *HANDLER_SYMBOL(parameters)[] = { NULL };
-int HANDLER_SYMBOL(action) = 0;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int chroot_main(element_s *el)
 {
 	int status;
 	pid_t chroot_pid, got_pid;
@@ -112,3 +106,27 @@ int HANDLER_SYMBOL(main)(element_s *el)
 	
 	return status;
 }
+
+
+/*
+ * Handlers' information.
+ */
+
+char *chroot_parameters[] = { NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "dir", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "chroot",
+		.description = "Enter chroot",
+		.syntax_version = "2.0",
+		.parameters = chroot_parameters,
+		.main = chroot_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

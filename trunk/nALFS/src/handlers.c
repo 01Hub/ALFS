@@ -42,9 +42,6 @@
 #include "ltdl.h"
 
 
-typedef char *(*alloc_handler_function_f)(element_s *);
-
-
 static handler_s **handlers;
 static char **parameters;
 
@@ -53,15 +50,15 @@ static char **parameters;
  * Returns a pointer to handler_s if element (name/version) has a handler,
  * or NULL if it doesn't.
  */
-handler_s *find_handler(const char *name, const char *version)
+handler_s *find_handler(const char *name, const char *syntax_version)
 {
 	int i;
 	handler_s *h;
 
 
 	for (i = 0; (h = handlers[i]); ++i) {
-		if (strcmp(name, h->name) == 0
-		&& strcmp(version, h->version) == 0) {
+		if (strcmp(name, h->info->name) == 0
+		&& strcmp(syntax_version, h->info->syntax_version) == 0) {
 			return h;
 		}
 	}
@@ -120,15 +117,16 @@ static INLINE int add_to_parameters(char **params)
 }
 
 /* Check if this handler already exists (has the same name and version). */
-static INLINE int does_already_exist(const char *name, const char *version)
+static INLINE int does_already_exist(
+	const char *name, const char *syntax_version)
 {
-	int i = 0;
+	int i;
 	handler_s *h;
 
 
 	for (i = 0; (h = handlers[i]); ++i) {
-		if (strcmp(name, h->name) == 0
-		&& strcmp(version, h->version) == 0) {
+		if (strcmp(name, h->info->name) == 0
+		&& strcmp(syntax_version, h->info->syntax_version) == 0) {
 			return 1;
 		}
 	}
@@ -167,69 +165,53 @@ static INLINE lt_ptr lookup_symbol(lt_dlhandle handle, const char *symbol_name)
 
 static int load_handler(lt_dlhandle handle, lt_ptr data)
 {
-	int i, all_symbols_found = 1;
-	char *version;
+	int i;
+	handler_info_s *handler_info;
 
-	char *name, **versions, *description;
-	int *action;
-	main_handler_function_f main_function;
-	char **params;
 
-	handler_s *handler;
+	handler_info = (handler_info_s *)lookup_symbol(handle, "handler_info");
 
-	if ((name = (char *) lookup_symbol(handle, "handler_name")) == NULL)
-		all_symbols_found = 0;
-
-	if ((versions = (char **) lookup_symbol(handle, "handler_syntax_versions")) == NULL)
-		all_symbols_found = 0;
-
-	if ((description = (char *) lookup_symbol(handle, "handler_description")) == NULL)
-		all_symbols_found = 0;
-
-	if ((action = (int *) lookup_symbol(handle, "handler_action")) == NULL)
-		all_symbols_found = 0;
-
-	if ((main_function = (main_handler_function_f) lookup_symbol(handle, "handler_main")) == NULL)
-		all_symbols_found = 0;
-
-	if ((params = (char **) lookup_symbol(handle, "handler_parameters")) == NULL)
-		all_symbols_found = 0;
-
-	/* Some symbols are missing. */
-	if (! all_symbols_found) {
+	if (handler_info == NULL) {
 		return 0;
 	}
 
-	/* Create a handler for each syntax version. */
-	for (i = 0; (version = versions[i]); ++i) {
-		int n;
-
+	/* Go through handler_info[].  */
+	for (i = 0; (handler_info[i].name); ++i) {
+		handler_s *handler;
+		handler_info_s *hi = &handler_info[i];
 
 		/* Check if this handler already exists in "handlers". */
-		if (does_already_exist(name, version)) {
+		if (does_already_exist(hi->name, hi->syntax_version)) {
 			Nprint_warn("The handler already exists, "
-				"skipping it: %s (%s)", name, version);
+				"skipping it: %s (%s)",
+				hi->name, hi->syntax_version);
 			continue;
 		}
 
 		handler = xmalloc(sizeof *handler);
 
-		handler->name = name;
-		handler->version = version;
-		handler->description = description;
-		handler->action = *action;
-		handler->main_function = main_function;
+		handler->info = hi;
 		handler->handle = handle;
-		n = number_of_handlers();
 
-		/* Add to handlers. */
-		handlers = xrealloc(handlers, (n + 2) * sizeof *handlers);
-		handlers[n] = handler;
-		handlers[n+1] = NULL;
+		/* Update parameters. TODO: This can be obtained through
+		 * el->handler->info->parameters.  Plus, it doesn't
+		 * know anything about syntax versions.
+		 */
+		add_to_parameters(hi->parameters);
+
+		/* TODO: Create a structure containing handlers array and the
+		 *       number of those.  Counting them each time is ugly.
+		 *       Also put below in add_new_handler() function.
+		 */
+		{
+			int n = number_of_handlers();
+
+			/* Add to handlers. */
+			handlers = xrealloc(handlers, (n+2) * sizeof *handlers);
+			handlers[n] = handler;
+			handlers[n+1] = NULL;
+		}
 	}
-
-	/* Update parameters. */
-	add_to_parameters(params);
 
 	return 0;
 }
@@ -282,59 +264,14 @@ int load_all_handlers(void)
  * Utility functions tied to handlers in some way.
  */
 
-static int get_symbol(void **symbol, const char *string, element_s *el)
-{
-
-
-	if (el == NULL) {
-		Nprint_err("Element is NULL.");
-		return -1;
-	}
-
-	if (el->handler == NULL) {
-		Nprint_err("Handler is NULL.");
-		return -1;
-	}
-
-	if (el->handler->handle == NULL) {
-		Nprint_err("Handle is NULL.");
-		return -1;
-	}
-
-	if (string == NULL) {
-		Nprint_err("String is NULL.");
-		return -1;
-	}
-
-	if ((*symbol = (void *) lookup_symbol(el->handler->handle, string)) == NULL) {
-		return -1;
-	}
-
-	return 0;
-}
-
 char *alloc_package_name(element_s *el)
 {
-	alloc_handler_function_f s;
-
-
-	if (get_symbol((void **)&s, "handler_alloc_package_name", el)) {
-		return NULL;
-	}
-
-	return s(el);
+	return el->handler->info->alloc_data(el, HDATA_NAME);
 }
 
 char *alloc_package_version(element_s *el)
 {
-	alloc_handler_function_f s;
-
-
-	if (get_symbol((void **)&s, "handler_alloc_package_version", el)) {
-		return NULL;
-	}
-
-	return s(el);
+	return el->handler->info->alloc_data(el, HDATA_VERSION);
 }
 
 char *alloc_package_string(element_s *el)
@@ -374,26 +311,12 @@ int package_has_name_and_version(element_s *el)
 
 char *alloc_textdump_file(element_s *el)
 {
-	alloc_handler_function_f s;
-
-
-	if (get_symbol((void **)&s, "handler_alloc_textdump_file", el)) {
-		return NULL;
-	}
-
-	return s(el);
+	return el->handler->info->alloc_data(el, HDATA_FILE);
 }
 
 char *alloc_execute_command(element_s *el)
 {
-	alloc_handler_function_f s;
-
-
-	if (get_symbol((void **)&s, "handler_alloc_execute_command", el)) {
-		return NULL;
-	}
-
-	return s(el);
+	return el->handler->info->alloc_data(el, HDATA_COMMAND);
 }
 
 /* Used by old syntax (2.0). */

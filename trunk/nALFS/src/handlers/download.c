@@ -1,5 +1,5 @@
 /*
- *  new-download.c - Handler.
+ *  download.c - Handler.
  * 
  *  Copyright (C) 2003
  *  
@@ -34,19 +34,21 @@
 #include <config.h>
 #endif
 
-#define MODULE_NAME new_download
+#define MODULE_NAME download
 #include <nALFS.h>
 
+#include "handlers.h"
 #include "utility.h"
 #include "win.h"
-#include "handlers.h"
 #include "parser.h"
 #include "nalfs-core.h"
 #include "backend.h"
 
+
 #define El_download_file(el) alloc_trimmed_param_value("file", el)
 #define El_download_destination(el) alloc_trimmed_param_value("destination", el)
 #define El_download_digest(el) alloc_trimmed_param_value("digest", el)
+
 
 static INLINE int get_url(const char *urldir, const char *file)
 {
@@ -88,16 +90,7 @@ static INLINE int get_url(const char *urldir, const char *file)
 	return 0;
 }
 
-char HANDLER_SYMBOL(name)[] = "download";
-char HANDLER_SYMBOL(description)[] = "Download";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "3.1", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { NULL };
-char *HANDLER_SYMBOL(parameters)[] =
-	{ "digest", "file", "url", "destination", NULL };
-int HANDLER_SYMBOL(action) = 1;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int download_main(element_s *el)
 {
 	int status = 0;
 	char *file;
@@ -195,3 +188,26 @@ int HANDLER_SYMBOL(main)(element_s *el)
 	
 	return status;
 }
+
+
+/*
+ * Handlers' information.
+ */
+
+char *download_parameters[] = { "digest", "file", "url", "destination", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "download",
+		.description = "Download",
+		.syntax_version = "3.1",
+		.parameters = download_parameters,
+		.main = download_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

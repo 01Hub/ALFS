@@ -349,7 +349,7 @@ static int do_execute_element(element_s *el)
 				change_to_profiles_dir(el);
 			}
 
-			i = el->handler->main_function(el);
+			i = el->handler->info->main(el);
 
 		} else { /* Never reached.
 			  * (Only elements with ->handler have TYPE_ELEMENT

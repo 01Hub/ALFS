@@ -1,7 +1,7 @@
 /*
  *  make.c - Handler.
  * 
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001-2003
  *  
  *  Neven Has <haski@sezampro.yu>
  *
@@ -32,22 +32,15 @@
 
 #define MODULE_NAME make
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
-#include "handlers.h"
 #include "backend.h"
 
 
-char HANDLER_SYMBOL(name)[] = "make";
-char HANDLER_SYMBOL(description)[] = "Run make";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { NULL };
-char *HANDLER_SYMBOL(parameters)[] = { "base", "param", NULL };
-int HANDLER_SYMBOL(action) = 1;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int make_main_ver2(element_s *el)
 {
 	int status;
 	char *base;
@@ -74,3 +67,82 @@ int HANDLER_SYMBOL(main)(element_s *el)
 
 	return status;
 }
+
+int make_main_ver3(element_s *el)
+{
+	int status;
+	char *base;
+	char *command;
+
+	
+	base = alloc_base_dir_new(el);
+
+	if (change_current_dir(base)) {
+		xfree(base);
+		return -1;
+	}
+
+	command = xstrdup("");
+
+	append_prefix_elements(&command, el);
+
+	append_str(&command, "make");
+
+	append_param_elements(&command, el);
+
+	Nprint_h("Executing in %s:", base);
+	Nprint_h("    %s", command);
+
+	status = execute_command("%s", command);
+
+	xfree(base);
+	xfree(command);
+
+	return status;
+}
+
+
+/*
+ * Handlers' information.
+ */
+
+char *make_parameters_ver2[] = { "base", "param", NULL };
+
+char *make_parameters_ver3[] = { "param", "prefix", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "make",
+		.description = "Run make",
+		.syntax_version = "2.0",
+		.parameters = make_parameters_ver2,
+		.main = make_main_ver2,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "make",
+		.description = "Run make",
+		.syntax_version = "3.0",
+		.parameters = make_parameters_ver3,
+		.main = make_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "make",
+		.description = "Run make",
+		.syntax_version = "3.1",
+		.parameters = make_parameters_ver3,
+		.main = make_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};

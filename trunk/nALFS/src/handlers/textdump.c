@@ -1,7 +1,7 @@
 /*
  *  textdump.c - Handler.
  * 
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001-2003
  *  
  *  Neven Has <haski@sezampro.yu>
  *
@@ -33,10 +33,11 @@
 
 #define MODULE_NAME textdump
 #include <nALFS.h>
+
+#include "handlers.h"
 #include "utility.h"
 #include "win.h"
 #include "parser.h"
-#include "handlers.h"
 
 
 #define El_textdump_content(el) alloc_trimmed_param_value("content", el)
@@ -54,16 +55,9 @@ static INLINE FILE *open_for_overwrite(const char *file, const char *base)
 	return fopen(file, "w");
 }
 
+/* TODO: Only alloc_base_dir(_new) is different. */
 
-char HANDLER_SYMBOL(name)[] = "textdump";
-char HANDLER_SYMBOL(description)[] = "Dump text";
-char *HANDLER_SYMBOL(syntax_versions)[] = { "2.0", NULL };
-// char *HANDLER_SYMBOL(attributes)[] = { "mode", NULL };
-char *HANDLER_SYMBOL(parameters)[] = { "base", "file", "content", NULL };
-int HANDLER_SYMBOL(action) = 1;
-
-
-int HANDLER_SYMBOL(main)(element_s *el)
+int textdump_main_ver2(element_s *el)
 {
 	char *tok;
 	char *base = NULL;
@@ -121,7 +115,109 @@ int HANDLER_SYMBOL(main)(element_s *el)
 	return 0;
 }
 
-char *HANDLER_SYMBOL(alloc_textdump_file)(element_s *el)
+int textdump_main_ver3(element_s *el)
+{
+	char *tok;
+	char *base = NULL;
+	char *file;
+	char *content;
+	char *mode = attr_value("mode", el);
+	FILE *fp;
+
+
+	if ((file = alloc_textdump_file(el))== NULL) {
+		Nprint_h_err("No file for textdump specified.");
+		return -1;
+	}
+
+	if ((content = El_textdump_content(el)) == NULL) {
+		Nprint_h_err("No content for textdump specified.");
+		xfree(file);
+		return -1;
+	}
+
+	base = alloc_base_dir_new(el);
+
+	if (change_current_dir(base)) {
+		xfree(base);
+		xfree(file);
+		xfree(content);
+		return -1;
+	}
+
+	fp = (mode && strcmp(mode, "append") == 0) ?
+		open_for_append(file, base) : open_for_overwrite(file, base);
+
+	if (fp == NULL) {
+		Nprint_h_err("Unable to open \"%s\": %s",
+			file, strerror(errno));
+		xfree(base);
+		xfree(file);
+		xfree(content);
+		return -1;
+	}
+
+	for (tok = strtok(content, "\n"); tok; tok = strtok(NULL, "\n")) {
+		fprintf(fp, "%s\n", ++tok);
+	}
+
+	fclose(fp);
+
+	xfree(base);
+	xfree(file);
+	xfree(content);
+	
+	return 0;
+}
+
+char *textdump_data(element_s *el, handler_data_e data)
 {
 	return alloc_trimmed_param_value("file", el);
 }
+
+
+/*
+ * Handlers' information.
+ */
+
+char *textdump_parameters_ver2[] = { "base", "file", "content", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "mode", NULL };
+
+char *textdump_parameters_ver3[] = { "file", "content", NULL };
+// char *HANDLER_SYMBOL(attributes)[] = { "base", "mode", NULL };
+
+handler_info_s HANDLER_SYMBOL(info)[] = {
+	{
+		.name = "textdump",
+		.description = "Dump text",
+		.syntax_version = "2.0",
+		.parameters = textdump_parameters_ver2,
+		.main = textdump_main_ver2,
+		.type = HTYPE_TEXTDUMP,
+		.alloc_data = textdump_data,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "textdump",
+		.description = "Dump text",
+		.syntax_version = "3.0",
+		.parameters = textdump_parameters_ver3,
+		.main = textdump_main_ver3,
+		.type = HTYPE_TEXTDUMP,
+		.alloc_data = textdump_data,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		.name = "textdump",
+		.description = "Dump text",
+		.syntax_version = "3.1",
+		.parameters = textdump_parameters_ver3,
+		.main = textdump_main_ver3,
+		.type = HTYPE_TEXTDUMP,
+		.alloc_data = textdump_data,
+		.is_action = 1,
+		.proirity = 0
+	}, {
+		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
+	}
+};
