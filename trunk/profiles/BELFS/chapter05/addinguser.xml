@@ -5,6 +5,6 @@
 
 	<ownership user="&lfs-user;">
 		<option>recursive</option>
-		<name>&LFS;/tools</name>
+		<name>&BELFS;/tools</name>
 	</ownership>
 </stage>

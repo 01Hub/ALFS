@@ -15,14 +15,16 @@
 
 <!ENTITY bash-patch-md5 "27a9e4ca5bace5f4953accbab956241b">
 <!ENTITY bash-patch "bash-&bash-version;-2.patch">
+<!ENTITY bash-gcc34-patch-md5 "8041adc7b2be710231edf9f04ee9e949">
+<!ENTITY bash-gcc34-patch "bash-&bash-version;-gcc34-1.patch">
 
-<!ENTITY binutils-md5 "2da8def15d28af3ec6af0982709ae90a">
-<!ENTITY binutils-version "2.14">
+<!ENTITY binutils-md5 "24dfb3016306eae4eb10985b4ef01f42">
+<!ENTITY binutils-version "2.15.90-20040408">
 <!ENTITY binutils-package "binutils-&binutils-version;.tar.bz2">
 <!ENTITY binutils-directory "binutils-&binutils-version;">
 
-<!ENTITY bison-md5 "b7f8027b249ebd4dd0cc948943a71af0">
-<!ENTITY bison-version "1.875">
+<!ENTITY bison-md5 "ccbd5076dab6e319cc8ce1a7035cae92">
+<!ENTITY bison-version "1.875a">
 <!ENTITY bison-package "bison-&bison-version;.tar.bz2">
 <!ENTITY bison-directory "bison-&bison-version;">
 
@@ -68,17 +70,17 @@
 <!ENTITY ed-mkstemp-patch-md5 "e7e2248f9baa76de3db8210298e0d79e">
 <!ENTITY ed-mkstemp-patch "ed-&ed-version;-mkstemp.patch">
 
-<!ENTITY expect-md5 "6ae1b87c9af993a69b901b6e52962c18">
-<!ENTITY expect-version "5.40.0">
-<!ENTITY expect-package "expect.tar.gz">
+<!ENTITY expect-md5 "391a4b93dc01b1aad5f6e0752d5d5c73">
+<!ENTITY expect-version "5.40.1">
+<!ENTITY expect-package "expect-&expect-version;.tar.gz">
 <!ENTITY expect-directory "expect-5.40">
 
 <!ENTITY expect-spawn-patch-md5 "ef6d0d0221c571fb420afb7033b3bbba">
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn.patch">
 
-<!ENTITY file-md5 "749010a666a2bbc2e452145fbb8e0626">
-<!ENTITY file-version "4.08">
-<!ENTITY file-package "file-&file-version;.tar.bz2">
+<!ENTITY file-md5 "46209022d57dbca7bb3cc07aa63bd008">
+<!ENTITY file-version "4.09">
+<!ENTITY file-package "file-&file-version;.tar.gz">
 <!ENTITY file-directory "file-&file-version;">
 
 <!ENTITY findutils-md5 "e90ce7222daadeb8616b8db461e17cbc">
@@ -86,46 +88,32 @@
 <!ENTITY findutils-package "findutils-&findutils-version;.tar.gz">
 <!ENTITY findutils-directory "findutils-&findutils-version;">
 
-<!ENTITY flex-md5 "bd8753d0b22e1f4ec87a553a73021adf">
-<!ENTITY flex-version "2.5.4a">
-<!ENTITY flex-package "flex-&flex-version;.tar.gz">
-<!ENTITY flex-directory "flex-2.5.4">
+<!ENTITY flex-md5 "363dcc4afc917dc51306eb9d3de0152f">
+<!ENTITY flex-version "2.5.31">
+<!ENTITY flex-package "flex-&flex-version;.tar.bz2">
+<!ENTITY flex-directory "flex-&flex-version;">
 
 <!ENTITY gawk-md5 "a116eec17e7ba085febb74c7758823bd">
 <!ENTITY gawk-version "3.1.3">
 <!ENTITY gawk-package "gawk-&gawk-version;.tar.bz2">
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
-<!ENTITY gcc-2953-md5 "f3ad4f32c2296fad758ed051b5ac8e28">
-<!ENTITY gcc-2953-version "2.95.3">
-<!ENTITY gcc-2953-package "gcc-&gcc-2953-version;.tar.gz">
-<!ENTITY gcc-2953-directory "gcc-&gcc-2953-version;">
-
-<!ENTITY gcc-2953-patch-md5 "011dd058ba5cc5f52ae3f31b7fd41c99">
-<!ENTITY gcc-2953-patch "gcc-&gcc-2953-version;-2.patch">
-
-<!ENTITY gcc-2953-patch-no-fixinc-md5 "6f476862002518b809d16caaf5b2e276">
-<!ENTITY gcc-2953-patch-no-fixinc "gcc-&gcc-2953-version;-no-fixinc.patch">
-
-<!ENTITY gcc-2953-returntype-fix-patch-md5 "f74207075f47b9b6adc875537aa98f3d">
-<!ENTITY gcc-2953-returntype-fix-patch "gcc-&gcc-2953-version;-returntype-fix.patch">
-
-<!ENTITY gcc-version "3.3.2">
+<!ENTITY gcc-version "3.4.0-20040406">
 <!ENTITY gcc-directory "gcc-&gcc-version;">
 
-<!ENTITY gcc-core-md5 "42d1314aaa11a40e4c7c9fcb0f49259a">
+<!ENTITY gcc-core-md5 "f508291f0a22efbd9ecd4160ba28e2bb">
 <!ENTITY gcc-core-package "gcc-core-&gcc-version;.tar.bz2">
 
-<!ENTITY gcc-gpp-md5 "b9ae980739e7f9299addc0a3576777e7">
+<!ENTITY gcc-gpp-md5 "f6d41deeebe5861c730642db0b046b21">
 <!ENTITY gcc-gpp-package "gcc-g++-&gcc-version;.tar.bz2">
   
-<!ENTITY gcc-testsuite-md5 "d0d0b003be65c6b79c7655c5fd64b18f">
+<!ENTITY gcc-testsuite-md5 "f19ed6ec00fb69bf0f60f8f097122304">
 <!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;.tar.bz2">
 
-<!ENTITY gcc-no-fixincludes-patch-md5 "5f764c74b3e9c36252fe4f9a14598ee4">
+<!ENTITY gcc-no-fixincludes-patch-md5 "78fa00bc9f7173b9658eeb86ce9291c9">
 <!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no_fixincludes-1.patch">
 
-<!ENTITY gcc-specs-patch-md5 "74cb9822f21774ae1c9a8ef1fa133f49">
+<!ENTITY gcc-specs-patch-md5 "a0d586aaa048622379836020c5040a5c">
 <!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-1.patch">
 
 <!ENTITY gettext-md5 "78f4b862510beb2e5d43223dd610e77d">
@@ -133,9 +121,9 @@
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.gz">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
-<!ENTITY glibc-md5 "795895e3992dad76093b96cb8a78e0a0">
-<!ENTITY glibc-version "2.3.3">
-<!ENTITY glibc-cvs-version "20031202">
+<!ENTITY glibc-md5 "8523411a05dba92977e51fe6addd6d1d">
+<!ENTITY glibc-version "2.3.4">
+<!ENTITY glibc-cvs-version "20040408">
 <!ENTITY glibc-package "glibc-&glibc-version;-&glibc-cvs-version;.tar.bz2">
 <!ENTITY glibc-directory "glibc-&glibc-version;-&glibc-cvs-version;">
 
@@ -172,6 +160,9 @@
 <!ENTITY inetutils-no-man-pages-patch-md5 "eb477f532bc6d26e7025fcfc4452511d">
 <!ENTITY inetutils-no-man-pages-patch "inetutils-&inetutils-version;-no_server_man_pages-1.patch">
 
+<!ENTITY inetutils-kernel-headers-patch-md5 "de1f835265b7ed818d7c0fb8c0be334b">
+<!ENTITY inetutils-kernel-headers-patch "inetutils-&inetutils-version;-kernel-headers-1.patch">
+
 <!ENTITY kbd-md5 "7892c7010512a9bc6697a295c921da25">
 <!ENTITY kbd-version "1.12">
 <!ENTITY kbd-package "kbd-&kbd-version;.tar.gz">
@@ -185,8 +176,8 @@
 <!ENTITY less-package "less-&less-version;.tar.gz">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "bd57889a62d6752a4ef1068fde57c36e">
-<!ENTITY lfs-bootscripts-version "2.0.2">
+<!ENTITY lfs-bootscripts-md5 "ff81fce38ba8f5d8cc48dd0e26fc7b5f">
+<!ENTITY lfs-bootscripts-version "2.0.91">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
@@ -195,8 +186,8 @@
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.gz">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
-<!ENTITY linux-md5 "5fc8e9f43fa44ac29ddf9a9980af57d8">
-<!ENTITY linux-version "2.4.25">
+<!ENTITY linux-md5 "9a76bf64c1151369b250f967d83077aa">
+<!ENTITY linux-version "2.6.5">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
@@ -211,11 +202,6 @@
 <!ENTITY make-package "make-&make-version;.tar.bz2">
 <!ENTITY make-directory "make-&make-version;">
 
-<!ENTITY make_devices-md5 "2863fbe7f5953efb5a0d0a840e1e9d21">
-<!ENTITY make_devices-version "1.2">
-<!ENTITY make_devices-package "make_devices-&make_devices-version;.bz2">
-<!ENTITY make_devices-file "make_devices-&make_devices-version;">
- 
 <!ENTITY man-md5 "41e6397e359b8555d6a734c9c3840b49">
 <!ENTITY man-version "1.5m2">
 <!ENTITY man-package "man-&man-version;.tar.bz2">
@@ -237,10 +223,10 @@
 <!ENTITY mktemp-tempfile-patch-md5 "1b65466c0238120110dc1d906ad66de4">
 <!ENTITY mktemp-tempfile-patch "mktemp-&mktemp-version;-add-tempfile.patch">
 
-<!ENTITY modutils-md5 "bac989c74ed10f3bf86177fc5b4b89b6">
-<!ENTITY modutils-version "2.4.27">
-<!ENTITY modutils-package "modutils-&modutils-version;.tar.bz2">
-<!ENTITY modutils-directory "modutils-&modutils-version;">
+<!ENTITY module-tools-md5 "f8bfc480c4168978eca7037cd341da07">
+<!ENTITY module-tools-version "3.0">
+<!ENTITY module-tools-package "module-init-tools-&module-tools-version;.tar.bz2">
+<!ENTITY module-tools-directory "module-init-tools-&module-tools-version;">
 
 <!ENTITY ncurses-md5 "069c8880072060373290a4fefff43520">
 <!ENTITY ncurses-version "5.4">
@@ -254,6 +240,12 @@
 
 <!ENTITY net-tools-miitool-gcc33-md5 "fc629313c10ebd75abd2750aafbaa0be">
 <!ENTITY net-tools-miitool-gcc33 "net-tools-&net-tools-version;-miitool-gcc33-1.patch">
+
+<!ENTITY net-tools-gcc34-patch-md5 "ffb0bab2e4289f346b2edc2fdfca5ef8">
+<!ENTITY net-tools-gcc34-patch "net-tools-&net-tools-version;-gcc34-1.patch">
+
+<!ENTITY net-tools-kernel-headers-patch-md5 "0fcd25afa43cf85b99c34268ff2f1274">
+<!ENTITY net-tools-kernel-headers-patch "net-tools-&net-tools-version;-kernel-headers-1.patch">
 
 <!ENTITY patch-md5 "ee5ae84d115f051d87fcaaef3b4ae782">
 <!ENTITY patch-version "2.5.4">
@@ -303,8 +295,8 @@
 <!ENTITY sysvinit-package "sysvinit-&sysvinit-version;.tar.gz">
 <!ENTITY sysvinit-directory "sysvinit-&sysvinit-version;">
 
-<!ENTITY tar-md5 "6ef8c906e81eee441f8335652670ac4a">
-<!ENTITY tar-version "1.13.25">
+<!ENTITY tar-md5 "0bb83f8404a4ffdb7d5fcd2ae5d99fd9">
+<!ENTITY tar-version "1.13.94">
 <!ENTITY tar-package "tar-&tar-version;.tar.gz">
 <!ENTITY tar-directory "tar-&tar-version;">
 

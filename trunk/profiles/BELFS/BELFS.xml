@@ -1,6 +1,6 @@
 <!--
 
-	LFS profile, version CVS
+	BELFS profile, version CVS
 	=================================
 	by Dave Wheeler (davewheeler69@hotmail.com)
 	updates by "Mark"
@@ -9,6 +9,7 @@
 	updates by Thomas Pegg (thomasp@linuxfromscratch.org)
 	Adapted from a profile by Vassili Dzuba (vassilidzuba@nerim.net)
 	Adapted from a profile by Neven Has - haski@sezampro.yu
+	Converted from LFS to BELFS by Kevin P. Fleming
 
 	Note : read the file README before running this profile
 
@@ -39,7 +40,7 @@
 		<stageinfo>
 			<user>&lfs-user;</user>
 			<environment>
-				<variable name="LFS">&LFS;</variable>
+				<variable name="LFS">&BELFS;</variable>
 				<variable name="LC_ALL">POSIX</variable>
 				<variable name="PATH" mode="prepend">/tools/bin:</variable>
 				<variable name="CFLAGS">&gcc_optimizations;</variable>
@@ -90,7 +91,7 @@
 
 	<stage name="Chroot with /tools">
 		<stageinfo>
-			<root>&LFS;</root>
+			<root>&BELFS;</root>
 			<environment>
 				<variable name="HOME">/root</variable>
 				<variable name="TERM">$TERM</variable>
@@ -163,7 +164,7 @@
 
 <stage name="Chapter 7 - Setting up system boot scripts">
 	<stageinfo>
-		<root>&LFS;</root>
+		<root>&BELFS;</root>
 		<environment>
 			<variable name="HOME">/root</variable>
 			<variable name="TERM">$TERM</variable>
@@ -181,9 +182,9 @@
 	&c7-network;
 </stage>
 
-<stage name="Chapter 8 - Making the LFS system bootable">
+<stage name="Chapter 8 - Making the BELFS system bootable">
 	<stageinfo>
-		<root>&LFS;</root>
+		<root>&BELFS;</root>
 		<environment>
 			<variable name="HOME">/root</variable>
 			<variable name="TERM">$TERM</variable>
@@ -201,7 +202,7 @@
 
 <stage name="Chapter 9 - The End">
         <stageinfo>
-                <root>&LFS;</root>
+                <root>&BELFS;</root>
                 <environment>
                         <variable name="HOME">/root</variable>
                         <variable name="TERM">$TERM</variable>
@@ -216,7 +217,7 @@
 
 	<textdump>
 		<file>/etc/lfs-release</file>
-		<content>=&LFS-version;</content>
+		<content>=&BELFS-version;</content>
 	</textdump>
 </stage>
 
