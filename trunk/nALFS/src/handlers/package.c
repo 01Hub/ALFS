@@ -193,19 +193,11 @@ static char *package_data(const element_s * const element,
 		break;
 	case HDATA_DISPLAY_NAME:
 	{
-		char *display;
+		char *display = NULL;
 
-		display = xstrdup("Package");
-
-		if (data->name) {
-			append_str(&display, " ");
-			append_str(&display, data->name);
-		}
-
-		if (data->version) {
-			append_str(&display, " ");
-			append_str(&display, data->version);
-		}
+		append_str_format(&display, "Package %s %s",
+				  data->name ? data->name : "",
+				  data->version ? data->version : "");
 
 		return display;
 	}

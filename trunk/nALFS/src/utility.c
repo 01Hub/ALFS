@@ -87,7 +87,7 @@ void *xrealloc(void *ptr, size_t size)
 #endif
 
 	if ((value = realloc(ptr, size)) == NULL) {
-		FATAL_ERROR("relloc() failed");
+		FATAL_ERROR("realloc() failed (ptr: %p, size %zd)", ptr, size);
 	}
 
 	return value;
@@ -209,22 +209,50 @@ int remove_new_line(char *buf)
 	return 0;
 }
 
+void append_str_format(char **ptr, const char *format, ...)
+{
+	va_list ap;
+	int old_length = 0;
+	int new_length;
+	char *value;
+
+	if (Empty_string(format)) {
+		return;
+	}
+
+	if (*ptr)
+		old_length = strlen(*ptr);
+
+	va_start(ap, format);
+	new_length = vsnprintf(NULL, 0, format, ap);
+	va_end(ap);
+
+      	value = xrealloc(*ptr, new_length + old_length + 1);
+	va_start(ap, format);
+	vsnprintf(value + old_length, new_length + 1, format, ap);
+	va_end(ap);
+
+	*ptr = value;
+}
+
+
 void append_str(char **ptr, const char *str)
 {
 	char *value;
-
+	int old_length = 0;
+	int new_length;
 
 	if (Empty_string(str)) {
 		return;
 	}
 
-	if (*ptr) {
-		value = xrealloc(*ptr, strlen(*ptr) + strlen(str) + 1);
-		strcat(value, str);
-	} else {
-		value = xmalloc(strlen(str) + 1);
-		strcpy(value, str);
-	}
+	if (*ptr)
+		old_length = strlen(*ptr);
+
+	new_length = strlen(str);
+
+      	value = xrealloc(*ptr, new_length + old_length + 1);
+	memcpy(value + old_length, str, new_length + 1);
 
 	*ptr = value;
 }
