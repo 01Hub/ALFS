@@ -14,6 +14,10 @@
 		<archive>&packages_dir;/&apache-package;</archive>
 		<destination>&build_dir;</destination>
 	</unpack>
+	<copy>
+	        <source>&packages_dir;/&apache-patch;</source>
+	        <destination>&build_dir;</destination>
+	</copy>
     </stage>
 
     <stage name="Installing a package.">
@@ -24,14 +28,15 @@
 	<execute command="id -u apache &amp;> /dev/null || groupadd apache" />
 	<execute command="id -u apache &amp;> /dev/null || useradd -c apache -d /dev/null -g apache -s /bin/false apache" />
 
+
+	<patch>
+		<param>-N</param>
+		<param>-p1</param>
+		<param>-i ../&apache-patch;</param>
+	</patch>
+
 	<configure>
-                <param>--prefix=/usr</param>
-                <param>--sbindir=/usr/sbin</param>
-                <param>--libexecdir=/usr/lib/apache</param>
-                <param>--datadir=/var/www</param>
-                <param>--sysconfdir=/etc/apache</param>
-                <param>--localstatedir=/var/www</param>
-                <param>--includedir=/usr/include/apache</param>
+                <param>--enable-layout=LFS</param>
                 <param>--enable-mods-shared=all</param>
 	</configure>
 
@@ -41,6 +46,40 @@
 		<param>install</param>
 	</make>
 
+
+	<ownership user="root" group="root">
+	        <name>/usr/sbin/apxs</name>
+		<name>/usr/sbin/apachectl</name>
+		<name>/usr/sbin/dbmmanage</name>
+		<name>/usr/sbin/envvars-std</name>
+		<name>/usr/sbin/envvars</name>
+	</ownership>
+
+	<ownership user="root" group="root">
+	        <option>recursive</option>
+		<name>/usr/include/apache/</name>
+		<name>/usr/lib/apache/</name>
+		<name>/var/www/</name>
+		<name>/usr/share/man</name>
+		<name>/usr/sbin/</name>
+		<name>/usr/sbin/</name>
+	</ownership>
+		
+	<search_replace
+	    base = "/etc/apache">
+	        <file>httpd.conf</file>
+		<find>User nobody</find>
+		<replace>User apache</replace>
+	</search_replace>
+
+	<search_replace
+	    base = "/etc/apache">
+	        <file>httpd.conf</file>
+		<find>Group #-1</find>
+		<replace>Group apache</replace>
+	</search_replace>
+
+	
 
 	<textdump base="/etc/rc.d/init.d">
 		<file>apache</file>
