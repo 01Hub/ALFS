@@ -24,7 +24,7 @@
 		        <source>&packages_dir;/&mozilla-patch1;</source>
 			<destination>&build_dir;</destination>
 		</copy>
-1		
+		
 		<copy>
 		        <source>&packages_dir;/&mozilla-patch2;</source>
 			<destination>&build_dir;</destination>

@@ -14,11 +14,11 @@
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&tk-directory;/unix</base>
 			<environment>
 			    <variable name="VERSION">&tk-version;</variable>
 			    <variable name="V">8.4</variable>
 			</environment>
+			<base>&build_dir;/&tk-directory;/unix</base>
 		</stageinfo>
 
 		<configure>

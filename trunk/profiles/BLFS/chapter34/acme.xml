@@ -1,21 +1,20 @@
-<package name="control-center" version="&control-center-version;">
+<package name="acme" version="&acme-version;">
 
         <packageinfo>
-                <requires><name>gnome-desktop</name></requires>
-                <requires><name>nautilus</name></requires>
-		<requires><name>metacity</name></requires>
+                <requires><name>libgnomeui</name></requires>
+                <requires><name>libwnck</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&control-center-package;</archive>
+			<archive>&packages_dir;/&acme-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&control-center-directory;</base>
+			<base>&build_dir;/&acme-directory;</base>
 		</stageinfo>
 
 		<configure>
@@ -32,7 +31,7 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&control-center-directory;</remove>
+		<remove>&build_dir;/&acme-directory;</remove>
 	</stage>
 
 </package>

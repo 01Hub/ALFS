@@ -24,10 +24,10 @@
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&avifile-directory;</base>
 			<environment>
 			        <variable name="LD_LIBRARY_PATH" mode="append">:/opt/qt/lib</variable>
 			</environment>
+			<base>&build_dir;/&avifile-directory;</base>
 		</stageinfo>
 
 		<execute command="install -d /usr/lib/avifile-0.7/win32" />

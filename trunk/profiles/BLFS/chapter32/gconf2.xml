@@ -23,7 +23,6 @@
 			<param>--prefix=&gnome-prefix;</param>
 			<param>--libexecdir=&gnome-prefix;/sbin</param>
 			<param>--sysconfdir=/etc/gnome</param>
-			<param>--disable-gtk-doc</param>
 		</configure>
 
 		<make/>
