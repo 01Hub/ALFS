@@ -483,7 +483,7 @@ static INLINE element_s *get_elements_package(element_s *el)
 
 
 	for (p = el; p; p = p->parent) {
-		if (p->handler->type & HTYPE_PACKAGE) {
+		if (p->handler && (p->handler->type & HTYPE_PACKAGE)) {
 			break;
 		}
 	}
@@ -688,13 +688,9 @@ static int handle_data_msg(void)
 /* takes string containing element id and gets element */
 static element_s *find_element_by_key(const char *str)
 {
-	char *endptr;
-	unsigned int id = strtoul(str, &endptr, 10);
+	unsigned int id = atoi(str);
 
-	if (*endptr == 0)
-		return get_element_by_id(id);
-
-	return NULL;
+	return get_element_by_id(id);
 }
 
 static INLINE void send_element_status(const char *key)
