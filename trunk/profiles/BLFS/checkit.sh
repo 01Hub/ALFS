@@ -1,5 +1,5 @@
 
-xmllint -noent  -loaddtd -valid BLFS.xml 2>&1 | more
+xmllint -noent  -loaddtd -valid BLFS.xml 2>&1 | ${PAGER:-more}
 
 
 #export SP_CHARSET_FIXED=YES
