@@ -24,7 +24,7 @@
 		<textdump mode="append">
 			<file>config.h</file>
 			<content>
-=#define HAVE_SETLOCALE 1
+				=#define HAVE_SETLOCALE 1
 			</content>
 		</textdump>
 		
@@ -96,6 +96,12 @@
 		<execute command="/usr/sbin/pwconv" />
 		<execute command="/usr/sbin/grpconv" />
 	</stage>
+
+	<execute command="echo">
+		<param>root:&password;</param>
+		<param>| chpasswd</param>
+	</execute>
+
 
 	<stage name="Clean-up.">
 		<remove>&build_dir;/&shadow-directory;</remove>

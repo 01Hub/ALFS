@@ -51,7 +51,7 @@
 
 		<permissions mode="644">
 			<name>/usr/lib/libz.a</name>
-		 </permissions>
+		</permissions>
 
 		<move>
 			<source>/usr/lib/libz.so.*</source>

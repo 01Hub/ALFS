@@ -167,9 +167,7 @@
 			</environment>
 		</stageinfo>
 		
-
 		&c6-bootscripts;
-		&c6-configure;
 	</stage>
 </stage>
 
