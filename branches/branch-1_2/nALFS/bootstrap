@@ -23,13 +23,13 @@ get_text_doc() {
 }
 
 get_html_nohunks_doc() {
-    ${WGET} -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}-NOHUNKS.html
-    cp download/${1}-${DOC_VERSION}-NOHUNKS.html doc/${2}.html
+    ${WGET} -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}-NOCHUNKS.html
+    cp download/${1}-${DOC_VERSION}-NOCHUNKS.html doc/${2}.html
 }
 
 get_html_doc() {
-    ${WGET} -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}-html.tar.bz2
-    bzcat download/${1}-${DOC_VERSION}-html.tar.bz2 | tar --extract --directory=download
+    ${WGET} -P download ${DOC_URL_BASE}/${1}-${DOC_VERSION}-CHUNKS-html.tar.bz2
+    bzcat download/${1}-${DOC_VERSION}-CHUNKS-html.tar.bz2 | tar --extract --directory=download
     mkdir -p doc/${2}
     cp -R download/${1}/* doc/${2}
 }
@@ -37,14 +37,10 @@ get_html_doc() {
 get_profile() {
     ${WGET} -P download ${PROFILE_URL_BASE}/profile-LFS-${PROFILE_VERSION}.tar.bz2
     bzcat download/profile-LFS-${PROFILE_VERSION}.tar.bz2 | tar --extract --directory=profile
-    rm profile/*/*.dtd
-    ln -sf ../../doc/ALFS.dtd profile/*
-    #temporary fix until official profile has proper DTD name
-    perl -pi -e 's/nalfs.dtd/ALFS.dtd/' profile/*/LFS-*.xml
 }
 
 get_dtd() {
-    cp ../DTD/${1}-${DTD_VERSION}.dtd doc/${1}.dtd
+    cp ../DTD/${1}-${DTD_VERSION}.dtd doc
 }
 
 while getopts hd:g:p: param; do
@@ -61,15 +57,19 @@ while getopts hd:g:p: param; do
 	    DOC_VERSION=${OPTARG}
 	    echo Getting ${DOC_VERSION} version of guides...
 	    DOC_URL_BASE=http://linuxfromscratch.org/~jwrober
+
 	    get_text_doc ALFS-SYNTAX-DOC syntax_doc
-	    get_text_doc nALFS-USERS-GUIDE users_guide
-	    get_text_doc nALFS-HACKERS-GUIDE hackers_guide
 	    get_html_doc ALFS-SYNTAX-DOC syntax_doc
-	    get_html_doc nALFS-USERS-GUIDE users_guide
-	    get_html_doc nALFS-HACKERS-GUIDE hackers_guide
 	    get_html_nohunks_doc ALFS-SYNTAX-DOC syntax_doc
-	    get_html_nohunks_doc nALFS-USERS-GUIDE users_guide
+
+	    # get_text_doc nALFS-USERS-GUIDE users_guide
+	    # get_html_doc nALFS-USERS-GUIDE users_guide
+	    # get_html_nohunks_doc nALFS-USERS-GUIDE users_guide
+
+	    get_text_doc nALFS-HACKERS-GUIDE hackers_guide
+	    get_html_doc nALFS-HACKERS-GUIDE hackers_guide
 	    get_html_nohunks_doc nALFS-HACKERS-GUIDE hackers_guide
+
 	    echo done.
 	    ;;
 	p)
