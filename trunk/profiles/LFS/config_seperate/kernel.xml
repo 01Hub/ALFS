@@ -22,7 +22,7 @@
 		</make>
 
 		<copy>
-			<source>&kernel-config;</source>
+			<source>&packages_dir;/&kernel-config;</source>
 			<destination>.config</destination>
 		</copy>
 
