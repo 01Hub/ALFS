@@ -1,5 +1,5 @@
 <package name="module-init-tools" version="&module-tools-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&module-tools-md5;</digest>
 			<archive>&packages_dir;/&module-tools-package;</archive>
@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&module-tools-directory;</base>
 		</stageinfo>
@@ -30,7 +30,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&module-tools-directory;</remove>
 	</stage>
 </package>

@@ -1,5 +1,5 @@
 <package name="binutils-pass2" version="&binutils-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&binutils-md5;</digest>
 			<archive>&packages_dir;/&binutils-package;</archive>
@@ -12,7 +12,7 @@
 		</mkdir>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<environment>
 				<variable name="CFLAGS" />

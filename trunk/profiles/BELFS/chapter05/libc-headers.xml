@@ -1,5 +1,5 @@
 <package name="libc-headers" version="&linux-libc-headers-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&linux-libc-headers-md5;</digest>
 			<archive>&packages_dir;/&linux-libc-headers-package;</archive>
@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&linux-libc-headers-directory;</base>
 		</stageinfo>
@@ -25,7 +25,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&linux-libc-headers-directory;</remove>
 	</stage>
 </package>

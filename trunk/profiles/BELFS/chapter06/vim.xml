@@ -1,5 +1,5 @@
 <package name="vim" version="&vim-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&vim-md5;</digest>
 			<archive>&packages_dir;/&vim-package;</archive>
@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&vim-directory;</base>
 		</stageinfo>
@@ -57,7 +57,7 @@
 
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&vim-directory;</remove>
 	</stage>
 </package>

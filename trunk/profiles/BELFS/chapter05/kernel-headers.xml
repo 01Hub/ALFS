@@ -1,5 +1,5 @@
 <package name="kernel-headers" version="&linux-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking">
 		<unpack>
 			<digest>&linux-md5;</digest>
 			<archive>&packages_dir;/&linux-package;</archive>
@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing">
 		<stageinfo>
 			<base>&build_dir;/&linux-directory;</base>
 		</stageinfo>
@@ -48,7 +48,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleanup">
 		<remove>&build_dir;/&linux-directory;</remove>
 	</stage>
 </package>
