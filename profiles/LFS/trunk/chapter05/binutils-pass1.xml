@@ -34,10 +34,6 @@
       </configure>
       <make>
         <param>&jlevel;</param>
-        <param>configure-host</param>
-      </make>
-      <make>
-        <param>LDFLAGS="-all-static"</param>
       </make>
       <make>
         <param>install</param>
@@ -49,7 +45,6 @@
       <make>
         <param>&jlevel;</param>
         <param>-C ld</param>
-        <param>LDFLAGS="-all-static"</param>
         <param>LIB_PATH=/tools/lib</param>
       </make>
     </stage>

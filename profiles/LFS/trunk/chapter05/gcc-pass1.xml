@@ -29,7 +29,6 @@
         <base>&build_dir;/gcc-build</base>
       </stageinfo>
       <configure command="../&gcc-directory;/configure">
-        <prefix>CC="gcc -B/usr/bin"</prefix>
         <param>--prefix=/tools</param>
         <param>--libexecdir=/tools/lib</param>
         <param>--with-local-prefix=/tools</param>
@@ -39,7 +38,6 @@
       </configure>
       <make>
         <param>&jlevel;</param>
-        <param>BOOT_LDFLAGS="-static"</param>
         <param>bootstrap</param>
       </make>
       <make>
