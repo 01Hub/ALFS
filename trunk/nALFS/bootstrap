@@ -33,14 +33,12 @@ get_html_doc() {
 }
 
 get_dtd() {
-    wget -N -P download ${DTD_URL_BASE}/${1}-${DTD_VERSION}.dtd
-    cp download/${1}-${DTD_VERSION}.dtd doc/${1}.dtd
+    cp ../DTD/${1}-${DTD_VERSION}.dtd doc/${1}.dtd
 }
 
 if test x$1 = x--get-docs; then
     DOC_URL_BASE=http://www.linuxfromscratch.org/~jwrober
     DOC_VERSION=CVS
-    DTD_URL_BASE=http://www.linuxfromscratch.org/alfs/downloads/cvs
     DTD_VERSION=CVS
     mkdir -p download
     get_text_doc ALFS-SYNTAX-DOC syntax_doc
