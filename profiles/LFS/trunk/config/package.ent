@@ -17,8 +17,8 @@
 
 <!ENTITY bash-wcontinued-patch "bash-&bash-version;-avoid_WCONTINUED-1.patch">
 
-<!ENTITY binutils-md5 "a87269da4db684da403014b43ec0b89e">
-<!ENTITY binutils-version "2.15.94.0.2">
+<!ENTITY binutils-md5 "e9bcf84d9e6b5a2d840e76f22a3fce5f">
+<!ENTITY binutils-version "2.15.94.0.2.2">
 <!ENTITY binutils-package "binutils-&binutils-version;.tar.bz2">
 <!ENTITY binutils-directory "binutils-&binutils-version;">
 
@@ -27,8 +27,8 @@
 <!ENTITY bison-package "bison-&bison-version;.tar.bz2">
 <!ENTITY bison-directory "bison-&bison-version;">
 
-<!ENTITY bzip2-md5 "5b8773b4965618279277b05cd811e7b3">
-<!ENTITY bzip2-version "1.0.2">
+<!ENTITY bzip2-md5 "a41720b8748600ccc933ec3fd0100c10">
+<!ENTITY bzip2-version "1.0.3">
 <!ENTITY bzip2-package "bzip2-&bzip2-version;.tar.bz2">
 <!ENTITY bzip2-directory "bzip2-&bzip2-version;">
 
@@ -68,8 +68,8 @@
 <!ENTITY file-package "file-&file-version;.tar.bz2">
 <!ENTITY file-directory "file-&file-version;">
 
-<!ENTITY findutils-md5 "088e972f5218f32df8ff2a6d16b0e77d">
-<!ENTITY findutils-version "4.2.17">
+<!ENTITY findutils-md5 "25b38f3821a67f311dc92307d5bcac6f">
+<!ENTITY findutils-version "4.2.18">
 <!ENTITY findutils-package "findutils-&findutils-version;.tar.bz2">
 <!ENTITY findutils-directory "findutils-&findutils-version;">
 
@@ -107,8 +107,8 @@
 
 <!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-2.patch">
 
-<!ENTITY gettext-md5 "c9f6b7c52eb9da4a84340966d1a08d0f">
-<!ENTITY gettext-version "0.14.1">
+<!ENTITY gettext-md5 "c0ee2339a19a6096c1a8f7e5cb589605">
+<!ENTITY gettext-version "0.14.2">
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.bz2">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
@@ -146,8 +146,8 @@
 <!ENTITY hotplug-package "hotplug-&hotplug-version;.tar.bz2">
 <!ENTITY hotplug-directory "hotplug-&hotplug-version;">
 
-<!ENTITY iana-etc-md5 "670da9e41179d618498f5d614b7f4636">
-<!ENTITY iana-etc-version "1.03">
+<!ENTITY iana-etc-md5 "9f769f7b2d0e519cf62dacb2b3b051d4">
+<!ENTITY iana-etc-version "1.04">
 <!ENTITY iana-etc-package "iana-etc-&iana-etc-version;.tar.bz2">
 <!ENTITY iana-etc-directory "iana-etc-&iana-etc-version;">
 

@@ -37,7 +37,7 @@
         <param>--without-gd</param>
         <param>--without-cvs</param>
         <param>--with-headers=/tools/include</param>
-        <param>--disable-selinux</param>
+        <param>--without-selinux</param>
       </configure>
       <make>
         <prefix>PARALLELMFLAGS=&jlevel;</prefix>
