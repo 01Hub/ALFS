@@ -116,7 +116,7 @@ static int mkdir_main_ver2(element_s *el)
 #endif /* HANDLER_SYNTAX_2_0 */
 
 
-#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
 static const char *mkdir_parameters_ver3[] =
 { "option", "name", "permissions", NULL };
@@ -211,7 +211,7 @@ static int mkdir_main_ver3(element_s *el)
 	return status;
 }
 
-#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
 
 
 /*
@@ -250,6 +250,19 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "mkdir",
 		.description = "Make directories",
 		.syntax_version = "3.1",
+		.parameters = mkdir_parameters_ver3,
+		.main = mkdir_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.priority = 0
+	},
+#endif
+#if HANDLER_SYNTAX_3_2
+	{
+		.name = "mkdir",
+		.description = "Make directories",
+		.syntax_version = "3.2",
 		.parameters = mkdir_parameters_ver3,
 		.main = mkdir_main_ver3,
 		.type = 0,

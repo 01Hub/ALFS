@@ -75,7 +75,7 @@ static int make_main_ver2(element_s *el)
 #endif /* HANDLER_SYNTAX_2_0 */
 
 
-#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
 static const char *make_parameters_ver3[] = { "param", "prefix", NULL };
 // char *HANDLER_SYMBOL(attributes)[] = { "base", NULL };
@@ -113,7 +113,7 @@ static int make_main_ver3(element_s *el)
 	return status;
 }
 
-#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
 
 
 /*
@@ -152,6 +152,19 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "make",
 		.description = "Run make",
 		.syntax_version = "3.1",
+		.parameters = make_parameters_ver3,
+		.main = make_main_ver3,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 1,
+		.priority = 0
+	},
+#endif
+#if HANDLER_SYNTAX_3_2
+	{
+		.name = "make",
+		.description = "Run make",
+		.syntax_version = "3.2",
 		.parameters = make_parameters_ver3,
 		.main = make_main_ver3,
 		.type = 0,

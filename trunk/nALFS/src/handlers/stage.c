@@ -50,7 +50,7 @@
 extern char **environ;
 
 
-#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
 static INLINE int set_supplementary_groups(const char *user, gid_t gid)
 {
@@ -410,7 +410,7 @@ static int stage_main(element_s *el)
 	return status;
 }
 
-#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
 
 
 /*
@@ -436,6 +436,19 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "stage",
 		.description = "Enter stage: ", // FIXME
 		.syntax_version = "3.1",
+		.parameters = stage_parameters,
+		.main = stage_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.priority = 0
+	},
+#endif
+#if HANDLER_SYNTAX_3_2
+	{
+		.name = "stage",
+		.description = "Enter stage: ", // FIXME
+		.syntax_version = "3.2",
 		.parameters = stage_parameters,
 		.main = stage_main,
 		.type = 0,

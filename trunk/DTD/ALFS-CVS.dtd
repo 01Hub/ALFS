@@ -26,7 +26,7 @@
 <!ELEMENT alfs           ((%ops;)*)>
 <!ATTLIST alfs
           base           CDATA #IMPLIED
-          version        CDATA #FIXED "3.1">
+          version        CDATA #FIXED "3.2">
 
 <!ELEMENT archive        (#PCDATA)>
 

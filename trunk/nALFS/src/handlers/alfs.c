@@ -86,6 +86,19 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.priority = 0
 	},
 #endif
+#if HANDLER_SYNTAX_3_2
+	{
+		.name = "alfs",
+		.description = "ALFS profile",
+		.syntax_version = "3.2",
+		.parameters = alfs_parameters,
+		.main = alfs_main,
+		.type = 0,
+		.alloc_data = NULL,
+		.is_action = 0,
+		.priority = 0
+	},
+#endif
 	{
 		NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0
 	}

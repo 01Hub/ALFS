@@ -129,7 +129,7 @@ static int textdump_main_ver2(element_s *el)
 #endif /* HANDLER_SYNTAX_2_0 */
 
 
-#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1
+#if HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2
 
 static const char *textdump_parameters_ver3[] =
 { "file", "content", NULL };
@@ -148,7 +148,7 @@ static int textdump_main_ver3(element_s *el)
 }
 
 
-#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 */
+#endif /* HANDLER_SYNTAX_3_0 || HANDLER_SYNTAX_3_1 || HANDLER_SYNTAX_3_2 */
 
 
 static char *textdump_data(element_s *el, handler_data_e data)
@@ -196,6 +196,19 @@ handler_info_s HANDLER_SYMBOL(info)[] = {
 		.name = "textdump",
 		.description = "Dump text",
 		.syntax_version = "3.1",
+		.parameters = textdump_parameters_ver3,
+		.main = textdump_main_ver3,
+		.type = HTYPE_TEXTDUMP,
+		.alloc_data = textdump_data,
+		.is_action = 1,
+		.priority = 0
+	},
+#endif
+#if HANDLER_SYNTAX_3_2
+	{
+		.name = "textdump",
+		.description = "Dump text",
+		.syntax_version = "3.2",
 		.parameters = textdump_parameters_ver3,
 		.main = textdump_main_ver3,
 		.type = HTYPE_TEXTDUMP,
