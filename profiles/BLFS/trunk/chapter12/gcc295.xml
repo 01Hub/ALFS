@@ -61,12 +61,14 @@
 		        <param>install</param>
 		</make>
 
-		<execute command="L=`find /opt/gcc-&gcc295-version;/lib -name '*libstdc++*.so' -type f` &amp;&amp;
-IL=`basename $L` &amp;&amp;
-for i in /opt/gcc-&gcc295-version;/lib/*.so*; do mv -f $i /usr/lib;ln -sf /usr/lib/`basename $i` /opt/gcc-&gcc295-version;/lib; done &amp;&amp;
-ln -sf $IL /usr/lib/libstdc++-libc6.1-1.so.2 &amp;&amp;
-ln -sf $IL /usr/lib/libstdc++-libc6.2-2.so.3 &amp;&amp;
-ln -sf $IL /usr/lib/libstdc++-libc6.3-2.so.3" />
+		<execute command="L=`find /opt/gcc-&gcc295-version;/lib -name '*libstdc++*.so' -type f` &real-amp;&real-amp;">
+			<param>IL=`basename $L` &real-amp;&real-amp;</param>
+			<param>for i in /opt/gcc-&gcc295-version;/lib/*.so*;</param>
+			<param>do mv -f $i /usr/lib;ln -sf /usr/lib/`basename $i` /opt/gcc-&gcc295-version;/lib; done &real-amp;&real-amp;</param>
+			<param>ln -sf $IL /usr/lib/libstdc++-libc6.1-1.so.2 &real-amp;&real-amp;</param>
+			<param>ln -sf $IL /usr/lib/libstdc++-libc6.2-2.so.3 &real-amp;&real-amp;</param>
+			<param>ln -sf $IL /usr/lib/libstdc++-libc6.3-2.so.3</param>
+		</execute>
 		
 	</stage>
 
