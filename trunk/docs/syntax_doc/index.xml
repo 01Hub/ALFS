@@ -4,7 +4,7 @@
 
 <!ENTITY alfs-dtd-version "3.1">
 <!ENTITY version "&alfs-dtd-version;-2004-06-17">
-<!ENTITY releasedate "Jube 14th, 2004">
+<!ENTITY releasedate "June 14th, 2004">
 
 <!ENTITY % book      SYSTEM "book/book.ent">
 <!ENTITY % preface   SYSTEM "preface/preface.ent">
