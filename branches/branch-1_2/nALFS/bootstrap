@@ -43,7 +43,7 @@ get_dtd() {
     cp ../DTD/${1}-${DTD_VERSION}.dtd doc
 }
 
-while getopts hd:g:p: param; do
+while getopts hd:s:h:u:p: param; do
     case $param in
 	d)
 	    mkdir -p download
