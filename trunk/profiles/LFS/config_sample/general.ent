@@ -51,13 +51,13 @@
 
 
 <!-- Name of your machine.
-     This entity is used to create the files /etc/host
+     This entity is used to create the files /etc/hosts
      and /etc/sysconfig/network
      -->
 <!ENTITY hostname "wheeler3">
 
 <!-- Domain of your machine. 
-     This entity is used to create the files /etc/host
+     This entity is used to create the files /etc/hosts
      -->
 <!ENTITY domain "middle-earth">
 
@@ -72,6 +72,11 @@
 <!ENTITY IP         "172.16.1.22">
 <!ENTITY netmask    "255.255.255.0">
 <!ENTITY broadcast  "172.16.1.255">
+
+<!-- In the entity below replace 127.0.0.1 with the IP address of the DNS server most appropriate for
+your setup. This will often be provided by your ISP or it may even be a router on your local
+network.-->
+<!ENTITY nameserver-ip "127.0.0.1">
 
 <!-- Set here the name of the module of your network card -->
 <!ENTITY network-card-module "sis900">
