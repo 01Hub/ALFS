@@ -42,7 +42,7 @@
 		        <param>install</param>
 		</make>
 
-		<execute command="/sbin/ldconfig" />
+		&ldconfig;
 
 		<make>
 		        <param>update</param>
