@@ -6,33 +6,33 @@
 <title>Syntax</title>
 
 <synopsis>
-&lt;!ELEMENT alfs           (configure|copy|download|execute|if|link|make|
-                          mkdir|move|ownership|package|patch|
-                          permissions|remove|search_replace|
-                          stage|textdump|unpack)*&gt;
+&lt;!ELEMENT alfs     ((configure | copy | download | execute | link |
+                        make | mkdir | move | ownership | package |
+                        patch | permissions | remove | search_replace |
+                        stage | textdump | unpack)*)&gt;
 &lt;!ATTLIST alfs
-          version        CDATA   #FIXED "3.1"&gt;
+          base        CDATA #IMPLIED
+          version     CDATA #FIXED &quot;3.1&quot;&gt;
 </synopsis>
 
 <para>See also :
-<link linkend="elem_configure">configure</link>,
-<link linkend="elem_copy">copy</link>,
-<link linkend="elem_download">download</link>,
-<link linkend="elem_execute">execute</link>,
-<link linkend="elem_if">if</link>,
-<link linkend="elem_link">link</link>,
-<link linkend="elem_make">make</link>,
-<link linkend="elem_mkdir">mkdir</link>,
-<link linkend="elem_move">move</link>,
-<link linkend="elem_ownership">ownership</link>,
-<link linkend="elem_package">package</link>,
-<link linkend="elem_patch">patch</link>,
-<link linkend="elem_permissions">permissions</link>,
-<link linkend="elem_remove">remove</link>,
-<link linkend="elem_search_replace">search_replace</link>,
-<link linkend="elem_stage">search_stage</link>,
-<link linkend="elem_textdump">textdump</link>,
-<link linkend="elem_unpack">unpack</link>.
+<xref linkend="elem_configure"/>,
+<xref linkend="elem_copy"/>,
+<xref linkend="elem_download"/>,
+<xref linkend="elem_execute"/>,
+<xref linkend="elem_link"/>,
+<xref linkend="elem_make"/>,
+<xref linkend="elem_mkdir"/>,
+<xref linkend="elem_move"/>,
+<xref linkend="elem_ownership"/>,
+<xref linkend="elem_package"/>,
+<xref linkend="elem_patch"/>,
+<xref linkend="elem_permissions"/>,
+<xref linkend="elem_remove"/>,
+<xref linkend="elem_search_replace"/>,
+<xref linkend="elem_stage"/>,
+<xref linkend="elem_textdump"/>,
+<xref linkend="elem_unpack"/>.
 </para>
 
 </sect2>
@@ -40,35 +40,47 @@
 <sect2>
 <title>Description</title>
 
-<para>The element <token>alfs</token> is the root element 
-of the DTD, meaning that an ALFS profile should contain one and only
-one alfs element, all the other elements being embedded in this element</para>
+<para>The element <filename>alfs</filename> is the root element of the
+&book-product;. This means that an <acronym>ALFS</acronym> profile should
+contain one and only one <filename>alfs</filename> element with all the other
+elements being embedded in this element.</para>
 
-<para>When processing an <token>alfs</token> element, one processes all its
+<para>When processing an <filename>alfs</filename> element, one processes all its
 children in their order of occurence.</para>
 
-<para>The attribute <token>version</token> identifies the version of the
-ALFS profile syntax used; it should be <literal>"3.0"</literal>.</para>
+<para>Notice that all the main operation elements
+(<filename>configure</filename> to <filename>unpack</filename>) are surrounded
+by parathensis [()]and followed by an asterisk [*]. The asterisk signifies
+that each main operation element can be used optionally inside the
+<filename>alfs</filename> declaration in a profile and that if used, they can
+be used more than once.</para>
+
+<para>The attribute <filename>base</filename> identifies the base directory
+that work should be performed under. The use of <literal>#IMPLIED</literal>
+denotes that this attribute is optional.  If not used,
+<filename>base</filename> will inherit its value from an earlier use in the
+profile.</para>
+
+<para>The attribute <filename>version</filename> identifies the version of the
+ALFS profile syntax used; it should be <literal>"3.1"</literal>.</para>
 
 </sect2>
 
 <sect2>
 <title>Examples</title>
 
-<programlisting>
-&lt;!DOCTYPE alfs SYSTEM "alfs.dtd" [
+<screen><userinput>&lt;!DOCTYPE alfs SYSTEM &quot;alfs-3.1.dtd&quot; [
 
-&lt;!ENTITY % general_entities SYSTEM "entities/general"&gt;
+&lt;!ENTITY % general_entities SYSTEM &quot;entities/general&quot;&gt;
 
 %general_entities;
 
 ]&gt;
-&lt;alfs version="3.1"&gt;
+&lt;alfs version=&quot;3.1&quot;&gt;
 
  .....
 
-&lt;/alfs&gt;
-</programlisting>
+&lt;/alfs&gt;</userinput></screen>
 
 </sect2>
 
