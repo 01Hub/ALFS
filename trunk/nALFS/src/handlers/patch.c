@@ -217,9 +217,8 @@ static int patch_main_ver3_2(element_s *el)
 	decompressor = alloc_decompress_command(get_compression_type(file));
 
 	if (decompressor == NULL)
-		decompressor = xstrdup("cat %s | %s");
-	else
-		append_str(&decompressor, " %s");
+		decompressor = xstrdup("cat %s");
+	append_str(&decompressor, " | %s");
 
 	command = xstrdup("");
 
