@@ -38,7 +38,7 @@ static void *spawn_srv (void *inf)
 	ssh_info *info = (ssh_info *)inf;
 
 	secret = gen_secret();
-	snprintf(cmd, 512, "ssh %s \"cd %s;./srv %s %i %s\"", info->host, 
+	snprintf(cmd, 512, "ssh %s \"cd %s;./alfsd %s %i %s\"", info->host, 
 		info->dir, info->host, info->port, secret);
 	conn = popen(cmd, "r");
 	if (!conn)

@@ -1,23 +1,32 @@
-CFLAGS=-Ilibalfs
+CFLAGS=-Ilibalfs -Ilibcomm -D_REENTRANT
+LDLIBS=-lpthread
 
-BIN=alfs
-OBJS=build.o alfs.o plugin.o url.o
+BIN1=test
+OBJS1=build.o test.o plugin.o url.o
+
+BIN2=alfscl
+OBJS2=alfscl.o
+
+BIN3=alfsd
+OBJS3=alfsd.o
+
+CLEANFILES=$(BIN1) $(BIN2) $(BIN3)
 
 ifeq ($(OPTS),)
-#OPTS=-q
+OPTS=-q
 #OPTS+=~/stuff/LFS/SVN/lfs/index.xml
 #OPTS+=~/projects/alfs/books/multi-arch/index.xml
-#OPTS+=~/projects/alfs/books/book/index.xml
+OPTS+=~/projects/alfs/books/book/index.xml
 #OPTS+=~/projects/alfs/books/lfs-profile/LFS.xml
 #OPTS+=~/projects/alfs/books/ass/index.xml
 #OPTS+=~/projects/hive/unstable/profile.xml
-OPTS+=~/projects/alfs/books/blfs/index.xml
+#OPTS+=~/projects/alfs/books/blfs/index.xml
 #OPTS+=~/projects/alfs/books/hlfs/index.xml
 #OPTS+=~/projects/alfs/books/book-rng/index.xml
 #OPTS+=~/projects/alfs/books/refbuild/xml/x86-reference-build.xml
 endif
 
-SUBDIRS=libalfs syntax output
+SUBDIRS=libalfs syntax output libcomm
 
 .PHONY: all memcheck run
 
@@ -25,15 +34,15 @@ all: all-subdirs run
 
 include libalfs/inc.mak
 
-$(BIN): $(OBJS) libalfs/libalfs.a
+$(BIN1): $(OBJS1) libalfs/libalfs.a
 
-memcheck: $(BIN)
-	valgrind --tool=memcheck ./$(BIN) $(OPTS)
+LDLIBS+=-lnc_sock
 
-run: $(BIN)
-	./$(BIN) $(OPTS)
+$(BIN2): $(OBJS2) libcomm/libcomm.a
+$(BIN3): $(OBJS3) libcomm/libcomm.a
 
-build.o: build.h
-main.o: main.h
-plugin.o: plugin.h
-url.o: url.h
+memcheck: $(BIN1)
+	valgrind --tool=memcheck ./$(BIN1) $(OPTS)
+
+run: $(BIN1) $(BIN2) $(BIN3)
+	./$(BIN2)
