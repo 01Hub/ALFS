@@ -14,7 +14,7 @@
   <package name="aalib" version="&aalib-version;">
     <packageinfo>
       <utilizes>
-        <name>xfree86</name>
+        <name>&ximpl;</name>
       </utilizes>
       <utilizes>
         <name>slang</name>

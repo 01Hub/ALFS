@@ -14,7 +14,7 @@
   <package name="imlib2" version="&imlib2-version;">
     <packageinfo>
       <requires>
-        <name>xfree86</name>
+        <name>&ximpl;</name>
       </requires>
       <requires>
         <name>libjpeg</name>

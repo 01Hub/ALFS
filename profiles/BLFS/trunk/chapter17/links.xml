@@ -32,7 +32,7 @@
         <name>svgalib</name>
       </utilizes>
       <utilizes>
-        <name>xfree86</name>
+        <name>&ximpl;</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

@@ -14,7 +14,7 @@
   <package name="lesstif" version="&lesstif-version;">
     <packageinfo>
       <requires>
-        <name>xfree86</name>
+        <name>&ximpl;</name>
       </requires>
     </packageinfo>
     <stage name="Unpacking">
