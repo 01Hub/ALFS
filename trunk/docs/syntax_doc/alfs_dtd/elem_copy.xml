@@ -32,18 +32,8 @@ operation elements. It is used to copy a file and/or directory into a
 destination file or directory. <emphasis role="bold">The use of wildcards
 is not supported</emphasis>.</para>
 
-<para>The element <filename>option</filename> is optional and can be used one
-or many times to ensure the correct use of the <command>cp</command>
-command. The following is the currently supported list of options for the
-<command>cp</command> command&nbsp;:
-
-<itemizedlist>
-	<listitem><para>archive (-a, --archive)</para></listitem>
-	<listitem><para>force (-f, --force)</para></listitem>
-	<listitem><para>no-dereference (-d, --no-dereference)</para></listitem>
-	<listitem><para>preserve (-p, --preserve)</para></listitem>
-	<listitem><para>recursive (-R, -r, --recursive)</para></listitem>
-</itemizedlist></para>
+<para>The sub-element <filename>option</filename> provides a means to pass
+an option to the <command>cp</command> command.</para>
 
 <note><para>Not all of the <command>cp</command> options are in every
 implementation.  Refer to the documentation for your implementation to
