@@ -2,24 +2,30 @@
 <?dbhtml filename="acknowledgements.html" dir="preface"?>
 <title>Acknowledgements</title>
 
-<para>We would like to thank the following people and organizations for their 
+<para>We would like to thank the following people and organizations for their
 contributions towards the Automated Linux From Scratch project:</para>
 
 <itemizedlist>
 
-<listitem><para><ulink url="mailto:vdzuba@linuxfromscratch.org">Vassili 
-Dzuba</ulink> for helping to create the <acronym>DTD</acronym> and writing the 
-intial version of this book.</para></listitem>
+<listitem><para><ulink url="mailto:vassili@linuxfromscratch.org">Vassili
+Dzuba</ulink>&nbsp;&nbsp;&lt;vassili@linuxfromscratch.org&gt;&nbsp;&nbsp;&emdash;
+&nbsp;&nbsp;for helping to create the <acronym>DTD</acronym> and writing
+the intial version of this book.</para></listitem>
 
-<listitem><para><ulink url="mailto:gerard@linuxfromscratch.org">Gerard 
-Beekmans</ulink> for being more then a great help.</para></listitem>
+<listitem><para><ulink url="mailto:gerard@linuxfromscratch.org">Gerard
+Beekmans</ulink>&nbsp;&nbsp;&lt;gerard@linuxfromscratch.org&gt;&nbsp;&nbsp;&emdash;
+&nbsp;&nbsp;for being more then a great help.</para></listitem>
 
-<listitem><para>Jesse Tien-Ten-Que for helping to create the 
-<acronym>DTD</acronym> and writing the initial version of this 
+<listitem><para><ulink url="mailto:jwrober@linuxfromscratch.org">James
+Robertson</ulink>&nbsp;&nbsp;&lt;jwrober@linuxfromscratch.org&gt;&nbsp;&nbsp;
+&emdash;&nbsp;&nbsp;Current documentation editor.</para></listitem>
+
+<listitem><para>Jesse Tien-Ten-Que for helping to create the
+<acronym>DTD</acronym> and writing the initial version of this
 book.</para></listitem>
 
-<listitem><para>Countless other people on the <acronym>ALFS</acronym> mailing 
-list who are making this project happen by giving their suggestions, testing 
+<listitem><para>Countless other people on the <acronym>ALFS</acronym> mailing
+list who are making this project happen by giving their suggestions, testing
 the tools and submitting bug reports.</para></listitem>
 
 </itemizedlist>

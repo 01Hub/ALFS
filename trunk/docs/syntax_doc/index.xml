@@ -3,8 +3,8 @@
 			"/usr/share/docbook/docbookx.dtd" [
 
 <!ENTITY alfs-dtd-version "3.1">
-<!ENTITY version "&alfs-dtd-version;-20030930">
-<!ENTITY releasedate "September 30th, 2003">
+<!ENTITY version "&alfs-dtd-version;-20031103">
+<!ENTITY releasedate "November 3rd, 2003">
 
 <!ENTITY % book      SYSTEM "book/book.ent">
 <!ENTITY % preface   SYSTEM "preface/preface.ent">

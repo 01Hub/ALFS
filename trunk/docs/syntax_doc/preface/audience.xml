@@ -2,10 +2,11 @@
 <?dbhtml filename="audience.html" dir="preface"?>
 <title>Who Would Want To Read This Book</title>
 
-<para>This book is mainly aimed at those who want more information on the 
-&book-product;. The DTD is designed to be implementation agnostic. This means 
-that you may be reading this book as part of an <acronym>ALFS</acronym> source 
-tarball or on the <acronym>ALFS</acronym> website.</para>
+<para>This book is mainly aimed at those who want more information on the
+&book-product;. The <acronym>DTD</acronym> is designed to be implementation
+agnostic. This means that you may be reading this book as part of an
+<acronym>ALFS</acronym> source tarball or on the <acronym>ALFS</acronym>
+website.</para>
 
 </sect1>
 
