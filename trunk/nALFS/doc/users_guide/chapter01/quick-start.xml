@@ -14,7 +14,7 @@ make install
 nALFS profiles/LFS/latest.xml
 </command></screen>
 
-<para>When you enter the program, type &guot;?&guot; for a list of all
+<para>When you enter the program, type &quot;?&quot; for a list of all
 available commands.</para>
 
 </sect1>
