@@ -17,10 +17,16 @@
         <name>kdebase</name>
       </requires>
       <utilizes>
+	<name>libjpeg</name>
+      </utilizes>
+      <utilizes>
         <name>libxml2</name>
       </utilizes>
       <utilizes>
         <name>libart-lgpl</name>
+      </utilizes>
+      <utilizes>
+	<name>xscreensaver</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

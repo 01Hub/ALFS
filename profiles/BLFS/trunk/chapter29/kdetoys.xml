@@ -17,10 +17,10 @@
         <name>kdebase</name>
       </requires>
       <utilizes>
-        <name>libxml2</name>
+        <name>libjpeg</name>
       </utilizes>
       <utilizes>
-        <name>libtiff</name>
+        <name>libxml2</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

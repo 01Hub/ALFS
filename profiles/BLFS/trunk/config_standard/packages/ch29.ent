@@ -1,5 +1,5 @@
 <!--************* packages for chapter 29 *************-->
-<!ENTITY kde-version "3.2.2">
+<!ENTITY kde-version "3.3.2">
 
 <!ENTITY kdeadmin-version   "&kde-version;">
 <!ENTITY kdeadmin-package   "kdeadmin-&kdeadmin-version;.tar.bz2">
@@ -33,13 +33,13 @@
 <!ENTITY kdesdk-package   "kdesdk-&kdesdk-version;.tar.bz2">
 <!ENTITY kdesdk-directory "kdesdk-&kdesdk-version;">
 
-<!ENTITY kdevelop-version   "3.0.3">
+<!ENTITY kdevelop-version   "3.1.2">
 <!ENTITY kdevelop-package   "kdevelop-&kdevelop-version;.tar.bz2">
 <!ENTITY kdevelop-directory "kdevelop-&kdevelop-version;">
 
-<!ENTITY quanta-version "&kde-version;">
-<!ENTITY quanta-package "quanta-&quanta-version;.tar.bz2">
-<!ENTITY quanta-directory "quanta-&quanta-version;">
+<!ENTITY kdewebdev-version "&kde-version;">
+<!ENTITY kdewebdev-package "kdewebdev-&kdewebdev-version;.tar.bz2">
+<!ENTITY kdewebdev-directory "kdewebdev-&kdewebdev-version;">
 
 <!ENTITY kdebindings-version   "&kde-version;">
 <!ENTITY kdebindings-package   "kdebindings-&kdebindings-version;.tar.bz2">

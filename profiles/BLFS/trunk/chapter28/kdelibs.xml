@@ -29,7 +29,7 @@
         <name>openldap</name>
       </utilizes>
       <utilizes>
-        <name>fam</name>
+        <name>libfam</name>
       </utilizes>
       <utilizes>
         <name>pcre</name>
@@ -41,10 +41,16 @@
         <name>libart-lgpl</name>
       </utilizes>
       <utilizes>
-        <name>alsa</name>
+        <name>alsa-lib</name>
       </utilizes>
       <utilizes>
         <name>libtiff</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>aspell</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -53,31 +59,38 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&kdelibs-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p0</param>
+	<param>-i &packages_dir;/&kdelibs-htmlframes-patch;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p0</param>
+	<param>kio/kio/job.cpp</param>
+	<param>&packages_dir;/&kdelibs-kio-patch;</param>
+      </patch>
+    </stage>
     <stage name="Installing">
-    <stageinfo>
-      <base>&build_dir;/&kdelibs-directory;</base>
-    </stageinfo>
-    <patch>
-      <param>-N</param>
-      <param>-p1</param>
-      <param>-i &packages_dir;/&kdelibs-kapplication-patch;</param>
-    </patch>
-    <patch>
-      <param>-N</param>
-      <param>-p0</param>
-      <param>-i &packages_dir;/&kdelibs-ktelnetservice-patch;</param>
-    </patch>
-    <configure>
-      <param>--prefix=&kde-prefix;</param>
-      <param>--disable-debug</param>
-      <param>--disable-dependency-tracking</param>
-      <param>--enable-fast-malloc=full</param>
-      <param>--disable-pcre</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>&ldconfig;</stage>
+      <stageinfo>
+	<base>&build_dir;/&kdelibs-directory;</base>
+      </stageinfo>
+      <configure>
+	<param>--prefix=&kde-prefix;</param>
+	<param>--disable-debug</param>
+	<param>--disable-dependency-tracking</param>
+	<param>--enable-fast-malloc=full</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+      &ldconfig;
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&kdelibs-directory;</remove>
     </stage>

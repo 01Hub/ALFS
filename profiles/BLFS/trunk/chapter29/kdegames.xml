@@ -17,7 +17,13 @@
         <name>kdebase</name>
       </requires>
       <utilizes>
+	<name>libjpeg</name>
+      </utilizes>
+      <utilizes>
         <name>libxml2</name>
+      </utilizes>
+      <utilizes>
+	<name>doxygen</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

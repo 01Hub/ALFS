@@ -283,7 +283,7 @@
       <xi:include href="chapter29/kdeedu.xml" />
       <xi:include href="chapter29/kdesdk.xml" />
       <xi:include href="chapter29/kdevelop.xml" />
-      <xi:include href="chapter29/quanta.xml" />
+      <xi:include href="chapter29/kdewebdev.xml" />
       <xi:include href="chapter29/kdebindings.xml" />
       <xi:include href="chapter29/kdeaccessibility.xml" />
       <xi:include href="chapter29/kdetoys.xml" />

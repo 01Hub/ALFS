@@ -17,31 +17,43 @@
         <name>kdelibs</name>
       </requires>
       <utilizes>
-        <name>libxml2</name>
-      </utilizes>
-      <utilizes>
-        <name>&j2sdk;</name>
-      </utilizes>
-      <utilizes>
-        <name>openssl</name>
-      </utilizes>
-      <utilizes>
-        <name>linuxpam</name>
-      </utilizes>
-      <utilizes>
-        <name>libtiff</name>
-      </utilizes>
-      <utilizes>
-        <name>openldap</name>
-      </utilizes>
-      <utilizes>
-        <name>pkgconfig</name>
+        <name>libjpeg</name>
       </utilizes>
       <utilizes>
         <name>libart-lgpl</name>
       </utilizes>
       <utilizes>
-        <name>samba</name>
+        <name>libxml2</name>
+      </utilizes>
+      <utilizes>
+        <name>openssl</name>
+      </utilizes>
+      <utilizes>
+        <name>&j2sdk;</name>
+      </utilizes>
+      <utilizes>
+        <name>libtiff</name>
+      </utilizes>
+      <utilizes>
+        <name>lesstif</name>
+      </utilizes>
+      <utilizes>
+        <name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+	<name>openldap</name>
+      </utilizes>
+      <utilizes>
+	<name>cyrus-sasl</name>
+      </utilizes>
+      <utilizes>
+	<name>samba</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>doxygen</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -49,6 +61,21 @@
         <archive>&packages_dir;/&kdebase-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&kdebase-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p0</param>
+	<param>-i &packages_dir;/&kdebase-htmlframes-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Creating group">
+      <execute command="getent group nogroup &gt; /dev/null || groupadd">
+	<param>nogroup</param>
+      </execute>
     </stage>
     <stage name="Installing">
       <stageinfo>

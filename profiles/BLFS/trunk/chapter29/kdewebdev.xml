@@ -11,16 +11,13 @@
 
 ]>
 <alfs>
-  <package name="quanta" version="&quanta-version;">
+  <package name="kdewebdev" version="&kdewebdev-version;">
     <packageinfo>
       <requires>
         <name>kdebase</name>
       </requires>
       <utilizes>
         <name>libjpeg</name>
-      </utilizes>
-      <utilizes>
-        <name>libtiff</name>
       </utilizes>
       <utilizes>
         <name>libxml2</name>
@@ -31,13 +28,13 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&quanta-package;</archive>
+        <archive>&packages_dir;/&kdewebdev-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&quanta-directory;</base>
+        <base>&build_dir;/&kdewebdev-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=&kde-prefix;</param>
@@ -50,7 +47,7 @@
       </make>
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&quanta-directory;</remove>
+      <remove>&build_dir;/&kdewebdev-directory;</remove>
     </stage>
   </package>
 </alfs>
