@@ -70,12 +70,29 @@
       <destination>/lib</destination>
     </move>
     <link>
-      <target>../../lib/libkrb5.so</target>
-      <target>../../lib/libkrb4.so</target>
-      <target>../../lib/libdes425.so</target>
-      <target>../../lib/libk5crypto.so</target>
-      <target>../../lib/libcom_err.so</target>
-      <name>/usr/lib</name>
+      <option>force</option>
+      <target>../../lib/libkrb5.so.3</target>
+      <name>/usr/lib/libkrb5.so</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>../../lib/libkrb4.so.2</target>
+      <name>/usr/lib/libkrb4.so</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>../../lib/libdes425.so.3</target>
+      <name>/usr/lib/libdes425.so</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>../../lib/libk5crytpo.so.3</target>
+      <name>/usr/lib/libk5crypto.so</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>../../lib/libcom_err.so.3</target>
+      <name>/usr/lib/libcom_err.so</name>
     </link>
     &ldconfig;
   </stage>
@@ -92,17 +109,17 @@
 	=# Begin /etc/krb5.conf
 	=  
 	=[libdefaults]
-	=    default_realm = &mitkrb-all-caps-domain;
+	=    default_realm = &krb-all-caps-domain;
 	=    encrypt = true
 	=
 	=[realms]
-	=    &mitkrb-all-caps-domain; = {
-	=        kdc = &mitkrb-hostname;
-	=        admin_server = &mitkrb-hostname;
+	=    &krb-all-caps-domain; = {
+	=        kdc = &krb-hostname;
+	=        admin_server = &krb-hostname;
 	=    }
 	=
 	=[domain_realm]
-	=    .&mitkrb-domain; = &mitkrb-all-caps-domain;
+	=    .&krb-domain; = &krb-all-caps-domain;
 	=
 	=[logging]
 	=    kdc = SYSLOG[:INFO[:AUTH]]

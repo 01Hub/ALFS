@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch10.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+<package name="xscreensaver" version="&xscreensaver-version;">
+  <stage name="Unpacking.">
+    <unpack>
+      <archive>&packages_dir;/&xscreensaver-package;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+  </stage>
+  <stage name="Installing.">
+    <stageinfo>
+      <base>&build_dir;/&xscreensaver-directory;</base>
+    </stageinfo>
+    <search_replace>
+      <file>driver/Makefile.in</file>
+      <find>@GNOME_DATADIR@</find>
+      <replace>&gnome-prefix;/share</replace>
+    </search_replace>
+    <configure>
+      <param>--prefix=/usr</param>
+    </configure>
+    <make />
+    <make>
+      <param>install</param>
+    </make>
+  </stage>
+  <stage name="Cleanup.">
+    <remove>&build_dir;/</remove>
+  </stage>
+</package>
+</alfs>

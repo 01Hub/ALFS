@@ -46,6 +46,7 @@
       <xi:include href="chapter03/shells.xml" />
       <xi:include href="chapter03/random.xml" />
       <xi:include href="chapter03/maninfo.xml" />
+      <xi:include href="chapter03/autofs.xml" />
       <xi:include href="chapter03/netfs.xml" />
     </stage>
     <stage name="Chapter 4 (Security)">
@@ -115,6 +116,7 @@
       <xi:include href="chapter09/freetype.xml" />
       <xi:include href="chapter09/fontconfig.xml" />
       <xi:include href="chapter09/libart_lgpl.xml" />
+      <xi:include href="chapter09/librsvg.xml" />
       <xi:include href="chapter09/imlib.xml" />
       <xi:include href="chapter09/aalib.xml" />
       <xi:include href="chapter09/imlib2.xml" />
@@ -130,6 +132,8 @@
       <xi:include href="chapter10/screen.xml" />
       <xi:include href="chapter10/tidy.xml" />
       <xi:include href="chapter10/desktopfileutils.xml" />
+      <xi:include href="chapter10/xscreensaver.xml" />
+      <xi:include href="chapter10/pilot-link.xml" />
     </stage>
     <stage name="Chapter 11 (System Utilities)">
       <xi:include href="chapter11/gpm.xml" />
@@ -142,6 +146,8 @@
       <xi:include href="chapter11/pkgconfig.xml" />
       <xi:include href="chapter11/cpio.xml" />
       <xi:include href="chapter11/mc.xml" />
+      <xi:include href="chapter11/sysstat.xml" />
+      <xi:include href="chapter11/apache-ant.xml" />
     </stage>
     <stage name="Chapter 12 (Programming)">
       <xi:include href="chapter12/python.xml" />
@@ -317,7 +323,6 @@
       <xi:include href="chapter30/gstreamer.xml" />
       <xi:include href="chapter30/gst-plugins.xml" />
       <xi:include href="chapter30/gnome-applets.xml" />
-      <xi:include href="chapter30/librsvg.xml" />
       <xi:include href="chapter30/eel.xml" />
       <xi:include href="chapter30/nautilus.xml" />
       <xi:include href="chapter30/control-center.xml" />
@@ -404,7 +409,6 @@
       <xi:include href="chapter36/balsa.xml" />
     </stage>
     <stage name="Chapter 37 (Multimedia Libraries and Drivers)">
-      <xi:include href="chapter37/alsa-driver.xml" />
       <xi:include href="chapter37/alsa-lib.xml" />
       <xi:include href="chapter37/alsa-utils.xml" />
       <xi:include href="chapter37/alsa-tools.xml" />

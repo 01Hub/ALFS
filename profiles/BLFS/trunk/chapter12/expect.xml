@@ -38,7 +38,7 @@
       <configure>
         <param>--prefix=/usr</param>
         <param>--with-tcl=/usr/lib</param>
-        <param>--with-tclinclude=/usr/include/tcl8.4</param>
+        <param>--with-tclinclude=/usr/include/tcl&tcl-major-minor;</param>
         <param>--enable-shared</param>
       </configure>
       <make />
@@ -47,8 +47,8 @@
       </make>
       <link>
         <option>force</option>
-        <target>../libexpect5.42.a</target>
-        <name>/usr/lib/expect5.42</name>
+        <target>../libexpect&expect-major-minor;.a</target>
+        <name>/usr/lib/expect&expect-major-minor;</name>
       </link>
     </stage>
     <stage name="Cleanup">

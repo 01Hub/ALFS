@@ -7,7 +7,11 @@
 <!ENTITY python-gdbm-patch "Python-&python-version;-gdbm-1.patch">
 
 <!-- Begin Perl Modules -->
-<!ENTITY PDL-version   "2.4.1">
+<!ENTITY Module-Info-version "0.26">
+<!ENTITY Module-Info-package "Module-Info-&Module-Info-version;.tar.gz">
+<!ENTITY Module-Info-directory "Module-Info-&Module-Info-version;">
+
+<!ENTITY PDL-version   "2.4.2">
 <!ENTITY PDL-package   "PDL-&PDL-version;.tar.gz">
 <!ENTITY PDL-directory "PDL-&PDL-version;">
 
@@ -57,7 +61,7 @@
 <!ENTITY j2sdk-bin-suffix    "06">
 <!ENTITY j2sdk-bin-version   "1_4_2_&j2sdk-bin-suffix;">
 <!ENTITY j2sdk-bin-package   "j2sdk-&j2sdk-bin-version;-linux-i586.bin">
-<!ENTITY j2sdk-bin-directory "j2sdk-&j2sdk-bin-version;">
+<!ENTITY j2sdk-bin-directory "j2sdk&j2sdk-version;_&j2sdk-bin-suffix;">
 
 <!-- Download these from http://wwws.sun.com/software/communitysource/j2se/java2/download.html: -->
 <!ENTITY j2sdk-src-version                 "1_4_2">
@@ -68,6 +72,7 @@
 <!ENTITY j2sdk-asm-patch          "j2sdk-&j2sdk-version;-fix_inline_asm-1.patch">
 <!ENTITY j2sdk-gcc33-patch        "j2sdk-&j2sdk-version;-gcc33-1.patch">
 <!ENTITY j2sdk-motif-patch        "j2sdk-&j2sdk-version;-motif_mkmsgcat-1.patch">
+<!ENTITY j2sdk-nptl-patch         "j2sdk-&j2sdk-version;-nptl-1.patch">
 <!ENTITY j2sdk-remove-debug-patch "j2sdk-&j2sdk-version;-remove_debug_image-1.patch">
 <!ENTITY j2sdk-fixed-paths-patch  "j2sdk-&j2sdk-version;-remove_fixed_paths-1.patch">
 <!ENTITY j2sdk-static-cxx-patch   "j2sdk-&j2sdk-version;-static_cxx-1.patch">
@@ -76,17 +81,18 @@
 <!ENTITY ruby-package   "ruby-&ruby-version;.tar.gz">
 <!ENTITY ruby-directory "ruby-&ruby-version;">
 
-<!ENTITY tcl-version     "8.4.7">
 <!ENTITY tcl-major-minor "8.4">
+<!ENTITY tcl-version     "&tcl-major-minor;.7">
 <!ENTITY tcl-package     "tcl&tcl-version;-src.tar.gz">
 <!ENTITY tcl-directory   "tcl&tcl-version;">
 
-<!ENTITY tk-version     "8.4.7">
 <!ENTITY tk-major-minor "8.4">
+<!ENTITY tk-version     "&tk-major-minor;.7">
 <!ENTITY tk-package     "tk&tk-version;-src.tar.gz">
 <!ENTITY tk-directory   "tk&tk-version;">
 
-<!ENTITY expect-version     "5.42.1">
+<!ENTITY expect-major-minor "5.42">
+<!ENTITY expect-version     "&expect-major-minor;.1">
 <!ENTITY expect-package     "expect-&expect-version;.tar.gz">
 <!ENTITY expect-directory   "expect-&expect-version;">
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
@@ -101,15 +107,15 @@
 
 <!ENTITY gcc-34-version              "3.4.1">
 <!ENTITY gcc-34-package              "gcc-&gcc-34-version;.tar.bz2">
-<!ENTITY gcc-34-testsuite            "gcc-testsuite-&gcc-34-version;.tar.bz2">
 <!ENTITY gcc-34-directory            "gcc-&gcc-34-version;">
 <!ENTITY gcc-34-no_fixincludes-patch "gcc-&gcc-34-version;-no_fixincludes-1.patch">
 <!ENTITY gcc-34-linkonce-patch       "gcc-&gcc-34-version;-linkonce-1.patch">
 
-<!ENTITY gcc-33-version              "3.3.3">
+<!ENTITY gcc-33-version              "3.3.4">
 <!ENTITY gcc-33-package              "gcc-&gcc-33-version;.tar.bz2">
 <!ENTITY gcc-33-directory            "gcc-&gcc-33-version;">
 <!ENTITY gcc-33-no_fixincludes-patch "gcc-&gcc-33-version;-no_fixincludes-1.patch">
+<!ENTITY gcc-33-linkonce-patch	     "gcc-&gcc-33-version;-linkonce-1.patch">
 
 <!ENTITY gcc-295-version              "2.95.3">
 <!ENTITY gcc-295-package              "gcc-&gcc-295-version;.tar.gz">

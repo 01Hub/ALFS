@@ -24,6 +24,9 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
+	<param>--enable-cxx</param>
+	<param>--enable-mpbsd</param>
+	<param>--enable-mpfr</param>
       </configure>
       <make />
       <make>

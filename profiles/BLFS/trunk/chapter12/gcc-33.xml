@@ -21,20 +21,31 @@
         <name>&build_dir;/gcc-build</name>
       </mkdir>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <base>&build_dir;/gcc-build</base>
+        <base>&build_dir;/&gcc-33-directory;</base>
       </stageinfo>
-      <patch base="&build_dir;/&gcc-33-directory;">
+      <patch>
         <param>-N</param>
         <param>-p1</param>
         <param>-i &packages_dir;/&gcc-33-no_fixincludes-patch;</param>
       </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&gcc-33-linkonce-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/gcc-build</base>
+      </stageinfo>
       <configure command="../&gcc-33-directory;/configure">
         <param>--prefix=/opt/gcc-&gcc-33-version;</param>
         <param>--enable-shared</param>
         <param>--enable-languages=c,c++</param>
         <param>--enable-threads=posix</param>
+	<param>|| true</param>
       </configure>
       <make>
         <param>bootstrap</param>
@@ -43,14 +54,13 @@
         <param>install</param>
       </make>
       <move>
-        <source>/opt/gcc-3.3.3/lib/libstdc++.so.5*</source>
+        <source>/opt/gcc-&gcc-33-version;/lib/libstdc++.so.5*</source>
         <destination>/usr/lib</destination>
       </move>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gcc-33-directory;</remove>
       <remove>&build_dir;/gcc-build</remove>
-      <remove>/opt/gnat</remove>
     </stage>
   </package>
 </alfs>

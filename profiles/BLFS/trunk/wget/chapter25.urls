@@ -1,10 +1,4 @@
-http://freedesktop.org/~xorg/X11R6.7.0/src/X11R6.7.0-src1.tar.gz
-http://freedesktop.org/~xorg/X11R6.7.0/src/X11R6.7.0-src2.tar.gz
-http://freedesktop.org/~xorg/X11R6.7.0/src/X11R6.7.0-src3.tar.gz
-http://freedesktop.org/~xorg/X11R6.7.0/src/X11R6.7.0-src4.tar.gz
-http://freedesktop.org/~xorg/X11R6.7.0/src/X11R6.7.0-src5.tar.gz
-http://freedesktop.org/~xorg/X11R6.7.0/src/X11R6.7.0-src6.tar.gz
-http://freedesktop.org/~xorg/X11R6.7.0/src/X11R6.7.0-src7.tar.gz
+http://ftp.gwdg.de/pub/x11/x.org/pub/X11R6.8.1/src-single/X11R6.8.1-src.tar.bz2
 
 ftp://ftp.xfree86.org/pub/XFree86/4.4.0/source/XFree86-4.4.0-src-1.tgz
 ftp://ftp.xfree86.org/pub/XFree86/4.4.0/source/XFree86-4.4.0-src-2.tgz

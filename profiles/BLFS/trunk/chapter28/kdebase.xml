@@ -20,7 +20,7 @@
         <name>libxml2</name>
       </utilizes>
       <utilizes>
-        <name>j2sdk</name>
+        <name>&j2sdk;</name>
       </utilizes>
       <utilizes>
         <name>openssl</name>

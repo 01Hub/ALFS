@@ -10,7 +10,7 @@
 # in /etc/bashrc. 
 
 if [ -f "/etc/bashrc" ] ; then
-	source /etc/bashrc
+        source /etc/bashrc
 fi
 
 # End ~/.bashrc

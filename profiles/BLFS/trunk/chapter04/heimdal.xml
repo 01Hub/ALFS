@@ -147,18 +147,18 @@
 	=# Begin /etc/heimdal/krb5.conf
 	=  
 	=[libdefaults]
-	=    default_realm = &heimdal-all-caps-domain;
+	=    default_realm = &krb-all-caps-domain;
 	=    encrypt = true
 	=
 	=[realms]
-	=    &heimdal-all-caps-domain; = {
-	=        kdc = &heimdal-hostname;
-	=        admin_server = &heimdal-hostname;
-	=        kpasswd_server = &heimdal-hostname;
+	=    &krb-all-caps-domain; = {
+	=        kdc = &krb-hostname;
+	=        admin_server = &krb-hostname;
+	=        kpasswd_server = &krb-hostname;
 	=    }
 	=
 	=[domain_realm]
-	=    .&heimdal-domain; = &heimdal-all-caps-domain;
+	=    .&krb-domain; = &krb-all-caps-domain;
 	=
 	=[logging]
 	=    kdc = FILE:/var/log/kdc.log

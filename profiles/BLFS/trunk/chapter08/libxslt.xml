@@ -16,6 +16,9 @@
       <requires>
         <name>libxml2</name>
       </requires>
+      <utilizes>
+	<name>python</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

@@ -39,13 +39,24 @@
       <make>
         <param>install</param>
       </make>
-      <execute command="install -m644 -oroot -groot htmldoc/man_page.txt /usr/share/man/man1/tidy.1" />
-      <execute command="install -d -m755 -oroot -groot /usr/share/doc/tidy" />
       <copy>
+	<source>htmldoc/man_page.txt</source>
+	<destination>/usr/share/man/man1/tidy.1</destination>
+      </copy>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/tidy</name>
+      </mkdir>
+      <copy>
+	<option>recursive</option>
         <source>htmldoc</source>
         <destination>/usr/share/doc/tidy</destination>
       </copy>
-      <execute command="chown -R root:root /usr/share/doc/tidy" />
+      <ownership user="root" group="root">
+	<option>recursive</option>
+	<name>/usr/share/man/man1/tidy.1</name>
+	<name>/usr/share/doc/tidy</name>
+      </ownership>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&tidy-directory;</remove>

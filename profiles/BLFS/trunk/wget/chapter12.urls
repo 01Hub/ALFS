@@ -1,16 +1,17 @@
 ftp://ftp.python.org/pub/python/2.3.4/Python-2.3.4.tar.bz2
 http://www.linuxfromscratch.org/blfs/downloads/svn/Python-2.3.4-gdbm-1.patch
 
-http://search.cpan.org/CPAN/authors/id/C/CS/CSOE/PDL-2.4.1.tar.gz
-http://www.cpan.org/authors/id/K/KG/KGB/ExtUtils-F77-1.14.tar.gz
-http://www.cpan.org/authors/id/I/IN/INGY/Inline-0.44.tar.gz
+ftp://cpan.pair.com/authors/id/M/MB/MBARBON/Module-Info-0.26.tar.gz
+ftp://cpan.pair.com/authors/id/C/CS/CSOE/PDL-2.4.2.tar.gz
+ftp://cpan.pair.com/authors/id/K/KG/KGB/ExtUtils-F77-1.14.tar.gz
+ftp://cpan.pair.com/authors/id/I/IN/INGY/Inline-0.44.tar.gz
 ftp://cpan.pair.com/authors/id/D/DC/DCONWAY/Parse-RecDescent-1.94.tar.gz
 ftp://cpan.pair.com/authors/id/A/AA/AALLAN/Astro-FITS-Header-2.8.1.tar.gz
 ftp://cpan.pair.com/authors/id/M/ML/MLEHMANN/Gtk-Perl-0.7009.tar.gz
-http://www.cpan.org/authors/id/J/JO/JOSEPHW/XML-Writer-0.510.tar.gz
+ftp://cpan.pair.com/authors/id/J/JO/JOSEPHW/XML-Writer-0.510.tar.gz
 ftp://cpan.pair.com/authors/id/M/MS/MSERGEANT/XML-Parser-2.34.tar.gz
-http://www.cpan.org/authors/id/D/DM/DMEGG/SGMLSpm-1.03ii.tar.gz
-http://www.cpan.org/authors/id/N/NI/NI-S/Tk-804.027.tar.gz
+ftp://cpan.pair.com/authors/id/D/DM/DMEGG/SGMLSpm-1.03ii.tar.gz
+ftp://cpan.pair.com/authors/id/N/NI/NI-S/Tk-804.027.tar.gz
 
 http://telia.dl.sourceforge.net/sourceforge/librep/librep-0.17.tar.gz
 
@@ -19,6 +20,7 @@ http://wwws.sun.com/software/communitysource/j2se/java2/download.html
 http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-fix_inline_asm-1.patch
 http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-gcc33-1.patch
 http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-motif_mkmsgcat-1.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-nptl-1.patch
 http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-remove_debug_image-1.patch
 http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-remove_fixed_paths-1.patch
 http://www.linuxfromscratch.org/blfs/downloads/svn/j2sdk-1.4.2-static_cxx-1.patch
@@ -41,8 +43,9 @@ ftp://mirrors.rcn.net/pub/sourceware/gcc/releases/gcc-3.4.1/gcc-testsuite-3.4.1.
 http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-3.4.1-no_fixincludes-1.patch
 http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-3.4.1-linkonce-1.patch
 
-ftp://mirrors.rcn.net/pub/sourceware/gcc/releases/gcc-3.3.3/gcc-3.3.3.tar.bz2
-http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-3.3.3-no_fixincludes-1.patch
+ftp://mirrors.rcn.net/pub/sourceware/gcc/releases/gcc-3.3.4/gcc-3.3.4.tar.bz2
+http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-3.3.4-no_fixincludes-1.patch
+http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-3.3.4-linkonce-1.patch
 
 ftp://ftp.gnu.org/gnu/gcc/gcc-2.95.3.tar.gz
 http://www.linuxfromscratch.org/blfs/downloads/svn/gcc-2.95.3-2.patch

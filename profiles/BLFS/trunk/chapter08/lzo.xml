@@ -12,6 +12,11 @@
 ]>
 <alfs>
   <package name="lzo" version="&lzo-version;">
+    <packageinfo>
+      <utilizes>
+	<name>nasm</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&lzo-package;</archive>

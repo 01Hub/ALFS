@@ -16,6 +16,12 @@
       <utilizes>
         <name>libjpeg</name>
       </utilizes>
+      <utilizes>
+      	<name>&ximpl;</name>
+      </utilizes>
+      <utilizes>
+	<name>freeglut</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -34,7 +40,6 @@
     </patch>
     <configure>
       <param>--prefix=/usr</param>
-      <param>--disable-jpeg</param>
     </configure>
     <make />
     <make>

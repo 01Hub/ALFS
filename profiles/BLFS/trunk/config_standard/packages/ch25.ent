@@ -1,13 +1,7 @@
 <!--************* packages for chapter 25 *************-->
 
-<!ENTITY xorg-version "6.7.0">
-<!ENTITY xorg-package1 "X11R&xorg-version;-src1.tar.bz2">
-<!ENTITY xorg-package2 "X11R&xorg-version;-src2.tar.bz2">
-<!ENTITY xorg-package3 "X11R&xorg-version;-src3.tar.bz2">
-<!ENTITY xorg-package4 "X11R&xorg-version;-src4.tar.bz2">
-<!ENTITY xorg-package5 "X11R&xorg-version;-src5.tar.bz2">
-<!ENTITY xorg-package6 "X11R&xorg-version;-src6.tar.bz2">
-<!ENTITY xorg-package7 "X11R&xorg-version;-src7.tar.bz2">
+<!ENTITY xorg-version "6.8.1">
+<!ENTITY xorg-package "X11R&xorg-version;-src.tar.bz2">
 <!ENTITY xorg-directory "xc">
 
 <!ENTITY xfree86-version   "4.4.0">

@@ -20,9 +20,6 @@
         <name>popt</name>
       </requires>
       <utilizes>
-        <name>gnome-vfs</name>
-      </utilizes>
-      <utilizes>
         <name>emacs</name>
       </utilizes>
     </packageinfo>
@@ -36,10 +33,8 @@
       <stageinfo>
         <base>&build_dir;/&desktop-file-utils-directory;</base>
       </stageinfo>
-      <execute command="sh build/gnuauto/setup.sh" />
       <configure>
-        <param>--prefix=&gnome-prefix;</param>
-        <param>--sysconfdir=/etc/gnome</param>
+        <param>--prefix=/usr</param>
       </configure>
       <make />
       <make>

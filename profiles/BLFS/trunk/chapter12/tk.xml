@@ -28,9 +28,6 @@
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <environment>
-          <variable name="VERSION">&tk-version;</variable>
-        </environment>
         <base>&build_dir;/&tk-directory;/unix</base>
       </stageinfo>
       <configure>

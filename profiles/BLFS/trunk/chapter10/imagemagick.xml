@@ -72,6 +72,9 @@
       <stageinfo>
         <base>&build_dir;/&imagemagick-directory;</base>
       </stageinfo>
+      <execute command="sed">
+      	<param>-i -e 's/\$(LIBLTDL) \$/\$/' Makefile.in</param>
+      </execute>
       <configure>
         <param>--prefix=/usr</param>
         <param>--with-modules</param>

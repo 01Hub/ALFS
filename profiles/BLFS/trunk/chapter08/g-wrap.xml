@@ -14,11 +14,14 @@
   <package name="g-wrap" version="&g-wrap-version;">
     <packageinfo>
       <requires>
-        <name>guile</name>
-      </requires>
-      <requires>
         <name>slib</name>
       </requires>
+      <utilizes>
+	<name>glib</name>
+      </utilizes>
+      <utilizes>
+	<name>gtk+</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

@@ -31,6 +31,9 @@
       <utilizes>
         <name>ruby</name>
       </utilizes>
+      <utilizes>
+      	<name>gpm</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

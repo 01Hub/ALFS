@@ -3,8 +3,8 @@ http://www.linuxfromscratch.org/blfs/downloads/svn/cracklib,2.7-blfs-1.patch
 http://www.linuxfromscratch.org/blfs/downloads/svn/cracklib,2.7-heimdal-1.patch
 http://www.cotse.com/wordlists/allwords
 
-ftp://ftp.kernel.org/pub/linux/libs/pam/pre/library/Linux-PAM-0.77.tar.bz2
-http://www.linuxfromscratch.org/blfs/downloads/svn/Linux-PAM-0.77-linkage-3.patch
+ftp://ftp.kernel.org/pub/linux/libs/pam/pre/library/Linux-PAM-0.78.tar.bz2
+http://www.linuxfromscratch.org/blfs/downloads/svn/Linux-PAM-0.78-linkage-1.patch
 
 ftp://ftp.pld.org.pl/software/shadow/old/shadow-4.0.4.1.tar.bz2
 http://www.linuxfromscratch.org/blfs/downloads/svn/shadow-4.0.4.1-pam-1.patch
@@ -13,8 +13,7 @@ ftp://ftp.netfilter.org/pub/iptables/iptables-1.2.11.tar.bz2
 
 ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-1.2.6.tar.bz2
 
-ftp://ftp.fu-berlin.de/unix/security/tripwire/tripwire-2.3.1-2.tar.gz
-http://www.linuxfromscratch.org/blfs/downloads/svn/tripwire-2.3.1-2-gcc3_build_fixes-1.patch
+http://www.frenchfries.net/paul/tripwire/tripwire-portable-0.9.tar.gz
 
 ftp://ftp.pdc.kth.se/pub/heimdal/src/heimdal-0.6.2.tar.gz
 http://www.linuxfromscratch.org/blfs/downloads/svn/heimdal-0.6.2-fhs_compliance-1.patch

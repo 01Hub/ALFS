@@ -11,10 +11,10 @@
 <!ENTITY libpng-link_to_proper_libs-patch "libpng-&libpng-version;-link_to_proper_libs-1.patch">
 
 <!ENTITY libtiff-version   "3.7.0">
-<!ENTITY libtiff-package   "tiff-v&libtiff-version;.tar.gz">
-<!ENTITY libtiff-directory "tiff-v&libtiff-version;">
+<!ENTITY libtiff-package   "tiff-&libtiff-version;.tar.gz">
+<!ENTITY libtiff-directory "tiff-&libtiff-version;">
 
-<!ENTITY libtiff-libtool_fix-patch "libtiff-&libtiff-version;-libtool_fix-1.patch">
+<!ENTITY libtiff-libtool_fix-patch "tiff-&libtiff-version;-libtool_fix-1.patch">
 
 <!ENTITY libungif-version   "4.1.3">
 <!ENTITY libungif-package   "libungif-&libungif-version;.tar.bz2">
@@ -45,6 +45,10 @@
 <!ENTITY libart_lgpl-version   "2.3.16">
 <!ENTITY libart_lgpl-package   "libart_lgpl-&libart_lgpl-version;.tar.bz2">
 <!ENTITY libart_lgpl-directory "libart_lgpl-&libart_lgpl-version;">
+
+<!ENTITY librsvg-version   "2.8.1">
+<!ENTITY librsvg-package   "librsvg-&librsvg-version;.tar.bz2">
+<!ENTITY librsvg-directory "librsvg-&librsvg-version;">
 
 <!ENTITY imlib-version   "1.9.15">
 <!ENTITY imlib-package   "imlib-&imlib-version;.tar.bz2">

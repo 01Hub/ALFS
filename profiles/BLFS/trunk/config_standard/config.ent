@@ -1,21 +1,16 @@
 <!-- configuration for tripwire -->
 <!-- the content of the following entity should be the name of your policy file for tripwire -->
-<!ENTITY tripwire-policy-file "tripwire-policy.txt">
+<!ENTITY tripwire-policy-file "twpol.txt">
 <!-- these should be changed to usable values -->
 <!ENTITY tripwire-mail-domain "mail.domain.com">
 <!ENTITY tripwire-smtp-port "25">
 <!ENTITY tripwire-sitepassphrase "blahville">
 <!ENTITY tripwire-localpassphrase "blahville2">
 
-<!-- configuartion for heimdal -->
-<!ENTITY heimdal-domain "lfs.org">
-<!ENTITY heimdal-all-caps-domain "LFS.ORG">
-<!ENTITY heimdal-hostname "belgarath.lfs.org">
-
-<!-- configuartion for mitkrb -->
-<!ENTITY mitkrb-domain "lfs.org">
-<!ENTITY mitkrb-all-caps-domain "LFS.ORG">
-<!ENTITY mitkrb-hostname "belgarath.lfs.org">
+<!-- configuartion for kerberos (MIT or Heimdal) -->
+<!ENTITY krb-domain "lfs.org">
+<!ENTITY krb-all-caps-domain "LFS.ORG">
+<!ENTITY krb-hostname "belgarath.lfs.org">
 
 <!-- configuration for stunnel -->
 <!ENTITY stunnel-country "CA">
@@ -38,6 +33,11 @@
 <!-- Kerberos Implementation -->
 <!-- MIT krb 5 (mitkrb) or Heimdal (heimdal) -->
 <!ENTITY krb-impl "heimdal">
+
+<!-- Java Implementation -->
+<!-- Set so packages that utilize or depend on java will use either the binary (j2sdk-binary) or 
+  source (j2sdk-source) version -->
+<!ENTITY j2sdk "j2sdk-source">
 
 <!-- DHCP Config (Server) -->
 <!ENTITY dhcp-subnet "192.168.5.0">
