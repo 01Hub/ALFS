@@ -1,5 +1,5 @@
 <package name="ed" version="&ed-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&ed-md5;</digest>
 			<archive>&packages_dir;/&ed-package;</archive>
@@ -12,7 +12,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&ed-directory;</base>
 		</stageinfo>
@@ -42,7 +42,7 @@
 
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&ed-directory;</remove>
 		<remove>&build_dir;/&ed-mkstemp-patch;</remove>
 	</stage>

@@ -1,5 +1,5 @@
 <package name="gcc-pass1" version="&gcc-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&gcc-core-md5;</digest>
 			<archive>&packages_dir;/&gcc-core-package;</archive>
@@ -12,7 +12,7 @@
 		</mkdir>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<environment>
 				<variable name="CFLAGS" />
@@ -45,7 +45,7 @@
 		</link>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/gcc-build</remove>
 		<remove>&build_dir;/&gcc-directory;</remove>
 	</stage>

@@ -1,5 +1,5 @@
 <package name="gawk" version="&gawk-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&gawk-md5;</digest>
 			<archive>&packages_dir;/&gawk-package;</archive>
@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&gawk-directory;</base>
 		</stageinfo>
@@ -30,7 +30,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&gawk-directory;</remove>
 	</stage>
 </package>

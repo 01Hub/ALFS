@@ -1,5 +1,5 @@
 <package name="make_devices" version="&make_devices-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&make_devices-md5;</digest>
 			<archive>&packages_dir;/&make_devices-package;</archive>
@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<copy base="&build_dir;">
 			<source>&make_devices-file;</source>
 			<destination>/dev/make_devices</destination>
@@ -20,7 +20,7 @@
 		<execute base="/dev" command="./make_devices" />
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&make_devices-file;</remove>
 	</stage>
 </package>

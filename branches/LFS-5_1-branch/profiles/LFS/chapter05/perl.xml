@@ -1,5 +1,5 @@
 <package name="perl" version="&perl-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&perl-md5;</digest>
 			<archive>&packages_dir;/&perl-package;</archive>
@@ -12,7 +12,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&perl-directory;</base>
 		</stageinfo>
@@ -62,7 +62,7 @@
 		</copy>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&perl-directory;</remove>
 		<remove>&build_dir;/&perl-libc-1-patch;</remove>
 	</stage>

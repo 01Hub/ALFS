@@ -1,5 +1,5 @@
 <package name="gcc-2953" version="&gcc-2953-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&gcc-2953-md5;</digest>
 			<archive>&packages_dir;/&gcc-2953-package;</archive>
@@ -18,7 +18,7 @@
 		</mkdir>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<environment>
 				<variable name="CFLAGS" />
@@ -66,7 +66,7 @@
 		</make>
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&gcc-2953-directory;</remove>
 		<remove>&build_dir;/&gcc-2953-patch;</remove>
 		<remove>&build_dir;/&gcc-2953-returntype-fix-patch;</remove>

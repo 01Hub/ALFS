@@ -1,5 +1,5 @@
 <package name="sysvinit" version="&sysvinit-version;">
-	<stage name="Unpacking a package.">
+	<stage name="Unpacking.">
 		<unpack>
 			<digest>&sysvinit-md5;</digest>
 			<archive>&packages_dir;/&sysvinit-package;</archive>
@@ -7,7 +7,7 @@
 		</unpack>
 	</stage>
 
-	<stage name="Installing a package.">
+	<stage name="Installing.">
 		<stageinfo>
 			<base>&build_dir;/&sysvinit-directory;</base>
 		</stageinfo>
@@ -61,7 +61,7 @@
 
 	</stage>
 
-	<stage name="Clean-up.">
+	<stage name="Cleaning up.">
 		<remove>&build_dir;/&sysvinit-directory;</remove>
 	</stage>
 </package>
