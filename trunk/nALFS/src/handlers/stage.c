@@ -318,7 +318,6 @@ static int parse_stageinfo_and_execute_children(
 
 			if (change_to_user(user) == -1) {
 				xfree(user);
-				xfree(root);
 				exit(EXIT_FAILURE);
 			}
 
