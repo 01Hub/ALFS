@@ -1,19 +1,4 @@
 <package name="linux-headers" version="&linux-version;">
-	<!-- Unpacking of the kernel source was moved here from the
-kernel install section, so compiling the keymap into the kernel can be
-done. -->
-	<stage name="Unpacking a package.">
-		<unpack>
-			<digest>&linux-md5;</digest>
-			<archive>&packages_dir;/&linux-package;</archive>
-			<destination>&linux-src-location;</destination>
-		</unpack>
-
-		<ownership user="0" group="0">
-			<option>recursive</option>
-			<name>&linux-src-location;/&linux-directory;</name>
-		</ownership>
-	</stage>
 	<stage name="Installing kernel headers.">
 		<copy>
 			<option>archive</option>
