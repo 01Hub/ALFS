@@ -1,19 +1,19 @@
-<package name="bonobo-conf" version="&bonobo-conf-version;">
+<package name="libghttp" version="&libghttp-version;">
 
-        <packageinfo>
-                <requires><name>gnome-print</name></requires>
-        </packageinfo>
+	<packageinfo>
+		<utilizes><name>gtkhtml1</name></utilizes>
+	</packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&bonobo-conf-package;</archive>
+			<archive>&packages_dir;/&libghttp-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&bonobo-conf-directory;</base>
+			<base>&build_dir;/&libghttp-directory;</base>
 		</stageinfo>
 
 		<configure>
@@ -28,7 +28,7 @@
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&bonobo-conf-directory;</remove>
+		<remove>&build_dir;/&libghttp-directory;</remove>
 	</stage>
 
 </package>

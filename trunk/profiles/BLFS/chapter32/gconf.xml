@@ -5,7 +5,7 @@
                 <requires><name>gtk+</name></requires>
                 <requires><name>gdk-pixbuf</name></requires>
 		<utilizes><name>db</name></utilizes>
-		<utilizes><name>gtkdoc</name></utilizes>
+		<utilizes><name>guile</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">

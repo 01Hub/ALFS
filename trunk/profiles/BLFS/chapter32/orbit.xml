@@ -1,19 +1,19 @@
-<package name="soup" version="&soup-version;">
+<package name="orbit" version="&orbit-version;">
 
         <packageinfo>
-                <requires><name>gnome-print</name></requires>
+        	<requires><name>glib</name></requires>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&soup-package;</archive>
+			<archive>&packages_dir;/&orbit-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&soup-directory;</base>
+			<base>&build_dir;/&orbit-directory;</base>
 		</stageinfo>
 
 		<configure>
@@ -25,10 +25,12 @@
 		<make>
 			<param>install</param>
 		</make>
+
+		<execute command="/sbin/ldconfig" />
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&soup-directory;</remove>
+		<remove>&build_dir;/&orbit-directory;</remove>
 	</stage>
 
 </package>

@@ -299,23 +299,23 @@
 <!ENTITY gnome2-user-docs SYSTEM "./chapter31/gnome2-user-docs.xml">
 <!ENTITY gdm             SYSTEM "./chapter31/gdm.xml">
 
-<!-- chapter 37 -->
-<!ENTITY gnome1-pre-installation 
-                         SYSTEM "./chapter37/gnome1-pre-installation.xml">
-<!ENTITY orbit           SYSTEM "./chapter37/orbit.xml">
-<!ENTITY oaf             SYSTEM "./chapter37/oaf.xml">
-<!ENTITY gnome-libs      SYSTEM "./chapter37/gnome-libs.xml">
-<!ENTITY gdk-pixbuf      SYSTEM "./chapter37/gdk-pixbuf.xml">
-<!ENTITY gconf           SYSTEM "./chapter37/gconf.xml">
-<!ENTITY gnome-vfs       SYSTEM "./chapter37/gnome-vfs.xml">
-<!ENTITY gnome-print     SYSTEM "./chapter37/gnome-print.xml">
-<!ENTITY libglade1       SYSTEM "./chapter37/libglade1.xml">
-<!ENTITY libcapplet      SYSTEM "./chapter37/libcapplet.xml">
-<!ENTITY libghttp        SYSTEM "./chapter37/libghttp.xml">
-<!ENTITY bonobo          SYSTEM "./chapter37/bonobo.xml">
-<!ENTITY guppi           SYSTEM "./chapter37/guppi.xml">
-<!ENTITY bonobo-conf     SYSTEM "./chapter37/bonobo-conf.xml">
-<!ENTITY soup            SYSTEM "./chapter37/soup.xml">
+<!-- chapter 32 -->
+<!ENTITY gnome1-pre-installation SYSTEM "./chapter32/gnome1-pre-installation.xml">
+<!ENTITY orbit           SYSTEM "./chapter32/orbit.xml">
+<!ENTITY oaf             SYSTEM "./chapter32/oaf.xml">
+<!ENTITY gnome-libs      SYSTEM "./chapter32/gnome-libs.xml">
+<!ENTITY gdk-pixbuf      SYSTEM "./chapter32/gdk-pixbuf.xml">
+<!ENTITY gnome-print     SYSTEM "./chapter32/gnome-print.xml">
+<!ENTITY bonobo          SYSTEM "./chapter32/bonobo.xml">
+<!ENTITY gconf           SYSTEM "./chapter32/gconf.xml">
+<!ENTITY gnome-vfs       SYSTEM "./chapter32/gnome-vfs.xml">
+<!ENTITY libglade1       SYSTEM "./chapter32/libglade1.xml">
+<!ENTITY gal1		 SYSTEM "./chapter32/gal.xml">
+<!ENTITY guppi           SYSTEM "./chapter32/guppi.xml">
+<!ENTITY libcapplet      SYSTEM "./chapter32/libcapplet.xml">
+<!ENTITY soup            SYSTEM "./chapter32/soup.xml">
+<!ENTITY gtkhtml1        SYSTEM "./chapter32/gtkhtml.xml">
+<!ENTITY libghttp        SYSTEM "./chapter32/libghttp.xml">
 
 <!-- chapter 38 -->
 <!ENTITY abiword         SYSTEM "./chapter38/abiword.xml">

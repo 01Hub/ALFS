@@ -3,7 +3,7 @@
         <packageinfo>
                 <requires><name>libxml</name></requires>
         	<requires><name>gtk+</name></requires>
-		<utilizes><name>gnomelibs</name></utilizes>
+		<utilizes><name>gnome-libs</name></utilizes>
 		<utilizes><name>python</name></utilizes>
         </packageinfo>
 
@@ -22,7 +22,7 @@
 		<configure>
 			<param>--prefix=/opt/gnome</param>
 			<param>--enable-bonobo</param>
-			<param>--enable-gnomedb</param>
+			<param>--disable-gtk-doc</param>
 		</configure>
 
 		<make/>

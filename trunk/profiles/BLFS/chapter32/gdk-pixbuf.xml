@@ -1,13 +1,11 @@
 <package name="gdk-pixbuf" version="&gdk-pixbuf-version;">
 
         <packageinfo>
-                <requires><name>glib</name></requires>
         	<requires><name>gtk+</name></requires>
-        	<requires><name>libpng</name></requires>
                 <requires><name>libjpeg</name></requires>
                 <requires><name>libtiff</name></requires>
-		<utilizes><name>gnomelibs</name></utilizes>
-		<utilizes><name>gtkdoc</name></utilizes>
+		<utilizes><name>gnome-libs</name></utilizes>
+		<utilizes><name>gtk-doc</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">

@@ -1,10 +1,11 @@
 <package name="gnome-vfs" version="&gnome-vfs-version;">
 
 	<packageinfo>
+		<requires><name>gnome-mime-date</name></requires>
         	<requires><name>gconf</name></requires>
         	<requires><name>gnome-libs</name></requires>
 		<utilizes><name>openssl</name></utilizes>
-		<utilizes><name>gtkdoc</name></utilizes>
+		<utilizes><name>gtk-doc</name></utilizes>
 		<utilizes><name>cdparanoia</name></utilizes>
 	</packageinfo>
 

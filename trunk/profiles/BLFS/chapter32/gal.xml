@@ -1,24 +1,26 @@
-<package name="orbit" version="&orbit-version;">
+<package name="gal1" version="&gal1-version;">
 
         <packageinfo>
-                <requires><name>popt</name></requires>
-        	<requires><name>glib</name></requires>
+                <requires><name>gnome-print</name></requires>
+        	<requires><name>libglade1</name></requires>
+		<utilizes><name>gnome-vfs</name></utilizes>
         </packageinfo>
 
 	<stage name="Unpacking a package.">
 		<unpack>
-			<archive>&packages_dir;/&orbit-package;</archive>
+			<archive>&packages_dir;/&gal1-package;</archive>
 			<destination>&build_dir;</destination>
 		</unpack>
 	</stage>
 
 	<stage name="Installing a package.">
 		<stageinfo>
-			<base>&build_dir;/&orbit-directory;</base>
+			<base>&build_dir;/&gal1-directory;</base>
 		</stageinfo>
 
 		<configure>
 			<param>--prefix=/opt/gnome</param>
+			<param>--disable-gtk-doc</param>
 		</configure>
 
 		<make/>
@@ -26,12 +28,10 @@
 		<make>
 			<param>install</param>
 		</make>
-
-		<execute command="/sbin/ldconfig" />
 	</stage>
 
 	<stage name="Clean-up.">
-		<remove>&build_dir;/&orbit-directory;</remove>
+		<remove>&build_dir;/&gal1-directory;</remove>
 	</stage>
 
 </package>
