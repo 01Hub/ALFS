@@ -31,60 +31,60 @@
 
 /*
  * Functions dealing with the format of XML log files.
- * TODO: Hide libxml2 stuff completely, by using only log_f_t pointer.
+ * TODO: Hide libxml2 stuff completely, by using only logs_t pointer.
  *       (Like the functions at the bottom do.)
  */
 
-void log_f_add_handler_action(xmlDocPtr xml_doc, const char *string);
-void log_f_add_installed_files_one_find(xmlDocPtr xml_doc);
-void log_f_add_installed_files_two_finds(
+void logs_add_handler_action(xmlDocPtr xml_doc, const char *string);
+void logs_add_installed_files_one_find(xmlDocPtr xml_doc);
+void logs_add_installed_files_two_finds(
 	xmlDocPtr xml_doc, const char *find_base, const char *find_prunes);
-void log_f_add_stopped_time(xmlDocPtr xml_doc, const char *time_str);
-void log_f_add_end_time(
+void logs_add_stopped_time(xmlDocPtr xml_doc, const char *time_str);
+void logs_add_end_time(
 	xmlDocPtr xml_doc, const char *name, const char *time_str, int status);
-void log_f_add_start_time(
+void logs_add_start_time(
 	xmlDocPtr xml_doc, const char *name, const char *time_str);
-xmlDocPtr log_f_new_run(const char *name, const char *version);
+xmlDocPtr logs_new_run(const char *name, const char *version);
 
 
 /*
- * log_f interface.
+ * logs interface.
  */
 
-typedef struct log_f log_f_t;
+typedef struct logs logs_t;
 
 
-void log_f_free(log_f_t *log_f);
-int log_f_save(log_f_t *log_f);
+void logs_free(logs_t *logs);
+int logs_save(logs_t *logs);
 
-char *log_f_get_package_fullname(log_f_t *log_f, int i);
+char *logs_get_package_fullname(logs_t *logs, int i);
 
 /*
  * Multiple log files, initialized from directory.
  */
 
-log_f_t *log_f_init_from_directory(const char *pdir);
+logs_t *logs_init_from_directory(const char *pdir);
 
-int log_f_get_packages_cnt(log_f_t *log_f);
+int logs_get_packages_cnt(logs_t *logs);
 
-char *log_f_get_plog_filename(log_f_t *log_f, int i);
-char *log_f_get_flog_filename(log_f_t *log_f, int i);
+char *logs_get_plog_filename(logs_t *logs, int i);
+char *logs_get_flog_filename(logs_t *logs, int i);
 
 /*
  * A single log file, initialized from package's string.
  */
 
-log_f_t *log_f_init_from_package_string(const char *pdir, const char *pstr);
+logs_t *logs_init_from_package_string(const char *pdir, const char *pstr);
 
-int log_f_merge_log(log_f_t *log_f, const char *ptr, size_t size);
+int logs_merge_log(logs_t *logs, const char *ptr, size_t size);
 
 /* Checks if the list of installed files exists for this log file. */
-int log_f_has_flog(log_f_t *log_f);
+int logs_has_flog(logs_t *logs);
 
 /* Creates an empty file for the list of installed files. */
-char *log_f_create_flog(log_f_t *log_f);
+char *logs_create_flog(logs_t *logs);
 
-void log_f_update_with_flog(log_f_t *log_f);
+void logs_update_with_flog(logs_t *logs);
 
 
 #endif /* H_LOGFILES_ */
