@@ -409,7 +409,7 @@ char *alloc_base_dir_force(element_s *el)
 char *alloc_stage_shell(element_s *el)
 {
 	element_s *s;
-	char *shell = "sh";
+	char *shell;
 
 	for (s = el->parent; s; s = s->parent) {
 		if (!s->handler) continue;
@@ -427,7 +427,7 @@ char *alloc_stage_shell(element_s *el)
 		}
 	}
 
-	return shell;
+	return xstrdup("sh");
 }
 
 /* Used by the old syntax (2.0). */

@@ -245,7 +245,7 @@ int execute_direct_command(const char *command, char *const argv[])
 
 		execvp(command, argv);
 
-		Nprint_err("Executing command using \"sh\" failed: %s",
+		Nprint_err("Executing command using %s failed: %s", command,
 			strerror(errno));
 
 		exit(EXIT_FAILURE);
