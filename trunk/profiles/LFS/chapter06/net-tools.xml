@@ -32,7 +32,7 @@
 		<search_replace>
 			<file>lib/x25_sr.c</file>
 			<find>x25_address</find>
-			<replace>struct &amp;</replace>
+			<replace>struct x25_address</replace>
 		</search_replace>
 
 		<execute command="yes">
