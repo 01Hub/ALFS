@@ -46,7 +46,7 @@ static void t_item (xmlNodePtr node, void *data)
 {
 	download *dl = next_dl(prof);
 
-	dl->algo = SHA1;
+	dl->algo = ALGO_SHA1;
 	dl->sum = xmlGetProp(node, "sha");
 	
 	foreach(node->children, "ftp", (xml_handler_t)t_dl, dl);

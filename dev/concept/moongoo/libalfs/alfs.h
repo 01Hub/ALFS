@@ -22,8 +22,8 @@ typedef enum
 typedef enum
 {
 	ALGO_NONE = 1,
-	MD5,
-	SHA1
+	ALGO_MD5,
+	ALGO_SHA1
 } hash_algo;
 
 typedef enum

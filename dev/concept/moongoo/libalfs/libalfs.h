@@ -2,6 +2,7 @@
 #define __LIBALFS_H__
 
 #include <alfs.h>
+#include <crypto.h>
 #include <devel.h>
 #include <gen.h>
 #include <net.h>

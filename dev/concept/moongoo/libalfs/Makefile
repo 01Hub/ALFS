@@ -1,7 +1,7 @@
 CFLAGS=-I.
 
 LIB=libalfs.a
-OBJS=alfs.o devel.o gen.o net.o parse.o repl.o util.o
+OBJS=alfs.o crypto.o devel.o gen.o net.o parse.o repl.o util.o
 
 all: $(LIB)
 
@@ -12,6 +12,7 @@ $(LIB): $(OBJS)
 	ranlib $@
 
 alfs.o: alfs.h
+crypto.o: crypto.h
 devel.o: devel.h
 gen.o: gen.h
 net.o: net.h

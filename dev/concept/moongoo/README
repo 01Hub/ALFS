@@ -1,0 +1,14 @@
+Moongoo
+-------
+
+* Dependencies:
+
+libcurl 	http://curl.haxx.se/
+libtar 		http://www.feep.net/libtar/
+libxml2 	http://www.xmlsoft.org/
+openssl		http://www.openssl.org/
+
+libtar can be installed by cmmi, all others are in BLFS.
+
+--
+Boris Buegling <boris@icculus.org>

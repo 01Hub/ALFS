@@ -1,4 +1,4 @@
-#include <util.h>
+#include <libalfs.h>
 #include <tst.h>
 
 int main (int argc, char **argv)
