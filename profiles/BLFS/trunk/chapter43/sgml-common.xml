@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch43.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,77 +10,63 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="sgml-common" version="&sgml-common-version;">
+  <package name="sgml-common" version="&sgml-common-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&sgml-common-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&sgml-common-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&sgml-common-manpage-patch;</param>
+      </patch>
+      <execute command="aclocal" />
+      <execute command="automake -acf" />
+      <execute command="autoconf" />
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--sysconfdir=/etc</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <!-- remove comments if you update
+                     and remove the space in - -remove
 
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&sgml-common-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
+                <execute command="install-catalog">
+                        <param>- -remove</param>
+                        <param>/etc/sgml/sgml-ent.cat</param>
+                        <param>/usr/share/sgml/sgml-iso-entities-8879.1986/catalog</param>
+                </execute>
 
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&sgml-common-directory;</base>
-		</stageinfo>
+                <execute command="install-catalog">
+                        <param>- -remove</param>
+                        <param>/etc/sgml/sgml-docbook.cat</param>
+                        <param>/etc/sgml/sgml-ent.cat</param>
+                </execute>
 
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&sgml-common-manpage-patch;</param>
-		</patch>
-
-		<execute command="aclocal" />
-		<execute command="automake -acf" />
-		<execute command="autoconf" />
-
-		<configure>
-		        <param>--prefix=/usr</param>
-			<param>--sysconfdir=/etc</param>
-		</configure>
-
-		<make />
-
-		<make>
-			<param>install</param>
-		</make>
-
-		<!-- remove comments if you update
-		     and remove the space in - -remove
-
-		<execute command="install-catalog">
-		        <param>- -remove</param>
-			<param>/etc/sgml/sgml-ent.cat</param>
-			<param>/usr/share/sgml/sgml-iso-entities-8879.1986/catalog</param>
-		</execute>
-
-		<execute command="install-catalog">
-		        <param>- -remove</param>
-			<param>/etc/sgml/sgml-docbook.cat</param>
-			<param>/etc/sgml/sgml-ent.cat</param>
-		</execute>
-
-		-->
-
-		<execute command="install-catalog">
-		        <param>--add</param>
-			<param>/etc/sgml/sgml-ent.cat</param>
-			<param>/usr/share/sgml/sgml-iso-entities-8879.1986/catalog</param>
-		</execute>
-
-		<execute command="install-catalog">
-		        <param>--add</param>
-			<param>/etc/sgml/sgml-docbook.cat</param>
-			<param>/etc/sgml/sgml-ent.cat</param>
-		</execute>
-
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&sgml-common-directory;</remove>
-	</stage>
-
-</package>
+                -->
+      <execute command="install-catalog">
+        <param>--add</param>
+        <param>/etc/sgml/sgml-ent.cat</param>
+        <param>/usr/share/sgml/sgml-iso-entities-8879.1986/catalog</param>
+      </execute>
+      <execute command="install-catalog">
+        <param>--add</param>
+        <param>/etc/sgml/sgml-docbook.cat</param>
+        <param>/etc/sgml/sgml-ent.cat</param>
+      </execute>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&sgml-common-directory;</remove>
+    </stage>
+  </package>
 </alfs>

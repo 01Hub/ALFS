@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch46.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,59 +10,46 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="tex" version="&tex-version;">
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&tex-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&tex-directory;</base>
-		</stageinfo>
-
-		<mkdir>
-		        <option>parents</option>
-		        <name>/usr/share/texmf</name>
-		</mkdir>
-
-		<execute command="gzip -dc &packages_dir;/&tex-texmf-package; | (umask 0; cd /usr/share/texmf; tar xvf -)" />
-
-		<execute command="gzip -dc &packages_dir;/&tex-texmfsrc-package; | (umask 0; cd /usr/share/texmf; tar xvf -)" />
-
-		<patch>
-			<param>-N</param>
-			<param>-p1</param>
-			<param>-i &packages_dir;/&tex-readlink-patch;</param>
-		</patch>
-
-		<configure>
-		        <param>--with-x=no</param>
-			<param>--prefix=/usr</param>
-			<param>--without-texinfo</param>
-			<param>--with-system-ncurses</param>
-			<param>--with-system-zlib</param>
-			<param>--exec-prefix=/usr</param>
-			<param>--bindir=/usr/bin</param>
-		</configure>
-
-		<make>
-		        <param>world</param>
-		</make>
-
-		<execute command="texconfig dvips paper letter" />
-
-		<execute command="texconfig font rw" />
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&tex-directory;</remove>
-	</stage>
-
-</package>
+  <package name="tex" version="&tex-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&tex-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&tex-directory;</base>
+      </stageinfo>
+      <mkdir>
+        <option>parents</option>
+        <name>/usr/share/texmf</name>
+      </mkdir>
+      <execute command="gzip -dc &packages_dir;/&tex-texmf-package; | (umask 0; cd /usr/share/texmf; tar xvf -)" />
+      <execute command="gzip -dc &packages_dir;/&tex-texmfsrc-package; | (umask 0; cd /usr/share/texmf; tar xvf -)" />
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&tex-readlink-patch;</param>
+      </patch>
+      <configure>
+        <param>--with-x=no</param>
+        <param>--prefix=/usr</param>
+        <param>--without-texinfo</param>
+        <param>--with-system-ncurses</param>
+        <param>--with-system-zlib</param>
+        <param>--exec-prefix=/usr</param>
+        <param>--bindir=/usr/bin</param>
+      </configure>
+      <make>
+        <param>world</param>
+      </make>
+      <execute command="texconfig dvips paper letter" />
+      <execute command="texconfig font rw" />
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&tex-directory;</remove>
+    </stage>
+  </package>
 </alfs>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch45.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
@@ -9,56 +10,49 @@
 %config_entities;
 
 ]>
-
 <alfs>
-<package name="a2ps" version="&a2ps-version;">
-	
-	<packageinfo>
-		<utilizes><name>psutils</name></utilizes>
-		<utilizes><name>ghostscript</name></utilizes>
-	</packageinfo>
-
-	<stage name="Unpacking">
-		<unpack>
-			<archive>&packages_dir;/&a2ps-package;</archive>
-			<destination>&build_dir;</destination>
-		</unpack>
-	</stage>
-
-	<stage name="Installing">
-		<stageinfo>
-			<base>&build_dir;/&a2ps-directory;</base>
-		</stageinfo>
-
-		<search_replace>
-			<file>contrib/Makefile.in</file>
-			<find>emacs</find>
-			<replace></replace>
-		</search_replace>
-
-		<search_replace>
-			<file>configure</file>
-			<find>/usr/local/share/ghostscript</find>
-			<replace>/usr/share/ghostscript</replace>
-		</search_replace>
-
-		<configure>
-			<param>--prefix=/usr</param>
-			<param>--sysconfdir=/etc/a2ps</param>
-			<param>--localstatedir=/var</param>
-			<param>--with-medium=letter</param>
-		</configure>
-
-		<make />
-
-		<make>
-			<param>install</param>
-		</make>
-	</stage>
-
-	<stage name="Cleanup">
-		<remove>&build_dir;/&a2ps-directory;</remove>
-	</stage>
-
-</package>
+  <package name="a2ps" version="&a2ps-version;">
+    <packageinfo>
+      <utilizes>
+        <name>psutils</name>
+      </utilizes>
+      <utilizes>
+        <name>ghostscript</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <archive>&packages_dir;/&a2ps-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&a2ps-directory;</base>
+      </stageinfo>
+      <search_replace>
+        <file>contrib/Makefile.in</file>
+        <find>emacs</find>
+        <replace></replace>
+      </search_replace>
+      <search_replace>
+        <file>configure</file>
+        <find>/usr/local/share/ghostscript</find>
+        <replace>/usr/share/ghostscript</replace>
+      </search_replace>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--sysconfdir=/etc/a2ps</param>
+        <param>--localstatedir=/var</param>
+        <param>--with-medium=letter</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&a2ps-directory;</remove>
+    </stage>
+  </package>
 </alfs>
