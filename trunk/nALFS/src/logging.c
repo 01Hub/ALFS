@@ -42,6 +42,7 @@
 #include "nalfs.h"
 #include "comm.h"
 #include "handlers.h"
+#include "logfiles.h"
 #include "config.h"
 
 #include "logging.h"
@@ -450,9 +451,7 @@ void log_handler_action(const char *format, ...)
 	vsnprintf(string, MAX_ACTION_MSG_LEN, format, ap);
 	va_end(ap);
 
-	xmlNewTextChild(xml_doc->children, NULL,
-		(const xmlChar *)EL_NAME_FOR_ACTION,
-		(const xmlChar *)string);
+	logf_add_handler_action(xml_doc, string);
 }
 
 static void free_statefile(statefile_s **statefile)
@@ -531,32 +530,16 @@ static INLINE void create_installed_files_file(
 	const char *new,
 	const char *filename)
 {
-	xmlNodePtr node;
-
-
-	node = xmlNewTextChild(xml_doc->children,
-		NULL, (const xmlChar *)EL_NAME_FOR_FILES_ROOT, NULL);
-
 	if (opt_logging_method == LOG_USING_TWO_FINDS) {
-		xmlSetProp(node,
-			(const xmlChar *)"method",
-			(const xmlChar *)"two finds");
-
-		xmlNewTextChild(node, NULL,
-			(const xmlChar *)EL_NAME_FOR_FILES_FIND_ROOT,
-			(const xmlChar *)opt_find_base);
-		xmlNewTextChild(node, NULL,
-			(const xmlChar *)EL_NAME_FOR_FILES_FIND_PRUNES,
-			(const xmlChar *)opt_find_prunes);
+		logf_add_installed_files_two_finds(xml_doc,
+			opt_find_base, opt_find_prunes);
 
 		/* TODO: Ugly. */
 		execute_command("sort %s %s | uniq -u | sort -bk8 >> %s",
 			current, new, filename);
 
 	} else if (opt_logging_method == LOG_USING_ONE_FIND) {
-		xmlSetProp(node,
-			(const xmlChar *)"method",
-			(const xmlChar *)"time stamp");
+		logf_add_installed_files_one_find(xml_doc);
 
 		/* TODO: Ugly II. */
 		execute_command("cp -f %s %s", new, filename);
@@ -678,9 +661,7 @@ static INLINE void log_stopped_time(void)
 	t = time(NULL);
 	strftime(time_str, sizeof time_str, DATE_FORMAT, localtime(&t));
 
-	xmlNewTextChild(xml_doc->children, NULL,
-		(const xmlChar *)"stopped",
-		(const xmlChar *)time_str);
+	logf_add_stopped_time(xml_doc, time_str);
 }
 
 void log_stopped_execution(void)
@@ -941,28 +922,15 @@ static INLINE void request_state(void)
 
 static INLINE xmlDocPtr start_package_logging(element_s *el)
 {
+	xmlDocPtr xmld;
+
 	char *name = alloc_package_name(el);
 	char *version = alloc_package_version(el);
-	xmlDocPtr xmld;
 
 
 	current_package = el;
 
-	/*
-	 * Create xmlDoc.
-	 */
-	xmld = xmlNewDoc((const xmlChar *)"1.0");
-
-	xmld->children = xmlNewDocNode(xmld,
-		NULL, (const xmlChar *)EL_NAME_FOR_A_RUN, NULL);
-
-	xmlNewTextChild(xmld->children, NULL,
-		(const xmlChar *)"name",
-		(const xmlChar *)name);
-
-	xmlNewTextChild(xmld->children, NULL,
-		(const xmlChar *)"version",
-		(const xmlChar *)version);
+	xmld = logf_new_run(name, version);
 
 	xfree(name);
 	xfree(version);
@@ -985,7 +953,6 @@ void log_end_time(element_s *el, int status)
 {
 	char time_str[DATE_FORMAT_LEN + 1];
 	time_t t;
-	xmlNodePtr node;
 
 
 	if (xml_doc == NULL) { // No open XML file for logging.
@@ -996,22 +963,13 @@ void log_end_time(element_s *el, int status)
 	t = time(NULL);
 	strftime(time_str, sizeof time_str, DATE_FORMAT, localtime(&t));
 
-	node = xmlNewTextChild(xml_doc->children, NULL,
-		(const xmlChar *)el->name,
-		(const xmlChar *)time_str);
-	xmlSetProp(node,
-		(const xmlChar *)"mode",
-		(const xmlChar *)"end");
-	xmlSetProp(node,
-		(const xmlChar *)"status",
-		status ? (const xmlChar *)"failed" : (const xmlChar *)"done");
+	logf_add_end_time(xml_doc, el->name, time_str, status);
 }
 
 void log_start_time(element_s *el)
 {
 	char time_str[DATE_FORMAT_LEN + 1];
 	time_t t;
-	xmlNodePtr node;
 
 
 	if (xml_doc == NULL) { // No open XML file for logging.
@@ -1022,12 +980,7 @@ void log_start_time(element_s *el)
 	t = time(NULL);
 	strftime(time_str, sizeof time_str, DATE_FORMAT, localtime(&t));
 
-	node = xmlNewTextChild(xml_doc->children, NULL,
-		(const xmlChar *)el->name,
-		(const xmlChar *)time_str);
-	xmlSetProp(node,
-		(const xmlChar *)"mode",
-		(const xmlChar *)"start");
+	logf_add_start_time(xml_doc, el->name, time_str);
 }
 
 

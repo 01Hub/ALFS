@@ -30,19 +30,6 @@
 #include "parser.h"
 
 
-/*
- * Names of the elements used in packages' log files. They are ugly.
- * But this needs some standardization anyway, so it doesn't matter yet.
- */
-#define EL_NAME_FOR_ROOT		"package_log"
-#define EL_NAME_FOR_A_RUN		"single_try"
-#define EL_NAME_FOR_ACTION		"handler_action"
-#define EL_NAME_FOR_FILES_ROOT		"changed_files"
-#define EL_NAME_FOR_FILES_FIND_ROOT	"find_root"
-#define EL_NAME_FOR_FILES_FIND_PRUNES	"find_prunes"
-#define EL_NAME_FOR_FILES_NAME		"filename"
-
-
 #define STATE_IS_TIME_STAMP_MSG		"Using time stamp"
 #define STATE_IS_LIST_OF_FILES_MSG	"Using two finds"
 

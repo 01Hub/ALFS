@@ -51,6 +51,7 @@
 #include "comm.h"
 #include "editor.h"
 #include "logging.h"
+#include "logfiles.h"
 #include "options.h"
 #include "init.h"
 #include "config.h"
@@ -624,87 +625,29 @@ static INLINE char *receive_changed_files(void)
 	return filename;
 }
 
-static inline void read_the_list(xmlNodePtr node)
+/* Create a new log file for a package (if it doesn't already exist)
+ * and add a new node to it.
+ */
+static INLINE xmlDocPtr merge_log_files(char *file, xmlNodePtr new_node)
 {
-	ctrl_msg_s *message;
+	xmlDocPtr doc = NULL;
 
-	if ((message = comm_read_ctrl_message(FRONTEND_CTRL_SOCK))) {
-		ctrl_msg_type_e type = comm_msg_type(message);
+	if (file_exists(file)) {
+		doc = logf_parse_logfile(file);
 
-		if (type == CTRL_SENDING_FILES_FILE) {
-			char *ffile = receive_changed_files();
-
-			if (ffile) {
-				xmlNewTextChild(
-					node,
-					NULL,
-					(const xmlChar *)EL_NAME_FOR_FILES_NAME,
-					(const xmlChar *)ffile);
-
-				xfree(ffile);
-			}
-		}
-
-		comm_free_message(message);
-	}
-}
-
-/* Adds new package log to the old one, or creates it if it doesn't exist. */
-static INLINE void merge_log_files(char *file, const char *ptr, size_t size)
-{
-	xmlNodePtr new_state, node;
-	xmlDocPtr doc, new_doc;
-
-
-	if (file_exists(file)) { /* Log file already exists. */
-		if ((doc = xmlParseFile(file)) == NULL) {
-			Nprint_err("Error parsing the old log file.");
-			return;
-		}
-		doc->children = xmlDocGetRootElement(doc);
-
-	} else { /* No previous log file, create new document */
-		doc = xmlNewDoc((const xmlChar *)"1.0");
-		doc->children = xmlNewDocNode(doc, NULL,
-			(const xmlChar *)EL_NAME_FOR_ROOT, NULL);
+		if (doc == NULL)
+			Nprint_err("Error parsing %s, creating new one.", file);
 	}
 
-	/* Get the state element from the new doc. */
-	new_doc = xmlParseMemory(ptr, size);
-	new_state = xmlDocGetRootElement(new_doc);
-	xmlUnlinkNode(new_state);
-	xmlFreeDoc(new_doc);
+	if (doc == NULL)
+		doc = logf_new_logfile();
 
-	/*
-	 * Read the list of installed files (if any) from the backend,
-	 * store it in the file, and update the package log with its name.
-	 */
 
-	/* Check if the list will be send. */
-	for (node = new_state->children; node; node = node->next) {
-		if (node->type == XML_ELEMENT_NODE
-		&& strcmp((const char *)node->name, EL_NAME_FOR_FILES_ROOT) == 0) {
-			break;
-		}
-	}
-	if (node) { /* There is a list, read it. */
-		read_the_list(node);
-		
-	}
-
-	if (xmlAddChild(doc->children, new_state) == NULL) {
+	if (xmlAddChild(doc->children, new_node) == NULL) {
 		Nprint_err("Unable to add new state to the old log file");
 	}
 
-	xmlSetDocCompressMode(doc, 0);
-
-	if (xmlSaveFormatFile(file, doc, 1) == -1) {
-		Nprint_err("Unable to save log file to %s.", file);
-	} else {
-		Nprint("Log file stored in \"%s\".", file);
-	}
-
-	xmlFreeDoc(doc);
+	return doc;
 }
 
 static INLINE void receive_log_file(void)
@@ -713,15 +656,58 @@ static INLINE void receive_log_file(void)
 	char *ptr;
 	char *filename;
 
+	xmlDocPtr doc;
+	xmlNodePtr new_node;
 
+
+	/* Get new log file. */
 	comm_read_to_memory(FRONTEND_CTRL_SOCK, &ptr, &size);
+
+	/* Parse it and unlink its root element. */
+	doc = xmlParseMemory(ptr, size);
+	new_node = xmlDocGetRootElement(doc);
+	xmlUnlinkNode(new_node);
+	xmlFreeDoc(doc);
+	xfree(ptr);
 
 	filename = alloc_current_package_file(log_file_suffix);
 
-	merge_log_files(filename, ptr, size);
+	doc = merge_log_files(filename, new_node);
+
+	/*
+	 * Read the list of installed files (if any) from the backend,
+	 * store it in the file, and update the package log with its name.
+	 */
+	if (logf_has_installed_files(new_node)) {
+		ctrl_msg_s *message;
+
+		if ((message = comm_read_ctrl_message(FRONTEND_CTRL_SOCK))) {
+			ctrl_msg_type_e type = comm_msg_type(message);
+
+			if (type == CTRL_SENDING_FILES_FILE) {
+				char *f = receive_changed_files();
+
+				if (f) {
+					logf_add_installed_files(new_node, f);
+					xfree(f);
+				}
+			}
+		}
+
+		comm_free_message(message);
+	}
+
+
+	/* Save log file. */
+	xmlSetDocCompressMode(doc, 0);
+	if (xmlSaveFormatFile(filename, doc, 1) == -1) {
+		Nprint_err("Unable to save log file to %s.", filename);
+	} else {
+		Nprint("Log file stored in \"%s\".", filename);
+	}
 
 	xfree(filename);
-	xfree(ptr);
+	xmlFreeDoc(doc);
 }
 
 /*
