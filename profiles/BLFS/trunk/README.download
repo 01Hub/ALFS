@@ -20,3 +20,15 @@ Make sure to download all needed packages before you start,
 or else your build will fail. Also make sure you set the
 correct path to the packages you have downloaded in
 ./config/config.ent
+
+Problematic packages:
+=====================
+
+For various reasons some packages can't be automatically
+downloaded and have to be downloaded manually.
+
+This is a list of those packages:
+
+ - The Sun Java SDK
+
+ - !To be added!
