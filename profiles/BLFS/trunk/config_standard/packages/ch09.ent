@@ -69,7 +69,7 @@
 <!ENTITY aalib-version   "1.4rc5">
 <!ENTITY aalib-package   "aalib-&aalib-version;.tar.bz2">
 <!ENTITY aalib-md5       "b6c1e8a09656f4db8f306ea24e64de73">
-<!ENTITY aalib-directory "aalib-&aalib-version;">
+<!ENTITY aalib-directory "aalib-1.4.0">
 
 <!ENTITY imlib2-version   "1.1.2">
 <!ENTITY imlib2-package   "imlib2-&imlib2-version;.tar.bz2">
