@@ -25,7 +25,7 @@
 <!ENTITY libfam-md5       "6f4feb53f33227042fc03063721de30e">
 <!ENTITY libfam-directory "fam-&libfam-version;">
 
-<!ENTITY libfam-patch     "fam-&libfam-version;-dnotify.patch">
+<!ENTITY libfam-patch     "fam-&libfam-version;-dnotify-1.patch">
 <!ENTITY libfam-patch-md5 "82a574f1f3f3f676d76bf4bd1a868813">
 
 <!ENTITY libxml-version   "1.8.17">
