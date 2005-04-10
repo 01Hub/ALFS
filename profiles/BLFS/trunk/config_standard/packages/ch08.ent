@@ -9,7 +9,7 @@
 <!ENTITY popt-version     "&popt-major-minor;-5">
 <!ENTITY popt-package     "popt_&popt-major-minor;.orig.tar.bz2">
 <!ENTITY popt-md5         "864bfddbdf1f2f6ece7eb00b5be29b6f">
-<!ENTITY popt-directory   "popt-&popt-version;">
+<!ENTITY popt-directory   "popt-&popt-major-minor;">
 
 <!ENTITY popt-patch         "popt_&popt-version;.diff">
 <!ENTITY popt-patch-package "popt_&popt-version;.diff.bz2">
