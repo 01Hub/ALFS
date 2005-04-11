@@ -1,10 +1,11 @@
 /*
  *  options.h - Program's options.
  *
- *  Copyright (C) 2002
+ *  Copyright (C) 2002, 2005
  *
  *  Neven Has <haski@sezampro.yu>
  *  Kevin P. Fleming <kpfleming@linuxfromscratch.org>
+ *  Jamie Bennett <jamie@linuxuk.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -59,6 +60,7 @@ BOOL_OPTION(log_backend, 1, NULL, NULL);
 BOOL_OPTION(stamp_packages, 0, NULL, NULL);
 STRING_OPTION(stamp_directory, "stamps", NULL, NULL);
 BOOL_OPTION(disable_digest, 0, NULL, NULL);
+BOOL_OPTION(download_check, 0, NULL, NULL);
 BOOL_OPTION(display_stage_header, 0, NULL, NULL);
 STRING_OPTION(find_base, "/", NULL, NULL);
 STRING_OPTION(find_prunes, "", NULL, NULL);

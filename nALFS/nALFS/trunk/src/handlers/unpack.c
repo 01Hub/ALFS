@@ -1,9 +1,10 @@
 /*
  *  unpack.c - Handler.
  * 
- *  Copyright (C) 2001-2003
+ *  Copyright (C) 2001-2003, 2005
  *  
  *  Neven Has <haski@sezampro.yu>
+ *  Jamie Bennett <jamie@linuxuk.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -233,11 +234,17 @@ static int unpack_main_ver3(element_s *el)
 		goto free_all_and_return;
 	}
 
-	if (unpack_archive(archive)) {
-		Nprint_h_err("Unpacking %s failed.", archive);
-	} else {
-		Nprint_h("Done unpacking %s.", archive);
+	if (*opt_download_check) {
+		Nprint_h("File %s available", archive);
 		status = 0;
+	}
+	else {
+		if (unpack_archive(archive)) {
+			Nprint_h_err("Unpacking %s failed.", archive);
+		} else {
+			Nprint_h("Done unpacking %s.", archive);
+			status = 0;
+		}
 	}
 
  free_all_and_return:

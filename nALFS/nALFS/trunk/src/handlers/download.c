@@ -1,10 +1,11 @@
 /*
  *  download.c - Handler.
  * 
- *  Copyright (C) 2003
+ *  Copyright (C) 2003, 2005
  *  
  *  Neven Has <haski@sezampro.yu>
  *  Vassili Dzuba <vdzuba@nerim.net>
+ *  Jamie Bennett <jamie@linuxuk.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -43,6 +44,7 @@
 #include "parser.h"
 #include "nalfs-core.h"
 #include "backend.h"
+#include "options.h"
 
 
 #define El_download_file(el) alloc_trimmed_param_value("file", el)
@@ -80,8 +82,9 @@ static int download_main(element_s *el)
 	if (change_current_dir(destination))
 		goto free_all_and_return;
 
-	alloc_element_digest(el, &digest, &digest_type);
-
+	if (!*opt_disable_digest)
+		alloc_element_digest(el, &digest, &digest_type);
+	
 	/* Check if file exists. */
 	if ((stat(file, &file_stat))) {
 	        if (errno == ENOENT && first_param("url", el) != NULL) {
@@ -117,11 +120,19 @@ static int download_main(element_s *el)
 			Nprint_h_err("    %s", strerror(errno));
 			goto free_all_and_return;
 		}
-	} else if (digest != NULL) {
-		if (verify_digest(digest_type, digest, file)) {
-			Nprint_h_err("Wrong %s digest of file: %s",
-				     digest_type, file);
-			goto free_all_and_return;
+	} 
+	else {
+		if (*opt_download_check) {
+			Nprint_h("File %s available", file);
+			status = 0;
+		}
+		if (digest != NULL) {
+			if (verify_digest(digest_type, digest, file)) {
+				Nprint_h_err("Wrong %s digest of file: %s",
+					     digest_type, file);
+				status = -1;
+				goto free_all_and_return;
+			}
 		}
 	}
 

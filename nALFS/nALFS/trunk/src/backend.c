@@ -1,9 +1,10 @@
 /*
  *  backend.c - Backend.
  *
- *  Copyright (C) 2001, 2002
+ *  Copyright (C) 2001, 2002, 2005
  *
  *  Neven Has <haski@sezampro.yu>
+ *  Jamie Bennett <jamie@linuxuk.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -350,7 +351,18 @@ static int do_execute_element(element_s *el)
 				change_to_profiles_dir(el);
 			}
 
-			i = el->handler->info->main(el);
+			if (*opt_download_check) {
+
+				char *handler_name = el->handler->info->name;
+				
+				if (!strcmp(handler_name, "unpack") ||
+					!strcmp(handler_name, "download"))
+					i = el->handler->info->main(el);
+				else
+					i = execute_children(el);
+			}
+			else 
+				i = el->handler->info->main(el);
 
 		} else { /* Never reached.
 			  * (Only elements with ->handler have TYPE_ELEMENT

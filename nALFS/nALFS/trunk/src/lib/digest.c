@@ -137,7 +137,7 @@ int verify_digest(const char* type, const char* digest, const char* file)
 	                sprintf(&md_value_hex[0] + i * 2, "%02x", md_value[i]);
 
 		if (! strcmp(digest, &md_value_hex[0])) {
-			Nprint("Digest ok.");
+			Nprint("Digest ok for %s.", file);
 		        return 0;
 		}
 
