@@ -1,9 +1,10 @@
 /*
  *  nalfs.c - Main file.
  *
- *  Copyright (C) 2001-2003
+ *  Copyright (C) 2001-2003, 2005
  *
  *  Neven Has <haski@sezampro.yu>
+ *  Jamie Bennett <jamie@linuxuk.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -1891,11 +1892,22 @@ static INLINE void toggle_generate_stamp(void)
 static INLINE void toggle_disable_digest(void)
 {
 	if (*opt_disable_digest) {
-		Nprint("Digest checking now enabled.");
+		Nprint("Digest checking now disabled.");
 		*opt_disable_digest = 0;
 	} else {
-		Nprint("Digest checking now disabled.");
+		Nprint("Digest checking now enabled.");
 		*opt_disable_digest = 1;
+	}
+}
+
+static INLINE void download_check(void)
+{
+	if (*opt_download_check) {
+		Nprint("Downloading and checking of packages disabled");
+		*opt_download_check = 0;
+	} else {
+		Nprint("Downloading and checking of packages enabled");
+		*opt_download_check = 1;
 	}
 }
 

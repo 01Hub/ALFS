@@ -1,9 +1,10 @@
 /*
  *  init.c - Initializing options.
  *
- *  Copyright (C) 2001-2003
+ *  Copyright (C) 2001-2003, 2005
  *
  *  Neven Has <haski@sezampro.yu>
+ *  Jamie Bennett <jamie@linuxuk.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -305,6 +306,7 @@ enum long_option {
 	LONG_OPTION_HELP,
 	LONG_OPTION_GENERATE_STAMP,
 	LONG_OPTION_DISABLE_DIGEST,
+	LONG_OPTION_DOWNLOAD_CHECK,
 	LONG_OPTION_RCFILE,
 };
 
@@ -360,6 +362,7 @@ static INLINE void print_help_and_exit(const char *prog)
 "                                  logging files.\n"
 "    -S, --generate-stamp          Toggle stamp mode.\n"
 "    -d, --disable-digest          Disable digest checking\n"
+"    -D, --download          	Download and check packages only\n"
 "    --rcfile <file>               Use <file> as configuration file.\n"
 "    -v, --verbose                 Toggle verbosity (%s).\n"
 "    --version                     Display program's version.\n"
@@ -422,6 +425,8 @@ void read_command_line_options(int *argc, char ***argv)
 	
 	{"disable-digest", no_argument, NULL, LONG_OPTION_DISABLE_DIGEST},	
 
+	{"download", no_argument, NULL, LONG_OPTION_DOWNLOAD_CHECK},		
+
 	{"rcfile", required_argument, NULL, LONG_OPTION_RCFILE},
 
 	{NULL, no_argument, NULL, 0}
@@ -429,7 +434,7 @@ void read_command_line_options(int *argc, char ***argv)
 	};
 
 
-	while ((i = getopt_long(*argc, *argv, "lPfhisBSdL:b:p:v", long_opts, NULL)) != -1) {
+	while ((i = getopt_long(*argc, *argv, "lPfhisBSdDL:b:p:v", long_opts, NULL)) != -1) {
 		switch (i) {
 			case LONG_OPTION_DISPLAY_ALFS:
 				Toggle(*opt_display_alfs);
@@ -500,6 +505,11 @@ void read_command_line_options(int *argc, char ***argv)
 				Toggle(*opt_disable_digest);
 				break;
 
+			case 'D':
+			case LONG_OPTION_DOWNLOAD_CHECK:
+				Toggle(*opt_download_check);
+				break;
+			
 			case LONG_OPTION_RCFILE:
 				parse_rc_file(optarg);
 				break;
