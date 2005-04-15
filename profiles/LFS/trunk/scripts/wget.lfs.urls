@@ -17,9 +17,9 @@ ftp://ftp.gnu.org/gnu/gcc/gcc-3.4.3/gcc-3.4.3.tar.bz2
 #ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gcc/gcc-core-3.4.3.tar.bz2
 #ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gcc/gcc-g++-3.4.3.tar.bz2
 #ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gcc/gcc-testsuite-3.4.3.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gettext/gettext-0.14.3.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/glibc/glibc-2.3.4.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/glibc/glibc-linuxthreads-2.3.4.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gettext/gettext-0.14.4.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/glibc/glibc-2.3.5.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/glibc/glibc-linuxthreads-2.3.5.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/grep/grep-2.5.1a.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/groff/groff-1.19.1.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/grub/grub-0.96.tar.bz2
@@ -32,12 +32,12 @@ ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/kbd/kbd-1.12.
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/less/less-382.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/lfs-bootscripts/lfs-bootscripts-3.2.0.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/libtool/libtool-1.5.14.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/linux/linux-2.6.11.6.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/linux-libc-headers/linux-libc-headers-2.6.11.1.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/linux/linux-2.6.11.7.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/linux-libc-headers/linux-libc-headers-2.6.11.2.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/m4/m4-1.4.3.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/make/make-3.80.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/man/man-1.5p.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/man-pages/man-pages-2.01.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/man-pages/man-pages-2.02.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/mktemp/mktemp-1.5.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/module-init-tools/module-init-tools-3.1.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/ncurses/ncurses-5.4.tar.bz2
@@ -72,7 +72,6 @@ http://www.linuxfromscratch.org/patches/lfs/svn/trunk/gcc-3.4.3-specs-2.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/gcc-3.4.3-no_fixincludes-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/inetutils-1.4.2-kernel_headers-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/inetutils-1.4.2-no_server_man_pages-1.patch
-http://www.linuxfromscratch.org/patches/lfs/svn/trunk/iproute2-2.6.11_050330-remove_db-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/mktemp-1.5-add_tempfile-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/perl-5.8.6-libc-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/readline-5.0-fixes-1.patch

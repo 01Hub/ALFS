@@ -93,7 +93,6 @@
         <source>&inetutils-no-man-pages-patch;</source>
         <source>&inetutils-kernel-headers-patch;</source>
         <source>&iproute2-package;</source>
-        <source>&iproute2-remove-db-patch;</source>
         <source>&kbd-package;</source>
         <source>&less-package;</source>
         <source>&lfs-bootscripts-package;</source>

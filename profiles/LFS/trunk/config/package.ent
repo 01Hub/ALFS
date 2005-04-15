@@ -103,18 +103,18 @@
 <!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no_fixincludes-1.patch">
 <!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-2.patch">
 
-<!ENTITY gettext-md5 "ded20c1912b11848469be7131350e4a9">
-<!ENTITY gettext-version "0.14.3">
+<!ENTITY gettext-md5 "">
+<!ENTITY gettext-version "0.14.4">
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.bz2">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
-<!ENTITY glibc-md5 "174ac5ed4f2851fcc866a3bac1e4a6a5">
-<!ENTITY glibc-version "2.3.4">
+<!ENTITY glibc-md5 "93d9c51850e0513aa4846ac0ddcef639">
+<!ENTITY glibc-version "2.3.5">
 <!ENTITY glibc-cvs-tag "">
 <!ENTITY glibc-package "glibc-&glibc-version;&glibc-cvs-tag;.tar.bz2">
 <!ENTITY glibc-directory "glibc-&glibc-version;&glibc-cvs-tag;">
 
-<!ENTITY glibc-linuxthreads-md5 "7a199cd4965eb5622163756ae64358fe">
+<!ENTITY glibc-linuxthreads-md5 "77011b0898393c56b799bc011a0f37bf">
 <!ENTITY glibc-linuxthreads-package "glibc-linuxthreads-&glibc-version;&glibc-cvs-tag;.tar.bz2">
 
 <!ENTITY grep-md5 "52202fe462770fa6be1bb667bd6cf30c">
@@ -161,8 +161,6 @@
 <!ENTITY iproute2-package "iproute2-&iproute2-version;-&iproute2-cvs-ver;.tar.bz2">
 <!ENTITY iproute2-directory "iproute2-&iproute2-version;">
 
-<!ENTITY iproute2-remove-db-patch "iproute2-&iproute2-version;_&iproute2-cvs-ver;-remove_db-1.patch">
-
 <!ENTITY kbd-md5 "069d1175b4891343b107a8ac2b4a39f6">
 <!ENTITY kbd-version "1.12">
 <!ENTITY kbd-package "kbd-&kbd-version;.tar.bz2">
@@ -188,8 +186,8 @@
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
-<!ENTITY linux-md5 "91544ed14e672386bf2f76c94911afe6">
-<!ENTITY linux-version "2.6.11.6">
+<!ENTITY linux-md5 "04f5efb260ff6fb4eaa221fb5b880d8e">
+<!ENTITY linux-version "2.6.11.7">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
@@ -214,8 +212,8 @@
 <!ENTITY man-package "man-&man-version;.tar.bz2">
 <!ENTITY man-directory "man-&man-version;">
 
-<!ENTITY man-pages-md5 "f417de446b7554cc33ea033a82525dae">
-<!ENTITY man-pages-version "2.01">
+<!ENTITY man-pages-md5 "1b52b81550801bb07ae07ec62ab713b6">
+<!ENTITY man-pages-version "2.02">
 <!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.bz2">
 <!ENTITY man-pages-directory "man-pages-&man-pages-version;">
 
