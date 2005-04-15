@@ -23,7 +23,7 @@
       <stageinfo>
         <base>&build_dir;/e2fsprogs-build</base>
       </stageinfo>
-      <execute command="sed">
+      <execute command="sed" base="&build_dir;/&e2fsprogs-directory;">
 	<param>-i -e 's/-DTEST/$(ALL_CFLAGS) &real-amp;/'</param>
 	<param>lib/e2p/Makefile.in</param>
       </execute>
