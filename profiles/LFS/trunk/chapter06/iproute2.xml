@@ -20,11 +20,9 @@
       <stageinfo>
         <base>&build_dir;/&iproute2-directory;</base>
       </stageinfo>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&iproute2-remove-db-patch;</param>
-      </patch>
+      <execute command="sed">
+	<param>-i '/^TARGETS/s@arpd@@g' misc/Makefile</param>
+      </execute>
       <configure />
       <make>
         <param>&jlevel;</param>
