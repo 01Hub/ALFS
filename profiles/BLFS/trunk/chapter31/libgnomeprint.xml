@@ -20,7 +20,7 @@
         <name>fontconfig</name>
       </requires>
       <requires>
-        <name>libart-lgpl</name>
+        <name>libart_lgpl</name>
       </requires>
       <requires>
         <name>libxml2</name>
