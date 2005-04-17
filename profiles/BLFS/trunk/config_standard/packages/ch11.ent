@@ -27,7 +27,7 @@
 <!ENTITY which-directory "which-&which-version;">
 
 <!ENTITY unzip-version   "5.51">
-<!ENTITY unzip-package   "unzip551.tar.bz2">
+<!ENTITY unzip-package   "unzip-5.51.tar.bz2">
 <!ENTITY unzip-md5       "18d26f1aa92ae91213452973b66d0385">
 <!ENTITY unzip-directory "unzip-&unzip-version;">
 
