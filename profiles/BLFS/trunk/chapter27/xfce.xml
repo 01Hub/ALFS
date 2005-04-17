@@ -10,7 +10,7 @@
 %config_entities;
 
 ]>
-<alfs>
+<alfs xmlns:xi="http://www.w3.org/2001/XInclude">
   <package name="xfce" version="&xfce-version;">
     <packageinfo>
       <requires>
@@ -37,137 +37,33 @@
         <archive>&packages_dir;/&xfce-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
-      <unpack>
-        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-libxfce4util-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
-      </unpack>
-      <unpack>
-        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-libxfcegui4-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
-      </unpack>
-      <unpack>
-        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-libxfce4mcs-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
-      </unpack>
-      <unpack>
-        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfcemcsmanager-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
-      </unpack>
-      <unpack>
-        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfwm4-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
-      </unpack>
-      <unpack>
-        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfdesktop-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
-      </unpack>
-      <unpack>
-        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfce4panel-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
-      </unpack>
-      <unpack>
-        <archive>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfceutils-package;</archive>
-        <destination>&build_dir;/&xfce-directory;/src-bz2</destination>
-      </unpack>
     </stage>
-    <stage name="Installing">
-      <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-libxfce4util-directory;</base>
-      </stageinfo>
-      <configure>
-        <param>--prefix=/usr</param>
-      </configure>
-      <make />
-      <make>
-        <param>install</param>
-      </make>
+    <stage name="Installing XFce Base Packages">
+      <xi:include href="xfce/libxfce4util.xml" />
+      <xi:include href="xfce/dbh.xml" />
+      <xi:include href="xfce/libxfcegui4.xml" />
+      <xi:include href="xfce/libxfce4mcs.xml" />
+      <xi:include href="xfce/xfce-mcs-manager.xml" />
+      <xi:include href="xfce/xfwm4.xml" />
+      <xi:include href="xfce/xfce4-panel.xml" />
+      <xi:include href="xfce/xfdesktop.xml" />
+      <xi:include href="xfce/xfce-utils.xml" />
     </stage>
-    <stage name="Installing">
-      <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-libxfcegui4-directory;</base>
-      </stageinfo>
-      <configure>
-        <param>--prefix=/usr</param>
-      </configure>
-      <make />
-      <make>
-        <param>install</param>
-      </make>
-    </stage>
-    <stage name="Installing">
-      <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-libxfce4mcs-directory;</base>
-      </stageinfo>
-      <configure>
-        <param>--prefix=/usr</param>
-      </configure>
-      <make />
-      <make>
-        <param>install</param>
-      </make>
-    </stage>
-    <stage name="Installing">
-      <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfcemcsmanager-directory;</base>
-      </stageinfo>
-      <configure>
-        <param>--prefix=/usr</param>
-      </configure>
-      <make />
-      <make>
-        <param>install</param>
-      </make>
-    </stage>
-    <stage name="Installing">
-      <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfwm4-directory;</base>
-      </stageinfo>
-      <configure>
-        <param>--prefix=/usr</param>
-      </configure>
-      <make />
-      <make>
-        <param>install</param>
-      </make>
-    </stage>
-    <stage name="Installing">
-      <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfdesktop-directory;</base>
-      </stageinfo>
-      <configure>
-        <param>--prefix=/usr</param>
-        <param>--sysconfdir=/etc</param>
-      </configure>
-      <make />
-      <make>
-        <param>install</param>
-      </make>
-    </stage>
-    <stage name="Installing">
-      <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfce4panel-directory;</base>
-      </stageinfo>
-      <configure>
-        <param>--prefix=/usr</param>
-        <param>--sysconfdir=/etc</param>
-      </configure>
-      <make />
-      <make>
-        <param>install</param>
-      </make>
-    </stage>
-    <stage name="Installing">
-      <stageinfo>
-        <base>&build_dir;/&xfce-directory;/src-bz2/&xfce-xfceutils-directory;</base>
-      </stageinfo>
-      <configure>
-        <param>--prefix=/usr</param>
-        <param>--sysconfdir=/etc</param>
-      </configure>
-      <make />
-      <make>
-        <param>install</param>
-      </make>
+    <stage name="Installing XFce Extra Packages">
+      <xi:include href="xfce/gtk-xfce-engine.xml" />
+      <xi:include href="xfce/xfcalendar.xml" />
+      <xi:include href="xfce/xfce-mcs-plugins.xml" />
+      <xi:include href="xfce/xfce4-appfinder.xml" />
+      <xi:include href="xfce/xfce4-icon-theme.xml" />
+      <xi:include href="xfce/xfce4-iconbox.xml" />
+      <xi:include href="xfce/xfce4-mixer.xml" />
+      <xi:include href="xfce/xfce4-session.xml" />
+      <xi:include href="xfce/xfce4-systray.xml" />
+      <xi:include href="xfce/xfce4-toys.xml" />
+      <xi:include href="xfce/xfce4-trigger-launcher.xml" />
+      <xi:include href="xfce/xffm.xml" />
+      <xi:include href="xfce/xfprint.xml" />
+      <xi:include href="xfce/xfwm4-themes.xml" />
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&xfce-directory;</remove>

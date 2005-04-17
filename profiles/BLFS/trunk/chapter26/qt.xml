@@ -34,6 +34,15 @@
       <utilizes>
 	<name>postgresql</name>
       </utilizes>
+      <utilizes>
+	<name>sqlite</name>
+      </utilizes>
+      <utilizes>
+	<name>firebird</name>
+      </utilizes>
+      <utilizes>
+	<name>unixodbc</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -67,8 +76,8 @@
 	<param>-system-libjpeg</param>
         <param>-system-libpng</param>
       </configure>
-      <make />
       <execute command="find -type f -name Makefile | xargs sed -i &quot;s@-Wl,-rpath,/usr/lib@@g&quot;" />
+      <make />
       <make>
         <param>install</param>
       </make>
