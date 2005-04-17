@@ -81,7 +81,7 @@
 <!ENTITY libgsf-md5       "b7b1c1e9adf3fd39a4df6f6891bf3bca">
 <!ENTITY libgsf-directory "libgsf-&libgsf-version;">
 
-<!ENTITY libglade-version   "2.4.0">
+<!ENTITY libglade-version   "2.4.1">
 <!ENTITY libglade-package   "libglade-&libglade-version;.tar.bz2">
 <!ENTITY libglade-md5       "add87e5aef7d8a9ebb468bc0e4044440">
 <!ENTITY libglade-directory "libglade-&libglade-version;">
