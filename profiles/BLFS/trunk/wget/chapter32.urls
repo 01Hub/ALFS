@@ -16,7 +16,7 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-1.4/GConf-1.0.9.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-1.4/gnome-vfs-1.0.5.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-1.4/gnome-vfs-1.0.5-gcc34-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-1.4/libglade-0.17.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-1.4/libglade-0.17.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-1.4/gal-0.24.tar.bz2
 
@@ -31,4 +31,4 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-1.4/soup-0.7.11-gcc_3.4-1.patch
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-1.4/gtkhtml-1.1.7.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-1.4/gtkhtml-1.1.7-gcc34-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-1.4/libghttp-1.0.9.tar.gz
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-1.4/libghttp-1.0.9.tar.bz2
