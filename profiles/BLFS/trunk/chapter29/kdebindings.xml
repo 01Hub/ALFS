@@ -43,6 +43,15 @@
       <utilizes>
 	<name>mozilla</name>
       </utilizes>
+      <utilizes>
+	<name>mono</name>
+      </utilizes>
+      <utilizes>
+	<name>portable-dot-net</name>
+      </utilizes>
+      <utilizes>
+	<name>rotor</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

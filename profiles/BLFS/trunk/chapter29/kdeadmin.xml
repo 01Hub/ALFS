@@ -25,6 +25,9 @@
       <utilizes>
         <name>linuxpam</name>
       </utilizes>
+      <utilizes>
+	<name>lilo</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

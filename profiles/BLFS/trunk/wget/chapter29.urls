@@ -15,6 +15,7 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/kdeutils-3.3.2.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/kdeedu-3.3.2.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/kdesdk-3.3.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/kdesdk-3.3.2-db43-1.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/kdevelop-3.1.2.tar.bz2
 
@@ -31,3 +32,5 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/kdegames-3.3.2.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/kdeartwork-3.3.2.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/kdeaddons-3.3.2.tar.bz2
+
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/KDE/kde-i18n-3.3.2.tar.bz2

@@ -22,6 +22,12 @@
       <utilizes>
         <name>libxml2</name>
       </utilizes>
+      <utilizes>
+	<name>Net-SNMP</name>
+      </utilizes>
+      <utilizes>
+	<name>tpctl</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

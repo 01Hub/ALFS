@@ -26,6 +26,12 @@
         <name>python</name>
       </utilizes>
       <utilizes>
+	<name>docbase</name>
+      </utilizes> 
+      <utilizes>
+	<name>graphviz</name>
+      </utilizes>
+      <utilizes>
         <name>doxygen</name>
       </utilizes>
     </packageinfo>

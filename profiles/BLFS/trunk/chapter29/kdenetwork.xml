@@ -37,6 +37,21 @@
       <utilizes>
 	<name>doxygen</name>
       </utilizes>
+      <utilizes>
+	<name>openslp</name>
+      </utilizes>
+      <utilizes>
+	<name>wireless-tools</name>
+      </utilizes>
+      <utilizes>
+	<name>libgadu</name>
+      </utilizes>
+      <utilizes>
+	<name>graphviz</name>
+      </utilizes>
+      <utilizes>
+	<name>valgrind</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

@@ -20,7 +20,10 @@
         <name>glib2</name>
       </requires>
       <utilizes>
-        <name>libogg</name>
+        <name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+	<name>libogg</name>
       </utilizes>
       <utilizes>
         <name>libvorbis</name>
@@ -36,6 +39,12 @@
       </utilizes>
       <utilizes>
         <name>esound</name>
+      </utilizes>
+      <utilizes>
+	<name>mas</name>
+      </utilizes>
+      <utilizes>
+	<name>jack</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

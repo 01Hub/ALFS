@@ -22,6 +22,9 @@
       <utilizes>
         <name>libxml2</name>
       </utilizes>
+      <utilizes>
+	<name>boost.python</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

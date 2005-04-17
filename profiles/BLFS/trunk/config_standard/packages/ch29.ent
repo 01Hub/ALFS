@@ -34,6 +34,7 @@
 <!ENTITY kdesdk-version   "&kde-version;">
 <!ENTITY kdesdk-package   "kdesdk-&kdesdk-version;.tar.bz2">
 <!ENTITY kdesdk-directory "kdesdk-&kdesdk-version;">
+<!ENTITY kdesdk-db43-patch "kdesdk-&kdesdk-version;-db43-1.patch">
 
 <!ENTITY kdevelop-version   "3.1.2">
 <!ENTITY kdevelop-package   "kdevelop-&kdevelop-version;.tar.bz2">
@@ -66,3 +67,7 @@
 <!ENTITY kdeaddons-version   "&kde-version;">
 <!ENTITY kdeaddons-package   "kdeaddons-&kdeaddons-version;.tar.bz2">
 <!ENTITY kdeaddons-directory "kdeaddons-&kdeaddons-version;">
+
+<!ENTITY kde-i18n-version "&kde-version;">
+<!ENTITY kde-i18n-package "kde-i18n-&kde-i18n-version;.tar.bz2">
+<!ENTITY kde-i18n-directory "kde-i18n-&kde-i18n-version;">

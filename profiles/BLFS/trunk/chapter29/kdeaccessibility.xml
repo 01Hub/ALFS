@@ -22,6 +22,12 @@
       <utilizes>
         <name>libxml2</name>
       </utilizes>
+      <utilizes>
+	<name>festival</name>
+      </utilizes>
+      <utilizes>
+	<name>freetts</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
