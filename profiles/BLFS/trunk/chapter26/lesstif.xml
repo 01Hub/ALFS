@@ -22,6 +22,9 @@
       <utilizes>
 	<name>links</name>
       </utilizes>
+      <utilizes>
+	<name>dmalloc</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
