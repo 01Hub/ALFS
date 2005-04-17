@@ -23,6 +23,9 @@
         <name>libxml2</name>
       </utilizes>
       <utilizes>
+	<name>graphviz</name>
+      </utilizes>
+      <utilizes>
 	<name>doxygen</name>
       </utilizes>
     </packageinfo>

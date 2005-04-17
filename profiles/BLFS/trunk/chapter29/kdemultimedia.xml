@@ -58,6 +58,18 @@
       <utilizes>
 	<name>gstreamer</name>
       </utilizes>
+      <utilizes>
+	<name>taglib</name>
+      </utilizes>
+      <utilizes>
+	<name>libmusicbrainz</name>
+      </utilizes>
+      <utilizes>
+	<name>trm</name>
+      </utilizes>
+      <utilizes>
+	<name>tunepimp</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

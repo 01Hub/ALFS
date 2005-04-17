@@ -17,10 +17,34 @@
         <name>arts</name>
       </requires>
       <utilizes>
+	<name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+        <name>libart_lgpl</name>
+      </utilizes>
+      <utilizes>
         <name>libxml2</name>
       </utilizes>
       <utilizes>
         <name>libxslt</name>
+      </utilizes>
+      <utilizes>
+        <name>pcre</name>
+      </utilizes>
+      <utilizes>
+        <name>libfam</name>
+      </utilizes>
+      <utilizes>
+        <name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>libidn</name>
+      </utilizes>
+      <utilizes>
+        <name>libtiff</name>
+      </utilizes>
+      <utilizes>
+	<name>aspell</name>
       </utilizes>
       <utilizes>
         <name>cups</name>
@@ -29,28 +53,22 @@
         <name>openldap</name>
       </utilizes>
       <utilizes>
-        <name>libfam</name>
-      </utilizes>
-      <utilizes>
-        <name>pcre</name>
-      </utilizes>
-      <utilizes>
-        <name>openssl</name>
-      </utilizes>
-      <utilizes>
-        <name>libart-lgpl</name>
-      </utilizes>
-      <utilizes>
         <name>alsa-lib</name>
-      </utilizes>
-      <utilizes>
-        <name>libtiff</name>
       </utilizes>
       <utilizes>
 	<name>&krb-impl;</name>
       </utilizes>
       <utilizes>
-	<name>aspell</name>
+	<name>openexr</name>
+      </utilizes>
+      <utilizes>
+	<name>jasper</name>
+      </utilizes>
+      <utilizes>
+	<name>graphviz</name>
+      </utilizes>
+      <utilizes>
+	<name>doxygen</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

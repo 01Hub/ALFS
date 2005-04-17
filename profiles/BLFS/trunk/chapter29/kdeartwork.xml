@@ -23,7 +23,7 @@
         <name>libxml2</name>
       </utilizes>
       <utilizes>
-        <name>libart-lgpl</name>
+        <name>libart_lgpl</name>
       </utilizes>
       <utilizes>
 	<name>xscreensaver</name>

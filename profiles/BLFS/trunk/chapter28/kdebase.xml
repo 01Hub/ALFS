@@ -20,7 +20,7 @@
         <name>libjpeg</name>
       </utilizes>
       <utilizes>
-        <name>libart-lgpl</name>
+        <name>libart_lgpl</name>
       </utilizes>
       <utilizes>
         <name>libxml2</name>
@@ -51,6 +51,24 @@
       </utilizes>
       <utilizes>
 	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>krb4</name>
+      </utilizes>
+      <utilizes>
+	<name>mtools</name>
+      </utilizes>
+      <utilizes>
+	<name>libraw1394</name>
+      </utilizes>
+      <utilizes>
+	<name>lm_sensors</name>
+      </utilizes>
+      <utilizes>
+	<name>jasper</name>
+      </utilizes>
+      <utilizes>  
+	<name>graphviz</name>
       </utilizes>
       <utilizes>
 	<name>doxygen</name>

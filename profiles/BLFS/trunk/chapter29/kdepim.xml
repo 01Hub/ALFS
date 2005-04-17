@@ -32,6 +32,18 @@
 	<name>pilot-link</name>
       </utilizes>
       <utilizes>
+	<name>gpgme</name>
+      </utilizes>
+      <utilizes>
+	<name>libmal</name>
+      </utilizes>
+      <utilizes>
+	<name>gnokii</name>
+      </utilizes>
+      <utilizes>
+	<name>graphviz</name>
+      </utilizes>
+      <utilizes>
 	<name>doxygen</name>
       </utilizes>
     </packageinfo>

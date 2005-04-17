@@ -32,6 +32,16 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&kdesdk-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&kdesdk-db43-patch;</param>
+      </patch>
+    </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&kdesdk-directory;</base>
@@ -41,14 +51,6 @@
         <param>--disable-debug</param>
         <param>--disable-dependency-tracking</param>
       </configure>
-      <make>
-        <param>|| exit 0</param>
-      </make>
-      <execute command="sed -i 's/class istream;/#include &lt;istream.h&gt;/' kbabel/common/libgettext/pofiles.cc" />
-      <make>
-        <param>|| exit 0</param>
-      </make>
-      <execute command="sed -i 's/class istream;/#include &lt;istream.h&gt;/' umbrello/umbrello/classparser/tokenizer.c" />
       <make />
       <make>
         <param>install</param>

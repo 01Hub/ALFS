@@ -290,6 +290,7 @@
       <xi:include href="chapter29/kdegames.xml" />
       <xi:include href="chapter29/kdeartwork.xml" />
       <xi:include href="chapter29/kdeaddons.xml" />
+      <xi:include href="chapter29/kde-i18n.xml" />
     </stage>
     <stage name="Chapter 30 (GNOME Core Packages)">
       <stageinfo>
