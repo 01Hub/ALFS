@@ -31,11 +31,15 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/Finance-Quote-1.08.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/HTML-TableExtract-1.08.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/PDL-2.4.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/blfs/blfs-packages/conglomeration/perl_modules/Filter-1.30.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/blfs/blfs-packages/conglomeration/perl_modules/Inline-0.44.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/blfs/blfs-packages/conglomeration/perl_modules/Parse-RecDescent-1.94.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/blfs/blfs-packages/conglomeration/perl_modules/Term-ReadLine-Gnu-1.15.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/blfs/blfs-packages/conglomeration/perl_modules/ExtUtils-F77-1.14.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/blfs/blfs-packages/conglomeration/perl_modules/Astro-FITS-Header-2.8.1.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/librep-0.17.tar.bz2
 
-http://java.sun.com/j2se/1.4.2/download.html
-http://wwws.sun.com/software/communitysource/j2se/java2/download.html
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-fix_inline_asm-1.patch
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-gcc33-1.patch
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-motif_mkmsgcat-1.patch

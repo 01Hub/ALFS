@@ -2,61 +2,89 @@
 
 <!ENTITY ncftp-version   "3.1.7">
 <!ENTITY ncftp-package   "ncftp-&ncftp-version;-src.tar.bz2">
+<!ENTITY ncftp-md5       "2a310a3c9ca126e6b409d0d1d1ccda75">
 <!ENTITY ncftp-directory "ncftp-&ncftp-version;">
 
 <!ENTITY openssh-version   "3.9p1">
 <!ENTITY openssh-package   "openssh-&openssh-version;.tar.gz">
+<!ENTITY openssh-md5       "0b5ddd31831922fcc3ceb0b516a5954d">
 <!ENTITY openssh-directory "openssh-&openssh-version;">
 
 <!ENTITY rsync-version   "2.6.3">
 <!ENTITY rsync-package   "rsync-&rsync-version;.tar.gz">
+<!ENTITY rsync-md5       "d46b35fe36917b153b73fd9ebf5b13d1">
 <!ENTITY rsync-directory "rsync-&rsync-version;">
 
 <!ENTITY cvs-version    "1.11.18">
 <!ENTITY cvs-package    "cvs-&cvs-version;.tar.bz2">
+<!ENTITY cvs-md5        "1dd5c16064906617e4358738bfe59b66">
 <!ENTITY cvs-directory  "cvs-&cvs-version;">
-<!ENTITY cvs-zlib-patch "cvs-&cvs-version;-zlib-1.patch">
+
+<!ENTITY cvs-zlib-patch     "cvs-&cvs-version;-zlib-1.patch">
+<!ENTITY cvs-zlib-patch-md5 "85feeaee0a114477b981ceebd1266eff">
 
 <!ENTITY subversion-version   "1.1.3">
 <!ENTITY subversion-package   "subversion-&subversion-version;.tar.bz2">
+<!ENTITY subversion-md5       "a09c2b2fa1a09566c024547954a48478">
 <!ENTITY subversion-directory "subversion-&subversion-version;">
 
 <!ENTITY wget-version   "1.9.1">
 <!ENTITY wget-package   "wget-&wget-version;.tar.bz2">
+<!ENTITY wget-md5       "029d073ccb178c1b7e53169d1d6e931f">
 <!ENTITY wget-directory "wget-&wget-version;">
 
-<!ENTITY tcpwrappers-version  "7.6">
-<!ENTITY tcpwrappers-package  "tcp_wrappers_&tcpwrappers-version;.tar.bz2">
+<!ENTITY tcpwrappers-version   "7.6">
+<!ENTITY tcpwrappers-package   "tcp_wrappers_&tcpwrappers-version;.tar.bz2">
+<!ENTITY tcpwrappers-md5       "e2a8c9aca179839415652acc74bff9a2">
 <!ENTITY tcpwrappers-directory "tcp_wrappers_&tcpwrappers-version;">
-<!ENTITY tcpwrappers-gcc34-patch "tcp_wrappers-&tcpwrappers-version;-gcc34-1.patch">
-<!ENTITY tcpwrappers-shared-libs-plus-plus-patch "tcp_wrappers-&tcpwrappers-version;-shared_lib_plus_plus-1.patch">
 
-<!ENTITY portmap-version                 "5beta">
-<!ENTITY portmap-package                 "portmap_&portmap-version;.tar.bz2">
-<!ENTITY portmap-directory               "portmap_&portmap-version;">
-<!ENTITY portmap-compilation-fixes-patch "portmap-&portmap-version;-compilation_fixes-3.patch">
-<!ENTITY portmap-glibc-errno-fix-patch   "portmap-&portmap-version;-glibc_errno_fix-1.patch">
+<!ENTITY tcpwrappers-shared-libs-plus-plus-patch     "tcp_wrappers-&tcpwrappers-version;-shared_lib_plus_plus-1.patch">
+<!ENTITY tcpwrappers-shared-libs-plus-plus-patch-md5 "b6ca69285ad3b4d482c2311561913595">
 
-<!ENTITY inetutils-version             "1.4.2">
-<!ENTITY inetutils-package             "inetutils-&inetutils-version;.tar.bz2">
-<!ENTITY inetutils-directory           "inetutils-&inetutils-version;">
-<!ENTITY inetutils-kernel-header-patch "inetutils-&inetutils-version;-kernel_headers-1.patch">
+<!ENTITY portmap-version   "5beta">
+<!ENTITY portmap-package   "portmap_&portmap-version;.tar.bz2">
+<!ENTITY portmap-md5       "820f5b5fb295ccdcd3ca6e44bb770064">
+<!ENTITY portmap-directory "portmap_&portmap-version;">
+
+<!ENTITY portmap-compilation-fixes-patch     "portmap-&portmap-version;-compilation_fixes-3.patch">
+<!ENTITY portmap-compilation-fixes-patch-md5 "0bb19fa28ad800b79f71fecb7b818cc5">
+
+<!ENTITY portmap-glibc-errno-fix-patch     "portmap-&portmap-version;-glibc_errno_fix-1.patch">
+<!ENTITY portmap-glibc-errno-fix-patch-md5 "3b869c9eae0c2631ab4cfd3a366d734f">
+
+<!ENTITY inetutils-version   "1.4.2">
+<!ENTITY inetutils-package   "inetutils-&inetutils-version;.tar.bz2">
+<!ENTITY inetutils-md5       "3ab421642bd6f5284a6ccf4811ad2c51">
+<!ENTITY inetutils-directory "inetutils-&inetutils-version;">
+
+<!ENTITY inetutils-kernel-header-patch     "inetutils-&inetutils-version;-kernel_headers-1.patch">
+<!ENTITY inetutils-kernel-header-patch-md5 "b08f0251cf0af2a1b247b5105dcb91d0">
 
 <!ENTITY nfs-utils-version   "1.0.6">
 <!ENTITY nfs-utils-package   "nfs-utils-&nfs-utils-version;.tar.bz2">
+<!ENTITY nfs-utils-md5       "ae62f9560c579a98f1b2854f8e7a0319">
 <!ENTITY nfs-utils-directory "nfs-utils-&nfs-utils-version;">
 
 <!ENTITY ncpfs-version   "2.2.4">
 <!ENTITY ncpfs-package   "ncpfs-&ncpfs-version;.tar.bz2">
+<!ENTITY ncpfs-md5       "e25281d2c17849200a97d35dda301192">
 <!ENTITY ncpfs-directory "ncpfs-&ncpfs-version;">
 
 <!ENTITY ntp-version   "4.2.0">
 <!ENTITY ntp-package   "ntp-&ntp-version;.tar.bz2">
+<!ENTITY ntp-md5       "1d2d62ae16c2b1047cb097eaff59aba6">
 <!ENTITY ntp-directory "ntp-&ntp-version;">
 
-<!ENTITY net-tools-version             "1.60">
-<!ENTITY net-tools-package             "net-tools-&net-tools-version;.tar.bz2">
-<!ENTITY net-tools-directory           "net-tools-&net-tools-version;">
-<!ENTITY net-tools-gcc34-patch         "net-tools-&net-tools-version;-gcc34-3.patch">
-<!ENTITY net-tools-kernel-header-patch "net-tools-&net-tools-version;-kernel_headers-2.patch">
+<!ENTITY net-tools-version   "1.60">
+<!ENTITY net-tools-package   "net-tools-&net-tools-version;.tar.bz2">
+<!ENTITY net-tools-md5       "888774accab40217dde927e21979c165">
+<!ENTITY net-tools-directory "net-tools-&net-tools-version;">
+
+<!ENTITY net-tools-gcc34-patch     "net-tools-&net-tools-version;-gcc34-3.patch">
+<!ENTITY net-tools-gcc34-patch-md5 "a04ba0082f541ed3c476348ccf6ea109">
+
+<!ENTITY net-tools-kernel-header-patch     "net-tools-&net-tools-version;-kernel_headers-2.patch">
+<!ENTITY net-tools-kernel-header-patch-md5 "cae72d8027364811072529320035893e">
+
 <!ENTITY net-tools-mii-ioctl-patch     "net-tools-&net-tools-version;-mii_ioctl-1.patch">
+<!ENTITY net-tools-mii-ioctl-patch-md5 "7de67d26122785defd46bf2ed9b5b82b">
