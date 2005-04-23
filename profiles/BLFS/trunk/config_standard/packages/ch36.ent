@@ -2,12 +2,15 @@
 
 <!ENTITY thunderbird-version   "1.0">
 <!ENTITY thunderbird-package   "thunderbird-&thunderbird-version;-source.tar.bz2">
+<!ENTITY thunderbird-md5       "232ffe434fd65f5f0284a760d6e4ba2a">
 <!ENTITY thunderbird-directory "mozilla">
 
 <!ENTITY pan-version   "0.14.2">
 <!ENTITY pan-package   "pan-&pan-version;.tar.bz2">
+<!ENTITY pan-md5       "ed3188e7059bb6d6c209ee5d46ac1852">
 <!ENTITY pan-directory "pan-&pan-version;">
 
 <!ENTITY balsa-version   "2.2.6">
 <!ENTITY balsa-package   "balsa-&balsa-version;.tar.bz2">
+<!ENTITY balsa-md5       "6179fadbfc5cca642dac081519acef25">
 <!ENTITY balsa-directory "balsa-&balsa-version;">
