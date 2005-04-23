@@ -2,109 +2,136 @@
 
 <!ENTITY sawfish-version   "1.3">
 <!ENTITY sawfish-package   "sawfish-&sawfish-version;.tar.bz2">
+<!ENTITY sawfish-md5       "c3ac324268bb531b30bb00e519806ffb">
 <!ENTITY sawfish-directory "sawfish-&sawfish-version;">
 
 <!ENTITY fluxbox-version   "0.9.12">
 <!ENTITY fluxbox-package   "fluxbox-&fluxbox-version;.tar.bz2">
+<!ENTITY fluxbox-md5       "398f4e10d88b47507ea309968340961c">
 <!ENTITY fluxbox-directory "fluxbox-&fluxbox-version;">
 
 <!ENTITY metacity-version   "2.8.6">
 <!ENTITY metacity-package   "metacity-&metacity-version;.tar.bz2">
+<!ENTITY metacity-md5       "c49e4b5575503975516159780855e317">
 <!ENTITY metacity-directory "metacity-&metacity-version;">
 
 <!ENTITY xfce-version         "4.2.0">
 <!ENTITY xfce-package         "xfce-&xfce-version;-src-bz2.tar.bz2">
+<!ENTITY xfce-md5             "8b213c0db2ac25b85a094e5959f5b2c1">
 <!ENTITY xfce-directory       "xfce-&xfce-version;">
 <!ENTITY xfce-build-directory "&xfce-directory;/src-bz2">
 
 <!ENTITY xfce-libxfce4util-version   "&xfce-version;">
 <!ENTITY xfce-libxfce4util-package   "libxfce4util-&xfce-libxfce4util-version;.tar.bz2">
+<!ENTITY xfce-libxfce4util-md5       "bed39c9bb683cee4621e87c94b7e9bcd">
 <!ENTITY xfce-libxfce4util-directory "libxfce4util-&xfce-libxfce4util-version;">
 
 <!ENTITY xfce-dbh-version   "1.2.0">
 <!ENTITY xfce-dbh-package   "dbh-&xfce-dbh-version;.tar.bz2">
+<!ENTITY xfce-dbh-md5       "15912713c8f43b780a2648159a51b63d">
 <!ENTITY xfce-dbh-directory "dbh-&xfce-dbh-version;">
 
 <!ENTITY xfce-libxfcegui4-version   "&xfce-version;">
 <!ENTITY xfce-libxfcegui4-package   "libxfcegui4-&xfce-libxfcegui4-version;.tar.bz2">
+<!ENTITY xfce-libxfcegui4-md5       "32d51d48569085574fa1d1839a9fddaf">
 <!ENTITY xfce-libxfcegui4-directory "libxfcegui4-&xfce-libxfcegui4-version;">
 
 <!ENTITY xfce-libxfce4mcs-version   "&xfce-version;">
 <!ENTITY xfce-libxfce4mcs-package   "libxfce4mcs-&xfce-libxfce4mcs-version;.tar.bz2">
+<!ENTITY xfce-libxfce4mcs-md5       "1d169c2788b80874423341fed97add43">
 <!ENTITY xfce-libxfce4mcs-directory "libxfce4mcs-&xfce-libxfce4mcs-version;">
 
 <!ENTITY xfce-xfce-mcs-manager-version   "&xfce-version;">
 <!ENTITY xfce-xfce-mcs-manager-package   "xfce-mcs-manager-&xfce-xfce-mcs-manager-version;.tar.bz2">
+<!ENTITY xfce-xfce-mcs-manager-md5       "b6a03ecb7614a859c9b4938fdccebc5d">
 <!ENTITY xfce-xfce-mcs-manager-directory "xfce-mcs-manager-&xfce-xfce-mcs-manager-version;">
 
 <!ENTITY xfce-xfwm4-version   "&xfce-version;">
 <!ENTITY xfce-xfwm4-package   "xfwm4-&xfce-xfwm4-version;.tar.bz2">
+<!ENTITY xfce-xfwm4-md5       "934a27c28718e25fa602b5d00e6c055a">
 <!ENTITY xfce-xfwm4-directory "xfwm4-&xfce-xfwm4-version;">
 
 <!ENTITY xfce-xfce4-panel-version   "&xfce-version;">
 <!ENTITY xfce-xfce4-panel-package   "xfce4-panel-&xfce-xfce4-panel-version;.tar.bz2">
+<!ENTITY xfce-xfce4-panel-md5       "69ee2f18efcd92b47f14ceba19738256">
 <!ENTITY xfce-xfce4-panel-directory "xfce4-panel-&xfce-xfce4-panel-version;">
 
 <!ENTITY xfce-xfdesktop-version   "&xfce-version;">
 <!ENTITY xfce-xfdesktop-package   "xfdesktop-&xfce-xfdesktop-version;.tar.bz2">
+<!ENTITY xfce-xfdesktop-md5       "9fce339a3b4e6189875e8848a502fd73">
 <!ENTITY xfce-xfdesktop-directory "xfdesktop-&xfce-xfdesktop-version;">
 
 <!ENTITY xfce-xfce-utils-version   "&xfce-version;">
 <!ENTITY xfce-xfce-utils-package   "xfce-utils-&xfce-xfce-utils-version;.tar.bz2">
+<!ENTITY xfce-xfce-utils-md5       "8c135582c7f610982e6637f5eeb628b3">
 <!ENTITY xfce-xfce-utils-directory "xfce-utils-&xfce-xfce-utils-version;">
 
 <!ENTITY xfce-gtk-xfce-engine-version   "2.2.5">
 <!ENTITY xfce-gtk-xfce-engine-package   "gtk-xfce-engine-&xfce-gtk-xfce-engine-version;.tar.bz2">
+<!ENTITY xfce-gtk-xfce-engine-md5       "4c10580b9fb522f21fdad69a533e1227">
 <!ENTITY xfce-gtk-xfce-engine-directory "gtk-xfce-engine-&xfce-gtk-xfce-engine-version;">
 
 <!ENTITY xfce-xfcalendar-version   "&xfce-version;">
 <!ENTITY xfce-xfcalendar-package   "xfcalendar-&xfce-xfcalendar-version;.tar.bz2">
+<!ENTITY xfce-xfcalendar-md5       "5b94497a0e2f5c78b1689adc8aa8a85f">
 <!ENTITY xfce-xfcalendar-directory "xfcalendar-&xfce-xfcalendar-version;">
 
 <!ENTITY xfce-xfce-mcs-plugins-version   "&xfce-version;">
 <!ENTITY xfce-xfce-mcs-plugins-package   "xfce-mcs-plugins-&xfce-xfce-mcs-plugins-version;.tar.bz2">
+<!ENTITY xfce-xfce-mcs-plugins-md5       "3f30fc86fd20c3ce3d3d18cd34171efc">
 <!ENTITY xfce-xfce-mcs-plugins-directory "xfce-mcs-plugins-&xfce-xfce-mcs-plugins-version;">
 
 <!ENTITY xfce-xfce4-appfinder-version   "&xfce-version;">
 <!ENTITY xfce-xfce4-appfinder-package   "xfce4-appfinder-&xfce-xfce4-appfinder-version;.tar.bz2">
+<!ENTITY xfce-xfce4-appfinder-md5       "759dbf46a8559b45c4ec91cbfbd889ed">
 <!ENTITY xfce-xfce4-appfinder-directory "xfce4-appfinder-&xfce-xfce4-appfinder-version;">
 
 <!ENTITY xfce-xfce4-icon-theme-version   "&xfce-version;">
 <!ENTITY xfce-xfce4-icon-theme-package   "xfce4-icon-theme-&xfce-xfce4-icon-theme-version;.tar.bz2">
+<!ENTITY xfce-xfce4-icon-theme-md5       "0020c4f07c4900d48a8b7efb39868ab1">
 <!ENTITY xfce-xfce4-icon-theme-directory "xfce4-icon-theme-&xfce-xfce4-icon-theme-version;">
 
 <!ENTITY xfce-xfce4-iconbox-version   "&xfce-version;">
 <!ENTITY xfce-xfce4-iconbox-package   "xfce4-iconbox-&xfce-xfce4-iconbox-version;.tar.bz2">
+<!ENTITY xfce-xfce4-iconbox-md5       "5753ebed81a5444f4e136bc5335138bc">
 <!ENTITY xfce-xfce4-iconbox-directory "xfce4-iconbox-&xfce-xfce4-iconbox-version;">
 
 <!ENTITY xfce-xfce4-mixer-version   "&xfce-version;">
 <!ENTITY xfce-xfce4-mixer-package   "xfce4-mixer-&xfce-xfce4-mixer-version;.tar.bz2">
+<!ENTITY xfce-xfce4-mixer-md5       "79af9ad944d6ff7e54d4c1d814a96442">
 <!ENTITY xfce-xfce4-mixer-directory "xfce4-mixer-&xfce-xfce4-mixer-version;">
 
 <!ENTITY xfce-xfce4-session-version   "&xfce-version;">
 <!ENTITY xfce-xfce4-session-package   "xfce4-session-&xfce-xfce4-session-version;.tar.bz2">
+<!ENTITY xfce-xfce4-session-md5       "2e30ec9a90b8d0a83d4cba14170ddc9a">
 <!ENTITY xfce-xfce4-session-directory "xfce4-session-&xfce-xfce4-session-version;">
 
 <!ENTITY xfce-xfce4-systray-version   "&xfce-version;">
 <!ENTITY xfce-xfce4-systray-package   "xfce4-systray-&xfce-xfce4-systray-version;.tar.bz2">
+<!ENTITY xfce-xfce4-systray-md5       "3a3f662428a53e2401dd7acb5f5f30a4">
 <!ENTITY xfce-xfce4-systray-directory "xfce4-systray-&xfce-xfce4-systray-version;">
 
 <!ENTITY xfce-xfce4-toys-version   "&xfce-version;">
 <!ENTITY xfce-xfce4-toys-package   "xfce4-toys-&xfce-xfce4-toys-version;.tar.bz2">
+<!ENTITY xfce-xfce4-toys-md5       "57d9266a786a7b66bb0b6308fc2ded80">
 <!ENTITY xfce-xfce4-toys-directory "xfce4-toys-&xfce-xfce4-toys-version;">
 
 <!ENTITY xfce-xfce4-trigger-launcher-version   "&xfce-version;">
 <!ENTITY xfce-xfce4-trigger-launcher-package   "xfce4-trigger-launcher-&xfce-xfce4-trigger-launcher-version;.tar.bz2">
+<!ENTITY xfce-xfce4-trigger-launcher-md5       "da279c179cf244ada735150b942b0411">
 <!ENTITY xfce-xfce4-trigger-launcher-directory "xfce4-trigger-launcher-&xfce-xfce4-trigger-launcher-version;">
 
 <!ENTITY xfce-xffm-version   "&xfce-version;">
 <!ENTITY xfce-xffm-package   "xffm-&xfce-xffm-version;.tar.bz2">
+<!ENTITY xfce-xffm-md5       "2bbb77f129ed0e342957180977f18fae">
 <!ENTITY xfce-xffm-directory "xffm-&xfce-xffm-version;">
 
 <!ENTITY xfce-xfprint-version   "&xfce-version;">
 <!ENTITY xfce-xfprint-package   "xfprint-&xfce-xfprint-version;.tar.bz2">
+<!ENTITY xfce-xfprint-md5       "d7965dbe718629b3afca6417053a4dbe">
 <!ENTITY xfce-xfprint-directory "xfprint-&xfce-xfprint-version;">
 
 <!ENTITY xfce-xfwm4-themes-version   "&xfce-version;">
 <!ENTITY xfce-xfwm4-themes-package   "xfwm4-themes-&xfce-xfwm4-themes-version;.tar.bz2">
+<!ENTITY xfce-xfwm4-themes-md5       "fc31027494cf93fe0445b53968a7573a">
 <!ENTITY xfce-xfwm4-themes-directory "xfwm4-themes-&xfce-xfwm4-themes-version;">
