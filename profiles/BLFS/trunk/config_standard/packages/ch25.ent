@@ -1,16 +1,26 @@
 <!--************* packages for chapter 25 *************-->
 
-<!ENTITY xorg-version "6.8.2">
-<!ENTITY xorg-package "X11R&xorg-version;-src.tar.bz2">
+<!ENTITY xorg-version   "6.8.2">
+<!ENTITY xorg-package   "X11R&xorg-version;-src.tar.bz2">
+<!ENTITY xorg-md5       "8131cd7ea1e4566e6e05c438a93fcfe1">
 <!ENTITY xorg-directory "xc">
 
-<!ENTITY xfree86-version        "4.4.0">
-<!ENTITY xfree86-package1       "XFree86-&xfree86-version;-src-1.tar.bz2">
-<!ENTITY xfree86-package2       "XFree86-&xfree86-version;-src-2.tar.bz2">
-<!ENTITY xfree86-package3       "XFree86-&xfree86-version;-src-3.tar.bz2">
-<!ENTITY xfree86-package4       "XFree86-&xfree86-version;-src-4.tar.bz2">
-<!ENTITY xfree86-package5       "XFree86-&xfree86-version;-src-5.tar.bz2">
-<!ENTITY xfree86-package6       "XFree86-&xfree86-version;-src-6.tar.bz2">
-<!ENTITY xfree86-package7       "XFree86-&xfree86-version;-src-7.tar.bz2">
-<!ENTITY xfree86-directory      "xc">
-<!ENTITY xfree86-security-patch "xorg-CAN-2004-0687-0688.patch">
+<!ENTITY xfree86-version      "4.4.0">
+<!ENTITY xfree86-package1     "XFree86-&xfree86-version;-src-1.tar.bz2">
+<!ENTITY xfree86-package1-md5 "6b4069bc2068a3ab0e08cc7e57c2ca22">
+<!ENTITY xfree86-package2     "XFree86-&xfree86-version;-src-2.tar.bz2">
+<!ENTITY xfree86-package2-md5 "2623074b6cf38294773243e4857d3898">
+<!ENTITY xfree86-package3     "XFree86-&xfree86-version;-src-3.tar.bz2">
+<!ENTITY xfree86-package3-md5 "41419a10cdf938c81f2854e6704e3752">
+<!ENTITY xfree86-package4     "XFree86-&xfree86-version;-src-4.tar.bz2">
+<!ENTITY xfree86-package4-md5 "f2b9522731689df8c9b8466477d446b3">
+<!ENTITY xfree86-package5     "XFree86-&xfree86-version;-src-5.tar.bz2">
+<!ENTITY xfree86-package5-md5 "3e1ad2ddc104c4bdc8293104216520b6">
+<!ENTITY xfree86-package6     "XFree86-&xfree86-version;-src-6.tar.bz2">
+<!ENTITY xfree86-package6-md5 "51cd878e92a514a4ad5e0e7e39503d18">
+<!ENTITY xfree86-package7     "XFree86-&xfree86-version;-src-7.tar.bz2">
+<!ENTITY xfree86-package7-md5 "ec9f5c99835cfd2114bfee3fda5f1c66">
+<!ENTITY xfree86-directory    "xc">
+
+<!ENTITY xfree86-security-patch     "xorg-CAN-2004-0687-0688.patch">
+<!ENTITY xfree86-security-patch-md5 "e0a6f27e2d37091f0185d2957faa361d">
