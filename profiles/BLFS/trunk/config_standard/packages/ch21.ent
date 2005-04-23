@@ -2,21 +2,28 @@
 
 <!ENTITY postfix-version   "2.1.5">
 <!ENTITY postfix-package   "postfix-&postfix-version;.tar.bz2">
+<!ENTITY postfix-md5       "feaf838fa5f26dd429933a250e51050e">
 <!ENTITY postfix-directory "postfix-&postfix-version;">
 
 <!ENTITY sendmail-version   "8.13.3">
 <!ENTITY sendmail-package   "sendmail.&sendmail-version;.tar.bz2">
+<!ENTITY sendmail-md5       "cc9bf828c2bf9df923a219e3ca1f4780">
 <!ENTITY sendmail-directory "sendmail-&sendmail-version;">
 
-<!ENTITY exim-version    "4.43">
-<!ENTITY exim-package    "exim-&exim-version;.tar.bz2">
-<!ENTITY exim-directory  "exim-&exim-version;">
-<!ENTITY exim-db43-patch "exim-&exim-version;-db43-1.patch">
+<!ENTITY exim-version   "4.43">
+<!ENTITY exim-package   "exim-&exim-version;.tar.bz2">
+<!ENTITY exim-md5       "f8f646d4920660cb5579becd9265a3bf">
+<!ENTITY exim-directory "exim-&exim-version;">
+
+<!ENTITY exim-db43-patch     "exim-&exim-version;-db43-1.patch">
+<!ENTITY exim-db43-patch-md5 "235bb8a20977b45da2b8b73f4756612c">
 
 <!ENTITY qpopper-version   "4.0.5">
 <!ENTITY qpopper-package   "qpopper&qpopper-version;.tar.bz2">
+<!ENTITY qpopper-md5       "e4f8814376a156c650c7ec546bd3a847">
 <!ENTITY qpopper-directory "qpopper&qpopper-version;">
 
 <!ENTITY courier-version   "0.47">
 <!ENTITY courier-package   "courier-&courier-version;.tar.bz2">
+<!ENTITY courier-md5       "639bb3b236914e3b86f287ce3f55264e">
 <!ENTITY courier-directory "courier-&courier-version;">

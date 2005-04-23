@@ -3,6 +3,7 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/bind-9.3.0-patch1
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/dhcp-3.0.2.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/dhcp-3.0.2-iproute2-2.patch
+ftp://ftp.lfs-matrix.net/pub/blfs/blfs-packages/conglomeration/dhcp/dhcp-3.0.2-iproute2-2.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/leafnode-1.10.8.rel.tar.bz2
 

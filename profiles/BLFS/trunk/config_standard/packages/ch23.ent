@@ -2,14 +2,19 @@
 
 <!ENTITY db-version   "4.3.27">
 <!ENTITY db-package   "db-&db-version;.tar.bz2">
+<!ENTITY db-md5       "b6a1039176aa19867ecb9f698d1f80de">
 <!ENTITY db-directory "db-&db-version;">
 
 <!ENTITY mysql-version   "4.1.8a">
 <!ENTITY mysql-package   "mysql-&mysql-version;.tar.bz2">
+<!ENTITY mysql-md5       "a2ede7ce9fdddc1e16d5534339718691">
 <!ENTITY mysql-directory "mysql-&mysql-version;">
 
-<!ENTITY postgresql-version     "7.4.6">
-<!ENTITY postgresql-package     "postgresql-&postgresql-version;.tar.bz2">
-<!ENTITY postgresql-directory   "postgresql-&postgresql-version;">
-<!ENTITY postgresql-dsssl-patch "postgresql-&postgresql-version;-dsssl_fix-1.patch">
+<!ENTITY postgresql-version   "7.4.6">
+<!ENTITY postgresql-package   "postgresql-&postgresql-version;.tar.bz2">
+<!ENTITY postgresql-md5       "f0ea2b372a7bdaf2613e92176ebf5e0f">
+<!ENTITY postgresql-directory "postgresql-&postgresql-version;">
+
+<!ENTITY postgresql-dsssl-patch     "postgresql-&postgresql-version;-dsssl_fix-1.patch">
+<!ENTITY postgresql-dsssl-patch-md5 "fdafa73d3e36bd0e38653349829cfe46">
 
