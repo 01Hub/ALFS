@@ -26,8 +26,8 @@ Running the profile:
 
 To use the profile you should:
 
- 1) Download the packages you need. See README.download for
-    more details.
+ 1) Download the packages you need. See ./README.download
+    for more details.
 
  2) Create a link to the config_standard directory.
     Name it config:
@@ -36,5 +36,6 @@ To use the profile you should:
  3) Customize the files in the config directory.
 
  4) Execute ./runit.sh as root. This will create a file
-    "files.ent" that contains an entity declaration that
-    allows us to have absolute paths in the profile.
+    "files.ent" (which contains an entity declaration that
+    allows us to have absolute paths in the profile) and
+    then run nALFS to start the build.
