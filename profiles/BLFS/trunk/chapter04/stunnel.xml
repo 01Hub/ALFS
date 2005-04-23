@@ -58,17 +58,10 @@
     <ownership user="stunnel" group="stunnel">
       <name>/var/lib/stunnel/run</name>
     </ownership>
-    <textdump>
-      <file>stunnel_answers</file>
-      <content>
-	=&stunnel-country;
-	=&stunnel-state;
-	=&stunnel-city;
-	=&stunnel-org;
-	=&stunnel-orgunit;
-	=&stunnel-host;
-      </content>
-    </textdump>
+    <copy>
+      <source>&blfs-config;/build/stunnel_answers</source>
+      <destination>./</destination>
+    </copy>
     <configure>
       <param>--prefix=/usr</param>
       <param>--sysconfdir=/etc</param>
