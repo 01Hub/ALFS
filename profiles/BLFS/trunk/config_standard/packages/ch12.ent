@@ -1,215 +1,295 @@
 <!--************* packages for chapter 12 *************-->
 
-<!ENTITY python-version        "2.4">
-<!ENTITY python-package        "Python-&python-version;.tar.bz2">
-<!ENTITY python-directory      "Python-&python-version;">
+<!ENTITY python-version   "2.4">
+<!ENTITY python-package   "Python-&python-version;.tar.bz2">
+<!ENTITY python-md5       "44c2226eff0f3fc1f2fedaa1ce596533">
+<!ENTITY python-directory "Python-&python-version;">
+
 <!ENTITY python-gdbm-patch     "Python-&python-version;-gdbm-1.patch">
+<!ENTITY python-gdbm-patch-md5 "aa74addd35c0f4b0f92cc585b8add8dc">
+
 <!ENTITY python-db43-patch     "Python-&python-version;-db43-1.patch">
-<!ENTITY python-security-patch "patch.txt">
+<!ENTITY python-db43-patch-md5 "cfe80c06b456210eae6b45feb09c80c9">
+
+<!ENTITY python-security-patch     "patch.txt">
+<!ENTITY python-security-patch-md5 "bdebb9c747dea1eada73ee7dbb6ac838">
 
 <!-- Begin Perl Modules -->
 <!ENTITY Gtk-Perl-version   "0.7009">
 <!ENTITY Gtk-Perl-package   "Gtk-Perl-&Gtk-Perl-version;.tar.bz2">
+<!ENTITY Gtk-Perl-md5       "c26f253f93baca54f61777660731c8c4">
 <!ENTITY Gtk-Perl-directory "Gtk-Perl-&Gtk-Perl-version;">
 
 <!ENTITY XML-Writer-version   "0.520">
 <!ENTITY XML-Writer-package   "XML-Writer-&XML-Writer-version;.tar.bz2">
+<!ENTITY XML-Writer-md5       "98b6edb079856f57c321dd23c4c62b9d">
 <!ENTITY XML-Writer-directory "XML-Writer-&XML-Writer-version;">
 
 <!ENTITY XML-Parser-version   "2.34">
 <!ENTITY XML-Parser-package   "XML-Parser-&XML-Parser-version;.tar.bz2">
+<!ENTITY XML-Parser-md5       "85d37bc3f82b9daa70858198f82eef2c">
 <!ENTITY XML-Parser-directory "XML-Parser-&XML-Parser-version;">
 
 <!ENTITY SGMLSpm-version   "1.03ii">
 <!ENTITY SGMLSpm-package   "SGMLSpm-&SGMLSpm-version;.tar.bz2">
+<!ENTITY SGMLSpm-md5       "6ccc70e43ca51e906c778ffefd6b3fa0">
 <!ENTITY SGMLSpm-directory "SGMLSpm">
 
 <!ENTITY Perl-Tk-version   "804.027">
 <!ENTITY Perl-Tk-package   "Tk-&Perl-Tk-version;.tar.bz2">
+<!ENTITY Perl-Tk-md5       "25af9391ca96b952e462f5d6fb41b69e">
 <!ENTITY Perl-Tk-directory "Tk-&Perl-Tk-version;">
 
-<!ENTITY Net-DNS-version "0.48">
-<!ENTITY Net-DNS-package "Net-DNS-&Net-DNS-version;.tar.bz2">
+<!ENTITY Net-DNS-version   "0.48">
+<!ENTITY Net-DNS-package   "Net-DNS-&Net-DNS-version;.tar.bz2">
+<!ENTITY Net-DNS-md5       "784c0a08cddfc788e3d7fd1201513c18">
 <!ENTITY Net-DNS-directory "Net-DNS-&Net-DNS-version;">
 
-<!ENTITY Digest-HMAC-version "1.01">
-<!ENTITY Digest-HMAC-package "Digest-HMAC-&Digest-HMAC-version;.tar.bz2">
+<!ENTITY Digest-HMAC-version   "1.01">
+<!ENTITY Digest-HMAC-package   "Digest-HMAC-&Digest-HMAC-version;.tar.bz2">
+<!ENTITY Digest-HMAC-md5       "a5f87aa123bd07ce47544c056c070385">
 <!ENTITY Digest-HMAC-directory "Digest-HMAC-&Digest-HMAC-version;">
 
-<!ENTITY Digest-SHA1-version "2.10">
-<!ENTITY Digest-SHA1-package "Digest-SHA1-&Digest-SHA1-version;.tar.bz2">
+<!ENTITY Digest-SHA1-version   "2.10">
+<!ENTITY Digest-SHA1-package   "Digest-SHA1-&Digest-SHA1-version;.tar.bz2">
+<!ENTITY Digest-SHA1-md5       "1e8f4df5c4fe892e4f5886ccdd09e02a">
 <!ENTITY Digest-SHA1-directory "Digest-SHA1-&Digest-SHA1-version;">
 
 <!ENTITY libwww-perl-version   "5.803">
 <!ENTITY libwww-perl-package   "libwww-perl-&libwww-perl-version;.tar.bz2">
+<!ENTITY libwww-perl-md5       "fc3dbb71198bb9aa21e7fb72d3a1c849">
 <!ENTITY libwww-perl-directory "libwww-perl-&libwww-perl-version;">
 
 <!ENTITY URI-version   "1.35">
 <!ENTITY URI-package   "URI-&URI-version;.tar.bz2">
+<!ENTITY URI-md5       "08d22731831e6a6c7072e733f9082d9b">
 <!ENTITY URI-directory "URI-&URI-version;">
 
-<!ENTITY Business-ISBN-version "1.79">
-<!ENTITY Business-ISBN-package "Business-ISBN-&Business-ISBN-version;.tar.bz2">
+<!ENTITY Business-ISBN-version   "1.79">
+<!ENTITY Business-ISBN-package   "Business-ISBN-&Business-ISBN-version;.tar.bz2">
+<!ENTITY Business-ISBN-md5       "cf5a1143957c5d57fdcd0dac76698c3a">
 <!ENTITY Business-ISBN-directory "Business-ISBN-&Business-ISBN-version;">
 
 <!ENTITY Business-ISBN-Data-version   "1.09">
 <!ENTITY Business-ISBN-Data-package   "Business-ISBN-Data-&Business-ISBN-Data-version;.tar.bz2">
+<!ENTITY Business-ISBN-Data-md5       "7d8ea49dda82ff075a74500881ac2cb9">
 <!ENTITY Business-ISBN-Data-directory "Business-ISBN-Data-&Business-ISBN-Data-version;">
 
 <!ENTITY Test-Pod-version   "1.20">
 <!ENTITY Test-Pod-package   "Test-Pod-&Test-Pod-version;.tar.bz2">
+<!ENTITY Test-Pod-md5       "03ff14ace73b277c19b6db9090da1d5a">
 <!ENTITY Test-Pod-directory "Test-Pod-&Test-Pod-version;">
 
 <!ENTITY Pod-Simple-version   "3.02">
 <!ENTITY Pod-Simple-package   "Pod-Simple-&Pod-Simple-version;.tar.bz2">
+<!ENTITY Pod-Simple-md5       "3db34df1d42d701924856beabda6b109">
 <!ENTITY Pod-Simple-directory "Pod-Simple-&Pod-Simple-version;">
 
 <!ENTITY Pod-Escapes-version   "1.04">
 <!ENTITY Pod-Escapes-package   "Pod-Escapes-&Pod-Escapes-version;.tar.bz2">
+<!ENTITY Pod-Escapes-md5       "88e4ed5ee4d184ffc3ef9c058b577234">
 <!ENTITY Pod-Escapes-directory "Pod-Escapes-&Pod-Escapes-version;">
 
 <!ENTITY Test-Builder-Tester-version   "1.01">
 <!ENTITY Test-Builder-Tester-package   "Test-Builder-Tester-&Test-Builder-Tester-version;.tar.bz2">
+<!ENTITY Test-Builder-Tester-md5       "1eafd6e0c3efaf3f3c95db6d457aabb9">
 <!ENTITY Test-Builder-Tester-directory "Test-Builder-Tester-&Test-Builder-Tester-version;">
 
 <!ENTITY Test-Prereq-version   "1.025">
 <!ENTITY Test-Prereq-package   "Test-Prereq-&Test-Prereq-version;.tar.bz2">
+<!ENTITY Test-Prereq-md5       "3c2a39cd3052045e5ec8cb58dff41b0c">
 <!ENTITY Test-Prereq-directory "Test-Prereq-&Test-Prereq-version;">
 
 <!ENTITY Module-Info-version   "0.26">
 <!ENTITY Module-Info-package   "Module-Info-&Module-Info-version;.tar.bz2">
+<!ENTITY Module-Info-md5       "3263f256cb3535bd86b9f65f4387f83e">
 <!ENTITY Module-Info-directory "Module-Info-&Module-Info-version;">
 
 <!ENTITY Module-CoreList-version   "0.1.97">
 <!ENTITY Module-CoreList-package   "Module-CoreList-&Module-CoreList-version;.tar.bz2">
+<!ENTITY Module-CoreList-md5       "946f8c7a82c3951ad7dfcba8242bba40">
 <!ENTITY Module-CoreList-directory "Module-CoreList-&Module-CoreList-version;">
 
 <!ENTITY HTML-Parser-version   "3.44">
 <!ENTITY HTML-Parser-package   "HTML-Parser-&HTML-Parser-version;.tar.bz2">
+<!ENTITY HTML-Parser-md5       "7d693a6418ce6797ec5f925f9f515cac">
 <!ENTITY HTML-Parser-directory "HTML-Parser-&HTML-Parser-version;">
 
 <!ENTITY HTML-Tagset-version   "3.04">
 <!ENTITY HTML-Tagset-package   "HTML-Tagset-&HTML-Tagset-version;.tar.bz2">
+<!ENTITY HTML-Tagset-md5       "129ff1a70b4311eed150c8e11b25ff5d">
 <!ENTITY HTML-Tagset-directory "HTML-Tagset-&HTML-Tagset-version;">
 
 <!ENTITY Compress-Zlib-version   "1.33">
 <!ENTITY Compress-Zlib-package   "Compress-Zlib-&Compress-Zlib-version;.tar.bz2">
+<!ENTITY Compress-Zlib-md5       "1c129f3cfd051731b683dd1191693457">
 <!ENTITY Compress-Zlib-directory "Compress-Zlib-&Compress-Zlib-version;">
 
 <!ENTITY Crypt-SSLeay-version   "0.51">
 <!ENTITY Crypt-SSLeay-package   "Crypt-SSLeay-&Crypt-SSLeay-version;.tar.bz2">
+<!ENTITY Crypt-SSLeay-md5       "501e93af5be89d91aca350c63b29a8cd">
 <!ENTITY Crypt-SSLeay-directory "Crypt-SSLeay-&Crypt-SSLeay-version;">
 
 <!ENTITY DateManip-version   "5.42a">
 <!ENTITY DateManip-package   "DateManip-&DateManip-version;.tar.bz2">
+<!ENTITY DateManip-md5       "e03df84b14c11f0b15008b8a501285b1">
 <!ENTITY DateManip-directory "DateManip-&DateManip-version;">
 
 <!ENTITY Finance-Quote-version   "1.08">
 <!ENTITY Finance-Quote-package   "Finance-Quote-&Finance-Quote-version;.tar.bz2">
+<!ENTITY Finance-Quote-md5       "b0673f8a6e52fe895f5537555d5069a7">
 <!ENTITY Finance-Quote-directory "Finance-Quote-&Finance-Quote-version;">
 
 <!ENTITY HTML-TableExtract-version   "1.08">
 <!ENTITY HTML-TableExtract-package   "HTML-TableExtract-&HTML-TableExtract-version;.tar.bz2">
+<!ENTITY HTML-TableExtract-md5       "57cf7fcdf6dbceb950765aade31d3ce1">
 <!ENTITY HTML-TableExtract-directory "HTML-TableExtract-&HTML-TableExtract-version;">
 
 <!ENTITY PDL-version   "2.4.2">
 <!ENTITY PDL-package   "PDL-&PDL-version;.tar.bz2">
+<!ENTITY PDL-md5       "4ae5a29739984489cc3e7b5c1266a75a">
 <!ENTITY PDL-directory "PDL-&PDL-version;">
 
 <!ENTITY Filter-version   "1.30">
 <!ENTITY Filter-package   "Filter-&Filter-version;.tar.bz2">
+<!ENTITY Filter-md5       "7614110e127cadfbbcc87afefd57ee50">
 <!ENTITY Filter-directory "Filter-&Filter-version;">
 
 <!ENTITY Inline-version   "0.44">
 <!ENTITY Inline-package   "Inline-&Inline-version;.tar.bz2">
+<!ENTITY Inline-md5       "3ffe2b47418b20d4a766cad2841485b6">
 <!ENTITY Inline-directory "Inline-&Inline-version;">
 
 <!ENTITY Parse-RecDescent-version   "1.94">
 <!ENTITY Parse-RecDescent-package   "Parse-RecDescent-&Parse-RecDescent-version;.tar.bz2">
+<!ENTITY Parse-RecDescent-md5       "8f5171121c677f1b6950e429718577c1">
 <!ENTITY Parse-RecDescent-directory "Parse-RecDescent-&Parse-RecDescent-version;">
 
 <!ENTITY Term-ReadLine-Gnu-version   "1.15">
 <!ENTITY Term-ReadLine-Gnu-package   "Term-ReadLine-Gnu-&Term-ReadLine-Gnu-version;.tar.bz2">
+<!ENTITY Term-ReadLine-Gnu-md5       "2e132dc8138b74eeeba6e677f652ba39">
 <!ENTITY Term-ReadLine-Gnu-directory "Term-ReadLine-Gnu-&Term-ReadLine-Gnu-version;">
 
 <!ENTITY ExtUtils-F77-version   "1.14">
 <!ENTITY ExtUtils-F77-package   "ExtUtils-F77-&ExtUtils-F77-version;.tar.bz2">
+<!ENTITY ExtUtils-F77-md5       "3dc0c32f30c586be4406f32ddd904dbf">
 <!ENTITY ExtUtils-F77-directory "ExtUtils-F77-&ExtUtils-F77-version;">
 
 <!ENTITY Astro-FITS-Header-version   "2.8.1">
 <!ENTITY Astro-FITS-Header-package   "Astro-FITS-Header-&Astro-FITS-Header-version;.tar.bz2">
+<!ENTITY Astro-FITS-Header-md5       "bc1c2c87888943773a44794ad1553949">
 <!ENTITY Astro-FITS-Header-directory "Astro-FITS-Header-&Astro-FITS-Header-version;">
 <!-- End Perl Modules-->
 
 <!ENTITY librep-version   "0.17">
 <!ENTITY librep-package   "librep-&librep-version;.tar.bz2">
+<!ENTITY librep-md5       "ad949a4cf93cf76ba745d72a1a3b5a71">
 <!ENTITY librep-directory "librep-&librep-version;">
 
-<!ENTITY j2sdk-version "1.4.2">
-<!-- Download these from http://java.sun.com/j2se/1.4.2/download.html: -->
-<!ENTITY j2sdk-bin-suffix    "06">
-<!ENTITY j2sdk-bin-version   "1_4_2_&j2sdk-bin-suffix;">
-<!ENTITY j2sdk-bin-package   "j2sdk-&j2sdk-bin-version;-linux-i586.bin">
+<!-- Begin java packages -->
+<!ENTITY j2sdk-version   "1.4.2">
+<!ENTITY j2sdk-_-version "1_4_2">
+<!ENTITY j2sdk-suffix    "07">
+
+<!ENTITY j2sdk-bin-package   "j2sdk-&j2sdk-_-version;_&j2sdk-suffix;-linux-i586.bin">
+<!ENTITY j2sdk-bin-md5       "a55a9150977de7d5c7f78d29593a8b8c">
 <!ENTITY j2sdk-bin-directory "j2sdk&j2sdk-version;_&j2sdk-bin-suffix;">
 
-<!-- Download these from http://wwws.sun.com/software/communitysource/j2se/java2/download.html: -->
-<!ENTITY j2sdk-src-version                 "1_4_2">
-<!ENTITY j2sdk-src-package                 "j2sdk-&j2sdk-src-version;-src-scsl.zip">
-<!ENTITY j2sdk-src-bin-package             "j2sdk-&j2sdk-src-version;-bin-scsl.zip">
-<!ENTITY j2sdk-src-mozilla-headers-package "j2sdk-&j2sdk-src-version;-mozilla_headers-unix.zip">
+<!ENTITY j2sdk-src-package "j2sdk-&j2sdk-_-version;-src-scsl.zip">
+<!ENTITY j2sdk-src-md5     "387ae674dcd686f3a7a477c191aa8b65">
 
-<!ENTITY j2sdk-asm-patch          "j2sdk-&j2sdk-version;-fix__asm-1.patch">
-<!ENTITY j2sdk-gcc33-patch        "j2sdk-&j2sdk-version;-gcc33-1.patch">
-<!ENTITY j2sdk-motif-patch        "j2sdk-&j2sdk-version;-motif_mkmsgcat-1.patch">
-<!ENTITY j2sdk-nptl-patch         "j2sdk-&j2sdk-version;-nptl-1.patch">
-<!ENTITY j2sdk-remove-debug-patch "j2sdk-&j2sdk-version;-remove_debug_image-1.patch">
-<!ENTITY j2sdk-fixed-paths-patch  "j2sdk-&j2sdk-version;-remove_fixed_paths-1.patch">
-<!ENTITY j2sdk-static-cxx-patch   "j2sdk-&j2sdk-version;-static_cxx-1.patch">
+<!ENTITY j2sdk-src-bin-package "j2sdk-&j2sdk-_-version;-bin-scsl.zip">
+<!ENTITY j2sdk-src-bin-md5     "24877ff50ae66744090c3723968bb7dc">
+
+<!ENTITY j2sdk-src-mozilla-headers-package "j2sdk-&j2sdk-_-version;-mozilla_headers-unix.zip">
+<!ENTITY j2sdk-src-mozilla-headers-md5     "57d10879fa2c2738f859f0b0f902f69c">
+
+<!ENTITY j2sdk-asm-patch     "j2sdk-&j2sdk-version;-fix_inline_asm-1.patch">
+<!ENTITY j2sdk-asm-patch-md5 "b7d9235640add59432683fa4e32be8d9">
+
+<!ENTITY j2sdk-gcc33-patch     "j2sdk-&j2sdk-version;-gcc33-1.patch">
+<!ENTITY j2sdk-gcc33-patch-md5 "9be656687de3b45131cb2a72c3fef76a">
+
+<!ENTITY j2sdk-motif-patch     "j2sdk-&j2sdk-version;-motif_mkmsgcat-1.patch">
+<!ENTITY j2sdk-motif-patch-md5 "c625f49a52ff7dbacfa11b4272dd303c">
+
+<!ENTITY j2sdk-nptl-patch     "j2sdk-&j2sdk-version;-nptl-1.patch">
+<!ENTITY j2sdk-nptl-patch-md5 "b99f1f8c53e34334d88189a189df8651">
+
+<!ENTITY j2sdk-remove-debug-patch     "j2sdk-&j2sdk-version;-remove_debug_image-1.patch">
+<!ENTITY j2sdk-remove-debug-patch-md5 "5fa9b211519555f34057d1791c58cc1d">
+
+<!ENTITY j2sdk-fixed-paths-patch     "j2sdk-&j2sdk-version;-remove_fixed_paths-1.patch">
+<!ENTITY j2sdk-fixed-paths-patch-md5 "53487994a83eec881a7beb3ceb6cb98c">
+
+<!ENTITY j2sdk-static-cxx-patch     "j2sdk-&j2sdk-version;-static_cxx-1.patch">
+<!ENTITY j2sdk-static-cxx-patch-md5 "3b9fc7189f8e1f710e6959e4d83887a">
+<!-- End java packages -->
 
 <!ENTITY ruby-version   "1.8.2">
 <!ENTITY ruby-package   "ruby-&ruby-version;.tar.bz2">
+<!ENTITY ruby-md5       "0ff532e9214aee516e54712fe3406372">
 <!ENTITY ruby-directory "ruby-&ruby-version;">
 
 <!ENTITY tcl-major-minor "8.4">
 <!ENTITY tcl-version     "&tcl-major-minor;.9">
 <!ENTITY tcl-package     "tcl&tcl-version;-src.tar.bz2">
+<!ENTITY tcl-md5         "597e5576d9bf44e9e4e901168cae2654">
 <!ENTITY tcl-directory   "tcl&tcl-version;">
 
 <!ENTITY tk-major-minor "8.4">
 <!ENTITY tk-version     "&tk-major-minor;.9">
 <!ENTITY tk-package     "tk&tk-version;-src.tar.bz2">
+<!ENTITY tk-md5         "4ad442322d874a63514f5c4a4263a65e">
 <!ENTITY tk-directory   "tk&tk-version;">
 
 <!ENTITY expect-major-minor "5.42">
 <!ENTITY expect-version     "&expect-major-minor;.1">
 <!ENTITY expect-package     "expect-&expect-version;.tar.bz2">
+<!ENTITY expect-md5         "a239811e56d31db86e79c6e4b5de1670">
 <!ENTITY expect-directory   "expect-&expect-version;">
-<!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
+
+<!ENTITY expect-spawn-patch     "expect-&expect-version;-spawn-1.patch">
+<!ENTITY expect-spawn-patch-md5 "f010925ccc771856931057bd743bcc2d">
 
 <!ENTITY dejagnu-version   "1.4.4">
 <!ENTITY dejagnu-package   "dejagnu-&dejagnu-version;.tar.bz2">
+<!ENTITY dejagnu-md5       "bf259ac32622eda29ea157ef5751ed76">
 <!ENTITY dejagnu-directory "dejagnu-&dejagnu-version;">
 
 <!ENTITY gnat-version   "3.15p"> 	 
-<!ENTITY gnat-package   "gcc-&gcc-34-version;-gnat-&gnat-version;-i686-pc-redhat71-gnu-bin.tar.bz2"> 	 
+<!ENTITY gnat-package   "gcc-&gcc-34-version;-gnat-&gnat-version;-i686-pc-redhat71-gnu-bin.tar.bz2">
+<!ENTITY gnat-md5       "c9aad2da908a40e876c24fc85f248b51">
 <!ENTITY gnat-directory "gnat-&gnat-version;-i686-pc-linux-gnu-bin">
 
-<!ENTITY gcc-34-version              "3.4.1">
-<!ENTITY gcc-34-package              "gcc-&gcc-34-version;.tar.bz2">
-<!ENTITY gcc-34-directory            "gcc-&gcc-34-version;">
-<!ENTITY gcc-34-no-fixincludes-patch "gcc-&gcc-34-version;-no_fixincludes-1.patch">
-<!ENTITY gcc-34-linkonce-patch       "gcc-&gcc-34-version;-linkonce-1.patch">
+<!ENTITY gcc-34-version   "3.4.1">
+<!ENTITY gcc-34-package   "gcc-&gcc-34-version;.tar.bz2">
+<!ENTITY gcc-34-md5       "31b459062499f9f68d451db9cbf3205c">
+<!ENTITY gcc-34-directory "gcc-&gcc-34-version;">
 
-<!ENTITY gcc-33-version              "3.3.4">
-<!ENTITY gcc-33-package              "gcc-&gcc-33-version;.tar.bz2">
-<!ENTITY gcc-33-directory            "gcc-&gcc-33-version;">
-<!ENTITY gcc-33-no-fixincludes-patch "gcc-&gcc-33-version;-no_fixincludes-1.patch">
-<!ENTITY gcc-33-linkonce-patch	     "gcc-&gcc-33-version;-linkonce-1.patch">
+<!ENTITY gcc-34-no-fixincludes-patch     "gcc-&gcc-34-version;-no_fixincludes-1.patch">
+<!ENTITY gcc-34-no-fixincludes-patch-md5 "073a5a6de58b361afdb05c6a6e42ffe2">
+
+<!ENTITY gcc-34-linkonce-patch     "gcc-&gcc-34-version;-linkonce-1.patch">
+<!ENTITY gcc-34-linkonce-patch-md5 "cd76ebe24c88d344a7f6ab750f98c55f">
+
+<!ENTITY gcc-33-version   "3.3.4">
+<!ENTITY gcc-33-package   "gcc-&gcc-33-version;.tar.bz2">
+<!ENTITY gcc-33-md5       "a1c267b34f05c8660b24251865614d8b">
+<!ENTITY gcc-33-directory "gcc-&gcc-33-version;">
+
+<!ENTITY gcc-33-no-fixincludes-patch     "gcc-&gcc-33-version;-no_fixincludes-1.patch">
+<!ENTITY gcc-33-no-fixincludes-patch-md5 "322843b6606a5de7f50aaece02d58bfc">
+
+<!ENTITY gcc-33-linkonce-patch	   "gcc-&gcc-33-version;-linkonce-1.patch">
+<!ENTITY gcc-33-linkonce-patch-md5 "052622c9a52fda9b511f739440cfe5b7">
 
 <!ENTITY nasm-version   "0.98.38">
 <!ENTITY nasm-package   "nasm-&nasm-version;.tar.bz2">
+<!ENTITY nasm-md5       "9f682490c132b070d54e395cb6ee145e">
 <!ENTITY nasm-directory "nasm-&nasm-version;">
 
 <!ENTITY doxygen-version   "1.4.1">
 <!ENTITY doxygen-package   "doxygen-&doxygen-version;.src.tar.bz2">
+<!ENTITY doxygen-md5       "2d4d23f47df7c6bcde3bfc8c721b338f">
 <!ENTITY doxygen-directory "doxygen-&doxygen-version;">
