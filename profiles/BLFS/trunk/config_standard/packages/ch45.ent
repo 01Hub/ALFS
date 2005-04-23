@@ -2,32 +2,51 @@
 
 <!ENTITY a2ps-version   "4.13b">
 <!ENTITY a2ps-package   "a2ps-&a2ps-version;.tar.bz2">
+<!ENTITY a2ps-md5       "ede74cee1767a95e0555e7d4905a10f7">
 <!ENTITY a2ps-directory "a2ps-4.13">
 
 <!ENTITY enscript-version   "1.6.4">
 <!ENTITY enscript-package   "enscript-&enscript-version;.tar.bz2">
+<!ENTITY enscript-md5       "330720116fd768c8e2c7a651466aacb1">
 <!ENTITY enscript-directory "enscript-&enscript-version;">
 
 <!ENTITY psutils-version   "p17">
 <!ENTITY psutils-package   "psutils-&psutils-version;.tar.bz2">
+<!ENTITY psutils-md5       "2ef0a175ba6989dc9076e2335c07f844">
 <!ENTITY psutils-directory "psutils">
 
-<!ENTITY gsview-version        "4.6">
-<!ENTITY gsview-package        "gsview-&gsview-version;.tar.bz2">
-<!ENTITY gsview-directory      "gsview-&gsview-version;">
-<!ENTITY gsview-pstotext-patch "gsview-&gsview-version;-pstotext-1.patch">
-<!ENTITY gsview-lang-patch     "gsview-&gsview-version;-lang-1.patch">
+<!ENTITY gsview-version   "4.6">
+<!ENTITY gsview-package   "gsview-&gsview-version;.tar.bz2">
+<!ENTITY gsview-md5       "1222b59634cffdd28057d81705120879">
+<!ENTITY gsview-directory "gsview-&gsview-version;">
 
-<!ENTITY xpdf-version        "3.00">
-<!ENTITY xpdf-patchlevel     "pl3">
-<!ENTITY xpdf-package        "xpdf-&xpdf-version;.tar.bz2">
-<!ENTITY xpdf-directory      "xpdf-&xpdf-version;">
-<!ENTITY xpdf-pl1-patch      "xpdf-&xpdf-version;pl1.patch">
-<!ENTITY xpdf-pl2-patch      "xpdf-&xpdf-version;pl2.patch">
-<!ENTITY xpdf-pl3-patch      "xpdf-&xpdf-version;pl3.patch">
-<!ENTITY xpdf-freetype-patch "xpdf-&xpdf-version;&xpdf-patchlevel;-freetype_2.1.7_hack-2.patch">
+<!ENTITY gsview-pstotext-patch     "gsview-&gsview-version;-pstotext-1.patch">
+<!ENTITY gsview-pstotext-patch-md5 "42a6eb9a9877876842d45b3570249fea">
+
+<!ENTITY gsview-lang-patch     "gsview-&gsview-version;-lang-1.patch">
+<!ENTITY gsview-lang-patch-md5 "05b7d7d575e7ff1a0a10096e52362ccb">
+
+<!ENTITY xpdf-version    "3.00">
+<!ENTITY xpdf-package    "xpdf-&xpdf-version;.tar.bz2">
+<!ENTITY xpdf-md5        "7b93662e783287d98c09fbc666ab645d">
+<!ENTITY xpdf-directory  "xpdf-&xpdf-version;">
+
+<!ENTITY xpdf-pl1-patch     "xpdf-&xpdf-version;pl1.patch">
+<!ENTITY xpdf-pl1-patch-md5 "ff5842b168b80a42a3ebfb48d7ce4caa">
+
+<!ENTITY xpdf-pl2-patch     "xpdf-&xpdf-version;pl2.patch">
+<!ENTITY xpdf-pl2-patch-md5 "d4de4d643cf7db65c2a6cdbd4ac868e2">
+
+<!ENTITY xpdf-pl3-patch     "xpdf-&xpdf-version;pl3.patch">
+<!ENTITY xpdf-pl3-patch-md5 "c32a612ce419b9930ff273cf382558bf">
+
+<!ENTITY xpdf-freetype-patch     "xpdf-&xpdf-version;pl1-freetype_2.1.7_hack-2.patch">
+<!ENTITY xpdf-freetype-patch-md5 "7684351f52644de9264bceacdae576c6">
 
 <!ENTITY fop-version    "0.20.5">
 <!ENTITY fop-package    "fop-&fop-version;-src.tar.bz2">
+<!ENTITY fop-md5        "c9a738ed9f9f8313384d70fd027ae801">
 <!ENTITY fop-directory  "fop-&fop-version;">
+
 <!ENTITY fop-jai-binary "jai-1_1_2_01-lib-linux-i586-jdk.bin">
+<!ENTITY fop-jai-md5    "f2be3619a8d002eff3874355e96327eb">

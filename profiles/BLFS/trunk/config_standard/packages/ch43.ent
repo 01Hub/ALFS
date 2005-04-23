@@ -1,32 +1,45 @@
 <!--************* packages for chapter 43 *************-->
 
-<!ENTITY sgml-common-version       "0.6.3">
-<!ENTITY sgml-common-package       "sgml-common-&sgml-common-version;.tar.bz2">
-<!ENTITY sgml-common-directory     "sgml-common-&sgml-common-version;">
-<!ENTITY sgml-common-manpage-patch "sgml-common-&sgml-common-version;-manpage-1.patch">
+<!ENTITY sgml-common-version   "0.6.3">
+<!ENTITY sgml-common-package   "sgml-common-&sgml-common-version;.tar.bz2">
+<!ENTITY sgml-common-md5       "7fab09a4f93628251836da0e8389c8fc">
+<!ENTITY sgml-common-directory "sgml-common-&sgml-common-version;">
+
+<!ENTITY sgml-common-manpage-patch     "sgml-common-&sgml-common-version;-manpage-1.patch">
+<!ENTITY sgml-common-manpage-patch-md5 "376b36c1faf157a9ca8f3fc94209220d">
 
 <!ENTITY sgml-dtd31-version   "3.1">
 <!ENTITY sgml-dtd31-package   "docbk31.zip">
+<!ENTITY sgml-dtd31-md5       "432749c0c806dbae81c8bcb70da3b5d3">
 <!ENTITY sgml-dtd31-directory "docbk31">
 
 <!ENTITY sgml-dtd-version   "4.3">
 <!ENTITY sgml-dtd-package   "docbook-&sgml-dtd-version;.zip">
+<!ENTITY sgml-dtd-md5       "e3beb1b0b2923c24fa55a68e88654b01">
 <!ENTITY sgml-dtd-directory "docbook-&sgml-dtd-version;">
 
-<!ENTITY opensp-version      "1.5.1">
-<!ENTITY opensp-package      "OpenSP-&opensp-version;.tar.bz2">
-<!ENTITY opensp-directory    "OpenSP-&opensp-version;">
-<!ENTITY opensp-litlen-patch "OpenSP-&opensp-version;-LITLEN-1.patch">
-<!ENTITY opensp-gcc34-patch  "OpenSP-&opensp-version;-gcc34-1.patch">
+<!ENTITY opensp-version   "1.5.1">
+<!ENTITY opensp-package   "OpenSP-&opensp-version;.tar.bz2">
+<!ENTITY opensp-md5       "9e0d6443930e6f4a2fe7f86a0da4d0c1">
+<!ENTITY opensp-directory "OpenSP-&opensp-version;">
+
+<!ENTITY opensp-litlen-patch     "OpenSP-&opensp-version;-LITLEN-1.patch">
+<!ENTITY opensp-litlen-patch-md5 "d8c0e8f2b4f266eff9f077d2b9f47973">
+
+<!ENTITY opensp-gcc34-patch     "OpenSP-&opensp-version;-gcc34-1.patch">
+<!ENTITY opensp-gcc34-patch-md5 "2ae2fc3cfe09ac2d1a99d3023639d951">
 
 <!ENTITY openjade-version   "1.3.2">
 <!ENTITY openjade-package   "openjade-&openjade-version;.tar.bz2">
+<!ENTITY openjade-md5       "24d30bf4b8ad1a1519a0bb2f5e948b62">
 <!ENTITY openjade-directory "openjade-&openjade-version;">
 
 <!ENTITY docbook-dsssl-version   "1.78">
 <!ENTITY docbook-dsssl-package   "docbook-dsssl-&docbook-dsssl-version;.tar.bz2">
+<!ENTITY docbook-dsssl-md5       "a78cd7ed19e67d6d433d361204a85eed">
 <!ENTITY docbook-dsssl-directory "docbook-dsssl-&docbook-dsssl-version;">
 
 <!ENTITY docbook-utils-version   "0.6.14">
 <!ENTITY docbook-utils-package   "docbook-utils-&docbook-utils-version;.tar.bz2">
+<!ENTITY docbook-utils-md5       "fcf73fe97f2552555f6adec05485a52e">
 <!ENTITY docbook-utils-directory "docbook-utils-&docbook-utils-version;">

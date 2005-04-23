@@ -2,16 +2,25 @@
 
 <!ENTITY cdrtools-version   "2.01">
 <!ENTITY cdrtools-package   "cdrtools-&cdrtools-version;.tar.bz2">
+<!ENTITY cdrtools-md5       "d44a81460e97ae02931c31188fe8d3fd">
 <!ENTITY cdrtools-directory "cdrtools-&cdrtools-version;">
 
 <!ENTITY cdrdao-version   "1.1.9">
 <!ENTITY cdrdao-package   "cdrdao-&cdrdao-version;.src.tar.bz2">
+<!ENTITY cdrdao-md5       "f0f07deeeb0aff4c83923dca19edd93d">
 <!ENTITY cdrdao-directory "cdrdao-&cdrdao-version;">
-<!ENTITY cdrdao-patch     "cdrdao-&cdrdao-version;-gcc43-1.patch">
 
-<!ENTITY udftools-version       "1.0.0b3">
-<!ENTITY udftools-package       "udftools-&udftools-version;.tar.bz2">
-<!ENTITY udftools-directory     "udftools-&udftools-version;">
+<!ENTITY cdrdao-patch     "cdrdao-&cdrdao-version;-gcc43-1.patch">
+<!ENTITY cdrdao-patch-md5 "d145b54c8612ffc863fa9fd269b4a82d">
+
+<!ENTITY udftools-version   "1.0.0b3">
+<!ENTITY udftools-package   "udftools-&udftools-version;.tar.bz2">
+<!ENTITY udftools-md5       "37f71bd4594eb2c427c652f4a08493e8">
+<!ENTITY udftools-directory "udftools-&udftools-version;">
+
 <!ENTITY udftools-patch         "udftools-&udftools-version;.patch">
 <!ENTITY udftools-patch-package "&udftools-patch;.bz">
-<!ENTITY udftools-kernel-patch  "udftools-packet-2.6.8-2.patch.bz2">
+<!ENTITY udftools-patch-md5     "4fe44166cf7c636ec41758ae763d79be">
+
+<!ENTITY udftools-kernel-patch "udftools-packet-2.6.8-2.patch.bz2">
+<!ENTITY udftools-kernel-md5   "a96b61f5137fdcc9050804d48aa66983">

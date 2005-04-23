@@ -4,12 +4,15 @@
 
 <!ENTITY sane-backend-version   "&sane-version;">
 <!ENTITY sane-backend-package   "sane-backends-&sane-backend-version;.tar.bz2">
+<!ENTITY sane-backend-md5       "1fea3fff469521073a26c2953783f3a3">
 <!ENTITY sane-backend-directory "sane-backends-&sane-backend-version;">
 
 <!ENTITY sane-frontend-version   "1.0.13">
 <!ENTITY sane-frontend-package   "sane-frontends-&sane-frontend-version;.tar.bz2">
+<!ENTITY sane-frontend-md5       "6a8d68552673cc751afb899e6d0518b1">
 <!ENTITY sane-frontend-directory "sane-frontends-&sane-frontend-version;">
 
 <!ENTITY xsane-version   "0.97">
 <!ENTITY xsane-package   "xsane-&xsane-version;.tar.bz2">
+<!ENTITY xsane-md5       "1494972fa7b0694e65515932d631e155">
 <!ENTITY xsane-directory "xsane-&xsane-version;">
