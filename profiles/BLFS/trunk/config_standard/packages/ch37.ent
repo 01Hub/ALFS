@@ -3,116 +3,149 @@
 
 <!ENTITY alsa-lib-version   "&alsa-version;">
 <!ENTITY alsa-lib-package   "alsa-lib-&alsa-lib-version;.tar.bz2">
+<!ENTITY alsa-lib-md5       "34ceaac0d1f0fc2b1462cef7c3a6825e">
 <!ENTITY alsa-lib-directory "alsa-lib-&alsa-lib-version;">
 
-<!ENTITY alsa-utils-version       "&alsa-version;">
-<!ENTITY alsa-utils-package       "alsa-utils-&alsa-utils-version;.tar.bz2">
-<!ENTITY alsa-utils-directory     "alsa-utils-&alsa-utils-version;">
-<!ENTITY alsa-utils-arecord-patch "alsa-utils-&alsa-utils-version;-arecord-1.patch">
+<!ENTITY alsa-utils-version   "&alsa-version;">
+<!ENTITY alsa-utils-package   "alsa-utils-&alsa-utils-version;.tar.bz2">
+<!ENTITY alsa-utils-md5       "b9dc0f9aae6131a6e6df9934a7b96a18">
+<!ENTITY alsa-utils-directory "alsa-utils-&alsa-utils-version;">
 
 <!ENTITY alsa-tools-version   "&alsa-version;">
 <!ENTITY alsa-tools-package   "alsa-tools-&alsa-tools-version;.tar.bz2">
+<!ENTITY alsa-tools-md5       "efd8660f818f2bbd7fd4761e0068fde1">
 <!ENTITY alsa-tools-directory "alsa-tools-&alsa-tools-version;">
 
 <!ENTITY alsa-firmware-version   "&alsa-version;">
 <!ENTITY alsa-firmware-package   "alsa-firmware-&alsa-firmware-version;.tar.bz2">
+<!ENTITY alsa-firmware-md5       "91b29697c758406d3b969006556fa606">
 <!ENTITY alsa-firmware-directory "alsa-firmware-&alsa-firmware-version;">
 
 <!ENTITY alsa-oss-version   "&alsa-version;">
 <!ENTITY alsa-oss-package   "alsa-oss-&alsa-oss-version;.tar.bz2">
+<!ENTITY alsa-oss-md5       "8e4af2a1ce93a0e5945325097b9a0341">
 <!ENTITY alsa-oss-directory "alsa-oss-&alsa-oss-version;">
 
 <!ENTITY audiofile-version   "0.2.6">
 <!ENTITY audiofile-package   "audiofile-&audiofile-version;.tar.bz2">
+<!ENTITY audiofile-md5       "3d01302834660850b6141cac1e6f5501">
 <!ENTITY audiofile-directory "audiofile-&audiofile-version;">
 
 <!ENTITY esound-version   "0.2.35">
 <!ENTITY esound-package   "esound-&esound-version;.tar.bz2">
+<!ENTITY esound-md5       "1566344f80a8909b5e6e4d6b6520c2c1">
 <!ENTITY esound-directory "esound-&esound-version;">
 
 <!ENTITY sdl-version   "1.2.8">
 <!ENTITY sdl-package   "SDL-&sdl-version;.tar.bz2">
+<!ENTITY sdl-md5       "b48dc98663ba93162fa96af0beaf1b3a">
 <!ENTITY sdl-directory "SDL-&sdl-version;">
 
 <!ENTITY libao-version   "0.8.5">
 <!ENTITY libao-package   "libao-&libao-version;.tar.bz2">
+<!ENTITY libao-md5       "0cf2d18b73f25684d5c7a1056e5e8794">
 <!ENTITY libao-directory "libao-&libao-version;">
 
 <!ENTITY libogg-version   "1.1.2">
 <!ENTITY libogg-package   "libogg-&libogg-version;.tar.bz2">
+<!ENTITY libogg-md5       "64e50c88ee16a37e44acff7b7f12dd34">
 <!ENTITY libogg-directory "libogg-&libogg-version;">
 
 <!ENTITY libvorbis-version   "1.1.0">
 <!ENTITY libvorbis-package   "libvorbis-&libvorbis-version;.tar.bz2">
+<!ENTITY libvorbis-md5       "79cfb7e762c190454d49802b3de21580">
 <!ENTITY libvorbis-directory "libvorbis-&libvorbis-version;">
 
 <!ENTITY nas-version   "1.6">
 <!ENTITY nas-package   "nas-&nas-version;.src.tar.bz2">
+<!ENTITY nas-md5       "90814464f40c7955c323a0d99102b27f">
 <!ENTITY nas-directory "nas-&nas-version;">
 
 <!ENTITY libmpeg3-version   "1.5.4">
 <!ENTITY libmpeg3-package   "libmpeg3-&libmpeg3-version;-src.tar.bz2">
+<!ENTITY libmpeg3-md5       "7adfc9c0beea2134575137f2e0d2ef11">
 <!ENTITY libmpeg3-directory "libmpeg3-&libmpeg3-version;">
+
 <!ENTITY libmpeg3-patch     "libmpeg3-&libmpeg3-version;-gcc43.patch">
+<!ENTITY libmpeg3-patch-md5 "f78d3b5d72ce24aa3f86284c7ae64375">
 
 <!ENTITY libmad-version   "0.15.1b">
 <!ENTITY libmad-package   "libmad-&libmad-version;.tar.bz2">
+<!ENTITY libmad-md5       "b9f4abe0c49b94a9971b091650d97f53">
 <!ENTITY libmad-directory "libmad-&libmad-version;">
 
 <!ENTITY openquicktime-version   "1.0">
-<!ENTITY openquicktime-package   "openquicktime-&openquicktime-version;-src.tgz">
+<!ENTITY openquicktime-package   "openquicktime-&openquicktime-version;-src.tar.bz2">
+<!ENTITY openquicktime-md5       "8965ad9180fb393f593f93bf69982be8">
 <!ENTITY openquicktime-directory "openquicktime-&openquicktime-version;-src">
+
 <!ENTITY openquicktime-patch     "openquicktime-&openquicktime-version;-gcc34-1.patch">
+<!ENTITY openquicktime-patch-md5 "b950cf3b17b1d5c79425595acdd61924">
 
 <!ENTITY libfame-version   "0.9.1">
 <!ENTITY libfame-package   "libfame-&libfame-version;.tar.bz2">
+<!ENTITY libfame-md5       "9c2bf4dbf96893c3fbeec6012a1ea080">
 <!ENTITY libfame-directory "libfame-&libfame-version;">
+
 <!ENTITY libfame-patch     "libfame-&libfame-version;-gcc43-1.patch">
+<!ENTITY libfame-patch-md5 "9d9bd84f1f9925727082c5fc7108eb04">
 
 <!ENTITY speex-version   "1.0.4">
 <!ENTITY speex-package   "speex-&speex-version;.tar.bz2">
+<!ENTITY speex-md5       "d1126fa576cf814c4db709952ea49a65">
 <!ENTITY speex-directory "speex-&speex-version;">
 
 <!ENTITY id3lib-version   "3.8.3">
 <!ENTITY id3lib-package   "id3lib-&id3lib-version;.tar.bz2">
+<!ENTITY id3lib-md5       "00f7e44503a0eaae43b70a9d64839130">
 <!ENTITY id3lib-directory "id3lib-&id3lib-version;">
 
 <!ENTITY flac-version   "1.1.1">
 <!ENTITY flac-package   "flac-&flac-version;.tar.bz2">
+<!ENTITY flac-md5       "6d65a075a9b042799b75fdffbc3645f1">
 <!ENTITY flac-directory "flac-&flac-version;">
 
 <!ENTITY libdvdcss-version   "1.2.8">
 <!ENTITY libdvdcss-package   "libdvdcss-&libdvdcss-version;.tar.bz2">
+<!ENTITY libdvdcss-md5       "0749d05f4cc14daaf20af9e40fd6a2f0">
 <!ENTITY libdvdcss-directory "libdvdcss-&libdvdcss-version;">
 
 <!ENTITY libdvdread-version   "0.9.4">
 <!ENTITY libdvdread-package   "libdvdread-&libdvdread-version;.tar.bz2">
+<!ENTITY libdvdread-md5       "40ce4e5a7a36ccf0e07d9e35bbccf8e2">
 <!ENTITY libdvdread-directory "libdvdread-&libdvdread-version;">
 
 <!ENTITY libdv-version   "0.103">
 <!ENTITY libdv-package   "libdv-&libdv-version;.tar.bz2">
+<!ENTITY libdv-md5       "05648e7acd08716491a799d9ba6c8f0f">
 <!ENTITY libdv-directory "libdv-&libdv-version;">
 
 <!ENTITY liba52-version   "0.7.4">
 <!ENTITY liba52-package   "a52dec-&liba52-version;.tar.bz2">
+<!ENTITY liba52-md5       "a410ff5d456be69e799925cc550c07f0">
 <!ENTITY liba52-directory "a52dec-&liba52-version;">
 
 <!ENTITY xvid-version   "1.0.2">
 <!ENTITY xvid-package   "xvidcore-&xvid-version;.tar.bz2">
+<!ENTITY xvid-md5       "e8ffc32146991fcff286ccdcd6a16a49">
 <!ENTITY xvid-directory "xvidcore-&xvid-version;">
 
 <!ENTITY xine-lib-version   "1.0">
 <!ENTITY xine-lib-package   "xine-lib-&xine-lib-version;.tar.bz2">
+<!ENTITY xine-lib-md5       "a185f7183c4172a9df2a691cdeaa1d32">
 <!ENTITY xine-lib-directory "xine-lib-&xine-lib-version;">
 
 <!ENTITY libmikmod-version   "3.1.11">
 <!ENTITY libmikmod-package   "libmikmod-&libmikmod-version;.tar.bz2">
+<!ENTITY libmikmod-md5       "bc28df1cd2051eccc26272aae5c36a24">
 <!ENTITY libmikmod-directory "libmikmod-&libmikmod-version;">
 
 <!ENTITY gstreamer-version   "0.8.7">
 <!ENTITY gstreamer-package   "gstreamer-&gstreamer-version;.tar.bz2">
+<!ENTITY gstreamer-md5       "6cbfa914cd577d2623bf7e16cf1f6510">
 <!ENTITY gstreamer-directory "gstreamer-&gstreamer-version;">
 
 <!ENTITY gst-plugins-version   "0.8.5">
 <!ENTITY gst-plugins-package   "gst-plugins-&gst-plugins-version;.tar.bz2">
+<!ENTITY gst-plugins-md5       "da9ed7c74b9ac0ccc5d2efcf4fd60db0">
 <!ENTITY gst-plugins-directory "gst-plugins-&gst-plugins-version;">
