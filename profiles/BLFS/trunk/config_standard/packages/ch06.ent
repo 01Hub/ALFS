@@ -32,4 +32,4 @@
 <!ENTITY ed-directory "ed-&ed-version;">
 
 <!ENTITY ed-mkstemp-patch     "ed-&ed-version;-mkstemp-1.patch">
-<!ENTITY ed-mkstemp-patch-md5 "4d0beb2f0ad4c304b49c06b08d0a03e5">
+<!ENTITY ed-mkstemp-patch-md5 "91bd8618d8e2da3f1772475942aeef5d">

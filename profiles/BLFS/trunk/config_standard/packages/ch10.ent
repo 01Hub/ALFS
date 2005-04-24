@@ -39,7 +39,7 @@
 
 <!ENTITY gtk-doc-version   "1.2">
 <!ENTITY gtk-doc-package   "gtk-doc-&gtk-doc-version;.tar.bz2">
-<!ENTITY gtk-doc-md5       "78e9276c28b509f3203de4873c20a263">
+<!ENTITY gtk-doc-md5       "7776ad690ca6baaaf071c83b51d2a234">
 <!ENTITY gtk-doc-directory "gtk-doc-&gtk-doc-version;">
 
 <!ENTITY intltool-version   "0.32.1">

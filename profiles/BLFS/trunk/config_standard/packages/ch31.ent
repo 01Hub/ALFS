@@ -1,148 +1,185 @@
 <!--************* packages for chapter 31 *************-->
 <!ENTITY libgnomecups-version   "0.1.13">
 <!ENTITY libgnomecups-package   "libgnomecups-&libgnomecups-version;.tar.bz2">
+<!ENTITY libgnomecups-md5       "0103893afb7bf0d78f6c6a196990b52d">
 <!ENTITY libgnomecups-directory "libgnomecups-&libgnomecups-version;">
 
 <!ENTITY libgnomeprint-version   "2.8.0.1">
 <!ENTITY libgnomeprint-package   "libgnomeprint-&libgnomeprint-version;.tar.bz2">
+<!ENTITY libgnomeprint-md5       "0473bf1976c2d4ec5a52bb66cf6b8464">
 <!ENTITY libgnomeprint-directory "libgnomeprint-&libgnomeprint-version;">
 
 <!ENTITY libgnomeprintui-version   "2.8.0">
 <!ENTITY libgnomeprintui-package   "libgnomeprintui-&libgnomeprintui-version;.tar.bz2">
+<!ENTITY libgnomeprintui-md5       "0854339b4c40f9526e7430d36f98a785">
 <!ENTITY libgnomeprintui-directory "libgnomeprintui-&libgnomeprintui-version;">
 
 <!ENTITY gal-version   "2.2.3">
 <!ENTITY gal-package   "gal-&gal-version;.tar.bz2">
+<!ENTITY gal-md5       "a50985fd1b70dc05cfc921455c39e660">
 <!ENTITY gal-directory "gal-&gal-version;">
 
 <!ENTITY gtkhtml-version   "3.2.3">
 <!ENTITY gtkhtml-package   "gtkhtml-&gtkhtml-version;.tar.bz2">
+<!ENTITY gtkhtml-md5       "fe7aa0259a4cd7c99280c076711f8f80">
 <!ENTITY gtkhtml-directory "gtkhtml-&gtkhtml-version;">
 
 <!ENTITY libgtkhtml-version   "2.6.2">
 <!ENTITY libgtkhtml-package   "libgtkhtml-&libgtkhtml-version;.tar.bz2">
+<!ENTITY libgtkhtml-md5       "a9b71134e50e62d20ab4777f899225b3">
 <!ENTITY libgtkhtml-directory "libgtkhtml-&libgtkhtml-version;">
 
 <!ENTITY evolution-data-server-version   "1.0.2">
 <!ENTITY evolution-data-server-package   "evolution-data-server-&evolution-data-server-version;.tar.bz2">
+<!ENTITY evolution-data-server-md5       "ca13b5dd751cd30c55e889d9a07e70fb">
 <!ENTITY evolution-data-server-directory "evolution-data-server-&evolution-data-server-version;">
 
 <!ENTITY gnome-doc-utils-version   "0.1">
 <!ENTITY gnome-doc-utils-package   "gnome-doc-utils-&gnome-doc-utils-version;.tar.bz2">
+<!ENTITY gnome-doc-utils-md5       "5b741eb63e11bc35e81587839e4d4759">
 <!ENTITY gnome-doc-utils-directory "gnome-doc-utils-&gnome-doc-utils-version;">
 
 <!ENTITY yelp-version   "2.6.4">
 <!ENTITY yelp-package   "yelp-&yelp-version;.tar.bz2">
+<!ENTITY yelp-md5       "77d919335650ef0d114c951637669bda">
 <!ENTITY yelp-directory "yelp-&yelp-version;">
 
 <!ENTITY bug-buddy-version   "2.8.0">
 <!ENTITY bug-buddy-package   "bug-buddy-&bug-buddy-version;.tar.bz2">
+<!ENTITY bug-buddy-md5       "b4c90bb9e1762803d083026b000349ea">
 <!ENTITY bug-buddy-directory "bug-buddy-&bug-buddy-version;">
 
 <!ENTITY gtksourceview-version   "1.1.1">
 <!ENTITY gtksourceview-package   "gtksourceview-&gtksourceview-version;.tar.bz2">
+<!ENTITY gtksourceview-md5       "2e59c8748594181d4bf452320c8c3b5c">
 <!ENTITY gtksourceview-directory "gtksourceview-&gtksourceview-version;">
 
 <!ENTITY gedit-version   "2.8.1">
 <!ENTITY gedit-package   "gedit-&gedit-version;.tar.bz2">
+<!ENTITY gedit-md5       "89052aec40b7447eb11d73134d71e812">
 <!ENTITY gedit-directory "gedit-&gedit-version;">
 
 <!ENTITY eog-version   "2.8.1">
 <!ENTITY eog-package   "eog-&eog-version;.tar.bz2">
+<!ENTITY eog-md5       "2bad4006f3ccf15b0153d7b9facbc961">
 <!ENTITY eog-directory "eog-&eog-version;">
 
 <!ENTITY ggv-version   "2.8.0">
 <!ENTITY ggv-package   "ggv-&ggv-version;.tar.bz2">
+<!ENTITY ggv-md5       "1a8e9e43ef793ef3221c5afb15d14a81">
 <!ENTITY ggv-directory "ggv-&ggv-version;">
 
 <!ENTITY file-roller-version   "2.8.3">
 <!ENTITY file-roller-package   "file-roller-&file-roller-version;.tar.bz2">
+<!ENTITY file-roller-md5       "841f0cc0eab979d98c25c16725c18745">
 <!ENTITY file-roller-directory "file-roller-&file-roller-version;">
 
 <!ENTITY gconf-editor-version   "2.8.2">
 <!ENTITY gconf-editor-package   "gconf-editor-&gconf-editor-version;.tar.bz2">
+<!ENTITY gconf-editor-md5       "193d5970b570366fd435b2b7ebdd8047">
 <!ENTITY gconf-editor-directory "gconf-editor-&gconf-editor-version;">
 
 <!ENTITY gnome-utils-version   "2.8.1">
 <!ENTITY gnome-utils-package   "gnome-utils-&gnome-utils-version;.tar.bz2">
+<!ENTITY gnome-utils-md5       "048224275454781c7eebc5afd4004069">
 <!ENTITY gnome-utils-directory "gnome-utils-&gnome-utils-version;">
 
 <!ENTITY gnome-system-monitor-version   "2.8.0">
 <!ENTITY gnome-system-monitor-package   "gnome-system-monitor-&gnome-system-monitor-version;.tar.bz2">
+<!ENTITY gnome-system-monitor-md5       "9aec14e8c549b26b2d2cd0e997038d8f">
 <!ENTITY gnome-system-monitor-directory "gnome-system-monitor-&gnome-system-monitor-version;">
 
 <!ENTITY gnome-media-version   "2.8.0">
 <!ENTITY gnome-media-package   "gnome-media-&gnome-media-version;.tar.bz2">
+<!ENTITY gnome-media-md5       "c200cb577be1adb6bedb8c6528d738a1">
 <!ENTITY gnome-media-directory "gnome-media-&gnome-media-version;">
 
 <!ENTITY nautilus-media-version   "0.8.1">
 <!ENTITY nautilus-media-package   "nautilus-media-&nautilus-media-version;.tar.bz2">
+<!ENTITY nautilus-media-md5       "4ad604430b213a899c1217f5f4633887">
 <!ENTITY nautilus-media-directory "nautilus-media-&nautilus-media-version;">
 
 <!ENTITY gnome-netstatus-version   "2.8.0">
 <!ENTITY gnome-netstatus-package   "gnome-netstatus-&gnome-netstatus-version;.tar.bz2">
+<!ENTITY gnome-netstatus-md5       "fadc8a26ff7142e1372740d2edc435b1">
 <!ENTITY gnome-netstatus-directory "gnome-netstatus-&gnome-netstatus-version;">
 
 <!ENTITY gcalctool-version   "4.4.20">
 <!ENTITY gcalctool-package   "gcalctool-&gcalctool-version;.tar.bz2">
+<!ENTITY gcalctool-md5       "51de83d6d68d7cb65dced80b96acbaaa">
 <!ENTITY gcalctool-directory "gcalctool-&gcalctool-version;">
 
 <!ENTITY gpdf-version   "2.8.0">
 <!ENTITY gpdf-package   "gpdf-&gpdf-version;.tar.bz2">
+<!ENTITY gpdf-md5       "a1c054d5de1d5ef361006975c57b45f5">
 <!ENTITY gpdf-directory "gpdf-&gpdf-version;">
 
 <!ENTITY gucharmap-version   "1.4.2">
 <!ENTITY gucharmap-package   "gucharmap-&gucharmap-version;.tar.bz2">
+<!ENTITY gucharmap-md5       "73847836c1adeadf166fd4fe909687c9">
 <!ENTITY gucharmap-directory "gucharmap-&gucharmap-version;">
 
 <!ENTITY nautilus-cd-burner-version   "2.8.5">
 <!ENTITY nautilus-cd-burner-package   "nautilus-cd-burner-&nautilus-cd-burner-version;.tar.bz2">
+<!ENTITY nautilus-cd-burner-md5       "970173a3f93270950ca9fd247bdf07a7">
 <!ENTITY nautilus-cd-burner-directory "nautilus-cd-burner-&nautilus-cd-burner-version;">
 
 <!ENTITY zenity-version   "2.8.1">
 <!ENTITY zenity-package   "zenity-&zenity-version;.tar.bz2">
+<!ENTITY zenity-md5       "a566a88b88c8f530939e900539cb8d28">
 <!ENTITY zenity-directory "zenity-&zenity-version;">
 
 <!ENTITY at-spi-version   "1.6.0">
 <!ENTITY at-spi-package   "at-spi-&at-spi-version;.tar.bz2">
+<!ENTITY at-spi-md5       "950fc9bb66cf90b720739f3ea5ad8b18">
 <!ENTITY at-spi-directory "at-spi-&at-spi-version;">
 
 <!ENTITY libgail-gnome-version   "1.1.0">
 <!ENTITY libgail-gnome-package   "libgail-gnome-&libgail-gnome-version;.tar.bz2">
+<!ENTITY libgail-gnome-md5       "61541d3f04741b8a9f42f89776ea1fac">
 <!ENTITY libgail-gnome-directory "libgail-gnome-&libgail-gnome-version;">
 
 <!ENTITY java-access-bridge-version   "1.4.2">
 <!ENTITY java-access-bridge-package   "java-access-bridge-&java-access-bridge-version;.tar.bz2">
+<!ENTITY java-access-bridge-md5       "80a6cfc17f39f420a6c4e36b8ea5f13d">
 <!ENTITY java-access-bridge-directory "java-access-bridge-&java-access-bridge-version;">
 
 <!ENTITY gnome-speech-version   "0.3.5">
 <!ENTITY gnome-speech-package   "gnome-speech-&gnome-speech-version;.tar.bz2">
+<!ENTITY gnome-speech-md5       "34382d0b33146b1f8fc5239895471369">
 <!ENTITY gnome-speech-directory "gnome-speech-&gnome-speech-version;">
 
 <!ENTITY gnome-mag-version   "0.11.10">
 <!ENTITY gnome-mag-package   "gnome-mag-&gnome-mag-version;.tar.bz2">
+<!ENTITY gnome-mag-md5       "2603ef3349a8bbadcc1f3b36b467a9bf">
 <!ENTITY gnome-mag-directory "gnome-mag-&gnome-mag-version;">
 
 <!ENTITY gnopernicus-version   "0.9.18">
 <!ENTITY gnopernicus-package   "gnopernicus-&gnopernicus-version;.tar.bz2">
+<!ENTITY gnopernicus-md5       "70fddfa095ca63c9f4238e02318751f9">
 <!ENTITY gnopernicus-directory "gnopernicus-&gnopernicus-version;">
 
 <!ENTITY gok-version   "0.11.16">
 <!ENTITY gok-package   "gok-&gok-version;.tar.bz2">
+<!ENTITY gok-md5       "6bfe9d4efb35ae20ef1c05c191dc8ad7">
 <!ENTITY gok-directory "gok-&gok-version;">
 
 <!ENTITY epiphany-version   "1.4.5">
 <!ENTITY epiphany-package   "epiphany-&epiphany-version;.tar.bz2">
+<!ENTITY epiphany-md5       "ac41b48506ba2791121648772a885084">
 <!ENTITY epiphany-directory "epiphany-&epiphany-version;">
 
 <!ENTITY gnomemeeting-version   "1.0.2">
 <!ENTITY gnomemeeting-package   "gnomemeeting-&gnomemeeting-version;.tar.bz2">
+<!ENTITY gnomemeeting-md5       "f292e3143d67d4786d64ac5983e25d3f">
 <!ENTITY gnomemeeting-directory "gnomemeeting-&gnomemeeting-version;">
 
 <!ENTITY gnome-games-version   "2.8.1">
 <!ENTITY gnome-games-package   "gnome-games-&gnome-games-version;.tar.bz2">
+<!ENTITY gnome-games-md5       "d3c675e29c835cfa765fbd6ae4a289cc">
 <!ENTITY gnome-games-directory "gnome-games-&gnome-games-version;">
 
 <!ENTITY gdm-version   "2.6.0.6">
 <!ENTITY gdm-package   "gdm-&gdm-version;.tar.bz2">
+<!ENTITY gdm-md5       "8dca7cb1f28d81f60f6e07b3c24288c5">
 <!ENTITY gdm-directory "gdm-&gdm-version;">
