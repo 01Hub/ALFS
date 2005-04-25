@@ -13,6 +13,14 @@
 <!-- Network device -->
 <!ENTITY network-interface "eth0">
 
+<!-- Configuration for the stunnel build -->
+<!ENTITY stunnel-country "CA">
+<!ENTITY stunnel-state   "Alberta">
+<!ENTITY stunnel-city    "Calgary">
+<!ENTITY stunnel-org     "Linux From Scratch">
+<!ENTITY stunnel-orgunit "ALFS">
+<!ENTITY stunnel-host    "localhost">
+
 <!-- XFree86 configuration -->
 <!ENTITY mouseProtocol "IMPS/2">
 
