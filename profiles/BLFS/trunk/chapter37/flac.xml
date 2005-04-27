@@ -20,9 +20,6 @@
         <name>xmms</name>
       </utilizes>
       <utilizes>
-        <name>id3lib</name>
-      </utilizes>
-      <utilizes>
         <name>nasm</name>
       </utilizes>
       <utilizes>

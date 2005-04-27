@@ -74,7 +74,7 @@
         <name>libvorbis</name>
       </utilizes>
       <utilizes>
-        <name>mjpegtools</name>
+        <name>mjpeg-tools</name>
       </utilizes>
       <utilizes>
         <name>libquicktime</name>

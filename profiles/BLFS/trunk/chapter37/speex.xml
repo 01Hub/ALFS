@@ -13,9 +13,9 @@
 <alfs>
   <package name="speex" version="&speex-version;">
     <packageinfo>
-      <requires>
+      <utilizes>
         <name>libogg</name>
-      </requires>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

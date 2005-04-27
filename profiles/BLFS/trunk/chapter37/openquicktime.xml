@@ -26,15 +26,20 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <base>&build_dir;/&openquicktime-directory;</base>
+	<base>&build_dir;/&openquicktime-directory;</base>
       </stageinfo>
       <patch>
         <param>-N</param>
         <param>-p1</param>
         <param>-i &packages_dir;/&openquicktime-patch;</param>
       </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&openquicktime-directory;</base>
+      </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
       </configure>

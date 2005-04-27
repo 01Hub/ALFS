@@ -26,13 +26,13 @@
         <name>freetype</name>
       </utilizes>
       <utilizes>
-        <name>gconf</name>
+        <name>gconf2</name>
       </utilizes>
       <utilizes>
         <name>gtk+2</name>
       </utilizes>
       <utilizes>
-        <name>gnome-vfs</name>
+        <name>gnome-vfs2</name>
       </utilizes>
       <utilizes>
         <name>hermes</name>
@@ -65,7 +65,7 @@
         <name>&ximpl;</name>
       </utilizes>
       <utilizes>
-        <name>alsa</name>
+        <name>alsa-lib</name>
       </utilizes>
       <utilizes>
         <name>arts</name>
@@ -104,7 +104,7 @@
         <name>libmad</name>
       </utilizes>
       <utilizes>
-        <name>libid2tag</name>
+        <name>libid3tag</name>
       </utilizes>
       <utilizes>
         <name>libmikmod</name>

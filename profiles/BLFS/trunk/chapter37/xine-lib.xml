@@ -53,7 +53,7 @@
         <name>freeglut</name>
       </utilizes>
       <utilizes>
-        <name>gnome-vfs</name>
+        <name>gnome-vfs2</name>
       </utilizes>
       <utilizes>
         <name>samba</name>

@@ -14,7 +14,19 @@
   <package name="libmikmod" version="&libmikmod-version;">
     <packageinfo>
       <utilizes>
+	<name>alsa-lib</name>
+      </utilizes>
+      <utilizes>
         <name>esound</name>
+      </utilizes>
+      <utilizes>
+	<name>libgus</name>
+      </utilizes>
+      <utilizes>
+	<name>aflib</name>
+      </utilizes>
+      <utilizes>
+	<name>sam9407</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

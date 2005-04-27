@@ -158,6 +158,16 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&mplayer-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&mplayer-patch;</param>
+      </patch>
+    </stage>
     <stage name="Installing">
       <stageinfo>
         <environment>
@@ -196,16 +206,10 @@
         <target>Blue</target>
         <name>/usr/share/mplayer/Skin/default</name>
       </link>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&mplayer-patch;</param>
-      </patch>
       <configure>
         <param>--prefix=/usr</param>
         <param>--confdir=/etc/mplayer</param>
         <param>--enable-largefiles</param>
-        <param>--enable-menu</param>
       </configure>
       <make />
       <make>
@@ -226,6 +230,10 @@
       <copy>
         <source>etc/codecs.conf</source>
         <destination>/etc/mplayer</destination>
+      </copy>
+      <copy>
+	<source>etc/*.conf</source>
+	<destination>/etc/mplayer</destination>
       </copy>
       <unpack>
         <archive>&packages_dir;/&mplayer-font-package;</archive>
