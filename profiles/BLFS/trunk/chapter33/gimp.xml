@@ -17,7 +17,7 @@
         <name>gtk+2</name>
       </requires>
       <requires>
-        <name>libart-lgpl</name>
+        <name>libart_lgpl</name>
       </requires>
       <requires>
         <name>XML-Parser</name>
@@ -62,7 +62,7 @@
 	<name>&mta-impl;</name>
       </utilizes>
       <utilizes>
-        <name>alsa</name>
+        <name>alsa-lib</name>
       </utilizes>
       <utilizes>
         <name>libexif</name>

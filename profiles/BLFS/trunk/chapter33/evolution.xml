@@ -35,6 +35,15 @@
 	<name>&krb-impl;</name>
       </utilizes>
       <utilizes>
+	<name>krb4</name>
+      </utilizes>
+      <utilizes>
+	<name>gnome-pilot-conduits</name>
+      </utilizes>
+      <utilizes>
+	<name>gnome-spell</name>
+      </utilizes>
+      <utilizes>
 	<name>kdebase</name>
       </utilizes>
       <utilizes>

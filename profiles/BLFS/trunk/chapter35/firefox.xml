@@ -40,6 +40,15 @@
       <utilizes>
 	<name>doxygen</name>
       </utilizes>
+      <utilizes>
+	<name>xprint</name>
+      </utilizes>
+      <utilizes>
+	<name>electricfence</name>
+      </utilizes>
+      <utilizes>
+	<name>cairo</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

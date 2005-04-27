@@ -35,13 +35,22 @@
 	<name>gnome-vfs2</name>
       </utilizes>
       <utilizes>
-	<name>libart-lgpl</name>
+	<name>libart_lgpl</name>
       </utilizes>
       <utilizes>
 	<name>&krb-impl;</name>
       </utilizes>
       <utilizes>
 	<name>doxygen</name>
+      </utilizes>
+      <utilizes>
+	<name>xprint</name>
+      </utilizes>
+      <utilizes>
+	<name>electricfence</name>
+      </utilizes>
+      <utilizes>
+	<name>cairo</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

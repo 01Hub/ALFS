@@ -41,16 +41,16 @@
 	<name>guile-www</name>
       </utilizes>
       <utilizes>
-	<name>lwp</name>
+	<name>libwww-perl</name>
       </utilizes>
       <utilizes>
-	<name>html-parser</name>
+	<name>HTML-Parser</name>
       </utilizes>
       <utilizes>
-	<name>datemanip</name>
+	<name>DateManip</name>
       </utilizes>
       <utilizes>
-	<name>finance-quote</name>
+	<name>Finance-Quote</name>
       </utilizes>
       <utilizes>
 	<name>graphviz</name>

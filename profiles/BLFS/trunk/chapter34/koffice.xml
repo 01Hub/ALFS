@@ -20,10 +20,7 @@
       	<name>libjpeg</name>
       </utilizes>
       <utilizes>
-        <name>libart-lgpl</name>
-      </utilizes>
-      <utilizes>
-        <name>python</name>
+        <name>libart_lgpl</name>
       </utilizes>
       <utilizes>
         <name>libxml2</name>
@@ -33,6 +30,9 @@
       </utilizes>
       <utilizes>
         <name>aspell</name>
+      </utilizes>
+      <utilizes>
+        <name>python</name>
       </utilizes>
       <utilizes>
         <name>imagemagick</name>
