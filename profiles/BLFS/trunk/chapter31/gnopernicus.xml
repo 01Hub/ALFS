@@ -28,6 +28,9 @@
       <utilizes>
 	<name>gtk-doc</name>
       </utilizes>
+      <utilizes>
+	<name>brltty</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

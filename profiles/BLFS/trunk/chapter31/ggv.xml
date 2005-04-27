@@ -22,6 +22,9 @@
       <utilizes>
         <name>cups</name>
       </utilizes>
+      <utilizes>
+	<name>lprng</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

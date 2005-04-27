@@ -19,6 +19,24 @@
       <utilizes>
 	<name>java-access-bridge</name>
       </utilizes>
+      <utilizes>
+	<name>festival</name>
+      </utilizes>
+      <utilizes>
+	<name>freetts</name>
+      </utilizes>
+      <utilizes>
+	<name>viavoice</name>
+      </utilizes>
+      <utilizes>
+	<name>eloquence</name>
+      </utilizes>
+      <utilizes>
+	<name>dectalk</name>
+      </utilizes>
+      <utilizes>
+	<name>theta</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

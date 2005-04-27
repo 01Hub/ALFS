@@ -17,14 +17,11 @@
         <name>libgnomeui</name>
       </requires>
       <requires>
+	<name>gst-plugins</name>
+      </requires>
+      <requires>
         <name>scrollkeeper</name>
       </requires>
-      <utilizes>
-        <name>gstreamer</name>
-      </utilizes>
-      <utilizes>
-        <name>gst-plugins</name>
-      </utilizes>
       <utilizes>
         <name>gail</name>
       </utilizes>

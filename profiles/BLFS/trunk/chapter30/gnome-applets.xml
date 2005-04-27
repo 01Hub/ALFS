@@ -31,6 +31,9 @@
       <utilizes>
 	<name>docbook-utils</name>
       </utilizes>
+      <utilizes>
+	<name>libapm</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

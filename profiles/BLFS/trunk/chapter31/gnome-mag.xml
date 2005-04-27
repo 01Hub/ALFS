@@ -16,6 +16,9 @@
       <requires>
         <name>libgail-gnome</name>
       </requires>
+      <utilizes>
+	<name>Xdamage</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

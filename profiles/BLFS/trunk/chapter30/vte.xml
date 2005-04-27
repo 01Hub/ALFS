@@ -22,6 +22,9 @@
       <utilizes>
 	<name>gtk-doc</name>
       </utilizes>
+      <utilizes>
+	<name>pygtk</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

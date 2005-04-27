@@ -40,6 +40,12 @@
       <utilizes>
 	<name>docbook-utils</name>
       </utilizes>
+      <utilizes>
+	<name>medusa</name>
+      </utilizes>
+      <utilizes>  
+	<name>libexif</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

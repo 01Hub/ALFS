@@ -65,21 +65,21 @@
       </stageinfo>
       <mkdir>
         <option>parents</option>
-	<name>/usr/lib/avifile-&avifile-base-version;/win32</name>
+	<name>/usr/lib/avifile-&avifile-major-minor;/win32</name>
       </mkdir>
       <unpack>
         <archive>&packages_dir;/&avifile-binaries-package;</archive>
-        <destination>/usr/lib/avifile-&avifile-base-version;</destination>
+        <destination>/usr/lib/avifile-&avifile-major-minor;</destination>
       </unpack>
       <configure>
         <param>--prefix=/usr</param>
-        <param>--with-win32-path=/usr/lib/avifile-&avifile-base-version;/win32</param>
+        <param>--with-win32-path=/usr/lib/avifile-&avifile-major-minor;/win32</param>
       </configure>
       <make />
       <search_replace>
         <file>avifile.pc</file>
         <find>include/avifile</find>
-        <replace>include/avifile-&avifile-base-version;</replace>
+        <replace>include/avifile-&avifile-major-minor;</replace>
       </search_replace>
       <make>
         <param>install</param>
