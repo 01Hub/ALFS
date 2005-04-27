@@ -49,6 +49,15 @@
       <utilizes>
 	<name>&krb-impl;</name>
       </utilizes>
+      <utilizes>
+	<name>openafs</name>
+      </utilizes>
+      <utilizes>
+	<name>howl</name>
+      </utilizes>
+      <utilizes>
+	<name>hal</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

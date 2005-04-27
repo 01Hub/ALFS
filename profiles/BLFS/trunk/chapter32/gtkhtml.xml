@@ -14,17 +14,14 @@
   <package name="gtkhtml1" version="&gtkhtml1-version;">
     <packageinfo>
       <requires>
-        <name>gconf</name>
-      </requires>
-      <requires>
         <name>gal1</name>
-      </requires>
-      <requires>
-        <name>libglade1</name>
       </requires>
       <requires>
         <name>libcapplet</name>
       </requires>
+      <utilizes>
+	<name>gconf</name>
+      </utilizes>
       <utilizes>
         <name>soup</name>
       </utilizes>

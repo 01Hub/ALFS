@@ -38,6 +38,11 @@
 	<param>-p1</param>
 	<param>-i &packages_dir;/&guppi-gcc34-patch;</param>
       </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&guppi-legend-fix-patch;</param>
+      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>

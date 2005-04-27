@@ -19,6 +19,15 @@
       <requires>
         <name>scrollkeeper</name>
       </requires>
+      <requires>
+	<name>pwlib</name>
+      </requires>
+      <requires>
+	<name>openh323</name>
+      </requires>
+      <utilizes>
+	<name>sdl</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

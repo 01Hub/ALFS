@@ -193,7 +193,7 @@
 
 <!ENTITY j2sdk-bin-package   "j2sdk-&j2sdk-_-version;_&j2sdk-suffix;-linux-i586.bin">
 <!ENTITY j2sdk-bin-md5       "a55a9150977de7d5c7f78d29593a8b8c">
-<!ENTITY j2sdk-bin-directory "j2sdk&j2sdk-version;_&j2sdk-bin-suffix;">
+<!ENTITY j2sdk-bin-directory "j2sdk&j2sdk-version;_&j2sdk-suffix;">
 
 <!ENTITY j2sdk-src-package "j2sdk-&j2sdk-_-version;-src-scsl.zip">
 <!ENTITY j2sdk-src-md5     "387ae674dcd686f3a7a477c191aa8b65">

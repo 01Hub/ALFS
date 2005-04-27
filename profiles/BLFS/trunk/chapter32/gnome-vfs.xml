@@ -17,11 +17,20 @@
         <name>gnome-mime-data</name>
       </requires>
       <requires>
-        <name>gconf</name>
-      </requires>
-      <requires>
         <name>gnome-libs</name>
       </requires>
+      <utilizes>
+	<name>pkgconfig</name>
+      </utilizes>
+      <utilizes>
+	<name>oaf</name>
+      </utilizes>
+      <utilizes>
+        <name>gconf</name>
+      </utilizes>
+      <utilizes>
+	<name>bonobo</name>
+      </utilizes>
       <utilizes>
         <name>openssl</name>
       </utilizes>
@@ -30,6 +39,9 @@
       </utilizes>
       <utilizes>
         <name>cdparanoia</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-utils</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

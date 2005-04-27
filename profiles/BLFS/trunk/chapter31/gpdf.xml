@@ -19,6 +19,9 @@
       <utilizes>
         <name>tex</name>
       </utilizes>
+      <utilizes>
+	<name>libpaper</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

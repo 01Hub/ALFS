@@ -19,6 +19,9 @@
       <requires>
         <name>libxml</name>
       </requires>
+      <requires>
+	<name>popt</name>
+      </requires>
       <utilizes>
         <name>gtk-doc</name>
       </utilizes>

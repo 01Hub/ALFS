@@ -32,6 +32,9 @@
       <utilizes>
 	<name>tcpwrappers</name>
       </utilizes>
+      <utilizes>
+	<name>selinux</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

@@ -14,6 +14,9 @@
   <package name="bonobo" version="&bonobo-version;">
     <packageinfo>
       <requires>
+	<name>oaf</name>
+      </requires>
+      <requires>
 	<name>gnome-print</name>
       </requires>
     </packageinfo>

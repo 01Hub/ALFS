@@ -11,7 +11,7 @@
 
 ]>
 <alfs>
-  <package name="j2sdk-binary" version="&j2sdk-version;_&j2sdk-bin-suffix;">
+  <package name="j2sdk-binary" version="&j2sdk-version;_&j2sdk-suffix;">
     <stage name="Unpacking">
       <stageinfo>
         <base>&build_dir;</base>

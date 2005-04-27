@@ -38,6 +38,8 @@
 <!ENTITY gconf-md5       "613aea1d9b7a9c504f52217451c7bf99">
 <!ENTITY gconf-directory "GConf-&gconf-version;">
 
+<!ENTITY gconf-db43-patch "GConf-&gconf-version;-db43-2.patch">
+
 <!ENTITY gnome-vfs-version   "1.0.5">
 <!ENTITY gnome-vfs-package   "gnome-vfs-&gnome-vfs-version;.tar.bz2">
 <!ENTITY gnome-vfs-md5       "e2a17a6b178f54c43968241258f3e729">

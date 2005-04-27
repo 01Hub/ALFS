@@ -23,7 +23,13 @@
         <name>gnome-libs</name>
       </utilizes>
       <utilizes>
+	<name>bonobo</name>
+      </utilizes>
+      <utilizes>
         <name>python</name>
+      </utilizes>
+      <utilizes>
+	<name>gtk-doc</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

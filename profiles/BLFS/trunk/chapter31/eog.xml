@@ -19,6 +19,9 @@
       <utilizes>
         <name>libjpeg</name>
       </utilizes>
+      <utilizes>
+	<name>libexif</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
