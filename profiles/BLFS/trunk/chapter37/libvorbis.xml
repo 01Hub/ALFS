@@ -20,7 +20,10 @@
         <name>libxslt</name>
       </utilizes>
       <utilizes>
-        <name>pkgconfig	</name>
+        <name>pkgconfig</name>
+      </utilizes>
+      <utilizes>
+	<name>passivetex</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

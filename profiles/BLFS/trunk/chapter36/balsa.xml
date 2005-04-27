@@ -25,6 +25,9 @@
       <requires>
 	<name>libesmtp</name>
       </requires>
+      <requires>
+	<name>gmime</name>
+      </requires>
       <utilizes>
 	<name>libgtkhtml</name>
       </utilizes>
@@ -45,6 +48,15 @@
       </utilizes>
       <utilizes>
 	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>sqlite</name>
+      </utilizes>
+      <utilizes>
+	<name>gpgme</name>
+      </utilizes>
+      <utilizes>
+	<name>gnupg</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
