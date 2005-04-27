@@ -22,6 +22,18 @@
       <utilizes>
 	<name>python</name>
       </utilizes>
+      <utilizes>
+	<name>pygtk</name>
+      </utilizes>
+      <utilizes>
+	<name>libgnomedb</name>
+      </utilizes>
+      <utilizes>
+	<name>pxlib</name>
+      </utilizes>
+      <utilizes>
+	<name>psiconv</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

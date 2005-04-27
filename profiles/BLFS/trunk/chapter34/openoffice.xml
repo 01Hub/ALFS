@@ -52,7 +52,7 @@
         <name>linuxpam</name>
       </utilizes>
       <utilizes>
-        <name>libart-lgpl</name>
+        <name>libart_lgpl</name>
       </utilizes>
       <utilizes>
         <name>apache-ant</name>
