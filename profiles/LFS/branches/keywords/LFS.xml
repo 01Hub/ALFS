@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+
+        LFS profile, version SVN
+        =================================
+        by Dave Wheeler (davewheeler69@hotmail.com)
+        updates by "Mark"
+        updates by Kevin P. Fleming (kpfleming@linuxfromscratch.org)
+        updates by Jamie Bennett (jamie@linuxfromscratch.org)
+        updates by Thomas Pegg (thomasp@linuxfromscratch.org)
+        Adapted from a profile by Vassili Dzuba (vassilidzuba@nerim.net)
+        Adapted from a profile by Neven Has - haski@sezampro.yu
+
+        Note : read the file README before running this profile
+
+-->
+<!DOCTYPE alfs SYSTEM "DTD/ALFS.dtd"
+[
+
+<!ENTITY % general_entities SYSTEM "config/general.ent">
+%general_entities;
+]>
+<alfs version="3.1" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <stage name="Chapter 5 - Constructing a Temporary System">
+    <xi:include href="chapter05/creatingtoolsdir.xml" />
+    <xi:include href="chapter05/addinguser.xml" />
+    <xi:include href="chapter05/settingenvironment.xml" />
+    <stage name="Installing packages in /tools as &lfs-user;">
+      <stageinfo>
+        <root>/</root>
+        <user>&lfs-user;</user>
+        <environment>
+          <variable name="LFS">&LFS;</variable>
+          <variable name="LC_ALL">POSIX</variable>
+          <variable name="PATH">/tools/bin:/bin:/usr/bin</variable>
+          <variable name="CFLAGS">&gcc_optimizations;</variable>
+          <variable name="CXXFLAGS">&gcc_optimizations;</variable>
+          <variable name="TERM">&TERM;</variable>
+          <variable name="HOME">&lfs-user-dir;</variable>
+        </environment>
+      </stageinfo>
+      <xi:include href="chapter05/binutils-pass1.xml" />
+      <xi:include href="chapter05/gcc-pass1.xml" />
+      <xi:include href="chapter05/libc-headers.xml" />
+      <xi:include href="chapter05/glibc.xml" />
+      <xi:include href="chapter05/adjustingtoolchain.xml" />
+      <xi:include href="chapter05/tcl.xml" />
+      <xi:include href="chapter05/expect.xml" />
+      <xi:include href="chapter05/dejagnu.xml" />
+      <xi:include href="chapter05/gcc-pass2.xml" />
+      <xi:include href="chapter05/binutils-pass2.xml" />
+      <xi:include href="chapter05/gawk.xml" />
+      <xi:include href="chapter05/coreutils.xml" />
+      <xi:include href="chapter05/bzip2.xml" />
+      <xi:include href="chapter05/gzip.xml" />
+      <xi:include href="chapter05/diffutils.xml" />
+      <xi:include href="chapter05/findutils.xml" />
+      <xi:include href="chapter05/make.xml" />
+      <xi:include href="chapter05/grep.xml" />
+      <xi:include href="chapter05/sed.xml" />
+      <xi:include href="chapter05/gettext.xml" />
+      <xi:include href="chapter05/ncurses.xml" />
+      <xi:include href="chapter05/patch.xml" />
+      <xi:include href="chapter05/tar.xml" />
+      <xi:include href="chapter05/texinfo.xml" />
+      <xi:include href="chapter05/bash.xml" />
+      <xi:include href="chapter05/m4.xml" />
+      <xi:include href="chapter05/bison.xml" />
+      <xi:include href="chapter05/flex.xml" />
+      <xi:include href="chapter05/util-linux.xml" />
+      <xi:include href="chapter05/perl.xml" />
+      <xi:include href="chapter05/strip.xml" />
+    </stage>
+  </stage>
+  <stage name="Chapter 6 - Installing Basic System Software">
+    <stage name="Creating Directories and Mounting Virtual Kernel File Systems">
+      <xi:include href="chapter06/kernfs.xml" />
+    </stage>
+    <stage name="Chroot with /tools">
+      <stageinfo>
+        <root>&LFS;</root>
+        <environment>
+          <variable name="HOME">/root</variable>
+          <variable name="TERM">&TERM;</variable>
+          <variable name="PS1">'\u:\w\$ '</variable>
+          <variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin</variable>
+          <variable name="CFLAGS">&gcc_optimizations;</variable>
+          <variable name="CXXFLAGS">&gcc_optimizations;</variable>
+        </environment>
+      </stageinfo>
+      <xi:include href="chapter06/changingowner.xml" />
+      <xi:include href="chapter06/creatingdirs.xml" />
+      <xi:include href="chapter06/createfiles.xml" />
+      <xi:include href="chapter06/pwdgroup.xml" />
+      <xi:include href="chapter06/basic-dev.xml" />
+      <xi:include href="chapter06/libc-headers.xml" />
+      <xi:include href="chapter06/man-pages.xml" />
+      <xi:include href="chapter06/glibc.xml" />
+      <xi:include href="chapter06/readjustingtoolchain.xml" />
+      <xi:include href="chapter06/binutils.xml" />
+      <xi:include href="chapter06/gcc.xml" />
+      <xi:include href="chapter06/coreutils.xml" />
+      <xi:include href="chapter06/zlib.xml" />
+      <xi:include href="chapter06/mktemp.xml" />
+      <xi:include href="chapter06/iana-etc.xml" />
+      <xi:include href="chapter06/findutils.xml" />
+      <xi:include href="chapter06/gawk.xml" />
+      <xi:include href="chapter06/ncurses.xml" />
+      <xi:include href="chapter06/readline.xml" />
+      <xi:include href="chapter06/vim.xml" />
+      <xi:include href="chapter06/m4.xml" />
+      <xi:include href="chapter06/bison.xml" />
+      <xi:include href="chapter06/less.xml" />
+      <xi:include href="chapter06/groff.xml" />
+      <xi:include href="chapter06/sed.xml" />
+      <xi:include href="chapter06/flex.xml" />
+      <xi:include href="chapter06/gettext.xml" />
+      <xi:include href="chapter06/inetutils.xml" />
+      <xi:include href="chapter06/iproute2.xml" />
+      <xi:include href="chapter06/perl.xml" />
+      <xi:include href="chapter06/texinfo.xml" />
+      <xi:include href="chapter06/autoconf.xml" />
+      <xi:include href="chapter06/automake.xml" />
+      <xi:include href="chapter06/bash.xml" />
+      <xi:include href="chapter06/file.xml" />
+      <xi:include href="chapter06/libtool.xml" />
+      <xi:include href="chapter06/bzip2.xml" />
+      <xi:include href="chapter06/diffutils.xml" />
+      <xi:include href="chapter06/kbd.xml" />
+      <xi:include href="chapter06/e2fsprogs.xml" />
+      <xi:include href="chapter06/grep.xml" />
+      <xi:include href="chapter06/grub.xml" />
+      <xi:include href="chapter06/gzip.xml" />
+      <xi:include href="chapter06/hotplug.xml" />
+      <xi:include href="chapter06/man.xml" />
+      <xi:include href="chapter06/make.xml" />
+      <xi:include href="chapter06/module-init-tools.xml" />
+      <xi:include href="chapter06/patch.xml" />
+      <xi:include href="chapter06/procps.xml" />
+      <xi:include href="chapter06/psmisc.xml" />
+      <xi:include href="chapter06/shadow.xml" />
+      <xi:include href="chapter06/sysklogd.xml" />
+      <xi:include href="chapter06/sysvinit.xml" />
+      <xi:include href="chapter06/tar.xml" />
+      <xi:include href="chapter06/udev.xml" />
+      <xi:include href="chapter06/util-linux.xml" />
+      <xi:include href="chapter06/strip.xml" />
+    </stage>
+  </stage>
+  <stage name="Chapter 7 - Setting Up System Bootscripts">
+    <stageinfo>
+      <root>&LFS;</root>
+      <environment>
+        <variable name="HOME">/root</variable>
+        <variable name="TERM">&TERM;</variable>
+        <variable name="PS1">'\u:\w\$ '</variable>
+        <variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin</variable>
+        <variable name="CFLAGS">&gcc_optimizations;</variable>
+        <variable name="CXXFLAGS">&gcc_optimizations;</variable>
+      </environment>
+    </stageinfo>
+    <xi:include href="chapter07/bootscripts.xml" />
+    <xi:include href="chapter07/setclock.xml" />
+    <xi:include href="config/console.xml" />
+    <xi:include href="chapter07/inputrc.xml" />
+    <xi:include href="chapter07/profile.xml" />
+    <xi:include href="chapter07/hostname.xml" />
+    <xi:include href="chapter07/hosts.xml" />
+    <xi:include href="chapter07/network.xml" />
+  </stage>
+  <stage name="Chapter 8 - Making the LFS System Bootable">
+    <stageinfo>
+      <root>&LFS;</root>
+      <environment>
+        <variable name="HOME">/root</variable>
+        <variable name="TERM">&TERM;</variable>
+        <variable name="PS1">'\u:\w\$ '</variable>
+        <variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin</variable>
+        <variable name="CFLAGS">&gcc_optimizations;</variable>
+        <variable name="CXXFLAGS">&gcc_optimizations;</variable>
+      </environment>
+    </stageinfo>
+    <xi:include href="chapter08/fstab.xml" />
+    <xi:include href="chapter08/kernel.xml" />
+    <xi:include href="chapter08/grub.xml" />
+  </stage>
+  <stage name="Chapter 9 - The End">
+    <stageinfo>
+      <root>&LFS;</root>
+      <environment>
+        <variable name="HOME">/root</variable>
+        <variable name="TERM">&TERM;</variable>
+        <variable name="PS1">'\u:\w\$ '</variable>
+        <variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin</variable>
+        <variable name="CFLAGS">&gcc_optimizations;</variable>
+        <variable name="CXXFLAGS">&gcc_optimizations;</variable>
+      </environment>
+    </stageinfo>
+    <xi:include href="chapter09/libxml2.xml" />
+    <xi:include href="chapter09/nALFS.xml" />
+    <remove>/tools</remove>
+    <textdump>
+      <file>/etc/lfs-release</file>
+      <content>=&LFS-version;</content>
+    </textdump>
+  </stage>
+  <stage name="Finishing Up">
+    <remove>/tools</remove>
+    <execute command="umount">
+      <param>&LFS;/dev/pts</param>
+      <param>&LFS;/dev/shm</param>
+      <param>&LFS;/dev</param>
+      <param>&LFS;/proc</param>
+      <param>&LFS;/sys</param>
+      <!-- If you used a bind mount for your package dir, unmount it here. -->
+      <!-- <param>&LFS;&packages_dir;</param> -->
+    </execute>
+  </stage>
+</alfs>

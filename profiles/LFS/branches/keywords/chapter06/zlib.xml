@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+<alfs>
+  <package name="zlib" version="&zlib-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&zlib-md5;</digest>
+        <archive>&packages_dir;/&zlib-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&zlib-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--shared</param>
+        <param>--libdir=/lib</param>
+      </configure>
+      <make />
+      <!--
+      <make>
+        <param>check</param>
+      </make>
+      -->
+      <make>
+        <param>install</param>
+      </make>
+      <remove>/lib/libz.so</remove>
+      <link>
+        <option>force</option>
+        <target>../../lib/libz.so.&zlib-version;</target>
+        <name>/usr/lib/libz.so</name>
+      </link>
+      <make>
+        <param>clean</param>
+      </make>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <!--
+      <make>
+        <param>check</param>
+      </make>
+      -->
+      <make>
+        <param>install</param>
+      </make>
+      <permissions mode="644">
+        <name>/usr/lib/libz.a</name>
+      </permissions>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&zlib-directory;</remove>
+    </stage>
+  </package>
+</alfs>
