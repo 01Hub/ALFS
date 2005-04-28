@@ -19,8 +19,9 @@
 <!ENTITY udftools-directory "udftools-&udftools-version;">
 
 <!ENTITY udftools-patch         "udftools-&udftools-version;.patch">
-<!ENTITY udftools-patch-package "&udftools-patch;.bz">
+<!ENTITY udftools-patch-package "&udftools-patch;.bz2">
 <!ENTITY udftools-patch-md5     "4fe44166cf7c636ec41758ae763d79be">
 
-<!ENTITY udftools-kernel-patch "udftools-packet-2.6.8-2.patch.bz2">
+<!ENTITY udftools-kernel-patch "udftools-packet-2.6.8-2.patch">
+<!ENTITY udftools-kernel-patch-package "&udftools-kernel-patch;.bz2">
 <!ENTITY udftools-kernel-md5   "a96b61f5137fdcc9050804d48aa66983">

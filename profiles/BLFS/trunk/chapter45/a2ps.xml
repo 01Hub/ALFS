@@ -43,8 +43,8 @@
       </search_replace>
       <search_replace>
         <file>configure</file>
-        <find>/usr/local/share/ghostscript</find>
-        <replace>/usr/share/ghostscript</replace>
+        <find>/usr/local/share</find>
+        <replace>/usr/share</replace>
       </search_replace>
       <search_replace>
 	<file>lib/path-concat.c</file>

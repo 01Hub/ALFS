@@ -81,7 +81,7 @@
 
 <!-- Ghostscript implementation -->
 <!-- esp-gs (espghostscript) or afpl-gs (ghostscript)-->
-<!ENTITY ghostscript-impl "espghostscript">
+<!ENTITY ghostscript-impl "esp-ghostscript">
 
 <!-- GIF library implementation-->
 <!-- libungif or giflib -->

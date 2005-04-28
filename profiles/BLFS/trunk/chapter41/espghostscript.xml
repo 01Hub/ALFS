@@ -11,7 +11,7 @@
 
 ]>
 <alfs>
-  <package name="espghostscript" version="&espghostscript-version;">
+  <package name="esp-ghostscript" version="&espghostscript-version;">
     <packageinfo>
       <utilizes>
         <name>cups</name>

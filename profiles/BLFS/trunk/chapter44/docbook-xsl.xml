@@ -29,9 +29,13 @@
       <stageinfo>
         <base>&build_dir;/&docbook-xsl-directory;</base>
       </stageinfo>
-      <execute command="install">
-        <param>-d /usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;</param>
-      </execute>
+      <mkdir>
+	<name>/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;</name>
+      </mkdir>
+      <ownership user="root" group="root">
+	<option>recursive</option>
+	<name>.</name>
+      </ownership>
       <copy>
         <option>archive</option>
         <option>force</option>
@@ -89,6 +93,30 @@
         <param>"file:///etc/xml/docbook"</param>
         <param>/etc/xml/catalog</param>
       </execute>
+      <execute command="xmlcatalog">
+        <param>--noout --add "rewriteSystem"</param>
+        <param>"http://docbook.sourceforge.net/release/xsl/1.65.1"</param>
+        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
+        <param>/etc/xml/catalog</param>
+      </execute>
+      <execute command="xmlcatalog">
+        <param>--noout --add "rewriteURI"</param>
+        <param>"http://docbook.sourceforge.net/release/xsl/1.65.1"</param>
+        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
+        <param>/etc/xml/catalog</param>
+      </execute>
+      <execute command="xmlcatalog">
+        <param>--noout --add "rewriteSystem"</param>
+        <param>"http://docbook.sourceforge.net/release/xsl/current"</param>
+        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
+        <param>/etc/xml/catalog</param>
+      </execute>
+      <execute command="xmlcatalog">
+        <param>--noout --add "rewriteURI"</param>
+        <param>"http://docbook.sourceforge.net/release/xsl/current"</param>
+        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
+        <param>/etc/xml/catalog</param>
+      </execute>
       <textdump>
       	<file>/etc/profile.d/xsl.sh</file>
 	<content>
@@ -100,7 +128,6 @@
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&docbook-xsl-directory;</remove>
-      <remove>&build_dir;/dircheck.sh</remove>
     </stage>
   </package>
 </alfs>

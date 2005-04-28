@@ -11,7 +11,7 @@
 
 ]>
 <alfs>
-  <package name="afpl ghostscript" version="&afplghostscript-version;">
+  <package name="ghostscript" version="&afplghostscript-version;">
     <packageinfo>
       <utilizes>
         <name>libjpeg</name>

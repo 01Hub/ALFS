@@ -39,6 +39,10 @@
       	<option>parents</option>
 	<name>/usr/share/xml/docbook/xml-dtd-&xml-dtd-version;</name>
       </mkdir>
+      <ownership user="root" group="root">
+	<option>recursive</option>
+	<name>.</name>
+      </ownership>
       <copy>
         <option>archive</option>
         <option>force</option>
@@ -134,30 +138,6 @@
         <param>/etc/xml/catalog</param>
       </execute>
       <execute command="xmlcatalog">
-        <param>--noout --add "delegateSystem"</param>
-        <param>"/usr/share/docbook/"</param>
-        <param>"file:///etc/xml/docbook"</param>
-        <param>/etc/xml/catalog</param>
-      </execute>
-      <execute command="xmlcatalog">
-        <param>--noout --add "delegateURI"</param>
-        <param>"/usr/share/docbook/"</param>
-        <param>"file:///etc/xml/docbook"</param>
-        <param>/etc/xml/catalog</param>
-      </execute>
-      <execute command="xmlcatalog">
-        <param>--noout --add "rewriteSystem"</param>
-        <param>"/usr/share/docbook"</param>
-        <param>"file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;"</param>
-        <param>/etc/xml/docbook</param>
-      </execute>
-      <execute command="xmlcatalog">
-        <param>--noout --add "rewriteURI"</param>
-        <param>"/usr/share/docbook"</param>
-        <param>"file:///usr/share/xml/docbook/xml-dtd-&xml-dtd-version;"</param>
-        <param>/etc/xml/docbook</param>
-      </execute>
-      <execute command="xmlcatalog">
         <param>--noout --add "public"</param>
         <param>"-//OASIS//DTD DocBook XML V4.1.2//EN"</param>
         <param>"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"</param>
@@ -196,7 +176,6 @@
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&xml-dtd-directory;</remove>
-      <remove>&build_dir;/dircheck.sh</remove>
     </stage>
   </package>
 </alfs>

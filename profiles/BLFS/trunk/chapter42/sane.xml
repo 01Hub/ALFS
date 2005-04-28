@@ -20,6 +20,12 @@
         <name>libusb</name>
       </utilizes>
       <utilizes>
+	<name>libieee1284</name>
+      </utilizes>
+      <utilizes>
+	<name>gphoto2</name>
+      </utilizes>
+      <utilizes>
 	<name>tex</name>
       </utilizes>
       <utilizes>

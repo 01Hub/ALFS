@@ -31,6 +31,12 @@
       <utilizes>
 	<name>Perl-Tk</name>
       </utilizes>
+      <utilizes>
+	<name>t1lib</name>
+      </utilizes>
+      <utilizes>
+	<name>libwww</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
