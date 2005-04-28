@@ -12,6 +12,14 @@
 ]>
 <alfs>
 <package name="jadetex" version="&jadetex-version;">
+  <packageinfo>
+    <requires>
+      <name>tex</name>
+    </requires>
+    <requires>
+      <name>openjade</name>
+    </requires>
+  </packageinfo>
   <stage name="Unpacking.">
     <unpack>
       <archive>&packages_dir;/&jadetex-package;</archive>

@@ -19,6 +19,15 @@
     <utilizes>
       <name>libxslt</name>
     </utilizes>
+    <utilizes>
+      <name>jimi</name>
+    </utilizes>
+    <utilizes>
+      <name>batik</name>
+    </utilizes>
+    <utilizes>
+      <name>forrest</name>
+    </utilizes>
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>

@@ -4,10 +4,12 @@
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch43.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % xml_version_entities SYSTEM "../config/packages/ch44.ent">
 
 %general_entities;
 %package_entities;
 %config_entities;
+%xml_version_entities;
 
 ]>
 <alfs>
@@ -82,9 +84,9 @@
         <param>/etc/sgml/openjade-&openjade-version;.cat</param>
       </execute>
       <execute command="echo">
-        <param>"SYSTEM \"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd\"</param>
-        <param>\"/usr/share/xml/docbook/xml-dtd-4.3/docbookx.dtd\"" &gt;&gt;</param>
-        <param>/usr/share/sgml/openjade-1.3.2/catalog</param>
+        <param>"SYSTEM \"http://www.oasis-open.org/docbook/xml/&xml-dtd-version;/docbookx.dtd\"</param>
+        <param>\"/usr/share/xml/docbook/xml-dtd-&xml-dtd-version;/docbookx.dtd\"" &gt;&gt;</param>
+        <param>/usr/share/sgml/openjade-&openjade-version;/catalog</param>
       </execute>
     </stage>
     <stage name="Cleanup">

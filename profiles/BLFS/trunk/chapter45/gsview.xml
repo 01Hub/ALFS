@@ -26,6 +26,21 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&gsview-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gsview-pstotext-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gsview-lang-patch;</param>
+      </patch>
+    </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&gsview-directory;</base>
@@ -44,16 +59,6 @@
         <find>GSVIEW_ROOT=/usr/local</find>
         <replace>GSVIEW_ROOT=/usr</replace>
       </search_replace>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&gsview-pstotext-patch;</param>
-      </patch>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&gsview-lang-patch;</param>
-      </patch>
       <make />
       <make>
         <param>install</param>

@@ -12,6 +12,11 @@
 ]>
 <alfs>
   <package name="docbook-dsssl" version="&docbook-dsssl-version;">
+    <packageinfo>
+      <requires>
+	<name>sgml-common</name>
+      </requires>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <archive>&packages_dir;/&docbook-dsssl-package;</archive>
