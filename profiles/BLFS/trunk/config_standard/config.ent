@@ -79,6 +79,12 @@
 <!-- XFree86 (xfree86) or X.org (xorg) -->
 <!ENTITY ximpl "xorg">
 
+<!-- Qt install location -->
+<!-- Qt can either be installed in either the /usr or /opt hierarchy 
+  configure by setting the following entity to "qt" for /usr or "qt-opt" for
+  /opt -->
+<!ENTITY qt-install "qt">
+
 <!-- Ghostscript implementation -->
 <!-- esp-gs (esp-ghostscript) or afpl-gs (ghostscript)-->
 <!ENTITY ghostscript-impl "esp-ghostscript">

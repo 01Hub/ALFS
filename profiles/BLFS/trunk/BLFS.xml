@@ -250,7 +250,7 @@
       <xi:include href="chapter25/xfree86.xml" />
     </stage>
     <stage name="Chapter 26 (X Libraries)">
-      <xi:include href="chapter26/qt.xml" />
+      <xi:include href="chapter26/&qt-install;.xml" />
       <xi:include href="chapter26/gtk+.xml" />
       <xi:include href="chapter26/pango.xml" />
       <xi:include href="chapter26/atk.xml" />
