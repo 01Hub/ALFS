@@ -14,7 +14,8 @@
   <package name="compface" version="&compface-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&compface-package;</archive>
+        <digest>&compface-md5;</digest>
+	<archive>&packages_dir;/&compface-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

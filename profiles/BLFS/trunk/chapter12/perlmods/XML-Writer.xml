@@ -14,6 +14,7 @@
 <package name="XML-Writer" version="&XML-Writer-version;">
   <stage name="Unpacking.">
     <unpack>
+      <digest>&XML-Writer-md5;</digest>
       <archive>&packages_dir;/&XML-Writer-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

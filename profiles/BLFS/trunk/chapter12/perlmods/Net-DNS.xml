@@ -19,6 +19,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&Net-DNS-md5;</digest>
       <archive>&packages_dir;/&Net-DNS-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

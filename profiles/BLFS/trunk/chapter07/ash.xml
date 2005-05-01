@@ -14,7 +14,8 @@
   <package name="ash" version="&ash-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&ash-package;</archive>
+        <digest>&ash-md5;</digest>
+	<archive>&packages_dir;/&ash-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

@@ -22,6 +22,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&Perl-Tk-md5;</digest>
       <archive>&packages_dir;/&Perl-Tk-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

@@ -14,7 +14,8 @@
   <package name="libpng" version="&libpng-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libpng-package;</archive>
+        <digest>&libpng-md5;</digest>
+	<archive>&packages_dir;/&libpng-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

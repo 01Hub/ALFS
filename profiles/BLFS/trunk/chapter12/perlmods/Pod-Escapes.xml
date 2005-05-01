@@ -14,6 +14,7 @@
 <package name="Pod-Escapes" version="&Pod-Escapes-version;">
   <stage name="Unpacking.">
     <unpack>
+      <digest>&Pod-Escapes-md5;</digest>
       <archive>&packages_dir;/&Pod-Escapes-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

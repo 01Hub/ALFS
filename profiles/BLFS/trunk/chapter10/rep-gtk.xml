@@ -25,7 +25,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&rep-gtk-package;</archive>
+        <digest>&rep-gtk-md5;</digest>
+	<archive>&packages_dir;/&rep-gtk-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

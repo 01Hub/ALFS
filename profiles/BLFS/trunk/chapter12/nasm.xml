@@ -14,7 +14,8 @@
   <package name="nasm" version="&nasm-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&nasm-package;</archive>
+        <digest>&nasm-md5;</digest>
+	<archive>&packages_dir;/&nasm-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

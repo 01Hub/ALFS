@@ -25,7 +25,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&desktop-file-utils-package;</archive>
+        <digest>&desktop-file-utils-md5;</digest>
+	<archive>&packages_dir;/&desktop-file-utils-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

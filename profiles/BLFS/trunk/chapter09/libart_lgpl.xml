@@ -14,7 +14,8 @@
   <package name="libart_lgpl" version="&libart_lgpl-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libart_lgpl-package;</archive>
+        <digest>&libart_lgpl-md5;</digest>
+	<archive>&packages_dir;/&libart_lgpl-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

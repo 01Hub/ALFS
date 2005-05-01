@@ -14,7 +14,8 @@
   <package name="glib" version="&glib-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&glib-package;</archive>
+        <digest>&glib-md5;</digest>
+	<archive>&packages_dir;/&glib-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

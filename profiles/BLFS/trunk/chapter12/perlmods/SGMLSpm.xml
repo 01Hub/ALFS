@@ -14,6 +14,7 @@
 <package name="SGMLSpm" version="&SGMLSpm-version;">
   <stage name="Unpacking.">
     <unpack>
+      <digest>&SGMLSpm-md5;</digest>
       <archive>&packages_dir;/&SGMLSpm-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

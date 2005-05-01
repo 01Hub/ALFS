@@ -14,7 +14,8 @@
   <package name="gmp" version="&gmp-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gmp-package;</archive>
+        <digest>&gmp-md5;</digest>
+	<archive>&packages_dir;/&gmp-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

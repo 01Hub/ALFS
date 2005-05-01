@@ -14,7 +14,8 @@
   <package name="libxml" version="&libxml-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libxml-package;</archive>
+        <digest>&libxml-md5;</digest>
+	<archive>&packages_dir;/&libxml-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

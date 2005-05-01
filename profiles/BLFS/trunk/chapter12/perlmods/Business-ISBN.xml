@@ -19,6 +19,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&Business-ISBN-md5;</digest>
       <archive>&packages_dir;/&Business-ISBN-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

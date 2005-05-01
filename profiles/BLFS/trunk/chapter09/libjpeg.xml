@@ -14,7 +14,8 @@
   <package name="libjpeg" version="&libjpeg-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libjpeg-package;</archive>
+        <digest>&libjpeg-md5;</digest>
+	<archive>&packages_dir;/&libjpeg-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

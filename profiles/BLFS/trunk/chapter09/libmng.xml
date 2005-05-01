@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libmng-package;</archive>
+        <digest>&libmng-md5;</digest>
+	<archive>&packages_dir;/&libmng-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

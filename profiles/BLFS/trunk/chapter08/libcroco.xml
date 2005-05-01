@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libcroco-package;</archive>
+        <digest>&libcroco-md5;</digest>
+	<archive>&packages_dir;/&libcroco-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

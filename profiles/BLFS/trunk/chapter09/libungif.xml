@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libungif-package;</archive>
+        <digest>&libungif-md5;</digest>
+	<archive>&packages_dir;/&libungif-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

@@ -14,11 +14,13 @@
   <package name="popt" version="&popt-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&popt-package;</archive>
+        <digest>&popt-md5;</digest>
+	<archive>&packages_dir;/&popt-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <unpack>
-        <archive>&packages_dir;/&popt-patch-package;</archive>
+        <digest>&popt-patch-md5;</digest>
+	<archive>&packages_dir;/&popt-patch-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

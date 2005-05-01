@@ -14,7 +14,8 @@
   <package name="freetype" version="&freetype-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&freetype-package;</archive>
+        <digest>&freetype-md5;</digest>
+	<archive>&packages_dir;/&freetype-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

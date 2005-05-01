@@ -14,6 +14,7 @@
 <package name="HTML-Tagset" version="&HTML-Tagset-version;">
   <stage name="Unpacking.">
     <unpack>
+      <digest>&HTML-Tagset-md5;</digest>
       <archive>&packages_dir;/&HTML-Tagset-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

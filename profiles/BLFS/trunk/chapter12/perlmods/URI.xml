@@ -19,6 +19,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&URI-md5;</digest>
       <archive>&packages_dir;/&URI-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

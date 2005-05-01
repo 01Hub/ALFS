@@ -14,7 +14,8 @@
   <package name="slang" version="&slang-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&slang-package;</archive>
+        <digest>&slang-md5;</digest>
+	<archive>&packages_dir;/&slang-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

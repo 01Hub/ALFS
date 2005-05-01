@@ -19,6 +19,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&apache-ant-md5;</digest>
       <archive>&packages_dir;/&apache-ant-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

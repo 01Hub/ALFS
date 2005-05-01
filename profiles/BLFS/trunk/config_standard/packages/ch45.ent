@@ -47,7 +47,7 @@
 <!ENTITY xpdf-freetype-patch-md5 "7684351f52644de9264bceacdae576c6">
 
 <!ENTITY fop-version    "0.20.5">
-<!ENTITY fop-package    "fop-&fop-version;-src.tar.bz2">
+<!ENTITY fop-package    "fop-&fop-version;.tar.bz2">
 <!ENTITY fop-md5        "c9a738ed9f9f8313384d70fd027ae801">
 <!ENTITY fop-directory  "fop-&fop-version;">
 

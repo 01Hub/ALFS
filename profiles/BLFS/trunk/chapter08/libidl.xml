@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libidl-package;</archive>
+        <digest>&libidl-md5;</digest>
+	<archive>&packages_dir;/&libidl-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

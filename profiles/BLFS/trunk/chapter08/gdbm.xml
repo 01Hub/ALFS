@@ -14,7 +14,8 @@
   <package name="gdbm" version="&gdbm-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gdbm-package;</archive>
+        <digest>&gdbm-md5;</digest>
+	<archive>&packages_dir;/&gdbm-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

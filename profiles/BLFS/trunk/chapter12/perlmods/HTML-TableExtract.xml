@@ -14,6 +14,7 @@
 <package name="HTML-TableExtract" version="&HTML-TableExtract-version;">
   <stage name="Unpacking.">
     <unpack>
+      <digest>&HTML-TableExtract-md5;</digest>
       <archive>&packages_dir;/&HTML-TableExtract-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

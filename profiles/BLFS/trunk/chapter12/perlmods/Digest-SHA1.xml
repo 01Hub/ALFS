@@ -14,6 +14,7 @@
 <package name="Digest-SHA1" version="&Digest-SHA1-version;">
   <stage name="Unpacking.">
     <unpack>
+      <digest>&Digest-SHA1-md5;</digest>
       <archive>&packages_dir;/&Digest-SHA1-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

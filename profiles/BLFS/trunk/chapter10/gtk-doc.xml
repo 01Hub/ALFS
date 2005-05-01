@@ -28,7 +28,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gtk-doc-package;</archive>
+        <digest>&gtk-doc-md5;</digest>
+	<archive>&packages_dir;/&gtk-doc-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

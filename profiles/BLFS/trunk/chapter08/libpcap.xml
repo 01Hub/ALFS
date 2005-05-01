@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libpcap-package;</archive>
+        <digest>&libpcap-md5;</digest>
+	<archive>&packages_dir;/&libpcap-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

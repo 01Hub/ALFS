@@ -28,6 +28,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&libwww-perl-md5;</digest>
       <archive>&packages_dir;/&libwww-perl-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

@@ -95,15 +95,18 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&j2sdk-src-package;</archive>
+        <digest>&j2sdk-src-md5;</digest>
+	<archive>&packages_dir;/&j2sdk-src-package;</archive>
         <destination>&build_dir;/java-build</destination>
       </unpack>
       <unpack>
-        <archive>&packages_dir;/&j2sdk-src-bin-package;</archive>
+        <digest>&j2sdk-src-bin-md5;</digest>
+	<archive>&packages_dir;/&j2sdk-src-bin-package;</archive>
         <destination>&build_dir;/java-build</destination>
       </unpack>
       <unpack>
-        <archive>&packages_dir;/&j2sdk-src-mozilla-headers-package;</archive>
+        <digest>&j2sdk-src-mozilla-headers-md5;</digest>
+	<archive>&packages_dir;/&j2sdk-src-mozilla-headers-package;</archive>
         <destination>&build_dir;/java-build</destination>
       </unpack>
     </stage>

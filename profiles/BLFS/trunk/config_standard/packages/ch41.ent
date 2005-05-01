@@ -5,7 +5,7 @@
 <!ENTITY cups-md5       "4ce09b1dce09b6b9398af0daae9adf63">
 <!ENTITY cups-directory "cups-&cups-version;">
 
-<!ENTITY lprng-version   "3.8.26">
+<!ENTITY lprng-version   "3.8.28">
 <!ENTITY lprng-package   "LPRng-&lprng-version;.tar.bz2">
 <!ENTITY lprng-md5       "d986978aecfa3051a764718f34e44e54">
 <!ENTITY lprng-directory "LPRng-&lprng-version;">

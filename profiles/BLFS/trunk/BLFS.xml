@@ -401,6 +401,7 @@
     </stage>
     <stage name="Chapter 46 (Typesetting)">
       <xi:include href="chapter46/tex.xml" />
+      <xi:include href="chapter46/jadetex.xml" />
     </stage>
   </stage>
 </alfs>

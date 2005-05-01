@@ -14,7 +14,8 @@
   <package name="cpio" version="&cpio-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&cpio-package;</archive>
+        <digest>&cpio-md5;</digest>
+	<archive>&packages_dir;/&cpio-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
