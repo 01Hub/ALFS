@@ -14,7 +14,8 @@
   <package name="whois" version="&whois-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&whois-package;</archive>
+        <digest>&whois-md5;</digest>
+	<archive>&packages_dir;/&whois-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

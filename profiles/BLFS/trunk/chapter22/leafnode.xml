@@ -30,7 +30,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&leafnode-package;</archive>
+        <digest>&leafnode-md5;</digest>
+	<archive>&packages_dir;/&leafnode-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

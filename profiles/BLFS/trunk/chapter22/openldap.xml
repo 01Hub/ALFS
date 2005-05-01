@@ -40,7 +40,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&openldap-package;</archive>
+        <digest>&openldap-md5;</digest>
+	<archive>&packages_dir;/&openldap-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

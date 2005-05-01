@@ -43,7 +43,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&w3m-package;</archive>
+        <digest>&w3m-md5;</digest>
+	<archive>&packages_dir;/&w3m-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

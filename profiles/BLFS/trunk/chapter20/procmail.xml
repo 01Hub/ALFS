@@ -14,7 +14,8 @@
   <package name="procmail" version="&procmail-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&procmail-package;</archive>
+        <digest>&procmail-md5;</digest>
+	<archive>&packages_dir;/&procmail-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

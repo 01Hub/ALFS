@@ -49,6 +49,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&ethereal-md5;</digest>
       <archive>&packages_dir;/&ethereal-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

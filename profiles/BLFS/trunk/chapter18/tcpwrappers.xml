@@ -14,7 +14,8 @@
   <package name="tcpwrappers" version="&tcpwrappers-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&tcpwrappers-package;</archive>
+        <digest>&tcpwrappers-md5;</digest>
+	<archive>&packages_dir;/&tcpwrappers-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

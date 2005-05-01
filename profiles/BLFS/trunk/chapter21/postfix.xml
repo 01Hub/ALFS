@@ -42,7 +42,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&postfix-package;</archive>
+        <digest>&postfix-md5;</digest>
+	<archive>&packages_dir;/&postfix-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

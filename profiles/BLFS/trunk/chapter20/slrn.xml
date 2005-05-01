@@ -37,7 +37,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&slrn-package;</archive>
+        <digest>&slrn-md5;</digest>
+	<archive>&packages_dir;/&slrn-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

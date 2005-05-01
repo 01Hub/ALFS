@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&portmap-package;</archive>
+        <digest>&portmap-md5;</digest>
+	<archive>&packages_dir;/&portmap-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

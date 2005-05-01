@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&wget-package;</archive>
+        <digest>&wget-md5;</digest>
+	<archive>&packages_dir;/&wget-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
