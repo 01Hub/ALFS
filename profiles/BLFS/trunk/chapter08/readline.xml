@@ -14,23 +14,26 @@
   <package name="readline" version="&readline-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&readline-package;</archive>
+        <digest>&readline-md5;</digest>
+	<archive>&packages_dir;/&readline-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
-    <stageinfo>
-      <base>&build_dir;/&readline-directory;</base>
-    </stageinfo>
-    <configure>
-      <param>--prefix=/usr</param>
-    </configure>
-    <make>
-      <param>SHLIB_LIBS=-lcurses</param>
-    </make>
-    <make>
-      <param>install</param>
-    </make>&ldconfig;</stage>
+      <stageinfo>
+	<base>&build_dir;/&readline-directory;</base>
+      </stageinfo>
+      <configure>
+	<param>--prefix=/usr</param>
+      </configure>
+      <make>
+	<param>SHLIB_LIBS=-lcurses</param>
+      </make>
+      <make>
+	<param>install</param>
+      </make>
+      &ldconfig;
+    </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&readline-directory;</remove>
     </stage>

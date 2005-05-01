@@ -88,7 +88,7 @@
       <destination>.</destination>
     </copy>
     <execute base="&build_dir;/&jadetex-directory;/config" command="tex">
-      <param>-ini -progname=latex latex.ini</parma>
+      <param>-ini -progname=latex latex.ini</param>
     </execute>
     <move base="/usr/share/texmf/web2c">
       <source>latex.fmt</source>

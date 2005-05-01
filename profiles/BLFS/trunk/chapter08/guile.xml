@@ -14,7 +14,8 @@
   <package name="guile" version="&guile-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&guile-package;</archive>
+        <digest>&guile-md5;</digest>
+	<archive>&packages_dir;/&guile-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

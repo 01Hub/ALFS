@@ -105,7 +105,7 @@
 <!ENTITY Module-Info-md5       "3263f256cb3535bd86b9f65f4387f83e">
 <!ENTITY Module-Info-directory "Module-Info-&Module-Info-version;">
 
-<!ENTITY Module-CoreList-version   "0.1.97">
+<!ENTITY Module-CoreList-version   "1.97">
 <!ENTITY Module-CoreList-package   "Module-CoreList-&Module-CoreList-version;.tar.bz2">
 <!ENTITY Module-CoreList-md5       "946f8c7a82c3951ad7dfcba8242bba40">
 <!ENTITY Module-CoreList-directory "Module-CoreList-&Module-CoreList-version;">
@@ -189,7 +189,7 @@
 <!-- Begin java packages -->
 <!ENTITY j2sdk-version   "1.4.2">
 <!ENTITY j2sdk-_-version "1_4_2">
-<!ENTITY j2sdk-suffix    "07">
+<!ENTITY j2sdk-suffix    "08">
 
 <!ENTITY j2sdk-bin-package   "j2sdk-&j2sdk-_-version;_&j2sdk-suffix;-linux-i586.bin">
 <!ENTITY j2sdk-bin-md5       "a55a9150977de7d5c7f78d29593a8b8c">
@@ -233,9 +233,9 @@
 
 <!ENTITY tcl-major-minor "8.4">
 <!ENTITY tcl-version     "&tcl-major-minor;.9">
-<!ENTITY tcl-package     "tcl&tcl-version;-src.tar.bz2">
+<!ENTITY tcl-package     "tcl-&tcl-version;.tar.bz2">
 <!ENTITY tcl-md5         "597e5576d9bf44e9e4e901168cae2654">
-<!ENTITY tcl-directory   "tcl&tcl-version;">
+<!ENTITY tcl-directory   "tcl-&tcl-version;">
 
 <!ENTITY tk-major-minor "8.4">
 <!ENTITY tk-version     "&tk-major-minor;.9">

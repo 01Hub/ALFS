@@ -14,7 +14,8 @@
   <package name="hdparm" version="&hdparm-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&hdparm-package;</archive>
+        <digest>&hdparm-md5;</digest>
+	<archive>&packages_dir;/&hdparm-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

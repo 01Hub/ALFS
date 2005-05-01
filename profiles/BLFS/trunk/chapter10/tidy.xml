@@ -19,11 +19,13 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&tidy-package;</archive>
+        <digest>&tidy-md5;</digest>
+	<archive>&packages_dir;/&tidy-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <unpack>
-        <archive>&packages_dir;/&tidy-docs;</archive>
+        <digest>&tidy-docs-md5;</digest>
+	<archive>&packages_dir;/&tidy-docs;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

@@ -19,6 +19,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&Digest-HMAC-md5;</digest>
       <archive>&packages_dir;/&Digest-HMAC-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

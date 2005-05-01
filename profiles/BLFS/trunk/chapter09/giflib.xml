@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&giflib-package;</archive>
+        <digest>&giflib-md5;</digest>
+	<archive>&packages_dir;/&giflib-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

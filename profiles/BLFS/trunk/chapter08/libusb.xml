@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libusb-package;</archive>
+        <digest>&libusb-md5;</digest>
+	<archive>&packages_dir;/&libusb-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

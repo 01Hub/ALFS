@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&dejagnu-package;</archive>
+        <digest>&dejagnu-md5;</digest>
+	<archive>&packages_dir;/&dejagnu-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

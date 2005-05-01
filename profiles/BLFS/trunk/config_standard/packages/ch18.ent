@@ -6,12 +6,12 @@
 <!ENTITY ncftp-directory "ncftp-&ncftp-version;">
 
 <!ENTITY openssh-version   "3.9p1">
-<!ENTITY openssh-package   "openssh-&openssh-version;.tar.gz">
+<!ENTITY openssh-package   "openssh-&openssh-version;.tar.bz2">
 <!ENTITY openssh-md5       "0b5ddd31831922fcc3ceb0b516a5954d">
 <!ENTITY openssh-directory "openssh-&openssh-version;">
 
 <!ENTITY rsync-version   "2.6.3">
-<!ENTITY rsync-package   "rsync-&rsync-version;.tar.gz">
+<!ENTITY rsync-package   "rsync-&rsync-version;.tar.bz2">
 <!ENTITY rsync-md5       "d46b35fe36917b153b73fd9ebf5b13d1">
 <!ENTITY rsync-directory "rsync-&rsync-version;">
 

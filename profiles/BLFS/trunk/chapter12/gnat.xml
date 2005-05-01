@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnat-package;</archive>
+        <digest>&gnat-md5;</digest>
+	<archive>&packages_dir;/&gnat-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

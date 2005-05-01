@@ -14,7 +14,8 @@
   <package name="ispell" version="&ispell-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&ispell-package;</archive>
+        <digest>&ispell-md5;</digest>
+	<archive>&packages_dir;/&ispell-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

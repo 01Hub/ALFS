@@ -31,6 +31,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&pilot-link-md5;</digest>
       <archive>&packages_dir;/&pilot-link-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

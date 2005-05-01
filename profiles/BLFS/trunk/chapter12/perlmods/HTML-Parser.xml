@@ -19,6 +19,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&HTML-Parser-md5;</digest>
       <archive>&packages_dir;/&HTML-Parser-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

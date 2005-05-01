@@ -14,7 +14,8 @@
   <package name="tcsh" version="&tcsh-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&tcsh-package;</archive>
+        <digest>&tcsh-md5;</digest>
+	<archive>&packages_dir;/&tcsh-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

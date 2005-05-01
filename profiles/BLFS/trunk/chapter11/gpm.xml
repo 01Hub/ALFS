@@ -19,7 +19,8 @@
   <package name="gpm" version="&gpm-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gpm-package;</archive>
+        <digest>&gpm-md5;</digest>
+	<archive>&packages_dir;/&gpm-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

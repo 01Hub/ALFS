@@ -124,7 +124,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&imagemagick-package;</archive>
+        <digest>&imagemagick-md5;</digest>
+	<archive>&packages_dir;/&imagemagick-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

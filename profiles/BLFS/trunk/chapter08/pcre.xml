@@ -14,7 +14,8 @@
   <package name="pcre" version="&pcre-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&pcre-package;</archive>
+        <digest>&pcre-md5;</digest>
+	<archive>&packages_dir;/&pcre-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

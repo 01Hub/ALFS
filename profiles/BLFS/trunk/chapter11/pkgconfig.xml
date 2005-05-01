@@ -14,7 +14,8 @@
   <package name="pkgconfig" version="&pkgconfig-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&pkgconfig-package;</archive>
+        <digest>&pkgconfig-md5;</digest>
+	<archive>&packages_dir;/&pkgconfig-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

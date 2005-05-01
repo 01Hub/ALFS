@@ -14,7 +14,8 @@
   <package name="which" version="&which-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&which-package;</archive>
+        <digest>&which-md5;</digest>
+	<archive>&packages_dir;/&which-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

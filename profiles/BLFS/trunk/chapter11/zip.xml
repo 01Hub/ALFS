@@ -14,7 +14,8 @@
   <package name="zip" version="&zip-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&zip-package;</archive>
+        <digest>&zip-md5;</digest>
+	<archive>&packages_dir;/&zip-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

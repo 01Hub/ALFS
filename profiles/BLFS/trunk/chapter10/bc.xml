@@ -14,7 +14,8 @@
   <package name="bc" version="&bc-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&bc-package;</archive>
+        <digest>&bc-md5;</digest>
+	<archive>&packages_dir;/&bc-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

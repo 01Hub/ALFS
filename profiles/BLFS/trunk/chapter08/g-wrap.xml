@@ -28,7 +28,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&g-wrap-package;</archive>
+        <digest>&g-wrap-md5;</digest>
+	<archive>&packages_dir;/&g-wrap-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

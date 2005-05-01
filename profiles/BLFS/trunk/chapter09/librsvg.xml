@@ -49,7 +49,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&librsvg-package;</archive>
+        <digest>&librsvg-md5;</digest>
+	<archive>&packages_dir;/&librsvg-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

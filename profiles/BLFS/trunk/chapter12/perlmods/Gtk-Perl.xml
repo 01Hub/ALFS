@@ -25,6 +25,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&Gtk-Perl-md5;</digest>
       <archive>&packages_dir;/&Gtk-Perl-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

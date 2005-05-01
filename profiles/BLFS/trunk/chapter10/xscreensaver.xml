@@ -49,6 +49,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&xscreensaver-md5;</digest>
       <archive>&packages_dir;/&xscreensaver-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

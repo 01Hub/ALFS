@@ -19,6 +19,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&XML-Parser-md5;</digest>
       <archive>&packages_dir;/&XML-Parser-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

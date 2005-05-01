@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&aspell-package;</archive>
+        <digest>&aspell-md5;</digest>
+	<archive>&packages_dir;/&aspell-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
@@ -47,7 +48,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&aspell-dict-package;</archive>
+        <digest>&aspell-dict-md5;</digest>
+	<archive>&packages_dir;/&aspell-dict-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

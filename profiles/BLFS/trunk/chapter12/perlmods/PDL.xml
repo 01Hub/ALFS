@@ -31,6 +31,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&PDL-md5;</digest>
       <archive>&packages_dir;/&PDL-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

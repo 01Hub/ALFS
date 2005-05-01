@@ -19,6 +19,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&Finance-Quote-md5;</digest>
       <archive>&packages_dir;/&Finance-Quote-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>
