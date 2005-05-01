@@ -28,7 +28,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libgnomeprintui-package;</archive>
+        <digest>&libgnomeprintui-md5;</digest>
+	<archive>&packages_dir;/&libgnomeprintui-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

@@ -37,7 +37,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnome-applets-package;</archive>
+        <digest>&gnome-applets-md5;</digest>
+	<archive>&packages_dir;/&gnome-applets-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libgail-gnome-package;</archive>
+        <digest>&libgail-gnome-md5;</digest>
+	<archive>&packages_dir;/&libgail-gnome-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

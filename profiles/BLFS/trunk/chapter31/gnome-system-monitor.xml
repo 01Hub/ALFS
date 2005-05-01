@@ -25,7 +25,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnome-system-monitor-package;</archive>
+        <digest>&gnome-system-monitor-md5;</digest>
+	<archive>&packages_dir;/&gnome-system-monitor-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

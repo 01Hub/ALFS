@@ -34,7 +34,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnome-media-package;</archive>
+        <digest>&gnome-media-md5;</digest>
+	<archive>&packages_dir;/&gnome-media-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

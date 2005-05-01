@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnome2-user-docs-package;</archive>
+        <digest>&gnome2-user-docs-md5;</digest>
+	<archive>&packages_dir;/&gnome2-user-docs-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

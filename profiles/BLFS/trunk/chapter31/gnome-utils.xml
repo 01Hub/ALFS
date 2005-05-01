@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnome-utils-package;</archive>
+        <digest>&gnome-utils-md5;</digest>
+	<archive>&packages_dir;/&gnome-utils-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

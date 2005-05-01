@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gal-package;</archive>
+        <digest>&gal-md5;</digest>
+	<archive>&packages_dir;/&gal-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

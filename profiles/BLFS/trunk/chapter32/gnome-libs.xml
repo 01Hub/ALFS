@@ -37,7 +37,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnome-libs-package;</archive>
+        <digest>&gnome-libs-md5;</digest>
+	<archive>&packages_dir;/&gnome-libs-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

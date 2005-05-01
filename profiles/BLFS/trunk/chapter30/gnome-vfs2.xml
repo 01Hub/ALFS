@@ -61,7 +61,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnome-vfs2-package;</archive>
+        <digest>&gnome-vfs2-md5;</digest>
+	<archive>&packages_dir;/&gnome-vfs2-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

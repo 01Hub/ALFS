@@ -28,7 +28,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&oaf-package;</archive>
+        <digest>&oaf-md5;</digest>
+	<archive>&packages_dir;/&oaf-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

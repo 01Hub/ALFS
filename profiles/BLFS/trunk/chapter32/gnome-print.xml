@@ -25,7 +25,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnome-print-package;</archive>
+        <digest>&gnome-print-md5;</digest>
+	<archive>&packages_dir;/&gnome-print-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

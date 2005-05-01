@@ -25,7 +25,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&guppi-package;</archive>
+        <digest>&guppi-md5;</digest>
+	<archive>&packages_dir;/&guppi-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

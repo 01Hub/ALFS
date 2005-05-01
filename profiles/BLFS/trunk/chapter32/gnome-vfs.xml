@@ -46,7 +46,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnome-vfs-package;</archive>
+        <digest>&gnome-vfs-md5;</digest>
+	<archive>&packages_dir;/&gnome-vfs-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

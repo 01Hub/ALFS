@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnome-mag-package;</archive>
+        <digest>&gnome-mag-md5;</digest>
+	<archive>&packages_dir;/&gnome-mag-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnome-netstatus-package;</archive>
+        <digest>&gnome-netstatus-md5;</digest>
+	<archive>&packages_dir;/&gnome-netstatus-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
