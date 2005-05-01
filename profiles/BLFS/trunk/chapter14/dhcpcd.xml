@@ -19,7 +19,8 @@
   <package name="dhcpcd" version="&dhcpcd-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&dhcpcd-package;</archive>
+        <digest>&dhcpcd-md5;</digest>
+	<archive>&packages_dir;/&dhcpcd-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

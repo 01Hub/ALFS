@@ -19,7 +19,8 @@
   <package name="dhclient" version="&dhclient-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&dhclient-package;</archive>
+        <digest>&dhclient-md5;</digest>
+	<archive>&packages_dir;/&dhclient-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
