@@ -27,7 +27,8 @@
     </packageinfo>
     <stage name="Unpacking.">
       <unpack>
-        <archive>&packages_dir;/&rp-pppoe-package;</archive>
+        <digest>&rp-pppoe-md5;</digest>
+	<archive>&packages_dir;/&rp-pppoe-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
