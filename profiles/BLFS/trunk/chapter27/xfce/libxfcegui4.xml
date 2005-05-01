@@ -14,6 +14,7 @@
 <package name="libxfcegui4" version="&xfce-libxfcegui4-version;">
   <stage name="Unpacking.">
     <unpack>
+      <digest>&xfce-libxfcegui4-md5;</digest>
       <archive>&build_dir;/&xfce-build-directory;/&xfce-libxfcegui4-package;</archive>
       <destination>&build_dir;/&xfce-build-directory;</destination>
     </unpack>

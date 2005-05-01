@@ -46,7 +46,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&kdeaddons-package;</archive>
+        <digest>&kdeaddons-md5;</digest>
+	<archive>&packages_dir;/&kdeaddons-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

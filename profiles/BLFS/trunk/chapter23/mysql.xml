@@ -40,7 +40,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&mysql-package;</archive>
+        <digest>&mysql-md5;</digest>
+	<archive>&packages_dir;/&mysql-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

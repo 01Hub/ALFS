@@ -25,7 +25,8 @@
     </packageinfo>
     <stage name="Unpacking.">
       <unpack>
-        <archive>&packages_dir;/&shared-mime-info-package;</archive>
+        <digest>&shared-mime-info-md5;</digest>
+	<archive>&packages_dir;/&shared-mime-info-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

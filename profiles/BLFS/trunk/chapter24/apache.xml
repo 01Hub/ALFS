@@ -37,7 +37,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&apache-package;</archive>
+        <digest>&apache-md5;</digest>
+	<archive>&packages_dir;/&apache-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

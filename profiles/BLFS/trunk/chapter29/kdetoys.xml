@@ -25,7 +25,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&kdetoys-package;</archive>
+        <digest>&kdetoys-md5;</digest>
+	<archive>&packages_dir;/&kdetoys-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

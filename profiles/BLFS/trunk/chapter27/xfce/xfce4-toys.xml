@@ -14,6 +14,7 @@
 <package name="xfce4-toys" version="&xfce-xfce4-toys-version;">
   <stage name="Unpacking.">
     <unpack>
+      <digest>&xfce-xfce4-toys-md5;</digest>
       <archive>&build_dir;/&xfce-build-directory;/&xfce-xfce4-toys-package;</archive>
       <destination>&build_dir;/&xfce-build-directory;</destination>
     </unpack>

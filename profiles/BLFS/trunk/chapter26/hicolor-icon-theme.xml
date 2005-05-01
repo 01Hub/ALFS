@@ -14,7 +14,8 @@
   <package name="hicolor-icon-theme" version="&hicolor-icon-theme-version;">
     <stage name="Unpacking.">
       <unpack>
-        <archive>&packages_dir;/&hicolor-icon-theme-package;</archive>
+        <digest>&hicolor-icon-theme-md5;</digest>
+	<archive>&packages_dir;/&hicolor-icon-theme-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

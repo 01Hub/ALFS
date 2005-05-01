@@ -19,7 +19,8 @@
   <package name="proftpd" version="&proftpd-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&proftpd-package;</archive>
+        <digest>&proftpd-md5;</digest>
+	<archive>&packages_dir;/&proftpd-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

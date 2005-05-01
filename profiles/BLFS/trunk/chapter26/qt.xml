@@ -46,7 +46,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&qt-package;</archive>
+        <digest>&qt-md5;</digest>
+	<archive>&packages_dir;/&qt-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

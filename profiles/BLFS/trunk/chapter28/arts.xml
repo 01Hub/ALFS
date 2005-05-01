@@ -49,7 +49,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&arts-package;</archive>
+        <digest>&arts-md5;</digest>
+	<archive>&packages_dir;/&arts-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

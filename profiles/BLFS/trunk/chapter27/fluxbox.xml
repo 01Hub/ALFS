@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&fluxbox-package;</archive>
+        <digest>&fluxbox-md5;</digest>
+	<archive>&packages_dir;/&fluxbox-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
