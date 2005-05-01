@@ -10,5 +10,26 @@
   <stage name="Configuring core GNOME packages">
     &ldconfig;
     <execute command="update-desktop-database" />
+    <textdump mode="append">
+      <file>&gnome-prefix;/share/gnome-panelrc</file>
+      <content>
+	=pixmap_path "&gnome-prefix;/share/pixmaps"
+	=
+	=style "panel-icons"
+	={
+	=        stock ["panel-screenshot"] =    {{"gnome-screenshot.png"}}
+	=        stock ["panel-gnome-logo"] =    {{"gnome-logo-icon-transparent.png"}}
+	=        stock ["panel-cde"] =           {{"cdeappmenu.png"}}
+	=        stock ["panel-launcher"] =      {{"launcher-program.png"}}
+	=        stock ["panel-run"] =           {{"gnome-run.png"}}
+	=        stock ["panel-drawer"] =        {{"panel-drawer.png"}}
+	=        stock ["panel-main-menu"] =     {{"gnome-main-menu.png"}}
+	=        stock ["panel-force-quit"] =    {{"panel-force-quit.png"}}
+	=}
+	=
+	=class "GtkWidget" style "panel-icons"
+	=
+      </content>
+    </textdump>
   </stage>
 </alfs>

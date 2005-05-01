@@ -100,10 +100,18 @@
 <!-- MySQL root password -->
 <!ENTITY mysql-root-pass "blahblah">
 
-<!-- KDE prefix -->
+<!-- KDE configuration -->
+<!-- KDE Install Type -->
+<!-- Set to usr or opt, also remember to change the kde-prefix
+  entity below accordingly -->
+<!ENTITY kde-install "usr">
 <!ENTITY kde-prefix "/usr">
 
-<!-- GNOME prefix -->
+<!-- GNOME configuration -->
+<!-- GNOME Install Type -->
+<!-- Set to "usr" or "opt", also remember to change the gnome-prefix
+  entity below accordingly --> 
+<!ENTITY gnome-install "usr">
 <!ENTITY gnome-prefix "/usr">
 
 <!-- ALSA driver -->

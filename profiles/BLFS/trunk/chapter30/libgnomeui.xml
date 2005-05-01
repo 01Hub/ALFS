@@ -46,6 +46,12 @@
 	<param>install</param>
       </make>
       &ldconfig;
+      <textdump base="/root" mode="append">
+	<file>.bash_profile</file>
+	<content>
+	  =LIBGLADE_MODULE_PATH=&gnome-prefix;/lib/libglade/2.0
+	</content>
+      </textdump>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libgnomeui-directory;</remove>
