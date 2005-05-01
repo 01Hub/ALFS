@@ -14,7 +14,8 @@
   <package name="traceroute" version="&traceroute-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&traceroute-package;</archive>
+        <digest>&traceroute-md5;</digest>
+	<archive>&packages_dir;/&traceroute-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

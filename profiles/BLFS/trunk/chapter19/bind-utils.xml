@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking.">
       <unpack>
-        <archive>&packages_dir;/&bind-utils-package;</archive>
+        <digest>&bind-utils-md5;</digest>
+	<archive>&packages_dir;/&bind-utils-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

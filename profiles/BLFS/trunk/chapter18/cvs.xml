@@ -34,7 +34,8 @@
     </packageinfo>      
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&cvs-package;</archive>
+        <digest>&cvs-md5;</digest>
+	<archive>&packages_dir;/&cvs-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

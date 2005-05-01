@@ -24,7 +24,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&nfs-utils-package;</archive>
+        <digest>&nfs-utils-md5;</digest>
+	<archive>&packages_dir;/&nfs-utils-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

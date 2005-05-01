@@ -19,7 +19,8 @@
   <package name="dhcp" version="&dhcp-version;">
     <stage name="Unpacking.">
       <unpack>
-        <archive>&packages_dir;/&dhcp-package;</archive>
+        <digest>&dhcp-md5;</digest>
+	<archive>&packages_dir;/&dhcp-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

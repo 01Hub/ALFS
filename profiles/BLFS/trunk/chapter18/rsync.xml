@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&rsync-package;</archive>
+        <digest>&rsync-md5;</digest>
+	<archive>&packages_dir;/&rsync-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

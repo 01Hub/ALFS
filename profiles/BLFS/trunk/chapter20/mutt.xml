@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&mutt-package;</archive>
+        <digest>&mutt-md5;</digest>
+	<archive>&packages_dir;/&mutt-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

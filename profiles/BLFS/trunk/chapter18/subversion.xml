@@ -67,6 +67,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&subversion-md5;</digest>
       <archive>&packages_dir;/&subversion-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>
