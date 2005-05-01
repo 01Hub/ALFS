@@ -42,6 +42,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&heimdal-md5;</digest>
       <archive>&packages_dir;/&heimdal-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

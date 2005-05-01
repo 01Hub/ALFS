@@ -14,7 +14,8 @@
   <package name="ed" version="&ed-version;">
     <stage name="Unpacking.">
       <unpack>
-        <archive>&packages_dir;/&ed-package;</archive>
+        <digest>&ed-md5;</digest>
+	<archive>&packages_dir;/&ed-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

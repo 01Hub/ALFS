@@ -14,7 +14,8 @@
   <package name="reiserfsprogs" version="&reiserfsprogs-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&reiserfsprogs-package;</archive>
+        <digest>&reiserfsprogs-md5;</digest>
+	<archive>&packages_dir;/&reiserfsprogs-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

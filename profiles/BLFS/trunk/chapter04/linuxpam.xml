@@ -27,7 +27,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&linuxpam-package;</archive>
+        <digest>&linuxpam-md5;</digest>
+	<archive>&packages_dir;/&linuxpam-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

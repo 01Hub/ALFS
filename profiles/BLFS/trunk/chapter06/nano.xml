@@ -21,7 +21,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&nano-package;</archive>
+        <digest>&nano-md5;</digest>
+	<archive>&packages_dir;/&nano-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

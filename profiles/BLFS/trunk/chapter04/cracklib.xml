@@ -14,11 +14,13 @@
   <package name="cracklib" version="&cracklib-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&cracklib-package;</archive>
+        <digest>&cracklib-md5;</digest>
+	<archive>&packages_dir;/&cracklib-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <unpack>
-        <archive>&packages_dir;/&cracklib-wordlist-package;</archive>
+        <digest>&cracklib-wordlist-md5;</digest>
+	<archive>&packages_dir;/&cracklib-wordlist-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

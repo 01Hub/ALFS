@@ -14,7 +14,8 @@
   <package name="xfsprogs" version="&xfsprogs-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&xfsprogs-package;</archive>
+        <digest>&xfsprogs-md5;</digest>
+<archive>&packages_dir;/&xfsprogs-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
