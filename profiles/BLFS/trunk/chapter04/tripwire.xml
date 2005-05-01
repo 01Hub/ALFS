@@ -14,7 +14,8 @@
   <package name="tripwire-portable" version="&tripwire-portable-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&tripwire-portable-package;</archive>
+        <digest>&tripwire-portable-md5;</digest>
+	<archive>&packages_dir;/&tripwire-portable-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

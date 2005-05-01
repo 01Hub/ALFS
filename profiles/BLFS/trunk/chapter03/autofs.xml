@@ -18,6 +18,7 @@
 <package name="autofs" version="&autofs-version;">
   <stage name="Unpacking.">
     <unpack>
+      <digest>&autofs-md5;</digest>
       <archive>&packages_dir;/&autofs-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

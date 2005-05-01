@@ -21,7 +21,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&shadow-package;</archive>
+        <digest>&shadow-md5;</digest>
+	<archive>&packages_dir;/&shadow-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

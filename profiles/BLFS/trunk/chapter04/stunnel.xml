@@ -27,6 +27,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&stunnel-md5;</digest>
       <archive>&packages_dir;/&stunnel-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

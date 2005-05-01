@@ -28,7 +28,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnupg-package;</archive>
+        <digest>&gnupg-md5;</digest>
+	<archive>&packages_dir;/&gnupg-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
