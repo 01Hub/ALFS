@@ -31,31 +31,38 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&xfree86-package1;</archive>
+        <digest>&xfree86-package1-md5;</digest>
+	<archive>&packages_dir;/&xfree86-package1;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <unpack>
-        <archive>&packages_dir;/&xfree86-package2;</archive>
+        <digest>&xfree86-package2-md5;</digest>
+	<archive>&packages_dir;/&xfree86-package2;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <unpack>
-        <archive>&packages_dir;/&xfree86-package3;</archive>
+        <digest>&xfree86-package3-md5;</digest>
+	<archive>&packages_dir;/&xfree86-package3;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <unpack>
-        <archive>&packages_dir;/&xfree86-package4;</archive>
+        <digest>&xfree86-package4-md5;</digest>
+	<archive>&packages_dir;/&xfree86-package4;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <unpack>
-        <archive>&packages_dir;/&xfree86-package5;</archive>
+        <digest>&xfree86-package5-md5;</digest>
+	<archive>&packages_dir;/&xfree86-package5;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <unpack>
-        <archive>&packages_dir;/&xfree86-package6;</archive>
+        <digest>&xfree86-package6-md5;</digest>
+	<archive>&packages_dir;/&xfree86-package6;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <unpack>
-        <archive>&packages_dir;/&xfree86-package7;</archive>
+        <digest>&xfree86-package7-md5;</digest>
+	<archive>&packages_dir;/&xfree86-package7;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

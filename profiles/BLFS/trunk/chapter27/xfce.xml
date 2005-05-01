@@ -34,7 +34,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&xfce-package;</archive>
+        <digest>&xfce-md5;</digest>
+	<archive>&packages_dir;/&xfce-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

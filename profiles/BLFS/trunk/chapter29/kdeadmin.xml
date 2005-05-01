@@ -31,7 +31,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&kdeadmin-package;</archive>
+        <digest>&kdeadmin-md5;</digest>
+	<archive>&packages_dir;/&kdeadmin-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

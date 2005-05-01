@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&atk-package;</archive>
+        <digest>&atk-md5;</digest>
+	<archive>&packages_dir;/&atk-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

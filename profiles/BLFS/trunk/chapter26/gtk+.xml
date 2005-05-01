@@ -28,7 +28,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gtkplus-package;</archive>
+        <digest>&gtkplus-md5;</digest>
+	<archive>&packages_dir;/&gtkplus-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

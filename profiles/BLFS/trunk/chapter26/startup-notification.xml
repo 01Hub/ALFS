@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&startup-notification-package;</archive>
+        <digest>&startup-notification-md5;</digest>
+	<archive>&packages_dir;/&startup-notification-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

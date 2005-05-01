@@ -52,7 +52,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&postgresql-package;</archive>
+        <digest>&postgresql-md5;</digest>
+	<archive>&packages_dir;/&postgresql-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

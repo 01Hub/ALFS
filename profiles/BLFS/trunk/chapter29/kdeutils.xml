@@ -31,7 +31,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&kdeutils-package;</archive>
+        <digest>&kdeutils-md5;</digest>
+	<archive>&packages_dir;/&kdeutils-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

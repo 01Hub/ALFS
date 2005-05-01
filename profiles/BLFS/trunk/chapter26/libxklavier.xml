@@ -28,7 +28,8 @@
     </packageinfo>
     <stage name="Unpacking.">
       <unpack>
-        <archive>&packages_dir;/&libxklavier-package;</archive>
+        <digest>&libxklavier-md5;</digest>
+	<archive>&packages_dir;/&libxklavier-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

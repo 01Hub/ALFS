@@ -14,6 +14,7 @@
 <package name="libxfce4mcs" version="&xfce-libxfce4mcs-version;">
   <stage name="Unpacking.">
     <unpack>
+      <digest>&xfce-libxfce4mcs-md5;</digest>
       <archive>&build_dir;/&xfce-build-directory;/&xfce-libxfce4mcs-package;</archive>
       <destination>&build_dir;/&xfce-build-directory;</destination>
     </unpack>

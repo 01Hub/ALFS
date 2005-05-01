@@ -28,6 +28,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&vsftpd-md5;</digest>
       <archive>&packages_dir;/&vsftpd-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

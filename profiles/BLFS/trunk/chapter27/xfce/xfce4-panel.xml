@@ -14,6 +14,7 @@
 <package name="xfce4-panel" version="&xfce-xfce4-panel-version;">
   <stage name="Unpacking.">
     <unpack>
+      <digest>&xfce-xfce4-panel-md5;</digest>
       <archive>&build_dir;/&xfce-build-directory;/&xfce-xfce4-panel-package;</archive>
       <destination>&build_dir;/&xfce-build-directory;</destination>
     </unpack>

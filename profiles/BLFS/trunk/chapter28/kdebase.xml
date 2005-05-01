@@ -76,7 +76,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&kdebase-package;</archive>
+        <digest>&kdebase-md5;</digest>
+	<archive>&packages_dir;/&kdebase-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

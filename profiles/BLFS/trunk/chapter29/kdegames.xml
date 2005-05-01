@@ -31,7 +31,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&kdegames-package;</archive>
+        <digest>&kdegames-md5;</digest>
+	<archive>&packages_dir;/&kdegames-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

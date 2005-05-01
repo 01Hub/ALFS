@@ -14,6 +14,7 @@
 <package name="xfce4-icon-theme" version="&xfce-xfce4-icon-theme-version;">
   <stage name="Unpacking.">
     <unpack>
+      <digest>&xfce-xfce4-icon-theme-md5;</digest>
       <archive>&build_dir;/&xfce-build-directory;/&xfce-xfce4-icon-theme-package;</archive>
       <destination>&build_dir;/&xfce-build-directory;</destination>
     </unpack>

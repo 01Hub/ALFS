@@ -14,6 +14,7 @@
 <package name="kde-i18n" version="&kde-i18n-version;">
   <stage name="Unpacking.">
     <unpack>
+      <digest>&kde-i18n-md5;</digest>
       <archive>&packages_dir;/&kde-i18n-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

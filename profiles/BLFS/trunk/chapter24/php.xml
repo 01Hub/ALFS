@@ -157,7 +157,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&php-package;</archive>
+        <digest>&php-md5;</digest>
+	<archive>&packages_dir;/&php-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

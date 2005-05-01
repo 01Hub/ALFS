@@ -73,7 +73,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&kdelibs-package;</archive>
+        <digest>&kdelibs-md5;</digest>
+	<archive>&packages_dir;/&kdelibs-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
