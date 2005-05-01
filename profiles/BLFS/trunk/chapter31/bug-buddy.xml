@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&bug-buddy-package;</archive>
+        <digest>&bug-buddy-md5;</digest>
+	<archive>&packages_dir;/&bug-buddy-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

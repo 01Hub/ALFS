@@ -37,7 +37,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gtkhtml1-package;</archive>
+        <digest>&gtkhtml1-md5;</digest>
+	<archive>&packages_dir;/&gtkhtml1-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

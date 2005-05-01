@@ -31,7 +31,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnome-panel-package;</archive>
+        <digest>&gnome-panel-md5;</digest>
+	<archive>&packages_dir;/&gnome-panel-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

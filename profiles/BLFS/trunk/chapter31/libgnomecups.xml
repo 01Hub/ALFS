@@ -22,6 +22,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&libgnomecups-md5;</digest>
       <archive>&packages_dir;/&libgnomecups-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

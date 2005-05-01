@@ -25,6 +25,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&gnome-doc-utils-md5;</digest>
       <archive>&packages_dir;/&gnome-doc-utils-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

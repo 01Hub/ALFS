@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&file-roller-package;</archive>
+        <digest>&file-roller-md5;</digest>
+	<archive>&packages_dir;/&file-roller-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

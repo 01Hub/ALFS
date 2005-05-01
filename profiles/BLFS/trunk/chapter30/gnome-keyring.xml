@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking.">
       <unpack>
-        <archive>&packages_dir;/&gnome-keyring-package;</archive>
+        <digest>&gnome-keyring-md5;</digest>
+	<archive>&packages_dir;/&gnome-keyring-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

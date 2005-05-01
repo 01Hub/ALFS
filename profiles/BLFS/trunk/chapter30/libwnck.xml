@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libwnck-package;</archive>
+        <digest>&libwnck-md5;</digest>
+	<archive>&packages_dir;/&libwnck-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

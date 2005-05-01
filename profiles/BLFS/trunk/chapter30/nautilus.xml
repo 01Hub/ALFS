@@ -49,7 +49,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&nautilus-package;</archive>
+        <digest>&nautilus-md5;</digest>
+	<archive>&packages_dir;/&nautilus-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

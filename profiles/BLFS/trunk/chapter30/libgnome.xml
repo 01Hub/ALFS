@@ -25,7 +25,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libgnome-package;</archive>
+        <digest>&libgnome-md5;</digest>
+	<archive>&packages_dir;/&libgnome-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

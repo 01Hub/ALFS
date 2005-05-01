@@ -25,7 +25,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnome-desktop-package;</archive>
+        <digest>&gnome-desktop-md5;</digest>
+	<archive>&packages_dir;/&gnome-desktop-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

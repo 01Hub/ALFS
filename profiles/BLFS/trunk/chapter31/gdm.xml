@@ -38,7 +38,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gdm-package;</archive>
+        <digest>&gdm-md5;</digest>
+	<archive>&packages_dir;/&gdm-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

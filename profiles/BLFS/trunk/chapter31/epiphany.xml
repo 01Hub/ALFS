@@ -25,7 +25,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&epiphany-package;</archive>
+        <digest>&epiphany-md5;</digest>
+	<archive>&packages_dir;/&epiphany-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

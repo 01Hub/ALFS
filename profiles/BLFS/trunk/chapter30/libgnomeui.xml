@@ -28,7 +28,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libgnomeui-package;</archive>
+        <digest>&libgnomeui-md5;</digest>
+	<archive>&packages_dir;/&libgnomeui-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

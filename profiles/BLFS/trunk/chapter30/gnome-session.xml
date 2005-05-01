@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnome-session-package;</archive>
+        <digest>&gnome-session-md5;</digest>
+	<archive>&packages_dir;/&gnome-session-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

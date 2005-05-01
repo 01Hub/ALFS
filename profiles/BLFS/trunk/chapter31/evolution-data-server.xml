@@ -31,6 +31,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&evolution-data-server-md5;</digest>
       <archive>&packages_dir;/&evolution-data-server-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

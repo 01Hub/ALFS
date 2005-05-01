@@ -31,7 +31,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gconf2-package;</archive>
+        <digest>&gconf2-md5;</digest>
+	<archive>&packages_dir;/&gconf2-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

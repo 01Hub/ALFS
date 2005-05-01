@@ -25,7 +25,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&at-spi-package;</archive>
+        <digest>&at-spi-md5;</digest>
+	<archive>&packages_dir;/&at-spi-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

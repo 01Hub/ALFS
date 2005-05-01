@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&nautilus-media-package;</archive>
+        <digest>&nautilus-media-md5;</digest>
+	<archive>&packages_dir;/&nautilus-media-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

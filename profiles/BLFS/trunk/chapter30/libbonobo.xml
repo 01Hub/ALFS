@@ -31,7 +31,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libbonobo-package;</archive>
+        <digest>&libbonobo-md5;</digest>
+	<archive>&packages_dir;/&libbonobo-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

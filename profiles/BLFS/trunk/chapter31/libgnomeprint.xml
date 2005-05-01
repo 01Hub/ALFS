@@ -43,7 +43,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libgnomeprint-package;</archive>
+        <digest>&libgnomeprint-md5;</digest>
+	<archive>&packages_dir;/&libgnomeprint-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

@@ -43,7 +43,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&soup-package;</archive>
+        <digest>&soup-md5;</digest>
+	<archive>&packages_dir;/&soup-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

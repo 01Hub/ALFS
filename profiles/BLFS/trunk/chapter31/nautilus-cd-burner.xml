@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&nautilus-cd-burner-package;</archive>
+        <digest>&nautilus-cd-burner-md5;</digest>
+	<archive>&packages_dir;/&nautilus-cd-burner-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
