@@ -154,7 +154,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&mplayer-package;</archive>
+        <digest>&mplayer-md5;</digest>
+	<archive>&packages_dir;/&mplayer-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
@@ -179,7 +180,8 @@
         <name>/usr/lib/mplayer/codecs</name>
       </mkdir>
       <unpack>
-        <archive>&packages_dir;/&mplayer-codecs-package;</archive>
+        <digest>&mplayer-codecs-md5;</digest>
+	<archive>&packages_dir;/&mplayer-codecs-package;</archive>
         <destination>/usr/lib/mplayer/codecs</destination>
       </unpack>
       <ownership user="root" group="root">
@@ -190,7 +192,8 @@
         <name>/usr/lib/mplayer/Skin</name>
       </mkdir>
       <unpack>
-        <archive>&packages_dir;/&mplayer-skin-package;</archive>
+        <digest>&mplayer-skin-md5;</digest>
+	<archive>&packages_dir;/&mplayer-skin-package;</archive>
         <destination>/usr/lib/mplayer/Skin</destination>
       </unpack>
       <ownership user="root" group="root">
@@ -236,7 +239,8 @@
 	<destination>/etc/mplayer</destination>
       </copy>
       <unpack>
-        <archive>&packages_dir;/&mplayer-font-package;</archive>
+        <digest>&mplayer-font-md5;</digest>
+	<archive>&packages_dir;/&mplayer-font-package;</archive>
         <destination>/usr/share/mplayer/font</destination>
       </unpack>
       <ownership user="root" group="root">

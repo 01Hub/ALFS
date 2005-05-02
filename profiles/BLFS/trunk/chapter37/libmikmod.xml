@@ -31,7 +31,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libmikmod-package;</archive>
+        <digest>&libmikmod-md5;</digest>
+	<archive>&packages_dir;/&libmikmod-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

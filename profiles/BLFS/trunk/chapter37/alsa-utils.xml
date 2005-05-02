@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&alsa-utils-package;</archive>
+        <digest>&alsa-utils-md5;</digest>
+	<archive>&packages_dir;/&alsa-utils-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

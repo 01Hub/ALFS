@@ -55,7 +55,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&thunderbird-package;</archive>
+        <digest>&thunderbird-md5;</digest>
+	<archive>&packages_dir;/&thunderbird-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

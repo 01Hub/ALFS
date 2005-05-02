@@ -67,11 +67,13 @@
 	<name>&build_dir;/OOo-build</name>
       </mkdir>
       <unpack>
-        <archive>&packages_dir;/&openoffice-package;</archive>
+        <digest>&openoffice-md5;</digest>
+	<archive>&packages_dir;/&openoffice-package;</archive>
         <destination>&build_dir;/OOo-build</destination>
       </unpack>
       <unpack>
-        <archive>&packages_dir;/&gpc-package;</archive>
+        <digest>&gpc-md5;</digest>
+	<archive>&packages_dir;/&gpc-package;</archive>
         <destination>&build_dir;/OOo-build</destination>
       </unpack>
     </stage>
@@ -87,12 +89,12 @@
       </stageinfo>
       <move>
         <option>force</option>
-        <source>&build_dir;/&gpc-directory;/gpc.c</source>
+        <source>&build_dir;/OOo-build/&gpc-directory;/gpc.c</source>
         <destination>&build_dir;/OOo-build/&openoffice-directory;/external/gpc</destination>
       </move>
       <move>
         <option>force</option>
-        <source>&build_dir;/&gpc-directory;/gpc.h</source>
+        <source>&build_dir;/OOo-build/&gpc-directory;/gpc.h</source>
         <destination>&build_dir;/OOo-build/&openoffice-directory;/external/gpc</destination>
       </move>
       <remove>../&gpc-directory;</remove>

@@ -14,7 +14,8 @@
   <package name="libdvdcss" version="&libdvdcss-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libdvdcss-package;</archive>
+        <digest>&libdvdcss-md5;</digest>
+	<archive>&packages_dir;/&libdvdcss-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

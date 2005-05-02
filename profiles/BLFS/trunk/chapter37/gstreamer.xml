@@ -55,7 +55,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gstreamer-package;</archive>
+        <digest>&gstreamer-md5;</digest>
+	<archive>&packages_dir;/&gstreamer-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

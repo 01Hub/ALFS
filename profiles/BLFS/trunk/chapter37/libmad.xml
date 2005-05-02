@@ -14,7 +14,8 @@
   <package name="libmad" version="&libmad-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libmad-package;</archive>
+        <digest>&libmad-md5;</digest>
+	<archive>&packages_dir;/&libmad-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

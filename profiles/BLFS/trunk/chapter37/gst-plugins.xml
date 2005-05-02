@@ -196,7 +196,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gst-plugins-package;</archive>
+        <digest>&gst-plugins-md5;</digest>
+	<archive>&packages_dir;/&gst-plugins-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

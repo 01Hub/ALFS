@@ -97,7 +97,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&transcode-package;</archive>
+        <digest>&transcode-md5;</digest>
+	<archive>&packages_dir;/&transcode-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

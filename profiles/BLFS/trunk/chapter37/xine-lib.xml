@@ -88,7 +88,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&xine-lib-package;</archive>
+        <digest>&xine-lib-md5;</digest>
+	<archive>&packages_dir;/&xine-lib-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

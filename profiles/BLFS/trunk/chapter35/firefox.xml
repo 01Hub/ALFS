@@ -52,7 +52,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&firefox-package;</archive>
+        <digest>&firefox-md5;</digest>
+	<archive>&packages_dir;/&firefox-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

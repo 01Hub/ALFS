@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&xvid-package;</archive>
+        <digest>&xvid-md5;</digest>
+	<archive>&packages_dir;/&xvid-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libdvdread-package;</archive>
+        <digest>&libdvdread-md5;</digest>
+	<archive>&packages_dir;/&libdvdread-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
