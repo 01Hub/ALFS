@@ -55,7 +55,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&avifile-package;</archive>
+        <digest>&avifile-md5;</digest>
+	<archive>&packages_dir;/&avifile-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
@@ -68,7 +69,8 @@
 	<name>/usr/lib/avifile-&avifile-major-minor;/win32</name>
       </mkdir>
       <unpack>
-        <archive>&packages_dir;/&avifile-binaries-package;</archive>
+        <digest>&avifile-binaries-md5;</digest>
+	<archive>&packages_dir;/&avifile-binaries-package;</archive>
         <destination>/usr/lib/avifile-&avifile-major-minor;</destination>
       </unpack>
       <configure>

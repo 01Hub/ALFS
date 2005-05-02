@@ -37,7 +37,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gnumeric-package;</archive>
+        <digest>&gnumeric-md5;</digest>
+	<archive>&packages_dir;/&gnumeric-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

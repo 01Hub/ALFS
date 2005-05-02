@@ -14,7 +14,8 @@
   <package name="libogg" version="&libogg-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libogg-package;</archive>
+        <digest>&libogg-md5;</digest>
+	<archive>&packages_dir;/&libogg-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

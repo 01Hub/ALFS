@@ -14,7 +14,8 @@
   <package name="audiofile" version="&audiofile-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&audiofile-package;</archive>
+        <digest>&audiofile-md5;</digest>
+	<archive>&packages_dir;/&audiofile-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

@@ -55,7 +55,8 @@
     </packageinfo>
     <stage name="Unpacking.">
       <unpack>
-        <archive>&packages_dir;/&evolution-package;</archive>
+        <digest>&evolution-md5;</digest>
+	<archive>&packages_dir;/&evolution-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

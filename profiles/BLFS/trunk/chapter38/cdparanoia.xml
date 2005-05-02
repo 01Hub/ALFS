@@ -14,7 +14,8 @@
   <package name="cdparanoia" version="&cdparanoia-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&cdparanoia-package;</archive>
+        <digest>&cdparanoia-md5;</digest>
+	<archive>&packages_dir;/&cdparanoia-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

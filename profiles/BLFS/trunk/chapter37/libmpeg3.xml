@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&libmpeg3-package;</archive>
+        <digest>&libmpeg3-md5;</digest>
+	<archive>&packages_dir;/&libmpeg3-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

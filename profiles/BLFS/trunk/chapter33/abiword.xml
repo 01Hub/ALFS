@@ -49,7 +49,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&abiword-package;</archive>
+        <digest>&abiword-md5;</digest>
+	<archive>&packages_dir;/&abiword-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

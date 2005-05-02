@@ -19,7 +19,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&alsa-firmware-package;</archive>
+        <digest>&alsa-firmware-md5;</digest>
+	<archive>&packages_dir;/&alsa-firmware-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

@@ -31,7 +31,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&galeon-package;</archive>
+        <digest>&galeon-md5;</digest>
+	<archive>&packages_dir;/&galeon-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

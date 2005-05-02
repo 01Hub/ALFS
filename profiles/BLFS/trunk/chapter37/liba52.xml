@@ -14,7 +14,8 @@
   <package name="liba52" version="&liba52-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&liba52-package;</archive>
+        <digest>&liba52-md5;</digest>
+	<archive>&packages_dir;/&liba52-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
