@@ -1,6 +1,6 @@
 <!ENTITY real-amp "&#38;#38;">
 
-<!ENTITY blfs-version "6.0-r3575">
+<!ENTITY blfs-version "6.0">
 
 <!ENTITY ldconfig "<execute command='/sbin/ldconfig' />">
 
