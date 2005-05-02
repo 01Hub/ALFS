@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch18.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="openssh" version="&openssh-version;">
+    <packageinfo>
+      <requires>
+        <name>openssl</name>
+      </requires>
+      <utilizes>
+        <name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+	<name>tcpwrappers</name>
+      </utilizes>
+      <utilizes>
+	<name>&ximpl;</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>&j2sdk;</name>
+      </utilizes>
+      <utilizes>
+	<name>net-tools</name>
+      </utilizes>
+      <utilizes>
+      	<name>opensc</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&openssh-md5;</digest>
+	<archive>&packages_dir;/&openssh-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+        <base>&build_dir;/&openssh-directory;</base>
+      </stageinfo>
+      <search_replace>
+        <file>configure</file>
+        <find>-lcrypto</find>
+        <replace>/usr/lib/libcrypto.a</replace>
+      </search_replace>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&openssh-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--sysconfdir=/etc/ssh</param>
+        <param>--libexecdir=/usr/sbin</param>
+        <param>--with-md5-passwords</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&openssh-directory;</remove>
+    </stage>
+  </package>
+</alfs>

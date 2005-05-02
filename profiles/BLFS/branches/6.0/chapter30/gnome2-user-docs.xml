@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch30.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="gnome2-user-docs" version="&gnome2-user-docs-version;">
+    <packageinfo>
+      <requires>
+        <name>scrollkeeper</name>
+      </requires>
+      <utilizes>
+	<name>docbook-utils</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&gnome2-user-docs-md5;</digest>
+	<archive>&packages_dir;/&gnome2-user-docs-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&gnome2-user-docs-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+        <param>--localstatedir=/var/lib</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <permissions mode="644">
+	<name>&gnome-prefix;/share/gnome/help/gnome-access-guide/C/*.xml</name>
+	<name>&gnome-prefix;/share/gnome/help/system-admin-guide/C/*.xml</name>
+	<name>&gnome-prefix;/share/gnome/help/user-guide/C/*.xml</name>
+      </permissions>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gnome2-user-docs-directory;</remove>
+    </stage>
+  </package>
+</alfs>

@@ -1,0 +1,11 @@
+<!--************* packages for chapter 5 *************-->
+
+<!ENTITY reiserfsprogs-version   "3.6.19">
+<!ENTITY reiserfsprogs-package   "reiserfsprogs-&reiserfsprogs-version;.tar.bz2">
+<!ENTITY reiserfsprogs-md5       "572b5748d5fd532a93ec7775e531506e">
+<!ENTITY reiserfsprogs-directory "reiserfsprogs-&reiserfsprogs-version;">
+
+<!ENTITY xfsprogs-version   "2.6.25">
+<!ENTITY xfsprogs-package   "xfsprogs-&xfsprogs-version;.src.tar.bz2">
+<!ENTITY xfsprogs-md5       "c4b105bea1a7480db94607bf94252295">
+<!ENTITY xfsprogs-directory "xfsprogs-&xfsprogs-version;">

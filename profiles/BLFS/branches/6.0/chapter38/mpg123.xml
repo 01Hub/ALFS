@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch38.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="mpg123" version="&mpg123-version;">
+    <packageinfo>
+      <requires>
+        <name>alsa-oss</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&mpg123-md5;</digest>
+	<archive>&packages_dir;/&mpg123-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&mpg123-directory;</base>
+      </stageinfo>
+      <make>
+        <param>PREFIX=/usr</param>
+        <param>linux</param>
+      </make>
+      <make>
+        <param>PREFIX=/usr</param>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&mpg123-directory;</remove>
+    </stage>
+  </package>
+</alfs>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../../config/packages/ch27.ent">
+<!ENTITY % config_entities SYSTEM  "../../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+<package name="xfce4-systray" version="&xfce-xfce4-systray-version;">
+  <stage name="Unpacking.">
+    <unpack>
+      <digest>&xfce-xfce4-systray-md5;</digest>
+      <archive>&build_dir;/&xfce-build-directory;/&xfce-xfce4-systray-package;</archive>
+      <destination>&build_dir;/&xfce-build-directory;</destination>
+    </unpack>
+  </stage>
+  <stage name="Installing.">
+    <stageinfo>
+      <base>&build_dir;/&xfce-build-directory;/&xfce-xfce4-systray-directory;</base>
+    </stageinfo>
+    <configure>
+      <param>--prefix=/usr</param>
+      <param>--sysconfdir=/etc</param>
+    </configure>
+    <make />
+    <make>
+      <param>install</param>
+    </make>
+  </stage>
+  <stage name="Cleanup.">
+    <remove>&build_dir;/&xfce-build-directory;/&xfce-xfce4-systray-directory;</remove>
+  </stage>
+</package>
+</alfs>

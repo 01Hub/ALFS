@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch09.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="librsvg" version="&librsvg-version;">
+    <packageinfo>
+      <requires>
+        <name>gtk+2</name>
+      </requires>
+      <requires>
+        <name>libxml2</name>
+      </requires>
+      <requires>
+        <name>libart_lgpl</name>
+      </requires>
+      <requires>
+        <name>popt</name>
+      </requires>
+      <utilizes>
+        <name>libcroco</name>
+      </utilizes>
+      <utilizes>
+        <name>libgsf</name>
+      </utilizes>
+      <utilizes>
+        <name>gnome-vfs2</name>
+      </utilizes>
+      <utilizes>
+      	<name>libgnomeprintui</name>
+      </utilizes>
+      <utilizes>
+	<name>mozilla</name>
+      </utilizes>
+      <utilizes>
+	<name>gtk-doc</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-utils</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&librsvg-md5;</digest>
+	<archive>&packages_dir;/&librsvg-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&librsvg-directory;</base>
+      </stageinfo>
+      <configure>
+	<param>--prefix=/usr</param>
+	<param>--sysconfdir=/etc</param>
+	<param>--disable-gtk-doc</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+      &ldconfig;
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&librsvg-directory;</remove>
+    </stage>
+  </package>
+</alfs>

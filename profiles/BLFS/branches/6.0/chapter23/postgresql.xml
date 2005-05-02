@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch23.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
+]>
+<alfs>
+  <package name="postgresql" version="&postgresql-version;">
+    <packageinfo>
+      <utilizes>
+	<name>python</name>
+      </utilizes>
+      <utilizes>
+	<name>tcl</name>
+      </utilizes>
+      <utilizes>
+	<name>tk</name>
+      </utilizes>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+	<name>sgml-dtd31</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-dsssl</name>
+      </utilizes>
+      <utilizes>
+	<name>SGMLSpm</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>apache-ant</name>
+      </utilizes>
+      <utilizes>
+	<name>rendezvous</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&postgresql-md5;</digest>
+	<archive>&packages_dir;/&postgresql-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    &bootscripts-get;
+    <stage name="Creating user">
+      <execute command="getent passwd postgres &gt; /dev/null || useradd">
+        <param>-d /srv/pgsql/data</param>
+        <param>postgres</param>
+      </execute>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&postgresql-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&postgresql-dsssl-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&postgresql-directory;</base>
+      </stageinfo>
+      <execute command='sed -i.orig -e "/CATALOG \/etc\/sgml\/OpenSP-1.5.1.cat/d" \
+	/etc/sgml/catalog /etc/sgml/sgml-docbook.cat' />
+      <configure>
+        <param>--prefix=/usr</param>
+	<param>--enable-thread-safety</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <make>
+	<param>install-all-headers</param>
+      </make>
+      <ownership user="root" group="root">
+	<option>recursive</option>
+	<name>/usr/share/doc/postgresql/html</name>
+      </ownership>
+      <mkdir>
+        <option>parents</option>
+        <name>/srv/pgsql/data</name>
+      </mkdir>
+      <ownership user="postgres">
+        <name>/srv/pgsql/data</name>
+      </ownership>
+    </stage>
+    <stage name="Initializing database">
+      <stageinfo>
+        <user>postgres</user>
+      </stageinfo>
+      <execute command="initdb">
+        <param>-D /srv/pgsql/data</param>
+      </execute>
+    </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-postgresql</param>
+      </make>
+    </stage>
+    &bootscripts-clean;
+    <stage name="Cleanup">
+      <remove>&build_dir;/&postgresql-directory;</remove>
+    </stage>
+  </package>
+</alfs>

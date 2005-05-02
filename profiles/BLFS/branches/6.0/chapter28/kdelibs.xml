@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch28.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="kdelibs" version="&kdelibs-version;">
+    <packageinfo>
+      <requires>
+        <name>arts</name>
+      </requires>
+      <utilizes>
+	<name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+        <name>libart_lgpl</name>
+      </utilizes>
+      <utilizes>
+        <name>libxml2</name>
+      </utilizes>
+      <utilizes>
+        <name>libxslt</name>
+      </utilizes>
+      <utilizes>
+        <name>pcre</name>
+      </utilizes>
+      <utilizes>
+        <name>libfam</name>
+      </utilizes>
+      <utilizes>
+        <name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>libidn</name>
+      </utilizes>
+      <utilizes>
+        <name>libtiff</name>
+      </utilizes>
+      <utilizes>
+	<name>aspell</name>
+      </utilizes>
+      <utilizes>
+        <name>cups</name>
+      </utilizes>
+      <utilizes>
+        <name>openldap</name>
+      </utilizes>
+      <utilizes>
+        <name>alsa-lib</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>openexr</name>
+      </utilizes>
+      <utilizes>
+	<name>jasper</name>
+      </utilizes>
+      <utilizes>
+	<name>graphviz</name>
+      </utilizes>
+      <utilizes>
+	<name>doxygen</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&kdelibs-md5;</digest>
+	<archive>&packages_dir;/&kdelibs-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&kdelibs-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p0</param>
+	<param>-i &packages_dir;/&kdelibs-htmlframes-patch;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p0</param>
+	<param>kio/kio/job.cpp</param>
+	<param>&packages_dir;/&kdelibs-kio-patch;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p0</param>
+	<param>-i &packages_dir;/&kdelibs-kioslave-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&kdelibs-directory;</base>
+      </stageinfo>
+      <configure>
+	<param>--prefix=&kde-prefix;</param>
+	<param>--disable-debug</param>
+	<param>--disable-dependency-tracking</param>
+	<param>--enable-fast-malloc=full</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+      &ldconfig;
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&kdelibs-directory;</remove>
+    </stage>
+  </package>
+</alfs>

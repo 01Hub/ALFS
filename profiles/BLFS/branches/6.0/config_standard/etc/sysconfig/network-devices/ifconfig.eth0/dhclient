@@ -1,0 +1,8 @@
+# Begin /etc/sysconfig/network-devices/ifconfig.eth0/dhclient
+
+ONBOOT="yes"
+SERVICE="dhclient"
+DHCP_START="-q &dhclient-start-params;"
+DHCP_STOP="-q -r &dhclient-stop-params;"
+
+# End /etc/sysconfig/network-devices/ifconfig.eth0/dhclient

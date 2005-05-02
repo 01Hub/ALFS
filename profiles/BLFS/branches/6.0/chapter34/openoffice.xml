@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch34.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+%files;
+
+]>
+<alfs>
+  <package name="openoffice" version="&openoffice-version;">
+    <packageinfo>
+      <requires>
+        <name>&ximpl;</name>
+      </requires>
+      <requires>
+        <name>&j2sdk;</name>
+      </requires>
+      <requires>
+        <name>zip</name>
+      </requires>
+      <requires>
+        <name>unzip</name>
+      </requires>
+      <requires>
+        <name>tcsh</name>
+      </requires>
+      <requires>
+        <name>which</name>
+      </requires>
+      <requires>
+	<name>gcc-3.3</name>
+      </requires>
+      <requires>
+	<name>freetype</name>
+      </requires>
+      <utilizes>
+	<name>pkgconfig</name>
+      </utilizes>
+      <utilizes>
+        <name>startup-notification</name>
+      </utilizes>
+      <utilizes>
+	<name>desktop-file-utils</name>
+      </utilizes>
+      <utilizes>
+        <name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+        <name>libart_lgpl</name>
+      </utilizes>
+      <utilizes>
+        <name>apache-ant</name>
+      </utilizes>
+      <utilizes>
+	<name>curl</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <mkdir>
+	<option>parents</option>
+	<name>&build_dir;/OOo-build</name>
+      </mkdir>
+      <unpack>
+        <digest>&openoffice-md5;</digest>
+	<archive>&packages_dir;/&openoffice-package;</archive>
+        <destination>&build_dir;/OOo-build</destination>
+      </unpack>
+      <unpack>
+        <digest>&gpc-md5;</digest>
+	<archive>&packages_dir;/&gpc-package;</archive>
+        <destination>&build_dir;/OOo-build</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <environment>
+          <variable name="JAVA_HOME">/opt/j2sdk/j2sdk</variable>
+	  <variable name="PATH" mode="prepend">/opt/gcc-&gcc-33-version;/bin:</variable>
+          <variable name="PATH" mode="append">:/opt/j2sdk/j2sdk/bin</variable>
+          <variable name="LS_COLORS" />
+        </environment>
+        <base>&build_dir;/OOo-build/&openoffice-directory;</base>
+      </stageinfo>
+      <move>
+        <option>force</option>
+        <source>&build_dir;/OOo-build/&gpc-directory;/gpc.c</source>
+        <destination>&build_dir;/OOo-build/&openoffice-directory;/external/gpc</destination>
+      </move>
+      <move>
+        <option>force</option>
+        <source>&build_dir;/OOo-build/&gpc-directory;/gpc.h</source>
+        <destination>&build_dir;/OOo-build/&openoffice-directory;/external/gpc</destination>
+      </move>
+      <remove>../&gpc-directory;</remove>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&openoffice-gcc33-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&openoffice-nptl-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&openoffice-jdk-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&openoffice-test-bin-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&openoffice-freetype-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&openoffice-no-pam-patch;</param>
+      </patch>
+      <link>
+	<option>force</option>
+	<target>/opt/gcc-&gcc-33-version;/include/c++/&gcc-33-version;</target>
+	<name>/usr/g++-v3</name>
+      </link>
+      <search_replace base="&build_dir;/OOo-build/&openoffice-directory;/solenv/inc">
+        <file>unxlngi4.mk</file>
+        <find>-mcpu=pentiumpro</find>
+        <replace></replace>
+      </search_replace>
+      <configure base="&build_dir;/OOo-build/&openoffice-directory;/config_office">
+        <param>--with-lang=ENUS</param>
+        <param>--with-dict=ENUS</param>
+        <param>--without-fonts</param>
+        <param>--enable-libsn</param>
+        <param>--with-system-zlib</param>
+	<param>--with-system-freetype</param>
+      </configure>
+      <execute command="./bootstrap" />
+      <execute command="bash -c &quot;source LinuxIntelEnv.Set.sh; dmake&quot;" />
+      <execute command="sed" base="&build_dir;/OOo-build/instsetoo/unxlngi4.pro/01/normal">
+	<param>-i "s:^oo_home=.*.:oo_home=openoffice:" install</param>
+      </execute>
+      <execute command="&blfs-config;/scripts/install-oo.sh" />
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/sagenda</target>
+	<name>/usr/bin/sagenda</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/scalc</target>
+	<name>/usr/bin/scalc</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/sdraw</target>
+	<name>/usr/bin/sdraw</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/sfax</target>
+	<name>/usr/bin/sfax</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/simpress</target>
+	<name>/usr/bin/simpress</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/slabel</target>
+	<name>/usr/bin/slabel</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/sletter</target>
+	<name>/usr/bin/sletter</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/smaster</target>
+	<name>/usr/bin/smaster</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/smath</target>
+	<name>/usr/bin/smath</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/smemo</target>
+	<name>/usr/bin/smemo</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/soffice</target>
+	<name>/usr/bin/soffice</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/spadmin</target>
+	<name>/usr/bin/spadmin</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/svcard</target>
+	<name>/usr/bin/svcard</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/sweb</target>
+	<name>/usr/bin/sweb</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/opt/openoffice/program/swriter</target>
+	<name>/usr/bin/swriter</name>
+      </link>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/applications</name>
+      </mkdir>
+      <copy>
+	<source>/opt/openoffice/share/gnome/net/ooo645*.desktop</source>
+	<destination>/usr/share/applications</destination>
+      </copy>
+      <execute command="rename ooo645 ooo /usr/share/applications/ooo645*.desktop" />
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/OOo-build</remove>
+      <remove>/usr/g++-v3</remove>
+    </stage>
+  </package>
+</alfs>

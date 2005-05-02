@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch25.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
+
+
+%general_entities;
+%package_entities;
+%config_entities;
+%files;
+
+]>
+<alfs xmlns:xi="http://www.w3.org/2001/XInclude">
+  <package name="xfree86" version="&xfree86-version;">
+    <packageinfo>
+      <requires>
+        <name>expat</name>
+      </requires>
+      <requires>
+        <name>libpng</name>
+      </requires>
+      <requires>
+        <name>freetype</name>
+      </requires>
+      <requires>
+        <name>fontconfig</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&xfree86-package1-md5;</digest>
+	<archive>&packages_dir;/&xfree86-package1;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <digest>&xfree86-package2-md5;</digest>
+	<archive>&packages_dir;/&xfree86-package2;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <digest>&xfree86-package3-md5;</digest>
+	<archive>&packages_dir;/&xfree86-package3;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <digest>&xfree86-package4-md5;</digest>
+	<archive>&packages_dir;/&xfree86-package4;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <digest>&xfree86-package5-md5;</digest>
+	<archive>&packages_dir;/&xfree86-package5;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <digest>&xfree86-package6-md5;</digest>
+	<archive>&packages_dir;/&xfree86-package6;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <digest>&xfree86-package7-md5;</digest>
+	<archive>&packages_dir;/&xfree86-package7;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&xfree86-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&xfree86-security-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&xfree86-directory;</base>
+      </stageinfo>
+      <copy>
+	<source>&blfs-config;/x/xfree86/host.def</source>
+	<destination>config/cf</destination>
+      </copy>     
+      <make>
+	<param>World</param>
+      </make>
+      <make>
+	<param>install</param>
+      </make>
+      <make>
+	<param>install.man</param>
+      </make>
+      <link>
+	<option>force</option>
+	<target>/usr/X11R6/bin</target>
+	<name>/usr/bin/X11</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/usr/X11R6/lib/X11</target>
+	<name>/usr/lib/X11</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>/usr/X11R6/include/X11</target>
+	<name>/usr/include/X11</name>
+      </link>
+      <!-- update /etc/ld.so.conf -->
+      <search_replace base="/etc">
+	<file>ld.so.conf</file>
+	<find>/usr/X11R6/lib</find>
+	<replace></replace>
+      </search_replace>
+      <textdump mode="append" base="/etc">
+	<file>ld.so.conf</file>
+	<content>=/usr/X11R6/lib</content>
+      </textdump>
+      &ldconfig; 
+      <link base="/dev">
+	<option>force</option>
+	<target>psaux</target>
+	<name>mouse</name>
+      </link>
+      <copy base="&blfs-config;/root">
+	<source>dot_xinitrc</source>
+	<destination>/root/.xinitrc</destination>
+      </copy>
+      <xi:include href="fonts.xml" />
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&xfree86-directory;</remove>
+    </stage>
+  </package>
+</alfs>

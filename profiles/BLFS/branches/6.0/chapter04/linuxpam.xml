@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch04.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+%files;
+
+]>
+<alfs>
+  <package name="linuxpam" version="&linuxpam-version;">
+    <packageinfo>
+      <requires>
+        <name>cracklib</name>
+      </requires>
+      <utilizes>
+      	<name>sgmltools-lite</name>
+      </utilizes>
+      <utilizes>
+	<name>db</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&linuxpam-md5;</digest>
+	<archive>&packages_dir;/&linuxpam-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+        <base>&build_dir;/&linuxpam-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&linuxpam-linkage-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&linuxpam-directory;</base>
+      </stageinfo>
+      <execute command="autoconf" />
+      <search_replace>
+	<file>modules/Simple.Rules</file>
+	<find>(mandir)</find>
+	<replace>(MANDIR)</replace>
+      </search_replace>
+      <configure>
+        <param>--enable-static-libpam</param>
+        <param>--with-mailspool=/var/mail</param>
+        <param>--enable-read-both-confs</param>
+        <param>--sysconfdir=/etc</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <move base="/lib">
+        <source>libpam.a</source>
+        <source>libpam_misc.a</source>
+        <source>libpamc.a</source>
+        <destination>/usr/lib</destination>
+      </move>
+      <remove>/lib/libpam.so</remove>
+      <remove>/lib/libpamc.so</remove>
+      <remove>/lib/libpam_misc.so</remove>
+      <link>
+        <option>force</option>
+        <target>../../lib/libpam.so.&linuxpam-version;</target>
+        <name>/usr/lib/libpam.so</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>../../lib/libpam_misc.so.&linuxpam-version;</target>
+        <name>/usr/lib/libpam_misc.so</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>../../lib/libpamc.so.&linuxpam-version;</target>
+        <name>/usr/lib/libpamc.so</name>
+      </link>
+    </stage>
+    <stage name="Configuring">
+      <mkdir>
+        <option>parents</option>
+        <name>/etc/pam.d</name>
+      </mkdir>
+      <copy>
+        <source>&blfs-config;/etc/pam.d/other</source>
+        <destination>/etc/pam.d/other</destination>
+      </copy>
+      <copy>
+        <source>&blfs-config;/etc/pam.conf</source>
+        <destination>/etc/pam.conf</destination>
+      </copy>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&linuxpam-directory;</remove>
+    </stage>
+  </package>
+</alfs>

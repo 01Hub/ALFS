@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch12.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="gcc-3.3" version="&gcc-33-version;">
+    <packageinfo>
+      <utilizes>
+	<name>dejagnu</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&gcc-33-md5;</digest>
+	<archive>&packages_dir;/&gcc-33-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <mkdir>
+        <name>&build_dir;/gcc-build</name>
+      </mkdir>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+        <base>&build_dir;/&gcc-33-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gcc-33-no-fixincludes-patch;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&gcc-33-linkonce-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/gcc-build</base>
+      </stageinfo>
+      <configure command="../&gcc-33-directory;/configure">
+        <param>--prefix=/opt/gcc-&gcc-33-version;</param>
+        <param>--enable-shared</param>
+        <param>--enable-languages=c,c++</param>
+        <param>--enable-threads=posix</param>
+	<param>|| true</param>
+      </configure>
+      <make>
+        <param>bootstrap</param>
+      </make>
+      <make>
+        <param>install</param>
+      </make>
+      <move>
+        <source>/opt/gcc-&gcc-33-version;/lib/libstdc++.so.5*</source>
+        <destination>/usr/lib</destination>
+      </move>
+      <link>
+	<option>force</option>
+	<target>/usr/lib/libstdc++.so.5.0.6</target>
+	<name>/opt/gcc-&gcc-33-version;/lib</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>libstdc++.so.5.0.6</target>
+	<name>/opt/gcc-&gcc-33-version;/lib/libstdc++.so.5</name>
+      </link>
+      <ownership user="root" group="root">
+	<option>recursive</option>
+	<name>/opt/gcc-&gcc-33-version;/lib/gcc-lib/i686-pc-linux-gnu/&gcc-33-version;/include</name>
+      </ownership>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gcc-33-directory;</remove>
+      <remove>&build_dir;/gcc-build</remove>
+    </stage>
+  </package>
+</alfs>
