@@ -31,7 +31,8 @@
     </packageinfo>
     <stage name="Unpacking.">
       <unpack>
-        <archive>&packages_dir;/&gimp-print-package;</archive>
+        <digest>&gimp-print-md5;</digest>
+	<archive>&packages_dir;/&gimp-print-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

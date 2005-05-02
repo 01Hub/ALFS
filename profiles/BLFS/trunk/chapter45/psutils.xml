@@ -14,7 +14,8 @@
   <package name="psutils" version="&psutils-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&psutils-package;</archive>
+        <digest>&psutils-md5;</digest>
+	<archive>&packages_dir;/&psutils-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

@@ -28,7 +28,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&a2ps-package;</archive>
+        <digest>&a2ps-md5;</digest>
+	<archive>&packages_dir;/&a2ps-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

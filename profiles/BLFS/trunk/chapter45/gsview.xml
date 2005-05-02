@@ -22,7 +22,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&gsview-package;</archive>
+        <digest>&gsview-md5;</digest>
+	<archive>&packages_dir;/&gsview-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

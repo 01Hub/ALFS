@@ -40,7 +40,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&tex-package;</archive>
+        <digest>&tex-md5;</digest>
+	<archive>&packages_dir;/&tex-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
@@ -61,11 +62,13 @@
 	  <param>0</param>
 	</execute>
         <unpack>
-          <archive>&packages_dir;/&tex-texmf-package;</archive>
+          <digest>&tex-texmf-md5;</digest>
+	  <archive>&packages_dir;/&tex-texmf-package;</archive>
           <destination>/usr/share/texmf</destination>
         </unpack>
         <unpack>
-          <archive>&packages_dir;/&tex-texmfsrc-package;</archive>
+          <digest>&tex-texmfsrc-md5;</digest>
+	  <archive>&packages_dir;/&tex-texmfsrc-package;</archive>
           <destination>/usr/share/texmf</destination>
         </unpack>
       </stage>

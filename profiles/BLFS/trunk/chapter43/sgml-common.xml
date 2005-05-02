@@ -14,7 +14,8 @@
   <package name="sgml-common" version="&sgml-common-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&sgml-common-package;</archive>
+        <digest>&sgml-common-md5;</digest>
+	<archive>&packages_dir;/&sgml-common-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

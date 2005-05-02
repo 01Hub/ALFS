@@ -14,7 +14,8 @@
   <package name="enscript" version="&enscript-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&enscript-package;</archive>
+        <digest>&enscript-md5;</digest>
+	<archive>&packages_dir;/&enscript-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

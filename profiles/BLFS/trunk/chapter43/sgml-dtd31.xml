@@ -25,7 +25,8 @@
         <name>&build_dir;/&sgml-dtd31-directory;</name>
       </mkdir>
       <unpack>
-        <archive>&packages_dir;/&sgml-dtd31-package;</archive>
+        <digest>&sgml-dtd31-md5;</digest>
+	<archive>&packages_dir;/&sgml-dtd31-package;</archive>
         <destination>&build_dir;/&sgml-dtd31-directory;</destination>
       </unpack>
     </stage>

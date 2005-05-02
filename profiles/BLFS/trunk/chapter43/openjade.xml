@@ -21,7 +21,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&openjade-package;</archive>
+        <digest>&openjade-md5;</digest>
+	<archive>&packages_dir;/&openjade-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

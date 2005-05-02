@@ -14,7 +14,8 @@
   <package name="cdrtools" version="&cdrtools-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&cdrtools-package;</archive>
+        <digest>&cdrtools-md5;</digest>
+	<archive>&packages_dir;/&cdrtools-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
