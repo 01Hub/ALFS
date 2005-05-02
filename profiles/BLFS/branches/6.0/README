@@ -15,11 +15,11 @@ Configuring the profile:
 There are some configuration files that must be customized
 before you can create your BLFS installation. These are:
 
- - !to be added once we've figured out about config/general.ent!
+ - ./config/config.ent
 
- - all files in ./config_standard/{etc,home,root,x} and
-   subdirectories. Things you need to configure are marked
-   with exclamation marks, !like this!.
+ - files in ./config/{etc,home,root,x} and subdirectories.
+   Things you need to adjust are surrounded by exclamation
+   marks, !like this!.
 
 Running the profile:
 ====================
@@ -29,13 +29,14 @@ To use the profile you should:
  1) Download the packages you need. See ./README.download
     for more details.
 
- 2) First copy the config_standard directory to [name of your choice]
-    Then create a link called config to the directory you chose above.
-    Ex. ln -s ./config_standard ./config
+ 2) First make a backup copy of the ./config_standard
+    directory. Then symlink ./config_standard to ./config.
+    e.g. cp -R ./config_standard ./config_standard.backup
+         ln -s ./config_standard ./config
 
- 3) Customize the files in the config directory.
+ 3) Customize the files in the ./config directory.
 
- 4) Execute ./runit.sh as root. This will create a file
-    "files.ent" (which contains an entity declaration that
-    allows us to have absolute paths in the profile) and
-    then run nALFS to start the build.
+ 4) Execute ./runit.sh as root. This will start nALFS with
+    the right parameters. It will also create a file
+    "files.ent" which contains an entity declaration that
+    allows us to have absolute paths in the profile.

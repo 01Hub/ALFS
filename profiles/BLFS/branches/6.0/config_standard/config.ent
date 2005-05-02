@@ -64,7 +64,7 @@
 <!ENTITY perl-version "5.8.5">
 
 <!-- Net-DNS nameserver tests -->
-<!-- Whether you want to perform these tests -->
+<!-- Whether you want to perform these tests or not -->
 <!ENTITY nameserver-tests "yes">
 
 <!-- Kerberos implementation -->
@@ -79,12 +79,6 @@
 <!-- XFree86 (xfree86) or X.org (xorg) -->
 <!ENTITY ximpl "xorg">
 
-<!-- Qt install location -->
-<!-- Qt can either be installed in either the /usr or /opt hierarchy 
-  configure by setting the following entity to "qt" for /usr or "qt-opt" for
-  /opt -->
-<!ENTITY qt-install "qt">
-
 <!-- Ghostscript implementation -->
 <!-- esp-gs (esp-ghostscript) or afpl-gs (ghostscript)-->
 <!ENTITY ghostscript-impl "esp-ghostscript">
@@ -93,26 +87,26 @@
 <!-- libungif or giflib -->
 <!ENTITY gif-impl "giflib">
 
+<!-- Qt install location -->
+<!-- /usr (qt) or /opt (qt-opt) -->
+<!ENTITY qt-install "qt">
+
+<!-- KDE install location -->
+<!-- /usr (usr) or /opt (opt) -->
+<!ENTITY kde-install "usr">
+<!ENTITY kde-prefix  "/&kde-install;">
+
+<!-- GNOME install location -->
+<!-- /usr (usr) or /opt (opt) --> 
+<!ENTITY gnome-install "usr">
+<!ENTITY gnome-prefix  "/&gnome-install;">
+
 <!-- MTA implementation -->
 <!-- sendmail, exim, courier, qpopper or postfix -->
 <!ENTITY mta-impl "sendmail">
 
 <!-- MySQL root password -->
 <!ENTITY mysql-root-pass "blahblah">
-
-<!-- KDE configuration -->
-<!-- KDE Install Type -->
-<!-- Set to usr or opt, also remember to change the kde-prefix
-  entity below accordingly -->
-<!ENTITY kde-install "usr">
-<!ENTITY kde-prefix "/usr">
-
-<!-- GNOME configuration -->
-<!-- GNOME Install Type -->
-<!-- Set to "usr" or "opt", also remember to change the gnome-prefix
-  entity below accordingly --> 
-<!ENTITY gnome-install "usr">
-<!ENTITY gnome-prefix "/usr">
 
 <!-- ALSA driver -->
 <!ENTITY sound-card  "emu10k1">
