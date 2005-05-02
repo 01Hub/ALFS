@@ -27,7 +27,8 @@
         <name>&build_dir;/&xml-dtd-directory;</name>
       </mkdir>
       <unpack>
-        <archive>&packages_dir;/&xml-dtd-package;</archive>
+        <digest>&xml-dtd-md5;</digest>
+	<archive>&packages_dir;/&xml-dtd-package;</archive>
         <destination>&build_dir;/&xml-dtd-directory;</destination>
       </unpack>
     </stage>

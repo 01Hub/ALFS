@@ -31,6 +31,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&fop-md5;</digest>
       <archive>&packages_dir;/&fop-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

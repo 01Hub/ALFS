@@ -28,7 +28,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&afplghostscript-package;</archive>
+        <digest>&afplghostscript-md5;</digest>
+	<archive>&packages_dir;/&afplghostscript-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <mkdir>
@@ -36,11 +37,13 @@
         <name>/usr/share/ghostscript</name>
       </mkdir>
       <unpack>
-        <archive>&packages_dir;/&ghostscript-fonts1;</archive>
+        <digest>&ghostscript-fonts1-md5;</digest>
+	<archive>&packages_dir;/&ghostscript-fonts1;</archive>
         <destination>/usr/share/ghostscript</destination>
       </unpack>
       <unpack>
-        <archive>&packages_dir;/&ghostscript-fonts2;</archive>
+        <digest>&ghostscript-fonts2-md5;</digest>
+	<archive>&packages_dir;/&ghostscript-fonts2;</archive>
         <destination>/usr/share/ghostscript</destination>
       </unpack>
     </stage>

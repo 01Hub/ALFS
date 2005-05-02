@@ -34,6 +34,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&docbook-utils-md5;</digest>
       <archive>&packages_dir;/&docbook-utils-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

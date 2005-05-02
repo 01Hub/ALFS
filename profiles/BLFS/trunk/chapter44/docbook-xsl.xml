@@ -21,7 +21,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&docbook-xsl-package;</archive>
+        <digest>&docbook-xsl-md5;</digest>
+	<archive>&packages_dir;/&docbook-xsl-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

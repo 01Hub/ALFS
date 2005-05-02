@@ -30,7 +30,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&xpdf-package;</archive>
+        <digest>&xpdf-md5;</digest>
+	<archive>&packages_dir;/&xpdf-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

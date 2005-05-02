@@ -55,7 +55,8 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&cups-package;</archive>
+        <digest>&cups-md5;</digest>
+	<archive>&packages_dir;/&cups-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

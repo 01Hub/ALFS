@@ -14,15 +14,18 @@
   <package name="udftools" version="&udftools-version;">
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&udftools-package;</archive>
+        <digest>&udftools-md5;</digest>
+	<archive>&packages_dir;/&udftools-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <unpack>
-        <archive>&packages_dir;/&udftools-patch-package;</archive>
+        <digest>&udftools-patch-md5;</digest>
+	<archive>&packages_dir;/&udftools-patch-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <unpack>
-        <archive>&packages_dir;/&udftools-kernel-patch-package;</archive>
+        <digest>&udftools-kernel-md5;</digest>
+	<archive>&packages_dir;/&udftools-kernel-patch-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

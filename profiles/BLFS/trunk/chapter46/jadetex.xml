@@ -22,6 +22,7 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
+      <digest>&jadetex-md5;</digest>
       <archive>&packages_dir;/&jadetex-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>

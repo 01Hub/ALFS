@@ -31,11 +31,12 @@
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <archive>&packages_dir;/&xsane-package;</archive>
+        <digest>&xsane-md5;</digest>
+	<archive>&packages_dir;/&xsane-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing frontend">
+    <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&xsane-directory;</base>
       </stageinfo>
