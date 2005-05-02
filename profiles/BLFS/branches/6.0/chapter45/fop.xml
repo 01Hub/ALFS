@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch45.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+<package name="fop" version="&fop-version;">
+  <packageinfo>
+    <requires>
+      <name>&j2sdk;</name>
+    </requires>
+    <utilizes>
+      <name>libxslt</name>
+    </utilizes>
+    <utilizes>
+      <name>jimi</name>
+    </utilizes>
+    <utilizes>
+      <name>batik</name>
+    </utilizes>
+    <utilizes>
+      <name>forrest</name>
+    </utilizes>
+  </packageinfo>
+  <stage name="Unpacking.">
+    <unpack>
+      <digest>&fop-md5;</digest>
+      <archive>&packages_dir;/&fop-package;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+  </stage>
+  <stage name="Installing JAI.">
+    <stageinfo>
+      <environment>
+	<variable name="JAVA_HOME">/opt/j2sdk/j2sdk</variable>
+      </environment>
+      <base>/opt/j2sdk/j2sdk</base>
+    </stageinfo>
+    <permissions mode="755">
+      <name>&packages_dir;/&fop-jai-binary;</name>
+    </permissions>
+    <execute command="yes | &packages_dir;/&fop-jai-binary;" />
+  </stage>
+  <stage name="Installing FOP.">
+    <stageinfo>
+      <environment>
+	<variable name="JAVA_HOME">/opt/j2sdk/j2sdk</variable>
+      </environment>
+      <base>&build_dir;/&fop-directory;</base>
+    </stageinfo>
+    <execute command="./build.sh" />
+    <search_replace>
+      <file>fop.sh</file>
+      <find>build</find>
+      <replace>lib</replace>
+    </search_replace>
+    <mkdir>
+      <option>parents</option>
+      <name>/opt/fop-&fop-version;</name>
+    </mkdir>
+    <mkdir base="/opt/fop-&fop-version;">
+      <option>parents</option>
+      <name>bin</name>
+      <name>lib</name>
+      <name>docs/general</name>
+      <name>docs/lib</name>
+      <name>docs/site</name>
+    </mkdir>
+    <copy>
+      <source>fop.sh</source>
+      <destination>/opt/fop-&fop-version;/bin</destination>
+    </copy>
+    <permissions mode="755" base="/opt/fop-&fop-version;">
+      <name>bin/fop.sh</name>
+    </permissions>
+    <copy>
+      <source>build/fop.jar</source>
+      <source>lib/avalon-framework-cvs-20020806.jar</source>
+      <destination>/opt/fop-&fop-version;/lib</destination>
+    </copy>
+    <copy>
+      <source>docs/*</source>
+      <destination>/opt/fop-&fop-version;/docs</destination>
+    </copy>
+    <copy>
+      <source>CHANGES</source>
+      <source>LICENSE</source>
+      <source>README</source>
+      <source>ReleaseNotes.html</source>
+      <source>STATUS</source>
+      <destination>/opt/fop-&fop-version;/docs/general</destination>
+    </copy>
+    <copy>
+      <source>lib/avalon.LICENSE.txt</source>
+      <source>lib/readme</source>
+      <destination>/opt/fop-&fop-version;/docs/lib</destination>
+    </copy>
+    <copy>
+      <option>recursive</option>
+      <source>build/site/*</source>
+      <destination>/opt/fop-&fop-version;/docs/site</destination>
+    </copy>
+    <link>
+      <option>force</option>
+      <target>fop-&fop-version;</target>
+      <name>/opt/fop</name>
+    </link>
+  </stage>
+  <!-- Note: The following two stages are optional if you have the corresponding packages already installed -->
+  <stage name="Installing Batik JAR (Optional)">
+    <stageinfo>
+      <base>&build_dir;/&fop-directory;</base>
+    </stageinfo>
+    <copy>
+      <source>lib/batik.jar</source>
+      <destination>/opt/fop-&fop-version;/lib</destination>
+    </copy>
+    <copy>
+      <source>lib/batik.LICENSE.txt</source>
+      <destination>/opt/fop-&fop-version;/docs/lib</destination>
+    </copy>
+  </stage>
+  <stage name="Installing Xalan-Java Components (Optional)">
+    <stageinfo>
+      <base>&build_dir;/&fop-directory;</base>
+    </stageinfo>
+    <search_replace>
+      <file>xalan.sh</file>
+      <find>build</find>
+      <replace>lib</replace>
+    </search_replace>
+    <copy>
+      <source>xalan.sh</source>
+      <destination>/opt/fop-&fop-version;/bin</destination>
+    </copy>
+    <permissions mode="755" base="/opt/fop-&fop-version;">
+      <name>bin/xalan.sh</name>
+    </permissions>
+    <copy>
+      <source>lib/xml-apis.jar</source>
+      <source>lib/xercesImpl-2.2.1.jar</source>
+      <source>lib/xalan-2.4.1.jar</source>
+      <destination>/opt/fop-&fop-version;/lib</destination>
+    </copy>
+    <copy>
+      <source>lib/xml-apis.LICENSE.txt</source>
+      <source>lib/xerces.LICENSE.txt</source>
+      <source>lib/xalan.LICENSE.txt</source>
+      <source>lib/xml-apis.README.txt</source>
+      <destination>/opt/fop-&fop-version;/docs/lib</destination>
+    </copy>
+  </stage>
+  <stage name="Cleanup.">
+    <remove>&build_dir;/&fop-directory;</remove>
+  </stage>
+</package>
+</alfs>

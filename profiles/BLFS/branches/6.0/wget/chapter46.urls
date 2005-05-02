@@ -1,0 +1,8 @@
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/tetex-src-2.0.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/tetex-src-2.0.2-flex-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/tetex-src-2.0.2-remove_readlink-1.patch
+
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/tetex-texmf-2.0.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/tetex-texmfsrc-2.0.2.tar.bz2
+
+ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/jadetex-3.13.tar.bz2

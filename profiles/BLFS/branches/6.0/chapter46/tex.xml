@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch46.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="tex" version="&tex-version;">
+    <packageinfo>
+      <requires>
+	<name>ed</name>
+      </requires>
+      <utilizes>
+	<name>libpng</name>
+      </utilizes>
+      <utilizes>
+	<name>&ximpl;</name>
+      </utilizes>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>mysql</name>
+      </utilizes>
+      <utilizes>
+	<name>Perl-Tk</name>
+      </utilizes>
+      <utilizes>
+	<name>t1lib</name>
+      </utilizes>
+      <utilizes>
+	<name>libwww</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&tex-md5;</digest>
+	<archive>&packages_dir;/&tex-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&tex-directory;</base>
+      </stageinfo>
+      <mkdir>
+        <option>parents</option>
+        <name>/usr/share/texmf</name>
+      </mkdir>
+      <stage name="Installing texmf">
+        <!-- force the stage handler to fork, so the umask will be reset to default when done -->
+	<stageinfo>
+	  <user>root</user>
+	</stageinfo>
+        <execute command="umask">
+	  <param>0</param>
+	</execute>
+        <unpack>
+          <digest>&tex-texmf-md5;</digest>
+	  <archive>&packages_dir;/&tex-texmf-package;</archive>
+          <destination>/usr/share/texmf</destination>
+        </unpack>
+        <unpack>
+          <digest>&tex-texmfsrc-md5;</digest>
+	  <archive>&packages_dir;/&tex-texmfsrc-package;</archive>
+          <destination>/usr/share/texmf</destination>
+        </unpack>
+      </stage>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&tex-flex-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&tex-readlink-patch;</param>
+      </patch>
+      <configure>
+        <param>--with-x=no</param>
+        <param>--prefix=/usr</param>
+        <param>--without-texinfo</param>
+        <param>--with-system-ncurses</param>
+        <param>--with-system-zlib</param>
+        <param>--exec-prefix=/usr</param>
+        <param>--bindir=/usr/bin</param>
+      </configure>
+      <make>
+        <param>all</param>
+      </make>
+      <make>
+	<param>install</param>
+      </make>
+      <execute command="texconfig dvips paper letter" />
+      <execute command="texconfig font rw" />
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&tex-directory;</remove>
+    </stage>
+  </package>
+</alfs>

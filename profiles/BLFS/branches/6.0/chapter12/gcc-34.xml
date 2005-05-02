@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch12.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="gcc-3.4" version="&gcc-34-version;">
+    <packageinfo>
+      <requires>
+	<name>gnat</name>
+      </requires>
+      <utilizes>
+        <name>dejagnu</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&gcc-34-md5;</digest>
+	<archive>&packages_dir;/&gcc-34-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <mkdir>
+        <name>&build_dir;/gcc-build</name>
+      </mkdir>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&gcc-34-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gcc-34-no-fixincludes-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gcc-34-linkonce-patch;</param>
+      </patch>
+      <search_replace>
+        <file>libiberty/Makefile.in</file>
+        <find>install_to_$(INSTALL_DEST)</find>
+        <replace></replace>
+      </search_replace>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <environment>
+          <variable name="CFLAGS" />
+          <variable name="CXXFLAGS" />
+          <variable name="PATH">/opt/gnat/bin:/bin:/usr/bin:/usr/local/bin</variable>
+        </environment>
+        <base>&build_dir;/gcc-build</base>
+      </stageinfo>
+      <configure command="../&gcc-34-directory;/configure">
+        <param>--prefix=/usr</param>
+        <param>--libexecdir=/usr/lib</param>
+        <param>--enable-shared</param>
+        <param>--enable-languages=c,c++,objc,f77,ada,java</param>
+        <param>--enable-threads=posix</param>
+        <param>--enable-__cxa_atexit</param>
+        <param>--enable-clocale=gnu</param>
+      </configure>
+      <make>
+        <param>bootstrap</param>
+      </make>
+      <make>
+        <param>-C gcc</param>
+        <param>gnatlib-shared</param>
+      </make>
+      <make>
+        <param>-C gcc</param>
+        <param>gnattools</param>
+      </make>
+      <make>
+        <param>-k check</param>
+      </make>
+      <make>
+        <param>install</param>
+      </make>
+      <link>
+        <option>force</option>
+        <target>../usr/bin/cpp</target>
+        <name>/lib</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>gcc</target>
+        <name>/usr/bin/cc</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>g77</target>
+        <name>/usr/bin/f77</name>
+      </link>
+      <ownership user="root" group="root">
+      	<option>recursive</option>
+	<name>/usr/lib/gcc/i686-pc-linux-gnu/&gcc-34-version;/include</name>
+	<name>/usr/lib/gcc/i686-pc-linux-gnu/&gcc-34-version;/adalib</name>
+	<name>/usr/lib/gcc/i686-pc-linux-gnu/&gcc-34-version;/adainclude</name>
+      </ownership>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gcc-34-directory;</remove>
+      <remove>&build_dir;/gcc-build</remove>
+      <remove>/opt/gnat</remove>
+    </stage>
+  </package>
+</alfs>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch29.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="kdegraphics" version="&kdegraphics-version;">
+    <packageinfo>
+      <requires>
+        <name>kdebase</name>
+      </requires>
+      <utilizes>
+        <name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+        <name>libxml2</name>
+      </utilizes>
+      <utilizes>
+        <name>libart_lgpl</name>
+      </utilizes>
+      <utilizes>
+        <name>libtiff</name>
+      </utilizes>
+      <utilizes>
+        <name>imlib</name>
+      </utilizes>
+      <utilizes>
+        <name>lcms</name>
+      </utilizes>
+      <utilizes>
+        <name>sane</name>
+      </utilizes>
+      <utilizes>
+	<name>xpdf</name>
+      </utilizes>
+      <utilizes>
+	<name>tex</name>
+      </utilizes>
+      <utilizes>
+	<name>fribidi</name>
+      </utilizes>
+      <utilizes>
+	<name>gphoto2</name>
+      </utilizes>
+      <utilizes>
+	<name>t1lib</name>
+      </utilizes>
+      <utilizes>
+	<name>openexr</name>
+      </utilizes>
+      <utilizes>
+	<name>libpaper</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&kdegraphics-md5;</digest>
+	<archive>&packages_dir;/&kdegraphics-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&kdegraphics-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p0</param>
+	<param>-i &packages_dir;/&kdegraphics-patch1;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p0</param>
+	<param>-i &packages_dir;/&kdegraphics-patch2;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&kdegraphics-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=&kde-prefix;</param>
+        <param>--disable-debug</param>
+        <param>--disable-dependency-tracking</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&kdegraphics-directory;</remove>
+    </stage>
+  </package>
+</alfs>

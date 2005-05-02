@@ -1,0 +1,30 @@
+<!--************* packages for chapter 3 *************-->
+
+<!ENTITY autofs-version   "4.1.3">
+<!ENTITY autofs-package   "autofs-&autofs-version;.tar.bz2">
+<!ENTITY autofs-md5       "f43a09e94c4bd512ec58ac06e9d42c60">
+<!ENTITY autofs-directory "autofs-&autofs-version;">
+
+<!ENTITY autofs-strict-patch     "autofs-&autofs-version;-strict.patch">
+<!ENTITY autofs-strict-patch-md5 "d408ddcd5dafca8d2907b788f93b225c">
+
+<!ENTITY autofs-bad-chdir-patch     "autofs-&autofs-version;-bad_chdir.patch">
+<!ENTITY autofs-bad-chdir-patch-md5 "9efa8126decb509011646d4a4ed0779f">
+
+<!ENTITY autofs-mtab-lock-patch     "autofs-&autofs-version;-mtab_lock.patch">
+<!ENTITY autofs-mtab-lock-patch-md5 "f2e7950dab204719162be84b63857abc">
+
+<!ENTITY autofs-non-block-ping-patch     "autofs-&autofs-version;-non_block_ping.patch">
+<!ENTITY autofs-non-block-ping-patch-md5 "e404ec690f3ef118ade6f0e605228258">
+
+<!ENTITY autofs-signal-race-fix-patch     "autofs-&autofs-version;-signal-race-fix.patch">
+<!ENTITY autofs-signal-race-fix-patch-md5 "3cd31c9522651686f4b5ace5cf63c430">
+
+<!ENTITY autofs-sock-leak-fix-patch     "autofs-&autofs-version;-sock-leak-fix.patch">
+<!ENTITY autofs-sock-leak-fix-patch-md5 "14681387a1fc5229c2c73f593334071b">
+
+<!ENTITY autofs-replicated-server-select-patch     "autofs-&autofs-version;-replicated_server_select.patch">
+<!ENTITY autofs-replicated-server-select-patch-md5 "bc536e7fe6e3c79f9b66a4254bf0ad43">
+
+<!ENTITY autofs-multi-over-patch     "autofs-&autofs-version;-multi-over.patch">
+<!ENTITY autofs-multi-over-patch-md5 "da21815fd56321ce571aefb69f23f850">

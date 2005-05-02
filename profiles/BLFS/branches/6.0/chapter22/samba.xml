@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch22.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
+]>
+<alfs>
+  <package name="samba" version="&samba-version;">
+    <packageinfo>
+      <utilizes>
+	<name>popt</name>
+      </utilizes>
+      <utilizes>
+	<name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+	<name>openldap</name>
+      </utilizes>
+      <utilizes>
+	<name>cups</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>libxml2</name>
+      </utilizes>
+      <utilizes>
+	<name>mysql</name>
+      </utilizes>
+      <utilizes>
+	<name>postgresql</name>
+      </utilizes>
+      <utilizes>
+	<name>python</name>
+      </utilizes>
+      <utilizes>
+	<name>xinetd</name>
+      </utilizes>
+      <utilizes>
+	<name>valgrind</name>
+      </utilizes>
+      <utilizes>
+	<name>stunnel</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking.">
+      <unpack>
+        <digest>&samba-md5;</digest>
+	<archive>&packages_dir;/&samba-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    &bootscripts-get;
+    <stage name="Installing.">
+      <stageinfo>
+        <base>&build_dir;/&samba-directory;/source</base>
+      </stageinfo>
+      <mkdir>
+        <option>parents</option>
+        <name>/var/cache/samba</name>
+      </mkdir>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--sysconfdir=/etc</param>
+        <param>--localstatedir=/var</param>
+        <param>--with-piddir=/var/run</param>
+        <param>--with-fhs</param>
+        <param>--with-smbmount</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <move>
+	<source>/usr/lib/samba/libsmbclient.so</source>
+	<destination>/usr/lib</destination>
+      </move>
+      <link>
+	<option>force</option>
+	<target>../libsmbclient.so</target>
+	<name>/usr/lib/samba</name>
+      </link>
+      <permissions mode="644">
+	<name>/usr/include/libsmbclient.h</name>
+	<name>/usr/lib/samba/libsmbclient.a</name>
+      </permissions>
+      <copy>
+        <source>nsswitch/libnss_wins.so</source>
+	<source>nsswitch/libnss_winbind.so</source>
+        <destination>/lib</destination>
+      </copy>
+      <permissions mode="0755" base="/lib">
+        <name>libnss_wins.so</name>
+	<name>libnss_windbind.so</name>
+      </permissions>
+      <link base="/lib">
+        <option>force</option>
+        <target>libnss_winbind.so</target>
+        <name>libnss_winbind.so.2</name>
+      </link>
+      <link base="/lib">
+        <option>force</option>
+        <target>libnss_wins.so</target>
+        <name>libnss_wins.so.2</name>
+      </link>
+      <copy base="&build_dir;/&samba-directory;">
+        <source>examples/smb.conf.default</source>
+        <destination>/etc/samba</destination>
+      </copy>
+      <textdump mode="append">
+        <file>/etc/services</file>
+        <content>
+	=swat		901/tcp
+	=swat_tunnel	902/tcp
+	</content>
+      </textdump>
+      <textdump mode="append">
+        <file>/etc/inetd.conf</file>
+        <content>=swat_tunnel stream tcp nowait.400 root /usr/sbin/swat swat</content>
+      </textdump>
+      <textdump mode="append">
+        <file>/etc/xinetd.conf</file>
+        <content>
+	  =service swat_tunnel
+	  ={
+	  =    port            = 902
+	  =    socket_type     = stream
+	  =    wait            = no
+	  =    only_from       = 127.0.0.1
+	  =    user            = root
+	  =    server          = /usr/sbin/swat
+	  =    log_on_failure  += USERID
+	  =}
+	</content>
+      </textdump>
+      <textdump mode="append">
+	<file>/etc/stunnel/stunnel.conf</file>
+	<content>
+	  =[swat]
+	  =accept = 901
+	  =connect = 902
+	</content>
+      </textdump>
+    </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&samba-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-samba</param>
+        <param>install-winbind</param>
+      </make>
+    </stage>
+    &bootscripts-clean;
+    <stage name="Cleanup.">
+      <remove>&build_dir;/&samba-directory;</remove>
+    </stage>
+  </package>
+</alfs>

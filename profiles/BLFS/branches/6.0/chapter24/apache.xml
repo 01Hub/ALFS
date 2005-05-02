@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch24.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
+]>
+<alfs>
+  <package name="apache" version="&apache-version;">
+    <packageinfo>
+      <utilizes>
+        <name>db</name>
+      </utilizes>
+      <utilizes>
+        <name>gdbm</name>
+      </utilizes>
+      <utilizes>
+        <name>openssl</name>
+      </utilizes>
+      <utilizes>
+        <name>openldap</name>
+      </utilizes>
+      <utilizes>
+        <name>expat</name>
+      </utilizes>
+      <utilizes>
+	<name>doxygen</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&apache-md5;</digest>
+	<archive>&packages_dir;/&apache-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    &bootscripts-get;
+    <stage name="Creating user and group">
+      <execute command="getent group apache &gt; /dev/null || groupadd">
+        <param>apache</param>
+      </execute>
+      <execute command="getent passwd apache &gt; /dev/null || useradd">
+        <param>-c apache</param>
+        <param>-d /dev/null</param>
+        <param>-g apache</param>
+        <param>-s /bin/false</param>
+        <param>apache</param>
+      </execute>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+        <base>&build_dir;/&apache-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&apache-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&apache-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--enable-layout=FHS</param>
+        <param>--enable-mods-shared=all</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <ownership user="root" group="root">
+	<name>/usr/sbin/apxs</name>
+	<name>/usr/sbin/apachectl</name>
+	<name>/usr/sbin/dbmmanage</name>
+	<name>/usr/sbin/envvars-std</name>
+	<name>/usr/sbin/envvars</name>
+	<name>/usr/include/apache/*</name>
+	<name>/usr/lib/apache/httpd.exp</name>
+	<name>/usr/share/man/man1/dbmmanage.1</name>
+	<name>/usr/share/man/man1/htdigest.1</name>
+	<name>/usr/share/man/man1/htpasswd.1</name>
+	<name>/usr/share/man/man8/ab.8</name>
+	<name>/usr/share/man/man8/apachectl.8</name>
+	<name>/usr/share/man/man8/apxs.8</name>
+	<name>/usr/share/man/man8/httpd.8</name>
+	<name>/usr/share/man/man8/logresolve.8</name>
+	<name>/usr/share/man/man8/rotatelogs.8</name>
+	<name>/usr/share/man/man8/suexec.8</name>
+      </ownership>
+      <ownership user="apache" group="apache">
+	<option>recursive</option>
+	<name>/srv/www</name>
+      </ownership>
+    </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-apache</param>
+      </make>
+      <search_replace base="/etc/apache">
+        <file>httpd.conf</file>
+        <find>User nobody</find>
+        <replace>User apache</replace>
+      </search_replace>
+      <search_replace base="/etc/apache">
+        <file>httpd.conf</file>
+        <find>Group #-1</find>
+        <replace>Group apache</replace>
+      </search_replace>
+    </stage>
+    &bootscripts-clean;
+    <stage name="Cleanup">
+      <remove>&build_dir;/&apache-directory;</remove>
+    </stage>
+  </package>
+</alfs>
+

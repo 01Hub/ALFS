@@ -1,0 +1,5 @@
+# Begin /etc/auto.master
+
+/media  /etc/auto.misc
+
+# End /etc/auto.master

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch21.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM  "../config/files.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+%files;
+
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
+]>
+<alfs>
+  <package name="postfix" version="&postfix-version;">
+    <packageinfo>
+      <requires>
+        <name>db</name>
+      </requires>
+      <utilizes>
+	<name>pcre</name>
+      </utilizes>
+      <utilizes>
+	<name>mysql</name>
+      </utilizes>
+      <utilizes>
+	<name>postgresql</name>
+      </utilizes>
+      <utilizes>
+	<name>openldap</name>
+      </utilizes>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>cyrus-sasl</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&postfix-md5;</digest>
+	<archive>&packages_dir;/&postfix-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    &bootscripts-get;
+    <stage name="Creating user and group">
+      <execute command="getent group postfix &gt; /dev/null || groupadd">
+        <param>postfix</param>
+      </execute>
+      <execute command="getent group postdrop &gt; /dev/null || groupadd">
+        <param>postdrop</param>
+      </execute>
+      <execute command="getent group nogroup &gt; /dev/null || groupadd">
+        <param>-g 65534</param>
+        <param>nogroup</param>
+      </execute>
+      <execute command="getent passwd postfix &gt; /dev/null || useradd">
+        <param>-c postfix</param>
+        <param>-d /dev/null</param>
+        <param>-g postfix</param>
+        <param>-s /bin/false</param>
+        <param>postfix</param>
+      </execute>
+      <execute command="getent passwd nobody &gt; /dev/null || useradd">
+        <param>-c nobody</param>
+        <param>-d /home</param>
+        <param>-g nogroup</param>
+        <param>-s /bin/bash</param>
+        <param>-u 65534</param>
+        <param>nobody</param>
+      </execute>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&postfix-directory;</base>
+      </stageinfo>
+      <ownership user="postfix" group="postfix">
+        <name>/var/mail</name>
+      </ownership>
+      <make />
+      <execute command="sh">
+        <param>postfix-install</param>
+        <param>daemon_directory=/usr/sbin</param>
+        <param>manpage_directory=/usr/share/man</param>
+        <param>sample_directory=/usr/share/doc/postfix</param>
+        <param>-non-interactive</param>
+      </execute>
+      <mkdir>
+        <option>parents</option>
+        <name>/usr/share/doc/postfix</name>
+      </mkdir>
+      <copy>
+        <option>recursive</option>
+        <option>force</option>
+        <source>html/*</source>
+        <destination>/usr/share/doc/postfix</destination>
+      </copy>
+      <copy>
+      	<source>&blfs-config;/etc/aliases</source>
+	<destination>/etc</destination>
+      </copy>
+      <search_replace base="/etc/postfix">
+        <file>main.cf</file>
+        <find>#myhostname = host.domain.tld</find>
+        <replace>myhostname = &hostname;</replace>
+      </search_replace>
+      <execute command="/usr/bin/newaliases" />
+    </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-postfix</param>
+      </make>
+    </stage>
+    &bootscripts-clean;
+    <stage name="Cleanup">
+      <remove>&build_dir;/&postfix-directory;</remove>
+    </stage>
+  </package>
+</alfs>

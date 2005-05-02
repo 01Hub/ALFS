@@ -1,0 +1,41 @@
+===========================================================
+                     BLFS-svn Profile
+===========================================================
+
+Note: We recommend that you read this README completely
+before you start using the profile.
+
+This profile contains the instructions to automatically
+build the packages of the BLFS book. It is expected to be
+used on an LFS system.
+
+Configuring the profile:
+========================
+
+There are some configuration files that must be customized
+before you can create your BLFS installation. These are:
+
+ - !to be added once we've figured out about config/general.ent!
+
+ - all files in ./config_standard/{etc,home,root,x} and
+   subdirectories. Things you need to configure are marked
+   with exclamation marks, !like this!.
+
+Running the profile:
+====================
+
+To use the profile you should:
+
+ 1) Download the packages you need. See ./README.download
+    for more details.
+
+ 2) First copy the config_standard directory to [name of your choice]
+    Then create a link called config to the directory you chose above.
+    Ex. ln -s ./config_standard ./config
+
+ 3) Customize the files in the config directory.
+
+ 4) Execute ./runit.sh as root. This will create a file
+    "files.ent" (which contains an entity declaration that
+    allows us to have absolute paths in the profile) and
+    then run nALFS to start the build.

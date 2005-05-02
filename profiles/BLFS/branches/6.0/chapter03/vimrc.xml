@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % files SYSTEM "../config/files.ent">
+
+%files;
+]>
+<alfs>
+  <stage name="/etc/vimrc">
+    <copy>
+      <source>&blfs-config;/etc/vimrc</source>
+      <destination>/etc/vimrc</destination>
+    </copy>
+  </stage>
+</alfs>

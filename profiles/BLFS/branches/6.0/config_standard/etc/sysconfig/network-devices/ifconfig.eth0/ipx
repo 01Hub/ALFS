@@ -1,0 +1,7 @@
+# Begin /etc/sysconfig/network-devices/ifconfig.eth0/ipx
+
+ONBOOT="yes"
+SERVICE="ipx"
+FRAME="802.2"
+
+# End /etc/sysconfig/network-devices/ifconfig.eth0/ipx

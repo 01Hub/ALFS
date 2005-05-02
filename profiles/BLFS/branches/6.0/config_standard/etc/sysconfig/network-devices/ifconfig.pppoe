@@ -1,0 +1,6 @@
+# Begin /etc/sysconfig/network-devices/ifconfig.pppoe
+
+ONBOOT=yes 
+SERVICE=pppoe
+
+# End /etc/sysconfig/network-devices/ifconfig.pppoe
