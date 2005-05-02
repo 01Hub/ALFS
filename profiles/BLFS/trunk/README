@@ -29,9 +29,9 @@ To use the profile you should:
  1) Download the packages you need. See ./README.download
     for more details.
 
- 2) Create a link to the config_standard directory.
-    Name it config:
-      ln -s ./config_standard ./config
+ 2) First copy the config_standard directory to [name of your choice]
+    Then create a link called config to the directory you chose above.
+    Ex. ln -s ./config_standard ./config
 
  3) Customize the files in the config directory.
 
