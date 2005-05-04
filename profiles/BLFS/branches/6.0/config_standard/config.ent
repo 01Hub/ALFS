@@ -94,11 +94,13 @@
 <!-- KDE install location -->
 <!-- /usr (usr) or /opt (opt) -->
 <!ENTITY kde-install "usr">
+<!-- Change kde-prefix to "/&kde-install;/kde-3.3.2" if you chose opt -->
 <!ENTITY kde-prefix  "/&kde-install;">
 
 <!-- GNOME install location -->
 <!-- /usr (usr) or /opt (opt) --> 
 <!ENTITY gnome-install "usr">
+<!-- Change gnome-prefix to "/&gnome-install;/gnome-2.8" if you chose opt -->
 <!ENTITY gnome-prefix  "/&gnome-install;">
 
 <!-- MTA implementation -->
