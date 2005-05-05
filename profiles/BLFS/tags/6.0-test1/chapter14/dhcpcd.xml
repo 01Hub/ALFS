@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch14.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+%files;
+
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
+]>
+<alfs>
+  <package name="dhcpcd" version="&dhcpcd-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&dhcpcd-md5;</digest>
+	<archive>&packages_dir;/&dhcpcd-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    &bootscripts-get;
+    <stage name="Patching">
+      <stageinfo>
+        <base>&build_dir;/&dhcpcd-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&dhcpcd-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&dhcpcd-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=""</param>
+        <param>--sysconfdir=/var/lib</param>
+        <param>--mandir=/usr/share/man</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Installing dhcpcd service script">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-service-dhcpcd</param>
+      </make>
+    </stage>
+    <stage name="Configuring dhcpcd">
+    <copy>
+      <source>&blfs-config;/etc/sysconfig/network-devices/ifconfig.eth0/dhcpcd</source>
+      <destination>/etc/sysconfig/network-devices/ifconfig.eth0/dhcpcd</destination>
+    </copy>
+    </stage>
+    &bootscripts-clean;
+    <stage name="Cleanup">
+      <remove>&build_dir;/&dhcpcd-directory;</remove>
+    </stage>
+  </package>
+</alfs>

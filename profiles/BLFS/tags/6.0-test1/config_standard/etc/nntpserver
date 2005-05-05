@@ -1,0 +1,5 @@
+# Begin /etc/nntpserver
+
+127.0.0.1
+
+# End /etc/nntpserver

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch10.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+<package name="xscreensaver" version="&xscreensaver-version;">
+  <packageinfo>
+    <requires>
+      <name>bc</name>
+    </requires>
+    <requires>
+      <name>libglade</name>
+    </requires>
+    <utilizes>
+      <name>libjpeg</name>
+    </utilizes>
+    <utilizes>
+      <name>gle</name>
+    </utilizes>
+    <utilizes>
+      <name>netpbm</name>
+    </utilizes>
+    <utilizes>
+      <name>fortune-mod</name>
+    </utilizes>
+    <utilizes>
+      <name>xdaliclock</name>
+    </utilizes>
+    <utilizes>
+      <name>yelp</name>
+    </utilizes>
+    <utilizes>
+      <name>linuxpam</name>
+    </utilizes>
+    <utilizes>
+      <name>krb4</name>
+    </utilizes>
+    <utilizes>
+      <name>&krb-impl;</name>
+    </utilizes>
+  </packageinfo>
+  <stage name="Unpacking.">
+    <unpack>
+      <digest>&xscreensaver-md5;</digest>
+      <archive>&packages_dir;/&xscreensaver-package;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+  </stage>
+  <stage name="Installing.">
+    <stageinfo>
+      <base>&build_dir;/&xscreensaver-directory;</base>
+    </stageinfo>
+    <search_replace>
+      <file>driver/Makefile.in</file>
+      <find>@GNOME_DATADIR@</find>
+      <replace>&gnome-prefix;/share</replace>
+    </search_replace>
+    <configure>
+      <param>--prefix=/usr</param>
+    </configure>
+    <make />
+    <make>
+      <param>install</param>
+    </make>
+  </stage>
+  <stage name="Cleanup.">
+    <remove>&build_dir;/&xscreensaver-directory;</remove>
+  </stage>
+</package>
+</alfs>

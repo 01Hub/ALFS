@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" [
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch04.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+%files;
+
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
+]>
+
+<alfs>
+<package name="mitkrb" version="&mitkrb-version;">
+  <packageinfo>
+    <utilizes>
+      <name>xinetd</name>
+    </utilizes>
+    <utilizes>
+      <name>linuxpam</name>
+    </utilizes>
+    <utilizes>
+      <name>openldap</name>
+    </utilizes>
+  </packageinfo>
+  <stage name="Unpacking.">
+    <unpack>
+      <digest>&mitkrb-md5;</digest>
+      <archive>&packages_dir;/&mitkrb-package;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+  </stage>
+  &bootscripts-get;
+  <stage name="Installing.">
+    <stageinfo>
+      <base>&build_dir;/&mitkrb-directory;/src</base>
+    </stageinfo>
+    <configure>
+      <param>--prefix=/usr</param>
+      <param>--sysconfdir=/etc</param>
+      <param>--localstatedir=/var/lib</param>
+      <param>--enable-dns</param>
+      <param>--enable-static</param>
+      <param>--mandir=/usr/share/man</param>  
+    </configure>
+    <make />
+    <make>
+      <param>install</param>
+    </make>
+    <move base="/bin">
+      <source>login</source>
+      <destination>login.shadow</destination>
+    </move>
+    <move>
+      <source>/usr/sbin/login.krb5</source>
+      <destination>/bin/login</destination>
+    </move>
+    <move base="/usr/lib">
+      <source>libkrb5.so.3*</source>
+      <source>libkrb4.so.2*</source>
+      <source>libdes425.so.3*</source>
+      <source>libk5crypto.so.3*</source>
+      <source>libcom_err.so.3*</source>
+      <destination>/lib</destination>
+    </move>
+    <link>
+      <option>force</option>
+      <target>../../lib/libkrb5.so.3</target>
+      <name>/usr/lib/libkrb5.so</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>../../lib/libkrb4.so.2</target>
+      <name>/usr/lib/libkrb4.so</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>../../lib/libdes425.so.3</target>
+      <name>/usr/lib/libdes425.so</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>../../lib/libk5crytpo.so.3</target>
+      <name>/usr/lib/libk5crypto.so</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>../../lib/libcom_err.so.3</target>
+      <name>/usr/lib/libcom_err.so</name>
+    </link>
+    &ldconfig;
+  </stage>
+  <stage name="Installing bootscript and configuration">
+    <stageinfo>
+      <base>&build_dir;/&blfs-bootscripts-directory;</base>
+    </stageinfo>
+    <make>
+      <param>install-kerberos</param>
+    </make>
+    <copy>
+      <source>&blfs-config;/etc/krb5.conf</source>
+      <destination>/etc/krb5.conf</destination>
+    </copy>
+  </stage>
+  &bootscripts-clean;
+  <stage name="Cleanup.">
+    <remove>&build_dir;/&mitkrb-directory;</remove>
+  </stage>
+</package>
+</alfs>

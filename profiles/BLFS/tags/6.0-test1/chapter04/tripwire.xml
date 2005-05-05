@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch04.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="tripwire-portable" version="&tripwire-portable-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&tripwire-portable-md5;</digest>
+	<archive>&packages_dir;/&tripwire-portable-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&tripwire-portable-directory;</base>
+      </stageinfo>
+      <search_replace>
+	<file>install/install.cfg</file>
+	<find>TWDB="${prefix}</find>
+	<replace>TWDB="/var</replace>
+      </search_replace>
+
+      <configure>
+	<param>--prefix=/usr</param>
+	<param>--sysconfdir=/etc/tripwire</param>
+      </configure>
+
+      <make />
+
+<!--The default configuration is not to use a local MTA. If you wish to your local MTA comment out the 
+  following five search_replace blocks -->
+<!-- the following commands are for automating the build of tripwire-portable, these command are not 
+  in the book -->
+
+      <search_replace>
+        <file>install/install.cfg</file>
+        <find>TWMAILMETHOD=SENDMAIL</find>
+        <replace>#TWMAILMETHOD=SENDMAIL</replace>
+      </search_replace>
+      <search_replace>
+        <file>install/install.cfg</file>
+        <find>TWMAILPROGRAM</find>
+        <replace>#TWMAILPROGRAM</replace>
+      </search_replace>
+      <search_replace>
+        <file>install/install.cfg</file>
+        <find># TWMAILMETHOD=SMTP</find>
+        <replace>TWMAILMETHOD=SMTP</replace>
+      </search_replace>
+      <search_replace>
+        <file>install/install.cfg</file>
+        <find># TWSMTPHOST="mail.domain.com"</find>
+        <replace>TWSMTPHOST="&tripwire-mail-domain;"</replace>
+      </search_replace>
+      <search_replace>
+        <file>install/install.cfg</file>
+        <find># TWSMTPPORT=25</find>
+        <replace>TWSMTPPORT=&tripwire-smtp-port;</replace>
+      </search_replace>
+
+      <execute command="sed">
+	<param>-i 's@./install/install.sh@&real-amp; </param>
+	<param>-n -s "$(SITEPASS)" -l "$(LOCALPASS)"@g' Makefile</param>
+      </execute>
+
+      <make>
+	<param>SITEPASS="&tripwire-sitepassphrase;"</param>
+	<param>LOCALPASS="&tripwire-localpassphrase;"</param>
+	<param>install</param>
+      </make>
+
+      <copy>
+        <source>policy/*.txt</source>
+        <destination>/usr/share/doc/tripwire</destination>
+      </copy>
+    </stage>
+    <stage name="Configuring">
+      <stageinfo>
+        <base>&build_dir;/&tripwire-portable-directory;</base>
+      </stageinfo>
+      <copy>
+        <source>&packages_dir;/&tripwire-policy-file;</source>
+        <destination>/etc/tripwire</destination>
+      </copy>
+      <execute command="twadmin">
+        <param>--create-polfile</param>
+	<param>--site-keyfile /etc/tripwire/site.key</param>
+        <param>-Q &tripwire-sitepassphrase;</param>
+        <param>/etc/tripwire/&tripwire-policy-file;</param>
+      </execute>
+      <execute command="tripwire">
+        <param>-m i</param>
+        <param>-P &tripwire-localpassphrase;</param>
+      </execute>
+    </stage>
+    <stage name="Clean-Up">
+      <remove>&build_dir;/&tripwire-portable-package;</remove>
+    </stage>
+  </package>
+</alfs>

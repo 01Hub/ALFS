@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch25.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+%files;
+
+]>
+<alfs xmlns:xi="http://www.w3.org/2001/XInclude">
+  <package name="xorg" version="&xorg-version;">
+    <packageinfo>
+      <requires>
+	<name>libpng</name>
+      </requires>
+      <requires>
+	<name>fontconfig</name>
+      </requires>
+      <utilizes>
+	<name>linuxpam</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&xorg-md5;</digest>
+	<archive>&packages_dir;/&xorg-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing lndir">
+      <stageinfo>
+        <base>&build_dir;/&xorg-directory;/config/util</base>
+      </stageinfo>
+      <make>
+        <param>-f Makefile.ini</param>
+        <param>lndir</param>
+      </make>
+      <copy>
+        <source>lndir</source>
+        <destination>/usr/bin</destination>
+      </copy>
+    </stage>
+    <stage name="Creating build directory">
+      <stageinfo>
+        <base>&build_dir;/&xorg-directory;</base>
+      </stageinfo>
+      <execute command="sed -i '/^SUBDIRS =/s/ etc$//' programs/Xserver/Xprint/Imakefile" />
+      <mkdir>
+        <name>../xcbuild</name>
+      </mkdir>
+    </stage>
+    <stage name="Populating build directory">
+      <stageinfo>
+        <base>&build_dir;/xcbuild</base>
+      </stageinfo>
+      <execute command="lndir">
+        <param>../xc</param>
+      </execute>
+    </stage>
+    <stage name="Creating configuration file">
+      <stageinfo>
+        <base>&build_dir;/xcbuild</base>
+      </stageinfo>
+      <copy>
+	<source>&blfs-config;/x/xorg/host.def</source>
+	<destination>config/cf</destination>
+      </copy>      
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/xcbuild</base>
+      </stageinfo>
+      <execute command='sed -i -e "s@#include &lt;linux/config.h&gt;@/* &real-amp; */@" `grep -lr linux/config.h *`' />
+      <make>
+        <param>World</param>
+      </make>
+      <make>
+        <param>install</param>
+      </make>
+      <make>
+        <param>install.man</param>
+      </make>
+      <link>
+        <option>force</option>
+        <target>../X11R6/bin</target>
+        <name>/usr/bin/X11</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>../X11R6/lib/X11</target>
+        <name>/usr/lib/X11</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>../X11R6/include/X11</target>
+        <name>/usr/include/X11</name>
+      </link>
+      <!-- update /etc/ld.so.conf -->
+      <search_replace base="/etc">
+	<file>ld.so.conf</file>
+	<find>/usr/X11R6/lib</find>
+	<replace></replace>
+      </search_replace>
+      <textdump mode="append" base="/etc">
+        <file>ld.so.conf</file>
+        <content>=/usr/X11R6/lib</content>
+      </textdump>
+      &ldconfig;
+      <textdump mode="append" base="/etc/sysconfig">
+        <file>createfiles</file>
+        <content>=/tmp/.ICE-unix dir 1777 root root</content>
+      </textdump>
+      <copy base="&blfs-config;/root">
+	<source>dot_xinitrc</source>
+	<destination>/root/.xinitrc</destination>
+      </copy>
+      <xi:include href="fonts.xml" />
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&xorg-directory;</remove>
+    </stage>
+  </package>
+</alfs>

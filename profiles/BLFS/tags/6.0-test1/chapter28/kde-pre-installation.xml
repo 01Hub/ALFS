@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%config_entities;
+
+]>
+<alfs>
+   <stage name="KDE pre-installation.">
+    <textdump base="/root" mode="append">
+      <file>.bash_profile</file>
+      <content>
+	=KDE_PREFIX=&kde-prefix;
+	=PATH=$PATH:&kde-prefix;/bin
+	=PKG_CONFIG_PATH=$PKG_CONFIG_PATH:&kde-prefix;/lib/pkgconfig
+	=XDG_DATA_DIRS=$XDG_DATA_DIRS:&kde-prefix;/share
+	=export kde_PREFIX PATH PKG_CONFIG_PATH XDG_DATA_DIRS
+      </content>
+    </textdump>
+    <textdump base="/etc" mode="append">
+      <file>ld.so.conf</file>
+      <content>
+	=# Begin KDE addition to /etc/ld.so.conf
+	=
+	=&kde-prefix;/lib
+	=
+	=# End KDE addition
+      </content>
+    </textdump>
+    <textdump base="/etc" mode="append">
+      <file>man.conf</file>
+      <content>
+	=# Begin KDE addition to man.conf
+	=
+	=MANPATH &kde-prefix;/man
+	=
+	=# End KDE addition to man.conf
+      </content>
+    </textdump>
+    &ldconfig;
+  </stage>
+</alfs>

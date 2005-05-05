@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch32.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="gnome-print" version="&gnome-print-version;">
+    <packageinfo>
+      <requires>
+	<name>gdk-pixbuf</name>
+      </requires>
+      <requires>
+	<name>gnome-libs</name>
+      </requires>
+      <requires>
+	<name>libxml</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&gnome-print-md5;</digest>
+	<archive>&packages_dir;/&gnome-print-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&gnome-print-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gnome-print-ft-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&gnome-print-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/opt/gnome</param>
+        <param>--with-zlib=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gnome-print-directory;</remove>
+    </stage>
+  </package>
+</alfs>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch27.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs xmlns:xi="http://www.w3.org/2001/XInclude">
+  <package name="xfce" version="&xfce-version;">
+    <packageinfo>
+      <requires>
+        <name>gtk+2</name>
+      </requires>
+      <requires>
+        <name>libxml2</name>
+      </requires>
+      <utilizes>
+        <name>libgtkhtml</name>
+      </utilizes>
+      <utilizes>
+        <name>startup-notification</name>
+      </utilizes>
+      <utilizes>
+      	<name>a2ps</name>
+      </utilizes>
+      <utilizes>
+	<name>psutils</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&xfce-md5;</digest>
+	<archive>&packages_dir;/&xfce-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing XFce Base Packages">
+      <xi:include href="xfce/libxfce4util.xml" />
+      <xi:include href="xfce/dbh.xml" />
+      <xi:include href="xfce/libxfcegui4.xml" />
+      <xi:include href="xfce/libxfce4mcs.xml" />
+      <xi:include href="xfce/xfce-mcs-manager.xml" />
+      <xi:include href="xfce/xfwm4.xml" />
+      <xi:include href="xfce/xfce4-panel.xml" />
+      <xi:include href="xfce/xfdesktop.xml" />
+      <xi:include href="xfce/xfce-utils.xml" />
+    </stage>
+    <stage name="Installing XFce Extra Packages">
+      <xi:include href="xfce/gtk-xfce-engine.xml" />
+      <xi:include href="xfce/xfcalendar.xml" />
+      <xi:include href="xfce/xfce-mcs-plugins.xml" />
+      <xi:include href="xfce/xfce4-appfinder.xml" />
+      <xi:include href="xfce/xfce4-icon-theme.xml" />
+      <xi:include href="xfce/xfce4-iconbox.xml" />
+      <xi:include href="xfce/xfce4-mixer.xml" />
+      <xi:include href="xfce/xfce4-session.xml" />
+      <xi:include href="xfce/xfce4-systray.xml" />
+      <xi:include href="xfce/xfce4-toys.xml" />
+      <xi:include href="xfce/xfce4-trigger-launcher.xml" />
+      <xi:include href="xfce/xffm.xml" />
+      <xi:include href="xfce/xfprint.xml" />
+      <xi:include href="xfce/xfwm4-themes.xml" />
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&xfce-directory;</remove>
+    </stage>
+  </package>
+</alfs>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch45.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="a2ps" version="&a2ps-version;">
+    <packageinfo>
+      <utilizes>
+        <name>&ximpl;</name>
+      </utilizes>
+      <utilizes>
+        <name>psutils</name>
+      </utilizes>
+      <utilizes>
+      	<name>tex</name>
+      </utilizes>
+      <utilizes>
+	<name>&ghostscript-impl;</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&a2ps-md5;</digest>
+	<archive>&packages_dir;/&a2ps-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&a2ps-directory;</base>
+      </stageinfo>
+      <search_replace>
+        <file>contrib/Makefile.in</file>
+        <find>emacs</find>
+        <replace></replace>
+      </search_replace>
+      <search_replace>
+        <file>configure</file>
+        <find>/usr/local/share</find>
+        <replace>/usr/share</replace>
+      </search_replace>
+      <search_replace>
+	<file>lib/path-concat.c</file>
+	<find>char *malloc ();</find>
+	<replace>/* char *malloc (); */</replace>
+      </search_replace>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--sysconfdir=/etc/a2ps</param>
+        <param>--localstatedir=/var</param>
+	<param>--enable-shared</param>
+        <param>--with-medium=letter</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&a2ps-directory;</remove>
+    </stage>
+  </package>
+</alfs>
