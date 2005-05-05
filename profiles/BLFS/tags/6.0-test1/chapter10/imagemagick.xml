@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch10.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="imagemagick" version="&imagemagick-version;">
+    <packageinfo>
+      <requires>
+        <name>&ximpl;</name>
+      </requires>
+      <requires>
+        <name>&ghostscript-impl;</name>
+      </requires>
+      <utilizes>
+        <name>lcms</name>
+      </utilizes>
+      <utilizes>
+        <name>libpng</name>
+      </utilizes>
+      <utilizes>
+        <name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+        <name>freetype</name>
+      </utilizes>
+      <utilizes>
+        <name>libtiff</name>
+      </utilizes>
+      <utilizes>
+        <name>libxml2</name>
+      </utilizes>
+      <utilizes>
+        <name>mozilla</name>
+      </utilizes>
+      <utilizes>
+        <name>tex</name>
+      </utilizes>
+      <utilizes>
+        <name>gimp</name>
+      </utilizes>
+      <utilizes>
+        <name>sane</name>
+      </utilizes>
+      <utilizes>
+        <name>wget</name>
+      </utilizes>
+      <utilizes>
+        <name>enscript</name>
+      </utilizes>
+      <utilizes>
+        <name>graphviz</name>
+      </utilizes>
+      <utilizes>
+        <name>flashpix</name>
+      </utilizes>
+      <utilizes>
+	<name>jasper</name>
+      </utilizes>
+      <utilizes>
+	<name>jbig-kit</name>
+      </utilizes>
+      <utilizes>
+	<name>libwmf</name>
+      </utilizes>
+      <utilizes>
+	<name>autotrace</name>
+      </utilizes>
+      <utilizes>
+	<name>ralcgm</name>
+      </utilizes>
+      <utilizes>
+	<name>dcraw</name>
+      </utilizes>
+      <utilizes>
+	<name>transfig</name>
+      </utilizes>
+      <utilizes>
+	<name>gnuplot</name>
+      </utilizes>
+      <utilizes>
+	<name>hp2xx</name>
+      </utilizes>
+      <utilizes>
+	<name>html2ps</name>
+      </utilizes>
+      <utilizes>
+	<name>netpbm</name>
+      </utilizes>
+      <utilizes>
+	<name>mpeg2-codec</name>
+      </utilizes>
+      <utilizes>
+	<name>pov-ray</name>
+      </utilizes>
+      <utilizes>
+	<name>utah-raster-toolkit</name>
+      </utilizes>
+      <utilizes>
+	<name>txt2html</name>
+      </utilizes>
+      <utilizes>
+	<name>libexif</name>
+      </utilizes>
+      <utilizes>
+	<name>radiance</name>
+      </utilizes>
+      <utilizes>
+	<name>corefonts</name>
+      </utilizes>
+      <utilizes>
+	<name>electric-fence</name>
+      </utilizes>
+      <utilizes>
+	<name>dmalloc</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&imagemagick-md5;</digest>
+	<archive>&packages_dir;/&imagemagick-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&imagemagick-directory;</base>
+      </stageinfo>
+      <execute command="sed">
+      	<param>-i -e 's/\$(LIBLTDL) \$/\$/' Makefile.in</param>
+      </execute>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--with-modules</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&imagemagick-directory;</remove>
+    </stage>
+  </package>
+</alfs>

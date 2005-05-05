@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch04.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+%files;
+
+]>
+<alfs>
+  <package name="shadow" version="&shadow-version;">
+    <packageinfo>
+      <requires>
+        <name>linuxpam</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&shadow-md5;</digest>
+	<archive>&packages_dir;/&shadow-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+        <base>&build_dir;/&shadow-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&shadow-pam-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&shadow-directory;</base>
+      </stageinfo>
+      <configure>
+        <prefix>LIBS="-lpam -lpam_misc"</prefix>
+        <param>--libdir=/usr/lib</param>
+        <param>--enable-shared</param>
+        <param>--with-libpam</param>
+        <param>--without-libcrack</param>
+      </configure>
+      <textdump mode="append">
+        <file>config.h</file>
+        <content>=#define HAVE_SETLOCALE 1</content>
+      </textdump>
+      <search_replace>
+	<file>libmisc/xmalloc.c</file>
+	<find>extern char *malloc ();</find>
+	<replace>/* extern char *malloc (); */</replace>
+      </search_replace>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <move>
+        <source>/bin/sg</source>
+        <destination>/usr/bin</destination>
+      </move>
+      <move>
+        <source>/bin/vigr</source>
+        <destination>/usr/sbin</destination>
+      </move>
+      <move>
+	<source>/usr/bin/passwd</source>
+	<destination>/bin</destination>
+      </move>
+      <remove>/bin/groups</remove>
+      <move>
+        <source>/usr/lib/lib{misc,shadow}.so.0*</source>
+        <destination>/lib</destination>
+      </move>
+      <link>
+        <option>force</option>
+        <target>../../lib/libshadow.so.0</target>
+        <name>/usr/lib/libshadow.so</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>../../lib/libmisc.so.0</target>
+        <name>/usr/lib/libmisc.so</name>
+      </link>
+    </stage>
+    <stage name="Configuring">
+      <stageinfo>
+        <base>/etc</base>
+      </stageinfo>
+      <copy base="&blfs-config;/etc/pam.d">
+	<source>login</source>
+	<source>passwd</source>
+	<source>shadow</source>
+	<source>su</source>
+	<source>useradd</source>
+	<source>chage</source>
+	<destination>/etc/pam.d</destination>
+      </copy>
+      <!-- if you have cracklib installed uncomment the following -->
+      <!--
+      <copy base="&blfs-config;/etc/pam.d">
+	<source>passwd-cracklib</source>
+	<destination>/etc/pam.d/passwd</destination>
+      </copy>
+      -->
+      <search_replace>
+        <file>login.defs</file>
+        <find>LASTLOG_ENAB</find>
+        <replace>#LASTLOG_ENAB</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>MAIL_CHECK_ENAB</find>
+        <replace>#MAIL_CHECK_ENAB</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>PORTTIME_CHECKS_ENAB</find>
+        <replace>#PORTTIME_CHECKS_ENAB</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>CONSOLE</find>
+        <replace>#CONSOLE</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>MOTD_FILE</find>
+        <replace>#MOTD_FILE</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>NOLOGINS_FILE</find>
+        <replace>#NOLOGINS_FILE</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>PASS_MIN_LEN</find>
+        <replace>#PASS_MIN_LEN</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>SU_WHEEL_ONLY</find>
+        <replace>#SU_WHEEL_ONLY</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>MD5_CRYPT_ENAB</find>
+        <replace>#MD5_CRYPT_ENAB</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>CONSOLE_GROUPS</find>
+        <replace>#CONSOLE_GROUPS</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>ENVIRON_FILE</find>
+        <replace>#ENVIRON_FILE</replace>
+      </search_replace>
+      <!-- if you have cracklib installed uncomment the following -->
+      <!--
+      <search_replace>
+        <file>login.defs</file>
+        <find>OBSCURE_CHECKS_ENAB</find>
+        <replace>#OBSCURE_CHECKS_ENAB</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>CRACKLIB_DICTPATH</find>
+        <replace>#CRACKLIB_DICPATH</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>PASS_CHANGE_TRIES</find>
+        <replace>#PASS_CHANGE_TRIES</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>PASS_ALWAYS_WARN</find>
+        <replace>#PASS_ALWAYS_WARN</replace>
+      </search_replace>
+      -->
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&shadow-directory;</remove>
+    </stage>
+  </package>
+</alfs>

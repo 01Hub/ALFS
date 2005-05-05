@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch10.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+<package name="pilot-link" version="&pilot-link-version;">
+  <packageinfo>
+    <utilizes>
+      <name>libpng</name>
+    </utilizes>
+    <utilizes>
+      <name>&j2sdk;</name>
+    </utilizes>
+    <utilizes>
+      <name>tcl</name>
+    </utilizes>
+    <utilizes>
+      <name>python</name>
+    </utilizes>
+    <utilizes>
+      <name>electric-fence</name>
+    </utilizes>
+  </packageinfo>
+  <stage name="Unpacking.">
+    <unpack>
+      <digest>&pilot-link-md5;</digest>
+      <archive>&packages_dir;/&pilot-link-package;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+  </stage>
+  <stage name="Patching.">
+    <stageinfo>
+      <base>&build_dir;/&pilot-link-directory;</base>
+    </stageinfo>
+    <patch>
+      <param>-N</param>
+      <param>-p1</param>
+      <param>-i &packages_dir;/&pilot-link-bindings-fix-patch;</param>
+    </patch>
+  </stage>
+  <stage name="Installing.">
+    <stageinfo>
+      <base>&build_dir;/&pilot-link-directory;</base>
+    </stageinfo>
+    <configure>
+      <param>--prefix=/usr</param>
+    </configure>
+    <make />
+    <make>
+      <param>install</param>
+    </make>
+  </stage>
+  <stage name="Cleanup.">
+    <remove>&build_dir;/&pilot-link-directory;</remove>
+  </stage>
+</package>
+</alfs>

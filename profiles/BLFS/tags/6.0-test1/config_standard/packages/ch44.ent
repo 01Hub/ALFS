@@ -1,0 +1,11 @@
+<!--************* packages for chapter 44 *************-->
+
+<!ENTITY xml-dtd-version   "4.3">
+<!ENTITY xml-dtd-package   "docbook-xml-&xml-dtd-version;.zip">
+<!ENTITY xml-dtd-md5       "ab200202b9e136a144db1e0864c45074">
+<!ENTITY xml-dtd-directory "docbook-xml-&xml-dtd-version;">
+
+<!ENTITY docbook-xsl-version   "1.67.2">
+<!ENTITY docbook-xsl-package   "docbook-xsl-&docbook-xsl-version;.tar.bz2">
+<!ENTITY docbook-xsl-md5       "deb1864e3e190465dcc26145d2667a84">
+<!ENTITY docbook-xsl-directory "docbook-xsl-&docbook-xsl-version;">

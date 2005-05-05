@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%config_entities;
+
+]>
+<alfs>
+   <stage name="GNOME pre-installation.">
+    <textdump base="/root" mode="append">
+      <file>.bash_profile</file>
+      <content>
+	=GNOME_PREFIX=&gnome-prefix;
+	=PATH=$PATH:&gnome-prefix;/bin
+	=PKG_CONFIG_PATH=$PKG_CONFIG_PATH:&gnome-prefix;/lib/pkgconfig
+	=GNOME_LIBCONFIG_PATH=/usr/lib:&gnome-prefix;/lib
+	=XDG_DATA_DIRS=$XDG_DATA_DIRS:&gnome-prefix;/share
+	=export GNOME_PREFIX PATH PKG_CONFIG_PATH GNOME_LIBCONFIG_PATH XDG_DATA_DIRS
+      </content>
+    </textdump>
+    <textdump base="/etc" mode="append">
+      <file>ld.so.conf</file>
+      <content>
+	=# Begin GNOME addition to /etc/ld.so.conf
+	=
+	=&gnome-prefix;/lib
+	=
+	=# End GNOME addition
+      </content>
+    </textdump>
+    <textdump base="/etc" mode="append">
+      <file>man.conf</file>
+      <content>
+	=# Begin GNOME addition to man.conf
+	=
+	=MANPATH &gnome-prefix;/man
+	=
+	=# End GNOME addition to man.conf
+      </content>
+    </textdump>
+    &ldconfig;
+  </stage>
+</alfs>

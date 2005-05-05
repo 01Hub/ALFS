@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch41.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="ghostscript" version="&afplghostscript-version;">
+    <packageinfo>
+      <utilizes>
+        <name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+        <name>libpng</name>
+      </utilizes>
+      <utilizes>
+        <name>gtk+</name>
+      </utilizes>
+      <utilizes>
+        <name>&ximpl;</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&afplghostscript-md5;</digest>
+	<archive>&packages_dir;/&afplghostscript-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <mkdir>
+        <option>parents</option>
+        <name>/usr/share/ghostscript</name>
+      </mkdir>
+      <unpack>
+        <digest>&ghostscript-fonts1-md5;</digest>
+	<archive>&packages_dir;/&ghostscript-fonts1;</archive>
+        <destination>/usr/share/ghostscript</destination>
+      </unpack>
+      <unpack>
+        <digest>&ghostscript-fonts2-md5;</digest>
+	<archive>&packages_dir;/&ghostscript-fonts2;</archive>
+        <destination>/usr/share/ghostscript</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&afplghostscript-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&afplghostscript-directory;</remove>
+    </stage>
+  </package>
+</alfs>

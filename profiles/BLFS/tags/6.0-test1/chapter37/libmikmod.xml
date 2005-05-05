@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch37.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="libmikmod" version="&libmikmod-version;">
+    <packageinfo>
+      <utilizes>
+	<name>alsa-lib</name>
+      </utilizes>
+      <utilizes>
+        <name>esound</name>
+      </utilizes>
+      <utilizes>
+	<name>libgus</name>
+      </utilizes>
+      <utilizes>
+	<name>aflib</name>
+      </utilizes>
+      <utilizes>
+	<name>sam9407</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&libmikmod-md5;</digest>
+	<archive>&packages_dir;/&libmikmod-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&libmikmod-directory;/</base>
+      </stageinfo>
+      <execute command="sed">
+	<param>-i -e "s/VERSION=10/VERSION=11/"</param>
+	<param>-e "s/sys_asoundlib/alsa_soundlib/"</param>
+	<param>-e "s/snd_cards/snd_card_load/g"</param>
+	<param>-e "s|sys/asoundlib.h|alsa/asoundlib.h|g"</param>
+	<param>configure.in</param>
+      </execute>
+      <execute command="autoconf" />
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <permissions mode="755">
+        <name>/usr/lib/libmikmod.so.2.0.4</name>
+      </permissions>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&libmikmod-directory;</remove>
+    </stage>
+  </package>
+</alfs>

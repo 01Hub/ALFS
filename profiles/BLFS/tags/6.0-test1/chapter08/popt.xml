@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch08.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="popt" version="&popt-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&popt-md5;</digest>
+	<archive>&packages_dir;/&popt-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <digest>&popt-patch-md5;</digest>
+	<archive>&packages_dir;/&popt-patch-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&popt-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &build_dir;/&popt-patch;</param>
+      </patch>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <copy>
+        <source>configure.in</source>
+        <destination>configure.ac</destination>
+      </copy>
+      <execute command="touch configure.in configure.ac" />
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&popt-directory;</remove>
+    </stage>
+  </package>
+</alfs>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch39.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="mplayer" version="&mplayer-version;">
+    <packageinfo>
+      <utilizes>
+        <name>cdparanoia</name>
+      </utilizes>
+      <utilizes>
+        <name>libdv</name>
+      </utilizes>
+      <utilizes>
+        <name>libdvdread</name>
+      </utilizes>
+      <utilizes>
+        <name>samba</name>
+      </utilizes>
+      <utilizes>
+        <name>libmatroska</name>
+      </utilizes>
+      <utilizes>
+        <name>dvb</name>
+      </utilizes>
+      <utilizes>
+        <name>alsa-lib</name>
+      </utilizes>
+      <utilizes>
+        <name>arts</name>
+      </utilizes>
+      <utilizes>
+        <name>esound</name>
+      </utilizes>
+      <utilizes>
+        <name>nas</name>
+      </utilizes>
+      <utilizes>
+        <name>sdl</name>
+      </utilizes>
+      <utilizes>
+        <name>xmms</name>
+      </utilizes>
+      <utilizes>
+        <name>polypaudio</name>
+      </utilizes>
+      <utilizes>
+        <name>bio2jack</name>
+      </utilizes>
+      <utilizes>
+        <name>jack</name>
+      </utilizes>
+      <utilizes>
+        <name>&ximpl;</name>
+      </utilizes>
+      <utilizes>
+        <name>libpng</name>
+      </utilizes>
+      <utilizes>
+        <name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+        <name>&gif-impl;</name>
+      </utilizes>
+      <utilizes>
+        <name>gtk+</name>
+      </utilizes>
+      <utilizes>
+        <name>freetype</name>
+      </utilizes>
+      <utilizes>
+        <name>fontconfig</name>
+      </utilizes>
+      <utilizes>
+        <name>aalib</name>
+      </utilizes>
+      <utilizes>
+        <name>directfb</name>
+      </utilizes>
+      <utilizes>
+        <name>svgalib</name>
+      </utilizes>
+      <utilizes>
+        <name>ggi</name>
+      </utilizes>
+      <utilizes>
+        <name>libcaca</name>
+      </utilizes>
+      <utilizes>
+        <name>ladspa</name>
+      </utilizes>
+      <utilizes>
+        <name>dxr2</name>
+      </utilizes>
+      <utilizes>
+        <name>libdxr3</name>
+      </utilizes>
+      <utilizes>
+        <name>mp1e</name>
+      </utilizes>
+      <utilizes>
+        <name>fribidi</name>
+      </utilizes>
+      <utilizes>
+        <name>enca</name>
+      </utilizes>
+      <utilizes>
+        <name>libvorbis</name>
+      </utilizes>
+      <utilizes>
+        <name>xvid</name>
+      </utilizes>
+      <utilizes>
+        <name>lzo</name>
+      </utilizes>
+      <utilizes>
+        <name>libmad</name>
+      </utilizes>
+      <utilizes>
+        <name>lame</name>
+      </utilizes>
+      <utilizes>
+        <name>libfame</name>
+      </utilizes>
+      <utilizes>
+        <name>theora</name>
+      </utilizes>
+      <utilizes>
+        <name>tremor</name>
+      </utilizes>
+      <utilizes>
+        <name>faad2</name>
+      </utilizes>
+      <utilizes>
+        <name>divx4linux</name>
+      </utilizes>
+      <utilizes>
+        <name>toolame</name>
+      </utilizes>
+      <utilizes>
+        <name>lirccd</name>
+      </utilizes>
+      <utilizes>
+        <name>lirc</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&mplayer-md5;</digest>
+	<archive>&packages_dir;/&mplayer-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&mplayer-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&mplayer-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <environment>
+          <variable name="CFLAGS"></variable>
+        </environment>
+        <base>&build_dir;/&mplayer-directory;</base>
+      </stageinfo>
+      <mkdir>
+        <name>/usr/lib/mplayer/codecs</name>
+      </mkdir>
+      <unpack>
+        <digest>&mplayer-codecs-md5;</digest>
+	<archive>&packages_dir;/&mplayer-codecs-package;</archive>
+        <destination>/usr/lib/mplayer/codecs</destination>
+      </unpack>
+      <ownership user="root" group="root">
+        <option>recursive</option>
+        <name>/usr/lib/mplayer/codecs</name>
+      </ownership>
+      <mkdir>
+        <name>/usr/lib/mplayer/Skin</name>
+      </mkdir>
+      <unpack>
+        <digest>&mplayer-skin-md5;</digest>
+	<archive>&packages_dir;/&mplayer-skin-package;</archive>
+        <destination>/usr/lib/mplayer/Skin</destination>
+      </unpack>
+      <ownership user="root" group="root">
+        <option>recursive</option>
+        <name>/usr/share/mplayer/Skin/Blue</name>
+      </ownership>
+      <permissions mode="0755">
+        <name>/usr/share/mplayer/Skin/Blue</name>
+        <name>/usr/share/mplayer/Skin/Blue/icons</name>
+      </permissions>
+      <link type="symbolic">
+        <option>force</option>
+        <target>Blue</target>
+        <name>/usr/share/mplayer/Skin/default</name>
+      </link>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--confdir=/etc/mplayer</param>
+        <param>--enable-largefiles</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <mkdir>
+        <name>/usr/share/doc/mplayer</name>
+      </mkdir>
+      <copy>
+        <option>recursive</option>
+        <source>DOCS/*</source>
+        <destination>/usr/share/doc/mplayer</destination>
+      </copy>
+      <make>
+        <param>-C libavcodec/libpostproc</param>
+        <param>install</param>
+      </make>
+      <copy>
+        <source>etc/codecs.conf</source>
+        <destination>/etc/mplayer</destination>
+      </copy>
+      <copy>
+	<source>etc/*.conf</source>
+	<destination>/etc/mplayer</destination>
+      </copy>
+      <unpack>
+        <digest>&mplayer-font-md5;</digest>
+	<archive>&packages_dir;/&mplayer-font-package;</archive>
+        <destination>/usr/share/mplayer/font</destination>
+      </unpack>
+      <ownership user="root" group="root">
+        <option>recursive</option>
+        <name>/usr/share/mplayer/font</name>
+      </ownership>
+      <link base="/usr/share/mplayer/font">
+        <option>force</option>
+        <target>font-arial-iso-8859-1/font-arial-&mplayer-font-size;-iso-8859-1/*</target>
+        <name>.</name>
+      </link>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&mplayer-directory;</remove>
+    </stage>
+  </package>
+</alfs>
