@@ -91,6 +91,11 @@
         <source>&skeleton_dir;/etc/ld.so.conf</source>
         <destination>/etc</destination>
       </copy>
+      <copy>
+	<option>force</option>
+	<source>&localtime;</source>
+	<destination>/etc/localtime</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&glibc-directory;</remove>
