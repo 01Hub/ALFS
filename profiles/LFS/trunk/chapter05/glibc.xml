@@ -20,6 +20,16 @@
         <name>glibc-build</name>
       </mkdir>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&glibc-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&glibc-fix-testsuite-patch;</param>
+      </patch>
+    </stage>
     <stage name="Installing">
       <stageinfo>
         <environment>
