@@ -70,6 +70,7 @@ http://www.linuxfromscratch.org/patches/lfs/svn/trunk/flex-2.5.31-debian_fixes-2
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/gcc-3.4.3-linkonce-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/gcc-3.4.3-specs-2.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/gcc-3.4.3-no_fixincludes-1.patch
+http://www.linuxfromscratch.org/patches/lfs/svn/trunk/glibc-2.3.5-fix_test-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/inetutils-1.4.2-kernel_headers-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/inetutils-1.4.2-no_server_man_pages-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/mktemp-1.5-add_tempfile-1.patch

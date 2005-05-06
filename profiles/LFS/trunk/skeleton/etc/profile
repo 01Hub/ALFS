@@ -2,8 +2,7 @@
 # Written for Linux From Scratch
 # by Alexander E. Patrakov 
 
-export LC_ALL=en_US
-export LANG=en_US
+export LANG=en_US.iso88591
 export INPUTRC=/etc/inputrc 
 
 # End /etc/profile
