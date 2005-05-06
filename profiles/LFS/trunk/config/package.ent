@@ -103,7 +103,7 @@
 <!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no_fixincludes-1.patch">
 <!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-2.patch">
 
-<!ENTITY gettext-md5 "">
+<!ENTITY gettext-md5 "59867730320c2a18bbba8b64fe0e9ee9">
 <!ENTITY gettext-version "0.14.4">
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.bz2">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
@@ -311,8 +311,8 @@
 <!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
-<!ENTITY udev-md5 "30fb3a320e74ff0c49c15ecaa6e37a4c">
-<!ENTITY udev-version "056">
+<!ENTITY udev-md5 "f3fb853592ce3cb768c289545af2a3bd">
+<!ENTITY udev-version "057">
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
 
