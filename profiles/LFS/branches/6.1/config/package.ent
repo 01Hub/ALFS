@@ -117,6 +117,8 @@
 <!ENTITY glibc-linuxthreads-md5 "7a199cd4965eb5622163756ae64358fe">
 <!ENTITY glibc-linuxthreads-package "glibc-linuxthreads-&glibc-version;&glibc-cvs-tag;.tar.bz2">
 
+<!ENTITY glibc-fix-testsuite-patch "glibc-&glibc-version;&glibc-cvs-tag;-fix_test-1.patch">
+
 <!ENTITY grep-md5 "52202fe462770fa6be1bb667bd6cf30c">
 <!ENTITY grep-version "2.5.1a">
 <!ENTITY grep-package "grep-&grep-version;.tar.bz2">

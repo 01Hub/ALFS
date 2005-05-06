@@ -33,7 +33,6 @@
       	<option>parents</option>
 	<name>/lib/firmware</name>
       </mkdir>
-      <execute command="touch /var/log/hotplug/events" />
     </stage>
     <stage name="Cleaning up.">
       <remove>&build_dir;/&hotplug-directory;</remove>
