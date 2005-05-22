@@ -139,6 +139,8 @@
 <!ENTITY gzip-package "gzip-&gzip-version;.tar.bz2">
 <!ENTITY gzip-directory "gzip-&gzip-version;">
 
+<!ENTITY gzip-security-fixes-patch "gzip-&gzip-version;-security_fixes-1.patch">
+
 <!ENTITY hotplug-md5 "58e6995f9df71ce59b0ec2787019e5fe">
 <!ENTITY hotplug-version "2004_09_23">
 <!ENTITY hotplug-package "hotplug-&hotplug-version;.tar.bz2">
@@ -173,8 +175,8 @@
 <!ENTITY less-package "less-&less-version;.tar.bz2">
 <!ENTITY less-directory "less-&less-version;">
 
-<!ENTITY lfs-bootscripts-md5 "494e8eff00a4e83100e3bd13707756e0">
-<!ENTITY lfs-bootscripts-version "3.2.0">
+<!ENTITY lfs-bootscripts-md5 "72313b82210735d7fd22083843eee90a">
+<!ENTITY lfs-bootscripts-version "3.2.1">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
@@ -188,8 +190,8 @@
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
-<!ENTITY linux-md5 "04f5efb260ff6fb4eaa221fb5b880d8e">
-<!ENTITY linux-version "2.6.11.7">
+<!ENTITY linux-md5 "e4e23abca482dff11f85119403a703ec">
+<!ENTITY linux-version "2.6.11.9">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
