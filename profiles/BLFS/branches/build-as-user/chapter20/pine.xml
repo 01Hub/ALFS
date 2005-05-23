@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch20.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="pine" version="&pine-version;">
+    <packageinfo>
+      <requires>
+        <name>openssl</name>
+      </requires>
+      <utilizes>
+        <name>openldap</name>
+      </utilizes>
+      <utilizes>
+        <name>mitkrb</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&pine-md5;</digest>
+	<archive>&packages_dir;/&pine-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+        <base>&build_dir;/&pine-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&pine-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&pine-directory;</base>
+      </stageinfo>
+      <execute command="./build">
+        <param>DEBUG=-O</param>
+        <param>MAILSPOOL=/var/mail</param>
+        <param>SSLDIR=/usr</param>
+        <param>SSLCERTS=/etc/ssl/certs</param>
+        <param>slx</param>
+      </execute>
+      <copy>
+        <source>doc/*.1</source>
+        <destination>/usr/share/man/man1</destination>
+      </copy>
+      <copy base="&build_dir;/&pine-directory;/bin">
+        <source>pine</source>
+        <source>imapd</source>
+        <source>ipop2d</source>
+        <source>ipop3d</source>
+        <source>mailutil</source>
+        <source>mtest</source>
+        <source>pico</source>
+        <source>pilot</source>
+        <source>rpdump</source>
+        <source>rpload</source>
+        <destination>/usr/bin</destination>
+      </copy>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&pine-directory;</remove>
+    </stage>
+  </package>
+</alfs>

@@ -1,0 +1,78 @@
+<!--************* packages for chapter 4 *************-->
+
+<!ENTITY openssl-version   "0.9.7e">
+<!ENTITY openssl-package   "openssl-&openssl-version;.tar.bz2">
+<!ENTITY openssl-md5       "bad03fa90732c244174f72c910e47b83">
+<!ENTITY openssl-directory "openssl-&openssl-version;">
+
+<!ENTITY cracklib-version   "2.7">
+<!ENTITY cracklib-package   "cracklib,&cracklib-version;.tar.bz2">
+<!ENTITY cracklib-md5       "95663c4de6036c91cc0cbf89943ffc71">
+<!ENTITY cracklib-directory "cracklib,&cracklib-version;">
+
+<!ENTITY cracklib-blfs-patch     "cracklib,&cracklib-version;-blfs-1.patch">
+<!ENTITY cracklib-blfs-patch-md5 "dde137235413c6e15cb6f67aa8000ae0">
+
+<!ENTITY cracklib-heimdal-patch     "cracklib,&cracklib-version;-heimdal-1.patch">
+<!ENTITY cracklib-heimdal-patch-md5 "c7817dd07bc1dc57d6a2e29fa7d98288">
+
+<!ENTITY cracklib-wordlist         "allwords">
+<!ENTITY cracklib-wordlist-package "allwords.bz2">
+<!ENTITY cracklib-wordlist-md5     "f4a537241a870fb718faaf343cf26d91">
+
+<!ENTITY linuxpam-version   "0.78">
+<!ENTITY linuxpam-package   "Linux-PAM-&linuxpam-version;.tar.bz2">
+<!ENTITY linuxpam-md5       "34938b4f2449d4d3b2ffdbf354257205">
+<!ENTITY linuxpam-directory "Linux-PAM-&linuxpam-version;">
+
+<!ENTITY linuxpam-linkage-patch     "Linux-PAM-&linuxpam-version;-linkage-2.patch">
+<!ENTITY linuxpam-linkage-patch-md5 "137e25bcac7e6ac0acaeed9503def2e9">
+
+<!ENTITY shadow-version   "4.0.4.1">
+<!ENTITY shadow-package   "shadow-&shadow-version;.tar.bz2">
+<!ENTITY shadow-md5       "3a3d17d3d7c630b602baf66ae7434c61">
+<!ENTITY shadow-directory "shadow-&shadow-version;">
+
+<!ENTITY shadow-pam-patch     "shadow-&shadow-version;-pam-1.patch">
+<!ENTITY shadow-pam-patch-md5 "21b903caa6ca38cd60bc0a4d133aee4c">
+
+<!ENTITY iptables-version   "1.3.1">
+<!ENTITY iptables-package   "iptables-&iptables-version;.tar.bz2">
+<!ENTITY iptables-md5       "c3358a3bd0d7755df0b64a5063db296b">
+<!ENTITY iptables-directory "iptables-&iptables-version;">
+
+<!ENTITY gnupg-version   "1.4.0">
+<!ENTITY gnupg-package   "gnupg-&gnupg-version;.tar.bz2">
+<!ENTITY gnupg-md5       "8c303606aaf73b7756b9fe6f3d8b58c2">
+<!ENTITY gnupg-directory "gnupg-&gnupg-version;">
+
+<!ENTITY tripwire-portable-version   "0.9">
+<!ENTITY tripwire-portable-package   "tripwire-portable-&tripwire-portable-version;.tar.bz2">
+<!ENTITY tripwire-portable-md5       "db4d87a478afc8c88e760375039e51ba">
+<!ENTITY tripwire-portable-directory "tripwire-portable-&tripwire-portable-version;">
+
+<!ENTITY heimdal-version   "0.6.3">
+<!ENTITY heimdal-package   "heimdal-&heimdal-version;.tar.bz2">
+<!ENTITY heimdal-md5       "95d42ec0de2ec38f43b042731e7fc883">
+<!ENTITY heimdal-directory "heimdal-&heimdal-version;">
+
+<!ENTITY heimdal-fhs-patch     "heimdal-&heimdal-version;-fhs_compliance-1.patch">
+<!ENTITY heimdal-fhs-patch-md5 "f99421daa62e88f1e771fa94d81efbcb">
+
+<!ENTITY heimdal-cracklib-patch     "heimdal-&heimdal-version;-cracklib-1.patch">
+<!ENTITY heimdal-cracklib-patch-md5 "db2b81340555fa0d402c8c7630d89d47">
+
+<!ENTITY mitkrb-version   "1.4">
+<!ENTITY mitkrb-package   "krb5-&mitkrb-version;.tar.bz2">
+<!ENTITY mitkrb-md5       "29d262ca94d1b202403e362be9ef691f">
+<!ENTITY mitkrb-directory "krb5-&mitkrb-version;">
+
+<!ENTITY cyrus-sasl-version   "2.1.20">
+<!ENTITY cyrus-sasl-package   "cyrus-sasl-&cyrus-sasl-version;.tar.bz2">
+<!ENTITY cyrus-sasl-md5       "4981b64da5747e7ca6f4696a6d172066">
+<!ENTITY cyrus-sasl-directory "cyrus-sasl-&cyrus-sasl-version;">
+
+<!ENTITY stunnel-version   "4.07">
+<!ENTITY stunnel-package   "stunnel-&stunnel-version;.tar.bz2">
+<!ENTITY stunnel-md5       "3da3880189133533b20e19ed0b40a04a">
+<!ENTITY stunnel-directory "stunnel-&stunnel-version;">

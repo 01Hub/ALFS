@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch23.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
+]>
+<alfs>
+  <package name="mysql" version="&mysql-version;">
+    <packageinfo>
+      <utilizes>
+        <name>openssl</name>
+      </utilizes>
+      <utilizes>
+        <name>tcpwrappers</name>
+      </utilizes>
+      <utilizes>
+	<name>which</name>
+      </utilizes>
+      <utilizes>
+	<name>orbit</name>
+      </utilizes>
+      <utilizes>
+	<name>doxygen</name>
+      </utilizes>
+      <utilizes>
+	<name>tex</name>
+      </utilizes>
+      <utilizes>
+	<name>libedit</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&mysql-md5;</digest>
+	<archive>&packages_dir;/&mysql-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    &bootscripts-get;
+    <stage name="Creating user and group">
+      <execute command="getent group mysql &gt; /dev/null || groupadd">
+        <param>mysql</param>
+      </execute>
+      <execute command="getent passwd mysql &gt; /dev/null || useradd">
+        <param>-c mysql</param>
+        <param>-d /dev/null</param>
+        <param>-g mysql</param>
+        <param>-s /bin/false</param>
+        <param>mysql</param>
+      </execute>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&mysql-directory;</base>
+      </stageinfo>
+      <configure>
+	<prefix>CPPFLAGS="-D_GNU_SOURCE"</prefix>
+        <param>--prefix=/usr</param>
+        <param>--sysconfdir=/etc</param>
+        <param>--libexecdir=/usr/sbin</param>
+        <param>--localstatedir=/srv/mysql</param>
+        <param>--enable-thread-safe-client</param>
+	<param>--enable-assembler</param>
+        <param>--enable-local-infile</param>
+        <param>--with-named-thread-libs=-lpthread</param>
+	<param>--with-unix-socket-path=/var/run/mysql/mysql.sock</param>
+        <param>--without-debug</param>
+        <param>--without-bench</param>
+	<param>--without-readline</param>
+      </configure>
+      <make>
+        <param>testdir=/usr/lib/mysql/mysql-test</param>
+      </make>
+      <make>
+        <param>testdir=/usr/lib/mysql/mysql-test</param>
+        <param>install</param>
+      </make>
+      <execute command="cd /usr/lib &real-amp;&real-amp; 
+                              ln -sf mysql/libmysqlclient{,_r}.so* ." />
+      <!-- CONFIGURATION -->
+      <copy>
+        <source>/usr/share/mysql/my-medium.cnf</source>
+        <destination>/etc/my.cnf</destination>
+      </copy>
+      <execute command="mysql_install_db --user=mysql" />
+      <mkdir>
+	<name>/var/run/mysql</name>
+      </mkdir>
+      <ownership user="mysql">
+	<name>/var/run/mysql</name>
+     </ownership>
+<!--
+     <execute command="mysqld_safe 2&gt;&real-amp;1 &gt;/dev/null &real-amp;" />
+     <textdump>
+      <file>/tmp/mysql.script</file>
+	<content>
+	  =UPDATE user SET password=password(&mysql-root-pass;) WHERE user='root';
+	  =FLUSH PRIVILEGES;
+	  =EXIT;
+	</content>
+      </textdump>
+      <execute command="mysql -uroot mysql &lt; /tmp/mysql.script" />
+      <remove>/tmp/mysql.script</remove>
+      <execute command="kill `pidof -x mysqld_safe mysqld`" />
+-->
+    </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-mysql</param>
+      </make>
+    </stage>
+    &bootscripts-clean;
+    <stage name="Cleanup">
+      <remove>&build_dir;/&mysql-directory;</remove>
+    </stage>
+  </package>
+</alfs>

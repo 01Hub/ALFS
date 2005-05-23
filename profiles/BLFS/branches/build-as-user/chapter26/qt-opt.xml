@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch26.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="qt" version="&qt-version;">
+    <packageinfo>
+      <requires>
+        <name>&ximpl;</name>
+      </requires>
+      <requires>
+        <name>libmng</name>
+      </requires>
+      <requires>
+        <name>libjpeg</name>
+      </requires>
+      <utilizes>
+      	<name>nas</name>
+      </utilizes>
+      <utilizes>
+	<name>cups</name>
+      </utilizes>
+      <utilizes>
+	<name>mysql</name>
+      </utilizes>
+      <utilizes>
+	<name>postgresql</name>
+      </utilizes>
+      <utilizes>
+	<name>sqlite</name>
+      </utilizes>
+      <utilizes>
+	<name>firebird</name>
+      </utilizes>
+      <utilizes>
+	<name>unixodbc</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&qt-opt-md5;</digest>
+	<archive>&packages_dir;/&qt-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <environment>
+          <variable name="PATH" mode="prepend">&build_dir;/&qt-directory;/bin:</variable>
+          <variable name="LD_LIBRARY_PATH">&build_dir;/&qt-directory;/lib</variable>
+        </environment>
+        <base>&build_dir;/&qt-directory;</base>
+      </stageinfo>
+      <configure command="echo yes | ./configure">
+        <param>-prefix /opt/qt-&qt-version;</param>
+        <param>-qt-gif</param>
+	<param>-system-zlib</param>
+	<param>-system-libmng</param>
+	<param>-no-exceptions</param>
+	<param>-thread</param>
+	<param>-plugin-imgfmt-png</param>
+	<param>-system-libjpeg</param>
+        <param>-system-libpng</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <link>
+	<option>force</option>
+	<target>qt-&qt-version;</target>
+	<name>/opt/qt</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>libqt-mt.so</target>
+        <name>/opt/qt/lib/libqt.so</name>
+      </link>
+      <remove>/opt/qt-&qt-version;/bin/qmake</remove>
+      <copy>
+	<source>qmake/qmake</source>
+	<destination>/opt/qt-&qt-version;/bin</destination>
+      </copy>
+      <ownership user="root" group="root">
+	<name>/opt/qt-&qt-version;/bin/make</name>
+      </ownership>
+      <permissions mode="755">
+	<name>/opt/qt-&qt-version;/bin/qmake</name>
+      </permissions>
+      <copy>
+        <option>recursive</option>
+        <source>doc/man</source>
+        <destination>/opt/qt/doc</destination>
+      </copy>
+      <copy>
+        <option>recursive</option>
+        <source>examples</source>
+        <destination>/opt/qt/doc</destination>
+      </copy>
+    </stage>
+    <stage name="Configuration">
+      <textdump mode="append">
+	<file>/etc/ld.so.conf</file>
+	<content>
+	  =# Begin qt addition to /etc/ld.so.conf
+	  =
+	  =/opt/qt/lib
+	  =
+	  =# End qt addition
+	</content>
+      </textdump>
+      <textdump mode="append">
+	<file>/etc/man.conf</file>
+	<content>
+	  =# Begin qt addition to man.conf
+	  =
+	  =MANPATH /opt/qt/doc/man
+	  =
+	  =# End qt addition to man.conf
+	</content>
+      </textdump>
+      <textdump mode="append">
+	<file>/etc/profile</file>
+	<content>
+	  =PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/qt/lib/pkgconfig
+	  =export QTDIR=/opt/qt
+	</content>
+      </textdump>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&qt-directory;</remove>
+    </stage>
+  </package>
+</alfs>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch33.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="abiword" version="&abiword-version;">
+    <packageinfo>
+      <requires>
+        <name>popt</name>
+      </requires>
+      <requires>
+        <name>libglade</name>
+      </requires>
+      <requires>
+        <name>fribidi</name>
+      </requires>
+      <utilizes>
+        <name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+        <name>libgnomeprintui</name>
+      </utilizes>
+      <utilizes>
+	<name>nautilus</name>
+      </utilizes>
+      <utilizes>
+	<name>gucharmap</name>
+      </utilizes>
+      <utilizes>
+	<name>imagemagick</name>
+      </utilizes>
+      <utilizes>
+	<name>enchant</name>
+      </utilizes>
+      <utilizes>
+	<name>aspell</name>
+      </utilizes>
+      <utilizes>
+	<name>wv</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&abiword-md5;</digest>
+	<archive>&packages_dir;/&abiword-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&abiword-directory;/abi</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <execute command="./make-html.sh" base="&build_dir;/&abiword-directory;/abiword-docs" />
+      <make>
+        <param>install</param>
+      </make>
+      <copy base="&build_dir;/&abiword-directory;/abiword-docs">
+	<option>recursive</option>
+	<option>force</option>
+	<source>docs</source>
+	<destination>/usr/share/AbiSuite-&abiword-major-minor;/AbiWord</destination>
+      </copy>
+      <copy base="&build_dir;/&abiword-directory;/abiword-docs">
+        <source>man/abiword.1</source>
+        <destination>/usr/share/man/man1</destination>
+      </copy>
+      <copy base="&build_dir;/&abiword-directory;/abiword-docs">
+	<source>Manual/en/Abiword_Manual.abw</source>
+	<destination>/usr/share/AbiSuite-&abiword-major-minor;/AbiWord/docs</destination>
+      </copy>
+      <copy base="&build_dir;/&abiword-directory;/abiword-docs">
+	<option>recursive</option>
+	<option>force</option>
+	<source>help</source>
+	<destination>/usr/share/AbiSuite-&abiword-major-minor;/AbiWord/help</destination>
+      </copy>
+      <execute command="find /usr/share/AbiSuite-&abiword-major-minor;/AbiWord/help -type d -exec chmod 755 {} \;" />
+      <copy base="&build_dir;/&abiword-directory;">
+	<source>abidistfiles/GNOME_AbiWord_Control_2_2.server</source>
+	<destination>&gnome-prefix;/lib/bonobo/servers</destination>
+      </copy>
+      <copy base="&build_dir;/&abiword-directory;">
+	<source>abi/abiword.desktop</source>
+	<destination>&gnome-prefix;/share/applications</destination>
+      </copy>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&abiword-directory;</remove>
+    </stage>
+  </package>
+</alfs>

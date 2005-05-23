@@ -1,0 +1,32 @@
+<!--************* packages for chapter 41 *************-->
+
+<!ENTITY cups-version   "1.1.23">
+<!ENTITY cups-package   "cups-&cups-version;-source.tar.bz2">
+<!ENTITY cups-md5       "4ce09b1dce09b6b9398af0daae9adf63">
+<!ENTITY cups-directory "cups-&cups-version;">
+
+<!ENTITY lprng-version   "3.8.28">
+<!ENTITY lprng-package   "LPRng-&lprng-version;.tar.bz2">
+<!ENTITY lprng-md5       "d986978aecfa3051a764718f34e44e54">
+<!ENTITY lprng-directory "LPRng-&lprng-version;">
+
+<!ENTITY afplghostscript-version   "8.14">
+<!ENTITY afplghostscript-package   "ghostscript-&afplghostscript-version;.tar.bz2">
+<!ENTITY afplghostscript-md5       "5f22dbe24b7fc8c8c07e249f8b14f9ce">
+<!ENTITY afplghostscript-directory "ghostscript-&afplghostscript-version;">
+
+<!ENTITY espghostscript-version   "7.07.1">
+<!ENTITY espghostscript-package   "espgs-&espghostscript-version;-source.tar.bz2">
+<!ENTITY espghostscript-md5       "d30bf5c09f2c7caa8291f6305cf03044">
+<!ENTITY espghostscript-directory "espgs-&espghostscript-version;">
+
+<!ENTITY ghostscript-fonts1     "ghostscript-fonts-std-8.11.tar.bz2">
+<!ENTITY ghostscript-fonts1-md5 "957b0af5426e9961816390bb1d0081f4">
+
+<!ENTITY ghostscript-fonts2     "ghostscript-gnu-gs-fonts-other-6.0.tar.bz2">
+<!ENTITY ghostscript-fonts2-md5 "fa343f4d662268131c5a1a87ebc7217d">
+
+<!ENTITY gimp-print-version   "4.2.7">
+<!ENTITY gimp-print-package   "gimp-print-&gimp-print-version;.tar.bz2">
+<!ENTITY gimp-print-md5       "f19a8bf9fe51d645bda6ec1f6d981a67">
+<!ENTITY gimp-print-directory "gimp-print-&gimp-print-version;">

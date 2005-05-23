@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch40.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="cdrdao" version="&cdrdao-version;">
+    <packageinfo>
+      <utilizes>
+        <name>lame</name>
+      </utilizes>
+      <utilizes>
+        <name>pccts</name>
+      </utilizes>
+      <utilizes>
+        <name>libgnomeui</name>
+      </utilizes>
+      <utilizes>
+        <name>libsigc++</name>
+      </utilizes>
+      <utilizes>
+        <name>gtkmm</name>
+      </utilizes>
+      <utilizes>
+        <name>libglademm</name>
+      </utilizes>
+      <utilizes>
+        <name>libgnomecanvasmm</name>
+      </utilizes>
+      <utilizes>
+        <name>gconfmm</name>
+      </utilizes>
+      <utilizes>
+        <name>libgnomemm</name>
+      </utilizes>
+      <utilizes>
+        <name>libgnomeuimm</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&cdrdao-md5;</digest>
+	<archive>&packages_dir;/&cdrdao-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&cdrdao-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&cdrdao-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&cdrdao-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&cdrdao-directory;</remove>
+    </stage>
+  </package>
+</alfs>

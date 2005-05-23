@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch12.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="doxygen" version="&doxygen-version;">
+    <packageinfo>
+      <utilizes>
+        <name>qt</name>
+      </utilizes>
+      <utilizes>
+        <name>python</name>
+      </utilizes>
+      <utilizes>
+        <name>tex</name>
+      </utilizes>
+      <utilizes>
+        <name>&ghostscript-impl;</name>
+      </utilizes>
+      <utilizes>
+        <name>graphviz</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&doxygen-md5;</digest>
+	<archive>&packages_dir;/&doxygen-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&doxygen-directory;</base>
+      </stageinfo>
+      <remove>src/unistd.h</remove>
+      <configure>
+        <param>--prefix /usr</param>
+        <param>--docdir /usr/share/doc</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&doxygen-directory;</remove>
+    </stage>
+  </package>
+</alfs>

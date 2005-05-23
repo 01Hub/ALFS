@@ -1,0 +1,101 @@
+<package name="cracklib" version="&cracklib-version;">
+
+	<stage name="Unpacking">
+		<unpack>
+			<archive>&packages_dir;/&cracklib-package;</archive>
+			<destination>&build_dir;</destination>
+		</unpack>
+
+		<copy>
+		        <source>&packages_dir;/&cracklib-dictionary;</source>
+			<destination>&build_dir;</destination>
+		</copy>
+	</stage>
+
+	<stage name="Installing">
+		<stageinfo>
+			<base>&build_dir;/&cracklib-directory;</base>
+		</stageinfo>
+
+		
+
+		<copy>
+		        <source>&build_dir;/&cracklib-dictionary;</source>
+			<destination>/usr/share/dict</destination>
+		</copy>
+
+		<link base="/usr/share/dict">
+		        <option>force</option>
+		        <target>&cracklib-dictionary;</target>
+			<name>words</name>
+		</link>
+
+		<textdump>
+		        <file>crack.h</file>
+			<content>
+			=#ifndef CRACKLIB_H
+			=#define CRACKLIB_H
+			=/* Pass this function a password (pw) and a path to the
+			= * dictionaries (/usr/lib/cracklib_dict should be specified)
+			= * and it will either return a NULL string, meaning that the
+			= * password is good, or a pointer to a string that explains the
+			= * problem with the password.
+			= * You must link with -lcrack
+			= */
+			=extern char *FascistCheck(char *pw, char *dictpath);
+			=#endif
+			</content>
+		</textdump>
+
+		<textdump>
+		        <file>util/create_cracklib_dict</file>
+			<content>
+			=#!/bin/sh
+			=if [ -z "$*" ]; then
+			=	echo "Usage:"
+			=	echo "  $0 wordlist ..."
+			=	echo
+			=	echo "This script takes one or more word list files as arguments"
+			=	echo "and converts them into cracklib dictionaries for use"
+			=	echo "by password checking programs. The results are placed in"
+			=	echo "/usr/lib/cracklib_dict.*"
+			=	echo
+			=	echo "Example:"
+			=	echo "$0 /usr/share/dict/words"
+			=else
+			=	/usr/sbin/mkdict $* | /usr/sbin/packer /usr/lib/cracklib_dict
+			=fi
+			</content>
+		</textdump>
+
+		<make>
+			<param>DICTPATH=/usr/lib/cracklib_dict</param>
+			<param>SRCDICTS=/usr/share/dict/words</param>
+			<param>install</param>
+		</make>
+
+		<copy>
+		        <source>cracklib/libcrack.a</source>
+			<destination>/usr/lib</destination>
+		</copy>
+
+		<copy>
+		        <source>crack.h</source>
+			<destination>/usr/include</destination>
+		</copy>
+
+		<copy>
+		        <source>util/mkdict</source>
+			<source>util/packer</source>
+			<source>util/create_cracklib_dict</source>
+			<destination>/usr/sbin</destination>
+		</copy>
+
+	</stage>
+
+	<stage name="Cleanup">
+		<remove>&build_dir;/&cracklib-directory;</remove>
+		<remove>&build_dir;/&cracklib-dictionary;</remove>
+	</stage>
+
+</package>

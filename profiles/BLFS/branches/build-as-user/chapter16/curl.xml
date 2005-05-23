@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch16.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="curl" version="&curl-version;">
+    <packageinfo>
+      <utilizes>
+	<name>pkgconfig</name>
+      </utilizes>
+      <utilizes>
+        <name>openssl</name>
+      </utilizes>
+      <utilizes>
+        <name>openldap</name>
+      </utilizes>
+      <utilizes>
+      	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+      	<name>krb4</name>
+      </utilizes>
+      <utilizes>
+      	<name>libidn</name>
+      </utilizes>
+      <utilizes>
+      	<name>spnego</name>
+      </utilizes>
+      <utilizes>
+      	<name>c-ares</name>
+      </utilizes>
+      <utilizes>
+      	<name>stunnel</name>
+      </utilizes>
+      <utilizes>
+      	<name>valgrind</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&curl-md5;</digest>
+	<archive>&packages_dir;/&curl-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&curl-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <execute command="find">
+        <param>docs -name "Makefile*"</param>
+        <param>-o -name "*.1"</param>
+        <param>-o -name "*.3"</param>
+        <param>| xargs rm</param>
+      </execute>
+      <mkdir>
+        <name>/usr/share/doc/curl-&curl-version;</name>
+      </mkdir>
+      <copy>
+        <source>docs/*</source>
+        <destination>/usr/share/doc/curl-&curl-version;</destination>
+      </copy>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&curl-directory;</remove>
+    </stage>
+  </package>
+</alfs>

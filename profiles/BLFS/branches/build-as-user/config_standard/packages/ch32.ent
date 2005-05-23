@@ -1,0 +1,96 @@
+<!--************* packages for chapter 32 *************-->
+
+<!ENTITY orbit-version   "0.5.17">
+<!ENTITY orbit-package   "ORBit-&orbit-version;.tar.bz2">
+<!ENTITY orbit-md5       "35acc6f8d49d930b566104fcceb893d3">
+<!ENTITY orbit-directory "ORBit-&orbit-version;">
+
+<!ENTITY oaf-version   "0.6.10">
+<!ENTITY oaf-package   "oaf-&oaf-version;.tar.bz2">
+<!ENTITY oaf-md5       "ed9aa2ceb70bba34034b3134b22d2729">
+<!ENTITY oaf-directory "oaf-&oaf-version;">
+
+<!ENTITY gnome-libs-version   "1.4.2">
+<!ENTITY gnome-libs-package   "gnome-libs-&gnome-libs-version;.tar.bz2">
+<!ENTITY gnome-libs-md5       "6111e91b143a90afb30f7a8c1e6cbbd6">
+<!ENTITY gnome-libs-directory "gnome-libs-&gnome-libs-version;">
+
+<!ENTITY gdk-pixbuf-version   "0.22.0">
+<!ENTITY gdk-pixbuf-package   "gdk-pixbuf-&gdk-pixbuf-version;.tar.bz2">
+<!ENTITY gdk-pixbuf-md5       "05fcb68ceaa338614ab650c775efc2f2">
+<!ENTITY gdk-pixbuf-directory "gdk-pixbuf-&gdk-pixbuf-version;">
+
+<!ENTITY gnome-print-version   "0.37">
+<!ENTITY gnome-print-package   "gnome-print-&gnome-print-version;.tar.bz2">
+<!ENTITY gnome-print-md5       "f9e13f4f17b04baceec1cdeed0f88eae">
+<!ENTITY gnome-print-directory "gnome-print-&gnome-print-version;">
+
+<!ENTITY gnome-print-ft-patch     "gnome-print-&gnome-print-version;-ft217_fixes-1.patch">
+<!ENTITY gnome-print-ft-patch-md5 "d6f10b37efeb7cd0da2e914ae9115604">
+
+<!ENTITY bonobo-version   "1.0.22">
+<!ENTITY bonobo-package   "bonobo-&bonobo-version;.tar.bz2">
+<!ENTITY bonobo-md5       "7718c374ed82911b24d95fa3ab55dda5">
+<!ENTITY bonobo-directory "bonobo-&bonobo-version;">
+
+<!ENTITY gconf-version   "1.0.9">
+<!ENTITY gconf-package   "GConf-&gconf-version;.tar.bz2">
+<!ENTITY gconf-md5       "613aea1d9b7a9c504f52217451c7bf99">
+<!ENTITY gconf-directory "GConf-&gconf-version;">
+
+<!ENTITY gconf-db43-patch "GConf-&gconf-version;-db43-2.patch">
+
+<!ENTITY gnome-vfs-version   "1.0.5">
+<!ENTITY gnome-vfs-package   "gnome-vfs-&gnome-vfs-version;.tar.bz2">
+<!ENTITY gnome-vfs-md5       "e2a17a6b178f54c43968241258f3e729">
+<!ENTITY gnome-vfs-directory "gnome-vfs-&gnome-vfs-version;">
+
+<!ENTITY gnome-vfs-gcc34-patch     "gnome-vfs-&gnome-vfs-version;-gcc34-1.patch">
+<!ENTITY gnome-vfs-gcc34-patch-md5 "d7c62585611a8b7172d75a093c6f76ac">
+
+<!ENTITY libglade1-version   "0.17">
+<!ENTITY libglade1-package   "libglade-&libglade1-version;.tar.bz2">
+<!ENTITY libglade1-md5       "788896c8f304efa16eed67aa1fa5ecd7">
+<!ENTITY libglade1-directory "libglade-&libglade1-version;">
+
+<!ENTITY gal1-version   "0.24">
+<!ENTITY gal1-package   "gal-&gal1-version;.tar.bz2">
+<!ENTITY gal1-md5       "9f9790d4e8763c4ce74e5d59f47aa509">
+<!ENTITY gal1-directory "gal-&gal1-version;">
+
+<!ENTITY guppi-version   "0.40.3">
+<!ENTITY guppi-package   "Guppi-&guppi-version;.tar.bz2">
+<!ENTITY guppi-md5       "26ec6eb5b6fe7fb4e32ecff64d4f1b16">
+<!ENTITY guppi-directory "Guppi-&guppi-version;">
+
+<!ENTITY guppi-gcc34-patch     "Guppi-&guppi-version;-gcc34-1.patch">
+<!ENTITY guppi-gcc34-patch-md5 "9aed879d6f6d5a38116b69316c147823">
+
+<!ENTITY guppi-legend-fix-patch     "Guppi-&guppi-version;-legend_fix-1.patch">
+<!ENTITY guppi-legend-fix-patch-md5 "ddab96652eafc87fccc9d084639c2fde">
+
+<!ENTITY libcapplet-version   "1.5.11">
+<!ENTITY libcapplet-package   "libcapplet-&libcapplet-version;.tar.bz2">
+<!ENTITY libcapplet-md5       "c6ba2bd6a08d82cba6b2b5360baab23c">
+<!ENTITY libcapplet-directory "libcapplet-&libcapplet-version;">
+
+<!ENTITY soup-version   "0.7.11">
+<!ENTITY soup-package   "soup-&soup-version;.tar.bz2">
+<!ENTITY soup-md5       "61bb2fef816ce164af62f8a3a5bd782e">
+<!ENTITY soup-directory "soup-&soup-version;">
+
+<!ENTITY soup-gcc34-patch     "soup-&soup-version;-gcc_3.4-1.patch">
+<!ENTITY soup-gcc34-patch-md5 "ae7e09ee67465f4070736e25baff3124">
+
+<!ENTITY gtkhtml1-version   "1.1.7">
+<!ENTITY gtkhtml1-package   "gtkhtml-&gtkhtml1-version;.tar.bz2">
+<!ENTITY gtkhtml1-md5       "83cd60ab9a108d2a0d65b3bf760affa4">
+<!ENTITY gtkhtml1-directory "gtkhtml-&gtkhtml1-version;">
+
+<!ENTITY gtkhtml1-gcc34-patch     "gtkhtml-&gtkhtml1-version;-gcc34-1.patch">
+<!ENTITY gtkhtml1-gcc34-patch-md5 "d12ff8dae29fa7443cc48f5ee1a682c4">
+
+<!ENTITY libghttp-version   "1.0.9">
+<!ENTITY libghttp-package   "libghttp-&libghttp-version;.tar.bz2">
+<!ENTITY libghttp-md5       "6a6f98ccad981056b812337e7f0d392a">
+<!ENTITY libghttp-directory "libghttp-&libghttp-version;">
