@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch21.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="courier" version="&courier-version;">
+    <packageinfo>
+      <requires>
+        <name>gdbm</name>
+      </requires>
+      <utilizes>
+	<name>mysql</name>
+      </utilizes>
+      <utilizes>
+	<name>postresql</name>
+      </utilizes>
+      <utilizes>
+	<name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>libfam</name>
+      </utilizes>
+      <utilizes>
+	<name>openldap</name>
+      </utilizes>
+      <utilizes>
+	<name>apache</name>
+      </utilizes>
+      <utilizes>
+	<name>aspell</name>
+      </utilizes>
+      <utilizes>
+	<name>ispell</name>
+      </utilizes>
+      <utilizes>
+	<name>gnupg</name>
+      </utilizes>
+      <utilizes>
+	<name>expect</name>
+      </utilizes>
+      <utilizes>
+	<name>&ghostscript-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>netbpm</name>
+      </utilizes>
+      <utilizes>
+	<name>mgetty+sendfax</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking.">
+      <unpack>
+        <digest>&courier-md5;</digest>
+	<archive>&packages_dir;/&courier-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Creating user and group">
+      <execute command="getent group courier &gt; /dev/null || groupadd">
+        <param>-f</param>
+        <param>courier</param>
+      </execute>
+      <execute command="getent passwd courier &gt; /dev/null || useradd">
+        <param>-c 'Courier Mail Server'</param>
+        <param>-d /dev/null</param>
+        <param>-g courier</param>
+        <param>-s /bin/false</param>
+        <param>courier</param>
+      </execute>
+      <execute command="getent passwd bin &gt; /dev/null || useradd">
+        <param>-c bin</param>
+        <param>-d /dev/null</param>
+        <param>-g bin</param>
+        <param>-u 1</param>
+        <param>bin</param>
+      </execute>
+    </stage>
+    <stage name="Installing.">
+      <stageinfo>
+        <base>&build_dir;/&courier-directory;</base>
+      </stageinfo>
+      <mkdir>
+        <option>parents</option>
+        <name>/var/run/courier</name>
+      </mkdir>
+      <ownership user="courier" group="courier">
+        <name>/var/run/courier</name>
+      </ownership>
+      <mkdir>
+        <option>parents</option>
+        <name>/var/lock/subsys</name>
+      </mkdir>
+      <ownership user="root" group="root">
+        <name>/var/lock/subsys</name>
+      </ownership>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--libexecdir=/usr/lib/courier</param>
+        <param>--datadir=/usr/share/courier</param>
+        <param>--sysconfdir=/etc/courier</param>
+        <param>--localstatedir=/var/lib/courier</param>
+        <param>--with-piddir=/var/run/courier</param>
+        <param>--disable-root-check</param>
+        <param>--with-mailuser=courier</param>
+        <param>--with-mailgroup=courier</param>
+        <param>--with-paranoid-smtpext</param>
+        <param>--disable-autorenamesent</param>
+        <param>--enable-workarounds-for-imap-client-bugs</param>
+        <param>--with-db=gdbm</param>
+        <param>--with-ispell=/usr/bin/aspell</param>
+        <param>--enable-mimetypes</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <make>
+        <param>install-configure</param>
+      </make>
+    </stage>
+    <stage name="Cleanup.">
+      <remove>&build_dir;/&courier-directory;</remove>
+    </stage>
+  </package>
+</alfs>

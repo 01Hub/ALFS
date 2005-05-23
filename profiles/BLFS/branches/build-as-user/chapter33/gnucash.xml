@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch33.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="gnucash" version="&gnucash-version;">
+    <packageinfo>
+      <requires>
+        <name>oaf</name>
+      </requires>
+      <requires>
+        <name>gal1</name>
+      </requires>
+      <requires>
+        <name>gtkhtml1</name>
+      </requires>
+      <requires>
+        <name>libghttp</name>
+      </requires>
+      <requires>
+        <name>g-wrap</name>
+      </requires>
+      <utilizes>
+	<name>postgresql</name>
+      </utilizes>
+      <utilizes>
+	<name>guppi</name>
+      </utilizes>
+      <utilizes>
+	<name>scrollkeeper</name>
+      </utilizes>
+      <utilizes>
+	<name>guile-www</name>
+      </utilizes>
+      <utilizes>
+	<name>libwww-perl</name>
+      </utilizes>
+      <utilizes>
+	<name>HTML-Parser</name>
+      </utilizes>
+      <utilizes>
+	<name>DateManip</name>
+      </utilizes>
+      <utilizes>
+	<name>Finance-Quote</name>
+      </utilizes>
+      <utilizes>
+	<name>graphviz</name>
+      </utilizes>
+      <utilizes>
+	<name>doxygen</name>
+      </utilizes>
+      <utilizes>
+	<name>electricfence</name>
+      </utilizes>
+      <utilizes>
+	<name>libofx</name>
+      </utilizes>
+      <utilizes>
+	<name>ktoblzcheck</name>
+      </utilizes>
+      <utilizes>
+	<name>aqhbci</name>
+      </utilizes>
+      <utilizes>
+	<name>gwenhywfar</name>
+      </utilizes>
+      <utilizes>
+	<name>aqbanking</name>
+      </utilizes>
+      <utilizes>
+	<name>libchipcard</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&gnucash-md5;</digest>
+	<archive>&packages_dir;/&gnucash-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&gnucash-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/opt/gnome</param>
+        <param>--sysconfdir=/etc</param>
+        <param>--disable-guppi</param>
+        <param>--disable-error-on-warning</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <ownership user="root" group="root">
+	<option>recursive</option>
+	<name>/opt/gnome/share/gnucash/doc/html/html</name>
+      </ownership>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gnucash-directory;</remove>
+    </stage>
+  </package>
+</alfs>

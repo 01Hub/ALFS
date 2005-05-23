@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch35.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="firefox" version="&firefox-version;">
+    <packageinfo>
+      <requires>
+        <name>zip</name>
+      </requires>
+      <requires>
+        <name>gtk+2</name>
+      </requires>
+      <requires>
+        <name>libidl</name>
+      </requires>
+      <utilizes>
+	<name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+	<name>unzip</name>
+      </utilizes>
+      <utilizes>
+	<name>gnome-vfs2</name>
+      </utilizes>
+      <utilizes>
+	<name>libgnome</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>doxygen</name>
+      </utilizes>
+      <utilizes>
+	<name>xprint</name>
+      </utilizes>
+      <utilizes>
+	<name>electricfence</name>
+      </utilizes>
+      <utilizes>
+	<name>cairo</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&firefox-md5;</digest>
+	<archive>&packages_dir;/&firefox-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <environment>
+          <variable name="MOZILLA_OFFICIAL">1</variable>
+          <variable name="BUILD_OFFICIAL">1</variable>
+          <variable name="MOZ_PHOENIX">1</variable>
+        </environment>
+        <base>&build_dir;/&firefox-directory;</base>
+      </stageinfo>
+      <configure>
+	<param>--prefix=/usr</param>
+	<param>--with-default-mozilla-five-home=/usr/lib/firefox-&firefox-version;</param>
+	<param>--with-user-appdir=.firefox</param>
+	<param>--with-system-zlib</param>
+	<param>--with-system-png</param>
+	<param>--enable-application=browser</param>
+	<param>--enable-default-toolkit=gtk2</param>
+	<param>--enable-extensions=all,-typeaheadfind</param>
+	<param>--enable-crypto</param>
+	<param>--enable-xft</param>
+	<param>--enable-xinerama</param>
+	<param>--enable-optimize</param>
+	<param>--enable-reorder</param>
+	<param>--enable-strip</param>
+	<param>--enable-cpp-rtti</param>
+	<param>--enable-single-profile</param>
+	<param>--disable-freetype2</param>
+	<param>--disable-accessibility</param>
+	<param>--disable-debug</param>
+	<param>--disable-tests</param>
+	<param>--disable-logging</param>
+	<param>--disable-pedantic</param>
+	<param>--disable-installer</param>
+	<param>--disable-mailnews</param>
+	<param>--disable-ldap</param>
+	<param>--disable-composer</param>
+	<param>--disable-profilesharing</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/include/firefox-&firefox-version;/nss</name>
+      </mkdir>
+      <execute command="cp">
+	<param>-Lf dist/private/nss/*.h dist/public/nss/*.h</param>
+	<param>/usr/include/firefox-&firefox-version;/nss</param>
+      </execute>
+      <stage name="Multi-User Operation Setup">
+        <stageinfo>
+          <environment>
+            <variable name="LD_LIBRARY_PATH">/usr/lib/firefox-&firefox-version;</variable>
+            <variable name="MOZILLA_FIVE_HOME">/usr/lib/firefox-&firefox-version;</variable>
+          </environment>
+          <base>/usr/lib/firefox-&firefox-version;/</base>
+        </stageinfo>
+        <execute command="./regxpcom" />
+        <execute command="./regchrome" />
+        <execute command="touch `find . -name *.rdf`" />
+      </stage>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&firefox-directory;</remove>
+    </stage>
+  </package>
+</alfs>

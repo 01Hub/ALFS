@@ -1,0 +1,36 @@
+<!--************* packages for chapter 34 *************-->
+
+<!ENTITY koffice-version   "1.3.5">
+<!ENTITY koffice-package   "koffice-&koffice-version;.tar.bz2">
+<!ENTITY koffice-md5       "dbc7e76c86647709a3e74f57c0fcf7f5">
+<!ENTITY koffice-directory "koffice-&koffice-version;">
+
+<!ENTITY gcc-33-version "3.3.4">
+
+<!ENTITY openoffice-version   "1.1.4">
+<!ENTITY openoffice-package   "OOo_&openoffice-version;_source.tar.bz2">
+<!ENTITY openoffice-md5       "213580b5b62db5a49b4319611c11b611">
+<!ENTITY openoffice-directory "oo_&openoffice-version;_src">
+
+<!ENTITY openoffice-gcc33-patch     "OOo_&openoffice-version;-gcc33-1.patch">
+<!ENTITY openoffice-gcc33-patch-md5 "1d06125915df29eaef5af839eb647090">
+
+<!ENTITY openoffice-nptl-patch     "OOo_&openoffice-version;-nptl-1.patch">
+<!ENTITY openoffice-nptl-patch-md5 "d03a4324e1e933e391fd2f44b745601e">
+
+<!ENTITY openoffice-jdk-patch     "OOo_&openoffice-version;-jdk_1.4.2_fix-1.patch">
+<!ENTITY openoffice-jdk-patch-md5 "3f09711760320c1d811a87746e1a15cd">
+
+<!ENTITY openoffice-test-bin-patch     "OOo_&openoffice-version;-test_bin_loc-1.patch">
+<!ENTITY openoffice-test-bin-patch-md5 "0143ae640fa32f47ed65e198b724fb4f">
+
+<!ENTITY openoffice-freetype-patch     "OOo_&openoffice-version;-freetype-1.patch">
+<!ENTITY openoffice-freetype-patch-md5 "ef9965124728b2e8fab84dc77ab49565">
+
+<!ENTITY openoffice-no-pam-patch     "OOo_&openoffice-version;-no_pam-1.patch">
+<!ENTITY openoffice-no-pam-patch-md5 "d6bfebb7e0c3065a69d9d0dd0fbf1863">
+
+<!ENTITY gpc-version   "231">
+<!ENTITY gpc-package   "gpc&gpc-version;.tar.Z">
+<!ENTITY gpc-md5       "fdb06fdb5a4670b172f9fb738b717be9">
+<!ENTITY gpc-directory "gpc&gpc-version;">

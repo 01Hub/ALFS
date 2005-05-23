@@ -1,0 +1,32 @@
+===========================================================
+                     BLFS-6.0 Profile
+===========================================================
+
+Note: We recommend that you read this README completely
+before you start using the profile.
+
+Downloading the packages:
+=========================
+
+The BLFS profile ships with a list of URL's of the packages
+in the BLFS book. These lists can be found in ./wget/
+We also provide a script that takes care of downloading the
+packages using wget. This script is ./wget.blfs
+
+The wget.blfs script uses the following syntax:
+ sh ./wget.blfs <destination_dir> <wget_list>
+
+Make sure to download all needed packages before you start,
+or else your build will fail. Also make sure you set the
+correct path to the packages you have downloaded in
+./config/config.ent
+
+Problematic packages:
+=====================
+
+For various reasons some packages can't be automatically
+downloaded and have to be downloaded manually.
+
+This is a list of those packages:
+
+ - The Sun Java SDK (Binary and Source)

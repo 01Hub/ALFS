@@ -1,0 +1,8 @@
+# Begin /etc/sysconfig/nfs-server
+
+PORT="2049"
+PROCESSES="8"
+QUOTAS="no"
+KILLDELAY="10"
+
+# End /etc/sysconfig/nfs-server

@@ -1,0 +1,27 @@
+<!--************* packages for chapter 24 **************-->
+
+<!ENTITY apache-version   "2.0.53">
+<!ENTITY apache-package   "httpd-&apache-version;.tar.bz2">
+<!ENTITY apache-md5       "94f3a793fb1665365724943206cce23f">
+<!ENTITY apache-directory "httpd-&apache-version;">
+
+<!ENTITY apache-patch     "httpd-&apache-version;-config-1.patch">
+<!ENTITY apache-patch-md5 "a294b404bcb22ae19060331bd12674ee">
+
+<!ENTITY php-version    "5.0.3">
+<!ENTITY php-package    "php-&php-version;.tar.bz2">
+<!ENTITY php-md5        "fd26455febdddee0977ce226b9108d9c">
+<!ENTITY php-directory  "php-&php-version;">
+
+<!ENTITY php-db43-patch     "php-&php-version;-db43-1.patch">
+<!ENTITY php-db43-patch-md5 "55c2f401f68da0d51b521294a25b3c4a">
+
+<!ENTITY proftpd-version   "1.2.10">
+<!ENTITY proftpd-package   "proftpd-&proftpd-version;.tar.bz2">
+<!ENTITY proftpd-md5       "5feb4a7348e12faefc25e34fd92efdd6">
+<!ENTITY proftpd-directory "proftpd-&proftpd-version;">
+
+<!ENTITY vsftpd-version   "2.0.1">
+<!ENTITY vsftpd-package   "vsftpd-&vsftpd-version;.tar.bz2">
+<!ENTITY vsftpd-md5       "a2f365398da34fd0dbce671ceccb2af9">
+<!ENTITY vsftpd-directory "vsftpd-&vsftpd-version;">

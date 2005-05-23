@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
+
+%general_entities;
+%config_entities;
+%files;
+
+]>
+<alfs>
+  <stage name="Configuring for adding users.">
+    <mkdir>
+      <option>parents</option>
+      <name>/etc/default</name>
+    </mkdir>
+    <copy>
+      <source>&blfs-config;/etc/default/useradd</source>
+      <destination>/etc/default/useradd</destination>
+    </copy>
+    <mkdir>
+      <option>parents</option>
+      <name>/etc/skel</name>
+    </mkdir>
+    <copy>
+      <source>&blfs-config;/etc/skel/dot_bash_profile</source>
+      <destination>/etc/skel/.bash_profile</destination>
+    </copy>
+    <copy>
+      <source>&blfs-config;/etc/skel/dot_bash_logout</source>
+      <destination>/etc/skel/.bash_logout</destination>
+    </copy>
+    <copy>
+      <source>&blfs-config;/etc/skel/dot_bashrc</source>
+      <destination>/etc/skel/.bashrc</destination>
+    </copy>
+  </stage>
+</alfs>

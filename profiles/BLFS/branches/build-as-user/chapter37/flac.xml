@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch37.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="flac" version="&flac-version;">
+    <packageinfo>
+      <utilizes>
+        <name>libogg</name>
+      </utilizes>
+      <utilizes>
+        <name>xmms</name>
+      </utilizes>
+      <utilizes>
+        <name>nasm</name>
+      </utilizes>
+      <utilizes>
+        <name>docbook-utils</name>
+      </utilizes>
+      <utilizes>
+        <name>doxygen</name>
+      </utilizes>
+      <utilizes>
+        <name>valgrind</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&flac-md5;</digest>
+	<archive>&packages_dir;/&flac-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&flac-directory;</base>
+      </stageinfo>
+      <configure>
+        <prefix>LIBS=-lm</prefix>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&flac-directory;</remove>
+    </stage>
+  </package>
+</alfs>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch30.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="gnome-applets" version="&gnome-applets-version;">
+    <packageinfo>
+      <requires>
+        <name>gail</name>
+      </requires>
+      <requires>
+        <name>gnome-panel</name>
+      </requires>
+      <requires>
+        <name>libxklavier</name>
+      </requires>
+      <utilizes>
+        <name>libgtop</name>
+      </utilizes>
+      <utilizes>
+	<name>gst-plugins</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-utils</name>
+      </utilizes>
+      <utilizes>
+	<name>libapm</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&gnome-applets-md5;</digest>
+	<archive>&packages_dir;/&gnome-applets-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&gnome-applets-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&gnome-applets-gswitchit-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&gnome-applets-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+        <param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+        <param>--localstatedir=/var/lib</param>
+        <param>--sysconfdir=/etc/gnome</param>
+      </configure>
+      <make>
+        <param>tooldir=`pkg-config --variable=prefix ORBit-2.0`/lib/gnome-applets</param>
+      </make>
+      <make>
+        <param>tooldir=`pkg-config --variable=prefix ORBit-2.0`/lib/gnome-applets</param>
+        <param>install</param>
+      </make>
+      <make>
+	<param>-C man</param>
+	<param>install-man</param>
+      </make>
+      <permissions mode="644">
+	<name>&gnome-prefix;/share/gnome/help/wireless/C/*.xml</name>
+	<name>&gnome-prefix;/share/gnome/help/gtik2_applet2/C/*.xml</name>
+      </permissions>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gnome-applets-directory;</remove>
+    </stage>
+  </package>
+</alfs>
