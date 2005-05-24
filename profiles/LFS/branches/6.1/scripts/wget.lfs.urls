@@ -32,8 +32,8 @@ ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/kbd/kbd-1.12.
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/less/less-382.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/lfs-bootscripts/lfs-bootscripts-3.2.1.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/libtool/libtool-1.5.14.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/linux/linux-2.6.11.9.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/linux-libc-headers/linux-libc-headers-2.6.11.1.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/linux/linux-2.6.11.10.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/linux-libc-headers/linux-libc-headers-2.6.11.2.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/m4/m4-1.4.3.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/make/make-3.80.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/man/man-1.5p.tar.bz2
