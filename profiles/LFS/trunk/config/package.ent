@@ -16,8 +16,8 @@
 <!ENTITY bash-fixes-patch "bash-&bash-version;-fixes-3.patch">
 <!ENTITY bash-wcontinued-patch "bash-&bash-version;-avoid_WCONTINUED-1.patch">
 
-<!ENTITY binutils-md5 "e9bcf84d9e6b5a2d840e76f22a3fce5f">
-<!ENTITY binutils-version "2.15.94.0.2.2">
+<!ENTITY binutils-md5 "bcb9fabaf0eaf91bd38c4ee148658df8">
+<!ENTITY binutils-version "2.16">
 <!ENTITY binutils-package "binutils-&binutils-version;.tar.bz2">
 <!ENTITY binutils-directory "binutils-&binutils-version;">
 
@@ -83,20 +83,20 @@
 <!ENTITY gawk-package "gawk-&gawk-version;.tar.bz2">
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
-<!ENTITY gcc-version "3.4.3">
+<!ENTITY gcc-version "3.4.4">
 <!ENTITY gcc-cvs-tag "">
 <!ENTITY gcc-directory "gcc-&gcc-version;&gcc-cvs-tag;">
 
-<!ENTITY gcc-md5 "e744b30c834360fccac41eb7269a3011">
+<!ENTITY gcc-md5 "b594ff4ea4fbef4ba9220887de713dfe">
 <!ENTITY gcc-package "gcc-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
-<!ENTITY gcc-core-md5 "d2cbfe8fc3205c1d7969b26377405778">
+<!ENTITY gcc-core-md5 "9dd911fd9bc136ca42b73c68735d853b">
 <!ENTITY gcc-core-package "gcc-core-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
-<!ENTITY gcc-gpp-md5 "26cb84db92feb8e03bb7bf3bc264844f">
+<!ENTITY gcc-gpp-md5 "a828b7024f07cebc3bc1e55dbfd4706a">
 <!ENTITY gcc-gpp-package "gcc-g++-&gcc-version;&gcc-cvs-tag;.tar.bz2">
   
-<!ENTITY gcc-testsuite-md5 "b4fff6ce0a038021b9e507917abb9a07">
+<!ENTITY gcc-testsuite-md5 "d95862a6266a29319152017b9de7bdde">
 <!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
 <!ENTITY gcc-linkonce-patch "gcc-&gcc-version;-linkonce-1.patch">
@@ -129,8 +129,8 @@
 <!ENTITY groff-package "groff-&groff-version;.tar.bz2">
 <!ENTITY groff-directory "groff-&groff-version;">
 
-<!ENTITY grub-md5 "a4b9a62278747a95625b875455257983">
-<!ENTITY grub-version "0.96">
+<!ENTITY grub-md5 "f26de8d3bc501741736f9731f6ec0814">
+<!ENTITY grub-version "0.97">
 <!ENTITY grub-package "grub-&grub-version;.tar.bz2">
 <!ENTITY grub-directory "grub-&grub-version;">
 
@@ -180,8 +180,8 @@
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
-<!ENTITY libtool-md5 "ad8358d705d8943c88626f5b660879f1">
-<!ENTITY libtool-version "1.5.14">
+<!ENTITY libtool-md5 "">
+<!ENTITY libtool-version "1.5.18">
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.bz2">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
@@ -190,8 +190,8 @@
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
-<!ENTITY linux-md5 "e4e23abca482dff11f85119403a703ec">
-<!ENTITY linux-version "2.6.11.9">
+<!ENTITY linux-md5 "6a66a372a1f8395f241f248f5fe8222a">
+<!ENTITY linux-version "2.6.11.10">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
@@ -313,8 +313,8 @@
 <!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
-<!ENTITY udev-md5 "f3fb853592ce3cb768c289545af2a3bd">
-<!ENTITY udev-version "057">
+<!ENTITY udev-md5 "03be2f56cc13c7f24b0ebf296166d48a">
+<!ENTITY udev-version "058">
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
 
