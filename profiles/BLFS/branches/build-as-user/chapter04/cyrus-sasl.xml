@@ -57,6 +57,9 @@
     </utilizes>
   </packageinfo>
   <stage name="Unpacking.">
+    <stageinfo>
+      <user>&build-user;</user>
+    </stageinfo>
     <unpack>
       <digest>&cyrus-sasl-md5;</digest>
       <archive>&packages_dir;/&cyrus-sasl-package;</archive>
@@ -64,8 +67,9 @@
     </unpack>
   </stage>
   &bootscripts-get; 
-  <stage name="Installing.">
+  <stage name="Building">
     <stageinfo>
+      <user>&build-user;</user>
       <base>&build_dir;/&cyrus-sasl-directory;</base>
     </stageinfo>
     <configure>
@@ -75,6 +79,8 @@
       <param>--with-saslauthd=/var/run</param>
     </configure>
     <make />
+  </stage>
+  <stage name="Installing">
     <make>
       <param>install</param>
     </make>

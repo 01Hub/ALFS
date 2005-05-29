@@ -26,6 +26,9 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&linuxpam-md5;</digest>
 	<archive>&packages_dir;/&linuxpam-package;</archive>
@@ -34,6 +37,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&linuxpam-directory;</base>
       </stageinfo>
       <patch>
@@ -42,8 +46,9 @@
         <param>-i &packages_dir;/&linuxpam-linkage-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&linuxpam-directory;</base>
       </stageinfo>
       <execute command="autoconf" />
@@ -59,6 +64,11 @@
         <param>--sysconfdir=/etc</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&linuxpam-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

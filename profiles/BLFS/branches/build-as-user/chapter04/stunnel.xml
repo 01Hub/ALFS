@@ -26,6 +26,9 @@
     </utilizes>
   </packageinfo>
   <stage name="Unpacking.">
+    <stageinfo>
+      <user>&build-user;</user>
+    </stageinfo>
     <unpack>
       <digest>&stunnel-md5;</digest>
       <archive>&packages_dir;/&stunnel-package;</archive>
@@ -45,10 +48,7 @@
       <param>stunnel</param>
     </execute>
   </stage>
-  <stage name="Installing.">
-    <stageinfo>
-      <base>&build_dir;/&stunnel-directory;</base>
-    </stageinfo>
+  <stage name="Pre-Building Configuration">
     <mkdir>
       <option>parents</option>
       <name>/var/lib/stunnel/run</name>
@@ -58,7 +58,14 @@
     </permissions>
     <ownership user="stunnel" group="stunnel">
       <name>/var/lib/stunnel/run</name>
-    </ownership><textdump>
+    </ownership>
+  </stage>
+  <stage name="Building">
+    <stageinfo>
+      <user>&build-user;</user>
+      <base>&build_dir;/&stunnel-directory;</base>
+    </stageinfo>
+    <textdump>
       <file>stunnel_answers</file>
       <content>
         =&stunnel-country;
@@ -76,6 +83,11 @@
     <make>
       <param>&lt; stunnel_answers</param>
     </make>
+  </stage>
+  <stage name="Installing">
+    <stageinfo>
+      <base>&build_dir;/&stunnel-directory;</base>
+    </stageinfo>
     <make>
       <param>install</param>
     </make>
@@ -93,7 +105,7 @@
     </copy>
   </stage>
   &bootscripts-clean; 
-  <stage name="Cleanup.">
+  <stage name="Cleanup">
     <remove>&build_dir;/&stunnel-directory;</remove>
   </stage>
   </package>
