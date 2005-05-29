@@ -27,14 +27,18 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&gnupg-md5;</digest>
 	<archive>&packages_dir;/&gnupg-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&gnupg-directory;</base>
       </stageinfo>
       <configure>
@@ -42,6 +46,8 @@
         <param>--libexecdir=/usr/lib</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
       <make>
         <param>install</param>
       </make>

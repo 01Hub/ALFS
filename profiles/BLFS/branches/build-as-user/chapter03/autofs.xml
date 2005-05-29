@@ -17,6 +17,9 @@
 <alfs>
 <package name="autofs" version="&autofs-version;">
   <stage name="Unpacking.">
+    <stageinfo>
+      <user>&build-user;</user>
+    </stageinfo>
     <unpack>
       <digest>&autofs-md5;</digest>
       <archive>&packages_dir;/&autofs-package;</archive>
@@ -26,6 +29,7 @@
   &bootscripts-get;
   <stage name="Patching."> 
     <stageinfo>
+      <user>&build-user;</user>
       <base>&build_dir;/&autofs-directory;</base>
     </stageinfo>
     <patch>
@@ -69,8 +73,9 @@
       <param>-i &packages_dir;/&autofs-multi-over-patch;</param>
     </patch>
   </stage>
-  <stage name="Installing.">
+  <stage name="Building.">
     <stageinfo>
+      <user>&build-user;</user>
       <base>&build_dir;/&autofs-directory;</base>
     </stageinfo>
     <configure>
@@ -78,6 +83,11 @@
       <param>--mandir=/usr/share/man</param>
     </configure>
     <make />
+  </stage>
+  <stage name="Installing">
+    <stageinfo>
+      <base>&build_dir;/&autofs-directory;</base>
+    </stageinfo>
     <make>
       <param>install</param>
     </make>

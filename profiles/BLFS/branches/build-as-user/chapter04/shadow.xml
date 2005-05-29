@@ -20,6 +20,9 @@
       </requires>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&shadow-md5;</digest>
 	<archive>&packages_dir;/&shadow-package;</archive>
@@ -28,6 +31,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&shadow-directory;</base>
       </stageinfo>
       <patch>
@@ -36,8 +40,9 @@
         <param>-i &packages_dir;/&shadow-pam-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&shadow-directory;</base>
       </stageinfo>
       <configure>
@@ -57,6 +62,11 @@
 	<replace>/* extern char *malloc (); */</replace>
       </search_replace>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&shadow-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

@@ -13,37 +13,46 @@
 <!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
 ]>
 <alfs>
-<package name="" version="">
-  <stage name="Unpacking.">
-    <unpack>
-      <archive>&packages_dir;/</archive>
-      <destination>&build_dir;</destination>
-    </unpack>
-  </stage>
-  &bootscripts-get;
-  <stage name="Installing.">
-    <stageinfo>
-      <base>&build_dir;/</base>
-    </stageinfo>
-    <configure>
-      <param>--prefix=/usr</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>
-  </stage>
-  <stage name="Installing bootscript and configuration">
-    <stageinfo>
-      <base>&build_dir;/&blfs-bootscripts-directory;</base>
-    </stageinfo>
-    <make>
-      <param></param>
-    </make>
-  </stage>
-  &bootscripts-clean;
-  <stage name="Cleanup.">
-    <remove>&build_dir;/</remove>
-  </stage>
-</package>
+  <package name="" version="">
+    <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
+      <unpack>
+        <archive>&packages_dir;/</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    &bootscripts-get;
+    <stage name="Building">
+      <stageinfo>
+	<user>&build-user;</user>
+        <base>&build_dir;/</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/</base>
+      </stageinfo>
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param></param>
+      </make>
+    </stage>
+    &bootscripts-clean;
+    <stage name="Cleanup">
+      <remove>&build_dir;/</remove>
+    </stage>
+  </package>
 </alfs>

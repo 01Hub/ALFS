@@ -15,14 +15,18 @@
 <alfs>
   <package name="iptables" version="&iptables-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&iptables-md5;</digest>
 	<archive>&packages_dir;/&iptables-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&iptables-directory;</base>
       </stageinfo>
       <make>
@@ -30,6 +34,11 @@
         <param>LIBDIR=/usr</param>
         <param>BINDIR=/sbin</param>
       </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&iptables-directory;</base>
+      </stageinfo>
       <make>
         <param>PREFIX=/usr</param>
         <param>LIBDIR=/usr</param>
