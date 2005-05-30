@@ -30,14 +30,18 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&emacs-md5;</digest>
 	<archive>&packages_dir;/&emacs-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&emacs-directory;</base>
       </stageinfo>
       <configure>
@@ -47,6 +51,11 @@
       <make>
         <param>bootstrap</param>
       </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&emacs-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

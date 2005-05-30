@@ -12,7 +12,10 @@
 ]>
 <alfs>
   <package name="ed" version="&ed-version;">
-    <stage name="Unpacking.">
+    <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&ed-md5;</digest>
 	<archive>&packages_dir;/&ed-package;</archive>
@@ -21,6 +24,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&ed-directory;</base>
       </stageinfo>
       <patch>
@@ -29,8 +33,9 @@
         <param>-i &packages_dir;/&ed-mkstemp-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing.">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&ed-directory;</base>
       </stageinfo>
       <configure>
@@ -38,11 +43,16 @@
         <param>--exec-prefix=""</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&ed-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>
     </stage>
-    <stage name="Cleanup.">
+    <stage name="Cleanup">
       <remove>&build_dir;/&ed-directory;</remove>
     </stage>
   </package>

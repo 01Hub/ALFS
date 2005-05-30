@@ -36,6 +36,9 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&vim-md5;</digest>
 	<archive>&packages_dir;/&vim-package;</archive>
@@ -47,8 +50,20 @@
 	<destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
+	<base>&build_dir;/&vim-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&vim-security-fix-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Building">
+      <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&vim-directory;</base>
       </stageinfo>
       <textdump mode="append">
@@ -58,16 +73,16 @@
 	  =#define SYS_GVIMRC_FILE "/etc/gvimrc"
 	</content>
       </textdump>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&vim-security-fix-patch;</param>
-      </patch>
       <configure>
         <param>--prefix=/usr</param>
         <param>--with-features=huge</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&vim-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

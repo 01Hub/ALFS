@@ -13,6 +13,9 @@
 <alfs>
   <package name="ash" version="&ash-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&ash-md5;</digest>
 	<archive>&packages_dir;/&ash-package;</archive>
@@ -21,6 +24,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&ash-directory;</base>
       </stageinfo>
       <patch>
@@ -29,11 +33,17 @@
         <param>-i &packages_dir;/&ash-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&ash-directory;</base>
       </stageinfo>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&ash-directory;</base>
+      </stageinfo>
       <copy>
         <source>sh</source>
         <destination>/bin/ash</destination>
