@@ -13,20 +13,29 @@
 <alfs>
   <package name="tcsh" version="&tcsh-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&tcsh-md5;</digest>
 	<archive>&packages_dir;/&tcsh-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&tcsh-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&tcsh-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

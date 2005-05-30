@@ -13,14 +13,18 @@
 <alfs>
   <package name="xfsprogs" version="&xfsprogs-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&xfsprogs-md5;</digest>
-<archive>&packages_dir;/&xfsprogs-package;</archive>
+	<archive>&packages_dir;/&xfsprogs-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&xfsprogs-directory;</base>
       </stageinfo>
       <search_replace>
@@ -29,6 +33,11 @@
         <replace></replace>
       </search_replace>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&xfsprogs-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

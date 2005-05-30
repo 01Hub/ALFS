@@ -20,14 +20,18 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&nano-md5;</digest>
 	<archive>&packages_dir;/&nano-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&nano-directory;</base>
       </stageinfo>
       <configure>
@@ -38,6 +42,11 @@
         <param>--enable-nanorc</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&nano-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>
@@ -49,10 +58,10 @@
         <source>nanorc.sample</source>
         <destination>/usr/share/doc/nano/examples</destination>
       </copy>
-    <copy>
-      <source>&blfs-config;/etc/nanorc</source>
-      <destination>/etc/nanorc</destination>
-    </copy>
+      <copy>
+	<source>&blfs-config;/etc/nanorc</source>
+	<destination>/etc/nanorc</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&nano-directory;</remove>
