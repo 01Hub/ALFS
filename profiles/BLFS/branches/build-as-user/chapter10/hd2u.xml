@@ -18,20 +18,29 @@
       </requires>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&hd2u-md5;</digest>
 	<archive>&packages_dir;/&hd2u-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&hd2u-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&hd2u-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

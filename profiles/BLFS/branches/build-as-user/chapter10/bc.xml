@@ -13,6 +13,9 @@
 <alfs>
   <package name="bc" version="&bc-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&bc-md5;</digest>
 	<archive>&packages_dir;/&bc-package;</archive>
@@ -21,6 +24,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&bc-directory;</base>
       </stageinfo>
       <patch>
@@ -34,8 +38,9 @@
         <param>-i &packages_dir;/&bc-readline-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&bc-directory;</base>
       </stageinfo>
       <configure>
@@ -43,6 +48,11 @@
         <param>--with-readline</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&bc-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

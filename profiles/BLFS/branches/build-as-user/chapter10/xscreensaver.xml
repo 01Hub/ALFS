@@ -47,15 +47,19 @@
       <name>&krb-impl;</name>
     </utilizes>
   </packageinfo>
-  <stage name="Unpacking.">
+  <stage name="Unpacking">
+    <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
     <unpack>
       <digest>&xscreensaver-md5;</digest>
       <archive>&packages_dir;/&xscreensaver-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>
   </stage>
-  <stage name="Installing.">
+  <stage name="Building">
     <stageinfo>
+      <user>&build-user;</user>
       <base>&build_dir;/&xscreensaver-directory;</base>
     </stageinfo>
     <search_replace>
@@ -67,11 +71,16 @@
       <param>--prefix=/usr</param>
     </configure>
     <make />
+  </stage>
+  <stage name="Installing">
+    <stageinfo>
+      <base>&build_dir;/&xscreensaver-directory;</base>
+    </stageinfo>
     <make>
       <param>install</param>
     </make>
   </stage>
-  <stage name="Cleanup.">
+  <stage name="Cleanup">
     <remove>&build_dir;/&xscreensaver-directory;</remove>
   </stage>
 </package>

@@ -20,15 +20,19 @@
         <name>lcms</name>
       </requires>
     </packageinfo>
-    <stage name="Unpacking">
+    <stage name="Unpacking">  
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&libmng-md5;</digest>
 	<archive>&packages_dir;/&libmng-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&libmng-directory;</base>
       </stageinfo>
       <permissions mode="755">
@@ -39,6 +43,11 @@
         <param>--prefix=/usr</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&libmng-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

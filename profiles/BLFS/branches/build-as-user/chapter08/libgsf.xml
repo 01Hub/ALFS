@@ -27,14 +27,18 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&libgsf-md5;</digest>
 	<archive>&packages_dir;/&libgsf-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&libgsf-directory;</base>
       </stageinfo>
       <configure>
@@ -42,6 +46,11 @@
         <param>--disable-gtk-doc</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&libgsf-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

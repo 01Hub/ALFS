@@ -18,6 +18,9 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&tidy-md5;</digest>
 	<archive>&packages_dir;/&tidy-package;</archive>
@@ -31,6 +34,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&tidy-directory;</base>
       </stageinfo>
       <patch>
@@ -39,8 +43,9 @@
 	<param>-i &packages_dir;/&tidy-newlines-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&tidy-directory;</base>
       </stageinfo>
       <execute command="sh build/gnuauto/setup.sh" />
@@ -48,6 +53,11 @@
         <param>--prefix=/usr</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&tidy-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

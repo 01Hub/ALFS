@@ -13,6 +13,9 @@
 <alfs>
   <package name="libpng" version="&libpng-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&libpng-md5;</digest>
 	<archive>&packages_dir;/&libpng-package;</archive>
@@ -21,6 +24,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&libpng-directory;</base>
       </stageinfo>
       <patch>
@@ -29,8 +33,9 @@
 	<param>-i &packages_dir;/&libpng-link-to-proper-libs-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&libpng-directory;</base>
       </stageinfo>
       <make>
@@ -39,6 +44,11 @@
 	<param>ZLIBLIB=/usr/lib</param>
 	<param>-f scripts/makefile.linux</param>
       </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&libpng-directory;</base>
+      </stageinfo>
       <make>
 	<param>prefix=/usr</param>
 	<param>install</param>

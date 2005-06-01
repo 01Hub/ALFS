@@ -13,6 +13,9 @@
 <alfs>
   <package name="freetype" version="&freetype-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&freetype-md5;</digest>
 	<archive>&packages_dir;/&freetype-package;</archive>
@@ -21,6 +24,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&freetype-directory;</base>
       </stageinfo>
       <patch>
@@ -29,14 +33,20 @@
 	<param>-i &packages_dir;/&freetype-bytecode-interpreter-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&freetype-directory;</base>
       </stageinfo>
       <configure>
 	<param>--prefix=/usr</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&freetype-directory;</base>
+      </stageinfo>
       <make>
 	<param>install</param>
       </make>

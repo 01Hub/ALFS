@@ -27,23 +27,33 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&imlib2-md5;</digest>
 	<archive>&packages_dir;/&imlib2-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&imlib2-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&imlib2-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>
+      &ldconfig;
       <mkdir>
 	<option>parents</option>
 	<name>/usr/share/doc/imlib2-&imlib2-version;</name>
