@@ -21,14 +21,18 @@
       </requires>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&imlib-md5;</digest>
 	<archive>&packages_dir;/&imlib-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&imlib-directory;</base>
       </stageinfo>
       <configure>
@@ -36,6 +40,11 @@
         <param>--sysconfdir=/etc/imlib</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&imlib-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

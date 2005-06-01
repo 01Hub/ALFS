@@ -18,14 +18,18 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&screen-md5;</digest>
 	<archive>&packages_dir;/&screen-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&screen-directory;</base>
       </stageinfo>
       <configure>
@@ -35,6 +39,11 @@
       </configure>
       <execute command="sed -i -e 's%/usr/local/etc/screenrc%/etc/screenrc%' {etc,doc}/*" />
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&screen-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

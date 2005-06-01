@@ -13,6 +13,9 @@
 <alfs>
   <package name="popt" version="&popt-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&popt-md5;</digest>
 	<archive>&packages_dir;/&popt-package;</archive>
@@ -24,15 +27,22 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <base>&build_dir;/&popt-directory;</base>
+	<user>&build-user;</user>
+	<base>&build_dir;/&popt-directory;</base>
       </stageinfo>
       <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &build_dir;/&popt-patch;</param>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &build_dir;/&popt-patch;</param>
       </patch>
+    </stage>
+    <stage name="Building">
+      <stageinfo>
+	<user>&build-user;</user>
+        <base>&build_dir;/&popt-directory;</base>
+      </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
       </configure>
@@ -42,12 +52,18 @@
       </copy>
       <execute command="touch configure.in configure.ac" />
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&popt-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&popt-directory;</remove>
+      <remove>&build_dir;/&popt-patch;</remove>
     </stage>
   </package>
 </alfs>

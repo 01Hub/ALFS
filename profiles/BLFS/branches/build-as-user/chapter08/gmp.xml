@@ -13,14 +13,18 @@
 <alfs>
   <package name="gmp" version="&gmp-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&gmp-md5;</digest>
 	<archive>&packages_dir;/&gmp-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&gmp-directory;</base>
       </stageinfo>
       <configure>
@@ -30,6 +34,11 @@
 	<param>--enable-mpfr</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&gmp-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

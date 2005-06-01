@@ -13,6 +13,9 @@
 <alfs>
   <package name="glib" version="&glib-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&glib-md5;</digest>
 	<archive>&packages_dir;/&glib-package;</archive>
@@ -21,6 +24,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&glib-directory;</base>
       </stageinfo>
       <patch>
@@ -29,20 +33,27 @@
 	<param>-i &packages_dir;/&glib-gcc34-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&glib-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&glib-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>
       <permissions mode="755">
 	<name>/usr/lib/libgmodule-1.2.so.0.0.10</name>
       </permissions>
+      &ldconfig;
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&glib-directory;</remove>

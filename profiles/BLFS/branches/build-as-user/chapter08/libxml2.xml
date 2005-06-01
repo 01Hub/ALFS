@@ -18,14 +18,18 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&libxml2-md5;</digest>
 	<archive>&packages_dir;/&libxml2-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&libxml2-directory;</base>
       </stageinfo>
       <configure>
@@ -33,9 +37,15 @@
 	<param>--with-history</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&libxml2-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>
+      &ldconfig;
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libxml2-directory;</remove>

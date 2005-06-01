@@ -123,14 +123,18 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&imagemagick-md5;</digest>
 	<archive>&packages_dir;/&imagemagick-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&imagemagick-directory;</base>
       </stageinfo>
       <execute command="sed">
@@ -141,6 +145,11 @@
         <param>--with-modules</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&imagemagick-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

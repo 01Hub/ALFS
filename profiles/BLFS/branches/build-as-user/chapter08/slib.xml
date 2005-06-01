@@ -18,6 +18,9 @@
       </requires>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&slib-md5;</digest>
 	<archive>&packages_dir;/&slib-package;</archive>
@@ -26,6 +29,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&slib-directory;</base>
       </stageinfo>
       <patch>
@@ -34,11 +38,16 @@
 	<param>-i &packages_dir;/&slib-install-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
 	<base>&build_dir;/&slib-directory;</base>
       </stageinfo>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&slib-directory;</base>
+      </stageinfo>
       <make>
 	<param>prefix=/usr/</param>
 	<param>install</param>

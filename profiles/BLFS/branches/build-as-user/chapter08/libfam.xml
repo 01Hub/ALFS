@@ -21,6 +21,9 @@
       </requires>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&libfam-md5;</digest>
 	<archive>&packages_dir;/&libfam-package;</archive>
@@ -28,15 +31,22 @@
       </unpack>
     </stage>
     &bootscripts-get;
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <base>&build_dir;/&libfam-directory;</base>
+	<user>&build-user;</user>
+	<base>&build_dir;/&libfam-directory;</base>
       </stageinfo>
       <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&libfam-patch;</param>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&libfam-patch;</param>
       </patch>
+    </stage>
+    <stage name="Building">
+      <stageinfo>
+	<user>&build-user;</user>
+        <base>&build_dir;/&libfam-directory;</base>
+      </stageinfo>
       <permissions mode="755">
 	<name>configure</name>
       </permissions>
@@ -49,6 +59,11 @@
         <param>--sysconfdir=/etc</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&libfam-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

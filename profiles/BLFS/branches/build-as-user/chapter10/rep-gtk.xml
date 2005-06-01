@@ -24,6 +24,9 @@
       </requires>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&rep-gtk-md5;</digest>
 	<archive>&packages_dir;/&rep-gtk-package;</archive>
@@ -32,6 +35,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&rep-gtk-directory;</base>
       </stageinfo>
       <patch>
@@ -40,14 +44,20 @@
         <param>-i &packages_dir;/&rep-gtk-gtk2.4-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&rep-gtk-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&rep-gtk-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

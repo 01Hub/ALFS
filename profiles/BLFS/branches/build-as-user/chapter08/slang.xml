@@ -13,33 +13,42 @@
 <alfs>
   <package name="slang" version="&slang-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&slang-md5;</digest>
 	<archive>&packages_dir;/&slang-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Building">
+      <stageinfo>
+	<user>&build-user;</user>
+	<base>&build_dir;/&slang-directory;</base>
+      </stageinfo>
+      <configure>
+	<param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+	<param>elf</param>
+      </make>
+    </stage>
     <stage name="Installing">
-    <stageinfo>
-      <base>&build_dir;/&slang-directory;</base>
-    </stageinfo>
-    <configure>
-      <param>--prefix=/usr</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>
-    <make>
-      <param>elf</param>
-    </make>
-    <make>
-      <param>install-elf</param>
-    </make>
-    <permissions mode="755">
-      <name>/usr/lib/libslang.so.&slang-version;</name>
-    </permissions>
-    &ldconfig;
+      <stageinfo>
+	<base>&build_dir;/&slang-directory;</base>
+      </stageinfo>
+      <make>
+	<param>install</param>
+      </make>
+      <make>
+	<param>install-elf</param>
+      </make>
+      <permissions mode="755">
+	<name>/usr/lib/libslang.so.&slang-version;</name>
+      </permissions>
+      &ldconfig;
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&slang-directory;</remove>

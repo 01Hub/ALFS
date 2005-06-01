@@ -29,15 +29,16 @@
       <name>electric-fence</name>
     </utilizes>
   </packageinfo>
-  <stage name="Unpacking.">
+  <stage name="Unpacking">
     <unpack>
       <digest>&pilot-link-md5;</digest>
       <archive>&packages_dir;/&pilot-link-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>
   </stage>
-  <stage name="Patching.">
+  <stage name="Patching">
     <stageinfo>
+      <user>&build-user;</user>
       <base>&build_dir;/&pilot-link-directory;</base>
     </stageinfo>
     <patch>
@@ -46,19 +47,25 @@
       <param>-i &packages_dir;/&pilot-link-bindings-fix-patch;</param>
     </patch>
   </stage>
-  <stage name="Installing.">
+  <stage name="Building">
     <stageinfo>
+      <user>&build-user;</user>
       <base>&build_dir;/&pilot-link-directory;</base>
     </stageinfo>
     <configure>
       <param>--prefix=/usr</param>
     </configure>
     <make />
+  </stage>
+  <stage name="Installing">
+    <stageinfo>
+      <base>&build_dir;/&pilot-link-directory;</base>
+    </stageinfo>
     <make>
       <param>install</param>
     </make>
   </stage>
-  <stage name="Cleanup.">
+  <stage name="Cleanup">
     <remove>&build_dir;/&pilot-link-directory;</remove>
   </stage>
 </package>

@@ -13,14 +13,18 @@
 <alfs>
   <package name="guile" version="&guile-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&guile-md5;</digest>
 	<archive>&packages_dir;/&guile-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&guile-directory;</base>
       </stageinfo>
       <configure>
@@ -29,6 +33,11 @@
       <make>
 	<prefix>LD_LIBRARY_PATH="$PWD/libguile-ltdl/.libs"</prefix>
       </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&guile-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>
