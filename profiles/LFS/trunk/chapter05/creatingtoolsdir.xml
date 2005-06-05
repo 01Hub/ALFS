@@ -83,10 +83,12 @@
         <source>&gettext-package;</source>
         <source>&glibc-package;</source>
 	<source>&glibc-linuxthreads-package;</source>
+	<source>&glibc-fix-testsuite-patch;</source>
         <source>&grep-package;</source>
         <source>&groff-package;</source>
         <source>&grub-package;</source>
         <source>&gzip-package;</source>
+	<source>&gzip-security-fixes-patch;</source>
         <source>&hotplug-package;</source>
         <source>&iana-etc-package;</source>
         <source>&inetutils-package;</source>
