@@ -26,7 +26,7 @@
 <!ENTITY bison-package "bison-&bison-version;.tar.bz2">
 <!ENTITY bison-directory "bison-&bison-version;">
 
-<!ENTITY bzip2-md5 "a41720b8748600ccc933ec3fd0100c10">
+<!ENTITY bzip2-md5 "daa86e5a449a60d1017938bef1d4bb9f">
 <!ENTITY bzip2-version "1.0.3">
 <!ENTITY bzip2-package "bzip2-&bzip2-version;.tar.bz2">
 <!ENTITY bzip2-directory "bzip2-&bzip2-version;">
@@ -49,7 +49,7 @@
 <!ENTITY diffutils-package "diffutils-&diffutils-version;.tar.bz2">
 <!ENTITY diffutils-directory "diffutils-&diffutils-version;">
 
-<!ENTITY e2fsprogs-md5 "e7e2248f9baa76de3db8210298e0d79e ">
+<!ENTITY e2fsprogs-md5 "3bc8370fde5399a059412d8b727bdbf8">
 <!ENTITY e2fsprogs-version "1.37">
 <!ENTITY e2fsprogs-package "e2fsprogs-&e2fsprogs-version;.tar.bz2">
 <!ENTITY e2fsprogs-directory "e2fsprogs-&e2fsprogs-version;">
@@ -286,7 +286,7 @@
 
 <!ENTITY shadow-lastlog-patch "shadow-&shadow-version;-fix_lastlog-1.patch">
 
-<!ENTITY sysklogd-md5 "ebd1e0630fccc34b860a3211b9980838">
+<!ENTITY sysklogd-md5 "3bc8370fde5399a059412d8b727bdbf8">
 <!ENTITY sysklogd-version "1.4.1">
 <!ENTITY sysklogd-package "sysklogd-&sysklogd-version;.tar.bz2">
 <!ENTITY sysklogd-directory "sysklogd-&sysklogd-version;">
