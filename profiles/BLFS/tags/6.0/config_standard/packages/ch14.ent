@@ -1,0 +1,17 @@
+<!--************* packages for chapter 14 *************-->
+
+<!ENTITY dhclient-version   "3.0.2">
+<!ENTITY dhclient-package   "dhcp-&dhclient-version;.tar.bz2">
+<!ENTITY dhclient-md5       "93392daf448d4c147859f5f0f5a06fe9">
+<!ENTITY dhclient-directory "dhcp-&dhclient-version;">
+
+<!ENTITY dhclient-iproute2-patch     "dhcp-&dhclient-version;-iproute2-2.patch">
+<!ENTITY dhclient-iproute2-patch-md5 "">
+
+<!ENTITY dhcpcd-version   "1.3.22-pl4">
+<!ENTITY dhcpcd-package   "dhcpcd-&dhcpcd-version;.tar.bz2">
+<!ENTITY dhcpcd-md5       "42f54712badb4fef66742639676cf537">
+<!ENTITY dhcpcd-directory "dhcpcd-&dhcpcd-version;">
+
+<!ENTITY dhcpcd-patch     "dhcpcd-&dhcpcd-version;-fhs-1.patch">
+<!ENTITY dhcpcd-patch-md5 "985f0dd7ef4360cf1e95286b7ae94beb">

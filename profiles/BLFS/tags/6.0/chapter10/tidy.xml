@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch10.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="tidy" version="&tidy-version;">
+    <packageinfo>
+      <utilizes>
+        <name>dmalloc</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&tidy-md5;</digest>
+	<archive>&packages_dir;/&tidy-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <digest>&tidy-docs-md5;</digest>
+	<archive>&packages_dir;/&tidy-docs;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&tidy-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&tidy-newlines-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&tidy-directory;</base>
+      </stageinfo>
+      <execute command="sh build/gnuauto/setup.sh" />
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <copy>
+	<source>htmldoc/man_page.txt</source>
+	<destination>/usr/share/man/man1/tidy.1</destination>
+      </copy>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/tidy</name>
+      </mkdir>
+      <copy>
+	<option>recursive</option>
+        <source>htmldoc</source>
+        <destination>/usr/share/doc/tidy</destination>
+      </copy>
+      <ownership user="root" group="root">
+	<option>recursive</option>
+	<name>/usr/share/man/man1/tidy.1</name>
+	<name>/usr/share/doc/tidy</name>
+      </ownership>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&tidy-directory;</remove>
+    </stage>
+  </package>
+</alfs>

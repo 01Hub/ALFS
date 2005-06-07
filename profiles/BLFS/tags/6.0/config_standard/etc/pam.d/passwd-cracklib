@@ -1,0 +1,7 @@
+# Begin /etc/pam.d/passwd
+
+password    required    pam_cracklib.so     \
+    retry=3  difok=8  minlen=5  dcredit=3  ocredit=3  ucredit=2  lcredit=2
+password    required    pam_unix.so     md5 shadow use_authtok
+
+# End /etc/pam.d/passwd

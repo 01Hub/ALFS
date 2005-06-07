@@ -1,0 +1,117 @@
+<!-- The directory that contains the packages -->
+<!ENTITY packages_dir "/usr/src/packages">
+
+<!-- The directory in which the packages will be compiled -->
+<!ENTITY build_dir "/usr/src/build">
+
+<!-- Your kernel version -->
+<!ENTITY kernel-version "2.6.8.1">
+
+<!-- Your kernel directory -->
+<!ENTITY kernel-directory "/usr/src/linux-2.6.8.1">
+
+<!-- Network device -->
+<!ENTITY network-interface "eth0">
+
+<!-- Configuration for the stunnel build -->
+<!ENTITY stunnel-country "CA">
+<!ENTITY stunnel-state   "Alberta">
+<!ENTITY stunnel-city    "Calgary">
+<!ENTITY stunnel-org     "Linux From Scratch">
+<!ENTITY stunnel-orgunit "ALFS">
+<!ENTITY stunnel-host    "localhost">
+
+<!-- XFree86 configuration -->
+<!ENTITY mouseProtocol "IMPS/2">
+
+<!ENTITY XkbModel  "pc101">
+<!ENTITY XkbLayout "fr">
+ 
+<!ENTITY HorizSync   "31.5-57.0">
+<!ENTITY VertRefresh "50-92">
+<!ENTITY Modeline    '"1152x864" 92 1152 1208 1368 1474 864 865 875 895'>
+
+<!ENTITY Driver     "nv">
+<!ENTITY VendorName "NVidia">
+<!ENTITY BoardName  "Riva TNT2 M64">
+<!ENTITY BusID      "PCI:1:0:0">
+
+<!-- Default non-root user of your system -->
+<!-- (Used to place some configuration files) -->
+<!ENTITY username  "non-root-user">
+
+<!-- The fully qualified host name used by postfix -->
+<!ENTITY hostname "your.hostname">
+<!ENTITY domain   "your.domain">
+
+<!-- Initial root password for mysql -->
+<!ENTITY mysql-password "alpha">
+
+<!-- Cracklib default wordlist -->
+<!ENTITY cracklib-wordlist "allwords">
+
+<!-- Entities used to build tripwire: -->
+<!-- The name of your policy file for tripwire -->
+<!ENTITY tripwire-policy-file "twpol.txt">
+<!-- Usable values to pass to make -->
+<!ENTITY tripwire-mail-domain "mail.domain.com">
+<!ENTITY tripwire-smtp-port "25">
+<!ENTITY tripwire-sitepassphrase "blahville">
+<!ENTITY tripwire-localpassphrase "blahville2">
+
+<!-- Perl version --> 
+<!-- Needed for perl modules -->
+<!ENTITY perl-version "5.8.5">
+
+<!-- Net-DNS nameserver tests -->
+<!-- Whether you want to perform these tests or not -->
+<!ENTITY nameserver-tests "yes">
+
+<!-- Kerberos implementation -->
+<!-- MIT-krb 5 (mitkrb) or Heimdal (heimdal) -->
+<!ENTITY krb-impl "heimdal">
+
+<!-- Java implementation -->
+<!-- binary (j2sdk-binary) or source (j2sdk-source) -->
+<!ENTITY j2sdk "j2sdk-source">
+
+<!-- X implementation -->
+<!-- XFree86 (xfree86) or X.org (xorg) -->
+<!ENTITY ximpl "xorg">
+
+<!-- Ghostscript implementation -->
+<!-- esp-gs (esp-ghostscript) or afpl-gs (ghostscript)-->
+<!ENTITY ghostscript-impl "esp-ghostscript">
+
+<!-- GIF library implementation-->
+<!-- libungif or giflib -->
+<!ENTITY gif-impl "giflib">
+
+<!-- Qt install location -->
+<!-- /usr (qt) or /opt (qt-opt) -->
+<!ENTITY qt-install "qt">
+
+<!-- KDE install location -->
+<!-- /usr (usr) or /opt (opt) -->
+<!ENTITY kde-install "usr">
+<!-- Change kde-prefix to "/&kde-install;/kde-3.3.2" if you chose opt -->
+<!ENTITY kde-prefix  "/&kde-install;">
+
+<!-- GNOME install location -->
+<!-- /usr (usr) or /opt (opt) --> 
+<!ENTITY gnome-install "usr">
+<!-- Change gnome-prefix to "/&gnome-install;/gnome-2.8" if you chose opt -->
+<!ENTITY gnome-prefix  "/&gnome-install;">
+
+<!-- MTA implementation -->
+<!-- sendmail, exim, courier, qpopper or postfix -->
+<!ENTITY mta-impl "sendmail">
+
+<!-- MySQL root password -->
+<!ENTITY mysql-root-pass "blahblah">
+
+<!-- ALSA driver -->
+<!ENTITY sound-card  "emu10k1">
+
+<!-- MPlayer font size -->
+<!ENTITY mplayer-font-size "14">

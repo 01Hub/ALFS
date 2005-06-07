@@ -1,0 +1,24 @@
+<!--************* packages for chapter 16 *************-->
+
+<!ENTITY curl-version   "7.13.1">
+<!ENTITY curl-package   "curl-&curl-version;.tar.bz2">
+<!ENTITY curl-md5       "d673f68dbab2553acdbfb5435bd1cd48">
+<!ENTITY curl-directory "curl-&curl-version;">
+
+<!ENTITY wvstreams-version   "4.0.1">
+<!ENTITY wvstreams-package   "wvstreams-&wvstreams-version;.tar.bz2">
+<!ENTITY wvstreams-md5       "77d1a676a42b1c21b193a5272cec5d2e">
+<!ENTITY wvstreams-directory "wvstreams-&wvstreams-version;">
+
+<!ENTITY wvstreams-tcl-patch     "wvstreams-&wvstreams-version;-tcl84-1.patch">
+<!ENTITY wvstreams-tcl-patch-md5 "f69e9e08faf506dbc1ccbd1d8c9671f2">
+
+<!ENTITY gnet-version   "2.0.5">
+<!ENTITY gnet-package   "gnet-&gnet-version;.tar.bz2">
+<!ENTITY gnet-md5       "a12967d1b26e78edaf57a108ca8cd601">
+<!ENTITY gnet-directory "gnet-&gnet-version;">
+
+<!ENTITY libsoup-version   "2.2.1">
+<!ENTITY libsoup-package   "libsoup-&libsoup-version;.tar.bz2">
+<!ENTITY libsoup-md5       "8132b0bce469affed688c4863702aa41">
+<!ENTITY libsoup-directory "libsoup-&libsoup-version;">

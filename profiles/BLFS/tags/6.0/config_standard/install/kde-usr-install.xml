@@ -1,0 +1,45 @@
+<!DOCTYPE alfs SYSTEM "../../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../../config/general.ent">
+<!ENTITY % config_entities SYSTEM "../../config/config.ent">
+
+%general_entities;
+%config_entities;
+]>
+
+<alfs xmlns:xi="http://www.w3.org/2001/XInclude">   
+    <stage name="Chapter 28 (KDE Core Packages)">
+      <stageinfo>
+	<environment>
+	  <variable name="KDE_PREFIX">&kde-prefix;</variable>
+	</environment>
+      </stageinfo>
+      <xi:include href="../../chapter28/arts.xml" />
+      <xi:include href="../../chapter28/kdelibs.xml" />
+      <xi:include href="../../chapter28/kdebase.xml" />
+    </stage>
+    <stage name="Chapter 29 (KDE Additional Packages)">
+      <stageinfo>
+	<environment>
+	  <variable name="KDE_PREFIX">&kde-prefix;</variable>
+	</environment>
+      </stageinfo>
+      <xi:include href="../../chapter29/kdeadmin.xml" />
+      <xi:include href="../../chapter29/kdenetwork.xml" />
+      <xi:include href="../../chapter29/kdepim.xml" />
+      <xi:include href="../../chapter29/kdemultimedia.xml" />
+      <xi:include href="../../chapter29/kdegraphics.xml" />
+      <xi:include href="../../chapter29/kdeutils.xml" />
+      <xi:include href="../../chapter29/kdeedu.xml" />
+      <xi:include href="../../chapter29/kdesdk.xml" />
+      <xi:include href="../../chapter29/kdevelop.xml" />
+      <xi:include href="../../chapter29/kdewebdev.xml" />
+      <xi:include href="../../chapter29/kdebindings.xml" />
+      <xi:include href="../../chapter29/kdeaccessibility.xml" />
+      <xi:include href="../../chapter29/kdetoys.xml" />
+      <xi:include href="../../chapter29/kdegames.xml" />
+      <xi:include href="../../chapter29/kdeartwork.xml" />
+      <xi:include href="../../chapter29/kdeaddons.xml" />
+      <xi:include href="../../chapter29/kde-i18n.xml" />
+    </stage>
+</alfs>

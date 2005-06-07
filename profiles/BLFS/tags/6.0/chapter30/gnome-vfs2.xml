@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch30.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="gnome-vfs2" version="&gnome-vfs2-version;">
+    <packageinfo>
+      <requires>
+        <name>intltool</name>
+      </requires>
+      <requires>
+        <name>gconf2</name>
+      </requires>
+      <requires>
+	<name>libbonobo</name>
+      </requires>
+      <requires>
+        <name>gnome-mime-data</name>
+      </requires>
+      <requires>
+        <name>shared-mime-info</name>
+      </requires>
+      <utilizes>
+        <name>samba</name>
+      </utilizes>
+      <utilizes>
+        <name>cdparanoia</name>
+      </utilizes>
+      <utilizes>
+        <name>libfam</name>
+      </utilizes>
+      <utilizes>
+        <name>gtk-doc</name>
+      </utilizes>
+      <utilizes>
+        <name>openssh</name>
+      </utilizes>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>openafs</name>
+      </utilizes>
+      <utilizes>
+	<name>howl</name>
+      </utilizes>
+      <utilizes>
+	<name>hal</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&gnome-vfs2-md5;</digest>
+	<archive>&packages_dir;/&gnome-vfs2-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&gnome-vfs2-directory;</base>
+      </stageinfo>
+      <configure>
+	<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+	<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
+	<param>--sysconfdir=/etc/gnome</param>
+	<param>--disable-gtk-doc</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+      &ldconfig;
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gnome-vfs2-directory;</remove>
+    </stage>
+  </package>
+</alfs>

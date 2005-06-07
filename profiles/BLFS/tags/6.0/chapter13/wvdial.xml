@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch13.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="wvdial" version="&wvdial-version;">
+    <packageinfo>
+      <requires>
+        <name>wvstreams</name>
+      </requires>
+      <requires>
+        <name>ppp</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&wvdial-md5;</digest>
+	<archive>&packages_dir;/&wvdial-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&wvdial-directory;</base>
+      </stageinfo>
+      <make>
+        <param>PREFIX=/usr</param>
+      </make>
+      <make>
+        <param>PREFIX=/usr</param>
+        <param>install</param>
+      </make>
+      <execute command="touch">
+        <param>/etc/wvdial.conf</param>
+      </execute>
+      <!-- uncomment this if you actually have a modem connected
+                     to your computer
+                <execute command="wvdialconf">
+                        <param>/etc/wvdial.conf</param>
+                </execute>
+                -->
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&wvdial-directory;</remove>
+    </stage>
+  </package>
+</alfs>

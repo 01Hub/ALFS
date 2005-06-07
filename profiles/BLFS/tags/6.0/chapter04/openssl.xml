@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch04.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="openssl" version="&openssl-version;">
+    <packageinfo>
+      <utilizes>  
+	<name>bc</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&openssl-md5;</digest>
+	<archive>&packages_dir;/&openssl-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&openssl-directory;</base>
+      </stageinfo>
+      <search_replace base="&build_dir;/&openssl-directory;/doc/apps">
+        <file>passwd.pod</file>
+        <find>passwd - compute password hashes</find>
+        <replace>openssl-passwd - compute password hashes</replace>
+      </search_replace>
+      <move>
+        <source>doc/apps/passwd.pod</source>
+        <destination>doc/apps/openssl-passwd.pod</destination>
+      </move>
+      <move>
+        <source>doc/crypto/threads.pod</source>
+        <destination>doc/crypto/openssl_threads.pod</destination>
+      </move>
+      <configure command="./config">
+        <param>--openssldir=/etc/ssl</param>
+        <param>--prefix=/usr</param>
+        <param>shared</param>
+      </configure>
+      <search_replace>
+	<file>Makefile</file>
+	<find>SHLIBDIRS= fips crypto ssl</find>
+	<replace>SHLIBDIRS= crypto ssl</replace>
+      </search_replace>
+      <make>
+        <param>MANDIR=/usr/share/man</param>
+      </make>
+      <make>
+        <param>MANDIR=/usr/share/man</param>
+        <param>install</param>
+      </make>
+      <copy>
+        <option>recursive</option>
+        <source>certs</source>
+        <destination>/etc/ssl</destination>
+      </copy>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&openssl-directory;</remove>
+    </stage>
+  </package>
+</alfs>

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Begin $rc_base/init.d/firewall.status
+
+echo "iptables.mangling:"
+iptables -t mangle  -v -L -n --line-numbers
+
+echo
+echo "iptables.nat:"
+iptables -t nat     -v -L -n --line-numbers
+
+echo
+echo "iptables.filter:"
+iptables            -v -L -n --line-numbers
+
+# End $rc_base/init.d/firewall.status

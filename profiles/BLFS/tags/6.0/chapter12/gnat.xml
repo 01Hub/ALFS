@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch12.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="gnat" version="&gnat-version;">
+    <packageinfo>
+      <requires>
+        <name>tcsh</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&gnat-md5;</digest>
+	<archive>&packages_dir;/&gnat-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&gnat-directory;</base>
+      </stageinfo>
+      <textdump base="/tmp">
+        <file>gnat_reply</file>
+        <content>
+	    =
+	    =3
+	    =/opt/gnat
+	    =
+	    </content>
+      </textdump>
+      <execute command="./doconfig &lt; /tmp/gnat_reply" />
+      <execute command="./doinstall" />
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gnat-directory;</remove>
+      <remove>/tmp/gnat_reply</remove>
+    </stage>
+  </package>
+</alfs>

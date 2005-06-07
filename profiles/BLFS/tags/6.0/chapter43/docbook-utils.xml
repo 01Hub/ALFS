@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch43.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+<package name="docbook-utils" version="&docbook-utils-version;">
+  <packageinfo>
+    <requires>
+      <name>openjade</name>
+    </requires>
+    <requires>
+      <name>docbook-dsssl</name>
+    </requires>
+    <requires>
+      <name>sgml-dtd31</name>
+    </requires>
+    <utilizes>
+      <name>jadetex</name>
+    </utilizes>
+    <utilizes>
+      <name>SGMLSpm</name>
+    </utilizes>
+    <utilizes>
+      <name>lynx</name>
+    </utilizes>
+  </packageinfo>
+  <stage name="Unpacking.">
+    <unpack>
+      <digest>&docbook-utils-md5;</digest>
+      <archive>&packages_dir;/&docbook-utils-package;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+  </stage>
+  <stage name="Installing.">
+    <stageinfo>
+      <base>&build_dir;/&docbook-utils-directory;</base>
+    </stageinfo>
+    <configure>
+      <param>--prefix=/usr</param>
+    </configure>
+    <make />
+    <make>
+      <param>install</param>
+    </make>
+    <link>
+      <option>force</option>
+      <target>docbook2html</target>
+      <name>/usr/bin/db2html</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>docbook2ps</target>
+      <name>/usr/bin/db2ps</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>docbook2dvi</target>
+      <name>/usr/bin/db2dvi</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>docbook2man</target>
+      <name>/usr/bin/db2man</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>docbook2pdf</target>
+      <name>/usr/bin/db2pdf</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>docbook2rtf</target>
+      <name>/usr/bin/db2rtf</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>docbook2tex</target>
+      <name>/usr/bin/db2tex</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>docbook2texi</target>
+      <name>/usr/bin/db2texi</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>docbook2txt</target>
+      <name>/usr/bin/db2txt</name>
+    </link>
+
+  </stage>
+  <stage name="Cleanup.">
+    <remove>&build_dir;/&docbook-utils-directory;</remove>
+  </stage>
+</package>
+</alfs>

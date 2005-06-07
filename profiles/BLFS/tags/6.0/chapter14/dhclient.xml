@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch14.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+%files;
+
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
+]>
+<alfs>
+  <package name="dhclient" version="&dhclient-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&dhclient-md5;</digest>
+	<archive>&packages_dir;/&dhclient-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    &bootscripts-get;
+    <stage name="Patching.">
+      <stageinfo>
+	<base>&build_dir;/&dhclient-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&dhclient-iproute2-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&dhclient-directory;</base>
+      </stageinfo>
+      <configure />
+      <make />
+      <make>
+        <param>LIBDIR=/usr/lib</param>
+        <param>INCDIR=/usr/include</param>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Install dhclient service script">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-service-dhclient</param>
+      </make>
+    </stage>
+    <stage name="Configure dhclient">
+      <copy>
+        <source>&blfs-config;/etc/sysconfig/network-devices/ifconfig.eth0/dhclient</source>
+        <destination>/etc/sysconfig/network-devices/ifconfig.eth0/dhclient</destination>
+      </copy>
+      <copy>
+        <source>&blfs-config;/etc/dhclient.conf</source>
+        <destination>/etc/dhclient.conf</destination>
+      </copy>
+    </stage>
+    &bootscripts-clean;
+    <stage name="Cleanup">
+      <remove>&build_dir;/&dhclient-directory;</remove>
+    </stage>
+  </package>
+</alfs>

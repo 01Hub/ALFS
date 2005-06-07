@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch39.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="avifile" version="&avifile-version;">
+    <packageinfo>
+      <requires>
+        <name>qt</name>
+      </requires>
+      <requires>
+        <name>sdl</name>
+      </requires>
+      <utilizes>
+        <name>pkgconfig</name>
+      </utilizes>
+      <utilizes>
+        <name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+        <name>libogg</name>
+      </utilizes>
+      <utilizes>
+        <name>libvorbis</name>
+      </utilizes>
+      <utilizes>
+        <name>liba52</name>
+      </utilizes>
+      <utilizes>
+        <name>lame</name>
+      </utilizes>
+      <utilizes>
+        <name>libmad</name>
+      </utilizes>
+      <utilizes>
+        <name>xvid</name>
+      </utilizes>
+      <utilizes>
+        <name>faad2</name>
+      </utilizes>
+      <utilizes>
+        <name>divx4linux</name>
+      </utilizes>
+      <utilizes>
+        <name>dmalloc</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&avifile-md5;</digest>
+	<archive>&packages_dir;/&avifile-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&avifile-directory;</base>
+      </stageinfo>
+      <mkdir>
+        <option>parents</option>
+	<name>/usr/lib/avifile-&avifile-major-minor;/win32</name>
+      </mkdir>
+      <unpack>
+        <digest>&avifile-binaries-md5;</digest>
+	<archive>&packages_dir;/&avifile-binaries-package;</archive>
+        <destination>/usr/lib/avifile-&avifile-major-minor;</destination>
+      </unpack>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--with-win32-path=/usr/lib/avifile-&avifile-major-minor;/win32</param>
+      </configure>
+      <make />
+      <search_replace>
+        <file>avifile.pc</file>
+        <find>include/avifile</find>
+        <replace>include/avifile-&avifile-major-minor;</replace>
+      </search_replace>
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&avifile-directory;</remove>
+    </stage>
+  </package>
+</alfs>
