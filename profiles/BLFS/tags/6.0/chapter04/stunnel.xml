@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch04.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+%files;
+
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
+]>
+<alfs>
+  <package name="stunnel" version="&stunnel-version;">
+  <packageinfo>
+    <requires>
+      <name>openssl</name>
+    </requires>
+    <utilizes>
+      <name>tcpwrappers</name>
+    </utilizes>
+  </packageinfo>
+  <stage name="Unpacking.">
+    <unpack>
+      <digest>&stunnel-md5;</digest>
+      <archive>&packages_dir;/&stunnel-package;</archive>
+      <destination>&build_dir;</destination>
+    </unpack>
+  </stage>
+  &bootscripts-get; 
+  <stage name="Creating user and group">
+    <execute command="getent group stunnel &gt; /dev/null || groupadd">
+      <param>stunnel</param>
+    </execute>
+    <execute command="getent passwd stunnel &gt; /dev/null || useradd">
+      <param>-c "Stunnel Daemon"</param>
+      <param>-d /var/lib/stunnel</param>
+      <param>-g stunnel</param>
+      <param>-s /bin/false</param>
+      <param>stunnel</param>
+    </execute>
+  </stage>
+  <stage name="Installing.">
+    <stageinfo>
+      <base>&build_dir;/&stunnel-directory;</base>
+    </stageinfo>
+    <mkdir>
+      <option>parents</option>
+      <name>/var/lib/stunnel/run</name>
+    </mkdir>
+    <permissions mode="700">
+      <name>/var/lib/stunnel/run</name>
+    </permissions>
+    <ownership user="stunnel" group="stunnel">
+      <name>/var/lib/stunnel/run</name>
+    </ownership><textdump>
+      <file>stunnel_answers</file>
+      <content>
+        =&stunnel-country;
+        =&stunnel-state;
+        =&stunnel-city;
+        =&stunnel-org;
+        =&stunnel-orgunit;
+        =&stunnel-host;
+      </content>
+    </textdump>
+    <configure>
+      <param>--prefix=/usr</param>
+      <param>--sysconfdir=/etc</param>
+    </configure>
+    <make>
+      <param>&lt; stunnel_answers</param>
+    </make>
+    <make>
+      <param>install</param>
+    </make>
+  </stage>
+  <stage name="Installing bootscript and configuration">
+    <stageinfo>
+      <base>&build_dir;/&blfs-bootscripts-directory;</base>
+    </stageinfo>
+    <make>
+      <param>install-stunnel</param>
+    </make>
+    <copy>
+      <source>&blfs-config;/etc/stunnel/stunnel.conf</source>
+      <destination>/etc/stunnel/stunnel.conf</destination>
+    </copy>
+  </stage>
+  &bootscripts-clean; 
+  <stage name="Cleanup.">
+    <remove>&build_dir;/&stunnel-directory;</remove>
+  </stage>
+  </package>
+</alfs>

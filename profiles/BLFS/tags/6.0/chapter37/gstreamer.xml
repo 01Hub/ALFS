@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch37.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="gstreamer" version="&gstreamer-version;">
+    <packageinfo>
+      <requires>
+        <name>glib2</name>
+      </requires>
+      <requires>
+        <name>libxml2</name>
+      </requires>
+      <requires>
+        <name>popt</name>
+      </requires>
+      <utilizes>
+        <name>libgnomeui</name>
+      </utilizes>
+      <utilizes>
+        <name>python</name>
+      </utilizes>
+      <utilizes>
+        <name>valgrind</name>
+      </utilizes>
+      <utilizes>
+        <name>libxslt</name>
+      </utilizes>
+      <utilizes>
+        <name>gtk-doc</name>
+      </utilizes>
+      <utilizes>
+        <name>tex</name>
+      </utilizes>
+      <utilizes>
+        <name>&ghostscript-impl;</name>
+      </utilizes>
+      <utilizes>
+        <name>docbook-utils</name>
+      </utilizes>
+      <utilizes>
+        <name>transfig</name>
+      </utilizes>
+      <utilizes>
+        <name>netbpm</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&gstreamer-md5;</digest>
+	<archive>&packages_dir;/&gstreamer-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&gstreamer-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--sysconfdir=/etc</param>
+        <param>--localstatedir=/var</param>
+        <param>--disable-docs-build</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <ownership user="root" group="root">
+        <option>recursive</option>
+        <name>/usr/share/doc/gstreamer-&gstreamer-version;</name>
+      </ownership>
+      <execute command="gst-register" />
+      &ldconfig;
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gstreamer-directory;</remove>
+    </stage>
+  </package>
+</alfs>

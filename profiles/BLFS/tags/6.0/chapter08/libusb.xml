@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch08.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="libusb" version="&libusb-version;">
+    <packageinfo>
+      <utilizes>
+        <name>openjade</name>
+      </utilizes>
+      <utilizes>
+        <name>sgml-dtd31</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&libusb-md5;</digest>
+	<archive>&packages_dir;/&libusb-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Creating group">
+      <execute command="getent group usb &gt; /dev/null || groupadd">
+        <param>-g 15</param>
+        <param>usb</param>
+      </execute>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&libusb-directory;</base>
+      </stageinfo>
+      <execute command="libtoolize -f" />
+      <execute command="autoreconf -f" />
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--disable-build-docs</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&libusb-directory;</remove>
+    </stage>
+  </package>
+</alfs>

@@ -1,0 +1,98 @@
+<!DOCTYPE alfs SYSTEM "../../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../../config/general.ent">
+<!ENTITY % config_entities SYSTEM "../../config/config.ent">
+
+%general_entities;
+%config_entities;
+]>
+
+<alfs xmlns:xi="http://www.w3.org/2001/XInclude">   
+ <stage name="Chapter 30 (GNOME Core Packages)">
+      <stageinfo>
+        <environment>
+	  <variable name="GNOME_PREFIX">&gnome-prefix;</variable>
+	  <variable name="PATH" mode="append">:&gnome-prefix;/bin</variable>
+          <variable name="PKG_CONFIG_PATH">/usr/X11R6/lib/pkgconfig:&gnome-prefix;/lib/pkgconfig</variable>
+	  <variable name="GNOME_LIBCONFIG_PATH">/usr/lib:&gnome-prefix;/lib</variable>
+        </environment>
+      </stageinfo>
+      <xi:include href="../../chapter30/gnome-pre-installation.xml" />
+      <xi:include href="../../chapter30/orbit2.xml" />
+      <xi:include href="../../chapter30/libbonobo.xml" />
+      <xi:include href="../../chapter30/gconf2.xml" />
+      <xi:include href="../../chapter30/desktopfileutils.xml" />
+      <xi:include href="../../chapter30/gnome-mime-data.xml" />
+      <xi:include href="../../chapter30/gnome-vfs2.xml" />
+      <xi:include href="../../chapter30/libgnome.xml" />
+      <xi:include href="../../chapter30/libgnomecanvas.xml" />
+      <xi:include href="../../chapter30/libbonoboui.xml" />
+      <xi:include href="../../chapter30/gnome-icon-theme.xml" />
+      <xi:include href="../../chapter30/gnome-keyring.xml" />
+      <xi:include href="../../chapter30/libgnomeui.xml" />
+      <xi:include href="../../chapter30/gtk-engines.xml" />
+      <xi:include href="../../chapter30/gnome-themes.xml" />
+      <xi:include href="../../chapter30/scrollkeeper.xml" />
+      <xi:include href="../../chapter30/gnome-desktop.xml" />
+      <xi:include href="../../chapter30/libwnck.xml" />
+      <xi:include href="../../chapter30/gnome-panel.xml" />
+      <xi:include href="../../chapter30/gnome-session.xml" />
+      <xi:include href="../../chapter30/vte.xml" />
+      <xi:include href="../../chapter30/gnome-terminal.xml" />
+      <xi:include href="../../chapter30/libgtop.xml" />
+      <xi:include href="../../chapter30/gail.xml" />
+      <xi:include href="../../chapter30/gnome-applets.xml" />
+      <xi:include href="../../chapter30/eel.xml" />
+      <xi:include href="../../chapter30/nautilus.xml" />
+      <xi:include href="../../chapter30/control-center.xml" />
+      <xi:include href="../../chapter30/gnome2-user-docs.xml" />
+      <xi:include href="../../chapter30/config-core-gnome.xml" />
+    </stage>
+    <stage name="Chapter 31 (GNOME Additional Packages)">
+      <stageinfo>
+        <environment>
+	  <variable name="GNOME_PREFIX">&gnome-prefix;</variable>
+	  <variable name="PATH" mode="append">:&gnome-prefix;/bin</variable>
+          <variable name="PKG_CONFIG_PATH">/usr/X11R6/lib/pkgconfig:&gnome-prefix;/lib/pkgconfig</variable>
+	  <variable name="GNOME_LIBCONFIG_PATH">/usr/lib:&gnome-prefix;/lib</variable>
+        </environment>
+      </stageinfo>
+      <xi:include href="../../chapter31/libgnomecups.xml" />
+      <xi:include href="../../chapter31/libgnomeprint.xml" />
+      <xi:include href="../../chapter31/libgnomeprintui.xml" />
+      <xi:include href="../../chapter31/gal.xml" />
+      <xi:include href="../../chapter31/gtkhtml.xml" />
+      <xi:include href="../../chapter31/libgtkhtml.xml" />
+      <xi:include href="../../chapter31/evolution-data-server.xml" />
+      <xi:include href="../../chapter31/gnome-doc-utils.xml" />
+      <xi:include href="../../chapter31/yelp.xml" />
+      <xi:include href="../../chapter31/bug-buddy.xml" />
+      <xi:include href="../../chapter31/gtksourceview.xml" />
+      <xi:include href="../../chapter31/gedit.xml" />
+      <xi:include href="../../chapter31/eog.xml" />
+      <xi:include href="../../chapter31/ggv.xml" />
+      <xi:include href="../../chapter31/file-roller.xml" />
+      <xi:include href="../../chapter31/gconf-editor.xml" />
+      <xi:include href="../../chapter31/gnome-utils.xml" />
+      <xi:include href="../../chapter31/gnome-system-monitor.xml" />
+      <xi:include href="../../chapter31/gnome-media.xml" />
+      <xi:include href="../../chapter31/nautilus-media.xml" />
+      <xi:include href="../../chapter31/gnome-netstatus.xml" />
+      <xi:include href="../../chapter31/gcalctool.xml" />
+      <xi:include href="../../chapter31/gpdf.xml" />
+      <xi:include href="../../chapter31/gucharmap.xml" />
+      <xi:include href="../../chapter31/nautilus-cd-burner.xml" />
+      <xi:include href="../../chapter31/zenity.xml" />
+      <xi:include href="../../chapter31/at-spi.xml" />
+      <xi:include href="../../chapter31/libgail-gnome.xml" />
+      <xi:include href="../../chapter31/java-access-bridge.xml" />
+      <xi:include href="../../chapter31/gnome-speech.xml" />
+      <xi:include href="../../chapter31/gnome-mag.xml" />
+      <xi:include href="../../chapter31/gnopernicus.xml" />
+      <xi:include href="../../chapter31/gok.xml" />
+      <xi:include href="../../chapter31/epiphany.xml" />
+      <xi:include href="../../chapter31/gnomemeeting.xml" />
+      <xi:include href="../../chapter31/gnome-games.xml" />
+      <xi:include href="../../chapter31/gdm.xml" />
+    </stage>
+</alfs>

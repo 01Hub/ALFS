@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch44.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+%files;
+
+]>
+<alfs>
+  <package name="docbook-xsl" version="&docbook-xsl-version;">
+    <packageinfo>
+      <requires>
+        <name>libxslt</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&docbook-xsl-md5;</digest>
+	<archive>&packages_dir;/&docbook-xsl-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&docbook-xsl-directory;</base>
+      </stageinfo>
+      <mkdir>
+	<name>/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;</name>
+      </mkdir>
+      <ownership user="root" group="root">
+	<option>recursive</option>
+	<name>.</name>
+      </ownership>
+      <copy>
+        <option>archive</option>
+        <option>force</option>
+	<source>INSTALL</source>
+        <source>VERSION</source>
+        <source>common</source>
+	<source>eclipse</source>
+        <source>extensions</source>
+        <source>fo</source>
+        <source>html</source>
+        <source>htmlhelp</source>
+        <source>images</source>
+        <source>javahelp</source>
+        <source>lib</source>
+        <source>manpages</source>
+        <source>params</source>
+        <source>profiling</source>
+        <source>template</source>
+        <source>xhtml</source>
+        <destination>/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;</destination>
+      </copy>
+      <mkdir>
+      	<option>parents</option>
+	<name>/usr/share/doc/xml</name>
+      </mkdir>
+      <copy>
+        <option>archive</option>
+        <option>force</option>
+        <source>doc/*</source>
+        <destination>/usr/share/doc/xml</destination>
+      </copy>
+      <execute command="sh INSTALL" base="/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;" />
+      <execute command="&blfs-config;/scripts/dircheck.sh" />
+      <execute command="xmlcatalog">
+        <param>--noout --add "rewriteSystem"</param>
+        <param>"http://docbook.sourceforge.net/release/xsl/&docbook-xsl-version;"</param>
+        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
+        <param>/etc/xml/catalog</param>
+      </execute>
+      <execute command="xmlcatalog">
+        <param>--noout --add "rewriteURI"</param>
+        <param>"http://docbook.sourceforge.net/release/xsl/&docbook-xsl-version;"</param>
+        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
+        <param>/etc/xml/catalog</param>
+      </execute>
+      <execute command="xmlcatalog">
+        <param>--noout --add "delegateSystem"</param>
+        <param>"http://docbook.sourceforge.net/release/xsl/"</param>
+        <param>"file:///etc/xml/docbook"</param>
+        <param>/etc/xml/catalog</param>
+      </execute>
+      <execute command="xmlcatalog">
+        <param>--noout --add "delegateURI"</param>
+        <param>"http://docbook.sourceforge.net/release/xsl/"</param>
+        <param>"file:///etc/xml/docbook"</param>
+        <param>/etc/xml/catalog</param>
+      </execute>
+      <execute command="xmlcatalog">
+        <param>--noout --add "rewriteSystem"</param>
+        <param>"http://docbook.sourceforge.net/release/xsl/1.65.1"</param>
+        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
+        <param>/etc/xml/catalog</param>
+      </execute>
+      <execute command="xmlcatalog">
+        <param>--noout --add "rewriteURI"</param>
+        <param>"http://docbook.sourceforge.net/release/xsl/1.65.1"</param>
+        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
+        <param>/etc/xml/catalog</param>
+      </execute>
+      <execute command="xmlcatalog">
+        <param>--noout --add "rewriteSystem"</param>
+        <param>"http://docbook.sourceforge.net/release/xsl/current"</param>
+        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
+        <param>/etc/xml/catalog</param>
+      </execute>
+      <execute command="xmlcatalog">
+        <param>--noout --add "rewriteURI"</param>
+        <param>"http://docbook.sourceforge.net/release/xsl/current"</param>
+        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
+        <param>/etc/xml/catalog</param>
+      </execute>
+      <textdump>
+      	<file>/etc/profile.d/xsl.sh</file>
+	<content>
+	  =# Set up Environment Variable for XSL Processing
+	  =export XML_CATALOG_FILES="/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;/catalog.xml \
+	  =  /etc/xml/catalog"
+	</content>
+      </textdump>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&docbook-xsl-directory;</remove>
+    </stage>
+  </package>
+</alfs>

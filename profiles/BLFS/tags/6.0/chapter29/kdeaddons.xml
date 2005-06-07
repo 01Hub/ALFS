@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch29.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="kdeaddons" version="&kdeaddons-version;">
+    <packageinfo>
+      <requires>
+        <name>kdebase</name>
+      </requires>
+      <utilizes>
+	<name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+        <name>libxml2</name>
+      </utilizes>
+      <utilizes>
+	<name>kdenetwork</name>
+      </utilizes>
+      <utilizes>
+	<name>kdemultimedia</name>
+      </utilizes>
+      <utilizes>
+	<name>kdepim</name>
+      </utilizes>
+      <utilizes>
+	<name>kdegames</name>
+      </utilizes>
+      <utilizes>
+        <name>db</name>
+      </utilizes>
+      <utilizes>
+        <name>xmms</name>
+      </utilizes>
+      <utilizes>
+        <name>sdl</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&kdeaddons-md5;</digest>
+	<archive>&packages_dir;/&kdeaddons-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&kdeaddons-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=&kde-prefix;</param>
+        <param>--disable-debug</param>
+        <param>--disable-dependency-tracking</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&kdeaddons-directory;</remove>
+    </stage>
+  </package>
+</alfs>

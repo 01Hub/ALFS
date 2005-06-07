@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch21.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="qpopper" version="&qpopper-version;">
+    <packageinfo>
+      <requires>
+        <name>&mta-impl;</name>
+      </requires>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>gdbm</name>
+      </utilizes>
+      <utilizes>
+	<name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&qpopper-md5;</digest>
+	<archive>&packages_dir;/&qpopper-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&qpopper-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+      <textdump mode="append">
+        <file>/etc/inetd.conf</file>
+        <content>=pop stream tcp nowait root /usr/sbin/popper popper</content>
+      </textdump>
+      <execute command="killall inetd || inetd" />
+      <textdump mode="append">
+        <file>/etc/syslog.conf</file>
+        <content>=local0.notice;local0.debug /var/log/POP.log</content>
+      </textdump>
+      <execute command="/etc/rc.d/init.d/sysklogd restart" />
+      <textdump mode="append">
+        <file>/etc/xinetd.conf</file>
+        <content>
+	  = service pop
+	  = {
+	  =   port = 110
+	  =   socket_type = stream
+	  =   protocol = tcp
+	  =   wait = no
+	  =   user = root
+	  =   server = /usr/sbin/popper
+	  = }
+	</content>
+      </textdump>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&qpopper-directory;</remove>
+    </stage>
+  </package>
+</alfs>

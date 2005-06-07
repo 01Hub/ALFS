@@ -1,0 +1,10 @@
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd" []>
+
+<alfs>
+  <stage name="Updating fontconfig for X11 fonts">
+    <execute command="sed -i -e '/^&lt;\/fontconfig&gt;/i\
+     &lt;dir&gt;/usr/X11R6/lib/X11/fonts/TTF&lt;/dir&gt;
+     &lt;dir&gt;/usr/X11R6/lib/X11/fonts/Type1&lt;/dir&gt;' /etc/fonts/local.conf" />
+    <execute command="fc-cache" />
+  </stage>
+</alfs>

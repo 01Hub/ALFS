@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch29.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="kdepim" version="&kdepim-version;">
+    <packageinfo>
+      <requires>
+        <name>kdebase</name>
+      </requires>
+      <utilizes>
+	<name>libjpeg</name>
+      </utilizes>
+      <utilizes>
+        <name>libxml2</name>
+      </utilizes>
+      <utilizes>
+	<name>gnupg</name>
+      </utilizes>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>pilot-link</name>
+      </utilizes>
+      <utilizes>
+	<name>gpgme</name>
+      </utilizes>
+      <utilizes>
+	<name>libmal</name>
+      </utilizes>
+      <utilizes>
+	<name>gnokii</name>
+      </utilizes>
+      <utilizes>
+	<name>graphviz</name>
+      </utilizes>
+      <utilizes>
+	<name>doxygen</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&kdepim-md5;</digest>
+	<archive>&packages_dir;/&kdepim-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&kdepim-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=&kde-prefix;</param>
+        <param>--disable-debug</param>
+        <param>--disable-dependency-tracking</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&kdepim-directory;</remove>
+    </stage>
+  </package>
+</alfs>
