@@ -21,6 +21,9 @@
       </requires>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&portmap-md5;</digest>
 	<archive>&packages_dir;/&portmap-package;</archive>
@@ -30,6 +33,7 @@
     &bootscripts-get;
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&portmap-directory;</base>
       </stageinfo>
       <patch>
@@ -43,11 +47,17 @@
         <param>-i &packages_dir;/&portmap-glibc-errno-fix-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&portmap-directory;</base>
       </stageinfo>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&portmap-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

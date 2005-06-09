@@ -27,6 +27,9 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&inetutils-md5;</digest>
 	<archive>&packages_dir;/&inetutils-package;</archive>
@@ -35,6 +38,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&inetutils-directory;</base>
       </stageinfo>
       <patch>
@@ -43,8 +47,9 @@
 	<param>-i &packages_dir;/&inetutils-kernel-header-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&inetutils-directory;</base>
       </stageinfo>
       <configure>
@@ -58,6 +63,11 @@
 	<param>--disable-syslogd</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&inetutils-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

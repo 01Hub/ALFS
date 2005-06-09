@@ -39,14 +39,18 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&lynx-md5;</digest>
 	<archive>&packages_dir;/&lynx-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&lynx-directory;</base>
       </stageinfo>
       <configure>
@@ -56,6 +60,11 @@
 	<param>--with-bzlib</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&lynx-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

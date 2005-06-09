@@ -13,6 +13,9 @@
 <alfs>
   <package name="tcpwrappers" version="&tcpwrappers-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&tcpwrappers-md5;</digest>
 	<archive>&packages_dir;/&tcpwrappers-package;</archive>
@@ -21,6 +24,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&tcpwrappers-directory;</base>
       </stageinfo>
       <patch>
@@ -29,8 +33,9 @@
         <param>-i &packages_dir;/&tcpwrappers-shared-libs-plus-plus-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&tcpwrappers-directory;</base>
       </stageinfo>
       <search_replace>
@@ -43,6 +48,11 @@
         <param>STYLE=-DPROCESS_OPTIONS</param>
         <param>linux</param>
       </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&tcpwrappers-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

@@ -47,15 +47,19 @@
       <name>adns</name>
     </utilizes>
   </packageinfo>
-  <stage name="Unpacking.">
+  <stage name="Unpacking">
+    <stageinfo>
+      <user>&build-user;</user>
+    </stageinfo>
     <unpack>
       <digest>&ethereal-md5;</digest>
       <archive>&packages_dir;/&ethereal-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>
   </stage>
-  <stage name="Installing.">
+  <stage name="Building">
     <stageinfo>
+      <user>&build-user;</user> 
       <base>&build_dir;/&ethereal-directory;</base>
     </stageinfo>
     <configure>
@@ -65,6 +69,11 @@
       <param>--enable-threads</param>
     </configure>
     <make />
+  </stage>
+  <stage name="Installing">
+    <stageinfo>
+      <base>&build_dir;/&ethereal-directory;</base>
+    </stageinfo>
     <make>
       <param>install</param>
     </make>

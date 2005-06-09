@@ -33,6 +33,9 @@
       </utilizes>
     </packageinfo>      
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&cvs-md5;</digest>
 	<archive>&packages_dir;/&cvs-package;</archive>
@@ -41,6 +44,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&cvs-directory;</base>
       </stageinfo>
       <patch>
@@ -49,14 +53,20 @@
 	<param>-i &packages_dir;/&cvs-zlib-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&cvs-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&cvs-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

@@ -72,6 +72,9 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&wvstreams-md5;</digest>
 	<archive>&packages_dir;/&wvstreams-package;</archive>
@@ -80,6 +83,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&wvstreams-directory;</base>
       </stageinfo>
       <patch>
@@ -89,8 +93,9 @@
       </patch>
       <execute command="autoreconf -f" />
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&wvstreams-directory;</base>
       </stageinfo>
       <configure>
@@ -99,6 +104,11 @@
 	<param>--localstatedir=/var</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&wvstreams-directory;</base>
+      </stageinfo>
       <make>
 	<param>install</param>
       </make>
