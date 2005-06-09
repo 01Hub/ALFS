@@ -30,14 +30,18 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&doxygen-md5;</digest>
 	<archive>&packages_dir;/&doxygen-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&doxygen-directory;</base>
       </stageinfo>
       <remove>src/unistd.h</remove>
@@ -46,6 +50,11 @@
         <param>--docdir /usr/share/doc</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&doxygen-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

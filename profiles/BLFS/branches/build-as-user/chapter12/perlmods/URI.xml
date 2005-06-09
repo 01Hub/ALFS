@@ -11,34 +11,43 @@
 
 ]>
 <alfs>
-<package name="URI" version="&URI-version;">
-  <packageinfo>
-    <requires>
-      <name>Business-ISBN</name>
-    </requires>
-  </packageinfo>
-  <stage name="Unpacking.">
-    <unpack>
-      <digest>&URI-md5;</digest>
-      <archive>&packages_dir;/&URI-package;</archive>
-      <destination>&build_dir;</destination>
-    </unpack>
-  </stage>
-  <stage name="Installing.">
-    <stageinfo>
-      <base>&build_dir;/&URI-directory;</base>
-    </stageinfo>
-    <execute command="perl Makefile.PL" />
-    <make />
-    <make>
-      <param>test</param>
-    </make>
-    <make>
-      <param>install</param>
-    </make>
-  </stage>
-  <stage name="Cleanup.">
-    <remove>&build_dir;/&URI-directory;</remove>
-  </stage>
-</package>
+  <package name="URI" version="&URI-version;">
+    <packageinfo>
+      <requires>
+        <name>Business-ISBN</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
+      <unpack>
+        <digest>&URI-md5;</digest>
+        <archive>&packages_dir;/&URI-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Building">
+      <stageinfo>
+	<user>&build-user;</user>
+        <base>&build_dir;/&URI-directory;</base>
+      </stageinfo>
+      <execute command="perl Makefile.PL" />
+      <make />
+      <make>
+        <param>test</param>
+      </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&URI-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&URI-directory;</remove>
+    </stage>
+  </package>
 </alfs>

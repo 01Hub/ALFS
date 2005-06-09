@@ -11,29 +11,38 @@
 
 ]>
 <alfs>
-<package name="Compress-Zlib" version="&Compress-Zlib-version;">
-  <stage name="Unpacking.">
-    <unpack>
-      <digest>&Compress-Zlib-md5;</digest>
-      <archive>&packages_dir;/&Compress-Zlib-package;</archive>
-      <destination>&build_dir;</destination>
-    </unpack>
-  </stage>
-  <stage name="Installing.">
-    <stageinfo>
-      <base>&build_dir;/&Compress-Zlib-directory;</base>
-    </stageinfo>
-    <execute command="perl Makefile.PL" />
-    <make />
-    <make>
-      <param>test</param>
-    </make>
-    <make>
-      <param>install</param>
-    </make>
-  </stage>
-  <stage name="Cleanup.">
-    <remove>&build_dir;/&Compress-Zlib-directory;</remove>
-  </stage>
-</package>
+  <package name="Compress-Zlib" version="&Compress-Zlib-version;">
+    <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
+      <unpack>
+        <digest>&Compress-Zlib-md5;</digest>
+        <archive>&packages_dir;/&Compress-Zlib-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Building">
+      <stageinfo>
+	<user>&build-user;</user>
+        <base>&build_dir;/&Compress-Zlib-directory;</base>
+      </stageinfo>
+      <execute command="perl Makefile.PL" />
+      <make />
+      <make>
+        <param>test</param>
+      </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&Compress-Zlib-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&Compress-Zlib-directory;</remove>
+    </stage>
+  </package>
 </alfs>

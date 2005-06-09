@@ -11,29 +11,38 @@
 
 ]>
 <alfs>
-<package name="Astro-FITS-Header" version="&Astro-FITS-Header-version;">
-  <stage name="Unpacking.">
-    <unpack>
-      <digest>&Astro-FITS-Header-md5;</digest>
-      <archive>&packages_dir;/&Astro-FITS-Header-package;</archive>
-      <destination>&build_dir;</destination>
-    </unpack>
-  </stage>
-  <stage name="Installing.">
-    <stageinfo>
-      <base>&build_dir;/&Astro-FITS-Header-directory;</base>
-    </stageinfo>
-    <execute command="perl Makefile.PL" />
-    <make />
-    <make>
-      <param>test</param>
-    </make>
-    <make>
-      <param>install</param>
-    </make>
-  </stage>
-  <stage name="Cleanup.">
-    <remove>&build_dir;/&Astro-FITS-Header-directory;</remove>
-  </stage>
-</package>
+  <package name="Astro-FITS-Header" version="&Astro-FITS-Header-version;">
+    <stage name="Unpacking">
+      <stageinfo>
+        <user>&build-user;</user>
+      </stageinfo>
+      <unpack>
+        <digest>&Astro-FITS-Header-md5;</digest>
+        <archive>&packages_dir;/&Astro-FITS-Header-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Building">
+      <stageinfo>
+        <user>&build-user;</user>
+        <base>&build_dir;/&Astro-FITS-Header-directory;</base>
+      </stageinfo>
+      <execute command="perl Makefile.PL" />
+      <make />
+      <make>
+        <param>test</param>
+      </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&Astro-FITS-Header-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&Astro-FITS-Header-directory;</remove>
+    </stage>
+  </package>
 </alfs>

@@ -32,6 +32,9 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&fcron-md5;</digest>
 	<archive>&packages_dir;/&fcron-package;</archive>
@@ -52,10 +55,7 @@
         <param>fcron</param>
       </execute>
     </stage>
-    <stage name="Installing">
-      <stageinfo>
-        <base>&build_dir;/&fcron-directory;</base>
-      </stageinfo>
+    <stage name="Pre-Building Configuration">
       <textdump mode="append">
         <file>/etc/syslog.conf</file>
         <content>
@@ -69,11 +69,22 @@
       <execute command="/etc/rc.d/init.d/sysklogd">
         <param>reload</param>
       </execute>
+    </stage>
+    <stage name="Building">
+      <stageinfo>
+	<user>&build-user;</user>
+        <base>&build_dir;/&fcron-directory;</base>
+      </stageinfo>
       <configure>
         <param>--without-sendmail</param>
         <param>--with-answer-all=no</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&fcron-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

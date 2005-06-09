@@ -11,34 +11,43 @@
 
 ]>
 <alfs>
-<package name="Inline" version="&Inline-version;">
-  <packageinfo>
-    <requires>
-      <name>Parse-RecDescent</name>
-    </requires>
-  </packageinfo>
-  <stage name="Unpacking.">
-    <unpack>
-      <digest>&Inline-md5;</digest>
-      <archive>&packages_dir;/&Inline-package;</archive>
-      <destination>&build_dir;</destination>
-    </unpack>
-  </stage>
-  <stage name="Installing.">
-    <stageinfo>
-      <base>&build_dir;/&Inline-directory;</base>
-    </stageinfo>
-    <execute command="yes 'y' | perl Makefile.PL" />
-    <make />
-    <make>
-      <param>test</param>
-    </make>
-    <make>
-      <param>install</param>
-    </make>
-  </stage>
-  <stage name="Cleanup.">
-    <remove>&build_dir;/&Inline-directory;</remove>
-  </stage>
-</package>
+  <package name="Inline" version="&Inline-version;">
+    <packageinfo>
+      <requires>
+        <name>Parse-RecDescent</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
+      <unpack>
+        <digest>&Inline-md5;</digest>
+        <archive>&packages_dir;/&Inline-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Building">
+      <stageinfo>
+	<user>&build-user;</user>
+        <base>&build_dir;/&Inline-directory;</base>
+      </stageinfo>
+      <execute command="yes 'y' | perl Makefile.PL" />
+      <make />
+      <make>
+        <param>test</param>
+      </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&Inline-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&Inline-directory;</remove>
+    </stage>
+  </package>
 </alfs>

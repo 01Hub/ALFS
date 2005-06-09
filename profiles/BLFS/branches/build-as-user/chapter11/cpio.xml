@@ -13,14 +13,18 @@
 <alfs>
   <package name="cpio" version="&cpio-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&cpio-md5;</digest>
 	<archive>&packages_dir;/&cpio-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&cpio-directory;</base>
       </stageinfo>
       <search_replace>
@@ -36,6 +40,11 @@
 	<param>--with-rmt=/usr/sbin/rmt</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&cpio-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

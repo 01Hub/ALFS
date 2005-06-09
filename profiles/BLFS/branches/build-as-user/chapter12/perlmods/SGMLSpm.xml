@@ -11,51 +11,60 @@
 
 ]>
 <alfs>
-<package name="SGMLSpm" version="&SGMLSpm-version;">
-  <stage name="Unpacking.">
-    <unpack>
-      <digest>&SGMLSpm-md5;</digest>
-      <archive>&packages_dir;/&SGMLSpm-package;</archive>
-      <destination>&build_dir;</destination>
-    </unpack>
-  </stage>
-  <stage name="Installing.">
-    <stageinfo>
-      <base>&build_dir;/&SGMLSpm-directory;</base>
-    </stageinfo>
-    <search_replace>
-    	<file>Makefile</file>
-	<find>/usr/local/bin</find>
-	<replace>/usr/bin</replace>
-    </search_replace>
-    <search_replace>
-	<file>Makefile</file>
-	<find>/usr/local/lib/perl5</find>
-	<replace>/usr/lib/perl5/site_perl/&perl-version;</replace>
-    </search_replace>
-    <search_replace>
-	<file>Makefile</file>
-	<find>/usr/local/lib/www/docs</find>
-	<replace>/usr/share/doc/perl5</replace>
-    </search_replace>
-    <make>
-      <param>install</param>
-    </make>
-    <mkdir>
-      <option>parents</option>
-      <name>/usr/share/doc/perl5</name>
-    </mkdir>
-    <make>
-      <param>install_html</param>
-    </make>
-    <remove>/usr/share/doc/perl5/SGMLSpm/sample.pl</remove>
-    <copy>
-      <source>DOC/sample.pl</source>
-      <destination>/usr/share/doc/perl5/SGMLSpm</destination>
-    </copy>
-  </stage>
-  <stage name="Cleanup.">
-    <remove>&build_dir;/&SGMLSpm-directory;</remove>
-  </stage>
-</package>
+  <package name="SGMLSpm" version="&SGMLSpm-version;">
+    <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
+      <unpack>
+        <digest>&SGMLSpm-md5;</digest>
+        <archive>&packages_dir;/&SGMLSpm-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Building">
+      <stageinfo>
+	<user>&build-user;</user>
+        <base>&build_dir;/&SGMLSpm-directory;</base>
+      </stageinfo>
+      <search_replace>
+        <file>Makefile</file>
+        <find>/usr/local/bin</find>
+        <replace>/usr/bin</replace>
+      </search_replace>
+      <search_replace>
+        <file>Makefile</file>
+        <find>/usr/local/lib/perl5</find>
+        <replace>/usr/lib/perl5/site_perl/&perl-version;</replace>
+      </search_replace>
+      <search_replace>
+        <file>Makefile</file>
+        <find>/usr/local/lib/www/docs</find>
+        <replace>/usr/share/doc/perl5</replace>
+      </search_replace>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&SGMLSpm-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install</param>
+      </make>
+      <mkdir>
+        <option>parents</option>
+        <name>/usr/share/doc/perl5</name>
+      </mkdir>
+      <make>
+        <param>install_html</param>
+      </make>
+      <remove>/usr/share/doc/perl5/SGMLSpm/sample.pl</remove>
+      <copy>
+        <source>DOC/sample.pl</source>
+        <destination>/usr/share/doc/perl5/SGMLSpm</destination>
+      </copy>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&SGMLSpm-directory;</remove>
+    </stage>
+  </package>
 </alfs>

@@ -18,6 +18,9 @@
 <alfs>
   <package name="dhclient" version="&dhclient-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&dhclient-md5;</digest>
 	<archive>&packages_dir;/&dhclient-package;</archive>
@@ -25,8 +28,9 @@
       </unpack>
     </stage>
     &bootscripts-get;
-    <stage name="Patching.">
+    <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&dhclient-directory;</base>
       </stageinfo>
       <patch>
@@ -35,12 +39,17 @@
 	<param>-i &packages_dir;/&dhclient-iproute2-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
         <base>&build_dir;/&dhclient-directory;</base>
       </stageinfo>
       <configure />
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&dhclient-directory;</base>
+      </stageinfo>
       <make>
         <param>LIBDIR=/usr/lib</param>
         <param>INCDIR=/usr/include</param>

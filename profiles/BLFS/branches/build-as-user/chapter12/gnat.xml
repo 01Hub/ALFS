@@ -18,14 +18,18 @@
       </requires>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&gnat-md5;</digest>
 	<archive>&packages_dir;/&gnat-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&gnat-directory;</base>
       </stageinfo>
       <textdump base="/tmp">
@@ -38,6 +42,11 @@
 	    </content>
       </textdump>
       <execute command="./doconfig &lt; /tmp/gnat_reply" />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&gnat-directory;</base>
+      </stageinfo>
       <execute command="./doinstall" />
     </stage>
     <stage name="Cleanup">

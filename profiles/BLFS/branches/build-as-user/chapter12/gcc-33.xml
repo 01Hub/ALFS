@@ -18,6 +18,9 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&gcc-33-md5;</digest>
 	<archive>&packages_dir;/&gcc-33-package;</archive>
@@ -29,6 +32,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&gcc-33-directory;</base>
       </stageinfo>
       <patch>
@@ -42,8 +46,9 @@
 	<param>-i &packages_dir;/&gcc-33-linkonce-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/gcc-build</base>
       </stageinfo>
       <configure command="../&gcc-33-directory;/configure">
@@ -56,6 +61,11 @@
       <make>
         <param>bootstrap</param>
       </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/gcc-build</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

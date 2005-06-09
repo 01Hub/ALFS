@@ -19,7 +19,10 @@
       <name>fcron</name>
     </utilizes>
   </packageinfo>
-  <stage name="Unpacking.">
+  <stage name="Unpacking">
+    <stageinfo>
+      <user>&build-user;</user>
+    </stageinfo>
     <unpack>
       <digest>&sysstat-md5;</digest>
       <archive>&packages_dir;/&sysstat-package;</archive>
@@ -27,14 +30,20 @@
     </unpack>
   </stage>
   &bootscripts-get;
-  <stage name="Installing.">
+  <stage name="Building">
     <stageinfo>
+      <user>&build-user;</user>
       <base>&build_dir;/&sysstat-directory;</base>
     </stageinfo>
     <make>
       <param>config</param>
     </make>
     <make />
+  </stage>
+  <stage name="Installing">
+    <stageinfo>
+      <base>&build_dir;/&sysstat-directory;</base>
+    </stageinfo>
     <make>
       <param>install</param>
     </make>
@@ -48,7 +57,7 @@
     </make>
   </stage>
   &bootscripts-clean;
-  <stage name="Cleanup.">
+  <stage name="Cleanup">
     <remove>&build_dir;/&sysstat-directory;</remove>
   </stage>
 </package>

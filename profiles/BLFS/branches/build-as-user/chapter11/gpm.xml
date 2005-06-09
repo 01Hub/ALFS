@@ -18,6 +18,9 @@
 <alfs>
   <package name="gpm" version="&gpm-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&gpm-md5;</digest>
 	<archive>&packages_dir;/&gpm-package;</archive>
@@ -27,6 +30,7 @@
     &bootscripts-get;
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&gpm-directory;</base>
       </stageinfo>
       <patch>
@@ -40,8 +44,9 @@
 	<param>-i &packages_dir;/&gpm-silent-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&gpm-directory;</base>
       </stageinfo>
       <configure>
@@ -50,6 +55,11 @@
 	<param>--sysconfdir=/etc</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&gpm-directory;</base>
+      </stageinfo>
       <make>
 	<param>install</param>
       </make>
