@@ -14,6 +14,7 @@
   <package name="j2sdk-binary" version="&j2sdk-version;_&j2sdk-suffix;">
     <stage name="Unpacking">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;</base>
       </stageinfo>
       <remove>&build_dir;/java-build</remove>
@@ -94,6 +95,9 @@
       </requires>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&j2sdk-src-md5;</digest>
 	<archive>&packages_dir;/&j2sdk-src-package;</archive>
@@ -112,6 +116,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/java-build</base>
       </stageinfo>
       <patch>
@@ -150,8 +155,9 @@
         <param>-i &packages_dir;/&j2sdk-static-cxx-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <environment>
           <variable name="JAVA_HOME">/opt/j2sdk/j2sdk-precompiled-&j2sdk-version;</variable>
 	  <variable name="PATH" mode="prepend">/opt/gcc-&gcc-33-version;/bin:</variable>
@@ -173,6 +179,11 @@
       </stageinfo>
       <make base="&build_dir;/java-build/motif/lib/Xm" />
       <make base="&build_dir;/java-build/control/make" />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/java-build</base>
+      </stageinfo>
       <copy base="&build_dir;/java-build/control/build/linux-i586">
         <option>archive</option>
         <source>j2sdk-image</source>

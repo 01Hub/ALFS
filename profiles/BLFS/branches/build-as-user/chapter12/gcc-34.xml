@@ -21,6 +21,9 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&gcc-34-md5;</digest>
 	<archive>&packages_dir;/&gcc-34-package;</archive>
@@ -32,6 +35,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&gcc-34-directory;</base>
       </stageinfo>
       <patch>
@@ -50,8 +54,9 @@
         <replace></replace>
       </search_replace>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <environment>
           <variable name="CFLAGS" />
           <variable name="CXXFLAGS" />
@@ -82,6 +87,11 @@
       <make>
         <param>-k check</param>
       </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/gcc-build;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

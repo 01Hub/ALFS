@@ -11,29 +11,38 @@
 
 ]>
 <alfs>
-<package name="Digest-SHA1" version="&Digest-SHA1-version;">
-  <stage name="Unpacking.">
-    <unpack>
-      <digest>&Digest-SHA1-md5;</digest>
-      <archive>&packages_dir;/&Digest-SHA1-package;</archive>
-      <destination>&build_dir;</destination>
-    </unpack>
-  </stage>
-  <stage name="Installing.">
-    <stageinfo>
-      <base>&build_dir;/&Digest-SHA1-directory;</base>
-    </stageinfo>
-    <execute command="perl Makefile.PL" />
-    <make />
-    <make>
-      <param>test</param>
-    </make>
-    <make>
-      <param>install</param>
-    </make>
-  </stage>
-  <stage name="Cleanup.">
-    <remove>&build_dir;/&Digest-SHA1-directory;</remove>
-  </stage>
-</package>
+  <package name="Digest-SHA1" version="&Digest-SHA1-version;">
+    <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
+      <unpack>
+        <digest>&Digest-SHA1-md5;</digest>
+        <archive>&packages_dir;/&Digest-SHA1-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Building">
+      <stageinfo>
+	<user>&build-user;</user>
+        <base>&build_dir;/&Digest-SHA1-directory;</base>
+      </stageinfo>
+      <execute command="perl Makefile.PL" />
+      <make />
+      <make>
+        <param>test</param>
+      </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&Digest-SHA1-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&Digest-SHA1-directory;</remove>
+    </stage>
+  </package>
 </alfs>

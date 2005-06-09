@@ -11,37 +11,46 @@
 
 ]>
 <alfs>
-<package name="Perl-Tk" version="&Perl-Tk-version;">
-  <packageinfo>
-    <requires>
-      <name>tk</name>
-    </requires>
-    <requires>
-      <name>libjpeg</name>
-    </requires>
-  </packageinfo>
-  <stage name="Unpacking.">
-    <unpack>
-      <digest>&Perl-Tk-md5;</digest>
-      <archive>&packages_dir;/&Perl-Tk-package;</archive>
-      <destination>&build_dir;</destination>
-    </unpack>
-  </stage>
-  <stage name="Installing.">
-    <stageinfo>
-      <base>&build_dir;/&Perl-Tk-directory;</base>
-    </stageinfo>
-    <execute command="perl Makefile.PL" />
-    <make />
-    <make>
-      <param>test</param>
-    </make>
-    <make>
-      <param>install</param>
-    </make>
-  </stage>
-  <stage name="Cleanup.">
-    <remove>&build_dir;/&Perl-Tk-directory;</remove>
-  </stage>
-</package>
+  <package name="Perl-Tk" version="&Perl-Tk-version;">
+    <packageinfo>
+      <requires>
+        <name>tk</name>
+      </requires>
+      <requires>
+        <name>libjpeg</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
+      <unpack>
+        <digest>&Perl-Tk-md5;</digest>
+        <archive>&packages_dir;/&Perl-Tk-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Building">
+      <stageinfo>
+	<user>&build-user;</user>
+        <base>&build_dir;/&Perl-Tk-directory;</base>
+      </stageinfo>
+      <execute command="perl Makefile.PL" />
+      <make />
+      <make>
+        <param>test</param>
+      </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&Perl-Tk-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&Perl-Tk-directory;</remove>
+    </stage>
+  </package>
 </alfs>

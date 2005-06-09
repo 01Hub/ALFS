@@ -11,37 +11,46 @@
 
 ]>
 <alfs>
-<package name="Business-ISBN-Data" version="&Business-ISBN-Data-version;">
-  <packageinfo>
-    <requires>
-      <name>Test-Pod</name>
-    </requires>
-    <requires>
-      <name>Test-Prereq</name>
-    </requires>
-  </packageinfo>
-  <stage name="Unpacking.">
-    <unpack>
-      <digest>&Business-ISBN-Data-md5;</digest>
-      <archive>&packages_dir;/&Business-ISBN-Data-package;</archive>
-      <destination>&build_dir;</destination>
-    </unpack>
-  </stage>
-  <stage name="Installing.">
-    <stageinfo>
-      <base>&build_dir;/&Business-ISBN-Data-directory;</base>
-    </stageinfo>
-    <execute command="perl Makefile.PL" />
-    <make />
-    <make>
-      <param>test</param>
-    </make>
-    <make>
-      <param>install</param>
-    </make>
-  </stage>
-  <stage name="Cleanup.">
-    <remove>&build_dir;/&Business-ISBN-Data-directory;</remove>
-  </stage>
-</package>
+  <package name="Business-ISBN-Data" version="&Business-ISBN-Data-version;">
+    <packageinfo>
+      <requires>
+        <name>Test-Pod</name>
+      </requires>
+      <requires>
+        <name>Test-Prereq</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
+      <unpack>
+        <digest>&Business-ISBN-Data-md5;</digest>
+        <archive>&packages_dir;/&Business-ISBN-Data-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Building">
+      <stageinfo>
+	<user>&build-user;</user>
+        <base>&build_dir;/&Business-ISBN-Data-directory;</base>
+      </stageinfo>
+      <execute command="perl Makefile.PL" />
+      <make />
+      <make>
+        <param>test</param>
+      </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&Business-ISBN-Data-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&Business-ISBN-Data-directory;</remove>
+    </stage>
+  </package>
 </alfs>

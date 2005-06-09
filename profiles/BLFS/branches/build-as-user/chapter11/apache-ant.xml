@@ -17,15 +17,19 @@
       <name>&j2sdk;</name>
     </requires>
   </packageinfo>
-  <stage name="Unpacking.">
+  <stage name="Unpacking">
+    <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
     <unpack>
       <digest>&apache-ant-md5;</digest>
       <archive>&packages_dir;/&apache-ant-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>
   </stage>
-  <stage name="Patching.">
+  <stage name="Patching">
     <stageinfo>
+      <user>&build-user;</user>
       <base>&build_dir;/&apache-ant-directory;</base>
     </stageinfo>
     <patch>
@@ -34,7 +38,7 @@
       <param>-i &packages_dir;/&apache-ant-blfs-install-patch;</param>
     </patch>
   </stage>
-  <stage name="Installing.">
+  <stage name="Installing">
     <stageinfo>
       <base>&build_dir;/&apache-ant-directory;</base>
     </stageinfo>
@@ -53,7 +57,7 @@
       <name>/opt/ant</name>
     </link>
   </stage>
-  <stage name="Cleanup.">
+  <stage name="Cleanup">
     <remove>&build_dir;/&apache-ant-directory;</remove>
   </stage>
 </package>

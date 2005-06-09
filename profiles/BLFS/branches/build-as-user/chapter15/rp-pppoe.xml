@@ -25,7 +25,10 @@
 	<name>net-tools</name>
       </requires>
     </packageinfo>
-    <stage name="Unpacking.">
+    <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&rp-pppoe-md5;</digest>
 	<archive>&packages_dir;/&rp-pppoe-package;</archive>
@@ -33,12 +36,18 @@
       </unpack>
     </stage>
     &bootscripts-get;
-    <stage name="Installing.">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&rp-pppoe-directory;/src</base>
       </stageinfo>
       <configure />
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&rp-pppoe-directory;/src</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>
@@ -58,7 +67,7 @@
       </copy>
     </stage>
     &bootscripts-clean;
-    <stage name="Cleanup.">
+    <stage name="Cleanup">
       <remove>&build_dir;/&rp-pppoe-directory;</remove>
     </stage>
   </package>

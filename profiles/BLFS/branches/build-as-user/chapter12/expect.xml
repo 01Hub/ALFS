@@ -21,6 +21,9 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&expect-md5;</digest>
 	<archive>&packages_dir;/&expect-package;</archive>
@@ -29,6 +32,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&expect-directory;</base>
       </stageinfo>
       <patch>
@@ -37,8 +41,9 @@
         <param>-i &packages_dir;/&expect-spawn-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&expect-directory;</base>
       </stageinfo>
       <configure>
@@ -48,6 +53,11 @@
         <param>--enable-shared</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&expect-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

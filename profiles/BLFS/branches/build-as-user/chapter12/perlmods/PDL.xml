@@ -11,46 +11,55 @@
 
 ]>
 <alfs>
-<package name="PDL" version="&PDL-version;">
-  <packageinfo>
-    <utilizes>
-      <name>Filter</name>
-    </utilizes>
-    <utilizes>
-      <name>Inline</name>
-    </utilizes>
-    <utilizes>
-      <name>Term-Readline-Gnu</name>
-    </utilizes>
-    <utilizes>
-      <name>ExtUtils-F77</name>
-    </utilizes>
-    <utilizes>
-      <name>Astro-FITS-Header</name>
-    </utilizes>
-  </packageinfo>
-  <stage name="Unpacking.">
-    <unpack>
-      <digest>&PDL-md5;</digest>
-      <archive>&packages_dir;/&PDL-package;</archive>
-      <destination>&build_dir;</destination>
-    </unpack>
-  </stage>
-  <stage name="Installing.">
-    <stageinfo>
-      <base>&build_dir;/&PDL-directory;</base>
-    </stageinfo>
-    <execute command="perl Makefile.PL" />
-    <make />
-    <make>
-      <param>test</param>
-    </make>
-    <make>
-      <param>install</param>
-    </make>
-  </stage>
-  <stage name="Cleanup.">
-    <remove>&build_dir;/&PDL-directory;</remove>
-  </stage>
-</package>
+  <package name="PDL" version="&PDL-version;">
+    <packageinfo>
+      <utilizes>
+        <name>Filter</name>
+      </utilizes>
+      <utilizes>
+        <name>Inline</name>
+      </utilizes>
+      <utilizes>
+        <name>Term-Readline-Gnu</name>
+      </utilizes>
+      <utilizes>
+        <name>ExtUtils-F77</name>
+      </utilizes>
+      <utilizes>
+        <name>Astro-FITS-Header</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
+      <unpack>
+        <digest>&PDL-md5;</digest>
+        <archive>&packages_dir;/&PDL-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Building">
+      <stageinfo>
+	<user>&build-user;</user>
+        <base>&build_dir;/&PDL-directory;</base>
+      </stageinfo>
+      <execute command="perl Makefile.PL" />
+      <make />
+      <make>
+        <param>test</param>
+      </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&PDL-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&PDL-directory;</remove>
+    </stage>
+  </package>
 </alfs>

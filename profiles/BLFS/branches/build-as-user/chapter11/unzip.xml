@@ -13,14 +13,18 @@
 <alfs>
   <package name="unzip" version="&unzip-version;">
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&unzip-md5;</digest>
 	<archive>&packages_dir;/&unzip-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&unzip-directory;</base>
       </stageinfo>
       <patch>
@@ -39,8 +43,9 @@
         <param>-i &packages_dir;/&unzip-dont-make-noise-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&unzip-directory;</base>
       </stageinfo>
       <copy>
@@ -57,6 +62,11 @@
         <param>LOCAL_UNZIP=-DUSE_UNSHRINK</param>
         <param>linux_shlibz</param>
       </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&unzip-directory;</base>
+      </stageinfo>
       <make>
         <param>prefix=/usr</param>
         <param>LOCAL_UNZIP=-DUSE_UNSHRINK</param>

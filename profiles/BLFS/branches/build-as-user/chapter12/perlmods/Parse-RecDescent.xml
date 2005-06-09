@@ -11,29 +11,38 @@
 
 ]>
 <alfs>
-<package name="Parse-RecDescent" version="&Parse-RecDescent-version;">
-  <stage name="Unpacking.">
-    <unpack>
-      <digest>&Parse-RecDescent-md5;</digest>
-      <archive>&packages_dir;/&Parse-RecDescent-package;</archive>
-      <destination>&build_dir;</destination>
-    </unpack>
-  </stage>
-  <stage name="Installing.">
-    <stageinfo>
-      <base>&build_dir;/&Parse-RecDescent-directory;</base>
-    </stageinfo>
-    <execute command="perl Makefile.PL" />
-    <make />
-    <make>
-      <param>test</param>
-    </make>
-    <make>
-      <param>install</param>
-    </make>
-  </stage>
-  <stage name="Cleanup.">
-    <remove>&build_dir;/&Parse-RecDescent-directory;</remove>
-  </stage>
-</package>
+  <package name="Parse-RecDescent" version="&Parse-RecDescent-version;">
+    <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
+      <unpack>
+        <digest>&Parse-RecDescent-md5;</digest>
+        <archive>&packages_dir;/&Parse-RecDescent-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Building">
+      <stageinfo>
+	<user>&build-user;</user>
+        <base>&build_dir;/&Parse-RecDescent-directory;</base>
+      </stageinfo>
+      <execute command="perl Makefile.PL" />
+      <make />
+      <make>
+        <param>test</param>
+      </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&Parse-RecDescent-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&Parse-RecDescent-directory;</remove>
+    </stage>
+  </package>
 </alfs>

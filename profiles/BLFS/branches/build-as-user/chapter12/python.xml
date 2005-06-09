@@ -27,6 +27,9 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&python-md5;</digest>
 	<archive>&packages_dir;/&python-package;</archive>
@@ -35,6 +38,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
 	<base>&build_dir;/&python-directory;</base>
       </stageinfo>
       <!-- This is only needed when db is installed. Maybe we could use conditional execution here...
@@ -55,8 +59,9 @@
         <param>-i &packages_dir;/&python-gdbm-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&python-directory;</base>
       </stageinfo>
       <configure>
@@ -64,6 +69,11 @@
         <param>--enable-shared</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&python-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>
