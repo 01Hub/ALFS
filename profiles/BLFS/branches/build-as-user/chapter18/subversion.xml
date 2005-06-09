@@ -65,14 +65,17 @@
       <name>xinetd</name>
     </utilizes>
   </packageinfo>
-  <stage name="Unpacking.">
+  <stage name="Unpacking">
+    <stageinfo>
+      <user>&build-user;</user>
+    </stageinfo>
     <unpack>
       <digest>&subversion-md5;</digest>
       <archive>&packages_dir;/&subversion-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>
   </stage>
-  <stage name="Installing.">
+  <stage name="Building">
     <stageinfo>
       <base>&build_dir;/&subversion-directory;</base>
     </stageinfo>
@@ -80,6 +83,11 @@
       <param>--prefix=/usr</param>
     </configure>
     <make />
+  </stage>
+  <stage name="Installing">
+    <stageinfo>
+      <base>&build_dir;/&subversion-directory;</base>
+    </stageinfo>
     <make>
       <param>install</param>
     </make>
@@ -96,7 +104,7 @@
       <destination>/usr/share/doc/subversion-&subversion-version;</destination>
     </copy>
   </stage>
-  <stage name="Cleanup.">
+  <stage name="Cleanup">
     <remove>&build_dir;/&subversion-directory;</remove>
   </stage>
 </package>

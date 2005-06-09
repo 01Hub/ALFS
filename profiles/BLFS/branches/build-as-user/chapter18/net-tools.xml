@@ -12,15 +12,19 @@
 ]>
 <alfs>
 <package name="net-tools" version="&net-tools-version;">
-  <stage name="Unpacking.">
+  <stage name="Unpacking">
+    <stageinfo>
+      <user>&build-user;</user>
+    </stageinfo>
     <unpack>
       <digest>&net-tools-md5;</digest>
       <archive>&packages_dir;/&net-tools-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>
   </stage>
-  <stage name="Patching.">
+  <stage name="Patching">
     <stageinfo>
+      <user>&build-user;</user>
       <base>&build_dir;/&net-tools-directory;</base>
     </stageinfo>
     <patch>
@@ -39,8 +43,9 @@
       <param>-i &packages_dir;/&net-tools-mii-ioctl-patch;</param>
     </patch>
   </stage>
-  <stage name="Installing.">
+  <stage name="Building">
     <stageinfo>
+      <user>&build-user;</user>
       <base>&build_dir;/&net-tools-directory;</base>
     </stageinfo>
     <make>
@@ -68,11 +73,16 @@
       <replace>HAVE_MII=1</replace>
     </search_replace>   
     <make />
+  </stage>
+  <stage name="Installing">
+    <stageinfo>
+      <base>&build_dir;/&net-tools-directory;</base>
+    </stageinfo>
     <make>
       <param>update</param>
     </make>
   </stage>
-  <stage name="Cleanup.">
+  <stage name="Cleanup">
     <remove>&build_dir;/&net-tools-directory;</remove>
   </stage>
 </package>

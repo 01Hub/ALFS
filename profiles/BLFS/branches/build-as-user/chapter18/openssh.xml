@@ -39,6 +39,9 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&openssh-md5;</digest>
 	<archive>&packages_dir;/&openssh-package;</archive>
@@ -47,6 +50,7 @@
     </stage>
     <stage name="Patching">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&openssh-directory;</base>
       </stageinfo>
       <search_replace>
@@ -55,8 +59,9 @@
         <replace>/usr/lib/libcrypto.a</replace>
       </search_replace>
     </stage>
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&openssh-directory;</base>
       </stageinfo>
       <configure>
@@ -66,6 +71,11 @@
         <param>--with-md5-passwords</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&openssh-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

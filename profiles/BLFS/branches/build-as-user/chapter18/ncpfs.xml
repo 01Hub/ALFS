@@ -26,6 +26,9 @@
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&ncpfs-md5;</digest>
 	<archive>&packages_dir;/&ncpfs-package;</archive>
@@ -33,7 +36,7 @@
       </unpack>
     </stage>
     &bootscripts-get;
-    <stage name="Installing">
+    <stage name="Building">
       <stageinfo>
         <base>&build_dir;/&ncpfs-directory;</base>
       </stageinfo>
@@ -44,6 +47,11 @@
         <param>--datadir=/usr/share</param>
       </configure>
       <make />
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&ncpfs-directory;</base>
+      </stageinfo>
       <make>
         <param>install</param>
       </make>

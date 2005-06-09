@@ -17,15 +17,19 @@
 	<name>openssl</name>
       </utilizes>
     </packageinfo>
-    <stage name="Unpacking.">
+    <stage name="Unpacking">
+      <stageinfo>
+	<user>&build-user;</user>
+      </stageinfo>
       <unpack>
         <digest>&bind-utils-md5;</digest>
 	<archive>&packages_dir;/&bind-utils-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing.">
+    <stage name="Building">
       <stageinfo>
+	<user>&build-user;</user>
         <base>&build_dir;/&bind-utils-directory;</base>
       </stageinfo>
       <configure>
@@ -49,12 +53,17 @@
       <make>
         <param>-C bin/dig</param>
       </make>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&bind-utils-directory;</base>
+      </stageinfo>
       <make>
         <param>-C bin/dig</param>
         <param>install</param>
       </make>
     </stage>
-    <stage name="Cleanup.">
+    <stage name="Cleanup">
       <remove>&build_dir;/&bind-utils-directory;</remove>
     </stage>
   </package>
