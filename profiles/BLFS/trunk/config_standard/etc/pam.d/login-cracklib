@@ -11,6 +11,9 @@ session     required       pam_limits.so
 session     optional       pam_mail.so      dir=/var/mail standard
 session     optional       pam_lastlog.so
 session     required       pam_unix.so
-password    required       pam_unix.so      md5 shadow
+password    required       pam_cracklib.so  retry=3 difok=8 minlen=5 \
+                                            dcredit=3 ocredit=3 \
+                                            ucredit=2 lcredit=2
+password    required       pam_unix.so      md5 shadow use_authtok
 
 # End /etc/pam.d/login

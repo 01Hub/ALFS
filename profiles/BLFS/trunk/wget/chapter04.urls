@@ -1,4 +1,5 @@
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/openssl-0.9.7e.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/openssl-0.9.7f.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/openssl-0.9.7f-fix_manpages-1.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/cracklib/cracklib,2.7.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/cracklib/cracklib,2.7-blfs-1.patch
@@ -8,8 +9,8 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/cracklib/allwords.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/Linux-PAM-0.78.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/Linux-PAM-0.78-linkage-2.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/shadow-4.0.4.1.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/shadow-4.0.4.1-pam-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/shadow-4.0.7.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/shadow-4.0.7-fix_lastlog-1.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/iptables-1.3.1.tar.bz2
 
@@ -25,4 +26,5 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/krb5-1.4.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/cyrus-sasl-2.1.20.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/stunnel-4.07.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/stunnel-4.09.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/stunnel-4.09-1_minute_sleep_fix.patch

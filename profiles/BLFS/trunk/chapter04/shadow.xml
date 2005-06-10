@@ -33,7 +33,7 @@
       <patch>
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&shadow-pam-patch;</param>
+        <param>-i &packages_dir;/&shadow-lastlog-patch;</param>
       </patch>
     </stage>
     <stage name="Installing">
@@ -41,51 +41,38 @@
         <base>&build_dir;/&shadow-directory;</base>
       </stageinfo>
       <configure>
-        <prefix>LIBS="-lpam -lpam_misc"</prefix>
-        <param>--libdir=/usr/lib</param>
+        <param>--libdir=/lib</param>
         <param>--enable-shared</param>
         <param>--with-libpam</param>
         <param>--without-libcrack</param>
       </configure>
-      <textdump mode="append">
-        <file>config.h</file>
-        <content>=#define HAVE_SETLOCALE 1</content>
-      </textdump>
       <search_replace>
-	<file>libmisc/xmalloc.c</file>
-	<find>extern char *malloc ();</find>
-	<replace>/* extern char *malloc (); */</replace>
+        <file>src/Makefile</file>
+        <find>groups$(EXEEXT)</find>
+        <replace></replace>
       </search_replace>
+      <execute command="sed">
+        <param>-i</param>
+        <param>-e '/groups/d'</param>
+        <param>man/Makefile</param>
+      </execute>
       <make />
       <make>
         <param>install</param>
       </make>
       <move>
-        <source>/bin/sg</source>
-        <destination>/usr/bin</destination>
-      </move>
-      <move>
-        <source>/bin/vigr</source>
-        <destination>/usr/sbin</destination>
-      </move>
-      <move>
 	<source>/usr/bin/passwd</source>
 	<destination>/bin</destination>
       </move>
-      <remove>/bin/groups</remove>
       <move>
-        <source>/usr/lib/lib{misc,shadow}.so.0*</source>
-        <destination>/lib</destination>
+        <source>/lib/libshadow.*a</source>
+        <destination>/usr/lib</destination>
       </move>
+      <remove>/lib/libshadow.so</remove>
       <link>
         <option>force</option>
         <target>../../lib/libshadow.so.0</target>
         <name>/usr/lib/libshadow.so</name>
-      </link>
-      <link>
-        <option>force</option>
-        <target>../../lib/libmisc.so.0</target>
-        <name>/usr/lib/libmisc.so</name>
       </link>
     </stage>
     <stage name="Configuring">
@@ -95,19 +82,40 @@
       <copy base="&blfs-config;/etc/pam.d">
 	<source>login</source>
 	<source>passwd</source>
-	<source>shadow</source>
 	<source>su</source>
-	<source>useradd</source>
 	<source>chage</source>
+	<source>chpasswd</source>
+	<source>newusers</source>
+	<source>groupadd</source>
+	<source>groupdel</source>
+	<source>groupmod</source>
+	<source>useradd</source>
+	<source>userdel</source>
+	<source>usermod</source>
+	<!--<source>other</source>-->
 	<destination>/etc/pam.d</destination>
       </copy>
       <!-- if you have cracklib installed uncomment the following -->
       <!--
       <copy base="&blfs-config;/etc/pam.d">
+	<source>login-cracklib</source>
+	<destination>/etc/pam.d/login</destination>
+      </copy>
+      <copy base=&blfs-config;/etc/pam.d">
 	<source>passwd-cracklib</source>
 	<destination>/etc/pam.d/passwd</destination>
       </copy>
       -->
+      <move>
+	<option>force</option>
+	<source>/etc/login.access</source>
+	<destination>/etc/login.access.NOUSE</destination>
+      </move>
+      <move>
+	<option>force</option>
+	<source>/etc/limits</source>
+	<destination>/etc/limits.NOUSE</destination>
+      </move>
       <search_replace>
         <file>login.defs</file>
         <find>LASTLOG_ENAB</find>

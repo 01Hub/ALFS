@@ -24,23 +24,20 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&openssl-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&openssl-fix-manpages-patch;</param>
+      </patch>
+    </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&openssl-directory;</base>
       </stageinfo>
-      <search_replace base="&build_dir;/&openssl-directory;/doc/apps">
-        <file>passwd.pod</file>
-        <find>passwd - compute password hashes</find>
-        <replace>openssl-passwd - compute password hashes</replace>
-      </search_replace>
-      <move>
-        <source>doc/apps/passwd.pod</source>
-        <destination>doc/apps/openssl-passwd.pod</destination>
-      </move>
-      <move>
-        <source>doc/crypto/threads.pod</source>
-        <destination>doc/crypto/openssl_threads.pod</destination>
-      </move>
       <configure command="./config">
         <param>--openssldir=/etc/ssl</param>
         <param>--prefix=/usr</param>
