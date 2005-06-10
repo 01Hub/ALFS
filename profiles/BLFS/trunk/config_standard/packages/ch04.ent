@@ -1,9 +1,11 @@
 <!--************* packages for chapter 4 *************-->
 
-<!ENTITY openssl-version   "0.9.7e">
+<!ENTITY openssl-version   "0.9.7f">
 <!ENTITY openssl-package   "openssl-&openssl-version;.tar.bz2">
-<!ENTITY openssl-md5       "bad03fa90732c244174f72c910e47b83">
+<!ENTITY openssl-md5       "237a78efdd3ac0b0bc53051f80a2dfde">
 <!ENTITY openssl-directory "openssl-&openssl-version;">
+
+<!ENTITY openssl-fix-manpages-patch "openssl-&openssl-version;-fix_manpages-1.patch">
 
 <!ENTITY cracklib-version   "2.7">
 <!ENTITY cracklib-package   "cracklib,&cracklib-version;.tar.bz2">
@@ -28,13 +30,12 @@
 <!ENTITY linuxpam-linkage-patch     "Linux-PAM-&linuxpam-version;-linkage-2.patch">
 <!ENTITY linuxpam-linkage-patch-md5 "137e25bcac7e6ac0acaeed9503def2e9">
 
-<!ENTITY shadow-version   "4.0.4.1">
+<!ENTITY shadow-version   "4.0.7">
 <!ENTITY shadow-package   "shadow-&shadow-version;.tar.bz2">
-<!ENTITY shadow-md5       "3a3d17d3d7c630b602baf66ae7434c61">
+<!ENTITY shadow-md5       "89ebec0d1c0d861a5bd5c4c63e5cb0cc">
 <!ENTITY shadow-directory "shadow-&shadow-version;">
 
-<!ENTITY shadow-pam-patch     "shadow-&shadow-version;-pam-1.patch">
-<!ENTITY shadow-pam-patch-md5 "21b903caa6ca38cd60bc0a4d133aee4c">
+<!ENTITY shadow-lastlog-patch     "shadow-&shadow-version;-fix_lastlog-1.patch">
 
 <!ENTITY iptables-version   "1.3.1">
 <!ENTITY iptables-package   "iptables-&iptables-version;.tar.bz2">
@@ -72,7 +73,10 @@
 <!ENTITY cyrus-sasl-md5       "4981b64da5747e7ca6f4696a6d172066">
 <!ENTITY cyrus-sasl-directory "cyrus-sasl-&cyrus-sasl-version;">
 
-<!ENTITY stunnel-version   "4.07">
+<!ENTITY stunnel-version   "4.09">
 <!ENTITY stunnel-package   "stunnel-&stunnel-version;.tar.bz2">
-<!ENTITY stunnel-md5       "3da3880189133533b20e19ed0b40a04a">
+<!ENTITY stunnel-md5       "f048f58da3d49f0a6843a0b1b819d7f5">
 <!ENTITY stunnel-directory "stunnel-&stunnel-version;">
+
+<!ENTITY stunnel-sleep-fix-patch "stunnel-&stunnel-version;-1_minute_sleep_fix.patch">
+

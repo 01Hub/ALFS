@@ -1,4 +1,4 @@
-# Begin /etc/pam.d/shadow
+# Begin /etc/pam.d/usermod
 
 auth        sufficient      pam_rootok.so
 auth        required        pam_unix.so
@@ -6,4 +6,4 @@ account     required        pam_unix.so
 session     required        pam_unix.so
 password    required        pam_permit.so
 
-# End /etc/pam.d/shadow
+# End /etc/pam.d/usermod
