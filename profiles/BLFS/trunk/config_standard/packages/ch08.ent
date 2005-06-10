@@ -33,14 +33,14 @@
 <!ENTITY libxml-md5       "c7d1b9b1cbfcfbbc56c92f424c37d32c">
 <!ENTITY libxml-directory "libxml-&libxml-version;">
 
-<!ENTITY libxml2-version   "2.6.17">
+<!ENTITY libxml2-version   "2.6.19">
 <!ENTITY libxml2-package   "libxml2-&libxml2-version;.tar.bz2">
-<!ENTITY libxml2-md5       "2d53bba9a4768ec57d8bf2bdadb75c87">
+<!ENTITY libxml2-md5       "ed581732d586f86324ec46e572526ede">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
-<!ENTITY libxslt-version   "1.1.12">
+<!ENTITY libxslt-version   "1.1.14">
 <!ENTITY libxslt-package   "libxslt-&libxslt-version;.tar.bz2">
-<!ENTITY libxslt-md5       "57b06895bf1f2833ef73f284f2d2893f">
+<!ENTITY libxslt-md5       "1fe60d57b8fcff7462fb1d9fac6c2ae8">
 <!ENTITY libxslt-directory "libxslt-&libxslt-version;">
 
 <!ENTITY gmp-version   "4.1.4">
@@ -61,14 +61,14 @@
 <!ENTITY glib-gcc34-patch     "glib-&glib-version;-gcc34-1.patch">
 <!ENTITY glib-gcc34-patch-md5 "02fac9ef6d85ea3559c0b0620b878ba5">
 
-<!ENTITY glib2-version   "2.6.3">
+<!ENTITY glib2-version   "2.6.4">
 <!ENTITY glib2-package   "glib-&glib2-version;.tar.bz2">
-<!ENTITY glib2-md5       "8f69ad5387197114b356efc64ce88d77">
+<!ENTITY glib2-md5       "af7eeb8aae764ff763418471ed6eb93d">
 <!ENTITY glib2-directory "glib-&glib2-version;">
 
-<!ENTITY libidl-version   "0.8.4">
+<!ENTITY libidl-version   "0.8.5">
 <!ENTITY libidl-package   "libIDL-&libidl-version;.tar.bz2">
-<!ENTITY libidl-md5       "f94a690454b4f9d448c2e51792f81365">
+<!ENTITY libidl-md5       "c63f6513dc7789d0575bea02d62d58d7">
 <!ENTITY libidl-directory "libIDL-&libidl-version;">
 
 <!ENTITY libcroco-version   "0.6.0">
@@ -76,14 +76,14 @@
 <!ENTITY libcroco-md5       "78fb2bf78d469df83b1fc94ce196c1c4">
 <!ENTITY libcroco-directory "libcroco-&libcroco-version;">
 
-<!ENTITY libgsf-version   "1.10.1">
+<!ENTITY libgsf-version   "1.11.1">
 <!ENTITY libgsf-package   "libgsf-&libgsf-version;.tar.bz2">
-<!ENTITY libgsf-md5       "b7b1c1e9adf3fd39a4df6f6891bf3bca">
+<!ENTITY libgsf-md5       "b6d867f46e20dca5c6bf2cf3bfc38cfc">
 <!ENTITY libgsf-directory "libgsf-&libgsf-version;">
 
-<!ENTITY libglade-version   "2.4.1">
+<!ENTITY libglade-version   "2.5.1">
 <!ENTITY libglade-package   "libglade-&libglade-version;.tar.bz2">
-<!ENTITY libglade-md5       "add87e5aef7d8a9ebb468bc0e4044440">
+<!ENTITY libglade-md5       "e4734a59f1f2308d7714dc0ebf8163f1">
 <!ENTITY libglade-directory "libglade-&libglade-version;">
 
 <!ENTITY expat-version   "1.95.8">

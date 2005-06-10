@@ -10,9 +10,9 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/fam-2.7.0-dnotify-1.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libxml-1.8.17.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libxml2-2.6.17.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libxml2-2.6.19.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libxslt-1.1.12.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libxslt-1.1.14.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gmp-4.1.4.tar.bz2
 
@@ -21,15 +21,15 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gdbm-1.8.3.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/glib-1.2.10.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/glib-1.2.10-gcc34-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/glib-2.6.3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/glib-2.6.4.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libIDL-0.8.4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libIDL-0.8.5.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libgsf-1.10.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libgsf-1.11.1.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libcroco-0.6.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libglade-2.4.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libglade-2.5.1.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/expat-1.95.8.tar.bz2
 

@@ -34,9 +34,9 @@
       </unpack>
     </stage>
     <stage name="Installing">
-    <stageinfo>
-      <base>&build_dir;/&libglade-directory;</base>
-    </stageinfo>
+      <stageinfo>
+	<base>&build_dir;/&libglade-directory;</base>
+      </stageinfo>
       <configure>
 	<param>--prefix=/usr</param>
       </configure>
