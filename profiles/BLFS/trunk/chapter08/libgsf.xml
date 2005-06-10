@@ -39,7 +39,6 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
-        <param>--disable-gtk-doc</param>
       </configure>
       <make />
       <make>
