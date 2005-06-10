@@ -35,7 +35,19 @@
       <make>
         <param>install</param>
       </make>
+      <make>
+	<param>install.info</param>
+      </make>
     </stage>
+    <stage name="Configuration">
+      <textdump mode="append">
+	<file>/etc/shells</file>
+	<content>
+	  =/bin/zsh
+	  =/bin/zsh-&zsh-version;
+	</content>
+      </textdump>
+    </stage> 
     <stage name="Cleanup">
       <remove>&build_dir;/&zsh-directory;</remove>
     </stage>

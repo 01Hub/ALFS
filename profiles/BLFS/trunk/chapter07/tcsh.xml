@@ -25,8 +25,10 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
+	<param>--bindir=/bin</param>
       </configure>
       <make />
+      <execute command="sh ./tcsh.man2html" />
       <make>
         <param>install</param>
       </make>
@@ -35,9 +37,35 @@
       </make>
       <link>
         <option>force</option>
-        <target>/usr/bin/tcsh</target>
+        <target>tcsh</target>
         <name>/bin/csh</name>
       </link>
+      <link>
+      	<option>force</option>
+	<target>tcsh.1</target>
+	<name>/usr/man/man1/csh.1</name>
+      </link>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/tcsh-&tcsh-version;/html</name>
+      </mkdir>
+      <copy>
+	<source>tcsh.html/*</source>
+	<destination>/usr/share/doc/tcsh-&tcsh-version;/html</destination>
+      </copy>
+      <copy>
+	<source>FAQ</source>
+	<destination>/usr/share/doc/tcsh-&tcsh-version;</destination>
+      </copy>
+    </stage>
+    <stage name="Configuration">
+      <textdump mode="append">
+	<file>/etc/shells</file>
+	<content>
+	  =/bin/tcsh
+	  =/bin/csh
+	</content>
+      </textdump>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&tcsh-directory;</remove>

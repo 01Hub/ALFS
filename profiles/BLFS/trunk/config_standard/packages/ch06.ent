@@ -11,9 +11,9 @@
 <!ENTITY vim-security-fix-patch     "vim-&vim-version;-security_fix-1.patch">
 <!ENTITY vim-security-fix-patch-md5 "ef9a421f1d29993ce5bbd709cece4624">
 
-<!ENTITY emacs-version   "21.4">
+<!ENTITY emacs-version   "21.4a">
 <!ENTITY emacs-package   "emacs-&emacs-version;.tar.bz2">
-<!ENTITY emacs-md5       "b7abb7a49189695ebb8c90494ebae59f">
+<!ENTITY emacs-md5       "5ec2c01f7604cf207628de0e82181647">
 <!ENTITY emacs-directory "emacs-&emacs-version;">
 
 <!ENTITY nano-version   "1.2.4">
