@@ -19,6 +19,12 @@
       <utilizes>
         <name>sgml-dtd31</name>
       </utilizes>
+      <utilizes>
+	<name>doxygen</name>
+      </utilizes>
+      <utilizes>
+	<name>graphviz</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -29,7 +35,7 @@
     </stage>
     <stage name="Creating group">
       <execute command="getent group usb &gt; /dev/null || groupadd">
-        <param>-g 15</param>
+        <param>-g 14</param>
         <param>usb</param>
       </execute>
     </stage>
@@ -37,16 +43,44 @@
       <stageinfo>
         <base>&build_dir;/&libusb-directory;</base>
       </stageinfo>
-      <execute command="libtoolize -f" />
-      <execute command="autoreconf -f" />
       <configure>
         <param>--prefix=/usr</param>
-        <param>--disable-build-docs</param>
+        <param>--disable-build-docs</param> <!-- remove this to build HTML docs -->
       </configure>
       <make />
+      <!-- Uncomment this if you wish to build api documentation -->
+      <!--
+      <make>
+	<param>apidox</param>
+      </make>
+      -->
       <make>
         <param>install</param>
       </make>
+      <!-- Uncomment this if you wish to install the HTML user manual 
+	(requires removal of disable-build-docs parameter to configure -->
+      <!--
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/libusb-&libusb-version;/html</name>
+      </mkdir>
+      <copy>
+	<source>doc/html/*</source>
+	<destination>/usr/share/doc/libusb-&libusb-version;/html</destination>
+      </copy>
+      -->
+      <!-- Uncomment this if you wish to install that api documentation
+	built above -->
+      <!--
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/libusb-&libusb-version;/apidocs</name>
+      </mkdir>
+      <copy>
+	<source>apidocs/html/*</source>
+	<name>/usr/share/doc/libusb-&libusb-version;/apidocs</name>
+      </copy>
+      -->
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libusb-directory;</remove>

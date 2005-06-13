@@ -96,9 +96,9 @@
 <!ENTITY libesmtp-md5       "c07aa79293aa36298626fe5e68d6bfba">
 <!ENTITY libesmtp-directory "libesmtp-&libesmtp-version;">
 
-<!ENTITY aspell-version   "0.60">
+<!ENTITY aspell-version   "0.60.2">
 <!ENTITY aspell-package   "aspell-&aspell-version;.tar.bz2">
-<!ENTITY aspell-md5       "bbb695d55aa2905a18b8a50b29a12308">
+<!ENTITY aspell-md5       "a504d4e6447f9e857e84eab237616a85">
 <!ENTITY aspell-directory "aspell-&aspell-version;">
 
 <!--these should be customized to your language-->
@@ -141,7 +141,7 @@
 <!ENTITY libpcap-md5       "0f78750ebf003c1f24c8438a10e6cdc9">
 <!ENTITY libpcap-directory "libpcap-&libpcap-version;">
 
-<!ENTITY libusb-version   "0.1.8">
+<!ENTITY libusb-version   "0.1.10a">
 <!ENTITY libusb-package   "libusb-&libusb-version;.tar.bz2">
-<!ENTITY libusb-md5       "6bc89b47ab5d168f2f2ca952facb2f29">
+<!ENTITY libusb-md5       "2eb0df33b36d263bee6df928a8712466">
 <!ENTITY libusb-directory "libusb-&libusb-version;">

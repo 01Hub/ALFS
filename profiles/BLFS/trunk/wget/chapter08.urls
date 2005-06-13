@@ -35,8 +35,8 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/expat-1.95.8.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libesmtp-1.0.3r1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/aspell-0.60.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/aspell6-en-6.0-0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/aspell-0.60.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/aspell6-en-6.0-0.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/ispell-3.2.06.epa7.tar.bz2
 
@@ -51,4 +51,4 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/lzo-1.08.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libpcap-0.8.3.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libusb-0.1.8.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libusb-0.1.10a.tar.bz2
