@@ -2,29 +2,40 @@
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
-<!ENTITY % package_entities SYSTEM "../config/packages/chxx.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch06.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
 
 %general_entities;
 %package_entities;
 %config_entities;
 
-<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
-<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
 ]>
 <alfs>
-  <package name="" version="">
+  <package name="bluefish" version="&bluefish-version;">
+    <packageinfo>
+      <requires>
+	<name>gtk+2</name>
+      </requires>
+      <requires>
+	<name>pcre</name>
+      </requires>
+      <utilizes>
+	<name>gnome-vfs2</name>
+      </utilizes>
+      <utilizes>
+	<name>aspell</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
-      	<digest></digest>
-        <archive>&packages_dir;/</archive>
+	<digest>&bluefish-md5;</digest>
+        <archive>&packages_dir;/&bluefish-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    &bootscripts-get;
     <stage name="Installing">
       <stageinfo>
-	<base>&build_dir;/</base>
+	<base>&build_dir;/&bluefish-directory;</base>
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
@@ -34,17 +45,8 @@
         <param>install</param>
       </make>
     </stage>
-    <stage name="Installing bootscript and configuration">
-      <stageinfo>
-        <base>&build_dir;/&blfs-bootscripts-directory;</base>
-      </stageinfo>
-      <make>
-        <param></param>
-      </make>
-    </stage>
-    &bootscripts-clean;
     <stage name="Cleanup">
-      <remove>&build_dir;/</remove>
+      <remove>&build_dir;/&bluefish-directory;</remove>
     </stage>
   </package>
 </alfs>
