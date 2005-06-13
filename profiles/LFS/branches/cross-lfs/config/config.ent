@@ -1,0 +1,38 @@
+<!ENTITY LFS "/mnt/lfs">
+
+<!-- Temporary user name used for installing Chapter 5.
+     This is a user in the host distribution. It will not
+     be deleted at the end of the build.
+     If the user does not exist it will be created.
+     -->
+<!ENTITY lfs-user "lfs">
+
+<!-- Password of the temporary user name &lfs; 
+     You should change this value and keep the present file
+     secure this value has been changed or, better,
+     create yourself the user in the host distribution,
+     and give it a password.
+     If the user exists already, its password will not be changed.
+     -->
+<!ENTITY lfs-password "lf1nstl">
+
+<!-- Temporary user's home directory. -->
+<!ENTITY lfs-user-dir "/home/&lfs-user;">
+
+<!-- Location of your LFS packages.
+     This is the directory in which all the packages downloaded
+     from ftp.linuxfromscratch.org (or their original servers)
+     are before running the script. The content of this directory
+     will be copied in a subdirectory of &LFS; at the beginning of
+     the build.
+     IMPORTANT : be carefull about the original packages dir; if you 
+                 enter the wrong directory, nALFS will try to download
+                 all the packages in it !!!
+     -->
+<!ENTITY orig_packages_dir "/your/cross-lfs/packages">
+<!-- Directory (inside LFS) where all packages will be copied. -->
+<!ENTITY packages_dir "/tools/packages-&version;">
+<!-- Directory (inside LFS) where all packages will be compiled. -->
+<!ENTITY build_dir "/tools/build">
+<!-- Directory (inside LFS) where all skeleton config files will be copied. -->
+<!ENTITY skeleton_dir "/tools/skeleton-&version;">
