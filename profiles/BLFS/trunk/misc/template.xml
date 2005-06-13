@@ -11,27 +11,28 @@
 
 ]>
 <alfs>
-<package name="" version="">
-  <stage name="Unpacking.">
-    <unpack>
-      <archive>&packages_dir;/</archive>
-      <destination>&build_dir;</destination>
-    </unpack>
-  </stage>
-  <stage name="Installing.">
-    <stageinfo>
-      <base>&build_dir;/</base>
-    </stageinfo>
-    <configure>
-      <param>--prefix=/usr</param>
-    </configure>
-    <make />
-    <make>
-      <param>install</param>
-    </make>
-  </stage>
-  <stage name="Cleanup.">
-    <remove>&build_dir;/</remove>
-  </stage>
-</package>
+  <package name="" version="">
+    <stage name="Unpacking">
+      <unpack>
+      	<digest></digest>
+        <archive>&packages_dir;/</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/</remove>
+    </stage>
+  </package>
 </alfs>

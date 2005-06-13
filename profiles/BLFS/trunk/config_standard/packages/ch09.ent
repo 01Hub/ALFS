@@ -75,3 +75,9 @@
 <!ENTITY imlib2-package   "imlib2-&imlib2-version;.tar.bz2">
 <!ENTITY imlib2-md5       "b4acbe8ac5c7bfe57b9e7e91e0fdb0fb">
 <!ENTITY imlib2-directory "imlib2-&imlib2-version;">
+
+<!ENTITY libexif-version "0.6.12">
+<!ENTITY libexif-package "libexif-&libexif-version;.tar.bz2">
+<!ENTITY libexif-md5 "9f952ee8db0be7c53a075c34e8286d91">
+<!ENTITY libexif-directory "libexif-&libexif-version;">
+
