@@ -66,8 +66,8 @@
 <!ENTITY file-package "file-&file-version;.tar.bz2">
 <!ENTITY file-directory "file-&file-version;">
 
-<!ENTITY findutils-md5 "eef3ce5851f48527792f1f7ed77d0a3a">
-<!ENTITY findutils-version "4.2.20">
+<!ENTITY findutils-md5 "">
+<!ENTITY findutils-version "4.2.23">
 <!ENTITY findutils-package "findutils-&findutils-version;.tar.bz2">
 <!ENTITY findutils-directory "findutils-&findutils-version;">
 
@@ -76,7 +76,7 @@
 <!ENTITY flex-package "flex-&flex-version;.tar.bz2">
 <!ENTITY flex-directory "flex-&flex-version;">
 
-<!ENTITY flex-debian-fixes-patch "flex-&flex-version;-debian_fixes-2.patch">
+<!ENTITY flex-debian-fixes-patch "flex-&flex-version;-debian_fixes-3.patch">
 
 <!ENTITY gawk-md5 "b8b532beaf02350e69d2d5dc98cb1e37">
 <!ENTITY gawk-version "3.1.4">
@@ -103,8 +103,8 @@
 <!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no_fixincludes-1.patch">
 <!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-2.patch">
 
-<!ENTITY gettext-md5 "59867730320c2a18bbba8b64fe0e9ee9">
-<!ENTITY gettext-version "0.14.4">
+<!ENTITY gettext-md5 "0d1b95a392a326e55766ca01756132b5">
+<!ENTITY gettext-version "0.14.5">
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.bz2">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
@@ -180,7 +180,7 @@
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
-<!ENTITY libtool-md5 "">
+<!ENTITY libtool-md5 "703d55f1778a18f0b3840c2af323f0d8">
 <!ENTITY libtool-version "1.5.18">
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.bz2">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
@@ -190,8 +190,8 @@
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
-<!ENTITY linux-md5 "6a66a372a1f8395f241f248f5fe8222a">
-<!ENTITY linux-version "2.6.11.10">
+<!ENTITY linux-md5 "7e3b6e630bb05c1a8c1ba46e010dbe44">
+<!ENTITY linux-version "2.6.11.12">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
@@ -216,8 +216,8 @@
 <!ENTITY man-package "man-&man-version;.tar.bz2">
 <!ENTITY man-directory "man-&man-version;">
 
-<!ENTITY man-pages-md5 "1b52b81550801bb07ae07ec62ab713b6">
-<!ENTITY man-pages-version "2.02">
+<!ENTITY man-pages-md5 "a6447ad203f904165743306ec1905247">
+<!ENTITY man-pages-version "2.03">
 <!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.bz2">
 <!ENTITY man-pages-directory "man-pages-&man-pages-version;">
 
@@ -248,8 +248,8 @@
 <!ENTITY patch-package "patch-&patch-version;.tar.bz2">
 <!ENTITY patch-directory "patch-&patch-version;">
 
-<!ENTITY perl-md5 "3d030b6ff2a433840edb1a407d18dc0a">
-<!ENTITY perl-version "5.8.6">
+<!ENTITY perl-md5 "9a175d6ccbb5d9b41ffac5073ff9cc3c">
+<!ENTITY perl-version "5.8.7">
 <!ENTITY perl-package "perl-&perl-version;.tar.bz2">
 <!ENTITY perl-directory "perl-&perl-version;">
 
@@ -277,12 +277,10 @@
 <!ENTITY sed-package "sed-&sed-version;.tar.bz2">
 <!ENTITY sed-directory "sed-&sed-version;">
 
-<!ENTITY shadow-md5 "89ebec0d1c0d861a5bd5c4c63e5cb0cc">
-<!ENTITY shadow-version "4.0.7">
+<!ENTITY shadow-md5 "66e3a3a60ea6b021a7babff311b07607">
+<!ENTITY shadow-version "4.0.9">
 <!ENTITY shadow-package "shadow-&shadow-version;.tar.bz2">
 <!ENTITY shadow-directory "shadow-&shadow-version;">
-
-<!ENTITY shadow-lastlog-patch "shadow-&shadow-version;-fix_lastlog-1.patch">
 
 <!ENTITY sysklogd-md5 "f587720988bc1670071f31d3694ca0fb">
 <!ENTITY sysklogd-version "1.4.1">
@@ -303,8 +301,8 @@
 
 <!ENTITY tar-sparse-fix-patch "tar-&tar-version;-sparse_fix-1.patch">
 
-<!ENTITY tcl-md5 "597e5576d9bf44e9e4e901168cae2654">
-<!ENTITY tcl-version "8.4.9">
+<!ENTITY tcl-md5 "5bf27b079b630988670150722e276887">
+<!ENTITY tcl-version "8.4.10">
 <!ENTITY tcl-package "tcl&tcl-version;-src.tar.bz2">
 <!ENTITY tcl-directory "tcl&tcl-version;">
 
