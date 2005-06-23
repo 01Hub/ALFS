@@ -66,8 +66,8 @@
 <!ENTITY file-package "file-&file-version;.tar.bz2">
 <!ENTITY file-directory "file-&file-version;">
 
-<!ENTITY findutils-md5 "eef3ce5851f48527792f1f7ed77d0a3a">
-<!ENTITY findutils-version "4.2.20">
+<!ENTITY findutils-md5 "">
+<!ENTITY findutils-version "4.2.23">
 <!ENTITY findutils-package "findutils-&findutils-version;.tar.bz2">
 <!ENTITY findutils-directory "findutils-&findutils-version;">
 
@@ -76,7 +76,7 @@
 <!ENTITY flex-package "flex-&flex-version;.tar.bz2">
 <!ENTITY flex-directory "flex-&flex-version;">
 
-<!ENTITY flex-debian-fixes-patch "flex-&flex-version;-debian_fixes-2.patch">
+<!ENTITY flex-debian-fixes-patch "flex-&flex-version;-debian_fixes-3.patch">
 
 <!ENTITY gawk-md5 "b8b532beaf02350e69d2d5dc98cb1e37">
 <!ENTITY gawk-version "3.1.4">
@@ -192,8 +192,8 @@
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
-<!ENTITY linux-md5 "6a66a372a1f8395f241f248f5fe8222a">
-<!ENTITY linux-version "2.6.11.10">
+<!ENTITY linux-md5 "7e3b6e630bb05c1a8c1ba46e010dbe44">
+<!ENTITY linux-version "2.6.11.12">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
@@ -279,12 +279,10 @@
 <!ENTITY sed-package "sed-&sed-version;.tar.bz2">
 <!ENTITY sed-directory "sed-&sed-version;">
 
-<!ENTITY shadow-md5 "89ebec0d1c0d861a5bd5c4c63e5cb0cc">
-<!ENTITY shadow-version "4.0.7">
+<!ENTITY shadow-md5 "66e3a3a60ea6b021a7babff311b07607">
+<!ENTITY shadow-version "4.0.9">
 <!ENTITY shadow-package "shadow-&shadow-version;.tar.bz2">
 <!ENTITY shadow-directory "shadow-&shadow-version;">
-
-<!ENTITY shadow-lastlog-patch "shadow-&shadow-version;-fix_lastlog-1.patch">
 
 <!ENTITY sysklogd-md5 "f587720988bc1670071f31d3694ca0fb">
 <!ENTITY sysklogd-version "1.4.1">

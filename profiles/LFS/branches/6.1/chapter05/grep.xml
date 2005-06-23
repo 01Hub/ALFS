@@ -23,7 +23,6 @@
       <configure>
         <param>--prefix=/tools</param>
         <param>--disable-perl-regexp</param>
-        <param>--with-included-regex</param>
       </configure>
       <make>
         <param>&jlevel;</param>
