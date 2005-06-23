@@ -20,13 +20,13 @@
       <stageinfo>
         <base>&build_dir;/&module-init-tools-directory;</base>
       </stageinfo>
+      <execute command="touch modprobe.conf.5" />
       <configure>
         <param>--prefix=""</param>
         <param>--enable-zlib</param>
       </configure>
       <make>
         <param>&jlevel;</param>
-        <param>DOCBOOKTOMAN=""</param>
       </make>
       <make>
         <param>check</param>

@@ -30,6 +30,7 @@
       </stageinfo>
       <configure command="../&binutils-directory;/configure">
         <param>--prefix=/tools</param>
+	<param>--disable-nls</param>
         <param>--enable-shared</param>
         <param>--with-lib-path=/tools/lib</param>
       </configure>
