@@ -11,14 +11,14 @@
 <!ENTITY gpm-silent-patch     "gpm-&gpm-version;-silent-1.patch">
 <!ENTITY gpm-silent-patch-md5 "c61004de4a3c68dfbe3c963f0e00f647">
 
-<!ENTITY fcron-version   "2.9.5.1">
+<!ENTITY fcron-version   "2.9.6">
 <!ENTITY fcron-package   "fcron-&fcron-version;.src.tar.bz2">
-<!ENTITY fcron-md5       "031398cc7b7d06b2eeb20a17575fba04">
+<!ENTITY fcron-md5       "a978d506591c7ea0248a0638a13ce066">
 <!ENTITY fcron-directory "fcron-&fcron-version;">
 
-<!ENTITY hdparm-version   "5.8">
+<!ENTITY hdparm-version   "6.1">
 <!ENTITY hdparm-package   "hdparm-&hdparm-version;.tar.bz2">
-<!ENTITY hdparm-md5       "5ee4c5f62bc5d1d0b3fb4b70b2ecf64d">
+<!ENTITY hdparm-md5       "9778b81c1078607c6f840269ab5d0d29">
 <!ENTITY hdparm-directory "hdparm-&hdparm-version;">
 
 <!ENTITY which-version   "2.16">
@@ -26,19 +26,14 @@
 <!ENTITY which-md5       "eddf15d19646c6bf330db4b5b04db670">
 <!ENTITY which-directory "which-&which-version;">
 
-<!ENTITY unzip-version   "5.51">
-<!ENTITY unzip-package   "unzip-5.51.tar.bz2">
-<!ENTITY unzip-md5       "18d26f1aa92ae91213452973b66d0385">
+<!ENTITY unzip-version   "5.52">
+<!ENTITY unzip-package   "unzip-&unzip-version;.tar.bz2">
+<!ENTITY unzip-md5       "159634a53497bd2d412dabd9378cf9af">
 <!ENTITY unzip-directory "unzip-&unzip-version;">
 
 <!ENTITY unzip-fix-makefile-patch     "unzip-&unzip-version;-fix_Makefile-1.patch">
-<!ENTITY unzip-fix-makefile-patch-md5 "7eed9722a71abe04bf4f1efd81a78bf8">
-
 <!ENTITY unzip-fix-libz-patch     "unzip-&unzip-version;-fix_libz-1.patch">
-<!ENTITY unzip-fix-libz-patch-md5 "1a54b1d74b7dca13e4418c8a0583bdcc">
-
 <!ENTITY unzip-dont-make-noise-patch     "unzip-&unzip-version;-dont_make_noise-1.patch">
-<!ENTITY unzip-dont-make-noise-patch-md5 "c69caa30644307a05184882558605f95">
 
 <!ENTITY zip-version   "2.31">
 <!ENTITY zip-package   "zip231.tar.bz2">
@@ -50,9 +45,9 @@
 <!ENTITY pciutils-md5       "2b3b2147b7bc91f362be55cb49fa1c4e">
 <!ENTITY pciutils-directory "pciutils-&pciutils-version;">
 
-<!ENTITY pkgconfig-version   "0.15.0">
+<!ENTITY pkgconfig-version   "0.17.2">
 <!ENTITY pkgconfig-package   "pkgconfig-&pkgconfig-version;.tar.bz2">
-<!ENTITY pkgconfig-md5       "8e3f44717a76069fcc8fdae9c252369b">
+<!ENTITY pkgconfig-md5       "eab15aecff99e98bcc5d01331452e583">
 <!ENTITY pkgconfig-directory "pkgconfig-&pkgconfig-version;">
 
 <!ENTITY cpio-version   "2.6">
@@ -65,9 +60,9 @@
 <!ENTITY mc-md5       "15160c5464c752dfe0c906b877e1cc6f">
 <!ENTITY mc-directory "mc-&mc-version;">
 
-<!ENTITY sysstat-version   "5.0.6">
+<!ENTITY sysstat-version   "6.0.0">
 <!ENTITY sysstat-package   "sysstat-&sysstat-version;.tar.bz2">
-<!ENTITY sysstat-md5       "a1a59f5952655485aa03e608abb8930e">
+<!ENTITY sysstat-md5       "706044b99a29b7de7bf4b06310bbe6a6">
 <!ENTITY sysstat-directory "sysstat-&sysstat-version;">
 
 <!ENTITY apache-ant-version   "1.6.2">

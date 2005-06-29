@@ -35,6 +35,12 @@
         <param>--libexecdir=/tmp</param>
 	<param>--with-rmt=/usr/sbin/rmt</param>
       </configure>
+      <textdump mode="append">
+      	<file>config.h</file>
+	<content>
+	  =#define HAVE_SETLOCALE 1"
+	</content>
+      </textdump>
       <make />
       <make>
         <param>install</param>
