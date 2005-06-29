@@ -99,7 +99,6 @@
       <xi:include href="chapter08/libesmtp.xml" />
       <xi:include href="chapter08/aspell.xml" />
       <xi:include href="chapter08/ispell.xml" />
-      <xi:include href="chapter08/guile.xml" />
       <xi:include href="chapter08/slib.xml" />
       <xi:include href="chapter08/g-wrap.xml" />
       <xi:include href="chapter08/lzo.xml" />
@@ -152,20 +151,22 @@
       <xi:include href="chapter11/apache-ant.xml" />
     </stage>
     <stage name="Chapter 12 (Programming)">
-      <xi:include href="chapter12/python.xml" />
-      <xi:include href="chapter12/perlmodules.xml" />
-      <xi:include href="chapter12/librep.xml" />
-      <xi:include href="chapter12/j2sdk.xml" />
-      <xi:include href="chapter12/ruby.xml" />
-      <xi:include href="chapter12/tcl.xml" />
-      <xi:include href="chapter12/tk.xml" />
-      <xi:include href="chapter12/expect.xml" />
       <xi:include href="chapter12/dejagnu.xml" />
+      <xi:include href="chapter12/doxygen.xml" />
+      <xi:include href="chapter12/expect.xml" />
       <xi:include href="chapter12/gnat.xml" />
       <xi:include href="chapter12/gcc-34.xml" />
       <xi:include href="chapter12/gcc-33.xml" />
+      <xi:include href="chapter12/guile.xml" />
+      <xi:include href="chapter12/j2sdk.xml" />
+      <xi:include href="chapter12/librep.xml" />
       <xi:include href="chapter12/nasm.xml" />
-      <xi:include href="chapter12/doxygen.xml" />
+      <xi:include href="chapter12/perlmodules.xml" />
+      <xi:include href="chapter12/php.xml"/>
+      <xi:include href="chapter12/python.xml" />
+      <xi:include href="chapter12/ruby.xml" />
+      <xi:include href="chapter12/tcl.xml" />
+      <xi:include href="chapter12/tk.xml" />
     </stage>
     <stage name="Chapter 13 (Dial-up networking)">
       <xi:include href="chapter13/ppp.xml" />
@@ -243,7 +244,6 @@
     </stage>
     <stage name="Chapter 24 (Web serving)">
       <xi:include href="chapter24/apache.xml" />
-      <xi:include href="chapter24/php.xml" />
       <xi:include href="chapter24/proftpd.xml" />
       <xi:include href="chapter24/vsftpd.xml" />
     </stage>

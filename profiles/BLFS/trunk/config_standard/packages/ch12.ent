@@ -243,14 +243,13 @@
 <!ENTITY tk-md5         "4ad442322d874a63514f5c4a4263a65e">
 <!ENTITY tk-directory   "tk&tk-version;">
 
-<!ENTITY expect-major-minor "5.42">
-<!ENTITY expect-version     "&expect-major-minor;.1">
+<!ENTITY expect-major-minor "5.43">
+<!ENTITY expect-version     "&expect-major-minor;.0">
 <!ENTITY expect-package     "expect-&expect-version;.tar.bz2">
-<!ENTITY expect-md5         "a239811e56d31db86e79c6e4b5de1670">
+<!ENTITY expect-md5         "e6aaab98967f6410099b40f2b3ddebb4">
 <!ENTITY expect-directory   "expect-&expect-version;">
 
 <!ENTITY expect-spawn-patch     "expect-&expect-version;-spawn-1.patch">
-<!ENTITY expect-spawn-patch-md5 "f010925ccc771856931057bd743bcc2d">
 
 <!ENTITY dejagnu-version   "1.4.4">
 <!ENTITY dejagnu-package   "dejagnu-&dejagnu-version;.tar.bz2">
@@ -262,16 +261,13 @@
 <!ENTITY gnat-md5       "c9aad2da908a40e876c24fc85f248b51">
 <!ENTITY gnat-directory "gnat-&gnat-version;-i686-pc-linux-gnu-bin">
 
-<!ENTITY gcc-34-version   "3.4.1">
+<!ENTITY gcc-34-version   "3.4.3">
 <!ENTITY gcc-34-package   "gcc-&gcc-34-version;.tar.bz2">
-<!ENTITY gcc-34-md5       "31b459062499f9f68d451db9cbf3205c">
+<!ENTITY gcc-34-md5       "e744b30c834360fccac41eb7269a3011">
 <!ENTITY gcc-34-directory "gcc-&gcc-34-version;">
 
 <!ENTITY gcc-34-no-fixincludes-patch     "gcc-&gcc-34-version;-no_fixincludes-1.patch">
-<!ENTITY gcc-34-no-fixincludes-patch-md5 "073a5a6de58b361afdb05c6a6e42ffe2">
-
 <!ENTITY gcc-34-linkonce-patch     "gcc-&gcc-34-version;-linkonce-1.patch">
-<!ENTITY gcc-34-linkonce-patch-md5 "cd76ebe24c88d344a7f6ab750f98c55f">
 
 <!ENTITY gcc-33-version   "3.3.4">
 <!ENTITY gcc-33-package   "gcc-&gcc-33-version;.tar.bz2">
@@ -279,17 +275,28 @@
 <!ENTITY gcc-33-directory "gcc-&gcc-33-version;">
 
 <!ENTITY gcc-33-no-fixincludes-patch     "gcc-&gcc-33-version;-no_fixincludes-1.patch">
-<!ENTITY gcc-33-no-fixincludes-patch-md5 "322843b6606a5de7f50aaece02d58bfc">
-
 <!ENTITY gcc-33-linkonce-patch	   "gcc-&gcc-33-version;-linkonce-1.patch">
-<!ENTITY gcc-33-linkonce-patch-md5 "052622c9a52fda9b511f739440cfe5b7">
 
 <!ENTITY nasm-version   "0.98.38">
 <!ENTITY nasm-package   "nasm-&nasm-version;.tar.bz2">
 <!ENTITY nasm-md5       "9f682490c132b070d54e395cb6ee145e">
 <!ENTITY nasm-directory "nasm-&nasm-version;">
 
-<!ENTITY doxygen-version   "1.4.1">
+<!ENTITY doxygen-version   "1.4.2">
 <!ENTITY doxygen-package   "doxygen-&doxygen-version;.src.tar.bz2">
-<!ENTITY doxygen-md5       "2d4d23f47df7c6bcde3bfc8c721b338f">
+<!ENTITY doxygen-md5       "7c8ad20f23f293b6046f7a76c984db42">
 <!ENTITY doxygen-directory "doxygen-&doxygen-version;">
+
+<!ENTITY guile-version   "1.6.7">
+<!ENTITY guile-package   "guile-&guile-version;.tar.bz2">
+<!ENTITY guile-md5       "18090aa1fa5e107023751b1b5ad08734">
+<!ENTITY guile-directory "guile-&guile-version;">
+
+<!ENTITY php-version    "5.0.3">
+<!ENTITY php-package    "php-&php-version;.tar.bz2">
+<!ENTITY php-md5        "fd26455febdddee0977ce226b9108d9c">
+<!ENTITY php-directory  "php-&php-version;">
+
+<!ENTITY php-db43-patch     "php-&php-version;-db43-1.patch">
+<!ENTITY php-db43-patch-md5 "55c2f401f68da0d51b521294a25b3c4a">
+
