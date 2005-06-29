@@ -25,6 +25,12 @@
       <requires>
         <name>docbook-xsl</name>
       </requires>
+      <utilizes>
+	<name>sgml-dtd</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-dsssl</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

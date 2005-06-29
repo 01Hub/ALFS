@@ -16,7 +16,7 @@
 ]>
 <alfs>
 <package name="autofs" version="&autofs-version;">
-  <stage name="Unpacking.">
+  <stage name="Unpacking">
     <unpack>
       <digest>&autofs-md5;</digest>
       <archive>&packages_dir;/&autofs-package;</archive>
@@ -24,52 +24,27 @@
     </unpack>
   </stage>
   &bootscripts-get;
-  <stage name="Patching."> 
+  <stage name="Patching"> 
     <stageinfo>
       <base>&build_dir;/&autofs-directory;</base>
     </stageinfo>
     <patch>
       <param>-N</param>
       <param>-p1</param>
-      <param>-i &packages_dir;/&autofs-strict-patch;</param>
+      <param>-i &packages_dir;/&autofs-misc-fixes-patch;</param>
     </patch>
     <patch>
       <param>-N</param>
       <param>-p1</param>
-      <param>-i &packages_dir;/&autofs-bad-chdir-patch;</param>
+      <param>-i &packages_dir;/&autofs-multi-parse-fix-patch;</param>
     </patch>
     <patch>
       <param>-N</param>
       <param>-p1</param>
-      <param>-i &packages_dir;/&autofs-mtab-lock-patch;</param>
-    </patch>
-    <patch>
-      <param>-N</param>
-      <param>-p1</param>
-      <param>-i &packages_dir;/&autofs-non-block-ping-patch;</param>
-    </patch>
-    <patch>
-      <param>-N</param>
-      <param>-p1</param>
-      <param>-i &packages_dir;/&autofs-signal-race-fix-patch;</param>
-    </patch>
-    <patch>
-      <param>-N</param>
-      <param>-p1</param>
-      <param>-i &packages_dir;/&autofs-sock-leak-fix-patch;</param>
-    </patch>
-    <patch>
-      <param>-N</param>
-      <param>-p1</param>
-      <param>-i &packages_dir;/&autofs-replicated-server-select-patch;</param>
-    </patch>
-    <patch>
-      <param>-N</param>
-      <param>-p1</param>
-      <param>-i &packages_dir;/&autofs-multi-over-patch;</param>
-    </patch>
+      <param>-i &packages_dir;/&autofs-non-replicated-ping-patch;</param>
+    </patch> 
   </stage>
-  <stage name="Installing.">
+  <stage name="Installing">
     <stageinfo>
       <base>&build_dir;/&autofs-directory;</base>
     </stageinfo>
@@ -100,7 +75,7 @@
     </copy>
   </stage>
   &bootscripts-clean;
-  <stage name="Cleanup.">
+  <stage name="Cleanup">
     <remove>&build_dir;/&autofs-directory;</remove>
   </stage>
 </package>

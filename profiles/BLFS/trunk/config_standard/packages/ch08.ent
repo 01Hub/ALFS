@@ -1,8 +1,8 @@
 <!--************* packages for chapter 8 *************-->
 
-<!ENTITY pcre-version   "5.0">
+<!ENTITY pcre-version   "6.1">
 <!ENTITY pcre-package   "pcre-&pcre-version;.tar.bz2">
-<!ENTITY pcre-md5       "813850808894d99fb5b1c41ec6335d4f">
+<!ENTITY pcre-md5       "069a8c34df7ec4bd0dad8f26c64c9dd3">
 <!ENTITY pcre-directory "pcre-&pcre-version;">
 
 <!ENTITY popt-major-minor "1.7">
@@ -76,9 +76,9 @@
 <!ENTITY libcroco-md5       "78fb2bf78d469df83b1fc94ce196c1c4">
 <!ENTITY libcroco-directory "libcroco-&libcroco-version;">
 
-<!ENTITY libgsf-version   "1.11.1">
+<!ENTITY libgsf-version   "1.12.0">
 <!ENTITY libgsf-package   "libgsf-&libgsf-version;.tar.bz2">
-<!ENTITY libgsf-md5       "b6d867f46e20dca5c6bf2cf3bfc38cfc">
+<!ENTITY libgsf-md5       "34c4672edd2e4e814fb82d7b94d71ffd">
 <!ENTITY libgsf-directory "libgsf-&libgsf-version;">
 
 <!ENTITY libglade-version   "2.5.1">

@@ -16,14 +16,14 @@
 <!ENTITY emacs-md5       "5ec2c01f7604cf207628de0e82181647">
 <!ENTITY emacs-directory "emacs-&emacs-version;">
 
-<!ENTITY nano-version   "1.2.4">
+<!ENTITY nano-version   "1.2.5">
 <!ENTITY nano-package   "nano-&nano-version;.tar.bz2">
-<!ENTITY nano-md5       "fe7e722448ab8d2eb9e23d8048b2eaf5">
+<!ENTITY nano-md5       "a15d309222a6719d186f8578d293838a">
 <!ENTITY nano-directory "nano-&nano-version;">
 
-<!ENTITY joe-version   "3.1">
+<!ENTITY joe-version   "3.3">
 <!ENTITY joe-package   "joe-&joe-version;.tar.bz2">
-<!ENTITY joe-md5       "90dda61d5e16c38e1ac564e2fcf24030">
+<!ENTITY joe-md5       "6d1a7198405cc742a08368ce2f26e5fd">
 <!ENTITY joe-directory "joe-&joe-version;">
 
 <!ENTITY ed-version   "0.2">

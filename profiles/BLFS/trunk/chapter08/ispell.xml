@@ -28,6 +28,11 @@
         <find>/usr/local</find>
         <replace>/usr</replace>
       </search_replace>
+      <search_replace>
+	<file>local.h.linux</file>
+	<find>/lib</find>
+	<replace>/share/ispell</replace>
+      </search_replace>
       <copy>
         <source>local.h.linux</source>
         <destination>local.h</destination>

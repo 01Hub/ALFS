@@ -23,11 +23,12 @@
       <stageinfo>
 	<base>&build_dir;/&freetype-directory;</base>
       </stageinfo>
-      <patch>
-	<param>-N</param>
-	<param>-p1</param>
-	<param>-i &packages_dir;/&freetype-bytecode-interpreter-patch;</param>
-      </patch>
+      <execute command="sed">
+	<param>-i</param>
+	<param>-r</param>
+	<param>'s:.*(#.*BYTE.*) .*:\1:'</param>
+	<param>include/freetype/config/ftoption.h</param>
+      </execute>
     </stage>
     <stage name="Installing">
       <stageinfo>

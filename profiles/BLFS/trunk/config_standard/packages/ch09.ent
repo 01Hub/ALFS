@@ -38,17 +38,14 @@
 <!ENTITY lcms-md5       "399957403c76d20ea571a1b1232bda09">
 <!ENTITY lcms-directory "lcms-&lcms-version;">
 
-<!ENTITY freetype-version   "2.1.9">
+<!ENTITY freetype-version   "2.1.10">
 <!ENTITY freetype-package   "freetype-&freetype-version;.tar.bz2">
-<!ENTITY freetype-md5       "ec1b903e4be5f073caa72458ea58c29c">
+<!ENTITY freetype-md5       "a4012e7d1f6400df44a16743b11b8423">
 <!ENTITY freetype-directory "freetype-&freetype-version;">
 
-<!ENTITY freetype-bytecode-interpreter-patch     "freetype-&freetype-version;-bytecode_interpreter-1.patch">
-<!ENTITY freetype-bytecode-interpreter-patch-md5 "d795413ea5f480f746d22756bfb5572c">
-
-<!ENTITY fontconfig-version   "2.3.1">
+<!ENTITY fontconfig-version   "2.3.2">
 <!ENTITY fontconfig-package   "fontconfig-&fontconfig-version;.tar.bz2">
-<!ENTITY fontconfig-md5       "7fbe8164fd9045e9cec013d76944e1ce">
+<!ENTITY fontconfig-md5       "73cf9d0d829a318da3991b1c27adde1b">
 <!ENTITY fontconfig-directory "fontconfig-&fontconfig-version;">
 
 <!ENTITY libart_lgpl-version   "2.3.17">
