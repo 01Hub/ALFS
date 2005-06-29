@@ -29,11 +29,11 @@
     <copy base="&blfs-config;/etc/profile.d">
       <source>dircolors.sh</source>
       <source>extrapaths.sh</source>
+      <source>extra-prompt.sh</source>
       <source>readline.sh</source>
       <source>tinker-term.sh</source>
       <source>umask.sh</source>
       <source>X.sh</source>
-      <source>xterm-titlebars.sh</source>
       <destination>/etc/profile.d</destination>
     </copy>
     <copy>

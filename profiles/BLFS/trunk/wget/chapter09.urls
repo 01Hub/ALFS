@@ -13,10 +13,9 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libmng-1.0.9.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/lcms-1.14.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/freetype-2.1.9.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/freetype-2.1.9-bytecode_interpreter-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/freetype-2.1.10.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/fontconfig-2.3.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/fontconfig-2.3.2.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libart_lgpl-2.3.17.tar.bz2
 
