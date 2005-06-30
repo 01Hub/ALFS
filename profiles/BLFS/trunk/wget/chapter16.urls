@@ -3,6 +3,6 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/curl-7.13.1.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/wvstreams-4.0.1.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/wvstreams-4.0.1-tcl84-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gnet-2.0.5.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gnet-2.0.7.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libsoup-2.2.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libsoup-2.2.3.tar.bz2

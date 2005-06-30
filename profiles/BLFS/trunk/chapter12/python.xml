@@ -37,18 +37,6 @@
       <stageinfo>
 	<base>&build_dir;/&python-directory;</base>
       </stageinfo>
-      <!-- This is only needed when db is installed. Maybe we could use conditional execution here...
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&python-db43-patch;</param>
-      </patch>
--->
-      <patch>
-	<param>-N</param>
-	<param>-p0</param>
-	<param>-i &packages_dir;/&python-security-patch;</param>
-      </patch>
       <patch>
         <param>-N</param>
         <param>-p1</param>
