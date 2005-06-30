@@ -29,7 +29,7 @@
         <name>openssl</name>
       </utilizes>
       <utilizes>
-        <name>&j2sdk;</name>
+        <name>&jdk;</name>
       </utilizes>
       <utilizes>
         <name>libtiff</name>

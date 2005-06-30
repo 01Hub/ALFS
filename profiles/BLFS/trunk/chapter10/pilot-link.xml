@@ -17,7 +17,7 @@
       <name>libpng</name>
     </utilizes>
     <utilizes>
-      <name>&j2sdk;</name>
+      <name>&jdk;</name>
     </utilizes>
     <utilizes>
       <name>tcl</name>

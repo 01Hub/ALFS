@@ -38,7 +38,7 @@
         <name>ruby</name>
       </utilizes>
       <utilizes>
-        <name>&j2sdk;</name>
+        <name>&jdk;</name>
       </utilizes>
       <utilizes>
 	<name>mozilla</name>

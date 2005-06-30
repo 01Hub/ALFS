@@ -14,7 +14,7 @@
 <package name="fop" version="&fop-version;">
   <packageinfo>
     <requires>
-      <name>&j2sdk;</name>
+      <name>&jdk;</name>
     </requires>
     <utilizes>
       <name>libxslt</name>
@@ -39,9 +39,9 @@
   <stage name="Installing JAI.">
     <stageinfo>
       <environment>
-	<variable name="JAVA_HOME">/opt/j2sdk/j2sdk</variable>
+	<variable name="JAVA_HOME">/opt/jdk/jdk</variable>
       </environment>
-      <base>/opt/j2sdk/j2sdk</base>
+      <base>/opt/jdk/jdk</base>
     </stageinfo>
     <permissions mode="755">
       <name>&packages_dir;/&fop-jai-binary;</name>
@@ -51,7 +51,7 @@
   <stage name="Installing FOP.">
     <stageinfo>
       <environment>
-	<variable name="JAVA_HOME">/opt/j2sdk/j2sdk</variable>
+	<variable name="JAVA_HOME">/opt/jdk/jdk</variable>
       </environment>
       <base>&build_dir;/&fop-directory;</base>
     </stageinfo>

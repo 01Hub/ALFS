@@ -16,14 +16,13 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gcc-3.3.4-linkonce-1.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/guile-1.6.7.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-fix_inline_asm-1.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-gcc33-1.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-motif_mkmsgcat-1.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-nptl-1.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-remove_debug_image-1.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-remove_fixed_paths-1.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-static_cxx-1.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/j2sdk-1.4.2-ash-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/jdk-1.5.0-gcc_3.4.2+-3.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/jdk-1.5.0-motif_mkmsgcat-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/jdk-1.5.0-nptl-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/jdk-1.5.0-remove_broken_demo-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/jdk-1.5.0-remove_debug_image-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/jdk-1.5.0-remove_fixed_paths-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/jdk-1.5.0-static_cxx-1.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/librep-0.17.tar.bz2
 

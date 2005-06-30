@@ -19,7 +19,7 @@
         <name>&ximpl;</name>
       </requires>
       <requires>
-        <name>&j2sdk;</name>
+        <name>&jdk;</name>
       </requires>
       <requires>
         <name>zip</name>
@@ -80,9 +80,9 @@
     <stage name="Installing">
       <stageinfo>
         <environment>
-          <variable name="JAVA_HOME">/opt/j2sdk/j2sdk</variable>
+          <variable name="JAVA_HOME">/opt/jdk/jdk</variable>
 	  <variable name="PATH" mode="prepend">/opt/gcc-&gcc-33-version;/bin:</variable>
-          <variable name="PATH" mode="append">:/opt/j2sdk/j2sdk/bin</variable>
+          <variable name="PATH" mode="append">:/opt/jdk/jdk/bin</variable>
           <variable name="LS_COLORS" />
         </environment>
         <base>&build_dir;/OOo-build/&openoffice-directory;</base>
