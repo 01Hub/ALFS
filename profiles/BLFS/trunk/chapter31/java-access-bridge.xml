@@ -17,7 +17,7 @@
       <name>at-spi</name>
     </requires>
     <requires>
-      <name>&j2sdk;</name>
+      <name>&jdk;</name>
     </requires>
   </packageinfo>
   <stage name="Unpacking.">

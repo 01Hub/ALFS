@@ -72,8 +72,8 @@
 <!ENTITY krb-impl "heimdal">
 
 <!-- Java implementation -->
-<!-- binary (j2sdk-binary) or source (j2sdk-source) -->
-<!ENTITY j2sdk "j2sdk-source">
+<!-- binary (jdk-binary) or source (jdk-source) -->
+<!ENTITY jdk "jdk-source">
 
 <!-- X implementation -->
 <!-- XFree86 (xfree86) or X.org (xorg) -->

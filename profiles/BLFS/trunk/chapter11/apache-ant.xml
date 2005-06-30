@@ -14,7 +14,7 @@
 <package name="apache-ant" version="&apache-ant-version;">
   <packageinfo>
     <requires>
-      <name>&j2sdk;</name>
+      <name>&jdk;</name>
     </requires>
   </packageinfo>
   <stage name="Unpacking.">
