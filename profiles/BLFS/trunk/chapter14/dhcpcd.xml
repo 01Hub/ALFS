@@ -42,7 +42,6 @@
       <configure>
         <param>--prefix=""</param>
         <param>--sysconfdir=/var/lib</param>
-        <param>--mandir=/usr/share/man</param>
       </configure>
       <make />
       <make>

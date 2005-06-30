@@ -1,18 +1,11 @@
 <!--************* packages for chapter 12 *************-->
 
-<!ENTITY python-version   "2.4">
+<!ENTITY python-version   "2.4.1">
 <!ENTITY python-package   "Python-&python-version;.tar.bz2">
-<!ENTITY python-md5       "44c2226eff0f3fc1f2fedaa1ce596533">
+<!ENTITY python-md5       "de3e9a8836fab6df7c7ce545331afeb3">
 <!ENTITY python-directory "Python-&python-version;">
 
 <!ENTITY python-gdbm-patch     "Python-&python-version;-gdbm-1.patch">
-<!ENTITY python-gdbm-patch-md5 "aa74addd35c0f4b0f92cc585b8add8dc">
-
-<!ENTITY python-db43-patch     "Python-&python-version;-db43-1.patch">
-<!ENTITY python-db43-patch-md5 "cfe80c06b456210eae6b45feb09c80c9">
-
-<!ENTITY python-security-patch     "patch.txt">
-<!ENTITY python-security-patch-md5 "bdebb9c747dea1eada73ee7dbb6ac838">
 
 <!-- Begin Perl Modules -->
 <!ENTITY Gtk-Perl-version   "0.7009">
@@ -100,19 +93,19 @@
 <!ENTITY Test-Prereq-md5       "3c2a39cd3052045e5ec8cb58dff41b0c">
 <!ENTITY Test-Prereq-directory "Test-Prereq-&Test-Prereq-version;">
 
-<!ENTITY Module-Info-version   "0.26">
+<!ENTITY Module-Info-version   "0.28">
 <!ENTITY Module-Info-package   "Module-Info-&Module-Info-version;.tar.bz2">
-<!ENTITY Module-Info-md5       "3263f256cb3535bd86b9f65f4387f83e">
+<!ENTITY Module-Info-md5       "">
 <!ENTITY Module-Info-directory "Module-Info-&Module-Info-version;">
 
-<!ENTITY Module-CoreList-version   "1.97">
+<!ENTITY Module-CoreList-version   "2.02">
 <!ENTITY Module-CoreList-package   "Module-CoreList-&Module-CoreList-version;.tar.bz2">
-<!ENTITY Module-CoreList-md5       "946f8c7a82c3951ad7dfcba8242bba40">
+<!ENTITY Module-CoreList-md5       "">
 <!ENTITY Module-CoreList-directory "Module-CoreList-&Module-CoreList-version;">
 
-<!ENTITY HTML-Parser-version   "3.44">
+<!ENTITY HTML-Parser-version   "3.45">
 <!ENTITY HTML-Parser-package   "HTML-Parser-&HTML-Parser-version;.tar.bz2">
-<!ENTITY HTML-Parser-md5       "7d693a6418ce6797ec5f925f9f515cac">
+<!ENTITY HTML-Parser-md5       "">
 <!ENTITY HTML-Parser-directory "HTML-Parser-&HTML-Parser-version;">
 
 <!ENTITY HTML-Tagset-version   "3.04">
@@ -120,9 +113,9 @@
 <!ENTITY HTML-Tagset-md5       "129ff1a70b4311eed150c8e11b25ff5d">
 <!ENTITY HTML-Tagset-directory "HTML-Tagset-&HTML-Tagset-version;">
 
-<!ENTITY Compress-Zlib-version   "1.33">
+<!ENTITY Compress-Zlib-version   "1.34">
 <!ENTITY Compress-Zlib-package   "Compress-Zlib-&Compress-Zlib-version;.tar.bz2">
-<!ENTITY Compress-Zlib-md5       "1c129f3cfd051731b683dd1191693457">
+<!ENTITY Compress-Zlib-md5       "">
 <!ENTITY Compress-Zlib-directory "Compress-Zlib-&Compress-Zlib-version;">
 
 <!ENTITY Crypt-SSLeay-version   "0.51">
@@ -130,9 +123,9 @@
 <!ENTITY Crypt-SSLeay-md5       "501e93af5be89d91aca350c63b29a8cd">
 <!ENTITY Crypt-SSLeay-directory "Crypt-SSLeay-&Crypt-SSLeay-version;">
 
-<!ENTITY DateManip-version   "5.42a">
+<!ENTITY DateManip-version   "5.44">
 <!ENTITY DateManip-package   "DateManip-&DateManip-version;.tar.bz2">
-<!ENTITY DateManip-md5       "e03df84b14c11f0b15008b8a501285b1">
+<!ENTITY DateManip-md5       "">
 <!ENTITY DateManip-directory "DateManip-&DateManip-version;">
 
 <!ENTITY Finance-Quote-version   "1.08">
@@ -140,9 +133,9 @@
 <!ENTITY Finance-Quote-md5       "b0673f8a6e52fe895f5537555d5069a7">
 <!ENTITY Finance-Quote-directory "Finance-Quote-&Finance-Quote-version;">
 
-<!ENTITY HTML-TableExtract-version   "1.08">
+<!ENTITY HTML-TableExtract-version   "2.02">
 <!ENTITY HTML-TableExtract-package   "HTML-TableExtract-&HTML-TableExtract-version;.tar.bz2">
-<!ENTITY HTML-TableExtract-md5       "57cf7fcdf6dbceb950765aade31d3ce1">
+<!ENTITY HTML-TableExtract-md5       "">
 <!ENTITY HTML-TableExtract-directory "HTML-TableExtract-&HTML-TableExtract-version;">
 
 <!ENTITY PDL-version   "2.4.2">
@@ -264,9 +257,9 @@
 <!ENTITY gcc-33-no-fixincludes-patch     "gcc-&gcc-33-version;-no_fixincludes-1.patch">
 <!ENTITY gcc-33-linkonce-patch	   "gcc-&gcc-33-version;-linkonce-1.patch">
 
-<!ENTITY nasm-version   "0.98.38">
+<!ENTITY nasm-version   "0.98.39">
 <!ENTITY nasm-package   "nasm-&nasm-version;.tar.bz2">
-<!ENTITY nasm-md5       "9f682490c132b070d54e395cb6ee145e">
+<!ENTITY nasm-md5       "2032ad44c7359f7a9a166a40a633e772">
 <!ENTITY nasm-directory "nasm-&nasm-version;">
 
 <!ENTITY doxygen-version   "1.4.2">
@@ -279,11 +272,10 @@
 <!ENTITY guile-md5       "18090aa1fa5e107023751b1b5ad08734">
 <!ENTITY guile-directory "guile-&guile-version;">
 
-<!ENTITY php-version    "5.0.3">
+<!ENTITY php-version    "5.0.4">
 <!ENTITY php-package    "php-&php-version;.tar.bz2">
-<!ENTITY php-md5        "fd26455febdddee0977ce226b9108d9c">
+<!ENTITY php-md5        "fb1aac107870f897d26563a9cc5053c0">
 <!ENTITY php-directory  "php-&php-version;">
 
 <!ENTITY php-db43-patch     "php-&php-version;-db43-1.patch">
-<!ENTITY php-db43-patch-md5 "55c2f401f68da0d51b521294a25b3c4a">
 

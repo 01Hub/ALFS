@@ -26,36 +26,36 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/jdk-1.5.0-static_cxx-1.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/librep-0.17.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/nasm-0.98.38.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/nasm-0.98.39.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/Gtk-Perl-0.7009.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XML-Parser-2.34.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XML-Writer-0.520.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/SGMLSpm-1.03ii.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/Tk-804.027.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Net-DNS-0.48.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/Digest-HMAC-1.01.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/Digest-SHA1-2.10.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libwww-perl-5.803.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/URI-1.35.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/Business-ISBN-1.79.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/Business-ISBN-Data-1.09.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/Test-Pod-1.20.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Pod-Simple-3.02.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Pod-Escapes-1.04.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/Test-Builder-Tester-1.01.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/Test-Prereq-1.025.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Module-Info-0.26.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Module-CoreList-1.97.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/HTML-Parser-3.44.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/HTML-Tagset-3.04.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/Compress-Zlib-1.33.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/Crypt-SSLeay-0.51.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/DateManip-5.42a.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/Finance-Quote-1.08.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/HTML-TableExtract-1.08.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/Gtk-Perl-0.7009.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/XML-Parser-2.34.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/XML-Writer-0.520.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/SGMLSpm-1.03ii.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/T-V/Tk-804.027.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/Net-DNS-0.48.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/D-E/Digest-HMAC-1.01.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/D-E/Digest-SHA1-2.10.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libwww-perl-5.803.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/T-V/URI-1.35.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/Business-ISBN-1.79.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/Business-ISBN-Data-1.09.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/T-V/Test-Pod-1.20.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/Pod-Simple-3.02.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/Pod-Escapes-1.04.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/T-V/Test-Builder-Tester-1.01.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/T-V/Test-Prereq-1.025.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/Module-Info-0.28.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/Module-CoreList-2.02.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/HTML-Parser-3.45.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/HTML-Tagset-3.04.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/Compress-Zlib-1.34.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/Crypt-SSLeay-0.51.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/D-E/DateManip-5.44.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/Finance-Quote-1.08.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/HTML-TableExtract-2.02.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/PDL-2.4.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/PDL-2.4.2.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/blfs/blfs-packages/conglomeration/perl_modules/Filter-1.30.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/blfs/blfs-packages/conglomeration/perl_modules/Inline-0.44.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/blfs/blfs-packages/conglomeration/perl_modules/Parse-RecDescent-1.94.tar.bz2
@@ -63,13 +63,11 @@ ftp://ftp.lfs-matrix.net/pub/blfs/blfs-packages/conglomeration/perl_modules/Term
 ftp://ftp.lfs-matrix.net/pub/blfs/blfs-packages/conglomeration/perl_modules/ExtUtils-F77-1.14.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/blfs/blfs-packages/conglomeration/perl_modules/Astro-FITS-Header-2.8.1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/php-5.0.3.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/php-5.0.3-db43-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/php-5.0.4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/php-5.0.4-db43-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Python-2.4.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Python-2.4-gdbm-1.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/Python-2.4-db43-1.patch
-http://www.python.org/security/PSF-2005-001/patch.txt
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/Python-2.4.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/Python-2.4.1-gdbm-1.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/ruby-1.8.2.tar.bz2
 
