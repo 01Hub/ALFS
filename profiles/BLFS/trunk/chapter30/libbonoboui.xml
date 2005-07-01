@@ -41,11 +41,6 @@
       <make>
 	<param>install</param>
       </make>
-      <search_replace>
-	<file>&gnome-prefix;/lib/bonobo/servers/Bonobo_Sample_Controls.server</file>
-	<find>/gnome/head/INSTALL</find>
-	<replace>&gnome-prefix;</replace>
-      </search_replace>
       &ldconfig;
     </stage>
     <stage name="Cleanup">

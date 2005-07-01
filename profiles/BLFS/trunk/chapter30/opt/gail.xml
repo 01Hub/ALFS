@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+<!DOCTYPE alfs SYSTEM "../../DTD/ALFS.dtd"
 [
-<!ENTITY % general_entities SYSTEM "../config/general.ent">
-<!ENTITY % package_entities SYSTEM "../config/packages/ch30.ent">
-<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % general_entities SYSTEM "../../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../../config/packages/ch30.ent">
+<!ENTITY % config_entities SYSTEM  "../../config/config.ent">
 
 %general_entities;
 %package_entities;
@@ -39,6 +39,11 @@
 	<param>install</param>
       </make>
       &ldconfig;
+      <link>
+	<option>force</option>
+	<target>`pkg-config --variable=prefix ORBit-2.0`/lib/gtk-2.0/modules</target>
+	<name>/usr/lib/gtk-2.0</name>
+      </link>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gail-directory;</remove>

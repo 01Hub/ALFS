@@ -39,7 +39,6 @@
 	<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
 	<param>--sysconfdir=/etc/gnome</param>
 	<param>--localstatedir=/var/lib</param>
-	<param>--disable-gtk-doc</param>
       </configure>
       <make />
       <make>

@@ -40,15 +40,14 @@
       <configure>
 	<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
 	<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
-	<param>--disable-gtk-doc</param>
       </configure>
       <make />
       <make>
 	<param>install</param>
       </make>
       &ldconfig;
-      <textdump base="/root" mode="append">
-	<file>.bash_profile</file>
+      <textdump mode="append">
+	<file>/etc/profile</file>
 	<content>
 	  =LIBGLADE_MODULE_PATH=&gnome-prefix;/lib/libglade/2.0
 	</content>

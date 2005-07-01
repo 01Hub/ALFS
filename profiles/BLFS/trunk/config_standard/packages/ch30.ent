@@ -1,18 +1,18 @@
 <!--************* packages for chapter 30 *************-->
 
-<!ENTITY orbit2-version   "2.12.0">
+<!ENTITY orbit2-version   "2.12.2">
 <!ENTITY orbit2-package   "ORBit2-&orbit2-version;.tar.bz2">
-<!ENTITY orbit2-md5       "d7f0c2b9bee73b89978a9968c10f81fe">
+<!ENTITY orbit2-md5       "7f963dcd0d84e6854460449383cc8c70">
 <!ENTITY orbit2-directory "ORBit2-&orbit2-version;">
 
-<!ENTITY libbonobo-version   "2.8.0">
+<!ENTITY libbonobo-version   "2.8.1">
 <!ENTITY libbonobo-package   "libbonobo-&libbonobo-version;.tar.bz2">
-<!ENTITY libbonobo-md5       "e3358680e50e69779535d126b1c56ee7">
+<!ENTITY libbonobo-md5       "54f863c20016cf8a2cf25056f6c7cda7">
 <!ENTITY libbonobo-directory "libbonobo-&libbonobo-version;">
 
-<!ENTITY gconf2-version   "2.8.1">
+<!ENTITY gconf2-version   "2.10.0">
 <!ENTITY gconf2-package   "GConf-&gconf2-version;.tar.bz2">
-<!ENTITY gconf2-md5       "b1173cbe33404bcbcc15710ce2a28f67">
+<!ENTITY gconf2-md5       "a7cd37be4e317195a6668a086fc72033">
 <!ENTITY gconf2-directory "GConf-&gconf2-version;">
 
 <!ENTITY gnome-mime-data-version   "2.4.2">
@@ -20,49 +20,51 @@
 <!ENTITY gnome-mime-data-md5       "37242776b08625fa10c73c18b790e552">
 <!ENTITY gnome-mime-data-directory "gnome-mime-data-&gnome-mime-data-version;">
 
-<!ENTITY gnome-vfs2-version   "2.8.3">
+<!ENTITY gnome-vfs2-version   "2.10.1">
 <!ENTITY gnome-vfs2-package   "gnome-vfs-&gnome-vfs2-version;.tar.bz2">
-<!ENTITY gnome-vfs2-md5       "5484694e7250c80a231cfc525d924cc3">
+<!ENTITY gnome-vfs2-md5       "88b520e5de748a310a2aef62fc095c8b">
 <!ENTITY gnome-vfs2-directory "gnome-vfs-&gnome-vfs2-version;">
 
-<!ENTITY libgnome-version   "2.8.0">
+<!ENTITY gnome-vfs2-hal-patch "gnome-vfs-&gnome-vfs2-version;-hal_0.5.0-1.patch">
+
+<!ENTITY libgnome-version   "2.10.0">
 <!ENTITY libgnome-package   "libgnome-&libgnome-version;.tar.bz2">
-<!ENTITY libgnome-md5       "dab4ecbfa7ec1a2f22d2a48b6b83e937">
+<!ENTITY libgnome-md5       "f8e1225d96126f5139232821a6723d15">
 <!ENTITY libgnome-directory "libgnome-&libgnome-version;">
 
-<!ENTITY libgnomecanvas-version   "2.8.0">
+<!ENTITY libgnomecanvas-version   "2.10.0">
 <!ENTITY libgnomecanvas-package   "libgnomecanvas-&libgnomecanvas-version;.tar.bz2">
-<!ENTITY libgnomecanvas-md5       "2bf10396a92777e7b64b6052a8a232f1">
+<!ENTITY libgnomecanvas-md5       "88aac06c8dfd24671db3fe3bf881b5fc">
 <!ENTITY libgnomecanvas-directory "libgnomecanvas-&libgnomecanvas-version;">
 
-<!ENTITY libbonoboui-version   "2.8.0">
+<!ENTITY libbonoboui-version   "2.8.1">
 <!ENTITY libbonoboui-package   "libbonoboui-&libbonoboui-version;.tar.bz2">
-<!ENTITY libbonoboui-md5       "73e0b8883d8bea6b3bbd297dbbcb1f36">
+<!ENTITY libbonoboui-md5       "b23daafa8344a88696d497f20285ef55">
 <!ENTITY libbonoboui-directory "libbonoboui-&libbonoboui-version;">
 
-<!ENTITY gnome-icon-theme-version   "2.8.0">
+<!ENTITY gnome-icon-theme-version   "2.10.1">
 <!ENTITY gnome-icon-theme-package   "gnome-icon-theme-&gnome-icon-theme-version;.tar.bz2">
-<!ENTITY gnome-icon-theme-md5       "7be016337c44c024fb22f7b94b689d7b">
+<!ENTITY gnome-icon-theme-md5       "680a57ed3cecb9a16824570f7002879e">
 <!ENTITY gnome-icon-theme-directory "gnome-icon-theme-&gnome-icon-theme-version;">
 
-<!ENTITY gnome-keyring-version   "0.4.0">
+<!ENTITY gnome-keyring-version   "0.4.2">
 <!ENTITY gnome-keyring-package   "gnome-keyring-&gnome-keyring-version;.tar.bz2">
-<!ENTITY gnome-keyring-md5       "683b422b77c56c3a125e7aa5c886c47e">
+<!ENTITY gnome-keyring-md5       "220930f6685780089cc5c769dd4ad561">
 <!ENTITY gnome-keyring-directory "gnome-keyring-&gnome-keyring-version;">
 
-<!ENTITY libgnomeui-version   "2.8.0">
+<!ENTITY libgnomeui-version   "2.10.0">
 <!ENTITY libgnomeui-package   "libgnomeui-&libgnomeui-version;.tar.bz2">
-<!ENTITY libgnomeui-md5       "ef0df128e3c0b2047ce440bbbe481390">
+<!ENTITY libgnomeui-md5       "e17c0d97e5f240513ac2d36268d696ed">
 <!ENTITY libgnomeui-directory "libgnomeui-&libgnomeui-version;">
 
-<!ENTITY gtk-engines-version   "2.2.0">
+<!ENTITY gtk-engines-version   "2.6.3">
 <!ENTITY gtk-engines-package   "gtk-engines-&gtk-engines-version;.tar.bz2">
-<!ENTITY gtk-engines-md5       "78e9276c28b509f3203de4873c20a263">
+<!ENTITY gtk-engines-md5       "ba5975f8ab390fa43fc0bf94f4a3b023">
 <!ENTITY gtk-engines-directory "gtk-engines-&gtk-engines-version;">
 
-<!ENTITY gnome-themes-version   "2.8.1">
+<!ENTITY gnome-themes-version   "2.10.1">
 <!ENTITY gnome-themes-package   "gnome-themes-&gnome-themes-version;.tar.bz2">
-<!ENTITY gnome-themes-md5       "43042549347d67a844f986acd9e6bc3d">
+<!ENTITY gnome-themes-md5       "f365c73ccfbe35640e17fe8d877273fe">
 <!ENTITY gnome-themes-directory "gnome-themes-&gnome-themes-version;">
 
 <!ENTITY scrollkeeper-version   "0.3.14">
@@ -70,74 +72,85 @@
 <!ENTITY scrollkeeper-md5       "b175e582a6cec3e50a9de73a5bb7455a">
 <!ENTITY scrollkeeper-directory "scrollkeeper-&scrollkeeper-version;">
 
-<!ENTITY gnome-desktop-version   "2.8.1">
+<!ENTITY gnome-desktop-version   "2.10.1">
 <!ENTITY gnome-desktop-package   "gnome-desktop-&gnome-desktop-version;.tar.bz2">
-<!ENTITY gnome-desktop-md5       "47f9b9508c4a0349d66fa1138b521794">
+<!ENTITY gnome-desktop-md5       "5d6d21e4b5d66975c9c2c04add7da6e2">
 <!ENTITY gnome-desktop-directory "gnome-desktop-&gnome-desktop-version;">
 
-<!ENTITY libwnck-version   "2.8.1">
-<!ENTITY libwnck-package   "libwnck-&libwnck-version;.tar.bz2">
-<!ENTITY libwnck-md5       "c0a5a8478064287e167c15e3ec0e82a1">
-<!ENTITY libwnck-directory "libwnck-&libwnck-version;">
+<!ENTITY gnome-backgrounds-version "2.10.1">
+<!ENTITY gnome-backgrounds-package "gnome-backgrounds-&gnome-backgrounds-version;.tar.bz2">
+<!ENTITY gnome-backgrounds-md5 "2a4ec2862c6a1a2bf3ad330c830edae4">
+<!ENTITY gnome-backgrounds-directory "gnome-backgrounds-&gnome-backgrounds-version;">
 
-<!ENTITY gnome-panel-version   "2.8.1">
+<!ENTITY gnome-menus-version "2.10.1">
+<!ENTITY gnome-menus-package "gnome-menus-&gnome-menus-version;.tar.bz2">
+<!ENTITY gnome-menus-md5 "83d9695a35ed2215620e8773ee918b8a">
+<!ENTITY gnome-menus-directory "gnome-menus-&gnome-menus-version;">
+
+<!ENTITY gnome-panel-version   "2.10.1">
 <!ENTITY gnome-panel-package   "gnome-panel-&gnome-panel-version;.tar.bz2">
-<!ENTITY gnome-panel-md5       "77aea214467da238170ed10dbc825799">
+<!ENTITY gnome-panel-md5       "a2719f5c79a9e48bca086f08a77a6889">
 <!ENTITY gnome-panel-directory "gnome-panel-&gnome-panel-version;">
 
-<!ENTITY gnome-session-version   "2.8.1">
+<!ENTITY gnome-session-version   "2.10.0">
 <!ENTITY gnome-session-package   "gnome-session-&gnome-session-version;.tar.bz2">
-<!ENTITY gnome-session-md5       "15402d84eef4cf159bb8de78f432bb98">
+<!ENTITY gnome-session-md5       "cbeb2db49dac11bf8088e6b025265fff">
 <!ENTITY gnome-session-directory "gnome-session-&gnome-session-version;">
 
-<!ENTITY vte-version   "0.11.11">
+<!ENTITY vte-version   "0.11.13">
 <!ENTITY vte-package   "vte-&vte-version;.tar.bz2">
-<!ENTITY vte-md5       "4d7a3674df5b8be7f1adffa981c1fc3d">
+<!ENTITY vte-md5       "5eb73c7de433fb6e53ac4378df9d23b5 ">
 <!ENTITY vte-directory "vte-&vte-version;">
 
-<!ENTITY gnome-terminal-version   "2.8.0">
+<!ENTITY gnome-terminal-version   "2.10.0">
 <!ENTITY gnome-terminal-package   "gnome-terminal-&gnome-terminal-version;.tar.bz2">
-<!ENTITY gnome-terminal-md5       "93e59f24b35bd867653664565adb4672">
+<!ENTITY gnome-terminal-md5       "062744daca0c7f708b8c52f47b5db0d1">
 <!ENTITY gnome-terminal-directory "gnome-terminal-&gnome-terminal-version;">
 
-<!ENTITY libgtop-version   "2.8.1">
+<!ENTITY libgtop-version   "2.10.1">
 <!ENTITY libgtop-package   "libgtop-&libgtop-version;.tar.bz2">
-<!ENTITY libgtop-md5       "5d191cbf2b5b2a84dfee1972c99b1a78">
+<!ENTITY libgtop-md5       "b006baa3bd486005411a03534b45708e">
 <!ENTITY libgtop-directory "libgtop-&libgtop-version;">
 
-<!ENTITY gail-version   "1.8.0">
+<!ENTITY gail-version   "1.8.3">
 <!ENTITY gail-package   "gail-&gail-version;.tar.bz2">
-<!ENTITY gail-md5       "58a0520361a47634f19ea271f5a5d8aa">
+<!ENTITY gail-md5       "9e5db197dea8f92eec1f07984f12542a">
 <!ENTITY gail-directory "gail-&gail-version;">
 
-<!ENTITY gnome-applets-version   "2.8.1">
+<!ENTITY gnome-applets-version   "2.10.1">
 <!ENTITY gnome-applets-package   "gnome-applets-&gnome-applets-version;.tar.bz2">
-<!ENTITY gnome-applets-md5       "472941a24eaf4ef6e7012f07d32e83cf">
+<!ENTITY gnome-applets-md5       "da9cd75f77972c96eec9551d41878a7f">
 <!ENTITY gnome-applets-directory "gnome-applets-&gnome-applets-version;">
 
-<!ENTITY gnome-applets-gswitchit-patch     "gnome-applets-&gnome-applets-version;-fix_gswitchit-1.patch">
-<!ENTITY gnome-applets-gswitchit-patch-md5 "c623346556fc211527cdea4da3480d3c">
-
-<!ENTITY eel-version   "2.8.2">
+<!ENTITY eel-version   "2.10.1">
 <!ENTITY eel-package   "eel-&eel-version;.tar.bz2">
-<!ENTITY eel-md5       "4d0beb2f0ad4c304b49c06b08d0a03e5">
+<!ENTITY eel-md5       "2978fae17565dfb6e2d7ca129e738b9d">
 <!ENTITY eel-directory "eel-&eel-version;">
 
-<!ENTITY nautilus-version    "2.8.2">
+<!ENTITY nautilus-version    "2.10.1">
 <!ENTITY nautilus-package    "nautilus-&nautilus-version;.tar.bz2">
-<!ENTITY nautilus-md5        "d5fdec9acc37181016e8424e96d663b8">
+<!ENTITY nautilus-md5        "976d725db15e901bc881dfb8c50145c1">
 <!ENTITY nautilus-directory  "nautilus-&nautilus-version;">
 
-<!ENTITY nautilus-libexif-fix-patch     "nautilus-&nautilus-version;-libexif_fix-1.patch">
-<!ENTITY nautilus-libexif-fix-patch-md5 "5e9c4f0c06a51ea5704498d8212f505e">
+<!ENTITY gnome-doc-utils-version   "0.2.0">
+<!ENTITY gnome-doc-utils-package   "gnome-doc-utils-&gnome-doc-utils-version;.tar.bz2">
+<!ENTITY gnome-doc-utils-md5       "c72f2a974e4f05210d2736e92399c58e">
+<!ENTITY gnome-doc-utils-directory "gnome-doc-utils-&gnome-doc-utils-version;">
 
-<!ENTITY control-center-version   "2.8.1">
+<!ENTITY libgtkhtml-version   "2.6.3">
+<!ENTITY libgtkhtml-package   "libgtkhtml-&libgtkhtml-version;.tar.bz2">
+<!ENTITY libgtkhtml-md5       "c77789241d725e189ffc0391eda94361">
+<!ENTITY libgtkhtml-directory "libgtkhtml-&libgtkhtml-version;">
+
+<!ENTITY yelp-version   "2.6.5">
+<!ENTITY yelp-package   "yelp-&yelp-version;.tar.bz2">
+<!ENTITY yelp-md5       "9bd94af344ee6a0bf69aa6f9cbd6b7e9">
+<!ENTITY yelp-directory "yelp-&yelp-version;">
+
+<!ENTITY control-center-version   "2.10.1">
 <!ENTITY control-center-package   "control-center-&control-center-version;.tar.bz2">
-<!ENTITY control-center-md5       "7bd9c12b9abb05b6fcf7b4906b6918ea">
+<!ENTITY control-center-md5       "d95a5746aa349536dc0f59c61cdaf19f">
 <!ENTITY control-center-directory "control-center-&control-center-version;">
-
-<!ENTITY control-center-gswitchit-patch     "control-center-&control-center-version;-fix_gswitchit-1.patch">
-<!ENTITY control-center-gswitchit-patch-md5 "147a433d4b0438d25ac99a43ee9575cf">
 
 <!ENTITY gnome2-user-docs-version   "2.8.1">
 <!ENTITY gnome2-user-docs-package   "gnome2-user-docs-&gnome2-user-docs-version;.tar.bz2">

@@ -19,6 +19,9 @@
       <requires>
         <name>libwnck</name>
       </requires>
+      <requires>
+	<name>gnome-menus</name>
+      </requires>
       <utilizes>
         <name>startup-notification</name>
       </utilizes>
@@ -45,7 +48,6 @@
         <param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
         <param>--localstatedir=/var/lib</param>
         <param>--sysconfdir=/etc/gnome</param>
-        <param>--disable-gtk-doc</param>
       </configure>
       <make />
       <make>

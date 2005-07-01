@@ -259,6 +259,7 @@
       <xi:include href="chapter26/gtk+2.xml" />
       <xi:include href="chapter26/lesstif.xml" />
       <xi:include href="chapter26/startup-notification.xml" />
+      <xi:include href="chapter26/libwnck.xml" />
       <xi:include href="chapter26/shared-mime-info.xml" />
       <xi:include href="chapter26/hicolor-icon-theme.xml" />
       <xi:include href="chapter26/libxklavier.xml" />
