@@ -17,14 +17,14 @@
 	<name>gtk+2</name>
       </requires>
     </packageinfo>
-    <stage name="Unpacking.">
+    <stage name="Unpacking">
       <unpack>
         <digest>&gnome-keyring-md5;</digest>
 	<archive>&packages_dir;/&gnome-keyring-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing.">
+    <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&gnome-keyring-directory;</base>
       </stageinfo>
@@ -37,7 +37,7 @@
         <param>install</param>
       </make>
     </stage>
-    <stage name="Cleaning up.">
+    <stage name="Cleanup">
       <remove>&build_dir;/&gnome-keyring-directory;</remove>
     </stage>
   </package>

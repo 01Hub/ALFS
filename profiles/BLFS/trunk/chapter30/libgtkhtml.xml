@@ -11,39 +11,29 @@
 
 ]>
 <alfs>
-  <package name="gconf2" version="&gconf2-version;">
+  <package name="libgtkhtml" version="&libgtkhtml-version;">
     <packageinfo>
       <requires>
-        <name>orbit2</name>
-      </requires>
-      <requires>
-        <name>libxml2</name>
+        <name>gnome-vfs2</name>
       </requires>
       <utilizes>
-        <name>gtk+2</name>
-      </utilizes>
-      <utilizes>
-        <name>gtk-doc</name>
-      </utilizes>
-      <utilizes>
-	<name>docbook-utils</name>
+        <name>gail</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <digest>&gconf2-md5;</digest>
-	<archive>&packages_dir;/&gconf2-package;</archive>
+        <digest>&libgtkhtml-md5;</digest>
+	<archive>&packages_dir;/&libgtkhtml-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-	<base>&build_dir;/&gconf2-directory;</base>
+	<base>&build_dir;/&libgtkhtml-directory;</base>
       </stageinfo>
       <configure>
 	<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-	<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
-	<param>--sysconfdir=/etc/gnome</param>
+	<param>--disable-accessibility</param>
       </configure>
       <make />
       <make>
@@ -52,7 +42,7 @@
       &ldconfig;
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&gconf2-directory;</remove>
+      <remove>&build_dir;/&libgtkhtml-directory;</remove>
     </stage>
   </package>
 </alfs>

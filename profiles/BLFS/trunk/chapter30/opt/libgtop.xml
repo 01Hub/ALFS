@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+<!DOCTYPE alfs SYSTEM "../../DTD/ALFS.dtd"
 [
-<!ENTITY % general_entities SYSTEM "../config/general.ent">
-<!ENTITY % package_entities SYSTEM "../config/packages/ch30.ent">
-<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % general_entities SYSTEM "../../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../../config/packages/ch30.ent">
+<!ENTITY % config_entities SYSTEM  "../../config/config.ent">
 
 %general_entities;
 %package_entities;
@@ -46,6 +46,12 @@
 	<param>install</param>
       </make>
       &ldconfig;
+      <textdump mode="append">
+	<file>/etc/profile</file>
+	<content>
+	  =export INFOPATH=/usr/share/info:&gnome-prefix;/share/info
+	</content>
+      </textdump>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libgtop-directory;</remove>

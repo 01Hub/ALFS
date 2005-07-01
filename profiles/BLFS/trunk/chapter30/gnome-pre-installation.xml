@@ -9,7 +9,7 @@
 
 ]>
 <alfs>
-   <stage name="GNOME pre-installation.">
+   <stage name="GNOME Pre-Installation">
     <textdump base="/root" mode="append">
       <file>.bash_profile</file>
       <content>

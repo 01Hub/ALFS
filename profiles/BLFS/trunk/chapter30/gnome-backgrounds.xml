@@ -11,48 +11,33 @@
 
 ]>
 <alfs>
-  <package name="gconf2" version="&gconf2-version;">
+  <package name="gnome-backgrounds" version="&gnome-backgrounds-version;">
     <packageinfo>
       <requires>
-        <name>orbit2</name>
+	<name>intltool</name>
       </requires>
-      <requires>
-        <name>libxml2</name>
-      </requires>
-      <utilizes>
-        <name>gtk+2</name>
-      </utilizes>
-      <utilizes>
-        <name>gtk-doc</name>
-      </utilizes>
-      <utilizes>
-	<name>docbook-utils</name>
-      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <digest>&gconf2-md5;</digest>
-	<archive>&packages_dir;/&gconf2-package;</archive>
+      	<digest>&gnome-backgrounds-md5;</digest>
+        <archive>&packages_dir;/&gnome-backgrounds-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-	<base>&build_dir;/&gconf2-directory;</base>
+	<base>&build_dir;/&gnome-backgrounds-directory;</base>
       </stageinfo>
       <configure>
-	<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-	<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
-	<param>--sysconfdir=/etc/gnome</param>
+        <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
       </configure>
       <make />
       <make>
-	<param>install</param>
+        <param>install</param>
       </make>
-      &ldconfig;
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&gconf2-directory;</remove>
+      <remove>&build_dir;/&gnome-backgrounds-directory;</remove>
     </stage>
   </package>
 </alfs>

@@ -11,48 +11,43 @@
 
 ]>
 <alfs>
-  <package name="gconf2" version="&gconf2-version;">
+  <package name="yelp" version="&yelp-version;">
     <packageinfo>
       <requires>
-        <name>orbit2</name>
+        <name>libgnomeui</name>
       </requires>
       <requires>
-        <name>libxml2</name>
+        <name>libgtkhtml</name>
+      </requires>
+      <requires>
+	<name>scrollkeeper</name>
       </requires>
       <utilizes>
-        <name>gtk+2</name>
-      </utilizes>
-      <utilizes>
-        <name>gtk-doc</name>
-      </utilizes>
-      <utilizes>
-	<name>docbook-utils</name>
+	<name>gnome-doc-utils</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <digest>&gconf2-md5;</digest>
-	<archive>&packages_dir;/&gconf2-package;</archive>
+        <digest>&yelp-md5;</digest>
+	<archive>&packages_dir;/&yelp-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-	<base>&build_dir;/&gconf2-directory;</base>
+        <base>&build_dir;/&yelp-directory;</base>
       </stageinfo>
       <configure>
-	<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-	<param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
-	<param>--sysconfdir=/etc/gnome</param>
+        <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
+	<param>--localstatedir=/var/lib</param>
       </configure>
       <make />
       <make>
-	<param>install</param>
+        <param>install</param>
       </make>
-      &ldconfig;
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&gconf2-directory;</remove>
+      <remove>&build_dir;/&yelp-directory;</remove>
     </stage>
   </package>
 </alfs>

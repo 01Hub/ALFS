@@ -17,6 +17,9 @@
         <name>eel</name>
       </requires>
       <requires>
+	<name>libexif</name>
+      </requires>
+      <requires>
         <name>librsvg</name>
       </requires>
       <requires>
@@ -43,9 +46,6 @@
       <utilizes>
 	<name>medusa</name>
       </utilizes>
-      <utilizes>  
-	<name>libexif</name>
-      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -60,13 +60,25 @@
       </stageinfo>
       <configure>
         <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-        <param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>
         <param>--sysconfdir=/etc/gnome</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+	<option>parents</option>
+	<name>&gnome-prefix;/share/doc/nautilus-&nautilus-version;</name>
+      </mkdir>
+      <copy>
+	<source>docs/*.txt</source>
+	<source>docs/*.dia</source>
+	<source>docs/*.pdf</source>
+	<source>docs/*.sxw</source>
+	<source>docs/*.faq</source>
+	<source>docs/*.html</source>
+	<destination>&gnome-prefix;/share/doc/nautilus-&nautilus-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&nautilus-directory;</remove>

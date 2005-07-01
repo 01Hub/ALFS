@@ -39,7 +39,7 @@
 	<param>--sysconfdir=/etc</param>
 	<param>--localstatedir=/var</param>
 	<param>--disable-static</param>
-	<param>--with-omfdirs=/usr/share/omf:/opt/gnome/share/omf:/opt/kde-3.3.2/share/omf:/opt/gnome-2.8/share/omf</param>
+	<param>--with-omfdirs=/usr/share/omf:/opt/gnome/share/omf:/opt/kde-3.4.0/share/omf:/opt/gnome-2.10/share/omf</param>
       </configure>
       <make />
       <make>

@@ -35,6 +35,11 @@
 <!ENTITY startup-notification-md5       "d9b2e9fba18843314ae42334ceb4336d">
 <!ENTITY startup-notification-directory "startup-notification-&startup-notification-version;">
 
+<!ENTITY libwnck-version   "2.10.0">
+<!ENTITY libwnck-package   "libwnck-&libwnck-version;.tar.bz2">
+<!ENTITY libwnck-md5       "c04c79f1e8576bc930c79d2e7bb8190a ">
+<!ENTITY libwnck-directory "libwnck-&libwnck-version;">
+
 <!ENTITY shared-mime-info-version   "0.15">
 <!ENTITY shared-mime-info-package   "shared-mime-info-&shared-mime-info-version;.tar.bz2">
 <!ENTITY shared-mime-info-md5       "ab9fa45b4ca49cf6e6dd306623088e70">

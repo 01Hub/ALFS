@@ -36,7 +36,6 @@
       </stageinfo>
       <configure>
 	<param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
-	<param>--disable-gtk-doc</param>
       </configure>
       <make />
       <make>

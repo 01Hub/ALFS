@@ -29,6 +29,8 @@
       <xi:include href="../../chapter30/gtk-engines.xml" />
       <xi:include href="../../chapter30/gnome-themes.xml" />
       <xi:include href="../../chapter30/scrollkeeper.xml" />
+      <xi:include href="../../chapter30/gnome-backgrounds.xml" />
+      <xi:include href="../../chapter30/gnome-menus.xml" />
       <xi:include href="../../chapter30/gnome-desktop.xml" />
       <xi:include href="../../chapter30/libwnck.xml" />
       <xi:include href="../../chapter30/gnome-panel.xml" />
@@ -40,6 +42,9 @@
       <xi:include href="../../chapter30/gnome-applets.xml" />
       <xi:include href="../../chapter30/eel.xml" />
       <xi:include href="../../chapter30/nautilus.xml" />
+      <xi:include href="../../chapter30/gnome-doc-utils.xml" />
+      <xi:include href="../../chapter30/libgtkhtml.xml" />
+      <xi:include href="../../chapter30/yelp.xml" />
       <xi:include href="../../chapter30/control-center.xml" />
       <xi:include href="../../chapter30/gnome2-user-docs.xml" />
       <xi:include href="../../chapter30/config-core-gnome.xml" />
@@ -55,10 +60,7 @@
       <xi:include href="../../chapter31/libgnomeprintui.xml" />
       <xi:include href="../../chapter31/gal.xml" />
       <xi:include href="../../chapter31/gtkhtml.xml" />
-      <xi:include href="../../chapter31/libgtkhtml.xml" />
       <xi:include href="../../chapter31/evolution-data-server.xml" />
-      <xi:include href="../../chapter31/gnome-doc-utils.xml" />
-      <xi:include href="../../chapter31/yelp.xml" />
       <xi:include href="../../chapter31/bug-buddy.xml" />
       <xi:include href="../../chapter31/gtksourceview.xml" />
       <xi:include href="../../chapter31/gedit.xml" />
