@@ -38,7 +38,7 @@
         <base>&build_dir;/&gucharmap-directory;</base>
       </stageinfo>
       <configure>
-        <param>--prefix=&gnome-prefix;</param>
+        <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
         <param>--localstatedir=/var/lib</param>
       </configure>
       <make />

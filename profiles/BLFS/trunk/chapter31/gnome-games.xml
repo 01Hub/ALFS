@@ -25,6 +25,12 @@
       <utilizes>
         <name>guile</name>
       </utilizes>
+      <utilizes>
+	<name>howl</name>
+      </utilizes>
+      <utilizes>
+	<name>gob2</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -35,6 +41,7 @@
     </stage>
     <stage name="Creating user and group">
       <execute command="getent group games &gt;/dev/null || groupadd">
+	<param>-g 60</param>
         <param>games</param>
       </execute>
       <execute command="getent passwd games &gt;/dev/null || useradd">
@@ -42,6 +49,7 @@
         <param>-d /var/lib/games</param>
         <param>-g games</param>
         <param>-s /bin/false</param>
+	<param>-u 60</param>
         <param>games</param>
       </execute>
     </stage>

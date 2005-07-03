@@ -14,13 +14,16 @@
   <package name="libgnomeprintui" version="&libgnomeprintui-version;">
     <packageinfo>
       <requires>
+	<name>gtk+2</name>
+      </requires>
+      <requires>
         <name>libgnomeprint</name>
       </requires>
       <requires>
         <name>gnome-icon-theme</name>
       </requires>
       <requires>
-        <name>libgnomeui</name>
+        <name>libgnomecanvas</name>
       </requires>
       <utilizes>
         <name>gtk-doc</name>

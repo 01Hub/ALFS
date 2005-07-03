@@ -1,67 +1,69 @@
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/libgnomecups-0.1.13.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/libgnomecups-0.2.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/libgnomeprint-2.8.0.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/libgnomeprint-2.10.3.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/libgnomeprintui-2.8.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/libgnomeprintui-2.10.2.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gal-2.2.3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gal-2.4.2.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gtkhtml-3.2.3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gtkhtml-3.6.2.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/evolution-data-server-1.0.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/evolution-data-server-1.2.2.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/bug-buddy-2.8.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/bug-buddy-2.10.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gtksourceview-1.1.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gtksourceview-1.2.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gedit-2.8.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gedit-2.10.2.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/eog-2.8.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/eog-2.10.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/ggv-2.8.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/ggv-2.8.4.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/file-roller-2.8.3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/file-roller-2.10.3.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gconf-editor-2.8.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gconf-editor-2.10.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gnome-utils-2.8.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gnome-utils-2.10.1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gnome-system-monitor-2.8.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/system-tools-backends-1.2.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gnome-media-2.8.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gnome-system-monitor-2.10.1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/nautilus-media-0.8.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/nautilus-cd-burner-2.10.1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gnome-netstatus-2.8.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gnome-media-2.10.2.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gcalctool-4.4.20.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gnome-audio-2.0.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gpdf-2.8.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gnome-netstatus-2.10.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gucharmap-1.4.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gcalctool-5.5.42.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/nautilus-cd-burner-2.8.5.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gpdf-2.10.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/zenity-2.8.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gucharmap-1.4.3.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/at-spi-1.6.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/zenity-2.10.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/libgail-gnome-1.1.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/at-spi-1.6.4.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/java-access-bridge-1.4.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/libgail-gnome-1.1.1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gnome-speech-0.3.5.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/java-access-bridge-1.4.5.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gnome-mag-0.11.10.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gnome-speech-0.3.7.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gnopernicus-0.9.18.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gnome-mag-0.12.1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gok-0.11.16.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gnopernicus-0.10.9.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/epiphany-1.4.5.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gok-1.0.4.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gnomemeeting-1.0.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/epiphany-1.6.2.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gnome-games-2.8.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gnomemeeting-1.2.1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/GNOME-2/gdm-2.6.0.6.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gnome-games-2.10.1.tar.bz2
+
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/gdm-2.6.0.9.tar.bz2

@@ -56,6 +56,10 @@
       <make>
         <param>install</param>
       </make>
+      <copy>
+	<source>doc/gnome-speech.html</source>
+	<destination>&gnome-prefix;/share/doc/gnome-speech-&gnome-speech-version;/gnome-speech.html</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gnome-speech-directory;</remove>

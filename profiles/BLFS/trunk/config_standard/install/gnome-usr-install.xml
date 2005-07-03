@@ -69,14 +69,15 @@
       <xi:include href="../../chapter31/file-roller.xml" />
       <xi:include href="../../chapter31/gconf-editor.xml" />
       <xi:include href="../../chapter31/gnome-utils.xml" />
+      <xi:include href="../../chapter31/system-tools-backends.xml" />
       <xi:include href="../../chapter31/gnome-system-monitor.xml" />
+      <xi:include href="../../chapter31/nautilus-cd-burner.xml" />
       <xi:include href="../../chapter31/gnome-media.xml" />
-      <xi:include href="../../chapter31/nautilus-media.xml" />
+      <xi:include href="../../chapter31/gnome-audio.xml" />
       <xi:include href="../../chapter31/gnome-netstatus.xml" />
       <xi:include href="../../chapter31/gcalctool.xml" />
       <xi:include href="../../chapter31/gpdf.xml" />
       <xi:include href="../../chapter31/gucharmap.xml" />
-      <xi:include href="../../chapter31/nautilus-cd-burner.xml" />
       <xi:include href="../../chapter31/zenity.xml" />
       <xi:include href="../../chapter31/at-spi.xml" />
       <xi:include href="../../chapter31/libgail-gnome.xml" />

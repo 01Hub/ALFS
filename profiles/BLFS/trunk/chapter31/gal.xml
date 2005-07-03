@@ -14,6 +14,9 @@
   <package name="gal" version="&gal-version;">
     <packageinfo>
       <requires>
+	<name>libgnomeui</name>
+      </requires>
+      <requires>
         <name>libgnomeprintui</name>
       </requires>
       <utilizes>
@@ -31,6 +34,28 @@
       <stageinfo>
         <base>&build_dir;/&gal-directory;</base>
       </stageinfo>
+      <!-- Uncomment the following section if you want to re-build
+       the documentation using gtk-doc -->
+      <!--
+      <move>
+	<source>docs/gal-decl.txt</source>
+	<destination>docs/gal-&gal-major-minor;-decl.txt</destination>
+      </move>
+      <move>
+	<source>docs/gal-sections.txt</source>
+	<destination>docs/gal-&gal-major-minor;-sections.txt</destination>
+      </move>
+      <search_replace>
+	<file>docs/Makefile.in</file>
+	<find>gal-decl</find>
+	<replace>gal-&gal-major-minor;-decl</replace>
+      </search_replace>
+      <search_replace>
+	<file>docs/Makefile.in</file>
+	<find>gal-sections</find>
+	<replace>gal-&gal-major-minor;-sections</replace>
+      </search_replace>
+      -->
       <configure>
         <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
       </configure>

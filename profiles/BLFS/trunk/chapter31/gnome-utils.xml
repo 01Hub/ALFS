@@ -16,8 +16,14 @@
       <requires>
         <name>gnome-panel</name>
       </requires>
+      <requires>
+	<name>libgnomeprintui</name>
+      </requires>
       <utilizes>
 	<name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+	<name>hal</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
