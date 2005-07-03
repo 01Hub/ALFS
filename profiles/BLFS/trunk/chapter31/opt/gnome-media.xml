@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+<!DOCTYPE alfs SYSTEM "../../DTD/ALFS.dtd"
 [
-<!ENTITY % general_entities SYSTEM "../config/general.ent">
-<!ENTITY % package_entities SYSTEM "../config/packages/ch31.ent">
-<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % general_entities SYSTEM "../../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../../config/packages/ch31.ent">
+<!ENTITY % config_entities SYSTEM  "../../config/config.ent">
 
 %general_entities;
 %package_entities;
@@ -46,6 +46,12 @@
       <stageinfo>
         <base>&build_dir;/&gnome-media-directory;</base>
       </stageinfo>
+      <execute command="sed">
+	<param>-i</param>
+	<param>-e</param>
+	<param>"s/-lORBit-2 -lbonobo-2 -lgobject-2.0 -lglib-2.0/\$(CDDBSLAVE_LIBS)/"</param>
+	<param>cddb-slave2/Makefile.in</param>
+      </execute>
       <configure>
         <param>--prefix=`pkg-config --variable=prefix ORBit-2.0`</param>
         <param>--libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin</param>

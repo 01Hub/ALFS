@@ -46,6 +46,7 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group gdm &gt;/dev/null || groupadd">
+	<param>-g 21</param>
         <param>gdm</param>
       </execute>
       <execute command="getent passwd gdm &gt;/dev/null || useradd">
@@ -53,6 +54,7 @@
         <param>-d /dev/null</param>
         <param>-g gdm</param>
         <param>-s /bin/bash</param>
+	<param>-u 21</param>
         <param>gdm</param>
       </execute>
     </stage>
@@ -71,6 +73,10 @@
       <make>
         <param>install</param>
       </make>
+      <permissions mode="644">
+	<name>&gnome-prefix;/share/gdm/BuiltInSessions/default.desktop</name>
+	<name>&gnome-prefix;/share/gdm/xsessions/gnome.desktop</name>
+      </permissions>
       <copy base="&blfs-config;/etc/pam.d">
 	<source>gdm</source>
 	<source>gdm-autologin</source>

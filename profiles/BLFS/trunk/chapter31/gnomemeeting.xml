@@ -20,6 +20,12 @@
         <name>scrollkeeper</name>
       </requires>
       <requires>
+	<name>evolution-data-server</name>
+      </requires>
+      <requires>
+	<name>openldap</name>
+      </requires>
+      <requires>
 	<name>pwlib</name>
       </requires>
       <requires>
@@ -27,6 +33,12 @@
       </requires>
       <utilizes>
 	<name>sdl</name>
+      </utilizes>
+      <utilizes>
+	<name>dbus</name>
+      </utilizes>
+      <utilizes>
+	<name>howl</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

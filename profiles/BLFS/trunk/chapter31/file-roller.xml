@@ -19,6 +19,9 @@
       <requires>
         <name>scrollkeeper</name>
       </requires>
+      <utilizes>
+	<name>nautilus</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

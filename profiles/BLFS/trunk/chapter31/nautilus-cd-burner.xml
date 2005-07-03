@@ -16,6 +16,12 @@
       <requires>
         <name>nautilus</name>
       </requires>
+      <requires>
+	<name>cdrtools</name>
+      </requires>
+      <utilizes>
+	<name>hal</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>

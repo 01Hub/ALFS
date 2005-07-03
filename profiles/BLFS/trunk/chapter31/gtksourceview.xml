@@ -14,6 +14,9 @@
   <package name="gtksourceview" version="&gtksourceview-version;">
     <packageinfo>
       <requires>
+	<name>gnome-vfs2</name>
+      </requires>
+      <requires>
         <name>libgnomeprintui</name>
       </requires>
       <utilizes>

@@ -14,6 +14,9 @@
 <package name="libgnomecups" version="&libgnomecups-version;">
   <packageinfo>
     <requires>
+      <name>cups</name>
+    </requires>
+    <requires>
       <name>glib</name>
     </requires>
     <requires>

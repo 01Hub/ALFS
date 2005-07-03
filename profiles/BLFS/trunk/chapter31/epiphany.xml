@@ -22,6 +22,15 @@
       <requires>
         <name>mozilla</name>
       </requires>
+      <utilizes>
+	<name>startup-notification</name>
+      </utilizes>
+      <utilizes>
+	<name>dbus</name>
+      </utilizes>
+      <utilizes>
+	<name>gtk-doc</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
