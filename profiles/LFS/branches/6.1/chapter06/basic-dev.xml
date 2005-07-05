@@ -18,7 +18,7 @@
     <stage name="Mounting ramfs and Populating /dev">
       <execute command="mount">
         <param>-n</param>
-        <param>-t ramfs</param>
+        <param>-t tmpfs</param>
         <param>none</param>
         <param>/dev</param>
       </execute>
