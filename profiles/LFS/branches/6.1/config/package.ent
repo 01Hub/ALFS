@@ -228,7 +228,7 @@
 <!ENTITY mktemp-package "mktemp-&mktemp-version;.tar.bz2">
 <!ENTITY mktemp-directory "mktemp-&mktemp-version;">
 
-<!ENTITY mktemp-tempfile-patch "mktemp-&mktemp-version;-add_tempfile-1.patch">
+<!ENTITY mktemp-tempfile-patch "mktemp-&mktemp-version;-add_tempfile-2.patch">
 
 <!ENTITY module-init-tools-md5 "8ddecbcf0e56aef8617f67a3906faf3e">
 <!ENTITY module-init-tools-version "3.1">
