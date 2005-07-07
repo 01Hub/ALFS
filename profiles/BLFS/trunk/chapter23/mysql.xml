@@ -48,13 +48,15 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group mysql &gt; /dev/null || groupadd">
+	<param>-g 40</param>
         <param>mysql</param>
       </execute>
       <execute command="getent passwd mysql &gt; /dev/null || useradd">
-        <param>-c mysql</param>
+        <param>-c "MySQL Server"</param>
         <param>-d /dev/null</param>
         <param>-g mysql</param>
         <param>-s /bin/false</param>
+	<param>-u 40</param>
         <param>mysql</param>
       </execute>
     </stage>
@@ -84,6 +86,21 @@
         <param>testdir=/usr/lib/mysql/mysql-test</param>
         <param>install</param>
       </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/mysql/Docs/Images</name>
+      </mkdir>
+      <copy>
+	<source>Docs/manual.html</source>
+	<source>Docs/manual_toc.html</source>
+	<source>Docs/manual.txt</source>
+	<destination>/usr/share/mysql/Docs</destination>
+      </copy>
+      <copy>
+	<source>Docs/Images/*.jpg</source>
+	<source>Docs/Images/*.gif</source>
+	<destination>/usr/share/mysql/Docs/Images</destination>
+      </copy>
       <execute command="cd /usr/lib &real-amp;&real-amp; 
                               ln -sf mysql/libmysqlclient{,_r}.so* ." />
       <!-- CONFIGURATION -->

@@ -1,10 +1,10 @@
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/Xorg/X11R6.8.2-src.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/Xorg/X11R6.8.2-src.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/XFree86-4.4.0-src-1.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/XFree86-4.4.0-src-2.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/XFree86-4.4.0-src-3.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/XFree86-4.4.0-src-4.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/XFree86-4.4.0-src-5.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/XFree86-4.4.0-src-6.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/XFree86-4.4.0-src-7.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/XFree86/xorg-CAN-2004-0687-0688.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/XFree86/XFree86-4.5.0-src-1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/XFree86/XFree86-4.5.0-src-2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/XFree86/XFree86-4.5.0-src-3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/XFree86/XFree86-4.5.0-src-4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/XFree86/XFree86-4.5.0-src-5.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/XFree86/XFree86-4.5.0-src-6.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/XFree86/XFree86-4.5.0-src-7.tar.bz2
+http://www.linuxfromscratch.org/blfs/downloads/svn/XFree86-4.5.0-kernel_headers-1.patch

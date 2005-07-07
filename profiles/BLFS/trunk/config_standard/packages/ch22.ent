@@ -12,9 +12,9 @@
 
 <!ENTITY exim-db43-patch     "exim-&exim-version;-db43-1.patch">
 
-<!ENTITY postfix-version   "2.1.5">
+<!ENTITY postfix-version   "2.2.3">
 <!ENTITY postfix-package   "postfix-&postfix-version;.tar.bz2">
-<!ENTITY postfix-md5       "feaf838fa5f26dd429933a250e51050e">
+<!ENTITY postfix-md5       "">
 <!ENTITY postfix-directory "postfix-&postfix-version;">
 
 <!ENTITY qpopper-version   "4.0.5">
@@ -22,14 +22,7 @@
 <!ENTITY qpopper-md5       "e4f8814376a156c650c7ec546bd3a847">
 <!ENTITY qpopper-directory "qpopper&qpopper-version;">
 
-<!ENTITY sendmail-version   "8.13.3">
+<!ENTITY sendmail-version   "8.13.4">
 <!ENTITY sendmail-package   "sendmail.&sendmail-version;.tar.bz2">
-<!ENTITY sendmail-md5       "cc9bf828c2bf9df923a219e3ca1f4780">
+<!ENTITY sendmail-md5       "02139873ad534adf09dfebb85f2c8feb">
 <!ENTITY sendmail-directory "sendmail-&sendmail-version;">
-
-
-
-
-
-
-

@@ -13,8 +13,8 @@
 <!ENTITY leafnode-md5       "1d8d27673780ba49fcb69883c2cabdec">
 <!ENTITY leafnode-directory "leafnode-&leafnode-version;.rel">
 
-<!ENTITY openldap-version   "2.2.20">
+<!ENTITY openldap-version   "2.2.24">
 <!ENTITY openldap-package   "openldap-&openldap-version;.tar.bz2">
-<!ENTITY openldap-md5       "72a9847cb579e3b62fc8689d728101c3">
+<!ENTITY openldap-md5       "1765e37c6c87c468c4410cf914d81b19">
 <!ENTITY openldap-directory "openldap-&openldap-version;">
 

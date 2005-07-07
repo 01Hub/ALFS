@@ -39,6 +39,12 @@
       <utilizes>
 	<name>cyrus-sasl</name>
       </utilizes>
+      <utilizes>
+	<name>cdb</name>
+      </utilizes>
+      <utilizes>
+	<name>tinycdb</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -50,28 +56,31 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group postfix &gt; /dev/null || groupadd">
+	<param>-g 32</param>
         <param>postfix</param>
       </execute>
       <execute command="getent group postdrop &gt; /dev/null || groupadd">
+	<param>-g 33</param>
         <param>postdrop</param>
       </execute>
       <execute command="getent group nogroup &gt; /dev/null || groupadd">
-        <param>-g 65534</param>
+        <param>-g 99</param>
         <param>nogroup</param>
       </execute>
       <execute command="getent passwd postfix &gt; /dev/null || useradd">
-        <param>-c postfix</param>
+        <param>-c "Postfix Daemon User"</param>
         <param>-d /dev/null</param>
         <param>-g postfix</param>
         <param>-s /bin/false</param>
+	<param>-u 32</param>
         <param>postfix</param>
       </execute>
       <execute command="getent passwd nobody &gt; /dev/null || useradd">
-        <param>-c nobody</param>
-        <param>-d /home</param>
+        <param>-c "Unprivileged Nobody"</param>
+        <param>-d /dev/null</param>
         <param>-g nogroup</param>
-        <param>-s /bin/bash</param>
-        <param>-u 65534</param>
+        <param>-s /bin/false</param>
+        <param>-u 99</param>
         <param>nobody</param>
       </execute>
     </stage>
