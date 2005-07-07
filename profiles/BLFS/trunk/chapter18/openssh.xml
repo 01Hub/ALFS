@@ -35,7 +35,13 @@
 	<name>net-tools</name>
       </utilizes>
       <utilizes>
+	<name>sysstat</name>
+      </utilizes>
+      <utilizes>
       	<name>opensc</name>
+      </utilizes>
+      <utilizes>
+	<name>libedit</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -64,6 +70,7 @@
         <param>--sysconfdir=/etc/ssh</param>
         <param>--libexecdir=/usr/sbin</param>
         <param>--with-md5-passwords</param>
+	<param>--with-privsep-path=/var/lib/sshd</param>
       </configure>
       <make />
       <make>

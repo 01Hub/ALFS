@@ -1,0 +1,14 @@
+# Begin /etc/xinetd.d/swat_tunnel
+
+service swat_tunnel
+{
+    port            = 902
+    socket_type     = stream
+    wait            = no
+    only_from       = 127.0.0.1
+    user            = root
+    server          = /usr/sbin/swat
+    log_on_failure  += USERID
+}
+
+# End /etc/xinetd.d/swat_tunnel

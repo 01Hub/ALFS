@@ -1,19 +1,20 @@
 <!--************* packages for chapter 24 **************-->
 
-<!ENTITY apache-version   "2.0.53">
-<!ENTITY apache-package   "httpd-&apache-version;.tar.bz2">
-<!ENTITY apache-md5       "94f3a793fb1665365724943206cce23f">
-<!ENTITY apache-directory "httpd-&apache-version;">
+<!ENTITY dhcp-version   "3.0.2">
+<!ENTITY dhcp-package   "dhcp-&dhcp-version;.tar.bz2">
+<!ENTITY dhcp-md5       "93392daf448d4c147859f5f0f5a06fe9">
+<!ENTITY dhcp-directory "dhcp-&dhcp-version;">
 
-<!ENTITY apache-patch     "httpd-&apache-version;-config-1.patch">
-<!ENTITY apache-patch-md5 "a294b404bcb22ae19060331bd12674ee">
+<!ENTITY dhcp-iproute2-patch     "dhcp-&dhcp-version;-iproute2-2.patch">
+<!ENTITY dhcp-iproute2-patch-md5 "214a97722db618276425878d1f54323e">
 
-<!ENTITY proftpd-version   "1.2.10">
-<!ENTITY proftpd-package   "proftpd-&proftpd-version;.tar.bz2">
-<!ENTITY proftpd-md5       "5feb4a7348e12faefc25e34fd92efdd6">
-<!ENTITY proftpd-directory "proftpd-&proftpd-version;">
+<!ENTITY leafnode-version   "1.10.8">
+<!ENTITY leafnode-package   "leafnode-&leafnode-version;.rel.tar.bz2">
+<!ENTITY leafnode-md5       "1d8d27673780ba49fcb69883c2cabdec">
+<!ENTITY leafnode-directory "leafnode-&leafnode-version;.rel">
 
-<!ENTITY vsftpd-version   "2.0.1">
-<!ENTITY vsftpd-package   "vsftpd-&vsftpd-version;.tar.bz2">
-<!ENTITY vsftpd-md5       "a2f365398da34fd0dbce671ceccb2af9">
-<!ENTITY vsftpd-directory "vsftpd-&vsftpd-version;">
+<!ENTITY openldap-version   "2.2.20">
+<!ENTITY openldap-package   "openldap-&openldap-version;.tar.bz2">
+<!ENTITY openldap-md5       "72a9847cb579e3b62fc8689d728101c3">
+<!ENTITY openldap-directory "openldap-&openldap-version;">
+

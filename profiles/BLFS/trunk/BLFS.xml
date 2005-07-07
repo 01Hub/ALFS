@@ -191,19 +191,19 @@
       <xi:include href="chapter17/w3m.xml" />
     </stage>
     <stage name="Chapter 18 (Basic Networking Programs)">
-      <xi:include href="chapter18/ncftp.xml" />
-      <xi:include href="chapter18/openssh.xml" />
-      <xi:include href="chapter18/rsync.xml" />
       <xi:include href="chapter18/cvs.xml" />
-      <xi:include href="chapter18/subversion.xml" />
-      <xi:include href="chapter18/wget.xml" />
-      <xi:include href="chapter18/tcpwrappers.xml" />
-      <xi:include href="chapter18/portmap.xml" />
       <xi:include href="chapter18/inetutils.xml" />
-      <xi:include href="chapter18/nfs-utils.xml" />
+      <xi:include href="chapter18/ncftp.xml" />
       <xi:include href="chapter18/ncpfs.xml" />
-      <xi:include href="chapter18/ntp.xml" />
       <xi:include href="chapter18/net-tools.xml" />
+      <xi:include href="chapter18/ntp.xml" />
+      <xi:include href="chapter18/openssh.xml" />
+      <xi:include href="chapter18/portmap.xml" />
+      <xi:include href="chapter18/rsync.xml" />
+      <xi:include href="chapter18/samba.xml" />
+      <xi:include href="chapter18/subversion.xml" />
+      <xi:include href="chapter18/tcpwrappers.xml" />
+      <xi:include href="chapter18/wget.xml" />
     </stage>
     <stage name="Chapter 19 (Basic Networking Utilities)">
       <xi:include href="chapter19/traceroute.xml" />
@@ -220,32 +220,33 @@
       <xi:include href="chapter20/pine.xml" />
       <xi:include href="chapter20/slrn.xml" />
     </stage>
-    <stage name="Chapter 21 (Mail Server Software)">
-      <xi:include href="chapter21/postfix.xml" />
-      <xi:include href="chapter21/sendmail.xml" />
-      <xi:include href="chapter21/exim.xml" />
-      <xi:include href="chapter21/qpopper.xml" />
-      <xi:include href="chapter21/courier.xml" />
+    <stage name="Chapter 21 (Major Servers)">
+      <xi:include href="chapter21/apache.xml" />
+      <xi:include href="chapter21/bind.xml" />
+      <xi:include href="chapter21/nfs-utils.xml" />
+      <xi:include href="chapter21/openssh.xml" />
+      <xi:include href="chapter21/proftpd.xml" />
+      <xi:include href="chapter21/samba.xml" />
+      <xi:include href="chapter21/vsftpd.xml" />
+      <xi:include href="chapter21/xinetd.xml" />
     </stage>
-    <stage name="Chapter 22 (Other Server Software)">
-      <xi:include href="chapter22/bind.xml" />
-      <xi:include href="chapter22/dhcp.xml" />
-      <xi:include href="chapter22/leafnode.xml" />
-      <xi:include href="chapter22/openssh.xml" />
-      <xi:include href="chapter22/rsync.xml" />
-      <xi:include href="chapter22/openldap.xml" />
-      <xi:include href="chapter22/samba.xml" />
-      <xi:include href="chapter22/xinetd.xml" />
+    <stage name="Chapter 22 (Mail Server Software)">
+      <xi:include href="chapter22/courier.xml" />
+      <xi:include href="chapter22/exim.xml" />
+      <xi:include href="chapter22/postfix.xml" />
+      <xi:include href="chapter22/qpopper.xml" />
+      <xi:include href="chapter22/sendmail.xml" />
     </stage>
     <stage name="Chapter 23 (Databases)">
       <xi:include href="chapter23/db.xml" />
       <xi:include href="chapter23/mysql.xml" />
       <xi:include href="chapter23/postgresql.xml" />
     </stage>
-    <stage name="Chapter 24 (Web serving)">
-      <xi:include href="chapter24/apache.xml" />
-      <xi:include href="chapter24/proftpd.xml" />
-      <xi:include href="chapter24/vsftpd.xml" />
+    <stage name="Chapter 24 (Other Server Software)">
+      <xi:include href="chapter24/dhcp.xml" />
+      <xi:include href="chapter24/leafnode.xml" />
+      <xi:include href="chapter24/openldap.xml" />
+      <xi:include href="chapter24/rsync.xml" />
     </stage>
     <stage name="Chapter 25 (X Window Environment)">
       <xi:include href="chapter25/xorg.xml" />

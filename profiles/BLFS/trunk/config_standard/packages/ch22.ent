@@ -1,37 +1,35 @@
 <!--************* packages for chapter 22 *************-->
 
-<!ENTITY bind-version   "9.3.0">
-<!ENTITY bind-package   "bind-&bind-version;.tar.bz2">
-<!ENTITY bind-md5       "dad42a60a5004067499f266247ae59c7">
-<!ENTITY bind-directory "bind-&bind-version;">
+<!ENTITY courier-version   "0.47">
+<!ENTITY courier-package   "courier-&courier-version;.tar.bz2">
+<!ENTITY courier-md5       "639bb3b236914e3b86f287ce3f55264e">
+<!ENTITY courier-directory "courier-&courier-version;">
 
-<!ENTITY bind-patch     "bind-&bind-version;-patch1">
-<!ENTITY bind-patch-md5 "90733dadf1487e035a8b94951e55fbb7">
+<!ENTITY exim-version   "4.43">
+<!ENTITY exim-package   "exim-&exim-version;.tar.bz2">
+<!ENTITY exim-md5       "f8f646d4920660cb5579becd9265a3bf">
+<!ENTITY exim-directory "exim-&exim-version;">
 
-<!ENTITY dhcp-version   "3.0.2">
-<!ENTITY dhcp-package   "dhcp-&dhcp-version;.tar.bz2">
-<!ENTITY dhcp-md5       "93392daf448d4c147859f5f0f5a06fe9">
-<!ENTITY dhcp-directory "dhcp-&dhcp-version;">
+<!ENTITY exim-db43-patch     "exim-&exim-version;-db43-1.patch">
 
-<!ENTITY dhcp-iproute2-patch     "dhcp-&dhcp-version;-iproute2-2.patch">
-<!ENTITY dhcp-iproute2-patch-md5 "214a97722db618276425878d1f54323e">
+<!ENTITY postfix-version   "2.1.5">
+<!ENTITY postfix-package   "postfix-&postfix-version;.tar.bz2">
+<!ENTITY postfix-md5       "feaf838fa5f26dd429933a250e51050e">
+<!ENTITY postfix-directory "postfix-&postfix-version;">
 
-<!ENTITY leafnode-version   "1.10.8">
-<!ENTITY leafnode-package   "leafnode-&leafnode-version;.rel.tar.bz2">
-<!ENTITY leafnode-md5       "1d8d27673780ba49fcb69883c2cabdec">
-<!ENTITY leafnode-directory "leafnode-&leafnode-version;.rel">
+<!ENTITY qpopper-version   "4.0.5">
+<!ENTITY qpopper-package   "qpopper&qpopper-version;.tar.bz2">
+<!ENTITY qpopper-md5       "e4f8814376a156c650c7ec546bd3a847">
+<!ENTITY qpopper-directory "qpopper&qpopper-version;">
 
-<!ENTITY openldap-version   "2.2.20">
-<!ENTITY openldap-package   "openldap-&openldap-version;.tar.bz2">
-<!ENTITY openldap-md5       "72a9847cb579e3b62fc8689d728101c3">
-<!ENTITY openldap-directory "openldap-&openldap-version;">
+<!ENTITY sendmail-version   "8.13.3">
+<!ENTITY sendmail-package   "sendmail.&sendmail-version;.tar.bz2">
+<!ENTITY sendmail-md5       "cc9bf828c2bf9df923a219e3ca1f4780">
+<!ENTITY sendmail-directory "sendmail-&sendmail-version;">
 
-<!ENTITY samba-version   "3.0.11">
-<!ENTITY samba-package   "samba-&samba-version;.tar.bz2">
-<!ENTITY samba-md5       "d5b253f59951868f444b318e45335cb0">
-<!ENTITY samba-directory "samba-&samba-version;">
 
-<!ENTITY xinetd-version   "2.3.13">
-<!ENTITY xinetd-package   "xinetd-&xinetd-version;.tar.bz2">
-<!ENTITY xinetd-md5       "10743b19a0b007c14092ab610918ec9c">
-<!ENTITY xinetd-directory "xinetd-&xinetd-version;">
+
+
+
+
+

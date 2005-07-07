@@ -1,29 +1,33 @@
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/ncftp-3.1.7-src.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cvs-1.11.20.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cvs-1.11.20-zlib-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/cvs-1.11.18.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/cvs-1.11.18-zlib-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/inetutils-1.4.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/inetutils-1.4.2-kernel_headers-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/subversion-1.1.3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/ncftp-3.1.9-src.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/wget-1.9.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/ncpfs-2.2.4.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/tcp_wrappers_7.6.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/tcp_wrappers-7.6-shared_lib_plus_plus-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/net-tools-1.60.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/net-tools-1.60-gcc34-3.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/net-tools-1.60-kernel_headers-2.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/net-tools-1.60-mii_ioctl-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/portmap_5beta.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/portmap-5beta-compilation_fixes-3.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/portmap-5beta-glibc_errno_fix-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/ntp-4.2.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/inetutils-1.4.2.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/inetutils-1.4.2-kernel_headers-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/openssh-4.1p1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/nfs-utils-1.0.6.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/portmap_5beta.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/portmap-5beta-compilation_fixes-3.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/portmap-5beta-glibc_errno_fix-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/ncpfs-2.2.4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/rsync-2.6.5.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/ntp-4.2.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/samba-3.0.14a.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/net-tools-1.60.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/net-tools-1.60-gcc34-3.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/net-tools-1.60-kernel_headers-2.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/net-tools-1.60-mii_ioctl-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/subversion-1.1.4.tar.bz2
+
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/T-V/tcp_wrappers_7.6.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/T-V/tcp_wrappers-7.6-shared_lib_plus_plus-1.patch
+
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/wget-1.9.1.tar.bz2

@@ -27,9 +27,9 @@
 <!ENTITY compface-errno-patch     "compface-&compface-version;-errno-2.patch">
 <!ENTITY compface-errno-patch-md5 "283ed8d53d77dc81045391fbac8a40f6">
 
-<!ENTITY imagemagick-version   "6.2.3-0">
+<!ENTITY imagemagick-version   "6.2.3-3">
 <!ENTITY imagemagick-package   "ImageMagick-&imagemagick-version;.tar.bz2">
-<!ENTITY imagemagick-md5       "9230da1e57f8d0712229942e4ec6d65a">
+<!ENTITY imagemagick-md5       "39222a764f5649f16ff0c934aef8d85a">
 <!ENTITY imagemagick-directory "ImageMagick-&imagemagick-version;">
 
 <!ENTITY hd2u-version   "1.0.0">

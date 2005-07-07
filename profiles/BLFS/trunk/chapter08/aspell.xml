@@ -35,6 +35,15 @@
       <make>
         <param>install</param>
       </make>
+      <copy>
+	<source>scripts/ispell</source>
+	<source>scripts/spell</source>
+	<destination>/usr/bin</destination>
+      </copy>
+      <permissions mode="755" base="/usr/bin">
+	<name>ispell</name>
+	<name>spell</name>
+      </permissions>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&aspell-directory;</remove>
@@ -42,6 +51,9 @@
   </package>
   <package name="aspell-dictionary" version="&aspell-dict-version;">
     <packageinfo>
+      <requires>
+	<name>aspell</name>
+      </requires>
       <requires>
         <name>which</name>
       </requires>

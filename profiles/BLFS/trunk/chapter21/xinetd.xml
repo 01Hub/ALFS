@@ -2,7 +2,7 @@
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
-<!ENTITY % package_entities SYSTEM "../config/packages/ch22.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch21.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
 
 %general_entities;
