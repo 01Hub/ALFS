@@ -2,15 +2,12 @@
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
-<!ENTITY % package_entities SYSTEM "../config/packages/ch22.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch18.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
 
 %general_entities;
 %package_entities;
 %config_entities;
-
-<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
-<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
 
 ]>
 <alfs>
@@ -49,19 +46,15 @@
       <utilizes>
 	<name>valgrind</name>
       </utilizes>
-      <utilizes>
-	<name>stunnel</name>
-      </utilizes>
     </packageinfo>
-    <stage name="Unpacking.">
+    <stage name="Unpacking">
       <unpack>
         <digest>&samba-md5;</digest>
 	<archive>&packages_dir;/&samba-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    &bootscripts-get;
-    <stage name="Installing.">
+    <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&samba-directory;/source</base>
       </stageinfo>
@@ -117,52 +110,8 @@
         <source>examples/smb.conf.default</source>
         <destination>/etc/samba</destination>
       </copy>
-      <textdump mode="append">
-        <file>/etc/services</file>
-        <content>
-	=swat		901/tcp
-	=swat_tunnel	902/tcp
-	</content>
-      </textdump>
-      <textdump mode="append">
-        <file>/etc/inetd.conf</file>
-        <content>=swat_tunnel stream tcp nowait.400 root /usr/sbin/swat swat</content>
-      </textdump>
-      <textdump mode="append">
-        <file>/etc/xinetd.conf</file>
-        <content>
-	  =service swat_tunnel
-	  ={
-	  =    port            = 902
-	  =    socket_type     = stream
-	  =    wait            = no
-	  =    only_from       = 127.0.0.1
-	  =    user            = root
-	  =    server          = /usr/sbin/swat
-	  =    log_on_failure  += USERID
-	  =}
-	</content>
-      </textdump>
-      <textdump mode="append">
-	<file>/etc/stunnel/stunnel.conf</file>
-	<content>
-	  =[swat]
-	  =accept = 901
-	  =connect = 902
-	</content>
-      </textdump>
     </stage>
-    <stage name="Installing bootscript and configuration">
-      <stageinfo>
-        <base>&build_dir;/&blfs-bootscripts-directory;</base>
-      </stageinfo>
-      <make>
-        <param>install-samba</param>
-        <param>install-winbind</param>
-      </make>
-    </stage>
-    &bootscripts-clean;
-    <stage name="Cleanup.">
+    <stage name="Cleanup">
       <remove>&build_dir;/&samba-directory;</remove>
     </stage>
   </package>

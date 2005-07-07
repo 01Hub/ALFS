@@ -10,17 +10,17 @@
 <!ENTITY nmap-md5       "1b54c0608b36f6b3ac92d7d1b910738f">
 <!ENTITY nmap-directory "nmap-&nmap-version;">
 
-<!ENTITY whois-version   "4.6.26">
-<!ENTITY whois-package   "whois_&whois-version;.tar.bz2">
-<!ENTITY whois-md5       "73256313dc558bde79268e2c4d8b87d6">
+<!ENTITY whois-version   "4.7.5">
+<!ENTITY whois-package   "whois-&whois-version;.tar.bz2">
+<!ENTITY whois-md5       "fe13c1440d725193998493ce57dfbb32">
 <!ENTITY whois-directory "whois-&whois-version;">
 
-<!ENTITY bind-utils-version   "9.3.0">
+<!ENTITY bind-utils-version   "9.3.1">
 <!ENTITY bind-utils-package   "bind-&bind-utils-version;.tar.bz2">
-<!ENTITY bind-utils-md5       "dad42a60a5004067499f266247ae59c7">
+<!ENTITY bind-utils-md5       "d3f97c1002c66fbbe1e10ec1fbe01be9">
 <!ENTITY bind-utils-directory "bind-&bind-utils-version;">
 
-<!ENTITY ethereal-version   "0.10.9">
+<!ENTITY ethereal-version   "0.10.11">
 <!ENTITY ethereal-package   "ethereal-&ethereal-version;.tar.bz2">
-<!ENTITY ethereal-md5       "f8b7a2c2dcf273e7fd755f972167dacb">
+<!ENTITY ethereal-md5       "03aa7fe2cbef9aa0654637cdc60e0458">
 <!ENTITY ethereal-directory "ethereal-&ethereal-version;">

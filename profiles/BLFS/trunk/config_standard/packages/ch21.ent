@@ -1,29 +1,34 @@
 <!--************* packages for chapter 21 *************-->
 
-<!ENTITY postfix-version   "2.1.5">
-<!ENTITY postfix-package   "postfix-&postfix-version;.tar.bz2">
-<!ENTITY postfix-md5       "feaf838fa5f26dd429933a250e51050e">
-<!ENTITY postfix-directory "postfix-&postfix-version;">
+<!ENTITY apache-version   "2.0.54">
+<!ENTITY apache-package   "httpd-&apache-version;.tar.bz2">
+<!ENTITY apache-md5       "4ae8a38c6b5db9046616ce10a0d551a2 ">
+<!ENTITY apache-directory "httpd-&apache-version;">
 
-<!ENTITY sendmail-version   "8.13.3">
-<!ENTITY sendmail-package   "sendmail.&sendmail-version;.tar.bz2">
-<!ENTITY sendmail-md5       "cc9bf828c2bf9df923a219e3ca1f4780">
-<!ENTITY sendmail-directory "sendmail-&sendmail-version;">
+<!ENTITY apache-patch     "httpd-&apache-version;-config-1.patch">
 
-<!ENTITY exim-version   "4.43">
-<!ENTITY exim-package   "exim-&exim-version;.tar.bz2">
-<!ENTITY exim-md5       "f8f646d4920660cb5579becd9265a3bf">
-<!ENTITY exim-directory "exim-&exim-version;">
+<!ENTITY bind-version   "9.3.1">
+<!ENTITY bind-package   "bind-&bind-version;.tar.bz2">
+<!ENTITY bind-md5       "d3f97c1002c66fbbe1e10ec1fbe01be9">
+<!ENTITY bind-directory "bind-&bind-version;">
 
-<!ENTITY exim-db43-patch     "exim-&exim-version;-db43-1.patch">
-<!ENTITY exim-db43-patch-md5 "235bb8a20977b45da2b8b73f4756612c">
+<!ENTITY nfs-utils-version   "1.0.7">
+<!ENTITY nfs-utils-package   "nfs-utils-&nfs-utils-version;.tar.bz2">
+<!ENTITY nfs-utils-md5       "3cf5381963e404e056e50dc508fdf153">
+<!ENTITY nfs-utils-directory "nfs-utils-&nfs-utils-version;">
 
-<!ENTITY qpopper-version   "4.0.5">
-<!ENTITY qpopper-package   "qpopper&qpopper-version;.tar.bz2">
-<!ENTITY qpopper-md5       "e4f8814376a156c650c7ec546bd3a847">
-<!ENTITY qpopper-directory "qpopper&qpopper-version;">
+<!ENTITY proftpd-version   "1.2.10">
+<!ENTITY proftpd-package   "proftpd-&proftpd-version;.tar.bz2">
+<!ENTITY proftpd-md5       "5feb4a7348e12faefc25e34fd92efdd6">
+<!ENTITY proftpd-directory "proftpd-&proftpd-version;">
 
-<!ENTITY courier-version   "0.47">
-<!ENTITY courier-package   "courier-&courier-version;.tar.bz2">
-<!ENTITY courier-md5       "639bb3b236914e3b86f287ce3f55264e">
-<!ENTITY courier-directory "courier-&courier-version;">
+<!ENTITY vsftpd-version   "2.0.3">
+<!ENTITY vsftpd-package   "vsftpd-&vsftpd-version;.tar.bz2">
+<!ENTITY vsftpd-md5       "10063454d1c90aa87a3aa508019cea4a">
+<!ENTITY vsftpd-directory "vsftpd-&vsftpd-version;">
+
+<!ENTITY xinetd-version   "2.3.13">
+<!ENTITY xinetd-package   "xinetd-&xinetd-version;.tar.bz2">
+<!ENTITY xinetd-md5       "10743b19a0b007c14092ab610918ec9c">
+<!ENTITY xinetd-directory "xinetd-&xinetd-version;">
+

@@ -2,7 +2,7 @@
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
-<!ENTITY % package_entities SYSTEM "../config/packages/ch18.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch21.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
 <!ENTITY % files SYSTEM "../config/files.ent">
 
@@ -21,6 +21,15 @@
       <requires>
         <name>portmap</name>
       </requires>
+      <utilizes>
+	<name>libevent</name>
+      </utilizes>
+      <utilizes>
+	<name>libnsfidmap</name>
+      </utilizes>
+      <utilizes>
+	<name>&krb-impl;</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -32,15 +41,15 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group nogroup &gt; /dev/null || groupadd">
-        <param>-g 65534</param>
+        <param>-g 99</param>
         <param>nogroup</param>
       </execute>
       <execute command="getent passwd nobody &gt; /dev/null || useradd">
-        <param>-c nobody</param>
-        <param>-d /home</param>
+        <param>-c "Unprivileged Nobody"</param>
+        <param>-d /dev/null</param>
         <param>-g nogroup</param>
-        <param>-s /bin/bash</param>
-        <param>-u 65534</param>
+        <param>-s /bin/false</param>
+        <param>-u 99</param>
         <param>nobody</param>
       </execute>
     </stage>
@@ -51,6 +60,8 @@
       <configure>
         <param>--prefix=/usr</param>
         <param>--sysconfdir=/etc</param>
+	<param>--disable-nfsv4</param>
+	<param>--disable-gss</param>
       </configure>
       <make />
       <make>

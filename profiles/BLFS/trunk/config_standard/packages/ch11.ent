@@ -45,9 +45,9 @@
 <!ENTITY pciutils-md5       "2b3b2147b7bc91f362be55cb49fa1c4e">
 <!ENTITY pciutils-directory "pciutils-&pciutils-version;">
 
-<!ENTITY pkgconfig-version   "0.17.2">
+<!ENTITY pkgconfig-version   "0.18">
 <!ENTITY pkgconfig-package   "pkgconfig-&pkgconfig-version;.tar.bz2">
-<!ENTITY pkgconfig-md5       "eab15aecff99e98bcc5d01331452e583">
+<!ENTITY pkgconfig-md5       "cae72bbadff5cd9fe1d085cf8b7c3e6e">
 <!ENTITY pkgconfig-directory "pkgconfig-&pkgconfig-version;">
 
 <!ENTITY cpio-version   "2.6">

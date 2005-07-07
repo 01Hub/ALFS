@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch21.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
+
+]>
+<alfs>
+  <package name="vsftpd" version="&vsftpd-version;">
+    <packageinfo>
+      <utilizes>
+	<name>linuxpam</name>
+      </utilizes>
+      <utilizes>
+	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+	<name>tcpwrappers</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+	<digest>&vsftpd-md5;</digest>
+	<archive>&packages_dir;/&vsftpd-package;</archive>
+	<destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    &bootscripts-get; 
+    <stage name="Creating user and group">
+      <mkdir>
+	<option>parents</option>
+	<name>/var/ftp/empty</name>
+	<name>/home/ftp</name>
+      </mkdir>
+      <execute command="getent group vsftpd &gt; /dev/null || groupadd">
+	<param>-g 47</param>
+	<param>vsftpd</param>
+      </execute>
+      <execute command="getent passwd vsftpd &gt; /dev/null || useradd">
+	<param>-c "vsFTPD User"</param>
+	<param>-d /dev/null</param>
+	<param>-g vsftpd</param>
+	<param>-s /bin/false</param>
+	<param>-u 47</param>
+	<param>vsftpd</param>
+      </execute>
+      <execute command="getent group ftp &gt; /dev/null || groupadd">
+	<param>-g 45</param>
+	<param>ftp</param>
+      </execute>
+      <execute command="getent passwd ftp &gt; /dev/null || useradd">
+	<param>-c anonymous_user</param>
+	<param>-d /home/ftp</param>
+	<param>-g ftp</param>
+	<param>-s /bin/false</param>
+	<param>-u 45</param>
+	<param>ftp</param>
+      </execute>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&vsftpd-directory;</base>
+      </stageinfo>
+      <make />
+      <copy>
+	<source>vsftpd</source>
+	<destination>/usr/sbin</destination>
+      </copy>
+      <permissions mode="755">
+	<name>/usr/sbin/vsftpd</name>
+      </permissions>
+      <copy>
+	<source>vsftpd.8</source>
+	<destination>/usr/share/man/man8</destination>
+      </copy>
+      <copy>
+	<source>vsftpd.conf.5</source>
+	<destination>/usr/share/man/man5</destination>
+      </copy>
+      <copy>
+	<source>vsftpd.conf</source>
+	<destination>/etc</destination>
+      </copy>
+    </stage>
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+	<base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+	<param>install-vsftpd</param>
+      </make>
+      <textdump mode="append" base="/etc">
+	<file>vsftpd.conf</file>
+	<content>
+	  =background=YES 
+	  =listen=YES 
+	  =nopriv_user=vsftpd 
+	  =secure_chroot_dir=/var/ftp/empty
+	</content>
+      </textdump>
+    </stage>
+    &bootscripts-clean; 
+    <stage name="Cleanup">
+      <remove>&build_dir;/&vsftpd-directory;</remove>
+    </stage>
+  </package>
+</alfs>

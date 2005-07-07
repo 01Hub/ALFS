@@ -2,7 +2,7 @@
 <!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
-<!ENTITY % package_entities SYSTEM "../config/packages/ch22.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch21.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
 <!ENTITY % files SYSTEM "../config/files.ent">
 
@@ -50,6 +50,7 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group named &gt; /dev/null || groupadd">
+      	<param>-g 20</param>
         <param>named</param>
       </execute>
       <execute command="getent passwd named &gt; /dev/null || useradd">
@@ -57,6 +58,7 @@
         <param>-m</param>
         <param>-g named</param>
         <param>-s /bin/false</param>
+	<param>-u 20</param>
         <param>named</param>
       </execute>
     </stage>
@@ -64,11 +66,6 @@
       <stageinfo>
         <base>&build_dir;/&bind-directory;</base>
       </stageinfo>
-      <patch>
-	<param>-N</param>
-	<param>-p1</param>
-	<param>-i &packages_dir;/&bind-patch;</param>
-      </patch>
       <search_replace>
         <file>configure</file>
         <find>dsssl-stylesheets</find>
@@ -90,7 +87,7 @@
 	<name>libisccc.so.*</name>
 	<name>libisccfg.so.*</name>
 	<name>liblwres.so.*</name>
-	<name>libdns.so.20.0.0</name>
+	<name>libdns.so.*</name>
       </permissions>
       <move base="/usr/share/man">
 	<source>man8/named.conf</source>

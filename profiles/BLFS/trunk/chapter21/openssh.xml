@@ -25,19 +25,24 @@
     <stage name="Creating user and group">
       <mkdir>
         <option>parents</option>
-        <name>/var/empty</name>
+        <name>/var/lib/sshd</name>
       </mkdir>
+      <permissions mode="700">
+      	<name>/var/lib/sshd</name>
+      </permissions>
       <ownership user="root" group="sys">
-        <name>/var/empty</name>
+        <name>/var/lib/sshd</name>
       </ownership>
       <execute command="getent group sshd &gt; /dev/null || groupadd">
+	<param>-g 50</param>
         <param>sshd</param>
       </execute>
       <execute command="getent passwd sshd &gt; /dev/null || useradd">
-        <param>-c sshd</param>
-        <param>-d /var/empty</param>
+        <param>-c 'sshd PrivSep'</param>
+        <param>-d /var/lib/sshd</param>
         <param>-g sshd</param>
         <param>-s /bin/false</param>
+	<param>-u 50</param>
         <param>sshd</param>
       </execute>
     </stage>

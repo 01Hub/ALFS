@@ -1,8 +1,8 @@
 <!--************* packages for chapter 20 *************-->
 
-<!ENTITY nail-version   "11.20">
+<!ENTITY nail-version   "11.22">
 <!ENTITY nail-package   "nail-&nail-version;.tar.bz2">
-<!ENTITY nail-md5       "f08dab4fb6a069bc6876b0b58116716b">
+<!ENTITY nail-md5       "caad4c4cd02c7fbf0d9e7fec50ff3b21">
 <!ENTITY nail-directory "nail-&nail-version;">
 
 <!ENTITY procmail-version   "3.22">
@@ -20,13 +20,12 @@
 <!ENTITY mutt-md5       "43151a057573dcdb83301986820d8065">
 <!ENTITY mutt-directory "mutt-1.4.2.1">
 
-<!ENTITY pine-version   "4.60">
+<!ENTITY pine-version   "4.63">
 <!ENTITY pine-package   "pine&pine-version;.tar.bz2">
-<!ENTITY pine-md5       "aece91c8a857605994829ffa91d98c9f">
+<!ENTITY pine-md5       "e881f439f38039b310d22554ab08feb4">
 <!ENTITY pine-directory "pine&pine-version;">
 
-<!ENTITY pine-patch     "pine-&pine-version;-fhs-3.patch">
-<!ENTITY pine-patch-md5 "0c5401f2476963d63efa60296494c3de">
+<!ENTITY pine-patch     "pine-&pine-version;-fhs-1.patch">
 
 <!ENTITY slrn-version   "0.9.8.1">
 <!ENTITY slrn-package   "slrn-&slrn-version;.tar.bz2">

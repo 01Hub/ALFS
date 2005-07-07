@@ -23,6 +23,11 @@
       <stageinfo>
         <base>&build_dir;/&pkgconfig-directory;</base>
       </stageinfo>
+      <execute command="sed">
+	<param>-i</param>
+	<param>'s:pkg_failed=yes]):&amp;\nelse:'</param>
+	<param>pkg.m4</param>
+      </execute>
       <configure>
         <param>--prefix=/usr</param>
       </configure>
