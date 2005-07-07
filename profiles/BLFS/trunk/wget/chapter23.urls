@@ -1,6 +1,6 @@
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/db-4.3.27.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/D-E/db-4.3.28.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/mysql-4.1.8a.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/mysql-4.1.12.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/postgresql-7.4.6.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/postgresql-7.4.6-dsssl_fix-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/postgresql-8.0.3.tar.bz2
+

@@ -69,7 +69,7 @@
         <param>install</param>
       </make>
       <permissions mode="755">
-	<name>/usr/lib/libl*-2.2.so.7.0.13</name>
+	<name>/usr/lib/libl*-2.2.so.7.0.17</name>
       </permissions>
     </stage>
     <stage name="Installing bootscript and configuration">

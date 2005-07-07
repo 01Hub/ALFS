@@ -44,6 +44,15 @@
         <param>docdir=/usr/share/doc/db-&db-version;</param>
         <param>install</param>
       </make>
+      <ownership user="root" group="root">
+	<name>/usr/bin/db*</name>
+	<name>/usr/lib/libdb*</name>
+	<name>/usr/include/db*</name>
+      </ownership>
+      <ownership user="root" group="root">
+	<option>recursive</option>
+	<name>/usr/share/doc/db-&db-version;</name>
+      </ownership>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&db-directory;</remove>

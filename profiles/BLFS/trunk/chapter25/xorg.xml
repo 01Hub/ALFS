@@ -113,7 +113,9 @@
       &ldconfig;
       <textdump mode="append" base="/etc/sysconfig">
         <file>createfiles</file>
-        <content>=/tmp/.ICE-unix dir 1777 root root</content>
+        <content>
+	  =/tmp/.ICE-unix dir 1777 root root
+	</content>
       </textdump>
       <copy base="&blfs-config;/root">
 	<source>dot_xinitrc</source>
@@ -123,6 +125,7 @@
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&xorg-directory;</remove>
+      <remove>&build_dir;/xcbuild</remove>
     </stage>
   </package>
 </alfs>

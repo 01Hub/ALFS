@@ -12,6 +12,10 @@
 <!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
 <!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
 
+<!ENTITY % package_entities_extra SYSTEM "../config/packages/ch43.ent">
+%package_entities_extra;
+
+
 ]>
 <alfs>
   <package name="postgresql" version="&postgresql-version;">
@@ -40,11 +44,8 @@
       <utilizes>
 	<name>SGMLSpm</name>
       </utilizes>
-      <utilizes>
+      <utilizes>  
 	<name>&krb-impl;</name>
-      </utilizes>
-      <utilizes>
-	<name>apache-ant</name>
       </utilizes>
       <utilizes>
 	<name>rendezvous</name>
@@ -60,26 +61,30 @@
     &bootscripts-get;
     <stage name="Creating user">
       <execute command="getent passwd postgres &gt; /dev/null || useradd">
+	<param>-c "PostgreSQL Server"</param>
+	<param>-g users</param>
         <param>-d /srv/pgsql/data</param>
+	<param>-u 41</param>
         <param>postgres</param>
       </execute>
-    </stage>
-    <stage name="Patching">
-      <stageinfo>
-	<base>&build_dir;/&postgresql-directory;</base>
-      </stageinfo>
-      <patch>
-	<param>-N</param>
-	<param>-p1</param>
-	<param>-i &packages_dir;/&postgresql-dsssl-patch;</param>
-      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&postgresql-directory;</base>
       </stageinfo>
-      <execute command='sed -i.orig -e "/CATALOG \/etc\/sgml\/OpenSP-1.5.1.cat/d" \
-	/etc/sgml/catalog /etc/sgml/sgml-docbook.cat' />
+      <execute command="sed">
+	<param>-i.orig</param>
+	<param>-e</param>
+	<param>"/CATALOG \/etc\/sgml\/OpenSP-1.5.1.cat/d"</param>
+	<param>/etc/sgml/catalog</param> 
+	<param>/etc/sgml/sgml-docbook.cat</param>
+      </execute>
+      <execute command="sed">
+	<param>-i</param>
+	<param>-e</param>
+	<param>"s|dsssl-stylesheets|&real-amp; \\\\\n        sgml/docbook/&real-amp;-&docbook-dsssl-version;|"</param>
+	<param>configure</param>
+      </execute>
       <configure>
         <param>--prefix=/usr</param>
 	<param>--enable-thread-safety</param>
@@ -87,9 +92,6 @@
       <make />
       <make>
         <param>install</param>
-      </make>
-      <make>
-	<param>install-all-headers</param>
       </make>
       <ownership user="root" group="root">
 	<option>recursive</option>

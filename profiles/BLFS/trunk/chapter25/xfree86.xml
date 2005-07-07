@@ -66,6 +66,35 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Installing lndir">
+      <stageinfo>
+        <base>&build_dir;/&xfree86-directory;/config/util</base>
+      </stageinfo>
+      <make>
+        <param>-f Makefile.ini</param>
+        <param>lndir</param>
+      </make>
+      <copy>
+        <source>lndir</source>
+        <destination>/usr/bin</destination>
+      </copy>
+    </stage>
+    <stage name="Creating build directory">
+      <stageinfo>
+        <base>&build_dir;/&xfree86-directory;</base>
+      </stageinfo>
+      <mkdir>
+        <name>../xcbuild</name>
+      </mkdir>
+    </stage>
+    <stage name="Populating build directory">
+      <stageinfo>
+        <base>&build_dir;/xcbuild</base>
+      </stageinfo>
+      <execute command="lndir">
+        <param>../xc</param>
+      </execute>
+    </stage>
     <stage name="Patching">
       <stageinfo>
 	<base>&build_dir;/&xfree86-directory;</base>
@@ -73,17 +102,23 @@
       <patch>
 	<param>-N</param>
 	<param>-p1</param>
-	<param>-i &packages_dir;/&xfree86-security-patch;</param>
+	<param>-i &packages_dir;/&xfree86-kernel-headers-patch;</param>
       </patch>
     </stage>
-    <stage name="Installing">
+    <stage name="Creating configuration file">
       <stageinfo>
-	<base>&build_dir;/&xfree86-directory;</base>
+        <base>&build_dir;/xcbuild</base>
       </stageinfo>
       <copy>
 	<source>&blfs-config;/x/xfree86/host.def</source>
 	<destination>config/cf</destination>
-      </copy>     
+      </copy>      
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/xcbuild;</base>
+      </stageinfo>
+<execute command='sed -i -e "s@#include &lt;linux/config.h&gt;@/* &real-amp; */@" `grep -lr linux/config.h *`' />
       <make>
 	<param>World</param>
       </make>
@@ -119,11 +154,12 @@
 	<content>=/usr/X11R6/lib</content>
       </textdump>
       &ldconfig; 
-      <link base="/dev">
-	<option>force</option>
-	<target>psaux</target>
-	<name>mouse</name>
-      </link>
+      <textdump mode="append" base="/etc/sysconfig">
+        <file>createfiles</file>
+        <content>
+	  =/tmp/.ICE-unix dir 1777 root root
+	</content>
+      </textdump>
       <copy base="&blfs-config;/root">
 	<source>dot_xinitrc</source>
 	<destination>/root/.xinitrc</destination>
@@ -132,6 +168,7 @@
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&xfree86-directory;</remove>
+      <remove>&build_dir;/xcbuild</remove>
     </stage>
   </package>
 </alfs>

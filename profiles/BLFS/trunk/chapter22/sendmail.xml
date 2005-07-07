@@ -34,9 +34,6 @@
 	<name>tcpwrappers</name>
       </utilizes>
       <utilizes>
-	<name>pcre</name>
-      </utilizes>
-      <utilizes>
 	<name>cyrus-sasl</name>
       </utilizes>
       <utilizes>
@@ -56,25 +53,33 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group smmsp &gt; /dev/null || groupadd">
+	<param>-g 26</param>
         <param>smmsp</param>
       </execute>
       <execute command="getent group mail &gt; /dev/null || groupadd">
+	<param>-g 34</param>
         <param>mail</param>
       </execute>
       <execute command="getent passwd smmsp &gt; /dev/null || useradd">
+	<param>-c "Sendmail Daemon"</param>
         <param>-g smmsp</param>
         <param>-G mail</param>
         <param>-s /bin/false</param>
+	<param>-u 26</param>
         <param>smmsp</param>
       </execute>
-    <permissions mode="1777">
-      <name>/var/mail</name>
-    </permissions>
-    <mkdir>
-      <name>/var/spool/mqueue</name>
-    </mkdir>
+      <permissions mode="1777">
+	<name>/var/mail</name>
+      </permissions>
+      <mkdir>
+	<option>parents</option>
+	<name>/var/spool/mqueue</name>
+      </mkdir>
+      <permissions mode="700">
+	<name>/var/spool/mqueue</name>
+      </permissions>
     </stage>
-    <stage name="Installing.">
+    <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&sendmail-directory;</base>
       </stageinfo>
