@@ -1,7 +1,7 @@
 # Begin /etc/inittab 
  
-id:3:initdefault: 
- 
+id:3:initdefault:
+
 si::sysinit:/etc/rc.d/init.d/rc sysinit 
  
 l0:0:wait:/etc/rc.d/init.d/rc 0 

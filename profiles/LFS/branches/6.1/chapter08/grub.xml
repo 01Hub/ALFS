@@ -9,15 +9,26 @@
 ]>
 <alfs>
   <stage name="Making the LFS System Bootable">
-    <execute command="grub --batch">
+    <!-- Uncomment the following if you wish to allow grub to install itself automatically.-->
+    <!-- If uncommenting remove the space between the two dashes (- -) in order for the
+     command to work properly -->
+    <!--<execute command="grub - -batch">
       <prefix>echo -e "root (&grub-root;)\nsetup (&grub-install-location;)\nquit" | </prefix>
       <param>1&gt;/dev/null</param>
       <param>2&gt;/dev/null</param>
-    </execute>
+    </execute>-->
     <copy>
       <source>&skeleton_dir;/boot/grub/menu.lst</source>
       <destination>/boot/grub</destination>
     </copy>
+    <mkdir>
+      <name>/etc/grub</name>
+    </mkdir>
+    <link>
+      <option>force</option>
+      <target>/boot/grub/menu.lst</target>
+      <name>/etc/grub</name>
+    </link>
     <search_replace>
       <file>/boot/grub/menu.lst</file>
       <find>[LFS-version]</find>
