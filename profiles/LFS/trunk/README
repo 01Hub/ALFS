@@ -52,7 +52,7 @@ To use the profile you should :-
    during chapter 9, libxml2 and nALFS. This is done under the
    assumption that you will want to use nALFS once you have booted
    your new LFS system to continue building other packages (via BLFS
-   or other profiles).
+   or other profiles). These packages are optional.
 
 7) Execute "./runit.sh {skeleton}" as root, providing the name of the
    directory you created in step 3. Please note that if you have installed
