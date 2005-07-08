@@ -81,7 +81,7 @@ http://www.linuxfromscratch.org/patches/lfs/svn/trunk/sysklogd-1.4.1-fixes-1.pat
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/tar-1.15.1-sparse_fix-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/util-linux-2.12q-cramfs-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/vim-6.3-security_fix-1.patch
-http://www.linuxfromscratch.org/patches/lfs/6.1-pre2/zlib-1.2.2-security_fix-1.patch
+http://www.linuxfromscratch.org/patches/lfs/svn/trunk/zlib-1.2.2-security_fix-1.patch
 
 ftp://ftp.gnome.org/pub/gnome/sources/libxml2/2.6/libxml2-2.6.17.tar.bz2
 http://lfs.securewebservices.co.uk/alfs/downloads/stable/nALFS-1.2.4.tar.bz2
