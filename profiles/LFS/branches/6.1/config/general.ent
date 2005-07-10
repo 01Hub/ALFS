@@ -26,7 +26,7 @@
                  enter the wrong directory, nALFS will try to download
                  all the packages in it !!!
      -->
-<!ENTITY orig_packages_dir "/your/LFS-SVN/packages">
+<!ENTITY orig_packages_dir "/your/LFS-6.1/packages">
 
 <!-- Timezone file
      This entity will be used as the target of the link
@@ -67,7 +67,7 @@
 <!ENTITY password "r00tme">
 
 <!-- LFS book version -->
-<!ENTITY LFS-version "6.1-pre1">
+<!ENTITY LFS-version "6.1">
 
 <!-- THE FOLLOWING THREE ENTITY DECLARATIONS SHOULDN'T BE MODIFIED
      UNLESS YOU KNOW WHAT YOU ARE DOING
