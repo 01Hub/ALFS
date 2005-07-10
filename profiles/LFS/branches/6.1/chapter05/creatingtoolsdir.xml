@@ -100,7 +100,6 @@
         <source>&less-package;</source>
         <source>&lfs-bootscripts-package;</source>
         <source>&libtool-package;</source>
-        <source>&libxml2-package;</source>
         <source>&linux-package;</source>
         <source>&linux-libc-headers-package;</source>
         <source>&m4-package;</source>
@@ -111,7 +110,6 @@
         <source>&mktemp-tempfile-patch;</source>
         <source>&module-init-tools-package;</source>
         <source>&ncurses-package;</source>
-        <source>&nALFS-package;</source>
         <source>&patch-package;</source>
         <source>&perl-package;</source>
         <source>&perl-libc-1-patch;</source>
