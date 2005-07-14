@@ -1,3 +1,9 @@
+<!-- Directory in which LFS system will be installed.
+     The build process try to mkdir -p it if it doen't exist.
+     If you want to build LFS in its own partition (which
+     is normally the case), you should create the directory 
+     and mount the  partition before running nALFS.
+     -->
 <!ENTITY LFS "/mnt/lfs">
 
 <!-- Temporary user name used for installing Chapter 5.
@@ -29,10 +35,59 @@
                  enter the wrong directory, nALFS will try to download
                  all the packages in it !!!
      -->
-<!ENTITY orig_packages_dir "/your/cross-lfs/packages">
+<!ENTITY orig_packages_dir "/home/tomp/lfs-sources">
+
 <!-- Directory (inside LFS) where all packages will be copied. -->
 <!ENTITY packages_dir "/tools/packages-&version;">
+
 <!-- Directory (inside LFS) where all packages will be compiled. -->
 <!ENTITY build_dir "/tools/build">
+
 <!-- Directory (inside LFS) where all skeleton config files will be copied. -->
 <!ENTITY skeleton_dir "/tools/skeleton-&version;">
+
+<!-- LFS Host -->
+<!ENTITY arch "x86">
+<!ENTITY lfs-host "&x86-i686-cross;">
+<!ENTITY lfs-target "&x86-i686-target;">
+
+<!-- Timezone file
+     This entity will be used as the target of the link
+     /etc/localtime
+     -->
+<!ENTITY localtime "/usr/share/zoneinfo/America/Denver">
+
+<!-- Keymap file. 
+     This entity will be used as the target of the link
+     /usr/share/kbd/keymaps/defkeymap.map.gz
+     -->
+<!ENTITY keymap "i386/qwerty/us.map.gz">
+
+<!-- gcc optimizations flags (overridden in packages known
+     to behave badly with optimizations)
+     see http://www.linuxfromscratch.org/hints/downloads/files/optimization.txt
+     for more info
+     IF YOU DON'T KNOW WHAT THIS IS FOR, DON'T CHANGE IT
+-->
+<!ENTITY gcc_optimizations "">
+
+<!-- parallel build level (make flag -j). Default is unset. For faster build
+     times, you might try setting this flag to 2-3 times the number of
+     processors in your machine. So, for example, a single processor machine,
+     you might set this entity to "-j3"
+-->
+<!ENTITY jlevel "">
+
+<!-- terminal type for your host system (found in the TERM
+     environment variable
+-->
+
+<!ENTITY TERM "linux">
+
+<!--  Groff expects the environment variable PAGE to contain the default 
+	paper size.
+      For those in the United States, this would be 'letter'.
+      If you live elsewhere, it could also be 'A4'.
+      -->
+
+<!ENTITY paper_size "letter">

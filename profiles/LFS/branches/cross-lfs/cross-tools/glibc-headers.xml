@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+<!ENTITY % config_entities SYSTEM "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+]>
+<alfs>
+  <package name="glibc-headers" version="&glibc-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&glibc-md5;</digest>
+        <archive>&packages_dir;/&glibc-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <mkdir base="&build_dir;">
+        <option>parents</option>
+        <name>glibc-build</name>
+      </mkdir>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/glibc-build</base>
+      </stageinfo>
+      <configure command="../&glibc-directory;/configure">
+        <prefix>CC=gcc</prefix>
+        <param>--prefix=/tools</param>
+        <param>--host=&lfs-target;</param>
+        <param>--build=&lfs-host;</param>
+        <param>--without-cvs</param>
+        <param>--disable-sanity-checks</param>
+        <param>--enable-kernel=2.6.0</param>
+        <param>--with-headers=/tools/include</param>
+        <param>--with-binutils=/cross-tools/&lfs-target;/bin</param>
+      </configure>
+      <make>
+        <param>install-headers</param>
+      </make>
+      <mkdir>
+        <option>parents</option>
+        <name>/tools/include/bits</name>
+      </mkdir>
+      <copy>
+        <source>bits/stdio_lim.h</source>
+        <destination>/tools/include/bits</destination>
+      </copy>
+      <execute command="touch">
+        <param>/tools/include/gnu/stubs.h</param>
+      </execute>
+      <copy base="&build_dir;/&glibc-directory;">
+        <source>nptl/sysdeps/pthread/pthread.h</source>
+        <destination>/tools/include</destination>
+      </copy>
+      <copy base="&build_dir;/&glibc-directory;">
+        <source>nptl/sysdeps/unix/sysv/linux/i386/bits/pthreadtypes.h</source>
+        <destination>/tools/include/bits</destination>
+      </copy>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&glibc-directory;</remove>
+      <remove>&build_dir;/glibc-build</remove>
+    </stage>
+  </package>
+</alfs>

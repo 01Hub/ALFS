@@ -1,5 +1,7 @@
 <!ENTITY version "20050609">
 
+<!ENTITY real-amp "&#38;#38;">
+
 <!-- target triplet entities -->
 <!-- Pentium, K6 and 586 Compatiables -->
 <!ENTITY x86-i586-target "i586-pc-linux-gnu">
