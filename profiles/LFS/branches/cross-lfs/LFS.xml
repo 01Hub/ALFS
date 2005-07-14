@@ -82,5 +82,47 @@
       <xi:include href="temp-system/tar.xml" />
       <xi:include href="temp-system/bash.xml" />
     </stage>
+    <stage name="Chroot Prep">
+      <stageinfo>
+	<root>/</root>
+	<environment>
+	  <variable name="LFS">&LFS;</variable>
+	  <variable name="LC_ALL">POSIX</variable>
+	  <variable name="PATH">/cross-tools/bin:/bin:/usr/bin</variable>
+	  <variable name="CFLAGS" />
+	  <variable name="CXXFLAGS" />
+	  <variable name="TERM">&TERM;</variable>
+	  <variable name="HOME">&lfs-user-dir;</variable>
+	  <variable name="LFS_HOST">&lfs-host;</variable>
+	  <variable name="LFS_TARGET">&lfs-target;</variable>
+	  <variable name="CC">&lfs-target;-gcc</variable>
+	  <variable name="CXX">&lfs-target;-g++</variable>
+	  <variable name="AR">&lfs-target;-ar</variable>
+	  <variable name="AS">&lfs-target;-as</variable>
+	  <variable name="RANLIB">&lfs-target;-ranlib</variable>
+	  <variable name="LD">&lfs-target;-ld</variable>
+	  <variable name="STRIP">&lfs-target;-strip</variable>
+	</environment>
+      </stageinfo>
+      <xi:include href="chroot/util-linux.xml" />
+      <xi:include href="chroot/kernfs.xml" />
+    </stage>
+    <stage name="Setting up the Chroot Environment">
+      <stageinfo>
+	<root>&LFS;</root>
+	<environment>
+	  <variable name="HOME">/root</variable>
+	  <variable name="TERM">&TERM;</variable>
+	  <variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin</variable>
+	  <variable name="CFLAGS" />
+	  <variable name="CXXFLAGS" />
+	</environment>
+      </stageinfo>
+      <xi:include href="chroot/changingownership.xml" />
+      <xi:include href="chroot/creatingdirs.xml" />
+      <xi:include href="chroot/creatingsymlinks.xml" />
+      <xi:include href="chroot/pwdgroup.xml" />
+      <xi:include href="chroot/populate-dev.xml" />
+    </stage>
   </stage>
 </alfs>
