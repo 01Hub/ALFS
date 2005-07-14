@@ -3,9 +3,11 @@
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/package.ent">
+<!ENTITY % config_entities SYSTEM "../config/config.ent">
 
 %general_entities;
 %package_entities;
+%config_entities;
 ]>
 <alfs>
   <package name="binutils" version="&binutils-version;">
@@ -39,7 +41,7 @@ suites for Binutils and GCC until you are able to resolve the issue.
         <param>--enable-shared</param>
       </configure>
       <make>
-        <param>&jlevel;</param>
+      	<param>&jlevel;</param>
         <param>tooldir=/usr</param>
       </make>
       <make>

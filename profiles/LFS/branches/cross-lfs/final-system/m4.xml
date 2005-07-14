@@ -3,9 +3,11 @@
 [
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/package.ent">
+<!ENTITY % config_entities SYSTEM "../config/config.ent">
 
 %general_entities;
 %package_entities;
+%config_entities;
 ]>
 <alfs>
   <package name="m4" version="&m4-version;">
