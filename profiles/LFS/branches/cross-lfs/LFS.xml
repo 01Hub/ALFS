@@ -124,5 +124,22 @@
       <xi:include href="chroot/pwdgroup.xml" />
       <xi:include href="chroot/populate-dev.xml" />
     </stage>
+    <stage name="Constructing Temporary Tools">
+      <stageinfo>
+	<root>&LFS;</root>
+	<environment>
+	  <variable name="HOME">/root</variable>
+	  <variable name="TERM">&TERM;</variable>
+	  <variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin</variable>
+	  <variable name="CFLAGS" />
+	  <variable name="CXXFLAGS" />
+	</environment>
+      </stageinfo>
+      <xi:include href="temp-tools/tcl.xml" />
+      <xi:include href="temp-tools/expect.xml" />
+      <xi:include href="temp-tools/dejagnu.xml" />
+      <xi:include href="temp-tools/perl.xml" />
+      <xi:include href="temp-tools/texinfo.xml" />
+    </stage>
   </stage>
 </alfs>
