@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+<!ENTITY % config_entities SYSTEM "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+]>
+<alfs>
+  <package name="cross-gcc-static-libgcc" version="&gcc-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&gcc-md5;</digest>
+        <archive>&packages_dir;/&gcc-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <mkdir base="&build_dir;">
+        <option>parents</option>
+        <name>gcc-build</name>
+      </mkdir>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+        <base>&build_dir;/&gcc-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gcc-specs-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gcc-posix-patch;</param>
+      </patch>
+      <textdump mode="append">
+        <file>gcc/config/linux.h</file>
+        <content>
+	  = 
+	  =#undef STARTFILE_PREFIX_SPEC 
+	  =#define STARTFILE_PREFIX_SPEC "/tools/lib/"
+	</content>
+      </textdump>
+      <execute command="sed">
+        <param>-i</param>
+        <param>"s@\(^CROSS_SYSTEM_HEADER_DIR =\).*@\1 /tools/include@g"</param>
+        <param>gcc/Makefile.in</param>
+      </execute>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/gcc-build</base>
+      </stageinfo>
+      <configure command="../&gcc-directory;/configure">
+        <param>--prefix=/cross-tools</param>
+        <param>--host=&lfs-host;</param>
+        <param>--target=&lfs-target;</param>
+        <param>--with-local-prefix=/tools</param>
+        <param>--disable-nls</param>
+        <param>--disable-shared</param>
+        <param>--enable-multilib=no</param>
+        <param>--enable-languages=c</param>
+      </configure>
+      <make>
+        <param>all-gcc</param>
+      </make>
+      <make>
+        <param>install-gcc</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/gcc-build</remove>
+      <remove>&build_dir;/&gcc-directory;</remove>
+    </stage>
+  </package>
+</alfs>
