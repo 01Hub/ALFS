@@ -28,6 +28,7 @@
       <configure>
         <param>--prefix=/tools</param>
         <param>--with-tcl=/tools/lib</param>
+	<param>--with-tclinclude=&build_dir;/&tcl-directory;</param>
         <param>--with-x=no</param>
       </configure>
       <make />

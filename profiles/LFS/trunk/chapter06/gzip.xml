@@ -57,6 +57,11 @@
       </link>
       <link>
         <option>force</option>
+        <target>gzip</target>
+        <name>/bin/compress</name>
+      </link>
+      <link>
+        <option>force</option>
         <target>gunzip</target>
         <name>/bin/uncompress</name>
       </link>

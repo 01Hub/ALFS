@@ -24,8 +24,8 @@
     </execute>
     <execute command="mount">
       <param>-f</param>
-      <param>-t ramfs</param>
-      <param>ramfs</param>
+      <param>-t tmpfs</param>
+      <param>tmpfs</param>
       <param>&LFS;/dev</param>
     </execute>
     <execute command="mount">
