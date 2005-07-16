@@ -204,6 +204,26 @@
       <xi:include href="final-system/iana-etc.xml" />
       <xi:include href="final-system/grub.xml" />
     </stage>
+    <stage name="Setting Up System Bootscripts">
+      <stageinfo>
+	<root>&LFS;</root>
+	<environment>
+	  <variable name="HOME">/root</variable>
+	  <variable name="TERM">&TERM;</variable>
+	  <variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin</variable>
+	  <variable name="CFLAGS" />
+	  <variable name="CXXFLAGS" />
+	</environment>
+      </stageinfo>
+      <xi:include href="bootscripts/bootscripts.xml" />
+      <xi:include href="bootscripts/setclock.xml" />
+      <xi:include href="config/console.xml" />
+      <xi:include href="bootscripts/inputrc.xml" />
+      <xi:include href="bootscripts/profile.xml" />
+      <xi:include href="bootscripts/hostname.xml" />
+      <xi:include href="bootscripts/hosts.xml" />
+      <xi:include href="bootscripts/network.xml" />
+    </stage>
   </stage>
 </alfs>
 

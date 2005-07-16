@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % config_entities SYSTEM "../config/config.ent">
+
+%general_entities;
+%config_entities;
+]>
+<alfs>
+  <stage name="Configuring the network Script">
+    <mkdir>
+      <option>parents</option>
+      <name>/etc/sysconfig/network-devices/ifconfig.eth0</name>
+    </mkdir>
+    <copy>
+      <source>&skeleton_dir;/etc/sysconfig/network-devices/ifconfig.eth0/ipv4</source>
+      <destination>/etc/sysconfig/network-devices/ifconfig.eth0</destination>
+    </copy>
+    <copy>
+      <source>&skeleton_dir;/etc/resolv.conf</source>
+      <destination>/etc</destination>
+    </copy>
+  </stage>
+</alfs>
