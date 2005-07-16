@@ -93,7 +93,6 @@
         <source>&iana-etc-package;</source>
         <source>&inetutils-package;</source>
         <source>&inetutils-no-man-pages-patch;</source>
-        <source>&inetutils-kernel-headers-patch;</source>
         <source>&iproute2-package;</source>
         <source>&kbd-package;</source>
         <source>&less-package;</source>

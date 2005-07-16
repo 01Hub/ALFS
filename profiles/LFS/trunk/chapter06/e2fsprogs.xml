@@ -15,19 +15,15 @@
         <archive>&packages_dir;/&e2fsprogs-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
-      <mkdir base="&build_dir;">
-        <name>e2fsprogs-build</name>
+      <mkdir base="&build_dir;/&e2fsprogs-directory;">
+        <name>build</name>
       </mkdir>
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/e2fsprogs-build</base>
+        <base>&build_dir;/&e2fsprogs-directory;/build</base>
       </stageinfo>
-      <execute command="sed" base="&build_dir;/&e2fsprogs-directory;">
-	<param>-i -e 's/-DTEST/$(ALL_CFLAGS) &real-amp;/'</param>
-	<param>lib/e2p/Makefile.in</param>
-      </execute>
-      <configure command="../&e2fsprogs-directory;/configure">
+      <configure command="../configure">
         <param>--prefix=/usr</param>
         <param>--with-root-prefix=""</param>
         <param>--enable-elf-shlibs</param>
@@ -50,7 +46,6 @@
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&e2fsprogs-directory;</remove>
-      <remove>&build_dir;/e2fsprogs-build</remove>
     </stage>
   </package>
 </alfs>
