@@ -22,20 +22,11 @@
         <name>gcc-build</name>
       </mkdir>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <environment>
-          <variable name="CFLAGS" />
-          <variable name="CXXFLAGS" />
-        </environment>
-        <base>&build_dir;/gcc-build</base>
+	<base>&build_dir;/&gcc-directory;</base>
       </stageinfo>
-      <patch base="&build_dir;/&gcc-directory;">
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&gcc-no-fixincludes-patch;</param>
-      </patch>
-      <patch base="&build_dir;/&gcc-directory;">
+      <patch>
         <param>-N</param>
         <param>-p1</param>
         <param>-i &packages_dir;/&gcc-linkonce-patch;</param>
@@ -45,14 +36,26 @@
         <find>install_to_$(INSTALL_DEST)</find>
         <replace></replace>
       </search_replace>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <environment>
+          <variable name="CFLAGS" />
+          <variable name="CXXFLAGS" />
+        </environment>
+        <base>&build_dir;/gcc-build</base>
+      </stageinfo>
       <configure command="../&gcc-directory;/configure">
         <param>--prefix=/usr</param>
         <param>--libexecdir=/usr/lib</param>
         <param>--enable-shared</param>
         <param>--enable-threads=posix</param>
         <param>--enable-__cxa_atexit</param>
+	<param>--enable-c99</param>
+	<param>--enable-long-long</param>
         <param>--enable-clocale=gnu</param>
         <param>--enable-languages=c,c++</param>
+	<param>--disable-libstdcxx-pch</param>
       </configure>
       <make>
         <param>&jlevel;</param>

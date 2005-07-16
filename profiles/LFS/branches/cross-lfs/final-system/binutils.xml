@@ -41,12 +41,14 @@ suites for Binutils and GCC until you are able to resolve the issue.
         <param>--enable-shared</param>
       </configure>
       <make>
+      	<param>configure-host</param>
+      </make>
+      <make>
       	<param>&jlevel;</param>
         <param>tooldir=/usr</param>
       </make>
       <make>
-        <param>-k check</param>
-        <param>|| true</param>
+        <param>check</param>
       </make>
       <make>
         <param>tooldir=/usr</param>

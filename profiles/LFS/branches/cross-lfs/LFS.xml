@@ -141,5 +141,69 @@
       <xi:include href="temp-tools/perl.xml" />
       <xi:include href="temp-tools/texinfo.xml" />
     </stage>
+    <stage name="Installing Basic System Software">
+      <stageinfo>
+	<root>&LFS;</root>
+	<environment>
+	  <variable name="HOME">/root</variable>
+	  <variable name="TERM">&TERM;</variable>
+	  <variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin</variable>
+	  <variable name="CFLAGS" />
+	  <variable name="CXXFLAGS" />
+	</environment>
+      </stageinfo>
+      <xi:include href="final-system/libc-headers.xml" />
+      <xi:include href="final-system/glibc.xml" />
+      <xi:include href="final-system/adjustingtoolchain.xml" />
+      <xi:include href="final-system/binutils.xml" />
+      <xi:include href="final-system/gcc.xml" />
+      <xi:include href="final-system/zlib.xml" />
+      <xi:include href="final-system/findutils.xml" />
+      <xi:include href="final-system/gawk.xml" />
+      <xi:include href="final-system/ncurses.xml" />
+      <xi:include href="final-system/readline.xml" />
+      <xi:include href="final-system/vim.xml" />
+      <xi:include href="final-system/m4.xml" />
+      <xi:include href="final-system/bison.xml" />
+      <xi:include href="final-system/less.xml" />
+      <xi:include href="final-system/groff.xml" />
+      <xi:include href="final-system/coreutils.xml" />
+      <xi:include href="final-system/sed.xml" />
+      <xi:include href="final-system/flex.xml" />
+      <xi:include href="final-system/gettext.xml" />
+      <xi:include href="final-system/inetutils.xml" />
+      <xi:include href="final-system/perl.xml" />
+      <xi:include href="final-system/iproute2.xml" />
+      <xi:include href="final-system/texinfo.xml" />
+      <xi:include href="final-system/autoconf.xml" />
+      <xi:include href="final-system/automake.xml" />
+      <xi:include href="final-system/bash.xml" />
+      <xi:include href="final-system/file.xml" />
+      <xi:include href="final-system/libtool.xml" />
+      <xi:include href="final-system/bzip2.xml" />
+      <xi:include href="final-system/diffutils.xml" />
+      <xi:include href="final-system/kbd.xml" />
+      <xi:include href="final-system/e2fsprogs.xml" />
+      <xi:include href="final-system/grep.xml" />
+      <xi:include href="final-system/gzip.xml" />
+      <xi:include href="final-system/man.xml" />
+      <xi:include href="final-system/man-pages.xml" />
+      <xi:include href="final-system/make.xml" />
+      <xi:include href="final-system/module-init-tools.xml" />
+      <xi:include href="final-system/patch.xml" />
+      <xi:include href="final-system/procps.xml" />
+      <xi:include href="final-system/psmisc.xml" />
+      <xi:include href="final-system/shadow.xml" />
+      <xi:include href="final-system/sysklogd.xml" />
+      <xi:include href="final-system/sysvinit.xml" />
+      <xi:include href="final-system/tar.xml" />
+      <xi:include href="final-system/util-linux.xml" />
+      <xi:include href="final-system/udev.xml" />
+      <xi:include href="final-system/mktemp.xml" />
+      <xi:include href="final-system/hotplug.xml" />
+      <xi:include href="final-system/iana-etc.xml" />
+      <xi:include href="final-system/grub.xml" />
+    </stage>
   </stage>
 </alfs>
+

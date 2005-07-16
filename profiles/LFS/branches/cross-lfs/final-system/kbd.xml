@@ -29,7 +29,6 @@
       <make>
         <param>install</param>
       </make>
-      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../config/keymap-ch6.xml" />
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&kbd-directory;</remove>
