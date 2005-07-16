@@ -24,6 +24,7 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
+	<param>--libdir=/lib</param>
         <param>--with-shared</param>
         <param>--without-debug</param>
       </configure>
@@ -36,16 +37,18 @@
       <make>
         <param>install</param>
       </make>
-      <permissions mode="755">
-        <name>/usr/lib/*.&ncurses-version;</name>
-      </permissions>
-      <permissions mode="644">
-        <name>/usr/lib/libncurses++.a</name>
-      </permissions>
-      <move>
-        <source>/usr/lib/libncurses.so.5*</source>
-        <destination>/lib</destination>
+      <move base="/lib">
+      	<source>libpanel.a</source>
+	<source>libmenu.a</source>
+	<source>libform.a</source>
+	<source>libncurses.a</source>
+	<source>libncurses++.a</source>
+	<destination>/usr/lib</destination>
       </move>
+      <remove>/lib/libncurses.so</remove>
+      <remove>/lib/libmenu.so</remove>
+      <remove>/lib/libpanel.so</remove>
+      <remove>/lib/libform.so</remove>
       <link>
         <option>force</option>
         <target>../../lib/libncurses.so.5</target>
@@ -53,9 +56,25 @@
       </link>
       <link>
         <option>force</option>
-        <target>libncurses.so</target>
-        <name>/usr/lib/libcurses.so</name>
+        <target>../../lib/libmenu.so.5</target>
+        <name>/usr/lib/libmenu.so</name>
       </link>
+      <link>
+        <option>force</option>
+        <target>../../lib/libpanel.so.5</target>
+        <name>/usr/lib/libpanel.so</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>../../lib/libform.so.5</target>
+        <name>/usr/lib/libform.so</name>
+      </link>
+      <permissions mode="755">
+        <name>/lib/libpanel.so.&ncurses-version;</name>
+	<name>/lib/libmenu.so.&ncurses-version;</name>
+	<name>/lib/libform.so.&ncurses-version;</name>
+	<name>/lib/libncurses.so.&ncurses-version;</name>
+      </permissions>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&ncurses-directory;</remove>

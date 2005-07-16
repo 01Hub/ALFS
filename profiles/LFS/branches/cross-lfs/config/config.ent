@@ -25,6 +25,13 @@
 <!-- Temporary user's home directory. -->
 <!ENTITY lfs-user-dir "/home/&lfs-user;">
 
+<!-- Root password. 
+     This is the password of root in the new LFS distribution.
+     Of course, you should change it as soon as you log into
+     your new LFS.
+     -->
+<!ENTITY root-password "r00tme">
+
 <!-- Location of your LFS packages.
      This is the directory in which all the packages downloaded
      from ftp.linuxfromscratch.org (or their original servers)

@@ -10,42 +10,43 @@
 %config_entities;
 ]>
 <alfs>
-  <package name="sysvinit" version="&sysvinit-version;">
+  <package name="grub" version="&grub-version;">
     <stage name="Unpacking">
       <unpack>
-        <digest>&sysvinit-md5;</digest>
-        <archive>&packages_dir;/&sysvinit-package;</archive>
+        <digest>&grub-md5;</digest>
+        <archive>&packages_dir;/&grub-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&sysvinit-directory;</base>
+        <environment>
+          <variable name="CFLAGS" />
+          <variable name="CXXFLAGS" />
+        </environment>
+        <base>&build_dir;/&grub-directory;</base>
       </stageinfo>
-      <search_replace>
-        <file>src/init.c</file>
-        <find>Sending processes</find>
-        <replace>Sending processes started by init</replace>
-      </search_replace>
-      <make>
-      	<param>-C src</param>
-	<param>clobber</param>
-      </make>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
       <make>
         <param>&jlevel;</param>
-        <param>-C src</param>
       </make>
       <make>
-        <param>-C src</param>
         <param>install</param>
       </make>
-      <copy>
-        <source>&skeleton_dir;/etc/inittab</source>
-        <destination>/etc</destination>
+      <mkdir>
+        <name>/boot/grub</name>
+      </mkdir>
+      <copy base="/usr/lib/grub/i386-pc">
+        <source>stage1</source>
+        <source>stage2</source>
+        <source>e2fs_stage1_5</source>
+        <destination>/boot/grub</destination>
       </copy>
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&sysvinit-directory;</remove>
+      <remove>&build_dir;/&grub-directory;</remove>
     </stage>
   </package>
 </alfs>

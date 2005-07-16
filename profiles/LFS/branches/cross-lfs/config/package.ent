@@ -352,3 +352,5 @@
 <!ENTITY zlib-version "1.2.2">
 <!ENTITY zlib-package "zlib-&zlib-version;.tar.bz2">
 <!ENTITY zlib-directory "zlib-&zlib-version;">
+
+<!ENTITY zlib-security-fix-patch "zlib-&zlib-version;-security_fix-1.patch">

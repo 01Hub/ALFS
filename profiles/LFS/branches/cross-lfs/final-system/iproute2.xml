@@ -25,7 +25,10 @@
       <execute command="sed">
 	<param>-i '/^TARGETS/s@arpd@@g' misc/Makefile</param>
       </execute>
-      <configure />
+      <permissions mode="755">
+      	<name>configure</name>
+      </permissions>
+      <configure command="sh configure" />
       <make>
         <param>&jlevel;</param>
         <param>SBINDIR=/sbin</param>

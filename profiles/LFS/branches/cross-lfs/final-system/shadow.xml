@@ -87,7 +87,7 @@
       <execute command="pwconv" />
       <execute command="grpconv" />
       <execute command="echo">
-        <param>root:&password;</param>
+        <param>root:&root-password;</param>
         <param>| chpasswd</param>
       </execute>
     </stage>
