@@ -25,11 +25,6 @@
         <param>-p1</param>
         <param>-i &packages_dir;/&inetutils-no-man-pages-patch;</param>
       </patch>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&inetutils-kernel-headers-patch;</param>
-      </patch>
       <configure>
         <param>--prefix=/usr</param>
         <param>--libexecdir=/usr/sbin</param>

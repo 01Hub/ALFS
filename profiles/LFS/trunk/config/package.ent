@@ -3,8 +3,8 @@
 <!ENTITY autoconf-package "autoconf-&autoconf-version;.tar.bz2">
 <!ENTITY autoconf-directory "autoconf-&autoconf-version;">
 
-<!ENTITY automake-md5 "3a534ad55d781861e1e92d3b8d898a9a">
-<!ENTITY automake-version "1.9.5">
+<!ENTITY automake-md5 "c11b8100bb311492d8220378fd8bf9e0">
+<!ENTITY automake-version "1.9.6">
 <!ENTITY automake-package "automake-&automake-version;.tar.bz2">
 <!ENTITY automake-directory "automake-&automake-version;">
 
@@ -16,8 +16,8 @@
 <!ENTITY bash-fixes-patch "bash-&bash-version;-fixes-3.patch">
 <!ENTITY bash-wcontinued-patch "bash-&bash-version;-avoid_WCONTINUED-1.patch">
 
-<!ENTITY binutils-md5 "bcb9fabaf0eaf91bd38c4ee148658df8">
-<!ENTITY binutils-version "2.16">
+<!ENTITY binutils-md5 "6a9d529efb285071dad10e1f3d2b2967">
+<!ENTITY binutils-version "2.16.1">
 <!ENTITY binutils-package "binutils-&binutils-version;.tar.bz2">
 <!ENTITY binutils-directory "binutils-&binutils-version;">
 
@@ -49,8 +49,8 @@
 <!ENTITY diffutils-package "diffutils-&diffutils-version;.tar.bz2">
 <!ENTITY diffutils-directory "diffutils-&diffutils-version;">
 
-<!ENTITY e2fsprogs-md5 "3bc8370fde5399a059412d8b727bdbf8">
-<!ENTITY e2fsprogs-version "1.37">
+<!ENTITY e2fsprogs-md5 "21de89f12c85528b5e04a63edef6422d">
+<!ENTITY e2fsprogs-version "1.38">
 <!ENTITY e2fsprogs-package "e2fsprogs-&e2fsprogs-version;.tar.bz2">
 <!ENTITY e2fsprogs-directory "e2fsprogs-&e2fsprogs-version;">
 
@@ -61,12 +61,12 @@
 
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
 
-<!ENTITY file-md5 "a14dcb05c172206d92dce9e0ee776501">
-<!ENTITY file-version "4.13">
+<!ENTITY file-md5 "1bdd1b8af29f6f30eb6c80eb13165ef2">
+<!ENTITY file-version "4.14">
 <!ENTITY file-package "file-&file-version;.tar.bz2">
 <!ENTITY file-directory "file-&file-version;">
 
-<!ENTITY findutils-md5 "">
+<!ENTITY findutils-md5 "e455be17179976af5f292251e911f213">
 <!ENTITY findutils-version "4.2.23">
 <!ENTITY findutils-package "findutils-&findutils-version;.tar.bz2">
 <!ENTITY findutils-directory "findutils-&findutils-version;">
@@ -146,8 +146,8 @@
 <!ENTITY hotplug-package "hotplug-&hotplug-version;.tar.bz2">
 <!ENTITY hotplug-directory "hotplug-&hotplug-version;">
 
-<!ENTITY iana-etc-md5 "9f769f7b2d0e519cf62dacb2b3b051d4">
-<!ENTITY iana-etc-version "1.04">
+<!ENTITY iana-etc-md5 "8a5a44020759895c7565b32996eab29b">
+<!ENTITY iana-etc-version "1.10">
 <!ENTITY iana-etc-package "iana-etc-&iana-etc-version;.tar.bz2">
 <!ENTITY iana-etc-directory "iana-etc-&iana-etc-version;">
 
@@ -157,7 +157,6 @@
 <!ENTITY inetutils-directory "inetutils-&inetutils-version;">
 
 <!ENTITY inetutils-no-man-pages-patch "inetutils-&inetutils-version;-no_server_man_pages-1.patch">
-<!ENTITY inetutils-kernel-headers-patch "inetutils-&inetutils-version;-kernel_headers-1.patch">
 
 <!ENTITY iproute2-md5 "f455fce014fefefe26c05f9b9479440c">
 <!ENTITY iproute2-version "2.6.11">
@@ -190,14 +189,14 @@
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
-<!ENTITY linux-md5 "7e3b6e630bb05c1a8c1ba46e010dbe44">
-<!ENTITY linux-version "2.6.11.12">
+<!ENTITY linux-md5 "21d642266a9a9ce6c73db17605991ac3">
+<!ENTITY linux-version "2.6.12.3">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
 
-<!ENTITY linux-libc-headers-md5 "2d21d8e7ff641da74272b114c786464e">
-<!ENTITY linux-libc-headers-version "2.6.11.2">
+<!ENTITY linux-libc-headers-md5 "eae2f562afe224ad50f65a6acfb4252c">
+<!ENTITY linux-libc-headers-version "2.6.12.0">
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
 <!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
 
@@ -211,13 +210,13 @@
 <!ENTITY make-package "make-&make-version;.tar.bz2">
 <!ENTITY make-directory "make-&make-version;">
 
-<!ENTITY man-md5 "3800006ccd2f1f16124a2ac3abf04b30">
-<!ENTITY man-version "1.5p">
+<!ENTITY man-md5 "5d015c04fbb41b2107e9d6c37414829e">
+<!ENTITY man-version "1.6">
 <!ENTITY man-package "man-&man-version;.tar.bz2">
 <!ENTITY man-directory "man-&man-version;">
 
-<!ENTITY man-pages-md5 "a6447ad203f904165743306ec1905247">
-<!ENTITY man-pages-version "2.03">
+<!ENTITY man-pages-md5 "c71fc8e6c7f6bf04caf2f17b2a9404b1">
+<!ENTITY man-pages-version "2.05">
 <!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.bz2">
 <!ENTITY man-pages-directory "man-pages-&man-pages-version;">
 
@@ -277,8 +276,8 @@
 <!ENTITY sed-package "sed-&sed-version;.tar.bz2">
 <!ENTITY sed-directory "sed-&sed-version;">
 
-<!ENTITY shadow-md5 "66e3a3a60ea6b021a7babff311b07607">
-<!ENTITY shadow-version "4.0.9">
+<!ENTITY shadow-md5 "069a78645602be68e930cc19b34650d5">
+<!ENTITY shadow-version "4.0.10">
 <!ENTITY shadow-package "shadow-&shadow-version;.tar.bz2">
 <!ENTITY shadow-directory "shadow-&shadow-version;">
 
@@ -301,8 +300,8 @@
 
 <!ENTITY tar-sparse-fix-patch "tar-&tar-version;-sparse_fix-1.patch">
 
-<!ENTITY tcl-md5 "5bf27b079b630988670150722e276887">
-<!ENTITY tcl-version "8.4.10">
+<!ENTITY tcl-md5 "77a18900d703ae4a055d086f75f0c247">
+<!ENTITY tcl-version "8.4.11">
 <!ENTITY tcl-package "tcl&tcl-version;-src.tar.bz2">
 <!ENTITY tcl-directory "tcl&tcl-version;">
 
@@ -311,8 +310,8 @@
 <!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
-<!ENTITY udev-md5 "03be2f56cc13c7f24b0ebf296166d48a">
-<!ENTITY udev-version "058">
+<!ENTITY udev-md5 "70c5a1c45a8df0ff1e21fa9b89486ab4">
+<!ENTITY udev-version "063">
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
 

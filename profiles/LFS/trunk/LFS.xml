@@ -212,6 +212,7 @@
   </stage>
   <stage name="Finishing Up (outside chroot)">
     <remove>/tools</remove>
+    <execute command="pkill udevd" />
     <execute command="umount">
       <param>&LFS;/dev/pts</param>
       <param>&LFS;/dev/shm</param>
