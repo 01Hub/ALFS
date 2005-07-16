@@ -224,6 +224,43 @@
       <xi:include href="bootscripts/hosts.xml" />
       <xi:include href="bootscripts/network.xml" />
     </stage>
+    <stage name="Making the LFS System Bootable">
+      <stageinfo>
+	<root>&LFS;</root>
+	<environment>
+	  <variable name="HOME">/root</variable>
+	  <variable name="TERM">&TERM;</variable>
+	  <variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin</variable>
+	  <variable name="CFLAGS" />
+	  <variable name="CXXFLAGS" />
+	</environment>
+      </stageinfo>
+      <xi:include href="bootable/fstab.xml" />
+      <xi:include href="bootable/kernel.xml" />
+      <xi:include href="bootable/grub.xml" />
+    </stage>
+    <stage name="Finishing up (inside chroot)">
+      <stageinfo>
+	<root>&LFS;</root>
+      </stageinfo>
+      <remove>/tools</remove>
+      <textdump>
+	<file>/etc/lfs-release</file>
+	<content>=&version;</content>
+      </textdump>
+    </stage>
+    <stage name="Finishing Up (outside chroot)">
+      <remove>/tools</remove>
+      <execute command="umount">
+	<param>&LFS;/dev/pts</param>
+	<param>&LFS;/dev/shm</param>
+	<param>&LFS;/dev</param>
+	<param>&LFS;/proc</param>
+	<param>&LFS;/sys</param>
+	<!-- If you used a bind mount for your package dir, unmount it here. -->
+	<!-- <param>&LFS;&packages_dir;</param> -->
+      </execute>
+    </stage>
   </stage>
 </alfs>
 
