@@ -12,12 +12,16 @@ fi
 CURRENTDIR=`pwd`
 echo "<!ENTITY lfs-profile '${CURRENTDIR}'>" > config/profile.ent
 
-if [ -z "${1}" ]; then
+if [ -z "${2}" ]; then
   SKELETON=skeleton
 else
-  SKELETON=${1}
+  SKELETON=${2}
 fi
 echo "<!ENTITY skeleton '${SKELETON}'>" >> config/profile.ent
 
 umask 022
-/usr/local/bin/nALFS -l -L nalfs.log LFS.xml
+if [ ! -z "${1}" ]; then
+  /usr/local/bin/nALFS -l -L LFS-cross-lfs-${1}.log LFS-${1}.xml
+else
+  echo "Usage: ${0} <arch> [<skeleton_dir>]"
+fi
