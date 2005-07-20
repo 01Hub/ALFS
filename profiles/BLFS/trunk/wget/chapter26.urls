@@ -1,22 +1,23 @@
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/qt-x11-free-3.3.3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/qt-x11-free-3.3.4.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gtk+-1.2.10.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gtk+-2.6.4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gtk+-1.2.10.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gtk+-2.6.7.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/pango-1.8.1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/atk-1.9.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/atk-1.9.1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/lesstif-0.94.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/lesstif-0.94.4.tar.bz2
+http://www.linuxfromscratch.org/blfs/downloads/svn/lesstif-0.94.4-testsuite_fix-1.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/startup-notification-0.8.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/GNOME-2/libwnck-2.10.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/shared-mime-info-0.15.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/shared-mime-info-0.16.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/hicolor-icon-theme-0.5.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/hicolor-icon-theme-0.8.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libxklavier-1.11.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libxklavier-2.0.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/freeglut-2.2.0.tar.bz2

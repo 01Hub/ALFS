@@ -79,8 +79,8 @@
       <param>install</param>
     </make>
     <copy>
-      <source>saslauthd/saslauthd.mdoc</source>
-      <destination>/usr/share/man/man8/saslauthd.8</destination>
+      <source>saslauthd/saslauthd.8</source>
+      <destination>/usr/share/man/man8</destination>
     </copy>
     <mkdir>
       <option>parents</option>

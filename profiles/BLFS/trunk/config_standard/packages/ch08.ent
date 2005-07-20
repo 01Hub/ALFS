@@ -131,9 +131,9 @@
 <!ENTITY lzo-md5       "5eadda09d7fba14f1195f07b59987753">
 <!ENTITY lzo-directory "lzo-&lzo-version;">
 
-<!ENTITY libpcap-version   "0.8.3">
+<!ENTITY libpcap-version   "0.9.1">
 <!ENTITY libpcap-package   "libpcap-&libpcap-version;.tar.bz2">
-<!ENTITY libpcap-md5       "0f78750ebf003c1f24c8438a10e6cdc9">
+<!ENTITY libpcap-md5       "33a41a132497e8b1481568e3e92a765c">
 <!ENTITY libpcap-directory "libpcap-&libpcap-version;">
 
 <!ENTITY libusb-version   "0.1.10a">

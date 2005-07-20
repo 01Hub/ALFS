@@ -5,14 +5,14 @@
 <!ENTITY sawfish-md5       "c3ac324268bb531b30bb00e519806ffb">
 <!ENTITY sawfish-directory "sawfish-&sawfish-version;">
 
-<!ENTITY fluxbox-version   "0.9.12">
+<!ENTITY fluxbox-version   "0.9.13">
 <!ENTITY fluxbox-package   "fluxbox-&fluxbox-version;.tar.bz2">
-<!ENTITY fluxbox-md5       "398f4e10d88b47507ea309968340961c">
+<!ENTITY fluxbox-md5       "f9b7b3c3b8e1e9ce3449601b238d4fba">
 <!ENTITY fluxbox-directory "fluxbox-&fluxbox-version;">
 
-<!ENTITY metacity-version   "2.8.6">
+<!ENTITY metacity-version   "2.10.1">
 <!ENTITY metacity-package   "metacity-&metacity-version;.tar.bz2">
-<!ENTITY metacity-md5       "c49e4b5575503975516159780855e317">
+<!ENTITY metacity-md5       "c326eb1aed8742057e9ad94b9ccae877">
 <!ENTITY metacity-directory "metacity-&metacity-version;">
 
 <!ENTITY xfce-version         "4.2.0">

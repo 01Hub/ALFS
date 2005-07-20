@@ -5,9 +5,9 @@
 <!ENTITY traceroute-md5       "3af0b55b2f9f5c330631fb540ffda11d">
 <!ENTITY traceroute-directory "traceroute-&traceroute-version;">
 
-<!ENTITY nmap-version   "3.75">
+<!ENTITY nmap-version   "3.81">
 <!ENTITY nmap-package   "nmap-&nmap-version;.tar.bz2">
-<!ENTITY nmap-md5       "1b54c0608b36f6b3ac92d7d1b910738f">
+<!ENTITY nmap-md5       "0713306dda85aee2c95ef31b4b7d2838">
 <!ENTITY nmap-directory "nmap-&nmap-version;">
 
 <!ENTITY whois-version   "4.7.5">
