@@ -1,8 +1,8 @@
 <!--************* packages for chapter 26 *************-->
 
-<!ENTITY qt-version   "3.3.3">
+<!ENTITY qt-version   "3.3.4">
 <!ENTITY qt-package   "qt-x11-free-&qt-version;.tar.bz2">
-<!ENTITY qt-md5       "3e0a0c8429b0a974b39b5f535ddff01c">
+<!ENTITY qt-md5       "027f4e82fbe592b39d2f160bfb3a73af">
 <!ENTITY qt-directory "qt-x11-free-&qt-version;">
 
 <!ENTITY gtkplus-version   "1.2.10">
@@ -10,14 +10,14 @@
 <!ENTITY gtkplus-md5       "e779de73c8407cef15fc5ecdb70aed4f">
 <!ENTITY gtkplus-directory "gtk+-&gtkplus-version;">
 
-<!ENTITY gtkplus2-version   "2.6.4">
+<!ENTITY gtkplus2-version   "2.6.7">
 <!ENTITY gtkplus2-package   "gtk+-&gtkplus2-version;.tar.bz2">
-<!ENTITY gtkplus2-md5       "4749fce7b082b784a71a076aa586dc25">
+<!ENTITY gtkplus2-md5       "b89bf892a0dee943f98b4caa12f773c8">
 <!ENTITY gtkplus2-directory "gtk+-&gtkplus2-version;">
 
-<!ENTITY atk-version   "1.9.0">
+<!ENTITY atk-version   "1.9.1">
 <!ENTITY atk-package   "atk-&atk-version;.tar.bz2">
-<!ENTITY atk-md5       "7f41bd9c6dcd83c8df391dc1805be653">
+<!ENTITY atk-md5       "689eb6a77215858eb804f6dcc90058be">
 <!ENTITY atk-directory "atk-&atk-version;">
 
 <!ENTITY pango-version   "1.8.1">
@@ -25,10 +25,12 @@
 <!ENTITY pango-md5       "88aa6bf1876766db6864f3b93577887c">
 <!ENTITY pango-directory "pango-&pango-version;">
 
-<!ENTITY lesstif-version   "0.94.0">
+<!ENTITY lesstif-version   "0.94.4">
 <!ENTITY lesstif-package   "lesstif-&lesstif-version;.tar.bz2">
-<!ENTITY lesstif-md5       "20f38a06c863e0c51ca0c862ef039601">
+<!ENTITY lesstif-md5       "3096ca456c0bc299d895974d307c82d8">
 <!ENTITY lesstif-directory "lesstif-&lesstif-version;">
+
+<!ENTITY lesstif-testsuite-fix-patch "lesstif-&lesstif-version;-testsuite_fix-1.patch">
 
 <!ENTITY startup-notification-version   "0.8">
 <!ENTITY startup-notification-package   "startup-notification-&startup-notification-version;.tar.bz2">
@@ -40,19 +42,19 @@
 <!ENTITY libwnck-md5       "c04c79f1e8576bc930c79d2e7bb8190a ">
 <!ENTITY libwnck-directory "libwnck-&libwnck-version;">
 
-<!ENTITY shared-mime-info-version   "0.15">
+<!ENTITY shared-mime-info-version   "0.16">
 <!ENTITY shared-mime-info-package   "shared-mime-info-&shared-mime-info-version;.tar.bz2">
-<!ENTITY shared-mime-info-md5       "ab9fa45b4ca49cf6e6dd306623088e70">
+<!ENTITY shared-mime-info-md5       "297d1ca3b67fe177af1f36970e0a37cb">
 <!ENTITY shared-mime-info-directory "shared-mime-info-&shared-mime-info-version;">
 
-<!ENTITY hicolor-icon-theme-version   "0.5">
+<!ENTITY hicolor-icon-theme-version   "0.8">
 <!ENTITY hicolor-icon-theme-package   "hicolor-icon-theme-&hicolor-icon-theme-version;.tar.bz2">
-<!ENTITY hicolor-icon-theme-md5       "dad5923c7b517196959b8b436f0ca553">
+<!ENTITY hicolor-icon-theme-md5       "fc855ced9985ffcf28463f02279ee18b">
 <!ENTITY hicolor-icon-theme-directory "hicolor-icon-theme-&hicolor-icon-theme-version;">
 
-<!ENTITY libxklavier-version   "1.11">
+<!ENTITY libxklavier-version   "2.0">
 <!ENTITY libxklavier-package   "libxklavier-&libxklavier-version;.tar.bz2">
-<!ENTITY libxklavier-md5       "f06cd7d913005e416e7b60d4e5e393e1">
+<!ENTITY libxklavier-md5       "8da1a1a2ba934e94288bef8a4e4ca62d">
 <!ENTITY libxklavier-directory "libxklavier-&libxklavier-version;">
 
 <!ENTITY freeglut-version   "2.2.0">

@@ -212,15 +212,15 @@
 <!ENTITY ruby-directory "ruby-&ruby-version;">
 
 <!ENTITY tcl-major-minor "8.4">
-<!ENTITY tcl-version     "&tcl-major-minor;.9">
-<!ENTITY tcl-package     "tcl-&tcl-version;.tar.bz2">
-<!ENTITY tcl-md5         "597e5576d9bf44e9e4e901168cae2654">
-<!ENTITY tcl-directory   "tcl-&tcl-version;">
+<!ENTITY tcl-version     "&tcl-major-minor;.11">
+<!ENTITY tcl-package     "tcl&tcl-version;-src.tar.bz2">
+<!ENTITY tcl-md5         "77a18900d703ae4a055d086f75f0c247">
+<!ENTITY tcl-directory   "tcl&tcl-version;">
 
 <!ENTITY tk-major-minor "8.4">
-<!ENTITY tk-version     "&tk-major-minor;.9">
+<!ENTITY tk-version     "&tk-major-minor;.11">
 <!ENTITY tk-package     "tk&tk-version;-src.tar.bz2">
-<!ENTITY tk-md5         "4ad442322d874a63514f5c4a4263a65e">
+<!ENTITY tk-md5         "">
 <!ENTITY tk-directory   "tk&tk-version;">
 
 <!ENTITY expect-major-minor "5.43">
@@ -262,9 +262,9 @@
 <!ENTITY nasm-md5       "2032ad44c7359f7a9a166a40a633e772">
 <!ENTITY nasm-directory "nasm-&nasm-version;">
 
-<!ENTITY doxygen-version   "1.4.2">
+<!ENTITY doxygen-version   "1.4.3">
 <!ENTITY doxygen-package   "doxygen-&doxygen-version;.src.tar.bz2">
-<!ENTITY doxygen-md5       "7c8ad20f23f293b6046f7a76c984db42">
+<!ENTITY doxygen-md5       "">
 <!ENTITY doxygen-directory "doxygen-&doxygen-version;">
 
 <!ENTITY guile-version   "1.6.7">

@@ -68,9 +68,9 @@
 <!ENTITY mitkrb-md5       "29d262ca94d1b202403e362be9ef691f">
 <!ENTITY mitkrb-directory "krb5-&mitkrb-version;">
 
-<!ENTITY cyrus-sasl-version   "2.1.20">
+<!ENTITY cyrus-sasl-version   "2.1.21">
 <!ENTITY cyrus-sasl-package   "cyrus-sasl-&cyrus-sasl-version;.tar.bz2">
-<!ENTITY cyrus-sasl-md5       "4981b64da5747e7ca6f4696a6d172066">
+<!ENTITY cyrus-sasl-md5       "abdbb44faf1b8288f72114c3fbdd3d49">
 <!ENTITY cyrus-sasl-directory "cyrus-sasl-&cyrus-sasl-version;">
 
 <!ENTITY stunnel-version   "4.09">

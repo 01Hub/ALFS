@@ -1,6 +1,6 @@
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/dejagnu-1.4.4.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/D-E/doxygen-1.4.2.src.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/D-E/doxygen-1.4.3.src.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/D-E/expect-5.43.0.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/D-E/expect-5.43.0-spawn-1.patch
@@ -71,5 +71,5 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/Python-2.4.1-gdbm-1.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/ruby-1.8.2.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/tcl-8.4.9.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/tk8.4.9-src.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/lfs/lfs-packages/conglomeration/tcl/tcl8.4.11-src.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/T-V/tk8.4.11-src.tar.bz2

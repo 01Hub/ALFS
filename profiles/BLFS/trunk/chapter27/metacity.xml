@@ -46,6 +46,15 @@
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+	<name>/usr/share/doc/metacity-&metacity-version;</name>
+      </mkdir>
+      <copy>
+	<source>README</source>
+	<source>rationales.txt</source>
+	<source>doc/*.txt</source>
+	<destination>/usr/share/doc/metacity-&metacity-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&metacity-directory;</remove>

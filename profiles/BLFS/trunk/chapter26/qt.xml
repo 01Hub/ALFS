@@ -59,7 +59,12 @@
         </environment>
         <base>&build_dir;/&qt-directory;</base>
       </stageinfo>
-      <execute command="sed -i &quot;s:cp -f:install:&quot; mkspecs/linux-g++/qmake.conf" />
+      <execute command="sed">
+	<param>-i</param>
+	<param>-e 's:$(QTDIR)/include:&real-amp;/qt:'</param>
+	<param>-e 's:$(QTDIR)/lib:&real-amp;/qt:'</param>
+	<param>mkspecs/linux*/qmake.conf</param>
+      </execute>
       <configure command="echo yes | ./configure">
         <param>-prefix /usr</param>
         <param>-docdir /usr/share/doc/qt</param>

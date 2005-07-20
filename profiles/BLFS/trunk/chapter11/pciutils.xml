@@ -35,6 +35,17 @@
         <param>PREFIX=/usr</param>
         <param>install</param>
       </make>
+      <mkdir>
+	<name>/usr/include/pci</name>
+      </mkdir>
+      <copy>
+	<source>lib/libpci.a</source>
+	<destination>/usr/lib</destination>
+      </copy>
+      <copy>
+	<source>lib/*.h</source>
+	<destination>/usr/include/pci</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&pciutils-directory;</remove>

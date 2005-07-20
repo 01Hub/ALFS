@@ -13,9 +13,9 @@
 <!ENTITY libpng-link-to-proper-libs-patch     "libpng-&libpng-version;-link_to_proper_libs-1.patch">
 <!ENTITY libpng-link-to-proper-libs-patch-md5 "1673589ec711a0907e46fd9dbc822a51">
 
-<!ENTITY libtiff-version   "3.7.2">
+<!ENTITY libtiff-version   "3.7.3">
 <!ENTITY libtiff-package   "tiff-&libtiff-version;.tar.bz2">
-<!ENTITY libtiff-md5       "24d9c6baad0fe535c117c308046ec4c4">
+<!ENTITY libtiff-md5       "cb661afd0eda7e3c238098194cb33dbf">
 <!ENTITY libtiff-directory "tiff-&libtiff-version;">
 
 <!ENTITY libungif-version   "4.1.3">

@@ -1,8 +1,8 @@
 <!--************* packages for chapter 20 *************-->
 
-<!ENTITY nail-version   "11.22">
+<!ENTITY nail-version   "11.24">
 <!ENTITY nail-package   "nail-&nail-version;.tar.bz2">
-<!ENTITY nail-md5       "caad4c4cd02c7fbf0d9e7fec50ff3b21">
+<!ENTITY nail-md5       "e127cdbba1220a45f6f1f463ac4b4fd1">
 <!ENTITY nail-directory "nail-&nail-version;">
 
 <!ENTITY procmail-version   "3.22">
