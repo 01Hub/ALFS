@@ -34,9 +34,6 @@
         <name>which</name>
       </requires>
       <requires>
-	<name>gcc-3.3</name>
-      </requires>
-      <requires>
 	<name>freetype</name>
       </requires>
       <utilizes>
@@ -71,67 +68,69 @@
 	<archive>&packages_dir;/&openoffice-package;</archive>
         <destination>&build_dir;/OOo-build</destination>
       </unpack>
-      <unpack>
-        <digest>&gpc-md5;</digest>
-	<archive>&packages_dir;/&gpc-package;</archive>
-        <destination>&build_dir;/OOo-build</destination>
-      </unpack>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/OOo-build/&openoffice-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&openoffice-gcc-fixes-patch;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&openoffice-nptl-patch;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&openoffice-jdk15-patch;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&openoffice-test-bin-patch;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&openoffice-stlport-patch;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&openoffice-doublefree-patch;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&openoffice-no-pam-patch;</param>
+      </patch>
+    </stage>      
     <stage name="Installing">
       <stageinfo>
         <environment>
           <variable name="JAVA_HOME">/opt/jdk/jdk</variable>
-	  <variable name="PATH" mode="prepend">/opt/gcc-&gcc-33-version;/bin:</variable>
           <variable name="PATH" mode="append">:/opt/jdk/jdk/bin</variable>
           <variable name="LS_COLORS" />
         </environment>
         <base>&build_dir;/OOo-build/&openoffice-directory;</base>
       </stageinfo>
-      <move>
-        <option>force</option>
-        <source>&build_dir;/OOo-build/&gpc-directory;/gpc.c</source>
-        <destination>&build_dir;/OOo-build/&openoffice-directory;/external/gpc</destination>
-      </move>
-      <move>
-        <option>force</option>
-        <source>&build_dir;/OOo-build/&gpc-directory;/gpc.h</source>
-        <destination>&build_dir;/OOo-build/&openoffice-directory;/external/gpc</destination>
-      </move>
-      <remove>../&gpc-directory;</remove>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&openoffice-gcc33-patch;</param>
-      </patch>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&openoffice-nptl-patch;</param>
-      </patch>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&openoffice-jdk-patch;</param>
-      </patch>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&openoffice-test-bin-patch;</param>
-      </patch>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&openoffice-freetype-patch;</param>
-      </patch>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&openoffice-no-pam-patch;</param>
-      </patch>
+      <copy>
+	<source>&packages_dir;/&openoffice-stlport-package;</source>
+	<destination>stlport/download</destination>
+      </copy>
       <link>
 	<option>force</option>
-	<target>/opt/gcc-&gcc-33-version;/include/c++/&gcc-33-version;</target>
+	<target>/usr/include/c++/&gcc-version;</target>
 	<name>/usr/g++-v3</name>
+      </link>
+      <link>
+	<option>force</option>
+	<target>${JAVA_HOME}/jre/lib/i586/motif21/libmawt.so</target>
+	<name>/usr/lib</name>
       </link>
       <search_replace base="&build_dir;/OOo-build/&openoffice-directory;/solenv/inc">
         <file>unxlngi4.mk</file>
@@ -145,6 +144,9 @@
         <param>--enable-libsn</param>
         <param>--with-system-zlib</param>
 	<param>--with-system-freetype</param>
+	<param>--with-system-curl</param>
+	<param>--disable-fontooo</param>
+	<param>--enable-libart</param>
       </configure>
       <execute command="./bootstrap" />
       <execute command="bash -c &quot;source LinuxIntelEnv.Set.sh; dmake&quot;" />
@@ -240,6 +242,7 @@
     <stage name="Cleanup">
       <remove>&build_dir;/OOo-build</remove>
       <remove>/usr/g++-v3</remove>
+      <remove>/usr/lib/libmawt.so</remove>
     </stage>
   </package>
 </alfs>

@@ -14,10 +14,7 @@
   <package name="galeon" version="&galeon-version;">
     <packageinfo>
       <requires>
-        <name>libgnomeui</name>
-      </requires>
-      <requires>
-        <name>scrollkeeper</name>
+        <name>gnome-desktop</name>
       </requires>
       <requires>
         <name>mozilla</name>
@@ -49,6 +46,17 @@
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+	<name>&gnome-prefix;/share/doc/galeon-&galeon-version;</name>
+      </mkdir>
+      <copy>
+	<source>FAQ</source>
+	<source>README</source>
+	<source>README.ExtraPrefs</source>
+	<source>doc/intro.txt</source>
+	<source>doc/bookmarks.txt</source>
+	<destination>&gnome-prefix;/share/doc/galeon-&galeon-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&galeon-directory;</remove>

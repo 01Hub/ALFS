@@ -1,19 +1,19 @@
 <!--************* packages for chapter 33 *************-->
 
 <!ENTITY abiword-major-minor "2.2">
-<!ENTITY abiword-version     "&abiword-major-minor;.3">
+<!ENTITY abiword-version     "&abiword-major-minor;.8">
 <!ENTITY abiword-package     "abiword-&abiword-version;.tar.bz2">
-<!ENTITY abiword-md5         "814d9169a46fdeaa40565bc2b567ef42">
+<!ENTITY abiword-md5         "f6f58e6ea4720ca635ede7b7f13cf156">
 <!ENTITY abiword-directory   "abiword-&abiword-version;">
 
-<!ENTITY gnumeric-version   "1.4.1">
+<!ENTITY gnumeric-version   "1.4.3">
 <!ENTITY gnumeric-package   "gnumeric-&gnumeric-version;.tar.bz2">
-<!ENTITY gnumeric-md5       "bc60b5c342908e969b320ab833e6b151">
+<!ENTITY gnumeric-md5       "b684eec48b1696d7a8d7152d1e17741c">
 <!ENTITY gnumeric-directory "gnumeric-&gnumeric-version;">
 
-<!ENTITY gnucash-version   "1.8.10">
+<!ENTITY gnucash-version   "1.8.11">
 <!ENTITY gnucash-package   "gnucash-&gnucash-version;.tar.bz2">
-<!ENTITY gnucash-md5       "4d43a6a97b3ae6f894cffd5b0bdbbbef">
+<!ENTITY gnucash-md5       "0ffa18e14d745a787cee97f65b897255">
 <!ENTITY gnucash-directory "gnucash-&gnucash-version;">
 
 <!ENTITY gnucash-docs-version   "1.8.5">
@@ -21,12 +21,12 @@
 <!ENTITY gnucash-docs-md5       "632cb8808d2951225485a4545932e67c">
 <!ENTITY gnucash-docs-directory "gnucash-docs-&gnucash-docs-version;">
 
-<!ENTITY gimp-version   "2.2.3">
+<!ENTITY gimp-version   "2.2.8">
 <!ENTITY gimp-package   "gimp-&gimp-version;.tar.bz2">
-<!ENTITY gimp-md5       "a65ea578d42a8c6658296aa52547063d">
+<!ENTITY gimp-md5       "0db3fca2f741d6dd51eb61dc85778b16">
 <!ENTITY gimp-directory "gimp-&gimp-version;">
 
-<!ENTITY evolution-version   "2.0.2">
+<!ENTITY evolution-version   "2.2.2">
 <!ENTITY evolution-package   "evolution-&evolution-version;.tar.bz2">
-<!ENTITY evolution-md5       "d3f12240ebb05dc6c984af68b5fe1955">
+<!ENTITY evolution-md5       "9b49942c8bdd1dc21f2d28792b12f400">
 <!ENTITY evolution-directory "evolution-&evolution-version;">

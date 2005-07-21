@@ -69,6 +69,11 @@
         </environment>
         <base>&build_dir;/&thunderbird-directory;</base>
       </stageinfo>
+      <execute command="sed">
+	<param>-i</param>
+	<param>-e 's/$(destdir)$(bindir)/$(DESTDIR)$(mozappdir)/'</param>
+	<param>mail/app/Makefile.in</param>
+      </execute>
       <configure>
 	<param>--prefix=/usr</param>
 	<param>--with-default-mozilla-five-home=/usr/lib/thunderbird-&thunderbird-version;</param>

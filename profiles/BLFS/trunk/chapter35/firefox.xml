@@ -74,7 +74,8 @@
 	<param>--with-system-png</param>
 	<param>--enable-application=browser</param>
 	<param>--enable-default-toolkit=gtk2</param>
-	<param>--enable-extensions=all,-typeaheadfind</param>
+	<param>--enable-extensions=cookie,xml-rpc,xmlextras,pref,transformiix,universalchardet,\
+	  webservices,inspector,gnomevfs,negotiateauth</param>
 	<param>--enable-crypto</param>
 	<param>--enable-xft</param>
 	<param>--enable-xinerama</param>

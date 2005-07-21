@@ -93,6 +93,15 @@
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+	<name>/usr/share/doc/gimp-&gimp-version;</name>
+      </mkdir>
+      <copy>
+	<source>docs/Wilber*</source>
+	<source>docs/keybindings.txt</source>
+	<source>docs/quick_reference.ps</source>
+	<destination>/usr/share/doc/gimp-&gimp-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gimp-directory;</remove>

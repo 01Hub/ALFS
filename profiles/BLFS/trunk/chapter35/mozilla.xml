@@ -65,6 +65,7 @@
         <environment>
           <variable name="MOZILLA_OFFICIAL">1</variable>
           <variable name="BUILD_OFFICIAL">1</variable>
+	  <variable name="MOZ_CO_PROJECT">suite</variable>
         </environment>
         <base>&build_dir;/&mozilla-directory;</base>
       </stageinfo>
@@ -102,6 +103,7 @@
       </mkdir>
       <execute command="cp -Lf dist/private/nss/*.h dist/public/nss/*.h /usr/include/mozilla-&mozilla-version;/nss" />
       <execute command="ln -nsf mozilla-&mozilla-version; /usr/include/mozilla" />
+      <execute command="if [ -d /usr/lib/mozilla/plugins ]; then mv /usr/lib/mozilla/plugins/* /usr/lib/mozilla-&mozilla-version;/plugins; rm -rf /usr/lib/mozilla; fi" />
       <execute command="ln -nsf mozilla-&mozilla-version; /usr/lib/mozilla" />
       <move base="/usr/lib/mozilla-&mozilla-version;">
         <source>libnspr4.so</source>

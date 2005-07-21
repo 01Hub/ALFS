@@ -62,16 +62,22 @@
         <param>--prefix=/usr</param>
       </configure>
       <make />
-      <execute command="./make-html.sh" base="&build_dir;/&abiword-directory;/abiword-docs" />
+      <execute base="&build_dir;/&abiword-directory;/abiword-plugins" command="sed">
+	<param>-i</param>
+	<param>'s:python2.3:python2.4:g'</param>
+	<param>configure</param>
+      </execute>
+      <configure base="&build_dir;/&abiword-directory;/abiword-plugins">
+	<param>--prefix=/usr</param>
+      </configure>
+      <make base="&build_dir;/&abiword-directory;/abiword-plugins" />
       <make>
         <param>install</param>
       </make>
-      <copy base="&build_dir;/&abiword-directory;/abiword-docs">
-	<option>recursive</option>
-	<option>force</option>
-	<source>docs</source>
-	<destination>/usr/share/AbiSuite-&abiword-major-minor;/AbiWord</destination>
-      </copy>
+      <make base="&build_dir;/&abiword-directory;/abiword-plugins">
+	<param>install</param>
+      </make>
+      <execute command="./make-html.sh" base="&build_dir;/&abiword-directory;/abiword-docs" />
       <copy base="&build_dir;/&abiword-directory;/abiword-docs">
         <source>man/abiword.1</source>
         <destination>/usr/share/man/man1</destination>
