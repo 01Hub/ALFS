@@ -92,10 +92,9 @@
         <base>&build_dir;/&gnucash-directory;</base>
       </stageinfo>
       <configure>
-        <param>--prefix=/opt/gnome</param>
+        <param>--prefix=/opt/gnome-1.4</param>
         <param>--sysconfdir=/etc</param>
         <param>--disable-guppi</param>
-        <param>--disable-error-on-warning</param>
       </configure>
       <make />
       <make>
@@ -103,7 +102,7 @@
       </make>
       <ownership user="root" group="root">
 	<option>recursive</option>
-	<name>/opt/gnome/share/gnucash/doc/html/html</name>
+	<name>/opt/gnome-1.4/share/gnucash/doc/html/html</name>
       </ownership>
     </stage>
     <stage name="Cleanup">

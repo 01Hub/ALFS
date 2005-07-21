@@ -45,6 +45,14 @@
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+	<name>/usr/share/doc/dillo-&dillo-version;</name>
+      </mkdir>
+      <copy>
+	<source>doc/README</source>
+	<source>doc/*.txt</source>
+	<destination>/usr/share/doc/dillo-&dillo-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&dillo-directory;</remove>
