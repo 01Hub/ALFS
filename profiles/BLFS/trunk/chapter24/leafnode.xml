@@ -74,22 +74,19 @@
 	</content>
       </textdump>
       <textdump mode="append" base="/etc">
-	<file>xinetd.conf</file>
+	<file>inetd.conf</file>
 	<content>
-	  =service nntp
-	  ={
-	  =   flags           = NAMEINARGS NOLIBWRAP
-	  =   socket_type     = stream
-	  =   protocol        = tcp
-	  =   wait            = no
-	  =   user            = news
-	  =   server          = /usr/sbin/tcpd
-	  =   server_args     = /usr/sbin/leafnode
-	  =   instances       = 7
-	  =   per_source      = 3
-	  =}
+	  =nntp stream tcp nowait news /usr/sbin/tcpd /usr/sbin/leafnode
 	</content>
       </textdump>
+      <mkdir>
+	<option>parents</option>
+	<name>/etc/xinetd.d</name>
+      </mkdir>
+      <copy base="&blfs-config;/etc/xinetd.d">
+	<source>nntp</source>
+	<destination>/etc/xinetd.d</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&leafnode-directory;</remove>
