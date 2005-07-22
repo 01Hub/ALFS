@@ -1,28 +1,28 @@
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/openssl-0.9.7g.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/openssl-0.9.7g-fix_manpages-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/cracklib/cracklib,2.7.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/cracklib/cracklib,2.7-blfs-1.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/cracklib/cracklib,2.7-heimdal-1.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/cracklib/allwords.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cracklib/cracklib,2.7.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cracklib/cracklib,2.7-blfs-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cracklib/cracklib,2.7-heimdal-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cracklib/allwords.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/Linux-PAM-0.78.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/Linux-PAM-0.78-linkage-2.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/Linux-PAM-0.78.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/Linux-PAM-0.78-linkage-2.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/shadow-4.0.7.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/shadow-4.0.7-fix_lastlog-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/iptables-1.3.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/iptables-1.3.1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gnupg-1.4.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gnupg-1.4.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/T-V/tripwire-portable-0.9.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/T-V/tripwire-portable-0.9.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/heimdal-0.6.3.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/heimdal-0.6.3-fhs_compliance-1.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/heimdal-0.6.3-cracklib-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/heimdal-0.6.3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/heimdal-0.6.3-fhs_compliance-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/heimdal-0.6.3-cracklib-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/krb5-1.4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/krb5-1.4.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cyrus-sasl-2.1.21.tar.bz2
 

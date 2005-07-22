@@ -1,19 +1,19 @@
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/a2ps-4.13b.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/a2ps-i18n-fonts-0.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/a2ps-4.13b.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/a2ps-i18n-fonts-0.1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/enscript-1.6.4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/D-E/enscript-1.6.4.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/psutils-p17.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/psutils-p17.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gsview-4.6.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gsview-4.6-pstotext-1.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gsview-4.6-lang-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gsview-4.6.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gsview-4.6-pstotext-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gsview-4.6-lang-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/xpdf-3.00.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/xpdf-3.00pl1.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/xpdf-3.00pl2.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/xpdf-3.00pl3.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/xpdf-3.00pl3-freetype_2.1.7_hack-2.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/xpdf-3.00.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/xpdf-3.00pl1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/xpdf-3.00pl2.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/xpdf-3.00pl3.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/xpdf-3.00pl3-freetype_2.1.7_hack-2.patch
 http://www.linuxfromscratch.org/blfs/downloads/6.0/xpdf-3.00pl3-freetype_2.1.7_hack-2.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/fop-0.20.5.tar.bz2

@@ -1,25 +1,25 @@
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/pcre-6.1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/popt_1.7.orig.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/popt_1.7-5.diff.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/popt_1.7.orig.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/popt_1.7-5.diff.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/slang-1.4.9.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/slang-1.4.9.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/fam-2.7.0.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/fam-2.7.0-dnotify-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/fam-2.7.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/fam-2.7.0-dnotify-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libxml-1.8.17.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libxml-1.8.17.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libxml2-2.6.19.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libxslt-1.1.14.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gmp-4.1.4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gmp-4.1.4.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gdbm-1.8.3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gdbm-1.8.3.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/glib-1.2.10.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/glib-1.2.10-gcc34-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/glib-1.2.10.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/glib-1.2.10-gcc34-1.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/glib-2.6.4.tar.bz2
 
@@ -27,25 +27,25 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libIDL-0.8.5.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libgsf-1.12.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libcroco-0.6.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libcroco-0.6.0.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libglade-2.5.1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/expat-1.95.8.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/D-E/expat-1.95.8.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libesmtp-1.0.3r1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libesmtp-1.0.3r1.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/aspell-0.60.2.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/aspell6-en-6.0-0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/ispell-3.2.06.epa7.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/ispell-3.2.06.epa7.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/slib3a1.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/slib-3a1-automate_install-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/slib3a1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/slib-3a1-automate_install-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/g-wrap-1.3.4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/g-wrap-1.3.4.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/lzo-1.08.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/lzo-1.08.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libpcap-0.9.1.tar.bz2
 

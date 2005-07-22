@@ -1,55 +1,55 @@
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/alsa-lib-1.0.7.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/alsa-utils-1.0.7.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/alsa-tools-1.0.7.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/alsa-firmware-1.0.7.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/alsa-oss-1.0.7.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-lib-1.0.7.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-utils-1.0.7.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-tools-1.0.7.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-firmware-1.0.7.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-oss-1.0.7.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/audiofile-0.2.6.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/audiofile-0.2.6.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/D-E/esound-0.2.35.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/D-E/esound-0.2.35.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/SDL-1.2.8.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/SDL-1.2.8.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libao-0.8.5.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libao-0.8.5.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libogg-1.1.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libogg-1.1.2.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libvorbis-1.1.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libvorbis-1.1.0.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/nas-1.6.src.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/nas-1.6.src.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libmpeg3-1.5.4-src.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libmpeg3-1.5.4-gcc34-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libmpeg3-1.5.4-src.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libmpeg3-1.5.4-gcc34-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libmad-0.15.1b.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libmad-0.15.1b.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/openquicktime-1.0-src.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/M-P/openquicktime-1.0-gcc34-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/openquicktime-1.0-src.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/openquicktime-1.0-gcc34-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libfame-0.9.1.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libfame-0.9.1-gcc34-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libfame-0.9.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libfame-0.9.1-gcc34-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/Q-S/speex-1.0.4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/speex-1.0.4.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/I-K/id3lib-3.8.3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/id3lib-3.8.3.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/flac-1.1.1.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/flac-1.1.1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libdvdcss-1.2.8.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libdvdcss-1.2.8.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libdvdread-0.9.4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libdvdread-0.9.4.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/libdv-0.103.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libdv-0.103.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/A-C/a52dec-0.7.4.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/a52dec-0.7.4.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/xvidcore-1.0.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/xvidcore-1.0.2.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/xine-lib-1.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/xine-lib-1.0.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libmikmod-3.1.11.tar.bz2
 http://mikmod.raphnet.net/files/libmikmod-3.1.11-a.diff
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gstreamer-0.8.7.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gstreamer-0.8.7.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/gst-plugins-0.8.5.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gst-plugins-0.8.5.tar.bz2
