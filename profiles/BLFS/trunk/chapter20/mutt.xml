@@ -26,6 +26,7 @@
     </stage>
     <stage name="Creating user and group">
       <execute command="getent group mail &gt; /dev/null || groupadd">
+      	<param>-g &mail-gid;</param>
         <param>mail</param>
       </execute>
       <!-- uncomment the following block if no MTA is installed -->

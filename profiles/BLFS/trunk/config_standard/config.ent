@@ -119,3 +119,81 @@
 
 <!-- MPlayer font size -->
 <!ENTITY mplayer-font-size "14">
+
+<!-- UID/GID Values -->
+<!-- Values are currently set to those listed in the book
+ they can be changed if you wish -->
+<!ENTITY bin-uid "1">
+<!ENTITY bin-gid "1">
+
+<!ENTITY lp-uid "9">
+
+<!ENTITY usb-gid "14">
+<!-- Used for BIND -->
+<!ENTITY named-uid "20">
+<!ENTITY named-gid "20">
+<!-- Used for gdm -->
+<!ENTITY gdm-uid "21">
+<!ENTITY gdm-gid "21">
+<!-- Used for fcron -->
+<!ENTITY fcron-uid "22">
+<!ENTITY fcron-gid "22">
+<!-- Used for apache -->
+<!ENTITY apache-uid "25">
+<!ENTITY apache-gid "25">
+<!-- Used for sendmail -->
+<!ENTITY smmsp-uid "26">
+<!ENTITY smmsp-gid "26">
+<!ENTITY sendmail-uid  "34">
+<!-- Used for courier -->
+<!ENTITY courier-uid "30">
+<!ENTITY courier-gid "30">
+<!ENTITY vmailman-uid "35">
+<!ENTITY vmailman-gid "35">
+<!-- Used for exim -->
+<!ENTITY exim-uid "31">
+<!ENTITY exim-gid "31">
+<!-- Used for postfix -->
+<!ENTITY postfix-uid "32">
+<!ENTITY postfix-gid "32">
+<!ENTITY postdrop-gid "33">
+
+<!ENTITY mail-gid "34">
+<!-- Used for leafnode -->
+<!ENTITY news-uid "36">
+<!ENTITY news-gid "36">
+<!-- Used for mysql -->
+<!ENTITY mysql-uid "40">
+<!ENTITY mysql-gid "40">
+<!-- Used for postgresql -->
+<!ENTITY postgres-uid "41">
+<!-- Used for anonymous ftp -->
+<!ENTITY ftp-uid "45">
+<!ENTITY ftp-gid "45">
+<!-- Used for proftpd -->
+<!ENTITY proftpd-uid "46">
+<!ENTITY proftpd-gid "46">
+<!-- Used for vsftpd -->
+<!ENTITY vsftpd-uid "47">
+<!ENTITY vsftpd-gid "47">
+<!-- Used for rsync -->
+<!ENTITY rsyncd-uid "48">
+<!ENTITY rsyncd-gid "48">
+<!-- Used for openssh -->
+<!ENTITY sshd-uid "50">
+<!ENTITY sshd-gid "50">
+<!-- Used for stunnel -->
+<!ENTITY stunnel-uid "51">
+<!ENTITY stunnel-gid "51">
+<!-- Used for subversion -->
+<!ENTITY svn-uid "56">
+<!ENTITY svn-gid "56">
+<!ENTITY svntest-gid "57">
+<!-- Used for gnome-games -->
+<!ENTITY games-uid "60">
+<!ENTITY games-gid "60">
+
+<!ENTITY anonymous-uid "98">
+
+<!ENTITY nobody-uid "99">
+<!ENTITY nogroup-gid "99">

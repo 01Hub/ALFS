@@ -53,11 +53,11 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group smmsp &gt; /dev/null || groupadd">
-	<param>-g 26</param>
+	<param>-g &smmsp-gid;</param>
         <param>smmsp</param>
       </execute>
       <execute command="getent group mail &gt; /dev/null || groupadd">
-	<param>-g 34</param>
+	<param>-g &mail-gid;</param>
         <param>mail</param>
       </execute>
       <execute command="getent passwd smmsp &gt; /dev/null || useradd">
@@ -65,7 +65,7 @@
         <param>-g smmsp</param>
         <param>-G mail</param>
         <param>-s /bin/false</param>
-	<param>-u 26</param>
+	<param>-u &smmsp-uid;</param>
         <param>smmsp</param>
       </execute>
       <permissions mode="1777">

@@ -44,7 +44,7 @@
     </stage>
     <stage name="Creating Group">
       <execute command="getent group games &gt; /dev/null || groupadd">
-	<param>-g 60</param>
+	<param>-g &games-gid;</param>
 	<param>games</param>
       </execute>
     </stage>

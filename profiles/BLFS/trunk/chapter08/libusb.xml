@@ -35,7 +35,7 @@
     </stage>
     <stage name="Creating group">
       <execute command="getent group usb &gt; /dev/null || groupadd">
-        <param>-g 14</param>
+        <param>-g &usb-gid;</param>
         <param>usb</param>
       </execute>
     </stage>

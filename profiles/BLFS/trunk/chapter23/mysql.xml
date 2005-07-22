@@ -48,7 +48,7 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group mysql &gt; /dev/null || groupadd">
-	<param>-g 40</param>
+	<param>-g &mysql-gid;</param>
         <param>mysql</param>
       </execute>
       <execute command="getent passwd mysql &gt; /dev/null || useradd">
@@ -56,7 +56,7 @@
         <param>-d /dev/null</param>
         <param>-g mysql</param>
         <param>-s /bin/false</param>
-	<param>-u 40</param>
+	<param>-u &mysql-uid;</param>
         <param>mysql</param>
       </execute>
     </stage>

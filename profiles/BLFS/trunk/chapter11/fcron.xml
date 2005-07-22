@@ -41,7 +41,7 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group fcron &gt; /dev/null || groupadd">
-        <param>-g 22</param>
+        <param>-g &fcron-gid;</param>
         <param>fcron</param>
       </execute>
       <execute command="getent passwd fcron &gt; /dev/null || useradd">
@@ -49,7 +49,7 @@
         <param>-c "Fcron user"</param>
         <param>-g fcron</param>
         <param>-s /bin/false</param>
-	<param>-u 22</param>
+	<param>-u &fcron-uid;</param>
         <param>fcron</param>
       </execute>
     </stage>

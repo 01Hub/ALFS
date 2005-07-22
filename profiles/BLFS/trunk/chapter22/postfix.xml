@@ -56,15 +56,15 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group postfix &gt; /dev/null || groupadd">
-	<param>-g 32</param>
+	<param>-g &postfix-gid;</param>
         <param>postfix</param>
       </execute>
       <execute command="getent group postdrop &gt; /dev/null || groupadd">
-	<param>-g 33</param>
+	<param>-g &postdrop-gid;</param>
         <param>postdrop</param>
       </execute>
       <execute command="getent group nogroup &gt; /dev/null || groupadd">
-        <param>-g 99</param>
+        <param>-g &nogroup-gid;</param>
         <param>nogroup</param>
       </execute>
       <execute command="getent passwd postfix &gt; /dev/null || useradd">
@@ -72,7 +72,7 @@
         <param>-d /dev/null</param>
         <param>-g postfix</param>
         <param>-s /bin/false</param>
-	<param>-u 32</param>
+	<param>-u &postfix-uid;</param>
         <param>postfix</param>
       </execute>
       <execute command="getent passwd nobody &gt; /dev/null || useradd">
@@ -80,7 +80,7 @@
         <param>-d /dev/null</param>
         <param>-g nogroup</param>
         <param>-s /bin/false</param>
-        <param>-u 99</param>
+        <param>-u &nobody-uid;</param>
         <param>nobody</param>
       </execute>
     </stage>

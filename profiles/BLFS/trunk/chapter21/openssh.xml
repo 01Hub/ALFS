@@ -34,7 +34,7 @@
         <name>/var/lib/sshd</name>
       </ownership>
       <execute command="getent group sshd &gt; /dev/null || groupadd">
-	<param>-g 50</param>
+	<param>-g &sshd-gid;</param>
         <param>sshd</param>
       </execute>
       <execute command="getent passwd sshd &gt; /dev/null || useradd">
@@ -42,7 +42,7 @@
         <param>-d /var/lib/sshd</param>
         <param>-g sshd</param>
         <param>-s /bin/false</param>
-	<param>-u 50</param>
+	<param>-u &sshd-uid;</param>
         <param>sshd</param>
       </execute>
     </stage>

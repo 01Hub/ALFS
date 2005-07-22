@@ -46,7 +46,7 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group gdm &gt;/dev/null || groupadd">
-	<param>-g 21</param>
+	<param>-g &gdm-gid;</param>
         <param>gdm</param>
       </execute>
       <execute command="getent passwd gdm &gt;/dev/null || useradd">
@@ -54,7 +54,7 @@
         <param>-d /dev/null</param>
         <param>-g gdm</param>
         <param>-s /bin/bash</param>
-	<param>-u 21</param>
+	<param>-u &gdm-uid;</param>
         <param>gdm</param>
       </execute>
     </stage>

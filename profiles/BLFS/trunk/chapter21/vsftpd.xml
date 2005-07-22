@@ -41,7 +41,7 @@
 	<name>/home/ftp</name>
       </mkdir>
       <execute command="getent group vsftpd &gt; /dev/null || groupadd">
-	<param>-g 47</param>
+	<param>-g &vsftpd-gid;</param>
 	<param>vsftpd</param>
       </execute>
       <execute command="getent passwd vsftpd &gt; /dev/null || useradd">
@@ -49,11 +49,11 @@
 	<param>-d /dev/null</param>
 	<param>-g vsftpd</param>
 	<param>-s /bin/false</param>
-	<param>-u 47</param>
+	<param>-u &vsftpd-uid;</param>
 	<param>vsftpd</param>
       </execute>
       <execute command="getent group ftp &gt; /dev/null || groupadd">
-	<param>-g 45</param>
+	<param>-g &ftp-gid;</param>
 	<param>ftp</param>
       </execute>
       <execute command="getent passwd ftp &gt; /dev/null || useradd">
@@ -61,7 +61,7 @@
 	<param>-d /home/ftp</param>
 	<param>-g ftp</param>
 	<param>-s /bin/false</param>
-	<param>-u 45</param>
+	<param>-u &ftp-uid;</param>
 	<param>ftp</param>
       </execute>
     </stage>

@@ -40,16 +40,16 @@
       </unpack>
     </stage>
     <stage name="Creating user and group">
-      <execute command="getent group games &gt;/dev/null || groupadd">
-	<param>-g 60</param>
+      <execute command="getent group games &gt; /dev/null || groupadd">
+	<param>-g &games-gid;</param>
         <param>games</param>
       </execute>
-      <execute command="getent passwd games &gt;/dev/null || useradd">
+      <execute command="getent passwd games &gt; /dev/null || useradd">
         <param>-c 'Games High Score Owner'</param>
         <param>-d /var/lib/games</param>
         <param>-g games</param>
         <param>-s /bin/false</param>
-	<param>-u 60</param>
+	<param>-u &games-uid;</param>
         <param>games</param>
       </execute>
     </stage>

@@ -68,7 +68,7 @@
     </stage>
     <stage name="Creating user and group">
       <execute command="getent group courier &gt; /dev/null || groupadd">
-        <param>-f</param>
+        <param>-g &courier-gid;</param>
         <param>courier</param>
       </execute>
       <execute command="getent passwd courier &gt; /dev/null || useradd">
@@ -76,13 +76,14 @@
         <param>-d /dev/null</param>
         <param>-g courier</param>
         <param>-s /bin/false</param>
+	<param>-u &courier-uid;</param>
         <param>courier</param>
       </execute>
       <execute command="getent passwd bin &gt; /dev/null || useradd">
-        <param>-c bin</param>
+        <param>-c 'bin'</param>
         <param>-d /dev/null</param>
         <param>-g bin</param>
-        <param>-u 1</param>
+        <param>-u &bin-uid;</param>
         <param>bin</param>
       </execute>
     </stage>
