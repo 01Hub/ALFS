@@ -41,6 +41,10 @@
       <make>
         <param>install</param>
       </make>
+      <copy base="&blfs-config;/etc">
+	<source>xinetd.conf</source>
+	<destination>/etc</destination>
+      </copy>
       <mkdir>
       	<option>parents</option>
 	<name>/etc/xinetd.d</name>
