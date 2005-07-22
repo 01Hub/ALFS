@@ -15,9 +15,16 @@
     <textdump base="/root" mode="append">
       <file>.bash_profile</file>
       <content>
-	=export PATH=$PATH:/opt/gnome/bin
-	=export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/gnome/lib/pkgconfig
+	=export PATH=$PATH:/opt/gnome-1.4/bin
+	=export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/gnome-1.4/lib/pkgconfig
 	=export GNOME_LIBCONFIG_PATH=/usr/lib
+	=
+	=if [ -z $INFOPATH ]
+	=then
+	=  export INFOPATH=/usr/share/info:/opt/gnome-1.4/info
+	=else
+	=  export INFOPATH=$INFOPATH:/opt/gnome-1.4/info
+	=fi
       </content>
     </textdump>
     <textdump base="/etc" mode="append">
@@ -25,7 +32,7 @@
       <content>
 	=# Begin Gnome 1.4 Libraries addition to /etc/ld.so.conf
 	=
-	=/opt/gnome/lib
+	=/opt/gnome-1.4/lib
 	=
 	=# End Gnome 1.4 Libraries addition
       </content>
@@ -35,7 +42,7 @@
       <content>
 	=# Begin Gnome 1.4 Libraries addition to man.conf
 	=
-	=MANPATH /opt/gnome/man
+	=MANPATH /opt/gnome-1.4/man
 	=
 	=# End Gnome 1.4 Libraries addition to man.conf
       </content>

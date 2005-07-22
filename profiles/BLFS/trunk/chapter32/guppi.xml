@@ -14,13 +14,19 @@
   <package name="guppi" version="&guppi-version;">
     <packageinfo>
       <requires>
-        <name>bonobo</name>
+        <name>gnome-print</name>
       </requires>
       <requires>
-        <name>gal1</name>
+        <name>libglade1</name>
       </requires>
       <utilizes>
-        <name>docbook-utils</name>
+        <name>bonobo</name>
+      </utilizes>
+      <utilizes>
+	<name>gtk-doc</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-utils</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -50,7 +56,7 @@
         <base>&build_dir;/&guppi-directory;</base>
       </stageinfo>
       <configure>
-        <param>--prefix=/opt/gnome</param>
+        <param>--prefix=/opt/gnome-1.4</param>
       </configure>
       <make />
       <make>

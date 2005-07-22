@@ -17,13 +17,19 @@
         <name>oaf</name>
       </requires>
       <requires>
-        <name>gdk-pixbuf</name>
+        <name>popt</name>
       </requires>
+      <utilizes>
+        <name>gtk+</name>
+      </utilizes>
       <utilizes>
         <name>db</name>
       </utilizes>
       <utilizes>
-        <name>guile</name>
+	<name>guile</name>
+      </utilizes>
+      <utilizes>
+	<name>gtk-doc</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
@@ -33,14 +39,40 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <!-- Uncomment if db-4.3.x is installed -->
+    <!--
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&gconf-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&gconf-db43-patch;</param>
+      </patch>
+    </stage>
+    -->
     <stage name="Installing">
       <stageinfo>
 	<base>&build_dir;/&gconf-directory;</base>
       </stageinfo>
       <configure>
-	<param>--prefix=/opt/gnome</param>
+	<param>--prefix=/opt/gnome-1.4</param>
       </configure>
       <make />
+      <!-- Uncomment below if you want to build the HTML docs  -->
+      <!-- Requires gtk-doc to be installed -->
+      <!--
+      <make base="&build_dir;/&gconf-directory;/doc/gconf">
+	<param>templates</param>
+      </make>
+      <make base="&build_dir;/&gconf-directory;/doc/gconf">
+	<param>sgml</param>
+      </make>
+      <make base="&build_dir;/&gconf-directory;/doc/gconf">
+	<param>html</param>
+      </make>
+      -->
       <make>
 	<param>install</param>
       </make>

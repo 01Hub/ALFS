@@ -44,8 +44,7 @@
         <base>&build_dir;/&libglade1-directory;</base>
       </stageinfo>
       <configure>
-        <param>--prefix=/opt/gnome</param>
-        <param>--enable-bonobo</param>
+        <param>--prefix=/opt/gnome-1.4</param>
         <param>--disable-gtk-doc</param>
       </configure>
       <make />

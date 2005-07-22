@@ -45,8 +45,7 @@
         <base>&build_dir;/&gnome-print-directory;</base>
       </stageinfo>
       <configure>
-        <param>--prefix=/opt/gnome</param>
-        <param>--with-zlib=/usr</param>
+        <param>--prefix=/opt/gnome-1.4</param>
       </configure>
       <make />
       <make>

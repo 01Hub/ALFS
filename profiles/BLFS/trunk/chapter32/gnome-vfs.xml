@@ -26,6 +26,9 @@
 	<name>oaf</name>
       </utilizes>
       <utilizes>
+	<name>libxml</name>
+      </utilizes>
+      <utilizes>
         <name>gconf</name>
       </utilizes>
       <utilizes>
@@ -66,7 +69,7 @@
 	<base>&build_dir;/&gnome-vfs-directory;</base>
       </stageinfo>
       <configure>
-	<param>--prefix=/opt/gnome</param>
+	<param>--prefix=/opt/gnome-1.4</param>
 	<param>--disable-gtk-doc</param>
       </configure>
       <make />
