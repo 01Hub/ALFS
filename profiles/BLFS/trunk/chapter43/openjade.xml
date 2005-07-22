@@ -42,6 +42,9 @@
       <make>
         <param>install</param>
       </make>
+      <make>
+      	<param>install-man</param>
+      </make>
       <link base="/usr/bin">
         <option>force</option>
         <target>openjade</target>

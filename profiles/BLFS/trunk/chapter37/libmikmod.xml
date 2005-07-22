@@ -36,15 +36,26 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&libmikmod-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&libmikmod-diff;</param>
+      </patch>
+    </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&libmikmod-directory;/</base>
+        <base>&build_dir;/&libmikmod-directory;</base>
       </stageinfo>
       <execute command="sed">
 	<param>-i -e "s/VERSION=10/VERSION=11/"</param>
 	<param>-e "s/sys_asoundlib/alsa_soundlib/"</param>
 	<param>-e "s/snd_cards/snd_card_load/g"</param>
 	<param>-e "s|sys/asoundlib.h|alsa/asoundlib.h|g"</param>
+	<param>-e "s/^LIBOBJS/#LIBOBJS/"</param>
 	<param>configure.in</param>
       </execute>
       <execute command="autoconf" />

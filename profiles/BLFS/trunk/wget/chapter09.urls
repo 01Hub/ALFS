@@ -11,7 +11,8 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/giflib-4.1.3.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/libmng-1.0.9.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/L/lcms-1.14.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/lcms-1.14.tar.bz2
+http://www.linuxfromscratch.org/blfs/downloads/svn/lcms-1.14-gcc343-1.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/freetype-2.1.10.tar.bz2
 

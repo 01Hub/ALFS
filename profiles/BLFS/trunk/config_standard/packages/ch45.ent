@@ -51,5 +51,7 @@
 <!ENTITY fop-md5        "c9a738ed9f9f8313384d70fd027ae801">
 <!ENTITY fop-directory  "fop-&fop-version;">
 
+<!ENTITY fop-jdk15-patch "fop_&fop-version;-jdk_1.5.0-1.patch">
+
 <!ENTITY fop-jai-binary "jai-1_1_2_01-lib-linux-i586-jdk.bin">
 <!ENTITY fop-jai-md5    "f2be3619a8d002eff3874355e96327eb">

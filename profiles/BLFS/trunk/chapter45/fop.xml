@@ -36,6 +36,16 @@
       <destination>&build_dir;</destination>
     </unpack>
   </stage>
+  <stage name="Patching">
+    <stageinfo>
+      <base>&build_dir;/&fop-directory;</base>
+    </stageinfo>
+    <patch>
+      <param>-N</param>
+      <param>-p1</param>
+      <param>-i &packages_dir;/&fop-jdk15-patch;</param>
+    </patch>
+  </stage>
   <stage name="Installing JAI.">
     <stageinfo>
       <environment>
