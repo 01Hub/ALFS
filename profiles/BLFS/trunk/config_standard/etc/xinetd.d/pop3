@@ -1,0 +1,13 @@
+# Begin /etc/xinetd.d/pop3
+
+service pop3
+{
+    port            = 110
+    socket_type     = stream
+    protocol        = tcp
+    wait            = no
+    user            = root
+    server          = /usr/sbin/popper
+}
+
+# End /etc/xinetd.d/pop3

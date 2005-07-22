@@ -4,10 +4,12 @@
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch21.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
 
 %general_entities;
 %package_entities;
 %config_entities;
+%files;
 
 <!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
 <!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
@@ -15,6 +17,11 @@
 ]>
 <alfs>
   <package name="xinetd" version="&xinetd-version;">
+    <packageinfo>
+      <utilizes>
+	<name>tcpwrappers</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <digest>&xinetd-md5;</digest>
@@ -34,15 +41,35 @@
       <make>
         <param>install</param>
       </make>
-      <copy>
-        <source>xinetd/sample.conf</source>
-        <destination>/etc/xinetd.conf</destination>
+      <mkdir>
+      	<option>parents</option>
+	<name>/etc/xinetd.d</name>
+      </mkdir>
+      <copy base="&blfs-config;/etc/xinetd.d">
+	<source>login</source>
+	<source>shell</source>
+	<source>exec</source>
+	<source>comsat</source>
+	<source>talk</source>
+	<source>ntalk</source>
+	<source>telnet</source>
+	<source>ftp</source>
+	<source>tftp</source>
+	<source>finger</source>
+	<source>systat</source>
+	<source>netstat</source>
+	<source>echo</source>
+	<source>chargen</source>
+	<source>daytime</source>
+	<source>time</source>
+	<source>rstatd</source>
+	<source>rquotad</source>
+	<source>rusersd</source>
+	<source>sprayd</source>
+	<source>walld</source>
+	<source>irc</source>
+	<destination>/etc/xinetd.d</destination>
       </copy>
-      <search_replace>
-        <file>/etc/xinetd.conf</file>
-        <find>/etc</find>
-        <replace>/sbin</replace>
-      </search_replace>
     </stage>
     <stage name="Installing bootscript and configuration">
       <stageinfo>

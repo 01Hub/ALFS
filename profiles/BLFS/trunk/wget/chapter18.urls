@@ -3,6 +3,7 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cvs-1.11.20-zlib-1.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/inetutils-1.4.2.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/inetutils-1.4.2-kernel_headers-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/inetutils-1.4.2-daemon_fixes-1.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/ncftp-3.1.9-src.tar.bz2
 

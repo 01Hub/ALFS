@@ -1,0 +1,16 @@
+# Begin /etc/xinetd.d/nntp
+
+        service nntp
+        {
+           flags           = NAMEINARGS NOLIBWRAP
+           socket_type     = stream
+           protocol        = tcp
+           wait            = no
+           user            = news
+           server          = /usr/sbin/tcpd
+           server_args     = /usr/sbin/leafnode
+           instances       = 7
+           per_source      = 3
+        }
+
+# End /etc/xinetd.d/nntp

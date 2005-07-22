@@ -12,7 +12,8 @@
 <!ENTITY inetutils-md5       "3ab421642bd6f5284a6ccf4811ad2c51">
 <!ENTITY inetutils-directory "inetutils-&inetutils-version;">
 
-<!ENTITY inetutils-kernel-header-patch     "inetutils-&inetutils-version;-kernel_headers-1.patch">
+<!ENTITY inetutils-kernel-header-patch "inetutils-&inetutils-version;-kernel_headers-1.patch">
+<!ENTITY inetutils-daemon-fixes-patch "inetutils-&inetutils-version;-daemon_fixes-1.patch">
 
 <!ENTITY ncftp-version   "3.1.9">
 <!ENTITY ncftp-package   "ncftp-&ncftp-version;-src.tar.bz2">

@@ -23,6 +23,10 @@
       <stageinfo>
         <base>&build_dir;/&zip-directory;</base>
       </stageinfo>
+      <execute command="sed">
+	<param>-i</param>
+	<param>-e 's@$(INSTALL) man/zip.1@$(INSTALL_PROGRAM) man/zip.1@'</param>
+      </execute>
       <make>
         <param>prefix=/usr</param>
         <param>-f unix/Makefile</param>
@@ -33,10 +37,6 @@
         <param>-f unix/Makefile</param>
         <param>install</param>
       </make>
-      <copy>
-      	<source>man/zip.1</source>
-	<destination>/usr/share/man/man1</destination>
-      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&zip-directory;</remove>

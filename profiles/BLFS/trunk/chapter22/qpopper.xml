@@ -4,10 +4,12 @@
 <!ENTITY % general_entities SYSTEM "../config/general.ent">
 <!ENTITY % package_entities SYSTEM "../config/packages/ch22.ent">
 <!ENTITY % config_entities SYSTEM  "../config/config.ent">
+<!ENTITY % files SYSTEM "../config/files.ent">
 
 %general_entities;
 %package_entities;
 %config_entities;
+%files;
 
 ]>
 <alfs>
@@ -48,29 +50,27 @@
         <param>install</param>
       </make>
       <textdump mode="append">
-        <file>/etc/inetd.conf</file>
-        <content>=pop stream tcp nowait root /usr/sbin/popper popper</content>
-      </textdump>
-      <execute command="killall inetd || inetd" />
-      <textdump mode="append">
         <file>/etc/syslog.conf</file>
-        <content>=local0.notice;local0.debug /var/log/POP.log</content>
+        <content>
+	  =local0.notice;local0.debug /var/log/POP.log
+	</content>
       </textdump>
       <execute command="/etc/rc.d/init.d/sysklogd restart" />
       <textdump mode="append">
-        <file>/etc/xinetd.conf</file>
+        <file>/etc/inetd.conf</file>
         <content>
-	  = service pop
-	  = {
-	  =   port = 110
-	  =   socket_type = stream
-	  =   protocol = tcp
-	  =   wait = no
-	  =   user = root
-	  =   server = /usr/sbin/popper
-	  = }
+	  =pop stream tcp nowait root /usr/sbin/popper popper
 	</content>
       </textdump>
+      <execute command="killall inetd || inetd" />
+      <mkdir>
+	<option>parents</option>
+	<name>/etc/xinetd.d</name>
+      </mkdir>
+      <copy base="&blfs-config;/etc/xinetd.d">
+      	<source>pop3</source>
+	<destination>/etc/xinetd.d</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&qpopper-directory;</remove>
