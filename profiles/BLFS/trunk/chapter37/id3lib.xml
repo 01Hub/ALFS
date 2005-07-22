@@ -30,6 +30,21 @@
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/id3lib-&id3lib-version;</name>
+      </mkdir>
+      <copy>
+	<source>doc/*.gif</source>
+	<source>doc/*.jpg</source>
+	<source>doc/*.png</source>
+	<source>doc/*.ico</source>
+	<source>doc/*.css</source>
+	<source>doc/*.txt</source>
+	<source>doc/*.php</source>
+	<source>doc/*.html</source>
+	<destination>/usr/share/doc/id3lib-&id3lib-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&id3lib-directory;</remove>

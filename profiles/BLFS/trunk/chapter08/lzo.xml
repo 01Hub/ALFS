@@ -39,6 +39,14 @@
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/lzo-&lzo-version;</name>
+      </mkdir>
+      <copy>
+	<source>doc/*</source>
+	<destination>/usr/share/doc/lzo-&lzo-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&lzo-directory;</remove>

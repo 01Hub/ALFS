@@ -44,6 +44,14 @@
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/lcms-&lcms-version;</name>
+      </mkdir>
+      <copy>
+	<source>doc/*</source>
+	<destination>/usr/share/doc/lcms-&lcms-version;</destination>
+      </copy>
       &ldconfig;
     </stage>
     <stage name="Cleanup">

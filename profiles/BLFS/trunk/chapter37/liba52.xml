@@ -31,6 +31,14 @@
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/liba52-&liba52-version;</name>
+      </mkdir>
+      <copy>
+	<source>doc/liba52.txt</source>
+	<destination>/usr/share/doc/liba52-&liba52-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&liba52-directory;</remove>
