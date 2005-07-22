@@ -19,6 +19,12 @@
       <requires>
 	<name>gnome-print</name>
       </requires>
+      <utilizes>
+      	<name>gtk-doc</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-utils</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -32,12 +38,22 @@
         <base>&build_dir;/&bonobo-directory;</base>
       </stageinfo>
       <configure>
-        <param>--prefix=/opt/gnome</param>
+        <param>--prefix=/opt/gnome-1.4</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/opt/gnome-1.4/share/doc/bonobo-&bonobo-version;</name>
+      </mkdir>
+      <copy>
+	<source>doc/FAQ</source>
+	<source>doc/Monikers</source>
+	<source>doc/*.txt</source>
+	<destination>/opt/gnome-1.4/share/doc/bonobo-&bonobo-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&bonobo-directory;</remove>

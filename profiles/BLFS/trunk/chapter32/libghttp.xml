@@ -24,12 +24,20 @@
         <base>&build_dir;/&libghttp-directory;</base>
       </stageinfo>
       <configure>
-        <param>--prefix=/opt/gnome</param>
+        <param>--prefix=/opt/gnome-1.4</param>
       </configure>
       <make />
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/opt/gnome-1.4/share/doc/libghttp-&libghttp-version;</name>
+      </mkdir>
+      <copy>
+	<source>doc/ghttp.html</source>
+	<destination>/opt/gnome-1.4/share/doc/libghttp-&libghttp-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libghttp-directory;</remove>

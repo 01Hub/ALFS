@@ -38,13 +38,27 @@
 	<base>&build_dir;/&oaf-directory;</base>
       </stageinfo>
       <configure>
-	<param>--prefix=/opt/gnome</param>
+	<param>--prefix=/opt/gnome-1.4</param>
 	<param>--disable-gtk-doc</param>
       </configure>
       <make />
       <make>
 	<param>install</param>
       </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/opt/gnome-1.4/share/doc/gtk-doc/html/oaf-&oaf-version;</name>
+	<name>/opt/gnome-1.4/share/doc/oaf-&oaf-version;</name>
+      </mkdir>
+      <copy>
+	<source>api-docs/html/*</source>
+	<destination>/opt/gnome-1.4/share/docs/gtk-doc/oaf-&oaf-version;</destination>
+      </copy>
+      <copy>
+	<source>docs/INTERNALS</source>
+	<source>docs/*.txt</source>
+	<destination>/opt/gnome-1.4/share/docs/oaf-&oaf-version;</destination>
+      </copy>
       &ldconfig;
     </stage>
     <stage name="Cleanup">

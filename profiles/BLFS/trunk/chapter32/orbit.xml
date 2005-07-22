@@ -32,12 +32,21 @@
 	<base>&build_dir;/&orbit-directory;</base>
       </stageinfo>
       <configure>
-	<param>--prefix=/opt/gnome</param>
+	<param>--prefix=/opt/gnome-1.4</param>
       </configure>
       <make />
       <make>
 	<param>install</param>
       </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/opt/gnome-1.4/share/doc/ORBit-&orbit-version;</name>
+      </mkdir>
+      <copy>
+	<option>recursive</option>
+	<source>docs/*</source>
+	<destination>/opt/gnome-1.4/share/doc/ORBit-&orbit-version;</destination>
+      </copy>
       &ldconfig;
     </stage>
     <stage name="Cleanup">

@@ -72,7 +72,7 @@
       </execute>
       <configure>
         <param>--without-sendmail</param>
-        <param>--with-answer-all=no</param>
+        <param>--with-boot-install=no</param>
       </configure>
       <make />
       <make>

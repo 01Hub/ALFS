@@ -14,7 +14,7 @@
   <package name="soup" version="&soup-version;">
     <packageinfo>
       <requires>
-	<name>glib</name>
+	<name>glib2</name>
       </requires>
       <requires>
 	<name>libxml2</name>
@@ -30,9 +30,6 @@
       </utilizes>
       <utilizes>
 	<name>mozilla</name>
-      </utilizes>
-      <utilizes>
-	<name>gnome-libs</name>
       </utilizes>
       <utilizes>
 	<name>gtk-doc</name>
@@ -63,7 +60,8 @@
         <base>&build_dir;/&soup-directory;</base>
       </stageinfo>
       <configure>
-        <param>--prefix=/opt/gnome</param>
+        <param>--prefix=/opt/gnome-1.4</param>
+	<param>--disable-gtk-doc</param>
       </configure>
       <make />
       <make>

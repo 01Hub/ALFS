@@ -57,7 +57,7 @@
         <base>&build_dir;/&gtkhtml1-directory;</base>
       </stageinfo>
       <configure>
-        <param>--prefix=/opt/gnome</param>
+        <param>--prefix=/opt/gnome-1.4</param>
         <param>--disable-gtk-doc</param>
       </configure>
       <make />

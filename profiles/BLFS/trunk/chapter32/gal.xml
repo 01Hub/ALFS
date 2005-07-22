@@ -22,6 +22,9 @@
       <utilizes>
         <name>gnome-vfs</name>
       </utilizes>
+      <utilizes>
+	<name>gtk-doc</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -35,10 +38,22 @@
         <base>&build_dir;/&gal1-directory;</base>
       </stageinfo>
       <configure>
-        <param>--prefix=/opt/gnome</param>
-        <param>--disable-gtk-doc</param>
+        <param>--prefix=/opt/gnome-1.4</param>
       </configure>
       <make />
+      <!-- Uncomment below if you want to build the HTML docs  -->
+      <!-- Requires gtk-doc to be installed -->
+      <!--
+      <make base="&build_dir;/&gal1-directory;/docs">
+	<param>templates</param>
+      </make>
+      <make base="&build_dir;/&gal1-directory;/docs">
+	<param>sgml</param>
+      </make>
+      <make base="&build_dir;/&gal1-directory;/docs">
+	<param>html</param>
+      </make>
+      -->
       <make>
         <param>install</param>
       </make>
