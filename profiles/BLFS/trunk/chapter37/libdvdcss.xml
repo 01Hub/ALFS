@@ -27,9 +27,27 @@
         <param>--prefix=/usr</param>
       </configure>
       <make />
+      <!-- To build HTML documentation uncomment below as well as the install section below 
+	the make install section (Requires Doxygen to be installed.) -->
+      <!--
+      <make>
+	<param>-C doc</param>
+	<param>doc</param>
+      </make>
+      -->
       <make>
         <param>install</param>
       </make>
+      <!--
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/libdvdcss-&libdvdcss-version;</name>
+      </mkdir>
+      <copy>
+	<source>doc/html/*</source>
+	<destination>/usr/share/doc/libdvdcss-&libdvdcss-version;</destination>
+      </copy>
+      -->
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libdvdcss-directory;</remove>

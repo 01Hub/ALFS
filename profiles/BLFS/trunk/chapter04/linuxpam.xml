@@ -86,6 +86,18 @@
         <target>../../lib/libpamc.so.&linuxpam-version;</target>
         <name>/usr/lib/libpamc.so</name>
       </link>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/Linux-PAM-&linuxpam-version;</name>
+      </mkdir>
+      <copy>
+	<option>recursive</option>
+	<source>doc/html</source>
+	<source>doc/ps</source>
+	<source>doc/specs</source>
+	<source>doc/txts</source>
+	<destination>/usr/share/doc/Linux-PAM-&linuxpam-version;</destination>
+      </copy>
     </stage>
     <stage name="Configuring">
       <mkdir>

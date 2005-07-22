@@ -69,6 +69,14 @@
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/SDL-&sdl-version;/html</name>
+      </mkdir>
+      <copy>
+	<source>docs/html/*.html</source>
+	<destination>/usr/share/doc/SDL-&sdl-version;/html</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&sdl-directory;</remove>

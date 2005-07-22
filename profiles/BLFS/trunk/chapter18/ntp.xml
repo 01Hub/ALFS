@@ -43,6 +43,15 @@
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/ntp-&ntp-version;</name>
+      </mkdir>
+      <copy>
+	<option>recursive</option>
+	<source>html</source>
+	<destination>/usr/share/doc/ntp-&ntp-version;</destination>
+      </copy>
       <copy>
         <source>&blfs-config;/etc/ntp.conf</source>
         <destination>/etc/ntp.conf</destination>

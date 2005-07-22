@@ -35,6 +35,14 @@
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/startup-notification-&startup-notification-version;</name>
+      </mkdir>
+      <copy>
+	<source>doc/startup-notification.txt</source>
+	<destination>/usr/share/doc/startup-notification-&startup-notification-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&startup-notification-directory;</remove>

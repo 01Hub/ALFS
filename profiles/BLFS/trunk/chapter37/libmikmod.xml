@@ -58,6 +58,14 @@
       <permissions mode="755">
         <name>/usr/lib/libmikmod.so.2.0.4</name>
       </permissions>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/libmikmod-&libmikmod-version;</name>
+      </mkdir>
+      <copy>
+	<source>docs/mikmod.html</source>
+	<destination>/usr/share/doc/libmikmod-&libmikmod-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libmikmod-directory;</remove>

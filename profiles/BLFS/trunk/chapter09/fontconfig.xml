@@ -43,6 +43,13 @@
       <make>
         <param>install</param>
       </make>
+      <make>
+	<param>-C doc install</param>
+      </make>
+      <copy>
+	<source>doc/*.3</source>
+	<destination>/usr/share/man/man3</destination>
+      </copy>
       &ldconfig;
     </stage>
     <stage name="Cleanup">
