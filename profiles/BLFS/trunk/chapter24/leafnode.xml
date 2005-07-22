@@ -37,10 +37,14 @@
     </stage>
     <stage name="Creating user and group">
       <execute command="getent group news &gt; /dev/null || groupadd">
+      	<param>-g &news-gid;</param>
         <param>news</param>
       </execute>
       <execute command="getent passwd news &gt; /dev/null || useradd">
-        <param>-g news</param>
+        <param>-c "Leafnode News Server"</param>
+	<param>-d /var/spool/news</param>
+	<param>-g news</param>
+	<param>-u &news-uid;</param>
         <param>news</param>
       </execute>
     </stage>

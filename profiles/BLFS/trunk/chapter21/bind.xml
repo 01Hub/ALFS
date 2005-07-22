@@ -50,7 +50,7 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group named &gt; /dev/null || groupadd">
-      	<param>-g 20</param>
+      	<param>-g &named-gid;</param>
         <param>named</param>
       </execute>
       <execute command="getent passwd named &gt; /dev/null || useradd">
@@ -58,7 +58,7 @@
         <param>-m</param>
         <param>-g named</param>
         <param>-s /bin/false</param>
-	<param>-u 20</param>
+	<param>-u &named-uid;</param>
         <param>named</param>
       </execute>
     </stage>

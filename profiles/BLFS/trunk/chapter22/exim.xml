@@ -54,13 +54,15 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group exim &gt; /dev/null || groupadd">
+      	<param>-g &exim-gid;</param>
         <param>exim</param>
       </execute>
       <execute command="getent passwd exim &gt; /dev/null || useradd">
-        <param>-c exim</param>
+        <param>-c "Exim Daemon"</param>
         <param>-d /dev/null</param>
         <param>-g exim</param>
         <param>-s /bin/false</param>
+	<param>-u &exim-uid;</param>
         <param>exim</param>
       </execute>
     </stage>

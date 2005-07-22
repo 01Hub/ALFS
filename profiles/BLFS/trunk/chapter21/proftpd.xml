@@ -32,7 +32,7 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group proftpd &gt; /dev/null || groupadd">
-      	<param>-g 46</param>
+      	<param>-g &proftpd-gid;</param>
         <param>proftpd</param>
       </execute>
       <execute command="getent passwd proftpd &gt; /dev/null || useradd">
@@ -40,7 +40,7 @@
         <param>-d /home/ftp</param>
         <param>-g proftpd</param>
         <param>-s /usr/lib/proftpd/proftpdshell</param>
-	<param>-u 46</param>
+	<param>-u &proftpd-uid;</param>
         <param>proftpd</param>
       </execute>
       <mkdir>

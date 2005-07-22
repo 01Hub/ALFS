@@ -26,6 +26,7 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group rsyncd &gt; /dev/null || groupadd">
+      	<param>-g &rsyncd-gid;</param>
         <param>rsyncd</param>
       </execute>
       <execute command="getent passwd rsyncd &gt; /dev/null || useradd">
@@ -33,6 +34,7 @@
         <param>-d /home/rsync</param>
         <param>-g rsyncd</param>
         <param>-s /bin/false</param>
+	<param>-u &rsyncd-uid;</param>
         <param>rsyncd</param>
       </execute>
     </stage>

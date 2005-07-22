@@ -45,7 +45,7 @@
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group apache &gt; /dev/null || groupadd">
-      	<param>-g 25</param>
+      	<param>-g &apache-gid;</param>
         <param>apache</param>
       </execute>
       <execute command="getent passwd apache &gt; /dev/null || useradd">
@@ -53,7 +53,7 @@
         <param>-d /dev/null</param>
         <param>-g apache</param>
         <param>-s /bin/false</param>
-	<param>-u 25</param>
+	<param>-u &apache-uid;</param>
         <param>apache</param>
       </execute>
     </stage>
