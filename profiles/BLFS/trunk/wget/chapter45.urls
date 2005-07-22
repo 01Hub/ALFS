@@ -16,4 +16,5 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/xpdf-3.00pl3.patch
 ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/W-Z/xpdf-3.00pl3-freetype_2.1.7_hack-2.patch
 http://www.linuxfromscratch.org/blfs/downloads/6.0/xpdf-3.00pl3-freetype_2.1.7_hack-2.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/6.0/F-H/fop-0.20.5.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/fop-0.20.5.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/fop_0.20.5-jdk_1.5.0-1.patch
