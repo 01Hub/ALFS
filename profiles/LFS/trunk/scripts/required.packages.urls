@@ -37,7 +37,7 @@ ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/linux-libc-he
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/m4/m4-1.4.3.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/make/make-3.80.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/man/man-1.6.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/man-pages/man-pages-2.05.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/man-pages/man-pages-2.07.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/mktemp/mktemp-1.5.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/module-init-tools/module-init-tools-3.1.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/ncurses/ncurses-5.4.tar.bz2
@@ -57,7 +57,7 @@ ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/udev/udev-063
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/util-linux/util-linux-2.12q.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/vim/vim-6.3.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/vim/vim-6.3-lang.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/zlib/zlib-1.2.2.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/zlib/zlib-1.2.3.tar.bz2
 
 http://downloads.linuxfromscratch.org/udev-config-3.rules
 
@@ -80,5 +80,3 @@ http://www.linuxfromscratch.org/patches/lfs/svn/trunk/sysklogd-1.4.1-fixes-1.pat
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/tar-1.15.1-sparse_fix-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/util-linux-2.12q-cramfs-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/vim-6.3-security_fix-1.patch
-http://www.linuxfromscratch.org/patches/lfs/svn/trunk/zlib-1.2.2-security_fix-1.patch
-

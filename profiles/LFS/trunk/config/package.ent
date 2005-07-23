@@ -215,8 +215,8 @@
 <!ENTITY man-package "man-&man-version;.tar.bz2">
 <!ENTITY man-directory "man-&man-version;">
 
-<!ENTITY man-pages-md5 "c71fc8e6c7f6bf04caf2f17b2a9404b1">
-<!ENTITY man-pages-version "2.05">
+<!ENTITY man-pages-md5 "c656bd1b6487707c8de0a5ea494c57dc">
+<!ENTITY man-pages-version "2.07">
 <!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.bz2">
 <!ENTITY man-pages-directory "man-pages-&man-pages-version;">
 
@@ -335,10 +335,7 @@
 
 <!ENTITY vim-security-patch "vim-&vim-version;-security_fix-1.patch">
 
-<!ENTITY zlib-md5 "1b8aab042d40979e456194c468fd72c5">
-<!ENTITY zlib-version "1.2.2">
+<!ENTITY zlib-md5 "dee233bf288ee795ac96a98cc2e369b6">
+<!ENTITY zlib-version "1.2.3">
 <!ENTITY zlib-package "zlib-&zlib-version;.tar.bz2">
 <!ENTITY zlib-directory "zlib-&zlib-version;">
-
-<!ENTITY zlib-security-fix-patch "zlib-&zlib-version;-security_fix-1.patch">
-
