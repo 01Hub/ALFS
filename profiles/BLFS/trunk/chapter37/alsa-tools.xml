@@ -46,6 +46,11 @@
       <stageinfo>
         <base>&build_dir;/&alsa-tools-directory;/as10k1</base>
       </stageinfo>
+      <execute command="sed">
+	<param>-i</param>
+	<param>-e "s/^next_cli_arg:/&real-amp;\n\n\tbreak;/"</param>
+	<param>as10k1.c</param>
+      </execute>
       <configure>
         <param>--prefix=/usr</param>
       </configure>

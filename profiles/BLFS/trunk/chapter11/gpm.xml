@@ -45,11 +45,12 @@
 	<base>&build_dir;/&gpm-directory;</base>
       </stageinfo>
       <configure>
-	<prefix>LDFLAGS='-lm'</prefix>
 	<param>--prefix=/usr</param>
 	<param>--sysconfdir=/etc</param>
       </configure>
-      <make />
+      <make>
+	<prefix>LDFLAGS="-lm"</prefix>
+      </make>
       <make>
 	<param>install</param>
       </make>

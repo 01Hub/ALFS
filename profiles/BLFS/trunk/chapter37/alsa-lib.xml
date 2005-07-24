@@ -38,6 +38,29 @@
       <make>
         <param>install</param>
       </make>
+      <!--  If you have installed JACK and wish to build the JACK PCM plugin library, uncomment below -->
+      <!-- 
+      <make base="&build_dir;/&alsa-lib-directory;/src/pcm/ext">
+	<param>jack</make>
+      </make>
+      <make base="&build_dir;/&alsa-lib-directory;/src/pcm/ext">
+	<param>install-jack</make>
+      </make>
+      -->
+      <!-- If doxygen is installed and you wish to build the API docs, uncomment below -->
+      <!--
+      <make>
+	<param>doc</make>
+      </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/alsa/doc/html</name>
+      </mkdir>
+      <copy>
+	<source>doc/doxygen/html/*</source>
+	<destination>/usr/share/alsa/doc/html</destination>
+      </copy>
+      -->
       &ldconfig;
     </stage>
     <stage name="Cleanup">

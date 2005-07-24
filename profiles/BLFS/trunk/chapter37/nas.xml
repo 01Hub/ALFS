@@ -34,15 +34,8 @@
       </stageinfo>
       <execute command="xmkmf" />
       <make>
-        <param>Makefiles</param>
+	<param>World</param>
       </make>
-      <make>
-        <param>includes</param>
-      </make>
-      <make>
-        <param>depend</param>
-      </make>
-      <make />
       <make>
         <param>install</param>
         <param>install.man</param>
@@ -55,6 +48,10 @@
       <make>
         <param>install-nas</param>
       </make>
+      <copy base="/etc/nas">
+	<source>nasd.conf.eg</source>
+	<destination>nasd.conf</destination>
+      </copy>
     </stage>
     &bootscripts-clean;
     <stage name="Cleanup">
