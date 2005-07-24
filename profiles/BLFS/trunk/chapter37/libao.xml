@@ -28,6 +28,9 @@
       <utilizes>
         <name>nas</name>
       </utilizes>
+      <utilizes>
+	<name>polypaudio</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
