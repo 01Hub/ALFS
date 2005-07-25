@@ -48,8 +48,8 @@
         <prefix>AR="${LFS_TARGET}-ar"</prefix>
         <prefix>RANLIB="${LFS_TARGET}-ranlib"</prefix>
         <param>--prefix=/tools</param>
-        <param>--host=&lfs-target;</param>
-        <param>--build=&lfs-host;</param>
+        <param>--host=${LFS_TARGET}</param>
+        <param>--build=${LFS_HOST}</param>
         <param>--without-cvs</param>
         <param>--disable-profile</param>
         <param>--enable-add-ons</param>
