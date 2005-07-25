@@ -46,9 +46,9 @@
 <!ENTITY dejagnu-package "dejagnu-&dejagnu-version;.tar.bz2">
 <!ENTITY dejagnu-directory "dejagnu-&dejagnu-version;">
 
-<!ENTITY diffutils-md5 "6d75b5f7c088ea134afd18de6bc73961">
+<!ENTITY diffutils-md5 "18d6587cb915e7aa110a5d463d6ed156">
 <!ENTITY diffutils-version "2.8.7">
-<!ENTITY diffutils-package "diffutils-&diffutils-version;.tar.bz2">
+<!ENTITY diffutils-package "diffutils-&diffutils-version;.tar.gz">
 <!ENTITY diffutils-directory "diffutils-&diffutils-version;">
 
 <!ENTITY e2fsprogs-md5 "bda07d5543acc17cdbf16d546bbe041c">
@@ -137,11 +137,6 @@
 <!ENTITY groff-package "groff-&groff-version;.tar.bz2">
 <!ENTITY groff-directory "groff-&groff-version;">
 
-<!ENTITY grub-md5 "f26de8d3bc501741736f9731f6ec0814">
-<!ENTITY grub-version "0.97">
-<!ENTITY grub-package "grub-&grub-version;.tar.bz2">
-<!ENTITY grub-directory "grub-&grub-version;">
-
 <!ENTITY gzip-md5 "d303f3530ad9b70022ff6fd58e5250f8">
 <!ENTITY gzip-version "1.3.5">
 <!ENTITY gzip-package "gzip-&gzip-version;.tar.bz2">
@@ -166,11 +161,11 @@
 
 <!ENTITY inetutils-no-man-pages-patch "inetutils-&inetutils-version;-no_server_man_pages-1.patch">
 
-<!ENTITY iproute2-md5 "d31b6f032387f19d0ee58d000eaf4a49">
+<!ENTITY iproute2-md5 "89d25b1954be95bcbc3fa4957facc54b">
 <!ENTITY iproute2-version "ss">
 <!ENTITY iproute2-cvs-ver "050607">
 <!--<!ENTITY iproute2-package "iproute2-&iproute2-version;-&iproute2-cvs-ver;.tar.bz2">-->
-<!ENTITY iproute2-package "iproute2-&iproute2-version;&iproute2-cvs-ver;.tar.bz2">
+<!ENTITY iproute2-package "iproute2-&iproute2-version;&iproute2-cvs-ver;.tar.gz">
 <!--<!ENTITY iproute2-directory "iproute2-&iproute2-version;">-->
 <!ENTITY iproute2-directory "iproute2-&iproute2-version;&iproute2-cvs-ver;">
 
@@ -194,22 +189,6 @@
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.bz2">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
-<!ENTITY libxml2-md5 "2d53bba9a4768ec57d8bf2bdadb75c87">
-<!ENTITY libxml2-version "2.6.17">
-<!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
-<!ENTITY libxml2-directory "libxml2-&libxml2-version;">
-
-<!ENTITY linux-md5 "6ee5bf307335e58193c8d2ac0d35677b">
-<!ENTITY linux-version "2.6.12.2">
-<!ENTITY linux-package "linux-&linux-version;.tar.bz2">
-<!ENTITY linux-directory "linux-&linux-version;">
-<!ENTITY linux-src-location "/usr/src">
-
-<!ENTITY linux-libc-headers-md5 "eae2f562afe224ad50f65a6acfb4252c">
-<!ENTITY linux-libc-headers-version "2.6.12.0">
-<!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
-<!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
-
 <!ENTITY m4-md5 "1f7d7eba70a0525c44c2edc3998925c7">
 <!ENTITY m4-version "1.4.3">
 <!ENTITY m4-package "m4-&m4-version;.tar.bz2">
@@ -225,8 +204,8 @@
 <!ENTITY man-package "man-&man-version;.tar.bz2">
 <!ENTITY man-directory "man-&man-version;">
 
-<!ENTITY man-pages-md5 "c71fc8e6c7f6bf04caf2f17b2a9404b1">
-<!ENTITY man-pages-version "2.05">
+<!ENTITY man-pages-md5 "c656bd1b6487707c8de0a5ea494c57dc">
+<!ENTITY man-pages-version "2.07">
 <!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.bz2">
 <!ENTITY man-pages-directory "man-pages-&man-pages-version;">
 
@@ -242,11 +221,6 @@
 <!ENTITY module-init-tools-package "module-init-tools-&module-init-tools-version;.tar.bz2">
 <!ENTITY module-init-tools-directory "module-init-tools-&module-init-tools-version;">
 
-<!ENTITY nALFS-md5 "1e7bb2216cbddec8c97fc0a440216bf1">
-<!ENTITY nALFS-version "1.2.4">
-<!ENTITY nALFS-package "nALFS-&nALFS-version;.tar.bz2">
-<!ENTITY nALFS-directory "nALFS-&nALFS-version;">
-
 <!ENTITY ncurses-md5 "236968460fe1a1d0e293a9c5e6f10805">
 <!ENTITY ncurses-version "5.4">
 <!ENTITY ncurses-package "ncurses-&ncurses-version;.tar.bz2">
@@ -255,9 +229,9 @@
 <!ENTITY ncurses-fixes-patch-version "20050319">
 <!ENTITY ncurses-fixes-patch-package "ncurses-&ncurses-version;-&ncurses-fixes-patch-version;-patch.sh.bz2">
 
-<!ENTITY patch-md5 "0eb5e5bb6d55d0b2197e9c2e4a435a9b">
+<!ENTITY patch-md5 "dacfb618082f8d3a2194601193cf8716">
 <!ENTITY patch-version "2.5.9">
-<!ENTITY patch-package "patch-&patch-version;.tar.bz2">
+<!ENTITY patch-package "patch-&patch-version;.tar.gz">
 <!ENTITY patch-directory "patch-&patch-version;">
 
 <!ENTITY perl-md5 "9a175d6ccbb5d9b41ffac5073ff9cc3c">
@@ -289,8 +263,8 @@
 <!ENTITY sed-package "sed-&sed-version;.tar.bz2">
 <!ENTITY sed-directory "sed-&sed-version;">
 
-<!ENTITY shadow-md5 "069a78645602be68e930cc19b34650d5">
-<!ENTITY shadow-version "4.0.10">
+<!ENTITY shadow-md5 "e60b7b16128b9e00576073389a0ff1e6">
+<!ENTITY shadow-version "4.0.11.1">
 <!ENTITY shadow-package "shadow-&shadow-version;.tar.bz2">
 <!ENTITY shadow-directory "shadow-&shadow-version;">
 
@@ -348,9 +322,7 @@
 
 <!ENTITY vim-security-patch "vim-&vim-version;-security_fix-1.patch">
 
-<!ENTITY zlib-md5 "1b8aab042d40979e456194c468fd72c5">
-<!ENTITY zlib-version "1.2.2">
+<!ENTITY zlib-md5 "dee233bf288ee795ac96a98cc2e369b6">
+<!ENTITY zlib-version "1.2.3">
 <!ENTITY zlib-package "zlib-&zlib-version;.tar.bz2">
 <!ENTITY zlib-directory "zlib-&zlib-version;">
-
-<!ENTITY zlib-security-fix-patch "zlib-&zlib-version;-security_fix-1.patch">

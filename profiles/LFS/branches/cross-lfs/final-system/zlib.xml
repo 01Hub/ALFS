@@ -18,16 +18,6 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Patching">
-      <stageinfo>
-	<base>&build_dir;/&zlib-directory;</base>
-      </stageinfo>
-      <patch>
-	<param>-N</param>
-	<param>-p1</param>
-	<param>-i &packages_dir;/&zlib-security-fix-patch;</param>
-      </patch>
-    </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&zlib-directory;</base>

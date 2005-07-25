@@ -1,4 +1,4 @@
-<!ENTITY version "20050609">
+<!ENTITY version "20050715">
 
 <!ENTITY real-amp "&#38;#38;">
 
@@ -12,6 +12,7 @@
 <!ENTITY x86-i686-cross  "i686-cross-linux-gnu">
 <!-- AMD Athlon64 (possibly other 64-bit chips too) -->
 <!ENTITY x86_64-target "x86_64-pc-linux-gnu">
+<!ENTITY x86_64-target32 "i686-pc-linux-gnu">
 <!ENTITY x86_64-cross "x86_64-cross-linux-gnu">
 <!-- PowerPC -->
 <!ENTITY ppc-target "powerpc-unknown-linux-gnu">
