@@ -13,4 +13,3 @@
 <!ENTITY linux-libc-headers-version "2.6.12.0">
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
 <!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
-
