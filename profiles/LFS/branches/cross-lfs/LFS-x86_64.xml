@@ -9,7 +9,7 @@
   %config_entities;
 ]>
 <alfs version="3.1" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <stage name="Cross-LFS">
+  <stage name="Cross-LFS x86_64">
     <stage name="Preparations">
       <xi:include href="prep/creatingtoolsdir.xml" />
       <xi:include href="prep/addinguser.xml" />
@@ -28,14 +28,19 @@
 	  <variable name="CXXFLAGS" />
 	  <variable name="TERM">&TERM;</variable>
 	  <variable name="HOME">&lfs-user-dir;</variable>
+	  <variable name="BUILD32">-m32</variable>
+	  <variable name="BUILD64">-m64</variable>
 	  <variable name="LFS_HOST">&lfs-host;</variable>
 	  <variable name="LFS_TARGET">&lfs-target;</variable>
+	  <variable name="LFS_TARGET32">&lfs-target32;</variable>
 	</environment>
       </stageinfo>
       <xi:include href="cross-tools/libc-headers.xml" />
       <xi:include href="cross-tools/cross-binutils.xml" />
       <xi:include href="cross-tools/glibc-headers.xml" />
       <xi:include href="cross-tools/cross-gcc-static-libgcc.xml" />
+      <xi:include href="cross-tools/glibc-startfiles.xml" />
+      <xi:include href="cross-tools/cross-gcc-shared-libgcc.xml" />
       <xi:include href="cross-tools/glibc.xml" />
       <xi:include href="cross-tools/gcc.xml" />
     </stage>
@@ -51,8 +56,11 @@
 	  <variable name="CXXFLAGS" />
 	  <variable name="TERM">&TERM;</variable>
 	  <variable name="HOME">&lfs-user-dir;</variable>
+	  <variable name="BUILD32">-m32</variable>
+	  <variable name="BUILD64">-m64</variable>
 	  <variable name="LFS_HOST">&lfs-host;</variable>
 	  <variable name="LFS_TARGET">&lfs-target;</variable>
+	  <variable name="LFS_TARGET32">&lfs-target32;</variable>
 	  <variable name="CC">&lfs-target;-gcc</variable>
 	  <variable name="CXX">&lfs-target;-g++</variable>
 	  <variable name="AR">&lfs-target;-ar</variable>
@@ -91,8 +99,11 @@
 	  <variable name="CXXFLAGS" />
 	  <variable name="TERM">&TERM;</variable>
 	  <variable name="HOME">&lfs-user-dir;</variable>
+	  <variable name="BUILD32">-m32</variable>
+	  <variable name="BUILD64">-m64</variable>
 	  <variable name="LFS_HOST">&lfs-host;</variable>
 	  <variable name="LFS_TARGET">&lfs-target;</variable>
+	  <variable name="LFS_TARGET32">&lfs-target32;</variable>
 	  <variable name="CC">&lfs-target;-gcc</variable>
 	  <variable name="CXX">&lfs-target;-g++</variable>
 	  <variable name="AR">&lfs-target;-ar</variable>
@@ -131,6 +142,9 @@
 	  <variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin</variable>
 	  <variable name="CFLAGS" />
 	  <variable name="CXXFLAGS" />
+	  <variable name="BUILD32">-m32</variable>
+	  <variable name="BUILD64">-m64</variable>
+	  <variable name="LFS_TARGET32">&lfs-target32;</variable>
 	</environment>
       </stageinfo>
       <xi:include href="temp-tools/tcl.xml" />
@@ -148,6 +162,9 @@
 	  <variable name="PATH">/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin</variable>
 	  <variable name="CFLAGS" />
 	  <variable name="CXXFLAGS" />
+	  <variable name="BUILD32">-m32</variable>
+	  <variable name="BUILD64">-m64</variable>
+	  <variable name="LFS_TARGET32">&lfs-target32;</variable>
 	</environment>
       </stageinfo>
       <xi:include href="final-system/libc-headers.xml" />
