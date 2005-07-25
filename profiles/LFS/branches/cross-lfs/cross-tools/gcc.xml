@@ -73,8 +73,8 @@
       </stageinfo>
       <configure command="../&gcc-directory;/configure">
         <param>--prefix=/cross-tools</param>
-        <param>--target=&lfs-target;</param>
-        <param>--host=&lfs-host;</param>
+        <param>--target=${LFS_TARGET}</param>
+        <param>--host=${LFS_HOST}</param>
         <param>--with-local-prefix=/tools</param>
         <param>--disable-nls</param>
         <param>--enable-shared</param>
