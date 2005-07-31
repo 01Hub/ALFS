@@ -72,24 +72,14 @@
           <destination>/usr/share/texmf</destination>
         </unpack>
       </stage>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&tex-flex-patch;</param>
-      </patch>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&tex-readlink-patch;</param>
-      </patch>
       <configure>
+	<param>--prefix=/usr</param>
+	<param>--exec-prefix=/usr</param>
+        <param>--bindir=/usr/bin</param>
         <param>--with-x=no</param>
-        <param>--prefix=/usr</param>
         <param>--without-texinfo</param>
         <param>--with-system-ncurses</param>
         <param>--with-system-zlib</param>
-        <param>--exec-prefix=/usr</param>
-        <param>--bindir=/usr/bin</param>
       </configure>
       <make>
         <param>all</param>

@@ -1,21 +1,15 @@
 <!--************* packages for chapter 46 *************-->
 
-<!ENTITY tex-version   "2.0.2">
+<!ENTITY tex-version   "3.0">
 <!ENTITY tex-package   "tetex-src-&tex-version;.tar.bz2">
-<!ENTITY tex-md5       "3c0632a2feb8dab067d472504c478853">
+<!ENTITY tex-md5       "c8a6fa687a1e6b3617440c62dced911d">
 <!ENTITY tex-directory "tetex-src-&tex-version;">
 
 <!ENTITY tex-texmf-package "tetex-texmf-&tex-version;.tar.bz2">
-<!ENTITY tex-texmf-md5     "0b818ebd107ddb303ccba724e2882c9d">
+<!ENTITY tex-texmf-md5     "4e4300d280b56823c42f590e40ef6701">
 
 <!ENTITY tex-texmfsrc-package "tetex-texmfsrc-&tex-version;.tar.bz2">
-<!ENTITY tex-texmfsrc-md5     "3c5c88ddc8bd913d87ff3a25e423935b">
-
-<!ENTITY tex-flex-patch     "tetex-src-&tex-version;-flex-1.patch">
-<!ENTITY tex-flex-patch-md5 "ea7b5cd82e9672cf855d12956b7c4101">
-
-<!ENTITY tex-readlink-patch     "tetex-src-&tex-version;-remove_readlink-1.patch">
-<!ENTITY tex-readlink-patch-md5 "a947d9ee3482dfdb8e6c93dce7b2a07c">
+<!ENTITY tex-texmfsrc-md5     "33a167be469e5f6df5920b1e1d7e5afa">
 
 <!ENTITY jadetex-version   "3.13">
 <!ENTITY jadetex-package   "jadetex-&jadetex-version;.tar.bz2">

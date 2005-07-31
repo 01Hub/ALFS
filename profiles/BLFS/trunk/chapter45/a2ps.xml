@@ -63,6 +63,19 @@
       <make>
         <param>install</param>
       </make>
+      <copy>
+	<source>fonts/*</source>
+	<destination>/usr/share/a2ps/fonts</destination>
+      </copy>
+      <copy>
+	<source>afm/*</source>
+	<destination>/usr/share/a2ps/afm</destination>
+      </copy>
+      <execute command="./make_fonts_map.sh" base="/usr/share/a2ps/afm" />
+      <move base="/usr/share/a2ps/afm">
+	<source>fonts.map.new</source>
+	<destination>fonts.map</destination>
+      </move>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&a2ps-directory;</remove>
