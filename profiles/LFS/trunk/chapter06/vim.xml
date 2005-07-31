@@ -29,7 +29,6 @@
         <file>src/feature.h</file>
         <content>
 	=#define SYS_VIMRC_FILE "/etc/vimrc"
-	=#define SYS_GVIMRC_FILE "/etc/gvimrc"
 	</content>
       </textdump>
       <patch>

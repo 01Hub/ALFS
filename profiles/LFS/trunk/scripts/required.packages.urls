@@ -73,7 +73,7 @@ http://www.linuxfromscratch.org/patches/lfs/svn/trunk/gcc-3.4.4-no_fixincludes-1
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/glibc-2.3.5-fix_test-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/gzip-1.3.5-security_fixes-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/inetutils-1.4.2-no_server_man_pages-1.patch
-http://www.linuxfromscratch.org/patches/lfs/svn/trunk/mktemp-1.5-add_tempfile-2.patch
+http://www.linuxfromscratch.org/patches/lfs/svn/trunk/mktemp-1.5-add_tempfile-3.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/perl-5.8.7-libc-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/readline-5.0-fixes-1.patch
 http://www.linuxfromscratch.org/patches/lfs/svn/trunk/sysklogd-1.4.1-fixes-1.patch
