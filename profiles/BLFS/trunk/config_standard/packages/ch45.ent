@@ -18,16 +18,12 @@
 <!ENTITY psutils-md5       "2ef0a175ba6989dc9076e2335c07f844">
 <!ENTITY psutils-directory "psutils">
 
-<!ENTITY gsview-version   "4.6">
+<!ENTITY gsview-version   "4.7">
 <!ENTITY gsview-package   "gsview-&gsview-version;.tar.bz2">
-<!ENTITY gsview-md5       "1222b59634cffdd28057d81705120879">
+<!ENTITY gsview-md5       "f7d1a3466e02e5db93f3aeadf11358e7">
 <!ENTITY gsview-directory "gsview-&gsview-version;">
 
 <!ENTITY gsview-pstotext-patch     "gsview-&gsview-version;-pstotext-1.patch">
-<!ENTITY gsview-pstotext-patch-md5 "42a6eb9a9877876842d45b3570249fea">
-
-<!ENTITY gsview-lang-patch     "gsview-&gsview-version;-lang-1.patch">
-<!ENTITY gsview-lang-patch-md5 "05b7d7d575e7ff1a0a10096e52362ccb">
 
 <!ENTITY xpdf-version    "3.00">
 <!ENTITY xpdf-package    "xpdf-&xpdf-version;.tar.bz2">
