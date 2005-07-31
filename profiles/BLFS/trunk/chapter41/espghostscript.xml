@@ -69,6 +69,24 @@
       <make>
         <param>install</param>
       </make>
+      <!-- To build libgs.so shared library, uncomment below -->
+      <!--
+      <make>
+	<param>CFLAGS_SO='-fPIC $(ACDEFS)'</param>
+	<param>so</param>
+      </make>
+      <make>
+	<param>soinstall</param>
+      </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/include/ps</name>
+      </mkdir>
+      <copy>
+	<source>src/*.h</source>
+	<destination>/usr/include/ps</destination>
+      </copy>
+      -->
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&espghostscript-directory;</remove>

@@ -6,21 +6,20 @@
 <!ENTITY ffmpeg-directory "ffmpeg-&ffmpeg-version;">
 
 <!ENTITY avifile-major-minor "0.7">
-<!ENTITY avifile-version     "&avifile-major-minor;.41">
+<!ENTITY avifile-version     "&avifile-major-minor;.43">
 <!ENTITY avifile-package     "avifile-&avifile-major-minor;-&avifile-version;.tar.bz2">
-<!ENTITY avifile-md5         "116e32a82779256c3d149b4ffa015049">
+<!ENTITY avifile-md5         "821adfba2606773764aa29fcf14eb51f">
 <!ENTITY avifile-directory   "avifile-&avifile-major-minor;-&avifile-version;">
 
 <!ENTITY avifile-binaries-package "avifile-binaries-011002.tar.bz2">
 <!ENTITY avifile-binaries-md5     "2a1042b6137f929b08deaa23e431a282">
 
-<!ENTITY mplayer-version   "1.0pre6a">
+<!ENTITY mplayer-version   "1.0pre7">
 <!ENTITY mplayer-package   "MPlayer-&mplayer-version;.tar.bz2">
-<!ENTITY mplayer-md5       "a812d945b884c2e2fa7f90c57cd76bff">
+<!ENTITY mplayer-md5       "5fadd6957d3aab989cd760ff38fb8fdf">
 <!ENTITY mplayer-directory "mplayer-&mplayer-version;">
 
 <!ENTITY mplayer-patch     "Mplayer-&mplayer-version;-kernel_2.6-1.patch">
-<!ENTITY mplayer-patch-md5 "ff23dbdd3416ce6bc0b1c2d6c726ac54">
 
 <!ENTITY mplayer-skin-package "Mplayer-Blue-1.4.tar.bz2">
 <!ENTITY mplayer-skin-md5     "3006f514cf0c9a8f832cfb1abee276bf">
@@ -28,8 +27,8 @@
 <!ENTITY mplayer-font-package "Mplayer-font-arial-iso-8859-1.tar.bz2">
 <!ENTITY mplayer-font-md5     "1ecd31d17b51f16332b1fcc7da36b312">
 
-<!ENTITY mplayer-codecs-package "Mplayer-essential-20050115.tar.bz2">
-<!ENTITY mplayer-codecs-md5     "b627e5710c6f2bf38fc2a6ef81c13be8">
+<!ENTITY mplayer-codecs-package "Mplayer-essential-20050412.tar.bz2">
+<!ENTITY mplayer-codecs-md5     "5fe89bb095bdf9b4f9cda5479dbde906">
 
 <!ENTITY xine-ui-version   "0.99.3">
 <!ENTITY xine-ui-package   "xine-ui-&xine-ui-version;.tar.bz2">

@@ -68,13 +68,22 @@
         <source>*.dcl</source>
         <destination>/usr/share/sgml/docbook/sgml-dtd-&sgml-dtd-version;</destination>
       </copy>
-      <execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-&sgml-dtd-version;.cat /usr/share/sgml/docbook/sgml-dtd-&sgml-dtd-version;/catalog" />
-      <execute command="install-catalog --add /etc/sgml/sgml-docbook-dtd-&sgml-dtd-version;.cat /etc/sgml/sgml-docbook.cat" />
+      <execute command="install-catalog">
+	<param>--add</param>
+	<param>/etc/sgml/sgml-docbook-dtd-&sgml-dtd-version;.cat </param>
+	<param>/usr/share/sgml/docbook/sgml-dtd-&sgml-dtd-version;/catalog</param>
+      </execute>
+      <execute command="install-catalog">
+	<param>--add</param>
+	<param>/etc/sgml/sgml-docbook-dtd-&sgml-dtd-version;.cat</param>
+	<param>/etc/sgml/sgml-docbook.cat</param>
+      </execute>
       <textdump mode="append">
         <file>/usr/share/sgml/docbook/sgml-dtd-&sgml-dtd-version;/catalog</file>
         <content>
 	  = -- Begin Single Major Version catalog changes --
 	  =
+	  =PUBLIC "-//OASIS//DTD DocBook V4.3//EN" "docbook.dtd"
 	  =PUBLIC "-//OASIS//DTD DocBook V4.2//EN" "docbook.dtd"
 	  =PUBLIC "-//OASIS//DTD DocBook V4.1//EN" "docbook.dtd"
 	  =PUBLIC "-//OASIS//DTD DocBook V4.0//EN" "docbook.dtd"

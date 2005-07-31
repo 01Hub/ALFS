@@ -31,7 +31,9 @@
         <base>&build_dir;/&docbook-xsl-directory;</base>
       </stageinfo>
       <mkdir>
+	<option>parents</option>
 	<name>/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;</name>
+	<name>/etc/xml</name>
       </mkdir>
       <ownership user="root" group="root">
 	<option>recursive</option>
@@ -83,6 +85,18 @@
         <param>/etc/xml/catalog</param>
       </execute>
       <execute command="xmlcatalog">
+        <param>--noout --add "rewriteSystem"</param>
+        <param>"http://docbook.sourceforge.net/release/xsl/current"</param>
+        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
+        <param>/etc/xml/catalog</param>
+      </execute>
+      <execute command="xmlcatalog">
+        <param>--noout --add "rewriteURI"</param>
+        <param>"http://docbook.sourceforge.net/release/xsl/current"</param>
+        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
+        <param>/etc/xml/catalog</param>
+      </execute>
+      <execute command="xmlcatalog">
         <param>--noout --add "delegateSystem"</param>
         <param>"http://docbook.sourceforge.net/release/xsl/"</param>
         <param>"file:///etc/xml/docbook"</param>
@@ -92,30 +106,6 @@
         <param>--noout --add "delegateURI"</param>
         <param>"http://docbook.sourceforge.net/release/xsl/"</param>
         <param>"file:///etc/xml/docbook"</param>
-        <param>/etc/xml/catalog</param>
-      </execute>
-      <execute command="xmlcatalog">
-        <param>--noout --add "rewriteSystem"</param>
-        <param>"http://docbook.sourceforge.net/release/xsl/1.65.1"</param>
-        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
-        <param>/etc/xml/catalog</param>
-      </execute>
-      <execute command="xmlcatalog">
-        <param>--noout --add "rewriteURI"</param>
-        <param>"http://docbook.sourceforge.net/release/xsl/1.65.1"</param>
-        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
-        <param>/etc/xml/catalog</param>
-      </execute>
-      <execute command="xmlcatalog">
-        <param>--noout --add "rewriteSystem"</param>
-        <param>"http://docbook.sourceforge.net/release/xsl/current"</param>
-        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
-        <param>/etc/xml/catalog</param>
-      </execute>
-      <execute command="xmlcatalog">
-        <param>--noout --add "rewriteURI"</param>
-        <param>"http://docbook.sourceforge.net/release/xsl/current"</param>
-        <param>"/usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;"</param>
         <param>/etc/xml/catalog</param>
       </execute>
       <textdump>

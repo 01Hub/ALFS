@@ -78,11 +78,6 @@
         <param>--with-win32-path=/usr/lib/avifile-&avifile-major-minor;/win32</param>
       </configure>
       <make />
-      <search_replace>
-        <file>avifile.pc</file>
-        <find>include/avifile</find>
-        <replace>include/avifile-&avifile-major-minor;</replace>
-      </search_replace>
       <make>
         <param>install</param>
       </make>

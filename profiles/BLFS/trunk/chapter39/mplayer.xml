@@ -219,17 +219,18 @@
         <param>install</param>
       </make>
       <mkdir>
-        <name>/usr/share/doc/mplayer</name>
+        <name>/usr/share/doc/mplayer-&mplayer-version;</name>
       </mkdir>
       <copy>
         <option>recursive</option>
         <source>DOCS/*</source>
-        <destination>/usr/share/doc/mplayer</destination>
+        <destination>/usr/share/doc/mplayer-&mplayer-version;</destination>
       </copy>
-      <make>
-        <param>-C libavcodec/libpostproc</param>
-        <param>install</param>
-      </make>
+      <link>
+      	<option>force</option>
+	<target>libdha.so.1.0</target>
+	<name>/usr/lib/libdha.so</name>
+      </link>
       <copy>
         <source>etc/codecs.conf</source>
         <destination>/etc/mplayer</destination>
@@ -238,6 +239,12 @@
 	<source>etc/*.conf</source>
 	<destination>/etc/mplayer</destination>
       </copy>
+      <textdump mode="append">
+	<file>/etc/sysctl.conf</file>
+	<content>
+	  =dev.rtc.max-user-freq=1024
+	</content>
+      </textdump>
       <unpack>
         <digest>&mplayer-font-md5;</digest>
 	<archive>&packages_dir;/&mplayer-font-package;</archive>
