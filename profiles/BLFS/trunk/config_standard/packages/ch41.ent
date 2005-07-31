@@ -10,9 +10,9 @@
 <!ENTITY lprng-md5       "d986978aecfa3051a764718f34e44e54">
 <!ENTITY lprng-directory "LPRng-&lprng-version;">
 
-<!ENTITY afplghostscript-version   "8.14">
+<!ENTITY afplghostscript-version   "8.51">
 <!ENTITY afplghostscript-package   "ghostscript-&afplghostscript-version;.tar.bz2">
-<!ENTITY afplghostscript-md5       "5f22dbe24b7fc8c8c07e249f8b14f9ce">
+<!ENTITY afplghostscript-md5       "8b328b47cce3b7f97f35296aae8e7b77">
 <!ENTITY afplghostscript-directory "ghostscript-&afplghostscript-version;">
 
 <!ENTITY espghostscript-version   "7.07.1">

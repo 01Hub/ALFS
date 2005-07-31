@@ -67,6 +67,7 @@
 	<param>-d /dev/null</param>
 	<param>-g lp</param>
 	<param>-s /bin/false</param>
+	<param>-u &lp-uid;</param>
 	<param>lp</param>
       </execute>
     </stage>
@@ -74,6 +75,16 @@
       <stageinfo>
         <base>&build_dir;/&cups-directory;</base>
       </stageinfo>
+      <!-- Uncomment the following if using Linux-PAM -->
+      <!--
+      <execute command="sed">
+	<param>-i</param>
+	<param>-e "s@pam/pam@security/pam@g"</param>
+	<param>config-scripts/cups-pam.m4</param>
+	<param>scheduler/auth.c</param>
+	<param>configure</param>
+      </execute>
+      -->
       <configure />
       <make />
       <make>
