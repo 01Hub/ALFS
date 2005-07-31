@@ -65,8 +65,6 @@
       <xi:include href="chapter05/texinfo.xml" />
       <xi:include href="chapter05/bash.xml" />
       <xi:include href="chapter05/m4.xml" />
-      <xi:include href="chapter05/bison.xml" />
-      <xi:include href="chapter05/flex.xml" />
       <xi:include href="chapter05/util-linux.xml" />
       <xi:include href="chapter05/perl.xml" />
       <xi:include href="chapter05/strip.xml" />
@@ -184,7 +182,13 @@
     <xi:include href="chapter08/kernel.xml" />
     <xi:include href="chapter08/grub.xml" />
   </stage>
-  <stage name="Chapter 9 - Optional Packages">
+  <stage name="Optional Packages Prep">
+    <stageinfo>
+      <root>/</root>
+    </stageinfo>
+    <xi:include href="chapter09/optional-prep.xml" />
+  </stage>
+  <stage name="Optional Packages">
     <stageinfo>
       <root>&LFS;</root>
       <environment>
@@ -196,11 +200,10 @@
         <variable name="CXXFLAGS">&gcc_optimizations;</variable>
       </environment>
     </stageinfo>
-    <xi:include href="chapter09/optional-prep.xml" />
     <xi:include href="chapter09/libxml2.xml" />
     <xi:include href="chapter09/nALFS.xml" />
   </stage>
-  <stage name="Finishing up (inside chroot)">
+  <stage name="Chapter 9 - The End">
     <stageinfo>
       <root>&LFS;</root>
     </stageinfo>
@@ -210,7 +213,7 @@
       <content>=&LFS-version;</content>
     </textdump>
   </stage>
-  <stage name="Finishing Up (outside chroot)">
+  <stage name="Finishing Up">
     <remove>/tools</remove>
     <execute command="pkill udevd" />
     <execute command="umount">

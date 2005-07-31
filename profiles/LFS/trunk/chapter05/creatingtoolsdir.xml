@@ -132,7 +132,6 @@
         <source>&vim-lang-package;</source>
         <source>&vim-security-patch;</source>
         <source>&zlib-package;</source>
-	<source>&zlib-security-fix-patch;</source>
         <destination>&LFS;&packages_dir;</destination>
       </copy>
     </stage>
