@@ -333,7 +333,7 @@
 <!ENTITY vim-lang-md5 "58dcbac0857f916a9c46c6731662fbd5">
 <!ENTITY vim-lang-package "vim-&vim-version;-lang.tar.bz2">
 
-<!ENTITY vim-security-patch "vim-&vim-version;-security_fix-1.patch">
+<!ENTITY vim-security-patch "vim-&vim-version;-security_fix-2.patch">
 
 <!ENTITY zlib-md5 "dee233bf288ee795ac96a98cc2e369b6">
 <!ENTITY zlib-version "1.2.3">
