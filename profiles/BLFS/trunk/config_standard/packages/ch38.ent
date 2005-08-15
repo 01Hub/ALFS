@@ -30,3 +30,9 @@
 
 <!ENTITY cdparanoia-gcc34-patch     "cdparanoia-&cdparanoia-version;-gcc34-1.patch">
 <!ENTITY cdparanoia-gcc34-patch-md5 "a707712efbafd6f2536c451ea980e077">
+
+<!ENTITY freetts-version "1.2.1">
+<!ENTITY freetts-package "freetts-&freetts-version;-src.zip">
+<!ENTITY freetts-md5 "f3e3ceae5b8cb5e175b50931f2e350e8">
+<!ENTITY freetts-directory "freetts-&freetts-version;">
+

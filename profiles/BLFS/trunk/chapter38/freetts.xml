@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/packages/ch38.ent">
+<!ENTITY % config_entities SYSTEM  "../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="freetts" version="&freetts-version;">
+    <packageinfo>
+      <requires>
+	<name>apache-ant</name>
+      </requires>
+      <requires>
+	<name>unzip</name>
+      </requires>
+    </packageinfo>
+    <stage name="Unpacking">
+      <stageinfo>
+	<base>&build_dir;</base>
+      </stageinfo>
+      <execute command="unzip">
+	<param>-q</param>
+	<param>&packages_dir;/&freetts-package;</param>
+	<param>-x</param>
+	<param>META-INF/*</param>
+      </execute>
+      <execute command="unzip">
+	<param>-q</param>
+	<param>&packages_dir;/&freetts-test-package;</param>
+	<param>-x</param>
+	<param>META-INF/*</param>
+	<param>&freetts-directory;/acknowledgments.txt</param>
+	<param>&freetts-directory;/license.terms</param>
+      </execute>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&freetts-directory;</base>
+      </stageinfo>
+      <execute command="yes | sh jsapi.sh" base="&build_dir;/&freetts-directory;/lib" />
+      <execute commnad="ant" />
+      <mkdir>
+	<option>parents</option>
+	<name>/opt/freetts-&freetts-version;/lib</name>
+	<name>/opt/freetts-&freetts-version;/docs/audio</name>
+	<name>/opt/freetts-&freetts-version;/docs/images</name>
+      </mkdir>
+      <copy>
+	<source>lib/*.jar</source>
+	<destination>/opt/freetts-&freetts-version;/lib</destination>
+      </copy>
+      <copy>
+	<source>*.txt</source>
+	<source>RELEASE_NOTES</source>
+	<source>license.terms</source>
+	<source>docs/*.pdf</source>
+	<source>docs/*.html</source>
+	<source>docs/*.txt</source>
+	<source>docs/*.sxw</source>
+	<source>docs/*.sxd</source>
+	<destination>/opt/freetts-&freetts-version;/docs</destination>
+      </copy>
+      <copy>
+	<source>docs/audio/*</source>
+	<destination>/opt/freetts-&freetts-version;/docs/audio</destination>
+      </copy>
+      <copy>
+	<source>docs/images/*</source>
+	<destination>/opt/freetts-&freetts-version;/docs/images</destination>
+      </copy>
+      <copy>
+	<option>recursive</option>
+	<source>javadoc</source>
+	<destination>/opt/freetts-&freetts-version;</destination>
+      </copy>
+      <link>
+	<option>force</option>
+	<target>freetts-&freetts-version;</target>
+	<name>/opt/freetts</name>
+      </link>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&freetts-directory;</remove>
+    </stage>
+  </package>
+</alfs>
