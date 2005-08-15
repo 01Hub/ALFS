@@ -31,13 +31,10 @@
     <stageinfo>
       <base>&build_dir;/&jadetex-directory;</base>
     </stageinfo>
-    <search_replace>
-      <file>/usr/share/texmf/web2c/texmf.cnf</file>
-      <find>original texmf.cnf</find>
-      <replace>modified texmf.cnf</replace>
-    </search_replace>
     <execute command="sed">
-      <param>-i -e 's@main_memory.mpost = 1500000@&real-amp;\npool_size.context = 750000@'</param>
+      <param>-i.orig</param>
+      <param>-e "s/original texmf.cnf/modified texmf.cnf/"</param>
+      <param>-e "s/memory hog.../&real-amp;\npool_size.context = 750000/"</param>
       <param>/usr/share/texmf/web2c/texmf.cnf</param>
     </execute>
     <textdump mode="append">
@@ -83,36 +80,75 @@
 	=max_strings.pdfjadetex = 55000
       </content>
     </textdump>
-    <copy>
-      <option>recursive</option>
-      <source>/usr/share/texmf/tex/latex/config</source>
-      <destination>.</destination>
-    </copy>
-    <execute base="&build_dir;/&jadetex-directory;/config" command="tex">
-      <param>-ini -progname=latex latex.ini</param>
-    </execute>
-    <move base="/usr/share/texmf/web2c">
+    <move base="/usr/share/texmf-var/web2c">
       <source>latex.fmt</source>
       <destination>latex.fmt.orig</destination>
     </move>
+    <move base"/usr/share/texmf-var/web2c">
+      <source>latex.log</source>
+      <destination>latex.log.orig</destination>
+    </move>
+    <execute command="fmtutil-sys">
+      <param>--byfmt</param>
+      <param>latex</param>
+    </execute>
+    <make />
+    <mkdir>
+      <option>parents</option>
+      <name>/usr/share/texmf-local/tex/jadetex/config</name>
+    </mkdir>
     <copy>
-      <source>config/latex.fmt</source>
-      <destination>/usr/share/texmf/web2c</destination>
+      <source>dsssl.def</source>
+      <source>jadetex.ltx</source>
+      <destination>/usr/share/texmf-local/tex/jadetex</destination>
     </copy>
-    <make>
-      <param>install</param>
-    </make>
+    <copy>
+      <source>jadetex.ini</source>
+      <source>pdfjadetex.ini</source>
+      <destination>/usr/share/texmf-local/tex/jadetex/config</destination>
+    </copy>
+    <copy base="/usr/share/texmf/web2c">
+      <source>fmtutil.cnf</source>
+      <destination>fmtutil.cnf.orig</destination>
+    </copy>
+    <textdump mode="append">
+      <file>/usr/share/texmf/web2c/fmtutil.cnf</file>
+      <content>
+	=
+	=# JadeTeX formats:
+	=jadetex         etex            -               "&real-amp;latex"     jadetex.ini
+	=pdfjadetex      pdfetex         -               "&real-amp;pdflatex"  pdfjadetex.ini
+	=
+      </content>
+    </textdump>
+    <move base="/usr/share/texmf">
+      <source>ls-R</source>
+      <destination>ls-R.orig</destination>
+    </move>
+    <move base="/usr/share/texmf-var">
+      <source>ls-R</source>
+      <destination>ls-R.orig</destination>
+    </move>
+    <execute command="mktexlsr" />
+    <execute command="fmtutil-sys">
+      <param>--byfmt</param>
+      <param>jadetex</param>
+    </execute>
+    <execute command="fmtutil-sys">
+      <param>--byfmt</param>
+      <param>pdfjadetex</param>
+    </execute>
+    <execute command="mktexlsr" />
     <link>
       <option>force</option>
-      <target>tex</target>
+      <target>etex</target>
       <name>/usr/bin/jadetex</name>
     </link>
     <link>
       <option>force</option>
-      <target>pdftex</target>
+      <target>pdfetex</target>
       <name>/usr/bin/pdfjadetex</name>
     </link>
-    <execute command="mktexlsr" />
   </stage>
   <stage name="Cleanup.">
     <remove>&build_dir;/&jadetex-directory;</remove>
