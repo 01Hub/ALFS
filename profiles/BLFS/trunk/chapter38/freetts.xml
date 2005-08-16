@@ -44,7 +44,7 @@
 	<base>&build_dir;/&freetts-directory;</base>
       </stageinfo>
       <execute command="yes | sh jsapi.sh" base="&build_dir;/&freetts-directory;/lib" />
-      <execute commnad="ant" />
+      <execute command="ant" />
       <mkdir>
 	<option>parents</option>
 	<name>/opt/freetts-&freetts-version;/lib</name>

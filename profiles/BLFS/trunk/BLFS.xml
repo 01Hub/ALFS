@@ -358,6 +358,7 @@
       <xi:include href="chapter38/xmms.xml" />
       <xi:include href="chapter38/lame.xml" />
       <xi:include href="chapter38/cdparanoia.xml" />
+      <xi:include href="chapter38/freetts.xml" />
     </stage>
     <stage name="Chapter 39 (Video utilities)">
       <xi:include href="chapter39/ffmpeg.xml" />

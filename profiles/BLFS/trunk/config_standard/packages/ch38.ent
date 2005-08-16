@@ -36,3 +36,5 @@
 <!ENTITY freetts-md5 "f3e3ceae5b8cb5e175b50931f2e350e8">
 <!ENTITY freetts-directory "freetts-&freetts-version;">
 
+<!ENTITY freetts-test-package "freetts-&freetts-version;-tst.zip">
+<!ENTITY freetts-test-md5 "8e461701ee94b3942cc37783f6de4128">
