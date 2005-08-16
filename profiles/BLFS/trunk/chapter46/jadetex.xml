@@ -84,7 +84,7 @@
       <source>latex.fmt</source>
       <destination>latex.fmt.orig</destination>
     </move>
-    <move base"/usr/share/texmf-var/web2c">
+    <move base="/usr/share/texmf-var/web2c">
       <source>latex.log</source>
       <destination>latex.log.orig</destination>
     </move>
