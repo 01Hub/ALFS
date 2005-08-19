@@ -121,6 +121,7 @@
       <xi:include href="chapter09/aalib.xml" />
       <xi:include href="chapter09/imlib2.xml" />
       <xi:include href="chapter09/libexif.xml" />
+      <xi:include href="chapter09/fribidi.xml" />
     </stage>
     <stage name="Chapter 10 (General Utilities)">
       <xi:include href="chapter10/bc.xml" />

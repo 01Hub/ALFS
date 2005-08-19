@@ -80,3 +80,8 @@
 <!ENTITY libexif-md5 "9f952ee8db0be7c53a075c34e8286d91">
 <!ENTITY libexif-directory "libexif-&libexif-version;">
 
+<!ENTITY fribidi-version "0.10.5">
+<!ENTITY fribidi-package "fribidi-&fribidi-version;.tar.bz2">
+<!ENTITY fribidi-md5 "">
+<!ENTITY fribidi-directory "fribidi-&fribidi-version;">
+
