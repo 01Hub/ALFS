@@ -28,6 +28,7 @@
         </environment>
         <base>&build_dir;/gcc-build</base>
       </stageinfo>
+<!--
       <patch base="&build_dir;/&gcc-directory;">
         <param>-N</param>
         <param>-p1</param>
@@ -38,11 +39,17 @@
         <param>-p1</param>
         <param>-i &packages_dir;/&gcc-linkonce-patch;</param>
       </patch>
+-->
       <search_replace base="&build_dir;/&gcc-directory;">
         <file>libiberty/Makefile.in</file>
         <find>install_to_$(INSTALL_DEST)</find>
         <replace></replace>
       </search_replace>
+      <execute command="sed">
+        <param>-i</param>
+        <param>'/^XCFLAGS/s/$/ -fomit-frame-pointer/'</param>
+	<param>&build_dir;/&gcc-directory;/gcc/Makefile.in</param>
+      </execute>
       <configure command="../&gcc-directory;/configure">
         <param>--prefix=/usr</param>
         <param>--libexecdir=/usr/lib</param>

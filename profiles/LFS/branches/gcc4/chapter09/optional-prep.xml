@@ -15,6 +15,7 @@
     </stageinfo>
     <copy>
       <source>&libxml2-package;</source>
+      <source>&libxml2-glibc235-patch;</source>
       <source>&nALFS-package;</source>
       <destination>&LFS;&packages_dir;</destination>
     </copy>

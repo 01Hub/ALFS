@@ -21,6 +21,11 @@
         <base>&build_dir;/&tar-directory;</base>
       </stageinfo>
       <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&tar-gcc4_fix-patch;</param>
+      </patch>
+      <patch>
       	<param>-N</param>
 	<param>-p1</param>
 	<param>-i &packages_dir;/&tar-sparse-fix-patch;</param>
