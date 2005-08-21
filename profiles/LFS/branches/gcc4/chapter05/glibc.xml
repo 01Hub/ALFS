@@ -24,11 +24,37 @@
       <stageinfo>
 	<base>&build_dir;/&glibc-directory;</base>
       </stageinfo>
+
       <patch>
 	<param>-N</param>
 	<param>-p1</param>
 	<param>-i &packages_dir;/&glibc-fix-testsuite-patch;</param>
       </patch>
+
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-gcc4_symbols-patch;</param>
+      </patch>
+
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-gcc4_string-patch;</param>
+      </patch>
+
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-gcc4_elf-patch;</param>
+      </patch>
+
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-gcc4_iconvdata-patch;</param>
+      </patch>
+
     </stage>
     <stage name="Installing">
       <stageinfo>
@@ -67,12 +93,12 @@
         <option>parents</option>
         <name>/tools/lib/locale</name>
       </mkdir>
-      <!--
+ 
       <make>
         <param>localedata/install-locales</param>
       </make>
-      -->
-      <execute command="localedef -i de_DE -f ISO-8859-1 de_DE" />
+ 
+<!--      <execute command="localedef -i de_DE -f ISO-8859-1 de_DE" />
       <execute command="localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro" />
       <execute command="localedef -i en_HK -f ISO-8859-1 en_HK" />
       <execute command="localedef -i en_PH -f ISO-8859-1 en_PH" />
@@ -82,7 +108,7 @@
       <execute command="localedef -i fr_FR -f ISO-8859-1 fr_FR" />
       <execute command="localedef -i fr_FR@euro -f ISO-8859-15 fr_FR@euro" />
       <execute command="localedef -i it_IT -f ISO-8859-1 it_IT" />
-      <execute command="localedef -i ja_JP -f EUC-JP ja_JP" />
+      <execute command="localedef -i ja_JP -f EUC-JP ja_JP" /> -->
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&glibc-directory;</remove>

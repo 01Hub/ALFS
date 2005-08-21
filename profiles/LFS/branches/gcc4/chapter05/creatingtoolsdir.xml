@@ -77,13 +77,15 @@
         <!-- <source>&gcc-core-package;</source> -->
         <!-- <source>&gcc-gpp-package;</source> -->
         <!-- <source>&gcc-testsuite-package;</source> -->
-        <source>&gcc-linkonce-patch;</source>
-        <source>&gcc-no-fixincludes-patch;</source>
         <source>&gcc-specs-patch;</source>
         <source>&gettext-package;</source>
         <source>&glibc-package;</source>
 	<source>&glibc-linuxthreads-package;</source>
 	<source>&glibc-fix-testsuite-patch;</source>
+        <source>&glibc-gcc4_symbols-patch;</source>
+        <source>&glibc-gcc4_string-patch;</source>
+        <source>&glibc-gcc4_elf-patch;</source>
+        <source>&glibc-gcc4_iconvdata-patch;</source>
         <source>&grep-package;</source>
         <source>&groff-package;</source>
         <source>&grub-package;</source>
@@ -93,8 +95,10 @@
         <source>&iana-etc-package;</source>
         <source>&inetutils-package;</source>
         <source>&inetutils-no-man-pages-patch;</source>
+        <source>&inetutils-gcc4_fixes-patch;</source>
         <source>&iproute2-package;</source>
         <source>&kbd-package;</source>
+        <source>&kbd-gcc4_fixes-patch;</source>
         <source>&less-package;</source>
         <source>&lfs-bootscripts-package;</source>
         <source>&libtool-package;</source>
@@ -122,6 +126,7 @@
         <source>&sysvinit-package;</source>
         <source>&tar-package;</source>
 	<source>&tar-sparse-fix-patch;</source>
+        <source>&tar-gcc4_fix-patch;</source>
         <source>&tcl-package;</source>
         <source>&texinfo-package;</source>
         <source>&udev-package;</source>
