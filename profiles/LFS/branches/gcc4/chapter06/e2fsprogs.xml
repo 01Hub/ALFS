@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+<alfs>
+  <package name="e2fsprogs" version="&e2fsprogs-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&e2fsprogs-md5;</digest>
+        <archive>&packages_dir;/&e2fsprogs-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <mkdir base="&build_dir;/&e2fsprogs-directory;">
+        <name>build</name>
+      </mkdir>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&e2fsprogs-directory;/build</base>
+      </stageinfo>
+      <configure command="../configure">
+        <param>--prefix=/usr</param>
+        <param>--with-root-prefix=""</param>
+        <param>--enable-elf-shlibs</param>
+        <param>--disable-evms</param>
+      </configure>
+      <make>
+        <param>&jlevel;</param>
+      </make>
+      <!--
+      <make>
+        <param>check</param>
+      </make>
+      -->
+      <make>
+        <param>install</param>
+      </make>
+      <make>
+        <param>install-libs</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&e2fsprogs-directory;</remove>
+    </stage>
+  </package>
+</alfs>
