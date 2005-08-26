@@ -20,6 +20,11 @@
       <stageinfo>
         <base>&build_dir;/&sed-directory;</base>
       </stageinfo>
+      <execute command="sed">
+	<param>-i</param>
+	<param>'s@/doc@&real-amp;/sed-&sed-version;@'</param>
+	<param>doc/Makefile.in</param>
+      </execute>
       <configure>
         <param>--prefix=/usr</param>
         <param>--bindir=/bin</param>
