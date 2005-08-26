@@ -23,6 +23,7 @@
       <configure>
         <param>--libdir=/lib</param>
         <param>--enable-shared</param>
+	<param>--enable-shadowgrp</param>
       </configure>
       <search_replace>
         <file>src/Makefile</file>
