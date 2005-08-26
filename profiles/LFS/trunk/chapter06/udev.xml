@@ -38,6 +38,14 @@
         <source>&udev-rules-file;</source>
         <destination>/etc/udev/rules.d/25-lfs.rules</destination>
       </copy>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/udev-&udev-version;</name>
+      </mkdir>
+      <copy>
+	<source>docs/writing_udev_rules/index.html</source>
+	<destination>/usr/share/doc/udev-&udev-version;</destination>
+      </copy>
       <execute command="/sbin/udevstart" />
     </stage>
     <stage name="Cleanup">
