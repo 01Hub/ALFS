@@ -13,6 +13,9 @@
 <!ENTITY bash-package "bash-&bash-version;.tar.bz2">
 <!ENTITY bash-directory "bash-&bash-version;">
 
+<!ENTITY bash-docs-md5 "b5ebe5bfe6211df46d26f3bdc0cbecd1">
+<!ENTITY bash-docs-package "bash-doc-&bash-version;.tar.bz2">
+
 <!ENTITY bash-fixes-patch "bash-&bash-version;-fixes-3.patch">
 <!ENTITY bash-wcontinued-patch "bash-&bash-version;-avoid_WCONTINUED-1.patch">
 
@@ -30,6 +33,9 @@
 <!ENTITY bzip2-version "1.0.3">
 <!ENTITY bzip2-package "bzip2-&bzip2-version;.tar.bz2">
 <!ENTITY bzip2-directory "bzip2-&bzip2-version;">
+
+<!ENTITY bzip2-docs-patch "bzip2-&bzip2-version;-install_docs-1.patch">
+<!ENTITY bzip2-bzgrep-security-patch "bzip2-&bzip2-version;-bzgrep_security-1.patch">
 
 <!ENTITY coreutils-md5 "172ee3c315af93d3385ddfbeb843c53f">
 <!ENTITY coreutils-version "5.2.1">
@@ -61,8 +67,8 @@
 
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
 
-<!ENTITY file-md5 "1bdd1b8af29f6f30eb6c80eb13165ef2">
-<!ENTITY file-version "4.14">
+<!ENTITY file-md5 "b1052d6ceb90febe7f0a8e9593bfe927">
+<!ENTITY file-version "4.15">
 <!ENTITY file-package "file-&file-version;.tar.bz2">
 <!ENTITY file-directory "file-&file-version;">
 
@@ -146,8 +152,8 @@
 <!ENTITY hotplug-package "hotplug-&hotplug-version;.tar.bz2">
 <!ENTITY hotplug-directory "hotplug-&hotplug-version;">
 
-<!ENTITY iana-etc-md5 "8a5a44020759895c7565b32996eab29b">
-<!ENTITY iana-etc-version "1.10">
+<!ENTITY iana-etc-md5 "880842cd24c219241ceef7f8de442d82">
+<!ENTITY iana-etc-version "2.00">
 <!ENTITY iana-etc-package "iana-etc-&iana-etc-version;.tar.bz2">
 <!ENTITY iana-etc-directory "iana-etc-&iana-etc-version;">
 
@@ -189,8 +195,8 @@
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
-<!ENTITY linux-md5 "21d642266a9a9ce6c73db17605991ac3">
-<!ENTITY linux-version "2.6.12.3">
+<!ENTITY linux-md5 "076f0dc714112c764c790fbaef19e228">
+<!ENTITY linux-version "2.6.12.5">
 <!ENTITY linux-package "linux-&linux-version;.tar.bz2">
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
@@ -210,8 +216,8 @@
 <!ENTITY make-package "make-&make-version;.tar.bz2">
 <!ENTITY make-directory "make-&make-version;">
 
-<!ENTITY man-md5 "5d015c04fbb41b2107e9d6c37414829e">
-<!ENTITY man-version "1.6">
+<!ENTITY man-md5 "">
+<!ENTITY man-version "1.6a">
 <!ENTITY man-package "man-&man-version;.tar.bz2">
 <!ENTITY man-directory "man-&man-version;">
 
@@ -276,8 +282,8 @@
 <!ENTITY sed-package "sed-&sed-version;.tar.bz2">
 <!ENTITY sed-directory "sed-&sed-version;">
 
-<!ENTITY shadow-md5 "069a78645602be68e930cc19b34650d5">
-<!ENTITY shadow-version "4.0.10">
+<!ENTITY shadow-md5 "e60b7b16128b9e00576073389a0ff1e6">
+<!ENTITY shadow-version "4.0.11.1">
 <!ENTITY shadow-package "shadow-&shadow-version;.tar.bz2">
 <!ENTITY shadow-directory "shadow-&shadow-version;">
 
@@ -310,8 +316,8 @@
 <!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
-<!ENTITY udev-md5 "70c5a1c45a8df0ff1e21fa9b89486ab4">
-<!ENTITY udev-version "063">
+<!ENTITY udev-md5 "fd9db7375dae81e8aa634414b5ede0d6">
+<!ENTITY udev-version "068">
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
 

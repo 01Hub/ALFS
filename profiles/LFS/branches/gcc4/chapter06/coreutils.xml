@@ -70,8 +70,6 @@
         <param>install</param>
       </make>
       <move base="/usr/bin">
-        <source>[</source>
-        <source>basename</source>
         <source>cat</source>
         <source>chgrp</source>
         <source>chmod</source>
@@ -84,7 +82,6 @@
         <source>false</source>
         <source>head</source>
         <source>hostname</source>
-        <source>install</source>
         <source>ln</source>
         <source>ls</source>
         <source>mkdir</source>
@@ -94,10 +91,7 @@
         <source>rm</source>
         <source>rmdir</source>
         <source>sync</source>
-        <source>sleep</source>
         <source>stty</source>
-        <source>test</source>
-        <source>touch</source>
         <source>true</source>
         <source>uname</source>
         <destination>/bin</destination>
@@ -106,11 +100,11 @@
         <source>/usr/bin/chroot</source>
         <destination>/usr/sbin</destination>
       </move>
-      <link>
-        <option>force</option>
-        <target>../../bin/install</target>
-        <name>/usr/bin</name>
-      </link>
+      <move base="/usr/bin">
+	<source>head</source>
+	<source>sleep</source>
+	<destination>/bin</destination>
+      </move>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&coreutils-directory;</remove>

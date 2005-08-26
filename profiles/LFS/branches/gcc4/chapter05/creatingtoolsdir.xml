@@ -55,11 +55,14 @@
         <source>&autoconf-package;</source>
         <source>&automake-package;</source>
         <source>&bash-package;</source>
+	<source>&bash-docs-package;</source>
         <source>&bash-fixes-patch;</source>
         <source>&bash-wcontinued-patch;</source>
         <source>&binutils-package;</source>
         <source>&bison-package;</source>
         <source>&bzip2-package;</source>
+	<source>&bzip2-docs-patch;</source>
+	<source>&bzip2-bzgrep-security-patch;</source>
         <source>&coreutils-package;</source>
         <source>&coreutils-dupes-patch;</source>
         <source>&coreutils-uname-patch;</source>
@@ -74,9 +77,6 @@
         <source>&flex-debian-fixes-patch;</source>
         <source>&gawk-package;</source>
         <source>&gcc-package;</source>
-        <!-- <source>&gcc-core-package;</source> -->
-        <!-- <source>&gcc-gpp-package;</source> -->
-        <!-- <source>&gcc-testsuite-package;</source> -->
         <source>&gcc-specs-patch;</source>
         <source>&gettext-package;</source>
         <source>&glibc-package;</source>

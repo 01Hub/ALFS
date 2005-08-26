@@ -30,6 +30,15 @@
       <make>
         <param>&jlevel;</param>
       </make>
+      <!--
+      <execute command="sed">
+	<param>-i</param>
+	<param>'/ufs2/d' stage2/size_test</param>
+      </execute>
+      <make>
+	<param>check</param>
+      </make>
+      -->
       <make>
         <param>install</param>
       </make>
