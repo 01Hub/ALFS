@@ -89,25 +89,14 @@
 <!ENTITY gawk-package "gawk-&gawk-version;.tar.bz2">
 <!ENTITY gawk-directory "gawk-&gawk-version;">
 
-<!ENTITY gcc-version "3.4.4">
+<!ENTITY gcc-version "4.0.1">
 <!ENTITY gcc-cvs-tag "">
 <!ENTITY gcc-directory "gcc-&gcc-version;&gcc-cvs-tag;">
 
-<!ENTITY gcc-md5 "b594ff4ea4fbef4ba9220887de713dfe">
+<!ENTITY gcc-md5 "947416e825a877a0d69489be1be43be1">
 <!ENTITY gcc-package "gcc-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
-<!ENTITY gcc-core-md5 "9dd911fd9bc136ca42b73c68735d853b">
-<!ENTITY gcc-core-package "gcc-core-&gcc-version;&gcc-cvs-tag;.tar.bz2">
-
-<!ENTITY gcc-gpp-md5 "a828b7024f07cebc3bc1e55dbfd4706a">
-<!ENTITY gcc-gpp-package "gcc-g++-&gcc-version;&gcc-cvs-tag;.tar.bz2">
-  
-<!ENTITY gcc-testsuite-md5 "d95862a6266a29319152017b9de7bdde">
-<!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;&gcc-cvs-tag;.tar.bz2">
-
-<!ENTITY gcc-linkonce-patch "gcc-&gcc-version;-linkonce-1.patch">
-<!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no_fixincludes-1.patch">
-<!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-2.patch">
+<!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-1.patch">
 
 <!ENTITY gettext-md5 "0d1b95a392a326e55766ca01756132b5">
 <!ENTITY gettext-version "0.14.5">
@@ -124,6 +113,10 @@
 <!ENTITY glibc-linuxthreads-package "glibc-linuxthreads-&glibc-version;&glibc-cvs-tag;.tar.bz2">
 
 <!ENTITY glibc-fix-testsuite-patch "glibc-&glibc-version;&glibc-cvs-tag;-fix_test-1.patch">
+<!ENTITY glibc-gcc4_symbols-patch "glibc-&glibc-version;&glibc-cvs-tag;-gcc4_fix_symbols-1.patch">
+<!ENTITY glibc-gcc4_string-patch "glibc-&glibc-version;&glibc-cvs-tag;-gcc4_fix_string-1.patch">
+<!ENTITY glibc-gcc4_elf-patch "glibc-&glibc-version;&glibc-cvs-tag;-gcc4_fix_elf-1.patch">
+<!ENTITY glibc-gcc4_iconvdata-patch "glibc-&glibc-version;&glibc-cvs-tag;-gcc4_fix_iconvdata-1.patch">
 
 <!ENTITY grep-md5 "52202fe462770fa6be1bb667bd6cf30c">
 <!ENTITY grep-version "2.5.1a">
@@ -163,6 +156,7 @@
 <!ENTITY inetutils-directory "inetutils-&inetutils-version;">
 
 <!ENTITY inetutils-no-man-pages-patch "inetutils-&inetutils-version;-no_server_man_pages-1.patch">
+<!ENTITY inetutils-gcc4_fixes-patch "inetutils-&inetutils-version;-gcc4_fixes-1.patch">
 
 <!ENTITY iproute2-md5 "f455fce014fefefe26c05f9b9479440c">
 <!ENTITY iproute2-version "2.6.11">
@@ -174,6 +168,8 @@
 <!ENTITY kbd-version "1.12">
 <!ENTITY kbd-package "kbd-&kbd-version;.tar.bz2">
 <!ENTITY kbd-directory "kbd-&kbd-version;">
+
+<!ENTITY kbd-gcc4_fixes-patch "kbd-&kbd-version;-gcc4_fixes-1.patch">
 
 <!ENTITY less-md5 "421405afdaae0ad7be15449564aa4f62">
 <!ENTITY less-version "382">
@@ -305,6 +301,7 @@
 <!ENTITY tar-directory "tar-&tar-version;">
 
 <!ENTITY tar-sparse-fix-patch "tar-&tar-version;-sparse_fix-1.patch">
+<!ENTITY tar-gcc4_fix-patch "tar-&tar-version;-gcc4_fix_tests-1.patch">
 
 <!ENTITY tcl-md5 "77a18900d703ae4a055d086f75f0c247">
 <!ENTITY tcl-version "8.4.11">
