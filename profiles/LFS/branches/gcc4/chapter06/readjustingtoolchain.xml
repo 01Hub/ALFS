@@ -22,25 +22,14 @@
     <remove>&build_dir;/&binutils-directory;</remove>
     <remove>&build_dir;/binutils-build</remove>
     <stage name="Amending the GCC specs File">
-<!--      <search_replace>
-        <file>/tools/lib/gcc/&gcc_target;/&gcc-version;/specs</file>
-        <find>/tools/lib/&glibc-loader;</find>
-        <replace>/lib/&glibc-loader;</replace>
-      </search_replace>
-
-      <execute command="perl">
-        <param>-pi -e 's@\*startfile_prefix_spec:\n@$_/usr/lib/ @g;'</param>
-        <param>/tools/lib/gcc/&gcc_target;/&gcc-version;/specs</param>
-      </execute> 
--->
       <execute command="gcc">
         <param>-dumpspecs &gt; </param>
-        <param>`gcc -print-search-dirs | head -n 1 | awk '{ print $2 "specs" }'`</param>
+        <param>`dirname $(gcc -print-libgcc-file-name)`/specs</param>
       </execute>
 
       <execute command="sed">
         <param>-i -e 's@^/tools/lib/ld-linux.so.2@/lib/ld-linux.so.2@g'</param>
-        <param>`gcc -print-search-dirs | head -n 1 | awk '{ print $2 "specs" }'`</param>
+        <param>`dirname $(gcc -print-libgcc-file-name)`/specs</param>
       </execute>
 
     </stage>

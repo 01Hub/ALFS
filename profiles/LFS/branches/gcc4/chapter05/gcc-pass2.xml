@@ -26,7 +26,7 @@
           <variable name="CFLAGS" />
           <variable name="CXXFLAGS" />
         </environment>
-        <base>&build_dir;/&gcc-directory;;</base>
+        <base>&build_dir;/&gcc-directory;</base>
       </stageinfo>
       <!-- Run the following command:  expect -c "spawn ls"
 If you receive the message:
