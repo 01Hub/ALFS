@@ -186,8 +186,8 @@
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.bz2">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
-<!ENTITY libxml2-md5 "2d53bba9a4768ec57d8bf2bdadb75c87">
-<!ENTITY libxml2-version "2.6.17">
+<!ENTITY libxml2-md5 "342f722d1770071be19253f229fef677">
+<!ENTITY libxml2-version "2.6.20">
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
@@ -212,7 +212,7 @@
 <!ENTITY make-package "make-&make-version;.tar.bz2">
 <!ENTITY make-directory "make-&make-version;">
 
-<!ENTITY man-md5 "">
+<!ENTITY man-md5 "bf7229ad4f28e8eb06da1f1c8ea86763">
 <!ENTITY man-version "1.6a">
 <!ENTITY man-package "man-&man-version;.tar.bz2">
 <!ENTITY man-directory "man-&man-version;">
