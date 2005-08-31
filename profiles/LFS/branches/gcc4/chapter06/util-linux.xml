@@ -34,6 +34,11 @@
         <param>-p1</param>
         <param>-i &packages_dir;/&util-linux-cramfs-patch;</param>
       </patch>
+      <search_replace>
+       <file>MCONFIG</file>
+       <find>-O2</find>
+       <replace>-O</replace>
+      </search_replace>
       <configure />
       <make>
         <param>&jlevel;</param>

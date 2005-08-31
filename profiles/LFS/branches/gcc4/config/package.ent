@@ -156,7 +156,7 @@
 <!ENTITY inetutils-directory "inetutils-&inetutils-version;">
 
 <!ENTITY inetutils-no-man-pages-patch "inetutils-&inetutils-version;-no_server_man_pages-1.patch">
-<!ENTITY inetutils-gcc4_fixes-patch "inetutils-&inetutils-version;-gcc4_fixes-1.patch">
+<!ENTITY inetutils-gcc4_fixes-patch "inetutils-&inetutils-version;-gcc4_fixes-3.patch">
 
 <!ENTITY iproute2-md5 "f455fce014fefefe26c05f9b9479440c">
 <!ENTITY iproute2-version "2.6.11">
