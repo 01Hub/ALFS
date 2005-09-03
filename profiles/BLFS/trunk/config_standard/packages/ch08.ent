@@ -33,9 +33,9 @@
 <!ENTITY libxml-md5       "c7d1b9b1cbfcfbbc56c92f424c37d32c">
 <!ENTITY libxml-directory "libxml-&libxml-version;">
 
-<!ENTITY libxml2-version   "2.6.19">
+<!ENTITY libxml2-version   "2.6.20">
 <!ENTITY libxml2-package   "libxml2-&libxml2-version;.tar.bz2">
-<!ENTITY libxml2-md5       "ed581732d586f86324ec46e572526ede">
+<!ENTITY libxml2-md5       "342f722d1770071be19253f229fef677">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
 <!ENTITY libxslt-version   "1.1.14">

@@ -11,63 +11,64 @@
 
 ]>
 <alfs>
-  <package name="kdepim" version="&kdepim-version;">
+  <package name="kdebindings" version="&kdebindings-version;">
     <packageinfo>
       <requires>
         <name>kdebase</name>
       </requires>
       <utilizes>
-	<name>libjpeg</name>
+        <name>libjpeg</name>
       </utilizes>
       <utilizes>
         <name>libxml2</name>
       </utilizes>
       <utilizes>
-	<name>gnupg</name>
+        <name>libxslt</name>
       </utilizes>
       <utilizes>
-	<name>openssl</name>
+        <name>glib</name>
       </utilizes>
       <utilizes>
-	<name>pilot-link</name>
+        <name>gtk+</name>
       </utilizes>
       <utilizes>
-	<name>gpgme</name>
+        <name>python</name>
       </utilizes>
       <utilizes>
-	<name>libmal</name>
+        <name>ruby</name>
       </utilizes>
       <utilizes>
-	<name>gnokii</name>
+        <name>&jdk;</name>
       </utilizes>
       <utilizes>
-	<name>graphviz</name>
+	<name>mozilla</name>
       </utilizes>
       <utilizes>
-	<name>doxygen</name>
+	<name>mono</name>
+      </utilizes>
+      <utilizes>
+	<name>portable-dot-net</name>
+      </utilizes>
+      <utilizes>
+	<name>rotor</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
-        <digest>&kdepim-md5;</digest>
-	<archive>&packages_dir;/&kdepim-package;</archive>
+        <digest>&kdebindings-md5;</digest>
+	<archive>&packages_dir;/&kdebindings-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Patching">
-       <stageinfo>
-        <base>&build_dir;/&kdepim-directory;/kpilot</base>
-       </stageinfo>
-       <patch>
-        <param>-N</param>
-        <param>-p0</param>
-        <param>-i ../../&kdepim-kpilot-patch;</param>
-       </patch>
-    </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&kdepim-directory;</base>
+        <base>&build_dir;/&kdebindings-directory;</base>
       </stageinfo>
+      <search_replace base="&build_dir;/&kdebindings-directory;/python/pykde">
+	<file>configure.py</file>
+	<search>/usr</search>
+	<replace>/opt/kde-&kde-version;</replace>
+      </search_replace>
       <configure>
         <param>--prefix=&kde-prefix;</param>
         <param>--disable-debug</param>
@@ -79,7 +80,7 @@
       </make>
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&kdepim-directory;</remove>
+      <remove>&build_dir;/&kdebindings-directory;</remove>
     </stage>
   </package>
 </alfs>

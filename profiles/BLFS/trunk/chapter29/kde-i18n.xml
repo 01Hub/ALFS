@@ -11,10 +11,19 @@
 
 ]>
 <alfs>
-<package name="kde-i18n" version="&kde-i18n-version;">
+<package name="kde-i18n-&kdelang;" version="&kde-i18n-version;">
+<packageinfo>
+      <requires>
+        <name>kdebase</name>
+      </requires>
+      <utilizes>
+        <name>libxml2</name>
+      </utilizes>
+</packageinfo>
   <stage name="Unpacking.">
     <unpack>
-      <digest>&kde-i18n-md5;</digest>
+<!-- Commented,because there are now many versions of kde-i18n package
+      <digest>&kde-i18n-md5;</digest> -->
       <archive>&packages_dir;/&kde-i18n-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>
@@ -24,7 +33,7 @@
       <base>&build_dir;/&kde-i18n-directory;</base>
     </stageinfo>
     <configure>
-      <param>--prefix=/usr</param>
+      <param>--prefix=&kde-prefix;</param>
     </configure>
     <make />
     <make>

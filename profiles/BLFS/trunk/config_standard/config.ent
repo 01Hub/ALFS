@@ -101,9 +101,14 @@
 <!ENTITY mysql-root-pass "blahblah">
 
 <!-- KDE configuration -->
+<!-- Set here your language-->
+<!-- ar, bg, bn, br, bs, ca, cs, cy, da, de, el, en_GB, eo, es, et, eu, fi, fr, fy, ga, he, hi, hsb, hu, is, it,
+ja, lt, mk, nb, nds, nl, nn, pa, pl, pt, pt_BR, ro, ru, se, sk, sl, sr, sr@Latn, sv, ta, tg, tr, uk, zh_CN -->
+<!ENTITY kdelang "en_GB">
+
 <!-- KDE Install Type -->
-<!-- Set to usr or opt, also remember to change the kde-prefix
-  entity below accordingly -->
+<!-- Set kde-install to usr or opt, also remember to change the kde-prefix
+  entity below accordingly (if you set kde-install to opt set kde-prefix to /opt/kde-3.4.1)-->
 <!ENTITY kde-install "usr">
 <!ENTITY kde-prefix "/usr">
 

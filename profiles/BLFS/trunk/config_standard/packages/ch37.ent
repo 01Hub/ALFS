@@ -1,29 +1,37 @@
 <!--************* packages for chapter 37 *************-->
-<!ENTITY alsa-version "1.0.8">
+<!ENTITY alsa-version "1.0.9">
 
 <!ENTITY alsa-lib-version   "&alsa-version;">
 <!ENTITY alsa-lib-package   "alsa-lib-&alsa-lib-version;.tar.bz2">
-<!ENTITY alsa-lib-md5       "c677299ed39d069c9a4b6a999e34ffe7">
+<!ENTITY alsa-lib-md5       "114af3304619920ffe2b147b760700b9">
 <!ENTITY alsa-lib-directory "alsa-lib-&alsa-lib-version;">
 
-<!ENTITY alsa-utils-version   "&alsa-version;">
+<!ENTITY alsa-plugins-version "&alsa-version;">
+<!ENTITY alsa-plugins-package "alsa-plugins-&alsa-plugins-version;.tar.bz2">
+<!ENTITY alsa-plugins-md5     "15a3fbbea779736b6425f43bbd051a32">
+<!ENTITY alsa-plugins-directory "alsa-plugins-&alsa-plugins-version;">
+
+<!ENTITY alsa-no-jack-patch "alsa-plugins-&alsa-plugins-version;-no_jack-1.patch">
+<!ENTITY alsa-no-jack-patch-md5 "917e3f02e0ca82b3f3d1cae6d34b21b9">
+
+<!ENTITY alsa-utils-version   "&alsa-version;a">
 <!ENTITY alsa-utils-package   "alsa-utils-&alsa-utils-version;.tar.bz2">
-<!ENTITY alsa-utils-md5       "c72d0efa9c88770a10733ec2abc1a872">
+<!ENTITY alsa-utils-md5       "d4b77e9fe0311772293e402fdd634ad2">
 <!ENTITY alsa-utils-directory "alsa-utils-&alsa-utils-version;">
 
 <!ENTITY alsa-tools-version   "&alsa-version;">
 <!ENTITY alsa-tools-package   "alsa-tools-&alsa-tools-version;.tar.bz2">
-<!ENTITY alsa-tools-md5       "cf51eccd14e818a9f0be455cedcd52ff">
+<!ENTITY alsa-tools-md5       "3139b9d6c10e14acbb926f23b488e745">
 <!ENTITY alsa-tools-directory "alsa-tools-&alsa-tools-version;">
 
 <!ENTITY alsa-firmware-version   "&alsa-version;">
 <!ENTITY alsa-firmware-package   "alsa-firmware-&alsa-firmware-version;.tar.bz2">
-<!ENTITY alsa-firmware-md5       "6073fde43e0aea850ecdf64d0c2e46b2">
+<!ENTITY alsa-firmware-md5       "f7ce6a31691d6eb35fc155f306abc77b">
 <!ENTITY alsa-firmware-directory "alsa-firmware-&alsa-firmware-version;">
 
 <!ENTITY alsa-oss-version   "&alsa-version;">
 <!ENTITY alsa-oss-package   "alsa-oss-&alsa-oss-version;.tar.bz2">
-<!ENTITY alsa-oss-md5       "fb13eed47ab086d9c5acf746de34b872">
+<!ENTITY alsa-oss-md5       "3c0411e54fd2e5c6083fd3c2ac9db509">
 <!ENTITY alsa-oss-directory "alsa-oss-&alsa-oss-version;">
 
 <!ENTITY audiofile-version   "0.2.6">

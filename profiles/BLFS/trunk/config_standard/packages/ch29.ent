@@ -1,96 +1,89 @@
 <!--************* packages for chapter 29 *************-->
-<!ENTITY kde-version "3.3.2">
+<!ENTITY kde-version "3.4.1">
 
 <!ENTITY kdeadmin-version   "&kde-version;">
 <!ENTITY kdeadmin-package   "kdeadmin-&kdeadmin-version;.tar.bz2">
-<!ENTITY kdeadmin-md5       "d12b12925dda1f4e6ba162e856730a5e">
+<!ENTITY kdeadmin-md5       "ee02e3caf664d825838698b44557b0ef">
 <!ENTITY kdeadmin-directory "kdeadmin-&kdeadmin-version;">
 
 <!ENTITY kdenetwork-version   "&kde-version;">
 <!ENTITY kdenetwork-package   "kdenetwork-&kdenetwork-version;.tar.bz2">
-<!ENTITY kdenetwork-md5       "652a5703b8dc937c4009e002dc3035f3">
+<!ENTITY kdenetwork-md5       "cfdec84537bd20f032b9b27c74bc28ba">
 <!ENTITY kdenetwork-directory "kdenetwork-&kdenetwork-version;">
 
 <!ENTITY kdepim-version   "&kde-version;">
 <!ENTITY kdepim-package   "kdepim-&kdepim-version;.tar.bz2">
-<!ENTITY kdepim-md5       "73852792762c4f229e870314c51c081a">
+<!ENTITY kdepim-md5       "e5515aa230558bac8651e9cd9f8f9673">
 <!ENTITY kdepim-directory "kdepim-&kdepim-version;">
+
+<!ENTITY kdepim-kpilot-patch	 "kdepim-kpilot-fix.diff">
 
 <!ENTITY kdemultimedia-version   "&kde-version;">
 <!ENTITY kdemultimedia-package   "kdemultimedia-&kdemultimedia-version;.tar.bz2">
-<!ENTITY kdemultimedia-md5       "2f393da809542dab5bf75bf7a91d1ec0">
+<!ENTITY kdemultimedia-md5       "db69c9ab845c8295f095dc6394fba047">
 <!ENTITY kdemultimedia-directory "kdemultimedia-&kdemultimedia-version;">
 
 <!ENTITY kdegraphics-version   "&kde-version;">
 <!ENTITY kdegraphics-package   "kdegraphics-&kdegraphics-version;.tar.bz2">
-<!ENTITY kdegraphics-md5       "03092b8be2f7054d71895b8fd58ad26e">
+<!ENTITY kdegraphics-md5       "d91ef530a416bd8407abb28103bc049c">
 <!ENTITY kdegraphics-directory "kdegraphics-&kdegraphics-version;">
-
-<!ENTITY kdegraphics-patch1     "post-&kde-version;-kdegraphics.diff">
-<!ENTITY kdegraphics-patch1-md5 "0ac92868d3b84284e54877e32cde521f">
-
-<!ENTITY kdegraphics-patch2     "post-&kde-version;-kdegraphics-3.diff">
-<!ENTITY kdegraphics-patch2-md5 "fc6fc7fa6886d6ff19037e7547846990">
 
 <!ENTITY kdeutils-version   "&kde-version;">
 <!ENTITY kdeutils-package   "kdeutils-&kdeutils-version;.tar.bz2">
-<!ENTITY kdeutils-md5       "bf50db108408da11e2f2fcacd6b46b51">
+<!ENTITY kdeutils-md5       "0c3ef37a96ce9f5b0b3ee5d0b31ef4e4">
 <!ENTITY kdeutils-directory "kdeutils-&kdeutils-version;">
 
 <!ENTITY kdeedu-version   "&kde-version;">
 <!ENTITY kdeedu-package   "kdeedu-&kdeedu-version;.tar.bz2">
-<!ENTITY kdeedu-md5       "2ea54bb7aee669582eb0877d3c6f0b3d">
+<!ENTITY kdeedu-md5       "9fa1db1cf500c0fc594b0f5d291bbf69">
 <!ENTITY kdeedu-directory "kdeedu-&kdeedu-version;">
 
 <!ENTITY kdesdk-version   "&kde-version;">
 <!ENTITY kdesdk-package   "kdesdk-&kdesdk-version;.tar.bz2">
-<!ENTITY kdesdk-md5       "906bbcde1b3db2eaac8a257c8574e033">
+<!ENTITY kdesdk-md5       "b7073f0f4ac7efe4d6ff33c1ba527668">
 <!ENTITY kdesdk-directory "kdesdk-&kdesdk-version;">
 
-<!ENTITY kdesdk-db43-patch     "kdesdk-&kdesdk-version;-db43-1.patch">
-<!ENTITY kdesdk-db43-patch-md5 "954f4d51ebd60db5be0658320dfa19cc">
-
-<!ENTITY kdevelop-version   "3.1.2">
+<!ENTITY kdevelop-version   "3.2.1">
 <!ENTITY kdevelop-package   "kdevelop-&kdevelop-version;.tar.bz2">
-<!ENTITY kdevelop-md5       "706dfcf25f013c544220a0ca69b74846">
+<!ENTITY kdevelop-md5       "7a5e9f2fb8a9539a41541dba566a234a">
 <!ENTITY kdevelop-directory "kdevelop-&kdevelop-version;">
 
 <!ENTITY kdewebdev-version   "&kde-version;">
 <!ENTITY kdewebdev-package   "kdewebdev-&kdewebdev-version;.tar.bz2">
-<!ENTITY kdewebdev-md5       "582d0f3073d5829b4ab21b03411ba697">
+<!ENTITY kdewebdev-md5       "d5c9e5c72731aead950ab29a4d620af8">
 <!ENTITY kdewebdev-directory "kdewebdev-&kdewebdev-version;">
 
 <!ENTITY kdebindings-version   "&kde-version;">
 <!ENTITY kdebindings-package   "kdebindings-&kdebindings-version;.tar.bz2">
-<!ENTITY kdebindings-md5       "a8ae8e2ef4dd3680d0756adf76086d85">
+<!ENTITY kdebindings-md5       "18a4e2c42d34bb86279e691498482951">
 <!ENTITY kdebindings-directory "kdebindings-&kdebindings-version;">
 
 <!ENTITY kdeaccessibility-version   "&kde-version;">
 <!ENTITY kdeaccessibility-package   "kdeaccessibility-&kdeaccessibility-version;.tar.bz2">
-<!ENTITY kdeaccessibility-md5       "2d1fc370ce1e6a58c82d4dc283ee206d">
+<!ENTITY kdeaccessibility-md5       "a8f51420c214bbf36efa54c99e24fdd9">
 <!ENTITY kdeaccessibility-directory "kdeaccessibility-&kdeaccessibility-version;">
 
 <!ENTITY kdetoys-version   "&kde-version;">
 <!ENTITY kdetoys-package   "kdetoys-&kdetoys-version;.tar.bz2">
-<!ENTITY kdetoys-md5       "5d911f7f0034e71beb087fac3e8e68af">
+<!ENTITY kdetoys-md5       "8c9ad215fe076942bc9195eca5a9175f">
 <!ENTITY kdetoys-directory "kdetoys-&kdetoys-version;">
 
 <!ENTITY kdegames-version   "&kde-version;">
 <!ENTITY kdegames-package   "kdegames-&kdegames-version;.tar.bz2">
-<!ENTITY kdegames-md5       "41791396e595b9fc8a84e08ae63b552d">
+<!ENTITY kdegames-md5       "6af3f45a1c959324c44d4b08bd552f16">
 <!ENTITY kdegames-directory "kdegames-&kdegames-version;">
 
 <!ENTITY kdeartwork-version   "&kde-version;">
 <!ENTITY kdeartwork-package   "kdeartwork-&kdeartwork-version;.tar.bz2">
-<!ENTITY kdeartwork-md5       "9a712da253bacb87e0d4fd28cec183a1">
+<!ENTITY kdeartwork-md5       "0f58245c2fa3c58dbe139da43037a203">
 <!ENTITY kdeartwork-directory "kdeartwork-&kdeartwork-version;">
 
 <!ENTITY kdeaddons-version   "&kde-version;">
 <!ENTITY kdeaddons-package   "kdeaddons-&kdeaddons-version;.tar.bz2">
-<!ENTITY kdeaddons-md5       "d1ad11def2ac30965642144ef29d738a">
+<!ENTITY kdeaddons-md5       "596c3a7f4ef43e2f0bd760196a6b119b">
 <!ENTITY kdeaddons-directory "kdeaddons-&kdeaddons-version;">
 
 <!ENTITY kde-i18n-version   "&kde-version;">
-<!ENTITY kde-i18n-package   "kde-i18n-&kde-i18n-version;.tar.bz2">
-<!ENTITY kde-i18n-md5       "20135e722cd5f94cbe4997765941b455">
-<!ENTITY kde-i18n-directory "kde-i18n-&kde-i18n-version;">
+<!ENTITY kde-i18n-package   "kde-i18n-&kdelang;-&kde-i18n-version;.tar.bz2">
+<!ENTITY kde-i18n-md5       "">
+<!ENTITY kde-i18n-directory "kde-i18n-&kdelang;-&kde-i18n-version;">

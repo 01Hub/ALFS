@@ -55,6 +55,10 @@
       <make>
         <param>install</param>
       </make>
+      <ownership user="root" group="root">
+	<option>recursive</option>
+	<name>&kde-prefix;/kdevbdb</name>
+      </ownership>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&kdevelop-directory;</remove>

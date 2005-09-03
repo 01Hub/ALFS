@@ -14,9 +14,6 @@
   <package name="alsa-lib" version="&alsa-lib-version;">
     <packageinfo>
       <utilizes>
-        <name>jack</name>
-      </utilizes>
-      <utilizes>
         <name>doxygen</name>
       </utilizes>
     </packageinfo>

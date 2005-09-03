@@ -17,10 +17,16 @@
         <name>openldap</name>
       </utilizes>
       <utilizes>
-	<name>docbook-utils</name>
+	<name>libusb</name>
+      </utilizes>
+      <utilizes>
+	<name>curl</name>
       </utilizes>
       <utilizes>
       	<name>&mta-impl;</name>
+      </utilizes>
+      <utilizes>
+	<name>docbook-utils</name>
       </utilizes>
       <utilizes>
       	<name>docbook-to-man</name>

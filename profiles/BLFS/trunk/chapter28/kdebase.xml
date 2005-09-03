@@ -81,16 +81,6 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Patching">
-      <stageinfo>
-	<base>&build_dir;/&kdebase-directory;</base>
-      </stageinfo>
-      <patch>
-	<param>-N</param>
-	<param>-p0</param>
-	<param>-i &packages_dir;/&kdebase-htmlframes-patch;</param>
-      </patch>
-    </stage>
     <stage name="Creating group">
       <execute command="getent group nogroup &gt; /dev/null || groupadd">
       	<param>-g &nogroup-gid;</param>
