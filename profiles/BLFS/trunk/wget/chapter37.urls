@@ -1,8 +1,9 @@
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-lib-1.0.8.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-utils-1.0.8.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-tools-1.0.8.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-firmware-1.0.8.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-oss-1.0.8.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-lib-1.0.9.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-plugins-1.0.9.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-utils-1.0.9a.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-tools-1.0.9.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-firmware-1.0.9.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/alsa-oss-1.0.9.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/audiofile-0.2.6.tar.bz2
 

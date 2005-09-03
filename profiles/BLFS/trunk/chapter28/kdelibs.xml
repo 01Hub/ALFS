@@ -78,27 +78,6 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Patching">
-      <stageinfo>
-	<base>&build_dir;/&kdelibs-directory;</base>
-      </stageinfo>
-      <patch>
-	<param>-N</param>
-	<param>-p0</param>
-	<param>-i &packages_dir;/&kdelibs-htmlframes-patch;</param>
-      </patch>
-      <patch>
-	<param>-N</param>
-	<param>-p0</param>
-	<param>kio/kio/job.cpp</param>
-	<param>&packages_dir;/&kdelibs-kio-patch;</param>
-      </patch>
-      <patch>
-	<param>-N</param>
-	<param>-p0</param>
-	<param>-i &packages_dir;/&kdelibs-kioslave-patch;</param>
-      </patch>
-    </stage>
     <stage name="Installing">
       <stageinfo>
 	<base>&build_dir;/&kdelibs-directory;</base>

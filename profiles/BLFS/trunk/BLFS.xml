@@ -325,6 +325,7 @@
     </stage>
     <stage name="Chapter 37 (Multimedia Libraries and Drivers)">
       <xi:include href="chapter37/alsa-lib.xml" />
+      <xi:include href="chapter37/alsa-plugins.xml" />
       <xi:include href="chapter37/alsa-utils.xml" />
       <xi:include href="chapter37/alsa-tools.xml" />
       <xi:include href="chapter37/alsa-firmware.xml" />

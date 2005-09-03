@@ -66,21 +66,6 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Patching">
-      <stageinfo>
-	<base>&build_dir;/&kdegraphics-directory;</base>
-      </stageinfo>
-      <patch>
-	<param>-N</param>
-	<param>-p0</param>
-	<param>-i &packages_dir;/&kdegraphics-patch1;</param>
-      </patch>
-      <patch>
-	<param>-N</param>
-	<param>-p0</param>
-	<param>-i &packages_dir;/&kdegraphics-patch2;</param>
-      </patch>
-    </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&kdegraphics-directory;</base>
