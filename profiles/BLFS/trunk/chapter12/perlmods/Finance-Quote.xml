@@ -16,6 +16,9 @@
     <requires>
       <name>HTML-TableExtract</name>
     </requires>
+    <requires>
+      <name>LWP</name>
+    </requires>
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>

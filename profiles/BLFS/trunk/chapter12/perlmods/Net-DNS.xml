@@ -16,6 +16,15 @@
     <requires>
       <name>Digest-HMAC</name>
     </requires>
+    <requires>
+      <name>Net-IP</name>
+    </requires>
+    <utilizes>
+      <name>IO-Socket-INET6</name>
+    </utilizes>
+    <utilizes>
+      <name>Digest-BubbleBabble</name>
+    </utilizes>
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>

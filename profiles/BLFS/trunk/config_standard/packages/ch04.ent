@@ -2,7 +2,7 @@
 
 <!ENTITY openssl-version   "0.9.7g">
 <!ENTITY openssl-package   "openssl-&openssl-version;.tar.bz2">
-<!ENTITY openssl-md5       "8d6e5a9415941738aec30102702cb302">
+<!ENTITY openssl-md5       "b70f04b2132a9032ca5ebf855e1b16f3">
 <!ENTITY openssl-directory "openssl-&openssl-version;">
 
 <!ENTITY openssl-fix-manpages-patch "openssl-&openssl-version;-fix_manpages-1.patch">

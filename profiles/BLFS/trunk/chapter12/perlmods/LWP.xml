@@ -11,30 +11,33 @@
 
 ]>
 <alfs>
-<package name="Gtk-Perl" version="&Gtk-Perl-version;">
+<package name="LWP" version="&LWP-version;">
   <packageinfo>
     <requires>
-	<name>XML-Writer</name>
+      <name>URI</name>
     </requires>
     <requires>
-	<name>XML-Parser</name>
+      <name>HTML-Parser</name>
     </requires>
     <requires>
-	<name>gtk+</name>
+      <name>Compress-Zlib</name>
+    </requires>
+    <requires>
+      <name>Crypt-SSLeay</name>
     </requires>
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
-      <digest>&Gtk-Perl-md5;</digest>
-      <archive>&packages_dir;/&Gtk-Perl-package;</archive>
+      <digest>&LWP-md5;</digest>
+      <archive>&packages_dir;/&LWP-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>
   </stage>
   <stage name="Installing.">
     <stageinfo>
-      <base>&build_dir;/&Gtk-Perl-directory;</base>
+      <base>&build_dir;/&LWP-directory;</base>
     </stageinfo>
-    <execute command="perl Makefile.PL --without-guessing" />
+    <execute command="perl Makefile.PL" />
     <make />
     <make>
       <param>test</param>
@@ -44,7 +47,7 @@
     </make>
   </stage>
   <stage name="Cleanup.">
-    <remove>&build_dir;/&Gtk-Perl-directory;</remove>
+    <remove>&build_dir;/&LWP-directory;</remove>
   </stage>
 </package>
 </alfs>
