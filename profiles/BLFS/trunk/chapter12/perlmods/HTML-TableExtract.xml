@@ -12,6 +12,11 @@
 ]>
 <alfs>
 <package name="HTML-TableExtract" version="&HTML-TableExtract-version;">
+  <packageinfo>
+    <requires>
+      <name>HTML-Parser</name>
+    </requires>
+  </packageinfo>
   <stage name="Unpacking.">
     <unpack>
       <digest>&HTML-TableExtract-md5;</digest>

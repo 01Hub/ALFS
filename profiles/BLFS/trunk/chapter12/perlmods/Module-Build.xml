@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../../config/packages/ch12.ent">
+<!ENTITY % config_entities SYSTEM  "../../config/config.ent">
+
+%general_entities;
+%package_entities;
+%config_entities;
+
+]>
+<alfs>
+  <package name="Module-Build" version="&Module-Build-version;">
+    <packageinfo>
+      <requires>
+	<name>ExtUtils-ParseXS</name>
+      </requires>
+      <requires>
+	<name>Archive-Tar</name>
+      </requires>
+      <requires>
+	<name>YAML</name>
+      </requires>
+      <utilizes>
+	<name>Module-Signature</name>
+      </utilizes>
+    </packageinfo>
+    <stage name="Unpacking">
+      <unpack>
+      	<digest>&Module-Build-md5;</digest>
+        <archive>&packages_dir;/&Module-Build-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&Module-Build-directory;</base>
+      </stageinfo>
+      <execute command="perl Build.PL" />
+      <execute command="./Build test" />
+      <execute command="./Build install" />
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&Module-Build-directory;</remove>
+    </stage>
+  </package>
+</alfs>

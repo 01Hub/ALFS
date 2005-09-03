@@ -41,7 +41,7 @@
 	<name>guile-www</name>
       </utilizes>
       <utilizes>
-	<name>libwww-perl</name>
+	<name>LWP</name>
       </utilizes>
       <utilizes>
 	<name>HTML-Parser</name>

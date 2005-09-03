@@ -7,7 +7,7 @@
 
 <!ENTITY mysql-version   "4.1.12">
 <!ENTITY mysql-package   "mysql-&mysql-version;.tar.bz2">
-<!ENTITY mysql-md5       "a540a2444996957aac47fc588bbbcbad">
+<!ENTITY mysql-md5       "2907d6d8f41cccb7c08d559d14920195">
 <!ENTITY mysql-directory "mysql-&mysql-version;">
 
 <!ENTITY postgresql-version   "8.0.3">

@@ -11,7 +11,7 @@
 
 ]>
 <alfs>
-<package name="Perl-Tk" version="&Perl-Tk-version;">
+<package name="Tk" version="&Tk-version;">
   <packageinfo>
     <requires>
       <name>tk</name>
@@ -22,14 +22,14 @@
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
-      <digest>&Perl-Tk-md5;</digest>
-      <archive>&packages_dir;/&Perl-Tk-package;</archive>
+      <digest>&Tk-md5;</digest>
+      <archive>&packages_dir;/&Tk-package;</archive>
       <destination>&build_dir;</destination>
     </unpack>
   </stage>
   <stage name="Installing.">
     <stageinfo>
-      <base>&build_dir;/&Perl-Tk-directory;</base>
+      <base>&build_dir;/&Tk-directory;</base>
     </stageinfo>
     <execute command="perl Makefile.PL" />
     <make />
@@ -41,7 +41,7 @@
     </make>
   </stage>
   <stage name="Cleanup.">
-    <remove>&build_dir;/&Perl-Tk-directory;</remove>
+    <remove>&build_dir;/&Tk-directory;</remove>
   </stage>
 </package>
 </alfs>

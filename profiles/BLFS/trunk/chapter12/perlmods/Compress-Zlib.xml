@@ -23,6 +23,13 @@
     <stageinfo>
       <base>&build_dir;/&Compress-Zlib-directory;</base>
     </stageinfo>
+    <execute command="sed">
+      <param>-i</param>
+      <param>-e "s|BUILD_ZLIB = True|BUILD_ZLIB = False|"</param>
+      <param>-e "s|INCLUDE    = ./zlib-src|INCLUDE    = /usr/include|"</param>
+      <param>-e "s|LIB        = ./zlib-src|LIB        = /usr/lib|"</param>
+      <param>config.in</param>
+    </execute>
     <execute command="perl Makefile.PL" />
     <make />
     <make>

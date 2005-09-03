@@ -11,7 +11,7 @@
 
 ]>
 <alfs>
-<package name="DateManip" version="&DateManip-version;">
+<package name="Date-Manip" version="&DateManip-version;">
   <stage name="Unpacking.">
     <unpack>
       <digest>&DateManip-md5;</digest>

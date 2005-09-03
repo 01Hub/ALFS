@@ -19,6 +19,9 @@
     <requires>
       <name>Module-CoreList</name>
     </requires>
+    <utilizes>
+      <name>Module-Build</name>
+    </utilizes>
   </packageinfo>
   <stage name="Unpacking.">
     <unpack>
