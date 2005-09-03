@@ -11,17 +11,17 @@
 
 ]>
 <alfs>
-  <package name="Text-CVS_XS" version="&Text-CVS_XS-version;">
+  <package name="Text-CSV_XS" version="&Text-CSV_XS-version;">
     <stage name="Unpacking">
       <unpack>
-      	<digest>&Text-CVS_XS-md5;</digest>
-        <archive>&packages_dir;/&Text-CVS_XS-package;</archive>
+      	<digest>&Text-CSV_XS-md5;</digest>
+        <archive>&packages_dir;/&Text-CSV_XS-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&Text-CVS_XS-directory;</base>
+        <base>&build_dir;/&Text-CSV_XS-directory;</base>
       </stageinfo>
       <execute command="perl Makefile.PL" />
       <make />
@@ -33,7 +33,7 @@
       </make>
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&Text-CVS_XS-directory;</remove>
+      <remove>&build_dir;/&Text-CSV_XS-directory;</remove>
     </stage>
   </package>
 </alfs>
