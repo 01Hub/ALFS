@@ -33,7 +33,7 @@
       <patch>
         <param>-N</param>
         <param>-p1</param>
-        <param>-i &packages_dir;/&shadow-lastlog-patch;</param>
+        <param>-i &packages_dir;/&shadow-pam-fixes-patch;</param>
       </patch>
     </stage>
     <stage name="Installing">
@@ -108,14 +108,19 @@
       -->
       <move>
 	<option>force</option>
-	<source>/etc/login.access</source>
-	<destination>/etc/login.access.NOUSE</destination>
+	<source>login.access</source>
+	<destination>login.access.NOUSE</destination>
       </move>
       <move>
 	<option>force</option>
-	<source>/etc/limits</source>
-	<destination>/etc/limits.NOUSE</destination>
+	<source>limits</source>
+	<destination>limits.NOUSE</destination>
       </move>
+      <copy>
+	<option>force</option>
+	<source>login.defs</source>
+	<destination>login.defs.orig</destination>
+      </copy>
       <search_replace>
         <file>login.defs</file>
         <find>LASTLOG_ENAB</find>
@@ -171,6 +176,66 @@
         <find>ENVIRON_FILE</find>
         <replace>#ENVIRON_FILE</replace>
       </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>ULIMIT</find>
+        <replace>#ULIMIT</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>ENV_TZ</find>
+        <replace>#ENV_TZ</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>ENV_HZ</find>
+        <replace>#ENV_HZ</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>ENV_SUPATH</find>
+        <replace>#ENV_SUPATH</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>ENV_PATH</find>
+        <replace>#ENV_PATH</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>QMAIL_DIR</find>
+        <replace>#QMAIL_DIR</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>MAIL_DIR</find>
+        <replace>#MAIL_DIR</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>MAIL_FILE</find>
+        <replace>#MAIL_FILE</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>CHFN_AUTH</find>
+        <replace>#CHFN_AUTH</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>FAILLOG_ENAB</find>
+        <replace>#FAILLOG_ENAB</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>QUOTAS_ENAB</find>
+        <replace>#QUOTAS_ENAB</replace>
+      </search_replace>
+      <search_replace>
+        <file>login.defs</file>
+        <find>FTMP_FILE</find>
+        <replace>#FTMP_FILE</replace>
+      </search_replace>
       <!-- if you have cracklib installed uncomment the following -->
       <!--
       <search_replace>
@@ -194,6 +259,7 @@
         <replace>#PASS_ALWAYS_WARN</replace>
       </search_replace>
       -->
+      <execute command="&blfs-config;/scripts/pam-env.sh" />
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&shadow-directory;</remove>

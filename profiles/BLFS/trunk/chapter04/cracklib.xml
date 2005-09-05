@@ -24,58 +24,58 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <base>&build_dir;/&cracklib-directory;</base>
+	<base>&build_dir;/&cracklib-directory;</base>
       </stageinfo>
-      <mkdir>
-        <option>parents</option>
-        <name>/usr/share/dict</name>
-      </mkdir>
-      <permissions mode="755">
-        <name>/usr/share/dict</name>
-      </permissions>
-      <copy>
-        <source>&build_dir;/&cracklib-wordlist;</source>
-        <destination>/usr/share/dict</destination>
-      </copy>
-      <permissions mode="644">
-        <name>/usr/share/dict/&cracklib-wordlist;</name>
-      </permissions>
-      <link base="/usr/share/dict">
-        <option>force</option>
-        <target>&cracklib-wordlist;</target>
-        <name>words</name>
-      </link>
-      <execute command="echo">
-        <param>$(hostname)</param>
-        <param>&gt;&gt;</param>
-        <param>/usr/share/dict/extra.words</param>
-      </execute>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&cracklib-blfs-patch;</param>
-      </patch>
-      <copy>
-        <option>recursive</option>
-        <source>cracklib</source>
-        <destination>cracklib_krb5</destination>
-      </copy>
       <patch>
         <param>-N</param>
         <param>-p1</param>
         <param>-i &packages_dir;/&cracklib-heimdal-patch;</param>
       </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&cracklib-directory;</base>
+      </stageinfo>
+      <configure>
+	<param>--prefix=/usr</param>
+	<param>--datadir=/lib</param>
+      </configure>
       <make>
         <param>install</param>
       </make>
-      <remove>/lib/libcrack.so</remove>
+      <move>
+	<source>/usr/lib/libcrack.so.2*</source>
+	<destination>/lib</destination>
+      </move>
       <link>
 	<option>force</option>
-	<target>../../lib/libcrack.so.&cracklib-version;</target>
+	<target>../../lib/libcrack.so.2.8.0</target>
 	<name>/usr/lib/libcrack.so</name>
       </link>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/dict</name>
+      </mkdir>
+      <copy>
+	<source>&build_dir;/&cracklib-wordlist;</source>
+	<destination>/usr/share/dict</destination>
+      </copy>
+      <link>
+	<option>force</option>
+	<target>&cracklib-wordlist;</target>
+	<name>/usr/share/dict/words</name>
+      </link>
+      <execute command="echo">
+        <param>$(hostname)</param>
+        <param>&gt;&gt;</param>
+        <param>/usr/share/dict/cracklib-extra-words</param>
+      </execute>
+      <execute command="create-cracklib-dict">
+	<param>/usr/share/dict/&cracklib-wordlist;</param>
+	<param>/usr/share/dict/cracklib-extra-words</param>
+      </execute>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&cracklib-directory;</remove>

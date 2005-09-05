@@ -31,32 +31,32 @@
 	<archive>&packages_dir;/&linuxpam-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
+      <unpack>
+	<digest>&linuxpam-docs-md5;</digest>
+	<archive>&packages_dir;/&linuxpam-docs-package;</archive>
+	<destination>&build_dir;/&linuxpam-directory;/doc</destination>
+      </unpack>
     </stage>
     <stage name="Patching">
       <stageinfo>
         <base>&build_dir;/&linuxpam-directory;</base>
       </stageinfo>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&linuxpam-linkage-patch;</param>
-      </patch>
+      <execute command="sed">
+	<param>-i</param>
+	<param>'s|DICT_DIR_CANDIDATES="|&real-amp;/lib /lib/cracklib |'</param>
+	<param>configure</param>
+      </execute>
     </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&linuxpam-directory;</base>
       </stageinfo>
-      <execute command="autoconf" />
-      <search_replace>
-	<file>modules/Simple.Rules</file>
-	<find>(mandir)</find>
-	<replace>(MANDIR)</replace>
-      </search_replace>
       <configure>
         <param>--enable-static-libpam</param>
         <param>--with-mailspool=/var/mail</param>
         <param>--enable-read-both-confs</param>
         <param>--sysconfdir=/etc</param>
+	<param>--mandir=/usr/share/man</param>
       </configure>
       <make />
       <make>
@@ -105,7 +105,7 @@
         <name>/etc/pam.d</name>
       </mkdir>
       <copy>
-        <source>&blfs-config;/etc/pam.d/other</source>
+        <source>&blfs-config;/etc/pam.d/other-pam</source>
         <destination>/etc/pam.d/other</destination>
       </copy>
       <copy>
