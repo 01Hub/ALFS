@@ -1,20 +1,19 @@
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/openssl-0.9.7g.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/openssl-0.9.7g-fix_manpages-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cracklib/cracklib,2.7.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cracklib/cracklib,2.7-blfs-1.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cracklib/cracklib,2.7-heimdal-1.patch
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cracklib/allwords.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cracklib-2.8.3.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cracklib-2.8.3-heimdal-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cracklib-words.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/Linux-PAM-0.78.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/Linux-PAM-0.78-linkage-2.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/Linux-PAM-0.80.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/L/Linux-PAM-0.80-docs.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/shadow-4.0.7.tar.bz2
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/shadow-4.0.7-fix_lastlog-1.patch
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/shadow-4.0.9.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/shadow-4.0.9-Linux_PAM_fixes-1.patch
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/iptables-1.3.1.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gnupg-1.4.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gnupg-1.4.1.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/T-V/tripwire-portable-0.9.tar.bz2
 
