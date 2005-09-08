@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+<alfs>
+  <package name="glibc" version="&glibc-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&glibc-md5;</digest>
+        <archive>&packages_dir;/&glibc-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+        <digest>&glibc-linuxthreads-md5;</digest>
+        <archive>&packages_dir;/&glibc-linuxthreads-package;</archive>
+        <destination>&build_dir;/&glibc-directory;</destination>
+      </unpack>
+      <unpack>
+        <digest>&glibc-libidn-md5;</digest>
+        <archive>&packages_dir;/&glibc-libidn-package;</archive>
+        <destination>&build_dir;/&glibc-directory;</destination>
+      </unpack>
+      <mkdir base="&build_dir;">
+        <option>parents</option>
+        <name>glibc-build</name>
+      </mkdir>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+        <base>&build_dir;/&glibc-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-arc4random-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-dl_execstack-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-stack_protector-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-pax-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-ssp-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-fix-testsuite-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <environment>
+          <variable name="CFLAGS" />
+          <variable name="CXXFLAGS" />
+        </environment>
+        <base>&build_dir;/glibc-build</base>
+      </stageinfo>
+      <configure command="../&glibc-directory;/configure">
+        <prefix>env CC="gcc -fno-stack-protector -no-pie"</prefix>
+        <param>--prefix=/usr</param>
+        <param>--disable-profile</param>
+        <param>--enable-add-ons</param>
+        <param>--enable-kernel=2.6.0</param>
+        <param>--without-cvs</param>
+        <param>--libexecdir=/usr/lib/glibc</param>
+        <param>--enable-bind-now</param>
+      </configure>
+      <make>
+        <prefix>PARALLELMFLAGS=&jlevel;</prefix>
+      </make>
+      <make>
+        <param>check</param>
+      </make>
+      <execute command="touch">
+        <param>/etc/ld.so.conf</param>
+      </execute>
+      <make>
+        <param>install</param>
+      </make>
+      <execute command="rm /usr/lib/{libbsd-compat,libg,libieee,libmcheck}.a"/>
+      <execute command="rm /usr/lib/{libBrokenLocale,libanl,libcrypt}{,_g}.a"/>
+      <execute command="rm /usr/lib/{libm,libnsl,libpthread,libresolv}{,_g}.a"/>
+      <execute command="rm /usr/lib/{librt,libutil,librpcsvc}{,_g}.a"/>
+      <mkdir>
+        <option>parents</option>
+        <name>/usr/lib/locale</name>
+      </mkdir>
+      <execute command="localedef -i de_DE -f ISO-8859-1 de_DE" />
+      <execute command="localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro" />
+      <execute command="localedef -i en_HK -f ISO-8859-1 en_HK" />
+      <execute command="localedef -i en_PH -f ISO-8859-1 en_PH" />
+      <execute command="localedef -i en_US -f ISO-8859-1 en_US" />
+      <execute command="localedef -i es_MX -f ISO-8859-1 es_MX" />
+      <execute command="localedef -i fa_IR -f UTF-8 fa_IR" />
+      <execute command="localedef -i fr_FR -f ISO-8859-1 fr_FR" />
+      <execute command="localedef -i fr_FR@euro -f ISO-8859-15 fr_FR@euro" />
+      <execute command="localedef -i it_IT -f ISO-8859-1 it_IT" />
+      <execute command="localedef -i ja_JP -f EUC-JP ja_JP" />
+      <make>
+        <param>-C ../&glibc-directory;/linuxthreads/man</param>
+      </make>
+      <make>
+        <param>-C ../&glibc-directory;/linuxthreads/man</param>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Configuring">
+      <copy>
+        <source>&skeleton_dir;/etc/nsswitch.conf</source>
+        <source>&skeleton_dir;/etc/ld.so.conf</source>
+        <destination>/etc</destination>
+      </copy>
+      <copy>
+        <option>force</option>
+        <source>&localtime;</source>
+        <destination>/etc/localtime</destination>
+      </copy>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&glibc-directory;</remove>
+      <remove>&build_dir;/glibc-build</remove>
+    </stage>
+  </package>
+</alfs>

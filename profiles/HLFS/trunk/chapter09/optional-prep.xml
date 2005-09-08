@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+<alfs>
+  <stage name="Copying Sources">
+    <stageinfo>
+      <base>&orig_packages_dir;</base>
+    </stageinfo>
+    <copy>
+      <source>&libxml2-package;</source>
+      <source>&nALFS-package;</source>
+      <destination>&LFS;&packages_dir;</destination>
+    </copy>
+  </stage>
+</alfs>

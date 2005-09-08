@@ -1,0 +1,10 @@
+set +h
+umask 022
+LFS=[LFS]
+HLFS=[LFS]
+LC_ALL=POSIX
+PATH=/tools/bin:/bin:/usr/bin
+export LFS HLFS LC_ALL PATH
+target=$(uname -m)-tools-linux-gnu
+ldso=/tools/lib/ld-linux.so.2
+export target ldso

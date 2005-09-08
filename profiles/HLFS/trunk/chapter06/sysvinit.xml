@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+<alfs>
+  <package name="sysvinit" version="&sysvinit-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&sysvinit-md5;</digest>
+        <archive>&packages_dir;/&sysvinit-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&sysvinit-directory;</base>
+      </stageinfo>
+      <execute command="sed -e 's/libcrypt.a/libcrypt.so/' -i src/Makefile" base="&build_dir;/&sysvinit-directory;"/>
+      <search_replace>
+        <file>src/init.c</file>
+        <find>Sending processes</find>
+        <replace>Sending processes started by init</replace>
+      </search_replace>
+      <execute command="sed -e 's/^CFLAGS .*$/&real-amp; -pie -fpie/' -i src/Makefile" base="&build_dir;/&sysvinit-directory;"/>
+      <make>
+        <param>&jlevel;</param>
+        <param>-C src</param>
+      </make>
+      <make>
+        <param>-C src</param>
+        <param>install</param>
+      </make>
+      <copy>
+        <source>&skeleton_dir;/etc/inittab</source>
+        <destination>/etc</destination>
+      </copy>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&sysvinit-directory;</remove>
+    </stage>
+  </package>
+</alfs>

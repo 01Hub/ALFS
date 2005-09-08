@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+<alfs>
+  <package name="gcc" version="&gcc-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&gcc-md5;</digest>
+        <archive>&packages_dir;/&gcc-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <environment>
+          <variable name="CFLAGS" />
+          <variable name="CXXFLAGS" />
+        </environment>
+        <base>&build_dir;/gcc-build</base>
+      </stageinfo>
+      <mkdir base="&build_dir;">
+        <option>parents</option>
+        <name>gcc-build</name>
+      </mkdir>
+      <patch base="&build_dir;/&gcc-directory;">
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gcc-no-fixincludes-patch;</param>
+      </patch>
+      <patch base="&build_dir;/&gcc-directory;">
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gcc-linkonce-patch;</param>
+      </patch>
+      <execute command="sed -e 's/install_to_$(INSTALL_DEST) //' -i libiberty/Makefile.in" base="&build_dir;/&gcc-directory;"/>
+      <execute command="sed -e 's@gcc.gnu.org/bugs.html@bugs.linuxfromscratch.org/@' -e 's/3.4.4/3.4.4 (ssp)/' -i gcc/version.c" base="&build_dir;/&gcc-directory;"/>
+      <configure command="../&gcc-directory;/configure">
+        <param>--prefix=/usr</param>
+        <param>--host=${target}</param>
+        <param>--build=${target}</param>
+        <param>--target=${target}</param>
+        <param>--libexecdir=/usr/lib</param>
+        <param>--with-dynamic-linker=${ldso}</param>
+        <param>--enable-shared</param>
+        <param>--enable-threads=posix</param>
+        <param>--enable-__cxa_atexit</param>
+        <param>--enable-clocale=gnu</param>
+        <param>--enable-languages=c,c++</param>
+        <param>--enable-multilib=no</param>
+      </configure>
+      <make>
+        <param>&jlevel;</param>
+      </make>
+      <make>
+        <param>-k check</param>
+        <param>|| true</param>
+      </make>
+      <!-- Shows a summary of the tests ran in the above `make -k check` -->
+      <execute command="../&gcc-directory;/contrib/test_summary" />
+      <make>
+        <param>install</param>
+      </make>
+      <link>
+        <option>force</option>
+        <target>../usr/bin/cpp</target>
+        <name>/lib</name>
+      </link>
+      <link>
+        <option>force</option>
+        <target>gcc</target>
+        <name>/usr/bin/cc</name>
+      </link>
+    <execute command="/tools/bin/hardened-specs.sh"/>
+    <execute command="mv /usr/lib/libc{,_g}.a /root/"/>
+      <textdump>
+        <file>&build_dir;/&gcc-directory;/test.c</file>
+        <content>
+          =#include &#60;stdio.h&#62;
+          =#include &#60;unistd.h&#62;
+          =extern long __guard[];
+          =int overflow(char *test) {
+          =char buffer[7];
+          =sprintf(buffer, "12345678901234567890123456789012345678901234567890");
+          =return(1234);
+          =}
+          =int main(int argc, char **argv) {
+          =  printf("__guard\t=\t0x%08x;\n", __guard[0]);
+          =  overflow("test");
+          =  printf("This line should never get printed.\n");
+          =}
+        </content>
+      </textdump>
+        <execute command="gcc -o test test.c"/>
+        <execute command="&build_dir;/&gcc-directory;/test > /tools/gcc-chap6-test.txt"/>
+        <execute command="cat /tools/gcc-chap5-test.txt"/>
+        <execute command="readelf -l test{,2} | grep -e 'Shared' -e 'GNU_RELRO' -e 'PAX_FLAGS' > /tools/gcc-chap5-test2.txt"/>
+        <execute command="cat /tools/gcc-chap6-test2.txt"/>
+        </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gcc-directory;</remove>
+      <remove>&build_dir;/gcc-build</remove>
+    </stage>
+  </package>
+</alfs>

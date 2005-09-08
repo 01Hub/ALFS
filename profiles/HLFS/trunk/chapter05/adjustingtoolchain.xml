@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+<alfs>
+  <stage name="Adjusting the Toolchain">
+    <stage name="Adjusting the Linker">
+      <stageinfo>
+        <base>&build_dir;/binutils-build</base>
+      </stageinfo>
+       <execute command="install ld/ld-new /tools/bin/${target}-ld" />
+       <link>
+        <option>force</option>
+        <target>/tools/bin/${target}-ld</target>
+        <name>/tools/${target}/bin/ld</name>
+      </link>
+    </stage>
+    <remove>&build_dir;/&binutils-directory;</remove>
+    <!--  <remove>&build_dir;/binutils-build</remove> keep for a bit -->
+    <!-- Test basic functions of toolchain with:        -->
+    <execute command="echo" base="&build_dir;/">
+	<param>'main(){}' > dummy.c</param>
+	</execute>
+	<execute command="gcc" base="&build_dir;"> 
+	  <param>dummy.c</param>
+	</execute>
+	<execute command="readelf" base="&build_dir;">
+	  <param>-l a.out | grep ': /tools' > tool-test.txt</param>
+	</execute>
+<!-- Output of last line s/b: [Requesting program interpreter: /tools/lib/ld-linux.so.2]
+If so:
+        rm dummy.c a.out
+Otherwise, STOP HERE & find & fix the problem
+     -->
+  </stage>
+</alfs>

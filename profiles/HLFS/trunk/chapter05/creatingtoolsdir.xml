@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+<!ENTITY % profile_entities SYSTEM "../config/profile.ent">
+
+%general_entities;
+%package_entities;
+%profile_entities;
+]>
+<alfs>
+  <stage name="Creating the $LFS/tools Directory">
+    <mkdir>
+      <option>parents</option>
+      <name>&LFS;/tools</name>
+    </mkdir>
+    <link>
+      <option>force</option>
+      <target>&LFS;/tools</target>
+      <name>/</name>
+    </link>
+    <!-- From this point forward isn't in the book, it's only here for nALFS to use -->
+    <mkdir base="&LFS;">
+      <option>parents</option>
+      <name>&LFS;&packages_dir;</name>
+      <name>&LFS;&build_dir;</name>
+      <name>&LFS;&skeleton_dir;</name>
+    </mkdir>
+    <!--
+      If you run a kernel that supports VFS bindings (2.4 or later),
+      you can uncomment this command instead of using the <copy>.
+      Don't forget to also uncomment the unmounting command from
+      the end of the profile.
+
+      Warning: if you use the mount option, and if the execution
+      of your profile fails, be careful to unmount the package
+      directory before you delete the content the target partition!
+
+      Note: a space has been inserted between the two dashes in the
+      bind parameter to avoid the double dash being deteted as the
+      end of the comment. You need to remove it if you use this
+      command.
+    <execute command="mount">
+      <param>- -bind</param>
+      <param>&orig_packages_dir;</param>
+      <param>&LFS;&packages_dir;</param>
+    </execute>
+    -->
+    <stage name="Copying package and patch files">
+      <stageinfo>
+        <base>&orig_packages_dir;</base>
+      </stageinfo>
+      <copy>
+        <source>&autoconf-package;</source>
+        <source>&automake-package;</source>
+        <source>&bash-package;</source>
+        <source>&bash-fixes-patch;</source>
+        <source>&bash-wcontinued-patch;</source>
+        <source>&binutils-package;</source>
+        <source>&bison-package;</source>
+        <source>&bzip2-package;</source>
+        <source>&coreutils-package;</source>
+        <source>&coreutils-dupes-patch;</source>
+        <source>&coreutils-uname-patch;</source>
+        <source>&dejagnu-package;</source>
+        <source>&diffutils-package;</source>
+        <source>&e2fsprogs-package;</source>
+        <source>&expect-package;</source>
+        <source>&expect-spawn-patch;</source>
+        <source>&file-package;</source>
+        <source>&findutils-package;</source>
+        <source>&flex-package;</source>
+        <source>&flex-debian-fixes-patch;</source>
+        <source>&gawk-package;</source>
+        <source>&gcc-package;</source>
+        <!-- <source>&gcc-core-package;</source> -->
+        <!-- <source>&gcc-gpp-package;</source> -->
+        <!-- <source>&gcc-testsuite-package;</source> -->
+        <source>&gcc-linkonce-patch;</source>
+        <source>&gcc-no-fixincludes-patch;</source>
+        <source>&gcc-specs-patch;</source>
+        <source>&gettext-package;</source>
+        <source>&glibc-package;</source>
+        <source>&glibc-linuxthreads-package;</source>
+        <source>&glibc-fix-testsuite-patch;</source>
+          <source>&glibc-libidn-package;</source>
+        <source>&grep-package;</source>
+        <source>&groff-package;</source>
+        <source>&grub-package;</source>
+        <source>&gzip-package;</source>
+        <source>&gzip-security-fixes-patch;</source>
+        <source>&hotplug-package;</source>
+        <source>&iana-etc-package;</source>
+        <source>&inetutils-package;</source>
+        <source>&inetutils-no-man-pages-patch;</source>
+        <source>&inetutils-kernel-headers-patch;</source>
+        <source>&iproute2-package;</source>
+        <source>&kbd-package;</source>
+        <source>&less-package;</source>
+        <source>&lfs-bootscripts-package;</source>
+        <source>&libtool-package;</source>
+        <source>&linux-package;</source>
+        <source>&linux-libc-headers-package;</source>
+        <source>&m4-package;</source>
+        <source>&make-package;</source>
+        <source>&man-package;</source>
+        <source>&man-pages-package;</source>
+        <source>&mktemp-package;</source>
+        <source>&mktemp-tempfile-patch;</source>
+        <source>&module-init-tools-package;</source>
+        <source>&ncurses-package;</source>
+        <source>&patch-package;</source>
+        <source>&perl-package;</source>
+        <source>&perl-libc-1-patch;</source>
+        <source>&procps-package;</source>
+        <source>&psmisc-package;</source>
+        <source>&readline-package;</source>
+        <source>&readline-fixes-patch;</source>
+        <source>&sed-package;</source>
+        <source>&shadow-package;</source>
+        <source>&sysklogd-package;</source>
+        <source>&sysklogd-fixes-patch;</source>
+        <source>&sysvinit-package;</source>
+        <source>&tar-package;</source>
+        <source>&tar-sparse-fix-patch;</source>
+        <source>&tcl-package;</source>
+        <source>&texinfo-package;</source>
+        <source>&udev-package;</source>
+        <!-- eh? <source>&udev-rules-file;</source> -->
+        <source>&util-linux-package;</source>
+        <!-- eh? <source>&util-linux-cramfs-patch;</source> -->
+        <source>&vim-package;</source>
+        <source>&vim-security-patch;</source>
+        <source>&zlib-package;</source>
+        <!-- HLFS packages and patches here -->
+        <source>&blfs-bootscripts-package;</source>
+        <source>&blfs-bootscripts-patch;</source>
+        <source>&paxctl-package;</source>
+        <source>&binutils-patch;</source>
+        <source>&bzip2-patch;</source>
+        <source>&flex-cflags-fixes-patch;</source>
+        <source>&gcc-hardened-cflags-patch;</source>
+        <source>&gcc-ssp-patch;</source>
+        <source>&glibc-arc4random-patch;</source>
+        <source>&glibc-dl_execstack-patch;</source>
+        <source>&glibc-stack_protector-patch;</source>
+        <source>&glibc-pax-patch;</source>
+        <source>&glibc-ssp-patch;</source>
+        <source>&gr-security-patch;</source>
+        <source>&linux-frandom-patch;</source>
+        <source>&linux-libc-headers-random-patch;</source>
+        <source>&linux-libc-headers-unistd-patch;</source>
+        <source>&module-init-tools-nostatic-patch;</source>
+        <source>&util-linux-cflags-patch;</source>
+        <source>&util-linux-nologin-patch;</source>
+        <source>&util-linux-pic-patch;</source>
+        <destination>&LFS;&packages_dir;</destination>
+      </copy>
+    </stage>
+    <stage name="Copying skeleton configuration files">
+      <copy>
+        <option>recursive</option>
+        <source>&lfs-profile;/&skeleton;/*</source>
+        <destination>&LFS;&skeleton_dir;</destination>
+      </copy>
+    </stage>
+  </stage>
+</alfs>
