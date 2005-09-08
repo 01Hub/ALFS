@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+<alfs>
+  <package name="gcc-pass2" version="&gcc-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&gcc-md5;</digest>
+        <archive>&packages_dir;/&gcc-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <mkdir base="&build_dir;">
+        <option>parents</option>
+        <name>gcc-build</name>
+      </mkdir>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <environment>
+          <variable name="CFLAGS" />
+          <variable name="CXXFLAGS" />
+        </environment>
+        <base>&build_dir;/gcc-build</base>
+      </stageinfo>
+      <!-- Run the following command:  expect -c "spawn ls"
+If you receive the message:
+        The system has no more ptys.  Ask your system administrator to create more.
+Your host distribution is not set up for proper PTY operation. In this case there is no point in running the test
+suites for GCC and Binutils until you are able to resolve the issue.
+      -->
+      <patch base="&build_dir;/&gcc-directory;">
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gcc-ssp-patch;</param>
+      </patch>
+      <execute command="sed -e 's@gcc.gnu.org/bugs.html@bugs.linuxfromscratch.org/@' -e 's/3.4.4/3.4.4 (ssp)/' -i gcc/version.c" base="&build_dir;/&gcc-directory;"/>
+      <patch base="&build_dir;/&gcc-directory;">
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gcc-no-fixincludes-patch;</param>
+      </patch>
+      <patch base="&build_dir;/&gcc-directory;">
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&gcc-specs-patch;</param>
+      </patch>
+      <configure command="../&gcc-directory;/configure">
+        <prefix>env CC=${target}-gcc</prefix>
+        <param>--prefix=/tools</param>
+        <param>--host=${target}</param>
+        <param>--build=${target}</param>
+        <param>--target=${target}</param>
+        <param>--libexecdir=/tools/lib</param>
+        <param>--with-local-prefix=/tools</param>
+        <param>--enable-clocale=gnu</param>
+        <param>--enable-shared</param>
+        <param>--enable-threads=posix</param>
+        <param>--enable-__cxa_atexit</param>
+        <param>--enable-languages=c,c++</param>
+        <param>--disable-libstdcxx-pch</param>
+        <param>--with-dynamic-linker=${ldso}</param>
+        <param>--with-nostdinc</param>
+        <param>--enable-multilib=no</param>
+      </configure>
+      <make>
+        <param>&jlevel;</param>
+      </make>
+      <!--
+      <make>
+        <param>-k check</param>
+      </make>
+      <execute command="../&gcc-directory;/contrib/test_summary" />
+      -->
+      <make>
+        <param>install</param>
+      </make>
+      <textdump base="/tools/bin">
+        <file>hardened-specs.sh</file>
+        <content>
+          =#!/bin/sh
+          =perl -pi -e 's@\*cc1:\n@$_%(cc1_ssp) @;' (gcc --print-file specs) &real-amp;&real-amp;
+          =perl -pi -e 's@\*cc1plus:\n@$_%(cc1_ssp) @;' $(gcc --print-file specs) &real-amp;&real-amp;
+          =echo '*cc1_ssp:
+          =%{!fno-stack-protector*: -fstack-protector-all}
+          ='    >> $(gcc --print-file specs)
+          =perl -pi -e 's@\*cc1:\n@$_%(cc1_pie) @;' $(gcc --print-file specs) &real-amp;&real-amp;
+          =perl -pi -e 's@\*cc1plus:\n@$_%(cc1_pie) @;' $(gcc --print-file specs) &real-amp;&real-amp;
+          =perl -pi -e 's@%{pie:-pie}@%(link_pie)@;' $(gcc --print-file specs) &real-amp;&real-amp;
+          =perl -pi -e 's@pie:@!no-pie|pie:@g;' $(gcc --print-file specs) &real-amp;&real-amp;
+          =perl -pi -e 's@\*cpp:\n@$_%(cpp_pie) @;' $(gcc --print-file specs) &real-amp;&real-amp;
+          =echo '*cpp_pie:
+          =%{!static:%{!no-pie:%{!pie: -D__PIC__ -DPIC}}}
+          =' >> $(gcc --print-file specs) &real-amp;&real-amp;
+          =echo '*cc1_pie:
+          =%{!static:%{!no-pie:%{!pie: -fPIC}}}
+          =' >> $(gcc --print-file specs) &real-amp;&real-amp;
+          =echo '*link_pie:
+          =%{pie:-pie}%{!no-pie:%{!static:%{!Bstatic:%{!i:%{!r: %{!nonow: -z now} %{!norelro: -z relro} %{!shared:%{!Bshareable:%{!pie: -pie}}}}}}}}
+          =' >> $(gcc --print-file specs)
+        </content>
+      </textdump>
+	<execute command="chmod +x /tools/bin/hardened-specs.sh"/>
+      <execute command="/tools/bin/hardened-specs.sh"/>
+      <textdump>
+        <file>&build_dir;/&gcc-directory;/test.c</file>
+        <content>
+          =#include &#60;stdio.h&#62;
+          =#include &#60;unistd.h&#62;
+          =extern long __guard[];
+          =int overflow(char *test) {
+          =char buffer[7];
+          =sprintf(buffer, "12345678901234567890123456789012345678901234567890");
+          =return(1234);
+          =}
+          =int main(int argc, char **argv) {
+          =  printf("__guard\t=\t0x%08x;\n", __guard[0]);
+          =  overflow("test");
+          =  printf("This line should never get printed.\n");
+          =}
+          </content>
+        </textdump>
+        <execute command="gcc -o test test.c"/>
+        <execute command="&build_dir;/&gcc-directory;/test > /tools/gcc-chap5-test.txt"/>
+        <execute command="cat /tools/gcc-chap5-test.txt"/>
+        <execute command="readelf -l test{,2} | grep -e ': /tools' -e 'Shared' -e 'GNU_RELRO' -e 'PAX_FLAGS' > /tools/gcc-chap5-test2.txt"/>
+        <execute command="cat /tools/gcc-chap5-test2.txt"/>
+    </stage>
+    <stage name="Cleanup">
+      <remove></remove>
+      <remove>&build_dir;/gcc-build</remove>
+    </stage>
+  </package>
+</alfs>

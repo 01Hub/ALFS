@@ -1,0 +1,9 @@
+Remember to edit fstab and then make the kernel
+make menuconfig then [make CC="gcc -no-pie -fno-stack-protector-all"]
+make modules-install and
+install -m444 arch/i386/boot/bzImage /boot/hdb3-kernel-2.6.11.12
+install -m644 System.map /boot/hdb3-System.map-2.6.11.12
+install -m644 .config /boot/hdb3-config-2.6.11.12
+Side note if you have driver modules use [make CC="gcc -no-pie -fno-stack-protector-all"]
+as well ex. madwifi
+install grub as well

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[]>
+<alfs>
+  <stage name="Enable when bulding on a HLFS or GRSEC enabled system">
+    <execute command="sysctl -w kernel.grsecurity.chroot_caps=0"/>
+    <execute command="sysctl -w kernel.grsecurity.chroot_deny_mknod=0"/>
+    <execute command="sysctl -w kernel.grsecurity.chroot_deny_chmod=0"/>
+    <execute command="sysctl -w kernel.grsecurity.chroot_deny_chmod=0"/>
+  </stage>
+</alfs>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+<alfs>
+  <package name="inetutils" version="&inetutils-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&inetutils-md5;</digest>
+        <archive>&packages_dir;/&inetutils-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&inetutils-directory;</base>
+      </stageinfo>
+      <execute command="sed -e 's/^CFLAGS .*$/&real-amp; -pie -fpie/' -i {ftp,ping,talk,telnet,tftp}/Makefile.in" base="&build_dir;/&inetutils-directory;"/>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&inetutils-no-man-pages-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&inetutils-kernel-headers-patch;</param>
+      </patch>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--libexecdir=/usr/sbin</param>
+        <param>--sysconfdir=/etc</param>
+        <param>--localstatedir=/var</param>
+        <param>--disable-logger</param>
+        <param>--disable-syslogd</param>
+        <param>--disable-whois</param>
+        <param>--disable-servers</param>
+        <param>--disable-rlogin</param>
+        <param>--disable-rsh</param>
+        <param>--disable-rcp</param>
+      </configure>
+      <make>
+        <param>&jlevel;</param>
+      </make>
+      <make>
+        <param>install</param>
+      </make>
+      <move>
+        <source>/usr/bin/ping</source>
+        <destination>/bin</destination>
+      </move>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&inetutils-directory;</remove>
+    </stage>
+  </package>
+</alfs>

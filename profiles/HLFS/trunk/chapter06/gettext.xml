@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+<alfs>
+  <package name="gettext" version="&gettext-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&gettext-md5;</digest>
+        <archive>&packages_dir;/&gettext-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&gettext-directory;</base>
+      </stageinfo>
+      <execute command="sed -e 's/^C\(XX\)\?FLAGS .*$/&real-amp; -pie -fpie/' -i gettext-runtime/src/Makefile.in" base="&build_dir;/&gettext-directory;"/>
+      <execute command="sed -e 's/.*_CFLAGS = .*$/&real-amp; -pie -fpie/' -i gettext-tools/src/Makefile.in" base="&build_dir;/&gettext-directory;"/>
+      <configure>
+        <param>--prefix=/usr</param>
+        <param>--disable-static</param>
+      </configure>
+      <make>
+        <param>&jlevel;</param>
+      </make>
+      <!--
+      <make>
+        <param>check</param>
+      </make>
+      -->
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gettext-directory;</remove>
+    </stage>
+  </package>
+</alfs>
