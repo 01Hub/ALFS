@@ -40,7 +40,6 @@
         <source>include/linux</source>
         <destination>/tools/include</destination>
       </copy>
-	<execute command="source ~/.bash_profile &real-amp;"/>
     </stage>
   </package>
 </alfs>
