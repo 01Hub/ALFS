@@ -14,16 +14,28 @@
   <package name="bluefish" version="&bluefish-version;">
     <packageinfo>
       <requires>
-	<name>gtk+2</name>
+        <name>gtk+2</name>
       </requires>
       <requires>
-	<name>pcre</name>
+        <name>pcre</name>
       </requires>
       <utilizes>
-	<name>gnome-vfs2</name>
+        <name>gnome-vfs2</name>
       </utilizes>
       <utilizes>
-	<name>aspell</name>
+        <name>aspell</name>
+      </utilizes>
+            <utilizes>
+        <name>libgnomeui</name>
+      </utilizes>
+      <utilizes>
+        <name>gnome-mime-data</name>
+      </utilizes>
+            <utilizes>
+        <name>desktop-file-utils</name>
+      </utilizes>
+      <utilizes>
+        <name>shared-mime-info</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">

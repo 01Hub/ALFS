@@ -27,9 +27,10 @@
 <!ENTITY compface-errno-patch     "compface-&compface-version;-errno-2.patch">
 <!ENTITY compface-errno-patch-md5 "283ed8d53d77dc81045391fbac8a40f6">
 
-<!ENTITY imagemagick-version   "6.2.3-3">
+<!ENTITY imagemagick-version   "6.2.3-&imagemagick-minor;">
+<!ENTITY imagemagick-minor     "5">
 <!ENTITY imagemagick-package   "ImageMagick-&imagemagick-version;.tar.bz2">
-<!ENTITY imagemagick-md5       "39222a764f5649f16ff0c934aef8d85a">
+<!ENTITY imagemagick-md5       "599d9a01d825c138882374922c3cda96">
 <!ENTITY imagemagick-directory "ImageMagick-&imagemagick-version;">
 
 <!ENTITY hd2u-version   "1.0.0">
@@ -52,16 +53,16 @@
 <!ENTITY screen-md5       "d3af8ef797b3248d8b6b783b2604f131">
 <!ENTITY screen-directory "screen-&screen-version;">
 
-<!ENTITY tidy-version   "050531">
+<!ENTITY tidy-version   "050722">
 <!ENTITY tidy-package   "tidy_src_&tidy-version;.tar.bz2">
-<!ENTITY tidy-md5       "1ed7f34ee436bc424822dda450cf6c4e">
+<!ENTITY tidy-md5       "">
 <!ENTITY tidy-directory "tidy_src_&tidy-version;">
 
-<!ENTITY tidy-docs-version "050502">
-<!ENTITY tidy-docs     "tidy_docs_&tidy-docs-version;.tar.bz2">
-<!ENTITY tidy-docs-md5 "5ea24b0ac27deec71fffe97bbec65c94">
+<!ENTITY tidy-docs-version "050705">
+<!ENTITY tidy-docs         "tidy_docs_&tidy-docs-version;.tar.bz2">
+<!ENTITY tidy-docs-md5     "">
 
-<!ENTITY tidy-newlines-patch     "tidy-&tidy-version;-prevent_PRE_newlines-1.patch">
+<!ENTITY tidy-newlines-patch "tidy-&tidy-version;-prevent_PRE_newlines-1.patch">
 
 <!ENTITY desktop-file-utils-version   "0.10">
 <!ENTITY desktop-file-utils-package   "desktop-file-utils-&desktop-file-utils-version;.tar.bz2">

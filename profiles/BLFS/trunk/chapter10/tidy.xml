@@ -14,29 +14,32 @@
   <package name="tidy" version="&tidy-version;">
     <packageinfo>
       <utilizes>
+        <name>libxslt</name>
+      </utilizes>
+      <utilizes>
         <name>dmalloc</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <digest>&tidy-md5;</digest>
-	<archive>&packages_dir;/&tidy-package;</archive>
+        <archive>&packages_dir;/&tidy-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <unpack>
         <digest>&tidy-docs-md5;</digest>
-	<archive>&packages_dir;/&tidy-docs;</archive>
+        <archive>&packages_dir;/&tidy-docs;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Patching">
       <stageinfo>
-	<base>&build_dir;/&tidy-directory;</base>
+        <base>&build_dir;/&tidy-directory;</base>
       </stageinfo>
       <patch>
-	<param>-N</param>
-	<param>-p1</param>
-	<param>-i &packages_dir;/&tidy-newlines-patch;</param>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&tidy-newlines-patch;</param>
       </patch>
     </stage>
     <stage name="Installing">
@@ -52,22 +55,23 @@
         <param>install</param>
       </make>
       <copy>
-	<source>htmldoc/man_page.txt</source>
-	<destination>/usr/share/man/man1/tidy.1</destination>
+        <source>htmldoc/tidy.1</source>
+        <destination>/usr/share/man/man1/</destination>
       </copy>
       <mkdir>
-	<option>parents</option>
-	<name>/usr/share/doc/tidy</name>
+        <option>parents</option>
+        <permissions>755</permissions>
+        <name>/usr/share/doc/tidy</name>
       </mkdir>
       <copy>
-	<option>recursive</option>
-        <source>htmldoc</source>
+        <option>recursive</option>
+        <source>htmldoc/*</source>
         <destination>/usr/share/doc/tidy</destination>
       </copy>
       <ownership user="root" group="root">
-	<option>recursive</option>
-	<name>/usr/share/man/man1/tidy.1</name>
-	<name>/usr/share/doc/tidy</name>
+        <option>recursive</option>
+        <name>/usr/share/man/man1/tidy.1</name>
+        <name>/usr/share/doc/tidy</name>
       </ownership>
     </stage>
     <stage name="Cleanup">

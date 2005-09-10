@@ -96,12 +96,12 @@
 <!ENTITY libesmtp-md5       "c07aa79293aa36298626fe5e68d6bfba">
 <!ENTITY libesmtp-directory "libesmtp-&libesmtp-version;">
 
-<!ENTITY aspell-version   "0.60.2">
+<!ENTITY aspell-version   "0.60.3">
 <!ENTITY aspell-package   "aspell-&aspell-version;.tar.bz2">
-<!ENTITY aspell-md5       "a504d4e6447f9e857e84eab237616a85">
+<!ENTITY aspell-md5       "db7ed289e59f6a57eb36e2a9c6cbb1e7">
 <!ENTITY aspell-directory "aspell-&aspell-version;">
 
-<!--these should be customized to your language-->
+<!--these should be customized for your language-->
 <!ENTITY aspell-dict-version   "6.0-0">
 <!ENTITY aspell-dict-lang      "en">
 <!ENTITY aspell-dict-package   "aspell6-&aspell-dict-lang;-&aspell-dict-version;.tar.bz2">
@@ -126,15 +126,10 @@
 <!ENTITY g-wrap-md5       "81dd578f2a27b4f1b85b5141d1619a12">
 <!ENTITY g-wrap-directory "g-wrap-&g-wrap-version;">
 
-<!ENTITY lzo-version   "1.08">
+<!ENTITY lzo-version   "2.01">
 <!ENTITY lzo-package   "lzo-&lzo-version;.tar.bz2">
-<!ENTITY lzo-md5       "5eadda09d7fba14f1195f07b59987753">
+<!ENTITY lzo-md5       "b93e7a18234eba1eb41da9aba7ac6bad">
 <!ENTITY lzo-directory "lzo-&lzo-version;">
-
-<!ENTITY libpcap-version   "0.9.1">
-<!ENTITY libpcap-package   "libpcap-&libpcap-version;.tar.bz2">
-<!ENTITY libpcap-md5       "33a41a132497e8b1481568e3e92a765c">
-<!ENTITY libpcap-directory "libpcap-&libpcap-version;">
 
 <!ENTITY libusb-version   "0.1.10a">
 <!ENTITY libusb-package   "libusb-&libusb-version;.tar.bz2">

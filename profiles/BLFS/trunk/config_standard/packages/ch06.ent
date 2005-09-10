@@ -34,8 +34,7 @@
 <!ENTITY ed-mkstemp-patch     "ed-&ed-version;-mkstemp-1.patch">
 <!ENTITY ed-mkstemp-patch-md5 "91bd8618d8e2da3f1772475942aeef5d">
 
-<!ENTITY bluefish-version "1.0.1">
-<!ENTITY bluefish-package "bluefish-&bluefish-version;.tar.bz2">
-<!ENTITY bluefish-md5 "5ffabef54fc83f5e540e08e23e3f5671">
+<!ENTITY bluefish-version   "1.0.2">
+<!ENTITY bluefish-package   "bluefish-&bluefish-version;.tar.bz2">
+<!ENTITY bluefish-md5       "281d72f5c45c913671c36bc6b7b45445">
 <!ENTITY bluefish-directory "bluefish-&bluefish-version;">
-

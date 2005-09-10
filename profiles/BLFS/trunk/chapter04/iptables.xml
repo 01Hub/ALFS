@@ -17,10 +17,11 @@
     <stage name="Unpacking">
       <unpack>
         <digest>&iptables-md5;</digest>
-	<archive>&packages_dir;/&iptables-package;</archive>
+        <archive>&packages_dir;/&iptables-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    &bootscripts-get;
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&iptables-directory;</base>
@@ -37,16 +38,15 @@
         <param>install</param>
       </make>
     </stage>
-    <stage name="Configuring">
-      <!-- setup for personal firewall -->
-      <!-- other setups are available in the book -->
-      <copy base="&blfs-config;/etc/rc.d/init.d">
-	<source>firewall</source>
-	<source>firewall.status</source>
-	<source>firewall.stop</source>
-	<destination>/etc/rc.d/init.d</destination>
-      </copy> 
+    <stage name="Installing bootscript and configuration">
+      <stageinfo>
+        <base>&build_dir;/&blfs-bootscripts-directory;</base>
+      </stageinfo>
+      <make>
+        <param>install-iptables</param>
+      </make>
     </stage>
+    &bootscripts-clean;
     <stage name="Cleanup">
       <remove>&build_dir;/&iptables-directory;</remove>
     </stage>

@@ -28,7 +28,8 @@
       <name>openldap</name>
     </utilizes>
   </packageinfo>
-  <stage name="Unpacking.">
+<!-- MIT kerberos is more or less deprecated in BLFS 6.1 -->
+<!--  <stage name="Unpacking.">
     <unpack>
       <digest>&mitkrb-md5;</digest>
       <archive>&packages_dir;/&mitkrb-package;</archive>
@@ -110,6 +111,6 @@
   &bootscripts-clean;
   <stage name="Cleanup.">
     <remove>&build_dir;/&mitkrb-directory;</remove>
-  </stage>
+  </stage> -->
 </package>
 </alfs>
