@@ -14,13 +14,13 @@
   <package name="aspell" version="&aspell-version;">
     <packageinfo>
       <requires>
-	<name>which</name>
+        <name>which</name>
       </requires>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <digest>&aspell-md5;</digest>
-	<archive>&packages_dir;/&aspell-package;</archive>
+        <archive>&packages_dir;/&aspell-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
@@ -36,13 +36,13 @@
         <param>install</param>
       </make>
       <copy>
-	<source>scripts/ispell</source>
-	<source>scripts/spell</source>
-	<destination>/usr/bin</destination>
+        <source>scripts/ispell</source>
+        <source>scripts/spell</source>
+        <destination>/usr/bin</destination>
       </copy>
       <permissions mode="755" base="/usr/bin">
-	<name>ispell</name>
-	<name>spell</name>
+        <name>ispell</name>
+        <name>spell</name>
       </permissions>
     </stage>
     <stage name="Cleanup">
@@ -52,7 +52,7 @@
   <package name="aspell-dictionary" version="&aspell-dict-version;">
     <packageinfo>
       <requires>
-	<name>aspell</name>
+        <name>aspell</name>
       </requires>
       <requires>
         <name>which</name>
@@ -61,7 +61,7 @@
     <stage name="Unpacking">
       <unpack>
         <digest>&aspell-dict-md5;</digest>
-	<archive>&packages_dir;/&aspell-dict-package;</archive>
+        <archive>&packages_dir;/&aspell-dict-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

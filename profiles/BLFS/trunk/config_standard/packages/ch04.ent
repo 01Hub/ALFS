@@ -33,9 +33,9 @@
 
 <!ENTITY shadow-pam-fixes-patch     "shadow-&shadow-version;-Linux_PAM_fixes-1.patch">
 
-<!ENTITY iptables-version   "1.3.1">
+<!ENTITY iptables-version   "1.3.3">
 <!ENTITY iptables-package   "iptables-&iptables-version;.tar.bz2">
-<!ENTITY iptables-md5       "c3358a3bd0d7755df0b64a5063db296b">
+<!ENTITY iptables-md5       "86d88455520cfdc56fd7ae27897a80a4">
 <!ENTITY iptables-directory "iptables-&iptables-version;">
 
 <!ENTITY gnupg-version   "1.4.1">
@@ -48,20 +48,20 @@
 <!ENTITY tripwire-portable-md5       "db4d87a478afc8c88e760375039e51ba">
 <!ENTITY tripwire-portable-directory "tripwire-portable-&tripwire-portable-version;">
 
-<!ENTITY heimdal-version   "0.6.3">
+<!ENTITY heimdal-version   "0.7">
 <!ENTITY heimdal-package   "heimdal-&heimdal-version;.tar.bz2">
-<!ENTITY heimdal-md5       "95d42ec0de2ec38f43b042731e7fc883">
+<!ENTITY heimdal-md5       "b335e2cfe6482c4fe5a97f95f3af88d9">
 <!ENTITY heimdal-directory "heimdal-&heimdal-version;">
 
 <!ENTITY heimdal-fhs-patch     "heimdal-&heimdal-version;-fhs_compliance-1.patch">
-<!ENTITY heimdal-fhs-patch-md5 "f99421daa62e88f1e771fa94d81efbcb">
+<!ENTITY heimdal-fhs-patch-md5 "dfea1aaedce38460071ae2394ccf7901">
 
 <!ENTITY heimdal-cracklib-patch     "heimdal-&heimdal-version;-cracklib-1.patch">
-<!ENTITY heimdal-cracklib-patch-md5 "db2b81340555fa0d402c8c7630d89d47">
+<!ENTITY heimdal-cracklib-patch-md5 "9e55a25a6a6dc6f98886a1480309fdac">
 
-<!ENTITY mitkrb-version   "1.4">
+<!ENTITY mitkrb-version   "1.4.1">
 <!ENTITY mitkrb-package   "krb5-&mitkrb-version;.tar.bz2">
-<!ENTITY mitkrb-md5       "29d262ca94d1b202403e362be9ef691f">
+<!ENTITY mitkrb-md5       "">
 <!ENTITY mitkrb-directory "krb5-&mitkrb-version;">
 
 <!ENTITY cyrus-sasl-version   "2.1.21">
@@ -69,10 +69,7 @@
 <!ENTITY cyrus-sasl-md5       "abdbb44faf1b8288f72114c3fbdd3d49">
 <!ENTITY cyrus-sasl-directory "cyrus-sasl-&cyrus-sasl-version;">
 
-<!ENTITY stunnel-version   "4.09">
+<!ENTITY stunnel-version   "4.11">
 <!ENTITY stunnel-package   "stunnel-&stunnel-version;.tar.bz2">
-<!ENTITY stunnel-md5       "f048f58da3d49f0a6843a0b1b819d7f5">
+<!ENTITY stunnel-md5       "">
 <!ENTITY stunnel-directory "stunnel-&stunnel-version;">
-
-<!ENTITY stunnel-sleep-fix-patch "stunnel-&stunnel-version;-1_minute_sleep_fix.patch">
-

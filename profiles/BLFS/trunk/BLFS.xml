@@ -102,7 +102,6 @@
       <xi:include href="chapter08/slib.xml" />
       <xi:include href="chapter08/g-wrap.xml" />
       <xi:include href="chapter08/lzo.xml" />
-      <xi:include href="chapter08/libpcap.xml" />
       <xi:include href="chapter08/libusb.xml" />
     </stage>
     <stage name="Chapter 9 (Graphics and Font Libraries)">
@@ -185,6 +184,7 @@
       <xi:include href="chapter16/wvstreams.xml" />
       <xi:include href="chapter16/gnet.xml" />
       <xi:include href="chapter16/libsoup.xml" />
+      <xi:include href="chapter16/libpcap.xml" />
     </stage>
     <stage name="Chapter 17 (Text Web Browsers)">
       <xi:include href="chapter17/links.xml" />

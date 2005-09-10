@@ -14,7 +14,10 @@
   <package name="imlib2" version="&imlib2-version;">
     <packageinfo>
       <requires>
-        <name>&ximpl;</name>
+        <name>freetype2</name>
+      </requires>
+      <requires>
+        <name>libpng</name>
       </requires>
       <requires>
         <name>libjpeg</name>
@@ -25,11 +28,14 @@
       <utilizes>
         <name>libtiff</name>
       </utilizes>
+      <utilizes>
+        <name>&ximpl;</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <digest>&imlib2-md5;</digest>
-	<archive>&packages_dir;/&imlib2-package;</archive>
+        <archive>&packages_dir;/&imlib2-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
@@ -45,13 +51,14 @@
         <param>install</param>
       </make>
       <mkdir>
-	<option>parents</option>
-	<name>/usr/share/doc/imlib2-&imlib2-version;</name>
+        <option>parents</option>
+        <permissions>755</permissions>
+        <name>/usr/share/doc/imlib2-&imlib2-version;</name>
       </mkdir>
       <copy>
-	<source>doc/*.gif</source>
-	<source>doc/index.html</source>
-	<destination>/usr/share/doc/imlib2-&imlib2-version;</destination>
+        <source>doc/*.gif</source>
+        <source>doc/index.html</source>
+        <destination>/usr/share/doc/imlib2-&imlib2-version;</destination>
       </copy>
     </stage>
     <stage name="Cleanup">

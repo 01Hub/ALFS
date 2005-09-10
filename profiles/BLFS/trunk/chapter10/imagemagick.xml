@@ -56,70 +56,70 @@
         <name>enscript</name>
       </utilizes>
       <utilizes>
+        <name>libexif</name>
+      </utilizes>
+      <utilizes>
         <name>graphviz</name>
       </utilizes>
       <utilizes>
         <name>flashpix</name>
       </utilizes>
       <utilizes>
-	<name>jasper</name>
+        <name>jasper</name>
       </utilizes>
       <utilizes>
-	<name>jbig-kit</name>
+        <name>jbig-kit</name>
       </utilizes>
       <utilizes>
-	<name>libwmf</name>
+        <name>libwmf</name>
       </utilizes>
       <utilizes>
-	<name>autotrace</name>
+        <name>autotrace</name>
       </utilizes>
       <utilizes>
-	<name>ralcgm</name>
+        <name>ralcgm</name>
       </utilizes>
       <utilizes>
-	<name>dcraw</name>
+        <name>dcraw</name>
       </utilizes>
       <utilizes>
-	<name>transfig</name>
+        <name>transfig</name>
       </utilizes>
       <utilizes>
-	<name>gnuplot</name>
+        <name>gnuplot</name>
       </utilizes>
       <utilizes>
-	<name>hp2xx</name>
+        <name>hp2xx</name>
       </utilizes>
       <utilizes>
-	<name>html2ps</name>
+        <name>html2ps</name>
       </utilizes>
       <utilizes>
-	<name>netpbm</name>
+        <name>netpbm</name>
       </utilizes>
       <utilizes>
-	<name>mpeg2-codec</name>
+        <name>mpeg2-codec</name>
       </utilizes>
       <utilizes>
-	<name>pov-ray</name>
+        <name>pov-ray</name>
       </utilizes>
       <utilizes>
-	<name>utah-raster-toolkit</name>
+        <name>utah-raster-toolkit</name>
       </utilizes>
       <utilizes>
-	<name>txt2html</name>
+        <name>txt2html</name>
       </utilizes>
       <utilizes>
-	<name>libexif</name>
+        <name>radiance</name>
       </utilizes>
       <utilizes>
-	<name>radiance</name>
+        <name>corefonts</name>
       </utilizes>
       <utilizes>
-	<name>corefonts</name>
+        <name>electric-fence</name>
       </utilizes>
       <utilizes>
-	<name>electric-fence</name>
-      </utilizes>
-      <utilizes>
-	<name>dmalloc</name>
+        <name>dmalloc</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
