@@ -12,12 +12,30 @@
 ]>
 <alfs>
   <package name="nasm" version="&nasm-version;">
+    <packageinfo>
+      <utilizes>
+	<name>tex</name>
+      </utilizes>
+      <utilizes>
+	<name>&ghostscript-impl;</name>
+      </utilizes>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <digest>&nasm-md5;</digest>
 	<archive>&packages_dir;/&nasm-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&nasm-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&nasm-security-fix-patch;</param>
+      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>
@@ -28,8 +46,59 @@
       </configure>
       <make />
       <make>
+	<param>-C rdoff/doc</param>
+      </make>
+      <make>
+	<param>-C rdoff/doc html</param>
+      </make>
+      <!-- To build the following documentation you should have Tex and Ghostscript installed -->
+      <!--
+      <make>
+	<param>doc</param>
+      </make>
+      <execute command="sed">
+	<param>-i</param>
+	<param>-e "s/dvips \$</& -o rdoff.ps/"</param>
+	<param>rdoff/doc/Makefile</param>
+      </execute>
+      <make>
+	<param>-C rdoff/doc ps</param>
+      </make>
+      -->
+      <make>
         <param>install</param>
       </make>
+      <make>
+	<param>install_rdf</param>
+      </make>
+      <copy>
+	<source>rdoff/doc/rdoff.info</source>
+	<destination>/usr/share/info</destination>
+      </copy>
+      <mkdir>
+	<option>parents</option>
+	<name>/usr/share/doc/nasm/html</name>
+      </mkdir>
+      <copy>
+	<source>rdoff/doc/v1-v2.txt</source>
+	<destination>/usr/share/doc/nasm</destination>
+      </copy>
+      <copy>
+	<option>recursive</option>
+	<source>rdoff/doc/rdoff</source>
+	<destination>/usr/share/doc/nasm/html</destination>
+      </copy>
+      <!-- Install optional documentation above -->
+      <!--
+      <make>
+	<param>install_doc</param>
+      </make>
+      <copy>
+	<source>rdoff/doc/rdoff.pdf</source>
+	<source>rdoff/doc/rdoff.ps</source>
+	<destination>/usr/share/doc/nasm</destination>
+      </copy>
+    -->
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&nasm-directory;</remove>

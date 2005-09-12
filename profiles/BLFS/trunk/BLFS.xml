@@ -58,7 +58,9 @@
       <xi:include href="chapter04/gnupg.xml" />
       <xi:include href="chapter04/tripwire.xml" />
       <xi:include href="chapter04/heimdal.xml" />
-      <xi:include href="chapter04/mitkrb.xml" />
+      <!-- MIT kerberos is more or less deprecated in BLFS 6.1 -->
+      <!-- If you wish to build MIT krb uncomment the following xinclude -->
+      <!-- <xi:include href="chapter04/mitkrb.xml" /> -->
       <xi:include href="chapter04/cyrus-sasl.xml"/>
       <xi:include href="chapter04/stunnel.xml" />
     </stage>

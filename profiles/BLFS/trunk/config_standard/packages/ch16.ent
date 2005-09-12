@@ -23,7 +23,7 @@
 <!ENTITY libsoup-md5       "2591f32e036a5869f7e2bd0d95e6f14b">
 <!ENTITY libsoup-directory "libsoup-&libsoup-version;">
 
-<!ENTITY libpcap-version   "0.9.1">
+<!ENTITY libpcap-version   "0.9.3">
 <!ENTITY libpcap-package   "libpcap-&libpcap-version;.tar.bz2">
-<!ENTITY libpcap-md5       "33a41a132497e8b1481568e3e92a765c">
+<!ENTITY libpcap-md5       "">
 <!ENTITY libpcap-directory "libpcap-&libpcap-version;">

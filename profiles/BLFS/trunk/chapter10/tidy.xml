@@ -60,7 +60,6 @@
       </copy>
       <mkdir>
         <option>parents</option>
-        <permissions>755</permissions>
         <name>/usr/share/doc/tidy</name>
       </mkdir>
       <copy>
