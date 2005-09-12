@@ -11,23 +11,18 @@
 
 ]>
 <alfs>
-  <package name="pkgconfig" version="&pkgconfig-version;">
+  <package name="pkg-config" version="&pkg-config-version;">
     <stage name="Unpacking">
       <unpack>
-        <digest>&pkgconfig-md5;</digest>
-	<archive>&packages_dir;/&pkgconfig-package;</archive>
+        <digest>&pkg-config-md5;</digest>
+	<archive>&packages_dir;/&pkg-config-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&pkgconfig-directory;</base>
+        <base>&build_dir;/&pkg-config-directory;</base>
       </stageinfo>
-      <execute command="sed">
-	<param>-i</param>
-	<param>'s:pkg_failed=yes]):&amp;\nelse:'</param>
-	<param>pkg.m4</param>
-      </execute>
       <configure>
         <param>--prefix=/usr</param>
       </configure>
@@ -37,7 +32,7 @@
       </make>
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&pkgconfig-directory;</remove>
+      <remove>&build_dir;/&pkg-config-directory;</remove>
     </stage>
   </package>
 </alfs>

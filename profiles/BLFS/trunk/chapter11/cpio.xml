@@ -19,15 +19,25 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <base>&build_dir;/&cpio-directory;</base>
+	<base>&build_dir;/&cpio-directory;</base>
       </stageinfo>
       <search_replace>
       	<file>src/mt.c</file>
 	<find>invalid_arg</find>
 	<replace>argmatch_invalid</replace>
       </search_replace>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&cpio-security-fixes-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&cpio-directory;</base>
+      </stageinfo>
       <configure>
 	<param>CPIO_MT_PROG=mt</param>
         <param>--prefix=/usr</param>
@@ -38,7 +48,8 @@
       <textdump mode="append">
       	<file>config.h</file>
 	<content>
-	  =#define HAVE_SETLOCALE 1"
+	  =#define HAVE_SETLOCALE 1
+	  =#define HAVE_LSTAT 1
 	</content>
       </textdump>
       <make />

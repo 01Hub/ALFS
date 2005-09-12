@@ -11,6 +11,8 @@
 %config_entities;
 %files;
 
+<!ENTITY bootscripts-get SYSTEM "../config/bootscripts_get.ent">
+<!ENTITY bootscripts-clean SYSTEM "../config/bootscripts_clean.ent">
 ]>
 <alfs>
   <package name="iptables" version="&iptables-version;">
@@ -45,6 +47,10 @@
       <make>
         <param>install-iptables</param>
       </make>
+      <copy base="&blfs-config;/etc/rc.d">
+	<source>rc.iptables</source>
+	<destination>/etc/rc.d</destination>
+      </copy>
     </stage>
     &bootscripts-clean;
     <stage name="Cleanup">

@@ -41,7 +41,6 @@
       </make>
       <mkdir>
         <option>parents</option>
-        <permissions>755</permissions>
         <name>/usr/share/doc/lzo-&lzo-version;</name>
       </mkdir>
       <copy>

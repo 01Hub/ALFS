@@ -11,9 +11,9 @@
 <!ENTITY gpm-silent-patch     "gpm-&gpm-version;-silent-1.patch">
 <!ENTITY gpm-silent-patch-md5 "c61004de4a3c68dfbe3c963f0e00f647">
 
-<!ENTITY fcron-version   "2.9.6">
+<!ENTITY fcron-version   "2.9.7">
 <!ENTITY fcron-package   "fcron-&fcron-version;.src.tar.bz2">
-<!ENTITY fcron-md5       "a978d506591c7ea0248a0638a13ce066">
+<!ENTITY fcron-md5       "d69899cf69bd3be69274f4b9196b5bae">
 <!ENTITY fcron-directory "fcron-&fcron-version;">
 
 <!ENTITY hdparm-version   "6.1">
@@ -45,19 +45,22 @@
 <!ENTITY pciutils-md5       "2b3b2147b7bc91f362be55cb49fa1c4e">
 <!ENTITY pciutils-directory "pciutils-&pciutils-version;">
 
-<!ENTITY pkgconfig-version   "0.18">
-<!ENTITY pkgconfig-package   "pkgconfig-&pkgconfig-version;.tar.bz2">
-<!ENTITY pkgconfig-md5       "cae72bbadff5cd9fe1d085cf8b7c3e6e">
-<!ENTITY pkgconfig-directory "pkgconfig-&pkgconfig-version;">
+<!ENTITY pkg-config-version   "0.19">
+<!ENTITY pkg-config-package   "pkg-config-&pkg-config-version;.tar.bz2">
+<!ENTITY pkg-config-md5       "9c07b9b9a0775dbf2fb999748cfc0793">
+<!ENTITY pkg-config-directory "pkg-config-&pkg-config-version;">
 
 <!ENTITY cpio-version   "2.6">
 <!ENTITY cpio-package   "cpio-&cpio-version;.tar.bz2">
 <!ENTITY cpio-md5       "25e0e8725bc60ed3460c9cde92752674">
 <!ENTITY cpio-directory "cpio-&cpio-version;">
 
-<!ENTITY mc-version   "4.6.0">
+<!ENTITY cpio-security-fixes-patch "cpio-&cpio-version;-security_fixes-1.patch">
+<!ENTITY cpio-security-fixes-patch-md5 "6197bfacc0e89b278fb796efcb297be7">
+
+<!ENTITY mc-version   "4.6.1">
 <!ENTITY mc-package   "mc-&mc-version;.tar.bz2">
-<!ENTITY mc-md5       "15160c5464c752dfe0c906b877e1cc6f">
+<!ENTITY mc-md5       "3dcd33aab0d29d22d7ed7a79dd5ee9b8">
 <!ENTITY mc-directory "mc-&mc-version;">
 
 <!ENTITY sysstat-version   "6.0.0">

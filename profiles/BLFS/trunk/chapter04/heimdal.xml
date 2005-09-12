@@ -85,18 +85,18 @@
       <param>install</param>
     </make>
     <mkdir>
-      <name>/usr/share/doc/heimdal-&heimdal-version;/standardisation</make>
-      <permissions>755</permissions>
+      <option>parents</option>
+      <name>/usr/share/doc/heimdal-&heimdal-version;/standardisation</name>
     </mkdir>
-    <move>
+    <copy>
       <source>doc/init-creds</source>
       <source>doc/layman.asc</source>
       <destination>/usr/share/doc/heimdal-&heimdal-version;</destination>
-    </move>
-    <move>
+    </copy>
+    <copy>
       <source>doc/standardisation/*</source>
       <destination>/usr/share/doc/heimdal-&heimdal-version;/standardisation</destination>
-    </move>
+    </copy>
     <move base="/bin">
       <source>login</source>
       <destination>login.shadow</destination>
@@ -116,33 +116,36 @@
       <name>/usr/bin</name>
     </link>
     <move base="/usr/lib">
-      <source>libotp.so.0*</source>
-      <source>libkafs.so.0*</source>
-      <source>libkrb5.so.17*</source>
-      <source>libasn1.so.6*</source>
-      <source>libroken.so.16*</source>
-      <source>libcrypto.so.0*</source>
+      <source>libotp.so.*</source>
+      <source>libkafs.so.*</source>
+      <source>libkrb5.so.*</source>
+      <source>libasn1.so.*</source>
+      <source>libroken.so.*</source>
+      <source>libcrypto.so.*</source>
       <source>libdb-4.3.so</source>
       <destination>/lib</destination>
     </move>
     <link>
       <option>force</option>
-      <target>../../lib/libotp.so.0</target>
-      <target>../../lib/libotp.so.0.1.4</target>
-      <target>../../lib/libkafs.so.0</target>
-      <target>../../lib/libkafs.so.0.4.0</target>
-      <target>../../lib/libkrb5.so.17</target>
-      <target>../../lib/libkrb5.so.17.3.0</target>
-      <target>../../lib/libasn1.so.6</target>
-      <target>../../lib/libasn1.so.6.0.2</target>
-      <target>../../lib/libroken.so.16</target>
-      <target>../../lib/libroken.so.16.0.3</target>
-      <target>../../lib/libcrypto.so.0</target>
-      <target>../../lib/libcrypto.so.0.9.7</target>
+      <target>../../lib/libdb-4.3.so</target>
+      <name>/usr/lib/libdb.so</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>../../lib/libdb-4.3.so</target>
+      <name>/usr/lib/libdb-4.so</name>
+    </link>
+    <link>
+      <option>force</option>
+      <target>../../lib/libotp.so</target>
+      <target>../../lib/libkafs.so</target>
+      <target>../../lib/libkrb5.so</target>
+      <target>../../lib/libasn1.so</target>
+      <target>../../lib/libroken.so</target>
+      <target>../../lib/libcrypto.so</target>
       <target>../../lib/libdb-4.3.so</target>
       <name>/usr/lib</name>
     </link>
-    <execute command="for SYMLINK in otp.so.0.1.3 kafs.so.0.4.1 krb5.so.17.4.0 asn1.so.6.1.0 roken.so.16.1.0 crypto.so.0.9.7 do ln -v -sf ../../lib/lib$SYMLINK /usr/lib/lib`echo $SYMLINK | cut -d. -f1`.so done"/>
     &ldconfig;
   </stage>
   <stage name="Installing bootscript and configuration">

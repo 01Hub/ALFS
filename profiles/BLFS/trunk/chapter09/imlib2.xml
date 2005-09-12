@@ -52,7 +52,6 @@
       </make>
       <mkdir>
         <option>parents</option>
-        <permissions>755</permissions>
         <name>/usr/share/doc/imlib2-&imlib2-version;</name>
       </mkdir>
       <copy>

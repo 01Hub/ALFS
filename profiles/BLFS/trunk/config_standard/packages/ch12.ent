@@ -247,6 +247,9 @@
 <!ENTITY ruby-md5       "0ff532e9214aee516e54712fe3406372">
 <!ENTITY ruby-directory "ruby-&ruby-version;">
 
+<!ENTITY ruby-xmlrpc-fix-patch "ruby-&ruby-version;-xmlrpc-ipimethods-fix.diff">
+<!ENTITY ruby-xmlrpc-fix-patch-md5 "d1fd7f979894cfe7da89ec38992788eb">
+
 <!ENTITY tcl-major-minor "8.4">
 <!ENTITY tcl-version     "&tcl-major-minor;.11">
 <!ENTITY tcl-package     "tcl&tcl-version;-src.tar.bz2">
@@ -297,6 +300,9 @@
 <!ENTITY nasm-package   "nasm-&nasm-version;.tar.bz2">
 <!ENTITY nasm-md5       "2032ad44c7359f7a9a166a40a633e772">
 <!ENTITY nasm-directory "nasm-&nasm-version;">
+
+<!ENTITY nasm-security-fix-patch "nasm-&nasm-version;-security_fix-1.patch">
+<!ENTITY nasm-security-fix-md5 "3aec1fe44a15c0fa0f238ebacfd6b7a9">
 
 <!ENTITY doxygen-version   "1.4.3">
 <!ENTITY doxygen-package   "doxygen-&doxygen-version;.src.tar.bz2">

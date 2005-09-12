@@ -2,7 +2,7 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gpm-1.20.1.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gpm-1.20.1-segfault-1.patch
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/gpm-1.20.1-silent-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/fcron-2.9.6.src.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/fcron-2.9.7.src.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/F-H/hdparm-6.1.tar.bz2
 
@@ -17,11 +17,12 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/W-Z/zip231.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/pciutils-2.1.11.tar.bz2
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/pkgconfig-0.17.2.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/pkg-config-0.19.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/A-C/cpio-2.6.tar.bz2
+http://www.linuxfromscratch.org/blfs/downloads/6.1/cpio-2.6-security_fixes-1.patch
 
-ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/mc-4.6.0.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/mc-4.6.1.tar.bz2
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/Q-S/sysstat-6.0.0.tar.bz2
 
