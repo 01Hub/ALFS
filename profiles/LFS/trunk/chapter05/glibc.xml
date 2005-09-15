@@ -29,6 +29,31 @@
 	<param>-p1</param>
 	<param>-i &packages_dir;/&glibc-fix-testsuite-patch;</param>
       </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-gcc4_symbols-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-gcc4_string-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-gcc4_elf-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-gcc4_iconvdata-patch;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&glibc-gcc4_mathtest-patch;</param>
+      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>
@@ -53,7 +78,7 @@
       </make>
       <make>
         <param>check</param>
-      </make>
+      </make>   
       <mkdir>
         <name>/tools/etc</name>
       </mkdir>
@@ -67,11 +92,11 @@
         <option>parents</option>
         <name>/tools/lib/locale</name>
       </mkdir>
-      <!--
+<!--
       <make>
         <param>localedata/install-locales</param>
       </make>
-      -->
+-->
       <execute command="localedef -i de_DE -f ISO-8859-1 de_DE" />
       <execute command="localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro" />
       <execute command="localedef -i en_HK -f ISO-8859-1 en_HK" />

@@ -34,6 +34,31 @@
 	<param>-p1</param>
 	<param>-i &packages_dir;/&glibc-fix-testsuite-patch;</param>
       </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-gcc4_symbols-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-gcc4_string-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-gcc4_elf-patch;</param>
+      </patch>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&glibc-gcc4_iconvdata-patch;</param>
+      </patch>
+      <patch>
+      	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&glibc-gcc4_mathtest-patch;</param>
+      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>
@@ -54,7 +79,7 @@
         <prefix>PARALLELMFLAGS=&jlevel;</prefix>
       </make>
       <make>
-        <param>check</param>
+      	<param>check</param>
       </make>
       <execute command="touch">
         <param>/etc/ld.so.conf</param>
@@ -77,6 +102,11 @@
       <execute command="localedef -i fr_FR@euro -f ISO-8859-15 fr_FR@euro" />
       <execute command="localedef -i it_IT -f ISO-8859-1 it_IT" />
       <execute command="localedef -i ja_JP -f EUC-JP ja_JP" />
+<!--      
+      <make>
+       <param>localedata/install-locales</param>
+      </make>
+-->
       <make>
         <param>-C ../&glibc-directory;/linuxthreads/man</param>
       </make>
