@@ -74,12 +74,14 @@
     <configure>
       <param>--prefix=/usr</param>
       <param>--sysconfdir=/etc</param>
+      <param>--localstatedir=/var/lib</param>
+      <!-- uncomment if you don't have tcpwrappers installed -->
+      <!-- <param>- -disable-libwrap</param> --> 
     </configure>
-    <make>
-      <param>&lt; stunnel_answers</param>
-    </make>
+    <make />
     <make>
       <param>install</param>
+      <param>&lt; stunnel_answers</param>
     </make>
   </stage>
   <stage name="Installing bootscript and configuration">

@@ -43,11 +43,6 @@
         <param>--prefix=/usr</param>
         <param>shared</param>
       </configure>
-      <search_replace>
-	<file>Makefile</file>
-	<find>SHLIBDIRS= fips crypto ssl</find>
-	<replace>SHLIBDIRS= crypto ssl</replace>
-      </search_replace>
       <make>
         <param>MANDIR=/usr/share/man</param>
       </make>

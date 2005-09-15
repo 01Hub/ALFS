@@ -259,7 +259,7 @@
         <replace>#PASS_ALWAYS_WARN</replace>
       </search_replace>
       -->
-      <execute command="&blfs-config;/scripts/pam-env.sh" />
+      <execute command="sh &blfs-config;/scripts/pam-env.sh" />
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&shadow-directory;</remove>
