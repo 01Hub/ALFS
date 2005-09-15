@@ -16,6 +16,21 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&util-linux-directory;</base>
+      </stageinfo>
+      <patch>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&util-linux-cramfs-patch;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&util-linux-reiser-crash-patch;</param>
+      </patch>
+    </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&util-linux-directory;</base>
@@ -29,11 +44,7 @@
         <option>parents</option>
         <name>/var/lib/hwclock</name>
       </mkdir>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&util-linux-cramfs-patch;</param>
-      </patch>
+      
       <configure />
       <make>
         <param>&jlevel;</param>

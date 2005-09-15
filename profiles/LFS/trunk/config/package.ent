@@ -72,8 +72,8 @@
 <!ENTITY file-package "file-&file-version;.tar.bz2">
 <!ENTITY file-directory "file-&file-version;">
 
-<!ENTITY findutils-md5 "e455be17179976af5f292251e911f213">
-<!ENTITY findutils-version "4.2.23">
+<!ENTITY findutils-md5 "0af0d388082997b6a010593ec17f7446">
+<!ENTITY findutils-version "4.2.25">
 <!ENTITY findutils-package "findutils-&findutils-version;.tar.bz2">
 <!ENTITY findutils-directory "findutils-&findutils-version;">
 
@@ -130,8 +130,8 @@
 <!ENTITY grep-package "grep-&grep-version;.tar.bz2">
 <!ENTITY grep-directory "grep-&grep-version;">
 
-<!ENTITY groff-md5 "88239a9aa668235ac82c34bcdfc4e83a">
-<!ENTITY groff-version "1.19.1">
+<!ENTITY groff-md5 "b527fc9e489ef2d5eddfbea4304fe379">
+<!ENTITY groff-version "1.19.2">
 <!ENTITY groff-package "groff-&groff-version;.tar.bz2">
 <!ENTITY groff-directory "groff-&groff-version;">
 
@@ -185,8 +185,8 @@
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
-<!ENTITY libtool-md5 "703d55f1778a18f0b3840c2af323f0d8">
-<!ENTITY libtool-version "1.5.18">
+<!ENTITY libtool-md5 "2bb5d7d77b0e555c5ab22ef08a4d3f9f">
+<!ENTITY libtool-version "1.5.20">
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.bz2">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
@@ -282,8 +282,8 @@
 <!ENTITY sed-package "sed-&sed-version;.tar.bz2">
 <!ENTITY sed-directory "sed-&sed-version;">
 
-<!ENTITY shadow-md5 "e60b7b16128b9e00576073389a0ff1e6">
-<!ENTITY shadow-version "4.0.11.1">
+<!ENTITY shadow-md5 "c8111d2ceb1d97ad4336bd10ddf58cb4">
+<!ENTITY shadow-version "4.0.12">
 <!ENTITY shadow-package "shadow-&shadow-version;.tar.bz2">
 <!ENTITY shadow-directory "shadow-&shadow-version;">
 
@@ -330,6 +330,7 @@
 <!ENTITY util-linux-directory "util-linux-&util-linux-version;">
 
 <!ENTITY util-linux-cramfs-patch "util-linux-&util-linux-version;-cramfs-1.patch">
+<!ENTITY util-linux-reiser-crash-patch "util-linux-&util-linux-version;-reiser_crash-2.patch">
 
 <!ENTITY vim-md5 "821fda8f14d674346b87e3ef9cb96389">
 <!ENTITY vim-version "6.3">
