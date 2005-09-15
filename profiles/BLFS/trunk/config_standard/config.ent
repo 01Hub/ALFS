@@ -5,10 +5,10 @@
 <!ENTITY build_dir "/usr/src/build">
 
 <!-- Your kernel version -->
-<!ENTITY kernel-version "2.6.8.1">
+<!ENTITY kernel-version "2.6.11.12">
 
 <!-- Your kernel directory -->
-<!ENTITY kernel-directory "/usr/src/linux-2.6.8.1">
+<!ENTITY kernel-directory "/usr/src/linux-2.6.11.12">
 
 <!-- Network device -->
 <!ENTITY network-interface "eth0">

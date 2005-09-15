@@ -49,7 +49,7 @@
       <base>&build_dir;/&autofs-directory;</base>
     </stageinfo>
     <configure>
-      <param>--prefix=/usr</param>
+      <param>--prefix=/</param>
       <param>--mandir=/usr/share/man</param>
     </configure>
     <make />

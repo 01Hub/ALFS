@@ -1,9 +1,9 @@
 <!ENTITY real-amp "&#38;#38;">
 
-<!ENTITY blfs-version "SVN-r4742">
+<!ENTITY blfs-version "6.1">
 
 <!ENTITY ldconfig "<execute command='/sbin/ldconfig' />">
 
-<!ENTITY blfs-bootscripts-version "20050531">
+<!ENTITY blfs-bootscripts-version "6.1">
 <!ENTITY blfs-bootscripts-package "blfs-bootscripts-&blfs-bootscripts-version;.tar.bz2">
 <!ENTITY blfs-bootscripts-directory "blfs-bootscripts-&blfs-bootscripts-version;">
