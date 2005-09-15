@@ -34,10 +34,6 @@
       <make>
         <param>install</param>
       </make>
-      <ownership user="root" group="root">
-	<option>recursive</option>
-	<name>/usr/share/libtool/libltdl</name>
-      </ownership>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libtool-directory;</remove>
