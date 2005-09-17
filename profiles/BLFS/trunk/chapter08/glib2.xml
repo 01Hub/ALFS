@@ -14,7 +14,7 @@
   <package name="glib2" version="&glib2-version;">
     <packageinfo>
       <requires>
-        <name>pkgconfig</name>
+        <name>pkg-config</name>
       </requires>
       <utilizes>
         <name>gtk-doc</name>
