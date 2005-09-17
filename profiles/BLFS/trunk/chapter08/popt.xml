@@ -48,6 +48,7 @@
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&popt-directory;</remove>
+      <remove>&build_dir;/&popt-patch;</remove>
     </stage>
   </package>
 </alfs>

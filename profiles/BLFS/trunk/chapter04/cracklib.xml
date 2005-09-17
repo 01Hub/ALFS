@@ -80,6 +80,7 @@
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&cracklib-directory;</remove>
+      <remove>&build_dir;/&cracklib-wordlist;</remove>
     </stage>
   </package>
 </alfs>
