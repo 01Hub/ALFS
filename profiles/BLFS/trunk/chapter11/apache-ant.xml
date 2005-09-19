@@ -52,6 +52,13 @@
       <target>ant-&apache-ant-version;</target>
       <name>/opt/ant</name>
     </link>
+    <textdump mode="append">
+      <file>/etc/profile</file>
+      <content>
+        =export PATH=$PATH:/opt/ant/bin
+        =export ANT_HOME=/opt/ant
+      </content>
+    <textdump/>
   </stage>
   <stage name="Cleanup.">
     <remove>&build_dir;/&apache-ant-directory;</remove>
