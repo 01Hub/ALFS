@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!--
-       BLFS SVN profile
+       BLFS profile
 
-       originally by Vassili Dzuba - vdzuba@linuxfromscratch.org
+       Originally by:
+       Vassili Dzuba <vdzuba@linuxfromscratch.org>
 
        Maintained by:
        Thomas Pegg <thomasp@linuxfromscratch.org>
        Jamie Bennett <jamie@linuxfromscratch.org>
        Joachim Beckers <jbeckers@linuxfromscratch.org>
        Kevin P. Fleming <kpfleming@linuxfromscratch.org>
+       
+       Patches from:
+       Torsten Vollmann
 
        Last updated : 2005-03-23
   -->
