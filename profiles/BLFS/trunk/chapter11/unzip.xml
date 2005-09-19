@@ -19,7 +19,7 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
         <base>&build_dir;/&unzip-directory;</base>
       </stageinfo>

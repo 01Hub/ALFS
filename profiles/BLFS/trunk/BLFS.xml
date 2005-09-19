@@ -112,8 +112,8 @@
       <xi:include href="chapter09/libtiff.xml" />
       <xi:include href="chapter09/libungif.xml" />
       <xi:include href="chapter09/giflib.xml" />
-      <xi:include href="chapter09/libmng.xml" />
       <xi:include href="chapter09/lcms.xml" />
+      <xi:include href="chapter09/libmng.xml" />
       <xi:include href="chapter09/freetype.xml" />
       <xi:include href="chapter09/fontconfig.xml" />
       <xi:include href="chapter09/libart_lgpl.xml" />

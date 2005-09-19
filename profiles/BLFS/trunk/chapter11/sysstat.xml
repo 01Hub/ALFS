@@ -31,9 +31,11 @@
     <stageinfo>
       <base>&build_dir;/&sysstat-directory;</base>
     </stageinfo>
-    <make>
-      <param>config</param>
-    </make>
+    <search_replace base="&build_dir;/build">
+      <file>CONFIG</file>
+      <find>/usr/local</find>
+      <replace>/usr</replace>
+    </search_replace>
     <make />
     <make>
       <param>install</param>

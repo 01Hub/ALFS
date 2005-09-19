@@ -58,11 +58,6 @@
     <stageinfo>
       <base>&build_dir;/&xscreensaver-directory;</base>
     </stageinfo>
-    <search_replace>
-      <file>driver/Makefile.in</file>
-      <find>@GNOME_DATADIR@</find>
-      <replace>&gnome-prefix;/share</replace>
-    </search_replace>
     <configure>
       <param>--prefix=/usr</param>
     </configure>

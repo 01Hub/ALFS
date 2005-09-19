@@ -35,8 +35,8 @@
       </stageinfo>
       <make>
 	<param>prefix=/usr</param>
-	<param>ZLIBINC=/usr/include</param>
-	<param>ZLIBLIB=/usr/lib</param>
+	<param>ZLIBINC=</param>
+	<param>ZLIBLIB=</param>
 	<param>-f scripts/makefile.linux</param>
       </make>
       <make>

@@ -14,7 +14,7 @@
   <package name="imlib2" version="&imlib2-version;">
     <packageinfo>
       <requires>
-        <name>freetype2</name>
+        <name>freetype</name>
       </requires>
       <requires>
         <name>libpng</name>
@@ -45,6 +45,8 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
+        <!-- uncomment if you don't have x installed -->
+        <!-- <param>- -without-x</param> -->
       </configure>
       <make />
       <make>

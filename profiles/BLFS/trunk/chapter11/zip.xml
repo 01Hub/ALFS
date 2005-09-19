@@ -26,6 +26,7 @@
       <execute command="sed">
 	<param>-i</param>
 	<param>-e 's@$(INSTALL) man/zip.1@$(INSTALL_PROGRAM) man/zip.1@'</param>
+        <param>unix/Makefile</param>
       </execute>
       <make>
         <param>prefix=/usr</param>
