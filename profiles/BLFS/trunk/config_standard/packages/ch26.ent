@@ -57,7 +57,7 @@
 <!ENTITY libxklavier-md5       "8da1a1a2ba934e94288bef8a4e4ca62d">
 <!ENTITY libxklavier-directory "libxklavier-&libxklavier-version;">
 
-<!ENTITY freeglut-version   "2.2.0">
+<!ENTITY freeglut-version   "2.4.0">
 <!ENTITY freeglut-package   "freeglut-&freeglut-version;.tar.bz2">
-<!ENTITY freeglut-md5       "ca2775e95f2deb468d5592f7d415eb16">
+<!ENTITY freeglut-md5       "8a385d9300d63a45f6025041beebdc9a">
 <!ENTITY freeglut-directory "freeglut-&freeglut-version;">
