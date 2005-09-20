@@ -1,8 +1,8 @@
 <!--************* packages for chapter 16 *************-->
 
-<!ENTITY curl-version   "7.13.1">
+<!ENTITY curl-version   "7.14.0">
 <!ENTITY curl-package   "curl-&curl-version;.tar.bz2">
-<!ENTITY curl-md5       "d673f68dbab2553acdbfb5435bd1cd48">
+<!ENTITY curl-md5       "46ce665e47d37fce1a0bad935cce58a9">
 <!ENTITY curl-directory "curl-&curl-version;">
 
 <!ENTITY wvstreams-version   "4.0.1">

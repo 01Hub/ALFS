@@ -1,11 +1,88 @@
 <!--************* packages for chapter 12 *************-->
 
-<!ENTITY python-version   "2.4.1">
-<!ENTITY python-package   "Python-&python-version;.tar.bz2">
-<!ENTITY python-md5       "de3e9a8836fab6df7c7ce545331afeb3">
-<!ENTITY python-directory "Python-&python-version;">
+<!ENTITY dejagnu-version   "1.4.4">
+<!ENTITY dejagnu-package   "dejagnu-&dejagnu-version;.tar.bz2">
+<!ENTITY dejagnu-md5       "bf259ac32622eda29ea157ef5751ed76">
+<!ENTITY dejagnu-directory "dejagnu-&dejagnu-version;">
 
-<!ENTITY python-gdbm-patch     "Python-&python-version;-gdbm-1.patch">
+<!ENTITY doxygen-version   "1.4.3">
+<!ENTITY doxygen-package   "doxygen-&doxygen-version;.src.tar.bz2">
+<!ENTITY doxygen-md5       "">
+<!ENTITY doxygen-directory "doxygen-&doxygen-version;">
+
+<!ENTITY expect-major-minor "5.43">
+<!ENTITY expect-version     "&expect-major-minor;.0">
+<!ENTITY expect-package     "expect-&expect-version;.tar.bz2">
+<!ENTITY expect-md5         "e6aaab98967f6410099b40f2b3ddebb4">
+<!ENTITY expect-directory   "expect-&expect-version;">
+
+<!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
+
+<!ENTITY gnat-version   "3.15p"> 	 
+<!ENTITY gnat-package   "gcc-&gcc-34-version;-gnat-&gnat-version;-i686-pc-redhat71-gnu-bin.tar.bz2">
+<!ENTITY gnat-md5       "c9aad2da908a40e876c24fc85f248b51">
+<!ENTITY gnat-directory "gnat-&gnat-version;-i686-pc-linux-gnu-bin">
+
+<!ENTITY gcc-34-version   "3.4.3">
+<!ENTITY gcc-34-package   "gcc-&gcc-34-version;.tar.bz2">
+<!ENTITY gcc-34-md5       "e744b30c834360fccac41eb7269a3011">
+<!ENTITY gcc-34-directory "gcc-&gcc-34-version;">
+
+<!ENTITY gcc-34-no-fixincludes-patch "gcc-&gcc-34-version;-no_fixincludes-1.patch">
+<!ENTITY gcc-34-linkonce-patch      "gcc-&gcc-34-version;-linkonce-1.patch">
+
+<!ENTITY gcc-33-version   "3.3.4">
+<!ENTITY gcc-33-package   "gcc-&gcc-33-version;.tar.bz2">
+<!ENTITY gcc-33-md5       "a1c267b34f05c8660b24251865614d8b">
+<!ENTITY gcc-33-directory "gcc-&gcc-33-version;">
+
+<!ENTITY gcc-33-no-fixincludes-patch "gcc-&gcc-33-version;-no_fixincludes-1.patch">
+<!ENTITY gcc-33-linkonce-patch	     "gcc-&gcc-33-version;-linkonce-1.patch">
+
+<!ENTITY guile-version   "1.6.7">
+<!ENTITY guile-package   "guile-&guile-version;.tar.bz2">
+<!ENTITY guile-md5       "18090aa1fa5e107023751b1b5ad08734">
+<!ENTITY guile-directory "guile-&guile-version;">
+
+<!-- Begin java packages -->
+<!ENTITY jdk-version   "1.5.0">
+<!ENTITY jdk-_-version "1_5_0">
+<!ENTITY jdk-suffix    "03">
+
+<!ENTITY jdk-bin-package   "jdk-&jdk-_-version;_&jdk-suffix;-linux-i586.bin">
+<!ENTITY jdk-bin-md5       "bc221641fcfdc9268499001326fc8ebb">
+<!ENTITY jdk-bin-directory "jdk&jdk-version;_&jdk-suffix;">
+
+<!ENTITY jdk-src-package "jdk-&jdk-_-version;-src-jrl.zip">
+<!ENTITY jdk-src-md5     "ae036d6b771f89aff0b19bdd0b289591">
+
+<!ENTITY jdk-src-bin-package "jdk-&jdk-_-version;-bin-jrl.zip">
+<!ENTITY jdk-src-bin-md5     "3c3b2c079628141fa28f5f0f1cde5bf0">
+
+<!ENTITY jdk-src-mozilla-headers-package "jdk-&jdk-_-version;-mozilla_headers-unix.zip">
+<!ENTITY jdk-src-mozilla-headers-md5     "a832e5a668967a1dfa27912dfc717dcc">
+
+<!ENTITY jdk-gcc34-patch              "jdk-&jdk-version;-gcc342+-3.patch">
+<!ENTITY jdk-motif-patch              "jdk-&jdk-version;-motif_mkmsgcat-1.patch">
+<!ENTITY jdk-nptl-patch               "jdk-&jdk-version;-nptl-1.patch">
+<!ENTITY jdk-remove-broken-demo-patch "jdk-&jdk-version;-remove_broken_demo-1.patch">
+<!ENTITY jdk-fixed-paths-patch        "jdk-&jdk-version;-remove_fixed_paths-1.patch">
+<!ENTITY jdk-remove-debug-patch       "jdk-&jdk-version;-remove_debug_image-1.patch">
+<!ENTITY jdk-static-cxx-patch         "jdk-&jdk-version;-static_cxx-1.patch">
+<!-- End java packages -->
+
+<!ENTITY librep-version   "0.17">
+<!ENTITY librep-package   "librep-&librep-version;.tar.bz2">
+<!ENTITY librep-md5       "ad949a4cf93cf76ba745d72a1a3b5a71">
+<!ENTITY librep-directory "librep-&librep-version;">
+
+<!ENTITY nasm-version   "0.98.39">
+<!ENTITY nasm-package   "nasm-&nasm-version;.tar.bz2">
+<!ENTITY nasm-md5       "2032ad44c7359f7a9a166a40a633e772">
+<!ENTITY nasm-directory "nasm-&nasm-version;">
+
+<!ENTITY nasm-security-fix-patch "nasm-&nasm-version;-security_fix-1.patch">
+<!ENTITY nasm-security-fix-md5   "3aec1fe44a15c0fa0f238ebacfd6b7a9">
 
 <!-- Begin Perl Modules -->
 <!ENTITY Module-Info-version "0.28">
@@ -207,47 +284,28 @@
 <!ENTITY PDL-package "PDL-&PDL-version;.tar.bz2">
 <!ENTITY PDL-md5 "4ae5a29739984489cc3e7b5c1266a75a">
 <!ENTITY PDL-directory "PDL-&PDL-version;">
-
 <!-- End Perl Modules-->
 
-<!ENTITY librep-version   "0.17">
-<!ENTITY librep-package   "librep-&librep-version;.tar.bz2">
-<!ENTITY librep-md5       "ad949a4cf93cf76ba745d72a1a3b5a71">
-<!ENTITY librep-directory "librep-&librep-version;">
+<!ENTITY php-version    "5.0.4">
+<!ENTITY php-package    "php-&php-version;.tar.bz2">
+<!ENTITY php-md5        "fb1aac107870f897d26563a9cc5053c0">
+<!ENTITY php-directory  "php-&php-version;">
 
-<!-- Begin java packages -->
-<!ENTITY jdk-version   "1.5.0">
-<!ENTITY jdk-_-version "1_5_0">
-<!ENTITY jdk-suffix    "03">
+<!ENTITY php-db43-patch "php-&php-version;-db43-1.patch">
 
-<!ENTITY jdk-bin-package   "jdk-&jdk-_-version;_&jdk-suffix;-linux-i586.bin">
-<!ENTITY jdk-bin-md5       "bc221641fcfdc9268499001326fc8ebb">
-<!ENTITY jdk-bin-directory "jdk&jdk-version;_&jdk-suffix;">
+<!ENTITY python-version   "2.4.1">
+<!ENTITY python-package   "Python-&python-version;.tar.bz2">
+<!ENTITY python-md5       "de3e9a8836fab6df7c7ce545331afeb3">
+<!ENTITY python-directory "Python-&python-version;">
 
-<!ENTITY jdk-src-package "jdk-&jdk-_-version;-src-jrl.zip">
-<!ENTITY jdk-src-md5     "ae036d6b771f89aff0b19bdd0b289591">
-
-<!ENTITY jdk-src-bin-package "jdk-&jdk-_-version;-bin-jrl.zip">
-<!ENTITY jdk-src-bin-md5     "3c3b2c079628141fa28f5f0f1cde5bf0">
-
-<!ENTITY jdk-src-mozilla-headers-package "jdk-&jdk-_-version;-mozilla_headers-unix.zip">
-<!ENTITY jdk-src-mozilla-headers-md5     "a832e5a668967a1dfa27912dfc717dcc">
-
-<!ENTITY jdk-gcc34-patch     "jdk-&jdk-version;-gcc342+-3.patch">
-<!ENTITY jdk-motif-patch     "jdk-&jdk-version;-motif_mkmsgcat-1.patch">
-<!ENTITY jdk-nptl-patch     "jdk-&jdk-version;-nptl-1.patch">
-<!ENTITY jdk-remove-broken-demo-patch "jdk-&jdk-version;-remove_broken_demo-1.patch">
-<!ENTITY jdk-fixed-paths-patch     "jdk-&jdk-version;-remove_fixed_paths-1.patch">
-<!ENTITY jdk-remove-debug-patch     "jdk-&jdk-version;-remove_debug_image-1.patch">
-<!ENTITY jdk-static-cxx-patch     "jdk-&jdk-version;-static_cxx-1.patch">
-<!-- End java packages -->
+<!ENTITY python-gdbm-patch "Python-&python-version;-gdbm-1.patch">
 
 <!ENTITY ruby-version   "1.8.2">
 <!ENTITY ruby-package   "ruby-&ruby-version;.tar.bz2">
 <!ENTITY ruby-md5       "0ff532e9214aee516e54712fe3406372">
 <!ENTITY ruby-directory "ruby-&ruby-version;">
 
-<!ENTITY ruby-xmlrpc-fix-patch "ruby-&ruby-version;-xmlrpc-ipimethods-fix.diff">
+<!ENTITY ruby-xmlrpc-fix-patch     "ruby-&ruby-version;-xmlrpc-ipimethods-fix.diff">
 <!ENTITY ruby-xmlrpc-fix-patch-md5 "d1fd7f979894cfe7da89ec38992788eb">
 
 <!ENTITY tcl-major-minor "8.4">
@@ -261,63 +319,3 @@
 <!ENTITY tk-package     "tk&tk-version;-src.tar.bz2">
 <!ENTITY tk-md5         "7a9c6d7a84a51175f01fec34d0033f3e">
 <!ENTITY tk-directory   "tk&tk-version;">
-
-<!ENTITY expect-major-minor "5.43">
-<!ENTITY expect-version     "&expect-major-minor;.0">
-<!ENTITY expect-package     "expect-&expect-version;.tar.bz2">
-<!ENTITY expect-md5         "e6aaab98967f6410099b40f2b3ddebb4">
-<!ENTITY expect-directory   "expect-&expect-version;">
-
-<!ENTITY expect-spawn-patch     "expect-&expect-version;-spawn-1.patch">
-
-<!ENTITY dejagnu-version   "1.4.4">
-<!ENTITY dejagnu-package   "dejagnu-&dejagnu-version;.tar.bz2">
-<!ENTITY dejagnu-md5       "bf259ac32622eda29ea157ef5751ed76">
-<!ENTITY dejagnu-directory "dejagnu-&dejagnu-version;">
-
-<!ENTITY gnat-version   "3.15p"> 	 
-<!ENTITY gnat-package   "gcc-&gcc-34-version;-gnat-&gnat-version;-i686-pc-redhat71-gnu-bin.tar.bz2">
-<!ENTITY gnat-md5       "c9aad2da908a40e876c24fc85f248b51">
-<!ENTITY gnat-directory "gnat-&gnat-version;-i686-pc-linux-gnu-bin">
-
-<!ENTITY gcc-34-version   "3.4.3">
-<!ENTITY gcc-34-package   "gcc-&gcc-34-version;.tar.bz2">
-<!ENTITY gcc-34-md5       "e744b30c834360fccac41eb7269a3011">
-<!ENTITY gcc-34-directory "gcc-&gcc-34-version;">
-
-<!ENTITY gcc-34-no-fixincludes-patch     "gcc-&gcc-34-version;-no_fixincludes-1.patch">
-<!ENTITY gcc-34-linkonce-patch     "gcc-&gcc-34-version;-linkonce-1.patch">
-
-<!ENTITY gcc-33-version   "3.3.4">
-<!ENTITY gcc-33-package   "gcc-&gcc-33-version;.tar.bz2">
-<!ENTITY gcc-33-md5       "a1c267b34f05c8660b24251865614d8b">
-<!ENTITY gcc-33-directory "gcc-&gcc-33-version;">
-
-<!ENTITY gcc-33-no-fixincludes-patch     "gcc-&gcc-33-version;-no_fixincludes-1.patch">
-<!ENTITY gcc-33-linkonce-patch	   "gcc-&gcc-33-version;-linkonce-1.patch">
-
-<!ENTITY nasm-version   "0.98.39">
-<!ENTITY nasm-package   "nasm-&nasm-version;.tar.bz2">
-<!ENTITY nasm-md5       "2032ad44c7359f7a9a166a40a633e772">
-<!ENTITY nasm-directory "nasm-&nasm-version;">
-
-<!ENTITY nasm-security-fix-patch "nasm-&nasm-version;-security_fix-1.patch">
-<!ENTITY nasm-security-fix-md5 "3aec1fe44a15c0fa0f238ebacfd6b7a9">
-
-<!ENTITY doxygen-version   "1.4.3">
-<!ENTITY doxygen-package   "doxygen-&doxygen-version;.src.tar.bz2">
-<!ENTITY doxygen-md5       "">
-<!ENTITY doxygen-directory "doxygen-&doxygen-version;">
-
-<!ENTITY guile-version   "1.6.7">
-<!ENTITY guile-package   "guile-&guile-version;.tar.bz2">
-<!ENTITY guile-md5       "18090aa1fa5e107023751b1b5ad08734">
-<!ENTITY guile-directory "guile-&guile-version;">
-
-<!ENTITY php-version    "5.0.4">
-<!ENTITY php-package    "php-&php-version;.tar.bz2">
-<!ENTITY php-md5        "fb1aac107870f897d26563a9cc5053c0">
-<!ENTITY php-directory  "php-&php-version;">
-
-<!ENTITY php-db43-patch     "php-&php-version;-db43-1.patch">
-

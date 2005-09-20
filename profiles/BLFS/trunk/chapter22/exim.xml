@@ -20,41 +20,41 @@
         <name>db</name>
       </requires>
       <utilizes>
-	<name>&ximpl;</name>
+        <name>&ximpl;</name>
       </utilizes>
       <utilizes>
-	<name>openldap</name>
+        <name>openldap</name>
       </utilizes>
       <utilizes>
-	<name>openssl</name>
+        <name>openssl</name>
       </utilizes>
       <utilizes>
-	<name>cyrus-sasl</name>
+        <name>cyrus-sasl</name>
       </utilizes>
       <utilizes>
-	<name>mysql</name>
+        <name>mysql</name>
       </utilizes>
       <utilizes>
-	<name>postgresql</name>
+        <name>postgresql</name>
       </utilizes>
       <utilizes>
-	<name>tcpwrappers</name>
+        <name>tcpwrappers</name>
       </utilizes>
       <utilizes>
-	<name>linuxpam</name>
+        <name>linuxpam</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking.">
       <unpack>
         <digest>&exim-md5;</digest>
-	<archive>&packages_dir;/&exim-package;</archive>
+        <archive>&packages_dir;/&exim-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group exim &gt; /dev/null || groupadd">
-      	<param>-g &exim-gid;</param>
+        <param>-g &exim-gid;</param>
         <param>exim</param>
       </execute>
       <execute command="getent passwd exim &gt; /dev/null || useradd">
@@ -62,37 +62,25 @@
         <param>-d /dev/null</param>
         <param>-g exim</param>
         <param>-s /bin/false</param>
-	<param>-u &exim-uid;</param>
+        <param>-u &exim-uid;</param>
         <param>exim</param>
       </execute>
     </stage>
     <stage name="Patching">
       <stageinfo>
-	<base>&build_dir;/&exim-directory;</base>
+        <base>&build_dir;/&exim-directory;</base>
       </stageinfo>
       <patch>
-	<param>-N</param>
-	<param>-p1</param>
-	<param>-i &packages_dir;/&exim-db43-patch;</param>
+        <param>-N</param>
+        <param>-p1</param>
+        <param>-i &packages_dir;/&exim-db43-patch;</param>
       </patch>
     </stage>
     <stage name="Installing.">
       <stageinfo>
         <base>&build_dir;/&exim-directory;</base>
       </stageinfo>
-      <copy>
-        <source>src/EDITME</source>
-	<destination>Local/Makefile</destination>
-      </copy>
-      <textdump mode="append">
-        <file>Local/Makefile</file>
-	<content>
-	=BIN_DIRECTORY=/usr/sbin
-	=CONFIGURE_FILE=/etc/exim.conf
-	=EXIM_USER=exim
-	=EXIM_MONITOR=
-	</content>
-      </textdump>
+      <execute command="sed -e 's,^BIN_DIR.*$,BIN_DIRECTORY=/usr/sbin,' -e 's,^CONF.*$,CONFIGURE_FILE=/etc/exim.conf,' -e 's,^EXIM_USER.*$,EXIM_USER=exim,' -e 's,^EXIM_MONITOR,#EXIM_MONITOR,' src/EDITME > Local/Makefile"/>
       <make />
       <make>
         <param>install</param>
@@ -102,12 +90,12 @@
         <destination>/usr/share/man/man8</destination>
       </copy>
       <mkdir>
-	<option>parents</option>
-	<name>/usr/share/doc/exim-&exim-version;</name>
+        <option>parents</option>
+        <name>/usr/share/doc/exim-&exim-version;</name>
       </mkdir>
       <copy>
-	<source>doc/*</source>
-	<destination>/usr/share/doc/exim-&exim-version;</destination>
+        <source>doc/*</source>
+        <destination>/usr/share/doc/exim-&exim-version;</destination>
       </copy>
       <link>
         <option>force</option>

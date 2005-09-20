@@ -240,7 +240,8 @@
       <xi:include href="chapter21/xinetd.xml" />
     </stage>
     <stage name="Chapter 22 (Mail Server Software)">
-      <xi:include href="chapter22/courier.xml" />
+<!-- Courier was removed from the book temporarily.-->
+<!--  <xi:include href="chapter22/courier.xml" />  -->
       <xi:include href="chapter22/exim.xml" />
       <xi:include href="chapter22/postfix.xml" />
       <xi:include href="chapter22/qpopper.xml" />

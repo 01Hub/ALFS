@@ -14,7 +14,7 @@
   <package name="curl" version="&curl-version;">
     <packageinfo>
       <utilizes>
-	<name>pkgconfig</name>
+        <name>pkg-config</name>
       </utilizes>
       <utilizes>
         <name>openssl</name>
@@ -47,7 +47,7 @@
     <stage name="Unpacking">
       <unpack>
         <digest>&curl-md5;</digest>
-	<archive>&packages_dir;/&curl-package;</archive>
+          <archive>&packages_dir;/&curl-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>

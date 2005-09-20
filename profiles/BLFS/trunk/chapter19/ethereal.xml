@@ -38,13 +38,22 @@
       <name>pcre</name>
     </utilizes>
     <utilizes>
-      <name>doxygen</name>
-    </utilizes>
-    <utilizes>
       <name>net-snmp</name>
     </utilizes>
     <utilizes>
       <name>adns</name>
+    </utilizes>
+    <utilizes>
+      <name>doxygen</name>
+    </utilizes>
+    <utilizes>
+      <name>libxml</name>
+    </utilizes>
+    <utilizes>
+      <name>libxslt</name>
+    </utilizes>
+    <utilizes>
+      <name>fop</name>
     </utilizes>
   </packageinfo>
   <stage name="Unpacking.">
@@ -61,13 +70,36 @@
     <configure>
       <param>--prefix=/usr</param>
       <param>--sysconfdir=/etc</param>
-      <param>--enable-randpkt</param>
       <param>--enable-threads</param>
     </configure>
     <make />
     <make>
       <param>install</param>
     </make>
+    <copy>
+      <source>doc/README.*</source>
+      <destination>/usr/share/ethereal</destination>
+    </copy>
+    <copy>
+      <source>ethereal.desktop</source>
+      <destination>/usr/share/applications/ethereal.desktop</destination>
+    </copy>
+    <copy>
+      <source>image/elogo3d48x48.png</source>
+      <destination>/usr/share/pixmaps/ethereal.png</destination>
+    </copy>
+    <mkdir>
+      <option>parents</option>
+      <name>/usr/share/pixmaps/ethereal/toolbar</name>
+    </mkdir>
+    <copy>
+      <source>image/*.{png,ico,xpm}</source>
+      <destination>/usr/share/pixmaps/ethereal</destination>
+    </copy>
+    <copy>
+      <source>image/toolbar/*</source>
+      <destination>/usr/share/pixmaps/ethereal/toolbar</destination>
+    </copy>
   </stage>
   <stage name="Cleanup.">
     <remove>&build_dir;/&ethereal-directory;</remove>
