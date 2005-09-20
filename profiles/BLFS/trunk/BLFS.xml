@@ -2,19 +2,21 @@
 <!--
        BLFS profile
 
-       Originally by:
-       Vassili Dzuba <vdzuba@linuxfromscratch.org>
+       Original author:
+        Vassili Dzuba
 
-       Maintained by:
-       Thomas Pegg <thomasp@linuxfromscratch.org>
-       Jamie Bennett <jamie@linuxfromscratch.org>
-       Joachim Beckers <jbeckers@linuxfromscratch.org>
-       Kevin P. Fleming <kpfleming@linuxfromscratch.org>
-       
+       Maintainers:
+        Thomas Pegg <thomasp@linuxfromscratch.org>
+        Jamie Bennett <jamie@linuxfromscratch.org>
+        Joachim Beckers <jbeckers@linuxfromscratch.org>
+
+       Ex-maintainer:
+        Kevin P. Fleming
+
        Patches from:
-       Torsten Vollmann
+        Torsten Vollmann
 
-       Last updated : 2005-03-23
+       Last updated : 2005-09-20
   -->
 <!DOCTYPE alfs SYSTEM "DTD/ALFS.dtd"
 [
