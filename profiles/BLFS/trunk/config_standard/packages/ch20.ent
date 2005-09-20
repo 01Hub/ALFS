@@ -10,9 +10,9 @@
 <!ENTITY procmail-md5       "067bff2b8eaa7bfd59272ed499db6898">
 <!ENTITY procmail-directory "procmail-&procmail-version;">
 
-<!ENTITY fetchmail-version   "6.2.5">
+<!ENTITY fetchmail-version   "6.2.5.2">
 <!ENTITY fetchmail-package   "fetchmail-&fetchmail-version;.tar.bz2">
-<!ENTITY fetchmail-md5       "e5249ca351057aae31a3b07b4983d1a4">
+<!ENTITY fetchmail-md5       "">
 <!ENTITY fetchmail-directory "fetchmail-&fetchmail-version;">
 
 <!ENTITY mutt-version   "1.4.2.1i">

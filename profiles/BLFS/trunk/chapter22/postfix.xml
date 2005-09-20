@@ -22,45 +22,45 @@
         <name>db</name>
       </requires>
       <utilizes>
-	<name>pcre</name>
+        <name>pcre</name>
       </utilizes>
       <utilizes>
-	<name>mysql</name>
+        <name>mysql</name>
       </utilizes>
       <utilizes>
-	<name>postgresql</name>
+        <name>postgresql</name>
       </utilizes>
       <utilizes>
-	<name>openldap</name>
+        <name>openldap</name>
       </utilizes>
       <utilizes>
-	<name>openssl</name>
+        <name>openssl</name>
       </utilizes>
       <utilizes>
-	<name>cyrus-sasl</name>
+        <name>cyrus-sasl</name>
       </utilizes>
       <utilizes>
-	<name>cdb</name>
+        <name>cdb</name>
       </utilizes>
       <utilizes>
-	<name>tinycdb</name>
+        <name>tinycdb</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <digest>&postfix-md5;</digest>
-	<archive>&packages_dir;/&postfix-package;</archive>
+        <archive>&packages_dir;/&postfix-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
     &bootscripts-get;
     <stage name="Creating user and group">
       <execute command="getent group postfix &gt; /dev/null || groupadd">
-	<param>-g &postfix-gid;</param>
+        <param>-g &postfix-gid;</param>
         <param>postfix</param>
       </execute>
       <execute command="getent group postdrop &gt; /dev/null || groupadd">
-	<param>-g &postdrop-gid;</param>
+        <param>-g &postdrop-gid;</param>
         <param>postdrop</param>
       </execute>
       <execute command="getent group nogroup &gt; /dev/null || groupadd">
@@ -72,7 +72,7 @@
         <param>-d /dev/null</param>
         <param>-g postfix</param>
         <param>-s /bin/false</param>
-	<param>-u &postfix-uid;</param>
+        <param>-u &postfix-uid;</param>
         <param>postfix</param>
       </execute>
       <execute command="getent passwd nobody &gt; /dev/null || useradd">
@@ -91,12 +91,14 @@
       <ownership user="postfix" group="postfix">
         <name>/var/mail</name>
       </ownership>
+      <make>
+        <param>makefiles</param>
+        <param>CCARGS='-DDEF_DAEMON_DIR=\"/usr/lib/postfix\" -DDEF_MANPAGE_DIR=\"/usr/share/man\" &postfix-ccargs;'</param>
+        <param>AUXLIBS='&postfix-auxlibs;'</param>
+      </make>
       <make />
       <execute command="sh">
         <param>postfix-install</param>
-        <param>daemon_directory=/usr/sbin</param>
-        <param>manpage_directory=/usr/share/man</param>
-        <param>sample_directory=/usr/share/doc/postfix</param>
         <param>-non-interactive</param>
       </execute>
       <mkdir>
@@ -109,10 +111,19 @@
         <source>html/*</source>
         <destination>/usr/share/doc/postfix</destination>
       </copy>
-      <copy>
-      	<source>&blfs-config;/etc/aliases</source>
-	<destination>/etc</destination>
-      </copy>
+      <textdump mode="append">
+        <file>/etc/aliases</file>
+        <content>
+          =# Begin postfix addendum
+          =
+          =MAILER-DAEMON:    postmaster
+          =postmaster:       root
+          =
+          =root:             &username;
+          = 
+          =# End postfix addendum
+        </content>
+      </textdump>
       <search_replace base="/etc/postfix">
         <file>main.cf</file>
         <find>#myhostname = host.domain.tld</find>

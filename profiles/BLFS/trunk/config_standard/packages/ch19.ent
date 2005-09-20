@@ -20,7 +20,7 @@
 <!ENTITY bind-utils-md5       "d3f97c1002c66fbbe1e10ec1fbe01be9">
 <!ENTITY bind-utils-directory "bind-&bind-utils-version;">
 
-<!ENTITY ethereal-version   "0.10.11">
+<!ENTITY ethereal-version   "0.10.12">
 <!ENTITY ethereal-package   "ethereal-&ethereal-version;.tar.bz2">
-<!ENTITY ethereal-md5       "03aa7fe2cbef9aa0654637cdc60e0458">
+<!ENTITY ethereal-md5       "372b60e6eca14b7e1cf3e789207027f7">
 <!ENTITY ethereal-directory "ethereal-&ethereal-version;">

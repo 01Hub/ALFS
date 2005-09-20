@@ -37,12 +37,16 @@
 <!ENTITY BusID      "PCI:1:0:0">
 
 <!-- Default non-root user of your system -->
-<!-- (Used to place some configuration files) -->
+<!-- (Used to place some configuration files, and to send mail to.) -->
 <!ENTITY username  "non-root-user">
 
 <!-- The fully qualified host name used by postfix -->
 <!ENTITY hostname "your.hostname">
 <!ENTITY domain   "your.domain">
+
+<!-- Postfix additional args. See the BLFS book for details -->
+<!ENTITY postfix-ccargs  "">
+<!ENTITY postfix-auxlibs "">
 
 <!-- Initial root password for mysql -->
 <!ENTITY mysql-password "alpha">
@@ -126,13 +130,10 @@ ja, lt, mk, nb, nds, nl, nn, pa, pl, pt, pt_BR, ro, ru, se, sk, sl, sr, sr@Latn,
 <!ENTITY mplayer-font-size "14">
 
 <!-- UID/GID Values -->
-<!-- Values are currently set to those listed in the book
- they can be changed if you wish -->
+<!-- Values are set as listed in the book, but can be changed if you wish. -->
 <!ENTITY bin-uid "1">
 <!ENTITY bin-gid "1">
-
 <!ENTITY lp-uid "9">
-
 <!ENTITY usb-gid "14">
 <!-- Used for BIND -->
 <!ENTITY named-uid "20">
@@ -162,7 +163,6 @@ ja, lt, mk, nb, nds, nl, nn, pa, pl, pt, pt_BR, ro, ru, se, sk, sl, sr, sr@Latn,
 <!ENTITY postfix-uid "32">
 <!ENTITY postfix-gid "32">
 <!ENTITY postdrop-gid "33">
-
 <!ENTITY mail-gid "34">
 <!-- Used for leafnode -->
 <!ENTITY news-uid "36">
@@ -197,8 +197,7 @@ ja, lt, mk, nb, nds, nl, nn, pa, pl, pt, pt_BR, ro, ru, se, sk, sl, sr, sr@Latn,
 <!-- Used for gnome-games -->
 <!ENTITY games-uid "60">
 <!ENTITY games-gid "60">
-
+<!-- Separator :-) -->
 <!ENTITY anonymous-uid "98">
-
 <!ENTITY nobody-uid "99">
 <!ENTITY nogroup-gid "99">

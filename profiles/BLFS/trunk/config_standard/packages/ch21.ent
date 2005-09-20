@@ -5,7 +5,7 @@
 <!ENTITY apache-md5       "4ae8a38c6b5db9046616ce10a0d551a2 ">
 <!ENTITY apache-directory "httpd-&apache-version;">
 
-<!ENTITY apache-patch     "httpd-&apache-version;-config-1.patch">
+<!ENTITY apache-patch "httpd-&apache-version;-config-1.patch">
 
 <!ENTITY bind-version   "9.3.1">
 <!ENTITY bind-package   "bind-&bind-version;.tar.bz2">
