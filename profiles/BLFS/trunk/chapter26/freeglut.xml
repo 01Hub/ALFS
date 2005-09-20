@@ -12,6 +12,11 @@
 ]>
 <alfs>
 <package name="freeglut" version="&freeglut-version;">
+  <packageinfo>
+    <requires>
+      <name>&ximpl;</name>
+    </requires>
+  </packageinfo>
   <stage name="Unpacking.">
     <unpack>
       <digest>&freeglut-md5;</digest>
@@ -30,6 +35,13 @@
     <make>
       <param>install</param>
     </make>
+    <mkdir>
+      <name>/usr/share/doc/freeglut-&freeglut-version;</name>
+    </mkdir>
+    <copy>
+      <source>doc/freeglut_user_interface.html</source>
+      <destination>/usr/share/doc/freeglut-&freeglut-version;</destination>
+    </copy>
   </stage>
   <stage name="Cleanup.">
     <remove>&build_dir;/&freeglut-directory;</remove>

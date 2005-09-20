@@ -5,7 +5,7 @@
 <!ENTITY xorg-md5       "8131cd7ea1e4566e6e05c438a93fcfe1">
 <!ENTITY xorg-directory "xc">
 
-<!ENTITY xfree86-version      "4.4.0">
+<!ENTITY xfree86-version      "4.5.0">
 <!ENTITY xfree86-package1     "XFree86-&xfree86-version;-src-1.tar.bz2">
 <!ENTITY xfree86-package1-md5 "48b65f1c07e19a829ec5d5da1f2e2172">
 <!ENTITY xfree86-package2     "XFree86-&xfree86-version;-src-2.tar.bz2">
