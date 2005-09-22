@@ -101,7 +101,7 @@
 	<source>login-cracklib</source>
 	<destination>/etc/pam.d/login</destination>
       </copy>
-      <copy base=&blfs-config;/etc/pam.d">
+      <copy base="&blfs-config;/etc/pam.d">
 	<source>passwd-cracklib</source>
 	<destination>/etc/pam.d/passwd</destination>
       </copy>

@@ -31,7 +31,7 @@
     <stageinfo>
       <base>&build_dir;/&sysstat-directory;</base>
     </stageinfo>
-    <search_replace base="&build_dir;/build">
+    <search_replace base="&build_dir;/&sysstat-directory;/build">
       <file>CONFIG</file>
       <find>/usr/local</find>
       <replace>/usr</replace>
