@@ -16,7 +16,7 @@
 <!ENTITY expect-md5         "e6aaab98967f6410099b40f2b3ddebb4">
 <!ENTITY expect-directory   "expect-&expect-version;">
 
-<!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
+<!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-2.patch">
 
 <!ENTITY gnat-version   "3.15p"> 	 
 <!ENTITY gnat-package   "gcc-&gcc-34-version;-gnat-&gnat-version;-i686-pc-redhat71-gnu-bin.tar.bz2">

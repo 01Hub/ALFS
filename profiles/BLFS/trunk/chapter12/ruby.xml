@@ -57,9 +57,6 @@
       <make>
         <param>install</param>
       </make>
-      <make>
-        <param>install-doc</param>
-      </make>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&ruby-directory;</remove>

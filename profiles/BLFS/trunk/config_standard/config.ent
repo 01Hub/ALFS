@@ -65,7 +65,7 @@
 
 <!-- Perl version --> 
 <!-- Needed for perl modules -->
-<!ENTITY perl-version "5.8.5">
+<!ENTITY perl-version "5.8.6">
 
 <!-- Net-DNS nameserver tests -->
 <!-- Whether you want to perform these tests -->
