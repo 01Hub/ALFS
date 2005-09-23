@@ -59,9 +59,9 @@
 <!ENTITY libogg-md5       "64e50c88ee16a37e44acff7b7f12dd34">
 <!ENTITY libogg-directory "libogg-&libogg-version;">
 
-<!ENTITY libvorbis-version   "1.1.0">
+<!ENTITY libvorbis-version   "1.1.1">
 <!ENTITY libvorbis-package   "libvorbis-&libvorbis-version;.tar.bz2">
-<!ENTITY libvorbis-md5       "79cfb7e762c190454d49802b3de21580">
+<!ENTITY libvorbis-md5       "6c199f7587c81c0e1afd82faf4593724">
 <!ENTITY libvorbis-directory "libvorbis-&libvorbis-version;">
 
 <!ENTITY nas-version   "1.7">
@@ -98,9 +98,9 @@
 <!ENTITY libfame-patch     "libfame-&libfame-version;-gcc43-1.patch">
 <!ENTITY libfame-patch-md5 "9d9bd84f1f9925727082c5fc7108eb04">
 
-<!ENTITY speex-version   "1.0.4">
+<!ENTITY speex-version   "1.0.5">
 <!ENTITY speex-package   "speex-&speex-version;.tar.bz2">
-<!ENTITY speex-md5       "d1126fa576cf814c4db709952ea49a65">
+<!ENTITY speex-md5       "107b6c2c2f4d36de601a2b3d0fba426d">
 <!ENTITY speex-directory "speex-&speex-version;">
 
 <!ENTITY id3lib-version   "3.8.3">

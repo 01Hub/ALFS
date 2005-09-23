@@ -5,9 +5,9 @@
 <!ENTITY mozilla-md5       "a6fa13d0c9243060bac6821fcff4b973">
 <!ENTITY mozilla-directory "mozilla">
 
-<!ENTITY firefox-version   "1.0.4">
+<!ENTITY firefox-version   "1.0.6">
 <!ENTITY firefox-package   "firefox-&firefox-version;-source.tar.bz2">
-<!ENTITY firefox-md5       "0f5d0586750fde79ba98ecf3ee4425a7">
+<!ENTITY firefox-md5       "7b4c1d10d478dcb4c52fbbe3e41745d9">
 <!ENTITY firefox-directory "mozilla">
 
 <!ENTITY galeon-version   "1.3.21">

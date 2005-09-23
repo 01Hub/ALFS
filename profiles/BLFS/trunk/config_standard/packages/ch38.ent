@@ -5,9 +5,11 @@
 <!ENTITY mpg123-md5       "128220efbd113c0393a5e1ba6d8ea728">
 <!ENTITY mpg123-directory "mpg123-&mpg123-version;">
 
-<!ENTITY vorbis-tools-version   "1.0.1">
+<!ENTITY mpg123-security-patch "mpg123-&mpg123-version;-security-1.patch">
+
+<!ENTITY vorbis-tools-version   "1.1.1">
 <!ENTITY vorbis-tools-package   "vorbis-tools-&vorbis-tools-version;.tar.bz2">
-<!ENTITY vorbis-tools-md5       "dbde210837d324e48261d8241c9d72f2">
+<!ENTITY vorbis-tools-md5       "c6dc618c3d642750b6f7ef20fb2e9692">
 <!ENTITY vorbis-tools-directory "vorbis-tools-&vorbis-tools-version;">
 
 <!ENTITY xmms-version   "1.2.10">

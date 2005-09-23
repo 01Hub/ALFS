@@ -42,6 +42,7 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
+	<param>--enable-vcut</param>
       </configure>
       <make />
       <make>

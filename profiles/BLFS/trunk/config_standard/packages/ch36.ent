@@ -1,8 +1,8 @@
 <!--************* packages for chapter 36 *************-->
 
-<!ENTITY thunderbird-version   "1.0.2">
+<!ENTITY thunderbird-version   "1.0.6">
 <!ENTITY thunderbird-package   "thunderbird-&thunderbird-version;-source.tar.bz2">
-<!ENTITY thunderbird-md5       "9e5b8a3edb3ced400e769dc2faa45317">
+<!ENTITY thunderbird-md5       "a0ddcc8bd5ee2c9be724b6963ad27111">
 <!ENTITY thunderbird-directory "mozilla">
 
 <!ENTITY pan-version   "0.14.2">
