@@ -2,6 +2,7 @@ ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/koffice-1.4.0a.tar.bz2
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/I-K/koffice_1.4.0_patchset_1b.diff
 
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/OpenOffice/OOo_1.1.4_source.tar.bz2
+ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/OpenOffice/OOo_1.1.4-security-1.patch
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/OpenOffice/OOo_1.1.4-gcc_3.4.2+_fixes-2.patch
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/OpenOffice/OOo_1.1.4-nptl-1.patch
 ftp://ftp.lfs-matrix.net/pub/BLFS/SVN/M-P/OpenOffice/OOo_1.1.4-jdk_1.5.0_fix-1.patch

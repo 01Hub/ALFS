@@ -76,6 +76,11 @@
       <patch>
 	<param>-N</param>
 	<param>-p1</param>
+	<param>-i &packages_dir;/&openoffice-security-patch;</param>
+      </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
 	<param>-i &packages_dir;/&openoffice-gcc-fixes-patch;</param>
       </patch>
       <patch>

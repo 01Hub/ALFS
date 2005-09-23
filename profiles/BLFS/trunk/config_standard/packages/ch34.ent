@@ -17,6 +17,7 @@
 <!ENTITY openoffice-stlport-version "4.6.2">
 <!ENTITY openoffice-stlport-package "STLport-&openoffice-stlport-version;.tar.gz">
 
+<!ENTITY openoffice-security-patch "OOo_&openoffice-version;-security-1.patch">
 <!ENTITY openoffice-gcc-fixes-patch "OOo_&openoffice-version;-gcc_3.4.2+_fixes-2.patch">
 <!ENTITY openoffice-nptl-patch "OOo_&openoffice-version;-nptl-1.patch">
 <!ENTITY openoffice-jdk15-patch "OOo_&openoffice-version;-jdk_1.5.0_fix-1.patch">
