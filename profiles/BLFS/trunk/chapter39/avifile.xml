@@ -20,7 +20,7 @@
         <name>sdl</name>
       </requires>
       <utilizes>
-        <name>pkgconfig</name>
+        <name>pkg-config</name>
       </utilizes>
       <utilizes>
         <name>libjpeg</name>
