@@ -60,6 +60,7 @@
     </stageinfo>
     <configure>
       <param>--prefix=/usr</param>
+      <param>--libexecdir=/usr/lib</param>
     </configure>
     <make />
     <make>

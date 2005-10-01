@@ -91,7 +91,7 @@
 	<destination>/opt/qt-&qt-version;/bin</destination>
       </copy>
       <ownership user="root" group="root">
-	<name>/opt/qt-&qt-version;/bin/make</name>
+	<name>/opt/qt-&qt-version;/bin/qmake</name>
       </ownership>
       <permissions mode="755">
 	<name>/opt/qt-&qt-version;/bin/qmake</name>
