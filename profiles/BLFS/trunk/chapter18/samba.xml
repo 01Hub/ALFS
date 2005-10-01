@@ -94,7 +94,7 @@
       </copy>
       <permissions mode="0755" base="/lib">
         <name>libnss_wins.so</name>
-	<name>libnss_windbind.so</name>
+	<name>libnss_winbind.so</name>
       </permissions>
       <link base="/lib">
         <option>force</option>

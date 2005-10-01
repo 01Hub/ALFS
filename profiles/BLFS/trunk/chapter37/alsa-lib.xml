@@ -47,7 +47,7 @@
       <!-- If doxygen is installed and you wish to build the API docs, uncomment below -->
       <!--
       <make>
-	<param>doc</make>
+	<param>doc</param>
       </make>
       <mkdir>
 	<option>parents</option>
