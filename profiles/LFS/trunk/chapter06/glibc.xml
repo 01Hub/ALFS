@@ -79,8 +79,10 @@
         <prefix>PARALLELMFLAGS=&jlevel;</prefix>
       </make>
       <make>
-      	<param>check</param>
+      	<param>-k check &gt;glibc-check-log 2&gt;&#38;1</param>
       </make>
+      <execute command="grep Error glibc-check-log">
+      </execute>
       <execute command="touch">
         <param>/etc/ld.so.conf</param>
       </execute>
