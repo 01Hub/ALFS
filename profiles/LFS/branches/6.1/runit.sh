@@ -20,4 +20,4 @@ fi
 echo "<!ENTITY skeleton '${SKELETON}'>" >> config/profile.ent
 
 umask 022
-/usr/local/bin/nALFS -l -L nalfs.log LFS.xml
+nALFS -l -L nalfs.log LFS.xml
