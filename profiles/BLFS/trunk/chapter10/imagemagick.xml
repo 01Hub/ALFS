@@ -16,9 +16,9 @@
       <requires>
         <name>&ximpl;</name>
       </requires>
-      <requires>
+      <utilizes>
         <name>&ghostscript-impl;</name>
-      </requires>
+      </utilizes>
       <utilizes>
         <name>lcms</name>
       </utilizes>

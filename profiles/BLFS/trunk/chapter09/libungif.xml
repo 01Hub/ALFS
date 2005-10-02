@@ -36,6 +36,19 @@
         <param>install</param>
       </make>
       &ldconfig;
+      <mkdir base="/usr/share/doc/libungif-&libungif-version;">
+      	<option>parents</option>
+	<name>/usr/share/doc/libungif-&libungif-version;/html</name>
+      </mkdir>
+      <copy> 
+      	<source>doc/*.png</source>
+	<source>doc/*.html</source>
+	<destination>/usr/share/doc/libungif-&libungif-version;/html</destination>
+      </copy>
+      <copy>
+      	<source>doc/*.txt</source>
+      	<destination>/usr/share/doc/libungif-&libungif-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libungif-directory;</remove>

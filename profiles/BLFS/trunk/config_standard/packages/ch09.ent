@@ -28,17 +28,17 @@
 <!ENTITY giflib-md5       "22efc9599ccf91d288374dcf0679abf1">
 <!ENTITY giflib-directory "giflib-&giflib-version;">
 
-<!ENTITY libmng-version   "1.0.9">
-<!ENTITY libmng-package   "libmng-&libmng-version;.tar.bz2">
-<!ENTITY libmng-md5       "1bfa1b59cd66c24106815744fc6499b1">
-<!ENTITY libmng-directory "libmng-&libmng-version;">
-
 <!ENTITY lcms-version   "1.14">
 <!ENTITY lcms-package   "lcms-&lcms-version;.tar.bz2">
 <!ENTITY lcms-md5       "399957403c76d20ea571a1b1232bda09">
 <!ENTITY lcms-directory "lcms-&lcms-version;">
 
 <!ENTITY lcms-gcc34-patch "lcms-&lcms-version;-gcc343-1.patch">
+
+<!ENTITY libmng-version   "1.0.9">
+<!ENTITY libmng-package   "libmng-&libmng-version;.tar.bz2">
+<!ENTITY libmng-md5       "1bfa1b59cd66c24106815744fc6499b1">
+<!ENTITY libmng-directory "libmng-&libmng-version;">
 
 <!ENTITY freetype-version   "2.1.10">
 <!ENTITY freetype-package   "freetype-&freetype-version;.tar.bz2">

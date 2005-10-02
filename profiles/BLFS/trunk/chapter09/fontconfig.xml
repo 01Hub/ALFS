@@ -43,12 +43,27 @@
       <make>
         <param>install</param>
       </make>
-      <make>
-	<param>-C doc install</param>
-      </make>
+      <mkdir>
+      	<option>parents</option>
+	<name>/usr/share/doc/fontconfig/fontconfig-devel</name>
+      </mkdir>
       <copy>
 	<source>doc/*.3</source>
 	<destination>/usr/share/man/man3</destination>
+      </copy>
+      <copy>
+      	<source>doc/*.5</source>
+	<destination>/usr/share/man/man5</destination>
+      </copy>
+      <copy>
+      	<source>doc/*.html</source>
+	<source>doc/*.pdf</source>
+	<source>doc/*.txt</source>
+	<destination>/usr/share/doc/fontconfig</destination>
+      </copy>
+      <copy>
+      	<source>doc/fontconfig-devel/*</source>
+	<destination>/usr/share/doc/fontconfig/fontconfig-devel</destination>
       </copy>
       &ldconfig;
     </stage>

@@ -17,13 +17,7 @@
         <name>qt</name>
       </utilizes>
       <utilizes>
-        <name>python</name>
-      </utilizes>
-      <utilizes>
         <name>tex</name>
-      </utilizes>
-      <utilizes>
-        <name>&ghostscript-impl;</name>
       </utilizes>
       <utilizes>
         <name>graphviz</name>

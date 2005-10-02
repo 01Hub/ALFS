@@ -29,13 +29,7 @@
       <name>netpbm</name>
     </utilizes>
     <utilizes>
-      <name>fortune-mod</name>
-    </utilizes>
-    <utilizes>
       <name>xdaliclock</name>
-    </utilizes>
-    <utilizes>
-      <name>yelp</name>
     </utilizes>
     <utilizes>
       <name>linuxpam</name>
