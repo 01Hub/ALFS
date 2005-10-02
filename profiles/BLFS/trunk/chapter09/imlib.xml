@@ -39,6 +39,15 @@
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+      	<option>parents</option>
+	<name>usr/share/doc/imlib-&imlib-version;</name>
+      </mkdir>
+      <copy>
+      	<source>doc/index.html</source>
+	<source>doc/*.gif</source>
+	<destination>/usr/share/doc/imlib-&imlib-version;</destination>
+      </copy>
       &ldconfig;
     </stage>
     <stage name="Cleanup">

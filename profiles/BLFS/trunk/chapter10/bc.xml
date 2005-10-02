@@ -12,6 +12,11 @@
 ]>
 <alfs>
   <package name="bc" version="&bc-version;">
+    <packageinfo>
+       <utilizes>
+       	<name>libedit</name>
+       </utilizes>
+    </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <digest>&bc-md5;</digest>

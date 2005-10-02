@@ -104,6 +104,9 @@
         <name>mhash</name>
       </utilizes>
       <utilizes>
+      	<name>ossp_mm</name>
+      </utilizes>
+      <utilizes>
         <name>net-snmp</name>
       </utilizes>
       <utilizes>
@@ -184,10 +187,12 @@
         <param>--enable-exif</param>
         <param>--enable-ftp</param>
         <param>--with-gettext</param>
-        <param>--with-iconv</param>
+	<param>--enable-mbstring</param>
         <param>--with-ncurses</param>
 	<param>--with-readline</param>
 	<param>--disable-libxml</param>
+	<!-- Uncomment this section,if you want use MySQL with PHP -->
+	<!-- <param>- -with-mysql</param> -->
       </configure>
       <make />
       <make>

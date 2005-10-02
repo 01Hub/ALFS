@@ -48,6 +48,15 @@
         <source>doc/man/*.5</source>
         <destination>/usr/share/man/man5</destination>
       </copy>
+      <mkdir>
+      	<option>parents</option>
+	<name>/usr/share/doc/libmng-&libmng-version;</name>
+      </mkdir>
+      <copy>
+      	<source>doc/*.png</source>
+	<source>doc/*.txt</source>
+	<destination>/usr/share/doc/libmng-&libmng-version;</destination>
+      </copy>
       &ldconfig;
     </stage>
     <stage name="Cleanup">
