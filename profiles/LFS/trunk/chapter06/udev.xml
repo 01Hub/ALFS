@@ -22,7 +22,6 @@
       </stageinfo>
       <make>
         <param>&jlevel;</param>
-        <param>udevdir=/dev</param>
       </make>
       <!--
       <make>
@@ -30,7 +29,6 @@
       </make>
       -->
       <make>
-        <param>udevdir=/dev</param>
         <param>install</param>
       </make>
       <copy base="&packages_dir;">

@@ -25,11 +25,6 @@
         <param>-p1</param>
         <param>-i &packages_dir;/&util-linux-cramfs-patch;</param>
       </patch>
-      <patch>
-	<param>-N</param>
-	<param>-p1</param>
-	<param>-i &packages_dir;/&util-linux-reiser-crash-patch;</param>
-      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>

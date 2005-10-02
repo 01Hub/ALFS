@@ -3,7 +3,7 @@ ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/automake/auto
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/bash/bash-3.0.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/bash/bash-doc-3.0.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/binutils/binutils-2.16.1.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/bison/bison-2.0.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/bison/bison-2.1.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/bzip2/bzip2-1.0.3.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/coreutils/coreutils-5.2.1.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/dejagnu/dejagnu-1.4.4.tar.bz2
@@ -13,7 +13,7 @@ ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/expect/expect
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/file/file-4.15.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/findutils/findutils-4.2.25.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/flex/flex-2.5.31.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gawk/gawk-3.1.4.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gawk/gawk-3.1.5.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gcc/gcc-4.0.1.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gettext/gettext-0.14.5.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/glibc/glibc-2.3.5.tar.bz2
@@ -34,8 +34,8 @@ ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/linux/linux-2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/linux-libc-headers/linux-libc-headers-2.6.12.0.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/m4/m4-1.4.3.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/make/make-3.80.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/man/man-1.6a.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/man-pages/man-pages-2.07.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/man/man-1.6b.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/man-pages/man-pages-2.08.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/mktemp/mktemp-1.5.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/module-init-tools/module-init-tools-3.1.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/ncurses/ncurses-5.4.tar.bz2
@@ -51,8 +51,8 @@ ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/sysvinit/sysv
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/tar/tar-1.15.1.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/tcl/tcl8.4.11-src.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/texinfo/texinfo-4.8.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/udev/udev-068.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/util-linux/util-linux-2.12q.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/udev/udev-070.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/util-linux/util-linux-2.12r.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/vim/vim-6.3.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/vim/vim-6.3-lang.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/zlib/zlib-1.2.3.tar.bz2
@@ -63,10 +63,12 @@ http://www.linuxfromscratch.org/patches/lfs/development/bash-3.0-fixes-3.patch
 http://www.linuxfromscratch.org/patches/lfs/development/bash-3.0-avoid_WCONTINUED-1.patch
 http://www.linuxfromscratch.org/patches/lfs/development/bzip2-1.0.3-install_docs-1.patch
 http://www.linuxfromscratch.org/patches/lfs/development/bzip2-1.0.3-bzgrep_security-1.patch
+http://www.linuxfromscratch.org/patches/lfs/development/coreutils-5.2.1-echo_posix-1.patch
 http://www.linuxfromscratch.org/patches/lfs/development/coreutils-5.2.1-suppress_uptime_kill_su-1.patch
 http://www.linuxfromscratch.org/patches/lfs/development/coreutils-5.2.1-uname-2.patch
 http://www.linuxfromscratch.org/patches/lfs/development/expect-5.43.0-spawn-1.patch
 http://www.linuxfromscratch.org/patches/lfs/development/flex-2.5.31-debian_fixes-3.patch
+http://www.linuxfromscratch.org/patches/lfs/development/gawk-3.1.5-segfault_fix-1.patch
 http://www.linuxfromscratch.org/patches/lfs/development/gcc-4.0.1-specs-1.patch
 http://www.linuxfromscratch.org/patches/lfs/development/glibc-2.3.5-fix_test-1.patch
 http://www.linuxfromscratch.org/patches/lfs/development/glibc-2.3.5-gcc4_fix_symbols-1.patch
@@ -84,6 +86,5 @@ http://www.linuxfromscratch.org/patches/lfs/development/readline-5.0-fixes-1.pat
 http://www.linuxfromscratch.org/patches/lfs/development/sysklogd-1.4.1-fixes-1.patch
 http://www.linuxfromscratch.org/patches/lfs/development/tar-1.15.1-gcc4_fix_tests-1.patch
 http://www.linuxfromscratch.org/patches/lfs/development/tar-1.15.1-sparse_fix-1.patch
-http://www.linuxfromscratch.org/patches/lfs/development/util-linux-2.12q-cramfs-1.patch
-http://www.linuxfromscratch.org/patches/lfs/development/util-linux-2.12q-reiser_crash-2.patch
+http://www.linuxfromscratch.org/patches/lfs/development/util-linux-2.12r-cramfs-1.patch
 http://www.linuxfromscratch.org/patches/lfs/development/vim-6.3-security_fix-2.patch

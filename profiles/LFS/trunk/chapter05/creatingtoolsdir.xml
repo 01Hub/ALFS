@@ -64,6 +64,7 @@
 	<source>&bzip2-docs-patch;</source>
 	<source>&bzip2-bzgrep-security-patch;</source>
         <source>&coreutils-package;</source>
+	<source>&coreutils-echo-patch;</source>
         <source>&coreutils-dupes-patch;</source>
         <source>&coreutils-uname-patch;</source>
         <source>&dejagnu-package;</source>
@@ -76,6 +77,7 @@
         <source>&flex-package;</source>
         <source>&flex-debian-fixes-patch;</source>
         <source>&gawk-package;</source>
+	<source>&gawk-segfault-patch;</source>
         <source>&gcc-package;</source>
         <source>&gcc-specs-patch;</source>
         <source>&gettext-package;</source>
@@ -134,7 +136,6 @@
         <source>&udev-rules-file;</source>
         <source>&util-linux-package;</source>
         <source>&util-linux-cramfs-patch;</source>
-	<source>&util-linux-reiser-crash-patch;</source>
         <source>&vim-package;</source>
         <source>&vim-lang-package;</source>
         <source>&vim-security-patch;</source>
