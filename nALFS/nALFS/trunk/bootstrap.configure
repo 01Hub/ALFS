@@ -20,8 +20,15 @@ NALFS_LIBS="-lnALFS"
 AC_CONFIG_LIBCONFIG_IN([nALFS])
 AC_STDC_HEADERS
 AC_CONFIG_HEADER([config.h])
+# Check for ncurses libs
+AC_CHECK_LIB([ncurses], [initscr], [MAIN_LIBS="${MAIN_LIBS} -lncurses"], [
+	echo "***"
+	echo "*** The ncurses library was not found."
+	echo "*** Please install the ncurses library and the rerun configure."
+	echo "***"
+	exit 1
+])
 AC_CHECK_LIB([form], [form_driver], [MAIN_LIBS="${MAIN_LIBS} -lform"])
-AC_CHECK_LIB([ncurses], [initscr], [MAIN_LIBS="${MAIN_LIBS} -lncurses"])
 AC_SUBST([MAIN_LIBS])
 AM_CONDITIONAL(STATIC_BUILD, test x${enable_static} = xyes)
 if test x${enable_static} = xyes; then
