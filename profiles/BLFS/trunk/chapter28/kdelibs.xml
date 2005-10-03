@@ -89,6 +89,12 @@
 	<param>--enable-fast-malloc=full</param>
       </configure>
       <make />
+      <!-- uncomment to build api docs -->
+      <!--
+      <make>
+        <param>apidox</param>
+      </make>
+      -->
       <make>
 	<param>install</param>
       </make>

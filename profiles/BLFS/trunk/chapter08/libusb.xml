@@ -78,7 +78,7 @@
       </mkdir>
       <copy>
 	<source>apidocs/html/*</source>
-	<name>/usr/share/doc/libusb-&libusb-version;/apidocs</name>
+	<destination>/usr/share/doc/libusb-&libusb-version;/apidocs</destination>
       </copy>
       -->
     </stage>

@@ -15,7 +15,6 @@
 <!ENTITY % package_entities_extra SYSTEM "../config/packages/ch43.ent">
 %package_entities_extra;
 
-
 ]>
 <alfs>
   <package name="postgresql" version="&postgresql-version;">

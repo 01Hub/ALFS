@@ -46,6 +46,7 @@
     <stageinfo>
       <base>&build_dir;/&docbook-utils-directory;</base>
     </stageinfo>
+    <execute command="sed -i 's:/html::' doc/HTML/Makefile.in" />
     <configure>
       <param>--prefix=/usr</param>
     </configure>

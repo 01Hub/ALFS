@@ -52,6 +52,12 @@
         <param>--disable-dependency-tracking</param>
       </configure>
       <make />
+      <!-- uncomment to build api docs -->
+      <!--
+      <make>
+        <param>apidox</param>
+      </make>
+      -->
       <make>
         <param>install</param>
       </make>
