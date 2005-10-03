@@ -23,17 +23,17 @@
         <name>fltk</name>
       </utilizes>
       <utilizes>
-	<name>qt</name>
+        <name>qt</name>
       </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
         <digest>&alsa-tools-md5;</digest>
-	<archive>&packages_dir;/&alsa-tools-package;</archive>
+        <archive>&packages_dir;/&alsa-tools-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing ac3dec">
+    <stage name="Installing ac3dec and extract_ac3">
       <stageinfo>
         <base>&build_dir;/&alsa-tools-directory;/ac3dec</base>
       </stageinfo>
@@ -49,11 +49,6 @@
       <stageinfo>
         <base>&build_dir;/&alsa-tools-directory;/as10k1</base>
       </stageinfo>
-      <execute command="sed">
-	<param>-i</param>
-	<param>-e "s/^next_cli_arg:/&real-amp;\n\n\tbreak;/"</param>
-	<param>as10k1.c</param>
-      </execute>
       <configure>
         <param>--prefix=/usr</param>
       </configure>
@@ -62,6 +57,23 @@
         <param>install</param>
       </make>
     </stage>
+    <!-- Uncomment if you want to build echomixer (gtk+ is required). -->
+    <!--
+    <stage name="Installing echomixer">
+      <stageinfo>
+        <base>&build_dir;/&alsa-tools-directory;/echomixer</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/usr</param>
+      </configure>
+      <make />
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    -->
+    <!-- Uncomment if you want to build envy24control (gtk+ is required). -->
+    <!--
     <stage name="Installing envy24control">
       <stageinfo>
         <base>&build_dir;/&alsa-tools-directory;/envy24control</base>
@@ -74,6 +86,49 @@
         <param>install</param>
       </make>
     </stage>
+    -->
+    <!-- Uncomment if you want to build hdspconf (fltk is required). -->
+    <!--
+    <stage name="Installing hdspconf">
+      <stageinfo>
+         <base>&build_dir;/&alsa-tools-directory;/hdspconf</base>
+      </stageinfo>
+      <configure>
+         <param>--prefix=/usr</param>
+      </configure>
+      <make/>
+      <make>
+         <param>install</param>
+      </make>
+    </stage>
+    -->
+    <stage name="Installing hdsploader">
+      <stageinfo>
+         <base>&build_dir;/&alsa-tools-directory;/hdsploader</base>
+      </stageinfo>
+      <configure>
+         <param>--prefix=/usr</param>
+      </configure>
+      <make/>
+      <make>
+         <param>install</param>
+      </make>
+    </stage>
+    <!-- Uncomment if you want to build hdspmixer (fltk is required). -->
+    <!--
+    <stage name="Installing hdspmixer">
+      <stageinfo>
+         <base>&build_dir;/&alsa-tools-directory;/hdspmixer</base>
+      </stageinfo>
+      <configure>
+         <param>--prefix=/usr</param>
+      </configure>
+      <make/>
+      <make>
+         <param>install</param>
+      </make>
+    </stage>
+    -->
     <stage name="Installing sb16_csp">
       <stageinfo>
         <base>&build_dir;/&alsa-tools-directory;/sb16_csp</base>
@@ -96,6 +151,121 @@
       <make />
       <make>
         <param>install</param>
+      </make>
+    </stage>
+    <stage name="Installing ld10k1">
+      <stageinfo>
+         <base>&build_dir;/&alsa-tools-directory;/ld10k1</base>
+      </stageinfo>
+      <configure>
+         <param>--prefix=/usr</param>
+         <param>--enable-static</param>
+      </configure>
+      <make/>
+      <make>
+         <param>install</param>
+      </make>
+    </stage>
+    <stage name="Installing mixartloader">
+      <stageinfo>
+         <base>&build_dir;/&alsa-tools-directory;/mixartloader</base>
+      </stageinfo>
+      <configure>
+         <param>--prefix=/usr</param>
+      </configure>
+      <make/>
+      <make>
+         <param>install</param>
+      </make>
+    </stage>
+    <stage name="Installing pcxhrloader">
+      <stageinfo>
+         <base>&build_dir;/&alsa-tools-directory;/pcxhrloader</base>
+      </stageinfo>
+      <configure>
+         <param>--prefix=/usr</param>
+      </configure>
+      <make/>
+      <make>
+         <param>install</param>
+      </make>
+    </stage>
+    <!-- Uncomment if you want to build rmedigicontrol (gtk+ is required). -->
+    <!--
+    <stage name="Installing rmedigicontrol">
+      <stageinfo>
+         <base>&build_dir;/&alsa-tools-directory;/rmedigicontrol</base>
+      </stageinfo>
+      <configure>
+         <param>--prefix=/usr</param>
+      </configure>
+      <make/>
+      <make>
+         <param>install</param>
+      </make>
+    </stage>
+    -->
+    <!-- Uncomment if you want to build qlo10k1 (qt is required). -->
+    <!--
+    <stage name="Installing qlo10k1">
+      <stageinfo>
+         <base>&build_dir;/&alsa-tools-directory;/qlo10k1</base>
+      </stageinfo>
+      <configure>
+         <param>--prefix=/usr</param>
+      </configure>
+      <make/>
+      <make>
+         <param>install</param>
+      </make>
+    </stage>
+    -->
+    <stage name="Installing sscape_ctl">
+      <stageinfo>
+         <base>&build_dir;/&alsa-tools-directory;/sscape_ctl</base>
+      </stageinfo>
+      <configure>
+         <param>--prefix=/usr</param>
+      </configure>
+      <make/>
+      <make>
+         <param>install</param>
+      </make>
+    </stage>
+    <stage name="Installing us428control">
+      <stageinfo>
+         <base>&build_dir;/&alsa-tools-directory;/us428control</base>
+      </stageinfo>
+      <configure>
+         <param>--prefix=/usr</param>
+      </configure>
+      <make/>
+      <make>
+         <param>install</param>
+      </make>
+    </stage>
+    <stage name="Installing usx2yloader">
+      <stageinfo>
+         <base>&build_dir;/&alsa-tools-directory;/usx2yloader</base>
+      </stageinfo>
+      <configure>
+         <param>--prefix=/usr</param>
+      </configure>
+      <make/>
+      <make>
+         <param>install</param>
+      </make>
+    </stage>
+    <stage name="Installing vxloader">
+      <stageinfo>
+         <base>&build_dir;/&alsa-tools-directory;/vxloader</base>
+      </stageinfo>
+      <configure>
+         <param>--prefix=/usr</param>
+      </configure>
+      <make/>
+      <make>
+         <param>install</param>
       </make>
     </stage>
     <stage name="Cleanup">
