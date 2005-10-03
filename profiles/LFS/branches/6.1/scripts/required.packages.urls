@@ -13,10 +13,7 @@ ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/file/file-4.1
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/findutils/findutils-4.2.23.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/flex/flex-2.5.31.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gawk/gawk-3.1.4.tar.bz2
-ftp://ftp.gnu.org/gnu/gcc/gcc-3.4.3/gcc-3.4.3.tar.bz2
-#ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gcc/gcc-core-3.4.3.tar.bz2
-#ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gcc/gcc-g++-3.4.3.tar.bz2
-#ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gcc/gcc-testsuite-3.4.3.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gcc/gcc-3.4.3.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gettext/gettext-0.14.3.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/glibc/glibc-2.3.4.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/glibc/glibc-linuxthreads-2.3.4.tar.bz2
