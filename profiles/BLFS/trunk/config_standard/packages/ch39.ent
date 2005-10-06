@@ -19,7 +19,7 @@
 <!ENTITY mplayer-md5       "5fadd6957d3aab989cd760ff38fb8fdf">
 <!ENTITY mplayer-directory "mplayer-&mplayer-version;">
 
-<!ENTITY mplayer-patch     "Mplayer-&mplayer-version;-kernel_2.6-1.patch">
+<!ENTITY mplayer-patch     "MPlayer-&mplayer-version;-kernel_2.6-1.patch">
 
 <!ENTITY mplayer-skin-package "Mplayer-Blue-1.4.tar.bz2">
 <!ENTITY mplayer-skin-md5     "3006f514cf0c9a8f832cfb1abee276bf">

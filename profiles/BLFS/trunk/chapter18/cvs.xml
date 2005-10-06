@@ -17,6 +17,9 @@
 	<name>gdbm</name>
       </utilizes>
       <utilizes>
+      	<name>tcsh</name>
+      </utilizes>
+      <utilizes>
 	<name>krb4</name>
       </utilizes>
       <utilizes>
@@ -27,9 +30,6 @@
       </utilizes>
       <utilizes>
 	<name>&mta-impl;</name>
-      </utilizes>
-      <utilizes>
-	<name>vim</name>
       </utilizes>
     </packageinfo>      
     <stage name="Unpacking">
@@ -60,6 +60,15 @@
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+      	<option>parents</option>
+    	<name>/usr/share/doc/cvs-&cvs-version;</name>
+      </mkdir>
+      <copy>
+      	<source>doc/cvs.ps</source>
+	<source>doc/cvsclient.ps</source>
+	<destination>/usr/share/doc/cvs-&cvs-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&cvs-directory;</remove>

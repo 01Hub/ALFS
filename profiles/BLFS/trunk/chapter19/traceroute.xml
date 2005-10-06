@@ -43,6 +43,16 @@
       <make>
         <param>install-man</param>
       </make>
+      <!-- Uncomment this section, if you want to execute traceroute only as root. -->
+      <!--
+      <permissions mode="0755">
+      	<name>/usr/sbin/traceroute</name>
+      </permissions>
+      -->
+      <move>
+      	<source>/usr/sbin/traceroute</source>
+	<destination>/usr/bin</destination>
+      </move>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&traceroute-directory;</remove>

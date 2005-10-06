@@ -26,12 +26,6 @@
 	<name>db</name>
       </utilizes>
       <utilizes>
-	<name>gdbm</name>
-      </utilizes>
-      <utilizes>
-	<name>libogg</name>
-      </utilizes>
-      <utilizes>
 	<name>linuxpam</name>
       </utilizes>
       <utilizes>
@@ -99,9 +93,26 @@
 	<param>--localstatedir=/var</param>
       </configure>
       <make />
+      <!-- Uncomment the following block, if you wish to build the API docs. Requires doxygen to be installed -->
+      <!--
+      <make>
+      	<param>doxygen</param>
+      </make>
+      -->
       <make>
 	<param>install</param>
       </make>
+      <!-- Uncomment the following block, if you wish to install the API docs. -->
+      <!--
+      <mkdir>
+      	<option>parents</option>
+	<name>/usr/share/doc/wvstreams-&wvstreams-version;/doxy-html</name>
+      </mkdir>
+      <copy>
+      	<source>Docs/doxy-html/*</source>
+	<destination>/usr/share/doc/wvstreams-&wvstreams-version;/doxy-html</destination>
+      </copy> 
+      -->
       &ldconfig;
     </stage>
     <stage name="Cleanup">

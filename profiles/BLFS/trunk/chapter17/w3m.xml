@@ -69,6 +69,21 @@
         <source>doc/menu.default</source>
         <destination>/etc/w3m/menu</destination>
       </copy>
+      <mkdir>
+      	<option>parents</option>
+	<name>/usr/share/doc/w3m-&w3m-version;/html</name>
+      </mkdir>
+      <copy>
+      	<source>doc/HISTORY</source>
+	<source>doc/READM*</source>
+	<source>doc/keymap.*</source>
+	<source>doc/menu.*</source>
+	<destination>/usr/share/doc/w3m-&w3m-version;</destination>
+      </copy>
+      <copy>
+     	<source>doc/*.html</source>
+	<destination>/usr/share/doc/w3m-&w3m-version;/html</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&w3m-directory;</remove>

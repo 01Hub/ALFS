@@ -35,6 +35,15 @@
       <make>
         <param>install</param>
       </make>
+      <mkdir>
+      	<option>parents</option>
+	<name>/usr/share/doc/libpcap-&libpcap-version;</name>
+      </mkdir>
+      <copy>
+      	<source>doc/*html</source>
+	<source>doc/*.txt</source>
+	<destination>/usr/share/doc/libpcap-&libpcap-version;</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&libpcap-directory;</remove>

@@ -73,6 +73,7 @@
 
 <!-- Kerberos implementation -->
 <!-- MIT-krb 5 (mitkrb) or Heimdal (heimdal) -->
+<!-- MIT-krb 5 is all but depreciated in BLFS-6.1 -->
 <!ENTITY krb-impl "heimdal">
 
 <!-- Java implementation -->

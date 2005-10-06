@@ -64,6 +64,17 @@
       <make>
         <param>install-ntp</param>
       </make>
+      <!-- Uncomment the following section, if you want set the hardware clock 
+      to system time at reboot and shutdown -->
+      <!--
+      <link>
+      	<target>../init.d/setclock</target>
+	<name>/etc/rc.d/rc0.d/K46setclock</name>
+      </link>
+      <link>
+      	<target>../init.d/setclock</target>
+	<name>/etc/rc.d/rc6.d/K46setclock</name>
+      </link> -->
     </stage>
     &bootscripts-clean;
     <stage name="Cleanup">

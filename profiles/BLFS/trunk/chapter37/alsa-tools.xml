@@ -64,7 +64,7 @@
         <base>&build_dir;/&alsa-tools-directory;/echomixer</base>
       </stageinfo>
       <configure>
-        <param>--prefix=/usr</param>
+        <param>- -prefix=/usr</param>
       </configure>
       <make />
       <make>
@@ -79,7 +79,7 @@
         <base>&build_dir;/&alsa-tools-directory;/envy24control</base>
       </stageinfo>
       <configure>
-        <param>--prefix=/usr</param>
+        <param>- -prefix=/usr</param>
       </configure>
       <make />
       <make>
@@ -94,7 +94,7 @@
          <base>&build_dir;/&alsa-tools-directory;/hdspconf</base>
       </stageinfo>
       <configure>
-         <param>--prefix=/usr</param>
+         <param>- -prefix=/usr</param>
       </configure>
       <make/>
       <make>
@@ -121,7 +121,7 @@
          <base>&build_dir;/&alsa-tools-directory;/hdspmixer</base>
       </stageinfo>
       <configure>
-         <param>--prefix=/usr</param>
+         <param>- -prefix=/usr</param>
       </configure>
       <make/>
       <make>
@@ -197,7 +197,7 @@
          <base>&build_dir;/&alsa-tools-directory;/rmedigicontrol</base>
       </stageinfo>
       <configure>
-         <param>--prefix=/usr</param>
+         <param>- -prefix=/usr</param>
       </configure>
       <make/>
       <make>
@@ -212,7 +212,7 @@
          <base>&build_dir;/&alsa-tools-directory;/qlo10k1</base>
       </stageinfo>
       <configure>
-         <param>--prefix=/usr</param>
+         <param>- -prefix=/usr</param>
       </configure>
       <make/>
       <make>
