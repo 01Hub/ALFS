@@ -37,6 +37,21 @@
       <stageinfo>
         <base>&build_dir;/&rp-pppoe-directory;/src</base>
       </stageinfo>
+      <search_replace>
+      	<file>scripts/adsl-connect.in</file>
+	<find>/usr/bin/logger</find>
+	<replace>/bin/logger</replace>
+      </search_replace>
+      <search_replace>
+	<file>scripts/adsl-setup.in</file>
+	<find>/usr/bin/logger</find>
+	<replace>/bin/logger</replace>
+      </search_replace>
+      <search_replace>
+	<file>scripts/adsl.stop.in</file>
+	<find>/usr/bin/logger</find>
+	<replace>/bin/logger</replace>
+      </search_replace>
       <configure />
       <make />
       <make>

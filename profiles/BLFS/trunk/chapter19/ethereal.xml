@@ -23,6 +23,9 @@
       <name>pkg-config</name>
     </utilizes>
     <utilizes>
+       <name>gtk+</name>
+    </utilizes>
+    <utilizes>
       <name>gtk+2</name>
     </utilizes>
     <utilizes>

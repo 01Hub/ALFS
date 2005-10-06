@@ -17,40 +17,19 @@
       <name>libxml2</name>
     </requires>
     <utilizes>
-      <name>expat</name>
-    </utilizes>
-    <utilizes>
-      <name>pkg-config</name>
-    </utilizes>
-    <utilizes>
-      <name>db</name>
-    </utilizes>
-    <utilizes>
-      <name>gdbm</name>
-    </utilizes>
-    <utilizes>
       <name>python</name>
     </utilizes>
     <utilizes>
       <name>apache</name>
     </utilizes>
     <utilizes>
-      <name>&jdk;</name>
-    </utilizes>
-    <utilizes>
-      <name>openssl</name>
-    </utilizes>
-    <utilizes>
       <name>openssh</name>
     </utilizes>
     <utilizes>
-      <name>&krb-impl;</name>
-    </utilizes>
-    <utilizes>
-      <name>swig</name>
-    </utilizes>
-    <utilizes>
       <name>neon</name>
+    </utilizes>
+    <utilizes>
+      <name>&jdk;</name>
     </utilizes>
     <utilizes>
       <name>junit</name>
@@ -63,6 +42,24 @@
     </utilizes>
     <utilizes>
       <name>xinetd</name>
+    </utilizes>
+    <utilizes>
+      <name>pkg-config</name>
+    </utilizes>
+    <utilizes>
+      <name>openssl</name>
+    </utilizes>
+    <utilizes>
+      <name>&krb-impl;</name>
+    </utilizes>
+    <utilizes>
+      <name>expat</name>
+    </utilizes>
+    <utilizes>
+      <name>gdbm</name>
+    </utilizes>
+    <utilizes>
+      <name>swig</name>
     </utilizes>
   </packageinfo>
   <stage name="Unpacking.">
@@ -78,8 +75,33 @@
     </stageinfo>
     <configure>
       <param>--prefix=/usr</param>
+      <!-- Uncomment the following block, if you want to enable building of the Java bindings. -->
+      <!-- <param>- -enable-javahl</param> -->
+      <!-- Uncomment the following block, if you want to enable building of the Python and Perl bindings. -->
+      <!--
+      <param>- -with-swig</param>
+      <param>- -enable-swig-bindings</param> 
+      -->
     </configure>
     <make />
+    <!-- Uncomment the following block, if you want build the Java bindings. -->
+    <!--
+    <make>
+      <param>javahl</param>
+    </make> 
+    -->
+    <!-- Uncomment the following block, if you want build the Perl bindings. -->
+    <!--
+    <make>
+       <param>swig-pl</param>
+    </make>
+    -->
+    <!-- Uncomment the following block, if you want build the Python bindings. -->
+    <!--
+    <make>
+    	<param>swig-py</param>
+    </make> 
+    -->
     <make>
       <param>install</param>
     </make>
@@ -87,14 +109,35 @@
       <option>parents</option>
       <name>/usr/share/doc/subversion-&subversion-version;</name>
     </mkdir>
-    <permissions mode="0755">
-      <name>/usr/share/doc/subversion-&subversion-version;</name>
-    </permissions>
     <copy>
       <option>recursive</option>
       <source>doc/*</source>
       <destination>/usr/share/doc/subversion-&subversion-version;</destination>
     </copy>
+    <!-- Uncomment the following block, to install the Java bindings -->
+    <!--
+    <make>
+	<param>install-javahl</param>
+    </make>
+    -->
+    <!-- Uncomment the following block, to install the Perl bindings -->
+    <!--
+    <make>
+	<param>install-swig-pl</param>
+    </make>
+    -->
+    <!-- Uncomment the following block, to install the Python bindings -->
+    <!--
+    <make>
+	<param>install-swig-py</param>
+    </make>
+    <textdump>
+    	<file>/usr/lib/python2.4/site-packages/subversion.pth</file>
+	<content>
+	  =/usr/lib/svn-python
+	</content>
+    </textdump>
+    -->
   </stage>
   <stage name="Cleanup.">
     <remove>&build_dir;/&subversion-directory;</remove>

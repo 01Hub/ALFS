@@ -1,4 +1,5 @@
 <!--************* packages for chapter 31 *************-->
+
 <!ENTITY libgnomecups-version   "0.2.0">
 <!ENTITY libgnomecups-package   "libgnomecups-&libgnomecups-version;.tar.bz2">
 <!ENTITY libgnomecups-md5       "227cb2b119412b164bece23b287a130d">

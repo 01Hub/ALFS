@@ -69,7 +69,7 @@
         <param>--with-piddir=/var/run</param>
         <param>--with-fhs</param>
         <param>--with-smbmount</param>
-	<!-- uncoment to enable linking with pam -->
+	<!-- uncomment to enable linking with pam -->
 	<!-- <param>- -with-pam</param> -->
       </configure>
       <make />
@@ -87,7 +87,6 @@
       </link>
       <permissions mode="644">
 	<name>/usr/include/libsmbclient.h</name>
-	<name>/usr/lib/samba/libsmbclient.a</name>
       </permissions>
       <!-- uncomment if linking with pam -->
       <!--
@@ -119,6 +118,25 @@
         <source>examples/smb.conf.default</source>
         <destination>/etc/samba</destination>
       </copy>
+      <copy>
+      	<source>../docs/*.pdf</source>
+	<destination>/usr/share/samba</destination>
+      </copy>
+      <!-- Uncomment this section, if you want use smbmnt and smbumount as normal user. -->
+      <!--
+      <permissions mode="4755">
+      	<name>/usr/bin/smbmnt</name>
+	<name>/usr/bin/smbumount</name>
+      </permissions> 
+      -->
+      <!-- Uncomment this section, if you want to print on printers on smb shares. -->
+      <!--
+      <link>
+      	<option>force</option>
+	<target>/usr/bin/smbspool</target>
+	<name>/usr/lib/cups/backend/smb</name>
+      </link>
+      -->
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&samba-directory;</remove>

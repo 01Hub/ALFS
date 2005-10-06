@@ -16,6 +16,24 @@
       <utilizes>
         <name>gnupg</name>
       </utilizes>
+      <utilizes>
+      	<name>ispell</name>
+      </utilizes>
+      <utilizes>
+      	<name>&krb-impl;</name>
+      </utilizes>
+      <utilizes>
+      	<name>cyrus-sasl</name>
+      </utilizes>
+      <utilizes>
+      	<name>openssl</name>
+      </utilizes>
+      <utilizes>
+      	<name>slang</name>
+      </utilizes>
+      <utilizes>
+      	<name>gdb</name>
+      </utilizes>
     </packageinfo>
     <stage name="Unpacking">
       <unpack>
@@ -43,6 +61,8 @@
       <configure>
         <param>--prefix=/usr</param>
         <param>--sysconfdir=/etc</param>
+	<param>--enable-pop</param>
+	<param>--enable-imap</param>
       </configure>
       <make />
       <make>

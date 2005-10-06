@@ -29,6 +29,9 @@
         <name>libtiff</name>
       </utilizes>
       <utilizes>
+      	<name>sdl</name>
+      </utilizes>
+      <utilizes>
 	<name>svgalib</name>
       </utilizes>
       <utilizes>
@@ -51,6 +54,9 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
+	<!-- If you want to enable graphics mode, uncomment the following block -->
+	<!-- Required a framebuffer and gpm to be installed -->
+      	<!--<param>- -enable-graphics</param> -->
       </configure>
       <make />
       <make>

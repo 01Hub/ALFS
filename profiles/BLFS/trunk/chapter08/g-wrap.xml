@@ -14,7 +14,7 @@
   <package name="g-wrap" version="&g-wrap-version;">
     <packageinfo>
       <requires>
-        <name>slib</name>
+        <name>guile</name>
       </requires>
       <utilizes>
 	<name>glib</name>
