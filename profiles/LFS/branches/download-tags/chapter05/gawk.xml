@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+<alfs>
+  <package name="gawk" version="&gawk-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&gawk-md5;</digest>
+        <archive>&packages_dir;/&gawk-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&gawk-directory;</base>
+      </stageinfo>
+      <configure>
+        <param>--prefix=/tools</param>
+      </configure>
+      <make>
+        <param>&jlevel;</param>
+      </make>
+      <!--
+      <make>
+        <param>check</param>
+      </make>
+      -->
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gawk-directory;</remove>
+    </stage>
+  </package>
+</alfs>
