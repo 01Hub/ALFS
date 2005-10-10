@@ -1,3 +1,24 @@
+2005-10-10  Tagged as 1.2.5
+
+2005-10-03  Thomas Pegg
+
+	* Fix detection of ncurses library so if ncurses is not found configure will bail out.
+	  (Bug 929)
+
+2005-04-11  Jamie Bennett
+
+	* Added support for downloading and digest checking packages within the <unpack> and 
+	  <download> elements without executing the other tags in a profile.
+
+2005-03-07  Jamie Bennett
+
+	* Added support for printing the name of any package that is required but not present 
+	  before nALFS gives the build aborted message
+
+2004-12-01  Jamie Bennett
+
+	* Option to disable digest checking from the command line.
+	
 2004-06-19  tag v1_2_4
 
 2004-06-09  Jamie Bennett
