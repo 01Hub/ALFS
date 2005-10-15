@@ -132,6 +132,7 @@
 	<source>&tar-sparse-fix-patch;</source>
         <source>&tcl-package;</source>
         <source>&texinfo-package;</source>
+	<source>&texinfo-tempfile_fix-patch;</source>
         <source>&udev-package;</source>
         <source>&udev-rules-file;</source>
         <source>&util-linux-package;</source>

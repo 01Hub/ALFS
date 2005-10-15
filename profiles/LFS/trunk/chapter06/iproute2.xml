@@ -23,6 +23,9 @@
       <execute command="sed">
 	<param>-i '/^TARGETS/s@arpd@@g' misc/Makefile</param>
       </execute>
+      <permissions mode="755">
+        <name>configure</name>
+      </permissions>
       <configure />
       <make>
         <param>&jlevel;</param>

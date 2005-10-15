@@ -33,6 +33,14 @@
         <find>install_to_$(INSTALL_DEST)</find>
         <replace></replace>
       </search_replace>
+      <execute command="sed">
+        <param>-i 's/^XCFLAGS =$/&real-amp; -fomit-frame-pointer/'</param>
+        <param>gcc/Makefile.in</param>
+      </execute>
+      <execute command="sed">
+        <param>-i 's@\./fixinc\.sh@-c true@'</param>
+        <param>gcc/Makefile.in</param>
+      </execute>  
       <configure command="../&gcc-directory;/configure">
         <param>--prefix=/usr</param>
         <param>--libexecdir=/usr/lib</param>

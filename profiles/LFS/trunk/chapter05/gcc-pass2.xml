@@ -39,7 +39,7 @@ suites for GCC and Binutils until you are able to resolve the issue.
        <destination>gcc/Makefile.in.orig</destination>
       </copy>
       <execute command="sed">
-        <param>'s@\(^NATIVE_SYSTEM_HEADER_DIR =\).*@\1 /tools/include@g'</param>
+        <param>'s@\./fixinc\.sh@-c true@'</param>
         <param>gcc/Makefile.in.orig &gt; gcc/Makefile.in</param>
       </execute>
       <copy>
