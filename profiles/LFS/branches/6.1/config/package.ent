@@ -21,6 +21,8 @@
 <!ENTITY binutils-package "binutils-&binutils-version;.tar.bz2">
 <!ENTITY binutils-directory "binutils-&binutils-version;">
 
+<!ENTITY binutils-gcc4-patch "binutils-&binutils-version;-gcc4-1.patch">
+
 <!ENTITY bison-md5 "988cd56a9e4b29dfc0546758186d79a2">
 <!ENTITY bison-version "2.0">
 <!ENTITY bison-package "bison-&bison-version;.tar.bz2">
@@ -30,6 +32,9 @@
 <!ENTITY bzip2-version "1.0.3">
 <!ENTITY bzip2-package "bzip2-&bzip2-version;.tar.bz2">
 <!ENTITY bzip2-directory "bzip2-&bzip2-version;">
+
+<!ENTITY bzip2-docs-patch "bzip2-&bzip2-version;-install_docs-1.patch">
+<!ENTITY bzip2-bzgrep-security-patch "bzip2-&bzip2-version;-bzgrep_security-1.patch">
 
 <!ENTITY coreutils-md5 "172ee3c315af93d3385ddfbeb843c53f">
 <!ENTITY coreutils-version "5.2.1">
@@ -118,6 +123,7 @@
 <!ENTITY glibc-linuxthreads-package "glibc-linuxthreads-&glibc-version;&glibc-cvs-tag;.tar.bz2">
 
 <!ENTITY glibc-fix-testsuite-patch "glibc-&glibc-version;&glibc-cvs-tag;-fix_test-1.patch">
+<!ENTITY glibc-rtld-search-dirs-patch "glibc-&glibc-version;&glibc-cvs-tag;-rtld_search_dirs-1.patch">
 
 <!ENTITY grep-md5 "52202fe462770fa6be1bb667bd6cf30c">
 <!ENTITY grep-version "2.5.1a">
@@ -250,8 +256,8 @@
 <!ENTITY patch-package "patch-&patch-version;.tar.bz2">
 <!ENTITY patch-directory "patch-&patch-version;">
 
-<!ENTITY perl-md5 "3d030b6ff2a433840edb1a407d18dc0a">
-<!ENTITY perl-version "5.8.6">
+<!ENTITY perl-md5 "9a175d6ccbb5d9b41ffac5073ff9cc3c">
+<!ENTITY perl-version "5.8.7">
 <!ENTITY perl-package "perl-&perl-version;.tar.bz2">
 <!ENTITY perl-directory "perl-&perl-version;">
 
@@ -313,6 +319,8 @@
 <!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
+<!ENTITY texinfo-tempfile_fix-patch "texinfo-&texinfo-version;-tempfile_fix-1.patch">
+
 <!ENTITY udev-md5 "30fb3a320e74ff0c49c15ecaa6e37a4c">
 <!ENTITY udev-version "056">
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
@@ -327,6 +335,7 @@
 <!ENTITY util-linux-directory "util-linux-&util-linux-version;">
 
 <!ENTITY util-linux-cramfs-patch "util-linux-&util-linux-version;-cramfs-1.patch">
+<!ENTITY util-linux-umount-fix-patch "util-linux-&util-linux-version;-umount_fix-1.patch">
 
 <!ENTITY vim-md5 "821fda8f14d674346b87e3ef9cb96389">
 <!ENTITY vim-version "6.3">
@@ -336,12 +345,10 @@
 <!ENTITY vim-lang-md5 "6bcc2b8ffa408d978f9982e26956022b">
 <!ENTITY vim-lang-package "vim-&vim-version;-lang.tar.bz2">
 
-<!ENTITY vim-security-patch "vim-&vim-version;-security_fix-1.patch">
+<!ENTITY vim-security-patch "vim-&vim-version;-security_fix-2.patch">
 
-<!ENTITY zlib-md5 "1b8aab042d40979e456194c468fd72c5">
-<!ENTITY zlib-version "1.2.2">
+<!ENTITY zlib-md5 "dee233bf288ee795ac96a98cc2e369b6">
+<!ENTITY zlib-version "1.2.3">
 <!ENTITY zlib-package "zlib-&zlib-version;.tar.bz2">
 <!ENTITY zlib-directory "zlib-&zlib-version;">
-
-<!ENTITY zlib-security-fix-patch "zlib-&zlib-version;-security_fix-1.patch">
 
