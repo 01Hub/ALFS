@@ -58,8 +58,11 @@
         <source>&bash-fixes-patch;</source>
         <source>&bash-wcontinued-patch;</source>
         <source>&binutils-package;</source>
+	<source>&binutils-gcc4-patch;</source>
         <source>&bison-package;</source>
         <source>&bzip2-package;</source>
+	<source>&bzip2-docs-patch;</source>
+	<source>&bzip2-bzgrep-security-patch;</source>
         <source>&coreutils-package;</source>
         <source>&coreutils-dupes-patch;</source>
         <source>&coreutils-uname-patch;</source>
@@ -84,6 +87,7 @@
         <source>&glibc-package;</source>
 	<source>&glibc-linuxthreads-package;</source>
 	<source>&glibc-fix-testsuite-patch;</source>
+	<source>&glibc-rtld-search-dirs-patch;</source>
         <source>&grep-package;</source>
         <source>&groff-package;</source>
         <source>&grub-package;</source>
@@ -126,15 +130,16 @@
 	<source>&tar-sparse-fix-patch;</source>
         <source>&tcl-package;</source>
         <source>&texinfo-package;</source>
+	<source>&texinfo-tempfile_fix-patch;</source>
         <source>&udev-package;</source>
         <source>&udev-rules-file;</source>
         <source>&util-linux-package;</source>
         <source>&util-linux-cramfs-patch;</source>
+	<source>&util-linux-umount-fix-patch;</source>
         <source>&vim-package;</source>
         <source>&vim-lang-package;</source>
         <source>&vim-security-patch;</source>
         <source>&zlib-package;</source>
-	<source>&zlib-security-fix-patch;</source>
         <destination>&LFS;&packages_dir;</destination>
       </copy>
     </stage>
