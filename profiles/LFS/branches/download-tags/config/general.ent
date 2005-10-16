@@ -16,6 +16,11 @@
      -->
 <!ENTITY LFS "/mnt/lfs">
 
+
+<!-- Package/Patch Mirrors -->
+<!ENTITY package-mirror "ftp://ftp.linuxfromscratch.org/pub/lfs/conglomeration">
+<!ENTITY patches-mirror "http://www.linuxfromscratch.org/patches/downloads">
+
 <!-- Location of your LFS packages.
      This is the directory in which all the packages downloaded
      from ftp.linuxfromscratch.org (or their original servers)

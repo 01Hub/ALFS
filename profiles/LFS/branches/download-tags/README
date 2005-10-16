@@ -2,7 +2,7 @@
         LFS-6.1 PROFILE
 ==============================================
 
-This profile must be used with nALFS 1.2.3 or later.
+This profile must be used with nALFS 1.2.5 or later.
 
 This profile contains two areas that must be customized to create
 your LFS installation:

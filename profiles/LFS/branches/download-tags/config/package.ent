@@ -3,17 +3,29 @@
 <!ENTITY autoconf-package "autoconf-&autoconf-version;.tar.bz2">
 <!ENTITY autoconf-directory "autoconf-&autoconf-version;">
 
+<!ENTITY autoconf-package-url "&package-mirror;/autoconf/">
+<!ENTITY autoconf-patches-url "&patches-mirror;/autoconf/">
+
 <!ENTITY automake-md5 "3a534ad55d781861e1e92d3b8d898a9a">
 <!ENTITY automake-version "1.9.5">
 <!ENTITY automake-package "automake-&automake-version;.tar.bz2">
 <!ENTITY automake-directory "automake-&automake-version;">
+
+<!ENTITY automake-package-url "&package-mirror;/automake/">
+<!ENTITY automake-patches-url "&patches-mirror;/automake/">
 
 <!ENTITY bash-md5 "56276db2d614aee1cb6c3030327c607d">
 <!ENTITY bash-version "3.0">
 <!ENTITY bash-package "bash-&bash-version;.tar.bz2">
 <!ENTITY bash-directory "bash-&bash-version;">
 
+<!ENTITY bash-package-url "&package-mirror;/bash/">
+<!ENTITY bash-patches-url "&patches-mirror;/bash/">
+
+<!ENTITY bash-fixes-patch-md5 "b7d0e06c2637c04ab9bfca2ebb03a9bd">
 <!ENTITY bash-fixes-patch "bash-&bash-version;-fixes-3.patch">
+
+<!ENTITY bash-wcontinued-patch-md5 "93eb380f4dd903ee25e47c7950894578">
 <!ENTITY bash-wcontinued-patch "bash-&bash-version;-avoid_WCONTINUED-1.patch">
 
 <!ENTITY binutils-md5 "e9bcf84d9e6b5a2d840e76f22a3fce5f">
@@ -21,22 +33,37 @@
 <!ENTITY binutils-package "binutils-&binutils-version;.tar.bz2">
 <!ENTITY binutils-directory "binutils-&binutils-version;">
 
+<!ENTITY binutils-package-url "&package-mirror;/binutils/">
+<!ENTITY binutils-patches-url "&patches-mirror;/binutils/">
+
 <!ENTITY bison-md5 "988cd56a9e4b29dfc0546758186d79a2">
 <!ENTITY bison-version "2.0">
 <!ENTITY bison-package "bison-&bison-version;.tar.bz2">
 <!ENTITY bison-directory "bison-&bison-version;">
+
+<!ENTITY bison-package-url "&package-mirror;/bison/">
+<!ENTITY bison-patches-url "&patches-mirror;/bison/">
 
 <!ENTITY bzip2-md5 "daa86e5a449a60d1017938bef1d4bb9f">
 <!ENTITY bzip2-version "1.0.3">
 <!ENTITY bzip2-package "bzip2-&bzip2-version;.tar.bz2">
 <!ENTITY bzip2-directory "bzip2-&bzip2-version;">
 
+<!ENTITY bzip2-package-url "&package-mirror;/bzip2/">
+<!ENTITY bzip2-patches-url "&patches-mirror;/bzip2/">
+
 <!ENTITY coreutils-md5 "172ee3c315af93d3385ddfbeb843c53f">
 <!ENTITY coreutils-version "5.2.1">
 <!ENTITY coreutils-package "coreutils-&coreutils-version;.tar.bz2">
 <!ENTITY coreutils-directory "coreutils-&coreutils-version;">
 
+<!ENTITY coreutils-package-url "&package-mirror;/coreutils/">
+<!ENTITY coreutils-patches-url "&patches-mirror;/coreutils/">
+
+<!ENTITY coreutils-dupes-patch-md5 "">
 <!ENTITY coreutils-dupes-patch "coreutils-&coreutils-version;-suppress_uptime_kill_su-1.patch">
+
+<!ENTITY coreutils-uname-patch-md5 "">
 <!ENTITY coreutils-uname-patch "coreutils-&coreutils-version;-uname-2.patch">
 
 <!ENTITY dejagnu-md5 "ea99f6451e2ef228cd2504cd1b32bac8">
@@ -44,21 +71,34 @@
 <!ENTITY dejagnu-package "dejagnu-&dejagnu-version;.tar.bz2">
 <!ENTITY dejagnu-directory "dejagnu-&dejagnu-version;">
 
+<!ENTITY dejagnu-package-url "&package-mirror;/dejagnu/">
+<!ENTITY dejagnu-patches-url "&patches-mirror;/dejagnu/">
+
 <!ENTITY diffutils-md5 "54951d7e483fe5bd76d886204c5bfd58">
 <!ENTITY diffutils-version "2.8.1">
 <!ENTITY diffutils-package "diffutils-&diffutils-version;.tar.bz2">
 <!ENTITY diffutils-directory "diffutils-&diffutils-version;">
+
+<!ENTITY diffutils-package-url "&package-mirror;/diffutils/">
+<!ENTITY diffutils-patches-url "&patches-mirror;/diffutils/">
 
 <!ENTITY e2fsprogs-md5 "0e7ffa1b3b1985a4e023d338088a6e4a">
 <!ENTITY e2fsprogs-version "1.37">
 <!ENTITY e2fsprogs-package "e2fsprogs-&e2fsprogs-version;.tar.bz2">
 <!ENTITY e2fsprogs-directory "e2fsprogs-&e2fsprogs-version;">
 
+<!ENTITY e2fsprogs-package-url "&package-mirror;/e2fsprogs/">
+<!ENTITY e2fsprogs-patches-url "&patches-mirror;/e2fsprogs/">
+
 <!ENTITY expect-md5 "e6aaab98967f6410099b40f2b3ddebb4">
 <!ENTITY expect-version "5.43.0">
 <!ENTITY expect-package "expect-&expect-version;.tar.bz2">
 <!ENTITY expect-directory "expect-5.43">
 
+<!ENTITY expect-package-url "&package-mirror;/expect/">
+<!ENTITY expect-patches-url "&patches-mirror;/expect/">
+
+<!ENTITY expext-spawn-patch-md5 "">
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
 
 <!ENTITY file-md5 "a14dcb05c172206d92dce9e0ee776501">
@@ -66,22 +106,35 @@
 <!ENTITY file-package "file-&file-version;.tar.bz2">
 <!ENTITY file-directory "file-&file-version;">
 
+<!ENTITY file-package-url "&package-mirror;/file/">
+<!ENTITY file-patches-url "&patches-mirror;/file/">
+
 <!ENTITY findutils-md5 "5d42d70ddb79e15b401109900724d701">
 <!ENTITY findutils-version "4.2.23">
 <!ENTITY findutils-package "findutils-&findutils-version;.tar.bz2">
 <!ENTITY findutils-directory "findutils-&findutils-version;">
+
+<!ENTITY findutils-package-url "&package-mirror;/findutils/">
+<!ENTITY findutils-patches-url "&patches-mirror;/findutils/">
 
 <!ENTITY flex-md5 "363dcc4afc917dc51306eb9d3de0152f">
 <!ENTITY flex-version "2.5.31">
 <!ENTITY flex-package "flex-&flex-version;.tar.bz2">
 <!ENTITY flex-directory "flex-&flex-version;">
 
+<!ENTITY flex-package-url "&package-mirror;/flex/">
+<!ENTITY flex-patches-url "&patches-mirror;/flex/">
+
+<!ENTITY flex-debian-fixes-patch-md5 "">
 <!ENTITY flex-debian-fixes-patch "flex-&flex-version;-debian_fixes-3.patch">
 
 <!ENTITY gawk-md5 "b8b532beaf02350e69d2d5dc98cb1e37">
 <!ENTITY gawk-version "3.1.4">
 <!ENTITY gawk-package "gawk-&gawk-version;.tar.bz2">
 <!ENTITY gawk-directory "gawk-&gawk-version;">
+
+<!ENTITY gawk-package-url "&package-mirror;/gawk/">
+<!ENTITY gawk-patches-url "&patches-mirror;/gawk/">
 
 <!ENTITY gcc-version "3.4.3">
 <!ENTITY gcc-cvs-tag "">
@@ -99,14 +152,24 @@
 <!ENTITY gcc-testsuite-md5 "b4fff6ce0a038021b9e507917abb9a07">
 <!ENTITY gcc-testsuite-package "gcc-testsuite-&gcc-version;&gcc-cvs-tag;.tar.bz2">
 
+<!ENTITY gcc-package-url "&package-mirror;/gcc/">
+<!ENTITY gcc-patches-url "&patches-mirror;/gcc/">
+
+<!ENTITY gcc-linkonce-patch-md5 "">
 <!ENTITY gcc-linkonce-patch "gcc-&gcc-version;-linkonce-1.patch">
+
+<!ENTITY gcc-no-fixincludes-patch-md5 "">
 <!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no_fixincludes-1.patch">
+
+<!ENTITY gcc-specs-patch-md5 "">
 <!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-2.patch">
 
 <!ENTITY gettext-md5 "a25304ac49848d0977ab65e81ec67281">
 <!ENTITY gettext-version "0.14.3">
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.bz2">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
+
+<!ENTITY gettext-package-url "&package-mirror;/gettext/">
 
 <!ENTITY glibc-md5 "174ac5ed4f2851fcc866a3bac1e4a6a5">
 <!ENTITY glibc-version "2.3.4">
@@ -117,6 +180,10 @@
 <!ENTITY glibc-linuxthreads-md5 "7a199cd4965eb5622163756ae64358fe">
 <!ENTITY glibc-linuxthreads-package "glibc-linuxthreads-&glibc-version;&glibc-cvs-tag;.tar.bz2">
 
+<!ENTITY glibc-package-url "&package-mirror;/glibc/">
+<!ENTITY glibc-patches-url "&patches-mirror;/glibc/">
+
+<!ENTITY glibc-fix-testsuite-patch-md5 "">
 <!ENTITY glibc-fix-testsuite-patch "glibc-&glibc-version;&glibc-cvs-tag;-fix_test-1.patch">
 
 <!ENTITY grep-md5 "52202fe462770fa6be1bb667bd6cf30c">
@@ -124,20 +191,32 @@
 <!ENTITY grep-package "grep-&grep-version;.tar.bz2">
 <!ENTITY grep-directory "grep-&grep-version;">
 
+<!ENTITY grep-package-url "&package-mirror;/grep/">
+<!ENTITY grep-patches-url "&patches-mirror;/grep/">
+
 <!ENTITY groff-md5 "0dc50d0fa506c2db1e1cd40449caa6b9">
 <!ENTITY groff-version "1.19.1">
 <!ENTITY groff-package "groff-&groff-version;.tar.bz2">
 <!ENTITY groff-directory "groff-&groff-version;">
+
+<!ENTITY groff-package-url "&package-mirror;/groff/">
+<!ENTITY groff-patches-url "&patches-mirror;/groff/">
 
 <!ENTITY grub-md5 "6de1d143d3306c6a874525ae2226268c">
 <!ENTITY grub-version "0.96">
 <!ENTITY grub-package "grub-&grub-version;.tar.bz2">
 <!ENTITY grub-directory "grub-&grub-version;">
 
+<!ENTITY grub-package-url "&package-mirror;/grub/">
+<!ENTITY grub-patches-url "&patches-mirror;/grub/">
+
 <!ENTITY gzip-md5 "d303f3530ad9b70022ff6fd58e5250f8">
 <!ENTITY gzip-version "1.3.5">
 <!ENTITY gzip-package "gzip-&gzip-version;.tar.bz2">
 <!ENTITY gzip-directory "gzip-&gzip-version;">
+
+<!ENTITY gzip-package-url "&package-mirror;/gzip/">
+<!ENTITY gzip-patches-url "&patches-mirror;/gzip/">
 
 <!ENTITY gzip-security-fixes-patch "gzip-&gzip-version;-security_fixes-1.patch">
 
@@ -146,15 +225,24 @@
 <!ENTITY hotplug-package "hotplug-&hotplug-version;.tar.bz2">
 <!ENTITY hotplug-directory "hotplug-&hotplug-version;">
 
+<!ENTITY hotplug-package-url "&package-mirror;/hotplug/">
+<!ENTITY hotplug-patches-url "&patches-mirror;/hotplug/">
+
 <!ENTITY iana-etc-md5 "9f769f7b2d0e519cf62dacb2b3b051d4">
 <!ENTITY iana-etc-version "1.04">
 <!ENTITY iana-etc-package "iana-etc-&iana-etc-version;.tar.bz2">
 <!ENTITY iana-etc-directory "iana-etc-&iana-etc-version;">
 
+<!ENTITY iana-etc-package-url "&package-mirror;/iana-etc/">
+<!ENTITY iana-etc-patches-url "&patches-mirror;/iana-etc/">
+
 <!ENTITY inetutils-md5 "3ab421642bd6f5284a6ccf4811ad2c51">
 <!ENTITY inetutils-version "1.4.2">
 <!ENTITY inetutils-package "inetutils-&inetutils-version;.tar.bz2">
 <!ENTITY inetutils-directory "inetutils-&inetutils-version;">
+
+<!ENTITY inetutils-package-url "&package-mirror;/inetutils/">
+<!ENTITY inetutils-patches-url "&patches-mirror;/inetutils/">
 
 <!ENTITY inetutils-no-man-pages-patch "inetutils-&inetutils-version;-no_server_man_pages-1.patch">
 <!ENTITY inetutils-kernel-headers-patch "inetutils-&inetutils-version;-kernel_headers-1.patch">
@@ -165,6 +253,9 @@
 <!ENTITY iproute2-package "iproute2-&iproute2-version;-&iproute2-cvs-ver;.tar.bz2">
 <!ENTITY iproute2-directory "iproute2-&iproute2-version;">
 
+<!ENTITY iproute2-package-url "&package-mirror;/iproute2/">
+<!ENTITY iproute2-patches-url "&patches-mirror;/iproute2/">
+
 <!ENTITY iproute2-remove-db-patch "iproute2-&iproute2-version;_&iproute2-cvs-ver;-remove_db-1.patch">
 
 <!ENTITY kbd-md5 "069d1175b4891343b107a8ac2b4a39f6">
@@ -172,25 +263,40 @@
 <!ENTITY kbd-package "kbd-&kbd-version;.tar.bz2">
 <!ENTITY kbd-directory "kbd-&kbd-version;">
 
+<!ENTITY kbd-package-url "&package-mirror;/kbd/">
+<!ENTITY kbd-patches-url "&patches-mirror;/kbd/">
+
 <!ENTITY less-md5 "421405afdaae0ad7be15449564aa4f62">
 <!ENTITY less-version "382">
 <!ENTITY less-package "less-&less-version;.tar.bz2">
 <!ENTITY less-directory "less-&less-version;">
+
+<!ENTITY less-package-url "&package-mirror;/less/">
+<!ENTITY less-patches-url "&patches-mirror;/less/">
 
 <!ENTITY lfs-bootscripts-md5 "72313b82210735d7fd22083843eee90a">
 <!ENTITY lfs-bootscripts-version "3.2.1">
 <!ENTITY lfs-bootscripts-package "lfs-bootscripts-&lfs-bootscripts-version;.tar.bz2">
 <!ENTITY lfs-bootscripts-directory "lfs-bootscripts-&lfs-bootscripts-version;">
 
+<!ENTITY lfs-bootscripts-package-url "&package-mirror;/lfs-bootscripts/">
+<!ENTITY lfs-bootscripts-patches-url "&patches-mirror;/lfs-bootscripts/">
+
 <!ENTITY libtool-md5 "3a52072826bb4a34e36c2a0d9d6ecada">
 <!ENTITY libtool-version "1.5.14">
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.bz2">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
+<!ENTITY libtool-package-url "&package-mirror;/libtool/">
+<!ENTITY libtool-patches-url "&patches-mirror;/libtool/">
+
 <!ENTITY libxml2-md5 "2d53bba9a4768ec57d8bf2bdadb75c87">
 <!ENTITY libxml2-version "2.6.17">
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
+
+<!ENTITY libxml2-package-url "&package-mirror;/libxml2/">
+<!ENTITY libxml2-patches-url "&patches-mirror;/libxml2/">
 
 <!ENTITY linux-md5 "7e3b6e630bb05c1a8c1ba46e010dbe44">
 <!ENTITY linux-version "2.6.11.12">
@@ -198,35 +304,56 @@
 <!ENTITY linux-directory "linux-&linux-version;">
 <!ENTITY linux-src-location "/usr/src">
 
+<!ENTITY linux-package-url "&package-mirror;/linux/">
+<!ENTITY linux-patches-url "&patches-mirror;/linux/">
+
 <!ENTITY linux-libc-headers-md5 "2d21d8e7ff641da74272b114c786464e">
 <!ENTITY linux-libc-headers-version "2.6.11.2">
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
 <!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
+
+<!ENTITY linux-libc-headers-package-url "&package-mirror;/linux-libc-headers/">
+<!ENTITY linux-libc-headers-patches-url "&patches-mirror;/linux-libc-headers/">
 
 <!ENTITY m4-md5 "1f7d7eba70a0525c44c2edc3998925c7">
 <!ENTITY m4-version "1.4.3">
 <!ENTITY m4-package "m4-&m4-version;.tar.bz2">
 <!ENTITY m4-directory "m4-&m4-version;">
 
+<!ENTITY m4-package-url "&package-mirror;/m4/">
+<!ENTITY m4-patches-url "&patches-mirror;/m4/">
+
 <!ENTITY make-md5 "0bbd1df101bc0294d440471e50feca71">
 <!ENTITY make-version "3.80">
 <!ENTITY make-package "make-&make-version;.tar.bz2">
 <!ENTITY make-directory "make-&make-version;">
+
+<!ENTITY make-package-url "&package-mirror;/make/">
+<!ENTITY make-patches-url "&patches-mirror;/make/">
 
 <!ENTITY man-md5 "3800006ccd2f1f16124a2ac3abf04b30">
 <!ENTITY man-version "1.5p">
 <!ENTITY man-package "man-&man-version;.tar.bz2">
 <!ENTITY man-directory "man-&man-version;">
 
+<!ENTITY man-package-url "&package-mirror;/man/">
+<!ENTITY man-patches-url "&patches-mirror;/man/">
+
 <!ENTITY man-pages-md5 "f417de446b7554cc33ea033a82525dae">
 <!ENTITY man-pages-version "2.01">
 <!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.bz2">
 <!ENTITY man-pages-directory "man-pages-&man-pages-version;">
 
+<!ENTITY man-pages-package-url "&package-mirror;/man-pages/">
+<!ENTITY man-pages-patches-url "&patches-mirror;/man-pages/">
+
 <!ENTITY mktemp-md5 "3359aa075083aeae3ed6ca67ec5d944b">
 <!ENTITY mktemp-version "1.5">
 <!ENTITY mktemp-package "mktemp-&mktemp-version;.tar.bz2">
 <!ENTITY mktemp-directory "mktemp-&mktemp-version;">
+
+<!ENTITY mktemp-package-url "&package-mirror;/mktemp/">
+<!ENTITY mktemp-patches-url "&patches-mirror;/mktemp/">
 
 <!ENTITY mktemp-tempfile-patch "mktemp-&mktemp-version;-add_tempfile-2.patch">
 
@@ -235,25 +362,40 @@
 <!ENTITY module-init-tools-package "module-init-tools-&module-init-tools-version;.tar.bz2">
 <!ENTITY module-init-tools-directory "module-init-tools-&module-init-tools-version;">
 
+<!ENTITY module-init-tools-package-url "&package-mirror;/module-init-tools/">
+<!ENTITY module-init-tools-patches-url "&patches-mirror;/module-init-tools/">
+
 <!ENTITY nALFS-md5 "1e7bb2216cbddec8c97fc0a440216bf1">
 <!ENTITY nALFS-version "1.2.4">
 <!ENTITY nALFS-package "nALFS-&nALFS-version;.tar.bz2">
 <!ENTITY nALFS-directory "nALFS-&nALFS-version;">
+
+<!ENTITY nALFS-package-url "&package-mirror;/nALFS/">
+<!ENTITY nALFS-patches-url "&patches-mirror;/nALFS/">
 
 <!ENTITY ncurses-md5 "236968460fe1a1d0e293a9c5e6f10805">
 <!ENTITY ncurses-version "5.4">
 <!ENTITY ncurses-package "ncurses-&ncurses-version;.tar.bz2">
 <!ENTITY ncurses-directory "ncurses-&ncurses-version;">
 
+<!ENTITY ncurses-package-url "&package-mirror;/ncurses/">
+<!ENTITY ncurses-patches-url "&patches-mirror;/ncurses/">
+
 <!ENTITY patch-md5 "1d0e5cf86c106b08f890bde064035b01">
 <!ENTITY patch-version "2.5.4">
 <!ENTITY patch-package "patch-&patch-version;.tar.bz2">
 <!ENTITY patch-directory "patch-&patch-version;">
 
+<!ENTITY patch-package-url "&package-mirror;/patch/">
+<!ENTITY patch-patches-url "&patches-mirror;/patch/">
+
 <!ENTITY perl-md5 "3d030b6ff2a433840edb1a407d18dc0a">
 <!ENTITY perl-version "5.8.6">
 <!ENTITY perl-package "perl-&perl-version;.tar.bz2">
 <!ENTITY perl-directory "perl-&perl-version;">
+
+<!ENTITY perl-package-url "&package-mirror;/perl/">
+<!ENTITY perl-patches-url "&patches-mirror;/perl/">
 
 <!ENTITY perl-libc-1-patch "perl-&perl-version;-libc-1.patch">
 
@@ -262,15 +404,24 @@
 <!ENTITY procps-package "procps-&procps-version;.tar.bz2">
 <!ENTITY procps-directory "procps-&procps-version;">
 
+<!ENTITY procps-package-url "&package-mirror;/procps/">
+<!ENTITY procps-patches-url "&patches-mirror;/procps/">
+
 <!ENTITY psmisc-md5 "c3c02dd67339d8cc824f5b5aa0bc2bb1">
 <!ENTITY psmisc-version "21.6">
 <!ENTITY psmisc-package "psmisc-&psmisc-version;.tar.bz2">
 <!ENTITY psmisc-directory "psmisc-&psmisc-version;">
 
+<!ENTITY psmisc-package-url "&package-mirror;/psmisc/">
+<!ENTITY psmisc-patches-url "&patches-mirror;/psmisc/">
+
 <!ENTITY readline-md5 "d603cc9690069c69214a7c98268dce3b">
 <!ENTITY readline-version "5.0">
 <!ENTITY readline-package "readline-&readline-version;.tar.bz2">
 <!ENTITY readline-directory "readline-&readline-version;">
+
+<!ENTITY readline-package-url "&package-mirror;/readline/">
+<!ENTITY readline-patches-url "&patches-mirror;/readline/">
 
 <!ENTITY readline-fixes-patch "readline-&readline-version;-fixes-1.patch">
 
@@ -279,15 +430,24 @@
 <!ENTITY sed-package "sed-&sed-version;.tar.bz2">
 <!ENTITY sed-directory "sed-&sed-version;">
 
+<!ENTITY sed-package-url "&package-mirror;/sed/">
+<!ENTITY sed-patches-url "&patches-mirror;/sed/">
+
 <!ENTITY shadow-md5 "66e3a3a60ea6b021a7babff311b07607">
 <!ENTITY shadow-version "4.0.9">
 <!ENTITY shadow-package "shadow-&shadow-version;.tar.bz2">
 <!ENTITY shadow-directory "shadow-&shadow-version;">
 
+<!ENTITY shadow-package-url "&package-mirror;/shadow/">
+<!ENTITY shadow-patches-url "&patches-mirror;/shadow/">
+
 <!ENTITY sysklogd-md5 "f587720988bc1670071f31d3694ca0fb">
 <!ENTITY sysklogd-version "1.4.1">
 <!ENTITY sysklogd-package "sysklogd-&sysklogd-version;.tar.bz2">
 <!ENTITY sysklogd-directory "sysklogd-&sysklogd-version;">
+
+<!ENTITY sysklogd-package-url "&package-mirror;/sysklogd/">
+<!ENTITY sysklogd-patches-url "&patches-mirror;/sysklogd/">
 
 <!ENTITY sysklogd-fixes-patch "sysklogd-&sysklogd-version;-fixes-1.patch">
 
@@ -296,10 +456,16 @@
 <!ENTITY sysvinit-package "sysvinit-&sysvinit-version;.tar.bz2">
 <!ENTITY sysvinit-directory "sysvinit-&sysvinit-version;">
 
+<!ENTITY sysvinit-package-url "&package-mirror;/sysvinit/">
+<!ENTITY sysvinit-patches-url "&patches-mirror;/sysvinit/">
+
 <!ENTITY tar-md5 "57da3c38f8e06589699548a34d5a5d07">
 <!ENTITY tar-version "1.15.1">
 <!ENTITY tar-package "tar-&tar-version;.tar.bz2">
 <!ENTITY tar-directory "tar-&tar-version;">
+
+<!ENTITY tar-package-url "&package-mirror;/tar/">
+<!ENTITY tar-patches-url "&patches-mirror;/tar/">
 
 <!ENTITY tar-sparse-fix-patch "tar-&tar-version;-sparse_fix-1.patch">
 
@@ -308,15 +474,24 @@
 <!ENTITY tcl-package "tcl&tcl-version;-src.tar.bz2">
 <!ENTITY tcl-directory "tcl&tcl-version;">
 
+<!ENTITY tcl-package-url "&package-mirror;/tcl/">
+<!ENTITY tcl-patches-url "&patches-mirror;/tcl/">
+
 <!ENTITY texinfo-md5 "6ba369bbfe4afaa56122e65b3ee3a68c">
 <!ENTITY texinfo-version "4.8">
 <!ENTITY texinfo-package "texinfo-&texinfo-version;.tar.bz2">
 <!ENTITY texinfo-directory "texinfo-&texinfo-version;">
 
+<!ENTITY texinfo-package-url "&package-mirror;/texinfo/">
+<!ENTITY texinfo-patches-url "&patches-mirror;/texinfo/">
+
 <!ENTITY udev-md5 "30fb3a320e74ff0c49c15ecaa6e37a4c">
 <!ENTITY udev-version "056">
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
+
+<!ENTITY udev-package-url "&package-mirror;/udev/">
+<!ENTITY udev-patches-url "&patches-mirror;/udev/">
 
 <!ENTITY udev-rules-version "3">
 <!ENTITY udev-rules-file "udev-config-&udev-rules-version;.rules">
@@ -326,12 +501,18 @@
 <!ENTITY util-linux-package "util-linux-&util-linux-version;.tar.bz2">
 <!ENTITY util-linux-directory "util-linux-&util-linux-version;">
 
+<!ENTITY util-linux-package-url "&package-mirror;/util-linux/">
+<!ENTITY util-linux-patches-url "&patches-mirror;/util-linux/">
+
 <!ENTITY util-linux-cramfs-patch "util-linux-&util-linux-version;-cramfs-1.patch">
 
 <!ENTITY vim-md5 "821fda8f14d674346b87e3ef9cb96389">
 <!ENTITY vim-version "6.3">
 <!ENTITY vim-package "vim-&vim-version;.tar.bz2">
 <!ENTITY vim-directory "vim63">
+
+<!ENTITY vim-package-url "&package-mirror;/vim/">
+<!ENTITY vim-patches-url "&patches-mirror;/vim/">
 
 <!ENTITY vim-lang-md5 "6bcc2b8ffa408d978f9982e26956022b">
 <!ENTITY vim-lang-package "vim-&vim-version;-lang.tar.bz2">
@@ -342,6 +523,9 @@
 <!ENTITY zlib-version "1.2.2">
 <!ENTITY zlib-package "zlib-&zlib-version;.tar.bz2">
 <!ENTITY zlib-directory "zlib-&zlib-version;">
+
+<!ENTITY zlib-package-url "&package-mirror;/zlib/">
+<!ENTITY zlib-patches-url "&patches-mirror;/zlib/">
 
 <!ENTITY zlib-security-fix-patch "zlib-&zlib-version;-security_fix-1.patch">
 
