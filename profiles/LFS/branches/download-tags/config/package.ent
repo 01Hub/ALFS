@@ -60,10 +60,10 @@
 <!ENTITY coreutils-package-url "&package-mirror;/coreutils/">
 <!ENTITY coreutils-patches-url "&patches-mirror;/coreutils/">
 
-<!ENTITY coreutils-dupes-patch-md5 "">
+<!ENTITY coreutils-dupes-patch-md5 "9867078057cde905a8d431cc7a42403a">
 <!ENTITY coreutils-dupes-patch "coreutils-&coreutils-version;-suppress_uptime_kill_su-1.patch">
 
-<!ENTITY coreutils-uname-patch-md5 "">
+<!ENTITY coreutils-uname-patch-md5 "b7c081bac1b6a8e4629d5be9314d5184">
 <!ENTITY coreutils-uname-patch "coreutils-&coreutils-version;-uname-2.patch">
 
 <!ENTITY dejagnu-md5 "ea99f6451e2ef228cd2504cd1b32bac8">
@@ -98,7 +98,7 @@
 <!ENTITY expect-package-url "&package-mirror;/expect/">
 <!ENTITY expect-patches-url "&patches-mirror;/expect/">
 
-<!ENTITY expext-spawn-patch-md5 "">
+<!ENTITY expext-spawn-patch-md5 "ef6d0d0221c571fb420afb7033b3bbba">
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
 
 <!ENTITY file-md5 "a14dcb05c172206d92dce9e0ee776501">
@@ -125,7 +125,7 @@
 <!ENTITY flex-package-url "&package-mirror;/flex/">
 <!ENTITY flex-patches-url "&patches-mirror;/flex/">
 
-<!ENTITY flex-debian-fixes-patch-md5 "">
+<!ENTITY flex-debian-fixes-patch-md5 "609d666f28040d0f49c9e40fef2f1492">
 <!ENTITY flex-debian-fixes-patch "flex-&flex-version;-debian_fixes-3.patch">
 
 <!ENTITY gawk-md5 "b8b532beaf02350e69d2d5dc98cb1e37">
@@ -155,13 +155,13 @@
 <!ENTITY gcc-package-url "&package-mirror;/gcc/">
 <!ENTITY gcc-patches-url "&patches-mirror;/gcc/">
 
-<!ENTITY gcc-linkonce-patch-md5 "">
+<!ENTITY gcc-linkonce-patch-md5 "6526a9d6fa236c4e1c211c995e2b5d9d">
 <!ENTITY gcc-linkonce-patch "gcc-&gcc-version;-linkonce-1.patch">
 
-<!ENTITY gcc-no-fixincludes-patch-md5 "">
+<!ENTITY gcc-no-fixincludes-patch-md5 "3b52559864cfa50ac0c5a5e21eb73b19">
 <!ENTITY gcc-no-fixincludes-patch "gcc-&gcc-version;-no_fixincludes-1.patch">
 
-<!ENTITY gcc-specs-patch-md5 "">
+<!ENTITY gcc-specs-patch-md5 "3b52559864cfa50ac0c5a5e21eb73b19">
 <!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-2.patch">
 
 <!ENTITY gettext-md5 "a25304ac49848d0977ab65e81ec67281">
@@ -183,7 +183,7 @@
 <!ENTITY glibc-package-url "&package-mirror;/glibc/">
 <!ENTITY glibc-patches-url "&patches-mirror;/glibc/">
 
-<!ENTITY glibc-fix-testsuite-patch-md5 "">
+<!ENTITY glibc-fix-testsuite-patch-md5 "c9770e6b2fa5ef1ce89d2d7dbdd3c654">
 <!ENTITY glibc-fix-testsuite-patch "glibc-&glibc-version;&glibc-cvs-tag;-fix_test-1.patch">
 
 <!ENTITY grep-md5 "52202fe462770fa6be1bb667bd6cf30c">
@@ -218,6 +218,7 @@
 <!ENTITY gzip-package-url "&package-mirror;/gzip/">
 <!ENTITY gzip-patches-url "&patches-mirror;/gzip/">
 
+<!ENTITY gzip-security-fixes-patch-md5 "f107844f01fc49446654ae4a8f8a0728">
 <!ENTITY gzip-security-fixes-patch "gzip-&gzip-version;-security_fixes-1.patch">
 
 <!ENTITY hotplug-md5 "58e6995f9df71ce59b0ec2787019e5fe">
@@ -244,7 +245,10 @@
 <!ENTITY inetutils-package-url "&package-mirror;/inetutils/">
 <!ENTITY inetutils-patches-url "&patches-mirror;/inetutils/">
 
+<!ENTITY inetutils-no-man-pages-patch-md5 "eb477f532bc6d26e7025fcfc4452511d">
 <!ENTITY inetutils-no-man-pages-patch "inetutils-&inetutils-version;-no_server_man_pages-1.patch">
+
+<!ENTITY inetutils-kernel-headers-patch-md5 "de1f835265b7ed818d7c0fb8c0be334b">
 <!ENTITY inetutils-kernel-headers-patch "inetutils-&inetutils-version;-kernel_headers-1.patch">
 
 <!ENTITY iproute2-md5 "f455fce014fefefe26c05f9b9479440c">
@@ -256,6 +260,7 @@
 <!ENTITY iproute2-package-url "&package-mirror;/iproute2/">
 <!ENTITY iproute2-patches-url "&patches-mirror;/iproute2/">
 
+<!ENTITY iproute2-remove-db-patch-md5 "3a9ad1d1d229e60944027e81fec67635">
 <!ENTITY iproute2-remove-db-patch "iproute2-&iproute2-version;_&iproute2-cvs-ver;-remove_db-1.patch">
 
 <!ENTITY kbd-md5 "069d1175b4891343b107a8ac2b4a39f6">
@@ -355,6 +360,7 @@
 <!ENTITY mktemp-package-url "&package-mirror;/mktemp/">
 <!ENTITY mktemp-patches-url "&patches-mirror;/mktemp/">
 
+<!ENTITY mktemp-tempfile-patch-md5 "21e39d26da2051df3985962347a327b3">
 <!ENTITY mktemp-tempfile-patch "mktemp-&mktemp-version;-add_tempfile-2.patch">
 
 <!ENTITY module-init-tools-md5 "8ddecbcf0e56aef8617f67a3906faf3e">
@@ -397,6 +403,7 @@
 <!ENTITY perl-package-url "&package-mirror;/perl/">
 <!ENTITY perl-patches-url "&patches-mirror;/perl/">
 
+<!ENTITY perl-libc-1-patch-md5 "f033161efa8b4b174ec6667e4e739efa">
 <!ENTITY perl-libc-1-patch "perl-&perl-version;-libc-1.patch">
 
 <!ENTITY procps-md5 "4a6faa1ca606546f16504f27a895c98f">
@@ -423,6 +430,7 @@
 <!ENTITY readline-package-url "&package-mirror;/readline/">
 <!ENTITY readline-patches-url "&patches-mirror;/readline/">
 
+<!ENTITY readline-fixes-patch-md5 "6693bff25f522b2f7b42a6f48aafac3f">
 <!ENTITY readline-fixes-patch "readline-&readline-version;-fixes-1.patch">
 
 <!ENTITY sed-md5 "cbb61f54b4234228a4d44f5b25289e2e">
@@ -449,6 +457,7 @@
 <!ENTITY sysklogd-package-url "&package-mirror;/sysklogd/">
 <!ENTITY sysklogd-patches-url "&patches-mirror;/sysklogd/">
 
+<!ENTITY sysklogd-fixes-patch-md5 "508104f058d1aef26b3bc8059821935f">
 <!ENTITY sysklogd-fixes-patch "sysklogd-&sysklogd-version;-fixes-1.patch">
 
 <!ENTITY sysvinit-md5 "5b1d05d637863b888d211d4fb19a9a21">
@@ -467,6 +476,7 @@
 <!ENTITY tar-package-url "&package-mirror;/tar/">
 <!ENTITY tar-patches-url "&patches-mirror;/tar/">
 
+<!ENTITY tar-sparse-fix-patch-md5 "9e3623f7c88d8766878ecb27c980d86a">
 <!ENTITY tar-sparse-fix-patch "tar-&tar-version;-sparse_fix-1.patch">
 
 <!ENTITY tcl-md5 "80b999daf325aac507ff48a1dcf6b96e">
@@ -493,6 +503,7 @@
 <!ENTITY udev-package-url "&package-mirror;/udev/">
 <!ENTITY udev-patches-url "&patches-mirror;/udev/">
 
+<!ENTITY udev-rules-md5 "897b26b7345e9e2f0bd96204266b5bd3">
 <!ENTITY udev-rules-version "3">
 <!ENTITY udev-rules-file "udev-config-&udev-rules-version;.rules">
 
@@ -504,6 +515,7 @@
 <!ENTITY util-linux-package-url "&package-mirror;/util-linux/">
 <!ENTITY util-linux-patches-url "&patches-mirror;/util-linux/">
 
+<!ENTITY util-linux-cramfs-patch-md5 "1c3f40b30e12738eb7b66a35b7374572">
 <!ENTITY util-linux-cramfs-patch "util-linux-&util-linux-version;-cramfs-1.patch">
 
 <!ENTITY vim-md5 "821fda8f14d674346b87e3ef9cb96389">
@@ -517,6 +529,7 @@
 <!ENTITY vim-lang-md5 "6bcc2b8ffa408d978f9982e26956022b">
 <!ENTITY vim-lang-package "vim-&vim-version;-lang.tar.bz2">
 
+<!ENTITY vim-security-patch-md5 "ef9a421f1d29993ce5bbd709cece4624">
 <!ENTITY vim-security-patch "vim-&vim-version;-security_fix-1.patch">
 
 <!ENTITY zlib-md5 "1b8aab042d40979e456194c468fd72c5">
@@ -527,5 +540,6 @@
 <!ENTITY zlib-package-url "&package-mirror;/zlib/">
 <!ENTITY zlib-patches-url "&patches-mirror;/zlib/">
 
+<!ENTITY zlib-security-fix-patch-md5 "fcdaf7b35be5f72c7153608fdce1983b">
 <!ENTITY zlib-security-fix-patch "zlib-&zlib-version;-security_fix-1.patch">
 
