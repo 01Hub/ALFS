@@ -16,6 +16,25 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <!--
+    <stage name="Testing">
+      <stageinfo>
+	<base>&build_dir;/&module-init-tools-directory;</base>
+      </stageinfo>
+      <unpack>
+	<digest>&module-init-tools-testsuite-md5;</digest>
+	<archive>&packages_dir;/&module-init-tools-testsuite-package;</archive>
+	<destination>.</destination>
+      </unpack>
+      <configure />
+      <make>
+	<param>check</param>
+      </make>
+      <make>
+	<param>distclean</param>
+      </make>
+    <stage>
+    -->
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&module-init-tools-directory;</base>
@@ -27,9 +46,6 @@
       </configure>
       <make>
         <param>&jlevel;</param>
-      </make>
-      <make>
-        <param>check</param>
       </make>
       <make>
         <param>install</param>

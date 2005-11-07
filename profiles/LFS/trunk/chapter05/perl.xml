@@ -27,7 +27,7 @@
       </patch>
       <configure command="./configure.gnu">
         <param>--prefix=/tools</param>
-        <param>-Dstatic_ext='IO Fcntl POSIX'</param>
+        <param>-Dstatic_ext='Data/Dumper IO Fcntl POSIX'</param>
       </configure>
       <make>
         <param>&jlevel;</param>

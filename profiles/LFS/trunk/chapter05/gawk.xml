@@ -23,6 +23,13 @@
       <configure>
         <param>--prefix=/tools</param>
       </configure>
+      <textdump mode="append">
+      	<file>config.h</file>
+	<content>
+	  =#define HAVE_LANGINFO_CODESET 1
+	  =#define HAVE_LC_MESSAGES 1
+	</content>
+      </textdump>
       <make>
         <param>&jlevel;</param>
       </make>

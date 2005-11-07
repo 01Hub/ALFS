@@ -25,41 +25,6 @@
         <name>glibc-build</name>
       </mkdir>
     </stage>
-    <stage name="Patching">
-      <stageinfo>
-	<base>&build_dir;/&glibc-directory;</base>
-      </stageinfo>
-      <patch>
-	<param>-N</param>
-	<param>-p1</param>
-	<param>-i &packages_dir;/&glibc-fix-testsuite-patch;</param>
-      </patch>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&glibc-gcc4_symbols-patch;</param>
-      </patch>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&glibc-gcc4_string-patch;</param>
-      </patch>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&glibc-gcc4_elf-patch;</param>
-      </patch>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&glibc-gcc4_iconvdata-patch;</param>
-      </patch>
-      <patch>
-      	<param>-N</param>
-	<param>-p1</param>
-	<param>-i &packages_dir;/&glibc-gcc4_mathtest-patch;</param>
-      </patch>
-    </stage>
     <stage name="Installing">
       <stageinfo>
         <environment>
@@ -79,10 +44,8 @@
         <prefix>PARALLELMFLAGS=&jlevel;</prefix>
       </make>
       <make>
-      	<param>-k check &gt;glibc-check-log 2&gt;&#38;1</param>
+      	<param>-k check</param>
       </make>
-      <execute command="grep Error glibc-check-log">
-      </execute>
       <execute command="touch">
         <param>/etc/ld.so.conf</param>
       </execute>
