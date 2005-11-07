@@ -1,6 +1,0 @@
-# Begin /etc/hosts (network card version) 
-
-127.0.0.1 localhost 
-172.16.1.22 yourhost.your.domain yourhost
-
-# End /etc/hosts (network card version)

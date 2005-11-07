@@ -1,9 +1,0 @@
-<!ENTITY libxml2-md5 "2d53bba9a4768ec57d8bf2bdadb75c87">
-<!ENTITY libxml2-version "2.6.17">
-<!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
-<!ENTITY libxml2-directory "libxml2-&libxml2-version;">
-
-<!ENTITY nALFS-md5 "1e7bb2216cbddec8c97fc0a440216bf1">
-<!ENTITY nALFS-version "1.2.4">
-<!ENTITY nALFS-package "nALFS-&nALFS-version;.tar.bz2">
-<!ENTITY nALFS-directory "nALFS-&nALFS-version;">
