@@ -23,7 +23,7 @@
       <configure>
         <param>--prefix=/tools</param>
         <param>--disable-libasprintf</param>
-        <param>--without-csharp</param>
+        <param>--disable-csharp</param>
       </configure>
       <make>
         <param>&jlevel;</param>

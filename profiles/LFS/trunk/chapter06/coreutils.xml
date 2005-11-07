@@ -21,11 +21,6 @@
         <base>&build_dir;/&coreutils-directory;</base>
       </stageinfo>
       <patch>
-      	<param>-N</param>
-	<param>-p1</param>
-	<param>-i &packages_dir;/&coreutils-echo-patch;</param>
-      </patch>
-      <patch>
         <param>-N</param>
         <param>-p1</param>
         <param>-i &packages_dir;/&coreutils-uname-patch;</param>
@@ -36,7 +31,6 @@
         <param>-i &packages_dir;/&coreutils-dupes-patch;</param>
       </patch>
       <configure>
-        <prefix>DEFAULT_POSIX2_VERSION=199209</prefix>
         <param>--prefix=/usr</param>
       </configure>
       <make>
@@ -53,7 +47,7 @@
       <textdump mode="append">
         <file>/etc/passwd</file>
 	<content>
-	=dummy:x:1000:1000:::/bin/bash
+	=dummy:x:1000:1000::/root:/bin/bash
 	</content>
       </textdump>
       <make>

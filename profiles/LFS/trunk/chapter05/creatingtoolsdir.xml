@@ -64,7 +64,6 @@
 	<source>&bzip2-docs-patch;</source>
 	<source>&bzip2-bzgrep-security-patch;</source>
         <source>&coreutils-package;</source>
-	<source>&coreutils-echo-patch;</source>
         <source>&coreutils-dupes-patch;</source>
         <source>&coreutils-uname-patch;</source>
         <source>&dejagnu-package;</source>
@@ -83,12 +82,6 @@
         <source>&gettext-package;</source>
         <source>&glibc-package;</source>
 	<source>&glibc-linuxthreads-package;</source>
-	<source>&glibc-fix-testsuite-patch;</source>
-	<source>&glibc-gcc4_symbols-patch;</source>
-	<source>&glibc-gcc4_string-patch;</source>
-	<source>&glibc-gcc4_elf-patch;</source>
-	<source>&glibc-gcc4_iconvdata-patch;</source>
-	<source>&glibc-gcc4_mathtest-patch;</source>
         <source>&grep-package;</source>
         <source>&groff-package;</source>
         <source>&grub-package;</source>
@@ -114,6 +107,7 @@
         <source>&mktemp-package;</source>
         <source>&mktemp-tempfile-patch;</source>
         <source>&module-init-tools-package;</source>
+	<source>&module-init-tools-testsuite-package;</source>
         <source>&ncurses-package;</source>
         <source>&patch-package;</source>
         <source>&perl-package;</source>
@@ -124,6 +118,7 @@
         <source>&readline-fixes-patch;</source>
         <source>&sed-package;</source>
         <source>&shadow-package;</source>
+	<source>&shadow-configure-fix-patch;</source>
         <source>&sysklogd-package;</source>
         <source>&sysklogd-fixes-patch;</source>		
         <source>&sysvinit-package;</source>
@@ -139,7 +134,6 @@
         <source>&util-linux-cramfs-patch;</source>
         <source>&vim-package;</source>
         <source>&vim-lang-package;</source>
-        <source>&vim-security-patch;</source>
         <source>&zlib-package;</source>
         <destination>&LFS;&packages_dir;</destination>
       </copy>

@@ -22,6 +22,7 @@
       </stageinfo>
       <make>
         <param>&jlevel;</param>
+	<param>EXTRAS=extras/run_directory</param>
       </make>
       <!--
       <make>
@@ -29,6 +30,7 @@
       </make>
       -->
       <make>
+	<param>EXTRAS=extras/run_directory</param>
         <param>install</param>
       </make>
       <copy base="&packages_dir;">

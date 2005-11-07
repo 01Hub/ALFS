@@ -37,14 +37,13 @@
 <!ENTITY bzip2-docs-patch "bzip2-&bzip2-version;-install_docs-1.patch">
 <!ENTITY bzip2-bzgrep-security-patch "bzip2-&bzip2-version;-bzgrep_security-1.patch">
 
-<!ENTITY coreutils-md5 "172ee3c315af93d3385ddfbeb843c53f">
-<!ENTITY coreutils-version "5.2.1">
+<!ENTITY coreutils-md5 "955d8abfd3dd8af2ca3af51480f1f9af">
+<!ENTITY coreutils-version "5.93">
 <!ENTITY coreutils-package "coreutils-&coreutils-version;.tar.bz2">
 <!ENTITY coreutils-directory "coreutils-&coreutils-version;">
 
-<!ENTITY coreutils-echo-patch  "coreutils-&coreutils-version;-echo_posix-1.patch">
 <!ENTITY coreutils-dupes-patch "coreutils-&coreutils-version;-suppress_uptime_kill_su-1.patch">
-<!ENTITY coreutils-uname-patch "coreutils-&coreutils-version;-uname-2.patch">
+<!ENTITY coreutils-uname-patch "coreutils-&coreutils-version;-uname-1.patch">
 
 <!ENTITY dejagnu-md5 "bf259ac32622eda29ea157ef5751ed76">
 <!ENTITY dejagnu-version "1.4.4">
@@ -68,8 +67,8 @@
 
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
 
-<!ENTITY file-md5 "b1052d6ceb90febe7f0a8e9593bfe927">
-<!ENTITY file-version "4.15">
+<!ENTITY file-md5 "8e4039260e82f66870f15409fbdb12b1">
+<!ENTITY file-version "4.16">
 <!ENTITY file-package "file-&file-version;.tar.bz2">
 <!ENTITY file-directory "file-&file-version;">
 
@@ -106,21 +105,14 @@
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.bz2">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
 
-<!ENTITY glibc-md5 "93d9c51850e0513aa4846ac0ddcef639">
-<!ENTITY glibc-version "2.3.5">
+<!ENTITY glibc-md5 "bfdce99f82d6dbcb64b7f11c05d6bc96">
+<!ENTITY glibc-version "2.3.6">
 <!ENTITY glibc-cvs-tag "">
 <!ENTITY glibc-package "glibc-&glibc-version;&glibc-cvs-tag;.tar.bz2">
 <!ENTITY glibc-directory "glibc-&glibc-version;&glibc-cvs-tag;">
 
-<!ENTITY glibc-linuxthreads-md5 "77011b0898393c56b799bc011a0f37bf">
+<!ENTITY glibc-linuxthreads-md5 "d4eeda37472666a15cc1f407e9c987a9">
 <!ENTITY glibc-linuxthreads-package "glibc-linuxthreads-&glibc-version;&glibc-cvs-tag;.tar.bz2">
-
-<!ENTITY glibc-fix-testsuite-patch "glibc-&glibc-version;&glibc-cvs-tag;-fix_test-1.patch">
-<!ENTITY glibc-gcc4_symbols-patch "glibc-&glibc-version;&glibc-cvs-tag;-gcc4_fix_symbols-1.patch">
-<!ENTITY glibc-gcc4_string-patch "glibc-&glibc-version;&glibc-cvs-tag;-gcc4_fix_string-1.patch">
-<!ENTITY glibc-gcc4_elf-patch "glibc-&glibc-version;&glibc-cvs-tag;-gcc4_fix_elf-1.patch">
-<!ENTITY glibc-gcc4_iconvdata-patch "glibc-&glibc-version;&glibc-cvs-tag;-gcc4_fix_iconvdata-1.patch">
-<!ENTITY glibc-gcc4_mathtest-patch "glibc-&glibc-version;&glibc-cvs-tag;-gcc4_fix_math_tests-1.patch">
 
 <!ENTITY grep-md5 "52202fe462770fa6be1bb667bd6cf30c">
 <!ENTITY grep-version "2.5.1a">
@@ -208,8 +200,8 @@
 <!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
 <!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
 
-<!ENTITY m4-md5 "1f7d7eba70a0525c44c2edc3998925c7">
-<!ENTITY m4-version "1.4.3">
+<!ENTITY m4-md5 "eb93bfbcb12cf00165583302bb31a822">
+<!ENTITY m4-version "1.4.4">
 <!ENTITY m4-package "m4-&m4-version;.tar.bz2">
 <!ENTITY m4-directory "m4-&m4-version;">
 
@@ -223,8 +215,8 @@
 <!ENTITY man-package "man-&man-version;.tar.bz2">
 <!ENTITY man-directory "man-&man-version;">
 
-<!ENTITY man-pages-md5 "689ccdb8a7902fe43e4dbac3f1ab82fd">
-<!ENTITY man-pages-version "2.08">
+<!ENTITY man-pages-md5 "539fba37eadb5748f933c01579a4984c">
+<!ENTITY man-pages-version "2.13">
 <!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.bz2">
 <!ENTITY man-pages-directory "man-pages-&man-pages-version;">
 
@@ -240,13 +232,16 @@
 <!ENTITY module-init-tools-package "module-init-tools-&module-init-tools-version;.tar.bz2">
 <!ENTITY module-init-tools-directory "module-init-tools-&module-init-tools-version;">
 
+<!ENTITY module-init-tools-testsuite-md5 "1d1c0d47f6a003341df759c4cda62a31">
+<!ENTITY module-init-tools-testsuite-package "module-init-tools-testsuite-&module-init-tools-version;.tar.bz2">
+
 <!ENTITY nALFS-md5 "1e7bb2216cbddec8c97fc0a440216bf1">
 <!ENTITY nALFS-version "1.2.4">
 <!ENTITY nALFS-package "nALFS-&nALFS-version;.tar.bz2">
 <!ENTITY nALFS-directory "nALFS-&nALFS-version;">
 
-<!ENTITY ncurses-md5 "236968460fe1a1d0e293a9c5e6f10805">
-<!ENTITY ncurses-version "5.4">
+<!ENTITY ncurses-md5 "5eb9720b8988503f4890e8e561aef8a9">
+<!ENTITY ncurses-version "5.5">
 <!ENTITY ncurses-package "ncurses-&ncurses-version;.tar.bz2">
 <!ENTITY ncurses-directory "ncurses-&ncurses-version;">
 
@@ -262,13 +257,13 @@
 
 <!ENTITY perl-libc-1-patch "perl-&perl-version;-libc-1.patch">
 
-<!ENTITY procps-md5 "4a6faa1ca606546f16504f27a895c98f">
-<!ENTITY procps-version "3.2.5">
+<!ENTITY procps-md5 "e10ab536b921dcd69b03e11c4d5aa4f7">
+<!ENTITY procps-version "3.2.6">
 <!ENTITY procps-package "procps-&procps-version;.tar.bz2">
 <!ENTITY procps-directory "procps-&procps-version;">
 
-<!ENTITY psmisc-md5 "598bf9a7f995279b0e5e35b6a6d10420">
-<!ENTITY psmisc-version "21.6">
+<!ENTITY psmisc-md5 "08f8ed67a11c4dc3b527ddc5b2f426f8">
+<!ENTITY psmisc-version "21.8">
 <!ENTITY psmisc-package "psmisc-&psmisc-version;.tar.bz2">
 <!ENTITY psmisc-directory "psmisc-&psmisc-version;">
 
@@ -284,10 +279,12 @@
 <!ENTITY sed-package "sed-&sed-version;.tar.bz2">
 <!ENTITY sed-directory "sed-&sed-version;">
 
-<!ENTITY shadow-md5 "c8111d2ceb1d97ad4336bd10ddf58cb4">
-<!ENTITY shadow-version "4.0.12">
+<!ENTITY shadow-md5 "5c6a105d89afb0900922260e9c5650cc">
+<!ENTITY shadow-version "4.0.13">
 <!ENTITY shadow-package "shadow-&shadow-version;.tar.bz2">
 <!ENTITY shadow-directory "shadow-&shadow-version;">
+
+<!ENTITY shadow-configure-fix-patch "shadow-&shadow-version;-configure_fix-1.patch">
 
 <!ENTITY sysklogd-md5 "f587720988bc1670071f31d3694ca0fb">
 <!ENTITY sysklogd-version "1.4.1">
@@ -321,12 +318,12 @@
 
 <!ENTITY texinfo-tempfile_fix-patch "texinfo-&texinfo-version;-tempfile_fix-1.patch">
 
-<!ENTITY udev-md5 "e990dcdc3a245f00373cd51a9e09b27f">
-<!ENTITY udev-version "070">
+<!ENTITY udev-md5 "6325fda7a6f29ef9fce3bcf73db3ad89">
+<!ENTITY udev-version "071">
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
 
-<!ENTITY udev-rules-version "4">
+<!ENTITY udev-rules-version "5">
 <!ENTITY udev-rules-file "udev-config-&udev-rules-version;.rules">
 
 <!ENTITY util-linux-md5 "af9d9e03038481fbf79ea3ac33f116f9">
@@ -336,12 +333,12 @@
 
 <!ENTITY util-linux-cramfs-patch "util-linux-&util-linux-version;-cramfs-1.patch">
 
-<!ENTITY vim-md5 "821fda8f14d674346b87e3ef9cb96389">
-<!ENTITY vim-version "6.3">
+<!ENTITY vim-md5 "774c14d93ce58674b3b2c880edd12d77">
+<!ENTITY vim-version "6.4">
 <!ENTITY vim-package "vim-&vim-version;.tar.bz2">
-<!ENTITY vim-directory "vim63">
+<!ENTITY vim-directory "vim64">
 
-<!ENTITY vim-lang-md5 "58dcbac0857f916a9c46c6731662fbd5">
+<!ENTITY vim-lang-md5 "eb2cb1ab27773de639a3c4cebe205099">
 <!ENTITY vim-lang-package "vim-&vim-version;-lang.tar.bz2">
 
 <!ENTITY vim-security-patch "vim-&vim-version;-security_fix-2.patch">

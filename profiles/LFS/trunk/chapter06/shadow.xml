@@ -16,6 +16,15 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&shadow-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-Np1</param>
+	<param>-i &packages_dir;/&shadow-configure-fix-patch;</param>
+      </patch>
+    </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&shadow-directory;</base>
@@ -50,7 +59,7 @@
         <destination>/etc</destination>
       </copy>
       <copy>
-        <source>etc/login.defs.linux</source>
+        <source>etc/login.defs</source>
         <destination>/etc/login.defs</destination>
       </copy>
       <search_replace>
