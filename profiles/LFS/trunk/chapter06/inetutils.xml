@@ -21,6 +21,10 @@
         <base>&build_dir;/&inetutils-directory;</base>
       </stageinfo>
       <patch>
+	<param>-Np1</param>
+	<param>-i &packages_dir;/&inetutils-gcc4_fixes-patch;</param>
+      </patch>
+      <patch>
         <param>-N</param>
         <param>-p1</param>
         <param>-i &packages_dir;/&inetutils-no-man-pages-patch;</param>
