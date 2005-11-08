@@ -20,15 +20,11 @@
         <name>gcc-build</name>
       </mkdir>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <environment>
-          <variable name="CFLAGS" />
-          <variable name="CXXFLAGS" />
-        </environment>
-        <base>&build_dir;/gcc-build</base>
+	<base>&build_dir;/&gcc-directory;</base>
       </stageinfo>
-      <search_replace base="&build_dir;/&gcc-directory;">
+      <search_replace>
         <file>libiberty/Makefile.in</file>
         <find>install_to_$(INSTALL_DEST)</find>
         <replace></replace>
@@ -40,7 +36,16 @@
       <execute command="sed">
         <param>-i 's@\./fixinc\.sh@-c true@'</param>
         <param>gcc/Makefile.in</param>
-      </execute>  
+      </execute>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <environment>
+          <variable name="CFLAGS" />
+          <variable name="CXXFLAGS" />
+        </environment>
+        <base>&build_dir;/gcc-build</base>
+      </stageinfo>
       <configure command="../&gcc-directory;/configure">
         <param>--prefix=/usr</param>
         <param>--libexecdir=/usr/lib</param>
