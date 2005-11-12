@@ -30,6 +30,7 @@
 	</environment>
       </stageinfo>
       <xi:include href="cross-tools/linux-libc-headers.xml" />
+      <xi:include href="cross-tools/binutils.xml" />
     </stage>
   </stage>
 </alfs>
