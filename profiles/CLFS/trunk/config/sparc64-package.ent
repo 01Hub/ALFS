@@ -1,0 +1,44 @@
+<!ENTITY elftoaout-md5 "f8243785e610837d8e1db46332334296">
+<!ENTITY elftoaout-version "2.3">
+<!ENTITY elftoaout-package "elftoaout-&elftoaout-version;.tar.bz2">
+<!ENTITY elftoaout-directory "elftoaout-&elftoaout-version;">
+
+<!ENTITY elftoaout-package-url "&package-mirror;/elftoaout/">
+<!ENTITY elftoaout-patches-url "&patches-mirror;/elftoaout/">
+
+<!ENTITY linux-md5 "1592bb2a8ec0deb1ff32e8238f25ecc5">
+<!ENTITY linux-version "2.6.12.6">
+<!ENTITY linux-package "linux-&linux-version;.tar.bz2">
+<!ENTITY linux-directory "linux-&linux-version;">
+<!ENTITY linux-src-location "/usr/src">
+
+<!ENTITY linux-package-url "&package-mirror;/linux/">
+<!ENTITY linux-patches-url "&patches-mirror;/linux/">
+
+<!ENTITY linux-libc-headers-md5 "eae2f562afe224ad50f65a6acfb4252c">
+<!ENTITY linux-libc-headers-version "2.6.12.0">
+<!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
+<!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
+
+<!ENTITY linux-libc-headers-package-url "&package-mirror;/linux-libc-headers/">
+<!ENTITY linux-libc-headers-patches-url "&patches-mirror;/linux-libc-headers/">
+
+<!ENTITY linux-libc-headers-sparc-biarch-patch-md5 "abba5ab653364b9df8e9878cbffa778d">
+<!ENTITY linux-libc-headers-sparc-biarch-patch "linux-libc-headers-&linux-libc-headers-version;-sparc_biarch-1.patch">
+
+<!ENTITY linux-libc-headers-sparc-conflicts-patch-md5 "1ebed7ceeaaf0f823f627471524d0d1a">
+<!ENTITY linux-libc-headers-sparc-conflicts-patch "linux-libc-headers-&linux-libc-headers-version;-sparc_conflicts-1.patch">
+
+<!ENTITY silo-md5 "843d75dd79a436b73e161c7ece5af26b">
+<!ENTITY silo-version "1.4.9">
+<!ENTITY silo-package "silo-&silo-version;.tar.bz2">
+<!ENTITY silo-directory "silo-&silo-version;">
+
+<!ENTITY silo-loaders-md5 "14fc4ef68810eb877d67c415ad06c773">
+<!ENTITY silo-loaders-package "silo-loaders-&silo-version;.tar.bz2">
+
+<!ENTITY silo-package-url "&package-mirror;/silo/">
+<!ENTITY silo-patches-url "&patches-mirror;/silo/">
+
+<!ENTITY silo-fixes-patch-md5 "3cd8391f925bc1ec444715fde85cac0b">
+<!ENTITY silo-fixes-patch "silo-&silo-version;-fixes-3.patch">

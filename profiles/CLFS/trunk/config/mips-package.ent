@@ -1,0 +1,33 @@
+<!ENTITY colo-md5 "14b34fed421d92b53d083d2a650f4800">
+<!ENTITY colo-version "1.19">
+<!ENTITY colo-package "colo-&colo-version;.tar.bz2">
+<!ENTITY colo-directory "colo-&colo-version;">
+
+<!ENTITY colo-package-url "&package-mirror;/colo/">
+<!ENTITY colo-patches-url "&patches-mirror;/colo/">
+
+<!ENTITY linux-md5 "1592bb2a8ec0deb1ff32e8238f25ecc5">
+<!ENTITY linux-version "2.6.12.6">
+<!ENTITY linux-package "linux-&linux-version;.tar.bz2">
+<!ENTITY linux-directory "linux-&linux-version;">
+<!ENTITY linux-src-location "/usr/src">
+
+<!ENTITY linux-package-url "&package-mirror;/linux/">
+<!ENTITY linux-patches-url "&patches-mirror;/linux/">
+
+<!ENTITY linux-mips-fix-patch-md5 "df262c704d1ccd17ebfca07cb6064ac7">
+<!ENTITY linux-mips-fix-patch "linux-&linux-version;-mips_fix-4.patch">
+
+<!ENTITY linux-libc-headers-md5 "eae2f562afe224ad50f65a6acfb4252c">
+<!ENTITY linux-libc-headers-version "2.6.12.0">
+<!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
+<!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
+
+<!ENTITY linux-libc-headers-package-url "&package-mirror;/linux-libc-headers/">
+<!ENTITY linux-libc-headers-patches-url "&patches-mirror;/linux-libc-headers/">
+
+<!ENTITY linux-libc-headers-mips-tls-patch-md5 "fb446b900ce4c55307b897dd37942078">
+<!ENTITY linux-libc-headers-mips-tls-patch "linux-libc-headers-&linux-libc-headers-version;-mips_tls-1.patch">
+
+<!ENTITY linux-libc-headers-mips-atomic-patch-md5 "c670017b996c805b2b7a43894b27a6cb">
+<!ENTITY linux-libc-headers-mips-atomic-patch "linux-libc-headers-&linux-libc-headers-version;-mips_atomic_fix-1.patch">
