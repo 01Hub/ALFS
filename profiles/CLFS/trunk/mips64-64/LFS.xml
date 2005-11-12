@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+  <!ENTITY % general_entities SYSTEM "../config/general.ent">
+
+  %general_entities;
+]>
+<alfs version="3.1" xmlns:xi="http://www.w3.org/2003/XInclude">
+  <stage name="Cross-LFS">
+    <stage name="Preparations">
+      <xi:include href="../prep/creatingtoolsdir.xml" />
+      <xi:include href="../prep/addinguser.xml" />
+      <xi:include href="../prep/settingenvironment.xml" />
+      <xi:include href="../prep/creatingcrosstoolsdir.xml" />
+    </stage>
+    <stage name="Creating Cross-Compile Tools">
+      <stageinfo>
+	<root>/</root>
+	<user>&lfs-user;</user>
+	<environment>
+	  <variable name="LFS">&LFS;</variable>
+	  <variable name="LC_ALL">POSIX</variable>
+	  <variable name="PATH">/cross-tools/bin:/bin:/usr/bin</variable>
+	  <variable name="CFLAGS" />
+	  <variable name="CXXFLAGS" />
+	  <variable name="TERM">&TERM;</variable>
+	  <variable name="HOME">&lfs-user-dir;</variable>
+	  <variable name="LFS_HOST">&lfs-host;</variable>
+	  <variable name="LFS_TARGET">&lfs-target;</variable>
+	</environment>
+      </stageinfo>
+      <xi:include href="cross-tools/linux-libc-headers.xml" />
+    </stage>
+  </stage>
+</alfs>

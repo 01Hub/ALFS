@@ -1,11 +1,21 @@
 <!ENTITY LFS "/mnt/lfs">
 <!ENTITY LFS-version "CLFS-SVN-20051107">
 
-<!ENTITY packages_dir "/tools/packages-&LFS-version;">
+<!ENTITY packages_dir "/tools/packages">
 <!ENTITY build_dir "/tools/build">
 <!ENTITY skeleton_dir "/tools/skeleton-&LFS-version;">
 
+<!ENTITY lfs-user "lfs">
+<!ENTITY lfs-password "lfspassword">
+<!ENTITY lfs-user-dir "/home/&lfs-user;">
 
 <!-- Package/Patch Mirrors -->
 <!ENTITY package-mirror "ftp://ftp.linuxfromscratch.org/pub/lfs/conglomeration">
 <!ENTITY patches-mirror "http://www.linuxfromscratch.org/patches/downloads">
+
+<!ENTITY TERM "linux">
+
+<!-- Refer to the Cross-LFS book Section 5.3 for the proper settings for these variables -->
+<!ENTITY lfs-host "">
+<!ENTITY lfs-target "">
+

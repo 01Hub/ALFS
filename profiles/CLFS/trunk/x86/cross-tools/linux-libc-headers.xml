@@ -13,7 +13,7 @@
     <stage name="Download and Check">
       <download>
 	<file>&linux-libc-headers-package;</file>
-	<url>&linux-libc-headers-package-url;</file>
+	<url>&linux-libc-headers-package-url;</url>
 	<destination>&packages_dir;</destination>
 	<digest>&linux-libc-headers-md5;</digest>
       </download>
