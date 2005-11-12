@@ -1,0 +1,11 @@
+<!ENTITY LFS "/mnt/lfs">
+<!ENTITY LFS-version "CLFS-SVN-20051107">
+
+<!ENTITY packages_dir "/tools/packages-&LFS-version;">
+<!ENTITY build_dir "/tools/build">
+<!ENTITY skeleton_dir "/tools/skeleton-&LFS-version;">
+
+
+<!-- Package/Patch Mirrors -->
+<!ENTITY package-mirror "ftp://ftp.linuxfromscratch.org/pub/lfs/conglomeration">
+<!ENTITY patches-mirror "http://www.linuxfromscratch.org/patches/downloads">

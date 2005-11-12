@@ -1,0 +1,27 @@
+<!ENTITY aboot-md5 "5f16edbf4e9d52cd191adc4d4b6a5327">
+<!ENTITY aboot-version "0.9b">
+<!ENTITY aboot-package "aboot-&aboot-version;.tar.bz2">
+<!ENTITY aboot-directory "aboout-&aboot-version;">
+
+<!ENTITY aboot-packages-url "&package-mirror;/aboot/">
+<!ENTITY aboot-patches-url "&patches-mirror;/aboot/">
+
+<!ENTITY aboot-kernel-gcc4-fixes-patch-md5 "9049bf4c3e55da355896741567c3242e">
+<!ENTITY aboot-kernel-gcc4-fixes-patch "aboot-&aboot-version;-kernel26_gcc4_fixes-1.patch">
+
+<!ENTITY linux-md5 "1592bb2a8ec0deb1ff32e8238f25ecc5">
+<!ENTITY linux-version "2.6.12.6">
+<!ENTITY linux-package "linux-&linux-version;.tar.bz2">
+<!ENTITY linux-directory "linux-&linux-version;">
+<!ENTITY linux-src-location "/usr/src">
+
+<!ENTITY linux-package-url "&package-mirror;/linux/">
+<!ENTITY linux-patches-url "&patches-mirror;/linux/">
+
+<!ENTITY linux-libc-headers-md5 "eae2f562afe224ad50f65a6acfb4252c">
+<!ENTITY linux-libc-headers-version "2.6.12.0">
+<!ENTITY linux-libc-headers-package "linux-libc-headers-&linux-libc-headers-version;.tar.bz2">
+<!ENTITY linux-libc-headers-directory "linux-libc-headers-&linux-libc-headers-version;">
+
+<!ENTITY linux-libc-headers-package-url "&package-mirror;/linux-libc-headers/">
+<!ENTITY linux-libc-headers-patches-url "&patches-mirror;/linux-libc-headers/">
