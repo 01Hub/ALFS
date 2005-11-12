@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % profile_entities SYSTEM "../config/profile.ent">
+
+%general_entities;
+%profile_entities;
+]>
+<alfs>
+  <stage name="Creating the $LFS/tools Directory">
+    <mkdir>
+      <option>parents</option>
+      <name>&LFS;/tools</name>
+    </mkdir>
+    <link>
+      <option>force</option>
+      <target>&LFS;/tools</target>
+      <name>/</name>
+    </link>
+    <!-- From this point forward isn't in the book, it's only here for nALFS to use -->
+    <mkdir base="&LFS;">
+      <option>parents</option>
+      <name>&LFS;&packages_dir;</name>
+      <name>&LFS;&build_dir;</name>
+      <name>&LFS;&skeleton_dir;</name>
+    </mkdir>
+    <stage name="Copying skeleton configuration files">
+      <copy>
+        <option>recursive</option>
+        <source>&lfs-profile;/&skeleton;/*</source>
+	<destination>&LFS;&skeleton_dir;</destination>
+      </copy>
+    </stage>
+  </stage>
+</alfs>

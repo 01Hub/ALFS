@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+
+%general_entities;
+]>
+<alfs>
+  <stage name="Adding the LFS User">
+    <execute command="getent group &lfs-user; &gt; /dev/null || groupadd">
+    	<param>&lfs-user;</param>
+    </execute>
+    <execute command="getent passwd &lfs-user; &gt; /dev/null || useradd">
+      <param>-s /bin/bash</param>
+      <param>-g &lfs-user;</param>
+      <param>-m</param>
+      <param>-k /dev/null</param>
+      <param>&lfs-user;</param>
+    </execute>
+    <execute command="echo &lfs-user;:&lfs-password; | chpasswd" />
+    <ownership user="&lfs-user;">
+      <name>&LFS;</name>
+      <name>&LFS;/tools</name>
+      <name>&LFS;&build_dir;</name>
+    </ownership>
+  </stage>
+</alfs>
