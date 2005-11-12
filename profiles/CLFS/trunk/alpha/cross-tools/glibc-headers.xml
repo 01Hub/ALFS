@@ -9,7 +9,7 @@
 
 ]>
 <alfs>
-  <package name="glibc" version="&glibc-version;">
+  <package name="glibc-headers" version="&glibc-version;">
     <stage name="Download and Check">
       <download>
 	<file>&glibc-package;</file>

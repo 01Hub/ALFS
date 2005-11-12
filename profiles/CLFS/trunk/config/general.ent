@@ -15,7 +15,23 @@
 
 <!ENTITY TERM "linux">
 
-<!-- Refer to the Cross-LFS book Section 5.3 for the proper settings for these variables -->
+<!-- LFS_HOST and LFS_TARGET -->
+<!-- Refer to the Cross-LFS book of the arch being built for in 
+ Section 5.3 for the proper settings for these variables -->
 <!ENTITY lfs-host "">
 <!ENTITY lfs-target "">
 
+<!-- Build Flags -->
+<!-- Refer to the Cross-LFS book of the arch being built for in 
+ Section 5.4 for the proper settings for these variables -->
+<!-- Note: None of these are used in the 32-bit only builds or alpha builds -->
+<!-- LFS_TARGET32 (Only used in multilib builds) -->
+<!ENTITY lfs-target32 "">
+<!-- BUILD32 (Only used in multilib builds) -->
+<!ENTITY build32 "">
+<!-- BUILDN32 (Only used in mips64 multilib build) -->
+<!ENTITY buildn32 "">
+<!-- BUILD64 (Used for multilib and pure64 builds) -->
+<!ENTITY build64 "">
+<!-- GCCTARGET (Used only in the multilib and pure64 sparc64 builds -->
+<!ENTITY gcctarget "">
