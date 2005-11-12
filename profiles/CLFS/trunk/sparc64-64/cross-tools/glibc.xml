@@ -98,6 +98,7 @@
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&glibc-directory;</remove>
+      <remove>&build_dir;/glibc-build</remove>
     </stage>
   </package>
 <!--
