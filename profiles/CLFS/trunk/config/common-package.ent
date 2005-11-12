@@ -187,7 +187,7 @@
 <!ENTITY gcc-pure64-patch "gcc-&gcc-version;-pure64-1.patch">
 
 <!ENTITY gcc-pure64-specs-patch-md5 "d36e1a19c797e27a4f249c790e9b5a51">
-<!ENTITY gcc-pure64-specs-patch "gcc-&gcc-version;-pure64_specs-1.patch"
+<!ENTITY gcc-pure64-specs-patch "gcc-&gcc-version;-pure64_specs-1.patch">
 
 <!ENTITY gcc-specs-patch-md5 "0aa7d4c6be50c3855fe812f6faabc306">
 <!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-1.patch">
