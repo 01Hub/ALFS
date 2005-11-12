@@ -24,4 +24,9 @@
       <replace>&LFS;</replace>
     </search_replace>
   </stage>
+<!--
+  $LastChangedDate$
+  $LastChangedBy$
+  $LastChangedRevision$
+-->
 </alfs>
