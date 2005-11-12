@@ -9,13 +9,25 @@
 
 ]>
 <alfs>
-  <package name="glibc-headers" version="&glibc-version;">
+  <package name="glibc" version="&glibc-version;">
     <stage name="Download and Check">
       <download>
 	<file>&glibc-package;</file>
 	<url>&glibc-package-url;</url>
 	<destination>&packages_dir;</destination>
 	<digest>&glibc-md5;</digest>
+      </download>
+      <download>
+	<file>&glibc-libgcc-patch;</file>
+	<url>&glibc-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&glibc-libgcc-patch-md5;</digest>
+      </download>
+      <download>
+	<file>&glibc-localedef-segfault-patch;</file>
+	<url>&glibc-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&glibc-localedef-segfault-patch-md5;</digest>
       </download>
     </stage>
     <stage name="Unpacking">
@@ -31,56 +43,51 @@
       <stageinfo>
 	<base>&build_dir;/&glibc-directory;</base>
       </stageinfo>
-      <copy>
-	<source>configure</source>
-	<destination>configure.orig</destination>
-      </copy>
-      <execute command="sed">
-	<param>-e</param>
-	<param>'s/3.4/3.[0-9]/g'</param>
-	<param>configure.orig</param>
-	<param>&gt; configure</param>
-      </execute>
+      <patch>
+	<param>-Np1</param>
+	<param>-i &packages_dir;/&glibc-libgcc-patch;</param>
+      </patch>
+      <patch>
+	<param>-Np1</param>
+	<param>-i &packages_dir;/&glibc-localedef-segfault-patch;</param>
+      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>
 	<base>&build_dir;/glibc-build</base>
       </stageinfo>
+      <textdump>
+	<file>config.cache</file>
+	<content>
+	  =libc_cv_forced_unwind=yes
+	  =libc_cv_c_cleanup=yes
+	  =libc_cv_ppc_machine=yes
+	</content>
+      </textdump>
       <configure command="../&glibc-directory;/configure">
+	<prefix>BUILD_CC="gcc"</prefix>
+	<prefix>CC="${LFS_TARGET}-gcc"</prefix>
+	<prefix>AR="${LFS_TARGET}-ar"</prefix>
+	<prefix>RANLIB="${LFS_TARGET}-ranlib"</prefix>
 	<param>--prefix=/tools</param>
 	<param>--host=${LFS_TARGET}</param>
 	<param>--build=${LFS_HOST}</param>
-	<param>--disable-sanity-checks</param>
+	<param>--disable-profile</param>
+	<param>--enable-add-ons</param>
+	<param>--with-tls</param>
 	<param>--enable-kernel=2.6.0</param>
+	<param>--with-__thread</param>
+	<param>--with-binutils=/cross-tools/bin</param>
 	<param>--with-headers=/tools/include</param>
-	<param>--with-binutils=/cross-tools/${LFS_TARGET}/bin</param>
+	<param>--with-cache-file=config.cache</param>
       </configure>
+      <make />
       <make>
-	<param>install-headers</param>
+	<param>install</param>
       </make>
-      <mkdir>
-	<option>parents</option>
-	<name>/tools/include/bits</name>
-      </mkdir>
-      <copy>
-	<source>bits/stdio_lim.h</source>
-	<destination>/tools/include/bits</destination>
-      </copy>
-      <execute command="touch">
-	<param>/tools/include/gnu/stubs.h</param>
-      </execute>
-      <copy>
-	<source>../&glibc-directory;/nptl/sysdeps/pthread/pthread.h</source>
-	<destination>/tools/include</destination>
-      </copy>
-      <copy>
-	<source>../&glibc-directory;/nptl/sysdeps/unix/sysv/linux/i386/bits/pthreadtypes.h</source>
-	<destination>/tools/include/bits</destination>
-      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&glibc-directory;</remove>
-      <remove>&build_dir;/glibc-build</remove>
     </stage>
   </package>
 <!--

@@ -219,7 +219,7 @@
 <!ENTITY glibc-libgcc-patch "glibc-&glibc-version;-libgcc_eh-1.patch">
 
 <!ENTITY glibc-localedef-segfault-patch-md5 "42452abc6196789e0a83afa1ca7e6e4e">
-<!ENTITY glibc-localedef-segfault-patch "glibc-&glibc-version;-localdef_segfault-1.patch">
+<!ENTITY glibc-localedef-segfault-patch "glibc-&glibc-version;-localedef_segfault-1.patch">
 
 <!ENTITY glibc-mips-nptl-patch-md5 "086940b10e09f514a70c00b9bbf2268e">
 <!ENTITY glibc-mips-nptl-patch "glibc-&glibc-version;-mips_nptl-1.patch">

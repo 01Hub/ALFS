@@ -25,6 +25,8 @@
 	  <variable name="CXXFLAGS" />
 	  <variable name="TERM">&TERM;</variable>
 	  <variable name="HOME">&lfs-user-dir;</variable>
+	  <variable name="BUILD64">&build64;</variable>
+	  <variable name="GCCTARGET">&gcctarget;</variable>
 	  <variable name="LFS_HOST">&lfs-host;</variable>
 	  <variable name="LFS_TARGET">&lfs-target;</variable>
 	</environment>
@@ -32,6 +34,7 @@
       <xi:include href="cross-tools/linux-libc-headers.xml" />
       <xi:include href="cross-tools/binutils.xml" />
       <xi:include href="cross-tools/gcc-static.xml" />
+      <xi:include href="cross-tools/glibc.xml" />
     </stage>
   </stage>
 </alfs>

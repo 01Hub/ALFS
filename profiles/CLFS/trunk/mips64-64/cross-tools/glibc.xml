@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../../DTD/ALFS.dtd" 
+[
+<!ENTITY % general_entities SYSTEM "../../config/general.ent">
+<!ENTITY % common_package_entities SYSTEM "../../config/common-package.ent">
+
+%general_entities;
+%common_package_entities;
+
+]>
+<alfs>
+  <package name="glibc" version="&glibc-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&glibc-package;</file>
+	<url>&glibc-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&glibc-md5;</digest>
+      </download>
+      <download>
+	<file>&glibc-libgcc-patch;</file>
+	<url>&glibc-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&glibc-libgcc-patch-md5;</digest>
+      </download>
+      <download>
+	<file>&glibc-mips-nptl-patch;</file>
+	<url>&glibc-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&glibc-mips-nptl-patch-md5;</digest>
+      </download>
+      <download>
+	<file>&glibc-localedef-segfault-patch;</file>
+	<url>&glibc-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&glibc-localedef-segfault-patch-md5;</digest>
+      </download>
+    </stage>
+    <stage name="Unpacking">
+      <unpack>
+	<archive>&packages_dir;/&glibc-package;</archive>
+	<destination>&build_dir;</destination>
+      </unpack>
+      <mkdir>
+      	<name>glibc-build</name>
+      </mkdir>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&glibc-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-Np1</param>
+	<param>-i &packages_dir;/&glibc-libgcc-patch;</param>
+      </patch>
+      <patch>
+	<param>-Np1</param>
+	<param>-i &packages_dir;/&glibc-mips-nptl-patch;</param>
+      </patch>
+      <patch>
+	<param>-Np1</param>
+	<param>-i &packages_dir;/&glibc-localedef-segfault-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/glibc-build</base>
+      </stageinfo>
+      <textdump>
+	<file>config.cache</file>
+	<content>
+	  =libc_cv_forced_unwind=yes
+	  =libc_cv_c_cleanup=yes
+	</content>
+      </textdump>
+      <configure command="../&glibc-directory;/configure">
+	<prefix>BUILD_CC="gcc"</prefix>
+	<prefix>CC="${LFS_TARGET}-gcc ${BUILD64}"</prefix>
+	<prefix>AR="${LFS_TARGET}-ar"</prefix>
+	<prefix>RANLIB="${LFS_TARGET}-ranlib"</prefix>
+	<param>--prefix=/tools</param>
+	<param>--host=${LFS_TARGET}</param>
+	<param>--build=${LFS_HOST}</param>
+	<param>--disable-profile</param>
+	<param>--enable-add-ons</param>
+	<param>--with-tls</param>
+	<param>--enable-kernel=2.6.0</param>
+	<param>--with-__thread</param>
+	<param>--with-binutils=/cross-tools/bin</param>
+	<param>--with-headers=/tools/include</param>
+	<param>--with-cache-file=config.cache</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&glibc-directory;</remove>
+    </stage>
+  </package>
+<!--
+  $LastChangedDate$
+  $LastChangedBy$
+  $LastChangedRevision$
+-->
+</alfs>
+
