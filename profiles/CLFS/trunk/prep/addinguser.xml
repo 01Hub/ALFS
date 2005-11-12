@@ -24,4 +24,9 @@
       <name>&LFS;&build_dir;</name>
     </ownership>
   </stage>
+<!--
+  $LastChangedDate$
+  $LastChangedBy$
+  $LastChangedRevision$
+-->
 </alfs>

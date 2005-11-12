@@ -175,7 +175,10 @@
 <!ENTITY gcc-patches-url "&patches-mirror;/gcc/">
 
 <!ENTITY gcc-cross-search-paths-patch-md5 "0c75b561554e3c2e63198beb1b938e3f">
-<!ENTITY gcc-cross-search-patch-patch "gcc-&gcc-version;-cross_search_paths-1.patch">
+<!ENTITY gcc-cross-search-paths-patch "gcc-&gcc-version;-cross_search_paths-1.patch">
+
+<!ENTITY gcc-mips-pure64-patch-md5 "3d4f72afb125172ffac16ddc8bc836f4">
+<!ENTITY gcc-mips-pure64-patch "gcc-&gcc-version;-mips_pure64-1.patch">
 
 <!ENTITY gcc-mips-tls-patch-md5 "e6ac3f5e1945b369ea284627e5f0e254">
 <!ENTITY gcc-mips-tls-patch "gcc-&gcc-version;-mips_tls-1.patch">

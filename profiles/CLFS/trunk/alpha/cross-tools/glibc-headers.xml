@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../../DTD/ALFS.dtd" 
+[
+<!ENTITY % general_entities SYSTEM "../../config/general.ent">
+<!ENTITY % common_package_entities SYSTEM "../../config/common-package.ent">
+
+%general_entities;
+%common_package_entities;
+
+]>
+<alfs>
+  <package name="glibc" version="&glibc-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&glibc-package;</file>
+	<url>&glibc-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&glibc-md5;</digest>
+      </download>
+    </stage>
+    <stage name="Unpacking">
+      <unpack>
+	<archive>&packages_dir;/&glibc-package;</archive>
+	<destination>&build_dir;</destination>
+      </unpack>
+      <mkdir>
+      	<name>glibc-build</name>
+      </mkdir>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&glibc-directory;</base>
+      </stageinfo>
+      <copy>
+	<source>configure</source>
+	<destination>configure.orig</destination>
+      </copy>
+      <execute command="sed">
+	<param>-e</param>
+	<param>'s/3.4/3.[0-9]/g'</param>
+	<param>configure.orig</param>
+	<param>&gt; configure</param>
+      </execute>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/glibc-build</base>
+      </stageinfo>
+      <configure command="../&glibc-directory;/configure">
+	<param>--prefix=/tools</param>
+	<param>--host=${LFS_TARGET}</param>
+	<param>--build=${LFS_HOST}</param>
+	<param>--disable-sanity-checks</param>
+	<param>--enable-kernel=2.6.0</param>
+	<param>--with-headers=/tools/include</param>
+	<param>--with-binutils=/cross-tools/${LFS_TARGET}/bin</param>
+      </configure>
+      <make>
+	<param>install-headers</param>
+      </make>
+      <mkdir>
+	<option>parents</option>
+	<name>/tools/include/bits</name>
+      </mkdir>
+      <copy>
+	<source>bits/stdio_lim.h</source>
+	<destination>/tools/include/bits</destination>
+      </copy>
+      <execute command="touch">
+	<param>/tools/include/gnu/stubs.h</param>
+      </execute>
+      <copy>
+	<source>../&glibc-directory;/nptl/sysdeps/pthread/pthread.h</source>
+	<destination>/tools/include</destination>
+      </copy>
+      <copy>
+	<source>../&glibc-directory;/nptl/sysdeps/unix/sysv/linux/alpha/bits/pthreadtypes.h</source>
+	<destination>/tools/include/bits</destination>
+      </copy>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&glibc-directory;</remove>
+      <remove>&build_dir;/glibc-build</remove>
+    </stage>
+  </package>
+<!--
+  $LastChangedDate$
+  $LastChangedBy$
+  $LastChangedRevision$
+-->
+</alfs>
+
