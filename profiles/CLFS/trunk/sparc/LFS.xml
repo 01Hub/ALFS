@@ -35,5 +35,46 @@
       <xi:include href="cross-tools/glibc.xml" />
       <xi:include href="cross-tools/gcc-final.xml" />
     </stage>
+    <stage name="Constructing a Temporary System">
+      <stageinfo>
+	<root>/</root>
+	<user>&lfs-user;</user>
+	<environment>
+	  <variable name="LFS">&LFS;</variable>
+	  <variable name="LC_ALL">POSIX</variable>
+	  <variable name="PATH">/cross-tools/bin:/bin:/usr/bin</variable>
+	  <variable name="CFLAGS" />
+	  <variable name="CXXFLAGS" />
+	  <variable name="TERM">&TERM;</variable>
+	  <variable name="HOME">&lfs-user-dir;</variable>
+	  <variable name="LFS_HOST">&lfs-host;</variable>
+	  <variable name="LFS_TARGET">&lfs-target;</variable>
+	  <variable name="CC">&lfs-target;-gcc</variable>
+	  <variable name="CXX">&lfs-target;-g++</variable>
+	  <variable name="AR">&lfs-target;-ar</variable>
+	  <variable name="AS">&lfs-target;-as</variable>
+	  <variable name="RANLIB">&lfs-target;-ranlib</variable>
+	  <variable name="LD">&lfs-target;-ld</variable>
+	  <variable name="STRIP">&lfs-target;-strip</variable>
+	</environment>
+      </stageinfo>
+      <xi:include href="temp-system/binutils.xml" />
+      <xi:include href="temp-system/gcc.xml" />
+      <xi:include href="../common/temp-system/zlib.xml" />
+      <xi:include href="../common/temp-system/gawk.xml" />
+      <xi:include href="../common/temp-system/coreutils.xml" />
+      <xi:include href="../common/temp-system/bzip2.xml" />
+      <xi:include href="../common/temp-system/gzip.xml" />
+      <xi:include href="../common/temp-system/diffutils.xml" />
+      <xi:include href="../common/temp-system/findutils.xml" />
+      <xi:include href="../common/temp-system/make.xml" />
+      <xi:include href="../common/temp-system/grep.xml" />
+      <xi:include href="../common/temp-system/sed.xml" />
+      <xi:include href="../common/temp-system/gettext.xml" />
+      <xi:include href="../common/temp-system/ncurses.xml" />
+      <xi:include href="../common/temp-system/patch.xml" />
+      <xi:include href="../common/temp-system/tar.xml" />
+      <xi:include href="../common/temp-system/bash.xml" />
+    </stage>
   </stage>
 </alfs>

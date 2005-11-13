@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../../DTD/ALFS.dtd" 
+[
+<!ENTITY % general_entities SYSTEM "../../config/general.ent">
+<!ENTITY % common_package_entities SYSTEM "../../config/common-package.ent">
+
+%general_entities;
+%common_package_entities;
+
+]>
+<alfs>
+  <package name="make" version="&make-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&make-package;</file>
+	<url>&make-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&make-md5;</digest>
+      </download>
+      <download>
+	<file>&make-mips-config-update-patch;</file>
+	<url>&make-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&make-mips-config-update-patch-md5;</digest>
+      </download>
+    </stage>
+    <stage name="Unpacking">
+      <unpack>
+	<archive>&packages_dir;/&make-package;</archive>
+	<destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&make-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-Np1</param>
+	<param>-i &packages_dir;/&make-mips-config-update-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&make-directory;</base>
+      </stageinfo>
+      <configure>
+	<param>--prefix=/tools</param>
+	<param>--host=${LFS_TARGET}</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&make-directory;</remove>
+    </stage>
+  </package>
+<!--
+  $LastChangedDate$
+  $LastChangedBy$
+  $LastChangedRevision$
+-->
+</alfs>
+
