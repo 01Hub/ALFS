@@ -39,6 +39,7 @@
       <xi:include href="cross-tools/glibc-32.xml" />
       <xi:include href="cross-tools/glibc-n32.xml" />
       <xi:include href="cross-tools/glibc-64.xml" />
+      <xi:include href="cross-tools/gcc-final.xml" />
     </stage>
   </stage>
 </alfs>
