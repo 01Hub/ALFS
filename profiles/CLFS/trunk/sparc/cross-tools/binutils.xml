@@ -41,8 +41,9 @@
 	<archive>&packages_dir;/&binutils-package;</archive>
 	<destination>&build_dir;</destination>
       </unpack>
-      <mkdir>
-      	<name>&build_dir;/binutils-build</name>
+      <mkdir base="&build_dir;">
+	<option>parents</option>
+	<name>binutils-build</name>
       </mkdir>
     </stage>
     <stage name="Patching">
