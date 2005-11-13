@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../../DTD/ALFS.dtd" 
+[
+<!ENTITY % general_entities SYSTEM "../../config/general.ent">
+<!ENTITY % common_package_entities SYSTEM "../../config/common-package.ent">
+
+%general_entities;
+%common_package_entities;
+
+]>
+<alfs>
+  <package name="diffutils" version="&diffutils-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&diffutils-package;</file>
+	<url>&diffutils-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&diffutils-md5;</digest>
+      </download>
+    </stage>
+    <stage name="Unpacking">
+      <unpack>
+	<archive>&packages_dir;/&diffutils-package;</archive>
+	<destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&diffutils-directory;</base>
+      </stageinfo>
+      <configure>
+	<prefix>CC="${CC} ${BUILD64}"</prefix>
+	<param>--prefix=/tools</param>
+	<param>--host=${LFS_TARGET}</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&diffutils-directory;</remove>
+    </stage>
+  </package>
+<!--
+  $LastChangedDate$
+  $LastChangedBy$
+  $LastChangedRevision$
+-->
+</alfs>
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../../DTD/ALFS.dtd" 
+[
+<!ENTITY % general_entities SYSTEM "../../config/general.ent">
+<!ENTITY % common_package_entities SYSTEM "../../config/common-package.ent">
+
+%general_entities;
+%common_package_entities;
+
+]>
+<alfs>
+  <package name="findutils" version="&findutils-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&findutils-package;</file>
+	<url>&findutils-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&findutils-md5;</digest>
+      </download>
+    </stage>
+    <stage name="Unpacking">
+      <unpack>
+	<archive>&packages_dir;/&findutils-package;</archive>
+	<destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&findutils-directory;</base>
+      </stageinfo>
+      <textdump>
+	<file>config.cache</file>
+	<content>
+	  =am_cv_func_working_getline=yes
+	</content>
+      </textdump>
+      <configure>
+	<prefix>CC="${CC} ${BUILD64}"</prefix>
+	<param>--prefix=/tools</param>
+	<param>--host=${LFS_TARGET}</param>
+	<param>--cache-file=config.cache</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&findutils-directory;</remove>
+    </stage>
+  </package>
+<!--
+  $LastChangedDate$
+  $LastChangedBy$
+  $LastChangedRevision$
+-->
+</alfs>
+
