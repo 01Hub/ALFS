@@ -23,8 +23,9 @@
 	<archive>&packages_dir;/&glibc-package;</archive>
 	<destination>&build_dir;</destination>
       </unpack>
-      <mkdir>
-      	<name>glibc-build</name>
+      <mkdir base="&build_dir;">
+	<option>parents</option>
+	<name>glibc-build</name>
       </mkdir>
     </stage>
     <stage name="Patching">

@@ -53,7 +53,8 @@
 	<archive>&packages_dir;/&gcc-package;</archive>
 	<destination>&build_dir;</destination>
       </unpack>
-      <mkdir>
+      <mkdir base="&build_dir;">
+	<option>parents</option>
 	<name>gcc-build</name>
       </mkdir>
     </stage>
