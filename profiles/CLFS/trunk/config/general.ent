@@ -1,3 +1,5 @@
+<!ENTITY real-amp "&#38;#38;">
+
 <!ENTITY LFS "/mnt/lfs">
 <!ENTITY LFS-version "CLFS-SVN-20051107">
 

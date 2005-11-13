@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../../DTD/ALFS.dtd" 
+[
+<!ENTITY % general_entities SYSTEM "../../config/general.ent">
+<!ENTITY % common_package_entities SYSTEM "../../config/common-package.ent">
+
+%general_entities;
+%common_package_entities;
+
+]>
+<alfs>
+  <package name="gettext" version="&gettext-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&gettext-package;</file>
+	<url>&gettext-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&gettext-md5;</digest>
+      </download>
+    </stage>
+    <stage name="Unpacking">
+      <unpack>
+	<archive>&packages_dir;/&gettext-package;</archive>
+	<destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&gettext-directory;</base>
+      </stageinfo>
+      <textdump mode="append">
+	<file>config.cache</file>
+	<content>
+	  =am_cv_func_working_getline=yes
+	</content>
+      </textdump>
+      <configure>
+	<param>--prefix=/tools</param>
+	<param>--host=${LFS_TARGET}</param>
+	<param>--disable-libasprintf</param>
+	<param>--without-csharp</param>
+	<param>--cache-file=config.cache</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gettext-directory;</remove>
+    </stage>
+  </package>
+<!--
+  $LastChangedDate$
+  $LastChangedBy$
+  $LastChangedRevision$
+-->
+</alfs>
+

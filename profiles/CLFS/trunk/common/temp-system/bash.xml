@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../../DTD/ALFS.dtd" 
+[
+<!ENTITY % general_entities SYSTEM "../../config/general.ent">
+<!ENTITY % common_package_entities SYSTEM "../../config/common-package.ent">
+
+%general_entities;
+%common_package_entities;
+
+]>
+<alfs>
+  <package name="bash" version="&bash-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&bash-package;</file>
+	<url>&bash-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&bash-md5;</digest>
+      </download>
+      <download>
+	<file>&bash-wcontinued-patch;</file>
+	<url>&bash-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&bash-wcontinued-patch-md5;</digest>
+      </download>
+    </stage>
+    <stage name="Unpacking">
+      <unpack>
+	<archive>&packages_dir;/&bash-package;</archive>
+	<destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&bash-directory;</base>
+      </stageinfo>
+      <copy>
+	<source>Makefile.in</source>
+	<destination>Makefile.in.orig</destination>
+      </copy>
+      <execute command="sed">
+	<param>-e</param>
+	<param>"s@size \$(Program)@${LFS_TARGET}-&real-amp;@g"</param>
+	<param>Makefile.in.orig</param>
+	<param>&gt; Makefile.in</param>
+      </execute>
+      <patch>
+	<param>-Np1</param>
+	<param>-i &packages_dir;/&bash-wcontinued-patch;</param>
+      </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/&bash-directory;</base>
+      </stageinfo>
+      <configure>
+	<param>--prefix=/tools</param>
+	<param>--with-curses</param>
+	<param>--without-bash-malloc</param>
+	<param>--host=${LFS_TARGET}</param>
+      </configure>
+      <make />
+      <make>
+	<param>install</param>
+      </make>
+      <link>
+	<option>force</option>
+	<target>bash</target>
+	<name>/tools/bin/sh</name>
+      </link>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&bash-directory;</remove>
+    </stage>
+  </package>
+<!--
+  $LastChangedDate$
+  $LastChangedBy$
+  $LastChangedRevision$
+-->
+</alfs>
+
