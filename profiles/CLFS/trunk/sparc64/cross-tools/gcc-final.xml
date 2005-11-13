@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../../DTD/ALFS.dtd" 
+[
+<!ENTITY % general_entities SYSTEM "../../config/general.ent">
+<!ENTITY % common_package_entities SYSTEM "../../config/common-package.ent">
+
+%general_entities;
+%common_package_entities;
+
+]>
+<alfs>
+  <package name="gcc" version="&gcc-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&gcc-package;</file>
+	<url>&gcc-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&gcc-md5;</digest>
+      </download>
+      <download>
+	<file>&gcc-specs-patch;</file>
+	<url>&gcc-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&gcc-specs-patch-md5;</digest>
+      </download>
+      <download>
+	<file>&gcc-posix-patch;</file>
+	<url>&gcc-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&gcc-posix-patch-md5;</digest>
+      </download>
+      <download>
+	<file>&gcc-cross-search-paths-patch;</file>
+	<url>&gcc-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&gcc-cross-search-paths-patch-md5;</digest>
+      </download>
+    </stage>
+    <stage name="Unpacking">
+      <unpack>
+	<archive>&packages_dir;/&gcc-package;</archive>
+	<destination>&build_dir;</destination>
+      </unpack>
+      <mkdir>
+	<name>gcc-build</name>
+      </mkdir>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&gcc-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-Np1</param>
+	<param>-i &packages_dir;/&gcc-specs-patch;</param>
+      </patch>
+      <patch>
+	<param>-Np1</param>
+	<param>-i &packages_dir;/&gcc-posix-patch;</param>
+      </patch>
+      <patch>
+	<param>-Np1</param>
+	<param>-i &packages_dir;/&gcc-cross-search-paths-patch;</param>
+      </patch>
+      <textdump mode="append">
+	<file>gcc/config/sparc/linux.h</file>
+	<content>
+	  =
+	  =#undef STARTFILE_PREFIX_SPEC
+	  =#define STARTFILE_PREFIX_SPEC "/tools/lib"
+	</content>
+      </textdump>
+      <textdump mode="append">
+	<file>gcc/config/sparc/linux64.h</file>
+	<content>
+	  =
+	  =#undef STARTFILE_PREFIX_SPEC
+	  =#define STARTFILE_PREFIX_SPEC "/tools/lib"
+	</content>
+      </textdump>
+      <copy>
+	<source>gcc/Makefile.in</source>
+	<destination>gcc/Makefile.in.orig</destination>
+      </copy>
+      <execute command="sed">
+	<param>-e</param>
+	<param>"s@\(^CROSS_SYSTEM_HEADER_DIR =\).*@\1 /tools/include@g"</param>
+	<param>gcc/Makefile.in.orig</param>
+	<param> &gt; gcc/Makefile.in</param>
+      </execute>
+      <copy>
+      	<source>configure</source>
+	<destination>configure.orig</destination>
+      </copy>
+      <execute command="sed">
+	<param>-e</param>
+	<param>'/FLAGS_FOR_TARGET.*\/lib\//s@-B[^ ]*/lib/@@g'</param>
+	<param>configure.orig</param>
+	<param> &gt; configure</param>
+      </execute>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+	<base>&build_dir;/gcc-build</base>
+      </stageinfo>
+      <configure command="../&gcc-directory;/configure">
+	<param>--prefix=/cross-tools</param>
+	<param>--target=${LFS_TARGET}</param>
+	<param>--host=${LFS_HOST}</param>
+	<param>--with-local-prefix=/tools</param>
+	<param>--disable-nls</param>
+	<param>--enable-shared</param>
+	<param>--enable-languages=c,c++</param>
+	<param>--enable-__cxa_atexit</param>
+	<param>--enable-c99</param>
+	<param>--enable-long-long</param>
+	<param>--enable-threads=posix</param>
+      </configure>
+      <make>
+	<param>CFLAGS_FOR_TARGET="${GCCTARGET}"</param>
+	<param>CXXFLAGS_FOR_TARGET="${GCCTARGET}"</param>
+	<param>AS_FOR_TARGET="/cross-tools/bin/${LFS_TARGET}-as"</param>
+	<param>LD_FOR_TARGET="/cross-tools/bin/${LFS_TARGET}-ld"</param>
+      </make>
+      <make>
+	<param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&gcc-directory;</remove>
+      <remove>&build_dir;/gcc-build</remove>
+    </stage>
+  </package>
+<!--
+  $LastChangedDate$
+  $LastChangedBy$
+  $LastChangedRevision$
+-->
+</alfs>
+

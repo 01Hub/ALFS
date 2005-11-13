@@ -33,6 +33,7 @@
       <xi:include href="cross-tools/binutils.xml" />
       <xi:include href="cross-tools/gcc-static.xml" />
       <xi:include href="cross-tools/glibc.xml" />
+      <xi:include href="cross-tools/gcc-final.xml" />
     </stage>
   </stage>
 </alfs>
