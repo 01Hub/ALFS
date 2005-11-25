@@ -1,0 +1,65 @@
+<!-- Example ALFS configuration file -->
+<answers>
+<!-- *** LFS *** -->
+<!-- Install partition -->
+<answer name="[xxx]">discs/disc0/part5</answer>
+<answer name="[fff]">ext3</answer>
+<!-- /usr partition -->
+<answer name="[zzz]"></answer>
+<!-- Swap partition -->
+<answer name="[yyy]">discs/disc0/part10</answer>
+<!-- Paper size -->
+<answer name="[paper_size]">A4</answer>
+<!-- Network settings -->
+<answer name="[FQDN]">Lenin.Ass</answer>
+<answer name="[HOSTNAME]">Lenin</answer>
+<answer name="[192.168.1.1]">192.168.1.23</answer>
+<answer name="[Your Domain Name]">Ass</answer>
+<answer name="[IP address of your nameserver]">217.237.149.161</answer>
+<!-- Locales -->
+<answer name="[ll]">de</answer>
+<answer name="[CC]">DE@euro</answer>
+<answer name="[arguments for loadkeys]">de-latin1-nodeadkeys</answer>
+<answer name="[arguments for setfont]">lat9u-16</answer>
+<answer name="[/path/to/your/keymap]"></answer>
+<!-- Paths -->
+<answer name="[unpacked sources dir]">/usr/src</answer>
+
+<!-- *** BLFS *** -->
+<!-- Devices -->
+<answer name="[CD Drive]">/dev/cdroms/cdrom0</answer>
+<answer name="[dvd drive]">cdroms/cdrom0</answer>
+<!-- Paths -->
+<answer name="[your home directory]">/home/neocool</answer>
+<!-- Favourites -->
+<answer name="[browser]">opera</answer>
+<answer name="[X]">15</answer> <!-- ISO 8859-X -->
+<!-- Dummies for noexecute commands -->
+<answer name="[CA_DN_field]"></answer>
+<answer name="[filename]"></answer>
+<answer name="[/path/to/source/tree]"></answer>
+<answer name="[username]"></answer>
+<answer name="[insert existing groups]"></answer>
+<answer name="[servername]"></answer>
+<answer name="[sourcedir]"></answer>
+<answer name="[repository test]"></answer>
+<answer name="[cvstest]"></answer>
+<answer name="[vendortag]"></answer>
+<answer name="[releasetag]"></answer>
+<!-- Bind -->
+<answer name="[Insert secret from rndc-confgen's output here]"></answer>
+<!-- DHCP -->
+<answer name="[192.168.5.0]"></answer> <!-- Subnet -->
+<answer name="[255.255.255.0]"></answer> <!-- Netmask -->
+<answer name="[192.168.5.10] [192.168.5.240]"></answer> <!-- IP range -->
+<answer name="[195.168.5.255]"></answer> <!-- Broadcast address -->
+<answer name="[192.168.5.1]"></answer> <!-- Router -->
+<!-- MPlayer -->
+<answer name="[font size]">24</answer>
+<!-- MySQL -->
+<answer name="[new-password]">moongoo!</answer>
+
+<!-- *** ALFS *** -->
+<!-- Paralell building -->
+<answer name="PARALELL">666</answer>
+</answers>

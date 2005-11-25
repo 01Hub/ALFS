@@ -1,0 +1,59 @@
+<packages>
+<!-- Example package info XML document (URLs stolen from Matt's site) -->
+<url name="autoconf">http://ftp.gnu.org/gnu/autoconf/</url>
+<url name="automake">http://ftp.gnu.org/gnu/automake/</url>
+<url name="bash">http://ftp.gnu.org/gnu/bash/</url>
+<url name="binutils">http://www.kernel.org/pub/linux/devel/binutils/</url>
+<url name="bison">http://ftp.tuniv.szczecin.pl/pub/Linux/alpha-gnu/bison/</url>
+<url name="bzip2" vurl="nodots">ftp://sources.redhat.com/pub/bzip2/v</url>
+<url name="coreutils">http://ftp.gnu.org/gnu/coreutils/</url>
+<url name="dejagnu">http://ftp.gnu.org/gnu/dejagnu/</url>
+<url name="diffutils">http://ftp.gnu.org/gnu/diffutils/</url>
+<url name="e2fsprogs">http://prdownloads.sourceforge.net/e2fsprogs/</url>
+<url name="expect">http://expect.nist.gov/src/</url>
+<url name="file">ftp://ftp.gw.com/mirrors/pub/unix/file/</url>
+<url name="findutils">ftp://alpha.gnu.org/gnu/findutils/</url>
+<url name="flex">http://sourceforge.net/projects/lex/</url>
+<url name="gawk">http://ftp.gnu.org/gnu/gawk/</url>
+<url name="gcc" vurl="true">http://ftp.gnu.org/gnu/gcc/gcc-</url>
+<url name="gettext">http://ftp.gnu.org/gnu/gettext/</url>
+<url name="glibc">ftp://sources.redhat.com/pub/glibc/snapshots/</url>
+<url name="grep">http://ftp.gnu.org/gnu/grep/</url>
+<url name="groff">http://ftp.gnu.org/gnu/groff/</url>
+<url name="grub">ftp://alpha.gnu.org/gnu/grub/</url>
+<url name="gzip">ftp://alpha.gnu.org/gnu/gzip/</url>
+<url name="hotplug">http://www.kernel.org/pub/linux/utils/kernel/hotplug/</url>
+<url name="iana-etc">http://www.sethwklein.net/projects/iana-etc/downloads/</url>
+<url name="inetutils">http://ftp.gnu.org/gnu/inetutils/</url>
+<url name="iproute2">http://developer.osdl.org/dev/iproute2/download/</url>
+<url name="kbd">http://ftp.kernel.org/pub/linux/utils/kbd/</url>
+<url name="less">http://ftp.gnu.org/gnu/less/</url>
+<url name="lfs-bootscripts">http://downloads.linuxfromscratch.org/</url>
+<url name="libol" vurl="base">http://www.balabit.com/downloads/syslog-ng/libol/</url>
+<url name="libtool">http://ftp.gnu.org/gnu/libtool/</url>
+<url name="linux" vurl="base">http://www.kernel.org/pub/linux/kernel/v</url>
+<url name="linux-libc-headers">http://ep09.pld-linux.org/~mmazur/linux-libc-headers/</url>
+<url name="m4">http://ftp.gnu.org/gnu/m4/</url>
+<url name="make">http://ftp.gnu.org/gnu/make/</url>
+<url name="man">ftp://ftp.win.tue.nl/pub/linux-local/utils/man/</url>
+<url name="man-pages">http://ftp.kernel.org/pub/linux/docs/manpages/</url>
+<url name="mktemp">ftp://ftp.cs.colorado.edu:/pub/mktemp/</url>
+<url name="module-init-tools">http://www.kernel.org/pub/linux/kernel/people/rusty/modules/</url>
+<url name="ncurses">http://ftp.gnu.org/gnu/ncurses/</url>
+<url name="patch">http://ftp.gnu.org/gnu/patch/</url>
+<url name="perl">http://www.cpan.org/src/</url>
+<url name="procps">http://procps.sourceforge.net/</url>
+<url name="psmisc">http://prdownloads.sourceforge.net/psmisc/</url>
+<url name="readline">http://ftp.gnu.org/gnu/readline/</url>
+<url name="sed">http://ftp.gnu.org/gnu/sed/</url>
+<url name="shadow">ftp://ftp.pld.org.pl/software/shadow/</url>
+<url name="syslog-ng" vurl="base" append="src/">http://www.balabit.com/downloads/syslog-ng/</url>
+<url name="sysvinit">ftp://ftp.cistron.nl/pub/people/miquels/sysvinit/</url>
+<url name="tar">http://ftp.gnu.org/gnu/tar/</url>
+<url name="tcl">http://prdownloads.sourceforge.net/tcl/</url>
+<url name="texinfo">http://ftp.gnu.org/gnu/texinfo/</url>
+<url name="udev">http://www.kernel.org/pub/linux/utils/kernel/hotplug/</url>
+<url name="util-linux">ftp://ftp.win.tue.nl/pub/linux-local/utils/util-linux/</url>
+<url name="vim">ftp://ftp.vim.org/pub/vim/unix/</url>
+<url name="zlib">http://www.zlib.net/</url>
+</packages>
