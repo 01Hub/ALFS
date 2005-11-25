@@ -1,0 +1,4 @@
+This is a list of internal commands used in communication between the client
+and the alfs server.
+
+[execute] - Executes the text it immediately receives as shell commands.
