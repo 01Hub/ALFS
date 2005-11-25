@@ -9,8 +9,11 @@ int
 main (int argc, char **argv)
 {
 
-	#define MAXLINE 4096
-	#define SA struct sockaddr
+	#define MAXLINE 4096 /* used for buffer size */
+	#define SA struct sockaddr /* just a shortcut, saves typing
+				      later in the connect() function
+				      and prevents that line from wrapping
+				   */
 	
 	int sockfd, n;
 	char recvline [MAXLINE+1];
@@ -20,23 +23,36 @@ main (int argc, char **argv)
 		printf("usage: %s IPaddress\n", argv[0]);
 		exit(1);
 	}
-	
+
+	/* setup socked descriptor */
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
-		
+
+	/* set structure to zero */
 	bzero(&servaddr, sizeof(servaddr));
+
+	/* set to IPv4 */
 	servaddr.sin_family = AF_INET;
+
+	/* Use port 1234 */
 	servaddr.sin_port = htons(1234);
+
+	/* convert provided IP address into numeric */
 	inet_pton(AF_INET, argv[1], &servaddr.sin_addr);
-	
+
+
+	/* connect to socket descriptor to port set above*/
 	connect(sockfd, (SA *) &servaddr, sizeof(servaddr));
-	
-	while ( (n = read(sockfd, recvline, MAXLINE)) > 0) {
-		recvline[n] = 0;
-		if (fputs(recvline, stdout) == EOF)
-			printf("fputs error\n");
-	}
+
+	/* read data from server */	
+	n = read(sockfd, recvline, MAXLINE)
+	recvline[n] = 0;
+
+	if (fputs(recvline, stdout) == EOF)
+		printf("fputs error\n");
+
 	if (n < 0)
 		printf("read error\n");
 	
 	exit(0);
 }
+
