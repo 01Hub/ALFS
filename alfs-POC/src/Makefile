@@ -1,10 +1,7 @@
-all: client server
+all: alfs alfsd
 
-client: client.c
-	gcc -W -Wall -Werror -pedantic -std=gnu99 -D_GNU_SOURCE client.c -o client
-
-server: server.c
-	gcc -W -Wall -Werror -pedantic -std=gnu99 -D_GNU_SOURCE server.c -o server
+alf%:
+	gcc -W -Wall -Werror -pedantic -std=gnu99 -D_GNU_SOURCE $@.c -o $@
 
 clean:
-	rm client server
+	rm alfs alfsd
