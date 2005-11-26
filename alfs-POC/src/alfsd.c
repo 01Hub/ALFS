@@ -55,18 +55,16 @@ main ()
 		/* execute the string as a system command */
 		syscmd = system(buff);
 
-		switch (syscmd)
-		{
-		  case -1:
-			perror("system");
-		  case 0:
+		if (syscmd == 0)
 		  	snprintf(buff, 29, "CLIENT: Command successful!\n");
-		  case 127:
-		  case 32512:
-		    {
-		    	snprintf(buff, 29, "CLIENT: Command failed!\n");
-		    }
-		}
+
+		if (syscmd == 32512)
+		    	snprintf(buff, 25, "CLIENT: Command failed!\n");
+
+		if (syscmd == -1)
+			perror("system");
+		
+		
 		printf("Exit status of command was: %d\n", syscmd);
 		write(connfd, buff, strlen(buff));
 		close(connfd);
