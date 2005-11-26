@@ -14,7 +14,7 @@ main ()
 	#define PORT 1234
 	#define SA struct sockaddr
 
-	int listenfd, connfd, syscmd;
+	int listenfd, connfd, syscmd, pair[2];
 	struct sockaddr_in servaddr;
 	char buff[MAXLINE];
 	
@@ -43,6 +43,12 @@ main ()
 		   three-way handshake*/
 	    connfd = accept(listenfd, (SA *) NULL, NULL);
 
+	    /* Set up pipe from stdout to an empty descriptor */
+	    if (pipe(pair) == -1)
+		perror("pipe");
+
+	    if (dup2(pair[1],1) == -1)
+		perror("dup2");
 
             if (!fork()) { /* this is the child process */
 
@@ -56,16 +62,17 @@ main ()
 		syscmd = system(buff);
 
 		if (syscmd == 0)
-		  	snprintf(buff, 29, "CLIENT: Command successful!\n");
+		{
+			/* read the empty descriptor (redirected stdout) into the buffer */
+			read(pair[0], buff, MAXLINE);
+		}
 
 		if (syscmd == 32512)
 		    	snprintf(buff, 25, "CLIENT: Command failed!\n");
 
 		if (syscmd == -1)
 			perror("system");
-		
-		
-		printf("Exit status of command was: %d\n", syscmd);
+	
 		write(connfd, buff, strlen(buff));
 		close(connfd);
                 exit(0);
