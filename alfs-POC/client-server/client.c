@@ -15,8 +15,9 @@ main (int argc, char **argv)
 				      and prevents that line from wrapping
 				   */
 	
-	int sockfd, n;
+	int sockfd, n, len;
 	char recvline [MAXLINE+1];
+	char input[81];
 	struct sockaddr_in servaddr;
 	
 	if (argc != 2) {
@@ -39,12 +40,26 @@ main (int argc, char **argv)
 	/* convert provided IP address into numeric */
 	inet_pton(AF_INET, argv[1], &servaddr.sin_addr);
 
-
 	/* connect to socket descriptor to port set above*/
-	connect(sockfd, (SA *) &servaddr, sizeof(servaddr));
+	if (connect(sockfd, (SA *) &servaddr, sizeof(servaddr)) == -1)
+	{
+		printf("Connection failed!\n");
+		exit(1);
+	} else {
+		printf("Connected to %s\n", argv[1]);
+	}
+
+	/* Read input from the user to send to the server */
+	printf("Enter a command to send to the server:\n");
+	scanf("%s", input);
+	len = strlen(input);
+	printf("You entered: %s\n", input);
+
+	/* Send the input to the server */
+	send(sockfd, input, len, 0);
 
 	/* read data from server */	
-	n = read(sockfd, recvline, MAXLINE)
+	n = read(sockfd, recvline, MAXLINE);
 	recvline[n] = 0;
 
 	if (fputs(recvline, stdout) == EOF)
