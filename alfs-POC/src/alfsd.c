@@ -3,6 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <netinet/in.h>
+#include <sys/wait.h>
 
 int
 main ()
@@ -41,21 +42,26 @@ main ()
 		   three-way handshake*/
 		connfd = accept(listenfd, (SA *) NULL, NULL);
 
-		recv(connfd, buff, sizeof(buff), 0);
 
-		printf("SERVER: Executing \"%s\"\n", buff);
+            if (!fork()) { /* this is the child process */
+                if (recv(connfd, buff, sizeof(buff), 0) == -1)
+                    perror("recv");
 
-		system(buff);
+		printf("SERVER: Executing %s\n", buff);
 
-		/* fill buffer with data to send to client */		
-		snprintf(buff, sizeof(buff), "CLIENT: Command successful!\r\n");
+		if (system(buff) == -1)
+		    perror("system");
 
-		/* send buffer to client */
+		snprintf(buff, 29, "CLIENT: Command successful!\n");
 		write(connfd, buff, strlen(buff));
-
-		/* close connection, restart while loop, goes back to sleep
-		  after accept	*/
 		close(connfd);
+                exit(0);
+            }
+
+	    close(connfd);
+
+            while(waitpid(-1,NULL,WNOHANG) > 0); /* clean up child processes */
+
 	}
 }
 

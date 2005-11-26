@@ -17,7 +17,7 @@ main (int argc, char **argv)
 	
 	int sockfd, n, len;
 	char recvline [MAXLINE+1];
-	char input[81];
+	char input[256];
 	struct sockaddr_in servaddr;
 	
 	if (argc != 2) {
@@ -51,7 +51,8 @@ main (int argc, char **argv)
 
 	/* Read input from the user to send to the server */
 	printf("Enter a command to send to the server:\n");
-	scanf("%s", input);
+	fgets(input, sizeof(input), stdin);
+	fflush(stdin);
 	len = strlen(input);
 	printf("You entered: %s\n", input);
 
