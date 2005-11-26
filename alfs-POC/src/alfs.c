@@ -14,7 +14,8 @@ main (int argc, char **argv)
 				      later in the connect() function
 				      and prevents that line from wrapping
 				   */
-	
+	#define PORT 1234
+		
 	int sockfd, n, len;
 	char recvline [MAXLINE+1];
 	char input[256];
@@ -35,7 +36,7 @@ main (int argc, char **argv)
 	servaddr.sin_family = AF_INET;
 
 	/* Use port 1234 */
-	servaddr.sin_port = htons(1234);
+	servaddr.sin_port = htons(PORT);
 
 	/* convert provided IP address into numeric */
 	inet_pton(AF_INET, argv[1], &servaddr.sin_addr);
