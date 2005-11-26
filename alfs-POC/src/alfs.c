@@ -55,7 +55,6 @@ main (int argc, char **argv)
 	fgets(input, sizeof(input), stdin);
 	fflush(stdin);
 	len = strlen(input);
-	printf("You entered: %s\n", input);
 
 	/* Send the input to the server */
 	send(sockfd, input, len, 0);
