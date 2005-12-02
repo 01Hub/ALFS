@@ -195,8 +195,8 @@
 <!ENTITY libtool-package "libtool-&libtool-version;.tar.bz2">
 <!ENTITY libtool-directory "libtool-&libtool-version;">
 
-<!ENTITY libxml2-md5 "2d53bba9a4768ec57d8bf2bdadb75c87">
-<!ENTITY libxml2-version "2.6.17">
+<!ENTITY libxml2-md5 "fbba7d7e815885b6a4947b32b203d064">
+<!ENTITY libxml2-version "2.6.22">
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
@@ -246,8 +246,8 @@
 <!ENTITY module-init-tools-testsuite-md5 "1d1c0d47f6a003341df759c4cda62a31">
 <!ENTITY module-init-tools-testsuite-package "module-init-tools-testsuite-&module-init-tools-version;.tar.bz2">
 
-<!ENTITY nALFS-md5 "1e7bb2216cbddec8c97fc0a440216bf1">
-<!ENTITY nALFS-version "1.2.4">
+<!ENTITY nALFS-md5 "96f082e031de879d2f69acd7ffd8f25c">
+<!ENTITY nALFS-version "1.2.5">
 <!ENTITY nALFS-package "nALFS-&nALFS-version;.tar.bz2">
 <!ENTITY nALFS-directory "nALFS-&nALFS-version;">
 
