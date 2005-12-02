@@ -55,6 +55,7 @@
         <source>&autoconf-package;</source>
         <source>&automake-package;</source>
         <source>&bash-package;</source>
+	<source>&bash-docs-package;</source>
         <source>&bash-fixes-patch;</source>
         <source>&bash-wcontinued-patch;</source>
         <source>&binutils-package;</source>
@@ -88,6 +89,7 @@
 	<source>&glibc-linuxthreads-package;</source>
 	<source>&glibc-fix-testsuite-patch;</source>
 	<source>&glibc-rtld-search-dirs-patch;</source>
+	<source>&glibc-tls-assert-patch;</source>
         <source>&grep-package;</source>
         <source>&groff-package;</source>
         <source>&grub-package;</source>
@@ -99,7 +101,6 @@
         <source>&inetutils-no-man-pages-patch;</source>
         <source>&inetutils-kernel-headers-patch;</source>
         <source>&iproute2-package;</source>
-        <source>&iproute2-remove-db-patch;</source>
         <source>&kbd-package;</source>
         <source>&less-package;</source>
         <source>&lfs-bootscripts-package;</source>
@@ -113,6 +114,7 @@
         <source>&mktemp-package;</source>
         <source>&mktemp-tempfile-patch;</source>
         <source>&module-init-tools-package;</source>
+	<source>&module-init-tools-testsuite-package;</source>
         <source>&ncurses-package;</source>
         <source>&patch-package;</source>
         <source>&perl-package;</source>

@@ -39,6 +39,11 @@
 	<param>-p1</param>
 	<param>-i &packages_dir;/&glibc-fix-testsuite-patch;</param>
       </patch>
+      <patch>
+	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&glibc-tls-assert-patch;</param>
+      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>

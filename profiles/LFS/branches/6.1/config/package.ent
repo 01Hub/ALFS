@@ -13,6 +13,9 @@
 <!ENTITY bash-package "bash-&bash-version;.tar.bz2">
 <!ENTITY bash-directory "bash-&bash-version;">
 
+<!ENTITY bash-docs-md5 "b5ebe5bfe6211df46d26f3bdc0cbecd1">
+<!ENTITY bash-docs-package "bash-doc-&bash-version;.tar.bz2">
+
 <!ENTITY bash-fixes-patch "bash-&bash-version;-fixes-3.patch">
 <!ENTITY bash-wcontinued-patch "bash-&bash-version;-avoid_WCONTINUED-1.patch">
 
@@ -124,6 +127,7 @@
 
 <!ENTITY glibc-fix-testsuite-patch "glibc-&glibc-version;&glibc-cvs-tag;-fix_test-1.patch">
 <!ENTITY glibc-rtld-search-dirs-patch "glibc-&glibc-version;&glibc-cvs-tag;-rtld_search_dirs-1.patch">
+<!ENTITY glibc-tls-assert-patch "glibc-&glibc-version;&glibc-cvs-tag;-tls_assert-1.patch">
 
 <!ENTITY grep-md5 "52202fe462770fa6be1bb667bd6cf30c">
 <!ENTITY grep-version "2.5.1a">
@@ -170,8 +174,6 @@
 <!ENTITY iproute2-cvs-ver "050330">
 <!ENTITY iproute2-package "iproute2-&iproute2-version;-&iproute2-cvs-ver;.tar.bz2">
 <!ENTITY iproute2-directory "iproute2-&iproute2-version;">
-
-<!ENTITY iproute2-remove-db-patch "iproute2-&iproute2-version;_&iproute2-cvs-ver;-remove_db-1.patch">
 
 <!ENTITY kbd-md5 "069d1175b4891343b107a8ac2b4a39f6">
 <!ENTITY kbd-version "1.12">
@@ -240,6 +242,9 @@
 <!ENTITY module-init-tools-version "3.1">
 <!ENTITY module-init-tools-package "module-init-tools-&module-init-tools-version;.tar.bz2">
 <!ENTITY module-init-tools-directory "module-init-tools-&module-init-tools-version;">
+
+<!ENTITY module-init-tools-testsuite-md5 "1d1c0d47f6a003341df759c4cda62a31">
+<!ENTITY module-init-tools-testsuite-package "module-init-tools-testsuite-&module-init-tools-version;.tar.bz2">
 
 <!ENTITY nALFS-md5 "1e7bb2216cbddec8c97fc0a440216bf1">
 <!ENTITY nALFS-version "1.2.4">
