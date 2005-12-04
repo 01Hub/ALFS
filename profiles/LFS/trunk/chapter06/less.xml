@@ -22,7 +22,6 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
-        <param>--bindir=/bin</param>
         <param>--sysconfdir=/etc</param>
       </configure>
       <make>

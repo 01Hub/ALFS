@@ -42,10 +42,8 @@
       Note: the next step uses sed, because the matching
       lines need to be removed from the file.
       -->
-      <execute command="sed">
-        <param>-i</param>
-        <param>-e '/groups/d'</param>
-        <param>man/Makefile</param>
+      <execute command="find">
+	<param>man -name Makefile -exec sed -i '/groups/d' {} \;</param>
       </execute>
       <make>
         <param>&jlevel;</param>

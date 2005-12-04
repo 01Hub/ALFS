@@ -81,7 +81,6 @@
         <source>&gcc-specs-patch;</source>
         <source>&gettext-package;</source>
         <source>&glibc-package;</source>
-	<source>&glibc-linuxthreads-package;</source>
         <source>&grep-package;</source>
         <source>&groff-package;</source>
         <source>&grub-package;</source>
@@ -107,7 +106,6 @@
         <source>&mktemp-package;</source>
         <source>&mktemp-tempfile-patch;</source>
         <source>&module-init-tools-package;</source>
-	<source>&module-init-tools-testsuite-package;</source>
         <source>&ncurses-package;</source>
         <source>&patch-package;</source>
         <source>&perl-package;</source>
