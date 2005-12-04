@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE alfs SYSTEM "../DTD/ALFS.dtd"
+[
+<!ENTITY % general_entities SYSTEM "../config/general.ent">
+<!ENTITY % package_entities SYSTEM "../config/package.ent">
+
+%general_entities;
+%package_entities;
+]>
+<alfs>
+  <package name="module-init-tools" version="&module-init-tools-version;">
+    <stage name="Unpacking">
+      <unpack>
+        <digest>&module-init-tools-md5;</digest>
+        <archive>&packages_dir;/&module-init-tools-package;</archive>
+        <destination>&build_dir;</destination>
+      </unpack>
+      <unpack>
+	<digest>&module-init-tools-testsuite-md5;</digest>
+	<archive>&packages_dir;/&module-init-tools-testsuite-package;</archive>
+	<destination>&build_dir;</destination>
+      </unpack>
+    </stage>
+    <!--
+    <stage name="Testing">
+      <stageinfo>
+	<base>&build_dir;/&module-init-tools-directory;</base>
+      </stageinfo>
+      <configure />
+      <make>
+	<param>check</param>
+      </make>
+      <make>
+	<param>distclean</param>
+      </make>
+    <stage>
+    -->
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&module-init-tools-directory;</base>
+      </stageinfo>
+      <execute command="touch modprobe.conf.5" />
+      <configure>
+        <param>--prefix=""</param>
+        <param>--enable-zlib</param>
+      </configure>
+      <make>
+        <param>&jlevel;</param>
+      </make>
+      <make>
+        <param>install</param>
+      </make>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&module-init-tools-directory;</remove>
+    </stage>
+  </package>
+</alfs>
