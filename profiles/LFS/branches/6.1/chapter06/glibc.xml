@@ -101,6 +101,7 @@
         <source>&skeleton_dir;/etc/ld.so.conf</source>
         <destination>/etc</destination>
       </copy>
+      <remove>/etc/localtime</remove>
       <copy>
 	<option>force</option>
 	<source>&localtime;</source>

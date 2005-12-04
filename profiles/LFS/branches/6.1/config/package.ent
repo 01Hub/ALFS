@@ -13,7 +13,7 @@
 <!ENTITY bash-package "bash-&bash-version;.tar.bz2">
 <!ENTITY bash-directory "bash-&bash-version;">
 
-<!ENTITY bash-docs-md5 "b5ebe5bfe6211df46d26f3bdc0cbecd1">
+<!ENTITY bash-docs-md5 "8d32a7d9c25c9c1cfd207b47750680a9">
 <!ENTITY bash-docs-package "bash-doc-&bash-version;.tar.bz2">
 
 <!ENTITY bash-fixes-patch "bash-&bash-version;-fixes-3.patch">
@@ -26,7 +26,7 @@
 
 <!ENTITY binutils-gcc4-patch "binutils-&binutils-version;-gcc4-1.patch">
 
-<!ENTITY bison-md5 "988cd56a9e4b29dfc0546758186d79a2">
+<!ENTITY bison-md5 "b9e9bce5501f0a929023da79bcae557a">
 <!ENTITY bison-version "2.0">
 <!ENTITY bison-package "bison-&bison-version;.tar.bz2">
 <!ENTITY bison-directory "bison-&bison-version;">
@@ -331,7 +331,7 @@
 <!ENTITY udev-package "udev-&udev-version;.tar.bz2">
 <!ENTITY udev-directory "udev-&udev-version;">
 
-<!ENTITY udev-rules-version "3">
+<!ENTITY udev-rules-version "4">
 <!ENTITY udev-rules-file "udev-config-&udev-rules-version;.rules">
 
 <!ENTITY util-linux-md5 "54320aa1abbce00c0dc030e2c3afe5d7">
