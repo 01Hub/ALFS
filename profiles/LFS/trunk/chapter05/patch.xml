@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="patch" version="&patch-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&patch-package;</file>
+	<url>&patch-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&patch-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&patch-md5;</digest>
         <archive>&packages_dir;/&patch-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

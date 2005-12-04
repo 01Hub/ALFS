@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="dejagnu" version="&dejagnu-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&dejagnu-package;</file>
+	<url>&dejagnu-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&dejagnu-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&dejagnu-md5;</digest>
         <archive>&packages_dir;/&dejagnu-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

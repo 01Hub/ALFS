@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="glibc" version="&glibc-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&glibc-package;</file>
+	<url>&glibc-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&glibc-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&glibc-md5;</digest>
         <archive>&packages_dir;/&glibc-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

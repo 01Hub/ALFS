@@ -9,22 +9,40 @@
 ]>
 <alfs>
   <package name="expect" version="&expect-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&expect-package;</file>
+	<url>&expect-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&expect-md5;</digest>
+      </download>
+      <download>
+	<file>&expect-spawn-patch;</file>
+	<url>&expect-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&expect-spawn-patch-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&expect-md5;</digest>
         <archive>&packages_dir;/&expect-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <base>&build_dir;/&expect-directory;</base>
+	<base>&build_dir;/&expect-directory;</base>
       </stageinfo>
       <patch>
         <param>-N</param>
         <param>-p1</param>
         <param>-i &packages_dir;/&expect-spawn-patch;</param>
       </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&expect-directory;</base>
+      </stageinfo>
       <configure>
         <param>--prefix=/tools</param>
         <param>--with-tcl=/tools/lib</param>

@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="gettext" version="&gettext-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&gettext-package;</file>
+	<url>&gettext-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&gettext-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&gettext-md5;</digest>
         <archive>&packages_dir;/&gettext-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

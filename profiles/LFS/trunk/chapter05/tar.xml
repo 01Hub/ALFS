@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="tar" version="&tar-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&tar-package;</file>
+	<url>&tar-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&tar-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&tar-md5;</digest>
         <archive>&packages_dir;/&tar-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

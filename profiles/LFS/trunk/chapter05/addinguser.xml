@@ -13,6 +13,7 @@
     <ownership user="&lfs-user;">
       <name>&LFS;/tools</name>
       <name>&LFS;&build_dir;</name>
+      <name>&LFS;&packages_dir;</name>
     </ownership>
   </stage>
 </alfs>

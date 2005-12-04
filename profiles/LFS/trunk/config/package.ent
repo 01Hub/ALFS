@@ -75,7 +75,7 @@
 <!ENTITY coreutils-uname-patch-md5 "c05b735710fbd62239588c07084852a0">
 <!ENTITY coreutils-uname-patch "coreutils-&coreutils-version;-uname-1.patch">
 
-<!ENTITY dejagnu-md5 "bf259ac32622eda29ea157ef5751ed76">
+<!ENTITY dejagnu-md5 "ea99f6451e2ef228cd2504cd1b32bac8">
 <!ENTITY dejagnu-version "1.4.4">
 <!ENTITY dejagnu-package "dejagnu-&dejagnu-version;.tar.bz2">
 <!ENTITY dejagnu-directory "dejagnu-&dejagnu-version;">
@@ -107,7 +107,7 @@
 <!ENTITY expect-package-url "&package-mirror;/expect/">
 <!ENTITY expect-patches-url "&patches-mirror;/expect/">
 
-<!ENTITY expext-spawn-patch-md5 "ef6d0d0221c571fb420afb7033b3bbba">
+<!ENTITY expect-spawn-patch-md5 "ef6d0d0221c571fb420afb7033b3bbba">
 <!ENTITY expect-spawn-patch "expect-&expect-version;-spawn-1.patch">
 
 <!ENTITY file-md5 "8e4039260e82f66870f15409fbdb12b1">
