@@ -9,22 +9,40 @@
 ]>
 <alfs>
   <package name="perl" version="&perl-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&perl-package;</file>
+	<url>&perl-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&perl-md5;</digest>
+      </download>
+      <download>
+	<file>&perl-libc-patch;</file>
+	<url>&perl-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&perl-libc-patch-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&perl-md5;</digest>
         <archive>&packages_dir;/&perl-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <base>&build_dir;/&perl-directory;</base>
+	<base>&build_dir;/&perl-directory;</base>
       </stageinfo>
       <patch>
         <param>-N</param>
         <param>-p1</param>
         <param>-i &packages_dir;/&perl-libc-patch;</param>
       </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&perl-directory;</base>
+      </stageinfo>
       <configure command="./configure.gnu">
         <param>--prefix=/tools</param>
         <param>-Dstatic_ext='Data/Dumper IO Fcntl POSIX'</param>

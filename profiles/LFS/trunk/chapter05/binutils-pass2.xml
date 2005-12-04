@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="binutils-pass2" version="&binutils-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&binutils-package;</file>
+	<url>&binutils-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&binutils-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&binutils-md5;</digest>
         <archive>&packages_dir;/&binutils-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

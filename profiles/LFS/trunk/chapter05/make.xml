@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="make" version="&make-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&make-package;</file>
+	<url>&make-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&make-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&make-md5;</digest>
         <archive>&packages_dir;/&make-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

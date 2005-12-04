@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="gcc-pass1" version="&gcc-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&gcc-package;</file>
+	<url>&gcc-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&gcc-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&gcc-md5;</digest>
         <archive>&packages_dir;/&gcc-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="coreutils" version="&coreutils-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&coreutils-package;</file>
+	<url>&coreutils-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&coreutils-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&coreutils-md5;</digest>
         <archive>&packages_dir;/&coreutils-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

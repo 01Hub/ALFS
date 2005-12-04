@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="diffutils" version="&diffutils-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&diffutils-package;</file>
+	<url>&diffutils-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&diffutils-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&diffutils-md5;</digest>
         <archive>&packages_dir;/&diffutils-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
