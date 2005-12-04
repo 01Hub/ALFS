@@ -18,24 +18,24 @@
     </stage>
     <stage name="Installing">
       <stageinfo>
-        <base>&build_dir;/&gettext-directory;</base>
+        <base>&build_dir;/&gettext-directory;/gettext-tools</base>
       </stageinfo>
       <configure>
         <param>--prefix=/tools</param>
-        <param>--disable-libasprintf</param>
-        <param>--disable-csharp</param>
+        <param>--disable-shared</param>
       </configure>
       <make>
         <param>&jlevel;</param>
+	<param>-C lib</param>
       </make>
-      <!--
       <make>
-        <param>check</param>
+	<param>&jlevel;</param>
+	<param>-C src msgfmt</param>
       </make>
-      -->
-      <make>
-        <param>install</param>
-      </make>
+      <copy>
+	<source>src/msgfmt</source>
+	<destination>/tools/bin</destination>
+      </copy>
     </stage>
     <stage name="Cleanup">
       <remove>&build_dir;/&gettext-directory;</remove>

@@ -11,13 +11,12 @@ ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/diffutils/dif
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/e2fsprogs/e2fsprogs-1.38.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/expect/expect-5.43.0.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/file/file-4.16.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/findutils/findutils-4.2.25.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/findutils/findutils-4.2.26.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/flex/flex-2.5.31.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gawk/gawk-3.1.5.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gcc/gcc-4.0.2.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/gettext/gettext-0.14.5.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/glibc/glibc-2.3.6.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/glibc/glibc-linuxthreads-2.3.6.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/grep/grep-2.5.1a.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/groff/groff-1.19.2.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/grub/grub-0.97.tar.bz2
@@ -35,7 +34,7 @@ ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/linux-libc-he
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/m4/m4-1.4.4.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/make/make-3.80.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/man/man-1.6b.tar.bz2
-ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/man-pages/man-pages-2.13.tar.bz2
+ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/man-pages/man-pages-2.14.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/mktemp/mktemp-1.5.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/module-init-tools/module-init-tools-3.1.tar.bz2
 ftp://ftp.linuxfromscratch.org/pub/lfs/lfs-packages/conglomeration/module-init-tools/module-init-tools-testsuite-3.1.tar.bz2

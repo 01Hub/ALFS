@@ -22,7 +22,7 @@
       </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
-        <param>--libexecdir=/usr/lib/locate</param>
+        <param>--libexecdir=/usr/lib/findutils</param>
         <param>--localstatedir=/var/lib/locate</param>
       </configure>
       <make>

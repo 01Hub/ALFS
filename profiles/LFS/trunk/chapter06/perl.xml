@@ -22,7 +22,7 @@
       </stageinfo>
       <configure command="./configure.gnu">
         <param>--prefix=/usr</param>
-        <param>-Dpager="/bin/less -isR"</param>
+        <param>-Dpager="/usr/bin/less -isR"</param>
       </configure>
       <make>
         <param>&jlevel;</param>

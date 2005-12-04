@@ -21,11 +21,6 @@
       <stageinfo>
 	<base>&build_dir;/&module-init-tools-directory;</base>
       </stageinfo>
-      <unpack>
-	<digest>&module-init-tools-testsuite-md5;</digest>
-	<archive>&packages_dir;/&module-init-tools-testsuite-package;</archive>
-	<destination>.</destination>
-      </unpack>
       <configure />
       <make>
 	<param>check</param>
@@ -39,9 +34,9 @@
       <stageinfo>
         <base>&build_dir;/&module-init-tools-directory;</base>
       </stageinfo>
-      <execute command="touch modprobe.conf.5" />
       <configure>
         <param>--prefix=""</param>
+	<param>--mandir=/usr/share/man</param>
         <param>--enable-zlib</param>
       </configure>
       <make>

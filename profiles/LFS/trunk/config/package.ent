@@ -72,8 +72,8 @@
 <!ENTITY file-package "file-&file-version;.tar.bz2">
 <!ENTITY file-directory "file-&file-version;">
 
-<!ENTITY findutils-md5 "0af0d388082997b6a010593ec17f7446">
-<!ENTITY findutils-version "4.2.25">
+<!ENTITY findutils-md5 "7deb9bdb3112be3e5aef858f41db2358">
+<!ENTITY findutils-version "4.2.26">
 <!ENTITY findutils-package "findutils-&findutils-version;.tar.bz2">
 <!ENTITY findutils-directory "findutils-&findutils-version;">
 
@@ -110,9 +110,6 @@
 <!ENTITY glibc-cvs-tag "">
 <!ENTITY glibc-package "glibc-&glibc-version;&glibc-cvs-tag;.tar.bz2">
 <!ENTITY glibc-directory "glibc-&glibc-version;&glibc-cvs-tag;">
-
-<!ENTITY glibc-linuxthreads-md5 "d4eeda37472666a15cc1f407e9c987a9">
-<!ENTITY glibc-linuxthreads-package "glibc-linuxthreads-&glibc-version;&glibc-cvs-tag;.tar.bz2">
 
 <!ENTITY grep-md5 "52202fe462770fa6be1bb667bd6cf30c">
 <!ENTITY grep-version "2.5.1a">
@@ -215,8 +212,8 @@
 <!ENTITY man-package "man-&man-version;.tar.bz2">
 <!ENTITY man-directory "man-&man-version;">
 
-<!ENTITY man-pages-md5 "539fba37eadb5748f933c01579a4984c">
-<!ENTITY man-pages-version "2.13">
+<!ENTITY man-pages-md5 "8cd430c9bd7f5126643f22ab4ad02938">
+<!ENTITY man-pages-version "2.14">
 <!ENTITY man-pages-package "man-pages-&man-pages-version;.tar.bz2">
 <!ENTITY man-pages-directory "man-pages-&man-pages-version;">
 
@@ -227,13 +224,10 @@
 
 <!ENTITY mktemp-tempfile-patch "mktemp-&mktemp-version;-add_tempfile-3.patch">
 
-<!ENTITY module-init-tools-md5 "8ddecbcf0e56aef8617f67a3906faf3e">
-<!ENTITY module-init-tools-version "3.1">
+<!ENTITY module-init-tools-md5 "29aa770c6ce92cbbc6da00161d2784d8">
+<!ENTITY module-init-tools-version "3.2.1">
 <!ENTITY module-init-tools-package "module-init-tools-&module-init-tools-version;.tar.bz2">
 <!ENTITY module-init-tools-directory "module-init-tools-&module-init-tools-version;">
-
-<!ENTITY module-init-tools-testsuite-md5 "1d1c0d47f6a003341df759c4cda62a31">
-<!ENTITY module-init-tools-testsuite-package "module-init-tools-testsuite-&module-init-tools-version;.tar.bz2">
 
 <!ENTITY nALFS-md5 "1e7bb2216cbddec8c97fc0a440216bf1">
 <!ENTITY nALFS-version "1.2.4">
@@ -306,7 +300,7 @@
 <!ENTITY tar-sparse-fix-patch "tar-&tar-version;-sparse_fix-1.patch">
 <!ENTITY tar-gcc4_fix-patch "tar-&tar-version;-gcc4_fix_tests-1.patch">
 
-<!ENTITY tcl-md5 "77a18900d703ae4a055d086f75f0c247">
+<!ENTITY tcl-md5 "ff552daa1a0a887fc99604842f7402ac">
 <!ENTITY tcl-version "8.4.11">
 <!ENTITY tcl-package "tcl&tcl-version;-src.tar.bz2">
 <!ENTITY tcl-directory "tcl&tcl-version;">
