@@ -204,16 +204,14 @@
     <xi:include href="chapter09/nALFS.xml" />
   </stage>
   <stage name="Chapter 9 - The End">
-    <stageinfo>
-      <root>&LFS;</root>
-    </stageinfo>
-    <remove>/tools</remove>
+    <execute command="umount">
+      <param>&LFS;&packages_dir;</param>
+    </execute>
+    <remove>&LFS;/tools</remove>
     <textdump>
-      <file>/etc/lfs-release</file>
+      <file>&LFS;/etc/lfs-release</file>
       <content>=&LFS-version;</content>
     </textdump>
-  </stage>
-  <stage name="Finishing Up">
     <remove>/tools</remove>
     <execute command="umount">
       <param>&LFS;/dev/pts</param>
@@ -221,8 +219,6 @@
       <param>&LFS;/dev</param>
       <param>&LFS;/proc</param>
       <param>&LFS;/sys</param>
-      <!-- If you used a bind mount for your package dir, unmount it here. -->
-      <!-- <param>&LFS;&packages_dir;</param> -->
     </execute>
   </stage>
 </alfs>
