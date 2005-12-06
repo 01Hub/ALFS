@@ -289,12 +289,12 @@
 <!ENTITY libtool-package-url "&package-mirror;/libtool/">
 <!ENTITY libtool-patches-url "&patches-mirror;/libtool/">
 
-<!ENTITY libxml2-md5 "342f722d1770071be19253f229fef677">
-<!ENTITY libxml2-version "2.6.20">
+<!ENTITY libxml2-md5 "fbba7d7e815885b6a4947b32b203d064">
+<!ENTITY libxml2-version "2.6.22">
 <!ENTITY libxml2-package "libxml2-&libxml2-version;.tar.bz2">
 <!ENTITY libxml2-directory "libxml2-&libxml2-version;">
 
-<!ENTITY libxml2-package-url "&package-mirror;/libxml2/">
+<!ENTITY libxml2-package-url "ftp://ftp.lfs-matrix.net/pub/blfs/conglomeration/libxml2/">
 <!ENTITY libxml2-patches-url "&patches-mirror;/libxml2/">
 
 <!ENTITY linux-md5 "076f0dc714112c764c790fbaef19e228">
@@ -365,8 +365,8 @@
 <!ENTITY module-init-tools-package-url "&package-mirror;/module-init-tools/">
 <!ENTITY module-init-tools-patches-url "&patches-mirror;/module-init-tools/">
 
-<!ENTITY nALFS-md5 "1e7bb2216cbddec8c97fc0a440216bf1">
-<!ENTITY nALFS-version "1.2.4">
+<!ENTITY nALFS-md5 "96f082e031de879d2f69acd7ffd8f25c">
+<!ENTITY nALFS-version "1.2.5">
 <!ENTITY nALFS-package "nALFS-&nALFS-version;.tar.bz2">
 <!ENTITY nALFS-directory "nALFS-&nALFS-version;">
 
