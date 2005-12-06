@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="psmisc" version="&psmisc-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&psmisc-package;</file>
+	<url>&psmisc-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&psmisc-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&psmisc-md5;</digest>
         <archive>&packages_dir;/&psmisc-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

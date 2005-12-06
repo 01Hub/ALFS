@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="procps" version="&procps-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&procps-package;</file>
+	<url>&procps-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&procps-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&procps-md5;</digest>
         <archive>&packages_dir;/&procps-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

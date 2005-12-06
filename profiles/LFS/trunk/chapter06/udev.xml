@@ -9,9 +9,22 @@
 ]>
 <alfs>
   <package name="udev" version="&udev-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&udev-package;</file>
+	<url>&udev-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&udev-md5;</digest>
+      </download>
+      <download>
+	<file>&udev-rules-file;</file>
+	<url>&udev-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&udev-rules-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&udev-md5;</digest>
         <archive>&packages_dir;/&udev-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

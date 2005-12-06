@@ -9,22 +9,40 @@
 ]>
 <alfs>
   <package name="mktemp" version="&mktemp-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&mktemp-package;</file>
+	<url>&mktemp-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&mktemp-md5;</digest>
+      </download>
+      <download>
+	<file>&mktemp-tempfile-patch;</file>
+	<url>&mktemp-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&mktemp-tempfile-patch-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&mktemp-md5;</digest>
         <archive>&packages_dir;/&mktemp-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <base>&build_dir;/&mktemp-directory;</base>
+	<base>&build_dir;/&mktemp-directory;</base>
       </stageinfo>
       <patch>
         <param>-N</param>
         <param>-p1</param>
         <param>-i &packages_dir;/&mktemp-tempfile-patch;</param>
       </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&mktemp-directory;</base>
+      </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
         <param>--with-libc</param>

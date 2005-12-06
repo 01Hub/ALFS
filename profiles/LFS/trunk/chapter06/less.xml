@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="less" version="&less-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&less-package;</file>
+	<url>&less-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&less-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&less-md5;</digest>
         <archive>&packages_dir;/&less-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

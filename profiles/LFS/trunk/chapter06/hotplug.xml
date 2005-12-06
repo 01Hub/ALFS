@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="hotplug" version="&hotplug-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&hotplug-package;</file>
+	<url>&hotplug-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&hotplug-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking.">
       <unpack>
-        <digest>&hotplug-md5;</digest>
         <archive>&packages_dir;/&hotplug-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

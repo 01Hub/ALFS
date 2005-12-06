@@ -9,16 +9,35 @@
 ]>
 <alfs>
   <package name="inetutils" version="&inetutils-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&inetutils-package;</file>
+	<url>&inetutils-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&inetutils-md5;</digest>
+      </download>
+      <download>
+	<file>&inetutils-gcc4_fixes-patch;</file>
+	<url>&inetutils-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&inetutils-gcc4_fixes-patch-md5;</digest>
+      </download>
+      <download>
+	<file>&inetutils-no-man-pages-patch;</file>
+	<url>&inetutils-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&inetutils-no-man-pages-patch-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&inetutils-md5;</digest>
         <archive>&packages_dir;/&inetutils-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <base>&build_dir;/&inetutils-directory;</base>
+	<base>&build_dir;/&inetutils-directory;</base>
       </stageinfo>
       <patch>
 	<param>-Np1</param>
@@ -29,6 +48,11 @@
         <param>-p1</param>
         <param>-i &packages_dir;/&inetutils-no-man-pages-patch;</param>
       </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&inetutils-directory;</base>
+      </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
         <param>--libexecdir=/usr/sbin</param>

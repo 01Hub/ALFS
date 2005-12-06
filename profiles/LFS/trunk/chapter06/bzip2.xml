@@ -9,6 +9,26 @@
 ]>
 <alfs>
   <package name="bzip2" version="&bzip2-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&bzip2-package;</file>
+	<url>&bzip2-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&bzip2-md5;</digest>
+      </download>
+      <download>
+	<file>&bzip2-docs-patch;</file>
+	<url>&bzip2-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&bzip2-docs-patch-md5;</digest>
+      </download>
+      <download>
+	<file>&bzip2-bzgrep-security-patch;</file>
+	<url>&bzip2-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&bzip2-bzgrep-security-patch-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
         <digest>&bzip2-md5;</digest>

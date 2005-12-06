@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="module-init-tools" version="&module-init-tools-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&module-init-tools-package;</file>
+	<url>&module-init-tools-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&module-init-tools-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&module-init-tools-md5;</digest>
         <archive>&packages_dir;/&module-init-tools-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

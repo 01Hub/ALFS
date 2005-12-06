@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="findutils" version="&findutils-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&findutils-package;</file>
+	<url>&findutils-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&findutils-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&findutils-md5;</digest>
         <archive>&packages_dir;/&findutils-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

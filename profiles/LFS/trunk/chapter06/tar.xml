@@ -9,22 +9,51 @@
 ]>
 <alfs>
   <package name="tar" version="&tar-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&tar-package;</file>
+	<url>&tar-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&tar-md5;</digest>
+      </download>
+      <download>
+	<file>&tar-sparse-fix-patch;</file>
+	<url>&tar-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&tar-sparse-fix-patch-md5;</digest>
+      </download>
+      <download>
+	<file>&tar-gcc4_fix-patch;</file>
+	<url>&tar-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&tar-gcc4_fix-patch-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&tar-md5;</digest>
         <archive>&packages_dir;/&tar-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <base>&build_dir;/&tar-directory;</base>
+	<base>&build_dir;/&tar-directory;</base>
       </stageinfo>
+      <patch>
+      	<param>-N</param>
+	<param>-p1</param>
+	<param>-i &packages_dir;/&tar-gcc4_fix-patch;</param>
+      </patch>
       <patch>
       	<param>-N</param>
 	<param>-p1</param>
 	<param>-i &packages_dir;/&tar-sparse-fix-patch;</param>
       </patch>
+    </stage>      
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&tar-directory;</base>
+      </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
         <param>--bindir=/bin</param>

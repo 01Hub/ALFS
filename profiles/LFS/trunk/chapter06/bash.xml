@@ -9,14 +9,38 @@
 ]>
 <alfs>
   <package name="bash" version="&bash-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&bash-package;</file>
+	<url>&bash-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&bash-md5;</digest>
+      </download>
+      <download>
+	<file>&bash-docs-package;</file>
+	<url>&bash-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&bash-docs-md5;</digest>
+      </download>
+      <download>
+	<file>&bash-fixes-patch;</file>
+	<url>&bash-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&bash-fixes-patch-md5;</digest>
+      </download>
+      <download>
+	<file>&bash-wcontinued-patch;</file>
+	<url>&bash-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&bash-wcontinued-patch-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&bash-md5;</digest>
         <archive>&packages_dir;/&bash-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
       <unpack>
-	<digest>&bash-docs-md5;</digest>
 	<archive>&packages_dir;/&bash-docs-package;</archive>
 	<destination>&build_dir;/&bash-directory;</destination>
       </unpack>

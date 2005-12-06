@@ -9,9 +9,22 @@
 ]>
 <alfs>
   <package name="texinfo" version="&texinfo-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&texinfo-package;</file>
+	<url>&texinfo-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&texinfo-md5;</digest>
+      </download>
+      <download>
+	<file>&texinfo-tempfile_fix-patch;</file>
+	<url>&texinfo-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&texinfo-tempfile_fix-patch-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&texinfo-md5;</digest>
         <archive>&packages_dir;/&texinfo-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
