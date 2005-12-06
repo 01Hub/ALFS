@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="bootscripts" version="&lfs-bootscripts-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&lfs-bootscripts-package;</file>
+	<url>&lfs-bootscripts-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&lfs-bootscripts-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&lfs-bootscripts-md5;</digest>
         <archive>&packages_dir;/&lfs-bootscripts-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

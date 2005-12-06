@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="nALFS" version="&nALFS-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&nALFS-package;</file>
+	<url>&nALFS-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&nALFS-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking.">
       <unpack>
-        <digest>&nALFS-md5;</digest>
         <archive>&packages_dir;/&nALFS-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
