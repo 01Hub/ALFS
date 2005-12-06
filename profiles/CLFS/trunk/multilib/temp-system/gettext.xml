@@ -9,7 +9,7 @@
 
 ]>
 <alfs>
-  <package name="gettext-64" version="&gettext-version;">
+  <package name="gettext" version="&gettext-version;">
     <stage name="Download and Check">
       <download>
 	<file>&gettext-package;</file>
@@ -38,7 +38,6 @@
 	<prefix>CC="${CC} ${BUILD64}"</prefix>
 	<prefix>CXX="${CXX} ${BUILD64}"</prefix>
 	<param>--prefix=/tools</param>
-	<param>--libdir=/tools/lib64</param>
 	<param>--host=${LFS_TARGET}</param>
 	<param>--disable-libasprintf</param>
 	<param>--without-csharp</param>

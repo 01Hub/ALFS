@@ -82,9 +82,7 @@
       <xi:include href="temp-system/make.xml" />
       <xi:include href="temp-system/grep.xml" />
       <xi:include href="../multilib/temp-system/sed.xml" />
-      <xi:include href="../multilib/temp-system/gettext-32.xml" />
-      <xi:include href="../multilib/temp-system/gettext-n32.xml" />
-      <xi:include href="../multilib/temp-system/gettext-64.xml" />
+      <xi:include href="../multilib/temp-system/gettext.xml" />
       <xi:include href="../multilib/temp-system/ncurses-32.xml" />
       <xi:include href="../multilib/temp-system/ncurses-n32.xml" />
       <xi:include href="../multilib/temp-system/ncurses-64.xml" />
