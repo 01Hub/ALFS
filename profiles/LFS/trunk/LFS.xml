@@ -74,6 +74,16 @@
     <stage name="Creating Directories and Mounting Virtual Kernel File Systems">
       <xi:include href="chapter06/kernfs.xml" />
     </stage>
+    <stage name="Copying DNS info">
+      <mkdir base="&LFS;">
+	<option>parents</option>
+	<name>etc</name>
+      </mkdir>
+      <copy>
+	<source>/etc/resolv.conf</source>
+	<destination>&LFS;/etc</destination>
+      </copy>
+    </stage>
     <stage name="Chroot with /tools">
       <stageinfo>
         <root>&LFS;</root>
