@@ -9,22 +9,40 @@
 ]>
 <alfs>
   <package name="sysklogd" version="&sysklogd-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&sysklogd-package;</file>
+	<url>&sysklogd-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&sysklogd-md5;</digest>
+      </download>
+      <download>
+	<file>&sysklogd-fixes-patch;</file>
+	<url>&sysklogd-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&sysklogd-fixes-patch-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking.">
       <unpack>
-        <digest>&sysklogd-md5;</digest>
         <archive>&packages_dir;/&sysklogd-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing.">
+    <stage name="Patching">
       <stageinfo>
-        <base>&build_dir;/&sysklogd-directory;</base>
+	<base>&build_dir;/&sysklogd-directory;</base>
       </stageinfo>
       <patch>
         <param>-N</param>
         <param>-p1</param>
         <param>-i &packages_dir;/&sysklogd-fixes-patch;</param>
-      </patch>	  
+      </patch>
+    </stage>
+    <stage name="Installing.">
+      <stageinfo>
+        <base>&build_dir;/&sysklogd-directory;</base>
+      </stageinfo>
       <make />
       <make>
         <param>install</param>

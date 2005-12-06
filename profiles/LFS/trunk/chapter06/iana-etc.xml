@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="iana-etc" version="&iana-etc-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&iana-etc-package;</file>
+	<url>&iana-etc-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&iana-etc-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&iana-etc-md5;</digest>
         <archive>&packages_dir;/&iana-etc-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

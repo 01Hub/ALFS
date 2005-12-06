@@ -9,9 +9,22 @@
 ]>
 <alfs>
   <package name="gawk" version="&gawk-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&gawk-package;</file>
+	<url>&gawk-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&gawk-md5;</digest>
+      </download>
+      <download>
+	<file>&gawk-segfault-patch;</file>
+	<url>&gawk-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&gawk-segfault-patch-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&gawk-md5;</digest>
         <archive>&packages_dir;/&gawk-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

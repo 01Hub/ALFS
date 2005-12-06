@@ -9,22 +9,40 @@
 ]>
 <alfs>
   <package name="flex" version="&flex-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&flex-package;</file>
+	<url>&flex-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&flex-md5;</digest>
+      </download>
+      <download>
+	<file>&flex-debian-fixes-patch;</file>
+	<url>&flex-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&flex-debian-fixes-patch-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&flex-md5;</digest>
         <archive>&packages_dir;/&flex-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <base>&build_dir;/&flex-directory;</base>
+	<base>&build_dir;/&flex-directory;</base>
       </stageinfo>
       <patch>
         <param>-N</param>
         <param>-p1</param>
         <param>-i &packages_dir;/&flex-debian-fixes-patch;</param>
       </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&flex-directory;</base>
+      </stageinfo>
       <execute command="touch">
         <param>doc/*.1</param>
       </execute>

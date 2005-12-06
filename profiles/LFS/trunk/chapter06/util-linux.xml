@@ -9,9 +9,22 @@
 ]>
 <alfs>
   <package name="util-linux" version="&util-linux-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&util-linux-package;</file>
+	<url>&util-linux-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&util-linux-md5;</digest>
+      </download>
+      <download>
+	<file>&util-linux-cramfs-patch;</file>
+	<url>&util-linux-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&util-linux-cramfs-patch-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&util-linux-md5;</digest>
         <archive>&packages_dir;/&util-linux-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

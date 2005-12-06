@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="sysvinit" version="&sysvinit-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&sysvinit-package;</file>
+	<url>&sysvinit-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&sysvinit-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&sysvinit-md5;</digest>
         <archive>&packages_dir;/&sysvinit-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

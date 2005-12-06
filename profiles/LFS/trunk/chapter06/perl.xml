@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="perl" version="&perl-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&perl-package;</file>
+	<url>&perl-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&perl-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&perl-md5;</digest>
         <archive>&packages_dir;/&perl-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

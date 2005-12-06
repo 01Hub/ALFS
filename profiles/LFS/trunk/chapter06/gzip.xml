@@ -9,22 +9,40 @@
 ]>
 <alfs>
   <package name="gzip" version="&gzip-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&gzip-package;</file>
+	<url>&gzip-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&gzip-md5;</digest>
+      </download>
+      <download>
+	<file>&gzip-security-fixes-patch;</file>
+	<url>&gzip-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&gzip-security-fixes-patch-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&gzip-md5;</digest>
         <archive>&packages_dir;/&gzip-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
-    <stage name="Installing">
+    <stage name="Patching">
       <stageinfo>
-        <base>&build_dir;/&gzip-directory;</base>
+	<base>&build_dir;/&gzip-directory;</base>
       </stageinfo>
       <patch>
 	<param>-N</param>
 	<param>-p1</param>
 	<param>-i &packages_dir;/&gzip-security-fixes-patch;</param>
       </patch>
+    </stage>
+    <stage name="Installing">
+      <stageinfo>
+        <base>&build_dir;/&gzip-directory;</base>
+      </stageinfo>
       <configure>
         <param>--prefix=/usr</param>
       </configure>

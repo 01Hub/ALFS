@@ -9,9 +9,16 @@
 ]>
 <alfs>
   <package name="iproute2" version="&iproute2-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&iproute2-package;</file>
+	<url>&iproute2-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&iproute2-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&iproute2-md5;</digest>
         <archive>&packages_dir;/&iproute2-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>

@@ -9,12 +9,34 @@
 ]>
 <alfs>
   <package name="kbd" version="&kbd-version;">
+    <stage name="Download and Check">
+      <download>
+	<file>&kbd-package;</file>
+	<url>&kbd-package-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&kbd-md5;</digest>
+      </download>
+      <download>
+	<file>&kbd-gcc4_fixes-patch;</file>
+	<url>&kbd-patches-url;</url>
+	<destination>&packages_dir;</destination>
+	<digest>&kbd-gcc4_fixes-patch-md5;</digest>
+      </download>
+    </stage>
     <stage name="Unpacking">
       <unpack>
-        <digest>&kbd-md5;</digest>
         <archive>&packages_dir;/&kbd-package;</archive>
         <destination>&build_dir;</destination>
       </unpack>
+    </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&kbd-directory;</base>
+      </stageinfo>
+      <patch>
+	<param>-Np1</param>
+	<param>-i &packages_dir;/&kbd-gcc4_fixes-patch;</param>
+      </patch>
     </stage>
     <stage name="Installing">
       <stageinfo>
