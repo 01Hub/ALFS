@@ -14,12 +14,12 @@
 <!ENTITY automake-package-url "&package-mirror;/automake/">
 <!ENTITY automake-patches-url "&patches-mirror;/automake/">
 
-<!ENTITY bash-md5 "f13fcb7a10dbb1e3d0050710fb198d83">
+<!ENTITY bash-md5 "56276db2d614aee1cb6c3030327c607d">
 <!ENTITY bash-version "3.0">
 <!ENTITY bash-package "bash-&bash-version;.tar.bz2">
 <!ENTITY bash-directory "bash-&bash-version;">
 
-<!ENTITY bash-docs-md5 "b5ebe5bfe6211df46d26f3bdc0cbecd1">
+<!ENTITY bash-docs-md5 "8d32a7d9c25c9c1cfd207b47750680a9">
 <!ENTITY bash-docs-package "bash-doc-&bash-version;.tar.bz2">
 
 <!ENTITY bash-package-url "&package-mirror;/bash/">
@@ -83,7 +83,7 @@
 <!ENTITY dejagnu-package-url "&package-mirror;/dejagnu/">
 <!ENTITY dejagnu-patches-url "&patches-mirror;/dejagnu/">
 
-<!ENTITY diffutils-md5 "27ce98d689599f41639ab5c383b17e32">
+<!ENTITY diffutils-md5 "54951d7e483fe5bd76d886204c5bfd58">
 <!ENTITY diffutils-version "2.8.1">
 <!ENTITY diffutils-package "diffutils-&diffutils-version;.tar.bz2">
 <!ENTITY diffutils-directory "diffutils-&diffutils-version;">
@@ -91,7 +91,7 @@
 <!ENTITY diffutils-package-url "&package-mirror;/diffutils/">
 <!ENTITY diffutils-patches-url "&patches-mirror;/diffutils/">
 
-<!ENTITY e2fsprogs-md5 "21de89f12c85528b5e04a63edef6422d">
+<!ENTITY e2fsprogs-md5 "2198d989872c9fa1a75488abca4cd111">
 <!ENTITY e2fsprogs-version "1.38">
 <!ENTITY e2fsprogs-package "e2fsprogs-&e2fsprogs-version;.tar.bz2">
 <!ENTITY e2fsprogs-directory "e2fsprogs-&e2fsprogs-version;">
@@ -161,7 +161,7 @@
 <!ENTITY gcc-specs-patch-md5 "0aa7d4c6be50c3855fe812f6faabc306">
 <!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-1.patch">
 
-<!ENTITY gettext-md5 "0d1b95a392a326e55766ca01756132b5">
+<!ENTITY gettext-md5 "edb3cb467d3abf0778a71c2d5b25ab92">
 <!ENTITY gettext-version "0.14.5">
 <!ENTITY gettext-package "gettext-&gettext-version;.tar.bz2">
 <!ENTITY gettext-directory "gettext-&gettext-version;">
@@ -243,7 +243,7 @@
 <!ENTITY inetutils-gcc4_fixes-patch-md5 "5204fbc503c9fb6a8e353583818db6b9">
 <!ENTITY inetutils-gcc4_fixes-patch "inetutils-&inetutils-version;-gcc4_fixes-3.patch">
 
-<!ENTITY iproute2-md5 "89750e84512290c4519303dba40fd938">
+<!ENTITY iproute2-md5 "1630d56760ec730ff4656a72d9a7acc6">
 <!ENTITY iproute2-version "051007">
 <!--<!ENTITY iproute2-cvs-ver "051007">
 <!ENTITY iproute2-package "iproute2-&iproute2-version;-&iproute2-cvs-ver;.tar.bz2">
@@ -424,10 +424,10 @@
 <!ENTITY readline-package-url "&package-mirror;/readline/">
 <!ENTITY readline-patches-url "&patches-mirror;/readline/">
 
-<!ENTITY readline-fixes-patch-md5 "6693bff25f522b2f7b42a6f48aafac3f">
+<!ENTITY readline-fixes-patch-md5 "53ca0c144f5c6fd004ed2e71e93b7b88">
 <!ENTITY readline-fixes-patch "readline-&readline-version;-fixes-1.patch">
 
-<!ENTITY sed-md5 "356901f3b2a9ae87b3926074847800e9">
+<!ENTITY sed-md5 "cbb61f54b4234228a4d44f5b25289e2e">
 <!ENTITY sed-version "4.1.4">
 <!ENTITY sed-package "sed-&sed-version;.tar.bz2">
 <!ENTITY sed-directory "sed-&sed-version;">
