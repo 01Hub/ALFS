@@ -26,6 +26,7 @@
 #include <string.h>
 #include <stdarg.h>
 #include <errno.h>
+#include <locale.h>
 #include <curses.h>
 
 #ifdef HAVE_CONFIG_H
@@ -224,6 +225,7 @@ static INLINE void create_windows(int num_of_lines)
 
 void start_display(void)
 {
+	setlocale(LC_CTYPE, "");
 	initscr();
 	cbreak();
 	noecho();
