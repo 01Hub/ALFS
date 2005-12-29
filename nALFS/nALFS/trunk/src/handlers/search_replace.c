@@ -153,6 +153,7 @@ static int search_replace_main(element_s *el, const char *base_dir)
 
 	xfree(buf);
 
+	ftruncate(fdw, ftell(fpw));
 	fclose(fpw);
 	fclose(fp);
 
