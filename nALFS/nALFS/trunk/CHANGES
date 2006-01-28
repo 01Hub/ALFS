@@ -1,3 +1,9 @@
+2006-01-28  Tagged as 1.2.6
+
+2005-12-29  Thomas Pegg
+	* A fix for corruption of files when using search_replace, in cases where the search pattern is at the end of the file. Thanks to David Rosal and Arthur Demchenkov.
+	* A fix for an issue with the drawing of line characters in UTF-8 locales. Thanks to Alexander Patrakov.
+
 2005-10-10  Tagged as 1.2.5
 
 2005-10-03  Thomas Pegg
