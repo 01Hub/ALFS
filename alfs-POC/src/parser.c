@@ -1,6 +1,5 @@
 /*
-   Parser for the LFS Book. Outputs commands as shell
-   scriptlets.
+   Parser for the LFS Book. Grabs only executable commands.
    Writtem by Jeremy Huntwork, 20051229
 */
    
