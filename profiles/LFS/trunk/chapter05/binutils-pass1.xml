@@ -54,6 +54,14 @@
         <param>-C ld</param>
         <param>LIB_PATH=/tools/lib</param>
       </make>
+      <copy>
+	<source>ld/ld-new</source>
+	<destination>/tools/bin</destination>
+      </copy>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/binutils-build</remove>
+      <remove>&build_dir;/&binutils-directory;</remove>
     </stage>
   </package>
 </alfs>

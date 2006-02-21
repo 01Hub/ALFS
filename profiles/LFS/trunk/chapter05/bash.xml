@@ -16,12 +16,6 @@
 	<destination>&packages_dir;</destination>
 	<digest>&bash-md5;</digest>
       </download>
-      <download>
-	<file>&bash-wcontinued-patch;</file>
-	<url>&bash-patches-url;</url>
-	<destination>&packages_dir;</destination>
-	<digest>&bash-wcontinued-patch-md5;</digest>
-      </download>
     </stage>
     <stage name="Unpacking">
       <unpack>
@@ -29,16 +23,13 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+<!--
     <stage name="Patching">
       <stageinfo>
 	<base>&build_dir;/&bash-directory;</base>
       </stageinfo>
-      <patch>
-        <param>-N</param>
-        <param>-p1</param>
-        <param>-i &packages_dir;/&bash-wcontinued-patch;</param>
-      </patch>
     </stage>
+-->
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&bash-directory;</base>

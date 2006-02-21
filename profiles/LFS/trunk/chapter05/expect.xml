@@ -46,7 +46,7 @@
       <configure>
         <param>--prefix=/tools</param>
         <param>--with-tcl=/tools/lib</param>
-	<param>--with-tclinclude=&build_dir;/&tcl-directory;</param>
+	<param>--with-tclinclude=/tools/include</param>
         <param>--with-x=no</param>
       </configure>
       <make />
@@ -61,7 +61,6 @@
       </make>
     </stage>
     <stage name="Cleanup">
-      <remove>&build_dir;/&tcl-directory;</remove>
       <remove>&build_dir;/&expect-directory;</remove>
     </stage>
   </package>
