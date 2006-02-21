@@ -7,8 +7,16 @@
 ]>
 <alfs>
   <stage name="Adding the LFS User">
-    <execute command="groupadd -f lfs" />
-    <execute command="id -u &lfs-user; &real-amp;&gt; /dev/null || useradd -s /bin/bash -g lfs -m -k /dev/null &lfs-user;" />
+    <execute command="getent group lfs &gt; /dev/null || groupadd">
+      <param>lfs</param>
+    </execute>
+    <execute command="getent passwd lfs &gt; /dev/null || useradd">
+      <param>-s /bin/bash</param>
+      <param>-g lfs</param>
+      <param>-m</param>
+      <param>-k /dev/null</param>
+      <param>&lfs-user;</param>
+    </execute>
     <execute command="echo &lfs-user;:&lfs-password; | chpasswd" />
     <ownership user="&lfs-user;">
       <name>&LFS;/tools</name>

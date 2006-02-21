@@ -23,6 +23,19 @@
         <destination>&build_dir;</destination>
       </unpack>
     </stage>
+    <stage name="Patching">
+      <stageinfo>
+	<base>&build_dir;/&tcl-directory;/unix</base>
+      </stageinfo>
+      <copy>
+	<source>configure</source>
+	<destination>configure.orig</destination>
+      </copy>
+      <execute command="sed">
+	<param>"s/relid'/relid/"</param>
+	<param>configure.orig &gt; configure</param>
+      </execute>
+    </stage>
     <stage name="Installing">
       <stageinfo>
         <base>&build_dir;/&tcl-directory;/unix</base>
@@ -40,11 +53,17 @@
       <make>
         <param>install</param>
       </make>
+      <make>
+	<param>install-private-headers</param>
+      </make>
       <link>
         <option>force</option>
         <target>tclsh8.4</target>
         <name>/tools/bin/tclsh</name>
       </link>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/&tcl-directory;</remove>
     </stage>
   </package>
 </alfs>

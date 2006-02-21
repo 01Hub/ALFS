@@ -38,7 +38,6 @@
       <configure command="../&binutils-directory;/configure">
         <param>--prefix=/tools</param>
 	<param>--disable-nls</param>
-        <param>--enable-shared</param>
         <param>--with-lib-path=/tools/lib</param>
       </configure>
       <make>
@@ -60,6 +59,14 @@
         <param>-C ld</param>
         <param>LIB_PATH=/usr/lib:/lib</param>
       </make>
+      <copy>
+	<source>ld/ld-new</source>
+	<destination>/tools/bin</destination>
+      </copy>
+    </stage>
+    <stage name="Cleanup">
+      <remove>&build_dir;/binutils-build</remove>
+      <remove>&build_dir;/&binutils-directory;</remove>
     </stage>
   </package>
 </alfs>

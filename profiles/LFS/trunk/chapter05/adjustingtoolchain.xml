@@ -12,18 +12,23 @@
     <stageinfo>
       <base>&build_dir;</base>
     </stageinfo>
-    <stage name="Adjusting the Linker">
-      <stageinfo>
-        <base>&build_dir;/binutils-build</base>
-      </stageinfo>
-      <make>
-        <param>-C ld</param>
-        <param>install</param>
-      </make>
-    </stage>
-    <remove>&build_dir;/&binutils-directory;</remove>
-    <remove>&build_dir;/binutils-build</remove>
-
+    <move>
+      <source>/tools/bin/ld</source>
+      <destination>/tools/bin/ld-old</destination>
+    </move>
+    <move>
+      <source>/tools/$(gcc -dumpmachine)/bin/ld</source>
+      <destination>/tools/$(gcc -dumpmachine/bin/ld-old</destination>
+    </move>
+    <move>
+      <source>/tools/bin/ld-new</source>
+      <destination>/tools/bin/ld</destination>
+    </move>
+    <link>
+      <option>force</option>
+      <target>/tools/bin/ld</target>
+      <name>/tools/$(gcc -dumpmachine)/bin/ld</name>
+    </link>
     <execute command="gcc"> 
       <param>-dumpspecs &gt; </param>
       <param>`dirname $(gcc -print-libgcc-file-name)`/specs</param>
