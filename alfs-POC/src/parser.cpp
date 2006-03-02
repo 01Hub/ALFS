@@ -50,7 +50,7 @@ int parse_file(string filename){
   file = fn.c_str();
   fp.open(file);
   if (!fp)
-    cerr << "Cannot open file: " << fn << endl;
+    perror(file);
 
   /* Set the current working directory, in case we leave it,
      and so we can get the name of the parent directory for
@@ -59,7 +59,7 @@ int parse_file(string filename){
 
   /* Read one line at a time from the opened file
      until the end of the file is reached */
-  while (!fp.eof()) {
+  while (fp.good()) {
     getline(fp, curline);
     cout << "Current line: " << curline << endl;	
   }
