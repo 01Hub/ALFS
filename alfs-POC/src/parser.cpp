@@ -27,7 +27,7 @@ int parse_file(string filename){
   int loc, len;
   string fn, parent, curline, path;
   const char *dir, *file;
-  char wd[512];
+  char wd[256];
   ifstream fp;
   
   len = filename.length();
@@ -47,9 +47,10 @@ int parse_file(string filename){
   cout << "Parsing file: " << fn << endl;
   file = fn.c_str();
   fp.open(file);
-  if (!fp)
+  if (!fp) {
     perror(file);
-
+    return(-1);
+  }
   /* Set the current working directory, in case we leave it,
      and so we can get the name of the parent directory for
      the file we're parsing */
@@ -62,7 +63,8 @@ int parse_file(string filename){
      until the end of the file is reached */
   while (fp.good()) {
     getline(fp, curline);
-    cout << "Current line: " << curline << endl;	
+    if (curline.empty() != 1)
+      cout << "Current line: " << curline << endl;	
   }
 
   fp.close();
