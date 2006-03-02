@@ -25,7 +25,7 @@ int main (int argc, char **argv)
 int parse_file(string filename){
 
   int loc, len;
-  string fn, parent, curline;
+  string fn, parent, curline, path;
   const char *dir, *file;
   char wd[512];
   ifstream fp;
@@ -36,10 +36,8 @@ int parse_file(string filename){
   if ((loc = filename.find_last_of("/")) == -1)
     fn = filename;  
   else {
-    string path(filename, 0, loc);
+    path = string(filename, 0, loc);
     fn = string(filename, loc+1, len-loc);
-    if ((loc = path.find_last_of("/")) != -1)
-       parent = string(path, 0, loc);
     dir = path.c_str();
     if ((chdir(dir)) == -1)
 	cerr << "Cannot change directories to " << path << endl;
@@ -56,6 +54,9 @@ int parse_file(string filename){
      and so we can get the name of the parent directory for
      the file we're parsing */
   getcwd(wd, 256);
+  path = string(wd);
+  if ((loc = path.find_last_of("/")) != -1)
+      parent = string(path, 0, loc);
 
   /* Read one line at a time from the opened file
      until the end of the file is reached */
