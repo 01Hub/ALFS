@@ -24,8 +24,8 @@ int main (int argc, char **argv)
 
 int parse_file(string filename){
 
-  int loc, len;
-  string fn, parent, curline, path;
+  int loc, len, i, multi = 0;
+  string fn, parent, curline, path, buf;
   const char *dir, *file;
   char wd[256];
   ifstream fp;
@@ -63,8 +63,42 @@ int parse_file(string filename){
      until the end of the file is reached */
   while (fp.good()) {
     getline(fp, curline);
-    if (curline.empty() != 1)
-      cout << "Current line: " << curline << endl;	
+    if (curline.empty())
+      continue;
+
+    for (buf = string(curline); buf.empty() != 1; i = 0) {
+	if (multi != 1)
+	  i = buf.find_first_of("<");
+	else
+	  i = 0;
+
+	switch (i) {
+	  case -1 :
+	    cout << buf << endl;
+	    buf.erase();
+	    break;
+
+	  case 0 :
+	    i = buf.find_first_of(">");
+	    if (i != -1) {
+	      cout << (string(buf, 0, i+1)) << endl;
+	      buf = string(buf, i+1, buf.length()-i);
+	      multi = 0;
+	    } else {
+	      cout << buf << endl;
+	      multi = 1;
+	      buf.erase();
+	    }
+	    break;
+
+	  default :
+	    cout << (string(buf, 0, i)) << endl;
+	    buf = string(buf, i, buf.length()-i);
+	    
+	}
+	
+    }
+   // cout << "Current line: " << curline << endl;
   }
 
   fp.close();
