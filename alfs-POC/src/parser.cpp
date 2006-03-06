@@ -24,7 +24,7 @@ int main (int argc, char **argv)
 
 int parse_file(string filename){
 
-  int loc, len, i, multi = 0;
+  int loc, len, i, multi = 0, comment = 0;
   string fn, parent, curline, path, buf, multibuf, parsebuf;
   const char *dir, *file;
   char wd[256];
@@ -65,6 +65,18 @@ int parse_file(string filename){
     getline(fp, curline);
     if (curline.empty())
       continue;
+
+    if (comment == 1) {
+	if ((curline.find("-->", 0)) == string::npos)
+ 	  continue;
+	comment = 0;
+	continue;
+    }
+
+    if ((curline.find("<!--", 0)) != string::npos) {
+	comment = 1;
+	continue;
+    }
 
     for (buf = string(curline); !buf.empty(); i = 0) {
 	if (multi != 1)
