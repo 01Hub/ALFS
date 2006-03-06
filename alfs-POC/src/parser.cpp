@@ -25,7 +25,7 @@ int main (int argc, char **argv)
 int parse_file(string filename){
 
   int loc, len, i, multi = 0, comment = 0;
-  string fn, parent, curline, path, buf, multibuf, parsebuf;
+  string fn, parent, curline, path, buf, multibuf, parsebuf, url;
   const char *dir, *file;
   char wd[256];
   ifstream fp;
@@ -105,12 +105,25 @@ int parse_file(string filename){
 	        // Analyze tag
 	        parsebuf = string(buf, 0, i+1);
 	        parsebuf = string(parsebuf, parsebuf.find_first_not_of("<"), (parsebuf.find_last_not_of(">")-parsebuf.find_first_not_of("<"))+1);
+		// Do we have an entity?
+		if ((parsebuf.find("!ENTITY")) != string::npos) {
+		  if ((parsebuf.find("%")) != string::npos) {
+		    //process the system entity
+		    url = string(parsebuf, parsebuf.find("SYSTEM"), parsebuf.length()-parsebuf.find("SYSTEM")+1);
+		    url = string(url, url.find_first_of("\"")+1, url.find_last_of("\"")-url.find_first_of("\"")-1);
+		    //parse the included system entity
+		    if ((parse_file(url.c_str())) == -1) {
+			perror(url.c_str());
+			return(-1);
+	            }
+		    if ((chdir(wd)) == -1)
+			perror(wd);
+		  }
+		}
 	        cout << "Parsed tag is: " << parsebuf << endl;
-	        // cout << (string(buf, 0, i+1)) << endl;
 	        buf = string(buf, i+1, buf.length()-i);
 	        multi = 0;
 	      } else {
-	        // FIXME: append to previous line.
 	        multibuf = string(buf);
 	        multi = 1;
 	        buf.erase();
