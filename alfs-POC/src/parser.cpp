@@ -25,7 +25,7 @@ int main (int argc, char **argv)
 int parse_file(string filename){
 
   int loc, len, i, multi = 0;
-  string fn, parent, curline, path, buf;
+  string fn, parent, curline, path, buf, multibuf, parsebuf;
   const char *dir, *file;
   char wd[256];
   ifstream fp;
@@ -66,32 +66,45 @@ int parse_file(string filename){
     if (curline.empty())
       continue;
 
-    for (buf = string(curline); buf.empty() != 1; i = 0) {
+    for (buf = string(curline); !buf.empty(); i = 0) {
 	if (multi != 1)
 	  i = buf.find_first_of("<");
 	else
 	  i = 0;
 
 	switch (i) {
+
 	  case -1 :
+	  // '<' not found in the string
 	    cout << buf << endl;
 	    buf.erase();
 	    break;
 
 	  case 0 :
+	  // '<' found as the first character of the string
+	    if (multi == 1) {
+		multibuf.append(buf);
+		buf = string(multibuf);
+	    }
 	    i = buf.find_first_of(">");
 	    if (i != -1) {
-	      cout << (string(buf, 0, i+1)) << endl;
+	      // Analyze tag
+	      parsebuf = string(buf, 0, i+1);
+	      parsebuf = string(parsebuf, parsebuf.find_first_not_of("<"), (parsebuf.find_last_not_of(">")-parsebuf.find_first_not_of("<"))+1);
+	      cout << "Parsed tag is: " << parsebuf << endl;
+	     // cout << (string(buf, 0, i+1)) << endl;
 	      buf = string(buf, i+1, buf.length()-i);
 	      multi = 0;
 	    } else {
-	      cout << buf << endl;
+	      // FIXME: append to previous line.
+	      multibuf = string(buf);
 	      multi = 1;
 	      buf.erase();
 	    }
 	    break;
 
 	  default :
+	  // '<' found, but not the first character in the string.
 	    cout << (string(buf, 0, i)) << endl;
 	    buf = string(buf, i, buf.length()-i);
 	    
