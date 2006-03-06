@@ -118,6 +118,7 @@ int parse_file(string filename){
 	        // Analyze tag
 	        parsebuf = string(buf, 0, i+1);
 	        parsebuf = string(parsebuf, parsebuf.find_first_not_of("<"), (parsebuf.find_last_not_of(">")-parsebuf.find_first_not_of("<"))+1);
+	        cout << "Parsed tag is: " << parsebuf << endl;
 		// Do we have an entity?
 		if ((parsebuf.find("!ENTITY")) != string::npos) {
 		  if ((parsebuf.find("%")) != string::npos) {
@@ -140,7 +141,6 @@ int parse_file(string filename){
 		    add_entity(parsebuf);
 		  }
 		}
-	        cout << "Parsed tag is: " << parsebuf << endl;
 	        buf = string(buf, i+1, buf.length()-i);
 	        multi = 0;
 	      } else {
@@ -173,11 +173,19 @@ int add_entity(string ent_pair) {
   entities *list, *temp;
   string ent_name, ent_value, get_ent, buf;
   int loc, loc1;
+
+  // Isolate the entity name - at this point, it's everything up to the
+  // first space.
   ent_name = string(ent_pair, 0,  ent_pair.find_first_of(" "));
+
+  // Isolate the entity value - everything in quotes
   loc = ent_pair.find_first_of("\"");
   loc1 = ent_pair.find_last_of("\"");
   ent_value = string(ent_pair, loc+1, loc1-loc-1);
 
+  // For each instance of '&...;' in value search the linked list of
+  // entities for a value - if nothing is found leave the original
+  // value intact.
   while ((ent_value.find(";")) != string::npos) {
     loc = ent_value.find_first_of("&");
     loc1 = ent_value.find_first_of(";");
@@ -194,6 +202,7 @@ int add_entity(string ent_pair) {
   buf.append(ent_value);
   ent_value = string(buf);
 
+  // Our entity is ready to be added to the linked list
   temp = new entities;
   temp->name = string(ent_name);
   temp->value = string(ent_value);
@@ -212,6 +221,8 @@ int add_entity(string ent_pair) {
   return(0);
 }
 
+// Function to search a linked list of entities and return the
+// value of the found matching entity name
 string find_ent(string ent_name){
  string ent_value = "none";
  entities *temp;
