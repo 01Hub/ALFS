@@ -67,15 +67,10 @@ int parse_file(string filename){
       continue;
 
     if (comment == 1) {
-	if ((curline.find("-->", 0)) == string::npos)
- 	  continue;
-	comment = 0;
-	continue;
-    }
-
-    if ((curline.find("<!--", 0)) != string::npos) {
-	comment = 1;
-	continue;
+      if ((curline.find("-->", 0)) == string::npos)
+        continue;
+      comment = 0;
+      continue;
     }
 
     for (buf = string(curline); !buf.empty(); i = 0) {
@@ -93,32 +88,42 @@ int parse_file(string filename){
 	    break;
 
 	  case 0 :
+	    if ((buf.find("<!--", 0)) == 0) {
+	      if ((buf.find("-->", 0)) == string::npos) {
+		comment = 1;
+	      }
+	      buf.erase();
+	    }
 	  // '<' found as the first character of the string
-	    if (multi == 1) {
+	    else {
+	      if (multi == 1) {
 		multibuf.append(buf);
 		buf = string(multibuf);
-	    }
-	    i = buf.find_first_of(">");
-	    if (i != -1) {
-	      // Analyze tag
-	      parsebuf = string(buf, 0, i+1);
-	      parsebuf = string(parsebuf, parsebuf.find_first_not_of("<"), (parsebuf.find_last_not_of(">")-parsebuf.find_first_not_of("<"))+1);
-	      cout << "Parsed tag is: " << parsebuf << endl;
-	     // cout << (string(buf, 0, i+1)) << endl;
-	      buf = string(buf, i+1, buf.length()-i);
-	      multi = 0;
-	    } else {
-	      // FIXME: append to previous line.
-	      multibuf = string(buf);
-	      multi = 1;
-	      buf.erase();
+	      }
+	      i = buf.find_first_of(">");
+	      if (i != -1) {
+	        // Analyze tag
+	        parsebuf = string(buf, 0, i+1);
+	        parsebuf = string(parsebuf, parsebuf.find_first_not_of("<"), (parsebuf.find_last_not_of(">")-parsebuf.find_first_not_of("<"))+1);
+	        cout << "Parsed tag is: " << parsebuf << endl;
+	        // cout << (string(buf, 0, i+1)) << endl;
+	        buf = string(buf, i+1, buf.length()-i);
+	        multi = 0;
+	      } else {
+	        // FIXME: append to previous line.
+	        multibuf = string(buf);
+	        multi = 1;
+	        buf.erase();
+	      }
 	    }
 	    break;
 
 	  default :
 	  // '<' found, but not the first character in the string.
-	    cout << (string(buf, 0, i)) << endl;
+	    if ((string(buf,0,i).find_first_not_of(" ")) != string::npos)
+	      cout << (string(buf, 0, i)) << endl;
 	    buf = string(buf, i, buf.length()-i);
+
 	    
 	}
 	
