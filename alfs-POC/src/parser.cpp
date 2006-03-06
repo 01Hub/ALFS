@@ -5,6 +5,18 @@ using namespace std;
 
 int parse_file(string filename);
 
+int add_entity(string ent_pair);
+
+string find_ent(string ent_name);
+
+struct entities {
+  string name;
+  string value;
+  entities* next;
+}; 
+
+entities *head = NULL;
+
 int main (int argc, char **argv)
 {
   /* Check that we have an input file */
@@ -26,6 +38,7 @@ int parse_file(string filename){
 
   int loc, len, i, multi = 0, comment = 0;
   string fn, parent, curline, path, buf, multibuf, parsebuf, url;
+  string parsed_ent_files;
   const char *dir, *file;
   char wd[256];
   ifstream fp;
@@ -111,13 +124,20 @@ int parse_file(string filename){
 		    //process the system entity
 		    url = string(parsebuf, parsebuf.find("SYSTEM"), parsebuf.length()-parsebuf.find("SYSTEM")+1);
 		    url = string(url, url.find_first_of("\"")+1, url.find_last_of("\"")-url.find_first_of("\"")-1);
-		    //parse the included system entity
-		    if ((parse_file(url.c_str())) == -1) {
+		    if ((parsed_ent_files.find(url)) == string::npos) {
+		      //parse the included system entity
+		      if ((parse_file(url.c_str())) == -1) {
 			perror(url.c_str());
 			return(-1);
-	            }
-		    if ((chdir(wd)) == -1)
+	              } else {
+			parsed_ent_files.append(url);
+		      }
+		      if ((chdir(wd)) == -1)
 			perror(wd);
+		    }
+		  } else {
+		    parsebuf.erase(0, 8);
+		    add_entity(parsebuf);
 		  }
 		}
 	        cout << "Parsed tag is: " << parsebuf << endl;
@@ -147,4 +167,61 @@ int parse_file(string filename){
   fp.close();
 
   return(0);
+}
+
+int add_entity(string ent_pair) {
+  entities *list, *temp;
+  string ent_name, ent_value, get_ent, buf;
+  int loc, loc1;
+  ent_name = string(ent_pair, 0,  ent_pair.find_first_of(" "));
+  loc = ent_pair.find_first_of("\"");
+  loc1 = ent_pair.find_last_of("\"");
+  ent_value = string(ent_pair, loc+1, loc1-loc-1);
+
+  while ((ent_value.find(";")) != string::npos) {
+    loc = ent_value.find_first_of("&");
+    loc1 = ent_value.find_first_of(";");
+    get_ent = string(ent_value, loc+1, loc1-loc-1);
+    get_ent = find_ent(get_ent);
+    if (get_ent.compare("none") != 0) {
+      buf.append(string(ent_value, 0, loc));
+      buf.append(get_ent);
+      ent_value = string(ent_value, loc1+1, ent_value.length()-loc1);
+    } else {
+       break;
+    }
+  }
+  buf.append(ent_value);
+  ent_value = string(buf);
+
+  temp = new entities;
+  temp->name = string(ent_name);
+  temp->value = string(ent_value);
+  temp->next = NULL;
+
+  if (head == NULL)
+    head = temp;
+  else {
+    list = head;
+    while (list->next != NULL)
+      list = list->next;
+    list->next = temp;
+  }
+  cout << "Added entity: " << ent_name << " : " << ent_value << endl;
+
+  return(0);
+}
+
+string find_ent(string ent_name){
+ string ent_value = "none";
+ entities *temp;
+ temp = head;
+ while (temp != NULL) {
+  if (temp->name.compare(ent_name) == 0) {
+    ent_value = string(temp->value);
+    break;
+  }
+  temp = temp->next;
+ }
+ return(ent_value);
 }
