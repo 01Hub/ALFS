@@ -1,0 +1,630 @@
+Index: LFS/master.sh
+===================================================================
+--- LFS/master.sh	(revision 2829)
++++ LFS/master.sh	(working copy)
+@@ -176,6 +176,11 @@
+     # Keep the script file name
+     this_script=`basename $file`
+ 
++    # If $this_script corresponds to a paco script, then skip it
++    case "${this_script}" in
++      *paco)       continue ;;
++    esac
++
+     # We'll run the chroot commands differently than the others, so skip them in the
+     # dependencies and target creation.
+     case "${this_script}" in
+@@ -183,6 +188,18 @@
+       *stripping*) [[ "${STRIP}" = "0" ]] && continue ;;
+     esac
+ 
++    # Install paco as the first package in ch6, before installing
++    # linux-libc-headers, except in iterartive builds
++    if [[ -z "$N" ]]; then
++      case $this_script in
++        *linux-libc-headers)
++          TMP_SCRIPT="$this_script"
++          this_script=`echo $this_script | sed -e 's/linux-libc-headers/a-paco/'`
++          wrt_paco_inst "$this_script"
++          this_script="$TMP_SCRIPT" ;;
++      esac
++    fi
++
+     # Grab the name of the target
+     name=`echo ${this_script} | sed -e 's@[0-9]\{3\}-@@'`
+ 
+@@ -235,7 +252,9 @@
+     # and not to use chroot.
+     case "${this_script}" in
+       *kernfs)  wrt_run_as_root    "${this_script}" "$file" ;;
+-      *)        wrt_run_as_chroot1 "${this_script}" "$file" ;;
++      *)        wrt_paco_prep
++                wrt_run_as_chroot1 "${this_script}" "$file"
++                wrt_paco_log "$pkg_tarball" ;;
+     esac
+ 
+     # Remove the build directory(ies) except if the package build fails.
+@@ -255,6 +274,16 @@
+     PREV=${this_script}${N}
+     # Set system_build envar for iteration targets
+     system_build=$chapter6
++
++    # Reinstalling paco after readsjusting the toolchain.
++    case "${this_script}" in
++      *readjusting)
++        TMP_SCRIPT="$this_script"
++        this_script=`echo ${this_script} | sed -e 's/readjusting/x-paco/'`
++        wrt_paco_inst "$this_script"
++        this_script="$TMP_SCRIPT" ;;
++    esac
++
+   done # end for file in chapter06/*
+ }
+ 
+@@ -315,8 +344,18 @@
+               else
+                 wrt_run_as_chroot2 "$this_script" "$file"
+               fi
++              wrt_paco_log "lfs-sysconf"
+         ;;
++      *kernel)       wrt_paco_prep
++                     wrt_run_as_chroot2 "$this_script" "$file"
++                     wrt_paco_log "$pkg_tarball"
++        ;;
++      *bootscripts)  wrt_paco_prep
++                     wrt_run_as_chroot2 "$this_script" "$file"
++                     wrt_paco_log "$pkg_tarball"
++        ;;
+       *)        wrt_run_as_chroot2 "$this_script" "$file"
++                wrt_paco_log "lfs-sysconf"
+         ;;
+     esac
+ 
+Index: LFS/lfs.xsl
+===================================================================
+--- LFS/lfs.xsl	(revision 2829)
++++ LFS/lfs.xsl	(working copy)
+@@ -32,6 +32,9 @@
+   <!-- Locale settings -->
+   <xsl:param name="lang" select="C"/>
+ 
++  <!-- Use paco? -->
++  <xsl:param name="use_paco" select="1"/>
++
+   <xsl:template match="/">
+     <xsl:apply-templates select="//sect1"/>
+   </xsl:template>
+@@ -200,6 +203,33 @@
+         <xsl:apply-templates/>
+         <xsl:text> || true&#xA;</xsl:text>
+       </xsl:when>
++      <!-- paco begin -->
++      <!-- General rule -->
++      <xsl:when test="$use_paco != '0' and
++                ancestor::chapter[@id != 'chapter-temporary-tools'] and
++                contains(string(),'make') and
++                contains(string(),'install')">
++        <xsl:text>export LD_PRELOAD=/usr/lib/libpaco-log.so&#xA;</xsl:text>
++        <xsl:apply-templates/>
++        <xsl:text>&#xA;</xsl:text>
++      </xsl:when>
++      <!-- Linux-libc-headers -->
++      <xsl:when test="$use_paco != '0' and
++                ancestor::sect1[@id='ch-system-linux-libc-headers'] and
++                contains(string(),'install ')">
++        <xsl:text>export LD_PRELOAD=/usr/lib/libpaco-log.so&#xA;</xsl:text>
++        <xsl:apply-templates/>
++        <xsl:text>&#xA;</xsl:text>
++      </xsl:when>
++      <!-- Unset LD_PRELOAD before second make in Zlib -->
++      <xsl:when test="$use_paco != '0' and
++                ancestor::sect1[@id='ch-system-zlib'] and
++                contains(string(),'make clean')">
++        <xsl:text>unset LD_PRELOAD&#xA;</xsl:text>
++        <xsl:apply-templates/>
++        <xsl:text>&#xA;</xsl:text>
++      </xsl:when>
++      <!-- paco end -->
+       <!-- The rest of commands -->
+       <xsl:otherwise>
+         <xsl:apply-templates/>
+Index: common/paco-build-hlfs.sh
+===================================================================
+--- common/paco-build-hlfs.sh	(revision 0)
++++ common/paco-build-hlfs.sh	(revision 0)
+@@ -0,0 +1,12 @@
++#!/bin/sh
++set -e
++
++cd $PKGDIR
++./configure --sysconfdir=/etc \
++	--enable-scripts \
++	--disable-gpaco \
++	--disable-static \
++	--with-pic &&
++make &&
++make install &&
++make logme
+Index: common/config
+===================================================================
+--- common/config	(revision 2829)
++++ common/config	(working copy)
+@@ -86,6 +86,14 @@
+ #--- Run farce testing 0(no)/1(yes)
+ RUN_FARCE=0
+ 
++#==== PACO VARIABLES ====
++#--- Use paco? 0(no)/1(yes)
++USE_PACO=1
++PACO_VERSION=1.10.8
++
++#--- Name of the Paco source package
++PACO_FILE=paco-$PACO_VERSION.tar.*
++
+ #==== INTERNAL VARIABLES ====
+ # Don't edit it unless you know what you are doing
+ 
+@@ -103,3 +111,9 @@
+ 
+ #--- farce report log directory
+ FARCELOGDIR=$LOGDIR/farce
++
++#--- Variables needed by paco
++PACO_INCLUDE=/
++PACO_EXCLUDE=/${SCRIPT_ROOT}
++PACO_TMPFILE=/tmp/paco.tmp
++LD_PRELOAD=/usr/lib/libpaco-log.so
+Index: common/func_validate_configs.sh
+===================================================================
+--- common/func_validate_configs.sh	(revision 2829)
++++ common/func_validate_configs.sh	(working copy)
+@@ -84,9 +84,9 @@
+ inline_doc
+ 
+   # First internal variables, then the ones that change the book's flavour, and lastly system configuration variables
+-  local -r hlfs_PARAM_LIST="BOOK BUILDDIR SRC_ARCHIVE GETPKG RUNMAKE MODEL GRSECURITY_HOST TEST OPTIMIZE REPORT COMPARE RUN_ICA RUN_FARCE ITERATIONS STRIP FSTAB             CONFIG GETKERNEL KEYMAP         PAGE TIMEZONE LANG LC_ALL"
+-  local -r clfs_PARAM_LIST="BOOK BUILDDIR SRC_ARCHIVE GETPKG RUNMAKE METHOD  ARCH  TARGET  TEST OPTIMIZE REPORT COMPARE RUN_ICA RUN_FARCE ITERATIONS STRIP FSTAB BOOT_CONFIG CONFIG GETKERNEL KEYMAP VIMLANG PAGE TIMEZONE LANG"
+-  local -r  lfs_PARAM_LIST="BOOK BUILDDIR SRC_ARCHIVE GETPKG RUNMAKE                       TEST OPTIMIZE REPORT COMPARE RUN_ICA RUN_FARCE ITERATIONS STRIP FSTAB             CONFIG GETKERNEL        VIMLANG PAGE TIMEZONE LANG"
++  local -r hlfs_PARAM_LIST="BOOK BUILDDIR SRC_ARCHIVE USE_PACO GETPKG RUNMAKE MODEL GRSECURITY_HOST TEST OPTIMIZE REPORT COMPARE RUN_ICA RUN_FARCE ITERATIONS STRIP FSTAB             CONFIG GETKERNEL KEYMAP         PAGE TIMEZONE LANG LC_ALL"
++  local -r clfs_PARAM_LIST="BOOK BUILDDIR SRC_ARCHIVE USE_PACO GETPKG RUNMAKE METHOD  ARCH  TARGET  TEST OPTIMIZE REPORT COMPARE RUN_ICA RUN_FARCE ITERATIONS STRIP FSTAB BOOT_CONFIG CONFIG GETKERNEL KEYMAP VIMLANG PAGE TIMEZONE LANG"
++  local -r  lfs_PARAM_LIST="BOOK BUILDDIR SRC_ARCHIVE USE_PACO GETPKG RUNMAKE                       TEST OPTIMIZE REPORT COMPARE RUN_ICA RUN_FARCE ITERATIONS STRIP FSTAB             CONFIG GETKERNEL        VIMLANG PAGE TIMEZONE LANG"
+ 
+   local -r ERROR_MSG_pt1='The variable \"${L_arrow}${config_param}${R_arrow}\" value ${L_arrow}${BOLD}${!config_param}${R_arrow} is invalid,'
+   local -r ERROR_MSG_pt2=' check the config file ${BOLD}${GREEN}\<$(echo $PROGNAME | tr [a-z] [A-Z])/config\> or \<common/config\>${OFF}'
+@@ -176,6 +176,7 @@
+                     [[ "$GETPKG" = "1" ]] && validate_against_str "x0x x1x"
+                   fi ;;
+       RUNMAKE)    validate_against_str "x0x x1x" ;;
++      USE_PACO)   validate_against_str "x0x x1x" ;;
+       REPORT)     validate_against_str "x0x x1x"
+                   if [[ "${!config_param}" = "1" ]]; then
+                     if [[ `type -p bc` ]]; then
+Index: common/paco-functions
+===================================================================
+--- common/paco-functions	(revision 0)
++++ common/paco-functions	(revision 0)
+@@ -0,0 +1,209 @@
++#!/bin/bash
++
++#----------------------------#
++wrt_paco_inst() {            #
++#----------------------------#
++
++# Not using Paco with uClibc, even if requested
++if [ $PROGNAME = "hlfs" ]; then
++  if [ $MODEL = "uclibc" ]; then
++    USE_PACO=0
++  fi
++fi
++
++if [ $USE_PACO != 0 ]; then
++  paco_script="$1"
++  paco_file="chapter06/$paco_script"
++  chapter6="$chapter6 $paco_script"
++
++  # Copy the paco build script to the correct directory and make it executable
++  cp $JHALFSDIR/paco-build-$PROGNAME.sh $JHALFSDIR/${PROGNAME}-commands/$paco_file &&
++  chmod +x $JHALFSDIR/${PROGNAME}-commands/$paco_file
++
++  # Write target, dependency and unpack
++  wrt_target "$paco_script" "$PREV"
++  wrt_unpack2 "$PACO_FILE"
++
++  # Run the script
++  wrt_run_as_chroot1 "${paco_script}" "${paco_file}"
++
++  # Clean up
++  wrt_remove_build_dirs "paco"
++  wrt_touch
++
++  # Override the PREV variable
++  PREV="$paco_script"
++fi
++}
++
++
++#----------------------------------#
++wrt_paco_prep() {                  # Export Paco variables
++#----------------------------------# and remove tmpfile
++
++# Not using Paco with uClibc, even if requested
++if [ $PROGNAME = "hlfs" ]; then
++  if [ $MODEL = "uclibc" ]; then
++    USE_PACO=0
++  fi
++fi
++
++check_log_package
++
++if [ $USE_PACO != 0 ] && [ $LOG_PACKAGE != 0 ]; then
++(
++cat  << EOF
++	@echo "export PACO_INCLUDE=$PACO_INCLUDE" >> envars && \\
++	echo "export PACO_EXCLUDE=\$(SRC):$PACO_EXCLUDE" >> envars && \\
++	echo "export PACO_TMPFILE=$PACO_TMPFILE" >> envars && \\
++	rm -f \$(MOUNT_PT)$PACO_TMPFILE
++EOF
++) >> $MKFILE.tmp
++fi
++}
++
++
++#----------------------------------#
++wrt_paco_log() {                   # If the tmpfile exist, then log the current package
++#----------------------------------# and remove tempfile
++local PACKAGE
++
++PACKAGE=`echo $1 | sed -e 's/.tar.*//'`
++
++# Not using Paco with uClibc, even if requested
++if [ $PROGNAME = "hlfs" ]; then
++  if [ $MODEL = "uclibc" ]; then
++    USE_PACO=0
++  fi
++fi
++
++check_log_package
++
++if [ $USE_PACO != 0 ]; then
++  if [ $LOG_PACKAGE != 0 ]; then
++(
++cat << EOF
++	@if [ -e \$(MOUNT_PT)$PACO_TMPFILE ]; then \\
++		\$(CHROOT1) 'paco -lp+ $PACKAGE < $PACO_TMPFILE' && \\
++		rm -f \$(MOUNT_PT)$PACO_TMPFILE; \\
++	fi;
++EOF
++) >> $MKFILE.tmp
++  fi
++  wrt_paco_add_log
++fi
++}
++
++
++#----------------------------------#
++wrt_paco_add_log() {               #
++#----------------------------------#
++# Some packages create files using bash redirection, which the LD_PRELOAD lib don't notice
++# These rules will add the missing files to the proper logs.
++# Most of these is not needed for HLFS, but they do no harm.
++if [ $USE_PACO != 0 ]; then
++  case $this_script in
++    *glibc)
++      echo -e "\t@\$(CHROOT1) 'find /lib -type l | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++      echo -e "\t@\$(CHROOT1) 'find /etc/{nsswitch.conf,ld.so.conf} | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *ncurses)
++      LIBS="/usr/lib/{libcurses.so,libncurses.so,libform.so,libpanel.so,libmenu.so}"
++      echo -e "\t@\$(CHROOT1) 'find $LIBS | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *bash)
++      echo -e "\t@\$(CHROOT1) 'echo /bin/sh | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *flex)
++      echo -e "\t@\$(CHROOT1) 'echo /usr/bin/lex | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *shadow)
++      echo -e "\t@\$(CHROOT1) 'echo /etc/login.defs | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *hotplug)
++      echo -e "\t@\$(CHROOT1) 'echo /var/log/hotplug | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++      echo -e "\t@\$(CHROOT1) 'echo /var/run/usb | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *sysklogd)
++      echo -e "\t@\$(CHROOT1) 'echo /etc/syslog.conf | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *sysvinit)
++      echo -e "\t@\$(CHROOT1) 'echo /etc/inittab | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *udev)
++      echo -e "\t@\$(CHROOT1) 'find /lib/udev/devices | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++      echo -e "\t@\$(CHROOT1) 'echo /lib/firmware | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++      echo -e "\t@\$(CHROOT1) 'find /etc/udev/rules.d -type f | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *util-linux)
++      echo -e "\t@\$(CHROOT1) 'echo /var/lib/hwclock | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++      echo -e "\t@\$(CHROOT1) 'echo /etc/nologin.txt | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *vim)
++      echo -e "\t@\$(CHROOT1) 'echo /etc/vimrc | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    # Rules below here will log configuration files created in LFS and HLFS
++    # They will end up in a log named {h}lfs-sysconf
++    *setclock)
++      echo -e "\t@\$(CHROOT2) 'echo /etc/sysconfig/clock | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *inputrc)
++      echo -e "\t@\$(CHROOT2) 'echo /etc/inputrc | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *profile)
++      echo -e "\t@\$(CHROOT2) 'echo /etc/profile | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *hostname)
++      echo -e "\t@\$(CHROOT2) 'echo /etc/sysconfig/network | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *localnet)
++      echo -e "\t@\$(CHROOT2) 'echo /etc/sysconfig/network | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *hosts)
++      echo -e "\t@\$(CHROOT2) 'echo /etc/hosts | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *network)
++      echo -e "\t@\$(CHROOT2) 'echo /etc/sysconfig/network-devices/ifconfig.eth0/ipv4 | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++      echo -e "\t@\$(CHROOT2) 'echo /etc/resolv.conf | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *fstab)
++      echo -e "\t@\$(CHROOT2) 'echo /etc/fstab | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *theend) # LFS
++      echo -e "\t@\$(CHROOT2) 'echo /etc/$PROGNAME-release | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++    *finished) # HLFS
++      echo -e "\t@\$(CHROOT2) 'echo /etc/$PROGNAME-release | paco -lp+ $PACKAGE'" >> $MKFILE.tmp
++    ;;
++  esac
++fi
++}
++
++
++#----------------------------------#
++check_log_package() {              #
++#----------------------------------#
++# Maybe don't need this function, but it will avoid writing some
++# unnecessary paco commands in the Makefile.
++
++case $this_script in
++  *changingowner)   LOG_PACKAGE=0 ;;
++  *creatingdirs)    LOG_PACKAGE=0 ;;
++  *createfiles)     LOG_PACKAGE=0 ;;
++  *pwdgroup)        LOG_PACKAGE=0 ;;
++  *devices)         LOG_PACKAGE=0 ;;
++  *strippingagain)  LOG_PACKAGE=0 ;;
++  *readjusting)     LOG_PACKAGE=0 ;;
++  *setclock)        LOG_PACKAGE=0 ;;
++  *inputrc)         LOG_PACKAGE=0 ;;
++  *profile)         LOG_PACKAGE=0 ;;
++  *hostname)        LOG_PACKAGE=0 ;;
++  *localnet)        LOG_PACKAGE=0 ;;
++  *hosts)           LOG_PACKAGE=0 ;;
++  *network)         LOG_PACKAGE=0 ;;
++  *fstab)           LOG_PACKAGE=0 ;;
++  *theend)          LOG_PACKAGE=0 ;;
++  *finished)        LOG_PACKAGE=0 ;;
++  *)                LOG_PACKAGE=1 ;;
++esac
++}
+Index: common/paco-build-lfs.sh
+===================================================================
+--- common/paco-build-lfs.sh	(revision 0)
++++ common/paco-build-lfs.sh	(revision 0)
+@@ -0,0 +1,10 @@
++#!/bin/sh
++set -e
++
++cd $PKGDIR
++./configure --sysconfdir=/etc \
++	--enable-scripts \
++	--disable-gpaco &&
++make &&
++make install &&
++make logme
+Index: common/common-functions
+===================================================================
+--- common/common-functions	(revision 2829)
++++ common/common-functions	(working copy)
+@@ -69,6 +69,9 @@
+         in the configuration file has the proper packages and patches for the
+         book version being processed.
+ 
++${BOLD}  --no-paco${OFF}
++        dissables paco logging feature.
++
+ ${BOLD}  -O, --optimize${OFF}
+         Optimize [0-2]
+           0 = no optimization
+@@ -733,6 +736,7 @@
+                  --stringparam lc_all $LC_ALL \
+                  --stringparam keymap $KEYMAP \
+                  --stringparam grsecurity_host $GRSECURITY_HOST \
++                 --stringparam use_paco $USE_PACO \
+                  -o ./${PROGNAME}-commands/ $XSL $BOOK/index.xml >>$LOGDIR/$LOG 2>&1
+       ;;
+     lfs)
+@@ -744,6 +748,7 @@
+                  --stringparam timezone $TIMEZONE \
+                  --stringparam page $PAGE \
+                  --stringparam lang $LANG \
++                 --stringparam use_paco $USE_PACO \
+                  -o ./${PROGNAME}-commands/ $XSL $BOOK/index.xml >>$LOGDIR/$LOG 2>&1
+       ;;
+     *) exit 1 ;;
+Index: HLFS/hlfs.xsl
+===================================================================
+--- HLFS/hlfs.xsl	(revision 2829)
++++ HLFS/hlfs.xsl	(working copy)
+@@ -39,6 +39,9 @@
+   <xsl:param name="lang" select="C"/>
+   <xsl:param name="lc_all" select="C"/>
+ 
++  <!-- Use paco? -->
++  <xsl:param name="use_paco" select="1"/>
++
+   <xsl:template match="/">
+     <xsl:apply-templates select="//sect1"/>
+   </xsl:template>
+@@ -191,6 +194,10 @@
+       <!-- Fixing bootscripts installation -->
+       <xsl:when test="ancestor::sect1[@id='bootable-bootscripts'] and
+                 string() = 'make install'">
++        <!-- inserting LD_PRELOAD before installing bootscripts -->
++        <xsl:if test="$use_paco != '0' and $model != 'uclibc'">
++          <xsl:text>export LD_PRELOAD=/usr/lib/libpaco-log.so&#xA;</xsl:text>
++        </xsl:if>
+         <xsl:text>make install&#xA;</xsl:text>
+         <xsl:text>cd ../blfs-bootscripts-&blfs-bootscripts-version;&#xA;</xsl:text>
+       </xsl:when>
+@@ -257,6 +264,25 @@
+         <xsl:apply-templates/>
+         <xsl:text> || true&#xA;</xsl:text>
+       </xsl:when>
++      <!-- paco begin -->
++      <!-- General rule -->
++      <xsl:when test="$use_paco != '0' and $model != 'uclibc' and
++                ancestor::chapter[@id != 'chapter-temporary-tools'] and
++                contains(string(),'make') and
++                contains(string(),'install')">
++        <xsl:text>export LD_PRELOAD=/usr/lib/libpaco-log.so&#xA;</xsl:text>
++        <xsl:apply-templates/>
++        <xsl:text>&#xA;</xsl:text>
++      </xsl:when>
++      <!-- Linux-libc-headers -->
++      <xsl:when test="$use_paco != '0' and $model != 'uclibc' and
++                ancestor::sect1[@id='ch-system-linux-libc-headers'] and
++                contains(string(),'install ')">
++        <xsl:text>export LD_PRELOAD=/usr/lib/libpaco-log.so&#xA;</xsl:text>
++        <xsl:apply-templates/>
++        <xsl:text>&#xA;</xsl:text>
++      </xsl:when>
++      <!-- paco end -->
+       <!-- The rest of commands -->
+       <xsl:otherwise>
+         <xsl:apply-templates/>
+Index: HLFS/master.sh
+===================================================================
+--- HLFS/master.sh	(revision 2829)
++++ HLFS/master.sh	(working copy)
+@@ -250,6 +250,11 @@
+     # Keep the script file name
+     this_script=`basename $file`
+ 
++    # If this script is *-paco, then skip it
++    case $this_script in
++      *paco )     continue ;;
++    esac
++
+     # Skip this script depending on jhalfs.conf flags set.
+     case $this_script in
+         # We'll run the chroot commands differently than the others, so skip them in the
+@@ -259,6 +264,18 @@
+       *-stripping* )  [[ "$STRIP" = "0" ]] && continue ;;
+     esac
+ 
++    # Install paco as the first package in ch6, before installing
++    # linux-libc-headers, except in iterartive builds
++    if [[ -z "$N" ]]; then
++      case $this_script in
++        *linux-libc-headers)
++          TMP_SCRIPT="$this_script"
++          this_script=`echo $this_script | sed -e 's/linux-libc-headers/a-paco/'`
++          wrt_paco_inst "$this_script"
++          this_script="$TMP_SCRIPT" ;;
++      esac
++    fi
++
+     # Grab the name of the target
+     name=`echo $this_script | sed -e 's@[0-9]\{3\}-@@'`
+ 
+@@ -334,7 +351,9 @@
+         wrt_run_as_root "${this_script}" "${file}"
+         ;;
+       *)   # The rest of Chapter06
++        wrt_paco_prep
+         wrt_run_as_chroot1 "${this_script}" "${file}"
++        wrt_paco_log "$pkg_tarball"
+        ;;
+     esac
+     #
+@@ -367,6 +386,16 @@
+     PREV=${this_script}${N}
+     # Set system_build envar for iteration targets
+     system_build=$chapter6
++
++    # Reinstall paco after the toolchain has been readjusted.
++    case "${this_script}" in
++      *readjusting)
++        TMP_SCRIPT="$this_script"
++        this_script=`echo $this_script | sed -e 's/readjusting/x-paco/'`
++        wrt_paco_inst "$this_script"
++        this_script="$TMP_SCRIPT" ;;
++    esac
++
+   done # end for file in chapter06/*
+ 
+ }
+@@ -426,9 +455,19 @@
+         else  # Initialize the log and run the script
+           wrt_run_as_chroot2 "${this_script}" "${file}"
+         fi
++        wrt_paco_log "hlfs-sysconf"
+         ;;
++      *kernel)       wrt_paco_prep
++                     wrt_run_as_chroot2 "$this_script" "$file"
++                     wrt_paco_log "$(get_package_tarball_name "linux")"
++        ;;
++      *bootscripts)  wrt_paco_prep
++                     wrt_run_as_chroot2 "$this_script" "$file"
++                     wrt_paco_log "$(get_package_tarball_name "lfs-bootscripts")"
++        ;;
+       *)  # All other scripts
+         wrt_run_as_chroot2 "${this_script}" "${file}"
++        wrt_paco_log "hlfs-sysconf"
+         ;;
+     esac
+ 
+Index: master.sh
+===================================================================
+--- master.sh	(revision 2829)
++++ master.sh	(working copy)
+@@ -149,6 +149,8 @@
+ 
+     --help | -h )  usage | more && exit  ;;
+ 
++    --no-paco )            USE_PACO=0    ;;
++
+     --optimize | -O )
+       test $# = 1 && eval "$exit_missing_arg"
+       shift
+@@ -440,6 +442,14 @@
+   [[ $VERBOSITY > 0 ]] && echo "OK"
+ fi
+ #
++# paco module
++if [[ "$USE_PACO" = "1" ]]; then
++  [[ $VERBOSITY > 0 ]] && echo -n "Loading paco module..."
++  source $COMMON_DIR/paco-functions
++  [[ $? > 0 ]] && echo "$COMMON_DIR/paco-functions did not load.." && exit 2
++  [[ $VERBOSITY > 0 ]] && echo "OK"
++fi
++#
+ # optimize module
+ if [[ "$OPTIMIZE" != "0" ]]; then
+   [[ $VERBOSITY > 0 ]] && echo -n "Loading optimization module..."
+@@ -486,6 +496,8 @@
+ if [[ "$PWD" != "$JHALFSDIR" ]]; then
+   cp $COMMON_DIR/{makefile-functions,progress_bar.sh} $JHALFSDIR/
+   #
++  [[ $USE_PACO != "0" ]] && cp $COMMON_DIR/paco-build-$PROGNAME.sh $JHALFSDIR/
++  #
+   [[ "$OPTIMIZE" != "0" ]] && cp optimize/opt_override $JHALFSDIR/
+   #
+   if [[ "$COMPARE" != "0" ]] ; then
