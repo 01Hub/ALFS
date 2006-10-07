@@ -1,6 +1,0 @@
-#!/bin/bash
-set -e
-
-echo -e "\n  BLFS support has been dissabled for now.\n"
-
-exit 0
