@@ -7,7 +7,9 @@ int parse_file(string filename);
 
 int add_entity(string ent_pair);
 
+string swap_ent(string ent_value);
 string find_ent(string ent_name);
+string parsed_ent_files;
 
 struct entities {
   string name;
@@ -25,7 +27,14 @@ int main (int argc, char **argv)
         return(-1);
   }
 
-  /* We've been given a file, let's start parsing */
+  /* We've been given a valid file */
+  /* First add a few static entities */
+  add_entity("gt \">\"");
+  add_entity("lt \"<\"");
+  add_entity("amp \"&\"");
+  add_entity("quot \"\"\"");
+
+  /* Now parse the file */
   string fn = argv[1];
   if ((parse_file(fn)) == -1)
         return(-1);
@@ -36,9 +45,8 @@ int main (int argc, char **argv)
 
 int parse_file(string filename){
 
-  int loc, len, i, multi = 0, comment = 0;
+  int loc, len, i, multi = 0, comment = 0, screen = 0, userinput = 0;
   string fn, parent, curline, path, buf, multibuf, parsebuf, url;
-  string parsed_ent_files;
   const char *dir, *file;
   char wd[256];
   ifstream fp;
@@ -57,7 +65,7 @@ int parse_file(string filename){
   }
  
   /* Open the file for parsing. */ 
-  cout << "Parsing file: " << fn << endl;
+  // cout << "Parsing file: " << fn << endl;
   file = fn.c_str();
   fp.open(file);
   if (!fp) {
@@ -86,8 +94,10 @@ int parse_file(string filename){
       continue;
     }
 
+    /* Look for XML tags */
     for (buf = string(curline); !buf.empty(); i = 0) {
-	if (multi != 1)
+
+	if (multi != 1) // We're not in the middle of a multi-line tag
 	  i = buf.find_first_of("<");
 	else
 	  i = 0;
@@ -96,7 +106,10 @@ int parse_file(string filename){
 
 	  case -1 :
 	  // '<' not found in the string
-	    cout << buf << endl;
+	    if ((screen == 1) && (userinput == 1)) {
+		buf = swap_ent(buf);
+	  	cout << buf << endl;
+	    }
 	    buf.erase();
 	    break;
 
@@ -115,10 +128,14 @@ int parse_file(string filename){
 	      }
 	      i = buf.find_first_of(">");
 	      if (i != -1) {
+	
 	        // Analyze tag
 	        parsebuf = string(buf, 0, i+1);
-	        parsebuf = string(parsebuf, parsebuf.find_first_not_of("<"), (parsebuf.find_last_not_of(">")-parsebuf.find_first_not_of("<"))+1);
-	        cout << "Parsed tag is: " << parsebuf << endl;
+		loc = parsebuf.find_first_not_of("<");
+		len = parsebuf.find_last_not_of(">");
+	        parsebuf = string(parsebuf, loc, (len-loc)+1);
+	        //cout << "Parsed tag is: " << parsebuf << endl;
+	
 		// Do we have an entity?
 		if ((parsebuf.find("!ENTITY")) != string::npos) {
 		  if ((parsebuf.find("%")) != string::npos) {
@@ -141,6 +158,41 @@ int parse_file(string filename){
 		    add_entity(parsebuf);
 		  }
 		}
+
+		// Do we have an xi:include?
+		if ((parsebuf.find("xi:include")) != string::npos) {
+		  //skip any xpointer stuff for now - will get to it in a bit
+		  if ((parsebuf.find("xpointer")) == string::npos) {
+		    url = string(parsebuf, parsebuf.find("href="), parsebuf.length()-parsebuf.find("href=")+1);
+		    url = string(url, url.find_first_of("\"")+1, url.find_last_of("\"")-url.find_first_of("\"")-1);
+		    //cout << "Got an included file! URL is: " << url << endl;
+		    //parse the file
+		    if ((parse_file(url.c_str())) == -1) {
+                      perror(url.c_str());
+                      return(-1);
+                    }
+                    if ((chdir(wd)) == -1)
+                        perror(wd);
+		  } 
+		}
+
+		// Do we have a screen tag without the nodump role?
+		if ((parsebuf.find("screen")) != string::npos) {
+		   if ((parsebuf.find("nodump")) == string::npos){
+			screen = 1;
+		   }
+		}
+
+		if ((parsebuf.find("userinput")) != string::npos)
+			userinput = 1;
+
+		if ((parsebuf.find("/userinput")) != string::npos) {
+			userinput = 0;
+			cout << endl;
+		}
+		if ((parsebuf.find("/screen")) != string::npos)
+			screen = 0;
+
 	        buf = string(buf, i+1, buf.length()-i);
 	        multi = 0;
 	      } else {
@@ -153,8 +205,13 @@ int parse_file(string filename){
 
 	  default :
 	  // '<' found, but not the first character in the string.
-	    if ((string(buf,0,i).find_first_not_of(" ")) != string::npos)
-	      cout << (string(buf, 0, i)) << endl;
+	  //  if ((string(buf,0,i).find_first_not_of(" ")) != string::npos)
+	  //    cout << (string(buf, 0, i)) << endl;
+            if ((screen == 1) && (userinput == 1)) {
+                parsebuf = string(buf, 0, i);
+                parsebuf = swap_ent(parsebuf);
+                cout << parsebuf;
+            }
 	    buf = string(buf, i, buf.length()-i);
 
 	    
@@ -171,7 +228,7 @@ int parse_file(string filename){
 
 int add_entity(string ent_pair) {
   entities *list, *temp;
-  string ent_name, ent_value, get_ent, buf;
+  string ent_name, ent_value;
   int loc, loc1;
 
   // Isolate the entity name - at this point, it's everything up to the
@@ -183,24 +240,7 @@ int add_entity(string ent_pair) {
   loc1 = ent_pair.find_last_of("\"");
   ent_value = string(ent_pair, loc+1, loc1-loc-1);
 
-  // For each instance of '&...;' in value search the linked list of
-  // entities for a value - if nothing is found leave the original
-  // value intact.
-  while ((ent_value.find(";")) != string::npos) {
-    loc = ent_value.find_first_of("&");
-    loc1 = ent_value.find_first_of(";");
-    get_ent = string(ent_value, loc+1, loc1-loc-1);
-    get_ent = find_ent(get_ent);
-    if (get_ent.compare("none") != 0) {
-      buf.append(string(ent_value, 0, loc));
-      buf.append(get_ent);
-      ent_value = string(ent_value, loc1+1, ent_value.length()-loc1);
-    } else {
-       break;
-    }
-  }
-  buf.append(ent_value);
-  ent_value = string(buf);
+  ent_value = swap_ent(ent_value);
 
   // Our entity is ready to be added to the linked list
   temp = new entities;
@@ -216,7 +256,7 @@ int add_entity(string ent_pair) {
       list = list->next;
     list->next = temp;
   }
-  cout << "Added entity: " << ent_name << " : " << ent_value << endl;
+  // cout << "Added entity: " << ent_name << "=\"" << ent_value << "\"" << endl;
 
   return(0);
 }
@@ -235,4 +275,30 @@ string find_ent(string ent_name){
   temp = temp->next;
  }
  return(ent_value);
+}
+
+// Function to swap the entity name with the entity value
+string swap_ent(string ent_value){
+  string get_ent, buf;
+  int loc, loc1;
+
+  // For each instance of '&...;' in value search the linked list of
+  // entities for a matching entity - if nothing is found leave the original
+  // value intact.
+  while ((ent_value.find(";")) != string::npos) {
+    loc = ent_value.find_first_of("&");
+    loc1 = ent_value.find_first_of(";");
+    get_ent = string(ent_value, loc+1, loc1-loc-1);
+    get_ent = find_ent(get_ent);
+    if (get_ent.compare("none") != 0) {
+      buf.append(string(ent_value, 0, loc));
+      buf.append(get_ent);
+      ent_value = string(ent_value, loc1+1, ent_value.length()-loc1);
+    } else {
+       break;
+    }
+  }
+  buf.append(ent_value);
+  ent_value = string(buf);
+  return(ent_value);
 }
