@@ -278,27 +278,34 @@ string find_ent(string ent_name){
 }
 
 // Function to swap the entity name with the entity value
-string swap_ent(string ent_value){
-  string get_ent, buf;
-  int loc, loc1;
+string swap_ent(string line){
+  string start_ent, get_ent, buf;
+  int loc, loc1, ent_len;
 
   // For each instance of '&...;' in value search the linked list of
   // entities for a matching entity - if nothing is found leave the original
   // value intact.
-  while ((ent_value.find(";")) != string::npos) {
-    loc = ent_value.find_first_of("&");
-    loc1 = ent_value.find_first_of(";");
-    get_ent = string(ent_value, loc+1, loc1-loc-1);
+  while ( ! line.empty()) {
+    if ((loc = line.find_first_of("&")) == -1 )
+	break;
+    start_ent = string(line, loc+1, line.length());
+ 
+    if ((loc1 = start_ent.find_first_of(";")) == -1)
+	break;
+    
+    get_ent = string(start_ent, 0, loc1);
+    ent_len = get_ent.length();
     get_ent = find_ent(get_ent);
+
     if (get_ent.compare("none") != 0) {
-      buf.append(string(ent_value, 0, loc));
+      buf.append(string(line, 0, loc));
       buf.append(get_ent);
-      ent_value = string(ent_value, loc1+1, ent_value.length()-loc1);
+      line = string(line, loc+ent_len+2, line.length());
     } else {
        break;
     }
   }
-  buf.append(ent_value);
-  ent_value = string(buf);
-  return(ent_value);
+  buf.append(line);
+  line = string(buf);
+  return(line);
 }
