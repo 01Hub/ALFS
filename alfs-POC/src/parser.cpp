@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
+#include <sys/stat.h>
 using namespace std;
 
 int parse_file(string filename);
@@ -10,6 +12,10 @@ int add_entity(string ent_pair);
 string swap_ent(string ent_value);
 string find_ent(string ent_name);
 string parsed_ent_files;
+string parsed_files;
+char rootwd[256];
+
+int parsecount = 0;
 
 struct entities {
   string name;
@@ -34,10 +40,19 @@ int main (int argc, char **argv)
   add_entity("amp \"&\"");
   add_entity("quot \"\"\"");
 
+  /* Find our root directory - the one we ran the command from */
+  getcwd(rootwd, 256);
+  cout << "Working directory: " << rootwd << endl;
+
+  mkdir("commands", 0755);
+  cout << "Created directory: commands" << endl;
+
   /* Now parse the file */
   string fn = argv[1];
   if ((parse_file(fn)) == -1)
         return(-1);
+
+  cout << "Commands parsed." << endl;
 
   return(0);
 
@@ -46,10 +61,11 @@ int main (int argc, char **argv)
 int parse_file(string filename){
 
   int loc, len, i, multi = 0, comment = 0, screen = 0, userinput = 0;
-  string fn, parent, curline, path, buf, multibuf, parsebuf, url;
-  const char *dir, *file;
+  string fn, sn, parent, curline, path, buf, multibuf, parsebuf, url;
+  const char *dir, *file, *scpt;
   char wd[256];
   ifstream fp;
+  ofstream script;
   
   len = filename.length();
 
@@ -65,13 +81,13 @@ int parse_file(string filename){
   }
  
   /* Open the file for parsing. */ 
-  // cout << "Parsing file: " << fn << endl;
   file = fn.c_str();
   fp.open(file);
   if (!fp) {
     perror(file);
     return(-1);
   }
+  parsecount++;
   /* Set the current working directory, in case we leave it,
      and so we can get the name of the parent directory for
      the file we're parsing */
@@ -79,6 +95,17 @@ int parse_file(string filename){
   path = string(wd);
   if ((loc = path.find_last_of("/")) != -1)
       parent = string(path, 0, loc);
+
+  /* Set up the output script name */
+  std::ostringstream stream;
+  stream << parsecount;
+  sn.append(rootwd);
+  sn.append("/commands/");
+  if (parsecount < 100)
+     sn.append("0");
+  sn.append(stream.str());
+  sn.append("-" + fn + ".sh");
+  scpt = sn.c_str();
 
   /* Read one line at a time from the opened file
      until the end of the file is reached */
@@ -108,7 +135,13 @@ int parse_file(string filename){
 	  // '<' not found in the string
 	    if ((screen == 1) && (userinput == 1)) {
 		buf = swap_ent(buf);
-	  	cout << buf << endl;
+		if ((parsed_files.find(fn)) != string::npos) {
+	  	  parsed_files.append(fn);	
+	  	  parsed_files.append(":");
+		}
+		script.open(scpt, ios::app);
+		script << buf << endl;
+		script.close();
 	    }
 	    buf.erase();
 	    break;
@@ -134,7 +167,6 @@ int parse_file(string filename){
 		loc = parsebuf.find_first_not_of("<");
 		len = parsebuf.find_last_not_of(">");
 	        parsebuf = string(parsebuf, loc, (len-loc)+1);
-	        //cout << "Parsed tag is: " << parsebuf << endl;
 	
 		// Do we have an entity?
 		if ((parsebuf.find("!ENTITY")) != string::npos) {
@@ -148,6 +180,7 @@ int parse_file(string filename){
 			perror(url.c_str());
 			return(-1);
 	              } else {
+			parsed_ent_files.append(":");
 			parsed_ent_files.append(url);
 		      }
 		      if ((chdir(wd)) == -1)
@@ -165,7 +198,6 @@ int parse_file(string filename){
 		  if ((parsebuf.find("xpointer")) == string::npos) {
 		    url = string(parsebuf, parsebuf.find("href="), parsebuf.length()-parsebuf.find("href=")+1);
 		    url = string(url, url.find_first_of("\"")+1, url.find_last_of("\"")-url.find_first_of("\"")-1);
-		    //cout << "Got an included file! URL is: " << url << endl;
 		    //parse the file
 		    if ((parse_file(url.c_str())) == -1) {
                       perror(url.c_str());
@@ -186,10 +218,9 @@ int parse_file(string filename){
 		if ((parsebuf.find("userinput")) != string::npos)
 			userinput = 1;
 
-		if ((parsebuf.find("/userinput")) != string::npos) {
+		if ((parsebuf.find("/userinput")) != string::npos)
 			userinput = 0;
-			cout << endl;
-		}
+
 		if ((parsebuf.find("/screen")) != string::npos)
 			screen = 0;
 
@@ -205,20 +236,16 @@ int parse_file(string filename){
 
 	  default :
 	  // '<' found, but not the first character in the string.
-	  //  if ((string(buf,0,i).find_first_not_of(" ")) != string::npos)
-	  //    cout << (string(buf, 0, i)) << endl;
             if ((screen == 1) && (userinput == 1)) {
                 parsebuf = string(buf, 0, i);
                 parsebuf = swap_ent(parsebuf);
-                cout << parsebuf;
+                script.open(scpt, ios::app);
+                script << parsebuf << endl;
+                script.close();
             }
-	    buf = string(buf, i, buf.length()-i);
-
-	    
+	    buf = string(buf, i, buf.length()-i);   
 	}
-	
     }
-   // cout << "Current line: " << curline << endl;
   }
 
   fp.close();
@@ -256,8 +283,6 @@ int add_entity(string ent_pair) {
       list = list->next;
     list->next = temp;
   }
-  // cout << "Added entity: " << ent_name << "=\"" << ent_value << "\"" << endl;
-
   return(0);
 }
 
