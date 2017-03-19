@@ -1,0 +1,299 @@
+$Id$
+
+1. INTRODUCTION::
+
+     If you want to add blfs-tool support into an xLFS base system build,
+  read the "BLFS_TOOL SUPPORT" section found in the README and be sure
+  to follow the after-booting installation instructions.
+
+     To automate package builds from the BLFS book instructions is a huge
+  task. Some of the issues are: the BLFS book isn't linear; some package
+  pages use a custom layout; there are circular dependencies; several
+  packages can be installed on a non-default prefix; build commands can
+  change based on what dependencies will be used, etc.
+
+     That being said, the goal of the blfs-tool is to help you solve package
+  dependencies, create build scripts and a Makefile. Not all the auto-generated
+  build scripts and Makefile will work "as is", thus, as a general rule,
+  you will need to review and edit the scripts while reading the book.
+
+
+2. PREREQUISITES::
+
+     To use this tool you MUST:
+
+     - have experience building BLFS packages
+     - know how to edit and write shell scripts
+     - know how a Makefile works
+     - be able to trace build failures and to find what is causing it
+       (user error, package bug, BLFS command bug, or jhalfs code bug)
+
+     If you do not have the above skills, please don't use this tool.
+
+
+3. USAGE::
+
+     Due to the complexity of the BLFS book, the scripts and Makefile
+     generation is done in several steps:
+
+  3.1  INSTALLED PACKAGES TRACKING SYSTEM::
+
+       This tool includes a very simple tracking system to log which packages
+    have been installed using the tool. It is used to skip installed packages
+    from target selection menu and to test if an installed package has been
+    updated in the BLFS book. Do not rely on this feature as a package
+    management tool.
+
+       The tracking system itself is an XML file: instpkg.xml. It is
+    initialized when <make> is first run in blfs_root. It resides in a
+    directory, which is created when needed during the process of building
+    custom tools or blfs dependencies, right after xLFS. You can specify
+    that directory location in the blfs-tools sub-menu of jhalfs. You may
+    need to update permissions and/or ownership of this directory before
+    using the blfs tool (see README in jhalfs).
+
+       The default location of the tracking directory is /var/lib/jhalfs/BLFS.
+    NB : after the initial build, that directory is only used to contain
+    instpkg.xml, unless custom tools have been built. In the latter case,
+    it also contains empty files whose name are "$PKG-$VERSION" for each
+    versionned package built. The information about those packages is
+    included into instpkg.xml the next time the tool is run.
+
+  3.2  BLFS_TOOL INSTALLATION::
+
+    3.2.1 Normal install
+       The tools are installed just after the building of xLFS, if the
+    appropriate options have been selected in the building menu, as per
+    jhalfs README. If you forgot to select the options and xLFS has been
+    built, it is possible to go back to selecting the appropriate
+    BLFS tools options in the jhalfs menu, then tick `Run makefile'
+    and not `Rebuild files'. You obtain a /blfs_root directory in the
+    root directory of the new xLFS system, which contains the followings:
+
+    blfs-xml/*              SVN tree of the selected BLFS book version
+    lib/constants.inc       functions libraries 
+       /func_dependencies     for building the dependency tree
+    menu/*                  lxdialog and menuconfig source code
+    xsl/gen_pkg_list.xsl    XSL stylesheet to generate the package database
+       /gen_config.xsl      XSL stylesheet to generate the Config.in file
+                            for use in the menuconfig system
+       /dependencies.xsl    XSL stylesheet to generate the dependency list
+                            of a package
+       /make_book.xsl       XSL stylesheet to generate the linear book.xml
+       /scripts.xsl         XSL stylesheet to generate the scriptlets from
+                            book.xml
+       /bump.xsl            XSL stylesheet to update the tracking file
+    README.BLFS             this file
+    TODO                    developers notes (well, not updated often)
+    gen_pkg_book.sh         resolves dependencies and generates linear BLFS
+                            books and build scripts
+    gen-makefile.sh         generates the target Makefile
+    progress_bar.sh         the target Makefile progress bar
+    gen-special.sh          Helper script for generating the package database
+    Makefile                Used by make to update the package database from
+                            the SVN tree, then launch the menuconfig interface,
+                            and run gen_pkg_book.sh based on configuration
+                            settings
+    packdesc.dtd            a simple DTD describing the format of the package
+                            database and the tracking file.
+    envars.conf             envars needed when running the target build scripts
+
+    3.2.2 Install to an already running LFS/BLFS system
+       If you forgot to install the tools when building xLFS, or want to try
+    the tools, you can select the BLFS book from the jhalfs menu. It will
+    run a script, which creates the above hierarchy in your home directory and
+    initialize the tracking file. You have first to make sure that the tracking
+    dir exists and is writable by the user. You may also populate it with
+    (empty) files whose names are of the form package-version, for installed
+    packages, so that they are included into the tracking file.
+
+    3.3.3 Working files
+        Several files are generated during the process:
+
+    packages.xml            auto-generated packages database
+    Config.in               input file for the menu driven choices
+    configuration           file generated by the menuconfig process
+    dependencies/*          files recording the dependency tree
+    book.xml                the linearized book
+    book-html/*             the linearized book rendered in html
+    scripts/*               the scriptlets
+
+       From now on, all the work must be done from inside the installation
+    root directory.
+
+       You may move that directory to the $HOME of a non root user, or build
+    as root from that directory.
+
+  3.3  UPDATING BOOK SOURCES::
+
+       If you are using the development book version and you want to update
+    installed packages to the latest version found in that book, you need to
+    update the XML sources and packages database. This is not necessary if
+    you just built xLFS, and you can skip to step 3.4.
+
+       To do that, run "make update". It may happen that the subversion
+    version of your building host is older than the version you just
+    built. This may generate weird errors like "'.' omitted". The easiest
+    thing to do in that case, is to completely remove the blfs-xml directory
+    and run "make update". With recent versions of subversion, you can also
+    run "svn upgrade" from inside the blfs-xml directory.
+
+       On the next configuration run, packages already installed but listed
+    with a new version in the book will be available for target selection
+    and used to solve dependencies.
+
+  3.4  CONFIGURING AND PARSING THE BOOK::
+
+       The next step is to create a book and build scripts in dependency
+    build order for one or several packages.
+
+       Run <make> to launch the configuration interface. The main menu contains
+    two blocks: individual package selection, and build options.
+
+       In the build options section, the dependencies level and default packages
+    used to solve alternatives are set (currently, only for the MTA). You can
+    also select whether the build will be made as a normal user or as root.
+    Those settings are saved to be reused in future configuration runs.
+
+       Note that you may select as many targets as you want, not just one
+    as in the previous version of this tool. But we suggest to not select
+    too many at a time to be able to sort issues!
+
+       When you are done with the menu, a few checks occur, and the dependency
+    chain is generated. Each dependency appears with its priority (required,
+    recommended, optional, or external), and it's level. There is a root level
+    1. The selected packages have level 2. The dependencies of selected packages
+    have level 3, the dependencies of the dependencies have level 4, and so on.
+    When circular dependencies are found, they appear with a priority of
+    "circular". This means that two (or more) dependency chains arrive at the
+    same package. The algorithm chooses the chain with the highest priority and
+    reorders dependencies to remove the other chain(s). This is not always the
+    solution an user would prefer, but we have found no way to do it better.
+
+       You end up with a book.xml file which contains the linearized book,
+    and a rendered HTML, in the directory book-html, which you can browse with
+    "lynx book-html/index.html" (or with any other browser).
+
+       Furthermore, there is a directory "scripts", which contains the generated
+    scriptlets.
+
+       There is also another directory, "dependencies" that contains files
+    generated while resolving dependencies.
+
+  3.5  EDITING BUILD SCRIPTS::
+
+       Now it is time to review the generated book and scripts, making any
+    changes to the scripts necessary to fix generation bugs or to suit your
+    needs.
+
+       Scripts for additional packages (i.e., for non-BLFS packages) can be
+    easily inserted. For example, if you want to install the external dependency
+    "bar" before "foo" package and the "foo" script is named "064-z-foo", you
+    just need to create a "064-y-bar" build script.
+
+      Remember, the package tracking system isn't a package management tool
+    and knows nothing about packages not in the BLFS book.
+
+      Also, review and edit envars.conf. This file is used to set global envars
+    needed by the build scripts.
+
+  3.6  CREATING THE MAKEFILE::
+
+       When the build scripts are ready to be run, the Makefile can be
+    created. Create an empty directory (for example "mkdir work") and cd
+    to that directory. Then run ../gen-makefile.sh
+
+    Review the Makefile, and, if all looks sane, start the build by running
+    "make".
+
+4. GENERATED BUILD SCRIPTS ISSUES::
+
+      In this section, known issues with the generated build scripts are
+   discussed. They are due to build procedures and/or BLFS layout
+   particularities that we can't handle. In several cases, editing the
+   build scripts is mandatory.
+      You may also need to insert some build scripts created by you to resolve
+   unhandled dependencies and/or to remove some script installing an unneeded
+   package (unneeded packages may be pulled in the dependency chain, if
+   they occur as an "or" with another package).
+      When there are circular dependencies (only one known in BLFS 8.0 for
+   recommended dependencies), you may need to move around scripts so that they
+   run in the order script-A script-B script-A. This involves copying script-A
+   to another name (using the xxx-a- fields), and possibly renaming the xxx-a-
+   fields of each involved script.
+
+   4.1  BLFS BOOTSCRIPTS::
+
+        Normally, bootscript installation should work. On the other hand, the
+     book does not give instruction for running them, so you might have to
+     manually insert "/etc/init.d/rc.d/<initscript> start" at some place during
+     the build.
+
+   4.2  PACKAGE CONFIGURATION::
+
+        For those packages that have a "Configuration" section, you should
+     edit the build script to fit the needs of your system. Sometimes, the
+     bash startup files are modified. The shipped 'envars.conf' contains a
+     line 'source /etc/profile', which ensures that the proper environment
+     variables are used.
+
+   4.3  PAGES WITH TWO OR MORE PACKAGES::
+
+        For example: sane, poppler, audacious, freetts, which, etc.
+
+        On the pages for those packages, the BLFS book actually has instructions
+     to download and install two or more packages. You must edit the scripts to
+     fix this. A common pitfall is that the variable PACKAGE may be used for
+     several tarballs. Be sure to save the PACKAGE variable to some other
+     name (for example PKG1, PKG2, etc) after each download. The unpacking
+     instructions may need to be repeated for each tarball in turn.
+
+   4.4  XORG7
+
+        The book has special page layouts for the Xorg7 packages. The tool
+     breaks those pages into individual pages for each packages in the linear
+     book. Also, the menu gives the choice to select each package individually.
+
+        To build the whole Xorg7 chapter, select twm. The (recommended)
+     dependency chain brings in the whole set of Xorg packages.
+
+   4.5  PATCHES
+
+        Please, make sure that all scripts have the commands to download/apply
+     the required patches. Due to book layout issues, some patches may be
+     missing (as of BLFS 8.0, all the patches seem to be downloaded).
+
+   4.6  ROOT COMMANDS
+
+        If building as a normal user (the default setting), be sure that all
+     commands that require root privileges are run using sudo. Also make sure
+     necessary root privilege commands are visible in your PATH. Or use
+     the `Defaults secure_path=' in /etc/sudoers.
+
+        For commands necessitating root privileges, the generated scripts wrap
+     them with the construct:
+       sudo -E sh << ROOT_EOF
+         <commands to be executed as root with `$', ``', and `\' escaped>
+       ROOT_EOF
+     The -E switch ensures the whole environment is passed to the
+     commands to be run with root privileges. It is effective only if the
+     /etc/sudoers file contains `Defaults setenv', or SETENV in the user
+     attributes. If you think it is a security issue, you may forbid this
+     flag in /etc/sudoers, but then, you have to un-escape `$' for variables
+     coming from the environment in the instructions.
+        Although this construct is rather strong, it can fail in some corner
+     cases, so carefully review those instructions.
+
+        WARNING: One variable from the environment is not passed through the
+     -E switch, namely PATH. This is because "sudo" always reset the PATH to
+     the default "secure_path". If you need to have the same PATH as the user
+     "root" would have, you may want to add "source /etc/profile" at the
+     beginning of the commands to be executed as root.
+
+        Due to book layout issues, some sudo commands may be missing.
+
+   4.7  OTHERS
+
+        There may be other issues that we are not aware of. If you find
+     any, please report it to <alfs-discuss@linuxfromscratch.org>.
+
